@@ -2,14 +2,14 @@
 <html lang="en">
 
 <head>
-   <title>hanC labs</title>
+   <title>Shika</title>
    <meta charset="utf-8" />
-   <link rel="icon" href="assets/favicon.ico">
+   <link rel="icon" href="./favicon.ico"  type="image/x-icon" />
    <meta name="author" content="Ebrahim Shaghouei" />
    <meta name="description" content="Bitcoin, Cryptocurrency, Web Development" />
    <meta name="keywords" content="Computer Science, html, css, js, JavaScript" />
    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
-   <link href="main.css" rel="stylesheet" type="text/css" />
+   <link href="./main.css" rel="stylesheet" type="text/css" />
 
    <script type="text/javascript" src="https://livejs.com/live.js"></script>
 
@@ -21,7 +21,7 @@
 
       <nav id="navbar">
          <span> <a id="toggle-nav" class="logo">&#9776;</a> </span>
-         <span > <a data-article="home-page">&#127968;</a> </span>
+         <span> <a data-article="home-page">&#127968;</a> </span>
       </nav>
 
    </header>
@@ -42,7 +42,10 @@
 
                <div class="nav-section-end">
 
-                  Accent: &nbsp;<svg data-speak="true" data-event="click" data-speak-id="speech-test" class="icon speak-icon-test" x="0" y="0" viewbox="0 0 295.928 295.928"><use xlink:href="#speaker" href="#speaker" /></svg>
+                  Accent: &nbsp;<svg data-speak="true" data-event="click" data-speak-id="speech-test"
+                     class="icon speak-icon-test" x="0" y="0" viewbox="0 0 295.928 295.928">
+                     <use xlink:href="#speaker" href="#speaker" />
+                  </svg>
                   <br />
                   <select id="voiceSelect"></select><br />
 
@@ -94,7 +97,9 @@
          * nav has data-id_of_article used for cloning article from hidden section
          * js replaces the article-container article by the article chosen in nav  -->
          <div id="article-container">
-            <article><h1>hidden article replaced by JS based on user navigation</h1></article>
+            <article>
+               <h1>hidden article replaced by JS based on user navigation</h1>
+            </article>
          </div>
 
       </div>
@@ -113,134 +118,140 @@
    * svg data-* attributed define any speech id and event
 -->
 
-<div id="articles-hidden" hidden>
+   <div id="articles-hidden" hidden>
 
-   <!-- Hidden articles displayed by JS after nav selection ******* -->
+      <!-- Hidden articles displayed by JS after nav selection ******* -->
 
-   <article id="home-page">
-      <h1 class="hidden">Hidden articles displayed by JS after nav selection</h1>
-   
-      <div id="banner" class="article-header center">
-         <a id="ecosia-link" target="_blank" href="https://info.ecosia.org/what">
-            <div id="banner" class="banner">
-               <canvas id="canvasClock" width="150" height="150"></canvas>
-   
-               <span lang="sw">Salamu Dunia</span> &dash;<span lang="ha">Sannu Duniya</span> &dash; <span lang="zh">你好 世界</span> &dash; <span lang="en">Hello World</span> &dash; <span lang="th">สวัสดีชาวโลก</span> &dash; <span
-                  lang="ar" dir="rtl">مرحبا بالعالم</span>
-               &dash; <span lang="bn">ওহে বিশ্ব ਸਤਿ ਸ੍ਰੀ</span> &dash; <span lang="zu">Sawubona Mhlaba</span> &dash;
-               <span lang="sn">Mhoro Nyika</span> &dash; <span lang="ta">ஹலோ வேர்ல்ட்</span> &dash; <span lang="fa"
-                  dir="rtl">سلام دنیا</span>
-               <br />
-               <span>
-                  Search &amp; Plant Trees !
+      <article id="home-page">
+         <h1 class="hidden">Hidden articles displayed by JS after nav selection</h1>
+
+         <div id="banner" class="article-header center">
+            <a id="ecosia-link" target="_blank" href="https://info.ecosia.org/what">
+               <div id="banner" class="banner">
+                  <canvas id="canvasClock" width="150" height="150"></canvas>
+
+                  <span lang="sw">Salamu Dunia</span> &dash;<span lang="ha">Sannu Duniya</span> &dash; <span
+                     lang="zh">你好 世界</span> &dash; <span lang="en">Hello World</span> &dash; <span
+                     lang="th">สวัสดีชาวโลก</span> &dash; <span lang="ar" dir="rtl">مرحبا بالعالم</span>
+                  &dash; <span lang="bn">ওহে বিশ্ব ਸਤਿ ਸ੍ਰੀ</span> &dash; <span lang="zu">Sawubona Mhlaba</span> &dash;
+                  <span lang="sn">Mhoro Nyika</span> &dash; <span lang="ta">ஹலோ வேர்ல்ட்</span> &dash; <span lang="fa"
+                     dir="rtl">سلام دنیا</span>
+                  <br />
+                  <span>
+                     Search &amp; Plant Trees !
+                  </span>
+
+               </div>
+            </a>
+         </div>
+
+         <details class="panel slide">
+            <summary>Bitcoin &amp; Crypto notes to self!</summary>
+            <details class="panel">
+               <summary>What is Bitcoin?</summary>
+               <span class="slide-medium border-circle float-left">
+                  <code><b>Bitcoin is: </b><a target="_blank" href="https://bitcoin.org/en/bitcoin-paper">A Peer-to-Peer Electronic Cash System.</a> </code><br />
+                  <code>Decentralised, Distributed, Transparent, Peer-to-peer, Permissionless, Pseudo-anonymous, Censorship resistant, Public ledger</code>
                </span>
-   
-            </div>
-         </a>
-      </div>
-   
-      <details class="panel slide">
-         <summary>Bitcoin &amp; Crypto notes to self!</summary>
-         <details class="panel">
-            <summary>What is Bitcoin?</summary>
-            <span class="slide-medium border-circle float-left">
-               <code><b>Bitcoin is: </b><a target="_blank" href="https://bitcoin.org/en/bitcoin-paper">A Peer-to-Peer Electronic Cash System.</a> </code><br />
-               <code>Decentralised, Distributed, Transparent, Peer-to-peer, Permissionless, Psedo-anonymous, Censorship resistant, Public ledger</code>
-            </span>
-            <span class="border-circle float-right span-margin">Incentive driven<br />Proof-Of-Work</span>
-            <span class="border-circle float-left span-margin">Fixed Supply<br />Rarer than Gold</span>
-            <span class="border-circle float-right span-margin">Disinflationary<br />No more theft</span>
+               <span class="border-circle float-right span-margin">Incentive driven,<br />Proof-Of-Work</span>
+               <span class="border-circle float-left span-margin">Fixed Supply,<br />Rarer than Gold</span>
+               <span class="border-circle float-right span-margin">Disinflationary,<br />No more theft</span>
+
+            </details>
+
+            <details class="panel clear-both">
+               <summary>What does it mean to own a Bitcoin?</summary>
+               <p class="slide-medium center">&quot;Not your keys not your coin&quot;</p>
+               <p class="slide-medium">Finacial freedom comes with responsibility.
+                  With Bitcoin, you need to know enough to be convinced to protect and secure your private keys,
+                  otherwise, "not your keys, not your coin" is as true as when Canadian, Cypriot, Greek,
+                  Russian, Iranian, Lebanees amongst many found
+                  that when you deposit your fiat money in a bank, it is legally not yours.
+               </p>
+               <div class="center">
+                  <p class="slide-normal">Let <a target="_blank"
+                        href="https://www.youtube.com/watch?v=bBC-nXj3Ng4">3Blue1Brown</a>
+                     What does it mean to owb Bitcoin?</p>
+                  <iframe width="560" height="315" src="https://www.youtube.com/watch?v=bBC-nXj3Ng4"
+                     title="YouTube video player" frameborder="0"
+                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                     allowfullscreen></iframe>
+               </div>
+
+            </details>
+
+            <details class="panel">
+               <summary>What happens when you discover the revolution that is Bitcoin?</summary>
+               <p class="slide-medium">
+                  Since the Stone age, no two humans could exchange value without institutional control, empire, theft,
+                  war and
+                  violence.
+                  Until Bitcoin, that is. Enough to have every theist and atheist <a target="_blank"
+                     href="https://fb.watch/il6pg2r_H-/">break out dancing in joy!</a>
+               </p>
+               <div class="center">
+                  <iframe
+                     src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Febbi.shaghouei%2Fposts%2Fpfbid0kwWWyY17Ln8FPKHgCA9VQCopwssjfAA6mc4iX2iSPZup53Sxhfw6etuHa3jHGjTpl&show_text=false&width=500"
+                     width="500" height="280" style="border:none;overflow:hidden" scrolling="no" frameborder="0"
+                     allowfullscreen="true"
+                     allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+               </div>
+            </details>
 
          </details>
-            
-         <details class="panel clear-both">
-            <summary>What does it mean to own a Bitcoin?</summary>
-            <p class="slide-medium center">&quot;Not your keys not your coin&quot;</p>
-            <p class="slide-medium">Finacial freedom comes with responsibility.
-               With Bitcoin, you need to know enough to be convinced to protect and secure your private keys,
-               otherwise, "not your keys, not your coin" is as true as when Canadian, Cypriot, Greek,
-               Russian, Iranian, Lebanees amongst many found
-               that when you deposit your fiat money in a bank, it is legally not yours.
-            </p>
-            <div class="center">
-               <p class="slide-normal">Let <a target="_blank" href="https://www.youtube.com/watch?v=bBC-nXj3Ng4">3Blue1Brown</a>
-                  What does it mean to owb Bitcoin?</p>
-               <iframe width="560" height="315" src="https://www.youtube.com/watch?v=bBC-nXj3Ng4"
-                  title="YouTube video player" frameborder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                  allowfullscreen></iframe>
-            </div>
 
          </details>
 
-         <details class="panel">
-            <summary>What happens when you discover the revolution that is Bitcoin?</summary>
-            <p class="slide-medium">
-               Since the Stone age, no two humans could exchange value without institutional control, empire, theft, war and
-               violence.
-               Until Bitcoin, that is. Enough to have every theist and atheist <a target="_blank"
-                  href="https://fb.watch/il6pg2r_H-/">break out dancing in joy!</a>
-            </p>
-            <div class="center">
-               <iframe
-                  src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Febbi.shaghouei%2Fposts%2Fpfbid0kwWWyY17Ln8FPKHgCA9VQCopwssjfAA6mc4iX2iSPZup53Sxhfw6etuHa3jHGjTpl&show_text=false&width=500"
-                  width="500" height="280" style="border:none;overflow:hidden" scrolling="no" frameborder="0"
-                  allowfullscreen="true"
-                  allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
-            </div>
          </details>
-         
-      </details>
 
-      </details>
-   
-      </details>
-   
-   </article>
+      </article>
 
-   <article id="wd-overview" class="lab-sheet panel">
+      <article id="wd-overview" class="lab-sheet panel">
 
-      <h2>Website Development &nbsp;<svg data-speak="true" data-event="click" data-speak-id="speech-wd-overview" class="icon speak-icon-wd-overview" x="0" y="0" viewbox="0 0 295.928 295.928"><use xlink:href="#speaker" href="#speaker" /></svg></h2>
+         <h2>Website Development &nbsp;<svg data-speak="true" data-event="click" data-speak-id="speech-wd-overview"
+               class="icon speak-icon-wd-overview" x="0" y="0" viewbox="0 0 295.928 295.928">
+               <use xlink:href="#speaker" href="#speaker" />
+            </svg></h2>
 
-      <details class="panel external-link">
-         <summary>Lecture Notes</summary>
-         <ul class="nav-section-end">
-            <li data-article="internet-slide"> The Internet</li>
-            <li data-article="client-server-slide"> HTTP</li>
-         </ul>
-         <ul class="nav-section-end">
-            <li data-article="html-slide">HTML</li>
-            <li data-article="validation-slide"> Validating HTML</li>
-            <li data-article="temporal-slide">Temporal Data</li>
-         </ul>
-         <ul class="nav-section-end">
-            <li data-article="css-slide">CSS</li>
-         </ul>
-         <ul class="nav-section-end">
-            <li data-article="js-slide">JavaScript</li>
-         </ul>
-      </details>
+         <details class="panel external-link">
+            <summary>Lecture Notes</summary>
+            <ul class="nav-section-end">
+               <li data-article="internet-slide"> The Internet</li>
+               <li data-article="client-server-slide"> HTTP</li>
+            </ul>
+            <ul class="nav-section-end">
+               <li data-article="html-slide">HTML</li>
+               <li data-article="validation-slide"> Validating HTML</li>
+               <li data-article="temporal-slide">Temporal Data</li>
+            </ul>
+            <ul class="nav-section-end">
+               <li data-article="css-slide">CSS</li>
+            </ul>
+            <ul class="nav-section-end">
+               <li data-article="js-slide">JavaScript</li>
+            </ul>
+         </details>
 
-      <span hidden="hidden" id="speech-wd-overview">
-         Website development. It&apos;s bear sick init!
-      </span>
+         <span hidden="hidden" id="speech-wd-overview">
+            Website development. It&apos;s bear sick init!
+         </span>
 
-      <figure class="">
-         <figcaption>For developers, by developers.</figcaption>
-         <a target="_blank" href="https://developer.mozilla.org/en-US/">
-            <img src="assets/mdn.png" alt="MDN Web documents"></a>
+         <figure class="">
+            <figcaption>For developers, by developers.</figcaption>
+            <a target="_blank" href="https://developer.mozilla.org/en-US/">
+               <img src="assets/mdn.png" alt="MDN Web documents"></a>
          </figure>
 
-</article>
+      </article>
 
-<article id="html-slide" class="slide panel">
-   <h2>HyperText Markup Language (HTML)</h2>
-   <div class="slide-article panel">
-      <ul>
-         <li class="list-style-none left-margin-none">
-            <details>
-               <summary>A <em>tree</em> data structure of HTML elements</summary>
-               <pre class="prettyprint"><code class="prettyprint">&lt;html&gt;
+      <article id="html-slide" class="slide panel">
+         <h2>HyperText Markup Language (HTML)</h2>
+         <div class="slide-article panel">
+            <ul>
+               <li class="list-style-none left-margin-none">
+                  <details>
+                     <summary>A <em>tree</em> data structure of HTML elements</summary>
+                     <pre class="prettyprint"><code class="prettyprint">&lt;html&gt;
   &lt;head&gt;
     &lt;title&gt;My test page&lt;/title&gt;
   &lt;/head&gt;
@@ -248,13 +259,14 @@
     &vellip;
   &lt;/body&gt;
 &lt;/html&gt;</code></pre>
-</details>
-</li>
+                  </details>
+               </li>
 
-<li class="list-style-none left-margin-none">
-   <details>
-      <summary><code class="prettyprint">HTML</code> is a <em>document</em> oriented specification</summary>
-      <pre class="prettyprint"><code class="prettyprint">&lt;html&gt;
+               <li class="list-style-none left-margin-none">
+                  <details>
+                     <summary><code class="prettyprint">HTML</code> is a <em>document</em> oriented specification
+                     </summary>
+                     <pre class="prettyprint"><code class="prettyprint">&lt;html&gt;
   &lt;head&gt;
     &lt;meta charset="utf-8"&gt;
     &lt;title&gt;My test page&lt;/title&gt;
@@ -265,52 +277,59 @@
   &lt;/body&gt;
 &lt;/html&gt;</code></pre>
 
-</details>
+                  </details>
 
-</li>
+               </li>
 
-<li class="list-style-none left-margin-none">
-   <details>
-      <summary>A tree of HTML Objects</summary>
-      <p class="slide-small">Browser converts HTML to Document Object Model(DOM)</p>
-      <pre><code class="prettyprint">var myHeading = document.querySelector('h1');
+               <li class="list-style-none left-margin-none">
+                  <details>
+                     <summary>A tree of HTML Objects</summary>
+                     <p class="slide-small">Browser converts HTML to Document Object Model(DOM)</p>
+                     <pre><code class="prettyprint">var myHeading = document.querySelector('h1');
 myHeading.onclick = function() {
    alert('Ouch! Stop poking me!');
    myHeading.textContent = 'Hello world!';
    myHeading.style.color = "red";
 }
 </code></pre>
-</details>
-</li>
+                  </details>
+               </li>
 
-</ul>
-</div>
-<div class="slide-article panel">
-   <h3>HTML Syntax </h3>
-   <p>How many syntactical rules?</p>
+            </ul>
+         </div>
+         <div class="slide-article panel">
+            <h3>HTML Syntax </h3>
+            <p>How many syntactical rules?</p>
 
-   <span data-class="image width-full" data-image="HTML syntax" data-local-src="assets/grumpy-cat-small.png" data-cdn-src="https://cdn.glitch.com/3943c32b-ac0d-4285-afbf-c67ee5a851ca%2Fgrumpy-cat-small.png?1548542503944"></span>
+            <span data-class="image width-full" data-image="HTML syntax" data-local-src="assets/grumpy-cat-small.png"
+               data-cdn-src="https://cdn.glitch.com/3943c32b-ac0d-4285-afbf-c67ee5a851ca%2Fgrumpy-cat-small.png?1548542503944"></span>
 
-   <span data-class="image width-full" data-image="HTML syntax" data-local-src="assets/grumpy-cat-attribute-small.png" data-cdn-src="https://cdn.glitch.com/3943c32b-ac0d-4285-afbf-c67ee5a851ca%2Fgrumpy-cat-attribute-small.png?1548542668657"></span>
+            <span data-class="image width-full" data-image="HTML syntax"
+               data-local-src="assets/grumpy-cat-attribute-small.png"
+               data-cdn-src="https://cdn.glitch.com/3943c32b-ac0d-4285-afbf-c67ee5a851ca%2Fgrumpy-cat-attribute-small.png?1548542668657"></span>
 
-</div>
-<div class="slide-article panel">
-   <h3>Element types</h3>
-   <ul>
-      <li class="list-style-none">
-         <details>
-            <summary class="left-margin-none"><em>Block Elements </em> are structural or container elements</summary>
+         </div>
+         <div class="slide-article panel">
+            <h3>Element types</h3>
             <ul>
-               <li>
-                  <code class="prettyprint"> html, body, nav, section, article, headings, paragraphs, lists, forms, footers, </code> etc.
-               </li>
-               <li>
-                  Block elements are nested to structure a document
-               </li>
                <li class="list-style-none">
-                  <details class="slide-article">
-                     <summary class="left-margin-none">The minimum block elements to structure a document?</summary>
-                     <pre class="prettyprint"><code class="prettyprint">&lt;html&gt;
+                  <details>
+                     <summary class="left-margin-none"><em>Block Elements </em> are structural or container elements
+                     </summary>
+                     <ul>
+                        <li>
+                           <code
+                              class="prettyprint"> html, body, nav, section, article, headings, paragraphs, lists, forms, footers, </code>
+                           etc.
+                        </li>
+                        <li>
+                           Block elements are nested to structure a document
+                        </li>
+                        <li class="list-style-none">
+                           <details class="slide-article">
+                              <summary class="left-margin-none">The minimum block elements to structure a document?
+                              </summary>
+                              <pre class="prettyprint"><code class="prettyprint">&lt;html&gt;
   &lt;head&gt;
     &lt;title&gt;My test page&lt;/title&gt;
   &lt;/head&gt;
@@ -331,8 +350,10 @@ myHeading.onclick = function() {
 &lt;/p&gt;</code></pre>
                </li>
                <li>
-                  "Self-closing" (or empty elements) have only attributes defining the content and are closed by <code class="prettyprint">/&gt;</code>.<br />
-                  <pre class="slide-small"><code class="prettyprint">&lt;img src="fun.png" alt="kids playing" /&gt;</code></pre>
+                  "Self-closing" (or empty elements) have only attributes defining the content and are closed by <code
+                     class="prettyprint">/&gt;</code>.<br />
+                  <pre
+                     class="slide-small"><code class="prettyprint">&lt;img src="fun.png" alt="kids playing" /&gt;</code></pre>
                </li>
             </ul>
 
@@ -357,13 +378,17 @@ myHeading.onclick = function() {
                   <code class="prettyprint">XHTML</code> is XML well-formed and valid to a DTD
                   <ul>
                      <li>
-                        Use <em>Firefox</em> to &quot;View page source&quot; and see <em>wellformed</em> <span class="error">errors in red</span>
+                        Use <em>Firefox</em> to &quot;View page source&quot; and see <em>wellformed</em> <span
+                           class="error">errors in red</span>
                      </li>
                      <li>
-                        Use <a target="_blank" href="https://validator.w3.org/">W3C validator</a> for conformance to a DTD
+                        Use <a target="_blank" href="https://validator.w3.org/">W3C validator</a> for conformance to a
+                        DTD
                      </li>
                      <li>
-                        <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Learn/HTML/Introduction_to_HTML/Debugging_HTML">MDN &mdash; Debugging HTML exercise</a>
+                        <a target="_blank"
+                           href="https://developer.mozilla.org/en-US/docs/Learn/HTML/Introduction_to_HTML/Debugging_HTML">MDN
+                           &mdash; Debugging HTML exercise</a>
                      </li>
                   </ul>
                </li>
@@ -379,7 +404,9 @@ myHeading.onclick = function() {
             <details class="panel">
                <summary>HTML &#8594; DOM &#8592; CSS</summary>
                <div class="slide-article">
-                     <span data-class="image width-full" data-image="rendering html and css" data-local-src="assets/rendering.svg.png" data-cdn-src="https://cdn.glitch.com/3943c32b-ac0d-4285-afbf-c67ee5a851ca%2Frendering.svg?1549284189095"></span>
+                  <span data-class="image width-full" data-image="rendering html and css"
+                     data-local-src="assets/rendering.svg.png"
+                     data-cdn-src="https://cdn.glitch.com/3943c32b-ac0d-4285-afbf-c67ee5a851ca%2Frendering.svg?1549284189095"></span>
                   <details>
                      <summary>Selected DOM Object properties set with <em>CSS</em></summary>
                      <pre class="slide-small"><code lang="css" class="prettyprint">&lt;p&gt;
@@ -418,10 +445,12 @@ myHeading.onclick = function() {
                               last declration with the highest specifity wins.
                            </li>
                            <li>
-                              <code class="prettyprint">class</code> has higher specificity than element type <code class="prettyprint">p</code>
+                              <code class="prettyprint">class</code> has higher specificity than element type <code
+                                 class="prettyprint">p</code>
                            </li>
                            <li>
-                              <code class="prettyprint">id</code> has higher specificity than <code class="prettyprint">class</code>
+                              <code class="prettyprint">id</code> has higher specificity than <code
+                                 class="prettyprint">class</code>
                            </li>
                            <li>
                               Which colour wins?
@@ -490,7 +519,9 @@ a:focus {
                   <p>
                      The CSS box model is the foundation of layout on the Web
                   </p>
-               <span data-class="image width-three-quarter" data-image="Box model" data-local-src="assets/box-model-standard-small.png" data-cdn-src="https://cdn.glitch.com/3943c32b-ac0d-4285-afbf-c67ee5a851ca%2Fbox-model-standard-small.png?1549318453705"></span>
+                  <span data-class="image width-three-quarter" data-image="Box model"
+                     data-local-src="assets/box-model-standard-small.png"
+                     data-cdn-src="https://cdn.glitch.com/3943c32b-ac0d-4285-afbf-c67ee5a851ca%2Fbox-model-standard-small.png?1549318453705"></span>
                   <p>
                      Types of CSS boxes (set with <code class="prettyprint">disply</code> property)
                   </p>
@@ -510,10 +541,14 @@ a:focus {
                   </p>
                   <ul>
                      <li>
-                        <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Flexbox"><code class="prettyprint">display: flex</code></a>
+                        <a target="_blank"
+                           href="https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Flexbox"><code
+                              class="prettyprint">display: flex</code></a>
                      </li>
                      <li>
-                        <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Grids"><code class="prettyprint">display: grid</code></a>
+                        <a target="_blank"
+                           href="https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Grids"><code
+                              class="prettyprint">display: grid</code></a>
                      </li>
                   </ul>
 
@@ -530,7 +565,8 @@ a:focus {
                            <ul class="">
                               <li>
                                  <span class="green">Best Practice</span> &mdash; External stylsheet
-                                 <pre class="slide-small"><code class="prettyprint">&lt;link rel="stylesheet" href="style.css"&gt;</code></pre>
+                                 <pre
+                                    class="slide-small"><code class="prettyprint">&lt;link rel="stylesheet" href="style.css"&gt;</code></pre>
                               </li>
                               <li>
                                  Permissible (but not deployment) &mdash; Internal stylesheet
@@ -541,7 +577,8 @@ a:focus {
                               </li>
                               <li>
                                  <span class="red">Bad practice</span> &mdash; Inline styles
-                                 <pre class="slide-small"><code class="prettyprint">&lt;h1 style="color: blue;"&gt;Hello World!&lt;/h1&gt;</code></pre>
+                                 <pre
+                                    class="slide-small"><code class="prettyprint">&lt;h1 style="color: blue;"&gt;Hello World!&lt;/h1&gt;</code></pre>
                               </li>
                            </ul>
                         </details>
@@ -560,7 +597,9 @@ a:focus {
                         Start with the layout
                      </li>
                      <li>
-                        <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Organizing">Organizing your CSS</a>
+                        <a target="_blank"
+                           href="https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Organizing">Organizing
+                           your CSS</a>
                      </li>
                   </ul>
                </div>
@@ -577,7 +616,10 @@ a:focus {
                      <summary>Remember MIME types</summary>
                      <ul>
                         <li>
-                           <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types">MIME (Multipart Mail Extensions) or Media Type</a> is a standard that indicates the nature and format of content.
+                           <a target="_blank"
+                              href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types">MIME
+                              (Multipart Mail Extensions) or Media Type</a> is a standard that indicates the nature and
+                           format of content.
                            <details>
                               <summary>Example MIME types</summary>
                               <ul class="slide-small">
@@ -591,7 +633,8 @@ a:focus {
                            </details>
                         </li>
                         <li>
-                           Developer tools, Network<br /> <span class="slide-small">(note the MIME type of each request)</span>
+                           Developer tools, Network<br /> <span class="slide-small">(note the MIME type of each
+                              request)</span>
                         </li>
                      </ul>
                   </details>
@@ -599,7 +642,8 @@ a:focus {
 
                <li class="panel">
                   <details>
-                     <summary>It&apos;s all in <code class="prettyprint">bits</code>! Text, <code class="prettyprint">Image, Audio, Video</code></summary>
+                     <summary>It&apos;s all in <code class="prettyprint">bits</code>! Text, <code
+                           class="prettyprint">Image, Audio, Video</code></summary>
                      <ul>
                         <li>
                            Text &dash; unicode
@@ -607,16 +651,24 @@ a:focus {
                         <li>
                            <details>
                               <summary>Image &dash; Lossy vs Lossless, Vector vs Raster</summary>
-                              <span data-class="image width-quarter" data-image="star png" data-local-src="assets/star.png" data-cdn-src="https://cdn.glitch.com/3943c32b-ac0d-4285-afbf-c67ee5a851ca%2Fstar.png?v=1574026048430"></span>
-                              <span data-class="image width-quarter" data-image="star svg" data-local-src="assets/star.svg" data-cdn-src="https://cdn.glitch.com/3943c32b-ac0d-4285-afbf-c67ee5a851ca%2Fstar.svg?v=1574026054890"></span>
+                              <span data-class="image width-quarter" data-image="star png"
+                                 data-local-src="assets/star.png"
+                                 data-cdn-src="https://cdn.glitch.com/3943c32b-ac0d-4285-afbf-c67ee5a851ca%2Fstar.png?v=1574026048430"></span>
+                              <span data-class="image width-quarter" data-image="star svg"
+                                 data-local-src="assets/star.svg"
+                                 data-cdn-src="https://cdn.glitch.com/3943c32b-ac0d-4285-afbf-c67ee5a851ca%2Fstar.svg?v=1574026054890"></span>
 
                            </details>
                         </li>
                         <li>
                            <details>
                               <summary>Audio and Video</summary>
-                              <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/Media/Formats/Audio_concepts">
-                                 <span data-class="image width-full" data-image="An audio waveform with samples taken periodically" data-local-src="assets/star.svg" data-cdn-src="https://cdn.glitch.com/3943c32b-ac0d-4285-afbf-c67ee5a851ca%2Faudio-waveform-samples1.svg?v=1574026078146"></span>
+                              <a target="_blank"
+                                 href="https://developer.mozilla.org/en-US/docs/Web/Media/Formats/Audio_concepts">
+                                 <span data-class="image width-full"
+                                    data-image="An audio waveform with samples taken periodically"
+                                    data-local-src="assets/star.svg"
+                                    data-cdn-src="https://cdn.glitch.com/3943c32b-ac0d-4285-afbf-c67ee5a851ca%2Faudio-waveform-samples1.svg?v=1574026078146"></span>
                               </a>
                               <ul>
                                  <li>Analog to Digital conversion (A/D)</li>
@@ -625,8 +677,12 @@ a:focus {
                                  </li>
                                  <li>
                                     Container formats: <code class="prettyprint">WebM, MP4, Ogg</code>
-                                    <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Video_and_audio_content">
-                                       <span data-class="image width-full" data-image="Diagram conceptualizing the contents of a media file at the track level." data-local-src="assets/star.svg" data-cdn-src="https://cdn.glitch.com/3943c32b-ac0d-4285-afbf-c67ee5a851ca%2FContainersAndTracks.svg?v=1574026084854"></span>
+                                    <a target="_blank"
+                                       href="https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Video_and_audio_content">
+                                       <span data-class="image width-full"
+                                          data-image="Diagram conceptualizing the contents of a media file at the track level."
+                                          data-local-src="assets/star.svg"
+                                          data-cdn-src="https://cdn.glitch.com/3943c32b-ac0d-4285-afbf-c67ee5a851ca%2FContainersAndTracks.svg?v=1574026084854"></span>
                                     </a>
                                  </li>
                               </ul>
@@ -638,7 +694,8 @@ a:focus {
                </li>
                <li class="panel">
                   <details>
-                     <summary>HTML5 <code class="prettyprint">audio</code> and <code class="prettyprint">video</code> elements</summary>
+                     <summary>HTML5 <code class="prettyprint">audio</code> and <code class="prettyprint">video</code>
+                        elements</summary>
 
                      <pre class="slide-small"><code class="prettyprint">&lt;audio controls>
    &lt;source src="bethoven.mp3" /&gt;
@@ -663,7 +720,9 @@ a:focus {
 
          <details class="panel">
             <summary>(HTML, CSS) &#8594; DOM &#8592; JavaScript</summary>
-                  <span data-class="image width-full" data-image="rendering html and css" data-local-src="assets/rendering_js.png" data-cdn-src="https://cdn.glitch.com/3943c32b-ac0d-4285-afbf-c67ee5a851ca%2Frendering_js.png?v=1574593474385"></span>
+            <span data-class="image width-full" data-image="rendering html and css"
+               data-local-src="assets/rendering_js.png"
+               data-cdn-src="https://cdn.glitch.com/3943c32b-ac0d-4285-afbf-c67ee5a851ca%2Frendering_js.png?v=1574593474385"></span>
             <details>
                <summary>Selected DOM Object properties set with <em>CSS</em></summary>
                <pre class="slide-small"><code class="prettyprint">&lt;p&gt;CSS is declarative&lt;/p&gt;</code></pre>
@@ -682,91 +741,109 @@ myParagraph.style.backgoroundColor = "red";
 
          </details>
 
-            <details class="panel">
-               <summary>Object Oriented, Event Driven, Prototype based Language</summary>
+         <details class="panel">
+            <summary>Object Oriented, Event Driven, Prototype based Language</summary>
 
-               <ul>
-                  <li>
-                     <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/Basics">Object</a>
-                  </li>
-                  <li>
-                     <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/Object-oriented_JS">Object Oriented</a>
-                  </li>
-                  <li>
-                     <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Building_blocks/Events#A_simple_example">Events (unobtrusive JS)</a>
-                  </li>
-                  <li>
-                     <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/dataset#Examples">JS and DOM <code class="prettyprint">data-*</code></a>
-                  </li>
-                  <li>
-                     <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/Object_prototypes">Prototype based language</a>
-                  </li>
-               </ul>
-            </details>
+            <ul>
+               <li>
+                  <a target="_blank"
+                     href="https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/Basics">Object</a>
+               </li>
+               <li>
+                  <a target="_blank"
+                     href="https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/Object-oriented_JS">Object
+                     Oriented</a>
+               </li>
+               <li>
+                  <a target="_blank"
+                     href="https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Building_blocks/Events#A_simple_example">Events
+                     (unobtrusive JS)</a>
+               </li>
+               <li>
+                  <a target="_blank"
+                     href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/dataset#Examples">JS and DOM
+                     <code class="prettyprint">data-*</code></a>
+               </li>
+               <li>
+                  <a target="_blank"
+                     href="https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/Object_prototypes">Prototype
+                     based language</a>
+               </li>
+            </ul>
+         </details>
 
-            <details class="panel">
-               <summary>What does it do?</summary>
-               <ul>
-                  <li>
-                     JS built into browsers, canvas, libraries, frameworks
-                     <ul>
-                        <li>
-                           <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Client-side_web_APIs/Manipulating_documents">Dynamically script web pages &mdash; document API</a>
-                        </li>
-                        <li>
-                           HTML <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial/Basic_animations#An_animated_solar_system">canvas</a>
-                        </li>
-                        <li>
-                           Libraries and Frameworks, <a target="_blank" href="http://expressjs.com/en/starter/hello-world.html">Express &amp; Node.js</a>
-                        </li>
-                     </ul>
-                  </li>
-                  <li>
-                     <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Client-side_web_APIs/Introduction#Common_browser_APIs">Browser &amp; Third party APIs</a>
-                  </li>
+         <details class="panel">
+            <summary>What does it do?</summary>
+            <ul>
+               <li>
+                  JS built into browsers, canvas, libraries, frameworks
+                  <ul>
+                     <li>
+                        <a target="_blank"
+                           href="https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Client-side_web_APIs/Manipulating_documents">Dynamically
+                           script web pages &mdash; document API</a>
+                     </li>
+                     <li>
+                        HTML <a target="_blank"
+                           href="https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial/Basic_animations#An_animated_solar_system">canvas</a>
+                     </li>
+                     <li>
+                        Libraries and Frameworks, <a target="_blank"
+                           href="http://expressjs.com/en/starter/hello-world.html">Express &amp; Node.js</a>
+                     </li>
+                  </ul>
+               </li>
+               <li>
+                  <a target="_blank"
+                     href="https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Client-side_web_APIs/Introduction#Common_browser_APIs">Browser
+                     &amp; Third party APIs</a>
+               </li>
 
-               </ul>
+            </ul>
 
-            </details>
+         </details>
 
       </article>
 
       <article id="internet-slide" class="slide panel">
          <h2>The internet</h2>
-            <p class="slide-small">
-               The internet is a world-wide network of computers that makes the <em>Web</em> possible.
-            </p>
-            <div class="two-col">
-               <ul>
-                  <li>LANs &mdash; computers and routers</li>
-                  <li>A network of networks</li>
-                  <li>Scale infinitely</li>
-                  <li>Telephone infrastructure &mdash; <em>modem</em></li>
-                  <li>Internet Service Provider (ISP)</li>
-                  <li>ISP router to ISP router</li>
-               </ul>
-               <p>Finding Computers</p>
-               <ul>
-                  <li>Internet Protocol (IP) address</li>
-                  <li>173.194.121.32 (Alias <em>for humans!</em> google.com</li>
-                  <li>Browser checks a local cache or uses a <em>Domain Naming Server (DNS)</em></li>
-                  <li>Browser sends a request for the resource from the IP address</li>
-               </ul>
-               <img src="assets/internet-schema-7.png" alt="internet topology" class="width-half">
+         <p class="slide-small">
+            The internet is a world-wide network of computers that makes the <em>Web</em> possible.
+         </p>
+         <div class="two-col">
+            <ul>
+               <li>LANs &mdash; computers and routers</li>
+               <li>A network of networks</li>
+               <li>Scale infinitely</li>
+               <li>Telephone infrastructure &mdash; <em>modem</em></li>
+               <li>Internet Service Provider (ISP)</li>
+               <li>ISP router to ISP router</li>
+            </ul>
+            <p>Finding Computers</p>
+            <ul>
+               <li>Internet Protocol (IP) address</li>
+               <li>173.194.121.32 (Alias <em>for humans!</em> google.com</li>
+               <li>Browser checks a local cache or uses a <em>Domain Naming Server (DNS)</em></li>
+               <li>Browser sends a request for the resource from the IP address</li>
+            </ul>
+            <img src="assets/internet-schema-7.png" alt="internet topology" class="width-half">
 
-            </div>
+         </div>
       </article>
 
       <article id="http-lab" class="lab-sheet panel">
          <h2>HTTP &amp; Security</h2>
          <p>
-            The <em>aim</em> is to have an overview understanding of <em>Hypertext Transfer Protocol</em> (HTTP). How does HTTP allows for <em>surfing</em> the web? and what are the common security issues on the web?
+            The <em>aim</em> is to have an overview understanding of <em>Hypertext Transfer Protocol</em> (HTTP). How
+            does HTTP allows for <em>surfing</em> the web? and what are the common security issues on the web?
          </p>
          <p>
-            Create an HTML file and markup the following questions (and answers). Save the file as <code class="prettyprint">http_exercise.html</code>
+            Create an HTML file and markup the following questions (and answers). Save the file as <code
+               class="prettyprint">http_exercise.html</code>
          </p>
          <p>
-            The answers are in the relevant <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/HTTP">articles in the HTTP tutorials</a>.
+            The answers are in the relevant <a target="_blank"
+               href="https://developer.mozilla.org/en-US/docs/Web/HTTP">articles in the HTTP tutorials</a>.
          </p>
          <ol>
             <li>
@@ -779,7 +856,8 @@ myParagraph.style.backgoroundColor = "red";
                Describe the three phases of establishing a session using client-server protocols such as HTTP
             </li>
             <li>
-               Describe the parameters on a <code class="prettyprint">get</code> and <code class="prettyprint">post</code> request.
+               Describe the parameters on a <code class="prettyprint">get</code> and <code
+                  class="prettyprint">post</code> request.
             </li>
             <li>
                What are the HTTP response status code and What do the HTTP status codes, 200, and 404 indicate?
@@ -809,91 +887,121 @@ myParagraph.style.backgoroundColor = "red";
             <summary>Client&mdash;Server</summary>
             <article class="slide-article panel">
 
-            <h3>Hyper Text Transport Protocol (HTTP)</h3>
-            <span data-class="image width-three-quarter" data-image="CORS rquest response" data-local-src="assets/CORS_principle.png" data-cdn-src="https://cdn.glitch.com/3943c32b-ac0d-4285-afbf-c67ee5a851ca%2FCORS_principle.png?v=1572209987335"></span>
-            <details>
-               <summary>MIME types</summary>
-               <ul>
-                  <li>
-                     <small><a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types">MIME (Multipart Mail Extensions) or Media Type</a> is a standard that indicates the nature and format of content.</small>
-                     <details>
-                        <summary><small>Example MIME types</small></summary>
-                        <ul class="slide-small">
-                           <li><code class="prettyprint">text/html, text/css, text/javascript</code></li>
-                           <li><code class="prettyprint">image/jpeg, image/png, image/svg+xml</code></li>
-                           <li><code class="prettyprint">audio/mpeg, audio/vorbis</code></li>
-                           <li><code class="prettyprint">font/woff, font/ttf</code></li>
-                           <li><code class="prettyprint">video/mp4, video/ogg</code></li>
-                           <li><code class="prettyprint">multipart/form-data</code></li>
-                        </ul>
-                     </details>
-                  </li>
-                  <li>
-                     <small>Developer tools, Network<br /> <span class="slide-small">(note the MIME type of each request)</span></small>
-                  </li>
-               </ul>
-            </details>
+               <h3>Hyper Text Transport Protocol (HTTP)</h3>
+               <span data-class="image width-three-quarter" data-image="CORS rquest response"
+                  data-local-src="assets/CORS_principle.png"
+                  data-cdn-src="https://cdn.glitch.com/3943c32b-ac0d-4285-afbf-c67ee5a851ca%2FCORS_principle.png?v=1572209987335"></span>
+               <details>
+                  <summary>MIME types</summary>
+                  <ul>
+                     <li>
+                        <small><a target="_blank"
+                              href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types">MIME
+                              (Multipart Mail Extensions) or Media Type</a> is a standard that indicates the nature and
+                           format of content.</small>
+                        <details>
+                           <summary><small>Example MIME types</small></summary>
+                           <ul class="slide-small">
+                              <li><code class="prettyprint">text/html, text/css, text/javascript</code></li>
+                              <li><code class="prettyprint">image/jpeg, image/png, image/svg+xml</code></li>
+                              <li><code class="prettyprint">audio/mpeg, audio/vorbis</code></li>
+                              <li><code class="prettyprint">font/woff, font/ttf</code></li>
+                              <li><code class="prettyprint">video/mp4, video/ogg</code></li>
+                              <li><code class="prettyprint">multipart/form-data</code></li>
+                           </ul>
+                        </details>
+                     </li>
+                     <li>
+                        <small>Developer tools, Network<br /> <span class="slide-small">(note the MIME type of each
+                              request)</span></small>
+                     </li>
+                  </ul>
+               </details>
 
-                </article>
+            </article>
          </details>
 
          <details>
             <summary>URI and URL</summary>
             <article class="slide-article panel">
                <small>
-                  Universal Resource Locator (URL) is a particular type of Universal Resource Identifier(URI) used to surf the web.
+                  Universal Resource Locator (URL) is a particular type of Universal Resource Identifier(URI) used to
+                  surf the web.
                </small>
                <h3>Universal Resource Locator (URL)</h3>
-               <span data-class="image width-three-quarter" data-image="url protocol" data-local-src="assets/mdn-url-protocol@x2.png" data-cdn-src="https://cdn.glitch.com/3943c32b-ac0d-4285-afbf-c67ee5a851ca%2Fmdn-url-protocol%40x2.png?1548837727042"></span>
-               <span data-class="image width-three-quarter" data-image="url domain" data-local-src="assets/mdn-url-domain@x2.png" data-cdn-src="https://cdn.glitch.com/3943c32b-ac0d-4285-afbf-c67ee5a851ca%2Fmdn-url-domain%40x2.png?1549052969112"></span>
-               <span data-class="image width-three-quarter" data-image="url port" data-local-src="assets/mdn-url-port@x2.png" data-cdn-src="https://cdn.glitch.com/3943c32b-ac0d-4285-afbf-c67ee5a851ca%2Fmdn-url-port%40x2.png?1549053252859"></span>
-               <span data-class="image width-three-quarter" data-image="url path" data-local-src="assets/mdn-url-path%40x2.png" data-cdn-src="https://cdn.glitch.com/3943c32b-ac0d-4285-afbf-c67ee5a851ca%2Fmdn-url-path%40x2.png?1549053939520"></span>
-               <span data-class="image width-three-quarter" data-image="HTTP Request" data-local-src="assets/HTTP_Request.png" data-cdn-src="https://cdn.glitch.com/3943c32b-ac0d-4285-afbf-c67ee5a851ca%2FHTTP_Request.png?1548838012913"></span>
-               <span data-class="image width-three-quarter" data-image="HTTP Response" data-local-src="assets/HTTP_Response.png" data-cdn-src="https://cdn.glitch.com/3943c32b-ac0d-4285-afbf-c67ee5a851ca%2FHTTP_Response.png?1548838088508"></span>
+               <span data-class="image width-three-quarter" data-image="url protocol"
+                  data-local-src="assets/mdn-url-protocol@x2.png"
+                  data-cdn-src="https://cdn.glitch.com/3943c32b-ac0d-4285-afbf-c67ee5a851ca%2Fmdn-url-protocol%40x2.png?1548837727042"></span>
+               <span data-class="image width-three-quarter" data-image="url domain"
+                  data-local-src="assets/mdn-url-domain@x2.png"
+                  data-cdn-src="https://cdn.glitch.com/3943c32b-ac0d-4285-afbf-c67ee5a851ca%2Fmdn-url-domain%40x2.png?1549052969112"></span>
+               <span data-class="image width-three-quarter" data-image="url port"
+                  data-local-src="assets/mdn-url-port@x2.png"
+                  data-cdn-src="https://cdn.glitch.com/3943c32b-ac0d-4285-afbf-c67ee5a851ca%2Fmdn-url-port%40x2.png?1549053252859"></span>
+               <span data-class="image width-three-quarter" data-image="url path"
+                  data-local-src="assets/mdn-url-path%40x2.png"
+                  data-cdn-src="https://cdn.glitch.com/3943c32b-ac0d-4285-afbf-c67ee5a851ca%2Fmdn-url-path%40x2.png?1549053939520"></span>
+               <span data-class="image width-three-quarter" data-image="HTTP Request"
+                  data-local-src="assets/HTTP_Request.png"
+                  data-cdn-src="https://cdn.glitch.com/3943c32b-ac0d-4285-afbf-c67ee5a851ca%2FHTTP_Request.png?1548838012913"></span>
+               <span data-class="image width-three-quarter" data-image="HTTP Response"
+                  data-local-src="assets/HTTP_Response.png"
+                  data-cdn-src="https://cdn.glitch.com/3943c32b-ac0d-4285-afbf-c67ee5a851ca%2FHTTP_Response.png?1548838088508"></span>
             </article>
          </details>
 
          <details>
             <summary>URL is powerful!</summary>
             <article class="slide-article panel">
-            <h3>URL to a part of a document</h3>
-            <ul>
-               <li>
-                  Target of an HTTP request is called a <em>resource</em>
-               </li>
-               <li>
-                  Each resource has a Uniform Resource Identifier (URI)
-               </li>
-               <li>
-                  Location of a resource has a Uniform Resource Locator (URL)
-               </li>
-            </ul>
+               <h3>URL to a part of a document</h3>
+               <ul>
+                  <li>
+                     Target of an HTTP request is called a <em>resource</em>
+                  </li>
+                  <li>
+                     Each resource has a Uniform Resource Identifier (URI)
+                  </li>
+                  <li>
+                     Location of a resource has a Uniform Resource Locator (URL)
+                  </li>
+               </ul>
 
-               <span data-class="image width-three-quarter" data-image="url parameters" data-local-src="assets/mdn-url-parameters%40x2.png" data-cdn-src="https://cdn.glitch.com/3943c32b-ac0d-4285-afbf-c67ee5a851ca%2Fmdn-url-parameters%40x2.png?1549054184121"></span>
+               <span data-class="image width-three-quarter" data-image="url parameters"
+                  data-local-src="assets/mdn-url-parameters%40x2.png"
+                  data-cdn-src="https://cdn.glitch.com/3943c32b-ac0d-4285-afbf-c67ee5a851ca%2Fmdn-url-parameters%40x2.png?1549054184121"></span>
 
-               <span data-class="image width-three-quarter" data-image="url anchor" data-local-src="assets/mdn-url-anchor%40x2.png" data-cdn-src="https://cdn.glitch.com/3943c32b-ac0d-4285-afbf-c67ee5a851ca%2Fmdn-url-anchor%40x2.png?1549220371913"></span>
+               <span data-class="image width-three-quarter" data-image="url anchor"
+                  data-local-src="assets/mdn-url-anchor%40x2.png"
+                  data-cdn-src="https://cdn.glitch.com/3943c32b-ac0d-4285-afbf-c67ee5a851ca%2Fmdn-url-anchor%40x2.png?1549220371913"></span>
 
-            <p>
-               The biggest library humanity has ever created, accessible to a paragraph amongst the trillions of documents growing by the second!
-            </p>
-            <ul>
-               <li>
-                  <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/Identifying_resources_on_the_Web">Identifying Resources on the Web (top of the document)</a>
-               </li>
-               <li>
-                  <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/Identifying_resources_on_the_Web#Fragment">Identifying Resources on the Web (particular section of the document)</a>
-               </li>
-            </ul>
+               <p>
+                  The biggest library humanity has ever created, accessible to a paragraph amongst the trillions of
+                  documents growing by the second!
+               </p>
+               <ul>
+                  <li>
+                     <a target="_blank"
+                        href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/Identifying_resources_on_the_Web">Identifying
+                        Resources on the Web (top of the document)</a>
+                  </li>
+                  <li>
+                     <a target="_blank"
+                        href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/Identifying_resources_on_the_Web#Fragment">Identifying
+                        Resources on the Web (particular section of the document)</a>
+                  </li>
+               </ul>
 
-         </article>
+            </article>
          </details>
 
          <details>
             <summary>&apos;The Web&apos; and &apos;The Internet&apos;</summary>
             <article class="slide-article panel">
-            <h3>Layered Architecture</h3>
-               <span data-class="image width-three-quarter" data-image="HTTP & layers" data-local-src="assets/HTTP & layers.png" data-cdn-src="https://cdn.glitch.com/3943c32b-ac0d-4285-afbf-c67ee5a851ca%2FHTTP%20%26%20layers.png?1548629484459"></span>
-         </article>
+               <h3>Layered Architecture</h3>
+               <span data-class="image width-three-quarter" data-image="HTTP & layers"
+                  data-local-src="assets/HTTP & layers.png"
+                  data-cdn-src="https://cdn.glitch.com/3943c32b-ac0d-4285-afbf-c67ee5a851ca%2FHTTP%20%26%20layers.png?1548629484459"></span>
+            </article>
          </details>
 
       </article>

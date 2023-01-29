@@ -1,4 +1,4 @@
-/* Base  ================================ */
+/* Base  =============================================================== */
 @import url('https://fonts.googleapis.com/css?family=Delius');
 @import url('https://fonts.googleapis.com/css?family=Source+Code+Pro');
 
@@ -375,7 +375,9 @@ pre,
    list-style-type: none;
 }
 
-.external-link li {}
+.external-link li {
+   /* todo */
+}
 
 .external-link li:before {
    content: '\279A';
