@@ -1,6 +1,6 @@
 
 # Code
-Bitcoin learning
+Bitcoin learning material translation.  Static site, no-js for off line, low bandwidth and slow devices
 
 ## Authors
 - Ebrahim Shaghouei
