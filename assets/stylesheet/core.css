@@ -1,7 +1,7 @@
 /* Global variables. */
 :root {
   /* Set sans-serif & mono fonts */
-  --sans-font: "Noto Sans", -apple-system, BlinkMacSystemFont, "Avenir Next",
+  --sans-font: -apple-system, BlinkMacSystemFont, "Noto Sans", "Avenir Next",
     Avenir, "Nimbus Sans L", Roboto, "Segoe UI", Arial, Helvetica,
     "Helvetica Neue", sans-serif;
   --mono-font: Consolas, Menlo, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
@@ -34,6 +34,35 @@
     --disabled: #111;
   }
 }
+ol
+/* ES additions */
+.orange {
+  color: orange;
+  font-weight: bold;
+}
+.notice img {
+  width: 3rem;
+  display: inline;
+  float: left;
+  margin: 0.25rem 1rem 0 0;
+}
+aside img {
+  width: 2.5rem;
+  display: inline;
+  float: left;
+  margin: 0.1rem 0.3rem 0 0;
+}
+ol.toc {
+  counter-reset: counter;
+  list-style-type: none;
+}
+ol.toc li {
+  counter-increment: counter 1;
+}
+ol.toc li:before {
+  content: counters(counter, ".", decimal) " ";
+}
+/* ES end additions */
 
 /* Add a bit of transparency so light media isn't so glaring in dark mode */
 img,
@@ -114,21 +143,19 @@ body > footer {
 
 /* Format headers */
 h1 {
-  font-size: 3rem;
+  font-size: 2.5rem;
 }
 
 h2 {
-  font-size: 2.6rem;
-  margin-top: 3rem;
+  font-size: 2.1rem;
 }
 
 h3 {
-  font-size: 2rem;
-  margin-top: 3rem;
+  font-size: 1.75rem;
 }
 
 h4 {
-  font-size: 1.44rem;
+  font-size: 1.25rem;
 }
 
 h5 {
@@ -136,7 +163,7 @@ h5 {
 }
 
 h6 {
-  font-size: 0.96rem;
+  font-size: 1rem;
 }
 
 /* Prevent long strings from overflowing container */
@@ -259,9 +286,9 @@ input:enabled:focus-visible:where(
 header > nav {
   font-size: 1.15rem;
   line-height: 1;
-/*  padding: 1rem 0 0 0; */
+  /*  padding: 1rem 0 0 0; */
   background-color: orange;
-  border-bottom: 1px solid var(--border);  
+  border-bottom: 1px solid var(--border);
 }
 
 /* Use flexbox to allow items to wrap, as needed */
