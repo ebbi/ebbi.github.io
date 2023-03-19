@@ -40,6 +40,10 @@ ol
   color: orange;
   font-weight: bold;
 }
+.float-right {
+  float: right;
+  margin: 0 0 0 1rem;
+}
 .notice img {
   width: 3rem;
   display: inline;
@@ -452,7 +456,7 @@ th {
   font-weight: bold;
 }
 
-tr:nth-child(even) {
+tr:nth-child(odd) {
   /* Set every other cell slightly darker. Improves readability. */
   background-color: var(--accent-bg);
 }
