@@ -1,10 +1,10 @@
 /* Global variables. */
 :root {
   /* Set sans-serif & mono fonts */
-  --sans-font: -apple-system, BlinkMacSystemFont, "Noto Sans", "Avenir Next",
-    Avenir, "Nimbus Sans L", Roboto, "Segoe UI", Arial, Helvetica,
+  --sans-font: "Ubuntu", -apple-system, BlinkMacSystemFont, "Avenir Next", Avenir,
+    "Nimbus Sans L", Roboto, "Noto Sans", "Segoe UI", Arial, Helvetica,
     "Helvetica Neue", sans-serif;
-  --mono-font: Consolas, Menlo, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
+  --mono-font: "Ubuntu Mono", Consolas, Menlo, Monaco, "Andale Mono", monospace;
   --standard-border-radius: 5px;
 
   /* Default (light) theme */
@@ -40,19 +40,20 @@ ol
   color: orange;
   font-weight: bold;
 }
+.transparent {
+  opacity: 0;
+}
 .float-right {
   float: right;
   margin: 0 0 0 1rem;
 }
 .notice img {
-  width: 3rem;
-  display: inline;
+  width: 1.5rem;
   float: left;
   margin: 0.25rem 1rem 0 0;
 }
 aside img {
-  width: 2.75rem;
-  display: inline;
+  width: 1.5rem;
   float: left;
   margin: 0.1rem 0.3rem 0 0;
 }
@@ -367,7 +368,7 @@ progress {
 
 aside {
   font-size: 1rem;
-  width: 30%;
+  width: 33%;
   padding: 0 15px;
   margin-left: 15px;
   float: right;
