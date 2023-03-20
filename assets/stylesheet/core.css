@@ -38,10 +38,12 @@ ol
 /* ES additions */
 .orange {
   color: orange;
-  font-weight: bold;
 }
-.transparent {
-  opacity: 0;
+.background-orange {
+  background-color: orange;
+}
+.text-align-center {
+  text-align: center;
 }
 .float-right {
   float: right;
