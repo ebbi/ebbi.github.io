@@ -81,10 +81,10 @@ p {
   text-align: justify;
 }
 aside p {
-  text-align:unset;
+  text-align: initial;
 }
 aside img {
-  float: left;
+  float: inherit;
   margin: 0.1rem 0.3rem 0 0;
 }
 figure.notice {
@@ -417,7 +417,7 @@ aside {
   }
 }
 
-article,
+article, 
 fieldset {
   border: 1px solid var(--border);
   padding: 1rem;
@@ -429,14 +429,14 @@ article h2:first-child,
 section h2:first-child {
   margin-top: 1rem;
 }
-
+/* ES article border is enough especially for mobile
 section {
   border-top: 1px solid var(--border);
   border-bottom: 1px solid var(--border);
   padding: 2rem 1rem;
   margin: 3rem 0;
 }
-
+*/
 /* Don't double separators when chaining sections */
 section + section,
 section:first-child {
