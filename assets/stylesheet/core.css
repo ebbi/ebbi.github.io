@@ -61,11 +61,14 @@
 }
 .float-right {
   float: right;
-  margin: 0 0 0 1rem;
+  margin: 0 0.5rem 0 0.5rem;
 }
 .float-left {
   float: left;
-  margin: 0 0 0 1rem;
+  margin: 0 0.5rem 0 0.5rem;
+}
+span.notice {
+  padding: 1.15rem;
 }
 .notice img {
   float:inherit;
@@ -89,6 +92,10 @@ aside img {
 }
 figure.notice {
   margin: 1rem 0;
+}
+nav details h1 {
+  margin: 1rem 0;
+  border-radius: 5px;
 }
 ol.toc {
   counter-reset: counter;
