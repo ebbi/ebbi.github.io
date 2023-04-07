@@ -91,6 +91,12 @@ aside img {
   float: inherit;
   margin: 0.1rem 0.3rem 0 0;
 }
+p img {
+  margin: 0 0.35rem;
+}
+aside {
+  margin: 0.1rem;
+}
 figure.notice {
   margin: 1rem 0;
 }
@@ -413,6 +419,7 @@ aside {
   width: 30%;
   padding: 0 10px;
   margin-left: 10px;
+  margin: 0 1rem;
   float: right;
 }
 
