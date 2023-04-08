@@ -50,6 +50,9 @@
        url('../fonts/ubuntu-v20-latin-regular.svg#Ubuntu') format('svg'); /* Legacy iOS */
 }
 
+.class-exercise{
+  padding: 1rem;
+}
 .orange {
   color: orange;
 }
@@ -81,7 +84,7 @@ span.notice {
 .list-style-none{
   list-style: none;
 }
-p {
+p, li {
   text-align: justify;
 }
 aside p {
@@ -502,7 +505,7 @@ th {
 }
 
 th {
-  background-color: var(--accent-bg);
+  background-color: orange;
   font-weight: bold;
 }
 
