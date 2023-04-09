@@ -38,85 +38,129 @@
 /* ES additions */
 /* ubuntu-regular - latin */
 @font-face {
-  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-display: swap;
+  /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
   font-family: 'Ubuntu';
   font-style: normal;
   font-weight: 400;
-  src: url('../fonts/ubuntu-v20-latin-regular.eot'); /* IE9 Compat Modes */
-  src: url('../fonts/ubuntu-v20-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-       url('../fonts/ubuntu-v20-latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
-       url('../fonts/ubuntu-v20-latin-regular.woff') format('woff'), /* Modern Browsers */
-       url('../fonts/ubuntu-v20-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
-       url('../fonts/ubuntu-v20-latin-regular.svg#Ubuntu') format('svg'); /* Legacy iOS */
+  src: url('../fonts/ubuntu-v20-latin-regular.eot');
+  /* IE9 Compat Modes */
+  src: url('../fonts/ubuntu-v20-latin-regular.eot?#iefix') format('embedded-opentype'),
+    /* IE6-IE8 */
+    url('../fonts/ubuntu-v20-latin-regular.woff2') format('woff2'),
+    /* Super Modern Browsers */
+    url('../fonts/ubuntu-v20-latin-regular.woff') format('woff'),
+    /* Modern Browsers */
+    url('../fonts/ubuntu-v20-latin-regular.ttf') format('truetype'),
+    /* Safari, Android, iOS */
+    url('../fonts/ubuntu-v20-latin-regular.svg#Ubuntu') format('svg');
+  /* Legacy iOS */
 }
 
-.class-exercise{
+.class-exercise {
   padding: 1rem;
 }
+
 .orange {
   color: orange;
 }
+
 .background-orange {
   background-color: orange;
 }
+
 .text-align-center {
   text-align: center;
 }
+
 .float-right {
   float: right;
 }
+
 .float-left {
   float: left;
 }
+
 span.notice {
   padding: 1.15rem;
 }
+
 .notice img {
-  float:inherit;
+  float: inherit;
   margin: 0.5rem 0.5rem 0 0.5rem;
 }
+
 .font-weight-normal {
   font-weight: normal;
 }
-.list-style-arabic-indic{
+
+.list-style-arabic-indic {
   list-style: arabic-indic;
 }
-.list-style-none{
+
+.list-style-none {
   list-style: none;
 }
-p, li {
+
+.first-col-fix {
+  width: max-content;
+}
+
+p,
+li {
   text-align: justify;
 }
+
 aside p {
   text-align: initial;
 }
+
 aside img {
   float: inherit;
   margin: 0.1rem 0.3rem 0 0;
 }
+
 p img {
   margin: 0 0.35rem;
 }
+
 aside {
   margin: 0.1rem;
 }
+
 figure.notice {
   margin: 1rem 0;
 }
+
 nav details h1 {
   margin: 1rem 0;
   border-radius: 5px;
 }
+
 ol.toc {
   counter-reset: counter;
   list-style-type: none;
 }
+
 ol.toc li {
   counter-increment: counter 1;
 }
+
 ol.toc li:before {
   content: counters(counter, ".", decimal) " ";
 }
+
+table {
+  width: 100%;
+  table-layout: fixed;
+}
+
+/*
+th:first-child,
+td:first-child {
+  width: max-content;
+}
+*/
 /* ES end additions */
 
 /* Add a bit of transparency so light media isn't so glaring in dark mode */
@@ -158,12 +202,13 @@ body {
   grid-template-columns: 1fr min(45rem, 90%) 1fr;
   margin: 0;
 }
-body > * {
+
+body>* {
   grid-column: 2;
 }
 
 /* Make the header bg full width, but the content inline with body */
-body > header {
+body>header {
   background-color: var(--accent-bg);
   border-bottom: 1px solid var(--border);
   text-align: center;
@@ -172,12 +217,12 @@ body > header {
   grid-column: 1 / -1;
 }
 
-body > header h1 {
+body>header h1 {
   max-width: 1200px;
   margin: 1rem auto;
 }
 
-body > header p {
+body>header p {
   max-width: 40rem;
   margin: 1rem auto;
 }
@@ -187,7 +232,7 @@ main {
   padding-top: 1.5rem;
 }
 
-body > footer {
+body>footer {
   margin-top: 4rem;
   padding: 2rem 1rem 1.5rem 1rem;
   color: var(--text-light);
@@ -324,21 +369,17 @@ label[type="button"]:hover {
   cursor: pointer;
 }
 
-button:focus-visible:where(
-    :enabled,
-    [role="button"]:not([aria-disabled="true"])
-  ),
-input:enabled:focus-visible:where(
-    [type="submit"],
-    [type="reset"],
-    [type="button"]
-  ) {
+button:focus-visible:where( :enabled,
+  [role="button"]:not([aria-disabled="true"])),
+input:enabled:focus-visible:where([type="submit"],
+  [type="reset"],
+  [type="button"]) {
   outline: 2px solid var(--accent);
   outline-offset: 1px;
 }
 
 /* Format navigation */
-header > nav {
+header>nav {
   font-size: 1.15rem;
   line-height: 1;
   /*  padding: 1rem 0 0 0; */
@@ -347,8 +388,8 @@ header > nav {
 }
 
 /* Use flexbox to allow items to wrap, as needed */
-header > nav ul,
-header > nav ol {
+header>nav ul,
+header>nav ol {
   align-content: space-around;
   align-items: center;
   display: flex;
@@ -361,13 +402,13 @@ header > nav ol {
 }
 
 /* List items are inline elements, make them behave more like blocks */
-header > nav ul li,
-header > nav ol li {
+header>nav ul li,
+header>nav ol li {
   display: inline-block;
 }
 
-header > nav a,
-header > nav a:visited {
+header>nav a,
+header>nav a:visited {
   /* es change
 
     margin: 0 0.5rem 1rem 0.5rem;
@@ -385,7 +426,7 @@ header > nav a:visited {
   text-decoration: none;
 }
 
-header > nav a:hover {
+header>nav a:hover {
   /* es change
     border-radius: var(--standard-border-radius);
     border-color: var(--accent);
@@ -398,7 +439,7 @@ header > nav a:hover {
 
 /* Reduce nav side on mobile */
 @media only screen and (max-width: 720px) {
-  header > nav a {
+  header>nav a {
     padding: 0 1rem;
     text-decoration: none;
     line-height: 1;
@@ -435,7 +476,7 @@ aside {
   }
 }
 
-article, 
+article,
 fieldset {
   border: 1px solid var(--border);
   padding: 1rem;
@@ -447,6 +488,7 @@ article h2:first-child,
 section h2:first-child {
   margin-top: 1rem;
 }
+
 /* ES article border is enough especially for mobile
 section {
   border-top: 1px solid var(--border);
@@ -456,7 +498,7 @@ section {
 }
 */
 /* Don't double separators when chaining sections */
-section + section,
+section+section,
 section:first-child {
   border-top: 0;
   padding-top: 0;
@@ -479,15 +521,15 @@ summary {
   word-break: break-all;
 }
 
-details[open] > summary + * {
+details[open]>summary+* {
   margin-top: 0;
 }
 
-details[open] > summary {
+details[open]>summary {
   margin-bottom: 0.5rem;
 }
 
-details[open] > :last-child {
+details[open]> :last-child {
   margin-bottom: 0;
 }
 
@@ -535,9 +577,11 @@ input {
   max-width: 100%;
   display: inline-block;
 }
+
 label {
   display: block;
 }
+
 textarea:not([cols]) {
   width: 100%;
 }
@@ -560,8 +604,8 @@ input[type="radio"] {
   width: min-content;
 }
 
-input[type="checkbox"] + label,
-input[type="radio"] + label {
+input[type="checkbox"]+label,
+input[type="radio"]+label {
   display: inline-block;
 }
 
@@ -589,6 +633,7 @@ input[type="checkbox"]:checked::after {
   font-size: 1.8em;
   transform: rotate(45deg);
 }
+
 input[type="radio"]:checked::after {
   /* creates a colored circle for the checked radio button  */
   content: " ";
@@ -604,6 +649,7 @@ input[type="radio"]:checked::after {
 
 /* Makes input fields wider on smaller screens */
 @media only screen and (max-width: 720px) {
+
   textarea,
   select,
   input {
