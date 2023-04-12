@@ -1,0 +1,18 @@
+/* fa is rtl */
+* {
+    writing-mode: rl;
+}
+
+.float-right {
+    float: left;
+}
+
+
+aside {
+    float: left;
+}
+
+td,
+th {
+    text-align: unset;
+}
