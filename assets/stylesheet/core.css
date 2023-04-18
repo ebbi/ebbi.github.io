@@ -81,11 +81,16 @@
   background-color: red;
 }
 
+.border-top {
+  padding: 2.5rem 0;
+  border-top: 1px solid var(--border);
+}
+
 .bold {
   font-weight: bold;
 }
 
-.text-align-center {
+.text-alignment-center {
   text-align: center;
 }
 
@@ -104,6 +109,29 @@ span.notice {
 .notice img {
   float: inherit;
   margin: 0.5rem 0.5rem 0 0.5rem;
+}
+
+.header {
+  display: block;
+  margin: 0;
+  padding: 0.5rem;
+  line-height: 1.1;
+  font-size: 2.1rem;
+  overflow-wrap: break-word;
+  font-style: italic;
+  font-weight: bold;
+  text-align: center;
+}
+
+.header-2 {
+  display: block;
+  margin: 0;
+  padding: 0.5rem;
+  line-height: 1.1;
+  font-size: 1.75rem;
+  overflow-wrap: break-word;
+  font-weight: bold;
+  text-align: center;
 }
 
 .font-weight-normal {
