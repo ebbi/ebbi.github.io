@@ -7,10 +7,12 @@
   --mono-font: "Ubuntu Mono", Consolas, Menlo, Monaco, "Andale Mono", monospace;
   --standard-border-radius: 5px;
 
-  /* Default (light) theme */
+  /* Default (light) theme
+  --text: #212121;
+  */
   --bg: #fff;
   --accent-bg: #f5f7ff;
-  --text: #212121;
+  --text: black;
   --text-light: #585858;
   --border: rgb(209, 142, 18);
   --accent: #0d47a1;
@@ -20,13 +22,15 @@
   --disabled: #efefef;
 }
 
-/* Dark theme */
+/* Dark theme
+        --text: #dcdcdc;
+*/
 @media (prefers-color-scheme: dark) {
   :root {
     color-scheme: dark;
     --bg: #212121;
     --accent-bg: #2b2b2b;
-    --text: #dcdcdc;
+    --text: white;
     --text-light: #ababab;
     --accent: #ffb300;
     --code: #f06292;
@@ -89,9 +93,18 @@
   border-top: 1px solid var(--border);
 }
 
+.border-left {
+  border-left: 1px solid var(--border);
+  padding: 1rem;
+}
+
 .nav-separator {
   padding: 2.5rem 0;
   border-top: 1px solid var(--border);
+}
+
+.no-margin {
+  margin: 0;
 }
 
 .bold {
@@ -100,6 +113,10 @@
 
 .text-alignment-center {
   text-align: center;
+}
+
+.text-alignment-unset {
+  text-align: unset;
 }
 
 .font-size-100px {
@@ -121,7 +138,7 @@ span.notice {
 
 .notice img {
   float: inherit;
-  margin: 0.5rem 0.5rem 0 0.5rem;
+  margin: 0 0.5rem;
 }
 
 .header {
@@ -146,6 +163,13 @@ span.notice {
 
 .list-style-none {
   list-style: none;
+}
+
+ul li.li-exclamation::before {
+  color: red;
+  font-size: 1.5rem;
+  font-weight: bolder;
+  content: "! ";
 }
 
 .first-col-fix {
@@ -194,7 +218,7 @@ aside img {
 }
 
 img {
-  margin: 0.5rem;
+  margin: 0 0.5rem;
 }
 
 aside {
