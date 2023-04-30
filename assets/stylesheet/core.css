@@ -85,6 +85,10 @@
   color: black;
 }
 
+.background-white {
+  background-color: white;
+}
+
 .background-orange {
   background-color: orange;
 }
@@ -173,6 +177,18 @@ span.notice {
   list-style: none;
 }
 
+.list-style-square {
+  list-style: square
+}
+
+.list-style-dash {
+  list-style: "- ";
+}
+
+.list-style-ldash {
+  list-style: "\2014  ";
+}
+
 ul li.li-exclamation::before {
   color: red;
   font-size: 1.5rem;
@@ -206,7 +222,8 @@ h1,
 h2,
 h3,
 h4,
-h5 {
+h5,
+h6 {
   font-style: italic;
 }
 
