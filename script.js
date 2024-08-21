@@ -1,5 +1,3 @@
-
-
 /*
 function populateVoiceList() {
     if (typeof speechSynthesis === "undefined") {
@@ -30,7 +28,7 @@ function populateVoiceList() {
     speechSynthesis.onvoiceschanged = populateVoiceList;
   }
   
-  */
+  
 const synth = window.speechSynthesis;
 
 const inputForm = document.querySelector("form");
@@ -84,8 +82,7 @@ inputForm.onsubmit = (event) => {
     inputTxt.blur();
 };
 
-
-
+*/
 const dictionary = [
     {
         word: "home",
