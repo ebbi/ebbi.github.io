@@ -1,0 +1,67 @@
+
+.txt,
+select,
+form > div {
+  display: block;
+  margin: 0 auto;
+  font-family: sans-serif;
+  font-size: 16px;
+  padding: 5px;
+}
+
+
+
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+/*    justify-content: center; */
+    height: 100vh;
+    font-family: Arial, sans-serif;
+}
+
+#feedback {
+    margin: 1vw;
+    padding: 1vw;
+}
+
+#multiple-choice {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 5px;
+  }
+
+.default-button
+{
+    margin: 5px;
+    padding: 5px;
+    background-color: white;
+    color: black;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: large;
+}
+span.button {
+    margin: 5px;
+    padding: 5px;
+    background-color: white;
+    color: black;
+    border: none;
+    border-radius: 5px;
+    font-size: x-large;
+}
+/* order matters for cascading style sheet ! */
+.feedback {
+    background-color: lightgrey;
+    color: black;
+}
+.correct {
+    background-color: greenyellow;
+    color: black;
+}
+.incorrect {
+    background-color: red;
+    color: white;
+}
