@@ -45,6 +45,7 @@ function multipleChoice(index) {
     const { word, translation, multipleChoice } = dictionary[index];
 
     setFeedbackStyle("feedback");
+    feedbackContainer.classList.add("font-size-small");
     feedbackContainer.textContent = "select Thai word for translation";
 
     wordContainer.textContent = word;
