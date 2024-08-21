@@ -1,26 +1,37 @@
-const dictionary = [
+const dictionary = 
+[
     {
-        word: "home",
-        translation: "baan",
-        multipleChoice: [
-            ["puan", "เพื่อน"], ["baan", "บ้าน"], ["rongreyn", "โรงเรียน"]
-        ]
+        word: "home", translation: "baan",
+        multipleChoice: [["puan", "เพื่อน"], ["baan", "บ้าน"], ["rongreyn", "โรงเรียน"]]
     },
     {
-        word: "school",
-        translation: "rongreyn",
-        multipleChoice: [
-            ["puan", "เพื่อน"], ["rongreyn", "โรงเรียน"], ["baan", "บ้าน"]
-        ]
+        word: "school", translation: "rongreyn",
+        multipleChoice: [["puan", "เพื่อน"], ["rongreyn", "โรงเรียน"], ["baan", "บ้าน"]]
+    },
+    { 
+        word: "coffee", translation: "gaa-fee",
+        multipleChoice: [["rongreyn", "โรงเรียน"], ["gaa-fee", "กาแฟ"], ["baan", "บ้าน"]]
+    },
+    { 
+        word: "food", translation: "aa-haan",
+        multipleChoice: [["rongreyn", "โรงเรียน"], ["puan", "ร้านอาหาร"], ["aa-haan", "อาหาร"]]
     },
     {
-        word: "friend",
-        translation: "puan",
-        multipleChoice: [
-            ["rongreyn", "โรงเรียน"], ["puan", "เพื่อน"], ["baan", "บ้าน"]
-        ]
+        word: "sleep",translation: "noon-lap",
+        multipleChoice: [["noon-lap", "นอน"], ["puan", "เพื่อน"], ["baan", "บ้าน"]]
+    },
+    { 
+        word: "banana", translation: "gluay",
+        multipleChoice: [["rongreyn", "โรงเรียน"], ["puan", "เพื่อน"], ["gluay", "กล้วย"]]
+    },
+    { 
+        word: "dog", translation: "maa",
+        multipleChoice: [["gluay", "กล้วย"], ["maa", "หมา"], ["baan", "บ้าน"]]
+    },
+    { 
+        word: "books", translation: "nan-sww",
+        multipleChoice: [["nan-sww", "หนังสือ"], ["gluay", "กล้วย"], ["baan", "บ้าน"]]
     }
-    // Add more word pairs and options here
 ];
 
 let currentWordIndex = 0;
@@ -34,7 +45,7 @@ function multipleChoice(index) {
     const { word, translation, multipleChoice } = dictionary[index];
 
     setFeedbackStyle("feedback");
-    feedbackContainer.textContent = "your Click is my Command";
+    feedbackContainer.textContent = "select Thai word for translation";
 
     wordContainer.textContent = word;
  //   wordContainer.classList.add("default-button");
@@ -58,6 +69,7 @@ function multipleChoice(index) {
 
         const spanThai = document.createElement("span");
         spanThai.textContent = choiceThai;
+        spanThai.lang = "th";
         spanThai.classList.add("button");
         //   buttonChoiceSound.addEventListener("click", () => checkAnswer(choiceText, translation));
         choiceContainer.appendChild(spanThai);
