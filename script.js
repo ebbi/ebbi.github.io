@@ -1,114 +1,23 @@
-/*
-function populateVoiceList() {
-    if (typeof speechSynthesis === "undefined") {
-      return;
-    }
-  
-    const voices = speechSynthesis.getVoices();
-  
-    for (let i = 0; i < voices.length; i++) {
-      const option = document.createElement("option");
-      option.textContent = `${voices[i].name} (${voices[i].lang})`;
-  
-      if (voices[i].default) {
-        option.textContent += " — DEFAULT";
-      }
-  
-      option.setAttribute("data-lang", voices[i].lang);
-      option.setAttribute("data-name", voices[i].name);
-      document.getElementById("voiceSelect").appendChild(option);
-    }
-  }
-  
-  populateVoiceList();
-  if (
-    typeof speechSynthesis !== "undefined" &&
-    speechSynthesis.onvoiceschanged !== undefined
-  ) {
-    speechSynthesis.onvoiceschanged = populateVoiceList;
-  }
-  
-  
-const synth = window.speechSynthesis;
-
-const inputForm = document.querySelector("form");
-const inputTxt = document.querySelector(".txt");
-const voiceSelect = document.querySelector("select");
-const pitch = document.querySelector("#pitch");
-const pitchValue = document.querySelector(".pitch-value");
-const rate = document.querySelector("#rate");
-const rateValue = document.querySelector(".rate-value");
-
-let voices = [];
-
-function populateVoiceList() {
-    voices = synth.getVoices();
-
-    for (let i = 0; i < voices.length; i++) {
-        const option = document.createElement("option");
-        option.textContent = `${voices[i].name} (${voices[i].lang})`;
-
-        if (voices[i].default) {
-            option.textContent += " — DEFAULT";
-        }
-        if (voices[i].lang == "th") {
-            option.setAttribute("data-lang", voices[i].lang);
-            option.setAttribute("data-name", voices[i].name);
-            voiceSelect.appendChild(option);
-        }
-    }
-}
-
-populateVoiceList();
-if (speechSynthesis.onvoiceschanged !== undefined) {
-    speechSynthesis.onvoiceschanged = populateVoiceList;
-}
-
-inputForm.onsubmit = (event) => {
-    event.preventDefault();
-
-    const utterThis = new SpeechSynthesisUtterance(inputTxt.value);
-    const selectedOption =
-        voiceSelect.selectedOptions[0].getAttribute("data-name");
-    for (let i = 0; i < voices.length; i++) {
-        if (voices[i].name === selectedOption) {
-            utterThis.voice = voices[i];
-        }
-    }
-    utterThis.pitch = pitch.value;
-    utterThis.rate = rate.value;
-    synth.speak(utterThis);
-
-    inputTxt.blur();
-};
-
-*/
 const dictionary = [
     {
         word: "home",
         translation: "baan",
         multipleChoice: [
-            ["puan", "เพื่อน"],
-            ["baan", "เพื่อน"],
-            ["roon-rian", "เพื่อน"]
+            ["puan", "เพื่อน"], ["baan", "บ้าน"], ["rongreyn", "โรงเรียน"]
         ]
     },
     {
         word: "school",
-        translation: "roon-rian",
+        translation: "rongreyn",
         multipleChoice: [
-            ["puan", "เพื่อน"],
-            ["roon-rian", "เพื่อน"],
-            ["baan", "เพื่อน"]
+            ["puan", "เพื่อน"], ["rongreyn", "โรงเรียน"], ["baan", "บ้าน"]
         ]
     },
     {
         word: "friend",
         translation: "puan",
         multipleChoice: [
-            ["baroon-rianan", "เพื่อน"],
-            ["puan", "เพื่อน"],
-            ["baan", "เพื่อน"]
+            ["rongreyn", "โรงเรียน"], ["puan", "เพื่อน"], ["baan", "บ้าน"]
         ]
     }
     // Add more word pairs and options here
@@ -128,7 +37,7 @@ function multipleChoice(index) {
     feedbackContainer.textContent = "your Click is my Command";
 
     wordContainer.textContent = word;
-    wordContainer.classList.add("default-button");
+ //   wordContainer.classList.add("default-button");
 
     choiceContainer.innerHTML = "";
 
