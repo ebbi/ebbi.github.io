@@ -11,12 +11,8 @@ body {
     width: 95%;
 }
 
-#nav-main a {
-    float: left;
-}
-
-nav button {
-    width: 10vw;
+button {
+    min-width: 24vw;
     padding: 0.5vw;
     margin: 0.5vw;
 }
