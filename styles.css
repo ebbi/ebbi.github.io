@@ -2,9 +2,23 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-/*    justify-content: center; */
+    /*    justify-content: center; */
     height: 100vh;
     font-family: Arial, sans-serif;
+}
+
+#nav-main {
+    width: 95%;
+}
+
+#nav-main a {
+    float: left;
+}
+
+nav button {
+    width: 10vw;
+    padding: 0.5vw;
+    margin: 0.5vw;
 }
 
 #feedback {
@@ -16,7 +30,7 @@ body {
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-gap: 5px;
-  }
+}
 
 #word {
     background-color: lightyellow;
@@ -25,8 +39,7 @@ body {
     font-size: larger;
 }
 
-.default-button
-{
+.default-button {
     margin: 5px;
     padding: 5px;
     background-color: lightyellow;
@@ -36,6 +49,7 @@ body {
     cursor: pointer;
     font-size: large;
 }
+
 span.button {
     margin: 5px;
     padding: 5px;
@@ -45,6 +59,7 @@ span.button {
     border-radius: 5px;
     font-size: x-large;
 }
+
 /* order matters for cascading style sheet ! */
 .feedback {
     background-color: lightpink;
@@ -52,16 +67,19 @@ span.button {
     border: none;
     border-radius: 0.5vw;
 }
+
 .correct {
     background-color: greenyellow;
     color: black;
     border-radius: 0.5vw;
 }
+
 .incorrect {
     background-color: red;
     color: white;
     border-radius: 0.5vw;
 }
+
 font-size-small {
     font-size: small;
 }
