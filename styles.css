@@ -13,13 +13,17 @@ body {
     padding-bottom: 5px;
     margin: 5px;
 }
+span:lang("th") {
+    direction: ltr;
+    float: left;;
+}
 span:lang("fa"){
     direction: rtl;
     float: right;
 }
 
 button {
-    min-width: 24vw; 
+    min-width: 12vw; 
     padding: 0.5vw;
     margin: 0.5vw;
 }
