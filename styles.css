@@ -9,6 +9,13 @@ body {
 
 #nav-main {
     width: 95%;
+    border-bottom: 1px solid lightgray;
+    padding-bottom: 5px;
+    margin: 5px;
+}
+span:lang("fa"){
+    direction: rtl;
+    float: right;
 }
 
 button {
