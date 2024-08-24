@@ -13,19 +13,40 @@ body {
     padding-bottom: 5px;
     margin: 5px;
 }
+
 span:lang("th") {
     direction: ltr;
-    float: left;;
+    float: left;
+    ;
 }
-span:lang("fa"){
+
+span:lang("fa") {
     direction: rtl;
     float: right;
 }
 
 button {
-    min-width: 12vw; 
+    min-width: 12vw;
     padding: 0.5vw;
     margin: 0.5vw;
+}
+
+nav a {
+    min-width: 5vw;
+    padding: 0.5vw;
+    display: inline-block;
+    vertical-align: middle;
+    text-align: center;
+    background-color: lightgray;
+    border-radius: 0.2vw;
+}
+
+nav span {
+    padding: 0.5vw;
+}
+
+.float-right {
+    float: right;
 }
 
 #feedback {
