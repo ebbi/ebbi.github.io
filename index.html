@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/x-icon" href="/assets/images/bitcoin-logo.ico">
     <title>lucius words</title>
+    <link rel="stylesheet" href="/assets/stylesheet/core.css" media="screen">
     <link rel="stylesheet" href="styles.css">
 </head>
 
@@ -15,14 +16,36 @@
         <a lang="th" href="./index-old.html">บ้าน</a>
         <span class="float-right">Ebrahim</span> <span lang="fa">ابراهیم</span>
     </nav>
-    <div id="word"></div>
-    <div id="multiple-choice"></div>
-    <div id="feedback" class="feedback"></div>
 
-    <nav>
-        <button id="prev">previous</button>
-        <button id="next">next</button>
-    </nav>
+    <div class="multiple-choice">
+        <div id="word"></div>
+        <div id="multiple-choice"></div>
+        <div id="feedback" class="feedback"></div>
+
+        <nav>
+            <button id="prev">previous</button>
+            <button id="next">next</button>
+        </nav>
+    </div>
+
+    <details open>
+        <summary>
+            <span class="notice">
+                Book 1
+            </span>
+        </summary>
+        <details open>
+            <summary>
+                <span>Structure: <b>What</b> <b>a-rai</b></span>
+            </summary>
+            <ul>
+                <li>คุณชื่ออะไร</li>
+                <li>Khun chww arai k</li>
+                <li>you name what</li>
+            </ul>
+        </details>
+    </details>
+
 
 
     <script src="script.js"></script>
