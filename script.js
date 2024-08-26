@@ -1,4 +1,4 @@
-const dictionary =
+const book1_phonetics =
     [
         {
             word: "home", translation: "baan",
@@ -240,7 +240,302 @@ const dictionary =
         }
     ];
 
+const book1_vocabulary_1 =
+    [
+        {
+            word: "small", translation: "lek",
+            multipleChoice: [
+                [
+                    "lek",
+                    "เพื่อน"
+                ],
+                [
+                    "baan",
+                    "บ้าน"
+                ],
+                [
+                    "rongreyn",
+                    "โรงเรียน"
+                ]
+            ]
+        },
+        {
+            word: "big/large", translation: "yai",
+            multipleChoice: [
+                [
+                    "puan",
+                    "เพื่อน"
+                ],
+                [
+                    "yai",
+                    "โรงเรียน"
+                ],
+                [
+                    "baan",
+                    "บ้าน"
+                ]
+            ]
+        },
+        {
+            word: "short (length)", translation: "san",
+            multipleChoice: [
+                [
+                    "san",
+                    "โรงเรียน"
+                ],
+                [
+                    "gaa-fee",
+                    "กาแฟ"
+                ],
+                [
+                    "baan",
+                    "บ้าน"
+                ]
+            ]
+        },
+        {
+            word: "long (length)", translation: "yaaw",
+            multipleChoice: [
+                [
+                    "rongreyn",
+                    "โรงเรียน"
+                ],
+                [
+                    "puan",
+                    "ร้านอาหาร"
+                ],
+                [
+                    "yaaw",
+                    "อาหาร"
+                ]
+            ]
+        },
+        {
+            word: "short (height)", translation: "dtia",
+            multipleChoice: [
+                [
+                    "noon-lap",
+                    "นอน"
+                ],
+                [
+                    "dtia",
+                    "เพื่อน"
+                ],
+                [
+                    "baan",
+                    "บ้าน"
+                ]
+            ]
+        },
+        {
+            word: "tall (height)", translation: "suung",
+            multipleChoice: [
+                [
+                    "rongreyn",
+                    "โรงเรียน"
+                ],
+                [
+                    "puan",
+                    "เพื่อน"
+                ],
+                [
+                    "suung",
+                    "กล้วย"
+                ]
+            ]
+        },
+        {
+            word: "Good", translation: "dii",
+            multipleChoice: [
+                [
+                    "gluay",
+                    "กล้วย"
+                ],
+                [
+                    "maa",
+                    "หมา"
+                ],
+                [
+                    "dii",
+                    "บ้าน"
+                ]
+            ]
+        },
+        {
+            word: "bad/terrible", translation: "yee",
+            multipleChoice: [
+                [
+                    "yee",
+                    "หนังสือ"
+                ],
+                [
+                    "gluay",
+                    "กล้วย"
+                ],
+                [
+                    "baan",
+                    "บ้าน"
+                ]
+            ]
+        },
+        {
+            word: "roon", translation: "roon",
+            multipleChoice: [
+                [
+                    "nan-sww",
+                    "หนังสือ"
+                ],
+                [
+                    "gluay",
+                    "กล้วย"
+                ],
+                [
+                    "roon",
+                    "พ่อ"
+                ]
+            ]
+        },
+        {
+            word: "cool/iced", translation: "yen",
+            multipleChoice: [
+                [
+                    "yen",
+                    "หนังสือ"
+                ],
+                [
+                    "luuk",
+                    "กล้วย"
+                ],
+                [
+                    "por",
+                    "พ่อ"
+                ]
+            ]
+        },
+        {
+            word: "cold", translation: "naaw",
+            multipleChoice: [
+                [
+                    "roon",
+                    "ร้อน"
+                ],
+                [
+                    "luuk",
+                    "กล้วย"
+                ],
+                [
+                    "naaw",
+                    "พ่อ"
+                ]
+            ]
+        },
+        {
+            word: "cheap", translation: "thuuk",
+            multipleChoice: [
+                [
+                    "roon",
+                    "ร้อน"
+                ],
+                [
+                    "luuk",
+                    "กล้วย"
+                ],
+                [
+                    "maa",
+                    "ม้า"
+                ]
+            ]
+        },
+        {
+            word: "expensive", translation: "pheeng",
+            multipleChoice: [
+                [
+                    "phwan",
+                    "เพื่อน"
+                ],
+                [
+                    "luuk",
+                    "กล้วย"
+                ],
+                [
+                    "maa",
+                    "ม้า"
+                ]
+            ]
+        },
+        {
+            word: "slow", translation: "chaa",
+            multipleChoice: [
+                [
+                    "phwan",
+                    "เพื่อน"
+                ],
+                [
+                    "luuk",
+                    "กล้วย"
+                ],
+                [
+                    "maa",
+                    "ม้า"
+                ]
+            ]
+        },
+        {
+            word: "fast", translation: "rew",
+            multipleChoice: [
+                [
+                    "phwan",
+                    "เพื่อน"
+                ],
+                [
+                    "luuk",
+                    "กล้วย"
+                ],
+                [
+                    "maa",
+                    "ม้า"
+                ]
+            ]
+        },
+        {
+            word: "beautiful/pretty", translation: "suay",
+            multipleChoice: [
+                [
+                    "phwan",
+                    "เพื่อน"
+                ],
+                [
+                    "luuk",
+                    "กล้วย"
+                ],
+                [
+                    "maa",
+                    "ม้า"
+                ]
+            ]
+        },
+        {
+            word: "handsome", translation: "loo",
+            multipleChoice: [
+                [
+                    "phwan",
+                    "เพื่อน"
+                ],
+                [
+                    "luuk",
+                    "กล้วย"
+                ],
+                [
+                    "maa",
+                    "ม้า"
+                ]
+            ]
+        }
+    ];
+
 let currentWordIndex = 0;
+let dictionary = book1_phonetics;
+let vocabularySelect = document.getElementById("vocabulary");
 const wordContainer = document.getElementById("word");
 const choiceContainer = document.getElementById("multiple-choice");
 const feedbackContainer = document.getElementById("feedback");
@@ -306,7 +601,22 @@ function setFeedbackStyle(style) {
     feedbackContainer.classList.add(style);
 }
 
+function setDictionary() {
+
+    vocabularySelect = document.getElementById("vocabulary");
+
+    if (vocabularySelect.value === "book1_phonetics") { // "book1_phonetics"
+        dictionary = book1_phonetics;
+    } else if (vocabularySelect.value === "book1_vocabulary_1") { // "book1_vocabulary_1"
+        dictionary = book1_vocabulary_1;
+    }
+
+}
+
 prevButton.addEventListener("click", () => {
+
+    setDictionary();
+
     if (currentWordIndex > 0) {
         currentWordIndex = (currentWordIndex - 1) % dictionary.length;
     } else {
@@ -316,8 +626,21 @@ prevButton.addEventListener("click", () => {
 });
 
 nextButton.addEventListener("click", () => {
+
+    setDictionary();
+
     currentWordIndex = (currentWordIndex + 1) % dictionary.length;
     multipleChoice(currentWordIndex);
 });
 
+vocabularySelect.addEventListener("change", (event) => {
+
+    setDictionary();
+
+    currentWordIndex = 0;
+    multipleChoice(currentWordIndex);
+
+});
+
+setDictionary();
 multipleChoice(currentWordIndex);
