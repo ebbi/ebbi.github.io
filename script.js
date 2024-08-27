@@ -644,29 +644,3 @@ function setDictionary() {
     }
 
 }
-
-const button_table_pronouns = document.getElementById("button_table_pronouns");
-const table_pronoun = document.getElementById("table_pronouns");
-const columnIndex = 0;
-
-let rowIndex = 1;
-let columnValues = [];
-
-button_table_pronouns.addEventListener("click", () => {
-
-    for (var i = rowIndex; i < table_pronoun.rows.length; i++) {
-        var row = table_pronoun.rows[i];
-        var cell = row.cells[columnIndex];
-        columnValues.push(cell.innerHTML);
-
-        const selection = window.getSelection();
-        const range = document.createRange();
-
-        range.selectNode(cell);
-        selection.addRange(range);
-
-    }
-
-})
-
-
