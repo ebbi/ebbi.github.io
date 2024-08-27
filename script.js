@@ -645,30 +645,28 @@ function setDictionary() {
 
 }
 
-
+const button_table_pronouns = document.getElementById("button_table_pronouns");
 const table_pronoun = document.getElementById("table_pronouns");
+const columnIndex = 0;
 
-button_table_pronouns.addEventListener("click", async (e) => {
-    copyColumnToClipboard("table_pronouns", 0)
-})
+let rowIndex = 1;
+let columnValues = [];
 
-// Function to copy column values to clipboard
-async function copyColumnToClipboard(tableName, columnIndex) {
-    var table = document.getElementById(tableName);
-    var columnValues = [];
+button_table_pronouns.addEventListener("click", () => {
 
-    for (var i = 0; i < table.rows.length; i++) {
-        var row = table.rows[i];
+    for (var i = rowIndex; i < table_pronoun.rows.length; i++) {
+        var row = table_pronoun.rows[i];
         var cell = row.cells[columnIndex];
         columnValues.push(cell.innerHTML);
+
+        const selection = window.getSelection();
+        const range = document.createRange();
+
+        range.selectNode(cell);
+        selection.addRange(range);
+
     }
 
-    try {
-        await navigator.clipboard.writeText(columnValues);
-    } catch (err) {
-        console.error('Failed to copy: ', err);
-    }
-
-}
+})
 
 
