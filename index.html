@@ -17,7 +17,7 @@
         <span class="float-right">Ebrahim</span> <span lang="fa">ابراهیم</span>
     </nav>
 
-    <div class="book font-size-small">
+    <div">
 
         <details open>
             <summary>Book 1</summary>
@@ -42,38 +42,43 @@
                     </nav>
                 </div>
             </details>
+
             <details open>
                 <summary>Pronouns</summary>
 
-                <table>
+                <table id="table_pronouns">
+                    <thead>
+                        <th colspan="3"><button id="button_table_pronouns" data-table="table_pronouns">select</button>
+                            to read or translate</th>
+                    </thead>
                     <tr>
-                        <td>chan</td>
                         <td><span lang="th">ฉัน</span></td>
+                        <td>chan</td>
                         <td>I for female</td>
                     </tr>
                     <tr>
-                        <td>phom</td>
                         <td><span lang="th">ผม</span></td>
+                        <td>phom</td>
                         <td>I for male</td>
                     </tr>
                     <tr>
-                        <td>khun</td>
                         <td><span lang="th">คุณ</span></td>
+                        <td>khun</td>
                         <td>you</td>
                     </tr>
                     <tr>
-                        <td>kaw</td>
                         <td><span lang="th">เขา</span></td>
+                        <td>kaw</td>
                         <td>he or she</td>
                     </tr>
                     <tr>
-                        <td>phuak-raw</td>
                         <td><span lang="th">พวกเรา</span></td>
+                        <td>phuak-raw</td>
                         <td>we or us</td>
                     </tr>
                     <tr>
-                        <td>phuak-khaw</td>
                         <td><span lang="th">พวกเขา</span></td>
+                        <td>phuak-khaw</td>
                         <td>they or them</td>
                     </tr>
                 </table>
@@ -345,9 +350,9 @@
 
         </details>
 
-    </div>
+        </div>
 
-    <script src="script.js"></script>
+        <script src="script.js"></script>
 </body>
 
 </html>

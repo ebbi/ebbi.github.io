@@ -535,12 +535,44 @@ const book1_vocabulary_1 =
 
 let currentWordIndex = 0;
 let dictionary = book1_phonetics;
-let vocabularySelect = document.getElementById("vocabulary");
+
 const wordContainer = document.getElementById("word");
 const choiceContainer = document.getElementById("multiple-choice");
 const feedbackContainer = document.getElementById("feedback");
 const nextButton = document.getElementById("next");
 const prevButton = document.getElementById("prev");
+
+setDictionary();
+multipleChoice(currentWordIndex);
+
+prevButton.addEventListener("click", () => {
+
+    setDictionary();
+
+    if (currentWordIndex > 0) {
+        currentWordIndex = (currentWordIndex - 1) % dictionary.length;
+    } else {
+        currentWordIndex = dictionary.length - 1;
+    }
+    multipleChoice(currentWordIndex);
+});
+
+nextButton.addEventListener("click", () => {
+
+    setDictionary();
+
+    currentWordIndex = (currentWordIndex + 1) % dictionary.length;
+    multipleChoice(currentWordIndex);
+});
+
+vocabularySelect.addEventListener("change", () => {
+
+    setDictionary();
+
+    currentWordIndex = 0;
+    multipleChoice(currentWordIndex);
+
+});
 
 function multipleChoice(index) {
     const { word, translation, multipleChoice } = dictionary[index];
@@ -613,34 +645,30 @@ function setDictionary() {
 
 }
 
-prevButton.addEventListener("click", () => {
 
-    setDictionary();
+const table_pronoun = document.getElementById("table_pronouns");
 
-    if (currentWordIndex > 0) {
-        currentWordIndex = (currentWordIndex - 1) % dictionary.length;
-    } else {
-        currentWordIndex = dictionary.length - 1;
+button_table_pronouns.addEventListener("click", async (e) => {
+    copyColumnToClipboard("table_pronouns", 0)
+})
+
+// Function to copy column values to clipboard
+async function copyColumnToClipboard(tableName, columnIndex) {
+    var table = document.getElementById(tableName);
+    var columnValues = [];
+
+    for (var i = 0; i < table.rows.length; i++) {
+        var row = table.rows[i];
+        var cell = row.cells[columnIndex];
+        columnValues.push(cell.innerHTML);
     }
-    multipleChoice(currentWordIndex);
-});
 
-nextButton.addEventListener("click", () => {
+    try {
+        await navigator.clipboard.writeText(columnValues);
+    } catch (err) {
+        console.error('Failed to copy: ', err);
+    }
 
-    setDictionary();
+}
 
-    currentWordIndex = (currentWordIndex + 1) % dictionary.length;
-    multipleChoice(currentWordIndex);
-});
 
-vocabularySelect.addEventListener("change", (event) => {
-
-    setDictionary();
-
-    currentWordIndex = 0;
-    multipleChoice(currentWordIndex);
-
-});
-
-setDictionary();
-multipleChoice(currentWordIndex);
