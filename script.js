@@ -141,7 +141,7 @@ const book1_lesson1_greetings =
             ]
         },
         {
-            word: "sorry", translation: "khoo_thot",
+            word: "sorry", translation: "khoo_thoot",
             multipleChoice: [
                 ["khoo_thoot", "ขอโทษ"],
                 ["khoop_khun", "ขอบคุณ"],
@@ -312,6 +312,7 @@ const buttonPreviousWord = document.getElementById("prev");
 
 let currentWordIndex = 0;
 let dictionary = book1_phonetics;
+let attemptAnswer = 0;
 let correctAnswer = 0;
 let incorrectAnswer = 0;
 
@@ -353,13 +354,7 @@ function multipleChoice(index) {
     const wordContainer = document.getElementById("word");
     const choiceContainer = document.getElementById("multipleChoice");
 
-    setFeedbackStyle("feedback");
-    feedbackContainer.classList.add("font_size_small");
-    feedbackContainer.textContent = "select Thai word for translation. "
-        + (currentWordIndex + 1).toString() + " of " + dictionary.length;
-
     wordContainer.textContent = word;
-    //   wordContainer.classList.add("default_button");
 
     choiceContainer.innerHTML = "";
 
@@ -393,29 +388,32 @@ function checkAnswer(buttonChoiceTextObj, translation) {
 
     if (buttonChoiceTextObj.textContent === translation) {
         buttonChoiceTextObj.classList.add("correct");
-
-        setFeedbackStyle("correct");
-        correctAnswer++;
-        feedbackContainer.textContent =
-            correctAnswer.toString()
-            + " correct answers,  Well done. "
-            + (currentWordIndex + 1).toString() + " of " + dictionary.length;
+        setFeedback(true);
     } else {
         buttonChoiceTextObj.classList.add("incorrect");
-
-        setFeedbackStyle("incorrect");
-        incorrectAnswer++;
-        feedbackContainer.textContent =
-            incorrectAnswer.toString()
-            + " incorrect answers.  Try again. "
-            + (currentWordIndex + 1).toString() + " of " + dictionary.length;
+        setFeedback(false);
     }
-
 }
 
-function setFeedbackStyle(style) {
+function setFeedback(result) {
+    let feedbackMessage = "";
     feedbackContainer.classList.remove("feedback", "correct", "incorrect");
-    feedbackContainer.classList.add(style);
+    if (result) {
+        correctAnswer++;
+        feedbackMessage = " Correct, well done.  ";
+        feedbackContainer.classList.add("correct");
+    } else {
+        incorrectAnswer++;
+        feedbackMessage = " Incorrect, try again.  ";
+        feedbackContainer.classList.add("incorrect");
+    }
+    attemptAnswer++;
+    feedbackContainer.textContent =
+        feedbackMessage
+        + "Attempted " + attemptAnswer.toString() + " answers. "
+        + correctAnswer.toString() + " correct "
+        + incorrectAnswer.toString() + " incorrect.  "
+        + (currentWordIndex + 1).toString() + " of " + dictionary.length + " words.";
 }
 
 function setDictionary() {
