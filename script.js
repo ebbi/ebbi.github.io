@@ -306,19 +306,19 @@ const book1_lesson3_vocabulary_1 =
         }
     ];
 
+const feedbackContainer = document.getElementById("feedback");
+const buttonNextWord = document.getElementById("next");
+const buttonPreviousWord = document.getElementById("prev");
+
 let currentWordIndex = 0;
 let dictionary = book1_phonetics;
-
-const wordContainer = document.getElementById("word");
-const choiceContainer = document.getElementById("multipleChoice");
-const feedbackContainer = document.getElementById("feedback");
-const nextButton = document.getElementById("next");
-const prevButton = document.getElementById("prev");
+let correctAnswer = 0;
+let incorrectAnswer = 0;
 
 setDictionary();
 multipleChoice(currentWordIndex);
 
-prevButton.addEventListener("click", () => {
+buttonPreviousWord.addEventListener("click", () => {
 
     setDictionary();
 
@@ -330,7 +330,7 @@ prevButton.addEventListener("click", () => {
     multipleChoice(currentWordIndex);
 });
 
-nextButton.addEventListener("click", () => {
+buttonNextWord.addEventListener("click", () => {
 
     setDictionary();
 
@@ -350,9 +350,13 @@ vocabularySelect.addEventListener("change", () => {
 function multipleChoice(index) {
     const { word, translation, multipleChoice } = dictionary[index];
 
+    const wordContainer = document.getElementById("word");
+    const choiceContainer = document.getElementById("multipleChoice");
+
     setFeedbackStyle("feedback");
     feedbackContainer.classList.add("font_size_small");
-    feedbackContainer.textContent = "select Thai word for translation";
+    feedbackContainer.textContent = "select Thai word for translation. "
+        + (currentWordIndex + 1).toString() + " of " + dictionary.length;
 
     wordContainer.textContent = word;
     //   wordContainer.classList.add("default_button");
@@ -391,12 +395,20 @@ function checkAnswer(buttonChoiceTextObj, translation) {
         buttonChoiceTextObj.classList.add("correct");
 
         setFeedbackStyle("correct");
-        feedbackContainer.textContent = "Correct.  Well done";
+        correctAnswer++;
+        feedbackContainer.textContent =
+            correctAnswer.toString()
+            + " correct answers,  Well done. "
+            + (currentWordIndex + 1).toString() + " of " + dictionary.length;
     } else {
         buttonChoiceTextObj.classList.add("incorrect");
 
         setFeedbackStyle("incorrect");
-        feedbackContainer.textContent = "Incorrect.  Try again";
+        incorrectAnswer++;
+        feedbackContainer.textContent =
+            incorrectAnswer.toString()
+            + " incorrect answers.  Try again. "
+            + (currentWordIndex + 1).toString() + " of " + dictionary.length;
     }
 
 }
