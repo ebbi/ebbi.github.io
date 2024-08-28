@@ -3,532 +3,305 @@ const book1_phonetics =
         {
             word: "home", translation: "baan",
             multipleChoice: [
-                [
-                    "puan",
-                    "เพื่อน"
-                ],
-                [
-                    "baan",
-                    "บ้าน"
-                ],
-                [
-                    "rongreyn",
-                    "โรงเรียน"
-                ]
+                ["puan", "เพื่อน"],
+                ["baan", "บ้าน"],
+                ["rongreyn", "โรงเรียน"]
             ]
         },
         {
             word: "school", translation: "rongreyn",
             multipleChoice: [
-                [
-                    "puan",
-                    "เพื่อน"
-                ],
-                [
-                    "rongreyn",
-                    "โรงเรียน"
-                ],
-                [
-                    "baan",
-                    "บ้าน"
-                ]
+                ["puan", "เพื่อน"],
+                ["rongreyn", "โรงเรียน"],
+                ["baan", "บ้าน"]
             ]
         },
         {
-            word: "coffee", translation: "gaa-fee",
+            word: "coffee", translation: "gaa_fee",
             multipleChoice: [
-                [
-                    "rongreyn",
-                    "โรงเรียน"
-                ],
-                [
-                    "gaa-fee",
-                    "กาแฟ"
-                ],
-                [
-                    "baan",
-                    "บ้าน"
-                ]
+                ["rongreyn", "โรงเรียน"],
+                ["gaa_fee", "กาแฟ"],
+                ["baan", "บ้าน"]
             ]
         },
         {
-            word: "food", translation: "aa-haan",
+            word: "food", translation: "aa_haan",
             multipleChoice: [
-                [
-                    "rongreyn",
-                    "โรงเรียน"
-                ],
-                [
-                    "puan",
-                    "ร้านอาหาร"
-                ],
-                [
-                    "aa-haan",
-                    "อาหาร"
-                ]
+                ["rongreyn", "โรงเรียน"],
+                ["puan", "ร้านอาหาร"],
+                ["aa_haan", "อาหาร"]
             ]
         },
         {
-            word: "sleep", translation: "noon-lap",
+            word: "sleep", translation: "noon_lap",
             multipleChoice: [
-                [
-                    "noon-lap",
-                    "นอน"
-                ],
-                [
-                    "puan",
-                    "เพื่อน"
-                ],
-                [
-                    "baan",
-                    "บ้าน"
-                ]
+                ["noon_lap", "นอน"],
+                ["puan", "เพื่อน"],
+                ["baan", "บ้าน"]
             ]
         },
         {
             word: "banana", translation: "gluay",
             multipleChoice: [
-                [
-                    "rongreyn",
-                    "โรงเรียน"
-                ],
-                [
-                    "puan",
-                    "เพื่อน"
-                ],
-                [
-                    "gluay",
-                    "กล้วย"
-                ]
+                ["rongreyn", "โรงเรียน"],
+                ["puan", "เพื่อน"],
+                ["gluay", "กล้วย"]
             ]
         },
         {
-            word: "family", translation: "khroop-khrua",
+            word: "family", translation: "khroop_khrua",
             multipleChoice: [
-                [
-                    "khroop-khrua",
-                    "ครอบครัว"
-                ],
-                [
-                    "puan",
-                    "เพื่อน"
-                ],
-                [
-                    "baan",
-                    "บ้าน"
-                ]
+                ["khroop_khrua", "ครอบครัว"],
+                ["puan", "เพื่อน"],
+                ["baan", "บ้าน"]
             ]
         },
         {
             word: "dog", translation: "maa",
             multipleChoice: [
-                [
-                    "gluay",
-                    "กล้วย"
-                ],
-                [
-                    "maa",
-                    "หมา"
-                ],
-                [
-                    "baan",
-                    "บ้าน"
-                ]
+                ["gluay", "กล้วย"],
+                ["maa", "หมา"],
+                ["baan", "บ้าน"]
             ]
         },
         {
-            word: "books", translation: "nan-sww",
+            word: "books", translation: "nan_sww",
             multipleChoice: [
-                [
-                    "nan-sww",
-                    "หนังสือ"
-                ],
-                [
-                    "gluay",
-                    "กล้วย"
-                ],
-                [
-                    "baan",
-                    "บ้าน"
-                ]
+                ["nan_sww", "หนังสือ"],
+                ["gluay", "กล้วย"],
+                ["baan", "บ้าน"]
             ]
         },
         {
             word: "father", translation: "por",
             multipleChoice: [
-                [
-                    "nan-sww",
-                    "หนังสือ"
-                ],
-                [
-                    "gluay",
-                    "กล้วย"
-                ],
-                [
-                    "por",
-                    "พ่อ"
-                ]
+                ["nan_sww", "หนังสือ"],
+                ["gluay", "กล้วย"],
+                ["por", "พ่อ"]
             ]
         },
         {
             word: "child", translation: "luuk",
             multipleChoice: [
-                [
-                    "nan-sww",
-                    "หนังสือ"
-                ],
-                [
-                    "luuk",
-                    "กล้วย"
-                ],
-                [
-                    "por",
-                    "พ่อ"
-                ]
+                ["nan_sww", "หนังสือ"],
+                ["luuk", "กล้วย"],
+                ["por", "พ่อ"]
             ]
         },
         {
             word: "hot", translation: "roon",
             multipleChoice: [
-                [
-                    "roon",
-                    "ร้อน"
-                ],
-                [
-                    "luuk",
-                    "กล้วย"
-                ],
-                [
-                    "por",
-                    "พ่อ"
-                ]
+                ["roon", "ร้อน"],
+                ["luuk", "กล้วย"],
+                ["por", "พ่อ"]
             ]
         },
         {
             word: "horse", translation: "maa",
             multipleChoice: [
-                [
-                    "roon",
-                    "ร้อน"
-                ],
-                [
-                    "luuk",
-                    "กล้วย"
-                ],
-                [
-                    "maa",
-                    "ม้า"
-                ]
+                ["roon", "ร้อน"],
+                ["luuk", "กล้วย"],
+                ["maa", "ม้า"]
             ]
         },
         {
             word: "friend", translation: "phwan",
             multipleChoice: [
-                [
-                    "phwan",
-                    "เพื่อน"
-                ],
-                [
-                    "luuk",
-                    "กล้วย"
-                ],
-                [
-                    "maa",
-                    "ม้า"
-                ]
+                ["phwan", "เพื่อน"],
+                ["luuk", "กล้วย"],
+                ["maa", "ม้า"]
             ]
         }
     ];
 
-const book1_vocabulary_1 =
+const book1_lesson1_greetings =
+    [
+        {
+            word: "hello", translation: "sa_wat_dii",
+            multipleChoice: [
+                ["sa_wat_dii", "สวัสดี"],
+                ["khoop_khun", "ขอบคุณ"],
+                ["mai_bpen_rai", "never mind"]
+            ]
+        },
+        {
+            word: "thank you", translation: "khoop_khun",
+            multipleChoice: [
+                ["sa_wat_dii", "สวัสดี"],
+                ["khoop_khun", "ขอบคุณ"],
+                ["khoo_thoot", "ขอโทษ"],
+            ],
+        },
+        {
+            word: "never mind", translation: "mai_bpen_rai",
+            multipleChoice: [
+                ["sa_wat_dii", "สวัสดี"],
+                ["khoop_khun", "ขอบคุณ"],
+                ["mai_bpen_rai", "never mind"],
+            ]
+        },
+        {
+            word: "sorry", translation: "khoo_thot",
+            multipleChoice: [
+                ["khoo_thoot", "ขอโทษ"],
+                ["khoop_khun", "ขอบคุณ"],
+                ["mai_bpen_rai", "never mind"],
+            ]
+        },
+        {
+            word: "nice to meet you", translation: "yin_dii thii daay ruu_jak",
+            multipleChoice: [
+                ["khoo_thoot", "ขอโทษ"],
+                ["yin_dii thii daay ruu_jak", "ยินดีที่ได้รู้จัก"],
+                ["mai_bpen_rai", "never mind"],
+            ]
+        },
+        {
+            word: "how about you", translation: "leew_khun_la",
+            multipleChoice: [
+                ["khoo_thoot", "ขอโทษ"],
+                ["yin_dii thii daay ruu_jak", "ยินดีที่ได้รู้จัก"],
+                ["leew_khun_la", "how about you"],
+            ]
+        }
+    ];
+
+const book1_lesson3_vocabulary_1 =
     [
         {
             word: "small", translation: "lek",
             multipleChoice: [
-                [
-                    "lek",
-                    "เพื่อน"
-                ],
-                [
-                    "baan",
-                    "บ้าน"
-                ],
-                [
-                    "rongreyn",
-                    "โรงเรียน"
-                ]
+                ["lek", "เพื่อน"],
+                ["baan", "บ้าน"],
+                ["rongreyn", "โรงเรียน"]
             ]
         },
         {
             word: "big/large", translation: "yai",
             multipleChoice: [
-                [
-                    "puan",
-                    "เพื่อน"
-                ],
-                [
-                    "yai",
-                    "โรงเรียน"
-                ],
-                [
-                    "baan",
-                    "บ้าน"
-                ]
+                ["puan", "เพื่อน"],
+                ["yai", "โรงเรียน"],
+                ["baan", "บ้าน"]
             ]
         },
         {
             word: "short (length)", translation: "san",
             multipleChoice: [
-                [
-                    "san",
-                    "โรงเรียน"
-                ],
-                [
-                    "gaa-fee",
-                    "กาแฟ"
-                ],
-                [
-                    "baan",
-                    "บ้าน"
-                ]
+                ["san", "โรงเรียน"],
+                ["gaa_fee", "กาแฟ"],
+                ["baan", "บ้าน"]
             ]
         },
         {
             word: "long (length)", translation: "yaaw",
             multipleChoice: [
-                [
-                    "rongreyn",
-                    "โรงเรียน"
-                ],
-                [
-                    "puan",
-                    "ร้านอาหาร"
-                ],
-                [
-                    "yaaw",
-                    "อาหาร"
-                ]
+                ["rongreyn", "โรงเรียน"],
+                ["puan", "ร้านอาหาร"],
+                ["yaaw", "อาหาร"]
             ]
         },
         {
             word: "short (height)", translation: "dtia",
             multipleChoice: [
-                [
-                    "noon-lap",
-                    "นอน"
-                ],
-                [
-                    "dtia",
-                    "เพื่อน"
-                ],
-                [
-                    "baan",
-                    "บ้าน"
-                ]
+                ["noon_lap", "นอน"],
+                ["dtia", "เพื่อน"],
+                ["baan", "บ้าน"]
             ]
         },
         {
             word: "tall (height)", translation: "suung",
             multipleChoice: [
-                [
-                    "rongreyn",
-                    "โรงเรียน"
-                ],
-                [
-                    "puan",
-                    "เพื่อน"
-                ],
-                [
-                    "suung",
-                    "กล้วย"
-                ]
+                ["rongreyn", "โรงเรียน"],
+                ["puan", "เพื่อน"],
+                ["suung", "กล้วย"]
             ]
         },
         {
             word: "Good", translation: "dii",
             multipleChoice: [
-                [
-                    "gluay",
-                    "กล้วย"
-                ],
-                [
-                    "maa",
-                    "หมา"
-                ],
-                [
-                    "dii",
-                    "บ้าน"
-                ]
+                ["gluay", "กล้วย"],
+                ["maa", "หมา"],
+                ["dii", "บ้าน"]
             ]
         },
         {
             word: "bad/terrible", translation: "yee",
             multipleChoice: [
-                [
-                    "yee",
-                    "หนังสือ"
-                ],
-                [
-                    "gluay",
-                    "กล้วย"
-                ],
-                [
-                    "baan",
-                    "บ้าน"
-                ]
+                ["yee", "หนังสือ"],
+                ["gluay", "กล้วย"],
+                ["baan", "บ้าน"]
             ]
         },
         {
             word: "roon", translation: "roon",
             multipleChoice: [
-                [
-                    "nan-sww",
-                    "หนังสือ"
-                ],
-                [
-                    "gluay",
-                    "กล้วย"
-                ],
-                [
-                    "roon",
-                    "พ่อ"
-                ]
+                ["nan_sww", "หนังสือ"],
+                ["gluay", "กล้วย"],
+                ["roon", "พ่อ"]
             ]
         },
         {
             word: "cool/iced", translation: "yen",
             multipleChoice: [
-                [
-                    "yen",
-                    "หนังสือ"
-                ],
-                [
-                    "luuk",
-                    "กล้วย"
-                ],
-                [
-                    "por",
-                    "พ่อ"
-                ]
+                ["yen", "หนังสือ"],
+                ["luuk", "กล้วย"],
+                ["por", "พ่อ"]
             ]
         },
         {
             word: "cold", translation: "naaw",
             multipleChoice: [
-                [
-                    "roon",
-                    "ร้อน"
-                ],
-                [
-                    "luuk",
-                    "กล้วย"
-                ],
-                [
-                    "naaw",
-                    "พ่อ"
-                ]
+                ["roon", "ร้อน"],
+                ["luuk", "กล้วย"],
+                ["naaw", "พ่อ"]
             ]
         },
         {
             word: "cheap", translation: "thuuk",
             multipleChoice: [
-                [
-                    "roon",
-                    "ร้อน"
-                ],
-                [
-                    "luuk",
-                    "กล้วย"
-                ],
-                [
-                    "maa",
-                    "ม้า"
-                ]
+                ["roon", "ร้อน"],
+                ["luuk", "กล้วย"],
+                ["maa", "ม้า"]
             ]
         },
         {
             word: "expensive", translation: "pheeng",
             multipleChoice: [
-                [
-                    "phwan",
-                    "เพื่อน"
-                ],
-                [
-                    "luuk",
-                    "กล้วย"
-                ],
-                [
-                    "maa",
-                    "ม้า"
-                ]
+                ["phwan", "เพื่อน"],
+                ["luuk", "กล้วย"],
+                ["maa", "ม้า"]
             ]
         },
         {
             word: "slow", translation: "chaa",
             multipleChoice: [
-                [
-                    "phwan",
-                    "เพื่อน"
-                ],
-                [
-                    "luuk",
-                    "กล้วย"
-                ],
-                [
-                    "maa",
-                    "ม้า"
-                ]
+                ["phwan", "เพื่อน"],
+                ["luuk", "กล้วย"],
+                ["maa", "ม้า"]
             ]
         },
         {
             word: "fast", translation: "rew",
             multipleChoice: [
-                [
-                    "phwan",
-                    "เพื่อน"
-                ],
-                [
-                    "luuk",
-                    "กล้วย"
-                ],
-                [
-                    "maa",
-                    "ม้า"
-                ]
+                ["phwan", "เพื่อน"],
+                ["luuk", "กล้วย"],
+                ["maa", "ม้า"]
             ]
         },
         {
             word: "beautiful/pretty", translation: "suay",
             multipleChoice: [
-                [
-                    "phwan",
-                    "เพื่อน"
-                ],
-                [
-                    "luuk",
-                    "กล้วย"
-                ],
-                [
-                    "maa",
-                    "ม้า"
-                ]
+                ["phwan", "เพื่อน"],
+                ["luuk", "กล้วย"],
+                ["maa", "ม้า"]
             ]
         },
         {
             word: "handsome", translation: "loo",
             multipleChoice: [
-                [
-                    "phwan",
-                    "เพื่อน"
-                ],
-                [
-                    "luuk",
-                    "กล้วย"
-                ],
-                [
-                    "maa",
-                    "ม้า"
-                ]
+                ["phwan", "เพื่อน"],
+                ["luuk", "กล้วย"],
+                ["maa", "ม้า"]
             ]
         }
     ];
@@ -537,7 +310,7 @@ let currentWordIndex = 0;
 let dictionary = book1_phonetics;
 
 const wordContainer = document.getElementById("word");
-const choiceContainer = document.getElementById("multiple-choice");
+const choiceContainer = document.getElementById("multipleChoice");
 const feedbackContainer = document.getElementById("feedback");
 const nextButton = document.getElementById("next");
 const prevButton = document.getElementById("prev");
@@ -578,11 +351,11 @@ function multipleChoice(index) {
     const { word, translation, multipleChoice } = dictionary[index];
 
     setFeedbackStyle("feedback");
-    feedbackContainer.classList.add("font-size-small");
+    feedbackContainer.classList.add("font_size_small");
     feedbackContainer.textContent = "select Thai word for translation";
 
     wordContainer.textContent = word;
-    //   wordContainer.classList.add("default-button");
+    //   wordContainer.classList.add("default_button");
 
     choiceContainer.innerHTML = "";
 
@@ -595,7 +368,7 @@ function multipleChoice(index) {
 
         const buttonChoiceText = document.createElement("button");
         buttonChoiceText.textContent = choiceText;
-        buttonChoiceText.classList.add("default-button");
+        buttonChoiceText.classList.add("default_button");
         buttonChoiceText.addEventListener("click", function () {
             checkAnswer(this, translation);
         });
@@ -637,10 +410,10 @@ function setDictionary() {
 
     vocabularySelect = document.getElementById("vocabulary");
 
-    if (vocabularySelect.value === "book1_phonetics") { // "book1_phonetics"
+    if (vocabularySelect.value === "book1_phonetics") {
         dictionary = book1_phonetics;
-    } else if (vocabularySelect.value === "book1_vocabulary_1") { // "book1_vocabulary_1"
-        dictionary = book1_vocabulary_1;
+    } else if (vocabularySelect.value === "book1_lesson1_greetings") {
+        dictionary = book1_lesson1_greetings;
     }
 
 }
