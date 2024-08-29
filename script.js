@@ -306,50 +306,59 @@ const book1_lesson3_vocabulary_1 =
         }
     ];
 
+const dictionarySelect = document.getElementById("vocabulary");
 const feedbackContainer = document.getElementById("feedback");
 const buttonNextWord = document.getElementById("next");
 const buttonPreviousWord = document.getElementById("prev");
 
+let incorrectAnswers = [];
+let incorrectWordIndex = 0;
+
+let dictionary = book1_phonetics; // default dictionary
+let dictionaryName = "Book 1 Phonetics";
 let currentWordIndex = 0;
-let dictionary = book1_phonetics;
-let attemptAnswer = 0;
-let correctAnswer = 0;
-let incorrectAnswer = 0;
+
+let noOfAttemptedAnswer = 0;
+let noOfCorrectAnswer = 0;
+let noOfIncorrectAnswer = 0;
 
 setDictionary();
-multipleChoice(currentWordIndex);
+// multipleChoice(currentWordIndex);
 
 buttonPreviousWord.addEventListener("click", () => {
-
-    setDictionary();
 
     if (currentWordIndex > 0) {
         currentWordIndex = (currentWordIndex - 1) % dictionary.length;
     } else {
         currentWordIndex = dictionary.length - 1;
     }
-    multipleChoice(currentWordIndex);
+    multipleChoice();
+    setFeedback("default");
 });
 
 buttonNextWord.addEventListener("click", () => {
 
-    setDictionary();
-
-    currentWordIndex = (currentWordIndex + 1) % dictionary.length;
-    multipleChoice(currentWordIndex);
+    if (currentWordIndex < dictionary.length) {
+        currentWordIndex = (currentWordIndex + 1) % dictionary.length;
+    } else {
+        //       currentWordIndex = dictionary.length;
+    }
+    multipleChoice();
+    setFeedback(":");
 });
 
-vocabularySelect.addEventListener("change", () => {
+dictionarySelect.addEventListener("change", () => {
 
     setDictionary();
 
-    currentWordIndex = 0;
-    multipleChoice(currentWordIndex);
+    //    currentWordIndex = 0;
+    //    multipleChoice(currentWordIndex);
 
 });
 
-function multipleChoice(index) {
-    const { word, translation, multipleChoice } = dictionary[index];
+function multipleChoice() {
+
+    const { word, translation, multipleChoice } = dictionary[currentWordIndex];
 
     const wordContainer = document.getElementById("word");
     const choiceContainer = document.getElementById("multipleChoice");
@@ -386,44 +395,83 @@ function multipleChoice(index) {
 
 function checkAnswer(buttonChoiceTextObj, translation) {
 
+    noOfAttemptedAnswer++;
+
     if (buttonChoiceTextObj.textContent === translation) {
         buttonChoiceTextObj.classList.add("correct");
-        setFeedback(true);
-    } else {
+        noOfCorrectAnswer++;
+        //        dictionary = dictionary.splice(currentWordIndex);
+        setFeedback("correct answer");
+    } else if (buttonChoiceTextObj.textContent != translation) {
         buttonChoiceTextObj.classList.add("incorrect");
-        setFeedback(false);
+        noOfIncorrectAnswer++;
+        setFeedback("incorrect answer");
+        if (dictionaryName != " Incorrect answers ") {
+            incorrectAnswers.push(dictionary[incorrectWordIndex]);
+            incorrectWordIndex++;
+        }
     }
 }
 
-function setFeedback(result) {
+function setFeedback(message) {
     let feedbackMessage = "";
-    feedbackContainer.classList.remove("feedback", "correct", "incorrect");
-    if (result) {
-        correctAnswer++;
+    feedbackContainer.classList.remove("correct", "incorrect");
+    feedbackContainer.classList.add("feedback");
+
+    if (message === "correct answer") {
         feedbackMessage = " Correct, well done.  ";
         feedbackContainer.classList.add("correct");
-    } else {
-        incorrectAnswer++;
+    } else if (message === "incorrect answer") {
+        //        noOfIncorrectAnswer++;
         feedbackMessage = " Incorrect, try again.  ";
         feedbackContainer.classList.add("incorrect");
+    } else if (message === "incorrectAnswersIsEmpty") {
+        feedbackMessage = " There are no incorrect answers.  Try making mistakes to add to incorrect answers. "
+        feedbackContainer.classList.add("feedback");
+    } else {
+        feedbackMessage = dictionaryName;
     }
-    attemptAnswer++;
+
     feedbackContainer.textContent =
         feedbackMessage
-        + "Attempted " + attemptAnswer.toString() + " answers. "
-        + correctAnswer.toString() + " correct "
-        + incorrectAnswer.toString() + " incorrect.  "
-        + (currentWordIndex + 1).toString() + " of " + dictionary.length + " words.";
+        + " : Attempted " + noOfAttemptedAnswer.toString() + " answers. "
+        + noOfCorrectAnswer.toString() + " correct "
+        + noOfIncorrectAnswer.toString() + " incorrect.  "
+        + (currentWordIndex + 1).toString() + " of " + dictionary.length + " words from "
+        + dictionaryName
 }
 
 function setDictionary() {
 
-    vocabularySelect = document.getElementById("vocabulary");
-
-    if (vocabularySelect.value === "book1_phonetics") {
+    if (dictionarySelect.value === "incorrect_answers") {
+        if (incorrectAnswers.length != 0) {
+            dictionary = incorrectAnswers;
+            dictionaryName = " Incorrect answers "
+            setFeedback(" Selected incorrectly answered Words. ")
+        } else {
+            //            dictionary = book1_phonetics; // set default
+            setFeedback("incorrectAnswersIsEmpty");
+        }
+    } else if (dictionarySelect.value === "book1_phonetics") {
         dictionary = book1_phonetics;
-    } else if (vocabularySelect.value === "book1_lesson1_greetings") {
+        dictionaryName = "Book 1 Phonetics ";
+        setFeedback("Selected book 1 phonetics word set");
+        //       vocabularySelect.value = "Practice reading phonetics";
+    } else if (dictionarySelect.value === "book1_lesson1_greetings") {
         dictionary = book1_lesson1_greetings;
+        dictionaryName = "Book 1 Lesson 1 Greetings"
+        setFeedback(" Selectd book 1 greetings word set. ")
+    } else {
+        dictionary = book1_lesson1_greetings;
+        dictionaryName = "Book 1 Lesson 1 Greetings"
+        setFeedback(" Selectd default book 1 greetings word set. ")
     }
+
+    currentWordIndex = 0;
+    //    noOfAttemptedAnswer = 0;
+    //    noOfCorrectAnswer = 0;
+    //    noOfIncorrectAnswer = 0;
+
+    multipleChoice();
 
 }
