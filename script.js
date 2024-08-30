@@ -323,7 +323,6 @@ let noOfCorrectAnswer = 0;
 let noOfIncorrectAnswer = 0;
 
 setDictionary();
-// multipleChoice(currentWordIndex);
 
 buttonPreviousWord.addEventListener("click", () => {
 
@@ -341,7 +340,7 @@ buttonNextWord.addEventListener("click", () => {
     if (currentWordIndex < dictionary.length) {
         currentWordIndex = (currentWordIndex + 1) % dictionary.length;
     } else {
-        //       currentWordIndex = dictionary.length;
+        currentWordIndex = dictionary.length;
     }
     multipleChoice();
     setFeedback(":");
@@ -350,9 +349,6 @@ buttonNextWord.addEventListener("click", () => {
 dictionarySelect.addEventListener("change", () => {
 
     setDictionary();
-
-    //    currentWordIndex = 0;
-    //    multipleChoice(currentWordIndex);
 
 });
 
@@ -447,30 +443,25 @@ function setDictionary() {
         if (incorrectAnswers.length != 0) {
             dictionary = incorrectAnswers;
             dictionaryName = " Incorrect answers "
-            setFeedback(" Selected incorrectly answered Words. ")
+            setFeedback(" Selected incorrect answers. ")
         } else {
-            //            dictionary = book1_phonetics; // set default
             setFeedback("incorrectAnswersIsEmpty");
         }
     } else if (dictionarySelect.value === "book1_phonetics") {
         dictionary = book1_phonetics;
-        dictionaryName = "Book 1 Phonetics ";
-        setFeedback("Selected book 1 phonetics word set");
-        //       vocabularySelect.value = "Practice reading phonetics";
+        dictionaryName = " Book 1 Phonetics ";
+        setFeedback(" Selected book 1 phonetics word set ");
     } else if (dictionarySelect.value === "book1_lesson1_greetings") {
         dictionary = book1_lesson1_greetings;
-        dictionaryName = "Book 1 Lesson 1 Greetings"
+        dictionaryName = " Book 1 Lesson 1 Greetings "
         setFeedback(" Selectd book 1 greetings word set. ")
     } else {
         dictionary = book1_lesson1_greetings;
-        dictionaryName = "Book 1 Lesson 1 Greetings"
+        dictionaryName = " Book 1 Lesson 1 Greetings "
         setFeedback(" Selectd default book 1 greetings word set. ")
     }
 
     currentWordIndex = 0;
-    //    noOfAttemptedAnswer = 0;
-    //    noOfCorrectAnswer = 0;
-    //    noOfIncorrectAnswer = 0;
 
     multipleChoice();
 

@@ -32,7 +32,7 @@ tbody tr:nth-child(even) {
 
 span:lang("th") {
     direction: ltr;
-    font-size: larger;
+    font-size: x-large;
 }
 
 span:lang("fa") {
@@ -89,7 +89,6 @@ nav span {
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    font-size: large;
 }
 
 span.button {
@@ -104,6 +103,7 @@ span.button {
 
 /* order matters for cascading style sheet ! */
 .feedback {
+    font-family: monospace;
     background-color: lightskyblue;
     color: black;
     border: none;
