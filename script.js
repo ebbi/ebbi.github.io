@@ -1,3 +1,11 @@
+const dict_phonetics = [
+    { en_word: "hello", th_word: "สวัสดี", pronunciation: "sà-wàt-dii" },
+    { en_word: "thank you", th_word: "ขอบคุณ", pronunciation: "kɔ̀ɔp-kun" },
+    { en_word: "never mind", th_word: "ไม่เป็นไร", pronunciation: "mâi-bpen-rai" },
+    { en_word: "sorry; excuse me", th_word: "ขอโทษ", pronunciation: "kɔ̌ɔ-tôot" }
+    { en_word: "nice to meet you", th_word: "ยินดีที:ได้รู้จัก", pronunciation: "yin-dii tîi dâai rúu-jàk" },
+    { en_word: "how about you?", th_word: "(แล้ว) คุณล่ะ", pronunciation: "khun la" }
+];
 const book1_phonetics =
     [
         {
@@ -121,7 +129,7 @@ const book1_lesson1_greetings =
             multipleChoice: [
                 ["sa_wat_dii", "สวัสดี"],
                 ["khoop_khun", "ขอบคุณ"],
-                ["mai_bpen_rai", "never mind"]
+                ["mai_bpen_rai", "ไม่เป็นไร"]
             ]
         },
         {
@@ -137,7 +145,7 @@ const book1_lesson1_greetings =
             multipleChoice: [
                 ["sa_wat_dii", "สวัสดี"],
                 ["khoop_khun", "ขอบคุณ"],
-                ["mai_bpen_rai", "never mind"],
+                ["mai_bpen_rai", "ไม่เป็นไร"],
             ]
         },
         {
@@ -145,7 +153,7 @@ const book1_lesson1_greetings =
             multipleChoice: [
                 ["khoo_thoot", "ขอโทษ"],
                 ["khoop_khun", "ขอบคุณ"],
-                ["mai_bpen_rai", "never mind"],
+                ["mai_bpen_rai", "ไม่เป็นไร"],
             ]
         },
         {
@@ -153,7 +161,7 @@ const book1_lesson1_greetings =
             multipleChoice: [
                 ["khoo_thoot", "ขอโทษ"],
                 ["yin_dii thii daay ruu_jak", "ยินดีที่ได้รู้จัก"],
-                ["mai_bpen_rai", "never mind"],
+                ["mai_bpen_rai", "ไม่เป็นไร"],
             ]
         },
         {
@@ -161,12 +169,12 @@ const book1_lesson1_greetings =
             multipleChoice: [
                 ["khoo_thoot", "ขอโทษ"],
                 ["yin_dii thii daay ruu_jak", "ยินดีที่ได้รู้จัก"],
-                ["leew_khun_la", "how about you"],
+                ["leew_khun_la", "(แล้ว) คุณล่ะ"],
             ]
         }
     ];
 
-const book1_lesson3_vocabulary_1 =
+const book1_lesson3_selectDictionary_1 =
     [
         {
             word: "small", translation: "lek",
@@ -306,7 +314,7 @@ const book1_lesson3_vocabulary_1 =
         }
     ];
 
-const dictionarySelect = document.getElementById("vocabulary");
+const dictionarySelect = document.getElementById("selectDictionary");
 const feedbackContainer = document.getElementById("feedback");
 const buttonNextWord = document.getElementById("next");
 const buttonPreviousWord = document.getElementById("prev");
@@ -316,7 +324,7 @@ let incorrectWordIndex = 0;
 
 let dictionary = book1_phonetics; // default dictionary
 let dictionaryName = "Book 1 Phonetics";
-let currentWordIndex = 0;
+let wordIndex = 0;
 
 let noOfAttemptedAnswer = 0;
 let noOfCorrectAnswer = 0;
@@ -326,10 +334,10 @@ setDictionary();
 
 buttonPreviousWord.addEventListener("click", () => {
 
-    if (currentWordIndex > 0) {
-        currentWordIndex = (currentWordIndex - 1) % dictionary.length;
+    if (wordIndex > 0) {
+        wordIndex = (wordIndex - 1) % dictionary.length;
     } else {
-        currentWordIndex = dictionary.length - 1;
+        wordIndex = dictionary.length - 1;
     }
     multipleChoice();
     setFeedback("default");
@@ -337,10 +345,10 @@ buttonPreviousWord.addEventListener("click", () => {
 
 buttonNextWord.addEventListener("click", () => {
 
-    if (currentWordIndex < dictionary.length) {
-        currentWordIndex = (currentWordIndex + 1) % dictionary.length;
+    if (wordIndex < dictionary.length) {
+        wordIndex = (wordIndex + 1) % dictionary.length;
     } else {
-        currentWordIndex = dictionary.length;
+        wordIndex = dictionary.length;
     }
     multipleChoice();
     setFeedback(":");
@@ -354,7 +362,7 @@ dictionarySelect.addEventListener("change", () => {
 
 function multipleChoice() {
 
-    const { word, translation, multipleChoice } = dictionary[currentWordIndex];
+    const { word, translation, multipleChoice } = dictionary[wordIndex];
 
     const wordContainer = document.getElementById("word");
     const choiceContainer = document.getElementById("multipleChoice");
@@ -382,7 +390,6 @@ function multipleChoice() {
         spanThai.textContent = choiceThai;
         spanThai.lang = "th";
         spanThai.classList.add("button");
-        //   buttonChoiceSound.addEventListener("click", () => checkAnswer(choiceText, translation));
         choiceContainer.appendChild(spanThai);
 
     });
@@ -396,7 +403,6 @@ function checkAnswer(buttonChoiceTextObj, translation) {
     if (buttonChoiceTextObj.textContent === translation) {
         buttonChoiceTextObj.classList.add("correct");
         noOfCorrectAnswer++;
-        //        dictionary = dictionary.splice(currentWordIndex);
         setFeedback("correct answer");
     } else if (buttonChoiceTextObj.textContent != translation) {
         buttonChoiceTextObj.classList.add("incorrect");
@@ -430,10 +436,10 @@ function setFeedback(message) {
 
     feedbackContainer.textContent =
         feedbackMessage
-        + " : Attempted " + noOfAttemptedAnswer.toString() + " answers. "
+        + noOfAttemptedAnswer.toString() + " attempts. "
         + noOfCorrectAnswer.toString() + " correct "
         + noOfIncorrectAnswer.toString() + " incorrect.  "
-        + (currentWordIndex + 1).toString() + " of " + dictionary.length + " words from "
+        + (wordIndex + 1).toString() + " of " + dictionary.length + " words from "
         + dictionaryName
 }
 
@@ -461,7 +467,7 @@ function setDictionary() {
         setFeedback(" Selectd default book 1 greetings word set. ")
     }
 
-    currentWordIndex = 0;
+    wordIndex = 0;
 
     multipleChoice();
 
