@@ -6,8 +6,31 @@ const dictionaryGreetings = [
     { en_word: "nice to meet you", th_word: "ยินดีที:ได้รู้จัก", pronunciation: "yin-dii tîi dâai rúu-jàk" },
     { en_word: "how about you?", th_word: "(แล้ว) คุณล่ะ", pronunciation: "khun la" }
 ];
+
+const dictionaryIncorrectAnswers = [];
+
 let wordIndex = 0;
 let dictionary = dictionaryGreetings;
+let lastDictionary = dictionary;
+let NoAnswerChoices = 3;
+let correctAnswerCount = 0;
+let incorrectAnswerCount = 0;
+let attemptAnswerCount = 0;
+
+const selectDictionary = document.getElementById("selectDictionary");
+const incorrectAnswersOnly = document.getElementById("incorrectAnswersOnly");
+
+initialize();
+function initialize() {
+
+    if (selectDictionary.value === "dictionaryIncorrectAnswers"
+        && incorrectAnswerCount > NoAnswerChoices) {  // 4 words for 1 multiple choice Q/A
+        setDictionary();
+    } else if (selectDictionary.value != "dictionaryIncorrectAnswers") {
+        setDictionary();
+    }
+
+}
 
 previousWord.addEventListener("click", () => {
 
@@ -17,7 +40,7 @@ previousWord.addEventListener("click", () => {
         wordIndex = dictionary.length - 1;
     }
     htmlMultipleChoice(wordIndex);
-    //    setFeedback("default");
+
 });
 
 nextWord.addEventListener("click", () => {
@@ -28,23 +51,71 @@ nextWord.addEventListener("click", () => {
         wordIndex = dictionary.length;
     }
     htmlMultipleChoice(wordIndex);
-    //    setFeedback(":");
+
 });
+
+selectDictionary.addEventListener("change", () => {
+
+    if (selectDictionary.value === "dictionaryIncorrectAnswers"
+        && incorrectAnswerCount > NoAnswerChoices) {  // 4 words for 1 multiple choice Q/A
+        setDictionary();
+    } else if (selectDictionary.value != "dictionaryIncorrectAnswers") {
+        setDictionary();
+    }
+
+});
+
+incorrectAnswersOnly.addEventListener("click", () => {
+    //    e.preventDefault();
+    if (incorrectAnswersOnly.checked) {
+        console.log("checked");
+
+        if (dictionaryIncorrectAnswers.length > NoAnswerChoices) {
+            lastDictionary = dictionary; // restore last dictionary if unchecked
+            dictionary = dictionaryIncorrectAnswers;
+
+            wordIndex = 0;
+            htmlMultipleChoice(wordIndex);
+
+        } else {
+            incorrectAnswersOnly.checked = false;
+        }
+
+    } else {
+        dictionary = lastDictionary;
+    }
+
+});
+
+function setDictionary() {
+
+    if (selectDictionary.value === "dictionaryIncorrectAnswers") {
+        dictionary = dictionaryIncorrectAnswers;
+        dictionaryName = " Incorrect answers ";
+    } else if (selectDictionary.value === "dictionaryGreetings") {
+        dictionary = dictionaryGreetings;
+        dictionaryName = " Greetings ";
+    } else {
+        dictionary = dictionaryGreetings;
+        dictionaryName = " Default Greetings ";
+    }
+
+    wordIndex = 0;
+    htmlMultipleChoice(wordIndex);
+
+}
 
 /* multiple choice exercise for Thai dictionary words.
 loop a dictionary
 for each word:
     loop until random numbers are unique and different from word number
-    display and handle click events on each word
+    display answer choices 
+    handle click events to check the answer
     display feedback
 */
 
-htmlMultipleChoice(0);
-
 function htmlMultipleChoice(questionWordIndex) {
-    //    const dictionary = dictionaryGreetings;
     let randomWordIndexes = [];
-    //   const wordIndex = 0;
 
     const wordContainer = document.getElementById("word");
     const choiceContainer = document.getElementById("choiceWords");
@@ -59,16 +130,51 @@ function htmlMultipleChoice(questionWordIndex) {
     shuffledWordIndex = shuffle(randomWordIndexes);
 
     shuffledWordIndex.forEach(
-        (randomIndex) => {
+        (userSelectedIndex) => {
             const buttonChoiceWord = document.createElement("button");
-            buttonChoiceWord.textContent = dictionary[randomIndex].pronunciation;
+            buttonChoiceWord.textContent = dictionary[userSelectedIndex].pronunciation;
             choiceContainer.appendChild(buttonChoiceWord);
+            buttonChoiceWord.addEventListener("click", function () {
+                if (dictionary[questionWordIndex].pronunciation === dictionary[userSelectedIndex].pronunciation) {
+                    buttonChoiceWord.classList.add("correct");
+                    correctAnswerCount++;
+                } else {
+                    buttonChoiceWord.classList.add("incorrect");
+                    incorrectAnswerCount++;
+                    const found = dictionaryIncorrectAnswers.find(
+                        ({ pronunciation }) => pronunciation === dictionary[questionWordIndex].pronunciation);
+                    if (!found) {
+                        dictionaryIncorrectAnswers.push(dictionary[questionWordIndex]);
+                        // unhide 
+                        if (dictionaryIncorrectAnswers.length > NoAnswerChoices) {
+                            document.getElementById("incorrectAnswersOnlyDiv").hidden = false;
+                        }
+                    }
+                }
+                attemptAnswerCount++;
+                feedback();
+            });
 
-            const buttonChoiceWordTh = document.createElement("button");
-            buttonChoiceWordTh.textContent = dictionary[randomIndex].th_word;
-            choiceContainer.appendChild(buttonChoiceWordTh);
+            const spanChoiceWordTh = document.createElement("span");
+            spanChoiceWordTh.textContent = dictionary[userSelectedIndex].th_word;
+            spanChoiceWordTh.lang = "th";
+            spanChoiceWordTh.classList.add("button");
+
+            spanChoiceWordTh.textContent = dictionary[userSelectedIndex].th_word;
+            choiceContainer.appendChild(spanChoiceWordTh);
 
         });
+}
+
+function feedback() {
+    const buttonCorrect = document.getElementById("correctAnswer");
+    buttonCorrect.textContent = correctAnswerCount;
+
+    const buttonIncorrect = document.getElementById("incorrectAnswer");
+    buttonIncorrect.textContent = incorrectAnswerCount;
+
+    const buttonFeedback = document.getElementById("attemptedAnswer");
+    buttonFeedback.textContent = parseInt((correctAnswerCount / attemptAnswerCount) * 100) + "%";
 }
 
 function getRandomInt(min, max) {
@@ -78,15 +184,16 @@ function getRandomInt(min, max) {
 }
 
 function getRandomIntArray(wordIndex, dictionaryLength) {
-    const choices = 3;
     let randomNumbers = [];
 
-    n = 0;
-    while (n < choices) {
-        r = getRandomInt(0, dictionaryLength);
-        if (!randomNumbers.includes(r) && r != wordIndex) {
-            randomNumbers.push(r);
-            n++;
+    if (dictionaryLength > NoAnswerChoices) {
+        n = 0;
+        while (n < NoAnswerChoices) {
+            r = getRandomInt(0, dictionaryLength);
+            if (!randomNumbers.includes(r) && r != wordIndex) {
+                randomNumbers.push(r);
+                n++;
+            }
         }
     }
     return randomNumbers;

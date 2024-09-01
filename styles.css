@@ -1,5 +1,6 @@
 body {
-    font-size: small;
+    font-size: 1rem;
+    line-height: 1.15rem;
 }
 
 table {
@@ -32,7 +33,7 @@ tbody tr:nth-child(even) {
 
 span:lang("th") {
     direction: ltr;
-    font-size: x-large;
+    font-size: 1.25rem;
 }
 
 span:lang("fa") {
@@ -40,9 +41,8 @@ span:lang("fa") {
 }
 
 button {
-    min-width: 12vw;
-    padding: 0.5vw;
-    margin: 0.5vw;
+    padding: 1vw;
+    margin: 1vw;
 }
 
 nav a {
@@ -59,13 +59,12 @@ nav span {
     padding: 0.5vw;
 }
 
-.float-right {
-    float: right;
+nav button {
+    min-width: 16vw;
 }
 
-#feedback {
-    margin: 1vw;
-    padding: 1vw;
+.float-right {
+    float: right;
 }
 
 .two-col-grid {
@@ -78,7 +77,7 @@ nav span {
     background-color: lightyellow;
     color: black;
     padding: 1vw;
-    font-size: larger;
+    /*    font-size: larger; */
 }
 
 .default-button {
@@ -92,22 +91,43 @@ nav span {
 }
 
 span.button {
-    margin: 5px;
-    padding: 5px;
+    margin: 1vw;
+    padding: 1vw;
     background-color: white;
     color: black;
     border: none;
     border-radius: 5px;
-    /* font-size: x-large; */
 }
 
-/* order matters for cascading style sheet ! */
 .feedback {
-    font-family: monospace;
-    background-color: lightskyblue;
+    background-color: lightyellow;
     color: black;
     border: none;
     border-radius: 0.5vw;
+}
+
+#feedback button {
+    background-color: blue;
+    color: white;
+    margin: 1vw;
+    padding: 0.5vw;
+    border-radius: 0;
+    min-width: 0;
+}
+
+#feedback button.correct {
+    background-color: greenyellow;
+    color: black;
+}
+
+#feedback button.incorrect {
+    background-color: red;
+    color: white;
+}
+
+#feedback button.default {
+    background-color: blue;
+    color: white;
 }
 
 .correct {
@@ -120,10 +140,6 @@ span.button {
     background-color: red;
     color: white;
     border-radius: 0.5vw;
-}
-
-font-size-small {
-    font-size: small;
 }
 
 .border {

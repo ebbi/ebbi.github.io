@@ -14,7 +14,7 @@
     <nav id="nav-main">
         <a href="./index-old.html">Home</a>
         <a lang="th" href="./index-old.html">บ้าน</a>
-        <span class="float-right">Ebrahim</span> <span lang="fa">ابراهیم</span>
+        <span>Ebrahim</span> <span class="float-right" lang="fa">ابراهیم</span>
     </nav>
 
     <main>
@@ -26,13 +26,24 @@
                 <div>
                     <select id="selectDictionary" name="selectDictionary">
                         <option value="select">Please select </option>
-                        <option value="greetings">Greetings</option>
-                        <option value="incorrectAnswers">Incorrect answers</option>
+                        <option value="dictionaryGreetings">Greetings</option>
+                        <option value="dictionaryIncorrectAnswers">Incorrect answers</option>
                     </select>
                 </div>
                 <div id="word"></div>
                 <div id="choiceWords" class="two-col-grid"></div>
-                <div id="multipleChoiceFeedback" class="feedback"></div>
+                <div id="feedback" class="feedback">
+
+                    <button id="correctAnswer" class="correct">0</button>
+                    <button id="incorrectAnswer" class="incorrect">0</button>
+                    <button id="attemptedAnswer" class="default">0%</button>
+
+                    <span id="incorrectAnswersOnlyDiv" hidden>
+                        <input id="incorrectAnswersOnly" type="checkbox" name="incorrectAnswersOnly">
+                        <label for="incorrectAnswersOnly">incorrect answers only</label>
+                    </span>
+
+                </div>
 
                 <nav>
                     <button id="previousWord">previous</button>
