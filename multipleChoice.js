@@ -68,7 +68,6 @@ selectDictionary.addEventListener("change", () => {
 incorrectAnswersOnly.addEventListener("click", () => {
     //    e.preventDefault();
     if (incorrectAnswersOnly.checked) {
-        console.log("checked");
 
         if (dictionaryIncorrectAnswers.length > NoAnswerChoices) {
             lastDictionary = dictionary; // restore last dictionary if unchecked
