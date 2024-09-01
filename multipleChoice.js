@@ -1,10 +1,11 @@
 const dictionaryGreetings = [
-    { en_word: "hello", th_word: "สวัสดี", pronunciation: "sà-wàt-dii" },
-    { en_word: "thank you", th_word: "ขอบคุณ", pronunciation: "kɔ̀ɔp-kun" },
-    { en_word: "never mind", th_word: "ไม่เป็นไร", pronunciation: "mâi-bpen-rai" },
-    { en_word: "sorry; excuse me", th_word: "ขอโทษ", pronunciation: "kɔ̌ɔ-tôot" },
-    { en_word: "nice to meet you", th_word: "ยินดีที:ได้รู้จัก", pronunciation: "yin-dii tîi dâai rúu-jàk" },
-    { en_word: "how about you?", th_word: "(แล้ว) คุณล่ะ", pronunciation: "khun la" }
+    { en_word: "hello", th_word: "สวัสดี", pronunciation: "sà-wàt-dii", ex_en: "hello", ex_pronunciation: "sà-wàt-dii-khráp", ex_th: "สวัสดีครับ" },
+    { en_word: "thank you", th_word: "ขอบคุณ", pronunciation: "kɔ̀ɔp-kun", en_ex: "", ex_th: "" },
+    { en_word: "never mind", th_word: "ไม่เป็นไร", pronunciation: "mâi-bpen-rai", en_ex: "", ex_th: "" },
+    { en_word: "sorry; excuse me", th_word: "ขอโทษ", pronunciation: "kɔ̌ɔ-tôot", en_ex: "", ex_th: "" },
+    { en_word: "nice to meet you", th_word: "ยินดีที:ได้รู้จัก", pronunciation: "yin-dii tîi dâai rúu-jàk", en_ex: "", ex_th: "" },
+    { en_word: "how about you?", th_word: "(แล้ว) คุณล่ะ", pronunciation: "khun la", en_ex: "", ex_th: "" }
+    //   { en_word: "", th_word: "", pronunciation: "" }
 ];
 
 const dictionaryIncorrectAnswers = [];
@@ -158,11 +159,28 @@ function htmlMultipleChoice(questionWordIndex) {
             spanChoiceWordTh.textContent = dictionary[userSelectedIndex].th_word;
             spanChoiceWordTh.lang = "th";
             spanChoiceWordTh.classList.add("button");
-
-            spanChoiceWordTh.textContent = dictionary[userSelectedIndex].th_word;
             choiceContainer.appendChild(spanChoiceWordTh);
 
         });
+
+
+    const exampleContainer = document.getElementById("example");
+    exampleContainer.innerHTML = "";
+
+    const spanExampleEn = document.createElement("span");
+    spanExampleEn.textContent = dictionary[questionWordIndex].ex_en;
+    exampleContainer.appendChild(spanExampleEn);
+
+    const spanExamplePronunciation = document.createElement("span");
+    spanExamplePronunciation.textContent = dictionary[questionWordIndex].ex_pronunciation;
+    exampleContainer.appendChild(spanExamplePronunciation);
+
+    const spanExampleTh = document.createElement("span");
+    spanExampleTh.lang = "th";
+    spanExampleTh.textContent = dictionary[questionWordIndex].ex_th;
+    exampleContainer.appendChild(spanExampleTh);
+
+
 }
 
 function feedback() {
