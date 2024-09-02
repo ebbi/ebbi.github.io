@@ -16,11 +16,9 @@ const dictionaryGreetings = [
     { en_word: "our; ours", th_word: "ของพวกเรา", pronunciation: "khɔ̌ɔŋ phûak-raw", ex_en: "", ex_pronunciation: "", ex_th: "" },
     { en_word: "their; theirs", th_word: "ของพวกเขา", pronunciation: "khɔ̌ɔŋ phûak-khǎw", ex_en: "", ex_pronunciation: "", ex_th: "" },
     { en_word: "name", th_word: "ชื[อ", pronunciation: "chʉ̂ʉ", ex_en: "What is your name?", ex_pronunciation: "khun chʉ̂ʉ à-rai khráp/khá", ex_th: "คุณชืxออะไรครับ" },
-    { en_word: "first name", th_word: "ชื#อจริง", pronunciation: "chɯ̂ɯ jiŋ", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { en_word: "first name", th_word: "ชื#อจริง", pronunciation: "chʉ̂ʉ jiŋ", ex_en: "", ex_pronunciation: "", ex_th: "" },
     { en_word: "surname", th_word: "นามสกุล", pronunciation: "naam-sà-gun", ex_en: "", ex_pronunciation: "", ex_th: "" },
-    { en_word: "nickname", th_word: "อเล่น", pronunciation: "chɯ̂ɯ lên", ex_en: "", ex_pronunciation: "", ex_th: "" },
-    { en_word: "How are you doing?", th_word: "นยังไงบ้าง", pronunciation: "bpen-yaŋ-ŋai-bâaŋ", ex_en: "", ex_pronunciation: "", ex_th: "" },
-    { en_word: "Have you eaten?", th_word: "กินข้าวรึยัง", pronunciation: "gin khâaw rɯ́ -yaŋ", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { en_word: "nickname", th_word: "อเล่น", pronunciation: "chʉ̂ʉ lên", ex_en: "", ex_pronunciation: "", ex_th: "" },
     { en_word: "fine", th_word: "สบายดี", pronunciation: "sà-baay-dii", ex_en: "", ex_pronunciation: "", ex_th: "" },
     { en_word: "pretty good", th_word: "ก็ดี", pronunciation: "gɔ̂ɔ dii", ex_en: "", ex_pronunciation: "", ex_th: "" },
     { en_word: "so so", th_word: "เฉย เฉย", pronunciation: "chə̌əy-chə̌əy", ex_en: "", ex_pronunciation: "", ex_th: "" },
@@ -30,7 +28,7 @@ const dictionaryGreetings = [
     { en_word: "from", th_word: "จาก", pronunciation: "jàak", ex_en: "", ex_pronunciation: "", ex_th: "" },
     { en_word: "where", th_word: "ทีWไหน", pronunciation: "thîi-nǎi", ex_en: "Where are you from?", ex_pronunciation: "khun maa jàak thîi-nǎi khráp", ex_th: "คุณมาจากทีxไหนครับ" },
     { en_word: "to eat", th_word: "กิน", pronunciation: "gin", ex_en: "", ex_pronunciation: "", ex_th: "" },
-    { en_word: "to drink", th_word: "ดืxม", pronunciation: "dɯ̀ ɯm", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { en_word: "to drink", th_word: "ดืxม", pronunciation: "dʉ̀ʉm", ex_en: "", ex_pronunciation: "", ex_th: "" },
     { en_word: "to watch", th_word: "ดู", pronunciation: "duu", ex_en: "", ex_pronunciation: "", ex_th: "" },
     { en_word: "to listen", th_word: "ฟัง", pronunciation: "faŋ", ex_en: "", ex_pronunciation: "", ex_th: "" },
     { en_word: "to wake up", th_word: "ตืxน", pronunciation: "dtɯ̀ ɯn", ex_en: "", ex_pronunciation: "", ex_th: "" },
@@ -47,7 +45,6 @@ const dictionaryGreetings = [
     { en_word: "to cme", th_word: "มา", pronunciation: "maa", ex_en: "", ex_pronunciation: "", ex_th: "" },
     { en_word: "to do or make", th_word: "ทํา", pronunciation: "tham", ex_en: "", ex_pronunciation: "", ex_th: "" }
     //    { en_word: "", th_word: "", pronunciation: "", ex_en: "", ex_pronunciation: "", ex_th: "" },
-
 ];
 
 const dictionaryIncorrectAnswers = [];
