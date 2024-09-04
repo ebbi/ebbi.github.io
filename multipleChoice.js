@@ -1,4 +1,4 @@
-const dictionaryGreetings = [
+const dictionaryBase = [
     { en_word: "hello", th_word: "สวัสดี", pronunciation: "sà-wàt-dii", ex_en: "hello", ex_pronunciation: "sà-wàt-dii-khráp", ex_th: "สวัสดีครับ" },
     { en_word: "thank you", th_word: "ขอบคุณ", pronunciation: "kɔ̀ɔp-kun", en_ex: "", ex_th: "" },
     { en_word: "never mind", th_word: "ไม่เป็นไร", pronunciation: "mâi-bpen-rai", en_ex: "", ex_th: "" },
@@ -49,7 +49,8 @@ const dictionaryGreetings = [
 const dictionaryIncorrectAnswers = [];
 
 let wordIndex = 0;
-let dictionary = dictionaryGreetings;
+let dictionary = dictionaryBase;
+let dictionaryName = "Base dictionary"
 let lastDictionary = dictionary;
 let NoAnswerChoices = 3;
 let correctAnswerCount = 0;
@@ -127,15 +128,12 @@ incorrectAnswersOnly.addEventListener("click", () => {
 
 function setDictionary() {
 
-    if (selectDictionary.value === "dictionaryIncorrectAnswers") {
-        dictionary = dictionaryIncorrectAnswers;
-        dictionaryName = " Incorrect answers ";
-    } else if (selectDictionary.value === "dictionaryGreetings") {
-        dictionary = dictionaryGreetings;
-        dictionaryName = " Greetings ";
+    if (selectDictionary.value === "dictionaryGreetings") {
+        dictionary = dictionaryBase;
+        dictionaryName = " Base Dictionary ";
     } else {
-        dictionary = dictionaryGreetings;
-        dictionaryName = " Default Greetings ";
+        dictionary = dictionaryBase;
+        dictionaryName = " Base Dictionary ";
     }
 
     wordIndex = 0;
@@ -217,7 +215,6 @@ function htmlMultipleChoice(questionWordIndex) {
     spanExampleTh.lang = "th";
     spanExampleTh.textContent = dictionary[questionWordIndex].ex_th;
     exampleContainer.appendChild(spanExampleTh);
-
 
 }
 
