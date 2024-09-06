@@ -18,43 +18,44 @@
     </nav>
 
     <main>
-
+        <!--
         <details open>
             <summary>Words are worthy of respect!</summary>
+-->
+        <div>
 
-            <div class="border">
+            <div id="word"></div>
+            <div id="choiceWords" class="two-col-grid"></div>
+            <div id="feedback" class="feedback">
 
-                <div id="word"></div>
-                <div id="choiceWords" class="two-col-grid"></div>
-                <div id="feedback" class="feedback">
+                <button id="correctAnswer" class="correct">0</button>
+                <button id="incorrectAnswer" class="incorrect">0</button>
+                <button id="attemptedAnswer" class="default">0%</button>
 
-                    <button id="correctAnswer" class="correct">0</button>
-                    <button id="incorrectAnswer" class="incorrect">0</button>
-                    <button id="attemptedAnswer" class="default">0%</button>
-
-                    <div id="incorrectAnswersOnlyDiv" hidden>
-                        <input id="incorrectAnswersOnly" type="checkbox" name="incorrectAnswersOnly">
-                        <label for="incorrectAnswersOnly">incorrect answers only</label>
-                    </div>
-
+                <div id="incorrectAnswersOnlyDiv" hidden>
+                    <input id="incorrectAnswersOnly" type="checkbox" name="incorrectAnswersOnly">
+                    <label for="incorrectAnswersOnly">incorrect answers only</label>
                 </div>
 
-                <nav>
-                    <button id="previousWord">previous</button>
-                    <button id="nextWord">next</button>
-
-                    <select id="selectDictionary" name="selectDictionary">
-                        <option value="select">Dictionary</option>
-                        <option value="dictionaryGreetings">Base Dictionary</option>
-                    </select>
-
-                </nav>
-
-                <div id="example"></div>
-
             </div>
-        </details>
 
+            <nav>
+                <button id="previousWord">previous</button>
+                <button id="nextWord">next</button>
+
+                <select id="selectDictionary" name="selectDictionary">
+                    <option value="select">Dictionary</option>
+                    <option value="dictionaryGreetings">Base Dictionary</option>
+                </select>
+
+            </nav>
+
+            <div id="example"></div>
+
+        </div>
+        <!--
+        </details>
+-->
         <details>
             <summary>Pronouns</summary>
 
