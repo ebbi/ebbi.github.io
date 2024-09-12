@@ -1,0 +1,32 @@
+.background-blue {
+    background-color: blue;
+    color: white;
+}
+
+.notice {
+    color: black;
+}
+
+#currentWord {
+    background-color: greenyellow;
+    color: black;
+    padding: 0.7rem 0.9rem;
+    margin: 0.5rem 0;
+    font-size: 1rem;
+}
+
+#choiceWords div span:lang(th) {
+    color: red;
+    float: right;
+    font-size: larger;
+}
+
+.correct {
+    background-color: greenyellow;
+    color: black;
+}
+
+.incorrect {
+    background-color: red;
+    color: white;
+}

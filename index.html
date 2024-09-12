@@ -1,303 +1,226 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html dir="ltr" lang="en" class="no-js">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Play</title>
     <link rel="icon" type="image/x-icon" href="/assets/images/bitcoin-logo.ico">
-    <title>words</title>
+    <meta name="description" content="Personal play ground">
+    <meta property="og:url" content="https://ebbi.github.io/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Blogs Bitcoin and History">
+    <meta property="og:image" content="https://ebbi.github.io/assets/images/bitcoin-logo.png">
+    <meta property="og:image:secure_url" content="https://ebbi.github.io/assets/images/bitcoin-logo.png">
+    <meta property="og:image:width" content="840">
+    <meta property="og:image:height" content="859">
+    <meta property="og:description" content="Personal play ground">
+    <meta property="og:site_name" content="Blogs Bitcoin and History">
+
+    <link rel="home" href="https://ebbi.github.io/">
+
     <link rel="stylesheet" href="/assets/stylesheet/core.css" media="screen">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="/assets/stylesheet/multipleChoice.css" media="screen">
+
 </head>
 
 <body>
-    <nav id="nav-main">
-        <a href="./index-old.html">Home</a>
-        <a lang="th" href="./index-old.html">บ้าน</a>
-        <span>Ebrahim</span> <span class="float-right" lang="fa">ابراهیم</span>
-    </nav>
+
+    <header>
+        <nav aria-label="Main">
+            <ul>
+                <li>
+                    <a href="/index.html" hreflang="en">
+                        <img class="" src="/assets/images/home.svg" width="17" height="17" alt="Home" aria-hidden="true"
+                            loading="lazy"></a>
+                </li>
+                <li>
+                    <a target="_blank" hreflang="en" href="https://duckduckgo.com/?q=site%3Aebbi.github.io&ia=web"
+                        class="nav-link icon-link"><img class="icon" src="/assets/images/search.svg" width="20"
+                            height="20" alt aria-hidden="true">
+                    </a>
+                </li>
+                <li>
+                    <a target="_blank" class="nav-link" href="https://github.com/ebbi/ebbi.github.io/" hreflang="en">
+                        <img class="" src="/assets/images/github.svg" width="20" height="20" alt="github"
+                            aria-hidden="true" loading="lazy"></a>
+                </li>
+            </ul>
+        </nav>
+    </header>
 
     <main>
         <!--
-        <details open>
-            <summary>Words are worthy of respect!</summary>
+        <p class="header">
+            <span class="ltr" lang="th">ยินดีต้อนรับ</span>
+            <span class="rtl" lang="fa">خوش آمدید</span>
+        </p>
 -->
-        <div>
+        <div id="learn-thai">
 
-            <div id="word"></div>
-            <div id="choiceWords" class="two-col-grid"></div>
-            <div id="feedback" class="feedback">
+            <details open>
+                <summary class="background-blue">
+                    <span class="notice">
+                        Learn Thai &mdash;
+                        <span lang="th">เรียนภาษาไทย</span>
+                    </span>
+                </summary>
+                <div id="currentWord"></div>
+                <div id="choiceWords" class="two-col-grid"></div>
+                <div id="feedback" class="feedback">
 
-                <button id="correctAnswer" class="correct">0</button>
-                <button id="incorrectAnswer" class="incorrect">0</button>
-                <button id="attemptedAnswer" class="default">0%</button>
+                    <button id="correctAnswer" class="correct">0</button>
+                    <button id="incorrectAnswer" class="incorrect">0</button>
+                    <button id="attemptedAnswer" class="default">0%</button>
 
-                <div id="incorrectAnswersOnlyDiv" hidden>
-                    <input id="incorrectAnswersOnly" type="checkbox" name="incorrectAnswersOnly">
-                    <label for="incorrectAnswersOnly">incorrect answers only</label>
+                    <div id="incorrectAnswersOnlyDiv" hidden>
+                        <input id="incorrectAnswersOnly" type="checkbox" name="incorrectAnswersOnly">
+                        <label for="incorrectAnswersOnly">incorrect answers only</label>
+                    </div>
+
                 </div>
 
-            </div>
+                <nav>
+                    <button id="previousWord">previous</button>
+                    <button id="nextWord">next</button>
 
-            <nav>
-                <button id="previousWord">previous</button>
-                <button id="nextWord">next</button>
+                    <select id="selectDictionary" name="selectDictionary">
+                        <option value="select">Dictionary</option>
+                        <option value="dictionaryGreetings">Base Dictionary</option>
+                    </select>
 
-                <select id="selectDictionary" name="selectDictionary">
-                    <option value="select">Dictionary</option>
-                    <option value="dictionaryGreetings">Base Dictionary</option>
-                </select>
+                </nav>
 
+                <div id="example"></div>
+            </details>
+        </div>
+
+
+        <div class="nav-separator">
+            <nav dir="rtl" lang="fa">
+                <details>
+                    <summary class="background-orange">
+                        <span class="notice">
+                            آموزش بیت کوین ( بندری )
+                        </span>
+                    </summary>
+                    <div class="notice text-alignment-center">
+                        <a class="header" href="/fa/ba/courses/btc-diploma/btc-diploma.html">
+                            دوره دیپلم بیت کوین
+                        </a>
+                        "یک سفر ده هفته ای تحول آفرین از طریق آموزش مستقل، بی طرفانه، با کیفیت و مجانی."
+                        <br>
+                        ترجمه بندری از
+                        <a target="_blank" href="https://fa.myfirstbitcoin.io/">Mi Primer Bitcoin</a>
+                        - مرداویج(مروان)
+                    </div>
+                    <div class="notice text-alignment-center">
+                        <a class="header" href="/fa/ba/courses/3blue1brown.html">
+                            داشتن بیت کوین چه معنی ایشستن؟ - ویدئو
+                        </a>
+                        ترجمه فارسی از
+                        <a href="https://www.youtube.com/watch?v=bBC-nXj3Ng4&t=1s">YouTube - 3Blue1Brown</a>
+                    </div>
+                    <div class="notice text-alignment-center">
+                        <a class="header" target="_blank" href="/fa/assets/bitcoin-paper-fa.pdf">
+                            بیت کوین: یک سیستم پول الکترونیکی فرد به فرد - ساتوشی ناکاموتو
+                        </a>
+                        ترجمه فارسی از
+                        <a target="_blank" href="https://bitcoin.org/en/bitcoin-paper">bitcoin.org</a>
+                        &dash;
+                        زهرا امینی
+                    </div>
+                </details>
             </nav>
 
-            <div id="example"></div>
+            <nav dir="ltr" lang="en">
+                <details>
 
+                    <summary class="background-orange">
+                        <span class="notice">
+                            Bitcoin Education
+                        </span>
+                    </summary>
+
+                    <div class="notice text-alignment-center">
+                        <b>
+                            <a href="https://myfirstbitcoin.io/">
+                                <span class="header">The Bitcoin Diploma Course</span>
+                            </a> </b>
+                    </div>
+
+                    <div class="notice text-alignment-center">
+                        <a class="header" href="/en/courses/3blue1brown.html">
+                            What does it mean to own a Bitcoin? - Video
+                        </a>
+                    </div>
+
+                    <div class="notice text-alignment-center">
+                        <a class="header" target="_blank" href="/en/assets/bitcoin-paper-en.pdf">Bitcoin: A Peer-to-Peer
+                            Electronic
+                            Cash
+                            System - Satoshi Nakamoto</a>
+                    </div>
+
+                </details>
+            </nav>
         </div>
-        <!--
-        </details>
--->
-        <details>
-            <summary>Pronouns</summary>
 
-            <table id="table_pronouns">
-                <thead>
-                    <tr>
-                        <th colspan="3">select to read or translate (install Google translate and Read Aloud text to
-                            speech browser extension)</th>
-                    </tr>
-                </thead>
-                <tr>
-                    <td><span lang="th">ฉัน</span></td>
-                    <td>chan</td>
-                    <td>I for female</td>
-                </tr>
-                <tr>
-                    <td><span lang="th">ผม</span></td>
-                    <td>phom</td>
-                    <td>I for male</td>
-                </tr>
-                <tr>
-                    <td><span lang="th">คุณ</span></td>
-                    <td>khun</td>
-                    <td>you</td>
-                </tr>
-                <tr>
-                    <td><span lang="th">เขา</span></td>
-                    <td>kaw</td>
-                    <td>he or she</td>
-                </tr>
-                <tr>
-                    <td><span lang="th">พวกเรา</span></td>
-                    <td>phuak-raw</td>
-                    <td>we or us</td>
-                </tr>
-                <tr>
-                    <td><span lang="th">พวกเขา</span></td>
-                    <td>phuak-khaw</td>
-                    <td>they or them</td>
-                </tr>
-            </table>
+        <!-- History blogs -->
+        <div class="nav-separator">
+            <nav>
+                <details>
+                    <summary class="background-red">
+                        <span class="notice">
+                            History Blogs
+                        </span>
+                    </summary>
+                    <ul class="list-style-none">
+                        <li>
+                            <a class="header" target="_blank"
+                                href="https://twolegsbadblog.wordpress.com/2016/02/21/a-history-of-political-islam-and-the-west-part-3-iran-revolution-1/">
+                                Iran: Revolution #1 <br>
+                                <img src="/fa/iran/iran-revolution-1/images/8.png"
+                                    alt="The army fires on protesters, Black Friday, 8 September 1978" width="600">
+                            </a>
+                        </li>
+                    </ul>
 
-            <details open>
-                <summary>Possessive Pronouns <b>khong</b>
-                    <span lang="th">ของ</span> belong to or of
-                </summary>
+                </details>
+            </nav>
+            <nav dir="rtl" lang="fa">
+                <details>
+                    <summary class="background-red">
+                        <span class="notice">
+                            وبلاگ های تاریخ
+                        </span>
+                    </summary>
+                    <ul class="list-style-none">
+                        <li>
+                            <a class="header" href="/fa/iran/iran-revolution-1/iran-revolution-1.html">
+                                ایران: انقلاب فصل اول <br>
+                                <img src="/fa/iran/iran-revolution-1/images/8.png"
+                                    alt=" تیراندازی ارتش به معترضان، جمعه سیاه، ۸ سپتامبر ۱۹۷۸" width="600">
+                            </a>
+                        </li>
+                    </ul>
 
-                <table>
-                    <tr>
-                        <td><span lang="th">ของฉัน</span></td>
-                        <td>khoong chan</td>
-                        <td>my or mine for female</td>
-                    </tr>
-                    <tr>
-                        <td><span lang="th">ของผม</span></td>
-                        <td>khoong phom</td>
-                        <td>my or mine for male</td>
-                    </tr>
-                    <tr>
-                        <td><span lang="th">ของคุณ</span></td>
-                        <td>khoong khun</td>
-                        <td>your or yours</td>
-                    </tr>
-                    <tr>
-                        <td><span lang="th">ของเขา</span></td>
-                        <td>khoong kaw</td>
-                        <td>her or his or hers</td>
-                    </tr>
-                    <tr>
-                        <td><span lang="th">ของเรา</span></td>
-                        <td>khoong phuak-raw</td>
-                        <td>our or ours</td>
-                    </tr>
-                    <tr>
-                        <td><span lang="th">ของพวกเขา</span></td>
-                        <td>khoong phuak-khaw</td>
-                        <td>their or theirs</td>
-                    </tr>
-                </table>
-
-            </details>
-
-            <details open>
-                <summary>Structure</summary>
-                <table>
-                    <tr>
-                        <td><span lang="th">บ้านของฉัน</span></td>
-                        <td>baan khoong phom</td>
-                        <td>my house</td>
-                    </tr>
-                    <tr>
-                        <td><span lang="th">คุณครูของคุณ</span></td>
-                        <td>kruu koong khun</td>
-                        <td>your teacher</td>
-                    </tr>
-                    <tr>
-                        <td><span lang="th">แฟนของเธอ</span></td>
-                        <td>faen koong khaw</td>
-                        <td>her boyfriend</td>
-                    </tr>
-                    <tr>
-                        <td><span lang="th">บ้านของจอห์น</span></td>
-                        <td>baan khoong John</td>
-                        <td>John's house</td>
-                    </tr>
-                    <tr>
-                        <td><span lang="th">หนังสือของพวกเขา</span></td>
-                        <td>naang-sww khoong phuak-khaw </td>
-                        <td>their books</td>
-                    </tr>
-                    <tr>
-                        <td><span lang="th">ครอบครัวของเรา</span></td>
-                        <td>khroop-khrua khoong raw </td>
-                        <td>our family</td>
-                    </tr>
-                    <tr>
-                        <td><span lang="th">โรงเรียนของทอม</span></td>
-                        <td>rong-rian khoong Tom </td>
-                        <td>Tom's school</td>
-                    </tr>
-                    <tr>
-                        <td><span lang="th">กาแฟของพ่อ</span></td>
-                        <td>gafee khoong Por </td>
-                        <td>Dad's coffee</td>
-                    </tr>
-                </table>
-
-            </details>
-
-        </details>
-
-        <details>
-            <summary>
-                what &mdash;
-                a-rai &mdash;
-                อะไร
-            </summary>
-
-            <table>
-                <tr>
-                    <td><span lang="th">คุณชื่ออะไร?</span></td>
-                    <td>khun chww arai?</td>
-                </tr>
-                <tr>
-                    <td>What is your name?</td>
-                    <td>you name what</td>
-                </tr>
-            </table>
-
-            <table>
-                <tr>
-                    <td><span lang="th">คุณครูของคุณชื่ออะไร?</span></td>
-                    <td>khun kruu khoong khun chww arai</td>
-                </tr>
-                <tr>
-                    <td>What is your teacher's name?</td>
-                    <td>teacher yours name what</td>
-                </tr>
-            </table>
-
-            <table>
-                <tr>
-                    <td><span lang="th">เพื่อนของคุณชื่ออะไร?</span></td>
-                    <td>phwan khoong khun chww arai</td>
-                </tr>
-                <tr>
-                    <td>What is your friend's name?</td>
-                    <td>friend yours name what</td>
-                </tr>
-            </table>
-
-            <table>
-                <tr>
-                    <td><span lang="th">หมาของคุณชื่ออะไร?</span></td>
-                    <td>maa khoong khun cheww arai</td>
-                </tr>
-                <tr>
-                    <td>What is your dog's name?</td>
-                    <td>dog yours what name</td>
-                </tr>
-            </table>
-
-            <table>
-                <tr>
-                    <td><span lang="th">เขาชื่ออะไร?</span></td>
-                    <td>khaw cheww arai</td>
-                </tr>
-                <tr>
-                    <td>What is his/her name?</td>
-                    <td>her name what</td>
-                </tr>
-            </table>
-
-        </details>
-
-        <details>
-            <summary>
-                where &mdash;
-                thii-nai &mdash;
-                ที่ไหน
-            </summary>
-
-            <table>
-                <tr>
-                    <td><span lang="th">คุณมาจากไหน?</span></td>
-                    <td>kkhun maa jaak thi-nai</td>
-                </tr>
-                <tr>
-                    <td>Where do you come from?</td>
-                    <td>you come from where</td>
-                </tr>
-            </table>
-            <table>
-                <tr>
-                    <td><span lang="th">คุณอยากไปที่ไหน?</span></td>
-                    <td>khun yakk bpai thii-nai</td>
-                </tr>
-                <tr>
-                    <td>Where would you like to go?</td>
-                    <td>you like go where</td>
-                </tr>
-            </table>
-            <table>
-                <tr>
-                    <td><span lang="th">คุณอยากทานอาหารที่ไหน?</span></td>
-                    <td>khun yaak than ahaan thii-nai</td>
-                </tr>
-                <tr>
-                    <td>Where would you like to eat?</td>
-                    <td>you like eat food where</td>
-                </tr>
-            </table>
-
-        </details>
-
-        <details>
-            <summary>selectDictionary Part 1</summary>
-        </details>
+                </details>
+            </nav>
+        </div>
 
     </main>
 
-    <script src="multipleChoice.js"></script>
+    <footer>
+        <div>
+            <a target="_blank" href="https://creativecommons.org/about/cclicenses/"><img alt="CC BY-SA 4.0"
+                    src="/assets/images/cc-by-sa.png" width="100" height="20"></a>
+        </div>
+    </footer>
+
+    <script src="/assets/multipleChoice.js"></script>
+
 </body>
 
 </html>

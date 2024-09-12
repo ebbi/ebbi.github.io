@@ -3,6 +3,11 @@ body {
     line-height: 1.15rem;
 }
 
+main {
+    padding: 0;
+    margin: 0;
+}
+
 table {
     table-layout: auto;
 }
@@ -41,8 +46,7 @@ span:lang("fa") {
 }
 
 button {
-    padding: 1vw;
-    margin: 1vw;
+    margin: 0.1vw;
 }
 
 nav a {
@@ -60,7 +64,9 @@ nav span {
 }
 
 nav button {
-    min-width: 16vw;
+    min-width: 24vw;
+    margin: 1vw;
+    padding: 1vw;
 }
 
 .float-right {

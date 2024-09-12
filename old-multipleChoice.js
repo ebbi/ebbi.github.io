@@ -151,25 +151,25 @@ for each word:
 */
 
 function htmlMultipleChoice(questionWordIndex) {
-    let randomWordIndexes = [];
+    let randomWords = [];
 
-    const wordContainer = document.getElementById("word");
-    const choiceContainer = document.getElementById("choiceWords");
-    choiceContainer.innerHTML = "";
+    const currentWord = document.getElementById("currentWord");
+    const choiceWords = document.getElementById("choiceWords");
+    choiceWords.innerHTML = "";
 
-    wordContainer.textContent = dictionary[questionWordIndex].en_word;
+    currentWord.textContent = dictionary[questionWordIndex].en_word;
 
     // get multiple choice word indexes, add index for correct answer, shuffle the array
-    randomWordIndexes = getRandomIntArray(questionWordIndex, dictionary.length);
-    randomWordIndexes.push(questionWordIndex); // add index for correct word
-    let shuffledWordIndex = [];
-    shuffledWordIndex = shuffle(randomWordIndexes);
+    randomWords = getRandomIntArray(questionWordIndex, dictionary.length);
+    randomWords.push(questionWordIndex); // add index for correct word
+    let shuffledWords = [];
+    shuffledWords = shuffle(randomWords);
 
-    shuffledWordIndex.forEach(
+    shuffledWords.forEach(
         (userSelectedIndex) => {
-            const buttonChoiceWord = document.createElement("button");
+            const buttonChoiceWord = document.createElement("div");
             buttonChoiceWord.textContent = dictionary[userSelectedIndex].pronunciation;
-            choiceContainer.appendChild(buttonChoiceWord);
+            choiceWords.appendChild(buttonChoiceWord);
             buttonChoiceWord.addEventListener("click", function () {
                 if (dictionary[questionWordIndex].pronunciation === dictionary[userSelectedIndex].pronunciation) {
                     buttonChoiceWord.classList.add("correct");
@@ -191,11 +191,11 @@ function htmlMultipleChoice(questionWordIndex) {
                 feedback();
             });
 
-            const spanChoiceWordTh = document.createElement("span");
+            const spanChoiceWordTh = document.createElement("div");
             spanChoiceWordTh.textContent = dictionary[userSelectedIndex].th_word;
             spanChoiceWordTh.lang = "th";
             spanChoiceWordTh.classList.add("button");
-            choiceContainer.appendChild(spanChoiceWordTh);
+            choiceWords.appendChild(spanChoiceWordTh);
 
         });
 
@@ -207,11 +207,11 @@ function htmlMultipleChoice(questionWordIndex) {
     spanExampleEn.textContent = dictionary[questionWordIndex].ex_en;
     exampleContainer.appendChild(spanExampleEn);
 
-    const spanExamplePronunciation = document.createElement("span");
+    const spanExamplePronunciation = document.createElement("div");
     spanExamplePronunciation.textContent = dictionary[questionWordIndex].ex_pronunciation;
     exampleContainer.appendChild(spanExamplePronunciation);
 
-    const spanExampleTh = document.createElement("span");
+    const spanExampleTh = document.createElement("div");
     spanExampleTh.lang = "th";
     spanExampleTh.textContent = dictionary[questionWordIndex].ex_th;
     exampleContainer.appendChild(spanExampleTh);
