@@ -2,6 +2,17 @@ button {
     padding: 0.2rem 0.35rem;
 }
 
+select {
+    padding: 0.25rem;
+    margin: 0.4rem 0.1rem;
+    font-size: 1rem;
+}
+
+.two-col-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
 .background-blue {
     background-color: #00247d;
     color: white;

@@ -52,7 +52,7 @@
                     </span>
                 </summary>
                 <div id="currentWord"></div>
-                <div id="choiceWords" class="two-col-grid"></div>
+                <div id="choiceWords"></div>
                 <div id="feedback" class="feedback">
 
                     <button id="correctAnswer" class="correct">0</button>
@@ -67,20 +67,23 @@
                 </div>
 
                 <nav>
-                    <button id="previousWord">previous</button>
-                    <button id="nextWord">next</button>
-
-                    <select id="selectDictionary" name="selectDictionary">
-                        <option value="select">Dictionary</option>
-                        <option value="dictionaryGreetings">Base Dictionary</option>
-                    </select>
-
+                    <div class="two-col-grid">
+                        <div>
+                            <button id="previousWord">previous</button>
+                            <button id="nextWord">next</button>
+                        </div>
+                        <div>
+                            <select id="selectDictionary" name="selectDictionary">
+                                <option value="select">Dictionary</option>
+                                <option value="dictionaryGreetings">Base Dictionary</option>
+                            </select>
+                        </div>
+                    </div>
                 </nav>
 
                 <div id="example"></div>
             </details>
         </div>
-
 
         <div class="nav-separator">
             <nav dir="rtl" lang="fa">
