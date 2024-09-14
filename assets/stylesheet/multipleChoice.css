@@ -8,6 +8,11 @@ select {
     font-size: 1rem;
 }
 
+#example {
+    background-color: white;
+    padding: 0.1rem;
+}
+
 .two-col-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
