@@ -8,6 +8,3 @@ Bitcoin and History, Courses and Blogs.
 
 ## About Me
 Bitcoin enthusiast and Web developer but better at making coffee
-
-## Feedback
-If you have any feedback, please reach out to us at: bitcoin.training.courses@protonmail.com
