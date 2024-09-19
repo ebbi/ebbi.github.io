@@ -274,7 +274,6 @@ randomizeCheckbox.addEventListener("change", () => {
 
 function setDictionary() {
 
-
     if (selectDictionary.value === "dictionaryIncorrectAnswers"
         && incorrectAnswerCount > NoAnswerChoices) {  // 4 words for 1 multiple choice Q/A
         dictionaryName = " Incorrectly answered words ";
@@ -293,9 +292,9 @@ function setDictionary() {
 
     if (randomize == true) {
         dictionary = shuffle(dictionary);
-    } else {
-        //       dictionary = dictionary.toSorted();
     }
+
+    feedback();
 
     wordIndex = 0;
     htmlMultipleChoice(wordIndex);
