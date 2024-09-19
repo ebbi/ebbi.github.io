@@ -1,5 +1,4 @@
-const dictionaryBase = [
-    { en_word: "Happy birthday David", th_word: "สุขสันต์วันเกิดเดวิด", pronunciation: "Suk san wan ter David", ex_en: "", ex_pronunciation: "", ex_th: "" },
+const dictionaryGeneral = [
     { en_word: "hello", th_word: "สวัสดี", pronunciation: "sà-wàt-dii", ex_en: "hello", ex_pronunciation: "sà-wàt-dii-khráp", ex_th: "สวัสดีครับ" },
     { en_word: "thank you", th_word: "ขอบคุณ", pronunciation: "kɔ̀ɔp-kun", en_ex: "", ex_th: "" },
     { en_word: "never mind", th_word: "ไม่เป็นไร", pronunciation: "mâi-bpen-rai", en_ex: "", ex_th: "" },
@@ -32,7 +31,7 @@ const dictionaryBase = [
     { en_word: "to drink", th_word: "ดืxม", pronunciation: "dʉ̀ʉm", ex_en: "", ex_pronunciation: "", ex_th: "" },
     { en_word: "to watch", th_word: "ดู", pronunciation: "duu", ex_en: "", ex_pronunciation: "", ex_th: "" },
     { en_word: "to listen", th_word: "ฟัง", pronunciation: "faŋ", ex_en: "", ex_pronunciation: "", ex_th: "" },
-    { en_word: "to wake up", th_word: "ตืxน", pronunciation: "dtɯ̀ ɯn", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { en_word: "to wake up", th_word: "ตืxน", pronunciation: "dtɯ̀ɯn", ex_en: "", ex_pronunciation: "", ex_th: "" },
     { en_word: "to lie down or sleep", th_word: "นอน", pronunciation: "nɔɔn", ex_en: "", ex_pronunciation: "", ex_th: "" },
     { en_word: "to walk", th_word: "เดิน", pronunciation: "dəən", ex_en: "", ex_pronunciation: "", ex_th: "" },
     { en_word: "to speak", th_word: "พูด", pronunciation: "phûut", ex_en: "", ex_pronunciation: "", ex_th: "" },
@@ -46,7 +45,7 @@ const dictionaryBase = [
     { en_word: "to do or make", th_word: "ทํา", pronunciation: "tham", ex_en: "", ex_pronunciation: "", ex_th: "" },
     { en_word: "food", th_word: "อาหาร", pronunciation: "aa-hǎan", ex_en: "", ex_pronunciation: "", ex_th: "" },
     { en_word: "school", th_word: "โรงเรียน", pronunciation: "rooŋ-rian", ex_en: "", ex_pronunciation: "", ex_th: "" },
-    { en_word: "book", th_word: "หนังสือ", pronunciation: "(nǎŋ-sɯ̌ ɯ)", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { en_word: "book", th_word: "หนังสือ", pronunciation: "nǎŋ-sɯ̌ɯ", ex_en: "", ex_pronunciation: "", ex_th: "" },
     { en_word: "market", th_word: "ตลาด", pronunciation: "dtà-làat", ex_en: "", ex_pronunciation: "", ex_th: "" },
     { en_word: "song", th_word: "เพลง", pronunciation: "phleeŋ", ex_en: "", ex_pronunciation: "", ex_th: "" },
     { en_word: "home work", th_word: "การบ้าน", pronunciation: "gaan-bâan", ex_en: "", ex_pronunciation: "", ex_th: "" },
@@ -132,7 +131,7 @@ const dictionaryBase = [
     { en_word: "more than", th_word: "กว่า", pronunciation: "gwàa", ex_en: "", ex_pronunciation: "", ex_th: "" },
     { en_word: "more than / rather than", th_word: "มากกว่า", pronunciation: "mâak gwàa", ex_en: "", ex_pronunciation: "", ex_th: "" },
     { en_word: "than", th_word: "กว่า", pronunciation: "gwàa", ex_en: "", ex_pronunciation: "", ex_th: "" },
-    { en_word: "less tahn", th_word: "น้อยกว่า", pronunciation: "nɔ́ɔy gwàa", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { en_word: "less than", th_word: "น้อยกว่า", pronunciation: "nɔ́ɔy gwàa", ex_en: "", ex_pronunciation: "", ex_th: "" },
     { en_word: "the most", th_word: "ทีสุด", pronunciation: "thîi-sùt", ex_en: "", ex_pronunciation: "", ex_th: "" },
     { en_word: "better", th_word: "ดีกว่า", pronunciation: "dii gwàa", ex_en: "", ex_pronunciation: "", ex_th: "" },
     { en_word: "the best", th_word: "ดีที:สดุ", pronunciation: "dii thîi-sùt", ex_en: "", ex_pronunciation: "", ex_th: "" },
@@ -140,35 +139,82 @@ const dictionaryBase = [
     { en_word: "the best", th_word: "เก่งทีส", pronunciation: "gèŋ thîi-sùt", ex_en: "", ex_pronunciation: "", ex_th: "" },
     { en_word: "less", th_word: "น้ อยกว่า", pronunciation: "nɔ́ɔy gwàa", ex_en: "", ex_pronunciation: "", ex_th: "" },
     { en_word: "least", th_word: "น้อยทีสดุ", pronunciation: "nɔ́ɔy thîi-sùt", ex_en: "", ex_pronunciation: "", ex_th: "" },
-    { en_word: "more", th_word: "มากกว่า เยอะกว่า", pronunciation: "mâak gwàa or yə́ gwàa", ex_en: "", ex_pronunciation: "", ex_th: "" },
-    { en_word: "the most", th_word: "มากทีสดุ /เยอะทีสดุ", pronunciation: "mâak thîi-sùt or yə́ thîi-sùt", ex_en: "mâak thîi-sùt/ yə́ thîi-sùt", ex_pronunciation: "", ex_th: "" }
+    { en_word: "more", th_word: "มากกว่า", pronunciation: "mâak gwàa", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { en_word: "the most", th_word: "มากทีสดุ", pronunciation: "mâak thîi-sùt", ex_en: "", ex_pronunciation: "", ex_th: "" }
     //    { en_word: "", th_word: "", pronunciation: "", ex_en: "", ex_pronunciation: "", ex_th: "" },
+];
+/*
+const dictionaryNumbers = [
+    { en_word: "one", th_word: "หนึ$ง", pronunciation: "nɯŋ", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { en_word: "two", th_word: "สอง", pronunciation: "sɔ̌ɔŋ", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { en_word: "three", th_word: "สาม", pronunciation: "sǎam", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { en_word: "four", th_word: "สี$", pronunciation: "sìi", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { en_word: "five", th_word: "ห้า", pronunciation: "hâa", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { en_word: "six", th_word: "หก", pronunciation: "hòk", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { en_word: "seven", th_word: "เจ็ด", pronunciation: "jèt", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { en_word: "eight", th_word: "แปด", pronunciation: "bpɛ̀ɛt", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { en_word: "nine", th_word: "เก้า", pronunciation: "gâaw", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { en_word: "ten", th_word: "สิบ", pronunciation: "sìp", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { en_word: "eleven", th_word: "สิบเอ็ด", pronunciation: "sìp-èt", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { en_word: "twelve", th_word: "สิบสอง", pronunciation: "sìp-sɔ̌ɔŋ", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { en_word: "thirteen", th_word: "สิบสาม", pronunciation: "sìp-sǎam", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { en_word: "fourteen", th_word: "สิบสี$", pronunciation: "sìp-sìi", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { en_word: "fifteen", th_word: "สิบห้า", pronunciation: "sìp-hâa", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { en_word: "sixteen", th_word: "สิบหก", pronunciation: "sìp-hòk", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { en_word: "seventeen", th_word: "สิบเจ็ด", pronunciation: "sìp-jèt", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { en_word: "eighteen", th_word: "สิบแปด", pronunciation: "sìp-bpɛ̀ɛt", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { en_word: "nineteen", th_word: "สิบเก้า", pronunciation: "sìp-gâaw", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { en_word: "twenty", th_word: "ยีส$ ิบ", pronunciation: "yîi-sìp", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { en_word: "thirsty", th_word: "สามสิบ", pronunciation: "sǎam-sìp", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { en_word: "forty", th_word: "สีสบิ", pronunciation: "sìi-sìp", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { en_word: "fifty", th_word: "ห้าสิบ", pronunciation: "hâa-sìp", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { en_word: "sixty", th_word: "หกสิบ", pronunciation: "hòk-sìp", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { en_word: "seventy", th_word: "เจ็ดสิบ", pronunciation: "jèt-sìp", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { en_word: "eighty", th_word: "แปดสิบ", pronunciation: "bpɛ̀ɛt-sìp", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { en_word: "ninety", th_word: "เก้าสิบ", pronunciation: "gâaw-sìp", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { en_word: "one hundred", th_word: "หนึงร้อย", pronunciation: "nɯŋ-rɔ́ɔy", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { en_word: "one thousand", th_word: "หนึงพัน", pronunciation: "nɯŋ-phan", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { en_word: "ten thousand", th_word: "หนึงหมืน", pronunciation: "nɯŋ-mɯɯn", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { en_word: "one hundred thousand", th_word: "หนึงแสน", pronunciation: "nɯŋ-sɛ̌ɛn", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { en_word: "one million", th_word: "หนึงล้าน", pronunciation: "nɯŋ-láan", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { en_word: "ten", th_word: "สิบ", pronunciation: "sìp", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { en_word: "hundred", th_word: "ร้อย", pronunciation: "rɔ́ɔy", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { en_word: "thousand", th_word: "พัน", pronunciation: "phan", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { en_word: "ten thousand", th_word: "หมืน", pronunciation: "mɯɯn", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { en_word: "hundred thousand", th_word: "แสน", pronunciation: "sɛ̌ɛn", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { en_word: "million", th_word: "ล้าน", pronunciation: "láan", ex_en: "", ex_pronunciation: "", ex_th: "" }
+    //    { en_word: "", th_word: "", pronunciation: "", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    //    { en_word: "", th_word: "", pronunciation: "", ex_en: "", ex_pronunciation: "", ex_th: "" },
+];
+*/
+
+const dictionaryNumbers = [
+    { en_word: "one", th_word: "หนึ$ง", pronunciation: "nɯŋ", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { en_word: "two", th_word: "สอง", pronunciation: "sɔ̌ɔŋ", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { en_word: "three", th_word: "สาม", pronunciation: "sǎam", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { en_word: "four", th_word: "สี$", pronunciation: "sìi", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { en_word: "five", th_word: "ห้า", pronunciation: "hâa", ex_en: "", ex_pronunciation: "", ex_th: "" },
 ];
 
 const dictionaryIncorrectAnswers = [];
 
 let wordIndex = 0;
-let dictionary = dictionaryBase;
-let dictionaryName = "Base dictionary"
+let dictionary = dictionaryGeneral;
+let dictionaryName = "General dictionary"
 let lastDictionary = dictionary;
 let NoAnswerChoices = 3;
 let correctAnswerCount = 0;
 let incorrectAnswerCount = 0;
 let attemptAnswerCount = 0;
+let randomize = false;
 
 const selectDictionary = document.getElementById("selectDictionary");
 const incorrectAnswersOnly = document.getElementById("incorrectAnswersOnly");
+const randomizeCheckbox = document.getElementById("randomize");
 
 initialize();
 function initialize() {
-
-    if (selectDictionary.value === "dictionaryIncorrectAnswers"
-        && incorrectAnswerCount > NoAnswerChoices) {  // 4 words for 1 multiple choice Q/A
-        setDictionary();
-    } else if (selectDictionary.value != "dictionaryIncorrectAnswers") {
-        setDictionary();
-    }
-
+    setDictionary();
 }
 
 previousWord.addEventListener("click", () => {
@@ -194,14 +240,15 @@ nextWord.addEventListener("click", () => {
 });
 
 selectDictionary.addEventListener("change", () => {
-
-    if (selectDictionary.value === "dictionaryIncorrectAnswers"
-        && incorrectAnswerCount > NoAnswerChoices) {  // 4 words for 1 multiple choice Q/A
-        setDictionary();
-    } else if (selectDictionary.value != "dictionaryIncorrectAnswers") {
-        setDictionary();
-    }
-
+    /*
+        if (selectDictionary.value === "dictionaryIncorrectAnswers"
+            && incorrectAnswerCount > NoAnswerChoices) {  // 4 words for 1 multiple choice Q/A
+            setDictionary();
+        } else if (selectDictionary.value != "dictionaryIncorrectAnswers") {
+            setDictionary();
+        }
+    */
+    setDictionary();
 });
 
 incorrectAnswersOnly.addEventListener("click", () => {
@@ -225,14 +272,39 @@ incorrectAnswersOnly.addEventListener("click", () => {
 
 });
 
+randomizeCheckbox.addEventListener("change", () => {
+    if (randomizeCheckbox.checked) {
+        randomize = true;
+    } else {
+        randomize = false;
+    }
+    setDictionary();
+});
+
+
 function setDictionary() {
 
-    if (selectDictionary.value === "dictionaryGreetings") {
-        dictionary = dictionaryBase;
-        dictionaryName = " Base Dictionary ";
+
+    if (selectDictionary.value === "dictionaryIncorrectAnswers"
+        && incorrectAnswerCount > NoAnswerChoices) {  // 4 words for 1 multiple choice Q/A
+        dictionaryName = " Incorrectly answered words ";
+        dictionary = [...dictionaryIncorrectAnswers];
+    } else if (selectDictionary.value === "dictionaryNumbers") {
+        dictionaryName = " Numbers ";
+        dictionary = [...dictionaryNumbers];
+    } else if (selectDictionary.value === "dictionaryAll") {
+        const dictA = [...dictionaryGeneral];
+        const dictB = [...dictionaryNumbers];
+        dictionary = dictA.concat(dictB);
     } else {
-        dictionary = dictionaryBase;
-        dictionaryName = " Base Dictionary ";
+        dictionaryName = " General ";
+        dictionary = [...dictionaryGeneral];
+    }
+
+    if (randomize == true) {
+        dictionary = shuffle(dictionary);
+    } else {
+        //       dictionary = dictionary.toSorted();
     }
 
     wordIndex = 0;

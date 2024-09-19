@@ -46,7 +46,7 @@
 
             <details open>
                 <summary class="background-blue">
-                    <span class="notice">
+                    <span id="summary-thai" class="notice">
                         Thai &mdash;
                         <span lang="th">เรียนภาษาไทย</span>
                     </span>
@@ -69,13 +69,17 @@
                 <nav>
                     <div class="two-col-grid">
                         <div>
-                            <button id="previousWord">previous</button>
+                            <button id="previousWord">prev</button>
                             <button id="nextWord">next</button>
                         </div>
                         <div>
                             <select id="selectDictionary" name="selectDictionary">
                                 <option value="select">Dictionary</option>
-                                <option value="dictionaryGreetings">Base Dictionary</option>
+                                <option value="dictionaryGeneral">General</option>
+                                <option value="dictionaryNumbers">Numbers</option>
+                                <option value="dictionaryAll">All</option>
+                                <input type="checkbox" id="randomize" name="randomize" value="randomize" />
+                                <label for="coding">randomize</label>
                             </select>
                         </div>
                     </div>
