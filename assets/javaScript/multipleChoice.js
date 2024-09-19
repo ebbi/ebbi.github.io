@@ -143,7 +143,7 @@ const dictionaryGeneral = [
     { en_word: "the most", th_word: "มากทีสดุ", pronunciation: "mâak thîi-sùt", ex_en: "", ex_pronunciation: "", ex_th: "" }
     //    { en_word: "", th_word: "", pronunciation: "", ex_en: "", ex_pronunciation: "", ex_th: "" },
 ];
-/*
+
 const dictionaryNumbers = [
     { en_word: "one", th_word: "หนึ$ง", pronunciation: "nɯŋ", ex_en: "", ex_pronunciation: "", ex_th: "" },
     { en_word: "two", th_word: "สอง", pronunciation: "sɔ̌ɔŋ", ex_en: "", ex_pronunciation: "", ex_th: "" },
@@ -185,15 +185,6 @@ const dictionaryNumbers = [
     { en_word: "million", th_word: "ล้าน", pronunciation: "láan", ex_en: "", ex_pronunciation: "", ex_th: "" }
     //    { en_word: "", th_word: "", pronunciation: "", ex_en: "", ex_pronunciation: "", ex_th: "" },
     //    { en_word: "", th_word: "", pronunciation: "", ex_en: "", ex_pronunciation: "", ex_th: "" },
-];
-*/
-
-const dictionaryNumbers = [
-    { en_word: "one", th_word: "หนึ$ง", pronunciation: "nɯŋ", ex_en: "", ex_pronunciation: "", ex_th: "" },
-    { en_word: "two", th_word: "สอง", pronunciation: "sɔ̌ɔŋ", ex_en: "", ex_pronunciation: "", ex_th: "" },
-    { en_word: "three", th_word: "สาม", pronunciation: "sǎam", ex_en: "", ex_pronunciation: "", ex_th: "" },
-    { en_word: "four", th_word: "สี$", pronunciation: "sìi", ex_en: "", ex_pronunciation: "", ex_th: "" },
-    { en_word: "five", th_word: "ห้า", pronunciation: "hâa", ex_en: "", ex_pronunciation: "", ex_th: "" },
 ];
 
 const dictionaryIncorrectAnswers = [];
@@ -280,7 +271,6 @@ randomizeCheckbox.addEventListener("change", () => {
     }
     setDictionary();
 });
-
 
 function setDictionary() {
 
@@ -402,8 +392,13 @@ function feedback() {
     const buttonIncorrect = document.getElementById("incorrectAnswer");
     buttonIncorrect.textContent = incorrectAnswerCount;
 
-    const buttonFeedback = document.getElementById("attemptedAnswer");
-    buttonFeedback.textContent = parseInt((correctAnswerCount / attemptAnswerCount) * 100) + "%";
+    const buttonScore = document.getElementById("score");
+    buttonScore.textContent = parseInt((correctAnswerCount / attemptAnswerCount) * 100) + "%";
+
+    const buttonTries = document.getElementById("tries");
+    buttonTries.textContent = attemptAnswerCount + ' / ' + dictionary.length;
+
+
 }
 
 function getRandomInt(min, max) {
