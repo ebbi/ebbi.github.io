@@ -54,3 +54,14 @@ span.notice {
     background-color: red;
     color: white;
 }
+
+.info {
+    background: var(--accent-bg);
+    color: black;
+}
+
+#feedback span {
+    padding: .25rem;
+    margin: .15rem;
+    font-size: initial;
+}

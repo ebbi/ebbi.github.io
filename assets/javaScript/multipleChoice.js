@@ -398,7 +398,6 @@ function feedback() {
     const buttonTries = document.getElementById("tries");
     buttonTries.textContent = attemptAnswerCount + ' / ' + dictionary.length;
 
-
 }
 
 function getRandomInt(min, max) {

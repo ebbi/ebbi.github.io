@@ -53,19 +53,6 @@
                 </summary>
                 <div id="currentWord"></div>
                 <div id="choiceWords"></div>
-                <div id="feedback" class="feedback">
-
-                    <button id="correctAnswer" class="correct">0</button>
-                    <button id="incorrectAnswer" class="incorrect">0</button>
-                    <button id="score" class="default">0%</button>
-                    <button id="tries" class="default">0/0</button>
-
-                    <div id="incorrectAnswersOnlyDiv" hidden>
-                        <input id="incorrectAnswersOnly" type="checkbox" name="incorrectAnswersOnly">
-                        <label for="incorrectAnswersOnly">incorrect answers only</label>
-                    </div>
-
-                </div>
 
                 <nav>
                     <div class="two-col-grid">
@@ -87,6 +74,21 @@
                 </nav>
 
                 <div id="example"></div>
+
+                <div id="feedback" class="feedback">
+
+                    <span id="correctAnswer" class="correct">0</span>
+                    <span id="incorrectAnswer" class="incorrect">0</span>
+                    <span id="score" class="info">0%</span>
+                    <span id="tries" class="info">0/0</span>
+
+                    <div id="incorrectAnswersOnlyDiv" hidden>
+                        <input id="incorrectAnswersOnly" type="checkbox" name="incorrectAnswersOnly">
+                        <label for="incorrectAnswersOnly">incorrect answers only</label>
+                    </div>
+
+                </div>
+
             </details>
         </div>
 
