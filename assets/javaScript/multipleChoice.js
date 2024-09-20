@@ -1,4 +1,21 @@
-const dictionaryGeneral = [
+const dictionaryPhonetics = [
+    { en_word: "house", th_word: "บ้าน", pronunciation: "bâan", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { en_word: "school", th_word: "โรงเรียน", pronunciation: "rooŋ-rian", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { en_word: "coffee", th_word: "กาแฟ", pronunciation: "gaa-fɛɛ", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { en_word: "food", th_word: "อาหาร", pronunciation: "aa-hǎan", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { en_word: "to lie down or sleep", th_word: "นอน", pronunciation: "nɔɔn", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { en_word: "banana", th_word: "กล้วย", pronunciation: "gluay", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { en_word: "family", th_word: "ครอบครัว", pronunciation: "khroop-khrua", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { en_word: "dog", th_word: "หมา", pronunciation: "H̄mā", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { en_word: "lonely", th_word: "เหงา", pronunciation: "H̄engā", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { en_word: "book", th_word: "หนังสือ", pronunciation: "nǎŋ-sɯ̌ɯ", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { en_word: "woman", th_word: "ผู้หญิง", pronunciation: "P̄hū̂ h̄ỵing", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { en_word: "hot", th_word: "ร้อน", pronunciation: "rɔ́ɔn", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { en_word: "horse", th_word: "ม้า", pronunciation: "M̂ā", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { en_word: "freind", th_word: "เพื่อน", pronunciation: "phɯ̂an", ex_en: "", ex_pronunciation: "", ex_th: "" }
+];
+
+const dictionaryGeneral1 = [
     { en_word: "hello", th_word: "สวัสดี", pronunciation: "sà-wàt-dii", ex_en: "hello", ex_pronunciation: "sà-wàt-dii-khráp", ex_th: "สวัสดีครับ" },
     { en_word: "thank you", th_word: "ขอบคุณ", pronunciation: "kɔ̀ɔp-kun", en_ex: "", ex_th: "" },
     { en_word: "never mind", th_word: "ไม่เป็นไร", pronunciation: "mâi-bpen-rai", en_ex: "", ex_th: "" },
@@ -144,6 +161,20 @@ const dictionaryGeneral = [
     //    { en_word: "", th_word: "", pronunciation: "", ex_en: "", ex_pronunciation: "", ex_th: "" },
 ];
 
+const dictionaryPronouns = [
+    { en_word: "I for male", th_word: "ผม", pronunciation: "phǒm", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { en_word: "I for female", th_word: "ฉัน", pronunciation: "chǎn", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { en_word: "you", th_word: "คุณ", pronunciation: "khun", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { en_word: "he; she", th_word: "เขา", pronunciation: "khǎw", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { en_word: "we; us", th_word: "พวกเรา", pronunciation: "phûak-raw", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { en_word: "they; them", th_word: "พวกเขา", pronunciation: "phûak-khǎw", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { en_word: "belong to or of", th_word: "ของ", pronunciation: "khɔ̌ɔŋ", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { en_word: "your; yours", th_word: "ของคุณ", pronunciation: "(khɔ̌ɔŋ) khun", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { en_word: "his; her; hers", th_word: "ของเขา", pronunciation: "(khɔ̌ɔŋ) khǎw", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { en_word: "our; ours", th_word: "ของพวกเรา", pronunciation: "(khɔ̌ɔŋ) phûak-raw", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { en_word: "their; theirs", th_word: "ของพวกเขา", pronunciation: "khɔ̌ɔŋ phûak-khǎw", ex_en: "", ex_pronunciation: "", ex_th: "" },
+];
+
 const dictionaryNumbers = [
     { en_word: "one", th_word: "หนึ$ง", pronunciation: "nɯŋ", ex_en: "", ex_pronunciation: "", ex_th: "" },
     { en_word: "two", th_word: "สอง", pronunciation: "sɔ̌ɔŋ", ex_en: "", ex_pronunciation: "", ex_th: "" },
@@ -187,10 +218,78 @@ const dictionaryNumbers = [
     //    { en_word: "", th_word: "", pronunciation: "", ex_en: "", ex_pronunciation: "", ex_th: "" },
 ];
 
+const dictionaryClothes = [
+    { en_word: "clothes", th_word: "เสือผ้า", pronunciation: "sɯ̂a-phâa", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { en_word: "shirt", th_word: "เสือ", pronunciation: "sɯ̂a", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { en_word: "T-shirt", th_word: "เสือยืด", pronunciation: "sɯ̂a-yɯ̂ɯt", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { en_word: "sweater", th_word: "เสือกันหนาว", pronunciation: "sɯ̂a gan-nǎaw", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { en_word: "pants or trousers", th_word: "กางเกง", pronunciation: "gaaŋ-geeŋ", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { en_word: "skirt", th_word: "กระโปรง", pronunciation: "grà-bprooŋ", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { en_word: "shoes", th_word: "รองเท้า", pronunciation: "rɔɔŋ-tháaw", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { en_word: "socks", th_word: "ถุงเท้า", pronunciation: "thǔŋ-tháaw", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { en_word: "glasses", th_word: "แว่นตา", pronunciation: "wɛ̂ɛn-dtaa", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { en_word: "hat", th_word: "หมวก", pronunciation: "mùak", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { en_word: "swimming suit", th_word: "ชุดว่ายนํา", pronunciation: "chút wâay-náam", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { en_word: "pajamas", th_word: "ชุดนอน", pronunciation: "chút nɔɔn", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { en_word: "exercise outfit", th_word: "ชุดออกกําลังกาย", pronunciation: "chút ɔ̀ɔk-gam-laŋ-gaay", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { en_word: "price", th_word: "ราคา", pronunciation: "raa-khaa", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { en_word: "to discount", th_word: "ลด", pronunciation: "lót", ex_en: "", ex_pronunciation: "", ex_th: "" }
+    //    { en_word: "", th_word: "", pronunciation: "", ex_en: "", ex_pronunciation: "", ex_th: "" },
+];
+
+const dictionaryPlaces = [
+    { en_word: "house", th_word: "บ้าน", pronunciation: "bâan", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { en_word: "school", th_word: "โรงเรียน", pronunciation: "rooŋ-rian", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { en_word: "hotel", th_word: "โรงแรม", pronunciation: "rooŋ-rɛɛm", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { en_word: "hospital", th_word: "โรงพยาบาล", pronunciation: "rooŋ-phá-yaa-baan", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { en_word: "restaurant", th_word: "ร้านอาหาร", pronunciation: "ráan aa-hǎan", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { en_word: "coffee shop", th_word: "ร้านกาแฟ", pronunciation: "ráan gaa-fɛɛ", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { en_word: "train station", th_word: "สถานีรถไฟ", pronunciation: "sà-thǎa-nii rót-fai", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { en_word: "bus station", th_word: "สถานีขนส่ง", pronunciation: "sà-thǎa-nii khǒn-sòng", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { en_word: "plice station", th_word: "สถานีตํารวจ", pronunciation: "s̀a-thǎa-nii dtam-rùat", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { en_word: "airport", th_word: "สนามบิน", pronunciation: "sà-nǎam bin", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { en_word: "park", th_word: "สวน", pronunciation: "sǔan", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { en_word: "bank", th_word: "ธนาคาร", pronunciation: "thá-naa-khaan", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { en_word: "ATM", th_word: "ตู้เอทีเอ็ม", pronunciation: "dtûu ee-thii-em", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { en_word: "market", th_word: "ตลาด", pronunciation: "dta-làat", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { en_word: "department store", th_word: "ห้าง", pronunciation: "hâaŋ", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { en_word: "road or street", th_word: "ถนน", pronunciation: "thà-nǒn", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { en_word: "lane", th_word: "ซอย", pronunciation: "sɔɔy", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { en_word: "down town", th_word: "ตัวเมือง", pronunciation: "dtua mɯaŋ", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { en_word: "beach", th_word: "ชายหาด", pronunciation: "chaay-hàat", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { en_word: "sea", th_word: "ทะเล", pronunciation: "thá-lee", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { en_word: "temple", th_word: "วัด", pronunciation: "wát", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { en_word: "church", th_word: "โบสถ์", pronunciation: "bòot", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { en_word: "university", th_word: "มหาวิทยาลัย", pronunciation: "má-hǎa-wit́-thá yaa- lai", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { en_word: "mountain", th_word: "ภูเขา / ดอย", pronunciation: "", ex_en: "phuu-khǎw or dɔɔy", ex_pronunciation: "", ex_th: "" },
+    { en_word: "river", th_word: "แม่นํา", pronunciation: "mɛ̂ɛ-náam", ex_en: "", ex_pronunciation: "", ex_th: "" }
+    //    { en_word: "", th_word: "", pronunciation: "", ex_en: "", ex_pronunciation: "", ex_th: "" },
+];
+
+const dictionaryPrepositions = [
+    { en_word: "to be (is/am/are)", th_word: "อยู่", pronunciation: "yùu", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { en_word: "where", th_word: "ที&ไหน", pronunciation: "thîi-nǎi", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { en_word: "close to", th_word: "ใกล้", pronunciation: "glâi", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { en_word: "near", th_word: "กับ", pronunciation: "gàp", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { en_word: "far", th_word: "ไกล", pronunciation: "glai", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { en_word: "next to", th_word: "ข้างๆ", pronunciation: "khâaŋ-khâaŋ", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { en_word: "next to", th_word: "ติด(กับ)", pronunciation: "dtìt(gàp)", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { en_word: "opposite to", th_word: "ตรงข้าม", pronunciation: "dtroŋ-khâam", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { en_word: "at", th_word: "ที&", pronunciation: "thîi", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { en_word: "in", th_word: "ใน", pronunciation: "nai", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { en_word: "arround (in the area)", th_word: "แถว", pronunciation: "thɛ̌ɛw", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { en_word: "in front of", th_word: "ข้างหน้า", pronunciation: "khâaŋ-nâa", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { en_word: "behind", th_word: "ข้างหลัง", pronunciation: "khâaŋ-lǎŋ", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { en_word: "here", th_word: "ที&นี&", pronunciation: "thîi-nîi", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { en_word: "there", th_word: "ที&นนั&", pronunciation: "thîi-nân", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { en_word: "over there", th_word: "ที&โน่น", pronunciation: "thîi-nôon", ex_en: "", ex_pronunciation: "", ex_th: "" }
+    //   { en_word: "", th_word: "", pronunciation: "", ex_en: "", ex_pronunciation: "", ex_th: "" },
+];
+
 const dictionaryIncorrectAnswers = [];
 
 let wordIndex = 0;
-let dictionary = dictionaryGeneral;
+let dictionary = dictionaryGeneral1;
 let dictionaryName = "General dictionary"
 let lastDictionary = dictionary;
 let NoAnswerChoices = 3;
@@ -278,16 +377,46 @@ function setDictionary() {
         && incorrectAnswerCount > NoAnswerChoices) {  // 4 words for 1 multiple choice Q/A
         dictionaryName = " Incorrectly answered words ";
         dictionary = [...dictionaryIncorrectAnswers];
+    } else if (selectDictionary.value === "dictionaryPhonetics") {
+        dictionaryName = " Phonetics ";
+        dictionary = [...dictionaryPhonetics];
+    } else if (selectDictionary.value === "dictionaryGeneral") {
+        dictionaryName = " General 1 ";
+        dictionary = [...dictionaryGeneral1];
+    } else if (selectDictionary.value === "dictionaryPronouns") {
+        dictionaryName = " Pronouns ";
+        dictionary = [...dictionaryPronouns];
     } else if (selectDictionary.value === "dictionaryNumbers") {
         dictionaryName = " Numbers ";
         dictionary = [...dictionaryNumbers];
+    } else if (selectDictionary.value === "dictionaryClothes") {
+        dictionaryName = " Clothes ";
+        dictionary = [...dictionaryClothes];
+    } else if (selectDictionary.value === "dictionaryPlaces") {
+        dictionaryName = " Places ";
+        dictionary = [...dictionaryPlaces];
+    } else if (selectDictionary.value === "dictionaryPrepositions") {
+        dictionaryName = " Prepositions ";
+        dictionary = [...dictionaryPrepositions];
     } else if (selectDictionary.value === "dictionaryAll") {
-        const dictA = [...dictionaryGeneral];
-        const dictB = [...dictionaryNumbers];
-        dictionary = dictA.concat(dictB);
+        let dict = [];
+        const dictGeneral = [...dictionaryGeneral1];
+        const dictPhonetics = [...dictionaryPhonetics];
+        const dictNumbers = [...dictionaryNumbers];
+        const dictClothes = [...dictionaryClothes];
+        const dictPlaces = [...dictionaryPlaces];
+        const dictPrepositions = [...dictionaryPrepositions];
+
+        dict = dictGeneral.concat(dictPhonetics);
+        dict = dict.concat(dictNumbers);
+        dict = dict.concat(dictClothes);
+        dict = dict.concat(dictPlaces);
+        dict = dict.concat(dictPrepositions);
+
+        dictionary = [...dict];
     } else {
         dictionaryName = " General ";
-        dictionary = [...dictionaryGeneral];
+        dictionary = [...dictionaryGeneral1];
     }
 
     if (randomize == true) {
