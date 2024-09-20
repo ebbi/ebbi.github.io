@@ -172,7 +172,7 @@ const dictionaryPronouns = [
     { en_word: "your; yours", th_word: "ของคุณ", pronunciation: "(khɔ̌ɔŋ) khun", ex_en: "", ex_pronunciation: "", ex_th: "" },
     { en_word: "his; her; hers", th_word: "ของเขา", pronunciation: "(khɔ̌ɔŋ) khǎw", ex_en: "", ex_pronunciation: "", ex_th: "" },
     { en_word: "our; ours", th_word: "ของพวกเรา", pronunciation: "(khɔ̌ɔŋ) phûak-raw", ex_en: "", ex_pronunciation: "", ex_th: "" },
-    { en_word: "their; theirs", th_word: "ของพวกเขา", pronunciation: "khɔ̌ɔŋ phûak-khǎw", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { en_word: "their; theirs", th_word: "ของพวกเขา", pronunciation: "khɔ̌ɔŋ phûak-khǎw", ex_en: "", ex_pronunciation: "", ex_th: "" }
 ];
 
 const dictionaryNumbers = [
@@ -400,14 +400,16 @@ function setDictionary() {
         dictionary = [...dictionaryPrepositions];
     } else if (selectDictionary.value === "dictionaryAll") {
         let dict = [];
-        const dictGeneral = [...dictionaryGeneral1];
         const dictPhonetics = [...dictionaryPhonetics];
+        const dictGeneral = [...dictionaryGeneral1];
+        const dictPronouns = [...dictionaryPronouns];
         const dictNumbers = [...dictionaryNumbers];
         const dictClothes = [...dictionaryClothes];
         const dictPlaces = [...dictionaryPlaces];
         const dictPrepositions = [...dictionaryPrepositions];
 
-        dict = dictGeneral.concat(dictPhonetics);
+        dict = dictPhonetics.concat(dictGeneral);
+        dict = dict.concat(dictPronouns);
         dict = dict.concat(dictNumbers);
         dict = dict.concat(dictClothes);
         dict = dict.concat(dictPlaces);
