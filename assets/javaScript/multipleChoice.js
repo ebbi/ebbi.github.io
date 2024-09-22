@@ -34,13 +34,13 @@ function initialize() {
 dictionaryCheckboxes.forEach(function (dictionaryCheckbox) {
     dictionaryCheckbox.addEventListener('change', function (event) {
 
-        console.log('Checkbox with value ' + dictionaryCheckbox.value + ' has been changed');
+        //       console.log('Checkbox with value ' + dictionaryCheckbox.value + ' has been changed');
 
         if (dictionaryCheckbox.checked) {
-            console.log('Checkbox with value ' + dictionaryCheckbox.value + ' checked');
+            //           console.log('Checkbox with value ' + dictionaryCheckbox.value + ' checked');
             selectedDictionaryNames.push(dictionaryCheckbox.value);
         } else {
-            console.log('Checkbox with value ' + dictionaryCheckbox.value + ' unchecked');
+            //           console.log('Checkbox with value ' + dictionaryCheckbox.value + ' unchecked');
             selectedDictionaryNames.pop(dictionaryCheckbox.value);
 
             if (selectedDictionaryNames == 0) {
@@ -55,7 +55,7 @@ dictionaryCheckboxes.forEach(function (dictionaryCheckbox) {
                 return;
             }
         }
-        console.log('selectedDictionaryNames ' + selectedDictionaryNames);
+        //        console.log('selectedDictionaryNames ' + selectedDictionaryNames);
         wordIndex = 0;
         setDictionary();
     });
@@ -112,7 +112,7 @@ function setDictionary() {
         { en_word: "to drink", th_word: "ดืxม", pronunciation: "dʉ̀ʉm", ex_en: "", ex_pronunciation: "", ex_th: "" },
         { en_word: "to watch", th_word: "ดู", pronunciation: "duu", ex_en: "", ex_pronunciation: "", ex_th: "" },
         { en_word: "to listen", th_word: "ฟัง", pronunciation: "faŋ", ex_en: "", ex_pronunciation: "", ex_th: "" },
-        { en_word: "to wake up", th_word: "ตืxน", pronunciation: "dtɯ̀ɯn", ex_en: "", ex_pronunciation: "", ex_th: "" },
+        { en_word: "to wake up", th_word: "ตืxน", pronunciation: "dtɯɯn", ex_en: "", ex_pronunciation: "", ex_th: "" },
         { en_word: "to lie down or sleep", th_word: "นอน", pronunciation: "nɔɔn", ex_en: "", ex_pronunciation: "", ex_th: "" },
         { en_word: "to walk", th_word: "เดิน", pronunciation: "dəən", ex_en: "", ex_pronunciation: "", ex_th: "" },
         { en_word: "to speak", th_word: "พูด", pronunciation: "phûut", ex_en: "", ex_pronunciation: "", ex_th: "" },
@@ -148,13 +148,13 @@ function setDictionary() {
         { en_word: "to talk with freinds", th_word: "คุยกับเพืeอน", pronunciation: "khuy gàp phɯ̂an", ex_en: "", ex_pronunciation: "", ex_th: "" },
         { en_word: "to study Thai", th_word: "เรียนภาษาไทย", pronunciation: "rian phaa-sǎa thai", ex_en: "", ex_pronunciation: "", ex_th: "" },
         { en_word: "to return home", th_word: "กลับบ้าน", pronunciation: "glàp bâan", ex_en: "", ex_pronunciation: "", ex_th: "" },
-        { en_word: "shopping", th_word: "ซือของ", pronunciation: "sɯ́ ɯ-khɔ̌ɔŋ", ex_en: "", ex_pronunciation: "", ex_th: "" },
+        { en_word: "shopping", th_word: "ซือของ", pronunciation: "sɯ́ɯ-khɔ̌ɔŋ", ex_en: "", ex_pronunciation: "", ex_th: "" },
         { en_word: "travel or hang out", th_word: "ไปเทีeยว", pronunciation: "bpai-thiâw", ex_en: "", ex_pronunciation: "", ex_th: "" },
         { en_word: "watch movie", th_word: "ดูหนัง", pronunciation: "duu nǎŋ", ex_en: "", ex_pronunciation: "", ex_th: "" },
         { en_word: "can", th_word: "ได้", pronunciation: "dâay", ex_en: "", ex_pronunciation: "", ex_th: "" },
-        { en_word: "to sit", th_word: "นั&ง", pronunciation: "nâŋ", ex_en: "", ex_pronunciation: "", ex_th: "" },
+        { en_word: "to sit", th_word: "นัง", pronunciation: "nâŋ", ex_en: "", ex_pronunciation: "", ex_th: "" },
         { en_word: "to stand", th_word: "ยืน", pronunciation: "yɯɯn", ex_en: "", ex_pronunciation: "", ex_th: "" },
-        { en_word: "to run", th_word: "วิ&ง", pronunciation: "wîŋ", ex_en: "", ex_pronunciation: "", ex_th: "" },
+        { en_word: "to run", th_word: "วิง", pronunciation: "wîŋ", ex_en: "", ex_pronunciation: "", ex_th: "" },
         { en_word: "to swim", th_word: "ว่ายนํา", pronunciation: "wâay-náam", ex_en: "", ex_pronunciation: "", ex_th: "" },
         { en_word: "to do the laundry", th_word: "ซักผ้า", pronunciation: "sák-phâa", ex_en: "", ex_pronunciation: "", ex_th: "" },
         { en_word: "to wash the dishes", th_word: "ล้างจาน", pronunciation: "láaŋ jaan", ex_en: "", ex_pronunciation: "", ex_th: "" },
@@ -186,10 +186,10 @@ function setDictionary() {
         { en_word: "delicious", th_word: "อร่อย", pronunciation: "à-rɔ̀ɔy", ex_en: "", ex_pronunciation: "", ex_th: "" },
         { en_word: "fun or enjoyable", th_word: "สนุก", pronunciation: "sà-nùk", ex_en: "", ex_pronunciation: "", ex_th: "" },
         { en_word: "hungry", th_word: "หิว", pronunciation: "hǐw", ex_en: "", ex_pronunciation: "", ex_th: "" },
-        { en_word: "full", th_word: "อิ:ม", pronunciation: "ìm", ex_en: "", ex_pronunciation: "", ex_th: "" },
+        { en_word: "full", th_word: "อิม", pronunciation: "ìm", ex_en: "", ex_pronunciation: "", ex_th: "" },
         { en_word: "fat", th_word: "อ้วน", pronunciation: "ûan", ex_en: "", ex_pronunciation: "", ex_th: "" },
         { en_word: "skinny", th_word: "ผอม", pronunciation: "phɔ̌ɔm", ex_en: "", ex_pronunciation: "", ex_th: "" },
-        { en_word: "tired", th_word: "เหนื:อย", pronunciation: "nɯay", ex_en: "", ex_pronunciation: "", ex_th: "" },
+        { en_word: "tired", th_word: "เหนือย", pronunciation: "nɯay", ex_en: "", ex_pronunciation: "", ex_th: "" },
         { en_word: "sleepy", th_word: "ง่วง", pronunciation: "ŋûaŋ", ex_en: "", ex_pronunciation: "", ex_th: "" },
         { en_word: "difficult", th_word: "ยาก", pronunciation: "yâak", ex_en: "", ex_pronunciation: "", ex_th: "" },
         { en_word: "easy", th_word: "ง่าย", pronunciation: "ŋâay", ex_en: "", ex_pronunciation: "", ex_th: "" },
@@ -253,13 +253,13 @@ function setDictionary() {
         { en_word: "eleven", th_word: "สิบเอ็ด", pronunciation: "sìp-èt", ex_en: "", ex_pronunciation: "", ex_th: "" },
         { en_word: "twelve", th_word: "สิบสอง", pronunciation: "sìp-sɔ̌ɔŋ", ex_en: "", ex_pronunciation: "", ex_th: "" },
         { en_word: "thirteen", th_word: "สิบสาม", pronunciation: "sìp-sǎam", ex_en: "", ex_pronunciation: "", ex_th: "" },
-        { en_word: "fourteen", th_word: "สิบสี$", pronunciation: "sìp-sìi", ex_en: "", ex_pronunciation: "", ex_th: "" },
+        { en_word: "fourteen", th_word: "สิบสี", pronunciation: "sìp-sìi", ex_en: "", ex_pronunciation: "", ex_th: "" },
         { en_word: "fifteen", th_word: "สิบห้า", pronunciation: "sìp-hâa", ex_en: "", ex_pronunciation: "", ex_th: "" },
         { en_word: "sixteen", th_word: "สิบหก", pronunciation: "sìp-hòk", ex_en: "", ex_pronunciation: "", ex_th: "" },
         { en_word: "seventeen", th_word: "สิบเจ็ด", pronunciation: "sìp-jèt", ex_en: "", ex_pronunciation: "", ex_th: "" },
         { en_word: "eighteen", th_word: "สิบแปด", pronunciation: "sìp-bpɛ̀ɛt", ex_en: "", ex_pronunciation: "", ex_th: "" },
         { en_word: "nineteen", th_word: "สิบเก้า", pronunciation: "sìp-gâaw", ex_en: "", ex_pronunciation: "", ex_th: "" },
-        { en_word: "twenty", th_word: "ยีส$ ิบ", pronunciation: "yîi-sìp", ex_en: "", ex_pronunciation: "", ex_th: "" },
+        { en_word: "twenty", th_word: "ยีส ิบ", pronunciation: "yîi-sìp", ex_en: "", ex_pronunciation: "", ex_th: "" },
         { en_word: "thirsty", th_word: "สามสิบ", pronunciation: "sǎam-sìp", ex_en: "", ex_pronunciation: "", ex_th: "" },
         { en_word: "forty", th_word: "สีสบิ", pronunciation: "sìi-sìp", ex_en: "", ex_pronunciation: "", ex_th: "" },
         { en_word: "fifty", th_word: "ห้าสิบ", pronunciation: "hâa-sìp", ex_en: "", ex_pronunciation: "", ex_th: "" },
@@ -356,7 +356,11 @@ function setDictionary() {
     const dictionaries = {
         dictionaryPhonetics: dictionaryPhonetics,
         dictionaryBook1: dictionaryBook1,
-        dictionaryPronouns: dictionaryPronouns
+        dictionaryPronouns: dictionaryPronouns,
+        dictionaryNumbers: dictionaryNumbers,
+        dictionaryClothes: dictionaryClothes,
+        dictionaryPlaces: dictionaryPlaces,
+        dictionaryPrepositions: dictionaryPrepositions
         // Add other arrays as needed
     };
 
@@ -365,14 +369,15 @@ function setDictionary() {
         if (dictionaries.hasOwnProperty(name)) {
             // Read the existing array by its name
             const newArray = [...dictionaries[name]]; // Make a copy of the existing array
-            console.log(newArray); // Print the copied array
+            //           console.log(newArray); // Print the copied array
             dictionary = dictionary.concat(newArray);
 
         } else {
-            console.log(`Array '${name}' does not exist.`);
+            //          console.log(`Array '${name}' does not exist.`);
         }
     });
-    console.log('dictionary ', dictionary);
+
+    //   console.log('dictionary ', dictionary);
 
     feedback();
 
