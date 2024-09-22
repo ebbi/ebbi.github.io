@@ -34,14 +34,17 @@ function initialize() {
 dictionaryCheckboxes.forEach(function (dictionaryCheckbox) {
     dictionaryCheckbox.addEventListener('change', function (event) {
 
-        //       console.log('Checkbox with value ' + dictionaryCheckbox.value + ' has been changed');
+        //    console.log('Checkbox with value ' + dictionaryCheckbox.value + ' has been changed');
 
         if (dictionaryCheckbox.checked) {
             //           console.log('Checkbox with value ' + dictionaryCheckbox.value + ' checked');
             selectedDictionaryNames.push(dictionaryCheckbox.value);
         } else {
             //           console.log('Checkbox with value ' + dictionaryCheckbox.value + ' unchecked');
-            selectedDictionaryNames.pop(dictionaryCheckbox.value);
+            const index = selectedDictionaryNames.indexOf(dictionaryCheckbox.value);
+            if (index !== -1) {
+                selectedDictionaryNames.splice(index, 1);
+            }
 
             if (selectedDictionaryNames == 0) {
                 // no dictionary selected
@@ -365,15 +368,13 @@ function setDictionary() {
     };
 
     selectedDictionaryNames.forEach(name => {
-        // Check if the array name exists in the array storage object
         if (dictionaries.hasOwnProperty(name)) {
-            // Read the existing array by its name
-            const newArray = [...dictionaries[name]]; // Make a copy of the existing array
-            //           console.log(newArray); // Print the copied array
+            const newArray = [...dictionaries[name]];
+            //            console.log(newArray);
             dictionary = dictionary.concat(newArray);
 
         } else {
-            //          console.log(`Array '${name}' does not exist.`);
+            //            console.log(`Array '${name}' does not exist.`);
         }
     });
 
