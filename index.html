@@ -55,27 +55,42 @@
                 <div id="choiceWords"></div>
 
                 <nav>
-                    <div class="two-col-grid">
-                        <div>
-                            <button id="previousWord">prev</button>
-                            <button id="nextWord">next</button>
-                        </div>
-                        <div>
-                            <select id="selectDictionary" name="selectDictionary">
-                                <option value="dictionaryAll">Dictionary</option>
-                                <option value="dictionaryPhonetics">Phonetics</option>
-                                <option value="dictionaryGeneral">Book 1</option>
-                                <option value="dictionaryPronouns">Pronouns</option>
-                                <option value="dictionaryNumbers">Numbers</option>
-                                <option value="dictionaryClothes">Clothes</option>
-                                <option value="dictionaryPlaces">Places</option>
-                                <option value="dictionaryPrepositions">Prepositions</option>
-                                <option value="dictionaryAll">All</option>
-                                <input type="checkbox" id="randomize" name="randomize" value="randomize" />
-                                <label for="coding">randomize</label>
-                            </select>
-                        </div>
+                    <div>
+                        <span class="nav-button">
+                            <button id="previousWord" class="nav-button">&lt; prev</button>
+                            <button id="nextWord" class="nav-button">next &gt;</button>
+                        </span>
+                        <span class="float-right">
+                            <input type="checkbox" id="randomize" name="randomize" value="randomize" />
+                            <label for="coding">randomize</label>
+                        </span>
                     </div>
+                    <div id="incorrectAnswersOnlyDiv" hidden>
+                        <input id="incorrectAnswersOnly" type="checkbox" name="incorrectAnswersOnly">
+                        <label for="incorrectAnswersOnly">incorrect answers only</label>
+                    </div>
+
+                    <details open>
+                        <summary>Book 1 &dash; select a dictionary</summary>
+                        <div class="checkbox-dictionary-container">
+
+                            <label>
+                                <input type="checkbox" id="dictionaryPhonetics" name="dictionaryPhonetics"
+                                    value="dictionaryPhonetics" />Phonetics
+                            </label>
+                            <label>
+                                <input type="checkbox" id="dictionaryPronouns" name="dictionaryPronouns"
+                                    value="dictionaryPronouns" />Pronouns
+                            </label>
+                            <label>
+                                <input type="checkbox" id="dictionaryBook1" name="dictionaryBook1"
+                                    value="dictionaryBook1" />
+                                Book 1
+                            </label>
+
+                        </div>
+                    </details>
+
                 </nav>
 
                 <div id="example"></div>
@@ -86,11 +101,6 @@
                     <span id="incorrectAnswer" class="incorrect">0</span>
                     <span id="score" class="info">0%</span>
                     <span id="tries" class="info">0/0</span>
-
-                    <div id="incorrectAnswersOnlyDiv" hidden>
-                        <input id="incorrectAnswersOnly" type="checkbox" name="incorrectAnswersOnly">
-                        <label for="incorrectAnswersOnly">incorrect answers only</label>
-                    </div>
 
                 </div>
 
