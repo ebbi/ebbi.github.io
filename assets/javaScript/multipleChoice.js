@@ -486,6 +486,8 @@ function htmlMultipleChoice(questionWordIndex) {
                     correctAnswerCount++;
                 } else {
                     buttonChoiceWord.classList.add("incorrect");
+                    buttonChoiceWord.textContent = dictionary[userSelectedIndex].pronunciation
+                        + ' = ' + dictionary[userSelectedIndex].en_word
                     incorrectAnswerCount++;
                     const found = dictionaryIncorrectAnswers.find(
                         ({ pronunciation }) => pronunciation === dictionary[questionWordIndex].pronunciation);
