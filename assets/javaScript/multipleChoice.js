@@ -351,8 +351,7 @@ function setDictionary() {
     // book 2    
     const dictionaryFood = [
         { en_word: "rice", th_word: "ข้าว", pronunciation: "khâaw", ex_en: "", ex_pronunciation: "", ex_th: "" },
-        { en_word: "food", th_word: "กับข้าว", pronunciation: "gàp-khâaw", ex_en: "", ex_pronunciation: "", ex_th: "" },
-        { en_word: "food", th_word: "อาหาร", pronunciation: "aa-hǎan", ex_en: "", ex_pronunciation: "", ex_th: "" },
+        { en_word: "food", th_word: "อาหาร / กับข้าว", pronunciation: "aa-hǎan or gàp-khâaw", ex_en: "", ex_pronunciation: "", ex_th: "" },
         { en_word: "curry", th_word: "แกง", pronunciation: "gɛɛŋ", ex_en: "", ex_pronunciation: "", ex_th: "" },
         { en_word: "vegetables", th_word: "ผัก", pronunciation: "phàk", ex_en: "", ex_pronunciation: "", ex_th: "" },
         { en_word: "egg", th_word: "ไข่", pronunciation: "khài", ex_en: "", ex_pronunciation: "", ex_th: "" },
