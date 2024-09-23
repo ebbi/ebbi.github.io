@@ -19,16 +19,23 @@ const dictionaryCheckboxes = document.querySelectorAll('.checkbox-dictionary-con
 
 initialize();
 function initialize() {
-    const defaultDictionaryName = 'dictionaryPhonetics';
 
-    dictionaryCheckboxes.forEach(function (dictionaryCheckbox) {
-        dictionaryCheckbox.checked = false;
-        if (dictionaryCheckbox.value === defaultDictionaryName) {
-            dictionaryCheckbox.checked = true;
-        }
-    });
-    selectedDictionaryNames.push(defaultDictionaryName);
-    setDictionary();
+    dictionary = [];
+    const currentWord = document.getElementById("currentWord");
+    currentWord.textContent = 'Please select a dictionary';
+    const choiceWords = document.getElementById("choiceWords");
+    choiceWords.textContent = '';
+
+    uncheckSelectedCheckboxes(dictionaryCheckboxes);
+    randomizeCheckbox.checked = false;
+
+    feedback();
+}
+
+function uncheckSelectedCheckboxes(checkboxes) {
+    for (var i = 0; i < checkboxes.length; i++) {
+        checkboxes[i].checked = false;
+    }
 }
 
 dictionaryCheckboxes.forEach(function (dictionaryCheckbox) {
@@ -48,13 +55,7 @@ dictionaryCheckboxes.forEach(function (dictionaryCheckbox) {
 
             if (selectedDictionaryNames == 0) {
                 // no dictionary selected
-                dictionary = [];
-                const currentWord = document.getElementById("currentWord");
-                currentWord.textContent = 'Please select a dictionary';
-                const choiceWords = document.getElementById("choiceWords");
-                choiceWords.textContent = '';
-                feedback();
-
+                initialize();
                 return;
             }
         }
@@ -65,7 +66,7 @@ dictionaryCheckboxes.forEach(function (dictionaryCheckbox) {
 });
 
 function setDictionary() {
-
+    // book 1
     const dictionaryPhonetics = [
         { en_word: "house", th_word: "บ้าน", pronunciation: "bâan", ex_en: "", ex_pronunciation: "", ex_th: "" },
         { en_word: "school", th_word: "โรงเรียน", pronunciation: "rooŋ-rian", ex_en: "", ex_pronunciation: "", ex_th: "" },
@@ -80,7 +81,7 @@ function setDictionary() {
         { en_word: "woman", th_word: "ผู้หญิง", pronunciation: "P̄hū̂ h̄ỵing", ex_en: "", ex_pronunciation: "", ex_th: "" },
         { en_word: "hot", th_word: "ร้อน", pronunciation: "rɔ́ɔn", ex_en: "", ex_pronunciation: "", ex_th: "" },
         { en_word: "horse", th_word: "ม้า", pronunciation: "M̂ā", ex_en: "", ex_pronunciation: "", ex_th: "" },
-        { en_word: "freind", th_word: "เพื่อน", pronunciation: "phɯ̂an", ex_en: "", ex_pronunciation: "", ex_th: "" }
+        { en_word: "friend", th_word: "เพื่อน", pronunciation: "phɯ̂an", ex_en: "", ex_pronunciation: "", ex_th: "" }
     ];
     const dictionaryBook1 = [
         { en_word: "hello", th_word: "สวัสดี", pronunciation: "sà-wàt-dii", ex_en: "hello", ex_pronunciation: "sà-wàt-dii-khráp", ex_th: "สวัสดีครับ" },
@@ -227,7 +228,6 @@ function setDictionary() {
         { en_word: "the most", th_word: "มากทีสดุ", pronunciation: "mâak thîi-sùt", ex_en: "", ex_pronunciation: "", ex_th: "" }
         //    { en_word: "", th_word: "", pronunciation: "", ex_en: "", ex_pronunciation: "", ex_th: "" },
     ];
-
     const dictionaryPronouns = [
         { en_word: "I for male", th_word: "ผม", pronunciation: "phǒm", ex_en: "", ex_pronunciation: "", ex_th: "" },
         { en_word: "I for female", th_word: "ฉัน", pronunciation: "chǎn", ex_en: "", ex_pronunciation: "", ex_th: "" },
@@ -241,7 +241,6 @@ function setDictionary() {
         { en_word: "our; ours", th_word: "ของพวกเรา", pronunciation: "(khɔ̌ɔŋ) phûak-raw", ex_en: "", ex_pronunciation: "", ex_th: "" },
         { en_word: "their; theirs", th_word: "ของพวกเขา", pronunciation: "khɔ̌ɔŋ phûak-khǎw", ex_en: "", ex_pronunciation: "", ex_th: "" }
     ];
-
     const dictionaryNumbers = [
         { en_word: "one", th_word: "หนึ$ง", pronunciation: "nɯŋ", ex_en: "", ex_pronunciation: "", ex_th: "" },
         { en_word: "two", th_word: "สอง", pronunciation: "sɔ̌ɔŋ", ex_en: "", ex_pronunciation: "", ex_th: "" },
@@ -284,7 +283,6 @@ function setDictionary() {
         //    { en_word: "", th_word: "", pronunciation: "", ex_en: "", ex_pronunciation: "", ex_th: "" },
         //    { en_word: "", th_word: "", pronunciation: "", ex_en: "", ex_pronunciation: "", ex_th: "" },
     ];
-
     const dictionaryClothes = [
         { en_word: "clothes", th_word: "เสือผ้า", pronunciation: "sɯ̂a-phâa", ex_en: "", ex_pronunciation: "", ex_th: "" },
         { en_word: "shirt", th_word: "เสือ", pronunciation: "sɯ̂a", ex_en: "", ex_pronunciation: "", ex_th: "" },
@@ -303,7 +301,6 @@ function setDictionary() {
         { en_word: "to discount", th_word: "ลด", pronunciation: "lót", ex_en: "", ex_pronunciation: "", ex_th: "" }
         //    { en_word: "", th_word: "", pronunciation: "", ex_en: "", ex_pronunciation: "", ex_th: "" },
     ];
-
     const dictionaryPlaces = [
         { en_word: "house", th_word: "บ้าน", pronunciation: "bâan", ex_en: "", ex_pronunciation: "", ex_th: "" },
         { en_word: "school", th_word: "โรงเรียน", pronunciation: "rooŋ-rian", ex_en: "", ex_pronunciation: "", ex_th: "" },
@@ -332,7 +329,6 @@ function setDictionary() {
         { en_word: "river", th_word: "แม่นํา", pronunciation: "mɛ̂ɛ-náam", ex_en: "", ex_pronunciation: "", ex_th: "" }
         //    { en_word: "", th_word: "", pronunciation: "", ex_en: "", ex_pronunciation: "", ex_th: "" },
     ];
-
     const dictionaryPrepositions = [
         { en_word: "to be (is/am/are)", th_word: "อยู่", pronunciation: "yùu", ex_en: "", ex_pronunciation: "", ex_th: "" },
         { en_word: "where", th_word: "ที&ไหน", pronunciation: "thîi-nǎi", ex_en: "", ex_pronunciation: "", ex_th: "" },
@@ -352,19 +348,33 @@ function setDictionary() {
         { en_word: "over there", th_word: "ที&โน่น", pronunciation: "thîi-nôon", ex_en: "", ex_pronunciation: "", ex_th: "" }
         //   { en_word: "", th_word: "", pronunciation: "", ex_en: "", ex_pronunciation: "", ex_th: "" },
     ];
+    // book 2    
+    const dictionaryFood = [
+        { en_word: "rice", th_word: "ข้าว", pronunciation: "khâaw", ex_en: "", ex_pronunciation: "", ex_th: "" },
+        { en_word: "food", th_word: "กับข้าว", pronunciation: "gàp-khâaw", ex_en: "", ex_pronunciation: "", ex_th: "" },
+        { en_word: "food", th_word: "อาหาร", pronunciation: "aa-hǎan", ex_en: "", ex_pronunciation: "", ex_th: "" },
+        { en_word: "curry", th_word: "แกง", pronunciation: "gɛɛŋ", ex_en: "", ex_pronunciation: "", ex_th: "" },
+        { en_word: "vegetables", th_word: "ผัก", pronunciation: "phàk", ex_en: "", ex_pronunciation: "", ex_th: "" },
+        { en_word: "egg", th_word: "ไข่", pronunciation: "khài", ex_en: "", ex_pronunciation: "", ex_th: "" },
+        { en_word: "tofu", th_word: "เต้าหู ้", pronunciation: "dtâw-hûu", ex_en: "", ex_pronunciation: "", ex_th: "" },
+        { en_word: "Chili", th_word: "พริก", pronunciation: "phrík", ex_en: "", ex_pronunciation: "", ex_th: "" }
+    ];
 
     dictionary = [];
 
-    // Define an object to store the dictionaries
     const dictionaries = {
+        // book 1
         dictionaryPhonetics: dictionaryPhonetics,
         dictionaryBook1: dictionaryBook1,
         dictionaryPronouns: dictionaryPronouns,
         dictionaryNumbers: dictionaryNumbers,
         dictionaryClothes: dictionaryClothes,
         dictionaryPlaces: dictionaryPlaces,
-        dictionaryPrepositions: dictionaryPrepositions
-        // Add other arrays as needed
+        dictionaryPrepositions: dictionaryPrepositions,
+        // book 2
+        dictionaryFood: dictionaryFood
+        //        dictionaryFood: dictionaryPhonetics,
+
     };
 
     selectedDictionaryNames.forEach(name => {
@@ -431,6 +441,12 @@ incorrectAnswersOnly.addEventListener("click", () => {
 });
 
 randomizeCheckbox.addEventListener("change", () => {
+
+    if (dictionary.length == 0) {
+        randomizeCheckbox.checked = false;
+        return;
+    }
+
     if (randomizeCheckbox.checked) {
         randomize = true;
         dictionary = shuffle(dictionary);
@@ -440,6 +456,7 @@ randomizeCheckbox.addEventListener("change", () => {
         randomize = false;
         setDictionary();
     }
+
 });
 
 function htmlMultipleChoice(questionWordIndex) {

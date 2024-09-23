@@ -61,23 +61,64 @@
                             <button id="nextWord" class="nav-button">next &gt;</button>
                         </span>
                         <span class="float-right">
-                            <input type="checkbox" id="randomize" name="randomize" value="randomize" />
-                            <label for="coding">randomize</label>
+                            <label>
+                                <input type="checkbox" id="randomize" name="randomize" value="randomize" />randomise
+                            </label>
                         </span>
                     </div>
                     <div id="incorrectAnswersOnlyDiv" hidden>
                         <input id="incorrectAnswersOnly" type="checkbox" name="incorrectAnswersOnly">
                         <label for="incorrectAnswersOnly">incorrect answers only</label>
                     </div>
+                    <details>
+                        <summary>Select dictionaries</summary>
 
-                    <details open>
-                        <summary>Book 1 dictionary</summary>
-                        <div class="checkbox-dictionary-container">
+                        <details>
+                            <summary>Book 1 dictionary</summary>
+                            <div class="checkbox-dictionary-container">
 
-                            <label>
-                                <input type="checkbox" id="dictionaryPhonetics" name="dictionaryPhonetics"
-                                    value="dictionaryPhonetics" />Phonetics
-                            </label>
+                                <label>
+                                    <input type="checkbox" id="dictionaryPhonetics" name="dictionaryPhonetics"
+                                        value="dictionaryPhonetics" />Phonetics
+                                </label>
+                                <label>
+                                    <input type="checkbox" id="dictionaryBook1" name="dictionaryBook1"
+                                        value="dictionaryBook1" />Book 1
+                                </label>
+                                <label>
+                                    <input type="checkbox" id="dictionaryPronouns" name="dictionaryPronouns"
+                                        value="dictionaryPronouns" />Pronouns
+                                </label>
+
+                                <label>
+                                    <input type="checkbox" id="dictionaryNumbers" name="dictionaryNumbers"
+                                        value="dictionaryNumbers" />Numbers
+                                </label>
+                                <label>
+                                    <input type="checkbox" id="dictionaryClothes" name="dictionaryClothes"
+                                        value="dictionaryClothes" />Clothes
+                                </label>
+                                <label>
+                                    <input type="checkbox" id="dictionaryPlaces" name="dictionaryPlaces"
+                                        value="dictionaryPlaces" />Places
+                                </label>
+                                <label>
+                                    <input type="checkbox" id="dictionaryPrepositions" name="dictionaryPrepositions"
+                                        value="dictionaryPrepositions" />Prepositions
+                                </label>
+
+                            </div>
+                        </details>
+
+                        <details>
+                            <summary>Book 2 dictionary</summary>
+                            <div class="checkbox-dictionary-container">
+
+                                <label>
+                                    <input type="checkbox" id="dictionaryFood" name="dictionaryFood"
+                                        value="dictionaryFood" />Food
+                                </label>
+                                <!--
                             <label>
                                 <input type="checkbox" id="dictionaryBook1" name="dictionaryBook1"
                                     value="dictionaryBook1" />Book 1
@@ -103,10 +144,11 @@
                                 <input type="checkbox" id="dictionaryPrepositions" name="dictionaryPrepositions"
                                     value="dictionaryPrepositions" />Prepositions
                             </label>
+-->
+                            </div>
+                        </details>
 
-                        </div>
                     </details>
-
                 </nav>
 
                 <div id="example"></div>
