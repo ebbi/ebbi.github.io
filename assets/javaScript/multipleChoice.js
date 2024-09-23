@@ -507,9 +507,24 @@ function htmlMultipleChoice(questionWordIndex) {
             spanChoiceWordTh.textContent = dictionary[userSelectedIndex].th_word;
             spanChoiceWordTh.lang = "th";
             divChoiceWord.appendChild(spanChoiceWordTh);
-
             //            spanChoiceWordTh.classList.add("button");
             //            choiceWords.appendChild(spanChoiceWordTh);
+            spanChoiceWordTh.addEventListener('click', function () {
+                var spanWordTh = this;
+                if (window.getSelection) {
+                    var range = document.createRange();
+                    range.selectNode(spanWordTh);
+                    window.getSelection().removeAllRanges();
+                    window.getSelection().addRange(range);
+                } else if (document.selection) {
+                    var range = document.body.createTextRange();
+                    range.moveToElementText(spanWordTh);
+                    range.select();
+                }
+                //              button.classList.add('highlighted');
+            });
+
+
 
             choiceWords.appendChild(divChoiceWord);
 
@@ -533,6 +548,25 @@ function htmlMultipleChoice(questionWordIndex) {
     exampleContainer.appendChild(spanExampleTh);
 
 }
+
+/*
+document.getElementById('highlightButton').addEventListener('click', function () {
+    var button = this;
+    if (window.getSelection) {
+        var range = document.createRange();
+        range.selectNode(button);
+        window.getSelection().removeAllRanges();
+        window.getSelection().addRange(range);
+    } else if (document.selection) {
+        var range = document.body.createTextRange();
+        range.moveToElementText(button);
+        range.select();
+    }
+
+    button.classList.add('highlighted');
+});
+*/
+
 
 function feedback() {
     const buttonCorrect = document.getElementById("correctAnswer");
