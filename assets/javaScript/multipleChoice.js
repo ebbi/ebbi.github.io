@@ -521,6 +521,9 @@ function htmlMultipleChoice(questionWordIndex) {
                     range.moveToElementText(spanWordTh);
                     range.select();
                 }
+                window.open('https://translate.google.com/?sl=auto&tl=en&text=' + encodeURIComponent(range));
+                alert('Translating selected text: ' + range);
+
                 //              button.classList.add('highlighted');
             });
 
