@@ -508,7 +508,7 @@ function htmlMultipleChoice(questionWordIndex) {
             spanChoiceWordTh.lang = "th";
             divChoiceWord.appendChild(spanChoiceWordTh);
             //            spanChoiceWordTh.classList.add("button");
-            //            choiceWords.appendChild(spanChoiceWordTh);
+
             spanChoiceWordTh.addEventListener('click', function () {
                 var spanWordTh = this;
                 if (window.getSelection) {
@@ -521,8 +521,8 @@ function htmlMultipleChoice(questionWordIndex) {
                     range.moveToElementText(spanWordTh);
                     range.select();
                 }
-                window.open('https://translate.google.com/?sl=auto&tl=en&text=' + encodeURIComponent(range));
-                alert('Translating selected text: ' + range);
+                //                window.open('https://translate.google.com/?sl=auto&tl=en&text=' + encodeURIComponent(range));
+                //                alert('Translating selected text: ' + range);
 
                 //              button.classList.add('highlighted');
             });
