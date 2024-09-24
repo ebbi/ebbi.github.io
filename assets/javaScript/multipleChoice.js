@@ -521,13 +521,26 @@ function htmlMultipleChoice(questionWordIndex) {
                     range.moveToElementText(spanWordTh);
                     range.select();
                 }
-                //                window.open('https://translate.google.com/?sl=auto&tl=en&text=' + encodeURIComponent(range));
-                //                alert('Translating selected text: ' + range);
 
-                //              button.classList.add('highlighted');
+                //               textToSpeech(spanChoiceWordTh.textContent);
+                if ('speechSynthesis' in window) {
+
+                    let voices = window.speechSynthesis.getVoices();
+
+                    let thaiVoice = voices.find(voice => voice.lang === 'th-TH');
+
+                    let utterance = new SpeechSynthesisUtterance('สวัสดีครับ');
+
+                    utterance.voice = thaiVoice;
+
+                    if (typeof thaiVoice !== 'undefined') {
+                        window.speechSynthesis.speak(utterance);
+                    }
+                } else {
+                    //                    console.log('SpeechSynthesis API is not available in this browser');
+                }
+
             });
-
-
 
             choiceWords.appendChild(divChoiceWord);
 
@@ -617,3 +630,56 @@ function shuffle(array) {
     return array;
 }
 
+function textToSpeech(text) {
+
+    console.log('Speaking text: ' + text);
+
+    // Check if the browser supports the SpeechSynthesis interface
+    if ('speechSynthesis' in window) {
+        console.log('speechSynthesis is supported');
+
+        const voices = window.speechSynthesis.getVoices();
+        /*
+                voices.forEach((item, index) => {
+                    const option = document.createElement('option');
+                    option.textContent = `${item.name} (${item.lang})`;
+                    option.setAttribute('data-lang', item.lang);
+                    option.setAttribute('data-name', item.name);
+                    option.setAttribute('data-voice-uri', item.voiceURI);
+                    option.setAttribute('data-pos', index);
+                    document.getElementById("voiceSelect").appendChild(option);
+                });
+        */
+
+        const utterance = new SpeechSynthesisUtterance(text);
+        utterance.voice = voices[0]; // Choose the first available voice
+        utterance.lang = 'th-TH';
+
+        voices.forEach((item, index) => {
+            if (item.lang === "th-TH") {
+                console.log('lang ' + item.lang + " index " + index + ' name ' + item.name);
+
+                utterance.voice = voices[index];
+            }
+        });
+
+        /*
+                utterance.volume = 0.8; // 0 to 1
+                utterance.rate = 1.2; // 0.1 to 10
+                utterance.pitch = 1.1; // 0 to 2
+        
+                utterance.onstart = () => console.log('Speech started');
+                utterance.onend = () => console.log('Speech ended');
+                utterance.onerror = (event) => console.error('Speech error:', event.error);
+                utterance.onpause = () => console.log('Speech paused');
+                utterance.onresume = () => console.log('Speech resumed');
+        */
+
+        window.speechSynthesis.speak(utterance);
+
+    } else {
+        // Speech synthesis not supported
+        console.log('Speech synthesis not supported in this browser');
+    }
+
+}
