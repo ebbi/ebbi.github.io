@@ -32,6 +32,14 @@ span.notice {
     color: black;
 }
 
+#searchWords {
+    background-color: lightgoldenrodyellow;
+}
+
+#searchWords span {
+    padding: 0 0.25rem;
+}
+
 #currentWord {
     background-color: greenyellow;
     color: black;
@@ -40,7 +48,8 @@ span.notice {
     font-size: 1rem;
 }
 
-#choiceWords div span:lang(th) {
+#choiceWords div span:lang(th),
+#searchWords span:lang(th) {
     color: red;
     float: right;
 }
@@ -56,8 +65,16 @@ span.notice {
 }
 
 .info {
-    background: var(--accent-bg);
+    background: var(--marked);
     color: black;
+}
+
+.blue {
+    color: blue;
+}
+
+.green {
+    color: green;
 }
 
 #feedback span {
