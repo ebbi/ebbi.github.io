@@ -443,11 +443,6 @@ previousWord.addEventListener("click", () => {
         return;
     }
 
-    const searchWords = document.getElementById("searchWords");
-    if (searchWords != null) {
-        searchWords.innerHTML = '';
-    }
-
     htmlMultipleChoice(wordIndex);
 
 });
@@ -463,9 +458,6 @@ nextWord.addEventListener("click", () => {
         searchWord.value = 'Select a dictionary';
         return;
     }
-
-    const searchWords = document.getElementById("searchWords");
-    searchWords.innerHTML = '';
 
     htmlMultipleChoice(wordIndex);
 
@@ -602,6 +594,9 @@ function htmlMultipleChoice(questionWordIndex) {
 
         });
 
+
+    const searchWords = document.getElementById("searchWords");
+    searchWords.innerHTML = '';
 
     const exampleContainer = document.getElementById("example");
     exampleContainer.innerHTML = "";
