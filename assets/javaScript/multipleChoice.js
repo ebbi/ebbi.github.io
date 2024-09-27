@@ -1,4 +1,3 @@
-
 // book 1
 const dictionaryPhonetics = [
     { en_word: "house", th_word: "บ้าน", pronunciation: "bâan", ex_en: "", ex_pronunciation: "", ex_th: "" },
@@ -311,7 +310,6 @@ const dictionaryIncorrectAnswers = [];
 
 let wordIndex = 0;
 let dictionary = [];
-// let dictionaryNames = [];
 let currentDictionary = [];
 let lastDictionary = currentDictionary;
 let selectedDictionaryNames = [];
@@ -423,8 +421,8 @@ function setDictionary() {
 
     searchWord.classList.remove('info');
 
-    const searchWords = document.getElementById("searchWords");
-    searchWords.innerHTML = '';
+    //   const searchWords = document.getElementById("searchWords");
+    //  searchWords.innerHTML = '';
 
     wordIndex = 0;
     htmlMultipleChoice(wordIndex);
@@ -507,13 +505,11 @@ function htmlMultipleChoice(questionWordIndex) {
 
     //   const currentWord = document.getElementById("searchWord");
 
-
     let randomWords = [];
     searchWord.value = currentDictionary[questionWordIndex].en_word;
 
     const choiceWords = document.getElementById("choiceWords");
     choiceWords.innerHTML = "";
-
 
     // get multiple choice word indexes, add index for correct answer, shuffle the array
     randomWords = getRandomIntArray(questionWordIndex, currentDictionary.length);
@@ -570,30 +566,32 @@ function htmlMultipleChoice(questionWordIndex) {
                     range.select();
                 }
 
-                //               textToSpeech(spanChoiceWordTh.textContent);
-                if ('speechSynthesis' in window) {
+                textToSpeech(spanChoiceWordTh.textContent);
 
-                    let voices = window.speechSynthesis.getVoices();
-
-                    let thaiVoice = voices.find(voice => voice.lang === 'th-TH');
-
-                    let utterance = new SpeechSynthesisUtterance('สวัสดีครับ');
-
-                    utterance.voice = thaiVoice;
-
-                    if (typeof thaiVoice !== 'undefined') {
-                        window.speechSynthesis.speak(utterance);
-                    }
-                } else {
-                    //                    console.log('SpeechSynthesis API is not available in this browser');
-                }
+                /*
+                                if ('speechSynthesis' in window) {
+                
+                                    let voices = window.speechSynthesis.getVoices();
+                
+                                    let thaiVoice = voices.find(voice => voice.lang === 'th-TH');
+                
+                                    let utterance = new SpeechSynthesisUtterance('สวัสดีครับ');
+                
+                                    utterance.voice = thaiVoice;
+                
+                                    if (typeof thaiVoice !== 'undefined') {
+                                        window.speechSynthesis.speak(utterance);
+                                    }
+                                } else {
+                                    console.log('SpeechSynthesis API is not available in this browser');
+                                }
+                */
 
             });
 
             choiceWords.appendChild(divChoiceWord);
 
         });
-
 
     const searchWords = document.getElementById("searchWords");
     searchWords.innerHTML = '';
@@ -729,28 +727,36 @@ function textToSpeech(text) {
         */
 
         const utterance = new SpeechSynthesisUtterance(text);
-        utterance.voice = voices[0]; // Choose the first available voice
-        utterance.lang = 'th-TH';
-
-        voices.forEach((item, index) => {
-            if (item.lang === "th-TH") {
-                console.log('lang ' + item.lang + " index " + index + ' name ' + item.name);
-
-                utterance.voice = voices[index];
-            }
-        });
 
         /*
-                utterance.volume = 0.8; // 0 to 1
-                utterance.rate = 1.2; // 0.1 to 10
-                utterance.pitch = 1.1; // 0 to 2
         
-                utterance.onstart = () => console.log('Speech started');
-                utterance.onend = () => console.log('Speech ended');
-                utterance.onerror = (event) => console.error('Speech error:', event.error);
-                utterance.onpause = () => console.log('Speech paused');
-                utterance.onresume = () => console.log('Speech resumed');
-        */
+                utterance.voice = voices[0]; // see th.json in assets from: 
+                utterance.lang = 'th-TH';
+        
+                voices.forEach((item, index) => {
+                    if (item.lang === "th-TH") {
+                        console.log('lang ' + item.lang + " index " + index + ' name ' + item.name);
+        
+                        utterance.voice = voices[index];
+                    }
+                });  
+                
+                        utterance.volume = 0.8; // 0 to 1
+                        utterance.rate = 1.2; // 0.1 to 10
+                        utterance.pitch = 1.1; // 0 to 2
+                
+                        utterance.onstart = () => console.log('Speech started');
+                        utterance.onend = () => console.log('Speech ended');
+                        utterance.onerror = (event) => console.error('Speech error:', event.error);
+                        utterance.onpause = () => console.log('Speech paused');
+                        utterance.onresume = () => console.log('Speech resumed');
+                */
+
+        utterance.name = 'ไทย ไทย'; // Android
+
+        utterance.volume = 0.8; // 0 to 1
+        utterance.rate = 1; // 0.1 to 10
+        utterance.pitch = 1; // 0 to 2
 
         window.speechSynthesis.speak(utterance);
 
