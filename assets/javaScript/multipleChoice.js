@@ -623,6 +623,24 @@ searchWord.addEventListener('input', function (event) {
             span_th_word.lang = "th";
             paragraph.appendChild(span_th_word);
 
+            span_th_word.addEventListener('click', function () {
+                var spanWordTh = this;
+                if (window.getSelection) {
+                    var range = document.createRange();
+                    range.selectNode(spanWordTh);
+                    window.getSelection().removeAllRanges();
+                    window.getSelection().addRange(range);
+                } else if (document.selection) {
+                    var range = document.body.createTextRange();
+                    range.moveToElementText(spanWordTh);
+                    range.select();
+                }
+
+                textToSpeech(span_th_word.textContent);
+
+            });
+
+
             searchWords.appendChild(paragraph);
 
         });
