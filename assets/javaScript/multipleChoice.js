@@ -288,7 +288,36 @@ const dictionaryFood = [
     { en_word: "vegetables", th_word: "ผัก", pronunciation: "phàk", ex_en: "", ex_pronunciation: "", ex_th: "" },
     { en_word: "egg", th_word: "ไข่", pronunciation: "khài", ex_en: "", ex_pronunciation: "", ex_th: "" },
     { en_word: "tofu", th_word: "เต้าหู ้", pronunciation: "dtâw-hûu", ex_en: "", ex_pronunciation: "", ex_th: "" },
-    { en_word: "Chili", th_word: "พริก", pronunciation: "phrík", ex_en: "", ex_pronunciation: "", ex_th: "" }
+    { en_word: "Chili", th_word: "พริก", pronunciation: "phrík", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { en_word: "meat/beef", th_word: "เนืNอ", pronunciation: "nɯa", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { en_word: "pork", th_word: "หมู", pronunciation: "mǔu", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { en_word: "chicken", th_word: "ไก่", pronunciation: "gài", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { en_word: "fish", th_word: "ปลา", pronunciation: "bplaa", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { en_word: "seafood", th_word: "(อาหาร)ทะเล", pronunciation: "(aa hǎan) thá-lee", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { en_word: "shrimp", th_word: "กุ้ง", pronunciation: "gûŋ", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { en_word: "squid", th_word: "ปลาหมึก", pronunciation: "bplaa-mɯk", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { en_word: "crab", th_word: "ปู", pronunciation: "bpuu", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { en_word: "shell", th_word: "หอย", pronunciation: "hɔ̌ɔy", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { en_word: "to boil/boiled", th_word: "ต้ม", pronunciation: "dtôm", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { en_word: "to stir fry/fried", th_word: "ผัด", pronunciation: "phàt", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { en_word: "to deep fry/ deep fried", th_word: "ทอด", pronunciation: "thɔ̂ɔt", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { en_word: "to steam/steamed", th_word: "นึงf", pronunciation: "nɯ̂ŋ", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { en_word: "to grill/grilled", th_word: "ปิ", pronunciation: "bpîŋ", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { en_word: "to gril/grilled", th_word: "ย่าง", pronunciation: "yâaŋ", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { en_word: "mild soup", th_word: "แกงจืด", pronunciation: "gɛɛŋ-jɯɯt", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { en_word: "spicy sour soup", th_word: "ต้ มยํา", pronunciation: "dtôm-yam", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { en_word: "spicy sour salad", th_word: "ยํา", pronunciation: "yam", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { en_word: "noodles", th_word: "ก๋วยเตีmยว", pronunciation: "gǔay-dtǐaw", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { en_word: "pad thai noodles", th_word: "ผัดไทย", pronunciation: "phàt-thai", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { en_word: "fried vegtables", th_word: "ผัดผัก", pronunciation: "phàt-phàk", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { en_word: "thai omelet", th_word: "ไข่เจียว", pronunciation: "khài-jiaw", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { en_word: "papaya salad", th_word: "ส้มตํา", pronunciation: "sôm-dtam", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { en_word: "green curry", th_word: "แกงเขียงหวาน", pronunciation: "gɛɛŋ-khǐaw-wǎan", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { en_word: "red curry", th_word: "แกงเผ็ด", pronunciation: "gɛɛŋ-phèt", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { en_word: "mango sticky rice", th_word: "ข้าวเหนียวมะม่วง", pronunciation: "khâaw-nǐaw má-mûaŋ", ex_en: "", ex_pronunciation: "", ex_th: "" }
+    /*
+        { en_word: " ", th_word: "", pronunciation: "", ex_en: "", ex_pronunciation: "", ex_th: "" }
+    */
 ];
 
 const dictionaries = {
@@ -639,7 +668,6 @@ searchWord.addEventListener('input', function (event) {
                 textToSpeech(span_th_word.textContent);
 
             });
-
 
             searchWords.appendChild(paragraph);
 
