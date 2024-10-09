@@ -77,8 +77,12 @@ span.notice {
     color: green;
 }
 
-#feedback span {
-    padding: .15rem;
-    margin: .25rem;
+#feedback {
+    padding: .25rem;
+    margin: .25rem 0;
     font-size: small;
+}
+
+#feedback span {
+    padding: .1rem;
 }

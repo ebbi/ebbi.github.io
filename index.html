@@ -61,6 +61,8 @@
                     <div>
                         <span class="nav-button">
                             <button id="previousWord" class="nav-button">&lt; prev</button>
+                        </span>
+                        <span class="nav-button">
                             <button id="nextWord" class="nav-button">next &gt;</button>
                         </span>
                         <span class="float-right">
@@ -69,61 +71,77 @@
                             </label>
                         </span>
                     </div>
+
+                    <div>
+                    </div>
                     <div id="incorrectAnswersOnlyDiv" hidden>
                         <label>
                             <input id="incorrectAnswersOnly" type="checkbox" name="incorrectAnswersOnly">
                             incorrect answers only
                         </label>
                     </div>
-                    <details open>
-                        <summary>Select dictionaries</summary>
 
-                        <details>
-                            <summary>Book 1 dictionary</summary>
-                            <div class="checkbox-dictionary-container">
+                </nav>
 
-                                <label>
-                                    <input type="checkbox" id="dictionaryPhonetics" name="dictionaryPhonetics"
-                                        value="dictionaryPhonetics" />Phonetics
-                                </label>
-                                <label>
-                                    <input type="checkbox" id="dictionaryBook1" name="dictionaryBook1"
-                                        value="dictionaryBook1" />Book 1
-                                </label>
-                                <label>
-                                    <input type="checkbox" id="dictionaryPronouns" name="dictionaryPronouns"
-                                        value="dictionaryPronouns" />Pronouns
-                                </label>
+                <div id="example"></div>
 
-                                <label>
-                                    <input type="checkbox" id="dictionaryNumbers" name="dictionaryNumbers"
-                                        value="dictionaryNumbers" />Numbers
-                                </label>
-                                <label>
-                                    <input type="checkbox" id="dictionaryClothes" name="dictionaryClothes"
-                                        value="dictionaryClothes" />Clothes
-                                </label>
-                                <label>
-                                    <input type="checkbox" id="dictionaryPlaces" name="dictionaryPlaces"
-                                        value="dictionaryPlaces" />Places
-                                </label>
-                                <label>
-                                    <input type="checkbox" id="dictionaryPrepositions" name="dictionaryPrepositions"
-                                        value="dictionaryPrepositions" />Prepositions
-                                </label>
+                <div id="feedback" class="feedback">
 
-                            </div>
-                        </details>
+                    <span id="correctAnswer" class="correct">0</span>
+                    <span id="incorrectAnswer" class="incorrect">0</span>
+                    <span id="score" class="info">0%</span>
+                    <span id="tries" class="info">0/0</span>
 
-                        <details>
-                            <summary>Book 2 dictionary</summary>
-                            <div class="checkbox-dictionary-container">
+                </div>
+                <details open>
+                    <summary>Select dictionaries</summary>
 
-                                <label>
-                                    <input type="checkbox" id="dictionaryFood" name="dictionaryFood"
-                                        value="dictionaryFood" />Food
-                                </label>
-                                <!--
+                    <details>
+                        <summary>Book 1 dictionary</summary>
+                        <div class="checkbox-dictionary-container">
+
+                            <label>
+                                <input type="checkbox" id="dictionaryPhonetics" name="dictionaryPhonetics"
+                                    value="dictionaryPhonetics" />Phonetics
+                            </label>
+                            <label>
+                                <input type="checkbox" id="dictionaryBook1" name="dictionaryBook1"
+                                    value="dictionaryBook1" />Book 1
+                            </label>
+                            <label>
+                                <input type="checkbox" id="dictionaryPronouns" name="dictionaryPronouns"
+                                    value="dictionaryPronouns" />Pronouns
+                            </label>
+
+                            <label>
+                                <input type="checkbox" id="dictionaryNumbers" name="dictionaryNumbers"
+                                    value="dictionaryNumbers" />Numbers
+                            </label>
+                            <label>
+                                <input type="checkbox" id="dictionaryClothes" name="dictionaryClothes"
+                                    value="dictionaryClothes" />Clothes
+                            </label>
+                            <label>
+                                <input type="checkbox" id="dictionaryPlaces" name="dictionaryPlaces"
+                                    value="dictionaryPlaces" />Places
+                            </label>
+                            <label>
+                                <input type="checkbox" id="dictionaryPrepositions" name="dictionaryPrepositions"
+                                    value="dictionaryPrepositions" />Prepositions
+                            </label>
+
+                        </div>
+                    </details>
+
+                    <details>
+                        <summary>Book 2 dictionary</summary>
+                        <div class="checkbox-dictionary-container">
+
+                            <label>
+                                <input type="checkbox" id="dictionaryFood" name="dictionaryFood"
+                                    value="dictionaryFood" />Food
+                            </label>
+                            <!--
                             <label>
                                 <input type="checkbox" id="dictionaryBook1" name="dictionaryBook1"
                                     value="dictionaryBook1" />Book 1
@@ -150,22 +168,10 @@
                                     value="dictionaryPrepositions" />Prepositions
                             </label>
 -->
-                            </div>
-                        </details>
-
+                        </div>
                     </details>
-                </nav>
 
-                <div id="example"></div>
-
-                <div id="feedback" class="feedback">
-
-                    <span id="correctAnswer" class="correct">0</span>
-                    <span id="incorrectAnswer" class="incorrect">0</span>
-                    <span id="score" class="info">0%</span>
-                    <span id="tries" class="info">0/0</span>
-
-                </div>
+                </details>
 
             </details>
 
