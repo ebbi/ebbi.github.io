@@ -14,8 +14,9 @@ span.notice {
 
 #example {
     background-color: white;
-    padding: 0.1rem;
-    font-size: 1rem;
+    padding: 0.5rem;
+    font-size: small;
+    border-radius: 3px;
 }
 
 .two-col-grid {
@@ -79,10 +80,6 @@ span.notice {
 
 #feedback {
     padding: .25rem;
-    margin: .25rem 0;
+    margin: .25rem;
     font-size: small;
-}
-
-#feedback span {
-    padding: .1rem;
 }
