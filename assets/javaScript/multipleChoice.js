@@ -16,7 +16,7 @@ const dictionaryPhonetics = [
     { en_word: "friend", th_word: "เพื่อน", pronunciation: "phɯ̂an", ex_en: "", ex_pronunciation: "", ex_th: "" }
 ];
 const dictionaryBook1 = [
-    { en_word: "hello", th_word: "สวัสดี", pronunciation: "sà-wàt-dii", ex_en: "hello", ex_pronunciation: "sà-wàt-dii-khráp", ex_th: "สวัสดีครับ" },
+    { en_word: "hello", th_word: "สวัสดี", pronunciation: "sà-wàt-dii", ex_en: "hello", ex_pronunciation: "sà-wàt-dii khráp", ex_th: "สวัสดีครับ" },
     { en_word: "thank you", th_word: "ขอบคุณ", pronunciation: "kɔ̀ɔp-kun", en_ex: "", ex_th: "" },
     { en_word: "never mind", th_word: "ไม่เป็นไร", pronunciation: "mâi-bpen-rai", en_ex: "", ex_th: "" },
     { en_word: "sorry / excuse me", th_word: "ขอโทษ", pronunciation: "kɔ̌ɔ-tôot", en_ex: "", ex_th: "" },
@@ -361,16 +361,14 @@ const dictionaryFood = [
 const dictionaries = {
     // book 1
     dictionaryPhonetics: dictionaryPhonetics,
-    dictionaryBook1: dictionaryBook1,
     dictionaryPronouns: dictionaryPronouns,
     dictionaryNumbers: dictionaryNumbers,
     dictionaryClothes: dictionaryClothes,
     dictionaryPlaces: dictionaryPlaces,
     dictionaryPrepositions: dictionaryPrepositions,
+    dictionaryBook1: dictionaryBook1,
     // book 2
     dictionaryFood: dictionaryFood
-    //        dictionaryFood: dictionaryPhonetics,
-
 };
 
 const dictionaryIncorrectAnswers = [];
@@ -570,8 +568,6 @@ randomizeCheckbox.addEventListener("change", () => {
 
 function htmlMultipleChoice(questionWordIndex) {
 
-    //   const currentWord = document.getElementById("searchWord");
-
     let randomWords = [];
     searchWord.value = currentDictionary[questionWordIndex].en_word;
 
@@ -653,11 +649,13 @@ function htmlMultipleChoice(questionWordIndex) {
 
     const spanExamplePronunciation = document.createElement("div");
     spanExamplePronunciation.textContent = currentDictionary[questionWordIndex].ex_pronunciation;
+    spanExamplePronunciation.classList.add("blue");
     exampleContainer.appendChild(spanExamplePronunciation);
 
     const spanExampleTh = document.createElement("div");
     spanExampleTh.lang = "th";
     spanExampleTh.textContent = currentDictionary[questionWordIndex].ex_th;
+    spanExampleTh.classList.add("red");
     exampleContainer.appendChild(spanExampleTh);
 
 }
