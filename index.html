@@ -58,18 +58,22 @@
                 <div id="choiceWords"></div>
 
                 <nav>
-                    <div class="border-top">
-                        <span class="nav-button">
-                            <button id="previousWord" class="nav-button">&lt; prev</button>
-                        </span>
-                        <span class="nav-button">
-                            <button id="nextWord" class="nav-button">next &gt;</button>
-                        </span>
-                        <span class="float-right">
-                            <label>
-                                <input type="checkbox" id="randomize" name="randomize" value="randomize" />randomise
-                            </label>
-                        </span>
+                    <div class="two-col-grid border-top">
+                        <div>
+                            <span>
+                                <label>
+                                    <input type="checkbox" id="randomize" name="randomize" value="randomize" />randomise
+                                </label>
+                            </span>
+                        </div>
+                        <div>
+                            <span class="nav-button">
+                                <button id="previousWord" class="nav-button">&lt; prev</button>
+                            </span>
+                            <span class="nav-button">
+                                <button id="nextWord" class="nav-button">next &gt;</button>
+                            </span>
+                        </div>
                     </div>
 
                     <div id="incorrectAnswersOnlyDiv" hidden>
