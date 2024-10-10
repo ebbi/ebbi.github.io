@@ -17,12 +17,12 @@ const dictionaryPhonetics = [
 ];
 const dictionaryBook1 = [
     { en_word: "hello", th_word: "สวัสดี", pronunciation: "sà-wàt-dii", ex_en: "hello", ex_pronunciation: "sà-wàt-dii khráp", ex_th: "สวัสดีครับ" },
-    { en_word: "thank you", th_word: "ขอบคุณ", pronunciation: "kɔ̀ɔp-kun", en_ex: "", ex_th: "" },
-    { en_word: "never mind", th_word: "ไม่เป็นไร", pronunciation: "mâi-bpen-rai", en_ex: "", ex_th: "" },
-    { en_word: "sorry / excuse me", th_word: "ขอโทษ", pronunciation: "kɔ̌ɔ-tôot", en_ex: "", ex_th: "" },
+    { en_word: "thank you", th_word: "ขอบคุณ", pronunciation: "kɔ̀ɔp-kun", en_ex: "Thank you.", ex_pronunciation: "khɔ̀ɔp-khun khráp", ex_th: "ขอบคุณครับ" },
+    { en_word: "never mind", th_word: "ไม่เป็นไร", pronunciation: "mâi-bpen-rai", en_ex: "Never mind.Thank you.", ex_pronunciation: "mâi-bpen-rai khráp, khɔ̀ɔp-khun khráp", ex_th: "ไม่เป็ นไรครับ ขอบคุณครับ" },
+    { en_word: "sorry / excuse me", th_word: "ขอโทษ", pronunciation: "kɔ̌ɔ-tôot", en_ex: "Sorry, I cannot.", ex_pronunciation: "khɔ̌ɔ-thôot khà mâi dâay khà", ex_th: "ขอโทษค่ะไม่ได้คะ่" },
     { en_word: "nice to meet you", th_word: "ยินดีทีได้รู้จัก", pronunciation: "yin-dii tîi dâai rúu-jàk", en_ex: "", ex_th: "" },
     { en_word: "how about you?", th_word: "แล้ว คุณล่ะ", pronunciation: "khun la", en_ex: "", ex_th: "" },
-    { en_word: "he / she", th_word: "เขา", pronunciation: "khǎw", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { en_word: "he / she", th_word: "เขา", pronunciation: "khǎw", ex_en: "Where is he/she from ?", ex_pronunciation: "khǎw maa jàak bprà-thêet à-rai", ex_th: "เขามาจากประเทศอะไร" },
     { en_word: "we / us", th_word: "พวกเรา", pronunciation: "phûak-raw", ex_en: "", ex_pronunciation: "", ex_th: "" },
     { en_word: "they / them", th_word: "พวกเขา", pronunciation: "phûak-khǎw", ex_en: "", ex_pronunciation: "", ex_th: "" },
     { en_word: "belong to / of", th_word: "ของ", pronunciation: "khɔ̌ɔŋ", ex_en: "", ex_pronunciation: "", ex_th: "" },
