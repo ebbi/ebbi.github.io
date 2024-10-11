@@ -613,7 +613,7 @@ function htmlMultipleChoice(questionWordIndex) {
             spanChoiceWordTh.textContent = currentDictionary[userSelectedIndex].word_th;
             spanChoiceWordTh.lang = "th";
             divChoiceWord.appendChild(spanChoiceWordTh);
-            //            spanChoiceWordTh.classList.add("button");
+            //            spanChoiceWordTh.classList.add("font-size-medium");
 
             spanChoiceWordTh.addEventListener('click', function () {
                 var spanWordTh = this;

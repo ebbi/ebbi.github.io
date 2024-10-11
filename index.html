@@ -58,13 +58,21 @@
                 <div id="choiceWords"></div>
 
                 <nav>
-                    <div class="two-col-grid border-top">
+                    <div class="two-col-grid-two-one border-top">
                         <div>
                             <span>
-                                <label>
+                                <label class="font-size-medium">
                                     <input type="checkbox" id="randomize" name="randomize" value="randomize" />randomise
                                 </label>
                             </span>
+                            <div id="incorrectAnswersOnlyDiv" hidden>
+                                <labe class="font-size-medium">
+                                    <input id="incorrectAnswersOnly" type="checkbox" name="incorrectAnswersOnly">
+                                    incorrect answers only
+                                    </label>
+                            </div>
+
+
                         </div>
                         <div>
                             <span class="nav-button">
@@ -74,13 +82,6 @@
                                 <button id="nextWord" class="nav-button">next &gt;</button>
                             </span>
                         </div>
-                    </div>
-
-                    <div id="incorrectAnswersOnlyDiv" hidden>
-                        <label>
-                            <input id="incorrectAnswersOnly" type="checkbox" name="incorrectAnswersOnly">
-                            incorrect answers only
-                        </label>
                     </div>
 
                 </nav>
