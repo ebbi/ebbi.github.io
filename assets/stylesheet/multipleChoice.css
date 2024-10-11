@@ -24,11 +24,6 @@ span.notice {
     grid-template-columns: 1fr 1fr;
 }
 
-.two-col-grid-two-one {
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-}
-
 .background-blue {
     background-color: #00247d;
     color: white;
@@ -36,6 +31,10 @@ span.notice {
 
 .notice {
     color: black;
+}
+
+.font-size-small {
+    font-size: small;
 }
 
 .font-size-medium {
