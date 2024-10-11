@@ -52,7 +52,8 @@ span.notice {
 #choiceWords div span:lang(th),
 #searchWords span:lang(th) {
     color: red;
-    float: right;
+    padding: 0.2rem 0.35rem;
+    margin: 0 3vw;
 }
 
 .correct {
