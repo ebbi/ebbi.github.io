@@ -1,19 +1,19 @@
 // book 1
 const dictionaryPhonetics = [
-    { word_en: "house", word_th: "บ้าน", pronunciation: "bâan", ex_en: "", ex_pronunciation: "", ex_th: "" },
-    { word_en: "school", word_th: "โรงเรียน", pronunciation: "rooŋ-rian", ex_en: "my school", ex_pronunciation: "rooŋ-rian khɔ̌ɔŋ phǒm", ex_th: "" },
+    { word_en: "house", word_th: "บ้าน", pronunciation: "bâan", ex_en: "big house", ex_pronunciation: "bâan yài", ex_th: "บ้าน ใหญ่" },
+    { word_en: "school", word_th: "โรงเรียน", pronunciation: "rooŋ-rian", ex_en: "", ex_pronunciation: "", ex_th: "" },
     { word_en: "coffee", word_th: "กาแฟ", pronunciation: "gaa-fɛɛ", ex_en: "Normally, I drink coffee.", ex_pronunciation: "(bpòk-gà-dtì) phǒm dɯ̀ɯm / gin gaa-fɛɛ", ex_th: "(ปกติ) ผมดืxม/กินกาแฟ" },
     { word_en: "food", word_th: "อาหาร", pronunciation: "aa-hǎan", ex_en: "", ex_pronunciation: "", ex_th: "" },
     { word_en: "to lie down or sleep", word_th: "นอน", pronunciation: "nɔɔn", ex_en: "", ex_pronunciation: "", ex_th: "" },
     { word_en: "banana", word_th: "กล้วย", pronunciation: "gluay", ex_en: "", ex_pronunciation: "", ex_th: "" },
-    { word_en: "family", word_th: "ครอบครัว", pronunciation: "khroop-khrua", ex_en: "", ex_pronunciation: " khɔ̌ɔŋ phǒm", ex_th: "" },
-    { word_en: "dog", word_th: "หมา", pronunciation: "H̄mā", ex_en: "", ex_pronunciation: "H̄mā khɔ̌ɔŋ phǒm", ex_th: "" },
+    { word_en: "family", word_th: "ครอบครัว", pronunciation: "khroop-khrua", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { word_en: "dog", word_th: "หมา", pronunciation: "H̄mā", ex_en: "", ex_pronunciation: "", ex_th: "" },
     { word_en: "lonely", word_th: "เหงา", pronunciation: "H̄engā", ex_en: "", ex_pronunciation: "", ex_th: "" },
-    { word_en: "book", word_th: "หนังสือ", pronunciation: "nǎŋ-sɯ̌ɯ", ex_en: "my books", ex_pronunciation: "nǎŋ-sɯ̌ɯ khɔ̌ɔŋ phǒm", ex_th: "" },
+    { word_en: "book", word_th: "หนังสือ", pronunciation: "nǎŋ-sɯ̌ɯ", ex_en: "my books", ex_pronunciation: "", ex_th: "" },
     { word_en: "woman", word_th: "ผู้หญิง", pronunciation: "P̄hū̂ h̄ỵing", ex_en: "", ex_pronunciation: "", ex_th: "" },
-    { word_en: "hot", word_th: "ร้อน", pronunciation: "rɔ́ɔn", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { word_en: "hot", word_th: "ร้อน", pronunciation: "rɔ́ɔn", ex_en: "The coffee is not hot.", ex_pronunciation: "gaa-fɛɛ mâi rɔ́ɔn", ex_th: "กาแฟไม่ร้อน" },
     { word_en: "horse", word_th: "ม้า", pronunciation: "M̂ā", ex_en: "", ex_pronunciation: "", ex_th: "" },
-    { word_en: "friend", word_th: "เพื่อน", pronunciation: "phɯ̂an", ex_en: "my friend", ex_pronunciation: "phɯ̂an khɔ̌ɔŋ phǒm", ex_th: "" }
+    { word_en: "friend", word_th: "เพื่อน", pronunciation: "phɯ̂an", ex_en: "What is your friend's name ?", ex_pronunciation: "phɯ̂an khɔ̌ɔŋ khun chɯ̂ɯ à-rai", ex_th: "เพืxอนของคุณชืxออะไร" }
 ];
 const dictionaryBook1 = [
     { word_en: "hello", word_th: "สวัสดี", pronunciation: "sà-wàt-dii", ex_en: "hello", ex_pronunciation: "sà-wàt-dii khráp", ex_th: "สวัสดีครับ" },
@@ -160,19 +160,19 @@ const dictionaryBook1 = [
     //    { word_en: "", word_th: "", pronunciation: "", ex_en: "", ex_pronunciation: "", ex_th: "" },
 ];
 const dictionaryPronouns = [
-    { word_en: "I for male", word_th: "ผม", pronunciation: "phǒm", ex_en: "", ex_pronunciation: "", ex_th: "" },
-    { word_en: "I for female", word_th: "ฉัน", pronunciation: "chǎn", ex_en: "", ex_pronunciation: "", ex_th: "" },
-    { word_en: "you", word_th: "คุณ", pronunciation: "khun", ex_en: "", ex_pronunciation: "", ex_th: "" },
-    { word_en: "he / she", word_th: "เขา", pronunciation: "khǎw", ex_en: "", ex_pronunciation: "", ex_th: "" },
-    { word_en: "we / us", word_th: "พวกเรา", pronunciation: "phûak-raw", ex_en: "", ex_pronunciation: "", ex_th: "" },
-    { word_en: "they / them", word_th: "พวกเขา", pronunciation: "phûak-khǎw", ex_en: "", ex_pronunciation: "", ex_th: "" },
-    { word_en: "your / yours", word_th: "ของคุณ", pronunciation: "(khɔ̌ɔŋ) khun", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { word_en: "I for male", word_th: "ผม", pronunciation: "phǒm", ex_en: "My / Mine (Male Speaker)", ex_pronunciation: "khɔ̌ɔŋ phǒm", ex_th: "ของผม" },
+    { word_en: "I for female", word_th: "ฉัน", pronunciation: "chǎn", ex_en: "My / Mine (Female Speaker)", ex_pronunciation: "khɔ̌ɔŋ chǎn", ex_th: "ของฉัน" },
+    { word_en: "you", word_th: "คุณ", pronunciation: "khun", ex_en: "My name is Ann, And you ?", ex_pronunciation: "chǎn chɯ̂ɯ Anne khà. lɛ́ɛw khun là khá", ex_th: "ฉันชืxอแอนค่ะ แล้ วคุณล่ะคะ" },
+    { word_en: "he / she", word_th: "เขา", pronunciation: "khǎw", ex_en: "What is his/her name ?", ex_pronunciation: "khǎw chɯ̂ɯ à-rai", ex_th: "เขาชืxออะไร" },
+    { word_en: "we / us", word_th: "พวกเรา", pronunciation: "phûak-raw", ex_en: "We will not swim.", ex_pronunciation: "phûak-raw jà mâi wâay-náam", ex_th: "พวกเราจะไม่วา่ ยนํา" },
+    { word_en: "they / them", word_th: "พวกเขา", pronunciation: "phûak-khǎw", ex_en: "What are they doing ?", ex_pronunciation: "phûak-khǎw gam-laŋ tham à-rai yùu", ex_th: "พวกเขากําลังทําอะไรอยู่" },
+    { word_en: "your / yours", word_th: "ของคุณ", pronunciation: "(khɔ̌ɔŋ) khun", ex_en: "What is your teacher's name ?", ex_pronunciation: "khruu khɔ̌ɔŋ khun chɯ̂ɯ à-rai", ex_th: "ครูของคุณชืxออะไร" },
     { word_en: "his / her / hers", word_th: "ของเขา", pronunciation: "(khɔ̌ɔŋ) khǎw", ex_en: "", ex_pronunciation: "", ex_th: "" },
     { word_en: "our / ours", word_th: "ของพวกเรา", pronunciation: "(khɔ̌ɔŋ) phûak-raw", ex_en: "", ex_pronunciation: "", ex_th: "" },
     { word_en: "their / theirs", word_th: "ของพวกเขา", pronunciation: "khɔ̌ɔŋ phûak-khǎw", ex_en: "", ex_pronunciation: "", ex_th: "" }
 ];
 const dictionaryNumbers = [
-    { word_en: "one", word_th: "หนึง", pronunciation: "nɯŋ", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { word_en: "one", word_th: "หนึง", pronunciation: "nɯŋ", ex_en: "One hundred", ex_pronunciation: "nɯŋ-rɔ́ɔy", ex_th: "หนึง:ร้อย" },
     { word_en: "two", word_th: "สอง", pronunciation: "sɔ̌ɔŋ", ex_en: "", ex_pronunciation: "", ex_th: "" },
     { word_en: "three", word_th: "สาม", pronunciation: "sǎam", ex_en: "", ex_pronunciation: "", ex_th: "" },
     { word_en: "four", word_th: "สี", pronunciation: "sìi", ex_en: "", ex_pronunciation: "", ex_th: "" },
@@ -215,20 +215,20 @@ const dictionaryNumbers = [
 ];
 const dictionaryClothes = [
     { word_en: "clothes", word_th: "เสือผ้า", pronunciation: "sɯ̂a-phâa", ex_en: "", ex_pronunciation: "", ex_th: "" },
-    { word_en: "shirt", word_th: "เสือ", pronunciation: "sɯ̂a", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { word_en: "shirt", word_th: "เสือ", pronunciation: "sɯ̂a", ex_en: "How much is the shirt?", ex_pronunciation: "sɯ̂a thâw-rài khá", ex_th: "เสือเท่าไหร่คะ" },
     { word_en: "T-shirt", word_th: "เสือยืด", pronunciation: "sɯ̂a-yɯ̂ɯt", ex_en: "", ex_pronunciation: "", ex_th: "" },
     { word_en: "sweater", word_th: "เสือกันหนาว", pronunciation: "sɯ̂a gan-nǎaw", ex_en: "", ex_pronunciation: "", ex_th: "" },
     { word_en: "pants / trousers", word_th: "กางเกง", pronunciation: "gaaŋ-geeŋ", ex_en: "", ex_pronunciation: "", ex_th: "" },
-    { word_en: "skirt", word_th: "กระโปรง", pronunciation: "grà-bprooŋ", ex_en: "", ex_pronunciation: "", ex_th: "" },
-    { word_en: "shoes", word_th: "รองเท้า", pronunciation: "rɔɔŋ-tháaw", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { word_en: "skirt", word_th: "กระโปรง", pronunciation: "grà-bprooŋ", ex_en: "The skirt is 165 Baht.", ex_pronunciation: "grà-bprooŋ 165 bàat khà", ex_th: "กระโปรง šบาทค่ะ" },
+    { word_en: "shoes", word_th: "รองเท้า", pronunciation: "rɔɔŋ-tháaw", ex_en: "The shoes are cheap.", ex_pronunciation: "rɔɔŋ-tháaw thùuk", ex_th: "รองเท้ าถูก" },
     { word_en: "socks", word_th: "ถุงเท้า", pronunciation: "thǔŋ-tháaw", ex_en: "", ex_pronunciation: "", ex_th: "" },
-    { word_en: "glasses", word_th: "แว่นตา", pronunciation: "wɛ̂ɛn-dtaa", ex_en: "", ex_pronunciation: "", ex_th: "" },
-    { word_en: "hat", word_th: "หมวก", pronunciation: "mùak", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { word_en: "glasses", word_th: "แว่นตา", pronunciation: "wɛ̂ɛn-dtaa", ex_en: "How much are the glasses?", ex_pronunciation: "wɛ̂ ɛn-dtaa thâw-rài khá", ex_th: "แว่นตาเท่าไหร่คะ" },
+    { word_en: "hat", word_th: "หมวก", pronunciation: "mùak", ex_en: "How much is the hat?", ex_pronunciation: "mùak thâw-rài khá", ex_th: "หมวกเท่าไหร่คะ" },
     { word_en: "swimming suit", word_th: "ชุดว่ายนํา", pronunciation: "chút wâay-náam", ex_en: "", ex_pronunciation: "", ex_th: "" },
     { word_en: "pajamas", word_th: "ชุดนอน", pronunciation: "chút nɔɔn", ex_en: "", ex_pronunciation: "", ex_th: "" },
     { word_en: "exercise outfit", word_th: "ชุดออกกําลังกาย", pronunciation: "chút ɔ̀ɔk-gam-laŋ-gaay", ex_en: "", ex_pronunciation: "", ex_th: "" },
     { word_en: "price", word_th: "ราคา", pronunciation: "raa-khaa", ex_en: "", ex_pronunciation: "", ex_th: "" },
-    { word_en: "to discount", word_th: "ลด", pronunciation: "lót", ex_en: "", ex_pronunciation: "", ex_th: "" }
+    { word_en: "to discount", word_th: "ลด", pronunciation: "lót", ex_en: "Could you give me a discount(please)?", ex_pronunciation: "lót nɔ̀ɔy dâay mǎi khá", ex_th: "ลดหน่อยได้ ไหมคะ" }
     //    { word_en: "", word_th: "", pronunciation: "", ex_en: "", ex_pronunciation: "", ex_th: "" },
 ];
 const dictionaryPlaces = [
