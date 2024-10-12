@@ -644,6 +644,7 @@ function htmlMultipleChoice(questionWordIndex) {
 
     const spanExampleEn = document.createElement("span");
     spanExampleEn.textContent = currentDictionary[questionWordIndex].ex_en;
+    //    spanExampleEn.classList.add("blue");
     exampleContainer.appendChild(spanExampleEn);
 
     const spanExamplePronunciation = document.createElement("div");
