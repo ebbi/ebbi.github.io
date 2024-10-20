@@ -10,7 +10,7 @@ const dictionaryPhonetics = [
     { word_en: "dog", word_th: "หมา", pronunciation: "H̄mā", ex_en: "", ex_pronunciation: "", ex_th: "" },
     { word_en: "lonely", word_th: "เหงา", pronunciation: "H̄engā", ex_en: "", ex_pronunciation: "", ex_th: "" },
     { word_en: "book", word_th: "หนังสือ", pronunciation: "nǎŋ-sɯ̌ɯ", ex_en: "my books", ex_pronunciation: "", ex_th: "" },
-    { word_en: "woman", word_th: "ผู้หญิง", pronunciation: "P̄hū̂ h̄ỵing", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { word_en: "woman", word_th: "ผู้หญิง", pronunciation: "P̄hū̂ ỵing", ex_en: "", ex_pronunciation: "", ex_th: "" },
     { word_en: "hot", word_th: "ร้อน", pronunciation: "rɔ́ɔn", ex_en: "The coffee is not hot.", ex_pronunciation: "gaa-fɛɛ mâi rɔ́ɔn", ex_th: "กาแฟไม่ร้อน" },
     { word_en: "horse", word_th: "ม้า", pronunciation: "M̂ā", ex_en: "", ex_pronunciation: "", ex_th: "" },
     { word_en: "friend", word_th: "เพื่อน", pronunciation: "phɯ̂an", ex_en: "What is your friend's name ?", ex_pronunciation: "phɯ̂an khɔ̌ɔŋ khun chɯ̂ɯ à-rai", ex_th: "เพืxอนของคุณชืxออะไร" }
@@ -375,7 +375,6 @@ const dictionaryIncorrectAnswers = [];
 let wordIndex = 0;
 let dictionary = [];  // used for word search
 let currentDictionary = [];
-let lastDictionary = currentDictionary; // used for randmised and return to ordered
 let selectedDictionaryNames = []; // selected dictionary checkboxes
 
 let NoAnswerChoices = 3;
@@ -423,7 +422,7 @@ previousWord.addEventListener("click", () => {
     } else if (currentDictionary.length > 0) {
         wordIndex = currentDictionary.length - 1;
     } else {
-        searchWord.classList.add('info');
+        //       searchWord.classList.add('info');
         searchWord.value = 'Select a dictionary';
         return;
     }
@@ -439,7 +438,7 @@ nextWord.addEventListener("click", () => {
     } else if (currentDictionary.length > 0) {
         wordIndex = currentDictionary.length;
     } else {
-        searchWord.classList.add('info');
+        //       searchWord.classList.add('info');
         searchWord.value = 'Select a dictionary';
         return;
     }
@@ -449,43 +448,48 @@ nextWord.addEventListener("click", () => {
 });
 
 incorrectAnswersOnly.addEventListener("click", () => {
-
-    if (incorrectAnswersOnly.checked) {
-
-        if (dictionaryIncorrectAnswers.length > NoAnswerChoices) {
-            lastDictionary = currentDictionary; // restore last dictionary if unchecked
-            currentDictionary = dictionaryIncorrectAnswers;
-
-            wordIndex = 0;
-            htmlMultipleChoice(wordIndex);
-
+    /*
+        if (incorrectAnswersOnly.checked) {
+    
+            if (dictionaryIncorrectAnswers.length > NoAnswerChoices) {
+                lastDictionary = currentDictionary; // restore last dictionary if later unchecked
+                currentDictionary = dictionaryIncorrectAnswers;
+            } else {
+                incorrectAnswersOnly.checked = false;
+            }
+    
         } else {
-            incorrectAnswersOnly.checked = false;
+            currentDictionary = lastDictionary;
         }
-
-    } else {
-        currentDictionary = lastDictionary;
-    }
-
+    
+        feedback();
+    
+        wordIndex = 0;
+        htmlMultipleChoice(wordIndex);
+    */
+    setDictionary();
 });
 
 randomizeCheckbox.addEventListener("change", () => {
-
-    if (currentDictionary.length == 0) {
-        //        randomizeCheckbox.checked = false;
-        return;
-    }
-
-    if (randomizeCheckbox.checked) {
-        //        randomize = true;
-        currentDictionary = shuffle(currentDictionary);
+    /*
+        if (currentDictionary.length == 0) {
+            //        randomizeCheckbox.checked = false;
+            return;
+        }
+    
+        if (randomizeCheckbox.checked) {
+            //        randomize = true;
+            lastDictionary = currentDictionary;
+            currentDictionary = shuffle(currentDictionary);
+        } else {
+            //       randomize = false;
+            // setDictionary();
+            currentDictionary = lastDictionary;
+        }
         wordIndex = 0;
         htmlMultipleChoice(wordIndex);
-    } else {
-        //       randomize = false;
-        setDictionary();
-    }
-
+    */
+    setDictionary();
 });
 
 searchWord.addEventListener('input', function (event) {
@@ -554,7 +558,7 @@ function initialize() {
 
     initializeDictionary();
     currentDictionary = '';
-    lastDictionary = '';
+    //   lastDictionary = '';
 
     const choiceWords = document.getElementById("choiceWords");
     choiceWords.textContent = '';
@@ -570,16 +574,20 @@ function initialize() {
     uncheckSelectedCheckboxes(dictionaryCheckboxes);
 
     randomizeCheckbox.checked = false;
+    incorrectAnswersOnly.checked = false;
 
     feedback();
 }
 
 function setDictionary() {
 
+    let lastDictionary = currentDictionary; // used for randmised and return to ordered
+
     currentDictionary = [];
 
     if (selectedDictionaryNames.length === 0) {
         initialize();
+        return;
     } else {
 
         selectedDictionaryNames.forEach(name => {
@@ -588,29 +596,22 @@ function setDictionary() {
 
                 const newArray = [...dictionaries[name]];
                 currentDictionary = currentDictionary.concat(newArray);
+                lastDictionary = lastDictionary.concat(newArray);
 
             } else {
                 //            console.log(`Array '${name}' does not exist.`);
             }
         });
 
-        if (randomizeCheckbox.checked) {
-            //       randomize = true;
-            currentDictionary = shuffle(currentDictionary);
-            wordIndex = 0;
+        if (incorrectAnswersOnly.checked) {
+            currentDictionary = dictionaryIncorrectAnswers;
         }
-        //else {
-        //       randomize = false;
-        //       setDictionary();
-        //   }
+
+        if (randomizeCheckbox.checked) {
+            currentDictionary = shuffle(currentDictionary);
+        }
 
         feedback();
-
-        //    searchWord.classList.remove('info');
-
-        //   const searchWords = document.getElementById("searchWords");
-        //  searchWords.innerHTML = '';
-
         wordIndex = 0;
         htmlMultipleChoice(wordIndex);
     }
