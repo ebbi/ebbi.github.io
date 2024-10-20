@@ -284,8 +284,8 @@ const dictionaryFood = [
     { word_en: "rice", word_th: "ข้าว", pronunciation: "khâaw", ex_en: "", ex_pronunciation: "", ex_th: "" },
     { word_en: "food", word_th: "อาหาร/กับข้าว", pronunciation: "aa-hǎan/gàp-khâaw", ex_en: "Do you like Thai food ?", ex_pronunciation: "khun chɔ̂ɔp aa-hǎan thai mǎi/mái", ex_th: "คุณชอบอาหารไทยไหม/มั" },
     { word_en: "curry", word_th: "แกง", pronunciation: "gɛɛŋ", ex_en: "", ex_pronunciation: "", ex_th: "" },
-    { word_en: "vegetables", word_th: "ผัก", pronunciation: "phàk", ex_en: "", ex_pronunciation: "", ex_th: "" },
-    { word_en: "egg", word_th: "ไข่", pronunciation: "khài", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { word_en: "vegetables", word_th: "ผัก", pronunciation: "phàk", ex_en: "I would like Pad Thai without vegetables.", ex_pronunciation: "(phǒm) aw phàt-thai mâi sài phàk khráp", ex_th: "(ผม)เอาผัดไทยไม่ใส่ผกัครับ" },
+    { word_en: "egg", word_th: "ไข่", pronunciation: "khài", ex_en: "I would like chicken fried rice with a fried egg.", ex_pronunciation: "(chǎn) khɔ̌ɔ khâaw-phàt gài sài khài-daaw khà", ex_th: "(ฉัน)ขอข้ าวผัดไก่ใส่ไข่ดาวค่ะ" },
     { word_en: "tofu", word_th: "เต้าหู ้", pronunciation: "dtâw-hûu", ex_en: "", ex_pronunciation: "", ex_th: "" },
     { word_en: "Chili", word_th: "พริก", pronunciation: "phrík", ex_en: "", ex_pronunciation: "", ex_th: "" },
     { word_en: "meat/beef", word_th: "เนืNอ", pronunciation: "nɯa", ex_en: "", ex_pronunciation: "", ex_th: "" },
@@ -373,16 +373,16 @@ const dictionaries = {
 const dictionaryIncorrectAnswers = [];
 
 let wordIndex = 0;
-let dictionary = [];
+let dictionary = [];  // used for word search
 let currentDictionary = [];
-let lastDictionary = currentDictionary;
-let selectedDictionaryNames = [];
+let lastDictionary = currentDictionary; // used for randmised and return to ordered
+let selectedDictionaryNames = []; // selected dictionary checkboxes
 
 let NoAnswerChoices = 3;
 let correctAnswerCount = 0;
 let incorrectAnswerCount = 0;
 let attemptAnswerCount = 0;
-let randomize = false;
+//let randomize = false;
 
 const searchWord = document.getElementById("searchWord");
 const incorrectAnswersOnly = document.getElementById("incorrectAnswersOnly");
@@ -390,108 +390,31 @@ const randomizeCheckbox = document.getElementById("randomize");
 const dictionaryCheckboxes = document.querySelectorAll('.checkbox-dictionary-container input[type="checkbox"]');
 
 initialize();
-function initialize() {
-
-    initializeDictionary();
-
-    const choiceWords = document.getElementById("choiceWords");
-    choiceWords.textContent = '';
-
-    searchWord.value = '';
-
-    const searchWords = document.getElementById("searchWords");
-    searchWords.innerHTML = '';
-
-    uncheckSelectedCheckboxes(dictionaryCheckboxes);
-
-    randomizeCheckbox.checked = false;
-
-    feedback();
-}
-
-function initializeDictionary() {
-
-    // dictionary is concatenation of all dictionaries for word search
-
-    let dictionaryNames = Object.keys(dictionaries);
-
-    dictionaryNames.forEach(name => {
-
-        if (dictionaries.hasOwnProperty(name)) {
-            const newArray = [...dictionaries[name]];
-            dictionary = dictionary.concat(newArray);
-
-        } else {
-            //            console.log(`Array '${name}' does not exist.`);
-        }
-    });
-
-}
-
-function uncheckSelectedCheckboxes(checkboxes) {
-    for (var i = 0; i < checkboxes.length; i++) {
-        checkboxes[i].checked = false;
-    }
-}
 
 dictionaryCheckboxes.forEach(function (dictionaryCheckbox) {
 
     dictionaryCheckbox.addEventListener('change', function (event) {
 
-        //    console.log('Checkbox with value ' + dictionaryCheckbox.value + ' has been changed');
-
         if (dictionaryCheckbox.checked) {
-            //           console.log('Checkbox with value ' + dictionaryCheckbox.value + ' checked');
             selectedDictionaryNames.push(dictionaryCheckbox.value);
         } else {
-            //           console.log('Checkbox with value ' + dictionaryCheckbox.value + ' unchecked');
             const index = selectedDictionaryNames.indexOf(dictionaryCheckbox.value);
-            if (index !== -1) {
-                selectedDictionaryNames.splice(index, 1);
-            }
-
-            if (selectedDictionaryNames == 0) {
-                // no dictionary selected
-                initialize();
-                return;
-            }
+            selectedDictionaryNames.splice(index, 1);
         }
-        //        console.log('selectedDictionaryNames ' + selectedDictionaryNames);
-        wordIndex = 0;
+
+        console.log('selectedDictionaryNames ' + selectedDictionaryNames);
+
         setDictionary();
+        /*
+        if (selectedDictionaryNames == 0) {
+            return;
+        } else {
+            setDictionary();
+        }
+*/
     });
 
 });
-
-function setDictionary() {
-
-    currentDictionary = [];
-
-    selectedDictionaryNames.forEach(name => {
-
-        if (dictionaries.hasOwnProperty(name)) {
-            const newArray = [...dictionaries[name]];
-            //            console.log(newArray);
-            currentDictionary = currentDictionary.concat(newArray);
-
-        } else {
-            //            console.log(`Array '${name}' does not exist.`);
-        }
-    });
-
-    //   console.log('dictionary ', dictionary);
-
-    feedback();
-
-    searchWord.classList.remove('info');
-
-    //   const searchWords = document.getElementById("searchWords");
-    //  searchWords.innerHTML = '';
-
-    wordIndex = 0;
-    htmlMultipleChoice(wordIndex);
-
-}
 
 previousWord.addEventListener("click", () => {
 
@@ -549,21 +472,175 @@ incorrectAnswersOnly.addEventListener("click", () => {
 randomizeCheckbox.addEventListener("change", () => {
 
     if (currentDictionary.length == 0) {
-        randomizeCheckbox.checked = false;
+        //        randomizeCheckbox.checked = false;
         return;
     }
 
     if (randomizeCheckbox.checked) {
-        randomize = true;
+        //        randomize = true;
         currentDictionary = shuffle(currentDictionary);
         wordIndex = 0;
         htmlMultipleChoice(wordIndex);
     } else {
-        randomize = false;
+        //       randomize = false;
         setDictionary();
     }
 
 });
+
+searchWord.addEventListener('input', function (event) {
+
+    let userInput = event.target.value.toLowerCase();
+    let wordMatches = dictionary.filter(obj => obj.word_en.toLowerCase().startsWith(userInput));
+
+    const searchWords = document.getElementById("searchWords");
+    searchWords.innerHTML = '';
+
+    wordMatches.forEach(
+        (dictionary_record) => {
+
+            const paragraph = document.createElement("p");
+
+            const span_word_en = document.createElement("span");
+            span_word_en.textContent = dictionary_record.word_en;
+            span_word_en.classList.add('blue');
+            paragraph.appendChild(span_word_en);
+
+            const span_pronunciation = document.createElement("span");
+            span_pronunciation.textContent = dictionary_record.pronunciation;
+            span_pronunciation.classList.add('green');
+            paragraph.appendChild(span_pronunciation);
+
+            const span_word_th = document.createElement("span");
+            span_word_th.textContent = dictionary_record.word_th;
+            span_word_th.lang = "th";
+            paragraph.appendChild(span_word_th);
+
+            span_word_th.addEventListener('click', function () {
+                var spanWordTh = this;
+                if (window.getSelection) {
+                    var range = document.createRange();
+                    range.selectNode(spanWordTh);
+                    window.getSelection().removeAllRanges();
+                    window.getSelection().addRange(range);
+                } else if (document.selection) {
+                    var range = document.body.createTextRange();
+                    range.moveToElementText(spanWordTh);
+                    range.select();
+                }
+
+                textToSpeech(span_word_th.textContent);
+
+            });
+
+            searchWords.appendChild(paragraph);
+
+        });
+
+    if (searchWords.length == 0) {
+        searchWords.innerHTML = "";
+    }
+    if (searchWord.value == '') {
+        searchWords.innerHTML = "";
+    }
+
+    const choiceWords = document.getElementById("choiceWords");
+    choiceWords.innerHTML = '';
+
+    //    console.log(wordMatches);
+});
+
+function initialize() {
+
+    initializeDictionary();
+    currentDictionary = '';
+    lastDictionary = '';
+
+    const choiceWords = document.getElementById("choiceWords");
+    choiceWords.textContent = '';
+
+    searchWord.value = '';
+
+    const searchWords = document.getElementById("searchWords");
+    searchWords.innerHTML = '';
+
+    const exampleContainer = document.getElementById("example");
+    exampleContainer.innerHTML = "";
+
+    uncheckSelectedCheckboxes(dictionaryCheckboxes);
+
+    randomizeCheckbox.checked = false;
+
+    feedback();
+}
+
+function setDictionary() {
+
+    currentDictionary = [];
+
+    if (selectedDictionaryNames.length === 0) {
+        initialize();
+    } else {
+
+        selectedDictionaryNames.forEach(name => {
+
+            if (dictionaries.hasOwnProperty(name)) {
+
+                const newArray = [...dictionaries[name]];
+                currentDictionary = currentDictionary.concat(newArray);
+
+            } else {
+                //            console.log(`Array '${name}' does not exist.`);
+            }
+        });
+
+        if (randomizeCheckbox.checked) {
+            //       randomize = true;
+            currentDictionary = shuffle(currentDictionary);
+            wordIndex = 0;
+        }
+        //else {
+        //       randomize = false;
+        //       setDictionary();
+        //   }
+
+        feedback();
+
+        //    searchWord.classList.remove('info');
+
+        //   const searchWords = document.getElementById("searchWords");
+        //  searchWords.innerHTML = '';
+
+        wordIndex = 0;
+        htmlMultipleChoice(wordIndex);
+    }
+
+}
+
+function initializeDictionary() {
+
+    // dictionary is concatenation of all dictionaries for word search
+
+    let dictionaryNames = Object.keys(dictionaries);
+
+    dictionaryNames.forEach(name => {
+
+        if (dictionaries.hasOwnProperty(name)) {
+            const newArray = [...dictionaries[name]];
+            dictionary = dictionary.concat(newArray);
+
+        } else {
+            //            console.log(`Array '${name}' does not exist.`);
+        }
+    });
+
+}
+
+function uncheckSelectedCheckboxes(checkboxes) {
+    for (var i = 0; i < checkboxes.length; i++) {
+        checkboxes[i].checked = false;
+    }
+}
 
 function htmlMultipleChoice(questionWordIndex) {
 
@@ -659,68 +736,6 @@ function htmlMultipleChoice(questionWordIndex) {
     exampleContainer.appendChild(spanExampleTh);
 
 }
-
-searchWord.addEventListener('input', function (event) {
-
-    let userInput = event.target.value.toLowerCase();
-    let wordMatches = dictionary.filter(obj => obj.word_en.toLowerCase().startsWith(userInput));
-
-    const searchWords = document.getElementById("searchWords");
-    searchWords.innerHTML = '';
-
-    wordMatches.forEach(
-        (dictionary_record) => {
-
-            const paragraph = document.createElement("p");
-
-            const span_word_en = document.createElement("span");
-            span_word_en.textContent = dictionary_record.word_en;
-            span_word_en.classList.add('blue');
-            paragraph.appendChild(span_word_en);
-
-            const span_pronunciation = document.createElement("span");
-            span_pronunciation.textContent = dictionary_record.pronunciation;
-            span_pronunciation.classList.add('green');
-            paragraph.appendChild(span_pronunciation);
-
-            const span_word_th = document.createElement("span");
-            span_word_th.textContent = dictionary_record.word_th;
-            span_word_th.lang = "th";
-            paragraph.appendChild(span_word_th);
-
-            span_word_th.addEventListener('click', function () {
-                var spanWordTh = this;
-                if (window.getSelection) {
-                    var range = document.createRange();
-                    range.selectNode(spanWordTh);
-                    window.getSelection().removeAllRanges();
-                    window.getSelection().addRange(range);
-                } else if (document.selection) {
-                    var range = document.body.createTextRange();
-                    range.moveToElementText(spanWordTh);
-                    range.select();
-                }
-
-                textToSpeech(span_word_th.textContent);
-
-            });
-
-            searchWords.appendChild(paragraph);
-
-        });
-
-    if (searchWords.length == 0) {
-        searchWords.innerHTML = "";
-    }
-    if (searchWord.value == '') {
-        searchWords.innerHTML = "";
-    }
-
-    const choiceWords = document.getElementById("choiceWords");
-    choiceWords.innerHTML = '';
-
-    //    console.log(wordMatches);
-});
 
 function feedback() {
     const buttonCorrect = document.getElementById("correctAnswer");
