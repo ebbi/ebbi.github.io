@@ -1,20 +1,4 @@
 // book 1
-const dictionaryPhonetics = [
-    { word_en: "house", word_th: "บ้าน", pronunciation: "bâan", ex_en: "big house", ex_pronunciation: "bâan yài", ex_th: "บ้าน ใหญ่" },
-    { word_en: "school", word_th: "โรงเรียน", pronunciation: "rooŋ-rian", ex_en: "", ex_pronunciation: "", ex_th: "" },
-    { word_en: "coffee", word_th: "กาแฟ", pronunciation: "gaa-fɛɛ", ex_en: "Normally, I drink coffee.", ex_pronunciation: "(bpòk-gà-dtì) phǒm dɯ̀ɯm/gin gaa-fɛɛ", ex_th: "(ปกติ) ผมดืxม/กินกาแฟ" },
-    { word_en: "food", word_th: "อาหาร", pronunciation: "aa-hǎan", ex_en: "", ex_pronunciation: "", ex_th: "" },
-    { word_en: "lie down or sleep", word_th: "นอน", pronunciation: "nɔɔn", ex_en: "", ex_pronunciation: "", ex_th: "" },
-    { word_en: "banana", word_th: "กล้วย", pronunciation: "gluay", ex_en: "", ex_pronunciation: "", ex_th: "" },
-    { word_en: "family", word_th: "ครอบครัว", pronunciation: "khroop-khrua", ex_en: "", ex_pronunciation: "", ex_th: "" },
-    { word_en: "dog", word_th: "หมา", pronunciation: "H̄mā", ex_en: "", ex_pronunciation: "", ex_th: "" },
-    { word_en: "lonely", word_th: "เหงา", pronunciation: "H̄engā", ex_en: "", ex_pronunciation: "", ex_th: "" },
-    { word_en: "book", word_th: "หนังสือ", pronunciation: "nǎŋ-sɯ̌ɯ", ex_en: "my books", ex_pronunciation: "", ex_th: "" },
-    { word_en: "woman", word_th: "ผู้หญิง", pronunciation: "P̄hū̂ ỵing", ex_en: "", ex_pronunciation: "", ex_th: "" },
-    { word_en: "hot", word_th: "ร้อน", pronunciation: "rɔ́ɔn", ex_en: "The coffee is not hot.", ex_pronunciation: "gaa-fɛɛ mâi rɔ́ɔn", ex_th: "กาแฟไม่ร้อน" },
-    { word_en: "horse", word_th: "ม้า", pronunciation: "M̂ā", ex_en: "", ex_pronunciation: "", ex_th: "" },
-    { word_en: "friend", word_th: "เพื่อน", pronunciation: "phɯ̂an", ex_en: "What is your friend's name ?", ex_pronunciation: "phɯ̂an khɔ̌ɔŋ khun chɯ̂ɯ à-rai", ex_th: "เพืxอนของคุณชืxออะไร" }
-];
 const dictionaryBase = [
     { word_en: "hello", word_th: "สวัสดี", pronunciation: "sà-wàt-dii", ex_en: "hello", ex_pronunciation: "sà-wàt-dii khráp", ex_th: "สวัสดีครับ" },
     { word_en: "thank you", word_th: "ขอบคุณ", pronunciation: "kɔ̀ɔp-kun", ex_en: "Thank you.", ex_pronunciation: "khɔ̀ɔp-khun khráp", ex_th: "ขอบคุณครับ" },
@@ -156,8 +140,43 @@ const dictionaryBase = [
     { word_en: "less", word_th: "น้ อยกว่า", pronunciation: "nɔ́ɔy gwàa", ex_en: "Chiang Mai is smaller than Bangkok.", ex_pronunciation: "chiaŋ-mài lék gwàa gruŋ-thêep", ex_th: "เชียงใหม่เล็กกว่ากรุงเทพฯ" },
     { word_en: "least", word_th: "น้อยทีสดุ", pronunciation: "nɔ́ɔy thîi-sùt", ex_en: "", ex_pronunciation: "", ex_th: "" },
     { word_en: "more", word_th: "มากกว่า", pronunciation: "mâak gwàa", ex_en: "", ex_pronunciation: "", ex_th: "" },
-    { word_en: "the most", word_th: "มากทีสดุ", pronunciation: "mâak thîi-sùt", ex_en: "", ex_pronunciation: "", ex_th: "" }
+    { word_en: "the most", word_th: "มากทีสดุ", pronunciation: "mâak thîi-sùt", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { word_en: "Room", word_th: "ห้ อง", pronunciation: "hɔ̂ɔŋ", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { word_en: "Bedroom", word_th: "ห้องนอน", pronunciation: "hɔ̂ɔŋ-nɔɔn", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { word_en: "Kitchen", word_th: "ห้องครัว", pronunciation: "hɔ̂ɔŋ-khrua", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { word_en: "Living room", word_th: "ห้องนังfเล่น", pronunciation: "hɔ̂ɔŋ-nâŋ-lên", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { word_en: "Bathroom", word_th: "ห้องนํNา", pronunciation: "hɔ̂ɔŋ-náam", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { word_en: "Office/Studio/Workroom", word_th: "ห้องทํางาน", pronunciation: "hɔ̂ɔŋ tham-ŋaan", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { word_en: "Classroom", word_th: "ห้องเรียน", pronunciation: "hɔ̂ɔŋ-rian", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { word_en: "Storage room", word_th: "ห้องเก็บของ", pronunciation: "hɔ̂ɔŋ gèp-khɔ̌ɔŋ", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { word_en: "Shelf", word_th: "ชันวางของ", pronunciation: "chán-waaŋ-khɔ̌ɔŋ", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { word_en: "Cupboard", word_th: "ตู้", pronunciation: "dtûu", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { word_en: "Wardrobe", word_th: "ตู้เสืNอผ้า", pronunciation: "dtûu sɯ̂a-phâa", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { word_en: "Refrigerator", word_th: "ตู้เย็น", pronunciation: "dtûu-yen", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { word_en: "Bed", word_th: "เตียง", pronunciation: "dtiaŋ", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { word_en: "Table/Desk", word_th: "โต๊ะ", pronunciation: "dtó", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { word_en: "Counter", word_th: "เคาท์เตอร์", pronunciation: "kháw-dtə̂ə", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { word_en: "Chair", word_th: "เก้าอีN", pronunciation: "gâw-iî", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { word_en: "Sofa", word_th: "โซฟา", pronunciation: "soo-faa", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { word_en: "Wash basin", word_th: "อ่างล้างหน้า", pronunciation: "àaŋ-láaŋ-nâa", ex_en: "", ex_pronunciation: "", ex_th: "" }
+
     //    { word_en: "", word_th: "", pronunciation: "", ex_en: "", ex_pronunciation: "", ex_th: "" },
+];
+const dictionaryPhonetics = [
+    { word_en: "house", word_th: "บ้าน", pronunciation: "bâan", ex_en: "big house", ex_pronunciation: "bâan yài", ex_th: "บ้าน ใหญ่" },
+    { word_en: "school", word_th: "โรงเรียน", pronunciation: "rooŋ-rian", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { word_en: "coffee", word_th: "กาแฟ", pronunciation: "gaa-fɛɛ", ex_en: "Normally, I drink coffee.", ex_pronunciation: "(bpòk-gà-dtì) phǒm dɯ̀ɯm/gin gaa-fɛɛ", ex_th: "(ปกติ) ผมดืxม/กินกาแฟ" },
+    { word_en: "food", word_th: "อาหาร", pronunciation: "aa-hǎan", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { word_en: "lie down or sleep", word_th: "นอน", pronunciation: "nɔɔn", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { word_en: "banana", word_th: "กล้วย", pronunciation: "gluay", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { word_en: "family", word_th: "ครอบครัว", pronunciation: "khroop-khrua", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { word_en: "dog", word_th: "หมา", pronunciation: "H̄mā", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { word_en: "lonely", word_th: "เหงา", pronunciation: "H̄engā", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { word_en: "book", word_th: "หนังสือ", pronunciation: "nǎŋ-sɯ̌ɯ", ex_en: "my books", ex_pronunciation: "", ex_th: "" },
+    { word_en: "woman", word_th: "ผู้หญิง", pronunciation: "P̄hū̂ ỵing", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { word_en: "hot", word_th: "ร้อน", pronunciation: "rɔ́ɔn", ex_en: "The coffee is not hot.", ex_pronunciation: "gaa-fɛɛ mâi rɔ́ɔn", ex_th: "กาแฟไม่ร้อน" },
+    { word_en: "horse", word_th: "ม้า", pronunciation: "M̂ā", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { word_en: "friend", word_th: "เพื่อน", pronunciation: "phɯ̂an", ex_en: "What is your friend's name ?", ex_pronunciation: "phɯ̂an khɔ̌ɔŋ khun chɯ̂ɯ à-rai", ex_th: "เพืxอนของคุณชืxออะไร" }
 ];
 const dictionaryPronouns = [
     { word_en: "I for male", word_th: "ผม", pronunciation: "phǒm", ex_en: "My/Mine (Male Speaker)", ex_pronunciation: "khɔ̌ɔŋ phǒm", ex_th: "ของผม" },
@@ -278,7 +297,6 @@ const dictionaryPrepositions = [
     { word_en: "over there", word_th: "ที&โน่น", pronunciation: "thîi-nôon", ex_en: "", ex_pronunciation: "", ex_th: "" }
     //   { word_en: "", word_th: "", pronunciation: "", ex_en: "", ex_pronunciation: "", ex_th: "" },
 ];
-
 // book 2    
 const dictionaryFood = [
     { word_en: "rice", word_th: "ข้าว", pronunciation: "khâaw", ex_en: "", ex_pronunciation: "", ex_th: "" },
@@ -395,7 +413,6 @@ const dictionaryFood = [
         { word_en: "", word_th: "", pronunciation: "", ex_en: "", ex_pronunciation: "", ex_th: "" },
     */
 ];
-
 const dictionaryColours = [
     { word_en: "Colour", word_th: "สี", pronunciation: "sǐi", ex_en: "", ex_pronunciation: "", ex_th: "" },
     { word_en: "", word_th: "", pronunciation: "sǐi khǎaw", ex_en: "", ex_pronunciation: "", ex_th: "" },
@@ -417,7 +434,6 @@ const dictionaryColours = [
         { word_en: "", word_th: "", pronunciation: "", ex_en: "", ex_pronunciation: "", ex_th: "" },
     */
 ]
-
 const dictionaryClassifiers = [
     { word_en: "animals, letters, numbers,clothes,chairs,and tables", word_th: "คน", pronunciation: "khon", ex_en: "", ex_pronunciation: "", ex_th: "" },
     { word_en: "containers , pieces of paper, documents", word_th: "ใบ", pronunciation: "bai", ex_en: "", ex_pronunciation: "", ex_th: "" },
@@ -427,7 +443,7 @@ const dictionaryClassifiers = [
     { word_en: "classifier for seeds, pills, buttons", word_th: "เม็ด", pronunciation: "mét", ex_en: "", ex_pronunciation: "", ex_th: "" },
     { word_en: "a piece of something like 3 pieces of cake", word_th: "ชิNน", pronunciation: "chín", ex_en: "", ex_pronunciation: "", ex_th: "" },
     { word_en: "house", word_th: "หลัง", pronunciation: "lǎŋ", ex_en: "", ex_pronunciation: "", ex_th: "" },
-    { word_en: "rooms", word_th: "ห้อง", pronunciation: "hɔ̂ɔŋ", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { word_en: "room", word_th: "ห้อง", pronunciation: "hɔ̂ɔŋ", ex_en: "", ex_pronunciation: "", ex_th: "" },
     { word_en: "eggs", word_th: "ฟอง", pronunciation: "fɔɔŋ", ex_en: "", ex_pronunciation: "", ex_th: "" },
     { word_en: "books,notebooks,knifes", word_th: "เล่ม", pronunciation: "lêm", ex_en: "", ex_pronunciation: "", ex_th: "" },
     { word_en: "Electrical device/machine", word_th: "เครืf อง", pronunciation: "khrɯ̂aŋ", ex_en: "", ex_pronunciation: "", ex_th: "" },
@@ -437,7 +453,6 @@ const dictionaryClassifiers = [
         { word_en: "", word_th: "", pronunciation: "", ex_en: "", ex_pronunciation: "", ex_th: "" },
     */
 ]
-
 const dictionaryPreposition = [
     { word_en: "There is/There are", word_th: "มี", pronunciation: "mii", ex_en: "", ex_pronunciation: "", ex_th: "" },
     { word_en: "On", word_th: "บน", pronunciation: "bon", ex_en: "", ex_pronunciation: "", ex_th: "" },
@@ -456,6 +471,22 @@ const dictionaryPreposition = [
     { word_en: "", word_th: "", pronunciation: "", ex_en: "", ex_pronunciation: "", ex_th: "" },
      */
 ]
+
+const dictionaries = {
+    // book 1
+    dictionaryBase: dictionaryBase,
+    dictionaryPhonetics: dictionaryPhonetics,
+    dictionaryPronouns: dictionaryPronouns,
+    dictionaryNumbers: dictionaryNumbers,
+    dictionaryClothes: dictionaryClothes,
+    dictionaryPlaces: dictionaryPlaces,
+    dictionaryPrepositions: dictionaryPrepositions,
+    // book 2
+    dictionaryFood: dictionaryFood,
+    dictionaryColours: dictionaryColours,
+    dictionaryClassifiers: dictionaryClassifiers,
+    dictionaryPreposition: dictionaryPreposition
+};
 
 const conversations = [
     {
@@ -476,22 +507,6 @@ const conversations = [
     }
 
 ]
-
-const dictionaries = {
-    // book 1
-    dictionaryPhonetics: dictionaryPhonetics,
-    dictionaryPronouns: dictionaryPronouns,
-    dictionaryNumbers: dictionaryNumbers,
-    dictionaryClothes: dictionaryClothes,
-    dictionaryPlaces: dictionaryPlaces,
-    dictionaryPrepositions: dictionaryPrepositions,
-    dictionaryBase: dictionaryBase,
-    // book 2
-    dictionaryFood: dictionaryFood,
-    dictionaryColours: dictionaryColours,
-    dictionaryClassifiers: dictionaryClassifiers,
-    dictionaryPreposition: dictionaryPreposition
-};
 
 const dictionaryIncorrectAnswers = [];
 
