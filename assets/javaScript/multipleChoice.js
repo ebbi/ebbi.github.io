@@ -55,7 +55,6 @@ const dictionaryBase = [
     { word_en: "like", word_th: "ชอบ", pronunciation: "chɔ̂ɔp", ex_en: "I like to exercise.", ex_pronunciation: "phǒm chɔ̂ɔp ɔ̀ɔk-gam-laŋ-gaay", ex_th: "ผมชอบออกกําลังกาย" },
     { word_en: "yes/no", word_th: "ไหม/มัย", pronunciation: "mǎi/mái", ex_en: "Do you (usually) drink coffee ?", ex_pronunciation: "bpòk-gà-dtì khun dɯɯm gaa - fɛɛ mǎi/mái", ex_th: "ปกติคณดืxมกาแฟไหม/มัย‰" },
     { word_en: "do", word_th: "ทํา", pronunciation: "tham", ex_en: "Does he/she like cooking ?", ex_pronunciation: "khǎw chɔ̂ɔp tham aa-hǎan mǎi/mái", ex_th: "เขาชอบทําอาหารไหม/มัย" },
-    { word_en: "and", word_th: "และ", pronunciation: "lɛ́", ex_en: "", ex_pronunciation: "", ex_th: "" },
     { word_en: "multiple answers", word_th: "บ้าง", pronunciation: "bâaŋ", ex_en: "What do you like to do ?", ex_pronunciation: "khun chɔ̂ɔp tham à-rai bâaŋ khá", ex_th: "คุณชอบทําอะไรบ้างคะ" },
     { word_en: "do/make", word_th: "ทํา", pronunciation: "tham", ex_en: "", ex_pronunciation: "", ex_th: "" },
     { word_en: "work", word_th: "ทํางาน", pronunciation: "tham ŋaan", ex_en: "", ex_pronunciation: "", ex_th: "" },
@@ -278,27 +277,8 @@ const dictionaryPlaces = [
     { word_en: "river", word_th: "แม่นํา", pronunciation: "mɛ̂ɛ-náam", ex_en: "Chee river is the longest.(in Thailand)", ex_pronunciation: "mɛ̂ ɛ-náam chii yaaw thîi-sùt (nai bprà-thêet thai)", ex_th: "แม่นํ Šาชียาวที:สดุ (ในประเทศไทย)" }
     //    { word_en: "", word_th: "", pronunciation: "", ex_en: "", ex_pronunciation: "", ex_th: "" },
 ];
-const dictionaryPrepositions = [
-    { word_en: "be (is/am/are)", word_th: "อยู่", pronunciation: "yùu", ex_en: "", ex_pronunciation: "", ex_th: "" },
-    { word_en: "where", word_th: "ที&ไหน", pronunciation: "thîi-nǎi", ex_en: "Where are you from ?", ex_pronunciation: "khun maa jàak thîi-nǎi khráp", ex_th: "คุณมาจากทีxไหนครับ" },
-    { word_en: "close to", word_th: "ใกล้", pronunciation: "glâi", ex_en: "", ex_pronunciation: "", ex_th: "" },
-    { word_en: "near", word_th: "กับ", pronunciation: "gàp", ex_en: "", ex_pronunciation: "", ex_th: "" },
-    { word_en: "far", word_th: "ไกล", pronunciation: "glai", ex_en: "", ex_pronunciation: "", ex_th: "" },
-    { word_en: "next to", word_th: "ข้างๆ", pronunciation: "khâaŋ-khâaŋ", ex_en: "", ex_pronunciation: "", ex_th: "" },
-    { word_en: "next to", word_th: "ติด(กับ)", pronunciation: "dtìt(gàp)", ex_en: "", ex_pronunciation: "", ex_th: "" },
-    { word_en: "opposite to", word_th: "ตรงข้าม", pronunciation: "dtroŋ-khâam", ex_en: "", ex_pronunciation: "", ex_th: "" },
-    { word_en: "at", word_th: "ที&", pronunciation: "thîi", ex_en: "", ex_pronunciation: "", ex_th: "" },
-    { word_en: "in", word_th: "ใน", pronunciation: "nai", ex_en: "", ex_pronunciation: "", ex_th: "" },
-    { word_en: "arround (in the area)", word_th: "แถว", pronunciation: "thɛ̌ɛw", ex_en: "", ex_pronunciation: "", ex_th: "" },
-    { word_en: "in front of", word_th: "ข้างหน้า", pronunciation: "khâaŋ-nâa", ex_en: "", ex_pronunciation: "", ex_th: "" },
-    { word_en: "behind", word_th: "ข้างหลัง", pronunciation: "khâaŋ-lǎŋ", ex_en: "", ex_pronunciation: "", ex_th: "" },
-    { word_en: "here", word_th: "ที&นี&", pronunciation: "thîi-nîi", ex_en: "", ex_pronunciation: "", ex_th: "" },
-    { word_en: "there", word_th: "ที&นนั&", pronunciation: "thîi-nân", ex_en: "", ex_pronunciation: "", ex_th: "" },
-    { word_en: "over there", word_th: "ที&โน่น", pronunciation: "thîi-nôon", ex_en: "", ex_pronunciation: "", ex_th: "" }
-    //   { word_en: "", word_th: "", pronunciation: "", ex_en: "", ex_pronunciation: "", ex_th: "" },
-];
 // book 2    
-const dictionaryFood = [
+const dictionaryFoods = [
     { word_en: "rice", word_th: "ข้าว", pronunciation: "khâaw", ex_en: "", ex_pronunciation: "", ex_th: "" },
     { word_en: "food", word_th: "อาหาร/กับข้าว", pronunciation: "aa-hǎan/gàp-khâaw", ex_en: "Do you like Thai food ?", ex_pronunciation: "khun chɔ̂ɔp aa-hǎan thai mǎi/mái", ex_th: "คุณชอบอาหารไทยไหม/มั" },
     { word_en: "curry", word_th: "แกง", pronunciation: "gɛɛŋ", ex_en: "", ex_pronunciation: "", ex_th: "" },
@@ -433,7 +413,39 @@ const dictionaryColours = [
     /*
         { word_en: "", word_th: "", pronunciation: "", ex_en: "", ex_pronunciation: "", ex_th: "" },
     */
-]
+];
+const dictionaryPrepositions = [
+    { word_en: "be (is/am/are)", word_th: "อยู่", pronunciation: "yùu", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { word_en: "where", word_th: "ที&ไหน", pronunciation: "thîi-nǎi", ex_en: "Where are you from ?", ex_pronunciation: "khun maa jàak thîi-nǎi khráp", ex_th: "คุณมาจากทีxไหนครับ" },
+    { word_en: "close to", word_th: "ใกล้", pronunciation: "glâi", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { word_en: "near", word_th: "กับ", pronunciation: "gàp", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { word_en: "far", word_th: "ไกล", pronunciation: "glai", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { word_en: "next to", word_th: "ข้างๆ", pronunciation: "khâaŋ-khâaŋ", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { word_en: "next to", word_th: "ติด(กับ)", pronunciation: "dtìt(gàp)", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { word_en: "opposite to", word_th: "ตรงข้าม", pronunciation: "dtroŋ-khâam", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { word_en: "at", word_th: "ที&", pronunciation: "thîi", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { word_en: "in", word_th: "ใน", pronunciation: "nai", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { word_en: "arround (in the area)", word_th: "แถว", pronunciation: "thɛ̌ɛw", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { word_en: "in front of", word_th: "ข้างหน้า", pronunciation: "khâaŋ-nâa", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { word_en: "behind", word_th: "ข้างหลัง", pronunciation: "khâaŋ-lǎŋ", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { word_en: "here", word_th: "ที&นี&", pronunciation: "thîi-nîi", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { word_en: "there", word_th: "ที&นนั&", pronunciation: "thîi-nân", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { word_en: "over there", word_th: "ที&โน่น", pronunciation: "thîi-nôon", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { word_en: "There is/There are", word_th: "มี", pronunciation: "mii", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { word_en: "On", word_th: "บน", pronunciation: "bon", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { word_en: "Under", word_th: "ใต้", pronunciation: "On", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { word_en: "In", word_th: "ใน", pronunciation: "nai", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { word_en: "In front of", word_th: "ข้างหน้า", pronunciation: "khâaŋ-nâa", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { word_en: "Behind", word_th: "ข้างหลัง", pronunciation: "khâaŋ-lǎŋ", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { word_en: "Next to / Beside", word_th: "ข้างๆ", pronunciation: "khâaŋ-khâaŋ", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { word_en: "Outside", word_th: "ข้างนอก", pronunciation: "khâaŋ-nɔ̂ɔk", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { word_en: "Inside", word_th: "ข้างใน", pronunciation: "khâaŋ-nai", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { word_en: "Between", word_th: "ระหว่าง", pronunciation: "rá-wàaŋ", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { word_en: "Near / Close to", word_th: "ใกล้", pronunciation: "glâi glâi", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { word_en: "Far", word_th: "ไกล", pronunciation: "glai", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { word_en: "At", word_th: "ทีf", pronunciation: "thîi", ex_en: "", ex_pronunciation: "", ex_th: "" }
+    //   { word_en: "", word_th: "", pronunciation: "", ex_en: "", ex_pronunciation: "", ex_th: "" },
+];
 const dictionaryClassifiers = [
     { word_en: "animals, letters, numbers,clothes,chairs,and tables", word_th: "คน", pronunciation: "khon", ex_en: "", ex_pronunciation: "", ex_th: "" },
     { word_en: "containers , pieces of paper, documents", word_th: "ใบ", pronunciation: "bai", ex_en: "", ex_pronunciation: "", ex_th: "" },
@@ -452,25 +464,7 @@ const dictionaryClassifiers = [
     /*
         { word_en: "", word_th: "", pronunciation: "", ex_en: "", ex_pronunciation: "", ex_th: "" },
     */
-]
-const dictionaryPreposition = [
-    { word_en: "There is/There are", word_th: "มี", pronunciation: "mii", ex_en: "", ex_pronunciation: "", ex_th: "" },
-    { word_en: "On", word_th: "บน", pronunciation: "bon", ex_en: "", ex_pronunciation: "", ex_th: "" },
-    { word_en: "Under", word_th: "ใต้", pronunciation: "On", ex_en: "", ex_pronunciation: "", ex_th: "" },
-    { word_en: "In", word_th: "ใน", pronunciation: "nai", ex_en: "", ex_pronunciation: "", ex_th: "" },
-    { word_en: "In front of", word_th: "ข้างหน้า", pronunciation: "khâaŋ-nâa", ex_en: "", ex_pronunciation: "", ex_th: "" },
-    { word_en: "Behind", word_th: "ข้างหลัง", pronunciation: "khâaŋ-lǎŋ", ex_en: "", ex_pronunciation: "", ex_th: "" },
-    { word_en: "Next to / Beside", word_th: "ข้างๆ", pronunciation: "khâaŋ-khâaŋ", ex_en: "", ex_pronunciation: "", ex_th: "" },
-    { word_en: "Outside", word_th: "ข้างนอก", pronunciation: "khâaŋ-nɔ̂ɔk", ex_en: "", ex_pronunciation: "", ex_th: "" },
-    { word_en: "Inside", word_th: "ข้างใน", pronunciation: "khâaŋ-nai", ex_en: "", ex_pronunciation: "", ex_th: "" },
-    { word_en: "Between", word_th: "ระหว่าง", pronunciation: "rá-wàaŋ", ex_en: "", ex_pronunciation: "", ex_th: "" },
-    { word_en: "Near / Close to", word_th: "ใกล้", pronunciation: "glâi glâi", ex_en: "", ex_pronunciation: "", ex_th: "" },
-    { word_en: "Far", word_th: "ไกล", pronunciation: "glai", ex_en: "", ex_pronunciation: "", ex_th: "" },
-    { word_en: "At", word_th: "ทีf", pronunciation: "thîi", ex_en: "", ex_pronunciation: "", ex_th: "" }
-    /*
-    { word_en: "", word_th: "", pronunciation: "", ex_en: "", ex_pronunciation: "", ex_th: "" },
-     */
-]
+];
 
 const dictionaries = {
     // book 1
@@ -480,12 +474,11 @@ const dictionaries = {
     dictionaryNumbers: dictionaryNumbers,
     dictionaryClothes: dictionaryClothes,
     dictionaryPlaces: dictionaryPlaces,
-    dictionaryPrepositions: dictionaryPrepositions,
     // book 2
-    dictionaryFood: dictionaryFood,
+    dictionaryFoods: dictionaryFoods,
     dictionaryColours: dictionaryColours,
-    dictionaryClassifiers: dictionaryClassifiers,
-    dictionaryPreposition: dictionaryPreposition
+    dictionaryPrepositions: dictionaryPrepositions,
+    dictionaryClassifiers: dictionaryClassifiers
 };
 
 const conversations = [
