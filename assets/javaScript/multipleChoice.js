@@ -394,12 +394,12 @@ const dictionaryFoods = [
     */
 ];
 const dictionaryColours = [
-    { word_en: "Colour", word_th: "สี", pronunciation: "sǐi", ex_en: "", ex_pronunciation: "", ex_th: "" },
-    { word_en: "", word_th: "", pronunciation: "sǐi khǎaw", ex_en: "", ex_pronunciation: "", ex_th: "" },
-    { word_en: "White", word_th: "สีขาว", pronunciation: "", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { word_en: "Colour", word_th: "สี", pronunciation: "sǐi", ex_en: "He/She is wearing a white shirt.", ex_pronunciation: "khǎw sài sɯ̂a sǐi khǎaw khráp", ex_th: "เขาใส่เสืNอสีขาวครับ" },
+    { word_en: "", word_th: "", pronunciation: "sǐi khǎaw", ex_en: "He/She is wearing a white shirt.", ex_pronunciation: "khǎw sài sɯ̂a sǐi khǎaw khráp", ex_th: "เขาใส่เสืNอสีขาวครับ" },
+    { word_en: "White", word_th: "สีขาว", pronunciation: "", ex_en: "How many white shirts do you have ?", ex_pronunciation: "khun mii sɯ̂a sǐi-khǎaw gìi dtua", ex_th: "คุณมีเสื eอสีขาวกีxตวั" },
     { word_en: "Black", word_th: "สีดํา", pronunciation: "sǐi dam", ex_en: "", ex_pronunciation: "", ex_th: "" },
-    { word_en: "Red", word_th: "สีแดง", pronunciation: "sǐi dɛɛŋ", ex_en: "", ex_pronunciation: "", ex_th: "" },
-    { word_en: "Yellow", word_th: "สีเหลือง", pronunciation: "sǐi lɯ̌aŋ", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { word_en: "Red", word_th: "สีแดง", pronunciation: "sǐi dɛɛŋ", ex_en: "He/She is wearing red shoes.", ex_pronunciation: "khǎw sài rɔɔŋ-tháaw sǐi dɛɛŋ khráp", ex_th: "เขาใส่รองเท้าสีแดงค่ะ" },
+    { word_en: "Yellow", word_th: "สีเหลือง", pronunciation: "sǐi lɯ̌aŋ", ex_en: "I have 2 yellow hats.", ex_pronunciation: "chǎn mii mùak sǐi-lɯ̌aŋ 2 bai", ex_th: "ฉันมีหมวกสีเหลืองใบ" },
     { word_en: "Green", word_th: "สีเขียว", pronunciation: "sǐi khǐaw", ex_en: "", ex_pronunciation: "", ex_th: "" },
     { word_en: "Dark Blue", word_th: "สีนํNาเงิน", pronunciation: "sǐi náam-ŋəən", ex_en: "", ex_pronunciation: "", ex_th: "" },
     { word_en: "Sky blue", word_th: "สีฟา้", pronunciation: "sǐi fáa", ex_en: "", ex_pronunciation: "", ex_th: "" },
@@ -408,27 +408,27 @@ const dictionaryColours = [
     { word_en: "Pink", word_th: "สีชมพู", pronunciation: "sǐi chom-phuu", ex_en: "", ex_pronunciation: "", ex_th: "" },
     { word_en: "Purple", word_th: "สีมว่ง", pronunciation: "sǐi mûaŋ", ex_en: "", ex_pronunciation: "", ex_th: "" },
     { word_en: "Brown", word_th: "สีนํNาตาล", pronunciation: "sǐi náam-dtaan", ex_en: "", ex_pronunciation: "", ex_th: "" },
-    { word_en: "Light(Adj)", word_th: "อ่อน", pronunciation: "ɔ̀ɔn", ex_en: "", ex_pronunciation: "", ex_th: "" },
-    { word_en: "Dark(Adj)", word_th: "เข้ม", pronunciation: "khêm", ex_en: "", ex_pronunciation: "", ex_th: "" }
+    { word_en: "Light(Adj)", word_th: "อ่อน", pronunciation: "ɔ̀ɔn", ex_en: "Who is wearing red shoes?", ex_pronunciation: "khrai sài gaaŋ-geeŋ sǐi fáa ɔ̀ɔn", ex_th: "ใครใส่รองเท้าสีแดง" },
+    { word_en: "Dark(Adj)", word_th: "เข้ม", pronunciation: "khêm", ex_en: "Mum’s bag is dark green", ex_pronunciation: "grà-bpǎw mɛ̂ɛ (bpen) sǐi khǐaw khêm kráp", ex_th: "กระเป๋าแม่(เป็น)สีเขียวเข้มครับ" }
     /*
         { word_en: "", word_th: "", pronunciation: "", ex_en: "", ex_pronunciation: "", ex_th: "" },
     */
 ];
 const dictionaryClassifiers = [
-    { word_en: "animals, letters, numbers,clothes,chairs,and tables", word_th: "คน", pronunciation: "khon", ex_en: "", ex_pronunciation: "", ex_th: "" },
-    { word_en: "containers , pieces of paper, documents", word_th: "ใบ", pronunciation: "bai", ex_en: "", ex_pronunciation: "", ex_th: "" },
-    { word_en: "thin or flat objects, like CDs and slices of bread", word_th: "แผ่น", pronunciation: "phɛ̀ɛn", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { word_en: "animals, letters, numbers,clothes,chairs,and tables", word_th: "คน", pronunciation: "khon", ex_en: "How many friends do you have ?", ex_pronunciation: "khun mii phɯ̂an gìi khon", ex_th: "คุณมีเพืxอนกีxคน" },
+    { word_en: "containers , pieces of paper, documents", word_th: "ใบ", pronunciation: "bai", ex_en: "How many bags are under the table ?", ex_pronunciation: "dtâay dtó mii grà-bpǎw gìi bai", ex_th: "ใต้โต๊ะมีกระเป๋ากีqใบ" },
+    { word_en: "thin or flat objects, like CDs and slices of bread", word_th: "แผ่น", pronunciation: "phɛ̀ɛn", ex_en: "He has 4 slices of bread.", ex_pronunciation: "khǎw mii khà-nǒm-bpaŋ 4 phɛ̀ɛn", ex_th: "เขามีขนมปั ง a แผ่น" },
     { word_en: "balls, fruits, and other small and round objects", word_th: "ลูก", pronunciation: "lûuk", ex_en: "", ex_pronunciation: "", ex_th: "" },
-    { word_en: "classifier for cars and vehicles except boats or planes/umbrella", word_th: "คัน", pronunciation: "khan", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { word_en: "classifier for cars and vehicles except boats or planes/umbrella", word_th: "คัน", pronunciation: "khan", ex_en: "How many cars do you have ?", ex_pronunciation: "khun mii rót-yon gìi khan", ex_th: "คุณมีรถยนต์กีxคนั" },
     { word_en: "classifier for seeds, pills, buttons", word_th: "เม็ด", pronunciation: "mét", ex_en: "", ex_pronunciation: "", ex_th: "" },
     { word_en: "a piece of something like 3 pieces of cake", word_th: "ชิNน", pronunciation: "chín", ex_en: "", ex_pronunciation: "", ex_th: "" },
-    { word_en: "house", word_th: "หลัง", pronunciation: "lǎŋ", ex_en: "", ex_pronunciation: "", ex_th: "" },
-    { word_en: "room", word_th: "ห้อง", pronunciation: "hɔ̂ɔŋ", ex_en: "", ex_pronunciation: "", ex_th: "" },
-    { word_en: "eggs", word_th: "ฟอง", pronunciation: "fɔɔŋ", ex_en: "", ex_pronunciation: "", ex_th: "" },
-    { word_en: "books,notebooks,knifes", word_th: "เล่ม", pronunciation: "lêm", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { word_en: "house", word_th: "หลัง", pronunciation: "lǎŋ", ex_en: "How many houses do you have ?", ex_pronunciation: "khun mii bâan gìi lǎŋ khráp", ex_th: "คุณมีบ้านกีqหลังครับ" },
+    { word_en: "room", word_th: "ห้อง", pronunciation: "hɔ̂ɔŋ", ex_en: "How many rooms are there ?", ex_pronunciation: "mii gìi hɔ̂ɔŋ khráp", ex_th: "มีกีqห้องครับ" },
+    { word_en: "eggs", word_th: "ฟอง", pronunciation: "fɔɔŋ", ex_en: "There are 2 fried eggs.", ex_pronunciation: "mii khài-daaw 2 fɔɔŋ", ex_th: "มีไข่ดาวฟอง" },
+    { word_en: "books,notebooks,knifes", word_th: "เล่ม", pronunciation: "lêm", ex_en: "She has 4 books.", ex_pronunciation: "khǎw mii nǎŋ-sɯ̌ɯ 4 lêm", ex_th: "เขามีหนังสือเล่ม" },
     { word_en: "Electrical device/machine", word_th: "เครืf อง", pronunciation: "khrɯ̂aŋ", ex_en: "", ex_pronunciation: "", ex_th: "" },
-    { word_en: "A pair of", word_th: "คู่", pronunciation: "khûu", ex_en: "", ex_pronunciation: "", ex_th: "" },
-    { word_en: "Objects", word_th: "อัน", pronunciation: "an", ex_en: "", ex_pronunciation: "", ex_th: "" }
+    { word_en: "A pair of", word_th: "คู่", pronunciation: "khûu", ex_en: "There are 5 pairs of slippers in front of the door.", ex_pronunciation: "khâaŋ-nâa bprà-dtuu mii rɔɔŋ-tháaw yùu bâan 5 khûu", ex_th: "ข้างหน้าประตูมีรองเท้าอยูบ่ ้านคู่" },
+    { word_en: "Objects", word_th: "อัน", pronunciation: "an", ex_en: "There are 3 toothbrushes in the bathroom.", ex_pronunciation: "nai hɔ̂ɔŋ-náam mii bprɛɛŋ-sǐi-fan 3 an", ex_th: "ในห้องนํYามีแปรงสีฟันอัน" }
     /*
         { word_en: "", word_th: "", pronunciation: "", ex_en: "", ex_pronunciation: "", ex_th: "" },
     */
@@ -450,19 +450,13 @@ const dictionaryPrepositions = [
     { word_en: "here", word_th: "ที&นี&", pronunciation: "thîi-nîi", ex_en: "", ex_pronunciation: "", ex_th: "" },
     { word_en: "there", word_th: "ที&นนั&", pronunciation: "thîi-nân", ex_en: "", ex_pronunciation: "", ex_th: "" },
     { word_en: "over there", word_th: "ที&โน่น", pronunciation: "thîi-nôon", ex_en: "", ex_pronunciation: "", ex_th: "" },
-    { word_en: "There is/There are", word_th: "มี", pronunciation: "mii", ex_en: "", ex_pronunciation: "", ex_th: "" },
-    { word_en: "On", word_th: "บน", pronunciation: "bon", ex_en: "", ex_pronunciation: "", ex_th: "" },
-    { word_en: "Under", word_th: "ใต้", pronunciation: "On", ex_en: "", ex_pronunciation: "", ex_th: "" },
-    { word_en: "In", word_th: "ใน", pronunciation: "nai", ex_en: "", ex_pronunciation: "", ex_th: "" },
-    { word_en: "In front of", word_th: "ข้างหน้า", pronunciation: "khâaŋ-nâa", ex_en: "", ex_pronunciation: "", ex_th: "" },
-    { word_en: "Behind", word_th: "ข้างหลัง", pronunciation: "khâaŋ-lǎŋ", ex_en: "", ex_pronunciation: "", ex_th: "" },
-    { word_en: "Next to / Beside", word_th: "ข้างๆ", pronunciation: "khâaŋ-khâaŋ", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { word_en: "There is/There are", word_th: "มี", pronunciation: "mii", ex_en: "How many floors are there ?", ex_pronunciation: "mii gìi chán khráp", ex_th: "มีกีqชนครัYบ" },
+    { word_en: "On", word_th: "บน", pronunciation: "bon", ex_en: "How many cats are on the chair ?", ex_pronunciation: "bon gâw-iî mii mɛɛw gìi dtua", ex_th: "บนเก้าอีYมีแมวกีqตวั" },
+    { word_en: "Under", word_th: "ใต้", pronunciation: "On", ex_en: "How many bags are under the table ?", ex_pronunciation: "dtâay dtó mii grà-bpǎw gìi bai", ex_th: "ใต้โต๊ะมีกระเป๋ากีqใบ" },
     { word_en: "Outside", word_th: "ข้างนอก", pronunciation: "khâaŋ-nɔ̂ɔk", ex_en: "", ex_pronunciation: "", ex_th: "" },
     { word_en: "Inside", word_th: "ข้างใน", pronunciation: "khâaŋ-nai", ex_en: "", ex_pronunciation: "", ex_th: "" },
     { word_en: "Between", word_th: "ระหว่าง", pronunciation: "rá-wàaŋ", ex_en: "", ex_pronunciation: "", ex_th: "" },
-    { word_en: "Near / Close to", word_th: "ใกล้", pronunciation: "glâi glâi", ex_en: "", ex_pronunciation: "", ex_th: "" },
-    { word_en: "Far", word_th: "ไกล", pronunciation: "glai", ex_en: "", ex_pronunciation: "", ex_th: "" },
-    { word_en: "At", word_th: "ทีf", pronunciation: "thîi", ex_en: "", ex_pronunciation: "", ex_th: "" }
+    { word_en: "At", word_th: "ทีf", pronunciation: "thîi", ex_en: "They live in Chiang Mai.", ex_pronunciation: "phûak-khǎw yùu thîi jaŋ-wàt Chiaŋ-mài khráp", ex_th: "พวกเขาอยูท่ ีxจงัหวัดเชียงใหม่ครับ" }
     //   { word_en: "", word_th: "", pronunciation: "", ex_en: "", ex_pronunciation: "", ex_th: "" },
 ];
 
