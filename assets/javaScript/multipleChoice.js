@@ -459,6 +459,82 @@ const dictionaryPrepositions = [
     { word_en: "At", word_th: "ทีf", pronunciation: "thîi", ex_en: "They live in Chiang Mai.", ex_pronunciation: "phûak-khǎw yùu thîi jaŋ-wàt Chiaŋ-mài khráp", ex_th: "พวกเขาอยูท่ ีxจงัหวัดเชียงใหม่ครับ" }
     //   { word_en: "", word_th: "", pronunciation: "", ex_en: "", ex_pronunciation: "", ex_th: "" },
 ];
+const dictionaryDateTime = [
+    { word_en: "In the morning", word_th: "ตอนเช้า", pronunciation: "dtɔɔn cháaw", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { word_en: "In the late morning", word_th: "ตอนสาย", pronunciation: "dtɔɔn sǎay", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { word_en: "At noon", word_th: "ตอนเที9ยง", pronunciation: "dtɔɔn thîaŋ", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { word_en: "In the afternoon", word_th: "ตอนบ่าย", pronunciation: "dtɔɔn bàay", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { word_en: "In the evening (before dark)", word_th: "ตอนเย็น", pronunciation: "dtɔɔn yen", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { word_en: "In the evening (after dark)", word_th: "ตอนคํา", pronunciation: "dtɔɔn khâm", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { word_en: "In the day time", word_th: "ตอนกลางวัน", pronunciation: "dtɔɔn glaaŋ-wan", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { word_en: "In the night time", word_th: "ตอนกลางคืน", pronunciation: "dtɔɔn glaaŋ-khɯɯn", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { word_en: "Time", word_th: "เวลา", pronunciation: "wee-laa", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { word_en: "Clock/Watch/O’clock", word_th: "นาฬิกา", pronunciation: "naa-lí-gaa", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { word_en: "O’clock(6.00 AM-6.59PM)", word_th: "โมง", pronunciation: "mooŋ", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { word_en: "O’clock(7.00PM-11.59PM)", word_th: "ทุม", pronunciation: "thûm", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { word_en: "O’clock(1.00AM-5.59AM)", word_th: "ตี", pronunciation: "dtii", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { word_en: "About/Approximately", word_th: "ประมาณ", pronunciation: "bprà-maan", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { word_en: "Sharp", word_th: "ตรง", pronunciation: "dtroŋ", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { word_en: "Hour", word_th: "ชัวโมง", pronunciation: "chûa-mooŋ", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { word_en: "Minute", word_th: "นาที", pronunciation: "naa-thii", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { word_en: "Second", word_th: "วินาที", pronunciation: "wí-naa-thii!", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { word_en: "Half", word_th: "ครึง", pronunciation: "khrɯ̂ŋ", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { word_en: "Long", word_th: "นาน", pronunciation: "naan", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { word_en: "Early", word_th: "ช้า", pronunciation: "cháaw", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { word_en: "Late", word_th: "สาย", pronunciation: "sǎay", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { word_en: "Before", word_th: "ก่อน", pronunciation: "gɔ̀ɔn", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { word_en: "After", word_th: "หลัง", pronunciation: "lǎŋ", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { word_en: "Now", word_th: "ตอนนี", pronunciation: "dtɔɔn-níi", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { word_en: "What time", word_th: "กีโมง", pronunciation: "gìi mooŋ", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { word_en: "Monday ", word_th: "วันจันทร์", pronunciation: "wan-jan", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { word_en: "Tuesday", word_th: "วันอังคาร", pronunciation: "wan aŋ-khaan", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { word_en: "Wednesday", word_th: "วันพุธ", pronunciation: "wan-phút", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { word_en: "Thursday", word_th: "วันพฤหัสบดี", pronunciation: "wan phá-rɯ-hàt", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { word_en: "Friday", word_th: "วันศุกร์", pronunciation: "wan-sùk", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { word_en: "Saturday", word_th: "วันเสาร์", pronunciation: "wan-sǎw", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { word_en: "Sunday", word_th: "วันอาทิตย์", pronunciation: "wan aa-thít", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { word_en: "Weekend", word_th: "วันเสาร์อาทิตย์", pronunciation: "wan-sǎw aa-thít", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { word_en: "Day", word_th: "วัน", pronunciation: "wan", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { word_en: "Date", word_th: "วันที9", pronunciation: "wan-thiî", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { word_en: "Today", word_th: "วันนี", pronunciation: "wan-níi", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { word_en: "Tomorrow", word_th: "วันพรุ่งนี", pronunciation: "wan phrûŋ-níi", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { word_en: "Yesterday", word_th: "เมื9อวานนี", pronunciation: "mɯ̂a-waan-níi", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { word_en: "The day after tomorrow", word_th: "วันมะรืนนี", pronunciation: "wan má-rɯɯn-níi", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { word_en: "The day before yesterday", word_th: "(เมื9อ)วานซืน", pronunciation: "(mɯ̂a)-waan-sɯɯn", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { word_en: "Holiday", word_th: "วันหยุด", pronunciation: "wan-yùt", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { word_en: "Birthday", word_th: "วันเกิด", pronunciation: "wan-gə̀ət", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { word_en: "Weekdays", word_th: "วันธรรมดา", pronunciation: "wan tham-má-daa", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { word_en: "Every", word_th: "ทุก", pronunciation: "thúk", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { word_en: "All/Throughout", word_th: "ทัง", pronunciation: "tháŋ", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { word_en: "Month", word_th: "เดือน", pronunciation: "dɯan", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { word_en: "January", word_th: "มกราคม", pronunciation: "má-gà-raakhom/mók-gà-raa-khom", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { word_en: "February", word_th: "กุมภาพันธ์", pronunciation: "gum-phaa-phan", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { word_en: "March", word_th: "มีนาคม", pronunciation: "mii-naa-khom", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { word_en: "April", word_th: "เมษายน", pronunciation: "mee-sǎa-yon", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { word_en: "May", word_th: "พฤษภาคม", pronunciation: "phrɯt-sà-phaa-khom", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { word_en: "June", word_th: "มิถน ุยน", pronunciation: "mii-naa-khom", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { word_en: "July", word_th: "กรกฎาคม", pronunciation: "gà-rá-gà-daa-khom", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { word_en: "August", word_th: "สิงหาคม", pronunciation: "sǐŋ-hǎa-khom", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { word_en: "September", word_th: "กันยายน", pronunciation: "gan-yaa-yon", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { word_en: "October", word_th: "ตุลาคม", pronunciation: "dtù-laa-khom", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { word_en: "November", word_th: "พฤศจิกายน", pronunciation: "phrɯt-sà-jì-gaa-yon", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { word_en: "December", word_th: "ธันวาคม", pronunciation: "than-waa-khom", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { word_en: "Year", word_th: "ปี", pronunciation: "bpii", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { word_en: "C.E.", word_th: "ปีคศ", pronunciation: "bpii khɔɔ-sɔ̌ɔ", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { word_en: "B.E.", word_th: "ปีพศ", pronunciation: "bpii phɔɔ-sɔ̌ɔ", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { word_en: "Born", word_th: "เกิด", pronunciation: "gə̀ət", ex_en: "", ex_pronunciation: "", ex_th: "" },
+    { word_en: "When", word_th: "เมือไหร่", pronunciation: "mɯ̂a-rài", ex_en: "", ex_pronunciation: "", ex_th: "" }
+    /*
+       { word_en: "", word_th: "", pronunciation: "", ex_en: "", ex_pronunciation: "", ex_th: "" },
+       { word_en: "", word_th: "", pronunciation: "", ex_en: "", ex_pronunciation: "", ex_th: "" },
+       { word_en: "", word_th: "", pronunciation: "", ex_en: "", ex_pronunciation: "", ex_th: "" },
+       { word_en: "", word_th: "", pronunciation: "", ex_en: "", ex_pronunciation: "", ex_th: "" },
+   
+   
+       { word_en: "", word_th: "", pronunciation: "", ex_en: "", ex_pronunciation: "", ex_th: "" }
+   */
+    //   { word_en: "", word_th: "", pronunciation: "", ex_en: "", ex_pronunciation: "", ex_th: "" },
+];
 
 const dictionaries = {
     // book 1
@@ -472,7 +548,9 @@ const dictionaries = {
     dictionaryFoods: dictionaryFoods,
     dictionaryColours: dictionaryColours,
     dictionaryClassifiers: dictionaryClassifiers,
-    dictionaryPrepositions: dictionaryPrepositions
+    dictionaryPrepositions: dictionaryPrepositions,
+    dictionaryDateTime: dictionaryDateTime
+
 };
 
 const conversations = [
