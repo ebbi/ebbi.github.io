@@ -13,6 +13,7 @@ span.notice {
 }
 
 #example {
+    color: black;
     background-color: white;
     padding: 0.5rem;
     /*    font-size: small; */
@@ -26,13 +27,13 @@ span.notice {
 
 .background-blue {
     background-color: #00247d;
-    color: white;
 }
 
+/*
 .notice {
     color: black;
 }
-
+*/
 .font-size-small {
     font-size: small;
 }
@@ -60,6 +61,8 @@ span.notice {
 #choiceWords div span:lang(th),
 #searchWords span:lang(th) {
     color: red;
+    background-color: lightgray;
+    border-radius: 5px;
     padding: 0.2rem 0.35rem;
     margin: 0 2vw;
 }
@@ -81,6 +84,9 @@ span.notice {
 
 .blue {
     color: blue;
+    background-color: lightgray;
+    border-radius: 5px;
+    padding: 0.1rem;
 }
 
 .green {

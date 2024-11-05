@@ -936,7 +936,7 @@ function htmlMultipleChoice(questionWordIndex) {
     const spanExampleTh = document.createElement("div");
     spanExampleTh.lang = "th";
     spanExampleTh.textContent = currentDictionary[questionWordIndex].ex_th;
-    spanExampleTh.classList.add("red");
+    spanExampleTh.classList.add("dark-red");
     exampleContainer.appendChild(spanExampleTh);
 
 }

@@ -4,6 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="dark light">
 
     <title>Play</title>
     <link rel="icon" type="image/x-icon" href="/assets/images/bitcoin-logo.ico">
@@ -11,6 +12,7 @@
     <link rel="home" href="https://ebbi.github.io/">
 
     <link rel="stylesheet" href="/assets/stylesheet/core.css" media="screen">
+    <link rel="stylesheet" href="/assets/stylesheet/core-es.css" media="screen">
     <link rel="stylesheet" href="/assets/stylesheet/multipleChoice.css" media="screen">
 
 </head>
@@ -35,6 +37,11 @@
                     <a target="_blank" class="nav-link" href="https://github.com/ebbi/ebbi.github.io/" hreflang="en">
                         <img class="" src="/assets/images/github.svg" width="20" height="20" alt="github"
                             aria-hidden="true" loading="lazy"></a>
+                </li>
+                <li class="push">
+                    <img id="light-mode" src="/assets/images/light-mode.png" alt="light mode" width="15" height="15">
+                    <img id="dark-mode" class="display-none" src="/assets/images/dark-mode.png" alt="dark mode"
+                        width="15" height="15">
                 </li>
             </ul>
         </nav>
@@ -103,54 +110,55 @@
                         <span>Book 1</span>
                         <label>
                             <input type="checkbox" id="dictionaryBase" name="dictionaryBase"
-                                value="dictionaryBase" />Base <span lang="th" class="red">ฐาน</span>
+                                value="dictionaryBase" />Base <span lang="th" class="dark-red">ฐาน</span>
                         </label>
                         <label>
                             <input type="checkbox" id="dictionaryPhonetics" name="dictionaryPhonetics"
-                                value="dictionaryPhonetics" />Phonetics <span lang="th" class="red">สัทศาสตร์</span>
+                                value="dictionaryPhonetics" />Phonetics <span lang="th"
+                                class="dark-red">สัทศาสตร์</span>
                         </label>
                         <label>
                             <input type="checkbox" id="dictionaryPronouns" name="dictionaryPronouns"
-                                value="dictionaryPronouns" />Pronouns <span lang="th" class="red">คำสรรพนาม</span>
+                                value="dictionaryPronouns" />Pronouns <span lang="th" class="dark-red">คำสรรพนาม</span>
                         </label>
                         <label>
                             <input type="checkbox" id="dictionaryNumbers" name="dictionaryNumbers"
-                                value="dictionaryNumbers" />Numbers <span lang="th" class="red">ตัวเลข</span>
+                                value="dictionaryNumbers" />Numbers <span lang="th" class="dark-red">ตัวเลข</span>
                         </label>
                         <label>
                             <input type="checkbox" id="dictionaryClothes" name="dictionaryClothes"
                                 value="dictionaryClothes" />Clothes <span class="blue">sɯ̂a-phâa</span> <span lang="th"
-                                class="red">เสื้อผ้า</span>
+                                class="dark-red">เสื้อผ้า</span>
                         </label>
                         <label>
                             <input type="checkbox" id="dictionaryPlaces" name="dictionaryPlaces"
                                 value="dictionaryPlaces" />Places <span class="blue"></span> <span lang="th"
-                                class="red">สถานที่</span>
+                                class="dark-red">สถานที่</span>
                         </label>
                         <label>
                             <input type="checkbox" id="dictionaryFoods" name="dictionaryFoods"
                                 value="dictionaryFoods" />Foods <span class="blue">aa-hǎan</span> <span lang="th"
-                                class="red">อาหาร</span>
+                                class="dark-red">อาหาร</span>
                         </label>
                         <label>
                             <input type="checkbox" id="dictionaryColours" name="dictionaryColours"
                                 value="dictionaryColours" />Colours <span class="blue">sǐi</span> <span lang="th"
-                                class="red">สี</span>
-                        </label>
-                        <label>
-                            <input type="checkbox" id="dictionaryClassifiers" name="dictionaryClassifiers"
-                                value="dictionaryClassifiers" />Classifiers
-                        </label>
-                        <label>
-                            <input type="checkbox" id="dictionaryPrepositions" name="dictionaryPrepositions"
-                                value="dictionaryPrepositions" />Prepositions <span lang="th" class="red">คำบุพบท</span>
-                        </label>
-                        <span>Book 2</span>
-                        <label>
-                            <input type="checkbox" id="dictionaryDateTime" name="dictionaryDateTime"
-                                value="dictionaryDateTime" />Date and Time <span lang="th"
-                                class="red">วันที่และเวลา</span>
-                        </label>
+                                class="dark-red">สี</span>
+                            <label>
+                                <input type="checkbox" id="dictionaryClassifiers" name="dictionaryClassifiers"
+                                    value="dictionaryClassifiers" />Classifiers
+                            </label>
+                            <label>
+                                <input type="checkbox" id="dictionaryPrepositions" name="dictionaryPrepositions"
+                                    value="dictionaryPrepositions" />Prepositions <span lang="th"
+                                    class="dark-red">คำบุพบท</span>
+                            </label>
+                            <span>Book 2</span>
+                            <label>
+                                <input type="checkbox" id="dictionaryDateTime" name="dictionaryDateTime"
+                                    value="dictionaryDateTime" />Date and Time <span lang="th"
+                                    class="dark-red">วันที่และเวลา</span>
+                            </label>
 
                     </div>
                 </details>
@@ -281,6 +289,7 @@
         </div>
     </footer>
 
+    <script src="/assets/javaScript/dark-light.js"></script>
     <script src="/assets/javaScript/multipleChoice.js"></script>
 
 </body>
