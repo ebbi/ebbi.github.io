@@ -555,20 +555,18 @@ const dictionaries = {
 
 const conversations = [
     {
-        "name": "conversation 1",
-        "key_words": "word1 word2 word3",
-        "sentences": {
-            "1": { th: "ข้าว", pronunciation: "khâaw 1", en: "example 1" },
-            "2": { th: "ข้าว", pronunciation: "khâaw 2", en: "example 2" }
-        }
+        "dictionary": "dictionaryBase",
+        "conversations": [
+            { description: "What is your name?", url: "https://youtu.be/hqpzxp7oXHE?si=KyEnjbgzrNBVuxjj" },
+            { description: "", url: "" }
+            //            { page: "", description: "", url: "" },
+        ]
     },
     {
-        "name": "conversation 2",
-        "key_words": "word4 word2 word5",
-        "sentences": {
-            "1": { th: "ข้าว", pronunciation: "khâaw 3", en: "example 3" },
-            "2": { th: "ข้าว", pronunciation: "khâaw 4", en: "example 4" }
-        }
+        "dictionary": "dictionaryPhonetics",
+        "conversations": [
+            { description: "What is your name phonetic?", url: "https://youtu.be/hqpzxp7oXHE?si=KyEnjbgzrNBVuxjj" }
+        ]
     }
 
 ]
@@ -579,6 +577,7 @@ let wordIndex = 0;
 let dictionary = [];  // used for word search
 let currentDictionary = [];
 let selectedDictionaryNames = []; // selected dictionary checkboxes
+let selectedDictionariesConversations = [];
 
 let NoAnswerChoices = 3;
 let correctAnswerCount = 0;
@@ -760,19 +759,22 @@ searchWord.addEventListener('input', function (event) {
 function initialize() {
 
     initializeDictionary();
-    currentDictionary = '';
-    //   lastDictionary = '';
+    currentDictionary = "";
+    selectedDictionariesConversations = "";
 
     const choiceWords = document.getElementById("choiceWords");
-    choiceWords.textContent = '';
+    choiceWords.textContent = "";
 
-    searchWord.value = '';
+    searchWord.value = "";
 
     const searchWords = document.getElementById("searchWords");
-    searchWords.innerHTML = '';
+    searchWords.innerHTML = "";
 
     const exampleContainer = document.getElementById("example");
     exampleContainer.innerHTML = "";
+
+    const conversationsContainer = document.getElementById("conversations");
+    conversationsContainer.innerHTML = "";
 
     uncheckSelectedCheckboxes(dictionaryCheckboxes);
 
@@ -788,21 +790,27 @@ function setDictionary() {
 
     currentDictionary = [];
 
+    selectedDictionariesConversations = "";
+    const conversationsContainer = document.getElementById("conversations");
+    conversationsContainer.innerHTML = "";
+
     if (selectedDictionaryNames.length === 0) {
         initialize();
         return;
     } else {
 
-        selectedDictionaryNames.forEach(name => {
+        selectedDictionaryNames.forEach(dictionaryName => {
 
-            if (dictionaries.hasOwnProperty(name)) {
+            if (dictionaries.hasOwnProperty(dictionaryName)) {
 
-                const newArray = [...dictionaries[name]];
+                const newArray = [...dictionaries[dictionaryName]];
                 currentDictionary = currentDictionary.concat(newArray);
                 lastDictionary = lastDictionary.concat(newArray);
 
+                setDictionaryConversations(dictionaryName);
+
             } else {
-                //            console.log(`Array '${name}' does not exist.`);
+                console.log(`Array '${dictionaryName}' does not exist.`);
             }
         });
 
@@ -818,6 +826,33 @@ function setDictionary() {
         wordIndex = 0;
         htmlMultipleChoice(wordIndex);
     }
+
+}
+
+function setDictionaryConversations(dictionaryName) {
+    /* 
+    find dictionary conversation array; return if non defined in conversations
+    add conversatiuon li a element
+     */
+
+    selectedDictionariesConversations = conversations.find(({ dictionary }) => dictionary === dictionaryName);
+    if (typeof selectedDictionariesConversations === "undefined") {
+        return
+    }
+
+    const conversationUl = document.getElementById("conversations");
+
+    for (const conversation of selectedDictionariesConversations.conversations) {
+        const li = document.createElement("li");
+        const a = document.createElement("a");
+
+        a.setAttribute("target", "_blank");
+        a.setAttribute("href", conversation.url);
+        a.innerHTML = conversation.description;
+
+        li.appendChild(a);
+        conversationUl.appendChild(li);
+    };
 
 }
 
