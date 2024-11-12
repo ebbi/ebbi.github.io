@@ -557,15 +557,29 @@ const conversations = [
     {
         "dictionary": "dictionaryBase",
         "conversations": [
-            { description: "What is your name?", url: "https://youtu.be/hqpzxp7oXHE?si=KyEnjbgzrNBVuxjj" },
-            { description: "", url: "" }
+            { description: "What is your name?", url: "https://youtu.be/hqpzxp7oXHE?si=KyEnjbgzrNBVuxjj" }
             //            { page: "", description: "", url: "" },
         ]
     },
     {
-        "dictionary": "dictionaryPhonetics",
+        "dictionary": "dictionaryDateTime",
         "conversations": [
-            { description: "What is your name phonetic?", url: "https://youtu.be/hqpzxp7oXHE?si=KyEnjbgzrNBVuxjj" }
+            { description: "B3  P5 : What time is it now ?", url: "https://youtu.be/U_ZAlFuGcwY?si=LXXwK9OYhn74HNIC" },
+            { description: "B3  P7 : What time do you wake up ?", url: "https://youtu.be/oyqonhgTd_k?si=1EyqBRLoSiWpykva" },
+            { description: "B3  P8 : Conversation 1", url: "https://youtu.be/m4l-dEuGA8A?si=m8VhBQzeYRUMLWdC" },
+            { description: "B3 P11 : How many hours/minutes ?", url: "https://youtu.be/VAKfFaSEjPc?si=1KNcYOlZtlj7mBre" },
+            { description: "B3 P12 : Conversation 2", url: "https://youtu.be/L1aLRVo6NTs?si=tM3P3GwtnNVQHXrO" },
+            { description: "", url: "" },
+            { description: "", url: "" },
+            { description: "", url: "" },
+            { description: "", url: "" },
+            { description: "", url: "" },
+            { description: "", url: "" },
+            { description: "", url: "" },
+            { description: "", url: "" },
+            { description: "", url: "" },
+            { description: "", url: "" },
+            { description: "", url: "" }
         ]
     }
 
@@ -769,10 +783,10 @@ function initialize() {
 
     const searchWords = document.getElementById("searchWords");
     searchWords.innerHTML = "";
-
-    const exampleContainer = document.getElementById("example");
-    exampleContainer.innerHTML = "";
-
+    /*
+        const exampleContainer = document.getElementById("example");
+        exampleContainer.innerHTML = "";
+    */
     const conversationsContainer = document.getElementById("conversations");
     conversationsContainer.innerHTML = "";
 
@@ -955,24 +969,26 @@ function htmlMultipleChoice(questionWordIndex) {
     const searchWords = document.getElementById("searchWords");
     searchWords.innerHTML = '';
 
-    const exampleContainer = document.getElementById("example");
-    exampleContainer.innerHTML = "";
-
-    const spanExampleEn = document.createElement("span");
-    spanExampleEn.textContent = currentDictionary[questionWordIndex].ex_en;
-    //    spanExampleEn.classList.add("blue");
-    exampleContainer.appendChild(spanExampleEn);
-
-    const spanExamplePronunciation = document.createElement("div");
-    spanExamplePronunciation.textContent = currentDictionary[questionWordIndex].ex_pronunciation;
-    spanExamplePronunciation.classList.add("blue");
-    exampleContainer.appendChild(spanExamplePronunciation);
-
-    const spanExampleTh = document.createElement("div");
-    spanExampleTh.lang = "th";
-    spanExampleTh.textContent = currentDictionary[questionWordIndex].ex_th;
-    spanExampleTh.classList.add("dark-red");
-    exampleContainer.appendChild(spanExampleTh);
+    /*
+        const exampleContainer = document.getElementById("example");
+        exampleContainer.innerHTML = "";
+    
+        const spanExampleEn = document.createElement("span");
+        spanExampleEn.textContent = currentDictionary[questionWordIndex].ex_en;
+        //    spanExampleEn.classList.add("blue");
+        exampleContainer.appendChild(spanExampleEn);
+    
+        const spanExamplePronunciation = document.createElement("div");
+        spanExamplePronunciation.textContent = currentDictionary[questionWordIndex].ex_pronunciation;
+        spanExamplePronunciation.classList.add("blue");
+        exampleContainer.appendChild(spanExamplePronunciation);
+    
+        const spanExampleTh = document.createElement("div");
+        spanExampleTh.lang = "th";
+        spanExampleTh.textContent = currentDictionary[questionWordIndex].ex_th;
+        spanExampleTh.classList.add("dark-red");
+        exampleContainer.appendChild(spanExampleTh);
+    */
 
 }
 

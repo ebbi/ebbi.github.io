@@ -39,7 +39,7 @@ function setDarkMode(event) {
 
 function setLightMode(event) {
 
-    console.log("setLightMode", event);
+    //    console.log("setLightMode", event);
 
     rootElement.setAttribute("class", "light");
     lightModeElement.setAttribute("class", "display-none");
