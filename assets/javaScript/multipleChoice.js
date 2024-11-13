@@ -1,11 +1,29 @@
 // book 1
-const dictionaryBase = [
+// Greeting
+const dictionaryBook1Lesson1 = [
+    { word_en: "house", word_th: "บ้าน", pronunciation: "bâan" },
+    { word_en: "school", word_th: "โรงเรียน", pronunciation: "rooŋ-rian" },
+    { word_en: "coffee", word_th: "กาแฟ", pronunciation: "gaa-fɛɛ" },
+    { word_en: "food", word_th: "อาหาร", pronunciation: "aa-hǎan" },
+    { word_en: "lie down or sleep", word_th: "นอน", pronunciation: "nɔɔn" },
+    { word_en: "banana", word_th: "กล้วย", pronunciation: "gluay" },
+    { word_en: "family", word_th: "ครอบครัว", pronunciation: "khroop-khrua" },
+    { word_en: "dog", word_th: "หมา", pronunciation: "H̄mā" },
+    { word_en: "lonely", word_th: "เหงา", pronunciation: "H̄engā" },
+    { word_en: "book", word_th: "หนังสือ", pronunciation: "nǎŋ-sɯ̌ɯ" },
+    { word_en: "woman", word_th: "ผู้หญิง", pronunciation: "P̄hū̂ ỵing" },
+    { word_en: "hot", word_th: "ร้อน", pronunciation: "rɔ́ɔn" },
+    { word_en: "horse", word_th: "ม้า", pronunciation: "M̂ā" },
+    { word_en: "friend", word_th: "เพื่อน", pronunciation: "phɯ̂an" },
     { word_en: "hello", word_th: "สวัสดี", pronunciation: "sà-wàt-dii" },
     { word_en: "thank you", word_th: "ขอบคุณ", pronunciation: "kɔ̀ɔp-kun" },
     { word_en: "never mind", word_th: "ไม่เป็นไร", pronunciation: "mâi-bpen-rai" },
     { word_en: "sorry/excuse me", word_th: "ขอโทษ", pronunciation: "kɔ̌ɔ-tôot" },
     { word_en: "nice to meet you", word_th: "ยินดีทีได้รู้จัก", pronunciation: "yin-dii tîi dâai rúu-jàk" },
     { word_en: "how about you?", word_th: "แล้ว คุณล่ะ", pronunciation: "khun la" },
+    { word_en: "I for male", word_th: "ผม", pronunciation: "phǒm" },
+    { word_en: "I for female", word_th: "ฉัน", pronunciation: "chǎn" },
+    { word_en: "you", word_th: "คุณ", pronunciation: "khun" },
     { word_en: "he/she", word_th: "เขา", pronunciation: "khǎw" },
     { word_en: "we/us", word_th: "พวกเรา", pronunciation: "phûak-raw" },
     { word_en: "they/them", word_th: "พวกเขา", pronunciation: "phûak-khǎw" },
@@ -28,6 +46,9 @@ const dictionaryBase = [
     { word_en: "come", word_th: "มา", pronunciation: "maa" },
     { word_en: "from", word_th: "จาก", pronunciation: "jàak" },
     { word_en: "where", word_th: "ทีไหน", pronunciation: "thîi-nǎi" },
+];
+// What are you doing
+const dictionaryBook1Lesson2 = [
     { word_en: "eat", word_th: "กิน", pronunciation: "gin" },
     { word_en: "drink", word_th: "ดืxม", pronunciation: "dʉ̀ʉm" },
     { word_en: "watch", word_th: "ดู", pronunciation: "duu" },
@@ -83,7 +104,10 @@ const dictionaryBase = [
     { word_en: "sing", word_th: "ร้องเพลง", pronunciation: "rɔ́ɔŋ pleeŋ" },
     { word_en: "will", word_th: "จะ", pronunciation: "jà" },
     { word_en: "-ing", word_th: "กําลัง", pronunciation: "gam-laŋ" },
-    { word_en: "-ing", word_th: "อยู่", pronunciation: "yùu" },
+    { word_en: "-ing", word_th: "อยู่", pronunciation: "yùu" }
+];
+// How is Thai food Adjective/Adverb
+const dictionaryBook1Lesson3 = [
     { word_en: "small", word_th: "เล็ก", pronunciation: "lék" },
     { word_en: "big", word_th: "ใหญ่", pronunciation: "yài" },
     { word_en: "short (length)", word_th: "สัäน", pronunciation: "sân" },
@@ -139,57 +163,10 @@ const dictionaryBase = [
     { word_en: "less", word_th: "น้ อยกว่า", pronunciation: "nɔ́ɔy gwàa" },
     { word_en: "least", word_th: "น้อยทีสดุ", pronunciation: "nɔ́ɔy thîi-sùt" },
     { word_en: "more", word_th: "มากกว่า", pronunciation: "mâak gwàa" },
-    { word_en: "the most", word_th: "มากทีสดุ", pronunciation: "mâak thîi-sùt" },
-    { word_en: "Room", word_th: "ห้ อง", pronunciation: "hɔ̂ɔŋ" },
-    { word_en: "Bedroom", word_th: "ห้องนอน", pronunciation: "hɔ̂ɔŋ-nɔɔn" },
-    { word_en: "Kitchen", word_th: "ห้องครัว", pronunciation: "hɔ̂ɔŋ-khrua" },
-    { word_en: "Living room", word_th: "ห้องนังfเล่น", pronunciation: "hɔ̂ɔŋ-nâŋ-lên" },
-    { word_en: "Bathroom", word_th: "ห้องนํNา", pronunciation: "hɔ̂ɔŋ-náam" },
-    { word_en: "Office/Studio/Workroom", word_th: "ห้องทํางาน", pronunciation: "hɔ̂ɔŋ tham-ŋaan" },
-    { word_en: "Classroom", word_th: "ห้องเรียน", pronunciation: "hɔ̂ɔŋ-rian" },
-    { word_en: "Storage room", word_th: "ห้องเก็บของ", pronunciation: "hɔ̂ɔŋ gèp-khɔ̌ɔŋ" },
-    { word_en: "Shelf", word_th: "ชันวางของ", pronunciation: "chán-waaŋ-khɔ̌ɔŋ" },
-    { word_en: "Cupboard", word_th: "ตู้", pronunciation: "dtûu" },
-    { word_en: "Wardrobe", word_th: "ตู้เสืNอผ้า", pronunciation: "dtûu sɯ̂a-phâa" },
-    { word_en: "Refrigerator", word_th: "ตู้เย็น", pronunciation: "dtûu-yen" },
-    { word_en: "Bed", word_th: "เตียง", pronunciation: "dtiaŋ" },
-    { word_en: "Table/Desk", word_th: "โต๊ะ", pronunciation: "dtó" },
-    { word_en: "Counter", word_th: "เคาท์เตอร์", pronunciation: "kháw-dtə̂ə" },
-    { word_en: "Chair", word_th: "เก้าอีN", pronunciation: "gâw-iî" },
-    { word_en: "Sofa", word_th: "โซฟา", pronunciation: "soo-faa" },
-    { word_en: "Wash basin", word_th: "อ่างล้างหน้า", pronunciation: "àaŋ-láaŋ-nâa" }
-
-    //    { word_en: "", word_th: "", pronunciation: "" },
+    { word_en: "the most", word_th: "มากทีสดุ", pronunciation: "mâak thîi-sùt" }
 ];
-const dictionaryPhonetics = [
-    { word_en: "house", word_th: "บ้าน", pronunciation: "bâan" },
-    { word_en: "school", word_th: "โรงเรียน", pronunciation: "rooŋ-rian" },
-    { word_en: "coffee", word_th: "กาแฟ", pronunciation: "gaa-fɛɛ" },
-    { word_en: "food", word_th: "อาหาร", pronunciation: "aa-hǎan" },
-    { word_en: "lie down or sleep", word_th: "นอน", pronunciation: "nɔɔn" },
-    { word_en: "banana", word_th: "กล้วย", pronunciation: "gluay" },
-    { word_en: "family", word_th: "ครอบครัว", pronunciation: "khroop-khrua" },
-    { word_en: "dog", word_th: "หมา", pronunciation: "H̄mā" },
-    { word_en: "lonely", word_th: "เหงา", pronunciation: "H̄engā" },
-    { word_en: "book", word_th: "หนังสือ", pronunciation: "nǎŋ-sɯ̌ɯ" },
-    { word_en: "woman", word_th: "ผู้หญิง", pronunciation: "P̄hū̂ ỵing" },
-    { word_en: "hot", word_th: "ร้อน", pronunciation: "rɔ́ɔn" },
-    { word_en: "horse", word_th: "ม้า", pronunciation: "M̂ā" },
-    { word_en: "friend", word_th: "เพื่อน", pronunciation: "phɯ̂an" }
-];
-const dictionaryPronouns = [
-    { word_en: "I for male", word_th: "ผม", pronunciation: "phǒm" },
-    { word_en: "I for female", word_th: "ฉัน", pronunciation: "chǎn" },
-    { word_en: "you", word_th: "คุณ", pronunciation: "khun" },
-    { word_en: "he/she", word_th: "เขา", pronunciation: "khǎw" },
-    { word_en: "we/us", word_th: "พวกเรา", pronunciation: "phûak-raw" },
-    { word_en: "they/them", word_th: "พวกเขา", pronunciation: "phûak-khǎw" },
-    { word_en: "your/yours", word_th: "ของคุณ", pronunciation: "(khɔ̌ɔŋ) khun" },
-    { word_en: "his/her/hers", word_th: "ของเขา", pronunciation: "(khɔ̌ɔŋ) khǎw" },
-    { word_en: "our/ours", word_th: "ของพวกเรา", pronunciation: "(khɔ̌ɔŋ) phûak-raw" },
-    { word_en: "their/theirs", word_th: "ของพวกเขา", pronunciation: "khɔ̌ɔŋ phûak-khǎw" }
-];
-const dictionaryNumbers = [
+// Go shopping (numbers)
+const dictionaryBook1Lesson4 = [
     { word_en: "one", word_th: "หนึง", pronunciation: "nɯŋ" },
     { word_en: "two", word_th: "สอง", pronunciation: "sɔ̌ɔŋ" },
     { word_en: "three", word_th: "สาม", pronunciation: "sǎam" },
@@ -227,10 +204,7 @@ const dictionaryNumbers = [
     { word_en: "thousand", word_th: "พัน", pronunciation: "phan" },
     { word_en: "ten thousand", word_th: "หมืน", pronunciation: "mɯɯn" },
     { word_en: "hundred thousand", word_th: "แสน", pronunciation: "sɛ̌ɛn" },
-    { word_en: "million", word_th: "ล้าน", pronunciation: "láan" }
-    //    { word_en: "", word_th: "", pronunciation: "" },
-];
-const dictionaryClothes = [
+    { word_en: "million", word_th: "ล้าน", pronunciation: "láan" },
     { word_en: "clothes", word_th: "เสือผ้า", pronunciation: "sɯ̂a-phâa" },
     { word_en: "shirt", word_th: "เสือ", pronunciation: "sɯ̂a" },
     { word_en: "T-shirt", word_th: "เสือยืด", pronunciation: "sɯ̂a-yɯ̂ɯt" },
@@ -246,9 +220,9 @@ const dictionaryClothes = [
     { word_en: "exercise outfit", word_th: "ชุดออกกําลังกาย", pronunciation: "chút ɔ̀ɔk-gam-laŋ-gaay" },
     { word_en: "price", word_th: "ราคา", pronunciation: "raa-khaa" },
     { word_en: "discount", word_th: "ลด", pronunciation: "lót" }
-    //    { word_en: "", word_th: "", pronunciation: "" },
 ];
-const dictionaryPlaces = [
+// Where is the hospital (plaes)
+const dictionaryBook1Lesson5 = [
     { word_en: "house", word_th: "บ้าน", pronunciation: "bâan" },
     { word_en: "school", word_th: "โรงเรียน", pronunciation: "rooŋ-rian" },
     { word_en: "hotel", word_th: "โรงแรม", pronunciation: "rooŋ-rɛɛm" },
@@ -273,9 +247,49 @@ const dictionaryPlaces = [
     { word_en: "church", word_th: "โบสถ์", pronunciation: "bòot" },
     { word_en: "university", word_th: "มหาวิทยาลัย", pronunciation: "má-hǎa-wit́-thá yaa- lai" },
     { word_en: "mountain", word_th: "ภูเขา/ดอย", pronunciation: "phuu-khǎw/dɔɔy" },
-    { word_en: "river", word_th: "แม่นํา", pronunciation: "mɛ̂ɛ-náam" }
+    { word_en: "river", word_th: "แม่นํา", pronunciation: "mɛ̂ɛ-náam" },
+    { word_en: "be (is/am/are)", word_th: "อยู่", pronunciation: "yùu" },
+    { word_en: "where", word_th: "ที&ไหน", pronunciation: "thîi-nǎi" },
+    { word_en: "close to", word_th: "ใกล้", pronunciation: "glâi" },
+    { word_en: "near", word_th: "กับ", pronunciation: "gàp" },
+    { word_en: "far", word_th: "ไกล", pronunciation: "glai" },
+    { word_en: "next to", word_th: "ข้างๆ", pronunciation: "khâaŋ-khâaŋ" },
+    { word_en: "next to", word_th: "ติด(กับ)", pronunciation: "dtìt(gàp)" },
+    { word_en: "opposite to", word_th: "ตรงข้าม", pronunciation: "dtroŋ-khâam" },
+    { word_en: "at", word_th: "ที&", pronunciation: "thîi" },
+    { word_en: "in", word_th: "ใน", pronunciation: "nai" },
+    { word_en: "arround (in the area)", word_th: "แถว", pronunciation: "thɛ̌ɛw" },
+    { word_en: "in front of", word_th: "ข้างหน้า", pronunciation: "khâaŋ-nâa" },
+    { word_en: "behind", word_th: "ข้างหลัง", pronunciation: "khâaŋ-lǎŋ" },
+    { word_en: "here", word_th: "ที&นี&", pronunciation: "thîi-nîi" },
+    { word_en: "there", word_th: "ที&นนั&", pronunciation: "thîi-nân" },
+    { word_en: "over there", word_th: "ที&โน่น", pronunciation: "thîi-nôon" },
+
+];
+
+const dictionaryBase = [
+    { word_en: "Room", word_th: "ห้ อง", pronunciation: "hɔ̂ɔŋ" },
+    { word_en: "Bedroom", word_th: "ห้องนอน", pronunciation: "hɔ̂ɔŋ-nɔɔn" },
+    { word_en: "Kitchen", word_th: "ห้องครัว", pronunciation: "hɔ̂ɔŋ-khrua" },
+    { word_en: "Living room", word_th: "ห้องนังfเล่น", pronunciation: "hɔ̂ɔŋ-nâŋ-lên" },
+    { word_en: "Bathroom", word_th: "ห้องนํNา", pronunciation: "hɔ̂ɔŋ-náam" },
+    { word_en: "Office/Studio/Workroom", word_th: "ห้องทํางาน", pronunciation: "hɔ̂ɔŋ tham-ŋaan" },
+    { word_en: "Classroom", word_th: "ห้องเรียน", pronunciation: "hɔ̂ɔŋ-rian" },
+    { word_en: "Storage room", word_th: "ห้องเก็บของ", pronunciation: "hɔ̂ɔŋ gèp-khɔ̌ɔŋ" },
+    { word_en: "Shelf", word_th: "ชันวางของ", pronunciation: "chán-waaŋ-khɔ̌ɔŋ" },
+    { word_en: "Cupboard", word_th: "ตู้", pronunciation: "dtûu" },
+    { word_en: "Wardrobe", word_th: "ตู้เสืNอผ้า", pronunciation: "dtûu sɯ̂a-phâa" },
+    { word_en: "Refrigerator", word_th: "ตู้เย็น", pronunciation: "dtûu-yen" },
+    { word_en: "Bed", word_th: "เตียง", pronunciation: "dtiaŋ" },
+    { word_en: "Table/Desk", word_th: "โต๊ะ", pronunciation: "dtó" },
+    { word_en: "Counter", word_th: "เคาท์เตอร์", pronunciation: "kháw-dtə̂ə" },
+    { word_en: "Chair", word_th: "เก้าอีN", pronunciation: "gâw-iî" },
+    { word_en: "Sofa", word_th: "โซฟา", pronunciation: "soo-faa" },
+    { word_en: "Wash basin", word_th: "อ่างล้างหน้า", pronunciation: "àaŋ-láaŋ-nâa" }
+
     //    { word_en: "", word_th: "", pronunciation: "" },
 ];
+
 // book 2    
 const dictionaryFoods = [
     { word_en: "rice", word_th: "ข้าว", pronunciation: "khâaw" },
@@ -432,22 +446,6 @@ const dictionaryClassifiers = [
     */
 ];
 const dictionaryPrepositions = [
-    { word_en: "be (is/am/are)", word_th: "อยู่", pronunciation: "yùu" },
-    { word_en: "where", word_th: "ที&ไหน", pronunciation: "thîi-nǎi" },
-    { word_en: "close to", word_th: "ใกล้", pronunciation: "glâi" },
-    { word_en: "near", word_th: "กับ", pronunciation: "gàp" },
-    { word_en: "far", word_th: "ไกล", pronunciation: "glai" },
-    { word_en: "next to", word_th: "ข้างๆ", pronunciation: "khâaŋ-khâaŋ" },
-    { word_en: "next to", word_th: "ติด(กับ)", pronunciation: "dtìt(gàp)" },
-    { word_en: "opposite to", word_th: "ตรงข้าม", pronunciation: "dtroŋ-khâam" },
-    { word_en: "at", word_th: "ที&", pronunciation: "thîi" },
-    { word_en: "in", word_th: "ใน", pronunciation: "nai" },
-    { word_en: "arround (in the area)", word_th: "แถว", pronunciation: "thɛ̌ɛw" },
-    { word_en: "in front of", word_th: "ข้างหน้า", pronunciation: "khâaŋ-nâa" },
-    { word_en: "behind", word_th: "ข้างหลัง", pronunciation: "khâaŋ-lǎŋ" },
-    { word_en: "here", word_th: "ที&นี&", pronunciation: "thîi-nîi" },
-    { word_en: "there", word_th: "ที&นนั&", pronunciation: "thîi-nân" },
-    { word_en: "over there", word_th: "ที&โน่น", pronunciation: "thîi-nôon" },
     { word_en: "There is/There are", word_th: "มี", pronunciation: "mii" },
     { word_en: "On", word_th: "บน", pronunciation: "bon" },
     { word_en: "Under", word_th: "ใต้", pronunciation: "On" },
@@ -455,6 +453,7 @@ const dictionaryPrepositions = [
     { word_en: "Inside", word_th: "ข้างใน", pronunciation: "khâaŋ-nai" },
     { word_en: "Between", word_th: "ระหว่าง", pronunciation: "rá-wàaŋ" },
     { word_en: "At", word_th: "ทีf", pronunciation: "thîi" }
+
     //   { word_en: "", word_th: "", pronunciation: "" },
 ];
 // book 3
@@ -531,12 +530,21 @@ const dictionaryDateTime = [
 
 const dictionaries = {
     // book 1
-    dictionaryBase: dictionaryBase,
-    dictionaryPhonetics: dictionaryPhonetics,
-    dictionaryPronouns: dictionaryPronouns,
-    dictionaryNumbers: dictionaryNumbers,
-    dictionaryClothes: dictionaryClothes,
-    dictionaryPlaces: dictionaryPlaces,
+    dictionaryBook1Lesson1: dictionaryBook1Lesson1,
+    dictionaryBook1Lesson2: dictionaryBook1Lesson2,
+    dictionaryBook1Lesson3: dictionaryBook1Lesson3,
+    dictionaryBook1Lesson4: dictionaryBook1Lesson4,
+    dictionaryBook1Lesson5: dictionaryBook1Lesson5,
+
+    /*
+        dictionaryBase: dictionaryBase,
+        dictionaryPhonetics: dictionaryPhonetics,
+        dictionaryPronouns: dictionaryPronouns,
+        dictionaryNumbers: dictionaryNumbers,
+        dictionaryClothes: dictionaryClothes,
+        dictionaryPlaces: dictionaryPlaces,
+        */
+
     // book 2
     dictionaryFoods: dictionaryFoods,
     dictionaryColours: dictionaryColours,
@@ -548,10 +556,69 @@ const dictionaries = {
 
 const conversations = [
     {
-        "dictionary": "dictionaryBase",
+        "dictionary": "dictionaryBook1Lesson1",
         "conversations": [
-            { description: "What is your name?", url: "https://youtu.be/hqpzxp7oXHE?si=KyEnjbgzrNBVuxjj" }
-            //            { page: "", description: "", url: "" },
+            { description: "What is your name?", url: "https://youtu.be/hqpzxp7oXHE?si=KyEnjbgzrNBVuxjj" },
+            { description: "Where do you come from ?", url: "https://youtu.be/Jfn8TnDUON8?si=zrPDIrOyaH2TM_YR" }
+            //            { description: "", url: "" }
+        ]
+    },
+    {
+        "dictionary": "dictionaryBook1Lesson2",
+        "conversations": [
+            { description: "Vocabulary Part 1", url: "https://youtu.be/ntPgx1m1K9M?si=W_zAAsfiXuP_l6xD" },
+            { description: "Talking about yourself", url: "https://youtu.be/bAKFs6AMBFQ?si=B5MACIGxd4A9_cPM" },
+            { description: "(Normally) Do you ... ?", url: "https://youtu.be/8zjJ0GVDCfg?si=2fE25HcTK5uqn49T" },
+            { description: "I like ... ", url: "https://youtu.be/w740c7Kn4HA?si=hVw-FIu12CDwKn0v" },
+            { description: "Do you like ... ", url: "https://youtu.be/7WqZH4wHaTA?si=pE8Q-r5bYpoVtVt_" },
+            { description: "What do you like to do ?", url: "https://youtu.be/EugXI2O2CtM?si=u0Ptuy6To_APxcAH" },
+            { description: "Vocabulary Part 2", url: "https://youtu.be/JSKKtNDOtUQ?si=cOUyuTX1kz7CKQr-" },
+            { description: "I can ... ", url: "https://youtu.be/fSOceJiPzpU?si=euN0jPfLz7YquJ0g" },
+            { description: "Can you ... ", url: "https://youtu.be/rB1TYHZJAiM?si=zNfIvLRu1BjZ67fs" },
+            { description: "Vocabulary Part 3", url: "https://youtu.be/sVxwduC5C1g?si=TJ840456JusYCLFp" },
+            { description: " I will ... ", url: "https://youtu.be/_KSwU01YFZI?si=j8jOtAjFADc0VKtW" },
+            { description: "I am ... ing", url: "https://youtu.be/p8vEwjNP4KQ?si=CppDH1Uo-tO90wkF" },
+            { description: "What are you doing ?", url: "https://youtu.be/_oGn6lr_5NM?si=4Ir_uThf4EqD3mWv" }
+            //            { description: "", url: "" }
+        ]
+    },
+    {
+        "dictionary": "dictionaryBook1Lesson3",
+        "conversations": [
+            { description: "Vocabulary Part 1", url: "https://youtu.be/kiOnHhL209w?si=M6l2maMu39xHW8oV" },
+            { description: "Describe things", url: "https://youtu.be/x45p7HmtmqM?si=jXnaSsW9rcPSSA23" },
+            { description: "Describe things (Negative form)", url: "https://youtu.be/nJi-zqcxUSc?si=KShbBYMGwvU5n_NY" },
+            { description: "Vocabulary Part 2", url: "https://youtu.be/LVHzeQ3wNjs?si=GUdd1KI51qLayXEp" },
+            { description: "Describe things (Very)", url: "https://youtu.be/bx7hIiJFO68?si=4hXJb5-DjA3smR-V" },
+            { description: "Asking about things : How is/was ... ?", url: "https://youtu.be/yaYVB-lK_h4?si=0RKMW0DR71DKL159" },
+            { description: "Asking about people", url: "https://youtu.be/BnZ-QPT-B6s?si=vUoGOpc4sAbpgTrs" },
+            { description: "Comparative (part 1)", url: "https://youtu.be/upMaxRuWd0A?si=xeMnhoyBr3dXyFkF" },
+            { description: "Comparative (Part 2, 3)", url: "https://youtu.be/b17cBeaFxbA?si=b9IjoZuSjLMmxdwx" },
+            { description: "Comparative (Part 4, 5)", url: "https://youtu.be/QOAYt8-TsIE?si=--ktfcSgkgVg4qhA" },
+            { description: "Superlative (Part 1, 2)", url: "https://youtu.be/w5vrOHIz5H4?si=ysadllffX7C4anUR" },
+            { description: "Conversation 1", url: "https://youtu.be/kZt2-pl-ZBo?si=1D6bxGayfyXLya5D" },
+            { description: "Conversation 2", url: "https://youtu.be/CUbUzfztFn0?si=IxmkBczveQThZ59L" },
+            { description: "Comparison", url: "https://youtu.be/80di9PsGopI?si=4rLR-Vpwqwx2eR0Y" }
+        ]
+    },
+    {
+        "dictionary": "dictionaryBook1Lesson4",
+        "conversations": [
+            { description: "Numbers in Thai", url: "https://youtu.be/ENBSfyXXIHE?si=ZFmYlR5z4E67g3Gl" },
+            { description: "Numbers in Thai (continued ... )", url: "https://youtu.be/oxI4tPY4lI4?si=quRjYzMazqK1jhyD" },
+            { description: "Asking for the price (Part 1, 2)", url: "https://youtu.be/AiXwD_CGjy0?si=_uMfgCCds0TvE86C" },
+            { description: "Giving information about the price", url: "https://youtu.be/qofrTMXDvhQ?si=TV6ljTNBc6_CiVha" },
+            { description: "Asking for the a discount", url: "https://youtu.be/yrHNI-2BKvQ?si=Eqa803QJCP_fG-RI" },
+            { description: "Conversation", url: "https://youtu.be/ai2f9hRI3x8?si=mrDXDfhTuA3atYhI" },
+            { description: "Vocabulary Part 1", url: "https://youtu.be/SKttrMf_0EA?si=s4NpfmzwiA7DUpo3" }
+        ]
+    },
+    {
+        "dictionary": "dictionaryBook1Lesson5",
+        "conversations": [
+            { description: "Vocabulary Part 1", url: "https://youtu.be/04ZcXl2lmIw?si=0mi-A2VvRWeVTNRf" },
+            { description: "Vocabulary Part 1 (continued)", url: "https://youtu.be/uzoSrBUTVNM?si=BFDwS-LA2wYHyFKz" },
+            { description: "Where is the Church ?", url: "https://youtu.be/1gMdzuCt5IE?si=6Mtu0nj0wzpqKnaR" }
         ]
     },
     {
@@ -570,9 +637,9 @@ const conversations = [
             { description: "B3 P27: How many days per week do you study Thai ?", url: "https://youtu.be/HSC8Tq3DKNA?si=11ClXgIbnjQu8vNs" },
             { description: "B3 P28: How many days in a week do you study Thai ?", url: "https://youtu.be/ENbXIibgy7I?si=Gqu85RbbpsRITJ8M" },
             { description: "B3 P30: Conversation 2", url: "https://youtu.be/3j1AC4tL2Ms?si=Q-uUTXmV3UggvUBr" },
-            { description: "B3 P36: What month is this month ?", url: "https://youtu.be/eqc-VZ65y5o?si=fyJ1LkVLfGSI_dmm" },
-            { description: "", url: "" },
-            { description: "", url: "" }
+            { description: "B3 P36: What month is this month ?", url: "https://youtu.be/eqc-VZ65y5o?si=fyJ1LkVLfGSI_dmm" }
+            //            { description: "", url: "" },
+            //           { description: "", url: "" }
         ]
     }
 
