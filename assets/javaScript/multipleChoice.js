@@ -290,8 +290,9 @@ const dictionaryBase = [
     //    { word_en: "", word_th: "", pronunciation: "" },
 ];
 
-// book 2    
-const dictionaryFoods = [
+// book 2   
+/* order food */
+const dictionaryBook2Lesson1 = [
     { word_en: "rice", word_th: "ข้าว", pronunciation: "khâaw" },
     { word_en: "food", word_th: "อาหาร/กับข้าว", pronunciation: "aa-hǎan/gàp-khâaw" },
     { word_en: "curry", word_th: "แกง", pronunciation: "gɛɛŋ" },
@@ -340,7 +341,10 @@ const dictionaryFoods = [
     { word_en: "bowl", word_th: "ถ้วย/ชาม", pronunciation: "thûay/chaam" },
     { word_en: "Box/carton", word_th: "กล่อง", pronunciation: "glɔ̀ɔŋ" },
     { word_en: "plastic bag", word_th: "ถุง", pronunciation: "thǔŋ" },
-    { word_en: "piece", word_th: "ชิ1น", pronunciation: "chín" },
+    { word_en: "piece", word_th: "ชิ1น", pronunciation: "chín" }
+];
+/* order drinks */
+const dictionaryBook2Lesson2 = [
     { word_en: "water", word_th: "นํา", pronunciation: "náam" },
     { word_en: "plain water", word_th: "นําเปล่า", pronunciation: "náam-bplàaw" },
     { word_en: "ice", word_th: "นําแข็ง", pronunciation: "náam-khɛ̌ ɛŋ" },
@@ -370,7 +374,10 @@ const dictionaryFoods = [
     { word_en: "Grape juice", word_th: "นํNาองุน่", pronunciation: "náam à-ŋùn" },
     { word_en: "Coconut Water", word_th: "นํNามะพร้าว", pronunciation: "náam má-phráaw" },
     { word_en: "Passion fruit juice", word_th: "นํNาเสาวรส", pronunciation: "náam sǎw-wá-rót" },
-    { word_en: "Vegetable juice", word_th: "นํNาผัก", pronunciation: "náam phàk" },
+    { word_en: "Vegetable juice", word_th: "นํNาผัก", pronunciation: "náam phàk" }
+];
+/* food */
+const dictionaryBook2Lesson3 = [
     { word_en: "Fruits", word_th: "ผลไม้", pronunciation: "phǒn-lá-máay" },
     { word_en: "Mango", word_th: "มะม่วง", pronunciation: "má-mûaŋ" },
     { word_en: "Coconut", word_th: "มะพร้าว", pronunciation: "má-phráaw" },
@@ -402,11 +409,10 @@ const dictionaryFoods = [
     { word_en: "Plastic bag", word_th: "ถุง", pronunciation: "tǔŋ" },
     { word_en: "Rotten", word_th: "เน่า/เสีย", pronunciation: "nâw/sǐa" },
     { word_en: "Classifier for the whole fruit", word_th: "ลูก/ผล", pronunciation: "lûuk / phǒn" }
-    /*
-        { word_en: "", word_th: "", pronunciation: "" },
-    */
-];
-const dictionaryColours = [
+
+]
+/* colours */
+const dictionaryBook2Lesson4 = [
     { word_en: "Colour", word_th: "สี", pronunciation: "sǐi" },
     { word_en: "White", word_th: "สีขาว", pronunciation: "" },
     { word_en: "Black", word_th: "สีดํา", pronunciation: "sǐi dam" },
@@ -426,7 +432,8 @@ const dictionaryColours = [
         { word_en: "", word_th: "", pronunciation: "" },
     */
 ];
-const dictionaryClassifiers = [
+/* clssifiers */
+const dictionaryBook2Lesson5 = [
     { word_en: "animals, letters, numbers,clothes,chairs,and tables", word_th: "คน", pronunciation: "khon" },
     { word_en: "containers , pieces of paper, documents", word_th: "ใบ", pronunciation: "bai" },
     { word_en: "thin or flat objects, like CDs and slices of bread", word_th: "แผ่น", pronunciation: "phɛ̀ɛn" },
@@ -445,7 +452,8 @@ const dictionaryClassifiers = [
         { word_en: "", word_th: "", pronunciation: "" },
     */
 ];
-const dictionaryPrepositions = [
+/* prepositions */
+const dictionaryBook2Lesson6 = [
     { word_en: "There is/There are", word_th: "มี", pronunciation: "mii" },
     { word_en: "On", word_th: "บน", pronunciation: "bon" },
     { word_en: "Under", word_th: "ใต้", pronunciation: "On" },
@@ -453,10 +461,113 @@ const dictionaryPrepositions = [
     { word_en: "Inside", word_th: "ข้างใน", pronunciation: "khâaŋ-nai" },
     { word_en: "Between", word_th: "ระหว่าง", pronunciation: "rá-wàaŋ" },
     { word_en: "At", word_th: "ทีf", pronunciation: "thîi" }
-
     //   { word_en: "", word_th: "", pronunciation: "" },
 ];
+
 // book 3
+/* Time */
+const dictionaryBook3Lesson1 = [
+    { word_en: "", word_th: "", pronunciation: "" },
+    { word_en: "", word_th: "", pronunciation: "" },
+    { word_en: "", word_th: "", pronunciation: "" },
+    { word_en: "", word_th: "", pronunciation: "" },
+    { word_en: "", word_th: "", pronunciation: "" },
+    { word_en: "", word_th: "", pronunciation: "" },
+    { word_en: "", word_th: "", pronunciation: "" },
+    { word_en: "", word_th: "", pronunciation: "" },
+    { word_en: "", word_th: "", pronunciation: "" },
+    { word_en: "", word_th: "", pronunciation: "" },
+    { word_en: "", word_th: "", pronunciation: "" }
+    //        { word_en: "", word_th: "", pronunciation: "" },
+];
+/* Days */
+const dictionaryBook3Lesson2 = [
+    { word_en: "", word_th: "", pronunciation: "" },
+    { word_en: "", word_th: "", pronunciation: "" },
+    { word_en: "", word_th: "", pronunciation: "" },
+    { word_en: "", word_th: "", pronunciation: "" },
+    { word_en: "", word_th: "", pronunciation: "" },
+    { word_en: "", word_th: "", pronunciation: "" },
+    { word_en: "", word_th: "", pronunciation: "" },
+    { word_en: "", word_th: "", pronunciation: "" },
+    { word_en: "", word_th: "", pronunciation: "" },
+    { word_en: "", word_th: "", pronunciation: "" },
+    { word_en: "", word_th: "", pronunciation: "" }
+    //        { word_en: "", word_th: "", pronunciation: "" },
+];
+/* Months/year/season */
+const dictionaryBook3Lesson3 = [
+    { word_en: "", word_th: "", pronunciation: "" },
+    { word_en: "", word_th: "", pronunciation: "" },
+    { word_en: "", word_th: "", pronunciation: "" },
+    { word_en: "", word_th: "", pronunciation: "" },
+    { word_en: "", word_th: "", pronunciation: "" },
+    { word_en: "", word_th: "", pronunciation: "" },
+    { word_en: "", word_th: "", pronunciation: "" },
+    { word_en: "", word_th: "", pronunciation: "" },
+    { word_en: "", word_th: "", pronunciation: "" },
+    { word_en: "", word_th: "", pronunciation: "" },
+    { word_en: "", word_th: "", pronunciation: "" }
+    //        { word_en: "", word_th: "", pronunciation: "" },
+];
+/* My family */
+const dictionaryBook3Lesson4 = [
+    { word_en: "Family ", word_th: "ครอบครัว", pronunciation: "khrɔ́ɔp-khrua" },
+    { word_en: "Father", word_th: "พ่อ", pronunciation: "phɔ̂ɔ" },
+    { word_en: "Mother", word_th: "แม่", pronunciation: "Mother" },
+    { word_en: "A person who is older than you", word_th: "พี9", pronunciation: "phîi" },
+    { word_en: "A person who is younger than you", word_th: "น้ อง", pronunciation: "nɔ́ɔŋ" },
+    { word_en: "Sibling", word_th: "พี9น้อง", pronunciation: "phîi-nɔ́ɔŋ" },
+    { word_en: "Older sister", word_th: "พี9สาว", pronunciation: "phîi-sǎaw" },
+    { word_en: "Younger sister", word_th: "น้ องสาว", pronunciation: "nɔ́ɔŋ-sǎaw" },
+    { word_en: "Older brother", word_th: "พี9ชาย", pronunciation: "phîi-chaay" },
+    { word_en: "Younger brother", word_th: "น้องชาย", pronunciation: "nɔ́ɔŋ-chaay" },
+    { word_en: "Child", word_th: "ลูก", pronunciation: "lûuk" },
+    { word_en: "Daughter", word_th: "ลูกสาว", pronunciation: "lûuk-sǎaw" },
+    { word_en: "Son", word_th: "ลูกชาย", pronunciation: "lûuk-chaay" },
+    { word_en: "Niece/Grand daughter", word_th: "หลานสาว", pronunciation: "lǎan-sǎaw" },
+    { word_en: "lǎan-chaay", word_th: "หลานชาย", pronunciation: "Nephew/Grand son" },
+    { word_en: "", word_th: "", pronunciation: "" },
+    { word_en: "", word_th: "", pronunciation: "" },
+    { word_en: "", word_th: "", pronunciation: "" },
+    { word_en: "", word_th: "", pronunciation: "" },
+    { word_en: "", word_th: "", pronunciation: "" },
+    { word_en: "", word_th: "", pronunciation: "" }
+    //        { word_en: "", word_th: "", pronunciation: "" },
+];
+
+/* Occupation */
+const dictionaryBook3Lesson5 = [
+    { word_en: "", word_th: "", pronunciation: "" },
+    { word_en: "", word_th: "", pronunciation: "" },
+    { word_en: "", word_th: "", pronunciation: "" },
+    { word_en: "", word_th: "", pronunciation: "" },
+    { word_en: "", word_th: "", pronunciation: "" },
+    { word_en: "", word_th: "", pronunciation: "" },
+    { word_en: "", word_th: "", pronunciation: "" },
+    { word_en: "", word_th: "", pronunciation: "" },
+    { word_en: "", word_th: "", pronunciation: "" },
+    { word_en: "", word_th: "", pronunciation: "" },
+    { word_en: "", word_th: "", pronunciation: "" }
+    //        { word_en: "", word_th: "", pronunciation: "" },
+];
+
+/* What does she/he look like? */
+const dictionaryBook3Lesson6 = [
+    { word_en: "", word_th: "", pronunciation: "" },
+    { word_en: "", word_th: "", pronunciation: "" },
+    { word_en: "", word_th: "", pronunciation: "" },
+    { word_en: "", word_th: "", pronunciation: "" },
+    { word_en: "", word_th: "", pronunciation: "" },
+    { word_en: "", word_th: "", pronunciation: "" },
+    { word_en: "", word_th: "", pronunciation: "" },
+    { word_en: "", word_th: "", pronunciation: "" },
+    { word_en: "", word_th: "", pronunciation: "" },
+    { word_en: "", word_th: "", pronunciation: "" },
+    { word_en: "", word_th: "", pronunciation: "" }
+    //        { word_en: "", word_th: "", pronunciation: "" },
+];
+
 const dictionaryDateTime = [
     { word_en: "In the morning", word_th: "ตอนเช้า", pronunciation: "dtɔɔn cháaw" },
     { word_en: "In the late morning", word_th: "ตอนสาย", pronunciation: "dtɔɔn sǎay" },
@@ -528,32 +639,6 @@ const dictionaryDateTime = [
     //   { word_en: "", word_th: "", pronunciation: "" },
 ];
 
-const dictionaries = {
-    // book 1
-    dictionaryBook1Lesson1: dictionaryBook1Lesson1,
-    dictionaryBook1Lesson2: dictionaryBook1Lesson2,
-    dictionaryBook1Lesson3: dictionaryBook1Lesson3,
-    dictionaryBook1Lesson4: dictionaryBook1Lesson4,
-    dictionaryBook1Lesson5: dictionaryBook1Lesson5,
-
-    /*
-        dictionaryBase: dictionaryBase,
-        dictionaryPhonetics: dictionaryPhonetics,
-        dictionaryPronouns: dictionaryPronouns,
-        dictionaryNumbers: dictionaryNumbers,
-        dictionaryClothes: dictionaryClothes,
-        dictionaryPlaces: dictionaryPlaces,
-        */
-
-    // book 2
-    dictionaryFoods: dictionaryFoods,
-    dictionaryColours: dictionaryColours,
-    dictionaryClassifiers: dictionaryClassifiers,
-    dictionaryPrepositions: dictionaryPrepositions,
-    dictionaryDateTime: dictionaryDateTime
-
-};
-
 const conversations = [
     {
         "dictionary": "dictionaryBook1Lesson1",
@@ -622,6 +707,75 @@ const conversations = [
         ]
     },
     {
+        "dictionary": "dictionaryBook2Lesson1",
+        "conversations": [
+            { description: "What would you like to order ?", url: "https://youtu.be/vPkVyBZ3318?si=hTrhjEn_8RSv68Ak" },
+            { description: "continued ... ", url: "https://youtu.be/98InOltlsps?si=7FTumGbUi-4lGI_1" },
+            { description: "Have you ever tried ... ?", url: "https://youtu.be/-eeooHbOxyw?si=HQpUbtEnqnYB_vFB" },
+            { description: "What does ... taste like?", url: "https://youtu.be/0xvSxruOK2E?si=GwAPkfsXllygcfpL" },
+            { description: " I would like to order ... ", url: "https://youtu.be/hdaKmkDlp9Y?si=HfQRU-18GpBNIbFK" },
+            { description: " With / Without", url: "https://youtu.be/3X4xURJ6LEs?si=yXOVQcNHdMUpEgXJ" },
+            { description: "Classifier for food", url: "https://youtu.be/p2rbLiPxE_o?si=GGTTDeQEERLb9eBp" },
+            { description: "I would like 1 plate of ... ?", url: "https://youtu.be/-NVJ3AUPxXg?si=tXL-sBjFX1_R_ivG" },
+            { description: " When Ordering Food in Thailand", url: "https://youtu.be/BmZgDsuF8zQ?si=JG7BFf2GTpJkauXQ" },
+            { description: "Conversation 1", url: "https://youtu.be/vvNu25As0mQ?si=rSTpc0cFR9nrnzgq" },
+            { description: "Conversation 2", url: "https://youtu.be/vF6a4eIKMCo?si=LJWxYcFpGS2Qsm8i" }
+            //           { description: "", url: "" }
+        ]
+    },
+    {
+        "dictionary": "dictionaryBook2Lesson2",
+        "conversations": [
+            { description: "What would you like to drink ?", url: "https://youtu.be/Y0j30XEIAwE?si=Nblcemg5w9gQxUhU" },
+            { description: "Normally what do you drink ...?", url: "https://youtu.be/QXD2Mm3JJqs?si=VUW-Kv_3bkopfzAI" },
+            { description: "Classifier for drinks", url: "https://youtu.be/AXD5BBzczTY?si=8_caMA2CbLcp7072" },
+            { description: "What would you like to order ?", url: "https://youtu.be/fq4fkHcS_-I?si=h4oN3BV7mjBqdAph" },
+            { description: "I would like ... of ... ?", url: "https://youtu.be/s84Po1PxkgI?si=JYRGHu5wkXLLV2xw" },
+            { description: "Vocabulary Part 2", url: "https://youtu.be/b7ZwwQ4N4E8?si=H1vHReHqNhGaRx6d" }
+        ]
+    },
+    {
+        "dictionary": "dictionaryBook2Lesson3",
+        "conversations": [
+            { description: "Fruits", url: "https://youtu.be/EpYJmMGHpho?si=AM7QxXRFRIuOxFpf" },
+            { description: "Vocabulary", url: "https://youtu.be/EKRXfstVuAU?si=vaKhip5hrcocsV0W" },
+        ]
+    },
+    {
+        "dictionary": "dictionaryBook2Lesson4",
+        "conversations": [
+            { description: "Colours", url: "https://youtu.be/TXjoVSdMEgk?si=Ys-xcv9g7iAuleMo" },
+            { description: "What colour do you like ?", url: "https://youtu.be/le61J7LARTw?si=vkUSOJvpNiGSRYDL" },
+            { description: "What colour is ... ?", url: "https://youtu.be/Ka8susyLxjA?si=FuGUo2c8gAygB512" },
+            { description: "What colour shirt is she/he wearing ?", url: "https://youtu.be/Ghf_dfNVhco?si=3A_uJgTNVm6MOyGC" }
+        ]
+    },
+    {
+        "dictionary": "dictionaryBook2Lesson5",
+        "conversations": [
+            { description: "Classifiers", url: "https://youtu.be/I6FDcONu2EM?si=JmOmoijSPyfq8bfQ" },
+            { description: "Vocabulary", url: "https://youtu.be/KsFpxwE3PIU?si=yAGvQ1H4GmzmSwrZ" },
+            { description: "Example classifiers", url: "https://youtu.be/vBlRAOPVzjo?si=guTaKkfQqSLoczYD" },
+            { description: "continued ...", url: "https://youtu.be/K5vdvXuSE6c?si=Ty0KQnFFyxUy31tT" },
+            { description: "continued ...", url: "https://youtu.be/1XWaZm7--Oc?si=SvGdBb3N9YnD1VQh" },
+            { description: "continued ...", url: "https://youtu.be/-nNbh_906tw?si=29jAB-jjOSzriQCz" },
+            { description: "Conversation", url: "https://youtu.be/3HF3FRYGvZU?si=R2TrAxv8z-RFbGGK" },
+            { description: "How to use “Many” in Thai.", url: "https://youtu.be/56VbYKbhwPk?si=IhN1_C7C3HrY61ar" }
+        ]
+    },
+    {
+        "dictionary": "dictionaryBook2Lesson6",
+        "conversations": [
+            { description: "Preposition", url: "https://youtu.be/a-6NLdAAKuM?si=PHFGj_Xxyfq72sSU" },
+            { description: "Vocabulary", url: "https://youtu.be/OHaRLUiMk24?si=f9WqD_LeBlXr8Ou5" },
+            { description: "There are 2 books on the table", url: "https://youtu.be/sfiInIP_ylU?si=NMmEG_tzWST384Ec" },
+            { description: "How many books are there on the table ?", url: "https://youtu.be/K9rmI78ktpg?si=CtXGyWFHhIR_hTyD" },
+            { description: "Conversation", url: "https://youtu.be/SDQYGLE2oW4?si=XsYfK-TmSDMwz7Vu" },
+            { description: "continued ...", url: "https://youtu.be/PDy2YP-3cUE?si=v6MxBl2kfMftykl1" },
+            { description: "Whic ... ?", url: "https://youtu.be/7WxyaEi9ssQ?si=wrn0n5prwVWSDhEm" }
+        ]
+    },
+    {
         "dictionary": "dictionaryDateTime",
         "conversations": [
             { description: "B3  P5: What time is it now ?", url: "https://youtu.be/U_ZAlFuGcwY?si=LXXwK9OYhn74HNIC" },
@@ -638,12 +792,116 @@ const conversations = [
             { description: "B3 P28: How many days in a week do you study Thai ?", url: "https://youtu.be/ENbXIibgy7I?si=Gqu85RbbpsRITJ8M" },
             { description: "B3 P30: Conversation 2", url: "https://youtu.be/3j1AC4tL2Ms?si=Q-uUTXmV3UggvUBr" },
             { description: "B3 P36: What month is this month ?", url: "https://youtu.be/eqc-VZ65y5o?si=fyJ1LkVLfGSI_dmm" }
-            //            { description: "", url: "" },
-            //           { description: "", url: "" }
+        ]
+    },
+    {
+        "dictionary": "dictionaryBook3Lesson1",
+        "conversations": [
+            { description: "What time is it now ?", url: "https://youtu.be/praUAEMtWIs?si=4wXLfDjdVrKIeKyl" },
+            { description: "Vocabulary", url: "https://youtu.be/mm-Yb0d93kQ?si=-TvimsyBSk_cBq4_" },
+            { description: "What time is it now ?", url: "https://youtu.be/U_ZAlFuGcwY?si=hvgTj96rgztl4zjR" },
+            { description: "What time do you wake up ?", url: "https://youtu.be/oyqonhgTd_k?si=EgNIOyegNxVZG09c" },
+            { description: "Conversation 1", url: "https://youtu.be/m4l-dEuGA8A?si=zd-zAsXbEH6U48TN" },
+            { description: "How many hours/minutes ?", url: "https://youtu.be/VAKfFaSEjPc?si=hdAFj1hywWvNbAqV" },
+            { description: "Conversation 2", url: "https://youtu.be/L1aLRVo6NTs?si=nPpRIgZClwAr97Q-" },
+            { description: "What do you usually do before studying Thai ?", url: "https://youtu.be/z5tSAsVfPXg?si=CTyUx2qUAP4F9QhC" },
+            { description: "Vocabulary 3", url: "https://youtu.be/v65J2b_rgOU?si=XDlcs9oIPWWclOL_" }
+            //            { description: "", url: "" }
+        ]
+    },
+    {
+        "dictionary": "dictionaryBook3Lesson2",
+        "conversations": [
+            { description: "What day is it today ?", url: "https://youtu.be/PQQdDCMO7kE?si=kwkzCb6R799ynfGn" },
+            { description: "continued ... ", url: "https://youtu.be/WsVALhZanfE?si=7DaIL590CQze0fDX" },
+            { description: "What day is it today ?", url: "https://youtu.be/INQOD75kCTk?si=I2DfK-6rSz5QFW2J" },
+            { description: "What is the date today ?", url: "https://youtu.be/AV_6eG2FEhA?si=DEP1anRUApgtPNZK" },
+            { description: "What do you usually do on your weekend ?", url: "https://youtu.be/ka8vtwY98hM?si=tR_N99iMGEw6VHdd" },
+            { description: "Conversation 1", url: "https://youtu.be/equzVlc6aJ4?si=9-NT2CitAQdWjJMh" },
+            { description: "continued ... ", url: "https://youtu.be/hEa9FwoKNe0?si=gz-QZECzTC-bhrK0" },
+            { description: "How many days per week do you study Thai ?", url: "https://youtu.be/HSC8Tq3DKNA?si=KM0tXJWy7vpl1MdO" },
+            { description: "How many days in a week do you study Thai ?", url: "https://youtu.be/ENbXIibgy7I?si=ej3BVxHg2YfVWPBT" },
+            { description: "Conversation 2", url: "https://youtu.be/3j1AC4tL2Ms?si=SvA7C0O-5mRpQrsx" },
+            { description: "continued ... ", url: "https://youtu.be/BWcWpgdL_2Y?si=ZsZYPlzrREB8Ljs3" }
+            //    { description: "", url: "" }
+        ]
+    },
+    {
+        "dictionary": "dictionaryBook3Lesson3",
+        "conversations": [
+            { description: "Months / Year / Seasons", url: "https://youtu.be/cErs6Lep_WI?si=f75H6zDLatPbI0DU" },
+            { description: "What month is this month ?", url: "https://youtu.be/eqc-VZ65y5o?si=UQyQJcB4g_n6SABP" },
+            { description: "When were you born ?", url: "https://youtu.be/Q4j-2ZiWEA8?si=NLyxSkskp9zHiVSK" },
+            { description: "Conversation 1", url: "https://youtu.be/k1-cyFVp1vs?si=qTojc_NRsWI4DjjU" },
+            { description: "Vocabulary", url: "https://youtu.be/I8y6-Q_g81g?si=HKTWW7b3UfEmDKzD" },
+            { description: "How many seasons are there in Thailand ?", url: "https://youtu.be/qmQafMySHbI?si=thycS1rLIB3DyY4k" },
+            { description: " How’s the weather today ?", url: "https://youtu.be/VW9-YL71WQc?si=KLrSSZFyX8dcQzXd" },
+            { description: "Conversation 2", url: "https://youtu.be/b8c-CFPywes?si=kPBUf0qw5AQFZqKe" },
+            { description: "Listening Practice", url: "https://youtu.be/sa52tiTefUc?si=zIBOf15iy6vXy2cl" }
+            //            { description: "", url: "" }
+        ]
+    },
+    {
+        "dictionary": "dictionaryBook3Lesson4",
+        "conversations": [
+            { description: "My family", url: "https://youtu.be/HYA_E5Usnuo?si=FAxXum6RX9gbtovH" },
+            { description: "continued ... ", url: "https://youtu.be/GW69SI7RZgw?si=dR13s671v5-Wju29" },
+            { description: "How many people are there in your family?", url: "https://youtu.be/ChU8bSd8uhU?si=Z8GWcnmzPSUwhVNV" },
+            { description: "Conversation", url: "https://youtu.be/zQF2L_G9nSQ?si=Yxcnn5jfIvFWjfZX" },
+            { description: "Timmy’s story", url: "https://youtu.be/RlCACHu-2Gg?si=Tlz9zDI5cLlRr3jk" },
+            { description: "How old are you ?", url: "https://youtu.be/75EorHYz6eY?si=j_SEFQYxGdn5cpAG" },
+            { description: "Are you married ?", url: "https://youtu.be/b-XmOoW5MHM?si=sPoR-8Iz7U6GcGMI" }
+            //            { description: "", url: "" }
+        ]
+    },
+    {
+        "dictionary": "dictionaryBook3Lesson5",
+        "conversations": [
+            { description: "What is your job ?", url: "https://youtu.be/zdbnq2hoSiE?si=yaganfO4TQNrkRxO" },
+            { description: "What do you do?/What is your job?", url: "https://youtu.be/TQgQ0Wl3T9E?si=mz2IoemNNB9lM-HJ" },
+            { description: "Conversation", url: "https://youtu.be/YTSUCo9-fs4?si=JOB4m36GtH5Iz4la" }
+            //            { description: "", url: "" }
+        ]
+    },
+    {
+        "dictionary": "dictionaryBook3Lesson6",
+        "conversations": [
+            { description: "What does she/he look like ?", url: "https://youtu.be/-rWBdUqqz_o?si=eOn0eJuiIPGLXEIB" },
+            { description: "What colour is his/her eyes ?", url: "https://youtu.be/hnsVJKtRrD0?si=IFA0uCj30Vwq6s_5" },
+            { description: "What does he/she look like ?", url: "https://youtu.be/GAYDLWLddLw?si=D6Lpb1MZDqWpWduX" },
+            { description: "How tall are you?", url: "https://youtu.be/u5YuIdx2zXs?si=0H--h13nYbmx0wo2" },
+            { description: "How much do you weigh ?", url: "https://youtu.be/Noxq8368pys?si=_Xfgib3e-IAAkXUn" }
+            //            { description: "", url: "" }
         ]
     }
-
 ]
+
+const dictionaries = {
+
+    // book 1
+    dictionaryBook1Lesson1: dictionaryBook1Lesson1,
+    dictionaryBook1Lesson2: dictionaryBook1Lesson2,
+    dictionaryBook1Lesson3: dictionaryBook1Lesson3,
+    dictionaryBook1Lesson4: dictionaryBook1Lesson4,
+    dictionaryBook1Lesson5: dictionaryBook1Lesson5,
+
+    // book 2
+    dictionaryBook2Lesson1: dictionaryBook2Lesson1,
+    dictionaryBook2Lesson2: dictionaryBook2Lesson2,
+    dictionaryBook2Lesson3: dictionaryBook2Lesson3,
+    dictionaryBook2Lesson4: dictionaryBook2Lesson4,
+    dictionaryBook2Lesson5: dictionaryBook2Lesson5,
+    dictionaryBook2Lesson6: dictionaryBook2Lesson6,
+
+    // book 3
+    dictionaryBook3Lesson1: dictionaryBook3Lesson1,
+    dictionaryBook3Lesson2: dictionaryBook3Lesson2,
+    dictionaryBook3Lesson3: dictionaryBook3Lesson3,
+    dictionaryBook3Lesson4: dictionaryBook3Lesson4,
+    dictionaryBook3Lesson5: dictionaryBook3Lesson5,
+    dictionaryBook3Lesson6: dictionaryBook3Lesson6
+
+};
 
 const dictionaryIncorrectAnswers = [];
 
