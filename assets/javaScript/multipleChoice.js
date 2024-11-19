@@ -514,7 +514,7 @@ const dictionaryBook3Lesson3 = [
 const dictionaryBook3Lesson4 = [
     { word_en: "Family ", word_th: "ครอบครัว", pronunciation: "khrɔ́ɔp-khrua" },
     { word_en: "Father", word_th: "พ่อ", pronunciation: "phɔ̂ɔ" },
-    { word_en: "Mother", word_th: "แม่", pronunciation: "Mother" },
+    { word_en: "Mother", word_th: "แม่", pronunciation: "mɛ̂ɛ" },
     { word_en: "A person who is older than you", word_th: "พี9", pronunciation: "phîi" },
     { word_en: "A person who is younger than you", word_th: "น้ อง", pronunciation: "nɔ́ɔŋ" },
     { word_en: "Sibling", word_th: "พี9น้อง", pronunciation: "phîi-nɔ́ɔŋ" },
@@ -526,45 +526,58 @@ const dictionaryBook3Lesson4 = [
     { word_en: "Daughter", word_th: "ลูกสาว", pronunciation: "lûuk-sǎaw" },
     { word_en: "Son", word_th: "ลูกชาย", pronunciation: "lûuk-chaay" },
     { word_en: "Niece/Grand daughter", word_th: "หลานสาว", pronunciation: "lǎan-sǎaw" },
-    { word_en: "lǎan-chaay", word_th: "หลานชาย", pronunciation: "Nephew/Grand son" },
-    { word_en: "", word_th: "", pronunciation: "" },
-    { word_en: "", word_th: "", pronunciation: "" },
-    { word_en: "", word_th: "", pronunciation: "" },
-    { word_en: "", word_th: "", pronunciation: "" },
-    { word_en: "", word_th: "", pronunciation: "" },
-    { word_en: "", word_th: "", pronunciation: "" }
+    { word_en: "Nephew/Grand son", word_th: "หลานชาย", pronunciation: "lǎan-chaay" },
+    { word_en: "Grandfather", word_th: "ปู ่/ตา", pronunciation: "bpùu/dtaa" },
+    { word_en: "Grandmother", word_th: "ย่า/ยาย", pronunciation: "yâa/yaay" },
+    { word_en: "Uncle", word_th: "ลุง", pronunciation: "luŋ" },
+    { word_en: "Aunt", word_th: "ป้า", pronunciation: "bpâa" },
+    { word_en: "Aunt/Uncle (younger)", word_th: "น้า", pronunciation: "náa" },
+    { word_en: "Aunt/Uncle (older)", word_th: "อา", pronunciation: "aa" },
+    { word_en: "Husband", word_th: "สามี", pronunciation: "sǎa-mii" },
+    { word_en: "Wife", word_th: "ภรรยา", pronunciation: "Phan-rá-yaa" },
+    { word_en: "Boyfriend/Girlfriend", word_th: "แฟน", pronunciation: "fɛɛn" },
+    { word_en: "Relatives", word_th: "ญาติ", pronunciation: "yâat" }
     //        { word_en: "", word_th: "", pronunciation: "" },
 ];
 
 /* Occupation */
 const dictionaryBook3Lesson5 = [
-    { word_en: "", word_th: "", pronunciation: "" },
-    { word_en: "", word_th: "", pronunciation: "" },
-    { word_en: "", word_th: "", pronunciation: "" },
-    { word_en: "", word_th: "", pronunciation: "" },
-    { word_en: "", word_th: "", pronunciation: "" },
-    { word_en: "", word_th: "", pronunciation: "" },
-    { word_en: "", word_th: "", pronunciation: "" },
-    { word_en: "", word_th: "", pronunciation: "" },
-    { word_en: "", word_th: "", pronunciation: "" },
-    { word_en: "", word_th: "", pronunciation: "" },
-    { word_en: "", word_th: "", pronunciation: "" }
+    { word_en: "Work/Job", word_th: "งาน", pronunciation: "ŋaan" },
+    { word_en: "To work", word_th: "ทํางาน", pronunciation: "tham-ŋaan" },
+    { word_en: "Student", word_th: "นักเรียน", pronunciation: "nák-rian" },
+    { word_en: "Business person", word_th: "นักธุรกิจ", pronunciation: "nák thú-rá-gìt" },
+    { word_en: "Musician", word_th: "นักดนตรี", pronunciation: "nák don-dtrii" },
+    { word_en: "Writer", word_th: "นักเขียน", pronunciation: "nák-khǐan" },
+    { word_en: "Teacher", word_th: "ครู", pronunciation: "khruu" },
+    { word_en: "Doctor", word_th: "หมอ", pronunciation: "mɔ̌ɔ" },
+    { word_en: "Dentist", word_th: "หมอฟัน", pronunciation: "mɔ̌ɔ-fan" },
+    { word_en: "Nurse", word_th: "พยาบาล", pronunciation: "phá-yaa-baan" },
+    { word_en: "Police", word_th: "ตํารวจ", pronunciation: "dtam-rùat" },
+    { word_en: "Soldier", word_th: "ทหาร", pronunciation: "thá-hǎan" },
+    { word_en: "Engineer", word_th: "วิศวกร", pronunciation: "wít-sà-wá-gɔɔn" },
+    { word_en: "Pharmacist", word_th: "เภสั ", pronunciation: "phee-sàt-chàt-gɔɔn" },
+    { word_en: "Vendor", word_th: "พ่อค้า/แม่ค้า", pronunciation: "phɔ̂ɔ-kháa/mɛ̂ɛ-kháa" },
+    { word_en: "Staff/Worker", word_th: "พนักงาน", pronunciation: "phá-nák ŋaan" },
+    { word_en: "Freelancer", word_th: "ฟรีแลนซ์", pronunciation: "frii-lɛ́ɛn" },
+    { word_en: "Maid / Housewife", word_th: "แม่บ้าน", pronunciation: "mɛ̂ɛ bâan" },
+    { word_en: "Security guard", word_th: "ยาม", pronunciation: "yaam" },
+    { word_en: "Technician", word_th: "ช่าง", pronunciation: "châaŋ" }
     //        { word_en: "", word_th: "", pronunciation: "" },
 ];
 
 /* What does she/he look like? */
 const dictionaryBook3Lesson6 = [
-    { word_en: "", word_th: "", pronunciation: "" },
-    { word_en: "", word_th: "", pronunciation: "" },
-    { word_en: "", word_th: "", pronunciation: "" },
-    { word_en: "", word_th: "", pronunciation: "" },
-    { word_en: "", word_th: "", pronunciation: "" },
-    { word_en: "", word_th: "", pronunciation: "" },
-    { word_en: "", word_th: "", pronunciation: "" },
-    { word_en: "", word_th: "", pronunciation: "" },
-    { word_en: "", word_th: "", pronunciation: "" },
-    { word_en: "", word_th: "", pronunciation: "" },
-    { word_en: "", word_th: "", pronunciation: "" }
+    { word_en: "Eyes", word_th: "ตา", pronunciation: "dtaa" },
+    { word_en: "Mouth", word_th: "ปาก", pronunciation: "bpàak" },
+    { word_en: "Skin", word_th: "ผิว", pronunciation: "phǐw" },
+    { word_en: "Hair", word_th: "ผม", pronunciation: "phǒm" },
+    { word_en: "Nose", word_th: "จมูก", pronunciation: "Jà-mùuk" },
+    { word_en: "Eyebrows", word_th: "คิyว", pronunciation: "khíw" },
+    { word_en: "Face", word_th: "หน้า", pronunciation: "nâa" },
+    { word_en: "Face", word_th: "หน้าตา", pronunciation: "nâa-dtaa" },
+    { word_en: "Shape", word_th: "รูปร่าง", pronunciation: "rûup-râaŋ" },
+    { word_en: "Height", word_th: "ส่วนสูง", pronunciation: "Sùan-sǔuŋ" },
+    { word_en: "Weight", word_th: "นํyาหนัก", pronunciation: "Náam-nàk" }
     //        { word_en: "", word_th: "", pronunciation: "" },
 ];
 
@@ -640,6 +653,7 @@ const dictionaryDateTime = [
 ];
 
 const conversations = [
+    // Book 1
     {
         "dictionary": "dictionaryBook1Lesson1",
         "conversations": [
@@ -706,6 +720,7 @@ const conversations = [
             { description: "Where is the Church ?", url: "https://youtu.be/1gMdzuCt5IE?si=6Mtu0nj0wzpqKnaR" }
         ]
     },
+    // Book 2
     {
         "dictionary": "dictionaryBook2Lesson1",
         "conversations": [
@@ -775,25 +790,7 @@ const conversations = [
             { description: "Whic ... ?", url: "https://youtu.be/7WxyaEi9ssQ?si=wrn0n5prwVWSDhEm" }
         ]
     },
-    {
-        "dictionary": "dictionaryDateTime",
-        "conversations": [
-            { description: "B3  P5: What time is it now ?", url: "https://youtu.be/U_ZAlFuGcwY?si=LXXwK9OYhn74HNIC" },
-            { description: "B3  P7: What time do you wake up ?", url: "https://youtu.be/oyqonhgTd_k?si=1EyqBRLoSiWpykva" },
-            { description: "B3  P8: Conversation 1", url: "https://youtu.be/m4l-dEuGA8A?si=m8VhBQzeYRUMLWdC" },
-            { description: "B3 P11: How many hours/minutes ?", url: "https://youtu.be/VAKfFaSEjPc?si=1KNcYOlZtlj7mBre" },
-            { description: "B3 P12: Conversation 2", url: "https://youtu.be/L1aLRVo6NTs?si=tM3P3GwtnNVQHXrO" },
-            { description: "B3 P13: What do you usually do before studying Thai ?", url: "https://youtu.be/z5tSAsVfPXg?si=-dTcQnpDBVaKrca2" },
-            { description: "B3 P19: What day is it today ?", url: "https://youtu.be/INQOD75kCTk?si=7QBKubKErQ6NHpd5" },
-            { description: "B3 P21: What is the date today ?", url: "https://youtu.be/AV_6eG2FEhA?si=vlOn_Yx-zRB06U9R" },
-            { description: "B3 P22: What do you usually do on your weekend ?", url: "https://youtu.be/ka8vtwY98hM?si=b1EOqsX8KapksPXG" },
-            { description: "B3 P23: Conversation 1", url: "https://youtu.be/equzVlc6aJ4?si=ZZ-4zOMx_3SkEU8-" },
-            { description: "B3 P27: How many days per week do you study Thai ?", url: "https://youtu.be/HSC8Tq3DKNA?si=11ClXgIbnjQu8vNs" },
-            { description: "B3 P28: How many days in a week do you study Thai ?", url: "https://youtu.be/ENbXIibgy7I?si=Gqu85RbbpsRITJ8M" },
-            { description: "B3 P30: Conversation 2", url: "https://youtu.be/3j1AC4tL2Ms?si=Q-uUTXmV3UggvUBr" },
-            { description: "B3 P36: What month is this month ?", url: "https://youtu.be/eqc-VZ65y5o?si=fyJ1LkVLfGSI_dmm" }
-        ]
-    },
+    // Book 3
     {
         "dictionary": "dictionaryBook3Lesson1",
         "conversations": [
