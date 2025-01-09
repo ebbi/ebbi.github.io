@@ -692,7 +692,7 @@ const conversations = [
         "dictionary": "dictionaryBook1Lesson1",
         "conversations": [
             { description: "What is your name?", url: "https://youtu.be/hqpzxp7oXHE?si=KyEnjbgzrNBVuxjj" },
-            { description: "Where do you come from ?", url: "https://youtu.be/Jfn8TnDUON8?si=zrPDIrOyaH2TM_YR" }
+            { description: "Where do you come from?", url: "https://youtu.be/Jfn8TnDUON8?si=zrPDIrOyaH2TM_YR" }
             //            { description: "", url: "" }
         ]
     },
@@ -701,17 +701,17 @@ const conversations = [
         "conversations": [
             { description: "Vocabulary Part 1", url: "https://youtu.be/ntPgx1m1K9M?si=W_zAAsfiXuP_l6xD" },
             { description: "Talking about yourself", url: "https://youtu.be/bAKFs6AMBFQ?si=B5MACIGxd4A9_cPM" },
-            { description: "(Normally) Do you ... ?", url: "https://youtu.be/8zjJ0GVDCfg?si=2fE25HcTK5uqn49T" },
+            { description: "(Normally) Do you ...?", url: "https://youtu.be/8zjJ0GVDCfg?si=2fE25HcTK5uqn49T" },
             { description: "I like ... ", url: "https://youtu.be/w740c7Kn4HA?si=hVw-FIu12CDwKn0v" },
             { description: "Do you like ... ", url: "https://youtu.be/7WqZH4wHaTA?si=pE8Q-r5bYpoVtVt_" },
-            { description: "What do you like to do ?", url: "https://youtu.be/EugXI2O2CtM?si=u0Ptuy6To_APxcAH" },
+            { description: "What do you like to do?", url: "https://youtu.be/EugXI2O2CtM?si=u0Ptuy6To_APxcAH" },
             { description: "Vocabulary Part 2", url: "https://youtu.be/JSKKtNDOtUQ?si=cOUyuTX1kz7CKQr-" },
             { description: "I can ... ", url: "https://youtu.be/fSOceJiPzpU?si=euN0jPfLz7YquJ0g" },
             { description: "Can you ... ", url: "https://youtu.be/rB1TYHZJAiM?si=zNfIvLRu1BjZ67fs" },
             { description: "Vocabulary Part 3", url: "https://youtu.be/sVxwduC5C1g?si=TJ840456JusYCLFp" },
             { description: " I will ... ", url: "https://youtu.be/_KSwU01YFZI?si=j8jOtAjFADc0VKtW" },
             { description: "I am ... ing", url: "https://youtu.be/p8vEwjNP4KQ?si=CppDH1Uo-tO90wkF" },
-            { description: "What are you doing ?", url: "https://youtu.be/_oGn6lr_5NM?si=4Ir_uThf4EqD3mWv" }
+            { description: "What are you doing?", url: "https://youtu.be/_oGn6lr_5NM?si=4Ir_uThf4EqD3mWv" }
             //            { description: "", url: "" }
         ]
     },
@@ -723,7 +723,7 @@ const conversations = [
             { description: "Describe things (Negative form)", url: "https://youtu.be/nJi-zqcxUSc?si=KShbBYMGwvU5n_NY" },
             { description: "Vocabulary Part 2", url: "https://youtu.be/LVHzeQ3wNjs?si=GUdd1KI51qLayXEp" },
             { description: "Describe things (Very)", url: "https://youtu.be/bx7hIiJFO68?si=4hXJb5-DjA3smR-V" },
-            { description: "Asking about things : How is/was ... ?", url: "https://youtu.be/yaYVB-lK_h4?si=0RKMW0DR71DKL159" },
+            { description: "Asking about things : How is/was ...?", url: "https://youtu.be/yaYVB-lK_h4?si=0RKMW0DR71DKL159" },
             { description: "Asking about people", url: "https://youtu.be/BnZ-QPT-B6s?si=vUoGOpc4sAbpgTrs" },
             { description: "Comparative (part 1)", url: "https://youtu.be/upMaxRuWd0A?si=xeMnhoyBr3dXyFkF" },
             { description: "Comparative (Part 2, 3)", url: "https://youtu.be/b17cBeaFxbA?si=b9IjoZuSjLMmxdwx" },
@@ -751,21 +751,21 @@ const conversations = [
         "conversations": [
             { description: "Vocabulary Part 1", url: "https://youtu.be/04ZcXl2lmIw?si=0mi-A2VvRWeVTNRf" },
             { description: "Vocabulary Part 1 (continued)", url: "https://youtu.be/uzoSrBUTVNM?si=BFDwS-LA2wYHyFKz" },
-            { description: "Where is the Church ?", url: "https://youtu.be/1gMdzuCt5IE?si=6Mtu0nj0wzpqKnaR" }
+            { description: "Where is the Church?", url: "https://youtu.be/1gMdzuCt5IE?si=6Mtu0nj0wzpqKnaR" }
         ]
     },
     // Book 2
     {
         "dictionary": "dictionaryBook2Lesson1",
         "conversations": [
-            { description: "What would you like to order ?", url: "https://youtu.be/vPkVyBZ3318?si=hTrhjEn_8RSv68Ak" },
+            { description: "What would you like to order?", url: "https://youtu.be/vPkVyBZ3318?si=hTrhjEn_8RSv68Ak" },
             { description: "continued ... ", url: "https://youtu.be/98InOltlsps?si=7FTumGbUi-4lGI_1" },
-            { description: "Have you ever tried ... ?", url: "https://youtu.be/-eeooHbOxyw?si=HQpUbtEnqnYB_vFB" },
+            { description: "Have you ever tried ...?", url: "https://youtu.be/-eeooHbOxyw?si=HQpUbtEnqnYB_vFB" },
             { description: "What does ... taste like?", url: "https://youtu.be/0xvSxruOK2E?si=GwAPkfsXllygcfpL" },
             { description: " I would like to order ... ", url: "https://youtu.be/hdaKmkDlp9Y?si=HfQRU-18GpBNIbFK" },
             { description: " With / Without", url: "https://youtu.be/3X4xURJ6LEs?si=yXOVQcNHdMUpEgXJ" },
             { description: "Classifier for food", url: "https://youtu.be/p2rbLiPxE_o?si=GGTTDeQEERLb9eBp" },
-            { description: "I would like 1 plate of ... ?", url: "https://youtu.be/-NVJ3AUPxXg?si=tXL-sBjFX1_R_ivG" },
+            { description: "I would like 1 plate of ...?", url: "https://youtu.be/-NVJ3AUPxXg?si=tXL-sBjFX1_R_ivG" },
             { description: " When Ordering Food in Thailand", url: "https://youtu.be/BmZgDsuF8zQ?si=JG7BFf2GTpJkauXQ" },
             { description: "Conversation 1", url: "https://youtu.be/vvNu25As0mQ?si=rSTpc0cFR9nrnzgq" },
             { description: "Conversation 2", url: "https://youtu.be/vF6a4eIKMCo?si=LJWxYcFpGS2Qsm8i" }
@@ -775,11 +775,11 @@ const conversations = [
     {
         "dictionary": "dictionaryBook2Lesson2",
         "conversations": [
-            { description: "What would you like to drink ?", url: "https://youtu.be/Y0j30XEIAwE?si=Nblcemg5w9gQxUhU" },
+            { description: "What would you like to drink?", url: "https://youtu.be/Y0j30XEIAwE?si=Nblcemg5w9gQxUhU" },
             { description: "Normally what do you drink ...?", url: "https://youtu.be/QXD2Mm3JJqs?si=VUW-Kv_3bkopfzAI" },
             { description: "Classifier for drinks", url: "https://youtu.be/AXD5BBzczTY?si=8_caMA2CbLcp7072" },
-            { description: "What would you like to order ?", url: "https://youtu.be/fq4fkHcS_-I?si=h4oN3BV7mjBqdAph" },
-            { description: "I would like ... of ... ?", url: "https://youtu.be/s84Po1PxkgI?si=JYRGHu5wkXLLV2xw" },
+            { description: "What would you like to order?", url: "https://youtu.be/fq4fkHcS_-I?si=h4oN3BV7mjBqdAph" },
+            { description: "I would like ... of ...?", url: "https://youtu.be/s84Po1PxkgI?si=JYRGHu5wkXLLV2xw" },
             { description: "Vocabulary Part 2", url: "https://youtu.be/b7ZwwQ4N4E8?si=H1vHReHqNhGaRx6d" }
         ]
     },
@@ -794,9 +794,9 @@ const conversations = [
         "dictionary": "dictionaryBook2Lesson4",
         "conversations": [
             { description: "Colours", url: "https://youtu.be/TXjoVSdMEgk?si=Ys-xcv9g7iAuleMo" },
-            { description: "What colour do you like ?", url: "https://youtu.be/le61J7LARTw?si=vkUSOJvpNiGSRYDL" },
-            { description: "What colour is ... ?", url: "https://youtu.be/Ka8susyLxjA?si=FuGUo2c8gAygB512" },
-            { description: "What colour shirt is she/he wearing ?", url: "https://youtu.be/Ghf_dfNVhco?si=3A_uJgTNVm6MOyGC" }
+            { description: "What colour do you like?", url: "https://youtu.be/le61J7LARTw?si=vkUSOJvpNiGSRYDL" },
+            { description: "What colour is ...?", url: "https://youtu.be/Ka8susyLxjA?si=FuGUo2c8gAygB512" },
+            { description: "What colour shirt is she/he wearing?", url: "https://youtu.be/Ghf_dfNVhco?si=3A_uJgTNVm6MOyGC" }
         ]
     },
     {
@@ -818,24 +818,24 @@ const conversations = [
             { description: "Preposition", url: "https://youtu.be/a-6NLdAAKuM?si=PHFGj_Xxyfq72sSU" },
             { description: "Vocabulary", url: "https://youtu.be/OHaRLUiMk24?si=f9WqD_LeBlXr8Ou5" },
             { description: "There are 2 books on the table", url: "https://youtu.be/sfiInIP_ylU?si=NMmEG_tzWST384Ec" },
-            { description: "How many books are there on the table ?", url: "https://youtu.be/K9rmI78ktpg?si=CtXGyWFHhIR_hTyD" },
+            { description: "How many books are there on the table?", url: "https://youtu.be/K9rmI78ktpg?si=CtXGyWFHhIR_hTyD" },
             { description: "Conversation", url: "https://youtu.be/SDQYGLE2oW4?si=XsYfK-TmSDMwz7Vu" },
             { description: "continued ...", url: "https://youtu.be/PDy2YP-3cUE?si=v6MxBl2kfMftykl1" },
-            { description: "Whic ... ?", url: "https://youtu.be/7WxyaEi9ssQ?si=wrn0n5prwVWSDhEm" }
+            { description: "Whic ...?", url: "https://youtu.be/7WxyaEi9ssQ?si=wrn0n5prwVWSDhEm" }
         ]
     },
     // Book 3
     {
         "dictionary": "dictionaryBook3Lesson1",
         "conversations": [
-            { description: "What time is it now ?", url: "https://youtu.be/praUAEMtWIs?si=4wXLfDjdVrKIeKyl" },
+            { description: "What time is it now?", url: "https://youtu.be/praUAEMtWIs?si=4wXLfDjdVrKIeKyl" },
             { description: "Vocabulary", url: "https://youtu.be/mm-Yb0d93kQ?si=-TvimsyBSk_cBq4_" },
-            { description: "What time is it now ?", url: "https://youtu.be/U_ZAlFuGcwY?si=hvgTj96rgztl4zjR" },
-            { description: "What time do you wake up ?", url: "https://youtu.be/oyqonhgTd_k?si=EgNIOyegNxVZG09c" },
+            { description: "What time is it now?", url: "https://youtu.be/U_ZAlFuGcwY?si=hvgTj96rgztl4zjR" },
+            { description: "What time do you wake up?", url: "https://youtu.be/oyqonhgTd_k?si=EgNIOyegNxVZG09c" },
             { description: "Conversation 1", url: "https://youtu.be/m4l-dEuGA8A?si=zd-zAsXbEH6U48TN" },
-            { description: "How many hours/minutes ?", url: "https://youtu.be/VAKfFaSEjPc?si=hdAFj1hywWvNbAqV" },
+            { description: "How many hours/minutes?", url: "https://youtu.be/VAKfFaSEjPc?si=hdAFj1hywWvNbAqV" },
             { description: "Conversation 2", url: "https://youtu.be/L1aLRVo6NTs?si=nPpRIgZClwAr97Q-" },
-            { description: "What do you usually do before studying Thai ?", url: "https://youtu.be/z5tSAsVfPXg?si=CTyUx2qUAP4F9QhC" },
+            { description: "What do you usually do before studying Thai?", url: "https://youtu.be/z5tSAsVfPXg?si=CTyUx2qUAP4F9QhC" },
             { description: "Vocabulary 3", url: "https://youtu.be/v65J2b_rgOU?si=XDlcs9oIPWWclOL_" }
             //            { description: "", url: "" }
         ]
@@ -843,15 +843,15 @@ const conversations = [
     {
         "dictionary": "dictionaryBook3Lesson2",
         "conversations": [
-            { description: "What day is it today ?", url: "https://youtu.be/PQQdDCMO7kE?si=kwkzCb6R799ynfGn" },
+            { description: "What day is it today?", url: "https://youtu.be/PQQdDCMO7kE?si=kwkzCb6R799ynfGn" },
             { description: "continued ... ", url: "https://youtu.be/WsVALhZanfE?si=7DaIL590CQze0fDX" },
-            { description: "What day is it today ?", url: "https://youtu.be/INQOD75kCTk?si=I2DfK-6rSz5QFW2J" },
-            { description: "What is the date today ?", url: "https://youtu.be/AV_6eG2FEhA?si=DEP1anRUApgtPNZK" },
-            { description: "What do you usually do on your weekend ?", url: "https://youtu.be/ka8vtwY98hM?si=tR_N99iMGEw6VHdd" },
+            { description: "What day is it today?", url: "https://youtu.be/INQOD75kCTk?si=I2DfK-6rSz5QFW2J" },
+            { description: "What is the date today?", url: "https://youtu.be/AV_6eG2FEhA?si=DEP1anRUApgtPNZK" },
+            { description: "What do you usually do on your weekend?", url: "https://youtu.be/ka8vtwY98hM?si=tR_N99iMGEw6VHdd" },
             { description: "Conversation 1", url: "https://youtu.be/equzVlc6aJ4?si=9-NT2CitAQdWjJMh" },
             { description: "continued ... ", url: "https://youtu.be/hEa9FwoKNe0?si=gz-QZECzTC-bhrK0" },
-            { description: "How many days per week do you study Thai ?", url: "https://youtu.be/HSC8Tq3DKNA?si=KM0tXJWy7vpl1MdO" },
-            { description: "How many days in a week do you study Thai ?", url: "https://youtu.be/ENbXIibgy7I?si=ej3BVxHg2YfVWPBT" },
+            { description: "How many days per week do you study Thai?", url: "https://youtu.be/HSC8Tq3DKNA?si=KM0tXJWy7vpl1MdO" },
+            { description: "How many days in a week do you study Thai?", url: "https://youtu.be/ENbXIibgy7I?si=ej3BVxHg2YfVWPBT" },
             { description: "Conversation 2", url: "https://youtu.be/3j1AC4tL2Ms?si=SvA7C0O-5mRpQrsx" },
             { description: "continued ... ", url: "https://youtu.be/BWcWpgdL_2Y?si=ZsZYPlzrREB8Ljs3" }
             //    { description: "", url: "" }
@@ -861,12 +861,12 @@ const conversations = [
         "dictionary": "dictionaryBook3Lesson3",
         "conversations": [
             { description: "Months / Year / Seasons", url: "https://youtu.be/cErs6Lep_WI?si=f75H6zDLatPbI0DU" },
-            { description: "What month is this month ?", url: "https://youtu.be/eqc-VZ65y5o?si=UQyQJcB4g_n6SABP" },
-            { description: "When were you born ?", url: "https://youtu.be/Q4j-2ZiWEA8?si=NLyxSkskp9zHiVSK" },
+            { description: "What month is this month?", url: "https://youtu.be/eqc-VZ65y5o?si=UQyQJcB4g_n6SABP" },
+            { description: "When were you born?", url: "https://youtu.be/Q4j-2ZiWEA8?si=NLyxSkskp9zHiVSK" },
             { description: "Conversation 1", url: "https://youtu.be/k1-cyFVp1vs?si=qTojc_NRsWI4DjjU" },
             { description: "Vocabulary", url: "https://youtu.be/I8y6-Q_g81g?si=HKTWW7b3UfEmDKzD" },
-            { description: "How many seasons are there in Thailand ?", url: "https://youtu.be/qmQafMySHbI?si=thycS1rLIB3DyY4k" },
-            { description: " How’s the weather today ?", url: "https://youtu.be/VW9-YL71WQc?si=KLrSSZFyX8dcQzXd" },
+            { description: "How many seasons are there in Thailand?", url: "https://youtu.be/qmQafMySHbI?si=thycS1rLIB3DyY4k" },
+            { description: " How’s the weather today?", url: "https://youtu.be/VW9-YL71WQc?si=KLrSSZFyX8dcQzXd" },
             { description: "Conversation 2", url: "https://youtu.be/b8c-CFPywes?si=kPBUf0qw5AQFZqKe" },
             { description: "Listening Practice", url: "https://youtu.be/sa52tiTefUc?si=zIBOf15iy6vXy2cl" }
             //            { description: "", url: "" }
@@ -880,15 +880,15 @@ const conversations = [
             { description: "How many people are there in your family?", url: "https://youtu.be/ChU8bSd8uhU?si=Z8GWcnmzPSUwhVNV" },
             { description: "Conversation", url: "https://youtu.be/zQF2L_G9nSQ?si=Yxcnn5jfIvFWjfZX" },
             { description: "Timmy’s story", url: "https://youtu.be/RlCACHu-2Gg?si=Tlz9zDI5cLlRr3jk" },
-            { description: "How old are you ?", url: "https://youtu.be/75EorHYz6eY?si=j_SEFQYxGdn5cpAG" },
-            { description: "Are you married ?", url: "https://youtu.be/b-XmOoW5MHM?si=sPoR-8Iz7U6GcGMI" }
+            { description: "How old are you?", url: "https://youtu.be/75EorHYz6eY?si=j_SEFQYxGdn5cpAG" },
+            { description: "Are you married?", url: "https://youtu.be/b-XmOoW5MHM?si=sPoR-8Iz7U6GcGMI" }
             //            { description: "", url: "" }
         ]
     },
     {
         "dictionary": "dictionaryBook3Lesson5",
         "conversations": [
-            { description: "What is your job ?", url: "https://youtu.be/zdbnq2hoSiE?si=yaganfO4TQNrkRxO" },
+            { description: "What is your job?", url: "https://youtu.be/zdbnq2hoSiE?si=yaganfO4TQNrkRxO" },
             { description: "What do you do?/What is your job?", url: "https://youtu.be/TQgQ0Wl3T9E?si=mz2IoemNNB9lM-HJ" },
             { description: "Conversation", url: "https://youtu.be/YTSUCo9-fs4?si=JOB4m36GtH5Iz4la" }
             //            { description: "", url: "" }
@@ -897,15 +897,25 @@ const conversations = [
     {
         "dictionary": "dictionaryBook3Lesson6",
         "conversations": [
-            { description: "What does she/he look like ?", url: "https://youtu.be/-rWBdUqqz_o?si=eOn0eJuiIPGLXEIB" },
-            { description: "What colour is his/her eyes ?", url: "https://youtu.be/hnsVJKtRrD0?si=IFA0uCj30Vwq6s_5" },
-            { description: "What does he/she look like ?", url: "https://youtu.be/GAYDLWLddLw?si=D6Lpb1MZDqWpWduX" },
+            { description: "What does she/he look like?", url: "https://youtu.be/-rWBdUqqz_o?si=eOn0eJuiIPGLXEIB" },
+            { description: "What colour is his/her eyes?", url: "https://youtu.be/hnsVJKtRrD0?si=IFA0uCj30Vwq6s_5" },
+            { description: "What does he/she look like?", url: "https://youtu.be/GAYDLWLddLw?si=D6Lpb1MZDqWpWduX" },
             { description: "How tall are you?", url: "https://youtu.be/u5YuIdx2zXs?si=0H--h13nYbmx0wo2" },
-            { description: "How much do you weigh ?", url: "https://youtu.be/Noxq8368pys?si=_Xfgib3e-IAAkXUn" }
+            { description: "How much do you weigh?", url: "https://youtu.be/Noxq8368pys?si=_Xfgib3e-IAAkXUn" }
             //            { description: "", url: "" }
         ]
     }
 ]
+
+// Reading and Writing 1
+// Thai Alphabet
+const dictionaryRW1Lesson1 = [
+    { word_en: "gɔɔ (Chicken)", word_th: "ก", pronunciation: "gài" },
+    { word_en: "khɔ̌ɔ (Egg)", word_th: "ข", pronunciation: "khài" },
+    { word_en: "khɔ̌ɔ (Bottle)", word_th: "ฃ ", pronunciation: "khùat" },
+    { word_en: "khɔɔ (Water buffalo)", word_th: "ค", pronunciation: "khwaay" }
+];
+
 
 const dictionaries = {
 
@@ -930,7 +940,10 @@ const dictionaries = {
     dictionaryBook3Lesson3: dictionaryBook3Lesson3,
     dictionaryBook3Lesson4: dictionaryBook3Lesson4,
     dictionaryBook3Lesson5: dictionaryBook3Lesson5,
-    dictionaryBook3Lesson6: dictionaryBook3Lesson6
+    dictionaryBook3Lesson6: dictionaryBook3Lesson6,
+
+    // reading 1
+    dictionaryRW1Lesson1: dictionaryRW1Lesson1
 
 };
 
@@ -1298,7 +1311,7 @@ function htmlMultipleChoice(questionWordIndex) {
             spanChoiceWordTh.textContent = currentDictionary[userSelectedIndex].word_th;
             spanChoiceWordTh.lang = "th";
             divChoiceWord.appendChild(spanChoiceWordTh);
-            //            spanChoiceWordTh.classList.add("font-size-medium");
+            spanChoiceWordTh.classList.add("font-size-2rem");
 
             spanChoiceWordTh.addEventListener('click', function () {
                 var spanWordTh = this;
