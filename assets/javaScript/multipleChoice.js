@@ -911,9 +911,33 @@ const conversations = [
 // Thai Alphabet
 const dictionaryRW1Lesson1 = [
     { word_en: "gɔɔ (Chicken)", word_th: "ก", pronunciation: "gài" },
-    { word_en: "khɔ̌ɔ (Egg)", word_th: "ข", pronunciation: "khài" },
-    { word_en: "khɔ̌ɔ (Bottle)", word_th: "ฃ ", pronunciation: "khùat" },
-    { word_en: "khɔɔ (Water buffalo)", word_th: "ค", pronunciation: "khwaay" }
+    { word_en: "jɔɔ (Plate)", word_th: "จ", pronunciation: "jaan" },
+    { word_en: "dɔɔ (Child)", word_th: "ฃ ", pronunciation: "dèk" },
+    { word_en: "dtɔɔ (Turtle)", word_th: "ต", pronunciation: "dtàw" },
+    { word_en: "bɔɔ (Leaf)", word_th: "บ", pronunciation: "bai-máay" },
+    { word_en: "bpɔɔ (Fish)", word_th: "ป", pronunciation: "bplaa" },
+    { word_en: "ɔɔ (Basin)", word_th: "อ", pronunciation: "àaŋ" },
+    { word_en: "phɔ̌ɔ (Bee)", word_th: "ผ", pronunciation: "phω̂ŋ" },
+    { word_en: "fɔ̌ɔ (Lid / Cover)", word_th: "ฝ", pronunciation: "făa" },
+    { word_en: "thɔ̌ɔ (Bag)", word_th: "ถ", pronunciation: "thŭŋ" },
+    { word_en: "khɔ̌ɔ (Egg)", word_th: "ข", pronunciation: "khà" },
+    { word_en: "sɔ̌ɔ (Tiger)", word_th: "ส", pronunciation: "sɯ̌a" },
+    { word_en: "hɔ̌ɔ (Treasure box)", word_th: "ห", pronunciation: "hìip" },
+    { word_en: "chɔ̌ɔ (Cymbal)", word_th: "ฉ", pronunciation: "chìŋ" },
+    { word_en: "phɔɔ (Offering tray)", word_th: "พ", pronunciation: "phaan" },
+    { word_en: "fɔɔ (Teeth)", word_th: "ฟ", pronunciation: "fan" },
+    { word_en: "thɔɔ (Soldier)", word_th: "ท", pronunciation: "thá-hɑ̌an" },
+    { word_en: "khɔɔ (Buffalo)", word_th: "ค", pronunciation: "khwaay" },
+    { word_en: "sɔɔ (Chain)", word_th: "ซ", pronunciation: "sôo" },
+    { word_en: "hɔɔ (Owl)", word_th: "ฮ", pronunciation: "nók-hûuk" },
+    { word_en: "chɔɔ (Elephant)", word_th: "ช", pronunciation: "cháaŋ" },
+    { word_en: "ŋɔɔ (Snake)", word_th: "ง", pronunciation: "ŋuu" },
+    { word_en: "yɔɔ (Giant)", word_th: "ย", pronunciation: "yák" },
+    { word_en: "nɔɔ (Mouse)", word_th: "น", pronunciation: "nǔu" },
+    { word_en: "rɔɔ (Boat)", word_th: "ร", pronunciation: "rωa" },
+    { word_en: "wɔɔ (Ring)", word_th: "ว", pronunciation: "wɛ̌ɛn" },
+    { word_en: "mɔɔ (Horse)", word_th: "ม", pronunciation: "máa" },
+    { word_en: "lɔɔ (Monkey)", word_th: "ล", pronunciation: "liŋ" }
 ];
 
 
