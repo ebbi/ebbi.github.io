@@ -910,20 +910,10 @@ const conversations = [
 // Reading and Writing 1
 // Thai Alphabet
 const dictionaryRW1Lesson1 = [
-    { word_en: "gɔɔ (Chicken)", word_th: "ก", pronunciation: "gài" },
-    { word_en: "jɔɔ (Plate)", word_th: "จ", pronunciation: "jaan" },
-    { word_en: "dɔɔ (Child)", word_th: "ฃ ", pronunciation: "dèk" },
-    { word_en: "dtɔɔ (Turtle)", word_th: "ต", pronunciation: "dtàw" },
-    { word_en: "bɔɔ (Leaf)", word_th: "บ", pronunciation: "bai-máay" },
-    { word_en: "bpɔɔ (Fish)", word_th: "ป", pronunciation: "bplaa" },
-    { word_en: "ɔɔ (Basin)", word_th: "อ", pronunciation: "àaŋ" },
-    { word_en: "phɔ̌ɔ (Bee)", word_th: "ผ", pronunciation: "phω̂ŋ" },
-    { word_en: "fɔ̌ɔ (Lid / Cover)", word_th: "ฝ", pronunciation: "făa" },
-    { word_en: "thɔ̌ɔ (Bag)", word_th: "ถ", pronunciation: "thŭŋ" },
-    { word_en: "khɔ̌ɔ (Egg)", word_th: "ข", pronunciation: "khà" },
-    { word_en: "sɔ̌ɔ (Tiger)", word_th: "ส", pronunciation: "sɯ̌a" },
-    { word_en: "hɔ̌ɔ (Treasure box)", word_th: "ห", pronunciation: "hìip" },
-    { word_en: "chɔ̌ɔ (Cymbal)", word_th: "ฉ", pronunciation: "chìŋ" },
+
+];
+
+const dictionaryRW1LowClassConsonants = [
     { word_en: "phɔɔ (Offering tray)", word_th: "พ", pronunciation: "phaan" },
     { word_en: "fɔɔ (Teeth)", word_th: "ฟ", pronunciation: "fan" },
     { word_en: "thɔɔ (Soldier)", word_th: "ท", pronunciation: "thá-hɑ̌an" },
@@ -939,7 +929,24 @@ const dictionaryRW1Lesson1 = [
     { word_en: "mɔɔ (Horse)", word_th: "ม", pronunciation: "máa" },
     { word_en: "lɔɔ (Monkey)", word_th: "ล", pronunciation: "liŋ" }
 ];
-
+const dictionaryRW1MiddleClassConsonants = [
+    { word_en: "gɔɔ (Chicken)", word_th: "ก", pronunciation: "gài" },
+    { word_en: "jɔɔ (Plate)", word_th: "จ", pronunciation: "jaan" },
+    { word_en: "dɔɔ (Child)", word_th: "ด", pronunciation: "dèk" },
+    { word_en: "dtɔɔ (Turtle)", word_th: "ต", pronunciation: "dtàw" },
+    { word_en: "bɔɔ (Leaf)", word_th: "บ", pronunciation: "bai-máay" },
+    { word_en: "bpɔɔ (Fish)", word_th: "ป", pronunciation: "bplaa" },
+    { word_en: "ɔɔ (Basin)", word_th: "อ", pronunciation: "àaŋ" }
+];
+const dictionaryRW1HighClassConsonants = [
+    { word_en: "phɔ̌ɔ (Bee)", word_th: "ผ", pronunciation: "phω̂ŋ" },
+    { word_en: "fɔ̌ɔ (Lid / Cover)", word_th: "ฝ", pronunciation: "făa" },
+    { word_en: "thɔ̌ɔ (Bag)", word_th: "ถ", pronunciation: "thŭŋ" },
+    { word_en: "khɔ̌ɔ (Egg)", word_th: "ข", pronunciation: "khà" },
+    { word_en: "sɔ̌ɔ (Tiger)", word_th: "ส", pronunciation: "sɯ̌a" },
+    { word_en: "hɔ̌ɔ (Treasure box)", word_th: "ห", pronunciation: "hìip" },
+    { word_en: "chɔ̌ɔ (Cymbal)", word_th: "ฉ", pronunciation: "chìŋ" }
+];
 
 const dictionaries = {
 
@@ -967,8 +974,9 @@ const dictionaries = {
     dictionaryBook3Lesson6: dictionaryBook3Lesson6,
 
     // reading 1
-    dictionaryRW1Lesson1: dictionaryRW1Lesson1
-
+    dictionaryRW1LowClassConsonants: dictionaryRW1LowClassConsonants,
+    dictionaryRW1MiddleClassConsonants: dictionaryRW1MiddleClassConsonants,
+    dictionaryRW1HighClassConsonants: dictionaryRW1HighClassConsonants
 };
 
 const dictionaryIncorrectAnswers = [];
