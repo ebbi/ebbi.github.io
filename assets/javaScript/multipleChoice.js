@@ -914,20 +914,20 @@ const dictionaryRW1Lesson1 = [
 ];
 
 const dictionaryRW1LowClassConsonants = [
-    { word_en: "phɔɔ (Offering tray)", word_th: "พ", pronunciation: "phaan" },
-    { word_en: "fɔɔ (Teeth)", word_th: "ฟ", pronunciation: "fan" },
-    { word_en: "thɔɔ (Soldier)", word_th: "ท", pronunciation: "thá-hɑ̌an" },
-    { word_en: "khɔɔ (Buffalo)", word_th: "ค", pronunciation: "khwaay" },
-    { word_en: "sɔɔ (Chain)", word_th: "ซ", pronunciation: "sôo" },
-    { word_en: "hɔɔ (Owl)", word_th: "ฮ", pronunciation: "nók-hûuk" },
-    { word_en: "chɔɔ (Elephant)", word_th: "ช", pronunciation: "cháaŋ" },
-    { word_en: "ŋɔɔ (Snake)", word_th: "ง", pronunciation: "ŋuu" },
-    { word_en: "yɔɔ (Giant)", word_th: "ย", pronunciation: "yák" },
-    { word_en: "nɔɔ (Mouse)", word_th: "น", pronunciation: "nǔu" },
-    { word_en: "rɔɔ (Boat)", word_th: "ร", pronunciation: "rωa" },
-    { word_en: "wɔɔ (Ring)", word_th: "ว", pronunciation: "wɛ̌ɛn" },
-    { word_en: "mɔɔ (Horse)", word_th: "ม", pronunciation: "máa" },
-    { word_en: "lɔɔ (Monkey)", word_th: "ล", pronunciation: "liŋ" }
+    { word_en: "phɔɔ", word_th: "พ", pronunciation: "phaan  (Offering tray)" },
+    { word_en: "fɔɔ", word_th: "ฟ", pronunciation: "fan (Teeth)" },
+    { word_en: "thɔɔ", word_th: "ท", pronunciation: "thá-hɑ̌an (Soldier)" },
+    { word_en: "khɔɔ", word_th: "ค", pronunciation: "khwaay (Buffalo)" },
+    { word_en: "sɔɔ", word_th: "ซ", pronunciation: "sôo (Chain)" },
+    { word_en: "hɔɔ", word_th: "ฮ", pronunciation: "nók-hûuk (Owl)" },
+    { word_en: "chɔɔ", word_th: "ช", pronunciation: "cháaŋ (Elephant)" },
+    { word_en: "ŋɔɔ", word_th: "ง", pronunciation: "ŋuu (Snake)" },
+    { word_en: "yɔɔ", word_th: "ย", pronunciation: "yák (Giant)" },
+    { word_en: "nɔɔ", word_th: "น", pronunciation: "nǔu (Mouse)" },
+    { word_en: "rɔɔ", word_th: "ร", pronunciation: "rωa (Boat)" },
+    { word_en: "wɔɔ", word_th: "ว", pronunciation: "wɛ̌ɛn (Ring)" },
+    { word_en: "mɔɔ", word_th: "ม", pronunciation: "máa (Horse)" },
+    { word_en: "lɔɔ", word_th: "ล", pronunciation: "liŋ (Monkey)" }
 ];
 const dictionaryRW1MiddleClassConsonants = [
     { word_en: "gɔɔ (Chicken)", word_th: "ก", pronunciation: "gài" },
@@ -1322,8 +1322,9 @@ function htmlMultipleChoice(questionWordIndex) {
                     correctAnswerCount++;
                 } else {
                     buttonChoiceWord.classList.add("incorrect");
-                    buttonChoiceWord.textContent = currentDictionary[userSelectedIndex].pronunciation
-                        + ' = ' + currentDictionary[userSelectedIndex].word_en
+                    buttonChoiceWord.textContent = currentDictionary[userSelectedIndex].word_en
+                        + ' = ' + currentDictionary[userSelectedIndex].pronunciation
+                        + ' = ' + currentDictionary[userSelectedIndex].word_th;
                     incorrectAnswerCount++;
                     const found = dictionaryIncorrectAnswers.find(
                         ({ pronunciation }) => pronunciation === currentDictionary[questionWordIndex].pronunciation);
@@ -1345,7 +1346,32 @@ function htmlMultipleChoice(questionWordIndex) {
             divChoiceWord.appendChild(spanChoiceWordTh);
             spanChoiceWordTh.classList.add("thai-button");
 
-            spanChoiceWordTh.addEventListener('click', function () {
+            spanChoiceWordTh.addEventListener("click", function () {
+                if (currentDictionary[questionWordIndex].pronunciation === currentDictionary[userSelectedIndex].pronunciation) {
+                    spanChoiceWordTh.classList.add("correct");
+                    correctAnswerCount++;
+                } else {
+                    spanChoiceWordTh.classList.add("incorrect");
+                    spanChoiceWordTh.textContent = currentDictionary[userSelectedIndex].word_en
+                        + ' = ' + currentDictionary[userSelectedIndex].pronunciation
+                        + ' = ' + currentDictionary[userSelectedIndex].word_th;
+
+                    incorrectAnswerCount++;
+                    const found = dictionaryIncorrectAnswers.find(
+                        ({ pronunciation }) => pronunciation === currentDictionary[questionWordIndex].pronunciation);
+                    if (!found) {
+                        dictionaryIncorrectAnswers.push(currentDictionary[questionWordIndex]);
+
+                        if (dictionaryIncorrectAnswers.length > NoAnswerChoices) {
+                            document.getElementById("incorrectAnswersOnlyDiv").hidden = false;
+                        }
+                    }
+                }
+                attemptAnswerCount++;
+                feedback();
+            });
+
+            spanChoiceWordTh.addEventListener('dblclick', function () {
                 var spanWordTh = this;
                 if (window.getSelection) {
                     var range = document.createRange();

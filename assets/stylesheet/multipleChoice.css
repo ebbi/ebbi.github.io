@@ -74,13 +74,13 @@ span.notice {
 }
 
 .correct {
-    background-color: greenyellow;
-    color: black;
+    background-color: lightgreen !important;
+    color: green !important;
 }
 
 .incorrect {
-    background-color: red;
-    color: white;
+    background-color: lightpink;
+    color: red;
 }
 
 .info {
