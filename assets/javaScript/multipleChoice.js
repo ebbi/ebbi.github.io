@@ -1340,19 +1340,19 @@ function htmlMultipleChoice(questionWordIndex) {
                 feedback();
             });
 
-            const spanChoiceWordTh = document.createElement("span");
-            spanChoiceWordTh.textContent = currentDictionary[userSelectedIndex].word_th;
-            spanChoiceWordTh.lang = "th";
-            divChoiceWord.appendChild(spanChoiceWordTh);
-            spanChoiceWordTh.classList.add("thai-button");
+            const buttonChoiceWordTh = document.createElement("button");
+            buttonChoiceWordTh.textContent = currentDictionary[userSelectedIndex].word_th;
+            buttonChoiceWordTh.lang = "th";
+            divChoiceWord.appendChild(buttonChoiceWordTh);
+            buttonChoiceWordTh.classList.add("thai-button");
 
-            spanChoiceWordTh.addEventListener("click", function () {
+            buttonChoiceWordTh.addEventListener("click", function () {
                 if (currentDictionary[questionWordIndex].pronunciation === currentDictionary[userSelectedIndex].pronunciation) {
-                    spanChoiceWordTh.classList.add("correct");
+                    buttonChoiceWordTh.classList.add("correct");
                     correctAnswerCount++;
                 } else {
-                    spanChoiceWordTh.classList.add("incorrect");
-                    spanChoiceWordTh.textContent = currentDictionary[userSelectedIndex].word_en
+                    buttonChoiceWordTh.classList.add("incorrect");
+                    buttonChoiceWordTh.textContent = currentDictionary[userSelectedIndex].word_en
                         + ' = ' + currentDictionary[userSelectedIndex].pronunciation
                         + ' = ' + currentDictionary[userSelectedIndex].word_th;
 
@@ -1371,7 +1371,7 @@ function htmlMultipleChoice(questionWordIndex) {
                 feedback();
             });
 
-            spanChoiceWordTh.addEventListener('dblclick', function () {
+            buttonChoiceWordTh.addEventListener('dblclick', function () {
                 var spanWordTh = this;
                 if (window.getSelection) {
                     var range = document.createRange();
@@ -1384,7 +1384,7 @@ function htmlMultipleChoice(questionWordIndex) {
                     range.select();
                 }
 
-                textToSpeech(spanChoiceWordTh.textContent);
+                textToSpeech(buttonChoiceWordTh.textContent);
 
             });
 
