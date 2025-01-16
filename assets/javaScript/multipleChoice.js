@@ -1372,24 +1372,24 @@ function htmlMultipleChoice(questionWordIndex) {
                 attemptAnswerCount++;
                 feedback();
             });
-
-            buttonChoiceWordTh.addEventListener('dblclick', function () {
-                var spanWordTh = this;
-                if (window.getSelection) {
-                    var range = document.createRange();
-                    range.selectNode(spanWordTh);
-                    window.getSelection().removeAllRanges();
-                    window.getSelection().addRange(range);
-                } else if (document.selection) {
-                    var range = document.body.createTextRange();
-                    range.moveToElementText(spanWordTh);
-                    range.select();
-                }
-
-                textToSpeech(buttonChoiceWordTh.textContent);
-
-            });
-
+            /*
+                        buttonChoiceWordTh.addEventListener('dblclick', function () {
+                            var spanWordTh = this;
+                            if (window.getSelection) {
+                                var range = document.createRange();
+                                range.selectNode(spanWordTh);
+                                window.getSelection().removeAllRanges();
+                                window.getSelection().addRange(range);
+                            } else if (document.selection) {
+                                var range = document.body.createTextRange();
+                                range.moveToElementText(spanWordTh);
+                                range.select();
+                            }
+            
+                            textToSpeech(buttonChoiceWordTh.textContent);
+            
+                        });
+            */
             divChoiceWord.appendChild(pChoiceWord);
 
             choiceWords.appendChild(divChoiceWord);
