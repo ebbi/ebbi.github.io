@@ -930,13 +930,13 @@ const dictionaryRW1LowClassConsonants = [
     { word_en: "lɔɔ", word_th: "ล", pronunciation: "liŋ (Monkey)" }
 ];
 const dictionaryRW1MiddleClassConsonants = [
-    { word_en: "gɔɔ (Chicken)", word_th: "ก", pronunciation: "gài" },
-    { word_en: "jɔɔ (Plate)", word_th: "จ", pronunciation: "jaan" },
-    { word_en: "dɔɔ (Child)", word_th: "ด", pronunciation: "dèk" },
-    { word_en: "dtɔɔ (Turtle)", word_th: "ต", pronunciation: "dtàw" },
-    { word_en: "bɔɔ (Leaf)", word_th: "บ", pronunciation: "bai-máay" },
-    { word_en: "bpɔɔ (Fish)", word_th: "ป", pronunciation: "bplaa" },
-    { word_en: "ɔɔ (Basin)", word_th: "อ", pronunciation: "àaŋ" }
+    { word_en: "gɔɔ gài", word_th: "ก", pronunciation: "Chicken" },
+    { word_en: "jɔɔ jaan", word_th: "จ", pronunciation: "Plate" },
+    { word_en: "dɔɔ dèk", word_th: "ด", pronunciation: "Child" },
+    { word_en: "dtɔɔ (dtàw)", word_th: "ต", pronunciation: "Turtle" },
+    { word_en: "bɔɔ (bai-máay)", word_th: "บ", pronunciation: "Leaf" },
+    { word_en: "bpɔɔ (bplaa )", word_th: "ป", pronunciation: "Fish" },
+    { word_en: "ɔɔ (àaŋ)", word_th: "อ", pronunciation: "Basin" }
 ];
 const dictionaryRW1HighClassConsonants = [
     { word_en: "phɔ̌ɔ (Bee)", word_th: "ผ", pronunciation: "phω̂ŋ" },
