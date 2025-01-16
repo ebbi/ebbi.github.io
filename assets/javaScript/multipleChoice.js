@@ -1309,10 +1309,13 @@ function htmlMultipleChoice(questionWordIndex) {
     shuffledWords.forEach(
         (userSelectedIndex) => {
             const divChoiceWord = document.createElement("div");
+            const pChoiceWord = document.createElement("p");
+
 
             const buttonChoiceWord = document.createElement("button");
             buttonChoiceWord.textContent = currentDictionary[userSelectedIndex].pronunciation;
-            divChoiceWord.appendChild(buttonChoiceWord);
+            pChoiceWord.appendChild(buttonChoiceWord);
+            //            divChoiceWord.appendChild(buttonChoiceWord);
             buttonChoiceWord.addEventListener("click", function () {
                 if (currentDictionary[questionWordIndex].pronunciation === currentDictionary[userSelectedIndex].pronunciation) {
                     buttonChoiceWord.classList.add("correct");
@@ -1340,7 +1343,9 @@ function htmlMultipleChoice(questionWordIndex) {
             const buttonChoiceWordTh = document.createElement("button");
             buttonChoiceWordTh.textContent = currentDictionary[userSelectedIndex].word_th;
             buttonChoiceWordTh.lang = "th";
-            divChoiceWord.appendChild(buttonChoiceWordTh);
+            pChoiceWord.appendChild(buttonChoiceWordTh);
+            //            divChoiceWord.appendChild(buttonChoiceWordTh);
+
             buttonChoiceWordTh.classList.add("thai-button");
 
             buttonChoiceWordTh.addEventListener("click", function () {
@@ -1384,6 +1389,8 @@ function htmlMultipleChoice(questionWordIndex) {
                 textToSpeech(buttonChoiceWordTh.textContent);
 
             });
+
+            divChoiceWord.appendChild(pChoiceWord);
 
             choiceWords.appendChild(divChoiceWord);
 
