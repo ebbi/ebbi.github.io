@@ -50,8 +50,14 @@ span.notice {
     float: right;
 }
 
-#searchWords {
-    background-color: lightgoldenrodyellow;
+ul#searchWords {
+    padding: initial;
+    list-style: none;
+}
+
+#searchWords li {
+    display: flex;
+    justify-content: space-between;
 }
 
 #searchWords span {

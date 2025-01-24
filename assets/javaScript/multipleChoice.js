@@ -911,38 +911,38 @@ const conversations = [
 // Thai Alphabet
 
 const dictionaryRW1LowClassConsonants = [
-    { word_en: "phɔɔ phaan", word_th: "พ", pronunciation: "Offering tray" },
-    { word_en: "fɔɔ fan", word_th: "ฟ", pronunciation: "Teeth" },
-    { word_en: "thɔɔ thá-hɑ̌an", word_th: "ท", pronunciation: "Soldier" },
-    { word_en: "khɔɔ khwaay", word_th: "ค", pronunciation: "Buffalo" },
-    { word_en: "sɔɔ sôo", word_th: "ซ", pronunciation: "Chain" },
-    { word_en: "hɔɔ nók-hûuk", word_th: "ฮ", pronunciation: "Owl" },
-    { word_en: "chɔɔ cháaŋ", word_th: "ช", pronunciation: "Elephant" },
-    { word_en: "ŋɔɔ ŋuu", word_th: "ง", pronunciation: "Snake" },
-    { word_en: "yɔɔ yák", word_th: "ย", pronunciation: "Giant" },
-    { word_en: "nɔɔ nǔu", word_th: "น", pronunciation: "Mouse" },
-    { word_en: "rɔɔ rωa", word_th: "ร", pronunciation: "Boat" },
-    { word_en: "wɔɔ wɛ̌ɛn", word_th: "ว", pronunciation: "Ring" },
-    { word_en: "mɔɔ máa", word_th: "ม", pronunciation: "Horse" },
-    { word_en: "lɔɔ liŋ", word_th: "ล", pronunciation: "Monkey" }
+    { word_en: "Offering tray", word_th: "พ", pronunciation: "phɔɔ phaan" },
+    { word_en: "Teeth", word_th: "ฟ", pronunciation: "fɔɔ fan" },
+    { word_en: "Soldier", word_th: "ท", pronunciation: "thɔɔ thá-hɑ̌an" },
+    { word_en: "Buffalo", word_th: "ค", pronunciation: "khɔɔ khwaay" },
+    { word_en: "Chain", word_th: "ซ", pronunciation: "sɔɔ sôo" },
+    { word_en: "Owl", word_th: "ฮ", pronunciation: "hɔɔ nók-hûuk" },
+    { word_en: "Elephant", word_th: "ช", pronunciation: "chɔɔ cháaŋ" },
+    { word_en: "Snake", word_th: "ง", pronunciation: "ŋɔɔ ŋuu" },
+    { word_en: "Giant", word_th: "ย", pronunciation: "yɔɔ yák" },
+    { word_en: "Mouse", word_th: "น", pronunciation: "nɔɔ nǔu" },
+    { word_en: "Boat", word_th: "ร", pronunciation: "rɔɔ rωa" },
+    { word_en: "Ring", word_th: "ว", pronunciation: "wɔɔ wɛ̌ɛn" },
+    { word_en: "Horse", word_th: "ม", pronunciation: "mɔɔ máa" },
+    { word_en: "Monkey", word_th: "ล", pronunciation: "lɔɔ liŋ" }
 ];
 const dictionaryRW1MiddleClassConsonants = [
-    { word_en: "gɔɔ gài", word_th: "ก", pronunciation: "Chicken" },
-    { word_en: "jɔɔ jaan", word_th: "จ", pronunciation: "Plate" },
-    { word_en: "dɔɔ dèk", word_th: "ด", pronunciation: "Child" },
-    { word_en: "dtɔɔ (dtàw)", word_th: "ต", pronunciation: "Turtle" },
-    { word_en: "bɔɔ (bai-máay)", word_th: "บ", pronunciation: "Leaf" },
-    { word_en: "bpɔɔ (bplaa )", word_th: "ป", pronunciation: "Fish" },
-    { word_en: "ɔɔ (àaŋ)", word_th: "อ", pronunciation: "Basin" }
+    { word_en: "Chicken", word_th: "ก", pronunciation: "gɔɔ gài" },
+    { word_en: "Plate", word_th: "จ", pronunciation: "jɔɔ jaan" },
+    { word_en: "Child", word_th: "ด", pronunciation: "dɔɔ dèk" },
+    { word_en: "Turtle", word_th: "ต", pronunciation: "dtɔɔ dtàw" },
+    { word_en: "Leaf", word_th: "บ", pronunciation: "bɔɔ bai-máay" },
+    { word_en: "Fish", word_th: "ป", pronunciation: "bpɔɔ bplaa" },
+    { word_en: "Basin", word_th: "อ", pronunciation: "ɔɔ àaŋ" }
 ];
 const dictionaryRW1HighClassConsonants = [
-    { word_en: "phɔ̌ɔ phω̂ŋ", word_th: "ผ", pronunciation: "Bee" },
-    { word_en: "fɔ̌ɔ făa", word_th: "ฝ", pronunciation: "Lid/Cover" },
-    { word_en: "thɔ̌ɔ thŭŋ", word_th: "ถ", pronunciation: "Bag" },
-    { word_en: "khɔ̌ɔ khà", word_th: "ข", pronunciation: "Egg" },
-    { word_en: "sɔ̌ɔ sɯ̌a", word_th: "ส", pronunciation: "Tiger" },
-    { word_en: "hɔ̌ɔ (Treasure box)", word_th: "ห", pronunciation: "hìip" },
-    { word_en: "chɔ̌ɔ chìŋ", word_th: "ฉ", pronunciation: "Cymbal" }
+    { word_en: "Bee", word_th: "ผ", pronunciation: "phɔ̌ɔ phω̂ŋ" },
+    { word_en: "Lid/Cover", word_th: "ฝ", pronunciation: "fɔ̌ɔ făa" },
+    { word_en: "Bag", word_th: "ถ", pronunciation: "thɔ̌ɔ thŭŋ" },
+    { word_en: "Egg", word_th: "ข", pronunciation: "khɔ̌ɔ khà" },
+    { word_en: "Tiger", word_th: "ส", pronunciation: "sɔ̌ɔ sɯ̌a" },
+    { word_en: "Treasure box", word_th: "ห", pronunciation: "hɔ̌ɔ hìip" },
+    { word_en: "Cymbal", word_th: "ฉ", pronunciation: "chɔ̌ɔ chìŋ" }
 ];
 
 const dictionaries = {
@@ -990,7 +990,9 @@ let incorrectAnswerCount = 0;
 let attemptAnswerCount = 0;
 //let randomize = false;
 
+// input textbox for search word or input textbox used to display word from chosen dictionary
 const searchWord = document.getElementById("searchWord");
+
 const incorrectAnswersOnly = document.getElementById("incorrectAnswersOnly");
 const randomizeCheckbox = document.getElementById("randomize");
 const dictionaryCheckboxes = document.querySelectorAll('.checkbox-dictionary-container input[type="checkbox"]');
@@ -1104,28 +1106,28 @@ searchWord.addEventListener('input', function (event) {
     let userInput = event.target.value.toLowerCase();
     let wordMatches = dictionary.filter(obj => obj.word_en.toLowerCase().startsWith(userInput));
 
-    const searchWords = document.getElementById("searchWords");
-    searchWords.innerHTML = '';
+    const ulSearchWords = document.getElementById("searchWords");
+    ulSearchWords.innerHTML = '';
 
     wordMatches.forEach(
         (dictionary_record) => {
 
-            const paragraph = document.createElement("p");
+            const li = document.createElement("li");
 
             const span_word_en = document.createElement("span");
             span_word_en.textContent = dictionary_record.word_en;
             span_word_en.classList.add('blue');
-            paragraph.appendChild(span_word_en);
+            li.appendChild(span_word_en);
 
             const span_pronunciation = document.createElement("span");
             span_pronunciation.textContent = dictionary_record.pronunciation;
             span_pronunciation.classList.add('green');
-            paragraph.appendChild(span_pronunciation);
+            li.appendChild(span_pronunciation);
 
             const span_word_th = document.createElement("span");
             span_word_th.textContent = dictionary_record.word_th;
             span_word_th.lang = "th";
-            paragraph.appendChild(span_word_th);
+            li.appendChild(span_word_th);
 
             span_word_th.addEventListener('click', function () {
                 var spanWordTh = this;
@@ -1144,20 +1146,20 @@ searchWord.addEventListener('input', function (event) {
 
             });
 
-            searchWords.appendChild(paragraph);
+            ulSearchWords.appendChild(li);
 
         });
 
-    if (searchWords.length == 0) {
-        searchWords.innerHTML = "";
+    if (ulSearchWords.length == 0) {
+        ulSearchWords.innerHTML = "";
     }
     if (searchWord.value == '') {
-        searchWords.innerHTML = "";
+        ulSearchWords.innerHTML = "";
     }
-
-    const choiceWords = document.getElementById("choiceWords");
-    choiceWords.innerHTML = '';
-
+    /*
+        const choiceWords = document.getElementById("choiceWords");
+        choiceWords.innerHTML = '';
+    */
     //    console.log(wordMatches);
 });
 
@@ -1166,14 +1168,15 @@ function initialize() {
     initializeDictionary();
     currentDictionary = "";
     selectedDictionariesConversations = "";
-
-    const choiceWords = document.getElementById("choiceWords");
-    choiceWords.textContent = "";
+    /*
+        const choiceWords = document.getElementById("choiceWords");
+        choiceWords.textContent = "";
 
     searchWord.value = "";
 
     const searchWords = document.getElementById("searchWords");
     searchWords.innerHTML = "";
+*/
     /*
         const exampleContainer = document.getElementById("example");
         exampleContainer.innerHTML = "";
@@ -1294,11 +1297,11 @@ function uncheckSelectedCheckboxes(checkboxes) {
 
 function htmlMultipleChoice(questionWordIndex) {
 
+    const ulSearchWords = document.getElementById("searchWords");
+    ulSearchWords.innerHTML = '';
+
     let randomWords = [];
     searchWord.value = currentDictionary[questionWordIndex].word_en;
-
-    const choiceWords = document.getElementById("choiceWords");
-    choiceWords.innerHTML = "";
 
     // get multiple choice word indexes, add index for correct answer, shuffle the array
     randomWords = getRandomIntArray(questionWordIndex, currentDictionary.length);
@@ -1308,13 +1311,13 @@ function htmlMultipleChoice(questionWordIndex) {
 
     shuffledWords.forEach(
         (userSelectedIndex) => {
-            const divChoiceWord = document.createElement("div");
-            const pChoiceWord = document.createElement("p");
+            //        const divChoiceWord = document.createElement("div");
+            const liChoiceWord = document.createElement("li");
 
 
             const buttonChoiceWord = document.createElement("button");
             buttonChoiceWord.textContent = currentDictionary[userSelectedIndex].pronunciation;
-            pChoiceWord.appendChild(buttonChoiceWord);
+            liChoiceWord.appendChild(buttonChoiceWord);
             //            divChoiceWord.appendChild(buttonChoiceWord);
             buttonChoiceWord.addEventListener("click", function () {
                 if (currentDictionary[questionWordIndex].pronunciation === currentDictionary[userSelectedIndex].pronunciation) {
@@ -1343,7 +1346,7 @@ function htmlMultipleChoice(questionWordIndex) {
             const buttonChoiceWordTh = document.createElement("button");
             buttonChoiceWordTh.textContent = currentDictionary[userSelectedIndex].word_th;
             buttonChoiceWordTh.lang = "th";
-            pChoiceWord.appendChild(buttonChoiceWordTh);
+            liChoiceWord.appendChild(buttonChoiceWordTh);
             //            divChoiceWord.appendChild(buttonChoiceWordTh);
 
             buttonChoiceWordTh.classList.add("thai-button");
@@ -1354,6 +1357,7 @@ function htmlMultipleChoice(questionWordIndex) {
                     correctAnswerCount++;
                 } else {
                     buttonChoiceWordTh.classList.add("incorrect");
+
                     buttonChoiceWordTh.textContent = currentDictionary[userSelectedIndex].word_en
                         + ' = ' + currentDictionary[userSelectedIndex].pronunciation
                         + ' = ' + currentDictionary[userSelectedIndex].word_th;
@@ -1372,33 +1376,40 @@ function htmlMultipleChoice(questionWordIndex) {
                 attemptAnswerCount++;
                 feedback();
             });
-            /*
-                        buttonChoiceWordTh.addEventListener('dblclick', function () {
-                            var spanWordTh = this;
-                            if (window.getSelection) {
-                                var range = document.createRange();
-                                range.selectNode(spanWordTh);
-                                window.getSelection().removeAllRanges();
-                                window.getSelection().addRange(range);
-                            } else if (document.selection) {
-                                var range = document.body.createTextRange();
-                                range.moveToElementText(spanWordTh);
-                                range.select();
-                            }
-            
-                            textToSpeech(buttonChoiceWordTh.textContent);
-            
-                        });
-            */
-            divChoiceWord.appendChild(pChoiceWord);
 
-            choiceWords.appendChild(divChoiceWord);
+            buttonChoiceWordTh.addEventListener('dblclick', function () {
+                var spanWordTh = this;
+                if (window.getSelection) {
+                    var range = document.createRange();
+                    range.selectNode(spanWordTh);
+                    window.getSelection().removeAllRanges();
+                    window.getSelection().addRange(range);
+                } else if (document.selection) {
+                    var range = document.body.createTextRange();
+                    range.moveToElementText(spanWordTh);
+                    range.select();
+                }
+
+                textToSpeech(buttonChoiceWordTh.textContent);
+
+            });
+
+            //        divChoiceWord.appendChild(liChoiceWord);
+
+            ulSearchWords.appendChild(liChoiceWord);
+
+            /*
+                const choiceWords = document.getElementById("choiceWords");
+                choiceWords.innerHTML = "";
+            */
+
+            //            choiceWords.appendChild(divChoiceWord);
 
         });
-
-    const searchWords = document.getElementById("searchWords");
-    searchWords.innerHTML = '';
-
+    /*
+        const searchWords = document.getElementById("searchWords");
+        searchWords.innerHTML = '';
+    */
     /*
         const exampleContainer = document.getElementById("example");
         exampleContainer.innerHTML = "";
