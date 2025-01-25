@@ -55,6 +55,16 @@ ul#searchWords {
     list-style: none;
 }
 
+#input-lang {
+    display: flex;
+    justify-content: space-between;
+}
+
+#lang {
+    margin-right: 1rem;
+    margin-bottom: 1rem;
+}
+
 #searchWords li {
     display: flex;
     justify-content: space-between;

@@ -978,7 +978,9 @@ const dictionaries = {
 
 const dictionaryIncorrectAnswers = [];
 
+//let lang = "EN";
 let wordIndex = 0;
+let questionWordIndex = wordIndex;
 let dictionary = [];  // used for word search
 let currentDictionary = [];
 let selectedDictionaryNames = []; // selected dictionary checkboxes
@@ -992,12 +994,34 @@ let attemptAnswerCount = 0;
 
 // input textbox for search word or input textbox used to display word from chosen dictionary
 const searchWord = document.getElementById("searchWord");
+const currentLang = document.getElementById("lang");
 
 const incorrectAnswersOnly = document.getElementById("incorrectAnswersOnly");
 const randomizeCheckbox = document.getElementById("randomize");
 const dictionaryCheckboxes = document.querySelectorAll('.checkbox-dictionary-container input[type="checkbox"]');
 
 initialize();
+
+currentLang.addEventListener("click", function () {
+    const lang = currentLang.getAttribute("data-lang");
+
+    if (lang === "TH") {
+        currentLang.dataset.lang = "EN"
+        currentLang.textContent = "EN";
+        currentLang.innerText = "EN";
+    } else {
+        currentLang.dataset.lang = "TH"
+        currentLang.textContent = "TH";
+        currentLang.innerText = "TH";
+    }
+
+    if (currentDictionary.length > 0) {
+        htmlMultipleChoice(wordIndex);
+    } else {
+        searchWord.value = 'Select a dictionary';
+    }
+
+});
 
 dictionaryCheckboxes.forEach(function (dictionaryCheckbox) {
 
@@ -1297,11 +1321,24 @@ function uncheckSelectedCheckboxes(checkboxes) {
 
 function htmlMultipleChoice(questionWordIndex) {
 
+
+    if (currentDictionary.length <= 0) {
+        searchWord.value = 'Select a dictionary';
+        return;
+    }
+
     const ulSearchWords = document.getElementById("searchWords");
     ulSearchWords.innerHTML = '';
 
     let randomWords = [];
-    searchWord.value = currentDictionary[questionWordIndex].word_en;
+
+
+    if ("TH" === currentLang.dataset.lang) {
+        searchWord.value = currentDictionary[questionWordIndex].word_th;
+    } else {
+        searchWord.value = currentDictionary[questionWordIndex].word_en;
+    }
+    //   searchWord.value = currentDictionary[questionWordIndex].word_en;
 
     // get multiple choice word indexes, add index for correct answer, shuffle the array
     randomWords = getRandomIntArray(questionWordIndex, currentDictionary.length);
@@ -1319,6 +1356,7 @@ function htmlMultipleChoice(questionWordIndex) {
             buttonChoiceWord.textContent = currentDictionary[userSelectedIndex].pronunciation;
             liChoiceWord.appendChild(buttonChoiceWord);
             //            divChoiceWord.appendChild(buttonChoiceWord);
+
             buttonChoiceWord.addEventListener("click", function () {
                 if (currentDictionary[questionWordIndex].pronunciation === currentDictionary[userSelectedIndex].pronunciation) {
                     buttonChoiceWord.classList.add("correct");
@@ -1344,8 +1382,15 @@ function htmlMultipleChoice(questionWordIndex) {
             });
 
             const buttonChoiceWordTh = document.createElement("button");
-            buttonChoiceWordTh.textContent = currentDictionary[userSelectedIndex].word_th;
-            buttonChoiceWordTh.lang = "th";
+
+            if ("TH" === currentLang.dataset.lang) {
+                buttonChoiceWordTh.textContent = currentDictionary[userSelectedIndex].word_en;
+                buttonChoiceWordTh.lang = "EN";
+            } else {
+                buttonChoiceWordTh.textContent = currentDictionary[userSelectedIndex].word_th;
+                buttonChoiceWordTh.lang = "TH";
+            }
+
             liChoiceWord.appendChild(buttonChoiceWordTh);
             //            divChoiceWord.appendChild(buttonChoiceWordTh);
 
