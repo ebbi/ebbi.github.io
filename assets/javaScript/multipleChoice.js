@@ -1395,34 +1395,34 @@ function htmlMultipleChoice(questionWordIndex) {
             //            divChoiceWord.appendChild(buttonChoiceWordTh);
 
             buttonChoiceWordTh.classList.add("thai-button");
-
-            buttonChoiceWordTh.addEventListener("click", function () {
-                if (currentDictionary[questionWordIndex].pronunciation === currentDictionary[userSelectedIndex].pronunciation) {
-                    buttonChoiceWordTh.classList.add("correct");
-                    correctAnswerCount++;
-                } else {
-                    buttonChoiceWordTh.classList.add("incorrect");
-
-                    buttonChoiceWordTh.textContent = currentDictionary[userSelectedIndex].word_en
-                        + ' = ' + currentDictionary[userSelectedIndex].pronunciation
-                        + ' = ' + currentDictionary[userSelectedIndex].word_th;
-
-                    incorrectAnswerCount++;
-                    const found = dictionaryIncorrectAnswers.find(
-                        ({ pronunciation }) => pronunciation === currentDictionary[questionWordIndex].pronunciation);
-                    if (!found) {
-                        dictionaryIncorrectAnswers.push(currentDictionary[questionWordIndex]);
-
-                        if (dictionaryIncorrectAnswers.length > NoAnswerChoices) {
-                            document.getElementById("incorrectAnswersOnlyDiv").hidden = false;
-                        }
-                    }
-                }
-                attemptAnswerCount++;
-                feedback();
-            });
-
-            buttonChoiceWordTh.addEventListener('dblclick', function () {
+            /*
+                        buttonChoiceWordTh.addEventListener("click", function () {
+                            if (currentDictionary[questionWordIndex].pronunciation === currentDictionary[userSelectedIndex].pronunciation) {
+                                buttonChoiceWordTh.classList.add("correct");
+                                correctAnswerCount++;
+                            } else {
+                                buttonChoiceWordTh.classList.add("incorrect");
+            
+                                buttonChoiceWordTh.textContent = currentDictionary[userSelectedIndex].word_en
+                                    + ' = ' + currentDictionary[userSelectedIndex].pronunciation
+                                    + ' = ' + currentDictionary[userSelectedIndex].word_th;
+            
+                                incorrectAnswerCount++;
+                                const found = dictionaryIncorrectAnswers.find(
+                                    ({ pronunciation }) => pronunciation === currentDictionary[questionWordIndex].pronunciation);
+                                if (!found) {
+                                    dictionaryIncorrectAnswers.push(currentDictionary[questionWordIndex]);
+            
+                                    if (dictionaryIncorrectAnswers.length > NoAnswerChoices) {
+                                        document.getElementById("incorrectAnswersOnlyDiv").hidden = false;
+                                    }
+                                }
+                            }
+                            attemptAnswerCount++;
+                            feedback();
+                        });
+            */
+            buttonChoiceWordTh.addEventListener('click', function () {
                 var spanWordTh = this;
                 if (window.getSelection) {
                     var range = document.createRange();
