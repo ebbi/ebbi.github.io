@@ -1530,24 +1530,24 @@ function textToSpeech(text) {
 
     const voices = window.speechSynthesis.getVoices();
 
-    /*
-                    if ('speechSynthesis' in window) {
-    
-                        let voices = window.speechSynthesis.getVoices();
-    
-                        let thaiVoice = voices.find(voice => voice.lang === 'th-TH');
-    
-                        let utterance = new SpeechSynthesisUtterance('สวัสดีครับ');
-    
-                        utterance.voice = thaiVoice;
-    
-                        if (typeof thaiVoice !== 'undefined') {
-                            window.speechSynthesis.speak(utterance);
-                        }
-                    } else {
-                        console.log('SpeechSynthesis API is not available in this browser');
-                    }
-    */
+
+    if ('speechSynthesis' in window) {
+
+        let voices = window.speechSynthesis.getVoices();
+
+        let thaiVoice = voices.find(voice => voice.lang === 'th-TH');
+
+        //                   let utterance = new SpeechSynthesisUtterance('สวัสดีครับ');
+
+        utterance.voice = thaiVoice;
+
+        if (typeof thaiVoice !== 'undefined') {
+            window.speechSynthesis.speak(utterance);
+        }
+    } else {
+        console.log('SpeechSynthesis API is not available in this browser');
+    }
+
     /*
         voices.forEach((voice) => {
     
@@ -1561,8 +1561,8 @@ function textToSpeech(text) {
         });
     */
 
-    let thaiVoice = voices.find(voice => voice.name === 'ไทย ไทย'); // see th.json in assets
-    utterance.voice = thaiVoice;
+    //   let thaiVoice = voices.find(voice => voice.name === 'ไทย ไทย'); // see th.json in assets
+    //   utterance.voice = thaiVoice;
 
     if (utterance.voice != null) {
         window.speechSynthesis.speak(utterance);
