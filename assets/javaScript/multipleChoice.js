@@ -927,13 +927,13 @@ const dictionaryRW1LowClassConsonants = [
     { word_en: "Monkey", word_th: "ล", pronunciation: "lɔɔ liŋ" }
 ];
 const dictionaryRW1MiddleClassConsonants = [
-    { word_en: "Chicken", word_th: "ก", pronunciation: "gɔɔ gài" },
-    { word_en: "Plate", word_th: "จ", pronunciation: "jɔɔ jaan" },
-    { word_en: "Child", word_th: "ด", pronunciation: "dɔɔ dèk" },
-    { word_en: "Turtle", word_th: "ต", pronunciation: "dtɔɔ dtàw" },
-    { word_en: "Leaf", word_th: "บ", pronunciation: "bɔɔ bai-máay" },
-    { word_en: "Fish", word_th: "ป", pronunciation: "bpɔɔ bplaa" },
-    { word_en: "Basin", word_th: "อ", pronunciation: "ɔɔ àaŋ" }
+    { word_en: "Chicken", word_th: "ก", pronunciation: "gɔɔ gài", sound: "thai_consonants/k_kai.wav" },
+    { word_en: "Plate", word_th: "จ", pronunciation: "jɔɔ jaan", sound: "thai_consonants/j_jan.wav" },
+    { word_en: "Child", word_th: "ด", pronunciation: "dɔɔ dèk", sound: "thai_consonants/d_dek.wav" },
+    { word_en: "Turtle", word_th: "ต", pronunciation: "dtɔɔ dtàw", sound: "thai_consonants/th_thao.wav" },
+    { word_en: "Leaf", word_th: "บ", pronunciation: "bɔɔ bai-máay", sound: "thai_consonants/b_baimai.wav" },
+    { word_en: "Fish", word_th: "ป", pronunciation: "bpɔɔ bplaa", sound: "thai_consonants/p_pla.wav" },
+    { word_en: "Basin", word_th: "อ", pronunciation: "ɔɔ àaŋ", sound: "thai_consonants/a_ang.wav" }
 ];
 const dictionaryRW1HighClassConsonants = [
     { word_en: "Bee", word_th: "ผ", pronunciation: "phɔ̌ɔ phω̂ŋ" },
@@ -1379,6 +1379,16 @@ function htmlMultipleChoice(questionWordIndex) {
                 }
                 attemptAnswerCount++;
                 feedback();
+
+
+                if (currentDictionary[userSelectedIndex].sound != undefined) {
+                    const soundFile = "../assets/sound/" + currentDictionary[userSelectedIndex].sound;
+                    const audio = new Audio(soundFile);
+                    audio.play();
+                    //            alert(currentDictionary[questionWordIndex].sound);
+                }
+
+
             });
 
             const buttonChoiceWordTh = document.createElement("button");
@@ -1423,6 +1433,14 @@ function htmlMultipleChoice(questionWordIndex) {
                         });
             */
             buttonChoiceWordTh.addEventListener('click', function () {
+
+                if (currentDictionary[userSelectedIndex].sound != undefined) {
+                    const soundFile = "../assets/sound/" + currentDictionary[userSelectedIndex].sound;
+                    const audio = new Audio(soundFile);
+                    audio.play();
+                    //            alert(currentDictionary[questionWordIndex].sound);
+                }
+
                 var spanWordTh = this;
                 if (window.getSelection) {
                     var range = document.createRange();
@@ -1436,6 +1454,7 @@ function htmlMultipleChoice(questionWordIndex) {
                 }
 
                 textToSpeech(buttonChoiceWordTh.textContent);
+
 
             });
 
