@@ -1008,6 +1008,7 @@ let attemptAnswerCount = 0;
 // input textbox for search word or input textbox used to display word from chosen dictionary
 const searchWord = document.getElementById("searchWord");
 const currentLang = document.getElementById("lang");
+const thSpeak = document.getElementById("thSpeak");
 
 const incorrectAnswersOnly = document.getElementById("incorrectAnswersOnly");
 const randomizeCheckbox = document.getElementById("randomize");
@@ -1201,6 +1202,22 @@ searchWord.addEventListener('input', function (event) {
     */
     //    console.log(wordMatches);
 });
+
+
+thSpeak.addEventListener("click", function () {
+    const thWordInput = document.getElementById("thWord");
+    const thWord = thWordInput.value;
+
+    let url = "https://translate.google.com/translate_tts?ie=UTF-8&client=tw-ob&tl=th&q=";
+    url = url + thWord;
+
+    let a = document.getElementById("soundLink"); //or grab it by tagname etc
+    a.href = url;
+
+
+
+});
+
 
 function initialize() {
 
