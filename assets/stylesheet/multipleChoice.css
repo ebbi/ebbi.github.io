@@ -12,6 +12,10 @@ span.notice {
     padding: 1rem 0.25rem;
 }
 
+input {
+    width: 75%;
+}
+
 #example {
     color: black;
     background-color: white;
@@ -55,15 +59,16 @@ ul#searchWords {
     list-style: none;
 }
 
+/*
 #input-lang {
     display: flex;
     justify-content: space-between;
 }
-
 #lang {
     margin-right: 1rem;
     margin-bottom: 1rem;
 }
+*/
 
 #searchWords li {
     display: flex;

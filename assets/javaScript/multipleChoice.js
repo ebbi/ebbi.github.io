@@ -945,6 +945,19 @@ const dictionaryRW1HighClassConsonants = [
     { word_en: "Cymbal", word_th: "ฉ", pronunciation: "chɔ̌ɔ chìŋ", sound: "thai_consonants/ch_ching.wav" }
 ];
 
+const dictionaryVowels = [
+    { word_en: "a", word_th: "-ะ", pronunciation: "a", sound: "thai_vowels/.wav" },
+    { word_en: "", word_th: "", pronunciation: "", sound: "thai_vowels/.wav" },
+    { word_en: "", word_th: "", pronunciation: "", sound: "thai_vowels/.wav" },
+    { word_en: "", word_th: "", pronunciation: "", sound: "thai_vowels/.wav" },
+    { word_en: "", word_th: "", pronunciation: "", sound: "thai_vowels/.wav" },
+    { word_en: "", word_th: "", pronunciation: "", sound: "thai_vowels/.wav" },
+    { word_en: "", word_th: "", pronunciation: "", sound: "thai_vowels/.wav" },
+    { word_en: "", word_th: "", pronunciation: "", sound: "thai_vowels/.wav" },
+    { word_en: "", word_th: "", pronunciation: "", sound: "thai_vowels/.wav" },
+
+];
+
 const dictionaries = {
 
     // book 1
@@ -1154,6 +1167,8 @@ searchWord.addEventListener('input', function (event) {
             li.appendChild(span_word_th);
 
             span_word_th.addEventListener('click', function () {
+
+                /*
                 var spanWordTh = this;
                 if (window.getSelection) {
                     var range = document.createRange();
@@ -1167,7 +1182,7 @@ searchWord.addEventListener('input', function (event) {
                 }
 
                 textToSpeech(span_word_th.textContent);
-
+*/
             });
 
             ulSearchWords.appendChild(li);
@@ -1386,6 +1401,12 @@ function htmlMultipleChoice(questionWordIndex) {
                     const audio = new Audio(soundFile);
                     audio.play();
                     //            alert(currentDictionary[questionWordIndex].sound);
+                } else {
+                    const soundURL = "https://translate.google.com/translate_tts?ie=UTF-8&client=tw-ob&tl=th&q=บ้าน";
+                    const audio = new Audio(soundURL);
+                    audio.play();
+
+                    // https://translate.google.com/translate_tts?ie=UTF-8&client=tw-ob&tl=th&q=บ้าน
                 }
 
 
@@ -1439,22 +1460,29 @@ function htmlMultipleChoice(questionWordIndex) {
                     const audio = new Audio(soundFile);
                     audio.play();
                     //            alert(currentDictionary[questionWordIndex].sound);
+                } else {
+                    const soundURL = "https://translate.google.com/translate_tts?ie=UTF-8&client=tw-ob&tl=th&q=บ้าน";
+                    const audio = new Audio(soundURL);
+                    audio.play();
+                    // 
+                    // https://translate.google.com/translate_tts?ie=UTF-8&client=tw-ob&tl=th&q=บ้าน
                 }
 
-                var spanWordTh = this;
-                if (window.getSelection) {
-                    var range = document.createRange();
-                    range.selectNode(spanWordTh);
-                    window.getSelection().removeAllRanges();
-                    window.getSelection().addRange(range);
-                } else if (document.selection) {
-                    var range = document.body.createTextRange();
-                    range.moveToElementText(spanWordTh);
-                    range.select();
-                }
-
+                /*
+                                var spanWordTh = this;
+                                if (window.getSelection) {
+                                    var range = document.createRange();
+                                    range.selectNode(spanWordTh);
+                                    window.getSelection().removeAllRanges();
+                                    window.getSelection().addRange(range);
+                                } else if (document.selection) {
+                                    var range = document.body.createTextRange();
+                                    range.moveToElementText(spanWordTh);
+                                    range.select();
+                                }
+                
                 textToSpeech(buttonChoiceWordTh.textContent);
-
+*/
 
             });
 
@@ -1543,6 +1571,8 @@ function shuffle(array) {
     return array;
 }
 
+/*
+
 function textToSpeech(text) {
 
     const utterance = new SpeechSynthesisUtterance(text);
@@ -1567,7 +1597,7 @@ function textToSpeech(text) {
         console.log('SpeechSynthesis API is not available in this browser');
     }
 
-    /*
+    
         voices.forEach((voice) => {
     
             if (voice.lang === "th-TH" || voice.lang === "th" || voice.lang === "TH") {
@@ -1578,13 +1608,16 @@ function textToSpeech(text) {
             }
     
         });
-    */
+    
 
-    //   let thaiVoice = voices.find(voice => voice.name === 'ไทย ไทย'); // see th.json in assets
-    //   utterance.voice = thaiVoice;
+//   let thaiVoice = voices.find(voice => voice.name === 'ไทย ไทย'); // see th.json in assets
+//   utterance.voice = thaiVoice;
 
-    if (utterance.voice != null) {
-        window.speechSynthesis.speak(utterance);
-    }
+if (utterance.voice != null) {
+    window.speechSynthesis.speak(utterance);
+}
+
 
 }
+
+*/
