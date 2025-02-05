@@ -911,50 +911,50 @@ const conversations = [
 // Thai Alphabet
 
 const dictionaryRW1LowClassConsonants = [
-    { word_en: "Offering tray", word_th: "พ", pronunciation: "phɔɔ phaan", sound: "thai_consonants/ph_phan.wav" },
-    { word_en: "Teeth", word_th: "ฟ", pronunciation: "fɔɔ fan", sound: "thai_consonants/f_fan.wav" },
-    { word_en: "Soldier", word_th: "ท", pronunciation: "thɔɔ thá-hɑ̌an", sound: "thai_consonants/th_than.wav" },
-    { word_en: "Buffalo", word_th: "ค", pronunciation: "khɔɔ khwaay", sound: "thai_consonants/kh_khwai.wav" },
-    { word_en: "Chain", word_th: "ซ", pronunciation: "sɔɔ sôo", sound: "thai_consonants/s_so.wav" },
-    { word_en: "Owl", word_th: "ฮ", pronunciation: "hɔɔ nók-hûuk", sound: "thai_consonants/h_nkhuk.wav" },
-    { word_en: "Elephant", word_th: "ช", pronunciation: "chɔɔ cháaŋ", sound: "thai_consonants/ch_chang.wav" },
-    { word_en: "Snake", word_th: "ง", pronunciation: "ŋɔɔ ŋuu", sound: "thai_consonants/ng_ngu.wav" },
-    { word_en: "Giant", word_th: "ย", pronunciation: "yɔɔ yák", sound: "thai_consonants/y_yak.wav" },
-    { word_en: "Mouse", word_th: "น", pronunciation: "nɔɔ nǔu", sound: "thai_consonants/n_nu.wav" },
-    { word_en: "Boat", word_th: "ร", pronunciation: "rɔɔ rωa", sound: "thai_consonants/r_rua.wav" },
-    { word_en: "Ring", word_th: "ว", pronunciation: "wɔɔ wɛ̌ɛn", sound: "thai_consonants/w_waen.wav" },
-    { word_en: "Horse", word_th: "ม", pronunciation: "mɔɔ máa", sound: "thai_consonants/m_ma.wav" },
-    { word_en: "Monkey", word_th: "ล", pronunciation: "lɔɔ liŋ", sound: "thai_consonants/l_ling.wav" }
+    { word_en: "Offering tray", word_th: "พ", pronunciation: "phɔɔ phaan", sound_th: "thai_consonants/ph_phan.wav" },
+    { word_en: "Teeth", word_th: "ฟ", pronunciation: "fɔɔ fan", sound_th: "thai_consonants/f_fan.wav" },
+    { word_en: "Soldier", word_th: "ท", pronunciation: "thɔɔ thá-hɑ̌an", sound_th: "thai_consonants/th_than.wav" },
+    { word_en: "Buffalo", word_th: "ค", pronunciation: "khɔɔ khwaay", sound_th: "thai_consonants/kh_khwai.wav" },
+    { word_en: "Chain", word_th: "ซ", pronunciation: "sɔɔ sôo", sound_th: "thai_consonants/s_so.wav" },
+    { word_en: "Owl", word_th: "ฮ", pronunciation: "hɔɔ nók-hûuk", sound_th: "thai_consonants/h_nkhuk.wav" },
+    { word_en: "Elephant", word_th: "ช", pronunciation: "chɔɔ cháaŋ", sound_th: "thai_consonants/ch_chang.wav" },
+    { word_en: "Snake", word_th: "ง", pronunciation: "ŋɔɔ ŋuu", sound_th: "thai_consonants/ng_ngu.wav" },
+    { word_en: "Giant", word_th: "ย", pronunciation: "yɔɔ yák", sound_th: "thai_consonants/y_yak.wav" },
+    { word_en: "Mouse", word_th: "น", pronunciation: "nɔɔ nǔu", sound_th: "thai_consonants/n_nu.wav" },
+    { word_en: "Boat", word_th: "ร", pronunciation: "rɔɔ rωa", sound_th: "thai_consonants/r_rua.wav" },
+    { word_en: "Ring", word_th: "ว", pronunciation: "wɔɔ wɛ̌ɛn", sound_th: "thai_consonants/w_waen.wav" },
+    { word_en: "Horse", word_th: "ม", pronunciation: "mɔɔ máa", sound_th: "thai_consonants/m_ma.wav" },
+    { word_en: "Monkey", word_th: "ล", pronunciation: "lɔɔ liŋ", sound_th: "thai_consonants/l_ling.wav" }
 ];
 const dictionaryRW1MiddleClassConsonants = [
-    { word_en: "Chicken", word_th: "ก", pronunciation: "gɔɔ gài", sound: "thai_consonants/k_kai.wav" },
-    { word_en: "Plate", word_th: "จ", pronunciation: "jɔɔ jaan", sound: "thai_consonants/j_jan.wav" },
-    { word_en: "Child", word_th: "ด", pronunciation: "dɔɔ dèk", sound: "thai_consonants/d_dek.wav" },
-    { word_en: "Turtle", word_th: "ต", pronunciation: "dtɔɔ dtàw", sound: "thai_consonants/th_thao.wav" },
-    { word_en: "Leaf", word_th: "บ", pronunciation: "bɔɔ bai-máay", sound: "thai_consonants/b_baimai.wav" },
-    { word_en: "Fish", word_th: "ป", pronunciation: "bpɔɔ bplaa", sound: "thai_consonants/p_pla.wav" },
-    { word_en: "Basin", word_th: "อ", pronunciation: "ɔɔ àaŋ", sound: "thai_consonants/a_ang.wav" }
+    { word_en: "Chicken", word_th: "ก", pronunciation: "gɔɔ gài", sound_th: "thai_consonants/k_kai.wav" },
+    { word_en: "Plate", word_th: "จ", pronunciation: "jɔɔ jaan", sound_th: "thai_consonants/j_jan.wav" },
+    { word_en: "Child", word_th: "ด", pronunciation: "dɔɔ dèk", sound_th: "thai_consonants/d_dek.wav" },
+    { word_en: "Turtle", word_th: "ต", pronunciation: "dtɔɔ dtàw", sound_th: "thai_consonants/th_thao.wav" },
+    { word_en: "Leaf", word_th: "บ", pronunciation: "bɔɔ bai-máay", sound_th: "thai_consonants/b_baimai.wav" },
+    { word_en: "Fish", word_th: "ป", pronunciation: "bpɔɔ bplaa", sound_th: "thai_consonants/p_pla.wav" },
+    { word_en: "Basin", word_th: "อ", pronunciation: "ɔɔ àaŋ", sound_th: "thai_consonants/a_ang.wav" }
 ];
 const dictionaryRW1HighClassConsonants = [
-    { word_en: "Bee", word_th: "ผ", pronunciation: "phɔ̌ɔ phω̂ŋ", sound: "thai_consonants/ph_phung.wav" },
-    { word_en: "Lid/Cover", word_th: "ฝ", pronunciation: "fɔ̌ɔ făa", sound: "thai_consonants/f_faa.wav" },
-    { word_en: "Bag", word_th: "ถ", pronunciation: "thɔ̌ɔ thŭŋ", sound: "thai_consonants/th_thung.wav" },
-    { word_en: "Egg", word_th: "ข", pronunciation: "khɔ̌ɔ khà", sound: "thai_consonants/kh_khai.wav" },
-    { word_en: "Tiger", word_th: "ส", pronunciation: "sɔ̌ɔ sɯ̌a", sound: "thai_consonants/s_sua.wav" },
-    { word_en: "Treasure box", word_th: "ห", pronunciation: "hɔ̌ɔ hìip", sound: "thai_consonants/h_hib.wav" },
-    { word_en: "Cymbal", word_th: "ฉ", pronunciation: "chɔ̌ɔ chìŋ", sound: "thai_consonants/ch_ching.wav" }
+    { word_en: "Bee", word_th: "ผ", pronunciation: "phɔ̌ɔ phω̂ŋ", sound_th: "thai_consonants/ph_phung.wav" },
+    { word_en: "Lid/Cover", word_th: "ฝ", pronunciation: "fɔ̌ɔ făa", sound_th: "thai_consonants/f_faa.wav" },
+    { word_en: "Bag", word_th: "ถ", pronunciation: "thɔ̌ɔ thŭŋ", sound_th: "thai_consonants/th_thung.wav" },
+    { word_en: "Egg", word_th: "ข", pronunciation: "khɔ̌ɔ khà", sound_th: "thai_consonants/kh_khai.wav" },
+    { word_en: "Tiger", word_th: "ส", pronunciation: "sɔ̌ɔ sɯ̌a", sound_th: "thai_consonants/s_sua.wav" },
+    { word_en: "Treasure box", word_th: "ห", pronunciation: "hɔ̌ɔ hìip", sound_th: "thai_consonants/h_hib.wav" },
+    { word_en: "Cymbal", word_th: "ฉ", pronunciation: "chɔ̌ɔ chìŋ", sound_th: "thai_consonants/ch_ching.wav" }
 ];
 
 const dictionaryVowels = [
-    { word_en: "a", word_th: "-ะ", pronunciation: "a", sound: "thai_vowels/.wav" },
-    { word_en: "", word_th: "", pronunciation: "", sound: "thai_vowels/.wav" },
-    { word_en: "", word_th: "", pronunciation: "", sound: "thai_vowels/.wav" },
-    { word_en: "", word_th: "", pronunciation: "", sound: "thai_vowels/.wav" },
-    { word_en: "", word_th: "", pronunciation: "", sound: "thai_vowels/.wav" },
-    { word_en: "", word_th: "", pronunciation: "", sound: "thai_vowels/.wav" },
-    { word_en: "", word_th: "", pronunciation: "", sound: "thai_vowels/.wav" },
-    { word_en: "", word_th: "", pronunciation: "", sound: "thai_vowels/.wav" },
-    { word_en: "", word_th: "", pronunciation: "", sound: "thai_vowels/.wav" },
+    { word_en: "a", word_th: "-ะ", pronunciation: "a", sound_th: "thai_vowels/.wav" },
+    { word_en: "", word_th: "", pronunciation: "", sound_th: "thai_vowels/.wav" },
+    { word_en: "", word_th: "", pronunciation: "", sound_th: "thai_vowels/.wav" },
+    { word_en: "", word_th: "", pronunciation: "", sound_th: "thai_vowels/.wav" },
+    { word_en: "", word_th: "", pronunciation: "", sound_th: "thai_vowels/.wav" },
+    { word_en: "", word_th: "", pronunciation: "", sound_th: "thai_vowels/.wav" },
+    { word_en: "", word_th: "", pronunciation: "", sound_th: "thai_vowels/.wav" },
+    { word_en: "", word_th: "", pronunciation: "", sound_th: "thai_vowels/.wav" },
+    { word_en: "", word_th: "", pronunciation: "", sound_th: "thai_vowels/.wav" },
 
 ];
 
@@ -1214,8 +1214,6 @@ thSpeak.addEventListener("click", function () {
     let a = document.getElementById("soundLink"); //or grab it by tagname etc
     a.href = url;
 
-
-
 });
 
 
@@ -1383,13 +1381,12 @@ function htmlMultipleChoice(questionWordIndex) {
             //        const divChoiceWord = document.createElement("div");
             const liChoiceWord = document.createElement("li");
 
-
             const buttonChoiceWord = document.createElement("button");
             buttonChoiceWord.textContent = currentDictionary[userSelectedIndex].pronunciation;
             liChoiceWord.appendChild(buttonChoiceWord);
-            //            divChoiceWord.appendChild(buttonChoiceWord);
 
             buttonChoiceWord.addEventListener("click", function () {
+
                 if (currentDictionary[questionWordIndex].pronunciation === currentDictionary[userSelectedIndex].pronunciation) {
                     buttonChoiceWord.classList.add("correct");
                     correctAnswerCount++;
@@ -1409,28 +1406,19 @@ function htmlMultipleChoice(questionWordIndex) {
                         }
                     }
                 }
-                attemptAnswerCount++;
-                feedback();
 
-
-                if (currentDictionary[userSelectedIndex].sound != undefined) {
-                    const soundFile = "../assets/sound/" + currentDictionary[userSelectedIndex].sound;
+                if (currentDictionary[userSelectedIndex].sound_th != undefined) {
+                    const soundFile = "../assets/sound/" + currentDictionary[userSelectedIndex].sound_th;
                     const audio = new Audio(soundFile);
                     audio.play();
-                    //            alert(currentDictionary[questionWordIndex].sound);
-                } else {
-                    const soundURL = "https://translate.google.com/translate_tts?ie=UTF-8&client=tw-ob&tl=th&q=บ้าน";
-                    const audio = new Audio(soundURL);
-                    audio.play();
-
-                    // https://translate.google.com/translate_tts?ie=UTF-8&client=tw-ob&tl=th&q=บ้าน
                 }
 
+                attemptAnswerCount++;
+                feedback();
 
             });
 
             const buttonChoiceWordTh = document.createElement("button");
-
             if ("TH" === currentLang.dataset.lang) {
                 buttonChoiceWordTh.textContent = currentDictionary[userSelectedIndex].word_en;
                 buttonChoiceWordTh.lang = "EN";
@@ -1440,105 +1428,41 @@ function htmlMultipleChoice(questionWordIndex) {
             }
 
             liChoiceWord.appendChild(buttonChoiceWordTh);
-            //            divChoiceWord.appendChild(buttonChoiceWordTh);
-
             buttonChoiceWordTh.classList.add("thai-button");
-            /*
-                        buttonChoiceWordTh.addEventListener("click", function () {
-                            if (currentDictionary[questionWordIndex].pronunciation === currentDictionary[userSelectedIndex].pronunciation) {
-                                buttonChoiceWordTh.classList.add("correct");
-                                correctAnswerCount++;
-                            } else {
-                                buttonChoiceWordTh.classList.add("incorrect");
-            
-                                buttonChoiceWordTh.textContent = currentDictionary[userSelectedIndex].word_en
-                                    + ' = ' + currentDictionary[userSelectedIndex].pronunciation
-                                    + ' = ' + currentDictionary[userSelectedIndex].word_th;
-            
-                                incorrectAnswerCount++;
-                                const found = dictionaryIncorrectAnswers.find(
-                                    ({ pronunciation }) => pronunciation === currentDictionary[questionWordIndex].pronunciation);
-                                if (!found) {
-                                    dictionaryIncorrectAnswers.push(currentDictionary[questionWordIndex]);
-            
-                                    if (dictionaryIncorrectAnswers.length > NoAnswerChoices) {
-                                        document.getElementById("incorrectAnswersOnlyDiv").hidden = false;
-                                    }
-                                }
-                            }
-                            attemptAnswerCount++;
-                            feedback();
-                        });
-            */
+
             buttonChoiceWordTh.addEventListener('click', function () {
 
-                if (currentDictionary[userSelectedIndex].sound != undefined) {
-                    const soundFile = "../assets/sound/" + currentDictionary[userSelectedIndex].sound;
-                    const audio = new Audio(soundFile);
-                    audio.play();
-                    //            alert(currentDictionary[questionWordIndex].sound);
+                if (currentDictionary[questionWordIndex].pronunciation === currentDictionary[userSelectedIndex].pronunciation) {
+                    buttonChoiceWordTh.classList.add("correct");
+                    correctAnswerCount++;
                 } else {
-                    const soundURL = "https://translate.google.com/translate_tts?ie=UTF-8&client=tw-ob&tl=th&q=บ้าน";
-                    const audio = new Audio(soundURL);
-                    audio.play();
-                    // 
-                    // https://translate.google.com/translate_tts?ie=UTF-8&client=tw-ob&tl=th&q=บ้าน
+                    buttonChoiceWordTh.classList.add("incorrect");
+                    buttonChoiceWordTh.textContent = currentDictionary[userSelectedIndex].word_en
+                        + ' = ' + currentDictionary[userSelectedIndex].pronunciation
+                        + ' = ' + currentDictionary[userSelectedIndex].word_th;
+                    incorrectAnswerCount++;
+                    const found = dictionaryIncorrectAnswers.find(
+                        ({ pronunciation }) => pronunciation === currentDictionary[questionWordIndex].pronunciation);
+                    if (!found) {
+                        dictionaryIncorrectAnswers.push(currentDictionary[questionWordIndex]);
+
+                        if (dictionaryIncorrectAnswers.length > NoAnswerChoices) {
+                            document.getElementById("incorrectAnswersOnlyDiv").hidden = false;
+                        }
+                    }
                 }
 
-                /*
-                                var spanWordTh = this;
-                                if (window.getSelection) {
-                                    var range = document.createRange();
-                                    range.selectNode(spanWordTh);
-                                    window.getSelection().removeAllRanges();
-                                    window.getSelection().addRange(range);
-                                } else if (document.selection) {
-                                    var range = document.body.createTextRange();
-                                    range.moveToElementText(spanWordTh);
-                                    range.select();
-                                }
-                
-                textToSpeech(buttonChoiceWordTh.textContent);
-*/
+                if (currentDictionary[userSelectedIndex].sound_th != undefined) {
+                    const soundFile = "../assets/sound/" + currentDictionary[userSelectedIndex].sound_th;
+                    const audio = new Audio(soundFile);
+                    audio.play();
+                }
 
             });
 
-            //        divChoiceWord.appendChild(liChoiceWord);
-
             ulSearchWords.appendChild(liChoiceWord);
 
-            /*
-                const choiceWords = document.getElementById("choiceWords");
-                choiceWords.innerHTML = "";
-            */
-
-            //            choiceWords.appendChild(divChoiceWord);
-
         });
-    /*
-        const searchWords = document.getElementById("searchWords");
-        searchWords.innerHTML = '';
-    */
-    /*
-        const exampleContainer = document.getElementById("example");
-        exampleContainer.innerHTML = "";
-    
-        const spanExampleEn = document.createElement("span");
-        spanExampleEn.textContent = currentDictionary[questionWordIndex].ex_en;
-        //    spanExampleEn.classList.add("blue");
-        exampleContainer.appendChild(spanExampleEn);
-    
-        const spanExamplePronunciation = document.createElement("div");
-        spanExamplePronunciation.textContent = currentDictionary[questionWordIndex].ex_pronunciation;
-        spanExamplePronunciation.classList.add("blue");
-        exampleContainer.appendChild(spanExamplePronunciation);
-    
-        const spanExampleTh = document.createElement("div");
-        spanExampleTh.lang = "th";
-        spanExampleTh.textContent = currentDictionary[questionWordIndex].ex_th;
-        spanExampleTh.classList.add("dark-red");
-        exampleContainer.appendChild(spanExampleTh);
-    */
 
 }
 
