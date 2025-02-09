@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="/assets/stylesheet/core.css" media="screen">
     <link rel="stylesheet" href="/assets/stylesheet/core-es.css" media="screen">
     <link rel="stylesheet" href="/assets/stylesheet/multipleChoice.css" media="screen">
+    <link rel="stylesheet" href="/assets/stylesheet/editor.css" media="screen">
 
 </head>
 
@@ -110,7 +111,7 @@
 
                 </div>
 
-                <details open>
+                <details>
                     <summary>Select dictionaries</summary>
 
                     <div class="checkbox-dictionary-container font-size-small">
@@ -232,9 +233,17 @@
                 </details>
 
                 <details open>
-                    <summary>Speak</summary>
+                    <summary>Editor / Speak</summary>
+                    <div id="editor">
+                        <p>Click text area for keyboard
+                            <textarea class='keyboard-input'></textarea>
+                        </p>
+                    </div>
+                    <hr>
+
+
                     <div id="input-lang-th">
-                        <p>
+                        <p class="font-size-medium">
                             Paste Thai text and click Get link
                             <br>
                             <!-- placeholder =  Enter a Thai word to speak aloud  -->
@@ -242,9 +251,10 @@
                             <button id="thSpeak">Get link</button>
 
                             <br>
-                            <a id="soundLink" target="_blank"
+                            <a id="soundLink" target="_blank" class="font-size-medium"
                                 href="https://translate.google.com/translate_tts?ie=UTF-8&client=tw-ob&tl=th&q=ใส่คำภาษาไทยเพื่อพูดออกเสียง">
-                                Click here for new browser and click return in new browser to Play the Link
+                                Click here for new browser and click return in new browser address window to Play the
+                                Link
                             </a>
                         </p>
                     </div>
@@ -379,6 +389,7 @@
 
     <script src="/assets/javaScript/dark-light.js"></script>
     <script src="/assets/javaScript/multipleChoice.js"></script>
+    <script src="/assets/javaScript/editor.js"></script>
 
 </body>
 
