@@ -42,6 +42,11 @@ const Keyboard = {
     _createKeys() {
         const fragment = document.createDocumentFragment();
         const keyLayout = [
+            "่",
+            "̀",
+            "́",
+            "̂",
+            "̌",
             "ε",
             "ɔ",
             "ə",
@@ -149,6 +154,15 @@ const Keyboard = {
                     });
                     break;
 
+                case "^":
+                    //                    keyElement.innerHTML = createIconHTML("keyboard_capslock");
+                    keyElement.innerHTML = createIconHTML("^");
+                    keyElement.addEventListener("click", () => {
+                        this.properties.value += "\u0301";
+                        this._triggerEvent("oninput");
+                    });
+                    break;
+
                 case "done":
                     keyElement.classList.add("keyboard-wide", "keyboard-dark");
                     //                   keyElement.innerHTML = createIconHTML("check_circle");
@@ -158,6 +172,7 @@ const Keyboard = {
                         this._triggerEvent("onclose");
                     });
                     break;
+
                 default:
                     keyElement.textContent = key.toLowerCase();
                     keyElement.addEventListener("click", () => {
