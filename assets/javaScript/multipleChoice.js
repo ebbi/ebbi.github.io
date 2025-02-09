@@ -947,13 +947,13 @@ const dictionaryRW1HighClassConsonants = [
 
 const dictionaryVowels = [
     { word_en: "a", word_th: "ะ", pronunciation: "a", sound_th: "thai_vowels/a.mp3" },
-    { word_en: "aa", word_th: "า", pronunciation: "aa", sound_th: "thai_vowels/.wav" },
-    { word_en: "i", word_th: "ิ", pronunciation: "i", sound_th: "thai_vowels/.wav" },
-    { word_en: "ii", word_th: "ี", pronunciation: "ii", sound_th: "thai_vowels/.wav" },
-    { word_en: "w", word_th: "ึ", pronunciation: "w", sound_th: "thai_vowels/.wav" },
-    { word_en: "ww", word_th: "ื", pronunciation: "ww", sound_th: "thai_vowels/.wav" },
-    { word_en: "u", word_th: "ุ", pronunciation: "u", sound_th: "thai_vowels/.wav" },
-    { word_en: "uu", word_th: "ู", pronunciation: "uu", sound_th: "thai_vowels/.wav" }
+    { word_en: "aa", word_th: "า", pronunciation: "aa", sound_th: "thai_vowels/aa.mp3" },
+    { word_en: "i", word_th: "ิ", pronunciation: "i", sound_th: "thai_vowels/i.mp3" },
+    { word_en: "ii", word_th: "ี", pronunciation: "ii", sound_th: "thai_vowels/ii.mp3" },
+    { word_en: "w", word_th: "ึ", pronunciation: "w", sound_th: "thai_vowels/w.mp3" },
+    { word_en: "ww", word_th: "ื", pronunciation: "ww", sound_th: "thai_vowels/ww.mp3" },
+    { word_en: "u", word_th: "ุ", pronunciation: "u", sound_th: "thai_vowels/u.mp3" },
+    { word_en: "uu", word_th: "ู", pronunciation: "uu", sound_th: "thai_vowels/uu.mp3" }
     //   { word_en: "", word_th: "", pronunciation: "", sound_th: "thai_vowels/.wav" }
 
 ];
