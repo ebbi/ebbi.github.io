@@ -913,7 +913,7 @@ const conversations = [
 const dictionaryRW1LowClassConsonants = [
     { word_en: "Offering tray", word_th: "พ", pronunciation: "phɔɔ phaan", sound_th: "thai_consonants/ph_phan.wav" },
     { word_en: "Teeth", word_th: "ฟ", pronunciation: "fɔɔ fan", sound_th: "thai_consonants/f_fan.wav" },
-    { word_en: "Soldier", word_th: "ท", pronunciation: "thɔɔ thá-hɑ̌an", sound_th: "thai_consonants/th_than.wav" },
+    { word_en: "Soldier", word_th: "ท", pronunciation: "thɔɔ thá-hǎan", sound_th: "thai_consonants/th_than.wav" },
     { word_en: "Buffalo", word_th: "ค", pronunciation: "khɔɔ khwaay", sound_th: "thai_consonants/kh_khwai.wav" },
     { word_en: "Chain", word_th: "ซ", pronunciation: "sɔɔ sôo", sound_th: "thai_consonants/s_so.wav" },
     { word_en: "Owl", word_th: "ฮ", pronunciation: "hɔɔ nók-hûuk", sound_th: "thai_consonants/h_nkhuk.wav" },
@@ -921,7 +921,7 @@ const dictionaryRW1LowClassConsonants = [
     { word_en: "Snake", word_th: "ง", pronunciation: "ŋɔɔ ŋuu", sound_th: "thai_consonants/ng_ngu.wav" },
     { word_en: "Giant", word_th: "ย", pronunciation: "yɔɔ yák", sound_th: "thai_consonants/y_yak.wav" },
     { word_en: "Mouse", word_th: "น", pronunciation: "nɔɔ nǔu", sound_th: "thai_consonants/n_nu.wav" },
-    { word_en: "Boat", word_th: "ร", pronunciation: "rɔɔ rωa", sound_th: "thai_consonants/r_rua.wav" },
+    { word_en: "Boat", word_th: "ร", pronunciation: "rɔɔ rwa", sound_th: "thai_consonants/r_rua.wav" },
     { word_en: "Ring", word_th: "ว", pronunciation: "wɔɔ wɛ̌ɛn", sound_th: "thai_consonants/w_waen.wav" },
     { word_en: "Horse", word_th: "ม", pronunciation: "mɔɔ máa", sound_th: "thai_consonants/m_ma.wav" },
     { word_en: "Monkey", word_th: "ล", pronunciation: "lɔɔ liŋ", sound_th: "thai_consonants/l_ling.wav" }
@@ -936,25 +936,25 @@ const dictionaryRW1MiddleClassConsonants = [
     { word_en: "Basin", word_th: "อ", pronunciation: "ɔɔ àaŋ", sound_th: "thai_consonants/a_ang.wav" }
 ];
 const dictionaryRW1HighClassConsonants = [
-    { word_en: "Bee", word_th: "ผ", pronunciation: "phɔ̌ɔ phω̂ŋ", sound_th: "thai_consonants/ph_phung.wav" },
+    { word_en: "Bee", word_th: "ผ", pronunciation: "phɔ̌ɔ phŵŋ", sound_th: "thai_consonants/ph_phung.wav" },
     { word_en: "Lid/Cover", word_th: "ฝ", pronunciation: "fɔ̌ɔ făa", sound_th: "thai_consonants/f_faa.wav" },
     { word_en: "Bag", word_th: "ถ", pronunciation: "thɔ̌ɔ thŭŋ", sound_th: "thai_consonants/th_thung.wav" },
     { word_en: "Egg", word_th: "ข", pronunciation: "khɔ̌ɔ khà", sound_th: "thai_consonants/kh_khai.wav" },
-    { word_en: "Tiger", word_th: "ส", pronunciation: "sɔ̌ɔ sɯ̌a", sound_th: "thai_consonants/s_sua.wav" },
+    { word_en: "Tiger", word_th: "ส", pronunciation: "sɔ̌ɔ sw̌a", sound_th: "thai_consonants/s_sua.wav" },
     { word_en: "Treasure box", word_th: "ห", pronunciation: "hɔ̌ɔ hìip", sound_th: "thai_consonants/h_hib.wav" },
     { word_en: "Cymbal", word_th: "ฉ", pronunciation: "chɔ̌ɔ chìŋ", sound_th: "thai_consonants/ch_ching.wav" }
 ];
 
 const dictionaryVowels = [
-    { word_en: "a", word_th: "-ะ", pronunciation: "a", sound_th: "thai_vowels/.wav" },
-    { word_en: "", word_th: "", pronunciation: "", sound_th: "thai_vowels/.wav" },
-    { word_en: "", word_th: "", pronunciation: "", sound_th: "thai_vowels/.wav" },
-    { word_en: "", word_th: "", pronunciation: "", sound_th: "thai_vowels/.wav" },
-    { word_en: "", word_th: "", pronunciation: "", sound_th: "thai_vowels/.wav" },
-    { word_en: "", word_th: "", pronunciation: "", sound_th: "thai_vowels/.wav" },
-    { word_en: "", word_th: "", pronunciation: "", sound_th: "thai_vowels/.wav" },
-    { word_en: "", word_th: "", pronunciation: "", sound_th: "thai_vowels/.wav" },
-    { word_en: "", word_th: "", pronunciation: "", sound_th: "thai_vowels/.wav" },
+    { word_en: "a", word_th: "ะ", pronunciation: "a", sound_th: "thai_vowels/a.mp3" },
+    { word_en: "aa", word_th: "า", pronunciation: "aa", sound_th: "thai_vowels/.wav" },
+    { word_en: "i", word_th: "ิ", pronunciation: "i", sound_th: "thai_vowels/.wav" },
+    { word_en: "ii", word_th: "ี", pronunciation: "ii", sound_th: "thai_vowels/.wav" },
+    { word_en: "w", word_th: "ึ", pronunciation: "w", sound_th: "thai_vowels/.wav" },
+    { word_en: "ww", word_th: "ื", pronunciation: "ww", sound_th: "thai_vowels/.wav" },
+    { word_en: "u", word_th: "ุ", pronunciation: "u", sound_th: "thai_vowels/.wav" },
+    { word_en: "uu", word_th: "ู", pronunciation: "uu", sound_th: "thai_vowels/.wav" }
+    //   { word_en: "", word_th: "", pronunciation: "", sound_th: "thai_vowels/.wav" }
 
 ];
 
@@ -986,7 +986,8 @@ const dictionaries = {
     // reading 1
     dictionaryRW1LowClassConsonants: dictionaryRW1LowClassConsonants,
     dictionaryRW1MiddleClassConsonants: dictionaryRW1MiddleClassConsonants,
-    dictionaryRW1HighClassConsonants: dictionaryRW1HighClassConsonants
+    dictionaryRW1HighClassConsonants: dictionaryRW1HighClassConsonants,
+    dictionaryVowels: dictionaryVowels
 };
 
 const dictionaryIncorrectAnswers = [];
