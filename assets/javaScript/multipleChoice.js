@@ -958,6 +958,45 @@ const dictionaryVowels = [
 
 ];
 
+const dictionaryRW2ChangeFormVowels = [
+    { word_en: "together", word_th: "กัน", pronunciation: "กัน", sound_th: "thai_vowels/together.mp3" },
+    { word_en: "eat", word_th: "กิน", pronunciation: "กิน", sound_th: "thai_vowels/eat.mp3" },
+    { word_en: "axis", word_th: "แก็น", pronunciation: "แก็น", sound_th: "thai_vowels/axis.mp3" },
+    { word_en: "over", word_th: "เกิน", pronunciation: "เกิน", sound_th: "thai_vowels/over.mp3" },
+    { word_en: "stir", word_th: "กวน", pronunciation: "กวน", sound_th: "thai_vowels/stir.mp3" },
+    { word_en: "an", word_th: "อัน", pronunciation: "อัน", sound_th: "thai_vowels/an.mp3" },
+    { word_en: "day", word_th: "วัน", pronunciation: "วัน", sound_th: "thai_vowels/day.mp3" },
+    { word_en: "it", word_th: "มัน", pronunciation: "มัน", sound_th: "thai_vowels/it.mp3" },
+    { word_en: "i_female", word_th: "ฉัน", pronunciation: "ฉัน", sound_th: "thai_vowels/i_female.mp3" },
+    { word_en: "tooth", word_th: "ฟัน", pronunciation: "ฟัน", sound_th: "thai_vowels/tooth.mp3" },
+    { word_en: "as", word_th: "ดัง", pronunciation: "ดัง", sound_th: "thai_vowels/as.mp3" },
+    { word_en: "gluten", word_th: "ตัง", pronunciation: "ตัง", sound_th: "thai_vowels/gluten.mp3" },
+    { word_en: "not_yet", word_th: "ยัง", pronunciation: "ยัง", sound_th: "thai_vowels/not_yet.mp3" },
+    { word_en: "listen", word_th: "ฟัง", pronunciation: "ฟัง", sound_th: "thai_vowels/listen.mp3" },
+    { word_en: "tank", word_th: "ถัง", pronunciation: "ถัง", sound_th: "thai_vowels/tank.mp3" },
+    { word_en: "bite", word_th: "กัด", pronunciation: "กัด", sound_th: "thai_vowels/bite.mp3" },
+    { word_en: "cut", word_th: "ตัด", pronunciation: "ตัด", sound_th: "thai_vowels/cut.mp3" },
+    { word_en: "scrub", word_th: "ขัด", pronunciation: "ขัด", sound_th: "thai_vowels/scrub.mp3" },
+    { word_en: "puff", word_th: "ผัด", pronunciation: "ผัด", sound_th: "thai_vowels/puff.mp3" },
+    { word_en: "blow", word_th: "พัด", pronunciation: "พัด", sound_th: "thai_vowels/blow.mp3" },
+    { word_en: "shot", word_th: "นัด", pronunciation: "นัด", sound_th: "thai_vowels/shot.mp3" },
+    { word_en: "measure", word_th: "วัด", pronunciation: "วัด", sound_th: "thai_vowels/measure.mp3" },
+    { word_en: "love", word_th: "รัก", pronunciation: "รัก", sound_th: "thai_vowels/love.mp3" },
+    { word_en: "whip", word_th: "ชัก", pronunciation: "ชัก", sound_th: "thai_vowels/whip.mp3" },
+    { word_en: "gun", word_th: "ปืน", pronunciation: "ปืน", sound_th: "thai_vowels/gun.mp3" },
+    { word_en: "stand", word_th: "ยืน", pronunciation: "ยืน", sound_th: "thai_vowels/stand.mp3" }
+    /*,
+    { word_en: "", word_th: "", pronunciation: "", sound_th: "thai_vowels/" },
+    { word_en: "", word_th: "", pronunciation: "", sound_th: "thai_vowels/" },
+    { word_en: "", word_th: "", pronunciation: "", sound_th: "thai_vowels/" },
+    { word_en: "", word_th: "", pronunciation: "", sound_th: "thai_vowels/" },
+    { word_en: "", word_th: "", pronunciation: "", sound_th: "thai_vowels/" },
+    { word_en: "", word_th: "", pronunciation: "", sound_th: "thai_vowels/" },
+    { word_en: "", word_th: "", pronunciation: "", sound_th: "thai_vowels/" },
+*/
+
+];
+
 const dictionaries = {
 
     // book 1
@@ -983,11 +1022,14 @@ const dictionaries = {
     dictionaryBook3Lesson5: dictionaryBook3Lesson5,
     dictionaryBook3Lesson6: dictionaryBook3Lesson6,
 
-    // reading 1
+    // RW 1
     dictionaryRW1LowClassConsonants: dictionaryRW1LowClassConsonants,
     dictionaryRW1MiddleClassConsonants: dictionaryRW1MiddleClassConsonants,
     dictionaryRW1HighClassConsonants: dictionaryRW1HighClassConsonants,
-    dictionaryVowels: dictionaryVowels
+    dictionaryVowels: dictionaryVowels,
+
+    // RW 2 
+    dictionaryRW2ChangeFormVowels: dictionaryRW2ChangeFormVowels
 };
 
 const dictionaryIncorrectAnswers = [];
@@ -1203,7 +1245,6 @@ searchWord.addEventListener('input', function (event) {
     */
     //    console.log(wordMatches);
 });
-
 
 thSpeak.addEventListener("click", function () {
     const thWordInput = document.getElementById("thWord");
@@ -1512,6 +1553,54 @@ function shuffle(array) {
     }
     return array;
 }
+
+const wordsAndSoundFiles = [
+    { word: 'apple', audioPath: 'apple.mp3' },
+    { word: 'banana', audioPath: 'banana.mp3' },
+    // Add more words and sound file paths as needed
+];
+
+let currentIndex = 0;
+
+function displayAllWords() {
+    let html = '';
+    for (let i = 0; i < wordsAndSoundFiles.length; i++) {
+        html += `< span id = "word${i}" > ${wordsAndSoundFiles[i].word}</span > `;
+        if (i < wordsAndSoundFiles.length - 1) {
+            html += ' ';
+        }
+    }
+    document.getElementById('wordContainer').innerHTML = html;
+
+    playAndHighlightWords();
+}
+
+function playAndHighlightWords() {
+    if (currentIndex < wordsAndSoundFiles.length) {
+        const { word, audioPath } = wordsAndSoundFiles[currentIndex];
+        const wordElement = document.getElementById(`word${currentIndex}`);
+
+        // Create an Audio object
+        const audio = new Audio(audioPath);
+
+        // Highlight the word
+        wordElement.classList.add('highlight');
+
+        // Play the audio
+        audio.play();
+
+        // Wait for the audio to finish playing, then remove the highlight and move on to the next word
+        audio.onended = function () {
+            wordElement.classList.remove('highlight');
+            currentIndex++;
+            playAndHighlightWords();
+        };
+    }
+}
+
+// Display all words and play/hightlight each word
+displayAllWords();
+
 
 /*
 
