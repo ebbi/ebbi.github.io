@@ -13,7 +13,7 @@
 
     <link rel="stylesheet" href="/assets/stylesheet/core.css" media="screen">
     <link rel="stylesheet" href="/assets/stylesheet/core-es.css" media="screen">
-    <link rel="stylesheet" href="/assets/stylesheet/multipleChoice.css" media="screen">
+    <link rel="stylesheet" href="/assets/stylesheet/main.css" media="screen">
     <link rel="stylesheet" href="/assets/stylesheet/editor.css" media="screen">
 
 </head>
@@ -54,61 +54,52 @@
 
             <details open>
                 <summary class="background-blue">
-                    <span id="summary-thai" class="notice">
-                        Thai &dash;
-                        <span lang="th">เรียนภาษาไทย</span>
+                    <span class="notice">
+                        Thai language &dash; <span lang="th"> เรียนภาษาไทย</span>
                     </span>
                 </summary>
 
-                <div id="input-lang">
-                    <button id="lang" data-lang="TH">TH</button>
-                    <input type="text" id="searchWord" name="searchWord" placeholder="Search or Select a dictionary" />
-                </div>
-
-                <div>
-                    <ul id="searchWords"></ul>
-                </div>
-
-                <!--                <div id="choiceWords"></div>
--->
-                <nav>
-                    <!--                   <div class="two-col-grid border-top">-->
+                <div id="div-input-word">
                     <div>
-                        <span class="nav-button">
-                            <button id="previousWord" class="nav-button">&lt; prev</button>
-                        </span>
-
-                        <span class="nav-button">
-                            <button id="nextWord" class="nav-button">next &gt;</button>
-                        </span>
+                        <button id="lang" data-lang="EN">EN</button>
                     </div>
-                    <div class="font-size-small">
-                        <span>
-                            <label>
-                                <input type="checkbox" id="randomize" name="randomize" value="randomize" />randomise
-                            </label>
-                        </span>
-                        <div id="incorrectAnswersOnlyDiv" hidden>
-                            <label>
-                                <input id="incorrectAnswersOnly" type="checkbox" name="incorrectAnswersOnly" />
-                                incorrect only
-                            </label>
+                    <div>
+                        <input type="text" id="searchWord" name="searchWord"
+                            placeholder="Search or select a dictionary" />
+                    </div>
+                </div>
+
+                <div id="dictionaryMatchedWords"></div>
+
+                <div id="multipleChoice">
+                    <div id="searchWords"></div>
+                    <nav>
+                        <div class="grid-two-col font-size-small">
+                            <div>
+                                <label>
+                                    <input type="checkbox" id="randomize" name="randomize" value="randomize" />randomise
+                                </label>
+                                <label id="incorrectAnswersOnlyContainer">
+                                    <input id="incorrectAnswersOnly" type="checkbox" name="incorrectAnswersOnly" />
+                                    incorrect only
+                                </label>
+                            </div>
+                            <div>
+                                <button id="previousWord">&lt; prev</button>
+                                <button id="nextWord">next &gt;</button>
+                            </div>
+
                         </div>
+
+                    </nav>
+
+                    <div id="feedback" class="border-top">
+                        <span id="correctAnswer" class="correct">0</span>
+                        <span id="incorrectAnswer" class="incorrect">0</span>
+                        <span id="score" class="info">0%</span>
+                        <span id="tries" class="info">0/0</span>
+                        <span id="dictionaryLength" class="info">0</span>
                     </div>
-                    <!--                   </div>-->
-
-                </nav>
-                <!--
-                <div id="example" class="border-top"></div>
--->
-                <div id="feedback" class="feedback border-top">
-
-                    <span id="correctAnswer" class="correct">0</span>
-                    <span id="incorrectAnswer" class="incorrect">0</span>
-                    <span id="score" class="info">0%</span>
-                    <br>
-                    <span id="tries" class="info">0/0</span>
-
                 </div>
 
                 <details open>
@@ -255,7 +246,7 @@
 
                 </details>
 
-                <details open>
+                <details>
                     <summary>Editor / Speak</summary>
                     <div id="editor">
                         <p>Click text area for keyboard
@@ -265,7 +256,7 @@
                     <hr>
 
 
-                    <div id="input-lang-th">
+                    <div>
                         <p class="font-size-medium">
                             Paste Thai text and click Get link
                             <br>
@@ -411,7 +402,7 @@
     </footer>
 
     <script src="/assets/javaScript/dark-light.js"></script>
-    <script src="/assets/javaScript/multipleChoice.js"></script>
+    <script src="/assets/javaScript/main.js"></script>
     <script src="/assets/javaScript/editor.js"></script>
 
 </body>

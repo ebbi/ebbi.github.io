@@ -1075,10 +1075,56 @@ currentLang.addEventListener("click", function () {
     if (currentDictionary.length > 0) {
         htmlMultipleChoice(wordIndex);
     } else {
-        searchWord.value = 'Select a dictionary';
+        //        searchWord.value = 'Select a dictionary';
+        searchWord.ariaPlaceholder = "Search word or select a dictionary";
     }
 
 });
+
+searchWord.addEventListener('input', function (event) {
+
+    const userInput = event.target.value.toLowerCase();
+    const divDictionaryMatchedWords = document.getElementById("dictionaryMatchedWords");
+    divDictionaryMatchedWords.innerHTML = '';
+
+    if (userInput === "") {
+        divDictionaryMatchedWords.innerHTML = '';
+        return;
+    }
+
+    const matchedDictionaryRecords = dictionary.filter(obj => obj.word_en.toLowerCase().startsWith(userInput));
+
+    matchedDictionaryRecords.forEach(
+        (matchedDictionaryRecord) => {
+
+            const buttonMatchedWord_en = document.createElement("button");
+            buttonMatchedWord_en.textContent = matchedDictionaryRecord.word_en;
+            divDictionaryMatchedWords.appendChild(buttonMatchedWord_en);
+
+            buttonMatchedWord_en.addEventListener("click", function () {
+                if (matchedDictionaryRecord.sound_th != undefined) {
+                    const soundFile = "../assets/sound/" + matchedDictionaryRecord.sound_th;
+                    const audio = new Audio(soundFile);
+                    audio.play();
+                }
+            });
+
+            const buttonMatchedWord_th = document.createElement("button");
+            buttonMatchedWord_th.textContent = matchedDictionaryRecord.word_th;
+            buttonMatchedWord_th.lang = "TH"
+            divDictionaryMatchedWords.appendChild(buttonMatchedWord_th);
+
+            buttonMatchedWord_th.addEventListener("click", function () {
+                if (matchedDictionaryRecord.sound_th != undefined) {
+                    const soundFile = "../assets/sound/" + matchedDictionaryRecord.sound_th;
+                    const audio = new Audio(soundFile);
+                    audio.play();
+                }
+            });
+
+        });
+});
+
 
 dictionaryCheckboxes.forEach(function (dictionaryCheckbox) {
 
@@ -1094,16 +1140,11 @@ dictionaryCheckboxes.forEach(function (dictionaryCheckbox) {
         //       console.log('selectedDictionaryNames ' + selectedDictionaryNames);
 
         setDictionary();
-        /*
-        if (selectedDictionaryNames == 0) {
-            return;
-        } else {
-            setDictionary();
-        }
-*/
+
     });
 
 });
+
 
 previousWord.addEventListener("click", () => {
 
@@ -1113,7 +1154,9 @@ previousWord.addEventListener("click", () => {
         wordIndex = currentDictionary.length - 1;
     } else {
         //       searchWord.classList.add('info');
-        searchWord.value = 'Select a dictionary';
+        //        searchWord.value = 'Select a dictionary';
+        searchWord.ariaPlaceholder = "Search word or select a dictionary";
+
         return;
     }
 
@@ -1129,7 +1172,9 @@ nextWord.addEventListener("click", () => {
         wordIndex = currentDictionary.length;
     } else {
         //       searchWord.classList.add('info');
-        searchWord.value = 'Select a dictionary';
+        //       searchWord.value = 'Select a dictionary';
+        searchWord.ariaPlaceholder = "Search word or select a dictionary";
+
         return;
     }
 
@@ -1138,25 +1183,6 @@ nextWord.addEventListener("click", () => {
 });
 
 incorrectAnswersOnly.addEventListener("click", () => {
-    /*
-        if (incorrectAnswersOnly.checked) {
-    
-            if (dictionaryIncorrectAnswers.length > NoAnswerChoices) {
-                lastDictionary = currentDictionary; // restore last dictionary if later unchecked
-                currentDictionary = dictionaryIncorrectAnswers;
-            } else {
-                incorrectAnswersOnly.checked = false;
-            }
-    
-        } else {
-            currentDictionary = lastDictionary;
-        }
-    
-        feedback();
-    
-        wordIndex = 0;
-        htmlMultipleChoice(wordIndex);
-    */
     setDictionary();
 });
 
@@ -1182,70 +1208,6 @@ randomizeCheckbox.addEventListener("change", () => {
     setDictionary();
 });
 
-searchWord.addEventListener('input', function (event) {
-
-    let userInput = event.target.value.toLowerCase();
-    let wordMatches = dictionary.filter(obj => obj.word_en.toLowerCase().startsWith(userInput));
-
-    const ulSearchWords = document.getElementById("searchWords");
-    ulSearchWords.innerHTML = '';
-
-    wordMatches.forEach(
-        (dictionary_record) => {
-
-            const li = document.createElement("li");
-
-            const span_word_en = document.createElement("span");
-            span_word_en.textContent = dictionary_record.word_en;
-            span_word_en.classList.add('blue');
-            li.appendChild(span_word_en);
-
-            const span_pronunciation = document.createElement("span");
-            span_pronunciation.textContent = dictionary_record.pronunciation;
-            span_pronunciation.classList.add('green');
-            li.appendChild(span_pronunciation);
-
-            const span_word_th = document.createElement("span");
-            span_word_th.textContent = dictionary_record.word_th;
-            span_word_th.lang = "th";
-            li.appendChild(span_word_th);
-
-            span_word_th.addEventListener('click', function () {
-
-                /*
-                var spanWordTh = this;
-                if (window.getSelection) {
-                    var range = document.createRange();
-                    range.selectNode(spanWordTh);
-                    window.getSelection().removeAllRanges();
-                    window.getSelection().addRange(range);
-                } else if (document.selection) {
-                    var range = document.body.createTextRange();
-                    range.moveToElementText(spanWordTh);
-                    range.select();
-                }
-
-                textToSpeech(span_word_th.textContent);
-*/
-            });
-
-            ulSearchWords.appendChild(li);
-
-        });
-
-    if (ulSearchWords.length == 0) {
-        ulSearchWords.innerHTML = "";
-    }
-    if (searchWord.value == '') {
-        ulSearchWords.innerHTML = "";
-    }
-    /*
-        const choiceWords = document.getElementById("choiceWords");
-        choiceWords.innerHTML = '';
-    */
-    //    console.log(wordMatches);
-});
-
 thSpeak.addEventListener("click", function () {
     const thWordInput = document.getElementById("thWord");
     const thWord = thWordInput.value;
@@ -1264,6 +1226,7 @@ function initialize() {
     initializeDictionary();
     currentDictionary = "";
     selectedDictionariesConversations = "";
+
     /*
         const choiceWords = document.getElementById("choiceWords");
         choiceWords.textContent = "";
@@ -1284,8 +1247,12 @@ function initialize() {
 
     randomizeCheckbox.checked = false;
     incorrectAnswersOnly.checked = false;
+    const incorrectAnswersOnlyContainer = document.getElementById("incorrectAnswersOnlyContainer");
+    incorrectAnswersOnlyContainer.style.display = "none";
 
-    feedback();
+    const divMultipleChoice = document.getElementById("multipleChoice");
+    divMultipleChoice.style.display = "none";
+
 }
 
 function setDictionary() {
@@ -1314,7 +1281,7 @@ function setDictionary() {
                 setDictionaryConversations(dictionaryName);
 
             } else {
-                console.log(`Array '${dictionaryName}' does not exist.`);
+                //               console.log(`Array '${dictionaryName}' does not exist.`);
             }
         });
 
@@ -1328,6 +1295,10 @@ function setDictionary() {
 
         feedback();
         wordIndex = 0;
+
+        const divMultipleChoice = document.getElementById("multipleChoice");
+        divMultipleChoice.style.display = "initial";
+
         htmlMultipleChoice(wordIndex);
     }
 
@@ -1395,12 +1366,17 @@ function htmlMultipleChoice(questionWordIndex) {
 
 
     if (currentDictionary.length <= 0) {
-        searchWord.value = 'Select a dictionary';
+        //       searchWord.value = 'Select a dictionary';
+        searchWord.ariaPlaceholder = "Search word or select a dictionary";
+
         return;
     }
 
-    const ulSearchWords = document.getElementById("searchWords");
-    ulSearchWords.innerHTML = '';
+    //    const ulSearchWords = document.getElementById("searchWords");
+    const divSearchWords = document.getElementById("searchWords");
+    divSearchWords.innerHTML = '';
+
+    //    ulSearchWords.innerHTML = '';
 
     let randomWords = [];
 
@@ -1420,12 +1396,15 @@ function htmlMultipleChoice(questionWordIndex) {
 
     shuffledWords.forEach(
         (userSelectedIndex) => {
+
             //        const divChoiceWord = document.createElement("div");
-            const liChoiceWord = document.createElement("li");
+            //            const liChoiceWord = document.createElement("li");
 
             const buttonChoiceWord = document.createElement("button");
             buttonChoiceWord.textContent = currentDictionary[userSelectedIndex].pronunciation;
-            liChoiceWord.appendChild(buttonChoiceWord);
+
+            //           liChoiceWord.appendChild(buttonChoiceWord);
+            divSearchWords.appendChild(buttonChoiceWord);
 
             buttonChoiceWord.addEventListener("click", function () {
 
@@ -1444,7 +1423,9 @@ function htmlMultipleChoice(questionWordIndex) {
                         dictionaryIncorrectAnswers.push(currentDictionary[questionWordIndex]);
 
                         if (dictionaryIncorrectAnswers.length > NoAnswerChoices) {
-                            document.getElementById("incorrectAnswersOnlyDiv").hidden = false;
+                            const incorrectAnswersOnlyContainer = document.getElementById("incorrectAnswersOnlyContainer");
+                            incorrectAnswersOnlyContainer.style.display = "initial";
+                            //                           document.getElementById("incorrectAnswersOnlyContainer").hidden = false;
                         }
                     }
                 }
@@ -1469,8 +1450,9 @@ function htmlMultipleChoice(questionWordIndex) {
                 buttonChoiceWordTh.lang = "TH";
             }
 
-            liChoiceWord.appendChild(buttonChoiceWordTh);
-            buttonChoiceWordTh.classList.add("thai-button");
+            //            liChoiceWord.appendChild(buttonChoiceWordTh);
+            //            buttonChoiceWordTh.classList.add("thai-button");
+            divSearchWords.appendChild(buttonChoiceWordTh);
 
             buttonChoiceWordTh.addEventListener('click', function () {
 
@@ -1489,7 +1471,10 @@ function htmlMultipleChoice(questionWordIndex) {
                         dictionaryIncorrectAnswers.push(currentDictionary[questionWordIndex]);
 
                         if (dictionaryIncorrectAnswers.length > NoAnswerChoices) {
-                            document.getElementById("incorrectAnswersOnlyDiv").hidden = false;
+                            const incorrectAnswersOnlyContainer = document.getElementById("incorrectAnswersOnlyContainer");
+                            incorrectAnswersOnlyContainer.style.display = "initial";
+
+                            //                            document.getElementById("incorrectAnswersOnlyContainer").hidden = false;
                         }
                     }
                 }
@@ -1502,7 +1487,7 @@ function htmlMultipleChoice(questionWordIndex) {
 
             });
 
-            ulSearchWords.appendChild(liChoiceWord);
+            //           ulSearchWords.appendChild(liChoiceWord);
 
         });
 
@@ -1519,8 +1504,10 @@ function feedback() {
     buttonScore.textContent = 'Score: ' + parseInt((correctAnswerCount / attemptAnswerCount) * 100) + "%";
 
     const buttonTries = document.getElementById("tries");
-    buttonTries.textContent = 'Attempts: ' + attemptAnswerCount
-        + ' Selected dictionary: ' + currentDictionary.length + ' words';
+    buttonTries.textContent = 'Attempts: ' + attemptAnswerCount;
+
+    const buttonDictionaryLength = document.getElementById("dictionaryLength");
+    buttonDictionaryLength.textContent = 'Dictionary: ' + currentDictionary.length + ' words';
 
 }
 
@@ -1570,11 +1557,12 @@ function displayAllWords() {
             html += ' ';
         }
     }
-    document.getElementById('wordContainer').innerHTML = html;
+    //   document.getElementById('wordContainer').innerHTML = html;
 
     playAndHighlightWords();
 }
 
+/*
 function playAndHighlightWords() {
     if (currentIndex < wordsAndSoundFiles.length) {
         const { word, audioPath } = wordsAndSoundFiles[currentIndex];
@@ -1600,7 +1588,7 @@ function playAndHighlightWords() {
 
 // Display all words and play/hightlight each word
 displayAllWords();
-
+*/
 
 /*
 

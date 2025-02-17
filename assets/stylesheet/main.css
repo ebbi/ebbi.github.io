@@ -8,25 +8,11 @@ select {
     font-size: 1rem;
 }
 
-span.notice {
-    padding: 1rem 0.25rem;
-}
-
-:lang(TH) {
-    font-size: 1.5rem;
-    color: black;
-    background-color: white;
-}
-
-input {
-    width: 75%;
-}
-
+/*
 #example {
     color: black;
     background-color: white;
     padding: 0.5rem;
-    /*    font-size: small; */
     border-radius: 3px;
 }
 
@@ -35,15 +21,11 @@ input {
     grid-template-columns: 1fr 1fr;
 }
 
-.background-blue {
-    background-color: #00247d;
-}
 
-/*
 .notice { 
     color: black;
 }
-*/
+
 .font-size-small {
     font-size: small;
 }
@@ -64,6 +46,42 @@ ul#searchWords {
     padding: initial;
     list-style: none;
 }
+*/
+
+#div-input-word {
+    display: grid;
+    grid-template-columns: 3rem auto;
+    gap: 1rem;
+    vertical-align: middle;
+}
+
+.grid-two-col,
+#dictionaryMatchedWords,
+#searchWords {
+    display: grid;
+    grid-template-columns: auto auto;
+    gap: 0 1rem;
+}
+
+#feedback {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    gap: 0.2rem;
+    font-size: small;
+}
+
+*:lang("TH") {
+    font-size: larger;
+}
+
+input#searchWord {
+    padding: 1rem;
+    width: 100%;
+}
+
+.hidden {
+    display: none;
+}
 
 /*
 #input-lang {
@@ -74,7 +92,7 @@ ul#searchWords {
     margin-right: 1rem;
     margin-bottom: 1rem;
 }
-*/
+
 
 #searchWords li {
     display: flex;
@@ -90,17 +108,19 @@ ul#searchWords {
     color: black;
     padding: 0.7rem 0.9rem;
     margin: 0.5rem 0;
-    /*   font-size: 1rem; */
 }
+*/
 
+/*
 #choiceWords div span:lang(th),
 #searchWords span:lang(th) {
     color: red;
     background-color: #f9f9f9;
     border-radius: 5px;
     padding: 0.2rem 0.35rem;
-    /*    margin: 0 2vw; */
+        margin: 0 2vw; 
 }
+*/
 
 .correct {
     background-color: lightgreen !important;
@@ -126,10 +146,4 @@ ul#searchWords {
 
 .green {
     color: green;
-}
-
-#feedback {
-    padding: .25rem;
-    margin: .25rem;
-    font-size: small;
 }

@@ -84,6 +84,20 @@
     }
 }
 
+summary::marker {
+    color: green;
+}
+
+/*
+:lang(TH) {
+    font-size: 1.75rem;
+}
+*/
+
+span.notice {
+    padding: 1rem 0.25rem;
+}
+
 #conversations {
     padding: 0 1rem;
     font-size: medium;
@@ -137,6 +151,10 @@
     background-color: red;
 }
 
+.background-blue {
+    background-color: #00247d;
+}
+
 .border-top {
     border-top: 1px solid var(--border);
 }
@@ -146,10 +164,12 @@
     padding: 1rem;
 }
 
+/*
 .nav-separator {
     padding: 2.5rem 0;
     border-top: 1px solid var(--border);
 }
+*/
 
 .no-margin {
     margin: 0;
@@ -234,28 +254,6 @@ ul li.li-exclamation::before {
     font-size: 1.5rem;
     font-weight: bolder;
     content: "! ";
-}
-
-.first-col-fix {
-    width: max-content;
-}
-
-.two-col {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1rem;
-}
-
-.three-col {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 1rem;
-}
-
-.four-col {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    gap: 1rem;
 }
 
 h1,
