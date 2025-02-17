@@ -1425,7 +1425,6 @@ function htmlMultipleChoice(questionWordIndex) {
                         if (dictionaryIncorrectAnswers.length > NoAnswerChoices) {
                             const incorrectAnswersOnlyContainer = document.getElementById("incorrectAnswersOnlyContainer");
                             incorrectAnswersOnlyContainer.style.display = "initial";
-                            //                           document.getElementById("incorrectAnswersOnlyContainer").hidden = false;
                         }
                     }
                 }
@@ -1450,8 +1449,6 @@ function htmlMultipleChoice(questionWordIndex) {
                 buttonChoiceWordTh.lang = "TH";
             }
 
-            //            liChoiceWord.appendChild(buttonChoiceWordTh);
-            //            buttonChoiceWordTh.classList.add("thai-button");
             divSearchWords.appendChild(buttonChoiceWordTh);
 
             buttonChoiceWordTh.addEventListener('click', function () {
@@ -1473,8 +1470,6 @@ function htmlMultipleChoice(questionWordIndex) {
                         if (dictionaryIncorrectAnswers.length > NoAnswerChoices) {
                             const incorrectAnswersOnlyContainer = document.getElementById("incorrectAnswersOnlyContainer");
                             incorrectAnswersOnlyContainer.style.display = "initial";
-
-                            //                            document.getElementById("incorrectAnswersOnlyContainer").hidden = false;
                         }
                     }
                 }
@@ -1486,8 +1481,6 @@ function htmlMultipleChoice(questionWordIndex) {
                 }
 
             });
-
-            //           ulSearchWords.appendChild(liChoiceWord);
 
         });
 
