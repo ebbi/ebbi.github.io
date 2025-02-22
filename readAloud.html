@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Word Highlight Sound Player</title>
+    <style>
+        .highlight {
+            background-color: yellow;
+        }
+    </style>
+</head>
+
+<body>
+
+    <p id="text">
+        Click on the words to hear their pronunciation.
+    </p>
+
+    <audio id="audio" controls style="display: none;">
+        <source src="" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <script>
+
+        const wordData = [
+            { word: 'eat', soundPath: 'assets/sound/thai_vowels/eat.mp3' },
+            { word: 'day', soundPath: 'assets/sound/thai_vowels/day.mp3' },
+            { word: 'together', soundPath: 'assets/sound/thai_vowels/together.mp3' }
+            // Add more words and sound paths as needed
+        ];
+
+        const words = document.getElementById('text');
+        const audio = document.getElementById('audio');
+        const playBtn = document.createElement('button');
+        playBtn.textContent = 'Play';
+        playBtn.addEventListener('click', () => {
+            const highlightWords = wordData.map(({ word }) => word);
+            highlightWords.forEach((word, index) => {
+                setTimeout(() => {
+                    highlightWord(word);
+                    audio.src = wordData.find(item => item.word === word).soundPath;
+                    audio.play();
+                }, index * 3000); // Adjust the delay as needed
+            });
+        });
+
+        const pauseBtn = document.createElement('button');
+        pauseBtn.textContent = 'Pause';
+        pauseBtn.addEventListener('click', () => {
+            audio.pause();
+        });
+
+        wordData.forEach(({ word, soundPath }) => {
+            const span = document.createElement('span');
+            span.textContent = word + ' ';
+            span.addEventListener('click', () => {
+                audio.src = soundPath;
+                audio.play();
+            });
+            words.appendChild(span);
+        });
+
+        document.body.appendChild(playBtn);
+        document.body.appendChild(pauseBtn);
+
+        function highlightWord(word) {
+            const wordSpans = words.getElementsByTagName('span');
+            for (let i = 0; i < wordSpans.length; i++) {
+                if (wordSpans[i].textContent.trim() === word) {
+                    wordSpans[i].classList.add('highlight');
+                    setTimeout(() => {
+                        wordSpans[i].classList.remove('highlight');
+                    }, 1000); // Adjust the highlighted time as needed
+                }
+            }
+        }
+
+    </script>
+
+</body>
+
+</html>

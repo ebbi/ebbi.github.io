@@ -69,8 +69,6 @@
                     </div>
                 </div>
 
-                <div id="dictionaryMatchedWords"></div>
-
                 <div id="multipleChoice">
                     <div id="searchWords"></div>
                     <nav>
@@ -100,6 +98,13 @@
                         <span id="tries" class="info">0/0</span>
                         <span id="dictionaryLength" class="info">0</span>
                     </div>
+                </div>
+                <div id="readAloud">
+                    <div id="wordContainer"></div>
+                    <audio id="audioElement"></audio>
+                    <button id="buttonPlayAll">Play</button>
+                    <button id="buttonPause">Pause</button>
+                    <button id="buttonStop">Stop</button>
                 </div>
 
                 <details open>
@@ -233,6 +238,7 @@
 
                 <details>
                     <summary>Examples/Conversations</summary>
+
                     <a target="_blank"
                         href="https://youtube.com/playlist?list=PL2PONvSRkw1V4gQr8x01tdxFQbHVDP3pA&si=6JO1Exsg5_z0jOjw">Book1</a>
                     &nbsp;
@@ -404,6 +410,7 @@
     <script src="/assets/javaScript/dark-light.js"></script>
     <script src="/assets/javaScript/main.js"></script>
     <script src="/assets/javaScript/editor.js"></script>
+    <script src="/assets/javaScript/readAloud.js"></script>
 
 </body>
 

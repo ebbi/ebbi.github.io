@@ -109,7 +109,6 @@ const langs = [
     ["ภาษาไทย", ["th-TH"]],
 ];
 
-
 // Add an event listener for the mouseup event
 document.addEventListener('mouseup', function () {
 

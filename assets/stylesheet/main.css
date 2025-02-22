@@ -83,6 +83,32 @@ input#searchWord {
     display: none;
 }
 
+#readAloud {
+    border: 1px var(--border) solid;
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+    margin: 0.5rem 0;
+}
+
+#wordContainer {
+    background-color: var(--bg);
+    cursor: pointer;
+}
+
+.highlight {
+    background-color: yellow;
+    font-weight: bolder;
+    font-size: large;
+    border: 1px solid goldenrod;
+}
+
+.highlight-paused {
+    background-color: greenyellow;
+    font-weight: bolder;
+    font-size: large;
+    border: 1px solid goldenrod;
+}
+
 /*
 #input-lang {
     display: flex;

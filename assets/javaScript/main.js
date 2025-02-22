@@ -967,7 +967,7 @@ const dictionaryRW2ChangeFormVowels = [
     { word_en: "an", word_th: "อัน", pronunciation: "อัน", sound_th: "thai_vowels/an.mp3" },
     { word_en: "day", word_th: "วัน", pronunciation: "วัน", sound_th: "thai_vowels/day.mp3" },
     { word_en: "it", word_th: "มัน", pronunciation: "มัน", sound_th: "thai_vowels/it.mp3" },
-    { word_en: "i_female", word_th: "ฉัน", pronunciation: "ฉัน", sound_th: "thai_vowels/i_female.mp3" },
+    { word_en: "I (female)", word_th: "ฉัน", pronunciation: "ฉัน", sound_th: "thai_vowels/i_female.mp3" },
     { word_en: "tooth", word_th: "ฟัน", pronunciation: "ฟัน", sound_th: "thai_vowels/tooth.mp3" },
     { word_en: "as", word_th: "ดัง", pronunciation: "ดัง", sound_th: "thai_vowels/as.mp3" },
     { word_en: "gluten", word_th: "ตัง", pronunciation: "ตัง", sound_th: "thai_vowels/gluten.mp3" },
@@ -1125,7 +1125,6 @@ searchWord.addEventListener('input', function (event) {
         });
 });
 
-
 dictionaryCheckboxes.forEach(function (dictionaryCheckbox) {
 
     dictionaryCheckbox.addEventListener('change', function (event) {
@@ -1144,7 +1143,6 @@ dictionaryCheckboxes.forEach(function (dictionaryCheckbox) {
     });
 
 });
-
 
 previousWord.addEventListener("click", () => {
 
@@ -1219,7 +1217,6 @@ thSpeak.addEventListener("click", function () {
     a.href = url;
 
 });
-
 
 function initialize() {
 
@@ -1296,6 +1293,8 @@ function setDictionary() {
         feedback();
         wordIndex = 0;
 
+        readAloud(currentDictionary);
+
         const divMultipleChoice = document.getElementById("multipleChoice");
         divMultipleChoice.style.display = "initial";
 
@@ -1363,7 +1362,6 @@ function uncheckSelectedCheckboxes(checkboxes) {
 }
 
 function htmlMultipleChoice(questionWordIndex) {
-
 
     if (currentDictionary.length <= 0) {
         //       searchWord.value = 'Select a dictionary';
