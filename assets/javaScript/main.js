@@ -1224,31 +1224,18 @@ function initialize() {
     currentDictionary = "";
     selectedDictionariesConversations = "";
 
-    /*
-        const choiceWords = document.getElementById("choiceWords");
-        choiceWords.textContent = "";
-
-    searchWord.value = "";
-
-    const searchWords = document.getElementById("searchWords");
-    searchWords.innerHTML = "";
-*/
-    /*
-        const exampleContainer = document.getElementById("example");
-        exampleContainer.innerHTML = "";
-    */
-    const conversationsContainer = document.getElementById("conversations");
-    conversationsContainer.innerHTML = "";
-
     uncheckSelectedCheckboxes(dictionaryCheckboxes);
 
     randomizeCheckbox.checked = false;
     incorrectAnswersOnly.checked = false;
-    const incorrectAnswersOnlyContainer = document.getElementById("incorrectAnswersOnlyContainer");
-    incorrectAnswersOnlyContainer.style.display = "none";
+    document.getElementById("incorrectAnswersOnlyContainer").style.display = "none";
 
-    const divMultipleChoice = document.getElementById("multipleChoice");
-    divMultipleChoice.style.display = "none";
+    document.getElementById("multipleChoice").style.display = "none";
+
+    const wordContainer = document.getElementById("wordContainer");
+    wordContainer.innerHTML = "";
+    const readAloud = document.getElementById("readAloud");
+    readAloud.style.display = "none";
 
 }
 
@@ -1258,9 +1245,7 @@ function setDictionary() {
 
     currentDictionary = [];
 
-    selectedDictionariesConversations = "";
-    const conversationsContainer = document.getElementById("conversations");
-    conversationsContainer.innerHTML = "";
+    document.getElementById("wordContainer").innerHTML = "";
 
     if (selectedDictionaryNames.length === 0) {
         initialize();
@@ -1293,11 +1278,10 @@ function setDictionary() {
         feedback();
         wordIndex = 0;
 
+        document.getElementById("readAloud").style.display = "block";
         readAloud(currentDictionary);
 
-        const divMultipleChoice = document.getElementById("multipleChoice");
-        divMultipleChoice.style.display = "initial";
-
+        document.getElementById("multipleChoice").style.display = "block";
         htmlMultipleChoice(wordIndex);
     }
 
