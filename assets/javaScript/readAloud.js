@@ -12,7 +12,7 @@ const dictionaryTest = [
 let stopAudio = false;
 let pausedWordIndex = 0;
 let playWordIndex = 0;
-//const buttonPause = document.getElementById('buttonPause');
+let delayRead = 1000; // millisecond
 
 document.getElementById('buttonPlayAll').addEventListener('click', function () {
 
@@ -37,13 +37,17 @@ document.getElementById('buttonPlayAll').addEventListener('click', function () {
                     return;
                 }
 
-            }, 1500); // Highlight duration in milliseconds
+            }, delayRead); // Highlight duration in milliseconds
 
         }
     }
 
     playNextWord();
 });
+
+document.getElementById("inputDelay").addEventListener("change", (event) => {
+    delayRead = event.target.value * 1000;
+})
 
 document.getElementById('buttonPause').addEventListener('click', function () {
     stopAudio = true;

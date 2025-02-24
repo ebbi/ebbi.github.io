@@ -1234,6 +1234,9 @@ function initialize() {
 
     const wordContainer = document.getElementById("wordContainer");
     wordContainer.innerHTML = "";
+
+    document.getElementById("inputDelay").value = 1;
+
     const readAloud = document.getElementById("readAloud");
     readAloud.style.display = "none";
 

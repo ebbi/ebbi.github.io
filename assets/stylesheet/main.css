@@ -84,10 +84,19 @@ input#searchWord {
 }
 
 #readAloud {
+    font-size: large;
     border: 1px var(--border) solid;
     border-radius: 0.5rem;
     padding: 0.5rem;
     margin: 0.5rem 0;
+}
+
+#navDelay {
+    font-size: small;
+}
+
+#inputDelay {
+    width: max-content;
 }
 
 #wordContainer {
