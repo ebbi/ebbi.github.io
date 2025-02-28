@@ -1239,6 +1239,7 @@ function initialize() {
 
     const readAloud = document.getElementById("readAloud");
     readAloud.style.display = "none";
+    document.getElementById("addTranslation").checked = false;
 
 }
 
@@ -1263,8 +1264,6 @@ function setDictionary() {
                 currentDictionary = currentDictionary.concat(newArray);
                 lastDictionary = lastDictionary.concat(newArray);
 
-                setDictionaryConversations(dictionaryName);
-
             } else {
                 //               console.log(`Array '${dictionaryName}' does not exist.`);
             }
@@ -1287,39 +1286,6 @@ function setDictionary() {
         document.getElementById("multipleChoice").style.display = "block";
         htmlMultipleChoice(wordIndex);
     }
-
-}
-
-function setDictionaryConversations(dictionaryName) {
-    /* 
-    find dictionary conversation array; return if non defined in conversations
-    add conversatiuon li a element
-     */
-
-    selectedDictionariesConversations = conversations.find(({ dictionary }) => dictionary === dictionaryName);
-    if (typeof selectedDictionariesConversations === "undefined") {
-        return
-    }
-
-    const conversationUl = document.getElementById("conversations");
-
-    for (const conversation of selectedDictionariesConversations.conversations) {
-        const li = document.createElement("li");
-        const a = document.createElement("a");
-
-        a.setAttribute("target", "_blank");
-        a.setAttribute("href", conversation.url);
-        a.innerHTML = conversation.description;
-
-        li.appendChild(a);
-        conversationUl.appendChild(li);
-    };
-
-    const hr = document.createElement("hr");
-    const li = document.createElement("li");
-    li.style.listStyle = "none";
-    li.appendChild(hr);
-    conversationUl.appendChild(li);
 
 }
 

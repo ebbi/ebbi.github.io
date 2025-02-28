@@ -26,14 +26,6 @@ select {
     color: black;
 }
 
-.font-size-small {
-    font-size: small;
-}
-
-.font-size-medium {
-    font-size: medium;
-}
-
 .thai-button {
 
     font-size: 1rem;
@@ -47,6 +39,18 @@ ul#searchWords {
     list-style: none;
 }
 */
+
+.font-size-small {
+    font-size: small;
+}
+
+.font-size-medium {
+    font-size: medium;
+}
+
+.font-size-large {
+    font-size: large;
+}
 
 #div-input-word {
     display: grid;
@@ -95,6 +99,11 @@ input#searchWord {
     font-size: small;
 }
 
+#navDelay button {
+    font-size: 0.95rem;
+    padding: 0.75rem;
+}
+
 #inputDelay {
     width: max-content;
 }
@@ -116,6 +125,13 @@ input#searchWord {
     font-weight: bolder;
     font-size: large;
     border: 1px solid goldenrod;
+}
+
+.highlight-red {
+    background-color: goldenrod;
+    font-weight: bolder;
+    font-size: large;
+    border: 1px solid yellow;
 }
 
 /*

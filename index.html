@@ -102,14 +102,23 @@
 
                 <div id="readAloud">
                     <div id="wordContainer"></div>
-                    <audio id="audioElement"></audio>
-                    <button id="buttonPlayAll">Play</button>
-                    <button id="buttonPause">Pause</button>
-                    <button id="buttonStop">Stop</button>
-                    <span id="navDelay">
-                        Delay
-                        <input type="number" id="inputDelay" name="delay" min="1" max="10" value="1" /> Sec
-                    </span>
+                    <div id="navDelay">
+                        <audio id="audioElement"></audio>
+                        <div class="grid-two-col">
+                            <i>Click a word!</i>
+                            <label for="translation">
+                                <input type="checkbox" id="addTranslation" name="translation value=" true">Add
+                                translation
+                            </label>
+                        </div>
+                        <button id="buttonPlayAll">Play</button>
+                        <button id="buttonPause">Pause</button>
+                        <button id="buttonStop">Stop</button>
+                        <span>
+                            Delay
+                            <input type="number" id="inputDelay" name="delay" min="1" max="10" value="1" /> Sec
+                        </span>
+                    </div>
                 </div>
 
                 <details open>
