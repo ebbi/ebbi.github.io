@@ -24,6 +24,16 @@ header>nav a:visited {
     margin: 0;
 }
 
+label,
+input {
+    font-size: 1rem;
+}
+
+button {
+    margin: 0.5rem 0;
+    padding: 0.5rem;
+}
+
 .display-none {
     display: none;
 }
@@ -51,4 +61,58 @@ header>nav a:visited {
 #dictionaryMatchedWordsContainer {
     max-block-size: 15rem;
     overflow: scroll;
+}
+
+.correct {
+    background-color: lightgreen !important;
+    color: green !important;
+}
+
+.incorrect {
+    background-color: lightpink;
+    color: red;
+}
+
+.info {
+    background: var(--marked);
+    color: black;
+}
+
+#feedback {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    gap: 0.2rem;
+    font-size: small;
+    background-color: var(--marked);
+    border-bottom: 1px solid var(--border);
+}
+
+.highlight {
+    background-color: yellow;
+    font-weight: bolder;
+    font-size: large;
+    border: 1px solid goldenrod;
+}
+
+.highlight-paused {
+    background-color: greenyellow;
+    font-weight: bolder;
+    font-size: large;
+    border: 1px solid goldenrod;
+}
+
+.highlight-red {
+    background-color: goldenrod;
+    font-weight: bolder;
+    font-size: large;
+    border: 1px solid yellow;
+}
+
+#navDelay {
+    font-size: 1rem;
+    border-bottom: 1px solid var(--border);
+}
+
+#inputDelay {
+    width: max-content;
 }

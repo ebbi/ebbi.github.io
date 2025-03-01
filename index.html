@@ -39,8 +39,10 @@
                             aria-hidden="true" loading="lazy"></a>
                 </li>
                 <li class="push">
-                    <a id="light-mode" href="">&#9790;</a>
-                    <a id="dark-mode" href="">&#9728;</a>
+                    <a id="light-mode" href=""><img src="/assets/images/light-mode.png" width="20" height="20"
+                            alt="light mode"></a>
+                    <a id="dark-mode" href=""><img src="/assets/images/dark-mode.png" width="20" height="20"
+                            alt="dark mode"></a>
                 </li>
             </ul>
         </nav>
@@ -56,10 +58,6 @@
                         <span lang="TH"> เรียนภาษาไทย</span>
                     </span>
                 </summary>
-
-                <div id="dictionaryMatchedWordsContainer">
-                    <div id="dictionaryMatchedWords"></div>
-                </div>
 
                 <div id="div-input-word">
                     <div>
@@ -97,7 +95,7 @@
                         <span id="correctAnswer" class="correct">0</span>
                         <span id="incorrectAnswer" class="incorrect">0</span>
                         <span id="score" class="info">0%</span>
-                        <span id="tries" class="info">0/0</span>
+                        <span id="tries" class="info">0 / 0</span>
                         <span id="dictionaryLength" class="info">0</span>
                     </div>
                 </div>
@@ -121,6 +119,10 @@
                             <input type="number" id="inputDelay" name="delay" min="1" max="10" value="1" /> Sec
                         </span>
                     </div>
+                </div>
+
+                <div id="dictionaryMatchedWordsContainer">
+                    <div id="dictionaryMatchedWords"></div>
                 </div>
 
                 <details open>

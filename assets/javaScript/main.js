@@ -1158,6 +1158,7 @@ previousWord.addEventListener("click", () => {
         return;
     }
 
+    document.getElementById("dictionaryMatchedWords").innerHTML = "";
     htmlMultipleChoice(wordIndex);
 
 });
@@ -1169,13 +1170,11 @@ nextWord.addEventListener("click", () => {
     } else if (currentDictionary.length > 0) {
         wordIndex = currentDictionary.length;
     } else {
-        //       searchWord.classList.add('info');
-        //       searchWord.value = 'Select a dictionary';
         searchWord.ariaPlaceholder = "Search word or select a dictionary";
-
         return;
     }
 
+    document.getElementById("dictionaryMatchedWords").innerHTML = "";
     htmlMultipleChoice(wordIndex);
 
 });
@@ -1424,6 +1423,9 @@ function htmlMultipleChoice(questionWordIndex) {
                         }
                     }
                 }
+
+                attemptAnswerCount++;
+                feedback();
 
                 if (currentDictionary[userSelectedIndex].sound_th != undefined) {
                     const soundFile = "../assets/sound/" + currentDictionary[userSelectedIndex].sound_th;

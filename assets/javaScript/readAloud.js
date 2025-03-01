@@ -64,12 +64,12 @@ document.getElementById('buttonPlayAll').addEventListener('click', function () {
 
 function playWord(word, sound_th) {
 
-    const soundPath = "./assets/sound/";
-
-    let audio = new Audio();
-    audio.src = soundPath + sound_th;
-    audio.play();
-
+    //   const soundPath = "./assets/sound/" + sound_th;
+    if (sound_th != undefined) {
+        let audio = new Audio();
+        audio.src = "./assets/sound/" + sound_th;
+        audio.play();
+    }
     /*
         // Speak word
     var synth = window.speechSynthesis;
@@ -115,8 +115,10 @@ document.getElementById('buttonPause').addEventListener('click', function () {
         let wordSpan = "";
 
         wordSpan = wordSpans[playWordIndex];
+        /*
         console.log(playWordIndex);
         console.log(wordSpan);
+        */
         wordSpan.classList.add('highlight-paused');
 
         /*
