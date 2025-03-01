@@ -27,7 +27,7 @@ if (savedMode == "lightMode") {
 
 function setDarkMode(event) {
 
-    console.log("setDarkMode", event);
+    //    console.log("setDarkMode", event);
 
     rootElement.setAttribute("class", "dark");
     darkModeElement.setAttribute("class", "display-none");

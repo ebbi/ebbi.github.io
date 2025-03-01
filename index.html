@@ -12,7 +12,6 @@
     <link rel="home" href="https://ebbi.github.io/">
 
     <link rel="stylesheet" href="/assets/stylesheet/core.css" media="screen">
-    <link rel="stylesheet" href="/assets/stylesheet/core-es.css" media="screen">
     <link rel="stylesheet" href="/assets/stylesheet/main.css" media="screen">
     <link rel="stylesheet" href="/assets/stylesheet/editor.css" media="screen">
 
@@ -30,8 +29,8 @@
                 </li>
                 <li>
                     <a target="_blank" hreflang="en" href="https://duckduckgo.com/?q=site%3Aebbi.github.io&ia=web"
-                        class="nav-link icon-link"><img class="icon" src="/assets/images/search.svg" width="20"
-                            height="20" alt aria-hidden="true">
+                        class="nav-link icon-link">
+                        <img class="icon" src="/assets/images/search.svg" width="20" height="20" alt aria-hidden="true">
                     </a>
                 </li>
                 <li>
@@ -40,9 +39,8 @@
                             aria-hidden="true" loading="lazy"></a>
                 </li>
                 <li class="push">
-                    <img id="light-mode" src="/assets/images/light-mode.png" alt="light mode" width="15" height="15">
-                    <img id="dark-mode" class="display-none" src="/assets/images/dark-mode.png" alt="dark mode"
-                        width="15" height="15">
+                    <a id="light-mode" href="">&#9790;</a>
+                    <a id="dark-mode" href="">&#9728;</a>
                 </li>
             </ul>
         </nav>
@@ -54,10 +52,14 @@
 
             <details open>
                 <summary class="background-blue">
-                    <span class="notice">Thai &dash;
+                    <span>Thai &dash;
                         <span lang="TH"> เรียนภาษาไทย</span>
                     </span>
                 </summary>
+
+                <div id="dictionaryMatchedWordsContainer">
+                    <div id="dictionaryMatchedWords"></div>
+                </div>
 
                 <div id="div-input-word">
                     <div>
@@ -72,7 +74,7 @@
                 <div id="multipleChoice">
                     <div id="searchWords"></div>
                     <nav>
-                        <div class="grid-two-col font-size-small">
+                        <div class="grid-two-col">
                             <div>
                                 <label>
                                     <input type="checkbox" id="randomize" name="randomize" value="randomize" />randomise
@@ -287,7 +289,7 @@
             <nav dir="rtl" lang="fa">
                 <details>
                     <summary class="background-orange">
-                        <span class="notice">
+                        <span>
                             آموزش بیت کوین ( بندری )
                         </span>
                     </summary>
@@ -324,7 +326,7 @@
                 <details>
 
                     <summary class="background-orange">
-                        <span class="notice">
+                        <span>
                             Bitcoin Education
                         </span>
                     </summary>
@@ -358,7 +360,7 @@
             <nav>
                 <details>
                     <summary class="background-red">
-                        <span class="notice">
+                        <span>
                             History Blogs
                         </span>
                     </summary>
@@ -378,7 +380,7 @@
             <nav dir="rtl" lang="fa">
                 <details>
                     <summary class="background-red">
-                        <span class="notice">
+                        <span>
                             وبلاگ های تاریخ
                         </span>
                     </summary>

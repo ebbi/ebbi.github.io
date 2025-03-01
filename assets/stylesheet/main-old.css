@@ -1,0 +1,200 @@
+.nav-button {
+    margin: 0 1rem 0.5rem 0;
+}
+
+select {
+    padding: 0.25rem;
+    margin: 0.4rem 0.1rem;
+    font-size: 1rem;
+}
+
+/*
+#example {
+    color: black;
+    background-color: white;
+    padding: 0.5rem;
+    border-radius: 3px;
+}
+
+.two-col-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+
+.notice { 
+    color: black;
+}
+
+.thai-button {
+
+    font-size: 1rem;
+    line-height: 1.35rem;
+
+    float: right;
+}
+
+ul#searchWords {
+    padding: initial;
+    list-style: none;
+}
+*/
+
+.font-size-small {
+    font-size: small;
+}
+
+.font-size-medium {
+    font-size: medium;
+}
+
+.font-size-large {
+    font-size: large;
+}
+
+#div-input-word {
+    display: grid;
+    grid-template-columns: 3rem auto;
+    gap: 1rem;
+    vertical-align: middle;
+}
+
+.grid-two-col,
+#dictionaryMatchedWords,
+#searchWords {
+    display: grid;
+    grid-template-columns: auto auto;
+    gap: 0 1rem;
+}
+
+#feedback {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    gap: 0.2rem;
+    font-size: small;
+}
+
+*:lang("TH") {
+    font-size: larger;
+}
+
+input#searchWord {
+    padding: 1rem;
+    width: 100%;
+}
+
+.hidden {
+    display: none;
+}
+
+#readAloud {
+    font-size: large;
+    border: 1px var(--border) solid;
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+    margin: 0.5rem 0;
+}
+
+#navDelay {
+    font-size: small;
+}
+
+#navDelay button {
+    font-size: 0.95rem;
+    padding: 0.75rem;
+}
+
+#inputDelay {
+    width: max-content;
+}
+
+#wordContainer {
+    background-color: var(--bg);
+    cursor: pointer;
+}
+
+.highlight {
+    background-color: yellow;
+    font-weight: bolder;
+    font-size: large;
+    border: 1px solid goldenrod;
+}
+
+.highlight-paused {
+    background-color: greenyellow;
+    font-weight: bolder;
+    font-size: large;
+    border: 1px solid goldenrod;
+}
+
+.highlight-red {
+    background-color: goldenrod;
+    font-weight: bolder;
+    font-size: large;
+    border: 1px solid yellow;
+}
+
+/*
+#input-lang {
+    display: flex;
+    justify-content: space-between;
+}
+#lang {
+    margin-right: 1rem;
+    margin-bottom: 1rem;
+}
+
+
+#searchWords li {
+    display: flex;
+    justify-content: space-between;
+}
+
+#searchWords span {
+    padding: 0 0.25rem;
+}
+
+#currentWord {
+    background-color: greenyellow;
+    color: black;
+    padding: 0.7rem 0.9rem;
+    margin: 0.5rem 0;
+}
+*/
+
+/*
+#choiceWords div span:lang(th),
+#searchWords span:lang(th) {
+    color: red;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+    padding: 0.2rem 0.35rem;
+        margin: 0 2vw; 
+}
+*/
+
+.correct {
+    background-color: lightgreen !important;
+    color: green !important;
+}
+
+.incorrect {
+    background-color: lightpink;
+    color: red;
+}
+
+.info {
+    background: var(--marked);
+    color: black;
+}
+
+.blue {
+    color: blue;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+    padding: 0.1rem;
+}
+
+.green {
+    color: green;
+}

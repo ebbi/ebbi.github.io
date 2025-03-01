@@ -1222,7 +1222,8 @@ function initialize() {
 
     initializeDictionary();
     currentDictionary = "";
-    selectedDictionariesConversations = "";
+
+    document.getElementById("searchWord").value = "";
 
     uncheckSelectedCheckboxes(dictionaryCheckboxes);
 
@@ -1232,8 +1233,7 @@ function initialize() {
 
     document.getElementById("multipleChoice").style.display = "none";
 
-    const wordContainer = document.getElementById("wordContainer");
-    wordContainer.innerHTML = "";
+    document.getElementById("wordContainer").innerHTML = "";
 
     document.getElementById("inputDelay").value = 1;
 
