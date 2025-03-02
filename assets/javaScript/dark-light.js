@@ -1,4 +1,3 @@
-
 const rootElement = document.documentElement;
 const darkModeElement = document.getElementById("dark-mode");
 const lightModeElement = document.getElementById("light-mode");
@@ -48,3 +47,5 @@ function setLightMode(event) {
     localStorage.setItem("displayMode", "lightMode");
 
 }
+
+setLightMode();
