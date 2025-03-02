@@ -10,6 +10,14 @@
         url("../fonts/ubuntu-v20-latin-regular.woff") format("woff");
 }
 
+/* reduce size on mobiles */
+@media only screen and (max-width: 720px) {
+    body {
+        font-size: 1rem;
+        line-height: normal;
+    }
+}
+
 body>header {
     padding: 0;
 }
