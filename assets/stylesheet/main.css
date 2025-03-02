@@ -118,22 +118,25 @@ button {
 
 .highlight {
     background-color: yellow;
+    color: black;
     font-weight: bolder;
-    font-size: large;
+    font-size: larger;
     border: 1px solid goldenrod;
 }
 
 .highlight-paused {
     background-color: greenyellow;
+    color: black;
     font-weight: bolder;
-    font-size: large;
+    font-size: larger;
     border: 1px solid goldenrod;
 }
 
 .highlight-red {
     background-color: goldenrod;
+    color: black;
     font-weight: bolder;
-    font-size: large;
+    font-size: larger;
     border: 1px solid yellow;
 }
 
