@@ -3,6 +3,11 @@ const darkModeElement = document.getElementById("dark-mode");
 const lightModeElement = document.getElementById("light-mode");
 const savedMode = localStorage.getItem("displayMode");
 
+// set default mode
+
+setLightMode();
+
+
 darkModeElement.addEventListener("click", (event) => {
     setDarkMode(event);
 });
@@ -47,5 +52,3 @@ function setLightMode(event) {
     localStorage.setItem("displayMode", "lightMode");
 
 }
-
-setLightMode();
