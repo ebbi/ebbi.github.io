@@ -53,7 +53,7 @@ button {
 #div-input-word {
     display: grid;
     grid-template-columns: 3rem auto;
-    gap: 1rem;
+    /*  gap: 1rem; */
 }
 
 #searchWord {
@@ -74,6 +74,16 @@ button {
     overflow: scroll;
 }
 
+#readAloud {
+    padding-top: .5rem;
+    border-top: 1px solid var(--border);
+}
+
+#wordContainer {
+    font-size: 1.15rem;
+    line-height: 1.5rem;
+}
+
 .correct {
     background-color: lightgreen !important;
     color: green !important;
@@ -92,10 +102,10 @@ button {
 #feedback {
     display: grid;
     grid-template-columns: auto auto auto;
-    gap: 0.2rem;
+    gap: 0.25rem;
     font-size: small;
-    background-color: var(--marked);
-    border-bottom: 1px solid var(--border);
+    margin-bottom: 0.25rem;
+    text-align: center;
 }
 
 .highlight {
@@ -120,7 +130,8 @@ button {
 }
 
 #navDelay {
-    font-size: 1rem;
+    margin: 0.5rem 0;
+    border-top: 1px dotted var(--border);
     border-bottom: 1px solid var(--border);
 }
 
