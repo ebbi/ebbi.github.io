@@ -18,6 +18,11 @@
     }
 }
 
+body {
+    max-width: 40rem;
+    margin: 0 auto;
+}
+
 body>header {
     padding: 0;
 }
@@ -53,7 +58,6 @@ button {
 #div-input-word {
     display: grid;
     grid-template-columns: 3rem auto;
-    /*  gap: 1rem; */
 }
 
 #searchWord {
@@ -65,8 +69,12 @@ button {
 #dictionaryMatchedWords,
 #searchWords {
     display: grid;
-    grid-template-columns: auto auto;
+    grid-template-columns: 1fr 1fr;
     /* gap: 0 1rem; */
+}
+
+.grid-two-col div {
+    text-align: center;
 }
 
 #dictionaryMatchedWordsContainer {
@@ -135,6 +143,13 @@ button {
     border-bottom: 1px solid var(--border);
 }
 
+#navDelay button {
+    min-width: 50%;
+    font-size: medium;
+    padding: 0.15rem 0;
+}
+
 #inputDelay {
     width: max-content;
+    font-size: 0.75rem;
 }
