@@ -18,6 +18,10 @@
     }
 }
 
+*:lang(th, TH) {
+    font-size: 1.35rem;
+}
+
 body {
     max-width: 720px;
     margin: 0 auto;
@@ -94,7 +98,6 @@ button {
 }
 
 #wordContainer {
-    font-size: 1.15rem;
     line-height: 1.5rem;
 }
 
@@ -126,7 +129,7 @@ button {
     background-color: yellow;
     color: black;
     font-weight: bolder;
-    font-size: larger;
+    font-size: 1.5rem;
     border: 1px solid goldenrod;
 }
 
@@ -134,7 +137,7 @@ button {
     background-color: greenyellow;
     color: black;
     font-weight: bolder;
-    font-size: larger;
+    font-size: 1.5rem;
     border: 1px solid goldenrod;
 }
 
@@ -142,7 +145,7 @@ button {
     background-color: goldenrod;
     color: black;
     font-weight: bolder;
-    font-size: larger;
+    font-size: 1.5rem;
     border: 1px solid yellow;
 }
 
