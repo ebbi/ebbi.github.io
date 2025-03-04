@@ -163,10 +163,15 @@ button {
     font-size: 0.95rem;
 }
 
+#navDelay input {
+    padding: 0.1rem;
+}
+
 #navDelay input[type="checkbox"] {
     vertical-align: middle;
     position: relative;
     width: min-content;
+    padding: 0.4rem;
 }
 
 #inputDelay {
