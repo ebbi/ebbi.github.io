@@ -147,6 +147,7 @@ button {
 }
 
 #navDelay {
+    font-size: 0.9rem;
     margin: 0.5rem 0;
     border-top: 1px dotted var(--border);
     border-bottom: 1px solid var(--border);
@@ -156,6 +157,10 @@ button {
     min-width: 50%;
     font-size: medium;
     padding: 0.15rem 0;
+}
+
+#navDelay label {
+    font-size: 0.95rem;
 }
 
 #navDelay input[type="checkbox"] {
