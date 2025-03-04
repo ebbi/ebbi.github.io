@@ -12,7 +12,7 @@ const dictionaryTest = [
 let stopAudio = false;
 // let pausedWordIndex = 0;
 let playWordIndex = 0;
-let delayRead = 1000; // millisecond
+let delayRead = 1500; // millisecond
 
 document.getElementById('buttonPlayAll').addEventListener('click', function () {
 
