@@ -7,10 +7,10 @@ const savedMode = localStorage.getItem("displayMode");
 
 setLightMode();
 
-
 darkModeElement.addEventListener("click", (event) => {
     setDarkMode(event);
 });
+
 lightModeElement.addEventListener("click", (event) => {
     setLightMode(event);
 });

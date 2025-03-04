@@ -1046,7 +1046,6 @@ let NoAnswerChoices = 3;
 let correctAnswerCount = 0;
 let incorrectAnswerCount = 0;
 let attemptAnswerCount = 0;
-//let randomize = false;
 
 // input textbox for search word or input textbox used to display word from chosen dictionary
 const searchWord = document.getElementById("searchWord");

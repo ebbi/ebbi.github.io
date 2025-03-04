@@ -74,7 +74,12 @@ button {
     /* gap: 0 1rem; */
 }
 
-.grid-two-col div {
+.grid-three-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+#readAloud .grid-three-col div {
     text-align: center;
 }
 
@@ -153,7 +158,14 @@ button {
     padding: 0.15rem 0;
 }
 
+#navDelay input[type="checkbox"] {
+    vertical-align: middle;
+    position: relative;
+    width: min-content;
+}
+
 #inputDelay {
-    width: max-content;
     font-size: 0.75rem;
+    padding: 0.15rem;
+    width: 3rem;
 }
