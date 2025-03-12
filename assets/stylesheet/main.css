@@ -20,6 +20,7 @@
 
 *:lang(th, TH) {
     font-size: 1.35rem;
+    padding: .25rem;
 }
 
 body {
@@ -118,7 +119,7 @@ button {
 
 #feedback {
     display: grid;
-    grid-template-columns: auto auto auto;
+    grid-template-columns: auto auto auto auto auto;
     gap: 0.25rem;
     font-size: small;
     margin-bottom: 0.25rem;
@@ -129,7 +130,7 @@ button {
     background-color: yellow;
     color: black;
     font-weight: bolder;
-    font-size: 1.5rem;
+    font-size: 1.15rem;
     border: 1px solid goldenrod;
 }
 
@@ -137,7 +138,7 @@ button {
     background-color: greenyellow;
     color: black;
     font-weight: bolder;
-    font-size: 1.5rem;
+    font-size: 1.15rem;
     border: 1px solid goldenrod;
 }
 
@@ -145,33 +146,33 @@ button {
     background-color: goldenrod;
     color: black;
     font-weight: bolder;
-    font-size: 1.5rem;
+    font-size: 1.15rem;
     border: 1px solid yellow;
 }
 
-#navDelay {
+#navReadAloud {
     font-size: 0.9rem;
     margin: 0.5rem 0;
     border-top: 1px dotted var(--border);
     border-bottom: 1px solid var(--border);
 }
 
-#navDelay button {
+#navReadAloud button {
     min-width: 50%;
     font-size: medium;
     padding: 0.15rem 0;
 }
 
-#navDelay label {
+#navReadAloud label {
     font-size: 0.9rem;
 }
 
-#navDelay input {
+#navReadAloud input {
     padding: 0.1rem;
     width: 2rem;
 }
 
-#navDelay input[type="checkbox"] {
+#navReadAloud input[type="checkbox"] {
     vertical-align: middle;
     position: relative;
     width: min-content;

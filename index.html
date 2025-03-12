@@ -54,9 +54,8 @@
 
             <details open>
                 <summary class="background-blue">
-                    <span>Thai &dash;
-                        <span lang="TH"> เรียนภาษาไทย</span>
-                    </span>
+                    <span>Thai: </span>
+                    <span class="font-size-small">TSL www.tslchiangmai.com</span>
                 </summary>
 
                 <div id="div-input-word">
@@ -92,22 +91,23 @@
                     </nav>
 
                     <div id="feedback" class="border-top">
-                        <span id="correctAnswer" class="correct">0</span>
-                        <span id="incorrectAnswer" class="incorrect">0</span>
-                        <span id="score" class="info">0%</span>
-                        <span id="tries" class="info">0 / 0</span>
-                        <span id="dictionaryLength" class="info">0</span>
+                        <span id="correctAnswer" class="correct"></span>
+                        <span id="incorrectAnswer" class="incorrect"></span>
+                        <span id="score" class="info"></span>
+                        <span id="tries" class="info"></span>
+                        <span id="dictionaryLength" class="info"></span>
                     </div>
                 </div>
 
                 <div id="readAloud">
                     <div id="wordContainer"></div>
-                    <div id="navDelay">
+                    <div id="navReadAloud">
                         <audio id="audioElement"></audio>
 
                         <div class="grid-three-col">
                             <div><button id="buttonPlayAll">Play</button></div>
-                            <div><button id="buttonStop">Stop</button></div>
+                            <!-- div><button id="buttonStop">Stop</button></div -->
+                            <div><i>Click a word!</i></div>
                             <div><button id="buttonPause">Pause</button></div>
 
                             <div><label for="addTranslation">
@@ -115,7 +115,7 @@
                                     Translation
                                 </label></div>
 
-                            <div><i>Click a word!</i></div>
+                            <div></div>
 
                             <div><span>
                                     Delay <input placeholder="Sec" type="text" id="inputDelay" name="delay" />
@@ -135,7 +135,7 @@
                     <summary>Select dictionaries</summary>
 
                     <div class="checkbox-dictionary-container font-size-small">
-
+                        <!--
                         <details>
                             <summary>Beginners</summary>
                             <details>
@@ -216,10 +216,10 @@
                                 </label>
                             </details>
                         </details>
-
+-->
                         <details open>
                             <summary>Reading and writing</summary>
-                            <details>
+                            <details open>
                                 <summary>Reading and Writing 1</summary>
                                 <label>
                                     <input type="checkbox" id="dictionaryRW1LowClassConsonants"
@@ -243,9 +243,15 @@
                                 </label>
 
                             </details>
-                            <details open>
+                            <details>
                                 <summary>Reading and writing 2</summary>
                                 <header>Final consonants</header>
+                                <label for="dictionaryRW2ChangeFormVowels">
+                                    <input type="checkbox" id="dictionaryRW2ChangeFormVowels"
+                                        name="dictionaryRW2ChangeFormVowels"
+                                        value="dictionaryRW2LiveFinalConsonant" />Live final Consonants
+                                </label>
+                                <header>Change form vowels</header>
                                 <label>
                                     <input type="checkbox" id="dictionaryRW2ChangeFormVowels"
                                         name="dictionaryRW2ChangeFormVowels"

@@ -1,18 +1,9 @@
-const dictionaryTest = [
-    { word_th: 'กัน', sound_th: './assets/sound/thai_vowels/together.mp3' },
-    { word_th: 'banana', sound_th: './assets/sound/thai_vowels/aa.mp3' },
-    { word_th: 'orange', sound_th: './assets/sound/thai_vowels/bite.mp3' }
-    // Add more words and sound paths as needed
-    //   { word_en: "aa", word_th: "า", pronunciation: "aa", sound_th: "thai_vowels/aa.wav" },
-
-];
-
-//const divReadAloud = document.getElementById('readAloud');
-
 let stopAudio = false;
-// let pausedWordIndex = 0;
 let playWordIndex = 0;
 let delayRead = 1500; // millisecond
+
+const addTranslation = document.querySelector("#addTranslation");
+let addTranslationCheckbox = false;
 
 document.getElementById('buttonPlayAll').addEventListener('click', function () {
 
@@ -34,7 +25,12 @@ document.getElementById('buttonPlayAll').addEventListener('click', function () {
                 previousWordSpan.classList.remove('highlight-red');
             }
 
-            playWord(wordSpan.textContent, wordSpan.dataset.sound_th);
+            let soundFileName = wordSpan.dataset.word_en.replace(' ', '_');
+            soundFileName = soundFileName.toString().toLowerCase();
+            const soundFilePathname = "../assets/sound/th/" + soundFileName + ".mp3";
+
+            playWord(soundFilePathname);
+
             wordSpan.classList.add('highlight');
             playWordIndex++;
 
@@ -61,26 +57,6 @@ document.getElementById('buttonPlayAll').addEventListener('click', function () {
     }
     playNextWord();
 });
-
-function playWord(word, sound_th) {
-
-    //   const soundPath = "./assets/sound/" + sound_th;
-    if (sound_th != undefined) {
-        let audio = new Audio();
-        audio.src = "./assets/sound/" + sound_th;
-        audio.play();
-    }
-    /*
-        // Speak word
-    var synth = window.speechSynthesis;
-    var utterThis = new SpeechSynthesisUtterance(word);
-    synth.speak(utterThis);
-    */
-
-}
-
-const addTranslation = document.querySelector("#addTranslation");
-let addTranslationCheckbox = false;
 
 addTranslation.addEventListener("change", () => {
 
@@ -130,7 +106,7 @@ document.getElementById('buttonPause').addEventListener('click', function () {
         */
     }
 });
-
+/*
 document.getElementById('buttonStop').addEventListener('click', function () {
     stopAudio = true;
     //    pausedWordIndex = 0;
@@ -138,7 +114,7 @@ document.getElementById('buttonStop').addEventListener('click', function () {
     addTranslationCheckbox = false;
     document.getElementById('wordContainer').innerText = "";
 });
-
+*/
 function readAloud(dictionary) {
     //    const wordContainer = document.getElementById('wordContainer');
 
@@ -149,13 +125,18 @@ function readAloud(dictionary) {
         const wordSpan_th = document.createElement('span');
         wordSpan_th.textContent = item.word_th;
         wordSpan_th.lang = "TH";
-        wordSpan_th.dataset.sound_th = item.sound_th;
+        wordSpan_th.dataset.word_en = item.word_en;
 
         wordContainer.appendChild(wordSpan_th);
         wordContainer.appendChild(document.createTextNode(' ')); // Add space between words
 
         wordSpan_th.addEventListener('click', function () {
-            playWord(item.word_th, item.sound_th);
+
+            let soundFileName = item.word_en.replace(' ', '_');
+            soundFileName = soundFileName.toString().toLowerCase();
+            const soundFilePathname = "../assets/sound/th/" + soundFileName + ".mp3";
+
+            playWord(soundFilePathname);
             wordSpan_th.classList.add('highlight-red');
         });
 
@@ -164,13 +145,41 @@ function readAloud(dictionary) {
             wordSpan_en.textContent = " (" + item.word_en + ") ";
             wordSpan_en.classList.add('font-size-small');
 
+            // word_en used for sound pathname
+            wordSpan_en.dataset.word_en = item.word_en;
+
             wordContainer.appendChild(wordSpan_en);
             wordContainer.appendChild(document.createTextNode(' ')); // Add space between words
+
+            wordSpan_en.addEventListener('click', function () {
+
+                let soundFileName = item.word_en.replace(' ', '_');
+                soundFileName = soundFileName.toString().toLowerCase();
+                const soundFilePathname = "../assets/sound/th/" + soundFileName + ".mp3";
+
+                playWord(soundFilePathname);
+                wordSpan_en.classList.add('highlight-red');
+            });
+
+
         }
 
     });
 }
 
+function playWord(soundFile) {
 
-// Call the function to display words
-// readAloud(dictionaryTest);
+    //   const soundPath = "./assets/sound/" + sound_th;
+    if (soundFile != undefined) {
+        let audio = new Audio(soundFile);
+        audio.play();
+    }
+    /*
+        // Speak word
+    var synth = window.speechSynthesis;
+    var utterThis = new SpeechSynthesisUtterance(word);
+    synth.speak(utterThis);
+    */
+
+}
+

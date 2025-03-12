@@ -1,3 +1,4 @@
+/*
 // book 1
 // Greeting
 const dictionaryBook1Lesson1 = [
@@ -289,9 +290,10 @@ const dictionaryBase = [
 
     //    { word_en: "", word_th: "", pronunciation: "" },
 ];
+*/
 
 // book 2   
-/* order food */
+/* order food 
 const dictionaryBook2Lesson1 = [
     { word_en: "rice", word_th: "ข้าว", pronunciation: "khâaw" },
     { word_en: "food", word_th: "อาหาร/กับข้าว", pronunciation: "aa-hǎan/gàp-khâaw" },
@@ -343,7 +345,8 @@ const dictionaryBook2Lesson1 = [
     { word_en: "plastic bag", word_th: "ถุง", pronunciation: "thǔŋ" },
     { word_en: "piece", word_th: "ชิ1น", pronunciation: "chín" }
 ];
-/* order drinks */
+*/
+/* order drinks 
 const dictionaryBook2Lesson2 = [
     { word_en: "water", word_th: "นํา", pronunciation: "náam" },
     { word_en: "plain water", word_th: "นําเปล่า", pronunciation: "náam-bplàaw" },
@@ -375,8 +378,8 @@ const dictionaryBook2Lesson2 = [
     { word_en: "Coconut Water", word_th: "นํNามะพร้าว", pronunciation: "náam má-phráaw" },
     { word_en: "Passion fruit juice", word_th: "นํNาเสาวรส", pronunciation: "náam sǎw-wá-rót" },
     { word_en: "Vegetable juice", word_th: "นํNาผัก", pronunciation: "náam phàk" }
-];
-/* food */
+]; */
+/* food 
 const dictionaryBook2Lesson3 = [
     { word_en: "Fruits", word_th: "ผลไม้", pronunciation: "phǒn-lá-máay" },
     { word_en: "Mango", word_th: "มะม่วง", pronunciation: "má-mûaŋ" },
@@ -410,7 +413,7 @@ const dictionaryBook2Lesson3 = [
     { word_en: "Rotten", word_th: "เน่า/เสีย", pronunciation: "nâw/sǐa" },
     { word_en: "Classifier for the whole fruit", word_th: "ลูก/ผล", pronunciation: "lûuk / phǒn" }
 
-]
+]; */
 /* colours */
 const dictionaryBook2Lesson4 = [
     { word_en: "Colour", word_th: "สี", pronunciation: "sǐi" },
@@ -452,7 +455,7 @@ const dictionaryBook2Lesson5 = [
         { word_en: "", word_th: "", pronunciation: "" },
     */
 ];
-/* prepositions */
+/* prepositions 
 const dictionaryBook2Lesson6 = [
     { word_en: "There is/There are", word_th: "มี", pronunciation: "mii" },
     { word_en: "On", word_th: "บน", pronunciation: "bon" },
@@ -463,7 +466,7 @@ const dictionaryBook2Lesson6 = [
     { word_en: "At", word_th: "ทีf", pronunciation: "thîi" }
     //   { word_en: "", word_th: "", pronunciation: "" },
 ];
-
+*/
 // book 3
 /* Time */
 const dictionaryBook3Lesson1 = [
@@ -496,7 +499,7 @@ const dictionaryBook3Lesson1 = [
     { word_en: "Right now", word_th: "เดีƒยวนี", pronunciation: "dǐaw-níi" }
     //        { word_en: "", word_th: "", pronunciation: "" },
 ];
-/* Days */
+/* Days 
 const dictionaryBook3Lesson2 = [
     { word_en: "Monday", word_th: "วันจันทร์", pronunciation: "wan-jan" },
     { word_en: "Tuesday", word_th: "วันอังคาร", pronunciation: "wan aŋ-khaan" },
@@ -523,8 +526,8 @@ const dictionaryBook3Lesson2 = [
     { word_en: "Month", word_th: "เดือน", pronunciation: "dɯan" },
     { word_en: "year", word_th: "ปี", pronunciation: "bpii" }
     //        { word_en: "", word_th: "", pronunciation: "" },
-];
-/* Months/year/season */
+]; */
+/* Months/year/season 
 const dictionaryBook3Lesson3 = [
     { word_en: "Month", word_th: "เดือน", pronunciation: "dɯan" },
     { word_en: "January", word_th: "มกราคม", pronunciation: "mók-gà-raa-khom" },
@@ -543,8 +546,8 @@ const dictionaryBook3Lesson3 = [
     { word_en: "C.E.", word_th: "ปี ค.ศ", pronunciation: "bpii khɔɔ-sɔ̌ɔ" },
     { word_en: "B.E.", word_th: "ปี พ.ศ.", pronunciation: "bpii phɔɔ-sɔ̌ɔ" }
     //        { word_en: "", word_th: "", pronunciation: "" },
-];
-/* My family */
+]; */
+/* My family 
 const dictionaryBook3Lesson4 = [
     { word_en: "Family ", word_th: "ครอบครัว", pronunciation: "khrɔ́ɔp-khrua" },
     { word_en: "Father", word_th: "พ่อ", pronunciation: "phɔ̂ɔ" },
@@ -572,9 +575,9 @@ const dictionaryBook3Lesson4 = [
     { word_en: "Boyfriend/Girlfriend", word_th: "แฟน", pronunciation: "fɛɛn" },
     { word_en: "Relatives", word_th: "ญาติ", pronunciation: "yâat" }
     //        { word_en: "", word_th: "", pronunciation: "" },
-];
+]; */
 
-/* Occupation */
+/* Occupation 
 const dictionaryBook3Lesson5 = [
     { word_en: "Work/Job", word_th: "งาน", pronunciation: "ŋaan" },
     { word_en: "To work", word_th: "ทํางาน", pronunciation: "tham-ŋaan" },
@@ -597,9 +600,9 @@ const dictionaryBook3Lesson5 = [
     { word_en: "Security guard", word_th: "ยาม", pronunciation: "yaam" },
     { word_en: "Technician", word_th: "ช่าง", pronunciation: "châaŋ" }
     //        { word_en: "", word_th: "", pronunciation: "" },
-];
+]; */
 
-/* What does she/he look like? */
+/* What does she/he look like? 
 const dictionaryBook3Lesson6 = [
     { word_en: "Eyes", word_th: "ตา", pronunciation: "dtaa" },
     { word_en: "Mouth", word_th: "ปาก", pronunciation: "bpàak" },
@@ -614,7 +617,8 @@ const dictionaryBook3Lesson6 = [
     { word_en: "Weight", word_th: "นํyาหนัก", pronunciation: "Náam-nàk" }
     //        { word_en: "", word_th: "", pronunciation: "" },
 ];
-
+*/
+/*
 const dictionaryDateTime = [
     { word_en: "In the morning", word_th: "ตอนเช้า", pronunciation: "dtɔɔn cháaw" },
     { word_en: "In the late morning", word_th: "ตอนสาย", pronunciation: "dtɔɔn sǎay" },
@@ -680,12 +684,10 @@ const dictionaryDateTime = [
     { word_en: "B.E.", word_th: "ปีพศ", pronunciation: "bpii phɔɔ-sɔ̌ɔ" },
     { word_en: "Born", word_th: "เกิด", pronunciation: "gə̀ət" },
     { word_en: "When", word_th: "เมือไหร่", pronunciation: "mɯ̂a-rài" }
-    /*
-       { word_en: "", word_th: "", pronunciation: "" }
-   */
-    //   { word_en: "", word_th: "", pronunciation: "" },
-];
 
+];
+*/
+/*
 const conversations = [
     // Book 1
     {
@@ -906,43 +908,60 @@ const conversations = [
         ]
     }
 ]
+*/
 
 // Reading and Writing 1
 // Thai Alphabet
 
 const dictionaryRW1LowClassConsonants = [
-    { word_en: "Offering tray", word_th: "พ", pronunciation: "phɔɔ phaan", sound_th: "thai_consonants/ph_phan.wav" },
-    { word_en: "Teeth", word_th: "ฟ", pronunciation: "fɔɔ fan", sound_th: "thai_consonants/f_fan.wav" },
-    { word_en: "Soldier", word_th: "ท", pronunciation: "thɔɔ thá-hǎan", sound_th: "thai_consonants/th_than.wav" },
-    { word_en: "Buffalo", word_th: "ค", pronunciation: "khɔɔ khwaay", sound_th: "thai_consonants/kh_khwai.wav" },
-    { word_en: "Chain", word_th: "ซ", pronunciation: "sɔɔ sôo", sound_th: "thai_consonants/s_so.wav" },
-    { word_en: "Owl", word_th: "ฮ", pronunciation: "hɔɔ nók-hûuk", sound_th: "thai_consonants/h_nkhuk.wav" },
-    { word_en: "Elephant", word_th: "ช", pronunciation: "chɔɔ cháaŋ", sound_th: "thai_consonants/ch_chang.wav" },
-    { word_en: "Snake", word_th: "ง", pronunciation: "ŋɔɔ ŋuu", sound_th: "thai_consonants/ng_ngu.wav" },
-    { word_en: "Giant", word_th: "ย", pronunciation: "yɔɔ yák", sound_th: "thai_consonants/y_yak.wav" },
-    { word_en: "Mouse", word_th: "น", pronunciation: "nɔɔ nǔu", sound_th: "thai_consonants/n_nu.wav" },
-    { word_en: "Boat", word_th: "ร", pronunciation: "rɔɔ rwa", sound_th: "thai_consonants/r_rua.wav" },
-    { word_en: "Ring", word_th: "ว", pronunciation: "wɔɔ wɛ̌ɛn", sound_th: "thai_consonants/w_waen.wav" },
-    { word_en: "Horse", word_th: "ม", pronunciation: "mɔɔ máa", sound_th: "thai_consonants/m_ma.wav" },
-    { word_en: "Monkey", word_th: "ล", pronunciation: "lɔɔ liŋ", sound_th: "thai_consonants/l_ling.wav" }
+    { word_en: "phɔɔ phaan", word_th: "พ", hint: "offering tray (LC ภ phɔɔ sam-phaw)" },
+    { word_en: "fɔɔ fan", word_th: "ฟ", hint: "tooth (LC)" },
+    { word_en: "thɔɔ tha-haan", word_th: "ท", hint: "soldier (LC ธ thɔɔ thoŋ, ฑ thɔɔ mon-thoo, ฒ thɔɔ phuu-thaw)" },
+    { word_en: "khɔɔ khwaay", word_th: "ค", hint: "buffalow (LC ฆ khɔɔ ra-khaŋ)" },
+    { word_en: "sɔɔ soo", word_th: "ซ", hint: "chain (LC)" },
+    { word_en: "hɔɔ nok-huuk", word_th: "ฮ", hint: "owl (LC)" },
+    { word_en: "chɔɔ chaaŋ", word_th: "ช", hint: "elephant (LC ฌ chɔɔ chəə)" },
+    { word_en: "ŋɔɔ ŋuu", word_th: "ง", hint: "snake (LC)" },
+    { word_en: "yɔɔ yak", word_th: "ย", hint: "giant (LC ญ yɔɔ phuu-yiŋ)" },
+    { word_en: "nɔɔ nuu", word_th: "น", hint: "mouse (LC ณ nɔɔ neen)" },
+    { word_en: "rɔɔ rwa", word_th: "ร", hint: "boat (LC)" },
+    { word_en: "wɔɔ wεεn", word_th: "ว", hint: "ring (LC)" },
+    { word_en: "mɔɔ maa", word_th: "ม", hint: "horrse (LC)" },
+    { word_en: "lɔɔ liŋ", word_th: "ล", hint: "monkey (LC ฬ lɔɔ ju-laa)" },
+    { word_en: "phɔɔ sam-phaw", word_th: "ภ", hint: "sailing boat (LC uncommon)" },
+    { word_en: "thɔɔ thoŋ", word_th: "ธ", hint: "flag (LC uncommon)" },
+    { word_en: "thɔɔ mon-thoo", word_th: "ฑ", hint: "Lady Montho (LC uncommon)" },
+    { word_en: "thɔɔ phuu-thaw", word_th: "ฒ", hint: "elderly (LC uncommon)" },
+    { word_en: "khɔɔ ra-khaŋ", word_th: "ฆ", hint: "bell (LC uncommon)" },
+    { word_en: "chɔɔ chəə", word_th: "ฌ", hint: "name of a tree (LC uncommon)" },
+    { word_en: "yɔɔ phuu-yiŋ", word_th: "ญ", hint: "female (LC uncommon)" },
+    { word_en: "nɔɔ neen", word_th: "ณ", hint: "novice (LC uncommon)" },
+    { word_en: "lɔɔ ju-laa", word_th: "ฬ", hint: "kite (LC uncommon)" }
 ];
+
 const dictionaryRW1MiddleClassConsonants = [
-    { word_en: "Chicken", word_th: "ก", pronunciation: "gɔɔ gài", sound_th: "thai_consonants/k_kai.wav" },
-    { word_en: "Plate", word_th: "จ", pronunciation: "jɔɔ jaan", sound_th: "thai_consonants/j_jan.wav" },
-    { word_en: "Child", word_th: "ด", pronunciation: "dɔɔ dèk", sound_th: "thai_consonants/d_dek.wav" },
-    { word_en: "Turtle", word_th: "ต", pronunciation: "dtɔɔ dtàw", sound_th: "thai_consonants/th_thao.wav" },
-    { word_en: "Leaf", word_th: "บ", pronunciation: "bɔɔ bai-máay", sound_th: "thai_consonants/b_baimai.wav" },
-    { word_en: "Fish", word_th: "ป", pronunciation: "bpɔɔ bplaa", sound_th: "thai_consonants/p_pla.wav" },
-    { word_en: "Basin", word_th: "อ", pronunciation: "ɔɔ àaŋ", sound_th: "thai_consonants/a_ang.wav" }
+    { word_en: "gɔɔ gai", word_th: "ก", hint: "chicken (MC)" },
+    { word_en: "jɔɔ jaan", word_th: "จ", hint: "plate (MC)" },
+    { word_en: "dɔɔ dek", word_th: "ด", hint: "child (MC ฎ dɔɔ cha-daa )" },
+    { word_en: "dtɔɔ dtaw", word_th: "ต", hint: "turtle (MC ฏ dtɔɔ bpa-dtak)" },
+    { word_en: "bɔɔ bai-maay", word_th: "บ", hint: "leaf (MC)" },
+    { word_en: "bpɔɔ bplaa", word_th: "ป", hint: "fish (MC)" },
+    { word_en: "ɔɔ aaŋ", word_th: "อ", hint: "basin (MC)" },
+    { word_en: "dɔɔ cha-daa", word_th: "ฎ", hint: "head dress (MC uncommon)" },
+    { word_en: "dtɔɔ bpa-dtak", word_th: "ฏ", hint: "lance (MC uncommon)" }
 ];
+
 const dictionaryRW1HighClassConsonants = [
-    { word_en: "Bee", word_th: "ผ", pronunciation: "phɔ̌ɔ phŵŋ", sound_th: "thai_consonants/ph_phung.wav" },
-    { word_en: "Lid/Cover", word_th: "ฝ", pronunciation: "fɔ̌ɔ făa", sound_th: "thai_consonants/f_faa.wav" },
-    { word_en: "Bag", word_th: "ถ", pronunciation: "thɔ̌ɔ thŭŋ", sound_th: "thai_consonants/th_thung.wav" },
-    { word_en: "Egg", word_th: "ข", pronunciation: "khɔ̌ɔ khà", sound_th: "thai_consonants/kh_khai.wav" },
-    { word_en: "Tiger", word_th: "ส", pronunciation: "sɔ̌ɔ sw̌a", sound_th: "thai_consonants/s_sua.wav" },
-    { word_en: "Treasure box", word_th: "ห", pronunciation: "hɔ̌ɔ hìip", sound_th: "thai_consonants/h_hib.wav" },
-    { word_en: "Cymbal", word_th: "ฉ", pronunciation: "chɔ̌ɔ chìŋ", sound_th: "thai_consonants/ch_ching.wav" }
+    { word_en: "phɔɔ phwwŋ", word_th: "ผ", hint: "bee (HC)" },
+    { word_en: "fɔɔ faa", word_th: "ฝ", hint: "lid (HC)" },
+    { word_en: "thɔɔ thuŋ", word_th: "ถ", hint: "bag (HC ฐ thɔɔ thaan)" },
+    { word_en: "khɔɔ khai", word_th: "ข", hint: "egg (HC)" },
+    { word_en: "sɔɔ swa", word_th: "ส", hint: "tiger (HC ษ sɔɔ rww-sii, ศ sɔɔ saa-laa)" },
+    { word_en: "hɔɔ hiip", word_th: "ห", hint: "treasure box (HC)" },
+    { word_en: "chɔɔ chiŋ", word_th: "ฉ", hint: "cymbal (HC)" },
+    { word_en: "thɔɔ thaan", word_th: "ฐ", hint: "pedestal (HC uncommon)" },
+    { word_en: "sɔɔ rww-sii", word_th: "ษ", hint: "hermit (HC uncommon)" },
+    { word_en: "sɔɔ saa-laa", word_th: "ศ", hint: "pavilion (HC uncommon)" }
 ];
 
 const dictionaryVowels = [
@@ -997,30 +1016,49 @@ const dictionaryRW2ChangeFormVowels = [
 
 ];
 
+const dictionaryRW2LiveFinalConsonant = [
+    { word_en: "afternoon", word_th: "บ่าย", hint: "MC + Live endings + Tone markers - LIVE" },
+    { word_en: "frequent", word_th: "บ่อย", hint: "MC + Live endings + Tone markers - LIVE" },
+    { word_en: "bay", word_th: "อ่าว", hint: "MC + Live endings + Tone markers - LIVE" },
+    { word_en: "read", word_th: "อ่าน", hint: "MC + Live endings + Tone markers - LIVE" },
+    { word_en: "shrimp", word_th: "กุ้ง", hint: "MC + Live endings + Tone markers - LIVE" },
+    { word_en: "cheek", word_th: "แก้ม", hint: "MC + Live endings + Tone markers - LIVE" },
+    { word_en: "pace", word_th: "ก้าว", hint: "MC + Live endings + Tone markers - LIVE" },
+    { word_en: "some", word_th: "บ้าง", hint: "MC + Live endings + Tone markers - LIVE" },
+    { word_en: "sign", word_th: "ป้าย", hint: "MC + Live endings + Tone markers - LIVE" },
+    { word_en: "sugar cane", word_th: "อ้อย", hint: "MC + Live endings + Tone markers - LIVE" },
+    { word_en: "flour", word_th: "แป้ง", hint: "MC + Live endings + Tone markers - LIVE" },
+    { word_en: "hire", word_th: "จ้าง", hint: "MC + Live endings + Tone markers - LIVE" },
+    { word_en: "house", word_th: "บ้าน", hint: "MC + Live endings + Tone markers - LIVE" },
+    { word_en: "basin", word_th: "อ่างนำ้", hint: "MC + Live endings + Tone markers - LIVE" },
+    { word_en: "branch", word_th: "กิ่งไม้", hint: "MC + Live endings + Tone markers - LIVE" }
+];
+
 const dictionaries = {
-
-    // book 1
-    dictionaryBook1Lesson1: dictionaryBook1Lesson1,
-    dictionaryBook1Lesson2: dictionaryBook1Lesson2,
-    dictionaryBook1Lesson3: dictionaryBook1Lesson3,
-    dictionaryBook1Lesson4: dictionaryBook1Lesson4,
-    dictionaryBook1Lesson5: dictionaryBook1Lesson5,
-
-    // book 2
-    dictionaryBook2Lesson1: dictionaryBook2Lesson1,
-    dictionaryBook2Lesson2: dictionaryBook2Lesson2,
-    dictionaryBook2Lesson3: dictionaryBook2Lesson3,
-    dictionaryBook2Lesson4: dictionaryBook2Lesson4,
-    dictionaryBook2Lesson5: dictionaryBook2Lesson5,
-    dictionaryBook2Lesson6: dictionaryBook2Lesson6,
-
-    // book 3
-    dictionaryBook3Lesson1: dictionaryBook3Lesson1,
-    dictionaryBook3Lesson2: dictionaryBook3Lesson2,
-    dictionaryBook3Lesson3: dictionaryBook3Lesson3,
-    dictionaryBook3Lesson4: dictionaryBook3Lesson4,
-    dictionaryBook3Lesson5: dictionaryBook3Lesson5,
-    dictionaryBook3Lesson6: dictionaryBook3Lesson6,
+    /*
+        // book 1
+        dictionaryBook1Lesson1: dictionaryBook1Lesson1,
+        dictionaryBook1Lesson2: dictionaryBook1Lesson2,
+        dictionaryBook1Lesson3: dictionaryBook1Lesson3,
+        dictionaryBook1Lesson4: dictionaryBook1Lesson4,
+        dictionaryBook1Lesson5: dictionaryBook1Lesson5,
+    
+        // book 2
+        dictionaryBook2Lesson1: dictionaryBook2Lesson1,
+        dictionaryBook2Lesson2: dictionaryBook2Lesson2,
+        dictionaryBook2Lesson3: dictionaryBook2Lesson3,
+        dictionaryBook2Lesson4: dictionaryBook2Lesson4,
+        dictionaryBook2Lesson5: dictionaryBook2Lesson5,
+        dictionaryBook2Lesson6: dictionaryBook2Lesson6,
+    
+        // book 3
+        dictionaryBook3Lesson1: dictionaryBook3Lesson1,
+        dictionaryBook3Lesson2: dictionaryBook3Lesson2,
+        dictionaryBook3Lesson3: dictionaryBook3Lesson3,
+        dictionaryBook3Lesson4: dictionaryBook3Lesson4,
+        dictionaryBook3Lesson5: dictionaryBook3Lesson5,
+        dictionaryBook3Lesson6: dictionaryBook3Lesson6,
+    */
 
     // RW 1
     dictionaryRW1LowClassConsonants: dictionaryRW1LowClassConsonants,
@@ -1029,13 +1067,16 @@ const dictionaries = {
     dictionaryVowels: dictionaryVowels,
 
     // RW 2 
-    dictionaryRW2ChangeFormVowels: dictionaryRW2ChangeFormVowels
+    dictionaryRW2ChangeFormVowels: dictionaryRW2ChangeFormVowels,
+    dictionaryRW2LiveFinalConsonant: dictionaryRW2LiveFinalConsonant
 };
 
 const dictionaryIncorrectAnswers = [];
 
 //let lang = "EN";
 let wordIndex = 0;
+let currentIndex = 0;
+
 let questionWordIndex = wordIndex;
 let dictionary = [];  // used for word search
 let currentDictionary = [];
@@ -1100,12 +1141,12 @@ searchWord.addEventListener('input', function (event) {
             buttonMatchedWord_en.textContent = matchedDictionaryRecord.word_en;
             divDictionaryMatchedWords.appendChild(buttonMatchedWord_en);
 
+            let soundFileName = matchedDictionaryRecord.word_en.replace(' ', '_');
+            soundFileName = soundFileName.toString().toLowerCase();
+            const soundFilePathname = "../assets/sound/th/" + soundFileName + ".mp3";
+
             buttonMatchedWord_en.addEventListener("click", function () {
-                if (matchedDictionaryRecord.sound_th != undefined) {
-                    const soundFile = "../assets/sound/" + matchedDictionaryRecord.sound_th;
-                    const audio = new Audio(soundFile);
-                    audio.play();
-                }
+                playWord(soundFilePathname);
             });
 
             const buttonMatchedWord_th = document.createElement("button");
@@ -1114,11 +1155,7 @@ searchWord.addEventListener('input', function (event) {
             divDictionaryMatchedWords.appendChild(buttonMatchedWord_th);
 
             buttonMatchedWord_th.addEventListener("click", function () {
-                if (matchedDictionaryRecord.sound_th != undefined) {
-                    const soundFile = "../assets/sound/" + matchedDictionaryRecord.sound_th;
-                    const audio = new Audio(soundFile);
-                    audio.play();
-                }
+                playWord(soundFilePathname);
             });
 
         });
@@ -1222,6 +1259,7 @@ function initialize() {
     currentDictionary = "";
 
     document.getElementById("searchWord").value = "";
+    document.getElementById("dictionaryMatchedWords").innerHTML = "";
 
     uncheckSelectedCheckboxes(dictionaryCheckboxes);
 
@@ -1332,8 +1370,10 @@ function htmlMultipleChoice(questionWordIndex) {
 
     if ("TH" === currentLang.dataset.lang) {
         searchWord.value = currentDictionary[questionWordIndex].word_th;
+        searchWord.lang = "TH"
     } else {
         searchWord.value = currentDictionary[questionWordIndex].word_en;
+        searchWord.lang = "EN"
     }
     //   searchWord.value = currentDictionary[questionWordIndex].word_en;
 
@@ -1346,48 +1386,6 @@ function htmlMultipleChoice(questionWordIndex) {
     shuffledWords.forEach(
         (userSelectedIndex) => {
 
-            //        const divChoiceWord = document.createElement("div");
-            //            const liChoiceWord = document.createElement("li");
-
-            const buttonChoiceWord = document.createElement("button");
-            buttonChoiceWord.textContent = currentDictionary[userSelectedIndex].pronunciation;
-
-            //           liChoiceWord.appendChild(buttonChoiceWord);
-            divSearchWords.appendChild(buttonChoiceWord);
-
-            buttonChoiceWord.addEventListener("click", function () {
-
-                if (currentDictionary[questionWordIndex].pronunciation === currentDictionary[userSelectedIndex].pronunciation) {
-                    buttonChoiceWord.classList.add("correct");
-                    correctAnswerCount++;
-                } else {
-                    buttonChoiceWord.classList.add("incorrect");
-                    buttonChoiceWord.textContent = currentDictionary[userSelectedIndex].word_en
-                        + ' = ' + currentDictionary[userSelectedIndex].pronunciation
-                        + ' = ' + currentDictionary[userSelectedIndex].word_th;
-                    incorrectAnswerCount++;
-                    const found = dictionaryIncorrectAnswers.find(
-                        ({ pronunciation }) => pronunciation === currentDictionary[questionWordIndex].pronunciation);
-                    if (!found) {
-                        dictionaryIncorrectAnswers.push(currentDictionary[questionWordIndex]);
-
-                        if (dictionaryIncorrectAnswers.length > NoAnswerChoices) {
-                            const incorrectAnswersOnlyContainer = document.getElementById("incorrectAnswersOnlyContainer");
-                            incorrectAnswersOnlyContainer.style.display = "initial";
-                        }
-                    }
-                }
-
-                if (currentDictionary[userSelectedIndex].sound_th != undefined) {
-                    const soundFile = "../assets/sound/" + currentDictionary[userSelectedIndex].sound_th;
-                    const audio = new Audio(soundFile);
-                    audio.play();
-                }
-
-                attemptAnswerCount++;
-                feedback();
-
-            });
 
             const buttonChoiceWordTh = document.createElement("button");
             if ("TH" === currentLang.dataset.lang) {
@@ -1402,17 +1400,19 @@ function htmlMultipleChoice(questionWordIndex) {
 
             buttonChoiceWordTh.addEventListener('click', function () {
 
-                if (currentDictionary[questionWordIndex].pronunciation === currentDictionary[userSelectedIndex].pronunciation) {
+                if (currentDictionary[questionWordIndex].word_en === currentDictionary[userSelectedIndex].word_en) {
                     buttonChoiceWordTh.classList.add("correct");
                     correctAnswerCount++;
                 } else {
+                    buttonChoiceWordTh.lang = "EN";
                     buttonChoiceWordTh.classList.add("incorrect");
                     buttonChoiceWordTh.textContent = currentDictionary[userSelectedIndex].word_en
-                        + ' = ' + currentDictionary[userSelectedIndex].pronunciation
-                        + ' = ' + currentDictionary[userSelectedIndex].word_th;
+                        + ' = ' + currentDictionary[userSelectedIndex].word_th
+                        + ' = ' + currentDictionary[userSelectedIndex].hint;
                     incorrectAnswerCount++;
+
                     const found = dictionaryIncorrectAnswers.find(
-                        ({ pronunciation }) => pronunciation === currentDictionary[questionWordIndex].pronunciation);
+                        ({ word_en }) => word_en === currentDictionary[questionWordIndex].word_en);
                     if (!found) {
                         dictionaryIncorrectAnswers.push(currentDictionary[questionWordIndex]);
 
@@ -1426,11 +1426,50 @@ function htmlMultipleChoice(questionWordIndex) {
                 attemptAnswerCount++;
                 feedback();
 
-                if (currentDictionary[userSelectedIndex].sound_th != undefined) {
-                    const soundFile = "../assets/sound/" + currentDictionary[userSelectedIndex].sound_th;
-                    const audio = new Audio(soundFile);
-                    audio.play();
+                let soundFileName = currentDictionary[userSelectedIndex].word_en.replace(' ', '_');
+                soundFileName = soundFileName.toString().toLowerCase();
+                const soundFile = "../assets/sound/th/" + soundFileName + ".mp3";
+                playWord(soundFile);
+
+            });
+
+            const buttonChoiceWord = document.createElement("button");
+            buttonChoiceWord.textContent = currentDictionary[userSelectedIndex].hint;
+
+            //           liChoiceWord.appendChild(buttonChoiceWord);
+            divSearchWords.appendChild(buttonChoiceWord);
+
+            buttonChoiceWord.addEventListener("click", function () {
+
+                if (currentDictionary[questionWordIndex].word_en === currentDictionary[userSelectedIndex].word_en) {
+                    buttonChoiceWord.classList.add("correct");
+                    correctAnswerCount++;
+                } else {
+                    buttonChoiceWordTh.lang = "EN";
+                    buttonChoiceWord.classList.add("incorrect");
+                    buttonChoiceWord.textContent = currentDictionary[userSelectedIndex].word_en
+                        + ' = ' + currentDictionary[userSelectedIndex].word_th
+                        + ' = ' + currentDictionary[userSelectedIndex].hint;
+                    incorrectAnswerCount++;
+                    const found = dictionaryIncorrectAnswers.find(
+                        ({ word_en }) => word_en === currentDictionary[questionWordIndex].word_en);
+                    if (!found) {
+                        dictionaryIncorrectAnswers.push(currentDictionary[questionWordIndex]);
+
+                        if (dictionaryIncorrectAnswers.length > NoAnswerChoices) {
+                            const incorrectAnswersOnlyContainer = document.getElementById("incorrectAnswersOnlyContainer");
+                            incorrectAnswersOnlyContainer.style.display = "initial";
+                        }
+                    }
                 }
+
+                let soundFileName = currentDictionary[userSelectedIndex].word_en.replace(' ', '_');
+                soundFileName = soundFileName.toString().toLowerCase();
+                const soundFile = "../assets/sound/th/" + soundFileName + ".mp3";
+                playWord(soundFile);
+
+                attemptAnswerCount++;
+                feedback();
 
             });
 
@@ -1440,19 +1479,19 @@ function htmlMultipleChoice(questionWordIndex) {
 
 function feedback() {
     const buttonCorrect = document.getElementById("correctAnswer");
-    buttonCorrect.textContent = 'Correct: ' + correctAnswerCount;
+    buttonCorrect.textContent = correctAnswerCount + " ✓";
 
     const buttonIncorrect = document.getElementById("incorrectAnswer");
-    buttonIncorrect.textContent = 'Incorrect: ' + incorrectAnswerCount;
+    buttonIncorrect.textContent = incorrectAnswerCount + " x";
 
     const buttonScore = document.getElementById("score");
-    buttonScore.textContent = 'Score: ' + parseInt((correctAnswerCount / attemptAnswerCount) * 100) + "%";
+    buttonScore.textContent = parseInt((correctAnswerCount / attemptAnswerCount) * 100) + "%";
 
     const buttonTries = document.getElementById("tries");
-    buttonTries.textContent = 'Attempts: ' + attemptAnswerCount;
+    buttonTries.textContent = attemptAnswerCount + " tries";
 
     const buttonDictionaryLength = document.getElementById("dictionaryLength");
-    buttonDictionaryLength.textContent = 'Dictionary: ' + currentDictionary.length + ' words';
+    buttonDictionaryLength.textContent = currentDictionary.length + ' words';
 
 }
 
@@ -1485,14 +1524,6 @@ function shuffle(array) {
     }
     return array;
 }
-
-const wordsAndSoundFiles = [
-    { word: 'apple', audioPath: 'apple.mp3' },
-    { word: 'banana', audioPath: 'banana.mp3' },
-    // Add more words and sound file paths as needed
-];
-
-let currentIndex = 0;
 
 function displayAllWords() {
     let html = '';
