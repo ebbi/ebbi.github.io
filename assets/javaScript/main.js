@@ -1356,7 +1356,7 @@ function uncheckSelectedCheckboxes(checkboxes) {
     }
 }
 
-function htmlMultipleChoice(questionWordIndex) {
+function htmlMultipleChoice(wordIndex) {
 
     if (currentDictionary.length <= 0) {
         //       searchWord.value = 'Select a dictionary';
@@ -1375,17 +1375,17 @@ function htmlMultipleChoice(questionWordIndex) {
 
 
     if ("TH" === currentLang.dataset.lang) {
-        searchWord.value = currentDictionary[questionWordIndex].word_th;
+        searchWord.value = currentDictionary[wordIndex].word_th;
         searchWord.lang = "TH"
     } else {
-        searchWord.value = currentDictionary[questionWordIndex].word_en;
+        searchWord.value = currentDictionary[wordIndex].word_en;
         searchWord.lang = "EN"
     }
     //   searchWord.value = currentDictionary[questionWordIndex].word_en;
 
     // get multiple choice word indexes, add index for correct answer, shuffle the array
-    randomWords = getRandomIntArray(questionWordIndex, currentDictionary.length);
-    randomWords.push(questionWordIndex); // add index for correct word
+    randomWords = getRandomIntArray(wordIndex, currentDictionary.length);
+    randomWords.push(wordIndex); // add index for correct word
     let shuffledWords = [];
     shuffledWords = shuffle(randomWords);
 
@@ -1406,7 +1406,7 @@ function htmlMultipleChoice(questionWordIndex) {
 
             buttonChoiceWordTh.addEventListener('click', function () {
 
-                if (currentDictionary[questionWordIndex].word_en === currentDictionary[userSelectedIndex].word_en) {
+                if (currentDictionary[wordIndex].word_en === currentDictionary[userSelectedIndex].word_en) {
                     buttonChoiceWordTh.classList.add("correct");
                     correctAnswerCount++;
                 } else {
@@ -1418,9 +1418,9 @@ function htmlMultipleChoice(questionWordIndex) {
                     incorrectAnswerCount++;
 
                     const found = dictionaryIncorrectAnswers.find(
-                        ({ word_en }) => word_en === currentDictionary[questionWordIndex].word_en);
+                        ({ word_en }) => word_en === currentDictionary[wordIndex].word_en);
                     if (!found) {
-                        dictionaryIncorrectAnswers.push(currentDictionary[questionWordIndex]);
+                        dictionaryIncorrectAnswers.push(currentDictionary[wordIndex]);
 
                         if (dictionaryIncorrectAnswers.length > NoAnswerChoices) {
                             const incorrectAnswersOnlyContainer = document.getElementById("incorrectAnswersOnlyContainer");
@@ -1447,7 +1447,7 @@ function htmlMultipleChoice(questionWordIndex) {
 
             buttonChoiceWord.addEventListener("click", function () {
 
-                if (currentDictionary[questionWordIndex].word_en === currentDictionary[userSelectedIndex].word_en) {
+                if (currentDictionary[wordIndex].word_en === currentDictionary[userSelectedIndex].word_en) {
                     buttonChoiceWord.classList.add("correct");
                     correctAnswerCount++;
                 } else {
@@ -1458,9 +1458,9 @@ function htmlMultipleChoice(questionWordIndex) {
                         + ' = ' + currentDictionary[userSelectedIndex].hint;
                     incorrectAnswerCount++;
                     const found = dictionaryIncorrectAnswers.find(
-                        ({ word_en }) => word_en === currentDictionary[questionWordIndex].word_en);
+                        ({ word_en }) => word_en === currentDictionary[wordIndex].word_en);
                     if (!found) {
-                        dictionaryIncorrectAnswers.push(currentDictionary[questionWordIndex]);
+                        dictionaryIncorrectAnswers.push(currentDictionary[wordIndex]);
 
                         if (dictionaryIncorrectAnswers.length > NoAnswerChoices) {
                             const incorrectAnswersOnlyContainer = document.getElementById("incorrectAnswersOnlyContainer");
