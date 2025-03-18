@@ -965,16 +965,14 @@ const dictionaryRW1HighClassConsonants = [
 ];
 
 const dictionaryVowels = [
-    { word_en: "a", word_th: "ะ", pronunciation: "a", sound_th: "thai_vowels/a.wav" },
-    { word_en: "aa", word_th: "า", pronunciation: "aa", sound_th: "thai_vowels/aa.wav" },
-    { word_en: "i", word_th: "ิ", pronunciation: "i", sound_th: "thai_vowels/i.wav" },
-    { word_en: "ii", word_th: "ี", pronunciation: "ii", sound_th: "thai_vowels/ii.wav" },
-    { word_en: "w", word_th: "ึ", pronunciation: "w", sound_th: "thai_vowels/w.wav" },
-    { word_en: "ww", word_th: "ื", pronunciation: "ww", sound_th: "thai_vowels/ww.wav" },
-    { word_en: "u", word_th: "ุ", pronunciation: "u", sound_th: "thai_vowels/u.wav" },
-    { word_en: "uu", word_th: "ู", pronunciation: "uu", sound_th: "thai_vowels/uu.wav" }
-    //   { word_en: "", word_th: "", pronunciation: "", sound_th: "thai_vowels/.wav" }
-
+    { word_en: "a", word_th: "ะ", pronunciation: "a", hint: "SV" },
+    { word_en: "aa", word_th: "า", pronunciation: "aa", hint: "LV" },
+    { word_en: "i", word_th: "ิ", pronunciation: "i", hint: "SV" },
+    { word_en: "ii", word_th: "ี", pronunciation: "ii", hint: "LV" },
+    { word_en: "w", word_th: "ึ", pronunciation: "w", hint: "SV" },
+    { word_en: "ww", word_th: "ื", pronunciation: "ww", hint: "LV" },
+    { word_en: "u", word_th: "ุ", pronunciation: "u", hint: "SV" },
+    { word_en: "uu", word_th: "ู", pronunciation: "uu", hint: "LV" }
 ];
 
 const dictionaryRW2ChangeFormVowels = [
@@ -1004,16 +1002,6 @@ const dictionaryRW2ChangeFormVowels = [
     { word_en: "whip", word_th: "ชัก", pronunciation: "ชัก", sound_th: "thai_vowels/whip.mp3" },
     { word_en: "gun", word_th: "ปืน", pronunciation: "ปืน", sound_th: "thai_vowels/gun.mp3" },
     { word_en: "stand", word_th: "ยืน", pronunciation: "ยืน", sound_th: "thai_vowels/stand.mp3" }
-    /*,
-    { word_en: "", word_th: "", pronunciation: "", sound_th: "thai_vowels/" },
-    { word_en: "", word_th: "", pronunciation: "", sound_th: "thai_vowels/" },
-    { word_en: "", word_th: "", pronunciation: "", sound_th: "thai_vowels/" },
-    { word_en: "", word_th: "", pronunciation: "", sound_th: "thai_vowels/" },
-    { word_en: "", word_th: "", pronunciation: "", sound_th: "thai_vowels/" },
-    { word_en: "", word_th: "", pronunciation: "", sound_th: "thai_vowels/" },
-    { word_en: "", word_th: "", pronunciation: "", sound_th: "thai_vowels/" },
-*/
-
 ];
 
 const dictionaryRW2LiveFinalConsonant = [
@@ -1067,7 +1055,9 @@ const dictionaries = {
     dictionaryVowels: dictionaryVowels,
 
     // RW 2 
+    /*
     dictionaryRW2ChangeFormVowels: dictionaryRW2ChangeFormVowels,
+    */
     dictionaryRW2LiveFinalConsonant: dictionaryRW2LiveFinalConsonant
 };
 
@@ -1075,13 +1065,14 @@ const dictionaryIncorrectAnswers = [];
 
 //let lang = "EN";
 let wordIndex = 0;
-let currentIndex = 0;
+// let currentIndex = 0;
 
-let questionWordIndex = wordIndex;
+// let questionWordIndex = wordIndex;
 let dictionary = [];  // used for word search
 let currentDictionary = [];
 let selectedDictionaryNames = []; // selected dictionary checkboxes
-let selectedDictionariesConversations = [];
+
+//let selectedDictionariesConversations = [];
 
 let NoAnswerChoices = 3;
 let correctAnswerCount = 0;
@@ -1182,11 +1173,15 @@ dictionaryCheckboxes.forEach(function (dictionaryCheckbox) {
 
 previousWord.addEventListener("click", () => {
 
-    if (wordIndex > 0) {
+    if (wordIndex > 0 && currentDictionary.length > 0) {
         wordIndex = (wordIndex - 1) % currentDictionary.length;
-    } else if (currentDictionary.length > 0) {
+    }
+    /*
+    else if (currentDictionary.length > 0) {
         wordIndex = currentDictionary.length - 1;
-    } else {
+    } 
+        */
+    else {
         //       searchWord.classList.add('info');
         //        searchWord.value = 'Select a dictionary';
         searchWord.ariaPlaceholder = "Search word or select a dictionary";
@@ -1201,12 +1196,17 @@ previousWord.addEventListener("click", () => {
 
 nextWord.addEventListener("click", () => {
 
-    if (wordIndex < currentDictionary.length) {
+    if (wordIndex < currentDictionary.length && currentDictionary.length > 0) {
         wordIndex = (wordIndex + 1) % currentDictionary.length;
-    } else if (currentDictionary.length > 0) {
+    }
+    /*
+    else if (currentDictionary.length > 0) {
         wordIndex = currentDictionary.length;
-    } else {
+    }
+    */
+    else {
         searchWord.ariaPlaceholder = "Search word or select a dictionary";
+
         return;
     }
 
@@ -1254,6 +1254,8 @@ thSpeak.addEventListener("click", function () {
 });
 
 function initialize() {
+
+    wordIndex = 0;
 
     initializeDictionary();
     currentDictionary = "";
@@ -1313,8 +1315,12 @@ function setDictionary() {
             currentDictionary = shuffle(currentDictionary);
         }
 
+        // wordIndex is set for pause and play, exception arises when dictionaies are deselected
+        if (currentDictionary.length < wordIndex) {
+            wordIndex = 0;
+        }
+
         feedback();
-        wordIndex = 0;
 
         document.getElementById("readAloud").style.display = "block";
         readAloud(currentDictionary);
@@ -1538,33 +1544,174 @@ function displayAllWords() {
     playAndHighlightWords();
 }
 
-/*
-function playAndHighlightWords() {
-    if (currentIndex < wordsAndSoundFiles.length) {
-        const { word, audioPath } = wordsAndSoundFiles[currentIndex];
-        const wordElement = document.getElementById(`word${currentIndex}`);
+let pausePlay = false;
+let delayRead = 1500; // millisecond
 
-        // Create an Audio object
-        const audio = new Audio(audioPath);
+const addTranslation = document.querySelector("#addTranslation");
+let addTranslationCheckbox = false;
 
-        // Highlight the word
-        wordElement.classList.add('highlight');
+document.getElementById('buttonPlayAll').addEventListener('click', function () {
 
-        // Play the audio
-        audio.play();
+    let wordSpans = document.querySelectorAll('#wordContainer span');
+    // let wordSpans = document.querySelectorAll('#wordContainer [lang = "TH"]');
 
-        // Wait for the audio to finish playing, then remove the highlight and move on to the next word
-        audio.onended = function () {
-            wordElement.classList.remove('highlight');
-            currentIndex++;
-            playAndHighlightWords();
-        };
+    pausePlay = false;
+
+    function playNextWord() {
+
+        if (wordIndex < wordSpans.length) {
+
+            let wordSpan = wordSpans[wordIndex];
+
+            if (wordIndex > 0) {
+                const previousWordSpan = wordSpans[wordIndex - 1];
+                previousWordSpan.classList.remove('highlight');
+                previousWordSpan.classList.remove('highlight-paused');
+                previousWordSpan.classList.remove('highlight-red');
+            }
+
+            let soundFileName = wordSpan.dataset.word_en.replace(' ', '_');
+            soundFileName = soundFileName.toString().toLowerCase();
+            const soundFilePathname = "../assets/sound/th/" + soundFileName + ".mp3";
+
+            playWord(soundFilePathname);
+
+            wordSpan.classList.add('highlight');
+            wordIndex++;
+
+            setTimeout(function () {
+
+                if (pausePlay == false) {
+                    playNextWord();
+                    return;
+                }
+
+            }, delayRead); // Highlight duration in milliseconds
+
+        }
+
     }
+
+    if (wordIndex == wordSpans.length) {
+        wordIndex = 0;
+        wordSpans.forEach(function (wordSpan) {
+            wordSpan.classList.remove('highlight');
+            wordSpan.classList.remove('highlight-paused');
+            wordSpan.classList.remove('highlight-red');
+        });
+    }
+    playNextWord();
+});
+
+addTranslation.addEventListener("change", () => {
+
+    if (addTranslation.checked) {
+        addTranslationCheckbox = true;
+    } else {
+        addTranslationCheckbox = false;
+    }
+    readAloud(currentDictionary);
+
+});
+
+document.getElementById("inputDelay").addEventListener("change", (event) => {
+
+    delayRead = event.target.value;
+    if (delayRead > 0 && delayRead < 11) {
+        delayRead = delayRead * 1000;
+    } else {
+        delayRead = 1000;
+    }
+
+});
+
+document.getElementById('buttonPause').addEventListener('click', function () {
+
+    //    let pauseWordIndex = 0;
+    const wordSpans = document.querySelectorAll('#wordContainer span');
+
+    if (wordSpans.length > 0) {
+
+        pausePlay = true;
+        let wordSpan = "";
+
+        wordSpan = wordSpans[wordIndex];
+        /*
+        console.log(playWordIndex);
+        console.log(wordSpan);
+        */
+        wordSpan.classList.add('highlight-paused');
+
+        /*
+                if (addTranslationCheckbox) {
+                    wordSpan = wordSpans[pauseWordIndex];
+                } else {
+                    wordSpan = wordSpans[playWordIndex];
+                }
+        */
+    }
+});
+
+function readAloud(dictionary) {
+    //    const wordContainer = document.getElementById('wordContainer');
+
+    wordContainer.innerText = "";
+
+    dictionary.forEach(function (item) {
+
+        const wordSpan_th = document.createElement('span');
+        wordSpan_th.textContent = item.word_th;
+        wordSpan_th.lang = "TH";
+        wordSpan_th.dataset.word_en = item.word_en;
+
+        wordContainer.appendChild(wordSpan_th);
+        wordContainer.appendChild(document.createTextNode(' ')); // Add space between words
+
+        wordSpan_th.addEventListener('click', function () {
+
+            let soundFileName = item.word_en.replace(' ', '_');
+            soundFileName = soundFileName.toString().toLowerCase();
+            const soundFilePathname = "../assets/sound/th/" + soundFileName + ".mp3";
+
+            playWord(soundFilePathname);
+            wordSpan_th.classList.add('highlight-red');
+        });
+
+        if (addTranslationCheckbox) {
+            const wordSpan_en = document.createElement('span');
+            wordSpan_en.textContent = " (" + item.word_en + ") ";
+            wordSpan_en.classList.add('font-size-small');
+
+            // word_en used for sound pathname
+            wordSpan_en.dataset.word_en = item.word_en;
+
+            wordContainer.appendChild(wordSpan_en);
+            wordContainer.appendChild(document.createTextNode(' ')); // Add space between words
+
+            wordSpan_en.addEventListener('click', function () {
+
+                let soundFileName = item.word_en.replace(' ', '_');
+                soundFileName = soundFileName.toString().toLowerCase();
+                const soundFilePathname = "../assets/sound/th/" + soundFileName + ".mp3";
+
+                playWord(soundFilePathname);
+                wordSpan_en.classList.add('highlight-red');
+            });
+
+        }
+
+    });
 }
 
-// Display all words and play/hightlight each word
-displayAllWords();
-*/
+function playWord(soundFile) {
+
+    //   const soundPath = "./assets/sound/" + sound_th;
+    if (soundFile != undefined) {
+        let audio = new Audio(soundFile);
+        audio.play();
+    }
+
+}
 
 /*
 
