@@ -965,14 +965,14 @@ const dictionaryRW1HighClassConsonants = [
 ];
 
 const dictionaryVowels = [
-    { word_en: "a", word_th: "ะ", pronunciation: "a", hint: "SV" },
-    { word_en: "aa", word_th: "า", pronunciation: "aa", hint: "LV" },
-    { word_en: "i", word_th: "ิ", pronunciation: "i", hint: "SV" },
-    { word_en: "ii", word_th: "ี", pronunciation: "ii", hint: "LV" },
-    { word_en: "w", word_th: "ึ", pronunciation: "w", hint: "SV" },
-    { word_en: "ww", word_th: "ื", pronunciation: "ww", hint: "LV" },
-    { word_en: "u", word_th: "ุ", pronunciation: "u", hint: "SV" },
-    { word_en: "uu", word_th: "ู", pronunciation: "uu", hint: "LV" }
+    { word_en: "a", word_th: "ะ", hint: "SV" },
+    { word_en: "aa", word_th: "า", hint: "LV" },
+    { word_en: "i", word_th: "ิ", hint: "SV" },
+    { word_en: "ii", word_th: "ี", hint: "LV" },
+    { word_en: "w", word_th: "ึ", hint: "SV" },
+    { word_en: "ww", word_th: "ื", hint: "LV" },
+    { word_en: "u", word_th: "ุ", hint: "SV" },
+    { word_en: "uu", word_th: "ู", hint: "LV" }
 ];
 
 const dictionaryRW2ChangeFormVowels = [
@@ -1635,7 +1635,7 @@ document.getElementById('buttonPause').addEventListener('click', function () {
         pausePlay = true;
         let wordSpan = "";
 
-        wordSpan = wordSpans[wordIndex];
+        wordSpan = wordSpans[wordIndex - 1];
         /*
         console.log(playWordIndex);
         console.log(wordSpan);
