@@ -1088,6 +1088,12 @@ const incorrectAnswersOnly = document.getElementById("incorrectAnswersOnly");
 const randomizeCheckbox = document.getElementById("randomize");
 const dictionaryCheckboxes = document.querySelectorAll('.checkbox-dictionary-container input[type="checkbox"]');
 
+let pausePlay = false;
+let delayRead = 1500; // millisecond
+
+const addTranslation = document.querySelector("#addTranslation");
+let translate = false;
+
 initialize();
 
 currentLang.addEventListener("click", function () {
@@ -1277,7 +1283,9 @@ function initialize() {
 
     const readAloud = document.getElementById("readAloud");
     readAloud.style.display = "none";
+
     document.getElementById("addTranslation").checked = false;
+    translate = false;
 
 }
 
@@ -1544,11 +1552,6 @@ function displayAllWords() {
     playAndHighlightWords();
 }
 
-let pausePlay = false;
-let delayRead = 1500; // millisecond
-
-const addTranslation = document.querySelector("#addTranslation");
-let addTranslationCheckbox = false;
 
 document.getElementById('buttonPlayAll').addEventListener('click', function () {
 
@@ -1606,9 +1609,9 @@ document.getElementById('buttonPlayAll').addEventListener('click', function () {
 addTranslation.addEventListener("change", () => {
 
     if (addTranslation.checked) {
-        addTranslationCheckbox = true;
+        translate = true;
     } else {
-        addTranslationCheckbox = false;
+        translate = false;
     }
     readAloud(currentDictionary);
 
@@ -1642,13 +1645,6 @@ document.getElementById('buttonPause').addEventListener('click', function () {
         */
         wordSpan.classList.add('highlight-paused');
 
-        /*
-                if (addTranslationCheckbox) {
-                    wordSpan = wordSpans[pauseWordIndex];
-                } else {
-                    wordSpan = wordSpans[playWordIndex];
-                }
-        */
     }
 });
 
@@ -1677,7 +1673,7 @@ function readAloud(dictionary) {
             wordSpan_th.classList.add('highlight-red');
         });
 
-        if (addTranslationCheckbox) {
+        if (translate) {
             const wordSpan_en = document.createElement('span');
             wordSpan_en.textContent = " (" + item.word_en + ") ";
             wordSpan_en.classList.add('font-size-small');
