@@ -965,14 +965,25 @@ const dictionaryRW1HighClassConsonants = [
 ];
 
 const dictionaryVowels = [
-    { word_en: "a", word_th: "ะ", hint: "SV" },
-    { word_en: "aa", word_th: "า", hint: "LV" },
-    { word_en: "i", word_th: "ิ", hint: "SV" },
-    { word_en: "ii", word_th: "ี", hint: "LV" },
-    { word_en: "w", word_th: "ึ", hint: "SV" },
-    { word_en: "ww", word_th: "ื", hint: "LV" },
-    { word_en: "u", word_th: "ุ", hint: "SV" },
-    { word_en: "uu", word_th: "ู", hint: "LV" }
+    { word_en: "a", word_th: "-ะ", hint: "SV" },
+    { word_en: "aa", word_th: "-า", hint: "LV" },
+    { word_en: "i", word_th: "-ิ", hint: "SV" },
+    { word_en: "ii", word_th: "-ี", hint: "LV" },
+    { word_en: "w", word_th: "-ึ", hint: "SV" },
+    { word_en: "ww", word_th: "-ือ", hint: "LV" },
+    { word_en: "u", word_th: "-ุ", hint: "SV" },
+    { word_en: "uu", word_th: "-ู", hint: "LV" },
+    { word_en: "ee", word_th: "เ-", hint: "LV" },
+    { word_en: "εε", word_th: "เเ-", hint: "LV" },
+    { word_en: "oo", word_th: "โ-", hint: "LV" },
+    { word_en: "ɔɔ", word_th: "-อ", hint: "LV" },
+    { word_en: "əə", word_th: "เ-อ", hint: "LV" },
+    { word_en: "ia", word_th: "เ-ีย", hint: "LV" },
+    { word_en: "wa", word_th: "เ-ือ", hint: "LV" },
+    { word_en: "ua", word_th: "-ัว", hint: "LV" },
+    { word_en: "am", word_th: "-ำ", hint: "LV" },
+    { word_en: "ai", word_th: "ไ/ใ", hint: "LV" },
+    { word_en: "aw", word_th: "เ-า", hint: "LV" }
 ];
 
 const dictionaryRW2ChangeFormVowels = [
@@ -1063,16 +1074,10 @@ const dictionaries = {
 
 const dictionaryIncorrectAnswers = [];
 
-//let lang = "EN";
 let wordIndex = 0;
-// let currentIndex = 0;
-
-// let questionWordIndex = wordIndex;
 let dictionary = [];  // used for word search
 let currentDictionary = [];
 let selectedDictionaryNames = []; // selected dictionary checkboxes
-
-//let selectedDictionariesConversations = [];
 
 let NoAnswerChoices = 3;
 let correctAnswerCount = 0;
@@ -1112,7 +1117,6 @@ currentLang.addEventListener("click", function () {
     if (currentDictionary.length > 0) {
         htmlMultipleChoice(wordIndex);
     } else {
-        //        searchWord.value = 'Select a dictionary';
         searchWord.ariaPlaceholder = "Search word or select a dictionary";
     }
 
@@ -1181,18 +1185,10 @@ previousWord.addEventListener("click", () => {
 
     if (wordIndex > 0 && currentDictionary.length > 0) {
         wordIndex = (wordIndex - 1) % currentDictionary.length;
-    }
-    /*
-    else if (currentDictionary.length > 0) {
+    } else if (wordIndex == 0 && currentDictionary.length > 0) {
         wordIndex = currentDictionary.length - 1;
-    } 
-        */
-    else {
-        //       searchWord.classList.add('info');
-        //        searchWord.value = 'Select a dictionary';
-        searchWord.ariaPlaceholder = "Search word or select a dictionary";
-
-        return;
+    } else {
+        wordIndex = 0;
     }
 
     document.getElementById("dictionaryMatchedWords").innerHTML = "";
@@ -1204,16 +1200,8 @@ nextWord.addEventListener("click", () => {
 
     if (wordIndex < currentDictionary.length && currentDictionary.length > 0) {
         wordIndex = (wordIndex + 1) % currentDictionary.length;
-    }
-    /*
-    else if (currentDictionary.length > 0) {
-        wordIndex = currentDictionary.length;
-    }
-    */
-    else {
-        searchWord.ariaPlaceholder = "Search word or select a dictionary";
-
-        return;
+    } else {
+        wordIndex = 0;
     }
 
     document.getElementById("dictionaryMatchedWords").innerHTML = "";
@@ -1552,7 +1540,6 @@ function displayAllWords() {
     playAndHighlightWords();
 }
 
-
 document.getElementById('buttonPlayAll').addEventListener('click', function () {
 
     let wordSpans = document.querySelectorAll('#wordContainer span');
@@ -1630,7 +1617,6 @@ document.getElementById("inputDelay").addEventListener("change", (event) => {
 
 document.getElementById('buttonPause').addEventListener('click', function () {
 
-    //    let pauseWordIndex = 0;
     const wordSpans = document.querySelectorAll('#wordContainer span');
 
     if (wordSpans.length > 0) {
@@ -1649,7 +1635,6 @@ document.getElementById('buttonPause').addEventListener('click', function () {
 });
 
 function readAloud(dictionary) {
-    //    const wordContainer = document.getElementById('wordContainer');
 
     wordContainer.innerText = "";
 
