@@ -1303,6 +1303,7 @@ randomizeCheckbox.addEventListener("change", () => {
     setDictionary();
 });
 
+// create link to Google translate
 thSpeak.addEventListener("click", function () {
     const thWordInput = document.getElementById("thWord");
     const thWord = thWordInput.value;
@@ -1495,16 +1496,16 @@ function htmlMultipleChoice(wordIndex) {
                 const text = currentDictionary[userSelectedIndex].word_en;
                 textToSpeech(text);
 
-                attemptAnswerCount++;
-                feedback();
-
-
                 /*
                                 let soundFileName = currentDictionary[userSelectedIndex].word_en.replace(' ', '_');
                                 soundFileName = soundFileName.toString().toLowerCase();
                                 const soundFile = "../assets/sound/th/" + soundFileName + ".mp3";
                                 playWord(soundFile);
                 */
+
+                attemptAnswerCount++;
+                feedback();
+
             });
 
             const buttonChoiceWord = document.createElement("button");
@@ -1599,6 +1600,7 @@ function shuffle(array) {
     return array;
 }
 
+/*
 function displayAllWords() {
     let html = '';
     for (let i = 0; i < wordsAndSoundFiles.length; i++) {
@@ -1611,7 +1613,9 @@ function displayAllWords() {
 
     playAndHighlightWords();
 }
+*/
 
+// Play aloud
 document.getElementById('buttonPlayAll').addEventListener('click', function () {
 
     let wordSpans = document.querySelectorAll('#wordContainer span');
@@ -1632,11 +1636,15 @@ document.getElementById('buttonPlayAll').addEventListener('click', function () {
                 previousWordSpan.classList.remove('highlight-red');
             }
 
-            let soundFileName = wordSpan.dataset.word_en.replace(' ', '_');
-            soundFileName = soundFileName.toString().toLowerCase();
-            const soundFilePathname = "../assets/sound/th/" + soundFileName + ".mp3";
-
-            playWord(soundFilePathname);
+            // sound file for th and texttospeach for en
+            if (wordSpan.lang === "TH") {
+                let soundFileName = wordSpan.dataset.word_en.replace(' ', '_');
+                soundFileName = soundFileName.toString().toLowerCase();
+                const soundFilePathname = "../assets/sound/th/" + soundFileName + ".mp3";
+                playWord(soundFilePathname);
+            } else if (wordSpan.lang === "EN") {
+                textToSpeech(wordSpan.dataset.word_en);
+            }
 
             wordSpan.classList.add('highlight');
             wordIndex++;
@@ -1662,7 +1670,9 @@ document.getElementById('buttonPlayAll').addEventListener('click', function () {
             wordSpan.classList.remove('highlight-red');
         });
     }
+
     playNextWord();
+
 });
 
 addTranslation.addEventListener("change", () => {
@@ -1731,8 +1741,10 @@ function readAloud(dictionary) {
         });
 
         if (translate) {
+
             const wordSpan_en = document.createElement('span');
             wordSpan_en.textContent = " (" + item.word_en + ") ";
+            wordSpan_en.lang = "EN";
             wordSpan_en.classList.add('font-size-small');
 
             // word_en used for sound pathname
@@ -1743,11 +1755,15 @@ function readAloud(dictionary) {
 
             wordSpan_en.addEventListener('click', function () {
 
-                let soundFileName = item.word_en.replace(' ', '_');
-                soundFileName = soundFileName.toString().toLowerCase();
-                const soundFilePathname = "../assets/sound/th/" + soundFileName + ".mp3";
+                /*                
+                                let soundFileName = item.word_en.replace(' ', '_');
+                                soundFileName = soundFileName.toString().toLowerCase();
+                                const soundFilePathname = "../assets/sound/th/" + soundFileName + ".mp3";
+                                playWord(soundFilePathname);
+                */
 
-                playWord(soundFilePathname);
+                textToSpeech(item.word_en);
+
                 wordSpan_en.classList.add('highlight-red');
             });
 
@@ -1791,11 +1807,11 @@ function textToSpeech(text) {
         //        utterance.pitch = 1;
 
         // Speak the text
+
         speechSynth.speak(utterance);
     } else {
         console.log('Web Speech API is not supported in this browser.');
     }
-
 
     /*
         const utterance = new SpeechSynthesisUtterance(text);
@@ -1841,4 +1857,5 @@ function textToSpeech(text) {
     
         }
     */
+
 }
