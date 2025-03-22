@@ -414,6 +414,7 @@ const dictionaryBook2Lesson3 = [
     { word_en: "Classifier for the whole fruit", word_th: "ลูก/ผล", pronunciation: "lûuk / phǒn" }
 
 ]; */
+
 /* colours */
 const dictionaryBook2Lesson4 = [
     { word_en: "Colour", word_th: "สี", pronunciation: "sǐi" },
@@ -435,6 +436,7 @@ const dictionaryBook2Lesson4 = [
         { word_en: "", word_th: "", pronunciation: "" },
     */
 ];
+
 /* clssifiers */
 const dictionaryBook2Lesson5 = [
     { word_en: "animals, letters, numbers,clothes,chairs,and tables", word_th: "คน", pronunciation: "khon" },
@@ -455,6 +457,7 @@ const dictionaryBook2Lesson5 = [
         { word_en: "", word_th: "", pronunciation: "" },
     */
 ];
+
 /* prepositions 
 const dictionaryBook2Lesson6 = [
     { word_en: "There is/There are", word_th: "มี", pronunciation: "mii" },
@@ -467,6 +470,7 @@ const dictionaryBook2Lesson6 = [
     //   { word_en: "", word_th: "", pronunciation: "" },
 ];
 */
+
 // book 3
 /* Time */
 const dictionaryBook3Lesson1 = [
@@ -499,6 +503,7 @@ const dictionaryBook3Lesson1 = [
     { word_en: "Right now", word_th: "เดีƒยวนี", pronunciation: "dǐaw-níi" }
     //        { word_en: "", word_th: "", pronunciation: "" },
 ];
+
 /* Days 
 const dictionaryBook3Lesson2 = [
     { word_en: "Monday", word_th: "วันจันทร์", pronunciation: "wan-jan" },
@@ -982,9 +987,63 @@ const dictionaryVowels = [
     { word_en: "wa", word_th: "เ-ือ", hint: "LV" },
     { word_en: "ua", word_th: "-ัว", hint: "LV" },
     { word_en: "am", word_th: "-ำ", hint: "LV" },
-    { word_en: "ai", word_th: "ไ/ใ", hint: "LV" },
+    { word_en: "ai", word_th: "ไ ใ", hint: "LV" },
     { word_en: "aw", word_th: "เ-า", hint: "LV" }
 ];
+
+const dictionaryRW1_MC_LV_MT = [
+    { word_en: "crow", word_th: "อีกา", hint: "MC LV MT" },
+    { word_en: "crab", word_th: "ปู", hint: "MC LV MT" },
+    { word_en: "young uncle", word_th: "อา", hint: "MC LV MT" },
+    { word_en: "see", word_th: "ดู", hint: "MC LV MT" },
+    { word_en: "year", word_th: "ปี", hint: "MC LV MT" },
+    { word_en: "grown up", word_th: "โต", hint: "MC LV MT" },
+    { word_en: "good", word_th: "ดี", hint: "MC LV MT" },
+    { word_en: "lotus", word_th: "บัว", hint: "MC LV MT" },
+    { word_en: "eye", word_th: "ตา", hint: "MC LV MT" },
+    { word_en: "meet", word_th: "เจอ", hint: "MC LV MT" },
+    { word_en: "remember", word_th: "จํา", hint: "MC LV MT" },
+    { word_en: "go", word_th: "ไป", hint: "MC LV MT" }
+];
+
+const dictionaryRW1_MC_SV_LT = [
+    { word_en: "island", word_th: "เกาะ", hint: "MC SV LT" },
+    { word_en: "sheep", word_th: "แกะ", hint: "MC SV LT" },
+    { word_en: "touch", word_th: "เตะ", hint: "MC SV LT" },
+    { word_en: "year", word_th: "ปี", hint: "MC SV LT" },
+    { word_en: "eye", word_th: "ตา", hint: "MC SV LT" },
+    { word_en: "fierce", word_th: "ดุ", hint: "MC SV LT" },
+    { word_en: "light", word_th: "เบา", hint: "MC SV LT" },
+    { word_en: "remember", word_th: "จํา", hint: "MC SV LT" },
+    { word_en: "lotus", word_th: "บัว", hint: "MC SV LT" }
+]
+const dictionaryRW1_HC_LV_RT = [
+    { word_en: "lotus", word_th: "บัว", hint: "MC SV LT" }
+
+];
+
+const dictionaryRW1_HC_SV_LT = [
+    { word_en: "lotus", word_th: "บัว", hint: "MC SV LT" }
+
+];
+
+/*
+    { word_en: "", word_th: "บัว", hint: "" },
+    { word_en: "", word_th: "", hint: "" },
+    { word_en: "", word_th: "", hint: "" },
+    { word_en: "", word_th: "", hint: "" },
+    { word_en: "", word_th: "", hint: "" },
+    { word_en: "", word_th: "", hint: "" },
+    { word_en: "", word_th: "", hint: "" },
+    { word_en: "", word_th: "", hint: "" },
+    { word_en: "", word_th: "", hint: "" },
+    { word_en: "", word_th: "", hint: "" },
+    { word_en: "", word_th: "", hint: "" },
+    { word_en: "", word_th: "", hint: "" },
+    { word_en: "", word_th: "", hint: "" },
+    { word_en: "", word_th: "", hint: "" }
+]
+*/
 
 const dictionaryRW2ChangeFormVowels = [
     { word_en: "together", word_th: "กัน", pronunciation: "กัน", sound_th: "thai_vowels/together.mp3" },
@@ -1064,6 +1123,10 @@ const dictionaries = {
     dictionaryRW1MiddleClassConsonants: dictionaryRW1MiddleClassConsonants,
     dictionaryRW1HighClassConsonants: dictionaryRW1HighClassConsonants,
     dictionaryVowels: dictionaryVowels,
+    dictionaryRW1_MC_LV_MT: dictionaryRW1_MC_LV_MT,
+    dictionaryRW1_MC_SV_LT: dictionaryRW1_MC_SV_LT,
+    dictionaryRW1_HC_LV_RT: dictionaryRW1_HC_LV_RT,
+    dictionaryRW1_HC_SV_LT: dictionaryRW1_HC_SV_LT,
 
     // RW 2 
     /*
@@ -1388,7 +1451,6 @@ function htmlMultipleChoice(wordIndex) {
     shuffledWords.forEach(
         (userSelectedIndex) => {
 
-
             const buttonChoiceWordTh = document.createElement("button");
             if ("TH" === currentLang.dataset.lang) {
                 buttonChoiceWordTh.textContent = currentDictionary[userSelectedIndex].word_en;
@@ -1425,14 +1487,19 @@ function htmlMultipleChoice(wordIndex) {
                     }
                 }
 
+                const text = currentDictionary[userSelectedIndex].word_en;
+                textToSpeech(text);
+
                 attemptAnswerCount++;
                 feedback();
 
-                let soundFileName = currentDictionary[userSelectedIndex].word_en.replace(' ', '_');
-                soundFileName = soundFileName.toString().toLowerCase();
-                const soundFile = "../assets/sound/th/" + soundFileName + ".mp3";
-                playWord(soundFile);
 
+                /*
+                                let soundFileName = currentDictionary[userSelectedIndex].word_en.replace(' ', '_');
+                                soundFileName = soundFileName.toString().toLowerCase();
+                                const soundFile = "../assets/sound/th/" + soundFileName + ".mp3";
+                                playWord(soundFile);
+                */
             });
 
             const buttonChoiceWord = document.createElement("button");
@@ -1694,53 +1761,79 @@ function playWord(soundFile) {
 
 }
 
-/*
-
 function textToSpeech(text) {
-
-    const utterance = new SpeechSynthesisUtterance(text);
-
-    const voices = window.speechSynthesis.getVoices();
-
-
     if ('speechSynthesis' in window) {
+        let speechSynth = window.speechSynthesis;
 
-        let voices = window.speechSynthesis.getVoices();
+        // Create a new SpeechSynthesisUtterance object
+        let utterance = new SpeechSynthesisUtterance(text);
 
-        let thaiVoice = voices.find(voice => voice.lang === 'th-TH');
+        // Set the voice to a high-quality voice
+        /*
 
-        //                   let utterance = new SpeechSynthesisUtterance('สวัสดีครับ');
+1. Google UK English Female
+2. Google UK English Male
+3. Google US English Female
+4. Google US English Male
+5. Microsoft David Desktop - English (United States)
+6. Microsoft Zira Desktop - English (United States)
+        */
+        //        let voices = speechSynth.getVoices();
+        //        utterance.voice = voices.find(voice => voice.name === 'Microsoft Zira Desktop - English (United States)');
 
-        utterance.voice = thaiVoice;
+        // Adjust other settings if needed
+        //        utterance.rate = 1.5;
+        //        utterance.pitch = 1;
 
-        if (typeof thaiVoice !== 'undefined') {
-            window.speechSynthesis.speak(utterance);
-        }
+        // Speak the text
+        speechSynth.speak(utterance);
     } else {
-        console.log('SpeechSynthesis API is not available in this browser');
+        console.log('Web Speech API is not supported in this browser.');
     }
 
+
+    /*
+        const utterance = new SpeechSynthesisUtterance(text);
     
-        voices.forEach((voice) => {
+        //    const voices = window.speechSynthesis.getVoices();
     
-            if (voice.lang === "th-TH" || voice.lang === "th" || voice.lang === "TH") {
     
-                utterance.voice = voice;
-                console.log('voice ', utterance.voice);
+        if ('speechSynthesis' in window) {
     
+            const voices = window.speechSynthesis.getVoices();
+    
+            //        let thaiVoice = voices.find(voice => voice.lang === 'th-TH');
+            let enVoice = voices.find(voice => voice.lang === 'th-TH');
+    
+            //                   let utterance = new SpeechSynthesisUtterance('สวัสดีครับ');
+    
+    
+            if (typeof enVoice !== 'undefined') {
+                utterance.voice = enVoice;
+                window.speechSynthesis.speak(utterance);
+            } else {
+                console.log('SpeechSynthesis API is not available in this browser');
             }
     
-        });
+            voices.forEach((voice) => {
     
-
-//   let thaiVoice = voices.find(voice => voice.name === 'ไทย ไทย'); // see th.json in assets
-//   utterance.voice = thaiVoice;
-
-if (utterance.voice != null) {
-    window.speechSynthesis.speak(utterance);
+                if (voice.lang === "en-EN" || voice.lang === "en" || voice.lang === "EN") {
+    
+                    utterance.voice = voice;
+                    console.log('voice ', utterance.voice);
+    
+                }
+    
+            });
+    
+            //   let thaiVoice = voices.find(voice => voice.name === 'ไทย ไทย'); // see th.json in assets
+            //   utterance.voice = thaiVoice;
+    
+            if (utterance.voice != null) {
+                window.speechSynthesis.speak(utterance);
+            }
+    
+    
+        }
+    */
 }
-
-
-}
-
-*/
