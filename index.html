@@ -253,7 +253,7 @@
                                     <input type="checkbox" id="dictionaryRW1_MC_SV_LT" name="dictionaryRW1_MC_SV_LT"
                                         value="dictionaryRW1_MC_SV_LT" />MC Short Vowel (SV) Low Tone (LT)
                                 </label>
-
+                                <!--
                                 <label>
                                     <input type="checkbox" id="dictionaryRW1_HC_LV_RT" name="dictionaryRW1_HC_LV_RT"
                                         value="dictionaryRW1_HC_LV_RT" />
@@ -264,9 +264,9 @@
                                         value="dictionaryRW1_HC_SV_LT" />HC
                                     Short Vowel (SV) Low Tone (LT)
                                 </label>
-
-
+-->
                             </details>
+                            <!--
                             <details>
                                 <summary>Reading and writing 2</summary>
                                 <header>Final consonants</header>
@@ -276,49 +276,48 @@
                                         value="dictionaryRW2LiveFinalConsonant" />Live final Consonants
                                 </label>
                                 <header>Change form vowels</header>
-                                <label>
+                                <label for="dictionaryRW2ChangeFormVowels">
                                     <input type="checkbox" id="dictionaryRW2ChangeFormVowels"
                                         name="dictionaryRW2ChangeFormVowels"
                                         value="dictionaryRW2ChangeFormVowels" />Change form vowels
                                 </label>
-
-
-                            </details>
-
+-->
                         </details>
 
-                    </div>
                 </details>
 
-                <details>
-                    <summary>Phonetic Editor / Sound</summary>
-                    <div id="editor">
-                        <p>Click text area for keyboard
-                            <textarea id="keyboardInput" name="keyboard-input" class='keyboard-input'></textarea>
-                        </p>
-                    </div>
-                    <hr>
+        </div>
+        </details>
 
-                    <div>
-                        <p class="font-size-medium">
-                            Paste Thai text and click Get link
-                            <br>
-                            <!-- placeholder =  Enter a Thai word to speak aloud  -->
-                            <input type="text" id="thWord" name="thWord" placeholder="Get &amp; Play link" />
-                            <button id="thSpeak">Get link</button>
+        <details>
+            <summary>Phonetic Editor / Sound</summary>
+            <div id="editor">
+                <p>Click text area for keyboard
+                    <textarea id="keyboardInput" name="keyboard-input" class='keyboard-input'></textarea>
+                </p>
+            </div>
+            <hr>
 
-                            <br>
-                            <a id="soundLink" target="_blank" class="font-size-medium"
-                                href="https://translate.google.com/translate_tts?ie=UTF-8&client=tw-ob&tl=th&q=ใส่คำภาษาไทยเพื่อพูดออกเสียง">
-                                Click here for new browser and click return in new browser address window to Play the
-                                Link
-                            </a>
-                        </p>
-                    </div>
+            <div>
+                <p class="font-size-medium">
+                    Paste Thai text and click Get link
+                    <br>
+                    <!-- placeholder =  Enter a Thai word to speak aloud  -->
+                    <input type="text" id="thWord" name="thWord" placeholder="Get &amp; Play link" />
+                    <button id="thSpeak">Get link</button>
 
-                </details>
+                    <br>
+                    <a id="soundLink" target="_blank" class="font-size-medium"
+                        href="https://translate.google.com/translate_tts?ie=UTF-8&client=tw-ob&tl=th&q=ใส่คำภาษาไทยเพื่อพูดออกเสียง">
+                        Click here for new browser and click return in new browser address window to Play the
+                        Link
+                    </a>
+                </p>
+            </div>
 
-            </details>
+        </details>
+
+        </details>
 
         </div>
 

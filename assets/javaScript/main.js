@@ -1016,7 +1016,9 @@ const dictionaryRW1_MC_SV_LT = [
     { word_en: "light", word_th: "เบา", hint: "MC SV LT" },
     { word_en: "remember", word_th: "จํา", hint: "MC SV LT" },
     { word_en: "lotus", word_th: "บัว", hint: "MC SV LT" }
-]
+];
+
+/*
 const dictionaryRW1_HC_LV_RT = [
     { word_en: "lotus", word_th: "บัว", hint: "MC SV LT" }
 
@@ -1026,6 +1028,7 @@ const dictionaryRW1_HC_SV_LT = [
     { word_en: "lotus", word_th: "บัว", hint: "MC SV LT" }
 
 ];
+*/
 
 /*
     { word_en: "", word_th: "บัว", hint: "" },
@@ -1044,7 +1047,7 @@ const dictionaryRW1_HC_SV_LT = [
     { word_en: "", word_th: "", hint: "" }
 ]
 */
-
+/*
 const dictionaryRW2ChangeFormVowels = [
     { word_en: "together", word_th: "กัน", pronunciation: "กัน", sound_th: "thai_vowels/together.mp3" },
     { word_en: "eat", word_th: "กิน", pronunciation: "กิน", sound_th: "thai_vowels/eat.mp3" },
@@ -1091,7 +1094,7 @@ const dictionaryRW2LiveFinalConsonant = [
     { word_en: "basin", word_th: "อ่างนำ้", hint: "MC + Live endings + Tone markers - LIVE" },
     { word_en: "branch", word_th: "กิ่งไม้", hint: "MC + Live endings + Tone markers - LIVE" }
 ];
-
+*/
 const dictionaries = {
     /*
         // book 1
@@ -1125,14 +1128,16 @@ const dictionaries = {
     dictionaryVowels: dictionaryVowels,
     dictionaryRW1_MC_LV_MT: dictionaryRW1_MC_LV_MT,
     dictionaryRW1_MC_SV_LT: dictionaryRW1_MC_SV_LT,
+    /*
     dictionaryRW1_HC_LV_RT: dictionaryRW1_HC_LV_RT,
     dictionaryRW1_HC_SV_LT: dictionaryRW1_HC_SV_LT,
-
+*/
     // RW 2 
     /*
     dictionaryRW2ChangeFormVowels: dictionaryRW2ChangeFormVowels,
-    */
+    
     dictionaryRW2LiveFinalConsonant: dictionaryRW2LiveFinalConsonant
+    */
 };
 
 const dictionaryIncorrectAnswers = [];
