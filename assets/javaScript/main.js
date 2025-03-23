@@ -1018,17 +1018,27 @@ const dictionaryRW1_MC_SV_LT = [
     { word_en: "lotus", word_th: "บัว", hint: "MC SV LT" }
 ];
 
-/*
 const dictionaryRW1_HC_LV_RT = [
-    { word_en: "lotus", word_th: "บัว", hint: "MC SV LT" }
-
+    { word_en: "leg", word_th: "ขา", hint: "HC LV RT" },
+    { word_en: "look for", word_th: "หา", hint: "HC LV RT" },
+    { word_en: "ghost", word_th: "ผี", hint: "HC LV RT" },
+    { word_en: "color", word_th: "สี", hint: "HC LV RT" },
+    { word_en: "hold", word_th: "ถือ", hint: "HC LV RT" },
+    { word_en: "ear", word_th: "หู", hint: "HC LV RT" },
+    { word_en: "net", word_th: "แห", hint: "HC LV RT" },
+    { word_en: "jar", word_th: "โถ", hint: "HC LV RT" },
+    { word_en: "broken", word_th: "เสีย", hint: "HC LV RT" },
+    { word_en: "tiger", word_th: "เสือ", hint: "HC LV RT" },
+    { word_en: "clear", word_th: "ใส", hint: "HC LV RT" }
 ];
 
 const dictionaryRW1_HC_SV_LT = [
-    { word_en: "lotus", word_th: "บัว", hint: "MC SV LT" }
 
+    { word_en: "louse", word_th: "เหา", hint: "HC SV LT" },
+    { word_en: "decay", word_th: "ผุ", hint: "HC SV LT" },
+    { word_en: "please", word_th: "ขอ", hint: "HC SV LT" },
+    { word_en: "head", word_th: "หัว", hint: "HC SV LT" }
 ];
-*/
 
 /*
     { word_en: "", word_th: "บัว", hint: "" },
@@ -1095,6 +1105,7 @@ const dictionaryRW2LiveFinalConsonant = [
     { word_en: "branch", word_th: "กิ่งไม้", hint: "MC + Live endings + Tone markers - LIVE" }
 ];
 */
+
 const dictionaries = {
     /*
         // book 1
@@ -1128,10 +1139,9 @@ const dictionaries = {
     dictionaryVowels: dictionaryVowels,
     dictionaryRW1_MC_LV_MT: dictionaryRW1_MC_LV_MT,
     dictionaryRW1_MC_SV_LT: dictionaryRW1_MC_SV_LT,
-    /*
     dictionaryRW1_HC_LV_RT: dictionaryRW1_HC_LV_RT,
     dictionaryRW1_HC_SV_LT: dictionaryRW1_HC_SV_LT,
-*/
+
     // RW 2 
     /*
     dictionaryRW2ChangeFormVowels: dictionaryRW2ChangeFormVowels,
