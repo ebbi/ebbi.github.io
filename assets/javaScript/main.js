@@ -1422,22 +1422,16 @@ function uncheckSelectedCheckboxes(checkboxes) {
 }
 
 function htmlMultipleChoice(wordIndex) {
-
-    if (currentDictionary.length <= 0) {
-        //       searchWord.value = 'Select a dictionary';
-        searchWord.ariaPlaceholder = "Search word or select a dictionary";
-
-        return;
-    }
-
-    //    const ulSearchWords = document.getElementById("searchWords");
+    /*
+        if (currentDictionary.length <= 0) {
+            searchWord.ariaPlaceholder = "Search word or select a dictionary";
+            return;
+        }
+    */
     const divSearchWords = document.getElementById("searchWords");
     divSearchWords.innerHTML = '';
 
-    //    ulSearchWords.innerHTML = '';
-
     let randomWords = [];
-
 
     if ("TH" === currentLang.dataset.lang) {
         searchWord.value = currentDictionary[wordIndex].word_th;
@@ -1446,6 +1440,7 @@ function htmlMultipleChoice(wordIndex) {
         searchWord.value = currentDictionary[wordIndex].word_en;
         searchWord.lang = "EN"
     }
+
     //   searchWord.value = currentDictionary[questionWordIndex].word_en;
 
     // get multiple choice word indexes, add index for correct answer, shuffle the array
@@ -1457,30 +1452,46 @@ function htmlMultipleChoice(wordIndex) {
     shuffledWords.forEach(
         (userSelectedIndex) => {
 
-            const buttonChoiceWordTh = document.createElement("button");
+            const buttonChoiceWord = document.createElement("button");
+            const buttonChoiceWordHint = document.createElement("button");
+
             if ("TH" === currentLang.dataset.lang) {
-                buttonChoiceWordTh.textContent = currentDictionary[userSelectedIndex].word_en;
-                buttonChoiceWordTh.lang = "EN";
-            } else {
-                buttonChoiceWordTh.textContent = currentDictionary[userSelectedIndex].word_th;
-                buttonChoiceWordTh.lang = "TH";
+                buttonChoiceWord.lang = "EN"
+                buttonChoiceWord.textContent = currentDictionary[userSelectedIndex].word_en;
+                buttonChoiceWordHint.textContent = currentDictionary[userSelectedIndex].hint;
+            } else if ("EN" === currentLang.dataset.lang) {
+                buttonChoiceWord.lang = "TH"
+                buttonChoiceWord.textContent = currentDictionary[userSelectedIndex].word_th;
+                buttonChoiceWordHint.textContent = currentDictionary[userSelectedIndex].hint;
             }
 
-            divSearchWords.appendChild(buttonChoiceWordTh);
+            divSearchWords.appendChild(buttonChoiceWord);
+            divSearchWords.appendChild(buttonChoiceWordHint);
 
-            buttonChoiceWordTh.addEventListener('click', function () {
+            /*
+                        const buttonChoiceWord_th = document.createElement("button");
+                        if ("TH" === currentLang.dataset.lang) {
+                            buttonChoiceWord_th.textContent = currentDictionary[userSelectedIndex].word_th;
+                            buttonChoiceWord_th.lang = "TH";
+                        } else if ("EN" === currentLang.dataset.lang) {
+                            buttonChoiceWord_th.textContent = currentDictionary[userSelectedIndex].word_en;
+                            buttonChoiceWord_th.lang = "EN";
+                        }
+            
+                        divSearchWords.appendChild(buttonChoiceWord_th);
+            */
+
+            buttonChoiceWord.addEventListener('click', function () {
 
                 if (currentDictionary[wordIndex].word_en === currentDictionary[userSelectedIndex].word_en) {
-                    buttonChoiceWordTh.classList.add("correct");
+                    buttonChoiceWord.classList.add("correct");
                     correctAnswerCount++;
                 } else {
-                    buttonChoiceWordTh.lang = "EN";
-                    buttonChoiceWordTh.classList.add("incorrect");
-                    buttonChoiceWordTh.textContent = currentDictionary[userSelectedIndex].word_en
-                        + ' = ' + currentDictionary[userSelectedIndex].word_th
-                        + ' = ' + currentDictionary[userSelectedIndex].hint;
+                    buttonChoiceWord.classList.add("incorrect");
+
                     incorrectAnswerCount++;
 
+                    // add word to incorrect answers list
                     const found = dictionaryIncorrectAnswers.find(
                         ({ word_en }) => word_en === currentDictionary[wordIndex].word_en);
                     if (!found) {
@@ -1493,39 +1504,35 @@ function htmlMultipleChoice(wordIndex) {
                     }
                 }
 
-                const text = currentDictionary[userSelectedIndex].word_en;
-                textToSpeech(text);
+                if ("TH" === currentLang.dataset.lang) {
 
-                /*
-                                let soundFileName = currentDictionary[userSelectedIndex].word_en.replace(' ', '_');
-                                soundFileName = soundFileName.toString().toLowerCase();
-                                const soundFile = "../assets/sound/th/" + soundFileName + ".mp3";
-                                playWord(soundFile);
-                */
+                    textToSpeech(currentDictionary[userSelectedIndex].word_en);
+
+                } else if ("EN" === currentLang.dataset.lang) {
+
+                    let soundFileName = currentDictionary[userSelectedIndex].word_en.replace(' ', '_');
+                    soundFileName = soundFileName.toString().toLowerCase();
+                    const soundFile = "../assets/sound/th/" + soundFileName + ".mp3";
+                    playWord(soundFile);
+
+                }
 
                 attemptAnswerCount++;
                 feedback();
 
             });
 
-            const buttonChoiceWord = document.createElement("button");
-            buttonChoiceWord.textContent = currentDictionary[userSelectedIndex].hint;
-
-            //           liChoiceWord.appendChild(buttonChoiceWord);
-            divSearchWords.appendChild(buttonChoiceWord);
-
-            buttonChoiceWord.addEventListener("click", function () {
+            buttonChoiceWordHint.addEventListener("click", function () {
 
                 if (currentDictionary[wordIndex].word_en === currentDictionary[userSelectedIndex].word_en) {
-                    buttonChoiceWord.classList.add("correct");
+                    buttonChoiceWordHint.classList.add("correct");
                     correctAnswerCount++;
                 } else {
-                    buttonChoiceWordTh.lang = "EN";
-                    buttonChoiceWord.classList.add("incorrect");
-                    buttonChoiceWord.textContent = currentDictionary[userSelectedIndex].word_en
-                        + ' = ' + currentDictionary[userSelectedIndex].word_th
-                        + ' = ' + currentDictionary[userSelectedIndex].hint;
+
                     incorrectAnswerCount++;
+                    buttonChoiceWordHint.classList.add("incorrect");
+
+                    // add word to incorrect answers list
                     const found = dictionaryIncorrectAnswers.find(
                         ({ word_en }) => word_en === currentDictionary[wordIndex].word_en);
                     if (!found) {
@@ -1538,10 +1545,18 @@ function htmlMultipleChoice(wordIndex) {
                     }
                 }
 
-                let soundFileName = currentDictionary[userSelectedIndex].word_en.replace(' ', '_');
-                soundFileName = soundFileName.toString().toLowerCase();
-                const soundFile = "../assets/sound/th/" + soundFileName + ".mp3";
-                playWord(soundFile);
+                if ("TH" === currentLang.dataset.lang) {
+
+                    let soundFileName = currentDictionary[userSelectedIndex].word_en.replace(' ', '_');
+                    soundFileName = soundFileName.toString().toLowerCase();
+                    const soundFile = "../assets/sound/th/" + soundFileName + ".mp3";
+                    playWord(soundFile);
+
+                } else if ("EN" === currentLang.dataset.lang) {
+
+                    textToSpeech(currentDictionary[userSelectedIndex].word_en);
+
+                }
 
                 attemptAnswerCount++;
                 feedback();
@@ -1638,12 +1653,16 @@ document.getElementById('buttonPlayAll').addEventListener('click', function () {
 
             // sound file for th and texttospeach for en
             if (wordSpan.lang === "TH") {
+
                 let soundFileName = wordSpan.dataset.word_en.replace(' ', '_');
                 soundFileName = soundFileName.toString().toLowerCase();
                 const soundFilePathname = "../assets/sound/th/" + soundFileName + ".mp3";
                 playWord(soundFilePathname);
+
             } else if (wordSpan.lang === "EN") {
+
                 textToSpeech(wordSpan.dataset.word_en);
+
             }
 
             wordSpan.classList.add('highlight');
