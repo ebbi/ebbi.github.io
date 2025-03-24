@@ -919,7 +919,7 @@ const conversations = [
 // Thai Alphabet
 
 const dictionaryRW1LowClassConsonants = [
-    { word_en: "phɔɔ phaan", word_th: "พ", hint: " (LC ภ phɔɔ sam-phaw)" },
+    { word_en: "phɔɔ phaan", word_th: "พ", hint: "offering tray (LC ภ phɔɔ sam-phaw)" },
     { word_en: "fɔɔ fan", word_th: "ฟ", hint: "tooth (LC)" },
     { word_en: "thɔɔ tha-haan", word_th: "ท", hint: "soldier (LC ธ thɔɔ thoŋ, ฑ thɔɔ mon-thoo, ฒ thɔɔ phuu-thaw)" },
     { word_en: "khɔɔ khwaay", word_th: "ค", hint: "buffalow (LC ฆ khɔɔ ra-khaŋ)" },
@@ -1292,24 +1292,6 @@ incorrectAnswersOnly.addEventListener("click", () => {
 });
 
 randomizeCheckbox.addEventListener("change", () => {
-    /*
-        if (currentDictionary.length == 0) {
-            //        randomizeCheckbox.checked = false;
-            return;
-        }
-    
-        if (randomizeCheckbox.checked) {
-            //        randomize = true;
-            lastDictionary = currentDictionary;
-            currentDictionary = shuffle(currentDictionary);
-        } else {
-            //       randomize = false;
-            // setDictionary();
-            currentDictionary = lastDictionary;
-        }
-        wordIndex = 0;
-        htmlMultipleChoice(wordIndex);
-    */
     setDictionary();
 });
 
@@ -1799,6 +1781,28 @@ function playWord(soundFile) {
 }
 
 function textToSpeech(text) {
+
+    // ignore vowels and consonants and play Thai sound file instead
+    thaiVowelsAndConsonants = ["a", "aa", "i", "ii", "w", "ww", "u", "uu", "ee", "εε", "oo", "ɔɔ",
+        "əə", "ia", "wa", "ua", "am", "ai", "aw",
+        "phɔɔ phaan", "fɔɔ fan", "thɔɔ tha-haan", "khɔɔ khwaay", "sɔɔ soo", "hɔɔ nok-huuk", "chɔɔ chaaŋ", "ŋɔɔ ŋuu", "yɔɔ yak",
+        "nɔɔ nuu", "rɔɔ rwa", "wɔɔ wεεn", "mɔɔ maa", "lɔɔ liŋ", "phɔɔ sam-phaw", "thɔɔ thoŋ", "thɔɔ mon-thoo",
+        "thɔɔ phuu-thaw", "khɔɔ ra-khaŋ", "chɔɔ chəə", "yɔɔ phuu-yiŋ", "nɔɔ neen", "lɔɔ ju-laa",
+        "gɔɔ gai", "jɔɔ jaan", "dɔɔ dek", "dtɔɔ dtaw", "bɔɔ bai-maay", "bpɔɔ bplaa", "ɔɔ aaŋ", "dɔɔ cha-daa", "dtɔɔ bpa-dtak",
+        "phɔɔ phwwŋ", "fɔɔ faa", "thɔɔ thuŋ", "khɔɔ khai", "sɔɔ swa", "hɔɔ hiip", "chɔɔ chiŋ", "thɔɔ thaan", "sɔɔ rww-sii", "sɔɔ saa-laa"
+    ];
+
+    if (thaiVowelsAndConsonants.includes(text)) {
+
+        let soundFileName = text.replace(' ', '_');
+        soundFileName = soundFileName.toString().toLowerCase();
+        const soundFilePathname = "../assets/sound/th/" + soundFileName + ".mp3";
+        playWord(soundFilePathname);
+
+        return;
+    }
+
+
     if ('speechSynthesis' in window) {
         let speechSynth = window.speechSynthesis;
 
