@@ -919,7 +919,7 @@ const conversations = [
 // Thai Alphabet
 
 const dictionaryRW1LowClassConsonants = [
-    { word_en: "phɔɔ phaan", word_th: "พ", hint: "offering tray (LC ภ phɔɔ sam-phaw)" },
+    { word_en: "phɔɔ phaan", word_th: "พ", hint: " (LC ภ phɔɔ sam-phaw)" },
     { word_en: "fɔɔ fan", word_th: "ฟ", hint: "tooth (LC)" },
     { word_en: "thɔɔ tha-haan", word_th: "ท", hint: "soldier (LC ธ thɔɔ thoŋ, ฑ thɔɔ mon-thoo, ฒ thɔɔ phuu-thaw)" },
     { word_en: "khɔɔ khwaay", word_th: "ค", hint: "buffalow (LC ฆ khɔɔ ra-khaŋ)" },
@@ -945,7 +945,7 @@ const dictionaryRW1LowClassConsonants = [
 ];
 
 const dictionaryRW1MiddleClassConsonants = [
-    { word_en: "gɔɔ gai", word_th: "ก", hint: "chicken (MC)" },
+    { word_en: "Middle class consonant 'gɔɔ'", word_th: "ก", hint: "gɔɔ gai (MC), chicken" },
     { word_en: "jɔɔ jaan", word_th: "จ", hint: "plate (MC)" },
     { word_en: "dɔɔ dek", word_th: "ด", hint: "child (MC ฎ dɔɔ cha-daa )" },
     { word_en: "dtɔɔ dtaw", word_th: "ต", hint: "turtle (MC ฏ dtɔɔ bpa-dtak)" },
@@ -1451,8 +1451,6 @@ function htmlMultipleChoice(wordIndex) {
         searchWord.lang = "EN"
     }
 
-    //   searchWord.value = currentDictionary[questionWordIndex].word_en;
-
     // get multiple choice word indexes, add index for correct answer, shuffle the array
     randomWords = getRandomIntArray(wordIndex, currentDictionary.length);
     randomWords.push(wordIndex); // add index for correct word
@@ -1477,19 +1475,6 @@ function htmlMultipleChoice(wordIndex) {
 
             divSearchWords.appendChild(buttonChoiceWord);
             divSearchWords.appendChild(buttonChoiceWordHint);
-
-            /*
-                        const buttonChoiceWord_th = document.createElement("button");
-                        if ("TH" === currentLang.dataset.lang) {
-                            buttonChoiceWord_th.textContent = currentDictionary[userSelectedIndex].word_th;
-                            buttonChoiceWord_th.lang = "TH";
-                        } else if ("EN" === currentLang.dataset.lang) {
-                            buttonChoiceWord_th.textContent = currentDictionary[userSelectedIndex].word_en;
-                            buttonChoiceWord_th.lang = "EN";
-                        }
-            
-                        divSearchWords.appendChild(buttonChoiceWord_th);
-            */
 
             buttonChoiceWord.addEventListener('click', function () {
 
@@ -1736,10 +1721,12 @@ document.getElementById('buttonPause').addEventListener('click', function () {
         let wordSpan = "";
 
         wordSpan = wordSpans[wordIndex - 1];
+
         /*
         console.log(playWordIndex);
         console.log(wordSpan);
         */
+
         wordSpan.classList.add('highlight-paused');
 
     }
