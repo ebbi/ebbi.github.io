@@ -416,6 +416,7 @@ const dictionaryBook2Lesson3 = [
 ]; */
 
 /* colours */
+/*
 const dictionaryBook2Lesson4 = [
     { word_en: "Colour", word_th: "สี", pronunciation: "sǐi" },
     { word_en: "White", word_th: "สีขาว", pronunciation: "" },
@@ -432,12 +433,13 @@ const dictionaryBook2Lesson4 = [
     { word_en: "Brown", word_th: "สีนํNาตาล", pronunciation: "sǐi náam-dtaan" },
     { word_en: "Light(Adj)", word_th: "อ่อน", pronunciation: "ɔ̀ɔn" },
     { word_en: "Dark(Adj)", word_th: "เข้ม", pronunciation: "khêm" }
-    /*
-        { word_en: "", word_th: "", pronunciation: "" },
-    */
+    
 ];
 
+*/
+
 /* clssifiers */
+/*
 const dictionaryBook2Lesson5 = [
     { word_en: "animals, letters, numbers,clothes,chairs,and tables", word_th: "คน", pronunciation: "khon" },
     { word_en: "containers , pieces of paper, documents", word_th: "ใบ", pronunciation: "bai" },
@@ -453,10 +455,9 @@ const dictionaryBook2Lesson5 = [
     { word_en: "Electrical device/machine", word_th: "เครืf อง", pronunciation: "khrɯ̂aŋ" },
     { word_en: "A pair of", word_th: "คู่", pronunciation: "khûu" },
     { word_en: "Objects", word_th: "อัน", pronunciation: "an" }
-    /*
-        { word_en: "", word_th: "", pronunciation: "" },
-    */
+
 ];
+*/
 
 /* prepositions 
 const dictionaryBook2Lesson6 = [
@@ -473,6 +474,7 @@ const dictionaryBook2Lesson6 = [
 
 // book 3
 /* Time */
+/*
 const dictionaryBook3Lesson1 = [
     { word_en: "In the morning", word_th: "ตอนเช้า", pronunciation: "dtɔɔn cháaw" },
     { word_en: "In the late morning", word_th: "ตอนสาย", pronunciation: "dtɔɔn sǎay" },
@@ -503,7 +505,7 @@ const dictionaryBook3Lesson1 = [
     { word_en: "Right now", word_th: "เดีƒยวนี", pronunciation: "dǐaw-níi" }
     //        { word_en: "", word_th: "", pronunciation: "" },
 ];
-
+*/
 /* Days 
 const dictionaryBook3Lesson2 = [
     { word_en: "Monday", word_th: "วันจันทร์", pronunciation: "wan-jan" },
@@ -991,7 +993,7 @@ const dictionaryVowels = [
     { word_en: "aw", word_th: "เ-า", hint: "LV" }
 ];
 
-const dictionaryRW1_MC_LV_MT = [
+const dictionaryRW1PracticeReading = [
     { word_en: "crow", word_th: "อีกา", hint: "MC LV MT" },
     { word_en: "crab", word_th: "ปู", hint: "MC LV MT" },
     { word_en: "young uncle", word_th: "อา", hint: "MC LV MT" },
@@ -1003,10 +1005,7 @@ const dictionaryRW1_MC_LV_MT = [
     { word_en: "eye", word_th: "ตา", hint: "MC LV MT" },
     { word_en: "meet", word_th: "เจอ", hint: "MC LV MT" },
     { word_en: "remember", word_th: "จํา", hint: "MC LV MT" },
-    { word_en: "go", word_th: "ไป", hint: "MC LV MT" }
-];
-
-const dictionaryRW1_MC_SV_LT = [
+    { word_en: "go", word_th: "ไป", hint: "MC LV MT" },
     { word_en: "island", word_th: "เกาะ", hint: "MC SV LT" },
     { word_en: "sheep", word_th: "แกะ", hint: "MC SV LT" },
     { word_en: "touch", word_th: "เตะ", hint: "MC SV LT" },
@@ -1015,10 +1014,7 @@ const dictionaryRW1_MC_SV_LT = [
     { word_en: "fierce", word_th: "ดุ", hint: "MC SV LT" },
     { word_en: "light", word_th: "เบา", hint: "MC SV LT" },
     { word_en: "remember", word_th: "จํา", hint: "MC SV LT" },
-    { word_en: "lotus", word_th: "บัว", hint: "MC SV LT" }
-];
-
-const dictionaryRW1_HC_LV_RT = [
+    { word_en: "lotus", word_th: "บัว", hint: "MC SV LT" },
     { word_en: "leg", word_th: "ขา", hint: "HC LV RT" },
     { word_en: "look for", word_th: "หา", hint: "HC LV RT" },
     { word_en: "ghost", word_th: "ผี", hint: "HC LV RT" },
@@ -1029,11 +1025,7 @@ const dictionaryRW1_HC_LV_RT = [
     { word_en: "jar", word_th: "โถ", hint: "HC LV RT" },
     { word_en: "broken", word_th: "เสีย", hint: "HC LV RT" },
     { word_en: "tiger", word_th: "เสือ", hint: "HC LV RT" },
-    { word_en: "clear", word_th: "ใส", hint: "HC LV RT" }
-];
-
-const dictionaryRW1_HC_SV_LT = [
-
+    { word_en: "clear", word_th: "ใส", hint: "HC LV RT" },
     { word_en: "louse", word_th: "เหา", hint: "HC SV LT" },
     { word_en: "decay", word_th: "ผุ", hint: "HC SV LT" },
     { word_en: "please", word_th: "ขอ", hint: "HC SV LT" },
@@ -1057,6 +1049,7 @@ const dictionaryRW1_HC_SV_LT = [
     { word_en: "", word_th: "", hint: "" }
 ]
 */
+
 /*
 const dictionaryRW2ChangeFormVowels = [
     { word_en: "together", word_th: "กัน", pronunciation: "กัน", sound_th: "thai_vowels/together.mp3" },
@@ -1137,10 +1130,7 @@ const dictionaries = {
     dictionaryRW1MiddleClassConsonants: dictionaryRW1MiddleClassConsonants,
     dictionaryRW1HighClassConsonants: dictionaryRW1HighClassConsonants,
     dictionaryVowels: dictionaryVowels,
-    dictionaryRW1_MC_LV_MT: dictionaryRW1_MC_LV_MT,
-    dictionaryRW1_MC_SV_LT: dictionaryRW1_MC_SV_LT,
-    dictionaryRW1_HC_LV_RT: dictionaryRW1_HC_LV_RT,
-    dictionaryRW1_HC_SV_LT: dictionaryRW1_HC_SV_LT,
+    dictionaryRW1PracticeReading: dictionaryRW1PracticeReading,
 
     // RW 2 
     /*
