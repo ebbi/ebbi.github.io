@@ -945,7 +945,7 @@ const dictionaryRW1LowClassConsonants = [
 ];
 
 const dictionaryRW1MiddleClassConsonants = [
-    { word_en: "Middle class consonant 'gɔɔ'", word_th: "ก", hint: "gɔɔ gai (MC), chicken" },
+    { word_en: "gɔɔ gai", word_th: "ก", hint: "chicken (MC)" },
     { word_en: "jɔɔ jaan", word_th: "จ", hint: "plate (MC)" },
     { word_en: "dɔɔ dek", word_th: "ด", hint: "child (MC ฎ dɔɔ cha-daa )" },
     { word_en: "dtɔɔ dtaw", word_th: "ต", hint: "turtle (MC ฏ dtɔɔ bpa-dtak)" },
