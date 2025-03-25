@@ -139,15 +139,14 @@
                     <summary>Select dictionaries</summary>
 
                     <div class="checkbox-dictionary-container font-size-small">
-                        <!--
-                        <details>
-                            <summary>Beginners</summary>
-                            <details>
-                                <summary>Book 1</summary>
-                                <label>
-                                    <input type="checkbox" id="dictionaryBook1Lesson1" name="dictionaryBook1Lesson1"
-                                        value="dictionaryBook1Lesson1" />Greetings
-                                </label>
+
+                        <details open>
+                            <summary>Listening and Speaking</summary>
+                            <label>
+                                <input type="checkbox" id="dictionaryLS1Greetings" name="dictionaryLS1Greetings"
+                                    value="dictionaryLS1Greetings" />Greetings
+                            </label>
+                            <!--
                                 <label>
                                     <input type="checkbox" id="dictionaryBook1Lesson2" name="dictionaryBook1Lesson2"
                                         value="dictionaryBook1Lesson2" />What are you doing?
@@ -219,8 +218,9 @@
                                         value="dictionaryBook3Lesson6" />What does he/she look like?
                                 </label>
                             </details>
+                            -->
                         </details>
--->
+
                         <details open>
                             <summary>Reading and writing</summary>
                             <details open>
@@ -270,70 +270,70 @@
 -->
                         </details>
 
+
+
+                    </div>
+
+
                 </details>
 
-        </div>
+                <details>
+                    <summary>Languages / Phonetic Editor / Sound</summary>
 
-
-        </details>
-
-        <details>
-            <summary>Languages / Phonetic Editor / Sound</summary>
-
-            <div>
-
-                <form id="lang">
-                    <label for="txt">Enter text</label>
-                    <input id="txt" type="text" class="txt" />
                     <div>
-                        <label for="rate">Rate</label><input type="range" min="0.5" max="2" value="1" step="0.1"
-                            id="rate" />
-                        <div class="rate-value">1</div>
-                        <div class="clearfix"></div>
+
+                        <form id="lang">
+                            <label for="txt">Enter text</label>
+                            <input id="txt" type="text" class="txt" />
+                            <div>
+                                <label for="rate">Rate</label><input type="range" min="0.5" max="2" value="1" step="0.1"
+                                    id="rate" />
+                                <div class="rate-value">1</div>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div>
+                                <label for="pitch">Pitch</label><input type="range" min="0" max="2" value="1" step="0.1"
+                                    id="pitch" />
+                                <div class="pitch-value">1</div>
+                                <div class="clearfix"></div>
+                            </div>
+                            <select id="SelectLang"></select>
+                            <div class="controls">
+                                <button id="play" type="submit">Play</button>
+                            </div>
+                        </form>
+
                     </div>
+
+
+
+                    <div id="editor">
+                        <p>Click text area for keyboard
+                            <textarea id="keyboardInput" name="keyboard-input" class='keyboard-input'></textarea>
+                        </p>
+                    </div>
+                    <hr>
+
                     <div>
-                        <label for="pitch">Pitch</label><input type="range" min="0" max="2" value="1" step="0.1"
-                            id="pitch" />
-                        <div class="pitch-value">1</div>
-                        <div class="clearfix"></div>
+                        <p class="font-size-medium">
+                            Paste Thai text and click Get link
+                            <br>
+                            <!-- placeholder =  Enter a Thai word to speak aloud  -->
+                            <input type="text" id="thWord" name="thWord" placeholder="Get &amp; Play link" />
+                            <button id="thSpeak">Get link</button>
+
+                            <br>
+                            <a id="soundLink" target="_blank" class="font-size-medium"
+                                href="https://translate.google.com/translate_tts?ie=UTF-8&client=tw-ob&tl=th&q=ใส่คำภาษาไทยเพื่อพูดออกเสียง">
+                                Click here for new browser and click return in new browser address window to Play the
+                                Link
+                            </a>
+                        </p>
                     </div>
-                    <select id="SelectLang"></select>
-                    <div class="controls">
-                        <button id="play" type="submit">Play</button>
-                    </div>
-                </form>
 
-            </div>
+                </details>
 
-
-
-            <div id="editor">
-                <p>Click text area for keyboard
-                    <textarea id="keyboardInput" name="keyboard-input" class='keyboard-input'></textarea>
-                </p>
-            </div>
-            <hr>
-
-            <div>
-                <p class="font-size-medium">
-                    Paste Thai text and click Get link
-                    <br>
-                    <!-- placeholder =  Enter a Thai word to speak aloud  -->
-                    <input type="text" id="thWord" name="thWord" placeholder="Get &amp; Play link" />
-                    <button id="thSpeak">Get link</button>
-
-                    <br>
-                    <a id="soundLink" target="_blank" class="font-size-medium"
-                        href="https://translate.google.com/translate_tts?ie=UTF-8&client=tw-ob&tl=th&q=ใส่คำภาษาไทยเพื่อพูดออกเสียง">
-                        Click here for new browser and click return in new browser address window to Play the
-                        Link
-                    </a>
-                </p>
-            </div>
-
-        </details>
-
-        </details>
+            </details>
 
         </div>
 
