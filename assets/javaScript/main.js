@@ -20,7 +20,7 @@ const dictionaryLS1Greetings = [
     { word_en: "never mind", word_th: "ไม่เป็นไร", hint: "mâi-bpen-rai" },
     { word_en: "excuse me", word_th: "ขอโทษ", hint: "kɔ̌ɔ-tôot" },
     { word_en: "nice to meet you", word_th: "ยินดีทีได้รู้จัก", hint: "yin-dii tîi dâai rúu-jàk" },
-    { word_en: "how about you", word_th: "แล้วคุณล่ะ", hint: "khun la" },
+    { word_en: "how about you", word_th: "แล้วคุณล่ะ", hint: "leaw khun la" },
     { word_en: "I for male", word_th: "ผม", hint: "phǒm" },
     { word_en: "I for female", word_th: "ฉัน", hint: "chǎn" },
     { word_en: "you", word_th: "คุณ", hint: "khun" },
@@ -60,7 +60,7 @@ const dictionaryBook1Lesson2 = [
     { word_en: "study", word_th: "เรียน", hint: "rian" },
     { word_en: "write", word_th: "เขียน", hint: "khǐan" },
     { word_en: "read", word_th: "อ่าน", hint: "àan" },
-    { word_en: "take a shower", word_th: "อาบนํ âา", hint: "àap-náam" },
+    { word_en: "take a shower", word_th: "อาบนํâา", hint: "àap-náam" },
     { word_en: "play", word_th: "เล่น", hint: "lên" },
     { word_en: "exercise", word_th: "ออกกําลังกาย", hint: "ɔ̀ɔk-gam-lang-gaai" },
     { word_en: "go", word_th: "ไป", hint: "bpai" },
@@ -289,7 +289,6 @@ const dictionaryBase = [
 
     //    { word_en: "", word_th: "", hint: "" },
 ];
-
 
 // book 2   
 /* order food 
@@ -1314,7 +1313,7 @@ function initialize() {
 
     document.getElementById("wordContainer").innerHTML = "";
 
-    document.getElementById("inputDelay").value = 1;
+    document.getElementById("inputDelay").value = delayRead / 1000;
 
     const readAloud = document.getElementById("readAloud");
     readAloud.style.display = "none";
@@ -1358,11 +1357,7 @@ function setDictionary() {
             currentDictionary = shuffle(currentDictionary);
         }
 
-        // wordIndex is set for pause and play, exception arises when dictionaies are deselected
-        if (currentDictionary.length < wordIndex) {
-            wordIndex = 0;
-        }
-
+        wordIndex = 0;
         feedback();
 
         document.getElementById("readAloud").style.display = "block";
@@ -1611,9 +1606,14 @@ document.getElementById('buttonPlayAll').addEventListener('click', function () {
             // sound file for th and texttospeach for en
             if (wordSpan.lang === "TH") {
 
+                // Thai word filenames are the word_en
                 playWord(wordSpan.dataset.word_en);
 
             } else if (wordSpan.lang === "EN") {
+
+                setTimeout(() => {
+                    //                    console.log("Hello, World!");
+                }, delayRead);
 
                 textToSpeech(wordSpan.dataset.word_en);
 
@@ -1662,11 +1662,13 @@ addTranslation.addEventListener("change", () => {
 document.getElementById("inputDelay").addEventListener("change", (event) => {
 
     delayRead = event.target.value;
-    if (delayRead > 0 && delayRead < 11) {
+    if (delayRead > 1 && delayRead < 10) {
         delayRead = delayRead * 1000;
     } else {
-        delayRead = 1000;
+        delayRead = 1250; // 1.25 sec
     }
+
+    document.getElementById("inputDelay").value = delayRead / 1000;
 
 });
 
