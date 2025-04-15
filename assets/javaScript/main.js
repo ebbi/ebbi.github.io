@@ -1313,7 +1313,7 @@ function initialize() {
 
     document.getElementById("wordContainer").innerHTML = "";
 
-    document.getElementById("inputDelay").value = delayRead / 1000;
+    document.getElementById("readingInterval").value = delayRead / 1000;
 
     const readAloud = document.getElementById("readAloud");
     readAloud.style.display = "none";
@@ -1590,6 +1590,14 @@ document.getElementById('buttonPlayAll').addEventListener('click', function () {
 
     pausePlay = false;
 
+    document.getElementById("clickWord").style.display = "none";
+    document.getElementById("divAddTranslation").style.display = "none";
+    document.getElementById("readingInterval").style.display = "none";
+
+    document.getElementById("buttonPlayAll").style.display = "none";
+    document.getElementById("buttonPause").style.display = "inherit";
+
+
     function playNextWord() {
 
         if (wordIndex < wordSpans.length) {
@@ -1642,6 +1650,8 @@ document.getElementById('buttonPlayAll').addEventListener('click', function () {
             wordSpan.classList.remove('highlight-paused');
             wordSpan.classList.remove('highlight-red');
         });
+
+
     }
 
     playNextWord();
@@ -1659,7 +1669,7 @@ addTranslation.addEventListener("change", () => {
 
 });
 
-document.getElementById("inputDelay").addEventListener("change", (event) => {
+document.getElementById("readingInterval").addEventListener("change", (event) => {
 
     delayRead = event.target.value;
     if (delayRead > 1 && delayRead < 10) {
@@ -1668,7 +1678,7 @@ document.getElementById("inputDelay").addEventListener("change", (event) => {
         delayRead = 1250; // 1.25 sec
     }
 
-    document.getElementById("inputDelay").value = delayRead / 1000;
+    document.getElementById("readingInterval").value = delayRead / 1000;
 
 });
 
@@ -1680,6 +1690,13 @@ document.getElementById('buttonPause').addEventListener('click', function () {
 
         pausePlay = true;
         let wordSpan = "";
+
+        document.getElementById("clickWord").style.display = "inherit";
+        document.getElementById("divAddTranslation").style.display = "block";
+        document.getElementById("readingInterval").style.display = "inherit";
+
+        document.getElementById("buttonPlayAll").style.display = "inherit";
+        document.getElementById("buttonPause").style.display = "none";
 
         wordSpan = wordSpans[wordIndex - 1];
         wordSpan.classList.add('highlight-paused');

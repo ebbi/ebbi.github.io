@@ -47,11 +47,6 @@ details {
     padding: 0.7rem .25rem;
 }
 
-label,
-input {
-    font-size: 1rem;
-}
-
 button {
     margin: 0.1rem;
     padding: 0.5rem;
@@ -75,7 +70,7 @@ button {
 #dictionaryMatchedWords,
 #searchWords {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr auto;
     /* gap: 0 1rem; */
 }
 
@@ -91,11 +86,6 @@ button {
 #dictionaryMatchedWordsContainer {
     max-block-size: 15rem;
     overflow: scroll;
-}
-
-#readAloud {
-    padding-top: .5rem;
-    border-top: 1px solid var(--border);
 }
 
 #wordContainer {
@@ -150,37 +140,24 @@ button {
     border: 1px solid yellow;
 }
 
+
 #navReadAloud {
-    font-size: 0.9rem;
-    margin: 0.5rem 0;
+    margin: 0.5rem;
+    padding: 0.5rem;
     border-top: 1px dotted var(--border);
     border-bottom: 1px solid var(--border);
 }
 
+#readingInterval input {
+    width: 2rem;
+    padding: 0 0.15rem;
+}
+
+/*
 #navReadAloud button {
     min-width: 50%;
     font-size: medium;
-    padding: 0.15rem 0;
+    padding: 0.1rem 0;
+    margin: 0 0 0.5rem 0;
 }
-
-#navReadAloud label {
-    font-size: 0.9rem;
-}
-
-#navReadAloud input {
-    padding: 0.1rem;
-    width: 2rem;
-}
-
-#navReadAloud input[type="checkbox"] {
-    vertical-align: middle;
-    position: relative;
-    width: min-content;
-    padding: 0.4rem;
-}
-
-#inputDelay {
-    font-size: 0.75rem;
-    padding: 0.15rem;
-    width: 3rem;
-}
+    */
