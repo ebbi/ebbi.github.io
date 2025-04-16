@@ -1639,18 +1639,22 @@ document.getElementById('buttonPlayAll').addEventListener('click', function () {
 
             }, delayRead); // Highlight duration in milliseconds
 
+        } else if (wordIndex == wordSpans.length) {
+            wordIndex = 0;
+            wordSpans.forEach(function (wordSpan) {
+                wordSpan.classList.remove('highlight');
+                wordSpan.classList.remove('highlight-paused');
+                wordSpan.classList.remove('highlight-red');
+            });
+
+            document.getElementById("clickWord").style.display = "inherit";
+            document.getElementById("divAddTranslation").style.display = "block";
+            document.getElementById("readingInterval").style.display = "inherit";
+
+            document.getElementById("buttonPlayAll").style.display = "inherit";
+            document.getElementById("buttonPause").style.display = "none";
+
         }
-
-    }
-
-    if (wordIndex == wordSpans.length) {
-        wordIndex = 0;
-        wordSpans.forEach(function (wordSpan) {
-            wordSpan.classList.remove('highlight');
-            wordSpan.classList.remove('highlight-paused');
-            wordSpan.classList.remove('highlight-red');
-        });
-
 
     }
 
