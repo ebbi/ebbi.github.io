@@ -1589,14 +1589,16 @@ document.getElementById('buttonPlayAll').addEventListener('click', function () {
     // let wordSpans = document.querySelectorAll('#wordContainer [lang = "TH"]');
 
     pausePlay = false;
+    /*
+        document.getElementById("clickWord").style.display = "none";
+        document.getElementById("divAddTranslation").style.display = "none";
+        document.getElementById("readingInterval").style.display = "none";
+    */
 
-    document.getElementById("clickWord").style.display = "none";
-    document.getElementById("divAddTranslation").style.display = "none";
-    document.getElementById("readingInterval").style.display = "none";
+    document.getElementById("menuOptions").style.display = "none";
 
     document.getElementById("buttonPlayAll").style.display = "none";
     document.getElementById("buttonPause").style.display = "inherit";
-
 
     function playNextWord() {
 
@@ -1646,10 +1648,12 @@ document.getElementById('buttonPlayAll').addEventListener('click', function () {
                 wordSpan.classList.remove('highlight-paused');
                 wordSpan.classList.remove('highlight-red');
             });
-
-            document.getElementById("clickWord").style.display = "inherit";
-            document.getElementById("divAddTranslation").style.display = "block";
-            document.getElementById("readingInterval").style.display = "inherit";
+            /*
+                        document.getElementById("clickWord").style.display = "inherit";
+                        document.getElementById("divAddTranslation").style.display = "block";
+                        document.getElementById("readingInterval").style.display = "inherit";
+            */
+            document.getElementById("menuOptions").style.display = "block";
 
             document.getElementById("buttonPlayAll").style.display = "inherit";
             document.getElementById("buttonPause").style.display = "none";
@@ -1694,10 +1698,12 @@ document.getElementById('buttonPause').addEventListener('click', function () {
 
         pausePlay = true;
         let wordSpan = "";
-
-        document.getElementById("clickWord").style.display = "inherit";
-        document.getElementById("divAddTranslation").style.display = "block";
-        document.getElementById("readingInterval").style.display = "inherit";
+        /*
+                document.getElementById("clickWord").style.display = "inherit";
+                document.getElementById("divAddTranslation").style.display = "block";
+                document.getElementById("readingInterval").style.display = "inherit";
+        */
+        document.getElementById("menuOptions").style.display = "block";
 
         document.getElementById("buttonPlayAll").style.display = "inherit";
         document.getElementById("buttonPause").style.display = "none";

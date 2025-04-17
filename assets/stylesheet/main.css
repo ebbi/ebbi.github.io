@@ -56,6 +56,10 @@ button {
     display: none;
 }
 
+.list-style-type-none {
+    list-style-type: none;
+}
+
 #div-input-word {
     display: grid;
     grid-template-columns: 3rem auto;

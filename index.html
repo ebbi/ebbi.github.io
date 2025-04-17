@@ -75,17 +75,9 @@
                         <nav>
                             <div class="grid-two-col">
                                 <div>
-                                    <label>
-                                        <input type="checkbox" id="randomize" name="randomize"
-                                            value="randomize" />randomise
-                                    </label>
-                                    <label id="incorrectAnswersOnlyContainer">
-                                        <input id="incorrectAnswersOnly" type="checkbox" name="incorrectAnswersOnly" />
-                                        incorrect only
-                                    </label>
+                                    <button id="previousWord">&lt; prev</button>
                                 </div>
                                 <div>
-                                    <button id="previousWord">&lt; prev</button>
                                     <button id="nextWord">next &gt;</button>
                                 </div>
 
@@ -107,7 +99,7 @@
                     <div id="wordContainer"></div>
                     <div id="navReadAloud">
                         <audio id="audioElement"></audio>
-
+                        <!--
                         <div class="grid-two-col">
 
                             <div><span id="clickWord">Click a word!</span></div>
@@ -118,7 +110,6 @@
                                 </label>
                             </div>
 
-
                             <div>
                                 <button id="buttonPlayAll">Play All</button>
                                 <button id="buttonPause" style="display:none">Pause</button>
@@ -128,6 +119,52 @@
                                     Reading interval &nbsp; <input placeholder="Sec" type="text" name="delay" />
                                     &nbsp; Secs
                                 </span>
+                            </div>
+
+                        </div>
+                    -->
+                        <div class="grid-two-col">
+
+                            <div>
+                                <div id="clickWord">Click a word!</div>
+                                <div>
+                                    <button id="buttonPlayAll">Play All</button>
+                                    <button id="buttonPause" style="display:none">Pause</button>
+                                </div>
+                            </div>
+                            <div id="menuOptions">
+                                <ul class="list-style-type-none">
+                                    <li>
+                                        <div id="divAddTranslation"><label for="addTranslation"
+                                                id="labelAddTranslation">
+                                                <input type="checkbox" id="addTranslation" name="translation value="
+                                                    true"> Add translation
+                                            </label>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <label>
+                                            <input type="checkbox" id="randomize" name="randomize" value="randomize" />
+                                            Randomise
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <div><span id="readingInterval">
+                                                Reading interval &nbsp; <input placeholder="Sec" type="text"
+                                                    name="delay" />
+                                                &nbsp; Secs
+                                            </span>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <label id="incorrectAnswersOnlyContainer">
+                                            <input id="incorrectAnswersOnly" type="checkbox"
+                                                name="incorrectAnswersOnly" />
+                                            Incorrectly answered only
+                                        </label>
+                                    </li>
+                                </ul>
+
                             </div>
 
                         </div>
