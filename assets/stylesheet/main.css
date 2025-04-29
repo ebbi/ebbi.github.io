@@ -49,13 +49,14 @@ details {
 
 button {
     margin: 0.1rem;
-    padding: 0.5rem;
+    padding: 0.1rem;
 }
 
 .display-none {
     display: none;
 }
 
+/*
 .list-style-type-none {
     list-style-type: none;
 }
@@ -70,19 +71,24 @@ button {
     width: 100%;
 }
 
-.grid-two-col,
-#dictionaryMatchedWords,
-#searchWords {
+.grid-two-col {
     display: grid;
     grid-template-columns: 1fr auto;
-    /* gap: 0 1rem; */
+
 }
+
+*/
 
 .grid-three-col {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 2fr 2fr 6fr;
 }
 
+#languageSelection {
+    font-size: small;
+}
+
+/*
 #readAloud .grid-three-col div {
     text-align: center;
 }
@@ -95,31 +101,46 @@ button {
 #wordContainer {
     line-height: 1.5rem;
 }
-
-.correct {
+*/
+.correctAnswerContainer {
     background-color: lightgreen !important;
     color: green !important;
 }
 
-.incorrect {
+.incorrectAnswerContainer {
     background-color: lightpink;
     color: red;
 }
 
+/*
 .info {
     background: var(--marked);
     color: black;
 }
-
-#feedback {
+*/
+#multipleChoiceNav {
     display: grid;
-    grid-template-columns: auto auto auto auto auto;
+    grid-template-columns: 2fr 2fr 20px 5fr;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+#multipleChoiceFeedbackContainer {
+    display: grid;
+    grid-template-columns: auto auto;
     gap: 0.25rem;
     font-size: small;
-    margin-bottom: 0.25rem;
+    margin: 0.25rem;
     text-align: center;
 }
 
+#sentenceStructureContainer {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+}
+
+/*
 .highlight {
     background-color: yellow;
     color: black;
@@ -155,3 +176,4 @@ button {
     width: 2rem;
     padding: 0 0.15rem;
 }
+*/

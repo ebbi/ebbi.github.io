@@ -1,6 +1,7 @@
 // book 1
 // Greeting
-const dictionaryLS1Greetings = [
+/*
+const dictionaryLS1Lesson1 = [
     { word_en: "house", word_th: "บ้าน", hint: "bâan" },
     { word_en: "school", word_th: "โรงเรียน", hint: "rooŋ-rian" },
     { word_en: "coffee", word_th: "กาแฟ", hint: "gaa-fɛɛ" },
@@ -47,6 +48,9 @@ const dictionaryLS1Greetings = [
     { word_en: "from", word_th: "จาก", hint: "jàak" },
     { word_en: "where", word_th: "ทีไหน", hint: "thîi-nǎi" }
 ];
+*/
+
+/*
 // What are you doing
 const dictionaryBook1Lesson2 = [
     { word_en: "eat", word_th: "กิน", hint: "gin" },
@@ -221,7 +225,7 @@ const dictionaryBook1Lesson4 = [
     { word_en: "price", word_th: "ราคา", hint: "raa-khaa" },
     { word_en: "discount", word_th: "ลด", hint: "lót" }
 ];
-// Where is the hospital (plaes)
+// Where is the hospital (places)
 const dictionaryBook1Lesson5 = [
     { word_en: "house", word_th: "บ้าน", hint: "bâan" },
     { word_en: "school", word_th: "โรงเรียน", hint: "rooŋ-rian" },
@@ -289,7 +293,7 @@ const dictionaryBase = [
 
     //    { word_en: "", word_th: "", hint: "" },
 ];
-
+*/
 // book 2   
 /* order food 
 const dictionaryBook2Lesson1 = [
@@ -696,7 +700,7 @@ const dictionaryDateTime = [
 const conversations = [
     // Book 1
     {
-        "dictionary": "dictionaryLS1Greetings",
+        "dictionary": "dictionaryLS1Lesson1",
         "conversations": [
             { description: "What is your name?", url: "https://youtu.be/hqpzxp7oXHE?si=KyEnjbgzrNBVuxjj" },
             { description: "Where do you come from?", url: "https://youtu.be/Jfn8TnDUON8?si=zrPDIrOyaH2TM_YR" }
@@ -1096,11 +1100,11 @@ const dictionaryRW2LiveFinalConsonant = [
     { word_en: "branch", word_th: "กิ่งไม้", hint: "MC + Live endings + Tone markers - LIVE" }
 ];
 */
-
+/*
 const dictionaries = {
 
     // book 1
-    dictionaryLS1Greetings: dictionaryLS1Greetings,
+    dictionaryLS1Lesson1: dictionaryLS1Lesson1,
     /*
    dictionaryBook1Lesson2: dictionaryBook1Lesson2,
    dictionaryBook1Lesson3: dictionaryBook1Lesson3,
@@ -1122,7 +1126,7 @@ const dictionaries = {
    dictionaryBook3Lesson4: dictionaryBook3Lesson4,
    dictionaryBook3Lesson5: dictionaryBook3Lesson5,
    dictionaryBook3Lesson6: dictionaryBook3Lesson6,
-*/
+
 
     // RW 1
     dictionaryRW1LowClassConsonants: dictionaryRW1LowClassConsonants,
@@ -1136,13 +1140,14 @@ const dictionaries = {
     dictionaryRW2ChangeFormVowels: dictionaryRW2ChangeFormVowels,
     
     dictionaryRW2LiveFinalConsonant: dictionaryRW2LiveFinalConsonant
-    */
+    
 };
+*/
 
 const dictionaryIncorrectAnswers = [];
 
 let wordIndex = 0;
-let dictionary = [];  // used for word search
+//let dictionary = [];  // used for word search
 let currentDictionary = [];
 let selectedDictionaryNames = []; // selected dictionary checkboxes
 
