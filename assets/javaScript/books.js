@@ -393,7 +393,7 @@ function playAudioFile(filename) {
 }
 
 function textToSpeech(text, lang) {
-    const speech = new SpeechSynthesisUtterance();
+    const speech = new SpeechSynthesisUtterance(text);
     /*
         speech.onend = function (event) {
             console.log('Speech finished after ' + event.elapsedTime + ' seconds.');
@@ -404,16 +404,17 @@ function textToSpeech(text, lang) {
         speech.onstart = function (event) {
             console.log('Speech started');
         };
-    */
+    
     speech.voice = window.speechSynthesis.getVoices().find(voice => voice.lang === lang);
     if (!speech.voice) {
         console.error('Voice not found for language: ' + lang);
         return;
     }
+        */
     //    speech.lang = 'th-TH';
-    speech.lang = 'en-US';
+    // speech.lang = 'en-US';
     speech.lang = lang;
-    speech.text = text;
+    //  speech.text = text;
     speech.volume = 1; // From 0 to 1
     speech.rate = 1; // From 0.1 to 10
     speech.pitch = 1; // From 0 to 2
