@@ -1,7 +1,7 @@
 // This script handles the display of book details and audio playback for a language learning application.
 const books = [
     {
-        "title": "Book 1 - Listening and Speaking",
+        "title": "Book LS - 1",
         "lessons": [
             {
                 "name": "Greetings",
@@ -217,7 +217,8 @@ function displayMultipleChoice(wordIndex, vocabulary, currentLanguage) {
             multipleChoiceFeedback();
             // replace space by underscore for audio filename    
             const audioFilename = (vocabulary[choiceIndex].en.replace(/ /g, '_')).toLowerCase() + '.mp3';
-            playAudioFile(audioFilename);
+            //            playAudioFile(audioFilename);
+            textToSpeech(vocabulary[choiceIndex].th, 'th-TH');
         });
         multipleChoiceDetails.appendChild(button);
     });
@@ -375,6 +376,7 @@ function playAudioFile(filename) {
     let audioPathname = '/assets/audio/th/' + filename;
     if (audioPathname === undefined) {
         console.error('Audio file not found: ' + filename);
+
         return;
     }
 
@@ -420,5 +422,4 @@ function textToSpeech(text, lang) {
     speech.pitch = 1; // From 0 to 2
     window.speechSynthesis.speak(speech);
 }
-
 
