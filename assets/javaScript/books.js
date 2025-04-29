@@ -54,8 +54,8 @@ const books = [
 
                 ],
                 "structure": [
-                    { en: "What is your name?", th: "คุณชื่ออะไร", th_audio: "what_your_name.mp3" },
-                    { en: "My name is Pairat.", th: "ฉันชื่อ ไพรัช", th_audio: "my_name.mp3" }
+                    { en: "What is your name?", th: "คุณชื่ออะไร" },
+                    { en: "My name is Pairat the magnificent.", th: "ฉันชื่อ ไพรัช สุดสวย" }
                 ]
             }
         ]
@@ -346,29 +346,38 @@ function getMultipleChoiceIndices(wordIndex, dictionary) {
 function displaySentenceStructure(sentenceStructure) {
     const sentenceStructureContainer = document.getElementById('sentenceStructureContainer');
     sentenceStructureContainer.innerHTML = ''; // Clear previous content
+
     const sentenceStructureDetails = document.createElement('details');
     sentenceStructureDetails.open = true; // Set to true if you want the book details to be open by default
     const summary = document.createElement('summary');
     summary.textContent = "Sentence Structure practice";
     sentenceStructureDetails.appendChild(summary);
-    sentenceStructureContainer.appendChild(sentenceStructureDetails);
 
     sentenceStructure.forEach((structure) => {
-        const sentenceStructureEN = document.createElement('div');
+        const sentenceStructureItem = document.createElement('div');
+        sentenceStructureItem.classList = 'sentenceStructureItem';
+
+        const sentenceStructureEN = document.createElement('span');
         sentenceStructureEN.textContent = structure.en;
         sentenceStructureEN.style.cursor = 'pointer';
-        sentenceStructureDetails.appendChild(sentenceStructureEN);
+        sentenceStructureItem.appendChild(sentenceStructureEN);
+
         sentenceStructureEN.addEventListener('click', () => {
             textToSpeech(structure.en, 'en-US');
         });
 
         const sentenceStructureTH = document.createElement('button');
         sentenceStructureTH.textContent = structure.th;
-        sentenceStructureDetails.appendChild(sentenceStructureTH);
+        sentenceStructureItem.appendChild(sentenceStructureTH);
+
         sentenceStructureTH.addEventListener('click', () => {
             //            playAudioFile(structure.th_audio);
             textToSpeech(structure.th, 'th-TH');
         });
+
+        sentenceStructureDetails.appendChild(sentenceStructureItem);
+        sentenceStructureContainer.appendChild(sentenceStructureDetails);
+
     });
 }
 
@@ -396,23 +405,7 @@ function playAudioFile(filename) {
 
 function textToSpeech(text, lang) {
     const speech = new SpeechSynthesisUtterance(text);
-    /*
-        speech.onend = function (event) {
-            console.log('Speech finished after ' + event.elapsedTime + ' seconds.');
-        };
-        speech.onerror = function (event) {
-            console.error('Speech error: ' + event.error);
-        };
-        speech.onstart = function (event) {
-            console.log('Speech started');
-        };
-    
-    speech.voice = window.speechSynthesis.getVoices().find(voice => voice.lang === lang);
-    if (!speech.voice) {
-        console.error('Voice not found for language: ' + lang);
-        return;
-    }
-        */
+
     //    speech.lang = 'th-TH';
     // speech.lang = 'en-US';
     speech.lang = lang;
