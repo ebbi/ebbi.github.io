@@ -54,8 +54,8 @@ const books = [
 
                 ],
                 "structure": [
-                    { en: "What is your name?", th: "บ้าน", th_audio: "what_your_name.mp3" },
-                    { en: "My name is Pairat.", th: "บ้าน", th_audio: "my_name.mp3" }
+                    { en: "What is your name?", th: "คุณชื่ออะไร", th_audio: "what_your_name.mp3" },
+                    { en: "My name is Pairat.", th: "ฉันชื่อ ไพรัช", th_audio: "my_name.mp3" }
                 ]
             }
         ]
