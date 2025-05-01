@@ -1,7 +1,7 @@
 // This script handles the display of book details and audio playback for a language learning application.
 const books = [
     {
-        "title": "Book LS - 1",
+        "title": "Book LS 1",
         "lessons": [
             {
                 "name": "Greetings",
@@ -117,7 +117,6 @@ const books = [
                     { en: "-ing", th: "กําลัง", hint: "gam-laŋ" },
                     { en: "-ing", th: "อยู่", hint: "yùu" }
                 ],
-                //                structure : []
                 "structure": [
                     { en: "How many?", th: "กี่" },
                     { en: "I have two dogs.", th: "ฉันมีหมา 2 ตัว" },
@@ -186,8 +185,7 @@ const books = [
                     { en: "more", th: "มากกว่า", hint: "mâak gwàa" },
                     { en: "the most", th: "มากทีสดุ", hint: "mâak thîi-sùt" }
                 ],
-                //                structure : []
-                structure: [
+                "structure": [
                     { en: 'I am going to the market.', th: 'ฉันกำลังจะไปตลาด' }
                 ]
             },
@@ -248,8 +246,7 @@ const books = [
                     { en: "price", th: "ราคา", hint: "raa-khaa" },
                     { en: "discount", th: "ลด", hint: "lót" }
                 ],
-                //                structure : []
-                structure: [
+                "structure": [
                     { en: "How much is this?", th: "อันนี้ราคาเท่าไหร่" },
                     { en: "This is 100 baht.", th: "อันนี้ราคา 100 บาท" },
                     { en: "How much is this shirt?", th: "เสืออันนี้ราคาเท่าไหร่" },
@@ -302,13 +299,249 @@ const books = [
                     { en: "over there", th: "ที&โน่น", hint: "thîi-nôon" },
 
                 ],
-                //                structure : []
-                structure: [
+                "structure": [
                     { en: "Where is the hospital?", th: "โรงพยาบาลอยู่ทีไหน" },
                     { en: "The hospital is over there.", th: "โรงพยาบาลอยู่ทีโน่น" },
                     { en: "The hospital is next to the school.", th: "โรงพยาบาลอยู่ติดกับโรงเรียน" },
                     { en: "The hospital is in front of the hotel.", th: "โรงพยาบาลอยู่ข้างหน้าโรงแรม" },
                     { en: "The hospital is behind the bank.", th: "โรงพยาบาลอยู่ข้างหลังธนาคาร" }
+                ]
+            }
+        ]
+    },
+    {
+        "title": "Book LS 2",
+        "lessons": [
+            {
+                "name": "What would you like to order?",
+                "vocabulary": [
+                    { en: "rice", th: "ข้าว", hint: "khâaw" },
+                    { en: "food", th: "อาหาร/กับข้าว", hint: "aa-hǎan/gàp-khâaw" },
+                    { en: "curry", th: "แกง", hint: "gɛɛŋ" },
+                    { en: "vegetables", th: "ผัก", hint: "phàk" },
+                    { en: "egg", th: "ไข่", hint: "khài" },
+                    { en: "tofu", th: "เต้าหู ้", hint: "dtâw-hûu" },
+                    { en: "Chili", th: "พริก", hint: "phrík" },
+                    { en: "meat/beef", th: "เนืNอ", hint: "nɯa" },
+                    { en: "pork", th: "หมู", hint: "mǔu" },
+                    { en: "chicken", th: "ไก่", hint: "gài" },
+                    { en: "fish", th: "ปลา", hint: "bplaa" },
+                    { en: "seafood", th: "(อาหาร)ทะเล", hint: "(aa hǎan) thá-lee" },
+                    { en: "shrimp", th: "กุ้ง", hint: "gûŋ" },
+                    { en: "squid", th: "ปลาหมึก", hint: "bplaa-mɯk" },
+                    { en: "crab", th: "ปู", hint: "bpuu" },
+                    { en: "shell", th: "หอย", hint: "hɔ̌ɔy" },
+                    { en: "boil/boiled", th: "ต้ม", hint: "dtôm" },
+                    { en: "stir fry/fried", th: "ผัด", hint: "phàt" },
+                    { en: "deep fry/ deep fried", th: "ทอด", hint: "thɔ̂ɔt" },
+                    { en: "steam/steamed", th: "นึงf", hint: "nɯ̂ŋ" },
+                    { en: "grill/grilled", th: "ปิ", hint: "bpîŋ" },
+                    { en: "gril/grilled", th: "ย่าง", hint: "yâaŋ" },
+                    { en: "mild soup", th: "แกงจืด", hint: "gɛɛŋ-jɯɯt" },
+                    { en: "spicy sour soup", th: "ต้ มยํา", hint: "dtôm-yam" },
+                    { en: "spicy sour salad", th: "ยํา", hint: "yam" },
+                    { en: "noodles", th: "ก๋วยเตีmยว", hint: "gǔay-dtǐaw" },
+                    { en: "pad thai noodles", th: "ผัดไทย", hint: "phàt-thai" },
+                    { en: "fried vegtables", th: "ผัดผัก", hint: "phàt-phàk" },
+                    { en: "thai omelet", th: "ไข่เจียว", hint: "khài-jiaw" },
+                    { en: "papaya salad", th: "ส้มตํา", hint: "sôm-dtam" },
+                    { en: "green curry", th: "แกงเขียงหวาน", hint: "gɛɛŋ-khǐaw-wǎan" },
+                    { en: "red curry", th: "แกงเผ็ด", hint: "gɛɛŋ-phèt" },
+                    { en: "mango sticky rice", th: "ข้าวเหนียวมะม่วง", hint: "khâaw-nǐaw má-mûaŋ" },
+                    { en: "taste/flavour", th: "รสชาติ", hint: "rót-châat" },
+                    { en: "spicy", th: "เผ็ด", hint: "phèt" },
+                    { en: "sweet", th: "หวาน", hint: "wǎan" },
+                    { en: "sour", th: "เปรียNว", hint: "bprîaw" },
+                    { en: "salty", th: "เค็ม", hint: "khem" },
+                    { en: "bitter", th: "ขม", hint: "khǒm" },
+                    { en: "tasteless/plain", th: "จืด", hint: "jɯɯt" },
+                    { en: "order/eat", th: "สั9ง/กิน", hint: "sàŋ/gin" },
+                    { en: "with/without", th: "ใส่/ไม่ใส่", hint: "sài/mâi sài" },
+                    { en: "fermented fish", th: "ปลาร้า", hint: "bplaa-ráa" },
+                    { en: "monosodium glutamate", th: "ผงชูรส", hint: "phǒŋ-chuu-rót" },
+                    { en: "plate", th: "จาน", hint: "jaan" },
+                    { en: "bowl", th: "ถ้วย/ชาม", hint: "thûay/chaam" },
+                    { en: "Box/carton", th: "กล่อง", hint: "glɔ̀ɔŋ" },
+                    { en: "plastic bag", th: "ถุง", hint: "thǔŋ" },
+                    { en: "piece", th: "ชิ1น", hint: "chín" }
+
+                ],
+                "structure": [
+                    { en: "I would like to order", th: "ฉันอยากสั่ง", hint: "chán yàak sàŋ" },
+                    { en: "I would like to eat", th: "ฉันอยากกิน", hint: "chán yàak gin" },
+                    { en: "I would like to drink", th: "ฉันอยากดื่ม", hint: "chán yàak dʉ̀ʉm" },
+                    { en: "I would like to watch", th: "ฉันอยากดู", hint: "chán yàak duu" },
+                    { en: "I would like to listen", th: "ฉันอยากฟัง", hint: "chán yàak faŋ" },
+                    { en: "I would like to wake up", th: "ฉันอยากตื่น", hint: "chán yàak dtɯ̀ɯn" },
+                    { en: "I would like to lie down/sleep", th: "ฉันอยากนอน", hint: "chán yàak nɔɔn" },
+                    { en: "I would like to walk", th: "ฉันอยากเดิน", hint: "chán yàak dəən" },
+                    { en: "I would like to speak", th: "ฉันอยากพูด", hint: "chán yàak phûut" },
+                    { en: "I would like to study", th: "ฉันอยากเรียน", hint: "chán yàak rian" },
+                    { en: "I would like to write", th: "ฉันอยากเขียน", hint: "chán yàak khǐan" },
+                    { en: "I would like to read", th: "ฉันอยากอ่าน", hint: "chán yàak àan" },
+                    { en: "I would like to take a shower", th: "(ฉัน) อยากอาบนํâา", hint: "(chán) yàak àap-náam" }
+                ]
+            },
+            {
+                "name": "What would you like to drink?",
+                "vocabulary": [
+                    { en: "water", th: "นํา", hint: "náam" },
+                    { en: "plain water", th: "นําเปล่า", hint: "náam-bplàaw" },
+                    { en: "ice", th: "นําแข็ง", hint: "náam-khɛ̌ ɛŋ" },
+                    { en: "sugar", th: "นําตาล", hint: "náam-dtaan" },
+                    { en: "coffee", th: "กาแฟ", hint: "gaa-fɛɛ" },
+                    { en: "tea", th: "ชา", hint: "chaa" },
+                    { en: "milk", th: "นม", hint: "nom" },
+                    { en: "soda", th: "โซดา", hint: "soo-daa" },
+                    { en: "fruit juice", th: "นําผลไม้", hint: "náam phǒn-lá-máay" },
+                    { en: "fruit shake/smoothie", th: "นําผลไม้ปัfน", hint: "náam phǒn-lá-máay bpàn" },
+                    { en: "soft drik", th: "นําอัดลม", hint: "náam àt-lom" },
+                    { en: "beer", th: "เบียร์", hint: "bia" },
+                    { en: "liquor", th: "เหล้า", hint: "lâw" },
+                    { en: "wine", th: "ไวน์", hint: "waay" },
+                    { en: "hot", th: "ร้อน", hint: "rɔ́ɔn" },
+                    { en: "cold/iced", th: "เย็น", hint: "yen" },
+                    { en: "glass/cup", th: "แก้ว", hint: "gɛ̂ɛw" },
+                    { en: "cup", th: "ถ้วย", hint: "thûay" },
+                    { en: "carton", th: "กล่อง", hint: "glɔ̀ɔŋ" },
+                    { en: "can/tin", th: "กระป๋อง", hint: "grà-bpɔ̌ɔŋ" },
+                    { en: "bottle", th: "ขวด", hint: "khùat" },
+                    { en: "Orange juice", th: "นํNาส้ม", hint: "náam sôm" },
+                    { en: "Lime juice", th: "นํNามะนาว", hint: "náam má-naaw" },
+                    { en: "Pineapple juice", th: "นํNาสับปะรด", hint: "náam sàp-bpà-rót" },
+                    { en: "Mango juice", th: "นํNามะม่วง", hint: "náam má-mûaŋ" },
+                    { en: "Water melon juice", th: "นํNาแตงโม", hint: "náam dtɛɛŋ-moo" },
+                    { en: "Grape juice", th: "นํNาองุน่", hint: "náam à-ŋùn" },
+                    { en: "Coconut Water", th: "นํNามะพร้าว", hint: "náam má-phráaw" },
+                    { en: "Passion fruit juice", th: "นํNาเสาวรส", hint: "náam sǎw-wá-rót" },
+                    { en: "Vegetable juice", th: "นํNาผัก", hint: "náam phàk" }
+                ],
+                "structure": [
+                    { en: "I would like to order", th: "ฉันอยากสั่ง", hint: "chán yàak sàŋ" },
+                    { en: "I would like to eat", th: "ฉันอยากกิน", hint: "chán yàak gin" },
+                    { en: "I would like to drink", th: "ฉันอยากดื่ม", hint: "chán yàak dʉ̀ʉm" },
+                    { en: "I would like to watch", th: "ฉันอยากดู", hint: "chán yàak duu" },
+                    { en: "I would like to listen", th: "ฉันอยากฟัง", hint: "chán yàak faŋ" },
+                    { en: "I would like to wake up", th: "ฉันอยากตื่น", hint: "chán yàak dtɯ̀ɯn" },
+                    { en: "I would like to lie down/sleep", th: "ฉันอยากนอน", hint: "chán yàak nɔɔn" },
+                    { en: "I would like to walk", th: "ฉันอยากเดิน", hint: "chán yàak dəən" },
+                    { en: "I would like to speak", th: "ฉันอยากพูด", hint: "chán yàak phûut" },
+                    { en: "I would like to study", th: "ฉันอยากเรียน", hint: "chán yàak rian" },
+                    { en: "I would like to write", th: "ฉันอยากเขียน", hint: "chán yàak khǐan" },
+                    { en: "I would like to read", th: "ฉันอยากอ่าน", hint: "chán yàak àan" },
+                    { en: "I would like to take a shower", th: "(ฉัน) อยากอาบนํâา", hint: "(chán) yàak àap-náam" }
+                ]
+            },
+            {
+                "name": "Fruits",
+                "vocabulary": [
+                    { en: "Fruits", th: "ผลไม้", hint: "phǒn-lá-máay" },
+                    { en: "Mango", th: "มะม่วง", hint: "má-mûaŋ" },
+                    { en: "Coconut", th: "มะพร้าว", hint: "má-phráaw" },
+                    { en: "Watermelon", th: "แตงโม", hint: "dtɛɛng-moo" },
+                    { en: "Banana", th: "กล้วย", hint: "glûay" },
+                    { en: "Papaya", th: "มะละกอ", hint: "má-lá-gɔɔ" },
+                    { en: "Pineapple", th: "สัปปะรด", hint: "sàp-bpà-rót" },
+                    { en: "Durian", th: "ทุเรียน", hint: "thú-rian" },
+                    { en: "Orange", th: "ส้ ม", hint: "sôm" },
+                    { en: "Mangosteen", th: "มังคุด", hint: "maŋ-khút" },
+                    { en: "Guava", th: "ฝรัfง", hint: "fà-ràŋ" },
+                    { en: "Longan", th: "ลําไย", hint: "lam-yai" },
+                    { en: "Strawberry", th: "สตรอเบอรีf", hint: "sà-dtrɔɔ-bəə-rîi" },
+                    { en: "Rambutan", th: "เงาะ", hint: "ŋɔ́" },
+                    { en: "Grapes", th: "องุน่", hint: "à-ŋùn" },
+                    { en: "Passion friut", th: "เสาวรส", hint: "sǎw-wá-rót" },
+                    { en: "Cherry", th: "เชอร์รีf", hint: "chəə-rîi" },
+                    { en: "Lychee", th: "ลิNนจีf", hint: "lín-jìi" },
+                    { en: "Dragon fruit", th: "แก้วมังกร", hint: "gɛ̂ ɛw-maŋ-gɔɔn" },
+                    { en: "Jackfruit", th: "ขนุน", hint: "khà-nǔn" },
+                    { en: "Ripe/Cooked", th: "สุก", hint: "sùk" },
+                    { en: "Raw/Uncooked", th: "ดิบ", hint: "dìp" },
+                    { en: "Fresh", th: "สด", hint: "sòt" },
+                    { en: "Dry", th: "แห้ง", hint: "hɛ̂ɛŋ" },
+                    { en: "Sweet", th: "หวาน", hint: "wǎan" },
+                    { en: "Sour", th: "เปรียNว", hint: "bprîaw" },
+                    { en: "Piece", th: "ชิNน", hint: "chín" },
+                    { en: "Small", th: "เล็ก", hint: "lék" },
+                    { en: "Plastic bag", th: "ถุง", hint: "tǔŋ" },
+                    { en: "Rotten", th: "เน่า/เสีย", hint: "nâw/sǐa" },
+                    { en: "Classifier for the whole fruit", th: "ลูก/ผล", hint: "lûuk / phǒn" }
+                ],
+                "structure": [
+                    { en: "What fruit is this?", th: "ผลไม้อะไร", hint: "phǒn-lá-máy à-rai" },
+                    { en: "This is a mango.", th: "นี่คือมะม่วง", hint: "nîi khɯɯ má-mûaŋ" },
+                    { en: "This is a watermelon.", th: "นี่คือแตงโม", hint: "nîi khɯɯ dtɛɛng-moo" }
+                ]
+            },
+            {
+                "name": "colors",
+                "vocabulary": [
+                    { en: "Colour", th: "สี", hint: "sǐi" },
+                    { en: "White", th: "สีขาว", hint: "" },
+                    { en: "Black", th: "สีดํา", hint: "sǐi dam" },
+                    { en: "Red", th: "สีแดง", hint: "sǐi dɛɛŋ" },
+                    { en: "Yellow", th: "สีเหลือง", hint: "sǐi lɯ̌aŋ" },
+                    { en: "Green", th: "สีเขียว", hint: "sǐi khǐaw" },
+                    { en: "Dark Blue", th: "สีนํNาเงิน", hint: "sǐi náam-ŋəən" },
+                    { en: "Sky blue", th: "สีฟา้", hint: "sǐi fáa" },
+                    { en: "Orange", th: "สีส้ม", hint: "sǐi sôm" },
+                    { en: "Grey", th: "สีเทา", hint: "sǐi thaw" },
+                    { en: "Pink", th: "สีชมพู", hint: "sǐi chom-phuu" },
+                    { en: "Purple", th: "สีมว่ง", hint: "sǐi mûaŋ" },
+                    { en: "Brown", th: "สีนํNาตาล", hint: "sǐi náam-dtaan" },
+                    { en: "Light(Adj)", th: "อ่อน", hint: "ɔ̀ɔn" },
+                    { en: "Dark(Adj)", th: "เข้ม", hint: "khêm" }
+                ],
+                "structure": [
+                    { en: "What color is this?", th: "สีอะไร", hint: "sǐi à-rai" },
+                    { en: "This is red.", th: "สีแดง", hint: "sǐi dɛɛŋ" },
+                    { en: "This is blue.", th: "สีน้ำเงิน", hint: "sǐi náam-ngən" },
+                    { en: "This is green.", th: "สีเขียว", hint: "sǐi khǐaw" },
+                    { en: "This is yellow.", th: "สีเหลือง", hint: "sǐi lǔang" }
+                ]
+            },
+            {
+                "name": "Classifiers",
+                "vocabulary": [
+                    { en: "Classifier", th: "ลักษณะนาม", hint: "lák-sà-nà-naam" },
+                    { en: "People", th: "คน", hint: "khon" },
+                    { en: "Animals", th: "สัตว์", hint: "sàt" },
+                    { en: "Flat objects", th: "แผ่น/ใบ", hint: "phɛ̀n/bai" },
+                    { en: "Long objects", th: "อัน/ชิNน", hint: "an/chín" },
+                    { en: "Round objects", th: "ลูก/ผล", hint: "lûuk/phǒn" },
+                    { en: "Bottles/Cups/Glasses", th: "ขวด/แก้ว/ถ้วย", hint: "khùat/gɛ̂ɛw/thûay" },
+                    { en: "Books/Magazines/Newspapers", th: "เล่ม/ฉบับ/ฉบับพิมพ์", hint: "" }
+                ],
+                "structure": [
+                    { en: "How many people?", th: "คนกี่คน", hint: "khon gìi khon" },
+                    { en: "How many animals?", th: "สัตว์กี่ตัว", hint: "sàt gìi dtua" },
+                    { en: "How many flat objects?", th: "แผ่น/ใบกี่แผ่น/ใบ", hint: "phɛ̀n/bai gìi phɛ̀n/bai" },
+                    { en: "How many long objects?", th: "อัน/ชิNนกี่อัน/ชิNน", hint: "an/chín gìi an/chín" },
+                    { en: "How many round objects?", th: "ลูก/ผลกี่ลูก/ผล", hint: "lûuk/phǒn gìi lûuk/phǒn" }
+                ]
+            },
+            {
+                "name": "Preposition",
+                "vocabulary": [
+                    { en: "There is/There are", th: "มี", hint: "mii" },
+                    { en: "On", th: "บน", hint: "bon" },
+                    { en: "Under", th: "ใต้", hint: "On" },
+                    { en: "Outside", th: "ข้างนอก", hint: "khâaŋ-nɔ̂ɔk" },
+                    { en: "Inside", th: "ข้างใน", hint: "khâaŋ-nai" },
+                    { en: "Between", th: "ระหว่าง", hint: "rá-wàaŋ" },
+                    { en: "At", th: "ทีf", hint: "thîi" },
+                    { en: "in front of", th: "ข้างหน้า", hint: "khâaŋ-nâa" },
+                    { en: "behind", th: "ข้างหลัง", hint: "khâaŋ-lǎŋ" },
+                    { en: "next to", th: "ติดกับ", hint: "dtìt-kàp" },
+                    { en: "opposite to", th: "ตรงข้าม", hint: "dtrong-khâam" },
+                    { en: "nearby/close to", th: "ใกล้ๆ", hint: "glâi-glâi" }
+                ],
+                "structure": [
+                    { en: "Where is the hospital?", th: "โรงพยาบาลอยู่ทีไหน", hint: "rooŋ-phá-yaa-bâan yùu thîi nǎi" },
+                    { en: "The hospital is over there.", th: "โรงพยาบาลอยู่ทีโน่น", hint: "rooŋ-phá-yaa-bâan yùu thîi nôon" },
+                    { en: "The hospital is next to the school.", th: "โรงพยาบาลอยู่ติดกับโรงเรียน", hint: "rooŋ-phá-yaa-bâan yùu dtìt-kàp rooŋ-rian" },
+                    { en: "The hospital is in front of the hotel.", th: "โรงพยาบาลอยู่ข้างหน้าโรงแรม", hint: "rooŋ-phá-yaa-bâan yùu khâaŋ-nâa rooŋ-rɛɛm" },
+                    { en: "The hospital is behind the bank.", th: "โรงพยาบาลอยู่ข้างหลังธนาคาร", hint: "rooŋ-phá-yaa-bâan yùu khâaŋ-lǎŋ tha-naa-khâan" }
                 ]
             }
         ]
