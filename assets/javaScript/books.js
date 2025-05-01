@@ -204,6 +204,7 @@ function displayMultipleChoice(wordIndex, vocabulary, currentLanguage) {
         if (currentLanguage === 'th-TH') {
             button.textContent = vocabulary[choiceIndex].en + ` (${vocabulary[choiceIndex].hint})`;
         }
+
         button.addEventListener('click', () => {
             if (choiceIndex === wordIndex) {
                 numberOfCorrectMultipleChoiceAnswer++;
@@ -216,10 +217,21 @@ function displayMultipleChoice(wordIndex, vocabulary, currentLanguage) {
             }
             multipleChoiceFeedback();
             // replace space by underscore for audio filename    
-            const audioFilename = (vocabulary[choiceIndex].en.replace(/ /g, '_')).toLowerCase() + '.mp3';
-            //            playAudioFile(audioFilename);
-            textToSpeech(vocabulary[choiceIndex].th, 'th-TH');
+            // const audioFilename = (vocabulary[choiceIndex].en.replace(/ /g, '_')).toLowerCase() + '.mp3';
+            // playAudioFile(audioFilename);
+            if (currentLanguage === 'en-EN') {
+                textToSpeech(vocabulary[choiceIndex].th, 'th-TH');
+                textToSpeech(vocabulary[choiceIndex].en, 'en-US');
+            }
+            if (currentLanguage === 'th-TH') {
+                textToSpeech(vocabulary[choiceIndex].en, 'en-US');
+                textToSpeech(vocabulary[choiceIndex].th, 'th-TH');
+                // playAudioFile(vocabulary[choiceIndex].th_audio);
+            }
+            // playAudioFile(vocabulary[choiceIndex].th_audio);
+
         });
+
         multipleChoiceDetails.appendChild(button);
     });
 
@@ -405,12 +417,11 @@ function playAudioFile(filename) {
 
 function textToSpeech(text, lang) {
     const speech = new SpeechSynthesisUtterance(text);
-
     //    speech.lang = 'th-TH';
     // speech.lang = 'en-US';
     speech.lang = lang;
     //  speech.text = text;
-    speech.volume = 1; // From 0 to 1
+    //    speech.volume = 1; // From 0 to 1
     speech.rate = 1; // From 0.1 to 10
     speech.pitch = 1; // From 0 to 2
     window.speechSynthesis.speak(speech);
