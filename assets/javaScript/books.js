@@ -843,15 +843,15 @@ const books = [
             {
                 "name": "Middle class consonants",
                 "vocabulary": [
-                    { word_en: "gɔɔ gai", word_th: "ก", hint: "chicken (MC)" },
-                    { word_en: "jɔɔ jaan", word_th: "จ", hint: "plate (MC)" },
-                    { word_en: "dɔɔ dek", word_th: "ด", hint: "child (MC ฎ dɔɔ cha-daa )" },
-                    { word_en: "dtɔɔ dtaw", word_th: "ต", hint: "turtle (MC ฏ dtɔɔ bpa-dtak)" },
-                    { word_en: "bɔɔ bai-maay", word_th: "บ", hint: "leaf (MC)" },
-                    { word_en: "bpɔɔ bplaa", word_th: "ป", hint: "fish (MC)" },
-                    { word_en: "ɔɔ aaŋ", word_th: "อ", hint: "basin (MC)" },
-                    { word_en: "dɔɔ cha-daa", word_th: "ฎ", hint: "head dress (MC uncommon)" },
-                    { word_en: "dtɔɔ bpa-dtak", word_th: "ฏ", hint: "lance (MC uncommon)" }
+                    { en: "gɔɔ gai", th: "ก", hint: "chicken (MC)" },
+                    { en: "jɔɔ jaan", th: "จ", hint: "plate (MC)" },
+                    { en: "dɔɔ dek", th: "ด", hint: "child (MC ฎ dɔɔ cha-daa )" },
+                    { en: "dtɔɔ dtaw", th: "ต", hint: "turtle (MC ฏ dtɔɔ bpa-dtak)" },
+                    { en: "bɔɔ bai-maay", th: "บ", hint: "leaf (MC)" },
+                    { en: "bpɔɔ bplaa", th: "ป", hint: "fish (MC)" },
+                    { en: "ɔɔ aaŋ", th: "อ", hint: "basin (MC)" },
+                    { en: "dɔɔ cha-daa", th: "ฎ", hint: "head dress (MC uncommon)" },
+                    { en: "dtɔɔ bpa-dtak", th: "ฏ", hint: "lance (MC uncommon)" }
                 ],
                 structure:
                     [
@@ -862,16 +862,16 @@ const books = [
             {
                 "name": "High class consonants",
                 "vocabulary": [
-                    { word_en: "phɔɔ phwwŋ", word_th: "ผ", hint: "bee (HC)" },
-                    { word_en: "fɔɔ faa", word_th: "ฝ", hint: "lid (HC)" },
-                    { word_en: "thɔɔ thuŋ", word_th: "ถ", hint: "bag (HC ฐ thɔɔ thaan)" },
-                    { word_en: "khɔɔ khai", word_th: "ข", hint: "egg (HC)" },
-                    { word_en: "sɔɔ swa", word_th: "ส", hint: "tiger (HC ษ sɔɔ rww-sii, ศ sɔɔ saa-laa)" },
-                    { word_en: "hɔɔ hiip", word_th: "ห", hint: "treasure box (HC)" },
-                    { word_en: "chɔɔ chiŋ", word_th: "ฉ", hint: "cymbal (HC)" },
-                    { word_en: "thɔɔ thaan", word_th: "ฐ", hint: "pedestal (HC uncommon)" },
-                    { word_en: "sɔɔ rww-sii", word_th: "ษ", hint: "hermit (HC uncommon)" },
-                    { word_en: "sɔɔ saa-laa", word_th: "ศ", hint: "pavilion (HC uncommon)" }
+                    { en: "phɔɔ phwwŋ", th: "ผ", hint: "bee (HC)" },
+                    { en: "fɔɔ faa", th: "ฝ", hint: "lid (HC)" },
+                    { en: "thɔɔ thuŋ", th: "ถ", hint: "bag (HC ฐ thɔɔ thaan)" },
+                    { en: "khɔɔ khai", th: "ข", hint: "egg (HC)" },
+                    { en: "sɔɔ swa", th: "ส", hint: "tiger (HC ษ sɔɔ rww-sii, ศ sɔɔ saa-laa)" },
+                    { en: "hɔɔ hiip", th: "ห", hint: "treasure box (HC)" },
+                    { en: "chɔɔ chiŋ", th: "ฉ", hint: "cymbal (HC)" },
+                    { en: "thɔɔ thaan", th: "ฐ", hint: "pedestal (HC uncommon)" },
+                    { en: "sɔɔ rww-sii", th: "ษ", hint: "hermit (HC uncommon)" },
+                    { en: "sɔɔ saa-laa", th: "ศ", hint: "pavilion (HC uncommon)" }
                 ],
                 structure:
                     [
@@ -882,25 +882,25 @@ const books = [
             {
                 "name": "Vowels",
                 "vocabulary": [
-                    { word_en: "", word_th: "-ะ", hint: "a SV" },
-                    { word_en: "", word_th: "-า", hint: "aa LV" },
-                    { word_en: "", word_th: "-ิ", hint: "i SV" },
-                    { word_en: "", word_th: "-ี", hint: "ii LV" },
-                    { word_en: "", word_th: "-ึ", hint: "w SV" },
-                    { word_en: "", word_th: "-ือ", hint: "ww LV" },
-                    { word_en: "", word_th: "-ุ", hint: "u SV" },
-                    { word_en: "", word_th: "-ู", hint: "uu LV" },
-                    { word_en: "", word_th: "เ-", hint: "ee LV" },
-                    { word_en: "", word_th: "เเ-", hint: "εε LV" },
-                    { word_en: "", word_th: "โ-", hint: "oo LV" },
-                    { word_en: "", word_th: "-อ", hint: "ɔɔ LV" },
-                    { word_en: "", word_th: "เ-อ", hint: "əə LV" },
-                    { word_en: "", word_th: "เ-ีย", hint: "ia LV" },
-                    { word_en: "", word_th: "เ-ือ", hint: "wa LV" },
-                    { word_en: "", word_th: "-ัว", hint: "ua LV" },
-                    { word_en: "", word_th: "-ำ", hint: "am LV" },
-                    { word_en: "", word_th: "ไ ใ", hint: "ai LV" },
-                    { word_en: "", word_th: "เ-า", hint: "aw LV" }
+                    { en: "", th: "-ะ", hint: "a SV" },
+                    { en: "", th: "-า", hint: "aa LV" },
+                    { en: "", th: "-ิ", hint: "i SV" },
+                    { en: "", th: "-ี", hint: "ii LV" },
+                    { en: "", th: "-ึ", hint: "w SV" },
+                    { en: "", th: "-ือ", hint: "ww LV" },
+                    { en: "", th: "-ุ", hint: "u SV" },
+                    { en: "", th: "-ู", hint: "uu LV" },
+                    { en: "", th: "เ-", hint: "ee LV" },
+                    { en: "", th: "เเ-", hint: "εε LV" },
+                    { en: "", th: "โ-", hint: "oo LV" },
+                    { en: "", th: "-อ", hint: "ɔɔ LV" },
+                    { en: "", th: "เ-อ", hint: "əə LV" },
+                    { en: "", th: "เ-ีย", hint: "ia LV" },
+                    { en: "", th: "เ-ือ", hint: "wa LV" },
+                    { en: "", th: "-ัว", hint: "ua LV" },
+                    { en: "", th: "-ำ", hint: "am LV" },
+                    { en: "", th: "ไ ใ", hint: "ai LV" },
+                    { en: "", th: "เ-า", hint: "aw LV" }
                 ],
                 structure:
                     [
