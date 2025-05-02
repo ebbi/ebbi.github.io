@@ -545,6 +545,310 @@ const books = [
                 ]
             }
         ]
+    },
+    {
+        "title": "Book LS 3",
+        "lessons": [
+            {
+                "name": "Time",
+                "vocabulary": [
+                    { en: "In the morning", th: "ตอนเช้า", hint: "dtɔɔn cháaw" },
+                    { en: "In the late morning", th: "ตอนสาย", hint: "dtɔɔn sǎay" },
+                    { en: "At noon", th: "ตอนเที9ยง", hint: "dtɔɔn thîaŋ" },
+                    { en: "In the afternoon", th: "ตอนบ่าย", hint: "dtɔɔn bàay" },
+                    { en: "In the evening (before dark)", th: "ตอนเย็น", hint: "dtɔɔn yen" },
+                    { en: "In the evening (after dark)", th: "ตอนคํ9า", hint: "dtɔɔn khâm" },
+                    { en: "In the day time", th: "ตอนกลางวัน", hint: "dtɔɔn glaaŋ-wan" },
+                    { en: "In the night time", th: "ตอนกลางคืน", hint: "dtɔɔn glaaŋ-khɯɯn" },
+                    { en: "Time", th: "เวลา", hint: "wee-laa" },
+                    { en: "Clock/Watch/O’clock", th: "นาฬิกา", hint: "naa-lí-gaa" },
+                    { en: "O'clock(6.00 AM-6.59PM)", th: "โมง", hint: "mooŋ" },
+                    { en: "O'clock(7.00PM-11.59PM)", th: "ทุม", hint: "thûm" },
+                    { en: "O'clock(1.00AM-5.59AM)", th: "ตี", hint: "dtii" },
+                    { en: "About/Approximately", th: "ประมาณ", hint: "bprà-maan" },
+                    { en: "Sharp", th: "ตรง", hint: "dtroŋ" },
+                    { en: "Hour", th: "ชัวโมง", hint: "chûa-mooŋ" },
+                    { en: "Minute", th: "นาที", hint: "naa-thii" },
+                    { en: "Second", th: "วินาที", hint: "wí-naa-thii!" },
+                    { en: "Half", th: "ครึ9ง", hint: "khrɯ̂ŋ" },
+                    { en: "Long", th: "นาน", hint: "naan" },
+                    { en: "Early", th: "เช้า", hint: "cháaw" },
+                    { en: "Late", th: "สาย", hint: "sǎay" },
+                    { en: "Before", th: "ก่อน", hint: "gɔ̀ɔn" },
+                    { en: "After", th: "หลัง", hint: "lǎŋ" },
+                    { en: "Wait for a minute", th: "รอแป๊ปนึง", hint: "rɔɔ bpɛ́ɛp-nʉng" },
+                    { en: "Now", th: "ตอนนี", hint: "dtɔɔn-níi" },
+                    { en: "Right now", th: "เดีƒยวนี", hint: "dǐaw-níi" },
+                    { en: "Time", th: "เวลา", hint: "wee-laa" },
+                    { en: "Hour", th: "ชั่วโมง", hint: "chûa-mɔ́ŋ" },
+                    { en: "Minute", th: "นาที", hint: "naa-thii" },
+                    { en: "Second", th: "วินาที", hint: "wí-naa-thii" },
+                    { en: "Day", th: "วัน", hint: "wan" },
+                    { en: "Week", th: "สัปดาห์", hint: "sàp-daa" },
+                    { en: "Month", th: "เดือน", hint: "dʉʉan" },
+                    { en: "Year", th: "ปี", hint: "pii" },
+                    { en: "Today", th: "(วันนี้)", hint: "(wan-níi)" },
+                    { en: "Tomorrow", th: "(พรุ่งนี้)", hint: "(phrûng-níi)" },
+                    { en: "Yesterday", th: "(เมื่อวานนี้)", hint: "(mʉ̂a-wan-níi)" }
+                ],
+                structure:
+                    [
+                        { en: "What time is it?", th: "กี่โมง", hint: "gìi mooŋ" },
+                        { en: "It is 8 o'clock", th: "แปดโมง", hint: "bpɛ̀ɛt mooŋ" },
+                        { en: "It is 8.30", th: "แปดโมงครึ9ง", hint: "bpɛ̀ɛt mooŋ khrɯ̂ŋ" },
+                        { en: "It is 8.45", th: "แปดโมงสี่สิบห้า", hint: "bpɛ̀ɛt mooŋ sìi-sìp-hâa" },
+                        { en: "It is 8.50", th: "แปดโมงห้าสิบ", hint: "bpɛ̀ɛt mooŋ hâa-sìp" },
+                        { en: "It is 8.55", th: "แปดโมงห้าสิบห้า", hint: "bpɛ̀ɛt mooŋ hâa-sìp-hâa" },
+                        { en: "It is 9 o'clock", th: "เก้าโมง", hint: "gâo mooŋ" },
+                        { en: "It is 9.15", th: "เก้าโมงสิบห้า", hint: "gâo mooŋ sìp-hâa" },
+                        { en: "It is 9.30", th: "เก้าโมงครึ9ง", hint: "gâo mooŋ khrɯ̂ŋ" },
+                        { en: "It is 9.45", th: "เก้าโมงสี่สิบห้า", hint: "gâo mooŋ sìi-sìp-hâa" },
+                        { en: "It is 10 o'clock", th: "สิบโมง", hint: "sìp mooŋ" }
+                    ]
+            },
+            {
+                "name": "Days",
+                "vocabulary": [
+                    { en: "Monday", th: "วันจันทร์", hint: "wan-jan" },
+                    { en: "Tuesday", th: "วันอังคาร", hint: "wan aŋ-khaan" },
+                    { en: "Wednesday", th: "วันพุธ", hint: "wan-phút" },
+                    { en: "Thursday", th: "วันพฤหัสบดี", hint: "wan phá-rɯ-hàt" },
+                    { en: "Friday", th: "วันศุกร์", hint: "wan-sùk" },
+                    { en: "Saturday", th: "วันเสาร์", hint: "wan-sǎw" },
+                    { en: "Sunday", th: "วันอาทิตย์", hint: "wan aa-thít" },
+                    { en: "Weekend", th: "วันเสาร์อาทิตย์", hint: "wan-sǎw aa-thít" },
+                    { en: "Day", th: "วัน", hint: "wan" },
+                    { en: "Date", th: "วันที9", hint: "wan-thiî" },
+                    { en: "Today", th: "วันนี", hint: "wan-níi" },
+                    { en: "Tomorrow", th: "วันพรุ่งนี", hint: "wan phrûŋ-níi" },
+                    { en: "Yesterday", th: "เมื9อวานนี", hint: "mɯ̂a-waan-níi" },
+                    { en: "The day after tomorrow", th: "วันมะรืนนี", hint: "wan má-rɯɯn-níi" },
+                    { en: "The day before yesterday", th: "(เมื9อ)วานซืน", hint: "(mɯ̂a)-waan-sɯɯn" },
+                    { en: "Holiday", th: "วันหยุด", hint: "wan-yùt" },
+                    { en: "Birthday", th: "วันเกิด", hint: "wan-gə̀ət" },
+                    { en: "Weekdays", th: "วันธรรมดา", hint: "wan tham-má-daa" },
+                    { en: "Every", th: "ทุก", hint: "thúk" },
+                    { en: "All/Throughout", th: "ทังy", hint: "tháŋ" },
+                    { en: "Day", th: "วัน", hint: "Wan" },
+                    { en: "Week", th: "อาทิตย์", hint: "aa-thít" },
+                    { en: "Month", th: "เดือน", hint: "dɯan" },
+                    { en: "year", th: "ปี", hint: "bpii" }
+                ],
+                structure:
+                    [
+                        { en: "What day is it today?", th: "วันนี้วันอะไร", hint: "wan-níi wan à-rai" },
+                        { en: "Today is Monday", th: "วันนี้วันจันทร์", hint: "wan-níi wan-jan" },
+                        { en: "Today is Tuesday", th: "วันนี้วันอังคาร", hint: "wan-níi wan aŋ-khaan" },
+                        { en: "Today is Wednesday", th: "วันนี้วันพุธ", hint: "wan-níi wan-phút" },
+                        { en: "Today is Thursday", th: "วันนี้วันพฤหัสบดี", hint: "wan-níi wan phá-rɯ-hàt" },
+                        { en: "Today is Friday", th: "วันนี้วันศุกร์", hint: "wan-níi wan-sùk" },
+                        { en: "Today is Saturday", th: "วันนี้วันเสาร์", hint: "wan-níi wan-sǎw" },
+                        { en: "Today is Sunday", th: "วันนี้วันอาทิตย์", hint: "wan-níi wan aa-thít" }
+                    ]
+            },
+            {
+                "name": "Months/year/seasons",
+                "vocabulary": [
+                    { en: "Month", th: "เดือน", hint: "dɯan" },
+                    { en: "January", th: "มกราคม", hint: "mók-gà-raa-khom" },
+                    { en: "February", th: "กุมภาพันธ์", hint: "gum-phaa-phan" },
+                    { en: "March", th: "มีนาคม", hint: "mii-naa-khom" },
+                    { en: "April", th: "เมษายน", hint: "mee-sǎa-yon" },
+                    { en: "May", th: "พฤษภาคม", hint: "phrɯt-sà-phaa-khom" },
+                    { en: "June", th: "มิถนายน", hint: "mii-naa-khom" },
+                    { en: "July", th: "กรกฎาคม", hint: "gà-rá-gà-daa-khom" },
+                    { en: "August", th: "สิงหาคม", hint: "sǐŋ-hǎa-khom" },
+                    { en: "September", th: "กันยายน", hint: "gan-yaa-yon" },
+                    { en: "October", th: "ตุลาคม", hint: "dtù-laa-khom" },
+                    { en: "November", th: "พฤศจิกายน", hint: "phrɯt-sà-jì-gaa-yon" },
+                    { en: "December", th: "ธันวาคม", hint: "than-waa-khom" },
+                    { en: "Year", th: "ปี", hint: "bpii" },
+                    { en: "C.E.", th: "ปี ค.ศ", hint: "bpii khɔɔ-sɔ̌ɔ" },
+                    { en: "B.E.", th: "ปี พ.ศ.", hint: "bpii phɔɔ-sɔ̌ɔ" },
+                    { en: "A.D.", th: "ปี ค.ศ", hint: "bpii khɔɔ-sɔ̌ɔ" },
+                    { en: "B.C.", th: "ปีก่อนคริสต์ศักราช", hint: "bpii kɔ̀ɔn khrit-sàk-kà-râat" },
+                    { en: "Season", th: "ฤดู", hint: "rɯ́-duu" },
+                    { en: "Summer", th: "ฤดูร้อน", hint: "rɯ́-duu rɔ́ɔn" },
+                    { en: "Rainy season", th: "ฤดูฝน", hint: "rɯ́-duu fǒn" },
+                    { en: "Winter", th: "ฤดูหนาว", hint: "rɯ́-duu nǎao" },
+                    { en: "Spring", th: "ฤดูใบไม้ผลิ", hint: "rɯ́-duu bai-mái phlì" },
+                    { en: "Autumn", th: "ฤดูใบไม้ร่วง", hint: "rɯ́-duu bai-mái rûaŋ" },
+                    { en: "Weather", th: "อากาศ", hint: "aa-kàat" },
+                    { en: "Hot", th: "ร้อน", hint: "rɔ́ɔn" },
+                    { en: "Cold", th: "หนาว", hint: "nǎao" },
+                    { en: "Cool", th: "เย็น", hint: "yen" },
+                    { en: "Windy", th: "มีลม", hint: "" },
+                    { en: "Rainy", th: "มีฝน", hint: "" },
+                    { en: "Sunny", th: "มีแดด", hint: "" },
+                    { en: "Cloudy", th: "มีเมฆ", hint: "" },
+                    { en: "Foggy", th: "มีหมอก", hint: "" },
+                    { en: "Snowy", th: "มีหิมะตก", hint: "" }
+                ],
+                structure:
+                    [
+                        { en: "What month is it?", th: "เดือนอะไร", hint: "dʉʉan à-rai" },
+                        { en: "It is January", th: "เดือนมกราคม", hint: "dʉʉan mók-ka-ra-khom" },
+                        { en: "It is February", th: "เดือนกุมภาพันธ์", hint: "dʉʉan kum-phaa-phan" },
+                        { en: "It is March", th: "เดือนมีนาคม", hint: "dʉʉan mii-naa-khom" },
+                        { en: "It is April", th: "เดือนเมษายน", hint: "dʉʉan mɛ̂ɛ-sǎa-yon" },
+                        { en: "It is May", th: "เดือนพฤษภาคม", hint: "dʉʉan phrɯ́t-sà-phaa-khom" },
+                        { en: "It is June", th: "เดือนมิถุนายน", hint: "dʉʉan mii-thu-naa-yon" },
+                        { en: "It is July", th: "เดือนกรกฎาคม", hint: "dʉʉan gà-rá-gà-daa-khom" },
+                        { en: "It is August", th: "เดือนสิงหาคม", hint: "dʉʉan sǐŋ-hǎa-khom" },
+                        { en: "What is the weather like?", th: "(วันนี้)อากาศเป็นยังไงบ้าง?", hint: "(wan-níi) aa-kàat bpen yaŋ-ngai bâaŋ?" },
+                        { en: "(Today) is hot.", th: "(วันนี้)ร้อน.", hint: "(wan-níi) rɔ́ɔn." },
+                        { en: "(Today) is cold.", th: "(วันนี้)หนาว.", hint: "(wan-níi) nǎao." },
+                        { en: "(Today) is cool.", th: "(วันนี้)เย็น.", hint: "(wan-níi) yen." },
+                        { en: "(Today) is windy.", th: "(วันนี้)มีลม.", hint: "(wan-níi) mii lɔm." },
+                        { en: "(Today) is rainy.", th: "(วันนี้)มีฝน.", hint: "(wan-níi) mii fǒn." },
+                        { en: "(Today) is sunny.", th: "(วันนี้)มีแดด.", hint: "(wan-níi) mii dɛ̀ɛt." },
+                        { en: "(Today) is cloudy.", th: "(วันนี้)มีเมฆ.", hint: "(wan-níi) mii mɛ̂ɛk." },
+                        { en: "(Today) is foggy.", th: "(วันนี้)มีหมอก.", hint: "(wan-níi) mii mɔ̀ɔk." },
+                        { en: "(Today) is snowy.", th: "(วันนี้)มีหิมะตก.", hint: "(wan-níi) mii hìmá dtòk." }
+                    ]
+            },
+            {
+                "name": "Family",
+                "vocabulary": [
+                    { en: "Family ", th: "ครอบครัว", hint: "khrɔ́ɔp-khrua" },
+                    { en: "Father", th: "พ่อ", hint: "phɔ̂ɔ" },
+                    { en: "Mother", th: "แม่", hint: "mɛ̂ɛ" },
+                    { en: "A person who is older than you", th: "พี9", hint: "phîi" },
+                    { en: "A person who is younger than you", th: "น้ อง", hint: "nɔ́ɔŋ" },
+                    { en: "Sibling", th: "พี9น้อง", hint: "phîi-nɔ́ɔŋ" },
+                    { en: "Older sister", th: "พี9สาว", hint: "phîi-sǎaw" },
+                    { en: "Younger sister", th: "น้ องสาว", hint: "nɔ́ɔŋ-sǎaw" },
+                    { en: "Older brother", th: "พี9ชาย", hint: "phîi-chaay" },
+                    { en: "Younger brother", th: "น้องชาย", hint: "nɔ́ɔŋ-chaay" },
+                    { en: "Child", th: "ลูก", hint: "lûuk" },
+                    { en: "Daughter", th: "ลูกสาว", hint: "lûuk-sǎaw" },
+                    { en: "Son", th: "ลูกชาย", hint: "lûuk-chaay" },
+                    { en: "Niece/Grand daughter", th: "หลานสาว", hint: "lǎan-sǎaw" },
+                    { en: "Nephew/Grand son", th: "หลานชาย", hint: "lǎan-chaay" },
+                    { en: "Grandfather", th: "ปู ่/ตา", hint: "bpùu/dtaa" },
+                    { en: "Grandmother", th: "ย่า/ยาย", hint: "yâa/yaay" },
+                    { en: "Uncle", th: "ลุง", hint: "luŋ" },
+                    { en: "Aunt", th: "ป้า", hint: "bpâa" },
+                    { en: "Aunt/Uncle (younger)", th: "น้า", hint: "náa" },
+                    { en: "Aunt/Uncle (older)", th: "อา", hint: "aa" },
+                    { en: "Husband", th: "สามี", hint: "sǎa-mii" },
+                    { en: "Wife", th: "ภรรยา", hint: "Phan-rá-yaa" },
+                    { en: "Boyfriend/Girlfriend", th: "แฟน", hint: "fɛɛn" },
+                    { en: "Relatives", th: "ญาติ", hint: "yâat" },
+                    { en: "Cousin", th: "ลูกพี่ลูกน้อง", hint: "lûuk-phîi-lûuk-nɔ́ɔŋ" }
+                ],
+                structure:
+                    [
+                        { en: "Who is this?", th: "นีใคร", hint: "nîi khrai" },
+                        { en: "This is my father", th: "นีพ่อของฉัน", hint: "nîi phɔ̂ɔ khɔ̌ŋ chǎn" },
+                        { en: "This is my mother", th: "นีแม่ของฉัน", hint: "nîi mɛ̂ɛ khɔ̌ŋ chǎn" },
+                        { en: "This is my brother", th: "นีน้องชายของฉัน", hint: "nîi nɔ́ɔŋ-chaay khɔ̌ŋ chǎn" },
+                        { en: "This is my sister", th: "นีน้องสาวของฉัน", hint: "nîi nɔ́ɔŋ-sǎaw khɔ̌ŋ chǎn" },
+                        { en: "This is my son", th: "นีลูกชายของฉัน", hint: "nîi lûuk-chaay khɔ̌ŋ chǎn" },
+                        { en: "This is my daughter", th: "นีลูกสาวของฉัน", hint: "nîi lûuk-sǎaw khɔ̌ŋ chǎn" },
+                        { en: "This is my uncle", th: "นีน้าของฉัน", hint: "nîi nâa khɔ̌ŋ chǎn" },
+                        { en: "This is my aunt", th: "นีน้าของฉัน", hint: "nîi nâa khɔ̌ŋ chǎn" }
+                    ]
+            },
+            {
+                "name": "Occupation",
+                "vocabulary": [
+                    { en: "Work/Job", th: "งาน", hint: "ŋaan" },
+                    { en: "To work", th: "ทํางาน", hint: "tham-ŋaan" },
+                    { en: "Student", th: "นักเรียน", hint: "nák-rian" },
+                    { en: "Business person", th: "นักธุรกิจ", hint: "nák thú-rá-gìt" },
+                    { en: "Musician", th: "นักดนตรี", hint: "nák don-dtrii" },
+                    { en: "Writer", th: "นักเขียน", hint: "nák-khǐan" },
+                    { en: "Teacher", th: "ครู", hint: "khruu" },
+                    { en: "Doctor", th: "หมอ", hint: "mɔ̌ɔ" },
+                    { en: "Dentist", th: "หมอฟัน", hint: "mɔ̌ɔ-fan" },
+                    { en: "Nurse", th: "พยาบาล", hint: "phá-yaa-baan" },
+                    { en: "Police", th: "ตํารวจ", hint: "dtam-rùat" },
+                    { en: "Soldier", th: "ทหาร", hint: "thá-hǎan" },
+                    { en: "Engineer", th: "วิศวกร", hint: "wít-sà-wá-gɔɔn" },
+                    { en: "Pharmacist", th: "เภสั ", hint: "phee-sàt-chàt-gɔɔn" },
+                    { en: "Vendor", th: "พ่อค้า/แม่ค้า", hint: "phɔ̂ɔ-kháa/mɛ̂ɛ-kháa" },
+                    { en: "Staff/Worker", th: "พนักงาน", hint: "phá-nák ŋaan" },
+                    { en: "Freelancer", th: "ฟรีแลนซ์", hint: "frii-lɛ́ɛn" },
+                    { en: "Maid / Housewife", th: "แม่บ้าน", hint: "mɛ̂ɛ bâan" },
+                    { en: "Security guard", th: "ยาม", hint: "yaam" },
+                    { en: "Technician", th: "ช่าง", hint: "châaŋ" }
+                ],
+                structure:
+                    [
+                        { en: "What is your job?", th: "คุณทํางานอะไร", hint: "khun tham-ŋaan à-rai" },
+                        { en: "I am a student", th: "ฉันเป็นนักเรียน", hint: "chǎn bpen nák-rian" },
+                        { en: "I am a teacher", th: "ฉันเป็นครู", hint: "chǎn bpen khruu" },
+                        { en: "I am a doctor", th: "ฉันเป็นหมอ", hint: "chǎn bpen mɔ̌ɔ" }
+                    ]
+            },
+            {
+                "name": "What does he/she loo like?",
+                "vocabulary": [
+                    { en: "Eyes", th: "ตา", hint: "dtaa" },
+                    { en: "Mouth", th: "ปาก", hint: "bpàak" },
+                    { en: "Skin", th: "ผิว", hint: "phǐw" },
+                    { en: "Hair", th: "ผม", hint: "phǒm" },
+                    { en: "Nose", th: "จมูก", hint: "Jà-mùuk" },
+                    { en: "Eyebrows", th: "คิyว", hint: "khíw" },
+                    { en: "Face", th: "หน้า", hint: "nâa" },
+                    { en: "Face", th: "หน้าตา", hint: "nâa-dtaa" },
+                    { en: "Shape", th: "รูปร่าง", hint: "rûup-râaŋ" },
+                    { en: "Height", th: "ส่วนสูง", hint: "Sùan-sǔuŋ" },
+                    { en: "Weight", th: "นํyาหนัก", hint: "Náam-nàk" }
+                ],
+                structure:
+                    [
+                        { en: "What does he/she look like?", th: "เขาหน้าตาเป็นยังไง", hint: "khǎo nâa-dtaa bpen yaŋ-ngai" },
+                        { en: "He/She is tall", th: "เขาสูง", hint: "khǎo sǔuŋ" },
+                        { en: "He/She is short", th: "เขาสั้น", hint: "khǎo sâŋ" },
+                        { en: "He/She is fat", th: "เขาอ้วน", hint: "khǎo ûan" },
+                        { en: "He/She is thin", th: "เขาผอม", hint: "khǎo phɔ̌ɔm" },
+                        { en: "He/She is beautiful", th: "เขาสวย", hint: "khǎo sǔay" },
+                        { en: "He/She is handsome", th: "เขาหล่อ", hint: "khǎo lɔ̀ɔ" }
+                    ]
+            }
+        ]
+    },
+    {
+        "title": "Book RW 1",
+        "lessons": [
+            {
+                "name": "Low class consonants",
+                "vocabulary": [
+                    { en: "phɔɔ phaan", th: "พ", hint: "offering tray (LC ภ phɔɔ sam-phaw)" },
+                    { en: "fɔɔ fan", th: "ฟ", hint: "tooth (LC)" },
+                    { en: "thɔɔ tha-haan", th: "ท", hint: "soldier (LC ธ thɔɔ thoŋ, ฑ thɔɔ mon-thoo, ฒ thɔɔ phuu-thaw)" },
+                    { en: "khɔɔ khwaay", th: "ค", hint: "buffalow (LC ฆ khɔɔ ra-khaŋ)" },
+                    { en: "sɔɔ soo", th: "ซ", hint: "chain (LC)" },
+                    { en: "hɔɔ nok-huuk", th: "ฮ", hint: "owl (LC)" },
+                    { en: "chɔɔ chaaŋ", th: "ช", hint: "elephant (LC ฌ chɔɔ chəə)" },
+                    { en: "ŋɔɔ ŋuu", th: "ง", hint: "snake (LC)" },
+                    { en: "yɔɔ yak", th: "ย", hint: "giant (LC ญ yɔɔ phuu-yiŋ)" },
+                    { en: "nɔɔ nuu", th: "น", hint: "mouse (LC ณ nɔɔ neen)" },
+                    { en: "rɔɔ rwa", th: "ร", hint: "boat (LC)" },
+                    { en: "wɔɔ wεεn", th: "ว", hint: "ring (LC)" },
+                    { en: "mɔɔ maa", th: "ม", hint: "horrse (LC)" },
+                    { en: "lɔɔ liŋ", th: "ล", hint: "monkey (LC ฬ lɔɔ ju-laa)" },
+                    { en: "phɔɔ sam-phaw", th: "ภ", hint: "sailing boat (LC uncommon)" },
+                    { en: "thɔɔ thoŋ", th: "ธ", hint: "flag (LC uncommon)" },
+                    { en: "thɔɔ mon-thoo", th: "ฑ", hint: "Lady Montho (LC uncommon)" },
+                    { en: "thɔɔ phuu-thaw", th: "ฒ", hint: "elderly (LC uncommon)" },
+                    { en: "khɔɔ ra-khaŋ", th: "ฆ", hint: "bell (LC uncommon)" },
+                    { en: "chɔɔ chəə", th: "ฌ", hint: "name of a tree (LC uncommon)" },
+                    { en: "yɔɔ phuu-yiŋ", th: "ญ", hint: "female (LC uncommon)" },
+                    { en: "nɔɔ neen", th: "ณ", hint: "novice (LC uncommon)" },
+                    { en: "lɔɔ ju-laa", th: "ฬ", hint: "kite (LC uncommon)" }
+                ],
+                structure:
+                    [
+                        { en: "What is this?", th: "นีอะไร", hint: "nîi à-rai" },
+                        { en: "This is a low class consonant", th: "นีเป็นพยัญชนะต่ำ", hint: "nîi bpen phá-yan-chá-ná tàm" },
+                        { en: "This is a high class consonant", th: "นีเป็นพยัญชนะสูง", hint: "nîi bpen phá-yan-chá-ná sǔuŋ" },
+                        { en: "This is a middle class consonant", th: "นีเป็นพยัญชนะกลาง", hint: "nîi bpen phá-yan-chá-ná klaaŋ" }
+                    ]
+            }
+        ]
     }
 ];
 
@@ -567,7 +871,7 @@ function displayBookListLessons(bookList) {
 
     books.forEach((book) => {
         const bookItem = document.createElement('details');
-        bookItem.open = true; // Set to true if you want the book details to be open by default
+        //        bookItem.open = true; // Set to true if you want the book details to be open by default
         const summary = document.createElement('summary');
         summary.textContent = book.title + ' Lessons';
         bookItem.appendChild(summary);
