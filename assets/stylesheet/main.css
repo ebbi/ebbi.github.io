@@ -47,6 +47,13 @@ details {
     padding: 0.7rem .25rem;
 }
 
+details.bookItem {
+    border: none;
+    margin: 0.1rem 0;
+    padding: 0.5rem 0.25rem;
+    border: 1px solid var(--border);
+}
+
 button {
     margin: 0.1rem 0.5rem;
     padding: 0.1rem 0.5rem;

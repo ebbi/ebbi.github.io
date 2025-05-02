@@ -816,29 +816,29 @@ const books = [
             {
                 "name": "Low class consonants",
                 "vocabulary": [
-                    { en: "phɔɔ phaan", th: "พ", hint: "offering tray (LC ภ phɔɔ sam-phaw)" },
-                    { en: "fɔɔ fan", th: "ฟ", hint: "tooth (LC)" },
-                    { en: "thɔɔ tha-haan", th: "ท", hint: "soldier (LC ธ thɔɔ thoŋ, ฑ thɔɔ mon-thoo, ฒ thɔɔ phuu-thaw)" },
-                    { en: "khɔɔ khwaay", th: "ค", hint: "buffalow (LC ฆ khɔɔ ra-khaŋ)" },
-                    { en: "sɔɔ soo", th: "ซ", hint: "chain (LC)" },
-                    { en: "hɔɔ nok-huuk", th: "ฮ", hint: "owl (LC)" },
-                    { en: "chɔɔ chaaŋ", th: "ช", hint: "elephant (LC ฌ chɔɔ chəə)" },
-                    { en: "ŋɔɔ ŋuu", th: "ง", hint: "snake (LC)" },
-                    { en: "yɔɔ yak", th: "ย", hint: "giant (LC ญ yɔɔ phuu-yiŋ)" },
-                    { en: "nɔɔ nuu", th: "น", hint: "mouse (LC ณ nɔɔ neen)" },
-                    { en: "rɔɔ rwa", th: "ร", hint: "boat (LC)" },
-                    { en: "wɔɔ wεεn", th: "ว", hint: "ring (LC)" },
-                    { en: "mɔɔ maa", th: "ม", hint: "horrse (LC)" },
-                    { en: "lɔɔ liŋ", th: "ล", hint: "monkey (LC ฬ lɔɔ ju-laa)" },
-                    { en: "phɔɔ sam-phaw", th: "ภ", hint: "sailing boat (LC uncommon)" },
-                    { en: "thɔɔ thoŋ", th: "ธ", hint: "flag (LC uncommon)" },
-                    { en: "thɔɔ mon-thoo", th: "ฑ", hint: "Lady Montho (LC uncommon)" },
-                    { en: "thɔɔ phuu-thaw", th: "ฒ", hint: "elderly (LC uncommon)" },
-                    { en: "khɔɔ ra-khaŋ", th: "ฆ", hint: "bell (LC uncommon)" },
-                    { en: "chɔɔ chəə", th: "ฌ", hint: "name of a tree (LC uncommon)" },
-                    { en: "yɔɔ phuu-yiŋ", th: "ญ", hint: "female (LC uncommon)" },
-                    { en: "nɔɔ neen", th: "ณ", hint: "novice (LC uncommon)" },
-                    { en: "lɔɔ ju-laa", th: "ฬ", hint: "kite (LC uncommon)" }
+                    { en: "offering tray", th: "พ", hint: "phɔɔ phaan (LC ภ phɔɔ sam-phaw)" },
+                    { en: "tooth", th: "ฟ", hint: "fɔɔ fan (LC)" },
+                    { en: "soldier", th: "ท", hint: "thɔɔ tha-haan (LC ธ thɔɔ thoŋ, ฑ thɔɔ mon-thoo, ฒ thɔɔ phuu-thaw)" },
+                    { en: "buffalow", th: "ค", hint: "khɔɔ khwaay (LC ฆ khɔɔ ra-khaŋ)" },
+                    { en: "chain", th: "ซ", hint: "sɔɔ soo (LC)" },
+                    { en: "owl", th: "ฮ", hint: "hɔɔ nok-huuk (LC)" },
+                    { en: "elephant", th: "ช", hint: "chɔɔ chaaŋ (LC ฌ chɔɔ chəə)" },
+                    { en: "snake", th: "ง", hint: "ŋɔɔ ŋuu (LC)" },
+                    { en: "giant", th: "ย", hint: "yɔɔ yak (LC ญ yɔɔ phuu-yiŋ)" },
+                    { en: "mouse", th: "น", hint: "nɔɔ nuu (LC ณ nɔɔ neen)" },
+                    { en: "boat", th: "ร", hint: "rɔɔ rwa (LC)" },
+                    { en: "ring", th: "ว", hint: "wɔɔ wεεn (LC)" },
+                    { en: "horse", th: "ม", hint: "mɔɔ maa (LC)" },
+                    { en: "monkey", th: "ล", hint: "lɔɔ liŋ (LC ฬ lɔɔ ju-laa)" },
+                    { en: "sailing boat", th: "ภ", hint: "phɔɔ sam-phaw (LC uncommon)" },
+                    { en: "flag", th: "ธ", hint: "thɔɔ thoŋ (LC uncommon)" },
+                    { en: "Lady Montho", th: "ฑ", hint: "thɔɔ mon-thoo (LC uncommon)" },
+                    { en: "elderly", th: "ฒ", hint: "thɔɔ phuu-thaw (LC uncommon)" },
+                    { en: "bell", th: "ฆ", hint: "khɔɔ ra-khaŋ (LC uncommon)" },
+                    { en: "name of a tree", th: "ฌ", hint: "chɔɔ chəə (LC uncommon)" },
+                    { en: "female", th: "ญ", hint: "yɔɔ phuu-yiŋ (LC uncommon)" },
+                    { en: "novice", th: "ณ", hint: "nɔɔ neen (LC uncommon)" },
+                    { en: "kite", th: "ฬ", hint: "lɔɔ ju-laa (LC uncommon)" }
                 ],
                 structure:
                     [
@@ -871,6 +871,7 @@ function displayBookListLessons(bookList) {
 
     books.forEach((book) => {
         const bookItem = document.createElement('details');
+        bookItem.classList.add('bookItem');
         //        bookItem.open = true; // Set to true if you want the book details to be open by default
         const summary = document.createElement('summary');
         summary.textContent = book.title + ' Lessons';
