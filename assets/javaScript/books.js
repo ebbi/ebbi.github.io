@@ -882,25 +882,14 @@ const books = [
             {
                 "name": "Vowels",
                 "vocabulary": [
-                    { en: "", th: "-ะ", hint: "a SV" },
-                    { en: "", th: "-า", hint: "aa LV" },
-                    { en: "", th: "-ิ", hint: "i SV" },
-                    { en: "", th: "-ี", hint: "ii LV" },
-                    { en: "", th: "-ึ", hint: "w SV" },
-                    { en: "", th: "-ือ", hint: "ww LV" },
-                    { en: "", th: "-ุ", hint: "u SV" },
-                    { en: "", th: "-ู", hint: "uu LV" },
-                    { en: "", th: "เ-", hint: "ee LV" },
-                    { en: "", th: "เเ-", hint: "εε LV" },
-                    { en: "", th: "โ-", hint: "oo LV" },
-                    { en: "", th: "-อ", hint: "ɔɔ LV" },
-                    { en: "", th: "เ-อ", hint: "əə LV" },
-                    { en: "", th: "เ-ีย", hint: "ia LV" },
-                    { en: "", th: "เ-ือ", hint: "wa LV" },
-                    { en: "", th: "-ัว", hint: "ua LV" },
-                    { en: "", th: "-ำ", hint: "am LV" },
-                    { en: "", th: "ไ ใ", hint: "ai LV" },
-                    { en: "", th: "เ-า", hint: "aw LV" }
+                    { en: "a", th: "า", hint: "aa" },
+                    { en: "i", th: "ิ", hint: "i" },
+                    { en: "u", th: "ุ", hint: "u" },
+                    { en: "e", th: "เ", hint: "e" },
+                    { en: "ae", th: "แ", hint: "ae" },
+                    { en: "o", th: "โ", hint: "o" },
+                    { en: "oe", th: "เ-อ", hint: "oe" },
+                    { en: "ai", th: "ใ/ไ", hint: "ai" }
                 ],
                 structure:
                     [
