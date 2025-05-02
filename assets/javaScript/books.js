@@ -837,9 +837,75 @@ const books = [
                 structure:
                     [
                         { en: "What is this?", th: "นีอะไร", hint: "nîi à-rai" },
-                        { en: "This is a low class consonant", th: "นีเป็นพยัญชนะต่ำ", hint: "nîi bpen phá-yan-chá-ná tàm" },
-                        { en: "This is a high class consonant", th: "นีเป็นพยัญชนะสูง", hint: "nîi bpen phá-yan-chá-ná sǔuŋ" },
-                        { en: "This is a middle class consonant", th: "นีเป็นพยัญชนะกลาง", hint: "nîi bpen phá-yan-chá-ná klaaŋ" }
+                        { en: "This is a low class consonant", th: "นีเป็นพยัญชนะต่ำ", hint: "nîi bpen phá-yan-chá-ná tàm" }
+                    ]
+            },
+            {
+                "name": "Middle class consonants",
+                "vocabulary": [
+                    { word_en: "gɔɔ gai", word_th: "ก", hint: "chicken (MC)" },
+                    { word_en: "jɔɔ jaan", word_th: "จ", hint: "plate (MC)" },
+                    { word_en: "dɔɔ dek", word_th: "ด", hint: "child (MC ฎ dɔɔ cha-daa )" },
+                    { word_en: "dtɔɔ dtaw", word_th: "ต", hint: "turtle (MC ฏ dtɔɔ bpa-dtak)" },
+                    { word_en: "bɔɔ bai-maay", word_th: "บ", hint: "leaf (MC)" },
+                    { word_en: "bpɔɔ bplaa", word_th: "ป", hint: "fish (MC)" },
+                    { word_en: "ɔɔ aaŋ", word_th: "อ", hint: "basin (MC)" },
+                    { word_en: "dɔɔ cha-daa", word_th: "ฎ", hint: "head dress (MC uncommon)" },
+                    { word_en: "dtɔɔ bpa-dtak", word_th: "ฏ", hint: "lance (MC uncommon)" }
+                ],
+                structure:
+                    [
+                        { en: "What is this?", th: "นีอะไร", hint: "nîi à-rai" },
+                        { en: "This is a high class consonant", th: "นีเป็นพยัญชนะสูง", hint: "nîi bpen phá-yan-chá-ná sǔuŋ" }
+                    ]
+            },
+            {
+                "name": "High class consonants",
+                "vocabulary": [
+                    { word_en: "phɔɔ phwwŋ", word_th: "ผ", hint: "bee (HC)" },
+                    { word_en: "fɔɔ faa", word_th: "ฝ", hint: "lid (HC)" },
+                    { word_en: "thɔɔ thuŋ", word_th: "ถ", hint: "bag (HC ฐ thɔɔ thaan)" },
+                    { word_en: "khɔɔ khai", word_th: "ข", hint: "egg (HC)" },
+                    { word_en: "sɔɔ swa", word_th: "ส", hint: "tiger (HC ษ sɔɔ rww-sii, ศ sɔɔ saa-laa)" },
+                    { word_en: "hɔɔ hiip", word_th: "ห", hint: "treasure box (HC)" },
+                    { word_en: "chɔɔ chiŋ", word_th: "ฉ", hint: "cymbal (HC)" },
+                    { word_en: "thɔɔ thaan", word_th: "ฐ", hint: "pedestal (HC uncommon)" },
+                    { word_en: "sɔɔ rww-sii", word_th: "ษ", hint: "hermit (HC uncommon)" },
+                    { word_en: "sɔɔ saa-laa", word_th: "ศ", hint: "pavilion (HC uncommon)" }
+                ],
+                structure:
+                    [
+                        { en: "What is this?", th: "นีอะไร", hint: "nîi à-rai" },
+                        { en: "This is a high class consonant", th: "นีเป็นพยัญชนะสูง", hint: "nîi bpen phá-yan-chá-ná sǔuŋ" }
+                    ]
+            },
+            {
+                "name": "Vowels",
+                "vocabulary": [
+                    { word_en: "", word_th: "-ะ", hint: "a SV" },
+                    { word_en: "", word_th: "-า", hint: "aa LV" },
+                    { word_en: "", word_th: "-ิ", hint: "i SV" },
+                    { word_en: "", word_th: "-ี", hint: "ii LV" },
+                    { word_en: "", word_th: "-ึ", hint: "w SV" },
+                    { word_en: "", word_th: "-ือ", hint: "ww LV" },
+                    { word_en: "", word_th: "-ุ", hint: "u SV" },
+                    { word_en: "", word_th: "-ู", hint: "uu LV" },
+                    { word_en: "", word_th: "เ-", hint: "ee LV" },
+                    { word_en: "", word_th: "เเ-", hint: "εε LV" },
+                    { word_en: "", word_th: "โ-", hint: "oo LV" },
+                    { word_en: "", word_th: "-อ", hint: "ɔɔ LV" },
+                    { word_en: "", word_th: "เ-อ", hint: "əə LV" },
+                    { word_en: "", word_th: "เ-ีย", hint: "ia LV" },
+                    { word_en: "", word_th: "เ-ือ", hint: "wa LV" },
+                    { word_en: "", word_th: "-ัว", hint: "ua LV" },
+                    { word_en: "", word_th: "-ำ", hint: "am LV" },
+                    { word_en: "", word_th: "ไ ใ", hint: "ai LV" },
+                    { word_en: "", word_th: "เ-า", hint: "aw LV" }
+                ],
+                structure:
+                    [
+                        { en: "What is this?", th: "นีอะไร", hint: "nîi à-rai" },
+                        { en: "This is a vowel", th: "นีเป็นสระ", hint: "nîi bpen sà-rà" }
                     ]
             }
         ]
