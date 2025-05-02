@@ -880,22 +880,47 @@ const books = [
                     ]
             },
             {
-                "name": "Vowels",
+                "name": "Practice reading",
                 "vocabulary": [
-                    { en: "a", th: "า", hint: "aa" },
-                    { en: "i", th: "ิ", hint: "i" },
-                    { en: "u", th: "ุ", hint: "u" },
-                    { en: "e", th: "เ", hint: "e" },
-                    { en: "ae", th: "แ", hint: "ae" },
-                    { en: "o", th: "โ", hint: "o" },
-                    { en: "oe", th: "เ-อ", hint: "oe" },
-                    { en: "ai", th: "ใ/ไ", hint: "ai" }
+                    { en: "crow", th: "อีกา", hint: "MC LV MT" },
+                    { en: "crab", th: "ปู", hint: "MC LV MT" },
+                    { en: "young uncle", th: "อา", hint: "MC LV MT" },
+                    { en: "see", th: "ดู", hint: "MC LV MT" },
+                    { en: "year", th: "ปี", hint: "MC LV MT" },
+                    { en: "grown up", th: "โต", hint: "MC LV MT" },
+                    { en: "good", th: "ดี", hint: "MC LV MT" },
+                    { en: "lotus", th: "บัว", hint: "MC LV MT" },
+                    { en: "eye", th: "ตา", hint: "MC LV MT" },
+                    { en: "meet", th: "เจอ", hint: "MC LV MT" },
+                    { en: "remember", th: "จํา", hint: "MC LV MT" },
+                    { en: "go", th: "ไป", hint: "MC LV MT" },
+                    { en: "island", th: "เกาะ", hint: "MC SV LT" },
+                    { en: "sheep", th: "แกะ", hint: "MC SV LT" },
+                    { en: "touch", th: "เตะ", hint: "MC SV LT" },
+                    { en: "year", th: "ปี", hint: "MC SV LT" },
+                    { en: "eye", th: "ตา", hint: "MC SV LT" },
+                    { en: "fierce", th: "ดุ", hint: "MC SV LT" },
+                    { en: "light", th: "เบา", hint: "MC SV LT" },
+                    { en: "remember", th: "จํา", hint: "MC SV LT" },
+                    { en: "lotus", th: "บัว", hint: "MC SV LT" },
+                    { en: "leg", th: "ขา", hint: "HC LV RT" },
+                    { en: "look for", th: "หา", hint: "HC LV RT" },
+                    { en: "ghost", th: "ผี", hint: "HC LV RT" },
+                    { en: "color", th: "สี", hint: "HC LV RT" },
+                    { en: "hold", th: "ถือ", hint: "HC LV RT" },
+                    { en: "ear", th: "หู", hint: "HC LV RT" },
+                    { en: "net", th: "แห", hint: "HC LV RT" },
+                    { en: "jar", th: "โถ", hint: "HC LV RT" },
+                    { en: "broken", th: "เสีย", hint: "HC LV RT" },
+                    { en: "tiger", th: "เสือ", hint: "HC LV RT" },
+                    { en: "clear", th: "ใส", hint: "HC LV RT" },
+                    { en: "louse", th: "เหา", hint: "HC SV LT" },
+                    { en: "decay", th: "ผุ", hint: "HC SV LT" },
+                    { en: "please", th: "ขอ", hint: "HC SV LT" },
+                    { en: "head", th: "หัว", hint: "HC SV LT" }
                 ],
                 structure:
-                    [
-                        { en: "What is this?", th: "นีอะไร", hint: "nîi à-rai" },
-                        { en: "This is a vowel", th: "นีเป็นสระ", hint: "nîi bpen sà-rà" }
-                    ]
+                    []
             }
         ]
     }
