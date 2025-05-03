@@ -1056,8 +1056,8 @@ const books = [
                 "name": "Sickness",
                 "vocabulary": [
                     { en: "hurt", th: "เจ็บ", hint: "jèp" },
-                    { en: "Ache/Sore", th: "ปวด", hint: "bpùat" },
-                    { en: "Ache/Stiff", th: "เมืXอย", hint: "mɯ̂ay" },
+                    { en: "Ache or Sore", th: "ปวด", hint: "bpùat" },
+                    { en: "Ache or Stiff", th: "เมือย", hint: "mɯ̂ay" },
                     { en: "Itchy", th: "คัน", hint: "itchy" },
                     { en: "Have a cold", th: "เป็นหวัด", hint: "bpen wàt" },
                     { en: "Have a fever", th: "เป็นไข้ / มีไข้", hint: "bpen khâi/mii khâi" },
@@ -1085,13 +1085,40 @@ const books = [
                 ],
                 structure:
                     [
-                        { en: "I am sick", th: "ฉันป่วย", hint: "chǎn bpùai" },
+                        { en: "I don't feel well.", th: "", hint: "wan-níi chǎn rúu-sɯk mâi sà-baay" },
+                        { en: "I feel good.", th: "วันนีฉันรู ้สก ึดี", hint: "wan-níi chǎn rúu-sɯk dii!" },
+                        { en: "I have a headache.", th: "ฉันรู ้สก ึปวดหัวมาก", hint: "chǎn rúu-sɯk bpùat - hǔa mâak" },
+                        { en: "I feel tired.", th: "ฉันรู ้สก ึเหนืXอย", hint: "chǎn rúu-sɯk nɯay" },
+                        { en: "I'm aching all over.", th: "ผมเมืXอย(ทัง)ตัว", hint: "phǒm mɯ̂ay tháŋ dtua" },
+                        { en: "I have a stomach ache.", th: "ผมปวดท้อง", hint: "phǒm bpùat-thɔ́ɔŋ" },
+                        { en: "I have a sore throat", th: "ฉันเจ็บคอ", hint: "chǎn jèp khɔɔ" },
+                        { en: "I have a cold", th: "ผมเป็นหวัด", hint: "phǒm bpen wàt" },
                         { en: "I have a fever", th: "ฉันมีไข้", hint: "chǎn mii khâi" },
+                        { en: "I have a cough", th: "ผมไอ", hint: "phǒm ai" },
+                        { en: "I have diarrhea", th: "ผมท้องเสีย", hint: "phǒm thɔ́ɔŋ sǐa" },
+                        { en: "I have food poisoning", th: "ฉันอาหารเป็นพิษ", hint: "chǎn aahǎan bpen-phít" },
+                        { en: "I am dizzy", th: "ฉันเวียนหัว", hint: "chǎn wian-hǔa" },
+                        { en: "I am nauseous", th: "ฉันคลืนไส้", hint: "chǎn khlʉ̂ʉn sâi" },
+                        { en: "I vomited", th: "ฉันอาเจียน", hint: "chǎn aa-jian" },
+                        { en: "I have a runny nose.", th: "ผมมีนํXามูก", hint: "phǒm mii náam-mûuk" },
+                        { en: "I am sick", th: "ฉันป่วย", hint: "chǎn bpùai" },
                         { en: "I have a headache", th: "ฉันปวดหัว", hint: "chǎn bpùat hǔa" },
                         { en: "I have a toothache", th: "ฉันปวดฟัน", hint: "chǎn bpùat fan" },
                         { en: "I have a stomachache", th: "ฉันปวดท้อง", hint: "chǎn bpùat thɔ́ɔŋ" },
                         { en: "I have a backache", th: "ฉันปวดหลัง", hint: "chǎn bpùat lǎŋ" },
-                        { en: "I have an earache", th: "ฉันปวดหู", hint: "chǎn bpùat hǔu" }
+                        { en: "I have an earache", th: "ฉันปวดหู", hint: "chǎn bpùat hǔu" },
+                        { en: "What's wrong?", th: "คุณเป็นอะไรคะคุณดูไม่สบาย", hint: "khun bpen àrai khá, khun duu mâi sà-baay" },
+                        { en: "I have covid.", th: "ผมติดโควิด", hint: "phǒm dtìt Covid" },
+                        { en: "My arm hurts.", th: "ผมเจ็บแขน", hint: "phǒm jèp khɛ̌ ɛn!" },
+                        { en: "I have diarrhea all day.", th: "ผมท้องเสียทังวัน", hint: "phǒm thɔ́ɔŋ-sǐa tháŋ wan!" },
+                        { en: "I have had a cold for many days", th: "ผมเป็นหวัดหลายวันแล้ว", hint: "phǒm bpen-wàt lǎay wan lɛ́ɛw!" },
+                        { en: "I cough and have a sore throat", th: "ผมไอและเจ็บคอมาก", hint: "phǒm ai lɛ́ jèp khɔɔ mâak" },
+                        { en: "What's your symptom ?", th: "คุณเป็นอะไรคะ", hint: "khun bpen à-rai khá" },
+                        { en: "Do you have a sore throat ?", th: "คุณเจ็บคอไหมคะ", hint: "khun jèp khɔɔ mái khá" },
+                        { en: "Do you have a headache ?", th: "คุณปวดหัวไหมคะ", hint: "khun bpùat hǔa mǎi khá" },
+                        { en: "Do you have a fever?", th: "คุณมีไข้ไหมคะ", hint: "kun mii khâi mǎi khá" },
+                        // s3 p 12
+                        { en: "", th: "", hint: "" }
                     ]
             }
         ]
