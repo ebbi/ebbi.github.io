@@ -1136,11 +1136,15 @@ function displayMultipleChoice(wordIndex, vocabulary, currentLanguage) {
 
     answerChoiceIndices.forEach((choiceIndex) => {
         const button = document.createElement('button');
-        if (currentLanguage === 'en-EN') {
+        if (currentLanguage === 'en-EN' && vocabulary[choiceIndex].hint !== "") {
             button.textContent = vocabulary[choiceIndex].th + ` (${vocabulary[choiceIndex].hint})`;
+        } else if (currentLanguage === 'en-EN') {
+            button.textContent = vocabulary[choiceIndex].th;
         }
-        if (currentLanguage === 'th-TH') {
+        if (currentLanguage === 'th-TH' && vocabulary[choiceIndex].hint !== "") {
             button.textContent = vocabulary[choiceIndex].en + ` (${vocabulary[choiceIndex].hint})`;
+        } else if (currentLanguage === 'th-TH') {
+            button.textContent = vocabulary[choiceIndex].en;
         }
 
         button.addEventListener('click', () => {
