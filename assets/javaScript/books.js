@@ -937,7 +937,7 @@ const books = [
                     []
             },
             {
-                "name": "Five tones and four tone markers reading",
+                "name": "Five tones and four tone markers",
                 "vocabulary": [
                     { en: "forest", th: "ป่า", hint: "" },
                     { en: "to tell off", th: "ด่า", hint: "" },
@@ -956,7 +956,6 @@ const books = [
                     { en: "south or under", th: "ใต้", hint: "" },
                     { en: "turtle", th: "เต่า", hint: "" },
                     { en: "nine", th: "เก้า", hint: "" },
-
                     { en: "egg", th: "ไข่", hint: "" },
                     { en: "tiger", th: "เสื ̃อ", hint: "" },
                     { en: "knee", th: "เข่า", hint: "" },
@@ -973,7 +972,6 @@ const books = [
                     { en: "bamboo", th: "ไผ่", hint: "" },
                     { en: "wrap", th: "ห่อ", hint: "" },
                     { en: "ghost", th: "ผี", hint: "" },
-
                     { en: "elder", th: "พี", hint: "" },
                     { en: "father", th: "พ่อ", hint: "" },
                     { en: "mother", th: "แม่", hint: "" },
@@ -994,6 +992,107 @@ const books = [
                 ],
                 structure:
                     []
+            }
+        ]
+    },
+    {
+        title: "Book LS 4",
+        lessons: [
+            {
+                "name": "Body parts",
+                "vocabulary": [
+                    { en: "body", th: "ร่างกาย", hint: "râaŋ-gaai" },
+                    { en: "body", th: "ตัว", hint: "dtua" },
+                    { en: "head", th: "หัว", hint: "hǔa" },
+                    { en: "eye", th: "ตา", hint: "dtaa" },
+                    { en: "nose", th: "จมูก", hint: "jà-mùuk" },
+                    { en: "mouth", th: "ปาก", hint: "bpàak" },
+                    { en: "ear", th: "หู", hint: "hǔu" },
+                    { en: "neck", th: "คอ", hint: "khɔɔ" },
+                    { en: "shoulder", th: "ไหล่", hint: "làj" },
+                    { en: "back", th: "หลัง", hint: "lǎŋ" },
+                    { en: "arm", th: "แขน", hint: "khɛ̌ɛn" },
+                    { en: "hand", th: "มือ", hint: "mʉʉ" },
+                    { en: "legs", th: "ขา", hint: "khǎa" },
+                    { en: "knee", th: "เข่า", hint: "khàaw" },
+                    { en: "Feet", th: "เท้า", hint: "tháaw" },
+                    { en: "stomach", th: "ท้อง", hint: "thɔ́ɔŋ" },
+                    { en: "teeth", th: "ฟัน", hint: "fan" },
+                    { en: "face", th: "หน้า", hint: "nâa" },
+                    { en: "finger", th: "นิ้วมือ", hint: "níw-mʉʉ" },
+                    { en: "chest", th: "อก", hint: "" }
+                ],
+                structure:
+                    [
+                        { en: "What is this?", th: "นีอะไร", hint: "nîi à-rai" },
+                        { en: "This is a body part", th: "นีเป็นอวัยวะ", hint: "nîi bpen à-wai-yá-wá" },
+                        { en: "This is my head", th: "นีหัวของฉัน", hint: "nîi hǔa khɔ̌ŋ chǎn" },
+                        { en: "This is my eye", th: "นีตาของฉัน", hint: "nîi dtaa khɔ̌ŋ chǎn" },
+                        { en: "This is my mouth", th: "นีปากของฉัน", hint: "nîi bpàak khɔ̌ŋ chǎn" },
+                        { en: "This is my nose", th: "นีจมูกของฉัน", hint: "nîi jà-mùuk khɔ̌ŋ chǎn" },
+                        { en: "This is my ear", th: "นีหูของฉัน", hint: "nîi hǔu khɔ̌ŋ chǎn" },
+                        { en: "This is my neck", th: "นีคอของฉัน", hint: "nîi khɔɔ khɔ̌ŋ chǎn" },
+                        { en: "This is my shoulder", th: "นีไหล่ของฉัน", hint: "nîi làj khɔ̌ŋ chǎn" },
+                        { en: "This is my back", th: "นีหลังของฉัน", hint: "nîi lǎŋ khɔ̌ŋ chǎn" },
+                        { en: "This is my arm", th: "นีแขนของฉัน", hint: "nîi khɛ̌ɛn khɔ̌ŋ chǎn" },
+                        { en: "This is my hand", th: "นีมือของฉัน", hint: "nîi mʉʉ khɔ̌ŋ chǎn" },
+                        { en: "This is my leg", th: "นีขาของฉัน", hint: "nîi khǎa khɔ̌ŋ chǎn" },
+                        { en: "This is my knee", th: "นีเข่าของฉัน", hint: "nîi khàaw khɔ̌ŋ chǎn" },
+                        { en: "This is my foot", th: "นีเท้าของฉัน", hint: "nîi tháaw khɔ̌ŋ chǎn" },
+                        { en: "This is my stomach", th: "นีนํyาท้องของฉัน", hint: "nîi nàa-má-thɔ́ɔŋ khɔ̌ŋ chǎn" },
+                        { en: "This is my teeth", th: "นีฟันของฉัน", hint: "nîi fan khɔ̌ŋ chǎn" },
+                        { en: "This is my face", th: "นีน่าของฉัน", hint: "nîi nâa khɔ̌ŋ chǎn" },
+                        { en: "This is not a head", th: "นีXไม่ใช่หว ั", hint: "nîi mâi châi hǔa" },
+                        { en: "This is not a body part", th: "นีXไม่ใช่อวัยวะ", hint: "nîi mâi châi à-wai-yá-wá" },
+                        { en: "This is not a finger", th: "นีXไม่ใช่นิ้วมือ", hint: "nîi mâi châi níw-mʉʉ" },
+                        { en: "This is not a chest", th: "นีXไม่ใช่อก", hint: "nîi mâi châi ɔ̀k" },
+                        { en: "This is not a stomach", th: "นีXไม่ใช่นํyาท้อง", hint: "nîi mâi châi nàa-má-thɔ́ɔŋ" },
+                        { en: "This is not a back", th: "นีXไม่ใช่หลัง", hint: "nîi mâi châi lǎŋ" },
+                        { en: "This is not a leg", th: "นีXไม่ใช่ขา", hint: "nîi mâi châi khǎa" },
+                        { en: "This is not a knee", th: "นีXไม่ใช่เข่า", hint: "nîi mâi châi khàaw" }
+                    ]
+            },
+            {
+                "name": "Sickness",
+                "vocabulary": [
+                    { en: "hurt", th: "เจ็บ", hint: "jèp" },
+                    { en: "Ache/Sore", th: "ปวด", hint: "bpùat" },
+                    { en: "Ache/Stiff", th: "เมืXอย", hint: "mɯ̂ay" },
+                    { en: "Itchy", th: "คัน", hint: "itchy" },
+                    { en: "Have a cold", th: "เป็นหวัด", hint: "bpen wàt" },
+                    { en: "Have a fever", th: "เป็นไข้ / มีไข้", hint: "bpen khâi/mii khâi" },
+                    { en: "To Faint", th: "เป็นลม", hint: "bpen lom" },
+                    { en: "To feel unwel", th: "ไม่สบาย", hint: "mâi sà-baay" },
+                    { en: "Diarrhea", th: "ท้องเสีย", hint: "thɔ́ɔŋ sǐa" },
+                    { en: "Food Poisoning", th: "อาหารเป็นพิษ", hint: "aa-hǎan bpen-phít" },
+                    { en: "To vomit", th: "อาเจียน/อ้วก", hint: "aa-jian/ûak" },
+                    { en: "To cough", th: "ไอ", hint: "ai" },
+                    { en: "To sneeze", th: "จาม", hint: "jaam" },
+                    { en: "To have a runny nose", th: "มีนํามูก", hint: "mii náam-mûuk" },
+                    { en: "Dizzy", th: "เวียนหัว", hint: "wian-hǔa" },
+                    { en: "Insomnia", th: "นอนไม่หลับ", hint: "nɔɔn mâi làp" },
+                    { en: "allergic", th: "แพ้", hint: "phɛ́ɛ" },
+                    { en: "sick", th: "ป่วย", hint: "bpùai" },
+                    { en: "fever", th: "ไข้", hint: "khâi" },
+                    { en: "headache", th: "ปวดหัว", hint: "bpùat hǔa" },
+                    { en: "toothache", th: "ปวดฟัน", hint: "bpùat fan" },
+                    { en: "stomachache", th: "ปวดท้อง", hint: "bpùat thɔ́ɔŋ" },
+                    { en: "backache", th: "ปวดหลัง", hint: "bpùat lǎŋ" },
+                    { en: "earache", th: "ปวดหู", hint: "bpùat hǔu" },
+                    { en: "eye infection", th: "ตาอักเสบ", hint: "" },
+                    { en: "nose infection", th: "จมูกอักเสบ", hint: "" },
+                    { en: "throat infection", th: "คออักเสบ", hint: "" }
+                ],
+                structure:
+                    [
+                        { en: "I am sick", th: "ฉันป่วย", hint: "chǎn bpùai" },
+                        { en: "I have a fever", th: "ฉันมีไข้", hint: "chǎn mii khâi" },
+                        { en: "I have a headache", th: "ฉันปวดหัว", hint: "chǎn bpùat hǔa" },
+                        { en: "I have a toothache", th: "ฉันปวดฟัน", hint: "chǎn bpùat fan" },
+                        { en: "I have a stomachache", th: "ฉันปวดท้อง", hint: "chǎn bpùat thɔ́ɔŋ" },
+                        { en: "I have a backache", th: "ฉันปวดหลัง", hint: "chǎn bpùat lǎŋ" },
+                        { en: "I have an earache", th: "ฉันปวดหู", hint: "chǎn bpùat hǔu" }
+                    ]
             }
         ]
     }
