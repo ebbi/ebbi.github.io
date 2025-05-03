@@ -917,7 +917,80 @@ const books = [
                     { en: "louse", th: "เหา", hint: "HC SV LT" },
                     { en: "decay", th: "ผุ", hint: "HC SV LT" },
                     { en: "please", th: "ขอ", hint: "HC SV LT" },
-                    { en: "head", th: "หัว", hint: "HC SV LT" }
+                    { en: "head", th: "หัว", hint: "HC SV LT" },
+                    { en: "apply", th: "ทา", hint: "LC LV SV" },
+                    { en: "tea", th: "ชา", hint: "LC LV SV" },
+                    { en: "rice field", th: "นา", hint: "LC LV SV" },
+                    { en: "come", th: "มา", hint: "LC LV SV" },
+                    { en: "medicine", th: "ยา", hint: "LC LV SV" },
+                    { en: "have", th: "มี", hint: "LC LV SV" },
+                    { en: "hand", th: "มือ", hint: "LC LV SV" },
+                    { en: "raft", th: "แพ", hint: "LC LV SV" },
+                    { en: "wait", th: "รอ", hint: "LC LV SV" },
+                    { en: "neck", th: "คอ", hint: "LC LV SV" },
+                    { en: "enough", th: "พอ", hint: "LC LV SV" },
+                    { en: "boat", th: "เรือ", hint: "LC LV SV" },
+                    { en: "light or fire", th: "ไฟ", hint: "LC LV SV" },
+                    { en: "drunk", th: "เมา", hint: "LC LV SV" }
+                ],
+                structure:
+                    []
+            },
+            {
+                "name": "Five tones and four tone markers reading",
+                "vocabulary": [
+                    { en: "forest", th: "ป่า", hint: "" },
+                    { en: "to tell off", th: "ด่า", hint: "" },
+                    { en: "how many", th: "กี ̃", hint: "" },
+                    { en: "grandfather", th: "ปู ่", hint: "" },
+                    { en: "but", th: "แต่", hint: "" },
+                    { en: "bored", th: "เบื ̃อ", hint: "" },
+                    { en: "crazy", th: "บ้า", hint: "" },
+                    { en: "aunt", th: "ป้า", hint: "" },
+                    { en: "stubborn or naughty", th: "ดือ", hint: "" },
+                    { en: "older sister", th: "เจ๊", hint: "" },
+                    { en: "ticket", th: "ตัว", hint: "" },
+                    { en: "I see, understand", th: "อ๋อ", hint: "" },
+                    { en: "chicken", th: "ไก่", hint: "" },
+                    { en: "can", th: "ได้", hint: "" },
+                    { en: "south or under", th: "ใต้", hint: "" },
+                    { en: "turtle", th: "เต่า", hint: "" },
+                    { en: "nine", th: "เก้า", hint: "" },
+
+                    { en: "egg", th: "ไข่", hint: "" },
+                    { en: "tiger", th: "เสื ̃อ", hint: "" },
+                    { en: "knee", th: "เข่า", hint: "" },
+                    { en: "enter", th: "เข้า", hint: "" },
+                    { en: "poop", th: "ขี", hint: "" },
+                    { en: "if", th: "ถ้า", hint: "" },
+                    { en: "inject", th: "ฉี", hint: "" },
+                    { en: "color", th: "สี", hint: "" },
+                    { en: "you", th: "สู ้", hint: "" },
+                    { en: "beans", th: "ถัว", hint: "" },
+                    { en: "give", th: "ให้", hint: "" },
+                    { en: "five", th: "ห้า", hint: "" },
+                    { en: "cloth", th: "ผ้า", hint: "" },
+                    { en: "bamboo", th: "ไผ่", hint: "" },
+                    { en: "wrap", th: "ห่อ", hint: "" },
+                    { en: "ghost", th: "ผี", hint: "" },
+
+                    { en: "elder", th: "พี", hint: "" },
+                    { en: "father", th: "พ่อ", hint: "" },
+                    { en: "mother", th: "แม่", hint: "" },
+                    { en: "electricity bill", th: "ค่าไฟ", hint: "" },
+                    { en: "rent", th: "ค่าเช่า", hint: "" },
+                    { en: "foot", th: "เท้า", hint: "" },
+                    { en: "hole", th: "รู ้", hint: "" },
+                    { en: "horse", th: "ม้า", hint: "" },
+                    { en: "aunt", th: "น้า", hint: "" },
+                    { en: "slow", th: "ช้า", hint: "" },
+                    { en: "no", th: "ไม่", hint: "" },
+                    { en: "time", th: "ที", hint: "" },
+                    { en: "electricity", th: "ไฟฟ้า", hint: "" },
+                    { en: "blue", th: "สีฟา ้", hint: "" },
+                    { en: "river", th: "แม่นํา", hint: "" },
+                    { en: "name", th: "ชื", hint: "" },
+                    { en: "pair", th: "คู่", hint: "" }
                 ],
                 structure:
                     []
@@ -1176,6 +1249,7 @@ function displayMultipleChoice(wordIndex, vocabulary, currentLanguage) {
     multipleChoiceDetails.appendChild(multipleChoiceNav);
 
 }
+
 function multipleChoiceFeedback() {
     const multipleChoiceFeedbackContainer = document.getElementById('multipleChoiceFeedbackContainer');
     multipleChoiceFeedbackContainer.innerHTML = ''; // Clear previous content
