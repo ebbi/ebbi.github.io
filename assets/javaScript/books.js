@@ -1445,6 +1445,7 @@ function displaySentenceStructure(sentenceStructure) {
 
         sentenceStructureEN.addEventListener('click', () => {
             textToSpeech(structure.en, 'en-US');
+            textToSpeech(structure.th, 'th-TH');
         });
 
         const sentenceStructureTH = document.createElement('button');
@@ -1454,6 +1455,7 @@ function displaySentenceStructure(sentenceStructure) {
         sentenceStructureTH.addEventListener('click', () => {
             //            playAudioFile(structure.th_audio);
             textToSpeech(structure.th, 'th-TH');
+            textToSpeech(structure.en, 'en-US');
         });
 
         sentenceStructureDetails.appendChild(sentenceStructureItem);
