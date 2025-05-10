@@ -1196,7 +1196,7 @@ function displayBookListLessons(bookList) {
     const bookListContainer = document.getElementById('bookListContainer');
     bookListContainer.innerHTML = ''; // Clear previous content
     const summary = document.createElement('summary');
-    summary.textContent = "Select a lesson to start";
+    summary.textContent = "Select lessons";
     bookListContainer.appendChild(summary);
 
     books.forEach((book) => {
