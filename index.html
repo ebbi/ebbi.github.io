@@ -57,96 +57,203 @@
                     <span>Thai lessons </span>
                 </summary>
 
-                <details id="bookListContainer" open></details>
+                <details id="bookListContainer"></details>
 
-                <div id="multipleChoiceContainer"></div>
+                <details open>
+                    <summary>Help, Setup Sound for Thai and English speech</summary>
+                    <p>
+                        This app uses Text-To-Speech. First try a lesson, you should be able to hear the Thai (and
+                        English) text by selecting any of the text examples.
+                    </p>
+                    <p>
+                        If you cannot hear the sound, please check the following for your device:
+                    </p>
+                    <div id="setupMobileTTS">
+                        <details>
+                            <summary>Mobile phone with Android and Chrome browser</summary>
+                            <p>
+                                To enable text-to-speech on Android, you can use the built-in accessibility features.
+                                Here are the steps to enable text-to-speech on Android devices:
+                            </p>
+                            <div class="text-to-speech-steps">
+                                <ol>
+                                    <li>Go to "Settings" on your Android phone.</li>
+                                    <li>Scroll down and tap on "Accessibility."</li>
+                                    <li>Tap on "Select to Speak" or "TalkBack" (depending on your Android version).</li>
+                                    <li>Turn on the feature and follow the on-screen instructions to set up
+                                        text-to-speech.</li>
+                                    <li>Once enabled, you can select text on your screen, and the device will read it
+                                        aloud.</li>
+                                    <li>To adjust the text-to-speech settings, go back to "Settings," then
+                                        "Accessibility,"
+                                        and tap on "Text-to-Speech output." Here, you can choose the preferred engine,
+                                        language, and speech rate. (install Thai language package)</li>
+                                    <li>To test the text-to-speech functionality, you can use any app that supports
+                                        text-to-speech, such as Google Play Books or Google Translate. Simply select the
+                                        text you want to hear, and tap on the "Speak" option.</li>
+                                </ol>
+                                <p>Chrome Browser</p>
+                                <ol>
+                                    <li>Open the Chrome browser on your Android phone.</li>
+                                    <li>Tap the three-dot menu in the top-right corner and select "Settings."</li>
+                                    <li>Scroll down and tap on "Accessibility."</li>
+                                    <li>Turn on "Simplified view" and "Simplified view to speech" options to enable
+                                        Chrome's text-to-speech feature.</li>
+                                    <li>To test the text-to-speech functionality, you can use any website that supports
+                                        text-to-speech, such as Google Translate. Simply select the text you want to
+                                        hear, and tap on the "Speak" option.</li>
+                                </ol>
+                            </div>
+                        </details>
+                        <details>
+                            <summary>Mobile iPhone and Safari browser</summary>
+                            <p>
+                                To enable text-to-speech on iPhone, you can use the built-in accessibility features.
+                                Here are the steps to enable text-to-speech on iPhone devices:
+                            </p>
+                            <div class="text-to-speech-steps">
+                                <ol>
+                                    <li>Go to "Settings" on your iPhone.</li>
+                                    <li>Scroll down and tap on "Accessibility."</li>
+                                    <li>Tap on "Spoken Content."</li>
+                                    <li>Turn on "Speak Selection" or "Speak Screen" to enable text-to-speech.</li>
+                                    <li>To adjust the text-to-speech settings, go back to "Settings," then
+                                        "Accessibility," and tap on "Spoken Content." Here, you can choose the preferred
+                                        voice, speaking rate, and language. (install Thai language package)</li>
+                                    <li>To test the text-to-speech functionality, you can use any app that supports
+                                        text-to-speech, such as Safari or Notes. Simply select the text you want to
+                                        hear, and tap on the "Speak" option.</li>
+                                </ol>
 
-                <div id="sentenceStructureContainer"></div>
+                            </div>
+                            <p>Safari Browser</p>
+                            <ol>
+                                <li>Open the Safari browser on your iPhone.</li>
+                                <li>Tap the "Aa" icon in the top-left corner of the screen.</li>
+                                <li>Select "Speak Selection" or "Speak Screen" to enable text-to-speech.</li>
+                                <li>To test the text-to-speech functionality, you can use any website that supports
+                                    text-to-speech, such as Google Translate. Simply select the text you want to
+                                    hear, and tap on the "Speak" option.</li>
+                            </ol>
+                        </details>
+                    </div>
 
-                <!-- div id="vocabularyContainer">
-                    <details open>
-                        <summary>Vocabulary listening practice</summary>
-                        <div id="vocabularyEN"></div>
-                        <div id="vocabularyTH"></div>
-                        <nav id="vocabularyNav" class="grid-three-col">
-                            <button id="vocabularyPrevious">&lt; prev</button>
-                            <button id="vocabularyNext">next &gt;</button>
-                        </nav>
-                    </details>
-                </div>
+                    <div id="setupDesktopTTS">
+                        <details>
+                            <summary>Laptop with Chrome browser</summary>
+                            <p>
+                                To enable text-to-speech on a tablet, laptop or desktop, you can use the built-in
+                                accessibility features.
+                                Here are the steps to enable text-to-speech on Windows devices:
+                            </p>
+                            <div class="text-to-speech-steps">
+                                <ol>
+                                    <li>Go to "Settings" on your Windows computer.</li>
+                                    <li>Click on "Ease of Access."</li>
+                                    <li>Click on "Narrator" in the left sidebar.</li>
+                                    <li>Turn on the Narrator toggle switch to enable text-to-speech.</li>
+                                    <li>To adjust the text-to-speech settings, go back to "Settings," then
+                                        "Ease of Access," and click on "Narrator." Here, you can choose the preferred
+                                        voice, speed, and pitch. (install Thai language package)</li>
+                                    <li>To test the text-to-speech functionality, you can use any app that supports
+                                        text-to-speech, such as Microsoft Word or Notepad. Simply select the text you
+                                        want to hear, and press the "Ctrl + Enter" keys.</li>
+                                </ol>
 
-                <div id="sentenceStructureContainerContainer">
-                    <details open>
-                        <summary>Sentence structure listening practice</summary>
-                        <div id="sentenceStructureContainerEN"></div>
-                        <div id="sentenceStructureContainerTH"></div>
-                        <nav id="sentenceStructureContainerNav" class="grid-three-col">
-                            <button id="sentenceStructureContainerPrevious">&lt; prev</button>
-                            <button id="sentenceStructureContainerNext">next &gt;</button>
-                        </nav>
-                    </details>
-                </div-->
+                            </div>
 
-                <details>
-                    <summary>Languages / Phonetic Editor / Sound</summary>
+                        </details>
 
-                    <div>
+                        <details>
+                            <summary>Laptop with Safari browser</summary>
+                            <p>
+                                To enable text-to-speech on a tablet, laptop or desktop, you can use the built-in
+                                accessibility features.
+                                Here are the steps to enable text-to-speech on Mac devices:
+                            </p>
+                            <div class="text-to-speech-steps">
+                                <ol>
+                                    <li>Go to "System Preferences" on your Mac.</li>
+                                    <li>Click on "Accessibility."</li>
+                                    <li>Click on "Speech" in the left sidebar.</li>
+                                    <li>Turn on the "Speak selected text when the key is pressed" option to enable
+                                        text-to-speech.</li>
+                                    <li>To adjust the text-to-speech settings, go back to "System Preferences," then
+                                        "Accessibility," and click on "Speech." Here, you can choose the preferred
+                                        voice,
+                                        speaking rate, and language. (install Thai language package)</li>
+                                    <li>To test the text-to-speech functionality, you can use
+                                        any app that supports text-to-speech, such as TextEdit or Safari. Simply select
+                                        the text you want to hear, and press the "Option + Esc" keys.</li>
+                                </ol>
+                            </div>
+                        </details>
 
-                        <form id="lang">
-                            <label for="txt">Enter text</label>
-                            <input id="txt" type="text" class="txt" />
+                    </div>
+
+                    <div id="textToSpeech">
+                        <details>
+                            <summary>Languages / Phonetic Editor / Sound</summary>
+
                             <div>
-                                <label for="rate">Rate</label><input type="range" min="0.5" max="2" value="1" step="0.1"
-                                    id="rate" />
-                                <div class="rate-value">1</div>
-                                <div class="clearfix"></div>
+
+                                <form id="lang">
+                                    <label for="txt">Enter text</label>
+                                    <input id="txt" type="text" class="txt" />
+                                    <div>
+                                        <label for="rate">Rate</label><input type="range" min="0.5" max="2" value="1"
+                                            step="0.1" id="rate" />
+                                        <div class="rate-value">1</div>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                    <div>
+                                        <label for="pitch">Pitch</label><input type="range" min="0" max="2" value="1"
+                                            step="0.1" id="pitch" />
+                                        <div class="pitch-value">1</div>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                    <select id="SelectLang"></select>
+                                    <div class="controls">
+                                        <button id="play" type="submit">Play</button>
+                                    </div>
+                                </form>
+
                             </div>
+
+
+
+                            <div id="editor">
+                                <p>Click text area for keyboard
+                                    <textarea id="keyboardInput" name="keyboard-input"
+                                        class='keyboard-input'></textarea>
+                                </p>
+                            </div>
+                            <hr>
+
                             <div>
-                                <label for="pitch">Pitch</label><input type="range" min="0" max="2" value="1" step="0.1"
-                                    id="pitch" />
-                                <div class="pitch-value">1</div>
-                                <div class="clearfix"></div>
+                                <p class="font-size-medium">
+                                    Paste Thai text and click Get link
+                                    <br>
+                                    <!-- placeholder =  Enter a Thai word to speak aloud  -->
+                                    <input type="text" id="thWord" name="thWord" placeholder="Get &amp; Play link" />
+                                    <button id="thSpeak">Get link</button>
+
+                                    <br>
+                                    <a id="soundLink" target="_blank" class="font-size-medium"
+                                        href="https://translate.google.com/translate_tts?ie=UTF-8&client=tw-ob&tl=th&q=ใส่คำภาษาไทยเพื่อพูดออกเสียง">
+                                        Click here for new browser and click return in new browser address window to
+                                        Play the
+                                        Link
+                                    </a>
+                                </p>
                             </div>
-                            <select id="SelectLang"></select>
-                            <div class="controls">
-                                <button id="play" type="submit">Play</button>
-                            </div>
-                        </form>
+
+                        </details>
 
                     </div>
-
-
-
-                    <div id="editor">
-                        <p>Click text area for keyboard
-                            <textarea id="keyboardInput" name="keyboard-input" class='keyboard-input'></textarea>
-                        </p>
-                    </div>
-                    <hr>
-
-                    <div>
-                        <p class="font-size-medium">
-                            Paste Thai text and click Get link
-                            <br>
-                            <!-- placeholder =  Enter a Thai word to speak aloud  -->
-                            <input type="text" id="thWord" name="thWord" placeholder="Get &amp; Play link" />
-                            <button id="thSpeak">Get link</button>
-
-                            <br>
-                            <a id="soundLink" target="_blank" class="font-size-medium"
-                                href="https://translate.google.com/translate_tts?ie=UTF-8&client=tw-ob&tl=th&q=ใส่คำภาษาไทยเพื่อพูดออกเสียง">
-                                Click here for new browser and click return in new browser address window to Play the
-                                Link
-                            </a>
-                        </p>
-                    </div>
-
                 </details>
-
             </details>
-
         </div>
-
         <div class="nav-separator">
             <nav dir="rtl" lang="fa">
                 <details>
@@ -207,7 +314,8 @@
                     </div>
 
                     <div class="notice text-alignment-center">
-                        <a class="header" target="_blank" href="/en/assets/bitcoin-paper-en.pdf">Bitcoin: A Peer-to-Peer
+                        <a class="header" target="_blank" href="/en/assets/bitcoin-paper-en.pdf">Bitcoin: A
+                            Peer-to-Peer
                             Electronic
                             Cash
                             System - Satoshi Nakamoto</a>
