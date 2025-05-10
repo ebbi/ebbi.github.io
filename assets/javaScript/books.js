@@ -1495,7 +1495,7 @@ function displaySentenceStructure(sentenceStructure) {
         const sentenceStructureItem = document.createElement('div');
         sentenceStructureItem.classList = 'sentenceStructureItem';
 
-        const sentenceStructureEN = document.createElement('span');
+        const sentenceStructureEN = document.createElement('button');
         sentenceStructureEN.textContent = structure.en;
         sentenceStructureEN.style.cursor = 'pointer';
         sentenceStructureItem.appendChild(sentenceStructureEN);
