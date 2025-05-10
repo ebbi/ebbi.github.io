@@ -1498,6 +1498,7 @@ function displaySentenceStructure(sentenceStructure) {
         const sentenceStructureEN = document.createElement('button');
         sentenceStructureEN.textContent = structure.en;
         sentenceStructureEN.style.cursor = 'pointer';
+        sentenceStructureEN.style.textAlign = 'left';
         sentenceStructureItem.appendChild(sentenceStructureEN);
 
         sentenceStructureEN.addEventListener('click', () => {
@@ -1507,6 +1508,8 @@ function displaySentenceStructure(sentenceStructure) {
 
         const sentenceStructureTH = document.createElement('button');
         sentenceStructureTH.textContent = structure.th;
+        sentenceStructureTH.style.cursor = 'pointer';
+        sentenceStructureTH.style.textAlign = 'left';
         sentenceStructureItem.appendChild(sentenceStructureTH);
 
         sentenceStructureTH.addEventListener('click', () => {
