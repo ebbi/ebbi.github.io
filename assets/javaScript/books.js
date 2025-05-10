@@ -1200,29 +1200,29 @@ function displayBookListLessons(bookList) {
     bookListContainer.appendChild(summary);
 
     books.forEach((book) => {
-        const bookItem = document.createElement('details');
-        bookItem.classList.add('bookItem');
-        //        bookItem.open = true; // Set to true if you want the book details to be open by default
+        const bookItemDetails = document.createElement('details');
+        bookItemDetails.classList.add('bookItem');
         const summary = document.createElement('summary');
         summary.textContent = book.title + ' Lessons';
-        bookItem.appendChild(summary);
+        bookItemDetails.appendChild(summary);
 
-        const lessonsList = document.createElement('ul');
         book.lessons.forEach((lesson) => {
-            const lessonItem = document.createElement('li');
-            lessonItem.textContent = lesson.name;
-            lessonItem.style.cursor = 'pointer';
-            lessonItem.addEventListener('click', () => {
+
+            const lessonButton = document.createElement('button');
+            lessonButton.classList.add('lessonButton');
+            lessonButton.textContent = lesson.name;
+            lessonButton.addEventListener('click', () => {
                 currentLesson = lesson;
                 displayMultipleChoice(0, currentLesson.vocabulary, currentLanguage);
                 displaySentenceStructure(lesson.structure);
+
+                bookListContainer.removeAttribute('open');
             });
 
-            lessonsList.appendChild(lessonItem);
+            bookItemDetails.appendChild(lessonButton);
         });
-        bookItem.appendChild(lessonsList);
 
-        bookListContainer.appendChild(bookItem);
+        bookListContainer.appendChild(bookItemDetails);
     });
 }
 
@@ -1512,7 +1512,7 @@ function displaySentenceStructure(sentenceStructure) {
         sentenceStructureTH.addEventListener('click', () => {
             //            playAudioFile(structure.th_audio);
             textToSpeech(structure.th, 'th-TH');
-            textToSpeech(structure.en, 'en-US');
+            //            textToSpeech(structure.en, 'en-US');
         });
 
         sentenceStructureDetails.appendChild(sentenceStructureItem);
