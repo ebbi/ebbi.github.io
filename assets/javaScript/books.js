@@ -13,10 +13,10 @@ const books = [
                     { "en": "sleep", "th": "นอน", "hint": "nɔɔn" },
                     { "en": "banana", "th": "กล้วย", "hint": "gluay" },
                     { "en": "family", "th": "ครอบครัว", "hint": "khroop-khrua" },
-                    { "en": "dog", "th": "หมา", "hint": "H̄mā" },
-                    { "en": "lonely", "th": "เหงา", "hint": "H̄engā" },
+                    { "en": "dog", "th": "หมา", "hint": "māa" },
+                    { "en": "lonely", "th": "เหงา", "hint": "naaw" },
                     { "en": "book", "th": "หนังสือ", "hint": "nǎŋ-sɯ̌ɯ" },
-                    { "en": "woman", "th": "ผู้หญิง", "hint": "P̄hū̂ ỵing" },
+                    { "en": "woman", "th": "ผู้หญิง", "hint": "P̄hū̂-ỵing" },
                     { "en": "hot", "th": "ร้อน", "hint": "rɔ́ɔn" },
                     { "en": "horse", "th": "ม้า", "hint": "M̂ā" },
                     { "en": "friend", "th": "เพื่อน", "hint": "phɯ̂an" },
@@ -1458,7 +1458,7 @@ function displayMultipleChoice(wordIndex, vocabulary, currentLanguage) {
             if (choiceIndex === wordIndex) {
                 numberOfCorrectMultipleChoiceAnswer++;
                 button.classList = 'correctAnswerContainer';
-                incorrectMultipleChoiceAnswerVocabulary.filter((item) => item === vocabulary[choiceIndex]);
+                //                incorrectMultipleChoiceAnswerVocabulary.filter((item) => item === vocabulary[choiceIndex]);
             } else {
                 numberOfIncorrectMultipleChoiceAnswer++;
                 button.classList = 'incorrectAnswerContainer';
