@@ -1238,13 +1238,6 @@ const books = [
                         { "en": "California state is (located) in the western region.", "th": "รัฐแคลิฟอร์เนียอยูภาคตะวันตกครับ", "hint": "rát khɛɛ-lí-fɔɔ-nia yùu phâak dta-wan dtòk khráp" },
                         { "en": "What region is Shanghai (located) in ?", "th": "เมืองเซียงไฮ้อยูภาคอะไรคะ", "hint": "mɯaŋ sîaŋ-hái yùu phâak à-rai khá" },
                         { "en": "Shanghai is (located) in eastern region.", "th": "เมืองเซียงไฮ้อยูภาคตะวันออกครับ", "hint": "mɯaŋ sîaŋ-hái yùu phâak dtà-wan ɔ̀ɔk khráp" },
-                        { "en": "Northern Thailand has the northern provinces adjacent to Burma.", "th": "ภาคเหนือของประเทศไทยมีจังหวัดภาคเหนือติดกับประเทศพม่า", "hint": "" },
-                        { "en": "There are many mountains and trees here, but there is no sea.", "th": "ที่นี่มีภูเขาและต้นไม้มากมายแต่ไม่มีทะเล", "hint": "" },
-                        { "en": "The weather is colder than other regions.", "th": "อากาศจะหนาวเย็นกว่าภาคอื่นๆ", "hint": "" },
-                        { "en": "People in the North speak the northern dialect and Thai.", "th": "คนภาคเหนือพูดภาษาเหนือและภาษาไทย", "hint": "" },
-                        { "en": "Northern food is not spicy and has a lot of vegetables.", "th": "อาหารเหนือไม่เผ็ดและมีผักเยอะ", "hint": "" },
-                        { "en": "In winter, the weather in the North is very cold, but there is no snow.", "th": "ในฤดูหนาวอากาศทางภาคเหนือหนาวมากแต่ไม่มีหิมะ", "hint": "" },
-                        { "en": "During this time, there are many tourists and most of them travel on the mountains.", "th": "ในช่วงนี้มีนักท่องเที่ยวจำนวนมาก โดยส่วนใหญ่จะเดินทางบนภูเขา", "hint": "" },
                         // long para
                         { "en": "Northern Thailand has the northern provinces adjacent to Burma.", "th": "ภาคเหนือของประเทศไทยมีจังหวัดภาคเหนือติดกับประเทศพม่า", "hint": "" },
                         { "en": "There are many mountains and trees here, but there is no sea.", "th": "ที่นี่มีภูเขาและต้นไม้มากมายแต่ไม่มีทะเล", "hint": "" },
