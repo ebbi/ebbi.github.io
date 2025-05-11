@@ -1177,6 +1177,91 @@ const books = [
                         { "en": "Do you have a headache ?", "th": "คุณปวดหัวไหมคะ", "hint": "khun bpùat hǔa mǎi khá" },
                         { "en": "Do you have a fever?", "th": "คุณมีไข้ไหมคะ", "hint": "kun mii khâi mǎi khá" }
                     ]
+            },
+            {
+                "name": "Travel and tourism",
+                "vocabulary": [
+                    { "en": "To travel/take a trip", "th": "ไปเทีXยว", "hint": "bpai-thîaw " },
+                    { "en": "To visit/ go to see", "th": "ไปหา", "hint": "bpai-hǎa" },
+                    { "en": "To take (time)", "th": "ใช้เวลา", "hint": "chái wee-laa" },
+                    { "en": "Long (Time)", "th": "นาน", "hint": "naan" },
+                    { "en": "Tourist Attraction", "th": "สถานทีXทอ ่งเทีXยว", "hint": "sà-thǎan-thîi thɔ̂ɔŋ-thîaw" },
+                    { "en": "Accommodation", "th": "ทีXพก ั", "hint": "thîi-phák" },
+                    { "en": "Day off/Holiday", "th": "วันหยุด", "hint": "wan-yùt" },
+                    { "en": "Country", "th": "ประเทศ", "hint": "bprà-thêet" },
+                    { "en": "Foreign country", "th": "ต่างประเทศ", "hint": "dtàaŋ bprà-thêet" },
+                    { "en": "Province", "th": "จังหวัด", "hint": "jan-wàt" },
+                    { "en": "Provincial town", "th": "ต่างจังหวัด", "hint": "dtàaŋ jang-wàt!" },
+                    { "en": "tourist", "th": "นักท่องเที่ยว", "hint": "nák thɔ̂ŋ-thîaw" },
+                    { "en": "Interesting", "th": "น่าสนใจ", "hint": "nâa-sǒn-jai" },
+                    { "en": "Weather/Air", "th": "อากาศ", "hint": "aa-gàat" },
+                    { "en": "Same", "th": "เหมือน", "hint": "mɯ̌ɯn" },
+                    { "en": "Northern region", "th": "ภาคเหนือ", "hint": "phâak nɯ̌a" },
+                    { "en": "Central region", "th": "ภาคกลาง", "hint": "phâak glaaŋ" },
+                    { "en": "North-eastern region", "th": "ภาคอีสาน", "hint": "phâak ii-sǎan" },
+                    { "en": "Southern region", "th": "ภาคใต้", "hint": "phâak dtâai" },
+                    { "en": "Eastern region", "th": "ภาคตะวันออก", "hint": "phâak dtà-wan ɔ̀ɔk" },
+                    { "en": "Western region", "th": "ภาคตะวันตก", "hint": "phâak dtà-wan dtòk" },
+                    { "en": "Staff", "th": "พนักงาน", "hint": "phá-nák-ngaan" },
+                    { "en": "Excited", "th": "ตืXนเต้น", "hint": "dtɯɯn-dtên" },
+                    { "en": "The most", "th": "ทีXสด", "hint": "thîi-sùt" },
+                    { "en": "Traffic jam", "th": "รถติด", "hint": "rót-dtìt" },
+                    { "en": "Capital city", "th": "เมืองหลวง", "hint": "mɯaŋ-lǔaŋ" },
+                    { "en": "travel", "th": "เดินทาง", "hint": "dəən-thaŋ" },
+                    { "en": "tourism", "th": "การท่องเที่ยว", "hint": "kaan thɔ̂ŋ-thîaw" }
+                ],
+                "structure":
+                    [
+                        { "en": "Where will you go (travelling) this holiday?", "th": "วันหยุดนี{คุณจะไปเทีXยวทีXไหน", "hint": "Wan-yùt níi khun jà bpai thîaw thîi-nǎi" },
+                        { "en": "I will go to the sea(beach) with my family.", "th": "ผมจะไปเทีXยวทะเลกับครอบครัวครับ", "hint": "phǒm jà bpai-tîaw thá-lee gàp khrɔ̂ɔp-khrua khráp" },
+                        { "en": "Where are you going (to travel) this weekend?", "th": "วันเสาร์อาทิตย์นีคุณจะไปเทีXยวทีXไหนครับ", "hint": "wan-sǎaw aa-thít níi khun jà bpai-thîaw thîi-nǎi khráp" },
+                        { "en": "I will go to Suthep Mountain with my friend because the weather is good this month.", "th": "ฉันจะไปเทีXยวดอยสุเทพกับเพืXอนค่ะเพราะเดือนนีอากาศดี", "hint": "chǎn jà bpai-thîaw dɔɔi sù-thêep gàp phɯ̂an khâ phrɔ́ dɯan níi aa-gàat dii" },
+                        { "en": "Where will you go (traveling) next month ?", "th": "เดือนหน้าคุณจะไปเทีXยวทีXไหนครับ", "hint": "dɯan nâa khun jà bpai-thîaw thîi-nǎi khráp" },
+                        { "en": "I will go hiking with my husband. And now there are not much tourist.", "th": "ฉันจะไปเดินป่ากับสามีคะตอนนีนักท่องเทีXยวน้อย", "hint": "chǎn jà bpai dəən bpàa gàp sǎa-mii khâ dtɔɔn-níi nák- thɔ̂ɔŋ - thîaw nɔ́ɔy" },
+                        { "en": "What country do you want to visit the most ?", "th": "คุณอยากไปเทีXยวประเทศอะไรมากทีXสดคะ", "hint": "khun yàak bpai-thîaw bprà-thêet à-rai mâak thîi-sùt khá" },
+                        { "en": "I want to visit Japan the most.", "th": "ผมอยากไปเทีXยวประเทศญีXปนมากทีXสดครับ", "hint": "phǒm yàak bpai-thîaw bprà-thêet yîi-bpùn mâak thîi-sùt khráp!" },
+                        { "en": "Why?", "th": "ทําไมคะ", "hint": "tham-mai khá" },
+                        { "en": "Because the weather is not hot and the food is delicious", "th": "เพราะอากาศไม่ร้อนและอาหารอร่อยค่ะ", "hint": "phrɔ́ aa-gàat mâi rɔ́ɔn lɛ́ aa-hǎan à-rɔ̀ɔy khâ" },
+                        { "en": "What province do you want to visit the most? why?", "th": "คุณอยากไปเทีXยวจังหวัดอะไรมากทีXสดทําไมคะ", "hint": "khun yàak bpai-thîaw jaŋ-wàt à-rai mâak thîi-sùt tham-mai khá" },
+                        { "en": "I want to visit Phuket the most.because I have never been there.", "th": "ฉันอยากไปเทีXยวจังหวัดภูเก็ตมากทีXสดค่ะเพราะฉันยังไม่เคยไปทีXนนค่ะ", "hint": "chǎn yàak bpai-thîaw jaŋ-wàt puu-gèt mâak thîi-sùt khâ phrɔ́ chǎn yaŋ mâi kəəy bpai thîi-nân khâ!" },
+                        { "en": "Have you ever been to Bangkok?", "th": "คุณเคยไปกรุงเทพฯไหม", "hint": "Khun khəəy bpai grung-thêep mǎi" },
+                        { "en": "Have you ever been to Australia?", "th": "คุณเคยไป(ประเทศ)ออสเตรเลียไหม", "hint": "khun khəəy bpai bprà-thêet ɔ̀ɔt-dtree-lia mǎi" },
+                        { "en": "Have you ever seen an elephant?", "th": "คุณเคยเห็นช้างไหม", "hint": "khun kəəy hěn cháang mǎi" },
+                        { "en": "What countries have you been to?", "th": "คุณเคยไปประเทศอะไรบ้าง", "hint": "khun khəəy bpai bprà-thêet à-rai bâaŋ" },
+                        { "en": "I have been to Japan, France, and Italy.", "th": "ผมเคยไปประเทศญีXปนฝรัXงเศสและอิตาลี", "hint": "phǒm khəəy bpai bprà-thêet yîi-bpùn fà-ràng-sèet lɛ́ ì-dtaa-lîi" },
+                        { "en": "What provinces have you been to?", "th": "คุณเคยไปจังหวัดอะไรบ้าง", "hint": "khun khəəy bpai jaŋ-wàt à-rai bâaŋ" },
+                        { "en": "I have been to Chiang Rai , Lampang , and Nan.", "th": "ผมเคยไปจังหวัดเชียงรายลําปางและน่าน", "hint": "phǒm khəəy bpai jaŋ-wàt chiaŋ-raai lam-bpaaŋ lɛ́ nâan" },
+                        { "en": "I have been to many countries.", "th": "ผมเคยไปหลายประเทศ", "hint": "phǒm khəəy bpai lǎay bprà-thêet" },
+                        { "en": "What region is Bangkok (located) in?", "th": "กรุงเทพฯอยูภาคอะไรคะ", "hint": "gruŋ-thêep yùu phâak à-rai khá" },
+                        { "en": "Bangkok is (located) in the central region.", "th": "กรุงเทพฯอยูภาคกลางครับ", "hint": "gruŋ-thêep yùu phâak glaaŋ khráp" },
+                        { "en": "What region is the state of California (located) in?", "th": "รัฐแคลิฟอร์เนียอยูภาคอะไรคะ", "hint": "rát khɛɛ-lí-fɔɔ-nia yùu phâak à-rai khá" },
+                        { "en": "California state is (located) in the western region.", "th": "รัฐแคลิฟอร์เนียอยูภาคตะวันตกครับ", "hint": "rát khɛɛ-lí-fɔɔ-nia yùu phâak dta-wan dtòk khráp" },
+                        { "en": "What region is Shanghai (located) in ?", "th": "เมืองเซีXยงไฮ้อยูภาคอะไรคะ", "hint": "mɯaŋ sîaŋ-hái yùu phâak à-rai khá" },
+                        { "en": "Shanghai is (located) in eastern region.", "th": "เมืองเซีXยงไฮ้อยูภาคตะวันออกครับ", "hint": "mɯaŋ sîaŋ-hái yùu phâak dtà-wan ɔ̀ɔk khráp" },
+                        {
+                            "en": "Northern Thailand has the northern provinces adjacent to Burma. There are many mountains and trees here, but there is no sea. The weather is colder than other regions. People in the North speak the northern dialect and Thai. Northern food is not spicy and has a lot of vegetables. In winter, the weather in the North is very cold, but there is no snow. During this time, there are many tourists and most of them travel on the mountains.",
+                            "th": "ภาคเหนือของประเทศไทยมีจังหวัดภาคเหนืออยูต ่ด ิกับประเทศพม่าทีXนีมีภเขาเยอะมีต้นไม้เยอะแต่ไม่มีทะเลอากาศหนาวกว่าภาคอืนคนภาคเหนือพูดภาษาเหนือและภาษาไทยอาหารภาคเหนือไม่ เผ็ดและใส่ผก ัเยอะฤดูหนาวภาคเหนืออากาศหนาวมากแต่ไม่มีหิมะช่วงนีมีนกท่องเทียวเยอะและส่วนใหญ่จะเทียวบนดอย",
+                            "hint": "phâak-nɯ̌ɯ khɔ̌ɔŋ bprà-thêet thai mii 8 jaŋ-wàt phâak-nɯ̌ɯ yùu dtìt-gàp bprà-thêet phá-mâa thîi-nîi mii phuu-khǎw yə́ mii dtôn-mái yə́ dtɛ̀ɛ mâi mii thá-lee aa-gàat nǎaw gwàa phâak ɯɯn khon phâak-nɯ̌ɯ phûut phaa-sǎa nɯ̌ɯ lɛ́ phaa-sǎa thai aa-hǎan phâak-nɯ̌ɯ mâi phèt lɛ́ sài phàk yə́ nai rɯ-duu nǎaw phâak-nɯ̌ɯ aa-gàat nǎaw mâak dtɛ̀ɛ mâi mii hì-má chûang-níi mii nák-thɔ̂ɔng-thîaw yə́ lɛ́ sùan-yài jà thîaw bon dɔɔy"
+                        },
+                        {
+                            "en": "Southern Thailand is adjacent to Malaysia. There are beautiful seas and many islands. Interestingly, the South has more rain than other regions. The islands are very beautiful, which attracts many foreign tourists. People there speak southern dialect. Southern dialect is spoken quickly and is difficult to listen to, but if you go there, you will really like it.",
+                            "th": "ภาคใต้ของประเทศไทยอยูต ่ ิดกับประเทศมาเลเซียทีนน ัมีทะเลสวยมีเกาะเยอะและน่าสนใจภาคใต้มีฝนตกมากกว่าภาคอืนๆเกาะทีนน ัสวยมากทําให้นก ั ท่องเทียวต่างชาติไเทียวทีน น ัเยอะคนทีนน ัพูดภาษาใต้ ภาษาใต้ พด ูเร็วและฟั งยากแต่ถ้าคุณไปเทียวทีนน ัคุณจะชอบมากๆ",
+                            "hint": ""
+                        },
+                        {
+                            "en": "The Isan region is located in the northeast of Thailand and borders Laos. The Mekong River is in the middle. Isan people are very kind and lovely. Isan food is very delicious. Most of it is spicy and salty. The famous food is sticky rice and papaya salad. The Isan language is similar to the northern language but faster.",
+                            "th": "ภาคอีสานอยูท ่างทิศตะวันออกเฉียงเหนือของประเทศไทยและติดกับประเทศลาวมีแม่นําโขงอยูต ่รงกลางคนอีสานใจดีและน่ารักมากอาหารภาคอีสานอร่อยมากส่วนใหญ่มีรสเผ็ดและรสเค็มอาหารทีXมีชืXอเสียงคือข้าวเหนียวกับส้มตําภาษาอีสานคล้ายกับภาษาเหนือแต่เร็วกว่า",
+                            "hint": ""
+                        },
+                        {
+                            "en": "The central region of Thailand has Bangkok as the capital. There is a large river, the Chao Phraya River. The weather is hot. The central region has many interesting things. There are many tourists and many people, but it is convenient to travel. Sometimes, there are too many traffic jams. Most central Thai food has coconut milk. It is very delicious. If you have free time, you should go to the central region.",
+                            "th": "ภาคกลางของประเทศไทยมีจง ัหวัดกรุงเทพเป็นเมืองหลวงทีนนมีแม่นําใหญ่คือแม่นําเจ้าพระยาทีนนอากาศร้อนภาคกลางมีหลายอย่างทีนาสนใจมีนกท่องเทียวเยอะมีคนเยอะแต่สะดวกเวลาเดินทางแต่บางครังรถติดเกินไปอาหารภาคกลางส่วนมากใส่กะทิมน ั อร่อยมากถ้าคุณว่างคุณควรไปเทียวภาคกลาง",
+                            "hint": ""
+                        },
+                        { "en": "Where are you going?", "th": "คุณจะไปไหน", "hint": "khun jà bpai nǎi" },
+                        { "en": "I am going to the beach.", "th": "ผมจะไปทะเล", "hint": "phǒm jà bpai thá-lee" },
+                        { "en": "I am going to the beach for 2 days.", "th": "ผมจะไปทะเล 2 วัน", "hint": "phǒm jà bpai thá-lee sɔ̌ɔŋ wan" }
+                    ]
             }
         ]
     }
