@@ -842,15 +842,15 @@ const books = [
             {
                 "name": "Middle class consonants",
                 "vocabulary": [
-                    { "en": "gɔɔ gai", "th": "ก", "hint": "chicken (MC)" },
-                    { "en": "jɔɔ jaan", "th": "จ", "hint": "plate (MC)" },
-                    { "en": "dɔɔ dek", "th": "ด", "hint": "child (MC ฎ dɔɔ cha-daa )" },
-                    { "en": "dtɔɔ dtaw", "th": "ต", "hint": "turtle (MC ฏ dtɔɔ bpa-dtak)" },
-                    { "en": "bɔɔ bai-maay", "th": "บ", "hint": "leaf (MC)" },
-                    { "en": "bpɔɔ bplaa", "th": "ป", "hint": "fish (MC)" },
-                    { "en": "ɔɔ aaŋ", "th": "อ", "hint": "basin (MC)" },
-                    { "en": "dɔɔ cha-daa", "th": "ฎ", "hint": "head dress (MC uncommon)" },
-                    { "en": "dtɔɔ bpa-dtak", "th": "ฏ", "hint": "lance (MC uncommon)" }
+                    { "en": "chicken", "th": "ก", "hint": "gɔɔ gai (MC)" },
+                    { "en": "plate", "th": "จ", "hint": "jɔɔ jaan (MC)" },
+                    { "en": "child", "th": "ด", "hint": "dɔɔ dek (MC ฎ dɔɔ cha-daa )" },
+                    { "en": "turtle", "th": "ต", "hint": "dtɔɔ dtaw (MC ฏ dtɔɔ bpa-dtak)" },
+                    { "en": "leaf", "th": "บ", "hint": "bɔɔ bai-maay (MC)" },
+                    { "en": "fish", "th": "ป", "hint": "bpɔɔ bplaa (MC)" },
+                    { "en": "basin", "th": "อ", "hint": "ɔɔ aaŋ (MC)" },
+                    { "en": "head dress", "th": "ฎ", "hint": "dɔɔ cha-daa (MC uncommon)" },
+                    { "en": "lance", "th": "ฏ", "hint": "dtɔɔ bpa-dtak (MC uncommon)" }
                 ],
                 "structure":
                     [
@@ -861,16 +861,16 @@ const books = [
             {
                 "name": "High class consonants",
                 "vocabulary": [
-                    { "en": "phɔɔ phwwŋ", "th": "ผ", "hint": "bee (HC)" },
-                    { "en": "fɔɔ faa", "th": "ฝ", "hint": "lid (HC)" },
-                    { "en": "thɔɔ thuŋ", "th": "ถ", "hint": "bag (HC ฐ thɔɔ thaan)" },
-                    { "en": "khɔɔ khai", "th": "ข", "hint": "egg (HC)" },
-                    { "en": "sɔɔ swa", "th": "ส", "hint": "tiger (HC ษ sɔɔ rww-sii, ศ sɔɔ saa-laa)" },
-                    { "en": "hɔɔ hiip", "th": "ห", "hint": "treasure box (HC)" },
-                    { "en": "chɔɔ chiŋ", "th": "ฉ", "hint": "cymbal (HC)" },
-                    { "en": "thɔɔ thaan", "th": "ฐ", "hint": "pedestal (HC uncommon)" },
-                    { "en": "sɔɔ rww-sii", "th": "ษ", "hint": "hermit (HC uncommon)" },
-                    { "en": "sɔɔ saa-laa", "th": "ศ", "hint": "pavilion (HC uncommon)" }
+                    { "en": "bee", "th": "ผ", "hint": "phɔɔ phwwŋ (HC)" },
+                    { "en": "lid", "th": "ฝ", "hint": "fɔɔ faa (HC)" },
+                    { "en": "bag", "th": "ถ", "hint": "thɔɔ thuŋ (HC ฐ thɔɔ thaan)" },
+                    { "en": "egg", "th": "ข", "hint": "khɔɔ khai (HC)" },
+                    { "en": "tiger", "th": "ส", "hint": "sɔɔ swa (HC ษ sɔɔ rww-sii, ศ sɔɔ saa-laa)" },
+                    { "en": "treasure", "th": "ห", "hint": "hɔɔ hiip box (HC)" },
+                    { "en": "cymbal", "th": "ฉ", "hint": "chɔɔ chiŋ (HC)" },
+                    { "en": "pedestal", "th": "ฐ", "hint": "thɔɔ thaan (HC uncommon)" },
+                    { "en": "hermit", "th": "ษ", "hint": "sɔɔ rww-sii (HC uncommon)" },
+                    { "en": "pavilion", "th": "ศ", "hint": "sɔɔ saa-laa (HC uncommon)" }
                 ],
                 "structure":
                     [
@@ -949,7 +949,7 @@ const books = [
                     { "en": "stubborn or naughty", "th": "ดือ", "hint": "" },
                     { "en": "older sister", "th": "เจ๊", "hint": "" },
                     { "en": "ticket", "th": "ตัว", "hint": "" },
-                    { "en": "I see, understand", "th": "อ๋อ", "hint": "" },
+                    { "en": "I see or understand", "th": "อ๋อ", "hint": "" },
                     { "en": "chicken", "th": "ไก่", "hint": "" },
                     { "en": "can", "th": "ได้", "hint": "" },
                     { "en": "south or under", "th": "ใต้", "hint": "" },
