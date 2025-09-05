@@ -119,10 +119,10 @@ const books = [
                 ],
                 "structure": [
                     { "en": "How many?", "th": "กี่" },
-                    { "en": "I have two dogs.", "th": "ฉันมีหมา 2 ตัว" },
-                    { "en": "I have three bananas.", "th": "ฉันมีกล้วย 3 ลูก" },
-                    { "en": "I have four books.", "th": "ฉันมีหนังสือ 4 เล่ม" },
-                    { "en": "I have five friends.", "th": "ฉันมีเพื่อน 5 คน" }
+                    { "en": "I have two dogs.", "th": "ฉัน มีหมา 2 ตัว" },
+                    { "en": "I have three bananas.", "th": "ฉัน มี กล้วย 3 ลูก" },
+                    { "en": "I have four books.", "th": "ฉัน มี หนังสือ 4 เล่ม" },
+                    { "en": "I have five friends.", "th": "ฉัน มี เพื่อน 5 คน" }
                 ]
             },
             {
@@ -186,7 +186,7 @@ const books = [
                     { "en": "the most", "th": "มากทีสดุ", "hint": "mâak thîi-sùt" }
                 ],
                 "structure": [
-                    { "en": 'I am going to the market.', "th": 'ฉันกำลังจะไปตลาด' }
+                    { "en": 'I am going to the market.', "th": 'ฉัน กำลัง จะ ไป ตลาด' }
                 ]
             },
             {
