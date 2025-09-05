@@ -1636,20 +1636,17 @@ function displaySentenceStructure(sentenceStructure) {
         sentenceStructureTH.style.textAlign = 'left';
         //    sentenceStructureItem.appendChild(sentenceStructureTH);
 
+        let obj = JSON.parse(`{"text": "${structure.th}"}`);
+        // Split into words
+        let words = obj.text.split(" ");
+
         /* display the Thai text without spaces between words */
         // Create HTML element dynamically
         let outputSpan = document.createElement("span");
         outputSpan.id = "output";
-        sentenceStructureTH.appendChild(outputSpan);
-
-        let obj = JSON.parse(`{"text": "${structure.th}"}`);
-
-        // Split into words
-        let words = obj.text.split(" ");
-
         // Display string without spaces initially
         outputSpan.textContent = words.join("");
-
+        sentenceStructureTH.appendChild(outputSpan);
         sentenceStructureItem.appendChild(sentenceStructureTH);
 
         sentenceStructureTH.addEventListener('click', () => {
