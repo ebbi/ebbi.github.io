@@ -53,7 +53,7 @@ const books = [
                     { "en": "where", "th": "ทีไหน", "hint": "thîi-nǎi" }
                 ],
                 "structure": [
-                    { "en": "What is your name?", "th": "คุณชื่ออะไร" },
+                    { "en": "What is your name?", "th": "คุณ ชื่อ อะไร" },
                     { "en": "My name is Pairat the magnificent.", "th": "ฉันชื่อ ไพรัช สุดสวย" }
                 ]
             },
@@ -1631,15 +1631,47 @@ function displaySentenceStructure(sentenceStructure) {
         });
 
         const sentenceStructureTH = document.createElement('button');
-        sentenceStructureTH.textContent = structure.th;
+        //        sentenceStructureTH.textContent = structure.th;
         sentenceStructureTH.style.cursor = 'pointer';
         sentenceStructureTH.style.textAlign = 'left';
+        //    sentenceStructureItem.appendChild(sentenceStructureTH);
+
+        /* display the Thai text without spaces between words */
+        // Create HTML element dynamically
+        let outputSpan = document.createElement("span");
+        outputSpan.id = "output";
+        sentenceStructureTH.appendChild(outputSpan);
+
+        let obj = JSON.parse(`{"text": "${structure.th}"}`);
+
+        // Split into words
+        let words = obj.text.split(" ");
+
+        // Display string without spaces initially
+        outputSpan.textContent = words.join("");
+
         sentenceStructureItem.appendChild(sentenceStructureTH);
 
         sentenceStructureTH.addEventListener('click', () => {
-            //            playAudioFile(structure.th_audio);
-            textToSpeech(structure.th, 'th-TH');
-            //            textToSpeech(structure.en, 'en-US');
+
+            for (let i = 0; i < words.length; i++) {
+                let word = words[i];
+                setTimeout(() => {
+                    textToSpeech(word, 'th-TH');
+                    let wordSpan = document.createElement("span");
+                    wordSpan.textContent = word;
+                    outputSpan.innerHTML = ''; // Clear previous content
+                    for (let j = 0; j < words.length; j++) {
+                        let span = document.createElement("span");
+                        span.textContent = words[j];
+                        if (j === i) {
+                            span.classList.add('highlight');
+                        }
+                        outputSpan.appendChild(span);
+                    }
+                }, i * 1000); // Adjust the delay as needed
+            }
+
         });
 
         sentenceStructureDetails.appendChild(sentenceStructureItem);
@@ -1680,5 +1712,10 @@ function textToSpeech(text, lang) {
     speech.rate = 1; // From 0.1 to 10
     speech.pitch = 1; // From 0 to 2
     window.speechSynthesis.speak(speech);
+    /*
+    speech.onend = function (event) {
+        //        console.log('SpeechSynthesisUtterance.onend');
+    }
+        */
 }
 
