@@ -1677,11 +1677,11 @@ function displaySentenceStructure(sentenceStructure) {
                         }
                         outputSpan.appendChild(span);
                     }
-                }, i * 2000); // Adjust the delay as needed
+                }, i * 1500); // Adjust the delay as needed
                 if (i === words.length - 1) {
                     setTimeout(() => {
                         outputSpan.innerHTML = words.join(""); // Restore original text after the last word
-                    }, (i + 1) * 2000);
+                    }, (i + 1) * 1500);
                 }
             }
 
