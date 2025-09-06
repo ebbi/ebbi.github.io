@@ -119,7 +119,7 @@ const books = [
                 ],
                 "structure": [
                     { "en": "How many?", "th": "กี่" },
-                    { "en": "I have two dogs.", "th": "ฉัน มีหมา 2 ตัว" },
+                    { "en": "I have two dogs.", "th": "ฉัน มี หมา 2 ตัว" },
                     { "en": "I have three bananas.", "th": "ฉัน มี กล้วย 3 ลูก" },
                     { "en": "I have four books.", "th": "ฉัน มี หนังสือ 4 เล่ม" },
                     { "en": "I have five friends.", "th": "ฉัน มี เพื่อน 5 คน" }
@@ -241,10 +241,10 @@ const books = [
                     { "en": "discount", "th": "ลด", "hint": "lót" }
                 ],
                 "structure": [
-                    { "en": "How much is this?", "th": "อันนี้ราคาเท่าไหร่" },
-                    { "en": "This is 100 baht.", "th": "อันนี้ราคา 100 บาท" },
-                    { "en": "How much is this shirt?", "th": "เสืออันนี้ราคาเท่าไหร่" },
-                    { "en": "This shirt is 200 baht.", "th": "เสืออันนี้ราคา 200 บาท" }
+                    { "en": "How much is this?", "th": "อัน นี้ ราคา เท่าไหร่" },
+                    { "en": "This is 100 baht.", "th": "อัน นี้ ราคา 100 บาท" },
+                    { "en": "How much is this shirt?", "th": "เสือ อัน นี้ ราคา เท่า ไหร่" },
+                    { "en": "This shirt is 200 baht.", "th": "เสือ อัน นี้ ราคา 200 บาท" }
                 ]
             },
             {
@@ -360,13 +360,13 @@ const books = [
 
                 ],
                 "structure": [
-                    { "en": "I would like to order", "th": "ฉันอยากสั่ง", "hint": "chán yàak sàŋ" },
-                    { "en": "I would like to eat", "th": "ฉันอยากกิน", "hint": "chán yàak gin" },
-                    { "en": "I would like to drink", "th": "ฉันอยากดื่ม", "hint": "chán yàak dʉ̀ʉm" },
+                    { "en": "I would like to order", "th": "ฉัน อยาก สั่ง", "hint": "chán yàak sàŋ" },
+                    { "en": "I would like to eat", "th": "ฉัน อยาก กิน", "hint": "chán yàak gin" },
+                    { "en": "I would like to drink", "th": "ฉัน อยาก ดื่ม", "hint": "chán yàak dʉ̀ʉm" },
                     { "en": "I would like to watch", "th": "ฉันอยากดู", "hint": "chán yàak duu" },
-                    { "en": "I would like to listen", "th": "ฉันอยากฟัง", "hint": "chán yàak faŋ" },
-                    { "en": "I would like to wake up", "th": "ฉันอยากตื่น", "hint": "chán yàak dtɯ̀ɯn" },
-                    { "en": "I would like to lie down or sleep", "th": "ฉันอยากนอน", "hint": "chán yàak nɔɔn" },
+                    { "en": "I would like to listen", "th": "ฉัน อยาก ฟัง", "hint": "chán yàak faŋ" },
+                    { "en": "I would like to wake up", "th": "ฉัน อยาก ตื่น", "hint": "chán yàak dtɯ̀ɯn" },
+                    { "en": "I would like to lie down or sleep", "th": "ฉัน อยาก นอน", "hint": "chán yàak nɔɔn" },
                     { "en": "I would like to walk", "th": "ฉันอยากเดิน", "hint": "chán yàak dəən" },
                     { "en": "I would like to speak", "th": "ฉันอยากพูด", "hint": "chán yàak phûut" },
                     { "en": "I would like to study", "th": "ฉันอยากเรียน", "hint": "chán yàak rian" },
@@ -1666,7 +1666,7 @@ function displaySentenceStructure(sentenceStructure) {
                         }
                         outputSpan.appendChild(span);
                     }
-                }, i * 1000); // Adjust the delay as needed
+                }, i * 2500); // Adjust the delay as needed
                 if (i === words.length - 1) {
                     setTimeout(() => {
                         outputSpan.innerHTML = words.join(" "); // Restore original text after the last word
