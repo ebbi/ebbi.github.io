@@ -367,12 +367,12 @@ const books = [
                     { "en": "I would like to listen", "th": "ฉัน อยาก ฟัง", "hint": "chán yàak faŋ" },
                     { "en": "I would like to wake up", "th": "ฉัน อยาก ตื่น", "hint": "chán yàak dtɯ̀ɯn" },
                     { "en": "I would like to lie down or sleep", "th": "ฉัน อยาก นอน", "hint": "chán yàak nɔɔn" },
-                    { "en": "I would like to walk", "th": "ฉันอยากเดิน", "hint": "chán yàak dəən" },
-                    { "en": "I would like to speak", "th": "ฉันอยากพูด", "hint": "chán yàak phûut" },
-                    { "en": "I would like to study", "th": "ฉันอยากเรียน", "hint": "chán yàak rian" },
-                    { "en": "I would like to write", "th": "ฉันอยากเขียน", "hint": "chán yàak khǐan" },
-                    { "en": "I would like to read", "th": "ฉันอยากอ่าน", "hint": "chán yàak àan" },
-                    { "en": "I would like to take a shower", "th": "(ฉัน) อยากอาบนํâา", "hint": "(chán) yàak àap-náam" }
+                    { "en": "I would like to walk", "th": "ฉัน อยาก เดิน", "hint": "chán yàak dəən" },
+                    { "en": "I would like to speak", "th": "ฉัน อยาก พูด", "hint": "chán yàak phûut" },
+                    { "en": "I would like to study", "th": "ฉัน อยาก เรียน", "hint": "chán yàak rian" },
+                    { "en": "I would like to write", "th": "ฉัน อยาก เขียน", "hint": "chán yàak khǐan" },
+                    { "en": "I would like to read", "th": "ฉัน อยาก อ่าน", "hint": "chán yàak àan" },
+                    { "en": "I would like to take a shower", "th": "ฉัน อยาก อาบนํา", "hint": "(chán) yàak àap-náam" }
                 ]
             },
             {
@@ -1666,11 +1666,11 @@ function displaySentenceStructure(sentenceStructure) {
                         }
                         outputSpan.appendChild(span);
                     }
-                }, i * 2500); // Adjust the delay as needed
+                }, i * 2000); // Adjust the delay as needed
                 if (i === words.length - 1) {
                     setTimeout(() => {
-                        outputSpan.innerHTML = words.join(" "); // Restore original text after the last word
-                    }, (i + 1) * 1000);
+                        outputSpan.innerHTML = words.join(""); // Restore original text after the last word
+                    }, (i + 1) * 2000);
                 }
             }
 
