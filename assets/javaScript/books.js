@@ -410,19 +410,19 @@ const books = [
                     { "en": "Vegetable juice", "th": "นํNาผัก", "hint": "náam phàk" }
                 ],
                 "structure": [
-                    { "en": "I would like to order", "th": "ฉันอยากสั่ง", "hint": "chán yàak sàŋ" },
-                    { "en": "I would like to eat", "th": "ฉันอยากกิน", "hint": "chán yàak gin" },
-                    { "en": "I would like to drink", "th": "ฉันอยากดื่ม", "hint": "chán yàak dʉ̀ʉm" },
-                    { "en": "I would like to watch", "th": "ฉันอยากดู", "hint": "chán yàak duu" },
-                    { "en": "I would like to listen", "th": "ฉันอยากฟัง", "hint": "chán yàak faŋ" },
-                    { "en": "I would like to wake up", "th": "ฉันอยากตื่น", "hint": "chán yàak dtɯ̀ɯn" },
-                    { "en": "I would like to lie down or sleep", "th": "ฉันอยากนอน", "hint": "chán yàak nɔɔn" },
-                    { "en": "I would like to walk", "th": "ฉันอยากเดิน", "hint": "chán yàak dəən" },
-                    { "en": "I would like to speak", "th": "ฉันอยากพูด", "hint": "chán yàak phûut" },
-                    { "en": "I would like to study", "th": "ฉันอยากเรียน", "hint": "chán yàak rian" },
-                    { "en": "I would like to write", "th": "ฉันอยากเขียน", "hint": "chán yàak khǐan" },
-                    { "en": "I would like to read", "th": "ฉันอยากอ่าน", "hint": "chán yàak àan" },
-                    { "en": "I would like to take a shower", "th": "(ฉัน) อยากอาบนํâา", "hint": "(chán) yàak àap-náam" }
+                    { "en": "I would like to order", "th": "ฉัน อยาก สั่ง", "hint": "chán yàak sàŋ" },
+                    { "en": "I would like to eat", "th": "ฉัน อยาก กิน", "hint": "chán yàak gin" },
+                    { "en": "I would like to drink", "th": "ฉัน อยาก ดื่ม", "hint": "chán yàak dʉ̀ʉm" },
+                    { "en": "I would like to watch", "th": "ฉัน อยาก ดู", "hint": "chán yàak duu" },
+                    { "en": "I would like to listen", "th": "ฉัน อยาก ฟัง", "hint": "chán yàak faŋ" },
+                    { "en": "I would like to wake up", "th": "ฉัน อยาก ตื่น", "hint": "chán yàak dtɯ̀ɯn" },
+                    { "en": "I would like to lie down or sleep", "th": "ฉัน อยาก นอน", "hint": "chán yàak nɔɔn" },
+                    { "en": "I would like to walk", "th": "ฉัน อยาก เดิน", "hint": "chán yàak dəən" },
+                    { "en": "I would like to speak", "th": "ฉัน อยาก พูด", "hint": "chán yàak phûut" },
+                    { "en": "I would like to study", "th": "ฉัน อยาก เรียน", "hint": "chán yàak rian" },
+                    { "en": "I would like to write", "th": "ฉัน อยาก เขียน", "hint": "chán yàak khǐan" },
+                    { "en": "I would like to read", "th": "ฉัน อยากอ่าน", "hint": "chán yàak àan" },
+                    { "en": "I would like to take a shower", "th": "ฉัน อยากอาบนํâา", "hint": "chán yàak àap-náam" }
                 ]
             },
             {
@@ -461,9 +461,9 @@ const books = [
                     { "en": "Classifier for the whole fruit", "th": "ลูก/ผล", "hint": "lûuk / phǒn" }
                 ],
                 "structure": [
-                    { "en": "What fruit is this?", "th": "ผลไม้อะไร", "hint": "phǒn-lá-máy à-rai" },
-                    { "en": "This is a mango.", "th": "นี่คือมะม่วง", "hint": "nîi khɯɯ má-mûaŋ" },
-                    { "en": "This is a watermelon.", "th": "นี่คือแตงโม", "hint": "nîi khɯɯ dtɛɛng-moo" }
+                    { "en": "What fruit is this?", "th": "ผลไม้ อะไร", "hint": "phǒn-lá-máy à-rai" },
+                    { "en": "This is a mango.", "th": "นี่ คื อมะม่วง", "hint": "nîi khɯɯ má-mûaŋ" },
+                    { "en": "This is a watermelon.", "th": "นี่ คื อแตงโม", "hint": "nîi khɯɯ dtɛɛng-moo" }
                 ]
             },
             {
@@ -486,11 +486,11 @@ const books = [
                     { "en": "Dark(Adj)", "th": "เข้ม", "hint": "khêm" }
                 ],
                 "structure": [
-                    { "en": "What color is this?", "th": "สีอะไร", "hint": "sǐi à-rai" },
-                    { "en": "This is red.", "th": "สีแดง", "hint": "sǐi dɛɛŋ" },
-                    { "en": "This is blue.", "th": "สีน้ำเงิน", "hint": "sǐi náam-ngən" },
-                    { "en": "This is green.", "th": "สีเขียว", "hint": "sǐi khǐaw" },
-                    { "en": "This is yellow.", "th": "สีเหลือง", "hint": "sǐi lǔang" }
+                    { "en": "What color is this?", "th": "สี อะไร", "hint": "sǐi à-rai" },
+                    { "en": "This is red.", "th": "สี แดง", "hint": "sǐi dɛɛŋ" },
+                    { "en": "This is blue.", "th": "สี น้ำเงิน", "hint": "sǐi náam-ngən" },
+                    { "en": "This is green.", "th": "สี เขียว", "hint": "sǐi khǐaw" },
+                    { "en": "This is yellow.", "th": "สี เหลือง", "hint": "sǐi lǔang" }
                 ]
             },
             {
@@ -506,11 +506,13 @@ const books = [
                     { "en": "Books or Magazines or Newspapers", "th": "เล่ม/ฉบับ/ฉบับพิมพ์", "hint": "" }
                 ],
                 "structure": [
-                    { "en": "How many people?", "th": "คนกี่คน", "hint": "khon gìi khon" },
-                    { "en": "How many animals?", "th": "สัตว์กี่ตัว", "hint": "sàt gìi dtua" },
+                    { "en": "How many people?", "th": "คน กี่ คน", "hint": "khon gìi khon" },
+                    { "en": "How many animals?", "th": "สัตว์ กี่ ตัว", "hint": "sàt gìi dtua" }
+                    /*,
                     { "en": "How many flat objects?", "th": "แผ่น/ใบกี่แผ่น/ใบ", "hint": "phɛ̀n/bai gìi phɛ̀n/bai" },
                     { "en": "How many long objects?", "th": "อัน/ชิNนกี่อัน/ชิNน", "hint": "an/chín gìi an/chín" },
                     { "en": "How many round objects?", "th": "ลูก/ผลกี่ลูก/ผล", "hint": "lûuk/phǒn gìi lûuk/phǒn" }
+                */
                 ]
             },
             {
@@ -530,11 +532,11 @@ const books = [
                     { "en": "nearby or close to", "th": "ใกล้ๆ", "hint": "glâi-glâi" }
                 ],
                 "structure": [
-                    { "en": "Where is the hospital?", "th": "โรงพยาบาลอยู่ทีไหน", "hint": "rooŋ-phá-yaa-bâan yùu thîi nǎi" },
-                    { "en": "The hospital is over there.", "th": "โรงพยาบาลอยู่ทีโน่น", "hint": "rooŋ-phá-yaa-bâan yùu thîi nôon" },
-                    { "en": "The hospital is next to the school.", "th": "โรงพยาบาลอยู่ติดกับโรงเรียน", "hint": "rooŋ-phá-yaa-bâan yùu dtìt-kàp rooŋ-rian" },
-                    { "en": "The hospital is in front of the hotel.", "th": "โรงพยาบาลอยู่ข้างหน้าโรงแรม", "hint": "rooŋ-phá-yaa-bâan yùu khâaŋ-nâa rooŋ-rɛɛm" },
-                    { "en": "The hospital is behind the bank.", "th": "โรงพยาบาลอยู่ข้างหลังธนาคาร", "hint": "rooŋ-phá-yaa-bâan yùu khâaŋ-lǎŋ tha-naa-khâan" }
+                    { "en": "Where is the hospital?", "th": "โรงพยาบาล อยู่ ที่ ไหน", "hint": "rooŋ-phá-yaa-bâan yùu thîi nǎi" },
+                    { "en": "The hospital is over there.", "th": "โรงพยาบาล อยู่ ที โน่น", "hint": "rooŋ-phá-yaa-bâan yùu thîi nôon" },
+                    { "en": "The hospital is next to the school.", "th": "โรงพยาบาล อยู่ ติด กับ โรงเรียน", "hint": "rooŋ-phá-yaa-bâan yùu dtìt-kàp rooŋ-rian" },
+                    { "en": "The hospital is in front of the hotel.", "th": "โรงพยาบาล อยู่ ข้าง หน้า โรงแรม", "hint": "rooŋ-phá-yaa-bâan yùu khâaŋ-nâa rooŋ-rɛɛm" },
+                    { "en": "The hospital is behind the bank.", "th": "โรงพยาบาล อยู่ ข้าง หลัง ธนาคาร", "hint": "rooŋ-phá-yaa-bâan yùu khâaŋ-lǎŋ tha-naa-khâan" }
                 ]
             }
         ]
@@ -586,17 +588,17 @@ const books = [
                 ],
                 "structure":
                     [
-                        { "en": "What time is it?", "th": "กี่โมง", "hint": "gìi mooŋ" },
-                        { "en": "It is 8 o'clock", "th": "แปดโมง", "hint": "bpɛ̀ɛt mooŋ" },
-                        { "en": "It is 8.30", "th": "แปดโมงครึง", "hint": "bpɛ̀ɛt mooŋ khrɯ̂ŋ" },
-                        { "en": "It is 8.45", "th": "แปดโมงสี่สิบห้า", "hint": "bpɛ̀ɛt mooŋ sìi-sìp-hâa" },
-                        { "en": "It is 8.50", "th": "แปดโมงห้าสิบ", "hint": "bpɛ̀ɛt mooŋ hâa-sìp" },
-                        { "en": "It is 8.55", "th": "แปดโมงห้าสิบห้า", "hint": "bpɛ̀ɛt mooŋ hâa-sìp-hâa" },
-                        { "en": "It is 9 o'clock", "th": "เก้าโมง", "hint": "gâo mooŋ" },
-                        { "en": "It is 9.15", "th": "เก้าโมงสิบห้า", "hint": "gâo mooŋ sìp-hâa" },
-                        { "en": "It is 9.30", "th": "เก้าโมงครึง", "hint": "gâo mooŋ khrɯ̂ŋ" },
-                        { "en": "It is 9.45", "th": "เก้าโมงสี่สิบห้า", "hint": "gâo mooŋ sìi-sìp-hâa" },
-                        { "en": "It is 10 o'clock", "th": "สิบโมง", "hint": "sìp mooŋ" }
+                        { "en": "What time is it?", "th": "กี่ โมง", "hint": "gìi mooŋ" },
+                        { "en": "It is 8 o'clock", "th": "แปด โมง", "hint": "bpɛ̀ɛt mooŋ" },
+                        { "en": "It is 8.30", "th": "แปด โมง ครึง", "hint": "bpɛ̀ɛt mooŋ khrɯ̂ŋ" },
+                        { "en": "It is 8.45", "th": "แปด โมง สี่สิบห้า", "hint": "bpɛ̀ɛt mooŋ sìi-sìp-hâa" },
+                        { "en": "It is 8.50", "th": "แปด โมง ห้าสิบ", "hint": "bpɛ̀ɛt mooŋ hâa-sìp" },
+                        { "en": "It is 8.55", "th": "แปด โมง ห้าสิบห้า", "hint": "bpɛ̀ɛt mooŋ hâa-sìp-hâa" },
+                        { "en": "It is 9 o'clock", "th": "เก้า โมง", "hint": "gâo mooŋ" },
+                        { "en": "It is 9.15", "th": "เก้า โมง สิบห้า", "hint": "gâo mooŋ sìp-hâa" },
+                        { "en": "It is 9.30", "th": "เก้า โมง ครึง", "hint": "gâo mooŋ khrɯ̂ŋ" },
+                        { "en": "It is 9.45", "th": "เก้า โมง สี่สิบห้า", "hint": "gâo mooŋ sìi-sìp-hâa" },
+                        { "en": "It is 10 o'clock", "th": "สิบ โมง", "hint": "sìp mooŋ" }
                     ]
             },
             {
@@ -629,14 +631,14 @@ const books = [
                 ],
                 "structure":
                     [
-                        { "en": "What day is it today?", "th": "วันนี้วันอะไร", "hint": "wan-níi wan à-rai" },
-                        { "en": "Today is Monday", "th": "วันนี้วันจันทร์", "hint": "wan-níi wan-jan" },
-                        { "en": "Today is Tuesday", "th": "วันนี้วันอังคาร", "hint": "wan-níi wan aŋ-khaan" },
-                        { "en": "Today is Wednesday", "th": "วันนี้วันพุธ", "hint": "wan-níi wan-phút" },
-                        { "en": "Today is Thursday", "th": "วันนี้วันพฤหัสบดี", "hint": "wan-níi wan phá-rɯ-hàt" },
-                        { "en": "Today is Friday", "th": "วันนี้วันศุกร์", "hint": "wan-níi wan-sùk" },
-                        { "en": "Today is Saturday", "th": "วันนี้วันเสาร์", "hint": "wan-níi wan-sǎw" },
-                        { "en": "Today is Sunday", "th": "วันนี้วันอาทิตย์", "hint": "wan-níi wan aa-thít" }
+                        { "en": "What day is it today?", "th": "วัน นี้ วัน อะไร", "hint": "wan-níi wan à-rai" },
+                        { "en": "Today is Monday", "th": "วัน นี้ วัน จันทร์", "hint": "wan-níi wan-jan" },
+                        { "en": "Today is Tuesday", "th": "วัน นี้ วัน อังคาร", "hint": "wan-níi wan aŋ-khaan" },
+                        { "en": "Today is Wednesday", "th": "วัน นี้ วัน พุธ", "hint": "wan-níi wan-phút" },
+                        { "en": "Today is Thursday", "th": "วัน นี้ วัน พฤหัสบดี", "hint": "wan-níi wan phá-rɯ-hàt" },
+                        { "en": "Today is Friday", "th": "วัน นี้ วัน ศุกร์", "hint": "wan-níi wan-sùk" },
+                        { "en": "Today is Saturday", "th": "วัน นี้ วัน เสาร์", "hint": "wan-níi wan-sǎw" },
+                        { "en": "Today is Sunday", "th": "วัน นี้วันอาทิตย์", "hint": "wan-níi wan aa-thít" }
                     ]
             },
             {
@@ -679,25 +681,25 @@ const books = [
                 ],
                 "structure":
                     [
-                        { "en": "What month is it?", "th": "เดือนอะไร", "hint": "dʉʉan à-rai" },
-                        { "en": "It is January", "th": "เดือนมกราคม", "hint": "dʉʉan mók-ka-ra-khom" },
-                        { "en": "It is February", "th": "เดือนกุมภาพันธ์", "hint": "dʉʉan kum-phaa-phan" },
-                        { "en": "It is March", "th": "เดือนมีนาคม", "hint": "dʉʉan mii-naa-khom" },
-                        { "en": "It is April", "th": "เดือนเมษายน", "hint": "dʉʉan mɛ̂ɛ-sǎa-yon" },
-                        { "en": "It is May", "th": "เดือนพฤษภาคม", "hint": "dʉʉan phrɯ́t-sà-phaa-khom" },
-                        { "en": "It is June", "th": "เดือนมิถุนายน", "hint": "dʉʉan mii-thu-naa-yon" },
-                        { "en": "It is July", "th": "เดือนกรกฎาคม", "hint": "dʉʉan gà-rá-gà-daa-khom" },
-                        { "en": "It is August", "th": "เดือนสิงหาคม", "hint": "dʉʉan sǐŋ-hǎa-khom" },
-                        { "en": "What is the weather like?", "th": "(วันนี้)อากาศเป็นยังไงบ้าง?", "hint": "(wan-níi) aa-kàat bpen yaŋ-ngai bâaŋ?" },
-                        { "en": "(Today) is hot.", "th": "(วันนี้)ร้อน.", "hint": "(wan-níi) rɔ́ɔn." },
-                        { "en": "(Today) is cold.", "th": "(วันนี้)หนาว.", "hint": "(wan-níi) nǎao." },
-                        { "en": "(Today) is cool.", "th": "(วันนี้)เย็น.", "hint": "(wan-níi) yen." },
-                        { "en": "(Today) is windy.", "th": "(วันนี้)มีลม.", "hint": "(wan-níi) mii lɔm." },
-                        { "en": "(Today) is rainy.", "th": "(วันนี้)มีฝน.", "hint": "(wan-níi) mii fǒn." },
-                        { "en": "(Today) is sunny.", "th": "(วันนี้)มีแดด.", "hint": "(wan-níi) mii dɛ̀ɛt." },
-                        { "en": "(Today) is cloudy.", "th": "(วันนี้)มีเมฆ.", "hint": "(wan-níi) mii mɛ̂ɛk." },
-                        { "en": "(Today) is foggy.", "th": "(วันนี้)มีหมอก.", "hint": "(wan-níi) mii mɔ̀ɔk." },
-                        { "en": "(Today) is snowy.", "th": "(วันนี้)มีหิมะตก.", "hint": "(wan-níi) mii hìmá dtòk." }
+                        { "en": "What month is it?", "th": "เดือน อะไร", "hint": "dʉʉan à-rai" },
+                        { "en": "It is January", "th": "เดือน มกราคม", "hint": "dʉʉan mók-ka-ra-khom" },
+                        { "en": "It is February", "th": "เดือน กุมภาพันธ์", "hint": "dʉʉan kum-phaa-phan" },
+                        { "en": "It is March", "th": "เดือน มีนาคม", "hint": "dʉʉan mii-naa-khom" },
+                        { "en": "It is April", "th": "เดือน เมษายน", "hint": "dʉʉan mɛ̂ɛ-sǎa-yon" },
+                        { "en": "It is May", "th": "เดือน พฤษภาคม", "hint": "dʉʉan phrɯ́t-sà-phaa-khom" },
+                        { "en": "It is June", "th": "เดือน มิถุนายน", "hint": "dʉʉan mii-thu-naa-yon" },
+                        { "en": "It is July", "th": "เดือน กรกฎาคม", "hint": "dʉʉan gà-rá-gà-daa-khom" },
+                        { "en": "It is August", "th": "เดือน สิงหาคม", "hint": "dʉʉan sǐŋ-hǎa-khom" },
+                        { "en": "What is the weather like?", "th": "อากาศ เป็น ยังไงบ้าง?", "hint": "aa-kàat bpen yaŋ-ngai bâaŋ?" },
+                        { "en": "(Today) is hot.", "th": "วันนี้ ร้อน", "hint": "wan-níi rɔ́ɔn." },
+                        { "en": "(Today) is cold.", "th": "วันนี้ หนาว", "hint": "wan-níi nǎao." },
+                        { "en": "(Today) is cool.", "th": "วันนี้ เย็น", "hint": "wan-níi yen." },
+                        { "en": "(Today) is windy.", "th": "วันนี้ มีลม", "hint": "wan-níi mii lɔm." },
+                        { "en": "(Today) is rainy.", "th": "วันนี้ มีฝน", "hint": "wan-níi mii fǒn." },
+                        { "en": "(Today) is sunny.", "th": "วันนี้ มีแดด", "hint": "wan-níi mii dɛ̀ɛt." },
+                        { "en": "(Today) is cloudy.", "th": "วันนี้ มีเมฆ", "hint": "wan-níi mii mɛ̂ɛk." },
+                        { "en": "(Today) is foggy.", "th": "วันนี้ มีหมอก", "hint": "wan-níi mii mɔ̀ɔk." },
+                        { "en": "(Today) is snowy.", "th": "วันนี้ มีหิมะตก", "hint": "wan-níi mii hìmá dtòk." }
                     ]
             },
             {
@@ -732,15 +734,15 @@ const books = [
                 ],
                 "structure":
                     [
-                        { "en": "Who is this?", "th": "นีใคร", "hint": "nîi khrai" },
-                        { "en": "This is my father", "th": "นีพ่อของฉัน", "hint": "nîi phɔ̂ɔ khɔ̌ŋ chǎn" },
-                        { "en": "This is my mother", "th": "นีแม่ของฉัน", "hint": "nîi mɛ̂ɛ khɔ̌ŋ chǎn" },
-                        { "en": "This is my brother", "th": "นีน้องชายของฉัน", "hint": "nîi nɔ́ɔŋ-chaay khɔ̌ŋ chǎn" },
-                        { "en": "This is my sister", "th": "นีน้องสาวของฉัน", "hint": "nîi nɔ́ɔŋ-sǎaw khɔ̌ŋ chǎn" },
-                        { "en": "This is my son", "th": "นีลูกชายของฉัน", "hint": "nîi lûuk-chaay khɔ̌ŋ chǎn" },
-                        { "en": "This is my daughter", "th": "นีลูกสาวของฉัน", "hint": "nîi lûuk-sǎaw khɔ̌ŋ chǎn" },
-                        { "en": "This is my uncle", "th": "นีน้าของฉัน", "hint": "nîi nâa khɔ̌ŋ chǎn" },
-                        { "en": "This is my aunt", "th": "นีน้าของฉัน", "hint": "nîi nâa khɔ̌ŋ chǎn" }
+                        { "en": "Who is this?", "th": "นี ใคร", "hint": "nîi khrai" },
+                        { "en": "This is my father", "th": "นี พ่อ ของ ฉัน", "hint": "nîi phɔ̂ɔ khɔ̌ŋ chǎn" },
+                        { "en": "This is my mother", "th": "นี แม่ ของ ฉัน", "hint": "nîi mɛ̂ɛ khɔ̌ŋ chǎn" },
+                        { "en": "This is my brother", "th": "นี น้องชาย ของ ฉัน", "hint": "nîi nɔ́ɔŋ-chaay khɔ̌ŋ chǎn" },
+                        { "en": "This is my sister", "th": "นี น้องสาว ของ ฉัน", "hint": "nîi nɔ́ɔŋ-sǎaw khɔ̌ŋ chǎn" },
+                        { "en": "This is my son", "th": "นี ลูกชาย ของ ฉัน", "hint": "nîi lûuk-chaay khɔ̌ŋ chǎn" },
+                        { "en": "This is my daughter", "th": "นี ลูกสาว ของ ฉัน", "hint": "nîi lûuk-sǎaw khɔ̌ŋ chǎn" },
+                        { "en": "This is my uncle", "th": "นี น้าของ ฉัน", "hint": "nîi nâa khɔ̌ŋ chǎn" },
+                        { "en": "This is my aunt", "th": "นี น้าของ ฉัน", "hint": "nîi nâa khɔ̌ŋ chǎn" }
                     ]
             },
             {
@@ -769,10 +771,10 @@ const books = [
                 ],
                 "structure":
                     [
-                        { "en": "What is your job?", "th": "คุณทํางานอะไร", "hint": "khun tham-ŋaan à-rai" },
-                        { "en": "I am a student", "th": "ฉันเป็นนักเรียน", "hint": "chǎn bpen nák-rian" },
-                        { "en": "I am a teacher", "th": "ฉันเป็นครู", "hint": "chǎn bpen khruu" },
-                        { "en": "I am a doctor", "th": "ฉันเป็นหมอ", "hint": "chǎn bpen mɔ̌ɔ" }
+                        { "en": "What is your job?", "th": "คุณ ทํางาน อะไร", "hint": "khun tham-ŋaan à-rai" },
+                        { "en": "I am a student", "th": "ฉัน เป็น นักเรียน", "hint": "chǎn bpen nák-rian" },
+                        { "en": "I am a teacher", "th": "ฉัน เป็น ครู", "hint": "chǎn bpen khruu" },
+                        { "en": "I am a doctor", "th": "ฉัน เป็น หมอ", "hint": "chǎn bpen mɔ̌ɔ" }
                     ]
             },
             {
@@ -792,12 +794,12 @@ const books = [
                 ],
                 "structure":
                     [
-                        { "en": "What does he or she look like?", "th": "เขาหน้าตาเป็นยังไง", "hint": "khǎo nâa-dtaa bpen yaŋ-ngai" },
-                        { "en": "He or She is tall", "th": "เขาสูง", "hint": "khǎo sǔuŋ" },
-                        { "en": "He or She is short", "th": "เขาสั้น", "hint": "khǎo sâŋ" },
-                        { "en": "He or She is fat", "th": "เขาอ้วน", "hint": "khǎo ûan" },
-                        { "en": "He or She is thin", "th": "เขาผอม", "hint": "khǎo phɔ̌ɔm" },
-                        { "en": "He or She is beautiful", "th": "เขาสวย", "hint": "khǎo sǔay" },
+                        { "en": "What does he or she look like?", "th": "เขา หน้าตา เป็นยังไง", "hint": "khǎo nâa-dtaa bpen yaŋ-ngai" },
+                        { "en": "He or She is tall", "th": "เขา สูง", "hint": "khǎo sǔuŋ" },
+                        { "en": "He or She is short", "th": "เขา สั้น", "hint": "khǎo sâŋ" },
+                        { "en": "He or She is fat", "th": "เขา อ้วน", "hint": "khǎo ûan" },
+                        { "en": "He or She is thin", "th": "เขา ผอม", "hint": "khǎo phɔ̌ɔm" },
+                        { "en": "He or She is beautiful", "th": "เขา สวย", "hint": "khǎo sǔay" },
                         { "en": "He or She is handsome", "th": "เขาหล่อ", "hint": "khǎo lɔ̀ɔ" }
                     ]
             }
@@ -835,8 +837,8 @@ const books = [
                 ],
                 "structure":
                     [
-                        { "en": "What is this?", "th": "นีอะไร", "hint": "nîi à-rai" },
-                        { "en": "This is a low class consonant", "th": "นีเป็นพยัญชนะต่ำ", "hint": "nîi bpen phá-yan-chá-ná tàm" }
+                        { "en": "What is this?", "th": "นี อะไร", "hint": "nîi à-rai" },
+                        { "en": "This is a low class consonant", "th": "นี เป็น พยัญชนะ ต่ำ", "hint": "nîi bpen phá-yan-chá-ná tàm" }
                     ]
             },
             {
@@ -854,8 +856,8 @@ const books = [
                 ],
                 "structure":
                     [
-                        { "en": "What is this?", "th": "นีอะไร", "hint": "nîi à-rai" },
-                        { "en": "This is a high class consonant", "th": "นีเป็นพยัญชนะสูง", "hint": "nîi bpen phá-yan-chá-ná sǔuŋ" }
+                        { "en": "What is this?", "th": "นี อะไร", "hint": "nîi à-rai" },
+                        { "en": "This is a high class consonant", "th": "นี เป็น พยัญชนะ สูง", "hint": "nîi bpen phá-yan-chá-ná sǔuŋ" }
                     ]
             },
             {
@@ -874,8 +876,8 @@ const books = [
                 ],
                 "structure":
                     [
-                        { "en": "What is this?", "th": "นีอะไร", "hint": "nîi à-rai" },
-                        { "en": "This is a high class consonant", "th": "นีเป็นพยัญชนะสูง", "hint": "nîi bpen phá-yan-chá-ná sǔuŋ" }
+                        { "en": "What is this?", "th": "นี อะไร", "hint": "nîi à-rai" },
+                        { "en": "This is a high class consonant", "th": "นี เป็น พยัญชนะ สูง", "hint": "nîi bpen phá-yan-chá-ná sǔuŋ" }
                     ]
             },
             {
@@ -1031,31 +1033,31 @@ const books = [
                 ],
                 "structure":
                     [
-                        { "en": "What is this?", "th": "นีอะไร", "hint": "nîi à-rai" },
-                        { "en": "This is a body part", "th": "นีเป็นอวัยวะ", "hint": "nîi bpen à-wai-yá-wá" },
-                        { "en": "This is my head", "th": "นีหัวของฉัน", "hint": "nîi hǔa khɔ̌ŋ chǎn" },
-                        { "en": "This is my eye", "th": "นีตาของฉัน", "hint": "nîi dtaa khɔ̌ŋ chǎn" },
-                        { "en": "This is my mouth", "th": "นีปากของฉัน", "hint": "nîi bpàak khɔ̌ŋ chǎn" },
-                        { "en": "This is my nose", "th": "นีจมูกของฉัน", "hint": "nîi jà-mùuk khɔ̌ŋ chǎn" },
-                        { "en": "This is my ear", "th": "นีหูของฉัน", "hint": "nîi hǔu khɔ̌ŋ chǎn" },
-                        { "en": "This is my neck", "th": "นีคอของฉัน", "hint": "nîi khɔɔ khɔ̌ŋ chǎn" },
-                        { "en": "This is my shoulder", "th": "นีไหล่ของฉัน", "hint": "nîi làj khɔ̌ŋ chǎn" },
-                        { "en": "This is my back", "th": "นีหลังของฉัน", "hint": "nîi lǎŋ khɔ̌ŋ chǎn" },
-                        { "en": "This is my arm", "th": "นีแขนของฉัน", "hint": "nîi khɛ̌ɛn khɔ̌ŋ chǎn" },
-                        { "en": "This is my hand", "th": "นีมือของฉัน", "hint": "nîi mʉʉ khɔ̌ŋ chǎn" },
-                        { "en": "This is my leg", "th": "นีขาของฉัน", "hint": "nîi khǎa khɔ̌ŋ chǎn" },
-                        { "en": "This is my knee", "th": "นีเข่าของฉัน", "hint": "nîi khàaw khɔ̌ŋ chǎn" },
-                        { "en": "This is my foot", "th": "นีเท้าของฉัน", "hint": "nîi tháaw khɔ̌ŋ chǎn" },
-                        { "en": "This is my stomach", "th": "นีนํyาท้องของฉัน", "hint": "nîi nàa-má-thɔ́ɔŋ khɔ̌ŋ chǎn" },
-                        { "en": "This is my teeth", "th": "นีฟันของฉัน", "hint": "nîi fan khɔ̌ŋ chǎn" },
-                        { "en": "This is my face", "th": "นีน่าของฉัน", "hint": "nîi nâa khɔ̌ŋ chǎn" },
-                        { "en": "This is not a head", "th": "นีไม่ใช่หว ั", "hint": "nîi mâi châi hǔa" },
-                        { "en": "This is not a body part", "th": "นีไม่ใช่อวัยวะ", "hint": "nîi mâi châi à-wai-yá-wá" },
-                        { "en": "This is not a finger", "th": "นีไม่ใช่นิ้วมือ", "hint": "nîi mâi châi níw-mʉʉ" },
-                        { "en": "This is not a chest", "th": "นีไม่ใช่อก", "hint": "nîi mâi châi ɔ̀k" },
-                        { "en": "This is not a back", "th": "นีไม่ใช่หลัง", "hint": "nîi mâi châi lǎŋ" },
-                        { "en": "This is not a leg", "th": "นีไม่ใช่ขา", "hint": "nîi mâi châi khǎa" },
-                        { "en": "This is not a knee", "th": "นีไม่ใช่เข่า", "hint": "nîi mâi châi khàaw" }
+                        { "en": "What is this?", "th": "นี อะไร", "hint": "nîi à-rai" },
+                        { "en": "This is a body part", "th": "นี เป็น อวัยวะ", "hint": "nîi bpen à-wai-yá-wá" },
+                        { "en": "This is my head", "th": "นี หัว ของ ฉัน", "hint": "nîi hǔa khɔ̌ŋ chǎn" },
+                        { "en": "This is my eye", "th": "นี ตา ของ ฉัน", "hint": "nîi dtaa khɔ̌ŋ chǎn" },
+                        { "en": "This is my mouth", "th": "นี ปาก ของ ฉัน", "hint": "nîi bpàak khɔ̌ŋ chǎn" },
+                        { "en": "This is my nose", "th": "นี จมูก ของ ฉัน", "hint": "nîi jà-mùuk khɔ̌ŋ chǎn" },
+                        { "en": "This is my ear", "th": "นี หู ของ ฉัน", "hint": "nîi hǔu khɔ̌ŋ chǎn" },
+                        { "en": "This is my neck", "th": "นี คอ ของ ฉัน", "hint": "nîi khɔɔ khɔ̌ŋ chǎn" },
+                        { "en": "This is my shoulder", "th": "นี ไหล่ ของ ฉัน", "hint": "nîi làj khɔ̌ŋ chǎn" },
+                        { "en": "This is my back", "th": "นี หลัง ของ ฉัน", "hint": "nîi lǎŋ khɔ̌ŋ chǎn" },
+                        { "en": "This is my arm", "th": "นี แขน ของ ฉัน", "hint": "nîi khɛ̌ɛn khɔ̌ŋ chǎn" },
+                        { "en": "This is my hand", "th": "นี มือ ของ ฉัน", "hint": "nîi mʉʉ khɔ̌ŋ chǎn" },
+                        { "en": "This is my leg", "th": "นี ขา ของ ฉัน", "hint": "nîi khǎa khɔ̌ŋ chǎn" },
+                        { "en": "This is my knee", "th": "นี เข่า ของ ฉัน", "hint": "nîi khàaw khɔ̌ŋ chǎn" },
+                        { "en": "This is my foot", "th": "นี เท้า ของ ฉัน", "hint": "nîi tháaw khɔ̌ŋ chǎn" },
+                        { "en": "This is my stomach", "th": "นี ท้อง ของ ฉัน", "hint": "nîi nàa-má-thɔ́ɔŋ khɔ̌ŋ chǎn" },
+                        { "en": "This is my teeth", "th": "นี ฟัน ของ ฉัน", "hint": "nîi fan khɔ̌ŋ chǎn" },
+                        { "en": "This is my face", "th": "นี หน้า ของ ฉัน", "hint": "nîi nâa khɔ̌ŋ chǎn" },
+                        { "en": "This is not a head", "th": "นี ไม่ใช่ หัว", "hint": "nîi mâi châi hǔa" },
+                        { "en": "This is not a body part", "th": "นี ไม่ใช่ อวัยวะ", "hint": "nîi mâi châi à-wai-yá-wá" },
+                        { "en": "This is not a finger", "th": "นี ไม่ใช่ นิ้วมือ", "hint": "nîi mâi châi níw-mʉʉ" },
+                        { "en": "This is not a chest", "th": "นี ไม่ใช่ อก", "hint": "nîi mâi châi ɔ̀k" },
+                        { "en": "This is not a back", "th": "นี ไม่ใช่ หลัง", "hint": "nîi mâi châi lǎŋ" },
+                        { "en": "This is not a leg", "th": "นี ไม่ใช่ ขา", "hint": "nîi mâi châi khǎa" },
+                        { "en": "This is not a knee", "th": "นี ไม่ใช่ เข่า", "hint": "nîi mâi châi khàaw" }
                     ]
             },
             {
@@ -1097,84 +1099,84 @@ const books = [
                 ],
                 "structure":
                     [
-                        { "en": "What's your symptom ?", "th": "คุณเป็ นอะไรคะ", "hint": "khun bpen à-rai khá" },
-                        { "en": "I have a cold", "th": "ผมเป็ นหวั ดครับ", "hint": "phǒm bpen wàt khráp" },
-                        { "en": "Do you have a sore throat ?", "th": "คุณเจ็บคอไหมคะ", "hint": "khun jèp khɔɔ mái khá" },
-                        { "en": "Yes, I do.", "th": "เจ็บครับ", "hint": "jèp khráp" },
-                        { "en": "Do you have a head ache ?", "th": "คุณปวดหัวไหมคะ", "hint": "khun bpùat hǔa mǎi khá" },
-                        { "en": "Yes, I do.", "th": "ปวดครับ", "hint": "bpùat khráp" },
-                        { "en": "What's your symptom ?", "th": "คุณเป็นอะไรครับ", "hint": "khun bpen à-rai khráp" },
-                        { "en": "I have a stomachache and I've(been) vomiting.", "th": "ฉันปวดท้องและอาเจียนค่ะ", "hint": "chǎn bpùat thɔ́ɔŋ lɛ́ aa-jian khâ" },
-                        { "en": "Do you have a fever?", "th": "คุณมีไข้ไหมคะ", "hint": "kun mii khâi mǎi khá" },
-                        { "en": "No, I don't.", "th": "ไม่มีคะ ่", "hint": "mâi mii khâ" },
-                        { "en": "What are the symptoms?", "th": "คุณมีอาการยังไงบ้าง", "hint": "khun mii aa-gaan yaŋ-ŋai bâaŋ" },
-                        { "en": "What are your symptoms ?", "th": "คุณมีอาการยั งไงบ้ างครับ", "hint": "khun mii aa-gaan yaŋ-ŋai bâaŋ khráp" },
-                        { "en": "I have a sore throat, headache, and runny nose.", "th": "ผม(มีอาการ)เจ็บคอปวดหัวและมีนํามูกครับ", "hint": "phǒm mii (aa-gaan) jèp khɔɔ bpùat hǔa lɛ́ mii náam-mûukkhráp" },
-                        { "en": "Have you gotten over your cold yet ?", "th": "คุณหายเป็นหวัดรึยง ัครับ", "hint": "khun hǎay bpen wàt rɯ-yaŋ khráp" },
-                        { "en": "Yes", "th": "หายแล้วค่ะ", "hint": "hǎay lɛ́ɛw khâ" },
-                        { "en": "No", "th": "ยังค่ะ", "hint": "yaŋ khâ" },
-                        { "en": "Have you recovered from your cough?", "th": "คุ ณหายไอรึยง ัคะ", "hint": "khun hǎay ai rɯ-yaŋ khá" },
-                        { "en": "Yes", "th": "หายแล้วครับ", "hint": "hǎay lɛ́ɛw khráp" },
-                        { "en": "No", "th": "ยังครับ", "hint": "yaŋ khráp" },
-                        { "en": "Are you getting better?", "th": "คุณดีขึ{นรึยง ั", "hint": "khun dii-khɯ̂n rɯ-yaŋ" },
-                        { "en": "Yes", "th": "ดีขึนแล้วครับ", "hint": "dii-khɯ̂n lɛ́ɛw khráp" },
-                        { "en": "No", "th": "ยังครับ", "hint": "yaŋ khráp" },
-                        { "en": "How long have you been having a headache?", "th": "คุณปวดหัวมานานเท่าไหร่แล้ว", "hint": "khun bpùat hǔa maa naan thâw-rài lɛ́ɛw" },
-                        { "en": "Better", "th": "ดีขน ึ", "hint": "dii kɯ̂n" },
+                        { "en": "What's your symptom ?", "th": "คุณ เป็น อะไร คะ", "hint": "khun bpen à-rai khá" },
+                        { "en": "I have a cold", "th": "ผม เป็น หวัด ครับ", "hint": "phǒm bpen wàt khráp" },
+                        { "en": "Do you have a sore throat ?", "th": "คุณ เจ็บ คอ ไหม คะ", "hint": "khun jèp khɔɔ mái khá" },
+                        { "en": "Yes, I do.", "th": "เจ็บ ครับ", "hint": "jèp khráp" },
+                        { "en": "Do you have a head ache ?", "th": "คุณ ปวด หัว ไหม คะ", "hint": "khun bpùat hǔa mǎi khá" },
+                        { "en": "Yes, I do.", "th": "ปวด ครับ", "hint": "bpùat khráp" },
+                        { "en": "What's your symptom ?", "th": "คุณ เป็น อะไร ครับ", "hint": "khun bpen à-rai khráp" },
+                        { "en": "I have a stomachache and I've(been) vomiting.", "th": "ฉัน ปวด ท้อง และ อาเจียน ค่ะ", "hint": "chǎn bpùat thɔ́ɔŋ lɛ́ aa-jian khâ" },
+                        { "en": "Do you have a fever?", "th": "คุณ มี ไข้ ไหม คะ", "hint": "kun mii khâi mǎi khá" },
+                        { "en": "No, I don't.", "th": "ไม่มี คะ", "hint": "mâi mii khâ" },
+                        { "en": "What are the symptoms?", "th": "คุณ มี อาการ ยัง ไง บ้าง", "hint": "khun mii aa-gaan yaŋ-ŋai bâaŋ" },
+                        { "en": "What are your symptoms ?", "th": "คุณ มี อาการ ยังไงบ้าง ครับ", "hint": "khun mii aa-gaan yaŋ-ŋai bâaŋ khráp" },
+                        { "en": "I have a sore throat, headache, and runny nose.", "th": "ผม มี อาการ เจ็บ คอ ปวด หัว และ มี นํามูก ครับ", "hint": "phǒm mii (aa-gaan) jèp khɔɔ bpùat hǔa lɛ́ mii náam-mûukkhráp" },
+                        { "en": "Have you gotten over your cold yet ?", "th": "คุณ หาย เป็น หวัด รึ ยัง ครับ", "hint": "khun hǎay bpen wàt rɯ-yaŋ khráp" },
+                        { "en": "Yes", "th": "หาย แล้ว ค่ะ", "hint": "hǎay lɛ́ɛw khâ" },
+                        { "en": "No", "th": "ยัง ค่ะ", "hint": "yaŋ khâ" },
+                        { "en": "Have you recovered from your cough?", "th": "คุณ หาย ไอ รึ ยัง คะ", "hint": "khun hǎay ai rɯ-yaŋ khá" },
+                        { "en": "Yes", "th": "หาย แล้ว ครับ", "hint": "hǎay lɛ́ɛw khráp" },
+                        { "en": "No", "th": "ยัง ครับ", "hint": "yaŋ khráp" },
+                        { "en": "Are you getting better?", "th": "คุณ ดี ขึ้น รึ ยัง คะ", "hint": "khun dii-khɯ̂n rɯ-yaŋ khá" },
+                        { "en": "Yes", "th": "ดี ขึ้น แล้ว ครับ", "hint": "dii-khɯ̂n lɛ́ɛw khráp" },
+                        { "en": "No", "th": "ยัง ครับ", "hint": "yaŋ khráp" },
+                        { "en": "How long have you been having a headache?", "th": "คุณ ปวด หัว มา นาน เท่า ไหร่ แล้ว", "hint": "khun bpùat hǔa maa naan thâw-rài lɛ́ɛw" },
+                        { "en": "Better", "th": "ดีขึ้น", "hint": "dii-khɯ̂n" },
                         { "en": "Worse", "th": "แย่ลง", "hint": "yɛ̂ɛ loŋ" },
-                        { "en": "Are you allergic to anything?", "th": "คุณแพ้อะไรไหม", "hint": "khun phɛ́ɛ à-rai mǎi" },
-                        { "en": "allergic to dust", "th": "แพ้ ฝน ุ่", "hint": "phɛ́ɛ fùn" },
-                        { "en": "allergic to milk", "th": "แพ้นม", "hint": "phɛ́ɛ nom" },
-                        { "en": "allergic to seafood", "th": "แพ้อาหารทะเล", "hint": "aa-hǎan thá-lee" },
-                        { "en": "allergic to pollen", "th": "แพ้เกสรดอกไม้", "hint": "phɛ́ɛ gee-sɔ̌ɔn dɔ̀ɔk-mái" },
-                        { "en": "allergic to peanut", "th": "แพ้ถว ัU", "hint": "phɛ́ɛ tùa" },
-                        { "en": "Coeliac disease", "th": "แพ้กลูเตน", "hint": "phɛ́ɛ gluu-dteen" },
-                        { "en": "What's your symptom ?", "th": "คุณเป็นอะไรคะ", "hint": "khun bpen à-rai khá" },
-                        { "en": "My eyes are sore.", "th": "ผมเจ็บตาครับ", "hint": "phǒm jèp dtàa khráp" },
-                        { "en": "How long have your eyes been sore?", "th": "คุณเจ็บตามานานเท่าไหร่แล้วคะ", "hint": "khun jèp dtaa maa naan thâw-rài lɛ́ɛw khá" },
-                        { "en": "My eyes had been sore for 2 days.", "th": "ผมเจ็บตามา 2 วันแล้วครับ", "hint": "phǒm jèp dtaa maa sɔ̌ɔŋ wan lɛ́ɛw khráp" },
-                        { "en": "What's your symptom ?", "th": "คุณเป็นอะไรครับ", "hint": "khun bpen à-rai khráp" },
-                        { "en": "I have diarrhea , a stomachache , and I've been vomiting", "th": "ฉันท้องเสียปวดท้องและอาเจียนค่ะ", "hint": "chǎn thɔ́ɔŋ-sǐa bpùat tɔ́ɔŋ lɛ́ aa-jian khâ" },
-                        { "en": "I have had these symptoms for a week.", "th": "ฉันมีอาการมา อาทิตย์แล้วค่ะ", "hint": "chǎn mii aa-gaan maa nɯŋ aa - thít lɛ́ɛw khâ" },
-                        { "en": "I have a stomach ache because I ate too much", "th": "ผมปวดท้องเพราะว่าผมกินเยอะเกินไป", "hint": "phǒm bpùat thɔ́ɔŋ phrɔ́-wâa gin yə́ gəən-bpai" },
+                        { "en": "Are you allergic to anything?", "th": "คุณ แพ้ อะไร ไหม", "hint": "khun phɛ́ɛ à-rai mǎi" },
+                        { "en": "allergic to dust", "th": "แพ้ ฝุ่น", "hint": "phɛ́ɛ fùn" },
+                        { "en": "allergic to milk", "th": "แพ้ นม", "hint": "phɛ́ɛ nom" },
+                        { "en": "allergic to seafood", "th": "แพ้ อาหาร ทะเล", "hint": "aa-hǎan thá-lee" },
+                        { "en": "allergic to pollen", "th": "แพ้ เกสร ดอกไม้", "hint": "phɛ́ɛ gee-sɔ̌ɔn dɔ̀ɔk-mái" },
+                        { "en": "allergic to peanut", "th": "แพ้ ถั่ว", "hint": "phɛ́ɛ tùa" },
+                        { "en": "Coeliac disease", "th": "แพ้ กลูเตน", "hint": "phɛ́ɛ gluu-dteen" },
+                        { "en": "What's your symptom ?", "th": "คุณ เป็น อะไร คะ", "hint": "khun bpen à-rai khá" },
+                        { "en": "My eyes are sore.", "th": "ผม เจ็บ ตา ครับ", "hint": "phǒm jèp dtàa khráp" },
+                        { "en": "How long have your eyes been sore?", "th": "คุณ เจ็บ ตา มา นาน เท่า ไหร่ แล้ว คะ", "hint": "khun jèp dtaa maa naan thâw-rài lɛ́ɛw khá" },
+                        { "en": "My eyes had been sore for 2 days.", "th": "ผม เจ็บ ตา มา 2 วันแล้วครับ", "hint": "phǒm jèp dtaa maa sɔ̌ɔŋ wan lɛ́ɛw khráp" },
+                        { "en": "What's your symptom ?", "th": "คุณ เป็นอะไรครับ", "hint": "khun bpen à-rai khráp" },
+                        { "en": "I have diarrhea , a stomachache , and I've been vomiting", "th": "ฉัน ท้องเสีย ปวดท้อง และ อาเจียน ค่ะ", "hint": "chǎn thɔ́ɔŋ-sǐa bpùat tɔ́ɔŋ lɛ́ aa-jian khâ" },
+                        { "en": "I have had these symptoms for a week.", "th": "ฉัน มี อาการ มา อาทิตย์ แล้ว ค่ะ", "hint": "chǎn mii aa-gaan maa nɯŋ aa - thít lɛ́ɛw khâ" },
+                        { "en": "I have a stomach ache because I ate too much", "th": "ผม ปวด ท้อง เพราะ ว่า ผม กิน เยอะ เกิน ไป", "hint": "phǒm bpùat thɔ́ɔŋ phrɔ́-wâa gin yə́ gəən-bpai" },
                         { "en": "Why do you have a headache?", "th": "ทําไมคุณปวดหัว", "hint": "tham-mai khun bpùat hǔa" },
-                        { "en": "I have a headache because I have been using my computer too much.", "th": "ผมปวดหัวเพราะว่าใช้คอมพิวเตอร์มากเกินไป", "hint": "phǒm bpùat hǔa phrɔ́-wâa chái khɔɔm-piw-dtəə mâak gəən-bpai" },
-                        { "en": "Why does she have diarrhea?", "th": "ทําไมเขาท้องเสีย", "hint": "tham-mai khǎw thɔ́ɔŋ-sǐa" },
-                        { "en": "She has diarrhea because she ate too much spicy food", "th": "เขาท้องเสียเพราะว่าเขากินอาหารเผ็ดมากเกินไป", "hint": "khǎw thɔ́ɔŋ-sǐa phrɔ́-wâa khǎw gin aa-hǎan phèt mâakgəən-bpai" },
-                        { "en": "Why couldn't your brother sleep last night ?", "th": "ทําไมเมื&อคืนพี&ชายของคุณนอนไม่หลับ", "hint": "tham-mai mɯ̂a-kɯɯn phîi-chaai khɔ̌ɔng kun nɔɔn-mâi-làp" },
-                        { "en": "He could not sleep because he drank too much coffee yesterday.", "th": "เขานอนไม่หลับเพราะว่าเมื&อวานเขาดื&มกาแฟมากเกินไป", "hint": "khǎw nɔɔn-mâi-làp phrɔ́-wâa mɯ̂a-waan khǎw dɯɯm gaa - fɛɛmâak gəən - bpai" },
-                        { "en": "I don't feel well.", "th": "ฉันรู้สึกไม่สบาย", "hint": "wan-níi chǎn rúu-sɯk mâi sà-baay" },
-                        { "en": "I feel good.", "th": "วันนีฉันรู ้สก ึดี", "hint": "wan-níi chǎn rúu-sɯk dii!" },
-                        { "en": "I have a headache.", "th": "ฉันรู ้สก ึปวดหัวมาก", "hint": "chǎn rúu-sɯk bpùat - hǔa mâak" },
-                        { "en": "I feel tired.", "th": "ฉันรู ้สก ึเหนือย", "hint": "chǎn rúu-sɯk nɯay" },
-                        { "en": "I'm aching all over.", "th": "ผมเมือย(ทัง)ตัว", "hint": "phǒm mɯ̂ay tháŋ dtua" },
-                        { "en": "I have a stomach ache.", "th": "ผมปวดท้อง", "hint": "phǒm bpùat-thɔ́ɔŋ" },
-                        { "en": "I have a sore throat", "th": "ฉันเจ็บคอ", "hint": "chǎn jèp khɔɔ" },
-                        { "en": "I have a cold", "th": "ผมเป็นหวัด", "hint": "phǒm bpen wàt" },
-                        { "en": "I have a fever", "th": "ฉันมีไข้", "hint": "chǎn mii khâi" },
-                        { "en": "I have a cough", "th": "ผมไอ", "hint": "phǒm ai" },
-                        { "en": "I have diarrhea", "th": "ผมท้องเสีย", "hint": "phǒm thɔ́ɔŋ sǐa" },
-                        { "en": "I have food poisoning", "th": "ฉันอาหารเป็นพิษ", "hint": "chǎn aahǎan bpen-phít" },
-                        { "en": "I am dizzy", "th": "ฉันเวียนหัว", "hint": "chǎn wian-hǔa" },
-                        { "en": "I am nauseous", "th": "ฉันคลืนไส้", "hint": "chǎn khlʉ̂ʉn sâi" },
-                        { "en": "I vomited", "th": "ฉันอาเจียน", "hint": "chǎn aa-jian" },
-                        { "en": "I have a runny nose.", "th": "ผมมีนํามูก", "hint": "phǒm mii náam-mûuk" },
-                        { "en": "I am sick", "th": "ฉันป่วย", "hint": "chǎn bpùai" },
-                        { "en": "I have a headache", "th": "ฉันปวดหัว", "hint": "chǎn bpùat hǔa" },
-                        { "en": "I have a toothache", "th": "ฉันปวดฟัน", "hint": "chǎn bpùat fan" },
-                        { "en": "I have a stomachache", "th": "ฉันปวดท้อง", "hint": "chǎn bpùat thɔ́ɔŋ" },
-                        { "en": "I have a backache", "th": "ฉันปวดหลัง", "hint": "chǎn bpùat lǎŋ" },
-                        { "en": "I have an earache", "th": "ฉันปวดหู", "hint": "chǎn bpùat hǔu" },
-                        { "en": "What's wrong?", "th": "คุณเป็นอะไรคะคุณดูไม่สบาย", "hint": "khun bpen àrai khá, khun duu mâi sà-baay" },
-                        { "en": "I have covid.", "th": "ผมติดโควิด", "hint": "phǒm dtìt Covid" },
-                        { "en": "My arm hurts.", "th": "ผมเจ็บแขน", "hint": "phǒm jèp khɛ̌ ɛn!" },
-                        { "en": "I have diarrhea all day.", "th": "ผมท้องเสียทังวัน", "hint": "phǒm thɔ́ɔŋ-sǐa tháŋ wan!" },
-                        { "en": "I have had a cold for many days", "th": "ผมเป็นหวัดหลายวันแล้ว", "hint": "phǒm bpen-wàt lǎay wan lɛ́ɛw!" },
-                        { "en": "I cough and have a sore throat", "th": "ผมไอและเจ็บคอมาก", "hint": "phǒm ai lɛ́ jèp khɔɔ mâak" },
-                        { "en": "What's your symptom ?", "th": "คุณเป็นอะไรคะ", "hint": "khun bpen à-rai khá" },
-                        { "en": "Do you have a sore throat ?", "th": "คุณเจ็บคอไหมคะ", "hint": "khun jèp khɔɔ mái khá" },
-                        { "en": "Do you have a headache ?", "th": "คุณปวดหัวไหมคะ", "hint": "khun bpùat hǔa mǎi khá" },
-                        { "en": "Do you have a fever?", "th": "คุณมีไข้ไหมคะ", "hint": "kun mii khâi mǎi khá" }
+                        { "en": "I have a headache because I have been using my computer too much.", "th": "ผม ปวด หัว เพราะ ว่า ใช้ คอมพิวเตอร์ มาก เกิน ไป", "hint": "phǒm bpùat hǔa phrɔ́-wâa chái khɔɔm-piw-dtəə mâak gəən-bpai" },
+                        { "en": "Why does she have diarrhea?", "th": "ทําไม เขา ท้องเสีย", "hint": "tham-mai khǎw thɔ́ɔŋ-sǐa" },
+                        { "en": "She has diarrhea because she ate too much spicy food", "th": "เขา ท้องเสีย เพราะว่า เขา กิน อาหาร เผ็ด มากเกินไป", "hint": "khǎw thɔ́ɔŋ-sǐa phrɔ́-wâa khǎw gin aa-hǎan phèt mâakgəən-bpai" },
+                        { "en": "Why couldn't your brother sleep last night ?", "th": "ทําไม เมื่อคืน พี่ชาย ของ คุณ นอน ไม่หลับ", "hint": "tham-mai mɯ̂a-kɯɯn phîi-chaai khɔ̌ɔng kun nɔɔn-mâi-làp" },
+                        { "en": "He could not sleep because he drank too much coffee yesterday.", "th": "เขา นอนไม่หลับ เพราะว่า เมื่อวาน เขา ดื่ม กาแฟมาก เกิน ไป", "hint": "khǎw nɔɔn-mâi-làp phrɔ́-wâa mɯ̂a-waan khǎw dɯɯm gaa - fɛɛmâak gəən - bpai" },
+                        { "en": "I don't feel well.", "th": "ฉันรู้สึก ไม่ สบาย", "hint": "wan-níi chǎn rúu-sɯk mâi sà-baay" },
+                        { "en": "I feel good.", "th": "วัน นี ฉัน รู้สึก ดี", "hint": "wan-níi chǎn rúu-sɯk dii" },
+                        { "en": "I have a headache.", "th": "ฉัน รู้สึก ปวด หัว มาก", "hint": "chǎn rúu-sɯk bpùat - hǔa mâak" },
+                        { "en": "I feel tired.", "th": "ฉัน รู้สึก เหนื่อย", "hint": "chǎn rúu-sɯk nɯay" },
+                        { "en": "I'm aching all over.", "th": "ผม เมื่อย(ทั้ง)ตัว", "hint": "phǒm mɯ̂ay tháŋ dtua" },
+                        { "en": "I have a stomach ache.", "th": "ผม ปวด ท้อง", "hint": "phǒm bpùat-thɔ́ɔŋ" },
+                        { "en": "I have a sore throat", "th": "ฉัน เจ็บ คอ", "hint": "chǎn jèp khɔɔ" },
+                        { "en": "I have a cold", "th": "ผม เป็น หวัด", "hint": "phǒm bpen wàt" },
+                        { "en": "I have a fever", "th": "ฉัน มี ไข้", "hint": "chǎn mii khâi" },
+                        { "en": "I have a cough", "th": "ผม ไอ", "hint": "phǒm ai" },
+                        { "en": "I have diarrhea", "th": "ผม ท้อง เสีย", "hint": "phǒm thɔ́ɔŋ sǐa" },
+                        { "en": "I have food poisoning", "th": "ฉัน อาหาร เป็น พิษ", "hint": "chǎn aahǎan bpen-phít" },
+                        { "en": "I am dizzy", "th": "ฉัน เวียน หัว", "hint": "chǎn wian-hǔa" },
+                        { "en": "I am nauseous", "th": "ฉัน คลืน ไส้", "hint": "chǎn khlʉ̂ʉn sâi" },
+                        { "en": "I vomited", "th": "ฉัน อา เจียน", "hint": "chǎn aa-jian" },
+                        { "en": "I have a runny nose.", "th": "ผม มี นํามูก", "hint": "phǒm mii náam-mûuk" },
+                        { "en": "I am sick", "th": "ฉัน ป่วย", "hint": "chǎn bpùai" },
+                        { "en": "I have a headache", "th": "ฉัน ปวด หัว", "hint": "chǎn bpùat hǔa" },
+                        { "en": "I have a toothache", "th": "ฉัน ปวด ฟัน", "hint": "chǎn bpùat fan" },
+                        { "en": "I have a stomachache", "th": "ฉัน ปวด ท้อง", "hint": "chǎn bpùat thɔ́ɔŋ" },
+                        { "en": "I have a backache", "th": "ฉัน ปวด หลัง", "hint": "chǎn bpùat lǎŋ" },
+                        { "en": "I have an earache", "th": "ฉัน ปวด หู", "hint": "chǎn bpùat hǔu" },
+                        { "en": "What's wrong?", "th": "คุณ เป็น อะไร คะ คุณ ดู ไม่ สบาย", "hint": "khun bpen àrai khá, khun duu mâi sà-baay" },
+                        { "en": "I have covid.", "th": "ผม ติด โควิด", "hint": "phǒm dtìt Covid" },
+                        { "en": "My arm hurts.", "th": "ผม เจ็บ แขน", "hint": "phǒm jèp khɛ̌ ɛn!" },
+                        { "en": "I have diarrhea all day.", "th": "ผม ท้อง เสีย ทั้ง วัน", "hint": "phǒm thɔ́ɔŋ-sǐa tháŋ wan!" },
+                        { "en": "I have had a cold for many days", "th": "ผม เป็น หวัด หลาย วัน แล้ว", "hint": "phǒm bpen-wàt lǎay wan lɛ́ɛw!" },
+                        { "en": "I cough and have a sore throat", "th": "ผม ไอ และ เจ็บ คอ มาก", "hint": "phǒm ai lɛ́ jèp khɔɔ mâak" },
+                        { "en": "What's your symptom ?", "th": "คุณ เป็น อะไร คะ", "hint": "khun bpen à-rai khá" },
+                        { "en": "Do you have a sore throat ?", "th": "คุณ เจ็บ คอ ไหม คะ", "hint": "khun jèp khɔɔ mái khá" },
+                        { "en": "Do you have a headache ?", "th": "คุณ ปวด หัว ไหม คะ", "hint": "khun bpùat hǔa mǎi khá" },
+                        { "en": "Do you have a fever?", "th": "คุณ มี ไข้ ไหม คะ", "hint": "kun mii khâi mǎi khá" }
                     ]
             },
             {
@@ -1211,95 +1213,104 @@ const books = [
                 ],
                 "structure":
                     [
-                        { "en": "Where will you go (travelling) this holiday?", "th": "วันหยุดนีคุณจะไปเทียวทีไหน", "hint": "Wan-yùt níi khun jà bpai thîaw thîi-nǎi" },
-                        { "en": "I will go to the sea(beach) with my family.", "th": "ผมจะไปเทียวทะเลกับครอบครัวครับ", "hint": "phǒm jà bpai-tîaw thá-lee gàp khrɔ̂ɔp-khrua khráp" },
-                        { "en": "Where are you going (to travel) this weekend?", "th": "วันเสาร์อาทิตย์นีคุณจะไปเทียวทีไหนครับ", "hint": "wan-sǎaw aa-thít níi khun jà bpai-thîaw thîi-nǎi khráp" },
-                        { "en": "I will go to Suthep Mountain with my friend because the weather is good this month.", "th": "ฉันจะไปเทียวดอยสุเทพกับเพือนค่ะเพราะเดือนนีอากาศดี", "hint": "chǎn jà bpai-thîaw dɔɔi sù-thêep gàp phɯ̂an khâ phrɔ́ dɯan níi aa-gàat dii" },
-                        { "en": "Where will you go (traveling) next month ?", "th": "เดือนหน้าคุณจะไปเทียวทีไหนครับ", "hint": "dɯan nâa khun jà bpai-thîaw thîi-nǎi khráp" },
-                        { "en": "I will go hiking with my husband. And now there are not much tourist.", "th": "ฉันจะไปเดินป่ากับสามีคะตอนนีนักท่องเทียวน้อย", "hint": "chǎn jà bpai dəən bpàa gàp sǎa-mii khâ dtɔɔn-níi nák- thɔ̂ɔŋ - thîaw nɔ́ɔy" },
-                        { "en": "What country do you want to visit the most ?", "th": "คุณอยากไปเทียวประเทศอะไรมากทีสดคะ", "hint": "khun yàak bpai-thîaw bprà-thêet à-rai mâak thîi-sùt khá" },
-                        { "en": "I want to visit Japan the most.", "th": "ผมอยากไปเทียวประเทศญีปนมากทีสดครับ", "hint": "phǒm yàak bpai-thîaw bprà-thêet yîi-bpùn mâak thîi-sùt khráp!" },
-                        { "en": "Why?", "th": "ทําไมคะ", "hint": "tham-mai khá" },
-                        { "en": "Because the weather is not hot and the food is delicious", "th": "เพราะอากาศไม่ร้อนและอาหารอร่อยค่ะ", "hint": "phrɔ́ aa-gàat mâi rɔ́ɔn lɛ́ aa-hǎan à-rɔ̀ɔy khâ" },
-                        { "en": "What province do you want to visit the most? why?", "th": "คุณอยากไปเทียวจังหวัดอะไรมากทีสดทําไมคะ", "hint": "khun yàak bpai-thîaw jaŋ-wàt à-rai mâak thîi-sùt tham-mai khá" },
-                        { "en": "I want to visit Phuket the most.because I have never been there.", "th": "ฉันอยากไปเทียวจังหวัดภูเก็ตมากทีสดค่ะเพราะฉันยังไม่เคยไปทีนนค่ะ", "hint": "chǎn yàak bpai-thîaw jaŋ-wàt puu-gèt mâak thîi-sùt khâ phrɔ́ chǎn yaŋ mâi kəəy bpai thîi-nân khâ!" },
-                        { "en": "Have you ever been to Bangkok?", "th": "คุณเคยไปกรุงเทพฯไหม", "hint": "Khun khəəy bpai grung-thêep mǎi" },
-                        { "en": "Have you ever been to Australia?", "th": "คุณเคยไป(ประเทศ)ออสเตรเลียไหม", "hint": "khun khəəy bpai bprà-thêet ɔ̀ɔt-dtree-lia mǎi" },
-                        { "en": "Have you ever seen an elephant?", "th": "คุณเคยเห็นช้างไหม", "hint": "khun kəəy hěn cháang mǎi" },
-                        { "en": "What countries have you been to?", "th": "คุณเคยไปประเทศอะไรบ้าง", "hint": "khun khəəy bpai bprà-thêet à-rai bâaŋ" },
-                        { "en": "I have been to Japan, France, and Italy.", "th": "ผมเคยไปประเทศญีปนฝรังเศสและอิตาลี", "hint": "phǒm khəəy bpai bprà-thêet yîi-bpùn fà-ràng-sèet lɛ́ ì-dtaa-lîi" },
-                        { "en": "What provinces have you been to?", "th": "คุณเคยไปจังหวัดอะไรบ้าง", "hint": "khun khəəy bpai jaŋ-wàt à-rai bâaŋ" },
-                        { "en": "I have been to Chiang Rai , Lampang , and Nan.", "th": "ผมเคยไปจังหวัดเชียงรายลําปางและน่าน", "hint": "phǒm khəəy bpai jaŋ-wàt chiaŋ-raai lam-bpaaŋ lɛ́ nâan" },
-                        { "en": "I have been to many countries.", "th": "ผมเคยไปหลายประเทศ", "hint": "phǒm khəəy bpai lǎay bprà-thêet" },
-                        { "en": "What region is Bangkok (located) in?", "th": "กรุงเทพฯอยูภาคอะไรคะ", "hint": "gruŋ-thêep yùu phâak à-rai khá" },
-                        { "en": "Bangkok is (located) in the central region.", "th": "กรุงเทพฯอยูภาคกลางครับ", "hint": "gruŋ-thêep yùu phâak glaaŋ khráp" },
-                        { "en": "What region is the state of California (located) in?", "th": "รัฐแคลิฟอร์เนียอยูภาคอะไรคะ", "hint": "rát khɛɛ-lí-fɔɔ-nia yùu phâak à-rai khá" },
-                        { "en": "California state is (located) in the western region.", "th": "รัฐแคลิฟอร์เนียอยูภาคตะวันตกครับ", "hint": "rát khɛɛ-lí-fɔɔ-nia yùu phâak dta-wan dtòk khráp" },
-                        { "en": "What region is Shanghai (located) in ?", "th": "เมืองเซียงไฮ้อยูภาคอะไรคะ", "hint": "mɯaŋ sîaŋ-hái yùu phâak à-rai khá" },
-                        { "en": "Shanghai is (located) in eastern region.", "th": "เมืองเซียงไฮ้อยูภาคตะวันออกครับ", "hint": "mɯaŋ sîaŋ-hái yùu phâak dtà-wan ɔ̀ɔk khráp" },
+                        { "en": "Where will you go (travelling) this holiday?", "th": "วันหยุด นี คุณ จะ ไป เทียว ที ไหน", "hint": "Wan-yùt níi khun jà bpai thîaw thîi-nǎi" },
+                        { "en": "I will go to the sea(beach) with my family.", "th": "ผม จะ ไป เทียว ทะเล กับ ครอบครัว ครับ", "hint": "phǒm jà bpai-tîaw thá-lee gàp khrɔ̂ɔp-khrua khráp" },
+                        { "en": "Where are you going (to travel) this weekend?", "th": "วันเสาร์ อาทิตย์ นี คุณ จะ ไป เทียว ที ไหน ครับ", "hint": "wan-sǎaw aa-thít níi khun jà bpai-thîaw thîi-nǎi khráp" },
+                        { "en": "I will go to Suthep Mountain with my friend because the weather is good this month.", "th": "ฉัน จะ ไป เทียว ดอย สุเทพ กับ เพื่อน ค่ะ เพราะ เดือน นี้ อากาศ ดี", "hint": "chǎn jà bpai-thîaw dɔɔi sù-thêep gàp phɯ̂an khâ phrɔ́ dɯan níi aa-gàat dii" },
+                        { "en": "Where will you go (traveling) next month ?", "th": "เดือน หน้า คุณ จะ ไป เทียว ที ไหน ครับ", "hint": "dɯan nâa khun jà bpai-thîaw thîi-nǎi khráp" },
+                        { "en": "I will go hiking with my husband. And now there are not much tourist.", "th": "ฉัน จะ ไป เดิน ป่า กับ สามี ค่ะ ตอน นี้ นัก ท่อง เที่ยว น้อย", "hint": "chǎn jà bpai dəən bpàa gàp sǎa-mii khâ dtɔɔn-níi nák- thɔ̂ɔŋ - thîaw nɔ́ɔy" },
+                        { "en": "What country do you want to visit the most ?", "th": "คุณ อยาก ไป เทียว ประเทศ อะไร มาก ที่สุด คะ", "hint": "khun yàak bpai-thîaw bprà-thêet à-rai mâak thîi-sùt khá" },
+                        { "en": "I want to visit Japan the most.", "th": "ผม อยาก ไป เทียว ประเทศ ญี่ปุ่น มาก ที่สุด ครับ", "hint": "phǒm yàak bpai-thîaw bprà-thêet yîi-bpùn mâak thîi-sùt khráp!" },
+                        { "en": "Why?", "th": "ทำไม คะ", "hint": "tham-mai khá" },
+                        { "en": "Because the weather is not hot and the food is delicious", "th": "เพราะ อากาศ ไม่ร้อน และ อาหาร อร่อย ค่ะ", "hint": "phrɔ́ aa-gàat mâi rɔ́ɔn lɛ́ aa-hǎan à-rɔ̀ɔy khâ" },
+                        { "en": "What province do you want to visit the most? why?", "th": "คุณ อยาก ไปเทียว จังหวัด อะไร มาก ทีสด ทําไม คะ", "hint": "khun yàak bpai-thîaw jaŋ-wàt à-rai mâak thîi-sùt tham-mai khá" },
+                        { "en": "I want to visit Phuket the most.because I have never been there.", "th": "ฉัน อยาก ไปเทียว จังหวัด ภูเก็ต มาก ทีสด ค่ะ เพราะ ฉัน ยัง ไม่ เคย ไปทีนน ค่ะ", "hint": "chǎn yàak bpai-thîaw jaŋ-wàt puu-gèt mâak thîi-sùt kha" },
+                        { "en": "I want to visit Phuket the most.because I have never been there.", "th": "ฉัน อยาก ไปเทียว จังหวัด ภูเก็ต มาก ที่สุด ค่ะ เพราะ ฉัน ยัง ไม่ เคย ไปที่นั่น ค่ะ", "hint": "chǎn yàak bpai-thîaw jaŋ-wàt puu-gèt mâak thîi-sùt khâ phrɔ́ chǎn yaŋ mâi kəəy bpai thîi-nân khâ!" },
+                        { "en": "Have you ever been to Bangkok?", "th": "คุณ เคย ไป กรุงเทพฯ ไหม", "hint": "Khun khəəy bpai grung-thêep mǎi" },
+                        { "en": "Have you ever been to Australia?", "th": "คุณ เคย ไป ประเทศ ออสเตรเลีย ไหม", "hint": "khun khəəy bpai bprà-thêet ɔ̀ɔt-dtree-lia mǎi" },
+                        { "en": "Have you ever seen an elephant?", "th": "คุณ เคย เห็น ช้าง ไหม", "hint": "khun kəəy hěn cháang mǎi" },
+                        { "en": "What countries have you been to?", "th": "คุณ เคย ไป ประเทศ อะไร บ้าง", "hint": "khun khəəy bpai bprà-thêet à-rai bâaŋ" },
+                        { "en": "I have been to Japan, France, and Italy.", "th": "ผม เคย ไป ประเทศ ญี่ปุ่น ฝรั่งเศส และ อิตาลี", "hint": "phǒm khəəy bpai bprà-thêet yîi-bpùn fà-ràng-sèet lɛ́ ì-dtaa-lîi" },
+                        { "en": "What provinces have you been to?", "th": "คุณ เคย ไป จังหวัด อะไร บ้าง", "hint": "khun khəəy bpai jaŋ-wàt à-rai bâaŋ" },
+                        { "en": "I have been to Chiang Rai , Lampang , and Nan.", "th": "ผม เคย ไป จังหวัด เชียงราย ลําปาง และ น่าน", "hint": "phǒm khəəy bpai jaŋ-wàt chiaŋ-raai lam-bpaaŋ lɛ́ nâan" },
+                        { "en": "I have been to many countries.", "th": "ผม เคย ไป หลาย ประเทศ", "hint": "phǒm khəəy bpai lǎay bprà-thêet" },
+                        { "en": "What region is Bangkok (located) in?", "th": "กรุงเทพฯ อยู่ ภาค อะไร คะ", "hint": "gruŋ-thêep yùu phâak à-rai khá" },
+                        { "en": "Bangkok is (located) in the central region.", "th": "กรุงเทพฯ อยู่ ภาค กลาง ครับ", "hint": "gruŋ-thêep yùu phâak glaaŋ khráp" },
+                        { "en": "What region is the state of California (located) in?", "th": "รัฐ แคลิฟอร์เนีย อยู่ ภาค อะไร คะ", "hint": "rát khɛɛ-lí-fɔɔ-nia yùu phâak à-rai khá" },
+                        { "en": "California state is (located) in the western region.", "th": "รัฐ แคลิฟอร์เนีย อยู่ ภาค ตะวันตก ครับ", "hint": "rát khɛɛ-lí-fɔɔ-nia yùu phâak dta-wan dtòk khráp" },
+                        { "en": "What region is Shanghai (located) in ?", "th": "เมือง เซียงไฮ้อยูภาคอะไร คะ", "hint": "mɯaŋ sîaŋ-hái yùu phâak à-rai khá" },
+                        { "en": "Shanghai is (located) in eastern region.", "th": "เมือง เซียงไฮ้ อยูภาค ตะวันออก ครับ", "hint": "mɯaŋ sîaŋ-hái yùu phâak dtà-wan ɔ̀ɔk khráp" },
                         // long para
-                        { "en": "Northern Thailand has the northern provinces adjacent to Burma.", "th": "ภาคเหนือของประเทศไทยมีจังหวัดภาคเหนือติดกับประเทศพม่า", "hint": "" },
-                        { "en": "There are many mountains and trees here, but there is no sea.", "th": "ที่นี่มีภูเขาและต้นไม้มากมายแต่ไม่มีทะเล", "hint": "" },
-                        { "en": "The weather is colder than other regions.", "th": "อากาศจะหนาวเย็นกว่าภาคอื่นๆ", "hint": "" },
-                        { "en": "People in the North speak the northern dialect and Thai.", "th": "คนภาคเหนือพูดภาษาเหนือและภาษาไทย", "hint": "" },
-                        { "en": "Northern food is not spicy and has a lot of vegetables.", "th": "อาหารเหนือไม่เผ็ดและมีผักเยอะ", "hint": "" },
-                        { "en": "In winter, the weather in the North is very cold, but there is no snow.", "th": "ในฤดูหนาวอากาศทางภาคเหนือหนาวมากแต่ไม่มีหิมะ", "hint": "" },
-                        { "en": "During this time, there are many tourists and most of them travel on the mountains.", "th": "ในช่วงนี้มีนักท่องเที่ยวจำนวนมาก โดยส่วนใหญ่จะเดินทางบนภูเขา", "hint": "" },
+                        { "en": "Northern Thailand has the northern provinces adjacent to Burma.", "th": "ภาคเหนือ ของ ประเทศไทย มี จังหวัด ภาคเหนือ ติดกับ ประเทศพม่า", "hint": "" },
+                        { "en": "There are many mountains and trees here, but there is no sea.", "th": "ที่ นี่ มีภูเขา และ ต้นไม้ มาก มาย แต่ ไม่ มี ทะเล", "hint": "" },
+                        { "en": "The weather is colder than other regions.", "th": "อากาศ จะ หนาว เย็น กว่า ภาค อื่นๆ", "hint": "" },
+                        { "en": "People in the North speak the northern dialect and Thai.", "th": "คน ภาค เหนือ พูด ภาษาเหนือ และ ภาษาไทย", "hint": "" },
+                        { "en": "Northern food is not spicy and has a lot of vegetables.", "th": "อาหารเหนือ ไม่ เผ็ด และ มี ผัก เยอะ", "hint": "" },
+                        { "en": "In winter, the weather in the North is very cold, but there is no snow.", "th": "ใน ฤดู หนาว อากาศ ทาง ภาค เหนือ หนาว มาก แต่ ไม่มี หิมะ", "hint": "" },
+                        { "en": "During this time, there are many tourists and most of them travel on the mountains.", "th": "ใน ช่วง นี้ มี นัก ท่องเที่ยว จำนวน มาก โดย ส่วน ใหญ่ จะ เดินทาง บน ภูเขา", "hint": "" },
+
                         {
                             "en": "Northern Thailand has the northern provinces adjacent to Burma. There are many mountains and trees here, but there is no sea. The weather is colder than other regions. People in the North speak the northern dialect and Thai. Northern food is not spicy and has a lot of vegetables. In winter, the weather in the North is very cold, but there is no snow. During this time, there are many tourists and most of them travel on the mountains.",
-                            "th": "ภาคเหนือของประเทศไทยมีจังหวัดภาคเหนืออยูต ่ด ิกับประเทศพม่าทีนีมีภเขาเยอะมีต้นไม้เยอะแต่ไม่มีทะเลอากาศหนาวกว่าภาคอืนคนภาคเหนือพูดภาษาเหนือและภาษาไทยอาหารภาคเหนือไม่ เผ็ดและใส่ผก ัเยอะฤดูหนาวภาคเหนืออากาศหนาวมากแต่ไม่มีหิมะช่วงนีมีนกท่องเทียวเยอะและส่วนใหญ่จะเทียวบนดอย",
-                            "hint": "phâak-nɯ̌ɯ khɔ̌ɔŋ bprà-thêet thai mii 8 jaŋ-wàt phâak-nɯ̌ɯ yùu dtìt-gàp bprà-thêet phá-mâa thîi-nîi mii phuu-khǎw yə́ mii dtôn-mái yə́ dtɛ̀ɛ mâi mii thá-lee aa-gàat nǎaw gwàa phâak ɯɯn khon phâak-nɯ̌ɯ phûut phaa-sǎa nɯ̌ɯ lɛ́ phaa-sǎa thai aa-hǎan phâak-nɯ̌ɯ mâi phèt lɛ́ sài phàk yə́ nai rɯ-duu nǎaw phâak-nɯ̌ɯ aa-gàat nǎaw mâak dtɛ̀ɛ mâi mii hì-má chûang-níi mii nák-thɔ̂ɔng-thîaw yə́ lɛ́ sùan-yài jà thîaw bon dɔɔy"
+                            "th": "ภาค เหนือ ของ ประเทศไทย มี จังหวัด ภาคเหนือ ติดกับ ประเทศพม่า ที่นี่ มี ภูเขา เยอะ มี ต้นไม้ เยอะ แต่ ไม่มี ทะเล อากาศ หนาว กว่า ภาค อื่น คน ภาค เหนือ พูด ภาษาเหนือ และ ภาษาไทย อาหาร ภาค เหนือ ไม่ เผ็ด และ ใส่ ผัก เยอะ ฤดู หนาว ภาค เหนือ อากาศ หนาว มาก แต่ ไม่มี หิมะ ช่วง นี้ มี นัก ท่องเที่ยว เยอะ และ ส่วนใหญ่ จะ ท่องเที่ยว บน ดอย",
+                            "hint": "phâak-nɯ̌ɯ khɔ̌ɔŋ bprà-thêet thai mii 8 jaŋ-wàt phâak-nɯ̌ɯ yùu dtìt-gàp bprà-thêet phá-mâa thîi-nîi m"
                         },
-                        { "en": "The eastern region of Thailand is adjacent to Cambodia.", "th": "ภาคตะวันออกของประเทศไทยติดกับประเทศกัมพูชา", "hint": "" },
-                        { "en": "The weather is hot and humid.", "th": "อากาศร้อนและชื้น", "hint": "" },
-                        { "en": "There are many beaches and islands.", "th": "มีชายหาดและเกาะต่างๆ มากมาย", "hint": "" },
-                        { "en": "The sea is very beautiful.", "th": "ทะเลสวยมาก.", "hint": "" },
-                        { "en": "The eastern region has many tourists, but it is not as crowded as the central region.", "th": "ภาคตะวันออกมีนักท่องเที่ยวจำนวนมากแต่ไม่หนาแน่นเท่าภาคกลาง", "hint": "" },
-                        { "en": "The eastern dialect is similar to the central dialect.", "th": "ภาษาถิ่นตะวันออกก็คล้ายคลึงกับภาษาถิ่นกลาง", "hint": "" },
+
+                        { "en": "During this time, there are many tourists and most of them travel on the mountains.", "th": "ใน ช่วง นี้ มี นัก ท่องเที่ยว จำนวน มาก โดย ส่วน ใหญ่ จะ เดินทาง บน ภูเขา", "hint": "" },
+                        {
+                            "en": "Northern Thailand has the northern provinces adjacent to Burma. There are many mountains and trees here, but there is no sea. The weather is colder than other regions. People in the North speak the northern dialect and Thai. Northern food is not spicy and has a lot of vegetables. In winter, the weather in the North is very cold, but there is no snow. During this time, there are many tourists and most of them travel on the mountains.",
+                            "th": "ภาค เหนือ ของ ประเทศไทย มี จังหวัด ภาคเหนือ ติดกับ ประเทศพม่า ที่นี่ มี ภูเขา เยอะ มี ต้นไม้ เยอะ แต่ ไม่มี ทะเล อากาศ หนาว กว่า ภาค อื่น คน ภาค เหนือ พูด ภาษาเหนือ และ ภาษาไทย อาหาร ภาค เหนือ ไม่ เผ็ด และ ใส่ ผัก เยอะ ฤดู หนาว ภาค เหนือ อากาศ หนาว มาก แต่ ไม่มี หิมะ ช่วง นี้ มี นัก ท่องเที่ยว เยอะ และ ส่วนใหญ่ จะ ท่องเที่ยว บน ดอย",
+                            "hint": "phâak-nɯ̌ɯ khɔ̌ɔŋ bprà-thêet thai mii 8 jaŋ-wàt phâak-nɯ̌ɯ yùu dtìt-gàp bprà-thêet phá-mâa thîi-nîi m"
+                        },
+                        { "en": "The eastern region of Thailand is adjacent to Cambodia.", "th": "ภาค ตะวันออก ของ ประเทศไทย ติด กับ ประเทศ กัมพูชา", "hint": "" },
+                        { "en": "The weather is hot and humid.", "th": "อากาศ ร้อน และ ชื้น", "hint": "" },
+                        { "en": "There are many beaches and islands.", "th": "มี ชายหาด และ เกาะ ต่างๆ มากมาย", "hint": "" },
+                        { "en": "The sea is very beautiful.", "th": "ทะเล สวย มาก.", "hint": "" },
+                        { "en": "The eastern region has many tourists, but it is not as crowded as the central region.", "th": "ภาค ตะวันออก มี นัก ท่องเที่ยว จำนวน มาก แต่ ไม่ หนาแน่น เท่า ภาค กลาง", "hint": "" },
+                        { "en": "The eastern dialect is similar to the central dialect.", "th": "ภาษา ถิ่น ตะวันออก ก็ คล้าย คลึง กับ ภาษา ถิ่น กลาง", "hint": "" },
                         {
                             "en": "The eastern region of Thailand is adjacent to Cambodia. The weather is hot and humid. There are many beaches and islands. The sea is very beautiful. The eastern region has many tourists, but it is not as crowded as the central region. The eastern dialect is similar to the central dialect.",
                             "th": "ภาคตะวันออกของประเทศไทยอยูต ่ด ิกับประเทศกัมพูชาอากาศร้อนและชืนมีชายหาดและเกาะเยอะทะเลสวยมากภาคตะวันออกมีนกท่องเทียวเยอะแต่ว่าไม่เยอะเท่าภาคกลางภาษาอีสานคล้ายกับภาษาไทยกลาง",
                             "hint": ""
                         },
-                        { "en": "Southern Thailand is adjacent to Malaysia.", "th": "ภาคใต้ของประเทศไทยติดกับประเทศมาเลเซีย", "hint": "" },
-                        { "en": "There are beautiful seas and many islands.", "th": "มีทะเลสวยงามและเกาะมากมาย", "hint": "" },
-                        { "en": "Interestingly, the South has more rain than other regions.", "th": "ที่น่าสนใจคือภาคใต้มีฝนตกมากกว่าภาคอื่น", "hint": "" },
-                        { "en": "The islands are very beautiful, which attracts many foreign tourists.", "th": "หมู่เกาะมีความสวยงามมากซึ่งดึงดูดนักท่องเที่ยวชาวต่างชาติจำนวนมาก", "hint": "" },
-                        { "en": "People there speak southern dialect.", "th": "คนแถวนั้นพูดภาษาถิ่นใต้", "hint": "" },
-                        { "en": "Southern dialect is spoken quickly and is difficult to listen to, but if you go there, you will really like it.", "th": "ภาษาถิ่นใต้พูดเร็วและฟังยาก แต่ถ้าคุณไปที่นั่นคุณจะชอบมันจริงๆ", "hint": "" },
+                        { "en": "Southern Thailand is adjacent to Malaysia.", "th": "ภาค ใต้ ของ ประเทศไทย ติด กับ ประเทศ มาเลเซีย", "hint": "" },
+                        { "en": "There are beautiful seas and many islands.", "th": "มี ทะเล สวยงาม และ เกาะ มากมาย", "hint": "" },
+                        { "en": "Interestingly, the South has more rain than other regions.", "th": "ที่ น่าสนใจ คือ ภาค ใต้ มี ฝน ตก มากกว่า ภาค อื่น", "hint": "" },
+                        { "en": "The islands are very beautiful, which attracts many foreign tourists.", "th": "หมู่เกาะ มี ความ สวยงาม มาก ซึ่ง ดึงดูด นัก ท่องเที่ยว ชาว ต่างชาติ จำนวน มาก", "hint": "" },
+                        { "en": "People there speak southern dialect.", "th": "คน แถวนั้น พูด ภาษา ถิ่น ใต้", "hint": "" },
+                        { "en": "Southern dialect is spoken quickly and is difficult to listen to, but if you go there, you will really like it.", "th": "ภาษา ถิ่น ใต้ พูด เร็ว และ ฟัง ยาก แต่ ถ้า คุณ ไป ที่นั่น คุณ จะ ชอบ มัน จริงๆ", "hint": "" },
                         {
                             "en": "Southern Thailand is adjacent to Malaysia. There are beautiful seas and many islands. Interestingly, the South has more rain than other regions. The islands are very beautiful, which attracts many foreign tourists. People there speak southern dialect. Southern dialect is spoken quickly and is difficult to listen to, but if you go there, you will really like it.",
                             "th": "ภาคใต้ของประเทศไทยอยูต ่ ิดกับประเทศมาเลเซียทีนน ัมีทะเลสวยมีเกาะเยอะและน่าสนใจภาคใต้มีฝนตกมากกว่าภาคอืนๆเกาะทีนน ัสวยมากทําให้นก ั ท่องเทียวต่างชาติไเทียวทีน น ัเยอะคนทีนน ัพูดภาษาใต้ ภาษาใต้ พด ูเร็วและฟั งยากแต่ถ้าคุณไปเทียวทีนน ัคุณจะชอบมากๆ",
                             "hint": ""
                         },
                         { "en": "The Isan region is located in the northeast of Thailand and borders Laos.", "th": "ภาคอีสาน ตั้งอยู่ในภาคตะวันออกเฉียงเหนือของประเทศไทยและมีอาณาเขตติดกับประเทศลาว", "hint": "" },
-                        { "en": "The Mekong River is in the middle.", "th": "แม่น้ำโขงอยู่ตรงกลาง", "hint": "" },
-                        { "en": "Isan people are very kind and lovely.", "th": "คนอีสานเป็นคนใจดีและน่ารักมาก", "hint": "" },
-                        { "en": "Isan food is very delicious.", "th": "อาหารอีสานอร่อยมาก.", "hint": "" },
-                        { "en": "Most of it is spicy and salty.", "th": "ส่วนใหญ่ก็จะมีรสเผ็ดและเค็ม", "hint": "" },
-                        { "en": "The famous food is sticky rice and papaya salad.", "th": "อาหารที่มีชื่อเสียงคือข้าวเหนียวและส้มตำ", "hint": "" },
-                        { "en": "The Isan language is similar to the northern language but faster.", "th": "ภาษาอีสานมีความคล้ายคลึงกับภาษาเหนือแต่มีความเร็วกว่า", "hint": "" },
+                        { "en": "The Mekong River is in the middle.", "th": "แม่ น้ำ โขง อยู่ ตรงกลาง", "hint": "" },
+                        { "en": "Isan people are very kind and lovely.", "th": "คน อีสาน เป็น คน ใจดี และ น่ารัก มาก", "hint": "" },
+                        { "en": "Isan food is very delicious.", "th": "อาหาร อีสาน อร่อย มาก.", "hint": "" },
+                        { "en": "Most of it is spicy and salty.", "th": "ส่วนใหญ่ ก็ จะ มี รส เผ็ด และ เค็ม", "hint": "" },
+                        { "en": "The famous food is sticky rice and papaya salad.", "th": "อาหาร ที่ มี ชื่อเสียง คือ ข้าวเหนียว และ ส้มตำ", "hint": "" },
+                        { "en": "The Isan language is similar to the northern language but faster.", "th": "ภาษา อีสาน มี ความ คล้ายคลึง กับ ภาษา เหนือ แต่ มี ความ เร็ว กว่า", "hint": "" },
                         {
                             "en": "The Isan region is located in the northeast of Thailand and borders Laos. The Mekong River is in the middle. Isan people are very kind and lovely. Isan food is very delicious. Most of it is spicy and salty. The famous food is sticky rice and papaya salad. The Isan language is similar to the northern language but faster.",
                             "th": "ภาคอีสานอยูท ่างทิศตะวันออกเฉียงเหนือของประเทศไทยและติดกับประเทศลาวมีแม่นําโขงอยูต ่รงกลางคนอีสานใจดีและน่ารักมากอาหารภาคอีสานอร่อยมากส่วนใหญ่มีรสเผ็ดและรสเค็มอาหารทีมีชือเสียงคือข้าวเหนียวกับส้มตําภาษาอีสานคล้ายกับภาษาเหนือแต่เร็วกว่า",
                             "hint": ""
                         },
-                        { "en": "The central region of Thailand has Bangkok as the capital.", "th": "ภาคกลางของประเทศไทยมีกรุงเทพมหานครเป็นเมืองหลวง", "hint": "" },
-                        { "en": "There is a large river, the Chao Phraya River.", "th": "มีแม่น้ำใหญ่สายหนึ่งคือแม่น้ำเจ้าพระยา", "hint": "" },
-                        { "en": "The weather is hot.", "th": "อากาศร้อน", "hint": "" },
-                        { "en": "The central region has many interesting things.", "th": "ภาคกลางมีสิ่งที่น่าสนใจมากมาย", "hint": "" },
-                        { "en": "There are many tourists and many people, but it is convenient to travel.", "th": "มีนักท่องเที่ยวและผู้คนจำนวนมากแต่การเดินทางก็สะดวก", "hint": "" },
-                        { "en": "Sometimes, there are too many traffic jams.", "th": "บางทีมีการจราจรติดขัดมากเกินไป", "hint": "" },
-                        { "en": "Most central Thai food has coconut milk. It is very delicious.", "th": "อาหารไทยภาคกลางส่วนมากจะมีกะทิเป็นส่วนประกอบ ซึ่งอร่อยมาก", "hint": "" },
-                        { "en": "If you have free time, you should go to the central region.", "th": "หากมีเวลาว่างก็ควรไปเที่ยวภาคกลางครับ", "hint": "" },
+                        { "en": "The central region of Thailand has Bangkok as the capital.", "th": "ภาค กลาง ของ ประเทศไทย มี กรุงเทพมหานคร เป็น เมืองหลวง", "hint": "" },
+                        { "en": "There is a large river, the Chao Phraya River.", "th": "มี แม่น้ำ ใหญ่ สาย หนึ่ง คือ แม่น้ำเจ้าพระยา", "hint": "" },
+                        { "en": "The weather is hot.", "th": "อากาศ ร้อน", "hint": "" },
+                        { "en": "The central region has many interesting things.", "th": "ภาค กลาง มี สิ่ง ที่ น่าสนใจ มากมาย", "hint": "" },
+                        { "en": "There are many tourists and many people, but it is convenient to travel.", "th": "มี นักท่องเที่ยว และ ผู้คน จำนวนมาก แต่ การเดินทาง ก็ สะดวก", "hint": "" },
+                        { "en": "Sometimes, there are too many traffic jams.", "th": "บางที มี การจราจร ติดขัด มากเกินไป", "hint": "" },
+                        { "en": "Most central Thai food has coconut milk. It is very delicious.", "th": "อาหาร ไทย ภาค กลาง ส่วนมาก จะ มี กะทิ เป็น ส่วน ประกอบ ซึ่ง อร่อย มาก", "hint": "" },
+                        { "en": "If you have free time, you should go to the central region.", "th": "หาก มี เวลา ว่าง ก็ ควร ไป เที่ยว ภาค กลาง ครับ", "hint": "" },
                         {
                             "en": "The central region of Thailand has Bangkok as the capital. There is a large river, the Chao Phraya River. The weather is hot. The central region has many interesting things. There are many tourists and many people, but it is convenient to travel. Sometimes, there are too many traffic jams. Most central Thai food has coconut milk. It is very delicious. If you have free time, you should go to the central region.",
                             "th": "ภาคกลางของประเทศไทยมีจง ัหวัดกรุงเทพเป็นเมืองหลวงทีนนมีแม่นําใหญ่คือแม่นําเจ้าพระยาทีนนอากาศร้อนภาคกลางมีหลายอย่างทีนาสนใจมีนกท่องเทียวเยอะมีคนเยอะแต่สะดวกเวลาเดินทางแต่บางครังรถติดเกินไปอาหารภาคกลางส่วนมากใส่กะทิมน ั อร่อยมากถ้าคุณว่างคุณควรไปเทียวภาคกลาง",
                             "hint": ""
                         },
-                        { "en": "Where are you going?", "th": "คุณจะไปไหน", "hint": "khun jà bpai nǎi" },
-                        { "en": "I am going to the beach.", "th": "ผมจะไปทะเล", "hint": "phǒm jà bpai thá-lee" },
-                        { "en": "I am going to the beach for 2 days.", "th": "ผมจะไปทะเล 2 วัน", "hint": "phǒm jà bpai thá-lee sɔ̌ɔŋ wan" }
+                        { "en": "Where are you going?", "th": "คุณ จะ ไป ไหน", "hint": "khun jà bpai nǎi" },
+                        { "en": "I am going to the beach.", "th": "ผม จะ ไป ทะเล", "hint": "phǒm jà bpai thá-lee" },
+                        { "en": "I am going to the beach for 2 days.", "th": "ผม จะ ไป ทะเล 2 วัน", "hint": "phǒm jà bpai thá-lee sɔ̌ɔŋ wan" }
                     ]
             }
         ]
