@@ -508,11 +508,6 @@ const books = [
                 "structure": [
                     { "en": "How many people?", "th": "คน กี่ คน", "hint": "khon gìi khon" },
                     { "en": "How many animals?", "th": "สัตว์ กี่ ตัว", "hint": "sàt gìi dtua" }
-                    /*,
-                    { "en": "How many flat objects?", "th": "แผ่น/ใบกี่แผ่น/ใบ", "hint": "phɛ̀n/bai gìi phɛ̀n/bai" },
-                    { "en": "How many long objects?", "th": "อัน/ชิNนกี่อัน/ชิNน", "hint": "an/chín gìi an/chín" },
-                    { "en": "How many round objects?", "th": "ลูก/ผลกี่ลูก/ผล", "hint": "lûuk/phǒn gìi lûuk/phǒn" }
-                */
                 ]
             },
             {
@@ -691,15 +686,15 @@ const books = [
                         { "en": "It is July", "th": "เดือน กรกฎาคม", "hint": "dʉʉan gà-rá-gà-daa-khom" },
                         { "en": "It is August", "th": "เดือน สิงหาคม", "hint": "dʉʉan sǐŋ-hǎa-khom" },
                         { "en": "What is the weather like?", "th": "อากาศ เป็น ยังไงบ้าง?", "hint": "aa-kàat bpen yaŋ-ngai bâaŋ?" },
-                        { "en": "(Today) is hot.", "th": "วันนี้ ร้อน", "hint": "wan-níi rɔ́ɔn." },
-                        { "en": "(Today) is cold.", "th": "วันนี้ หนาว", "hint": "wan-níi nǎao." },
-                        { "en": "(Today) is cool.", "th": "วันนี้ เย็น", "hint": "wan-níi yen." },
-                        { "en": "(Today) is windy.", "th": "วันนี้ มีลม", "hint": "wan-níi mii lɔm." },
-                        { "en": "(Today) is rainy.", "th": "วันนี้ มีฝน", "hint": "wan-níi mii fǒn." },
-                        { "en": "(Today) is sunny.", "th": "วันนี้ มีแดด", "hint": "wan-níi mii dɛ̀ɛt." },
-                        { "en": "(Today) is cloudy.", "th": "วันนี้ มีเมฆ", "hint": "wan-níi mii mɛ̂ɛk." },
-                        { "en": "(Today) is foggy.", "th": "วันนี้ มีหมอก", "hint": "wan-níi mii mɔ̀ɔk." },
-                        { "en": "(Today) is snowy.", "th": "วันนี้ มีหิมะตก", "hint": "wan-níi mii hìmá dtòk." }
+                        { "en": "Today is hot.", "th": "วันนี้ ร้อน", "hint": "wan-níi rɔ́ɔn." },
+                        { "en": "Today is cold.", "th": "วันนี้ หนาว", "hint": "wan-níi nǎao." },
+                        { "en": "Today is cool.", "th": "วันนี้ เย็น", "hint": "wan-níi yen." },
+                        { "en": "Today is windy.", "th": "วันนี้ มีลม", "hint": "wan-níi mii lɔm." },
+                        { "en": "Today is rainy.", "th": "วันนี้ มีฝน", "hint": "wan-níi mii fǒn." },
+                        { "en": "Today is sunny.", "th": "วันนี้ มีแดด", "hint": "wan-níi mii dɛ̀ɛt." },
+                        { "en": "Today is cloudy.", "th": "วันนี้ มีเมฆ", "hint": "wan-níi mii mɛ̂ɛk." },
+                        { "en": "Today is foggy.", "th": "วันนี้ มีหมอก", "hint": "wan-níi mii mɔ̀ɔk." },
+                        { "en": "Today is snowy.", "th": "วันนี้ มีหิมะตก", "hint": "wan-níi mii hìmá dtòk." }
                     ]
             },
             {
