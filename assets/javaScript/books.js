@@ -1,7 +1,7 @@
 // This script handles the display of book details and audio playback for a language learning application.
 const books = [
     {
-        "title": "Book LS 1",
+        "title": "Listening & Speaking 1",
         "lessons": [
             {
                 "name": "Greetings",
@@ -70,15 +70,7 @@ const books = [
                     { "en": "See you again.", "th": "แล้ว พบกัน ใหม่" },
                     { "en": "See you later.", "th": "แล้ว พบกัน ทีหลัง" },
                     { "en": "Hello Pairat. Nice to see you again.", "th": "สวัสดี ไพรัช ยินดี ที่ ได้ พบ กัน ใหม่" },
-                    { "en": "Hello Ebrahim. Nice to see you too.", "th": "สวัสดี เอบริฮัม ยินดี ที่ ได้ พบ กัน เช่นกัน" },
-                    { "en": "Have you eaten yet?", "th": "คุณ กิน แล้ว หรือ ยัง" },
-                    { "en": "Not yet. I am hungry.", "th": "ยัง ฉัน หิว" },
-                    { "en": "Let's go eat together.", "th": "เรา ไป กิน ด้วย กัน เถอะ" },
-                    { "en": "Ok. Where shall we eat?", "th": "ได้ ฉัน มา" },
-                    { "en": "How about my restaurant at Warrarot market?", "th": "ร้านอาหาร นู้น ดี ไหม" },
-                    { "en": "That sounds good.", "th": "ฟัง ดู ดี" },
-                    { "en": "Let's go.", "th": "เรา ไป กัน" },
-                    { "en": "Ok. Let's go.", "th": "ได้ เรา ไป กัน" }
+                    { "en": "Hello Ebrahim. Nice to see you too.", "th": "สวัสดี เอบริฮัม ยินดี ที่ ได้ พบ กัน เช่นกัน" }
                 ]
             },
             {
@@ -140,7 +132,7 @@ const books = [
                     { "en": "will", "th": "จะ", "hint": "jà" }
                 ],
                 "structure": [
-                    { "en": "What are you doing?", "th": "คุณ ทำอะไร" },
+                    { "en": "What are you doing?", "th": "คุณ ทำ อะไร" },
                     { "en": "I am going to write a book.", "th": "ฉัน กำลัง จะ เขียน หนังสือ" },
                     { "en": "What are you going to write a book about?", "th": "ฉัน กำลัง จะ ซื้อ หนังสือ" },
                     { "en": "How horses walk?", "th": "ฉัน กำลัง จะ อ่าน หนังสือ" },
@@ -148,7 +140,6 @@ const books = [
                     { "en": "Very interesting.", "th": "น่าสนใจ มาก" },
                     { "en": "Can you read the book?", "th": "คุณ อ่าน หนังสือ ได้ ไหม" },
                     { "en": "Yes, I can read it.", "th": "ได้ ฉัน อ่าน ได้" },
-                    { "en": "Chapter one. First page", "th": "ไม่ได้ ฉัน อ่าน ไม่ ได้" },
                     { "en": "How do horses walk?", "th": "ม้า เดิน อย่างไร" },
                     { "en": "Horses walk by lifting two leg at a time.", "th": "ม้า เดิน โดย ยก ขา ทีละ ข้าง" },
                     { "en": "'toto lop toto lop toto lop '", "th": "'toto lop toto lop toto lop '" },
@@ -156,17 +147,16 @@ const books = [
                     { "en": "Yes, it is a long walk.", "th": "ได้ มัน น่าสนใจ มาก" },
                     { "en": "I am going to eat.", "th": "ฉัน กำลัง จะ กิน" },
                     { "en": "I am going to drink coffee.", "th": "ฉัน กำลัง จะ ดื่ม กาแฟ" },
-                    { "en": "I am going to watch TV.", "th": "ฉัน กำลัง จะ ดู ทีวี" },
-                    { "en": "I am going to listen to music.", "th": "ฉัน กำลัง จะ ฟัง เพลง" },
-                    { "en": "I am going to wake up.", "th": "ฉัน กำลัง จะ ตื่น" },
+                    { "en": "I am watching TV.", "th": "ฉัน กำลัง ดู ทีวี" },
+                    { "en": "I was listening to music.", "th": "ฉัน กำลัง ฟัง เพลง" },
+                    { "en": "I will wake up.", "th": "ฉัน จะ ตื่น" },
                     { "en": "I am going to lie down.", "th": "ฉัน กำลัง จะ นอน" },
                     { "en": "I am going for a walk.", "th": "ฉัน กำลัง จะ เดินเล่น" },
-                    { "en": "I am going to speak Thai.", "th": "ฉัน กำลัง จะ พูด ภาษาไทย" },
-                    { "en": "I am going to study Thai.", "th": "ฉัน กำลัง จะ เรียน ภาษาไทย" },
-                    { "en": "I am going to go to the market.", "th": "ฉัน กำลัง จะ ไป ตลาด" },
-                    { "en": "I am going to read a book.", "th": "ฉัน กำลัง จะ อ่าน หนังสือ" },
-                    { "en": "I am going to read a book.", "th": "ฉัน กำลัง จะ อ่าน หนังสือ" },
-                    { "en": "I am going to take a shower.", "th": "ฉัน กำลัง จะ อาบน้ำ" },
+                    { "en": "I am learning to speak Thai.", "th": "ฉัน กำลัง เรียน ภาษาไทย" },
+                    { "en": "I will study Thai.", "th": "ฉัน จะ เรียน ภาษาไทย" },
+                    { "en": "I go to the market every week.", "th": "ฉัน ไป ตลาด ทุก สัปดาห์" },
+                    { "en": "I am reading a book.", "th": "ฉัน กำลัง อ่าน หนังสือ" },
+                    { "en": "I will take a shower.", "th": "ฉัน จะ อาบน้ำ" },
                     { "en": "I am going to play.", "th": "ฉัน กำลัง จะ เล่น" }
                 ]
             },
@@ -231,7 +221,25 @@ const books = [
                     { "en": "the most", "th": "มากทีสดุ", "hint": "mâak thîi-sùt" }
                 ],
                 "structure": [
-                    { "en": 'I am going to the market.', "th": 'ฉัน กำลัง จะ ไป ตลาด' }
+                    { "en": "How is Thai food?", "th": "อาหารไทยเป็นอย่างไร?" },
+                    { "en": "Thai food is delicious.", "th": "อาหารไทยอร่อย" },
+                    { "en": "Is Thai food spicy?", "th": "อาหารไทยเผ็ดไหม?" },
+                    { "en": "Yes, it is spicy.", "th": "เผ็ด" },
+                    { "en": "What is your favourite Thai food?", "th": "อาหารไทยที่คุณชอบคืออะไร?" },
+                    { "en": "I like Pad Thai the most.", "th": "ผัดไทย" },
+                    { "en": "How is the least spicy Thai food?", "th": "อาหารไทยที่เผ็ดน้อยที่สุดเป็นอย่างไร?" },
+                    { "en": "I like Thai omelette.", "th": "ไข่เจียว" },
+                    { "en": "Could you you tell me the names of Thai dishes?", "th": "คุณช่วยบอกชื่ออาหารไทยให้ฉันหน่อยได้ไหม?" },
+                    { "en": "Sure. Here are some names of Thai dishes.", "th": "ได้ นี่คือชื่ออาหารไทยบางส่วน" },
+                    { "en": "Pad Thai, Tom Yum Goong, Som Tum, Green Curry, Massaman Curry, Panang Curry, Red Curry, Yellow Curry, Thai Omelette, Fried Rice, Stir-fried Basil with Pork, Stir-fried Morning Glory, Chicken with Cashew Nuts, Chicken with Garlic and Pepper, Chicken with Coconut Milk, Mango Sticky Rice, Coconut Ice Cream.", "th": "ผัดไทย ต้มยำกุ้ง ส้มตำ แกงเขียวหวาน แกงมัสมั่น แกงพะแนง แกงเผ็ด ไข่เจียว ข้าวผัด ผัดกะเพรา ผัดผักบุ้ง ไก่ผัดเม็ดมะม่วงหิมพานต์ ไก่ผัดกระเทียมพริกไทย ไก่แกงเขียวหวาน ข้าวเหนียวมะม่วง ไอศกรีมมะพร้าว" },
+                    { "en": "Thank you very much.", "th": "ขอบคุณมาก" },
+                    { "en": "Have you eaten yet?", "th": "คุณ กิน แล้ว หรือ ยัง" },
+                    { "en": "Not yet. I am hungry.", "th": "ยัง ฉัน หิว" },
+                    { "en": "Let's go eat together.", "th": "เรา ไป กิน ด้วย กัน เถอะ" },
+                    { "en": "Ok. Where shall we eat?", "th": "ได้ ฉัน มา" },
+                    { "en": "How about my restaurant at Warrarot market?", "th": "ร้านอาหาร นู้น ดี ไหม" },
+                    { "en": "That sounds good.", "th": "ฟัง ดู ดี" },
+                    { "en": "Let's go.", "th": "เรา ไป กัน" }
                 ]
             },
             {
@@ -289,7 +297,20 @@ const books = [
                     { "en": "How much is this?", "th": "อัน นี้ ราคา เท่าไหร่" },
                     { "en": "This is 100 baht.", "th": "อัน นี้ ราคา 100 บาท" },
                     { "en": "How much is this shirt?", "th": "เสือ อัน นี้ ราคา เท่า ไหร่" },
-                    { "en": "This shirt is 200 baht.", "th": "เสือ อัน นี้ ราคา 200 บาท" }
+                    { "en": "This shirt is 200 baht.", "th": "เสือ อัน นี้ ราคา 200 บาท" },
+                    { "en": "How much are these shoes?", "th": "รองเท้า คู่นี้ ราคา เท่า ไหร่" },
+                    { "en": "These shoes are 500 baht.", "th": "รองเท้า คู่นี้ ราคา 500 บาท" },
+                    { "en": "How much are these pants?", "th": "กางเกง ตัว นี้ ราคา เท่า ไหร่" },
+                    { "en": "These pants are 300 baht.", "th": "กางเกง ตัว นี้ ราคา 300 บาท" },
+                    { "en": "How much is this hat?", "th": "หมวก อัน นี้ ราคา เท่า ไหร่" },
+                    { "en": "This hat is 150 baht.", "th": "หมวก อัน นี้ ราคา 150 บาท" },
+                    { "en": "How much is this sweater?", "th": "เสือกันหนาว อัน นี้ ราคา เท่า ไหร่" },
+                    { "en": "This sweater is 400 baht.", "th": "เสือกันหนาว อัน นี้ ราคา 400 บาท" },
+                    { "en": "Can you give me a discount?", "th": "คุณ ลด ให้ ฉัน ได้ ไหม" },
+                    { "en": "Yes, I can give you a discount.", "th": "ได้ ฉัน ลด ให้ คุณ ได้" },
+                    { "en": "How much is the discount?", "th": "ลด เท่า ไหร่" },
+                    { "en": "I can give you a 20 baht discount.", "th": "ฉัน ลด ให้ คุณ 20 บาท" },
+                    { "en": "Ok. I will take it.", "th": "ได้ ฉัน เอา" }
                 ]
             },
             {
@@ -343,13 +364,27 @@ const books = [
                     { "en": "The hospital is over there.", "th": "โรงพยาบาลอยู่ทีโน่น" },
                     { "en": "The hospital is next to the school.", "th": "โรงพยาบาลอยู่ติดกับโรงเรียน" },
                     { "en": "The hospital is in front of the hotel.", "th": "โรงพยาบาลอยู่ข้างหน้าโรงแรม" },
-                    { "en": "The hospital is behind the bank.", "th": "โรงพยาบาลอยู่ข้างหลังธนาคาร" }
+                    { "en": "The hospital is behind the bank.", "th": "โรงพยาบาลอยู่ข้างหลังธนาคาร" },
+                    { "en": "The hospital is near the market.", "th": "โรงพยาบาลอยู่ใกล้ตลาด" },
+                    { "en": "The hospital is far from the airport.", "th": "โรงพยาบาลอยู่ไกลจากสนามบิน" },
+                    { "en": "Excuse me. Where is the hospital?", "th": "ขอโทษครับ/ค่ะ โรงพยาบาลอยู่ทีไหน" },
+                    { "en": "Go straight (ahead).", "th": "ตรงไป" },
+                    { "en": "Turn left.", "th": "เลี้ยวซ้าย" },
+                    { "en": "Turn right.", "th": "เลี้ยวขวา" },
+                    { "en": "It's on the left side.", "th": "อยู่ทางซ้าย" },
+                    { "en": "It's on the right side.", "th": "อยู่ทางขวา" },
+                    { "en": "It's in front of you.", "th": "อยู่ข้างหน้าคุณ" },
+                    { "en": "It's behind you.", "th": "อยู่ข้างหลังคุณ" },
+                    { "en": "It's next to you.", "th": "อยู่ติดกับคุณ" },
+                    { "en": "It's near you.", "th": "อยู่ใกล้คุณ" },
+                    { "en": "It's far from you.", "th": "อยู่ไกลจากคุณ" },
+                    { "en": "Thank you very much.", "th": "ขอบคุณมาก" }
                 ]
             }
         ]
     },
     {
-        "title": "Book LS 2",
+        "title": "Listening & Speaking 2",
         "lessons": [
             {
                 "name": "What would you like to order?",
@@ -405,19 +440,19 @@ const books = [
 
                 ],
                 "structure": [
-                    { "en": "I would like to order", "th": "ฉัน อยาก สั่ง", "hint": "chán yàak sàŋ" },
-                    { "en": "I would like to eat", "th": "ฉัน อยาก กิน", "hint": "chán yàak gin" },
-                    { "en": "I would like to drink", "th": "ฉัน อยาก ดื่ม", "hint": "chán yàak dʉ̀ʉm" },
-                    { "en": "I would like to watch", "th": "ฉันอยากดู", "hint": "chán yàak duu" },
-                    { "en": "I would like to listen", "th": "ฉัน อยาก ฟัง", "hint": "chán yàak faŋ" },
-                    { "en": "I would like to wake up", "th": "ฉัน อยาก ตื่น", "hint": "chán yàak dtɯ̀ɯn" },
-                    { "en": "I would like to lie down or sleep", "th": "ฉัน อยาก นอน", "hint": "chán yàak nɔɔn" },
-                    { "en": "I would like to walk", "th": "ฉัน อยาก เดิน", "hint": "chán yàak dəən" },
-                    { "en": "I would like to speak", "th": "ฉัน อยาก พูด", "hint": "chán yàak phûut" },
-                    { "en": "I would like to study", "th": "ฉัน อยาก เรียน", "hint": "chán yàak rian" },
-                    { "en": "I would like to write", "th": "ฉัน อยาก เขียน", "hint": "chán yàak khǐan" },
-                    { "en": "I would like to read", "th": "ฉัน อยาก อ่าน", "hint": "chán yàak àan" },
-                    { "en": "I would like to take a shower", "th": "ฉัน อยาก อาบนํา", "hint": "(chán) yàak àap-náam" }
+                    { "en": "What would you like to order?", "th": "ฉัน อยาก สั่ง", "hint": "chán yàak sàŋ" },
+                    { "en": "I would like to order fried rice.", "th": "ฉัน อยาก สั่ง ข้าว ผัด", "hint": "chán yàak sàŋ khâaw phàt" },
+                    { "en": "I would like to order pad thai noodles.", "th": "ฉัน อยาก สั่ง ก๋วยเตี๋ยว ผัดไทย", "hint": "chán yàak sàŋ gǔay-dtǐaw phàt-thai" },
+                    { "en": "I would like to order spicy sour soup with shrimp.", "th": "ฉัน อยาก สั่ง ต้มยํา กุ้ง", "hint": "chán yàak sàŋ dtôm-yam gûŋ" },
+                    { "en": "I would like to order green curry with chicken.", "th": "ฉัน อยาก สั่ง แกงเขียวหวาน ไก่", "hint": "chán yàak sàŋ gɛɛŋ-khǐaw-wǎan gài" },
+                    { "en": "I would like to order red curry with beef.", "th": "ฉัน อยาก สั่ง แกงเผ็ด เนื้อ", "hint": "chán yàak sàŋ gɛɛŋ-phèt nɯa" },
+                    { "en": "I would like to order papaya salad.", "th": "ฉัน อยาก สั่ง ส้มตํา", "hint": "chán yàak sàŋ sôm-dtam" },
+                    { "en": "I would like to order thai omelet.", "th": "ฉัน อยาก สั่ง ไข่เจียว", "hint": "chán yàak sàŋ khài-jiaw" },
+                    { "en": "I would like to order mango sticky rice.", "th": "ฉัน อยาก สั่ง ข้าวเหนียวมะม่วง", "hint": "chán yàak sàŋ khâaw-nǐaw má-mûaŋ" },
+                    { "en": "I would like to order steamed fish.", "th": "ฉัน อยาก สั่ง ปลานึ่ง", "hint": "chán yàak sàŋ bplaa nɯ̂ŋ" },
+                    { "en": "I would like to order fried vegetables.", "th": "ฉัน อยาก สั่ง ผัดผัก", "hint": "chán yàak sàŋ phàt-phàk" },
+                    { "en": "I would like to order a fruit salad.", "th": "ฉัน อยาก สั่ง สลัดผลไม้", "hint": "chán yàak sàŋ sà-lát phǒn-lá-máy" },
+                    { "en": "Excuse me, can I have the bill please?", "th": "ขอ เช็ค บิล ด้วย ครับ/ค่ะ", "hint": "khɔ̌ɔ chék bin dûay khráp/khâ" }
                 ]
             },
             {
@@ -455,19 +490,24 @@ const books = [
                     { "en": "Vegetable juice", "th": "นํNาผัก", "hint": "náam phàk" }
                 ],
                 "structure": [
-                    { "en": "I would like to order", "th": "ฉัน อยาก สั่ง", "hint": "chán yàak sàŋ" },
-                    { "en": "I would like to eat", "th": "ฉัน อยาก กิน", "hint": "chán yàak gin" },
-                    { "en": "I would like to drink", "th": "ฉัน อยาก ดื่ม", "hint": "chán yàak dʉ̀ʉm" },
-                    { "en": "I would like to watch", "th": "ฉัน อยาก ดู", "hint": "chán yàak duu" },
-                    { "en": "I would like to listen", "th": "ฉัน อยาก ฟัง", "hint": "chán yàak faŋ" },
-                    { "en": "I would like to wake up", "th": "ฉัน อยาก ตื่น", "hint": "chán yàak dtɯ̀ɯn" },
-                    { "en": "I would like to lie down or sleep", "th": "ฉัน อยาก นอน", "hint": "chán yàak nɔɔn" },
-                    { "en": "I would like to walk", "th": "ฉัน อยาก เดิน", "hint": "chán yàak dəən" },
-                    { "en": "I would like to speak", "th": "ฉัน อยาก พูด", "hint": "chán yàak phûut" },
-                    { "en": "I would like to study", "th": "ฉัน อยาก เรียน", "hint": "chán yàak rian" },
-                    { "en": "I would like to write", "th": "ฉัน อยาก เขียน", "hint": "chán yàak khǐan" },
-                    { "en": "I would like to read", "th": "ฉัน อยากอ่าน", "hint": "chán yàak àan" },
-                    { "en": "I would like to take a shower", "th": "ฉัน อยากอาบนํâา", "hint": "chán yàak àap-náam" }
+                    { "en": "What would you like to drink?", "th": "ฉัน อยาก สั่ง", "hint": "chán yàak sàŋ" },
+                    { "en": "I would like to order a glass of water.", "th": "ฉัน อยาก สั่ง นํา แก้ว", "hint": "chán yàak sàŋ náam gɛ̂ɛw" },
+                    { "en": "I would like to order a cup of hot coffee with sugar and milk.", "th": "ฉัน อยาก สั่ง กาแฟ ร้อน ใส่นํ้าตาล กับ นม ถ้วย", "hint": "chán yàak sàŋ gaa-fɛɛ rɔ́ɔn sài náam-dtaan gàp nom thûay" },
+                    { "en": "I would like to order a glass of iced tea with sugar.", "th": "ฉัน อยาก สั่ง ชา เย็น ใส่นํ้าตาล แก้ว", "hint": "chán yàak sàŋ chaa yen sài náam-dtaan gɛ̂ɛw" },
+                    { "en": "I would like to order a bottle of soda.", "th": "ฉัน อยาก สั่ง โซดา ขวด", "hint": "chán yàak sàŋ soo-daa khùat" },
+                    { "en": "I would like to order a can of beer.", "th": "ฉัน อยาก สั่ง เบียร์ กระป๋อง", "hint": "chán yàak sàŋ bia grà-bpɔ̌ɔŋ" },
+                    { "en": "I would like to order a glass of red wine.", "th": "ฉัน อยาก สั่ง ไวน์ แก้ว", "hint": "chán yàak sàŋ waay gɛ̂ɛw" },
+                    { "en": "I would like to order a glass of white wine.", "th": "ฉัน อยาก สั่ง ไวน์ ขาว แก้ว", "hint": "chán yàak sàŋ waay khǎaw gɛ̂ɛw" },
+                    { "en": "I would like to order a glass of orange juice.", "th": "ฉัน อยาก สั่ง นํNาส้ม แก้ว", "hint": "chán yàak sàŋ náam sôm gɛ̂ɛw" },
+                    { "en": "I would like to order a glass of lime juice.", "th": "ฉัน อยาก สั่ง นํNามะนาว แก้ว", "hint": "chán yàak sàŋ náam má-naaw gɛ̂ɛw" },
+                    { "en": "I would like to order a glass of pineapple juice.", "th": "ฉัน อยาก สั่ง นํNาสับปะรด แก้ว", "hint": "chán yàak sàŋ náam sàp-bpà-rót gɛ̂ɛw" },
+                    { "en": "I would like to order a glass of mango juice.", "th": "ฉัน อยาก สั่ง นํNามะม่วง แก้ว", "hint": "chán yàak sàŋ náam má-mûaŋ gɛ̂ɛw" },
+                    { "en": "I would like to order a glass of watermelon juice.", "th": "ฉัน อยาก สั่ง นํNาแตงโม แก้ว", "hint": "chán yàak sàŋ náam dtɛɛŋ-moo gɛ̂ɛw" },
+                    { "en": "I would like to order a glass of grape juice.", "th": "ฉัน อยาก สั่ง นํNาองุน่ แก้ว", "hint": "chán yàak sàŋ náam à-ŋùn gɛ̂ɛw" },
+                    { "en": "I would like to order a glass of coconut water.", "th": "ฉัน อยาก สั่ง นํNามะพร้าว แก้ว", "hint": "chán yàak sàŋ náam má-phráaw gɛ̂ɛw" },
+                    { "en": "I would like to order a glass of passion fruit juice.", "th": "ฉัน อยาก สั่ง นํNาเสาวรส แก้ว", "hint": "chán yàak sàŋ náam sǎw-wá-rót gɛ̂ɛw" },
+                    { "en": "I would like to order a glass of vegetable juice.", "th": "ฉัน อยาก สั่ง นํNาผัก แก้ว", "hint": "chán yàak sàŋ náam phàk gɛ̂ɛw" },
+                    { "en": "Excuse me, can I have the bill please?", "th": "ขอ เช็ค บิล ด้วย ครับ/ค่ะ", "hint": "khɔ̌ɔ chék bin dûay khráp/khâ" }
                 ]
             },
             {
@@ -508,7 +548,14 @@ const books = [
                 "structure": [
                     { "en": "What fruit is this?", "th": "ผลไม้ อะไร", "hint": "phǒn-lá-máy à-rai" },
                     { "en": "This is a mango.", "th": "นี่ คื อมะม่วง", "hint": "nîi khɯɯ má-mûaŋ" },
-                    { "en": "This is a watermelon.", "th": "นี่ คื อแตงโม", "hint": "nîi khɯɯ dtɛɛng-moo" }
+                    { "en": "This is a watermelon.", "th": "นี่ คื อแตงโม", "hint": "nîi khɯɯ dtɛɛng-moo" },
+                    { "en": "This is a banana.", "th": "นี่ คื อกล้วย", "hint": "nîi khɯɯ glûay" },
+                    { "en": "This is a pineapple.", "th": "นี่ คื อสับปะรด", "hint": "nîi khɯɯ sàp-bpà-rót" },
+                    { "en": "I would like to buy some fruits.", "th": "ฉัน อยาก ซื้อ ผลไม้", "hint": "chán yàak sʉ́ʉ phǒn-lá-máay" },
+                    { "en": "I would like to buy a kilo of mangoes.", "th": "ฉัน อยาก ซื้อ มะม่วง หนึ่ง กิโล", "hint": "chán yàak sʉ́ʉ má-mûaŋ nɯ̀ŋ gi-lo" },
+                    { "en": "I would like to buy a kilo of bananas.", "th": "ฉัน อยาก ซื้อ กล้วย หนึ่ง กิโล", "hint": "chán yàak sʉ́ʉ glûay nɯ̀ŋ gi-lo" },
+                    { "en": "I would like to buy a kilo of pineapples.", "th": "ฉัน อยาก ซื้อ สับปะรด หนึ่ง กิโล", "hint": "chán yàak sʉ́ʉ sàp-bpà-rót nɯ̀ŋ gi-lo" },
+                    { "en": "I would like to buy a kilo of oranges.", "th": "ฉัน อยาก ซื้อ ส้ม หนึ่ง กิโล", "hint": "chán yàak sʉ́ʉ sôm nɯ̀ŋ gi-lo" }
                 ]
             },
             {
@@ -535,7 +582,23 @@ const books = [
                     { "en": "This is red.", "th": "สี แดง", "hint": "sǐi dɛɛŋ" },
                     { "en": "This is blue.", "th": "สี น้ำเงิน", "hint": "sǐi náam-ngən" },
                     { "en": "This is green.", "th": "สี เขียว", "hint": "sǐi khǐaw" },
-                    { "en": "This is yellow.", "th": "สี เหลือง", "hint": "sǐi lǔang" }
+                    { "en": "This is yellow.", "th": "สี เหลือง", "hint": "sǐi lǔang" },
+                    { "en": "This is black.", "th": "สี ดำ", "hint": "sǐi dam" },
+                    { "en": "This is white.", "th": "สี ขาว", "hint": "sǐi khǎaw" },
+                    { "en": "This is pink.", "th": "สี ชมพู", "hint": "sǐi chom-phuu" },
+                    { "en": "This is purple.", "th": "สี ม่วง", "hint": "sǐi mûaŋ" },
+                    { "en": "This is brown.", "th": "สี น้ำตาล", "hint": "sǐi náam-dtaan" },
+                    { "en": "This is grey.", "th": "สี เทา", "hint": "sǐi thao" },
+                    { "en": "This is orange.", "th": "สี ส้ม", "hint": "sǐi sôm" },
+                    { "en": "I like the color blue.", "th": "ฉัน ชอบ สี น้ำเงิน", "hint": "chán chɔ̂ɔp sǐi náam-ŋəən" },
+                    { "en": "What are each days color in Thai?", "th": "สี ของแต่ละวันในภาษาไทยคืออะไร", "hint": "sǐi khǎng tàe-lá wan nai phaa-sǎa-thai khʉ̄ à-rai" },
+                    { "en": "Monday is yellow.", "th": "วันจันทร์ สี เหลือง", "hint": "wan-jan sǐi lɯ̌aŋ" },
+                    { "en": "Tuesday is pink.", "th": "วันอังคาร สี ชมพู", "hint": "wan-ang-kaan sǐi chom-phuu" },
+                    { "en": "Wednesday is green.", "th": "วันพุธ สี เขียว", "hint": "wan-phút sǐi khǐaw" },
+                    { "en": "Thursday is orange.", "th": "วันพฤหัสบดี สี ส้ม", "hint": "wan-phá-rʉ́-hàt-sà-bɔɔ-dii sǐi sôm" },
+                    { "en": "Friday is blue.", "th": "วันศุกร์ สี น้ำเงิน", "hint": "wan-sùk sǐi náam-ŋəən" },
+                    { "en": "Saturday is purple.", "th": "วันเสาร์ สี ม่วง", "hint": "wan-sǎo sǐi mûaŋ" },
+                    { "en": "Sunday is red.", "th": "วันอาทิตย์ สี แดง", "hint": "wan-aa-thít sǐi dɛɛŋ" }
                 ]
             },
             {
@@ -552,7 +615,20 @@ const books = [
                 ],
                 "structure": [
                     { "en": "How many people?", "th": "คน กี่ คน", "hint": "khon gìi khon" },
-                    { "en": "How many animals?", "th": "สัตว์ กี่ ตัว", "hint": "sàt gìi dtua" }
+                    { "en": "How many animals?", "th": "สัตว์ กี่ ตัว", "hint": "sàt gìi dtua" },
+                    { "en": "How many flat objects?", "th": "แผ่น/ใบ กี่ แผ่น/ใบ", "hint": "phɛ̀n/bai gìi phɛ̀n/bai" },
+                    { "en": "How many long objects?", "th": "อัน/ชิNน กี่ อัน/ชิNน", "hint": "an/chín gìi an/chín" },
+                    { "en": "How many round objects?", "th": "ลูก/ผล กี่ ลูก/ผล", "hint": "lûuk/phǒn gìi lûuk/phǒn" },
+                    { "en": "How many bottles or cups or glasses?", "th": "ขวด/แก้ว/ถ้วย กี่ ขวด/แก้ว/ถ้วย", "hint": "khùat/gɛ̂ɛw/thûay gìi khùat/gɛ̂ɛw/thûay" },
+                    { "en": "How many books or magazines or newspapers?", "th": "เล่ม/ฉบับ/ฉบับพิมพ์ กี่ เล่ม/ฉบับ/ฉบับพิมพ์", "hint": "lêm/chà-bàp/chà-bàp-phim gìi lêm/chà-bàp/chà-bàp-phim" },
+                    { "en": "I have two books.", "th": "ฉัน มี หนังสือ สอง เล่ม", "hint": "chán mii nǎŋ-sɯ̌ɯ sɔ̌ɔŋ lêm" },
+                    { "en": "I have three magazines.", "th": "ฉัน มี นิตยสาร สาม ฉบับ", "hint": "chán mii nít-tá-yaa-sǎan săam chà-bàp" },
+                    { "en": "I have four newspapers.", "th": "ฉัน มี หนังสือพิมพ์ สี่ ฉบับพิมพ์", "hint": "chán mii nǎŋ-sɯ̌ɯ phim sìi chà-bàp-phim" },
+                    { "en": "I have five cups of coffee.", "th": "ฉัน มี กาแฟ ห้า ถ้วย", "hint": "chán mii gaa-fɛɛ hâa thûay" },
+                    { "en": "I have six bottles of water.", "th": "ฉัน มี นํา หก ขวด", "hint": "chán mii náam hòk khùat" },
+                    { "en": "I have seven plates.", "th": "ฉัน มี จาน เจ็ด ใบ", "hint": "chán mii jaan jèt bai" },
+                    { "en": "I have eight pieces of cake.", "th": "ฉัน มี เค้ก แปด ชิNน", "hint": "chán mii khêek bpàet chín" },
+                    { "en": "I have nine bowls of soup.", "th": "ฉัน มี ซุป เก้า ชาม", "hint": "chán mii súp kâo chǎam" }
                 ]
             },
             {
@@ -572,17 +648,22 @@ const books = [
                     { "en": "nearby or close to", "th": "ใกล้ๆ", "hint": "glâi-glâi" }
                 ],
                 "structure": [
+                    { "en": "Examples of prepositions in Thai", "th": "โรงพยาบาล อยู่ ที่ ไหน", "hint": "rooŋ-phá-yaa-bâan yùu thîi nǎi" },
                     { "en": "Where is the hospital?", "th": "โรงพยาบาล อยู่ ที่ ไหน", "hint": "rooŋ-phá-yaa-bâan yùu thîi nǎi" },
-                    { "en": "The hospital is over there.", "th": "โรงพยาบาล อยู่ ที โน่น", "hint": "rooŋ-phá-yaa-bâan yùu thîi nôon" },
-                    { "en": "The hospital is next to the school.", "th": "โรงพยาบาล อยู่ ติด กับ โรงเรียน", "hint": "rooŋ-phá-yaa-bâan yùu dtìt-kàp rooŋ-rian" },
-                    { "en": "The hospital is in front of the hotel.", "th": "โรงพยาบาล อยู่ ข้าง หน้า โรงแรม", "hint": "rooŋ-phá-yaa-bâan yùu khâaŋ-nâa rooŋ-rɛɛm" },
-                    { "en": "The hospital is behind the bank.", "th": "โรงพยาบาล อยู่ ข้าง หลัง ธนาคาร", "hint": "rooŋ-phá-yaa-bâan yùu khâaŋ-lǎŋ tha-naa-khâan" }
+                    { "en": "The hospital is next to the school.", "th": "โรงพยาบาล อยู่ ติดกับ โรงเรียน", "hint": "rooŋ-phá-yaa-bâan yùu dtìt-kàp rooŋ-rian" },
+                    { "en": "The hospital is in front of the bank.", "th": "โรงพยาบาล อยู่ ข้างหน้า ธนาคาร", "hint": "rooŋ-phá-yaa-bâan yùu khâaŋ-nâa thá-náa-khaan" },
+                    { "en": "The hospital is behind the post office.", "th": "โรงพยาบาล อยู่ ข้างหลัง ไปรษณีย์", "hint": "rooŋ-phá-yaa-bâan yùu khâaŋ-lǎŋ bprà-sà-nii" },
+                    { "en": "The hospital is between the bank and the post office.", "th": "โรงพยาบาล อยู่ ระหว่าง ธนาคาร กับ ไปรษณีย์", "hint": "rooŋ-phá-yaa-bâan yùu rá-wàaŋ thá-náa-khaan gàp bprà-sà-nii" },
+                    { "en": "The hospital is on the left side of the road.", "th": "โรงพยาบาล อยู่ ทาง ซ้าย ของ ถนน", "hint": "rooŋ-phá-yaa-bâan yùu thaang sáai khǎng thá-nǒn" },
+                    { "en": "The hospital is on the right side of the road.", "th": "โรงพยาบาล อยู่ ทาง ขวา ของ ถนน", "hint": "rooŋ-phá-yaa-bâan yùu thaang khwǎa khǎng thá-nǒn" },
+                    { "en": "The hospital is near the school.", "th": "โรงพยาบาล อยู่ ใกล้ๆ โรงเรียน", "hint": "rooŋ-phá-yaa-bâan yùu glâi-glâi rooŋ-rian" },
+                    { "en": "The hospital is far from the school.", "th": "โรงพยาบาล อยู่ ไกล จาก โรงเรียน", "hint": "rooŋ-phá-yaa-bâan yùu glai jàak rooŋ-rian" }
                 ]
             }
         ]
     },
     {
-        "title": "Book LS 3",
+        "title": "Listening & Speaking 3",
         "lessons": [
             {
                 "name": "Time",
@@ -638,7 +719,18 @@ const books = [
                         { "en": "It is 9.15", "th": "เก้า โมง สิบห้า", "hint": "gâo mooŋ sìp-hâa" },
                         { "en": "It is 9.30", "th": "เก้า โมง ครึง", "hint": "gâo mooŋ khrɯ̂ŋ" },
                         { "en": "It is 9.45", "th": "เก้า โมง สี่สิบห้า", "hint": "gâo mooŋ sìi-sìp-hâa" },
-                        { "en": "It is 10 o'clock", "th": "สิบ โมง", "hint": "sìp mooŋ" }
+                        { "en": "It is 10 o'clock", "th": "สิบ โมง", "hint": "sìp mooŋ" },
+                        { "en": "It is 10.15", "th": "สิบ โมง สิบห้า", "hint": "sìp mooŋ sìp-hâa" },
+                        { "en": "It is 10.30", "th": "สิบ โมง ครึง", "hint": "sìp mooŋ khrɯ̂ŋ" },
+                        { "en": "It is 10.45", "th": "สิบ โมง สี่สิบห้า", "hint": "sìp mooŋ sìi-sìp-hâa" },
+                        { "en": "It is 11 o'clock", "th": "สิบเอ็ด โมง", "hint": "sìp-èt mooŋ" },
+                        { "en": "It is 11.15", "th": "สิบเอ็ด โมง สิบห้า", "hint": "sìp-èt mooŋ sìp-hâa" },
+                        { "en": "It is 11.30", "th": "สิบเอ็ด โมง ครึง", "hint": "sìp-èt mooŋ khrɯ̂ŋ" },
+                        { "en": "It is 11.45", "th": "สิบเอ็ด โมง สี่สิบห้า", "hint": "sìp-èt mooŋ sìi-sìp-hâa" },
+                        { "en": "It is 12 o'clock", "th": "เทียง", "hint": "thîaŋ" },
+                        { "en": "It is 12.15", "th": "เทียง สิบห้า", "hint": "thîaŋ sìp-hâa" },
+                        { "en": "It is 12.30", "th": "เทียง ครึง", "hint": "thîaŋ khrɯ̂ŋ" },
+                        { "en": "It is 12.45", "th": "เทียง สี่สิบห้า", "hint": "thîaŋ sìi-sìp-hâa" }
                     ]
             },
             {
@@ -678,7 +770,23 @@ const books = [
                         { "en": "Today is Thursday", "th": "วัน นี้ วัน พฤหัสบดี", "hint": "wan-níi wan phá-rɯ-hàt" },
                         { "en": "Today is Friday", "th": "วัน นี้ วัน ศุกร์", "hint": "wan-níi wan-sùk" },
                         { "en": "Today is Saturday", "th": "วัน นี้ วัน เสาร์", "hint": "wan-níi wan-sǎw" },
-                        { "en": "Today is Sunday", "th": "วัน นี้วันอาทิตย์", "hint": "wan-níi wan aa-thít" }
+                        { "en": "Today is Sunday", "th": "วัน นี้วันอาทิตย์", "hint": "wan-níi wan aa-thít" },
+                        { "en": "What day is it tomorrow?", "th": "วัน พรุ่งนี วัน อะไร", "hint": "wan phrûŋ-níi wan à-rai" },
+                        { "en": "Tomorrow is Monday", "th": "วัน พรุ่งนี วัน จันทร์", "hint": "wan phrûŋ-níi wan-jan" },
+                        { "en": "Tomorrow is Tuesday", "th": "วัน พรุ่งนี วัน อังคาร", "hint": "wan phrûŋ-níi wan aŋ-khaan" },
+                        { "en": "Tomorrow is Wednesday", "th": "วัน พรุ่งนี วัน พุธ", "hint": "wan phrûŋ-níi wan-phút" },
+                        { "en": "Tomorrow is Thursday", "th": "วัน พรุ่งนี วัน พฤหัสบดี", "hint": "wan phrûŋ-níi wan phá-rɯ-hàt" },
+                        { "en": "Tomorrow is Friday", "th": "วัน พรุ่งนี วัน ศุกร์", "hint": "wan phrûŋ-níi wan-sùk" },
+                        { "en": "Tomorrow is Saturday", "th": "วัน พรุ่งนี วัน เสาร์", "hint": "wan phrûŋ-níi wan-sǎw" },
+                        { "en": "Tomorrow is Sunday", "th": "วัน พรุ่งนี วัน อาทิตย์", "hint": "wan phrûŋ-níi wan aa-thít" },
+                        { "en": "What day was it yesterday?", "th": "เมื่อวานนี วัน อะไร", "hint": "mɯ̂a-waan-níi wan à-rai" },
+                        { "en": "Yesterday was Monday", "th": "เมื่อวานนี วัน จันทร์", "hint": "mɯ̂a-waan-níi wan-jan" },
+                        { "en": "Yesterday was Tuesday", "th": "เมื่อวานนี วัน อังคาร", "hint": "mɯ̂a-waan-níi wan aŋ-khaan" },
+                        { "en": "Yesterday was Wednesday", "th": "เมื่อวานนี วัน พุธ", "hint": "mɯ̂a-waan-níi wan-phút" },
+                        { "en": "Yesterday was Thursday", "th": "เมื่อวานนี วัน พฤหัสบดี", "hint": "mɯ̂a-waan-níi wan phá-rɯ-hàt" },
+                        { "en": "Yesterday was Friday", "th": "เมื่อวานนี วัน ศุกร์", "hint": "mɯ̂a-waan-níi wan-sùk" },
+                        { "en": "Yesterday was Saturday", "th": "เมื่อวานนี วัน เสาร์", "hint": "mɯ̂a-waan-níi wan-sǎw" },
+                        { "en": "Yesterday was Sunday", "th": "เมื่อวานนี วัน อาทิตย์", "hint": "mɯ̂a-waan-níi wan aa-thít" }
                     ]
             },
             {
@@ -739,7 +847,11 @@ const books = [
                         { "en": "Today is sunny.", "th": "วันนี้ มีแดด", "hint": "wan-níi mii dɛ̀ɛt." },
                         { "en": "Today is cloudy.", "th": "วันนี้ มีเมฆ", "hint": "wan-níi mii mɛ̂ɛk." },
                         { "en": "Today is foggy.", "th": "วันนี้ มีหมอก", "hint": "wan-níi mii mɔ̀ɔk." },
-                        { "en": "Today is snowy.", "th": "วันนี้ มีหิมะตก", "hint": "wan-níi mii hìmá dtòk." }
+                        { "en": "Today is snowy.", "th": "วันนี้ มีหิมะตก", "hint": "wan-níi mii hìmá dtòk." },
+                        { "en": "What season is it?", "th": "ฤดู อะไร", "hint": "rɯ́-duu à-rai" },
+                        { "en": "It is summer.", "th": "ฤดู ร้อน", "hint": "rɯ́-duu rɔ́ɔn" },
+                        { "en": "It is rainy season.", "th": "ฤดู ฝน", "hint": "rɯ́-duu fǒn" },
+                        { "en": "It is winter.", "th": "ฤดู หนาว", "hint": "rɯ́-duu nǎao" }
                     ]
             },
             {
@@ -782,7 +894,9 @@ const books = [
                         { "en": "This is my son", "th": "นี ลูกชาย ของ ฉัน", "hint": "nîi lûuk-chaay khɔ̌ŋ chǎn" },
                         { "en": "This is my daughter", "th": "นี ลูกสาว ของ ฉัน", "hint": "nîi lûuk-sǎaw khɔ̌ŋ chǎn" },
                         { "en": "This is my uncle", "th": "นี น้าของ ฉัน", "hint": "nîi nâa khɔ̌ŋ chǎn" },
-                        { "en": "This is my aunt", "th": "นี น้าของ ฉัน", "hint": "nîi nâa khɔ̌ŋ chǎn" }
+                        { "en": "This is my aunt", "th": "นี น้าของ ฉัน", "hint": "nîi nâa khɔ̌ŋ chǎn" },
+                        { "en": "This is my grandfather", "th": "นี ตาของ ฉัน", "hint": "nîi dtaa khɔ̌ŋ chǎn" },
+                        { "en": "This is my grandmother", "th": "นี ยายของ ฉัน", "hint": "nîi yaay khɔ̌ŋ chǎn" }
                     ]
             },
             {
@@ -814,7 +928,11 @@ const books = [
                         { "en": "What is your job?", "th": "คุณ ทํางาน อะไร", "hint": "khun tham-ŋaan à-rai" },
                         { "en": "I am a student", "th": "ฉัน เป็น นักเรียน", "hint": "chǎn bpen nák-rian" },
                         { "en": "I am a teacher", "th": "ฉัน เป็น ครู", "hint": "chǎn bpen khruu" },
-                        { "en": "I am a doctor", "th": "ฉัน เป็น หมอ", "hint": "chǎn bpen mɔ̌ɔ" }
+                        { "en": "I am a doctor", "th": "ฉัน เป็น หมอ", "hint": "chǎn bpen mɔ̌ɔ" },
+                        { "en": "I am a nurse", "th": "ฉัน เป็น พยาบาล", "hint": "chǎn bpen phá-yaa-baan" },
+                        { "en": "I am a police officer", "th": "ฉัน เป็น ตํารวจ", "hint": "chǎn bpen dtam-rùat" },
+                        { "en": "I am an engineer", "th": "ฉัน เป็น วิศวกร", "hint": "chǎn bpen wít-sà-wá-gɔɔn" },
+                        { "en": "I am staff", "th": "ฉัน เป็น พนักงาน", "hint": "chǎn bpen phá-nák ŋaan" }
                     ]
             },
             {
@@ -840,13 +958,22 @@ const books = [
                         { "en": "He or She is fat", "th": "เขา อ้วน", "hint": "khǎo ûan" },
                         { "en": "He or She is thin", "th": "เขา ผอม", "hint": "khǎo phɔ̌ɔm" },
                         { "en": "He or She is beautiful", "th": "เขา สวย", "hint": "khǎo sǔay" },
-                        { "en": "He or She is handsome", "th": "เขาหล่อ", "hint": "khǎo lɔ̀ɔ" }
+                        { "en": "He or She is handsome", "th": "เขาหล่อ", "hint": "khǎo lɔ̀ɔ" },
+                        { "en": "He or She has big eyes", "th": "เขา ตา ใหญ่", "hint": "khǎo dtaa yài" },
+                        { "en": "He or She has small eyes", "th": "เขา ตา เล็ก", "hint": "khǎo dtaa lék" },
+                        { "en": "He or She has a big nose", "th": "เขา จมูก ใหญ่", "hint": "khǎo jà-mùuk yài" },
+                        { "en": "He or She has a small nose", "th": "เขา จมูก เล็ก", "hint": "khǎo jà-mùuk lék" },
+                        { "en": "He or She has curly hair", "th": "เขา ผม หยิก", "hint": "khǎo phǒm yìk" },
+                        { "en": "He or She has straight hair", "th": "เขา ผม ตรง", "hint": "khǎo phǒm dtrong" },
+                        { "en": "He or She has wavy hair", "th": "เขา ผม เป็นลอน", "hint": "khǎo phǒm bpen lɔɔn" },
+                        { "en": "He or She has fair skin", "th": "เขา ผิว ขาว", "hint": "khǎo phǐw khǎaw" },
+                        { "en": "He or She has dark skin", "th": "เขา ผิว ดํา", "hint": "khǎo phǐw dam" }
                     ]
             }
         ]
     },
     {
-        "title": "Book LS 4",
+        "title": "Listening & Speaking 4",
         "lessons": [
             {
                 "name": "Body parts",
@@ -1089,7 +1216,16 @@ const books = [
                         { "en": "California state is (located) in the western region.", "th": "รัฐ แคลิฟอร์เนีย อยู่ ภาค ตะวันตก ครับ", "hint": "rát khɛɛ-lí-fɔɔ-nia yùu phâak dta-wan dtòk khráp" },
                         { "en": "What region is Shanghai (located) in ?", "th": "เมือง เซียงไฮ้อยูภาคอะไร คะ", "hint": "mɯaŋ sîaŋ-hái yùu phâak à-rai khá" },
                         { "en": "Shanghai is (located) in eastern region.", "th": "เมือง เซียงไฮ้ อยูภาค ตะวันออก ครับ", "hint": "mɯaŋ sîaŋ-hái yùu phâak dtà-wan ɔ̀ɔk khráp" },
-                        // long para
+                        { "en": "What region is Phuket (located) in?", "th": "จังหวัด ภูเก็ต อยู่ ภาค อะไร คะ", "hint": "jaŋ-wàt puu-gèt yùu phâak à-rai khá" },
+                        { "en": "Phuket is (located) in the southern region.", "th": "จังหวัด ภูเก็ต อยู่ ภาค ใต้ ครับ", "hint": "jaŋ-wàt puu-gèt yùu phâak dtâai khráp" },
+                        { "en": "What region is Udon Thani (located) in?", "th": "จังหวัด อุดรธานี อยู่ ภาค อะไร คะ", "hint": "jaŋ-wàt ù-dɔɔn-thaa-nii yùu phâak à-rai khá" },
+                        { "en": "Udon Thani is (located) in the northeastern region.", "th": "จังหวัด อุดรธานี อยู่ ภาค อีสาน ครับ", "hint": "jaŋ-wàt ù-dɔɔn-thaa-nii yùu phâak ii-sǎan khráp" },
+                        { "en": "What region is Kanchanaburi (located) in?", "th": "จังหวัด กาญจนบุรี อยู่ ภาค อะไร คะ", "hint": "jaŋ-wàt gaan-jà-na-bu-rii yùu phâak à-rai khá" },
+                        { "en": "Kanchanaburi is (located) in the western region.", "th": "จังหวัด กาญจนบุรี อยู่ ภาค ตะวันตก ครับ", "hint": "jaŋ-wàt gaan-jà-na-bu-rii yùu phâak dtà-wan dtòk khráp" },
+                        { "en": "What region is Chiang Mai (located) in?", "th": "จังหวัด เชียงใหม่ อยู่ ภาค อะไร คะ", "hint": "jaŋ-wàt chiaŋ-mài yùu phâak à-rai khá" },
+                        { "en": "Chiang Mai is (located) in the northern region.", "th": "จังหวัด เชียงใหม่ อยู่ ภาค เหนือ ครับ", "hint": "jaŋ-wàt chiaŋ-mài yùu phâak nɯ̌ɯ khráp" },
+                        { "en": "What region is Khon Kaen (located) in?", "th": "จังหวัด ขอนแก่น อยู่ ภาค อะไร คะ", "hint": "jaŋ-wàt khɔ̌ɔn-gɛ̀ɛn yùu phâak à-rai khá" },
+                        { "en": "Khon Kaen is (located) in the northeastern region.", "th": "จังหวัด ขอนแก่น อยู่ ภาค อีสาน ครับ", "hint": "jaŋ-wàt khɔ̌ɔn-gɛ̀ɛn yùu phâak ii-sǎan khráp" },
                         { "en": "Northern Thailand has the northern provinces adjacent to Burma.", "th": "ภาคเหนือ ของ ประเทศไทย มี จังหวัด ภาคเหนือ ติดกับ ประเทศพม่า", "hint": "" },
                         { "en": "There are many mountains and trees here, but there is no sea.", "th": "ที่ นี่ มีภูเขา และ ต้นไม้ มาก มาย แต่ ไม่ มี ทะเล", "hint": "" },
                         { "en": "The weather is colder than other regions.", "th": "อากาศ จะ หนาว เย็น กว่า ภาค อื่นๆ", "hint": "" },
@@ -1097,13 +1233,11 @@ const books = [
                         { "en": "Northern food is not spicy and has a lot of vegetables.", "th": "อาหารเหนือ ไม่ เผ็ด และ มี ผัก เยอะ", "hint": "" },
                         { "en": "In winter, the weather in the North is very cold, but there is no snow.", "th": "ใน ฤดู หนาว อากาศ ทาง ภาค เหนือ หนาว มาก แต่ ไม่มี หิมะ", "hint": "" },
                         { "en": "During this time, there are many tourists and most of them travel on the mountains.", "th": "ใน ช่วง นี้ มี นัก ท่องเที่ยว จำนวน มาก โดย ส่วน ใหญ่ จะ เดินทาง บน ภูเขา", "hint": "" },
-
                         {
                             "en": "Northern Thailand has the northern provinces adjacent to Burma. There are many mountains and trees here, but there is no sea. The weather is colder than other regions. People in the North speak the northern dialect and Thai. Northern food is not spicy and has a lot of vegetables. In winter, the weather in the North is very cold, but there is no snow. During this time, there are many tourists and most of them travel on the mountains.",
                             "th": "ภาค เหนือ ของ ประเทศไทย มี จังหวัด ภาคเหนือ ติดกับ ประเทศพม่า ที่นี่ มี ภูเขา เยอะ มี ต้นไม้ เยอะ แต่ ไม่มี ทะเล อากาศ หนาว กว่า ภาค อื่น คน ภาค เหนือ พูด ภาษาเหนือ และ ภาษาไทย อาหาร ภาค เหนือ ไม่ เผ็ด และ ใส่ ผัก เยอะ ฤดู หนาว ภาค เหนือ อากาศ หนาว มาก แต่ ไม่มี หิมะ ช่วง นี้ มี นัก ท่องเที่ยว เยอะ และ ส่วนใหญ่ จะ ท่องเที่ยว บน ดอย",
                             "hint": "phâak-nɯ̌ɯ khɔ̌ɔŋ bprà-thêet thai mii 8 jaŋ-wàt phâak-nɯ̌ɯ yùu dtìt-gàp bprà-thêet phá-mâa thîi-nîi m"
                         },
-
                         { "en": "During this time, there are many tourists and most of them travel on the mountains.", "th": "ใน ช่วง นี้ มี นัก ท่องเที่ยว จำนวน มาก โดย ส่วน ใหญ่ จะ เดินทาง บน ภูเขา", "hint": "" },
                         {
                             "en": "Northern Thailand has the northern provinces adjacent to Burma. There are many mountains and trees here, but there is no sea. The weather is colder than other regions. People in the North speak the northern dialect and Thai. Northern food is not spicy and has a lot of vegetables. In winter, the weather in the North is very cold, but there is no snow. During this time, there are many tourists and most of them travel on the mountains.",
@@ -1165,7 +1299,7 @@ const books = [
         ]
     },
     {
-        "title": "Book RW 1",
+        "title": "Reading & Writing 1",
         "lessons": [
             {
                 "name": "Low class consonants",
@@ -1180,7 +1314,7 @@ const books = [
                     { "en": "snake", "th": "ง", "hint": "ŋɔɔ ŋuu (LC)" },
                     { "en": "giant", "th": "ย", "hint": "yɔɔ yak (LC ญ yɔɔ phuu-yiŋ)" },
                     { "en": "mouse", "th": "น", "hint": "nɔɔ nuu (LC ณ nɔɔ neen)" },
-                    { "en": "boat", "th": "ร", "hint": "rɔɔ rwa (LC)" },
+                    { "en": "boat", "th": "ร", "hint": "rɔɔ Reading & Writinga (LC)" },
                     { "en": "ring", "th": "ว", "hint": "wɔɔ wεεn (LC)" },
                     { "en": "horse", "th": "ม", "hint": "mɔɔ maa (LC)" },
                     { "en": "monkey", "th": "ล", "hint": "lɔɔ liŋ (LC ฬ lɔɔ ju-laa)" },
@@ -1216,7 +1350,7 @@ const books = [
                 "structure":
                     [
                         { "en": "What is this?", "th": "นี อะไร", "hint": "nîi à-rai" },
-                        { "en": "This is a high class consonant", "th": "นี เป็น พยัญชนะ สูง", "hint": "nîi bpen phá-yan-chá-ná sǔuŋ" }
+                        { "en": "This is a middle class consonant", "th": "นี เป็น พยัญชนะ กลาง", "hint": "nîi bpen phá-yan-chá-ná klāŋ" }
                     ]
             },
             {
@@ -1226,11 +1360,11 @@ const books = [
                     { "en": "lid", "th": "ฝ", "hint": "fɔɔ faa (HC)" },
                     { "en": "bag", "th": "ถ", "hint": "thɔɔ thuŋ (HC ฐ thɔɔ thaan)" },
                     { "en": "egg", "th": "ข", "hint": "khɔɔ khai (HC)" },
-                    { "en": "tiger", "th": "ส", "hint": "sɔɔ swa (HC ษ sɔɔ rww-sii, ศ sɔɔ saa-laa)" },
+                    { "en": "tiger", "th": "ส", "hint": "sɔɔ swa (HC ษ sɔɔ Reading & Writingw-sii, ศ sɔɔ saa-laa)" },
                     { "en": "treasure", "th": "ห", "hint": "hɔɔ hiip box (HC)" },
                     { "en": "cymbal", "th": "ฉ", "hint": "chɔɔ chiŋ (HC)" },
                     { "en": "pedestal", "th": "ฐ", "hint": "thɔɔ thaan (HC uncommon)" },
-                    { "en": "hermit", "th": "ษ", "hint": "sɔɔ rww-sii (HC uncommon)" },
+                    { "en": "hermit", "th": "ษ", "hint": "sɔɔ Reading & Writingw-sii (HC uncommon)" },
                     { "en": "pavilion", "th": "ศ", "hint": "sɔɔ saa-laa (HC uncommon)" }
                 ],
                 "structure":
@@ -1294,7 +1428,10 @@ const books = [
                     { "en": "drunk", "th": "เมา", "hint": "LC LV SV" }
                 ],
                 "structure":
-                    []
+                    [
+                        { "en": "What is this?", "th": "นี อะไร", "hint": "nîi à-rai" },
+                        { "en": "This is a word", "th": "นี เป็น คํา", "hint": "nîi bpen kham" }
+                    ]
             },
             {
                 "name": "Five tones and four tone markers",
@@ -1356,7 +1493,7 @@ const books = [
         ]
     },
     {
-        "title": "Book RW 2",
+        "title": "Reading & Writing 2",
         "lessons": [
             {
                 "name": "Change form vowels",
@@ -1417,7 +1554,7 @@ const books = [
         ]
     },
     {
-        "title": "Book RW 3",
+        "title": "Reading & Writing 3",
         "lessons": [
             {
                 "name": "Leading consonant clusters",
@@ -1557,7 +1694,7 @@ function displayBookListLessons(bookList) {
         const bookItemDetails = document.createElement('details');
         bookItemDetails.classList.add('bookItem');
         const summary = document.createElement('summary');
-        summary.textContent = book.title + ' Lessons';
+        summary.textContent = book.title;
         bookItemDetails.appendChild(summary);
 
         book.lessons.forEach((lesson) => {
@@ -1834,7 +1971,7 @@ function displaySentenceStructure(sentenceStructure) {
     const sentenceStructureDetails = document.createElement('details');
     sentenceStructureDetails.open = true; // Set to true if you want the book details to be open by default
     const summary = document.createElement('summary');
-    summary.textContent = "Sentence Structure practice";
+    summary.textContent = "Conversation practice";
     sentenceStructureDetails.appendChild(summary);
 
     sentenceStructure.forEach((structure) => {
