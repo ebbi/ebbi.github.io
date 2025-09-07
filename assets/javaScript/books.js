@@ -53,8 +53,32 @@ const books = [
                     { "en": "where", "th": "ทีไหน", "hint": "thîi-nǎi" }
                 ],
                 "structure": [
+                    { "en": "Hello. How are you?", "th": "สวัสดี คุณ สบายดี ไหม" },
+                    { "en": "I am fine, thank you. And you?", "th": "ฉัน สบายดี ขอบคุณ แล้ว คุณ ล่ะ" },
+                    { "en": "Where are you from?", "th": "คุณ มาจาก ไหน" },
+                    { "en": "I am from Palestine.", "th": "ฉัน มาจาก ปาเลสไตน์" },
+                    { "en": "What is your name?", "th": "คุณ ชื่อ จริง อะไร" },
+                    { "en": "My name is Ebrahim.", "th": "ฉัน ชื่อ เอบริฮัม" },
                     { "en": "What is your name?", "th": "คุณ ชื่อ อะไร" },
-                    { "en": "My name is Pairat the magnificent.", "th": "ฉัน ชื่อ ไพรัช สุดสวย" }
+                    { "en": "My name is Pairat.", "th": "ฉัน ชื่อ ไพรัช" },
+                    { "en": "Where are you from?", "th": "คุณ มาจาก ไหน" },
+                    { "en": "I am from Thailand.", "th": "ฉัน มาจาก ประเทศไทย" },
+                    { "en": "Nice to meet you.", "th": "ยินดี ที่ ได้ รู้จัก" },
+                    { "en": "Nice to meet you too.", "th": "ยินดี ที่ ได้ รู้จัก เช่นกัน" },
+                    { "en": "Excuse me.", "th": "ขอโทษ" },
+                    { "en": "I have to go to class now.", "th": "ฉัน ต้อง ไป เรียน ตอนนี้" },
+                    { "en": "See you again.", "th": "แล้ว พบกัน ใหม่" },
+                    { "en": "See you later.", "th": "แล้ว พบกัน ทีหลัง" },
+                    { "en": "Hello Pairat. Nice to see you again.", "th": "สวัสดี ไพรัช ยินดี ที่ ได้ พบ กัน ใหม่" },
+                    { "en": "Hello Ebrahim. Nice to see you too.", "th": "สวัสดี เอบริฮัม ยินดี ที่ ได้ พบ กัน เช่นกัน" },
+                    { "en": "Have you eaten yet?", "th": "คุณ กิน แล้ว หรือ ยัง" },
+                    { "en": "Not yet. I am hungry.", "th": "ยัง ฉัน หิว" },
+                    { "en": "Let's go eat together.", "th": "เรา ไป กิน ด้วย กัน เถอะ" },
+                    { "en": "Ok. Where shall we eat?", "th": "ได้ ฉัน มา" },
+                    { "en": "How about my restaurant at Warrarot market?", "th": "ร้านอาหาร นู้น ดี ไหม" },
+                    { "en": "That sounds good.", "th": "ฟัง ดู ดี" },
+                    { "en": "Let's go.", "th": "เรา ไป กัน" },
+                    { "en": "Ok. Let's go.", "th": "ได้ เรา ไป กัน" }
                 ]
             },
             {
@@ -113,16 +137,37 @@ const books = [
                     { "en": "stroll", "th": "เดินเล่น", "hint": "dəən-lên" },
                     { "en": "listen to music", "th": "ฟังเพลง", "hint": "faŋ pleeŋ" },
                     { "en": "sing", "th": "ร้องเพลง", "hint": "rɔ́ɔŋ pleeŋ" },
-                    { "en": "will", "th": "จะ", "hint": "jà" },
-                    { "en": "-ing", "th": "กําลัง", "hint": "gam-laŋ" },
-                    { "en": "-ing", "th": "อยู่", "hint": "yùu" }
+                    { "en": "will", "th": "จะ", "hint": "jà" }
                 ],
                 "structure": [
-                    { "en": "How many?", "th": "กี่" },
-                    { "en": "I have two dogs.", "th": "ฉัน มี หมา 2 ตัว" },
-                    { "en": "I have three bananas.", "th": "ฉัน มี กล้วย 3 ลูก" },
-                    { "en": "I have four books.", "th": "ฉัน มี หนังสือ 4 เล่ม" },
-                    { "en": "I have five friends.", "th": "ฉัน มี เพื่อน 5 คน" }
+                    { "en": "What are you doing?", "th": "คุณ ทำอะไร" },
+                    { "en": "I am going to write a book.", "th": "ฉัน กำลัง จะ เขียน หนังสือ" },
+                    { "en": "What are you going to write a book about?", "th": "ฉัน กำลัง จะ ซื้อ หนังสือ" },
+                    { "en": "How horses walk?", "th": "ฉัน กำลัง จะ อ่าน หนังสือ" },
+                    { "en": "I have written 30 pages", "th": "ฉัน เขียน 30 หน้า เสร็จ แล้ว" },
+                    { "en": "Very interesting.", "th": "น่าสนใจ มาก" },
+                    { "en": "Can you read the book?", "th": "คุณ อ่าน หนังสือ ได้ ไหม" },
+                    { "en": "Yes, I can read it.", "th": "ได้ ฉัน อ่าน ได้" },
+                    { "en": "Chapter one. First page", "th": "ไม่ได้ ฉัน อ่าน ไม่ ได้" },
+                    { "en": "How do horses walk?", "th": "ม้า เดิน อย่างไร" },
+                    { "en": "Horses walk by lifting two leg at a time.", "th": "ม้า เดิน โดย ยก ขา ทีละ ข้าง" },
+                    { "en": "'toto lop toto lop toto lop '", "th": "'toto lop toto lop toto lop '" },
+                    { "en": "30 pages of 'toto lop'?", "th": "30 หน้า ของ 'toto lop'?" },
+                    { "en": "Yes, it is a long walk.", "th": "ได้ มัน น่าสนใจ มาก" },
+                    { "en": "I am going to eat.", "th": "ฉัน กำลัง จะ กิน" },
+                    { "en": "I am going to drink coffee.", "th": "ฉัน กำลัง จะ ดื่ม กาแฟ" },
+                    { "en": "I am going to watch TV.", "th": "ฉัน กำลัง จะ ดู ทีวี" },
+                    { "en": "I am going to listen to music.", "th": "ฉัน กำลัง จะ ฟัง เพลง" },
+                    { "en": "I am going to wake up.", "th": "ฉัน กำลัง จะ ตื่น" },
+                    { "en": "I am going to lie down.", "th": "ฉัน กำลัง จะ นอน" },
+                    { "en": "I am going for a walk.", "th": "ฉัน กำลัง จะ เดินเล่น" },
+                    { "en": "I am going to speak Thai.", "th": "ฉัน กำลัง จะ พูด ภาษาไทย" },
+                    { "en": "I am going to study Thai.", "th": "ฉัน กำลัง จะ เรียน ภาษาไทย" },
+                    { "en": "I am going to go to the market.", "th": "ฉัน กำลัง จะ ไป ตลาด" },
+                    { "en": "I am going to read a book.", "th": "ฉัน กำลัง จะ อ่าน หนังสือ" },
+                    { "en": "I am going to read a book.", "th": "ฉัน กำลัง จะ อ่าน หนังสือ" },
+                    { "en": "I am going to take a shower.", "th": "ฉัน กำลัง จะ อาบน้ำ" },
+                    { "en": "I am going to play.", "th": "ฉัน กำลัง จะ เล่น" }
                 ]
             },
             {
@@ -551,7 +596,7 @@ const books = [
                     { "en": "In the day time", "th": "ตอนกลางวัน", "hint": "dtɔɔn glaaŋ-wan" },
                     { "en": "In the night time", "th": "ตอนกลางคืน", "hint": "dtɔɔn glaaŋ-khɯɯn" },
                     { "en": "Time", "th": "เวลา", "hint": "wee-laa" },
-                    { "en": "Clock or Watch or O’clock", "th": "นาฬิกา", "hint": "naa-lí-gaa" },
+                    { "en": "Clock or Watch or O'clock", "th": "นาฬิกา", "hint": "naa-lí-gaa" },
                     { "en": "O'clock(6.00 AM-6.59PM)", "th": "โมง", "hint": "mooŋ" },
                     { "en": "O'clock(7.00PM-11.59PM)", "th": "ทุม", "hint": "thûm" },
                     { "en": "O'clock(1.00AM-5.59AM)", "th": "ตี", "hint": "dtii" },
@@ -797,197 +842,6 @@ const books = [
                         { "en": "He or She is beautiful", "th": "เขา สวย", "hint": "khǎo sǔay" },
                         { "en": "He or She is handsome", "th": "เขาหล่อ", "hint": "khǎo lɔ̀ɔ" }
                     ]
-            }
-        ]
-    },
-    {
-        "title": "Book RW 1",
-        "lessons": [
-            {
-                "name": "Low class consonants",
-                "vocabulary": [
-                    { "en": "offering tray", "th": "พ", "hint": "phɔɔ phaan (LC ภ phɔɔ sam-phaw)" },
-                    { "en": "tooth", "th": "ฟ", "hint": "fɔɔ fan (LC)" },
-                    { "en": "soldier", "th": "ท", "hint": "thɔɔ tha-haan (LC ธ thɔɔ thoŋ, ฑ thɔɔ mon-thoo, ฒ thɔɔ phuu-thaw)" },
-                    { "en": "buffalow", "th": "ค", "hint": "khɔɔ khwaay (LC ฆ khɔɔ ra-khaŋ)" },
-                    { "en": "chain", "th": "ซ", "hint": "sɔɔ soo (LC)" },
-                    { "en": "owl", "th": "ฮ", "hint": "hɔɔ nok-huuk (LC)" },
-                    { "en": "elephant", "th": "ช", "hint": "chɔɔ chaaŋ (LC ฌ chɔɔ chəə)" },
-                    { "en": "snake", "th": "ง", "hint": "ŋɔɔ ŋuu (LC)" },
-                    { "en": "giant", "th": "ย", "hint": "yɔɔ yak (LC ญ yɔɔ phuu-yiŋ)" },
-                    { "en": "mouse", "th": "น", "hint": "nɔɔ nuu (LC ณ nɔɔ neen)" },
-                    { "en": "boat", "th": "ร", "hint": "rɔɔ rwa (LC)" },
-                    { "en": "ring", "th": "ว", "hint": "wɔɔ wεεn (LC)" },
-                    { "en": "horse", "th": "ม", "hint": "mɔɔ maa (LC)" },
-                    { "en": "monkey", "th": "ล", "hint": "lɔɔ liŋ (LC ฬ lɔɔ ju-laa)" },
-                    { "en": "sailing boat", "th": "ภ", "hint": "phɔɔ sam-phaw (LC uncommon)" },
-                    { "en": "flag", "th": "ธ", "hint": "thɔɔ thoŋ (LC uncommon)" },
-                    { "en": "Lady Montho", "th": "ฑ", "hint": "thɔɔ mon-thoo (LC uncommon)" },
-                    { "en": "elderly", "th": "ฒ", "hint": "thɔɔ phuu-thaw (LC uncommon)" },
-                    { "en": "bell", "th": "ฆ", "hint": "khɔɔ ra-khaŋ (LC uncommon)" },
-                    { "en": "name of a tree", "th": "ฌ", "hint": "chɔɔ chəə (LC uncommon)" },
-                    { "en": "female", "th": "ญ", "hint": "yɔɔ phuu-yiŋ (LC uncommon)" },
-                    { "en": "novice", "th": "ณ", "hint": "nɔɔ neen (LC uncommon)" },
-                    { "en": "kite", "th": "ฬ", "hint": "lɔɔ ju-laa (LC uncommon)" }
-                ],
-                "structure":
-                    [
-                        { "en": "What is this?", "th": "นี อะไร", "hint": "nîi à-rai" },
-                        { "en": "This is a low class consonant", "th": "นี เป็น พยัญชนะ ต่ำ", "hint": "nîi bpen phá-yan-chá-ná tàm" }
-                    ]
-            },
-            {
-                "name": "Middle class consonants",
-                "vocabulary": [
-                    { "en": "chicken", "th": "ก", "hint": "gɔɔ gai (MC)" },
-                    { "en": "plate", "th": "จ", "hint": "jɔɔ jaan (MC)" },
-                    { "en": "child", "th": "ด", "hint": "dɔɔ dek (MC ฎ dɔɔ cha-daa )" },
-                    { "en": "turtle", "th": "ต", "hint": "dtɔɔ dtaw (MC ฏ dtɔɔ bpa-dtak)" },
-                    { "en": "leaf", "th": "บ", "hint": "bɔɔ bai-maay (MC)" },
-                    { "en": "fish", "th": "ป", "hint": "bpɔɔ bplaa (MC)" },
-                    { "en": "basin", "th": "อ", "hint": "ɔɔ aaŋ (MC)" },
-                    { "en": "head dress", "th": "ฎ", "hint": "dɔɔ cha-daa (MC uncommon)" },
-                    { "en": "lance", "th": "ฏ", "hint": "dtɔɔ bpa-dtak (MC uncommon)" }
-                ],
-                "structure":
-                    [
-                        { "en": "What is this?", "th": "นี อะไร", "hint": "nîi à-rai" },
-                        { "en": "This is a high class consonant", "th": "นี เป็น พยัญชนะ สูง", "hint": "nîi bpen phá-yan-chá-ná sǔuŋ" }
-                    ]
-            },
-            {
-                "name": "High class consonants",
-                "vocabulary": [
-                    { "en": "bee", "th": "ผ", "hint": "phɔɔ phwwŋ (HC)" },
-                    { "en": "lid", "th": "ฝ", "hint": "fɔɔ faa (HC)" },
-                    { "en": "bag", "th": "ถ", "hint": "thɔɔ thuŋ (HC ฐ thɔɔ thaan)" },
-                    { "en": "egg", "th": "ข", "hint": "khɔɔ khai (HC)" },
-                    { "en": "tiger", "th": "ส", "hint": "sɔɔ swa (HC ษ sɔɔ rww-sii, ศ sɔɔ saa-laa)" },
-                    { "en": "treasure", "th": "ห", "hint": "hɔɔ hiip box (HC)" },
-                    { "en": "cymbal", "th": "ฉ", "hint": "chɔɔ chiŋ (HC)" },
-                    { "en": "pedestal", "th": "ฐ", "hint": "thɔɔ thaan (HC uncommon)" },
-                    { "en": "hermit", "th": "ษ", "hint": "sɔɔ rww-sii (HC uncommon)" },
-                    { "en": "pavilion", "th": "ศ", "hint": "sɔɔ saa-laa (HC uncommon)" }
-                ],
-                "structure":
-                    [
-                        { "en": "What is this?", "th": "นี อะไร", "hint": "nîi à-rai" },
-                        { "en": "This is a high class consonant", "th": "นี เป็น พยัญชนะ สูง", "hint": "nîi bpen phá-yan-chá-ná sǔuŋ" }
-                    ]
-            },
-            {
-                "name": "Practice reading",
-                "vocabulary": [
-                    { "en": "crow", "th": "อีกา", "hint": "MC LV MT" },
-                    { "en": "crab", "th": "ปู", "hint": "MC LV MT" },
-                    { "en": "young uncle", "th": "อา", "hint": "MC LV MT" },
-                    { "en": "see", "th": "ดู", "hint": "MC LV MT" },
-                    { "en": "year", "th": "ปี", "hint": "MC LV MT" },
-                    { "en": "grown up", "th": "โต", "hint": "MC LV MT" },
-                    { "en": "good", "th": "ดี", "hint": "MC LV MT" },
-                    { "en": "lotus", "th": "บัว", "hint": "MC LV MT" },
-                    { "en": "eye", "th": "ตา", "hint": "MC LV MT" },
-                    { "en": "meet", "th": "เจอ", "hint": "MC LV MT" },
-                    { "en": "remember", "th": "จํา", "hint": "MC LV MT" },
-                    { "en": "go", "th": "ไป", "hint": "MC LV MT" },
-                    { "en": "island", "th": "เกาะ", "hint": "MC SV LT" },
-                    { "en": "sheep", "th": "แกะ", "hint": "MC SV LT" },
-                    { "en": "touch", "th": "เตะ", "hint": "MC SV LT" },
-                    { "en": "year", "th": "ปี", "hint": "MC SV LT" },
-                    { "en": "eye", "th": "ตา", "hint": "MC SV LT" },
-                    { "en": "fierce", "th": "ดุ", "hint": "MC SV LT" },
-                    { "en": "light", "th": "เบา", "hint": "MC SV LT" },
-                    { "en": "remember", "th": "จํา", "hint": "MC SV LT" },
-                    { "en": "lotus", "th": "บัว", "hint": "MC SV LT" },
-                    { "en": "leg", "th": "ขา", "hint": "HC LV RT" },
-                    { "en": "look for", "th": "หา", "hint": "HC LV RT" },
-                    { "en": "ghost", "th": "ผี", "hint": "HC LV RT" },
-                    { "en": "color", "th": "สี", "hint": "HC LV RT" },
-                    { "en": "hold", "th": "ถือ", "hint": "HC LV RT" },
-                    { "en": "ear", "th": "หู", "hint": "HC LV RT" },
-                    { "en": "net", "th": "แห", "hint": "HC LV RT" },
-                    { "en": "jar", "th": "โถ", "hint": "HC LV RT" },
-                    { "en": "broken", "th": "เสีย", "hint": "HC LV RT" },
-                    { "en": "tiger", "th": "เสือ", "hint": "HC LV RT" },
-                    { "en": "clear", "th": "ใส", "hint": "HC LV RT" },
-                    { "en": "louse", "th": "เหา", "hint": "HC SV LT" },
-                    { "en": "decay", "th": "ผุ", "hint": "HC SV LT" },
-                    { "en": "please", "th": "ขอ", "hint": "HC SV LT" },
-                    { "en": "head", "th": "หัว", "hint": "HC SV LT" },
-                    { "en": "apply", "th": "ทา", "hint": "LC LV SV" },
-                    { "en": "tea", "th": "ชา", "hint": "LC LV SV" },
-                    { "en": "rice field", "th": "นา", "hint": "LC LV SV" },
-                    { "en": "come", "th": "มา", "hint": "LC LV SV" },
-                    { "en": "medicine", "th": "ยา", "hint": "LC LV SV" },
-                    { "en": "have", "th": "มี", "hint": "LC LV SV" },
-                    { "en": "hand", "th": "มือ", "hint": "LC LV SV" },
-                    { "en": "raft", "th": "แพ", "hint": "LC LV SV" },
-                    { "en": "wait", "th": "รอ", "hint": "LC LV SV" },
-                    { "en": "neck", "th": "คอ", "hint": "LC LV SV" },
-                    { "en": "enough", "th": "พอ", "hint": "LC LV SV" },
-                    { "en": "boat", "th": "เรือ", "hint": "LC LV SV" },
-                    { "en": "light or fire", "th": "ไฟ", "hint": "LC LV SV" },
-                    { "en": "drunk", "th": "เมา", "hint": "LC LV SV" }
-                ],
-                "structure":
-                    []
-            },
-            {
-                "name": "Five tones and four tone markers",
-                "vocabulary": [
-                    { "en": "forest", "th": "ป่า", "hint": "" },
-                    { "en": "to tell off", "th": "ด่า", "hint": "" },
-                    { "en": "how many", "th": "กี ̃", "hint": "" },
-                    { "en": "grandfather", "th": "ปู ่", "hint": "" },
-                    { "en": "but", "th": "แต่", "hint": "" },
-                    { "en": "bored", "th": "เบื ̃อ", "hint": "" },
-                    { "en": "crazy", "th": "บ้า", "hint": "" },
-                    { "en": "aunt", "th": "ป้า", "hint": "" },
-                    { "en": "stubborn or naughty", "th": "ดือ", "hint": "" },
-                    { "en": "older sister", "th": "เจ๊", "hint": "" },
-                    { "en": "ticket", "th": "ตัว", "hint": "" },
-                    { "en": "I see or understand", "th": "อ๋อ", "hint": "" },
-                    { "en": "chicken", "th": "ไก่", "hint": "" },
-                    { "en": "can", "th": "ได้", "hint": "" },
-                    { "en": "south or under", "th": "ใต้", "hint": "" },
-                    { "en": "turtle", "th": "เต่า", "hint": "" },
-                    { "en": "nine", "th": "เก้า", "hint": "" },
-                    { "en": "egg", "th": "ไข่", "hint": "" },
-                    { "en": "tiger", "th": "เสื ̃อ", "hint": "" },
-                    { "en": "knee", "th": "เข่า", "hint": "" },
-                    { "en": "enter", "th": "เข้า", "hint": "" },
-                    { "en": "poop", "th": "ขี", "hint": "" },
-                    { "en": "if", "th": "ถ้า", "hint": "" },
-                    { "en": "inject", "th": "ฉี", "hint": "" },
-                    { "en": "color", "th": "สี", "hint": "" },
-                    { "en": "you", "th": "สู ้", "hint": "" },
-                    { "en": "beans", "th": "ถัว", "hint": "" },
-                    { "en": "give", "th": "ให้", "hint": "" },
-                    { "en": "five", "th": "ห้า", "hint": "" },
-                    { "en": "cloth", "th": "ผ้า", "hint": "" },
-                    { "en": "bamboo", "th": "ไผ่", "hint": "" },
-                    { "en": "wrap", "th": "ห่อ", "hint": "" },
-                    { "en": "ghost", "th": "ผี", "hint": "" },
-                    { "en": "elder", "th": "พี", "hint": "" },
-                    { "en": "father", "th": "พ่อ", "hint": "" },
-                    { "en": "mother", "th": "แม่", "hint": "" },
-                    { "en": "electricity bill", "th": "ค่าไฟ", "hint": "" },
-                    { "en": "rent", "th": "ค่าเช่า", "hint": "" },
-                    { "en": "foot", "th": "เท้า", "hint": "" },
-                    { "en": "hole", "th": "รู ้", "hint": "" },
-                    { "en": "horse", "th": "ม้า", "hint": "" },
-                    { "en": "aunt", "th": "น้า", "hint": "" },
-                    { "en": "slow", "th": "ช้า", "hint": "" },
-                    { "en": "no", "th": "ไม่", "hint": "" },
-                    { "en": "time", "th": "ที", "hint": "" },
-                    { "en": "electricity", "th": "ไฟฟ้า", "hint": "" },
-                    { "en": "blue", "th": "สีฟา ้", "hint": "" },
-                    { "en": "river", "th": "แม่นํา", "hint": "" },
-                    { "en": "name", "th": "ชื", "hint": "" },
-                    { "en": "pair", "th": "คู่", "hint": "" }
-                ],
-                "structure":
-                    []
             }
         ]
     },
@@ -1309,6 +1163,376 @@ const books = [
                     ]
             }
         ]
+    },
+    {
+        "title": "Book RW 1",
+        "lessons": [
+            {
+                "name": "Low class consonants",
+                "vocabulary": [
+                    { "en": "offering tray", "th": "พ", "hint": "phɔɔ phaan (LC ภ phɔɔ sam-phaw)" },
+                    { "en": "tooth", "th": "ฟ", "hint": "fɔɔ fan (LC)" },
+                    { "en": "soldier", "th": "ท", "hint": "thɔɔ tha-haan (LC ธ thɔɔ thoŋ, ฑ thɔɔ mon-thoo, ฒ thɔɔ phuu-thaw)" },
+                    { "en": "buffalow", "th": "ค", "hint": "khɔɔ khwaay (LC ฆ khɔɔ ra-khaŋ)" },
+                    { "en": "chain", "th": "ซ", "hint": "sɔɔ soo (LC)" },
+                    { "en": "owl", "th": "ฮ", "hint": "hɔɔ nok-huuk (LC)" },
+                    { "en": "elephant", "th": "ช", "hint": "chɔɔ chaaŋ (LC ฌ chɔɔ chəə)" },
+                    { "en": "snake", "th": "ง", "hint": "ŋɔɔ ŋuu (LC)" },
+                    { "en": "giant", "th": "ย", "hint": "yɔɔ yak (LC ญ yɔɔ phuu-yiŋ)" },
+                    { "en": "mouse", "th": "น", "hint": "nɔɔ nuu (LC ณ nɔɔ neen)" },
+                    { "en": "boat", "th": "ร", "hint": "rɔɔ rwa (LC)" },
+                    { "en": "ring", "th": "ว", "hint": "wɔɔ wεεn (LC)" },
+                    { "en": "horse", "th": "ม", "hint": "mɔɔ maa (LC)" },
+                    { "en": "monkey", "th": "ล", "hint": "lɔɔ liŋ (LC ฬ lɔɔ ju-laa)" },
+                    { "en": "sailing boat", "th": "ภ", "hint": "phɔɔ sam-phaw (LC uncommon)" },
+                    { "en": "flag", "th": "ธ", "hint": "thɔɔ thoŋ (LC uncommon)" },
+                    { "en": "Lady Montho", "th": "ฑ", "hint": "thɔɔ mon-thoo (LC uncommon)" },
+                    { "en": "elderly", "th": "ฒ", "hint": "thɔɔ phuu-thaw (LC uncommon)" },
+                    { "en": "bell", "th": "ฆ", "hint": "khɔɔ ra-khaŋ (LC uncommon)" },
+                    { "en": "name of a tree", "th": "ฌ", "hint": "chɔɔ chəə (LC uncommon)" },
+                    { "en": "female", "th": "ญ", "hint": "yɔɔ phuu-yiŋ (LC uncommon)" },
+                    { "en": "novice", "th": "ณ", "hint": "nɔɔ neen (LC uncommon)" },
+                    { "en": "kite", "th": "ฬ", "hint": "lɔɔ ju-laa (LC uncommon)" }
+                ],
+                "structure":
+                    [
+                        { "en": "What is this?", "th": "นี อะไร", "hint": "nîi à-rai" },
+                        { "en": "This is a low class consonant", "th": "นี เป็น พยัญชนะ ต่ำ", "hint": "nîi bpen phá-yan-chá-ná tàm" }
+                    ]
+            },
+            {
+                "name": "Middle class consonants",
+                "vocabulary": [
+                    { "en": "chicken", "th": "ก", "hint": "gɔɔ gai (MC)" },
+                    { "en": "plate", "th": "จ", "hint": "jɔɔ jaan (MC)" },
+                    { "en": "child", "th": "ด", "hint": "dɔɔ dek (MC ฎ dɔɔ cha-daa )" },
+                    { "en": "turtle", "th": "ต", "hint": "dtɔɔ dtaw (MC ฏ dtɔɔ bpa-dtak)" },
+                    { "en": "leaf", "th": "บ", "hint": "bɔɔ bai-maay (MC)" },
+                    { "en": "fish", "th": "ป", "hint": "bpɔɔ bplaa (MC)" },
+                    { "en": "basin", "th": "อ", "hint": "ɔɔ aaŋ (MC)" },
+                    { "en": "head dress", "th": "ฎ", "hint": "dɔɔ cha-daa (MC uncommon)" },
+                    { "en": "lance", "th": "ฏ", "hint": "dtɔɔ bpa-dtak (MC uncommon)" }
+                ],
+                "structure":
+                    [
+                        { "en": "What is this?", "th": "นี อะไร", "hint": "nîi à-rai" },
+                        { "en": "This is a high class consonant", "th": "นี เป็น พยัญชนะ สูง", "hint": "nîi bpen phá-yan-chá-ná sǔuŋ" }
+                    ]
+            },
+            {
+                "name": "High class consonants",
+                "vocabulary": [
+                    { "en": "bee", "th": "ผ", "hint": "phɔɔ phwwŋ (HC)" },
+                    { "en": "lid", "th": "ฝ", "hint": "fɔɔ faa (HC)" },
+                    { "en": "bag", "th": "ถ", "hint": "thɔɔ thuŋ (HC ฐ thɔɔ thaan)" },
+                    { "en": "egg", "th": "ข", "hint": "khɔɔ khai (HC)" },
+                    { "en": "tiger", "th": "ส", "hint": "sɔɔ swa (HC ษ sɔɔ rww-sii, ศ sɔɔ saa-laa)" },
+                    { "en": "treasure", "th": "ห", "hint": "hɔɔ hiip box (HC)" },
+                    { "en": "cymbal", "th": "ฉ", "hint": "chɔɔ chiŋ (HC)" },
+                    { "en": "pedestal", "th": "ฐ", "hint": "thɔɔ thaan (HC uncommon)" },
+                    { "en": "hermit", "th": "ษ", "hint": "sɔɔ rww-sii (HC uncommon)" },
+                    { "en": "pavilion", "th": "ศ", "hint": "sɔɔ saa-laa (HC uncommon)" }
+                ],
+                "structure":
+                    [
+                        { "en": "What is this?", "th": "นี อะไร", "hint": "nîi à-rai" },
+                        { "en": "This is a high class consonant", "th": "นี เป็น พยัญชนะ สูง", "hint": "nîi bpen phá-yan-chá-ná sǔuŋ" }
+                    ]
+            },
+            {
+                "name": "Practice reading",
+                "vocabulary": [
+                    { "en": "crow", "th": "อีกา", "hint": "MC LV MT" },
+                    { "en": "crab", "th": "ปู", "hint": "MC LV MT" },
+                    { "en": "young uncle", "th": "อา", "hint": "MC LV MT" },
+                    { "en": "see", "th": "ดู", "hint": "MC LV MT" },
+                    { "en": "year", "th": "ปี", "hint": "MC LV MT" },
+                    { "en": "grown up", "th": "โต", "hint": "MC LV MT" },
+                    { "en": "good", "th": "ดี", "hint": "MC LV MT" },
+                    { "en": "lotus", "th": "บัว", "hint": "MC LV MT" },
+                    { "en": "eye", "th": "ตา", "hint": "MC LV MT" },
+                    { "en": "meet", "th": "เจอ", "hint": "MC LV MT" },
+                    { "en": "remember", "th": "จํา", "hint": "MC LV MT" },
+                    { "en": "go", "th": "ไป", "hint": "MC LV MT" },
+                    { "en": "island", "th": "เกาะ", "hint": "MC SV LT" },
+                    { "en": "sheep", "th": "แกะ", "hint": "MC SV LT" },
+                    { "en": "touch", "th": "เตะ", "hint": "MC SV LT" },
+                    { "en": "year", "th": "ปี", "hint": "MC SV LT" },
+                    { "en": "eye", "th": "ตา", "hint": "MC SV LT" },
+                    { "en": "fierce", "th": "ดุ", "hint": "MC SV LT" },
+                    { "en": "light", "th": "เบา", "hint": "MC SV LT" },
+                    { "en": "remember", "th": "จํา", "hint": "MC SV LT" },
+                    { "en": "lotus", "th": "บัว", "hint": "MC SV LT" },
+                    { "en": "leg", "th": "ขา", "hint": "HC LV RT" },
+                    { "en": "look for", "th": "หา", "hint": "HC LV RT" },
+                    { "en": "ghost", "th": "ผี", "hint": "HC LV RT" },
+                    { "en": "color", "th": "สี", "hint": "HC LV RT" },
+                    { "en": "hold", "th": "ถือ", "hint": "HC LV RT" },
+                    { "en": "ear", "th": "หู", "hint": "HC LV RT" },
+                    { "en": "net", "th": "แห", "hint": "HC LV RT" },
+                    { "en": "jar", "th": "โถ", "hint": "HC LV RT" },
+                    { "en": "broken", "th": "เสีย", "hint": "HC LV RT" },
+                    { "en": "tiger", "th": "เสือ", "hint": "HC LV RT" },
+                    { "en": "clear", "th": "ใส", "hint": "HC LV RT" },
+                    { "en": "louse", "th": "เหา", "hint": "HC SV LT" },
+                    { "en": "decay", "th": "ผุ", "hint": "HC SV LT" },
+                    { "en": "please", "th": "ขอ", "hint": "HC SV LT" },
+                    { "en": "head", "th": "หัว", "hint": "HC SV LT" },
+                    { "en": "apply", "th": "ทา", "hint": "LC LV SV" },
+                    { "en": "tea", "th": "ชา", "hint": "LC LV SV" },
+                    { "en": "rice field", "th": "นา", "hint": "LC LV SV" },
+                    { "en": "come", "th": "มา", "hint": "LC LV SV" },
+                    { "en": "medicine", "th": "ยา", "hint": "LC LV SV" },
+                    { "en": "have", "th": "มี", "hint": "LC LV SV" },
+                    { "en": "hand", "th": "มือ", "hint": "LC LV SV" },
+                    { "en": "raft", "th": "แพ", "hint": "LC LV SV" },
+                    { "en": "wait", "th": "รอ", "hint": "LC LV SV" },
+                    { "en": "neck", "th": "คอ", "hint": "LC LV SV" },
+                    { "en": "enough", "th": "พอ", "hint": "LC LV SV" },
+                    { "en": "boat", "th": "เรือ", "hint": "LC LV SV" },
+                    { "en": "light or fire", "th": "ไฟ", "hint": "LC LV SV" },
+                    { "en": "drunk", "th": "เมา", "hint": "LC LV SV" }
+                ],
+                "structure":
+                    []
+            },
+            {
+                "name": "Five tones and four tone markers",
+                "vocabulary": [
+                    { "en": "forest", "th": "ป่า", "hint": "" },
+                    { "en": "to tell off", "th": "ด่า", "hint": "" },
+                    { "en": "how many", "th": "กี ̃", "hint": "" },
+                    { "en": "grandfather", "th": "ปู ่", "hint": "" },
+                    { "en": "but", "th": "แต่", "hint": "" },
+                    { "en": "bored", "th": "เบื ̃อ", "hint": "" },
+                    { "en": "crazy", "th": "บ้า", "hint": "" },
+                    { "en": "aunt", "th": "ป้า", "hint": "" },
+                    { "en": "stubborn or naughty", "th": "ดือ", "hint": "" },
+                    { "en": "older sister", "th": "เจ๊", "hint": "" },
+                    { "en": "ticket", "th": "ตัว", "hint": "" },
+                    { "en": "I see or understand", "th": "อ๋อ", "hint": "" },
+                    { "en": "chicken", "th": "ไก่", "hint": "" },
+                    { "en": "can", "th": "ได้", "hint": "" },
+                    { "en": "south or under", "th": "ใต้", "hint": "" },
+                    { "en": "turtle", "th": "เต่า", "hint": "" },
+                    { "en": "nine", "th": "เก้า", "hint": "" },
+                    { "en": "egg", "th": "ไข่", "hint": "" },
+                    { "en": "tiger", "th": "เสื ̃อ", "hint": "" },
+                    { "en": "knee", "th": "เข่า", "hint": "" },
+                    { "en": "enter", "th": "เข้า", "hint": "" },
+                    { "en": "poop", "th": "ขี", "hint": "" },
+                    { "en": "if", "th": "ถ้า", "hint": "" },
+                    { "en": "inject", "th": "ฉี", "hint": "" },
+                    { "en": "color", "th": "สี", "hint": "" },
+                    { "en": "you", "th": "สู ้", "hint": "" },
+                    { "en": "beans", "th": "ถัว", "hint": "" },
+                    { "en": "give", "th": "ให้", "hint": "" },
+                    { "en": "five", "th": "ห้า", "hint": "" },
+                    { "en": "cloth", "th": "ผ้า", "hint": "" },
+                    { "en": "bamboo", "th": "ไผ่", "hint": "" },
+                    { "en": "wrap", "th": "ห่อ", "hint": "" },
+                    { "en": "ghost", "th": "ผี", "hint": "" },
+                    { "en": "elder", "th": "พี", "hint": "" },
+                    { "en": "father", "th": "พ่อ", "hint": "" },
+                    { "en": "mother", "th": "แม่", "hint": "" },
+                    { "en": "electricity bill", "th": "ค่าไฟ", "hint": "" },
+                    { "en": "rent", "th": "ค่าเช่า", "hint": "" },
+                    { "en": "foot", "th": "เท้า", "hint": "" },
+                    { "en": "hole", "th": "รู ้", "hint": "" },
+                    { "en": "horse", "th": "ม้า", "hint": "" },
+                    { "en": "aunt", "th": "น้า", "hint": "" },
+                    { "en": "slow", "th": "ช้า", "hint": "" },
+                    { "en": "no", "th": "ไม่", "hint": "" },
+                    { "en": "time", "th": "ที", "hint": "" },
+                    { "en": "electricity", "th": "ไฟฟ้า", "hint": "" },
+                    { "en": "blue", "th": "สีฟา ้", "hint": "" },
+                    { "en": "river", "th": "แม่นํา", "hint": "" },
+                    { "en": "name", "th": "ชื", "hint": "" },
+                    { "en": "pair", "th": "คู่", "hint": "" }
+                ],
+                "structure":
+                    []
+            }
+        ]
+    },
+    {
+        "title": "Book RW 2",
+        "lessons": [
+            {
+                "name": "Change form vowels",
+                "vocabulary":
+                    [
+                        { "en": "together", "th": "กัน", "hint": "กัน" },
+                        { "en": "eat", "th": "กิน", "hint": "กิน" },
+                        { "en": "axis", "th": "แก็น", "hint": "แก็น" },
+                        { "en": "over", "th": "เกิน", "hint": "เกิน" },
+                        { "en": "stir", "th": "กวน", "hint": "กวน" },
+                        { "en": "an", "th": "อัน", "hint": "อัน" },
+                        { "en": "day", "th": "วัน", "hint": "วัน" },
+                        { "en": "it", "th": "มัน", "hint": "มัน" },
+                        { "en": "I (female)", "th": "ฉัน", "hint": "ฉัน" },
+                        { "en": "tooth", "th": "ฟัน", "hint": "ฟัน" },
+                        { "en": "as", "th": "ดัง", "hint": "ดัง" },
+                        { "en": "gluten", "th": "ตัง", "hint": "ตัง" },
+                        { "en": "not_yet", "th": "ยัง", "hint": "ยัง" },
+                        { "en": "listen", "th": "ฟัง", "hint": "ฟัง" },
+                        { "en": "tank", "th": "ถัง", "hint": "ถัง" },
+                        { "en": "bite", "th": "กัด", "hint": "กัด" },
+                        { "en": "cut", "th": "ตัด", "hint": "ตัด" },
+                        { "en": "scrub", "th": "ขัด", "hint": "ขัด" },
+                        { "en": "puff", "th": "ผัด", "hint": "ผัด" },
+                        { "en": "blow", "th": "พัด", "hint": "พัด" },
+                        { "en": "shot", "th": "นัด", "hint": "นัด" },
+                        { "en": "measure", "th": "วัด", "hint": "วัด" },
+                        { "en": "love", "th": "รัก", "hint": "รัก" },
+                        { "en": "whip", "th": "ชัก", "hint": "ชัก" },
+                        { "en": "gun", "th": "ปืน", "hint": "ปืน" },
+                        { "en": "stand", "th": "ยืน", "hint": "ยืน" }
+                    ],
+                "structure":
+                    []
+            },
+            {
+                "name": "Live final consonants",
+                "vocabulary":
+                    [
+                        { "en": "afternoon", "th": "บ่าย", "hint": "MC + Live endings + Tone markers - LIVE" },
+                        { "en": "frequent", "th": "บ่อย", "hint": "MC + Live endings + Tone markers - LIVE" },
+                        { "en": "bay", "th": "อ่าว", "hint": "MC + Live endings + Tone markers - LIVE" },
+                        { "en": "read", "th": "อ่าน", "hint": "MC + Live endings + Tone markers - LIVE" },
+                        { "en": "shrimp", "th": "กุ้ง", "hint": "MC + Live endings + Tone markers - LIVE" },
+                        { "en": "cheek", "th": "แก้ม", "hint": "MC + Live endings + Tone markers - LIVE" },
+                        { "en": "pace", "th": "ก้าว", "hint": "MC + Live endings + Tone markers - LIVE" },
+                        { "en": "some", "th": "บ้าง", "hint": "MC + Live endings + Tone markers - LIVE" },
+                        { "en": "sign", "th": "ป้าย", "hint": "MC + Live endings + Tone markers - LIVE" },
+                        { "en": "sugar cane", "th": "อ้อย", "hint": "MC + Live endings + Tone markers - LIVE" },
+                        { "en": "flour", "th": "แป้ง", "hint": "MC + Live endings + Tone markers - LIVE" },
+                        { "en": "hire", "th": "จ้าง", "hint": "MC + Live endings + Tone markers - LIVE" },
+                        { "en": "house", "th": "บ้าน", "hint": "MC + Live endings + Tone markers - LIVE" },
+                        { "en": "basin", "th": "อ่างนำ้", "hint": "MC + Live endings + Tone markers - LIVE" },
+                        { "en": "branch", "th": "กิ่งไม้", "hint": "MC + Live endings + Tone markers - LIVE" }],
+                "structure":
+                    []
+            }
+        ]
+    },
+    {
+        "title": "Book RW 3",
+        "lessons": [
+            {
+                "name": "Leading consonant clusters",
+                "vocabulary":
+                    [
+                        { "en": "don't", "th": "อย่า", "hint": "อ as a leading consonant" },
+                        { "en": "be", "th": "อยู่", "hint": "อ as a leading consonant" },
+                        { "en": "Type, Kind, Classifier of things", "th": "อย่าง", "hint": "อ as a leading consonant" },
+                        { "en": "to want", "th": "อยาก", "hint": "อ as a leading consonant" },
+                        { "en": "dog", "th": "หมา", "hint": "ห as a leading consonant" },
+                        { "en": "bear", "th": "หมี", "hint": "ห as a leading consonant" },
+                        { "en": "pig", "th": "หมู", "hint": "ห as a leading consonant" },
+                        { "en": "to be", "th": "ไหม", "hint": "ห as a leading consonant" },
+                        { "en": "road", "th": "ถนน", "hint": "Non-conforming Initial Clusters" },
+                        { "en": "snack", "th": "ขนม", "hint": "Non-conforming Initial Clusters" },
+                        { "en": "market", "th": "ตลาด", "hint": "Non-conforming Initial Clusters" },
+                        { "en": "to laugh", "th": "ตลก", "hint": "Non-conforming Initial Clusters" },
+                    ],
+                "structure":
+                    []
+            },
+            {
+                "name": "อ as a leading consonant",
+                "vocabulary":
+                    [
+                        { "en": "don't", "th": "อย่า", "hint": "อ as a leading consonant" },
+                        { "en": "be", "th": "อยู่", "hint": "อ as a leading consonant" },
+                        { "en": "Type, Kind, Classifier of things", "th": "อย่าง", "hint": "อ as a leading consonant" },
+                        { "en": "to want", "th": "อยาก", "hint": "อ as a leading consonant" }
+                    ],
+                "structure":
+                    [
+                        { "en": "Don't eat food in the fridge", "th": "อย่า กิน อาหาร ใน ตู้เย็น", "hint": "" },
+                        { "en": "Don't stay up late tonight", "th": "คืนนี อย่า นอน ดึก", "hint": "" },
+                        { "en": "My house is near an Indian restaurant", "th": "บ้าน ของ ผม อยู่ ใกล้ กับ ร้าน อาหาร อินเดีย", "hint": "" },
+                        { "en": "My friend has lived in Bangkok for ten years", "th": "เพื่อน ของ ผม อยู่ กรุงเทพ มา สิบ ปี แล้ ว", "hint": "" },
+                        { "en": "I'm not free right now, I'm driving", "th": "ผม ยัง ไม่ ว่าง ตอนนี กําลัง ขับรถ อยู่", "hint": "" },
+                        { "en": "My mom is going to make two or three dishes for dinner", "th": "แม่ ของ ฉัน จะ ทํา อาหาร เย็น สอง สาม อย่าง", "hint": "" },
+                        { "en": "My grandma wants to travel to Mexico", "th": "คุณย่า อยาก ไปเที่ยว ประเทศ เม็กซิโก", "hint": "" }
+                    ]
+            },
+            {
+                "name": "ห as a leading consonant",
+                "vocabulary":
+                    [
+                        { "en": "dog", "th": "หมา", "hint": "ห as a leading consonant" },
+                        { "en": "bear", "th": "หมี", "hint": "ห as a leading consonant" },
+                        { "en": "pig", "th": "หมู", "hint": "ห as a leading consonant" },
+                        { "en": "to be", "th": "ไหม", "hint": "ห as a leading consonant" },
+                        { "en": "doctor", "th": "หมอ", "hint": "ห as a leading consonant" },
+                        { "en": "thick", "th": "หนา", "hint": "ห as a leading consonant" },
+                        { "en": "above", "th": "เหนือ", "hint": "ห as a leading consonant" },
+                        { "en": "which", "th": "ไหน", "hint": "ห as a leading consonant" },
+                        { "en": "lonely", "th": "เหงา", "hint": "ห as a leading consonant" },
+                        { "en": "or", "th": "หรือ", "hint": "ห as a leading consonant" }
+                    ],
+                "structure":
+                    [
+                        { "en": "", "th": "", "hint": "" },
+                        { "en": "", "th": "", "hint": "" },
+                        { "en": "", "th": "", "hint": "" },
+                        { "en": "", "th": "", "hint": "" },
+                        { "en": "", "th": "", "hint": "" },
+                        { "en": "", "th": "", "hint": "" },
+                        { "en": "", "th": "", "hint": "" },
+                        { "en": "", "th": "", "hint": "" },
+                        { "en": "", "th": "", "hint": "" },
+                        { "en": "", "th": "", "hint": "" },
+                        { "en": "", "th": "", "hint": "" },
+                        { "en": "", "th": "", "hint": "" }
+                    ]
+            },
+            {
+                "name": "Without final consonants + Tone markers",
+                "vocabulary":
+                    [
+                        { "en": "no", "th": "ไม", "hint": "" },
+                        { "en": "new", "th": "ใหม่", "hint": "" },
+                        { "en": "not / burned", "th": "ไม่ / ไหม้", "hint": "" },
+                        { "en": "wood", "th": "ไม้", "hint": "" },
+                        { "en": "burned", "th": "ไหม้", "hint": "" },
+                        { "en": "have", "th": "มี", "hint": "" },
+                        { "en": "bear", "th": "หมีL", "hint": "" },
+                        { "en": "to be", "th": "มีL / หมี", "hint": "" },
+                        { "en": "doctor", "th": "มี", "hint": "" },
+                        { "en": "thick", "th": "หนา", "hint": "" },
+                        { "en": "pig", "th": "หมู", "hint": "" },
+                        { "en": "to be", "th": "มู ้", "hint": "" },
+                        { "en": "bear", "th": "หมู", "hint": "" },
+                        { "en": "medicine", "th": "ยา", "hint": "" },
+                        { "en": "divorce", "th": "หย่า", "hint": "" },
+                        { "en": "grandmother", "th": "ย่า / หย้า", "hint": "" },
+                        { "en": "to be", "th": "ลอ", "hint": "" },
+                        { "en": "handsome", "th": "หล่อ", "hint": "" },
+                        { "en": "to tease", "th": "ล่อ / หล้อ", "hint": "" },
+                        { "en": "wheel", "th": "ล้อ", "hint": "" },
+                        { "en": "to deceive", "th": "หลอ", "hint": "" },
+                        { "en": "farm", "th": "ไร่", "hint": "" },
+                        { "en": "how many", "th": "ไหร่", "hint": "" },
+                        { "en": "farm / how many", "th": "ไร่ / ไหร้", "hint": "" },
+                        { "en": "to be without", "th": "ไร้", "hint": "" },
+                        { "en": "to be without", "th": "ไหร", "hint": "" }
+                    ],
+                "structure":
+                    [
+                        { "en": "New shirt", "th": "เสื้อใหม่", "hint": "" },
+                        { "en": "Burned omelet", "th": "ไข่เจียวไหม้", "hint": "" },
+                        { "en": "Silk fabric", "th": "ผ้าไหม", "hint": "" },
+                        { "en": "Bear's den", "th": "บะหมีLนํา", "hint": "" },
+                        { "en": "Pig's house", "th": "หมูบ ่ ้าน", "hint": "" },
+                        { "en": "Little girl", "th": "น้ อยหน่า", "hint": "" }
+                    ]
+            }
+
+        ]
     }
 ];
 
@@ -1586,14 +1810,6 @@ function getRandomInt(min, max) {
     return Math.floor(Math.random() * (maxFloored - minCeiled) + minCeiled); // The maximum is exclusive and the minimum is inclusive
 }
 
-function shuffle(array) {
-    for (let i = array.length - 1; i > 0; i--) {
-        let j = Math.floor(Math.random() * (i + 1)); // random index from 0 to i
-        [array[i], array[j]] = [array[j], array[i]];
-    }
-    return array;
-}
-
 function getMultipleChoiceIndices(wordIndex, dictionary) {
     let multipleChoiceIndices = [];
     multipleChoiceIndices.push(wordIndex);
@@ -1675,7 +1891,7 @@ function displaySentenceStructure(sentenceStructure) {
                 }, i * 1500); // Adjust the delay as needed
                 if (i === words.length - 1) {
                     setTimeout(() => {
-                        outputSpan.innerHTML = words.join(""); // Restore original text after the last word
+                        outputSpan.innerHTML = words.join(""); // Restore original text after the last word highlight
                     }, (i + 1) * 1500);
                 }
             }
@@ -1688,6 +1904,33 @@ function displaySentenceStructure(sentenceStructure) {
     });
 }
 
+function textToSpeech(text, lang) {
+    const speech = new SpeechSynthesisUtterance(text);
+    //    speech.lang = 'th-TH';
+    // speech.lang = 'en-US';
+    speech.lang = lang;
+    //  speech.text = text;
+    //    speech.volume = 1; // From 0 to 1
+    speech.rate = 1; // From 0.1 to 10
+    speech.pitch = 1; // From 0 to 2
+    window.speechSynthesis.speak(speech);
+    /*
+    speech.onend = function (event) {
+        //        console.log('SpeechSynthesisUtterance.onend');
+    }
+        */
+}
+
+
+function shuffle(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        let j = Math.floor(Math.random() * (i + 1)); // random index from 0 to i
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
+}
+
+/*
 function playAudioFile(filename) {
     let audioPathname = '/assets/audio/th/' + filename;
     if (audioPathname === undefined) {
@@ -1709,21 +1952,4 @@ function playAudioFile(filename) {
     });
 
 }
-
-function textToSpeech(text, lang) {
-    const speech = new SpeechSynthesisUtterance(text);
-    //    speech.lang = 'th-TH';
-    // speech.lang = 'en-US';
-    speech.lang = lang;
-    //  speech.text = text;
-    //    speech.volume = 1; // From 0 to 1
-    speech.rate = 1; // From 0.1 to 10
-    speech.pitch = 1; // From 0 to 2
-    window.speechSynthesis.speak(speech);
-    /*
-    speech.onend = function (event) {
-        //        console.log('SpeechSynthesisUtterance.onend');
-    }
-        */
-}
-
+*/
