@@ -1572,18 +1572,46 @@ const books = [
                         { "en": "snack", "th": "ขนม", "hint": "Non-conforming Initial Clusters" },
                         { "en": "market", "th": "ตลาด", "hint": "Non-conforming Initial Clusters" },
                         { "en": "to laugh", "th": "ตลก", "hint": "Non-conforming Initial Clusters" },
-                    ],
-                "structure":
-                    []
-            },
-            {
-                "name": "อ as a leading consonant",
-                "vocabulary":
-                    [
                         { "en": "don't", "th": "อย่า", "hint": "อ as a leading consonant" },
                         { "en": "be", "th": "อยู่", "hint": "อ as a leading consonant" },
                         { "en": "Type, Kind, Classifier of things", "th": "อย่าง", "hint": "อ as a leading consonant" },
-                        { "en": "to want", "th": "อยาก", "hint": "อ as a leading consonant" }
+                        { "en": "to want", "th": "อยาก", "hint": "อ as a leading consonant" },
+                        { "en": "dog", "th": "หมา", "hint": "ห as a leading consonant" },
+                        { "en": "bear", "th": "หมี", "hint": "ห as a leading consonant" },
+                        { "en": "pig", "th": "หมู", "hint": "ห as a leading consonant" },
+                        { "en": "to be", "th": "ไหม", "hint": "ห as a leading consonant" },
+                        { "en": "doctor", "th": "หมอ", "hint": "ห as a leading consonant" },
+                        { "en": "thick", "th": "หนา", "hint": "ห as a leading consonant" },
+                        { "en": "above", "th": "เหนือ", "hint": "ห as a leading consonant" },
+                        { "en": "which", "th": "ไหน", "hint": "ห as a leading consonant" },
+                        { "en": "lonely", "th": "เหงา", "hint": "ห as a leading consonant" },
+                        { "en": "or", "th": "หรือ", "hint": "ห as a leading consonant" },
+                        { "en": "no", "th": "ไม", "hint": "Without final consonants + Tone markers" },
+                        { "en": "new", "th": "ใหม่", "hint": "Without final consonants + Tone markers" },
+                        { "en": "not / burned", "th": "ไม่ / ไหม้", "hint": "Without final consonants + Tone markers" },
+                        { "en": "wood", "th": "ไม้", "hint": "Without final consonants + Tone markers" },
+                        { "en": "burned", "th": "ไหม้", "hint": "Without final consonants + Tone markers" },
+                        { "en": "have", "th": "มี", "hint": "Without final consonants + Tone markers" },
+                        { "en": "bear", "th": "หมีL", "hint": "Without final consonants + Tone markers" },
+                        { "en": "to be", "th": "มีL / หมี", "hint": "Without final consonants + Tone markers" },
+                        { "en": "doctor", "th": "มี", "hint": "Without final consonants + Tone markers" },
+                        { "en": "thick", "th": "หนา", "hint": "Without final consonants + Tone markers" },
+                        { "en": "pig", "th": "หมู", "hint": "Without final consonants + Tone markers" },
+                        { "en": "to be", "th": "มู ้", "hint": "Without final consonants + Tone markers" },
+                        { "en": "bear", "th": "หมู", "hint": "Without final consonants + Tone markers" },
+                        { "en": "medicine", "th": "ยา", "hint": "Without final consonants + Tone markers" },
+                        { "en": "divorce", "th": "หย่า", "hint": "Without final consonants + Tone markers" },
+                        { "en": "grandmother", "th": "ย่า / หย้า", "hint": "Without final consonants + Tone markers" },
+                        { "en": "to be", "th": "ลอ", "hint": "Without final consonants + Tone markers" },
+                        { "en": "handsome", "th": "หล่อ", "hint": "Without final consonants + Tone markers" },
+                        { "en": "to tease", "th": "ล่อ / หล้อ", "hint": "Without final consonants + Tone markers" },
+                        { "en": "wheel", "th": "ล้อ", "hint": "Without final consonants + Tone markers" },
+                        { "en": "to deceive", "th": "หลอ", "hint": "Without final consonants + Tone markers" },
+                        { "en": "farm", "th": "ไร่", "hint": "Without final consonants + Tone markers" },
+                        { "en": "how many", "th": "ไหร่", "hint": "Without final consonants + Tone markers" },
+                        { "en": "farm / how many", "th": "ไร่ / ไหร้", "hint": "Without final consonants + Tone markers" },
+                        { "en": "to be without", "th": "ไร้", "hint": "Without final consonants + Tone markers" },
+                        { "en": "to be without", "th": "ไหร", "hint": "Without final consonants + Tone markers" }
                     ],
                 "structure":
                     [
@@ -1597,78 +1625,23 @@ const books = [
                     ]
             },
             {
-                "name": "ห as a leading consonant",
+                "name": "Silent Mark",
                 "vocabulary":
                     [
-                        { "en": "dog", "th": "หมา", "hint": "ห as a leading consonant" },
-                        { "en": "bear", "th": "หมี", "hint": "ห as a leading consonant" },
-                        { "en": "pig", "th": "หมู", "hint": "ห as a leading consonant" },
-                        { "en": "to be", "th": "ไหม", "hint": "ห as a leading consonant" },
-                        { "en": "doctor", "th": "หมอ", "hint": "ห as a leading consonant" },
-                        { "en": "thick", "th": "หนา", "hint": "ห as a leading consonant" },
-                        { "en": "above", "th": "เหนือ", "hint": "ห as a leading consonant" },
-                        { "en": "which", "th": "ไหน", "hint": "ห as a leading consonant" },
-                        { "en": "lonely", "th": "เหงา", "hint": "ห as a leading consonant" },
-                        { "en": "or", "th": "หรือ", "hint": "ห as a leading consonant" }
+                        { "en": "animal", "th": "สัตว์", "hint": "silent mak" },
+                        { "en": "to text", "th": "พิมพ์", "hint": "ห as a leading consonant" }
                     ],
-                "structure":
-                    [
-                        { "en": "", "th": "", "hint": "" },
-                        { "en": "", "th": "", "hint": "" },
-                        { "en": "", "th": "", "hint": "" },
-                        { "en": "", "th": "", "hint": "" },
-                        { "en": "", "th": "", "hint": "" },
-                        { "en": "", "th": "", "hint": "" },
-                        { "en": "", "th": "", "hint": "" },
-                        { "en": "", "th": "", "hint": "" },
-                        { "en": "", "th": "", "hint": "" },
-                        { "en": "", "th": "", "hint": "" },
-                        { "en": "", "th": "", "hint": "" },
-                        { "en": "", "th": "", "hint": "" }
-                    ]
-            },
-            {
-                "name": "Without final consonants + Tone markers",
-                "vocabulary":
-                    [
-                        { "en": "no", "th": "ไม", "hint": "" },
-                        { "en": "new", "th": "ใหม่", "hint": "" },
-                        { "en": "not / burned", "th": "ไม่ / ไหม้", "hint": "" },
-                        { "en": "wood", "th": "ไม้", "hint": "" },
-                        { "en": "burned", "th": "ไหม้", "hint": "" },
-                        { "en": "have", "th": "มี", "hint": "" },
-                        { "en": "bear", "th": "หมีL", "hint": "" },
-                        { "en": "to be", "th": "มีL / หมี", "hint": "" },
-                        { "en": "doctor", "th": "มี", "hint": "" },
-                        { "en": "thick", "th": "หนา", "hint": "" },
-                        { "en": "pig", "th": "หมู", "hint": "" },
-                        { "en": "to be", "th": "มู ้", "hint": "" },
-                        { "en": "bear", "th": "หมู", "hint": "" },
-                        { "en": "medicine", "th": "ยา", "hint": "" },
-                        { "en": "divorce", "th": "หย่า", "hint": "" },
-                        { "en": "grandmother", "th": "ย่า / หย้า", "hint": "" },
-                        { "en": "to be", "th": "ลอ", "hint": "" },
-                        { "en": "handsome", "th": "หล่อ", "hint": "" },
-                        { "en": "to tease", "th": "ล่อ / หล้อ", "hint": "" },
-                        { "en": "wheel", "th": "ล้อ", "hint": "" },
-                        { "en": "to deceive", "th": "หลอ", "hint": "" },
-                        { "en": "farm", "th": "ไร่", "hint": "" },
-                        { "en": "how many", "th": "ไหร่", "hint": "" },
-                        { "en": "farm / how many", "th": "ไร่ / ไหร้", "hint": "" },
-                        { "en": "to be without", "th": "ไร้", "hint": "" },
-                        { "en": "to be without", "th": "ไหร", "hint": "" }
-                    ],
-                "structure":
-                    [
-                        { "en": "New shirt", "th": "เสื้อใหม่", "hint": "" },
-                        { "en": "Burned omelet", "th": "ไข่เจียวไหม้", "hint": "" },
-                        { "en": "Silk fabric", "th": "ผ้าไหม", "hint": "" },
-                        { "en": "Bear's den", "th": "บะหมีLนํา", "hint": "" },
-                        { "en": "Pig's house", "th": "หมูบ ่ ้าน", "hint": "" },
-                        { "en": "Little girl", "th": "น้ อยหน่า", "hint": "" }
-                    ]
+                "structure": [
+                    { "en": "What are you doing this weekend?", "th": "คุณ ทำ อะไร ใน สุดสัปดาห์ นี้", "hint": "" },
+                    { "en": "I am going to the market to buy some food", "th": "ฉัน จะ ไป ตลาด เพื่อ ซื้อ อาหาร", "hint": "" },
+                    { "en": "I will text my friend to ask if she wants to go with me", "th": "สมชาย : เป็น ยังไงบ้าง ครับ สนุก ไหม", "hint": "" },
+                    { "en": "Sure! I haven't been to the market in a long time", "th": "กุหลาบ : สนุก มาก ค่ะ ลูก สาว ของ ฉัน ชอบ ดู โชว์ ของ แมวน้ำ มาก ค่ะ แล้ว คุณ ล่ะ คะ", "hint": "" },
+                    { "en": "I like to watch dog shows", "th": "สมชาย : ผม ไป เที่ยว เมือง เวียงจันทน์ มา ครับ ไป กับ เพื่อน ๆ", "hint": "" },
+                    { "en": "I went to Vientiane with my friends", "th": "กุหลาบ : จริง เหรอคะ ฉัน ยัง ไม่ เคย ไป ที่ นั่น เลย ค่ะ ได้ ยิน ว่า มี วัด สวย หลาย แห่ง", "hint": "" },
+                    { "en": "Really? I have never been there. I heard there are many beautiful temples", "th": "สมชาย : ใช่ ครับ ใน วัด มี โบสถ์ และ เจดีย์ ที่ สวย มาก ครับ", "hint": "" },
+                    { "en": "Yes, the temples are very beautiful", "th": "กุหลาบ : ว้าว อย่าลืม โพสต์ รูป ลง ใน เฟซบุ๊ก นะคะ ฉัน จะ ไป กด ไลก์ ให้ คุณ", "hint": "" }
+                ]
             }
-
         ]
     }
 ];
