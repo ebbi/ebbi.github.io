@@ -1621,7 +1621,7 @@ const books = [
                         { "en": "My friend has lived in Bangkok for ten years", "th": "เพื่อน ของ ผม อยู่ กรุงเทพ มา สิบ ปี แล้ ว", "hint": "" },
                         { "en": "I'm not free right now, I'm driving", "th": "ผม ยัง ไม่ ว่าง ตอนนี กําลัง ขับรถ อยู่", "hint": "" },
                         { "en": "My mom is going to make two or three dishes for dinner", "th": "แม่ ของ ฉัน จะ ทํา อาหาร เย็น สอง สาม อย่าง", "hint": "" },
-                        { "en": "My grandma wants to travel to Mexico", "th": "คุณย่า อยาก ไปเที่ยว ประเทศ เม็กซิโก", "hint": "" }
+                        { "en": "Grandma wants to travel to Mexico", "th": "คุณ ย่า อยาก ไปเที่ยว ประเทศ เม็กซิโก", "hint": "" }
                     ]
             },
             {
@@ -1633,13 +1633,13 @@ const books = [
                     ],
                 "structure": [
                     { "en": "What are you doing this weekend?", "th": "คุณ ทำ อะไร ใน สุดสัปดาห์ นี้", "hint": "" },
-                    { "en": "I am going to the market to buy some food", "th": "ฉัน จะ ไป ตลาด เพื่อ ซื้อ อาหาร", "hint": "" },
-                    { "en": "I will text my friend to ask if she wants to go with me", "th": "สมชาย : เป็น ยังไงบ้าง ครับ สนุก ไหม", "hint": "" },
-                    { "en": "Sure! I haven't been to the market in a long time", "th": "กุหลาบ : สนุก มาก ค่ะ ลูก สาว ของ ฉัน ชอบ ดู โชว์ ของ แมวน้ำ มาก ค่ะ แล้ว คุณ ล่ะ คะ", "hint": "" },
-                    { "en": "I like to watch dog shows", "th": "สมชาย : ผม ไป เที่ยว เมือง เวียงจันทน์ มา ครับ ไป กับ เพื่อน ๆ", "hint": "" },
-                    { "en": "I went to Vientiane with my friends", "th": "กุหลาบ : จริง เหรอคะ ฉัน ยัง ไม่ เคย ไป ที่ นั่น เลย ค่ะ ได้ ยิน ว่า มี วัด สวย หลาย แห่ง", "hint": "" },
-                    { "en": "Really? I have never been there. I heard there are many beautiful temples", "th": "สมชาย : ใช่ ครับ ใน วัด มี โบสถ์ และ เจดีย์ ที่ สวย มาก ครับ", "hint": "" },
-                    { "en": "Yes, the temples are very beautiful", "th": "กุหลาบ : ว้าว อย่าลืม โพสต์ รูป ลง ใน เฟซบุ๊ก นะคะ ฉัน จะ ไป กด ไลก์ ให้ คุณ", "hint": "" }
+                    { "en": "I'm going to the market to buy food.", "th": "ฉัน จะ ไป ตลาด เพื่อ ซื้อ อาหาร", "hint": "" },
+                    { "en": "Somchai: How was it? Was it fun?", "th": "สมชาย : เป็น ยังไงบ้าง ครับ สนุก ไหม", "hint": "" },
+                    { "en": "Golab: It was so much fun. My daughter really enjoyed watching the seal show. What about you?", "th": "กุหลาบ : สนุก มาก ค่ะ ลูก สาว ของ ฉัน ชอบ ดู โชว์ ของ แมวน้ำ มาก ค่ะ แล้ว คุณ ล่ะ คะ", "hint": "" },
+                    { "en": "Somchai: I went to Vientiane with friends.", "th": "สมชาย : ผม ไป เที่ยว เมือง เวียงจันทน์ มา ครับ ไป กับ เพื่อน ๆ", "hint": "" },
+                    { "en": "Golab: Really? I've never been there. I've heard there are many beautiful temples.", "th": "กุหลาบ : จริง เหรอคะ ฉัน ยัง ไม่ เคย ไป ที่ นั่น เลย ค่ะ ได้ ยิน ว่า มี วัด สวย หลาย แห่ง", "hint": "" },
+                    { "en": "Somchai: Yes, there are very beautiful temples and pagodas in the temple.", "th": "สมชาย : ใช่ ครับ ใน วัด มี โบสถ์ และ เจดีย์ ที่ สวย มาก ครับ", "hint": "" },
+                    { "en": "Golab: Wow, don't forget to post the picture on Facebook. I'll go and like it for you.", "th": "กุหลาบ : ว้าว อย่าลืม โพสต์ รูป ลง ใน เฟซบุ๊ก นะคะ ฉัน จะ ไป กด ไลก์ ให้ คุณ", "hint": "" }
                 ]
             }
         ]
