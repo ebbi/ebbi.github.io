@@ -1878,10 +1878,10 @@ const books = [
         ]
     },
     {
-        "title": "Mani Mana",
+        "title": "Mana Mani",
         "lessons": [
             {
-                "name": "Lesson 1",
+                "name": "Mana Mani",
                 "vocabulary": [
                     { "en": "Crow", "th": "กา", "hint": "" },
                     { "en": "Uncle", "th": "อา", "hint": "" },
@@ -2179,25 +2179,7 @@ const books = [
                     { "en": "religion", "th": "ศาสนา", "hint": "" },
                     { "en": "soap", "th": "สบู่", "hint": "" },
                     { "en": "thief", "th": "ขโมย", "hint": "" },
-                    { "en": "type", "th": "ชนิด", "hint": "" },
-                    { "en": "", "th": "", "hint": "" },
-                    { "en": "", "th": "", "hint": "" },
-                    { "en": "", "th": "", "hint": "" },
-                    { "en": "", "th": "", "hint": "" },
-                    { "en": "", "th": "", "hint": "" },
-                    { "en": "", "th": "", "hint": "" },
-                    { "en": "", "th": "", "hint": "" },
-                    { "en": "", "th": "", "hint": "" },
-                    { "en": "", "th": "", "hint": "" },
-                    { "en": "", "th": "", "hint": "" },
-                    { "en": "", "th": "", "hint": "" },
-                    { "en": "", "th": "", "hint": "" },
-                    { "en": "", "th": "", "hint": "" },
-                    { "en": "", "th": "", "hint": "" },
-                    { "en": "", "th": "", "hint": "" },
-                    { "en": "", "th": "", "hint": "" },
-                    { "en": "", "th": "", "hint": "" },
-                    { "en": "", "th": "", "hint": "" }
+                    { "en": "type", "th": "ชนิด", "hint": "" }
                 ],
                 "structure": [
                     { "en": "Mani has eyes", "th": "มานี มี ตา", "hint": "" },
@@ -2246,18 +2228,6 @@ const books = [
                     { "en": "", "th": "", "hint": "" },
                     { "en": "", "th": "", "hint": "" },
                     { "en": "", "th": "", "hint": "" }
-                ]
-            }
-        ]
-    },
-    {
-        "title": "Manni Manna",
-        "lessons": [
-            {
-                "name": "Lesson 1",
-                "vocabulary": [
-                    { "en": "Manni", "th": "มันนี่", "hint": "" },
-                    { "en": "Manna", "th": "มานา", "hint": "" }
                 ]
             }
         ]
