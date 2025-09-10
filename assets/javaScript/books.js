@@ -1691,7 +1691,7 @@ const books = [
                     { "en": "Miss Gulap, what day are you going?", "th": "คุณ กุหลาบไปเที่ยววันอะไร", "hint": "" },
                     { "en": "I'm going at the weekend.", "th": "ฉัน จะ ไป ช่วง สุดสัปดาห์", "hint": "" },
                     { "en": "Where did Mr. Somchai go and who did he go with?", "th": "คุณ สมชาย ไป เที่ยว ที่ ไหน และ ไป กับ ใคร ครับ", "hint": "" },
-                    { "en": "Mr. Somchai went to Vientiane with his friends.", "th": "คุณ สมชาย ไป เที่ยว เวียงจันทน์ กับ เพื่อน ๆ", "hint": "" }
+                    { "en": "Mr. Somchai went to Vientiane with his friends.", "th": "คุณ สมชาย ไป เที่ยว เวียงจันทน์ กับ เพื่อนๆ", "hint": "" }
 
                 ]
             },
@@ -1742,27 +1742,27 @@ const books = [
                         { "en": "Nakhon Phanom", "th": "นครพนม", "hint": "" }
                     ],
                 "structure": [
-                    { "en": "Somporn: Hello, Ms. Saisamorn. It's been a while.How are you?", "th": "สมพร : สวัสดีค่ะ คุณสายสมร ไม่เจอกันนานเลยนะคะ เป็นยังไงบ้างคะ", "hint": "" },
+                    { "en": "Somporn: Hello, Ms. Saisamorn. It's been a while.How are you?", "th": "สมพร : สวัสดีค่ะ คุณสายสมร ไม่ เจอ กัน นาน เลย นะคะ เป็น ยัง ไง บ้าง คะ", "hint": "" },
                     {
-                        "en": "Saisamorn: Hello, Khun Somporn. I'm fine. I have to take care of my parents in Samut Sakhon Province, so I haven't had much free time.", "th": "สายสมร : สวัสดีค่ะ คุณสมพร ฉันสบายดีค่ะ ช่วงนี้ฉันต้องไปดูแลพ่อแม่ที่จังหวัดสมุทรสาครค่ะก็เลยไม่ค่อยว่าง", "hint": ""
+                        "en": "Saisamorn: Hello, Khun Somporn. I'm fine. I have to take care of my parents in Samut Sakhon Province, so I haven't had much free time.", "th": "สายสมร : สวัสดีค่ะ คุณ สมพร ฉัน สบายดี ค่ะ ช่วง นี้ ฉัน ต้อง ไป ดู แล พ่อ แม่ ที่ จังหวัด สมุทรสาคร ค่ะ ก็ เลย ไม่ ค่อย ว่าง", "hint": ""
                     },
                     {
-                        "en": "Somporn: Really? I've never been there before. When will you go back there?", "th": "สมพร : จริงเหรอคะ ฉันยังไม่เคยไปที่นั่นเลยค่ะคุณจะกลับไปที่นั่นอีกเมื่อไหร่คะ", "hint": ""
+                        "en": "Somporn: Really? I've never been there before. When will you go back there?", "th": "สมพร : จริง เหรอ คะ ฉัน ยัง ไม่ เคย ไป ที่ นั่น เลย ค่ะ คุณ จะ กลับ ไป ที่ นั่น อีก เมื่อ ไหร่ คะ", "hint": ""
                     },
                     {
-                        "en": "Saisamorn: I think it might be in December. Do you want to go together?", "th": "สายสมร : ฉันคิดว่าอาจจะเดือนธันวาคมค่ะคุณอยากไปด้วยกันไหมคะ", "hint": ""
+                        "en": "Saisamorn: I think it might be in December. Do you want to go together?", "th": "สายสมร : ฉัน คิด ว่า อาจจะ เดือน ธันวาคม ค่ะ คุณ อยาก ไป ด้วย กัน ไหม คะ", "hint": ""
                     },
                     {
-                        "en": "Somporn: Oh, what a pity! I'm not free then. I have to go to a close friend's wedding in Nakhon Si Thammarat Province.", "th": "สมพร : โอ้ น่าเสียดายจังเลยค่ะ ช่วงนั้นฉันไม่ว่างต้องไปงานแต่งงานของเพื่อนสนิทที่จังหวัดนครศรีธรรมราชค่ะ", "hint": ""
+                        "en": "Somporn: Oh, what a pity! I'm not free then. I have to go to a close friend's wedding in Nakhon Si Thammarat Province.", "th": "สมพร : โอ้ น่า เสียดาย จัง เลย ค่ะ ช่วง นั้น ฉัน ไม่ ว่าง ต้อง ไป งาน แต่งงาน ของ เพื่อน สนิท ที่ จังหวัด นคร ศรี ธรรมราช ค่ะ", "hint": ""
                     },
                     {
-                        "en": "Saisamorn: That's okay. I go there often. Next time, I'll invite you again.", "th": "สายสมร : ไม่เป็นไรค่ะ ฉันไปที่นั่นบ่อยๆโอกาสหน้าฉันจะชวนคุณอีกนะคะ", "hint": ""
+                        "en": "Saisamorn: That's okay. I go there often. Next time, I'll invite you again.", "th": "สายสมร : ไม่ เป็น ไร ค่ะ ฉัน ไป ที่ นั่น บ่อยๆ โอกาส หน้า ฉัน จะ ชวน คุณ อีก นะ คะ", "hint": ""
                     },
                     {
-                        "en": "Somporn: Thank you very much. I just came back from the market. I saw the edible flowers and bought many bags. This bag is for you.", "th": "สมพร : ขอบคุณมากค่ะ ฉันเพิ่งกลับมาจากตลาด เห็นดอกขจรดูน่ากินก็เลยซื้อมาหลายถุงเลยค่ะถุงนี้ฉันให้คุณนะคะ", "hint": ""
+                        "en": "Somporn: Thank you very much. I just came back from the market. I saw the edible flowers and bought many bags. This bag is for you.", "th": "สมพร : ขอบคุณ มาก ค่ะ ฉัน เพิ่ง กลับ มา จาก ตลาด เห็น ดอก ขจร ดู น่า กิน ก็ เลย ซื้อ มา หลาย ถุง เลย ค่ะ ถุง นี้ ฉัน ให้ คุณ นะ คะ", "hint": ""
                     },
                     {
-                        "en": "Saisamorn: Thank you very much. I have to go now. The drama I like is about to start. See you again.", "th": "สายสมร : ขอบคุณมากค่ะ ฉันต้องไปแล้ว ละครที่ฉันชอบกำลังจะมาแล้ว ไว้เจอกันใหม่นะคะ", "hint": ""
+                        "en": "Saisamorn: Thank you very much. I have to go now. The drama I like is about to start. See you again.", "th": "สายสมร : ขอบคุณ มาก ค่ะ ฉัน ต้อง ไป แล้ว ละคร ที่ ฉัน ชอบ กำลัง จะ มา แล้ว ไว้ เจอ กัน ใหม่ นะ คะ", "hint": ""
                     }
                 ]
             },
@@ -1801,9 +1801,9 @@ const books = [
                     ],
                 "structure": [
 
-                    { "en": "Thailand has three seasons: summer, rainy season, and winter. Summer runs from March to May. April is the hottest month in Thailand. April has a very important tradition, which is the Songkran Festival.", "th": "เมืองไทยมีฤดูได้แก่ฤดูร้อนฤดูฝนและฤดูหนาวฤดูร้อนเริ่มตั้งแต่เดือนมีนาคมถึงเดือนพฤษภาคมเดือนเมษายนเป็นเดือนทีร้อนที่สุดของประเทศไทยในเดือนเมษายนมีประเพณีทีLสําคัญมากนันก็คือประเพณีสงกรานต์", "hint": "" },
-                    { "en": "The rainy season in Thailand runs from June to mid-October, but sometimes the rains may start as early as mid-May. In September, storms often bring heavy rain to many provinces. During the rainy season, there is an important Buddhist festival, which is the Buddhist Lent.", "th": "ฤดูฝนในเมืองไทยเริ่มตั้งแต่เดือนมิถุนายนถึงกลางเดือนตุลาคมแต่บางครั้งฝนก็อาจจะเริ่มตกตั้งแต่กลางเดือนพฤษภาคมในช่วงเดือนกันยายนมักจะมีพายุทำให้มีฝนตกหนักในหลายจังหวัดในช่วงฤดูฝนมีเทศกาลสำคัญของชาวพุทธนันก็คือเทศกาลเข้าพรรษา", "hint": "" },
-                    { "en": "The winter season in Thailand runs from mid-October to February. Generally, the weather is not very cold, but the northern and upper northeastern regions can be quite chilly, especially in the mountains. During the winter season, there is a very famous festival called the Loy Krathong Festival.", "th": "ฤดูหนาวเริ่มตั้งแต่กลางเดือนตุลาคมถึงเดือนกุมภาพันธ์โดยทั่วไปอากาศไม่ค่อยหนาวมาก แต่จังหวัดในภาคเหนือและภาคอีสานตอนบนอากาศค่อนข้างหนาวโดยเฉพาะบนภูเขาในช่วงฤดูหนาวมีเทศกาลที่มีชื่อเสียงมากนั่นก็คือเทศกาลลอยกระทง", "hint": "" }
+                    { "en": "Thailand has three seasons: summer, rainy season, and winter. Summer runs from March to May. April is the hottest month in Thailand. April has a very important tradition, which is the Songkran Festival.", "th": "เมือง ไทย มี ฤดู ได้ แก่ ฤดู ร้อน ฤดู ฝน และ ฤดู หนาว ฤดู ร้อน เริ่ม ตั้ง แต่ เดือน มีนาคม ถึง เดือน พฤษภาคม เดือน เมษายน เป็น เดือน ที่ ร้อน ที่ สุด ของ ประเทศไทย ใน เดือน เมษายน มี ประเพณี ที่ สำคัญ มาก นั่น ก็คือ ประเพณี สงกรานต์", "hint": "" },
+                    { "en": "The rainy season in Thailand runs from June to mid-October, but sometimes the rains may start as early as mid-May. In September, storms often bring heavy rain to many provinces. During the rainy season, there is an important Buddhist festival, which is the Buddhist Lent.", "th": "ฤดู ฝน ใน เมืองไทย เริ่ม ตั้งแต่ เดือน มิถุนายน ถึง กลาง เดือน ตุลาคม แต่ บางครั้ง ฝน ก็ อาจจะ เริ่ม ตก ตั้งแต่ กลาง เดือน พฤษภาคม ใน ช่วง เดือน กันยายน มักจะ มี พายุ ทำให้ มี ฝน ตก หนัก ใน หลาย จังหวัด ใน ช่วง ฤดู ฝน มี เทศกาล สำคัญ ของ ชาว พุทธ นั่น ก็คือ เทศกาล เข้าพรรษา", "hint": "" },
+                    { "en": "The winter season in Thailand runs from mid-October to February. Generally, the weather is not very cold, but the northern and upper northeastern regions can be quite chilly, especially in the mountains. During the winter season, there is a very famous festival called the Loy Krathong Festival.", "th": "ฤดู หนาว เริ่ม ตั้งแต่ กลาง เดือน ตุลาคม ถึง เดือน กุมภาพันธ์ โดย ทั่วไป อากาศ ไม่ ค่อย หนาว มาก แต่ จังหวัด ใน ภาค เหนือ และ ภาค อีสาน ตอน บน อากาศ ค่อน ข้าง หนาว โดย เฉพาะ บน ภูเขา ใน ช่วง ฤดู หนาว มี เทศกาล ที่ มี ชื่อเสียง มาก นั่น ก็คือ เทศกาล ลอย กระทง", "hint": "" }
 
                 ]
             },
@@ -1873,6 +1873,124 @@ const books = [
                     {
                         "en": "People in the southern region eat steamed rice like people in the central region. Southern local food is spicy because it is made from various spices. The meat used in cooking is mostly seafood, such as mackerel, tuna, crab, shrimp, and shellfish. Famous southern dishes include rice salad, yellow curry, fish head curry, stir-fried stinky beans with shrimp, etc.", "th": "คนภาคใต้ กิน ข้าวสวยเหมือนกับคนภาคกลาง อาหารพื้นบ้านภาคใต้ มีรสจัดเพราะว่าทําจากเครื่องเทศหลากหลายชนิด เนื้อสัตว์ที่นํามาทําอาหารส่วนมากเป็นสัตว์ทะเล เช่น ปลากระบอก ปลาทู ปูทะเลกุ้ง และหอย อาหารทีมีชื่อเสียงมากของภาคใต้ ได้แก่ ข้าวยำ แกงเหลืองแกงไตปลา สะตอผัดกุ้ง ฯลฯ", "hint": ""
                     },
+                ]
+            }
+        ]
+    },
+    {
+        "title": "Mani Mana",
+        "lessons": [
+            {
+                "name": "Lesson 1",
+                "vocabulary": [
+                    { "en": "Crow", "th": "กา", "hint": "" },
+                    { "en": "Uncle", "th": "อา", "hint": "" },
+                    { "en": "Rice paddy", "th": "นา", "hint": "" },
+                    { "en": "Good", "th": "ดี", "hint": "" },
+                    { "en": "Mani", "th": "มานี", "hint": "" },
+                    { "en": "Eyes", "th": "ตา", "hint": "" },
+                    { "en": "Come", "th": "มา", "hint": "" },
+                    { "en": "have", "th": "มี", "hint": "" },
+                    { "en": "hit", "th": "ตี", "hint": "" },
+                    { "en": "hurl", "th": "ปา", "hint": "" },
+                    { "en": "see", "th": "ดู", "hint": "" },
+                    { "en": "hole", "th": "รู", "hint": "" },
+                    { "en": "crab", "th": "ปู", "hint": "" },
+                    { "en": "ear", "th": "หู", "hint": "" },
+                    { "en": "nose", "th": "จมูก", "hint": "" },
+                    { "en": "mouth", "th": "ปาก", "hint": "" },
+                    { "en": "snake", "th": "งู", "hint": "" },
+                    { "en": "look", "th": "พา", "hint": "" },
+                    { "en": "find", "th": "หา", "hint": "" },
+                    { "en": "go", "th": "ไป", "hint": "" },
+                    { "en": "quick", "th": "ไว", "hint": "" },
+                    { "en": "heart", "th": "ใจ", "hint": "" },
+                    { "en": "in", "th": "ใน", "hint": "" },
+                    { "en": "any", "th": "ใด", "hint": "" },
+                    { "en": "put", "th": "ใส่", "hint": "" },
+                    { "en": "scratch", "th": "เกา", "hint": "" },
+                    { "en": "guess", "th": "เดา", "hint": "" },
+                    { "en": "stove", "th": "เตา", "hint": "" },
+                    { "en": "take", "th": "เอา", "hint": "" },
+                    { "en": "we", "th": "เรา", "hint": "" },
+                    { "en": "shadow", "th": "เงา", "hint": "" },
+                    { "en": "he", "th": "เขา", "hint": "" },
+                    { "en": "lice", "th": "เหา", "hint": "" },
+                    { "en": "pole", "th": "เสา", "hint": "" },
+                    { "en": "nest", "th": "เถา", "hint": "" },
+                    { "en": "", "th": "", "hint": "" },
+                    { "en": "", "th": "", "hint": "" },
+                    { "en": "", "th": "", "hint": "" },
+                    { "en": "", "th": "", "hint": "" },
+                    { "en": "", "th": "", "hint": "" },
+                    { "en": "", "th": "", "hint": "" },
+                    { "en": "", "th": "", "hint": "" },
+                    { "en": "", "th": "", "hint": "" },
+                    { "en": "", "th": "", "hint": "" },
+                    { "en": "", "th": "", "hint": "" },
+                    { "en": "", "th": "", "hint": "" },
+                    { "en": "", "th": "", "hint": "" },
+                    { "en": "", "th": "", "hint": "" }
+                ],
+                "structure": [
+                    { "en": "Mani has eyes", "th": "มานี มี ตา", "hint": "" },
+                    { "en": "The crow has eyes", "th": "กา มี ตา", "hint": "" },
+                    { "en": "The uncle has eyes", "th": "อา มี ตา", "hint": "" },
+
+                    { "en": "The good Grandfather has good rice paddy", "th": "ตา ดี นา ดี", "hint": "" },
+                    { "en": "Mani has eyes", "th": "มานี มี ตา", "hint": "" },
+                    { "en": "Grandfather has rice paddy", "th": "ตา มี นา", "hint": "" },
+                    {
+                        "en": "The crow comes to rice paddy", "th": "กา มา นา", "hint": ""
+                    },
+                    {
+                        "en": "Grandfather comes to rice paddy", "th": "ตา มา นา", "hint": ""
+                    },
+                    {
+                        "en": "Grandfather has good rice paddy", "th": "ตา มี นา ดี", "hint": ""
+                    },
+                    {
+                        "en": "The uncle comes to rice paddy", "th": "อา มา นา", "hint": ""
+                    },
+
+                    { "en": "The uncle has rice paddy", "th": "อา มี นา", "hint": "" },
+                    { "en": "The rice paddy has a snake", "th": "นา มี งู", "hint": "" },
+                    { "en": "The rice paddy has a crab", "th": "นา มี ปู", "hint": "" },
+                    { "en": "The crow sees the crab", "th": "กา ดู ปู", "hint": "" },
+                    { "en": "The snake sees the crab", "th": "งู ดู ปู", "hint": "" },
+                    { "en": "Mani comes to uncle rice paddy", "th": "มานี มา นา อา", "hint": "" },
+
+                    { "en": "", "th": "", "hint": "" },
+                    { "en": "", "th": "", "hint": "" },
+                    { "en": "", "th": "", "hint": "" },
+                    { "en": "", "th": "", "hint": "" },
+                    { "en": "", "th": "", "hint": "" },
+                    { "en": "", "th": "", "hint": "" },
+                    { "en": "", "th": "", "hint": "" },
+                    { "en": "", "th": "", "hint": "" },
+                    { "en": "", "th": "", "hint": "" },
+                    { "en": "", "th": "", "hint": "" },
+                    { "en": "", "th": "", "hint": "" },
+                    { "en": "", "th": "", "hint": "" },
+                    { "en": "", "th": "", "hint": "" },
+                    { "en": "", "th": "", "hint": "" },
+                    { "en": "", "th": "", "hint": "" },
+                    { "en": "", "th": "", "hint": "" },
+                    { "en": "", "th": "", "hint": "" },
+                    { "en": "", "th": "", "hint": "" },
+                    { "en": "", "th": "", "hint": "" }
+                ]
+            }
+        ]
+    },
+    {
+        "title": "Manni Manna",
+        "lessons": [
+            {
+                "name": "Lesson 1",
+                "vocabulary": [
+                    { "en": "Manni", "th": "มันนี่", "hint": "" },
+                    { "en": "Manna", "th": "มานา", "hint": "" }
                 ]
             }
         ]
