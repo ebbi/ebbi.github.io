@@ -1694,6 +1694,186 @@ const books = [
                     { "en": "Mr. Somchai went to Vientiane with his friends.", "th": "คุณ สมชาย ไป เที่ยว เวียงจันทน์ กับ เพื่อน ๆ", "hint": "" }
 
                 ]
+            },
+            {
+                "name": "Double cosonants",
+                "vocabulary":
+                    [
+                        { "en": "sissors", "th": "กรรไกร", "hint": "" },
+                        { "en": "trucks", "th": "รถบรรทุก", "hint": "" },
+                        { "en": "housing", "th": "หมู่บ้านจัดสรร", "hint": "" },
+                        { "en": "candle", "th": "เทียนพรรษา", "hint": "" },
+                        { "en": "ruler", "th": "ไม้บรรทัด", "hint": "" },
+                        { "en": "pregnant", "th": "ตั้งครรภ์", "hint": "" },
+                        { "en": "painkiller", "th": "ยาบรรเทาปวด", "hint": "" },
+                        { "en": "wife", "th": "ภรรยา", "hint": "" },
+                        { "en": "crab", "th": "กรรเชียงปู", "hint": "" },
+                        { "en": "strategy", "th": "ยุทธศาสตร์", "hint": "" },
+                        { "en": "ordinary", "th": "ธรรมดา", "hint": "" },
+                        { "en": "abstract", "th": "นามธรรม", "hint": "" },
+                        { "en": "sculpture", "th": "ประติมากรรม", "hint": "" },
+                        { "en": "genetics", "th": "พันธุกรรม", "hint": "" },
+                        { "en": "committee", "th": "กรรมการ", "hint": "" },
+                        { "en": "nature", "th": "ธรรมชาติ", "hint": "" },
+                        { "en": "political party", "th": "พรรคการเมือง", "hint": "" },
+                        { "en": "century", "th": "ศตวรรษ", "hint": "" }
+                    ],
+                "structure": []
+            },
+            {
+                "name": "A syllable end with ร",
+                "vocabulary":
+                    [
+                        { "en": "Alphabet character", "th": "อักษร", "hint": "" },
+                        { "en": "Monkey", "th": "วานร", "hint": "" },
+                        { "en": "", "th": "ถาวร", "hint": "" },
+                        { "en": "Labourer", "th": "กรรมกร", "hint": "" },
+                        { "en": "Traffic light", "th": "ไฟจราจร", "hint": "" },
+                        { "en": "Company", "th": "บริษัท", "hint": "" },
+                        { "en": "Donate", "th": "บริจาค", "hint": "" },
+                        { "en": "Waiter", "th": "บริกร", "hint": "" },
+                        { "en": "So", "th": "ก็เลย", "hint": "" },
+                        { "en": "Together", "th": "ด้วยกัน", "hint": "" },
+                        { "en": "To give", "th": "ให้", "hint": "" },
+                        { "en": "Samut Sakhon", "th": "สมุทรสาคร", "hint": "" },
+                        { "en": "Nakhon Nayok", "th": "นครนายก", "hint": "" },
+                        { "en": "Nakhon Ratchasima", "th": "นครราชสีมา", "hint": "" },
+                        { "en": "Nakhon Pathom", "th": "นครปฐม", "hint": "" },
+                        { "en": "Nakhon Phanom", "th": "นครพนม", "hint": "" }
+                    ],
+                "structure": [
+                    { "en": "Somporn: Hello, Ms. Saisamorn. It's been a while.How are you?", "th": "สมพร : สวัสดีค่ะ คุณสายสมร ไม่เจอกันนานเลยนะคะ เป็นยังไงบ้างคะ", "hint": "" },
+                    {
+                        "en": "Saisamorn: Hello, Khun Somporn. I'm fine. I have to take care of my parents in Samut Sakhon Province, so I haven't had much free time.", "th": "สายสมร : สวัสดีค่ะ คุณสมพร ฉันสบายดีค่ะ ช่วงนี้ฉันต้องไปดูแลพ่อแม่ที่จังหวัดสมุทรสาครค่ะก็เลยไม่ค่อยว่าง", "hint": ""
+                    },
+                    {
+                        "en": "Somporn: Really? I've never been there before. When will you go back there?", "th": "สมพร : จริงเหรอคะ ฉันยังไม่เคยไปที่นั่นเลยค่ะคุณจะกลับไปที่นั่นอีกเมื่อไหร่คะ", "hint": ""
+                    },
+                    {
+                        "en": "Saisamorn: I think it might be in December. Do you want to go together?", "th": "สายสมร : ฉันคิดว่าอาจจะเดือนธันวาคมค่ะคุณอยากไปด้วยกันไหมคะ", "hint": ""
+                    },
+                    {
+                        "en": "Somporn: Oh, what a pity! I'm not free then. I have to go to a close friend's wedding in Nakhon Si Thammarat Province.", "th": "สมพร : โอ้ น่าเสียดายจังเลยค่ะ ช่วงนั้นฉันไม่ว่างต้องไปงานแต่งงานของเพื่อนสนิทที่จังหวัดนครศรีธรรมราชค่ะ", "hint": ""
+                    },
+                    {
+                        "en": "Saisamorn: That's okay. I go there often. Next time, I'll invite you again.", "th": "สายสมร : ไม่เป็นไรค่ะ ฉันไปที่นั่นบ่อยๆโอกาสหน้าฉันจะชวนคุณอีกนะคะ", "hint": ""
+                    },
+                    {
+                        "en": "Somporn: Thank you very much. I just came back from the market. I saw the edible flowers and bought many bags. This bag is for you.", "th": "สมพร : ขอบคุณมากค่ะ ฉันเพิ่งกลับมาจากตลาด เห็นดอกขจรดูน่ากินก็เลยซื้อมาหลายถุงเลยค่ะถุงนี้ฉันให้คุณนะคะ", "hint": ""
+                    },
+                    {
+                        "en": "Saisamorn: Thank you very much. I have to go now. The drama I like is about to start. See you again.", "th": "สายสมร : ขอบคุณมากค่ะ ฉันต้องไปแล้ว ละครที่ฉันชอบกำลังจะมาแล้ว ไว้เจอกันใหม่นะคะ", "hint": ""
+                    }
+                ]
+            },
+            {
+                "name": "Reading loan words in Thai",
+                "vocabulary":
+                    [
+                        { "en": "January", "th": "มกราคม", "hint": "" },
+                        { "en": "July", "th": "กรกฎาคม", "hint": "" },
+                        { "en": "Telephone", "th": "โทรศัพท์", "hint": "" },
+                        { "en": "television", "th": "โทรทัศน์", "hint": "" },
+                        { "en": "normal", "th": "ปกติ", "hint": "" },
+                        { "en": "United States", "th": "สหรัฐ", "hint": "" },
+                        { "en": "attempt", "th": "พยายาม", "hint": "" },
+                        { "en": "nurse", "th": "พยาบาล", "hint": "" },
+                        { "en": "bank", "th": "ธนาคาร", "hint": "" },
+                        { "en": "train station", "th": "สถานีรถไฟ", "hint": "" },
+                        { "en": "government", "th": "รัฐบาล", "hint": "" },
+                        { "en": "culture", "th": "วัฒนธรรม", "hint": "" },
+                        { "en": "ordinary", "th": "ธรรมดา", "hint": "" },
+                        { "en": "nature", "th": "ธรรมชาติ", "hint": "" },
+                        { "en": "literature", "th": "วรรณกรรม", "hint": "" },
+                        { "en": "movie", "th": "ภาพยนตร์", "hint": "" },
+                        { "en": "mathematics", "th": "คณิตศาสตร์", "hint": "" },
+                        { "en": "science", "th": "วิทยาศาสตร์", "hint": "" },
+                        { "en": "psychology", "th": "จิตวิทยา", "hint": "" },
+                        { "en": "festival", "th": "เทศกาล", "hint": "" },
+                        { "en": "imagination", "th": "จินตนาการ", "hint": "" },
+                        { "en": "season", "th": "ฤดู", "hint": "" },
+                        { "en": "Thursday", "th": "พฤหัสบดี", "hint": "" },
+                        { "en": "May", "th": "พฤษภาคม", "hint": "" },
+                        { "en": "November", "th": "พฤศจิกายน", "hint": "" },
+                        { "en": "Behavior", "th": "พฤติกรรม", "hint": "" },
+                        { "en": "Death", "th": "มฤตยู", "hint": "" },
+                        { "en": "Theory", "th": "ทฤษฎี", "hint": "" }
+                    ],
+                "structure": [
+
+                    { "en": "Thailand has three seasons: summer, rainy season, and winter. Summer runs from March to May. April is the hottest month in Thailand. April has a very important tradition, which is the Songkran Festival.", "th": "เมืองไทยมีฤดูได้แก่ฤดูร้อนฤดูฝนและฤดูหนาวฤดูร้อนเริ่มตั้งแต่เดือนมีนาคมถึงเดือนพฤษภาคมเดือนเมษายนเป็นเดือนทีร้อนที่สุดของประเทศไทยในเดือนเมษายนมีประเพณีทีLสําคัญมากนันก็คือประเพณีสงกรานต์", "hint": "" },
+                    { "en": "The rainy season in Thailand runs from June to mid-October, but sometimes the rains may start as early as mid-May. In September, storms often bring heavy rain to many provinces. During the rainy season, there is an important Buddhist festival, which is the Buddhist Lent.", "th": "ฤดูฝนในเมืองไทยเริ่มตั้งแต่เดือนมิถุนายนถึงกลางเดือนตุลาคมแต่บางครั้งฝนก็อาจจะเริ่มตกตั้งแต่กลางเดือนพฤษภาคมในช่วงเดือนกันยายนมักจะมีพายุทำให้มีฝนตกหนักในหลายจังหวัดในช่วงฤดูฝนมีเทศกาลสำคัญของชาวพุทธนันก็คือเทศกาลเข้าพรรษา", "hint": "" },
+                    { "en": "The winter season in Thailand runs from mid-October to February. Generally, the weather is not very cold, but the northern and upper northeastern regions can be quite chilly, especially in the mountains. During the winter season, there is a very famous festival called the Loy Krathong Festival.", "th": "ฤดูหนาวเริ่มตั้งแต่กลางเดือนตุลาคมถึงเดือนกุมภาพันธ์โดยทั่วไปอากาศไม่ค่อยหนาวมาก แต่จังหวัดในภาคเหนือและภาคอีสานตอนบนอากาศค่อนข้างหนาวโดยเฉพาะบนภูเขาในช่วงฤดูหนาวมีเทศกาลที่มีชื่อเสียงมากนั่นก็คือเทศกาลลอยกระทง", "hint": "" }
+
+                ]
+            },
+            {
+                "name": "Irregular prnunciation",
+                "vocabulary":
+                    [
+                        { "en": "Can", "th": "ได้", "hint": "" },
+                        { "en": "Under", "th": "ใต้", "hint": "" },
+                        { "en": "Wood", "th": "ไม้", "hint": "" },
+                        { "en": "Morning", "th": "เช้า", "hint": "" },
+                        { "en": "Lead", "th": "นำ", "hint": "" },
+                        { "en": "Heart", "th": "ใจ", "hint": "" },
+                        { "en": "Monarchy", "th": "ราชาธิปไตย", "hint": "" },
+                        { "en": "Patriarchy", "th": "ปิตาธิปไตย", "hint": "" },
+                        { "en": "Democracy", "th": "ประชาธิปไตย", "hint": "" },
+                        { "en": "Fruit", "th": "ผลไม้", "hint": "" },
+                        { "en": "Steal", "th": "ขโมย", "hint": "" },
+                        { "en": "Explore", "th": "สํารวจ", "hint": "" },
+                        { "en": "success", "th": "ความสําเร็จ", "hint": "" },
+                        { "en": "Birth", "th": "กําเนิด", "hint": "" },
+                        { "en": "Recipe", "th": "ตํารับ", "hint": "" },
+                        { "en": "Suppression", "th": "กําราบ", "hint": "" },
+                        { "en": "Darkness", "th": "ดําริ", "hint": "" },
+                        { "en": "Sermon", "th": "ดํารัส", "hint": "" },
+                        { "en": "Graph", "th": "กราฟ", "hint": "" },
+                        { "en": "Quota", "th": "โควตา", "hint": "" }
+                    ],
+                "structure": []
+            },
+            {
+                "name": "Writing Signs",
+                "vocabulary":
+                    [
+                        { "en": "Bangkok", "th": "กรุงเทพฯ", "hint": "" },
+                        { "en": "Thursday", "th": "วันพฤหัสฯ", "hint": "" },
+                        { "en": "Prime Minister", "th": "นายกฯ", "hint": "" },
+                        { "en": "Children", "th": "เด็กๆ", "hint": "" },
+                        { "en": "Friends", "th": "เพื่อนๆ", "hint": "" },
+                        { "en": "Very", "th": "มากๆ", "hint": "" },
+                        { "en": "Many", "th": "เยอะๆ", "hint": "" },
+                        { "en": "Green", "th": "สีเขียวๆ", "hint": "" },
+                        { "en": "Orange", "th": "สีส้มๆ", "hint": "" },
+                        { "en": "Red", "th": "สีแดงๆ", "hint": "" },
+                        { "en": "Blue", "th": "สีน้ำเงินๆ", "hint": "" },
+                        { "en": "Yellow", "th": "สีเหลืองๆ", "hint": "" },
+                        { "en": "Black", "th": "สีดำๆ", "hint": "" },
+                        { "en": "White", "th": "สีขาวๆ", "hint": "" }
+
+                    ],
+                "structure": [
+                    {
+                        "en": "Thai people usually eat rice as their main food. They will eat rice with other foods called khao khao such as curry, boiled, stir-fried, fried, etc. Nowadays, Thai people use spoons and forks to eat.", "th": "ปกติแล้วคนไทยกินข้าวเป็นอาหารหลักพวกเขาจะกินข้าวกับอาหารอื่นๆเรียกว่า“กับข้าว”เช่นอาหารประเภทแกงต้มผัดทอดฯลฯในปัจจุบันคนไทยใช้ช้อนกับส้อมกินอาหาร", "hint": ""
+                    },
+                    {
+                        "en": "Thailand has four regions: the North, Central, Northeast, and South. Food in each region has its own unique identity because each region has a different culture, which results in different eating cultures.", "th": "ประเทศไทยมี4ภาคได้แก่ภาคเหนือภาคกลางภาคอีสานและภาคใต้อาหารในแต่ละภาคมีเอกลักษณ์เฉพาะตัวเนื่องจากแต่ละภาคมีวัฒนธรรมแตกต่างกันจึงส่งผลให้วัฒนธรรมการกินแตกต่างกัน", "hint": ""
+                    },
+                    {
+                        "en": "The staple food of northern people is sticky rice. They often eat various types of chili paste and curry such as Nam Phrik Num, Nam Phrik Ong, Gaeng Hang Lay, etc. They also eat fermented pork sausage, Sai Ua sausage, crispy pork skin, and various vegetables.", "th": "อาหารหลักของคนภาคเหนือคือข้าวเหนียวส่วนใหญ่พวกเขามักจะทานน้ำพริกและแกงต่างๆเช่นน้ำพริกหนุ่ม น้ำพริกอ่อง แกงฮังเล ฯลฯ นอกจากนั้นยังทานแหนมไส้อั่ว แคบหมู และผักต่างๆ ด้วย", "hint": ""
+                    },
+                    {
+                        "en": "People in the central region eat rice as their main food. Central region food usually has various chili pastes and curries such as shrimp paste chili paste, tamarind chili paste, green curry, massaman curry, and chicken tom kha. Most central region food is made from coconut milk.", "th": "คนภาคกลางกินข้าวสวยเป็นอาหารหลักอาหารภาคกลางมักจะมีน้ำพริกและแกงต่างๆ เช่น น้ำพริกกะปิ น้ำพริกมะขาม แกงเขียวหวาน แกงมัสมัน ต้มข่าไก่เป็นต้น ส่วนมากอาหารภาคกลางมักจะทําจากกะท", "hint": ""
+                    },
+                    {
+                        "en": "People in the northeastern region eat sticky rice as their main food, just like people in the north. Northeastern food is mostly spicy, sour, and salty. Since the area is quite dry, they have to preserve food, such as making fermented fish and dried chili. Most northeastern people use fermented fish to cook almost every type of food, such as larb, koi, som tam, and bamboo shoot soup.", "th": "คนภาคอีสานกินข้าวเหนียวเป็นอาหารหลักเหมือนกับคนภาคเหนือ อาหารอีสานส่วนมากมีรสเผ็ด เปรี ยวและเค็ม เนืLองจากแถว นั้นค่อนข้างแห้งแล้ง พวกเขาก็เลยต้องถนอมอาหาร เช่ น ทําปลาร้าทําพริกแห้ง เป็นต้น คนอีสานส่วนใหญ่ใช้ปลาร้าทําอาหารเกือบทุกประเภท ตั วอย่างเช่น ลาบ ก้อย ส้มตํา ซุบหน่อไม้ เป็นต้น", "hint": ""
+                    },
+                    {
+                        "en": "People in the southern region eat steamed rice like people in the central region. Southern local food is spicy because it is made from various spices. The meat used in cooking is mostly seafood, such as mackerel, tuna, crab, shrimp, and shellfish. Famous southern dishes include rice salad, yellow curry, fish head curry, stir-fried stinky beans with shrimp, etc.", "th": "คนภาคใต้ กิน ข้าวสวยเหมือนกับคนภาคกลาง อาหารพื้นบ้านภาคใต้ มีรสจัดเพราะว่าทําจากเครื่องเทศหลากหลายชนิด เนื้อสัตว์ที่นํามาทําอาหารส่วนมากเป็นสัตว์ทะเล เช่น ปลากระบอก ปลาทู ปูทะเลกุ้ง และหอย อาหารทีมีชื่อเสียงมากของภาคใต้ ได้แก่ ข้าวยำ แกงเหลืองแกงไตปลา สะตอผัดกุ้ง ฯลฯ", "hint": ""
+                    },
+                ]
             }
         ]
     }
