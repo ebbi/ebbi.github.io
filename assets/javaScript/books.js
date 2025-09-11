@@ -2451,6 +2451,9 @@ const books = [
                     { "en": "experience", "th": "ประสบการณ์", "hint": "bprà‑sòp‑gaan" },
                     { "en": "skill", "th": "ทักษะ", "hint": "thák‑sà" },
                     { "en": "qualifications", "th": "วุฒิการศึกษา", "hint": "wút‑thì‑gaan‑sùk‑săa" }
+                ],
+                "structure": [
+                    { "en": "Subject + Verb + Object", "th": "ประธาน + กริยา + กรรม", "hint": "bprà‑thâan + grì‑yaa + grâm" }
                 ]
             }
         ]
