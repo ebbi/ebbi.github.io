@@ -63,6 +63,10 @@
         .quizOption {
             display: block;
             margin: 5px 0;
+            padding: 5px 10px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            cursor: pointer;
         }
 
         .correct {
@@ -165,8 +169,76 @@
         function shuffleArray(a) { for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1));[a[i], a[j]] = [a[j], a[i]]; } }
 
         // Quiz
-        function generateQuiz() { const p = getCurrentParagraph(); if (!p) return; quizQuestions = p.words.map(w => { let opts = []; opts = quizMode.value === "en2th" ? p.words.map(x => x.Thai) : p.words.map(x => x.English); opts = [...new Set(opts)]; shuffleArray(opts); const correct = quizMode.value === "en2th" ? w.Thai : w.English; if (!opts.includes(correct)) { opts.pop(); opts.push(correct); shuffleArray(opts); } opts = opts.slice(0, 4); return { word: w, options: opts, selectedAnswer: null }; }); if (chkRandomQuestions.checked) shuffleArray(quizQuestions); quizCurrentIndex = 0; renderQuiz(); }
-        function renderQuiz() { if (!quizQuestions.length) { quizContent.innerHTML = ""; quizScore.textContent = ""; return; } const q = quizQuestions[quizCurrentIndex]; quizContent.innerHTML = ""; let questionText = quizMode.value === "en2th" ? q.word.English : q.word.Thai; if (chkShowHint.checked) questionText += ` (${q.word.Hint})`; const qElem = document.createElement("div"); qElem.id = "quizQuestion"; qElem.textContent = `Q${quizCurrentIndex + 1}: ${questionText}`; quizContent.appendChild(qElem); speechSynthesis.cancel(); speakText(questionText, quizMode.value === "en2th" ? "en" : "th", () => { }); q.options.forEach(opt => { const btn = document.createElement("button"); btn.className = "quizOption"; btn.textContent = chkShowHint.checked ? `${opt} (${q.word.Hint})` : opt; if (q.selectedAnswer) { if (q.selectedAnswer === q.word.Thai || q.selectedAnswer === q.word.English) { btn.classList.add(q.selectedAnswer == opt ? "correct" : (q.word.Thai == opt || q.word.English == opt ? "incorrect" : "")); } } btn.addEventListener("click", () => { q.selectedAnswer = opt; renderQuiz(); speakText(opt, quizMode.value === "en2th" ? "th" : "en", () => { }); }); quizContent.appendChild(btn); }); const score = quizQuestions.filter(x => x.selectedAnswer && (quizMode.value === "en2th" ? x.selectedAnswer === x.word.Thai : x.selectedAnswer === x.word.English)).length; quizScore.textContent = `Score: ${score} / ${quizQuestions.length}`; }
+        function generateQuiz() {
+            const p = getCurrentParagraph();
+            if (!p) return;
+
+            quizQuestions = p.words.map(w => {
+                const correct = quizMode.value === "en2th" ? w.Thai : w.English;
+
+                // Start with correct answer
+                let opts = [correct];
+
+                // Fill with other words from paragraph
+                const otherWords = p.words.map(x => quizMode.value === "en2th" ? x.Thai : x.English)
+                    .filter(x => x !== correct);
+                shuffleArray(otherWords);
+                while (opts.length < 4 && otherWords.length > 0) {
+                    opts.push(otherWords.pop());
+                }
+
+                shuffleArray(opts); // Randomize option order
+                return { word: w, options: opts, selectedAnswer: null };
+            });
+
+            if (chkRandomQuestions.checked) shuffleArray(quizQuestions);
+            quizCurrentIndex = 0;
+            renderQuiz();
+        }
+
+        function renderQuiz() {
+            if (!quizQuestions.length) { quizContent.innerHTML = ""; quizScore.textContent = ""; return; }
+            const q = quizQuestions[quizCurrentIndex];
+            quizContent.innerHTML = "";
+            let questionText = quizMode.value === "en2th" ? q.word.English : q.word.Thai;
+            if (chkShowHint.checked) questionText += ` (${q.word.Hint})`;
+            const qElem = document.createElement("div");
+            qElem.id = "quizQuestion";
+            qElem.textContent = `Q${quizCurrentIndex + 1}: ${questionText}`;
+            quizContent.appendChild(qElem);
+
+            speechSynthesis.cancel();
+            speakText(questionText, quizMode.value === "en2th" ? "en" : "th", () => { });
+
+            q.options.forEach(opt => {
+                const btn = document.createElement("button");
+                btn.className = "quizOption";
+                btn.textContent = chkShowHint.checked ? `${opt} (${q.word.Hint})` : opt;
+                btn.disabled = false;
+
+                if (q.selectedAnswer) {
+                    if (q.selectedAnswer === opt) {
+                        btn.classList.add((quizMode.value === "en2th" ? q.word.Thai : q.word.English) === opt ? "correct" : "incorrect");
+                        btn.disabled = true;
+                    }
+                }
+
+                btn.addEventListener("click", () => {
+                    q.selectedAnswer = opt;
+                    renderQuiz();
+                    speakText(opt, quizMode.value === "en2th" ? "th" : "en", () => { });
+                });
+
+                quizContent.appendChild(btn);
+            });
+
+            const score = quizQuestions.filter(x => x.selectedAnswer &&
+                ((quizMode.value === "en2th" && x.selectedAnswer === x.word.Thai) ||
+                    (quizMode.value === "th2en" && x.selectedAnswer === x.word.English))).length;
+            quizScore.textContent = `Score: ${score} / ${quizQuestions.length}`;
+        }
+
+        // Navigation
         btnPrevQ.addEventListener("click", () => { if (quizCurrentIndex > 0) { quizCurrentIndex--; renderQuiz(); } });
         btnNextQ.addEventListener("click", () => { if (quizCurrentIndex < quizQuestions.length - 1) { quizCurrentIndex++; renderQuiz(); } });
         btnGenerateQuiz.addEventListener("click", generateQuiz);
@@ -182,13 +254,69 @@
         // Book select
         function populateBookSelect() { bookSelect.innerHTML = "<option value=''>-- Select Book --</option>"; books.forEach((b, i) => { const o = document.createElement("option"); o.value = i; o.textContent = b.title; bookSelect.appendChild(o); }); }
         populateBookSelect();
-        bookSelect.addEventListener("change", () => { currentBookIndex = bookSelect.value ? parseInt(bookSelect.value) : null; currentChapterIndex = null; currentParagraphIndex = null; chapterSelect.innerHTML = "<option value=''>-- Select Chapter --</option>"; paragraphSelect.innerHTML = ""; paragraphSelect.disabled = true; wordDisplay.innerHTML = ""; paragraphDescription.textContent = ""; paragraphResources.innerHTML = ""; chapterResources.innerHTML = ""; bookResources.innerHTML = ""; if (currentBookIndex !== null) { const b = books[currentBookIndex]; bookDescription.textContent = b.description; renderResources(bookResources, b.resources || []); b.chapters.forEach((ch, i) => { const o = document.createElement("option"); o.value = i; o.textContent = ch.title; chapterSelect.appendChild(o); }); chapterSelect.disabled = false; } else bookDescription.textContent = ""; });
-        chapterSelect.addEventListener("change", () => { currentChapterIndex = chapterSelect.value ? parseInt(chapterSelect.value) : null; currentParagraphIndex = null; paragraphSelect.innerHTML = ""; wordDisplay.innerHTML = ""; paragraphDescription.textContent = ""; paragraphResources.innerHTML = ""; chapterResources.innerHTML = ""; if (currentChapterIndex !== null) { const ch = books[currentBookIndex].chapters[currentChapterIndex]; chapterDescription.textContent = ch.description || ""; renderResources(chapterResources, ch.resources || []); ch.paragraphs.forEach((p, i) => { const o = document.createElement("option"); o.value = i; o.textContent = "Paragraph " + (i + 1); paragraphSelect.appendChild(o); }); paragraphSelect.disabled = false; currentParagraphIndex = 0; paragraphSelect.value = 0; renderWords(); } else chapterDescription.textContent = ""; });
+        bookSelect.addEventListener("change", () => {
+            currentBookIndex = bookSelect.value ? parseInt(bookSelect.value) : null;
+            currentChapterIndex = null;
+            currentParagraphIndex = null;
+            chapterSelect.innerHTML = "<option value=''>-- Select Chapter --</option>";
+            paragraphSelect.innerHTML = "";
+            paragraphSelect.disabled = true;
+            wordDisplay.innerHTML = "";
+            paragraphDescription.textContent = "";
+            paragraphResources.innerHTML = "";
+            chapterResources.innerHTML = "";
+            bookResources.innerHTML = "";
+
+            if (currentBookIndex !== null) {
+                const b = books[currentBookIndex];
+                bookDescription.textContent = b.description;
+                renderResources(bookResources, b.resources || []);
+                b.chapters.forEach((ch, i) => { const o = document.createElement("option"); o.value = i; o.textContent = ch.title; chapterSelect.appendChild(o); });
+                chapterSelect.disabled = false;
+            } else bookDescription.textContent = "";
+        });
+
+        chapterSelect.addEventListener("change", () => {
+            currentChapterIndex = chapterSelect.value ? parseInt(chapterSelect.value) : null;
+            currentParagraphIndex = null;
+            paragraphSelect.innerHTML = "";
+            wordDisplay.innerHTML = "";
+            paragraphDescription.textContent = "";
+            paragraphResources.innerHTML = "";
+            chapterResources.innerHTML = "";
+            if (currentChapterIndex !== null) {
+                const ch = books[currentBookIndex].chapters[currentChapterIndex];
+                chapterDescription.textContent = ch.description || "";
+                renderResources(chapterResources, ch.resources || []);
+                ch.paragraphs.forEach((p, i) => { const o = document.createElement("option"); o.value = i; o.textContent = "Paragraph " + (i + 1); paragraphSelect.appendChild(o); });
+                paragraphSelect.disabled = false;
+                currentParagraphIndex = 0; paragraphSelect.value = 0; renderWords();
+            } else chapterDescription.textContent = "";
+        });
+
         paragraphSelect.addEventListener("change", () => { currentParagraphIndex = parseInt(paragraphSelect.value); currentWordPos = 0; renderWords(); });
 
         // Upload book
         btnUploadBook.addEventListener("click", () => fileInput.click());
-        fileInput.addEventListener("change", e => { const file = e.target.files[0]; if (file) { const reader = new FileReader(); reader.onload = evt => { try { const data = JSON.parse(evt.target.result); books = [data]; populateBookSelect(); bookSelect.value = 0; bookSelect.dispatchEvent(new Event("change")); alert("Book uploaded successfully."); } catch (err) { alert("Invalid JSON file. Ensure all property names are double quoted."); } }; reader.readAsText(file); } });
+        fileInput.addEventListener("change", e => {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = evt => {
+                    try {
+                        const data = JSON.parse(evt.target.result);
+                        books = Array.isArray(data) ? data : [data];
+                        populateBookSelect();
+                        bookSelect.value = 0;
+                        bookSelect.dispatchEvent(new Event("change"));
+                        alert("Book uploaded successfully.");
+                    } catch (err) {
+                        alert("Invalid JSON file. Ensure all property names are double quoted.");
+                    }
+                };
+                reader.readAsText(file);
+            }
+        });
     </script>
 </body>
 
