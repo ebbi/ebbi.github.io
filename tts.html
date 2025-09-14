@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Book Reader with Quiz TTS & Upload</title>
+    <style>
+        body {
+            font-family: Arial;
+            padding: 15px;
+        }
+
+        .controls {
+            margin-bottom: 10px;
+        }
+
+        #bookDescription,
+        #chapterDescription,
+        #paragraphDescription {
+            margin: 8px 0;
+            font-style: italic;
+            color: #444;
+        }
+
+        #wordDisplay {
+            margin-top: 15px;
+        }
+
+        #wordDisplay span {
+            padding: 5px 8px;
+            display: inline-block;
+            margin: 5px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background .5s, font-size .3s, color .5s, border-color .5s;
+        }
+
+        #wordDisplay span:hover {
+            background: #f0f0f0;
+        }
+
+        #wordDisplay .highlight {
+            background: #fff176;
+            border-color: #ffb300;
+            font-size: 1.5em;
+            color: #000;
+        }
+
+        #quizPanel {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-top: 20px;
+            border-radius: 6px;
+        }
+
+        #quizQuestion {
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .quizOption {
+            display: block;
+            margin: 5px 0;
+        }
+
+        .correct {
+            background-color: #c8e6c9;
+        }
+
+        .incorrect {
+            background-color: #f28b82;
+        }
+
+        #quizNav {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="controls">
+        <label>Book: <select id="bookSelect">
+                <option value="">-- Select Book --</option>
+            </select></label>
+        <button id="btnUploadBook">Upload JSON</button>
+        <input type="file" id="fileInput" style="display:none" accept=".json">
+        <div id="bookDescription"></div>
+        <div id="bookResources"></div>
+        <br>
+        <label>Chapter: <select id="chapterSelect" disabled>
+                <option value="">-- Select Chapter --</option>
+            </select></label>
+        <div id="chapterDescription"></div>
+        <div id="chapterResources"></div>
+        <br>
+        <label>Paragraph: <select id="paragraphSelect" disabled></select></label>
+        <button id="btnPrev">Previous</button><button id="btnNext">Next</button>
+        <div id="paragraphDescription"></div>
+        <div id="paragraphResources"></div>
+        <br>
+        <label><input type="checkbox" id="chkEnglish" checked> English</label>
+        <label><input type="checkbox" id="chkThai"> Thai</label>
+        <label><input type="checkbox" id="chkHint"> Hint</label>
+        <br>
+        <label>Delay (s): <input type="number" id="delay" value="1" min="0" step="0.5"></label>
+        <br><br>
+        <button id="btnPlay">Play</button><button id="btnPause">Pause</button><button id="btnRestart">Restart</button>
+    </div>
+
+    <div id="wordDisplay"></div>
+
+    <div id="quizPanel">
+        <h3>Paragraph Quiz</h3>
+        <label>Mode: <select id="quizMode">
+                <option value="en2th">English → Thai</option>
+                <option value="th2en">Thai → English</option>
+            </select></label>
+        <label><input type="checkbox" id="chkRandomQuestions"> Randomize Questions</label>
+        <label><input type="checkbox" id="chkIncorrectOnly"> Retry Incorrect Only</label>
+        <label><input type="checkbox" id="chkShowHint"> Show Hint</label>
+        <br><br>
+        <button id="btnGenerateQuiz">Generate Quiz</button>
+        <div id="quizScore" style="font-weight:bold; margin-top:10px;"></div>
+        <div id="quizContent"></div>
+        <div id="quizNav"><button id="btnPrevQ">Previous</button><button id="btnNextQ">Next</button></div>
+    </div>
+
+    <script>
+        // Default book
+        let books = [{
+            "title": "Animal Stories",
+            "description": "A simple book about animals in English and Thai.",
+            "resources": [{ "url": "https://www.nationalgeographic.com/animals", "description": "National Geographic: Animals" }],
+            "chapters": [{
+                "title": "Pets", "description": "This chapter introduces common household pets.", "resources": [{ "url": "https://en.wikipedia.org/wiki/Pet", "description": "Wikipedia: Pets" }],
+                "paragraphs": [{
+                    "description": "Paragraph about common pets.", "words": [{ "English": "dog", "Thai": "สุนัข", "Hint": "a common pet" }, { "English": "cat", "Thai": "แมว", "Hint": "likes to chase mice" }, { "English": "bird", "Thai": "นก", "Hint": "can fly" }, { "English": "fish", "Thai": "ปลา", "Hint": "lives in water" }, { "English": "rabbit", "Thai": "กระต่าย", "Hint": "jumps high" }],
+                    "resources": [{ "url": "https://www.akc.org", "description": "American Kennel Club" }]
+                }]
+            }]
+        }];
+
+        let currentBookIndex = null, currentChapterIndex = null, currentParagraphIndex = null, currentWordPos = 0, playing = false, paused = false;
+        let quizQuestions = [], quizCurrentIndex = 0;
+
+        // DOM
+        const bookSelect = document.getElementById("bookSelect"), bookDescription = document.getElementById("bookDescription"), bookResources = document.getElementById("bookResources");
+        const chapterSelect = document.getElementById("chapterSelect"), chapterDescription = document.getElementById("chapterDescription"), chapterResources = document.getElementById("chapterResources");
+        const paragraphSelect = document.getElementById("paragraphSelect"), paragraphDescription = document.getElementById("paragraphDescription"), paragraphResources = document.getElementById("paragraphResources");
+        const wordDisplay = document.getElementById("wordDisplay");
+        const quizMode = document.getElementById("quizMode"), chkRandomQuestions = document.getElementById("chkRandomQuestions"), chkIncorrectOnly = document.getElementById("chkIncorrectOnly"), chkShowHint = document.getElementById("chkShowHint");
+        const btnGenerateQuiz = document.getElementById("btnGenerateQuiz"), quizContent = document.getElementById("quizContent"), quizScore = document.getElementById("quizScore");
+        const btnPrevQ = document.getElementById("btnPrevQ"), btnNextQ = document.getElementById("btnNextQ");
+        const btnUploadBook = document.getElementById("btnUploadBook"), fileInput = document.getElementById("fileInput");
+
+        function getCurrentParagraph() { return currentBookIndex === null || currentChapterIndex === null || currentParagraphIndex === null ? null : books[currentBookIndex].chapters[currentChapterIndex].paragraphs[currentParagraphIndex]; }
+        function renderResources(container, resources) { container.innerHTML = ""; resources.forEach(r => { const a = document.createElement("a"); a.href = r.url; a.target = "_blank"; a.textContent = r.description; container.appendChild(a); }); }
+        function renderWords() { const p = getCurrentParagraph(); if (!p) return; paragraphDescription.textContent = p.description || ""; wordDisplay.innerHTML = ""; p.words.forEach((w, i) => { const s = document.createElement("span"); s.dataset.index = i; let parts = []; if (document.getElementById("chkEnglish").checked) parts.push(w.English); if (document.getElementById("chkThai").checked) parts.push(w.Thai); if (document.getElementById("chkHint").checked) parts.push(w.Hint); s.textContent = parts.join(" / ") || "—"; if (i === currentWordPos) s.classList.add("highlight"); s.addEventListener("click", () => playSingleWord(i)); wordDisplay.appendChild(s); }); renderResources(paragraphResources, p.resources || []); }
+        function highlightWord(i) { document.querySelectorAll("#wordDisplay span").forEach(s => s.classList.remove("highlight")); const s = document.querySelector(`#wordDisplay span[data-index="${i}"]`); if (s) s.classList.add("highlight"); }
+        function speakText(text, lang, cb) { const u = new SpeechSynthesisUtterance(text); u.lang = lang === "th" ? "th-TH" : "en-US"; u.onend = cb; speechSynthesis.speak(u); }
+        function playSingleWord(i) { speechSynthesis.cancel(); playing = false; paused = false; document.getElementById("btnPlay").disabled = true; currentWordPos = i; renderWords(); highlightWord(i); const w = getCurrentParagraph().words[i]; const q = []; if (document.getElementById("chkEnglish").checked) q.push({ text: w.English, lang: "en" }); if (document.getElementById("chkThai").checked) q.push({ text: w.Thai, lang: "th" }); if (document.getElementById("chkHint").checked) q.push({ text: w.Hint, lang: "en" }); function sq(j) { if (j >= q.length) { document.getElementById("btnPlay").disabled = false; renderWords(); return; } speakText(q[j].text, q[j].lang, () => sq(j + 1)); } sq(0); }
+        function playFromIndex(pos) { const p = getCurrentParagraph(); if (!p || pos >= p.words.length) return; currentWordPos = pos; renderWords(); highlightWord(pos); const w = p.words[pos]; const delay = parseFloat(document.getElementById("delay").value) * 1000; const q = []; if (document.getElementById("chkEnglish").checked) q.push({ text: w.English, lang: "en" }); if (document.getElementById("chkThai").checked) q.push({ text: w.Thai, lang: "th" }); if (document.getElementById("chkHint").checked) q.push({ text: w.Hint, lang: "en" }); function sq(j) { if (!playing || paused) return; if (j >= q.length) { setTimeout(() => playFromIndex(pos + 1), delay); return; } speakText(q[j].text, q[j].lang, () => sq(j + 1)); } sq(0); }
+        function shuffleArray(a) { for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1));[a[i], a[j]] = [a[j], a[i]]; } }
+
+        // Quiz
+        function generateQuiz() { const p = getCurrentParagraph(); if (!p) return; quizQuestions = p.words.map(w => { let opts = []; opts = quizMode.value === "en2th" ? p.words.map(x => x.Thai) : p.words.map(x => x.English); opts = [...new Set(opts)]; shuffleArray(opts); const correct = quizMode.value === "en2th" ? w.Thai : w.English; if (!opts.includes(correct)) { opts.pop(); opts.push(correct); shuffleArray(opts); } opts = opts.slice(0, 4); return { word: w, options: opts, selectedAnswer: null }; }); if (chkRandomQuestions.checked) shuffleArray(quizQuestions); quizCurrentIndex = 0; renderQuiz(); }
+        function renderQuiz() { if (!quizQuestions.length) { quizContent.innerHTML = ""; quizScore.textContent = ""; return; } const q = quizQuestions[quizCurrentIndex]; quizContent.innerHTML = ""; let questionText = quizMode.value === "en2th" ? q.word.English : q.word.Thai; if (chkShowHint.checked) questionText += ` (${q.word.Hint})`; const qElem = document.createElement("div"); qElem.id = "quizQuestion"; qElem.textContent = `Q${quizCurrentIndex + 1}: ${questionText}`; quizContent.appendChild(qElem); speechSynthesis.cancel(); speakText(questionText, quizMode.value === "en2th" ? "en" : "th", () => { }); q.options.forEach(opt => { const btn = document.createElement("button"); btn.className = "quizOption"; btn.textContent = chkShowHint.checked ? `${opt} (${q.word.Hint})` : opt; if (q.selectedAnswer) { if (q.selectedAnswer === q.word.Thai || q.selectedAnswer === q.word.English) { btn.classList.add(q.selectedAnswer == opt ? "correct" : (q.word.Thai == opt || q.word.English == opt ? "incorrect" : "")); } } btn.addEventListener("click", () => { q.selectedAnswer = opt; renderQuiz(); speakText(opt, quizMode.value === "en2th" ? "th" : "en", () => { }); }); quizContent.appendChild(btn); }); const score = quizQuestions.filter(x => x.selectedAnswer && (quizMode.value === "en2th" ? x.selectedAnswer === x.word.Thai : x.selectedAnswer === x.word.English)).length; quizScore.textContent = `Score: ${score} / ${quizQuestions.length}`; }
+        btnPrevQ.addEventListener("click", () => { if (quizCurrentIndex > 0) { quizCurrentIndex--; renderQuiz(); } });
+        btnNextQ.addEventListener("click", () => { if (quizCurrentIndex < quizQuestions.length - 1) { quizCurrentIndex++; renderQuiz(); } });
+        btnGenerateQuiz.addEventListener("click", generateQuiz);
+
+        // Word controls
+        document.getElementById("btnPlay").addEventListener("click", () => { if (!playing || paused) { paused = false; playing = true; playFromIndex(currentWordPos); } });
+        document.getElementById("btnPause").addEventListener("click", () => { paused = true; speechSynthesis.cancel(); });
+        document.getElementById("btnRestart").addEventListener("click", () => { speechSynthesis.cancel(); paused = false; playing = true; currentWordPos = 0; renderWords(); playFromIndex(currentWordPos); });
+        document.getElementById("btnPrev").addEventListener("click", () => { if (currentParagraphIndex > 0) { currentParagraphIndex--; paragraphSelect.value = currentParagraphIndex; currentWordPos = 0; renderWords(); } });
+        document.getElementById("btnNext").addEventListener("click", () => { const ch = books[currentBookIndex].chapters[currentChapterIndex]; if (currentParagraphIndex < ch.paragraphs.length - 1) { currentParagraphIndex++; paragraphSelect.value = currentParagraphIndex; currentWordPos = 0; renderWords(); } });
+        document.querySelectorAll("#chkEnglish,#chkThai,#chkHint").forEach(cb => cb.addEventListener("change", renderWords));
+
+        // Book select
+        function populateBookSelect() { bookSelect.innerHTML = "<option value=''>-- Select Book --</option>"; books.forEach((b, i) => { const o = document.createElement("option"); o.value = i; o.textContent = b.title; bookSelect.appendChild(o); }); }
+        populateBookSelect();
+        bookSelect.addEventListener("change", () => { currentBookIndex = bookSelect.value ? parseInt(bookSelect.value) : null; currentChapterIndex = null; currentParagraphIndex = null; chapterSelect.innerHTML = "<option value=''>-- Select Chapter --</option>"; paragraphSelect.innerHTML = ""; paragraphSelect.disabled = true; wordDisplay.innerHTML = ""; paragraphDescription.textContent = ""; paragraphResources.innerHTML = ""; chapterResources.innerHTML = ""; bookResources.innerHTML = ""; if (currentBookIndex !== null) { const b = books[currentBookIndex]; bookDescription.textContent = b.description; renderResources(bookResources, b.resources || []); b.chapters.forEach((ch, i) => { const o = document.createElement("option"); o.value = i; o.textContent = ch.title; chapterSelect.appendChild(o); }); chapterSelect.disabled = false; } else bookDescription.textContent = ""; });
+        chapterSelect.addEventListener("change", () => { currentChapterIndex = chapterSelect.value ? parseInt(chapterSelect.value) : null; currentParagraphIndex = null; paragraphSelect.innerHTML = ""; wordDisplay.innerHTML = ""; paragraphDescription.textContent = ""; paragraphResources.innerHTML = ""; chapterResources.innerHTML = ""; if (currentChapterIndex !== null) { const ch = books[currentBookIndex].chapters[currentChapterIndex]; chapterDescription.textContent = ch.description || ""; renderResources(chapterResources, ch.resources || []); ch.paragraphs.forEach((p, i) => { const o = document.createElement("option"); o.value = i; o.textContent = "Paragraph " + (i + 1); paragraphSelect.appendChild(o); }); paragraphSelect.disabled = false; currentParagraphIndex = 0; paragraphSelect.value = 0; renderWords(); } else chapterDescription.textContent = ""; });
+        paragraphSelect.addEventListener("change", () => { currentParagraphIndex = parseInt(paragraphSelect.value); currentWordPos = 0; renderWords(); });
+
+        // Upload book
+        btnUploadBook.addEventListener("click", () => fileInput.click());
+        fileInput.addEventListener("change", e => { const file = e.target.files[0]; if (file) { const reader = new FileReader(); reader.onload = evt => { try { const data = JSON.parse(evt.target.result); books = [data]; populateBookSelect(); bookSelect.value = 0; bookSelect.dispatchEvent(new Event("change")); alert("Book uploaded successfully."); } catch (err) { alert("Invalid JSON file. Ensure all property names are double quoted."); } }; reader.readAsText(file); } });
+    </script>
+</body>
+
+</html>

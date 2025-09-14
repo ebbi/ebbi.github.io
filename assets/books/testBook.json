@@ -1,0 +1,62 @@
+[
+    {
+        "title": "FILE: Animal Stories",
+        "description": "A simple book about animals in English and Thai.",
+        "resources": [
+            {
+                "url": "https://www.nationalgeographic.com/animals",
+                "description": "National Geographic: Animals"
+            }
+        ],
+        "chapters": [
+            {
+                "title": "Pets",
+                "description": "This chapter introduces common household pets.",
+                "resources": [
+                    {
+                        "url": "https://en.wikipedia.org/wiki/Pet",
+                        "description": "Wikipedia: Pets"
+                    }
+                ],
+                "paragraphs": [
+                    {
+                        "description": "Paragraph about common pets.",
+                        "words": [
+                            {
+                                "English": "dog",
+                                "Thai": "สุนัข",
+                                "Hint": "a common pet"
+                            },
+                            {
+                                "English": "cat",
+                                "Thai": "แมว",
+                                "Hint": "likes to chase mice"
+                            },
+                            {
+                                "English": "bird",
+                                "Thai": "นก",
+                                "Hint": "can fly"
+                            },
+                            {
+                                "English": "fish",
+                                "Thai": "ปลา",
+                                "Hint": "lives in water"
+                            },
+                            {
+                                "English": "rabbit",
+                                "Thai": "กระต่าย",
+                                "Hint": "jumps high"
+                            }
+                        ],
+                        "resources": [
+                            {
+                                "url": "https://www.akc.org",
+                                "description": "American Kennel Club"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+]

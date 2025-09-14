@@ -2770,7 +2770,7 @@ function displaySentenceStructure(sentenceStructure) {
     const sentenceStructureDetails = document.createElement('details');
     sentenceStructureDetails.open = true; // Set to true if you want the book details to be open by default
     const summary = document.createElement('summary');
-    summary.textContent = "Conversation practice";
+    summary.textContent = "Reading practice";
     sentenceStructureDetails.appendChild(summary);
 
     sentenceStructure.forEach((structure) => {
