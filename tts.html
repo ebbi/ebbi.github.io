@@ -3,320 +3,325 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Book Reader with Quiz TTS & Upload</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Do You Speak Thai?</title>
     <style>
+        /* ---------- Container & Panels ---------- */
         body {
-            font-family: Arial;
-            padding: 15px;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            transition: background-color 0.3s, color 0.3s;
         }
 
-        .controls {
-            margin-bottom: 10px;
+        .container {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            padding: 6px;
+            max-width: 1000px;
+            margin: auto;
         }
 
-        #bookDescription,
-        #chapterDescription,
-        #paragraphDescription {
-            margin: 8px 0;
-            font-style: italic;
-            color: #444;
+        .panel {
+            transition: all 0.4s ease-in-out;
+            opacity: 1;
+            transform: translateY(0) scale(1);
+            padding: 5px;
         }
 
-        #wordDisplay {
-            margin-top: 15px;
+        .panel.hidden {
+            opacity: 0;
+            transform: translateY(15px) scale(0.98);
         }
 
-        #wordDisplay span {
-            padding: 5px 8px;
+        /* ---------- Paragraph Words ---------- */
+        #paragraphContainer {
+            line-height: 1.6;
+            word-spacing: 0.05em;
+            font-size: 1rem;
+        }
+
+        #paragraphContainer .word {
             display: inline-block;
-            margin: 5px;
-            border: 1px solid #ccc;
-            border-radius: 6px;
+            margin: 0;
+            padding: 0 1px;
             cursor: pointer;
-            font-size: 1em;
-            transition: background .5s, font-size .3s, color .5s, border-color .5s;
+            border-radius: 3px;
+            transition: transform 0.25s, background-color 0.3s, font-size 0.25s;
         }
 
-        #wordDisplay span:hover {
-            background: #f0f0f0;
+        .word.highlighted {
+            transform: scale(1.12);
+            font-weight: 600;
+            background-color: rgba(255, 235, 59, 0.25);
         }
 
-        #wordDisplay .highlight {
-            background: #fff176;
-            border-color: #ffb300;
-            font-size: 1.5em;
-            color: #000;
-        }
-
-        #quizPanel {
-            border: 1px solid #ccc;
-            padding: 10px;
-            margin-top: 20px;
-            border-radius: 6px;
-        }
-
-        #quizQuestion {
-            font-weight: bold;
-            margin-bottom: 10px;
-        }
-
-        .quizOption {
-            display: block;
+        /* ---------- Quiz ---------- */
+        #quizPanel .question,
+        #quizPanel .answers {
+            transition: all 0.4s ease-in-out;
+            opacity: 1;
+            transform: translateY(0);
             margin: 5px 0;
-            padding: 5px 10px;
+        }
+
+        button.quiz-answer {
+            border-radius: 5px;
+            margin: 3px;
+            cursor: pointer;
+            transition: transform 0.25s, box-shadow 0.25s, background-color 0.25s;
+        }
+
+        button.quiz-answer.correct {
+            background-color: rgba(76, 175, 80, 0.35);
+        }
+
+        button.quiz-answer.incorrect {
+            background-color: rgba(244, 67, 54, 0.35);
+        }
+
+        button.quiz-answer:hover {
+            transform: scale(1.05);
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        /* ---------- Resources ---------- */
+        details.resource summary {
+            cursor: pointer;
+            transition: transform 0.25s, background-color 0.25s;
+        }
+
+        details.resource summary:hover {
+            transform: scale(1.05);
+            background-color: rgba(76, 175, 80, 0.15);
+        }
+
+        /* ---------- Day/Night Themes ---------- */
+        body.day-mode {
+            background-color: #fff;
+            color: #111;
+        }
+
+        body.night-mode {
+            background-color: #121212;
+            color: #e0e0e0;
+        }
+
+        /* ---------- Fonts ---------- */
+        body.font-default {
+            font-family: Arial, sans-serif;
+        }
+
+        body.font-thai {
+            font-family: 'Sarabun', 'Noto Sans Thai', sans-serif;
+        }
+
+        body.font-serif {
+            font-family: 'Times New Roman', serif;
+        }
+
+        /* ---------- Controls ---------- */
+        label,
+        select,
+        button,
+        input {
+            margin: 4px;
+            padding: 4px;
+        }
+
+        button {
+            cursor: pointer;
             border-radius: 4px;
             border: 1px solid #ccc;
-            cursor: pointer;
+            background: #f0f0f0;
+            transition: background 0.3s;
         }
 
-        .correct {
-            background-color: #c8e6c9;
+        button:hover {
+            background: #ddd;
         }
 
-        .incorrect {
-            background-color: #f28b82;
+        /* ---------- Responsive ---------- */
+        @media (max-width:768px) {
+            body {
+                font-size: 0.95rem;
+            }
         }
 
-        #quizNav {
-            margin-top: 10px;
+        @media (max-width:480px) {
+            body {
+                font-size: 0.9rem;
+            }
         }
     </style>
 </head>
 
-<body>
-    <div class="controls">
-        <label>Book: <select id="bookSelect">
-                <option value="">-- Select Book --</option>
-            </select></label>
-        <button id="btnUploadBook">Upload JSON</button>
-        <input type="file" id="fileInput" style="display:none" accept=".json">
-        <div id="bookDescription"></div>
-        <div id="bookResources"></div>
-        <br>
-        <label>Chapter: <select id="chapterSelect" disabled>
-                <option value="">-- Select Chapter --</option>
-            </select></label>
-        <div id="chapterDescription"></div>
-        <div id="chapterResources"></div>
-        <br>
-        <label>Paragraph: <select id="paragraphSelect" disabled></select></label>
-        <button id="btnPrev">Previous</button><button id="btnNext">Next</button>
-        <div id="paragraphDescription"></div>
-        <div id="paragraphResources"></div>
-        <br>
-        <label><input type="checkbox" id="chkEnglish" checked> English</label>
-        <label><input type="checkbox" id="chkThai"> Thai</label>
-        <label><input type="checkbox" id="chkHint"> Hint</label>
-        <br>
-        <label>Delay (s): <input type="number" id="delay" value="1" min="0" step="0.5"></label>
-        <br><br>
-        <button id="btnPlay">Play</button><button id="btnPause">Pause</button><button id="btnRestart">Restart</button>
-    </div>
+<body class="day-mode font-default">
+    <div class="container">
 
-    <div id="wordDisplay"></div>
+        <!-- Settings Panel -->
+        <div id="settingsPanel" class="panel">
+            <details>
+                <summary>Help & TTS Setup Instructions</summary>
+                <p>Enable TTS on your device (Huawei, Android, iOS, browsers). Ensure high-quality voices are installed.
+                </p>
+            </details>
+            <label>Voice: <select id="voiceSelect"></select></label>
+            <label>Day/Night Mode: <select id="themeSelect">
+                    <option value="day-mode">Day</option>
+                    <option value="night-mode">Night</option>
+                </select></label>
+            <label>Font: <select id="fontSelect">
+                    <option value="font-default">Default</option>
+                    <option value="font-thai">Thai</option>
+                    <option value="font-serif">Serif</option>
+                </select></label>
+            <label><input type="checkbox" id="muteTTS"> Mute TTS</label>
+            <label><input type="checkbox" id="muteFeedback"> Mute Feedback Sounds</label>
+            <button id="testTTSBtn">Test TTS</button>
+            <input type="file" id="uploadBookFile" accept=".json">
+        </div>
 
-    <div id="quizPanel">
-        <h3>Paragraph Quiz</h3>
-        <label>Mode: <select id="quizMode">
-                <option value="en2th">English → Thai</option>
-                <option value="th2en">Thai → English</option>
-            </select></label>
-        <label><input type="checkbox" id="chkRandomQuestions"> Randomize Questions</label>
-        <label><input type="checkbox" id="chkIncorrectOnly"> Retry Incorrect Only</label>
-        <label><input type="checkbox" id="chkShowHint"> Show Hint</label>
-        <br><br>
-        <button id="btnGenerateQuiz">Generate Quiz</button>
-        <div id="quizScore" style="font-weight:bold; margin-top:10px;"></div>
-        <div id="quizContent"></div>
-        <div id="quizNav"><button id="btnPrevQ">Previous</button><button id="btnNextQ">Next</button></div>
+        <!-- Book, Chapter, Paragraph Selection -->
+        <div class="panel">
+            <label>Book: <select id="bookSelect"></select></label>
+            <label>Chapter: <select id="chapterSelect"></select></label>
+            <label>Paragraph: <select id="paragraphSelect"></select></label>
+            <button id="prevParagraphBtn">Previous</button>
+            <button id="nextParagraphBtn">Next</button>
+        </div>
+
+        <!-- Paragraph Container -->
+        <div id="paragraphContainer" class="panel"></div>
+
+        <!-- Quiz Panel -->
+        <div id="quizPanel" class="panel">
+            <div class="question"></div>
+            <div class="answers"></div>
+            <div>Score: <span id="quizScore">0</span></div>
+            <button id="prevQuizBtn">Previous</button>
+            <button id="nextQuizBtn">Next</button>
+        </div>
+
+        <!-- Resources Panel -->
+        <div id="resourcesPanel" class="panel"></div>
+
     </div>
 
     <script>
-        // Default book
-        let books = [{
-            "title": "Animal Stories",
-            "description": "A simple book about animals in English and Thai.",
-            "resources": [{ "url": "https://www.nationalgeographic.com/animals", "description": "National Geographic: Animals" }],
-            "chapters": [{
-                "title": "Pets", "description": "This chapter introduces common household pets.", "resources": [{ "url": "https://en.wikipedia.org/wiki/Pet", "description": "Wikipedia: Pets" }],
-                "paragraphs": [{
-                    "description": "Paragraph about common pets.", "words": [{ "English": "dog", "Thai": "สุนัข", "Hint": "a common pet" }, { "English": "cat", "Thai": "แมว", "Hint": "likes to chase mice" }, { "English": "bird", "Thai": "นก", "Hint": "can fly" }, { "English": "fish", "Thai": "ปลา", "Hint": "lives in water" }, { "English": "rabbit", "Thai": "กระต่าย", "Hint": "jumps high" }],
-                    "resources": [{ "url": "https://www.akc.org", "description": "American Kennel Club" }]
-                }]
-            }]
-        }];
-
-        let currentBookIndex = null, currentChapterIndex = null, currentParagraphIndex = null, currentWordPos = 0, playing = false, paused = false;
-        let quizQuestions = [], quizCurrentIndex = 0;
-
-        // DOM
-        const bookSelect = document.getElementById("bookSelect"), bookDescription = document.getElementById("bookDescription"), bookResources = document.getElementById("bookResources");
-        const chapterSelect = document.getElementById("chapterSelect"), chapterDescription = document.getElementById("chapterDescription"), chapterResources = document.getElementById("chapterResources");
-        const paragraphSelect = document.getElementById("paragraphSelect"), paragraphDescription = document.getElementById("paragraphDescription"), paragraphResources = document.getElementById("paragraphResources");
-        const wordDisplay = document.getElementById("wordDisplay");
-        const quizMode = document.getElementById("quizMode"), chkRandomQuestions = document.getElementById("chkRandomQuestions"), chkIncorrectOnly = document.getElementById("chkIncorrectOnly"), chkShowHint = document.getElementById("chkShowHint");
-        const btnGenerateQuiz = document.getElementById("btnGenerateQuiz"), quizContent = document.getElementById("quizContent"), quizScore = document.getElementById("quizScore");
-        const btnPrevQ = document.getElementById("btnPrevQ"), btnNextQ = document.getElementById("btnNextQ");
-        const btnUploadBook = document.getElementById("btnUploadBook"), fileInput = document.getElementById("fileInput");
-
-        function getCurrentParagraph() { return currentBookIndex === null || currentChapterIndex === null || currentParagraphIndex === null ? null : books[currentBookIndex].chapters[currentChapterIndex].paragraphs[currentParagraphIndex]; }
-        function renderResources(container, resources) { container.innerHTML = ""; resources.forEach(r => { const a = document.createElement("a"); a.href = r.url; a.target = "_blank"; a.textContent = r.description; container.appendChild(a); }); }
-        function renderWords() { const p = getCurrentParagraph(); if (!p) return; paragraphDescription.textContent = p.description || ""; wordDisplay.innerHTML = ""; p.words.forEach((w, i) => { const s = document.createElement("span"); s.dataset.index = i; let parts = []; if (document.getElementById("chkEnglish").checked) parts.push(w.English); if (document.getElementById("chkThai").checked) parts.push(w.Thai); if (document.getElementById("chkHint").checked) parts.push(w.Hint); s.textContent = parts.join(" / ") || "—"; if (i === currentWordPos) s.classList.add("highlight"); s.addEventListener("click", () => playSingleWord(i)); wordDisplay.appendChild(s); }); renderResources(paragraphResources, p.resources || []); }
-        function highlightWord(i) { document.querySelectorAll("#wordDisplay span").forEach(s => s.classList.remove("highlight")); const s = document.querySelector(`#wordDisplay span[data-index="${i}"]`); if (s) s.classList.add("highlight"); }
-        function speakText(text, lang, cb) { const u = new SpeechSynthesisUtterance(text); u.lang = lang === "th" ? "th-TH" : "en-US"; u.onend = cb; speechSynthesis.speak(u); }
-        function playSingleWord(i) { speechSynthesis.cancel(); playing = false; paused = false; document.getElementById("btnPlay").disabled = true; currentWordPos = i; renderWords(); highlightWord(i); const w = getCurrentParagraph().words[i]; const q = []; if (document.getElementById("chkEnglish").checked) q.push({ text: w.English, lang: "en" }); if (document.getElementById("chkThai").checked) q.push({ text: w.Thai, lang: "th" }); if (document.getElementById("chkHint").checked) q.push({ text: w.Hint, lang: "en" }); function sq(j) { if (j >= q.length) { document.getElementById("btnPlay").disabled = false; renderWords(); return; } speakText(q[j].text, q[j].lang, () => sq(j + 1)); } sq(0); }
-        function playFromIndex(pos) { const p = getCurrentParagraph(); if (!p || pos >= p.words.length) return; currentWordPos = pos; renderWords(); highlightWord(pos); const w = p.words[pos]; const delay = parseFloat(document.getElementById("delay").value) * 1000; const q = []; if (document.getElementById("chkEnglish").checked) q.push({ text: w.English, lang: "en" }); if (document.getElementById("chkThai").checked) q.push({ text: w.Thai, lang: "th" }); if (document.getElementById("chkHint").checked) q.push({ text: w.Hint, lang: "en" }); function sq(j) { if (!playing || paused) return; if (j >= q.length) { setTimeout(() => playFromIndex(pos + 1), delay); return; } speakText(q[j].text, q[j].lang, () => sq(j + 1)); } sq(0); }
-        function shuffleArray(a) { for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1));[a[i], a[j]] = [a[j], a[i]]; } }
-
-        // Quiz
-        function generateQuiz() {
-            const p = getCurrentParagraph();
-            if (!p) return;
-
-            quizQuestions = p.words.map(w => {
-                const correct = quizMode.value === "en2th" ? w.Thai : w.English;
-
-                // Start with correct answer
-                let opts = [correct];
-
-                // Fill with other words from paragraph
-                const otherWords = p.words.map(x => quizMode.value === "en2th" ? x.Thai : x.English)
-                    .filter(x => x !== correct);
-                shuffleArray(otherWords);
-                while (opts.length < 4 && otherWords.length > 0) {
-                    opts.push(otherWords.pop());
+        // ---------- Default Book JSON ----------
+        let defaultBook = {
+            "title": "Do You Speak Thai?",
+            "books": [
+                {
+                    "title": "Thai Consonants",
+                    "chapters": [
+                        { "title": "Low Class Consonants", "paragraphs": [{ "words": [{ "English": "cow", "Thai": "ควาย", "hint": "Large mammal" }, { "English": "fish", "Thai": "ปลา", "hint": "Aquatic animal" }, { "English": "mountain", "Thai": "ภูเขา", "hint": "Large landform" }, { "English": "dog", "Thai": "สุนัข", "hint": "Domestic animal" }, { "English": "cat", "Thai": "แมว", "hint": "Domestic animal" }] }, { "words": [{ "English": "bird", "Thai": "นก", "hint": "Flying animal" }, { "English": "tree", "Thai": "ต้นไม้", "hint": "Plant with trunk" }, { "English": "water", "Thai": "น้ำ", "hint": "Essential liquid" }, { "English": "food", "Thai": "อาหาร", "hint": "Substance for eating" }, { "English": "school", "Thai": "โรงเรียน", "hint": "Place for learning" }] }] },
+                        { "title": "Middle Class Consonants", "paragraphs": [{ "words": [{ "English": "book", "Thai": "หนังสือ", "hint": "Printed material" }, { "English": "pen", "Thai": "ปากกา", "hint": "Writing instrument" }, { "English": "table", "Thai": "โต๊ะ", "hint": "Furniture item" }, { "English": "chair", "Thai": "เก้าอี้", "hint": "Furniture item" }, { "English": "window", "Thai": "หน้าต่าง", "hint": "Opening in wall" }] }, { "words": [{ "English": "door", "Thai": "ประตู", "hint": "Entryway" }, { "English": "computer", "Thai": "คอมพิวเตอร์", "hint": "Electronic device" }, { "English": "phone", "Thai": "โทรศัพท์", "hint": "Communication device" }, { "English": "light", "Thai": "แสง", "hint": "Visible radiant energy" }, { "English": "air", "Thai": "อากาศ", "hint": "Gaseous substance" }] }] },
+                        { "title": "High Class Consonants", "paragraphs": [{ "words": [{ "English": "mountain", "Thai": "ภูเขา", "hint": "Large landform" }, { "English": "river", "Thai": "แม่น้ำ", "hint": "Flowing watercourse" }, { "English": "sky", "Thai": "ท้องฟ้า", "hint": "Above the earth" }, { "English": "cloud", "Thai": "เมฆ", "hint": "Visible mass of particles" }, { "English": "sun", "Thai": "พระอาทิตย์", "hint": "Star at the center of our system" }] }, { "words": [{ "English": "moon", "Thai": "พระจันทร์", "hint": "Natural satellite of Earth" }, { "English": "star", "Thai": "ดาว", "hint": "Luminous point in the night sky" }, { "English": "planet", "Thai": "ดาวเคราะห์", "hint": "Celestial body orbiting a star" }, { "English": "galaxy", "Thai": "กาแล็กซี่", "hint": "System of stars, stellar remnants" }, { "English": "universe", "Thai": "จักรวาล", "hint": "All of space and time" }] }] }
+                    ]
+                },
+                {
+                    "title": "Thai Vowels",
+                    "chapters": [
+                        { "title": "Short Vowels", "paragraphs": [{ "words": [{ "English": "cat", "Thai": "แมว", "hint": "Domestic animal" }, { "English": "bat", "Thai": "ค้างคาว", "hint": "Flying mammal" }, { "English": "rat", "Thai": "หนู", "hint": "Small rodent" }, { "English": "hat", "Thai": "หมวก", "hint": "Headwear" }, { "English": "mat", "Thai": "เสื่อ", "hint": "Floor covering" }] }] },
+                        { "title": "Long Vowels", "paragraphs": [{ "words": [{ "English": "father", "Thai": "พ่อ", "hint": "Male parent" }, { "English": "car", "Thai": "รถ", "hint": "Vehicle" }, { "English": "star", "Thai": "ดาว", "hint": "Luminous point in the night sky" }, { "English": "far", "Thai": "ไกล", "hint": "At a great distance" }, { "English": "bar", "Thai": "บาร์", "hint": "Establishment serving drinks" }] }] },
+                        { "title": "Diphthongs", "paragraphs": [{ "words": [{ "English": "coin", "Thai": "เหรียญ", "hint": "Currency" }, { "English": "boil", "Thai": "ต้ม", "hint": "Cook in water" }, { "English": "soil", "Thai": "ดิน", "hint": "Earth's surface material" }, { "English": "join", "Thai": "เข้าร่วม", "hint": "Become a member" }, { "English": "loin", "Thai": "เอว", "hint": "Part of the body" }] }] },
+                        { "title": "Rarely Used Vowels", "paragraphs": [{ "words": [{ "English": "ear", "Thai": "หู", "hint": "Organ for hearing" }, { "English": "air", "Thai": "อากาศ", "hint": "Gaseous substance" }, { "English": "fair", "Thai": "ยุติธรรม", "hint": "Just treatment" }, { "English": "hair", "Thai": "ผม", "hint": "Strands growing from scalp" }, { "English": "pair", "Thai": "คู่", "hint": "Two items together" }] }] }
+                    ]
                 }
+            ]
+        };
 
-                shuffleArray(opts); // Randomize option order
-                return { word: w, options: opts, selectedAnswer: null };
-            });
+        // ---------- State Variables ----------
+        let currentBook = defaultBook, currentParagraphIndex = 0, currentQuizIndex = 0;
+        let isTTSMuted = false, isFeedbackMuted = false, selectedVoice = null;
+        let ttsVoices = [], quizScore = 0;
 
-            if (chkRandomQuestions.checked) shuffleArray(quizQuestions);
-            quizCurrentIndex = 0;
-            renderQuiz();
-        }
+        // ---------- Functions ----------
+        function animatePanel(panel) { panel.classList.add('hidden'); setTimeout(() => panel.classList.remove('hidden'), 10); }
 
-        function renderQuiz() {
-            if (!quizQuestions.length) { quizContent.innerHTML = ""; quizScore.textContent = ""; return; }
-            const q = quizQuestions[quizCurrentIndex];
-            quizContent.innerHTML = "";
-            let questionText = quizMode.value === "en2th" ? q.word.English : q.word.Thai;
-            if (chkShowHint.checked) questionText += ` (${q.word.Hint})`;
-            const qElem = document.createElement("div");
-            qElem.id = "quizQuestion";
-            qElem.textContent = `Q${quizCurrentIndex + 1}: ${questionText}`;
-            quizContent.appendChild(qElem);
+        function speakText(text, lang) { return new Promise(resolve => { if (isTTSMuted) { resolve(); return; } const u = new SpeechSynthesisUtterance(text); if (selectedVoice) u.voice = selectedVoice; u.lang = lang; u.onend = resolve; speechSynthesis.speak(u); }); }
 
-            speechSynthesis.cancel();
-            speakText(questionText, quizMode.value === "en2th" ? "en" : "th", () => { });
+        function loadBook(book) { currentBook = book; populateBookSelect(); populateChapterSelect(); populateParagraphSelect(); loadParagraphWords(0); loadQuizQuestion(0); }
 
-            q.options.forEach(opt => {
-                const btn = document.createElement("button");
-                btn.className = "quizOption";
-                btn.textContent = chkShowHint.checked ? `${opt} (${q.word.Hint})` : opt;
-                btn.disabled = false;
+        function populateBookSelect() { const sel = document.getElementById('bookSelect'); sel.innerHTML = ''; currentBook.books.forEach((b, i) => { const opt = document.createElement('option'); opt.value = i; opt.textContent = b.title; sel.appendChild(opt); }); }
 
-                if (q.selectedAnswer) {
-                    if (q.selectedAnswer === opt) {
-                        btn.classList.add((quizMode.value === "en2th" ? q.word.Thai : q.word.English) === opt ? "correct" : "incorrect");
-                        btn.disabled = true;
-                    }
-                }
+        function populateChapterSelect() { const sel = document.getElementById('chapterSelect'); sel.innerHTML = ''; currentBook.books[0].chapters.forEach((c, i) => { const opt = document.createElement('option'); opt.value = i; opt.textContent = c.title; sel.appendChild(opt); }); }
 
-                btn.addEventListener("click", () => {
-                    q.selectedAnswer = opt;
-                    renderQuiz();
-                    speakText(opt, quizMode.value === "en2th" ? "th" : "en", () => { });
+        function populateParagraphSelect() { const sel = document.getElementById('paragraphSelect'); sel.innerHTML = ''; currentBook.books[0].chapters[0].paragraphs.forEach((p, i) => { const opt = document.createElement('option'); opt.value = i; opt.textContent = `Paragraph ${i + 1}`; sel.appendChild(opt); }); }
+
+        function loadParagraphWords(index) {
+            currentParagraphIndex = index;
+            const pContainer = document.getElementById('paragraphContainer'); pContainer.innerHTML = '';
+            const paragraph = currentBook.books[0].chapters[0].paragraphs[index];
+            paragraph.words.forEach(w => {
+                const span = document.createElement('span'); span.textContent = w.English; span.className = 'word';
+                span.addEventListener('click', async () => {
+                    window.speechSynthesis.cancel();
+                    span.classList.add('highlighted');
+                    await speakText(w.English, 'en');
+                    setTimeout(() => span.classList.remove('highlighted'), 400);
                 });
-
-                quizContent.appendChild(btn);
+                pContainer.appendChild(span);
             });
-
-            const score = quizQuestions.filter(x => x.selectedAnswer &&
-                ((quizMode.value === "en2th" && x.selectedAnswer === x.word.Thai) ||
-                    (quizMode.value === "th2en" && x.selectedAnswer === x.word.English))).length;
-            quizScore.textContent = `Score: ${score} / ${quizQuestions.length}`;
+            animatePanel(pContainer);
         }
 
-        // Navigation
-        btnPrevQ.addEventListener("click", () => { if (quizCurrentIndex > 0) { quizCurrentIndex--; renderQuiz(); } });
-        btnNextQ.addEventListener("click", () => { if (quizCurrentIndex < quizQuestions.length - 1) { quizCurrentIndex++; renderQuiz(); } });
-        btnGenerateQuiz.addEventListener("click", generateQuiz);
+        function loadQuizQuestion(qIndex) {
+            currentQuizIndex = qIndex;
+            const qPanel = document.getElementById('quizPanel');
+            const paragraph = currentBook.books[0].chapters[0].paragraphs[currentParagraphIndex];
+            const questionWord = paragraph.words[qIndex];
+            const questionDiv = qPanel.querySelector('.question');
+            questionDiv.textContent = `Select the correct word: ${questionWord.Hint || questionWord.English}`;
+            const answersDiv = qPanel.querySelector('.answers'); answersDiv.innerHTML = '';
+            const options = [questionWord, ...paragraph.words.filter(w => w !== questionWord).slice(0, 3)].sort(() => Math.random() - 0.5);
+            options.forEach(opt => {
+                const btn = document.createElement('button'); btn.className = 'quiz-answer'; btn.textContent = opt.English;
+                btn.addEventListener('click', async () => {
+                    btn.classList.add(opt === questionWord ? 'correct' : 'incorrect');
+                    quizScore += (opt === questionWord) ? 1 : 0; document.getElementById('quizScore').textContent = quizScore;
+                    await speakText(opt.English, 'en');
+                });
+                answersDiv.appendChild(btn);
+            });
+            animatePanel(qPanel);
+        }
 
-        // Word controls
-        document.getElementById("btnPlay").addEventListener("click", () => { if (!playing || paused) { paused = false; playing = true; playFromIndex(currentWordPos); } });
-        document.getElementById("btnPause").addEventListener("click", () => { paused = true; speechSynthesis.cancel(); });
-        document.getElementById("btnRestart").addEventListener("click", () => { speechSynthesis.cancel(); paused = false; playing = true; currentWordPos = 0; renderWords(); playFromIndex(currentWordPos); });
-        document.getElementById("btnPrev").addEventListener("click", () => { if (currentParagraphIndex > 0) { currentParagraphIndex--; paragraphSelect.value = currentParagraphIndex; currentWordPos = 0; renderWords(); } });
-        document.getElementById("btnNext").addEventListener("click", () => { const ch = books[currentBookIndex].chapters[currentChapterIndex]; if (currentParagraphIndex < ch.paragraphs.length - 1) { currentParagraphIndex++; paragraphSelect.value = currentParagraphIndex; currentWordPos = 0; renderWords(); } });
-        document.querySelectorAll("#chkEnglish,#chkThai,#chkHint").forEach(cb => cb.addEventListener("change", renderWords));
-
-        // Book select
-        function populateBookSelect() { bookSelect.innerHTML = "<option value=''>-- Select Book --</option>"; books.forEach((b, i) => { const o = document.createElement("option"); o.value = i; o.textContent = b.title; bookSelect.appendChild(o); }); }
-        populateBookSelect();
-        bookSelect.addEventListener("change", () => {
-            currentBookIndex = bookSelect.value ? parseInt(bookSelect.value) : null;
-            currentChapterIndex = null;
-            currentParagraphIndex = null;
-            chapterSelect.innerHTML = "<option value=''>-- Select Chapter --</option>";
-            paragraphSelect.innerHTML = "";
-            paragraphSelect.disabled = true;
-            wordDisplay.innerHTML = "";
-            paragraphDescription.textContent = "";
-            paragraphResources.innerHTML = "";
-            chapterResources.innerHTML = "";
-            bookResources.innerHTML = "";
-
-            if (currentBookIndex !== null) {
-                const b = books[currentBookIndex];
-                bookDescription.textContent = b.description;
-                renderResources(bookResources, b.resources || []);
-                b.chapters.forEach((ch, i) => { const o = document.createElement("option"); o.value = i; o.textContent = ch.title; chapterSelect.appendChild(o); });
-                chapterSelect.disabled = false;
-            } else bookDescription.textContent = "";
+        // ---------- Event Listeners ----------
+        document.getElementById('nextParagraphBtn').addEventListener('click', () => {
+            currentParagraphIndex = (currentParagraphIndex + 1) % currentBook.books[0].chapters[0].paragraphs.length;
+            loadParagraphWords(currentParagraphIndex);
+            loadQuizQuestion(0);
+        });
+        document.getElementById('prevParagraphBtn').addEventListener('click', () => {
+            currentParagraphIndex = (currentParagraphIndex - 1 + currentBook.books[0].chapters[0].paragraphs.length) % currentBook.books[0].chapters[0].paragraphs.length;
+            loadParagraphWords(currentParagraphIndex);
+            loadQuizQuestion(0);
         });
 
-        chapterSelect.addEventListener("change", () => {
-            currentChapterIndex = chapterSelect.value ? parseInt(chapterSelect.value) : null;
-            currentParagraphIndex = null;
-            paragraphSelect.innerHTML = "";
-            wordDisplay.innerHTML = "";
-            paragraphDescription.textContent = "";
-            paragraphResources.innerHTML = "";
-            chapterResources.innerHTML = "";
-            if (currentChapterIndex !== null) {
-                const ch = books[currentBookIndex].chapters[currentChapterIndex];
-                chapterDescription.textContent = ch.description || "";
-                renderResources(chapterResources, ch.resources || []);
-                ch.paragraphs.forEach((p, i) => { const o = document.createElement("option"); o.value = i; o.textContent = "Paragraph " + (i + 1); paragraphSelect.appendChild(o); });
-                paragraphSelect.disabled = false;
-                currentParagraphIndex = 0; paragraphSelect.value = 0; renderWords();
-            } else chapterDescription.textContent = "";
+        document.getElementById('uploadBookFile').addEventListener('change', e => {
+            const file = e.target.files[0]; if (!file) return;
+            const reader = new FileReader();
+            reader.onload = function (ev) { try { loadBook(JSON.parse(ev.target.result)); } catch (err) { alert("Invalid JSON"); } };
+            reader.readAsText(file);
         });
 
-        paragraphSelect.addEventListener("change", () => { currentParagraphIndex = parseInt(paragraphSelect.value); currentWordPos = 0; renderWords(); });
+        // ---------- TTS Voice Loading ----------
+        function loadHighQualityVoices() {
+            ttsVoices = speechSynthesis.getVoices().filter(v => v.localService && (v.lang.startsWith('en') || v.lang.startsWith('th')));
+            const sel = document.getElementById('voiceSelect'); sel.innerHTML = '';
+            ttsVoices.forEach((v, i) => { const opt = document.createElement('option'); opt.value = i; opt.textContent = `${v.name} (${v.lang})`; sel.appendChild(opt); });
+            selectedVoice = ttsVoices[0];
+        }
+        speechSynthesis.onvoiceschanged = loadHighQualityVoices;
 
-        // Upload book
-        btnUploadBook.addEventListener("click", () => fileInput.click());
-        fileInput.addEventListener("change", e => {
-            const file = e.target.files[0];
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = evt => {
-                    try {
-                        const data = JSON.parse(evt.target.result);
-                        books = Array.isArray(data) ? data : [data];
-                        populateBookSelect();
-                        bookSelect.value = 0;
-                        bookSelect.dispatchEvent(new Event("change"));
-                        alert("Book uploaded successfully.");
-                    } catch (err) {
-                        alert("Invalid JSON file. Ensure all property names are double quoted.");
-                    }
-                };
-                reader.readAsText(file);
-            }
-        });
+        // ---------- Theme & Font ----------
+        document.getElementById('themeSelect').addEventListener('change', e => document.body.classList.replace('day-mode', 'night-mode'));
+        document.getElementById('fontSelect').addEventListener('change', e => { document.body.classList.remove('font-default', 'font-thai', 'font-serif'); document.body.classList.add(e.target.value); });
+
     </script>
 </body>
 
