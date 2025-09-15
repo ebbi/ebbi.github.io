@@ -2,378 +2,792 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <title>Do You Speak Thai App</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Do You Speak Thai?</title>
+
+    <!-- Optional Google font for nicer Thai rendering (Sarabun) -->
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;700&display=swap" rel="stylesheet">
+
     <style>
-        body {
-            margin: 0;
-            font-family: sans-serif;
-            background: #f8f8f8;
-            color: #000;
+        :root {
+            --highlight-light: #ffeb3b;
+            /* yellow for light mode */
+            --highlight-dark: #ff9800;
+            /* orange for dark mode */
+            --accent: #6200ea;
         }
 
+        body {
+            margin: 0;
+            font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+            background: #f8f8f8;
+            color: #000;
+            transition: background .2s, color .2s;
+        }
+
+        /* Header (settings button right-justified) */
         header {
             display: flex;
-            justify-content: space-between;
+            justify-content: flex-end;
             align-items: center;
-            padding: 10px;
-            background: #4a90e2;
-            color: white;
+            padding: 10px 16px;
+            background: #eee;
+            border-bottom: 1px solid #ccc;
         }
 
         header button {
             background: none;
             border: none;
-            color: white;
-            font-size: 1.2em;
+            font-size: 1.1rem;
             cursor: pointer;
-        }
-
-        aside {
-            position: fixed;
-            top: 50px;
-            right: 0;
-            width: 300px;
-            height: 100%;
-            background: #eee;
-            overflow: auto;
-            padding: 10px;
-            display: none;
-            box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
         }
 
         main {
-            margin: 10px;
-            margin-top: 60px;
+            padding: 12px;
+            max-width: 1000px;
+            margin: 0 auto;
         }
 
-        .control-panel {
-            margin: 10px 0;
+        /* Controls row: label + select stay on same line */
+        .control-row {
             display: flex;
-            align-items: center;
-            gap: 10px;
             flex-wrap: wrap;
+            gap: 10px;
+            align-items: center;
+            margin-bottom: 8px;
         }
 
-        .control-panel label {
+        .control-item {
             display: flex;
             align-items: center;
-            gap: 5px;
+            gap: 6px;
         }
 
-        #paragraph {
-            margin: 10px 0;
-            font-size: 1.2em;
-            line-height: 1.5;
+        hr {
+            border: none;
+            border-top: 1px solid #ddd;
+            margin: 8px 0 12px;
         }
 
-        #paragraph .word {
+        /* Paragraph text */
+        .paragraph {
+            line-height: 1.6;
+            font-size: 1.05rem;
+            min-height: 3.5rem;
+        }
+
+        .paragraph .word {
+            margin: 0 .12rem;
             cursor: pointer;
-            padding: 0 2px;
+            display: inline-block;
         }
 
-        #paragraph .highlight {
-            background: yellow;
-            font-weight: bold;
+        .paragraph .word.highlight {
+            padding: 2px 4px;
+            border-radius: 4px;
+        }
+
+        /* Paragraph controls (kept below paragraph) with border under */
+        .paragraph-controls {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            align-items: center;
+            margin-top: 10px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #ccc;
+            margin-bottom: 12px;
+        }
+
+        button.control-btn {
+            padding: 6px 10px;
+            border-radius: 6px;
+            border: 1px solid #bbb;
+            background: #fff;
+            cursor: pointer;
+        }
+
+        button.control-btn:active {
+            transform: translateY(1px);
+        }
+
+        /* Quiz content + controls */
+        #quizContent {
+            margin-top: 8px;
+            min-height: 80px;
         }
 
         .quiz-question {
-            margin: 10px 0;
-            font-weight: bold;
-            font-size: 1.1em;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .quiz-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
         }
 
         .quiz-option {
-            padding: 5px;
-            margin: 2px 0;
-            border: 1px solid #ccc;
+            display: inline-block;
+            padding: 6px 10px;
+            border: 1px solid #bbb;
+            border-radius: 8px;
             cursor: pointer;
-            border-radius: 4px;
+            user-select: none;
         }
 
         .quiz-option.correct {
-            background: lightgreen;
+            background: #4caf50;
+            color: #fff;
+            border-color: #4caf50;
         }
 
         .quiz-option.incorrect {
-            background: #f08080;
+            background: #f44336;
+            color: #fff;
+            border-color: #f44336;
         }
 
-        select,
-        button {
-            padding: 5px;
-            border-radius: 4px;
-            border: 1px solid #ccc;
+        /* Quiz controls placed below quiz content */
+        .quiz-controls {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            align-items: center;
+            margin-top: 12px;
+            border-top: 1px solid #ddd;
+            padding-top: 10px;
         }
 
-        @media(max-width:600px) {
-            #paragraph {
-                font-size: 1.4em;
+        /* Score */
+        #quizScore {
+            font-weight: 600;
+            margin-left: 8px;
+        }
+
+        /* Dark mode */
+        body.dark {
+            background: #121212;
+            color: #EEE;
+        }
+
+        body.dark header {
+            background: #1b1b1b;
+            border-bottom-color: #333;
+        }
+
+        body.dark .paragraph .word.highlight {
+            background: var(--highlight-dark);
+            color: #000;
+        }
+
+        body:not(.dark) .paragraph .word.highlight {
+            background: var(--highlight-light);
+            color: #000;
+        }
+
+        /* small responsive tweaks */
+        @media (max-width:600px) {
+            .control-row {
+                gap: 8px;
+            }
+
+            .paragraph {
+                font-size: 1.15rem;
             }
         }
     </style>
 </head>
 
 <body>
-
     <header>
-        <button id="homeBtn">🏠 Home</button>
-        <button id="settingsBtn">⚙️</button>
-    </header>
-
-    <aside id="sidebar">
-        <h3>Settings</h3>
-        <label>
-            Theme:
-            <select id="themeSelect">
-                <option value="day">Day</option>
-                <option value="night">Night</option>
-            </select>
-        </label>
-        <br><br>
-        <label>
-            Thai Font:
-            <select id="thaiFontSelect">
-                <option value="Tahoma">Tahoma</option>
-                <option value="Sarabun">Sarabun</option>
-                <option value="TH Chakra Petch">TH Chakra Petch</option>
-                <option value="TH Krub">TH Krub</option>
-            </select>
-        </label>
-    </aside>
-
-    <main>
-        <div>
-            <label>Book:
-                <select id="bookSelect"></select>
+        <!-- Settings inline in header: theme radios & font select moved into a small popover -->
+        <div id="settingsInline" style="display:flex;gap:8px;align-items:center;">
+            <label style="display:flex;align-items:center;gap:6px;font-size:0.95rem;">
+                <input type="radio" name="theme" id="themeDay" value="day" /> ☀️
             </label>
-            <label>Chapter:
-                <select id="chapterSelect"></select>
+            <label style="display:flex;align-items:center;gap:6px;font-size:0.95rem;">
+                <input type="radio" name="theme" id="themeNight" value="night" /> 🌙
             </label>
-            <label>Paragraph:
-                <select id="paragraphSelect"></select>
-            </label>
-        </div>
 
-        <div class="control-panel">
-            <button id="playBtn">▶️ Play</button>
-            <button id="pauseBtn">⏸️ Pause</button>
-            <button id="restartBtn">🔄 Restart</button>
-            <label><input type="checkbox" id="langTH" checked> Thai</label>
-            <label><input type="checkbox" id="langEN" checked> English</label>
-            <label><input type="checkbox" id="showHint"> Hint</label>
-        </div>
-
-        <div id="paragraph"></div>
-
-        <div class="control-panel">
-            <label>Quiz Language:
-                <select id="quizLangSelect">
-                    <option value="th">Thai Question</option>
-                    <option value="en">English Question</option>
+            <label style="display:flex;align-items:center;gap:6px;">
+                <span style="font-size:.9rem">Thai Font:</span>
+                <select id="thaiFontSelect" style="padding:6px;border-radius:6px;border:1px solid #bbb;">
+                    <option value="">Default</option>
+                    <option value="Sarabun">Sarabun</option>
+                    <option value="Noto Sans Thai">Noto Sans Thai</option>
+                    <option value="Tahoma">Tahoma</option>
+                    <option value="Thonburi">Thonburi</option>
                 </select>
             </label>
-            <label><input type="checkbox" id="randomizeQ"> Randomize Questions</label>
-            <label><input type="checkbox" id="incorrectOnly"> Incorrect Only</label>
-            <label><input type="checkbox" id="showHints"> Show Hint</label>
-            <button id="prevQ">⬅️ Prev</button>
-            <button id="nextQ">➡️ Next</button>
+        </div>
+    </header>
+
+    <main>
+        <div class="control-row">
+            <div class="control-item"><label for="bookSelect">Book:</label><select id="bookSelect"></select></div>
+            <div class="control-item"><label for="chapterSelect">Chapter:</label><select id="chapterSelect"></select>
+            </div>
+            <div class="control-item"><label for="paragraphSelect">Paragraph:</label><select
+                    id="paragraphSelect"></select></div>
         </div>
 
+        <hr />
+
+        <div class="paragraph" id="paragraphText" aria-live="polite"></div>
+
+        <div class="paragraph-controls" id="paragraphControls">
+            <button id="playBtn" class="control-btn">▶️ Play</button>
+            <button id="pauseBtn" class="control-btn">⏸ Pause</button>
+            <button id="restartBtn" class="control-btn">🔁 Restart</button>
+
+            <label style="display:flex;align-items:center;gap:6px"><input type="checkbox" id="showThai" checked />
+                Thai</label>
+            <label style="display:flex;align-items:center;gap:6px"><input type="checkbox" id="showEnglish" />
+                English</label>
+            <label style="display:flex;align-items:center;gap:6px"><input type="checkbox" id="showHint" /> Hint</label>
+        </div>
+
+        <!-- Quiz (content above, controls below) -->
         <div id="quizContent"></div>
-        <div>Score: <span id="scoreDisplay">0</span></div>
+
+        <div class="quiz-controls" id="quizControls">
+            <button id="prevQ" class="control-btn">⬅️ Previous</button>
+            <button id="nextQ" class="control-btn">➡️ Next</button>
+            <button id="retryQ" class="control-btn">🔄 Retry</button>
+
+            <label style="display:flex;align-items:center;gap:6px">
+                <input type="radio" name="quizLang" id="quizThai" value="thai" checked /> Question Thai
+            </label>
+            <label style="display:flex;align-items:center;gap:6px">
+                <input type="radio" name="quizLang" id="quizEnglish" value="english" /> Question English
+            </label>
+
+            <label style="display:flex;align-items:center;gap:6px">
+                <input type="checkbox" id="incorrectOnly" /> Incorrectly Answered Only
+            </label>
+
+            <span id="quizScore">Score: 0/0</span>
+        </div>
     </main>
 
     <script>
-        const books = [{
-            title: "Do you speak Thai",
-            description: "Learn Thai consonants and vowels",
-            chapters: [
-                {
-                    title: "Thai Consonants",
-                    paragraphs: [
-                        {
-                            words: [
-                                { Thai: "ก", English: "g", hint: "low class consonant" },
-                                { Thai: "ข", English: "kh", hint: "high class consonant" },
-                                { Thai: "ค", English: "k", hint: "low class consonant" }
+        /* -------------------------
+           Data: single default book /
+           Greetings paragraph (10 sentences)
+           ------------------------- */
+        const books = [
+            {
+                title: "Do you speak Thai?",
+                chapters: [
+                    {
+                        title: "Greetings",
+                        paragraphs: [
+                            [
+                                { thai: "สวัสดี", english: "Hello", hint: "Common greeting" },
+                                { thai: "สบายดีไหม", english: "How are you?", hint: "Ask how someone is" },
+                                { thai: "ฉันสบายดี", english: "I'm fine", hint: "Reply" },
+                                { thai: "คุณชื่ออะไร", english: "What's your name?", hint: "Ask name" },
+                                { thai: "ฉันชื่อสมชาย", english: "My name is Somchai", hint: "Introduce yourself" },
+                                { thai: "ยินดีที่ได้รู้จัก", english: "Nice to meet you", hint: "Polite greeting" },
+                                { thai: "วันนี้อากาศดี", english: "The weather is nice today", hint: "Small talk" },
+                                { thai: "คุณไปไหน", english: "Where are you going?", hint: "Small talk" },
+                                { thai: "ไปห้างสรรพสินค้า", english: "To the mall", hint: "Reply" },
+                                { thai: "ลาก่อน", english: "Goodbye", hint: "Farewell" }
                             ]
-                        }
-                    ]
-                },
-                {
-                    title: "Thai Vowels",
-                    paragraphs: [
-                        {
-                            words: [
-                                { Thai: "า", English: "aa", hint: "long vowel" },
-                                { Thai: "ิ", English: "i", hint: "short vowel" },
-                                { Thai: "ี", English: "ii", hint: "long vowel" }
+                        ]
+                    },
+                    {
+                        title: "Do you speak Thai?",
+                        paragraphs: [
+                            // Paragraph 1: Short Answer (5 sentences)
+                            [
+                                { thai: "ฉันพูดภาษาไทยได้นิดหน่อย", english: "I can speak a little Thai", hint: "Basic phrase" },
+                                { thai: "ฉันเข้าใจคำง่ายๆ", english: "I understand simple words", hint: "Simple ability" },
+                                { thai: "ฉันพูดช้าๆ ได้", english: "I can speak slowly", hint: "Speaking pace" },
+                                { thai: "ฉันตอบได้สั้นๆ", english: "I can answer shortly", hint: "Simple reply" },
+                                { thai: "ฉันยังเรียนภาษาไทยอยู่", english: "I am still learning Thai", hint: "Learning process" }
+                            ],
+                            // Paragraph 2: Long Answer (10 sentences)
+                            [
+                                { thai: "ภาษาไทยเป็นภาษาที่ยากสำหรับฉัน", english: "Thai is a difficult language for me", hint: "Difficulty" },
+                                { thai: "มีเสียงวรรณยุกต์หลายเสียง", english: "It has many tones", hint: "Tone system" },
+                                { thai: "ฉันสับสนระหว่างเสียงสูงและเสียงต่ำ", english: "I confuse high and low tones", hint: "Tone confusion" },
+                                { thai: "ตัวอักษรไทยมีมากมาย", english: "Thai letters are numerous", hint: "Alphabet" },
+                                { thai: "การเขียนภาษาไทยไม่ง่าย", english: "Writing Thai is not easy", hint: "Writing difficulty" },
+                                { thai: "การอ่านก็ซับซ้อน", english: "Reading is also complicated", hint: "Reading complexity" },
+                                { thai: "แต่ฉันชอบภาษาไทย", english: "But I like Thai", hint: "Positive feeling" },
+                                { thai: "ฉันอยากพูดได้คล่อง", english: "I want to speak fluently", hint: "Motivation" },
+                                { thai: "ฉันต้องฝึกทุกวัน", english: "I must practice every day", hint: "Practice" },
+                                { thai: "ฉันหวังว่าสักวันฉันจะพูดเก่ง", english: "I hope one day I will speak well", hint: "Goal" }
                             ]
-                        }
-                    ]
-                }
-            ]
-        }];
+                        ]
+                    }
+                ]
+            }
+        ];
 
-        let currentBookIndex = 0, currentChapterIndex = 0, currentParagraphIndex = 0;
-        let currentWordIndex = 0, playTimeout = null, isPlaying = false;
-        let quizData = [], currentQIndex = 0, score = 0;
 
-        /* Toolbar events */
-        document.getElementById("settingsBtn").onclick = () => {
-            document.getElementById("sidebar").style.display =
-            document.getElementById("sidebar").style.display === "block" ? "none" : "block";
-        };
-        document.getElementById("homeBtn").onclick = () => {
-            currentBookIndex = 0; currentChapterIndex = 0; currentParagraphIndex = 0;
-            document.getElementById("sidebar").style.display = "none";
-            populateBooks();
-        };
+        /* -------------------------
+           State
+           ------------------------- */
+        let currentBook = 0, currentChapter = 0, currentParagraph = 0;
+        let playing = false, playIndex = 0;
+        let quizData = [];        // array of { word, options[], attempted, correct }
+        let currentQ = 0;         // index into quizData
+        let filteredIndices = null; // for incorrectOnly mode: array of indices to show
+        const MIN_OPTIONS = 4;
 
-        /* Populate lists */
+        /* -------------------------
+           DOM refs
+           ------------------------- */
+        const bookSelect = document.getElementById('bookSelect');
+        const chapterSelect = document.getElementById('chapterSelect');
+        const paragraphSelect = document.getElementById('paragraphSelect');
+
+        const paragraphText = document.getElementById('paragraphText');
+        const playBtn = document.getElementById('playBtn');
+        const pauseBtn = document.getElementById('pauseBtn');
+        const restartBtn = document.getElementById('restartBtn');
+
+        const showThaiCB = document.getElementById('showThai');
+        const showEnglishCB = document.getElementById('showEnglish');
+        const showHintCB = document.getElementById('showHint');
+
+        const quizContent = document.getElementById('quizContent');
+        const prevQBtn = document.getElementById('prevQ');
+        const nextQBtn = document.getElementById('nextQ');
+        const retryQBtn = document.getElementById('retryQ');
+        const quizThaiRadio = document.getElementById('quizThai');
+        const quizEnglishRadio = document.getElementById('quizEnglish');
+        const incorrectOnlyCB = document.getElementById('incorrectOnly');
+        const quizScoreSpan = document.getElementById('quizScore');
+
+        const thaiFontSelect = document.getElementById('thaiFontSelect');
+        const themeDay = document.getElementById('themeDay');
+        const themeNight = document.getElementById('themeNight');
+
+        /* -------------------------
+           Utility & persistence
+           ------------------------- */
+        function saveSetting(key, val) { try { localStorage.setItem(key, val); } catch (e) { } }
+        function readSetting(key, fallback) { try { return localStorage.getItem(key) ?? fallback } catch (e) { return fallback; } }
+
+        /* Dynamic style for Thai font so that future elements pick it up */
+        function setThaiFontRule(font) {
+            let id = 'thai-font-style';
+            let styleEl = document.getElementById(id);
+            if (!styleEl) {
+                styleEl = document.createElement('style'); styleEl.id = id; document.head.appendChild(styleEl);
+            }
+            if (!font || font.trim() === '') {
+                styleEl.innerHTML = '';
+            } else {
+                // use !important to ensure it applies
+                styleEl.innerHTML = `[lang="th-TH"]{ font-family: "${font}", "Sarabun", "Noto Sans Thai", Tahoma, sans-serif !important; }`;
+            }
+        }
+
+        /* Theme apply */
+        function applyTheme(theme) {
+            if (theme === 'night') document.body.classList.add('dark');
+            else document.body.classList.remove('dark');
+            // save
+            saveSetting('tts_theme', theme);
+        }
+        function applySavedTheme() {
+            const t = readSetting('tts_theme', 'day');
+            applyTheme(t);
+            themeDay.checked = (t === 'day');
+            themeNight.checked = (t === 'night');
+        }
+
+        /* Font apply */
+        function applySavedFont() {
+            const f = readSetting('tts_thai_font', '');
+            thaiFontSelect.value = f;
+            setThaiFontRule(f);
+        }
+
+        /* -------------------------
+           Populate controls
+           ------------------------- */
         function populateBooks() {
-            const bookSelect = document.getElementById("bookSelect"); bookSelect.innerHTML = "";
-            books.forEach((b, i) => { const opt = document.createElement("option"); opt.value = i; opt.textContent = b.title; bookSelect.appendChild(opt); });
-            bookSelect.selectedIndex = currentBookIndex; populateChapters();
+            bookSelect.innerHTML = '';
+            books.forEach((b, i) => {
+                const o = document.createElement('option'); o.value = i; o.textContent = b.title;
+                bookSelect.appendChild(o);
+            });
+            bookSelect.value = currentBook;
+            populateChapters();
         }
         function populateChapters() {
-            const chapSelect = document.getElementById("chapterSelect"); chapSelect.innerHTML = "";
-            const chaps = books[currentBookIndex].chapters;
-            chaps.forEach((c, i) => { const opt = document.createElement("option"); opt.value = i; opt.textContent = c.title; chapSelect.appendChild(opt); });
-            chapSelect.selectedIndex = currentChapterIndex; populateParagraphs();
+            const chs = books[currentBook].chapters || [];
+            chapterSelect.innerHTML = '';
+            chs.forEach((c, i) => {
+                const o = document.createElement('option'); o.value = i; o.textContent = c.title;
+                chapterSelect.appendChild(o);
+            });
+            chapterSelect.value = currentChapter;
+            populateParagraphs();
         }
         function populateParagraphs() {
-            const paraSelect = document.getElementById("paragraphSelect"); paraSelect.innerHTML = "";
-            const paras = books[currentBookIndex].chapters[currentChapterIndex].paragraphs;
-            paras.forEach((p, i) => { const opt = document.createElement("option"); opt.value = i; opt.textContent = `Paragraph ${i + 1}`; paraSelect.appendChild(opt); });
-            paraSelect.selectedIndex = currentParagraphIndex; loadParagraph();
+            const paras = books[currentBook].chapters[currentChapter].paragraphs || [];
+            paragraphSelect.innerHTML = '';
+            paras.forEach((p, i) => {
+                const o = document.createElement('option'); o.value = i; o.textContent = `Paragraph ${i + 1}`;
+                paragraphSelect.appendChild(o);
+            });
+            paragraphSelect.value = currentParagraph;
+            renderParagraph();
         }
 
-        document.getElementById("bookSelect").onchange = e => { currentBookIndex = parseInt(e.target.value); currentChapterIndex = 0; currentParagraphIndex = 0; populateChapters(); };
-        document.getElementById("chapterSelect").onchange = e => { currentChapterIndex = parseInt(e.target.value); currentParagraphIndex = 0; populateParagraphs(); };
-        document.getElementById("paragraphSelect").onchange = e => { currentParagraphIndex = parseInt(e.target.value); loadParagraph(); };
+        /* -------------------------
+           Paragraph rendering + TTS play
+           ------------------------- */
+        function renderParagraph() {
+            paragraphText.innerHTML = '';
+            const para = books[currentBook].chapters[currentChapter].paragraphs[currentParagraph] || [];
+            para.forEach((w, i) => {
+                const span = document.createElement('span');
+                span.className = 'word';
+                span.dataset.index = i;
+                // show according to checkboxes (Thai default checked)
+                let parts = [];
+                if (showThaiCB.checked) { const el = document.createElement('span'); el.lang = 'th-TH'; el.textContent = w.thai; parts.push(el); }
+                if (showEnglishCB.checked) { const el = document.createElement('span'); el.lang = 'en-US'; el.textContent = w.english; parts.push(el); }
+                if (showHintCB.checked) { const el = document.createElement('span'); el.lang = 'en-US'; el.textContent = ` (${w.hint})`; parts.push(el); }
+                // append parts into span
+                parts.forEach((p, idx) => { if (idx > 0) span.appendChild(document.createTextNode(' ')); span.appendChild(p); });
+                // click => stop play & speak this single word
+                span.addEventListener('click', (ev) => {
+                    playing = false; speechSynthesis.cancel();
+                    playIndex = Number(span.dataset.index);
+                    speakWord(playIndex);
+                });
+                paragraphText.appendChild(span);
+            });
 
-        /* Paragraph checkboxes update immediately */
-        document.getElementById("langTH").onchange = loadParagraph;
-        document.getElementById("langEN").onchange = loadParagraph;
-        document.getElementById("showHint").onchange = loadParagraph;
+            // Apply current Thai font rule again (new spans will pick the global style)
+            setThaiFontRule(thaiFontSelect.value);
 
-        /* Unified TTS */
-        function speakUnified(item, options = {}) {
-            const { speakTH = false, speakEN = false, speakHint = false, lang = null } = options;
+            // Build quiz from this paragraph
+            buildQuizFromParagraph();
+        }
+
+        /* Highlight helpers */
+        function clearParagraphHighlights() {
+            paragraphText.querySelectorAll('.word').forEach(w => w.classList.remove('highlight'));
+        }
+        function highlightParagraphWord(i) {
+            clearParagraphHighlights();
+            const w = paragraphText.querySelector(`.word[data-index="${i}"]`);
+            if (w) w.classList.add('highlight');
+        }
+
+        /* TTS speak helpers */
+        function speakText(text, lang) {
+            if (!text) return;
             speechSynthesis.cancel();
-            if (typeof item === "string" && lang) { const utt = new SpeechSynthesisUtterance(item); utt.lang = (lang === "th" ? "th-TH" : "en-US"); speechSynthesis.speak(utt); return; }
-            if (item.Thai || item.English) {
-                if (speakTH && item.Thai) { const uttTH = new SpeechSynthesisUtterance(item.Thai); uttTH.lang = "th-TH"; speechSynthesis.speak(uttTH); }
-                if (speakEN && item.English) { const uttEN = new SpeechSynthesisUtterance(item.English); uttEN.lang = "en-US"; speechSynthesis.speak(uttEN); }
-                if (speakHint && item.hint) { const uttHint = new SpeechSynthesisUtterance(item.hint); uttHint.lang = "en-US"; speechSynthesis.speak(uttHint); }
+            const u = new SpeechSynthesisUtterance(text);
+            u.lang = lang;
+            speechSynthesis.speak(u);
+        }
+
+        /* Play whole paragraph (word by word) */
+        function speakWord(i) {
+            const para = books[currentBook].chapters[currentChapter].paragraphs[currentParagraph] || [];
+            if (i < 0 || i >= para.length) { playing = false; return; }
+            const w = para[i];
+            // highlight and speak according to selections
+            highlightParagraphWord(i);
+            // speak Thai/English/hint as per control checkboxes (spec asks to read selected language)
+            // We'll speak the Thai text first if Thai is checked; then English if English is checked.
+            // If both are unchecked nothing is spoken.
+            let queue = [];
+            if (showThaiCB.checked) queue.push({ text: w.thai, lang: 'th-TH' });
+            if (showEnglishCB.checked) queue.push({ text: w.english, lang: 'en-US' });
+            if (showHintCB.checked && w.hint) queue.push({ text: w.hint, lang: 'en-US' });
+
+            // speak queue serially using onend chaining
+            if (queue.length === 0) {
+                // still proceed to next word
+                playIndex = i + 1;
+                if (playing && playIndex < para.length) setTimeout(() => speakWord(playIndex), 250);
+                else playing = false;
+                return;
             }
-        }
 
-        /* Load paragraph */
-        function loadParagraph() {
-            const para = books[currentBookIndex].chapters[currentChapterIndex].paragraphs[currentParagraphIndex];
-            const showTH = document.getElementById("langTH").checked;
-            const showEN = document.getElementById("langEN").checked;
-            const showHint = document.getElementById("showHint").checked;
-
-            const div = document.getElementById("paragraph"); div.innerHTML = "";
-            para.words.forEach((w) => {
-                const span = document.createElement("span"); span.className = "word"; span.wordData = w;
-                let txt = ""; if (showTH) txt += w.Thai + " "; if (showEN) txt += w.English + " "; if (showHint && w.hint) txt += w.hint + " ";
-                span.textContent = txt.trim();
-                span.onclick = () => speakUnified(w, { speakTH: document.getElementById("langTH").checked, speakEN: document.getElementById("langEN").checked, speakHint: document.getElementById("showHint").checked });
-                div.appendChild(span);
-            });
-            buildQuiz();
-        }
-
-        /* Paragraph controls */
-        document.getElementById("playBtn").onclick = () => { isPlaying = true; currentWordIndex = 0; playParagraph(); };
-        document.getElementById("pauseBtn").onclick = () => { isPlaying = false; speechSynthesis.cancel(); if (playTimeout) clearTimeout(playTimeout); };
-        document.getElementById("restartBtn").onclick = () => {
-            isPlaying = false; currentWordIndex = 0; speechSynthesis.cancel();
-            document.querySelectorAll("#paragraph .word").forEach(el => el.classList.remove("highlight"));
-            isPlaying = true; playParagraph();
-        };
-
-        function playParagraph() {
-            const para = books[currentBookIndex].chapters[currentChapterIndex].paragraphs[currentParagraphIndex];
-            let i = currentWordIndex;
-            function nextWord() {
-                if (!isPlaying || i >= para.words.length) { isPlaying = false; return; }
-                const showTH = document.getElementById("langTH").checked;
-                const showEN = document.getElementById("langEN").checked;
-                const showHint = document.getElementById("showHint").checked;
-                const w = para.words[i];
-                const spans = document.querySelectorAll("#paragraph .word"); spans.forEach(el => el.classList.remove("highlight"));
-                spans[i].classList.add("highlight");
-                speakUnified(w, { speakTH: showTH, speakEN: showEN, speakHint: showHint });
-                currentWordIndex = i + 1;
-                i++;
-                playTimeout = setTimeout(nextWord, 1000);
+            let idx = 0;
+            function speakNext() {
+                if (idx >= queue.length) {
+                    // done with this word --> next word (if playing)
+                    playIndex = i + 1;
+                    if (playing && playIndex < para.length) setTimeout(() => speakWord(playIndex), 250);
+                    else playing = false;
+                    return;
+                }
+                const item = queue[idx++];
+                const u = new SpeechSynthesisUtterance(item.text);
+                u.lang = item.lang;
+                u.onend = speakNext;
+                speechSynthesis.speak(u);
             }
-            nextWord();
+            speakNext();
         }
 
-        /* Quiz */
-        function buildQuiz() {
-            quizData = books[currentBookIndex].chapters[currentChapterIndex].paragraphs[currentParagraphIndex].words.map(w => ({ word: w, correct: null }));
-            currentQIndex = 0; score = 0; updateScore(); renderQuizQ();
-        }
-        function renderQuizQ() {
-            const q = quizData[currentQIndex];
-            const aLang = document.getElementById("quizLangSelect").value === "th" ? "Thai" : "English";
-            const showHint = document.getElementById("showHints").checked;
-            const qWord = q.word[aLang];
-            const wordsAll = books[currentBookIndex].chapters[currentChapterIndex].paragraphs[currentParagraphIndex].words;
-            const otherWords = wordsAll.map(w => w[aLang]).filter(w => w !== q.word[aLang]);
-            let options = [q.word[aLang]];
-            while (options.length < 4 && otherWords.length > 0) { const idx = Math.floor(Math.random() * otherWords.length); options.push(otherWords.splice(idx, 1)[0]); }
-            if (document.getElementById("randomizeQ").checked) options.sort(() => Math.random() - 0.5);
+        /* Paragraph control handlers */
+        playBtn.addEventListener('click', () => {
+            // Start playing from current playIndex (or 0 if none)
+            const para = books[currentBook].chapters[currentChapter].paragraphs[currentParagraph] || [];
+            if (para.length === 0) return;
+            if (playIndex >= para.length) playIndex = 0;
+            playing = true;
+            speakWord(playIndex);
+        });
+        pauseBtn.addEventListener('click', () => {
+            playing = false;
+            speechSynthesis.cancel();
+        });
+        restartBtn.addEventListener('click', () => {
+            playing = true;
+            playIndex = 0;
+            clearParagraphHighlights();
+            // start reading
+            speakWord(playIndex);
+        });
 
-            const div = document.getElementById("quizContent"); div.innerHTML = `<div class="quiz-question">${qWord}</div>`;
-            options.forEach(opt => {
-                const btn = document.createElement("div"); btn.className = "quiz-option"; btn.textContent = opt;
-                if (showHint && q.word.hint) btn.textContent += " (" + q.word.hint + ")";
-                btn.onclick = () => {
-                    div.querySelectorAll(".quiz-option").forEach(el => el.classList.remove("correct", "incorrect"));
-                    const isCorrect = opt === q.word[aLang];
-                    btn.classList.add(isCorrect ? "correct" : "incorrect");
-                    speakUnified(q.word, { speakTH: aLang === "Thai", speakEN: aLang === "English", speakHint: showHint });
-                    if (q.correct === null && isCorrect) score++;
-                    q.correct = isCorrect; updateScore();
-                };
-                div.appendChild(btn);
+        /* -------------------------
+           Quiz generation + rendering
+           ------------------------- */
+        function buildQuizFromParagraph() {
+            const para = books[currentBook].chapters[currentChapter].paragraphs[currentParagraph] || [];
+            quizData = para.map(w => {
+                // options: correct + random picks from same paragraph
+                const opts = [(typeof w === 'object' ? w : { thai: '', english: '' })];
+                // collect pool of other words
+                const pool = para.filter(x => x !== w).map(x => x);
+                // choose up to MIN_OPTIONS-1 unique
+                while (opts.length < Math.min(MIN_OPTIONS, Math.max(1, para.length))) {
+                    if (pool.length === 0) break;
+                    const idx = Math.floor(Math.random() * pool.length);
+                    opts.push(pool.splice(idx, 1)[0]);
+                }
+                // convert opts to the form needed later (we'll choose display text when rendering)
+                return { word: w, options: opts, attempted: false, correct: false };
             });
-            speakUnified(qWord, { lang: aLang === "Thai" ? "th" : "en" });
+            currentQ = 0;
+            filteredIndices = null; // reset filter
+            renderQuiz();
         }
 
-        function updateScore() { document.getElementById("scoreDisplay").textContent = score; }
+        function getFilteredIndices() {
+            if (!incorrectOnlyCB.checked) return null;
+            const idxs = [];
+            for (let i = 0; i < quizData.length; i++) {
+                if (quizData[i].attempted && !quizData[i].correct) idxs.push(i);
+            }
+            return idxs;
+        }
 
-        document.getElementById("quizLangSelect").onchange = renderQuizQ;
-        document.getElementById("prevQ").onclick = () => { currentQIndex--; if (currentQIndex < 0) currentQIndex = quizData.length - 1; renderQuizQ(); };
-        document.getElementById("nextQ").onclick = () => { currentQIndex++; if (currentQIndex >= quizData.length) currentQIndex = 0; renderQuizQ(); };
-        document.getElementById("randomizeQ").onchange = renderQuizQ;
-        document.getElementById("incorrectOnly").onchange = renderQuizQ;
-        document.getElementById("showHints").onchange = renderQuizQ;
+        function renderQuiz() {
+            quizContent.innerHTML = '';
+            if (!quizData || quizData.length === 0) {
+                quizContent.textContent = 'No quiz available for this paragraph.';
+                updateQuizScore();
+                return;
+            }
 
-        /* Settings panel functionality */
-        document.getElementById("themeSelect").onchange = e => {
-            if (e.target.value === "day") { document.body.style.background = "#f8f8f8"; document.body.style.color = "#000"; }
-            else { document.body.style.background = "#222"; document.body.style.color = "#fff"; }
-        };
-        document.getElementById("thaiFontSelect").onchange = e => {
-            const font = e.target.value;
-            document.getElementById("paragraph").style.fontFamily = font + ", sans-serif";
-        };
+            // Build filtered index list if incorrectOnly is checked
+            const filtered = getFilteredIndices();
+            if (filtered && filtered.length === 0) {
+                quizContent.textContent = 'No incorrectly answered questions.';
+                updateQuizScore();
+                return;
+            }
 
-        /* Initialize App */
-        populateBooks();
+            // determine which quiz index to show
+            let indexToShow = currentQ;
+            if (filtered) {
+                // clamp filtered position: find position in filtered array corresponding to currentQ if possible.
+                // We'll keep a separate pointer: if currentQ not in filtered, show first filtered.
+                if (!filtered.includes(currentQ)) indexToShow = filtered[0];
+                else indexToShow = currentQ;
+            }
+
+            const qObj = quizData[indexToShow];
+            if (!qObj) { quizContent.textContent = 'No question.'; updateQuizScore(); return; }
+
+            // Question language radio (default Thai)
+            const qLang = quizThaiRadio.checked ? 'thai' : 'english';
+            const qText = (qLang === 'thai') ? qObj.word.thai : qObj.word.english;
+            const ansField = (qLang === 'thai') ? 'english' : 'thai';
+            const speakLang = (qLang === 'thai') ? 'th-TH' : 'en-US';
+
+            // speak the question immediately
+            speechSynthesis.cancel();
+            speakText(qText, speakLang);
+
+            // render
+            const qEl = document.createElement('div'); qEl.className = 'quiz-question'; qEl.textContent = 'Q: ' + qText;
+            quizContent.appendChild(qEl);
+
+            // ensure options include the correct answer and fill up to MIN_OPTIONS from paragraph words
+            // build display options using the qObj.options (they are word objects)
+            const optionsContainer = document.createElement('div'); optionsContainer.className = 'quiz-options';
+            const displayOptions = qObj.options.slice(); // copy
+            // If options less than MIN_OPTIONS, pad with other paragraph items not yet included
+            const para = books[currentBook].chapters[currentChapter].paragraphs[currentParagraph] || [];
+            for (let i = displayOptions.length; i < Math.min(MIN_OPTIONS, para.length); i++) {
+                // find a random para item not present
+                const pool = para.filter(pw => !displayOptions.includes(pw));
+                if (pool.length === 0) break;
+                displayOptions.push(pool[Math.floor(Math.random() * pool.length)]);
+            }
+            // Shuffle
+            displayOptions.sort(() => 0.5 - Math.random());
+
+            displayOptions.forEach(optWord => {
+                const text = ansField === 'thai' ? optWord.thai : optWord.english;
+                const optionEl = document.createElement('span');
+                optionEl.className = 'quiz-option';
+                optionEl.textContent = text;
+                optionEl.style.userSelect = 'none';
+                optionEl.addEventListener('click', function onClick() {
+                    // disable further clicks for these options
+                    optionsContainer.querySelectorAll('.quiz-option').forEach(el => el.style.pointerEvents = 'none');
+                    qObj.attempted = true;
+                    const correctText = ansField === 'thai' ? qObj.word.thai : qObj.word.english;
+                    if (text === correctText) {
+                        optionEl.classList.add('correct');
+                        qObj.correct = true;
+                    } else {
+                        optionEl.classList.add('incorrect');
+                        // highlight correct one
+                        optionsContainer.querySelectorAll('.quiz-option').forEach(el => {
+                            if (el.textContent === correctText) el.classList.add('correct');
+                        });
+                        qObj.correct = false;
+                    }
+                    // speak selected answer in its language
+                    const speakLangAns = (ansField === 'thai') ? 'th-TH' : 'en-US';
+                    speakText(text, speakLangAns);
+
+                    updateQuizScore();
+                }, { once: true });
+                optionsContainer.appendChild(optionEl);
+            });
+
+            quizContent.appendChild(optionsContainer);
+            updateQuizScore();
+        }
+
+        /* Quiz control handlers */
+        prevQBtn.addEventListener('click', () => {
+            const filtered = getFilteredIndices();
+            if (filtered) {
+                // find index in filtered list
+                const pos = filtered.indexOf(currentQ);
+                if (pos > 0) currentQ = filtered[pos - 1];
+                else currentQ = filtered[filtered.length - 1]; // wrap
+            } else {
+                currentQ = (currentQ - 1 + quizData.length) % quizData.length;
+            }
+            renderQuiz();
+        });
+
+        nextQBtn.addEventListener('click', () => {
+            const filtered = getFilteredIndices();
+            if (filtered) {
+                const pos = filtered.indexOf(currentQ);
+                if (pos < 0) currentQ = filtered[0];
+                else currentQ = filtered[(pos + 1) % filtered.length];
+            } else {
+                currentQ = (currentQ + 1) % quizData.length;
+            }
+            renderQuiz();
+        });
+
+        retryQBtn.addEventListener('click', () => {
+            // reset attempts and score, keep same question order
+            quizData.forEach(q => { q.attempted = false; q.correct = false; });
+            currentQ = 0;
+            renderQuiz();
+        });
+
+        /* Update score display */
+        function updateQuizScore() {
+            const total = quizData.length;
+            const correct = quizData.filter(q => q.correct).length;
+            quizScoreSpan.textContent = `Score: ${correct}/${total}`;
+        }
+
+        /* -------------------------
+           Event wiring for selects & toggles
+           ------------------------- */
+        bookSelect.addEventListener('change', () => {
+            currentBook = Number(bookSelect.value);
+            currentChapter = 0;
+            currentParagraph = 0;
+            populateChapters();
+        });
+        chapterSelect.addEventListener('change', () => {
+            currentChapter = Number(chapterSelect.value);
+            currentParagraph = 0;
+            populateParagraphs();
+        });
+        paragraphSelect.addEventListener('change', () => {
+            currentParagraph = Number(paragraphSelect.value);
+            renderParagraph();
+        });
+
+        /* show/hide parts toggles re-render paragraph */
+        showThaiCB.addEventListener('change', renderParagraph);
+        showEnglishCB.addEventListener('change', renderParagraph);
+        showHintCB.addEventListener('change', renderParagraph);
+
+        /* quiz language change and incorrectOnly re-render quiz (but keep currentQ index) */
+        quizThaiRadio.addEventListener('change', renderQuiz);
+        quizEnglishRadio.addEventListener('change', renderQuiz);
+        incorrectOnlyCB.addEventListener('change', () => {
+            // when toggling filter, keep currentQ but ensure it's valid
+            const filtered = getFilteredIndices();
+            if (filtered && filtered.length > 0 && !filtered.includes(currentQ)) currentQ = filtered[0];
+            renderQuiz();
+        });
+
+        /* Theme and font settings persistence */
+        themeDay.addEventListener('change', () => { if (themeDay.checked) { applyTheme('day'); } });
+        themeNight.addEventListener('change', () => { if (themeNight.checked) { applyTheme('night'); } });
+
+        thaiFontSelect.addEventListener('change', () => {
+            const f = thaiFontSelect.value || '';
+            setThaiFontRule(f);
+            saveSetting('tts_thai_font', f);
+        });
+
+        /* Initialize page on load */
+        function init() {
+            // default: paragraph Thai shown and quiz question Thai checked (set in markup)
+            // populate controls
+            populateBooks();
+            populateChapters();
+            populateParagraphs();
+
+            // restore saved theme/font
+            applySavedTheme();
+            applySavedFont();
+
+            // set listeners to persist theme and font state
+            saveSetting('tts_theme', readSetting('tts_theme', 'day'));
+            // ensure UI default states
+            showThaiCB.checked = true;
+            quizThaiRadio.checked = true;
+        }
+        window.addEventListener('load', init);
     </script>
-
 </body>
 
 </html>
