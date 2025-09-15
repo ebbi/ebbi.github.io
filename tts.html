@@ -3,314 +3,377 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Do You Speak Thai?</title>
+    <title>Do You Speak Thai App</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
         body {
             margin: 0;
-            padding: 0;
-            font-family: Arial, sans-serif;
-            transition: background-color 0.3s, color 0.3s;
+            font-family: sans-serif;
+            background: #f8f8f8;
+            color: #000;
         }
 
-        .container {
+        header {
             display: flex;
-            flex-direction: column;
-            gap: 6px;
-            padding: 6px;
-            max-width: 1000px;
-            margin: auto;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            background: #4a90e2;
+            color: white;
         }
 
-        .panel {
-            transition: all 0.4s ease-in-out;
-            opacity: 1;
-            transform: translateY(0) scale(1);
+        header button {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.2em;
+            cursor: pointer;
+        }
+
+        aside {
+            position: fixed;
+            top: 50px;
+            right: 0;
+            width: 300px;
+            height: 100%;
+            background: #eee;
+            overflow: auto;
+            padding: 10px;
+            display: none;
+            box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
+        }
+
+        main {
+            margin: 10px;
+            margin-top: 60px;
+        }
+
+        .control-panel {
+            margin: 10px 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .control-panel label {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        #paragraph {
+            margin: 10px 0;
+            font-size: 1.2em;
+            line-height: 1.5;
+        }
+
+        #paragraph .word {
+            cursor: pointer;
+            padding: 0 2px;
+        }
+
+        #paragraph .highlight {
+            background: yellow;
+            font-weight: bold;
+        }
+
+        .quiz-question {
+            margin: 10px 0;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+
+        .quiz-option {
             padding: 5px;
-        }
-
-        .panel.hidden {
-            opacity: 0;
-            transform: translateY(15px) scale(0.98);
-        }
-
-        #paragraphContainer {
-            line-height: 1.6;
-            word-spacing: 0.05em;
-            font-size: 1rem;
-        }
-
-        #paragraphContainer .word {
-            display: inline-block;
-            margin: 0;
-            padding: 0 1px;
-            cursor: pointer;
-            border-radius: 3px;
-            transition: transform 0.25s, background-color 0.3s, font-size 0.25s;
-        }
-
-        .word.highlighted {
-            transform: scale(1.12);
-            font-weight: 600;
-            background-color: rgba(255, 235, 59, 0.25);
-        }
-
-        #quizPanel .question,
-        #quizPanel .answers {
-            transition: all 0.4s ease-in-out;
-            opacity: 1;
-            transform: translateY(0);
-            margin: 5px 0;
-        }
-
-        button.quiz-answer {
-            border-radius: 5px;
-            margin: 3px;
-            cursor: pointer;
-            transition: transform 0.25s, box-shadow 0.25s, background-color 0.25s;
-        }
-
-        button.quiz-answer.correct {
-            background-color: rgba(76, 175, 80, 0.35);
-        }
-
-        button.quiz-answer.incorrect {
-            background-color: rgba(244, 67, 54, 0.35);
-        }
-
-        button.quiz-answer:hover {
-            transform: scale(1.05);
-            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
-        }
-
-        details.resource summary {
-            cursor: pointer;
-            transition: transform 0.25s, background-color 0.25s;
-        }
-
-        details.resource summary:hover {
-            transform: scale(1.05);
-            background-color: rgba(76, 175, 80, 0.15);
-        }
-
-        body.day-mode {
-            background-color: #fff;
-            color: #111;
-        }
-
-        body.night-mode {
-            background-color: #121212;
-            color: #e0e0e0;
-        }
-
-        body.font-default {
-            font-family: Arial, sans-serif;
-        }
-
-        body.font-thai {
-            font-family: 'Sarabun', 'Noto Sans Thai', sans-serif;
-        }
-
-        body.font-serif {
-            font-family: 'Times New Roman', serif;
-        }
-
-        label,
-        select,
-        button,
-        input {
-            margin: 4px;
-            padding: 4px;
-        }
-
-        button {
+            margin: 2px 0;
+            border: 1px solid #ccc;
             cursor: pointer;
             border-radius: 4px;
+        }
+
+        .quiz-option.correct {
+            background: lightgreen;
+        }
+
+        .quiz-option.incorrect {
+            background: #f08080;
+        }
+
+        select,
+        button {
+            padding: 5px;
+            border-radius: 4px;
             border: 1px solid #ccc;
-            background: #f0f0f0;
-            transition: background 0.3s;
         }
 
-        button:hover {
-            background: #ddd;
-        }
-
-        @media (max-width:768px) {
-            body {
-                font-size: 0.95rem;
-            }
-        }
-
-        @media (max-width:480px) {
-            body {
-                font-size: 0.9rem;
+        @media(max-width:600px) {
+            #paragraph {
+                font-size: 1.4em;
             }
         }
     </style>
 </head>
 
-<body class="day-mode font-default">
-    <div class="container">
+<body>
 
-        <!-- Settings Panel -->
-        <div id="settingsPanel" class="panel">
-            <details id="ttsHelp">
-                <summary>Help & TTS Setup Instructions</summary>
-                <p>Enable TTS on your device (Huawei, Android, iOS, browsers). Ensure high-quality voices are installed.
-                </p>
-            </details>
-            <label>Voice: <select id="voiceSelect"></select></label>
-            <label>Day/Night Mode: <select id="themeSelect">
-                    <option value="day-mode">Day</option>
-                    <option value="night-mode">Night</option>
-                </select></label>
-            <label>Font: <select id="fontSelect">
-                    <option value="font-default">Default</option>
-                    <option value="font-thai">Thai</option>
-                    <option value="font-serif">Serif</option>
-                </select></label>
-            <label><input type="checkbox" id="muteTTS"> Mute TTS</label>
-            <label><input type="checkbox" id="muteFeedback"> Mute Feedback Sounds</label>
-            <button id="testTTSBtn">Test TTS</button>
-            <input type="file" id="uploadBookFile" accept=".json">
+    <header>
+        <button id="homeBtn">🏠 Home</button>
+        <button id="settingsBtn">⚙️</button>
+    </header>
+
+    <aside id="sidebar">
+        <h3>Settings</h3>
+        <label>
+            Theme:
+            <select id="themeSelect">
+                <option value="day">Day</option>
+                <option value="night">Night</option>
+            </select>
+        </label>
+        <br><br>
+        <label>
+            Thai Font:
+            <select id="thaiFontSelect">
+                <option value="Tahoma">Tahoma</option>
+                <option value="Sarabun">Sarabun</option>
+                <option value="TH Chakra Petch">TH Chakra Petch</option>
+                <option value="TH Krub">TH Krub</option>
+            </select>
+        </label>
+    </aside>
+
+    <main>
+        <div>
+            <label>Book:
+                <select id="bookSelect"></select>
+            </label>
+            <label>Chapter:
+                <select id="chapterSelect"></select>
+            </label>
+            <label>Paragraph:
+                <select id="paragraphSelect"></select>
+            </label>
         </div>
 
-        <!-- Book, Chapter, Paragraph Selection -->
-        <div class="panel">
-            <label>Book: <select id="bookSelect"></select></label>
-            <label>Chapter: <select id="chapterSelect"></select></label>
-            <label>Paragraph: <select id="paragraphSelect"></select></label>
-            <button id="prevParagraphBtn">Previous</button>
-            <button id="nextParagraphBtn">Next</button>
+        <div class="control-panel">
+            <button id="playBtn">▶️ Play</button>
+            <button id="pauseBtn">⏸️ Pause</button>
+            <button id="restartBtn">🔄 Restart</button>
+            <label><input type="checkbox" id="langTH" checked> Thai</label>
+            <label><input type="checkbox" id="langEN" checked> English</label>
+            <label><input type="checkbox" id="showHint"> Hint</label>
         </div>
 
-        <!-- Paragraph Container -->
-        <div id="paragraphContainer" class="panel"></div>
+        <div id="paragraph"></div>
 
-        <!-- Quiz Panel -->
-        <div id="quizPanel" class="panel">
-            <div class="question"></div>
-            <div class="answers"></div>
-            <div>Score: <span id="quizScore">0</span></div>
-            <button id="prevQuizBtn">Previous</button>
-            <button id="nextQuizBtn">Next</button>
+        <div class="control-panel">
+            <label>Quiz Language:
+                <select id="quizLangSelect">
+                    <option value="th">Thai Question</option>
+                    <option value="en">English Question</option>
+                </select>
+            </label>
+            <label><input type="checkbox" id="randomizeQ"> Randomize Questions</label>
+            <label><input type="checkbox" id="incorrectOnly"> Incorrect Only</label>
+            <label><input type="checkbox" id="showHints"> Show Hint</label>
+            <button id="prevQ">⬅️ Prev</button>
+            <button id="nextQ">➡️ Next</button>
         </div>
 
-        <!-- Resources Panel -->
-        <div id="resourcesPanel" class="panel"></div>
-
-    </div>
+        <div id="quizContent"></div>
+        <div>Score: <span id="scoreDisplay">0</span></div>
+    </main>
 
     <script>
-        // ---------- Default Book JSON ----------
-        let defaultBook = {/* same JSON as before */ };
+        const books = [{
+            title: "Do you speak Thai",
+            description: "Learn Thai consonants and vowels",
+            chapters: [
+                {
+                    title: "Thai Consonants",
+                    paragraphs: [
+                        {
+                            words: [
+                                { Thai: "ก", English: "g", hint: "low class consonant" },
+                                { Thai: "ข", English: "kh", hint: "high class consonant" },
+                                { Thai: "ค", English: "k", hint: "low class consonant" }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    title: "Thai Vowels",
+                    paragraphs: [
+                        {
+                            words: [
+                                { Thai: "า", English: "aa", hint: "long vowel" },
+                                { Thai: "ิ", English: "i", hint: "short vowel" },
+                                { Thai: "ี", English: "ii", hint: "long vowel" }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }];
 
-        // ---------- State ----------
-        let currentBook = defaultBook, currentParagraphIndex = 0, currentQuizIndex = 0;
-        let isTTSMuted = false, isFeedbackMuted = false, selectedVoice = null;
-        let ttsVoices = [], quizScore = 0;
+        let currentBookIndex = 0, currentChapterIndex = 0, currentParagraphIndex = 0;
+        let currentWordIndex = 0, playTimeout = null, isPlaying = false;
+        let quizData = [], currentQIndex = 0, score = 0;
 
-        // ---------- Functions ----------
-        function animatePanel(panel) { panel.classList.add('hidden'); setTimeout(() => panel.classList.remove('hidden'), 10); }
+        /* Toolbar events */
+        document.getElementById("settingsBtn").onclick = () => {
+            document.getElementById("sidebar").style.display =
+            document.getElementById("sidebar").style.display === "block" ? "none" : "block";
+        };
+        document.getElementById("homeBtn").onclick = () => {
+            currentBookIndex = 0; currentChapterIndex = 0; currentParagraphIndex = 0;
+            document.getElementById("sidebar").style.display = "none";
+            populateBooks();
+        };
 
-        function speakText(text, lang) {
-            return new Promise(resolve => {
-                if (isTTSMuted) { resolve(); return; }
-                const u = new SpeechSynthesisUtterance(text);
-                if (selectedVoice) u.voice = selectedVoice;
-                u.lang = lang;
-                u.onend = resolve;
-                speechSynthesis.speak(u);
-            });
+        /* Populate lists */
+        function populateBooks() {
+            const bookSelect = document.getElementById("bookSelect"); bookSelect.innerHTML = "";
+            books.forEach((b, i) => { const opt = document.createElement("option"); opt.value = i; opt.textContent = b.title; bookSelect.appendChild(opt); });
+            bookSelect.selectedIndex = currentBookIndex; populateChapters();
+        }
+        function populateChapters() {
+            const chapSelect = document.getElementById("chapterSelect"); chapSelect.innerHTML = "";
+            const chaps = books[currentBookIndex].chapters;
+            chaps.forEach((c, i) => { const opt = document.createElement("option"); opt.value = i; opt.textContent = c.title; chapSelect.appendChild(opt); });
+            chapSelect.selectedIndex = currentChapterIndex; populateParagraphs();
+        }
+        function populateParagraphs() {
+            const paraSelect = document.getElementById("paragraphSelect"); paraSelect.innerHTML = "";
+            const paras = books[currentBookIndex].chapters[currentChapterIndex].paragraphs;
+            paras.forEach((p, i) => { const opt = document.createElement("option"); opt.value = i; opt.textContent = `Paragraph ${i + 1}`; paraSelect.appendChild(opt); });
+            paraSelect.selectedIndex = currentParagraphIndex; loadParagraph();
         }
 
-        function loadBook(book) { currentBook = book; populateBookSelect(); populateChapterSelect(); populateParagraphSelect(); loadParagraphWords(0); loadQuizQuestion(0); }
+        document.getElementById("bookSelect").onchange = e => { currentBookIndex = parseInt(e.target.value); currentChapterIndex = 0; currentParagraphIndex = 0; populateChapters(); };
+        document.getElementById("chapterSelect").onchange = e => { currentChapterIndex = parseInt(e.target.value); currentParagraphIndex = 0; populateParagraphs(); };
+        document.getElementById("paragraphSelect").onchange = e => { currentParagraphIndex = parseInt(e.target.value); loadParagraph(); };
 
-        function populateBookSelect() { const sel = document.getElementById('bookSelect'); sel.innerHTML = ''; currentBook.books.forEach((b, i) => { const opt = document.createElement('option'); opt.value = i; opt.textContent = b.title; sel.appendChild(opt); }); }
+        /* Paragraph checkboxes update immediately */
+        document.getElementById("langTH").onchange = loadParagraph;
+        document.getElementById("langEN").onchange = loadParagraph;
+        document.getElementById("showHint").onchange = loadParagraph;
 
-        function populateChapterSelect() { const sel = document.getElementById('chapterSelect'); sel.innerHTML = ''; currentBook.books[0].chapters.forEach((c, i) => { const opt = document.createElement('option'); opt.value = i; opt.textContent = c.title; sel.appendChild(opt); }); }
-
-        function populateParagraphSelect() { const sel = document.getElementById('paragraphSelect'); sel.innerHTML = ''; currentBook.books[0].chapters[0].paragraphs.forEach((p, i) => { const opt = document.createElement('option'); opt.value = i; opt.textContent = `Paragraph ${i + 1}`; sel.appendChild(opt); }); }
-
-        function loadParagraphWords(index) {
-            currentParagraphIndex = index;
-            const pContainer = document.getElementById('paragraphContainer'); pContainer.innerHTML = '';
-            const paragraph = currentBook.books[0].chapters[0].paragraphs[index];
-            paragraph.words.forEach(w => {
-                const span = document.createElement('span'); span.textContent = w.English; span.className = 'word';
-                span.addEventListener('click', async () => {
-                    window.speechSynthesis.cancel();
-                    span.classList.add('highlighted');
-                    await speakText(w.English, 'en');
-                    setTimeout(() => span.classList.remove('highlighted'), 400);
-                });
-                pContainer.appendChild(span);
-            });
-            animatePanel(pContainer);
-        }
-
-        function loadQuizQuestion(qIndex) {
-            currentQuizIndex = qIndex;
-            const qPanel = document.getElementById('quizPanel');
-            const paragraph = currentBook.books[0].chapters[0].paragraphs[currentParagraphIndex];
-            const questionWord = paragraph.words[qIndex];
-            const questionDiv = qPanel.querySelector('.question');
-            questionDiv.textContent = `Select the correct word: ${questionWord.Hint || questionWord.English}`;
-            const answersDiv = qPanel.querySelector('.answers'); answersDiv.innerHTML = '';
-            const options = [questionWord, ...paragraph.words.filter(w => w !== questionWord).slice(0, 3)].sort(() => Math.random() - 0.5);
-            options.forEach(opt => {
-                const btn = document.createElement('button'); btn.className = 'quiz-answer'; btn.textContent = opt.English;
-                btn.addEventListener('click', async () => {
-                    btn.classList.add(opt === questionWord ? 'correct' : 'incorrect');
-                    quizScore += (opt === questionWord) ? 1 : 0; document.getElementById('quizScore').textContent = quizScore;
-                    await speakText(opt.English, 'en');
-                });
-                answersDiv.appendChild(btn);
-            });
-            animatePanel(qPanel);
-        }
-
-        // ---------- Event Listeners ----------
-        document.getElementById('nextParagraphBtn').addEventListener('click', () => {
-            currentParagraphIndex = (currentParagraphIndex + 1) % currentBook.books[0].chapters[0].paragraphs.length;
-            loadParagraphWords(currentParagraphIndex);
-            loadQuizQuestion(0);
-        });
-        document.getElementById('prevParagraphBtn').addEventListener('click', () => {
-            currentParagraphIndex = (currentParagraphIndex - 1 + currentBook.books[0].chapters[0].paragraphs.length) % currentBook.books[0].chapters[0].paragraphs.length;
-            loadParagraphWords(currentParagraphIndex);
-            loadQuizQuestion(0);
-        });
-        document.getElementById('uploadBookFile').addEventListener('change', e => {
-            const file = e.target.files[0]; if (!file) return;
-            const reader = new FileReader();
-            reader.onload = function (ev) { try { loadBook(JSON.parse(ev.target.result)); } catch (err) { alert("Invalid JSON"); } };
-            reader.readAsText(file);
-        });
-
-        // ---------- TTS Voice Loading & Detection ----------
-        function populateVoiceSelect() {
-            ttsVoices = speechSynthesis.getVoices().filter(v => v.localService && (v.lang.startsWith('en') || v.lang.startsWith('th')));
-            const sel = document.getElementById('voiceSelect'); sel.innerHTML = '';
-            ttsVoices.forEach((v, i) => { const opt = document.createElement('option'); opt.value = i; opt.textContent = `${v.name} (${v.lang})`; sel.appendChild(opt); });
-            if (ttsVoices.length > 0) {
-                selectedVoice = ttsVoices[0];
-                document.getElementById('ttsHelp').open = false; // hide help if voices available
-            } else {
-                document.getElementById('ttsHelp').open = true; // show help if no TTS
+        /* Unified TTS */
+        function speakUnified(item, options = {}) {
+            const { speakTH = false, speakEN = false, speakHint = false, lang = null } = options;
+            speechSynthesis.cancel();
+            if (typeof item === "string" && lang) { const utt = new SpeechSynthesisUtterance(item); utt.lang = (lang === "th" ? "th-TH" : "en-US"); speechSynthesis.speak(utt); return; }
+            if (item.Thai || item.English) {
+                if (speakTH && item.Thai) { const uttTH = new SpeechSynthesisUtterance(item.Thai); uttTH.lang = "th-TH"; speechSynthesis.speak(uttTH); }
+                if (speakEN && item.English) { const uttEN = new SpeechSynthesisUtterance(item.English); uttEN.lang = "en-US"; speechSynthesis.speak(uttEN); }
+                if (speakHint && item.hint) { const uttHint = new SpeechSynthesisUtterance(item.hint); uttHint.lang = "en-US"; speechSynthesis.speak(uttHint); }
             }
         }
-        speechSynthesis.onvoiceschanged = populateVoiceSelect;
-        setTimeout(populateVoiceSelect, 500); // fallback
 
-        // ---------- Theme & Font ----------
-        document.getElementById('themeSelect').addEventListener('change', e => document.body.classList.replace('day-mode', 'night-mode'));
-        document.getElementById('fontSelect').addEventListener('change', e => { document.body.classList.remove('font-default', 'font-thai', 'font-serif'); document.body.classList.add(e.target.value); });
+        /* Load paragraph */
+        function loadParagraph() {
+            const para = books[currentBookIndex].chapters[currentChapterIndex].paragraphs[currentParagraphIndex];
+            const showTH = document.getElementById("langTH").checked;
+            const showEN = document.getElementById("langEN").checked;
+            const showHint = document.getElementById("showHint").checked;
 
-        // ---------- Initial Load ----------
-        loadBook(defaultBook);
+            const div = document.getElementById("paragraph"); div.innerHTML = "";
+            para.words.forEach((w) => {
+                const span = document.createElement("span"); span.className = "word"; span.wordData = w;
+                let txt = ""; if (showTH) txt += w.Thai + " "; if (showEN) txt += w.English + " "; if (showHint && w.hint) txt += w.hint + " ";
+                span.textContent = txt.trim();
+                span.onclick = () => speakUnified(w, { speakTH: document.getElementById("langTH").checked, speakEN: document.getElementById("langEN").checked, speakHint: document.getElementById("showHint").checked });
+                div.appendChild(span);
+            });
+            buildQuiz();
+        }
 
+        /* Paragraph controls */
+        document.getElementById("playBtn").onclick = () => { isPlaying = true; currentWordIndex = 0; playParagraph(); };
+        document.getElementById("pauseBtn").onclick = () => { isPlaying = false; speechSynthesis.cancel(); if (playTimeout) clearTimeout(playTimeout); };
+        document.getElementById("restartBtn").onclick = () => {
+            isPlaying = false; currentWordIndex = 0; speechSynthesis.cancel();
+            document.querySelectorAll("#paragraph .word").forEach(el => el.classList.remove("highlight"));
+            isPlaying = true; playParagraph();
+        };
+
+        function playParagraph() {
+            const para = books[currentBookIndex].chapters[currentChapterIndex].paragraphs[currentParagraphIndex];
+            let i = currentWordIndex;
+            function nextWord() {
+                if (!isPlaying || i >= para.words.length) { isPlaying = false; return; }
+                const showTH = document.getElementById("langTH").checked;
+                const showEN = document.getElementById("langEN").checked;
+                const showHint = document.getElementById("showHint").checked;
+                const w = para.words[i];
+                const spans = document.querySelectorAll("#paragraph .word"); spans.forEach(el => el.classList.remove("highlight"));
+                spans[i].classList.add("highlight");
+                speakUnified(w, { speakTH: showTH, speakEN: showEN, speakHint: showHint });
+                currentWordIndex = i + 1;
+                i++;
+                playTimeout = setTimeout(nextWord, 1000);
+            }
+            nextWord();
+        }
+
+        /* Quiz */
+        function buildQuiz() {
+            quizData = books[currentBookIndex].chapters[currentChapterIndex].paragraphs[currentParagraphIndex].words.map(w => ({ word: w, correct: null }));
+            currentQIndex = 0; score = 0; updateScore(); renderQuizQ();
+        }
+        function renderQuizQ() {
+            const q = quizData[currentQIndex];
+            const aLang = document.getElementById("quizLangSelect").value === "th" ? "Thai" : "English";
+            const showHint = document.getElementById("showHints").checked;
+            const qWord = q.word[aLang];
+            const wordsAll = books[currentBookIndex].chapters[currentChapterIndex].paragraphs[currentParagraphIndex].words;
+            const otherWords = wordsAll.map(w => w[aLang]).filter(w => w !== q.word[aLang]);
+            let options = [q.word[aLang]];
+            while (options.length < 4 && otherWords.length > 0) { const idx = Math.floor(Math.random() * otherWords.length); options.push(otherWords.splice(idx, 1)[0]); }
+            if (document.getElementById("randomizeQ").checked) options.sort(() => Math.random() - 0.5);
+
+            const div = document.getElementById("quizContent"); div.innerHTML = `<div class="quiz-question">${qWord}</div>`;
+            options.forEach(opt => {
+                const btn = document.createElement("div"); btn.className = "quiz-option"; btn.textContent = opt;
+                if (showHint && q.word.hint) btn.textContent += " (" + q.word.hint + ")";
+                btn.onclick = () => {
+                    div.querySelectorAll(".quiz-option").forEach(el => el.classList.remove("correct", "incorrect"));
+                    const isCorrect = opt === q.word[aLang];
+                    btn.classList.add(isCorrect ? "correct" : "incorrect");
+                    speakUnified(q.word, { speakTH: aLang === "Thai", speakEN: aLang === "English", speakHint: showHint });
+                    if (q.correct === null && isCorrect) score++;
+                    q.correct = isCorrect; updateScore();
+                };
+                div.appendChild(btn);
+            });
+            speakUnified(qWord, { lang: aLang === "Thai" ? "th" : "en" });
+        }
+
+        function updateScore() { document.getElementById("scoreDisplay").textContent = score; }
+
+        document.getElementById("quizLangSelect").onchange = renderQuizQ;
+        document.getElementById("prevQ").onclick = () => { currentQIndex--; if (currentQIndex < 0) currentQIndex = quizData.length - 1; renderQuizQ(); };
+        document.getElementById("nextQ").onclick = () => { currentQIndex++; if (currentQIndex >= quizData.length) currentQIndex = 0; renderQuizQ(); };
+        document.getElementById("randomizeQ").onchange = renderQuizQ;
+        document.getElementById("incorrectOnly").onchange = renderQuizQ;
+        document.getElementById("showHints").onchange = renderQuizQ;
+
+        /* Settings panel functionality */
+        document.getElementById("themeSelect").onchange = e => {
+            if (e.target.value === "day") { document.body.style.background = "#f8f8f8"; document.body.style.color = "#000"; }
+            else { document.body.style.background = "#222"; document.body.style.color = "#fff"; }
+        };
+        document.getElementById("thaiFontSelect").onchange = e => {
+            const font = e.target.value;
+            document.getElementById("paragraph").style.fontFamily = font + ", sans-serif";
+        };
+
+        /* Initialize App */
+        populateBooks();
     </script>
+
 </body>
 
 </html>
