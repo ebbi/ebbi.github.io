@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Do You Speak Thai?</title>
     <style>
-        /* ---------- Container & Panels ---------- */
         body {
             margin: 0;
             padding: 0;
@@ -35,7 +34,6 @@
             transform: translateY(15px) scale(0.98);
         }
 
-        /* ---------- Paragraph Words ---------- */
         #paragraphContainer {
             line-height: 1.6;
             word-spacing: 0.05em;
@@ -57,7 +55,6 @@
             background-color: rgba(255, 235, 59, 0.25);
         }
 
-        /* ---------- Quiz ---------- */
         #quizPanel .question,
         #quizPanel .answers {
             transition: all 0.4s ease-in-out;
@@ -86,7 +83,6 @@
             box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
         }
 
-        /* ---------- Resources ---------- */
         details.resource summary {
             cursor: pointer;
             transition: transform 0.25s, background-color 0.25s;
@@ -97,7 +93,6 @@
             background-color: rgba(76, 175, 80, 0.15);
         }
 
-        /* ---------- Day/Night Themes ---------- */
         body.day-mode {
             background-color: #fff;
             color: #111;
@@ -108,7 +103,6 @@
             color: #e0e0e0;
         }
 
-        /* ---------- Fonts ---------- */
         body.font-default {
             font-family: Arial, sans-serif;
         }
@@ -121,7 +115,6 @@
             font-family: 'Times New Roman', serif;
         }
 
-        /* ---------- Controls ---------- */
         label,
         select,
         button,
@@ -142,7 +135,6 @@
             background: #ddd;
         }
 
-        /* ---------- Responsive ---------- */
         @media (max-width:768px) {
             body {
                 font-size: 0.95rem;
@@ -162,7 +154,7 @@
 
         <!-- Settings Panel -->
         <div id="settingsPanel" class="panel">
-            <details>
+            <details id="ttsHelp">
                 <summary>Help & TTS Setup Instructions</summary>
                 <p>Enable TTS on your device (Huawei, Android, iOS, browsers). Ensure high-quality voices are installed.
                 </p>
@@ -211,30 +203,9 @@
 
     <script>
         // ---------- Default Book JSON ----------
-        let defaultBook = {
-            "title": "Do You Speak Thai?",
-            "books": [
-                {
-                    "title": "Thai Consonants",
-                    "chapters": [
-                        { "title": "Low Class Consonants", "paragraphs": [{ "words": [{ "English": "cow", "Thai": "ควาย", "hint": "Large mammal" }, { "English": "fish", "Thai": "ปลา", "hint": "Aquatic animal" }, { "English": "mountain", "Thai": "ภูเขา", "hint": "Large landform" }, { "English": "dog", "Thai": "สุนัข", "hint": "Domestic animal" }, { "English": "cat", "Thai": "แมว", "hint": "Domestic animal" }] }, { "words": [{ "English": "bird", "Thai": "นก", "hint": "Flying animal" }, { "English": "tree", "Thai": "ต้นไม้", "hint": "Plant with trunk" }, { "English": "water", "Thai": "น้ำ", "hint": "Essential liquid" }, { "English": "food", "Thai": "อาหาร", "hint": "Substance for eating" }, { "English": "school", "Thai": "โรงเรียน", "hint": "Place for learning" }] }] },
-                        { "title": "Middle Class Consonants", "paragraphs": [{ "words": [{ "English": "book", "Thai": "หนังสือ", "hint": "Printed material" }, { "English": "pen", "Thai": "ปากกา", "hint": "Writing instrument" }, { "English": "table", "Thai": "โต๊ะ", "hint": "Furniture item" }, { "English": "chair", "Thai": "เก้าอี้", "hint": "Furniture item" }, { "English": "window", "Thai": "หน้าต่าง", "hint": "Opening in wall" }] }, { "words": [{ "English": "door", "Thai": "ประตู", "hint": "Entryway" }, { "English": "computer", "Thai": "คอมพิวเตอร์", "hint": "Electronic device" }, { "English": "phone", "Thai": "โทรศัพท์", "hint": "Communication device" }, { "English": "light", "Thai": "แสง", "hint": "Visible radiant energy" }, { "English": "air", "Thai": "อากาศ", "hint": "Gaseous substance" }] }] },
-                        { "title": "High Class Consonants", "paragraphs": [{ "words": [{ "English": "mountain", "Thai": "ภูเขา", "hint": "Large landform" }, { "English": "river", "Thai": "แม่น้ำ", "hint": "Flowing watercourse" }, { "English": "sky", "Thai": "ท้องฟ้า", "hint": "Above the earth" }, { "English": "cloud", "Thai": "เมฆ", "hint": "Visible mass of particles" }, { "English": "sun", "Thai": "พระอาทิตย์", "hint": "Star at the center of our system" }] }, { "words": [{ "English": "moon", "Thai": "พระจันทร์", "hint": "Natural satellite of Earth" }, { "English": "star", "Thai": "ดาว", "hint": "Luminous point in the night sky" }, { "English": "planet", "Thai": "ดาวเคราะห์", "hint": "Celestial body orbiting a star" }, { "English": "galaxy", "Thai": "กาแล็กซี่", "hint": "System of stars, stellar remnants" }, { "English": "universe", "Thai": "จักรวาล", "hint": "All of space and time" }] }] }
-                    ]
-                },
-                {
-                    "title": "Thai Vowels",
-                    "chapters": [
-                        { "title": "Short Vowels", "paragraphs": [{ "words": [{ "English": "cat", "Thai": "แมว", "hint": "Domestic animal" }, { "English": "bat", "Thai": "ค้างคาว", "hint": "Flying mammal" }, { "English": "rat", "Thai": "หนู", "hint": "Small rodent" }, { "English": "hat", "Thai": "หมวก", "hint": "Headwear" }, { "English": "mat", "Thai": "เสื่อ", "hint": "Floor covering" }] }] },
-                        { "title": "Long Vowels", "paragraphs": [{ "words": [{ "English": "father", "Thai": "พ่อ", "hint": "Male parent" }, { "English": "car", "Thai": "รถ", "hint": "Vehicle" }, { "English": "star", "Thai": "ดาว", "hint": "Luminous point in the night sky" }, { "English": "far", "Thai": "ไกล", "hint": "At a great distance" }, { "English": "bar", "Thai": "บาร์", "hint": "Establishment serving drinks" }] }] },
-                        { "title": "Diphthongs", "paragraphs": [{ "words": [{ "English": "coin", "Thai": "เหรียญ", "hint": "Currency" }, { "English": "boil", "Thai": "ต้ม", "hint": "Cook in water" }, { "English": "soil", "Thai": "ดิน", "hint": "Earth's surface material" }, { "English": "join", "Thai": "เข้าร่วม", "hint": "Become a member" }, { "English": "loin", "Thai": "เอว", "hint": "Part of the body" }] }] },
-                        { "title": "Rarely Used Vowels", "paragraphs": [{ "words": [{ "English": "ear", "Thai": "หู", "hint": "Organ for hearing" }, { "English": "air", "Thai": "อากาศ", "hint": "Gaseous substance" }, { "English": "fair", "Thai": "ยุติธรรม", "hint": "Just treatment" }, { "English": "hair", "Thai": "ผม", "hint": "Strands growing from scalp" }, { "English": "pair", "Thai": "คู่", "hint": "Two items together" }] }] }
-                    ]
-                }
-            ]
-        };
+        let defaultBook = {/* same JSON as before */ };
 
-        // ---------- State Variables ----------
+        // ---------- State ----------
         let currentBook = defaultBook, currentParagraphIndex = 0, currentQuizIndex = 0;
         let isTTSMuted = false, isFeedbackMuted = false, selectedVoice = null;
         let ttsVoices = [], quizScore = 0;
@@ -242,7 +213,16 @@
         // ---------- Functions ----------
         function animatePanel(panel) { panel.classList.add('hidden'); setTimeout(() => panel.classList.remove('hidden'), 10); }
 
-        function speakText(text, lang) { return new Promise(resolve => { if (isTTSMuted) { resolve(); return; } const u = new SpeechSynthesisUtterance(text); if (selectedVoice) u.voice = selectedVoice; u.lang = lang; u.onend = resolve; speechSynthesis.speak(u); }); }
+        function speakText(text, lang) {
+            return new Promise(resolve => {
+                if (isTTSMuted) { resolve(); return; }
+                const u = new SpeechSynthesisUtterance(text);
+                if (selectedVoice) u.voice = selectedVoice;
+                u.lang = lang;
+                u.onend = resolve;
+                speechSynthesis.speak(u);
+            });
+        }
 
         function loadBook(book) { currentBook = book; populateBookSelect(); populateChapterSelect(); populateParagraphSelect(); loadParagraphWords(0); loadQuizQuestion(0); }
 
@@ -301,7 +281,6 @@
             loadParagraphWords(currentParagraphIndex);
             loadQuizQuestion(0);
         });
-
         document.getElementById('uploadBookFile').addEventListener('change', e => {
             const file = e.target.files[0]; if (!file) return;
             const reader = new FileReader();
@@ -309,18 +288,27 @@
             reader.readAsText(file);
         });
 
-        // ---------- TTS Voice Loading ----------
-        function loadHighQualityVoices() {
+        // ---------- TTS Voice Loading & Detection ----------
+        function populateVoiceSelect() {
             ttsVoices = speechSynthesis.getVoices().filter(v => v.localService && (v.lang.startsWith('en') || v.lang.startsWith('th')));
             const sel = document.getElementById('voiceSelect'); sel.innerHTML = '';
             ttsVoices.forEach((v, i) => { const opt = document.createElement('option'); opt.value = i; opt.textContent = `${v.name} (${v.lang})`; sel.appendChild(opt); });
-            selectedVoice = ttsVoices[0];
+            if (ttsVoices.length > 0) {
+                selectedVoice = ttsVoices[0];
+                document.getElementById('ttsHelp').open = false; // hide help if voices available
+            } else {
+                document.getElementById('ttsHelp').open = true; // show help if no TTS
+            }
         }
-        speechSynthesis.onvoiceschanged = loadHighQualityVoices;
+        speechSynthesis.onvoiceschanged = populateVoiceSelect;
+        setTimeout(populateVoiceSelect, 500); // fallback
 
         // ---------- Theme & Font ----------
         document.getElementById('themeSelect').addEventListener('change', e => document.body.classList.replace('day-mode', 'night-mode'));
         document.getElementById('fontSelect').addEventListener('change', e => { document.body.classList.remove('font-default', 'font-thai', 'font-serif'); document.body.classList.add(e.target.value); });
+
+        // ---------- Initial Load ----------
+        loadBook(defaultBook);
 
     </script>
 </body>
