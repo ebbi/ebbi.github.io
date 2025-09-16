@@ -3,9 +3,13 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
     <title>Learn Thai</title>
     <style>
         body {
+            font-size: clamp(14px, 2.5vw, 18px);
+            /* scales between 14px–18px */
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
@@ -139,8 +143,8 @@
 
 <body data-theme="light">
     <header>
-        <h1><i>🏠</i>Do you speak Thai?</h1>
         <div id="settingsInline">
+            <span lang="th">เรียนภาษาไทย</span>
             <label>
                 <input type="radio" name="theme" value="light"> 🌞
             </label>
@@ -188,9 +192,9 @@
         <section>
             <div id="quiz"></div>
             <div id="quizControls">
-                <button id="prevQ">⬅️ Previous</button>
-                <button id="nextQ">Next ➡️</button>
-                <button id="retryQuiz">🔄 Retry</button>
+                <button id="prevQ">⬅️</button>
+                <button id="nextQ">➡️</button>
+                <button id="retryQuiz">🔄</button>
                 <label><input type="checkbox" id="questionThai" checked> Questions in Thai</label>
                 <label><input type="checkbox" id="incorrectOnly"> Incorrectly Answered</label>
                 <div id="score">Score: 0/0</div>
