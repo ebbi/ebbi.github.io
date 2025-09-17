@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
 
-    <title>Learn Thai</title>
+    <title>ฝึกฝน Thai</title>
     <style>
         body {
             font-size: clamp(14px, 2.5vw, 18px);
@@ -20,7 +20,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background: #4CAF50;
+            background: #00247D;
             color: white;
             padding: 0.5em 1em;
         }
@@ -136,7 +136,7 @@
         }
 
         body[data-theme="dark"] header {
-            background: #333;
+            background: #00247D;
         }
     </style>
 </head>
@@ -144,7 +144,7 @@
 <body data-theme="light">
     <header>
         <div id="settingsInline">
-            <span lang="th">เรียนภาษาไทย</span>
+            <span lang="th">ฝึกฝน</span>
             <label>
                 <input type="radio" name="theme" value="light"> 🌞
             </label>
@@ -351,12 +351,18 @@
                 optsDiv.className = 'quiz-options';
                 let opts = this.data.map(x => isThaiQ ? x.answer : x.question);
                 opts = opts.sort(() => Math.random() - 0.5);
+                // restrict to 4 options
+                opts = opts.slice(0, 4);
+                if (!opts.includes(isThaiQ ? q.answer : q.question)) {
+                    opts[Math.floor(Math.random() * opts.length)] = isThaiQ ? q.answer : q.question;
+                }
                 opts.forEach(opt => {
                     const o = document.createElement('div');
                     o.className = 'quiz-option';
                     o.textContent = opt;
                     o.onclick = () => {
-                        if (q.attempted) return;
+                        // allow multiple attempts
+                        // if (q.attempted) return;
                         q.attempted = true;
                         const correct = (isThaiQ ? q.answer : q.question);
                         if (opt === correct) {
@@ -442,7 +448,7 @@
         document.getElementById('showThai').onchange = renderParagraph;
         document.getElementById('showEnglish').onchange = renderParagraph;
 
-        document.getElementById('prevQ').onclick = () => { Quiz.currentQ = Math.max(0, Quiz.currentQ - 1); Quiz.render(); };
+        document.getElementById('prevQ').onclick = () => { Quiz.currentQ = Math.max(0, Quiz.currentQ - 1); Quiz.data.forEach(q => { q.attempted = false; q.correct = false; }); Quiz.render(); };
         document.getElementById('nextQ').onclick = () => { Quiz.currentQ++; Quiz.render(); };
         document.getElementById('retryQuiz').onclick = () => { Quiz.data.forEach(q => { q.attempted = false; q.correct = false; }); Quiz.render(); };
         document.getElementById('questionThai').onchange = () => Quiz.render();
