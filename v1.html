@@ -283,7 +283,11 @@
                     s.textContent = w.thai;
                     s.lang = 'th-TH';
                     s.dataset.index = i;
-                    s.onclick = () => speakTextQueued(w.thai, 'th-TH');
+                    s.onclick = () => {
+                        speakTextQueued(w.thai, 'th-TH');
+                        s.classList.add(document.body.dataset.theme === 'dark' ? 'highlight-dark' : 'highlight-light');
+                        setTimeout(() => s.classList.remove('highlight-light', 'highlight-dark'), 3000);
+                    };
                     paragraphDisplay.appendChild(s);
                 }
                 if (document.getElementById('showEnglish').checked) {
@@ -291,7 +295,11 @@
                     s.textContent = w.english;
                     s.lang = 'en-US';
                     s.dataset.index = i;
-                    s.onclick = () => speakTextQueued(w.english, 'en-US');
+                    s.onclick = () => {
+                        speakTextQueued(w.english, 'en-US');
+                        s.classList.add(document.body.dataset.theme === 'dark' ? 'highlight-dark' : 'highlight-light');
+                        setTimeout(() => s.classList.remove('highlight-light', 'highlight-dark'), 3000);
+                    };
                     paragraphDisplay.appendChild(s);
                 }
             });
