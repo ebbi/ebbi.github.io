@@ -280,11 +280,12 @@
             para.forEach((w, i) => {
                 if (document.getElementById('showThai').checked) {
                     const s = document.createElement('span');
-                    s.textContent = w.thai;
+                    //   s.textContent = w.th;
+                    s.textContent = w.th;
                     s.lang = 'th-TH';
                     s.dataset.index = i;
                     s.onclick = () => {
-                        speakTextQueued(w.thai, 'th-TH');
+                        speakTextQueued(w.th, 'th-TH');
                         s.classList.add(document.body.dataset.theme === 'dark' ? 'highlight-dark' : 'highlight-light');
                         setTimeout(() => s.classList.remove('highlight-light', 'highlight-dark'), 3000);
                     };
@@ -292,11 +293,12 @@
                 }
                 if (document.getElementById('showEnglish').checked) {
                     const s = document.createElement('span');
-                    s.textContent = w.english;
+                    //   s.textContent = w.english;
+                    s.textContent = w.en;
                     s.lang = 'en-US';
                     s.dataset.index = i;
                     s.onclick = () => {
-                        speakTextQueued(w.english, 'en-US');
+                        speakTextQueued(w.en, 'en-US');
                         s.classList.add(document.body.dataset.theme === 'dark' ? 'highlight-dark' : 'highlight-light');
                         setTimeout(() => s.classList.remove('highlight-light', 'highlight-dark'), 3000);
                     };
@@ -331,7 +333,7 @@
             document.querySelectorAll('#paragraphDisplay span').forEach(s => s.classList.remove('highlight-light', 'highlight-dark'));
             const sel = document.querySelector(`#paragraphDisplay span[data-index="${currentWordIndex}"][lang="th-TH"]`);
             if (sel) sel.classList.add(document.body.dataset.theme === 'dark' ? 'highlight-dark' : 'highlight-light');
-            speakTextQueued(w.thai, 'th-TH', () => {
+            speakTextQueued(w.th, 'th-TH', () => {
                 if (isPlaying) { currentWordIndex++; nextWord(); }
             });
         }
@@ -341,8 +343,8 @@
             data: [], currentQ: 0,
             buildFromParagraph(para) {
                 this.data = para.map(w => ({
-                    question: w.thai,
-                    answer: w.english,
+                    question: w.th,
+                    answer: w.en,
                     attempted: false, correct: false
                 }));
                 this.currentQ = 0;
