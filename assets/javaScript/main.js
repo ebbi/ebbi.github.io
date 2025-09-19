@@ -1034,23 +1034,6 @@ const dictionaryRW1PracticeReading = [
     { word_en: "head", word_th: "หัว", hint: "HC SV LT" }
 ];
 
-/*
-    { word_en: "", word_th: "บัว", hint: "" },
-    { word_en: "", word_th: "", hint: "" },
-    { word_en: "", word_th: "", hint: "" },
-    { word_en: "", word_th: "", hint: "" },
-    { word_en: "", word_th: "", hint: "" },
-    { word_en: "", word_th: "", hint: "" },
-    { word_en: "", word_th: "", hint: "" },
-    { word_en: "", word_th: "", hint: "" },
-    { word_en: "", word_th: "", hint: "" },
-    { word_en: "", word_th: "", hint: "" },
-    { word_en: "", word_th: "", hint: "" },
-    { word_en: "", word_th: "", hint: "" },
-    { word_en: "", word_th: "", hint: "" },
-    { word_en: "", word_th: "", hint: "" }
-]
-*/
 
 /*
 const dictionaryRW2ChangeFormVowels = [
