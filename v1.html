@@ -360,7 +360,26 @@
             paragraphDisplay.innerHTML = '';
 
             para.forEach((w, i) => {
-                // Special newline-only object -> insert <br>
+                // Helper to append spans + <br> for a given text
+                function renderWithNewlines(text, lang, parent, index) {
+                    if (!text) return;
+                    const parts = text.split("\n");
+                    parts.forEach((part, pi) => {
+                        if (part) {
+                            const span = document.createElement('span');
+                            span.textContent = part;
+                            span.lang = lang;
+                            span.dataset.index = index;
+                            span.onclick = () => playWord(part, lang, span, index);
+                            parent.appendChild(span);
+                        }
+                        if (pi < parts.length - 1) {
+                            parent.appendChild(document.createElement('br'));
+                        }
+                    });
+                }
+
+                // Special case: if both are exactly "\n", just one break
                 if (w.th === "\n" && w.en === "\n") {
                     const br = document.createElement('br');
                     paragraphDisplay.appendChild(br);
@@ -372,21 +391,11 @@
                 pairDiv.dataset.index = i;
 
                 if (document.getElementById('showThai')?.checked) {
-                    const thSpan = document.createElement('span');
-                    thSpan.textContent = w.th;
-                    thSpan.lang = 'th-TH';
-                    thSpan.dataset.index = i;
-                    thSpan.onclick = () => playWord(w.th, 'th-TH', thSpan);
-                    pairDiv.appendChild(thSpan);
+                    renderWithNewlines(w.th, 'th-TH', pairDiv, i);
                 }
 
                 if (document.getElementById('showEnglish')?.checked) {
-                    const enSpan = document.createElement('span');
-                    enSpan.textContent = w.en;
-                    enSpan.lang = 'en-US';
-                    enSpan.dataset.index = i;
-                    enSpan.onclick = () => playWord(w.en, 'en-US', enSpan);
-                    pairDiv.appendChild(enSpan);
+                    renderWithNewlines(w.en, 'en-US', pairDiv, i);
                 }
 
                 paragraphDisplay.appendChild(pairDiv);
