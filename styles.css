@@ -1,0 +1,167 @@
+body {
+    font-size: 1rem;
+    line-height: 1.15rem;
+}
+
+main {
+    padding: 0;
+    margin: 0;
+}
+
+table {
+    table-layout: auto;
+}
+
+td,
+th {
+    padding: 1vw;
+}
+
+tr:nth-child(odd) {
+    background-color: lightyellow;
+}
+
+tbody tr:nth-child(even) {
+    background-color: white;
+}
+
+.book {
+    margin: 1vw 0;
+}
+
+#nav-main {
+    width: 95%;
+    border-bottom: 1px solid lightgray;
+    padding-bottom: 5px;
+    margin: 5px;
+}
+
+span:lang("th") {
+    direction: ltr;
+    font-size: 1.25rem;
+}
+
+span:lang("fa") {
+    direction: rtl;
+}
+
+button {
+    margin: 0.1vw;
+}
+
+nav a {
+    min-width: 5vw;
+    padding: 0.5vw;
+    display: inline-block;
+    vertical-align: middle;
+    text-align: center;
+    background-color: lightgray;
+    border-radius: 0.2vw;
+}
+
+nav span {
+    padding: 0.5vw;
+}
+
+nav button {
+    min-width: 24vw;
+    margin: 1vw;
+    padding: 1vw;
+}
+
+.float-right {
+    float: right;
+}
+
+.two-col-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 5px;
+}
+
+#word {
+    background-color: greenyellow;
+    color: black;
+    padding: 1vw;
+    font-size: larger;
+    text-align: center;
+}
+
+#example {
+    background-color: greenyellow;
+    color: black;
+    padding: 1vw;
+}
+
+#example span {
+    margin: 1vw;
+    display: block;
+}
+
+.default-button {
+    margin: 5px;
+    padding: 5px;
+    background-color: lightyellow;
+    color: black;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+span.button {
+    margin: 1vw;
+    padding: 1vw;
+    background-color: white;
+    color: black;
+    border: none;
+    border-radius: 5px;
+}
+
+.feedback {
+    background-color: lightyellow;
+    color: black;
+    border: none;
+    border-radius: 0.5vw;
+}
+
+#feedback button {
+    background-color: blue;
+    color: white;
+    margin: 1vw;
+    padding: 0.5vw;
+    border-radius: 0;
+    min-width: 0;
+}
+
+#feedback button.correct {
+    background-color: greenyellow;
+    color: black;
+}
+
+#feedback button.incorrect {
+    background-color: red;
+    color: white;
+}
+
+#feedback button.default {
+    background-color: blue;
+    color: white;
+}
+
+.correct {
+    background-color: greenyellow;
+    color: black;
+    border-radius: 0.5vw;
+}
+
+.incorrect {
+    background-color: red;
+    color: white;
+    border-radius: 0.5vw;
+}
+
+.border {
+    border: 1px solid var(--border);
+    padding: 1vw;
+    margin: 1vw;
+}

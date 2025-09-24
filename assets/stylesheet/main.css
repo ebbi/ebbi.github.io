@@ -1,0 +1,187 @@
+@font-face {
+    font-display: swap;
+    /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+    font-family: 'Ubuntu';
+    font-style: normal;
+    font-weight: 400;
+    src: url("../fonts/ubuntu-v20-latin-regular.eot");
+    src: url("../fonts/ubuntu-v20-latin-regular.eot?#iefix") format("ie9-skip-eot"),
+        url("../fonts/ubuntu-v20-latin-regular.woff2") format("woff2"),
+        url("../fonts/ubuntu-v20-latin-regular.woff") format("woff");
+}
+
+/* reduce size on mobiles */
+@media only screen and (max-width: 720px) {
+    body {
+        font-size: 1rem;
+        line-height: normal;
+    }
+}
+
+*:lang(th, TH) {
+    font-size: 1.35rem;
+    padding: .25rem;
+}
+
+body {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0.15rem;
+}
+
+body>header {
+    padding: 0;
+}
+
+body>header>nav {
+    padding: 0;
+    background-color: var(--border);
+}
+
+header>nav a,
+header>nav a:visited {
+    margin: 0;
+}
+
+details {
+    padding: 0.7rem .25rem;
+}
+
+details.bookItem {
+    border: none;
+    margin: 0.1rem 0;
+    padding: 0.5rem 0.25rem;
+    border: 1px solid var(--border);
+}
+
+button {
+    margin: 0.1rem 0.5rem;
+    padding: 0.1rem 0.5rem;
+    text-align: left;
+}
+
+.display-none {
+    display: none;
+}
+
+/*
+.list-style-type-none {
+    list-style-type: none;
+}
+
+#div-input-word {
+    display: grid;
+    grid-template-columns: 3rem auto;
+}
+
+#searchWord {
+    margin: 0.1rem 0;
+    width: 100%;
+}
+
+.grid-two-col {
+    display: grid;
+    grid-template-columns: 1fr auto;
+
+}
+
+*/
+
+.grid-three-col {
+    display: grid;
+    grid-template-columns: 2fr 2fr 6fr;
+}
+
+#languageSelection {
+    font-size: small;
+}
+
+/*
+#readAloud .grid-three-col div {
+    text-align: center;
+}
+
+#dictionaryMatchedWordsContainer {
+    max-block-size: 15rem;
+    overflow: scroll;
+}
+
+#wordContainer {
+    line-height: 1.5rem;
+}
+*/
+.correctAnswerContainer {
+    background-color: lightgreen !important;
+    color: green !important;
+}
+
+.incorrectAnswerContainer {
+    background-color: lightpink;
+    color: red;
+}
+
+/*
+.info {
+    background: var(--marked);
+    color: black;
+}
+*/
+#multipleChoiceNav {
+    display: grid;
+    grid-template-columns: 2fr 2fr 20px 5fr;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+#multipleChoiceFeedbackContainer {
+    display: grid;
+    grid-template-columns: auto auto;
+    gap: 0.25rem;
+    font-size: small;
+    margin: 0.25rem;
+    text-align: center;
+}
+
+#sentenceStructureContainer {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+}
+
+.highlight {
+    background-color: yellow;
+    color: black;
+    font-weight: bolder;
+    /*    font-size: 1.15rem; */
+    border: 1px solid goldenrod;
+}
+
+/*
+.highlight-paused {
+    background-color: greenyellow;
+    color: black;
+    font-weight: bolder;
+    font-size: 1.15rem;
+    border: 1px solid goldenrod;
+}
+
+.highlight-red {
+    background-color: goldenrod;
+    color: black;
+    font-weight: bolder;
+    font-size: 1.15rem;
+    border: 1px solid yellow;
+}
+
+#navReadAloud {
+    margin: 0.5rem;
+    padding: 0.5rem;
+    border-top: 1px dotted var(--border);
+    border-bottom: 1px solid var(--border);
+}
+
+#readingInterval input {
+    width: 2rem;
+    padding: 0 0.15rem;
+}
+*/
