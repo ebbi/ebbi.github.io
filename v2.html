@@ -7,6 +7,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai&family=Chakra+Petch&display=swap"
         rel="stylesheet" />
     <title>ฝึกฝน Thai</title>
+
     <style>
         /* === Base Styles for Inputs, Selects, Buttons === */
         .controls button,
@@ -236,11 +237,50 @@
             color: white;
         }
 
+
         #quizControls {
             display: flex;
             gap: 1em;
             margin-top: 1em;
             align-items: center;
+        }
+
+
+        /* === Unified Button Styling for Paragraph + Quiz Controls === */
+        #paragraphControls button,
+        #quizControls button {
+            font-size: 1rem;
+            line-height: 1.5;
+            padding: 0 0.5em;
+            height: 2.2em;
+            /* fixed consistent height */
+            min-width: 1em;
+            /* consistent width across all buttons */
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            background: #f0f0f0;
+            color: #000;
+            cursor: pointer;
+            box-sizing: border-box;
+            vertical-align: middle;
+            transition: background 0.2s, color 0.2s, border-color 0.2s;
+        }
+
+        #paragraphControls button:hover,
+        #quizControls button:hover {
+            background: #e0e0e0;
+        }
+
+        body[data-theme="dark"] #paragraphControls button,
+        body[data-theme="dark"] #quizControls button {
+            background: #333;
+            border: 1px solid #555;
+            color: #eee;
+        }
+
+        body[data-theme="dark"] #paragraphControls button:hover,
+        body[data-theme="dark"] #quizControls button:hover {
+            background: #444;
         }
     </style>
 </head>
@@ -273,6 +313,7 @@
         let books = [], book = null;
         let currentBook = 0, currentChapter = 0, currentParagraph = 0;
         let isPlaying = false, currentWordIndex = 0, utterance = null;
+        let lastHighlightedIndex = null;
         let bookSelect, chapterSelect, paragraphSelect, paragraphDisplay, scoreDisplay;
         let thaiElements = [];
 
@@ -314,79 +355,155 @@
         /* --- Paragraph Rendering --- */
         function getCurrentParagraph() { return book?.chapters?.[currentChapter]?.paragraphs?.[currentParagraph] || []; }
 
+        /*
+                function renderParagraph() {
+                    const para = getCurrentParagraph();
+                    paragraphDisplay.innerHTML = '';
+        
+                    para.forEach((w, i) => {
+                        // Special newline-only object -> insert <br>
+                        if (w.th === "\n" && w.en === "\n") {
+                            const br = document.createElement('br');
+                            paragraphDisplay.appendChild(br);
+                            return;
+                        }
+        
+                        const pairDiv = document.createElement('div');
+                        pairDiv.className = 'word-pair';
+                        pairDiv.dataset.index = i;
+        
+                        if (document.getElementById('showThai')?.checked) {
+                            const thSpan = document.createElement('span');
+                            thSpan.textContent = w.th;
+                            thSpan.lang = 'th-TH';
+                            thSpan.dataset.index = i;
+                            thSpan.onclick = () => playWord(w.th, 'th-TH', thSpan);
+                            pairDiv.appendChild(thSpan);
+                        }
+        
+                        if (document.getElementById('showEnglish')?.checked) {
+                            const enSpan = document.createElement('span');
+                            enSpan.textContent = w.en;
+                            enSpan.lang = 'en-US';
+                            enSpan.dataset.index = i;
+                            enSpan.onclick = () => playWord(w.en, 'en-US', enSpan);
+                            pairDiv.appendChild(enSpan);
+                        }
+        
+                        paragraphDisplay.appendChild(pairDiv);
+                    });
+        
+                    applyThaiFont();
+                    buildQuizFromParagraph(para);
+                }
+        */
         function renderParagraph() {
             const para = getCurrentParagraph();
             paragraphDisplay.innerHTML = '';
 
             para.forEach((w, i) => {
-                // Special newline-only object -> insert <br>
+                // Special case: newline-only object
                 if (w.th === "\n" && w.en === "\n") {
-                    const br = document.createElement('br');
-                    paragraphDisplay.appendChild(br);
+                    paragraphDisplay.appendChild(document.createElement('br'));
                     return;
                 }
 
-                const pairDiv = document.createElement('div');
-                pairDiv.className = 'word-pair';
-                pairDiv.dataset.index = i;
+                // Helper to build a word-pair div for given text part(s)
+                function buildPair(thText, enText, index) {
+                    const pairDiv = document.createElement('div');
+                    pairDiv.className = 'word-pair';
+                    pairDiv.dataset.index = index;
 
-                if (document.getElementById('showThai')?.checked) {
-                    const thSpan = document.createElement('span');
-                    thSpan.textContent = w.th;
-                    thSpan.lang = 'th-TH';
-                    thSpan.dataset.index = i;
-                    thSpan.onclick = () => playWord(w.th, 'th-TH', thSpan);
-                    pairDiv.appendChild(thSpan);
+                    if (document.getElementById('showThai')?.checked && thText) {
+                        const thSpan = document.createElement('span');
+                        thSpan.textContent = thText;
+                        thSpan.lang = 'th-TH';
+                        thSpan.dataset.index = index;
+                        thSpan.onclick = () => playWord(thText, 'th-TH', thSpan, index);
+                        pairDiv.appendChild(thSpan);
+                    }
+
+                    if (document.getElementById('showEnglish')?.checked && enText) {
+                        const enSpan = document.createElement('span');
+                        enSpan.textContent = enText;
+                        enSpan.lang = 'en-US';
+                        enSpan.dataset.index = index;
+                        enSpan.onclick = () => playWord(enText, 'en-US', enSpan, index);
+                        pairDiv.appendChild(enSpan);
+                    }
+
+                    paragraphDisplay.appendChild(pairDiv);
                 }
 
-                if (document.getElementById('showEnglish')?.checked) {
-                    const enSpan = document.createElement('span');
-                    enSpan.textContent = w.en;
-                    enSpan.lang = 'en-US';
-                    enSpan.dataset.index = i;
-                    enSpan.onclick = () => playWord(w.en, 'en-US', enSpan);
-                    pairDiv.appendChild(enSpan);
-                }
+                // Split on newlines
+                const thParts = (w.th || '').split('\n');
+                const enParts = (w.en || '').split('\n');
+                const maxParts = Math.max(thParts.length, enParts.length);
 
-                paragraphDisplay.appendChild(pairDiv);
+                for (let p = 0; p < maxParts; p++) {
+                    const thPart = thParts[p] || '';
+                    const enPart = enParts[p] || '';
+                    buildPair(thPart, enPart, i);
+
+                    // If this was a split (not the last part), insert a <br>
+                    if (p < maxParts - 1) {
+                        paragraphDisplay.appendChild(document.createElement('br'));
+                    }
+                }
             });
 
             applyThaiFont();
             buildQuizFromParagraph(para);
         }
 
-        function playWord(text, lang, span) {
+        function playWord(text, lang, span, index) {
+            if (!text || text === "\n") return;
+
+            const themeClass = document.body.dataset.theme === 'dark'
+                ? 'highlight-dark'
+                : 'highlight-light';
+
+            // Clear previous highlights, then highlight clicked word
             clearHighlights();
-            const themeClass = document.body.dataset.theme === 'dark' ? 'highlight-dark' : 'highlight-light';
-            span.classList.add(themeClass);
-            speakTextQueued(text, lang, () => { setTimeout(() => span.classList.remove('highlight-light', 'highlight-dark'), 2000); });
+            if (span) span.classList.add(themeClass);
+
+            // Cancel any current speech
+            speechSynthesis.cancel();
+
+            // Use speakWord with autoAdvance:false so highlight stays
+            speakWord(text, lang, index, { autoAdvance: false }).then(() => {
+                // Do NOT remove highlight automatically
+            });
         }
+
         function clearHighlights() { document.querySelectorAll('#paragraphDisplay span').forEach(s => s.classList.remove('highlight-light', 'highlight-dark')); }
 
-        /* --- speakWord (restored) ---
-           Speaks a single text and highlights the corresponding span (if present).
-           Returns a Promise that resolves on speech end.
-        */
-        function speakWord(text, lang, index) {
+        function speakWord(text, lang, index, { autoAdvance = true } = {}) {
             return new Promise(resolve => {
                 if (!text || text === "\n") {
                     resolve();
                     return;
                 }
 
-                // Determine theme highlight class
-                const themeClass = document.body.dataset.theme === 'dark' ? 'highlight-dark' : 'highlight-light';
+                const themeClass = document.body.dataset.theme === 'dark'
+                    ? 'highlight-dark'
+                    : 'highlight-light';
 
-                // Find the span for this index/lang (pairDiv may be absent for newline rows)
                 const pairDiv = paragraphDisplay.querySelector(`.word-pair[data-index="${index}"]`);
                 const span = pairDiv ? pairDiv.querySelector(`span[lang="${lang}"]`) : null;
 
-                if (span) span.classList.add(themeClass);
+                if (span) {
+                    span.classList.add(themeClass);
+                    lastHighlightedIndex = index;   // 🔑 remember last highlighted
+                }
 
                 const utter = new SpeechSynthesisUtterance(text);
                 utter.lang = lang;
                 utter.onend = () => {
-                    if (span) span.classList.remove('highlight-light', 'highlight-dark');
+                    // Only clear if auto-advancing AND still playing
+                    if (autoAdvance && isPlaying && span) {
+                        span.classList.remove('highlight-light', 'highlight-dark');
+                    }
                     resolve();
                 };
                 speechSynthesis.speak(utter);
@@ -551,14 +668,40 @@
             }
         });
 
-        /* --- Playback Controls --- */
+        /* --- Playback Controls (play resumes from paused index) --- */
         function playParagraph() {
+            // if already playing nothing to do
             if (isPlaying) return;
+
+            const para = getCurrentParagraph();
+            if (!para || para.length === 0) return;
+
             isPlaying = true;
-            currentWordIndex = 0;
+
+            // Resume from currentWordIndex when in-range. Only reset to 0 if index is invalid/out-of-range.
+            if (typeof currentWordIndex !== 'number' || currentWordIndex < 0 || currentWordIndex >= para.length) {
+                currentWordIndex = 0;
+            }
+
             speakNextWord();
         }
-        function pauseParagraph() { isPlaying = false; speechSynthesis.cancel(); }
+        function pauseParagraph() {
+            isPlaying = false;
+            speechSynthesis.cancel();
+
+            // 🔑 Ensure last highlight stays visible
+            if (lastHighlightedIndex !== null) {
+                clearHighlights();
+                const pairDiv = paragraphDisplay.querySelector(`.word-pair[data-index="${lastHighlightedIndex}"]`);
+                if (pairDiv) {
+                    const spans = pairDiv.querySelectorAll('span');
+                    const themeClass = document.body.dataset.theme === 'dark'
+                        ? 'highlight-dark'
+                        : 'highlight-light';
+                    spans.forEach(s => s.classList.add(themeClass));
+                }
+            }
+        }
         function restartParagraph() { pauseParagraph(); clearHighlights(); currentWordIndex = 0; playParagraph(); }
 
         async function speakNextWord() {
@@ -575,7 +718,6 @@
                 return;
             }
 
-            // Skip newline-only entries
             if (w.th === "\n" && w.en === "\n") {
                 currentWordIndex++;
                 await speakNextWord();
@@ -585,29 +727,23 @@
             const showThai = document.getElementById('showThai')?.checked;
             const showEnglish = document.getElementById('showEnglish')?.checked;
 
-            // Clear any previous highlights before starting this index
-            clearHighlights();
+            // 🔑 Clear highlights only if we're still actively playing
+            if (isPlaying) clearHighlights();
 
-            // Get delay from input
             let delaySec = parseFloat(document.getElementById('playbackDelay')?.value || loadSetting('playbackDelay', '0.5'));
             if (isNaN(delaySec)) delaySec = 0.5;
             const delay = Math.min(Math.max(delaySec, 0.5), 10) * 1000;
 
-            // Speak Thai then English (if selected), highlighting each span
             if (showThai && w.th && w.th !== "\n") {
-                await speakWord(w.th, 'th-TH', currentWordIndex);
+                await speakWord(w.th, 'th-TH', currentWordIndex, { autoAdvance: true });
             }
 
             if (showEnglish && w.en && w.en !== "\n") {
-                await speakWord(w.en, 'en-US', currentWordIndex);
+                await speakWord(w.en, 'en-US', currentWordIndex, { autoAdvance: true });
             }
 
             currentWordIndex++;
-            // schedule next word after delay
-            setTimeout(() => {
-                // continue only if still playing
-                if (isPlaying) speakNextWord();
-            }, delay);
+            setTimeout(() => { if (isPlaying) speakNextWord(); }, delay);
         }
 
         /* --- Init SPA --- */

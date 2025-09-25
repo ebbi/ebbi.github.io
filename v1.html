@@ -9,6 +9,53 @@
     <title>ฝึกฝน Thai</title>
 
     <style>
+        /* Help block styling */
+        details {
+            padding: 0.5em 1em;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin: 0.5em 0;
+            font-size: 0.9em;
+            font-weight: normal;
+            text-align: left;
+            background: #f9f9f9;
+            color: #000;
+        }
+
+        details summary {
+            cursor: pointer;
+            /* font-weight: bold; */
+            color: #00247D;
+            /* main theme blue */
+        }
+
+        body[data-theme="dark"] details {
+            background: #2a2a2a;
+            border: 1px solid #555;
+            color: #eee;
+        }
+
+        body[data-theme="dark"] details summary {
+            color: #66aaff;
+            /* lighter theme accent */
+        }
+
+        /* Style nested content in details */
+        details p {
+            margin: 0.5em 0;
+            line-height: 1.5;
+            text-align: left;
+        }
+
+        details ol {
+            margin: 0.5em 1.5em;
+            padding-left: 1.2em;
+        }
+
+        details ol li {
+            margin: 0.4em 0;
+        }
+
         /* === Base Styles for Inputs, Selects, Buttons === */
         .controls button,
         #bookSelectionControls select,
@@ -246,9 +293,11 @@
         }
 
 
-        /* === Unified Button Styling for Paragraph + Quiz Controls === */
+        /* === Unified Button Styling for Paragraph + Quiz Controls + Settings === */
         #paragraphControls button,
-        #quizControls button {
+        #quizControls button,
+        #settingsControls button,
+        #closeX {
             font-size: 1rem;
             line-height: 1.5;
             padding: 0 0.5em;
@@ -267,25 +316,32 @@
         }
 
         #paragraphControls button:hover,
-        #quizControls button:hover {
+        #quizControls button:hover,
+        #settingsControls button:hover,
+        #closeX:hover {
             background: #e0e0e0;
         }
 
         body[data-theme="dark"] #paragraphControls button,
-        body[data-theme="dark"] #quizControls button {
+        body[data-theme="dark"] #quizControls button,
+        body[data-theme="dark"] #settingsControls button,
+        body[data-theme="dark"] #closeX {
             background: #333;
             border: 1px solid #555;
             color: #eee;
         }
 
         body[data-theme="dark"] #paragraphControls button:hover,
-        body[data-theme="dark"] #quizControls button:hover {
+        body[data-theme="dark"] #quizControls button:hover,
+        body[data-theme="dark"] #settingsControls button:hover,
+        body[data-theme="dark"] #closeX:hover {
             background: #444;
         }
     </style>
 </head>
 
 <body data-theme="light">
+
     <header>
         <span lang="th">ฝึกฝน</span>
         <span id="settingsInline">
@@ -298,6 +354,7 @@
                     <option value="Chakra Petch">Chakra Petch</option>
                 </select>
             </label>
+            <button id="settingsBtn" title="Settings & Help">⚙️</button>
         </span>
     </header>
 
@@ -328,9 +385,11 @@
         setTheme(loadSetting('theme', 'light'));
 
         const thaiFont = document.getElementById('thaiFont');
+
         function applyThaiFont() {
             const font = loadSetting('thaiFont', '');
-            document.querySelectorAll('[lang="th-TH"]').forEach(el => {
+            // Select ALL Thai text, including header, quiz, paragraph
+            document.querySelectorAll('[lang="th"], [lang="th-TH"]').forEach(el => {
                 el.classList.add('thai-font');
                 el.classList.remove('tahoma', 'noto', 'chakra');
                 if (font === 'Tahoma') el.classList.add('tahoma');
@@ -338,6 +397,7 @@
                 if (font === 'Chakra Petch') el.classList.add('chakra');
             });
         }
+
         thaiFont.addEventListener('change', () => { saveSetting('thaiFont', thaiFont.value); applyThaiFont(); });
         thaiFont.value = loadSetting('thaiFont', '');
         applyThaiFont();
@@ -351,6 +411,194 @@
             utterance.onend = cb;
             speechSynthesis.speak(utterance);
         }
+
+        /* --- Settings View --- */
+        const settingsBtn = document.getElementById('settingsBtn');
+
+        function showSettings() {
+            const main = document.querySelector('main');
+            main.innerHTML = `
+        <div style="display: flex; justify-content: space-between; align-items: center;
+                    background: #00247D; color: white; padding: 0.5em 1em;">
+            <h2 style="margin: 0;">Settings & Help</h2>
+            <button id="closeX" title="Close Settings">❌</button>
+        </div>
+        <div style="min-height: 70vh; display: flex; flex-direction: column; justify-content: center;">
+            <div id="settingsControls" style="text-align: center; padding: 1em;">
+                <button id="checkTTS">Check Sound and Language Setup</button>
+                <span id="ttsStatus" style="margin-left: 1em; font-weight: bold;"></span>
+                <br><br>
+                <button id="closeBtn">Close</button>
+            </div>
+        </div>
+    `;
+        }
+
+        function reloadApp() {
+            initSPA();
+            populateBooks();
+        }
+
+        document.addEventListener('click', e => {
+            if (e.target.id === 'settingsBtn') {
+                showSettings();
+            }
+            if (e.target.id === 'closeX' || e.target.id === 'closeBtn') {
+                reloadApp();
+            }
+            if (e.target.id === 'checkTTS') {
+                const statusEl = document.getElementById('ttsStatus');
+                if ('speechSynthesis' in window && typeof SpeechSynthesisUtterance !== 'undefined') {
+                    statusEl.innerHTML = "<br>Text To Speech is setup";   // ✅ add <br> before message
+                    statusEl.style.color = "green";
+
+                    // 🔊 Speak a short test phrase in EN + TH
+                    const testUtterances = [
+                        new SpeechSynthesisUtterance("Hello in English"),
+                        new SpeechSynthesisUtterance("สวัสดี in Thai")
+                    ];
+                    testUtterances[0].lang = "en-US";
+                    testUtterances[1].lang = "th-TH";
+
+                    // Cancel any previous speech before speaking
+                    speechSynthesis.cancel();
+                    speechSynthesis.speak(testUtterances[0]);
+                    testUtterances[0].onend = () => speechSynthesis.speak(testUtterances[1]);
+
+                    //                } else {
+                    statusEl.innerHTML = "<br>Text To Speech(TTS) is not setup, follow the help instructions"; // ❌ add <br> before message
+                    statusEl.style.color = "red";
+
+                    // ✅ Append the detailed help block
+                    statusEl.innerHTML += `
+    <details open>
+        <summary>Text To Speech(TTS) Setup instructions for Android, IOS and Browsers</summary>
+        <p>
+            This app uses Text-To-Speech. You should be able to hear the text by selecting any of the text examples.
+        </p>
+        <p>
+            If you cannot hear any sound, please check the following for your device:
+        </p>
+        <div id="setupMobileTTS">
+            <details>
+                <summary>Mobile Android and Chrome browser</summary>
+                <p>
+                    To enable text-to-speech on Android, you can use the built-in accessibility features.
+                </p>
+                <div class="text-to-speech-steps">
+                    <ol>
+                        <li>Go to "Settings" on your Android phone.</li>
+                        <li>Scroll down and tap on "Accessibility."</li>
+                        <li>Tap on "Select to Speak" or "TalkBack" (depending on your Android version).</li>
+                        <li>Turn on the feature and follow the on-screen instructions to set up
+                            text-to-speech.</li>
+                        <li>Once enabled, you can select text on your screen, and the device will read it
+                            aloud.</li>
+                        <li>To adjust the text-to-speech settings, go back to "Settings," then
+                            "Accessibility,"
+                            and tap on "Text-to-Speech output." Here, you can choose the preferred engine,
+                            language, and speech rate (install Thai/English language packs).</li>
+                        <li>To test the text-to-speech functionality, you can use any app that supports
+                            text-to-speech, such as Google Play Books or Google Translate. Simply select the
+                            text you want to hear, and tap on the "Speak" option.</li>
+                    </ol>
+                    <p>Chrome Browser</p>
+                    <ol>
+                        <li>Open the Chrome browser on your Android phone.</li>
+                        <li>Tap the three-dot menu in the top-right corner and select "Settings."</li>
+                        <li>Scroll down and tap on "Accessibility."</li>
+                        <li>Turn on "Simplified view" and "Simplified view to speech" options to enable
+                            Chrome's text-to-speech feature.</li>
+                        <li>To test the text-to-speech functionality, you can use any website that supports
+                            text-to-speech, such as Google Translate. Simply select the text you want to
+                            hear, and tap on the "Speak" option.</li>
+                    </ol>
+                </div>
+            </details>
+            <details>
+                <summary>Mobile iPhone and Safari browser</summary>
+                <p>
+                    To enable text-to-speech on iPhone, you can use the built-in accessibility features.
+                </p>
+                <div class="text-to-speech-steps">
+                    <ol>
+                        <li>Go to "Settings" on your iPhone.</li>
+                        <li>Scroll down and tap on "Accessibility."</li>
+                        <li>Tap on "Spoken Content."</li>
+                        <li>Turn on "Speak Selection" or "Speak Screen" to enable text-to-speech.</li>
+                        <li>To adjust the text-to-speech settings, go back to "Settings," then
+                            "Accessibility," and tap on "Spoken Content." Here, you can choose the preferred
+                            voice, speaking rate, and language (install Thai language package).</li>
+                        <li>To test the text-to-speech functionality, you can use any app that supports
+                            text-to-speech, such as Safari or Notes. Simply select the text you want to
+                            hear, and tap on the "Speak" option.</li>
+                    </ol>
+                </div>
+                <p>Safari Browser</p>
+                <ol>
+                    <li>Open the Safari browser on your iPhone.</li>
+                    <li>Tap the "Aa" icon in the top-left corner of the screen.</li>
+                    <li>Select "Speak Selection" or "Speak Screen" to enable text-to-speech.</li>
+                    <li>To test the text-to-speech functionality, you can use any website that supports
+                        text-to-speech, such as Google Translate. Simply select the text you want to
+                        hear, and tap on the "Speak" option.</li>
+                </ol>
+            </details>
+        </div>
+
+        <div id="setupDesktopTTS">
+            <details>
+                <summary>Laptop with Chrome browser</summary>
+                <p>
+                    To enable text-to-speech on a tablet, laptop or desktop, you can use the built-in
+                    accessibility features.
+                    Here are the steps to enable text-to-speech on Windows devices:
+                </p>
+                <div class="text-to-speech-steps">
+                    <ol>
+                        <li>Go to "Settings" on your Windows computer.</li>
+                        <li>Click on "Ease of Access."</li>
+                        <li>Click on "Narrator" in the left sidebar.</li>
+                        <li>Turn on the Narrator toggle switch to enable text-to-speech.</li>
+                        <li>To adjust the text-to-speech settings, go back to "Settings," then
+                            "Ease of Access," and click on "Narrator." Here, you can choose the preferred
+                            voice, speed, and pitch. (install Thai language package)</li>
+                        <li>To test the text-to-speech functionality, you can use any app that supports
+                            text-to-speech, such as Microsoft Word or Notepad. Simply select the text you
+                            want to hear, and press the "Ctrl + Enter" keys.</li>
+                    </ol>
+                </div>
+            </details>
+
+            <details>
+                <summary>Laptop with Safari browser</summary>
+                <p>
+                    To enable text-to-speech on a tablet, laptop or desktop, you can use the built-in
+                    accessibility features.
+                    Here are the steps to enable text-to-speech on Mac devices:
+                </p>
+                <div class="text-to-speech-steps">
+                    <ol>
+                        <li>Go to "System Preferences" on your Mac.</li>
+                        <li>Click on "Accessibility."</li>
+                        <li>Click on "Speech" in the left sidebar.</li>
+                        <li>Turn on the "Speak selected text when the key is pressed" option to enable
+                            text-to-speech.</li>
+                        <li>To adjust the text-to-speech settings, go back to "System Preferences," then
+                            "Accessibility," and click on "Speech." Here, you can choose the preferred
+                            voice,
+                            speaking rate, and language. (install Thai language package)</li>
+                        <li>To test the text-to-speech functionality, you can use
+                            any app that supports text-to-speech, such as TextEdit or Safari. Simply select
+                            the text you want to hear, and press the "Option + Esc" keys.</li>
+                    </ol>
+                </div>
+            </details>
+        </div>
+    </details>`;
+                }
+            }
+        });
 
         /* --- Paragraph Rendering --- */
         function getCurrentParagraph() { return book?.chapters?.[currentChapter]?.paragraphs?.[currentParagraph] || []; }
@@ -528,8 +776,9 @@
                 const qEl = document.createElement('div');
                 qEl.className = 'quiz-question quiz-option';
                 qEl.textContent = isThaiQ ? q.question : q.answer;
+                qEl.lang = isThaiQ ? 'th-TH' : 'en-US';   // 🔑 auto-mark language
                 qEl.style.cursor = 'pointer';
-                qEl.onclick = () => speakTextQueued(qEl.textContent, isThaiQ ? 'th-TH' : 'en-US');
+                qEl.onclick = () => speakTextQueued(qEl.textContent, qEl.lang);
                 qDiv.appendChild(qEl);
 
                 const optsDiv = document.createElement('div'); optsDiv.className = 'quiz-options';
@@ -537,16 +786,22 @@
                 opts.push(isThaiQ ? q.answer : q.question); opts.sort(() => Math.random() - 0.5);
 
                 opts.forEach(opt => {
-                    const o = document.createElement('div'); o.className = 'quiz-option'; o.textContent = opt;
+                    const o = document.createElement('div');
+                    o.className = 'quiz-option';
+                    o.textContent = opt;
+                    o.lang = isThaiQ ? 'en-US' : 'th-TH';   // 🔑 auto-mark opposite language
                     o.onclick = () => {
                         q.attempted = true;
                         const correct = isThaiQ ? q.answer : q.question;
                         if (opt === correct) o.classList.add('correct'), q.correct = true;
                         else o.classList.add('incorrect');
-                        speakTextQueued(opt, isThaiQ ? 'en-US' : 'th-TH'); this.updateScore();
+                        speakTextQueued(opt, o.lang);
+                        this.updateScore();
                     };
                     optsDiv.appendChild(o);
                 });
+
+
                 qDiv.appendChild(optsDiv);
                 this.updateScore();
             },
@@ -621,6 +876,14 @@
             paragraphDisplay = document.getElementById('paragraphDisplay');
             scoreDisplay = document.getElementById('score');
 
+            // Restore user selections
+            document.getElementById('showThai').checked = loadSetting('showThai', '1') === '1';
+            document.getElementById('showEnglish').checked = loadSetting('showEnglish', '0') === '1';
+            document.getElementById('playbackDelay').value = loadSetting('playbackDelay', '0.5');
+
+            document.getElementById('questionThai').checked = loadSetting('questionThai', '1') === '1';
+            document.getElementById('incorrectOnly').checked = loadSetting('incorrectOnly', '0') === '1';
+
             delayInput.addEventListener('change', () => {
                 let val = parseFloat(delayInput.value);
                 if (isNaN(val)) val = 0.5;
@@ -628,6 +891,7 @@
                 delayInput.value = val.toFixed(1);
                 saveSetting('playbackDelay', delayInput.value);
             });
+
         }
 
         /* --- Book Loading --- */
@@ -650,13 +914,40 @@
         /* --- Event Delegation --- */
         document.addEventListener('change', e => {
             switch (e.target.id) {
-                case 'bookSelect': selectBook(e.target.value); break;
-                case 'chapterSelect': currentChapter = +e.target.value; saveSetting('currentChapter', currentChapter); populateParagraphs(); break;
-                case 'paragraphSelect': currentParagraph = +e.target.value; saveSetting('currentParagraph', currentParagraph); loadParagraph(); break;
-                case 'showThai': case 'showEnglish': renderParagraph(); break;
-                case 'questionThai': case 'incorrectOnly': Quiz.render(); break;
+                case 'bookSelect':
+                    saveSetting('currentBook', e.target.value);
+                    selectBook(e.target.value);
+                    break;
+                case 'chapterSelect':
+                    currentChapter = +e.target.value;
+                    saveSetting('currentChapter', currentChapter);
+                    populateParagraphs();
+                    break;
+                case 'paragraphSelect':
+                    currentParagraph = +e.target.value;
+                    saveSetting('currentParagraph', currentParagraph);
+                    loadParagraph();
+                    break;
+                case 'showThai':
+                case 'showEnglish':
+                    saveSetting(e.target.id, e.target.checked ? '1' : '0');
+                    renderParagraph();
+                    break;
+                case 'playbackDelay':
+                    let val = parseFloat(e.target.value);
+                    if (isNaN(val)) val = 0.5;
+                    val = Math.min(Math.max(val, 0.5), 10);
+                    e.target.value = val.toFixed(1);
+                    saveSetting('playbackDelay', e.target.value);
+                    break;
+                case 'questionThai':
+                case 'incorrectOnly':
+                    saveSetting(e.target.id, e.target.checked ? '1' : '0');
+                    Quiz.render();
+                    break;
             }
         });
+
         document.addEventListener('click', e => {
             switch (e.target.id) {
                 case 'playBtn': playParagraph(); break;
@@ -748,6 +1039,8 @@
 
         /* --- Init SPA --- */
         (async function () { initSPA(); await populateBooks(); })();
+
+
     </script>
 </body>
 
