@@ -355,50 +355,101 @@
         /* --- Paragraph Rendering --- */
         function getCurrentParagraph() { return book?.chapters?.[currentChapter]?.paragraphs?.[currentParagraph] || []; }
 
+        /*
+                function renderParagraph() {
+                    const para = getCurrentParagraph();
+                    paragraphDisplay.innerHTML = '';
+        
+                    para.forEach((w, i) => {
+                        // Special newline-only object -> insert <br>
+                        if (w.th === "\n" && w.en === "\n") {
+                            const br = document.createElement('br');
+                            paragraphDisplay.appendChild(br);
+                            return;
+                        }
+        
+                        const pairDiv = document.createElement('div');
+                        pairDiv.className = 'word-pair';
+                        pairDiv.dataset.index = i;
+        
+                        if (document.getElementById('showThai')?.checked) {
+                            const thSpan = document.createElement('span');
+                            thSpan.textContent = w.th;
+                            thSpan.lang = 'th-TH';
+                            thSpan.dataset.index = i;
+                            thSpan.onclick = () => playWord(w.th, 'th-TH', thSpan);
+                            pairDiv.appendChild(thSpan);
+                        }
+        
+                        if (document.getElementById('showEnglish')?.checked) {
+                            const enSpan = document.createElement('span');
+                            enSpan.textContent = w.en;
+                            enSpan.lang = 'en-US';
+                            enSpan.dataset.index = i;
+                            enSpan.onclick = () => playWord(w.en, 'en-US', enSpan);
+                            pairDiv.appendChild(enSpan);
+                        }
+        
+                        paragraphDisplay.appendChild(pairDiv);
+                    });
+        
+                    applyThaiFont();
+                    buildQuizFromParagraph(para);
+                }
+        */
         function renderParagraph() {
             const para = getCurrentParagraph();
             paragraphDisplay.innerHTML = '';
 
             para.forEach((w, i) => {
-                // Helper to append spans + <br> for a given text
-                function renderWithNewlines(text, lang, parent, index) {
-                    if (!text) return;
-                    const parts = text.split("\n");
-                    parts.forEach((part, pi) => {
-                        if (part) {
-                            const span = document.createElement('span');
-                            span.textContent = part;
-                            span.lang = lang;
-                            span.dataset.index = index;
-                            span.onclick = () => playWord(part, lang, span, index);
-                            parent.appendChild(span);
-                        }
-                        if (pi < parts.length - 1) {
-                            parent.appendChild(document.createElement('br'));
-                        }
-                    });
-                }
-
-                // Special case: if both are exactly "\n", just one break
+                // Special case: newline-only object
                 if (w.th === "\n" && w.en === "\n") {
-                    const br = document.createElement('br');
-                    paragraphDisplay.appendChild(br);
+                    paragraphDisplay.appendChild(document.createElement('br'));
                     return;
                 }
 
-                const pairDiv = document.createElement('div');
-                pairDiv.className = 'word-pair';
-                pairDiv.dataset.index = i;
+                // Helper to build a word-pair div for given text part(s)
+                function buildPair(thText, enText, index) {
+                    const pairDiv = document.createElement('div');
+                    pairDiv.className = 'word-pair';
+                    pairDiv.dataset.index = index;
 
-                if (document.getElementById('showThai')?.checked) {
-                    renderWithNewlines(w.th, 'th-TH', pairDiv, i);
+                    if (document.getElementById('showThai')?.checked && thText) {
+                        const thSpan = document.createElement('span');
+                        thSpan.textContent = thText;
+                        thSpan.lang = 'th-TH';
+                        thSpan.dataset.index = index;
+                        thSpan.onclick = () => playWord(thText, 'th-TH', thSpan, index);
+                        pairDiv.appendChild(thSpan);
+                    }
+
+                    if (document.getElementById('showEnglish')?.checked && enText) {
+                        const enSpan = document.createElement('span');
+                        enSpan.textContent = enText;
+                        enSpan.lang = 'en-US';
+                        enSpan.dataset.index = index;
+                        enSpan.onclick = () => playWord(enText, 'en-US', enSpan, index);
+                        pairDiv.appendChild(enSpan);
+                    }
+
+                    paragraphDisplay.appendChild(pairDiv);
                 }
 
-                if (document.getElementById('showEnglish')?.checked) {
-                    renderWithNewlines(w.en, 'en-US', pairDiv, i);
-                }
+                // Split on newlines
+                const thParts = (w.th || '').split('\n');
+                const enParts = (w.en || '').split('\n');
+                const maxParts = Math.max(thParts.length, enParts.length);
 
-                paragraphDisplay.appendChild(pairDiv);
+                for (let p = 0; p < maxParts; p++) {
+                    const thPart = thParts[p] || '';
+                    const enPart = enParts[p] || '';
+                    buildPair(thPart, enPart, i);
+
+                    // If this was a split (not the last part), insert a <br>
+                    if (p < maxParts - 1) {
+                        paragraphDisplay.appendChild(document.createElement('br'));
+                    }
+                }
             });
 
             applyThaiFont();
