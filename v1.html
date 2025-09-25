@@ -338,6 +338,7 @@
             background: #444;
         }
     </style>
+    
 </head>
 
 <body data-theme="light">
@@ -449,7 +450,7 @@
             if (e.target.id === 'checkTTS') {
                 const statusEl = document.getElementById('ttsStatus');
                 if ('speechSynthesis' in window && typeof SpeechSynthesisUtterance !== 'undefined') {
-                    statusEl.innerHTML = "<br>Text To Speech is setup";   // ✅ add <br> before message
+                    statusEl.innerHTML = "<br>Text To Speech is setup.  You should have heard hello in English and Thai ";   // ✅ add <br> before message
                     statusEl.style.color = "green";
 
                     // 🔊 Speak a short test phrase in EN + TH
@@ -603,48 +604,6 @@
         /* --- Paragraph Rendering --- */
         function getCurrentParagraph() { return book?.chapters?.[currentChapter]?.paragraphs?.[currentParagraph] || []; }
 
-        /*
-                function renderParagraph() {
-                    const para = getCurrentParagraph();
-                    paragraphDisplay.innerHTML = '';
-        
-                    para.forEach((w, i) => {
-                        // Special newline-only object -> insert <br>
-                        if (w.th === "\n" && w.en === "\n") {
-                            const br = document.createElement('br');
-                            paragraphDisplay.appendChild(br);
-                            return;
-                        }
-        
-                        const pairDiv = document.createElement('div');
-                        pairDiv.className = 'word-pair';
-                        pairDiv.dataset.index = i;
-        
-                        if (document.getElementById('showThai')?.checked) {
-                            const thSpan = document.createElement('span');
-                            thSpan.textContent = w.th;
-                            thSpan.lang = 'th-TH';
-                            thSpan.dataset.index = i;
-                            thSpan.onclick = () => playWord(w.th, 'th-TH', thSpan);
-                            pairDiv.appendChild(thSpan);
-                        }
-        
-                        if (document.getElementById('showEnglish')?.checked) {
-                            const enSpan = document.createElement('span');
-                            enSpan.textContent = w.en;
-                            enSpan.lang = 'en-US';
-                            enSpan.dataset.index = i;
-                            enSpan.onclick = () => playWord(w.en, 'en-US', enSpan);
-                            pairDiv.appendChild(enSpan);
-                        }
-        
-                        paragraphDisplay.appendChild(pairDiv);
-                    });
-        
-                    applyThaiFont();
-                    buildQuizFromParagraph(para);
-                }
-        */
         function renderParagraph() {
             const para = getCurrentParagraph();
             paragraphDisplay.innerHTML = '';
