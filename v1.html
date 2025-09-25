@@ -465,7 +465,7 @@
                     speechSynthesis.speak(testUtterances[0]);
                     testUtterances[0].onend = () => speechSynthesis.speak(testUtterances[1]);
 
-                    //                } else {
+                } else {
                     statusEl.innerHTML = "<br>Text To Speech(TTS) is not setup, follow the help instructions"; // ❌ add <br> before message
                     statusEl.style.color = "red";
 
