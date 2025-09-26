@@ -894,7 +894,7 @@
             /* Paragraph Section */
             const paraSec = document.createElement('section'); paraSec.id = 'paragraphSec';
             const paraHeading = document.createElement('div'); paraHeading.className = 'quiz-heading';
-            paraHeading.textContent = 'Use the player buttons or click a word to hear it';
+            paraHeading.textContent = 'Play ▶️ (or click a word to hear it)';
             paraSec.appendChild(paraHeading);
 
             const displayDiv = document.createElement('div'); displayDiv.id = 'paragraphDisplay';
@@ -906,16 +906,16 @@
             const restartBtn = document.createElement('button'); restartBtn.id = 'restartBtn'; restartBtn.textContent = '⏮️';
 
             const showThaiLbl = document.createElement('label');
-            showThaiLbl.innerHTML = `<input type="checkbox" id="showThai" checked> Thai`;
+            showThaiLbl.innerHTML = `<input type="checkbox" id="showThai" checked> th`;
 
             const showEnglishLbl = document.createElement('label');
-            showEnglishLbl.innerHTML = `<input type="checkbox" id="showEnglish"> English`;
+            showEnglishLbl.innerHTML = `<input type="checkbox" id="showEnglish"> en`;
 
             const showPersianLbl = document.createElement('label');
-            showPersianLbl.innerHTML = `<input type="checkbox" id="showPersian"> Persian`;
+            showPersianLbl.innerHTML = `<input type="checkbox" id="showPersian"> fa`;
 
             const delayLbl = document.createElement('label');
-            delayLbl.innerHTML = `Delay (s): <input type="number" id="playbackDelay" value="1" min="1" max="10" step="0.5" style="width: 4em;">`;
+            delayLbl.innerHTML = `Delay <input type="number" id="playbackDelay" value="1" min="1" max="10" step="0.5" style="width: 4em;">`;
             const delayInput = delayLbl.querySelector('input');
 
             controlsDiv.append(playBtn, pauseBtn, restartBtn, showThaiLbl, showEnglishLbl, showPersianLbl, delayLbl);
@@ -926,6 +926,7 @@
             const quizSec = document.createElement('section');
             quizSec.id = 'quizSec';
             quizSec.innerHTML = `
+<p>Quiz (for words that you got wrong, try <i>Incorrect Only</i>)</p>
 <div id="quiz"></div>
 <div id="quizControls">
     <div class="quiz-row quiz-row-top">
@@ -938,13 +939,13 @@
 
     <div class="quiz-row quiz-row-bottom">
         <div class="lang-select">
-            <strong>Question in:</strong>
+            <span>Question: </span>
             <label><input type="radio" name="questionLang" id="questionThai" value="th" checked> th</label>
             <label><input type="radio" name="questionLang" id="questionEnglish" value="en"> en</label>
             <label><input type="radio" name="questionLang" id="questionPersian" value="fa"> fa</label>
         </div>
         <div class="lang-select">
-            <strong>Answer in:</strong>
+            <span>Answer: </span>
             <label><input type="radio" name="answerLang" id="answerThai" value="th" checked> th</label>
             <label><input type="radio" name="answerLang" id="answerEnglish" value="en"> en</label>
             <label><input type="radio" name="answerLang" id="answerPersian" value="fa"> fa</label>
