@@ -287,10 +287,41 @@
 
         #quizControls {
             display: flex;
-            gap: 1em;
+            flex-direction: column;
+            gap: 0.8em;
             margin-top: 1em;
-            align-items: center;
         }
+
+        #quizControls .quiz-row {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 0.6em;
+        }
+
+        #quizControls .quiz-row-top {
+            justify-content: flex-start;
+        }
+
+        #quizControls .quiz-row-bottom {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 0.4em;
+        }
+
+        @media (min-width: 600px) {
+            #quizControls .quiz-row-bottom {
+                flex-direction: row;
+                align-items: center;
+            }
+        }
+
+        #quizControls .lang-select {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4em 0.8em;
+        }
+
 
 
         /* === Unified Button Styling for Paragraph + Quiz Controls + Settings === */
@@ -668,7 +699,9 @@
             });
 
             applyThaiFont();
-            buildQuizFromParagraph(para);
+
+            // 🔑 Always refresh the quiz with this paragraph
+            Quiz.buildFromParagraph(para);
         }
 
         function playWord(text, lang, span, index) {
@@ -895,28 +928,30 @@
             quizSec.innerHTML = `
 <div id="quiz"></div>
 <div id="quizControls">
-    <button id="prevQ">⬅️</button>
-    <button id="nextQ">➡️</button>
-    <button id="retryQuiz">🔄</button>
-
-    <div style="display:flex; flex-direction:column; gap:0.3em;">
-        <div>
-            <strong>Question in:</strong>
-            <label><input type="radio" name="questionLang" id="questionThai" value="th" checked> Thai</label>
-            <label><input type="radio" name="questionLang" id="questionEnglish" value="en"> English</label>
-            <label><input type="radio" name="questionLang" id="questionPersian" value="fa"> Persian</label>
-        </div>
-        <div>
-            <strong>Answer in:</strong>
-            <label><input type="radio" name="answerLang" id="answerThai" value="th" checked> Thai</label>
-            <label><input type="radio" name="answerLang" id="answerEnglish" value="en"> English</label>
-            <label><input type="radio" name="answerLang" id="answerPersian" value="fa"> Persian</label>
-        </div>
+    <div class="quiz-row quiz-row-top">
+        <button id="prevQ">⬅️</button>
+        <button id="nextQ">➡️</button>
+        <button id="retryQuiz">🔄</button>
+        <label><input type="checkbox" id="incorrectOnly"> Incorrect Only</label>
+        <div id="score">Score: 0/0</div>
     </div>
 
-    <label><input type="checkbox" id="incorrectOnly"> X Only</label>
-    <div id="score">Score: 0/0</div>
-</div>`;
+    <div class="quiz-row quiz-row-bottom">
+        <div class="lang-select">
+            <strong>Question in:</strong>
+            <label><input type="radio" name="questionLang" id="questionThai" value="th" checked> th</label>
+            <label><input type="radio" name="questionLang" id="questionEnglish" value="en"> en</label>
+            <label><input type="radio" name="questionLang" id="questionPersian" value="fa"> fa</label>
+        </div>
+        <div class="lang-select">
+            <strong>Answer in:</strong>
+            <label><input type="radio" name="answerLang" id="answerThai" value="th" checked> th</label>
+            <label><input type="radio" name="answerLang" id="answerEnglish" value="en"> en</label>
+            <label><input type="radio" name="answerLang" id="answerPersian" value="fa"> fa</label>
+        </div>
+    </div>
+</div>
+`;
             main.appendChild(quizSec);
 
 
@@ -927,6 +962,33 @@
             paragraphDisplay = document.getElementById('paragraphDisplay');
             scoreDisplay = document.getElementById('score');
 
+            // ✅ Wire paragraphSelect -> renderParagraph
+            paragraphSelect.addEventListener('change', () => {
+                currentParagraph = parseInt(paragraphSelect.value, 10) || 0;
+                saveSetting('currentParagraph', currentParagraph);
+                renderParagraph();
+            });
+
+            // ✅ Restore language settings with defaults (Thai question, English answer)
+            const savedQ = loadSetting('questionLang', 'th');
+            const savedA = loadSetting('answerLang', 'en');
+            document.querySelector(`input[name="questionLang"][value="${savedQ}"]`).checked = true;
+            document.querySelector(`input[name="answerLang"][value="${savedA}"]`).checked = true;
+
+            // ✅ Save language settings on change AND refresh quiz
+            document.querySelectorAll('input[name="questionLang"]').forEach(r =>
+                r.addEventListener('change', e => {
+                    saveSetting('questionLang', e.target.value);
+                    renderParagraph();   // 🔑 triggers Quiz refresh
+                })
+            );
+            document.querySelectorAll('input[name="answerLang"]').forEach(r =>
+                r.addEventListener('change', e => {
+                    saveSetting('answerLang', e.target.value);
+                    renderParagraph();   // 🔑 triggers Quiz refresh
+                })
+            );
+
             // Restore user selections
             document.getElementById('showThai').checked = loadSetting('showThai', '1') === '1';
             document.getElementById('showEnglish').checked = loadSetting('showEnglish', '0') === '1';
@@ -935,6 +997,9 @@
 
             document.getElementById('questionThai').checked = loadSetting('questionThai', '1') === '1';
             document.getElementById('incorrectOnly').checked = loadSetting('incorrectOnly', '0') === '1';
+
+
+
 
             delayInput.addEventListener('change', () => {
                 let val = parseFloat(delayInput.value);
