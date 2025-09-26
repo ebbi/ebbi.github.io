@@ -1,0 +1,71 @@
+<div id="paragraphControls">
+  <div class="para-row top-row">
+    <button id="playButton">▶️</button>
+    <button id="pauseButton">⏸️</button>
+    <button id="restartButton">🔄</button>
+    <span>Paragraph:</span>
+    <button id="prevParagraph">⬅️</button>
+    <button id="nextParagraph">➡️</button>
+    <label for="delayInput">Delay</label>
+    <input type="number" id="delayInput" value="1" min="0" step="0.5">
+  </div>
+
+  <div class="para-row bottom-row">
+    <label><input type="checkbox" id="showThai" checked> Thai</label>
+    <label><input type="checkbox" id="showEnglish" checked> English</label>
+    <label><input type="checkbox" id="showTransliteration"> Transliteration</label>
+    <label><input type="checkbox" id="readEnglish"> Read English too</label>
+  </div>
+</div>
+<style>
+  #paragraphControls {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6em;
+    margin: 0.5em 0;
+  }
+
+  #paragraphControls .para-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5em;
+  }
+
+  #paragraphControls .top-row {
+    justify-content: flex-start;
+  }
+
+  #paragraphControls .bottom-row {
+    justify-content: flex-start;
+    flex-wrap: wrap;
+  }
+
+  /* Make rows stack neatly on small screens */
+  @media (max-width: 600px) {
+    #paragraphControls .para-row {
+      flex-direction: row;
+      flex-wrap: wrap;
+    }
+  }
+</style>
+
+<script>
+
+  document.getElementById("nextParagraph").addEventListener("click", () => {
+    if (currentParagraphIndex < paragraphs.length - 1) { currentParagraphIndex++; loadParagraph(currentParagraphIndex); }
+  }); document.getElementById("prevParagraph").addEventListener("click", () => {
+    if (currentParagraphIndex > 0) {
+      currentParagraphIndex--;
+      loadParagraph(currentParagraphIndex);
+    }
+  });
+
+  document.getElementById("prevParagraph").addEventListener("click", () => {
+    if (currentParagraphIndex > 0) {
+      currentParagraphIndex--;
+      loadParagraph(currentParagraphIndex);
+    }
+  });
+
+</script>

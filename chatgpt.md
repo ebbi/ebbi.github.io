@@ -1,4 +1,6 @@
-<!DOCTYPE html>
+```html
+<!-- paste your full HTML source code here -->
+ <!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -7,7 +9,34 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai&family=Chakra+Petch&display=swap"
         rel="stylesheet" />
     <title>ฝึกฝน Thai</title>
+</head>
 
+<body data-theme="light">
+
+    <header>
+        <span lang="th">ฝึกฝน</span>
+        <span id="settingsInline">
+            <button id="themeToggle" title="Toggle Day/Night">🌞</button>
+            <label>Thai Font:
+                <select id="thaiFont">
+                    <option value="">Default</option>
+                    <option value="Tahoma">Tahoma</option>
+                    <option value="Noto Sans Thai">Noto Sans Thai</option>
+                    <option value="Chakra Petch">Chakra Petch</option>
+                </select>
+            </label>
+            <button id="settingsBtn" title="Settings & Help">⚙️</button>
+        </span>
+    </header>
+
+    <main></main>
+
+</body>
+
+</html>
+```
+
+```css
     <style>
         /* Help block styling */
         details {
@@ -284,6 +313,7 @@
             color: white;
         }
 
+
         #quizControls {
             display: flex;
             flex-direction: column;
@@ -330,7 +360,9 @@
             line-height: 1.5;
             padding: 0 0.5em;
             height: 2.2em;
+            /* fixed consistent height */
             min-width: 1em;
+            /* consistent width across all buttons */
             border-radius: 4px;
             border: 1px solid #ccc;
             background: #f0f0f0;
@@ -368,16 +400,38 @@
         #paragraphControls {
             display: flex;
             flex-direction: column;
-            align-items: flex-start;
-            /* ✅ left justified */
             gap: 0.5em;
         }
 
+        /* Each row inside paragraph controls */
         .paragraph-controls-row {
             display: flex;
             flex-wrap: wrap;
             gap: 0.5em;
             align-items: center;
+        }
+
+        /* Buttons styling for better tap targets */
+        #paragraphControls button {
+            padding: 0.4em 0.8em;
+            font-size: 1rem;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            background-color: var(--btn-bg, #f0f0f0);
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        #paragraphControls button:hover {
+            background-color: var(--btn-hover-bg, #ddd);
+        }
+
+        /* Spacing for checkboxes and labels */
+        #paragraphControls label {
+            display: flex;
+            align-items: center;
+            gap: 0.2em;
+            font-size: 0.9rem;
         }
 
         /* Responsive adjustments for mobile */
@@ -392,30 +446,10 @@
             }
         }
     </style>
+```
 
-
-</head>
-
-<body data-theme="light">
-
-    <header>
-        <span lang="th">ฝึกฝน</span>
-        <span id="settingsInline">
-            <button id="themeToggle" title="Toggle Day/Night">🌞</button>
-            <label>Thai Font:
-                <select id="thaiFont">
-                    <option value="">Default</option>
-                    <option value="Tahoma">Tahoma</option>
-                    <option value="Noto Sans Thai">Noto Sans Thai</option>
-                    <option value="Chakra Petch">Chakra Petch</option>
-                </select>
-            </label>
-            <button id="settingsBtn" title="Settings & Help">⚙️</button>
-        </span>
-    </header>
-
-    <main></main>
-
+```js
+// paste your full JavaScript source code here
     <script>
         /* --- Utilities --- */
         const saveSetting = (k, v) => localStorage.setItem(k, v);
@@ -900,14 +934,12 @@
 
         function buildQuizFromParagraph(para) { Quiz.buildFromParagraph(para); }
 
-        /* --- SPA Init (Refactored) --- */
+        /* --- SPA Init --- */
         function initSPA() {
-            const main = document.querySelector('main');
-            main.innerHTML = '';
+            const main = document.querySelector('main'); main.innerHTML = '';
 
-            /* --- Book/Chapter/Paragraph Selection --- */
-            const selSec = document.createElement('section');
-            selSec.id = 'bookSelectionControls';
+            /* Book/Chapter/Paragraph Selection */
+            const selSec = document.createElement('section'); selSec.id = 'bookSelectionControls';
             const bookLabel = document.createElement('label'); bookLabel.textContent = 'Book: ';
             const bookSelectEl = document.createElement('select'); bookSelectEl.id = 'bookSelect'; bookLabel.appendChild(bookSelectEl);
             const chapLabel = document.createElement('label'); chapLabel.textContent = 'Chapter: ';
@@ -917,7 +949,7 @@
             selSec.append(bookLabel, chapLabel, paraLabel);
             main.appendChild(selSec);
 
-            /* --- Paragraph Section --- */
+            /* Paragraph Section */
             const paraSec = document.createElement('section'); paraSec.id = 'paragraphSec';
             const paraHeading = document.createElement('div'); paraHeading.className = 'quiz-heading';
             paraHeading.textContent = 'Click Play (or click a word to hear it)';
@@ -926,18 +958,10 @@
             const displayDiv = document.createElement('div'); displayDiv.id = 'paragraphDisplay';
             paraSec.appendChild(displayDiv);
 
-            const controlsDiv = document.createElement('div');
-            controlsDiv.className = 'controls';
-            controlsDiv.id = 'paragraphControls';
-
+            const controlsDiv = document.createElement('div'); controlsDiv.className = 'controls'; controlsDiv.id = 'paragraphControls';
             const playBtn = document.createElement('button'); playBtn.id = 'playBtn'; playBtn.textContent = '▶️';
             const pauseBtn = document.createElement('button'); pauseBtn.id = 'pauseBtn'; pauseBtn.textContent = '⏸️';
             const restartBtn = document.createElement('button'); restartBtn.id = 'restartBtn'; restartBtn.textContent = '⏮️';
-
-            // New paragraph navigation buttons
-            const prevParaBtn = document.createElement('button'); prevParaBtn.id = 'prevParagraph'; prevParaBtn.textContent = '⬅️';
-            const nextParaBtn = document.createElement('button'); nextParaBtn.id = 'nextParagraph'; nextParaBtn.textContent = '➡️';
-            const paraLabelText = document.createElement('span'); paraLabelText.textContent = 'Paragraph ';
 
             const showThaiLbl = document.createElement('label');
             showThaiLbl.innerHTML = `<input type="checkbox" id="showThai" checked> th`;
@@ -952,20 +976,11 @@
             delayLbl.innerHTML = `Delay<input type="number" id="playbackDelay" value="1" min="1" max="10" step="1" style="width: 4em;">`;
             const delayInput = delayLbl.querySelector('input');
 
-            // --- Split into two rows for mobile ---
-            const row1 = document.createElement('div'); row1.className = 'paragraph-controls-row';
-            row1.style.display = 'flex'; row1.style.flexWrap = 'wrap'; row1.style.gap = '0.5em';
-            row1.append(playBtn, pauseBtn, restartBtn, paraLabelText, prevParaBtn, nextParaBtn);
-
-            const row2 = document.createElement('div'); row2.className = 'paragraph-controls-row';
-            row2.style.display = 'flex'; row2.style.flexWrap = 'wrap'; row2.style.gap = '0.5em';
-            row2.append(showThaiLbl, showEnglishLbl, showPersianLbl, delayLbl);
-
-            controlsDiv.append(row1, row2);
+            controlsDiv.append(playBtn, pauseBtn, restartBtn, showThaiLbl, showEnglishLbl, showPersianLbl, delayLbl);
             paraSec.appendChild(controlsDiv);
             main.appendChild(paraSec);
 
-            /* --- Quiz Section --- */
+            /* Quiz Section */
             const quizSec = document.createElement('section');
             quizSec.id = 'quizSec';
             quizSec.innerHTML = `
@@ -994,39 +1009,42 @@
             <label><input type="radio" name="answerLang" id="answerPersian" value="fa"> fa</label>
         </div>
     </div>
-</div>`;
+</div>
+`;
             main.appendChild(quizSec);
 
-            /* --- Bind globals --- */
+
+            /* Bind globals */
             bookSelect = document.getElementById('bookSelect');
             chapterSelect = document.getElementById('chapterSelect');
             paragraphSelect = document.getElementById('paragraphSelect');
             paragraphDisplay = document.getElementById('paragraphDisplay');
             scoreDisplay = document.getElementById('score');
 
-            // Paragraph selection -> render
+            // ✅ Wire paragraphSelect -> renderParagraph
             paragraphSelect.addEventListener('change', () => {
                 currentParagraph = parseInt(paragraphSelect.value, 10) || 0;
                 saveSetting('currentParagraph', currentParagraph);
                 renderParagraph();
             });
 
-            // Language settings
+            // ✅ Restore language settings with defaults (Thai question, English answer)
             const savedQ = loadSetting('questionLang', 'th');
             const savedA = loadSetting('answerLang', 'en');
             document.querySelector(`input[name="questionLang"][value="${savedQ}"]`).checked = true;
             document.querySelector(`input[name="answerLang"][value="${savedA}"]`).checked = true;
 
+            // ✅ Save language settings on change AND refresh quiz
             document.querySelectorAll('input[name="questionLang"]').forEach(r =>
                 r.addEventListener('change', e => {
                     saveSetting('questionLang', e.target.value);
-                    renderParagraph();
+                    renderParagraph();   // 🔑 triggers Quiz refresh
                 })
             );
             document.querySelectorAll('input[name="answerLang"]').forEach(r =>
                 r.addEventListener('change', e => {
                     saveSetting('answerLang', e.target.value);
-                    renderParagraph();
+                    renderParagraph();   // 🔑 triggers Quiz refresh
                 })
             );
 
@@ -1036,6 +1054,12 @@
             document.getElementById('showPersian').checked = loadSetting('showPersian', '0') === '1';
             document.getElementById('playbackDelay').value = loadSetting('playbackDelay', '0.5');
 
+            document.getElementById('questionThai').checked = loadSetting('questionThai', '1') === '1';
+            document.getElementById('incorrectOnly').checked = loadSetting('incorrectOnly', '0') === '1';
+
+
+
+
             delayInput.addEventListener('change', () => {
                 let val = parseFloat(delayInput.value);
                 if (isNaN(val)) val = 0.5;
@@ -1044,29 +1068,6 @@
                 saveSetting('playbackDelay', delayInput.value);
             });
 
-            /* --- Paragraph Controls Event Handling --- */
-            playBtn.addEventListener('click', playParagraph);
-            pauseBtn.addEventListener('click', pauseParagraph);
-            restartBtn.addEventListener('click', restartParagraph);
-
-            nextParaBtn.addEventListener('click', () => {
-                const max = book?.chapters?.[currentChapter]?.paragraphs?.length || 0;
-                if (currentParagraph < max - 1) {
-                    currentParagraph++;
-                    paragraphSelect.value = currentParagraph;
-                    saveSetting('currentParagraph', currentParagraph);
-                    loadParagraph();
-                }
-            });
-
-            prevParaBtn.addEventListener('click', () => {
-                if (currentParagraph > 0) {
-                    currentParagraph--;
-                    paragraphSelect.value = currentParagraph;
-                    saveSetting('currentParagraph', currentParagraph);
-                    loadParagraph();
-                }
-            });
         }
 
         /* --- Book Loading --- */
@@ -1222,6 +1223,28 @@
 
     </script>
 
-</body>
+```
 
-</html>
+---
+JS refactor already complete and working
+Refactor request:  
+The latest CSS was uploaded.  The buttons in the Quiz are much better styled, the same CSS should be applied to the paragraph buttons.
+Second, the paragraph controls should be left justified.
+Keep everything else the same.  
+
+
+```html
+
+    
+
+```
+
+---
+
+Refactor request:  
+After the restart button in `#paragraphControls`, add forward (→) and backward (←) paragraph buttons.  
+Click events on these should move to the next or previous paragraph.  
+
+For mobile devices, split the paragraph controls into two rows, with the delay and the language checkboxes (Thai/English) on the second line.  
+
+Keep everything else unchanged.  
