@@ -338,7 +338,7 @@
             background: #444;
         }
     </style>
-    
+
 </head>
 
 <body data-theme="light">
@@ -604,19 +604,18 @@
         /* --- Paragraph Rendering --- */
         function getCurrentParagraph() { return book?.chapters?.[currentChapter]?.paragraphs?.[currentParagraph] || []; }
 
+        /* --- Paragraph Rendering --- */
         function renderParagraph() {
             const para = getCurrentParagraph();
             paragraphDisplay.innerHTML = '';
 
             para.forEach((w, i) => {
-                // Special case: newline-only object
-                if (w.th === "\n" && w.en === "\n") {
+                if (w.th === "\n" && w.en === "\n" && w.fa === "\n") {
                     paragraphDisplay.appendChild(document.createElement('br'));
                     return;
                 }
 
-                // Helper to build a word-pair div for given text part(s)
-                function buildPair(thText, enText, index) {
+                function buildLanguages(thText, enText, faText, index) {
                     const pairDiv = document.createElement('div');
                     pairDiv.className = 'word-pair';
                     pairDiv.dataset.index = index;
@@ -639,20 +638,29 @@
                         pairDiv.appendChild(enSpan);
                     }
 
+                    if (document.getElementById('showPersian')?.checked && faText) {
+                        const faSpan = document.createElement('span');
+                        faSpan.textContent = faText;
+                        faSpan.lang = 'fa-IR';
+                        faSpan.dataset.index = index;
+                        faSpan.onclick = () => playWord(faText, 'fa-IR', faSpan, index);
+                        pairDiv.appendChild(faSpan);
+                    }
+
                     paragraphDisplay.appendChild(pairDiv);
                 }
 
-                // Split on newlines
                 const thParts = (w.th || '').split('\n');
                 const enParts = (w.en || '').split('\n');
-                const maxParts = Math.max(thParts.length, enParts.length);
+                const faParts = (w.fa || '').split('\n');
+                const maxParts = Math.max(thParts.length, enParts.length, faParts.length);
 
                 for (let p = 0; p < maxParts; p++) {
                     const thPart = thParts[p] || '';
                     const enPart = enParts[p] || '';
-                    buildPair(thPart, enPart, i);
+                    const faPart = faParts[p] || '';
+                    buildLanguages(thPart, enPart, faPart, i);
 
-                    // If this was a split (not the last part), insert a <br>
                     if (p < maxParts - 1) {
                         paragraphDisplay.appendChild(document.createElement('br'));
                     }
@@ -718,58 +726,121 @@
         }
 
         /* --- Quiz --- */
+        /* --- Quiz --- */
         const Quiz = {
-            data: [], currentQ: 0,
-            buildFromParagraph(para) { this.data = para.map(w => ({ question: w.th, answer: w.en, attempted: false, correct: false })); this.currentQ = 0; this.render(); },
+            data: [],
+            currentQ: 0,
+
+            buildFromParagraph(para) {
+                this.data = para.map(w => ({
+                    th: w.th,
+                    en: w.en,
+                    fa: w.fa,
+                    attempted: false,
+                    correct: false
+                }));
+                this.currentQ = 0;
+                this.render();
+            },
+
             render() {
-                const qDiv = document.getElementById('quiz'); qDiv.innerHTML = '';
-                let data = this.data;
-                if (document.getElementById('incorrectOnly')?.checked) data = data.filter(q => q.attempted && !q.correct);
-                if (!data.length) { qDiv.textContent = "No questions."; this.updateScore(); return; }
-                const q = data[this.currentQ % data.length];
-                const isThaiQ = document.getElementById('questionThai')?.checked;
+                const qDiv = document.getElementById("quiz");
+                qDiv.innerHTML = "";
 
-                const heading = document.createElement('div'); heading.className = 'quiz-heading';
-                heading.textContent = 'Quiz: Select the correct translation'; qDiv.appendChild(heading);
+                if (!this.data || !this.data.length) {
+                    qDiv.textContent = "No quiz available for this paragraph.";
+                    return;
+                }
 
-                const qEl = document.createElement('div');
-                qEl.className = 'quiz-question quiz-option';
-                qEl.textContent = isThaiQ ? q.question : q.answer;
-                qEl.lang = isThaiQ ? 'th-TH' : 'en-US';   // 🔑 auto-mark language
-                qEl.style.cursor = 'pointer';
-                qEl.onclick = () => speakTextQueued(qEl.textContent, qEl.lang);
+                const q = this.data[this.currentQ];
+                const qLang = document.querySelector('input[name="questionLang"]:checked')?.value;
+                const aLang = document.querySelector('input[name="answerLang"]:checked')?.value;
+
+                if (!qLang || !aLang) {
+                    qDiv.textContent = "Select both Question and Answer languages.";
+                    return;
+                }
+                if (qLang === aLang) {
+                    qDiv.textContent = "Answer language must be different from Question.";
+                    return;
+                }
+
+                // --- Question word ---
+                const qEl = document.createElement("div");
+                qEl.className = "quiz-question";
+                qEl.textContent = q[qLang] || "";
+                qEl.style.cursor = "pointer";
+                qEl.addEventListener("click", () => {
+                    speakTextQueued(q[qLang], qLang === "th" ? "th-TH" : qLang === "en" ? "en-US" : "fa-IR");
+                });
                 qDiv.appendChild(qEl);
 
-                const optsDiv = document.createElement('div'); optsDiv.className = 'quiz-options';
-                let opts = this.data.map(x => isThaiQ ? x.answer : x.question).filter(o => o !== (isThaiQ ? q.answer : q.question)).sort(() => Math.random() - 0.5).slice(0, 3);
-                opts.push(isThaiQ ? q.answer : q.question); opts.sort(() => Math.random() - 0.5);
+                // --- Answer options (limit 4 random) ---
+                let opts = this.data
+                    .map(qq => qq[aLang])
+                    .filter((val, idx, arr) => arr.indexOf(val) === idx && val); // unique & non-empty
+
+                // Always include the correct answer
+                const correct = q[aLang];
+                opts = opts.filter(o => o !== correct);
+
+                // Pick 3 random wrong + add correct
+                opts = [correct, ...opts.sort(() => Math.random() - 0.5).slice(0, 3)];
+                opts.sort(() => Math.random() - 0.5);
+
+                // Track score safely
+                if (typeof this.score === "undefined") this.score = 0;
+                if (typeof this.attempts === "undefined") this.attempts = 0;
+
+                // --- Render answer options ---
+                const optsContainer = document.createElement("div");
+                optsContainer.className = "quiz-options";
 
                 opts.forEach(opt => {
-                    const o = document.createElement('div');
-                    o.className = 'quiz-option';
-                    o.textContent = opt;
-                    o.lang = isThaiQ ? 'en-US' : 'th-TH';   // 🔑 auto-mark opposite language
-                    o.onclick = () => {
-                        q.attempted = true;
-                        const correct = isThaiQ ? q.answer : q.question;
-                        if (opt === correct) o.classList.add('correct'), q.correct = true;
-                        else o.classList.add('incorrect');
-                        speakTextQueued(opt, o.lang);
-                        this.updateScore();
-                    };
-                    optsDiv.appendChild(o);
+                    const optEl = document.createElement("div");
+                    optEl.className = "quiz-option";
+                    optEl.textContent = opt;
+
+                    // Speak on click + check correctness
+                    optEl.addEventListener("click", () => {
+                        speakTextQueued(opt, aLang === "th" ? "th-TH" : aLang === "en" ? "en-US" : "fa-IR");
+
+                        if (opt === correct) {
+                            if (!q.correct) { // first time marking correct
+                                optEl.classList.add("correct");
+                                this.score++;
+                                q.correct = true;
+                                q.attempted = true;
+                                this.attempts++;
+                            }
+                        } else {
+                            optEl.classList.add("incorrect");
+                            q.correct = false;
+                            q.attempted = true;
+                            this.attempts++;
+                        }
+
+                        document.getElementById("score").textContent =
+                            `Score: ${this.score}/${this.attempts}`;
+                    });
+
+                    optsContainer.appendChild(optEl);
                 });
 
-
-                qDiv.appendChild(optsDiv);
-                this.updateScore();
+                qDiv.appendChild(optsContainer);
             },
+
             updateScore() {
-                const attempted = this.data.filter(q => q.attempted).length;
-                const correct = this.data.filter(q => q.correct).length;
-                scoreDisplay.textContent = `Score: ${correct}/${attempted}`;
+                // Ensure counters exist
+                if (typeof this.score === "undefined") this.score = 0;
+                if (typeof this.attempts === "undefined") this.attempts = 0;
+
+                // Update the score display with live counters
+                scoreDisplay.textContent = `Score: ${this.score}/${this.attempts}`;
             }
+
         };
+
         function buildQuizFromParagraph(para) { Quiz.buildFromParagraph(para); }
 
         /* --- SPA Init --- */
@@ -803,30 +874,51 @@
 
             const showThaiLbl = document.createElement('label');
             showThaiLbl.innerHTML = `<input type="checkbox" id="showThai" checked> Thai`;
+
             const showEnglishLbl = document.createElement('label');
             showEnglishLbl.innerHTML = `<input type="checkbox" id="showEnglish"> English`;
 
-            const delayLbl = document.createElement('label'); delayLbl.textContent = 'Delay: ';
-            const delayInput = document.createElement('input'); delayInput.type = 'number'; delayInput.id = 'playbackDelay';
-            delayInput.value = loadSetting('playbackDelay', '0.5'); delayInput.min = 0.5; delayInput.max = 10; delayInput.step = 0.1; delayLbl.appendChild(delayInput);
+            const showPersianLbl = document.createElement('label');
+            showPersianLbl.innerHTML = `<input type="checkbox" id="showPersian"> Persian`;
 
-            controlsDiv.append(playBtn, pauseBtn, restartBtn, showThaiLbl, showEnglishLbl, delayLbl);
+            const delayLbl = document.createElement('label');
+            delayLbl.innerHTML = `Delay (s): <input type="number" id="playbackDelay" value="1" min="1" max="10" step="0.5" style="width: 4em;">`;
+            const delayInput = delayLbl.querySelector('input');
+
+            controlsDiv.append(playBtn, pauseBtn, restartBtn, showThaiLbl, showEnglishLbl, showPersianLbl, delayLbl);
             paraSec.appendChild(controlsDiv);
             main.appendChild(paraSec);
 
             /* Quiz Section */
-            const quizSec = document.createElement('section'); quizSec.id = 'quizSec';
+            const quizSec = document.createElement('section');
+            quizSec.id = 'quizSec';
             quizSec.innerHTML = `
 <div id="quiz"></div>
 <div id="quizControls">
     <button id="prevQ">⬅️</button>
     <button id="nextQ">➡️</button>
     <button id="retryQuiz">🔄</button>
-    <label><input type="checkbox" id="questionThai" checked> TH / EN</label>
+
+    <div style="display:flex; flex-direction:column; gap:0.3em;">
+        <div>
+            <strong>Question in:</strong>
+            <label><input type="radio" name="questionLang" id="questionThai" value="th" checked> Thai</label>
+            <label><input type="radio" name="questionLang" id="questionEnglish" value="en"> English</label>
+            <label><input type="radio" name="questionLang" id="questionPersian" value="fa"> Persian</label>
+        </div>
+        <div>
+            <strong>Answer in:</strong>
+            <label><input type="radio" name="answerLang" id="answerThai" value="th" checked> Thai</label>
+            <label><input type="radio" name="answerLang" id="answerEnglish" value="en"> English</label>
+            <label><input type="radio" name="answerLang" id="answerPersian" value="fa"> Persian</label>
+        </div>
+    </div>
+
     <label><input type="checkbox" id="incorrectOnly"> X Only</label>
     <div id="score">Score: 0/0</div>
 </div>`;
             main.appendChild(quizSec);
+
 
             /* Bind globals */
             bookSelect = document.getElementById('bookSelect');
@@ -838,6 +930,7 @@
             // Restore user selections
             document.getElementById('showThai').checked = loadSetting('showThai', '1') === '1';
             document.getElementById('showEnglish').checked = loadSetting('showEnglish', '0') === '1';
+            document.getElementById('showPersian').checked = loadSetting('showPersian', '0') === '1';
             document.getElementById('playbackDelay').value = loadSetting('playbackDelay', '0.5');
 
             document.getElementById('questionThai').checked = loadSetting('questionThai', '1') === '1';
@@ -889,6 +982,10 @@
                     break;
                 case 'showThai':
                 case 'showEnglish':
+                    saveSetting(e.target.id, e.target.checked ? '1' : '0');
+                    renderParagraph();
+                    break;
+                case 'showPersian':
                     saveSetting(e.target.id, e.target.checked ? '1' : '0');
                     renderParagraph();
                     break;
