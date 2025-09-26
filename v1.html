@@ -894,7 +894,7 @@
             /* Paragraph Section */
             const paraSec = document.createElement('section'); paraSec.id = 'paragraphSec';
             const paraHeading = document.createElement('div'); paraHeading.className = 'quiz-heading';
-            paraHeading.textContent = 'Play ▶️ (or click a word to hear it)';
+            paraHeading.textContent = 'Click Play (or click a word to hear it)';
             paraSec.appendChild(paraHeading);
 
             const displayDiv = document.createElement('div'); displayDiv.id = 'paragraphDisplay';
@@ -915,7 +915,7 @@
             showPersianLbl.innerHTML = `<input type="checkbox" id="showPersian"> fa`;
 
             const delayLbl = document.createElement('label');
-            delayLbl.innerHTML = `Delay <input type="number" id="playbackDelay" value="1" min="1" max="10" step="0.5" style="width: 4em;">`;
+            delayLbl.innerHTML = `Delay<input type="number" id="playbackDelay" value="1" min="1" max="10" step="1" style="width: 4em;">`;
             const delayInput = delayLbl.querySelector('input');
 
             controlsDiv.append(playBtn, pauseBtn, restartBtn, showThaiLbl, showEnglishLbl, showPersianLbl, delayLbl);
@@ -926,7 +926,7 @@
             const quizSec = document.createElement('section');
             quizSec.id = 'quizSec';
             quizSec.innerHTML = `
-<p>Quiz (for words that you got wrong, try <i>Incorrect Only</i>)</p>
+<p>Multiple Choice Quiz</p>
 <div id="quiz"></div>
 <div id="quizControls">
     <div class="quiz-row quiz-row-top">
