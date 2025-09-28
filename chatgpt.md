@@ -1,6 +1,21 @@
+=====================================================
+Empty template for chatgpt upload
+
 ```html
-<!-- paste your full HTML source code here -->
- <!DOCTYPE html>
+```
+
+```css
+```
+
+```js
+```
+copy empty template
+
+======================================================
+
+
+```html
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -9,6 +24,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai&family=Chakra+Petch&display=swap"
         rel="stylesheet" />
     <title>ฝึกฝน Thai</title>
+
 </head>
 
 <body data-theme="light">
@@ -30,14 +46,47 @@
     </header>
 
     <main></main>
-
 </body>
-
 </html>
 ```
 
+
 ```css
+
     <style>
+        /* Base page styling */
+        body {
+            font-size: clamp(14px, 2.5vw, 18px);
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        body[data-theme="dark"] {
+            background: #222;
+            color: #eee;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #00247D;
+            color: white;
+            padding: 0.5em 1em;
+        }
+
+        main {
+            padding: 1em;
+        }
+
+        section {
+            margin-bottom: 1.5em;
+            padding-bottom: 1em;
+            border-bottom: 1px solid #ccc;
+        }
+
         /* Help block styling */
         details {
             padding: 0.5em 1em;
@@ -210,39 +259,6 @@
             color: black;
         }
 
-        /* Base page styling */
-        body {
-            font-size: clamp(14px, 2.5vw, 18px);
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            transition: background 0.3s, color 0.3s;
-        }
-
-        body[data-theme="dark"] {
-            background: #222;
-            color: #eee;
-        }
-
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: #00247D;
-            color: white;
-            padding: 0.5em 1em;
-        }
-
-        main {
-            padding: 1em;
-        }
-
-        section {
-            margin-bottom: 1.5em;
-            padding-bottom: 1em;
-            border-bottom: 1px solid #ccc;
-        }
-
         #paragraphDisplay {
             font-size: 1.2em;
             margin: 1em 0;
@@ -313,7 +329,6 @@
             color: white;
         }
 
-
         #quizControls {
             display: flex;
             flex-direction: column;
@@ -360,9 +375,7 @@
             line-height: 1.5;
             padding: 0 0.5em;
             height: 2.2em;
-            /* fixed consistent height */
             min-width: 1em;
-            /* consistent width across all buttons */
             border-radius: 4px;
             border: 1px solid #ccc;
             background: #f0f0f0;
@@ -400,10 +413,11 @@
         #paragraphControls {
             display: flex;
             flex-direction: column;
+            align-items: flex-start;
+            /* ✅ left justified */
             gap: 0.5em;
         }
 
-        /* Each row inside paragraph controls */
         .paragraph-controls-row {
             display: flex;
             flex-wrap: wrap;
@@ -411,45 +425,18 @@
             align-items: center;
         }
 
-        /* Buttons styling for better tap targets */
-        #paragraphControls button {
-            padding: 0.4em 0.8em;
-            font-size: 1rem;
-            border-radius: 4px;
-            border: 1px solid #ccc;
-            background-color: var(--btn-bg, #f0f0f0);
-            cursor: pointer;
-            transition: background-color 0.2s;
-        }
-
-        #paragraphControls button:hover {
-            background-color: var(--btn-hover-bg, #ddd);
-        }
-
-        /* Spacing for checkboxes and labels */
-        #paragraphControls label {
-            display: flex;
-            align-items: center;
-            gap: 0.2em;
-            font-size: 0.9rem;
-        }
-
         /* Responsive adjustments for mobile */
         @media (max-width: 600px) {
             #paragraphControls {
                 gap: 0.8em;
             }
-
-            #paragraphControls button {
-                font-size: 0.9rem;
-                padding: 0.35em 0.7em;
-            }
         }
     </style>
+
 ```
 
 ```js
-// paste your full JavaScript source code here
+
     <script>
         /* --- Utilities --- */
         const saveSetting = (k, v) => localStorage.setItem(k, v);
@@ -463,6 +450,14 @@
         let lastHighlightedIndex = null;
         let bookSelect, chapterSelect, paragraphSelect, paragraphDisplay, scoreDisplay;
         let thaiElements = [];
+
+        // Map paragraph keys to TTS codes
+        const langMap = {
+            th: 'th-TH',
+            en: 'en-US',
+            fa: 'fa-IR',
+            // add more languages here if needed
+        };
 
         /* --- Theme & Font --- */
         const themeToggle = document.getElementById('themeToggle');
@@ -695,94 +690,85 @@
 
         /* --- Paragraph Rendering --- */
         function renderParagraph() {
-            const para = getCurrentParagraph();
+            const para = getCurrentParagraph(); // get current paragraph internally
+            if (!para || !para.length) {
+                paragraphDisplay.innerHTML = '';
+                return;
+            }
+
             paragraphDisplay.innerHTML = '';
 
-            para.forEach((w, i) => {
-                if (w.th === "\n" && w.en === "\n" && w.fa === "\n") {
+            const languageSettings = {
+                th: { checkboxId: 'showThai', langCode: 'th-TH' },
+                en: { checkboxId: 'showEnglish', langCode: 'en-US' },
+                fa: { checkboxId: 'showPersian', langCode: 'fa-IR' }
+            };
+
+            para.forEach((wordObj, wordIndex) => {
+                // Check if any language is a newline
+                const isNewline = Object.values(wordObj).some(val => val === "\n");
+                if (isNewline) {
                     paragraphDisplay.appendChild(document.createElement('br'));
-                    return;
+                    return; // skip creating empty div
                 }
 
-                function buildLanguages(thText, enText, faText, index) {
-                    const pairDiv = document.createElement('div');
-                    pairDiv.className = 'word-pair';
-                    pairDiv.dataset.index = index;
+                // Create word-pair container
+                const pairDiv = document.createElement('div');
+                pairDiv.className = 'word-pair';
+                pairDiv.dataset.index = wordIndex;
 
-                    if (document.getElementById('showThai')?.checked && thText) {
-                        const thSpan = document.createElement('span');
-                        thSpan.textContent = thText;
-                        thSpan.lang = 'th-TH';
-                        thSpan.dataset.index = index;
-                        thSpan.onclick = () => playWord(thText, 'th-TH', thSpan, index);
-                        pairDiv.appendChild(thSpan);
+                // Dynamically add spans for each language
+                Object.entries(languageSettings).forEach(([key, { checkboxId, langCode }]) => {
+                    if (document.getElementById(checkboxId)?.checked && wordObj[key] && wordObj[key] !== "\n") {
+                        const span = document.createElement('span');
+                        span.textContent = wordObj[key];
+                        span.dataset.langKey = key; // store th/en/fa
+                        span.dataset.index = wordIndex;
+                        span.onclick = () => playWord(wordObj[key], langCode, span, wordIndex);
+                        pairDiv.appendChild(span);
                     }
+                });
 
-                    if (document.getElementById('showEnglish')?.checked && enText) {
-                        const enSpan = document.createElement('span');
-                        enSpan.textContent = enText;
-                        enSpan.lang = 'en-US';
-                        enSpan.dataset.index = index;
-                        enSpan.onclick = () => playWord(enText, 'en-US', enSpan, index);
-                        pairDiv.appendChild(enSpan);
-                    }
-
-                    if (document.getElementById('showPersian')?.checked && faText) {
-                        const faSpan = document.createElement('span');
-                        faSpan.textContent = faText;
-                        faSpan.lang = 'fa-IR';
-                        faSpan.dataset.index = index;
-                        faSpan.onclick = () => playWord(faText, 'fa-IR', faSpan, index);
-                        pairDiv.appendChild(faSpan);
-                    }
-
+                // Only append if there are any visible spans
+                if (pairDiv.children.length > 0) {
                     paragraphDisplay.appendChild(pairDiv);
-                }
-
-                const thParts = (w.th || '').split('\n');
-                const enParts = (w.en || '').split('\n');
-                const faParts = (w.fa || '').split('\n');
-                const maxParts = Math.max(thParts.length, enParts.length, faParts.length);
-
-                for (let p = 0; p < maxParts; p++) {
-                    const thPart = thParts[p] || '';
-                    const enPart = enParts[p] || '';
-                    const faPart = faParts[p] || '';
-                    buildLanguages(thPart, enPart, faPart, i);
-
-                    if (p < maxParts - 1) {
-                        paragraphDisplay.appendChild(document.createElement('br'));
-                    }
                 }
             });
 
             applyThaiFont();
 
-            // 🔑 Always refresh the quiz with this paragraph
+            // Refresh the quiz for this paragraph
             Quiz.buildFromParagraph(para);
         }
 
-        function playWord(text, lang, span, index) {
+        function playWord(text, langKey, span, index) {
             if (!text || text === "\n") return;
 
             const themeClass = document.body.dataset.theme === 'dark'
                 ? 'highlight-dark'
                 : 'highlight-light';
 
-            // Clear previous highlights, then highlight clicked word
             clearHighlights();
             if (span) span.classList.add(themeClass);
 
-            // Cancel any current speech
+            // cancel any queued speech before speaking
             speechSynthesis.cancel();
 
-            // Use speakWord with autoAdvance:false so highlight stays
-            speakWord(text, lang, index, { autoAdvance: false }).then(() => {
-                // Do NOT remove highlight automatically
-            });
+            const ttsLang = langMap[langKey] || 'th-TH'; // fallback Thai
+            const utter = new SpeechSynthesisUtterance(text);
+            utter.lang = ttsLang;
+            utter.rate = 1;
+            speechSynthesis.speak(utter);
         }
 
-        function clearHighlights() { document.querySelectorAll('#paragraphDisplay span').forEach(s => s.classList.remove('highlight-light', 'highlight-dark')); }
+        /*
+                function clearHighlights() { document.querySelectorAll('#paragraphDisplay span').forEach(s => s.classList.remove('highlight-light', 'highlight-dark')); }
+        */
+
+        function clearHighlights() {
+            document.querySelectorAll('#paragraphDisplay .word-pair span')
+                .forEach(s => s.classList.remove('highlight-light', 'highlight-dark'));
+        }
 
         function speakWord(text, lang, index, { autoAdvance = true } = {}) {
             return new Promise(resolve => {
@@ -791,32 +777,35 @@
                     return;
                 }
 
-                const themeClass = document.body.dataset.theme === 'dark'
-                    ? 'highlight-dark'
-                    : 'highlight-light';
+                const themeClass = document.body.dataset.theme === "dark"
+                    ? "highlight-dark"
+                    : "highlight-light";
 
+                // find correct span for this word/lang
                 const pairDiv = paragraphDisplay.querySelector(`.word-pair[data-index="${index}"]`);
-                const span = pairDiv ? pairDiv.querySelector(`span[lang="${lang}"]`) : null;
+                const span = pairDiv ? pairDiv.querySelector(`span[data-langKey="${lang.split('-')[0]}"]`) : null;
 
+                clearHighlights();
                 if (span) {
                     span.classList.add(themeClass);
-                    lastHighlightedIndex = index;   // 🔑 remember last highlighted
+                    lastHighlightedIndex = index;
                 }
 
                 const utter = new SpeechSynthesisUtterance(text);
                 utter.lang = lang;
+                utter.rate = 1;
+
                 utter.onend = () => {
-                    // Only clear if auto-advancing AND still playing
                     if (autoAdvance && isPlaying && span) {
-                        span.classList.remove('highlight-light', 'highlight-dark');
+                        span.classList.remove("highlight-light", "highlight-dark");
                     }
                     resolve();
                 };
+
                 speechSynthesis.speak(utter);
             });
         }
 
-        /* --- Quiz --- */
         /* --- Quiz --- */
         const Quiz = {
             data: [],
@@ -934,12 +923,14 @@
 
         function buildQuizFromParagraph(para) { Quiz.buildFromParagraph(para); }
 
-        /* --- SPA Init --- */
+        /* --- SPA Init (Refactored) --- */
         function initSPA() {
-            const main = document.querySelector('main'); main.innerHTML = '';
+            const main = document.querySelector('main');
+            main.innerHTML = '';
 
-            /* Book/Chapter/Paragraph Selection */
-            const selSec = document.createElement('section'); selSec.id = 'bookSelectionControls';
+            /* --- Book/Chapter/Paragraph Selection --- */
+            const selSec = document.createElement('section');
+            selSec.id = 'bookSelectionControls';
             const bookLabel = document.createElement('label'); bookLabel.textContent = 'Book: ';
             const bookSelectEl = document.createElement('select'); bookSelectEl.id = 'bookSelect'; bookLabel.appendChild(bookSelectEl);
             const chapLabel = document.createElement('label'); chapLabel.textContent = 'Chapter: ';
@@ -949,7 +940,7 @@
             selSec.append(bookLabel, chapLabel, paraLabel);
             main.appendChild(selSec);
 
-            /* Paragraph Section */
+            /* --- Paragraph Section --- */
             const paraSec = document.createElement('section'); paraSec.id = 'paragraphSec';
             const paraHeading = document.createElement('div'); paraHeading.className = 'quiz-heading';
             paraHeading.textContent = 'Click Play (or click a word to hear it)';
@@ -958,10 +949,18 @@
             const displayDiv = document.createElement('div'); displayDiv.id = 'paragraphDisplay';
             paraSec.appendChild(displayDiv);
 
-            const controlsDiv = document.createElement('div'); controlsDiv.className = 'controls'; controlsDiv.id = 'paragraphControls';
+            const controlsDiv = document.createElement('div');
+            controlsDiv.className = 'controls';
+            controlsDiv.id = 'paragraphControls';
+
             const playBtn = document.createElement('button'); playBtn.id = 'playBtn'; playBtn.textContent = '▶️';
             const pauseBtn = document.createElement('button'); pauseBtn.id = 'pauseBtn'; pauseBtn.textContent = '⏸️';
             const restartBtn = document.createElement('button'); restartBtn.id = 'restartBtn'; restartBtn.textContent = '⏮️';
+
+            // New paragraph navigation buttons
+            const prevParaBtn = document.createElement('button'); prevParaBtn.id = 'prevParagraph'; prevParaBtn.textContent = '⬅️';
+            const nextParaBtn = document.createElement('button'); nextParaBtn.id = 'nextParagraph'; nextParaBtn.textContent = '➡️';
+            const paraLabelText = document.createElement('span'); paraLabelText.textContent = 'Paragraph ';
 
             const showThaiLbl = document.createElement('label');
             showThaiLbl.innerHTML = `<input type="checkbox" id="showThai" checked> th`;
@@ -976,11 +975,20 @@
             delayLbl.innerHTML = `Delay<input type="number" id="playbackDelay" value="1" min="1" max="10" step="1" style="width: 4em;">`;
             const delayInput = delayLbl.querySelector('input');
 
-            controlsDiv.append(playBtn, pauseBtn, restartBtn, showThaiLbl, showEnglishLbl, showPersianLbl, delayLbl);
+            // --- Split into two rows for mobile ---
+            const row1 = document.createElement('div'); row1.className = 'paragraph-controls-row';
+            row1.style.display = 'flex'; row1.style.flexWrap = 'wrap'; row1.style.gap = '0.5em';
+            row1.append(playBtn, pauseBtn, restartBtn, paraLabelText, prevParaBtn, nextParaBtn);
+
+            const row2 = document.createElement('div'); row2.className = 'paragraph-controls-row';
+            row2.style.display = 'flex'; row2.style.flexWrap = 'wrap'; row2.style.gap = '0.5em';
+            row2.append(showThaiLbl, showEnglishLbl, showPersianLbl, delayLbl);
+
+            controlsDiv.append(row1, row2);
             paraSec.appendChild(controlsDiv);
             main.appendChild(paraSec);
 
-            /* Quiz Section */
+            /* --- Quiz Section --- */
             const quizSec = document.createElement('section');
             quizSec.id = 'quizSec';
             quizSec.innerHTML = `
@@ -1009,42 +1017,39 @@
             <label><input type="radio" name="answerLang" id="answerPersian" value="fa"> fa</label>
         </div>
     </div>
-</div>
-`;
+</div>`;
             main.appendChild(quizSec);
 
-
-            /* Bind globals */
+            /* --- Bind globals --- */
             bookSelect = document.getElementById('bookSelect');
             chapterSelect = document.getElementById('chapterSelect');
             paragraphSelect = document.getElementById('paragraphSelect');
             paragraphDisplay = document.getElementById('paragraphDisplay');
             scoreDisplay = document.getElementById('score');
 
-            // ✅ Wire paragraphSelect -> renderParagraph
+            // Paragraph selection -> render
             paragraphSelect.addEventListener('change', () => {
                 currentParagraph = parseInt(paragraphSelect.value, 10) || 0;
                 saveSetting('currentParagraph', currentParagraph);
                 renderParagraph();
             });
 
-            // ✅ Restore language settings with defaults (Thai question, English answer)
+            // Language settings
             const savedQ = loadSetting('questionLang', 'th');
             const savedA = loadSetting('answerLang', 'en');
             document.querySelector(`input[name="questionLang"][value="${savedQ}"]`).checked = true;
             document.querySelector(`input[name="answerLang"][value="${savedA}"]`).checked = true;
 
-            // ✅ Save language settings on change AND refresh quiz
             document.querySelectorAll('input[name="questionLang"]').forEach(r =>
                 r.addEventListener('change', e => {
                     saveSetting('questionLang', e.target.value);
-                    renderParagraph();   // 🔑 triggers Quiz refresh
+                    renderParagraph();
                 })
             );
             document.querySelectorAll('input[name="answerLang"]').forEach(r =>
                 r.addEventListener('change', e => {
                     saveSetting('answerLang', e.target.value);
-                    renderParagraph();   // 🔑 triggers Quiz refresh
+                    renderParagraph();
                 })
             );
 
@@ -1054,12 +1059,6 @@
             document.getElementById('showPersian').checked = loadSetting('showPersian', '0') === '1';
             document.getElementById('playbackDelay').value = loadSetting('playbackDelay', '0.5');
 
-            document.getElementById('questionThai').checked = loadSetting('questionThai', '1') === '1';
-            document.getElementById('incorrectOnly').checked = loadSetting('incorrectOnly', '0') === '1';
-
-
-
-
             delayInput.addEventListener('change', () => {
                 let val = parseFloat(delayInput.value);
                 if (isNaN(val)) val = 0.5;
@@ -1068,6 +1067,29 @@
                 saveSetting('playbackDelay', delayInput.value);
             });
 
+            /* --- Paragraph Controls Event Handling --- */
+            playBtn.addEventListener('click', playParagraph);
+            pauseBtn.addEventListener('click', pauseParagraph);
+            restartBtn.addEventListener('click', restartParagraph);
+
+            nextParaBtn.addEventListener('click', () => {
+                const max = book?.chapters?.[currentChapter]?.paragraphs?.length || 0;
+                if (currentParagraph < max - 1) {
+                    currentParagraph++;
+                    paragraphSelect.value = currentParagraph;
+                    saveSetting('currentParagraph', currentParagraph);
+                    loadParagraph();
+                }
+            });
+
+            prevParaBtn.addEventListener('click', () => {
+                if (currentParagraph > 0) {
+                    currentParagraph--;
+                    paragraphSelect.value = currentParagraph;
+                    saveSetting('currentParagraph', currentParagraph);
+                    loadParagraph();
+                }
+            });
         }
 
         /* --- Book Loading --- */
@@ -1141,16 +1163,12 @@
 
         /* --- Playback Controls (play resumes from paused index) --- */
         function playParagraph() {
-            // if already playing nothing to do
-            if (isPlaying) return;
-
-            const para = getCurrentParagraph();
-            if (!para || para.length === 0) return;
-
+            if (isPlaying) return; // already playing
             isPlaying = true;
 
-            // Resume from currentWordIndex when in-range. Only reset to 0 if index is invalid/out-of-range.
-            if (typeof currentWordIndex !== 'number' || currentWordIndex < 0 || currentWordIndex >= para.length) {
+            const para = getCurrentParagraph();
+            // if finished, restart from beginning
+            if (currentWordIndex >= (para?.length || 0)) {
                 currentWordIndex = 0;
             }
 
@@ -1158,79 +1176,91 @@
         }
         function pauseParagraph() {
             isPlaying = false;
+            // ❌ Do NOT clear highlights, keep current highlight visible
             speechSynthesis.cancel();
-
-            // 🔑 Ensure last highlight stays visible
-            if (lastHighlightedIndex !== null) {
-                clearHighlights();
-                const pairDiv = paragraphDisplay.querySelector(`.word-pair[data-index="${lastHighlightedIndex}"]`);
-                if (pairDiv) {
-                    const spans = pairDiv.querySelectorAll('span');
-                    const themeClass = document.body.dataset.theme === 'dark'
-                        ? 'highlight-dark'
-                        : 'highlight-light';
-                    spans.forEach(s => s.classList.add(themeClass));
-                }
-            }
         }
-        function restartParagraph() { pauseParagraph(); clearHighlights(); currentWordIndex = 0; playParagraph(); }
 
+        function restartParagraph() {
+            isPlaying = false;
+            speechSynthesis.cancel();
+            clearHighlights();
+            currentWordIndex = 0;
+            lastHighlightedIndex = null;
+            isPlaying = true;
+            speakNextWord();
+        }
         async function speakNextWord() {
+            if (!isPlaying) return;
+
             const para = getCurrentParagraph();
-            if (!isPlaying || !para || currentWordIndex >= para.length) {
+            if (!para || currentWordIndex >= para.length) {
                 isPlaying = false;
+                clearHighlights();
                 return;
             }
 
             const w = para[currentWordIndex];
-            if (!w) {
-                currentWordIndex++;
-                await speakNextWord();
-                return;
+
+            // Skip empty/newline entries
+            if (w && !Object.values(w).some(val => val === "\n")) {
+                // 🔑 Speak only languages with checked boxes
+                if (w.th && document.getElementById("showThai")?.checked) {
+                    await speakWord(w.th, "th-TH", currentWordIndex);
+                }
+                if (w.en && document.getElementById("showEnglish")?.checked) {
+                    await speakWord(w.en, "en-US", currentWordIndex);
+                }
+                if (w.fa && document.getElementById("showPersian")?.checked) {
+                    await speakWord(w.fa, "fa-IR", currentWordIndex);
+                }
             }
 
-            if (w.th === "\n" && w.en === "\n") {
-                currentWordIndex++;
-                await speakNextWord();
-                return;
-            }
-
-            const showThai = document.getElementById('showThai')?.checked;
-            const showEnglish = document.getElementById('showEnglish')?.checked;
-
-            // 🔑 Clear highlights only if we're still actively playing
-            if (isPlaying) clearHighlights();
-
-            let delaySec = parseFloat(document.getElementById('playbackDelay')?.value || loadSetting('playbackDelay', '0.5'));
-            if (isNaN(delaySec)) delaySec = 0.5;
-            const delay = Math.min(Math.max(delaySec, 0.5), 10) * 1000;
-
-            if (showThai && w.th && w.th !== "\n") {
-                await speakWord(w.th, 'th-TH', currentWordIndex, { autoAdvance: true });
-            }
-
-            if (showEnglish && w.en && w.en !== "\n") {
-                await speakWord(w.en, 'en-US', currentWordIndex, { autoAdvance: true });
-            }
-
+            // keep track for pause/resume
+            lastHighlightedIndex = currentWordIndex;
             currentWordIndex++;
-            setTimeout(() => { if (isPlaying) speakNextWord(); }, delay);
-        }
 
+            if (isPlaying) {
+                const delay = parseFloat(document.getElementById("playbackDelay")?.value) || 0.5;
+                setTimeout(speakNextWord, delay * 1000);
+            }
+        }
         /* --- Init SPA --- */
         (async function () { initSPA(); await populateBooks(); })();
 
 
     </script>
 
+
 ```
 
+
 ---
-JS refactor already complete and working
-Refactor request:  
-The latest CSS was uploaded.  The buttons in the Quiz are much better styled, the same CSS should be applied to the paragraph buttons.
-Second, the paragraph controls should be left justified.
-Keep everything else the same.  
+This suggested refactor will not work! Initial code base deleted AGAIN!!!! The App initialization has changed from  /* --- Init SPA --- */
+   (async function () { initSPA(); await populateBooks(); })();
+to initSPA();  The pargraph handling no longer creates the Quiz for the paragraph, et cetra.  Attempting to merge the last JS chat output addressing the word highlighting bug with the rest of the code seems futile.  With hindsight a diff option earlier may have succeeded more than the suggestion that you would regenerate the entire JS code (clearly you do not check any limit boundary)  The code is too large for your chat output and waiting more hours to see the sam failure is not an option.  The major short coming seems that despite having uploaded html, css, js multiple times, it seems within 2 chat reply / responses, your context is jumbled up and most of the code disappears. I see no option but to give up.   
+
+The refactored snippet will not work as it does not include the replacement calls to the new speakAndHighlightWOrd  instead of the old refactored speakWOrd  and playWord.  Can you identify all the changes, functions and calls to the functions to check
+Current codebase is the last uploaded html, css, js
+
+Paste the entire JS file
+(As always, no other change to the codebase)
+
+Before trying this suggested refactor, can you comment on why there is a new function with similar functionality, namely function playWord and function speakWord
+
+Refactored JS uploaded.  HTML and CSS remain the same as the last upload.
+Highlighting of words does not appear for play or pause after the last refactor
+Entire yesterday wasted on refactoring only to revert back today to a non solution.  DO not lose the context.  I will upload all three html, css, JS code again separately after this message
+
+
+
+
+On Clicking the Play button, the following error message: 
+Uncaught (in promise) ReferenceError: highlightWord is not defined
+    speakNextWord http://127.0.0.1:5500/v1.html:1198
+    playParagraph http://127.0.0.1:5500/v1.html:1143
+    initSPA http://127.0.0.1:5500/v1.html:1040
+    <anonymous> http://127.0.0.1:5500/v1.html:1210
+    <anonymous> http://127.0.0.1:5500/v1.html:1210
 
 
 ```html

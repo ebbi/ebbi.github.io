@@ -9,6 +9,39 @@
     <title>ฝึกฝน Thai</title>
 
     <style>
+        /* Base page styling */
+        body {
+            font-size: clamp(14px, 2.5vw, 18px);
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        body[data-theme="dark"] {
+            background: #222;
+            color: #eee;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #00247D;
+            color: white;
+            padding: 0.5em 1em;
+        }
+
+        main {
+            padding: 1em;
+        }
+
+        section {
+            margin-bottom: 1.5em;
+            padding-bottom: 1em;
+            border-bottom: 1px solid #ccc;
+        }
+
         /* Help block styling */
         details {
             padding: 0.5em 1em;
@@ -179,39 +212,6 @@
         span:not(.thai-font).highlight-dark {
             background: orange;
             color: black;
-        }
-
-        /* Base page styling */
-        body {
-            font-size: clamp(14px, 2.5vw, 18px);
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            transition: background 0.3s, color 0.3s;
-        }
-
-        body[data-theme="dark"] {
-            background: #222;
-            color: #eee;
-        }
-
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: #00247D;
-            color: white;
-            padding: 0.5em 1em;
-        }
-
-        main {
-            padding: 1em;
-        }
-
-        section {
-            margin-bottom: 1.5em;
-            padding-bottom: 1em;
-            border-bottom: 1px solid #ccc;
         }
 
         #paragraphDisplay {
@@ -385,11 +385,6 @@
             #paragraphControls {
                 gap: 0.8em;
             }
-
-            #paragraphControls button {
-                font-size: 0.9rem;
-                padding: 0.35em 0.7em;
-            }
         }
     </style>
 
@@ -416,64 +411,64 @@
 
     <main></main>
 
-    <script>
-        /* --- Utilities --- */
-        const saveSetting = (k, v) => localStorage.setItem(k, v);
-        const loadSetting = (k, def = '') => localStorage.getItem(k) || def;
-        const getSavedInt = (k, def = 0) => parseInt(loadSetting(k, def), 10);
+<script>
+    /* --- Utilities --- */
+    const saveSetting = (k, v) => localStorage.setItem(k, v);
+    const loadSetting = (k, def = '') => localStorage.getItem(k) || def;
+    const getSavedInt = (k, def = 0) => parseInt(loadSetting(k, def), 10);
 
-        /* --- State --- */
-        let books = [], book = null;
-        let currentBook = 0, currentChapter = 0, currentParagraph = 0;
-        let isPlaying = false, currentWordIndex = 0, utterance = null;
-        let lastHighlightedIndex = null;
-        let bookSelect, chapterSelect, paragraphSelect, paragraphDisplay, scoreDisplay;
-        let thaiElements = [];
+    /* --- State --- */
+    let books = [], book = null;
+    let currentBook = 0, currentChapter = 0, currentParagraph = 0;
+    let isPlaying = false, currentWordIndex = 0, utterance = null;
+    let lastHighlightedIndex = null;
+    let bookSelect, chapterSelect, paragraphSelect, paragraphDisplay, scoreDisplay;
+    let thaiElements = [];
 
-        /* --- Theme & Font --- */
-        const themeToggle = document.getElementById('themeToggle');
-        function setTheme(theme) {
-            document.body.dataset.theme = theme;
-            themeToggle.textContent = theme === 'light' ? '🌞' : '🌙';
-            saveSetting('theme', theme);
-        }
-        themeToggle.addEventListener('click', () => setTheme(document.body.dataset.theme === 'light' ? 'dark' : 'light'));
-        setTheme(loadSetting('theme', 'light'));
+    /* --- Theme & Font --- */
+    const themeToggle = document.getElementById('themeToggle');
+    function setTheme(theme) {
+        document.body.dataset.theme = theme;
+        themeToggle.textContent = theme === 'light' ? '🌞' : '🌙';
+        saveSetting('theme', theme);
+    }
+    themeToggle.addEventListener('click', () => setTheme(document.body.dataset.theme === 'light' ? 'dark' : 'light'));
+    setTheme(loadSetting('theme', 'light'));
 
-        const thaiFont = document.getElementById('thaiFont');
+    const thaiFont = document.getElementById('thaiFont');
 
-        function applyThaiFont() {
-            const font = loadSetting('thaiFont', '');
-            // Select ALL Thai text, including header, quiz, paragraph
-            document.querySelectorAll('[lang="th"], [lang="th-TH"]').forEach(el => {
-                el.classList.add('thai-font');
-                el.classList.remove('tahoma', 'noto', 'chakra');
-                if (font === 'Tahoma') el.classList.add('tahoma');
-                if (font === 'Noto Sans Thai') el.classList.add('noto');
-                if (font === 'Chakra Petch') el.classList.add('chakra');
-            });
-        }
+    function applyThaiFont() {
+        const font = loadSetting('thaiFont', '');
+        // Select ALL Thai text, including header, quiz, paragraph
+        document.querySelectorAll('[lang="th"], [lang="th-TH"]').forEach(el => {
+            el.classList.add('thai-font');
+            el.classList.remove('tahoma', 'noto', 'chakra');
+            if (font === 'Tahoma') el.classList.add('tahoma');
+            if (font === 'Noto Sans Thai') el.classList.add('noto');
+            if (font === 'Chakra Petch') el.classList.add('chakra');
+        });
+    }
 
-        thaiFont.addEventListener('change', () => { saveSetting('thaiFont', thaiFont.value); applyThaiFont(); });
-        thaiFont.value = loadSetting('thaiFont', '');
-        applyThaiFont();
+    thaiFont.addEventListener('change', () => { saveSetting('thaiFont', thaiFont.value); applyThaiFont(); });
+    thaiFont.value = loadSetting('thaiFont', '');
+    applyThaiFont();
 
-        /* --- TTS --- */
-        function speakTextQueued(text, lang, cb) {
-            if (!text) return;
-            speechSynthesis.cancel();
-            utterance = new SpeechSynthesisUtterance(text);
-            utterance.lang = lang;
-            utterance.onend = cb;
-            speechSynthesis.speak(utterance);
-        }
+    /* --- TTS --- */
+    function speakTextQueued(text, lang, cb) {
+        if (!text) return;
+        speechSynthesis.cancel();
+        utterance = new SpeechSynthesisUtterance(text);
+        utterance.lang = lang;
+        utterance.onend = cb;
+        speechSynthesis.speak(utterance);
+    }
 
-        /* --- Settings View --- */
-        const settingsBtn = document.getElementById('settingsBtn');
+    /* --- Settings View --- */
+    const settingsBtn = document.getElementById('settingsBtn');
 
-        function showSettings() {
-            const main = document.querySelector('main');
-            main.innerHTML = `
+    function showSettings() {
+        const main = document.querySelector('main');
+        main.innerHTML = `
         <div style="display: flex; justify-content: space-between; align-items: center;
                     background: #00247D; color: white; padding: 0.5em 1em;">
             <h2 style="margin: 0;">Settings & Help</h2>
@@ -488,45 +483,45 @@
             </div>
         </div>
     `;
+    }
+
+    function reloadApp() {
+        initSPA();
+        populateBooks();
+    }
+
+    document.addEventListener('click', e => {
+        if (e.target.id === 'settingsBtn') {
+            showSettings();
         }
-
-        function reloadApp() {
-            initSPA();
-            populateBooks();
+        if (e.target.id === 'closeX' || e.target.id === 'closeBtn') {
+            reloadApp();
         }
+        if (e.target.id === 'checkTTS') {
+            const statusEl = document.getElementById('ttsStatus');
+            if ('speechSynthesis' in window && typeof SpeechSynthesisUtterance !== 'undefined') {
+                statusEl.innerHTML = "<br>Text To Speech is setup.  You should have heard hello in English and Thai ";   // ✅ add <br> before message
+                statusEl.style.color = "green";
 
-        document.addEventListener('click', e => {
-            if (e.target.id === 'settingsBtn') {
-                showSettings();
-            }
-            if (e.target.id === 'closeX' || e.target.id === 'closeBtn') {
-                reloadApp();
-            }
-            if (e.target.id === 'checkTTS') {
-                const statusEl = document.getElementById('ttsStatus');
-                if ('speechSynthesis' in window && typeof SpeechSynthesisUtterance !== 'undefined') {
-                    statusEl.innerHTML = "<br>Text To Speech is setup.  You should have heard hello in English and Thai ";   // ✅ add <br> before message
-                    statusEl.style.color = "green";
+                // 🔊 Speak a short test phrase in EN + TH
+                const testUtterances = [
+                    new SpeechSynthesisUtterance("Hello in English"),
+                    new SpeechSynthesisUtterance("สวัสดี in Thai")
+                ];
+                testUtterances[0].lang = "en-US";
+                testUtterances[1].lang = "th-TH";
 
-                    // 🔊 Speak a short test phrase in EN + TH
-                    const testUtterances = [
-                        new SpeechSynthesisUtterance("Hello in English"),
-                        new SpeechSynthesisUtterance("สวัสดี in Thai")
-                    ];
-                    testUtterances[0].lang = "en-US";
-                    testUtterances[1].lang = "th-TH";
+                // Cancel any previous speech before speaking
+                speechSynthesis.cancel();
+                speechSynthesis.speak(testUtterances[0]);
+                testUtterances[0].onend = () => speechSynthesis.speak(testUtterances[1]);
 
-                    // Cancel any previous speech before speaking
-                    speechSynthesis.cancel();
-                    speechSynthesis.speak(testUtterances[0]);
-                    testUtterances[0].onend = () => speechSynthesis.speak(testUtterances[1]);
+            } else {
+                statusEl.innerHTML = "<br>Text To Speech(TTS) is not setup, follow the help instructions"; // ❌ add <br> before message
+                statusEl.style.color = "red";
 
-                } else {
-                    statusEl.innerHTML = "<br>Text To Speech(TTS) is not setup, follow the help instructions"; // ❌ add <br> before message
-                    statusEl.style.color = "red";
-
-                    // ✅ Append the detailed help block
-                    statusEl.innerHTML += `
+                // ✅ Append the detailed help block
+                statusEl.innerHTML += `
     <details open>
         <summary>Text To Speech(TTS) Setup instructions for Android, IOS and Browsers</summary>
         <p>
@@ -652,323 +647,323 @@
             </details>
         </div>
     </details>`;
+            }
+        }
+    });
+
+    /* --- Paragraph Rendering --- */
+    function getCurrentParagraph() { return book?.chapters?.[currentChapter]?.paragraphs?.[currentParagraph] || []; }
+
+    /* --- Paragraph Rendering --- */
+    function renderParagraph() {
+        const para = getCurrentParagraph();
+        paragraphDisplay.innerHTML = '';
+
+        para.forEach((w, i) => {
+            if (w.th === "\n" && w.en === "\n" && w.fa === "\n") {
+                paragraphDisplay.appendChild(document.createElement('br'));
+                return;
+            }
+
+            function buildLanguages(thText, enText, faText, index) {
+                const pairDiv = document.createElement('div');
+                pairDiv.className = 'word-pair';
+                pairDiv.dataset.index = index;
+
+                if (document.getElementById('showThai')?.checked && thText) {
+                    const thSpan = document.createElement('span');
+                    thSpan.textContent = thText;
+                    thSpan.lang = 'th-TH';
+                    thSpan.dataset.index = index;
+                    thSpan.onclick = () => playWord(thText, 'th-TH', thSpan, index);
+                    pairDiv.appendChild(thSpan);
+                }
+
+                if (document.getElementById('showEnglish')?.checked && enText) {
+                    const enSpan = document.createElement('span');
+                    enSpan.textContent = enText;
+                    enSpan.lang = 'en-US';
+                    enSpan.dataset.index = index;
+                    enSpan.onclick = () => playWord(enText, 'en-US', enSpan, index);
+                    pairDiv.appendChild(enSpan);
+                }
+
+                if (document.getElementById('showPersian')?.checked && faText) {
+                    const faSpan = document.createElement('span');
+                    faSpan.textContent = faText;
+                    faSpan.lang = 'fa-IR';
+                    faSpan.dataset.index = index;
+                    faSpan.onclick = () => playWord(faText, 'fa-IR', faSpan, index);
+                    pairDiv.appendChild(faSpan);
+                }
+
+                paragraphDisplay.appendChild(pairDiv);
+            }
+
+            const thParts = (w.th || '').split('\n');
+            const enParts = (w.en || '').split('\n');
+            const faParts = (w.fa || '').split('\n');
+            const maxParts = Math.max(thParts.length, enParts.length, faParts.length);
+
+            for (let p = 0; p < maxParts; p++) {
+                const thPart = thParts[p] || '';
+                const enPart = enParts[p] || '';
+                const faPart = faParts[p] || '';
+                buildLanguages(thPart, enPart, faPart, i);
+
+                if (p < maxParts - 1) {
+                    paragraphDisplay.appendChild(document.createElement('br'));
                 }
             }
         });
 
-        /* --- Paragraph Rendering --- */
-        function getCurrentParagraph() { return book?.chapters?.[currentChapter]?.paragraphs?.[currentParagraph] || []; }
+        applyThaiFont();
 
-        /* --- Paragraph Rendering --- */
-        function renderParagraph() {
-            const para = getCurrentParagraph();
-            paragraphDisplay.innerHTML = '';
+        // 🔑 Always refresh the quiz with this paragraph
+        Quiz.buildFromParagraph(para);
+    }
 
-            para.forEach((w, i) => {
-                if (w.th === "\n" && w.en === "\n" && w.fa === "\n") {
-                    paragraphDisplay.appendChild(document.createElement('br'));
-                    return;
-                }
+    function playWord(text, lang, span, index) {
+        if (!text || text === "\n") return;
 
-                function buildLanguages(thText, enText, faText, index) {
-                    const pairDiv = document.createElement('div');
-                    pairDiv.className = 'word-pair';
-                    pairDiv.dataset.index = index;
+        const themeClass = document.body.dataset.theme === 'dark'
+            ? 'highlight-dark'
+            : 'highlight-light';
 
-                    if (document.getElementById('showThai')?.checked && thText) {
-                        const thSpan = document.createElement('span');
-                        thSpan.textContent = thText;
-                        thSpan.lang = 'th-TH';
-                        thSpan.dataset.index = index;
-                        thSpan.onclick = () => playWord(thText, 'th-TH', thSpan, index);
-                        pairDiv.appendChild(thSpan);
-                    }
+        // Clear previous highlights, then highlight clicked word
+        clearHighlights();
+        if (span) span.classList.add(themeClass);
 
-                    if (document.getElementById('showEnglish')?.checked && enText) {
-                        const enSpan = document.createElement('span');
-                        enSpan.textContent = enText;
-                        enSpan.lang = 'en-US';
-                        enSpan.dataset.index = index;
-                        enSpan.onclick = () => playWord(enText, 'en-US', enSpan, index);
-                        pairDiv.appendChild(enSpan);
-                    }
+        // Cancel any current speech
+        speechSynthesis.cancel();
 
-                    if (document.getElementById('showPersian')?.checked && faText) {
-                        const faSpan = document.createElement('span');
-                        faSpan.textContent = faText;
-                        faSpan.lang = 'fa-IR';
-                        faSpan.dataset.index = index;
-                        faSpan.onclick = () => playWord(faText, 'fa-IR', faSpan, index);
-                        pairDiv.appendChild(faSpan);
-                    }
+        // Use speakWord with autoAdvance:false so highlight stays
+        speakWord(text, lang, index, { autoAdvance: false }).then(() => {
+            // Do NOT remove highlight automatically
+        });
+    }
 
-                    paragraphDisplay.appendChild(pairDiv);
-                }
+    function clearHighlights() { document.querySelectorAll('#paragraphDisplay span').forEach(s => s.classList.remove('highlight-light', 'highlight-dark')); }
 
-                const thParts = (w.th || '').split('\n');
-                const enParts = (w.en || '').split('\n');
-                const faParts = (w.fa || '').split('\n');
-                const maxParts = Math.max(thParts.length, enParts.length, faParts.length);
-
-                for (let p = 0; p < maxParts; p++) {
-                    const thPart = thParts[p] || '';
-                    const enPart = enParts[p] || '';
-                    const faPart = faParts[p] || '';
-                    buildLanguages(thPart, enPart, faPart, i);
-
-                    if (p < maxParts - 1) {
-                        paragraphDisplay.appendChild(document.createElement('br'));
-                    }
-                }
-            });
-
-            applyThaiFont();
-
-            // 🔑 Always refresh the quiz with this paragraph
-            Quiz.buildFromParagraph(para);
-        }
-
-        function playWord(text, lang, span, index) {
-            if (!text || text === "\n") return;
+    function speakWord(text, lang, index, { autoAdvance = true } = {}) {
+        return new Promise(resolve => {
+            if (!text || text === "\n") {
+                resolve();
+                return;
+            }
 
             const themeClass = document.body.dataset.theme === 'dark'
                 ? 'highlight-dark'
                 : 'highlight-light';
 
-            // Clear previous highlights, then highlight clicked word
-            clearHighlights();
-            if (span) span.classList.add(themeClass);
+            const pairDiv = paragraphDisplay.querySelector(`.word-pair[data-index="${index}"]`);
+            const span = pairDiv ? pairDiv.querySelector(`span[lang="${lang}"]`) : null;
 
-            // Cancel any current speech
-            speechSynthesis.cancel();
+            if (span) {
+                span.classList.add(themeClass);
+                lastHighlightedIndex = index;   // 🔑 remember last highlighted
+            }
 
-            // Use speakWord with autoAdvance:false so highlight stays
-            speakWord(text, lang, index, { autoAdvance: false }).then(() => {
-                // Do NOT remove highlight automatically
+            const utter = new SpeechSynthesisUtterance(text);
+            utter.lang = lang;
+            utter.onend = () => {
+                // Only clear if auto-advancing AND still playing
+                if (autoAdvance && isPlaying && span) {
+                    span.classList.remove('highlight-light', 'highlight-dark');
+                }
+                resolve();
+            };
+            speechSynthesis.speak(utter);
+        });
+    }
+
+    /* --- Quiz --- */
+    /* --- Quiz --- */
+    const Quiz = {
+        data: [],
+        currentQ: 0,
+
+        buildFromParagraph(para) {
+            this.data = para.map(w => ({
+                th: w.th,
+                en: w.en,
+                fa: w.fa,
+                attempted: false,
+                correct: false
+            }));
+            this.currentQ = 0;
+            this.render();
+        },
+
+        render() {
+            const qDiv = document.getElementById("quiz");
+            qDiv.innerHTML = "";
+
+            if (!this.data || !this.data.length) {
+                qDiv.textContent = "No quiz available for this paragraph.";
+                return;
+            }
+
+            const q = this.data[this.currentQ];
+            const qLang = document.querySelector('input[name="questionLang"]:checked')?.value;
+            const aLang = document.querySelector('input[name="answerLang"]:checked')?.value;
+
+            if (!qLang || !aLang) {
+                qDiv.textContent = "Select both Question and Answer languages.";
+                return;
+            }
+            if (qLang === aLang) {
+                qDiv.textContent = "Answer language must be different from Question.";
+                return;
+            }
+
+            // --- Question word ---
+            const qEl = document.createElement("div");
+            qEl.className = "quiz-question";
+            qEl.textContent = q[qLang] || "";
+            qEl.style.cursor = "pointer";
+            qEl.addEventListener("click", () => {
+                speakTextQueued(q[qLang], qLang === "th" ? "th-TH" : qLang === "en" ? "en-US" : "fa-IR");
             });
-        }
+            qDiv.appendChild(qEl);
 
-        function clearHighlights() { document.querySelectorAll('#paragraphDisplay span').forEach(s => s.classList.remove('highlight-light', 'highlight-dark')); }
+            // --- Answer options (limit 4 random) ---
+            let opts = this.data
+                .map(qq => qq[aLang])
+                .filter((val, idx, arr) => arr.indexOf(val) === idx && val); // unique & non-empty
 
-        function speakWord(text, lang, index, { autoAdvance = true } = {}) {
-            return new Promise(resolve => {
-                if (!text || text === "\n") {
-                    resolve();
-                    return;
-                }
+            // Always include the correct answer
+            const correct = q[aLang];
+            opts = opts.filter(o => o !== correct);
 
-                const themeClass = document.body.dataset.theme === 'dark'
-                    ? 'highlight-dark'
-                    : 'highlight-light';
+            // Pick 3 random wrong + add correct
+            opts = [correct, ...opts.sort(() => Math.random() - 0.5).slice(0, 3)];
+            opts.sort(() => Math.random() - 0.5);
 
-                const pairDiv = paragraphDisplay.querySelector(`.word-pair[data-index="${index}"]`);
-                const span = pairDiv ? pairDiv.querySelector(`span[lang="${lang}"]`) : null;
+            // Track score safely
+            if (typeof this.score === "undefined") this.score = 0;
+            if (typeof this.attempts === "undefined") this.attempts = 0;
 
-                if (span) {
-                    span.classList.add(themeClass);
-                    lastHighlightedIndex = index;   // 🔑 remember last highlighted
-                }
+            // --- Render answer options ---
+            const optsContainer = document.createElement("div");
+            optsContainer.className = "quiz-options";
 
-                const utter = new SpeechSynthesisUtterance(text);
-                utter.lang = lang;
-                utter.onend = () => {
-                    // Only clear if auto-advancing AND still playing
-                    if (autoAdvance && isPlaying && span) {
-                        span.classList.remove('highlight-light', 'highlight-dark');
-                    }
-                    resolve();
-                };
-                speechSynthesis.speak(utter);
-            });
-        }
+            opts.forEach(opt => {
+                const optEl = document.createElement("div");
+                optEl.className = "quiz-option";
+                optEl.textContent = opt;
 
-        /* --- Quiz --- */
-        /* --- Quiz --- */
-        const Quiz = {
-            data: [],
-            currentQ: 0,
+                // Speak on click + check correctness
+                optEl.addEventListener("click", () => {
+                    speakTextQueued(opt, aLang === "th" ? "th-TH" : aLang === "en" ? "en-US" : "fa-IR");
 
-            buildFromParagraph(para) {
-                this.data = para.map(w => ({
-                    th: w.th,
-                    en: w.en,
-                    fa: w.fa,
-                    attempted: false,
-                    correct: false
-                }));
-                this.currentQ = 0;
-                this.render();
-            },
-
-            render() {
-                const qDiv = document.getElementById("quiz");
-                qDiv.innerHTML = "";
-
-                if (!this.data || !this.data.length) {
-                    qDiv.textContent = "No quiz available for this paragraph.";
-                    return;
-                }
-
-                const q = this.data[this.currentQ];
-                const qLang = document.querySelector('input[name="questionLang"]:checked')?.value;
-                const aLang = document.querySelector('input[name="answerLang"]:checked')?.value;
-
-                if (!qLang || !aLang) {
-                    qDiv.textContent = "Select both Question and Answer languages.";
-                    return;
-                }
-                if (qLang === aLang) {
-                    qDiv.textContent = "Answer language must be different from Question.";
-                    return;
-                }
-
-                // --- Question word ---
-                const qEl = document.createElement("div");
-                qEl.className = "quiz-question";
-                qEl.textContent = q[qLang] || "";
-                qEl.style.cursor = "pointer";
-                qEl.addEventListener("click", () => {
-                    speakTextQueued(q[qLang], qLang === "th" ? "th-TH" : qLang === "en" ? "en-US" : "fa-IR");
-                });
-                qDiv.appendChild(qEl);
-
-                // --- Answer options (limit 4 random) ---
-                let opts = this.data
-                    .map(qq => qq[aLang])
-                    .filter((val, idx, arr) => arr.indexOf(val) === idx && val); // unique & non-empty
-
-                // Always include the correct answer
-                const correct = q[aLang];
-                opts = opts.filter(o => o !== correct);
-
-                // Pick 3 random wrong + add correct
-                opts = [correct, ...opts.sort(() => Math.random() - 0.5).slice(0, 3)];
-                opts.sort(() => Math.random() - 0.5);
-
-                // Track score safely
-                if (typeof this.score === "undefined") this.score = 0;
-                if (typeof this.attempts === "undefined") this.attempts = 0;
-
-                // --- Render answer options ---
-                const optsContainer = document.createElement("div");
-                optsContainer.className = "quiz-options";
-
-                opts.forEach(opt => {
-                    const optEl = document.createElement("div");
-                    optEl.className = "quiz-option";
-                    optEl.textContent = opt;
-
-                    // Speak on click + check correctness
-                    optEl.addEventListener("click", () => {
-                        speakTextQueued(opt, aLang === "th" ? "th-TH" : aLang === "en" ? "en-US" : "fa-IR");
-
-                        if (opt === correct) {
-                            if (!q.correct) { // first time marking correct
-                                optEl.classList.add("correct");
-                                this.score++;
-                                q.correct = true;
-                                q.attempted = true;
-                                this.attempts++;
-                            }
-                        } else {
-                            optEl.classList.add("incorrect");
-                            q.correct = false;
+                    if (opt === correct) {
+                        if (!q.correct) { // first time marking correct
+                            optEl.classList.add("correct");
+                            this.score++;
+                            q.correct = true;
                             q.attempted = true;
                             this.attempts++;
                         }
+                    } else {
+                        optEl.classList.add("incorrect");
+                        q.correct = false;
+                        q.attempted = true;
+                        this.attempts++;
+                    }
 
-                        document.getElementById("score").textContent =
-                            `Score: ${this.score}/${this.attempts}`;
-                    });
-
-                    optsContainer.appendChild(optEl);
+                    document.getElementById("score").textContent =
+                        `Score: ${this.score}/${this.attempts}`;
                 });
 
-                qDiv.appendChild(optsContainer);
-            },
+                optsContainer.appendChild(optEl);
+            });
 
-            updateScore() {
-                // Ensure counters exist
-                if (typeof this.score === "undefined") this.score = 0;
-                if (typeof this.attempts === "undefined") this.attempts = 0;
+            qDiv.appendChild(optsContainer);
+        },
 
-                // Update the score display with live counters
-                scoreDisplay.textContent = `Score: ${this.score}/${this.attempts}`;
-            }
+        updateScore() {
+            // Ensure counters exist
+            if (typeof this.score === "undefined") this.score = 0;
+            if (typeof this.attempts === "undefined") this.attempts = 0;
 
-        };
+            // Update the score display with live counters
+            scoreDisplay.textContent = `Score: ${this.score}/${this.attempts}`;
+        }
 
-        function buildQuizFromParagraph(para) { Quiz.buildFromParagraph(para); }
+    };
 
-        /* --- SPA Init (Refactored) --- */
-        function initSPA() {
-            const main = document.querySelector('main');
-            main.innerHTML = '';
+    function buildQuizFromParagraph(para) { Quiz.buildFromParagraph(para); }
 
-            /* --- Book/Chapter/Paragraph Selection --- */
-            const selSec = document.createElement('section');
-            selSec.id = 'bookSelectionControls';
-            const bookLabel = document.createElement('label'); bookLabel.textContent = 'Book: ';
-            const bookSelectEl = document.createElement('select'); bookSelectEl.id = 'bookSelect'; bookLabel.appendChild(bookSelectEl);
-            const chapLabel = document.createElement('label'); chapLabel.textContent = 'Chapter: ';
-            const chapSelectEl = document.createElement('select'); chapSelectEl.id = 'chapterSelect'; chapLabel.appendChild(chapSelectEl);
-            const paraLabel = document.createElement('label'); paraLabel.textContent = 'Paragraph: ';
-            const paraSelectEl = document.createElement('select'); paraSelectEl.id = 'paragraphSelect'; paraLabel.appendChild(paraSelectEl);
-            selSec.append(bookLabel, chapLabel, paraLabel);
-            main.appendChild(selSec);
+    /* --- SPA Init (Refactored) --- */
+    function initSPA() {
+        const main = document.querySelector('main');
+        main.innerHTML = '';
 
-            /* --- Paragraph Section --- */
-            const paraSec = document.createElement('section'); paraSec.id = 'paragraphSec';
-            const paraHeading = document.createElement('div'); paraHeading.className = 'quiz-heading';
-            paraHeading.textContent = 'Click Play (or click a word to hear it)';
-            paraSec.appendChild(paraHeading);
+        /* --- Book/Chapter/Paragraph Selection --- */
+        const selSec = document.createElement('section');
+        selSec.id = 'bookSelectionControls';
+        const bookLabel = document.createElement('label'); bookLabel.textContent = 'Book: ';
+        const bookSelectEl = document.createElement('select'); bookSelectEl.id = 'bookSelect'; bookLabel.appendChild(bookSelectEl);
+        const chapLabel = document.createElement('label'); chapLabel.textContent = 'Chapter: ';
+        const chapSelectEl = document.createElement('select'); chapSelectEl.id = 'chapterSelect'; chapLabel.appendChild(chapSelectEl);
+        const paraLabel = document.createElement('label'); paraLabel.textContent = 'Paragraph: ';
+        const paraSelectEl = document.createElement('select'); paraSelectEl.id = 'paragraphSelect'; paraLabel.appendChild(paraSelectEl);
+        selSec.append(bookLabel, chapLabel, paraLabel);
+        main.appendChild(selSec);
 
-            const displayDiv = document.createElement('div'); displayDiv.id = 'paragraphDisplay';
-            paraSec.appendChild(displayDiv);
+        /* --- Paragraph Section --- */
+        const paraSec = document.createElement('section'); paraSec.id = 'paragraphSec';
+        const paraHeading = document.createElement('div'); paraHeading.className = 'quiz-heading';
+        paraHeading.textContent = 'Click Play (or click a word to hear it)';
+        paraSec.appendChild(paraHeading);
 
-            const controlsDiv = document.createElement('div');
-            controlsDiv.className = 'controls';
-            controlsDiv.id = 'paragraphControls';
+        const displayDiv = document.createElement('div'); displayDiv.id = 'paragraphDisplay';
+        paraSec.appendChild(displayDiv);
 
-            const playBtn = document.createElement('button'); playBtn.id = 'playBtn'; playBtn.textContent = '▶️';
-            const pauseBtn = document.createElement('button'); pauseBtn.id = 'pauseBtn'; pauseBtn.textContent = '⏸️';
-            const restartBtn = document.createElement('button'); restartBtn.id = 'restartBtn'; restartBtn.textContent = '⏮️';
+        const controlsDiv = document.createElement('div');
+        controlsDiv.className = 'controls';
+        controlsDiv.id = 'paragraphControls';
 
-            // New paragraph navigation buttons
-            const prevParaBtn = document.createElement('button'); prevParaBtn.id = 'prevParagraph'; prevParaBtn.textContent = '⬅️';
-            const nextParaBtn = document.createElement('button'); nextParaBtn.id = 'nextParagraph'; nextParaBtn.textContent = '➡️';
-            const paraLabelText = document.createElement('span'); paraLabelText.textContent = 'Paragraph ';
+        const playBtn = document.createElement('button'); playBtn.id = 'playBtn'; playBtn.textContent = '▶️';
+        const pauseBtn = document.createElement('button'); pauseBtn.id = 'pauseBtn'; pauseBtn.textContent = '⏸️';
+        const restartBtn = document.createElement('button'); restartBtn.id = 'restartBtn'; restartBtn.textContent = '⏮️';
 
-            const showThaiLbl = document.createElement('label');
-            showThaiLbl.innerHTML = `<input type="checkbox" id="showThai" checked> th`;
+        // New paragraph navigation buttons
+        const prevParaBtn = document.createElement('button'); prevParaBtn.id = 'prevParagraph'; prevParaBtn.textContent = '⬅️';
+        const nextParaBtn = document.createElement('button'); nextParaBtn.id = 'nextParagraph'; nextParaBtn.textContent = '➡️';
+        const paraLabelText = document.createElement('span'); paraLabelText.textContent = 'Paragraph ';
 
-            const showEnglishLbl = document.createElement('label');
-            showEnglishLbl.innerHTML = `<input type="checkbox" id="showEnglish"> en`;
+        const showThaiLbl = document.createElement('label');
+        showThaiLbl.innerHTML = `<input type="checkbox" id="showThai" checked> th`;
 
-            const showPersianLbl = document.createElement('label');
-            showPersianLbl.innerHTML = `<input type="checkbox" id="showPersian"> fa`;
+        const showEnglishLbl = document.createElement('label');
+        showEnglishLbl.innerHTML = `<input type="checkbox" id="showEnglish"> en`;
 
-            const delayLbl = document.createElement('label');
-            delayLbl.innerHTML = `Delay<input type="number" id="playbackDelay" value="1" min="1" max="10" step="1" style="width: 4em;">`;
-            const delayInput = delayLbl.querySelector('input');
+        const showPersianLbl = document.createElement('label');
+        showPersianLbl.innerHTML = `<input type="checkbox" id="showPersian"> fa`;
 
-            // --- Split into two rows for mobile ---
-            const row1 = document.createElement('div'); row1.className = 'paragraph-controls-row';
-            row1.style.display = 'flex'; row1.style.flexWrap = 'wrap'; row1.style.gap = '0.5em';
-            row1.append(playBtn, pauseBtn, restartBtn, paraLabelText, prevParaBtn, nextParaBtn);
+        const delayLbl = document.createElement('label');
+        delayLbl.innerHTML = `Delay<input type="number" id="playbackDelay" value="1" min="1" max="10" step="1" style="width: 4em;">`;
+        const delayInput = delayLbl.querySelector('input');
 
-            const row2 = document.createElement('div'); row2.className = 'paragraph-controls-row';
-            row2.style.display = 'flex'; row2.style.flexWrap = 'wrap'; row2.style.gap = '0.5em';
-            row2.append(showThaiLbl, showEnglishLbl, showPersianLbl, delayLbl);
+        // --- Split into two rows for mobile ---
+        const row1 = document.createElement('div'); row1.className = 'paragraph-controls-row';
+        row1.style.display = 'flex'; row1.style.flexWrap = 'wrap'; row1.style.gap = '0.5em';
+        row1.append(playBtn, pauseBtn, restartBtn, paraLabelText, prevParaBtn, nextParaBtn);
 
-            controlsDiv.append(row1, row2);
-            paraSec.appendChild(controlsDiv);
-            main.appendChild(paraSec);
+        const row2 = document.createElement('div'); row2.className = 'paragraph-controls-row';
+        row2.style.display = 'flex'; row2.style.flexWrap = 'wrap'; row2.style.gap = '0.5em';
+        row2.append(showThaiLbl, showEnglishLbl, showPersianLbl, delayLbl);
 
-            /* --- Quiz Section --- */
-            const quizSec = document.createElement('section');
-            quizSec.id = 'quizSec';
-            quizSec.innerHTML = `
+        controlsDiv.append(row1, row2);
+        paraSec.appendChild(controlsDiv);
+        main.appendChild(paraSec);
+
+        /* --- Quiz Section --- */
+        const quizSec = document.createElement('section');
+        quizSec.id = 'quizSec';
+        quizSec.innerHTML = `
 <p>Multiple Choice Quiz</p>
 <div id="quiz"></div>
 <div id="quizControls">
@@ -995,232 +990,231 @@
         </div>
     </div>
 </div>`;
-            main.appendChild(quizSec);
+        main.appendChild(quizSec);
 
-            /* --- Bind globals --- */
-            bookSelect = document.getElementById('bookSelect');
-            chapterSelect = document.getElementById('chapterSelect');
-            paragraphSelect = document.getElementById('paragraphSelect');
-            paragraphDisplay = document.getElementById('paragraphDisplay');
-            scoreDisplay = document.getElementById('score');
+        /* --- Bind globals --- */
+        bookSelect = document.getElementById('bookSelect');
+        chapterSelect = document.getElementById('chapterSelect');
+        paragraphSelect = document.getElementById('paragraphSelect');
+        paragraphDisplay = document.getElementById('paragraphDisplay');
+        scoreDisplay = document.getElementById('score');
 
-            // Paragraph selection -> render
-            paragraphSelect.addEventListener('change', () => {
-                currentParagraph = parseInt(paragraphSelect.value, 10) || 0;
-                saveSetting('currentParagraph', currentParagraph);
+        // Paragraph selection -> render
+        paragraphSelect.addEventListener('change', () => {
+            currentParagraph = parseInt(paragraphSelect.value, 10) || 0;
+            saveSetting('currentParagraph', currentParagraph);
+            renderParagraph();
+        });
+
+        // Language settings
+        const savedQ = loadSetting('questionLang', 'th');
+        const savedA = loadSetting('answerLang', 'en');
+        document.querySelector(`input[name="questionLang"][value="${savedQ}"]`).checked = true;
+        document.querySelector(`input[name="answerLang"][value="${savedA}"]`).checked = true;
+
+        document.querySelectorAll('input[name="questionLang"]').forEach(r =>
+            r.addEventListener('change', e => {
+                saveSetting('questionLang', e.target.value);
                 renderParagraph();
-            });
+            })
+        );
+        document.querySelectorAll('input[name="answerLang"]').forEach(r =>
+            r.addEventListener('change', e => {
+                saveSetting('answerLang', e.target.value);
+                renderParagraph();
+            })
+        );
 
-            // Language settings
-            const savedQ = loadSetting('questionLang', 'th');
-            const savedA = loadSetting('answerLang', 'en');
-            document.querySelector(`input[name="questionLang"][value="${savedQ}"]`).checked = true;
-            document.querySelector(`input[name="answerLang"][value="${savedA}"]`).checked = true;
+        // Restore user selections
+        document.getElementById('showThai').checked = loadSetting('showThai', '1') === '1';
+        document.getElementById('showEnglish').checked = loadSetting('showEnglish', '0') === '1';
+        document.getElementById('showPersian').checked = loadSetting('showPersian', '0') === '1';
+        document.getElementById('playbackDelay').value = loadSetting('playbackDelay', '0.5');
 
-            document.querySelectorAll('input[name="questionLang"]').forEach(r =>
-                r.addEventListener('change', e => {
-                    saveSetting('questionLang', e.target.value);
-                    renderParagraph();
-                })
-            );
-            document.querySelectorAll('input[name="answerLang"]').forEach(r =>
-                r.addEventListener('change', e => {
-                    saveSetting('answerLang', e.target.value);
-                    renderParagraph();
-                })
-            );
+        delayInput.addEventListener('change', () => {
+            let val = parseFloat(delayInput.value);
+            if (isNaN(val)) val = 0.5;
+            val = Math.min(Math.max(val, 0.5), 10);
+            delayInput.value = val.toFixed(1);
+            saveSetting('playbackDelay', delayInput.value);
+        });
 
-            // Restore user selections
-            document.getElementById('showThai').checked = loadSetting('showThai', '1') === '1';
-            document.getElementById('showEnglish').checked = loadSetting('showEnglish', '0') === '1';
-            document.getElementById('showPersian').checked = loadSetting('showPersian', '0') === '1';
-            document.getElementById('playbackDelay').value = loadSetting('playbackDelay', '0.5');
+        /* --- Paragraph Controls Event Handling --- */
+        playBtn.addEventListener('click', playParagraph);
+        pauseBtn.addEventListener('click', pauseParagraph);
+        restartBtn.addEventListener('click', restartParagraph);
 
-            delayInput.addEventListener('change', () => {
-                let val = parseFloat(delayInput.value);
+        nextParaBtn.addEventListener('click', () => {
+            const max = book?.chapters?.[currentChapter]?.paragraphs?.length || 0;
+            if (currentParagraph < max - 1) {
+                currentParagraph++;
+                paragraphSelect.value = currentParagraph;
+                saveSetting('currentParagraph', currentParagraph);
+                loadParagraph();
+            }
+        });
+
+        prevParaBtn.addEventListener('click', () => {
+            if (currentParagraph > 0) {
+                currentParagraph--;
+                paragraphSelect.value = currentParagraph;
+                saveSetting('currentParagraph', currentParagraph);
+                loadParagraph();
+            }
+        });
+    }
+
+    /* --- Book Loading --- */
+    async function getBookList() { try { const res = await fetch('/assets/books/bookList.json'); return await res.json(); } catch (e) { console.error(e); return []; } }
+    async function populateBooks() {
+        const list = await getBookList(); bookSelect.innerHTML = ''; list.forEach(b => { const o = document.createElement('option'); o.value = b.bookFilename; o.textContent = b.bookTitle; bookSelect.appendChild(o); });
+        const savedBook = loadSetting('currentBook', bookSelect.value); bookSelect.value = savedBook; await selectBook(savedBook);
+    }
+    async function selectBook(filename) { try { const res = await fetch(`/assets/books/${filename}`); book = await res.json(); saveSetting('currentBook', filename); populateChapters(); } catch (e) { console.error(e); } }
+    function populateChapters() {
+        chapterSelect.innerHTML = ''; book.chapters.forEach((c, i) => { const o = document.createElement('option'); o.value = i; o.textContent = c.chapterTitle; chapterSelect.appendChild(o); });
+        currentChapter = Math.min(getSavedInt('currentChapter', 0), book.chapters.length - 1); chapterSelect.value = currentChapter; populateParagraphs();
+    }
+    function populateParagraphs() {
+        paragraphSelect.innerHTML = ''; book.chapters[currentChapter].paragraphs.forEach((p, i) => { const o = document.createElement('option'); o.value = i; o.textContent = "Paragraph " + (i + 1); paragraphSelect.appendChild(o); });
+        currentParagraph = Math.min(getSavedInt('currentParagraph', 0), book.chapters[currentChapter].paragraphs.length - 1); paragraphSelect.value = currentParagraph; loadParagraph();
+    }
+    function loadParagraph() { saveSetting('currentChapter', currentChapter); saveSetting('currentParagraph', currentParagraph); renderParagraph(); }
+
+    /* --- Event Delegation --- */
+    document.addEventListener('change', e => {
+        switch (e.target.id) {
+            case 'bookSelect':
+                saveSetting('currentBook', e.target.value);
+                selectBook(e.target.value);
+                break;
+            case 'chapterSelect':
+                currentChapter = +e.target.value;
+                saveSetting('currentChapter', currentChapter);
+                populateParagraphs();
+                break;
+            case 'paragraphSelect':
+                currentParagraph = +e.target.value;
+                saveSetting('currentParagraph', currentParagraph);
+                loadParagraph();
+                break;
+            case 'showThai':
+            case 'showEnglish':
+                saveSetting(e.target.id, e.target.checked ? '1' : '0');
+                renderParagraph();
+                break;
+            case 'showPersian':
+                saveSetting(e.target.id, e.target.checked ? '1' : '0');
+                renderParagraph();
+                break;
+            case 'playbackDelay':
+                let val = parseFloat(e.target.value);
                 if (isNaN(val)) val = 0.5;
                 val = Math.min(Math.max(val, 0.5), 10);
-                delayInput.value = val.toFixed(1);
-                saveSetting('playbackDelay', delayInput.value);
-            });
+                e.target.value = val.toFixed(1);
+                saveSetting('playbackDelay', e.target.value);
+                break;
+            case 'questionThai':
+            case 'incorrectOnly':
+                saveSetting(e.target.id, e.target.checked ? '1' : '0');
+                Quiz.render();
+                break;
+        }
+    });
 
-            /* --- Paragraph Controls Event Handling --- */
-            playBtn.addEventListener('click', playParagraph);
-            pauseBtn.addEventListener('click', pauseParagraph);
-            restartBtn.addEventListener('click', restartParagraph);
+    document.addEventListener('click', e => {
+        switch (e.target.id) {
+            case 'playBtn': playParagraph(); break;
+            case 'pauseBtn': pauseParagraph(); break;
+            case 'restartBtn': restartParagraph(); break;
+            case 'prevQ': Quiz.currentQ = Math.max(0, Quiz.currentQ - 1); Quiz.data.forEach(q => { q.attempted = false; q.correct = false; }); Quiz.render(); break;
+            case 'nextQ': Quiz.currentQ++; Quiz.render(); break;
+            case 'retryQuiz': Quiz.data.forEach(q => { q.attempted = false; q.correct = false; }); Quiz.render(); break;
+        }
+    });
 
-            nextParaBtn.addEventListener('click', () => {
-                const max = book?.chapters?.[currentChapter]?.paragraphs?.length || 0;
-                if (currentParagraph < max - 1) {
-                    currentParagraph++;
-                    paragraphSelect.value = currentParagraph;
-                    saveSetting('currentParagraph', currentParagraph);
-                    loadParagraph();
-                }
-            });
+    /* --- Playback Controls (play resumes from paused index) --- */
+    function playParagraph() {
+        // if already playing nothing to do
+        if (isPlaying) return;
 
-            prevParaBtn.addEventListener('click', () => {
-                if (currentParagraph > 0) {
-                    currentParagraph--;
-                    paragraphSelect.value = currentParagraph;
-                    saveSetting('currentParagraph', currentParagraph);
-                    loadParagraph();
-                }
-            });
+        const para = getCurrentParagraph();
+        if (!para || para.length === 0) return;
+
+        isPlaying = true;
+
+        // Resume from currentWordIndex when in-range. Only reset to 0 if index is invalid/out-of-range.
+        if (typeof currentWordIndex !== 'number' || currentWordIndex < 0 || currentWordIndex >= para.length) {
+            currentWordIndex = 0;
         }
 
-        /* --- Book Loading --- */
-        async function getBookList() { try { const res = await fetch('/assets/books/bookList.json'); return await res.json(); } catch (e) { console.error(e); return []; } }
-        async function populateBooks() {
-            const list = await getBookList(); bookSelect.innerHTML = ''; list.forEach(b => { const o = document.createElement('option'); o.value = b.bookFilename; o.textContent = b.bookTitle; bookSelect.appendChild(o); });
-            const savedBook = loadSetting('currentBook', bookSelect.value); bookSelect.value = savedBook; await selectBook(savedBook);
-        }
-        async function selectBook(filename) { try { const res = await fetch(`/assets/books/${filename}`); book = await res.json(); saveSetting('currentBook', filename); populateChapters(); } catch (e) { console.error(e); } }
-        function populateChapters() {
-            chapterSelect.innerHTML = ''; book.chapters.forEach((c, i) => { const o = document.createElement('option'); o.value = i; o.textContent = c.chapterTitle; chapterSelect.appendChild(o); });
-            currentChapter = Math.min(getSavedInt('currentChapter', 0), book.chapters.length - 1); chapterSelect.value = currentChapter; populateParagraphs();
-        }
-        function populateParagraphs() {
-            paragraphSelect.innerHTML = ''; book.chapters[currentChapter].paragraphs.forEach((p, i) => { const o = document.createElement('option'); o.value = i; o.textContent = "Paragraph " + (i + 1); paragraphSelect.appendChild(o); });
-            currentParagraph = Math.min(getSavedInt('currentParagraph', 0), book.chapters[currentChapter].paragraphs.length - 1); paragraphSelect.value = currentParagraph; loadParagraph();
-        }
-        function loadParagraph() { saveSetting('currentChapter', currentChapter); saveSetting('currentParagraph', currentParagraph); renderParagraph(); }
+        speakNextWord();
+    }
+    function pauseParagraph() {
+        isPlaying = false;
+        speechSynthesis.cancel();
 
-        /* --- Event Delegation --- */
-        document.addEventListener('change', e => {
-            switch (e.target.id) {
-                case 'bookSelect':
-                    saveSetting('currentBook', e.target.value);
-                    selectBook(e.target.value);
-                    break;
-                case 'chapterSelect':
-                    currentChapter = +e.target.value;
-                    saveSetting('currentChapter', currentChapter);
-                    populateParagraphs();
-                    break;
-                case 'paragraphSelect':
-                    currentParagraph = +e.target.value;
-                    saveSetting('currentParagraph', currentParagraph);
-                    loadParagraph();
-                    break;
-                case 'showThai':
-                case 'showEnglish':
-                    saveSetting(e.target.id, e.target.checked ? '1' : '0');
-                    renderParagraph();
-                    break;
-                case 'showPersian':
-                    saveSetting(e.target.id, e.target.checked ? '1' : '0');
-                    renderParagraph();
-                    break;
-                case 'playbackDelay':
-                    let val = parseFloat(e.target.value);
-                    if (isNaN(val)) val = 0.5;
-                    val = Math.min(Math.max(val, 0.5), 10);
-                    e.target.value = val.toFixed(1);
-                    saveSetting('playbackDelay', e.target.value);
-                    break;
-                case 'questionThai':
-                case 'incorrectOnly':
-                    saveSetting(e.target.id, e.target.checked ? '1' : '0');
-                    Quiz.render();
-                    break;
+        // 🔑 Ensure last highlight stays visible
+        if (lastHighlightedIndex !== null) {
+            clearHighlights();
+            const pairDiv = paragraphDisplay.querySelector(`.word-pair[data-index="${lastHighlightedIndex}"]`);
+            if (pairDiv) {
+                const spans = pairDiv.querySelectorAll('span');
+                const themeClass = document.body.dataset.theme === 'dark'
+                    ? 'highlight-dark'
+                    : 'highlight-light';
+                spans.forEach(s => s.classList.add(themeClass));
             }
-        });
-
-        document.addEventListener('click', e => {
-            switch (e.target.id) {
-                case 'playBtn': playParagraph(); break;
-                case 'pauseBtn': pauseParagraph(); break;
-                case 'restartBtn': restartParagraph(); break;
-                case 'prevQ': Quiz.currentQ = Math.max(0, Quiz.currentQ - 1); Quiz.data.forEach(q => { q.attempted = false; q.correct = false; }); Quiz.render(); break;
-                case 'nextQ': Quiz.currentQ++; Quiz.render(); break;
-                case 'retryQuiz': Quiz.data.forEach(q => { q.attempted = false; q.correct = false; }); Quiz.render(); break;
-            }
-        });
-
-        /* --- Playback Controls (play resumes from paused index) --- */
-        function playParagraph() {
-            // if already playing nothing to do
-            if (isPlaying) return;
-
-            const para = getCurrentParagraph();
-            if (!para || para.length === 0) return;
-
-            isPlaying = true;
-
-            // Resume from currentWordIndex when in-range. Only reset to 0 if index is invalid/out-of-range.
-            if (typeof currentWordIndex !== 'number' || currentWordIndex < 0 || currentWordIndex >= para.length) {
-                currentWordIndex = 0;
-            }
-
-            speakNextWord();
         }
-        function pauseParagraph() {
+    }
+    function restartParagraph() { pauseParagraph(); clearHighlights(); currentWordIndex = 0; playParagraph(); }
+
+    async function speakNextWord() {
+        const para = getCurrentParagraph();
+        if (!isPlaying || !para || currentWordIndex >= para.length) {
             isPlaying = false;
-            speechSynthesis.cancel();
-
-            // 🔑 Ensure last highlight stays visible
-            if (lastHighlightedIndex !== null) {
-                clearHighlights();
-                const pairDiv = paragraphDisplay.querySelector(`.word-pair[data-index="${lastHighlightedIndex}"]`);
-                if (pairDiv) {
-                    const spans = pairDiv.querySelectorAll('span');
-                    const themeClass = document.body.dataset.theme === 'dark'
-                        ? 'highlight-dark'
-                        : 'highlight-light';
-                    spans.forEach(s => s.classList.add(themeClass));
-                }
-            }
+            return;
         }
-        function restartParagraph() { pauseParagraph(); clearHighlights(); currentWordIndex = 0; playParagraph(); }
 
-        async function speakNextWord() {
-            const para = getCurrentParagraph();
-            if (!isPlaying || !para || currentWordIndex >= para.length) {
-                isPlaying = false;
-                return;
-            }
-
-            const w = para[currentWordIndex];
-            if (!w) {
-                currentWordIndex++;
-                await speakNextWord();
-                return;
-            }
-
-            if (w.th === "\n" && w.en === "\n") {
-                currentWordIndex++;
-                await speakNextWord();
-                return;
-            }
-
-            const showThai = document.getElementById('showThai')?.checked;
-            const showEnglish = document.getElementById('showEnglish')?.checked;
-
-            // 🔑 Clear highlights only if we're still actively playing
-            if (isPlaying) clearHighlights();
-
-            let delaySec = parseFloat(document.getElementById('playbackDelay')?.value || loadSetting('playbackDelay', '0.5'));
-            if (isNaN(delaySec)) delaySec = 0.5;
-            const delay = Math.min(Math.max(delaySec, 0.5), 10) * 1000;
-
-            if (showThai && w.th && w.th !== "\n") {
-                await speakWord(w.th, 'th-TH', currentWordIndex, { autoAdvance: true });
-            }
-
-            if (showEnglish && w.en && w.en !== "\n") {
-                await speakWord(w.en, 'en-US', currentWordIndex, { autoAdvance: true });
-            }
-
+        const w = para[currentWordIndex];
+        if (!w) {
             currentWordIndex++;
-            setTimeout(() => { if (isPlaying) speakNextWord(); }, delay);
+            await speakNextWord();
+            return;
         }
 
-        /* --- Init SPA --- */
-        (async function () { initSPA(); await populateBooks(); })();
+        if (w.th === "\n" && w.en === "\n") {
+            currentWordIndex++;
+            await speakNextWord();
+            return;
+        }
 
+        const showThai = document.getElementById('showThai')?.checked;
+        const showEnglish = document.getElementById('showEnglish')?.checked;
 
-    </script>
+        // 🔑 Clear highlights only if we're still actively playing
+        if (isPlaying) clearHighlights();
+
+        let delaySec = parseFloat(document.getElementById('playbackDelay')?.value || loadSetting('playbackDelay', '0.5'));
+        if (isNaN(delaySec)) delaySec = 0.5;
+        const delay = Math.min(Math.max(delaySec, 0.5), 10) * 1000;
+
+        if (showThai && w.th && w.th !== "\n") {
+            await speakWord(w.th, 'th-TH', currentWordIndex, { autoAdvance: true });
+        }
+
+        if (showEnglish && w.en && w.en !== "\n") {
+            await speakWord(w.en, 'en-US', currentWordIndex, { autoAdvance: true });
+        }
+
+        currentWordIndex++;
+        setTimeout(() => { if (isPlaying) speakNextWord(); }, delay);
+    }
+
+    /* --- Init SPA --- */
+    (async function () { initSPA(); await populateBooks(); })();
+
+</script>
 
 </body>
 
