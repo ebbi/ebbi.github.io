@@ -226,38 +226,48 @@
             margin: 0 0.2em;
         }
 
+        :lang(th-TH) {
+            /* Thai text specific styling */
+            font-size: larger;
+        }
+
+        :lang(fa-IR) {
+            /* English text specific styling */
+            direction: rtl;
+        }
+
         .word-pair {
             display: inline-block;
             vertical-align: top;
             margin: 0 0.2em 0.3em 0.2em;
+            cursor: pointer;
         }
 
         .word-pair span[lang="th-TH"] {
             display: block;
             word-break: keep-all;
             overflow-wrap: break-word;
+            font-size: large;
         }
 
         .word-pair span[lang="en-US"] {
-            border-right: 1px solid lightskyblue;
+            border-top: 1px solid lightskyblue;
             display: block;
             word-break: normal;
             overflow-wrap: normal;
             white-space: normal;
             margin-top: 0.1em;
-            padding: 0 0.5rem 0 0;
+            color: darkblue;
         }
 
-
         .word-pair span[lang="fa-IR"] {
-            border-right: 1px solid lightskyblue;
+            border-top: 1px solid lightskyblue;
             display: block;
             word-break: keep-all;
             overflow-wrap: break-word;
-            padding: 0 0.5rem 0 0;
             direction: rtl;
+            color: darkgreen;
         }
-
 
         /* Quiz styling */
         #quiz {
@@ -270,7 +280,8 @@
         }
 
         .quiz-question {
-            margin: 1em 0;
+            font-size: 1.25rem;
+            margin: .1em 0;
         }
 
         .quiz-options {
@@ -791,7 +802,6 @@
         }
 
         /* --- Quiz --- */
-        /* --- Quiz --- */
         const Quiz = {
             data: [],
             currentQ: 0,
@@ -834,6 +844,7 @@
                 const qEl = document.createElement("div");
                 qEl.className = "quiz-question";
                 qEl.textContent = q[qLang] || "";
+                qEl.lang = q[qLang] === "th" ? "th-TH" : qLang === "en" ? "en-US" : qLang === "fa" ? "fa-IR" : "th-TH";
                 qEl.style.cursor = "pointer";
                 qEl.addEventListener("click", () => {
                     speakTextQueued(q[qLang], qLang === "th" ? "th-TH" : qLang === "en" ? "en-US" : "fa-IR");
@@ -863,6 +874,8 @@
 
                 opts.forEach(opt => {
                     const optEl = document.createElement("div");
+                    console.log(aLang);
+                    optEl.lang = aLang === "th" ? "th-TH" : opt.aLang === "en" ? "en-US" : opt.aLang === "fa" ? "fa-IR" : aLang;
                     optEl.className = "quiz-option";
                     optEl.textContent = opt;
 
@@ -891,6 +904,8 @@
 
                     optsContainer.appendChild(optEl);
                 });
+
+                applyThaiFont();
 
                 qDiv.appendChild(optsContainer);
             },
