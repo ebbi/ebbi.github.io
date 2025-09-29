@@ -222,10 +222,11 @@
             box-sizing: border-box;
         }
 
+        /*
         #paragraphDisplay span {
-/*            margin: 0 0.2em; */
+                        margin: 0 0.2em; 
         }
-
+*/
         :lang(th-TH) {
             /* Thai text specific styling */
             font-size: larger;
@@ -239,7 +240,7 @@
         .word-pair {
             display: inline-block;
             vertical-align: top;
-            margin: 0 0.5em 0.5em 0;
+            margin: 0 0.5em 1em 0;
             cursor: pointer;
         }
 
@@ -733,6 +734,10 @@
                     const thPart = thParts[p] || '';
                     const enPart = enParts[p] || '';
                     const faPart = faParts[p] || '';
+
+                    // avoid creating an empty div if all parts are empty
+                    if (!thPart && !enPart && !faPart) continue;
+
                     buildLanguages(thPart, enPart, faPart, i);
 
                     if (p < maxParts - 1) {
@@ -942,9 +947,9 @@
 
             /* --- Paragraph Section --- */
             const paraSec = document.createElement('section'); paraSec.id = 'paragraphSec';
-            const paraHeading = document.createElement('div'); paraHeading.className = 'quiz-heading';
-            paraHeading.textContent = 'Click Play (or click a word to hear it)';
-            paraSec.appendChild(paraHeading);
+            //            const paraHeading = document.createElement('div'); paraHeading.className = 'quiz-heading';
+            //            paraHeading.textContent = 'Click Play (or click a word to hear it)';
+            //            paraSec.appendChild(paraHeading);
 
             const displayDiv = document.createElement('div'); displayDiv.id = 'paragraphDisplay';
             paraSec.appendChild(displayDiv);
@@ -992,7 +997,6 @@
             const quizSec = document.createElement('section');
             quizSec.id = 'quizSec';
             quizSec.innerHTML = `
-<p>Multiple Choice Quiz</p>
 <div id="quiz"></div>
 <div id="quizControls">
     <div class="quiz-row quiz-row-top">
