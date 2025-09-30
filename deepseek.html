@@ -1,0 +1,1648 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai&family=Chakra+Petch&display=swap"
+        rel="stylesheet" />
+    <title>ฝึกฝน Thai</title>
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+
+    <style>
+        /* CSS Custom Properties for Theming */
+        :root {
+            --primary-color: #00247D;
+            --primary-light: #66aaff;
+            --background-light: #f9f9f9;
+            --background-dark: #222;
+            --text-light: #000;
+            --text-dark: #eee;
+            --border-light: #ccc;
+            --border-dark: #555;
+            --correct-color: #4caf50;
+            --incorrect-color: #f44336;
+            --highlight-light: yellow;
+            --highlight-dark: orange;
+            --controls-height: auto;
+            --header-height: 60px;
+        }
+
+        /* Base page styling - MOBILE FIRST */
+        body {
+            font-size: clamp(14px, 2.5vw, 18px);
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            transition: background 0.3s, color 0.3s;
+            background: var(--background-light);
+            color: var(--text-light);
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        body[data-theme="dark"] {
+            background: var(--background-dark);
+            color: var(--text-dark);
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--primary-color);
+            color: white;
+            padding: 0.5em 1em;
+            height: var(--header-height);
+            flex-shrink: 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            padding: 0;
+        }
+
+        /* Scrollable content area */
+        .content-area {
+            flex: 1;
+            overflow-y: auto;
+            padding: 1em;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        /* Fixed controls at bottom */
+        .controls-area {
+            background: var(--background-light);
+            border-top: 1px solid var(--border-light);
+            padding: 1em;
+            flex-shrink: 0;
+            position: sticky;
+            bottom: 0;
+            z-index: 90;
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        body[data-theme="dark"] .controls-area {
+            background: var(--background-dark);
+            border-top-color: var(--border-dark);
+        }
+
+        /* Section styling */
+        section {
+            margin-bottom: 1.5em;
+            padding-bottom: 1em;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        body[data-theme="dark"] section {
+            border-bottom-color: var(--border-dark);
+        }
+
+        /* Help block styling */
+        details {
+            padding: 0.5em 1em;
+            border: 1px solid var(--border-light);
+            border-radius: 4px;
+            margin: 0.5em 0;
+            font-size: 0.9em;
+            font-weight: normal;
+            text-align: left;
+            background: var(--background-light);
+            color: var(--text-light);
+        }
+
+        details summary {
+            cursor: pointer;
+            color: var(--primary-color);
+        }
+
+        body[data-theme="dark"] details {
+            background: #2a2a2a;
+            border: 1px solid var(--border-dark);
+            color: var(--text-dark);
+        }
+
+        body[data-theme="dark"] details summary {
+            color: var(--primary-light);
+        }
+
+        /* Style nested content in details */
+        details p {
+            margin: 0.5em 0;
+            line-height: 1.5;
+            text-align: left;
+        }
+
+        details ol {
+            margin: 0.5em 1.5em;
+            padding-left: 1.2em;
+        }
+
+        details ol li {
+            margin: 0.4em 0;
+        }
+
+        /* === Base Styles for Inputs, Selects, Buttons === */
+        button,
+        select,
+        input[type="number"] {
+            font-size: 1em;
+            line-height: 1.5;
+            padding: 0.5em;
+            height: 2.5em;
+            border-radius: 4px;
+            border: 1px solid var(--border-light);
+            background: #f0f0f0;
+            color: var(--text-light);
+            cursor: pointer;
+            box-sizing: border-box;
+            vertical-align: middle;
+            transition: background 0.2s, color 0.2s, border-color 0.2s;
+        }
+
+        /* Number input text alignment */
+        input[type="number"] {
+            text-align: center;
+        }
+
+        /* Checkbox styling */
+        input[type="checkbox"] {
+            width: 1.2em;
+            height: 1.2em;
+            margin: 0 0.3em 0 0;
+            accent-color: var(--primary-color);
+            vertical-align: middle;
+            cursor: pointer;
+        }
+
+        /* Hover states */
+        button:hover,
+        input[type="number"]:hover,
+        select:hover {
+            background: #e0e0e0;
+        }
+
+        /* Dark theme adjustments */
+        body[data-theme="dark"] button,
+        body[data-theme="dark"] input[type="number"],
+        body[data-theme="dark"] select {
+            background: #333;
+            border: 1px solid var(--border-dark);
+            color: var(--text-dark);
+        }
+
+        body[data-theme="dark"] button:hover,
+        body[data-theme="dark"] input[type="number"]:hover,
+        body[data-theme="dark"] select:hover {
+            background: #444;
+        }
+
+        body[data-theme="dark"] input[type="checkbox"] {
+            accent-color: var(--primary-light);
+        }
+
+        /* Theme Toggle Button */
+        #themeToggle {
+            background: none;
+            border: none;
+            width: auto;
+            min-width: 0;
+            padding: 0 0.5em;
+            font-size: 1em;
+            line-height: 1.5;
+        }
+
+        /* Controls container alignment */
+        .controls,
+        #bookSelectionControls,
+        #settingsInline {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 0.5em;
+        }
+
+        /* Label alignment */
+        label {
+            display: flex;
+            align-items: center;
+            gap: 0.3em;
+            font-size: 0.9em;
+            white-space: nowrap;
+        }
+
+        /* Thai Font Styling */
+        .thai-font.tahoma {
+            font-family: Tahoma, sans-serif;
+        }
+
+        .thai-font.noto {
+            font-family: 'Noto Sans Thai', sans-serif;
+        }
+
+        .thai-font.chakra {
+            font-family: 'Chakra Petch', sans-serif;
+        }
+
+        /* Highlighting */
+        .highlight-light {
+            background: var(--highlight-light);
+            color: black;
+        }
+
+        .highlight-dark {
+            background: var(--highlight-dark);
+            color: black;
+        }
+
+        #paragraphDisplay {
+            margin: 1em 0;
+            white-space: pre-wrap;
+            width: 100%;
+            box-sizing: border-box;
+            line-height: 1.6;
+        }
+
+        :lang(th-TH) {
+            font-size: larger;
+        }
+
+        :lang(fa-IR) {
+            direction: rtl;
+        }
+
+        .word-pair {
+            display: inline-block;
+            vertical-align: top;
+            margin: 0 0.3em 0.5em 0;
+            cursor: pointer;
+            padding: 0.2em;
+            border-radius: 3px;
+            transition: background-color 0.2s;
+        }
+
+        .word-pair:hover {
+            background-color: rgba(0, 36, 125, 0.1);
+        }
+
+        body[data-theme="dark"] .word-pair:hover {
+            background-color: rgba(102, 170, 255, 0.1);
+        }
+
+        .word-pair span[lang="th-TH"] {
+            display: block;
+            word-break: keep-all;
+            overflow-wrap: break-word;
+            font-size: large;
+        }
+
+        .word-pair span[lang="en-US"] {
+            border-top: 1px solid lightskyblue;
+            display: block;
+            word-break: normal;
+            overflow-wrap: normal;
+            white-space: normal;
+            margin-top: 0.1em;
+            color: rgb(5, 154, 247);
+            font-size: 0.9em;
+        }
+
+        .word-pair span[lang="fa-IR"] {
+            border-top: 1px solid lightskyblue;
+            display: block;
+            word-break: keep-all;
+            overflow-wrap: break-word;
+            direction: rtl;
+            color: green;
+            font-size: 0.9em;
+        }
+
+        /* Quiz styling */
+        #quiz {
+            margin-top: 1em;
+        }
+
+        .quiz-heading {
+            font-weight: 600;
+            margin-bottom: 0.5em;
+        }
+
+        .quiz-question {
+            font-size: 1.25rem;
+            margin: .1em 0;
+            padding: 0.5em;
+            background: rgba(0, 36, 125, 0.05);
+            border-radius: 5px;
+        }
+
+        body[data-theme="dark"] .quiz-question {
+            background: rgba(102, 170, 255, 0.1);
+        }
+
+        .quiz-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5em;
+            margin-top: 0.5em;
+        }
+
+        .quiz-option {
+            border: 1px solid var(--border-light);
+            padding: 0.5em 0.8em;
+            cursor: pointer;
+            border-radius: 5px;
+            user-select: none;
+            flex: 1;
+            min-width: 120px;
+            text-align: center;
+            transition: all 0.2s;
+        }
+
+        .quiz-option.correct {
+            background: var(--correct-color);
+            color: white;
+            border-color: var(--correct-color);
+        }
+
+        .quiz-option.incorrect {
+            background: var(--incorrect-color);
+            color: white;
+            border-color: var(--incorrect-color);
+        }
+
+        #quizControls {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8em;
+            margin-top: 1em;
+        }
+
+        .quiz-row {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 0.6em;
+        }
+
+        .quiz-row-top {
+            justify-content: flex-start;
+        }
+
+        .quiz-row-bottom {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 0.4em;
+        }
+
+        @media (min-width: 600px) {
+            .quiz-row-bottom {
+                flex-direction: row;
+                align-items: center;
+            }
+        }
+
+        .lang-select {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4em 0.8em;
+        }
+
+        /* Paragraph controls responsive layout */
+        #paragraphControls {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5em;
+        }
+
+        .paragraph-controls-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5em;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Mobile-specific adjustments */
+        @media (max-width: 600px) {
+            #paragraphControls {
+                gap: 0.8em;
+            }
+
+            .paragraph-controls-row {
+                justify-content: center;
+            }
+
+            button {
+                min-height: 44px;
+                min-width: 44px;
+            }
+
+            .word-pair {
+                margin: 0 0.2em 0.3em 0;
+            }
+
+            .quiz-option {
+                min-width: 100px;
+                padding: 0.6em 0.5em;
+            }
+
+            .controls-area {
+                padding: 0.8em;
+            }
+
+            .content-area {
+                padding: 0.8em;
+            }
+        }
+
+        /* Desktop adjustments */
+        @media (min-width: 768px) {
+            .content-area {
+                padding: 1.5em;
+            }
+
+            .controls-area {
+                padding: 1.2em;
+            }
+
+            .word-pair {
+                margin: 0 0.5em 1em 0;
+            }
+        }
+
+        /* Error and status styling */
+        .error-message {
+            color: var(--incorrect-color);
+            background: #ffe6e6;
+            padding: 0.5em;
+            border-radius: 4px;
+            margin: 0.5em 0;
+            border: 1px solid var(--incorrect-color);
+        }
+
+        .success-message {
+            color: var(--correct-color);
+            background: #e6ffe6;
+            padding: 0.5em;
+            border-radius: 4px;
+            margin: 0.5em 0;
+            border: 1px solid var(--correct-color);
+        }
+
+        .loading {
+            opacity: 0.6;
+            pointer-events: none;
+        }
+
+        /* Selection controls styling */
+        #bookSelectionControls {
+            background: rgba(0, 36, 125, 0.05);
+            padding: 1em;
+            border-radius: 8px;
+            margin-bottom: 1em;
+        }
+
+        body[data-theme="dark"] #bookSelectionControls {
+            background: rgba(102, 170, 255, 0.1);
+        }
+
+        /* Scrollbar styling */
+        .content-area::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .content-area::-webkit-scrollbar-track {
+            background: var(--background-light);
+        }
+
+        .content-area::-webkit-scrollbar-thumb {
+            background: var(--border-light);
+            border-radius: 4px;
+        }
+
+        body[data-theme="dark"] .content-area::-webkit-scrollbar-track {
+            background: var(--background-dark);
+        }
+
+        body[data-theme="dark"] .content-area::-webkit-scrollbar-thumb {
+            background: var(--border-dark);
+        }
+
+        /* Enhanced TTS Status Styles */
+        .tts-status-container {
+            margin: 1em 0;
+            padding: 1em;
+            border-radius: 8px;
+            border-left: 4px solid;
+        }
+
+        .tts-status-success {
+            background: #e8f5e8;
+            border-left-color: var(--correct-color);
+            color: #2d5016;
+        }
+
+        .tts-status-error {
+            background: #ffeaea;
+            border-left-color: var(--incorrect-color);
+            color: #8b0000;
+        }
+
+        .tts-status-info {
+            background: #e8f4fd;
+            border-left-color: var(--primary-color);
+            color: #004085;
+        }
+
+        body[data-theme="dark"] .tts-status-success {
+            background: #1a331a;
+            color: #90ee90;
+        }
+
+        body[data-theme="dark"] .tts-status-error {
+            background: #331a1a;
+            color: #ff6b6b;
+        }
+
+        body[data-theme="dark"] .tts-status-info {
+            background: #1a2833;
+            color: #66aaff;
+        }
+
+        .tts-setup-steps {
+            margin: 1em 0;
+            padding: 1em;
+            background: var(--background-light);
+            border-radius: 8px;
+            border: 1px solid var(--border-light);
+        }
+
+        body[data-theme="dark"] .tts-setup-steps {
+            background: #2a2a2a;
+            border-color: var(--border-dark);
+        }
+
+        .tts-step {
+            margin: 0.5em 0;
+            padding: 0.5em;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+        }
+
+        .tts-language-check {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1em;
+            margin: 1em 0;
+        }
+
+        .language-test {
+            padding: 0.5em 1em;
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .language-test:hover {
+            background: var(--primary-light);
+        }
+
+        .test-result {
+            margin-top: 0.5em;
+            font-size: 0.9em;
+            opacity: 0.8;
+        }
+
+        .success-check {
+            color: var(--correct-color);
+        }
+
+        .error-cross {
+            color: var(--incorrect-color);
+        }
+
+        /* Settings specific styles */
+        .settings-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--primary-color);
+            color: white;
+            padding: 0.5em 1em;
+            border-radius: 8px;
+        }
+
+        .settings-content {
+            padding: 1em;
+        }
+
+        .settings-section {
+            margin-bottom: 2em;
+        }
+
+        .settings-button {
+            padding: 0.8em 1.5em;
+            font-size: 1.1em;
+            margin: 1em 0;
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .settings-button:hover {
+            background: var(--primary-light);
+        }
+
+        .close-button {
+            padding: 0.6em 1.2em;
+            background: #666;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .close-button:hover {
+            background: #888;
+        }
+    </style>
+</head>
+
+<body data-theme="light">
+
+    <header>
+        <span lang="th">ฝึกฝน</span>
+        <span id="settingsInline">
+            <button id="themeToggle" title="Toggle Day/Night">🌞</button>
+            <label>Thai Font:
+                <select id="thaiFont">
+                    <option value="">Default</option>
+                    <option value="Tahoma">Tahoma</option>
+                    <option value="Noto Sans Thai">Noto Sans Thai</option>
+                    <option value="Chakra Petch">Chakra Petch</option>
+                </select>
+            </label>
+            <button id="settingsBtn" title="Settings & Help">⚙️</button>
+        </span>
+    </header>
+
+    <main>
+        <div class="content-area" id="contentArea">
+            <!-- Dynamic content will be inserted here -->
+        </div>
+        <div class="controls-area" id="controlsArea">
+            <!-- Controls will be inserted here -->
+        </div>
+    </main>
+
+    <script>
+        // ==================== TTS MANAGER ====================
+        const TTSManager = {
+            supportedVoices: [],
+            testResults: {},
+
+            initialize() {
+                this.loadVoices();
+                speechSynthesis.addEventListener('voiceschanged', () => {
+                    this.loadVoices();
+                });
+            },
+
+            loadVoices() {
+                this.supportedVoices = speechSynthesis.getVoices();
+            },
+
+            isSupported() {
+                return 'speechSynthesis' in window && typeof SpeechSynthesisUtterance !== 'undefined';
+            },
+
+            getLanguageVoices(lang) {
+                return this.supportedVoices.filter(voice =>
+                    voice.lang.startsWith(lang) || voice.lang.includes(lang)
+                );
+            },
+
+            hasLanguageSupport(lang) {
+                return this.getLanguageVoices(lang).length > 0;
+            },
+
+            testLanguage(lang, text) {
+                return new Promise((resolve) => {
+                    if (!this.isSupported()) {
+                        resolve({ success: false, error: 'TTS not supported' });
+                        return;
+                    }
+
+                    if (!this.hasLanguageSupport(lang)) {
+                        resolve({ success: false, error: `No ${lang} voices available` });
+                        return;
+                    }
+
+                    try {
+                        const utterance = new SpeechSynthesisUtterance(text);
+                        utterance.lang = lang;
+                        utterance.volume = 0.7;
+
+                        utterance.onend = () => {
+                            resolve({ success: true, voices: this.getLanguageVoices(lang) });
+                        };
+
+                        utterance.onerror = (error) => {
+                            resolve({ success: false, error: error.error });
+                        };
+
+                        speechSynthesis.speak(utterance);
+                    } catch (error) {
+                        resolve({ success: false, error: error.message });
+                    }
+                });
+            },
+
+            async comprehensiveTest() {
+                const tests = [
+                    { lang: 'en-US', text: 'Hello, this is English text-to-speech', name: 'English' },
+                    { lang: 'th-TH', text: 'สวัสดี นี่คือการทดสอบเสียงพูดภาษาไทย', name: 'Thai' }
+                ];
+
+                this.testResults = {};
+                let allPassed = true;
+
+                for (const test of tests) {
+                    const result = await this.testLanguage(test.lang, test.text);
+                    this.testResults[test.lang] = {
+                        ...result,
+                        name: test.name,
+                        text: test.text
+                    };
+
+                    if (!result.success) {
+                        allPassed = false;
+                    }
+
+                    // Small delay between tests
+                    await new Promise(resolve => setTimeout(resolve, 500));
+                }
+
+                return allPassed;
+            },
+
+            getSetupInstructions() {
+                const isMobile = /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+                const isChrome = /Chrome/.test(navigator.userAgent);
+                const isSafari = /Safari/.test(navigator.userAgent);
+
+                if (isMobile) {
+                    return this.getMobileSetupInstructions(isChrome, isSafari);
+                } else {
+                    return this.getDesktopSetupInstructions(isChrome, isSafari);
+                }
+            },
+
+            getMobileSetupInstructions(isChrome, isSafari) {
+                let instructions = '';
+
+                if (isChrome) {
+                    instructions = `
+                        <div class="tts-setup-steps">
+                            <h4>Android Chrome Setup:</h4>
+                            <div class="tts-step">
+                                <strong>1. Install Language Packs:</strong>
+                                <p>Go to Settings → Accessibility → Text-to-speech output → Google Text-to-speech engine → Install voice data</p>
+                            </div>
+                            <div class="tts-step">
+                                <strong>2. Download Thai & English:</strong>
+                                <p>Install both English and Thai language packs for full functionality</p>
+                            </div>
+                            <div class="tts-step">
+                                <strong>3. Enable in Chrome:</strong>
+                                <p>Chrome Settings → Accessibility → Enable "Simplified view for open pages"</p>
+                            </div>
+                        </div>
+                    `;
+                } else if (isSafari) {
+                    instructions = `
+                        <div class="tts-setup-steps">
+                            <h4>iOS Safari Setup:</h4>
+                            <div class="tts-step">
+                                <strong>1. Enable Spoken Content:</strong>
+                                <p>Settings → Accessibility → Spoken Content → Enable "Speak Selection"</p>
+                            </div>
+                            <div class="tts-step">
+                                <strong>2. Download Voices:</strong>
+                                <p>In Spoken Content → Voices → Download Thai and English voices</p>
+                            </div>
+                            <div class="tts-step">
+                                <strong>3. Test in Safari:</strong>
+                                <p>Select any text on a webpage and tap "Speak" to test</p>
+                            </div>
+                        </div>
+                    `;
+                }
+
+                return instructions;
+            },
+
+            getDesktopSetupInstructions(isChrome, isSafari) {
+                let instructions = '';
+
+                if (isChrome) {
+                    instructions = `
+                        <div class="tts-setup-steps">
+                            <h4>Chrome Desktop Setup:</h4>
+                            <div class="tts-step">
+                                <strong>1. Check System TTS:</strong>
+                                <p>Windows: Settings → Ease of Access → Narrator<br>
+                                   Mac: System Preferences → Accessibility → Speech</p>
+                            </div>
+                            <div class="tts-step">
+                                <strong>2. Install Languages:</strong>
+                                <p>Download Thai and English TTS voices through your operating system</p>
+                            </div>
+                            <div class="tts-step">
+                                <strong>3. Chrome Permissions:</strong>
+                                <p>Ensure Chrome has permission to use microphone/TTS features</p>
+                            </div>
+                        </div>
+                    `;
+                } else if (isSafari) {
+                    instructions = `
+                        <div class="tts-setup-steps">
+                            <h4>Safari Desktop Setup:</h4>
+                            <div class="tts-step">
+                                <strong>1. Enable Speech in macOS:</strong>
+                                <p>System Preferences → Accessibility → Speech → Enable "Speak selected text"</p>
+                            </div>
+                            <div class="tts-step">
+                                <strong>2. Download Voices:</strong>
+                                <p>System Preferences → Accessibility → Speech → System Voice → Customize → Download Thai</p>
+                            </div>
+                            <div class="tts-step">
+                                <strong>3. Safari Settings:</strong>
+                                <p>Safari → Preferences → Advanced → Accessibility → Never use font sizes smaller than 10px</p>
+                            </div>
+                        </div>
+                    `;
+                }
+
+                return instructions;
+            },
+
+            getStatusMessage() {
+                if (!this.isSupported()) {
+                    return {
+                        type: 'error',
+                        title: 'Text-to-Speech Not Supported',
+                        message: 'Your browser does not support the Web Speech API. Please use Chrome, Safari, or Edge for the best experience.'
+                    };
+                }
+
+                const hasEnglish = this.hasLanguageSupport('en');
+                const hasThai = this.hasLanguageSupport('th');
+
+                if (!hasEnglish && !hasThai) {
+                    return {
+                        type: 'error',
+                        title: 'No Language Voices Available',
+                        message: 'No English or Thai TTS voices found. You need to install language packs.'
+                    };
+                }
+
+                if (!hasThai) {
+                    return {
+                        type: 'warning',
+                        title: 'Thai Language Missing',
+                        message: 'English TTS works, but Thai voices are not available. Install Thai language pack for full functionality.'
+                    };
+                }
+
+                if (!hasEnglish) {
+                    return {
+                        type: 'warning',
+                        title: 'English Language Missing',
+                        message: 'Thai TTS works, but English voices are not available. Install English language pack for complete features.'
+                    };
+                }
+
+                return {
+                    type: 'success',
+                    title: 'TTS Ready for Language Learning',
+                    message: 'Both English and Thai text-to-speech are available and ready for your language practice!'
+                };
+            }
+        };
+
+        // Initialize TTS Manager when page loads
+        TTSManager.initialize();
+
+        // ==================== APPLICATION CORE ====================
+
+        // Basic utilities
+        const saveSetting = (k, v) => localStorage.setItem(k, v);
+        const loadSetting = (k, def = '') => localStorage.getItem(k) || def;
+        const getSavedInt = (k, def = 0) => parseInt(loadSetting(k, def), 10);
+
+        // State
+        let books = [], book = null;
+        let currentBook = 0, currentChapter = 0, currentParagraph = 0;
+        let isPlaying = false, currentWordIndex = 0, utterance = null;
+        let lastHighlightedIndex = null;
+        let bookSelect, chapterSelect, paragraphSelect, paragraphDisplay, scoreDisplay;
+        let contentArea, controlsArea;
+
+        // Quiz state
+        let currentQuiz = null;
+        let selectedAnswer = null;
+        let quizScore = 0;
+        let totalQuestions = 0;
+
+        // Theme & Font
+        const themeToggle = document.getElementById('themeToggle');
+        function setTheme(theme) {
+            document.body.dataset.theme = theme;
+            themeToggle.textContent = theme === 'light' ? '🌞' : '🌙';
+            saveSetting('theme', theme);
+        }
+        themeToggle.addEventListener('click', () => setTheme(document.body.dataset.theme === 'light' ? 'dark' : 'light'));
+        setTheme(loadSetting('theme', 'light'));
+
+        const thaiFont = document.getElementById('thaiFont');
+        function applyThaiFont() {
+            const font = loadSetting('thaiFont', '');
+            document.querySelectorAll('[lang="th"], [lang="th-TH"]').forEach(el => {
+                el.classList.add('thai-font');
+                el.classList.remove('tahoma', 'noto', 'chakra');
+                if (font === 'Tahoma') el.classList.add('tahoma');
+                if (font === 'Noto Sans Thai') el.classList.add('noto');
+                if (font === 'Chakra Petch') el.classList.add('chakra');
+            });
+        }
+        thaiFont.addEventListener('change', () => { saveSetting('thaiFont', thaiFont.value); applyThaiFont(); });
+        thaiFont.value = loadSetting('thaiFont', '');
+        applyThaiFont();
+
+        // TTS
+        function speakTextQueued(text, lang, cb) {
+            if (!text) return;
+            speechSynthesis.cancel();
+            utterance = new SpeechSynthesisUtterance(text);
+            utterance.lang = lang;
+            utterance.onend = cb;
+            speechSynthesis.speak(utterance);
+        }
+
+        // Settings View with Enhanced TTS Check
+        const settingsBtn = document.getElementById('settingsBtn');
+        function showSettings() {
+            contentArea.innerHTML = '';
+            controlsArea.innerHTML = '';
+
+            const settingsHTML = `
+                <div class="settings-header">
+                    <h2 style="margin: 0;">Settings & Help</h2>
+                    <button id="closeX" class="close-button" title="Close Settings">❌</button>
+                </div>
+                <div class="settings-content">
+                    <div class="settings-section">
+                        <h3>Text-to-Speech Setup</h3>
+                        <p>This app uses Text-to-Speech (TTS) to help you learn pronunciation in both Thai and English. 
+                           Please test your setup and follow the instructions if needed.</p>
+                        
+                        <button id="checkTTS" class="settings-button">
+                            🔊 Test TTS Setup & Language Support
+                        </button>
+                        
+                        <div id="ttsStatus"></div>
+                        <div id="ttsSetupInstructions"></div>
+                        <div id="languageTests"></div>
+                    </div>
+                    
+                    <div style="margin-top: 2em; padding-top: 1em; border-top: 1px solid var(--border-light);">
+                        <button id="closeBtn" class="close-button">Close Settings</button>
+                    </div>
+                </div>
+            `;
+
+            contentArea.innerHTML = settingsHTML;
+
+            document.getElementById('closeX').addEventListener('click', reloadApp);
+            document.getElementById('closeBtn').addEventListener('click', reloadApp);
+
+            // Enhanced TTS Check
+            document.getElementById('checkTTS').addEventListener('click', async () => {
+                await performTTSCheck();
+            });
+
+            // Show initial status
+            showInitialTTSStatus();
+        }
+
+        async function performTTSCheck() {
+            const ttsStatus = document.getElementById('ttsStatus');
+            const checkBtn = document.getElementById('checkTTS');
+            const languageTests = document.getElementById('languageTests');
+
+            checkBtn.innerHTML = '🔄 Testing TTS...';
+            checkBtn.disabled = true;
+            ttsStatus.innerHTML = '';
+            languageTests.innerHTML = '';
+
+            // Show initial system status
+            const status = TTSManager.getStatusMessage();
+            showTTSStatus(status);
+
+            // Perform comprehensive test
+            const testPassed = await TTSManager.comprehensiveTest();
+
+            // Show detailed test results
+            showLanguageTestResults();
+
+            // Show setup instructions if needed
+            if (!testPassed) {
+                const instructions = TTSManager.getSetupInstructions();
+                document.getElementById('ttsSetupInstructions').innerHTML = instructions;
+            }
+
+            checkBtn.innerHTML = '✅ TTS Test Complete';
+            checkBtn.disabled = false;
+
+            // Update status based on test results
+            const finalStatus = TTSManager.getStatusMessage();
+            showTTSStatus(finalStatus);
+        }
+
+        function showInitialTTSStatus() {
+            const status = TTSManager.getStatusMessage();
+            showTTSStatus(status);
+
+            // Show setup instructions for common issues
+            if (status.type !== 'success') {
+                const instructions = TTSManager.getSetupInstructions();
+                document.getElementById('ttsSetupInstructions').innerHTML = instructions;
+            }
+        }
+
+        function showTTSStatus(status) {
+            const ttsStatus = document.getElementById('ttsStatus');
+            const statusClass = `tts-status-${status.type === 'warning' ? 'info' : status.type}`;
+
+            ttsStatus.innerHTML = `
+                <div class="tts-status-container ${statusClass}">
+                    <h4 style="margin: 0 0 0.5em 0;">${status.title}</h4>
+                    <p style="margin: 0;">${status.message}</p>
+                </div>
+            `;
+        }
+
+        function showLanguageTestResults() {
+            const languageTests = document.getElementById('languageTests');
+            const results = TTSManager.testResults;
+
+            if (Object.keys(results).length === 0) return;
+
+            let html = `<h4>Language Test Results:</h4><div class="tts-language-check">`;
+
+            for (const [lang, result] of Object.entries(results)) {
+                const icon = result.success ? '✅' : '❌';
+                const resultClass = result.success ? 'success-check' : 'error-cross';
+                const voices = result.voices ? result.voices.map(v => v.name).join(', ') : 'No voices';
+
+                html += `
+                    <div style="flex: 1; min-width: 200px; padding: 1em; background: rgba(0,0,0,0.05); border-radius: 8px;">
+                        <div style="font-weight: bold;">${icon} ${result.name}</div>
+                        <div class="test-result ${resultClass}">
+                            ${result.success ?
+                        `Working - ${voices}` :
+                        `Failed: ${result.error}`
+                    }
+                        </div>
+                        <button onclick="testSingleLanguage('${lang}', '${result.text}')" 
+                                class="language-test" 
+                                style="margin-top: 0.5em;">
+                            Test ${result.name} Again
+                        </button>
+                    </div>
+                `;
+            }
+
+            html += `</div>`;
+            languageTests.innerHTML = html;
+        }
+
+        // Global function for testing individual languages
+        window.testSingleLanguage = async function (lang, text) {
+            const result = await TTSManager.testLanguage(lang, text);
+            alert(`${lang === 'en-US' ? 'English' : 'Thai'} TTS Test: ${result.success ? 'SUCCESS' : 'FAILED'}\n${result.success ? 'Voice is working properly' : 'Error: ' + result.error}`);
+        };
+
+        function reloadApp() {
+            initSPA();
+            populateBooks();
+        }
+
+        // Paragraph Rendering
+        function renderParagraph(paragraph) {
+            if (!paragraph) return '';
+
+            const words = paragraph.words || [];
+            let html = '';
+
+            words.forEach((wordObj, index) => {
+                const thaiWord = wordObj.thai || '';
+                const englishWord = wordObj.english || '';
+                const persianWord = wordObj.persian || '';
+
+                html += `<div class="word-pair" data-index="${index}">`;
+                html += `<span lang="th-TH">${thaiWord}</span>`;
+                if (englishWord) {
+                    html += `<span lang="en-US">${englishWord}</span>`;
+                }
+                if (persianWord) {
+                    html += `<span lang="fa-IR">${persianWord}</span>`;
+                }
+                html += '</div>';
+            });
+
+            return html;
+        }
+
+        function highlightCurrentWord(index) {
+            // Remove previous highlight
+            if (lastHighlightedIndex !== null) {
+                const prevWord = paragraphDisplay.querySelector(`.word-pair[data-index="${lastHighlightedIndex}"]`);
+                if (prevWord) {
+                    prevWord.classList.remove('highlight-light', 'highlight-dark');
+                }
+            }
+
+            // Add new highlight
+            if (index !== null) {
+                const currentWord = paragraphDisplay.querySelector(`.word-pair[data-index="${index}"]`);
+                if (currentWord) {
+                    const isDark = document.body.dataset.theme === 'dark';
+                    currentWord.classList.add(isDark ? 'highlight-dark' : 'highlight-light');
+                    currentWord.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }
+            }
+
+            lastHighlightedIndex = index;
+        }
+
+        // Quiz System
+        function generateQuiz(paragraph) {
+            if (!paragraph || !paragraph.words || paragraph.words.length === 0) {
+                return null;
+            }
+
+            const words = paragraph.words.filter(word => word.thai && word.english);
+            if (words.length < 4) {
+                return null;
+            }
+
+            // Select a random word as the question
+            const correctIndex = Math.floor(Math.random() * words.length);
+            const correctWord = words[correctIndex];
+
+            // Select 3 wrong answers
+            const wrongWords = words
+                .filter((_, index) => index !== correctIndex)
+                .sort(() => Math.random() - 0.5)
+                .slice(0, 3);
+
+            // Combine and shuffle options
+            const options = [correctWord, ...wrongWords].sort(() => Math.random() - 0.5);
+
+            return {
+                question: correctWord.thai,
+                correctAnswer: correctWord.english,
+                options: options.map(word => word.english),
+                correctIndex: options.findIndex(option => option === correctWord.english)
+            };
+        }
+
+        function renderQuiz() {
+            if (!currentQuiz) {
+                return '<div class="quiz-heading">No quiz available for this paragraph</div>';
+            }
+
+            return `
+                <div class="quiz-heading">Vocabulary Quiz</div>
+                <div class="quiz-question" lang="th-TH">${currentQuiz.question}</div>
+                <div class="quiz-options">
+                    ${currentQuiz.options.map((option, index) => `
+                        <div class="quiz-option" data-index="${index}">${option}</div>
+                    `).join('')}
+                </div>
+            `;
+        }
+
+        function handleAnswerSelection(optionIndex) {
+            if (selectedAnswer !== null || !currentQuiz) return;
+
+            selectedAnswer = optionIndex;
+            const optionElements = document.querySelectorAll('.quiz-option');
+            const isCorrect = optionIndex === currentQuiz.correctIndex;
+
+            optionElements.forEach((element, index) => {
+                if (index === currentQuiz.correctIndex) {
+                    element.classList.add('correct');
+                } else if (index === optionIndex && !isCorrect) {
+                    element.classList.add('incorrect');
+                }
+                element.style.pointerEvents = 'none';
+            });
+
+            if (isCorrect) {
+                quizScore++;
+            }
+            totalQuestions++;
+
+            updateScoreDisplay();
+        }
+
+        function updateScoreDisplay() {
+            if (scoreDisplay) {
+                scoreDisplay.textContent = `Score: ${quizScore}/${totalQuestions}`;
+            }
+        }
+
+        function nextQuiz() {
+            if (!book || !book.chapters || !book.chapters[currentChapter]) return;
+
+            const paragraphs = book.chapters[currentChapter].paragraphs;
+            if (paragraphs.length === 0) return;
+
+            currentQuiz = generateQuiz(paragraphs[currentParagraph]);
+            selectedAnswer = null;
+
+            const quizContainer = document.getElementById('quiz');
+            if (quizContainer) {
+                quizContainer.innerHTML = renderQuiz();
+
+                // Re-attach event listeners
+                document.querySelectorAll('.quiz-option').forEach(option => {
+                    option.addEventListener('click', (e) => {
+                        const index = parseInt(e.target.dataset.index);
+                        handleAnswerSelection(index);
+                    });
+                });
+            }
+        }
+
+        // SPA Initialization
+        function initSPA() {
+            contentArea = document.getElementById('contentArea');
+            controlsArea = document.getElementById('controlsArea');
+
+            renderMainView();
+            setupEventDelegation();
+        }
+
+        function renderMainView() {
+            contentArea.innerHTML = `
+                <div id="bookSelectionControls" class="controls">
+                    <label>Book:
+                        <select id="bookSelect">
+                            <option value="">Loading books...</option>
+                        </select>
+                    </label>
+                    <label>Chapter:
+                        <select id="chapterSelect" disabled>
+                            <option value="0">Select chapter</option>
+                        </select>
+                    </label>
+                    <label>Paragraph:
+                        <select id="paragraphSelect" disabled>
+                            <option value="0">Select paragraph</option>
+                        </select>
+                    </label>
+                </div>
+                
+                <section id="paragraphSection">
+                    <h3>Paragraph</h3>
+                    <div id="paragraphDisplay"></div>
+                </section>
+                
+                <section id="quizSection">
+                    <h3>Practice</h3>
+                    <div id="quiz"></div>
+                    <div id="quizControls">
+                        <div class="quiz-row quiz-row-top">
+                            <button id="nextQuizBtn">Next Question</button>
+                            <span id="scoreDisplay">Score: 0/0</span>
+                        </div>
+                        <div class="quiz-row quiz-row-bottom">
+                            <div class="lang-select">
+                                <label><input type="checkbox" id="quizShowEnglish" checked> English</label>
+                                <label><input type="checkbox" id="quizShowPersian"> Persian</label>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            `;
+
+            controlsArea.innerHTML = `
+                <div id="paragraphControls" class="controls">
+                    <div class="paragraph-controls-row">
+                        <button id="playBtn">Play</button>
+                        <button id="pauseBtn">Pause</button>
+                        <button id="resetBtn">Reset</button>
+                    </div>
+                    <div class="paragraph-controls-row">
+                        <label>Delay (ms):
+                            <input type="number" id="wordDelay" value="1500" min="500" max="5000" step="100">
+                        </label>
+                        <label><input type="checkbox" id="autoPlayQuiz"> Auto-play quiz</label>
+                    </div>
+                </div>
+            `;
+
+            // Initialize references
+            bookSelect = document.getElementById('bookSelect');
+            chapterSelect = document.getElementById('chapterSelect');
+            paragraphSelect = document.getElementById('paragraphSelect');
+            paragraphDisplay = document.getElementById('paragraphDisplay');
+            scoreDisplay = document.getElementById('scoreDisplay');
+
+            // Load saved positions
+            currentBook = getSavedInt('currentBook', 0);
+            currentChapter = getSavedInt('currentChapter', 0);
+            currentParagraph = getSavedInt('currentParagraph', 0);
+        }
+
+        function setupEventDelegation() {
+            // Playback controls
+            document.getElementById('playBtn').addEventListener('click', startPlayback);
+            document.getElementById('pauseBtn').addEventListener('click', pausePlayback);
+            document.getElementById('resetBtn').addEventListener('click', resetPlayback);
+
+            // Navigation
+            bookSelect.addEventListener('change', (e) => {
+                currentBook = parseInt(e.target.value);
+                saveSetting('currentBook', currentBook);
+                populateChapters();
+                populateParagraphs();
+                updateParagraphDisplay();
+                nextQuiz();
+            });
+
+            chapterSelect.addEventListener('change', (e) => {
+                currentChapter = parseInt(e.target.value);
+                saveSetting('currentChapter', currentChapter);
+                populateParagraphs();
+                updateParagraphDisplay();
+                nextQuiz();
+            });
+
+            paragraphSelect.addEventListener('change', (e) => {
+                currentParagraph = parseInt(e.target.value);
+                saveSetting('currentParagraph', currentParagraph);
+                updateParagraphDisplay();
+                nextQuiz();
+            });
+
+            // Settings
+            document.getElementById('wordDelay').addEventListener('change', (e) => {
+                saveSetting('wordDelay', e.target.value);
+            });
+
+            document.getElementById('wordDelay').value = loadSetting('wordDelay', '1500');
+
+            document.getElementById('nextQuizBtn').addEventListener('click', nextQuiz);
+
+            // Word click for individual playback
+            contentArea.addEventListener('click', (e) => {
+                const wordPair = e.target.closest('.word-pair');
+                if (wordPair) {
+                    const index = parseInt(wordPair.dataset.index);
+                    playSingleWord(index);
+                }
+            });
+        }
+
+        // Book Loading and Population
+        async function loadBooks() {
+            try {
+                // For now, using sample data - replace with your actual book loading logic
+                books = [
+                    {
+                        id: 1,
+                        title: "Thai Beginner Lessons",
+                        chapters: [
+                            {
+                                title: "Chapter 1: Greetings",
+                                paragraphs: [
+                                    {
+                                        words: [
+                                            { thai: "สวัสดี", english: "Hello", persian: "سلام" },
+                                            { thai: "ครับ", english: "polite particle (male)", persian: "حالت ادب (مرد)" },
+                                            { thai: "ค่ะ", english: "polite particle (female)", persian: "حالت ادب (زن)" },
+                                            { thai: "สบายดี", english: "fine, well", persian: "خوب، خوش" },
+                                            { thai: "ไหม", english: "question particle", persian: "حرف سوال" }
+                                        ]
+                                    },
+                                    {
+                                        words: [
+                                            { thai: "ขอบคุณ", english: "Thank you", persian: "متشکرم" },
+                                            { thai: "มาก", english: "very much", persian: "خیلی" },
+                                            { thai: "ครับ", english: "polite particle (male)", persian: "حالت ادب (مرد)" },
+                                            { thai: "ค่ะ", english: "polite particle (female)", persian: "حالت ادب (زن)" }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                title: "Chapter 2: Introductions",
+                                paragraphs: [
+                                    {
+                                        words: [
+                                            { thai: "ฉัน", english: "I/me (informal)", persian: "من (غیررسمی)" },
+                                            { thai: "ชื่อ", english: "name", persian: "اسم" },
+                                            { thai: "คุณ", english: "you", persian: "شما" },
+                                            { thai: "ชื่ออะไร", english: "what is your name?", persian: "اسم شما چیست؟" }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ];
+
+                book = books[currentBook];
+                populateBooks();
+                populateChapters();
+                populateParagraphs();
+                updateParagraphDisplay();
+                nextQuiz();
+
+            } catch (error) {
+                console.error('Error loading books:', error);
+                contentArea.innerHTML = `<div class="error-message">Error loading books: ${error.message}</div>`;
+            }
+        }
+
+        function populateBooks() {
+            if (!bookSelect) return;
+
+            bookSelect.innerHTML = '';
+            books.forEach((book, index) => {
+                const option = document.createElement('option');
+                option.value = index;
+                option.textContent = book.title;
+                bookSelect.appendChild(option);
+            });
+
+            bookSelect.value = currentBook;
+            bookSelect.disabled = false;
+        }
+
+        function populateChapters() {
+            if (!chapterSelect || !books[currentBook]) return;
+
+            chapterSelect.innerHTML = '';
+            book = books[currentBook];
+
+            if (book.chapters) {
+                book.chapters.forEach((chapter, index) => {
+                    const option = document.createElement('option');
+                    option.value = index;
+                    option.textContent = chapter.title || `Chapter ${index + 1}`;
+                    chapterSelect.appendChild(option);
+                });
+
+                chapterSelect.value = currentChapter;
+                chapterSelect.disabled = false;
+            }
+        }
+
+        function populateParagraphs() {
+            if (!paragraphSelect || !books[currentBook] || !book.chapters[currentChapter]) return;
+
+            paragraphSelect.innerHTML = '';
+            const chapter = book.chapters[currentChapter];
+
+            if (chapter.paragraphs) {
+                chapter.paragraphs.forEach((paragraph, index) => {
+                    const option = document.createElement('option');
+                    option.value = index;
+                    option.textContent = `Paragraph ${index + 1}`;
+                    paragraphSelect.appendChild(option);
+                });
+
+                // Ensure currentParagraph is within bounds
+                if (currentParagraph >= chapter.paragraphs.length) {
+                    currentParagraph = 0;
+                    saveSetting('currentParagraph', currentParagraph);
+                }
+
+                paragraphSelect.value = currentParagraph;
+                paragraphSelect.disabled = false;
+            }
+        }
+
+        function updateParagraphDisplay() {
+            if (!paragraphDisplay || !book || !book.chapters[currentChapter]) return;
+
+            const chapter = book.chapters[currentChapter];
+            const paragraph = chapter.paragraphs[currentParagraph];
+
+            if (paragraph) {
+                paragraphDisplay.innerHTML = renderParagraph(paragraph);
+                applyThaiFont(); // Re-apply font to new content
+            } else {
+                paragraphDisplay.innerHTML = '<p>No paragraph content available.</p>';
+            }
+        }
+
+        // Playback Controls
+        function startPlayback() {
+            if (!book || !book.chapters[currentChapter]) return;
+
+            const chapter = book.chapters[currentChapter];
+            const paragraph = chapter.paragraphs[currentParagraph];
+            if (!paragraph || !paragraph.words) return;
+
+            if (isPlaying) {
+                speechSynthesis.cancel();
+            }
+
+            isPlaying = true;
+            currentWordIndex = 0;
+            playNextWord();
+        }
+
+        function pausePlayback() {
+            isPlaying = false;
+            speechSynthesis.pause();
+        }
+
+        function resetPlayback() {
+            isPlaying = false;
+            currentWordIndex = 0;
+            speechSynthesis.cancel();
+            highlightCurrentWord(null);
+        }
+
+        function playNextWord() {
+            if (!isPlaying) return;
+
+            const chapter = book.chapters[currentChapter];
+            const paragraph = chapter.paragraphs[currentParagraph];
+            const words = paragraph.words;
+
+            if (currentWordIndex >= words.length) {
+                isPlaying = false;
+                highlightCurrentWord(null);
+                return;
+            }
+
+            const currentWord = words[currentWordIndex];
+            highlightCurrentWord(currentWordIndex);
+
+            speakTextQueued(currentWord.thai, 'th-TH', () => {
+                if (isPlaying) {
+                    currentWordIndex++;
+                    const delay = parseInt(document.getElementById('wordDelay').value) || 1500;
+                    setTimeout(playNextWord, delay);
+                }
+            });
+        }
+
+        function playSingleWord(index) {
+            const chapter = book.chapters[currentChapter];
+            const paragraph = chapter.paragraphs[currentParagraph];
+            const words = paragraph.words;
+
+            if (index >= 0 && index < words.length) {
+                const word = words[index];
+                highlightCurrentWord(index);
+                speakTextQueued(word.thai, 'th-TH', () => {
+                    setTimeout(() => highlightCurrentWord(null), 1000);
+                });
+            }
+        }
+
+        // Initialize the application
+        document.addEventListener('DOMContentLoaded', () => {
+            initSPA();
+            loadBooks();
+
+            // Settings button event listener
+            settingsBtn.addEventListener('click', showSettings);
+        });
+    </script>
+</body>
+
+</html>
