@@ -10,7 +10,6 @@
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
 
     <style>
-        /* [All previous CSS remains exactly the same] */
         /* CSS Custom Properties for Theming */
         :root {
             --primary-color: #00247D;
@@ -76,6 +75,11 @@
             overflow-y: auto;
             padding: 1em;
             -webkit-overflow-scrolling: touch;
+            padding-top: 0.5em;
+            scroll-padding-top: 120px;
+            scroll-behavior: smooth;
+            -webkit-overflow-scrolling: touch;
+            overflow-anchor: none;
         }
 
         /* Fixed controls at bottom */
@@ -264,18 +268,19 @@
         }
 
         #paragraphDisplay {
-            margin: 1em 0;
+            margin: 0.5em 0 1em 0;
             white-space: pre-wrap;
             width: 100%;
             box-sizing: border-box;
             line-height: 1.6;
             min-height: 150px;
-            max-height: 40vh;
+            max-height: 45vh;
             overflow-y: auto;
             padding: 1em;
             border: 1px solid var(--border-light);
             border-radius: 8px;
             background: var(--background-light);
+            scroll-margin-top: 100px;
         }
 
         body[data-theme="dark"] #paragraphDisplay {
@@ -442,6 +447,146 @@
             justify-content: center;
         }
 
+        /* Language Controls Styling - New Layout */
+        .language-controls {
+            width: 100%;
+            max-width: 300px;
+            margin: 0.5em auto;
+            border: 1px solid var(--border-light);
+            border-radius: 8px;
+            padding: 0.8em;
+            background: var(--background-light);
+        }
+
+        body[data-theme="dark"] .language-controls {
+            background: #2a2a2a;
+            border-color: var(--border-dark);
+        }
+
+        .language-header-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.3em 0;
+            margin-bottom: 0.3em;
+        }
+
+        .language-controls-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.3em 0;
+        }
+
+        .control-type {
+            font-size: 0.9em;
+            font-weight: bold;
+            min-width: 60px;
+            text-align: left;
+        }
+
+        .language-checkboxes {
+            display: flex;
+            justify-content: space-between;
+            flex: 1;
+            gap: 0.5em;
+        }
+
+        .language-checkbox-group {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            flex: 1;
+        }
+
+        .language-checkbox-group label {
+            margin: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        .language-checkbox-group input[type="checkbox"] {
+            margin: 0;
+        }
+
+        .language-title {
+            font-size: 0.9em;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 0.2em;
+        }
+
+        /* Mobile adjustments for language controls */
+        @media (max-width: 600px) {
+            .language-controls {
+                max-width: 100%;
+                padding: 0.6em;
+            }
+
+            .control-type {
+                min-width: 50px;
+                font-size: 0.85em;
+            }
+
+            .language-title {
+                font-size: 0.85em;
+            }
+
+            .language-checkboxes {
+                gap: 0.3em;
+            }
+        }
+
+        body[data-theme="dark"] .language-controls {
+            background: #2a2a2a;
+            border-color: var(--border-dark);
+        }
+
+        .language-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 0.5em;
+            margin-bottom: 0.5em;
+            border-bottom: 1px solid var(--border-light);
+            font-weight: bold;
+        }
+
+        .language-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.3em 0;
+        }
+
+        .language-name {
+            flex: 1;
+            font-size: 0.9em;
+        }
+
+        .control-group {
+            display: flex;
+            gap: 1.5em;
+            align-items: center;
+        }
+
+        .control-label {
+            font-size: 0.8em;
+            font-weight: normal;
+            text-align: center;
+            min-width: 50px;
+        }
+
+        .language-controls label {
+            margin: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        .language-controls input[type="checkbox"] {
+            margin: 0;
+        }
+
         /* Mobile-specific adjustments */
         @media (max-width: 600px) {
             #paragraphControls {
@@ -472,11 +617,31 @@
 
             .content-area {
                 padding: 0.8em;
+                scroll-padding-top: 100px;
             }
 
             #paragraphDisplay {
                 max-height: 35vh;
                 padding: 0.8em;
+                scroll-margin-top: 80px;
+            }
+
+            .language-controls {
+                max-width: 100%;
+                padding: 0.6em;
+            }
+
+            .control-group {
+                gap: 1em;
+            }
+
+            .control-label {
+                min-width: 40px;
+                font-size: 0.75em;
+            }
+
+            .language-name {
+                font-size: 0.85em;
             }
         }
 
@@ -484,6 +649,7 @@
         @media (min-width: 768px) {
             .content-area {
                 padding: 1.5em;
+                scroll-padding-top: 120px;
             }
 
             .controls-area {
@@ -529,10 +695,17 @@
             padding: 1em;
             border-radius: 8px;
             margin-bottom: 1em;
+            position: sticky;
+            top: 0;
+            z-index: 80;
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--border-light);
+            margin-top: 0.5em;
         }
 
         body[data-theme="dark"] #bookSelectionControls {
             background: rgba(102, 170, 255, 0.1);
+            border-color: var(--border-dark);
         }
 
         /* TTS Status Styles */
@@ -669,129 +842,17 @@
             background: var(--border-dark);
         }
 
-        /* Add these styles to fix the scroll issue */
-
-        /* Ensure the content area has proper top padding to account for sticky header */
-        .content-area {
-            flex: 1;
-            overflow-y: auto;
-            padding: 1em;
-            -webkit-overflow-scrolling: touch;
-            padding-top: 0.5em;
-            /* Reduced top padding to make more space */
+        /* Ensure selects are visible when dropdown opens */
+        select:focus {
+            position: relative;
+            z-index: 1000;
         }
 
-        /* Add specific styling for the book selection section to ensure it's always visible */
-        #bookSelectionControls {
-            background: rgba(0, 36, 125, 0.05);
-            padding: 1em;
-            border-radius: 8px;
-            margin-bottom: 1em;
-            position: sticky;
-            top: 0;
-            z-index: 80;
-            backdrop-filter: blur(10px);
-            border: 1px solid var(--border-light);
-        }
-
-        body[data-theme="dark"] #bookSelectionControls {
-            background: rgba(102, 170, 255, 0.1);
-        }
-
-        /* Ensure the book selection stays visible when scrolling */
-        #bookSelectionControls.controls {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            gap: 0.5em;
-            margin-top: 0.5em;
-            /* Add some top margin */
-        }
-
-        /* Adjust the paragraph display to have less top margin */
-        #paragraphDisplay {
-            margin: 0.5em 0 1em 0;
-            /* Reduced top margin */
-            white-space: pre-wrap;
-            width: 100%;
-            box-sizing: border-box;
-            line-height: 1.6;
-            min-height: 150px;
-            max-height: 45vh;
-            /* Slightly reduced to make more space */
-            overflow-y: auto;
-            padding: 1em;
-            border: 1px solid var(--border-light);
-            border-radius: 8px;
-            background: var(--background-light);
-        }
-
-        /* Add scroll margin to ensure elements scroll into view properly */
+        /* Add specific scroll margin for select elements */
         #bookSelect,
         #chapterSelect,
         #paragraphSelect {
-            scroll-margin-top: 80px;
-            /* Height of header + some padding */
-        }
-
-        /* Ensure the main content has proper scroll padding */
-        .content-area {
-            scroll-padding-top: 70px;
-            /* Reserve space for sticky elements */
-        }
-
-        /* Mobile adjustments for the sticky book selection */
-        @media (max-width: 600px) {
-            #bookSelectionControls {
-                position: relative;
-                /* On mobile, don't make it sticky to avoid crowding */
-                top: auto;
-                margin-top: 0.5em;
-                padding: 0.8em;
-            }
-
-            .content-area {
-                padding-top: 0.3em;
-                scroll-padding-top: 60px;
-            }
-
-            #paragraphDisplay {
-                max-height: 40vh;
-                /* More space on mobile */
-                margin: 0.3em 0 0.8em 0;
-            }
-        }
-
-        /* Desktop adjustments */
-        @media (min-width: 768px) {
-            #bookSelectionControls {
-                top: 0.5em;
-                /* Slightly lower on desktop */
-            }
-
-            .content-area {
-                scroll-padding-top: 80px;
-            }
-
-            #paragraphDisplay {
-                max-height: 50vh;
-            }
-        }
-
-        /* Add smooth scrolling for better UX */
-        .content-area {
-            scroll-behavior: smooth;
-        }
-
-        /* Ensure the header has proper z-index */
-        header {
-            z-index: 100;
-            /* Ensure header stays on top */
-        }
-
-        /* Make sure the book selection has lower z-index than header but higher than content */
-        #bookSelectionControls {
-            z-index: 90;
+            scroll-margin-top: 120px;
         }
     </style>
 </head>
@@ -1157,7 +1218,6 @@
         };
 
         // ========== SETTINGS MANAGER ==========
-        // ========== SETTINGS MANAGER ==========
         const SettingsManager = {
             show() {
                 const contentArea = document.getElementById('contentArea');
@@ -1347,7 +1407,6 @@
         };
 
         // ========== PARAGRAPH RENDERING ==========
-        // ========== PARAGRAPH RENDERING ==========
         const ParagraphRenderer = {
             display: null,
 
@@ -1378,46 +1437,50 @@
                     return;
                 }
 
-                // Use the original working approach
-                const renderer = this; // Capture 'this' for the inner function
+                const renderer = this;
 
                 function buildLanguages(thText, enText, faText, wordIndex) {
                     const pairDiv = document.createElement('div');
                     pairDiv.className = 'word-pair';
                     pairDiv.dataset.index = wordIndex;
 
-                    if (document.getElementById('showThai')?.checked && thText) {
+                    // Use display settings for showing text
+                    if (document.getElementById('displayThai')?.checked && thText) {
                         const thSpan = document.createElement('span');
                         thSpan.textContent = thText;
                         thSpan.lang = 'th-TH';
                         thSpan.dataset.index = wordIndex;
                         thSpan.onclick = () => {
-                            // FIX: Use playWord instead of playFromWord
-                            PlaybackController.playWord(thText, 'th-TH', thSpan, wordIndex);
+                            // Use speak settings for audio
+                            if (document.getElementById('speakThai')?.checked) {
+                                PlaybackController.playWord(thText, 'th-TH', thSpan, wordIndex);
+                            }
                         };
                         pairDiv.appendChild(thSpan);
                     }
 
-                    if (document.getElementById('showEnglish')?.checked && enText) {
+                    if (document.getElementById('displayEnglish')?.checked && enText) {
                         const enSpan = document.createElement('span');
                         enSpan.textContent = enText;
                         enSpan.lang = 'en-US';
                         enSpan.dataset.index = wordIndex;
                         enSpan.onclick = () => {
-                            // FIX: Use playWord instead of playFromWord
-                            PlaybackController.playWord(enText, 'en-US', enSpan, wordIndex);
+                            if (document.getElementById('speakEnglish')?.checked) {
+                                PlaybackController.playWord(enText, 'en-US', enSpan, wordIndex);
+                            }
                         };
                         pairDiv.appendChild(enSpan);
                     }
 
-                    if (document.getElementById('showPersian')?.checked && faText) {
+                    if (document.getElementById('displayPersian')?.checked && faText) {
                         const faSpan = document.createElement('span');
                         faSpan.textContent = faText;
                         faSpan.lang = 'fa-IR';
                         faSpan.dataset.index = wordIndex;
                         faSpan.onclick = () => {
-                            // FIX: Use playWord instead of playFromWord
-                            PlaybackController.playWord(faText, 'fa-IR', faSpan, wordIndex);
+                            if (document.getElementById('speakPersian')?.checked) {
+                                PlaybackController.playWord(faText, 'fa-IR', faSpan, wordIndex);
+                            }
                         };
                         pairDiv.appendChild(faSpan);
                     }
@@ -1468,6 +1531,7 @@
                 }
             }
         };
+
         // ========== PLAYBACK CONTROLLER ==========
         const PlaybackController = {
             async playParagraph() {
@@ -1490,6 +1554,7 @@
             pauseParagraph() {
                 AppState.isPlaying = false;
                 TTSManager.cancel();
+                // DON'T clear highlights when pausing - keep the current word highlighted
             },
 
             restartParagraph() {
@@ -1503,6 +1568,7 @@
                 const paragraph = AppState.getCurrentParagraph();
                 if (!AppState.isPlaying || !paragraph || AppState.currentWordIndex >= paragraph.length) {
                     AppState.isPlaying = false;
+                    ParagraphRenderer.clearHighlights();
                     return;
                 }
 
@@ -1513,27 +1579,80 @@
                     return;
                 }
 
-                if (AppState.isPlaying) ParagraphRenderer.clearHighlights();
+                // Highlight the current word immediately when starting to speak it
+                this.highlightCurrentWord(AppState.currentWordIndex);
 
                 const delay = this.getPlaybackDelay();
-                const showThai = document.getElementById('showThai')?.checked;
-                const showEnglish = document.getElementById('showEnglish')?.checked;
-                const showPersian = document.getElementById('showPersian')?.checked;
 
-                if (showThai && word.th && word.th !== "\n") {
+                // Use speak settings for audio playback
+                const speakThai = document.getElementById('speakThai')?.checked;
+                const speakEnglish = document.getElementById('speakEnglish')?.checked;
+                const speakPersian = document.getElementById('speakPersian')?.checked;
+
+                let anyWordSpoken = false;
+
+                if (speakThai && word.th && word.th !== "\n") {
                     await this.speakWord(word.th, 'th-TH', AppState.currentWordIndex, true);
+                    anyWordSpoken = true;
                 }
 
-                if (showEnglish && word.en && word.en !== "\n") {
+                if (speakEnglish && word.en && word.en !== "\n") {
                     await this.speakWord(word.en, 'en-US', AppState.currentWordIndex, true);
+                    anyWordSpoken = true;
                 }
 
-                if (showPersian && word.fa && word.fa !== "\n") {
+                if (speakPersian && word.fa && word.fa !== "\n") {
                     await this.speakWord(word.fa, 'fa-IR', AppState.currentWordIndex, true);
+                    anyWordSpoken = true;
                 }
 
-                AppState.currentWordIndex++;
-                setTimeout(() => { if (AppState.isPlaying) this.speakNextWord(); }, delay);
+                // Only advance to next word if we're still playing and actually spoke something
+                if (AppState.isPlaying && anyWordSpoken) {
+                    AppState.currentWordIndex++;
+                    setTimeout(() => {
+                        if (AppState.isPlaying) this.speakNextWord();
+                    }, delay);
+                } else if (!anyWordSpoken) {
+                    // If no words were spoken (all speak options disabled), move to next word
+                    AppState.currentWordIndex++;
+                    if (AppState.isPlaying) {
+                        setTimeout(() => {
+                            if (AppState.isPlaying) this.speakNextWord();
+                        }, delay);
+                    }
+                }
+            },
+
+            // New method to highlight the current word
+            highlightCurrentWord(index) {
+                const paragraph = AppState.getCurrentParagraph();
+                if (!paragraph || index >= paragraph.length) return;
+
+                const word = paragraph[index];
+                if (!word) return;
+
+                // Find the word-pair element for this index
+                const pairDiv = ParagraphRenderer.display?.querySelector(`.word-pair[data-index="${index}"]`);
+                if (!pairDiv) return;
+
+                // Clear all highlights first
+                ParagraphRenderer.clearHighlights();
+
+                // Use display settings to determine which span to highlight
+                const displayThai = document.getElementById('displayThai')?.checked;
+                const displayEnglish = document.getElementById('displayEnglish')?.checked;
+                const displayPersian = document.getElementById('displayPersian')?.checked;
+
+                if (displayThai && word.th && word.th !== "\n") {
+                    const thSpan = pairDiv.querySelector('span[lang="th-TH"]');
+                    if (thSpan) ParagraphRenderer.highlightElement(thSpan, index);
+                } else if (displayEnglish && word.en && word.en !== "\n") {
+                    const enSpan = pairDiv.querySelector('span[lang="en-US"]');
+                    if (enSpan) ParagraphRenderer.highlightElement(enSpan, index);
+                } else if (displayPersian && word.fa && word.fa !== "\n") {
+                    const faSpan = pairDiv.querySelector('span[lang="fa-IR"]');
+                    if (faSpan) ParagraphRenderer.highlightElement(faSpan, index);
+                }
             },
 
             async speakWord(text, lang, index, autoAdvance = false) {
@@ -1543,16 +1662,13 @@
                         return;
                     }
 
-                    const pairDiv = ParagraphRenderer.display?.querySelector(`.word-pair[data-index="${index}"]`);
-                    const span = pairDiv ? pairDiv.querySelector(`span[lang="${lang}"]`) : null;
-
-                    if (span) {
-                        ParagraphRenderer.highlightElement(span, index);
-                    }
+                    // The highlighting is now handled by highlightCurrentWord
+                    // so we don't need to highlight again here for auto-advance
 
                     TTSManager.speak(text, lang, () => {
-                        if (autoAdvance && AppState.isPlaying && span) {
-                            span.classList.remove('highlight-light', 'highlight-dark');
+                        if (autoAdvance && AppState.isPlaying) {
+                            // Don't clear the highlight here - let the next word handle it
+                            // or keep it highlighted if paused
                         }
                         resolve();
                     });
@@ -1566,6 +1682,7 @@
                 // but don't start auto-advancing
                 AppState.currentWordIndex = index;
 
+                // Highlight immediately when clicking
                 ParagraphRenderer.highlightElement(span, index);
                 TTSManager.cancel();
                 this.speakWord(text, lang, index, false);
@@ -1795,6 +1912,7 @@
                 FontManager.init();
                 this.setupEventListeners();
                 await this.loadBooks();
+                this.setupPlaybackScrollHandling();
             },
 
             setupEventListeners() {
@@ -1931,6 +2049,9 @@
                 AppState.currentWordIndex = 0;
                 AppState.isPlaying = false;
                 TTSManager.cancel();
+
+                // Ensure book selection is visible after loading new content
+                setTimeout(() => this.ensureBookSelectionVisible(), 200);
             },
 
             renderParagraph() {
@@ -1939,13 +2060,49 @@
                 QuizSystem.buildFromParagraph(paragraph);
             },
 
-            // Update the reload method to ensure visibility
-            reload() {
-                this.initSPA();
-                this.loadBooks().then(() => {
-                    // After loading books, ensure the book selection is visible
-                    setTimeout(() => this.ensureBookSelectionVisible(), 100);
+            ensureBookSelectionVisible() {
+                const bookSelection = document.getElementById('bookSelectionControls');
+                const contentArea = document.getElementById('contentArea');
+
+                if (bookSelection && contentArea) {
+                    // Use a small timeout to ensure DOM is updated
+                    setTimeout(() => {
+                        const bookSelectionRect = bookSelection.getBoundingClientRect();
+                        const headerRect = document.querySelector('header').getBoundingClientRect();
+
+                        // If book selection is behind the header, scroll it into view
+                        if (bookSelectionRect.top < headerRect.bottom + 10) {
+                            const scrollTop = contentArea.scrollTop;
+                            const targetScroll = scrollTop - (headerRect.bottom - bookSelectionRect.top) - 20;
+                            contentArea.scrollTo({
+                                top: targetScroll,
+                                behavior: 'smooth'
+                            });
+                        }
+                    }, 100);
+                }
+            },
+
+            setupPlaybackScrollHandling() {
+                // Observe when words are highlighted during playback
+                const observer = new MutationObserver((mutations) => {
+                    mutations.forEach((mutation) => {
+                        if (mutation.type === 'attributes' &&
+                            (mutation.target.classList.contains('highlight-light') ||
+                                mutation.target.classList.contains('highlight-dark'))) {
+                            this.ensureBookSelectionVisible();
+                        }
+                    });
                 });
+
+                const paragraphDisplay = document.getElementById('paragraphDisplay');
+                if (paragraphDisplay) {
+                    observer.observe(paragraphDisplay, {
+                        attributes: true,
+                        attributeFilter: ['class'],
+                        subtree: true
+                    });
+                }
             },
 
             initSPA() {
@@ -1964,78 +2121,107 @@
                 contentArea.scrollTop = 0;
             },
 
-            // Add a method to ensure book selection is visible
-            ensureBookSelectionVisible() {
-                const bookSelection = document.getElementById('bookSelectionControls');
-                const contentArea = document.getElementById('contentArea');
-
-                if (bookSelection && contentArea) {
-                    // Scroll the book selection into view with offset for header
-                    const headerHeight = document.querySelector('header').offsetHeight;
-                    const bookSelectionRect = bookSelection.getBoundingClientRect();
-                    const contentAreaRect = contentArea.getBoundingClientRect();
-
-                    if (bookSelectionRect.top < headerHeight) {
-                        contentArea.scrollTop = contentArea.scrollTop - (headerHeight - bookSelectionRect.top) - 10;
-                    }
-                }
-            },
-
             getMainHTML() {
                 return `
-                    <section id="bookSelectionControls" class="controls">
-                        <label>Book: <select id="bookSelect"></select></label>
-                        <label>Chapter: <select id="chapterSelect"></select></label>
-                        <label>Paragraph: <select id="paragraphSelect"></select></label>
-                    </section>
-                    
-                    <section id="paragraphSec">
-                        <h3>Paragraph Content</h3>
-                        <div id="paragraphDisplay"></div>
-                        <div id="paragraphControls" class="controls">
-                            <div class="paragraph-controls-row">
-                                <button id="playBtn">▶️</button>
-                                <button id="pauseBtn">⏸️</button>
-                                <button id="restartBtn">⏮️</button>
-                                <button id="prevParagraph">⬅️</button>
-                                <button id="nextParagraph">➡️</button>
+        <section id="bookSelectionControls" class="controls">
+            <label>Book: <select id="bookSelect"></select></label>
+            <label>Chapter: <select id="chapterSelect"></select></label>
+            <label>Paragraph: <select id="paragraphSelect"></select></label>
+        </section>
+        
+        <section id="paragraphSec">
+            <h3>Paragraph Content</h3>
+            <div id="paragraphDisplay"></div>
+            <div id="paragraphControls" class="controls">
+                <div class="paragraph-controls-row">
+                    <button id="playBtn">▶️</button>
+                    <button id="pauseBtn">⏸️</button>
+                    <button id="restartBtn">⏮️</button>
+                    <button id="prevParagraph">⬅️</button>
+                    <button id="nextParagraph">➡️</button>
+                </div>
+                <div class="paragraph-controls-row">
+                    <label>Delay: <input type="number" id="playbackDelay" value="1500" min="500" max="5000" step="100"></label>
+                </div>
+                <div class="language-controls">
+                    <!-- Row 1: Language Titles -->
+                    <div class="language-header-row">
+                        <div class="control-type"></div>
+                        <div class="language-checkboxes">
+                            <div class="language-checkbox-group">
+                                <div class="language-title">Thai</div>
                             </div>
-                            <div class="paragraph-controls-row">
-                                <label><input type="checkbox" id="showThai" checked> Thai</label>
-                                <label><input type="checkbox" id="showEnglish"> English</label>
-                                <label><input type="checkbox" id="showPersian"> Persian</label>
-                                <label>Delay: <input type="number" id="playbackDelay" value="1500" min="500" max="5000" step="100"></label>
+                            <div class="language-checkbox-group">
+                                <div class="language-title">Persian</div>
                             </div>
-                        </div>
-                    </section>
-                    
-                    <section id="quizSec">
-                        <h3>Practice Quiz</h3>
-                        <div id="quiz"></div>
-                        <div id="quizControls">
-                            <div class="quiz-row quiz-row-top">
-                                <button id="prevQ">⬅️</button>
-                                <button id="nextQ">➡️</button>
-                                <button id="retryQuiz">🔄</button>
-                                <label><input type="checkbox" id="incorrectOnly"> Incorrect Only</label>
-                                <div id="score">Score: 0/0</div>
-                            </div>
-                            <div class="quiz-row quiz-row-bottom">
-                                <div class="lang-select">
-                                    <span>Question: </span>
-                                    <label><input type="radio" name="questionLang" id="questionThai" value="th" checked> Thai</label>
-                                    <label><input type="radio" name="questionLang" id="questionEnglish" value="en"> English</label>
-                                    <label><input type="radio" name="questionLang" id="questionPersian" value="fa"> Persian</label>
-                                </div>
-                                <div class="lang-select">
-                                    <span>Answer: </span>
-                                    <label><input type="radio" name="answerLang" id="answerThai" value="th"> Thai</label>
-                                    <label><input type="radio" name="answerLang" id="answerEnglish" value="en" checked> English</label>
-                                    <label><input type="radio" name="answerLang" id="answerPersian" value="fa"> Persian</label>
-                                </div>
+                            <div class="language-checkbox-group">
+                                <div class="language-title">English</div>
                             </div>
                         </div>
-                    </section>`;
+                    </div>
+                    
+                    <!-- Row 2: Display Checkboxes -->
+                    <div class="language-controls-row">
+                        <div class="control-type">Display</div>
+                        <div class="language-checkboxes">
+                            <div class="language-checkbox-group">
+                                <label><input type="checkbox" id="displayThai" checked></label>
+                            </div>
+                            <div class="language-checkbox-group">
+                                <label><input type="checkbox" id="displayPersian"></label>
+                            </div>
+                            <div class="language-checkbox-group">
+                                <label><input type="checkbox" id="displayEnglish"></label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Row 3: Speak Checkboxes -->
+                    <div class="language-controls-row">
+                        <div class="control-type">Speak</div>
+                        <div class="language-checkboxes">
+                            <div class="language-checkbox-group">
+                                <label><input type="checkbox" id="speakThai" checked></label>
+                            </div>
+                            <div class="language-checkbox-group">
+                                <label><input type="checkbox" id="speakPersian"></label>
+                            </div>
+                            <div class="language-checkbox-group">
+                                <label><input type="checkbox" id="speakEnglish"></label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="quizSec">
+            <h3>Practice Quiz</h3>
+            <div id="quiz"></div>
+            <div id="quizControls">
+                <div class="quiz-row quiz-row-top">
+                    <button id="prevQ">⬅️</button>
+                    <button id="nextQ">➡️</button>
+                    <button id="retryQuiz">🔄</button>
+                    <label><input type="checkbox" id="incorrectOnly"> Incorrect Only</label>
+                    <div id="score">Score: 0/0</div>
+                </div>
+                <div class="quiz-row quiz-row-bottom">
+                    <div class="lang-select">
+                        <span>Question: </span>
+                        <label><input type="radio" name="questionLang" id="questionThai" value="th" checked> Thai</label>
+                        <label><input type="radio" name="questionLang" id="questionEnglish" value="en"> English</label>
+                        <label><input type="radio" name="questionLang" id="questionPersian" value="fa"> Persian</label>
+                    </div>
+                    <div class="lang-select">
+                        <span>Answer: </span>
+                        <label><input type="radio" name="answerLang" id="answerThai" value="th"> Thai</label>
+                        <label><input type="radio" name="answerLang" id="answerEnglish" value="en" checked> English</label>
+                        <label><input type="radio" name="answerLang" id="answerPersian" value="fa"> Persian</label>
+                    </div>
+                </div>
+            </div>
+        </section>`;
             },
 
             getControlsHTML() {
@@ -2057,7 +2243,11 @@
                 });
 
                 // Playback controls
-                document.getElementById('playBtn')?.addEventListener('click', () => PlaybackController.playParagraph());
+                document.getElementById('playBtn')?.addEventListener('click', () => {
+                    PlaybackController.playParagraph();
+                    // Ensure book selection stays visible when playback starts
+                    setTimeout(() => this.ensureBookSelectionVisible(), 300);
+                });
                 document.getElementById('pauseBtn')?.addEventListener('click', () => PlaybackController.pauseParagraph());
                 document.getElementById('restartBtn')?.addEventListener('click', () => PlaybackController.restartParagraph());
                 document.getElementById('nextParagraph')?.addEventListener('click', () => NavigationController.nextParagraph());
@@ -2077,9 +2267,12 @@
                     'bookSelect': () => NavigationController.handleBookChange(event.target.value),
                     'chapterSelect': () => NavigationController.handleChapterChange(+event.target.value),
                     'paragraphSelect': () => NavigationController.handleParagraphChange(+event.target.value),
-                    'showThai': () => this.saveAndRender('showThai', event.target.checked),
-                    'showEnglish': () => this.saveAndRender('showEnglish', event.target.checked),
-                    'showPersian': () => this.saveAndRender('showPersian', event.target.checked),
+                    'displayThai': () => this.saveAndRenderDisplay('displayThai', event.target.checked),
+                    'displayEnglish': () => this.saveAndRenderDisplay('displayEnglish', event.target.checked),
+                    'displayPersian': () => this.saveAndRenderDisplay('displayPersian', event.target.checked),
+                    'speakThai': () => this.saveSpeakSetting('speakThai', event.target.checked),
+                    'speakEnglish': () => this.saveSpeakSetting('speakEnglish', event.target.checked),
+                    'speakPersian': () => this.saveSpeakSetting('speakPersian', event.target.checked),
                     'playbackDelay': () => this.handlePlaybackDelayChange(event.target)
                 };
 
@@ -2087,9 +2280,14 @@
                 if (handler) handler();
             },
 
-            saveAndRender(setting, value) {
+            saveAndRenderDisplay(setting, value) {
                 Storage.save(setting, value ? '1' : '0');
                 this.renderParagraph();
+            },
+
+            saveSpeakSetting(setting, value) {
+                Storage.save(setting, value ? '1' : '0');
+                // No need to re-render for speak settings, just save
             },
 
             handlePlaybackDelayChange(input) {
@@ -2126,14 +2324,20 @@
             },
 
             restoreSettings() {
-                const showThai = document.getElementById('showThai');
-                const showEnglish = document.getElementById('showEnglish');
-                const showPersian = document.getElementById('showPersian');
+                const displayThai = document.getElementById('displayThai');
+                const displayEnglish = document.getElementById('displayEnglish');
+                const displayPersian = document.getElementById('displayPersian');
+                const speakThai = document.getElementById('speakThai');
+                const speakEnglish = document.getElementById('speakEnglish');
+                const speakPersian = document.getElementById('speakPersian');
                 const playbackDelay = document.getElementById('playbackDelay');
 
-                if (showThai) showThai.checked = Storage.loadBool('showThai', true);
-                if (showEnglish) showEnglish.checked = Storage.loadBool('showEnglish', false);
-                if (showPersian) showPersian.checked = Storage.loadBool('showPersian', false);
+                if (displayThai) displayThai.checked = Storage.loadBool('displayThai', true);
+                if (displayEnglish) displayEnglish.checked = Storage.loadBool('displayEnglish', false);
+                if (displayPersian) displayPersian.checked = Storage.loadBool('displayPersian', false);
+                if (speakThai) speakThai.checked = Storage.loadBool('speakThai', true);
+                if (speakEnglish) speakEnglish.checked = Storage.loadBool('speakEnglish', false);
+                if (speakPersian) speakPersian.checked = Storage.loadBool('speakPersian', false);
                 if (playbackDelay) playbackDelay.value = Storage.load('playbackDelay', '1500');
             }
         };
