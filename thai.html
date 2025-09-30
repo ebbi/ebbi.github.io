@@ -1,0 +1,1592 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai&family=Chakra+Petch&display=swap"
+        rel="stylesheet" />
+    <title>ฝึกฝน Thai</title>
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+
+    <style>
+        /* CSS Custom Properties for Theming */
+        :root {
+            --primary-color: #00247D;
+            --primary-light: #66aaff;
+            --background-light: #f9f9f9;
+            --background-dark: #222;
+            --text-light: #000;
+            --text-dark: #eee;
+            --border-light: #ccc;
+            --border-dark: #555;
+            --correct-color: #4caf50;
+            --incorrect-color: #f44336;
+            --highlight-light: yellow;
+            --highlight-dark: orange;
+        }
+
+        /* Base page styling */
+        body {
+            font-size: clamp(14px, 2.5vw, 18px);
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            transition: background 0.3s, color 0.3s;
+            background: var(--background-light);
+            color: var(--text-light);
+        }
+
+        body[data-theme="dark"] {
+            background: var(--background-dark);
+            color: var(--text-dark);
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--primary-color);
+            color: white;
+            padding: 0.5em 1em;
+        }
+
+        main {
+            padding: 1em;
+        }
+
+        section {
+            margin-bottom: 1.5em;
+            padding-bottom: 1em;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        body[data-theme="dark"] section {
+            border-bottom-color: var(--border-dark);
+        }
+
+        /* Help block styling */
+        details {
+            padding: 0.5em 1em;
+            border: 1px solid var(--border-light);
+            border-radius: 4px;
+            margin: 0.5em 0;
+            font-size: 0.9em;
+            font-weight: normal;
+            text-align: left;
+            background: var(--background-light);
+            color: var(--text-light);
+        }
+
+        details summary {
+            cursor: pointer;
+            color: var(--primary-color);
+        }
+
+        body[data-theme="dark"] details {
+            background: #2a2a2a;
+            border: 1px solid var(--border-dark);
+            color: var(--text-dark);
+        }
+
+        body[data-theme="dark"] details summary {
+            color: var(--primary-light);
+        }
+
+        /* Style nested content in details */
+        details p {
+            margin: 0.5em 0;
+            line-height: 1.5;
+            text-align: left;
+        }
+
+        details ol {
+            margin: 0.5em 1.5em;
+            padding-left: 1.2em;
+        }
+
+        details ol li {
+            margin: 0.4em 0;
+        }
+
+        /* === Base Styles for Inputs, Selects, Buttons === */
+        .controls button,
+        #bookSelectionControls select,
+        #settingsInline select,
+        .controls input[type="number"],
+        #themeToggle {
+            font-size: 1em;
+            line-height: 1.5;
+            padding: 0 0.5em;
+            height: 2em;
+            border-radius: 4px;
+            border: 1px solid var(--border-light);
+            background: #f0f0f0;
+            color: var(--text-light);
+            cursor: pointer;
+            box-sizing: border-box;
+            vertical-align: middle;
+            transition: background 0.2s, color 0.2s, border-color 0.2s;
+        }
+
+        /* Number input text alignment */
+        .controls input[type="number"] {
+            text-align: center;
+        }
+
+        /* Checkbox styling */
+        .controls label input[type="checkbox"],
+        #quizControls label input[type="checkbox"] {
+            width: 1em;
+            height: 1em;
+            margin: 0 0.2em 0 0;
+            accent-color: var(--primary-color);
+            vertical-align: middle;
+            cursor: pointer;
+        }
+
+        /* Hover states */
+        .controls button:hover,
+        .controls input[type="number"]:hover,
+        .controls select:hover,
+        #themeToggle:hover,
+        #quizControls button:hover {
+            background: #e0e0e0;
+        }
+
+        /* Dark theme adjustments */
+        body[data-theme="dark"] .controls button,
+        body[data-theme="dark"] .controls input[type="number"],
+        body[data-theme="dark"] .controls select,
+        body[data-theme="dark"] #themeToggle,
+        body[data-theme="dark"] #quizControls button {
+            background: #333;
+            border: 1px solid var(--border-dark);
+            color: var(--text-dark);
+        }
+
+        body[data-theme="dark"] .controls button:hover,
+        body[data-theme="dark"] .controls input[type="number"]:hover,
+        body[data-theme="dark"] .controls select:hover,
+        body[data-theme="dark"] #themeToggle:hover,
+        body[data-theme="dark"] #quizControls button:hover {
+            background: #444;
+        }
+
+        body[data-theme="dark"] .controls label input[type="checkbox"],
+        body[data-theme="dark"] #quizControls label input[type="checkbox"] {
+            accent-color: var(--primary-light);
+        }
+
+        /* Theme Toggle Button */
+        #themeToggle {
+            background: none;
+            border: none;
+            width: auto;
+            min-width: 0;
+            padding: 0 0.5em;
+            font-size: 1em;
+            line-height: 1.5;
+        }
+
+        /* Controls container alignment */
+        .controls,
+        #bookSelectionControls,
+        #settingsInline {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 0.5em;
+        }
+
+        /* Label alignment */
+        .controls label,
+        #settingsInline label {
+            display: flex;
+            align-items: center;
+            gap: 0.3em;
+            font-size: 0.9em;
+        }
+
+        /* Thai Font Styling */
+        .thai-font.tahoma {
+            font-family: Tahoma, sans-serif;
+        }
+
+        .thai-font.noto {
+            font-family: 'Noto Sans Thai', sans-serif;
+        }
+
+        .thai-font.chakra {
+            font-family: 'Chakra Petch', sans-serif;
+        }
+
+        /* Highlighting */
+        span.thai-font.highlight-light,
+        span:not(.thai-font).highlight-light {
+            background: var(--highlight-light);
+            color: black;
+        }
+
+        span.thai-font.highlight-dark,
+        span:not(.thai-font).highlight-dark {
+            background: var(--highlight-dark);
+            color: black;
+        }
+
+        #paragraphDisplay {
+            margin: 1em 0;
+            white-space: pre-wrap;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        :lang(th-TH) {
+            font-size: larger;
+        }
+
+        :lang(fa-IR) {
+            direction: rtl;
+        }
+
+        .word-pair {
+            display: inline-block;
+            vertical-align: top;
+            margin: 0 0.5em 1em 0;
+            cursor: pointer;
+        }
+
+        .word-pair span[lang="th-TH"] {
+            display: block;
+            word-break: keep-all;
+            overflow-wrap: break-word;
+            font-size: large;
+        }
+
+        .word-pair span[lang="en-US"] {
+            border-top: 1px solid lightskyblue;
+            display: block;
+            word-break: normal;
+            overflow-wrap: normal;
+            white-space: normal;
+            margin-top: 0.1em;
+            color: rgb(5, 154, 247);
+        }
+
+        .word-pair span[lang="fa-IR"] {
+            border-top: 1px solid lightskyblue;
+            display: block;
+            word-break: keep-all;
+            overflow-wrap: break-word;
+            direction: rtl;
+            color: green;
+        }
+
+        /* Quiz styling */
+        #quiz {
+            margin-top: 1em;
+        }
+
+        .quiz-heading {
+            font-weight: 600;
+            margin-bottom: 0.5em;
+        }
+
+        .quiz-question {
+            font-size: 1.25rem;
+            margin: .1em 0;
+        }
+
+        .quiz-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5em;
+        }
+
+        .quiz-option {
+            border: 1px solid var(--border-light);
+            padding: 0.3em 0.6em;
+            cursor: pointer;
+            border-radius: 5px;
+            user-select: none;
+        }
+
+        .quiz-option.correct {
+            background: var(--correct-color);
+            color: white;
+        }
+
+        .quiz-option.incorrect {
+            background: var(--incorrect-color);
+            color: white;
+        }
+
+        #quizControls {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8em;
+            margin-top: 1em;
+        }
+
+        #quizControls .quiz-row {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 0.6em;
+        }
+
+        #quizControls .quiz-row-top {
+            justify-content: flex-start;
+        }
+
+        #quizControls .quiz-row-bottom {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 0.4em;
+        }
+
+        @media (min-width: 600px) {
+            #quizControls .quiz-row-bottom {
+                flex-direction: row;
+                align-items: center;
+            }
+        }
+
+        #quizControls .lang-select {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4em 0.8em;
+        }
+
+        /* === Unified Button Styling === */
+        #paragraphControls button,
+        #quizControls button,
+        #settingsControls button,
+        #closeX {
+            font-size: 1rem;
+            line-height: 1.5;
+            padding: 0 0.5em;
+            height: 2.2em;
+            min-width: 1em;
+            border-radius: 4px;
+            border: 1px solid var(--border-light);
+            background: #f0f0f0;
+            color: var(--text-light);
+            cursor: pointer;
+            box-sizing: border-box;
+            vertical-align: middle;
+            transition: background 0.2s, color 0.2s, border-color 0.2s;
+        }
+
+        #paragraphControls button:hover,
+        #quizControls button:hover,
+        #settingsControls button:hover,
+        #closeX:hover {
+            background: #e0e0e0;
+        }
+
+        body[data-theme="dark"] #paragraphControls button,
+        body[data-theme="dark"] #quizControls button,
+        body[data-theme="dark"] #settingsControls button,
+        body[data-theme="dark"] #closeX {
+            background: #333;
+            border: 1px solid var(--border-dark);
+            color: var(--text-dark);
+        }
+
+        body[data-theme="dark"] #paragraphControls button:hover,
+        body[data-theme="dark"] #quizControls button:hover,
+        body[data-theme="dark"] #settingsControls button:hover,
+        body[data-theme="dark"] #closeX:hover {
+            background: #444;
+        }
+
+        /* Paragraph controls responsive layout */
+        #paragraphControls {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 0.5em;
+        }
+
+        .paragraph-controls-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5em;
+            align-items: center;
+        }
+
+        /* Responsive adjustments for mobile */
+        @media (max-width: 600px) {
+            #paragraphControls {
+                gap: 0.8em;
+            }
+        }
+
+        /* Error and status styling */
+        .error-message {
+            color: var(--incorrect-color);
+            background: #ffe6e6;
+            padding: 0.5em;
+            border-radius: 4px;
+            margin: 0.5em 0;
+            border: 1px solid var(--incorrect-color);
+        }
+
+        .success-message {
+            color: var(--correct-color);
+            background: #e6ffe6;
+            padding: 0.5em;
+            border-radius: 4px;
+            margin: 0.5em 0;
+            border: 1px solid var(--correct-color);
+        }
+
+        .loading {
+            opacity: 0.6;
+            pointer-events: none;
+        }
+    </style>
+</head>
+
+<body data-theme="light">
+
+    <header>
+        <span lang="th">ฝึกฝน</span>
+        <span id="settingsInline">
+            <button id="themeToggle" title="Toggle Day/Night">🌞</button>
+            <label>Thai Font:
+                <select id="thaiFont">
+                    <option value="">Default</option>
+                    <option value="Tahoma">Tahoma</option>
+                    <option value="Noto Sans Thai">Noto Sans Thai</option>
+                    <option value="Chakra Petch">Chakra Petch</option>
+                </select>
+            </label>
+            <button id="settingsBtn" title="Settings & Help">⚙️</button>
+        </span>
+    </header>
+
+    <main></main>
+
+    <script>
+        // ==================== UTILITIES ====================
+        const Utils = {
+            // Security: HTML escaping
+            escapeHTML(str) {
+                if (str === null || str === undefined) return '';
+                const div = document.createElement('div');
+                div.textContent = str;
+                return div.innerHTML;
+            },
+
+            // Safe HTML template literal
+            safeHTML(strings, ...values) {
+                return strings.reduce((result, string, i) => {
+                    const value = values[i] || '';
+                    return result + string + this.escapeHTML(value);
+                }, '');
+            },
+
+            // Storage utilities
+            saveSetting(k, v) {
+                try {
+                    localStorage.setItem(k, v);
+                } catch (e) {
+                    console.warn('Failed to save setting:', e);
+                }
+            },
+
+            loadSetting(k, def = '') {
+                try {
+                    return localStorage.getItem(k) || def;
+                } catch (e) {
+                    console.warn('Failed to load setting:', e);
+                    return def;
+                }
+            },
+
+            getSavedInt(k, def = 0) {
+                return parseInt(this.loadSetting(k, def), 10);
+            },
+
+            // Performance: Debounce
+            debounce(func, wait) {
+                let timeout;
+                return function executedFunction(...args) {
+                    const later = () => {
+                        clearTimeout(timeout);
+                        func(...args);
+                    };
+                    clearTimeout(timeout);
+                    timeout = setTimeout(later, wait);
+                };
+            },
+
+            // Error display
+            showError(message, container = document.body) {
+                const errorEl = document.createElement('div');
+                errorEl.className = 'error-message';
+                errorEl.textContent = message;
+                if (container) {
+                    container.prepend(errorEl);
+                    setTimeout(() => errorEl.remove(), 5000);
+                }
+            },
+
+            showSuccess(message, container = document.body) {
+                const successEl = document.createElement('div');
+                successEl.className = 'success-message';
+                successEl.textContent = message;
+                if (container) {
+                    container.prepend(successEl);
+                    setTimeout(() => successEl.remove(), 3000);
+                }
+            }
+        };
+
+        // ==================== STATE MANAGEMENT ====================
+        const AppState = {
+            books: [],
+            currentBook: null,
+            currentChapter: 0,
+            currentParagraph: 0,
+            isPlaying: false,
+            currentWordIndex: 0,
+            utterance: null,
+            lastHighlightedIndex: null,
+            playbackTimeout: null,
+
+            // Computed properties
+            getCurrentParagraph() {
+                return this.currentBook?.chapters?.[this.currentChapter]?.paragraphs?.[this.currentParagraph] || [];
+            },
+
+            getCurrentChapter() {
+                return this.currentBook?.chapters?.[this.currentChapter] || null;
+            },
+
+            // Validation
+            validateBookStructure(book) {
+                if (!book || typeof book !== 'object') {
+                    throw new Error('Invalid book: must be an object');
+                }
+                if (!Array.isArray(book.chapters)) {
+                    throw new Error('Invalid book: chapters must be an array');
+                }
+                if (book.chapters.length === 0) {
+                    throw new Error('Invalid book: no chapters found');
+                }
+                return true;
+            }
+        };
+
+        // ==================== TTS MANAGER ====================
+        const TTSManager = {
+            isSupported() {
+                return 'speechSynthesis' in window && typeof SpeechSynthesisUtterance !== 'undefined';
+            },
+
+            speakTextQueued(text, lang, onEnd) {
+                if (!text || !this.isSupported()) return;
+
+                try {
+                    speechSynthesis.cancel();
+                    const utterance = new SpeechSynthesisUtterance(text);
+                    utterance.lang = lang;
+                    if (onEnd) utterance.onend = onEnd;
+                    speechSynthesis.speak(utterance);
+                } catch (error) {
+                    console.error('TTS Error:', error);
+                    Utils.showError('Text-to-speech failed. Please check your browser settings.');
+                }
+            },
+
+            testTTS() {
+                if (!this.isSupported()) {
+                    Utils.showError('Text-to-speech is not supported in this browser.');
+                    return false;
+                }
+
+                const testUtterances = [
+                    new SpeechSynthesisUtterance("Hello in English"),
+                    new SpeechSynthesisUtterance("สวัสดี in Thai")
+                ];
+                testUtterances[0].lang = "en-US";
+                testUtterances[1].lang = "th-TH";
+
+                try {
+                    speechSynthesis.cancel();
+                    speechSynthesis.speak(testUtterances[0]);
+                    testUtterances[0].onend = () => speechSynthesis.speak(testUtterances[1]);
+                    return true;
+                } catch (error) {
+                    console.error('TTS Test Failed:', error);
+                    return false;
+                }
+            }
+        };
+
+        // ==================== UI MANAGER ====================
+        const UIManager = {
+            elements: {},
+
+            initialize() {
+                this.elements = {
+                    bookSelect: document.getElementById('bookSelect'),
+                    chapterSelect: document.getElementById('chapterSelect'),
+                    paragraphSelect: document.getElementById('paragraphSelect'),
+                    paragraphDisplay: document.getElementById('paragraphDisplay'),
+                    scoreDisplay: document.getElementById('score'),
+                    themeToggle: document.getElementById('themeToggle'),
+                    thaiFont: document.getElementById('thaiFont')
+                };
+            },
+
+            // Safe DOM creation
+            createElement(tag, attributes = {}, children = []) {
+                const element = document.createElement(tag);
+                Object.keys(attributes).forEach(key => {
+                    if (key === 'className') {
+                        element.className = attributes[key];
+                    } else if (key === 'textContent') {
+                        element.textContent = attributes[key];
+                    } else if (key.startsWith('on')) {
+                        element.addEventListener(key.slice(2).toLowerCase(), attributes[key]);
+                    } else {
+                        element.setAttribute(key, attributes[key]);
+                    }
+                });
+
+                children.forEach(child => {
+                    if (typeof child === 'string') {
+                        element.appendChild(document.createTextNode(child));
+                    } else {
+                        element.appendChild(child);
+                    }
+                });
+
+                return element;
+            },
+
+            // Safe innerHTML alternative
+            setSafeHTML(element, html) {
+                element.innerHTML = Utils.escapeHTML(html);
+            },
+
+            showLoading(show = true) {
+                document.body.classList.toggle('loading', show);
+            }
+        };
+
+        // ==================== QUIZ ENGINE ====================
+        const QuizEngine = {
+            data: [],
+            currentQ: 0,
+            score: 0,
+            attempts: 0,
+
+            buildFromParagraph(para) {
+                this.data = para.map(w => ({
+                    th: w.th || '',
+                    en: w.en || '',
+                    fa: w.fa || '',
+                    attempted: false,
+                    correct: false
+                }));
+                this.currentQ = 0;
+                this.score = 0;
+                this.attempts = 0;
+                this.render();
+            },
+
+            validateQuestion(qLang, aLang) {
+                if (!qLang || !aLang) {
+                    throw new Error('Both question and answer languages must be selected');
+                }
+                if (qLang === aLang) {
+                    throw new Error('Question and answer languages must be different');
+                }
+                return true;
+            },
+
+            getRandomOptions(correctAnswer, aLang, count = 3) {
+                let opts = this.data
+                    .map(qq => qq[aLang])
+                    .filter((val, idx, arr) => arr.indexOf(val) === idx && val && val !== correctAnswer);
+
+                // Handle case with insufficient unique options
+                if (opts.length < count) {
+                    const allOptions = this.data.map(qq => qq[aLang]).filter(val => val && val !== correctAnswer);
+                    opts = [...new Set(allOptions)]; // Get unique options
+                }
+
+                // Pick random wrong answers + add correct
+                const selectedWrong = opts.sort(() => Math.random() - 0.5).slice(0, count);
+                const options = [correctAnswer, ...selectedWrong];
+                return options.sort(() => Math.random() - 0.5);
+            },
+
+            render() {
+                const qDiv = document.getElementById("quiz");
+                if (!qDiv) return;
+
+                qDiv.innerHTML = "";
+
+                if (!this.data || !this.data.length) {
+                    qDiv.textContent = "No quiz available for this paragraph.";
+                    return;
+                }
+
+                try {
+                    const q = this.data[this.currentQ];
+                    const qLang = document.querySelector('input[name="questionLang"]:checked')?.value;
+                    const aLang = document.querySelector('input[name="answerLang"]:checked')?.value;
+
+                    this.validateQuestion(qLang, aLang);
+
+                    // Question element
+                    const qEl = UIManager.createElement('div', {
+                        className: 'quiz-question',
+                        lang: qLang === 'th' ? 'th-TH' : qLang === 'en' ? 'en-US' : 'fa-IR'
+                    }, [q[qLang] || '']);
+
+                    qEl.addEventListener('click', () => {
+                        TTSManager.speakTextQueued(q[qLang], qLang === 'th' ? 'th-TH' : qLang === 'en' ? 'en-US' : 'fa-IR');
+                    });
+
+                    qDiv.appendChild(qEl);
+
+                    // Answer options
+                    const correct = q[aLang];
+                    const options = this.getRandomOptions(correct, aLang, 3);
+                    const optsContainer = UIManager.createElement('div', { className: 'quiz-options' });
+
+                    options.forEach(opt => {
+                        const optEl = UIManager.createElement('div', {
+                            className: 'quiz-option',
+                            lang: aLang === 'th' ? 'th-TH' : aLang === 'en' ? 'en-US' : 'fa-IR'
+                        }, [opt]);
+
+                        optEl.addEventListener('click', () => this.handleAnswer(opt, correct, q, optEl));
+                        optsContainer.appendChild(optEl);
+                    });
+
+                    qDiv.appendChild(optsContainer);
+                    this.applyThaiFont();
+                    this.updateScore();
+
+                } catch (error) {
+                    qDiv.textContent = error.message;
+                }
+            },
+
+            handleAnswer(selected, correct, question, element) {
+                TTSManager.speakTextQueued(selected,
+                    document.querySelector('input[name="answerLang"]:checked')?.value === 'th' ? 'th-TH' : 'en-US');
+
+                if (selected === correct) {
+                    if (!question.correct) {
+                        element.classList.add("correct");
+                        this.score++;
+                        question.correct = true;
+                        question.attempted = true;
+                        this.attempts++;
+                    }
+                } else {
+                    element.classList.add("incorrect");
+                    question.correct = false;
+                    question.attempted = true;
+                    this.attempts++;
+                }
+
+                this.updateScore();
+            },
+
+            updateScore() {
+                if (UIManager.elements.scoreDisplay) {
+                    UIManager.elements.scoreDisplay.textContent = `Score: ${this.score}/${this.attempts}`;
+                }
+            },
+
+            applyThaiFont() {
+                const font = Utils.loadSetting('thaiFont', '');
+                document.querySelectorAll('#quiz [lang="th-TH"]').forEach(el => {
+                    el.classList.add('thai-font');
+                    el.classList.remove('tahoma', 'noto', 'chakra');
+                    if (font === 'Tahoma') el.classList.add('tahoma');
+                    if (font === 'Noto Sans Thai') el.classList.add('noto');
+                    if (font === 'Chakra Petch') el.classList.add('chakra');
+                });
+            }
+        };
+
+        // ==================== PARAGRAPH RENDERER ====================
+        const ParagraphRenderer = {
+            render(paragraph) {
+                const display = UIManager.elements.paragraphDisplay;
+                if (!display) return;
+
+                display.innerHTML = '';
+
+                paragraph.forEach((word, index) => {
+                    if (word.th === "\n" && word.en === "\n" && word.fa === "\n") {
+                        display.appendChild(document.createElement('br'));
+                        return;
+                    }
+
+                    this.renderWordPair(word, index, display);
+                });
+
+                this.applyThaiFont();
+                QuizEngine.buildFromParagraph(paragraph);
+            },
+
+            renderWordPair(word, index, container) {
+                const thParts = (word.th || '').split('\n');
+                const enParts = (word.en || '').split('\n');
+                const faParts = (word.fa || '').split('\n');
+                const maxParts = Math.max(thParts.length, enParts.length, faParts.length);
+
+                for (let p = 0; p < maxParts; p++) {
+                    const thPart = thParts[p] || '';
+                    const enPart = enParts[p] || '';
+                    const faPart = faParts[p] || '';
+
+                    if (!thPart && !enPart && !faPart) continue;
+
+                    const pairDiv = this.createWordPair(thPart, enPart, faPart, index);
+                    container.appendChild(pairDiv);
+
+                    if (p < maxParts - 1) {
+                        container.appendChild(document.createElement('br'));
+                    }
+                }
+            },
+
+            createWordPair(thText, enText, faText, index) {
+                const pairDiv = UIManager.createElement('div', {
+                    className: 'word-pair',
+                    'data-index': index.toString()
+                });
+
+                const showThai = document.getElementById('showThai')?.checked;
+                const showEnglish = document.getElementById('showEnglish')?.checked;
+                const showPersian = document.getElementById('showPersian')?.checked;
+
+                if (showThai && thText) {
+                    this.createLanguageSpan(thText, 'th-TH', index, pairDiv);
+                }
+
+                if (showEnglish && enText) {
+                    this.createLanguageSpan(enText, 'en-US', index, pairDiv);
+                }
+
+                if (showPersian && faText) {
+                    this.createLanguageSpan(faText, 'fa-IR', index, pairDiv);
+                }
+
+                return pairDiv;
+            },
+
+            createLanguageSpan(text, lang, index, container) {
+                const span = UIManager.createElement('span', {
+                    lang: lang,
+                    'data-index': index.toString()
+                }, [text]);
+
+                span.addEventListener('click', () => this.playWord(text, lang, span, index));
+                container.appendChild(span);
+            },
+
+            playWord(text, lang, span, index) {
+                if (!text || text === "\n") return;
+
+                const themeClass = document.body.dataset.theme === 'dark' ? 'highlight-dark' : 'highlight-light';
+                this.clearHighlights();
+                if (span) span.classList.add(themeClass);
+
+                speechSynthesis.cancel();
+                this.speakWord(text, lang, index, { autoAdvance: false });
+            },
+
+            speakWord(text, lang, index, { autoAdvance = true } = {}) {
+                return new Promise(resolve => {
+                    if (!text || text === "\n") {
+                        resolve();
+                        return;
+                    }
+
+                    const themeClass = document.body.dataset.theme === 'dark' ? 'highlight-dark' : 'highlight-light';
+                    const pairDiv = UIManager.elements.paragraphDisplay?.querySelector(`.word-pair[data-index="${index}"]`);
+                    const span = pairDiv ? pairDiv.querySelector(`span[lang="${lang}"]`) : null;
+
+                    if (span) {
+                        span.classList.add(themeClass);
+                        AppState.lastHighlightedIndex = index;
+                    }
+
+                    const utter = new SpeechSynthesisUtterance(text);
+                    utter.lang = lang;
+                    utter.onend = () => {
+                        if (autoAdvance && AppState.isPlaying && span) {
+                            span.classList.remove('highlight-light', 'highlight-dark');
+                        }
+                        resolve();
+                    };
+
+                    try {
+                        speechSynthesis.speak(utter);
+                    } catch (error) {
+                        console.error('Speech synthesis error:', error);
+                        resolve();
+                    }
+                });
+            },
+
+            clearHighlights() {
+                document.querySelectorAll('#paragraphDisplay span').forEach(s => {
+                    s.classList.remove('highlight-light', 'highlight-dark');
+                });
+            },
+
+            applyThaiFont() {
+                const font = Utils.loadSetting('thaiFont', '');
+                document.querySelectorAll('[lang="th"], [lang="th-TH"]').forEach(el => {
+                    el.classList.add('thai-font');
+                    el.classList.remove('tahoma', 'noto', 'chakra');
+                    if (font === 'Tahoma') el.classList.add('tahoma');
+                    if (font === 'Noto Sans Thai') el.classList.add('noto');
+                    if (font === 'Chakra Petch') el.classList.add('chakra');
+                });
+            }
+        };
+
+        // ==================== PLAYBACK CONTROLLER ====================
+        const PlaybackController = {
+            async playParagraph() {
+                if (AppState.isPlaying) return;
+
+                const para = AppState.getCurrentParagraph();
+                if (!para || para.length === 0) {
+                    Utils.showError('No paragraph to play.');
+                    return;
+                }
+
+                AppState.isPlaying = true;
+
+                if (typeof AppState.currentWordIndex !== 'number' ||
+                    AppState.currentWordIndex < 0 ||
+                    AppState.currentWordIndex >= para.length) {
+                    AppState.currentWordIndex = 0;
+                }
+
+                await this.speakNextWord();
+            },
+
+            pauseParagraph() {
+                AppState.isPlaying = false;
+                speechSynthesis.cancel();
+                if (AppState.playbackTimeout) {
+                    clearTimeout(AppState.playbackTimeout);
+                    AppState.playbackTimeout = null;
+                }
+
+                // Keep last highlight visible
+                if (AppState.lastHighlightedIndex !== null) {
+                    ParagraphRenderer.clearHighlights();
+                    const pairDiv = UIManager.elements.paragraphDisplay?.querySelector(`.word-pair[data-index="${AppState.lastHighlightedIndex}"]`);
+                    if (pairDiv) {
+                        const spans = pairDiv.querySelectorAll('span');
+                        const themeClass = document.body.dataset.theme === 'dark' ? 'highlight-dark' : 'highlight-light';
+                        spans.forEach(s => s.classList.add(themeClass));
+                    }
+                }
+            },
+
+            restartParagraph() {
+                this.pauseParagraph();
+                ParagraphRenderer.clearHighlights();
+                AppState.currentWordIndex = 0;
+                this.playParagraph();
+            },
+
+            async speakNextWord() {
+                const para = AppState.getCurrentParagraph();
+                if (!AppState.isPlaying || !para || AppState.currentWordIndex >= para.length) {
+                    AppState.isPlaying = false;
+                    return;
+                }
+
+                const word = para[AppState.currentWordIndex];
+                if (!word) {
+                    AppState.currentWordIndex++;
+                    await this.speakNextWord();
+                    return;
+                }
+
+                if (word.th === "\n" && word.en === "\n") {
+                    AppState.currentWordIndex++;
+                    await this.speakNextWord();
+                    return;
+                }
+
+                if (AppState.isPlaying) ParagraphRenderer.clearHighlights();
+
+                const delaySec = parseFloat(document.getElementById('playbackDelay')?.value || Utils.loadSetting('playbackDelay', '0.5'));
+                const delay = Math.min(Math.max(delaySec, 0.5), 10) * 1000;
+
+                const showThai = document.getElementById('showThai')?.checked;
+                const showEnglish = document.getElementById('showEnglish')?.checked;
+
+                if (showThai && word.th && word.th !== "\n") {
+                    await ParagraphRenderer.speakWord(word.th, 'th-TH', AppState.currentWordIndex, { autoAdvance: true });
+                }
+
+                if (showEnglish && word.en && word.en !== "\n") {
+                    await ParagraphRenderer.speakWord(word.en, 'en-US', AppState.currentWordIndex, { autoAdvance: true });
+                }
+
+                AppState.currentWordIndex++;
+
+                if (AppState.isPlaying) {
+                    AppState.playbackTimeout = setTimeout(() => {
+                        this.speakNextWord();
+                    }, delay);
+                }
+            }
+        };
+
+        // ==================== BOOK MANAGER ====================
+        const BookManager = {
+            async getBookList() {
+                try {
+                    UIManager.showLoading(true);
+                    // Try multiple possible paths for GitHub Pages
+                    const paths = [
+                        '/assets/books/bookList.json',
+                        './assets/books/bookList.json',
+                        'assets/books/bookList.json'
+                    ];
+
+                    let books = [];
+                    for (const path of paths) {
+                        try {
+                            const res = await fetch(path);
+                            if (res.ok) {
+                                books = await res.json();
+                                console.log('Successfully loaded books from:', path, books);
+                                break;
+                            }
+                        } catch (e) {
+                            console.log('Failed to load from:', path, e);
+                        }
+                    }
+
+                    if (!Array.isArray(books)) {
+                        throw new Error('Invalid book list format - expected array');
+                    }
+                    return books;
+                } catch (error) {
+                    console.error('Failed to load book list:', error);
+                    Utils.showError('Failed to load books. Please check your connection.');
+                    return [];
+                } finally {
+                    UIManager.showLoading(false);
+                }
+            },
+
+            async populateBooks() {
+                const list = await this.getBookList();
+                const bookSelect = UIManager.elements.bookSelect;
+                if (!bookSelect) {
+                    console.error('Book select element not found');
+                    return;
+                }
+
+                bookSelect.innerHTML = '';
+
+                if (list.length === 0) {
+                    const option = UIManager.createElement('option', {
+                        value: '',
+                        textContent: 'No books available'
+                    });
+                    bookSelect.appendChild(option);
+                    return;
+                }
+
+                list.forEach(book => {
+                    const option = UIManager.createElement('option', {
+                        value: book.bookFilename,
+                        textContent: book.bookTitle
+                    });
+                    bookSelect.appendChild(option);
+                });
+
+                const savedBook = Utils.loadSetting('currentBook', list[0]?.bookFilename);
+                bookSelect.value = savedBook;
+                await this.selectBook(savedBook);
+            },
+
+            async selectBook(filename) {
+                if (!filename) return;
+
+                try {
+                    UIManager.showLoading(true);
+                    // Try multiple paths for book files
+                    const paths = [
+                        `/assets/books/${filename}`,
+                        `./assets/books/${filename}`,
+                        `assets/books/${filename}`
+                    ];
+
+                    let book = null;
+                    for (const path of paths) {
+                        try {
+                            const res = await fetch(path);
+                            if (res.ok) {
+                                book = await res.json();
+                                console.log('Successfully loaded book from:', path);
+                                break;
+                            }
+                        } catch (e) {
+                            console.log('Failed to load book from:', path, e);
+                        }
+                    }
+
+                    if (!book) {
+                        throw new Error(`Book file not found: ${filename}`);
+                    }
+
+                    AppState.validateBookStructure(book);
+                    AppState.currentBook = book;
+                    Utils.saveSetting('currentBook', filename);
+                    this.populateChapters();
+                } catch (error) {
+                    console.error('Failed to load book:', error);
+                    Utils.showError(`Failed to load book: ${error.message}`);
+                } finally {
+                    UIManager.showLoading(false);
+                }
+            },
+
+            populateChapters() {
+                const chapterSelect = UIManager.elements.chapterSelect;
+                if (!chapterSelect || !AppState.currentBook) return;
+
+                chapterSelect.innerHTML = '';
+                AppState.currentBook.chapters.forEach((chapter, i) => {
+                    const option = UIManager.createElement('option', {
+                        value: i.toString(),
+                        textContent: chapter.chapterTitle
+                    });
+                    chapterSelect.appendChild(option);
+                });
+
+                AppState.currentChapter = Math.min(Utils.getSavedInt('currentChapter', 0), AppState.currentBook.chapters.length - 1);
+                chapterSelect.value = AppState.currentChapter.toString();
+                this.populateParagraphs();
+            },
+
+            populateParagraphs() {
+                const paragraphSelect = UIManager.elements.paragraphSelect;
+                if (!paragraphSelect || !AppState.currentBook) return;
+
+                const chapter = AppState.getCurrentChapter();
+                if (!chapter) return;
+
+                paragraphSelect.innerHTML = '';
+                chapter.paragraphs.forEach((paragraph, i) => {
+                    const option = UIManager.createElement('option', {
+                        value: i.toString(),
+                        textContent: `Paragraph ${i + 1}`
+                    });
+                    paragraphSelect.appendChild(option);
+                });
+
+                AppState.currentParagraph = Math.min(
+                    Utils.getSavedInt('currentParagraph', 0),
+                    chapter.paragraphs.length - 1
+                );
+                paragraphSelect.value = AppState.currentParagraph.toString();
+                this.loadParagraph();
+            },
+
+            loadParagraph() {
+                Utils.saveSetting('currentChapter', AppState.currentChapter.toString());
+                Utils.saveSetting('currentParagraph', AppState.currentParagraph.toString());
+                ParagraphRenderer.render(AppState.getCurrentParagraph());
+            }
+        };
+
+        // ==================== SETTINGS MANAGER ====================
+        const SettingsManager = {
+            initializeTheme() {
+                const themeToggle = document.getElementById('themeToggle');
+                if (!themeToggle) return;
+
+                const setTheme = (theme) => {
+                    document.body.dataset.theme = theme;
+                    themeToggle.textContent = theme === 'light' ? '🌞' : '🌙';
+                    Utils.saveSetting('theme', theme);
+                };
+
+                themeToggle.addEventListener('click', () => {
+                    setTheme(document.body.dataset.theme === 'light' ? 'dark' : 'light');
+                });
+                setTheme(Utils.loadSetting('theme', 'light'));
+            },
+
+            initializeFont() {
+                const thaiFont = document.getElementById('thaiFont');
+                if (!thaiFont) return;
+
+                thaiFont.addEventListener('change', () => {
+                    Utils.saveSetting('thaiFont', thaiFont.value);
+                    ParagraphRenderer.applyThaiFont();
+                    QuizEngine.applyThaiFont();
+                });
+                thaiFont.value = Utils.loadSetting('thaiFont', '');
+                ParagraphRenderer.applyThaiFont();
+            },
+
+            showSettings() {
+                const main = document.querySelector('main');
+                if (!main) return;
+
+                main.innerHTML = Utils.safeHTML`
+                    <div style="display: flex; justify-content: space-between; align-items: center;
+                                background: var(--primary-color); color: white; padding: 0.5em 1em;">
+                        <h2 style="margin: 0;">Settings & Help</h2>
+                        <button id="closeX" title="Close Settings">❌</button>
+                    </div>
+                    <div style="min-height: 70vh; display: flex; flex-direction: column; justify-content: center;">
+                        <div id="settingsControls" style="text-align: center; padding: 1em;">
+                            <button id="checkTTS">Check Sound and Language Setup</button>
+                            <span id="ttsStatus" style="margin-left: 1em; font-weight: bold;"></span>
+                            <br><br>
+                            <button id="closeBtn">Close</button>
+                        </div>
+                    </div>
+                `;
+
+                this.attachSettingsEvents();
+            },
+
+            attachSettingsEvents() {
+                document.getElementById('closeX')?.addEventListener('click', AppInitializer.reloadApp);
+                document.getElementById('closeBtn')?.addEventListener('click', AppInitializer.reloadApp);
+
+                document.getElementById('checkTTS')?.addEventListener('click', () => {
+                    const statusEl = document.getElementById('ttsStatus');
+                    if (!statusEl) return;
+
+                    if (TTSManager.testTTS()) {
+                        statusEl.innerHTML = "<br>Text To Speech is setup. You should have heard hello in English and Thai";
+                        statusEl.style.color = "green";
+                    } else {
+                        statusEl.innerHTML = "<br>Text To Speech(TTS) is not setup, follow the help instructions";
+                        statusEl.style.color = "red";
+                    }
+                });
+            }
+        };
+
+        // ==================== APP INITIALIZER ====================
+        const AppInitializer = {
+            async init() {
+                try {
+                    UIManager.initialize();
+                    SettingsManager.initializeTheme();
+                    SettingsManager.initializeFont();
+                    this.setupEventListeners();
+                    await this.initSPA();
+                    await BookManager.populateBooks();
+                    Utils.showSuccess('App loaded successfully!');
+                } catch (error) {
+                    console.error('App initialization failed:', error);
+                    Utils.showError('Failed to initialize app. Please refresh the page.');
+                }
+            },
+
+            initSPA() {
+                const main = document.querySelector('main');
+                if (!main) return;
+
+                main.innerHTML = '';
+
+                // Book selection section
+                const selSec = this.createBookSelectionSection();
+                main.appendChild(selSec);
+
+                // Paragraph section
+                const paraSec = this.createParagraphSection();
+                main.appendChild(paraSec);
+
+                // Quiz section
+                const quizSec = this.createQuizSection();
+                main.appendChild(quizSec);
+
+                this.attachSPAEvents();
+                UIManager.initialize(); // Re-initialize elements after creating them
+            },
+
+            createBookSelectionSection() {
+                const selSec = UIManager.createElement('section', { id: 'bookSelectionControls' });
+
+                const bookLabel = UIManager.createElement('label', {}, ['Book: ']);
+                const bookSelect = UIManager.createElement('select', { id: 'bookSelect' });
+                bookLabel.appendChild(bookSelect);
+
+                const chapLabel = UIManager.createElement('label', {}, ['Chapter: ']);
+                const chapSelect = UIManager.createElement('select', { id: 'chapterSelect' });
+                chapLabel.appendChild(chapSelect);
+
+                const paraLabel = UIManager.createElement('label', {}, ['Paragraph: ']);
+                const paraSelect = UIManager.createElement('select', { id: 'paragraphSelect' });
+                paraLabel.appendChild(paraSelect);
+
+                selSec.append(bookLabel, chapLabel, paraLabel);
+                return selSec;
+            },
+
+            createParagraphSection() {
+                const paraSec = UIManager.createElement('section', { id: 'paragraphSec' });
+                const displayDiv = UIManager.createElement('div', { id: 'paragraphDisplay' });
+                const controlsDiv = this.createParagraphControls();
+
+                paraSec.appendChild(displayDiv);
+                paraSec.appendChild(controlsDiv);
+                return paraSec;
+            },
+
+            createParagraphControls() {
+                const controlsDiv = UIManager.createElement('div', {
+                    className: 'controls',
+                    id: 'paragraphControls'
+                });
+
+                const row1 = UIManager.createElement('div', { className: 'paragraph-controls-row' });
+                const row2 = UIManager.createElement('div', { className: 'paragraph-controls-row' });
+
+                // Row 1: Playback controls
+                const playBtn = UIManager.createElement('button', {
+                    id: 'playBtn',
+                    textContent: '▶️'
+                });
+                const pauseBtn = UIManager.createElement('button', {
+                    id: 'pauseBtn',
+                    textContent: '⏸️'
+                });
+                const restartBtn = UIManager.createElement('button', {
+                    id: 'restartBtn',
+                    textContent: '⏮️'
+                });
+
+                const prevParaBtn = UIManager.createElement('button', {
+                    id: 'prevParagraph',
+                    textContent: '⬅️'
+                });
+                const nextParaBtn = UIManager.createElement('button', {
+                    id: 'nextParagraph',
+                    textContent: '➡️'
+                });
+                const paraLabelText = UIManager.createElement('span', { textContent: 'Paragraph ' });
+
+                row1.append(playBtn, pauseBtn, restartBtn, paraLabelText, prevParaBtn, nextParaBtn);
+
+                // Row 2: Display options
+                const showThaiLbl = this.createCheckboxLabel('showThai', 'th', true);
+                const showEnglishLbl = this.createCheckboxLabel('showEnglish', 'en', false);
+                const showPersianLbl = this.createCheckboxLabel('showPersian', 'fa', false);
+                const delayLbl = this.createDelayInput();
+
+                row2.append(showThaiLbl, showEnglishLbl, showPersianLbl, delayLbl);
+                controlsDiv.append(row1, row2);
+
+                return controlsDiv;
+            },
+
+            createCheckboxLabel(id, label, checked) {
+                const labelEl = UIManager.createElement('label');
+                const checkbox = UIManager.createElement('input', {
+                    type: 'checkbox',
+                    id: id,
+                    checked: Utils.loadSetting(id, checked ? '1' : '0') === '1'
+                });
+                labelEl.appendChild(checkbox);
+                labelEl.appendChild(document.createTextNode(` ${label}`));
+                return labelEl;
+            },
+
+            createDelayInput() {
+                const delayLbl = UIManager.createElement('label', {}, ['Delay']);
+                const delayInput = UIManager.createElement('input', {
+                    type: 'number',
+                    id: 'playbackDelay',
+                    value: Utils.loadSetting('playbackDelay', '0.5'),
+                    min: '0.5',
+                    max: '10',
+                    step: '0.1',
+                    style: 'width: 4em;'
+                });
+                delayLbl.appendChild(delayInput);
+                return delayLbl;
+            },
+
+            createQuizSection() {
+                const quizSec = UIManager.createElement('section', { id: 'quizSec' });
+                quizSec.innerHTML = Utils.safeHTML`
+                    <div id="quiz"></div>
+                    <div id="quizControls">
+                        <div class="quiz-row quiz-row-top">
+                            <button id="prevQ">⬅️</button>
+                            <button id="nextQ">➡️</button>
+                            <button id="retryQuiz">🔄</button>
+                            <label><input type="checkbox" id="incorrectOnly"> Incorrect Only</label>
+                            <div id="score">Score: 0/0</div>
+                        </div>
+                        <div class="quiz-row quiz-row-bottom">
+                            <div class="lang-select">
+                                <span>Question: </span>
+                                <label><input type="radio" name="questionLang" id="questionThai" value="th" checked> th</label>
+                                <label><input type="radio" name="questionLang" id="questionEnglish" value="en"> en</label>
+                                <label><input type="radio" name="questionLang" id="questionPersian" value="fa"> fa</label>
+                            </div>
+                            <div class="lang-select">
+                                <span>Answer: </span>
+                                <label><input type="radio" name="answerLang" id="answerThai" value="th" checked> th</label>
+                                <label><input type="radio" name="answerLang" id="answerEnglish" value="en"> en</label>
+                                <label><input type="radio" name="answerLang" id="answerPersian" value="fa"> fa</label>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                return quizSec;
+            },
+
+            attachSPAEvents() {
+                // Playback controls
+                document.getElementById('playBtn')?.addEventListener('click', () => PlaybackController.playParagraph());
+                document.getElementById('pauseBtn')?.addEventListener('click', () => PlaybackController.pauseParagraph());
+                document.getElementById('restartBtn')?.addEventListener('click', () => PlaybackController.restartParagraph());
+
+                // Paragraph navigation
+                document.getElementById('prevParagraph')?.addEventListener('click', () => {
+                    if (AppState.currentParagraph > 0) {
+                        AppState.currentParagraph--;
+                        UIManager.elements.paragraphSelect.value = AppState.currentParagraph;
+                        BookManager.loadParagraph();
+                    }
+                });
+
+                document.getElementById('nextParagraph')?.addEventListener('click', () => {
+                    const max = AppState.getCurrentChapter()?.paragraphs?.length || 0;
+                    if (AppState.currentParagraph < max - 1) {
+                        AppState.currentParagraph++;
+                        UIManager.elements.paragraphSelect.value = AppState.currentParagraph;
+                        BookManager.loadParagraph();
+                    }
+                });
+
+                // Quiz controls
+                document.getElementById('prevQ')?.addEventListener('click', () => {
+                    QuizEngine.currentQ = Math.max(0, QuizEngine.currentQ - 1);
+                    QuizEngine.data.forEach(q => { q.attempted = false; q.correct = false; });
+                    QuizEngine.render();
+                });
+
+                document.getElementById('nextQ')?.addEventListener('click', () => {
+                    QuizEngine.currentQ++;
+                    QuizEngine.render();
+                });
+
+                document.getElementById('retryQuiz')?.addEventListener('click', () => {
+                    QuizEngine.data.forEach(q => { q.attempted = false; q.correct = false; });
+                    QuizEngine.render();
+                });
+
+                // Language settings
+                const savedQ = Utils.loadSetting('questionLang', 'th');
+                const savedA = Utils.loadSetting('answerLang', 'en');
+                document.querySelector(`input[name="questionLang"][value="${savedQ}"]`)?.checked === true;
+                document.querySelector(`input[name="answerLang"][value="${savedA}"]`)?.checked === true;
+
+                document.querySelectorAll('input[name="questionLang"]').forEach(r =>
+                    r.addEventListener('change', e => {
+                        Utils.saveSetting('questionLang', e.target.value);
+                        QuizEngine.render();
+                    })
+                );
+
+                document.querySelectorAll('input[name="answerLang"]').forEach(r =>
+                    r.addEventListener('change', e => {
+                        Utils.saveSetting('answerLang', e.target.value);
+                        QuizEngine.render();
+                    })
+                );
+            },
+
+            setupEventListeners() {
+                // Global event delegation
+                document.addEventListener('change', Utils.debounce((e) => {
+                    switch (e.target.id) {
+                        case 'bookSelect':
+                            Utils.saveSetting('currentBook', e.target.value);
+                            BookManager.selectBook(e.target.value);
+                            break;
+                        case 'chapterSelect':
+                            AppState.currentChapter = +e.target.value;
+                            Utils.saveSetting('currentChapter', AppState.currentChapter.toString());
+                            BookManager.populateParagraphs();
+                            break;
+                        case 'paragraphSelect':
+                            AppState.currentParagraph = +e.target.value;
+                            BookManager.loadParagraph();
+                            break;
+                        case 'showThai':
+                        case 'showEnglish':
+                        case 'showPersian':
+                            Utils.saveSetting(e.target.id, e.target.checked ? '1' : '0');
+                            ParagraphRenderer.render(AppState.getCurrentParagraph());
+                            break;
+                        case 'playbackDelay':
+                            let val = parseFloat(e.target.value);
+                            if (isNaN(val)) val = 0.5;
+                            val = Math.min(Math.max(val, 0.5), 10);
+                            e.target.value = val.toFixed(1);
+                            Utils.saveSetting('playbackDelay', e.target.value);
+                            break;
+                    }
+                }, 300));
+
+                document.addEventListener('click', (e) => {
+                    if (e.target.id === 'settingsBtn') {
+                        SettingsManager.showSettings();
+                    }
+                });
+            },
+
+            reloadApp() {
+                this.initSPA();
+                BookManager.populateBooks();
+            }
+        };
+
+        // ==================== INITIALIZATION ====================
+        document.addEventListener('DOMContentLoaded', () => {
+            AppInitializer.init();
+        });
+
+        // Cleanup on page unload
+        window.addEventListener('beforeunload', () => {
+            PlaybackController.pauseParagraph();
+            if (AppState.playbackTimeout) {
+                clearTimeout(AppState.playbackTimeout);
+            }
+            speechSynthesis.cancel();
+        });
+    </script>
+</body>
+
+</html>
