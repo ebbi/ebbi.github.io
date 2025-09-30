@@ -668,6 +668,131 @@
         body[data-theme="dark"] #paragraphDisplay::-webkit-scrollbar-thumb {
             background: var(--border-dark);
         }
+
+        /* Add these styles to fix the scroll issue */
+
+        /* Ensure the content area has proper top padding to account for sticky header */
+        .content-area {
+            flex: 1;
+            overflow-y: auto;
+            padding: 1em;
+            -webkit-overflow-scrolling: touch;
+            padding-top: 0.5em;
+            /* Reduced top padding to make more space */
+        }
+
+        /* Add specific styling for the book selection section to ensure it's always visible */
+        #bookSelectionControls {
+            background: rgba(0, 36, 125, 0.05);
+            padding: 1em;
+            border-radius: 8px;
+            margin-bottom: 1em;
+            position: sticky;
+            top: 0;
+            z-index: 80;
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--border-light);
+        }
+
+        body[data-theme="dark"] #bookSelectionControls {
+            background: rgba(102, 170, 255, 0.1);
+        }
+
+        /* Ensure the book selection stays visible when scrolling */
+        #bookSelectionControls.controls {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 0.5em;
+            margin-top: 0.5em;
+            /* Add some top margin */
+        }
+
+        /* Adjust the paragraph display to have less top margin */
+        #paragraphDisplay {
+            margin: 0.5em 0 1em 0;
+            /* Reduced top margin */
+            white-space: pre-wrap;
+            width: 100%;
+            box-sizing: border-box;
+            line-height: 1.6;
+            min-height: 150px;
+            max-height: 45vh;
+            /* Slightly reduced to make more space */
+            overflow-y: auto;
+            padding: 1em;
+            border: 1px solid var(--border-light);
+            border-radius: 8px;
+            background: var(--background-light);
+        }
+
+        /* Add scroll margin to ensure elements scroll into view properly */
+        #bookSelect,
+        #chapterSelect,
+        #paragraphSelect {
+            scroll-margin-top: 80px;
+            /* Height of header + some padding */
+        }
+
+        /* Ensure the main content has proper scroll padding */
+        .content-area {
+            scroll-padding-top: 70px;
+            /* Reserve space for sticky elements */
+        }
+
+        /* Mobile adjustments for the sticky book selection */
+        @media (max-width: 600px) {
+            #bookSelectionControls {
+                position: relative;
+                /* On mobile, don't make it sticky to avoid crowding */
+                top: auto;
+                margin-top: 0.5em;
+                padding: 0.8em;
+            }
+
+            .content-area {
+                padding-top: 0.3em;
+                scroll-padding-top: 60px;
+            }
+
+            #paragraphDisplay {
+                max-height: 40vh;
+                /* More space on mobile */
+                margin: 0.3em 0 0.8em 0;
+            }
+        }
+
+        /* Desktop adjustments */
+        @media (min-width: 768px) {
+            #bookSelectionControls {
+                top: 0.5em;
+                /* Slightly lower on desktop */
+            }
+
+            .content-area {
+                scroll-padding-top: 80px;
+            }
+
+            #paragraphDisplay {
+                max-height: 50vh;
+            }
+        }
+
+        /* Add smooth scrolling for better UX */
+        .content-area {
+            scroll-behavior: smooth;
+        }
+
+        /* Ensure the header has proper z-index */
+        header {
+            z-index: 100;
+            /* Ensure header stays on top */
+        }
+
+        /* Make sure the book selection has lower z-index than header but higher than content */
+        #bookSelectionControls {
+            z-index: 90;
+        }
     </style>
 </head>
 
@@ -1222,6 +1347,7 @@
         };
 
         // ========== PARAGRAPH RENDERING ==========
+        // ========== PARAGRAPH RENDERING ==========
         const ParagraphRenderer = {
             display: null,
 
@@ -1253,6 +1379,8 @@
                 }
 
                 // Use the original working approach
+                const renderer = this; // Capture 'this' for the inner function
+
                 function buildLanguages(thText, enText, faText, wordIndex) {
                     const pairDiv = document.createElement('div');
                     pairDiv.className = 'word-pair';
@@ -1263,7 +1391,10 @@
                         thSpan.textContent = thText;
                         thSpan.lang = 'th-TH';
                         thSpan.dataset.index = wordIndex;
-                        thSpan.onclick = () => PlaybackController.playWord(thText, 'th-TH', thSpan, wordIndex);
+                        thSpan.onclick = () => {
+                            // FIX: Use playWord instead of playFromWord
+                            PlaybackController.playWord(thText, 'th-TH', thSpan, wordIndex);
+                        };
                         pairDiv.appendChild(thSpan);
                     }
 
@@ -1272,7 +1403,10 @@
                         enSpan.textContent = enText;
                         enSpan.lang = 'en-US';
                         enSpan.dataset.index = wordIndex;
-                        enSpan.onclick = () => PlaybackController.playWord(enText, 'en-US', enSpan, wordIndex);
+                        enSpan.onclick = () => {
+                            // FIX: Use playWord instead of playFromWord
+                            PlaybackController.playWord(enText, 'en-US', enSpan, wordIndex);
+                        };
                         pairDiv.appendChild(enSpan);
                     }
 
@@ -1281,11 +1415,14 @@
                         faSpan.textContent = faText;
                         faSpan.lang = 'fa-IR';
                         faSpan.dataset.index = wordIndex;
-                        faSpan.onclick = () => PlaybackController.playWord(faText, 'fa-IR', faSpan, wordIndex);
+                        faSpan.onclick = () => {
+                            // FIX: Use playWord instead of playFromWord
+                            PlaybackController.playWord(faText, 'fa-IR', faSpan, wordIndex);
+                        };
                         pairDiv.appendChild(faSpan);
                     }
 
-                    this.display.appendChild(pairDiv);
+                    renderer.display.appendChild(pairDiv);
                 }
 
                 const thParts = (word.th || '').split('\n');
@@ -1331,7 +1468,6 @@
                 }
             }
         };
-
         // ========== PLAYBACK CONTROLLER ==========
         const PlaybackController = {
             async playParagraph() {
@@ -1341,7 +1477,13 @@
                 if (!paragraph || paragraph.length === 0) return;
 
                 AppState.isPlaying = true;
-                AppState.currentWordIndex = 0;
+
+                // Don't reset currentWordIndex if we're resuming from pause
+                // Only reset if we're at the end or haven't started
+                if (AppState.currentWordIndex >= paragraph.length) {
+                    AppState.currentWordIndex = 0;
+                }
+
                 await this.speakNextWord();
             },
 
@@ -1419,9 +1561,21 @@
 
             playWord(text, lang, span, index) {
                 if (!text || text === "\n") return;
+
+                // When clicking a word, just play that word and set the position
+                // but don't start auto-advancing
+                AppState.currentWordIndex = index;
+
                 ParagraphRenderer.highlightElement(span, index);
                 TTSManager.cancel();
                 this.speakWord(text, lang, index, false);
+            },
+
+            // Add method to continue playback from current position
+            continueFromCurrent() {
+                if (!AppState.isPlaying) {
+                    this.playParagraph();
+                }
             },
 
             isNewline(word) {
@@ -1634,6 +1788,7 @@
 
         // ========== MAIN APPLICATION CONTROLLER ==========
         const AppController = {
+
             async init() {
                 AppState.initialize();
                 ThemeManager.init();
@@ -1771,6 +1926,11 @@
             loadParagraph() {
                 AppState.saveNavigation();
                 this.renderParagraph();
+
+                // Reset playback position when loading a new paragraph
+                AppState.currentWordIndex = 0;
+                AppState.isPlaying = false;
+                TTSManager.cancel();
             },
 
             renderParagraph() {
@@ -1779,9 +1939,13 @@
                 QuizSystem.buildFromParagraph(paragraph);
             },
 
+            // Update the reload method to ensure visibility
             reload() {
                 this.initSPA();
-                this.loadBooks();
+                this.loadBooks().then(() => {
+                    // After loading books, ensure the book selection is visible
+                    setTimeout(() => this.ensureBookSelectionVisible(), 100);
+                });
             },
 
             initSPA() {
@@ -1795,6 +1959,26 @@
 
                 this.bindUIElements();
                 this.restoreSettings();
+
+                // Ensure the content area is scrolled to top when initializing
+                contentArea.scrollTop = 0;
+            },
+
+            // Add a method to ensure book selection is visible
+            ensureBookSelectionVisible() {
+                const bookSelection = document.getElementById('bookSelectionControls');
+                const contentArea = document.getElementById('contentArea');
+
+                if (bookSelection && contentArea) {
+                    // Scroll the book selection into view with offset for header
+                    const headerHeight = document.querySelector('header').offsetHeight;
+                    const bookSelectionRect = bookSelection.getBoundingClientRect();
+                    const contentAreaRect = contentArea.getBoundingClientRect();
+
+                    if (bookSelectionRect.top < headerHeight) {
+                        contentArea.scrollTop = contentArea.scrollTop - (headerHeight - bookSelectionRect.top) - 10;
+                    }
+                }
             },
 
             getMainHTML() {
