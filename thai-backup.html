@@ -47,18 +47,168 @@
             color: var(--text-dark);
         }
 
+        /* Header Styling */
         header {
             display: flex;
             justify-content: space-between;
             align-items: center;
             background: var(--primary-color);
             color: white;
-            padding: 0.5em 1em;
-            height: var(--header-height);
+            padding: 0.3em 1em;
+            height: auto;
+            min-height: 2.5em;
             flex-shrink: 0;
             position: sticky;
             top: 0;
             z-index: 100;
+        }
+
+        #appTitle {
+            font-size: 1.2rem;
+            font-weight: bold;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            font-family: inherit;
+            /* Will be overridden by FontManager */
+        }
+
+        #headerControls {
+            display: flex;
+            align-items: center;
+            gap: 0.8em;
+            /* Equal spacing between all controls */
+            height: 100%;
+            font-size: 1rem;
+            /* Consistent 1rem font size */
+        }
+
+        .header-label {
+            display: flex;
+            align-items: center;
+            gap: 0.4em;
+            color: white;
+            margin: 0;
+            height: 2em;
+            font-size: 1rem;
+            /* Consistent 1rem font size */
+        }
+
+        .header-label select {
+            height: 2em;
+            padding: 0.3em 0.5em;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 4px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            font-size: 1rem;
+            /* Consistent 1rem font size */
+            cursor: pointer;
+            box-sizing: border-box;
+        }
+
+        .header-label select:hover {
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .header-label select option {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        /* Header icons - completely remove button styling */
+        #themeToggle,
+        #settingsBtn {
+            background: none !important;
+            border: none !important;
+            color: white;
+            padding: 0.3em;
+            cursor: pointer;
+            font-size: 1.1rem;
+            /* Slightly larger for icons */
+            height: 2em;
+            width: 2em;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.2s;
+            border-radius: 4px;
+            /* Explicitly override any inherited button styles */
+            line-height: normal;
+            box-shadow: none;
+            text-shadow: none;
+            font-family: inherit;
+        }
+
+        #themeToggle:hover,
+        #settingsBtn:hover {
+            background: rgba(255, 255, 255, 0.1) !important;
+        }
+
+        /* Remove dark mode button styling for header icons */
+        body[data-theme="dark"] #themeToggle,
+        body[data-theme="dark"] #settingsBtn {
+            background: none !important;
+            border: none !important;
+            color: white;
+        }
+
+        body[data-theme="dark"] #themeToggle:hover,
+        body[data-theme="dark"] #settingsBtn:hover {
+            background: rgba(255, 255, 255, 0.1) !important;
+        }
+
+        /* Remove the old settingsInline styles */
+        #settingsInline {
+            display: none;
+        }
+
+        /* Mobile adjustments for header */
+        @media (max-width: 600px) {
+            header {
+                padding: 0.3em 0.8em;
+            }
+
+            #appTitle {
+                font-size: 1.1rem;
+            }
+
+            #headerControls {
+                gap: 0.6em;
+                font-size: 0.9rem;
+            }
+
+            .header-label {
+                font-size: 0.9rem;
+                height: 1.8em;
+            }
+
+            .header-label select {
+                font-size: 0.9rem;
+                height: 1.8em;
+                padding: 0.2em 0.4em;
+            }
+
+            #themeToggle,
+            #settingsBtn {
+                height: 1.8em;
+                width: 1.8em;
+                font-size: 1rem;
+                padding: 0.2em;
+            }
+        }
+
+        /* Ensure Thai font is applied to app title */
+        #appTitle.thai-font.tahoma {
+            font-family: Tahoma, sans-serif;
+        }
+
+        #appTitle.thai-font.noto {
+            font-family: 'Noto Sans Thai', sans-serif;
+        }
+
+        #appTitle.thai-font.chakra {
+            font-family: 'Chakra Petch', sans-serif;
         }
 
         main {
@@ -160,8 +310,8 @@
         input[type="number"] {
             font-size: 1em;
             line-height: 1.5;
-            padding: 0.5em;
-            height: 2.5em;
+            padding: 0.4em 0.6em;
+            height: 2em;
             border-radius: 4px;
             border: 1px solid var(--border-light);
             background: #f0f0f0;
@@ -177,21 +327,26 @@
             text-align: center;
         }
 
-        /* Checkbox styling */
-        input[type="checkbox"] {
-            width: 1.2em;
-            height: 1.2em;
-            margin: 0 0.3em 0 0;
-            accent-color: var(--primary-color);
-            vertical-align: middle;
-            cursor: pointer;
-        }
-
         /* Hover states */
         button:hover,
         input[type="number"]:hover,
         select:hover {
             background: #e0e0e0;
+        }
+
+        /* Dark theme adjustments */
+        body[data-theme="dark"] button,
+        body[data-theme="dark"] input[type="number"],
+        body[data-theme="dark"] select {
+            background: #333;
+            border: 1px solid var(--border-dark);
+            color: var(--text-dark);
+        }
+
+        body[data-theme="dark"] button:hover,
+        body[data-theme="dark"] input[type="number"]:hover,
+        body[data-theme="dark"] select:hover {
+            background: #444;
         }
 
         /* Dark theme adjustments */
@@ -224,14 +379,14 @@
             line-height: 1.5;
         }
 
-        /* Controls container alignment */
-        .controls,
-        #bookSelectionControls,
-        #settingsInline {
+        /* Label alignment - ensure consistent font size */
+        label {
             display: flex;
-            flex-wrap: wrap;
             align-items: center;
-            gap: 0.5em;
+            gap: 0.3em;
+            font-size: 1em;
+            /* Ensure consistent base font size */
+            white-space: nowrap;
         }
 
         /* Label alignment */
@@ -439,6 +594,19 @@
             gap: 0.5em;
         }
 
+        /* Paragraph label styling */
+        .paragraph-label {
+            font-weight: bold;
+            font-size: 1em;
+            color: var(--text-light);
+            margin: 0 0.2em;
+        }
+
+        body[data-theme="dark"] .paragraph-label {
+            color: var(--text-dark);
+        }
+
+        /* Updated paragraph controls layout */
         .paragraph-controls-row {
             display: flex;
             flex-wrap: wrap;
@@ -447,41 +615,69 @@
             justify-content: center;
         }
 
-        /* Language Controls Styling - New Layout */
+        /* Language Controls Styling - Compact Details Version */
         .language-controls {
             width: 100%;
-            max-width: 300px;
-            margin: 0.5em auto;
-            border: 1px solid var(--border-light);
-            border-radius: 8px;
-            padding: 0.8em;
-            background: var(--background-light);
+            max-width: 280px;
+            margin: 0.3em auto;
+            font-size: 1rem;
+            /* Set base font size to 1rem */
         }
 
-        body[data-theme="dark"] .language-controls {
+        .language-controls details {
+            border: 1px solid var(--border-light);
+            border-radius: 6px;
+            padding: 0.4em;
+            background: var(--background-light);
+            margin: 0;
+            font-size: 1rem;
+            /* Ensure all text uses 1rem */
+        }
+
+        body[data-theme="dark"] .language-controls details {
             background: #2a2a2a;
             border-color: var(--border-dark);
         }
 
-        .language-header-row {
+        .language-controls summary {
+            font-weight: bold;
+            cursor: pointer;
+            padding: 0.2em 0.4em;
+            margin: -0.4em -0.4em 0 -0.4em;
+            border-radius: 4px;
+            list-style: none;
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            padding: 0.3em 0;
-            margin-bottom: 0.3em;
+            justify-content: space-between;
+            font-size: 1rem;
+            /* Summary uses 1rem */
         }
 
-        .language-controls-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0.3em 0;
+        .language-controls summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .language-controls summary::after {
+            content: "▶";
+            font-size: 0.8em;
+            transition: transform 0.2s;
+            margin-left: 0.5em;
+        }
+
+        .language-controls details[open] summary::after {
+            transform: rotate(90deg);
+        }
+
+        .language-controls-content {
+            padding: 0.6em 0.2em 0.2em 0.2em;
+            font-size: 1rem;
+            /* Content uses 1rem */
         }
 
         .control-type {
-            font-size: 0.9em;
+            font-size: 0.85em;
             font-weight: bold;
-            min-width: 60px;
+            min-width: 50px;
             text-align: left;
         }
 
@@ -489,7 +685,7 @@
             display: flex;
             justify-content: space-between;
             flex: 1;
-            gap: 0.5em;
+            gap: 0.3em;
         }
 
         .language-checkbox-group {
@@ -507,13 +703,130 @@
 
         .language-checkbox-group input[type="checkbox"] {
             margin: 0;
+            width: 1.1em;
+            height: 1.1em;
         }
 
         .language-title {
-            font-size: 0.9em;
+            font-size: 0.85em;
             font-weight: bold;
             text-align: center;
+            margin-bottom: 0.1em;
+        }
+
+        /* Mobile adjustments for language controls */
+        @media (max-width: 600px) {
+            .language-controls {
+                max-width: 100%;
+                font-size: 0.8em;
+            }
+
+            .language-controls details {
+                padding: 0.3em;
+            }
+
+            .control-type {
+                min-width: 45px;
+                font-size: 0.8em;
+            }
+
+            .language-title {
+                font-size: 0.8em;
+            }
+
+            .language-checkboxes {
+                gap: 0.2em;
+            }
+
+            .language-controls-content {
+                padding: 0.4em 0.1em 0.1em 0.1em;
+            }
+        }
+
+        body[data-theme="dark"] .language-controls {
+            background: #2a2a2a;
+            border-color: var(--border-dark);
+        }
+
+        .language-header-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.2em 0;
             margin-bottom: 0.2em;
+            border-bottom: 1px solid var(--border-light);
+            font-size: 1rem;
+            /* Header row uses 1rem */
+        }
+
+        .language-controls-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.2em 0;
+            font-size: 1rem;
+            /* Control rows use 1rem */
+        }
+
+        /* Updated Language Options panel for delay input */
+        .language-controls-row .language-checkbox-group input[type="number"] {
+            width: 5em;
+            /* Reduced width for 5 characters */
+            height: 2em;
+            padding: 0.3em;
+            font-size: 1rem;
+            /* Input uses 1rem */
+            text-align: center;
+        }
+
+        /* Ensure proper spacing in the delay row */
+        .language-controls-row:last-child {
+            margin-top: 0.3em;
+            padding-top: 0.3em;
+            border-top: 1px solid var(--border-light);
+        }
+
+
+        .control-type {
+            font-size: 1rem;
+            /* Control type uses 1rem */
+            font-weight: bold;
+            min-width: 50px;
+            text-align: left;
+        }
+
+        .language-checkboxes {
+            display: flex;
+            justify-content: space-between;
+            flex: 1;
+            gap: 0.3em;
+        }
+
+        .language-checkbox-group {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            flex: 1;
+        }
+
+        .language-checkbox-group label {
+            margin: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        .language-checkbox-group input[type="checkbox"] {
+            margin: 0;
+            width: 1.1em;
+            height: 1.1em;
+        }
+
+        .language-title {
+            font-size: 1rem;
+            /* Language titles use 1rem */
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 0.1em;
         }
 
         /* Mobile adjustments for language controls */
@@ -540,6 +853,11 @@
         body[data-theme="dark"] .language-controls {
             background: #2a2a2a;
             border-color: var(--border-dark);
+        }
+
+
+        body[data-theme="dark"] .language-controls-row:last-child {
+            border-top-color: var(--border-dark);
         }
 
         .language-header {
@@ -587,14 +905,25 @@
             margin: 0;
         }
 
-        /* Mobile-specific adjustments */
+        /* Mobile adjustments for the new layout */
         @media (max-width: 600px) {
-            #paragraphControls {
-                gap: 0.8em;
+            .paragraph-controls-row {
+                gap: 0.4em;
             }
 
-            .paragraph-controls-row {
-                justify-content: center;
+            /* Make Language Options details inline */
+            .paragraph-controls-row .language-controls {
+                display: inline-block;
+                margin: 0;
+            }
+
+            .paragraph-controls-row .language-controls {
+                margin-top: 0.3em;
+            }
+
+            .language-controls-row .language-checkbox-group input[type="number"] {
+                width: 4em;
+                /* Slightly smaller on mobile */
             }
 
             button {
@@ -628,7 +957,20 @@
 
             .language-controls {
                 max-width: 100%;
-                padding: 0.6em;
+                font-size: 0.9rem;
+                /* Slightly smaller on mobile */
+            }
+
+            .language-controls details {
+                padding: 0.3em;
+            }
+
+            .control-type {
+                min-width: 45px;
+            }
+
+            .language-controls-content {
+                padding: 0.4em 0.1em 0.1em 0.1em;
             }
 
             .control-group {
@@ -643,6 +985,11 @@
             .language-name {
                 font-size: 0.85em;
             }
+
+            .language-checkboxes {
+                gap: 0.2em;
+            }
+
         }
 
         /* Desktop adjustments */
@@ -855,14 +1202,16 @@
             scroll-margin-top: 120px;
         }
     </style>
+
 </head>
 
 <body data-theme="light">
+
     <header>
-        <span lang="th">ฝึกฝน</span>
-        <span id="settingsInline">
-            <button id="themeToggle" title="Toggle Day/Night">🌞</button>
-            <label>Thai Font:
+        <span lang="th" id="appTitle">ฝึกฝน</span>
+        <div id="headerControls">
+            <label class="header-label">
+                Thai Font:
                 <select id="thaiFont">
                     <option value="">Default</option>
                     <option value="Tahoma">Tahoma</option>
@@ -870,10 +1219,10 @@
                     <option value="Chakra Petch">Chakra Petch</option>
                 </select>
             </label>
+            <button id="themeToggle" title="Toggle Day/Night">🌞</button>
             <button id="settingsBtn" title="Settings & Help">⚙️</button>
-        </span>
+        </div>
     </header>
-
     <main>
         <div class="content-area" id="contentArea">
             <!-- Dynamic content will be inserted here -->
@@ -1207,7 +1556,7 @@
 
             apply() {
                 const font = Storage.load('thaiFont', '');
-                document.querySelectorAll('[lang="th"], [lang="th-TH"]').forEach(el => {
+                document.querySelectorAll('[lang="th"], [lang="th-TH"], #appTitle').forEach(el => {
                     el.classList.add('thai-font');
                     el.classList.remove('tahoma', 'noto', 'chakra');
                     if (font === 'Tahoma') el.classList.add('tahoma');
@@ -1700,9 +2049,11 @@
             },
 
             getPlaybackDelay() {
-                const delaySec = parseFloat(document.getElementById('playbackDelay')?.value || Storage.load('playbackDelay', '1500'));
-                return Math.min(Math.max(isNaN(delaySec) ? 1500 : delaySec, 500), 5000);
-            }
+                const delaySec = parseFloat(document.getElementById('playbackDelay')?.value || Storage.load('playbackDelay', '1'));
+                const delayMs = Math.min(Math.max(isNaN(delaySec) ? 1500 : delaySec * 1000, 500), 5000);
+                return delayMs;
+            },
+
         };
 
         // ========== QUIZ SYSTEM ==========
@@ -1711,6 +2062,7 @@
             currentQuestion: 0,
             score: 0,
             attempts: 0,
+            incorrectOnly: false,
 
             buildFromParagraph(paragraph) {
                 this.data = paragraph.map(word => ({
@@ -1721,6 +2073,7 @@
                 this.currentQuestion = 0;
                 this.score = 0;
                 this.attempts = 0;
+                this.incorrectOnly = false;
                 this.render();
             },
 
@@ -1735,7 +2088,25 @@
                     return;
                 }
 
-                const question = this.data[this.currentQuestion];
+                // Get filtered questions based on incorrectOnly setting
+                const filteredQuestions = this.getFilteredQuestions();
+
+                if (filteredQuestions.length === 0) {
+                    if (this.incorrectOnly) {
+                        this.showNoIncorrectMessage(quizContainer);
+                    } else {
+                        this.showCompletionMessage(quizContainer);
+                    }
+                    return;
+                }
+
+                // Check if we've reached the end of filtered questions
+                if (this.currentQuestion >= filteredQuestions.length) {
+                    this.showCompletionMessage(quizContainer);
+                    return;
+                }
+
+                const question = filteredQuestions[this.currentQuestion];
                 const questionLang = document.querySelector('input[name="questionLang"]:checked')?.value;
                 const answerLang = document.querySelector('input[name="answerLang"]:checked')?.value;
 
@@ -1744,6 +2115,66 @@
                 this.renderQuestion(question, questionLang, quizContainer);
                 this.renderOptions(question, answerLang, quizContainer);
                 FontManager.apply();
+            },
+
+            getFilteredQuestions() {
+                if (!this.incorrectOnly) {
+                    return this.data;
+                }
+                // Return only questions that have been attempted and are incorrect
+                return this.data.filter(q => q.attempted && !q.correct);
+            },
+
+            showNoIncorrectMessage(container) {
+                const messageDiv = document.createElement("div");
+                messageDiv.className = "quiz-completion";
+                messageDiv.innerHTML = `
+            <h4>No Incorrect Answers! 🎉</h4>
+            <p>You have answered all questions correctly.</p>
+            <p>Final Score: ${this.score} out of ${this.attempts}</p>
+            <p>Success Rate: ${this.attempts > 0 ? Math.round((this.score / this.attempts) * 100) : 0}%</p>
+            <button id="showAllQuestions" style="margin-top: 1em; padding: 0.5em 1em;">Show All Questions</button>
+        `;
+                container.appendChild(messageDiv);
+
+                // Add event listener for show all button
+                document.getElementById('showAllQuestions')?.addEventListener('click', () => {
+                    this.incorrectOnly = false;
+                    this.currentQuestion = 0;
+                    this.render();
+                });
+            },
+
+            showCompletionMessage(container) {
+                const completionDiv = document.createElement("div");
+                completionDiv.className = "quiz-completion";
+                completionDiv.innerHTML = `
+            <h4>Quiz Complete! 🎉</h4>
+            <p>Final Score: ${this.score} out of ${this.attempts}</p>
+            <p>Success Rate: ${this.attempts > 0 ? Math.round((this.score / this.attempts) * 100) : 0}%</p>
+            <button id="restartQuiz" style="margin-top: 1em; padding: 0.5em 1em;">Restart Quiz</button>
+            ${this.incorrectOnly ? '<button id="showAllQuestions" style="margin-top: 0.5em; padding: 0.5em 1em; background: #666;">Show All Questions</button>' : ''}
+        `;
+                container.appendChild(completionDiv);
+
+                // Add event listener for restart button
+                document.getElementById('restartQuiz')?.addEventListener('click', () => {
+                    this.currentQuestion = 0;
+                    this.score = 0;
+                    this.attempts = 0;
+                    this.resetQuestionStates();
+                    this.render();
+                });
+
+                // Add event listener for show all button if it exists
+                const showAllBtn = document.getElementById('showAllQuestions');
+                if (showAllBtn) {
+                    showAllBtn.addEventListener('click', () => {
+                        this.incorrectOnly = false;
+                        this.currentQuestion = 0;
+                        this.render();
+                    });
+                }
             },
 
             validateLanguages(questionLang, answerLang, container) {
@@ -1759,6 +2190,12 @@
             },
 
             renderQuestion(question, questionLang, container) {
+                // Add safety check for undefined question
+                if (!question || !question[questionLang]) {
+                    console.error('Invalid question data:', question);
+                    return;
+                }
+
                 const questionEl = document.createElement("div");
                 questionEl.className = "quiz-question";
                 questionEl.textContent = question[questionLang] || "";
@@ -1835,18 +2272,33 @@
             },
 
             nextQuestion() {
-                this.currentQuestion++;
-                this.render();
+                const filteredQuestions = this.getFilteredQuestions();
+                if (this.currentQuestion < filteredQuestions.length - 1) {
+                    this.currentQuestion++;
+                    this.render();
+                } else if (this.currentQuestion === filteredQuestions.length - 1) {
+                    // Move to the end to show completion message
+                    this.currentQuestion = filteredQuestions.length;
+                    this.render();
+                }
+                // If already at completion state, do nothing
             },
 
             previousQuestion() {
-                this.currentQuestion = Math.max(0, this.currentQuestion - 1);
-                this.resetQuestionStates();
-                this.render();
+                if (this.currentQuestion > 0) {
+                    this.currentQuestion--;
+                    this.render();
+                }
             },
 
             retry() {
-                this.resetQuestionStates();
+                this.currentQuestion = 0;
+                // Only reset question states if we're not in incorrectOnly mode
+                if (!this.incorrectOnly) {
+                    this.resetQuestionStates();
+                    this.score = 0;
+                    this.attempts = 0;
+                }
                 this.render();
             },
 
@@ -1857,7 +2309,6 @@
                 });
             }
         };
-
         // ========== NAVIGATION CONTROLLER ==========
         const NavigationController = {
             bookSelect: null,
@@ -1868,6 +2319,17 @@
                 this.bookSelect = bookSelect;
                 this.chapterSelect = chapterSelect;
                 this.paragraphSelect = paragraphSelect;
+
+                // Add event listeners
+                if (bookSelect) {
+                    bookSelect.addEventListener('change', (e) => this.handleBookChange(e.target.value));
+                }
+                if (chapterSelect) {
+                    chapterSelect.addEventListener('change', (e) => this.handleChapterChange(+e.target.value));
+                }
+                if (paragraphSelect) {
+                    paragraphSelect.addEventListener('change', (e) => this.handleParagraphChange(+e.target.value));
+                }
             },
 
             async handleBookChange(bookFilename) {
@@ -1889,7 +2351,9 @@
                 const max = AppState.currentBook?.chapters?.[AppState.currentChapter]?.paragraphs?.length || 0;
                 if (AppState.currentParagraph < max - 1) {
                     AppState.currentParagraph++;
-                    this.paragraphSelect.value = AppState.currentParagraph;
+                    if (this.paragraphSelect) {
+                        this.paragraphSelect.value = AppState.currentParagraph;
+                    }
                     AppController.loadParagraph();
                 }
             },
@@ -1897,7 +2361,9 @@
             previousParagraph() {
                 if (AppState.currentParagraph > 0) {
                     AppState.currentParagraph--;
-                    this.paragraphSelect.value = AppState.currentParagraph;
+                    if (this.paragraphSelect) {
+                        this.paragraphSelect.value = AppState.currentParagraph;
+                    }
                     AppController.loadParagraph();
                 }
             }
@@ -2137,59 +2603,73 @@
                     <button id="playBtn">▶️</button>
                     <button id="pauseBtn">⏸️</button>
                     <button id="restartBtn">⏮️</button>
+                    <span class="paragraph-label">Paragraph</span>
                     <button id="prevParagraph">⬅️</button>
                     <button id="nextParagraph">➡️</button>
-                </div>
-                <div class="paragraph-controls-row">
-                    <label>Delay: <input type="number" id="playbackDelay" value="1500" min="500" max="5000" step="100"></label>
-                </div>
-                <div class="language-controls">
-                    <!-- Row 1: Language Titles -->
-                    <div class="language-header-row">
-                        <div class="control-type"></div>
-                        <div class="language-checkboxes">
-                            <div class="language-checkbox-group">
-                                <div class="language-title">Thai</div>
+                    <div class="language-controls">
+                        <details>
+                            <summary>Language Options</summary>
+                            <div class="language-controls-content">
+                                <!-- Row 1: Language Titles -->
+                                <div class="language-header-row">
+                                    <div class="control-type"></div>
+                                    <div class="language-checkboxes">
+                                        <div class="language-checkbox-group">
+                                            <div class="language-title">Thai</div>
+                                        </div>
+                                        <div class="language-checkbox-group">
+                                            <div class="language-title">Persian</div>
+                                        </div>
+                                        <div class="language-checkbox-group">
+                                            <div class="language-title">English</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Row 2: Display Checkboxes -->
+                                <div class="language-controls-row">
+                                    <div class="control-type">Display</div>
+                                    <div class="language-checkboxes">
+                                        <div class="language-checkbox-group">
+                                            <label><input type="checkbox" id="displayThai" checked></label>
+                                        </div>
+                                        <div class="language-checkbox-group">
+                                            <label><input type="checkbox" id="displayPersian"></label>
+                                        </div>
+                                        <div class="language-checkbox-group">
+                                            <label><input type="checkbox" id="displayEnglish"></label>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Row 3: Speak Checkboxes -->
+                                <div class="language-controls-row">
+                                    <div class="control-type">Speak</div>
+                                    <div class="language-checkboxes">
+                                        <div class="language-checkbox-group">
+                                            <label><input type="checkbox" id="speakThai" checked></label>
+                                        </div>
+                                        <div class="language-checkbox-group">
+                                            <label><input type="checkbox" id="speakPersian"></label>
+                                        </div>
+                                        <div class="language-checkbox-group">
+                                            <label><input type="checkbox" id="speakEnglish"></label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Row 4: Reading Delay -->
+                                <div class="language-controls-row">
+                                    <div class="control-type">Reading delay (secs)</div>
+                                    <div class="language-checkboxes">
+                                        <div class="language-checkbox-group" style="flex: 1;">
+                                            <input type="number" id="playbackDelay" value="0.5" min="0.5" max="5.0" step="1.0">
+                                        </div>
+                                        <div class="language-checkbox-group" style="flex: 0;"></div>
+                                        <div class="language-checkbox-group" style="flex: 0;"></div>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="language-checkbox-group">
-                                <div class="language-title">Persian</div>
-                            </div>
-                            <div class="language-checkbox-group">
-                                <div class="language-title">English</div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Row 2: Display Checkboxes -->
-                    <div class="language-controls-row">
-                        <div class="control-type">Display</div>
-                        <div class="language-checkboxes">
-                            <div class="language-checkbox-group">
-                                <label><input type="checkbox" id="displayThai" checked></label>
-                            </div>
-                            <div class="language-checkbox-group">
-                                <label><input type="checkbox" id="displayPersian"></label>
-                            </div>
-                            <div class="language-checkbox-group">
-                                <label><input type="checkbox" id="displayEnglish"></label>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Row 3: Speak Checkboxes -->
-                    <div class="language-controls-row">
-                        <div class="control-type">Speak</div>
-                        <div class="language-checkboxes">
-                            <div class="language-checkbox-group">
-                                <label><input type="checkbox" id="speakThai" checked></label>
-                            </div>
-                            <div class="language-checkbox-group">
-                                <label><input type="checkbox" id="speakPersian"></label>
-                            </div>
-                            <div class="language-checkbox-group">
-                                <label><input type="checkbox" id="speakEnglish"></label>
-                            </div>
-                        </div>
+                        </details>
                     </div>
                 </div>
             </div>
@@ -2273,11 +2753,18 @@
                     'speakThai': () => this.saveSpeakSetting('speakThai', event.target.checked),
                     'speakEnglish': () => this.saveSpeakSetting('speakEnglish', event.target.checked),
                     'speakPersian': () => this.saveSpeakSetting('speakPersian', event.target.checked),
-                    'playbackDelay': () => this.handlePlaybackDelayChange(event.target)
+                    'playbackDelay': () => this.handlePlaybackDelayChange(event.target),
+                    'incorrectOnly': () => this.handleIncorrectOnlyChange(event.target.checked)
                 };
 
                 const handler = handlers[event.target.id];
                 if (handler) handler();
+            },
+
+            handleIncorrectOnlyChange(checked) {
+                QuizSystem.incorrectOnly = checked;
+                QuizSystem.currentQuestion = 0; // Reset to first question when toggling filter
+                QuizSystem.render();
             },
 
             saveAndRenderDisplay(setting, value) {
@@ -2292,8 +2779,10 @@
 
             handlePlaybackDelayChange(input) {
                 let value = parseFloat(input.value);
-                if (isNaN(value)) value = 1500;
-                value = Math.min(Math.max(value, 500), 5000);
+                if (isNaN(value)) value = 0.5;
+                value = Math.min(Math.max(value, 0.5), 5.0);
+                // Ensure value is valid for the step (0.5, 1.5, 2.5, etc.)
+                value = Math.round(value * 2) / 2;
                 input.value = value;
                 Storage.save('playbackDelay', input.value);
             },
@@ -2338,7 +2827,7 @@
                 if (speakThai) speakThai.checked = Storage.loadBool('speakThai', true);
                 if (speakEnglish) speakEnglish.checked = Storage.loadBool('speakEnglish', false);
                 if (speakPersian) speakPersian.checked = Storage.loadBool('speakPersian', false);
-                if (playbackDelay) playbackDelay.value = Storage.load('playbackDelay', '1500');
+                if (playbackDelay) playbackDelay.value = Storage.load('playbackDelay', '0.5'); // Changed from '1.5' to '0.5'
             }
         };
 
