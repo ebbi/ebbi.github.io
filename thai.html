@@ -10,6 +10,7 @@
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
 
     <style>
+        /* [All previous CSS remains exactly the same] */
         /* CSS Custom Properties for Theming */
         :root {
             --primary-color: #00247D;
@@ -534,6 +535,113 @@
             background: rgba(102, 170, 255, 0.1);
         }
 
+        /* TTS Status Styles */
+        .tts-status-container {
+            margin: 1em 0;
+            padding: 1em;
+            border-radius: 8px;
+            border-left: 4px solid;
+        }
+
+        .tts-status-success {
+            background: #e8f5e8;
+            border-left-color: var(--correct-color);
+            color: #2d5016;
+        }
+
+        .tts-status-error {
+            background: #ffeaea;
+            border-left-color: var(--incorrect-color);
+            color: #8b0000;
+        }
+
+        .tts-status-warning {
+            background: #fff4e6;
+            border-left-color: orange;
+            color: #663c00;
+        }
+
+        .tts-status-info {
+            background: #e8f4fd;
+            border-left-color: var(--primary-color);
+            color: #004085;
+        }
+
+        body[data-theme="dark"] .tts-status-success {
+            background: #1a331a;
+            color: #90ee90;
+        }
+
+        body[data-theme="dark"] .tts-status-error {
+            background: #331a1a;
+            color: #ff6b6b;
+        }
+
+        body[data-theme="dark"] .tts-status-warning {
+            background: #332900;
+            color: #ffd700;
+        }
+
+        body[data-theme="dark"] .tts-status-info {
+            background: #1a2833;
+            color: #66aaff;
+        }
+
+        .tts-setup-steps {
+            margin: 1em 0;
+            padding: 1em;
+            background: var(--background-light);
+            border-radius: 8px;
+            border: 1px solid var(--border-light);
+        }
+
+        body[data-theme="dark"] .tts-setup-steps {
+            background: #2a2a2a;
+            border-color: var(--border-dark);
+        }
+
+        .tts-step {
+            margin: 0.5em 0;
+            padding: 0.5em;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+        }
+
+        .tts-language-check {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1em;
+            margin: 1em 0;
+        }
+
+        .language-test {
+            padding: 0.5em 1em;
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .language-test:hover {
+            background: var(--primary-light);
+        }
+
+        .test-result {
+            margin-top: 0.5em;
+            font-size: 0.9em;
+            opacity: 0.8;
+        }
+
+        .success-check {
+            color: var(--correct-color);
+        }
+
+        .error-cross {
+            color: var(--incorrect-color);
+        }
+
         /* Scrollbar styling */
         .content-area::-webkit-scrollbar,
         #paragraphDisplay::-webkit-scrollbar {
@@ -600,16 +708,247 @@
             loadBool: (key, defaultValue = false) => Storage.load(key, defaultValue ? '1' : '0') === '1'
         };
 
-        const TTS = {
-            utterance: null,
+        // ========== ENHANCED TTS MANAGER ==========
+        const TTSManager = {
+            supportedVoices: [],
+            testResults: {},
+
+            initialize() {
+                this.loadVoices();
+                speechSynthesis.addEventListener('voiceschanged', () => {
+                    this.loadVoices();
+                });
+            },
+
+            loadVoices() {
+                this.supportedVoices = speechSynthesis.getVoices();
+            },
+
+            isSupported() {
+                return 'speechSynthesis' in window && typeof SpeechSynthesisUtterance !== 'undefined';
+            },
+
+            getLanguageVoices(lang) {
+                return this.supportedVoices.filter(voice =>
+                    voice.lang.startsWith(lang) || voice.lang.includes(lang)
+                );
+            },
+
+            hasLanguageSupport(lang) {
+                return this.getLanguageVoices(lang).length > 0;
+            },
+
+            testLanguage(lang, text) {
+                return new Promise((resolve) => {
+                    if (!this.isSupported()) {
+                        resolve({ success: false, error: 'TTS not supported' });
+                        return;
+                    }
+
+                    if (!this.hasLanguageSupport(lang)) {
+                        resolve({ success: false, error: `No ${lang} voices available` });
+                        return;
+                    }
+
+                    try {
+                        const utterance = new SpeechSynthesisUtterance(text);
+                        utterance.lang = lang;
+                        utterance.volume = 0.7;
+
+                        utterance.onend = () => {
+                            resolve({ success: true, voices: this.getLanguageVoices(lang) });
+                        };
+
+                        utterance.onerror = (error) => {
+                            resolve({ success: false, error: error.error });
+                        };
+
+                        speechSynthesis.speak(utterance);
+                    } catch (error) {
+                        resolve({ success: false, error: error.message });
+                    }
+                });
+            },
+
+            async comprehensiveTest() {
+                const tests = [
+                    { lang: 'en-US', text: 'Hello, this is English text-to-speech', name: 'English' },
+                    { lang: 'th-TH', text: 'สวัสดี นี่คือการทดสอบเสียงพูดภาษาไทย', name: 'Thai' }
+                ];
+
+                this.testResults = {};
+                let allPassed = true;
+
+                for (const test of tests) {
+                    const result = await this.testLanguage(test.lang, test.text);
+                    this.testResults[test.lang] = {
+                        ...result,
+                        name: test.name,
+                        text: test.text
+                    };
+
+                    if (!result.success) {
+                        allPassed = false;
+                    }
+
+                    // Small delay between tests
+                    await new Promise(resolve => setTimeout(resolve, 500));
+                }
+
+                return allPassed;
+            },
+
+            getSetupInstructions() {
+                const isMobile = /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+                const isChrome = /Chrome/.test(navigator.userAgent);
+                const isSafari = /Safari/.test(navigator.userAgent);
+
+                if (isMobile) {
+                    return this.getMobileSetupInstructions(isChrome, isSafari);
+                } else {
+                    return this.getDesktopSetupInstructions(isChrome, isSafari);
+                }
+            },
+
+            getMobileSetupInstructions(isChrome, isSafari) {
+                let instructions = '';
+
+                if (isChrome) {
+                    instructions = `
+                        <div class="tts-setup-steps">
+                            <h4>Android Chrome Setup:</h4>
+                            <div class="tts-step">
+                                <strong>1. Install Language Packs:</strong>
+                                <p>Go to Settings → Accessibility → Text-to-speech output → Google Text-to-speech engine → Install voice data</p>
+                            </div>
+                            <div class="tts-step">
+                                <strong>2. Download Thai & English:</strong>
+                                <p>Install both English and Thai language packs for full functionality</p>
+                            </div>
+                            <div class="tts-step">
+                                <strong>3. Enable in Chrome:</strong>
+                                <p>Chrome Settings → Accessibility → Enable "Simplified view for open pages"</p>
+                            </div>
+                        </div>
+                    `;
+                } else if (isSafari) {
+                    instructions = `
+                        <div class="tts-setup-steps">
+                            <h4>iOS Safari Setup:</h4>
+                            <div class="tts-step">
+                                <strong>1. Enable Spoken Content:</strong>
+                                <p>Settings → Accessibility → Spoken Content → Enable "Speak Selection"</p>
+                            </div>
+                            <div class="tts-step">
+                                <strong>2. Download Voices:</strong>
+                                <p>In Spoken Content → Voices → Download Thai and English voices</p>
+                            </div>
+                            <div class="tts-step">
+                                <strong>3. Test in Safari:</strong>
+                                <p>Select any text on a webpage and tap "Speak" to test</p>
+                            </div>
+                        </div>
+                    `;
+                }
+
+                return instructions;
+            },
+
+            getDesktopSetupInstructions(isChrome, isSafari) {
+                let instructions = '';
+
+                if (isChrome) {
+                    instructions = `
+                        <div class="tts-setup-steps">
+                            <h4>Chrome Desktop Setup:</h4>
+                            <div class="tts-step">
+                                <strong>1. Check System TTS:</strong>
+                                <p>Windows: Settings → Ease of Access → Narrator<br>
+                                   Mac: System Preferences → Accessibility → Speech</p>
+                            </div>
+                            <div class="tts-step">
+                                <strong>2. Install Languages:</strong>
+                                <p>Download Thai and English TTS voices through your operating system</p>
+                            </div>
+                            <div class="tts-step">
+                                <strong>3. Chrome Permissions:</strong>
+                                <p>Ensure Chrome has permission to use microphone/TTS features</p>
+                            </div>
+                        </div>
+                    `;
+                } else if (isSafari) {
+                    instructions = `
+                        <div class="tts-setup-steps">
+                            <h4>Safari Desktop Setup:</h4>
+                            <div class="tts-step">
+                                <strong>1. Enable Speech in macOS:</strong>
+                                <p>System Preferences → Accessibility → Speech → Enable "Speak selected text"</p>
+                            </div>
+                            <div class="tts-step">
+                                <strong>2. Download Voices:</strong>
+                                <p>System Preferences → Accessibility → Speech → System Voice → Customize → Download Thai</p>
+                            </div>
+                            <div class="tts-step">
+                                <strong>3. Safari Settings:</strong>
+                                <p>Safari → Preferences → Advanced → Accessibility → Never use font sizes smaller than 10px</p>
+                            </div>
+                        </div>
+                    `;
+                }
+
+                return instructions;
+            },
+
+            getStatusMessage() {
+                if (!this.isSupported()) {
+                    return {
+                        type: 'error',
+                        title: 'Text-to-Speech Not Supported',
+                        message: 'Your browser does not support the Web Speech API. Please use Chrome, Safari, or Edge for the best experience.'
+                    };
+                }
+
+                const hasEnglish = this.hasLanguageSupport('en');
+                const hasThai = this.hasLanguageSupport('th');
+
+                if (!hasEnglish && !hasThai) {
+                    return {
+                        type: 'error',
+                        title: 'No Language Voices Available',
+                        message: 'No English or Thai TTS voices found. You need to install language packs.'
+                    };
+                }
+
+                if (!hasThai) {
+                    return {
+                        type: 'warning',
+                        title: 'Thai Language Missing',
+                        message: 'English TTS works, but Thai voices are not available. Install Thai language pack for full functionality.'
+                    };
+                }
+
+                if (!hasEnglish) {
+                    return {
+                        type: 'warning',
+                        title: 'English Language Missing',
+                        message: 'Thai TTS works, but English voices are not available. Install English language pack for complete features.'
+                    };
+                }
+
+                return {
+                    type: 'success',
+                    title: 'TTS Ready for Language Learning',
+                    message: 'Both English and Thai text-to-speech are available and ready for your language practice!'
+                };
+            },
 
             speak(text, lang, onEnd) {
                 if (!text) return;
                 speechSynthesis.cancel();
-                this.utterance = new SpeechSynthesisUtterance(text);
-                this.utterance.lang = lang;
-                if (onEnd) this.utterance.onend = onEnd;
-                speechSynthesis.speak(this.utterance);
+                const utterance = new SpeechSynthesisUtterance(text);
+                utterance.lang = lang;
+                if (onEnd) utterance.onend = onEnd;
+                speechSynthesis.speak(utterance);
             },
 
             cancel() {
@@ -620,6 +959,9 @@
                 speechSynthesis.pause();
             }
         };
+
+        // Initialize TTS Manager when page loads
+        TTSManager.initialize();
 
         // ========== APPLICATION STATE ==========
         const AppState = {
@@ -689,6 +1031,7 @@
             }
         };
 
+        // ========== SETTINGS MANAGER ==========
         const SettingsManager = {
             show() {
                 const contentArea = document.getElementById('contentArea');
@@ -696,6 +1039,9 @@
                 contentArea.innerHTML = this.getSettingsHTML();
                 controlsArea.innerHTML = '';
                 this.bindSettingsEvents();
+
+                // Show initial TTS status
+                this.showInitialTTSStatus();
             },
 
             getSettingsHTML() {
@@ -705,12 +1051,24 @@
                         <h2 style="margin: 0;">Settings & Help</h2>
                         <button id="closeX" style="background: #666; color: white; border: none; padding: 0.5em; border-radius: 4px; cursor: pointer;">❌</button>
                     </div>
-                    <div style="min-height: 60vh; display: flex; flex-direction: column; justify-content: center;">
-                        <div id="settingsControls" style="text-align: center; padding: 1em;">
-                            <button id="checkTTS" style="padding: 0.8em 1.5em; background: #00247D; color: white; border: none; border-radius: 4px; cursor: pointer;">Check Sound and Language Setup</button>
-                            <span id="ttsStatus" style="margin-left: 1em; font-weight: bold;"></span>
-                            <br><br>
-                            <button id="closeBtn" style="padding: 0.6em 1.2em; background: #666; color: white; border: none; border-radius: 4px; cursor: pointer;">Close</button>
+                    
+                    <div class="settings-content" style="padding: 1em;">
+                        <div class="settings-section">
+                            <h3>Text-to-Speech Setup</h3>
+                            <p>This app uses Text-to-Speech (TTS) to help you learn pronunciation in both Thai and English. 
+                               Please test your setup and follow the instructions if needed.</p>
+                            
+                            <button id="checkTTS" class="settings-button" style="padding: 0.8em 1.5em; background: #00247D; color: white; border: none; border-radius: 4px; cursor: pointer; margin: 1em 0;">
+                                🔊 Test TTS Setup & Language Support
+                            </button>
+                            
+                            <div id="ttsStatus"></div>
+                            <div id="ttsSetupInstructions"></div>
+                            <div id="languageTests"></div>
+                        </div>
+                        
+                        <div style="margin-top: 2em; padding-top: 1em; border-top: 1px solid var(--border-light);">
+                            <button id="closeBtn" style="padding: 0.6em 1.2em; background: #666; color: white; border: none; border-radius: 4px; cursor: pointer;">Close Settings</button>
                         </div>
                     </div>`;
             },
@@ -718,24 +1076,126 @@
             bindSettingsEvents() {
                 document.getElementById('closeX').addEventListener('click', this.close);
                 document.getElementById('closeBtn').addEventListener('click', this.close);
-                document.getElementById('checkTTS').addEventListener('click', this.checkTTS);
+                document.getElementById('checkTTS').addEventListener('click', () => this.performTTSCheck());
             },
 
             close() {
-                AppController.reload();
+                // Clear any errors and reload the main app view
+                const contentArea = document.getElementById('contentArea');
+                const controlsArea = document.getElementById('controlsArea');
+
+                // Reset to main app view
+                contentArea.innerHTML = AppController.getMainHTML();
+                controlsArea.innerHTML = AppController.getControlsHTML();
+
+                // Re-initialize the app components
+                AppController.bindUIElements();
+                AppController.restoreSettings();
+
+                // Reload the current book data
+                const currentBookFilename = Storage.load('currentBook');
+                if (currentBookFilename) {
+                    AppController.loadBook(currentBookFilename);
+                }
             },
 
-            checkTTS() {
-                const statusEl = document.getElementById('ttsStatus');
-                if ('speechSynthesis' in window) {
-                    statusEl.innerHTML = "<br>Text To Speech is setup.";
-                    statusEl.style.color = "green";
-                    TTS.speak("Hello in English", "en-US");
-                } else {
-                    statusEl.innerHTML = "<br>Text To Speech not available";
-                    statusEl.style.color = "red";
+            showInitialTTSStatus() {
+                const status = TTSManager.getStatusMessage();
+                this.showTTSStatus(status);
+
+                // Show setup instructions for common issues
+                if (status.type !== 'success') {
+                    const instructions = TTSManager.getSetupInstructions();
+                    document.getElementById('ttsSetupInstructions').innerHTML = instructions;
                 }
+            },
+
+            async performTTSCheck() {
+                const ttsStatus = document.getElementById('ttsStatus');
+                const checkBtn = document.getElementById('checkTTS');
+                const languageTests = document.getElementById('languageTests');
+
+                checkBtn.innerHTML = '🔄 Testing TTS...';
+                checkBtn.disabled = true;
+                ttsStatus.innerHTML = '';
+                languageTests.innerHTML = '';
+
+                // Show initial system status
+                const status = TTSManager.getStatusMessage();
+                this.showTTSStatus(status);
+
+                // Perform comprehensive test
+                const testPassed = await TTSManager.comprehensiveTest();
+
+                // Show detailed test results
+                this.showLanguageTestResults();
+
+                // Show setup instructions if needed
+                if (!testPassed) {
+                    const instructions = TTSManager.getSetupInstructions();
+                    document.getElementById('ttsSetupInstructions').innerHTML = instructions;
+                }
+
+                checkBtn.innerHTML = '✅ TTS Test Complete';
+                checkBtn.disabled = false;
+
+                // Update status based on test results
+                const finalStatus = TTSManager.getStatusMessage();
+                this.showTTSStatus(finalStatus);
+            },
+
+            showTTSStatus(status) {
+                const ttsStatus = document.getElementById('ttsStatus');
+                const statusClass = `tts-status-${status.type === 'warning' ? 'info' : status.type}`;
+
+                ttsStatus.innerHTML = `
+                    <div class="tts-status-container ${statusClass}">
+                        <h4 style="margin: 0 0 0.5em 0;">${status.title}</h4>
+                        <p style="margin: 0;">${status.message}</p>
+                    </div>
+                `;
+            },
+
+            showLanguageTestResults() {
+                const languageTests = document.getElementById('languageTests');
+                const results = TTSManager.testResults;
+
+                if (Object.keys(results).length === 0) return;
+
+                let html = `<h4>Language Test Results:</h4><div class="tts-language-check">`;
+
+                for (const [lang, result] of Object.entries(results)) {
+                    const icon = result.success ? '✅' : '❌';
+                    const resultClass = result.success ? 'success-check' : 'error-cross';
+                    const voices = result.voices ? result.voices.map(v => v.name).join(', ') : 'No voices';
+
+                    html += `
+                        <div style="flex: 1; min-width: 200px; padding: 1em; background: rgba(0,0,0,0.05); border-radius: 8px;">
+                            <div style="font-weight: bold;">${icon} ${result.name}</div>
+                            <div class="test-result ${resultClass}">
+                                ${result.success ?
+                            `Working - ${voices}` :
+                            `Failed: ${result.error}`
+                        }
+                            </div>
+                            <button onclick="testSingleLanguage('${lang}', '${result.text}')" 
+                                    class="language-test" 
+                                    style="margin-top: 0.5em;">
+                                Test ${result.name} Again
+                            </button>
+                        </div>
+                    `;
+                }
+
+                html += `</div>`;
+                languageTests.innerHTML = html;
             }
+        };
+
+        // Global function for testing individual languages
+        window.testSingleLanguage = async function (lang, text) {
+            const result = await TTSManager.testLanguage(lang, text);
+            alert(`${lang === 'en-US' ? 'English' : 'Thai'} TTS Test: ${result.success ? 'SUCCESS' : 'FAILED'}\n${result.success ? 'Voice is working properly' : 'Error: ' + result.error}`);
         };
 
         // ========== BOOK MANAGEMENT ==========
@@ -889,7 +1349,7 @@
 
             pauseParagraph() {
                 AppState.isPlaying = false;
-                TTS.cancel();
+                TTSManager.cancel();
             },
 
             restartParagraph() {
@@ -950,7 +1410,7 @@
                         ParagraphRenderer.highlightElement(span, index);
                     }
 
-                    TTS.speak(text, lang, () => {
+                    TTSManager.speak(text, lang, () => {
                         if (autoAdvance && AppState.isPlaying && span) {
                             span.classList.remove('highlight-light', 'highlight-dark');
                         }
@@ -962,7 +1422,7 @@
             playWord(text, lang, span, index) {
                 if (!text || text === "\n") return;
                 ParagraphRenderer.highlightElement(span, index);
-                TTS.cancel();
+                TTSManager.cancel();
                 this.speakWord(text, lang, index, false);
             },
 
@@ -1036,7 +1496,7 @@
                 questionEl.lang = this.getLangCode(questionLang);
                 questionEl.style.cursor = "pointer";
                 questionEl.addEventListener("click", () => {
-                    TTS.speak(question[questionLang], this.getLangCode(questionLang));
+                    TTSManager.speak(question[questionLang], this.getLangCode(questionLang));
                 });
                 container.appendChild(questionEl);
             },
@@ -1074,7 +1534,7 @@
                 optionEl.textContent = option;
 
                 optionEl.addEventListener("click", () => {
-                    TTS.speak(option, this.getLangCode(answerLang));
+                    TTSManager.speak(option, this.getLangCode(answerLang));
                     this.handleAnswer(optionEl, option, question[answerLang], question);
                 });
 
@@ -1193,7 +1653,9 @@
                 this.populateBookSelect(bookList);
 
                 if (bookList.length > 0) {
-                    await this.loadBook(AppState.currentBook || bookList[0].bookFilename);
+                    // Use the filename, not the book object
+                    const currentBookFilename = Storage.load('currentBook', bookList[0].bookFilename);
+                    await this.loadBook(currentBookFilename);
                 }
             },
 
@@ -1216,13 +1678,15 @@
                     bookSelect.appendChild(option);
                 });
 
-                bookSelect.value = AppState.currentBook || bookList[0].bookFilename;
+                const savedBook = Storage.load('currentBook', bookList[0].bookFilename);
+                bookSelect.value = savedBook;
             },
 
             async loadBook(filename) {
                 try {
-                    AppState.currentBook = await BookManager.loadBook(filename);
-                    Storage.save('currentBook', filename);
+                    const bookData = await BookManager.loadBook(filename);
+                    AppState.currentBook = bookData; // Store the book data object
+                    Storage.save('currentBook', filename); // Store the filename
                     this.populateChapters();
                 } catch (error) {
                     const contentArea = document.getElementById('contentArea');
