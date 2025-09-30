@@ -1308,19 +1308,33 @@
             async comprehensiveTest() {
                 const tests = [
                     { lang: 'en-US', text: 'Hello, this is English text-to-speech', name: 'English' },
-                    { lang: 'th-TH', text: 'สวัสดี นี่คือการทดสอบเสียงพูดภาษาไทย', name: 'Thai' }
+                    { lang: 'th-TH', text: 'สวัสดี นี่คือการทดสอบเสียงพูดภาษาไทย', name: 'Thai' },
+                    { lang: 'fa-IR', text: 'سلام، این تست گفتار فارسی است', name: 'Persian' }
                 ];
 
                 this.testResults = {};
                 let allPassed = true;
+                const isFirefox = /firefox|fxios/.test(navigator.userAgent.toLowerCase()) && !/seamonkey/.test(navigator.userAgent.toLowerCase());
+                const isRaspberryPi = this.detectRaspberryPi();
 
                 for (const test of tests) {
                     const result = await this.testLanguage(test.lang, test.text);
-                    this.testResults[test.lang] = {
-                        ...result,
-                        name: test.name,
-                        text: test.text
-                    };
+
+                    // Special handling for Firefox on Raspberry Pi
+                    if (isFirefox && isRaspberryPi && !result.success) {
+                        this.testResults[test.lang] = {
+                            ...result,
+                            name: test.name,
+                            text: test.text,
+                            note: 'Firefox on Raspberry Pi may require eSpeak installation. Run: sudo apt install espeak espeak-data'
+                        };
+                    } else {
+                        this.testResults[test.lang] = {
+                            ...result,
+                            name: test.name,
+                            text: test.text
+                        };
+                    }
 
                     if (!result.success) {
                         allPassed = false;
@@ -1335,14 +1349,194 @@
 
             getSetupInstructions() {
                 const isMobile = /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-                const isChrome = /Chrome/.test(navigator.userAgent);
-                const isSafari = /Safari/.test(navigator.userAgent);
+                const userAgent = navigator.userAgent.toLowerCase();
+
+                // More specific browser detection
+                const isChrome = /chrome|chromium|crios/.test(userAgent) && !/edg|opr|opera|firefox|safari/.test(userAgent);
+                const isFirefox = /firefox|fxios/.test(userAgent) && !/seamonkey/.test(userAgent);
+                const isSafari = /safari/.test(userAgent) && !/chrome|chromium|crios|android|firefox|opr|opera/.test(userAgent);
+                const isEdge = /edg/.test(userAgent);
 
                 if (isMobile) {
-                    return this.getMobileSetupInstructions(isChrome, isSafari);
+                    return this.getMobileSetupInstructions(isChrome, isSafari, isFirefox, isEdge);
                 } else {
-                    return this.getDesktopSetupInstructions(isChrome, isSafari);
+                    return this.getDesktopSetupInstructions(isChrome, isSafari, isFirefox, isEdge);
                 }
+            },
+            getMobileSetupInstructions(isChrome, isSafari, isFirefox) {
+                let instructions = '';
+
+                if (isChrome) {
+                    instructions = `
+            <div class="tts-setup-steps">
+                <h4>Android Chrome Setup:</h4>
+                <div class="tts-step">
+                    <strong>1. Install Language Packs:</strong>
+                    <p>Go to Settings → Accessibility → Text-to-speech output → Google Text-to-speech engine → Install voice data</p>
+                </div>
+                <div class="tts-step">
+                    <strong>2. Download Languages:</strong>
+                    <p>Install English, Thai, and Persian language packs for full functionality</p>
+                </div>
+                <div class="tts-step">
+                    <strong>3. Enable in Chrome:</strong>
+                    <p>Chrome Settings → Accessibility → Enable "Simplified view for open pages"</p>
+                </div>
+            </div>
+        `;
+                } else if (isSafari) {
+                    instructions = `
+            <div class="tts-setup-steps">
+                <h4>iOS Safari Setup:</h4>
+                <div class="tts-step">
+                    <strong>1. Enable Spoken Content:</strong>
+                    <p>Settings → Accessibility → Spoken Content → Enable "Speak Selection"</p>
+                </div>
+                <div class="tts-step">
+                    <strong>2. Download Voices:</strong>
+                    <p>In Spoken Content → Voices → Download English, Thai, and Persian voices</p>
+                </div>
+                <div class="tts-step">
+                    <strong>3. Test in Safari:</strong>
+                    <p>Select any text on a webpage and tap "Speak" to test</p>
+                </div>
+            </div>
+        `;
+                } else if (isFirefox) {
+                    instructions = `
+            <div class="tts-setup-steps">
+                <h4>Android Firefox Setup:</h4>
+                <div class="tts-step">
+                    <strong>1. Enable TTS in Firefox:</strong>
+                    <p>Firefox may use the system TTS engine. Ensure your device has language packs installed.</p>
+                </div>
+                <div class="tts-step">
+                    <strong>2. Install System Language Packs:</strong>
+                    <p>Go to Android Settings → Accessibility → Text-to-speech output → Install voices for English, Thai, and Persian</p>
+                </div>
+                <div class="tts-step">
+                    <strong>3. Set Default TTS Engine:</strong>
+                    <p>In Text-to-speech output settings, set Google Text-to-speech as default and install required languages</p>
+                </div>
+            </div>
+        `;
+                }
+
+                return instructions;
+            },
+
+            getDesktopSetupInstructions(isChrome, isSafari, isFirefox, isEdge) {
+                let instructions = '';
+
+                // Check browsers in order of specificity
+                if (isFirefox) {
+                    instructions = `
+            <div class="tts-setup-steps">
+                <h4>Firefox on Raspberry Pi Setup:</h4>
+                <div class="tts-step">
+                    <strong>1. Install System TTS Packages:</strong>
+                    <p>Open terminal and run:<br>
+                       <code>sudo apt update && sudo apt install espeak espeak-data</code></p>
+                </div>
+                <div class="tts-step">
+                    <strong>2. Install Additional Language Support:</strong>
+                    <p>For better language support, install:<br>
+                       <code>sudo apt install festvox-rablpc16k libttspico-utils</code></p>
+                </div>
+                <div class="tts-step">
+                    <strong>3. Check Audio Output:</strong>
+                    <p>Ensure your Raspberry Pi audio is working:<br>
+                       <code>speaker-test -t wav -c 2</code></p>
+                </div>
+                <div class="tts-step">
+                    <strong>4. Firefox TTS Limitations:</strong>
+                    <p>Firefox on Raspberry Pi uses eSpeak which has limited voice quality. 
+                       For better TTS, consider using Chromium browser instead.</p>
+                </div>
+                <div class="tts-step">
+                    <strong>5. Test TTS in Terminal:</strong>
+                    <p>Test if system TTS works:<br>
+                       <code>espeak "Hello this is a test"</code><br>
+                       If this works, Firefox should be able to use TTS.</p>
+                </div>
+            </div>
+        `;
+                } else if (isChrome) {
+                    instructions = `
+            <div class="tts-setup-steps">
+                <h4>Chrome/Chromium on Raspberry Pi Setup:</h4>
+                <div class="tts-step">
+                    <strong>1. Check System TTS:</strong>
+                    <p>Ensure basic audio works:<br>
+                       <code>sudo apt install alsa-utils</code><br>
+                       <code>aplay /usr/share/sounds/alsa/Front_Left.wav</code></p>
+                </div>
+                <div class="tts-step">
+                    <strong>2. Install Language Support:</strong>
+                    <p>Chromium uses system TTS. Install voices:<br>
+                       <code>sudo apt install speech-dispatcher festvox-*</code></p>
+                </div>
+                <div class="tts-step">
+                    <strong>3. Browser Permissions:</strong>
+                    <p>Ensure Chromium has permission to play audio and use TTS features</p>
+                </div>
+            </div>
+        `;
+                } else if (isSafari) {
+                    instructions = `
+            <div class="tts-setup-steps">
+                <h4>Safari Setup:</h4>
+                <div class="tts-step">
+                    <strong>1. Enable Speech in macOS:</strong>
+                    <p>System Preferences → Accessibility → Speech → Enable "Speak selected text"</p>
+                </div>
+                <div class="tts-step">
+                    <strong>2. Download Voices:</strong>
+                    <p>System Preferences → Accessibility → Speech → System Voice → Customize → Download English, Thai, and Persian</p>
+                </div>
+            </div>
+        `;
+                } else if (isEdge) {
+                    instructions = `
+            <div class="tts-setup-steps">
+                <h4>Edge Browser Setup:</h4>
+                <div class="tts-step">
+                    <strong>1. System TTS Setup:</strong>
+                    <p>Edge uses Windows TTS. Install voices via Settings → Time & Language → Language & Region</p>
+                </div>
+                <div class="tts-step">
+                    <strong>2. Install Required Languages:</strong>
+                    <p>Ensure your system has English, Thai, and Persian TTS voices installed</p>
+                </div>
+            </div>
+        `;
+                } else {
+                    // Fallback for unknown browsers
+                    instructions = `
+            <div class="tts-setup-steps">
+                <h4>General Raspberry Pi TTS Setup:</h4>
+                <div class="tts-step">
+                    <strong>1. Install Basic TTS:</strong>
+                    <p><code>sudo apt update && sudo apt install espeak espeak-data</code></p>
+                </div>
+                <div class="tts-step">
+                    <strong>2. Test Audio System:</strong>
+                    <p><code>sudo apt install alsa-utils</code><br>
+                       <code>speaker-test -t wav -c 2</code></p>
+                </div>
+                <div class="tts-step">
+                    <strong>3. Test TTS in Terminal:</strong>
+                    <p><code>espeak "Hello world"</code></p>
+                </div>
+                <div class="tts-step">
+                    <strong>4. Browser Recommendations:</strong>
+                    <p>For better TTS on Raspberry Pi, use Chromium browser instead of Firefox</p>
+                </div>
+            </div>
+        `;
+                }
+
+                return instructions;
             },
 
             getMobileSetupInstructions(isChrome, isSafari) {
@@ -1350,40 +1544,40 @@
 
                 if (isChrome) {
                     instructions = `
-                        <div class="tts-setup-steps">
-                            <h4>Android Chrome Setup:</h4>
-                            <div class="tts-step">
-                                <strong>1. Install Language Packs:</strong>
-                                <p>Go to Settings → Accessibility → Text-to-speech output → Google Text-to-speech engine → Install voice data</p>
-                            </div>
-                            <div class="tts-step">
-                                <strong>2. Download Thai & English:</strong>
-                                <p>Install both English and Thai language packs for full functionality</p>
-                            </div>
-                            <div class="tts-step">
-                                <strong>3. Enable in Chrome:</strong>
-                                <p>Chrome Settings → Accessibility → Enable "Simplified view for open pages"</p>
-                            </div>
-                        </div>
-                    `;
+            <div class="tts-setup-steps">
+                <h4>Android Chrome Setup:</h4>
+                <div class="tts-step">
+                    <strong>1. Install Language Packs:</strong>
+                    <p>Go to Settings → Accessibility → Text-to-speech output → Google Text-to-speech engine → Install voice data</p>
+                </div>
+                <div class="tts-step">
+                    <strong>2. Download Languages:</strong>
+                    <p>Install English, Thai, and Persian language packs for full functionality</p>
+                </div>
+                <div class="tts-step">
+                    <strong>3. Enable in Chrome:</strong>
+                    <p>Chrome Settings → Accessibility → Enable "Simplified view for open pages"</p>
+                </div>
+            </div>
+        `;
                 } else if (isSafari) {
                     instructions = `
-                        <div class="tts-setup-steps">
-                            <h4>iOS Safari Setup:</h4>
-                            <div class="tts-step">
-                                <strong>1. Enable Spoken Content:</strong>
-                                <p>Settings → Accessibility → Spoken Content → Enable "Speak Selection"</p>
-                            </div>
-                            <div class="tts-step">
-                                <strong>2. Download Voices:</strong>
-                                <p>In Spoken Content → Voices → Download Thai and English voices</p>
-                            </div>
-                            <div class="tts-step">
-                                <strong>3. Test in Safari:</strong>
-                                <p>Select any text on a webpage and tap "Speak" to test</p>
-                            </div>
-                        </div>
-                    `;
+            <div class="tts-setup-steps">
+                <h4>iOS Safari Setup:</h4>
+                <div class="tts-step">
+                    <strong>1. Enable Spoken Content:</strong>
+                    <p>Settings → Accessibility → Spoken Content → Enable "Speak Selection"</p>
+                </div>
+                <div class="tts-step">
+                    <strong>2. Download Voices:</strong>
+                    <p>In Spoken Content → Voices → Download English, Thai, and Persian voices</p>
+                </div>
+                <div class="tts-step">
+                    <strong>3. Test in Safari:</strong>
+                    <p>Select any text on a webpage and tap "Speak" to test</p>
+                </div>
+            </div>
+        `;
                 }
 
                 return instructions;
@@ -1394,88 +1588,135 @@
 
                 if (isChrome) {
                     instructions = `
-                        <div class="tts-setup-steps">
-                            <h4>Chrome Desktop Setup:</h4>
-                            <div class="tts-step">
-                                <strong>1. Check System TTS:</strong>
-                                <p>Windows: Settings → Ease of Access → Narrator<br>
-                                   Mac: System Preferences → Accessibility → Speech</p>
-                            </div>
-                            <div class="tts-step">
-                                <strong>2. Install Languages:</strong>
-                                <p>Download Thai and English TTS voices through your operating system</p>
-                            </div>
-                            <div class="tts-step">
-                                <strong>3. Chrome Permissions:</strong>
-                                <p>Ensure Chrome has permission to use microphone/TTS features</p>
-                            </div>
-                        </div>
-                    `;
+            <div class="tts-setup-steps">
+                <h4>Chrome Desktop Setup:</h4>
+                <div class="tts-step">
+                    <strong>1. Check System TTS:</strong>
+                    <p>Windows: Settings → Ease of Access → Narrator<br>
+                       Mac: System Preferences → Accessibility → Speech</p>
+                </div>
+                <div class="tts-step">
+                    <strong>2. Install Languages:</strong>
+                    <p>Download English, Thai, and Persian TTS voices through your operating system</p>
+                </div>
+                <div class="tts-step">
+                    <strong>3. Chrome Permissions:</strong>
+                    <p>Ensure Chrome has permission to use microphone/TTS features</p>
+                </div>
+            </div>
+        `;
                 } else if (isSafari) {
                     instructions = `
-                        <div class="tts-setup-steps">
-                            <h4>Safari Desktop Setup:</h4>
-                            <div class="tts-step">
-                                <strong>1. Enable Speech in macOS:</strong>
-                                <p>System Preferences → Accessibility → Speech → Enable "Speak selected text"</p>
-                            </div>
-                            <div class="tts-step">
-                                <strong>2. Download Voices:</strong>
-                                <p>System Preferences → Accessibility → Speech → System Voice → Customize → Download Thai</p>
-                            </div>
-                            <div class="tts-step">
-                                <strong>3. Safari Settings:</strong>
-                                <p>Safari → Preferences → Advanced → Accessibility → Never use font sizes smaller than 10px</p>
-                            </div>
-                        </div>
-                    `;
+            <div class="tts-setup-steps">
+                <h4>Safari Desktop Setup:</h4>
+                <div class="tts-step">
+                    <strong>1. Enable Speech in macOS:</strong>
+                    <p>System Preferences → Accessibility → Speech → Enable "Speak selected text"</p>
+                </div>
+                <div class="tts-step">
+                    <strong>2. Download Voices:</strong>
+                    <p>System Preferences → Accessibility → Speech → System Voice → Customize → Download English, Thai, and Persian</p>
+                </div>
+                <div class="tts-step">
+                    <strong>3. Safari Settings:</strong>
+                    <p>Safari → Preferences → Advanced → Accessibility → Never use font sizes smaller than 10px</p>
+                </div>
+            </div>
+        `;
                 }
 
                 return instructions;
             },
 
+            // Add this method to detect Raspberry Pi
+            detectRaspberryPi() {
+                const userAgent = navigator.userAgent.toLowerCase();
+                const isRaspberryPi = /raspberry|rpi|armv|aarch/.test(userAgent) ||
+                    navigator.platform.toLowerCase().includes('arm') ||
+                    navigator.hardwareConcurrency === 4; // Common RPi core count
+
+                return isRaspberryPi;
+            },
+
+
             getStatusMessage() {
                 if (!this.isSupported()) {
+                    const isFirefox = /Firefox/.test(navigator.userAgent);
+                    let message = 'Your browser does not support the Web Speech API. ';
+
+                    if (isFirefox) {
+                        message += 'Firefox has limited TTS support and may require additional system configuration. ';
+                    }
+
+                    message += 'Please use Chrome, Safari, or Edge for the best experience.';
+
                     return {
                         type: 'error',
                         title: 'Text-to-Speech Not Supported',
-                        message: 'Your browser does not support the Web Speech API. Please use Chrome, Safari, or Edge for the best experience.'
+                        message: message
                     };
                 }
 
                 const hasEnglish = this.hasLanguageSupport('en');
                 const hasThai = this.hasLanguageSupport('th');
+                const hasPersian = this.hasLanguageSupport('fa');
 
-                if (!hasEnglish && !hasThai) {
+                if (!hasEnglish && !hasThai && !hasPersian) {
+                    const isFirefox = /Firefox/.test(navigator.userAgent);
+                    let message = 'No English, Thai, or Persian TTS voices found. You need to install language packs.';
+
+                    if (isFirefox) {
+                        message += ' Firefox relies on system TTS voices - please install voices through your operating system.';
+                    }
+
                     return {
                         type: 'error',
                         title: 'No Language Voices Available',
-                        message: 'No English or Thai TTS voices found. You need to install language packs.'
+                        message: message
                     };
                 }
 
-                if (!hasThai) {
+                const missingLanguages = [];
+                if (!hasEnglish) missingLanguages.push('English');
+                if (!hasThai) missingLanguages.push('Thai');
+                if (!hasPersian) missingLanguages.push('Persian');
+
+                if (missingLanguages.length > 0) {
+                    const missingText = missingLanguages.join(', ');
+                    const availableLanguages = [];
+                    if (hasEnglish) availableLanguages.push('English');
+                    if (hasThai) availableLanguages.push('Thai');
+                    if (hasPersian) availableLanguages.push('Persian');
+                    const availableText = availableLanguages.join(', ');
+
+                    const isFirefox = /Firefox/.test(navigator.userAgent);
+                    let message = `TTS works for ${availableText}, but ${missingText} voices are not available. Install missing language packs for complete functionality.`;
+
+                    if (isFirefox) {
+                        message += ' In Firefox, install missing voices through your operating system settings.';
+                    }
+
                     return {
                         type: 'warning',
-                        title: 'Thai Language Missing',
-                        message: 'English TTS works, but Thai voices are not available. Install Thai language pack for full functionality.'
+                        title: 'Some Languages Missing',
+                        message: message
                     };
                 }
 
-                if (!hasEnglish) {
-                    return {
-                        type: 'warning',
-                        title: 'English Language Missing',
-                        message: 'Thai TTS works, but English voices are not available. Install English language pack for complete features.'
-                    };
+                const isFirefox = /Firefox/.test(navigator.userAgent);
+                let message = 'English, Thai, and Persian text-to-speech are all available and ready for your language practice!';
+
+                if (isFirefox) {
+                    message += ' (Firefox TTS is working correctly)';
                 }
 
                 return {
                     type: 'success',
                     title: 'TTS Ready for Language Learning',
-                    message: 'Both English and Thai text-to-speech are available and ready for your language practice!'
+                    message: message
                 };
             },
+
 
             speak(text, lang, onEnd) {
                 if (!text) return;
@@ -1726,10 +1967,17 @@
 
         // Global function for testing individual languages
         window.testSingleLanguage = async function (lang, text) {
-            const result = await TTSManager.testLanguage(lang, text);
-            alert(`${lang === 'en-US' ? 'English' : 'Thai'} TTS Test: ${result.success ? 'SUCCESS' : 'FAILED'}\n${result.success ? 'Voice is working properly' : 'Error: ' + result.error}`);
-        };
+            let languageName = '';
+            switch (lang) {
+                case 'en-US': languageName = 'English'; break;
+                case 'th-TH': languageName = 'Thai'; break;
+                case 'fa-IR': languageName = 'Persian'; break;
+                default: languageName = lang;
+            }
 
+            const result = await TTSManager.testLanguage(lang, text);
+            alert(`${languageName} TTS Test: ${result.success ? 'SUCCESS' : 'FAILED'}\n${result.success ? 'Voice is working properly' : 'Error: ' + result.error}`);
+        };
         // ========== BOOK MANAGEMENT ==========
         const BookManager = {
             async loadBookList() {
