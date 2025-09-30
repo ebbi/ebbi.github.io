@@ -70,12 +70,16 @@
             padding: 0;
         }
 
-        /* Scrollable content area */
+        /* Ensure the content area has proper top padding to account for sticky header */
         .content-area {
             flex: 1;
             overflow-y: auto;
             padding: 1em;
             -webkit-overflow-scrolling: touch;
+            padding-top: 0.5em;
+            /* Add scroll padding to ensure elements are visible when scrolled into view */
+            scroll-padding-top: 120px;
+            /* Increased to account for header + book selection */
         }
 
         /* Fixed controls at bottom */
@@ -523,16 +527,24 @@
             pointer-events: none;
         }
 
-        /* Selection controls styling */
+        /* Updated book selection styling - make it properly sticky */
         #bookSelectionControls {
             background: rgba(0, 36, 125, 0.05);
             padding: 1em;
             border-radius: 8px;
             margin-bottom: 1em;
+            position: sticky;
+            top: 0;
+            z-index: 80;
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--border-light);
+            /* Add margin top to push it below header */
+            margin-top: 0.5em;
         }
 
         body[data-theme="dark"] #bookSelectionControls {
             background: rgba(102, 170, 255, 0.1);
+            border-color: var(--border-dark);
         }
 
         /* TTS Status Styles */
@@ -786,7 +798,8 @@
         /* Ensure the header has proper z-index */
         header {
             z-index: 100;
-            /* Ensure header stays on top */
+            position: sticky;
+            top: 0;
         }
 
         /* Make sure the book selection has lower z-index than header but higher than content */
