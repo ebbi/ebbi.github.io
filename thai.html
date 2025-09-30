@@ -1032,6 +1032,7 @@
         };
 
         // ========== SETTINGS MANAGER ==========
+        // ========== SETTINGS MANAGER ==========
         const SettingsManager = {
             show() {
                 const contentArea = document.getElementById('contentArea');
@@ -1092,11 +1093,8 @@
                 AppController.bindUIElements();
                 AppController.restoreSettings();
 
-                // Reload the current book data
-                const currentBookFilename = Storage.load('currentBook');
-                if (currentBookFilename) {
-                    AppController.loadBook(currentBookFilename);
-                }
+                // Re-populate the book list and restore current selection
+                AppController.reloadBookList();
             },
 
             showInitialTTSStatus() {
@@ -1659,6 +1657,26 @@
                 }
             },
 
+            async reloadBookList() {
+                const bookList = await BookManager.loadBookList();
+                this.populateBookSelect(bookList);
+
+                // Restore the current book selection
+                const currentBookFilename = Storage.load('currentBook');
+                if (currentBookFilename && AppState.currentBook) {
+                    // If we already have book data, just update the select and repopulate chapters/paragraphs
+                    const bookSelect = document.getElementById('bookSelect');
+                    if (bookSelect) {
+                        bookSelect.value = currentBookFilename;
+                    }
+                    this.populateChapters();
+                } else if (bookList.length > 0) {
+                    // Otherwise load the first book or saved book
+                    const bookToLoad = currentBookFilename || bookList[0].bookFilename;
+                    await this.loadBook(bookToLoad);
+                }
+            },
+
             populateBookSelect(bookList) {
                 const bookSelect = document.getElementById('bookSelect');
                 if (!bookSelect) return;
@@ -1680,6 +1698,7 @@
 
                 const savedBook = Storage.load('currentBook', bookList[0].bookFilename);
                 bookSelect.value = savedBook;
+                bookSelect.disabled = false;
             },
 
             async loadBook(filename) {
@@ -1689,6 +1708,7 @@
                     Storage.save('currentBook', filename); // Store the filename
                     this.populateChapters();
                 } catch (error) {
+                    console.error('Error loading book:', error);
                     const contentArea = document.getElementById('contentArea');
                     if (contentArea) {
                         contentArea.innerHTML =
