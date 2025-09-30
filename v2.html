@@ -7,6 +7,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai&family=Chakra+Petch&display=swap"
         rel="stylesheet" />
     <title>ฝึกฝน Thai</title>
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
 
     <style>
         /* Base page styling */
@@ -215,35 +216,59 @@
         }
 
         #paragraphDisplay {
-            font-size: 1.2em;
+            /*        font-size: 1.2em; */
             margin: 1em 0;
             white-space: pre-wrap;
             width: 100%;
             box-sizing: border-box;
         }
 
+        /*
         #paragraphDisplay span {
-            margin: 0 0.2em;
+                        margin: 0 0.2em; 
+        }
+*/
+        :lang(th-TH) {
+            /* Thai text specific styling */
+            font-size: larger;
+        }
+
+        :lang(fa-IR) {
+            /* English text specific styling */
+            direction: rtl;
         }
 
         .word-pair {
             display: inline-block;
             vertical-align: top;
-            margin: 0 0.2em 0.3em 0.2em;
+            margin: 0 0.5em 1em 0;
+            cursor: pointer;
         }
 
         .word-pair span[lang="th-TH"] {
             display: block;
             word-break: keep-all;
             overflow-wrap: break-word;
+            font-size: large;
         }
 
         .word-pair span[lang="en-US"] {
+            border-top: 1px solid lightskyblue;
             display: block;
             word-break: normal;
             overflow-wrap: normal;
             white-space: normal;
             margin-top: 0.1em;
+            color: rgb(5, 154, 247);
+        }
+
+        .word-pair span[lang="fa-IR"] {
+            border-top: 1px solid lightskyblue;
+            display: block;
+            word-break: keep-all;
+            overflow-wrap: break-word;
+            direction: rtl;
+            color: green;
         }
 
         /* Quiz styling */
@@ -257,7 +282,8 @@
         }
 
         .quiz-question {
-            margin: 1em 0;
+            font-size: 1.25rem;
+            margin: .1em 0;
         }
 
         .quiz-options {
@@ -709,6 +735,10 @@
                     const thPart = thParts[p] || '';
                     const enPart = enParts[p] || '';
                     const faPart = faParts[p] || '';
+
+                    // avoid creating an empty div if all parts are empty
+                    if (!thPart && !enPart && !faPart) continue;
+
                     buildLanguages(thPart, enPart, faPart, i);
 
                     if (p < maxParts - 1) {
@@ -778,7 +808,6 @@
         }
 
         /* --- Quiz --- */
-        /* --- Quiz --- */
         const Quiz = {
             data: [],
             currentQ: 0,
@@ -821,6 +850,7 @@
                 const qEl = document.createElement("div");
                 qEl.className = "quiz-question";
                 qEl.textContent = q[qLang] || "";
+                qEl.lang = q[qLang] === "th" ? "th-TH" : qLang === "en" ? "en-US" : qLang === "fa" ? "fa-IR" : "th-TH";
                 qEl.style.cursor = "pointer";
                 qEl.addEventListener("click", () => {
                     speakTextQueued(q[qLang], qLang === "th" ? "th-TH" : qLang === "en" ? "en-US" : "fa-IR");
@@ -850,6 +880,8 @@
 
                 opts.forEach(opt => {
                     const optEl = document.createElement("div");
+                    console.log(aLang);
+                    optEl.lang = aLang === "th" ? "th-TH" : opt.aLang === "en" ? "en-US" : opt.aLang === "fa" ? "fa-IR" : aLang;
                     optEl.className = "quiz-option";
                     optEl.textContent = opt;
 
@@ -878,6 +910,8 @@
 
                     optsContainer.appendChild(optEl);
                 });
+
+                applyThaiFont();
 
                 qDiv.appendChild(optsContainer);
             },
@@ -914,9 +948,9 @@
 
             /* --- Paragraph Section --- */
             const paraSec = document.createElement('section'); paraSec.id = 'paragraphSec';
-            const paraHeading = document.createElement('div'); paraHeading.className = 'quiz-heading';
-            paraHeading.textContent = 'Click Play (or click a word to hear it)';
-            paraSec.appendChild(paraHeading);
+            //            const paraHeading = document.createElement('div'); paraHeading.className = 'quiz-heading';
+            //            paraHeading.textContent = 'Click Play (or click a word to hear it)';
+            //            paraSec.appendChild(paraHeading);
 
             const displayDiv = document.createElement('div'); displayDiv.id = 'paragraphDisplay';
             paraSec.appendChild(displayDiv);
@@ -964,7 +998,6 @@
             const quizSec = document.createElement('section');
             quizSec.id = 'quizSec';
             quizSec.innerHTML = `
-<p>Multiple Choice Quiz</p>
 <div id="quiz"></div>
 <div id="quizControls">
     <div class="quiz-row quiz-row-top">
@@ -1213,7 +1246,6 @@
 
         /* --- Init SPA --- */
         (async function () { initSPA(); await populateBooks(); })();
-
 
     </script>
 
