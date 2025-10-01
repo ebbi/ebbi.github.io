@@ -200,6 +200,13 @@
                 font-size: 1rem;
                 padding: 0.2em;
             }
+
+            /* Ensure mobile dropdowns use the same font as inputs */
+            select,
+            option {
+                font-family: Arial, sans-serif !important;
+                font-size: 1em !important;
+            }
         }
 
         /* Ensure Thai font is applied to app title */
@@ -1352,6 +1359,62 @@
         body[data-theme="dark"] .settings-font-controls {
             background: rgba(102, 170, 255, 0.1);
         }
+
+        /* Font preview styling */
+        .font-preview {
+            margin-top: 0.5em;
+            padding: 0.5em;
+            border: 1px solid var(--border-light);
+            border-radius: 4px;
+            background: var(--background-light);
+            min-height: 2em;
+        }
+
+        body[data-theme="dark"] .font-preview {
+            background: #2a2a2a;
+            border-color: var(--border-dark);
+        }
+
+        /* Updated paragraph controls to prevent wrapping */
+        .paragraph-controls-row {
+            display: flex;
+            flex-wrap: nowrap;
+            align-items: center;
+            gap: 0.4em;
+            justify-content: center;
+        }
+
+        .paragraph-number-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 0 0.2em;
+        }
+
+        .paragraph-number-label {
+            font-size: 0.8em;
+            font-weight: bold;
+            color: var(--text-light);
+            margin-bottom: 0.2em;
+        }
+
+        body[data-theme="dark"] .paragraph-number-label {
+            color: var(--text-dark);
+        }
+
+        /* Mobile adjustments for paragraph controls */
+        @media (max-width: 600px) {
+            .paragraph-controls-row {
+                flex-wrap: wrap;
+                gap: 0.3em;
+            }
+
+            .paragraph-number-container {
+                order: 1;
+                width: 100%;
+                margin-top: 0.3em;
+            }
+        }
     </style>
 
 </head>
@@ -1361,15 +1424,7 @@
     <header>
         <span lang="th" id="appTitle">ฝึกฝน</span>
         <div id="headerControls">
-            <label class="header-label">
-                Thai Font:
-                <select id="thaiFont">
-                    <option value="">Default</option>
-                    <option value="Tahoma">Tahoma</option>
-                    <option value="Noto Sans Thai">Noto Sans Thai</option>
-                    <option value="Chakra Petch">Chakra Petch</option>
-                </select>
-            </label>
+            <!-- Thai Font dropdown removed as requested -->
             <button id="themeToggle" title="Toggle Day/Night">🌞</button>
             <button id="settingsBtn" title="Settings & Help">⚙️</button>
         </div>
@@ -1856,12 +1911,7 @@
 
         const FontManager = {
             init() {
-                const thaiFont = document.getElementById('thaiFont');
-                thaiFont.value = Storage.load('thaiFont', '');
-                thaiFont.addEventListener('change', (e) => {
-                    Storage.save('thaiFont', e.target.value);
-                    this.apply();
-                });
+                // No longer need to initialize the header font dropdown as it's removed
                 this.apply();
             },
 
@@ -1874,6 +1924,15 @@
                     if (font === 'Noto Sans Thai') el.classList.add('noto');
                     if (font === 'Chakra Petch') el.classList.add('chakra');
                 });
+
+                // Update font preview in settings if it exists
+                const fontPreview = document.getElementById('fontPreview');
+                if (fontPreview) {
+                    fontPreview.className = 'font-preview thai-font';
+                    if (font === 'Tahoma') fontPreview.classList.add('tahoma');
+                    if (font === 'Noto Sans Thai') fontPreview.classList.add('noto');
+                    if (font === 'Chakra Petch') fontPreview.classList.add('chakra');
+                }
             }
         };
 
@@ -1909,12 +1968,12 @@
                                     <option value="Chakra Petch">Chakra Petch</option>
                                 </select>
                             </label>
+                            <div class="font-preview" id="fontPreview">ตัวอย่างข้อความภาษาไทย (Thai Text Sample)</div>
                         </div>
                         
                         <div class="settings-section">
                             <h3>Text-to-Speech Setup</h3>
-                            <p>This app uses Text-to-Speech (TTS) to help you learn pronunciation in both Thai and English. 
-                               Please test your setup and follow the instructions if needed.</p>
+                            <p>This App uses Text To Speech.  Search in your device and your browser settings for languages and install the English and Thai language packs and enable Text To Speech.  Then try the Test TTS button for more specific help for your device.</p>
                             
                             <button id="checkTTS" class="settings-button" style="padding: 0.8em 1.5em; background: #00247D; color: white; border: none; border-radius: 4px; cursor: pointer; margin: 1em 0;">
                                 🔊 Test TTS Setup & Language Support
@@ -2854,7 +2913,7 @@
                 AppState.currentBook.chapters.forEach((chapter, index) => {
                     const option = document.createElement('option');
                     option.value = index;
-                    option.textContent = chapter.chapterTitle || `Chapter ${index + 1}`;
+                    option.textContent = chapter.chapterTitle || `Practice ${index + 1}`;
                     option.style.fontFamily = 'Arial, sans-serif'; // Ensure same font as app
                     option.style.fontSize = '1rem'; // Ensure same font size as dropdown
                     chapterSelect.appendChild(option);
@@ -2882,7 +2941,7 @@
                 currentChapter.paragraphs.forEach((paragraph, index) => {
                     const option = document.createElement('option');
                     option.value = index;
-                    option.textContent = `Paragraph ${index + 1}`;
+                    option.textContent = `Text ${index + 1}`;
                     option.style.fontFamily = 'Arial, sans-serif'; // Ensure same font as app
                     option.style.fontSize = '1rem'; // Ensure same font size as dropdown
                     paragraphSelect.appendChild(option);
@@ -2988,13 +3047,13 @@
                 return `
         <div class="selection-header">Text To Speech</div>
         
-        <details class="book-options-details">
-            <summary>Book & Language Options</summary>
+        <details class="book-options-details" id="bookOptionsDetails">
+            <summary>Topic & Language Options</summary>
             <div class="book-options-content">
                 <div id="bookSelectionControls" class="book-selection-controls">
-                    <label>Book: <select id="bookSelect"></select></label>
-                    <label>Chapter: <select id="chapterSelect"></select></label>
-                    <label>Paragraph: <select id="paragraphSelect"></select></label>
+                    <label>Topic: <select id="bookSelect"></select></label>
+                    <label>Practice: <select id="chapterSelect"></select></label>
+                    <label>Text: <select id="paragraphSelect"></select></label>
                 </div>
                 
                 <div class="language-controls">
@@ -3072,8 +3131,10 @@
                     <button id="playBtn">▶️</button>
                     <button id="pauseBtn">⏸️</button>
                     <button id="restartBtn">⏮️</button>
-                    <span class="paragraph-label">Paragraph</span>
-                    <span id="currentParagraphNumber" class="paragraph-number">1</span>
+                    <div class="paragraph-number-container">
+                        <div class="paragraph-number-label">Text</div>
+                        <span id="currentParagraphNumber" class="paragraph-number">1</span>
+                    </div>
                     <button id="prevParagraph">⬅️</button>
                     <button id="nextParagraph">➡️</button>
                 </div>
@@ -3130,21 +3191,51 @@
                 // Playback controls
                 document.getElementById('playBtn')?.addEventListener('click', () => {
                     PlaybackController.playParagraph();
+                    // Close Book & Language options when paragraph controls are used
+                    this.closeBookOptions();
                     // Ensure book selection stays visible when playback starts
                     setTimeout(() => this.ensureBookSelectionVisible(), 300);
                 });
-                document.getElementById('pauseBtn')?.addEventListener('click', () => PlaybackController.pauseParagraph());
-                document.getElementById('restartBtn')?.addEventListener('click', () => PlaybackController.restartParagraph());
-                document.getElementById('nextParagraph')?.addEventListener('click', () => NavigationController.nextParagraph());
-                document.getElementById('prevParagraph')?.addEventListener('click', () => NavigationController.previousParagraph());
+                document.getElementById('pauseBtn')?.addEventListener('click', () => {
+                    PlaybackController.pauseParagraph();
+                    this.closeBookOptions();
+                });
+                document.getElementById('restartBtn')?.addEventListener('click', () => {
+                    PlaybackController.restartParagraph();
+                    this.closeBookOptions();
+                });
+                document.getElementById('nextParagraph')?.addEventListener('click', () => {
+                    NavigationController.nextParagraph();
+                    this.closeBookOptions();
+                });
+                document.getElementById('prevParagraph')?.addEventListener('click', () => {
+                    NavigationController.previousParagraph();
+                    this.closeBookOptions();
+                });
 
                 // Quiz controls
-                document.getElementById('prevQ')?.addEventListener('click', () => QuizSystem.previousQuestion());
-                document.getElementById('nextQ')?.addEventListener('click', () => QuizSystem.nextQuestion());
-                document.getElementById('retryQuiz')?.addEventListener('click', () => QuizSystem.retry());
+                document.getElementById('prevQ')?.addEventListener('click', () => {
+                    QuizSystem.previousQuestion();
+                    this.closeBookOptions();
+                });
+                document.getElementById('nextQ')?.addEventListener('click', () => {
+                    QuizSystem.nextQuestion();
+                    this.closeBookOptions();
+                });
+                document.getElementById('retryQuiz')?.addEventListener('click', () => {
+                    QuizSystem.retry();
+                    this.closeBookOptions();
+                });
 
                 // Language settings
                 this.bindLanguageSettings();
+            },
+
+            closeBookOptions() {
+                const bookOptionsDetails = document.getElementById('bookOptionsDetails');
+                if (bookOptionsDetails) {
+                    bookOptionsDetails.open = false;
+                }
             },
 
             handleSettingChange(event) {
