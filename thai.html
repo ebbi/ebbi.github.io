@@ -114,6 +114,8 @@
         .header-label select option {
             background: var(--primary-color);
             color: white;
+            font-family: Arial, sans-serif;
+            /* Ensure same font as app */
         }
 
         /* Header icons - completely remove button styling */
@@ -1276,6 +1278,22 @@
             .book-options-details {
                 margin-bottom: 0.8em;
             }
+        }
+
+        /* Ensure select options use the same font as the app */
+        #chapterSelect option {
+            font-family: Arial, sans-serif;
+        }
+
+        /* Paragraph number display */
+        .paragraph-number {
+            font-weight: bold;
+            margin: 0 0.2em;
+            color: var(--primary-color);
+        }
+
+        body[data-theme="dark"] .paragraph-number {
+            color: var(--primary-light);
         }
     </style>
 
@@ -2796,6 +2814,7 @@
                     const option = document.createElement('option');
                     option.value = index;
                     option.textContent = chapter.chapterTitle || `Chapter ${index + 1}`;
+                    option.style.fontFamily = 'Arial, sans-serif'; // Ensure same font as app
                     chapterSelect.appendChild(option);
                 });
 
@@ -2822,6 +2841,7 @@
                     const option = document.createElement('option');
                     option.value = index;
                     option.textContent = `Paragraph ${index + 1}`;
+                    option.style.fontFamily = 'Arial, sans-serif'; // Ensure same font as app
                     paragraphSelect.appendChild(option);
                 });
 
@@ -2840,6 +2860,9 @@
                 AppState.isPlaying = false;
                 TTSManager.cancel();
 
+                // Update the paragraph number display
+                this.updateParagraphNumber();
+
                 // Ensure book selection is visible after loading new content
                 setTimeout(() => this.ensureBookSelectionVisible(), 200);
             },
@@ -2848,6 +2871,13 @@
                 const paragraph = AppState.getCurrentParagraph();
                 ParagraphRenderer.render(paragraph);
                 QuizSystem.buildFromParagraph(paragraph);
+            },
+
+            updateParagraphNumber() {
+                const paragraphNumberElement = document.getElementById('currentParagraphNumber');
+                if (paragraphNumberElement) {
+                    paragraphNumberElement.textContent = AppState.currentParagraph + 1;
+                }
             },
 
             ensureBookSelectionVisible() {
@@ -3000,6 +3030,7 @@
                     <button id="pauseBtn">⏸️</button>
                     <button id="restartBtn">⏮️</button>
                     <span class="paragraph-label">Paragraph</span>
+                    <span id="currentParagraphNumber" class="paragraph-number">1</span>
                     <button id="prevParagraph">⬅️</button>
                     <button id="nextParagraph">➡️</button>
                 </div>
