@@ -116,6 +116,8 @@
             color: white;
             font-family: Arial, sans-serif;
             /* Ensure same font as app */
+            font-size: 1rem;
+            /* Ensure same font size as dropdown */
         }
 
         /* Header icons - completely remove button styling */
@@ -568,6 +570,10 @@
 
         .quiz-row-top {
             justify-content: flex-start;
+            gap: 0.4em;
+            /* Reduced gap for mobile */
+            font-size: 0.9em;
+            /* Smaller font for quiz navigation */
         }
 
         .quiz-row-bottom {
@@ -580,6 +586,13 @@
             .quiz-row-bottom {
                 flex-direction: row;
                 align-items: center;
+            }
+
+            .quiz-row-top {
+                gap: 0.6em;
+                /* Restore normal gap on desktop */
+                font-size: 1em;
+                /* Normal font on desktop */
             }
         }
 
@@ -601,7 +614,8 @@
             font-weight: bold;
             font-size: 1em;
             color: var(--text-light);
-            margin: 0 0.2em;
+            margin: 0 0.1em;
+            /* Reduced margin */
         }
 
         body[data-theme="dark"] .paragraph-label {
@@ -612,7 +626,8 @@
         .paragraph-controls-row {
             display: flex;
             flex-wrap: wrap;
-            gap: 0.5em;
+            gap: 0.4em;
+            /* Reduced gap for mobile */
             align-items: center;
             justify-content: center;
         }
@@ -910,7 +925,8 @@
         /* Mobile adjustments for the new layout */
         @media (max-width: 600px) {
             .paragraph-controls-row {
-                gap: 0.4em;
+                gap: 0.3em;
+                /* Further reduced gap for mobile */
             }
 
             /* Make Language Options details inline */
@@ -1283,17 +1299,58 @@
         /* Ensure select options use the same font as the app */
         #chapterSelect option {
             font-family: Arial, sans-serif;
+            font-size: 1rem;
+            /* Ensure same font size as dropdown */
         }
 
         /* Paragraph number display */
         .paragraph-number {
             font-weight: bold;
-            margin: 0 0.2em;
+            margin: 0 0.1em;
+            /* Reduced margin */
             color: var(--primary-color);
+            font-size: 0.9em;
+            /* Smaller font for mobile */
         }
 
         body[data-theme="dark"] .paragraph-number {
             color: var(--primary-light);
+        }
+
+        @media (min-width: 600px) {
+            .paragraph-number {
+                font-size: 1em;
+                /* Normal font on desktop */
+            }
+        }
+
+        /* Quiz score styling to prevent wrapping */
+        #score {
+            white-space: nowrap;
+            font-size: 0.9em;
+            /* Smaller font for mobile */
+        }
+
+        @media (min-width: 600px) {
+            #score {
+                font-size: 1em;
+                /* Normal font on desktop */
+            }
+        }
+
+        /* Settings page layout improvements */
+        .settings-font-controls {
+            display: flex;
+            align-items: center;
+            gap: 0.5em;
+            margin-bottom: 1em;
+            padding: 0.5em;
+            background: rgba(0, 36, 125, 0.05);
+            border-radius: 4px;
+        }
+
+        body[data-theme="dark"] .settings-font-controls {
+            background: rgba(102, 170, 255, 0.1);
         }
     </style>
 
@@ -1457,6 +1514,7 @@
                     return this.getDesktopSetupInstructions(isChrome, isSafari, isFirefox, isEdge);
                 }
             },
+
             getMobileSetupInstructions(isChrome, isSafari, isFirefox) {
                 let instructions = '';
 
@@ -1465,15 +1523,19 @@
             <div class="tts-setup-steps">
                 <h4>Android Chrome Setup:</h4>
                 <div class="tts-step">
-                    <strong>1. Install Language Packs:</strong>
-                    <p>Go to Settings → Accessibility → Text-to-speech output → Google Text-to-speech engine → Install voice data</p>
+                    <strong>1. Enable TTS in Accessibility Settings:</strong>
+                    <p>Go to Settings → Accessibility → Text-to-speech output → Enable "Google Text-to-speech engine"</p>
                 </div>
                 <div class="tts-step">
-                    <strong>2. Download Languages:</strong>
+                    <strong>2. Install Language Packs:</strong>
+                    <p>In Text-to-speech output settings → Google Text-to-speech engine → Install voice data</p>
+                </div>
+                <div class="tts-step">
+                    <strong>3. Download Languages:</strong>
                     <p>Install English, Thai, and Persian language packs for full functionality</p>
                 </div>
                 <div class="tts-step">
-                    <strong>3. Enable in Chrome:</strong>
+                    <strong>4. Enable in Chrome:</strong>
                     <p>Chrome Settings → Accessibility → Enable "Simplified view for open pages"</p>
                 </div>
             </div>
@@ -1483,8 +1545,8 @@
             <div class="tts-setup-steps">
                 <h4>iOS Safari Setup:</h4>
                 <div class="tts-step">
-                    <strong>1. Enable Spoken Content:</strong>
-                    <p>Settings → Accessibility → Spoken Content → Enable "Speak Selection"</p>
+                    <strong>1. Enable Spoken Content in Accessibility:</strong>
+                    <p>Settings → Accessibility → Spoken Content → Enable "Speak Selection" and "Speak Screen"</p>
                 </div>
                 <div class="tts-step">
                     <strong>2. Download Voices:</strong>
@@ -1501,16 +1563,16 @@
             <div class="tts-setup-steps">
                 <h4>Android Firefox Setup:</h4>
                 <div class="tts-step">
-                    <strong>1. Enable TTS in Firefox:</strong>
-                    <p>Firefox may use the system TTS engine. Ensure your device has language packs installed.</p>
+                    <strong>1. Enable TTS in System Settings:</strong>
+                    <p>Go to Android Settings → Accessibility → Text-to-speech output → Enable system TTS</p>
                 </div>
                 <div class="tts-step">
                     <strong>2. Install System Language Packs:</strong>
-                    <p>Go to Android Settings → Accessibility → Text-to-speech output → Install voices for English, Thai, and Persian</p>
+                    <p>In Text-to-speech output settings → Install voices for English, Thai, and Persian</p>
                 </div>
                 <div class="tts-step">
                     <strong>3. Set Default TTS Engine:</strong>
-                    <p>In Text-to-speech output settings, set Google Text-to-speech as default and install required languages</p>
+                    <p>In Text-to-speech output settings, set Google Text-to-speech as default</p>
                 </div>
             </div>
         `;
@@ -1581,12 +1643,16 @@
             <div class="tts-setup-steps">
                 <h4>Safari Setup:</h4>
                 <div class="tts-step">
-                    <strong>1. Enable Speech in macOS:</strong>
-                    <p>System Preferences → Accessibility → Speech → Enable "Speak selected text"</p>
+                    <strong>1. Enable Speech in macOS Accessibility:</strong>
+                    <p>System Preferences → Accessibility → Speech → Enable "Speak selected text when the key is pressed"</p>
                 </div>
                 <div class="tts-step">
                     <strong>2. Download Voices:</strong>
                     <p>System Preferences → Accessibility → Speech → System Voice → Customize → Download English, Thai, and Persian</p>
+                </div>
+                <div class="tts-step">
+                    <strong>3. Test TTS:</strong>
+                    <p>Select text in any app and press Option+Esc to test speech</p>
                 </div>
             </div>
         `;
@@ -1595,12 +1661,16 @@
             <div class="tts-setup-steps">
                 <h4>Edge Browser Setup:</h4>
                 <div class="tts-step">
-                    <strong>1. System TTS Setup:</strong>
-                    <p>Edge uses Windows TTS. Install voices via Settings → Time & Language → Language & Region</p>
+                    <strong>1. Enable TTS in Windows Settings:</strong>
+                    <p>Settings → Ease of Access → Narrator → Enable Narrator for basic TTS functionality</p>
                 </div>
                 <div class="tts-step">
-                    <strong>2. Install Required Languages:</strong>
-                    <p>Ensure your system has English, Thai, and Persian TTS voices installed</p>
+                    <strong>2. Install Language Packs:</strong>
+                    <p>Settings → Time & Language → Language & Region → Add languages for English, Thai, and Persian</p>
+                </div>
+                <div class="tts-step">
+                    <strong>3. Install TTS Voices:</strong>
+                    <p>Download TTS voices through Windows Speech settings for each language</p>
                 </div>
             </div>
         `;
@@ -1608,112 +1678,18 @@
                     // Fallback for unknown browsers
                     instructions = `
             <div class="tts-setup-steps">
-                <h4>General Raspberry Pi TTS Setup:</h4>
+                <h4>General TTS Setup:</h4>
                 <div class="tts-step">
-                    <strong>1. Install Basic TTS:</strong>
-                    <p><code>sudo apt update && sudo apt install espeak espeak-data</code></p>
+                    <strong>1. Check System TTS Settings:</strong>
+                    <p>Ensure Text-to-Speech is enabled in your operating system's Accessibility settings</p>
                 </div>
                 <div class="tts-step">
-                    <strong>2. Test Audio System:</strong>
-                    <p><code>sudo apt install alsa-utils</code><br>
-                       <code>speaker-test -t wav -c 2</code></p>
+                    <strong>2. Install Language Support:</strong>
+                    <p>Install English, Thai, and Persian language packs through your system settings</p>
                 </div>
                 <div class="tts-step">
-                    <strong>3. Test TTS in Terminal:</strong>
-                    <p><code>espeak "Hello world"</code></p>
-                </div>
-                <div class="tts-step">
-                    <strong>4. Browser Recommendations:</strong>
-                    <p>For better TTS on Raspberry Pi, use Chromium browser instead of Firefox</p>
-                </div>
-            </div>
-        `;
-                }
-
-                return instructions;
-            },
-
-            getMobileSetupInstructions(isChrome, isSafari) {
-                let instructions = '';
-
-                if (isChrome) {
-                    instructions = `
-            <div class="tts-setup-steps">
-                <h4>Android Chrome Setup:</h4>
-                <div class="tts-step">
-                    <strong>1. Install Language Packs:</strong>
-                    <p>Go to Settings → Accessibility → Text-to-speech output → Google Text-to-speech engine → Install voice data</p>
-                </div>
-                <div class="tts-step">
-                    <strong>2. Download Languages:</strong>
-                    <p>Install English, Thai, and Persian language packs for full functionality</p>
-                </div>
-                <div class="tts-step">
-                    <strong>3. Enable in Chrome:</strong>
-                    <p>Chrome Settings → Accessibility → Enable "Simplified view for open pages"</p>
-                </div>
-            </div>
-        `;
-                } else if (isSafari) {
-                    instructions = `
-            <div class="tts-setup-steps">
-                <h4>iOS Safari Setup:</h4>
-                <div class="tts-step">
-                    <strong>1. Enable Spoken Content:</strong>
-                    <p>Settings → Accessibility → Spoken Content → Enable "Speak Selection"</p>
-                </div>
-                <div class="tts-step">
-                    <strong>2. Download Voices:</strong>
-                    <p>In Spoken Content → Voices → Download English, Thai, and Persian voices</p>
-                </div>
-                <div class="tts-step">
-                    <strong>3. Test in Safari:</strong>
-                    <p>Select any text on a webpage and tap "Speak" to test</p>
-                </div>
-            </div>
-        `;
-                }
-
-                return instructions;
-            },
-
-            getDesktopSetupInstructions(isChrome, isSafari) {
-                let instructions = '';
-
-                if (isChrome) {
-                    instructions = `
-            <div class="tts-setup-steps">
-                <h4>Chrome Desktop Setup:</h4>
-                <div class="tts-step">
-                    <strong>1. Check System TTS:</strong>
-                    <p>Windows: Settings → Ease of Access → Narrator<br>
-                       Mac: System Preferences → Accessibility → Speech</p>
-                </div>
-                <div class="tts-step">
-                    <strong>2. Install Languages:</strong>
-                    <p>Download English, Thai, and Persian TTS voices through your operating system</p>
-                </div>
-                <div class="tts-step">
-                    <strong>3. Chrome Permissions:</strong>
-                    <p>Ensure Chrome has permission to use microphone/TTS features</p>
-                </div>
-            </div>
-        `;
-                } else if (isSafari) {
-                    instructions = `
-            <div class="tts-setup-steps">
-                <h4>Safari Desktop Setup:</h4>
-                <div class="tts-step">
-                    <strong>1. Enable Speech in macOS:</strong>
-                    <p>System Preferences → Accessibility → Speech → Enable "Speak selected text"</p>
-                </div>
-                <div class="tts-step">
-                    <strong>2. Download Voices:</strong>
-                    <p>System Preferences → Accessibility → Speech → System Voice → Customize → Download English, Thai, and Persian</p>
-                </div>
-                <div class="tts-step">
-                    <strong>3. Safari Settings:</strong>
-                    <p>Safari → Preferences → Advanced → Accessibility → Never use font sizes smaller than 10px</p>
+                    <strong>3. Browser Permissions:</strong>
+                    <p>Ensure your browser has permission to use audio and TTS features</p>
                 </div>
             </div>
         `;
@@ -1923,6 +1899,18 @@
                     </div>
                     
                     <div class="settings-content" style="padding: 1em;">
+                        <div class="settings-font-controls">
+                            <label style="margin: 0;">
+                                Thai Font:
+                                <select id="settingsThaiFont">
+                                    <option value="">Default</option>
+                                    <option value="Tahoma">Tahoma</option>
+                                    <option value="Noto Sans Thai">Noto Sans Thai</option>
+                                    <option value="Chakra Petch">Chakra Petch</option>
+                                </select>
+                            </label>
+                        </div>
+                        
                         <div class="settings-section">
                             <h3>Text-to-Speech Setup</h3>
                             <p>This app uses Text-to-Speech (TTS) to help you learn pronunciation in both Thai and English. 
@@ -1947,6 +1935,16 @@
                 document.getElementById('closeX').addEventListener('click', this.close);
                 document.getElementById('closeBtn').addEventListener('click', this.close);
                 document.getElementById('checkTTS').addEventListener('click', () => this.performTTSCheck());
+
+                // Settings page font control
+                const settingsThaiFont = document.getElementById('settingsThaiFont');
+                if (settingsThaiFont) {
+                    settingsThaiFont.value = Storage.load('thaiFont', '');
+                    settingsThaiFont.addEventListener('change', (e) => {
+                        Storage.save('thaiFont', e.target.value);
+                        FontManager.apply();
+                    });
+                }
             },
 
             close() {
@@ -2690,13 +2688,35 @@
             },
 
             nextParagraph() {
-                const max = AppState.currentBook?.chapters?.[AppState.currentChapter]?.paragraphs?.length || 0;
-                if (AppState.currentParagraph < max - 1) {
+                const currentChapter = AppState.currentBook?.chapters?.[AppState.currentChapter];
+                const maxParagraphs = currentChapter?.paragraphs?.length || 0;
+
+                if (AppState.currentParagraph < maxParagraphs - 1) {
+                    // Move to next paragraph in current chapter
                     AppState.currentParagraph++;
                     if (this.paragraphSelect) {
                         this.paragraphSelect.value = AppState.currentParagraph;
                     }
                     AppController.loadParagraph();
+                } else {
+                    // Move to next chapter, first paragraph
+                    const maxChapters = AppState.currentBook?.chapters?.length || 0;
+                    if (AppState.currentChapter < maxChapters - 1) {
+                        AppState.currentChapter++;
+                        AppState.currentParagraph = 0;
+                        if (this.chapterSelect) {
+                            this.chapterSelect.value = AppState.currentChapter;
+                        }
+                        AppController.populateParagraphs();
+                    } else {
+                        // Already at last paragraph of last chapter - wrap to first chapter
+                        AppState.currentChapter = 0;
+                        AppState.currentParagraph = 0;
+                        if (this.chapterSelect) {
+                            this.chapterSelect.value = AppState.currentChapter;
+                        }
+                        AppController.populateParagraphs();
+                    }
                 }
             },
 
@@ -2707,6 +2727,27 @@
                         this.paragraphSelect.value = AppState.currentParagraph;
                     }
                     AppController.loadParagraph();
+                } else {
+                    // Move to previous chapter, last paragraph
+                    if (AppState.currentChapter > 0) {
+                        AppState.currentChapter--;
+                        const prevChapter = AppState.currentBook?.chapters?.[AppState.currentChapter];
+                        AppState.currentParagraph = (prevChapter?.paragraphs?.length || 1) - 1;
+                        if (this.chapterSelect) {
+                            this.chapterSelect.value = AppState.currentChapter;
+                        }
+                        AppController.populateParagraphs();
+                    } else {
+                        // Already at first paragraph of first chapter - wrap to last chapter
+                        const maxChapters = AppState.currentBook?.chapters?.length || 0;
+                        AppState.currentChapter = maxChapters - 1;
+                        const lastChapter = AppState.currentBook?.chapters?.[AppState.currentChapter];
+                        AppState.currentParagraph = (lastChapter?.paragraphs?.length || 1) - 1;
+                        if (this.chapterSelect) {
+                            this.chapterSelect.value = AppState.currentChapter;
+                        }
+                        AppController.populateParagraphs();
+                    }
                 }
             }
         };
@@ -2815,6 +2856,7 @@
                     option.value = index;
                     option.textContent = chapter.chapterTitle || `Chapter ${index + 1}`;
                     option.style.fontFamily = 'Arial, sans-serif'; // Ensure same font as app
+                    option.style.fontSize = '1rem'; // Ensure same font size as dropdown
                     chapterSelect.appendChild(option);
                 });
 
@@ -2842,6 +2884,7 @@
                     option.value = index;
                     option.textContent = `Paragraph ${index + 1}`;
                     option.style.fontFamily = 'Arial, sans-serif'; // Ensure same font as app
+                    option.style.fontSize = '1rem'; // Ensure same font size as dropdown
                     paragraphSelect.appendChild(option);
                 });
 
@@ -2943,7 +2986,7 @@
 
             getMainHTML() {
                 return `
-        <div class="selection-header">Select Languages and Books to Speak Out</div>
+        <div class="selection-header">Text To Speech</div>
         
         <details class="book-options-details">
             <summary>Book & Language Options</summary>
