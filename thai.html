@@ -1201,6 +1201,82 @@
         #paragraphSelect {
             scroll-margin-top: 120px;
         }
+
+        /* New styles for refactored layout */
+        .selection-header {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin: 0.5em 0 0.5em 0;
+            color: var(--primary-color);
+            text-align: center;
+        }
+
+        body[data-theme="dark"] .selection-header {
+            color: var(--primary-light);
+        }
+
+        .book-options-details {
+            margin-bottom: 1em;
+        }
+
+        .book-options-details summary {
+            font-weight: bold;
+            padding: 0.5em;
+            background: rgba(0, 36, 125, 0.05);
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        body[data-theme="dark"] .book-options-details summary {
+            background: rgba(102, 170, 255, 0.1);
+        }
+
+        .book-options-details[open] summary {
+            border-radius: 4px 4px 0 0;
+        }
+
+        .book-options-content {
+            padding: 0.5em;
+            background: rgba(0, 36, 125, 0.02);
+            border-radius: 0 0 4px 4px;
+        }
+
+        body[data-theme="dark"] .book-options-content {
+            background: rgba(102, 170, 255, 0.05);
+        }
+
+        .book-selection-controls {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5em;
+        }
+
+        @media (min-width: 600px) {
+            .book-selection-controls {
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-between;
+            }
+        }
+
+        .book-selection-controls label {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 0.2em;
+        }
+
+        /* Ensure proper spacing for mobile */
+        @media (max-width: 600px) {
+            .selection-header {
+                font-size: 1.1rem;
+                margin: 0.3em 0;
+            }
+
+            .book-options-details {
+                margin-bottom: 0.8em;
+            }
+        }
     </style>
 
 </head>
@@ -2837,14 +2913,86 @@
 
             getMainHTML() {
                 return `
-        <section id="bookSelectionControls" class="controls">
-            <label>Book: <select id="bookSelect"></select></label>
-            <label>Chapter: <select id="chapterSelect"></select></label>
-            <label>Paragraph: <select id="paragraphSelect"></select></label>
-        </section>
+        <div class="selection-header">Select Languages and Books to Speak Out</div>
+        
+        <details class="book-options-details">
+            <summary>Book & Language Options</summary>
+            <div class="book-options-content">
+                <div id="bookSelectionControls" class="book-selection-controls">
+                    <label>Book: <select id="bookSelect"></select></label>
+                    <label>Chapter: <select id="chapterSelect"></select></label>
+                    <label>Paragraph: <select id="paragraphSelect"></select></label>
+                </div>
+                
+                <div class="language-controls">
+                    <details>
+                        <summary>Language Options</summary>
+                        <div class="language-controls-content">
+                            <!-- Row 1: Language Titles -->
+                            <div class="language-header-row">
+                                <div class="control-type"></div>
+                                <div class="language-checkboxes">
+                                    <div class="language-checkbox-group">
+                                        <div class="language-title">Thai</div>
+                                    </div>
+                                    <div class="language-checkbox-group">
+                                        <div class="language-title">Persian</div>
+                                    </div>
+                                    <div class="language-checkbox-group">
+                                        <div class="language-title">English</div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Row 2: Display Checkboxes -->
+                            <div class="language-controls-row">
+                                <div class="control-type">Display</div>
+                                <div class="language-checkboxes">
+                                    <div class="language-checkbox-group">
+                                        <label><input type="checkbox" id="displayThai" checked></label>
+                                    </div>
+                                    <div class="language-checkbox-group">
+                                        <label><input type="checkbox" id="displayPersian"></label>
+                                    </div>
+                                    <div class="language-checkbox-group">
+                                        <label><input type="checkbox" id="displayEnglish"></label>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Row 3: Speak Checkboxes -->
+                            <div class="language-controls-row">
+                                <div class="control-type">Speak</div>
+                                <div class="language-checkboxes">
+                                    <div class="language-checkbox-group">
+                                        <label><input type="checkbox" id="speakThai" checked></label>
+                                    </div>
+                                    <div class="language-checkbox-group">
+                                        <label><input type="checkbox" id="speakPersian"></label>
+                                    </div>
+                                    <div class="language-checkbox-group">
+                                        <label><input type="checkbox" id="speakEnglish"></label>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Row 4: Reading Delay -->
+                            <div class="language-controls-row">
+                                <div class="control-type">Reading delay (secs)</div>
+                                <div class="language-checkboxes">
+                                    <div class="language-checkbox-group" style="flex: 1;">
+                                        <input type="number" id="playbackDelay" value="0.5" min="0.5" max="5.0" step="1.0">
+                                    </div>
+                                    <div class="language-checkbox-group" style="flex: 0;"></div>
+                                    <div class="language-checkbox-group" style="flex: 0;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </details>
+                </div>
+            </div>
+        </details>
         
         <section id="paragraphSec">
-            <h3>Paragraph Content</h3>
             <div id="paragraphDisplay"></div>
             <div id="paragraphControls" class="controls">
                 <div class="paragraph-controls-row">
@@ -2854,71 +3002,6 @@
                     <span class="paragraph-label">Paragraph</span>
                     <button id="prevParagraph">⬅️</button>
                     <button id="nextParagraph">➡️</button>
-                    <div class="language-controls">
-                        <details>
-                            <summary>Language Options</summary>
-                            <div class="language-controls-content">
-                                <!-- Row 1: Language Titles -->
-                                <div class="language-header-row">
-                                    <div class="control-type"></div>
-                                    <div class="language-checkboxes">
-                                        <div class="language-checkbox-group">
-                                            <div class="language-title">Thai</div>
-                                        </div>
-                                        <div class="language-checkbox-group">
-                                            <div class="language-title">Persian</div>
-                                        </div>
-                                        <div class="language-checkbox-group">
-                                            <div class="language-title">English</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                                <!-- Row 2: Display Checkboxes -->
-                                <div class="language-controls-row">
-                                    <div class="control-type">Display</div>
-                                    <div class="language-checkboxes">
-                                        <div class="language-checkbox-group">
-                                            <label><input type="checkbox" id="displayThai" checked></label>
-                                        </div>
-                                        <div class="language-checkbox-group">
-                                            <label><input type="checkbox" id="displayPersian"></label>
-                                        </div>
-                                        <div class="language-checkbox-group">
-                                            <label><input type="checkbox" id="displayEnglish"></label>
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                                <!-- Row 3: Speak Checkboxes -->
-                                <div class="language-controls-row">
-                                    <div class="control-type">Speak</div>
-                                    <div class="language-checkboxes">
-                                        <div class="language-checkbox-group">
-                                            <label><input type="checkbox" id="speakThai" checked></label>
-                                        </div>
-                                        <div class="language-checkbox-group">
-                                            <label><input type="checkbox" id="speakPersian"></label>
-                                        </div>
-                                        <div class="language-checkbox-group">
-                                            <label><input type="checkbox" id="speakEnglish"></label>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- Row 4: Reading Delay -->
-                                <div class="language-controls-row">
-                                    <div class="control-type">Reading delay (secs)</div>
-                                    <div class="language-checkboxes">
-                                        <div class="language-checkbox-group" style="flex: 1;">
-                                            <input type="number" id="playbackDelay" value="0.5" min="0.5" max="5.0" step="1.0">
-                                        </div>
-                                        <div class="language-checkbox-group" style="flex: 0;"></div>
-                                        <div class="language-checkbox-group" style="flex: 0;"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </details>
-                    </div>
                 </div>
             </div>
         </section>
