@@ -433,7 +433,7 @@
             color: black;
         }
 
-        #paragraphDisplay {
+        #exampleDisplay {
             margin: 0.5em 0 1em 0;
             white-space: pre-wrap;
             width: 100%;
@@ -449,7 +449,7 @@
             scroll-margin-top: 100px;
         }
 
-        body[data-theme="dark"] #paragraphDisplay {
+        body[data-theme="dark"] #exampleDisplay {
             background: #2a2a2a;
             border-color: var(--border-dark);
         }
@@ -609,15 +609,15 @@
             gap: 0.4em 0.8em;
         }
 
-        /* Paragraph controls responsive layout */
-        #paragraphControls {
+        /* Example controls responsive layout */
+        #exampleControls {
             display: flex;
             flex-direction: column;
             gap: 0.5em;
         }
 
-        /* Paragraph label styling */
-        .paragraph-label {
+        /* Example label styling */
+        .example-label {
             font-weight: bold;
             font-size: 1em;
             color: var(--text-light);
@@ -625,12 +625,12 @@
             /* Reduced margin */
         }
 
-        body[data-theme="dark"] .paragraph-label {
+        body[data-theme="dark"] .example-label {
             color: var(--text-dark);
         }
 
-        /* Updated paragraph controls layout */
-        .paragraph-controls-row {
+        /* Updated example controls layout */
+        .example-controls-row {
             display: flex;
             flex-wrap: wrap;
             gap: 0.4em;
@@ -931,18 +931,18 @@
 
         /* Mobile adjustments for the new layout */
         @media (max-width: 600px) {
-            .paragraph-controls-row {
+            .example-controls-row {
                 gap: 0.3em;
                 /* Further reduced gap for mobile */
             }
 
             /* Make Language Options details inline */
-            .paragraph-controls-row .language-controls {
+            .example-controls-row .language-controls {
                 display: inline-block;
                 margin: 0;
             }
 
-            .paragraph-controls-row .language-controls {
+            .example-controls-row .language-controls {
                 margin-top: 0.3em;
             }
 
@@ -974,7 +974,7 @@
                 scroll-padding-top: 100px;
             }
 
-            #paragraphDisplay {
+            #exampleDisplay {
                 max-height: 35vh;
                 padding: 0.8em;
                 scroll-margin-top: 80px;
@@ -1032,7 +1032,7 @@
                 margin: 0 0.5em 1em 0;
             }
 
-            #paragraphDisplay {
+            #exampleDisplay {
                 max-height: 50vh;
             }
         }
@@ -1062,7 +1062,7 @@
         }
 
         /* Selection controls styling */
-        #bookSelectionControls {
+        #topicSelectionControls {
             background: rgba(0, 36, 125, 0.05);
             padding: 1em;
             border-radius: 8px;
@@ -1075,7 +1075,7 @@
             margin-top: 0.5em;
         }
 
-        body[data-theme="dark"] #bookSelectionControls {
+        body[data-theme="dark"] #topicSelectionControls {
             background: rgba(102, 170, 255, 0.1);
             border-color: var(--border-dark);
         }
@@ -1189,28 +1189,28 @@
 
         /* Scrollbar styling */
         .content-area::-webkit-scrollbar,
-        #paragraphDisplay::-webkit-scrollbar {
+        #exampleDisplay::-webkit-scrollbar {
             width: 8px;
         }
 
         .content-area::-webkit-scrollbar-track,
-        #paragraphDisplay::-webkit-scrollbar-track {
+        #exampleDisplay::-webkit-scrollbar-track {
             background: var(--background-light);
         }
 
         .content-area::-webkit-scrollbar-thumb,
-        #paragraphDisplay::-webkit-scrollbar-thumb {
+        #exampleDisplay::-webkit-scrollbar-thumb {
             background: var(--border-light);
             border-radius: 4px;
         }
 
         body[data-theme="dark"] .content-area::-webkit-scrollbar-track,
-        body[data-theme="dark"] #paragraphDisplay::-webkit-scrollbar-track {
+        body[data-theme="dark"] #exampleDisplay::-webkit-scrollbar-track {
             background: var(--background-dark);
         }
 
         body[data-theme="dark"] .content-area::-webkit-scrollbar-thumb,
-        body[data-theme="dark"] #paragraphDisplay::-webkit-scrollbar-thumb {
+        body[data-theme="dark"] #exampleDisplay::-webkit-scrollbar-thumb {
             background: var(--border-dark);
         }
 
@@ -1221,9 +1221,9 @@
         }
 
         /* Add specific scroll margin for select elements */
-        #bookSelect,
-        #chapterSelect,
-        #paragraphSelect {
+        #topicSelect,
+        #titleSelect,
+        #exampleSelect {
             scroll-margin-top: 120px;
         }
 
@@ -1240,11 +1240,11 @@
             color: var(--primary-light);
         }
 
-        .book-options-details {
+        .topic-options-details {
             margin-bottom: 1em;
         }
 
-        .book-options-details summary {
+        .topic-options-details summary {
             font-weight: bold;
             padding: 0.5em;
             background: rgba(0, 36, 125, 0.05);
@@ -1252,43 +1252,56 @@
             cursor: pointer;
         }
 
-        body[data-theme="dark"] .book-options-details summary {
+        body[data-theme="dark"] .topic-options-details summary {
             background: rgba(102, 170, 255, 0.1);
         }
 
-        .book-options-details[open] summary {
+        .topic-options-details[open] summary {
             border-radius: 4px 4px 0 0;
         }
 
-        .book-options-content {
+        .topic-options-content {
             padding: 0.5em;
             background: rgba(0, 36, 125, 0.02);
             border-radius: 0 0 4px 4px;
         }
 
-        body[data-theme="dark"] .book-options-content {
+        body[data-theme="dark"] .topic-options-content {
             background: rgba(102, 170, 255, 0.05);
         }
 
-        .book-selection-controls {
+        /* Updated topic selection controls */
+        .topic-selection-controls {
             display: flex;
             flex-direction: column;
+            gap: 0.8em;
+        }
+
+        .topic-selection-controls label {
+            display: flex;
+            align-items: center;
             gap: 0.5em;
+            font-weight: bold;
+        }
+
+        .topic-selection-controls select {
+            flex: 1;
+            width: 100%;
         }
 
         @media (min-width: 600px) {
-            .book-selection-controls {
+            .topic-selection-controls {
                 flex-direction: row;
                 align-items: center;
                 justify-content: space-between;
+                gap: 1em;
             }
-        }
 
-        .book-selection-controls label {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            gap: 0.2em;
+            .topic-selection-controls label {
+                flex: 1;
+                flex-direction: row;
+                align-items: center;
+            }
         }
 
         /* Ensure proper spacing for mobile */
@@ -1298,20 +1311,30 @@
                 margin: 0.3em 0;
             }
 
-            .book-options-details {
+            .topic-options-details {
                 margin-bottom: 0.8em;
+            }
+
+            .topic-selection-controls {
+                gap: 0.6em;
+            }
+
+            .topic-selection-controls label {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.2em;
             }
         }
 
         /* Ensure select options use the same font as the app */
-        #chapterSelect option {
+        #titleSelect option {
             font-family: Arial, sans-serif;
             font-size: 1rem;
             /* Ensure same font size as dropdown */
         }
 
-        /* Paragraph number display */
-        .paragraph-number {
+        /* Example number display */
+        .example-number {
             font-weight: bold;
             margin: 0 0.1em;
             /* Reduced margin */
@@ -1320,12 +1343,12 @@
             /* Smaller font for mobile */
         }
 
-        body[data-theme="dark"] .paragraph-number {
+        body[data-theme="dark"] .example-number {
             color: var(--primary-light);
         }
 
         @media (min-width: 600px) {
-            .paragraph-number {
+            .example-number {
                 font-size: 1em;
                 /* Normal font on desktop */
             }
@@ -1334,15 +1357,19 @@
         /* Quiz score styling to prevent wrapping */
         #score {
             white-space: nowrap;
-            font-size: 0.9em;
-            /* Smaller font for mobile */
+            font-size: 1em;
+            font-weight: bold;
+            color: var(--primary-color);
         }
 
-        @media (min-width: 600px) {
-            #score {
-                font-size: 1em;
-                /* Normal font on desktop */
-            }
+        body[data-theme="dark"] #score {
+            color: var(--primary-light);
+        }
+
+        /* Quiz checkbox styling */
+        #incorrectOnly {
+            transform: scale(1.1);
+            margin-right: 0.3em;
         }
 
         /* Settings page layout improvements */
@@ -1375,8 +1402,8 @@
             border-color: var(--border-dark);
         }
 
-        /* Updated paragraph controls to prevent wrapping */
-        .paragraph-controls-row {
+        /* Updated example controls to prevent wrapping */
+        .example-controls-row {
             display: flex;
             flex-wrap: nowrap;
             align-items: center;
@@ -1384,35 +1411,37 @@
             justify-content: center;
         }
 
-        .paragraph-number-container {
+        /* Updated example number container for inline display on all devices */
+        .example-number-container {
             display: flex;
-            flex-direction: column;
             align-items: center;
             margin: 0 0.2em;
+            gap: 0.2em;
         }
 
-        .paragraph-number-label {
-            font-size: 0.8em;
+        .example-number-label {
+            font-size: 0.9em;
             font-weight: bold;
             color: var(--text-light);
-            margin-bottom: 0.2em;
+            white-space: nowrap;
         }
 
-        body[data-theme="dark"] .paragraph-number-label {
+        body[data-theme="dark"] .example-number-label {
             color: var(--text-dark);
         }
 
-        /* Mobile adjustments for paragraph controls */
+        /* Mobile adjustments for example controls */
         @media (max-width: 600px) {
-            .paragraph-controls-row {
+            .example-controls-row {
                 flex-wrap: wrap;
                 gap: 0.3em;
             }
 
-            .paragraph-number-container {
-                order: 1;
-                width: 100%;
-                margin-top: 0.3em;
+            .example-number-container {
+                order: 0;
+                width: auto;
+                margin-top: 0;
+                justify-content: center;
             }
         }
     </style>
@@ -1866,27 +1895,27 @@
 
         // ========== APPLICATION STATE ==========
         const AppState = {
-            books: [],
-            currentBook: null,
-            currentChapter: 0,
-            currentParagraph: 0,
+            topics: [],
+            currentTopic: null,
+            currentTitle: 0,
+            currentExample: 0,
             isPlaying: false,
             currentWordIndex: 0,
             lastHighlightedIndex: null,
 
             initialize() {
-                this.currentBook = Storage.load('currentBook', '');
-                this.currentChapter = Storage.loadInt('currentChapter', 0);
-                this.currentParagraph = Storage.loadInt('currentParagraph', 0);
+                this.currentTopic = Storage.load('currentTopic', '');
+                this.currentTitle = Storage.loadInt('currentTitle', 0);
+                this.currentExample = Storage.loadInt('currentExample', 0);
             },
 
             saveNavigation() {
-                Storage.save('currentChapter', this.currentChapter);
-                Storage.save('currentParagraph', this.currentParagraph);
+                Storage.save('currentTitle', this.currentTitle);
+                Storage.save('currentExample', this.currentExample);
             },
 
-            getCurrentParagraph() {
-                return this.currentBook?.chapters?.[this.currentChapter]?.paragraphs?.[this.currentParagraph] || [];
+            getCurrentExample() {
+                return this.currentTopic?.titles?.[this.currentTitle]?.examples?.[this.currentExample] || [];
             }
         };
 
@@ -2019,8 +2048,8 @@
                 AppController.bindUIElements();
                 AppController.restoreSettings();
 
-                // Re-populate the book list and restore current selection
-                AppController.reloadBookList();
+                // Re-populate the topic list and restore current selection
+                AppController.reloadTopicList();
             },
 
             showInitialTTSStatus() {
@@ -2129,49 +2158,65 @@
             const result = await TTSManager.testLanguage(lang, text);
             alert(`${languageName} TTS Test: ${result.success ? 'SUCCESS' : 'FAILED'}\n${result.success ? 'Voice is working properly' : 'Error: ' + result.error}`);
         };
-        // ========== BOOK MANAGEMENT ==========
-        const BookManager = {
-            async loadBookList() {
+
+        // ========== TOPIC MANAGEMENT ==========
+        const TopicManager = {
+            async loadTopicList() {
                 try {
-                    const res = await fetch('/assets/books/bookList.json');
+                    const res = await fetch('/assets/topics/topicList.json');
                     if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
-                    return await res.json();
+                    const topicList = await res.json();
+                    return topicList.map(topic => ({
+                        topicFilename: topic.topicFilename,
+                        topic: topic.topic,
+                        ...topic
+                    }));
                 } catch (error) {
-                    console.error('Error loading book list:', error);
+                    console.error('Error loading topic list:', error);
                     return [];
                 }
             },
 
-            async loadBook(filename) {
+            async loadTopic(filename) {
                 try {
-                    const res = await fetch(`/assets/books/${filename}`);
+                    const res = await fetch(`/assets/topics/${filename}`);
                     if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
-                    return await res.json();
+                    const topicData = await res.json();
+
+                    // Correct mapping for the new structure
+                    return {
+                        topic: topicData.topic,
+                        titles: topicData.titles?.map(titleItem => ({
+                            title: titleItem.title, // This is the correct property name
+                            examples: titleItem.examples // This should already be correct
+                        })) || [],
+                        ...topicData
+                    };
                 } catch (error) {
-                    console.error('Error loading book:', error);
+                    console.error('Error loading topic:', error);
                     throw error;
                 }
             }
         };
 
-        // ========== PARAGRAPH RENDERING ==========
-        const ParagraphRenderer = {
+        // ========== EXAMPLE RENDERING ==========
+        const ExampleRenderer = {
             display: null,
 
             init(displayElement) {
                 this.display = displayElement;
             },
 
-            render(paragraph) {
+            render(example) {
                 if (!this.display) return;
                 this.display.innerHTML = '';
 
-                if (!paragraph || paragraph.length === 0) {
-                    this.display.textContent = 'No paragraph content available.';
+                if (!example || example.length === 0) {
+                    this.display.textContent = 'No example content available.';
                     return;
                 }
 
-                paragraph.forEach((word, index) => {
+                example.forEach((word, index) => {
                     this.renderWord(word, index);
                 });
 
@@ -2282,45 +2327,45 @@
 
         // ========== PLAYBACK CONTROLLER ==========
         const PlaybackController = {
-            async playParagraph() {
+            async playExample() {
                 if (AppState.isPlaying) return;
 
-                const paragraph = AppState.getCurrentParagraph();
-                if (!paragraph || paragraph.length === 0) return;
+                const example = AppState.getCurrentExample();
+                if (!example || example.length === 0) return;
 
                 AppState.isPlaying = true;
 
                 // Don't reset currentWordIndex if we're resuming from pause
                 // Only reset if we're at the end or haven't started
-                if (AppState.currentWordIndex >= paragraph.length) {
+                if (AppState.currentWordIndex >= example.length) {
                     AppState.currentWordIndex = 0;
                 }
 
                 await this.speakNextWord();
             },
 
-            pauseParagraph() {
+            pauseExample() {
                 AppState.isPlaying = false;
                 TTSManager.cancel();
                 // DON'T clear highlights when pausing - keep the current word highlighted
             },
 
-            restartParagraph() {
-                this.pauseParagraph();
-                ParagraphRenderer.clearHighlights();
+            restartExample() {
+                this.pauseExample();
+                ExampleRenderer.clearHighlights();
                 AppState.currentWordIndex = 0;
-                this.playParagraph();
+                this.playExample();
             },
 
             async speakNextWord() {
-                const paragraph = AppState.getCurrentParagraph();
-                if (!AppState.isPlaying || !paragraph || AppState.currentWordIndex >= paragraph.length) {
+                const example = AppState.getCurrentExample();
+                if (!AppState.isPlaying || !example || AppState.currentWordIndex >= example.length) {
                     AppState.isPlaying = false;
-                    ParagraphRenderer.clearHighlights();
+                    ExampleRenderer.clearHighlights();
                     return;
                 }
 
-                const word = paragraph[AppState.currentWordIndex];
+                const word = example[AppState.currentWordIndex];
                 if (!word || this.isNewline(word)) {
                     AppState.currentWordIndex++;
                     await this.speakNextWord();
@@ -2373,18 +2418,18 @@
 
             // New method to highlight the current word
             highlightCurrentWord(index) {
-                const paragraph = AppState.getCurrentParagraph();
-                if (!paragraph || index >= paragraph.length) return;
+                const example = AppState.getCurrentExample();
+                if (!example || index >= example.length) return;
 
-                const word = paragraph[index];
+                const word = example[index];
                 if (!word) return;
 
                 // Find the word-pair element for this index
-                const pairDiv = ParagraphRenderer.display?.querySelector(`.word-pair[data-index="${index}"]`);
+                const pairDiv = ExampleRenderer.display?.querySelector(`.word-pair[data-index="${index}"]`);
                 if (!pairDiv) return;
 
                 // Clear all highlights first
-                ParagraphRenderer.clearHighlights();
+                ExampleRenderer.clearHighlights();
 
                 // Use display settings to determine which span to highlight
                 const displayThai = document.getElementById('displayThai')?.checked;
@@ -2393,13 +2438,13 @@
 
                 if (displayThai && word.th && word.th !== "\n") {
                     const thSpan = pairDiv.querySelector('span[lang="th-TH"]');
-                    if (thSpan) ParagraphRenderer.highlightElement(thSpan, index);
+                    if (thSpan) ExampleRenderer.highlightElement(thSpan, index);
                 } else if (displayEnglish && word.en && word.en !== "\n") {
                     const enSpan = pairDiv.querySelector('span[lang="en-US"]');
-                    if (enSpan) ParagraphRenderer.highlightElement(enSpan, index);
+                    if (enSpan) ExampleRenderer.highlightElement(enSpan, index);
                 } else if (displayPersian && word.fa && word.fa !== "\n") {
                     const faSpan = pairDiv.querySelector('span[lang="fa-IR"]');
-                    if (faSpan) ParagraphRenderer.highlightElement(faSpan, index);
+                    if (faSpan) ExampleRenderer.highlightElement(faSpan, index);
                 }
             },
 
@@ -2431,7 +2476,7 @@
                 AppState.currentWordIndex = index;
 
                 // Highlight immediately when clicking
-                ParagraphRenderer.highlightElement(span, index);
+                ExampleRenderer.highlightElement(span, index);
                 TTSManager.cancel();
                 this.speakWord(text, lang, index, false);
             },
@@ -2439,7 +2484,7 @@
             // Add method to continue playback from current position
             continueFromCurrent() {
                 if (!AppState.isPlaying) {
-                    this.playParagraph();
+                    this.playExample();
                 }
             },
 
@@ -2463,8 +2508,8 @@
             attempts: 0,
             incorrectOnly: false,
 
-            buildFromParagraph(paragraph) {
-                this.data = paragraph.map(word => ({
+            buildFromExample(example) {
+                this.data = example.map(word => ({
                     ...word,
                     attempted: false,
                     correct: false
@@ -2483,7 +2528,7 @@
                 quizContainer.innerHTML = "";
 
                 if (!this.data.length) {
-                    quizContainer.textContent = "No quiz available for this paragraph.";
+                    quizContainer.textContent = "No quiz available for this example.";
                     return;
                 }
 
@@ -2710,102 +2755,102 @@
         };
         // ========== NAVIGATION CONTROLLER ==========
         const NavigationController = {
-            bookSelect: null,
-            chapterSelect: null,
-            paragraphSelect: null,
+            topicSelect: null,
+            titleSelect: null,
+            exampleSelect: null,
 
-            init(bookSelect, chapterSelect, paragraphSelect) {
-                this.bookSelect = bookSelect;
-                this.chapterSelect = chapterSelect;
-                this.paragraphSelect = paragraphSelect;
+            init(topicSelect, titleSelect, exampleSelect) {
+                this.topicSelect = topicSelect;
+                this.titleSelect = titleSelect;
+                this.exampleSelect = exampleSelect;
 
                 // Add event listeners
-                if (bookSelect) {
-                    bookSelect.addEventListener('change', (e) => this.handleBookChange(e.target.value));
+                if (topicSelect) {
+                    topicSelect.addEventListener('change', (e) => this.handleTopicChange(e.target.value));
                 }
-                if (chapterSelect) {
-                    chapterSelect.addEventListener('change', (e) => this.handleChapterChange(+e.target.value));
+                if (titleSelect) {
+                    titleSelect.addEventListener('change', (e) => this.handleTitleChange(+e.target.value));
                 }
-                if (paragraphSelect) {
-                    paragraphSelect.addEventListener('change', (e) => this.handleParagraphChange(+e.target.value));
+                if (exampleSelect) {
+                    exampleSelect.addEventListener('change', (e) => this.handleExampleChange(+e.target.value));
                 }
             },
 
-            async handleBookChange(bookFilename) {
-                Storage.save('currentBook', bookFilename);
-                await AppController.loadBook(bookFilename);
+            async handleTopicChange(topicFilename) {
+                Storage.save('currentTopic', topicFilename);
+                await AppController.loadTopic(topicFilename);
             },
 
-            handleChapterChange(chapterIndex) {
-                AppState.currentChapter = chapterIndex;
-                AppController.populateParagraphs();
+            handleTitleChange(titleIndex) {
+                AppState.currentTitle = titleIndex;
+                AppController.populateExamples();
             },
 
-            handleParagraphChange(paragraphIndex) {
-                AppState.currentParagraph = paragraphIndex;
-                AppController.loadParagraph();
+            handleExampleChange(exampleIndex) {
+                AppState.currentExample = exampleIndex;
+                AppController.loadExample();
             },
 
-            nextParagraph() {
-                const currentChapter = AppState.currentBook?.chapters?.[AppState.currentChapter];
-                const maxParagraphs = currentChapter?.paragraphs?.length || 0;
+            nextExample() {
+                const currentTitle = AppState.currentTopic?.titles?.[AppState.currentTitle];
+                const maxExamples = currentTitle?.examples?.length || 0;
 
-                if (AppState.currentParagraph < maxParagraphs - 1) {
-                    // Move to next paragraph in current chapter
-                    AppState.currentParagraph++;
-                    if (this.paragraphSelect) {
-                        this.paragraphSelect.value = AppState.currentParagraph;
+                if (AppState.currentExample < maxExamples - 1) {
+                    // Move to next example in current title
+                    AppState.currentExample++;
+                    if (this.exampleSelect) {
+                        this.exampleSelect.value = AppState.currentExample;
                     }
-                    AppController.loadParagraph();
+                    AppController.loadExample();
                 } else {
-                    // Move to next chapter, first paragraph
-                    const maxChapters = AppState.currentBook?.chapters?.length || 0;
-                    if (AppState.currentChapter < maxChapters - 1) {
-                        AppState.currentChapter++;
-                        AppState.currentParagraph = 0;
-                        if (this.chapterSelect) {
-                            this.chapterSelect.value = AppState.currentChapter;
+                    // Move to next title, first example
+                    const maxTitles = AppState.currentTopic?.titles?.length || 0;
+                    if (AppState.currentTitle < maxTitles - 1) {
+                        AppState.currentTitle++;
+                        AppState.currentExample = 0;
+                        if (this.titleSelect) {
+                            this.titleSelect.value = AppState.currentTitle;
                         }
-                        AppController.populateParagraphs();
+                        AppController.populateExamples();
                     } else {
-                        // Already at last paragraph of last chapter - wrap to first chapter
-                        AppState.currentChapter = 0;
-                        AppState.currentParagraph = 0;
-                        if (this.chapterSelect) {
-                            this.chapterSelect.value = AppState.currentChapter;
+                        // Already at last example of last title - wrap to first title
+                        AppState.currentTitle = 0;
+                        AppState.currentExample = 0;
+                        if (this.titleSelect) {
+                            this.titleSelect.value = AppState.currentTitle;
                         }
-                        AppController.populateParagraphs();
+                        AppController.populateExamples();
                     }
                 }
             },
 
-            previousParagraph() {
-                if (AppState.currentParagraph > 0) {
-                    AppState.currentParagraph--;
-                    if (this.paragraphSelect) {
-                        this.paragraphSelect.value = AppState.currentParagraph;
+            previousExample() {
+                if (AppState.currentExample > 0) {
+                    AppState.currentExample--;
+                    if (this.exampleSelect) {
+                        this.exampleSelect.value = AppState.currentExample;
                     }
-                    AppController.loadParagraph();
+                    AppController.loadExample();
                 } else {
-                    // Move to previous chapter, last paragraph
-                    if (AppState.currentChapter > 0) {
-                        AppState.currentChapter--;
-                        const prevChapter = AppState.currentBook?.chapters?.[AppState.currentChapter];
-                        AppState.currentParagraph = (prevChapter?.paragraphs?.length || 1) - 1;
-                        if (this.chapterSelect) {
-                            this.chapterSelect.value = AppState.currentChapter;
+                    // Move to previous title, last example
+                    if (AppState.currentTitle > 0) {
+                        AppState.currentTitle--;
+                        const prevTitle = AppState.currentTopic?.titles?.[AppState.currentTitle];
+                        AppState.currentExample = (prevTitle?.examples?.length || 1) - 1;
+                        if (this.titleSelect) {
+                            this.titleSelect.value = AppState.currentTitle;
                         }
-                        AppController.populateParagraphs();
+                        AppController.populateExamples();
                     } else {
-                        // Already at first paragraph of first chapter - wrap to last chapter
-                        const maxChapters = AppState.currentBook?.chapters?.length || 0;
-                        AppState.currentChapter = maxChapters - 1;
-                        const lastChapter = AppState.currentBook?.chapters?.[AppState.currentChapter];
-                        AppState.currentParagraph = (lastChapter?.paragraphs?.length || 1) - 1;
-                        if (this.chapterSelect) {
-                            this.chapterSelect.value = AppState.currentChapter;
+                        // Already at first example of first title - wrap to last title
+                        const maxTitles = AppState.currentTopic?.titles?.length || 0;
+                        AppState.currentTitle = maxTitles - 1;
+                        const lastTitle = AppState.currentTopic?.titles?.[AppState.currentTitle];
+                        AppState.currentExample = (lastTitle?.examples?.length || 1) - 1;
+                        if (this.titleSelect) {
+                            this.titleSelect.value = AppState.currentTitle;
                         }
-                        AppController.populateParagraphs();
+                        AppController.populateExamples();
                     }
                 }
             }
@@ -2819,7 +2864,7 @@
                 ThemeManager.init();
                 FontManager.init();
                 this.setupEventListeners();
-                await this.loadBooks();
+                await this.loadTopics();
                 this.setupPlaybackScrollHandling();
             },
 
@@ -2827,175 +2872,178 @@
                 document.getElementById('settingsBtn').addEventListener('click', () => SettingsManager.show());
             },
 
-            async loadBooks() {
-                const bookList = await BookManager.loadBookList();
-                this.populateBookSelect(bookList);
+            async loadTopics() {
+                const topicList = await TopicManager.loadTopicList();
+                this.populateTopicSelect(topicList);
 
-                if (bookList.length > 0) {
-                    // Use the filename, not the book object
-                    const currentBookFilename = Storage.load('currentBook', bookList[0].bookFilename);
-                    await this.loadBook(currentBookFilename);
+                if (topicList.length > 0) {
+                    // Use the filename, not the topic object
+                    const currentTopicFilename = Storage.load('currentTopic', topicList[0].topicFilename);
+                    await this.loadTopic(currentTopicFilename);
                 }
             },
 
-            async reloadBookList() {
-                const bookList = await BookManager.loadBookList();
-                this.populateBookSelect(bookList);
+            async reloadTopicList() {
+                const topicList = await TopicManager.loadTopicList();
+                this.populateTopicSelect(topicList);
 
-                // Restore the current book selection
-                const currentBookFilename = Storage.load('currentBook');
-                if (currentBookFilename && AppState.currentBook) {
-                    // If we already have book data, just update the select and repopulate chapters/paragraphs
-                    const bookSelect = document.getElementById('bookSelect');
-                    if (bookSelect) {
-                        bookSelect.value = currentBookFilename;
+                // Restore the current topic selection
+                const currentTopicFilename = Storage.load('currentTopic');
+                if (currentTopicFilename && AppState.currentTopic) {
+                    // If we already have topic data, just update the select and repopulate titles/examples
+                    const topicSelect = document.getElementById('topicSelect');
+                    if (topicSelect) {
+                        topicSelect.value = currentTopicFilename;
                     }
-                    this.populateChapters();
-                } else if (bookList.length > 0) {
-                    // Otherwise load the first book or saved book
-                    const bookToLoad = currentBookFilename || bookList[0].bookFilename;
-                    await this.loadBook(bookToLoad);
+                    this.populateTitles();
+                } else if (topicList.length > 0) {
+                    // Otherwise load the first topic or saved topic
+                    const topicToLoad = currentTopicFilename || topicList[0].topicFilename;
+                    await this.loadTopic(topicToLoad);
                 }
             },
 
-            populateBookSelect(bookList) {
-                const bookSelect = document.getElementById('bookSelect');
-                if (!bookSelect) return;
+            populateTopicSelect(topicList) {
+                const topicSelect = document.getElementById('topicSelect');
+                if (!topicSelect) return;
 
-                bookSelect.innerHTML = '';
+                topicSelect.innerHTML = '';
 
-                if (bookList.length === 0) {
-                    bookSelect.innerHTML = '<option>No books available</option>';
-                    bookSelect.disabled = true;
+                if (topicList.length === 0) {
+                    topicSelect.innerHTML = '<option>No topics available</option>';
+                    topicSelect.disabled = true;
                     return;
                 }
 
-                bookList.forEach(book => {
+                topicList.forEach(topic => {
                     const option = document.createElement('option');
-                    option.value = book.bookFilename;
-                    option.textContent = book.bookTitle;
-                    bookSelect.appendChild(option);
+                    option.value = topic.topicFilename;
+                    option.textContent = topic.topic;
+                    topicSelect.appendChild(option);
                 });
 
-                const savedBook = Storage.load('currentBook', bookList[0].bookFilename);
-                bookSelect.value = savedBook;
-                bookSelect.disabled = false;
+                const savedTopic = Storage.load('currentTopic', topicList[0].topicFilename);
+                topicSelect.value = savedTopic;
+                topicSelect.disabled = false;
             },
 
-            async loadBook(filename) {
+            async loadTopic(filename) {
                 try {
-                    const bookData = await BookManager.loadBook(filename);
-                    AppState.currentBook = bookData; // Store the book data object
-                    Storage.save('currentBook', filename); // Store the filename
-                    this.populateChapters();
+                    const topicData = await TopicManager.loadTopic(filename);
+                    AppState.currentTopic = topicData; // Store the topic data object
+                    Storage.save('currentTopic', filename); // Store the filename
+                    this.populateTitles();
                 } catch (error) {
-                    console.error('Error loading book:', error);
+                    console.error('Error loading topic:', error);
                     const contentArea = document.getElementById('contentArea');
                     if (contentArea) {
                         contentArea.innerHTML =
-                            `<div class="error-message">Error loading book: ${error.message}. Please check that the book file exists at /assets/books/${filename}</div>`;
+                            `<div class="error-message">Error loading topic: ${error.message}. Please check that the topic file exists at /assets/topics/${filename}</div>`;
                     }
                 }
             },
 
-            populateChapters() {
-                const chapterSelect = document.getElementById('chapterSelect');
-                if (!chapterSelect) return;
+            populateTitles() {
+                const titleSelect = document.getElementById('titleSelect');
+                if (!titleSelect) return;
 
-                chapterSelect.innerHTML = '';
+                titleSelect.innerHTML = '';
 
-                if (!AppState.currentBook?.chapters?.length) {
-                    chapterSelect.innerHTML = '<option>No chapters available</option>';
-                    chapterSelect.disabled = true;
+                if (!AppState.currentTopic?.titles?.length) {
+                    titleSelect.innerHTML = '<option>No titles available</option>';
+                    titleSelect.disabled = true;
                     return;
                 }
 
-                AppState.currentBook.chapters.forEach((chapter, index) => {
+                AppState.currentTopic.titles.forEach((titleItem, index) => {
                     const option = document.createElement('option');
                     option.value = index;
-                    option.textContent = chapter.chapterTitle || `Practice ${index + 1}`;
-                    option.style.fontFamily = 'Arial, sans-serif'; // Ensure same font as app
-                    option.style.fontSize = '1rem'; // Ensure same font size as dropdown
-                    chapterSelect.appendChild(option);
+                    option.textContent = titleItem.title || `Title ${index + 1}`; // Use titleItem.title
+                    option.style.fontFamily = 'Arial, sans-serif';
+                    option.style.fontSize = '1rem';
+                    titleSelect.appendChild(option);
                 });
 
-                AppState.currentChapter = Math.min(AppState.currentChapter, AppState.currentBook.chapters.length - 1);
-                chapterSelect.value = AppState.currentChapter;
-                chapterSelect.disabled = false;
-                this.populateParagraphs();
+                AppState.currentTitle = Math.min(AppState.currentTitle, AppState.currentTopic.titles.length - 1);
+                titleSelect.value = AppState.currentTitle;
+                titleSelect.disabled = false;
+                this.populateExamples();
             },
 
-            populateParagraphs() {
-                const paragraphSelect = document.getElementById('paragraphSelect');
-                if (!paragraphSelect) return;
+            populateExamples() {
+                const exampleSelect = document.getElementById('exampleSelect');
+                if (!exampleSelect) return;
 
-                paragraphSelect.innerHTML = '';
+                exampleSelect.innerHTML = '';
 
-                const currentChapter = AppState.currentBook?.chapters?.[AppState.currentChapter];
-                if (!currentChapter?.paragraphs?.length) {
-                    paragraphSelect.innerHTML = '<option>No paragraphs available</option>';
-                    paragraphSelect.disabled = true;
+                const currentTitle = AppState.currentTopic?.titles?.[AppState.currentTitle];
+                const examples = currentTitle?.examples;
+                if (!examples?.length) {
+                    exampleSelect.innerHTML = '<option>No examples available</option>';
+                    exampleSelect.disabled = true;
                     return;
                 }
 
-                currentChapter.paragraphs.forEach((paragraph, index) => {
+                examples.forEach((example, index) => {
                     const option = document.createElement('option');
                     option.value = index;
-                    option.textContent = `Text ${index + 1}`;
+                    option.textContent = `Example ${index + 1}`;
                     option.style.fontFamily = 'Arial, sans-serif'; // Ensure same font as app
                     option.style.fontSize = '1rem'; // Ensure same font size as dropdown
-                    paragraphSelect.appendChild(option);
+                    exampleSelect.appendChild(option);
                 });
 
-                AppState.currentParagraph = Math.min(AppState.currentParagraph, currentChapter.paragraphs.length - 1);
-                paragraphSelect.value = AppState.currentParagraph;
-                paragraphSelect.disabled = false;
-                this.loadParagraph();
+                AppState.currentExample = Math.min(AppState.currentExample, examples.length - 1);
+                exampleSelect.value = AppState.currentExample;
+                exampleSelect.disabled = false;
+                this.loadExample();
             },
 
-            loadParagraph() {
+            loadExample() {
                 AppState.saveNavigation();
-                this.renderParagraph();
+                this.renderExample();
 
-                // Reset playback position when loading a new paragraph
+                // Reset playback position when loading a new example
                 AppState.currentWordIndex = 0;
                 AppState.isPlaying = false;
                 TTSManager.cancel();
 
-                // Update the paragraph number display
-                this.updateParagraphNumber();
+                // Update the example number display
+                this.updateExampleNumber();
 
-                // Ensure book selection is visible after loading new content
-                setTimeout(() => this.ensureBookSelectionVisible(), 200);
+                // Ensure topic selection is visible after loading new content
+                setTimeout(() => this.ensureTopicSelectionVisible(), 200);
             },
 
-            renderParagraph() {
-                const paragraph = AppState.getCurrentParagraph();
-                ParagraphRenderer.render(paragraph);
-                QuizSystem.buildFromParagraph(paragraph);
+            renderExample() {
+                const currentTitle = AppState.currentTopic?.titles?.[AppState.currentTitle];
+                const examples = currentTitle?.examples;
+                const example = examples?.[AppState.currentExample] || [];
+                ExampleRenderer.render(example);
+                QuizSystem.buildFromExample(example);
             },
 
-            updateParagraphNumber() {
-                const paragraphNumberElement = document.getElementById('currentParagraphNumber');
-                if (paragraphNumberElement) {
-                    paragraphNumberElement.textContent = AppState.currentParagraph + 1;
+            updateExampleNumber() {
+                const exampleNumberElement = document.getElementById('currentExampleNumber');
+                if (exampleNumberElement) {
+                    exampleNumberElement.textContent = AppState.currentExample + 1;
                 }
             },
 
-            ensureBookSelectionVisible() {
-                const bookSelection = document.getElementById('bookSelectionControls');
+            ensureTopicSelectionVisible() {
+                const topicSelection = document.getElementById('topicSelectionControls');
                 const contentArea = document.getElementById('contentArea');
 
-                if (bookSelection && contentArea) {
+                if (topicSelection && contentArea) {
                     // Use a small timeout to ensure DOM is updated
                     setTimeout(() => {
-                        const bookSelectionRect = bookSelection.getBoundingClientRect();
+                        const topicSelectionRect = topicSelection.getBoundingClientRect();
                         const headerRect = document.querySelector('header').getBoundingClientRect();
 
-                        // If book selection is behind the header, scroll it into view
-                        if (bookSelectionRect.top < headerRect.bottom + 10) {
+                        // If topic selection is behind the header, scroll it into view
+                        if (topicSelectionRect.top < headerRect.bottom + 10) {
                             const scrollTop = contentArea.scrollTop;
-                            const targetScroll = scrollTop - (headerRect.bottom - bookSelectionRect.top) - 20;
+                            const targetScroll = scrollTop - (headerRect.bottom - topicSelectionRect.top) - 20;
                             contentArea.scrollTo({
                                 top: targetScroll,
                                 behavior: 'smooth'
@@ -3012,14 +3060,14 @@
                         if (mutation.type === 'attributes' &&
                             (mutation.target.classList.contains('highlight-light') ||
                                 mutation.target.classList.contains('highlight-dark'))) {
-                            this.ensureBookSelectionVisible();
+                            this.ensureTopicSelectionVisible();
                         }
                     });
                 });
 
-                const paragraphDisplay = document.getElementById('paragraphDisplay');
-                if (paragraphDisplay) {
-                    observer.observe(paragraphDisplay, {
+                const exampleDisplay = document.getElementById('exampleDisplay');
+                if (exampleDisplay) {
+                    observer.observe(exampleDisplay, {
                         attributes: true,
                         attributeFilter: ['class'],
                         subtree: true
@@ -3047,13 +3095,13 @@
                 return `
         <div class="selection-header">Text To Speech</div>
         
-        <details class="book-options-details" id="bookOptionsDetails">
+        <details class="topic-options-details" id="topicOptionsDetails">
             <summary>Topic & Language Options</summary>
-            <div class="book-options-content">
-                <div id="bookSelectionControls" class="book-selection-controls">
-                    <label>Topic: <select id="bookSelect"></select></label>
-                    <label>Practice: <select id="chapterSelect"></select></label>
-                    <label>Text: <select id="paragraphSelect"></select></label>
+            <div class="topic-options-content">
+                <div id="topicSelectionControls" class="topic-selection-controls">
+                    <label>Topic: <select id="topicSelect"></select></label>
+                    <label>Title: <select id="titleSelect"></select></label>
+                    <label>Example: <select id="exampleSelect"></select></label>
                 </div>
                 
                 <div class="language-controls">
@@ -3124,19 +3172,19 @@
             </div>
         </details>
         
-        <section id="paragraphSec">
-            <div id="paragraphDisplay"></div>
-            <div id="paragraphControls" class="controls">
-                <div class="paragraph-controls-row">
+        <section id="exampleSec">
+            <div id="exampleDisplay"></div>
+            <div id="exampleControls" class="controls">
+                <div class="example-controls-row">
                     <button id="playBtn">▶️</button>
                     <button id="pauseBtn">⏸️</button>
                     <button id="restartBtn">⏮️</button>
-                    <div class="paragraph-number-container">
-                        <div class="paragraph-number-label">Text</div>
-                        <span id="currentParagraphNumber" class="paragraph-number">1</span>
+                    <div class="example-number-container">
+                        <span class="example-number-label">Example</span>
+                        <span id="currentExampleNumber" class="example-number">1</span>
                     </div>
-                    <button id="prevParagraph">⬅️</button>
-                    <button id="nextParagraph">➡️</button>
+                    <button id="prevExample">⬅️</button>
+                    <button id="nextExample">➡️</button>
                 </div>
             </div>
         </section>
@@ -3149,22 +3197,12 @@
                     <button id="prevQ">⬅️</button>
                     <button id="nextQ">➡️</button>
                     <button id="retryQuiz">🔄</button>
-                    <label><input type="checkbox" id="incorrectOnly"> Incorrect Only</label>
-                    <div id="score">Score: 0/0</div>
-                </div>
-                <div class="quiz-row quiz-row-bottom">
-                    <div class="lang-select">
-                        <span>Question: </span>
-                        <label><input type="radio" name="questionLang" id="questionThai" value="th" checked> Thai</label>
-                        <label><input type="radio" name="questionLang" id="questionEnglish" value="en"> English</label>
-                        <label><input type="radio" name="questionLang" id="questionPersian" value="fa"> Persian</label>
+                    <div class="example-number-container">
+                        <span class="example-number-label">Example</span>
+                        <span id="currentExampleNumber" class="example-number">1</span>
                     </div>
-                    <div class="lang-select">
-                        <span>Answer: </span>
-                        <label><input type="radio" name="answerLang" id="answerThai" value="th"> Thai</label>
-                        <label><input type="radio" name="answerLang" id="answerEnglish" value="en" checked> English</label>
-                        <label><input type="radio" name="answerLang" id="answerPersian" value="fa"> Persian</label>
-                    </div>
+                    <button id="prevExample">⬅️</button>
+                    <button id="nextExample">➡️</button>
                 </div>
             </div>
         </section>`;
@@ -3176,11 +3214,11 @@
 
             bindUIElements() {
                 // Initialize component references
-                ParagraphRenderer.init(document.getElementById('paragraphDisplay'));
+                ExampleRenderer.init(document.getElementById('exampleDisplay'));
                 NavigationController.init(
-                    document.getElementById('bookSelect'),
-                    document.getElementById('chapterSelect'),
-                    document.getElementById('paragraphSelect')
+                    document.getElementById('topicSelect'),
+                    document.getElementById('titleSelect'),
+                    document.getElementById('exampleSelect')
                 );
 
                 // Event delegation for dynamic elements
@@ -3190,59 +3228,59 @@
 
                 // Playback controls
                 document.getElementById('playBtn')?.addEventListener('click', () => {
-                    PlaybackController.playParagraph();
-                    // Close Book & Language options when paragraph controls are used
-                    this.closeBookOptions();
-                    // Ensure book selection stays visible when playback starts
-                    setTimeout(() => this.ensureBookSelectionVisible(), 300);
+                    PlaybackController.playExample();
+                    // Close Topic & Language options when example controls are used
+                    this.closeTopicOptions();
+                    // Ensure topic selection stays visible when playback starts
+                    setTimeout(() => this.ensureTopicSelectionVisible(), 300);
                 });
                 document.getElementById('pauseBtn')?.addEventListener('click', () => {
-                    PlaybackController.pauseParagraph();
-                    this.closeBookOptions();
+                    PlaybackController.pauseExample();
+                    this.closeTopicOptions();
                 });
                 document.getElementById('restartBtn')?.addEventListener('click', () => {
-                    PlaybackController.restartParagraph();
-                    this.closeBookOptions();
+                    PlaybackController.restartExample();
+                    this.closeTopicOptions();
                 });
-                document.getElementById('nextParagraph')?.addEventListener('click', () => {
-                    NavigationController.nextParagraph();
-                    this.closeBookOptions();
+                document.getElementById('nextExample')?.addEventListener('click', () => {
+                    NavigationController.nextExample();
+                    this.closeTopicOptions();
                 });
-                document.getElementById('prevParagraph')?.addEventListener('click', () => {
-                    NavigationController.previousParagraph();
-                    this.closeBookOptions();
+                document.getElementById('prevExample')?.addEventListener('click', () => {
+                    NavigationController.previousExample();
+                    this.closeTopicOptions();
                 });
 
                 // Quiz controls
                 document.getElementById('prevQ')?.addEventListener('click', () => {
                     QuizSystem.previousQuestion();
-                    this.closeBookOptions();
+                    this.closeTopicOptions();
                 });
                 document.getElementById('nextQ')?.addEventListener('click', () => {
                     QuizSystem.nextQuestion();
-                    this.closeBookOptions();
+                    this.closeTopicOptions();
                 });
                 document.getElementById('retryQuiz')?.addEventListener('click', () => {
                     QuizSystem.retry();
-                    this.closeBookOptions();
+                    this.closeTopicOptions();
                 });
 
                 // Language settings
                 this.bindLanguageSettings();
             },
 
-            closeBookOptions() {
-                const bookOptionsDetails = document.getElementById('bookOptionsDetails');
-                if (bookOptionsDetails) {
-                    bookOptionsDetails.open = false;
+            closeTopicOptions() {
+                const topicOptionsDetails = document.getElementById('topicOptionsDetails');
+                if (topicOptionsDetails) {
+                    topicOptionsDetails.open = false;
                 }
             },
 
             handleSettingChange(event) {
                 const handlers = {
-                    'bookSelect': () => NavigationController.handleBookChange(event.target.value),
-                    'chapterSelect': () => NavigationController.handleChapterChange(+event.target.value),
-                    'paragraphSelect': () => NavigationController.handleParagraphChange(+event.target.value),
+                    'topicSelect': () => NavigationController.handleTopicChange(event.target.value),
+                    'titleSelect': () => NavigationController.handleTitleChange(+event.target.value),
+                    'exampleSelect': () => NavigationController.handleExampleChange(+event.target.value),
                     'displayThai': () => this.saveAndRenderDisplay('displayThai', event.target.checked),
                     'displayEnglish': () => this.saveAndRenderDisplay('displayEnglish', event.target.checked),
                     'displayPersian': () => this.saveAndRenderDisplay('displayPersian', event.target.checked),
@@ -3265,7 +3303,7 @@
 
             saveAndRenderDisplay(setting, value) {
                 Storage.save(setting, value ? '1' : '0');
-                this.renderParagraph();
+                this.renderExample();
             },
 
             saveSpeakSetting(setting, value) {
@@ -3296,14 +3334,14 @@
                 document.querySelectorAll('input[name="questionLang"]').forEach(radio => {
                     radio.addEventListener('change', (e) => {
                         Storage.save('questionLang', e.target.value);
-                        this.renderParagraph();
+                        this.renderExample();
                     });
                 });
 
                 document.querySelectorAll('input[name="answerLang"]').forEach(radio => {
                     radio.addEventListener('change', (e) => {
                         Storage.save('answerLang', e.target.value);
-                        this.renderParagraph();
+                        this.renderExample();
                     });
                 });
             },
