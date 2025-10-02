@@ -8,7 +8,6 @@
         rel="stylesheet" />
     <title>ฝึกฝน Thai</title>
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
-
     <style>
         /* CSS Custom Properties for Theming */
         :root {
@@ -532,23 +531,71 @@
             margin-top: 1em;
         }
 
+        /* FIXED: Quiz row layout - ensure proper row display on all devices */
         .quiz-row {
             display: flex;
+            flex-direction: row;
             flex-wrap: wrap;
             align-items: center;
-            gap: 0.6em;
+            gap: 0.8em;
+            width: 100%;
         }
 
         .quiz-row-top {
-            justify-content: flex-start;
-            gap: 0.4em;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 1em;
             font-size: 0.9em;
+            margin-bottom: 0.8em;
+            width: 100%;
         }
 
         .quiz-row-bottom {
-            flex-direction: column;
-            align-items: flex-start;
-            gap: 0.4em;
+            flex-direction: row;
+            align-items: center;
+            gap: 0.8em;
+        }
+
+        /* FIXED: Language options layout */
+        .lang-option {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 0.8em;
+            flex: 1;
+            min-width: 280px;
+        }
+
+        .lang-option>label:first-child {
+            font-weight: bold;
+            margin-right: 0.5em;
+            white-space: nowrap;
+            min-width: 140px;
+        }
+
+        .lang-option .radio-group {
+            display: flex;
+            flex-direction: row;
+            gap: 0.8em;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .lang-option .radio-group label {
+            display: flex;
+            align-items: center;
+            gap: 0.3em;
+            margin: 0;
+            white-space: nowrap;
+        }
+
+        /* Ensure proper spacing for radio buttons */
+        .lang-option label input[type="radio"] {
+            margin-right: 0.3em;
+            transform: scale(1.1);
         }
 
         @media (min-width: 600px) {
@@ -558,8 +605,57 @@
             }
 
             .quiz-row-top {
-                gap: 0.6em;
-                font-size: 1em;
+                gap: 2em;
+                font-size: 0.9em;
+            }
+        }
+
+        /* Improved mobile layout */
+        @media (max-width: 768px) {
+            .quiz-row-top {
+                flex-direction: column;
+                gap: 1em;
+            }
+
+            .lang-option {
+                min-width: 100%;
+                width: 100%;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.5em;
+            }
+
+            .lang-option>label:first-child {
+                min-width: auto;
+                margin-right: 0;
+            }
+
+            .lang-option .radio-group {
+                width: 100%;
+                justify-content: flex-start;
+            }
+        }
+
+        /* Tablet-specific fixes */
+        @media (min-width: 601px) and (max-width: 1024px) {
+            .quiz-row-top {
+                gap: 1.5em;
+            }
+
+            .lang-option {
+                min-width: 45%;
+                flex: 0 1 45%;
+            }
+        }
+
+        /* Compact layout for very small screens */
+        @media (max-width: 480px) {
+            .lang-option .radio-group label {
+                font-size: 0.85em;
+            }
+
+            .lang-option>label:first-child {
+                font-size: 0.9em;
             }
         }
 
@@ -568,12 +664,6 @@
             flex-wrap: wrap;
             gap: 0.4em 0.8em;
             margin: 0.5em 0;
-        }
-
-        .lang-option {
-            display: flex;
-            align-items: center;
-            gap: 0.3em;
         }
 
         /* Example controls responsive layout */
@@ -618,7 +708,6 @@
             padding: 0.4em;
             background: var(--background-light);
             margin: 0;
-            font-size: 1rem;
         }
 
         body[data-theme="dark"] .language-controls details {
@@ -626,6 +715,7 @@
             border-color: var(--border-dark);
         }
 
+        /* FIXED: Reduced font size for Language Options to match Topic & Language Options */
         .language-controls summary {
             font-weight: bold;
             cursor: pointer;
@@ -636,7 +726,7 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            font-size: 1rem;
+            font-size: 1em;
         }
 
         .language-controls summary::-webkit-details-marker {
@@ -703,7 +793,7 @@
         @media (max-width: 600px) {
             .language-controls {
                 max-width: 100%;
-                font-size: 0.8em;
+                font-size: 0.75em;
             }
 
             .language-controls details {
@@ -985,6 +1075,16 @@
             }
         }
 
+        @media (min-width: 768px) {
+            .quiz-row-top {
+                gap: 2em;
+            }
+
+            .lang-option {
+                flex-wrap: nowrap;
+            }
+        }
+
         /* Error and status styling */
         .error-message {
             color: var(--incorrect-color);
@@ -1198,6 +1298,7 @@
             background: rgba(0, 36, 125, 0.05);
             border-radius: 4px;
             cursor: pointer;
+            font-size: 1em;
         }
 
         body[data-theme="dark"] .topic-options-details summary {
@@ -1216,6 +1317,22 @@
 
         body[data-theme="dark"] .topic-options-content {
             background: rgba(102, 170, 255, 0.05);
+        }
+
+        /* Ensure both details summaries have the same font size */
+        .topic-options-details summary,
+        .language-controls summary {
+            font-weight: bold;
+            padding: 0.5em;
+            background: rgba(0, 36, 125, 0.05);
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1em;
+        }
+
+        body[data-theme="dark"] .topic-options-details summary,
+        body[data-theme="dark"] .language-controls summary {
+            background: rgba(102, 170, 255, 0.1);
         }
 
         /* Updated topic selection controls */
@@ -1474,12 +1591,79 @@
             background: #333;
             border-color: var(--border-dark);
         }
-    </style>
 
+        /* NEW: Mobile select overlay styling */
+        @media (max-width: 600px) {
+            select:focus {
+                position: relative;
+                z-index: 1000;
+            }
+
+            /* Ensure mobile select options use theme colors */
+            select option {
+                background: var(--background-light);
+                color: var(--text-light);
+                font-family: Arial, sans-serif;
+                font-size: 1rem;
+            }
+
+            body[data-theme="dark"] select option {
+                background: var(--background-dark);
+                color: var(--text-dark);
+            }
+        }
+
+        /* Scrollable success list */
+        .success-list {
+            max-height: 200px;
+            overflow-y: auto;
+            margin: 0.5em 0;
+            padding: 0.5em;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+        }
+
+        /* Keyboard shortcuts details panel */
+        .keyboard-shortcuts-panel {
+            margin: 1em 0;
+        }
+
+        /* NEW: Loading overlay */
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            color: white;
+            font-size: 1.2em;
+        }
+
+        /* NEW: Performance optimizations */
+        .performance-optimized {
+            will-change: transform, opacity;
+        }
+
+        /* NEW: Touch-friendly improvements */
+        @media (max-width: 768px) {
+            .touch-target {
+                min-height: 44px;
+                min-width: 44px;
+            }
+
+            .word-pair {
+                padding: 0.4em;
+            }
+        }
+    </style>
 </head>
 
 <body data-theme="light">
-
     <header>
         <span lang="th" id="appTitle">ฝึกฝน</span>
         <div id="headerControls">
@@ -1489,7 +1673,150 @@
     </header>
     <main>
         <div class="content-area" id="contentArea">
-            <!-- Dynamic content will be inserted here -->
+            <div class="selection-header">Text To Speech</div>
+
+            <!-- NEW: Progress Bar -->
+            <div style="margin: 0.5em 0;">
+                <div class="progress-bar">
+                    <div id="progressBar" class="progress-fill" style="width: 0%"></div>
+                </div>
+            </div>
+
+            <details class="topic-options-details" id="topicOptionsDetails">
+                <summary>Topic & Language Options</summary>
+                <div class="topic-options-content">
+                    <div id="topicSelectionControls" class="topic-selection-controls">
+                        <label>Topic: <select id="topicSelect" aria-label="Select topic"></select></label>
+                        <label>Title: <select id="titleSelect" aria-label="Select title"></select></label>
+                        <label>Example: <select id="exampleSelect" aria-label="Select example"></select></label>
+                    </div>
+
+                    <div class="language-controls">
+                        <details>
+                            <summary style="font-weight: bold;">Language Options</summary>
+                            <div class="language-controls-content">
+                                <div class="language-header-row">
+                                    <div class="control-type"></div>
+                                    <div class="language-checkboxes">
+                                        <div class="language-checkbox-group">
+                                            <div class="language-title">Thai</div>
+                                        </div>
+                                        <div class="language-checkbox-group">
+                                            <div class="language-title">Persian</div>
+                                        </div>
+                                        <div class="language-checkbox-group">
+                                            <div class="language-title">English</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="language-controls-row">
+                                    <div class="control-type">Display</div>
+                                    <div class="language-checkboxes">
+                                        <div class="language-checkbox-group">
+                                            <label><input type="checkbox" id="displayThai" checked
+                                                    aria-label="Display Thai text"></label>
+                                        </div>
+                                        <div class="language-checkbox-group">
+                                            <label><input type="checkbox" id="displayPersian"
+                                                    aria-label="Display Persian text"></label>
+                                        </div>
+                                        <div class="language-checkbox-group">
+                                            <label><input type="checkbox" id="displayEnglish"
+                                                    aria-label="Display English text"></label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="language-controls-row">
+                                    <div class="control-type">Speak&nbsp;&nbsp;</div>
+                                    <div class="language-checkboxes">
+                                        <div class="language-checkbox-group">
+                                            <label><input type="checkbox" id="speakThai" checked
+                                                    aria-label="Speak Thai text"></label>
+                                        </div>
+                                        <div class="language-checkbox-group">
+                                            <label><input type="checkbox" id="speakPersian"
+                                                    aria-label="Speak Persian text"></label>
+                                        </div>
+                                        <div class="language-checkbox-group">
+                                            <label><input type="checkbox" id="speakEnglish"
+                                                    aria-label="Speak English text"></label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="language-controls-row">
+                                    <div class="control-type">Reading delay (secs)</div>
+                                    <div class="language-checkboxes">
+                                        <div class="language-checkbox-group" style="flex: 1;">
+                                            <input type="number" id="playbackDelay" value="0.5" min="0.5" max="5.0"
+                                                step="1.0" aria-label="Playback delay in seconds">
+                                        </div>
+                                        <div class="language-checkbox-group" style="flex: 0;"></div>
+                                        <div class="language-checkbox-group" style="flex: 0;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </details>
+                    </div>
+                </div>
+            </details>
+
+            <section id="exampleSec">
+                <div id="exampleDisplay" aria-live="polite"></div>
+                <div id="exampleControls" class="controls">
+                    <div class="example-controls-row">
+                        <button id="playBtn" aria-label="Play example">▶️</button>
+                        <button id="pauseBtn" aria-label="Pause example">⏸️</button>
+                        <button id="restartBtn" aria-label="Restart example">⏮️</button>
+                        <div class="example-number-container">
+                            <span class="example-number-label">Example</span>
+                            <span id="currentExampleNumber" class="example-number">1</span>
+                        </div>
+                        <button id="prevExample" aria-label="Previous example">⬅️</button>
+                        <button id="nextExample" aria-label="Next example">➡️</button>
+                    </div>
+                </div>
+            </section>
+
+            <section id="quizSec">
+                <h3>Practice Quiz</h3>
+
+                <div id="quiz" aria-live="polite"></div>
+                <div id="quizControls">
+                    <!-- FIXED: Language selection with inline radio buttons -->
+                    <div class="quiz-row quiz-row-top">
+                        <div class="lang-option">
+                            <label>Question Language:</label>
+                            <div class="radio-group">
+                                <label><input type="radio" name="questionLang" value="th" checked> Thai</label>
+                                <label><input type="radio" name="questionLang" value="fa"> Persian</label>
+                                <label><input type="radio" name="questionLang" value="en"> English</label>
+                            </div>
+                        </div>
+                        <div class="lang-option">
+                            <label>Answer Language:</label>
+                            <div class="radio-group">
+                                <label><input type="radio" name="answerLang" value="th"> Thai</label>
+                                <label><input type="radio" name="answerLang" value="fa"> Persian</label>
+                                <label><input type="radio" name="answerLang" value="en" checked> English</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="quiz-row quiz-row-bottom">
+                        <button id="prevQ" aria-label="Previous question">⬅️</button>
+                        <button id="nextQ" aria-label="Next question">➡️</button>
+                        <button id="retryQuiz" aria-label="Retry quiz">🔄</button>
+                        <span id="score">Score: 0/0</span>
+                        <label>
+                            <input type="checkbox" id="incorrectOnly" aria-label="Show only incorrect questions">
+                            Incorrect Only
+                        </label>
+                    </div>
+                </div>
+            </section>
         </div>
         <div class="controls-area" id="controlsArea">
             <!-- Controls will be inserted here -->
@@ -1499,6 +1826,14 @@
     <!-- NEW: Screen reader announcements -->
     <div id="statusAnnouncement" aria-live="polite" aria-atomic="true"
         style="position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden;"></div>
+
+    <!-- NEW: Loading overlay -->
+    <div id="loadingOverlay" class="loading-overlay" style="display: none;">
+        <div style="text-align: center;">
+            <div class="loading-spinner" style="border-top-color: white; margin: 0 auto 1em;"></div>
+            <div>Loading...</div>
+        </div>
+    </div>
 
     <script>
         // ==================== CONSTANTS ====================
@@ -1525,7 +1860,9 @@
                 QUESTION_LANG: 'th',
                 ANSWER_LANG: 'en'
             },
-            SUPPORTED_LANGUAGES: ['en-US', 'th-TH', 'fa-IR']
+            SUPPORTED_LANGUAGES: ['en-US', 'th-TH', 'fa-IR'],
+            MAX_RETRIES: 3,
+            RETRY_DELAY: 1000
         };
 
         // ==================== ERROR HANDLER ====================
@@ -1549,7 +1886,7 @@
                     errorDiv.className = 'error-message';
                     errorDiv.innerHTML = `
                         <strong>Something went wrong</strong>
-                        <p>${message}</p>
+                        <p>${ErrorHandler.sanitizeHTML(message)}</p>
                         <button onclick="this.parentElement.remove()" style="margin-top: 0.5em;">Dismiss</button>
                     `;
                     contentArea.prepend(errorDiv);
@@ -1563,11 +1900,17 @@
                     successDiv.className = 'success-message';
                     successDiv.innerHTML = `
                         <strong>Success</strong>
-                        <p>${message}</p>
+                        <p>${ErrorHandler.sanitizeHTML(message)}</p>
                         <button onclick="this.parentElement.remove()" style="margin-top: 0.5em;">Dismiss</button>
                     `;
                     contentArea.prepend(successDiv);
                 }
+            },
+
+            sanitizeHTML: (text) => {
+                const div = document.createElement('div');
+                div.textContent = text;
+                return div.innerHTML;
             }
         };
 
@@ -1598,6 +1941,13 @@
 
             generateId: () => {
                 return Date.now().toString(36) + Math.random().toString(36).substr(2);
+            },
+
+            setLoadingState: (isLoading) => {
+                const overlay = document.getElementById('loadingOverlay');
+                if (overlay) {
+                    overlay.style.display = isLoading ? 'flex' : 'none';
+                }
             }
         };
 
@@ -1641,7 +1991,7 @@
 
         // ==================== NETWORK MANAGER ====================
         const NetworkManager = {
-            async fetchWithRetry(url, retries = 3, delay = 1000) {
+            async fetchWithRetry(url, retries = CONSTANTS.MAX_RETRIES, delay = CONSTANTS.RETRY_DELAY) {
                 for (let i = 0; i < retries; i++) {
                     try {
                         const response = await fetch(url);
@@ -1755,7 +2105,7 @@
                         };
 
                         utterance.onerror = (error) => {
-                            resolve({ success: false, error: error.error });
+                            resolve({ success: false, error: this.getFriendlyError(error.error) });
                         };
 
                         speechSynthesis.speak(utterance);
@@ -1805,9 +2155,14 @@
              */
             speak(text, lang, onEnd) {
                 if (!text) return;
+
+                // Sanitize text to prevent XSS
+                const sanitizedText = ErrorHandler.sanitizeHTML(text);
+                if (!sanitizedText) return;
+
                 speechSynthesis.cancel();
 
-                const utterance = new SpeechSynthesisUtterance(text);
+                const utterance = new SpeechSynthesisUtterance(sanitizedText);
                 utterance.lang = lang;
                 utterance.volume = 0.8;
                 utterance.rate = 0.9;
@@ -1816,7 +2171,7 @@
                 if (onEnd) utterance.onend = onEnd;
 
                 speechSynthesis.speak(utterance);
-                ScreenReader.announce(`Speaking: ${text.substring(0, 50)}...`);
+                ScreenReader.announce(`Speaking: ${sanitizedText.substring(0, 50)}...`);
             },
 
             cancel() {
@@ -1832,6 +2187,117 @@
             resume() {
                 speechSynthesis.resume();
                 ScreenReader.announce('Speech resumed');
+            },
+
+            /**
+             * Gets user-friendly error messages
+             * @param {string} error - Raw error code
+             * @returns {string} Friendly error message
+             */
+            getFriendlyError(error) {
+                const errorMap = {
+                    'not-allowed': 'Microphone access denied. Please check browser permissions.',
+                    'network': 'Network error. Please check your internet connection.',
+                    'audio-busy': 'Audio device is busy. Please try again.',
+                    'audio-hardware': 'Audio hardware error. Please check your audio devices.',
+                    'synthesis-failed': 'Speech synthesis failed. Please try again.',
+                    'synthesis-unavailable': 'Speech synthesis unavailable for this language.'
+                };
+                return errorMap[error] || `An unexpected error occurred: ${error}`;
+            },
+
+            /**
+             * Gets setup instructions for TTS
+             * @returns {string} HTML instructions
+             */
+            getSetupInstructions() {
+                return `
+                    <div class="tts-setup-steps">
+                        <h4>Text-to-Speech Setup Instructions</h4>
+                        <div class="tts-step">
+                            <strong>Step 1: Install Language Packs</strong>
+                            <p>Go to your device settings and install the required language packs:</p>
+                            <ul>
+                                <li><strong>Thai:</strong> Search for "Thai language pack" in your device settings</li>
+                                <li><strong>English:</strong> Usually pre-installed, but check for updates</li>
+                                <li><strong>Persian:</strong> Search for "Persian/Farsi language pack"</li>
+                            </ul>
+                        </div>
+                        <div class="tts-step">
+                            <strong>Step 2: Browser TTS Setup</strong>
+                            <p>In your browser settings:</p>
+                            <ul>
+                                <li>Chrome: Settings → Advanced → Accessibility → Text-to-Speech</li>
+                                <li>Firefox: Preferences → General → Language → Text-to-Speech</li>
+                                <li>Safari: System Preferences → Accessibility → Speech</li>
+                            </ul>
+                        </div>
+                        <div class="tts-step">
+                            <strong>Step 3: Enable Voices</strong>
+                            <p>Make sure the voices are enabled and set as default in your system's text-to-speech settings.</p>
+                        </div>
+                        <div class="tts-step">
+                            <strong>Troubleshooting</strong>
+                            <p>If voices are still not available:</p>
+                            <ul>
+                                <li>Restart your browser after installing language packs</li>
+                                <li>Check if your operating system supports the required languages</li>
+                                <li>Try using a different browser</li>
+                                <li>Ensure you have an active internet connection for voice downloads</li>
+                            </ul>
+                        </div>
+                    </div>
+                `;
+            },
+
+            /**
+             * Gets TTS status message
+             * @returns {Object} Status object with type, title, and message
+             */
+            getStatusMessage() {
+                const hasThai = this.hasLanguageSupport('th-TH');
+                const hasEnglish = this.hasLanguageSupport('en-US');
+                const hasPersian = this.hasLanguageSupport('fa-IR');
+
+                if (!this.isSupported()) {
+                    return {
+                        type: 'error',
+                        title: 'TTS Not Supported',
+                        message: 'Your browser does not support Text-to-Speech. Please use a modern browser like Chrome, Firefox, or Edge.'
+                    };
+                }
+
+                if (!hasThai && !hasEnglish && !hasPersian) {
+                    return {
+                        type: 'error',
+                        title: 'No TTS Voices Available',
+                        message: 'No text-to-speech voices are available. Please install language packs following the instructions below.'
+                    };
+                }
+
+                const availableVoices = [];
+                if (hasThai) availableVoices.push('Thai');
+                if (hasEnglish) availableVoices.push('English');
+                if (hasPersian) availableVoices.push('Persian');
+
+                const missingVoices = [];
+                if (!hasThai) missingVoices.push('Thai');
+                if (!hasEnglish) missingVoices.push('English');
+                if (!hasPersian) missingVoices.push('Persian');
+
+                if (missingVoices.length > 0) {
+                    return {
+                        type: 'warning',
+                        title: 'Partial TTS Support',
+                        message: `Available: ${availableVoices.join(', ')}. Missing: ${missingVoices.join(', ')}. Some features may not work properly.`
+                    };
+                }
+
+                return {
+                    type: 'success',
+                    title: 'TTS Fully Supported',
+                    message: `All languages are available: ${availableVoices.join(', ')}. Text-to-speech is ready to use.`
+                };
             }
         };
 
@@ -2048,8 +2514,8 @@
                                     <option value="Chakra Petch">Chakra Petch</option>
                                 </select>
                             </label>
-                            <div class="font-preview" id="fontPreview" aria-live="polite">ตัวอย่างข้อความภาษาไทย (Thai Text Sample)</div>
                         </div>
+                        <div class="font-preview" id="fontPreview" aria-live="polite">ตัวอย่างข้อความภาษาไทย (Thai Text Sample)</div>
                         
                         <div class="settings-section">
                             <h3>Text-to-Speech Setup</h3>
@@ -2065,33 +2531,35 @@
                         </div>
 
                         <div class="settings-section">
-                            <h3>Keyboard Shortcuts</h3>
-                            <div class="keyboard-shortcuts">
-                                <div class="shortcut-item">
-                                    <span>Play/Pause</span>
-                                    <kbd class="shortcut-key">Space</kbd>
+                            <details class="keyboard-shortcuts-panel">
+                                <summary style="font-weight: bold; font-size: 1.1em; cursor: pointer;">Keyboard Shortcuts</summary>
+                                <div class="keyboard-shortcuts">
+                                    <div class="shortcut-item">
+                                        <span>Play/Pause</span>
+                                        <kbd class="shortcut-key">Space</kbd>
+                                    </div>
+                                    <div class="shortcut-item">
+                                        <span>Next Example</span>
+                                        <kbd class="shortcut-key">→</kbd>
+                                    </div>
+                                    <div class="shortcut-item">
+                                        <span>Previous Example</span>
+                                        <kbd class="shortcut-key">←</kbd>
+                                    </div>
+                                    <div class="shortcut-item">
+                                        <span>Restart</span>
+                                        <kbd class="shortcut-key">R</kbd>
+                                    </div>
+                                    <div class="shortcut-item">
+                                        <span>Next Question</span>
+                                        <kbd class="shortcut-key">N</kbd>
+                                    </div>
+                                    <div class="shortcut-item">
+                                        <span>Settings</span>
+                                        <kbd class="shortcut-key">S</kbd>
+                                    </div>
                                 </div>
-                                <div class="shortcut-item">
-                                    <span>Next Example</span>
-                                    <kbd class="shortcut-key">→</kbd>
-                                </div>
-                                <div class="shortcut-item">
-                                    <span>Previous Example</span>
-                                    <kbd class="shortcut-key">←</kbd>
-                                </div>
-                                <div class="shortcut-item">
-                                    <span>Restart</span>
-                                    <kbd class="shortcut-key">R</kbd>
-                                </div>
-                                <div class="shortcut-item">
-                                    <span>Next Question</span>
-                                    <kbd class="shortcut-key">N</kbd>
-                                </div>
-                                <div class="shortcut-item">
-                                    <span>Settings</span>
-                                    <kbd class="shortcut-key">S</kbd>
-                                </div>
-                            </div>
+                            </details>
                         </div>
                         
                         <div style="margin-top: 2em; padding-top: 1em; border-top: 1px solid var(--border-light);">
@@ -2195,8 +2663,8 @@
                             <div style="font-weight: bold;">${icon} ${result.name}</div>
                             <div class="test-result ${resultClass}">
                                 ${result.success ?
-                            `Working - ${voices}` :
-                            `Failed: ${result.error}`
+                            `<div class="success-list">Working - Available voices:<br>${voices}</div>` :
+                            `Failed: ${result.error}. ${this.getLanguageSpecificHelp(lang, result.error)}`
                         }
                             </div>
                             <button onclick="testSingleLanguage('${lang}', '${result.text}')" 
@@ -2210,6 +2678,16 @@
 
                 html += `</div>`;
                 languageTests.innerHTML = html;
+            },
+
+            getLanguageSpecificHelp(lang, error) {
+                const helpMessages = {
+                    'th-TH': `To fix Thai TTS: Install Thai language pack in system settings, then restart browser.`,
+                    'fa-IR': `To fix Persian TTS: Install Persian/Farsi language pack in system settings.`,
+                    'en-US': `To fix English TTS: Check system language settings and ensure English TTS is enabled.`
+                };
+
+                return helpMessages[lang] || 'Please check your system language settings and install the required language pack.';
             }
         };
 
@@ -2285,7 +2763,9 @@
 
             render(example) {
                 if (!this.display) return;
-                this.display.innerHTML = '';
+
+                // Use document fragment for better performance
+                const fragment = document.createDocumentFragment();
 
                 if (!example || example.length === 0) {
                     this.display.textContent = 'No example content available.';
@@ -2293,15 +2773,18 @@
                 }
 
                 example.forEach((word, index) => {
-                    this.renderWord(word, index);
+                    this.renderWord(word, index, fragment);
                 });
 
+                // Clear and append in one operation
+                this.display.innerHTML = '';
+                this.display.appendChild(fragment);
                 FontManager.apply();
             },
 
-            renderWord(word, index) {
+            renderWord(word, index, fragment) {
                 if (this.isNewline(word)) {
-                    this.display.appendChild(document.createElement('br'));
+                    fragment.appendChild(document.createElement('br'));
                     return;
                 }
 
@@ -2309,7 +2792,7 @@
 
                 function buildLanguages(thText, enText, faText, wordIndex) {
                     const pairDiv = document.createElement('div');
-                    pairDiv.className = 'word-pair';
+                    pairDiv.className = 'word-pair performance-optimized';
                     pairDiv.dataset.index = wordIndex;
 
                     if (document.getElementById('displayThai')?.checked && thText) {
@@ -2378,7 +2861,7 @@
                         pairDiv.appendChild(faSpan);
                     }
 
-                    renderer.display.appendChild(pairDiv);
+                    fragment.appendChild(pairDiv);
                 }
 
                 const thParts = (word.th || '').split('\n');
@@ -2396,7 +2879,7 @@
                     buildLanguages.call(this, thPart, enPart, faPart, index);
 
                     if (p < maxParts - 1) {
-                        this.display.appendChild(document.createElement('br'));
+                        fragment.appendChild(document.createElement('br'));
                     }
                 }
             },
@@ -2773,7 +3256,7 @@
             createOptionElement(option, answerLang, question) {
                 const optionEl = document.createElement("div");
                 optionEl.lang = this.getLangCode(answerLang);
-                optionEl.className = "quiz-option";
+                optionEl.className = "quiz-option touch-target";
                 optionEl.textContent = option;
                 optionEl.tabIndex = 0;
                 optionEl.setAttribute('role', 'button');
@@ -3032,15 +3515,23 @@
 
             setupEventListeners() {
                 document.getElementById('settingsBtn').addEventListener('click', () => SettingsManager.show());
+
+                // Add cleanup on page unload
+                window.addEventListener('beforeunload', () => this.cleanup());
             },
 
             async loadTopics() {
-                const topicList = await TopicManager.loadTopicList();
-                this.populateTopicSelect(topicList);
+                Utils.setLoadingState(true);
+                try {
+                    const topicList = await TopicManager.loadTopicList();
+                    this.populateTopicSelect(topicList);
 
-                if (topicList.length > 0) {
-                    const currentTopicFilename = Storage.load(CONSTANTS.STORAGE_KEYS.CURRENT_TOPIC, topicList[0].topicFilename);
-                    await this.loadTopic(currentTopicFilename);
+                    if (topicList.length > 0) {
+                        const currentTopicFilename = Storage.load(CONSTANTS.STORAGE_KEYS.CURRENT_TOPIC, topicList[0].topicFilename);
+                        await this.loadTopic(currentTopicFilename);
+                    }
+                } finally {
+                    Utils.setLoadingState(false);
                 }
             },
 
@@ -3086,6 +3577,7 @@
             },
 
             async loadTopic(filename) {
+                Utils.setLoadingState(true);
                 try {
                     const topicData = await TopicManager.loadTopic(filename);
                     AppState.currentTopic = topicData;
@@ -3095,6 +3587,8 @@
                 } catch (error) {
                     console.error('Error loading topic:', error);
                     ErrorHandler.showErrorToUser(`Error loading topic: ${error.message}. Please check that the topic file exists at /assets/topics/${filename}`);
+                } finally {
+                    Utils.setLoadingState(false);
                 }
             },
 
@@ -3253,143 +3747,147 @@
 
             getMainHTML() {
                 return `
-        <div class="selection-header">Text To Speech</div>
-        
-        <!-- NEW: Progress Bar -->
-        <div style="margin: 0.5em 0;">
-            <div class="progress-bar">
-                <div id="progressBar" class="progress-fill" style="width: 0%"></div>
-            </div>
+<div class="selection-header">Text To Speech</div>
+
+<!-- NEW: Progress Bar -->
+<div style="margin: 0.5em 0;">
+    <div class="progress-bar">
+        <div id="progressBar" class="progress-fill" style="width: 0%"></div>
+    </div>
+</div>
+
+<details class="topic-options-details" id="topicOptionsDetails">
+    <summary>Topic & Language Options</summary>
+    <div class="topic-options-content">
+        <div id="topicSelectionControls" class="topic-selection-controls">
+            <label>Topic: <select id="topicSelect" aria-label="Select topic"></select></label>
+            <label>Title: <select id="titleSelect" aria-label="Select title"></select></label>
+            <label>Example: <select id="exampleSelect" aria-label="Select example"></select></label>
         </div>
         
-        <details class="topic-options-details" id="topicOptionsDetails">
-            <summary>Topic & Language Options</summary>
-            <div class="topic-options-content">
-                <div id="topicSelectionControls" class="topic-selection-controls">
-                    <label>Topic: <select id="topicSelect" aria-label="Select topic"></select></label>
-                    <label>Title: <select id="titleSelect" aria-label="Select title"></select></label>
-                    <label>Example: <select id="exampleSelect" aria-label="Select example"></select></label>
-                </div>
-                
-                <div class="language-controls">
-                    <details>
-                        <summary>Language Options</summary>
-                        <div class="language-controls-content">
-                            <div class="language-header-row">
-                                <div class="control-type"></div>
-                                <div class="language-checkboxes">
-                                    <div class="language-checkbox-group">
-                                        <div class="language-title">Thai</div>
-                                    </div>
-                                    <div class="language-checkbox-group">
-                                        <div class="language-title">Persian</div>
-                                    </div>
-                                    <div class="language-checkbox-group">
-                                        <div class="language-title">English</div>
-                                    </div>
-                                </div>
+        <div class="language-controls">
+            <details>
+                <summary style="font-weight: bold;">Language Options</summary>
+                <div class="language-controls-content">
+                    <div class="language-header-row">
+                        <div class="control-type"></div>
+                        <div class="language-checkboxes">
+                            <div class="language-checkbox-group">
+                                <div class="language-title">Thai</div>
                             </div>
-                            
-                            <div class="language-controls-row">
-                                <div class="control-type">Display</div>
-                                <div class="language-checkboxes">
-                                    <div class="language-checkbox-group">
-                                        <label><input type="checkbox" id="displayThai" checked aria-label="Display Thai text"></label>
-                                    </div>
-                                    <div class="language-checkbox-group">
-                                        <label><input type="checkbox" id="displayPersian" aria-label="Display Persian text"></label>
-                                    </div>
-                                    <div class="language-checkbox-group">
-                                        <label><input type="checkbox" id="displayEnglish" aria-label="Display English text"></label>
-                                    </div>
-                                </div>
+                            <div class="language-checkbox-group">
+                                <div class="language-title">Persian</div>
                             </div>
-                            
-                            <div class="language-controls-row">
-                                <div class="control-type">Speak</div>
-                                <div class="language-checkboxes">
-                                    <div class="language-checkbox-group">
-                                        <label><input type="checkbox" id="speakThai" checked aria-label="Speak Thai text"></label>
-                                    </div>
-                                    <div class="language-checkbox-group">
-                                        <label><input type="checkbox" id="speakPersian" aria-label="Speak Persian text"></label>
-                                    </div>
-                                    <div class="language-checkbox-group">
-                                        <label><input type="checkbox" id="speakEnglish" aria-label="Speak English text"></label>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div class="language-controls-row">
-                                <div class="control-type">Reading delay (secs)</div>
-                                <div class="language-checkboxes">
-                                    <div class="language-checkbox-group" style="flex: 1;">
-                                        <input type="number" id="playbackDelay" value="0.5" min="0.5" max="5.0" step="1.0" aria-label="Playback delay in seconds">
-                                    </div>
-                                    <div class="language-checkbox-group" style="flex: 0;"></div>
-                                    <div class="language-checkbox-group" style="flex: 0;"></div>
-                                </div>
+                            <div class="language-checkbox-group">
+                                <div class="language-title">English</div>
                             </div>
                         </div>
-                    </details>
-                </div>
-            </div>
-        </details>
-        
-        <section id="exampleSec">
-            <div id="exampleDisplay" aria-live="polite"></div>
-            <div id="exampleControls" class="controls">
-                <div class="example-controls-row">
-                    <button id="playBtn" aria-label="Play example">▶️</button>
-                    <button id="pauseBtn" aria-label="Pause example">⏸️</button>
-                    <button id="restartBtn" aria-label="Restart example">⏮️</button>
-                    <div class="example-number-container">
-                        <span class="example-number-label">Example</span>
-                        <span id="currentExampleNumber" class="example-number">1</span>
                     </div>
-                    <button id="prevExample" aria-label="Previous example">⬅️</button>
-                    <button id="nextExample" aria-label="Next example">➡️</button>
+                    
+                    <div class="language-controls-row">
+                        <div class="control-type">Display</div>
+                        <div class="language-checkboxes">
+                            <div class="language-checkbox-group">
+                                <label><input type="checkbox" id="displayThai" checked aria-label="Display Thai text"></label>
+                            </div>
+                            <div class="language-checkbox-group">
+                                <label><input type="checkbox" id="displayPersian" aria-label="Display Persian text"></label>
+                            </div>
+                            <div class="language-checkbox-group">
+                                <label><input type="checkbox" id="displayEnglish" aria-label="Display English text"></label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="language-controls-row">
+                        <div class="control-type">Speak&nbsp;&nbsp;</div>
+                        <div class="language-checkboxes">
+                            <div class="language-checkbox-group">
+                                <label><input type="checkbox" id="speakThai" checked aria-label="Speak Thai text"></label>
+                            </div>
+                            <div class="language-checkbox-group">
+                                <label><input type="checkbox" id="speakPersian" aria-label="Speak Persian text"></label>
+                            </div>
+                            <div class="language-checkbox-group">
+                                <label><input type="checkbox" id="speakEnglish" aria-label="Speak English text"></label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="language-controls-row">
+                        <div class="control-type">Reading delay (secs)</div>
+                        <div class="language-checkboxes">
+                            <div class="language-checkbox-group" style="flex: 1;">
+                                <input type="number" id="playbackDelay" value="0.5" min="0.5" max="5.0" step="1.0" aria-label="Playback delay in seconds">
+                            </div>
+                            <div class="language-checkbox-group" style="flex: 0;"></div>
+                            <div class="language-checkbox-group" style="flex: 0;"></div>
+                        </div>
+                    </div>
+                </div>
+            </details>
+        </div>
+    </div>
+</details>
+
+<section id="exampleSec">
+    <div id="exampleDisplay" aria-live="polite"></div>
+    <div id="exampleControls" class="controls">
+        <div class="example-controls-row">
+            <button id="playBtn" aria-label="Play example" class="touch-target">▶️</button>
+            <button id="pauseBtn" aria-label="Pause example" class="touch-target">⏸️</button>
+            <button id="restartBtn" aria-label="Restart example" class="touch-target">⏮️</button>
+            <div class="example-number-container">
+                <span class="example-number-label">Example</span>
+                <span id="currentExampleNumber" class="example-number">1</span>
+            </div>
+            <button id="prevExample" aria-label="Previous example" class="touch-target">⬅️</button>
+            <button id="nextExample" aria-label="Next example" class="touch-target">➡️</button>
+        </div>
+    </div>
+</section>
+
+<section id="quizSec">
+    <h3>Practice Quiz</h3>
+
+    <div id="quiz" aria-live="polite"></div>
+    <div id="quizControls">
+        <!-- FIXED: Language selection with proper inline radio buttons -->
+        <div class="quiz-row quiz-row-top">
+            <div class="lang-option">
+                <label>Question Language:</label>
+                <div class="radio-group">
+                    <label><input type="radio" name="questionLang" value="th" checked> Thai</label>
+                    <label><input type="radio" name="questionLang" value="fa"> Persian</label>
+                    <label><input type="radio" name="questionLang" value="en"> English</label>
                 </div>
             </div>
-        </section>
-        
-        <section id="quizSec">
-            <h3>Practice Quiz</h3>
-            
-            <!-- FIXED: Add language selection for quiz -->
-            <div class="lang-select">
-                <div class="lang-option">
-                    <label>Question Language:</label>
-                    <label><input type="radio" name="questionLang" value="th" checked> Thai</label>
-                    <label><input type="radio" name="questionLang" value="en"> English</label>
-                    <label><input type="radio" name="questionLang" value="fa"> Persian</label>
-                </div>
-                <div class="lang-option">
-                    <label>Answer Language:</label>
-                    <label><input type="radio" name="answerLang" value="en" checked> English</label>
+            <div class="lang-option">
+                <label>Answer Language:</label>
+                <div class="radio-group">
                     <label><input type="radio" name="answerLang" value="th"> Thai</label>
                     <label><input type="radio" name="answerLang" value="fa"> Persian</label>
+                    <label><input type="radio" name="answerLang" value="en" checked> English</label>
                 </div>
             </div>
-            
-            <div id="quiz" aria-live="polite"></div>
-            <div id="quizControls">
-                <div class="quiz-row quiz-row-top">
-                    <button id="prevQ" aria-label="Previous question">⬅️</button>
-                    <button id="nextQ" aria-label="Next question">➡️</button>
-                    <button id="retryQuiz" aria-label="Retry quiz">🔄</button>
-                    <span id="score">Score: 0/0</span>
-                    <label>
-                        <input type="checkbox" id="incorrectOnly" aria-label="Show only incorrect questions">
-                        Incorrect Only
-                    </label>
-                </div>
-            </div>
-        </section>`;
+        </div>
+
+        <div class="quiz-row quiz-row-bottom">
+            <button id="prevQ" aria-label="Previous question" class="touch-target">⬅️</button>
+            <button id="nextQ" aria-label="Next question" class="touch-target">➡️</button>
+            <button id="retryQuiz" aria-label="Retry quiz" class="touch-target">🔄</button>
+            <span id="score">Score: 0/0</span>
+            <label>
+                <input type="checkbox" id="incorrectOnly" aria-label="Show only incorrect questions">
+                Incorrect Only
+            </label>
+        </div>
+    </div>
+</section>`;
             },
 
             getControlsHTML() {
-                return ``;
+                return ``; // Return empty string since there are no controls in the bottom area
             },
 
             bindUIElements() {
@@ -3544,6 +4042,13 @@
                         }
                     }
                 });
+            },
+
+            cleanup() {
+                TTSManager.cancel();
+                TopicManager.clearCache();
+                // Clean up any ongoing operations
+                AppState.isPlaying = false;
             }
         };
 
@@ -3553,6 +4058,7 @@
             AppController.init();
         });
     </script>
+
 </body>
 
 </html>
