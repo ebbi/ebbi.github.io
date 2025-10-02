@@ -1,0 +1,110 @@
+{
+    "metadata": {
+        "topic": "Greetings and Basic Phrases",
+        "description": "Common greetings and everyday phrases",
+        "languageCount": 4,
+        "exampleCount": 15,
+        "difficulty": "beginner",
+        "version": "2.0",
+        "created": "2024-01-15",
+        "updated": "2024-01-15"
+    },
+    "titles": [
+        {
+            "title": "Basic Greetings",
+            "description": "Simple hello and goodbye phrases",
+            "examples": [
+                {
+                    "id": "greet-001",
+                    "translations": {
+                        "th-TH": "สวัสดี",
+                        "en-US": "Hello",
+                        "fa-IR": "سلام",
+                        "zh-CN": "你好"
+                    },
+                    "metadata": {
+                        "difficulty": 1,
+                        "category": "greeting",
+                        "notes": "Universal greeting"
+                    }
+                },
+                {
+                    "id": "greet-002",
+                    "translations": {
+                        "th-TH": "สวัสดีครับ",
+                        "en-US": "Hello (formal)",
+                        "fa-IR": "سلام بر شما",
+                        "zh-CN": "您好"
+                    },
+                    "metadata": {
+                        "difficulty": 1,
+                        "category": "greeting",
+                        "notes": "Formal greeting"
+                    }
+                },
+                {
+                    "id": "greet-003",
+                    "translations": {
+                        "th-TH": "ลาก่อน",
+                        "en-US": "Goodbye",
+                        "fa-IR": "خداحافظ",
+                        "zh-CN": "再见"
+                    },
+                    "metadata": {
+                        "difficulty": 1,
+                        "category": "farewell",
+                        "notes": "Standard farewell"
+                    }
+                }
+            ]
+        },
+        {
+            "title": "Questions and Responses",
+            "description": "Common questions and their answers",
+            "examples": [
+                {
+                    "id": "question-001",
+                    "translations": {
+                        "th-TH": "คุณชื่ออะไร",
+                        "en-US": "What is your name?",
+                        "fa-IR": "اسم شما چیست؟",
+                        "zh-CN": "你叫什么名字？"
+                    },
+                    "metadata": {
+                        "difficulty": 2,
+                        "category": "question",
+                        "notes": "Asking for name"
+                    }
+                },
+                {
+                    "id": "response-001",
+                    "translations": {
+                        "th-TH": "ฉันชื่อสมชาย",
+                        "en-US": "My name is Somchai",
+                        "fa-IR": "اسم من سامان است",
+                        "zh-CN": "我叫张三"
+                    },
+                    "metadata": {
+                        "difficulty": 2,
+                        "category": "response",
+                        "notes": "Giving name"
+                    }
+                },
+                {
+                    "id": "question-002",
+                    "translations": {
+                        "th-TH": "คุณเป็นอย่างไร",
+                        "en-US": "How are you?",
+                        "fa-IR": "حالتان چطور است؟",
+                        "zh-CN": "你好吗？"
+                    },
+                    "metadata": {
+                        "difficulty": 2,
+                        "category": "question",
+                        "notes": "Asking about well-being"
+                    }
+                }
+            ]
+        }
+    ]
+}

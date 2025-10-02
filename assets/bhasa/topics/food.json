@@ -1,0 +1,45 @@
+{
+    "metadata": {
+        "topic": "Food and Dining",
+        "description": "Food vocabulary and restaurant phrases",
+        "languageCount": 4,
+        "exampleCount": 20,
+        "difficulty": "intermediate",
+        "version": "2.0"
+    },
+    "titles": [
+        {
+            "title": "Restaurant Phrases",
+            "examples": [
+                {
+                    "id": "order-001",
+                    "translations": {
+                        "th-TH": "ฉันอยากจะสั่งอาหาร\nขอบคุณ",
+                        "en-US": "I would like to order\nThank you",
+                        "fa-IR": "می‌خواهم سفارش دهم\nمتشکرم",
+                        "zh-CN": "我想点餐\n谢谢"
+                    },
+                    "metadata": {
+                        "difficulty": 3,
+                        "category": "restaurant",
+                        "notes": "Two-part phrase for ordering"
+                    }
+                },
+                {
+                    "id": "request-001",
+                    "translations": {
+                        "th-TH": "ขอเมนูอาหารได้ไหม\nและน้ำเปล่าด้วย",
+                        "en-US": "Can I have the menu?\nAnd some water please",
+                        "fa-IR": "می‌توانم منو را داشته باشم؟\nو کمی آب لطفا",
+                        "zh-CN": "可以给我菜单吗？\n还有请给我一些水"
+                    },
+                    "metadata": {
+                        "difficulty": 3,
+                        "category": "restaurant",
+                        "notes": "Complex request with multiple items"
+                    }
+                }
+            ]
+        }
+    ]
+}

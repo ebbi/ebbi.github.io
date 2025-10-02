@@ -1,0 +1,4007 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai&family=Chakra+Petch&display=swap"
+        rel="stylesheet" />
+    <title>ฝึกฝน Language Learner</title>
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <style>
+        /* CSS Custom Properties for Theming */
+        :root {
+            --primary-color: #00247D;
+            --primary-light: #66aaff;
+            --background-light: #f9f9f9;
+            --background-dark: #222;
+            --text-light: #000;
+            --text-dark: #eee;
+            --border-light: #ccc;
+            --border-dark: #555;
+            --correct-color: #4caf50;
+            --incorrect-color: #f44336;
+            --highlight-light: yellow;
+            --highlight-dark: orange;
+            --header-height: 60px;
+        }
+
+        /* Base page styling - MOBILE FIRST */
+        body {
+            font-size: clamp(14px, 2.5vw, 18px);
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            transition: background 0.3s, color 0.3s;
+            background: var(--background-light);
+            color: var(--text-light);
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        body[data-theme="dark"] {
+            background: var(--background-dark);
+            color: var(--text-dark);
+        }
+
+        /* Header Styling */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--primary-color);
+            color: white;
+            padding: 0.3em 1em;
+            height: auto;
+            min-height: 2.5em;
+            flex-shrink: 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        #appTitle {
+            font-size: 1.2rem;
+            font-weight: bold;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            font-family: inherit;
+        }
+
+        #headerControls {
+            display: flex;
+            align-items: center;
+            gap: 0.8em;
+            height: 100%;
+            font-size: 1rem;
+        }
+
+        .header-label {
+            display: flex;
+            align-items: center;
+            gap: 0.4em;
+            color: white;
+            margin: 0;
+            height: 2em;
+            font-size: 1rem;
+        }
+
+        .header-label select {
+            height: 2em;
+            padding: 0.3em 0.5em;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 4px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            font-size: 1rem;
+            cursor: pointer;
+            box-sizing: border-box;
+        }
+
+        .header-label select:hover {
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .header-label select option {
+            background: var(--primary-color);
+            color: white;
+            font-family: Arial, sans-serif;
+            font-size: 1rem;
+        }
+
+        /* Header icons */
+        #themeToggle,
+        #settingsBtn {
+            background: none !important;
+            border: none !important;
+            color: white;
+            padding: 0.3em;
+            cursor: pointer;
+            font-size: 1.1rem;
+            height: 2em;
+            width: 2em;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.2s;
+            border-radius: 4px;
+            line-height: normal;
+            box-shadow: none;
+            text-shadow: none;
+            font-family: inherit;
+        }
+
+        #themeToggle:hover,
+        #settingsBtn:hover {
+            background: rgba(255, 255, 255, 0.1) !important;
+        }
+
+        body[data-theme="dark"] #themeToggle,
+        body[data-theme="dark"] #settingsBtn {
+            background: none !important;
+            border: none !important;
+            color: white;
+        }
+
+        body[data-theme="dark"] #themeToggle:hover,
+        body[data-theme="dark"] #settingsBtn:hover {
+            background: rgba(255, 255, 255, 0.1) !important;
+        }
+
+        /* Remove old settings */
+        #settingsInline {
+            display: none;
+        }
+
+        /* Mobile adjustments for header */
+        @media (max-width: 600px) {
+            header {
+                padding: 0.3em 0.8em;
+            }
+
+            #appTitle {
+                font-size: 1.1rem;
+            }
+
+            #headerControls {
+                gap: 0.6em;
+                font-size: 0.9rem;
+            }
+
+            .header-label {
+                font-size: 0.9rem;
+                height: 1.8em;
+            }
+
+            .header-label select {
+                font-size: 0.9rem;
+                height: 1.8em;
+                padding: 0.2em 0.4em;
+            }
+
+            #themeToggle,
+            #settingsBtn {
+                height: 1.8em;
+                width: 1.8em;
+                font-size: 1rem;
+                padding: 0.2em;
+            }
+
+            select,
+            option {
+                font-family: Arial, sans-serif !important;
+                font-size: 1em !important;
+            }
+        }
+
+        /* Ensure Thai font is applied to app title */
+        #appTitle.thai-font.tahoma {
+            font-family: Tahoma, sans-serif;
+        }
+
+        #appTitle.thai-font.noto {
+            font-family: 'Noto Sans Thai', sans-serif;
+        }
+
+        #appTitle.thai-font.chakra {
+            font-family: 'Chakra Petch', sans-serif;
+        }
+
+        main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            padding: 0;
+        }
+
+        /* Scrollable content area */
+        .content-area {
+            flex: 1;
+            overflow-y: auto;
+            padding: 1em;
+            -webkit-overflow-scrolling: touch;
+            padding-top: 0.5em;
+            scroll-padding-top: 120px;
+            scroll-behavior: smooth;
+            -webkit-overflow-scrolling: touch;
+            overflow-anchor: none;
+        }
+
+        /* Fixed controls at bottom */
+        .controls-area {
+            background: var(--background-light);
+            border-top: 1px solid var(--border-light);
+            padding: 1em;
+            flex-shrink: 0;
+            position: sticky;
+            bottom: 0;
+            z-index: 90;
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        body[data-theme="dark"] .controls-area {
+            background: var(--background-dark);
+            border-top-color: var(--border-dark);
+        }
+
+        /* Section styling */
+        section {
+            margin-bottom: 1.5em;
+            padding-bottom: 1em;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        body[data-theme="dark"] section {
+            border-bottom-color: var(--border-dark);
+        }
+
+        /* Help block styling */
+        details {
+            padding: 0.5em 1em;
+            border: 1px solid var(--border-light);
+            border-radius: 4px;
+            margin: 0.5em 0;
+            font-size: 0.9em;
+            font-weight: normal;
+            text-align: left;
+            background: var(--background-light);
+            color: var(--text-light);
+        }
+
+        details summary {
+            cursor: pointer;
+            color: var(--primary-color);
+        }
+
+        body[data-theme="dark"] details {
+            background: #2a2a2a;
+            border: 1px solid var(--border-dark);
+            color: var(--text-dark);
+        }
+
+        body[data-theme="dark"] details summary {
+            color: var(--primary-light);
+        }
+
+        /* Style nested content in details */
+        details p {
+            margin: 0.5em 0;
+            line-height: 1.5;
+            text-align: left;
+        }
+
+        details ol {
+            margin: 0.5em 1.5em;
+            padding-left: 1.2em;
+        }
+
+        details ol li {
+            margin: 0.4em 0;
+        }
+
+        /* === Base Styles for Inputs, Selects, Buttons === */
+        button,
+        select,
+        input[type="number"] {
+            font-size: 1em;
+            line-height: 1.5;
+            padding: 0.4em 0.6em;
+            height: 2em;
+            border-radius: 4px;
+            border: 1px solid var(--border-light);
+            background: #f0f0f0;
+            color: var(--text-light);
+            cursor: pointer;
+            box-sizing: border-box;
+            vertical-align: middle;
+            transition: background 0.2s, color 0.2s, border-color 0.2s;
+        }
+
+        /* Number input text alignment */
+        input[type="number"] {
+            text-align: center;
+        }
+
+        /* Hover states */
+        button:hover,
+        input[type="number"]:hover,
+        select:hover {
+            background: #e0e0e0;
+        }
+
+        /* Dark theme adjustments */
+        body[data-theme="dark"] button,
+        body[data-theme="dark"] input[type="number"],
+        body[data-theme="dark"] select {
+            background: #333;
+            border: 1px solid var(--border-dark);
+            color: var(--text-dark);
+        }
+
+        body[data-theme="dark"] button:hover,
+        body[data-theme="dark"] input[type="number"]:hover,
+        body[data-theme="dark"] select:hover {
+            background: #444;
+        }
+
+        body[data-theme="dark"] input[type="checkbox"] {
+            accent-color: var(--primary-light);
+        }
+
+        /* Theme Toggle Button */
+        #themeToggle {
+            background: none;
+            border: none;
+            width: auto;
+            min-width: 0;
+            padding: 0 0.5em;
+            font-size: 1em;
+            line-height: 1.5;
+        }
+
+        /* Label alignment */
+        label {
+            display: flex;
+            align-items: center;
+            gap: 0.3em;
+            font-size: 1em;
+            white-space: nowrap;
+        }
+
+        /* Thai Font Styling */
+        .thai-font.tahoma {
+            font-family: Tahoma, sans-serif;
+        }
+
+        .thai-font.noto {
+            font-family: 'Noto Sans Thai', sans-serif;
+        }
+
+        .thai-font.chakra {
+            font-family: 'Chakra Petch', sans-serif;
+        }
+
+        /* Highlighting */
+        .highlight-light {
+            background: var(--highlight-light);
+            color: black;
+        }
+
+        .highlight-dark {
+            background: var(--highlight-dark);
+            color: black;
+        }
+
+        #exampleDisplay {
+            margin: 0.5em 0 1em 0;
+            white-space: pre-wrap;
+            width: 100%;
+            box-sizing: border-box;
+            line-height: 1.6;
+            min-height: 150px;
+            max-height: 45vh;
+            overflow-y: auto;
+            padding: 1em;
+            border: 1px solid var(--border-light);
+            border-radius: 8px;
+            background: var(--background-light);
+            scroll-margin-top: 100px;
+        }
+
+        body[data-theme="dark"] #exampleDisplay {
+            background: #2a2a2a;
+            border-color: var(--border-dark);
+        }
+
+        :lang(th-TH) {
+            font-size: larger;
+        }
+
+        :lang(fa-IR) {
+            direction: rtl;
+        }
+
+        .word-pair {
+            display: inline-block;
+            vertical-align: top;
+            margin: 0 0.3em 0.5em 0;
+            cursor: pointer;
+            padding: 0.2em;
+            border-radius: 3px;
+            transition: background-color 0.2s;
+        }
+
+        .word-pair:hover {
+            background-color: rgba(0, 36, 125, 0.1);
+        }
+
+        body[data-theme="dark"] .word-pair:hover {
+            background-color: rgba(102, 170, 255, 0.1);
+        }
+
+        .word-pair span[lang] {
+            display: block;
+            word-break: keep-all;
+            overflow-wrap: break-word;
+            font-size: large;
+        }
+
+        .word-pair span[lang="en-US"],
+        .word-pair span[lang="es-ES"],
+        .word-pair span[lang="ja-JP"] {
+            border-top: 1px solid lightskyblue;
+            display: block;
+            word-break: normal;
+            overflow-wrap: normal;
+            white-space: normal;
+            margin-top: 0.1em;
+            color: rgb(5, 154, 247);
+            font-size: 0.9em;
+        }
+
+        /* Chinese language styling */
+        .word-pair span[lang="zh-CN"] {
+            border-top: 1px solid lightskyblue;
+            display: block;
+            word-break: keep-all;
+            overflow-wrap: break-word;
+            white-space: normal;
+            margin-top: 0.1em;
+            color: rgb(247, 5, 5);
+            font-size: 0.9em;
+        }
+
+        .language-font-zh-CN {
+            font-family: Arial, sans-serif;
+        }
+
+        .word-pair span[lang="fa-IR"] {
+            border-top: 1px solid lightskyblue;
+            display: block;
+            word-break: keep-all;
+            overflow-wrap: break-word;
+            direction: rtl;
+            color: green;
+            font-size: 0.9em;
+        }
+
+        /* NEW: Dynamic language styling */
+        .word-pair span[lang]:not([lang="th-TH"]):not([lang="fa-IR"]):not([lang="en-US"]):not([lang="es-ES"]):not([lang="ja-JP"]) {
+            border-top: 1px solid lightskyblue;
+            display: block;
+            word-break: normal;
+            overflow-wrap: normal;
+            white-space: normal;
+            margin-top: 0.1em;
+            color: rgb(154, 5, 247);
+            font-size: 0.9em;
+        }
+
+        /* Quiz styling */
+        #quiz {
+            margin-top: 1em;
+        }
+
+        .quiz-heading {
+            font-weight: 600;
+            margin-bottom: 0.5em;
+        }
+
+        .quiz-question {
+            font-size: 1.25rem;
+            margin: .1em 0;
+            padding: 0.5em;
+            background: rgba(0, 36, 125, 0.05);
+            border-radius: 5px;
+        }
+
+        body[data-theme="dark"] .quiz-question {
+            background: rgba(102, 170, 255, 0.1);
+        }
+
+        .quiz-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5em;
+            margin-top: 0.5em;
+        }
+
+        .quiz-option {
+            border: 1px solid var(--border-light);
+            padding: 0.5em 0.8em;
+            cursor: pointer;
+            border-radius: 5px;
+            user-select: none;
+            flex: 1;
+            min-width: 120px;
+            text-align: center;
+            transition: all 0.2s;
+        }
+
+        .quiz-option.correct {
+            background: var(--correct-color);
+            color: white;
+            border-color: var(--correct-color);
+        }
+
+        .quiz-option.incorrect {
+            background: var(--incorrect-color);
+            color: white;
+            border-color: var(--incorrect-color);
+        }
+
+        #quizControls {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8em;
+            margin-top: 1em;
+        }
+
+        /* FIXED: Quiz row layout - ensure proper row display on all devices */
+        .quiz-row {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 0.8em;
+            width: 100%;
+        }
+
+        .quiz-row-top {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 1em;
+            font-size: 0.9em;
+            margin-bottom: 0.8em;
+            width: 100%;
+        }
+
+        .quiz-row-bottom {
+            flex-direction: row;
+            align-items: center;
+            gap: 0.8em;
+        }
+
+        /* FIXED: Language options layout */
+        .lang-option {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 0.8em;
+            flex: 1;
+            min-width: 280px;
+        }
+
+        .lang-option>label:first-child {
+            font-weight: bold;
+            margin-right: 0.5em;
+            white-space: nowrap;
+            min-width: 140px;
+        }
+
+        .lang-option .radio-group {
+            display: flex;
+            flex-direction: row;
+            gap: 0.8em;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .lang-option .radio-group label {
+            display: flex;
+            align-items: center;
+            gap: 0.3em;
+            margin: 0;
+            white-space: nowrap;
+        }
+
+        /* Ensure proper spacing for radio buttons */
+        .lang-option label input[type="radio"] {
+            margin-right: 0.3em;
+            transform: scale(1.1);
+        }
+
+        @media (min-width: 600px) {
+            .quiz-row-bottom {
+                flex-direction: row;
+                align-items: center;
+            }
+
+            .quiz-row-top {
+                gap: 2em;
+                font-size: 0.9em;
+            }
+        }
+
+        /* Improved mobile layout */
+        @media (max-width: 768px) {
+            .quiz-row-top {
+                flex-direction: column;
+                gap: 1em;
+            }
+
+            .lang-option {
+                min-width: 100%;
+                width: 100%;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.5em;
+            }
+
+            .lang-option>label:first-child {
+                min-width: auto;
+                margin-right: 0;
+            }
+
+            .lang-option .radio-group {
+                width: 100%;
+                justify-content: flex-start;
+            }
+        }
+
+        /* Tablet-specific fixes */
+        @media (min-width: 601px) and (max-width: 1024px) {
+            .quiz-row-top {
+                gap: 1.5em;
+            }
+
+            .lang-option {
+                min-width: 45%;
+                flex: 0 1 45%;
+            }
+        }
+
+        /* Compact layout for very small screens */
+        @media (max-width: 480px) {
+            .lang-option .radio-group label {
+                font-size: 0.85em;
+            }
+
+            .lang-option>label:first-child {
+                font-size: 0.9em;
+            }
+        }
+
+        .lang-select {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4em 0.8em;
+            margin: 0.5em 0;
+        }
+
+        /* Example controls responsive layout */
+        #exampleControls {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5em;
+        }
+
+        /* Example label styling */
+        .example-label {
+            font-weight: bold;
+            font-size: 1em;
+            color: var(--text-light);
+            margin: 0 0.1em;
+        }
+
+        body[data-theme="dark"] .example-label {
+            color: var(--text-dark);
+        }
+
+        /* Updated example controls layout */
+        .example-controls-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4em;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* NEW: Dynamic Language Controls Grid */
+        .language-controls-grid {
+            width: 100%;
+            overflow-x: auto;
+        }
+
+        .language-grid {
+            display: grid;
+            grid-template-columns: minmax(120px, 1fr) repeat(2, minmax(80px, 1fr));
+            gap: 0.5em;
+            align-items: center;
+            padding: 0.5em 0;
+            min-width: 300px;
+        }
+
+        .language-grid-header {
+            font-weight: bold;
+            padding: 0.5em;
+            background: rgba(0, 36, 125, 0.1);
+            border-radius: 4px;
+            text-align: center;
+            font-size: 0.9em;
+        }
+
+        .language-grid-row {
+            display: contents;
+        }
+
+        .language-name {
+            padding: 0.3em 0.5em;
+            font-weight: 500;
+            font-size: 0.9em;
+            display: flex;
+            align-items: center;
+            gap: 0.3em;
+        }
+
+        .language-checkbox-cell {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0.3em;
+        }
+
+        .language-checkbox-cell input[type="checkbox"] {
+            margin: 0;
+            width: 1.2em;
+            height: 1.2em;
+            cursor: pointer;
+        }
+
+        @media (max-width: 600px) {
+            .language-grid {
+                grid-template-columns: minmax(100px, 1fr) repeat(2, minmax(70px, 1fr));
+                gap: 0.3em;
+                font-size: 0.85em;
+            }
+
+            .language-name {
+                font-size: 0.85em;
+                padding: 0.2em 0.3em;
+            }
+        }
+
+        /* Language Controls Styling */
+        .language-controls {
+            width: 100%;
+            margin: 0.3em auto;
+            font-size: 1rem;
+        }
+
+        .language-controls details {
+            border: 1px solid var(--border-light);
+            border-radius: 6px;
+            padding: 0.4em;
+            background: var(--background-light);
+            margin: 0;
+        }
+
+        body[data-theme="dark"] .language-controls details {
+            background: #2a2a2a;
+            border-color: var(--border-dark);
+        }
+
+        .language-controls summary {
+            font-weight: bold;
+            cursor: pointer;
+            padding: 0.2em 0.4em;
+            margin: -0.4em -0.4em 0 -0.4em;
+            border-radius: 4px;
+            list-style: none;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 1em;
+        }
+
+        .language-controls summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .language-controls summary::after {
+            content: "▶";
+            font-size: 0.8em;
+            transition: transform 0.2s;
+            margin-left: 0.5em;
+        }
+
+        .language-controls details[open] summary::after {
+            transform: rotate(90deg);
+        }
+
+        .language-controls-content {
+            padding: 0.6em 0.2em 0.2em 0.2em;
+            font-size: 1rem;
+        }
+
+        /* Updated Language Options panel for delay input */
+        .language-delay-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.5em 0;
+            margin-top: 0.5em;
+            border-top: 1px solid var(--border-light);
+            gap: 1em;
+        }
+
+        .delay-label {
+            font-weight: bold;
+            font-size: 0.9em;
+            white-space: nowrap;
+        }
+
+        .delay-input {
+            width: 5em;
+            height: 2em;
+            padding: 0.3em;
+            font-size: 1rem;
+            text-align: center;
+        }
+
+        body[data-theme="dark"] .language-delay-row {
+            border-top-color: var(--border-dark);
+        }
+
+        /* Error and status styling */
+        .error-message {
+            color: var(--incorrect-color);
+            background: #ffe6e6;
+            padding: 0.5em;
+            border-radius: 4px;
+            margin: 0.5em 0;
+            border: 1px solid var(--incorrect-color);
+        }
+
+        .success-message {
+            color: var(--correct-color);
+            background: #e6ffe6;
+            padding: 0.5em;
+            border-radius: 4px;
+            margin: 0.5em 0;
+            border: 1px solid var(--correct-color);
+        }
+
+        .loading {
+            opacity: 0.6;
+            pointer-events: none;
+        }
+
+        /* Selection controls styling */
+        #topicSelectionControls {
+            background: rgba(0, 36, 125, 0.05);
+            padding: 1em;
+            border-radius: 8px;
+            margin-bottom: 1em;
+            position: sticky;
+            top: 0;
+            z-index: 80;
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--border-light);
+            margin-top: 0.5em;
+        }
+
+        body[data-theme="dark"] #topicSelectionControls {
+            background: rgba(102, 170, 255, 0.1);
+            border-color: var(--border-dark);
+        }
+
+        /* TTS Status Styles */
+        .tts-status-container {
+            margin: 1em 0;
+            padding: 1em;
+            border-radius: 8px;
+            border-left: 4px solid;
+        }
+
+        .tts-status-success {
+            background: #e8f5e8;
+            border-left-color: var(--correct-color);
+            color: #2d5016;
+        }
+
+        .tts-status-error {
+            background: #ffeaea;
+            border-left-color: var(--incorrect-color);
+            color: #8b0000;
+        }
+
+        .tts-status-warning {
+            background: #fff4e6;
+            border-left-color: orange;
+            color: #663c00;
+        }
+
+        .tts-status-info {
+            background: #e8f4fd;
+            border-left-color: var(--primary-color);
+            color: #004085;
+        }
+
+        body[data-theme="dark"] .tts-status-success {
+            background: #1a331a;
+            color: #90ee90;
+        }
+
+        body[data-theme="dark"] .tts-status-error {
+            background: #331a1a;
+            color: #ff6b6b;
+        }
+
+        body[data-theme="dark"] .tts-status-warning {
+            background: #332900;
+            color: #ffd700;
+        }
+
+        body[data-theme="dark"] .tts-status-info {
+            background: #1a2833;
+            color: #66aaff;
+        }
+
+        .tts-setup-steps {
+            margin: 1em 0;
+            padding: 1em;
+            background: var(--background-light);
+            border-radius: 8px;
+            border: 1px solid var(--border-light);
+        }
+
+        body[data-theme="dark"] .tts-setup-steps {
+            background: #2a2a2a;
+            border-color: var(--border-dark);
+        }
+
+        .tts-step {
+            margin: 0.5em 0;
+            padding: 0.5em;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+        }
+
+        .tts-language-check {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1em;
+            margin: 1em 0;
+        }
+
+        .language-test {
+            padding: 0.5em 1em;
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .language-test:hover {
+            background: var(--primary-light);
+        }
+
+        .test-result {
+            margin-top: 0.5em;
+            font-size: 0.9em;
+            opacity: 0.8;
+        }
+
+        .success-check {
+            color: var(--correct-color);
+        }
+
+        .error-cross {
+            color: var(--incorrect-color);
+        }
+
+        /* Scrollbar styling */
+        .content-area::-webkit-scrollbar,
+        #exampleDisplay::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .content-area::-webkit-scrollbar-track,
+        #exampleDisplay::-webkit-scrollbar-track {
+            background: var(--background-light);
+        }
+
+        .content-area::-webkit-scrollbar-thumb,
+        #exampleDisplay::-webkit-scrollbar-thumb {
+            background: var(--border-light);
+            border-radius: 4px;
+        }
+
+        body[data-theme="dark"] .content-area::-webkit-scrollbar-track,
+        body[data-theme="dark"] #exampleDisplay::-webkit-scrollbar-track {
+            background: var(--background-dark);
+        }
+
+        body[data-theme="dark"] .content-area::-webkit-scrollbar-thumb,
+        body[data-theme="dark"] #exampleDisplay::-webkit-scrollbar-thumb {
+            background: var(--border-dark);
+        }
+
+        /* Ensure selects are visible when dropdown opens */
+        select:focus {
+            position: relative;
+            z-index: 1000;
+        }
+
+        /* Add specific scroll margin for select elements */
+        #topicSelect,
+        #titleSelect,
+        #exampleSelect {
+            scroll-margin-top: 120px;
+        }
+
+        /* New styles for refactored layout */
+        .selection-header {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin: 0.5em 0 0.5em 0;
+            color: var(--primary-color);
+            text-align: center;
+        }
+
+        body[data-theme="dark"] .selection-header {
+            color: var(--primary-light);
+        }
+
+        .topic-options-details {
+            margin-bottom: 1em;
+        }
+
+        .topic-options-details summary {
+            font-weight: bold;
+            padding: 0.5em;
+            background: rgba(0, 36, 125, 0.05);
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1em;
+        }
+
+        body[data-theme="dark"] .topic-options-details summary {
+            background: rgba(102, 170, 255, 0.1);
+        }
+
+        .topic-options-details[open] summary {
+            border-radius: 4px 4px 0 0;
+        }
+
+        .topic-options-content {
+            padding: 0.5em;
+            background: rgba(0, 36, 125, 0.02);
+            border-radius: 0 0 4px 4px;
+        }
+
+        body[data-theme="dark"] .topic-options-content {
+            background: rgba(102, 170, 255, 0.05);
+        }
+
+        /* Ensure both details summaries have the same font size */
+        .topic-options-details summary,
+        .language-controls summary {
+            font-weight: bold;
+            padding: 0.5em;
+            background: rgba(0, 36, 125, 0.05);
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1em;
+        }
+
+        body[data-theme="dark"] .topic-options-details summary,
+        body[data-theme="dark"] .language-controls summary {
+            background: rgba(102, 170, 255, 0.1);
+        }
+
+        /* Updated topic selection controls */
+        .topic-selection-controls {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8em;
+        }
+
+        .topic-selection-controls label {
+            display: flex;
+            align-items: center;
+            gap: 0.5em;
+            font-weight: bold;
+        }
+
+        .topic-selection-controls select {
+            flex: 1;
+            width: 100%;
+        }
+
+        @media (min-width: 600px) {
+            .topic-selection-controls {
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-between;
+                gap: 1em;
+            }
+
+            .topic-selection-controls label {
+                flex: 1;
+                flex-direction: row;
+                align-items: center;
+            }
+        }
+
+        /* Ensure proper spacing for mobile */
+        @media (max-width: 600px) {
+            .selection-header {
+                font-size: 1.1rem;
+                margin: 0.3em 0;
+            }
+
+            .topic-options-details {
+                margin-bottom: 0.8em;
+            }
+
+            .topic-selection-controls {
+                gap: 0.6em;
+            }
+
+            .topic-selection-controls label {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.2em;
+            }
+        }
+
+        /* Ensure select options use the same font as the app */
+        #titleSelect option {
+            font-family: Arial, sans-serif;
+            font-size: 1rem;
+        }
+
+        /* Example number display */
+        .example-number {
+            font-weight: bold;
+            margin: 0 0.1em;
+            color: var(--primary-color);
+            font-size: 0.9em;
+        }
+
+        body[data-theme="dark"] .example-number {
+            color: var(--primary-light);
+        }
+
+        @media (min-width: 600px) {
+            .example-number {
+                font-size: 1em;
+            }
+        }
+
+        /* Quiz score styling to prevent wrapping */
+        #score {
+            white-space: nowrap;
+            font-size: 1em;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        body[data-theme="dark"] #score {
+            color: var(--primary-light);
+        }
+
+        /* Quiz checkbox styling */
+        #incorrectOnly {
+            transform: scale(1.1);
+            margin-right: 0.3em;
+        }
+
+        /* Settings page layout improvements */
+        .settings-font-controls {
+            display: flex;
+            align-items: center;
+            gap: 0.5em;
+            margin-bottom: 1em;
+            padding: 0.5em;
+            background: rgba(0, 36, 125, 0.05);
+            border-radius: 4px;
+        }
+
+        body[data-theme="dark"] .settings-font-controls {
+            background: rgba(102, 170, 255, 0.1);
+        }
+
+        /* Font preview styling */
+        .font-preview {
+            margin-top: 0.5em;
+            padding: 0.5em;
+            border: 1px solid var(--border-light);
+            border-radius: 4px;
+            background: var(--background-light);
+            min-height: 2em;
+        }
+
+        body[data-theme="dark"] .font-preview {
+            background: #2a2a2a;
+            border-color: var(--border-dark);
+        }
+
+        /* Updated example controls to prevent wrapping */
+        .example-controls-row {
+            display: flex;
+            flex-wrap: nowrap;
+            align-items: center;
+            gap: 0.4em;
+            justify-content: center;
+        }
+
+        /* Updated example number container for inline display on all devices */
+        .example-number-container {
+            display: flex;
+            align-items: center;
+            margin: 0 0.2em;
+            gap: 0.2em;
+        }
+
+        .example-number-label {
+            font-size: 0.9em;
+            font-weight: bold;
+            color: var(--text-light);
+            white-space: nowrap;
+        }
+
+        body[data-theme="dark"] .example-number-label {
+            color: var(--text-dark);
+        }
+
+        /* Mobile adjustments for example controls */
+        @media (max-width: 600px) {
+            .example-controls-row {
+                flex-wrap: wrap;
+                gap: 0.3em;
+            }
+
+            .example-number-container {
+                order: 0;
+                width: auto;
+                margin-top: 0;
+                justify-content: center;
+            }
+        }
+
+        /* NEW: Loading spinner */
+        .loading-spinner {
+            border: 2px solid #f3f3f3;
+            border-top: 2px solid var(--primary-color);
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            animation: spin 1s linear infinite;
+            display: inline-block;
+            margin-right: 0.5em;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* NEW: Progress tracking */
+        .progress-bar {
+            width: 100%;
+            height: 6px;
+            background: var(--border-light);
+            border-radius: 3px;
+            margin: 0.5em 0;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: var(--primary-color);
+            transition: width 0.3s ease;
+        }
+
+        body[data-theme="dark"] .progress-bar {
+            background: var(--border-dark);
+        }
+
+        /* NEW: Search box */
+        .search-box {
+            margin: 1em 0;
+            padding: 0.5em;
+            border: 1px solid var(--border-light);
+            border-radius: 4px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        body[data-theme="dark"] .search-box {
+            background: #333;
+            border-color: var(--border-dark);
+            color: var(--text-dark);
+        }
+
+        /* NEW: Keyboard shortcuts help */
+        .keyboard-shortcuts {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.5em;
+            margin: 1em 0;
+        }
+
+        .shortcut-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.3em 0;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .shortcut-key {
+            background: var(--background-light);
+            padding: 0.2em 0.5em;
+            border-radius: 3px;
+            font-family: monospace;
+            border: 1px solid var(--border-light);
+        }
+
+        body[data-theme="dark"] .shortcut-key {
+            background: #333;
+            border-color: var(--border-dark);
+        }
+
+        /* NEW: Mobile select overlay styling */
+        @media (max-width: 600px) {
+            select:focus {
+                position: relative;
+                z-index: 1000;
+            }
+
+            /* Ensure mobile select options use theme colors */
+            select option {
+                background: var(--background-light);
+                color: var(--text-light);
+                font-family: Arial, sans-serif;
+                font-size: 1rem;
+            }
+
+            body[data-theme="dark"] select option {
+                background: var(--background-dark);
+                color: var(--text-dark);
+            }
+        }
+
+        /* Scrollable success list */
+        .success-list {
+            max-height: 200px;
+            overflow-y: auto;
+            margin: 0.5em 0;
+            padding: 0.5em;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+        }
+
+        /* Keyboard shortcuts details panel */
+        .keyboard-shortcuts-panel {
+            margin: 1em 0;
+        }
+
+        /* NEW: Loading overlay */
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            color: white;
+            font-size: 1.2em;
+        }
+
+        /* NEW: Performance optimizations */
+        .performance-optimized {
+            will-change: transform, opacity;
+        }
+
+        /* NEW: Touch-friendly improvements */
+        @media (max-width: 768px) {
+            .touch-target {
+                min-height: 44px;
+                min-width: 44px;
+            }
+
+            .word-pair {
+                padding: 0.4em;
+            }
+        }
+
+        /* NEW: RTL language support */
+        [dir="rtl"] {
+            text-align: right;
+            direction: rtl;
+        }
+
+        /* NEW: Language-specific font styling */
+        .language-font-th-TH {
+            font-family: 'Noto Sans Thai', Tahoma, sans-serif;
+        }
+
+        .language-font-fa-IR {
+            font-family: Arial, sans-serif;
+            direction: rtl;
+        }
+
+        .language-font-en-US {
+            font-family: Arial, sans-serif;
+        }
+
+        .language-font-es-ES {
+            font-family: Arial, sans-serif;
+        }
+
+        .language-font-ja-JP {
+            font-family: Arial, sans-serif;
+        }
+    </style>
+</head>
+
+<body data-theme="light">
+    <header>
+        <span lang="th" id="appTitle">ฝึกฝน</span>
+        <div id="headerControls">
+            <button id="themeToggle" title="Toggle Day/Night" aria-label="Toggle theme">🌞</button>
+            <button id="settingsBtn" title="Settings & Help" aria-label="Open settings">⚙️</button>
+        </div>
+    </header>
+    <main>
+        <div class="content-area" id="contentArea">
+            <div class="selection-header">Text To Speech</div>
+
+            <!-- Progress Bar -->
+            <div style="margin: 0.5em 0;">
+                <div class="progress-bar">
+                    <div id="progressBar" class="progress-fill" style="width: 0%"></div>
+                </div>
+            </div>
+
+            <details class="topic-options-details" id="topicOptionsDetails">
+                <summary>Topic & Language Options</summary>
+                <div class="topic-options-content">
+                    <div id="topicSelectionControls" class="topic-selection-controls">
+                        <label>Topic: <select id="topicSelect" aria-label="Select topic"></select></label>
+                        <label>Title: <select id="titleSelect" aria-label="Select title"></select></label>
+                        <label>Example: <select id="exampleSelect" aria-label="Select example"></select></label>
+                    </div>
+
+                    <div class="language-controls">
+                        <details>
+                            <summary style="font-weight: bold;">Language Options</summary>
+                            <div class="language-controls-content">
+                                <!-- NEW: Dynamic Language Grid -->
+                                <div class="language-controls-grid">
+                                    <div class="language-grid">
+                                        <div class="language-grid-header">Language</div>
+                                        <div class="language-grid-header">Display</div>
+                                        <div class="language-grid-header">Speak</div>
+                                        <!-- Language rows will be dynamically inserted here -->
+                                    </div>
+                                </div>
+
+                                <!-- Playback Delay -->
+                                <div class="language-delay-row">
+                                    <span class="delay-label">Reading delay (secs)</span>
+                                    <input type="number" id="playbackDelay" class="delay-input" value="0.5" min="0.5"
+                                        max="5.0" step="1.0" aria-label="Playback delay in seconds">
+                                </div>
+                            </div>
+                        </details>
+                    </div>
+                </div>
+            </details>
+
+            <section id="exampleSec">
+                <div id="exampleDisplay" aria-live="polite"></div>
+                <div id="exampleControls" class="controls">
+                    <div class="example-controls-row">
+                        <button id="playBtn" aria-label="Play example" class="touch-target">▶️</button>
+                        <button id="pauseBtn" aria-label="Pause example" class="touch-target">⏸️</button>
+                        <button id="restartBtn" aria-label="Restart example" class="touch-target">⏮️</button>
+                        <div class="example-number-container">
+                            <span class="example-number-label">Example</span>
+                            <span id="currentExampleNumber" class="example-number">1</span>
+                        </div>
+                        <button id="prevExample" aria-label="Previous example" class="touch-target">⬅️</button>
+                        <button id="nextExample" aria-label="Next example" class="touch-target">➡️</button>
+                    </div>
+                </div>
+            </section>
+
+            <section id="quizSec">
+                <h3>Practice Quiz</h3>
+
+                <div id="quiz" aria-live="polite"></div>
+                <div id="quizControls">
+                    <!-- UPDATED: Dynamic Language selection -->
+                    <div class="quiz-row quiz-row-top">
+                        <div class="lang-option">
+                            <label>Question Language:</label>
+                            <div class="radio-group" id="questionLangGroup">
+                                <!-- Dynamic radio buttons will be inserted here -->
+                            </div>
+                        </div>
+                        <div class="lang-option">
+                            <label>Answer Language:</label>
+                            <div class="radio-group" id="answerLangGroup">
+                                <!-- Dynamic radio buttons will be inserted here -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="quiz-row quiz-row-bottom">
+                        <button id="prevQ" aria-label="Previous question" class="touch-target">⬅️</button>
+                        <button id="nextQ" aria-label="Next question" class="touch-target">➡️</button>
+                        <button id="retryQuiz" aria-label="Retry quiz" class="touch-target">🔄</button>
+                        <span id="score">Score: 0/0</span>
+                        <label>
+                            <input type="checkbox" id="incorrectOnly" aria-label="Show only incorrect questions">
+                            Incorrect Only
+                        </label>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <div class="controls-area" id="controlsArea">
+            <!-- Controls will be inserted here -->
+        </div>
+    </main>
+
+    <!-- Screen reader announcements -->
+    <div id="statusAnnouncement" aria-live="polite" aria-atomic="true"
+        style="position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden;"></div>
+
+    <!-- Loading overlay -->
+    <div id="loadingOverlay" class="loading-overlay" style="display: none;">
+        <div style="text-align: center;">
+            <div class="loading-spinner" style="border-top-color: white; margin: 0 auto 1em;"></div>
+            <div>Loading...</div>
+        </div>
+    </div>
+
+    <script>
+        // ==================== CONSTANTS ====================
+        const CONSTANTS = {
+            STORAGE_KEYS: {
+                THEME: 'theme',
+                THAI_FONT: 'thaiFont',
+                CURRENT_TOPIC: 'currentTopic',
+                CURRENT_TITLE: 'currentTitle',
+                CURRENT_EXAMPLE: 'currentExample',
+                PLAYBACK_DELAY: 'playbackDelay',
+                QUESTION_LANG: 'questionLang',
+                ANSWER_LANG: 'answerLang'
+            },
+            DEFAULT_VALUES: {
+                THEME: 'light',
+                PLAYBACK_DELAY: '0.5',
+                QUESTION_LANG: 'th-TH',
+                ANSWER_LANG: 'en-US'
+            },
+            MAX_RETRIES: 3,
+            RETRY_DELAY: 1000
+        };
+
+        // ==================== APP CONFIGURATION ====================
+        const AppConfig = {
+            data: null,
+            availableLanguages: [],
+            quizEnabledLanguages: [],
+
+            async load() {
+                try {
+                    const response = await fetch('/assets/bhasa/bhasaSetup.json');
+                    this.data = await response.json();
+                    this.processLanguages();
+                    return this.data;
+                } catch (error) {
+                    console.error('Failed to load app configuration:', error);
+                    // Fallback to default configuration
+                    this.data = this.getDefaultConfig();
+                    this.processLanguages();
+                    return this.data;
+                }
+            },
+
+            processLanguages() {
+                this.availableLanguages = Object.entries(this.data.languages).map(([code, config]) => ({
+                    code,
+                    ...config
+                }));
+
+                this.quizEnabledLanguages = this.availableLanguages.filter(lang => lang.quizEnabled);
+            },
+
+            getDefaultConfig() {
+                return {
+                    app: {
+                        name: "Bhasa Language Learner",
+                        version: "2.0",
+                        defaultTheme: "light",
+                        supportedQuizModes: ["word"],
+                        maxDisplayLanguages: 6,
+                        defaultPlaybackDelay: 0.5
+                    },
+                    languages: {
+                        "th-TH": {
+                            name: "Thai",
+                            nativeName: "ไทย",
+                            fontFamily: "Noto Sans Thai, Tahoma, sans-serif",
+                            rtl: false,
+                            defaultDisplay: true,
+                            defaultSpeak: true,
+                            quizEnabled: true
+                        },
+                        "fa-IR": {
+                            name: "Persian",
+                            nativeName: "فارسی",
+                            fontFamily: "Arial, sans-serif",
+                            rtl: true,
+                            defaultDisplay: false,
+                            defaultSpeak: false,
+                            quizEnabled: true
+                        },
+                        "en-US": {
+                            name: "English",
+                            nativeName: "English",
+                            fontFamily: "Arial, sans-serif",
+                            rtl: false,
+                            defaultDisplay: false,
+                            defaultSpeak: false,
+                            quizEnabled: true
+                        }
+                    },
+                    features: {
+                        enableSearch: true,
+                        enableProgressTracking: true,
+                        enableTTS: true,
+                        enableQuiz: true
+                    }
+                };
+            },
+
+            getLanguage(code) {
+                return this.availableLanguages.find(lang => lang.code === code);
+            },
+
+            getDisplayLanguages() {
+                return this.availableLanguages.filter(lang =>
+                    Storage.loadBool(`display_${lang.code}`, lang.defaultDisplay)
+                );
+            },
+
+            getSpeakLanguages() {
+                return this.availableLanguages.filter(lang =>
+                    Storage.loadBool(`speak_${lang.code}`, lang.defaultSpeak)
+                );
+            }
+        };
+
+        // ==================== ERROR HANDLER ====================
+        const ErrorHandler = {
+            wrap: (fn, context = '') => {
+                return (...args) => {
+                    try {
+                        return fn(...args);
+                    } catch (error) {
+                        console.error(`Error in ${context}:`, error);
+                        ErrorHandler.showErrorToUser(error.message);
+                        return null;
+                    }
+                };
+            },
+
+            showErrorToUser: (message) => {
+                const contentArea = document.getElementById('contentArea');
+                if (contentArea) {
+                    const errorDiv = document.createElement('div');
+                    errorDiv.className = 'error-message';
+                    errorDiv.innerHTML = `
+                        <strong>Something went wrong</strong>
+                        <p>${ErrorHandler.sanitizeHTML(message)}</p>
+                        <button onclick="this.parentElement.remove()" style="margin-top: 0.5em;">Dismiss</button>
+                    `;
+                    contentArea.prepend(errorDiv);
+                }
+            },
+
+            showSuccessMessage: (message) => {
+                const contentArea = document.getElementById('contentArea');
+                if (contentArea) {
+                    const successDiv = document.createElement('div');
+                    successDiv.className = 'success-message';
+                    successDiv.innerHTML = `
+                        <strong>Success</strong>
+                        <p>${ErrorHandler.sanitizeHTML(message)}</p>
+                        <button onclick="this.parentElement.remove()" style="margin-top: 0.5em;">Dismiss</button>
+                    `;
+                    contentArea.prepend(successDiv);
+                }
+            },
+
+            sanitizeHTML: (text) => {
+                const div = document.createElement('div');
+                div.textContent = text;
+                return div.innerHTML;
+            }
+        };
+
+        // ==================== UTILITIES ====================
+        const Utils = {
+            debounce: (func, wait) => {
+                let timeout;
+                return function executedFunction(...args) {
+                    const later = () => {
+                        clearTimeout(timeout);
+                        func(...args);
+                    };
+                    clearTimeout(timeout);
+                    timeout = setTimeout(later, wait);
+                };
+            },
+
+            throttle: (func, limit) => {
+                let inThrottle;
+                return function (...args) {
+                    if (!inThrottle) {
+                        func.apply(this, args);
+                        inThrottle = true;
+                        setTimeout(() => inThrottle = false, limit);
+                    }
+                };
+            },
+
+            generateId: () => {
+                return Date.now().toString(36) + Math.random().toString(36).substr(2);
+            },
+
+            setLoadingState: (isLoading) => {
+                const overlay = document.getElementById('loadingOverlay');
+                if (overlay) {
+                    overlay.style.display = isLoading ? 'flex' : 'none';
+                }
+            }
+        };
+
+        // ==================== STORAGE MANAGER ====================
+        const Storage = {
+            save: (key, value) => {
+                try {
+                    localStorage.setItem(key, value);
+                } catch (error) {
+                    console.error('Storage error:', error);
+                }
+            },
+
+            load: (key, defaultValue = '') => {
+                try {
+                    return localStorage.getItem(key) || defaultValue;
+                } catch (error) {
+                    console.error('Storage error:', error);
+                    return defaultValue;
+                }
+            },
+
+            loadInt: (key, defaultValue = 0) => {
+                const value = Storage.load(key, defaultValue.toString());
+                return parseInt(value, 10);
+            },
+
+            loadBool: (key, defaultValue = false) => {
+                const value = Storage.load(key, defaultValue ? '1' : '0');
+                return value === '1';
+            },
+
+            remove: (key) => {
+                try {
+                    localStorage.removeItem(key);
+                } catch (error) {
+                    console.error('Storage error:', error);
+                }
+            }
+        };
+
+        // ==================== NETWORK MANAGER ====================
+        const NetworkManager = {
+            async fetchWithRetry(url, retries = CONSTANTS.MAX_RETRIES, delay = CONSTANTS.RETRY_DELAY) {
+                for (let i = 0; i < retries; i++) {
+                    try {
+                        const response = await fetch(url);
+                        if (response.ok) return response;
+                        if (response.status === 404) {
+                            throw new Error(`File not found: ${url}`);
+                        }
+                        throw new Error(`HTTP ${response.status}`);
+                    } catch (error) {
+                        if (i === retries - 1) throw error;
+                        await new Promise(resolve => setTimeout(resolve, delay * (i + 1)));
+                    }
+                }
+            },
+
+            async fetchJSON(url) {
+                try {
+                    const response = await this.fetchWithRetry(url);
+                    return await response.json();
+                } catch (error) {
+                    console.warn(`Failed to load ${url}:`, error.message);
+                    // Return empty/default data instead of throwing
+                    if (url.includes('topicList.json')) {
+                        return this.getDefaultTopicList();
+                    }
+                    if (url.includes('bhasaSetup.json')) {
+                        return AppConfig.getDefaultConfig();
+                    }
+                    throw error; // Re-throw for topic files
+                }
+            },
+
+            getDefaultTopicList() {
+                return [
+                    {
+                        topicFilename: "greetings.json",
+                        topic: "Greetings",
+                        description: "Basic greetings and introductions",
+                        languageCount: 3,
+                        exampleCount: 5,
+                        difficulty: "beginner"
+                    }
+                ];
+            }
+        };
+        // ==================== SCREEN READER ANNOUNCER ====================
+        const ScreenReader = {
+            announce: (message, priority = 'polite') => {
+                const announcement = document.getElementById('statusAnnouncement');
+                if (announcement) {
+                    announcement.setAttribute('aria-live', priority);
+                    announcement.textContent = message;
+                    // Clear after announcement
+                    setTimeout(() => {
+                        announcement.textContent = '';
+                    }, 1000);
+                }
+            }
+        };
+
+        // ==================== ENHANCED TTS MANAGER ====================
+        const TTSManager = {
+            supportedVoices: [],
+            testResults: {},
+            voiceCache: new Map(),
+
+            initialize() {
+                this.loadVoices();
+                speechSynthesis.addEventListener('voiceschanged', () => {
+                    this.loadVoices();
+                });
+            },
+
+            loadVoices() {
+                this.supportedVoices = speechSynthesis.getVoices();
+                this.voiceCache.clear();
+            },
+
+            isSupported() {
+                return 'speechSynthesis' in window && typeof SpeechSynthesisUtterance !== 'undefined';
+            },
+
+            getLanguageVoices(lang) {
+                return this.supportedVoices.filter(voice =>
+                    voice.lang.startsWith(lang) || voice.lang.includes(lang)
+                );
+            },
+
+            hasLanguageSupport(lang) {
+                return this.getLanguageVoices(lang).length > 0;
+            },
+
+            testLanguage(lang, text) {
+                return new Promise((resolve) => {
+                    if (!this.isSupported()) {
+                        resolve({ success: false, error: 'TTS not supported' });
+                        return;
+                    }
+
+                    if (!this.hasLanguageSupport(lang)) {
+                        resolve({ success: false, error: `No ${lang} voices available` });
+                        return;
+                    }
+
+                    try {
+                        const utterance = new SpeechSynthesisUtterance(text);
+                        utterance.lang = lang;
+                        utterance.volume = 0.7;
+
+                        utterance.onend = () => {
+                            resolve({ success: true, voices: this.getLanguageVoices(lang) });
+                        };
+
+                        utterance.onerror = (error) => {
+                            resolve({ success: false, error: this.getFriendlyError(error.error) });
+                        };
+
+                        speechSynthesis.speak(utterance);
+                    } catch (error) {
+                        resolve({ success: false, error: error.message });
+                    }
+                });
+            },
+
+            async comprehensiveTest() {
+                const tests = AppConfig.availableLanguages
+                    .filter(lang => lang.defaultSpeak)
+                    .map(lang => ({
+                        lang: lang.code,
+                        text: this.getTestText(lang.code),
+                        name: lang.name
+                    }));
+
+                this.testResults = {};
+                let allPassed = true;
+
+                for (const test of tests) {
+                    const result = await this.testLanguage(test.lang, test.text);
+                    this.testResults[test.lang] = {
+                        ...result,
+                        name: test.name,
+                        text: test.text
+                    };
+
+                    if (!result.success) {
+                        allPassed = false;
+                    }
+
+                    await new Promise(resolve => setTimeout(resolve, 500));
+                }
+
+                return allPassed;
+            },
+
+            getTestText(langCode) {
+                const texts = {
+                    'th-TH': 'สวัสดี นี่คือการทดสอบเสียงพูดภาษาไทย',
+                    'fa-IR': 'سلام، این تست گفتار فارسی است',
+                    'en-US': 'Hello, this is English text-to-speech',
+                    'zh-CN': '你好，这是中文文本转语音测试',
+                    'ja-JP': 'こんにちは、これは日本語のテキスト読み上げテストです'
+                };
+                return texts[langCode] || `Test for ${langCode}`;
+            },
+
+            speak(text, lang, onEnd) {
+                if (!text) return;
+
+                const sanitizedText = ErrorHandler.sanitizeHTML(text);
+                if (!sanitizedText) return;
+
+                speechSynthesis.cancel();
+
+                const utterance = new SpeechSynthesisUtterance(sanitizedText);
+                utterance.lang = lang;
+                utterance.volume = 0.8;
+                utterance.rate = 0.9;
+                utterance.pitch = 1.0;
+
+                if (onEnd) utterance.onend = onEnd;
+
+                speechSynthesis.speak(utterance);
+                ScreenReader.announce(`Speaking: ${sanitizedText.substring(0, 50)}...`);
+            },
+
+            cancel() {
+                speechSynthesis.cancel();
+                ScreenReader.announce('Speech cancelled');
+            },
+
+            pause() {
+                speechSynthesis.pause();
+                ScreenReader.announce('Speech paused');
+            },
+
+            resume() {
+                speechSynthesis.resume();
+                ScreenReader.announce('Speech resumed');
+            },
+
+            getFriendlyError(error) {
+                const errorMap = {
+                    'not-allowed': 'Microphone access denied. Please check browser permissions.',
+                    'network': 'Network error. Please check your internet connection.',
+                    'audio-busy': 'Audio device is busy. Please try again.',
+                    'audio-hardware': 'Audio hardware error. Please check your audio devices.',
+                    'synthesis-failed': 'Speech synthesis failed. Please try again.',
+                    'synthesis-unavailable': 'Speech synthesis unavailable for this language.'
+                };
+                return errorMap[error] || `An unexpected error occurred: ${error}`;
+            },
+
+            getSetupInstructions() {
+                return `
+                    <div class="tts-setup-steps">
+                        <h4>Text-to-Speech Setup Instructions</h4>
+                        <div class="tts-step">
+                            <strong>Step 1: Install Language Packs</strong>
+                            <p>Go to your device settings and install the required language packs for:</p>
+                            <ul>
+                                ${AppConfig.availableLanguages.map(lang =>
+                    `<li><strong>${lang.name}:</strong> Search for "${lang.name} language pack" in your device settings</li>`
+                ).join('')}
+                            </ul>
+                        </div>
+                        <div class="tts-step">
+                            <strong>Step 2: Browser TTS Setup</strong>
+                            <p>In your browser settings:</p>
+                            <ul>
+                                <li>Chrome: Settings → Advanced → Accessibility → Text-to-Speech</li>
+                                <li>Firefox: Preferences → General → Language → Text-to-Speech</li>
+                                <li>Safari: System Preferences → Accessibility → Speech</li>
+                            </ul>
+                        </div>
+                        <div class="tts-step">
+                            <strong>Step 3: Enable Voices</strong>
+                            <p>Make sure the voices are enabled and set as default in your system's text-to-speech settings.</p>
+                        </div>
+                    </div>
+                `;
+            },
+
+            getStatusMessage() {
+                const supportedLanguages = AppConfig.availableLanguages.filter(lang =>
+                    this.hasLanguageSupport(lang.code)
+                );
+
+                if (!this.isSupported()) {
+                    return {
+                        type: 'error',
+                        title: 'TTS Not Supported',
+                        message: 'Your browser does not support Text-to-Speech. Please use a modern browser like Chrome, Firefox, or Edge.'
+                    };
+                }
+
+                if (supportedLanguages.length === 0) {
+                    return {
+                        type: 'error',
+                        title: 'No TTS Voices Available',
+                        message: 'No text-to-speech voices are available. Please install language packs following the instructions below.'
+                    };
+                }
+
+                const availableNames = supportedLanguages.map(lang => lang.name);
+                const missingLanguages = AppConfig.availableLanguages
+                    .filter(lang => !this.hasLanguageSupport(lang.code))
+                    .map(lang => lang.name);
+
+                if (missingLanguages.length > 0) {
+                    return {
+                        type: 'warning',
+                        title: 'Partial TTS Support',
+                        message: `Available: ${availableNames.join(', ')}. Missing: ${missingLanguages.join(', ')}. Some features may not work properly.`
+                    };
+                }
+
+                return {
+                    type: 'success',
+                    title: 'TTS Fully Supported',
+                    message: `All languages are available: ${availableNames.join(', ')}. Text-to-speech is ready to use.`
+                };
+            }
+        };
+
+        // ==================== PROGRESS TRACKER ====================
+        const ProgressTracker = {
+            saveProgress: ErrorHandler.wrap((topicId, titleIndex, exampleIndex, score) => {
+                const progress = {
+                    lastAccessed: new Date().toISOString(),
+                    currentTitle: titleIndex,
+                    currentExample: exampleIndex,
+                    scores: ProgressTracker.getScores(topicId),
+                    completedExamples: ProgressTracker.getCompletedExamples(topicId)
+                };
+
+                progress.scores[`${titleIndex}-${exampleIndex}`] = score;
+                progress.completedExamples.add(`${titleIndex}-${exampleIndex}`);
+
+                Storage.save(`progress-${topicId}`, JSON.stringify(progress));
+            }, 'ProgressTracker.saveProgress'),
+
+            getProgress: ErrorHandler.wrap((topicId) => {
+                const progress = Storage.load(`progress-${topicId}`);
+                return progress ? JSON.parse(progress) : {
+                    lastAccessed: null,
+                    currentTitle: 0,
+                    currentExample: 0,
+                    scores: {},
+                    completedExamples: new Set()
+                };
+            }, 'ProgressTracker.getProgress'),
+
+            getCompletionPercentage: ErrorHandler.wrap((topicId, topicData) => {
+                const progress = ProgressTracker.getProgress(topicId);
+                const totalExamples = topicData.titles?.reduce((total, title) =>
+                    total + (title.examples?.length || 0), 0) || 0;
+
+                if (totalExamples === 0) return 0;
+
+                return Math.round((progress.completedExamples.size / totalExamples) * 100);
+            }, 'ProgressTracker.getCompletionPercentage'),
+
+            getScores: (topicId) => {
+                const progress = ProgressTracker.getProgress(topicId);
+                return progress.scores || {};
+            },
+
+            getCompletedExamples: (topicId) => {
+                const progress = ProgressTracker.getProgress(topicId);
+                return new Set(progress.completedExamples || []);
+            }
+        };
+
+        // ==================== APPLICATION STATE ====================
+        const AppState = {
+            topics: [],
+            currentTopic: null,
+            currentTitle: 0,
+            currentExample: 0,
+            isPlaying: false,
+            currentWordIndex: 0,
+            lastHighlightedIndex: null,
+
+            initialize() {
+                this.currentTopic = Storage.load(CONSTANTS.STORAGE_KEYS.CURRENT_TOPIC, '');
+                this.currentTitle = Storage.loadInt(CONSTANTS.STORAGE_KEYS.CURRENT_TITLE, 0);
+                this.currentExample = Storage.loadInt(CONSTANTS.STORAGE_KEYS.CURRENT_EXAMPLE, 0);
+            },
+
+            saveNavigation() {
+                Storage.save(CONSTANTS.STORAGE_KEYS.CURRENT_TITLE, this.currentTitle);
+                Storage.save(CONSTANTS.STORAGE_KEYS.CURRENT_EXAMPLE, this.currentExample);
+
+                if (this.currentTopic?.topicFilename) {
+                    ProgressTracker.saveProgress(
+                        this.currentTopic.topicFilename,
+                        this.currentTitle,
+                        this.currentExample,
+                        QuizSystem.score
+                    );
+                }
+            },
+
+            getCurrentExample() {
+                return this.currentTopic?.titles?.[this.currentTitle]?.examples?.[this.currentExample] || [];
+            }
+        };
+
+        // ========== UI COMPONENTS ==========
+        const ThemeManager = {
+            init() {
+                const themeToggle = document.getElementById('themeToggle');
+                themeToggle.addEventListener('click', () => this.toggle());
+                this.set(Storage.load(CONSTANTS.STORAGE_KEYS.THEME, CONSTANTS.DEFAULT_VALUES.THEME));
+            },
+
+            set(theme) {
+                document.body.dataset.theme = theme;
+                document.getElementById('themeToggle').textContent = theme === 'light' ? '🌞' : '🌙';
+                document.getElementById('themeToggle').setAttribute('aria-label',
+                    theme === 'light' ? 'Switch to dark mode' : 'Switch to light mode');
+                Storage.save(CONSTANTS.STORAGE_KEYS.THEME, theme);
+                ScreenReader.announce(`Theme set to ${theme} mode`);
+            },
+
+            toggle() {
+                this.set(document.body.dataset.theme === 'light' ? 'dark' : 'light');
+            }
+        };
+
+        const FontManager = {
+            init() {
+                this.apply();
+            },
+
+            apply() {
+                const font = Storage.load(CONSTANTS.STORAGE_KEYS.THAI_FONT, '');
+                document.querySelectorAll('[lang="th"], [lang="th-TH"], #appTitle').forEach(el => {
+                    el.classList.add('thai-font');
+                    el.classList.remove('tahoma', 'noto', 'chakra');
+                    if (font === 'Tahoma') el.classList.add('tahoma');
+                    if (font === 'Noto Sans Thai') el.classList.add('noto');
+                    if (font === 'Chakra Petch') el.classList.add('chakra');
+                });
+
+                const fontPreview = document.getElementById('fontPreview');
+                if (fontPreview) {
+                    fontPreview.className = 'font-preview thai-font';
+                    if (font === 'Tahoma') fontPreview.classList.add('tahoma');
+                    if (font === 'Noto Sans Thai') fontPreview.classList.add('noto');
+                    if (font === 'Chakra Petch') fontPreview.classList.add('chakra');
+                }
+            }
+        };
+
+        // ========== LANGUAGE MANAGER ==========
+        const LanguageManager = {
+            init() {
+                this.renderLanguageControls();
+                this.renderQuizLanguageOptions();
+                this.bindLanguageEvents();
+            },
+
+            renderLanguageControls() {
+                const languageGrid = document.querySelector('.language-grid');
+                if (!languageGrid) return;
+
+                // Clear existing rows (keep headers)
+                const existingRows = languageGrid.querySelectorAll('.language-grid-row');
+                existingRows.forEach(row => row.remove());
+
+                // Add language rows
+                AppConfig.availableLanguages.forEach(language => {
+                    const row = document.createElement('div');
+                    row.className = 'language-grid-row';
+
+                    const displayChecked = Storage.loadBool(`display_${language.code}`, language.defaultDisplay);
+                    const speakChecked = Storage.loadBool(`speak_${language.code}`, language.defaultSpeak);
+
+                    row.innerHTML = `
+                        <div class="language-name" dir="${language.rtl ? 'rtl' : 'ltr'}">
+                            ${language.nativeName} (${language.name})
+                        </div>
+                        <div class="language-checkbox-cell">
+                            <input type="checkbox" id="display_${language.code}" 
+                                   ${displayChecked ? 'checked' : ''}
+                                   aria-label="Display ${language.name} text">
+                        </div>
+                        <div class="language-checkbox-cell">
+                            <input type="checkbox" id="speak_${language.code}" 
+                                   ${speakChecked ? 'checked' : ''}
+                                   aria-label="Speak ${language.name} text">
+                        </div>
+                    `;
+
+                    languageGrid.appendChild(row);
+                });
+            },
+
+            renderQuizLanguageOptions() {
+                const questionGroup = document.getElementById('questionLangGroup');
+                const answerGroup = document.getElementById('answerLangGroup');
+
+                if (!questionGroup || !answerGroup) return;
+
+                questionGroup.innerHTML = '';
+                answerGroup.innerHTML = '';
+
+                const quizLanguages = AppConfig.quizEnabledLanguages;
+                const savedQuestionLang = Storage.load(CONSTANTS.STORAGE_KEYS.QUESTION_LANG, CONSTANTS.DEFAULT_VALUES.QUESTION_LANG);
+                const savedAnswerLang = Storage.load(CONSTANTS.STORAGE_KEYS.ANSWER_LANG, CONSTANTS.DEFAULT_VALUES.ANSWER_LANG);
+
+                quizLanguages.forEach(language => {
+                    // Question language radio
+                    const questionLabel = document.createElement('label');
+                    questionLabel.innerHTML = `
+                        <input type="radio" name="questionLang" value="${language.code}" 
+                               ${savedQuestionLang === language.code ? 'checked' : ''}>
+                        ${language.name}
+                    `;
+                    questionGroup.appendChild(questionLabel);
+
+                    // Answer language radio
+                    const answerLabel = document.createElement('label');
+                    answerLabel.innerHTML = `
+                        <input type="radio" name="answerLang" value="${language.code}" 
+                               ${savedAnswerLang === language.code ? 'checked' : ''}>
+                        ${language.name}
+                    `;
+                    answerGroup.appendChild(answerLabel);
+                });
+            },
+
+            bindLanguageEvents() {
+                // Language checkbox events
+                AppConfig.availableLanguages.forEach(language => {
+                    const displayCheckbox = document.getElementById(`display_${language.code}`);
+                    const speakCheckbox = document.getElementById(`speak_${language.code}`);
+
+                    if (displayCheckbox) {
+                        displayCheckbox.addEventListener('change', (e) => {
+                            Storage.save(`display_${language.code}`, e.target.checked ? '1' : '0');
+                            AppController.renderExample();
+                            ScreenReader.announce(`${language.name} display ${e.target.checked ? 'enabled' : 'disabled'}`);
+                        });
+                    }
+
+                    if (speakCheckbox) {
+                        speakCheckbox.addEventListener('change', (e) => {
+                            Storage.save(`speak_${language.code}`, e.target.checked ? '1' : '0');
+                            ScreenReader.announce(`${language.name} speech ${e.target.checked ? 'enabled' : 'disabled'}`);
+                        });
+                    }
+                });
+
+                // Quiz language radio events
+                document.querySelectorAll('input[name="questionLang"]').forEach(radio => {
+                    radio.addEventListener('change', (e) => {
+                        Storage.save(CONSTANTS.STORAGE_KEYS.QUESTION_LANG, e.target.value);
+                        AppController.renderExample();
+                        const lang = AppConfig.getLanguage(e.target.value);
+                        ScreenReader.announce(`Question language set to ${lang?.name || e.target.value}`);
+                    });
+                });
+
+                document.querySelectorAll('input[name="answerLang"]').forEach(radio => {
+                    radio.addEventListener('change', (e) => {
+                        Storage.save(CONSTANTS.STORAGE_KEYS.ANSWER_LANG, e.target.value);
+                        AppController.renderExample();
+                        const lang = AppConfig.getLanguage(e.target.value);
+                        ScreenReader.announce(`Answer language set to ${lang?.name || e.target.value}`);
+                    });
+                });
+            },
+
+            getDisplayLanguages() {
+                return AppConfig.getDisplayLanguages();
+            },
+
+            getSpeakLanguages() {
+                return AppConfig.getSpeakLanguages();
+            },
+
+            getQuizLanguages() {
+                return AppConfig.quizEnabledLanguages;
+            }
+        };
+
+        // ========== SETTINGS MANAGER ==========
+        const SettingsManager = {
+            show() {
+                const contentArea = document.getElementById('contentArea');
+                const controlsArea = document.getElementById('controlsArea');
+                contentArea.innerHTML = this.getSettingsHTML();
+                controlsArea.innerHTML = '';
+                this.bindSettingsEvents();
+                this.showInitialTTSStatus();
+            },
+
+            getSettingsHTML() {
+                return `
+                    <div style="display: flex; justify-content: space-between; align-items: center;
+                                background: #00247D; color: white; padding: 0.5em 1em; border-radius: 8px;">
+                        <h2 style="margin: 0;">Settings & Help</h2>
+                        <button id="closeX" aria-label="Close settings" style="background: #666; color: white; border: none; padding: 0.5em; border-radius: 4px; cursor: pointer;">❌</button>
+                    </div>
+                    
+                    <div class="settings-content" style="padding: 1em;">
+                        <div class="settings-font-controls">
+                            <label style="margin: 0;">
+                                Thai Font:
+                                <select id="settingsThaiFont" aria-label="Select Thai font">
+                                    <option value="">Default</option>
+                                    <option value="Tahoma">Tahoma</option>
+                                    <option value="Noto Sans Thai">Noto Sans Thai</option>
+                                    <option value="Chakra Petch">Chakra Petch</option>
+                                </select>
+                            </label>
+                        </div>
+                        <div class="font-preview" id="fontPreview" aria-live="polite">ตัวอย่างข้อความภาษาไทย (Thai Text Sample)</div>
+                        
+                        <div class="settings-section">
+                            <h3>Text-to-Speech Setup</h3>
+                            <p>This App uses Text To Speech. Search in your device and your browser settings for languages and install the required language packs and enable Text To Speech. Then try the Test TTS button for more specific help for your device.</p>
+                            
+                            <button id="checkTTS" class="settings-button" style="padding: 0.8em 1.5em; background: #00247D; color: white; border: none; border-radius: 4px; cursor: pointer; margin: 1em 0;">
+                                🔊 Test TTS Setup & Language Support
+                            </button>
+                            
+                            <div id="ttsStatus"></div>
+                            <div id="ttsSetupInstructions"></div>
+                            <div id="languageTests"></div>
+                        </div>
+
+                        <div class="settings-section">
+                            <details class="keyboard-shortcuts-panel">
+                                <summary style="font-weight: bold; font-size: 1.1em; cursor: pointer;">Keyboard Shortcuts</summary>
+                                <div class="keyboard-shortcuts">
+                                    <div class="shortcut-item">
+                                        <span>Play/Pause</span>
+                                        <kbd class="shortcut-key">Space</kbd>
+                                    </div>
+                                    <div class="shortcut-item">
+                                        <span>Next Example</span>
+                                        <kbd class="shortcut-key">→</kbd>
+                                    </div>
+                                    <div class="shortcut-item">
+                                        <span>Previous Example</span>
+                                        <kbd class="shortcut-key">←</kbd>
+                                    </div>
+                                    <div class="shortcut-item">
+                                        <span>Restart</span>
+                                        <kbd class="shortcut-key">R</kbd>
+                                    </div>
+                                    <div class="shortcut-item">
+                                        <span>Next Question</span>
+                                        <kbd class="shortcut-key">N</kbd>
+                                    </div>
+                                    <div class="shortcut-item">
+                                        <span>Settings</span>
+                                        <kbd class="shortcut-key">S</kbd>
+                                    </div>
+                                </div>
+                            </details>
+                        </div>
+                        
+                        <div style="margin-top: 2em; padding-top: 1em; border-top: 1px solid var(--border-light);">
+                            <button id="closeBtn" style="padding: 0.6em 1.2em; background: #666; color: white; border: none; border-radius: 4px; cursor: pointer;">Close Settings</button>
+                        </div>
+                    </div>`;
+            },
+
+            bindSettingsEvents() {
+                document.getElementById('closeX').addEventListener('click', this.close);
+                document.getElementById('closeBtn').addEventListener('click', this.close);
+                document.getElementById('checkTTS').addEventListener('click', () => this.performTTSCheck());
+
+                const settingsThaiFont = document.getElementById('settingsThaiFont');
+                if (settingsThaiFont) {
+                    settingsThaiFont.value = Storage.load(CONSTANTS.STORAGE_KEYS.THAI_FONT, '');
+                    settingsThaiFont.addEventListener('change', (e) => {
+                        Storage.save(CONSTANTS.STORAGE_KEYS.THAI_FONT, e.target.value);
+                        FontManager.apply();
+                        ScreenReader.announce(`Thai font changed to ${e.target.value || 'default'}`);
+                    });
+                }
+            },
+
+            close() {
+                const contentArea = document.getElementById('contentArea');
+                const controlsArea = document.getElementById('controlsArea');
+
+                contentArea.innerHTML = AppController.getMainHTML();
+                controlsArea.innerHTML = AppController.getControlsHTML();
+
+                AppController.bindUIElements();
+                AppController.restoreSettings();
+                AppController.reloadTopicList();
+                ScreenReader.announce('Settings closed, returning to main view');
+            },
+
+            showInitialTTSStatus() {
+                const status = TTSManager.getStatusMessage?.();
+                this.showTTSStatus(status);
+
+                if (status?.type !== 'success') {
+                    const instructions = TTSManager.getSetupInstructions?.();
+                    document.getElementById('ttsSetupInstructions').innerHTML = instructions;
+                }
+            },
+
+            async performTTSCheck() {
+                const ttsStatus = document.getElementById('ttsStatus');
+                const checkBtn = document.getElementById('checkTTS');
+                const languageTests = document.getElementById('languageTests');
+
+                checkBtn.innerHTML = '<span class="loading-spinner"></span> Testing TTS...';
+                checkBtn.disabled = true;
+                ttsStatus.innerHTML = '';
+                languageTests.innerHTML = '';
+
+                const testPassed = await TTSManager.comprehensiveTest();
+                this.showLanguageTestResults();
+
+                if (!testPassed) {
+                    const instructions = TTSManager.getSetupInstructions?.();
+                    document.getElementById('ttsSetupInstructions').innerHTML = instructions;
+                }
+
+                checkBtn.innerHTML = '✅ TTS Test Complete';
+                checkBtn.disabled = false;
+
+                const finalStatus = TTSManager.getStatusMessage?.();
+                this.showTTSStatus(finalStatus);
+            },
+
+            showTTSStatus(status) {
+                const ttsStatus = document.getElementById('ttsStatus');
+                if (!status || !ttsStatus) return;
+
+                const statusClass = `tts-status-${status.type === 'warning' ? 'info' : status.type}`;
+                ttsStatus.innerHTML = `
+                    <div class="tts-status-container ${statusClass}">
+                        <h4 style="margin: 0 0 0.5em 0;">${status.title}</h4>
+                        <p style="margin: 0;">${status.message}</p>
+                    </div>
+                `;
+            },
+
+            showLanguageTestResults() {
+                const languageTests = document.getElementById('languageTests');
+                const results = TTSManager.testResults;
+
+                if (!languageTests || Object.keys(results).length === 0) return;
+
+                let html = `<h4>Language Test Results:</h4><div class="tts-language-check">`;
+
+                for (const [lang, result] of Object.entries(results)) {
+                    const language = AppConfig.getLanguage(lang);
+                    const icon = result.success ? '✅' : '❌';
+                    const resultClass = result.success ? 'success-check' : 'error-cross';
+                    const voices = result.voices ? result.voices.map(v => v.name).join(', ') : 'No voices';
+
+                    html += `
+                        <div style="flex: 1; min-width: 200px; padding: 1em; background: rgba(0,0,0,0.05); border-radius: 8px;">
+                            <div style="font-weight: bold;">${icon} ${language?.name || lang}</div>
+                            <div class="test-result ${resultClass}">
+                                ${result.success ?
+                            `<div class="success-list">Working - Available voices:<br>${voices}</div>` :
+                            `Failed: ${result.error}. ${this.getLanguageSpecificHelp(lang, result.error)}`
+                        }
+                            </div>
+                            <button onclick="testSingleLanguage('${lang}', '${result.text}')" 
+                                    class="language-test" 
+                                    style="margin-top: 0.5em;">
+                                Test ${language?.name || lang} Again
+                            </button>
+                        </div>
+                    `;
+                }
+
+                html += `</div>`;
+                languageTests.innerHTML = html;
+            },
+
+            getLanguageSpecificHelp(lang, error) {
+                const language = AppConfig.getLanguage(lang);
+                const helpMessages = {
+                    'th-TH': `To fix Thai TTS: Install Thai language pack in system settings, then restart browser.`,
+                    'fa-IR': `To fix Persian TTS: Install Persian/Farsi language pack in system settings.`,
+                    'en-US': `To fix English TTS: Check system language settings and ensure English TTS is enabled.`
+                };
+
+                return helpMessages[lang] || `Please check your system language settings and install the ${language?.name || lang} language pack.`;
+            }
+        };
+
+        // Global function for testing individual languages
+        window.testSingleLanguage = async function (lang, text) {
+            const language = AppConfig.getLanguage(lang);
+            const result = await TTSManager.testLanguage(lang, text);
+            alert(`${language?.name || lang} TTS Test: ${result.success ? 'SUCCESS' : 'FAILED'}\n${result.success ? 'Voice is working properly' : 'Error: ' + result.error}`);
+        };
+
+        // ========== TOPIC MANAGEMENT ==========
+        const TopicManager = {
+            cache: new Map(),
+
+            async loadTopicList() {
+                try {
+                    const topicList = await NetworkManager.fetchJSON('/assets/bhasa/topics/topicList.json');
+                    return topicList.map(topic => ({
+                        topicFilename: topic.topicFilename,
+                        topic: topic.topic,
+                        description: topic.description,
+                        languageCount: topic.languageCount,
+                        exampleCount: topic.exampleCount,
+                        difficulty: topic.difficulty
+                    }));
+                } catch (error) {
+                    console.error('Error loading topic list:', error);
+                    ErrorHandler.showErrorToUser('Failed to load topics. Please check your connection.');
+                    return [];
+                }
+            },
+
+            async loadTopic(filename) {
+                if (this.cache.has(filename)) {
+                    return this.cache.get(filename);
+                }
+
+                try {
+                    const topicData = await NetworkManager.fetchJSON(`/assets/bhasa/topics/${filename}`);
+                    const processedData = this.processTopicData(topicData);
+                    this.cache.set(filename, processedData);
+                    return processedData;
+                } catch (error) {
+                    console.error('Error loading topic:', error);
+                    throw error;
+                }
+            },
+
+            processTopicData(topicData) {
+                // Handle both old and new format for backward compatibility during transition
+                const isNewFormat = topicData.metadata && topicData.titles;
+
+                if (isNewFormat) {
+                    return {
+                        topic: topicData.metadata.topic,
+                        description: topicData.metadata.description,
+                        titles: topicData.titles.map(titleItem => ({
+                            title: titleItem.title,
+                            description: titleItem.description,
+                            examples: titleItem.examples.map(example => ({
+                                // Support both new translations object and old flat structure
+                                ...example.translations,
+                                translations: example.translations,
+                                metadata: example.metadata,
+                                id: example.id
+                            }))
+                        })),
+                        metadata: topicData.metadata
+                    };
+                } else {
+                    // Old format - convert to new structure
+                    return {
+                        topic: topicData.topic,
+                        titles: topicData.titles?.map(titleItem => ({
+                            title: titleItem.title,
+                            examples: titleItem.examples?.map((example, index) => ({
+                                ...example,
+                                translations: example,
+                                metadata: {
+                                    difficulty: 1,
+                                    category: 'general',
+                                    notes: ''
+                                },
+                                id: `auto-${index}`
+                            })) || []
+                        })) || [],
+                        metadata: {
+                            topic: topicData.topic,
+                            description: '',
+                            languageCount: 3,
+                            exampleCount: topicData.titles?.reduce((count, title) => count + (title.examples?.length || 0), 0) || 0,
+                            difficulty: 'beginner',
+                            version: '1.0'
+                        }
+                    };
+                }
+            },
+
+            clearCache() {
+                this.cache.clear();
+            }
+        };
+
+        // ========== EXAMPLE RENDERING ==========
+        const ExampleRenderer = {
+            display: null,
+
+            init(displayElement) {
+                this.display = displayElement;
+            },
+
+            render(example) {
+                if (!this.display) return;
+
+                const fragment = document.createDocumentFragment();
+
+                if (!example || (Array.isArray(example) && example.length === 0)) {
+                    this.display.textContent = 'No example content available.';
+                    return;
+                }
+
+                // Handle both array and object formats
+                if (Array.isArray(example)) {
+                    // Array format - process each word
+                    example.forEach((word, index) => {
+                        this.renderWord(word, index, fragment);
+                    });
+                } else if (typeof example === 'object') {
+                    // Object format - treat as a single word/entry
+                    this.renderWord(example, 0, fragment);
+                } else {
+                    console.error('Unexpected example format:', example);
+                    this.display.textContent = 'Invalid example format.';
+                    return;
+                }
+
+                this.display.innerHTML = '';
+                this.display.appendChild(fragment);
+                this.applyLanguageStyling();
+            },
+
+            renderWord(word, index, fragment) {
+                if (this.isNewline(word)) {
+                    fragment.appendChild(document.createElement('br'));
+                    return;
+                }
+
+                const pairDiv = document.createElement('div');
+                pairDiv.className = 'word-pair performance-optimized';
+                pairDiv.dataset.index = index;
+                pairDiv.dataset.wordId = word.id || `word-${index}`;
+
+                // Get display languages from configuration
+                const displayLanguages = LanguageManager.getDisplayLanguages();
+
+                // Get translations - support both new and old format
+                const translations = word.translations || word;
+
+                // Render each display language
+                displayLanguages.forEach(language => {
+                    const text = translations[language.code];
+                    if (text && text !== "\n") {
+                        // Handle multi-line text
+                        const textLines = text.split('\n');
+
+                        textLines.forEach((line, lineIndex) => {
+                            if (line.trim() === '') return;
+
+                            const span = document.createElement('span');
+                            span.textContent = line;
+                            span.lang = language.code;
+                            span.dataset.index = index;
+                            span.dataset.line = lineIndex;
+                            span.tabIndex = 0;
+                            span.setAttribute('role', 'button');
+                            span.setAttribute('aria-label', `Speak ${language.name}: ${line}`);
+
+                            // Apply language-specific styling
+                            span.classList.add(`language-font-${language.code}`);
+                            if (language.rtl) {
+                                span.setAttribute('dir', 'rtl');
+                            }
+
+                            span.onclick = () => {
+                                if (Storage.loadBool(`speak_${language.code}`, language.defaultSpeak)) {
+                                    PlaybackController.playWord(line, language.code, span, index);
+                                }
+                            };
+
+                            span.onkeydown = (e) => {
+                                if (e.key === 'Enter' || e.key === ' ') {
+                                    e.preventDefault();
+                                    span.click();
+                                }
+                            };
+
+                            pairDiv.appendChild(span);
+
+                            // Add line break if multiple lines
+                            if (lineIndex < textLines.length - 1) {
+                                pairDiv.appendChild(document.createElement('br'));
+                            }
+                        });
+                    }
+                });
+
+                if (pairDiv.children.length > 0) {
+                    fragment.appendChild(pairDiv);
+                }
+            },
+
+            applyLanguageStyling() {
+                // Apply RTL and font styling to all language elements
+                AppConfig.availableLanguages.forEach(language => {
+                    const elements = this.display.querySelectorAll(`[lang="${language.code}"]`);
+                    elements.forEach(el => {
+                        el.classList.add(`language-font-${language.code}`);
+                        if (language.rtl) {
+                            el.setAttribute('dir', 'rtl');
+                        }
+                    });
+                });
+            },
+
+            isNewline(word) {
+                // Check if all translations are newlines
+                const displayLanguages = LanguageManager.getDisplayLanguages();
+                return displayLanguages.every(language => {
+                    const text = word[language.code] || word.translations?.[language.code];
+                    return text === "\n";
+                });
+            },
+
+            clearHighlights() {
+                if (!this.display) return;
+                this.display.querySelectorAll('span').forEach(span => {
+                    span.classList.remove('highlight-light', 'highlight-dark');
+                });
+            },
+
+            highlightElement(element, index) {
+                this.clearHighlights();
+                if (element) {
+                    const themeClass = document.body.dataset.theme === 'dark' ? 'highlight-dark' : 'highlight-light';
+                    element.classList.add(themeClass);
+                    AppState.lastHighlightedIndex = index;
+
+                    element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    ScreenReader.announce(`Highlighted: ${element.textContent}`);
+                }
+            }
+        };
+
+        // ========== PLAYBACK CONTROLLER ==========
+        const PlaybackController = {
+            async playExample() {
+                if (AppState.isPlaying) return;
+
+                const example = AppState.getCurrentExample();
+                if (!example || example.length === 0) return;
+
+                AppState.isPlaying = true;
+                ScreenReader.announce('Playback started');
+
+                if (AppState.currentWordIndex >= example.length) {
+                    AppState.currentWordIndex = 0;
+                }
+
+                await this.speakNextWord();
+            },
+
+            pauseExample() {
+                AppState.isPlaying = false;
+                TTSManager.cancel();
+                ScreenReader.announce('Playback paused');
+            },
+
+            restartExample() {
+                this.pauseExample();
+                ExampleRenderer.clearHighlights();
+                AppState.currentWordIndex = 0;
+                this.playExample();
+                ScreenReader.announce('Playback restarted');
+            },
+
+            async speakNextWord() {
+                const example = AppState.getCurrentExample();
+                if (!AppState.isPlaying || !example || AppState.currentWordIndex >= example.length) {
+                    AppState.isPlaying = false;
+                    ExampleRenderer.clearHighlights();
+                    ScreenReader.announce('Playback completed');
+                    return;
+                }
+
+                const word = example[AppState.currentWordIndex];
+                if (!word || this.isNewline(word)) {
+                    AppState.currentWordIndex++;
+                    await this.speakNextWord();
+                    return;
+                }
+
+                this.highlightCurrentWord(AppState.currentWordIndex);
+
+                const delay = this.getPlaybackDelay();
+
+                const speakLanguages = LanguageManager.getSpeakLanguages();
+                let anyWordSpoken = false;
+
+                for (const language of speakLanguages) {
+                    const text = word[language.code] || word.translations?.[language.code];
+                    if (text && text !== "\n") {
+                        await this.speakWord(text, language.code, AppState.currentWordIndex, true);
+                        anyWordSpoken = true;
+                    }
+                }
+
+                if (AppState.isPlaying && anyWordSpoken) {
+                    AppState.currentWordIndex++;
+                    setTimeout(() => {
+                        if (AppState.isPlaying) this.speakNextWord();
+                    }, delay);
+                } else if (!anyWordSpoken) {
+                    AppState.currentWordIndex++;
+                    if (AppState.isPlaying) {
+                        setTimeout(() => {
+                            if (AppState.isPlaying) this.speakNextWord();
+                        }, delay);
+                    }
+                }
+            },
+
+            highlightCurrentWord(index) {
+                const example = AppState.getCurrentExample();
+                if (!example || index >= example.length) return;
+
+                const word = example[index];
+                if (!word) return;
+
+                const pairDiv = ExampleRenderer.display?.querySelector(`.word-pair[data-index="${index}"]`);
+                if (!pairDiv) return;
+
+                ExampleRenderer.clearHighlights();
+
+                const displayLanguages = LanguageManager.getDisplayLanguages();
+
+                for (const language of displayLanguages) {
+                    const text = word[language.code] || word.translations?.[language.code];
+                    if (text && text !== "\n") {
+                        const span = pairDiv.querySelector(`span[lang="${language.code}"]`);
+                        if (span) {
+                            ExampleRenderer.highlightElement(span, index);
+                            break; // Highlight only the first available language
+                        }
+                    }
+                }
+            },
+
+            async speakWord(text, lang, index, autoAdvance = false) {
+                return new Promise(resolve => {
+                    if (!text || text === "\n") {
+                        resolve();
+                        return;
+                    }
+
+                    TTSManager.speak(text, lang, () => {
+                        resolve();
+                    });
+                });
+            },
+
+            playWord(text, lang, span, index) {
+                if (!text || text === "\n") return;
+
+                AppState.currentWordIndex = index;
+                ExampleRenderer.highlightElement(span, index);
+                TTSManager.cancel();
+                this.speakWord(text, lang, index, false);
+            },
+
+            continueFromCurrent() {
+                if (!AppState.isPlaying) {
+                    this.playExample();
+                }
+            },
+
+            isNewline(word) {
+                const speakLanguages = LanguageManager.getSpeakLanguages();
+                return speakLanguages.every(language => {
+                    const text = word[language.code] || word.translations?.[language.code];
+                    return text === "\n";
+                });
+            },
+
+            getPlaybackDelay() {
+                const delaySec = parseFloat(document.getElementById('playbackDelay')?.value || Storage.load(CONSTANTS.STORAGE_KEYS.PLAYBACK_DELAY, CONSTANTS.DEFAULT_VALUES.PLAYBACK_DELAY));
+                const delayMs = Math.min(Math.max(isNaN(delaySec) ? 1500 : delaySec * 1000, 500), 5000);
+                return delayMs;
+            },
+        };
+
+        // ========== QUIZ SYSTEM ==========
+        const QuizSystem = {
+            data: [],
+            currentQuestion: 0,
+            score: 0,
+            attempts: 0,
+            incorrectOnly: false,
+
+            buildFromExample(example) {
+                if (!example || (Array.isArray(example) && example.length === 0)) {
+                    console.warn('No example data provided to build quiz');
+                    this.data = [];
+                    return;
+                }
+
+                // Handle both array and object formats
+                if (Array.isArray(example)) {
+                    this.data = example.map(word => ({
+                        ...word,
+                        attempted: false,
+                        correct: false
+                    }));
+                } else if (typeof example === 'object') {
+                    // Single object - wrap in array
+                    this.data = [{
+                        ...example,
+                        attempted: false,
+                        correct: false
+                    }];
+                } else {
+                    console.error('Unexpected example format:', example);
+                    this.data = [];
+                    return;
+                }
+
+                this.currentQuestion = 0;
+                this.score = 0;
+                this.attempts = 0;
+                this.incorrectOnly = false;
+                this.render();
+            },
+
+            render() {
+                const quizContainer = document.getElementById("quiz");
+                if (!quizContainer) return;
+
+                quizContainer.innerHTML = "";
+
+                if (!this.data || this.data.length === 0) {
+                    quizContainer.textContent = "No quiz available for this example.";
+                    return;
+                }
+
+                const filteredQuestions = this.getFilteredQuestions();
+
+                if (filteredQuestions.length === 0) {
+                    if (this.incorrectOnly) {
+                        this.showNoIncorrectMessage(quizContainer);
+                    } else {
+                        this.showCompletionMessage(quizContainer);
+                    }
+                    return;
+                }
+
+                if (this.currentQuestion >= filteredQuestions.length) {
+                    this.showCompletionMessage(quizContainer);
+                    return;
+                }
+
+                const question = filteredQuestions[this.currentQuestion];
+                const questionLang = document.querySelector('input[name="questionLang"]:checked')?.value;
+                const answerLang = document.querySelector('input[name="answerLang"]:checked')?.value;
+
+                if (!this.validateLanguages(questionLang, answerLang, quizContainer)) return;
+
+                this.renderQuestion(question, questionLang, quizContainer);
+                this.renderOptions(question, answerLang, quizContainer);
+                ExampleRenderer.applyLanguageStyling();
+            },
+
+            getFilteredQuestions() {
+                if (!this.incorrectOnly) {
+                    return this.data;
+                }
+                return this.data.filter(q => q.attempted && !q.correct);
+            },
+
+            showNoIncorrectMessage(container) {
+                const messageDiv = document.createElement("div");
+                messageDiv.className = "quiz-completion";
+                messageDiv.innerHTML = `
+            <h4>No Incorrect Answers! 🎉</h4>
+            <p>You have answered all questions correctly.</p>
+            <p>Final Score: ${this.score} out of ${this.attempts}</p>
+            <p>Success Rate: ${this.attempts > 0 ? Math.round((this.score / this.attempts) * 100) : 0}%</p>
+            <button id="showAllQuestions" style="margin-top: 1em; padding: 0.5em 1em;">Show All Questions</button>
+        `;
+                container.appendChild(messageDiv);
+
+                document.getElementById('showAllQuestions')?.addEventListener('click', () => {
+                    this.incorrectOnly = false;
+                    this.currentQuestion = 0;
+                    this.render();
+                });
+            },
+
+            showCompletionMessage(container) {
+                const completionDiv = document.createElement("div");
+                completionDiv.className = "quiz-completion";
+                completionDiv.innerHTML = `
+            <h4>Quiz Complete! 🎉</h4>
+            <p>Final Score: ${this.score} out of ${this.attempts}</p>
+            <p>Success Rate: ${this.attempts > 0 ? Math.round((this.score / this.attempts) * 100) : 0}%</p>
+            <button id="restartQuiz" style="margin-top: 1em; padding: 0.5em 1em;">Restart Quiz</button>
+            ${this.incorrectOnly ? '<button id="showAllQuestions" style="margin-top: 0.5em; padding: 0.5em 1em; background: #666;">Show All Questions</button>' : ''}
+        `;
+                container.appendChild(completionDiv);
+
+                document.getElementById('restartQuiz')?.addEventListener('click', () => {
+                    this.currentQuestion = 0;
+                    this.score = 0;
+                    this.attempts = 0;
+                    this.resetQuestionStates();
+                    this.render();
+                });
+
+                const showAllBtn = document.getElementById('showAllQuestions');
+                if (showAllBtn) {
+                    showAllBtn.addEventListener('click', () => {
+                        this.incorrectOnly = false;
+                        this.currentQuestion = 0;
+                        this.render();
+                    });
+                }
+            },
+
+            validateLanguages(questionLang, answerLang, container) {
+                if (!questionLang || !answerLang) {
+                    container.textContent = "Select both Question and Answer languages.";
+                    return false;
+                }
+                if (questionLang === answerLang) {
+                    container.textContent = "Answer language must be different from Question.";
+                    return false;
+                }
+                return true;
+            },
+
+            renderQuestion(question, questionLang, container) {
+                if (!question) {
+                    console.error('Invalid question data:', question);
+                    return;
+                }
+
+                const questionText = question[questionLang] || question.translations?.[questionLang];
+                if (!questionText) {
+                    console.error('No question text found for language:', questionLang);
+                    return;
+                }
+
+                const questionEl = document.createElement("div");
+                questionEl.className = "quiz-question";
+                questionEl.textContent = questionText;
+                questionEl.lang = questionLang;
+                questionEl.style.cursor = "pointer";
+                questionEl.tabIndex = 0;
+                questionEl.setAttribute('role', 'button');
+                questionEl.setAttribute('aria-label', `Listen to question: ${questionText}`);
+
+                // Apply language styling
+                const language = AppConfig.getLanguage(questionLang);
+                if (language) {
+                    questionEl.classList.add(`language-font-${questionLang}`);
+                    if (language.rtl) {
+                        questionEl.setAttribute('dir', 'rtl');
+                    }
+                }
+
+                questionEl.addEventListener("click", () => {
+                    TTSManager.speak(questionText, questionLang);
+                });
+                questionEl.addEventListener("keydown", (e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        TTSManager.speak(questionText, questionLang);
+                    }
+                });
+                container.appendChild(questionEl);
+            },
+
+            renderOptions(question, answerLang, container) {
+                const options = this.generateOptions(question, answerLang);
+                const optionsContainer = document.createElement("div");
+                optionsContainer.className = "quiz-options";
+
+                options.forEach(option => {
+                    const optionEl = this.createOptionElement(option, answerLang, question);
+                    optionsContainer.appendChild(optionEl);
+                });
+
+                container.appendChild(optionsContainer);
+            },
+
+            generateOptions(question, answerLang) {
+                const correctAnswer = question[answerLang] || question.translations?.[answerLang];
+                if (!correctAnswer) {
+                    console.warn('No correct answer found for question:', question);
+                    return [];
+                }
+
+                let options = this.data
+                    .map(q => q[answerLang] || q.translations?.[answerLang])
+                    .filter((val, idx, arr) => val && arr.indexOf(val) === idx)
+                    .filter(opt => opt !== correctAnswer)
+                    .sort(() => Math.random() - 0.5)
+                    .slice(0, 3);
+
+                options = [correctAnswer, ...options].sort(() => Math.random() - 0.5);
+                return options;
+            },
+
+            createOptionElement(option, answerLang, question) {
+                const optionEl = document.createElement("div");
+                optionEl.lang = answerLang;
+                optionEl.className = "quiz-option touch-target";
+                optionEl.textContent = option;
+                optionEl.tabIndex = 0;
+                optionEl.setAttribute('role', 'button');
+                optionEl.setAttribute('aria-label', `Select: ${option}`);
+
+                // Apply language styling
+                const language = AppConfig.getLanguage(answerLang);
+                if (language) {
+                    optionEl.classList.add(`language-font-${answerLang}`);
+                    if (language.rtl) {
+                        optionEl.setAttribute('dir', 'rtl');
+                    }
+                }
+
+                optionEl.addEventListener("click", () => {
+                    TTSManager.speak(option, answerLang);
+                    this.handleAnswer(optionEl, option, question, answerLang);
+                });
+
+                optionEl.addEventListener("keydown", (e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        TTSManager.speak(option, answerLang);
+                        this.handleAnswer(optionEl, option, question, answerLang);
+                    }
+                });
+
+                return optionEl;
+            },
+
+            handleAnswer(optionEl, selectedAnswer, question, answerLang) {
+                const correctAnswer = question[answerLang] || question.translations?.[answerLang];
+
+                if (selectedAnswer === correctAnswer) {
+                    if (!question.correct) {
+                        optionEl.classList.add("correct");
+                        this.score++;
+                        question.correct = true;
+                        question.attempted = true;
+                        this.attempts++;
+                        ScreenReader.announce('Correct answer!');
+                    }
+                } else {
+                    optionEl.classList.add("incorrect");
+                    question.correct = false;
+                    question.attempted = true;
+                    this.attempts++;
+                    ScreenReader.announce('Incorrect answer. Try again.');
+                }
+
+                const scoreElement = document.getElementById("score");
+                if (scoreElement) {
+                    scoreElement.textContent = `Score: ${this.score}/${this.attempts}`;
+                }
+            },
+
+            nextQuestion() {
+                const filteredQuestions = this.getFilteredQuestions();
+                if (this.currentQuestion < filteredQuestions.length - 1) {
+                    this.currentQuestion++;
+                    this.render();
+                } else if (this.currentQuestion === filteredQuestions.length - 1) {
+                    this.currentQuestion = filteredQuestions.length;
+                    this.render();
+                }
+            },
+
+            previousQuestion() {
+                if (this.currentQuestion > 0) {
+                    this.currentQuestion--;
+                    this.render();
+                }
+            },
+
+            retry() {
+                this.currentQuestion = 0;
+                if (!this.incorrectOnly) {
+                    this.resetQuestionStates();
+                    this.score = 0;
+                    this.attempts = 0;
+                }
+                this.render();
+            },
+
+            resetQuestionStates() {
+                this.data.forEach(question => {
+                    question.attempted = false;
+                    question.correct = false;
+                });
+            }
+        };
+
+        // ========== NAVIGATION CONTROLLER ==========
+        const NavigationController = {
+            topicSelect: null,
+            titleSelect: null,
+            exampleSelect: null,
+
+            init(topicSelect, titleSelect, exampleSelect) {
+                this.topicSelect = topicSelect;
+                this.titleSelect = titleSelect;
+                this.exampleSelect = exampleSelect;
+
+                if (topicSelect) {
+                    topicSelect.addEventListener('change', (e) => this.handleTopicChange(e.target.value));
+                }
+                if (titleSelect) {
+                    titleSelect.addEventListener('change', (e) => this.handleTitleChange(+e.target.value));
+                }
+                if (exampleSelect) {
+                    exampleSelect.addEventListener('change', (e) => this.handleExampleChange(+e.target.value));
+                }
+            },
+
+            async handleTopicChange(topicFilename) {
+                if (!topicFilename) return;
+
+                try {
+                    Storage.save(CONSTANTS.STORAGE_KEYS.CURRENT_TOPIC, topicFilename);
+                    await AppController.loadTopic(topicFilename);
+                    ScreenReader.announce(`Topic changed to ${topicFilename}`);
+                } catch (error) {
+                    console.error('Error changing topic:', error);
+                    ScreenReader.announce(`Error changing topic: ${error.message}`);
+                }
+            },
+
+            handleTitleChange(titleIndex) {
+                AppState.currentTitle = titleIndex;
+                AppController.populateExamples();
+                ScreenReader.announce(`Title changed to ${titleIndex + 1}`);
+            },
+
+            handleExampleChange(exampleIndex) {
+                AppState.currentExample = exampleIndex;
+                AppController.loadExample();
+                ScreenReader.announce(`Example changed to ${exampleIndex + 1}`);
+            },
+
+            nextExample() {
+                const currentTitle = AppState.currentTopic?.titles?.[AppState.currentTitle];
+                const maxExamples = currentTitle?.examples?.length || 0;
+
+                if (AppState.currentExample < maxExamples - 1) {
+                    AppState.currentExample++;
+                    if (this.exampleSelect) {
+                        this.exampleSelect.value = AppState.currentExample;
+                    }
+                    AppController.loadExample();
+                } else {
+                    const maxTitles = AppState.currentTopic?.titles?.length || 0;
+                    if (AppState.currentTitle < maxTitles - 1) {
+                        AppState.currentTitle++;
+                        AppState.currentExample = 0;
+                        if (this.titleSelect) {
+                            this.titleSelect.value = AppState.currentTitle;
+                        }
+                        AppController.populateExamples();
+                    } else {
+                        AppState.currentTitle = 0;
+                        AppState.currentExample = 0;
+                        if (this.titleSelect) {
+                            this.titleSelect.value = AppState.currentTitle;
+                        }
+                        AppController.populateExamples();
+                    }
+                }
+            },
+
+            previousExample() {
+                if (AppState.currentExample > 0) {
+                    AppState.currentExample--;
+                    if (this.exampleSelect) {
+                        this.exampleSelect.value = AppState.currentExample;
+                    }
+                    AppController.loadExample();
+                } else {
+                    if (AppState.currentTitle > 0) {
+                        AppState.currentTitle--;
+                        const prevTitle = AppState.currentTopic?.titles?.[AppState.currentTitle];
+                        AppState.currentExample = (prevTitle?.examples?.length || 1) - 1;
+                        if (this.titleSelect) {
+                            this.titleSelect.value = AppState.currentTitle;
+                        }
+                        AppController.populateExamples();
+                    } else {
+                        const maxTitles = AppState.currentTopic?.titles?.length || 0;
+                        AppState.currentTitle = maxTitles - 1;
+                        const lastTitle = AppState.currentTopic?.titles?.[AppState.currentTitle];
+                        AppState.currentExample = (lastTitle?.examples?.length || 1) - 1;
+                        if (this.titleSelect) {
+                            this.titleSelect.value = AppState.currentTitle;
+                        }
+                        AppController.populateExamples();
+                    }
+                }
+            }
+        };
+
+        // ========== KEYBOARD SHORTCUT MANAGER ==========
+        const KeyboardManager = {
+            init() {
+                document.addEventListener('keydown', this.handleKeydown.bind(this));
+            },
+
+            handleKeydown(event) {
+                // Don't trigger shortcuts when user is typing in inputs
+                if (event.target.tagName === 'INPUT' || event.target.tagName === 'SELECT' || event.target.tagName === 'TEXTAREA') {
+                    return;
+                }
+
+                switch (event.key) {
+                    case ' ':
+                        event.preventDefault();
+                        if (AppState.isPlaying) {
+                            PlaybackController.pauseExample();
+                        } else {
+                            PlaybackController.playExample();
+                        }
+                        break;
+                    case 'ArrowRight':
+                        event.preventDefault();
+                        NavigationController.nextExample();
+                        break;
+                    case 'ArrowLeft':
+                        event.preventDefault();
+                        NavigationController.previousExample();
+                        break;
+                    case 'r':
+                    case 'R':
+                        event.preventDefault();
+                        PlaybackController.restartExample();
+                        break;
+                    case 'n':
+                    case 'N':
+                        event.preventDefault();
+                        QuizSystem.nextQuestion();
+                        break;
+                    case 's':
+                    case 'S':
+                        event.preventDefault();
+                        if (!document.getElementById('settingsThaiFont')) {
+                            SettingsManager.show();
+                        }
+                        break;
+                    case 'Escape':
+                        if (document.getElementById('settingsThaiFont')) {
+                            event.preventDefault();
+                            SettingsManager.close();
+                        }
+                        break;
+                }
+            }
+        };
+
+        // ========== MAIN APPLICATION CONTROLLER ==========
+        const AppController = {
+            async safeInitialize() {
+                // Clear any problematic stored topics on startup
+                const topicList = await TopicManager.loadTopicList();
+                if (topicList.length > 0) {
+                    const currentTopic = Storage.load(CONSTANTS.STORAGE_KEYS.CURRENT_TOPIC);
+                    const validTopic = topicList.find(topic => topic.topicFilename === currentTopic);
+
+                    if (!validTopic) {
+                        // Clear invalid topic from storage
+                        Storage.remove(CONSTANTS.STORAGE_KEYS.CURRENT_TOPIC);
+                        console.log('Cleared invalid topic from storage:', currentTopic);
+                    }
+                }
+            },
+
+            async init() {
+                // Load configuration first
+                await AppConfig.load();
+
+                // Safe initialization - clear invalid topics before proceeding
+                await this.safeInitialize();
+
+                AppState.initialize();
+                ThemeManager.init();
+                FontManager.apply();
+                TTSManager.initialize();
+                LanguageManager.init();
+                KeyboardManager.init();
+                // this.setupEventListeners(); // ← THIS METHOD DOESN'T EXIST, REMOVED
+                await this.loadTopics();
+                this.setupPlaybackScrollHandling();
+                ScreenReader.announce('Language learning application loaded successfully');
+            },
+
+            async loadTopicList() {
+                return await TopicManager.loadTopicList();
+            },
+
+            async loadTopics() {
+                try {
+                    const topicList = await this.loadTopicList();
+                    this.populateTopicSelect(topicList);
+
+                    const currentTopicFilename = Storage.load(CONSTANTS.STORAGE_KEYS.CURRENT_TOPIC);
+                    if (currentTopicFilename) {
+                        await this.loadTopic(currentTopicFilename);
+                    } else if (topicList.length > 0) {
+                        await this.loadTopic(topicList[0].topicFilename);
+                    }
+                } catch (error) {
+                    console.error('Error loading topics:', error);
+                    ErrorHandler.showErrorToUser('Failed to load topics. Please check your connection.');
+                }
+            },
+
+            async loadTopic(filename) {
+                Utils.setLoadingState(true);
+                try {
+                    // Validate filename exists in topic list first
+                    const topicList = await this.loadTopicList();
+                    const validTopic = topicList.find(topic => topic.topicFilename === filename);
+
+                    if (!validTopic) {
+                        throw new Error(`Topic "${filename}" not found in available topics.`);
+                    }
+
+                    const topicData = await TopicManager.loadTopic(filename);
+                    AppState.currentTopic = topicData;
+                    Storage.save(CONSTANTS.STORAGE_KEYS.CURRENT_TOPIC, filename);
+                    this.populateTitles();
+                    ErrorHandler.showSuccessMessage(`Loaded topic: ${topicData.topic}`);
+                } catch (error) {
+                    console.error('Error loading topic:', error);
+
+                    // Fallback to first available topic or create demo data
+                    const topicList = await this.loadTopicList();
+                    if (topicList.length > 0) {
+                        const fallbackTopic = topicList[0].topicFilename;
+                        if (fallbackTopic !== filename) {
+                            ErrorHandler.showErrorToUser(`Error loading "${filename}". Loading "${topicList[0].topic}" instead.`);
+                            await this.loadTopic(fallbackTopic);
+                        } else {
+                            // Create demo data if no topics available
+                            this.createDemoTopic();
+                        }
+                    } else {
+                        this.createDemoTopic();
+                    }
+                } finally {
+                    Utils.setLoadingState(false);
+                }
+            },
+
+            createDemoTopic() {
+                AppState.currentTopic = {
+                    topic: "Demo Topic",
+                    titles: [
+                        {
+                            title: "Demo Phrases",
+                            examples: [
+                                {
+                                    id: "demo-1",
+                                    translations: {
+                                        "th-TH": "สวัสดี",
+                                        "en-US": "Hello",
+                                        "es-ES": "Hola"
+                                    }
+                                },
+                                {
+                                    id: "demo-2",
+                                    translations: {
+                                        "th-TH": "ขอบคุณ",
+                                        "en-US": "Thank you",
+                                        "es-ES": "Gracias"
+                                    }
+                                }
+                            ]
+                        }
+                    ]
+                };
+                this.populateTitles();
+                ErrorHandler.showSuccessMessage("Loaded demo topic with sample phrases");
+            },
+
+            populateTopicSelect(topicList) {
+                const topicSelect = document.getElementById('topicSelect');
+                if (!topicSelect) return;
+
+                topicSelect.innerHTML = '';
+
+                if (topicList.length === 0) {
+                    topicSelect.innerHTML = '<option value="">No topics available</option>';
+                    topicSelect.disabled = true;
+                    return;
+                }
+
+                topicList.forEach(topic => {
+                    const option = document.createElement('option');
+                    option.value = topic.topicFilename;
+                    option.textContent = topic.topic;
+                    topicSelect.appendChild(option);
+                });
+
+                // Validate that the saved topic exists in the current list
+                const savedTopic = Storage.load(CONSTANTS.STORAGE_KEYS.CURRENT_TOPIC, topicList[0].topicFilename);
+                const validTopic = topicList.find(topic => topic.topicFilename === savedTopic);
+                topicSelect.value = validTopic ? savedTopic : topicList[0].topicFilename;
+                topicSelect.disabled = false;
+            },
+
+            populateTitles() {
+                const titleSelect = document.getElementById('titleSelect');
+                if (!titleSelect) return;
+
+                titleSelect.innerHTML = '';
+
+                if (!AppState.currentTopic?.titles?.length) {
+                    titleSelect.innerHTML = '<option>No titles available</option>';
+                    titleSelect.disabled = true;
+                    return;
+                }
+
+                AppState.currentTopic.titles.forEach((titleItem, index) => {
+                    const option = document.createElement('option');
+                    option.value = index;
+                    option.textContent = titleItem.title || `Title ${index + 1}`;
+                    option.style.fontFamily = 'Arial, sans-serif';
+                    option.style.fontSize = '1rem';
+                    titleSelect.appendChild(option);
+                });
+
+                AppState.currentTitle = Math.min(AppState.currentTitle, AppState.currentTopic.titles.length - 1);
+                titleSelect.value = AppState.currentTitle;
+                titleSelect.disabled = false;
+                this.populateExamples();
+            },
+
+            populateExamples() {
+                const exampleSelect = document.getElementById('exampleSelect');
+                if (!exampleSelect) return;
+
+                exampleSelect.innerHTML = '';
+
+                const currentTitle = AppState.currentTopic?.titles?.[AppState.currentTitle];
+                const examples = currentTitle?.examples;
+                if (!examples?.length) {
+                    exampleSelect.innerHTML = '<option>No examples available</option>';
+                    exampleSelect.disabled = true;
+                    return;
+                }
+
+                examples.forEach((example, index) => {
+                    const option = document.createElement('option');
+                    option.value = index;
+                    option.textContent = `Example ${index + 1}`;
+                    option.style.fontFamily = 'Arial, sans-serif';
+                    option.style.fontSize = '1rem';
+                    exampleSelect.appendChild(option);
+                });
+
+                AppState.currentExample = Math.min(AppState.currentExample, examples.length - 1);
+                exampleSelect.value = AppState.currentExample;
+                exampleSelect.disabled = false;
+                this.loadExample();
+            },
+
+            loadExample() {
+                AppState.saveNavigation();
+                this.renderExample();
+
+                AppState.currentWordIndex = 0;
+                AppState.isPlaying = false;
+                TTSManager.cancel();
+
+                this.updateExampleNumber();
+                this.updateProgressBar();
+
+                setTimeout(() => this.ensureTopicSelectionVisible(), 200);
+            },
+
+            renderExample() {
+                const currentTitle = AppState.currentTopic?.titles?.[AppState.currentTitle];
+                const examples = currentTitle?.examples;
+                const example = examples?.[AppState.currentExample] || [];
+                ExampleRenderer.render(example);
+                QuizSystem.buildFromExample(example);
+            },
+
+            updateExampleNumber() {
+                const exampleNumberElement = document.getElementById('currentExampleNumber');
+                if (exampleNumberElement) {
+                    exampleNumberElement.textContent = AppState.currentExample + 1;
+                }
+            },
+
+            updateProgressBar() {
+                const progressBar = document.getElementById('progressBar');
+                if (progressBar && AppState.currentTopic) {
+                    const progress = ProgressTracker.getCompletionPercentage(
+                        AppState.currentTopic.topicFilename,
+                        AppState.currentTopic
+                    );
+                    progressBar.style.width = `${progress}%`;
+                }
+            },
+
+            ensureTopicSelectionVisible() {
+                const topicSelection = document.getElementById('topicSelectionControls');
+                const contentArea = document.getElementById('contentArea');
+
+                if (topicSelection && contentArea) {
+                    setTimeout(() => {
+                        const topicSelectionRect = topicSelection.getBoundingClientRect();
+                        const headerRect = document.querySelector('header').getBoundingClientRect();
+
+                        if (topicSelectionRect.top < headerRect.bottom + 10) {
+                            const scrollTop = contentArea.scrollTop;
+                            const targetScroll = scrollTop - (headerRect.bottom - topicSelectionRect.top) - 20;
+                            contentArea.scrollTo({
+                                top: targetScroll,
+                                behavior: 'smooth'
+                            });
+                        }
+                    }, 100);
+                }
+            },
+
+            setupPlaybackScrollHandling() {
+                const observer = new MutationObserver(Utils.throttle((mutations) => {
+                    mutations.forEach((mutation) => {
+                        if (mutation.type === 'attributes' &&
+                            (mutation.target.classList.contains('highlight-light') ||
+                                mutation.target.classList.contains('highlight-dark'))) {
+                            this.ensureTopicSelectionVisible();
+                        }
+                    });
+                }, 100));
+
+                const exampleDisplay = document.getElementById('exampleDisplay');
+                if (exampleDisplay) {
+                    observer.observe(exampleDisplay, {
+                        attributes: true,
+                        attributeFilter: ['class'],
+                        subtree: true
+                    });
+                }
+            },
+
+            initSPA() {
+                const contentArea = document.getElementById('contentArea');
+                const controlsArea = document.getElementById('controlsArea');
+
+                if (!contentArea || !controlsArea) return;
+
+                contentArea.innerHTML = this.getMainHTML();
+                controlsArea.innerHTML = this.getControlsHTML();
+
+                this.bindUIElements();
+                this.restoreSettings();
+
+                contentArea.scrollTop = 0;
+            },
+
+            getMainHTML() {
+                return `
+<div class="selection-header">Text To Speech</div>
+
+<!-- Progress Bar -->
+<div style="margin: 0.5em 0;">
+    <div class="progress-bar">
+        <div id="progressBar" class="progress-fill" style="width: 0%"></div>
+    </div>
+</div>
+
+<details class="topic-options-details" id="topicOptionsDetails">
+    <summary>Topic & Language Options</summary>
+    <div class="topic-options-content">
+        <div id="topicSelectionControls" class="topic-selection-controls">
+            <label>Topic: <select id="topicSelect" aria-label="Select topic"></select></label>
+            <label>Title: <select id="titleSelect" aria-label="Select title"></select></label>
+            <label>Example: <select id="exampleSelect" aria-label="Select example"></select></label>
+        </div>
+        
+        <div class="language-controls">
+            <details>
+                <summary style="font-weight: bold;">Language Options</summary>
+                <div class="language-controls-content">
+                    <!-- Dynamic Language Grid -->
+                    <div class="language-controls-grid">
+                        <div class="language-grid">
+                            <div class="language-grid-header">Language</div>
+                            <div class="language-grid-header">Display</div>
+                            <div class="language-grid-header">Speak</div>
+                            <!-- Language rows will be dynamically inserted here -->
+                        </div>
+                    </div>
+                    
+                    <!-- Playback Delay -->
+                    <div class="language-delay-row">
+                        <span class="delay-label">Reading delay (secs)</span>
+                        <input type="number" id="playbackDelay" class="delay-input" value="0.5" min="0.5" max="5.0" step="1.0" aria-label="Playback delay in seconds">
+                    </div>
+                </div>
+            </details>
+        </div>
+    </div>
+</details>
+
+<section id="exampleSec">
+    <div id="exampleDisplay" aria-live="polite"></div>
+    <div id="exampleControls" class="controls">
+        <div class="example-controls-row">
+            <button id="playBtn" aria-label="Play example" class="touch-target">▶️</button>
+            <button id="pauseBtn" aria-label="Pause example" class="touch-target">⏸️</button>
+            <button id="restartBtn" aria-label="Restart example" class="touch-target">⏮️</button>
+            <div class="example-number-container">
+                <span class="example-number-label">Example</span>
+                <span id="currentExampleNumber" class="example-number">1</span>
+            </div>
+            <button id="prevExample" aria-label="Previous example" class="touch-target">⬅️</button>
+            <button id="nextExample" aria-label="Next example" class="touch-target">➡️</button>
+        </div>
+    </div>
+</section>
+
+<section id="quizSec">
+    <h3>Practice Quiz</h3>
+
+    <div id="quiz" aria-live="polite"></div>
+    <div id="quizControls">
+        <!-- Dynamic Language selection -->
+        <div class="quiz-row quiz-row-top">
+            <div class="lang-option">
+                <label>Question Language:</label>
+                <div class="radio-group" id="questionLangGroup">
+                    <!-- Dynamic radio buttons will be inserted here -->
+                </div>
+            </div>
+            <div class="lang-option">
+                <label>Answer Language:</label>
+                <div class="radio-group" id="answerLangGroup">
+                    <!-- Dynamic radio buttons will be inserted here -->
+                </div>
+            </div>
+        </div>
+
+        <div class="quiz-row quiz-row-bottom">
+            <button id="prevQ" aria-label="Previous question" class="touch-target">⬅️</button>
+            <button id="nextQ" aria-label="Next question" class="touch-target">➡️</button>
+            <button id="retryQuiz" aria-label="Retry quiz" class="touch-target">🔄</button>
+            <span id="score">Score: 0/0</span>
+            <label>
+                <input type="checkbox" id="incorrectOnly" aria-label="Show only incorrect questions">
+                Incorrect Only
+            </label>
+        </div>
+    </div>
+</section>`;
+            },
+
+            getControlsHTML() {
+                return ``;
+            },
+
+            bindUIElements() {
+                ExampleRenderer.init(document.getElementById('exampleDisplay'));
+                NavigationController.init(
+                    document.getElementById('topicSelect'),
+                    document.getElementById('titleSelect'),
+                    document.getElementById('exampleSelect')
+                );
+
+                document.addEventListener('change', Utils.debounce((e) => {
+                    this.handleSettingChange(e);
+                }, 300));
+
+                document.getElementById('playBtn')?.addEventListener('click', () => {
+                    PlaybackController.playExample();
+                    this.closeTopicOptions();
+                    setTimeout(() => this.ensureTopicSelectionVisible(), 300);
+                });
+                document.getElementById('pauseBtn')?.addEventListener('click', () => {
+                    PlaybackController.pauseExample();
+                    this.closeTopicOptions();
+                });
+                document.getElementById('restartBtn')?.addEventListener('click', () => {
+                    PlaybackController.restartExample();
+                    this.closeTopicOptions();
+                });
+                document.getElementById('nextExample')?.addEventListener('click', () => {
+                    NavigationController.nextExample();
+                    this.closeTopicOptions();
+                });
+                document.getElementById('prevExample')?.addEventListener('click', () => {
+                    NavigationController.previousExample();
+                    this.closeTopicOptions();
+                });
+
+                document.getElementById('prevQ')?.addEventListener('click', () => {
+                    QuizSystem.previousQuestion();
+                    this.closeTopicOptions();
+                });
+                document.getElementById('nextQ')?.addEventListener('click', () => {
+                    QuizSystem.nextQuestion();
+                    this.closeTopicOptions();
+                });
+                document.getElementById('retryQuiz')?.addEventListener('click', () => {
+                    QuizSystem.retry();
+                    this.closeTopicOptions();
+                });
+
+                this.bindLanguageSettings();
+            },
+
+            closeTopicOptions() {
+                const topicOptionsDetails = document.getElementById('topicOptionsDetails');
+                if (topicOptionsDetails) {
+                    topicOptionsDetails.open = false;
+                }
+            },
+
+            handleSettingChange(event) {
+                const handlers = {
+                    'topicSelect': () => NavigationController.handleTopicChange(event.target.value),
+                    'titleSelect': () => NavigationController.handleTitleChange(+event.target.value),
+                    'exampleSelect': () => NavigationController.handleExampleChange(+event.target.value),
+                    'playbackDelay': () => this.handlePlaybackDelayChange(event.target),
+                    'incorrectOnly': () => this.handleIncorrectOnlyChange(event.target.checked)
+                };
+
+                const handler = handlers[event.target.id];
+                if (handler) handler();
+            },
+
+            handleIncorrectOnlyChange(checked) {
+                QuizSystem.incorrectOnly = checked;
+                QuizSystem.currentQuestion = 0;
+                QuizSystem.render();
+                ScreenReader.announce(checked ? 'Showing only incorrect questions' : 'Showing all questions');
+            },
+
+            handlePlaybackDelayChange(input) {
+                let value = parseFloat(input.value);
+                if (isNaN(value)) value = 0.5;
+                value = Math.min(Math.max(value, 0.5), 5.0);
+                value = Math.round(value * 2) / 2;
+                input.value = value;
+                Storage.save(CONSTANTS.STORAGE_KEYS.PLAYBACK_DELAY, input.value);
+                ScreenReader.announce(`Playback delay set to ${value} seconds`);
+            },
+
+            bindLanguageSettings() {
+                // Language settings are now handled by LanguageManager
+            },
+
+            restoreSettings() {
+                // Restore playback delay
+                const playbackDelay = Storage.load(CONSTANTS.STORAGE_KEYS.PLAYBACK_DELAY, CONSTANTS.DEFAULT_VALUES.PLAYBACK_DELAY);
+                const delayInput = document.getElementById('playbackDelay');
+                if (delayInput) {
+                    delayInput.value = playbackDelay;
+                }
+
+                // Restore incorrect only setting
+                const incorrectOnly = document.getElementById('incorrectOnly');
+                if (incorrectOnly) {
+                    incorrectOnly.checked = Storage.loadBool('incorrectOnly', false);
+                }
+            },
+
+            cleanup() {
+                TTSManager.cancel();
+                TopicManager.clearCache();
+                AppState.isPlaying = false;
+            }
+        };
+        // ========== INITIALIZATION ==========
+        document.addEventListener('DOMContentLoaded', () => {
+            AppController.initSPA();
+            AppController.init();
+        });
+    </script>
+
+</body>
+
+</html>
