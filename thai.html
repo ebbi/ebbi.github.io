@@ -70,17 +70,14 @@
             display: flex;
             align-items: center;
             font-family: inherit;
-            /* Will be overridden by FontManager */
         }
 
         #headerControls {
             display: flex;
             align-items: center;
             gap: 0.8em;
-            /* Equal spacing between all controls */
             height: 100%;
             font-size: 1rem;
-            /* Consistent 1rem font size */
         }
 
         .header-label {
@@ -91,7 +88,6 @@
             margin: 0;
             height: 2em;
             font-size: 1rem;
-            /* Consistent 1rem font size */
         }
 
         .header-label select {
@@ -102,7 +98,6 @@
             background: rgba(255, 255, 255, 0.1);
             color: white;
             font-size: 1rem;
-            /* Consistent 1rem font size */
             cursor: pointer;
             box-sizing: border-box;
         }
@@ -115,12 +110,10 @@
             background: var(--primary-color);
             color: white;
             font-family: Arial, sans-serif;
-            /* Ensure same font as app */
             font-size: 1rem;
-            /* Ensure same font size as dropdown */
         }
 
-        /* Header icons - completely remove button styling */
+        /* Header icons */
         #themeToggle,
         #settingsBtn {
             background: none !important;
@@ -129,7 +122,6 @@
             padding: 0.3em;
             cursor: pointer;
             font-size: 1.1rem;
-            /* Slightly larger for icons */
             height: 2em;
             width: 2em;
             display: flex;
@@ -137,7 +129,6 @@
             justify-content: center;
             transition: opacity 0.2s;
             border-radius: 4px;
-            /* Explicitly override any inherited button styles */
             line-height: normal;
             box-shadow: none;
             text-shadow: none;
@@ -149,7 +140,6 @@
             background: rgba(255, 255, 255, 0.1) !important;
         }
 
-        /* Remove dark mode button styling for header icons */
         body[data-theme="dark"] #themeToggle,
         body[data-theme="dark"] #settingsBtn {
             background: none !important;
@@ -162,7 +152,7 @@
             background: rgba(255, 255, 255, 0.1) !important;
         }
 
-        /* Remove the old settingsInline styles */
+        /* Remove old settings */
         #settingsInline {
             display: none;
         }
@@ -201,7 +191,6 @@
                 padding: 0.2em;
             }
 
-            /* Ensure mobile dropdowns use the same font as inputs */
             select,
             option {
                 font-family: Arial, sans-serif !important;
@@ -360,21 +349,6 @@
             background: #444;
         }
 
-        /* Dark theme adjustments */
-        body[data-theme="dark"] button,
-        body[data-theme="dark"] input[type="number"],
-        body[data-theme="dark"] select {
-            background: #333;
-            border: 1px solid var(--border-dark);
-            color: var(--text-dark);
-        }
-
-        body[data-theme="dark"] button:hover,
-        body[data-theme="dark"] input[type="number"]:hover,
-        body[data-theme="dark"] select:hover {
-            background: #444;
-        }
-
         body[data-theme="dark"] input[type="checkbox"] {
             accent-color: var(--primary-light);
         }
@@ -390,22 +364,12 @@
             line-height: 1.5;
         }
 
-        /* Label alignment - ensure consistent font size */
-        label {
-            display: flex;
-            align-items: center;
-            gap: 0.3em;
-            font-size: 1em;
-            /* Ensure consistent base font size */
-            white-space: nowrap;
-        }
-
         /* Label alignment */
         label {
             display: flex;
             align-items: center;
             gap: 0.3em;
-            font-size: 0.9em;
+            font-size: 1em;
             white-space: nowrap;
         }
 
@@ -578,9 +542,7 @@
         .quiz-row-top {
             justify-content: flex-start;
             gap: 0.4em;
-            /* Reduced gap for mobile */
             font-size: 0.9em;
-            /* Smaller font for quiz navigation */
         }
 
         .quiz-row-bottom {
@@ -597,9 +559,7 @@
 
             .quiz-row-top {
                 gap: 0.6em;
-                /* Restore normal gap on desktop */
                 font-size: 1em;
-                /* Normal font on desktop */
             }
         }
 
@@ -607,6 +567,13 @@
             display: flex;
             flex-wrap: wrap;
             gap: 0.4em 0.8em;
+            margin: 0.5em 0;
+        }
+
+        .lang-option {
+            display: flex;
+            align-items: center;
+            gap: 0.3em;
         }
 
         /* Example controls responsive layout */
@@ -622,7 +589,6 @@
             font-size: 1em;
             color: var(--text-light);
             margin: 0 0.1em;
-            /* Reduced margin */
         }
 
         body[data-theme="dark"] .example-label {
@@ -634,7 +600,6 @@
             display: flex;
             flex-wrap: wrap;
             gap: 0.4em;
-            /* Reduced gap for mobile */
             align-items: center;
             justify-content: center;
         }
@@ -645,7 +610,6 @@
             max-width: 280px;
             margin: 0.3em auto;
             font-size: 1rem;
-            /* Set base font size to 1rem */
         }
 
         .language-controls details {
@@ -655,7 +619,6 @@
             background: var(--background-light);
             margin: 0;
             font-size: 1rem;
-            /* Ensure all text uses 1rem */
         }
 
         body[data-theme="dark"] .language-controls details {
@@ -674,7 +637,6 @@
             align-items: center;
             justify-content: space-between;
             font-size: 1rem;
-            /* Summary uses 1rem */
         }
 
         .language-controls summary::-webkit-details-marker {
@@ -695,7 +657,6 @@
         .language-controls-content {
             padding: 0.6em 0.2em 0.2em 0.2em;
             font-size: 1rem;
-            /* Content uses 1rem */
         }
 
         .control-type {
@@ -780,7 +741,6 @@
             margin-bottom: 0.2em;
             border-bottom: 1px solid var(--border-light);
             font-size: 1rem;
-            /* Header row uses 1rem */
         }
 
         .language-controls-row {
@@ -789,17 +749,14 @@
             align-items: center;
             padding: 0.2em 0;
             font-size: 1rem;
-            /* Control rows use 1rem */
         }
 
         /* Updated Language Options panel for delay input */
         .language-controls-row .language-checkbox-group input[type="number"] {
             width: 5em;
-            /* Reduced width for 5 characters */
             height: 2em;
             padding: 0.3em;
             font-size: 1rem;
-            /* Input uses 1rem */
             text-align: center;
         }
 
@@ -810,10 +767,8 @@
             border-top: 1px solid var(--border-light);
         }
 
-
         .control-type {
             font-size: 1rem;
-            /* Control type uses 1rem */
             font-weight: bold;
             min-width: 50px;
             text-align: left;
@@ -847,7 +802,6 @@
 
         .language-title {
             font-size: 1rem;
-            /* Language titles use 1rem */
             font-weight: bold;
             text-align: center;
             margin-bottom: 0.1em;
@@ -878,7 +832,6 @@
             background: #2a2a2a;
             border-color: var(--border-dark);
         }
-
 
         body[data-theme="dark"] .language-controls-row:last-child {
             border-top-color: var(--border-dark);
@@ -933,10 +886,8 @@
         @media (max-width: 600px) {
             .example-controls-row {
                 gap: 0.3em;
-                /* Further reduced gap for mobile */
             }
 
-            /* Make Language Options details inline */
             .example-controls-row .language-controls {
                 display: inline-block;
                 margin: 0;
@@ -948,7 +899,6 @@
 
             .language-controls-row .language-checkbox-group input[type="number"] {
                 width: 4em;
-                /* Slightly smaller on mobile */
             }
 
             button {
@@ -983,7 +933,6 @@
             .language-controls {
                 max-width: 100%;
                 font-size: 0.9rem;
-                /* Slightly smaller on mobile */
             }
 
             .language-controls details {
@@ -1014,7 +963,6 @@
             .language-checkboxes {
                 gap: 0.2em;
             }
-
         }
 
         /* Desktop adjustments */
@@ -1330,17 +1278,14 @@
         #titleSelect option {
             font-family: Arial, sans-serif;
             font-size: 1rem;
-            /* Ensure same font size as dropdown */
         }
 
         /* Example number display */
         .example-number {
             font-weight: bold;
             margin: 0 0.1em;
-            /* Reduced margin */
             color: var(--primary-color);
             font-size: 0.9em;
-            /* Smaller font for mobile */
         }
 
         body[data-theme="dark"] .example-number {
@@ -1350,7 +1295,6 @@
         @media (min-width: 600px) {
             .example-number {
                 font-size: 1em;
-                /* Normal font on desktop */
             }
         }
 
@@ -1444,6 +1388,92 @@
                 justify-content: center;
             }
         }
+
+        /* NEW: Loading spinner */
+        .loading-spinner {
+            border: 2px solid #f3f3f3;
+            border-top: 2px solid var(--primary-color);
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            animation: spin 1s linear infinite;
+            display: inline-block;
+            margin-right: 0.5em;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* NEW: Progress tracking */
+        .progress-bar {
+            width: 100%;
+            height: 6px;
+            background: var(--border-light);
+            border-radius: 3px;
+            margin: 0.5em 0;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: var(--primary-color);
+            transition: width 0.3s ease;
+        }
+
+        body[data-theme="dark"] .progress-bar {
+            background: var(--border-dark);
+        }
+
+        /* NEW: Search box */
+        .search-box {
+            margin: 1em 0;
+            padding: 0.5em;
+            border: 1px solid var(--border-light);
+            border-radius: 4px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        body[data-theme="dark"] .search-box {
+            background: #333;
+            border-color: var(--border-dark);
+            color: var(--text-dark);
+        }
+
+        /* NEW: Keyboard shortcuts help */
+        .keyboard-shortcuts {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.5em;
+            margin: 1em 0;
+        }
+
+        .shortcut-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.3em 0;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .shortcut-key {
+            background: var(--background-light);
+            padding: 0.2em 0.5em;
+            border-radius: 3px;
+            font-family: monospace;
+            border: 1px solid var(--border-light);
+        }
+
+        body[data-theme="dark"] .shortcut-key {
+            background: #333;
+            border-color: var(--border-dark);
+        }
     </style>
 
 </head>
@@ -1453,9 +1483,8 @@
     <header>
         <span lang="th" id="appTitle">ฝึกฝน</span>
         <div id="headerControls">
-            <!-- Thai Font dropdown removed as requested -->
-            <button id="themeToggle" title="Toggle Day/Night">🌞</button>
-            <button id="settingsBtn" title="Settings & Help">⚙️</button>
+            <button id="themeToggle" title="Toggle Day/Night" aria-label="Toggle theme">🌞</button>
+            <button id="settingsBtn" title="Settings & Help" aria-label="Open settings">⚙️</button>
         </div>
     </header>
     <main>
@@ -1467,22 +1496,194 @@
         </div>
     </main>
 
-    <script>
-        // ==================== MODULARIZED VERSION ====================
+    <!-- NEW: Screen reader announcements -->
+    <div id="statusAnnouncement" aria-live="polite" aria-atomic="true"
+        style="position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden;"></div>
 
-        // ========== CORE UTILITIES ==========
-        const Storage = {
-            save: (key, value) => localStorage.setItem(key, value),
-            load: (key, defaultValue = '') => localStorage.getItem(key) || defaultValue,
-            loadInt: (key, defaultValue = 0) => parseInt(Storage.load(key, defaultValue), 10),
-            loadBool: (key, defaultValue = false) => Storage.load(key, defaultValue ? '1' : '0') === '1'
+    <script>
+        // ==================== CONSTANTS ====================
+        const CONSTANTS = {
+            STORAGE_KEYS: {
+                THEME: 'theme',
+                THAI_FONT: 'thaiFont',
+                CURRENT_TOPIC: 'currentTopic',
+                CURRENT_TITLE: 'currentTitle',
+                CURRENT_EXAMPLE: 'currentExample',
+                DISPLAY_THAI: 'displayThai',
+                DISPLAY_ENGLISH: 'displayEnglish',
+                DISPLAY_PERSIAN: 'displayPersian',
+                SPEAK_THAI: 'speakThai',
+                SPEAK_ENGLISH: 'speakEnglish',
+                SPEAK_PERSIAN: 'speakPersian',
+                PLAYBACK_DELAY: 'playbackDelay',
+                QUESTION_LANG: 'questionLang',
+                ANSWER_LANG: 'answerLang'
+            },
+            DEFAULT_VALUES: {
+                THEME: 'light',
+                PLAYBACK_DELAY: '0.5',
+                QUESTION_LANG: 'th',
+                ANSWER_LANG: 'en'
+            },
+            SUPPORTED_LANGUAGES: ['en-US', 'th-TH', 'fa-IR']
         };
 
-        // ========== ENHANCED TTS MANAGER ==========
+        // ==================== ERROR HANDLER ====================
+        const ErrorHandler = {
+            wrap: (fn, context = '') => {
+                return (...args) => {
+                    try {
+                        return fn(...args);
+                    } catch (error) {
+                        console.error(`Error in ${context}:`, error);
+                        ErrorHandler.showErrorToUser(error.message);
+                        return null;
+                    }
+                };
+            },
+
+            showErrorToUser: (message) => {
+                const contentArea = document.getElementById('contentArea');
+                if (contentArea) {
+                    const errorDiv = document.createElement('div');
+                    errorDiv.className = 'error-message';
+                    errorDiv.innerHTML = `
+                        <strong>Something went wrong</strong>
+                        <p>${message}</p>
+                        <button onclick="this.parentElement.remove()" style="margin-top: 0.5em;">Dismiss</button>
+                    `;
+                    contentArea.prepend(errorDiv);
+                }
+            },
+
+            showSuccessMessage: (message) => {
+                const contentArea = document.getElementById('contentArea');
+                if (contentArea) {
+                    const successDiv = document.createElement('div');
+                    successDiv.className = 'success-message';
+                    successDiv.innerHTML = `
+                        <strong>Success</strong>
+                        <p>${message}</p>
+                        <button onclick="this.parentElement.remove()" style="margin-top: 0.5em;">Dismiss</button>
+                    `;
+                    contentArea.prepend(successDiv);
+                }
+            }
+        };
+
+        // ==================== UTILITIES ====================
+        const Utils = {
+            debounce: (func, wait) => {
+                let timeout;
+                return function executedFunction(...args) {
+                    const later = () => {
+                        clearTimeout(timeout);
+                        func(...args);
+                    };
+                    clearTimeout(timeout);
+                    timeout = setTimeout(later, wait);
+                };
+            },
+
+            throttle: (func, limit) => {
+                let inThrottle;
+                return function (...args) {
+                    if (!inThrottle) {
+                        func.apply(this, args);
+                        inThrottle = true;
+                        setTimeout(() => inThrottle = false, limit);
+                    }
+                };
+            },
+
+            generateId: () => {
+                return Date.now().toString(36) + Math.random().toString(36).substr(2);
+            }
+        };
+
+        // ==================== STORAGE MANAGER ====================
+        const Storage = {
+            save: (key, value) => {
+                try {
+                    localStorage.setItem(key, value);
+                } catch (error) {
+                    console.error('Storage error:', error);
+                }
+            },
+
+            load: (key, defaultValue = '') => {
+                try {
+                    return localStorage.getItem(key) || defaultValue;
+                } catch (error) {
+                    console.error('Storage error:', error);
+                    return defaultValue;
+                }
+            },
+
+            loadInt: (key, defaultValue = 0) => {
+                const value = Storage.load(key, defaultValue.toString());
+                return parseInt(value, 10);
+            },
+
+            loadBool: (key, defaultValue = false) => {
+                const value = Storage.load(key, defaultValue ? '1' : '0');
+                return value === '1';
+            },
+
+            remove: (key) => {
+                try {
+                    localStorage.removeItem(key);
+                } catch (error) {
+                    console.error('Storage error:', error);
+                }
+            }
+        };
+
+        // ==================== NETWORK MANAGER ====================
+        const NetworkManager = {
+            async fetchWithRetry(url, retries = 3, delay = 1000) {
+                for (let i = 0; i < retries; i++) {
+                    try {
+                        const response = await fetch(url);
+                        if (response.ok) return response;
+                        throw new Error(`HTTP ${response.status}`);
+                    } catch (error) {
+                        if (i === retries - 1) throw error;
+                        await new Promise(resolve => setTimeout(resolve, delay * (i + 1)));
+                    }
+                }
+            },
+
+            async fetchJSON(url) {
+                const response = await this.fetchWithRetry(url);
+                return await response.json();
+            }
+        };
+
+        // ==================== SCREEN READER ANNOUNCER ====================
+        const ScreenReader = {
+            announce: (message, priority = 'polite') => {
+                const announcement = document.getElementById('statusAnnouncement');
+                if (announcement) {
+                    announcement.setAttribute('aria-live', priority);
+                    announcement.textContent = message;
+                    // Clear after announcement
+                    setTimeout(() => {
+                        announcement.textContent = '';
+                    }, 1000);
+                }
+            }
+        };
+
+        // ==================== ENHANCED TTS MANAGER ====================
         const TTSManager = {
             supportedVoices: [],
             testResults: {},
+            voiceCache: new Map(),
 
+            /**
+             * Initializes TTS manager and loads available voices
+             */
             initialize() {
                 this.loadVoices();
                 speechSynthesis.addEventListener('voiceschanged', () => {
@@ -1490,24 +1691,48 @@
                 });
             },
 
+            /**
+             * Loads available TTS voices
+             */
             loadVoices() {
                 this.supportedVoices = speechSynthesis.getVoices();
+                this.voiceCache.clear(); // Clear cache when voices change
             },
 
+            /**
+             * Checks if TTS is supported in the current browser
+             * @returns {boolean}
+             */
             isSupported() {
                 return 'speechSynthesis' in window && typeof SpeechSynthesisUtterance !== 'undefined';
             },
 
+            /**
+             * Gets available voices for a specific language
+             * @param {string} lang - Language code
+             * @returns {SpeechSynthesisVoice[]}
+             */
             getLanguageVoices(lang) {
                 return this.supportedVoices.filter(voice =>
                     voice.lang.startsWith(lang) || voice.lang.includes(lang)
                 );
             },
 
+            /**
+             * Checks if a specific language is supported
+             * @param {string} lang - Language code
+             * @returns {boolean}
+             */
             hasLanguageSupport(lang) {
                 return this.getLanguageVoices(lang).length > 0;
             },
 
+            /**
+             * Tests TTS for a specific language
+             * @param {string} lang - Language code
+             * @param {string} text - Text to speak
+             * @returns {Promise<{success: boolean, error?: string, voices?: SpeechSynthesisVoice[]}>}
+             */
             testLanguage(lang, text) {
                 return new Promise((resolve) => {
                     if (!this.isSupported()) {
@@ -1540,6 +1765,10 @@
                 });
             },
 
+            /**
+             * Performs comprehensive TTS test for all supported languages
+             * @returns {Promise<boolean>}
+             */
             async comprehensiveTest() {
                 const tests = [
                     { lang: 'en-US', text: 'Hello, this is English text-to-speech', name: 'English' },
@@ -1549,351 +1778,165 @@
 
                 this.testResults = {};
                 let allPassed = true;
-                const isFirefox = /firefox|fxios/.test(navigator.userAgent.toLowerCase()) && !/seamonkey/.test(navigator.userAgent.toLowerCase());
-                const isRaspberryPi = this.detectRaspberryPi();
 
                 for (const test of tests) {
                     const result = await this.testLanguage(test.lang, test.text);
-
-                    // Special handling for Firefox on Raspberry Pi
-                    if (isFirefox && isRaspberryPi && !result.success) {
-                        this.testResults[test.lang] = {
-                            ...result,
-                            name: test.name,
-                            text: test.text,
-                            note: 'Firefox on Raspberry Pi may require eSpeak installation. Run: sudo apt install espeak espeak-data'
-                        };
-                    } else {
-                        this.testResults[test.lang] = {
-                            ...result,
-                            name: test.name,
-                            text: test.text
-                        };
-                    }
+                    this.testResults[test.lang] = {
+                        ...result,
+                        name: test.name,
+                        text: test.text
+                    };
 
                     if (!result.success) {
                         allPassed = false;
                     }
 
-                    // Small delay between tests
                     await new Promise(resolve => setTimeout(resolve, 500));
                 }
 
                 return allPassed;
             },
 
-            getSetupInstructions() {
-                const isMobile = /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-                const userAgent = navigator.userAgent.toLowerCase();
-
-                // More specific browser detection
-                const isChrome = /chrome|chromium|crios/.test(userAgent) && !/edg|opr|opera|firefox|safari/.test(userAgent);
-                const isFirefox = /firefox|fxios/.test(userAgent) && !/seamonkey/.test(userAgent);
-                const isSafari = /safari/.test(userAgent) && !/chrome|chromium|crios|android|firefox|opr|opera/.test(userAgent);
-                const isEdge = /edg/.test(userAgent);
-
-                if (isMobile) {
-                    return this.getMobileSetupInstructions(isChrome, isSafari, isFirefox, isEdge);
-                } else {
-                    return this.getDesktopSetupInstructions(isChrome, isSafari, isFirefox, isEdge);
-                }
-            },
-
-            getMobileSetupInstructions(isChrome, isSafari, isFirefox) {
-                let instructions = '';
-
-                if (isChrome) {
-                    instructions = `
-            <div class="tts-setup-steps">
-                <h4>Android Chrome Setup:</h4>
-                <div class="tts-step">
-                    <strong>1. Enable TTS in Accessibility Settings:</strong>
-                    <p>Go to Settings → Accessibility → Text-to-speech output → Enable "Google Text-to-speech engine"</p>
-                </div>
-                <div class="tts-step">
-                    <strong>2. Install Language Packs:</strong>
-                    <p>In Text-to-speech output settings → Google Text-to-speech engine → Install voice data</p>
-                </div>
-                <div class="tts-step">
-                    <strong>3. Download Languages:</strong>
-                    <p>Install English, Thai, and Persian language packs for full functionality</p>
-                </div>
-                <div class="tts-step">
-                    <strong>4. Enable in Chrome:</strong>
-                    <p>Chrome Settings → Accessibility → Enable "Simplified view for open pages"</p>
-                </div>
-            </div>
-        `;
-                } else if (isSafari) {
-                    instructions = `
-            <div class="tts-setup-steps">
-                <h4>iOS Safari Setup:</h4>
-                <div class="tts-step">
-                    <strong>1. Enable Spoken Content in Accessibility:</strong>
-                    <p>Settings → Accessibility → Spoken Content → Enable "Speak Selection" and "Speak Screen"</p>
-                </div>
-                <div class="tts-step">
-                    <strong>2. Download Voices:</strong>
-                    <p>In Spoken Content → Voices → Download English, Thai, and Persian voices</p>
-                </div>
-                <div class="tts-step">
-                    <strong>3. Test in Safari:</strong>
-                    <p>Select any text on a webpage and tap "Speak" to test</p>
-                </div>
-            </div>
-        `;
-                } else if (isFirefox) {
-                    instructions = `
-            <div class="tts-setup-steps">
-                <h4>Android Firefox Setup:</h4>
-                <div class="tts-step">
-                    <strong>1. Enable TTS in System Settings:</strong>
-                    <p>Go to Android Settings → Accessibility → Text-to-speech output → Enable system TTS</p>
-                </div>
-                <div class="tts-step">
-                    <strong>2. Install System Language Packs:</strong>
-                    <p>In Text-to-speech output settings → Install voices for English, Thai, and Persian</p>
-                </div>
-                <div class="tts-step">
-                    <strong>3. Set Default TTS Engine:</strong>
-                    <p>In Text-to-speech output settings, set Google Text-to-speech as default</p>
-                </div>
-            </div>
-        `;
-                }
-
-                return instructions;
-            },
-
-            getDesktopSetupInstructions(isChrome, isSafari, isFirefox, isEdge) {
-                let instructions = '';
-
-                // Check browsers in order of specificity
-                if (isFirefox) {
-                    instructions = `
-            <div class="tts-setup-steps">
-                <h4>Firefox on Raspberry Pi Setup:</h4>
-                <div class="tts-step">
-                    <strong>1. Install System TTS Packages:</strong>
-                    <p>Open terminal and run:<br>
-                       <code>sudo apt update && sudo apt install espeak espeak-data</code></p>
-                </div>
-                <div class="tts-step">
-                    <strong>2. Install Additional Language Support:</strong>
-                    <p>For better language support, install:<br>
-                       <code>sudo apt install festvox-rablpc16k libttspico-utils</code></p>
-                </div>
-                <div class="tts-step">
-                    <strong>3. Check Audio Output:</strong>
-                    <p>Ensure your Raspberry Pi audio is working:<br>
-                       <code>speaker-test -t wav -c 2</code></p>
-                </div>
-                <div class="tts-step">
-                    <strong>4. Firefox TTS Limitations:</strong>
-                    <p>Firefox on Raspberry Pi uses eSpeak which has limited voice quality. 
-                       For better TTS, consider using Chromium browser instead.</p>
-                </div>
-                <div class="tts-step">
-                    <strong>5. Test TTS in Terminal:</strong>
-                    <p>Test if system TTS works:<br>
-                       <code>espeak "Hello this is a test"</code><br>
-                       If this works, Firefox should be able to use TTS.</p>
-                </div>
-            </div>
-        `;
-                } else if (isChrome) {
-                    instructions = `
-            <div class="tts-setup-steps">
-                <h4>Chrome/Chromium on Raspberry Pi Setup:</h4>
-                <div class="tts-step">
-                    <strong>1. Check System TTS:</strong>
-                    <p>Ensure basic audio works:<br>
-                       <code>sudo apt install alsa-utils</code><br>
-                       <code>aplay /usr/share/sounds/alsa/Front_Left.wav</code></p>
-                </div>
-                <div class="tts-step">
-                    <strong>2. Install Language Support:</strong>
-                    <p>Chromium uses system TTS. Install voices:<br>
-                       <code>sudo apt install speech-dispatcher festvox-*</code></p>
-                </div>
-                <div class="tts-step">
-                    <strong>3. Browser Permissions:</strong>
-                    <p>Ensure Chromium has permission to play audio and use TTS features</p>
-                </div>
-            </div>
-        `;
-                } else if (isSafari) {
-                    instructions = `
-            <div class="tts-setup-steps">
-                <h4>Safari Setup:</h4>
-                <div class="tts-step">
-                    <strong>1. Enable Speech in macOS Accessibility:</strong>
-                    <p>System Preferences → Accessibility → Speech → Enable "Speak selected text when the key is pressed"</p>
-                </div>
-                <div class="tts-step">
-                    <strong>2. Download Voices:</strong>
-                    <p>System Preferences → Accessibility → Speech → System Voice → Customize → Download English, Thai, and Persian</p>
-                </div>
-                <div class="tts-step">
-                    <strong>3. Test TTS:</strong>
-                    <p>Select text in any app and press Option+Esc to test speech</p>
-                </div>
-            </div>
-        `;
-                } else if (isEdge) {
-                    instructions = `
-            <div class="tts-setup-steps">
-                <h4>Edge Browser Setup:</h4>
-                <div class="tts-step">
-                    <strong>1. Enable TTS in Windows Settings:</strong>
-                    <p>Settings → Ease of Access → Narrator → Enable Narrator for basic TTS functionality</p>
-                </div>
-                <div class="tts-step">
-                    <strong>2. Install Language Packs:</strong>
-                    <p>Settings → Time & Language → Language & Region → Add languages for English, Thai, and Persian</p>
-                </div>
-                <div class="tts-step">
-                    <strong>3. Install TTS Voices:</strong>
-                    <p>Download TTS voices through Windows Speech settings for each language</p>
-                </div>
-            </div>
-        `;
-                } else {
-                    // Fallback for unknown browsers
-                    instructions = `
-            <div class="tts-setup-steps">
-                <h4>General TTS Setup:</h4>
-                <div class="tts-step">
-                    <strong>1. Check System TTS Settings:</strong>
-                    <p>Ensure Text-to-Speech is enabled in your operating system's Accessibility settings</p>
-                </div>
-                <div class="tts-step">
-                    <strong>2. Install Language Support:</strong>
-                    <p>Install English, Thai, and Persian language packs through your system settings</p>
-                </div>
-                <div class="tts-step">
-                    <strong>3. Browser Permissions:</strong>
-                    <p>Ensure your browser has permission to use audio and TTS features</p>
-                </div>
-            </div>
-        `;
-                }
-
-                return instructions;
-            },
-
-            // Add this method to detect Raspberry Pi
-            detectRaspberryPi() {
-                const userAgent = navigator.userAgent.toLowerCase();
-                const isRaspberryPi = /raspberry|rpi|armv|aarch/.test(userAgent) ||
-                    navigator.platform.toLowerCase().includes('arm') ||
-                    navigator.hardwareConcurrency === 4; // Common RPi core count
-
-                return isRaspberryPi;
-            },
-
-
-            getStatusMessage() {
-                if (!this.isSupported()) {
-                    const isFirefox = /Firefox/.test(navigator.userAgent);
-                    let message = 'Your browser does not support the Web Speech API. ';
-
-                    if (isFirefox) {
-                        message += 'Firefox has limited TTS support and may require additional system configuration. ';
-                    }
-
-                    message += 'Please use Chrome, Safari, or Edge for the best experience.';
-
-                    return {
-                        type: 'error',
-                        title: 'Text-to-Speech Not Supported',
-                        message: message
-                    };
-                }
-
-                const hasEnglish = this.hasLanguageSupport('en');
-                const hasThai = this.hasLanguageSupport('th');
-                const hasPersian = this.hasLanguageSupport('fa');
-
-                if (!hasEnglish && !hasThai && !hasPersian) {
-                    const isFirefox = /Firefox/.test(navigator.userAgent);
-                    let message = 'No English, Thai, or Persian TTS voices found. You need to install language packs.';
-
-                    if (isFirefox) {
-                        message += ' Firefox relies on system TTS voices - please install voices through your operating system.';
-                    }
-
-                    return {
-                        type: 'error',
-                        title: 'No Language Voices Available',
-                        message: message
-                    };
-                }
-
-                const missingLanguages = [];
-                if (!hasEnglish) missingLanguages.push('English');
-                if (!hasThai) missingLanguages.push('Thai');
-                if (!hasPersian) missingLanguages.push('Persian');
-
-                if (missingLanguages.length > 0) {
-                    const missingText = missingLanguages.join(', ');
-                    const availableLanguages = [];
-                    if (hasEnglish) availableLanguages.push('English');
-                    if (hasThai) availableLanguages.push('Thai');
-                    if (hasPersian) availableLanguages.push('Persian');
-                    const availableText = availableLanguages.join(', ');
-
-                    const isFirefox = /Firefox/.test(navigator.userAgent);
-                    let message = `TTS works for ${availableText}, but ${missingText} voices are not available. Install missing language packs for complete functionality.`;
-
-                    if (isFirefox) {
-                        message += ' In Firefox, install missing voices through your operating system settings.';
-                    }
-
-                    return {
-                        type: 'warning',
-                        title: 'Some Languages Missing',
-                        message: message
-                    };
-                }
-
-                const isFirefox = /Firefox/.test(navigator.userAgent);
-                let message = 'English, Thai, and Persian text-to-speech are all available and ready for your language practice!';
-
-                if (isFirefox) {
-                    message += ' (Firefox TTS is working correctly)';
-                }
-
-                return {
-                    type: 'success',
-                    title: 'TTS Ready for Language Learning',
-                    message: message
-                };
-            },
-
-
+            /**
+             * Speaks text in specified language
+             * @param {string} text - Text to speak
+             * @param {string} lang - Language code
+             * @param {Function} onEnd - Callback when speaking ends
+             */
             speak(text, lang, onEnd) {
                 if (!text) return;
                 speechSynthesis.cancel();
+
                 const utterance = new SpeechSynthesisUtterance(text);
                 utterance.lang = lang;
+                utterance.volume = 0.8;
+                utterance.rate = 0.9;
+                utterance.pitch = 1.0;
+
                 if (onEnd) utterance.onend = onEnd;
+
                 speechSynthesis.speak(utterance);
+                ScreenReader.announce(`Speaking: ${text.substring(0, 50)}...`);
             },
 
             cancel() {
                 speechSynthesis.cancel();
+                ScreenReader.announce('Speech cancelled');
             },
 
             pause() {
                 speechSynthesis.pause();
+                ScreenReader.announce('Speech paused');
+            },
+
+            resume() {
+                speechSynthesis.resume();
+                ScreenReader.announce('Speech resumed');
             }
         };
 
-        // Initialize TTS Manager when page loads
-        TTSManager.initialize();
+        // ==================== PROGRESS TRACKER ====================
+        const ProgressTracker = {
+            /**
+             * Saves progress for a topic
+             * @param {string} topicId - Topic identifier
+             * @param {number} titleIndex - Title index
+             * @param {number} exampleIndex - Example index
+             * @param {number} score - Quiz score
+             */
+            saveProgress: ErrorHandler.wrap((topicId, titleIndex, exampleIndex, score) => {
+                const progress = {
+                    lastAccessed: new Date().toISOString(),
+                    currentTitle: titleIndex,
+                    currentExample: exampleIndex,
+                    scores: ProgressTracker.getScores(topicId),
+                    completedExamples: ProgressTracker.getCompletedExamples(topicId)
+                };
 
-        // ========== APPLICATION STATE ==========
+                progress.scores[`${titleIndex}-${exampleIndex}`] = score;
+                progress.completedExamples.add(`${titleIndex}-${exampleIndex}`);
+
+                Storage.save(`progress-${topicId}`, JSON.stringify(progress));
+            }, 'ProgressTracker.saveProgress'),
+
+            /**
+             * Gets progress for a topic
+             * @param {string} topicId - Topic identifier
+             * @returns {Object}
+             */
+            getProgress: ErrorHandler.wrap((topicId) => {
+                const progress = Storage.load(`progress-${topicId}`);
+                return progress ? JSON.parse(progress) : {
+                    lastAccessed: null,
+                    currentTitle: 0,
+                    currentExample: 0,
+                    scores: {},
+                    completedExamples: new Set()
+                };
+            }, 'ProgressTracker.getProgress'),
+
+            /**
+             * Gets completion percentage for a topic
+             * @param {string} topicId - Topic identifier
+             * @param {Object} topicData - Topic data
+             * @returns {number}
+             */
+            getCompletionPercentage: ErrorHandler.wrap((topicId, topicData) => {
+                const progress = ProgressTracker.getProgress(topicId);
+                const totalExamples = topicData.titles?.reduce((total, title) =>
+                    total + (title.examples?.length || 0), 0) || 0;
+
+                if (totalExamples === 0) return 0;
+
+                return Math.round((progress.completedExamples.size / totalExamples) * 100);
+            }, 'ProgressTracker.getCompletionPercentage'),
+
+            getScores: (topicId) => {
+                const progress = ProgressTracker.getProgress(topicId);
+                return progress.scores || {};
+            },
+
+            getCompletedExamples: (topicId) => {
+                const progress = ProgressTracker.getProgress(topicId);
+                return new Set(progress.completedExamples || []);
+            }
+        };
+
+        // ==================== SEARCH MANAGER ====================
+        const SearchManager = {
+            /**
+             * Searches topics for matching text
+             * @param {string} query - Search query
+             * @param {Array} topics - Topics to search
+             * @returns {Array}
+             */
+            searchTopics: ErrorHandler.wrap((query, topics) => {
+                if (!query.trim()) return topics;
+
+                const searchTerm = query.toLowerCase();
+                return topics.filter(topic =>
+                    topic.topic.toLowerCase().includes(searchTerm) ||
+                    topic.titles?.some(title =>
+                        title.title.toLowerCase().includes(searchTerm)
+                    )
+                );
+            }, 'SearchManager.searchTopics'),
+
+            /**
+             * Highlights search terms in text
+             * @param {string} text - Text to highlight
+             * @param {string} query - Search query
+             * @returns {string}
+             */
+            highlightText: (text, query) => {
+                if (!query.trim()) return text;
+
+                const regex = new RegExp(`(${query.trim()})`, 'gi');
+                return text.replace(regex, '<mark>$1</mark>');
+            }
+        };
+
+        // ==================== APPLICATION STATE ====================
         const AppState = {
             topics: [],
             currentTopic: null,
@@ -1904,14 +1947,23 @@
             lastHighlightedIndex: null,
 
             initialize() {
-                this.currentTopic = Storage.load('currentTopic', '');
-                this.currentTitle = Storage.loadInt('currentTitle', 0);
-                this.currentExample = Storage.loadInt('currentExample', 0);
+                this.currentTopic = Storage.load(CONSTANTS.STORAGE_KEYS.CURRENT_TOPIC, '');
+                this.currentTitle = Storage.loadInt(CONSTANTS.STORAGE_KEYS.CURRENT_TITLE, 0);
+                this.currentExample = Storage.loadInt(CONSTANTS.STORAGE_KEYS.CURRENT_EXAMPLE, 0);
             },
 
             saveNavigation() {
-                Storage.save('currentTitle', this.currentTitle);
-                Storage.save('currentExample', this.currentExample);
+                Storage.save(CONSTANTS.STORAGE_KEYS.CURRENT_TITLE, this.currentTitle);
+                Storage.save(CONSTANTS.STORAGE_KEYS.CURRENT_EXAMPLE, this.currentExample);
+
+                if (this.currentTopic?.topicFilename) {
+                    ProgressTracker.saveProgress(
+                        this.currentTopic.topicFilename,
+                        this.currentTitle,
+                        this.currentExample,
+                        QuizSystem.score
+                    );
+                }
             },
 
             getCurrentExample() {
@@ -1924,13 +1976,16 @@
             init() {
                 const themeToggle = document.getElementById('themeToggle');
                 themeToggle.addEventListener('click', () => this.toggle());
-                this.set(Storage.load('theme', 'light'));
+                this.set(Storage.load(CONSTANTS.STORAGE_KEYS.THEME, CONSTANTS.DEFAULT_VALUES.THEME));
             },
 
             set(theme) {
                 document.body.dataset.theme = theme;
                 document.getElementById('themeToggle').textContent = theme === 'light' ? '🌞' : '🌙';
-                Storage.save('theme', theme);
+                document.getElementById('themeToggle').setAttribute('aria-label',
+                    theme === 'light' ? 'Switch to dark mode' : 'Switch to light mode');
+                Storage.save(CONSTANTS.STORAGE_KEYS.THEME, theme);
+                ScreenReader.announce(`Theme set to ${theme} mode`);
             },
 
             toggle() {
@@ -1940,12 +1995,11 @@
 
         const FontManager = {
             init() {
-                // No longer need to initialize the header font dropdown as it's removed
                 this.apply();
             },
 
             apply() {
-                const font = Storage.load('thaiFont', '');
+                const font = Storage.load(CONSTANTS.STORAGE_KEYS.THAI_FONT, '');
                 document.querySelectorAll('[lang="th"], [lang="th-TH"], #appTitle').forEach(el => {
                     el.classList.add('thai-font');
                     el.classList.remove('tahoma', 'noto', 'chakra');
@@ -1954,7 +2008,6 @@
                     if (font === 'Chakra Petch') el.classList.add('chakra');
                 });
 
-                // Update font preview in settings if it exists
                 const fontPreview = document.getElementById('fontPreview');
                 if (fontPreview) {
                     fontPreview.className = 'font-preview thai-font';
@@ -1973,8 +2026,6 @@
                 contentArea.innerHTML = this.getSettingsHTML();
                 controlsArea.innerHTML = '';
                 this.bindSettingsEvents();
-
-                // Show initial TTS status
                 this.showInitialTTSStatus();
             },
 
@@ -1983,26 +2034,26 @@
                     <div style="display: flex; justify-content: space-between; align-items: center;
                                 background: #00247D; color: white; padding: 0.5em 1em; border-radius: 8px;">
                         <h2 style="margin: 0;">Settings & Help</h2>
-                        <button id="closeX" style="background: #666; color: white; border: none; padding: 0.5em; border-radius: 4px; cursor: pointer;">❌</button>
+                        <button id="closeX" aria-label="Close settings" style="background: #666; color: white; border: none; padding: 0.5em; border-radius: 4px; cursor: pointer;">❌</button>
                     </div>
                     
                     <div class="settings-content" style="padding: 1em;">
                         <div class="settings-font-controls">
                             <label style="margin: 0;">
                                 Thai Font:
-                                <select id="settingsThaiFont">
+                                <select id="settingsThaiFont" aria-label="Select Thai font">
                                     <option value="">Default</option>
                                     <option value="Tahoma">Tahoma</option>
                                     <option value="Noto Sans Thai">Noto Sans Thai</option>
                                     <option value="Chakra Petch">Chakra Petch</option>
                                 </select>
                             </label>
-                            <div class="font-preview" id="fontPreview">ตัวอย่างข้อความภาษาไทย (Thai Text Sample)</div>
+                            <div class="font-preview" id="fontPreview" aria-live="polite">ตัวอย่างข้อความภาษาไทย (Thai Text Sample)</div>
                         </div>
                         
                         <div class="settings-section">
                             <h3>Text-to-Speech Setup</h3>
-                            <p>This App uses Text To Speech.  Search in your device and your browser settings for languages and install the English and Thai language packs and enable Text To Speech.  Then try the Test TTS button for more specific help for your device.</p>
+                            <p>This App uses Text To Speech. Search in your device and your browser settings for languages and install the English and Thai language packs and enable Text To Speech. Then try the Test TTS button for more specific help for your device.</p>
                             
                             <button id="checkTTS" class="settings-button" style="padding: 0.8em 1.5em; background: #00247D; color: white; border: none; border-radius: 4px; cursor: pointer; margin: 1em 0;">
                                 🔊 Test TTS Setup & Language Support
@@ -2011,6 +2062,36 @@
                             <div id="ttsStatus"></div>
                             <div id="ttsSetupInstructions"></div>
                             <div id="languageTests"></div>
+                        </div>
+
+                        <div class="settings-section">
+                            <h3>Keyboard Shortcuts</h3>
+                            <div class="keyboard-shortcuts">
+                                <div class="shortcut-item">
+                                    <span>Play/Pause</span>
+                                    <kbd class="shortcut-key">Space</kbd>
+                                </div>
+                                <div class="shortcut-item">
+                                    <span>Next Example</span>
+                                    <kbd class="shortcut-key">→</kbd>
+                                </div>
+                                <div class="shortcut-item">
+                                    <span>Previous Example</span>
+                                    <kbd class="shortcut-key">←</kbd>
+                                </div>
+                                <div class="shortcut-item">
+                                    <span>Restart</span>
+                                    <kbd class="shortcut-key">R</kbd>
+                                </div>
+                                <div class="shortcut-item">
+                                    <span>Next Question</span>
+                                    <kbd class="shortcut-key">N</kbd>
+                                </div>
+                                <div class="shortcut-item">
+                                    <span>Settings</span>
+                                    <kbd class="shortcut-key">S</kbd>
+                                </div>
+                            </div>
                         </div>
                         
                         <div style="margin-top: 2em; padding-top: 1em; border-top: 1px solid var(--border-light);">
@@ -2024,41 +2105,36 @@
                 document.getElementById('closeBtn').addEventListener('click', this.close);
                 document.getElementById('checkTTS').addEventListener('click', () => this.performTTSCheck());
 
-                // Settings page font control
                 const settingsThaiFont = document.getElementById('settingsThaiFont');
                 if (settingsThaiFont) {
-                    settingsThaiFont.value = Storage.load('thaiFont', '');
+                    settingsThaiFont.value = Storage.load(CONSTANTS.STORAGE_KEYS.THAI_FONT, '');
                     settingsThaiFont.addEventListener('change', (e) => {
-                        Storage.save('thaiFont', e.target.value);
+                        Storage.save(CONSTANTS.STORAGE_KEYS.THAI_FONT, e.target.value);
                         FontManager.apply();
+                        ScreenReader.announce(`Thai font changed to ${e.target.value || 'default'}`);
                     });
                 }
             },
 
             close() {
-                // Clear any errors and reload the main app view
                 const contentArea = document.getElementById('contentArea');
                 const controlsArea = document.getElementById('controlsArea');
 
-                // Reset to main app view
                 contentArea.innerHTML = AppController.getMainHTML();
                 controlsArea.innerHTML = AppController.getControlsHTML();
 
-                // Re-initialize the app components
                 AppController.bindUIElements();
                 AppController.restoreSettings();
-
-                // Re-populate the topic list and restore current selection
                 AppController.reloadTopicList();
+                ScreenReader.announce('Settings closed, returning to main view');
             },
 
             showInitialTTSStatus() {
-                const status = TTSManager.getStatusMessage();
+                const status = TTSManager.getStatusMessage?.();
                 this.showTTSStatus(status);
 
-                // Show setup instructions for common issues
-                if (status.type !== 'success') {
-                    const instructions = TTSManager.getSetupInstructions();
+                if (status?.type !== 'success') {
+                    const instructions = TTSManager.getSetupInstructions?.();
                     document.getElementById('ttsSetupInstructions').innerHTML = instructions;
                 }
             },
@@ -2068,39 +2144,31 @@
                 const checkBtn = document.getElementById('checkTTS');
                 const languageTests = document.getElementById('languageTests');
 
-                checkBtn.innerHTML = '🔄 Testing TTS...';
+                checkBtn.innerHTML = '<span class="loading-spinner"></span> Testing TTS...';
                 checkBtn.disabled = true;
                 ttsStatus.innerHTML = '';
                 languageTests.innerHTML = '';
 
-                // Show initial system status
-                const status = TTSManager.getStatusMessage();
-                this.showTTSStatus(status);
-
-                // Perform comprehensive test
                 const testPassed = await TTSManager.comprehensiveTest();
-
-                // Show detailed test results
                 this.showLanguageTestResults();
 
-                // Show setup instructions if needed
                 if (!testPassed) {
-                    const instructions = TTSManager.getSetupInstructions();
+                    const instructions = TTSManager.getSetupInstructions?.();
                     document.getElementById('ttsSetupInstructions').innerHTML = instructions;
                 }
 
                 checkBtn.innerHTML = '✅ TTS Test Complete';
                 checkBtn.disabled = false;
 
-                // Update status based on test results
-                const finalStatus = TTSManager.getStatusMessage();
+                const finalStatus = TTSManager.getStatusMessage?.();
                 this.showTTSStatus(finalStatus);
             },
 
             showTTSStatus(status) {
                 const ttsStatus = document.getElementById('ttsStatus');
-                const statusClass = `tts-status-${status.type === 'warning' ? 'info' : status.type}`;
+                if (!status || !ttsStatus) return;
 
+                const statusClass = `tts-status-${status.type === 'warning' ? 'info' : status.type}`;
                 ttsStatus.innerHTML = `
                     <div class="tts-status-container ${statusClass}">
                         <h4 style="margin: 0 0 0.5em 0;">${status.title}</h4>
@@ -2113,7 +2181,7 @@
                 const languageTests = document.getElementById('languageTests');
                 const results = TTSManager.testResults;
 
-                if (Object.keys(results).length === 0) return;
+                if (!languageTests || Object.keys(results).length === 0) return;
 
                 let html = `<h4>Language Test Results:</h4><div class="tts-language-check">`;
 
@@ -2161,11 +2229,11 @@
 
         // ========== TOPIC MANAGEMENT ==========
         const TopicManager = {
+            cache: new Map(),
+
             async loadTopicList() {
                 try {
-                    const res = await fetch('/assets/topics/topicList.json');
-                    if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
-                    const topicList = await res.json();
+                    const topicList = await NetworkManager.fetchJSON('/assets/topics/topicList.json');
                     return topicList.map(topic => ({
                         topicFilename: topic.topicFilename,
                         topic: topic.topic,
@@ -2173,29 +2241,37 @@
                     }));
                 } catch (error) {
                     console.error('Error loading topic list:', error);
+                    ErrorHandler.showErrorToUser('Failed to load topics. Please check your connection.');
                     return [];
                 }
             },
 
             async loadTopic(filename) {
-                try {
-                    const res = await fetch(`/assets/topics/${filename}`);
-                    if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
-                    const topicData = await res.json();
+                if (this.cache.has(filename)) {
+                    return this.cache.get(filename);
+                }
 
-                    // Correct mapping for the new structure
-                    return {
+                try {
+                    const topicData = await NetworkManager.fetchJSON(`/assets/topics/${filename}`);
+                    const processedData = {
                         topic: topicData.topic,
                         titles: topicData.titles?.map(titleItem => ({
-                            title: titleItem.title, // This is the correct property name
-                            examples: titleItem.examples // This should already be correct
+                            title: titleItem.title,
+                            examples: titleItem.examples
                         })) || [],
                         ...topicData
                     };
+
+                    this.cache.set(filename, processedData);
+                    return processedData;
                 } catch (error) {
                     console.error('Error loading topic:', error);
                     throw error;
                 }
+            },
+
+            clearCache() {
+                this.cache.clear();
             }
         };
 
@@ -2224,7 +2300,6 @@
             },
 
             renderWord(word, index) {
-                // Handle newlines
                 if (this.isNewline(word)) {
                     this.display.appendChild(document.createElement('br'));
                     return;
@@ -2237,16 +2312,23 @@
                     pairDiv.className = 'word-pair';
                     pairDiv.dataset.index = wordIndex;
 
-                    // Use display settings for showing text
                     if (document.getElementById('displayThai')?.checked && thText) {
                         const thSpan = document.createElement('span');
                         thSpan.textContent = thText;
                         thSpan.lang = 'th-TH';
                         thSpan.dataset.index = wordIndex;
+                        thSpan.tabIndex = 0;
+                        thSpan.setAttribute('role', 'button');
+                        thSpan.setAttribute('aria-label', `Speak Thai: ${thText}`);
                         thSpan.onclick = () => {
-                            // Use speak settings for audio
                             if (document.getElementById('speakThai')?.checked) {
                                 PlaybackController.playWord(thText, 'th-TH', thSpan, wordIndex);
+                            }
+                        };
+                        thSpan.onkeydown = (e) => {
+                            if (e.key === 'Enter' || e.key === ' ') {
+                                e.preventDefault();
+                                thSpan.click();
                             }
                         };
                         pairDiv.appendChild(thSpan);
@@ -2257,9 +2339,18 @@
                         enSpan.textContent = enText;
                         enSpan.lang = 'en-US';
                         enSpan.dataset.index = wordIndex;
+                        enSpan.tabIndex = 0;
+                        enSpan.setAttribute('role', 'button');
+                        enSpan.setAttribute('aria-label', `Speak English: ${enText}`);
                         enSpan.onclick = () => {
                             if (document.getElementById('speakEnglish')?.checked) {
                                 PlaybackController.playWord(enText, 'en-US', enSpan, wordIndex);
+                            }
+                        };
+                        enSpan.onkeydown = (e) => {
+                            if (e.key === 'Enter' || e.key === ' ') {
+                                e.preventDefault();
+                                enSpan.click();
                             }
                         };
                         pairDiv.appendChild(enSpan);
@@ -2270,9 +2361,18 @@
                         faSpan.textContent = faText;
                         faSpan.lang = 'fa-IR';
                         faSpan.dataset.index = wordIndex;
+                        faSpan.tabIndex = 0;
+                        faSpan.setAttribute('role', 'button');
+                        faSpan.setAttribute('aria-label', `Speak Persian: ${faText}`);
                         faSpan.onclick = () => {
                             if (document.getElementById('speakPersian')?.checked) {
                                 PlaybackController.playWord(faText, 'fa-IR', faSpan, wordIndex);
+                            }
+                        };
+                        faSpan.onkeydown = (e) => {
+                            if (e.key === 'Enter' || e.key === ' ') {
+                                e.preventDefault();
+                                faSpan.click();
                             }
                         };
                         pairDiv.appendChild(faSpan);
@@ -2319,8 +2419,8 @@
                     element.classList.add(themeClass);
                     AppState.lastHighlightedIndex = index;
 
-                    // Scroll to highlighted element
                     element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    ScreenReader.announce(`Highlighted: ${element.textContent}`);
                 }
             }
         };
@@ -2334,9 +2434,8 @@
                 if (!example || example.length === 0) return;
 
                 AppState.isPlaying = true;
+                ScreenReader.announce('Playback started');
 
-                // Don't reset currentWordIndex if we're resuming from pause
-                // Only reset if we're at the end or haven't started
                 if (AppState.currentWordIndex >= example.length) {
                     AppState.currentWordIndex = 0;
                 }
@@ -2347,7 +2446,7 @@
             pauseExample() {
                 AppState.isPlaying = false;
                 TTSManager.cancel();
-                // DON'T clear highlights when pausing - keep the current word highlighted
+                ScreenReader.announce('Playback paused');
             },
 
             restartExample() {
@@ -2355,6 +2454,7 @@
                 ExampleRenderer.clearHighlights();
                 AppState.currentWordIndex = 0;
                 this.playExample();
+                ScreenReader.announce('Playback restarted');
             },
 
             async speakNextWord() {
@@ -2362,6 +2462,7 @@
                 if (!AppState.isPlaying || !example || AppState.currentWordIndex >= example.length) {
                     AppState.isPlaying = false;
                     ExampleRenderer.clearHighlights();
+                    ScreenReader.announce('Playback completed');
                     return;
                 }
 
@@ -2372,12 +2473,10 @@
                     return;
                 }
 
-                // Highlight the current word immediately when starting to speak it
                 this.highlightCurrentWord(AppState.currentWordIndex);
 
                 const delay = this.getPlaybackDelay();
 
-                // Use speak settings for audio playback
                 const speakThai = document.getElementById('speakThai')?.checked;
                 const speakEnglish = document.getElementById('speakEnglish')?.checked;
                 const speakPersian = document.getElementById('speakPersian')?.checked;
@@ -2399,14 +2498,12 @@
                     anyWordSpoken = true;
                 }
 
-                // Only advance to next word if we're still playing and actually spoke something
                 if (AppState.isPlaying && anyWordSpoken) {
                     AppState.currentWordIndex++;
                     setTimeout(() => {
                         if (AppState.isPlaying) this.speakNextWord();
                     }, delay);
                 } else if (!anyWordSpoken) {
-                    // If no words were spoken (all speak options disabled), move to next word
                     AppState.currentWordIndex++;
                     if (AppState.isPlaying) {
                         setTimeout(() => {
@@ -2416,7 +2513,6 @@
                 }
             },
 
-            // New method to highlight the current word
             highlightCurrentWord(index) {
                 const example = AppState.getCurrentExample();
                 if (!example || index >= example.length) return;
@@ -2424,14 +2520,11 @@
                 const word = example[index];
                 if (!word) return;
 
-                // Find the word-pair element for this index
                 const pairDiv = ExampleRenderer.display?.querySelector(`.word-pair[data-index="${index}"]`);
                 if (!pairDiv) return;
 
-                // Clear all highlights first
                 ExampleRenderer.clearHighlights();
 
-                // Use display settings to determine which span to highlight
                 const displayThai = document.getElementById('displayThai')?.checked;
                 const displayEnglish = document.getElementById('displayEnglish')?.checked;
                 const displayPersian = document.getElementById('displayPersian')?.checked;
@@ -2455,14 +2548,7 @@
                         return;
                     }
 
-                    // The highlighting is now handled by highlightCurrentWord
-                    // so we don't need to highlight again here for auto-advance
-
                     TTSManager.speak(text, lang, () => {
-                        if (autoAdvance && AppState.isPlaying) {
-                            // Don't clear the highlight here - let the next word handle it
-                            // or keep it highlighted if paused
-                        }
                         resolve();
                     });
                 });
@@ -2471,17 +2557,12 @@
             playWord(text, lang, span, index) {
                 if (!text || text === "\n") return;
 
-                // When clicking a word, just play that word and set the position
-                // but don't start auto-advancing
                 AppState.currentWordIndex = index;
-
-                // Highlight immediately when clicking
                 ExampleRenderer.highlightElement(span, index);
                 TTSManager.cancel();
                 this.speakWord(text, lang, index, false);
             },
 
-            // Add method to continue playback from current position
             continueFromCurrent() {
                 if (!AppState.isPlaying) {
                     this.playExample();
@@ -2493,11 +2574,10 @@
             },
 
             getPlaybackDelay() {
-                const delaySec = parseFloat(document.getElementById('playbackDelay')?.value || Storage.load('playbackDelay', '1'));
+                const delaySec = parseFloat(document.getElementById('playbackDelay')?.value || Storage.load(CONSTANTS.STORAGE_KEYS.PLAYBACK_DELAY, CONSTANTS.DEFAULT_VALUES.PLAYBACK_DELAY));
                 const delayMs = Math.min(Math.max(isNaN(delaySec) ? 1500 : delaySec * 1000, 500), 5000);
                 return delayMs;
             },
-
         };
 
         // ========== QUIZ SYSTEM ==========
@@ -2509,6 +2589,12 @@
             incorrectOnly: false,
 
             buildFromExample(example) {
+                if (!example || example.length === 0) {
+                    console.warn('No example data provided to build quiz');
+                    this.data = [];
+                    return;
+                }
+
                 this.data = example.map(word => ({
                     ...word,
                     attempted: false,
@@ -2527,12 +2613,11 @@
 
                 quizContainer.innerHTML = "";
 
-                if (!this.data.length) {
+                if (!this.data || this.data.length === 0) {
                     quizContainer.textContent = "No quiz available for this example.";
                     return;
                 }
 
-                // Get filtered questions based on incorrectOnly setting
                 const filteredQuestions = this.getFilteredQuestions();
 
                 if (filteredQuestions.length === 0) {
@@ -2544,7 +2629,6 @@
                     return;
                 }
 
-                // Check if we've reached the end of filtered questions
                 if (this.currentQuestion >= filteredQuestions.length) {
                     this.showCompletionMessage(quizContainer);
                     return;
@@ -2565,7 +2649,6 @@
                 if (!this.incorrectOnly) {
                     return this.data;
                 }
-                // Return only questions that have been attempted and are incorrect
                 return this.data.filter(q => q.attempted && !q.correct);
             },
 
@@ -2581,7 +2664,6 @@
         `;
                 container.appendChild(messageDiv);
 
-                // Add event listener for show all button
                 document.getElementById('showAllQuestions')?.addEventListener('click', () => {
                     this.incorrectOnly = false;
                     this.currentQuestion = 0;
@@ -2601,7 +2683,6 @@
         `;
                 container.appendChild(completionDiv);
 
-                // Add event listener for restart button
                 document.getElementById('restartQuiz')?.addEventListener('click', () => {
                     this.currentQuestion = 0;
                     this.score = 0;
@@ -2610,7 +2691,6 @@
                     this.render();
                 });
 
-                // Add event listener for show all button if it exists
                 const showAllBtn = document.getElementById('showAllQuestions');
                 if (showAllBtn) {
                     showAllBtn.addEventListener('click', () => {
@@ -2634,7 +2714,6 @@
             },
 
             renderQuestion(question, questionLang, container) {
-                // Add safety check for undefined question
                 if (!question || !question[questionLang]) {
                     console.error('Invalid question data:', question);
                     return;
@@ -2645,8 +2724,17 @@
                 questionEl.textContent = question[questionLang] || "";
                 questionEl.lang = this.getLangCode(questionLang);
                 questionEl.style.cursor = "pointer";
+                questionEl.tabIndex = 0;
+                questionEl.setAttribute('role', 'button');
+                questionEl.setAttribute('aria-label', `Listen to question: ${question[questionLang]}`);
                 questionEl.addEventListener("click", () => {
                     TTSManager.speak(question[questionLang], this.getLangCode(questionLang));
+                });
+                questionEl.addEventListener("keydown", (e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        TTSManager.speak(question[questionLang], this.getLangCode(questionLang));
+                    }
                 });
                 container.appendChild(questionEl);
             },
@@ -2666,9 +2754,14 @@
 
             generateOptions(question, answerLang) {
                 const correctAnswer = question[answerLang];
+                if (!correctAnswer) {
+                    console.warn('No correct answer found for question:', question);
+                    return [];
+                }
+
                 let options = this.data
                     .map(q => q[answerLang])
-                    .filter((val, idx, arr) => arr.indexOf(val) === idx && val)
+                    .filter((val, idx, arr) => val && arr.indexOf(val) === idx)
                     .filter(opt => opt !== correctAnswer)
                     .sort(() => Math.random() - 0.5)
                     .slice(0, 3);
@@ -2682,10 +2775,21 @@
                 optionEl.lang = this.getLangCode(answerLang);
                 optionEl.className = "quiz-option";
                 optionEl.textContent = option;
+                optionEl.tabIndex = 0;
+                optionEl.setAttribute('role', 'button');
+                optionEl.setAttribute('aria-label', `Select: ${option}`);
 
                 optionEl.addEventListener("click", () => {
                     TTSManager.speak(option, this.getLangCode(answerLang));
                     this.handleAnswer(optionEl, option, question[answerLang], question);
+                });
+
+                optionEl.addEventListener("keydown", (e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        TTSManager.speak(option, this.getLangCode(answerLang));
+                        this.handleAnswer(optionEl, option, question[answerLang], question);
+                    }
                 });
 
                 return optionEl;
@@ -2699,15 +2803,20 @@
                         question.correct = true;
                         question.attempted = true;
                         this.attempts++;
+                        ScreenReader.announce('Correct answer!');
                     }
                 } else {
                     optionEl.classList.add("incorrect");
                     question.correct = false;
                     question.attempted = true;
                     this.attempts++;
+                    ScreenReader.announce('Incorrect answer. Try again.');
                 }
 
-                document.getElementById("score").textContent = `Score: ${this.score}/${this.attempts}`;
+                const scoreElement = document.getElementById("score");
+                if (scoreElement) {
+                    scoreElement.textContent = `Score: ${this.score}/${this.attempts}`;
+                }
             },
 
             getLangCode(lang) {
@@ -2721,11 +2830,9 @@
                     this.currentQuestion++;
                     this.render();
                 } else if (this.currentQuestion === filteredQuestions.length - 1) {
-                    // Move to the end to show completion message
                     this.currentQuestion = filteredQuestions.length;
                     this.render();
                 }
-                // If already at completion state, do nothing
             },
 
             previousQuestion() {
@@ -2737,7 +2844,6 @@
 
             retry() {
                 this.currentQuestion = 0;
-                // Only reset question states if we're not in incorrectOnly mode
                 if (!this.incorrectOnly) {
                     this.resetQuestionStates();
                     this.score = 0;
@@ -2753,6 +2859,7 @@
                 });
             }
         };
+
         // ========== NAVIGATION CONTROLLER ==========
         const NavigationController = {
             topicSelect: null,
@@ -2764,7 +2871,6 @@
                 this.titleSelect = titleSelect;
                 this.exampleSelect = exampleSelect;
 
-                // Add event listeners
                 if (topicSelect) {
                     topicSelect.addEventListener('change', (e) => this.handleTopicChange(e.target.value));
                 }
@@ -2777,18 +2883,21 @@
             },
 
             async handleTopicChange(topicFilename) {
-                Storage.save('currentTopic', topicFilename);
+                Storage.save(CONSTANTS.STORAGE_KEYS.CURRENT_TOPIC, topicFilename);
                 await AppController.loadTopic(topicFilename);
+                ScreenReader.announce(`Topic changed to ${topicFilename}`);
             },
 
             handleTitleChange(titleIndex) {
                 AppState.currentTitle = titleIndex;
                 AppController.populateExamples();
+                ScreenReader.announce(`Title changed to ${titleIndex + 1}`);
             },
 
             handleExampleChange(exampleIndex) {
                 AppState.currentExample = exampleIndex;
                 AppController.loadExample();
+                ScreenReader.announce(`Example changed to ${exampleIndex + 1}`);
             },
 
             nextExample() {
@@ -2796,14 +2905,12 @@
                 const maxExamples = currentTitle?.examples?.length || 0;
 
                 if (AppState.currentExample < maxExamples - 1) {
-                    // Move to next example in current title
                     AppState.currentExample++;
                     if (this.exampleSelect) {
                         this.exampleSelect.value = AppState.currentExample;
                     }
                     AppController.loadExample();
                 } else {
-                    // Move to next title, first example
                     const maxTitles = AppState.currentTopic?.titles?.length || 0;
                     if (AppState.currentTitle < maxTitles - 1) {
                         AppState.currentTitle++;
@@ -2813,7 +2920,6 @@
                         }
                         AppController.populateExamples();
                     } else {
-                        // Already at last example of last title - wrap to first title
                         AppState.currentTitle = 0;
                         AppState.currentExample = 0;
                         if (this.titleSelect) {
@@ -2832,7 +2938,6 @@
                     }
                     AppController.loadExample();
                 } else {
-                    // Move to previous title, last example
                     if (AppState.currentTitle > 0) {
                         AppState.currentTitle--;
                         const prevTitle = AppState.currentTopic?.titles?.[AppState.currentTitle];
@@ -2842,7 +2947,6 @@
                         }
                         AppController.populateExamples();
                     } else {
-                        // Already at first example of first title - wrap to last title
                         const maxTitles = AppState.currentTopic?.titles?.length || 0;
                         AppState.currentTitle = maxTitles - 1;
                         const lastTitle = AppState.currentTopic?.titles?.[AppState.currentTitle];
@@ -2856,16 +2960,74 @@
             }
         };
 
+        // ========== KEYBOARD SHORTCUT MANAGER ==========
+        const KeyboardManager = {
+            init() {
+                document.addEventListener('keydown', this.handleKeydown.bind(this));
+            },
+
+            handleKeydown(event) {
+                // Don't trigger shortcuts when user is typing in inputs
+                if (event.target.tagName === 'INPUT' || event.target.tagName === 'SELECT' || event.target.tagName === 'TEXTAREA') {
+                    return;
+                }
+
+                switch (event.key) {
+                    case ' ':
+                        event.preventDefault();
+                        if (AppState.isPlaying) {
+                            PlaybackController.pauseExample();
+                        } else {
+                            PlaybackController.playExample();
+                        }
+                        break;
+                    case 'ArrowRight':
+                        event.preventDefault();
+                        NavigationController.nextExample();
+                        break;
+                    case 'ArrowLeft':
+                        event.preventDefault();
+                        NavigationController.previousExample();
+                        break;
+                    case 'r':
+                    case 'R':
+                        event.preventDefault();
+                        PlaybackController.restartExample();
+                        break;
+                    case 'n':
+                    case 'N':
+                        event.preventDefault();
+                        QuizSystem.nextQuestion();
+                        break;
+                    case 's':
+                    case 'S':
+                        event.preventDefault();
+                        if (!document.getElementById('settingsThaiFont')) {
+                            SettingsManager.show();
+                        }
+                        break;
+                    case 'Escape':
+                        if (document.getElementById('settingsThaiFont')) {
+                            event.preventDefault();
+                            SettingsManager.close();
+                        }
+                        break;
+                }
+            }
+        };
+
         // ========== MAIN APPLICATION CONTROLLER ==========
         const AppController = {
-
             async init() {
                 AppState.initialize();
                 ThemeManager.init();
-                FontManager.init();
+                FontManager.apply();
+                TTSManager.initialize();
+                KeyboardManager.init();
                 this.setupEventListeners();
                 await this.loadTopics();
                 this.setupPlaybackScrollHandling();
+                ScreenReader.announce('Language learning application loaded successfully');
             },
 
             setupEventListeners() {
@@ -2877,8 +3039,7 @@
                 this.populateTopicSelect(topicList);
 
                 if (topicList.length > 0) {
-                    // Use the filename, not the topic object
-                    const currentTopicFilename = Storage.load('currentTopic', topicList[0].topicFilename);
+                    const currentTopicFilename = Storage.load(CONSTANTS.STORAGE_KEYS.CURRENT_TOPIC, topicList[0].topicFilename);
                     await this.loadTopic(currentTopicFilename);
                 }
             },
@@ -2887,17 +3048,14 @@
                 const topicList = await TopicManager.loadTopicList();
                 this.populateTopicSelect(topicList);
 
-                // Restore the current topic selection
-                const currentTopicFilename = Storage.load('currentTopic');
+                const currentTopicFilename = Storage.load(CONSTANTS.STORAGE_KEYS.CURRENT_TOPIC);
                 if (currentTopicFilename && AppState.currentTopic) {
-                    // If we already have topic data, just update the select and repopulate titles/examples
                     const topicSelect = document.getElementById('topicSelect');
                     if (topicSelect) {
                         topicSelect.value = currentTopicFilename;
                     }
                     this.populateTitles();
                 } else if (topicList.length > 0) {
-                    // Otherwise load the first topic or saved topic
                     const topicToLoad = currentTopicFilename || topicList[0].topicFilename;
                     await this.loadTopic(topicToLoad);
                 }
@@ -2922,7 +3080,7 @@
                     topicSelect.appendChild(option);
                 });
 
-                const savedTopic = Storage.load('currentTopic', topicList[0].topicFilename);
+                const savedTopic = Storage.load(CONSTANTS.STORAGE_KEYS.CURRENT_TOPIC, topicList[0].topicFilename);
                 topicSelect.value = savedTopic;
                 topicSelect.disabled = false;
             },
@@ -2930,16 +3088,13 @@
             async loadTopic(filename) {
                 try {
                     const topicData = await TopicManager.loadTopic(filename);
-                    AppState.currentTopic = topicData; // Store the topic data object
-                    Storage.save('currentTopic', filename); // Store the filename
+                    AppState.currentTopic = topicData;
+                    Storage.save(CONSTANTS.STORAGE_KEYS.CURRENT_TOPIC, filename);
                     this.populateTitles();
+                    ErrorHandler.showSuccessMessage(`Loaded topic: ${topicData.topic}`);
                 } catch (error) {
                     console.error('Error loading topic:', error);
-                    const contentArea = document.getElementById('contentArea');
-                    if (contentArea) {
-                        contentArea.innerHTML =
-                            `<div class="error-message">Error loading topic: ${error.message}. Please check that the topic file exists at /assets/topics/${filename}</div>`;
-                    }
+                    ErrorHandler.showErrorToUser(`Error loading topic: ${error.message}. Please check that the topic file exists at /assets/topics/${filename}`);
                 }
             },
 
@@ -2958,7 +3113,7 @@
                 AppState.currentTopic.titles.forEach((titleItem, index) => {
                     const option = document.createElement('option');
                     option.value = index;
-                    option.textContent = titleItem.title || `Title ${index + 1}`; // Use titleItem.title
+                    option.textContent = titleItem.title || `Title ${index + 1}`;
                     option.style.fontFamily = 'Arial, sans-serif';
                     option.style.fontSize = '1rem';
                     titleSelect.appendChild(option);
@@ -2988,8 +3143,8 @@
                     const option = document.createElement('option');
                     option.value = index;
                     option.textContent = `Example ${index + 1}`;
-                    option.style.fontFamily = 'Arial, sans-serif'; // Ensure same font as app
-                    option.style.fontSize = '1rem'; // Ensure same font size as dropdown
+                    option.style.fontFamily = 'Arial, sans-serif';
+                    option.style.fontSize = '1rem';
                     exampleSelect.appendChild(option);
                 });
 
@@ -3003,15 +3158,13 @@
                 AppState.saveNavigation();
                 this.renderExample();
 
-                // Reset playback position when loading a new example
                 AppState.currentWordIndex = 0;
                 AppState.isPlaying = false;
                 TTSManager.cancel();
 
-                // Update the example number display
                 this.updateExampleNumber();
+                this.updateProgressBar();
 
-                // Ensure topic selection is visible after loading new content
                 setTimeout(() => this.ensureTopicSelectionVisible(), 200);
             },
 
@@ -3030,17 +3183,26 @@
                 }
             },
 
+            updateProgressBar() {
+                const progressBar = document.getElementById('progressBar');
+                if (progressBar && AppState.currentTopic) {
+                    const progress = ProgressTracker.getCompletionPercentage(
+                        AppState.currentTopic.topicFilename,
+                        AppState.currentTopic
+                    );
+                    progressBar.style.width = `${progress}%`;
+                }
+            },
+
             ensureTopicSelectionVisible() {
                 const topicSelection = document.getElementById('topicSelectionControls');
                 const contentArea = document.getElementById('contentArea');
 
                 if (topicSelection && contentArea) {
-                    // Use a small timeout to ensure DOM is updated
                     setTimeout(() => {
                         const topicSelectionRect = topicSelection.getBoundingClientRect();
                         const headerRect = document.querySelector('header').getBoundingClientRect();
 
-                        // If topic selection is behind the header, scroll it into view
                         if (topicSelectionRect.top < headerRect.bottom + 10) {
                             const scrollTop = contentArea.scrollTop;
                             const targetScroll = scrollTop - (headerRect.bottom - topicSelectionRect.top) - 20;
@@ -3054,8 +3216,7 @@
             },
 
             setupPlaybackScrollHandling() {
-                // Observe when words are highlighted during playback
-                const observer = new MutationObserver((mutations) => {
+                const observer = new MutationObserver(Utils.throttle((mutations) => {
                     mutations.forEach((mutation) => {
                         if (mutation.type === 'attributes' &&
                             (mutation.target.classList.contains('highlight-light') ||
@@ -3063,7 +3224,7 @@
                             this.ensureTopicSelectionVisible();
                         }
                     });
-                });
+                }, 100));
 
                 const exampleDisplay = document.getElementById('exampleDisplay');
                 if (exampleDisplay) {
@@ -3087,7 +3248,6 @@
                 this.bindUIElements();
                 this.restoreSettings();
 
-                // Ensure the content area is scrolled to top when initializing
                 contentArea.scrollTop = 0;
             },
 
@@ -3095,20 +3255,26 @@
                 return `
         <div class="selection-header">Text To Speech</div>
         
+        <!-- NEW: Progress Bar -->
+        <div style="margin: 0.5em 0;">
+            <div class="progress-bar">
+                <div id="progressBar" class="progress-fill" style="width: 0%"></div>
+            </div>
+        </div>
+        
         <details class="topic-options-details" id="topicOptionsDetails">
             <summary>Topic & Language Options</summary>
             <div class="topic-options-content">
                 <div id="topicSelectionControls" class="topic-selection-controls">
-                    <label>Topic: <select id="topicSelect"></select></label>
-                    <label>Title: <select id="titleSelect"></select></label>
-                    <label>Example: <select id="exampleSelect"></select></label>
+                    <label>Topic: <select id="topicSelect" aria-label="Select topic"></select></label>
+                    <label>Title: <select id="titleSelect" aria-label="Select title"></select></label>
+                    <label>Example: <select id="exampleSelect" aria-label="Select example"></select></label>
                 </div>
                 
                 <div class="language-controls">
                     <details>
                         <summary>Language Options</summary>
                         <div class="language-controls-content">
-                            <!-- Row 1: Language Titles -->
                             <div class="language-header-row">
                                 <div class="control-type"></div>
                                 <div class="language-checkboxes">
@@ -3124,43 +3290,41 @@
                                 </div>
                             </div>
                             
-                            <!-- Row 2: Display Checkboxes -->
                             <div class="language-controls-row">
                                 <div class="control-type">Display</div>
                                 <div class="language-checkboxes">
                                     <div class="language-checkbox-group">
-                                        <label><input type="checkbox" id="displayThai" checked></label>
+                                        <label><input type="checkbox" id="displayThai" checked aria-label="Display Thai text"></label>
                                     </div>
                                     <div class="language-checkbox-group">
-                                        <label><input type="checkbox" id="displayPersian"></label>
+                                        <label><input type="checkbox" id="displayPersian" aria-label="Display Persian text"></label>
                                     </div>
                                     <div class="language-checkbox-group">
-                                        <label><input type="checkbox" id="displayEnglish"></label>
+                                        <label><input type="checkbox" id="displayEnglish" aria-label="Display English text"></label>
                                     </div>
                                 </div>
                             </div>
                             
-                            <!-- Row 3: Speak Checkboxes -->
                             <div class="language-controls-row">
                                 <div class="control-type">Speak</div>
                                 <div class="language-checkboxes">
                                     <div class="language-checkbox-group">
-                                        <label><input type="checkbox" id="speakThai" checked></label>
+                                        <label><input type="checkbox" id="speakThai" checked aria-label="Speak Thai text"></label>
                                     </div>
                                     <div class="language-checkbox-group">
-                                        <label><input type="checkbox" id="speakPersian"></label>
+                                        <label><input type="checkbox" id="speakPersian" aria-label="Speak Persian text"></label>
                                     </div>
                                     <div class="language-checkbox-group">
-                                        <label><input type="checkbox" id="speakEnglish"></label>
+                                        <label><input type="checkbox" id="speakEnglish" aria-label="Speak English text"></label>
                                     </div>
                                 </div>
                             </div>
-                            <!-- Row 4: Reading Delay -->
+                            
                             <div class="language-controls-row">
                                 <div class="control-type">Reading delay (secs)</div>
                                 <div class="language-checkboxes">
                                     <div class="language-checkbox-group" style="flex: 1;">
-                                        <input type="number" id="playbackDelay" value="0.5" min="0.5" max="5.0" step="1.0">
+                                        <input type="number" id="playbackDelay" value="0.5" min="0.5" max="5.0" step="1.0" aria-label="Playback delay in seconds">
                                     </div>
                                     <div class="language-checkbox-group" style="flex: 0;"></div>
                                     <div class="language-checkbox-group" style="flex: 0;"></div>
@@ -3173,47 +3337,62 @@
         </details>
         
         <section id="exampleSec">
-            <div id="exampleDisplay"></div>
+            <div id="exampleDisplay" aria-live="polite"></div>
             <div id="exampleControls" class="controls">
                 <div class="example-controls-row">
-                    <button id="playBtn">▶️</button>
-                    <button id="pauseBtn">⏸️</button>
-                    <button id="restartBtn">⏮️</button>
+                    <button id="playBtn" aria-label="Play example">▶️</button>
+                    <button id="pauseBtn" aria-label="Pause example">⏸️</button>
+                    <button id="restartBtn" aria-label="Restart example">⏮️</button>
                     <div class="example-number-container">
                         <span class="example-number-label">Example</span>
                         <span id="currentExampleNumber" class="example-number">1</span>
                     </div>
-                    <button id="prevExample">⬅️</button>
-                    <button id="nextExample">➡️</button>
+                    <button id="prevExample" aria-label="Previous example">⬅️</button>
+                    <button id="nextExample" aria-label="Next example">➡️</button>
                 </div>
             </div>
         </section>
         
         <section id="quizSec">
             <h3>Practice Quiz</h3>
-            <div id="quiz"></div>
+            
+            <!-- FIXED: Add language selection for quiz -->
+            <div class="lang-select">
+                <div class="lang-option">
+                    <label>Question Language:</label>
+                    <label><input type="radio" name="questionLang" value="th" checked> Thai</label>
+                    <label><input type="radio" name="questionLang" value="en"> English</label>
+                    <label><input type="radio" name="questionLang" value="fa"> Persian</label>
+                </div>
+                <div class="lang-option">
+                    <label>Answer Language:</label>
+                    <label><input type="radio" name="answerLang" value="en" checked> English</label>
+                    <label><input type="radio" name="answerLang" value="th"> Thai</label>
+                    <label><input type="radio" name="answerLang" value="fa"> Persian</label>
+                </div>
+            </div>
+            
+            <div id="quiz" aria-live="polite"></div>
             <div id="quizControls">
                 <div class="quiz-row quiz-row-top">
-                    <button id="prevQ">⬅️</button>
-                    <button id="nextQ">➡️</button>
-                    <button id="retryQuiz">🔄</button>
-                    <div class="example-number-container">
-                        <span class="example-number-label">Example</span>
-                        <span id="currentExampleNumber" class="example-number">1</span>
-                    </div>
-                    <button id="prevExample">⬅️</button>
-                    <button id="nextExample">➡️</button>
+                    <button id="prevQ" aria-label="Previous question">⬅️</button>
+                    <button id="nextQ" aria-label="Next question">➡️</button>
+                    <button id="retryQuiz" aria-label="Retry quiz">🔄</button>
+                    <span id="score">Score: 0/0</span>
+                    <label>
+                        <input type="checkbox" id="incorrectOnly" aria-label="Show only incorrect questions">
+                        Incorrect Only
+                    </label>
                 </div>
             </div>
         </section>`;
             },
 
             getControlsHTML() {
-                return ``; // Empty controls area - all controls are in main content
+                return ``;
             },
 
             bindUIElements() {
-                // Initialize component references
                 ExampleRenderer.init(document.getElementById('exampleDisplay'));
                 NavigationController.init(
                     document.getElementById('topicSelect'),
@@ -3221,17 +3400,13 @@
                     document.getElementById('exampleSelect')
                 );
 
-                // Event delegation for dynamic elements
-                document.addEventListener('change', (e) => {
+                document.addEventListener('change', Utils.debounce((e) => {
                     this.handleSettingChange(e);
-                });
+                }, 300));
 
-                // Playback controls
                 document.getElementById('playBtn')?.addEventListener('click', () => {
                     PlaybackController.playExample();
-                    // Close Topic & Language options when example controls are used
                     this.closeTopicOptions();
-                    // Ensure topic selection stays visible when playback starts
                     setTimeout(() => this.ensureTopicSelectionVisible(), 300);
                 });
                 document.getElementById('pauseBtn')?.addEventListener('click', () => {
@@ -3251,7 +3426,6 @@
                     this.closeTopicOptions();
                 });
 
-                // Quiz controls
                 document.getElementById('prevQ')?.addEventListener('click', () => {
                     QuizSystem.previousQuestion();
                     this.closeTopicOptions();
@@ -3265,7 +3439,6 @@
                     this.closeTopicOptions();
                 });
 
-                // Language settings
                 this.bindLanguageSettings();
             },
 
@@ -3297,33 +3470,35 @@
 
             handleIncorrectOnlyChange(checked) {
                 QuizSystem.incorrectOnly = checked;
-                QuizSystem.currentQuestion = 0; // Reset to first question when toggling filter
+                QuizSystem.currentQuestion = 0;
                 QuizSystem.render();
+                ScreenReader.announce(checked ? 'Showing only incorrect questions' : 'Showing all questions');
             },
 
             saveAndRenderDisplay(setting, value) {
                 Storage.save(setting, value ? '1' : '0');
                 this.renderExample();
+                ScreenReader.announce(`${setting.replace('display', '')} display ${value ? 'enabled' : 'disabled'}`);
             },
 
             saveSpeakSetting(setting, value) {
                 Storage.save(setting, value ? '1' : '0');
-                // No need to re-render for speak settings, just save
+                ScreenReader.announce(`${setting.replace('speak', '')} speech ${value ? 'enabled' : 'disabled'}`);
             },
 
             handlePlaybackDelayChange(input) {
                 let value = parseFloat(input.value);
                 if (isNaN(value)) value = 0.5;
                 value = Math.min(Math.max(value, 0.5), 5.0);
-                // Ensure value is valid for the step (0.5, 1.5, 2.5, etc.)
                 value = Math.round(value * 2) / 2;
                 input.value = value;
-                Storage.save('playbackDelay', input.value);
+                Storage.save(CONSTANTS.STORAGE_KEYS.PLAYBACK_DELAY, input.value);
+                ScreenReader.announce(`Playback delay set to ${value} seconds`);
             },
 
             bindLanguageSettings() {
-                const savedQuestionLang = Storage.load('questionLang', 'th');
-                const savedAnswerLang = Storage.load('answerLang', 'en');
+                const savedQuestionLang = Storage.load(CONSTANTS.STORAGE_KEYS.QUESTION_LANG, CONSTANTS.DEFAULT_VALUES.QUESTION_LANG);
+                const savedAnswerLang = Storage.load(CONSTANTS.STORAGE_KEYS.ANSWER_LANG, CONSTANTS.DEFAULT_VALUES.ANSWER_LANG);
 
                 const questionRadio = document.querySelector(`input[name="questionLang"][value="${savedQuestionLang}"]`);
                 const answerRadio = document.querySelector(`input[name="answerLang"][value="${savedAnswerLang}"]`);
@@ -3333,35 +3508,42 @@
 
                 document.querySelectorAll('input[name="questionLang"]').forEach(radio => {
                     radio.addEventListener('change', (e) => {
-                        Storage.save('questionLang', e.target.value);
+                        Storage.save(CONSTANTS.STORAGE_KEYS.QUESTION_LANG, e.target.value);
                         this.renderExample();
+                        ScreenReader.announce(`Question language set to ${e.target.value}`);
                     });
                 });
 
                 document.querySelectorAll('input[name="answerLang"]').forEach(radio => {
                     radio.addEventListener('change', (e) => {
-                        Storage.save('answerLang', e.target.value);
+                        Storage.save(CONSTANTS.STORAGE_KEYS.ANSWER_LANG, e.target.value);
                         this.renderExample();
+                        ScreenReader.announce(`Answer language set to ${e.target.value}`);
                     });
                 });
             },
 
             restoreSettings() {
-                const displayThai = document.getElementById('displayThai');
-                const displayEnglish = document.getElementById('displayEnglish');
-                const displayPersian = document.getElementById('displayPersian');
-                const speakThai = document.getElementById('speakThai');
-                const speakEnglish = document.getElementById('speakEnglish');
-                const speakPersian = document.getElementById('speakPersian');
-                const playbackDelay = document.getElementById('playbackDelay');
+                const settings = {
+                    'displayThai': Storage.loadBool(CONSTANTS.STORAGE_KEYS.DISPLAY_THAI, true),
+                    'displayEnglish': Storage.loadBool(CONSTANTS.STORAGE_KEYS.DISPLAY_ENGLISH, false),
+                    'displayPersian': Storage.loadBool(CONSTANTS.STORAGE_KEYS.DISPLAY_PERSIAN, false),
+                    'speakThai': Storage.loadBool(CONSTANTS.STORAGE_KEYS.SPEAK_THAI, true),
+                    'speakEnglish': Storage.loadBool(CONSTANTS.STORAGE_KEYS.SPEAK_ENGLISH, false),
+                    'speakPersian': Storage.loadBool(CONSTANTS.STORAGE_KEYS.SPEAK_PERSIAN, false),
+                    'playbackDelay': Storage.load(CONSTANTS.STORAGE_KEYS.PLAYBACK_DELAY, CONSTANTS.DEFAULT_VALUES.PLAYBACK_DELAY)
+                };
 
-                if (displayThai) displayThai.checked = Storage.loadBool('displayThai', true);
-                if (displayEnglish) displayEnglish.checked = Storage.loadBool('displayEnglish', false);
-                if (displayPersian) displayPersian.checked = Storage.loadBool('displayPersian', false);
-                if (speakThai) speakThai.checked = Storage.loadBool('speakThai', true);
-                if (speakEnglish) speakEnglish.checked = Storage.loadBool('speakEnglish', false);
-                if (speakPersian) speakPersian.checked = Storage.loadBool('speakPersian', false);
-                if (playbackDelay) playbackDelay.value = Storage.load('playbackDelay', '0.5'); // Changed from '1.5' to '0.5'
+                Object.entries(settings).forEach(([id, value]) => {
+                    const element = document.getElementById(id);
+                    if (element) {
+                        if (element.type === 'checkbox') {
+                            element.checked = value;
+                        } else {
+                            element.value = value;
+                        }
+                    }
+                });
             }
         };
 
