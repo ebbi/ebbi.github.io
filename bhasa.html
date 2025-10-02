@@ -3930,6 +3930,12 @@
                     this.closeTopicOptions();
                 });
 
+                // === ADD THIS LINE ===
+                document.getElementById('settingsBtn')?.addEventListener('click', () => {
+                    SettingsManager.show();
+                    this.closeTopicOptions();
+                });
+
                 this.bindLanguageSettings();
             },
 
