@@ -1,0 +1,165 @@
+{
+    "metadata": {
+        "topic": "Test Phrases",
+        "description": "Basic test phrases for multiple languages",
+        "languageCount": 4,
+        "exampleCount": 3,
+        "difficulty": "beginner",
+        "version": "1.0"
+    },
+    "titles": [
+        {
+            "title": "Greetings",
+            "description": "Common greeting phrases",
+            "examples": [
+                {
+                    "id": "greet-1",
+                    "metadata": {
+                        "difficulty": 1,
+                        "category": "greetings",
+                        "notes": "Basic greeting"
+                    },
+                    "translations": {
+                        "th-TH": "สวัสดี",
+                        "fa-IR": "سلام",
+                        "ja-JP": "こんにちは",
+                        "zh-CN": "你好",
+                        "en-US": "Hello"
+                    }
+                },
+                {
+                    "id": "greet-2",
+                    "metadata": {
+                        "difficulty": 1,
+                        "category": "greetings",
+                        "notes": "Thank you"
+                    },
+                    "translations": {
+                        "th-TH": "ขอบคุณ",
+                        "fa-IR": "متشکرم",
+                        "ja-JP": "ありがとう",
+                        "zh-CN": "谢谢",
+                        "en-US": "Thank you"
+                    }
+                },
+                {
+                    "id": "greet-3",
+                    "metadata": {
+                        "difficulty": 1,
+                        "category": "greetings",
+                        "notes": "Goodbye"
+                    },
+                    "translations": {
+                        "th-TH": "ลาก่อน",
+                        "fa-IR": "خداحافظ",
+                        "ja-JP": "さようなら",
+                        "zh-CN": "再见",
+                        "en-US": "Goodbye"
+                    }
+                }
+            ]
+        },
+        {
+            "title": "Simple Sentences",
+            "description": "Basic sentence structures",
+            "examples": [
+                {
+                    "id": "sentence-1",
+                    "metadata": {
+                        "difficulty": 2,
+                        "category": "sentences",
+                        "notes": "Simple statement"
+                    },
+                    "translations": {
+                        "th-TH": "ฉันชอบอาหารไทย",
+                        "fa-IR": "من غذای ایرانی را دوست دارم",
+                        "ja-JP": "私は日本食が好きです",
+                        "zh-CN": "我喜欢中国菜",
+                        "en-US": "I like the food"
+                    }
+                },
+                {
+                    "id": "sentence-2",
+                    "metadata": {
+                        "difficulty": 2,
+                        "category": "sentences",
+                        "notes": "Question form"
+                    },
+                    "translations": {
+                        "th-TH": "คุณชื่ออะไร",
+                        "fa-IR": "اسم شما چیست",
+                        "ja-JP": "お名前は何ですか",
+                        "zh-CN": "你叫什么名字",
+                        "en-US": "What is your name"
+                    }
+                },
+                {
+                    "id": "sentence-3",
+                    "metadata": {
+                        "difficulty": 2,
+                        "category": "sentences",
+                        "notes": "Location question"
+                    },
+                    "translations": {
+                        "th-TH": "คุณอยู่ที่ไหน",
+                        "fa-IR": "کجا هستید",
+                        "ja-JP": "どこにいますか",
+                        "zh-CN": "你在哪里",
+                        "en-US": "Where are you"
+                    }
+                }
+            ]
+        },
+        {
+            "title": "Multi-word Phrases",
+            "description": "Phrases with multiple words to test highlighting",
+            "examples": [
+                {
+                    "id": "phrase-1",
+                    "metadata": {
+                        "difficulty": 2,
+                        "category": "phrases",
+                        "notes": "Two word phrase"
+                    },
+                    "translations": {
+                        "th-TH": "สวัสดีครับ",
+                        "fa-IR": "سلام علیکم",
+                        "ja-JP": "おはようございます",
+                        "zh-CN": "早上好",
+                        "en-US": "Good morning"
+                    }
+                },
+                {
+                    "id": "phrase-2",
+                    "metadata": {
+                        "difficulty": 2,
+                        "category": "phrases",
+                        "notes": "Three word phrase"
+                    },
+                    "translations": {
+                        "th-TH": "ฉันรักคุณ",
+                        "fa-IR": "دوستت دارم",
+                        "ja-JP": "愛しています",
+                        "zh-CN": "我爱你",
+                        "en-US": "I love you"
+                    }
+                },
+                {
+                    "id": "phrase-3",
+                    "metadata": {
+                        "difficulty": 3,
+                        "category": "phrases",
+                        "notes": "Longer phrase"
+                    },
+                    "translations": {
+                        "th-TH": "วันนี้อากาศดีมาก",
+                        "fa-IR": "امروز هوا خیلی خوب است",
+                        "ja-JP": "今日は天気がとても良いです",
+                        "zh-CN": "今天天气很好",
+                        "en-US": "The weather is very nice today"
+                    }
+                }
+            ]
+        }
+    ]
+}

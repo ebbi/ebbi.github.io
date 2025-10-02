@@ -1736,10 +1736,10 @@
                     const errorDiv = document.createElement('div');
                     errorDiv.className = 'error-message';
                     errorDiv.innerHTML = `
-                        <strong>Something went wrong</strong>
-                        <p>${ErrorHandler.sanitizeHTML(message)}</p>
-                        <button onclick="this.parentElement.remove()" style="margin-top: 0.5em;">Dismiss</button>
-                    `;
+                    <strong>Something went wrong</strong>
+                    <p>${ErrorHandler.sanitizeHTML(message)}</p>
+                    <button onclick="this.parentElement.remove()" style="margin-top: 0.5em;">Dismiss</button>
+                `;
                     contentArea.prepend(errorDiv);
                 }
             },
@@ -1750,10 +1750,10 @@
                     const successDiv = document.createElement('div');
                     successDiv.className = 'success-message';
                     successDiv.innerHTML = `
-                        <strong>Success</strong>
-                        <p>${ErrorHandler.sanitizeHTML(message)}</p>
-                        <button onclick="this.parentElement.remove()" style="margin-top: 0.5em;">Dismiss</button>
-                    `;
+                    <strong>Success</strong>
+                    <p>${ErrorHandler.sanitizeHTML(message)}</p>
+                    <button onclick="this.parentElement.remove()" style="margin-top: 0.5em;">Dismiss</button>
+                `;
                     contentArea.prepend(successDiv);
                 }
             },
@@ -1888,6 +1888,7 @@
                 ];
             }
         };
+
         // ==================== SCREEN READER ANNOUNCER ====================
         const ScreenReader = {
             announce: (message, priority = 'polite') => {
@@ -2057,32 +2058,32 @@
 
             getSetupInstructions() {
                 return `
-                    <div class="tts-setup-steps">
-                        <h4>Text-to-Speech Setup Instructions</h4>
-                        <div class="tts-step">
-                            <strong>Step 1: Install Language Packs</strong>
-                            <p>Go to your device settings and install the required language packs for:</p>
-                            <ul>
-                                ${AppConfig.availableLanguages.map(lang =>
+                <div class="tts-setup-steps">
+                    <h4>Text-to-Speech Setup Instructions</h4>
+                    <div class="tts-step">
+                        <strong>Step 1: Install Language Packs</strong>
+                        <p>Go to your device settings and install the required language packs for:</p>
+                        <ul>
+                            ${AppConfig.availableLanguages.map(lang =>
                     `<li><strong>${lang.name}:</strong> Search for "${lang.name} language pack" in your device settings</li>`
                 ).join('')}
-                            </ul>
-                        </div>
-                        <div class="tts-step">
-                            <strong>Step 2: Browser TTS Setup</strong>
-                            <p>In your browser settings:</p>
-                            <ul>
-                                <li>Chrome: Settings → Advanced → Accessibility → Text-to-Speech</li>
-                                <li>Firefox: Preferences → General → Language → Text-to-Speech</li>
-                                <li>Safari: System Preferences → Accessibility → Speech</li>
-                            </ul>
-                        </div>
-                        <div class="tts-step">
-                            <strong>Step 3: Enable Voices</strong>
-                            <p>Make sure the voices are enabled and set as default in your system's text-to-speech settings.</p>
-                        </div>
+                        </ul>
                     </div>
-                `;
+                    <div class="tts-step">
+                        <strong>Step 2: Browser TTS Setup</strong>
+                        <p>In your browser settings:</p>
+                        <ul>
+                            <li>Chrome: Settings → Advanced → Accessibility → Text-to-Speech</li>
+                            <li>Firefox: Preferences → General → Language → Text-to-Speech</li>
+                            <li>Safari: System Preferences → Accessibility → Speech</li>
+                        </ul>
+                    </div>
+                    <div class="tts-step">
+                        <strong>Step 3: Enable Voices</strong>
+                        <p>Make sure the voices are enabled and set as default in your system's text-to-speech settings.</p>
+                    </div>
+                </div>
+            `;
             },
 
             getStatusMessage() {
@@ -2207,7 +2208,34 @@
             },
 
             getCurrentExample() {
-                return this.currentTopic?.titles?.[this.currentTitle]?.examples?.[this.currentExample] || [];
+                try {
+                    const currentTitle = this.currentTopic?.titles?.[this.currentTitle];
+                    const examples = currentTitle?.examples;
+                    const example = examples?.[this.currentExample];
+
+                    console.log('Current example data:', example); // Debug log
+
+                    if (!example) {
+                        console.warn('No example found at current position');
+                        return [];
+                    }
+
+                    // Handle different data formats
+                    if (Array.isArray(example)) {
+                        return example;
+                    } else if (example.translations && Array.isArray(example.translations)) {
+                        return example.translations;
+                    } else if (typeof example === 'object') {
+                        // Convert single object to array
+                        return [example];
+                    } else {
+                        console.error('Unexpected example format:', example);
+                        return [];
+                    }
+                } catch (error) {
+                    console.error('Error getting current example:', error);
+                    return [];
+                }
             }
         };
 
@@ -2283,20 +2311,20 @@
                     const speakChecked = Storage.loadBool(`speak_${language.code}`, language.defaultSpeak);
 
                     row.innerHTML = `
-                        <div class="language-name" dir="${language.rtl ? 'rtl' : 'ltr'}">
-                            ${language.nativeName} (${language.name})
-                        </div>
-                        <div class="language-checkbox-cell">
-                            <input type="checkbox" id="display_${language.code}" 
-                                   ${displayChecked ? 'checked' : ''}
-                                   aria-label="Display ${language.name} text">
-                        </div>
-                        <div class="language-checkbox-cell">
-                            <input type="checkbox" id="speak_${language.code}" 
-                                   ${speakChecked ? 'checked' : ''}
-                                   aria-label="Speak ${language.name} text">
-                        </div>
-                    `;
+                    <div class="language-name" dir="${language.rtl ? 'rtl' : 'ltr'}">
+                        ${language.nativeName} (${language.name})
+                    </div>
+                    <div class="language-checkbox-cell">
+                        <input type="checkbox" id="display_${language.code}" 
+                               ${displayChecked ? 'checked' : ''}
+                               aria-label="Display ${language.name} text">
+                    </div>
+                    <div class="language-checkbox-cell">
+                        <input type="checkbox" id="speak_${language.code}" 
+                               ${speakChecked ? 'checked' : ''}
+                               aria-label="Speak ${language.name} text">
+                    </div>
+                `;
 
                     languageGrid.appendChild(row);
                 });
@@ -2319,19 +2347,19 @@
                     // Question language radio
                     const questionLabel = document.createElement('label');
                     questionLabel.innerHTML = `
-                        <input type="radio" name="questionLang" value="${language.code}" 
-                               ${savedQuestionLang === language.code ? 'checked' : ''}>
-                        ${language.name}
-                    `;
+                    <input type="radio" name="questionLang" value="${language.code}" 
+                           ${savedQuestionLang === language.code ? 'checked' : ''}>
+                    ${language.name}
+                `;
                     questionGroup.appendChild(questionLabel);
 
                     // Answer language radio
                     const answerLabel = document.createElement('label');
                     answerLabel.innerHTML = `
-                        <input type="radio" name="answerLang" value="${language.code}" 
-                               ${savedAnswerLang === language.code ? 'checked' : ''}>
-                        ${language.name}
-                    `;
+                    <input type="radio" name="answerLang" value="${language.code}" 
+                           ${savedAnswerLang === language.code ? 'checked' : ''}>
+                    ${language.name}
+                `;
                     answerGroup.appendChild(answerLabel);
                 });
             },
@@ -2404,75 +2432,75 @@
 
             getSettingsHTML() {
                 return `
-                    <div style="display: flex; justify-content: space-between; align-items: center;
-                                background: #00247D; color: white; padding: 0.5em 1em; border-radius: 8px;">
-                        <h2 style="margin: 0;">Settings & Help</h2>
-                        <button id="closeX" aria-label="Close settings" style="background: #666; color: white; border: none; padding: 0.5em; border-radius: 4px; cursor: pointer;">❌</button>
+                <div style="display: flex; justify-content: space-between; align-items: center;
+                            background: #00247D; color: white; padding: 0.5em 1em; border-radius: 8px;">
+                    <h2 style="margin: 0;">Settings & Help</h2>
+                    <button id="closeX" aria-label="Close settings" style="background: #666; color: white; border: none; padding: 0.5em; border-radius: 4px; cursor: pointer;">❌</button>
+                </div>
+                
+                <div class="settings-content" style="padding: 1em;">
+                    <div class="settings-font-controls">
+                        <label style="margin: 0;">
+                            Thai Font:
+                            <select id="settingsThaiFont" aria-label="Select Thai font">
+                                <option value="">Default</option>
+                                <option value="Tahoma">Tahoma</option>
+                                <option value="Noto Sans Thai">Noto Sans Thai</option>
+                                <option value="Chakra Petch">Chakra Petch</option>
+                            </select>
+                        </label>
+                    </div>
+                    <div class="font-preview" id="fontPreview" aria-live="polite">ตัวอย่างข้อความภาษาไทย (Thai Text Sample)</div>
+                    
+                    <div class="settings-section">
+                        <h3>Text-to-Speech Setup</h3>
+                        <p>This App uses Text To Speech. Search in your device and your browser settings for languages and install the required language packs and enable Text To Speech. Then try the Test TTS button for more specific help for your device.</p>
+                        
+                        <button id="checkTTS" class="settings-button" style="padding: 0.8em 1.5em; background: #00247D; color: white; border: none; border-radius: 4px; cursor: pointer; margin: 1em 0;">
+                            🔊 Test TTS Setup & Language Support
+                        </button>
+                        
+                        <div id="ttsStatus"></div>
+                        <div id="ttsSetupInstructions"></div>
+                        <div id="languageTests"></div>
+                    </div>
+
+                    <div class="settings-section">
+                        <details class="keyboard-shortcuts-panel">
+                            <summary style="font-weight: bold; font-size: 1.1em; cursor: pointer;">Keyboard Shortcuts</summary>
+                            <div class="keyboard-shortcuts">
+                                <div class="shortcut-item">
+                                    <span>Play/Pause</span>
+                                    <kbd class="shortcut-key">Space</kbd>
+                                </div>
+                                <div class="shortcut-item">
+                                    <span>Next Example</span>
+                                    <kbd class="shortcut-key">→</kbd>
+                                </div>
+                                <div class="shortcut-item">
+                                    <span>Previous Example</span>
+                                    <kbd class="shortcut-key">←</kbd>
+                                </div>
+                                <div class="shortcut-item">
+                                    <span>Restart</span>
+                                    <kbd class="shortcut-key">R</kbd>
+                                </div>
+                                <div class="shortcut-item">
+                                    <span>Next Question</span>
+                                    <kbd class="shortcut-key">N</kbd>
+                                </div>
+                                <div class="shortcut-item">
+                                    <span>Settings</span>
+                                    <kbd class="shortcut-key">S</kbd>
+                                </div>
+                            </div>
+                        </details>
                     </div>
                     
-                    <div class="settings-content" style="padding: 1em;">
-                        <div class="settings-font-controls">
-                            <label style="margin: 0;">
-                                Thai Font:
-                                <select id="settingsThaiFont" aria-label="Select Thai font">
-                                    <option value="">Default</option>
-                                    <option value="Tahoma">Tahoma</option>
-                                    <option value="Noto Sans Thai">Noto Sans Thai</option>
-                                    <option value="Chakra Petch">Chakra Petch</option>
-                                </select>
-                            </label>
-                        </div>
-                        <div class="font-preview" id="fontPreview" aria-live="polite">ตัวอย่างข้อความภาษาไทย (Thai Text Sample)</div>
-                        
-                        <div class="settings-section">
-                            <h3>Text-to-Speech Setup</h3>
-                            <p>This App uses Text To Speech. Search in your device and your browser settings for languages and install the required language packs and enable Text To Speech. Then try the Test TTS button for more specific help for your device.</p>
-                            
-                            <button id="checkTTS" class="settings-button" style="padding: 0.8em 1.5em; background: #00247D; color: white; border: none; border-radius: 4px; cursor: pointer; margin: 1em 0;">
-                                🔊 Test TTS Setup & Language Support
-                            </button>
-                            
-                            <div id="ttsStatus"></div>
-                            <div id="ttsSetupInstructions"></div>
-                            <div id="languageTests"></div>
-                        </div>
-
-                        <div class="settings-section">
-                            <details class="keyboard-shortcuts-panel">
-                                <summary style="font-weight: bold; font-size: 1.1em; cursor: pointer;">Keyboard Shortcuts</summary>
-                                <div class="keyboard-shortcuts">
-                                    <div class="shortcut-item">
-                                        <span>Play/Pause</span>
-                                        <kbd class="shortcut-key">Space</kbd>
-                                    </div>
-                                    <div class="shortcut-item">
-                                        <span>Next Example</span>
-                                        <kbd class="shortcut-key">→</kbd>
-                                    </div>
-                                    <div class="shortcut-item">
-                                        <span>Previous Example</span>
-                                        <kbd class="shortcut-key">←</kbd>
-                                    </div>
-                                    <div class="shortcut-item">
-                                        <span>Restart</span>
-                                        <kbd class="shortcut-key">R</kbd>
-                                    </div>
-                                    <div class="shortcut-item">
-                                        <span>Next Question</span>
-                                        <kbd class="shortcut-key">N</kbd>
-                                    </div>
-                                    <div class="shortcut-item">
-                                        <span>Settings</span>
-                                        <kbd class="shortcut-key">S</kbd>
-                                    </div>
-                                </div>
-                            </details>
-                        </div>
-                        
-                        <div style="margin-top: 2em; padding-top: 1em; border-top: 1px solid var(--border-light);">
-                            <button id="closeBtn" style="padding: 0.6em 1.2em; background: #666; color: white; border: none; border-radius: 4px; cursor: pointer;">Close Settings</button>
-                        </div>
-                    </div>`;
+                    <div style="margin-top: 2em; padding-top: 1em; border-top: 1px solid var(--border-light);">
+                        <button id="closeBtn" style="padding: 0.6em 1.2em; background: #666; color: white; border: none; border-radius: 4px; cursor: pointer;">Close Settings</button>
+                    </div>
+                </div>`;
             },
 
             bindSettingsEvents() {
@@ -2545,11 +2573,11 @@
 
                 const statusClass = `tts-status-${status.type === 'warning' ? 'info' : status.type}`;
                 ttsStatus.innerHTML = `
-                    <div class="tts-status-container ${statusClass}">
-                        <h4 style="margin: 0 0 0.5em 0;">${status.title}</h4>
-                        <p style="margin: 0;">${status.message}</p>
-                    </div>
-                `;
+                <div class="tts-status-container ${statusClass}">
+                    <h4 style="margin: 0 0 0.5em 0;">${status.title}</h4>
+                    <p style="margin: 0;">${status.message}</p>
+                </div>
+            `;
             },
 
             showLanguageTestResults() {
@@ -2567,21 +2595,21 @@
                     const voices = result.voices ? result.voices.map(v => v.name).join(', ') : 'No voices';
 
                     html += `
-                        <div style="flex: 1; min-width: 200px; padding: 1em; background: rgba(0,0,0,0.05); border-radius: 8px;">
-                            <div style="font-weight: bold;">${icon} ${language?.name || lang}</div>
-                            <div class="test-result ${resultClass}">
-                                ${result.success ?
+                    <div style="flex: 1; min-width: 200px; padding: 1em; background: rgba(0,0,0,0.05); border-radius: 8px;">
+                        <div style="font-weight: bold;">${icon} ${language?.name || lang}</div>
+                        <div class="test-result ${resultClass}">
+                            ${result.success ?
                             `<div class="success-list">Working - Available voices:<br>${voices}</div>` :
                             `Failed: ${result.error}. ${this.getLanguageSpecificHelp(lang, result.error)}`
                         }
-                            </div>
-                            <button onclick="testSingleLanguage('${lang}', '${result.text}')" 
-                                    class="language-test" 
-                                    style="margin-top: 0.5em;">
-                                Test ${language?.name || lang} Again
-                            </button>
                         </div>
-                    `;
+                        <button onclick="testSingleLanguage('${lang}', '${result.text}')" 
+                                class="language-test" 
+                                style="margin-top: 0.5em;">
+                            Test ${language?.name || lang} Again
+                        </button>
+                    </div>
+                `;
                 }
 
                 html += `</div>`;
@@ -2752,13 +2780,10 @@
                 // Get display languages from configuration
                 const displayLanguages = LanguageManager.getDisplayLanguages();
 
-                // Get translations - support both new and old format
-                const translations = word.translations || word;
-
                 // Render each display language
                 displayLanguages.forEach(language => {
-                    const text = translations[language.code];
-                    if (text && text !== "\n") {
+                    const text = this.getWordText(word, language.code);
+                    if (text && text !== "\n" && text.trim() !== '') {
                         // Handle multi-line text
                         const textLines = text.split('\n');
 
@@ -2808,6 +2833,18 @@
                 }
             },
 
+            getWordText(word, languageCode) {
+                // Try multiple possible data structures
+                if (word[languageCode]) {
+                    return word[languageCode];
+                } else if (word.translations?.[languageCode]) {
+                    return word.translations[languageCode];
+                } else if (word.text) {
+                    return word.text;
+                }
+                return null;
+            },
+
             applyLanguageStyling() {
                 // Apply RTL and font styling to all language elements
                 AppConfig.availableLanguages.forEach(language => {
@@ -2822,11 +2859,11 @@
             },
 
             isNewline(word) {
-                // Check if all translations are newlines
+                // Check if all translations are newlines or empty
                 const displayLanguages = LanguageManager.getDisplayLanguages();
                 return displayLanguages.every(language => {
-                    const text = word[language.code] || word.translations?.[language.code];
-                    return text === "\n";
+                    const text = this.getWordText(word, language.code);
+                    return text === "\n" || (text && text.trim() === '');
                 });
             },
 
@@ -2852,24 +2889,36 @@
 
         // ========== PLAYBACK CONTROLLER ==========
         const PlaybackController = {
+            currentTimeout: null,
+
             async playExample() {
-                if (AppState.isPlaying) return;
+                if (AppState.isPlaying) {
+                    this.pauseExample();
+                    return;
+                }
 
                 const example = AppState.getCurrentExample();
-                if (!example || example.length === 0) return;
+                console.log('Playback example data:', example);
+
+                if (!example || example.length === 0) {
+                    console.warn('No example content to play');
+                    ScreenReader.announce('No example content available');
+                    return;
+                }
 
                 AppState.isPlaying = true;
+                AppState.currentWordIndex = 0;
                 ScreenReader.announce('Playback started');
-
-                if (AppState.currentWordIndex >= example.length) {
-                    AppState.currentWordIndex = 0;
-                }
 
                 await this.speakNextWord();
             },
 
             pauseExample() {
                 AppState.isPlaying = false;
+                if (this.currentTimeout) {
+                    clearTimeout(this.currentTimeout);
+                    this.currentTimeout = null;
+                }
                 TTSManager.cancel();
                 ScreenReader.announce('Playback paused');
             },
@@ -2883,7 +2932,13 @@
             },
 
             async speakNextWord() {
+                if (this.currentTimeout) {
+                    clearTimeout(this.currentTimeout);
+                    this.currentTimeout = null;
+                }
+
                 const example = AppState.getCurrentExample();
+
                 if (!AppState.isPlaying || !example || AppState.currentWordIndex >= example.length) {
                     AppState.isPlaying = false;
                     ExampleRenderer.clearHighlights();
@@ -2891,89 +2946,233 @@
                     return;
                 }
 
-                const word = example[AppState.currentWordIndex];
-                if (!word || this.isNewline(word)) {
+                const wordEntry = example[AppState.currentWordIndex];
+                console.log('Processing word entry:', wordEntry, 'at index:', AppState.currentWordIndex);
+
+                // Handle invalid entries
+                if (!wordEntry || typeof wordEntry !== 'object') {
+                    console.warn('Invalid word entry at index:', AppState.currentWordIndex, wordEntry);
                     AppState.currentWordIndex++;
-                    await this.speakNextWord();
+                    this.currentTimeout = setTimeout(() => this.speakNextWord(), 100);
                     return;
                 }
 
-                this.highlightCurrentWord(AppState.currentWordIndex);
+                // Handle newlines and empty entries
+                if (this.isNewline(wordEntry)) {
+                    AppState.currentWordIndex++;
+                    this.currentTimeout = setTimeout(() => this.speakNextWord(), 100);
+                    return;
+                }
 
-                const delay = this.getPlaybackDelay();
+                // Highlight the current word entry
+                this.highlightCurrentWord(AppState.currentWordIndex);
 
                 const speakLanguages = LanguageManager.getSpeakLanguages();
                 let anyWordSpoken = false;
 
+                // NEW: Process each language's text word by word
                 for (const language of speakLanguages) {
-                    const text = word[language.code] || word.translations?.[language.code];
-                    if (text && text !== "\n") {
-                        await this.speakWord(text, language.code, AppState.currentWordIndex, true);
-                        anyWordSpoken = true;
+                    const text = this.getWordText(wordEntry, language.code);
+                    if (text && text !== "\n" && text.trim() !== '') {
+                        // Split text into individual words for this language
+                        const words = this.splitIntoWords(text, language.code);
+
+                        // Speak each word individually with proper highlighting
+                        for (let wordIndex = 0; wordIndex < words.length; wordIndex++) {
+                            if (!AppState.isPlaying) break;
+
+                            const word = words[wordIndex];
+                            if (word.trim()) {
+                                // Update highlight to show current word within the phrase
+                                this.highlightCurrentWordInPhrase(AppState.currentWordIndex, wordIndex, words.length, language.code);
+
+                                await this.speakWord(word, language.code);
+                                anyWordSpoken = true;
+
+                                // Brief pause between words in the same phrase
+                                if (wordIndex < words.length - 1) {
+                                    await new Promise(resolve => setTimeout(resolve, 200));
+                                }
+                            }
+                        }
                     }
                 }
 
-                if (AppState.isPlaying && anyWordSpoken) {
-                    AppState.currentWordIndex++;
-                    setTimeout(() => {
-                        if (AppState.isPlaying) this.speakNextWord();
-                    }, delay);
-                } else if (!anyWordSpoken) {
-                    AppState.currentWordIndex++;
-                    if (AppState.isPlaying) {
-                        setTimeout(() => {
-                            if (AppState.isPlaying) this.speakNextWord();
-                        }, delay);
-                    }
+                // Move to next word entry
+                AppState.currentWordIndex++;
+
+                // Schedule next word entry with appropriate delay
+                if (AppState.isPlaying) {
+                    const delay = anyWordSpoken ? this.getPlaybackDelay() : 500;
+                    this.currentTimeout = setTimeout(() => this.speakNextWord(), delay);
                 }
+            },
+
+            // NEW: Split text into individual words based on language
+            splitIntoWords(text, languageCode) {
+                // Remove extra whitespace and split by spaces
+                const cleanText = text.replace(/\s+/g, ' ').trim();
+
+                // Language-specific splitting rules
+                const splittingRules = {
+                    'th-TH': (text) => {
+                        // Thai doesn't use spaces between words, so we'll split by characters
+                        // This is a simple approach - you might want more sophisticated Thai word segmentation
+                        return text.split('').filter(char => char.trim() !== '');
+                    },
+                    'zh-CN': (text) => {
+                        // Chinese characters are typically treated as individual "words" for TTS highlighting
+                        return text.split('').filter(char => char.trim() !== '');
+                    },
+                    'ja-JP': (text) => {
+                        // Japanese - similar approach to Chinese
+                        return text.split('').filter(char => char.trim() !== '');
+                    },
+                    'default': (text) => {
+                        // For most languages, split by spaces
+                        return text.split(/\s+/).filter(word => word.trim() !== '');
+                    }
+                };
+
+                const splitter = splittingRules[languageCode] || splittingRules['default'];
+                return splitter(cleanText);
+            },
+
+            // NEW: Highlight specific word within a phrase
+            highlightCurrentWordInPhrase(entryIndex, wordIndex, totalWords, languageCode) {
+                const example = AppState.getCurrentExample();
+                if (!example || entryIndex >= example.length) return;
+
+                const wordEntry = example[entryIndex];
+                const pairDiv = ExampleRenderer.display?.querySelector(`.word-pair[data-index="${entryIndex}"]`);
+                if (!pairDiv) return;
+
+                ExampleRenderer.clearHighlights();
+
+                const languageSpan = pairDiv.querySelector(`span[lang="${languageCode}"]`);
+                if (!languageSpan) return;
+
+                const text = this.getWordText(wordEntry, languageCode);
+                if (!text) return;
+
+                const words = this.splitIntoWords(text, languageCode);
+                if (wordIndex >= words.length) return;
+
+                // Create a temporary element to measure word positions
+                const tempDiv = document.createElement('div');
+                tempDiv.style.cssText = `
+            position: absolute;
+            visibility: hidden;
+            white-space: pre-wrap;
+            font: inherit;
+            width: ${languageSpan.offsetWidth}px;
+        `;
+                tempDiv.textContent = text;
+                document.body.appendChild(tempDiv);
+
+                // Find the position of the current word
+                let wordStart = 0;
+                for (let i = 0; i < wordIndex; i++) {
+                    wordStart += words[i].length + (i > 0 ? 1 : 0); // +1 for space
+                }
+
+                const wordLength = words[wordIndex].length;
+
+                // Create highlighted version
+                const before = text.substring(0, wordStart);
+                const highlighted = text.substring(wordStart, wordStart + wordLength);
+                const after = text.substring(wordStart + wordLength);
+
+                const highlightedHTML = `${before}<span class="word-highlight">${highlighted}</span>${after}`;
+
+                // Store original text and restore it later
+                if (!languageSpan.dataset.originalText) {
+                    languageSpan.dataset.originalText = languageSpan.innerHTML;
+                }
+
+                languageSpan.innerHTML = highlightedHTML;
+
+                // Add highlight class to the specific word
+                const highlightSpan = languageSpan.querySelector('.word-highlight');
+                if (highlightSpan) {
+                    const themeClass = document.body.dataset.theme === 'dark' ? 'highlight-dark' : 'highlight-light';
+                    highlightSpan.classList.add(themeClass, 'word-highlight-active');
+                }
+
+                document.body.removeChild(tempDiv);
+
+                // Ensure the highlighted element is visible
+                languageSpan.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'center' });
+
+                ScreenReader.announce(`Highlighted: ${words[wordIndex]}`);
             },
 
             highlightCurrentWord(index) {
                 const example = AppState.getCurrentExample();
                 if (!example || index >= example.length) return;
 
-                const word = example[index];
-                if (!word) return;
-
+                const wordEntry = example[index];
                 const pairDiv = ExampleRenderer.display?.querySelector(`.word-pair[data-index="${index}"]`);
                 if (!pairDiv) return;
 
                 ExampleRenderer.clearHighlights();
 
+                // Restore original text if it was modified by word-level highlighting
+                pairDiv.querySelectorAll('span[lang]').forEach(span => {
+                    if (span.dataset.originalText) {
+                        span.innerHTML = span.dataset.originalText;
+                        delete span.dataset.originalText;
+                    }
+                });
+
                 const displayLanguages = LanguageManager.getDisplayLanguages();
 
                 for (const language of displayLanguages) {
-                    const text = word[language.code] || word.translations?.[language.code];
-                    if (text && text !== "\n") {
+                    const text = this.getWordText(wordEntry, language.code);
+                    if (text && text !== "\n" && text.trim() !== '') {
                         const span = pairDiv.querySelector(`span[lang="${language.code}"]`);
                         if (span) {
-                            ExampleRenderer.highlightElement(span, index);
-                            break; // Highlight only the first available language
+                            const themeClass = document.body.dataset.theme === 'dark' ? 'highlight-dark' : 'highlight-light';
+                            span.classList.add(themeClass);
+                            AppState.lastHighlightedIndex = index;
+
+                            span.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                            ScreenReader.announce(`Highlighted phrase: ${text}`);
+                            break;
                         }
                     }
                 }
             },
 
-            async speakWord(text, lang, index, autoAdvance = false) {
+            async speakWord(text, lang) {
                 return new Promise(resolve => {
-                    if (!text || text === "\n") {
+                    if (!text || text === "\n" || text.trim() === '') {
                         resolve();
                         return;
                     }
 
+                    console.log('Speaking:', text, 'in language:', lang);
+
                     TTSManager.speak(text, lang, () => {
+                        console.log('Finished speaking:', text);
                         resolve();
                     });
                 });
             },
 
             playWord(text, lang, span, index) {
-                if (!text || text === "\n") return;
+                if (!text || text === "\n" || text.trim() === '') return;
 
+                this.pauseExample();
                 AppState.currentWordIndex = index;
-                ExampleRenderer.highlightElement(span, index);
-                TTSManager.cancel();
-                this.speakWord(text, lang, index, false);
+
+                // For word-level playback, highlight the entire phrase
+                const pairDiv = span.closest('.word-pair');
+                if (pairDiv) {
+                    ExampleRenderer.highlightElement(span, index);
+                }
+
+                this.speakWord(text, lang);
             },
 
             continueFromCurrent() {
@@ -2982,20 +3181,46 @@
                 }
             },
 
+            getWordText(word, languageCode) {
+                if (word[languageCode]) {
+                    return word[languageCode];
+                } else if (word.translations?.[languageCode]) {
+                    return word.translations[languageCode];
+                } else if (word.text) {
+                    return word.text;
+                }
+                return null;
+            },
+
             isNewline(word) {
                 const speakLanguages = LanguageManager.getSpeakLanguages();
                 return speakLanguages.every(language => {
-                    const text = word[language.code] || word.translations?.[language.code];
-                    return text === "\n";
+                    const text = this.getWordText(word, language.code);
+                    return text === "\n" || (text && text.trim() === '');
                 });
             },
 
             getPlaybackDelay() {
-                const delaySec = parseFloat(document.getElementById('playbackDelay')?.value || Storage.load(CONSTANTS.STORAGE_KEYS.PLAYBACK_DELAY, CONSTANTS.DEFAULT_VALUES.PLAYBACK_DELAY));
+                const delaySec = parseFloat(document.getElementById('playbackDelay')?.value ||
+                    Storage.load(CONSTANTS.STORAGE_KEYS.PLAYBACK_DELAY, CONSTANTS.DEFAULT_VALUES.PLAYBACK_DELAY));
                 const delayMs = Math.min(Math.max(isNaN(delaySec) ? 1500 : delaySec * 1000, 500), 5000);
                 return delayMs;
             },
         };
+
+        // Also add this CSS for word-level highlighting
+        const wordHighlightCSS = `
+.word-highlight-active {
+    padding: 2px 1px;
+    border-radius: 3px;
+    margin: -2px -1px;
+    display: inline-block;
+}
+`;
+        // Inject the CSS
+        const style = document.createElement('style');
+        style.textContent = wordHighlightCSS;
+        document.head.appendChild(style);
 
         // ========== QUIZ SYSTEM ==========
         const QuizSystem = {
@@ -3006,16 +3231,20 @@
             incorrectOnly: false,
 
             buildFromExample(example) {
+                console.log('Building quiz from example:', example); // Debug log
+
                 if (!example || (Array.isArray(example) && example.length === 0)) {
                     console.warn('No example data provided to build quiz');
                     this.data = [];
+                    this.render();
                     return;
                 }
 
                 // Handle both array and object formats
                 if (Array.isArray(example)) {
-                    this.data = example.map(word => ({
+                    this.data = example.map((word, index) => ({
                         ...word,
+                        id: word.id || `quiz-word-${index}`,
                         attempted: false,
                         correct: false
                     }));
@@ -3023,13 +3252,13 @@
                     // Single object - wrap in array
                     this.data = [{
                         ...example,
+                        id: example.id || 'quiz-single',
                         attempted: false,
                         correct: false
                     }];
                 } else {
                     console.error('Unexpected example format:', example);
                     this.data = [];
-                    return;
                 }
 
                 this.currentQuestion = 0;
@@ -3088,12 +3317,12 @@
                 const messageDiv = document.createElement("div");
                 messageDiv.className = "quiz-completion";
                 messageDiv.innerHTML = `
-            <h4>No Incorrect Answers! 🎉</h4>
-            <p>You have answered all questions correctly.</p>
-            <p>Final Score: ${this.score} out of ${this.attempts}</p>
-            <p>Success Rate: ${this.attempts > 0 ? Math.round((this.score / this.attempts) * 100) : 0}%</p>
-            <button id="showAllQuestions" style="margin-top: 1em; padding: 0.5em 1em;">Show All Questions</button>
-        `;
+                <h4>No Incorrect Answers! 🎉</h4>
+                <p>You have answered all questions correctly.</p>
+                <p>Final Score: ${this.score} out of ${this.attempts}</p>
+                <p>Success Rate: ${this.attempts > 0 ? Math.round((this.score / this.attempts) * 100) : 0}%</p>
+                <button id="showAllQuestions" style="margin-top: 1em; padding: 0.5em 1em;">Show All Questions</button>
+            `;
                 container.appendChild(messageDiv);
 
                 document.getElementById('showAllQuestions')?.addEventListener('click', () => {
@@ -3107,12 +3336,12 @@
                 const completionDiv = document.createElement("div");
                 completionDiv.className = "quiz-completion";
                 completionDiv.innerHTML = `
-            <h4>Quiz Complete! 🎉</h4>
-            <p>Final Score: ${this.score} out of ${this.attempts}</p>
-            <p>Success Rate: ${this.attempts > 0 ? Math.round((this.score / this.attempts) * 100) : 0}%</p>
-            <button id="restartQuiz" style="margin-top: 1em; padding: 0.5em 1em;">Restart Quiz</button>
-            ${this.incorrectOnly ? '<button id="showAllQuestions" style="margin-top: 0.5em; padding: 0.5em 1em; background: #666;">Show All Questions</button>' : ''}
-        `;
+                <h4>Quiz Complete! 🎉</h4>
+                <p>Final Score: ${this.score} out of ${this.attempts}</p>
+                <p>Success Rate: ${this.attempts > 0 ? Math.round((this.score / this.attempts) * 100) : 0}%</p>
+                <button id="restartQuiz" style="margin-top: 1em; padding: 0.5em 1em;">Restart Quiz</button>
+                ${this.incorrectOnly ? '<button id="showAllQuestions" style="margin-top: 0.5em; padding: 0.5em 1em; background: #666;">Show All Questions</button>' : ''}
+            `;
                 container.appendChild(completionDiv);
 
                 document.getElementById('restartQuiz')?.addEventListener('click', () => {
@@ -3151,7 +3380,7 @@
                     return;
                 }
 
-                const questionText = question[questionLang] || question.translations?.[questionLang];
+                const questionText = this.getWordText(question, questionLang);
                 if (!questionText) {
                     console.error('No question text found for language:', questionLang);
                     return;
@@ -3201,14 +3430,14 @@
             },
 
             generateOptions(question, answerLang) {
-                const correctAnswer = question[answerLang] || question.translations?.[answerLang];
+                const correctAnswer = this.getWordText(question, answerLang);
                 if (!correctAnswer) {
                     console.warn('No correct answer found for question:', question);
                     return [];
                 }
 
                 let options = this.data
-                    .map(q => q[answerLang] || q.translations?.[answerLang])
+                    .map(q => this.getWordText(q, answerLang))
                     .filter((val, idx, arr) => val && arr.indexOf(val) === idx)
                     .filter(opt => opt !== correctAnswer)
                     .sort(() => Math.random() - 0.5)
@@ -3253,7 +3482,7 @@
             },
 
             handleAnswer(optionEl, selectedAnswer, question, answerLang) {
-                const correctAnswer = question[answerLang] || question.translations?.[answerLang];
+                const correctAnswer = this.getWordText(question, answerLang);
 
                 if (selectedAnswer === correctAnswer) {
                     if (!question.correct) {
@@ -3276,6 +3505,18 @@
                 if (scoreElement) {
                     scoreElement.textContent = `Score: ${this.score}/${this.attempts}`;
                 }
+            },
+
+            getWordText(word, languageCode) {
+                // Try multiple possible data structures
+                if (word[languageCode]) {
+                    return word[languageCode];
+                } else if (word.translations?.[languageCode]) {
+                    return word.translations[languageCode];
+                } else if (word.text) {
+                    return word.text;
+                }
+                return null;
             },
 
             nextQuestion() {
@@ -3507,7 +3748,6 @@
                 TTSManager.initialize();
                 LanguageManager.init();
                 KeyboardManager.init();
-                // this.setupEventListeners(); // ← THIS METHOD DOESN'T EXIST, REMOVED
                 await this.loadTopics();
                 this.setupPlaybackScrollHandling();
                 ScreenReader.announce('Language learning application loaded successfully');
@@ -3696,13 +3936,16 @@
                 this.updateExampleNumber();
                 this.updateProgressBar();
 
+                // Debug: Log the current example data
+                const example = AppState.getCurrentExample();
+                console.log('Loaded example data:', example);
+
                 setTimeout(() => this.ensureTopicSelectionVisible(), 200);
             },
 
             renderExample() {
-                const currentTitle = AppState.currentTopic?.titles?.[AppState.currentTitle];
-                const examples = currentTitle?.examples;
-                const example = examples?.[AppState.currentExample] || [];
+                const example = AppState.getCurrentExample();
+                console.log('Rendering example:', example); // Debug log
                 ExampleRenderer.render(example);
                 QuizSystem.buildFromExample(example);
             },
@@ -3776,8 +4019,12 @@
                 contentArea.innerHTML = this.getMainHTML();
                 controlsArea.innerHTML = this.getControlsHTML();
 
-                this.bindUIElements();
-                this.restoreSettings();
+                // Small delay to ensure DOM is updated before binding events
+                setTimeout(() => {
+                    this.bindUIElements();
+                    this.restoreSettings();
+                    console.log('SPA initialized - controls should be bound'); // Debug log
+                }, 50);
 
                 contentArea.scrollTop = 0;
             },
@@ -3884,59 +4131,95 @@
             },
 
             bindUIElements() {
+                // Initialize example renderer first
                 ExampleRenderer.init(document.getElementById('exampleDisplay'));
+
+                // Initialize navigation controller
                 NavigationController.init(
                     document.getElementById('topicSelect'),
                     document.getElementById('titleSelect'),
                     document.getElementById('exampleSelect')
                 );
 
-                document.addEventListener('change', Utils.debounce((e) => {
-                    this.handleSettingChange(e);
-                }, 300));
+                // Use event delegation for dynamic elements and ensure proper binding
+                this.bindControlEvents();
 
-                document.getElementById('playBtn')?.addEventListener('click', () => {
-                    PlaybackController.playExample();
-                    this.closeTopicOptions();
-                    setTimeout(() => this.ensureTopicSelectionVisible(), 300);
-                });
-                document.getElementById('pauseBtn')?.addEventListener('click', () => {
-                    PlaybackController.pauseExample();
-                    this.closeTopicOptions();
-                });
-                document.getElementById('restartBtn')?.addEventListener('click', () => {
-                    PlaybackController.restartExample();
-                    this.closeTopicOptions();
-                });
-                document.getElementById('nextExample')?.addEventListener('click', () => {
-                    NavigationController.nextExample();
-                    this.closeTopicOptions();
-                });
-                document.getElementById('prevExample')?.addEventListener('click', () => {
-                    NavigationController.previousExample();
-                    this.closeTopicOptions();
-                });
-
-                document.getElementById('prevQ')?.addEventListener('click', () => {
-                    QuizSystem.previousQuestion();
-                    this.closeTopicOptions();
-                });
-                document.getElementById('nextQ')?.addEventListener('click', () => {
-                    QuizSystem.nextQuestion();
-                    this.closeTopicOptions();
-                });
-                document.getElementById('retryQuiz')?.addEventListener('click', () => {
-                    QuizSystem.retry();
-                    this.closeTopicOptions();
-                });
-
-                // === ADD THIS LINE ===
+                // Bind settings button
                 document.getElementById('settingsBtn')?.addEventListener('click', () => {
                     SettingsManager.show();
                     this.closeTopicOptions();
                 });
 
                 this.bindLanguageSettings();
+            },
+
+            bindControlEvents() {
+                // Use a helper to safely bind events with retry for dynamic elements
+                const bindEvent = (selector, event, handler, retries = 3) => {
+                    const element = document.querySelector(selector);
+                    if (element) {
+                        element.addEventListener(event, handler);
+                        return true;
+                    } else if (retries > 0) {
+                        setTimeout(() => bindEvent(selector, event, handler, retries - 1), 100);
+                        return false;
+                    } else {
+                        console.warn(`Element not found: ${selector}`);
+                        return false;
+                    }
+                };
+
+                // Play button with enhanced binding
+                bindEvent('#playBtn', 'click', () => {
+                    console.log('Play button clicked'); // Debug log
+                    PlaybackController.playExample();
+                    this.closeTopicOptions();
+                    setTimeout(() => this.ensureTopicSelectionVisible(), 300);
+                });
+
+                // Pause button
+                bindEvent('#pauseBtn', 'click', () => {
+                    PlaybackController.pauseExample();
+                    this.closeTopicOptions();
+                });
+
+                // Restart button
+                bindEvent('#restartBtn', 'click', () => {
+                    PlaybackController.restartExample();
+                    this.closeTopicOptions();
+                });
+
+                // Navigation buttons
+                bindEvent('#nextExample', 'click', () => {
+                    NavigationController.nextExample();
+                    this.closeTopicOptions();
+                });
+
+                bindEvent('#prevExample', 'click', () => {
+                    NavigationController.previousExample();
+                    this.closeTopicOptions();
+                });
+
+                // Quiz buttons
+                bindEvent('#prevQ', 'click', () => {
+                    QuizSystem.previousQuestion();
+                    this.closeTopicOptions();
+                });
+
+                bindEvent('#nextQ', 'click', () => {
+                    QuizSystem.nextQuestion();
+                    this.closeTopicOptions();
+                });
+
+                bindEvent('#retryQuiz', 'click', () => {
+                    QuizSystem.retry();
+                    this.closeTopicOptions();
+                });
+
+                // Global change events with debouncing
+                document.addEventListener('change', Utils.debounce((e) => {
+                    this.handleSettingChange(e);
+                }, 300));
             },
 
             closeTopicOptions() {
@@ -3995,12 +4278,18 @@
                 }
             },
 
+            reloadTopicList() {
+                // This method can be used to refresh the topic list if needed
+                this.loadTopics();
+            },
+
             cleanup() {
                 TTSManager.cancel();
                 TopicManager.clearCache();
                 AppState.isPlaying = false;
             }
         };
+
         // ========== INITIALIZATION ==========
         document.addEventListener('DOMContentLoaded', () => {
             AppController.initSPA();
