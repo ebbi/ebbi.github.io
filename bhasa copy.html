@@ -133,6 +133,20 @@
         </div>
     </div>
 
+    </main>
+
+    <!-- =========================================================
+             SETTINGS OVERLAY – a modal that appears on top of the
+             existing UI. It does NOT replace the toolbar or the main
+             content, so the app state (example, language options, etc.)
+             stays intact when the panel is opened/closed.
+             ========================================================= -->
+    <div id="settingsOverlay" class="settings-overlay" style="display:none;"></div>
+
+    <!-- Screen reader announcements -->
+    <div id="statusAnnouncement" aria-live="polite" aria-atomic="true"
+        style="position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden;"></div>
+
     <script>
         // ==================== CONSTANTS ====================
         const CONSTANTS = {
@@ -271,10 +285,19 @@
             },
 
             getSpeakLanguages() {
-                return this.availableLanguages.filter(lang =>
+                // Languages with the Speak flag set (or the default from config)
+                const speakChecked = (this.availableLanguages || []).filter(lang =>
                     Storage.loadBool(`speak_${lang.code}`, lang.defaultSpeak)
                 );
-            }
+
+                // Also include any languages that are displayed, so the user can hear them
+                // even if the Speak checkbox was accidentally left unchecked.
+                const displayLangs = this.getDisplayLanguages();
+
+                // Merge the two arrays, removing duplicates
+                const combined = [...new Set([...speakChecked, ...displayLangs])];
+                return combined;
+            },
         };
 
         // ==================== ERROR HANDLER ====================
@@ -895,6 +918,17 @@
         // ========== LANGUAGE MANAGER ==========
         const LanguageManager = {
             init() {
+                // ---------------------------------------------------------
+                // 1️⃣  Store the master list of languages from AppConfig
+                // ---------------------------------------------------------
+                // AppConfig.availableLanguages is populated when the
+                // configuration JSON is loaded (bhasaSetup.json).  We keep a
+                // local copy here so that the manager can work independently.
+                this.availableLanguages = AppConfig.availableLanguages || [];
+
+                // ---------------------------------------------------------
+                // 2️⃣  Render UI and bind events (unchanged logic)
+                // ---------------------------------------------------------
                 this.renderLanguageControls();
                 this.renderQuizLanguageOptions();
                 this.bindLanguageEvents();
@@ -983,23 +1017,46 @@
                     const displayCheckbox = document.getElementById(`display_${language.code}`);
                     const speakCheckbox = document.getElementById(`speak_${language.code}`);
 
+                    // ------------------------------
+                    // DISPLAY checkbox – unchanged
+                    // ------------------------------
                     if (displayCheckbox) {
                         displayCheckbox.addEventListener('change', (e) => {
                             Storage.save(`display_${language.code}`, e.target.checked ? '1' : '0');
-                            AppController.renderExample();
+                            AppController.renderExample();               // re‑render with new visibility
                             ScreenReader.announce(`${language.name} display ${e.target.checked ? 'enabled' : 'disabled'}`);
                         });
                     }
 
+                    // ------------------------------
+                    // SPEAK checkbox – **new logic**
+                    // ------------------------------
                     if (speakCheckbox) {
                         speakCheckbox.addEventListener('change', (e) => {
-                            Storage.save(`speak_${language.code}`, e.target.checked ? '1' : '0');
-                            ScreenReader.announce(`${language.name} speech ${e.target.checked ? 'enabled' : 'disabled'}`);
+                            const speakOn = e.target.checked;
+                            Storage.save(`speak_${language.code}`, speakOn ? '1' : '0');
+                            ScreenReader.announce(`${language.name} speech ${speakOn ? 'enabled' : 'disabled'}`);
+
+                            // *** NEW PART ***
+                            // If the user enables SPEAK for a language, also enable DISPLAY
+                            // so that the word‑pair span actually exists in the DOM.
+                            if (speakOn) {
+                                // 1️⃣  Persist the display flag
+                                Storage.save(`display_${language.code}`, '1');
+
+                                // 2️⃣  Update the UI checkbox (if it exists)
+                                if (displayCheckbox) {
+                                    displayCheckbox.checked = true;
+                                }
+
+                                // 3️⃣  Re‑render the current example so the new language column appears
+                                AppController.renderExample();
+                            }
                         });
                     }
                 });
 
-                // Bind quiz language events
+                // Bind quiz language events (unchanged – keep existing logic)
                 this.bindQuizLanguageEvents();
             },
 
@@ -1057,7 +1114,7 @@
              */
             getSpeakLanguages() {
                 // Languages with the Speak flag set (or the default from config)
-                const speakChecked = this.availableLanguages.filter(lang =>
+                const speakChecked = (this.availableLanguages || []).filter(lang =>
                     Storage.loadBool(`speak_${lang.code}`, lang.defaultSpeak)
                 );
 
@@ -1074,132 +1131,222 @@
             }
         };
 
+        /* -------------------------------------------------------------
+           SettingsManager – handles the Settings & Help overlay.
+           ------------------------------------------------------------- */
         const SettingsManager = {
+            /** -------------------------------------------------------------
+             *  Show the Settings panel.
+             *  The panel is rendered inside the hidden #settingsOverlay
+             *  element, which sits on top of the existing UI. This way the
+             *  toolbar (gear icon, theme toggle, etc.) stays in the DOM and
+             *  remains functional.
+             *  ------------------------------------------------------------- */
             show() {
-                const contentArea = document.getElementById('contentArea');
-                const controlsArea = document.getElementById('controlsArea');
-                contentArea.innerHTML = this.getSettingsHTML();
-                controlsArea.innerHTML = '';
-                this.bindSettingsEvents();
-                this.showInitialTTSStatus();
-            },
+                const overlay = document.getElementById('settingsOverlay');
+                if (!overlay) {
+                    console.error('Settings overlay element not found');
+                    return;
+                }
 
-            getSettingsHTML() {
-                return `
-            <div style="display: flex; justify-content: space-between; align-items: center;
-                                background: #00247D; color: white; padding: 0.5em 1em; border-radius: 8px;">
-                <h2 style="margin: 0;">Settings & Help</h2>
-                <button id="closeX" aria-label="Close settings" style="background: #666; color: white; border: none; padding: 0.5em; border-radius: 4px; cursor: pointer;">❌</button>
+                // ---------------------------------------------------------
+                // 1️⃣  Populate the overlay with the Settings UI
+                // ---------------------------------------------------------
+                overlay.innerHTML = `
+            <div class="settings-panel">
+                <div style="display: flex; justify-content: space-between; align-items: center;
+                            background: #00247D; color: white; padding: 0.5em 1em; border-radius: 8px;">
+                    <h2 style="margin: 0;">Settings &amp; Help</h2>
+                    <button id="closeX" aria-label="Close settings"
+                            style="background: #666; color: white; border: none; padding: 0.5em; border-radius: 4px; cursor: pointer;">❌</button>
+                </div>
+
+                <div class="settings-content" style="padding: 1em;">
+                    <!-- Thai Font selector -->
+                    <div class="settings-font-controls">
+                        <label style="margin: 0;">
+                            Thai Font:
+                            <select id="settingsThaiFont" aria-label="Select Thai font">
+                                <option value="">Default</option>
+                                <option value="Tahoma">Tahoma</option>
+                                <option value="Noto Sans Thai">Noto Sans Thai</option>
+                                <option value="Chakra Petch">Chakra Petch</option>
+                            </select>
+                        </label>
+                    </div>
+                    <div class="font-preview" id="fontPreview" aria-live="polite"
+                         style="margin-top:0.5em; font-size:1.2em;">
+                        ตัวอย่างข้อความภาษาไทย (Thai Text Sample)
+                    </div>
+
+                    <!-- TTS Section -->
+                    <div class="settings-section" style="margin-top:1.5em;">
+                        <h3>Text‑to‑Speech Setup</h3>
+                        <p>This app uses Text‑to‑Speech. Install the required language packs
+                           in your OS and enable TTS in your browser settings.</p>
+
+                        <button id="checkTTS" class="settings-button"
+                                style="padding:0.8em 1.5em; background:#00247D; color:white;
+                                       border:none; border-radius:4px; cursor:pointer; margin:1em 0;">
+                            🔊 Test TTS Setup &amp; Language Support
+                        </button>
+
+                        <div id="ttsStatus"></div>
+                        <div id="ttsSetupInstructions"></div>
+                        <div id="languageTests"></div>
+                    </div>
+
+                    <!-- Keyboard shortcuts -->
+                    <div class="settings-section" style="margin-top:1.5em;">
+                        <details class="keyboard-shortcuts-panel">
+                            <summary style="font-weight:bold; font-size:1.1em; cursor:pointer;">
+                                Keyboard Shortcuts
+                            </summary>
+                            <div class="keyboard-shortcuts" style="margin-top:0.5em;">
+                                <div class="shortcut-item"><span>Play/Pause</span> <kbd class="shortcut-key">Space</kbd></div>
+                                <div class="shortcut-item"><span>Next Example</span> <kbd class="shortcut-key">→</kbd></div>
+                                <div class="shortcut-item"><span>Previous Example</span> <kbd class="shortcut-key">←</kbd></div>
+                                <div class="shortcut-item"><span>Restart</span> <kbd class="shortcut-key">R</kbd></div>
+                                <div class="shortcut-item"><span>Next Question</span> <kbd class="shortcut-key">N</kbd></div>
+                                <div class="shortcut-item"><span>Open Settings</span> <kbd class="shortcut-key">S</kbd></div>
+                            </div>
+                        </details>
+                    </div>
+
+                    <div style="margin-top:2em; text-align:center;">
+                        <button id="closeBtn" class="touch-target"
+                                style="padding:0.6em 1.2em; background:#666; color:white;
+                                       border:none; border-radius:4px; cursor:pointer;">
+                            Close Settings
+                        </button>
+                    </div>
+                </div>
             </div>
+        `;
 
-            <div class="settings-content" style="padding: 1em;">
-                <div class="settings-font-controls">
-                    <label style="margin: 0;">
-                        Thai Font:
-                        <select id="settingsThaiFont" aria-label="Select Thai font">
-                            <option value="">Default</option>
-                            <option value="Tahoma">Tahoma</option>
-                            <option value="Noto Sans Thai">Noto Sans Thai</option>
-                            <option value="Chakra Petch">Chakra Petch</option>
-                        </select>
-                    </label>
-                </div>
-                <div class="font-preview" id="fontPreview" aria-live="polite">ตัวอย่างข้อความภาษาไทย (Thai Text Sample)</div>
+                // ---------------------------------------------------------
+                // 2️⃣  Show the overlay
+                // ---------------------------------------------------------
+                overlay.style.display = 'block';
 
-                <div class="settings-section">
-                    <h3>Text-to-Speech Setup</h3>
-                    <p>This App uses Text To Speech. Search in your device and your browser settings for languages and install the required language packs and enable Text To Speech. Then try the Test TTS button for more specific help for your device.</p>
+                // ---------------------------------------------------------
+                // 3️⃣  Wire the Close buttons (both X and bottom button)
+                // ---------------------------------------------------------
+                const closeX = document.getElementById('closeX');
+                const closeBtn = document.getElementById('closeBtn');
+                if (closeX) closeX.addEventListener('click', () => this.close());
+                if (closeBtn) closeBtn.addEventListener('click', () => this.close());
 
-                    <button id="checkTTS" class="settings-button" style="padding: 0.8em 1.5em; background: #00247D; color: white; border: none; border-radius: 4px; cursor: pointer; margin: 1em 0;">
-                        🔊 Test TTS Setup & Language Support
-                    </button>
+                // ---------------------------------------------------------
+                // 4️⃣  Wire the TTS test button
+                // ---------------------------------------------------------
+                const checkTTS = document.getElementById('checkTTS');
+                if (checkTTS) {
+                    checkTTS.addEventListener('click', () => this.performTTSCheck());
+                }
 
-                    <div id="ttsStatus"></div>
-                    <div id="ttsSetupInstructions"></div>
-                    <div id="languageTests"></div>
-                </div>
-
-                <div class="settings-section">
-                    <details class="keyboard-shortcuts-panel">
-                        <summary style="font-weight: bold; font-size: 1.1em; cursor: pointer;">Keyboard Shortcuts</summary>
-                        <div class="keyboard-shortcuts">
-                            <div class="shortcut-item">
-                                <span>Play/Pause</span>
-                                <kbd class="shortcut-key">Space</kbd>
-                            </div>
-                            <div class="shortcut-item">
-                                <span>Next Example</span>
-                                <kbd class="shortcut-key">→</kbd>
-                            </div>
-                            <div class="shortcut-item">
-                                <span>Previous Example</span>
-                                <kbd class="shortcut-key">←</kbd>
-                            </div>
-                            <div class="shortcut-item">
-                                <span>Restart</span>
-                                <kbd class="shortcut-key">R</kbd>
-                            </div>
-                            <div class="shortcut-item">
-                                <span>Next Question</span>
-                                <kbd class="shortcut-key">N</kbd>
-                            </div>
-                            <div class="shortcut-item">
-                                <span>Settings</span>
-                                <kbd class="shortcut-key">S</kbd>
-                            </div>
-                        </div>
-                    </details>
-                </div>
-
-                <div style="margin-top: 2em; padding-top: 1em; border-top: 1px solid var(--border-light);">
-                    <button id="closeBtn" style="padding: 0.6em 1.2em; background: #666; color: white; border: none; border-radius: 4px; cursor: pointer;">Close Settings</button>
-                </div>
-            </div>`;
-            },
-
-            bindSettingsEvents() {
-                document.getElementById('closeX').addEventListener('click', this.close);
-                document.getElementById('closeBtn').addEventListener('click', this.close);
-                document.getElementById('checkTTS').addEventListener('click', () => this.performTTSCheck());
-
+                // ---------------------------------------------------------
+                // 5️⃣  Initialise the Thai‑font selector
+                // ---------------------------------------------------------
                 const settingsThaiFont = document.getElementById('settingsThaiFont');
                 if (settingsThaiFont) {
                     settingsThaiFont.value = Storage.load(CONSTANTS.STORAGE_KEYS.THAI_FONT, '');
                     settingsThaiFont.addEventListener('change', (e) => {
                         Storage.save(CONSTANTS.STORAGE_KEYS.THAI_FONT, e.target.value);
-                        FontManager.apply(); // Apply immediately when font changes
+                        FontManager.apply(); // Apply immediately
                         ScreenReader.announce(`Thai font changed to ${e.target.value || 'default'}`);
                     });
                 }
-            },
 
-            close() {
-                const contentArea = document.getElementById('contentArea');
-                const controlsArea = document.getElementById('controlsArea');
-
-                contentArea.innerHTML = AppController.getMainHTML();
-                controlsArea.innerHTML = AppController.getControlsHTML();
-
-                AppController.bindUIElements();
-                AppController.restoreSettings();
-                AppController.loadTopics();
-                ScreenReader.announce('Settings closed, returning to main view');
-            },
-
-            showInitialTTSStatus() {
+                // ---------------------------------------------------------
+                // 6️⃣  Show the current TTS status (success / warning / error)
+                // ---------------------------------------------------------
                 const status = TTSManager.getStatusMessage?.();
                 this.showTTSStatus(status);
 
+                // If TTS isn’t fully supported, show the installation instructions
                 if (status?.type !== 'success') {
                     const instructions = TTSManager.getSetupInstructions?.();
                     document.getElementById('ttsSetupInstructions').innerHTML = instructions;
                 }
+
+                // ---------------------------------------------------------
+                // 7️⃣  Announce for screen‑reader users
+                // ---------------------------------------------------------
+                ScreenReader.announce('Settings panel opened');
             },
 
+            /** -------------------------------------------------------------
+             *  Close the Settings panel.
+             *  We simply hide the overlay – the underlying page (topic,
+             *  title, example, language selections, progress bar) remains
+             *  untouched, so no state is lost.
+             *  ------------------------------------------------------------- */
+            close() {
+                const overlay = document.getElementById('settingsOverlay');
+                if (overlay) {
+                    overlay.style.display = 'none';
+                    overlay.innerHTML = ''; // Clean up DOM nodes
+                }
+
+                // Re‑apply any settings that might have changed while the panel was open
+                FontManager.apply();
+                ThemeManager.init(); // Re‑apply theme (in case user toggled it)
+
+                // Ensure the example display is still rendered (it should be, but just in case)
+                const currentExample = AppState.getCurrentExample();
+                if (currentExample && currentExample.length > 0) {
+                    ExampleRenderer.render(currentExample);
+                }
+
+                // Update the example number and progress bar (they stay the same,
+                // but this guarantees the UI reflects the current state)
+                const currentExampleNumber = document.getElementById('currentExampleNumber');
+                if (currentExampleNumber) {
+                    currentExampleNumber.textContent = AppState.currentExample + 1;
+                }
+
+                const progressBar = document.getElementById('progressBar');
+                if (progressBar && AppState.currentTopic) {
+                    const percent = ProgressTracker.getCompletionPercentage(
+                        AppState.currentTopic.topicFilename,
+                        AppState.currentTopic
+                    );
+                    progressBar.style.width = `${percent}%`;
+                }
+
+                // Announce that we’ve returned to the main view
+                ScreenReader.announce('Settings closed, returning to main view');
+            },
+
+            /** -------------------------------------------------------------
+             *  Show the current TTS status (success / warning / error) inside
+             *  the Settings panel.
+             *  ------------------------------------------------------------- */
+            showTTSStatus(status) {
+                const ttsStatus = document.getElementById('ttsStatus');
+                if (!status || !ttsStatus) return;
+
+                const statusClass = `tts-status-${status.type === 'warning' ? 'info' : status.type}`;
+                ttsStatus.innerHTML = `
+            <div class="tts-status-container ${statusClass}">
+                <h4 style="margin:0 0 0.5em 0;">${status.title}</h4>
+                <p style="margin:0;">${status.message}</p>
+            </div>
+        `;
+            },
+
+            /** -------------------------------------------------------------
+             *  Perform a full TTS test for all languages that have the
+             *  “Speak” flag enabled. Results are shown inside the Settings
+             *  panel.
+             *  ------------------------------------------------------------- */
             async performTTSCheck() {
                 const ttsStatus = document.getElementById('ttsStatus');
                 const checkBtn = document.getElementById('checkTTS');
                 const languageTests = document.getElementById('languageTests');
+
+                if (!ttsStatus || !checkBtn || !languageTests) return;
 
                 checkBtn.innerHTML = '<span class="loading-spinner"></span> Testing TTS...';
                 checkBtn.disabled = true;
@@ -1221,19 +1368,9 @@
                 this.showTTSStatus(finalStatus);
             },
 
-            showTTSStatus(status) {
-                const ttsStatus = document.getElementById('ttsStatus');
-                if (!status || !ttsStatus) return;
-
-                const statusClass = `tts-status-${status.type === 'warning' ? 'info' : status.type}`;
-                ttsStatus.innerHTML = `
-            <div class="tts-status-container ${statusClass}">
-                <h4 style="margin: 0 0 0.5em 0;">${status.title}</h4>
-                <p style="margin: 0;">${status.message}</p>
-            </div>
-            `;
-            },
-
+            /** -------------------------------------------------------------
+             *  Render the per‑language test results inside the Settings panel.
+             *  ------------------------------------------------------------- */
             showLanguageTestResults() {
                 const languageTests = document.getElementById('languageTests');
                 const results = TTSManager.testResults;
@@ -1249,40 +1386,44 @@
                     const voices = result.voices ? result.voices.map(v => v.name).join(', ') : 'No voices';
 
                     html += `
-                <div style="flex: 1; min-width: 200px; padding: 1em; background: rgba(0,0,0,0.05); border-radius: 8px;">
-                    <div style="font-weight: bold;">${icon} ${language?.name || lang}</div>
+                <div style="flex:1; min-width:200px; padding:1em; background:rgba(0,0,0,0.05); border-radius:8px;">
+                    <div style="font-weight:bold;">${icon} ${language?.name || lang}</div>
                     <div class="test-result ${resultClass}">
                         ${result.success ?
-                            `<div class="success-list">Working - Available voices:<br>${voices}</div>` :
+                            `<div class="success-list">Working – Available voices:<br>${voices}</div>` :
                             `Failed: ${result.error}. ${this.getLanguageSpecificHelp(lang, result.error)}`
                         }
                     </div>
                     <button onclick="testSingleLanguage('${lang}', '${result.text}')"
                         class="language-test"
-                        style="margin-top: 0.5em;">
+                        style="margin-top:0.5em;">
                         Test ${language?.name || lang} Again
                     </button>
                 </div>
-                `;
+            `;
                 }
 
                 html += `</div>`;
                 languageTests.innerHTML = html;
             },
 
+            /** -------------------------------------------------------------
+             *  Provide language‑specific help text for common TTS errors.
+             *  ------------------------------------------------------------- */
             getLanguageSpecificHelp(lang, error) {
                 const language = AppConfig.getLanguage(lang);
                 const helpMessages = {
-                    'th-TH': `To fix Thai TTS: Install Thai language pack in system settings, then restart browser.`,
-                    'fa-IR': `To fix Persian TTS: Install Persian/Farsi language pack in system settings.`,
-                    'en-US': `To fix English TTS: Check system language settings and ensure English TTS is enabled.`,
-                    'ja-JP': `To fix Japanese TTS: Install Japanese language pack in system settings and enable Japanese text-to-speech.`
+                    'th-TH': `To fix Thai TTS: Install the Thai language pack in your OS settings, then enable Thai TTS in your browser.`,
+                    'fa-IR': `To fix Persian/Farsi TTS: Install the Persian language pack in your OS settings.`,
+                    'en-US': `To fix English TTS: Ensure English (United States) is installed and enabled for speech synthesis.`,
+                    'ja-JP': `To fix Japanese TTS: Install the Japanese language pack in your OS settings and enable Japanese speech synthesis.`
                 };
-
                 return helpMessages[lang] || `Please check your system language settings and install the ${language?.name || lang} language pack.`;
             }
         };
 
+        /* Global exposure – ensures the toolbar can always find SettingsManager */
+        window.SettingsManager = SettingsManager;
         // Global function for testing individual languages
         window.testSingleLanguage = async function (lang, text) {
             const language = AppConfig.getLanguage(lang);
@@ -1578,8 +1719,10 @@
                 });
             }
         };
+
         /* -------------------------------------------------------------
-           PATCH – replace the whole PlaybackController definition
+           PlaybackController – handles Play / Pause / Restart and the
+           word‑by‑word, language‑by‑language speech flow.
            ------------------------------------------------------------- */
         const PlaybackController = {
             /* -----------------------------------------------------------------
@@ -1596,7 +1739,7 @@
                Public entry point – called when the user clicks the Play button
                ----------------------------------------------------------------- */
             async playExample() {
-                // Toggle behaviour: if already playing → pause
+                // If we are already playing → pause
                 if (this.isPlaying && !this.isPaused) {
                     this.pauseExample();
                     return;
@@ -1622,11 +1765,19 @@
                 AppState.currentWordIndex = 0;
 
                 ScreenReader.announce('Playback started');
-                // NOTE: **Do NOT** call ExampleRenderer.highlightWord() here.
-                // We will highlight each individual span inside speakAllLanguagesForWord().
+
+                // -------------------------------------------------------------
+                // NEW STEP – give the browser a moment to populate the voice list
+                // -------------------------------------------------------------
+                // Many browsers load the list of TTS voices asynchronously.
+                // Waiting a short time (300 ms) ensures that `speakWord()`
+                // will find the appropriate voice for the first word.
+                await new Promise(r => setTimeout(r, 300));
+
+                // NOTE: we do **not** highlight the whole pair here.
+                // Each language will be highlighted right before it is spoken.
                 await this.playbackLoop();
             },
-
             /* -----------------------------------------------------------------
                Pause – stops the timer and cancels any ongoing utterance
                ----------------------------------------------------------------- */
@@ -1681,85 +1832,149 @@
                Core loop – walks through the sentence word‑by‑word
                ----------------------------------------------------------------- */
             async playbackLoop() {
-                // 1️⃣  Playback stopped → clean up and exit
+                // -------------------------------------------------------------
+                // 0️⃣  ALWAYS reset the pause flag at the start of each loop.
+                // -------------------------------------------------------------
+                this.isPaused = false;
+
+                // -------------------------------------------------------------
+                // 1️⃣  Debug – show that the loop has (re)started
+                // -------------------------------------------------------------
+                console.debug(`playbackLoop – word index ${this.currentWordIndex} (isPlaying=${this.isPlaying}, isPaused=${this.isPaused})`);
+
+                // -------------------------------------------------------------
+                // 2️⃣  Playback stopped → clean up and exit
+                // -------------------------------------------------------------
                 if (!this.isPlaying) {
                     this.cleanupPlayback();
                     return;
                 }
 
-                // 2️⃣  Paused → poll every 200 ms
+                // -------------------------------------------------------------
+                // 3️⃣  Paused → poll every 200 ms (only when the user explicitly
+                //     clicks the Pause button; we already cleared accidental pauses)
+                // -------------------------------------------------------------
                 if (this.isPaused) {
                     setTimeout(() => this.playbackLoop(), 200);
                     return;
                 }
 
-                // 3️⃣  End of sentence → finish
+                // -------------------------------------------------------------
+                // 4️⃣  End of sentence → finish
+                // -------------------------------------------------------------
                 if (this.currentWordIndex >= this.currentSentence.length) {
                     this.completePlayback();
                     return;
                 }
 
-                // 4️⃣  Speak the current word in **each selected language**
+                // -------------------------------------------------------------
+                // 5️⃣  **REMOVED** – we no longer highlight the whole word‑pair here.
+                //     Per‑language highlighting is handled inside `playWord`,
+                //     which clears previous highlights and then highlights the
+                //     exact span for the language being spoken.
+                // -------------------------------------------------------------
+
+                // -------------------------------------------------------------
+                // 6️⃣  Speak the current word in **each selected language**
+                // -------------------------------------------------------------
                 const word = this.currentSentence[this.currentWordIndex];
                 await this.speakAllLanguagesForWord(word);
 
-                // 5️⃣  Advance to the next word
+                // -------------------------------------------------------------
+                // 7️⃣  Advance to the next word
+                // -------------------------------------------------------------
                 this.currentWordIndex++;
                 this.currentLanguageIndex = 0;               // reset language counter
                 AppState.currentWordIndex = this.currentWordIndex;
 
-                // 6️⃣  Wait the user‑defined delay, then recurse
+                // -------------------------------------------------------------
+                // 8️⃣  Wait the user‑defined delay, then recurse
+                // -------------------------------------------------------------
                 const delay = this.getPlaybackDelay();       // ms (minimum 500 ms)
-                this.currentTimeout = setTimeout(() => this.playbackLoop(), delay);
+
+                // Use an await‑based delay (no stored timeout ID needed)
+                await new Promise(r => setTimeout(r, delay));
+                await this.playbackLoop();   // recurse for the next word
             },
+
 
             /* -----------------------------------------------------------------
                Speak every language that the user has ticked “Speak”.
                For each language we **highlight the exact span** that is being
                spoken, then call the low‑level TTS routine.
+               The loop never aborts on a missing voice – it simply continues
+               to the next language (or next word) after announcing the problem.
                ----------------------------------------------------------------- */
             async speakAllLanguagesForWord(word) {
+                // 1️⃣  Get the list of languages that should be spoken.
+                //      This method returns the union of “Speak” and “Display”
+                //      languages, so every displayed language will be processed.
                 const speakLanguages = LanguageManager.getSpeakLanguages();
 
-                // If no languages are selected, just skip silently
+                // 2️⃣  Defensive guard – should never be empty because we fall back,
+                //      but keep the warning just in case.
                 if (speakLanguages.length === 0) {
                     console.warn('No Speak languages selected – nothing will be spoken.');
                     return;
                 }
 
-                for (let i = this.currentLanguageIndex; i < speakLanguages.length; i++) {
+                // 3️⃣  Log the languages we are about to process (helps debugging)
+                console.debug('Speaking word with languages:',
+                    speakLanguages.map(l => l.code));
+
+                // 4️⃣  Loop over each language for the current word.
+                for (let i = 0; i < speakLanguages.length; i++) {
                     const language = speakLanguages[i];
 
-                    // Abort if playback has been stopped
-                    if (!this.isPlaying) {
-                        console.log('Playback stopped before speaking language:', language.code);
-                        return;
-                    }
-
-                    // Remember where we stopped so that a later resume can continue
-                    if (this.isPaused) {
-                        this.currentLanguageIndex = i;      // next time we start with this language
-                        return;
-                    }
-
+                    // ---------------------------------------------------------
+                    // Grab the text for this language.
+                    // ---------------------------------------------------------
                     const text = word[language.code];
-                    if (text && text !== "\n" && text.trim() !== '') {
-                        // Find the exact span for this word + language
-                        const span = document.querySelector(
-                            `.word-pair span[data-index="${this.currentWordIndex}"][data-language="${language.code}"]`
-                        );
-
-                        // Highlight the span (if we found it) and speak
-                        await this.playWord(text, language.code, span, this.currentWordIndex);
+                    if (!text || text === "\n" || text.trim() === '') {
+                        console.debug(`No text for language "${language.code}" – skipping`);
+                        continue; // Nothing to speak for this language
                     }
 
-                    // Small pause between languages (makes the speech sound less rushed)
+                    // ---------------------------------------------------------
+                    // Find the exact <span> that represents this word‑language pair.
+                    // ---------------------------------------------------------
+                    const span = document.querySelector(
+                        `.word-pair span[data-index="${this.currentWordIndex}"][data-language="${language.code}"]`
+                    );
+
+                    if (!span) {
+                        // This should not happen if the language is also displayed,
+                        // but we guard against it so the loop never gets stuck.
+                        console.warn(`Span not found for language "${language.code}" at word index ${this.currentWordIndex}`);
+                        continue; // Skip to the next language
+                    }
+
+                    // ---------------------------------------------------------
+                    // Highlight the span **before** speaking.
+                    // ---------------------------------------------------------
+                    const themeCls = document.body.dataset.theme === 'dark' ? 'highlight-dark' : 'highlight-light';
+                    span.classList.add(themeCls);
+                    span.style.background = document.body.dataset.theme === 'dark' ? 'orange' : 'yellow';
+
+                    // ---------------------------------------------------------
+                    // Call playWord – it will invoke speakWord (which handles
+                    // missing‑voice cases) and will clear the highlight when
+                    // the utterance finishes.
+                    // ---------------------------------------------------------
+                    console.debug(`Calling playWord for language "${language.code}"`);
+                    await this.playWord(text, language.code, span, this.currentWordIndex);
+                    console.debug(`Finished playWord for language "${language.code}"`);
+
+                    // ---------------------------------------------------------
+                    // Small pause between languages so the speech doesn’t sound rushed.
+                    // ---------------------------------------------------------
                     if (i < speakLanguages.length - 1) {
                         await new Promise(r => setTimeout(r, 200));
                     }
                 }
 
-                // All languages for this word finished – reset for the next word
+                // 5️⃣  All languages for this word have been processed – reset the
+                //     language index so the next word starts from the first language.
                 this.currentLanguageIndex = 0;
             },
 
@@ -1855,45 +2070,114 @@
             /* -----------------------------------------------------------------
                Low‑level wrapper around the Web Speech API.
                Returns a promise that resolves **true** when the utterance ends
-               (or when it times‑out) and **false** on error.
+               (or when it times‑out) and **false** only on genuine TTS errors.
+               If no matching voice is found, the promise resolves **true** after
+               announcing the missing voice, allowing playback to continue.
                ----------------------------------------------------------------- */
             speakWord(text, lang) {
-                return new Promise(resolve => {
+                return new Promise(async resolve => {
+                    // 1️⃣  Guard – ignore empty strings or pure new‑lines
                     if (!text || text === "\n" || text.trim() === '') {
                         resolve(true);
                         return;
                     }
 
-                    try {
-                        const utterance = new SpeechSynthesisUtterance(text);
-                        utterance.lang = lang;
-                        utterance.volume = 0.8;
-                        utterance.rate = 0.9;
-                        utterance.pitch = 1.0;
-
-                        let finished = false;
-
-                        const finish = ok => {
-                            if (finished) return;
-                            finished = true;
-                            clearTimeout(timeoutId);
-                            resolve(ok);
-                        };
-
-                        utterance.onend = () => finish(true);
-                        utterance.onerror = () => finish(false);
-
-                        // Safety net – if the browser never fires onend/onerror
-                        const timeoutId = setTimeout(() => {
-                            console.warn(`TTS timeout for ${lang}`);
-                            finish(false);
-                        }, 5000); // 5 s
-
-                        speechSynthesis.speak(utterance);
-                    } catch (e) {
-                        console.error('speakWord error:', e);
+                    // 2️⃣  Verify that the browser actually supports Speech Synthesis
+                    if (!('speechSynthesis' in window) ||
+                        typeof SpeechSynthesisUtterance === 'undefined') {
+                        console.warn('Speech synthesis not supported in this browser');
+                        ScreenReader.announce('Speech synthesis is not supported in this browser.');
                         resolve(false);
+                        return;
                     }
+
+                    // 3️⃣  Make sure the voice list is populated.
+                    let allVoices = speechSynthesis.getVoices();
+
+                    if (allVoices.length === 0) {
+                        console.debug('Voice list empty – waiting for voiceschanged event...');
+                        await new Promise(r => {
+                            const handler = () => {
+                                speechSynthesis.removeEventListener('voiceschanged', handler);
+                                r();
+                            };
+                            speechSynthesis.addEventListener('voiceschanged', handler);
+                            // Fallback timeout in case the event never fires
+                            setTimeout(r, 500);
+                        });
+                        allVoices = speechSynthesis.getVoices();
+                    }
+
+                    // 4️⃣  Filter for voices that actually support the requested language
+                    const matchingVoices = allVoices.filter(v =>
+                        v.lang && v.lang.toLowerCase().startsWith(lang.toLowerCase())
+                    );
+
+                    console.debug(`Found ${matchingVoices.length} voice(s) for language "${lang}"`);
+
+                    // 5️⃣  No matching voice?  Announce the problem **but do not abort**.
+                    if (matchingVoices.length === 0) {
+                        const msg = `No Text‑to‑Speech voice found for language "${lang}". ` +
+                            `Open the Help & Support panel and click “Test TTS Setup & Language Support” ` +
+                            `to see how to install the required language pack.`;
+                        console.warn(msg);
+                        ScreenReader.announce(msg);
+
+                        // Optional on‑screen banner (helps sighted users)
+                        const banner = document.createElement('div');
+                        banner.className = 'missing-voice-banner';
+                        banner.textContent = msg;
+                        banner.style.cssText = `
+    position:fixed; top:0; left:0; width:100%;
+    background:#ffeb3b; color:#000;
+    padding:0.6em; text-align:center;
+    font-weight:bold; z-index:1000;
+`;
+                        document.body.appendChild(banner);
+                        setTimeout(() => banner.remove(), 8000);
+
+                        // Resolve **true** so playback continues to the next language/word
+                        resolve(true);
+                        return;
+                    }
+
+                    // 6️⃣  Pick the first matching voice (good enough for our demo)
+                    const chosenVoice = matchingVoices[0];
+                    console.debug(`Using voice "${chosenVoice.name}" (lang=${chosenVoice.lang})`);
+
+                    // 7️⃣  Build the utterance
+                    const utterance = new SpeechSynthesisUtterance(text);
+                    utterance.lang = lang;
+                    utterance.voice = chosenVoice;
+                    utterance.volume = 0.8;
+                    utterance.rate = 0.9;
+                    utterance.pitch = 1.0;
+
+                    // 8️⃣  Resolve the promise when the utterance finishes or errors
+                    let finished = false;
+                    const finish = ok => {
+                        if (finished) return;
+                        finished = true;
+                        clearTimeout(timeoutId);
+                        resolve(ok);
+                    };
+
+                    utterance.onend = () => finish(true);
+                    utterance.onerror = (e) => {
+                        console.error('Speech synthesis error:', e.error);
+                        ScreenReader.announce(`Speech error: ${e.error}`);
+                        finish(false);
+                    };
+
+                    // 9️⃣  Safety net – timeout after 5 seconds
+                    const timeoutId = setTimeout(() => {
+                        console.warn(`Speech synthesis timeout for language "${lang}"`);
+                        ScreenReader.announce(`Speech timed out for language ${lang}`);
+                        finish(false);
+                    }, 5000);
+
+                    // 🔟  Finally, speak!
+                    speechSynthesis.speak(utterance);
                 });
             },
 
@@ -1936,6 +2220,7 @@
             }
         };
 
+
         /* -------------------------------------------------------------
            END OF PATCH – the rest of the file stays unchanged
            ------------------------------------------------------------- */
@@ -1970,38 +2255,70 @@
 
             convertExampleToQuestions(example) {
                 const questions = [];
+                const questionLang = Storage.load(
+                    CONSTANTS.STORAGE_KEYS.QUESTION_LANG,
+                    CONSTANTS.DEFAULT_VALUES.QUESTION_LANG
+                );
+                const answerLang = Storage.load(
+                    CONSTANTS.STORAGE_KEYS.ANSWER_LANG,
+                    CONSTANTS.DEFAULT_VALUES.ANSWER_LANG
+                );
 
-                // The playback controller already gave us a flattened array,
-                // but the quiz may be built directly from the raw example.
-                const words = this._flattenTranslations(example.translations);
+                // ---------------------------------------------------------
+                // 1️⃣  Normalise the example into an array of word‑objects
+                // ---------------------------------------------------------
+                let words = [];
 
-                const qLang = Storage.load(CONSTANTS.STORAGE_KEYS.QUESTION_LANG,
-                    CONSTANTS.DEFAULT_VALUES.QUESTION_LANG);
-                const aLang = Storage.load(CONSTANTS.STORAGE_KEYS.ANSWER_LANG,
-                    CONSTANTS.DEFAULT_VALUES.ANSWER_LANG);
-
-                // Filter out any rows that don’t have both sides filled
-                const valid = words.filter(w => w[qLang]?.trim() && w[aLang]?.trim());
-
-                valid.forEach((w, idx) => {
-                    const q = {
-                        id: `q-${idx}`,
-                        [qLang]: w[qLang],
-                        [aLang]: w[aLang],
-                        translations: w,
-                        attempted: false,
-                        correct: false,
-                        options: this._makeOptions(valid, idx, aLang)
-                    };
-                    questions.push(q);
-                });
-
-                if (questions.length === 0) {
-                    console.warn('Quiz: no usable words for the selected languages', {
-                        qLang, aLang, words
-                    });
+                if (Array.isArray(example)) {
+                    // New format – already an array of word objects
+                    words = example;
+                } else if (example.translations && typeof example.translations === 'object') {
+                    // Old format – reuse the flatten helper that lives on PlaybackController
+                    words = PlaybackController._flattenTranslations(example.translations);
+                } else if (typeof example === 'object') {
+                    // Single word object – wrap it in an array so the rest of the code works uniformly
+                    words = [example];
+                } else {
+                    console.warn('Unexpected example format for quiz:', example);
+                    return [];
                 }
 
+                // ---------------------------------------------------------
+                // 2️⃣  Keep only the entries that have BOTH a question
+                //     AND an answer in the selected languages
+                // ---------------------------------------------------------
+                const validWords = words.filter(word => {
+                    if (!word || typeof word !== 'object') return false;
+
+                    const hasQuestion = word[questionLang] && word[questionLang].trim() !== '';
+                    const hasAnswer = word[answerLang] && word[answerLang].trim() !== '';
+                    return hasQuestion && hasAnswer;
+                });
+
+                if (validWords.length === 0) {
+                    console.warn('No valid words found for quiz in current languages');
+                    console.log('All words:', words);
+                    console.log('Question language:', questionLang, 'Answer language:', answerLang);
+                    return [];
+                }
+
+                // ---------------------------------------------------------
+                // 3️⃣  Build a question object for each valid word
+                // ---------------------------------------------------------
+                validWords.forEach((word, idx) => {
+                    const question = {
+                        id: `q-${idx}`,
+                        [questionLang]: word[questionLang],
+                        [answerLang]: word[answerLang],
+                        translations: word,
+                        attempted: false,
+                        correct: false,
+                        options: this.generateOptions(validWords, idx, answerLang)
+                    };
+                    questions.push(question);
+                });
+
+                console.log(`Created ${questions.length} quiz questions`);
                 return questions;
             },
 
@@ -2234,12 +2551,20 @@
             }
         };
 
-
-        // ========== NAVIGATION CONTROLLER ==========
+        /* -------------------------------------------------------------
+           NavigationController – handles topic / title / example selection
+           and the forward / backward arrows.
+           ------------------------------------------------------------- */
         const NavigationController = {
             topicSelect: null,
             titleSelect: null,
             exampleSelect: null,
+
+            // -----------------------------------------------------------------
+            // Simple lock to prevent the navigation functions from running
+            // twice at the same time (e.g., button click + ArrowRight key).
+            // -----------------------------------------------------------------
+            navLock: false,
 
             init(topicSelect, titleSelect, exampleSelect) {
                 this.topicSelect = topicSelect;
@@ -2252,9 +2577,7 @@
                 if (titleSelect) {
                     titleSelect.addEventListener('change', (e) => this.handleTitleChange(+e.target.value));
                 }
-                if (exampleSelect) {
-                    exampleSelect.addEventListener('change', (e) => this.handleExampleChange(+e.target.value));
-                }
+                // **No change listener for exampleSelect** – we control it manually.
             },
 
             async handleTopicChange(topicFilename) {
@@ -2273,72 +2596,180 @@
             handleTitleChange(titleIndex) {
                 AppState.currentTitle = titleIndex;
                 AppController.populateExamples();
+
+                // After repopulating the example list, load the first example of the new title
+                AppState.currentExample = 0;
+                AppController.loadExample();
+
+                // Sync the UI <select> to the first example (index 0)
+                if (this.exampleSelect) {
+                    this.exampleSelect.selectedIndex = 0;
+                }
+
                 ScreenReader.announce(`Title changed to ${titleIndex + 1}`);
             },
 
-            handleExampleChange(exampleIndex) {
-                AppState.currentExample = exampleIndex;
-                AppController.loadExample();
-                ScreenReader.announce(`Example changed to ${exampleIndex + 1}`);
-            },
-
+            /** -------------------------------------------------------------
+             *  Move to the **next** example.
+             *  • Updates AppState only once.
+             *  • Loads the new example immediately.
+             *  • Afterwards synchronises the <select> UI (without firing a change event).
+             *  ------------------------------------------------------------- */
             nextExample() {
+                if (this.navLock) return;               // Prevent re‑entry
+                this.navLock = true;
+
                 const currentTitle = AppState.currentTopic?.titles?.[AppState.currentTitle];
                 const maxExamples = currentTitle?.examples?.length || 0;
 
+                // ---------------------------------------------------------
+                // CASE 1 – Still inside the current title
+                // ---------------------------------------------------------
                 if (AppState.currentExample < maxExamples - 1) {
+                    // ONE increment ONLY
                     AppState.currentExample++;
-                    if (this.exampleSelect) {
-                        this.exampleSelect.value = AppState.currentExample;
-                    }
+
+                    // Load the new example first
                     AppController.loadExample();
-                } else {
-                    const maxTitles = AppState.currentTopic?.titles?.length || 0;
-                    if (AppState.currentTitle < maxTitles - 1) {
-                        AppState.currentTitle++;
-                        AppState.currentExample = 0;
-                        if (this.titleSelect) {
-                            this.titleSelect.value = AppState.currentTitle;
-                        }
-                        AppController.populateExamples();
-                    } else {
-                        AppState.currentTitle = 0;
-                        AppState.currentExample = 0;
-                        if (this.titleSelect) {
-                            this.titleSelect.value = AppState.currentTitle;
-                        }
-                        AppController.populateExamples();
+
+                    // THEN update the <select> UI (no change event is fired)
+                    if (this.exampleSelect) {
+                        this.exampleSelect.selectedIndex = AppState.currentExample;
                     }
+
+                    // Release lock after the UI has settled
+                    setTimeout(() => { this.navLock = false; }, 0);
+                    return;
                 }
+
+                // ---------------------------------------------------------
+                // CASE 2 – At the last example of the current title → go to next title
+                // ---------------------------------------------------------
+                const maxTitles = AppState.currentTopic?.titles?.length || 0;
+                if (AppState.currentTitle < maxTitles - 1) {
+                    // Move to next title and start at its first example
+                    AppState.currentTitle++;
+                    AppState.currentExample = 0;
+
+                    // Update title <select>
+                    if (this.titleSelect) {
+                        this.titleSelect.selectedIndex = AppState.currentTitle;
+                    }
+
+                    // Re‑populate examples for the new title and load the first one
+                    AppController.populateExamples();
+                    AppController.loadExample();
+
+                    // Sync example <select> to the first example (index 0)
+                    if (this.exampleSelect) {
+                        this.exampleSelect.selectedIndex = 0;
+                    }
+
+                    setTimeout(() => { this.navLock = false; }, 0);
+                    return;
+                }
+
+                // ---------------------------------------------------------
+                // CASE 3 – Last title AND last example → wrap to the very first
+                // ---------------------------------------------------------
+                AppState.currentTitle = 0;
+                AppState.currentExample = 0;
+
+                // Update title <select> to first title
+                if (this.titleSelect) {
+                    this.titleSelect.selectedIndex = 0;
+                }
+
+                // Re‑populate examples for the first title and load its first example
+                AppController.populateExamples();
+                AppController.loadExample();
+
+                // Sync example <select> to first example
+                if (this.exampleSelect) {
+                    this.exampleSelect.selectedIndex = 0;
+                }
+
+                setTimeout(() => { this.navLock = false; }, 0);
             },
 
+            /** -------------------------------------------------------------
+             *  Move to the **previous** example.
+             *  Mirrors the logic of `nextExample` but in reverse.
+             *  ------------------------------------------------------------- */
             previousExample() {
+                if (this.navLock) return;               // Prevent re‑entry
+                this.navLock = true;
+
+                // ---------------------------------------------------------
+                // CASE 1 – Still inside the current title (not the first example)
+                // ---------------------------------------------------------
                 if (AppState.currentExample > 0) {
+                    // ONE decrement ONLY
                     AppState.currentExample--;
-                    if (this.exampleSelect) {
-                        this.exampleSelect.value = AppState.currentExample;
-                    }
+
+                    // Load the new example first
                     AppController.loadExample();
-                } else {
-                    if (AppState.currentTitle > 0) {
-                        AppState.currentTitle--;
-                        const prevTitle = AppState.currentTopic?.titles?.[AppState.currentTitle];
-                        AppState.currentExample = (prevTitle?.examples?.length || 1) - 1;
-                        if (this.titleSelect) {
-                            this.titleSelect.value = AppState.currentTitle;
-                        }
-                        AppController.populateExamples();
-                    } else {
-                        const maxTitles = AppState.currentTopic?.titles?.length || 0;
-                        AppState.currentTitle = maxTitles - 1;
-                        const lastTitle = AppState.currentTopic?.titles?.[AppState.currentTitle];
-                        AppState.currentExample = (lastTitle?.examples?.length || 1) - 1;
-                        if (this.titleSelect) {
-                            this.titleSelect.value = AppState.currentTitle;
-                        }
-                        AppController.populateExamples();
+
+                    // THEN update the <select> UI (no change event is fired)
+                    if (this.exampleSelect) {
+                        this.exampleSelect.selectedIndex = AppState.currentExample;
                     }
+
+                    setTimeout(() => { this.navLock = false; }, 0);
+                    return;
                 }
+
+                // ---------------------------------------------------------
+                // CASE 2 – At the first example of the current title → go to previous title
+                // ---------------------------------------------------------
+                if (AppState.currentTitle > 0) {
+                    // Move to previous title
+                    AppState.currentTitle--;
+
+                    const prevTitle = AppState.currentTopic?.titles?.[AppState.currentTitle];
+                    AppState.currentExample = (prevTitle?.examples?.length || 1) - 1; // last example of that title
+
+                    // Update title <select>
+                    if (this.titleSelect) {
+                        this.titleSelect.selectedIndex = AppState.currentTitle;
+                    }
+
+                    // Re‑populate examples for the new title and load the last example
+                    AppController.populateExamples();
+                    AppController.loadExample();
+
+                    // Sync example <select> to the last example of the new title
+                    if (this.exampleSelect) {
+                        this.exampleSelect.selectedIndex = AppState.currentExample;
+                    }
+
+                    setTimeout(() => { this.navLock = false; }, 0);
+                    return;
+                }
+
+                // ---------------------------------------------------------
+                // CASE 3 – First title AND first example → wrap to the very last
+                // ---------------------------------------------------------
+                const maxTitles = AppState.currentTopic?.titles?.length || 0;
+                AppState.currentTitle = maxTitles - 1;        // last title
+                const lastTitle = AppState.currentTopic?.titles?.[AppState.currentTitle];
+                AppState.currentExample = (lastTitle?.examples?.length || 1) - 1; // last example of last title
+
+                // Update title <select> to last title
+                if (this.titleSelect) {
+                    this.titleSelect.selectedIndex = AppState.currentTitle;
+                }
+
+                // Re‑populate examples for the last title and load its last example
+                AppController.populateExamples();
+                AppController.loadExample();
+
+                // Sync example <select> to the last example
+                if (this.exampleSelect) {
+                    this.exampleSelect.selectedIndex = AppState.currentExample;
+                }
+
+                setTimeout(() => { this.navLock = false; }, 0);
             }
         };
 

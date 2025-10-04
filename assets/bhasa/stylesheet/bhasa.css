@@ -1513,3 +1513,24 @@ body[data-theme="dark"] .shortcut-key {
 .language-font-ja-JP {
     font-family: Arial, sans-serif;
 }
+
+/* Simple full‑screen semi‑transparent backdrop */
+.settings-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 1000;
+    overflow-y: auto;
+    padding: 2rem;
+    box-sizing: border-box;
+}
+
+.settings-overlay .settings-panel {
+    background: lightblue;
+    color: var(--text);
+    max-width: 800px;
+    margin: 0 auto;
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}

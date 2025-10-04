@@ -133,6 +133,20 @@
         </div>
     </div>
 
+    </main>
+
+    <!-- =========================================================
+             SETTINGS OVERLAY – a modal that appears on top of the
+             existing UI. It does NOT replace the toolbar or the main
+             content, so the app state (example, language options, etc.)
+             stays intact when the panel is opened/closed.
+             ========================================================= -->
+    <div id="settingsOverlay" class="settings-overlay" style="display:none;"></div>
+
+    <!-- Screen reader announcements -->
+    <div id="statusAnnouncement" aria-live="polite" aria-atomic="true"
+        style="position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden;"></div>
+
     <script>
         // ==================== CONSTANTS ====================
         const CONSTANTS = {
@@ -1117,215 +1131,299 @@
             }
         };
 
-        const SettingsManager = {
-            show() {
-                const contentArea = document.getElementById('contentArea');
-                const controlsArea = document.getElementById('controlsArea');
-                contentArea.innerHTML = this.getSettingsHTML();
-                controlsArea.innerHTML = '';
-                this.bindSettingsEvents();
-                this.showInitialTTSStatus();
-            },
+    /* -------------------------------------------------------------
+       SettingsManager – handles the Settings & Help overlay.
+       ------------------------------------------------------------- */
+    const SettingsManager = {
+        /** -------------------------------------------------------------
+         *  Show the Settings panel.
+         *  The panel is rendered inside the hidden #settingsOverlay
+         *  element, which sits on top of the existing UI. This way the
+         *  toolbar (gear icon, theme toggle, etc.) stays in the DOM and
+         *  remains functional.
+         *  ------------------------------------------------------------- */
+        show() {
+            const overlay = document.getElementById('settingsOverlay');
+            if (!overlay) {
+                console.error('Settings overlay element not found');
+                return;
+            }
 
-            getSettingsHTML() {
-                return `
-            <div style="display: flex; justify-content: space-between; align-items: center;
-                                background: #00247D; color: white; padding: 0.5em 1em; border-radius: 8px;">
-                <h2 style="margin: 0;">Settings & Help</h2>
-                <button id="closeX" aria-label="Close settings" style="background: #666; color: white; border: none; padding: 0.5em; border-radius: 4px; cursor: pointer;">❌</button>
+            // ---------------------------------------------------------
+            // 1️⃣  Populate the overlay with the Settings UI
+            // ---------------------------------------------------------
+            overlay.innerHTML = `
+            <div class="settings-panel">
+                <div style="display: flex; justify-content: space-between; align-items: center;
+                            background: #00247D; color: white; padding: 0.5em 1em; border-radius: 8px;">
+                    <h2 style="margin: 0;">Settings &amp; Help</h2>
+                    <button id="closeX" aria-label="Close settings"
+                            style="background: #666; color: white; border: none; padding: 0.5em; border-radius: 4px; cursor: pointer;">❌</button>
+                </div>
+
+                <div class="settings-content" style="padding: 1em;">
+                    <!-- Thai Font selector -->
+                    <div class="settings-font-controls">
+                        <label style="margin: 0;">
+                            Thai Font:
+                            <select id="settingsThaiFont" aria-label="Select Thai font">
+                                <option value="">Default</option>
+                                <option value="Tahoma">Tahoma</option>
+                                <option value="Noto Sans Thai">Noto Sans Thai</option>
+                                <option value="Chakra Petch">Chakra Petch</option>
+                            </select>
+                        </label>
+                    </div>
+                    <div class="font-preview" id="fontPreview" aria-live="polite"
+                         style="margin-top:0.5em; font-size:1.2em;">
+                        ตัวอย่างข้อความภาษาไทย (Thai Text Sample)
+                    </div>
+
+                    <!-- TTS Section -->
+                    <div class="settings-section" style="margin-top:1.5em;">
+                        <h3>Text‑to‑Speech Setup</h3>
+                        <p>This app uses Text‑to‑Speech. Install the required language packs
+                           in your OS and enable TTS in your browser settings.</p>
+
+                        <button id="checkTTS" class="settings-button"
+                                style="padding:0.8em 1.5em; background:#00247D; color:white;
+                                       border:none; border-radius:4px; cursor:pointer; margin:1em 0;">
+                            🔊 Test TTS Setup &amp; Language Support
+                        </button>
+
+                        <div id="ttsStatus"></div>
+                        <div id="ttsSetupInstructions"></div>
+                        <div id="languageTests"></div>
+                    </div>
+
+                    <!-- Keyboard shortcuts -->
+                    <div class="settings-section" style="margin-top:1.5em;">
+                        <details class="keyboard-shortcuts-panel">
+                            <summary style="font-weight:bold; font-size:1.1em; cursor:pointer;">
+                                Keyboard Shortcuts
+                            </summary>
+                            <div class="keyboard-shortcuts" style="margin-top:0.5em;">
+                                <div class="shortcut-item"><span>Play/Pause</span> <kbd class="shortcut-key">Space</kbd></div>
+                                <div class="shortcut-item"><span>Next Example</span> <kbd class="shortcut-key">→</kbd></div>
+                                <div class="shortcut-item"><span>Previous Example</span> <kbd class="shortcut-key">←</kbd></div>
+                                <div class="shortcut-item"><span>Restart</span> <kbd class="shortcut-key">R</kbd></div>
+                                <div class="shortcut-item"><span>Next Question</span> <kbd class="shortcut-key">N</kbd></div>
+                                <div class="shortcut-item"><span>Open Settings</span> <kbd class="shortcut-key">S</kbd></div>
+                            </div>
+                        </details>
+                    </div>
+
+                    <div style="margin-top:2em; text-align:center;">
+                        <button id="closeBtn" class="touch-target"
+                                style="padding:0.6em 1.2em; background:#666; color:white;
+                                       border:none; border-radius:4px; cursor:pointer;">
+                            Close Settings
+                        </button>
+                    </div>
+                </div>
             </div>
+        `;
 
-            <div class="settings-content" style="padding: 1em;">
-                <div class="settings-font-controls">
-                    <label style="margin: 0;">
-                        Thai Font:
-                        <select id="settingsThaiFont" aria-label="Select Thai font">
-                            <option value="">Default</option>
-                            <option value="Tahoma">Tahoma</option>
-                            <option value="Noto Sans Thai">Noto Sans Thai</option>
-                            <option value="Chakra Petch">Chakra Petch</option>
-                        </select>
-                    </label>
-                </div>
-                <div class="font-preview" id="fontPreview" aria-live="polite">ตัวอย่างข้อความภาษาไทย (Thai Text Sample)</div>
+            // ---------------------------------------------------------
+            // 2️⃣  Show the overlay
+            // ---------------------------------------------------------
+            overlay.style.display = 'block';
 
-                <div class="settings-section">
-                    <h3>Text-to-Speech Setup</h3>
-                    <p>This App uses Text To Speech. Search in your device and your browser settings for languages and install the required language packs and enable Text To Speech. Then try the Test TTS button for more specific help for your device.</p>
+            // ---------------------------------------------------------
+            // 3️⃣  Wire the Close buttons (both X and bottom button)
+            // ---------------------------------------------------------
+            const closeX = document.getElementById('closeX');
+            const closeBtn = document.getElementById('closeBtn');
+            if (closeX) closeX.addEventListener('click', () => this.close());
+            if (closeBtn) closeBtn.addEventListener('click', () => this.close());
 
-                    <button id="checkTTS" class="settings-button" style="padding: 0.8em 1.5em; background: #00247D; color: white; border: none; border-radius: 4px; cursor: pointer; margin: 1em 0;">
-                        🔊 Test TTS Setup & Language Support
-                    </button>
+            // ---------------------------------------------------------
+            // 4️⃣  Wire the TTS test button
+            // ---------------------------------------------------------
+            const checkTTS = document.getElementById('checkTTS');
+            if (checkTTS) {
+                checkTTS.addEventListener('click', () => this.performTTSCheck());
+            }
 
-                    <div id="ttsStatus"></div>
-                    <div id="ttsSetupInstructions"></div>
-                    <div id="languageTests"></div>
-                </div>
+            // ---------------------------------------------------------
+            // 5️⃣  Initialise the Thai‑font selector
+            // ---------------------------------------------------------
+            const settingsThaiFont = document.getElementById('settingsThaiFont');
+            if (settingsThaiFont) {
+                settingsThaiFont.value = Storage.load(CONSTANTS.STORAGE_KEYS.THAI_FONT, '');
+                settingsThaiFont.addEventListener('change', (e) => {
+                    Storage.save(CONSTANTS.STORAGE_KEYS.THAI_FONT, e.target.value);
+                    FontManager.apply(); // Apply immediately
+                    ScreenReader.announce(`Thai font changed to ${e.target.value || 'default'}`);
+                });
+            }
 
-                <div class="settings-section">
-                    <details class="keyboard-shortcuts-panel">
-                        <summary style="font-weight: bold; font-size: 1.1em; cursor: pointer;">Keyboard Shortcuts</summary>
-                        <div class="keyboard-shortcuts">
-                            <div class="shortcut-item">
-                                <span>Play/Pause</span>
-                                <kbd class="shortcut-key">Space</kbd>
-                            </div>
-                            <div class="shortcut-item">
-                                <span>Next Example</span>
-                                <kbd class="shortcut-key">→</kbd>
-                            </div>
-                            <div class="shortcut-item">
-                                <span>Previous Example</span>
-                                <kbd class="shortcut-key">←</kbd>
-                            </div>
-                            <div class="shortcut-item">
-                                <span>Restart</span>
-                                <kbd class="shortcut-key">R</kbd>
-                            </div>
-                            <div class="shortcut-item">
-                                <span>Next Question</span>
-                                <kbd class="shortcut-key">N</kbd>
-                            </div>
-                            <div class="shortcut-item">
-                                <span>Settings</span>
-                                <kbd class="shortcut-key">S</kbd>
-                            </div>
-                        </div>
-                    </details>
-                </div>
+            // ---------------------------------------------------------
+            // 6️⃣  Show the current TTS status (success / warning / error)
+            // ---------------------------------------------------------
+            const status = TTSManager.getStatusMessage?.();
+            this.showTTSStatus(status);
 
-                <div style="margin-top: 2em; padding-top: 1em; border-top: 1px solid var(--border-light);">
-                    <button id="closeBtn" style="padding: 0.6em 1.2em; background: #666; color: white; border: none; border-radius: 4px; cursor: pointer;">Close Settings</button>
-                </div>
-            </div>`;
-            },
+            // If TTS isn’t fully supported, show the installation instructions
+            if (status?.type !== 'success') {
+                const instructions = TTSManager.getSetupInstructions?.();
+                document.getElementById('ttsSetupInstructions').innerHTML = instructions;
+            }
 
-            bindSettingsEvents() {
-                document.getElementById('closeX').addEventListener('click', this.close);
-                document.getElementById('closeBtn').addEventListener('click', this.close);
-                document.getElementById('checkTTS').addEventListener('click', () => this.performTTSCheck());
+            // ---------------------------------------------------------
+            // 7️⃣  Announce for screen‑reader users
+            // ---------------------------------------------------------
+            ScreenReader.announce('Settings panel opened');
+        },
 
-                const settingsThaiFont = document.getElementById('settingsThaiFont');
-                if (settingsThaiFont) {
-                    settingsThaiFont.value = Storage.load(CONSTANTS.STORAGE_KEYS.THAI_FONT, '');
-                    settingsThaiFont.addEventListener('change', (e) => {
-                        Storage.save(CONSTANTS.STORAGE_KEYS.THAI_FONT, e.target.value);
-                        FontManager.apply(); // Apply immediately when font changes
-                        ScreenReader.announce(`Thai font changed to ${e.target.value || 'default'}`);
-                    });
-                }
-            },
+        /** -------------------------------------------------------------
+         *  Close the Settings panel.
+         *  We simply hide the overlay – the underlying page (topic,
+         *  title, example, language selections, progress bar) remains
+         *  untouched, so no state is lost.
+         *  ------------------------------------------------------------- */
+        close() {
+            const overlay = document.getElementById('settingsOverlay');
+            if (overlay) {
+                overlay.style.display = 'none';
+                overlay.innerHTML = ''; // Clean up DOM nodes
+            }
 
-            close() {
-                const contentArea = document.getElementById('contentArea');
-                const controlsArea = document.getElementById('controlsArea');
+            // Re‑apply any settings that might have changed while the panel was open
+            FontManager.apply();
+            ThemeManager.init(); // Re‑apply theme (in case user toggled it)
 
-                contentArea.innerHTML = AppController.getMainHTML();
-                controlsArea.innerHTML = AppController.getControlsHTML();
+            // Ensure the example display is still rendered (it should be, but just in case)
+            const currentExample = AppState.getCurrentExample();
+            if (currentExample && currentExample.length > 0) {
+                ExampleRenderer.render(currentExample);
+            }
 
-                AppController.bindUIElements();
-                AppController.restoreSettings();
-                AppController.loadTopics();
-                ScreenReader.announce('Settings closed, returning to main view');
-            },
+            // Update the example number and progress bar (they stay the same,
+            // but this guarantees the UI reflects the current state)
+            const currentExampleNumber = document.getElementById('currentExampleNumber');
+            if (currentExampleNumber) {
+                currentExampleNumber.textContent = AppState.currentExample + 1;
+            }
 
-            showInitialTTSStatus() {
-                const status = TTSManager.getStatusMessage?.();
-                this.showTTSStatus(status);
+            const progressBar = document.getElementById('progressBar');
+            if (progressBar && AppState.currentTopic) {
+                const percent = ProgressTracker.getCompletionPercentage(
+                    AppState.currentTopic.topicFilename,
+                    AppState.currentTopic
+                );
+                progressBar.style.width = `${percent}%`;
+            }
 
-                if (status?.type !== 'success') {
-                    const instructions = TTSManager.getSetupInstructions?.();
-                    document.getElementById('ttsSetupInstructions').innerHTML = instructions;
-                }
-            },
+            // Announce that we’ve returned to the main view
+            ScreenReader.announce('Settings closed, returning to main view');
+        },
 
-            async performTTSCheck() {
-                const ttsStatus = document.getElementById('ttsStatus');
-                const checkBtn = document.getElementById('checkTTS');
-                const languageTests = document.getElementById('languageTests');
+        /** -------------------------------------------------------------
+         *  Show the current TTS status (success / warning / error) inside
+         *  the Settings panel.
+         *  ------------------------------------------------------------- */
+        showTTSStatus(status) {
+            const ttsStatus = document.getElementById('ttsStatus');
+            if (!status || !ttsStatus) return;
 
-                checkBtn.innerHTML = '<span class="loading-spinner"></span> Testing TTS...';
-                checkBtn.disabled = true;
-                ttsStatus.innerHTML = '';
-                languageTests.innerHTML = '';
-
-                const testPassed = await TTSManager.comprehensiveTest();
-                this.showLanguageTestResults();
-
-                if (!testPassed) {
-                    const instructions = TTSManager.getSetupInstructions?.();
-                    document.getElementById('ttsSetupInstructions').innerHTML = instructions;
-                }
-
-                checkBtn.innerHTML = '✅ TTS Test Complete';
-                checkBtn.disabled = false;
-
-                const finalStatus = TTSManager.getStatusMessage?.();
-                this.showTTSStatus(finalStatus);
-            },
-
-            showTTSStatus(status) {
-                const ttsStatus = document.getElementById('ttsStatus');
-                if (!status || !ttsStatus) return;
-
-                const statusClass = `tts-status-${status.type === 'warning' ? 'info' : status.type}`;
-                ttsStatus.innerHTML = `
+            const statusClass = `tts-status-${status.type === 'warning' ? 'info' : status.type}`;
+            ttsStatus.innerHTML = `
             <div class="tts-status-container ${statusClass}">
-                <h4 style="margin: 0 0 0.5em 0;">${status.title}</h4>
-                <p style="margin: 0;">${status.message}</p>
+                <h4 style="margin:0 0 0.5em 0;">${status.title}</h4>
+                <p style="margin:0;">${status.message}</p>
             </div>
-            `;
-            },
+        `;
+        },
 
-            showLanguageTestResults() {
-                const languageTests = document.getElementById('languageTests');
-                const results = TTSManager.testResults;
+        /** -------------------------------------------------------------
+         *  Perform a full TTS test for all languages that have the
+         *  “Speak” flag enabled. Results are shown inside the Settings
+         *  panel.
+         *  ------------------------------------------------------------- */
+        async performTTSCheck() {
+            const ttsStatus = document.getElementById('ttsStatus');
+            const checkBtn = document.getElementById('checkTTS');
+            const languageTests = document.getElementById('languageTests');
 
-                if (!languageTests || Object.keys(results).length === 0) return;
+            if (!ttsStatus || !checkBtn || !languageTests) return;
 
-                let html = `<h4>Language Test Results:</h4><div class="tts-language-check">`;
+            checkBtn.innerHTML = '<span class="loading-spinner"></span> Testing TTS...';
+            checkBtn.disabled = true;
+            ttsStatus.innerHTML = '';
+            languageTests.innerHTML = '';
 
-                for (const [lang, result] of Object.entries(results)) {
-                    const language = AppConfig.getLanguage(lang);
-                    const icon = result.success ? '✅' : '❌';
-                    const resultClass = result.success ? 'success-check' : 'error-cross';
-                    const voices = result.voices ? result.voices.map(v => v.name).join(', ') : 'No voices';
+            const testPassed = await TTSManager.comprehensiveTest();
+            this.showLanguageTestResults();
 
-                    html += `
-                <div style="flex: 1; min-width: 200px; padding: 1em; background: rgba(0,0,0,0.05); border-radius: 8px;">
-                    <div style="font-weight: bold;">${icon} ${language?.name || lang}</div>
+            if (!testPassed) {
+                const instructions = TTSManager.getSetupInstructions?.();
+                document.getElementById('ttsSetupInstructions').innerHTML = instructions;
+            }
+
+            checkBtn.innerHTML = '✅ TTS Test Complete';
+            checkBtn.disabled = false;
+
+            const finalStatus = TTSManager.getStatusMessage?.();
+            this.showTTSStatus(finalStatus);
+        },
+
+        /** -------------------------------------------------------------
+         *  Render the per‑language test results inside the Settings panel.
+         *  ------------------------------------------------------------- */
+        showLanguageTestResults() {
+            const languageTests = document.getElementById('languageTests');
+            const results = TTSManager.testResults;
+
+            if (!languageTests || Object.keys(results).length === 0) return;
+
+            let html = `<h4>Language Test Results:</h4><div class="tts-language-check">`;
+
+            for (const [lang, result] of Object.entries(results)) {
+                const language = AppConfig.getLanguage(lang);
+                const icon = result.success ? '✅' : '❌';
+                const resultClass = result.success ? 'success-check' : 'error-cross';
+                const voices = result.voices ? result.voices.map(v => v.name).join(', ') : 'No voices';
+
+                html += `
+                <div style="flex:1; min-width:200px; padding:1em; background:rgba(0,0,0,0.05); border-radius:8px;">
+                    <div style="font-weight:bold;">${icon} ${language?.name || lang}</div>
                     <div class="test-result ${resultClass}">
                         ${result.success ?
-                            `<div class="success-list">Working - Available voices:<br>${voices}</div>` :
-                            `Failed: ${result.error}. ${this.getLanguageSpecificHelp(lang, result.error)}`
-                        }
+                        `<div class="success-list">Working – Available voices:<br>${voices}</div>` :
+                        `Failed: ${result.error}. ${this.getLanguageSpecificHelp(lang, result.error)}`
+                    }
                     </div>
                     <button onclick="testSingleLanguage('${lang}', '${result.text}')"
                         class="language-test"
-                        style="margin-top: 0.5em;">
+                        style="margin-top:0.5em;">
                         Test ${language?.name || lang} Again
                     </button>
                 </div>
-                `;
-                }
-
-                html += `</div>`;
-                languageTests.innerHTML = html;
-            },
-
-            getLanguageSpecificHelp(lang, error) {
-                const language = AppConfig.getLanguage(lang);
-                const helpMessages = {
-                    'th-TH': `To fix Thai TTS: Install Thai language pack in system settings, then restart browser.`,
-                    'fa-IR': `To fix Persian TTS: Install Persian/Farsi language pack in system settings.`,
-                    'en-US': `To fix English TTS: Check system language settings and ensure English TTS is enabled.`,
-                    'ja-JP': `To fix Japanese TTS: Install Japanese language pack in system settings and enable Japanese text-to-speech.`
-                };
-
-                return helpMessages[lang] || `Please check your system language settings and install the ${language?.name || lang} language pack.`;
+            `;
             }
-        };
 
+            html += `</div>`;
+            languageTests.innerHTML = html;
+        },
+
+        /** -------------------------------------------------------------
+         *  Provide language‑specific help text for common TTS errors.
+         *  ------------------------------------------------------------- */
+        getLanguageSpecificHelp(lang, error) {
+            const language = AppConfig.getLanguage(lang);
+            const helpMessages = {
+                'th-TH': `To fix Thai TTS: Install the Thai language pack in your OS settings, then enable Thai TTS in your browser.`,
+                'fa-IR': `To fix Persian/Farsi TTS: Install the Persian language pack in your OS settings.`,
+                'en-US': `To fix English TTS: Ensure English (United States) is installed and enabled for speech synthesis.`,
+                'ja-JP': `To fix Japanese TTS: Install the Japanese language pack in your OS settings and enable Japanese speech synthesis.`
+            };
+            return helpMessages[lang] || `Please check your system language settings and install the ${language?.name || lang} language pack.`;
+        }
+    };
+
+    /* Global exposure – ensures the toolbar can always find SettingsManager */
+    window.SettingsManager = SettingsManager;
         // Global function for testing individual languages
         window.testSingleLanguage = async function (lang, text) {
             const language = AppConfig.getLanguage(lang);
@@ -1667,11 +1765,19 @@
                 AppState.currentWordIndex = 0;
 
                 ScreenReader.announce('Playback started');
+
+                // -------------------------------------------------------------
+                // NEW STEP – give the browser a moment to populate the voice list
+                // -------------------------------------------------------------
+                // Many browsers load the list of TTS voices asynchronously.
+                // Waiting a short time (300 ms) ensures that `speakWord()`
+                // will find the appropriate voice for the first word.
+                await new Promise(r => setTimeout(r, 300));
+
                 // NOTE: we do **not** highlight the whole pair here.
                 // Each language will be highlighted right before it is spoken.
                 await this.playbackLoop();
             },
-
             /* -----------------------------------------------------------------
                Pause – stops the timer and cancels any ongoing utterance
                ----------------------------------------------------------------- */
