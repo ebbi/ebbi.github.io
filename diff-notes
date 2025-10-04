@@ -1,0 +1,27 @@
+1️⃣ How to apply a diff‑style patch in Visual Studio Code (VS Code)
+
+VS Code can apply a plain‑text diff without any extra extensions, but an extension makes the workflow smoother and gives you a visual preview. Below are two ways to do it – pick the one you feel most comfortable with.
+Option A – Built‑in “Apply Patch” (no extension needed)
+
+    Open the folder that contains bhasa.html
+    File → Open Folder… → select the project root.
+
+    Create a temporary file for the patch
+    File → New File → name it something like fix.patch.
+    Paste only the diff you received (the @@ … @@ lines plus the added/removed lines).
+    Do not include any surrounding text – the file must contain a valid unified diff.
+
+    Select the patch file in the Explorer (click on fix.patch).
+
+    Run the “Apply Patch” command
+    Ctrl + Shift + P (or Cmd + Shift + P on macOS) → type “Patch” → choose “Patch: Apply Patch…”.
+    VS Code will ask you to pick a target folder – choose the folder that holds bhasa.html.
+
+    Review the preview
+    VS Code shows a side‑by‑side view of the changes that will be made.
+    If everything looks good, click “Apply” (or press Enter).
+
+    Delete the temporary fix.patch file – it’s no longer needed.
+
+    Save & reload
+    File → Save All (or Ctrl + S) and then refresh the page in the browser (hard‑refresh: Ctrl + Shift + R).

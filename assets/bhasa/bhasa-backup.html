@@ -895,17 +895,6 @@
         // ========== LANGUAGE MANAGER ==========
         const LanguageManager = {
             init() {
-                // ---------------------------------------------------------
-                // 1️⃣  Store the master list of languages from AppConfig
-                // ---------------------------------------------------------
-                // AppConfig.availableLanguages is populated when the
-                // configuration JSON is loaded (bhasaSetup.json).  We keep a
-                // local copy here so that the manager can work independently.
-                this.availableLanguages = AppConfig.availableLanguages || [];
-
-                // ---------------------------------------------------------
-                // 2️⃣  Render UI and bind events (unchanged logic)
-                // ---------------------------------------------------------
                 this.renderLanguageControls();
                 this.renderQuizLanguageOptions();
                 this.bindLanguageEvents();
@@ -1055,29 +1044,8 @@
                 return AppConfig.getDisplayLanguages();
             },
 
-            /**
-             * Return the list of languages that should be spoken.
-             *
-             * 1️⃣  First honour the explicit “Speak” check‑boxes (the orange column).
-             * 2️⃣  If the user hasn’t checked any Speak box, fall back to the
-             *     languages that are currently displayed (the green column).
-             *
-             * This makes the player behave intuitively: if you turn a language
-             * on for reading, it will also be spoken unless you explicitly
-             * disable the Speak flag.
-             */
             getSpeakLanguages() {
-                // Languages with the Speak flag set (or the default from config)
-                const speakChecked = (this.availableLanguages || []).filter(lang =>
-                    Storage.loadBool(`speak_${lang.code}`, lang.defaultSpeak)
-                );
-
-                // If the user selected none, fall back to the displayed set
-                if (speakChecked.length === 0) {
-                    return this.getDisplayLanguages();
-                }
-
-                return speakChecked;
+                return AppConfig.getSpeakLanguages();
             },
 
             getQuizLanguages() {
@@ -1402,67 +1370,20 @@
                 this.display = displayElement;
             },
 
-            /** -------------------------------------------------------------
-             *  Highlight a single word (by its zero‑based index) in the
-             *  rendered example.  The renderer already knows how each span
-             *  stores its word index in `data-index`, so we can locate it
-             *  quickly, clear any previous highlight, and apply a theme‑aware
-             *  background colour.
-             *  ------------------------------------------------------------- */
-            highlightWord(index) {
-                // First clear any existing highlights
-                this.clearHighlights();
-
-                // Find the span that represents the word at `index`
-                const span = this.display.querySelector(`[data-index="${index}"]`);
-                if (!span) return;
-
-                const themeCls = document.body.dataset.theme === 'dark' ? 'highlight-dark' : 'highlight-light';
-                span.classList.add(themeCls);
-                span.style.background = document.body.dataset.theme === 'dark' ? 'orange' : 'yellow';
-            },
-
-            /** -------------------------------------------------------------
-             *  Render an example – accepts either the *new* array format
-             *  or the original object that contains a `translations` map.
-             *  In both cases we first normalise the data to an array of
-             *  word‑objects, then render it.
-             *  ------------------------------------------------------------- */
             render(example) {
                 if (!this.display) return;
 
-                // -----------------------------------------------------------------
-                // 1️⃣  Normalise the payload – always end up with an array
-                // -----------------------------------------------------------------
-                let wordsArray;
-                if (!example) {
+                // Guard against empty data
+                if (!example || (Array.isArray(example) && example.length === 0)) {
                     this.display.textContent = 'No example content available.';
                     return;
                 }
 
-                if (Array.isArray(example)) {
-                    // Already in the final shape
-                    wordsArray = example;
-                } else if (example.translations && typeof example.translations === 'object') {
-                    // New JSON shape – convert the translations map to an array
-                    wordsArray = this._flattenTranslations(example.translations);
-                } else {
-                    console.error('ExampleRenderer.render: unsupported example format', example);
-                    this.display.textContent = 'Invalid example format.';
-                    return;
-                }
-
-                if (wordsArray.length === 0) {
-                    this.display.textContent = 'No example content available.';
-                    return;
-                }
-
-                // -----------------------------------------------------------------
-                // 2️⃣  Build the DOM fragment
-                // -----------------------------------------------------------------
+                // The example is already an array of word‑objects (thanks to the
+                // sentence builder).  We can render it directly.
                 const fragment = document.createDocumentFragment();
 
-                wordsArray.forEach((word, idx) => {
+                example.forEach((word, idx) => {
                     // Newline handling – a word that is just "\n" (or empty) becomes a <br>
                     if (this._isNewline(word)) {
                         fragment.appendChild(document.createElement('br'));
@@ -1517,53 +1438,106 @@
                 this.applyLanguageStyling();
             },
 
-            /** -------------------------------------------------------------
-             *  Convert the `translations` map (the format used in greetings.json)
-             *  into the uniform array of word‑objects that the rest of the app
-             *  expects.
-             *
-             *  Input:
-             *    {
-             *      "th-TH": ["สวัสดี","ครับ"],
-             *      "en-US": ["Hello","sir"],
-             *      …
-             *    }
-             *
-             *  Output:
-             *    [
-             *      { "th-TH":"สวัสดี", "en-US":"Hello", … },
-             *      { "th-TH":"ครับ",   "en-US":"sir",   … }
-             *    ]
-             *  ------------------------------------------------------------- */
-            _flattenTranslations(translations) {
-                if (!translations || typeof translations !== 'object') return [];
-
-                const langs = Object.keys(translations);
-                // Guard against an empty translations object
-                if (langs.length === 0) return [];
-
-                const maxLen = Math.max(...langs.map(l => {
-                    const arr = translations[l];
-                    return Array.isArray(arr) ? arr.length : 1;
-                }));
-
-                const words = [];
-                for (let i = 0; i < maxLen; i++) {   // ✅ fixed i++
-                    const word = {};
-                    langs.forEach(l => {
-                        const arr = translations[l];
-                        word[l] = (Array.isArray(arr) ? arr[i] : arr) ?? '';
-                    });
-                    words.push(word);
-                }
-                return words;
-            },
-
             _isNewline(word) {
                 // A word is a newline when *all* displayed languages are empty or "\n"
                 return LanguageManager.getDisplayLanguages().every(lang => {
                     const txt = word[lang.code];
                     return txt === '\n' || (txt && txt.trim() === '');
+                });
+            },
+
+            renderWordOrNewline(word, index, fragment) {
+                if (this.isNewline(word)) {
+                    fragment.appendChild(document.createElement('br'));
+                    return;
+                }
+
+                const pairDiv = document.createElement('div');
+                pairDiv.className = 'word-pair performance-optimized';
+                pairDiv.dataset.index = index;
+                pairDiv.dataset.wordId = word.id || `word-${index}`;
+
+                // Get display languages from configuration
+                const displayLanguages = LanguageManager.getDisplayLanguages();
+
+                // Render each display language for this word
+                displayLanguages.forEach(language => {
+                    const text = word[language.code];
+                    if (text && text !== "\n" && text.trim() !== '') {
+                        const span = document.createElement('span');
+                        span.textContent = text;
+                        span.lang = language.code;
+                        span.dataset.index = index;
+                        span.dataset.language = language.code;
+                        span.tabIndex = 0;
+                        span.setAttribute('role', 'button');
+                        span.setAttribute('aria-label', `Speak ${language.name}: ${text}`);
+
+                        // Apply language-specific styling
+                        span.classList.add(`language-font-${language.code}`);
+                        if (language.rtl) {
+                            span.setAttribute('dir', 'rtl');
+                        }
+
+                        // Ensure Thai elements get the thai-font class
+                        if (language.code === 'th-TH' || language.code === 'th') {
+                            span.classList.add('thai-font');
+                        }
+
+                        span.onclick = () => {
+                            if (Storage.loadBool(`speak_${language.code}`, language.defaultSpeak)) {
+                                PlaybackController.playWord(text, language.code, span, index);
+                            }
+                        };
+
+                        span.onkeydown = (e) => {
+                            if (e.key === 'Enter' || e.key === ' ') {
+                                e.preventDefault();
+                                span.click();
+                            }
+                        };
+
+                        pairDiv.appendChild(span);
+                    }
+                });
+
+                if (pairDiv.children.length > 0) {
+                    fragment.appendChild(pairDiv);
+                }
+            },
+
+            // Helper method to convert old translation format to word array format
+            /*
+                        flattenTranslationsToWords(translations) {
+                            const languages = Object.keys(translations);
+                            const maxLength = Math.max(...languages.map(lang => {
+                                const content = translations[lang];
+                                return Array.isArray(content) ? content.length : 1;
+                            }));
+            
+                            const words = [];
+                            for (let i = 0; i < maxLength; i++) {
+                                const word = {};
+                                languages.forEach(lang => {
+                                    const content = translations[lang];
+                                    if (Array.isArray(content)) {
+                                        word[lang] = content[i] || '';
+                                    } else {
+                                        // Handle single string by splitting into words or using entire string
+                                        word[lang] = i === 0 ? content : '';
+                                    }
+                                });
+                                words.push(word);
+                            }
+                            return words;
+                        },
+            */
+            isNewline(word) {
+                // Check if all translations are newlines or empty
+                const displayLanguages = LanguageManager.getDisplayLanguages();
+                return displayLanguages.every(language => {
+                    const text = word[language.code];
+                    return text === "\n" || (text && text.trim() === '');
                 });
             },
 
@@ -1582,32 +1556,64 @@
 
             clearHighlights() {
                 if (!this.display) return;
-                // Clear highlights from spans instead of whole word‑pairs
+                this.display.querySelectorAll('.word-pair').forEach(pair => {
+                    pair.classList.remove('highlight-light', 'highlight-dark');
+                    pair.style.background = '';
+                });
+            },
+
+            highlightWord(index) {
+                this.clearHighlights();
+                const wordPair = this.display.querySelector(`.word-pair[data-index="${index}"]`);
+                if (wordPair) {
+                    const themeClass = document.body.dataset.theme === 'dark' ? 'highlight-dark' : 'highlight-light';
+
+                    // FIX: Only highlight the first language span instead of the entire word-pair
+                    const firstLanguageSpan = wordPair.querySelector('span[lang]');
+                    if (firstLanguageSpan) {
+                        firstLanguageSpan.classList.add(themeClass);
+                        // Also set background for visual emphasis
+                        firstLanguageSpan.style.background = document.body.dataset.theme === 'dark' ? 'orange' : 'yellow';
+                    }
+
+                    // Scroll into view
+                    wordPair.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+                    AppState.lastHighlightedIndex = index;
+                    ScreenReader.announce(`Highlighted word at position ${index + 1}`);
+                }
+            },
+
+            clearHighlights() {
+                if (!this.display) return;
+                // FIX: Clear highlights from spans instead of word-pairs
                 this.display.querySelectorAll('.word-pair span[lang]').forEach(span => {
                     span.classList.remove('highlight-light', 'highlight-dark');
                     span.style.background = '';
                 });
             }
         };
+
+
         /* -------------------------------------------------------------
-           PATCH – replace the whole PlaybackController definition
-           ------------------------------------------------------------- */
+                PATCH – replace the whole PlaybackController definition
+                ------------------------------------------------------------- */
         const PlaybackController = {
             /* -----------------------------------------------------------------
                State used by the controller
                ----------------------------------------------------------------- */
-            currentTimeout: null,          // timeout handle for the inter‑word delay
-            currentSentence: [],          // array of word‑objects that will be spoken
-            isPlaying: false,             // true while the example is running
-            isPaused: false,              // true while the user has hit “Pause”
-            currentWordIndex: 0,          // index inside currentSentence
-            currentLanguageIndex: 0,      // index inside the list of speak‑languages
+            currentTimeout: null,   // timeout handle for the inter‑word delay
+            currentSentence: [],     // array of word‑objects that will be spoken
+            isPlaying: false,  // true while the example is running
+            isPaused: false,  // true while the user has hit “Pause”
+            currentWordIndex: 0,      // index inside currentSentence
+            currentLanguageIndex: 0,    // index inside the list of speak‑languages
 
             /* -----------------------------------------------------------------
                Public entry point – called when the user clicks the Play button
                ----------------------------------------------------------------- */
             async playExample() {
-                // Toggle behaviour: if already playing → pause
+                // If we are already playing → pause (toggle behaviour)
                 if (this.isPlaying && !this.isPaused) {
                     this.pauseExample();
                     return;
@@ -1633,8 +1639,9 @@
                 AppState.currentWordIndex = 0;
 
                 ScreenReader.announce('Playback started');
-                // NOTE: **Do NOT** call ExampleRenderer.highlightWord() here.
-                // We will highlight each individual span inside speakAllLanguagesForWord().
+                ExampleRenderer.clearHighlights();
+
+                // Kick‑off the recursive loop
                 await this.playbackLoop();
             },
 
@@ -1689,105 +1696,103 @@
             },
 
             /* -----------------------------------------------------------------
-               Core loop – walks through the sentence word‑by‑word
+               The heart of the feature – a tiny state‑machine that walks
+               through the sentence word‑by‑word and language‑by‑language.
                ----------------------------------------------------------------- */
             async playbackLoop() {
-                // 1️⃣  Playback stopped → clean up and exit
+                // -------------------------------------------------------------
+                // 1️⃣  Has playback been stopped? → clean up and exit
+                // -------------------------------------------------------------
                 if (!this.isPlaying) {
                     this.cleanupPlayback();
                     return;
                 }
 
-                // 2️⃣  Paused → poll every 200 ms
+                // -------------------------------------------------------------
+                // 2️⃣  Are we paused? → poll every 200 ms until the user resumes
+                // -------------------------------------------------------------
                 if (this.isPaused) {
                     setTimeout(() => this.playbackLoop(), 200);
                     return;
                 }
 
-                // 3️⃣  End of sentence → finish
+                // -------------------------------------------------------------
+                // 3️⃣  End of sentence? → finish
+                // -------------------------------------------------------------
                 if (this.currentWordIndex >= this.currentSentence.length) {
                     this.completePlayback();
                     return;
                 }
 
-                // 4️⃣  Speak the current word in **each selected language**
+                // -------------------------------------------------------------
+                // 4️⃣  Play the current word (all enabled languages)
+                // -------------------------------------------------------------
                 const word = this.currentSentence[this.currentWordIndex];
+                const displayIndex = this.getDisplayIndexForWord(this.currentWordIndex);
+
+                // Highlight the word that is about to be spoken
+                ExampleRenderer.highlightWord(displayIndex);
+
+                // Speak every language that the user has turned on
                 await this.speakAllLanguagesForWord(word);
 
-                // 5️⃣  Advance to the next word
+                // -------------------------------------------------------------
+                // 5️⃣  Move on to the next word
+                // -------------------------------------------------------------
                 this.currentWordIndex++;
                 this.currentLanguageIndex = 0;               // reset language counter
                 AppState.currentWordIndex = this.currentWordIndex;
 
+                // -------------------------------------------------------------
                 // 6️⃣  Wait the user‑defined delay, then recurse
+                // -------------------------------------------------------------
                 const delay = this.getPlaybackDelay();       // ms (minimum 500 ms)
                 this.currentTimeout = setTimeout(() => this.playbackLoop(), delay);
             },
 
             /* -----------------------------------------------------------------
                Speak every language that the user has ticked “Speak”.
-               For each language we **highlight the exact span** that is being
-               spoken, then call the low‑level TTS routine.
+               The function respects the pause/stop flags – if playback is stopped
+               or paused in the middle of a word it returns early so that the
+               loop can react correctly.
                ----------------------------------------------------------------- */
             async speakAllLanguagesForWord(word) {
-                // Get the list of languages that should be spoken.
-                // This method already falls back to the displayed languages if no
-                // explicit “Speak” boxes are checked.
                 const speakLanguages = LanguageManager.getSpeakLanguages();
 
-                // If somehow the list is empty, just skip (should not happen).
-                if (speakLanguages.length === 0) {
-                    console.warn('No Speak languages selected – nothing will be spoken.');
-                    return;
-                }
-
-                // Helpful debug output – shows which languages will be spoken for this word.
-                console.debug('Speaking word with languages:', speakLanguages.map(l => l.code));
-
-                // -------------------------------------------------------------
-                // Loop over each language for the current word.
-                // -------------------------------------------------------------
                 for (let i = this.currentLanguageIndex; i < speakLanguages.length; i++) {
                     const language = speakLanguages[i];
 
-                    // ---------------------------------------------------------
-                    // Pause handling – remember where we stopped and exit.
-                    // ---------------------------------------------------------
-                    if (this.isPaused) {
-                        // When the user resumes, we want to start from the same language.
-                        this.currentLanguageIndex = i;
+                    // Abort if playback has been stopped
+                    if (!this.isPlaying) {
+                        console.log('Playback stopped before speaking language:', language.code);
                         return;
                     }
 
-                    // ---------------------------------------------------------
-                    // Grab the text for this language and speak it.
-                    // ---------------------------------------------------------
-                    const text = word[language.code];
-                    if (text && text !== "\n" && text.trim() !== '') {
-                        // Find the exact <span> that represents this word‑language pair.
-                        const span = document.querySelector(
-                            `.word-pair span[data-index="${this.currentWordIndex}"][data-language="${language.code}"]`
-                        );
-
-                        // Highlight the span (if we found it) and invoke the TTS routine.
-                        await this.playWord(text, language.code, span, this.currentWordIndex);
+                    // Remember where we stopped so that a later resume can continue
+                    if (this.isPaused) {
+                        this.currentLanguageIndex = i;      // next time we start with this language
+                        return;
                     }
 
-                    // ---------------------------------------------------------
-                    // Small pause between languages so the speech doesn’t sound
-                    // rushed. No pause after the last language for the word.
-                    // ---------------------------------------------------------
+                    const text = word[language.code];
+                    if (text && text !== "\n" && text.trim() !== '') {
+                        const ok = await this.speakWord(text, language.code);
+                        // Even if a particular TTS call fails we keep going – the
+                        // user still gets the remaining languages.
+                        if (!ok) console.warn(`TTS failed for ${language.code}`);
+                    }
+
+                    // Small pause between languages (makes the speech sound less
+                    // rushed).  No pause after the last language.
                     if (i < speakLanguages.length - 1) {
                         await new Promise(r => setTimeout(r, 200));
                     }
                 }
 
-                // -------------------------------------------------------------
-                // All languages for this word have been spoken – reset the
-                // language index so the next word starts from the first language.
-                // -------------------------------------------------------------
+                // All languages for this word finished – reset for the next word
                 this.currentLanguageIndex = 0;
             },
+
             /* -------------------------------------------------------------
                Build a uniform sentence array from the example data.
                The only supported format is:
@@ -1834,19 +1839,11 @@
              *   ]
              */
             _flattenTranslations(translations) {
-                if (!translations || typeof translations !== 'object') return [];
-
                 const langs = Object.keys(translations);
-                // Guard against an empty translations object
-                if (langs.length === 0) return [];
-
-                const maxLen = Math.max(...langs.map(l => {
-                    const arr = translations[l];
-                    return Array.isArray(arr) ? arr.length : 1;
-                }));
+                const maxLen = Math.max(...langs.map(l => translations[l].length));
 
                 const words = [];
-                for (let i = 0; i < maxLen; i++) {   // ✅ fixed i++
+                for (let i = 0; i < maxLen; i++) {
                     const word = {};
                     langs.forEach(l => {
                         const arr = translations[l];
@@ -1856,7 +1853,26 @@
                 }
                 return words;
             },
-
+            /*
+                        flattenTranslationsToWords(translations) {
+                            const langs = Object.keys(translations);
+                            const maxLen = Math.max(...langs.map(l => {
+                                const c = translations[l];
+                                return Array.isArray(c) ? c.length : 1;
+                            }));
+            
+                            const words = [];
+                            for (let i = 0; i < maxLen; i++) {
+                                const w = {};
+                                langs.forEach(l => {
+                                    const c = translations[l];
+                                    w[l] = Array.isArray(c) ? (c[i] ?? '') : (i === 0 ? c : '');
+                                });
+                                words.push(w);
+                            }
+                            return words;
+                        },
+            */
             /* -----------------------------------------------------------------
                Helper: map the internal word index to the index that the UI uses.
                (At the moment they are the same, but keeping the indirection
@@ -1883,124 +1899,48 @@
                (or when it times‑out) and **false** on error.
                ----------------------------------------------------------------- */
             speakWord(text, lang) {
-                return new Promise(async resolve => {
-                    // -------------------------------------------------------------
-                    // 1️⃣  Guard – empty text or newline → nothing to speak
-                    // -------------------------------------------------------------
+                return new Promise(resolve => {
                     if (!text || text === "\n" || text.trim() === '') {
                         resolve(true);
                         return;
                     }
 
-                    // -------------------------------------------------------------
-                    // 2️⃣  Verify that the browser supports Speech Synthesis
-                    // -------------------------------------------------------------
-                    if (!('speechSynthesis' in window) ||
-                        typeof SpeechSynthesisUtterance === 'undefined') {
-                        console.warn('Speech synthesis not supported in this browser');
+                    try {
+                        const utterance = new SpeechSynthesisUtterance(text);
+                        utterance.lang = lang;
+                        utterance.volume = 0.8;
+                        utterance.rate = 0.9;
+                        utterance.pitch = 1.0;
+
+                        let finished = false;
+
+                        const finish = ok => {
+                            if (finished) return;
+                            finished = true;
+                            clearTimeout(timeoutId);
+                            resolve(ok);
+                        };
+
+                        utterance.onend = () => finish(true);
+                        utterance.onerror = () => finish(false);
+
+                        // Safety net – if the browser never fires onend/onerror
+                        const timeoutId = setTimeout(() => {
+                            console.warn(`TTS timeout for ${lang}`);
+                            finish(false);
+                        }, 5000); // 5 s
+
+                        speechSynthesis.speak(utterance);
+                    } catch (e) {
+                        console.error('speakWord error:', e);
                         resolve(false);
-                        return;
                     }
-
-                    // -------------------------------------------------------------
-                    // 3️⃣  Ensure the voice list is ready.
-                    //     Some browsers (especially Chrome) load voices asynchronously,
-                    //     so we may need to wait a short moment for them to appear.
-                    // -------------------------------------------------------------
-                    let allVoices = speechSynthesis.getVoices();
-
-                    // If the list is empty, wait for the `voiceschanged` event.
-                    if (allVoices.length === 0) {
-                        console.debug('Voice list empty – waiting for voiceschanged event...');
-                        await new Promise(r => {
-                            const handler = () => {
-                                speechSynthesis.removeEventListener('voiceschanged', handler);
-                                r();
-                            };
-                            speechSynthesis.addEventListener('voiceschanged', handler);
-                            // As a safety net, also resolve after 500 ms in case the event never fires.
-                            setTimeout(r, 500);
-                        });
-                        allVoices = speechSynthesis.getVoices();
-                    }
-
-                    // -------------------------------------------------------------
-                    // 4️⃣  Filter the voices that actually support the requested language.
-                    // -------------------------------------------------------------
-                    const matchingVoices = allVoices.filter(v =>
-                        v.lang && v.lang.toLowerCase().startsWith(lang.toLowerCase())
-                    );
-
-                    console.debug(`Found ${matchingVoices.length} voice(s) for language "${lang}"`);
-
-                    // -------------------------------------------------------------
-                    // 5️⃣  Choose a voice.
-                    //     • If we have any matching voices, pick the first one.
-                    //     • Otherwise fall back to the first voice in the whole list
-                    //       (this will usually be an English voice) and WARN the user.
-                    // -------------------------------------------------------------
-                    let chosenVoice = null;
-
-                    if (matchingVoices.length > 0) {
-                        chosenVoice = matchingVoices[0];
-                        console.debug(`Using matching voice "${chosenVoice.name}" (lang=${chosenVoice.lang})`);
-                    } else {
-                        // No exact match – fall back to the default voice (if any)
-                        chosenVoice = allVoices[0] || null;
-                        console.warn(
-                            `No voice found for language "${lang}". ` +
-                            `Falling back to default voice "${chosenVoice?.name || 'none'}". ` +
-                            `The text may not be spoken correctly.`
-                        );
-                    }
-
-                    // -------------------------------------------------------------
-                    // 6️⃣  Build the utterance.
-                    // -------------------------------------------------------------
-                    const utterance = new SpeechSynthesisUtterance(text);
-                    utterance.lang = lang;
-                    utterance.volume = 0.8;
-                    utterance.rate = 0.9;
-                    utterance.pitch = 1.0;
-
-                    if (chosenVoice) {
-                        utterance.voice = chosenVoice;
-                    }
-
-                    // -------------------------------------------------------------
-                    // 7️⃣  Resolve the promise when the utterance ends or errors.
-                    // -------------------------------------------------------------
-                    let finished = false;
-                    const finish = ok => {
-                        if (finished) return;
-                        finished = true;
-                        clearTimeout(timeoutId);
-                        resolve(ok);
-                    };
-
-                    utterance.onend = () => finish(true);
-                    utterance.onerror = (e) => {
-                        console.error('Speech synthesis error:', e.error);
-                        finish(false);
-                    };
-
-                    // -------------------------------------------------------------
-                    // 8️⃣  Safety net – if the browser never fires onend/onerror.
-                    // -------------------------------------------------------------
-                    const timeoutId = setTimeout(() => {
-                        console.warn(`Speech synthesis timeout for language "${lang}"`);
-                        finish(false);
-                    }, 5000); // 5 seconds
-
-                    // -------------------------------------------------------------
-                    // 9️⃣  Finally, speak!
-                    // -------------------------------------------------------------
-                    speechSynthesis.speak(utterance);
                 });
-            },            /* -----------------------------------------------------------------
+            },
+
+            /* -----------------------------------------------------------------
                Cleanup helpers – called when playback finishes or is aborted
                ----------------------------------------------------------------- */
-
             cleanupPlayback() {
                 this.isPlaying = false;
                 this.isPaused = false;
@@ -2018,28 +1958,22 @@
             /* -----------------------------------------------------------------
                Click‑handler for a single word (used by the UI)
                ----------------------------------------------------------------- */
-            async playWord(text, lang, element, index) {
+            playWord(text, lang, element, index) {
                 if (!text || text.trim() === '') return;
 
-                // Clear any previous per‑span highlight first
                 ExampleRenderer.clearHighlights();
+                const themeCls = document.body.dataset.theme === 'dark' ? 'highlight-dark' : 'highlight-light';
+                element.classList.add(themeCls);
+                element.style.background = document.body.dataset.theme === 'dark' ? 'orange' : 'yellow';
 
-                // Highlight the span that is about to be spoken
-                if (element) {
-                    const themeCls = document.body.dataset.theme === 'dark' ? 'highlight-dark' : 'highlight-light';
-                    element.classList.add(themeCls);
-                    element.style.background = document.body.dataset.theme === 'dark' ? 'orange' : 'yellow';
-                }
-
-                // Actually speak the word
-                await this.speakWord(text, lang);
+                this.speakWord(text, lang);
                 ScreenReader.announce(`Speaking: ${text}`);
             }
         };
-
         /* -------------------------------------------------------------
            END OF PATCH – the rest of the file stays unchanged
            ------------------------------------------------------------- */
+
         const QuizSystem = {
             data: [],
             currentQuestion: 0,

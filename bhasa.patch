@@ -1,0 +1,87 @@
+@@
+-    async speakAllLanguagesForWord(word) {
+-        const speakLanguages = LanguageManager.getSpeakLanguages();
+-
+-        // If no languages are selected, just skip silently
+-        if (speakLanguages.length === 0) {
+-            console.warn('No Speak languages selected – nothing will be spoken.');
+-            return;
+-        }
+-
+-        for (let i = this.currentLanguageIndex; i < speakLanguages.length; i++) {
+-            const language = speakLanguages[i];
+-
+-            // Abort if playback has been stopped
+-            if (!this.isPlaying) {
+-                console.log('Playback stopped before speaking language:', language.code);
+-                return;
+-            }
+-
+-            // Remember where we stopped so that a later resume can continue
+-            if (this.isPaused) {
+-                this.currentLanguageIndex = i;      // next time we start with this language
+-                return;
+-            }
+-
+-            const text = word[language.code];
+-            if (text && text !== "\n" && text.trim() !== '') {
+-                // Find the exact span for this word + language
+-                const span = document.querySelector(
+-                    `.word-pair span[data-index="${this.currentWordIndex}"][data-language="${language.code}"]`
+-                );
+-
+-                // Highlight the span (if we found it) and speak
+-                await this.playWord(text, language.code, span, this.currentWordIndex);
+-            }
+-
+-            // Small pause between languages (makes the speech sound less rushed)
+-            if (i < speakLanguages.length - 1) {
+-                await new Promise(r => setTimeout(r, 200));
+-            }
+-        }
+-
+-        // All languages for this word finished – reset for the next word
+-        this.currentLanguageIndex = 0;
+-    },
+    async speakAllLanguagesForWord(word) {
+        const speakLanguages = LanguageManager.getSpeakLanguages();
+
+        // If no languages are selected, just skip silently (should never happen because we fall back to display)
+        if (speakLanguages.length === 0) {
+            console.warn('No Speak languages selected – nothing will be spoken.');
+            return;
+        }
+
+        // DEBUG – show the order of languages that will be spoken
+        console.debug('Speaking word with languages:', speakLanguages.map(l => l.code));
+
+        for (let i = this.currentLanguageIndex; i < speakLanguages.length; i) {
+            const language = speakLanguages[i];
+
+            // If the user paused, remember where we stopped and exit the loop
+            if (this.isPaused) {
+                this.currentLanguageIndex = i;      // resume will start from this language
+                return;
+            }
+
+            const text = word[language.code];
+            if (text && text !== "\n" && text.trim() !== '') {
+                // Find the exact span for this word  language
+                const span = document.querySelector(
+                    `.word-pair span[data-index="${this.currentWordIndex}"][data-language="${language.code}"]`
+                );
+
+                // Highlight the span (if we found it) and speak
+                await this.playWord(text, language.code, span, this.currentWordIndex);
+            }
+
+            // Small pause between languages (makes the speech sound less rushed)
+            if (i < speakLanguages.length - 1) {
+                await new Promise(r => setTimeout(r, 200));
+            }
+        }
+
+        // All languages for this word finished – reset for the next word
+        this.currentLanguageIndex = 0;
+    },
+*** End of File ***

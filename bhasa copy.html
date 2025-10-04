@@ -895,17 +895,6 @@
         // ========== LANGUAGE MANAGER ==========
         const LanguageManager = {
             init() {
-                // ---------------------------------------------------------
-                // 1️⃣  Store the master list of languages from AppConfig
-                // ---------------------------------------------------------
-                // AppConfig.availableLanguages is populated when the
-                // configuration JSON is loaded (bhasaSetup.json).  We keep a
-                // local copy here so that the manager can work independently.
-                this.availableLanguages = AppConfig.availableLanguages || [];
-
-                // ---------------------------------------------------------
-                // 2️⃣  Render UI and bind events (unchanged logic)
-                // ---------------------------------------------------------
                 this.renderLanguageControls();
                 this.renderQuizLanguageOptions();
                 this.bindLanguageEvents();
@@ -1068,7 +1057,7 @@
              */
             getSpeakLanguages() {
                 // Languages with the Speak flag set (or the default from config)
-                const speakChecked = (this.availableLanguages || []).filter(lang =>
+                const speakChecked = this.availableLanguages.filter(lang =>
                     Storage.loadBool(`speak_${lang.code}`, lang.defaultSpeak)
                 );
 
@@ -1730,64 +1719,50 @@
                spoken, then call the low‑level TTS routine.
                ----------------------------------------------------------------- */
             async speakAllLanguagesForWord(word) {
-                // Get the list of languages that should be spoken.
-                // This method already falls back to the displayed languages if no
-                // explicit “Speak” boxes are checked.
                 const speakLanguages = LanguageManager.getSpeakLanguages();
 
-                // If somehow the list is empty, just skip (should not happen).
+                // If no languages are selected, just skip silently
                 if (speakLanguages.length === 0) {
                     console.warn('No Speak languages selected – nothing will be spoken.');
                     return;
                 }
 
-                // Helpful debug output – shows which languages will be spoken for this word.
-                console.debug('Speaking word with languages:', speakLanguages.map(l => l.code));
-
-                // -------------------------------------------------------------
-                // Loop over each language for the current word.
-                // -------------------------------------------------------------
                 for (let i = this.currentLanguageIndex; i < speakLanguages.length; i++) {
                     const language = speakLanguages[i];
 
-                    // ---------------------------------------------------------
-                    // Pause handling – remember where we stopped and exit.
-                    // ---------------------------------------------------------
-                    if (this.isPaused) {
-                        // When the user resumes, we want to start from the same language.
-                        this.currentLanguageIndex = i;
+                    // Abort if playback has been stopped
+                    if (!this.isPlaying) {
+                        console.log('Playback stopped before speaking language:', language.code);
                         return;
                     }
 
-                    // ---------------------------------------------------------
-                    // Grab the text for this language and speak it.
-                    // ---------------------------------------------------------
+                    // Remember where we stopped so that a later resume can continue
+                    if (this.isPaused) {
+                        this.currentLanguageIndex = i;      // next time we start with this language
+                        return;
+                    }
+
                     const text = word[language.code];
                     if (text && text !== "\n" && text.trim() !== '') {
-                        // Find the exact <span> that represents this word‑language pair.
+                        // Find the exact span for this word + language
                         const span = document.querySelector(
                             `.word-pair span[data-index="${this.currentWordIndex}"][data-language="${language.code}"]`
                         );
 
-                        // Highlight the span (if we found it) and invoke the TTS routine.
+                        // Highlight the span (if we found it) and speak
                         await this.playWord(text, language.code, span, this.currentWordIndex);
                     }
 
-                    // ---------------------------------------------------------
-                    // Small pause between languages so the speech doesn’t sound
-                    // rushed. No pause after the last language for the word.
-                    // ---------------------------------------------------------
+                    // Small pause between languages (makes the speech sound less rushed)
                     if (i < speakLanguages.length - 1) {
                         await new Promise(r => setTimeout(r, 200));
                     }
                 }
 
-                // -------------------------------------------------------------
-                // All languages for this word have been spoken – reset the
-                // language index so the next word starts from the first language.
-                // -------------------------------------------------------------
+                // All languages for this word finished – reset for the next word
                 this.currentLanguageIndex = 0;
             },
+
             /* -------------------------------------------------------------
                Build a uniform sentence array from the example data.
                The only supported format is:
@@ -1883,124 +1858,48 @@
                (or when it times‑out) and **false** on error.
                ----------------------------------------------------------------- */
             speakWord(text, lang) {
-                return new Promise(async resolve => {
-                    // -------------------------------------------------------------
-                    // 1️⃣  Guard – empty text or newline → nothing to speak
-                    // -------------------------------------------------------------
+                return new Promise(resolve => {
                     if (!text || text === "\n" || text.trim() === '') {
                         resolve(true);
                         return;
                     }
 
-                    // -------------------------------------------------------------
-                    // 2️⃣  Verify that the browser supports Speech Synthesis
-                    // -------------------------------------------------------------
-                    if (!('speechSynthesis' in window) ||
-                        typeof SpeechSynthesisUtterance === 'undefined') {
-                        console.warn('Speech synthesis not supported in this browser');
+                    try {
+                        const utterance = new SpeechSynthesisUtterance(text);
+                        utterance.lang = lang;
+                        utterance.volume = 0.8;
+                        utterance.rate = 0.9;
+                        utterance.pitch = 1.0;
+
+                        let finished = false;
+
+                        const finish = ok => {
+                            if (finished) return;
+                            finished = true;
+                            clearTimeout(timeoutId);
+                            resolve(ok);
+                        };
+
+                        utterance.onend = () => finish(true);
+                        utterance.onerror = () => finish(false);
+
+                        // Safety net – if the browser never fires onend/onerror
+                        const timeoutId = setTimeout(() => {
+                            console.warn(`TTS timeout for ${lang}`);
+                            finish(false);
+                        }, 5000); // 5 s
+
+                        speechSynthesis.speak(utterance);
+                    } catch (e) {
+                        console.error('speakWord error:', e);
                         resolve(false);
-                        return;
                     }
-
-                    // -------------------------------------------------------------
-                    // 3️⃣  Ensure the voice list is ready.
-                    //     Some browsers (especially Chrome) load voices asynchronously,
-                    //     so we may need to wait a short moment for them to appear.
-                    // -------------------------------------------------------------
-                    let allVoices = speechSynthesis.getVoices();
-
-                    // If the list is empty, wait for the `voiceschanged` event.
-                    if (allVoices.length === 0) {
-                        console.debug('Voice list empty – waiting for voiceschanged event...');
-                        await new Promise(r => {
-                            const handler = () => {
-                                speechSynthesis.removeEventListener('voiceschanged', handler);
-                                r();
-                            };
-                            speechSynthesis.addEventListener('voiceschanged', handler);
-                            // As a safety net, also resolve after 500 ms in case the event never fires.
-                            setTimeout(r, 500);
-                        });
-                        allVoices = speechSynthesis.getVoices();
-                    }
-
-                    // -------------------------------------------------------------
-                    // 4️⃣  Filter the voices that actually support the requested language.
-                    // -------------------------------------------------------------
-                    const matchingVoices = allVoices.filter(v =>
-                        v.lang && v.lang.toLowerCase().startsWith(lang.toLowerCase())
-                    );
-
-                    console.debug(`Found ${matchingVoices.length} voice(s) for language "${lang}"`);
-
-                    // -------------------------------------------------------------
-                    // 5️⃣  Choose a voice.
-                    //     • If we have any matching voices, pick the first one.
-                    //     • Otherwise fall back to the first voice in the whole list
-                    //       (this will usually be an English voice) and WARN the user.
-                    // -------------------------------------------------------------
-                    let chosenVoice = null;
-
-                    if (matchingVoices.length > 0) {
-                        chosenVoice = matchingVoices[0];
-                        console.debug(`Using matching voice "${chosenVoice.name}" (lang=${chosenVoice.lang})`);
-                    } else {
-                        // No exact match – fall back to the default voice (if any)
-                        chosenVoice = allVoices[0] || null;
-                        console.warn(
-                            `No voice found for language "${lang}". ` +
-                            `Falling back to default voice "${chosenVoice?.name || 'none'}". ` +
-                            `The text may not be spoken correctly.`
-                        );
-                    }
-
-                    // -------------------------------------------------------------
-                    // 6️⃣  Build the utterance.
-                    // -------------------------------------------------------------
-                    const utterance = new SpeechSynthesisUtterance(text);
-                    utterance.lang = lang;
-                    utterance.volume = 0.8;
-                    utterance.rate = 0.9;
-                    utterance.pitch = 1.0;
-
-                    if (chosenVoice) {
-                        utterance.voice = chosenVoice;
-                    }
-
-                    // -------------------------------------------------------------
-                    // 7️⃣  Resolve the promise when the utterance ends or errors.
-                    // -------------------------------------------------------------
-                    let finished = false;
-                    const finish = ok => {
-                        if (finished) return;
-                        finished = true;
-                        clearTimeout(timeoutId);
-                        resolve(ok);
-                    };
-
-                    utterance.onend = () => finish(true);
-                    utterance.onerror = (e) => {
-                        console.error('Speech synthesis error:', e.error);
-                        finish(false);
-                    };
-
-                    // -------------------------------------------------------------
-                    // 8️⃣  Safety net – if the browser never fires onend/onerror.
-                    // -------------------------------------------------------------
-                    const timeoutId = setTimeout(() => {
-                        console.warn(`Speech synthesis timeout for language "${lang}"`);
-                        finish(false);
-                    }, 5000); // 5 seconds
-
-                    // -------------------------------------------------------------
-                    // 9️⃣  Finally, speak!
-                    // -------------------------------------------------------------
-                    speechSynthesis.speak(utterance);
                 });
-            },            /* -----------------------------------------------------------------
+            },
+
+            /* -----------------------------------------------------------------
                Cleanup helpers – called when playback finishes or is aborted
                ----------------------------------------------------------------- */
-
             cleanupPlayback() {
                 this.isPlaying = false;
                 this.isPaused = false;

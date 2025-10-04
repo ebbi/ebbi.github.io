@@ -1,0 +1,60 @@
+@@
+ const LanguageManager = {
+     init() {
+-        this.renderLanguageControls();
+-        this.renderQuizLanguageOptions();
+-        this.bindLanguageEvents();
+       // ---------------------------------------------------------
+       // 1️⃣  Store the master list of languages from AppConfig
+       // ---------------------------------------------------------
+       // AppConfig.availableLanguages is populated when the
+       // configuration JSON is loaded (bhasaSetup.json).  We keep a
+       // local copy here so that the manager can work independently.
+       this.availableLanguages = AppConfig.availableLanguages || [];
+
+       // ---------------------------------------------------------
+       // 2️⃣  Render UI and bind events (unchanged logic)
+       // ---------------------------------------------------------
+       this.renderLanguageControls();
+       this.renderQuizLanguageOptions();
+       this.bindLanguageEvents();
+     },
+
+@@
+-    getSpeakLanguages() {
+-        // Languages with the Speak flag set (or the default from config)
+-        const speakChecked = this.availableLanguages.filter(lang =>
+-            Storage.loadBool(`speak_${lang.code}`, lang.defaultSpeak)
+-        );
+-
+-        // If the user selected none, fall back to the displayed set
+-        if (speakChecked.length === 0) {
+-            return this.getDisplayLanguages();
+-        }
+-
+-        return speakChecked;
+-    },
+   /**
+    * Return the list of languages that should be spoken.
+    *
+    * 1️⃣  First honour the explicit “Speak” check‑boxes (the orange column).
+    * 2️⃣  If the user hasn’t checked any Speak box, fall back to the
+    *     languages that are currently displayed (the green column).
+    *
+    * This makes the player behave intuitively: if you turn a language
+    * on for reading, it will also be spoken unless you explicitly
+    * disable the Speak flag.
+    */
+   getSpeakLanguages() {
+       // Languages with the Speak flag set (or the default from config)
+       const speakChecked = (this.availableLanguages || []).filter(lang =>
+           Storage.loadBool(`speak_${lang.code}`, lang.defaultSpeak)
+       );
+
+       // If the user selected none, fall back to the displayed set
+       if (speakChecked.length === 0) {
+           return this.getDisplayLanguages();
+       }
+
+       return speakChecked;
+   },

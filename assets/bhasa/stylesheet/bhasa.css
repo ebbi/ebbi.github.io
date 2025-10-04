@@ -1,0 +1,1515 @@
+/* CSS Custom Properties for Theming */
+:root {
+    --primary-color: #00247D;
+    --primary-light: #66aaff;
+    --background-light: #f9f9f9;
+    --background-dark: #222;
+    --text-light: #000;
+    --text-dark: #eee;
+    --border-light: #ccc;
+    --border-dark: #555;
+    --correct-color: #4caf50;
+    --incorrect-color: #f44336;
+    --highlight-light: yellow;
+    --highlight-dark: orange;
+    --header-height: 60px;
+}
+
+/* Base page styling - MOBILE FIRST */
+body {
+    font-size: clamp(14px, 2.5vw, 18px);
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    transition: background 0.3s, color 0.3s;
+    background: var(--background-light);
+    color: var(--text-light);
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+body[data-theme="dark"] {
+    background: var(--background-dark);
+    color: var(--text-dark);
+}
+
+/* Header Styling */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--primary-color);
+    color: white;
+    padding: 0.3em 1em;
+    height: auto;
+    min-height: 2.5em;
+    flex-shrink: 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+#appTitle {
+    font-size: 1.2rem;
+    font-weight: bold;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    font-family: inherit;
+}
+
+#headerControls {
+    display: flex;
+    align-items: center;
+    gap: 0.8em;
+    height: 100%;
+    font-size: 1rem;
+}
+
+.header-label {
+    display: flex;
+    align-items: center;
+    gap: 0.4em;
+    color: white;
+    margin: 0;
+    height: 2em;
+    font-size: 1rem;
+}
+
+.header-label select {
+    height: 2em;
+    padding: 0.3em 0.5em;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+    box-sizing: border-box;
+}
+
+.header-label select:hover {
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.header-label select option {
+    background: var(--primary-color);
+    color: white;
+    font-family: Arial, sans-serif;
+    font-size: 1rem;
+}
+
+/* Header icons */
+#themeToggle,
+#settingsBtn {
+    background: none !important;
+    border: none !important;
+    color: white;
+    padding: 0.3em;
+    cursor: pointer;
+    font-size: 1.1rem;
+    height: 2em;
+    width: 2em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.2s;
+    border-radius: 4px;
+    line-height: normal;
+    box-shadow: none;
+    text-shadow: none;
+    font-family: inherit;
+}
+
+#themeToggle:hover,
+#settingsBtn:hover {
+    background: rgba(255, 255, 255, 0.1) !important;
+}
+
+body[data-theme="dark"] #themeToggle,
+body[data-theme="dark"] #settingsBtn {
+    background: none !important;
+    border: none !important;
+    color: white;
+}
+
+body[data-theme="dark"] #themeToggle:hover,
+body[data-theme="dark"] #settingsBtn:hover {
+    background: rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Remove old settings */
+#settingsInline {
+    display: none;
+}
+
+/* Mobile adjustments for header */
+@media (max-width: 600px) {
+    header {
+        padding: 0.3em 0.8em;
+    }
+
+    #appTitle {
+        font-size: 1.1rem;
+    }
+
+    #headerControls {
+        gap: 0.6em;
+        font-size: 0.9rem;
+    }
+
+    .header-label {
+        font-size: 0.9rem;
+        height: 1.8em;
+    }
+
+    .header-label select {
+        font-size: 0.9rem;
+        height: 1.8em;
+        padding: 0.2em 0.4em;
+    }
+
+    #themeToggle,
+    #settingsBtn {
+        height: 1.8em;
+        width: 1.8em;
+        font-size: 1rem;
+        padding: 0.2em;
+    }
+
+    select,
+    option {
+        font-family: Arial, sans-serif !important;
+        font-size: 1em !important;
+    }
+}
+
+/* Ensure Thai font is applied to app title */
+#appTitle.thai-font.tahoma {
+    font-family: Tahoma, sans-serif;
+}
+
+#appTitle.thai-font.noto {
+    font-family: 'Noto Sans Thai', sans-serif;
+}
+
+#appTitle.thai-font.chakra {
+    font-family: 'Chakra Petch', sans-serif;
+}
+
+/* Font classes for Thai text */
+.thai-font.tahoma,
+.thai-font.tahoma [lang="th-TH"],
+.thai-font.tahoma [lang="th"] {
+    font-family: Tahoma, sans-serif !important;
+}
+
+.thai-font.noto,
+.thai-font.noto [lang="th-TH"],
+.thai-font.noto [lang="th"] {
+    font-family: 'Noto Sans Thai', sans-serif !important;
+}
+
+.thai-font.chakra,
+.thai-font.chakra [lang="th-TH"],
+.thai-font.chakra [lang="th"] {
+    font-family: 'Chakra Petch', sans-serif !important;
+}
+
+/* Ensure font classes apply to all Thai text in example display */
+#exampleDisplay .thai-font.tahoma [lang="th-TH"],
+#exampleDisplay .thai-font.tahoma [lang="th"] {
+    font-family: Tahoma, sans-serif !important;
+}
+
+#exampleDisplay .thai-font.noto [lang="th-TH"],
+#exampleDisplay .thai-font.noto [lang="th"] {
+    font-family: 'Noto Sans Thai', sans-serif !important;
+}
+
+#exampleDisplay .thai-font.chakra [lang="th-TH"],
+#exampleDisplay .thai-font.chakra [lang="th"] {
+    font-family: 'Chakra Petch', sans-serif !important;
+}
+
+main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    padding: 0;
+}
+
+/* Scrollable content area */
+.content-area {
+    flex: 1;
+    overflow-y: auto;
+    padding: 1em;
+    -webkit-overflow-scrolling: touch;
+    padding-top: 0.5em;
+    scroll-padding-top: 120px;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    overflow-anchor: none;
+}
+
+/* Fixed controls at bottom */
+.controls-area {
+    background: var(--background-light);
+    border-top: 1px solid var(--border-light);
+    padding: 1em;
+    flex-shrink: 0;
+    position: sticky;
+    bottom: 0;
+    z-index: 90;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+}
+
+body[data-theme="dark"] .controls-area {
+    background: var(--background-dark);
+    border-top-color: var(--border-dark);
+}
+
+/* Section styling */
+section {
+    margin-bottom: 1.5em;
+    padding-bottom: 1em;
+    border-bottom: 1px solid var(--border-light);
+}
+
+body[data-theme="dark"] section {
+    border-bottom-color: var(--border-dark);
+}
+
+/* Help block styling */
+details {
+    padding: 0.5em 1em;
+    border: 1px solid var(--border-light);
+    border-radius: 4px;
+    margin: 0.5em 0;
+    font-size: 0.9em;
+    font-weight: normal;
+    text-align: left;
+    background: var(--background-light);
+    color: var(--text-light);
+}
+
+details summary {
+    cursor: pointer;
+    color: var(--primary-color);
+}
+
+body[data-theme="dark"] details {
+    background: #2a2a2a;
+    border: 1px solid var(--border-dark);
+    color: var(--text-dark);
+}
+
+body[data-theme="dark"] details summary {
+    color: var(--primary-light);
+}
+
+/* Style nested content in details */
+details p {
+    margin: 0.5em 0;
+    line-height: 1.5;
+    text-align: left;
+}
+
+details ol {
+    margin: 0.5em 1.5em;
+    padding-left: 1.2em;
+}
+
+details ol li {
+    margin: 0.4em 0;
+}
+
+/* === Base Styles for Inputs, Selects, Buttons === */
+button,
+select,
+input[type="number"] {
+    font-size: 1em;
+    line-height: 1.5;
+    padding: 0.4em 0.6em;
+    height: 2em;
+    border-radius: 4px;
+    border: 1px solid var(--border-light);
+    background: #f0f0f0;
+    color: var(--text-light);
+    cursor: pointer;
+    box-sizing: border-box;
+    vertical-align: middle;
+    transition: background 0.2s, color 0.2s, border-color 0.2s;
+}
+
+/* Number input text alignment */
+input[type="number"] {
+    text-align: center;
+}
+
+/* Hover states */
+button:hover,
+input[type="number"]:hover,
+select:hover {
+    background: #e0e0e0;
+}
+
+/* Dark theme adjustments */
+body[data-theme="dark"] button,
+body[data-theme="dark"] input[type="number"],
+body[data-theme="dark"] select {
+    background: #333;
+    border: 1px solid var(--border-dark);
+    color: var(--text-dark);
+}
+
+body[data-theme="dark"] button:hover,
+body[data-theme="dark"] input[type="number"]:hover,
+body[data-theme="dark"] select:hover {
+    background: #444;
+}
+
+body[data-theme="dark"] input[type="checkbox"] {
+    accent-color: var(--primary-light);
+}
+
+/* Theme Toggle Button */
+#themeToggle {
+    background: none;
+    border: none;
+    width: auto;
+    min-width: 0;
+    padding: 0 0.5em;
+    font-size: 1em;
+    line-height: 1.5;
+}
+
+/* Label alignment */
+label {
+    display: flex;
+    align-items: center;
+    gap: 0.3em;
+    font-size: 1em;
+    white-space: nowrap;
+}
+
+/* Thai Font Styling */
+.thai-font.tahoma {
+    font-family: Tahoma, sans-serif;
+}
+
+.thai-font.noto {
+    font-family: 'Noto Sans Thai', sans-serif;
+}
+
+.thai-font.chakra {
+    font-family: 'Chakra Petch', sans-serif;
+}
+
+/* Highlighting */
+.highlight-light {
+    background: var(--highlight-light);
+    color: black;
+}
+
+.highlight-dark {
+    background: var(--highlight-dark);
+    color: black;
+}
+
+#exampleDisplay {
+    margin: 0.5em 0 1em 0;
+    white-space: pre-wrap;
+    width: 100%;
+    box-sizing: border-box;
+    line-height: 1.6;
+    min-height: 150px;
+    max-height: 45vh;
+    overflow-y: auto;
+    padding: 1em;
+    border: 1px solid var(--border-light);
+    border-radius: 8px;
+    background: var(--background-light);
+    scroll-margin-top: 100px;
+}
+
+body[data-theme="dark"] #exampleDisplay {
+    background: #2a2a2a;
+    border-color: var(--border-dark);
+}
+
+:lang(th-TH) {
+    font-size: larger;
+}
+
+:lang(fa-IR) {
+    direction: rtl;
+}
+
+.word-pair {
+    display: inline-block;
+    vertical-align: top;
+    margin: 0 0.3em 0.5em 0;
+    cursor: pointer;
+    padding: 0.2em;
+    border-radius: 3px;
+    transition: background-color 0.2s;
+}
+
+.word-pair:hover {
+    background-color: rgba(0, 36, 125, 0.1);
+}
+
+body[data-theme="dark"] .word-pair:hover {
+    background-color: rgba(102, 170, 255, 0.1);
+}
+
+.word-pair span[lang] {
+    display: block;
+    word-break: keep-all;
+    overflow-wrap: break-word;
+    font-size: large;
+}
+
+.word-pair span[lang="en-US"],
+.word-pair span[lang="es-ES"],
+.word-pair span[lang="ja-JP"] {
+    border-top: 1px solid lightskyblue;
+    display: block;
+    word-break: normal;
+    overflow-wrap: normal;
+    white-space: normal;
+    margin-top: 0.1em;
+    color: rgb(5, 154, 247);
+    font-size: 0.9em;
+}
+
+/* Chinese language styling */
+.word-pair span[lang="zh-CN"] {
+    border-top: 1px solid lightskyblue;
+    display: block;
+    word-break: keep-all;
+    overflow-wrap: break-word;
+    white-space: normal;
+    margin-top: 0.1em;
+    color: rgb(247, 5, 5);
+    font-size: 0.9em;
+}
+
+.language-font-zh-CN {
+    font-family: Arial, sans-serif;
+}
+
+.word-pair span[lang="fa-IR"] {
+    border-top: 1px solid lightskyblue;
+    display: block;
+    word-break: keep-all;
+    overflow-wrap: break-word;
+    direction: rtl;
+    color: green;
+    font-size: 0.9em;
+}
+
+/* Japanese language styling */
+.word-pair span[lang="ja-JP"] {
+    border-top: 1px solid lightskyblue;
+    display: block;
+    word-break: keep-all;
+    overflow-wrap: break-word;
+    white-space: normal;
+    margin-top: 0.1em;
+    color: rgb(154, 5, 247);
+    font-size: 0.9em;
+}
+
+.language-font-ja-JP {
+    font-family: Arial, sans-serif;
+}
+
+/* NEW: Dynamic language styling */
+.word-pair span[lang]:not([lang="th-TH"]):not([lang="fa-IR"]):not([lang="en-US"]):not([lang="es-ES"]):not([lang="ja-JP"]) {
+    border-top: 1px solid lightskyblue;
+    display: block;
+    word-break: normal;
+    overflow-wrap: normal;
+    white-space: normal;
+    margin-top: 0.1em;
+    color: rgb(154, 5, 247);
+    font-size: 0.9em;
+}
+
+/* Quiz styling */
+#quiz {
+    margin-top: 1em;
+}
+
+.quiz-heading {
+    font-weight: 600;
+    margin-bottom: 0.5em;
+}
+
+.quiz-question {
+    font-size: 1.25rem;
+    margin: .1em 0;
+    padding: 0.5em;
+    background: rgba(0, 36, 125, 0.05);
+    border-radius: 5px;
+}
+
+body[data-theme="dark"] .quiz-question {
+    background: rgba(102, 170, 255, 0.1);
+}
+
+.quiz-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5em;
+    margin-top: 0.5em;
+}
+
+.quiz-option {
+    border: 1px solid var(--border-light);
+    padding: 0.5em 0.8em;
+    cursor: pointer;
+    border-radius: 5px;
+    user-select: none;
+    flex: 1;
+    min-width: 120px;
+    text-align: center;
+    transition: all 0.2s;
+}
+
+.quiz-option.correct {
+    background: var(--correct-color);
+    color: white;
+    border-color: var(--correct-color);
+}
+
+.quiz-option.incorrect {
+    background: var(--incorrect-color);
+    color: white;
+    border-color: var(--incorrect-color);
+}
+
+#quizControls {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8em;
+    margin-top: 1em;
+}
+
+/* FIXED: Quiz row layout - ensure proper row display on all devices */
+.quiz-row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.8em;
+    width: 100%;
+}
+
+.quiz-row-top {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1em;
+    font-size: 0.9em;
+    margin-bottom: 0.8em;
+    width: 100%;
+}
+
+.quiz-row-bottom {
+    flex-direction: row;
+    align-items: center;
+    gap: 0.8em;
+}
+
+/* FIXED: Language options layout */
+.lang-option {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.8em;
+    flex: 1;
+    min-width: 280px;
+}
+
+.lang-option>label:first-child {
+    font-weight: bold;
+    margin-right: 0.5em;
+    white-space: nowrap;
+    min-width: 140px;
+}
+
+.lang-option .radio-group {
+    display: flex;
+    flex-direction: row;
+    gap: 0.8em;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.lang-option .radio-group label {
+    display: flex;
+    align-items: center;
+    gap: 0.3em;
+    margin: 0;
+    white-space: nowrap;
+}
+
+/* Ensure proper spacing for radio buttons */
+.lang-option label input[type="radio"] {
+    margin-right: 0.3em;
+    transform: scale(1.1);
+}
+
+@media (min-width: 600px) {
+    .quiz-row-bottom {
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .quiz-row-top {
+        gap: 2em;
+        font-size: 0.9em;
+    }
+}
+
+/* Improved mobile layout */
+@media (max-width: 768px) {
+    .quiz-row-top {
+        flex-direction: column;
+        gap: 1em;
+    }
+
+    .lang-option {
+        min-width: 100%;
+        width: 100%;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5em;
+    }
+
+    .lang-option>label:first-child {
+        min-width: auto;
+        margin-right: 0;
+    }
+
+    .lang-option .radio-group {
+        width: 100%;
+        justify-content: flex-start;
+    }
+}
+
+/* Tablet-specific fixes */
+@media (min-width: 601px) and (max-width: 1024px) {
+    .quiz-row-top {
+        gap: 1.5em;
+    }
+
+    .lang-option {
+        min-width: 45%;
+        flex: 0 1 45%;
+    }
+}
+
+/* Compact layout for very small screens */
+@media (max-width: 480px) {
+    .lang-option .radio-group label {
+        font-size: 0.85em;
+    }
+
+    .lang-option>label:first-child {
+        font-size: 0.9em;
+    }
+}
+
+.lang-select {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4em 0.8em;
+    margin: 0.5em 0;
+}
+
+/* Example controls responsive layout */
+#exampleControls {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+}
+
+/* Example label styling */
+.example-label {
+    font-weight: bold;
+    font-size: 1em;
+    color: var(--text-light);
+    margin: 0 0.1em;
+}
+
+body[data-theme="dark"] .example-label {
+    color: var(--text-dark);
+}
+
+/* Updated example controls layout */
+.example-controls-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4em;
+    align-items: center;
+    justify-content: center;
+}
+
+/* NEW: Dynamic Language Controls Grid */
+.language-controls-grid {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.language-grid {
+    display: grid;
+    grid-template-columns: minmax(120px, 1fr) repeat(2, minmax(80px, 1fr));
+    gap: 0.5em;
+    align-items: center;
+    padding: 0.5em 0;
+    min-width: 300px;
+}
+
+.language-grid-header {
+    font-weight: bold;
+    padding: 0.5em;
+    background: rgba(0, 36, 125, 0.1);
+    border-radius: 4px;
+    text-align: center;
+    font-size: 0.9em;
+}
+
+.language-grid-row {
+    display: contents;
+}
+
+.language-name {
+    padding: 0.3em 0.5em;
+    font-weight: 500;
+    font-size: 0.9em;
+    display: flex;
+    align-items: center;
+    gap: 0.3em;
+}
+
+.language-checkbox-cell {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.3em;
+}
+
+.language-checkbox-cell input[type="checkbox"] {
+    margin: 0;
+    width: 1.2em;
+    height: 1.2em;
+    cursor: pointer;
+}
+
+@media (max-width: 600px) {
+    .language-grid {
+        grid-template-columns: minmax(100px, 1fr) repeat(2, minmax(70px, 1fr));
+        gap: 0.3em;
+        font-size: 0.85em;
+    }
+
+    .language-name {
+        font-size: 0.85em;
+        padding: 0.2em 0.3em;
+    }
+}
+
+/* Language Controls Styling */
+.language-controls {
+    width: 100%;
+    margin: 0.3em auto;
+    font-size: 1rem;
+}
+
+.language-controls details {
+    border: 1px solid var(--border-light);
+    border-radius: 6px;
+    padding: 0.4em;
+    background: var(--background-light);
+    margin: 0;
+}
+
+body[data-theme="dark"] .language-controls details {
+    background: #2a2a2a;
+    border-color: var(--border-dark);
+}
+
+.language-controls summary {
+    font-weight: bold;
+    cursor: pointer;
+    padding: 0.2em 0.4em;
+    margin: -0.4em -0.4em 0 -0.4em;
+    border-radius: 4px;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 1em;
+}
+
+.language-controls summary::-webkit-details-marker {
+    display: none;
+}
+
+.language-controls summary::after {
+    content: "▶";
+    font-size: 0.8em;
+    transition: transform 0.2s;
+    margin-left: 0.5em;
+}
+
+.language-controls details[open] summary::after {
+    transform: rotate(90deg);
+}
+
+.language-controls-content {
+    padding: 0.6em 0.2em 0.2em 0.2em;
+    font-size: 1rem;
+}
+
+/* Updated Language Options panel for delay input */
+.language-delay-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5em 0;
+    margin-top: 0.5em;
+    border-top: 1px solid var(--border-light);
+    gap: 1em;
+}
+
+.delay-label {
+    font-weight: bold;
+    font-size: 0.9em;
+    white-space: nowrap;
+}
+
+.delay-input {
+    width: 5em;
+    height: 2em;
+    padding: 0.3em;
+    font-size: 1rem;
+    text-align: center;
+}
+
+body[data-theme="dark"] .language-delay-row {
+    border-top-color: var(--border-dark);
+}
+
+/* Error and status styling */
+.error-message {
+    color: var(--incorrect-color);
+    background: #ffe6e6;
+    padding: 0.5em;
+    border-radius: 4px;
+    margin: 0.5em 0;
+    border: 1px solid var(--incorrect-color);
+}
+
+.success-message {
+    color: var(--correct-color);
+    background: #e6ffe6;
+    padding: 0.5em;
+    border-radius: 4px;
+    margin: 0.5em 0;
+    border: 1px solid var(--correct-color);
+}
+
+.loading {
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+/* Selection controls styling */
+#topicSelectionControls {
+    background: rgba(0, 36, 125, 0.05);
+    padding: 1em;
+    border-radius: 8px;
+    margin-bottom: 1em;
+    position: sticky;
+    top: 0;
+    z-index: 80;
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--border-light);
+    margin-top: 0.5em;
+}
+
+body[data-theme="dark"] #topicSelectionControls {
+    background: rgba(102, 170, 255, 0.1);
+    border-color: var(--border-dark);
+}
+
+/* TTS Status Styles */
+.tts-status-container {
+    margin: 1em 0;
+    padding: 1em;
+    border-radius: 8px;
+    border-left: 4px solid;
+}
+
+.tts-status-success {
+    background: #e8f5e8;
+    border-left-color: var(--correct-color);
+    color: #2d5016;
+}
+
+.tts-status-error {
+    background: #ffeaea;
+    border-left-color: var(--incorrect-color);
+    color: #8b0000;
+}
+
+.tts-status-warning {
+    background: #fff4e6;
+    border-left-color: orange;
+    color: #663c00;
+}
+
+.tts-status-info {
+    background: #e8f4fd;
+    border-left-color: var(--primary-color);
+    color: #004085;
+}
+
+body[data-theme="dark"] .tts-status-success {
+    background: #1a331a;
+    color: #90ee90;
+}
+
+body[data-theme="dark"] .tts-status-error {
+    background: #331a1a;
+    color: #ff6b6b;
+}
+
+body[data-theme="dark"] .tts-status-warning {
+    background: #332900;
+    color: #ffd700;
+}
+
+body[data-theme="dark"] .tts-status-info {
+    background: #1a2833;
+    color: #66aaff;
+}
+
+.tts-setup-steps {
+    margin: 1em 0;
+    padding: 1em;
+    background: var(--background-light);
+    border-radius: 8px;
+    border: 1px solid var(--border-light);
+}
+
+body[data-theme="dark"] .tts-setup-steps {
+    background: #2a2a2a;
+    border-color: var(--border-dark);
+}
+
+.tts-step {
+    margin: 0.5em 0;
+    padding: 0.5em;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+}
+
+.tts-language-check {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1em;
+    margin: 1em 0;
+}
+
+.language-test {
+    padding: 0.5em 1em;
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.language-test:hover {
+    background: var(--primary-light);
+}
+
+.test-result {
+    margin-top: 0.5em;
+    font-size: 0.9em;
+    opacity: 0.8;
+}
+
+.success-check {
+    color: var(--correct-color);
+}
+
+.error-cross {
+    color: var(--incorrect-color);
+}
+
+/* Scrollbar styling */
+.content-area::-webkit-scrollbar,
+#exampleDisplay::-webkit-scrollbar {
+    width: 8px;
+}
+
+.content-area::-webkit-scrollbar-track,
+#exampleDisplay::-webkit-scrollbar-track {
+    background: var(--background-light);
+}
+
+.content-area::-webkit-scrollbar-thumb,
+#exampleDisplay::-webkit-scrollbar-thumb {
+    background: var(--border-light);
+    border-radius: 4px;
+}
+
+body[data-theme="dark"] .content-area::-webkit-scrollbar-track,
+body[data-theme="dark"] #exampleDisplay::-webkit-scrollbar-track {
+    background: var(--background-dark);
+}
+
+body[data-theme="dark"] .content-area::-webkit-scrollbar-thumb,
+body[data-theme="dark"] #exampleDisplay::-webkit-scrollbar-thumb {
+    background: var(--border-dark);
+}
+
+/* Ensure selects are visible when dropdown opens */
+select:focus {
+    position: relative;
+    z-index: 1000;
+}
+
+/* Add specific scroll margin for select elements */
+#topicSelect,
+#titleSelect,
+#exampleSelect {
+    scroll-margin-top: 120px;
+}
+
+/* New styles for refactored layout */
+.selection-header {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin: 0.5em 0 0.5em 0;
+    color: var(--primary-color);
+    text-align: center;
+}
+
+body[data-theme="dark"] .selection-header {
+    color: var(--primary-light);
+}
+
+.topic-options-details {
+    margin-bottom: 1em;
+}
+
+.topic-options-details summary {
+    font-weight: bold;
+    padding: 0.5em;
+    background: rgba(0, 36, 125, 0.05);
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1em;
+}
+
+body[data-theme="dark"] .topic-options-details summary {
+    background: rgba(102, 170, 255, 0.1);
+}
+
+.topic-options-details[open] summary {
+    border-radius: 4px 4px 0 0;
+}
+
+.topic-options-content {
+    padding: 0.5em;
+    background: rgba(0, 36, 125, 0.02);
+    border-radius: 0 0 4px 4px;
+}
+
+body[data-theme="dark"] .topic-options-content {
+    background: rgba(102, 170, 255, 0.05);
+}
+
+/* Ensure both details summaries have the same font size */
+.topic-options-details summary,
+.language-controls summary {
+    font-weight: bold;
+    padding: 0.5em;
+    background: rgba(0, 36, 125, 0.05);
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1em;
+}
+
+body[data-theme="dark"] .topic-options-details summary,
+body[data-theme="dark"] .language-controls summary {
+    background: rgba(102, 170, 255, 0.1);
+}
+
+/* Updated topic selection controls */
+.topic-selection-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8em;
+}
+
+.topic-selection-controls label {
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+    font-weight: bold;
+}
+
+.topic-selection-controls select {
+    flex: 1;
+    width: 100%;
+}
+
+@media (min-width: 600px) {
+    .topic-selection-controls {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1em;
+    }
+
+    .topic-selection-controls label {
+        flex: 1;
+        flex-direction: row;
+        align-items: center;
+    }
+}
+
+/* Ensure proper spacing for mobile */
+@media (max-width: 600px) {
+    .selection-header {
+        font-size: 1.1rem;
+        margin: 0.3em 0;
+    }
+
+    .topic-options-details {
+        margin-bottom: 0.8em;
+    }
+
+    .topic-selection-controls {
+        gap: 0.6em;
+    }
+
+    .topic-selection-controls label {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.2em;
+    }
+}
+
+/* Ensure select options use the same font as the app */
+#titleSelect option {
+    font-family: Arial, sans-serif;
+    font-size: 1rem;
+}
+
+/* Example number display */
+.example-number {
+    font-weight: bold;
+    margin: 0 0.1em;
+    color: var(--primary-color);
+    font-size: 0.9em;
+}
+
+body[data-theme="dark"] .example-number {
+    color: var(--primary-light);
+}
+
+@media (min-width: 600px) {
+    .example-number {
+        font-size: 1em;
+    }
+}
+
+/* Quiz score styling to prevent wrapping */
+#score {
+    white-space: nowrap;
+    font-size: 1em;
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+body[data-theme="dark"] #score {
+    color: var(--primary-light);
+}
+
+/* Quiz checkbox styling */
+#incorrectOnly {
+    transform: scale(1.1);
+    margin-right: 0.3em;
+}
+
+/* Settings page layout improvements */
+.settings-font-controls {
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+    margin-bottom: 1em;
+    padding: 0.5em;
+    background: rgba(0, 36, 125, 0.05);
+    border-radius: 4px;
+}
+
+body[data-theme="dark"] .settings-font-controls {
+    background: rgba(102, 170, 255, 0.1);
+}
+
+/* Font preview styling */
+.font-preview {
+    margin-top: 0.5em;
+    padding: 0.5em;
+    border: 1px solid var(--border-light);
+    border-radius: 4px;
+    background: var(--background-light);
+    min-height: 2em;
+}
+
+body[data-theme="dark"] .font-preview {
+    background: #2a2a2a;
+    border-color: var(--border-dark);
+}
+
+/* Updated example controls to prevent wrapping */
+.example-controls-row {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    gap: 0.4em;
+    justify-content: center;
+}
+
+/* Updated example number container for inline display on all devices */
+.example-number-container {
+    display: flex;
+    align-items: center;
+    margin: 0 0.2em;
+    gap: 0.2em;
+}
+
+.example-number-label {
+    font-size: 0.9em;
+    font-weight: bold;
+    color: var(--text-light);
+    white-space: nowrap;
+}
+
+body[data-theme="dark"] .example-number-label {
+    color: var(--text-dark);
+}
+
+/* Mobile adjustments for example controls */
+@media (max-width: 600px) {
+    .example-controls-row {
+        flex-wrap: wrap;
+        gap: 0.3em;
+    }
+
+    .example-number-container {
+        order: 0;
+        width: auto;
+        margin-top: 0;
+        justify-content: center;
+    }
+}
+
+/* NEW: Loading spinner */
+.loading-spinner {
+    border: 2px solid #f3f3f3;
+    border-top: 2px solid var(--primary-color);
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    animation: spin 1s linear infinite;
+    display: inline-block;
+    margin-right: 0.5em;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* NEW: Progress tracking */
+.progress-bar {
+    width: 100%;
+    height: 6px;
+    background: var(--border-light);
+    border-radius: 3px;
+    margin: 0.5em 0;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background: var(--primary-color);
+    transition: width 0.3s ease;
+}
+
+body[data-theme="dark"] .progress-bar {
+    background: var(--border-dark);
+}
+
+/* NEW: Search box */
+.search-box {
+    margin: 1em 0;
+    padding: 0.5em;
+    border: 1px solid var(--border-light);
+    border-radius: 4px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+body[data-theme="dark"] .search-box {
+    background: #333;
+    border-color: var(--border-dark);
+    color: var(--text-dark);
+}
+
+/* NEW: Keyboard shortcuts help */
+.keyboard-shortcuts {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5em;
+    margin: 1em 0;
+}
+
+.shortcut-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.3em 0;
+    border-bottom: 1px solid var(--border-light);
+}
+
+.shortcut-key {
+    background: var(--background-light);
+    padding: 0.2em 0.5em;
+    border-radius: 3px;
+    font-family: monospace;
+    border: 1px solid var(--border-light);
+}
+
+body[data-theme="dark"] .shortcut-key {
+    background: #333;
+    border-color: var(--border-dark);
+}
+
+/* NEW: Mobile select overlay styling */
+@media (max-width: 600px) {
+    select:focus {
+        position: relative;
+        z-index: 1000;
+    }
+
+    /* Ensure mobile select options use theme colors */
+    select option {
+        background: var(--background-light);
+        color: var(--text-light);
+        font-family: Arial, sans-serif;
+        font-size: 1rem;
+    }
+
+    body[data-theme="dark"] select option {
+        background: var(--background-dark);
+        color: var(--text-dark);
+    }
+}
+
+/* Scrollable success list */
+.success-list {
+    max-height: 200px;
+    overflow-y: auto;
+    margin: 0.5em 0;
+    padding: 0.5em;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+}
+
+/* Keyboard shortcuts details panel */
+.keyboard-shortcuts-panel {
+    margin: 1em 0;
+}
+
+/* NEW: Loading overlay */
+.loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    color: white;
+    font-size: 1.2em;
+}
+
+/* NEW: Performance optimizations */
+.performance-optimized {
+    will-change: transform, opacity;
+}
+
+/* NEW: Touch-friendly improvements */
+@media (max-width: 768px) {
+    .touch-target {
+        min-height: 44px;
+        min-width: 44px;
+    }
+
+    .word-pair {
+        padding: 0.4em;
+    }
+}
+
+/* NEW: RTL language support */
+[dir="rtl"] {
+    text-align: right;
+    direction: rtl;
+}
+
+/* NEW: Language-specific font styling */
+.language-font-th-TH {
+    font-family: 'Noto Sans Thai', Tahoma, sans-serif;
+}
+
+.language-font-fa-IR {
+    font-family: Arial, sans-serif;
+    direction: rtl;
+}
+
+.language-font-en-US {
+    font-family: Arial, sans-serif;
+}
+
+.language-font-es-ES {
+    font-family: Arial, sans-serif;
+}
+
+.language-font-ja-JP {
+    font-family: Arial, sans-serif;
+}
