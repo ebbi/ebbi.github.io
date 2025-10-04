@@ -1225,9 +1225,10 @@
         `;
 
                 // ---------------------------------------------------------
-                // 2️⃣  Show the overlay
+                // 2️⃣  Show the overlay (make it receive pointer events)
                 // ---------------------------------------------------------
                 overlay.style.display = 'block';
+                overlay.style.pointerEvents = 'auto';   // allow interaction
 
                 // ---------------------------------------------------------
                 // 3️⃣  Wire the Close buttons (both X and bottom button)
@@ -1250,6 +1251,7 @@
                 // ---------------------------------------------------------
                 const settingsThaiFont = document.getElementById('settingsThaiFont');
                 if (settingsThaiFont) {
+                    // Load the saved font (empty string means “Default”)
                     settingsThaiFont.value = Storage.load(CONSTANTS.STORAGE_KEYS.THAI_FONT, '');
                     settingsThaiFont.addEventListener('change', (e) => {
                         Storage.save(CONSTANTS.STORAGE_KEYS.THAI_FONT, e.target.value);
@@ -1278,29 +1280,51 @@
 
             /** -------------------------------------------------------------
              *  Close the Settings panel.
-             *  We simply hide the overlay – the underlying page (topic,
-             *  title, example, language selections, progress bar) remains
-             *  untouched, so no state is lost.
+             *  We explicitly read the current font selector value here to
+             *  guarantee the choice is saved even if the `<select>`'s
+             *  `change` event didn’t fire (e.g., user clicked Close before
+             *  the element lost focus). After saving we re‑apply the font
+             *  and theme, then hide the overlay.
              *  ------------------------------------------------------------- */
             close() {
                 const overlay = document.getElementById('settingsOverlay');
-                if (overlay) {
-                    overlay.style.display = 'none';
-                    overlay.innerHTML = ''; // Clean up DOM nodes
+                if (!overlay) return;
+
+                // ---------------------------------------------------------
+                // 1️⃣  Ensure the selected font is saved (covers cases where
+                //     the change event didn’t fire)
+                // ---------------------------------------------------------
+                const settingsThaiFont = document.getElementById('settingsThaiFont');
+                if (settingsThaiFont) {
+                    const selectedFont = settingsThaiFont.value; // empty string = Default
+                    Storage.save(CONSTANTS.STORAGE_KEYS.THAI_FONT, selectedFont);
                 }
 
-                // Re‑apply any settings that might have changed while the panel was open
-                FontManager.apply();
-                ThemeManager.init(); // Re‑apply theme (in case user toggled it)
+                // ---------------------------------------------------------
+                // 2️⃣  Hide the overlay and stop it from intercepting clicks
+                // ---------------------------------------------------------
+                overlay.style.display = 'none';
+                overlay.style.pointerEvents = 'none';   // make it completely inert
+                overlay.innerHTML = '';                 // clean up DOM nodes
 
-                // Ensure the example display is still rendered (it should be, but just in case)
+                // ---------------------------------------------------------
+                // 3️⃣  Re‑apply font and theme (in case they changed)
+                // ---------------------------------------------------------
+                FontManager.apply();   // reads the just‑saved font value
+                ThemeManager.init();   // re‑apply current day/night mode
+
+                // ---------------------------------------------------------
+                // 4️⃣  Ensure the example display is still rendered
+                // ---------------------------------------------------------
                 const currentExample = AppState.getCurrentExample();
                 if (currentExample && currentExample.length > 0) {
                     ExampleRenderer.render(currentExample);
                 }
 
-                // Update the example number and progress bar (they stay the same,
-                // but this guarantees the UI reflects the current state)
+                // ---------------------------------------------------------
+                // 5️⃣  Update the example number and progress bar (they stay the same,
+                //     but this guarantees the UI reflects the current state)
+                // ---------------------------------------------------------
                 const currentExampleNumber = document.getElementById('currentExampleNumber');
                 if (currentExampleNumber) {
                     currentExampleNumber.textContent = AppState.currentExample + 1;
@@ -1315,7 +1339,9 @@
                     progressBar.style.width = `${percent}%`;
                 }
 
-                // Announce that we’ve returned to the main view
+                // ---------------------------------------------------------
+                // 6️⃣  Announce that we’ve returned to the main view
+                // ---------------------------------------------------------
                 ScreenReader.announce('Settings closed, returning to main view');
             },
 
@@ -1422,6 +1448,10 @@
             }
         };
 
+        /* Expose SettingsManager globally so the toolbar can call it */
+        window.SettingsManager = SettingsManager;
+        /* Expose SettingsManager globally so the toolbar can call it */
+        window.SettingsManager = SettingsManager;
         /* Global exposure – ensures the toolbar can always find SettingsManager */
         window.SettingsManager = SettingsManager;
         // Global function for testing individual languages

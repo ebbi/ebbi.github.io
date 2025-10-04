@@ -1131,28 +1131,28 @@
             }
         };
 
-    /* -------------------------------------------------------------
-       SettingsManager – handles the Settings & Help overlay.
-       ------------------------------------------------------------- */
-    const SettingsManager = {
-        /** -------------------------------------------------------------
-         *  Show the Settings panel.
-         *  The panel is rendered inside the hidden #settingsOverlay
-         *  element, which sits on top of the existing UI. This way the
-         *  toolbar (gear icon, theme toggle, etc.) stays in the DOM and
-         *  remains functional.
-         *  ------------------------------------------------------------- */
-        show() {
-            const overlay = document.getElementById('settingsOverlay');
-            if (!overlay) {
-                console.error('Settings overlay element not found');
-                return;
-            }
+        /* -------------------------------------------------------------
+           SettingsManager – handles the Settings & Help overlay.
+           ------------------------------------------------------------- */
+        const SettingsManager = {
+            /** -------------------------------------------------------------
+             *  Show the Settings panel.
+             *  The panel is rendered inside the hidden #settingsOverlay
+             *  element, which sits on top of the existing UI. This way the
+             *  toolbar (gear icon, theme toggle, etc.) stays in the DOM and
+             *  remains functional.
+             *  ------------------------------------------------------------- */
+            show() {
+                const overlay = document.getElementById('settingsOverlay');
+                if (!overlay) {
+                    console.error('Settings overlay element not found');
+                    return;
+                }
 
-            // ---------------------------------------------------------
-            // 1️⃣  Populate the overlay with the Settings UI
-            // ---------------------------------------------------------
-            overlay.innerHTML = `
+                // ---------------------------------------------------------
+                // 1️⃣  Populate the overlay with the Settings UI
+                // ---------------------------------------------------------
+                overlay.innerHTML = `
             <div class="settings-panel">
                 <div style="display: flex; justify-content: space-between; align-items: center;
                             background: #00247D; color: white; padding: 0.5em 1em; border-radius: 8px;">
@@ -1224,175 +1224,201 @@
             </div>
         `;
 
-            // ---------------------------------------------------------
-            // 2️⃣  Show the overlay
-            // ---------------------------------------------------------
-            overlay.style.display = 'block';
+                // ---------------------------------------------------------
+                // 2️⃣  Show the overlay (make it receive pointer events)
+                // ---------------------------------------------------------
+                overlay.style.display = 'block';
+                overlay.style.pointerEvents = 'auto';   // allow interaction
 
-            // ---------------------------------------------------------
-            // 3️⃣  Wire the Close buttons (both X and bottom button)
-            // ---------------------------------------------------------
-            const closeX = document.getElementById('closeX');
-            const closeBtn = document.getElementById('closeBtn');
-            if (closeX) closeX.addEventListener('click', () => this.close());
-            if (closeBtn) closeBtn.addEventListener('click', () => this.close());
+                // ---------------------------------------------------------
+                // 3️⃣  Wire the Close buttons (both X and bottom button)
+                // ---------------------------------------------------------
+                const closeX = document.getElementById('closeX');
+                const closeBtn = document.getElementById('closeBtn');
+                if (closeX) closeX.addEventListener('click', () => this.close());
+                if (closeBtn) closeBtn.addEventListener('click', () => this.close());
 
-            // ---------------------------------------------------------
-            // 4️⃣  Wire the TTS test button
-            // ---------------------------------------------------------
-            const checkTTS = document.getElementById('checkTTS');
-            if (checkTTS) {
-                checkTTS.addEventListener('click', () => this.performTTSCheck());
-            }
+                // ---------------------------------------------------------
+                // 4️⃣  Wire the TTS test button
+                // ---------------------------------------------------------
+                const checkTTS = document.getElementById('checkTTS');
+                if (checkTTS) {
+                    checkTTS.addEventListener('click', () => this.performTTSCheck());
+                }
 
-            // ---------------------------------------------------------
-            // 5️⃣  Initialise the Thai‑font selector
-            // ---------------------------------------------------------
-            const settingsThaiFont = document.getElementById('settingsThaiFont');
-            if (settingsThaiFont) {
-                settingsThaiFont.value = Storage.load(CONSTANTS.STORAGE_KEYS.THAI_FONT, '');
-                settingsThaiFont.addEventListener('change', (e) => {
-                    Storage.save(CONSTANTS.STORAGE_KEYS.THAI_FONT, e.target.value);
-                    FontManager.apply(); // Apply immediately
-                    ScreenReader.announce(`Thai font changed to ${e.target.value || 'default'}`);
-                });
-            }
+                // ---------------------------------------------------------
+                // 5️⃣  Initialise the Thai‑font selector
+                // ---------------------------------------------------------
+                const settingsThaiFont = document.getElementById('settingsThaiFont');
+                if (settingsThaiFont) {
+                    // Load the saved font (empty string means “Default”)
+                    settingsThaiFont.value = Storage.load(CONSTANTS.STORAGE_KEYS.THAI_FONT, '');
+                    settingsThaiFont.addEventListener('change', (e) => {
+                        Storage.save(CONSTANTS.STORAGE_KEYS.THAI_FONT, e.target.value);
+                        FontManager.apply(); // Apply immediately
+                        ScreenReader.announce(`Thai font changed to ${e.target.value || 'default'}`);
+                    });
+                }
 
-            // ---------------------------------------------------------
-            // 6️⃣  Show the current TTS status (success / warning / error)
-            // ---------------------------------------------------------
-            const status = TTSManager.getStatusMessage?.();
-            this.showTTSStatus(status);
+                // ---------------------------------------------------------
+                // 6️⃣  Show the current TTS status (success / warning / error)
+                // ---------------------------------------------------------
+                const status = TTSManager.getStatusMessage?.();
+                this.showTTSStatus(status);
 
-            // If TTS isn’t fully supported, show the installation instructions
-            if (status?.type !== 'success') {
-                const instructions = TTSManager.getSetupInstructions?.();
-                document.getElementById('ttsSetupInstructions').innerHTML = instructions;
-            }
+                // If TTS isn’t fully supported, show the installation instructions
+                if (status?.type !== 'success') {
+                    const instructions = TTSManager.getSetupInstructions?.();
+                    document.getElementById('ttsSetupInstructions').innerHTML = instructions;
+                }
 
-            // ---------------------------------------------------------
-            // 7️⃣  Announce for screen‑reader users
-            // ---------------------------------------------------------
-            ScreenReader.announce('Settings panel opened');
-        },
+                // ---------------------------------------------------------
+                // 7️⃣  Announce for screen‑reader users
+                // ---------------------------------------------------------
+                ScreenReader.announce('Settings panel opened');
+            },
 
-        /** -------------------------------------------------------------
-         *  Close the Settings panel.
-         *  We simply hide the overlay – the underlying page (topic,
-         *  title, example, language selections, progress bar) remains
-         *  untouched, so no state is lost.
-         *  ------------------------------------------------------------- */
-        close() {
-            const overlay = document.getElementById('settingsOverlay');
-            if (overlay) {
+            /** -------------------------------------------------------------
+             *  Close the Settings panel.
+             *  We explicitly read the current font selector value here to
+             *  guarantee the choice is saved even if the `<select>`'s
+             *  `change` event didn’t fire (e.g., user clicked Close before
+             *  the element lost focus). After saving we re‑apply the font
+             *  and theme, then hide the overlay.
+             *  ------------------------------------------------------------- */
+            close() {
+                const overlay = document.getElementById('settingsOverlay');
+                if (!overlay) return;
+
+                // ---------------------------------------------------------
+                // 1️⃣  Ensure the selected font is saved (covers cases where
+                //     the change event didn’t fire)
+                // ---------------------------------------------------------
+                const settingsThaiFont = document.getElementById('settingsThaiFont');
+                if (settingsThaiFont) {
+                    const selectedFont = settingsThaiFont.value; // empty string = Default
+                    Storage.save(CONSTANTS.STORAGE_KEYS.THAI_FONT, selectedFont);
+                }
+
+                // ---------------------------------------------------------
+                // 2️⃣  Hide the overlay and stop it from intercepting clicks
+                // ---------------------------------------------------------
                 overlay.style.display = 'none';
-                overlay.innerHTML = ''; // Clean up DOM nodes
-            }
+                overlay.style.pointerEvents = 'none';   // make it completely inert
+                overlay.innerHTML = '';                 // clean up DOM nodes
 
-            // Re‑apply any settings that might have changed while the panel was open
-            FontManager.apply();
-            ThemeManager.init(); // Re‑apply theme (in case user toggled it)
+                // ---------------------------------------------------------
+                // 3️⃣  Re‑apply font and theme (in case they changed)
+                // ---------------------------------------------------------
+                FontManager.apply();   // reads the just‑saved font value
+                ThemeManager.init();   // re‑apply current day/night mode
 
-            // Ensure the example display is still rendered (it should be, but just in case)
-            const currentExample = AppState.getCurrentExample();
-            if (currentExample && currentExample.length > 0) {
-                ExampleRenderer.render(currentExample);
-            }
+                // ---------------------------------------------------------
+                // 4️⃣  Ensure the example display is still rendered
+                // ---------------------------------------------------------
+                const currentExample = AppState.getCurrentExample();
+                if (currentExample && currentExample.length > 0) {
+                    ExampleRenderer.render(currentExample);
+                }
 
-            // Update the example number and progress bar (they stay the same,
-            // but this guarantees the UI reflects the current state)
-            const currentExampleNumber = document.getElementById('currentExampleNumber');
-            if (currentExampleNumber) {
-                currentExampleNumber.textContent = AppState.currentExample + 1;
-            }
+                // ---------------------------------------------------------
+                // 5️⃣  Update the example number and progress bar (they stay the same,
+                //     but this guarantees the UI reflects the current state)
+                // ---------------------------------------------------------
+                const currentExampleNumber = document.getElementById('currentExampleNumber');
+                if (currentExampleNumber) {
+                    currentExampleNumber.textContent = AppState.currentExample + 1;
+                }
 
-            const progressBar = document.getElementById('progressBar');
-            if (progressBar && AppState.currentTopic) {
-                const percent = ProgressTracker.getCompletionPercentage(
-                    AppState.currentTopic.topicFilename,
-                    AppState.currentTopic
-                );
-                progressBar.style.width = `${percent}%`;
-            }
+                const progressBar = document.getElementById('progressBar');
+                if (progressBar && AppState.currentTopic) {
+                    const percent = ProgressTracker.getCompletionPercentage(
+                        AppState.currentTopic.topicFilename,
+                        AppState.currentTopic
+                    );
+                    progressBar.style.width = `${percent}%`;
+                }
 
-            // Announce that we’ve returned to the main view
-            ScreenReader.announce('Settings closed, returning to main view');
-        },
+                // ---------------------------------------------------------
+                // 6️⃣  Announce that we’ve returned to the main view
+                // ---------------------------------------------------------
+                ScreenReader.announce('Settings closed, returning to main view');
+            },
 
-        /** -------------------------------------------------------------
-         *  Show the current TTS status (success / warning / error) inside
-         *  the Settings panel.
-         *  ------------------------------------------------------------- */
-        showTTSStatus(status) {
-            const ttsStatus = document.getElementById('ttsStatus');
-            if (!status || !ttsStatus) return;
+            /** -------------------------------------------------------------
+             *  Show the current TTS status (success / warning / error) inside
+             *  the Settings panel.
+             *  ------------------------------------------------------------- */
+            showTTSStatus(status) {
+                const ttsStatus = document.getElementById('ttsStatus');
+                if (!status || !ttsStatus) return;
 
-            const statusClass = `tts-status-${status.type === 'warning' ? 'info' : status.type}`;
-            ttsStatus.innerHTML = `
+                const statusClass = `tts-status-${status.type === 'warning' ? 'info' : status.type}`;
+                ttsStatus.innerHTML = `
             <div class="tts-status-container ${statusClass}">
                 <h4 style="margin:0 0 0.5em 0;">${status.title}</h4>
                 <p style="margin:0;">${status.message}</p>
             </div>
         `;
-        },
+            },
 
-        /** -------------------------------------------------------------
-         *  Perform a full TTS test for all languages that have the
-         *  “Speak” flag enabled. Results are shown inside the Settings
-         *  panel.
-         *  ------------------------------------------------------------- */
-        async performTTSCheck() {
-            const ttsStatus = document.getElementById('ttsStatus');
-            const checkBtn = document.getElementById('checkTTS');
-            const languageTests = document.getElementById('languageTests');
+            /** -------------------------------------------------------------
+             *  Perform a full TTS test for all languages that have the
+             *  “Speak” flag enabled. Results are shown inside the Settings
+             *  panel.
+             *  ------------------------------------------------------------- */
+            async performTTSCheck() {
+                const ttsStatus = document.getElementById('ttsStatus');
+                const checkBtn = document.getElementById('checkTTS');
+                const languageTests = document.getElementById('languageTests');
 
-            if (!ttsStatus || !checkBtn || !languageTests) return;
+                if (!ttsStatus || !checkBtn || !languageTests) return;
 
-            checkBtn.innerHTML = '<span class="loading-spinner"></span> Testing TTS...';
-            checkBtn.disabled = true;
-            ttsStatus.innerHTML = '';
-            languageTests.innerHTML = '';
+                checkBtn.innerHTML = '<span class="loading-spinner"></span> Testing TTS...';
+                checkBtn.disabled = true;
+                ttsStatus.innerHTML = '';
+                languageTests.innerHTML = '';
 
-            const testPassed = await TTSManager.comprehensiveTest();
-            this.showLanguageTestResults();
+                const testPassed = await TTSManager.comprehensiveTest();
+                this.showLanguageTestResults();
 
-            if (!testPassed) {
-                const instructions = TTSManager.getSetupInstructions?.();
-                document.getElementById('ttsSetupInstructions').innerHTML = instructions;
-            }
+                if (!testPassed) {
+                    const instructions = TTSManager.getSetupInstructions?.();
+                    document.getElementById('ttsSetupInstructions').innerHTML = instructions;
+                }
 
-            checkBtn.innerHTML = '✅ TTS Test Complete';
-            checkBtn.disabled = false;
+                checkBtn.innerHTML = '✅ TTS Test Complete';
+                checkBtn.disabled = false;
 
-            const finalStatus = TTSManager.getStatusMessage?.();
-            this.showTTSStatus(finalStatus);
-        },
+                const finalStatus = TTSManager.getStatusMessage?.();
+                this.showTTSStatus(finalStatus);
+            },
 
-        /** -------------------------------------------------------------
-         *  Render the per‑language test results inside the Settings panel.
-         *  ------------------------------------------------------------- */
-        showLanguageTestResults() {
-            const languageTests = document.getElementById('languageTests');
-            const results = TTSManager.testResults;
+            /** -------------------------------------------------------------
+             *  Render the per‑language test results inside the Settings panel.
+             *  ------------------------------------------------------------- */
+            showLanguageTestResults() {
+                const languageTests = document.getElementById('languageTests');
+                const results = TTSManager.testResults;
 
-            if (!languageTests || Object.keys(results).length === 0) return;
+                if (!languageTests || Object.keys(results).length === 0) return;
 
-            let html = `<h4>Language Test Results:</h4><div class="tts-language-check">`;
+                let html = `<h4>Language Test Results:</h4><div class="tts-language-check">`;
 
-            for (const [lang, result] of Object.entries(results)) {
-                const language = AppConfig.getLanguage(lang);
-                const icon = result.success ? '✅' : '❌';
-                const resultClass = result.success ? 'success-check' : 'error-cross';
-                const voices = result.voices ? result.voices.map(v => v.name).join(', ') : 'No voices';
+                for (const [lang, result] of Object.entries(results)) {
+                    const language = AppConfig.getLanguage(lang);
+                    const icon = result.success ? '✅' : '❌';
+                    const resultClass = result.success ? 'success-check' : 'error-cross';
+                    const voices = result.voices ? result.voices.map(v => v.name).join(', ') : 'No voices';
 
-                html += `
+                    html += `
                 <div style="flex:1; min-width:200px; padding:1em; background:rgba(0,0,0,0.05); border-radius:8px;">
                     <div style="font-weight:bold;">${icon} ${language?.name || lang}</div>
                     <div class="test-result ${resultClass}">
                         ${result.success ?
-                        `<div class="success-list">Working – Available voices:<br>${voices}</div>` :
-                        `Failed: ${result.error}. ${this.getLanguageSpecificHelp(lang, result.error)}`
-                    }
+                            `<div class="success-list">Working – Available voices:<br>${voices}</div>` :
+                            `Failed: ${result.error}. ${this.getLanguageSpecificHelp(lang, result.error)}`
+                        }
                     </div>
                     <button onclick="testSingleLanguage('${lang}', '${result.text}')"
                         class="language-test"
@@ -1401,29 +1427,33 @@
                     </button>
                 </div>
             `;
+                }
+
+                html += `</div>`;
+                languageTests.innerHTML = html;
+            },
+
+            /** -------------------------------------------------------------
+             *  Provide language‑specific help text for common TTS errors.
+             *  ------------------------------------------------------------- */
+            getLanguageSpecificHelp(lang, error) {
+                const language = AppConfig.getLanguage(lang);
+                const helpMessages = {
+                    'th-TH': `To fix Thai TTS: Install the Thai language pack in your OS settings, then enable Thai TTS in your browser.`,
+                    'fa-IR': `To fix Persian/Farsi TTS: Install the Persian language pack in your OS settings.`,
+                    'en-US': `To fix English TTS: Ensure English (United States) is installed and enabled for speech synthesis.`,
+                    'ja-JP': `To fix Japanese TTS: Install the Japanese language pack in your OS settings and enable Japanese speech synthesis.`
+                };
+                return helpMessages[lang] || `Please check your system language settings and install the ${language?.name || lang} language pack.`;
             }
+        };
 
-            html += `</div>`;
-            languageTests.innerHTML = html;
-        },
-
-        /** -------------------------------------------------------------
-         *  Provide language‑specific help text for common TTS errors.
-         *  ------------------------------------------------------------- */
-        getLanguageSpecificHelp(lang, error) {
-            const language = AppConfig.getLanguage(lang);
-            const helpMessages = {
-                'th-TH': `To fix Thai TTS: Install the Thai language pack in your OS settings, then enable Thai TTS in your browser.`,
-                'fa-IR': `To fix Persian/Farsi TTS: Install the Persian language pack in your OS settings.`,
-                'en-US': `To fix English TTS: Ensure English (United States) is installed and enabled for speech synthesis.`,
-                'ja-JP': `To fix Japanese TTS: Install the Japanese language pack in your OS settings and enable Japanese speech synthesis.`
-            };
-            return helpMessages[lang] || `Please check your system language settings and install the ${language?.name || lang} language pack.`;
-        }
-    };
-
-    /* Global exposure – ensures the toolbar can always find SettingsManager */
-    window.SettingsManager = SettingsManager;
+        /* Expose SettingsManager globally so the toolbar can call it */
+        window.SettingsManager = SettingsManager;
+        /* Expose SettingsManager globally so the toolbar can call it */
+        window.SettingsManager = SettingsManager;
+        /* Global exposure – ensures the toolbar can always find SettingsManager */
+        window.SettingsManager = SettingsManager;
         // Global function for testing individual languages
         window.testSingleLanguage = async function (lang, text) {
             const language = AppConfig.getLanguage(lang);
