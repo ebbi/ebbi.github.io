@@ -1728,8 +1728,6 @@
             async playbackLoop() {
                 // -------------------------------------------------------------
                 // 0️⃣  ALWAYS reset the pause flag at the start of each loop.
-                //     This prevents an accidental pause (e.g., stray key press)
-                //     from blocking the next word.
                 // -------------------------------------------------------------
                 this.isPaused = false;
 
@@ -1764,9 +1762,11 @@
                 }
 
                 // -------------------------------------------------------------
-                // 5️⃣  Highlight the current word‑pair BEFORE speaking.
+                // 5️⃣  **REMOVED** – we no longer highlight the whole word‑pair here.
+                //     Per‑language highlighting is handled inside `playWord`,
+                //     which clears previous highlights and then highlights the
+                //     exact span for the language being spoken.
                 // -------------------------------------------------------------
-                ExampleRenderer.highlightWord(this.currentWordIndex);
 
                 // -------------------------------------------------------------
                 // 6️⃣  Speak the current word in **each selected language**
@@ -1790,6 +1790,7 @@
                 await new Promise(r => setTimeout(r, delay));
                 await this.playbackLoop();   // recurse for the next word
             },
+
 
             /* -----------------------------------------------------------------
                Speak every language that the user has ticked “Speak”.
@@ -2112,6 +2113,8 @@
                 ScreenReader.announce(`Speaking: ${text}`);
             }
         };
+
+
         /* -------------------------------------------------------------
            END OF PATCH – the rest of the file stays unchanged
            ------------------------------------------------------------- */
@@ -2146,38 +2149,70 @@
 
             convertExampleToQuestions(example) {
                 const questions = [];
+                const questionLang = Storage.load(
+                    CONSTANTS.STORAGE_KEYS.QUESTION_LANG,
+                    CONSTANTS.DEFAULT_VALUES.QUESTION_LANG
+                );
+                const answerLang = Storage.load(
+                    CONSTANTS.STORAGE_KEYS.ANSWER_LANG,
+                    CONSTANTS.DEFAULT_VALUES.ANSWER_LANG
+                );
 
-                // The playback controller already gave us a flattened array,
-                // but the quiz may be built directly from the raw example.
-                const words = this._flattenTranslations(example.translations);
+                // ---------------------------------------------------------
+                // 1️⃣  Normalise the example into an array of word‑objects
+                // ---------------------------------------------------------
+                let words = [];
 
-                const qLang = Storage.load(CONSTANTS.STORAGE_KEYS.QUESTION_LANG,
-                    CONSTANTS.DEFAULT_VALUES.QUESTION_LANG);
-                const aLang = Storage.load(CONSTANTS.STORAGE_KEYS.ANSWER_LANG,
-                    CONSTANTS.DEFAULT_VALUES.ANSWER_LANG);
-
-                // Filter out any rows that don’t have both sides filled
-                const valid = words.filter(w => w[qLang]?.trim() && w[aLang]?.trim());
-
-                valid.forEach((w, idx) => {
-                    const q = {
-                        id: `q-${idx}`,
-                        [qLang]: w[qLang],
-                        [aLang]: w[aLang],
-                        translations: w,
-                        attempted: false,
-                        correct: false,
-                        options: this._makeOptions(valid, idx, aLang)
-                    };
-                    questions.push(q);
-                });
-
-                if (questions.length === 0) {
-                    console.warn('Quiz: no usable words for the selected languages', {
-                        qLang, aLang, words
-                    });
+                if (Array.isArray(example)) {
+                    // New format – already an array of word objects
+                    words = example;
+                } else if (example.translations && typeof example.translations === 'object') {
+                    // Old format – reuse the flatten helper that lives on PlaybackController
+                    words = PlaybackController._flattenTranslations(example.translations);
+                } else if (typeof example === 'object') {
+                    // Single word object – wrap it in an array so the rest of the code works uniformly
+                    words = [example];
+                } else {
+                    console.warn('Unexpected example format for quiz:', example);
+                    return [];
                 }
 
+                // ---------------------------------------------------------
+                // 2️⃣  Keep only the entries that have BOTH a question
+                //     AND an answer in the selected languages
+                // ---------------------------------------------------------
+                const validWords = words.filter(word => {
+                    if (!word || typeof word !== 'object') return false;
+
+                    const hasQuestion = word[questionLang] && word[questionLang].trim() !== '';
+                    const hasAnswer = word[answerLang] && word[answerLang].trim() !== '';
+                    return hasQuestion && hasAnswer;
+                });
+
+                if (validWords.length === 0) {
+                    console.warn('No valid words found for quiz in current languages');
+                    console.log('All words:', words);
+                    console.log('Question language:', questionLang, 'Answer language:', answerLang);
+                    return [];
+                }
+
+                // ---------------------------------------------------------
+                // 3️⃣  Build a question object for each valid word
+                // ---------------------------------------------------------
+                validWords.forEach((word, idx) => {
+                    const question = {
+                        id: `q-${idx}`,
+                        [questionLang]: word[questionLang],
+                        [answerLang]: word[answerLang],
+                        translations: word,
+                        attempted: false,
+                        correct: false,
+                        options: this.generateOptions(validWords, idx, answerLang)
+                    };
+                    questions.push(question);
+                });
+
+                console.log(`Created ${questions.length} quiz questions`);
                 return questions;
             },
 
@@ -2410,11 +2445,20 @@
             }
         };
 
-        // ========== NAVIGATION CONTROLLER ==========
+        /* -------------------------------------------------------------
+           NavigationController – handles topic / title / example selection
+           and the forward / backward arrows.
+           ------------------------------------------------------------- */
         const NavigationController = {
             topicSelect: null,
             titleSelect: null,
             exampleSelect: null,
+
+            // -----------------------------------------------------------------
+            // Simple lock to prevent the navigation functions from running
+            // twice at the same time (e.g., button click + ArrowRight key).
+            // -----------------------------------------------------------------
+            navLock: false,
 
             init(topicSelect, titleSelect, exampleSelect) {
                 this.topicSelect = topicSelect;
@@ -2427,9 +2471,7 @@
                 if (titleSelect) {
                     titleSelect.addEventListener('change', (e) => this.handleTitleChange(+e.target.value));
                 }
-                if (exampleSelect) {
-                    exampleSelect.addEventListener('change', (e) => this.handleExampleChange(+e.target.value));
-                }
+                // **No change listener for exampleSelect** – we control it manually.
             },
 
             async handleTopicChange(topicFilename) {
@@ -2448,72 +2490,180 @@
             handleTitleChange(titleIndex) {
                 AppState.currentTitle = titleIndex;
                 AppController.populateExamples();
+
+                // After repopulating the example list, load the first example of the new title
+                AppState.currentExample = 0;
+                AppController.loadExample();
+
+                // Sync the UI <select> to the first example (index 0)
+                if (this.exampleSelect) {
+                    this.exampleSelect.selectedIndex = 0;
+                }
+
                 ScreenReader.announce(`Title changed to ${titleIndex + 1}`);
             },
 
-            handleExampleChange(exampleIndex) {
-                AppState.currentExample = exampleIndex;
-                AppController.loadExample();
-                ScreenReader.announce(`Example changed to ${exampleIndex + 1}`);
-            },
-
+            /** -------------------------------------------------------------
+             *  Move to the **next** example.
+             *  • Updates AppState only once.
+             *  • Loads the new example immediately.
+             *  • Afterwards synchronises the <select> UI (without firing a change event).
+             *  ------------------------------------------------------------- */
             nextExample() {
+                if (this.navLock) return;               // Prevent re‑entry
+                this.navLock = true;
+
                 const currentTitle = AppState.currentTopic?.titles?.[AppState.currentTitle];
                 const maxExamples = currentTitle?.examples?.length || 0;
 
+                // ---------------------------------------------------------
+                // CASE 1 – Still inside the current title
+                // ---------------------------------------------------------
                 if (AppState.currentExample < maxExamples - 1) {
+                    // ONE increment ONLY
                     AppState.currentExample++;
-                    if (this.exampleSelect) {
-                        this.exampleSelect.value = AppState.currentExample;
-                    }
+
+                    // Load the new example first
                     AppController.loadExample();
-                } else {
-                    const maxTitles = AppState.currentTopic?.titles?.length || 0;
-                    if (AppState.currentTitle < maxTitles - 1) {
-                        AppState.currentTitle++;
-                        AppState.currentExample = 0;
-                        if (this.titleSelect) {
-                            this.titleSelect.value = AppState.currentTitle;
-                        }
-                        AppController.populateExamples();
-                    } else {
-                        AppState.currentTitle = 0;
-                        AppState.currentExample = 0;
-                        if (this.titleSelect) {
-                            this.titleSelect.value = AppState.currentTitle;
-                        }
-                        AppController.populateExamples();
+
+                    // THEN update the <select> UI (no change event is fired)
+                    if (this.exampleSelect) {
+                        this.exampleSelect.selectedIndex = AppState.currentExample;
                     }
+
+                    // Release lock after the UI has settled
+                    setTimeout(() => { this.navLock = false; }, 0);
+                    return;
                 }
+
+                // ---------------------------------------------------------
+                // CASE 2 – At the last example of the current title → go to next title
+                // ---------------------------------------------------------
+                const maxTitles = AppState.currentTopic?.titles?.length || 0;
+                if (AppState.currentTitle < maxTitles - 1) {
+                    // Move to next title and start at its first example
+                    AppState.currentTitle++;
+                    AppState.currentExample = 0;
+
+                    // Update title <select>
+                    if (this.titleSelect) {
+                        this.titleSelect.selectedIndex = AppState.currentTitle;
+                    }
+
+                    // Re‑populate examples for the new title and load the first one
+                    AppController.populateExamples();
+                    AppController.loadExample();
+
+                    // Sync example <select> to the first example (index 0)
+                    if (this.exampleSelect) {
+                        this.exampleSelect.selectedIndex = 0;
+                    }
+
+                    setTimeout(() => { this.navLock = false; }, 0);
+                    return;
+                }
+
+                // ---------------------------------------------------------
+                // CASE 3 – Last title AND last example → wrap to the very first
+                // ---------------------------------------------------------
+                AppState.currentTitle = 0;
+                AppState.currentExample = 0;
+
+                // Update title <select> to first title
+                if (this.titleSelect) {
+                    this.titleSelect.selectedIndex = 0;
+                }
+
+                // Re‑populate examples for the first title and load its first example
+                AppController.populateExamples();
+                AppController.loadExample();
+
+                // Sync example <select> to first example
+                if (this.exampleSelect) {
+                    this.exampleSelect.selectedIndex = 0;
+                }
+
+                setTimeout(() => { this.navLock = false; }, 0);
             },
 
+            /** -------------------------------------------------------------
+             *  Move to the **previous** example.
+             *  Mirrors the logic of `nextExample` but in reverse.
+             *  ------------------------------------------------------------- */
             previousExample() {
+                if (this.navLock) return;               // Prevent re‑entry
+                this.navLock = true;
+
+                // ---------------------------------------------------------
+                // CASE 1 – Still inside the current title (not the first example)
+                // ---------------------------------------------------------
                 if (AppState.currentExample > 0) {
+                    // ONE decrement ONLY
                     AppState.currentExample--;
-                    if (this.exampleSelect) {
-                        this.exampleSelect.value = AppState.currentExample;
-                    }
+
+                    // Load the new example first
                     AppController.loadExample();
-                } else {
-                    if (AppState.currentTitle > 0) {
-                        AppState.currentTitle--;
-                        const prevTitle = AppState.currentTopic?.titles?.[AppState.currentTitle];
-                        AppState.currentExample = (prevTitle?.examples?.length || 1) - 1;
-                        if (this.titleSelect) {
-                            this.titleSelect.value = AppState.currentTitle;
-                        }
-                        AppController.populateExamples();
-                    } else {
-                        const maxTitles = AppState.currentTopic?.titles?.length || 0;
-                        AppState.currentTitle = maxTitles - 1;
-                        const lastTitle = AppState.currentTopic?.titles?.[AppState.currentTitle];
-                        AppState.currentExample = (lastTitle?.examples?.length || 1) - 1;
-                        if (this.titleSelect) {
-                            this.titleSelect.value = AppState.currentTitle;
-                        }
-                        AppController.populateExamples();
+
+                    // THEN update the <select> UI (no change event is fired)
+                    if (this.exampleSelect) {
+                        this.exampleSelect.selectedIndex = AppState.currentExample;
                     }
+
+                    setTimeout(() => { this.navLock = false; }, 0);
+                    return;
                 }
+
+                // ---------------------------------------------------------
+                // CASE 2 – At the first example of the current title → go to previous title
+                // ---------------------------------------------------------
+                if (AppState.currentTitle > 0) {
+                    // Move to previous title
+                    AppState.currentTitle--;
+
+                    const prevTitle = AppState.currentTopic?.titles?.[AppState.currentTitle];
+                    AppState.currentExample = (prevTitle?.examples?.length || 1) - 1; // last example of that title
+
+                    // Update title <select>
+                    if (this.titleSelect) {
+                        this.titleSelect.selectedIndex = AppState.currentTitle;
+                    }
+
+                    // Re‑populate examples for the new title and load the last example
+                    AppController.populateExamples();
+                    AppController.loadExample();
+
+                    // Sync example <select> to the last example of the new title
+                    if (this.exampleSelect) {
+                        this.exampleSelect.selectedIndex = AppState.currentExample;
+                    }
+
+                    setTimeout(() => { this.navLock = false; }, 0);
+                    return;
+                }
+
+                // ---------------------------------------------------------
+                // CASE 3 – First title AND first example → wrap to the very last
+                // ---------------------------------------------------------
+                const maxTitles = AppState.currentTopic?.titles?.length || 0;
+                AppState.currentTitle = maxTitles - 1;        // last title
+                const lastTitle = AppState.currentTopic?.titles?.[AppState.currentTitle];
+                AppState.currentExample = (lastTitle?.examples?.length || 1) - 1; // last example of last title
+
+                // Update title <select> to last title
+                if (this.titleSelect) {
+                    this.titleSelect.selectedIndex = AppState.currentTitle;
+                }
+
+                // Re‑populate examples for the last title and load its last example
+                AppController.populateExamples();
+                AppController.loadExample();
+
+                // Sync example <select> to the last example
+                if (this.exampleSelect) {
+                    this.exampleSelect.selectedIndex = AppState.currentExample;
+                }
+
+                setTimeout(() => { this.navLock = false; }, 0);
             }
         };
 
