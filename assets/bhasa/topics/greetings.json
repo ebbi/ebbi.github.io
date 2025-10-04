@@ -1,323 +1,240 @@
 {
   "metadata": {
-    "topic": "Basic Greetings",
-    "description": "Common greetings and introductions in multiple languages",
-    "languageCount": 4,
-    "exampleCount": 6,
+    "topic": "Friend Greetings",
+    "description": "Casual greetings and plans between two friends.",
+    "languageCount": 5,
+    "exampleCount": 5,
     "difficulty": "beginner",
-    "version": "2.0"
+    "version": "1.0"
   },
   "titles": [
     {
-      "title": "Simple Greetings",
-      "description": "Basic hello and goodbye phrases",
+      "title": "Friend Greetings",
+      "description": "Typical short dialogues when friends meet and make plans.",
       "examples": [
         {
           "id": "greet-1",
           "translations": {
             "th-TH": [
-              "สวัสดี",
-              "ครับ"
+              "สวัสดีเพื่อน",
+              "ไป",
+              "ดื่ม",
+              "กาแฟ",
+              "กัน"
             ],
             "en-US": [
-              "Hello",
-              "sir"
+              "Hey",
+              "buddy",
+              "grab",
+              "coffee",
+              "together"
             ],
             "fa-IR": [
               "سلام",
-              "آقا"
+              "رفیق",
+              "بریم",
+              "قهوه",
+              "باهم"
             ],
             "ja-JP": [
-              "こんにちは",
-              "さん"
+              "やあ",
+              "友達",
+              "コーヒー",
+              "飲みに",
+              "行こう"
+            ],
+            "zh-CN": [
+              "嗨",
+              "朋友",
+              "去",
+              "喝",
+              "咖啡"
             ]
           },
           "metadata": {
             "difficulty": 1,
             "category": "greeting",
-            "notes": "Formal greeting for males"
+            "notes": "Invite a friend for coffee."
           }
         },
         {
           "id": "greet-2",
           "translations": {
             "th-TH": [
-              "สวัสดี",
-              "ค่ะ"
+              "สวัสดีเพื่อน",
+              "เล่น",
+              "บาส",
+              "กัน",
+              "วันนี้"
             ],
             "en-US": [
-              "Hello",
-              "ma'am"
+              "Hey",
+              "buddy",
+              "play",
+              "basketball",
+              "today"
             ],
             "fa-IR": [
               "سلام",
-              "خانم"
+              "رفیق",
+              "امروز",
+              "بسکتبال",
+              "بازی"
             ],
             "ja-JP": [
-              "こんにちは",
-              "さま"
+              "やあ",
+              "友達",
+              "今日",
+              "一緒に",
+              "バスケしよう"
+            ],
+            "zh-CN": [
+              "嗨",
+              "朋友",
+              "今天",
+              "一起",
+              "打篮球"
             ]
           },
           "metadata": {
             "difficulty": 1,
             "category": "greeting",
-            "notes": "Formal greeting for females"
+            "notes": "Plan to play basketball together."
           }
         },
         {
           "id": "greet-3",
           "translations": {
             "th-TH": [
-              "ลาก่อน",
-              "ครับ"
+              "สวัสดีเพื่อน",
+              "ไป",
+              "วิ่ง",
+              "ตอนเย็น",
+              "กัน"
             ],
             "en-US": [
-              "Goodbye",
-              "sir"
+              "Hey",
+              "buddy",
+              "jog",
+              "together",
+              "tonight"
             ],
             "fa-IR": [
-              "خداحافظ",
-              "آقا"
+              "سلام",
+              "رفیق",
+              "بریم",
+              "دویدن",
+              "شب"
             ],
             "ja-JP": [
-              "さようなら",
-              "さん"
+              "やあ",
+              "友達",
+              "夜",
+              "一緒に",
+              "ジョギングしよう"
+            ],
+            "zh-CN": [
+              "嗨",
+              "朋友",
+              "晚上",
+              "一起",
+              "跑步"
             ]
           },
           "metadata": {
             "difficulty": 1,
-            "category": "farewell",
-            "notes": "Formal goodbye"
-          }
-        }
-      ]
-    },
-    {
-      "title": "Questions and Responses",
-      "description": "Asking how someone is and responding",
-      "examples": [
-        {
-          "id": "question-1",
-          "translations": {
-            "th-TH": [
-              "คุณ",
-              "สบาย",
-              "ดี",
-              "ไหม"
-            ],
-            "en-US": [
-              "you",
-              "comfortable",
-              "well",
-              "are"
-            ],
-            "fa-IR": [
-              "شما",
-              "حال",
-              "خوب",
-              "است",
-              "?"
-            ],
-            "ja-JP": [
-              "お",
-              "元気",
-              "です",
-              "か"
-            ]
-          },
-          "metadata": {
-            "difficulty": 2,
-            "category": "question",
-            "notes": "Asking about well-being"
+            "category": "greeting",
+            "notes": "Evening jogging invitation."
           }
         },
         {
-          "id": "response-1",
+          "id": "greet-4",
           "translations": {
             "th-TH": [
-              "ฉัน",
-              "สบาย",
-              "ดี",
-              "\n",
-              "ขอบคุณ"
+              "เฮ้เพื่อน",
+              "ดู",
+              "หนังใหม่",
+              "กัน",
+              "คืนนี้"
             ],
             "en-US": [
-              "I",
-              "am",
-              "fine",
-              "\n",
-              "thank",
-              "you"
-            ],
-            "fa-IR": [
-              "من",
-              "خوب",
-              "هستم",
-              "\n",
-              "متشکرم"
-            ],
-            "ja-JP": [
-              "私",
-              "は",
-              "元気",
-              "です",
-              "\n",
-              "ありがとう",
-              "ございます"
-            ]
-          },
-          "metadata": {
-            "difficulty": 2,
-            "category": "response",
-            "notes": "Positive response with gratitude"
-          }
-        },
-        {
-          "id": "response-2",
-          "translations": {
-            "th-TH": [
-              "ฉัน",
-              "ไม่ค่อย",
-              "สบาย",
-              "เลย"
-            ],
-            "en-US": [
-              "I",
-              "am",
-              "not",
-              "very",
-              "well"
-            ],
-            "fa-IR": [
-              "من",
-              "خیلی",
-              "حالم",
-              "خوب",
-              "نیست"
-            ],
-            "ja-JP": [
-              "私",
-              "は",
-              "あまり",
-              "元気",
-              "では",
-              "ありません"
-            ]
-          },
-          "metadata": {
-            "difficulty": 2,
-            "category": "response",
-            "notes": "Negative response"
-          }
-        }
-      ]
-    },
-    {
-      "title": "Multi-sentence Conversations",
-      "description": "Complete conversation examples with multiple sentences",
-      "examples": [
-        {
-          "id": "conversation-1",
-          "translations": {
-            "th-TH": [
-              "สวัสดี",
-              "ครับ",
-              "\n",
-              "คุณ",
-              "ชื่อ",
-              "อะไร",
-              "?"
-            ],
-            "en-US": [
-              "Hello",
-              "\n",
-              "What",
-              "is",
-              "your",
-              "name",
-              "?"
+              "Hey",
+              "buddy",
+              "watch",
+              "movie",
+              "tonight"
             ],
             "fa-IR": [
               "سلام",
-              "\n",
-              "اسم",
-              "شما",
-              "چیست",
-              "؟"
+              "رفیق",
+              "فیلم",
+              "جدید",
+              "امشب"
             ],
             "ja-JP": [
-              "こんにちは",
-              "\n",
-              "お",
-              "名前",
-              "は",
-              "何",
-              "です",
-              "か",
-              "？"
+              "やあ",
+              "友達",
+              "今夜",
+              "新作映画",
+              "見よう"
+            ],
+            "zh-CN": [
+              "嗨",
+              "朋友",
+              "今晚",
+              "看",
+              "新电影"
             ]
           },
           "metadata": {
-            "difficulty": 3,
-            "category": "conversation",
-            "notes": "Greeting and name question"
+            "difficulty": 1,
+            "category": "greeting",
+            "notes": "Suggest watching a new film."
           }
         },
         {
-          "id": "conversation-2",
+          "id": "greet-5",
           "translations": {
             "th-TH": [
-              "ฉัน",
-              "ชื่อ",
-              "สมชาย",
-              "\n",
-              "ยินดี",
-              "ที่",
-              "ได้",
-              "รู้จัก"
+              "สวัสดีเพื่อน",
+              "ไป",
+              "ตลาด",
+              "ซื้อของ",
+              "กัน"
             ],
             "en-US": [
-              "My",
-              "name",
-              "is",
-              "Somchai",
-              "\n",
-              "Nice",
-              "to",
-              "meet",
-              "you"
+              "Hey",
+              "buddy",
+              "shop",
+              "together",
+              "market"
             ],
             "fa-IR": [
-              "اسم",
-              "من",
-              "سومچای",
-              "است",
-              "\n",
-              "از",
-              "آشنایی",
-              "با",
-              "شما",
-              "خوشوقتم"
+              "سلام",
+              "رفیق",
+              "بریم",
+              "بازار",
+              "خرید"
             ],
             "ja-JP": [
-              "私",
-              "の",
-              "名前",
-              "は",
-              "ソムチャイ",
-              "です",
-              "\n",
-              "お",
-              "会い",
-              "できて",
-              "嬉しい",
-              "です"
+              "やあ",
+              "友達",
+              "市場で",
+              "一緒に",
+              "買い物しよう"
+            ],
+            "zh-CN": [
+              "嗨",
+              "朋友",
+              "去",
+              "市场",
+              "购物"
             ]
           },
           "metadata": {
-            "difficulty": 3,
-            "category": "conversation",
-            "notes": "Name introduction and polite response"
+            "difficulty": 1,
+            "category": "greeting",
+            "notes": "Going to the market together."
           }
         }
       ]
