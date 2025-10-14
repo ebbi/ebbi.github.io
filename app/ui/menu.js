@@ -4,11 +4,13 @@ import { EXERCISES } from '../data/exercises.js';
 import { getLocale } from '../data/locales.js';
 
 // -----------------------------------------------------------------
-// Font‑related imports (kept from the previous version)
+// Font‑related imports
 // -----------------------------------------------------------------
 import { FONT_CATALOG } from '../data/fonts.js';
-import { getStoredFont, setStoredFont } from '../utils/storage.js';
+import { getStoredFont, setStoredFont, getStoredLang, setStoredLang } from '../utils/storage.js';
 import { applyFontFamily } from '../utils/fontHelper.js';
+import { SUPPORTED_LANGS, LANGUAGE_LABELS } from '../data/locales.js';
+import { applyDirection } from '../utils/rtl.js';
 
 // -----------------------------------------------------------------
 // Local‑storage key for the level‑filter checkboxes
@@ -16,14 +18,11 @@ import { applyFontFamily } from '../utils/fontHelper.js';
 const LS_LEVELS_KEY = 'local_storage_levels';
 
 // -----------------------------------------------------------------
-// Helper – read the stored level selections (array of lower‑case strings)
+// Helpers for level‑filter persistence
 // -----------------------------------------------------------------
 function getStoredLevels() {
     const raw = localStorage.getItem(LS_LEVELS_KEY);
-    if (!raw) {
-        // Default: only “basic” is selected
-        return ['basic'];
-    }
+    if (!raw) return ['basic'];                       // default: only Basic
     try {
         const arr = JSON.parse(raw);
         return Array.isArray(arr) ? arr.map(s => s.toLowerCase()) : ['basic'];
@@ -31,10 +30,6 @@ function getStoredLevels() {
         return ['basic'];
     }
 }
-
-// -----------------------------------------------------------------
-// Helper – persist the level selections (expects an array of strings)
-// -----------------------------------------------------------------
 function setStoredLevels(levels) {
     try {
         localStorage.setItem(LS_LEVELS_KEY, JSON.stringify(levels));
@@ -48,12 +43,12 @@ function setStoredLevels(levels) {
 // -----------------------------------------------------------------
 export async function renderMenu(container, UI_LANG) {
     // -------------------------------------------------------------
-    // 0️⃣ Start fresh – wipe any previous content (prevents duplication)
+    // 0️⃣ Start fresh – clear any previous content
     // -------------------------------------------------------------
-    container.innerHTML = '';   // ensures the nav bar appears only once
+    container.innerHTML = '';
 
     // -------------------------------------------------------------
-    // 1️⃣ Load the exercises (once, cached in EXERCISES)
+    // 1️⃣ Load exercises (once, cached in EXERCISES)
     // -------------------------------------------------------------
     if (!EXERCISES.length) {
         try {
@@ -68,7 +63,7 @@ export async function renderMenu(container, UI_LANG) {
     }
 
     // -------------------------------------------------------------
-    // 2️⃣ Build a wrapper that will act as the page‑wide navigation bar
+    // 2️⃣ Navigation bar (language selector, font selector, level checkboxes)
     // -------------------------------------------------------------
     const navBar = document.createElement('section');
     navBar.className = 'menu-nav';
@@ -77,12 +72,32 @@ export async function renderMenu(container, UI_LANG) {
     navBar.style.gap = '0.5rem';
     navBar.style.marginBottom = '1rem';
 
-    // -------------------------------------------------------------
-    // 2a️⃣ Font selector (same as before)
-    // -------------------------------------------------------------
+    // -------------------- Language selector (now in the nav) --------------------
+    const langSelect = document.createElement('select');
+    langSelect.id = 'langSelect';
+    langSelect.style.width = '100%';
+    langSelect.style.fontSize = '0.95rem';
+    langSelect.innerHTML = SUPPORTED_LANGS.map(code => {
+        const sel = code === getStoredLang() ? 'selected' : '';
+        const lbl = LANGUAGE_LABELS[code] || code.toUpperCase();
+        return `<option value="${code}" ${sel}>${lbl}</option>`;
+    }).join('');
+    langSelect.onchange = ev => {
+        const newLang = ev.target.value;
+        if (newLang !== getStoredLang()) {
+            setStoredLang(newLang);
+            applyDirection(newLang);
+            // reload the menu in the newly selected language
+            renderMenu(container, newLang);
+        }
+    };
+    navBar.appendChild(langSelect);
+
+    // -------------------- Font selector --------------------
     const fontSelect = document.createElement('select');
     fontSelect.id = 'fontSelect';
     fontSelect.style.width = '100%';
+    fontSelect.style.fontSize = '0.95rem';
     const savedFont = getStoredFont();
     fontSelect.innerHTML = FONT_CATALOG.map(f => {
         const sel = f.name === savedFont ? 'selected' : '';
@@ -98,14 +113,12 @@ export async function renderMenu(container, UI_LANG) {
     };
     navBar.appendChild(fontSelect);
 
-    // -------------------------------------------------------------
-    // 2b️⃣ Level‑filter check‑boxes (Basic / Intermediate / Advance)
-    // -------------------------------------------------------------
+    // -------------------- Level‑filter checkboxes --------------------
     const levelWrapper = document.createElement('div');
     levelWrapper.style.display = 'flex';
     levelWrapper.style.justifyContent = 'space-between';
     levelWrapper.style.alignItems = 'center';
-    levelWrapper.style.flexWrap = 'nowrap';   // force a single row on mobile
+    levelWrapper.style.flexWrap = 'nowrap';   // force single row on mobile
     levelWrapper.style.gap = '0.5rem';
 
     const levelDefs = [
@@ -113,15 +126,14 @@ export async function renderMenu(container, UI_LANG) {
         { label: 'Intermediate', value: 'intermediate' },
         { label: 'Advance', value: 'advance' }
     ];
-
-    // Load stored selections (default = only Basic)
-    const storedLevels = getStoredLevels(); // array of lower‑case strings
+    const storedLevels = getStoredLevels(); // default = ['basic']
 
     levelDefs.forEach(def => {
         const label = document.createElement('label');
         label.style.flex = '1';
         label.style.textAlign = 'center';
         label.style.cursor = 'pointer';
+        label.style.fontSize = '0.95rem';
         label.style.userSelect = 'none';
 
         const cb = document.createElement('input');
@@ -129,15 +141,14 @@ export async function renderMenu(container, UI_LANG) {
         cb.value = def.value;
         cb.checked = storedLevels.includes(def.value);
         cb.style.marginRight = '0.3rem';
+        cb.style.fontSize = '0.95rem';
 
-        // When a checkbox changes, persist the new set and re‑render the menu
+        // Update stored levels and re‑render on change
         cb.onchange = () => {
             const checked = Array.from(levelWrapper.querySelectorAll('input[type="checkbox"]:checked'))
                 .map(i => i.value);
-            // If nothing is checked, force at least “basic” so the UI never becomes empty
-            const final = checked.length ? checked : ['basic'];
+            const final = checked.length ? checked : ['basic']; // never empty
             setStoredLevels(final);
-            // Re‑render the menu (keep the same language)
             renderMenu(container, UI_LANG);
         };
 
@@ -147,10 +158,10 @@ export async function renderMenu(container, UI_LANG) {
     });
 
     navBar.appendChild(levelWrapper);
-    container.appendChild(navBar);   // <-- navigation bar appears once at the top
+    container.appendChild(navBar);   // navigation bar appears once at the top
 
     // -------------------------------------------------------------
-    // 3️⃣ Exercise list – filtered by the selected levels
+    // 3️⃣ Exercise list – filtered by selected levels
     // -------------------------------------------------------------
     const ul = document.createElement('ul');
     ul.className = 'menu-list';
@@ -158,7 +169,7 @@ export async function renderMenu(container, UI_LANG) {
     const activeLevels = new Set(getStoredLevels()); // lower‑case strings
 
     EXERCISES
-        .filter(ex => activeLevels.has(ex.level.toLowerCase()))   // filter by level
+        .filter(ex => activeLevels.has(ex.level.toLowerCase()))
         .forEach(ex => {
             const li = document.createElement('li');
             li.className = 'menu-item';
@@ -177,7 +188,6 @@ export async function renderMenu(container, UI_LANG) {
         });
 
     const router = window.router; // global router instance
-
     ul.addEventListener('click', ev => {
         const item = ev.target.closest('.menu-item');
         if (!item) return;

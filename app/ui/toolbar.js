@@ -1,6 +1,4 @@
-/* ---------------------------------------------------------------
-   Toolbar component
-   --------------------------------------------------------------- */
+// app/ui/toolbar.js
 import { SUPPORTED_LANGS, LANGUAGE_LABELS } from '../data/locales.js';
 import { setStoredLang, getStoredLang } from '../utils/storage.js';
 import { toggleTheme } from '../utils/theme.js';
@@ -24,25 +22,7 @@ export function renderToolbar(container) {
         router.navigate(`/${getStoredLang()}`, true);
     };
 
-    // ---------- Language selector ----------
-    const langSelect = document.createElement('select');
-    langSelect.id = 'langSelect';
-    langSelect.style.flex = '0 0 auto';
-    langSelect.innerHTML = SUPPORTED_LANGS.map(code => {
-        const sel = code === getStoredLang() ? 'selected' : '';
-        const lbl = LANGUAGE_LABELS[code] || code.toUpperCase();
-        return `<option value="${code}" ${sel}>${lbl}</option>`;
-    }).join('');
-    langSelect.onchange = ev => {
-        const newLang = ev.target.value;
-        if (newLang !== getStoredLang()) {
-            setStoredLang(newLang);
-            applyDirection(newLang);
-            router.navigate(`/${newLang}`, true);
-        }
-    };
-
-    // ---------- Settings button ----------
+    // ---------- Settings (gear) button ----------
     const settingsBtn = document.createElement('button');
     settingsBtn.id = 'settingsBtn';
     settingsBtn.title = 'Settings';
@@ -65,9 +45,9 @@ export function renderToolbar(container) {
     toolbar.style.justifyContent = 'space-between';
     toolbar.style.alignItems = 'center';
 
+    // Order: Home → Theme toggle → Settings (gear)
     toolbar.appendChild(homeBtn);
-    toolbar.appendChild(langSelect);
-    toolbar.appendChild(settingsBtn);
     toolbar.appendChild(themeBtn);
+    toolbar.appendChild(settingsBtn);
     container.appendChild(toolbar);
 }
