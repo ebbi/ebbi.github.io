@@ -19,13 +19,14 @@ import { applyDirection } from '../utils/rtl.js';   // ← NEW import
    Helper – common page skeleton (toolbar + empty <main>)
    ----------------------------------------------------------------- */
 async function renderAppSkeleton() {
-    // Build the basic page structure (toolbar + main area)
+    // The toolbar header is already present in the DOM (created by bootstrap.js),
+    // so we only need to ensure the <main> container exists.
     document.body.innerHTML = `
         <header id="toolbar" class="toolbar"></header>
         <main id="main" class="main"></main>
     `;
-    // Only the toolbar is rendered here – the Settings panel is now
-    // rendered **only** by the Settings page handler.
+
+    // Render the toolbar into the *existing* header element.
     renderToolbar(document.getElementById('toolbar'));
 }
 

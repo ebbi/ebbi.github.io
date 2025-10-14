@@ -1,16 +1,16 @@
 // app/ui/toolbar.js
-import { SUPPORTED_LANGS, LANGUAGE_LABELS } from '../data/locales.js';
-import { setStoredLang, getStoredLang } from '../utils/storage.js';
 import { toggleTheme } from '../utils/theme.js';
 import { getLocale } from '../data/locales.js';
 import { applyDirection } from '../utils/rtl.js';
+import { setStoredLang, getStoredLang } from '../utils/storage.js';
 
 export function renderToolbar(container) {
     const router = window.router;                     // global router
 
-    const toolbar = document.createElement('header');
-    toolbar.id = 'toolbar';
-    toolbar.className = 'toolbar';
+    // -----------------------------------------------------------------
+    // Ensure the container is empty (in case this runs more than once)
+    // -----------------------------------------------------------------
+    container.innerHTML = '';
 
     // ---------- Home button ----------
     const homeBtn = document.createElement('button');
@@ -22,7 +22,22 @@ export function renderToolbar(container) {
         router.navigate(`/${getStoredLang()}`, true);
     };
 
-    // ---------- Settings (gear) button ----------
+    // ---------- Right‑hand container (theme + settings) ----------
+    const rightContainer = document.createElement('div');
+    rightContainer.style.display = 'flex';
+    rightContainer.style.alignItems = 'center';
+    rightContainer.style.marginLeft = 'auto';   // pushes it to the far right
+    rightContainer.style.gap = '0.5rem';
+
+    // Theme toggle (light/dark)
+    const themeBtn = document.createElement('button');
+    themeBtn.id = 'themeToggle';
+    themeBtn.title = getLocale(getStoredLang()).content.toggleTheme || 'Toggle light/dark mode';
+    themeBtn.textContent = '🌙';
+    themeBtn.style.flex = '0 0 auto';
+    themeBtn.onclick = toggleTheme;
+
+    // Settings (gear) button
     const settingsBtn = document.createElement('button');
     settingsBtn.id = 'settingsBtn';
     settingsBtn.title = 'Settings';
@@ -32,22 +47,11 @@ export function renderToolbar(container) {
         router.navigate(`/${getStoredLang()}/settings`, true);
     };
 
-    // ---------- Theme toggle ----------
-    const themeBtn = document.createElement('button');
-    themeBtn.id = 'themeToggle';
-    themeBtn.title = getLocale(getStoredLang()).content.toggleTheme || 'Toggle light/dark mode';
-    themeBtn.textContent = '🌙';
-    themeBtn.style.flex = '0 0 auto';
-    themeBtn.onclick = toggleTheme;
+    // Assemble right‑hand group
+    rightContainer.appendChild(themeBtn);
+    rightContainer.appendChild(settingsBtn);
 
-    // Flex layout – left‑to‑right order
-    toolbar.style.display = 'flex';
-    toolbar.style.justifyContent = 'space-between';
-    toolbar.style.alignItems = 'center';
-
-    // Order: Home → Theme toggle → Settings (gear)
-    toolbar.appendChild(homeBtn);
-    toolbar.appendChild(themeBtn);
-    toolbar.appendChild(settingsBtn);
-    container.appendChild(toolbar);
+    // Assemble the toolbar (left‑to‑right order)
+    container.appendChild(homeBtn);
+    container.appendChild(rightContainer);
 }

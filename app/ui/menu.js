@@ -62,21 +62,23 @@ export async function renderMenu(container, UI_LANG) {
         }
     }
 
-    // -------------------------------------------------------------
+    // -----------------------------------------------------------------
     // 2️⃣ Navigation bar (language selector, font selector, level checkboxes)
-    // -------------------------------------------------------------
+    // -----------------------------------------------------------------
     const navBar = document.createElement('section');
     navBar.className = 'menu-nav';
     navBar.style.display = 'flex';
     navBar.style.flexDirection = 'column';
-    navBar.style.gap = '0.5rem';
-    navBar.style.marginBottom = '1rem';
+    navBar.style.gap = '0';                 // no vertical gap between rows
+    navBar.style.marginBottom = '0';
+    container.appendChild(navBar);          // attach early – the rest of the code will append to it
 
     // -------------------- Language selector (now in the nav) --------------------
     const langSelect = document.createElement('select');
     langSelect.id = 'langSelect';
     langSelect.style.width = '100%';
-    langSelect.style.fontSize = '0.95rem';
+    langSelect.style.fontSize = '0.85rem';
+    langSelect.style.margin = '0';
     langSelect.innerHTML = SUPPORTED_LANGS.map(code => {
         const sel = code === getStoredLang() ? 'selected' : '';
         const lbl = LANGUAGE_LABELS[code] || code.toUpperCase();
@@ -97,7 +99,8 @@ export async function renderMenu(container, UI_LANG) {
     const fontSelect = document.createElement('select');
     fontSelect.id = 'fontSelect';
     fontSelect.style.width = '100%';
-    fontSelect.style.fontSize = '0.95rem';
+    fontSelect.style.fontSize = '0.85rem';
+    fontSelect.style.margin = '0';
     const savedFont = getStoredFont();
     fontSelect.innerHTML = FONT_CATALOG.map(f => {
         const sel = f.name === savedFont ? 'selected' : '';
@@ -113,13 +116,15 @@ export async function renderMenu(container, UI_LANG) {
     };
     navBar.appendChild(fontSelect);
 
-    // -------------------- Level‑filter checkboxes --------------------
+    // -------------------- Level‑filter checkboxes (row, smaller font) --------------------
     const levelWrapper = document.createElement('div');
     levelWrapper.style.display = 'flex';
     levelWrapper.style.justifyContent = 'space-between';
-    levelWrapper.style.alignItems = 'center';
-    levelWrapper.style.flexWrap = 'nowrap';   // force single row on mobile
-    levelWrapper.style.gap = '0.5rem';
+    levelWrapper.style.alignItems = 'center';   // vertically align checkboxes with labels
+    levelWrapper.style.flexWrap = 'nowrap';
+    levelWrapper.style.gap = '0.5rem';          // small space between the three boxes
+    levelWrapper.style.margin = '0 1rem';       // <-- required margin
+    levelWrapper.style.fontSize = '0.85rem';   // same font size as the selects
 
     const levelDefs = [
         { label: 'Basic', value: 'basic' },
@@ -129,19 +134,18 @@ export async function renderMenu(container, UI_LANG) {
     const storedLevels = getStoredLevels(); // default = ['basic']
 
     levelDefs.forEach(def => {
+        // Each label is a flex row: checkbox next to its text
         const label = document.createElement('label');
-        label.style.flex = '1';
-        label.style.textAlign = 'center';
+        label.style.display = 'flex';
+        label.style.alignItems = 'center';    // vertical alignment
         label.style.cursor = 'pointer';
-        label.style.fontSize = '0.95rem';
-        label.style.userSelect = 'none';
+        label.style.margin = '0';
 
         const cb = document.createElement('input');
         cb.type = 'checkbox';
         cb.value = def.value;
         cb.checked = storedLevels.includes(def.value);
-        cb.style.marginRight = '0.3rem';
-        cb.style.fontSize = '0.95rem';
+        cb.style.margin = '0 0.2rem 0 0';      // tiny space between box and text
 
         // Update stored levels and re‑render on change
         cb.onchange = () => {
@@ -158,6 +162,7 @@ export async function renderMenu(container, UI_LANG) {
     });
 
     navBar.appendChild(levelWrapper);
+
     container.appendChild(navBar);   // navigation bar appears once at the top
 
     // -------------------------------------------------------------

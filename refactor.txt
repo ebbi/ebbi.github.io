@@ -1,6 +1,9 @@
-On the main home page:
-1. Move the language select list from the toolbar and place it above font selection list.
-2. Reduce the font-size to 0.95 rem for Language selection, font selection and the checkboxes
-On the toolbar:
-move the gear icon to after the light/dark icon.
+On the App toolbar:
 
+The height of the toolbar is nearly twice the height of the icons on the toolbar and needs to be reduced to normal typography.
+Possible cause is the generation of two header nested with the same id="toolbar"
+
+On the Main home page navigation controls
+
+1. The margin for the div containing the checkboxes should be: margin: 0 1rem;
+2. Make the checkboxes vertically aligned with their labels

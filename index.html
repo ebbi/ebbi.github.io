@@ -68,17 +68,6 @@
         }
 
         /* --------------------------------------------------------------
-       Toolbar
-       -------------------------------------------------------------- */
-        /* --------------------------------------------------------------
-   Toolbar – ensure it spans the full width of the page
-   -------------------------------------------------------------- */
-        .toolbar {
-            width: 100%;
-            /* makes space‑between work at any viewport */
-        }
-
-        /* --------------------------------------------------------------
    Menu items – align text according to the page direction
    -------------------------------------------------------------- */
         .menu-item {
@@ -86,13 +75,21 @@
             /* respects LTR/RTL automatically */
         }
 
+        /* --------------------------------------------------------------
+   Toolbar
+   -------------------------------------------------------------- */
         .toolbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: .75rem 1rem;
+            width: 100%;
+            /* Small vertical padding – the row height will now match the icons */
+            padding: 0.15rem 1rem;
+            /* ← reduced top/bottom padding */
             background: var(--bg-surface);
-            border-bottom: 1px solid var(--border-surface);
+            border-bottom: none;
+            /* ← no bottom border */
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            /* items start at the left; we’ll push the icons right in JS */
         }
 
         .toolbar button {
