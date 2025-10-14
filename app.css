@@ -1,0 +1,202 @@
+/* app.css – mobile first */
+body {
+    font-size: 16px;
+    line-height: 1.5;
+    background: #fafafa;
+    color: #111
+}
+
+.toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: .75rem 1rem;
+    background: #fff;
+    border-bottom: 1px solid #ddd;
+}
+
+.toolbar button {
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer
+}
+
+.menu-section {
+    padding: 1rem
+}
+
+.menu-list {
+    list-style: none;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: .75rem
+}
+
+.menu-item {
+    background: #fff;
+    padding: 1rem;
+    border-radius: .5rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, .1);
+    cursor: pointer;
+    transition: transform .1s;
+}
+
+.menu-item:hover {
+    transform: scale(1.02)
+}
+
+.detail-section {
+    padding: 1rem;
+    background: #fff;
+    margin-top: 1rem;
+    border-radius: .5rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, .1)
+}
+
+.hidden {
+    display: none
+}
+
+/* Tablet / small desktop */
+@media(min-width:600px) {
+    .menu-list {
+        grid-template-columns: repeat(2, 1fr)
+    }
+}
+
+/* Desktop */
+@media(min-width:900px) {
+    .menu-list {
+        grid-template-columns: repeat(3, 1fr)
+    }
+}
+
+/* ====================== HIGH‑CONTRAST DARK THEME ====================== */
+
+/* 1️⃣ Page‑wide background & default text colour */
+[data-theme="dark"] {
+    background: #000;
+    /* true black for maximum contrast */
+    color: #f5f5f5;
+    /* very light gray for body text */
+}
+
+/* 2️⃣ Containers (toolbar, menu cards, detail pane) */
+[data-theme="dark"] .toolbar,
+[data-theme="dark"] .menu-item,
+[data-theme="dark"] .detail-section {
+    background: #111;
+    /* dark‑gray so containers are distinguishable */
+    border-color: #333;
+    /* subtle borders */
+}
+
+/* 3️⃣ Headings – bright, vivid colours for instant readability */
+[data-theme="dark"] h1,
+[data-theme="dark"] h2,
+[data-theme="dark"] h3,
+[data-theme="dark"] h4,
+[data-theme="dark"] h5,
+[data-theme="dark"] h6 {
+    color: #93871e;
+    /* sunny yellow – high contrast on black */
+    margin: 0.2rem 0;
+}
+
+/* 4️⃣ Paragraphs, list items, summaries – crisp white */
+[data-theme="dark"] p,
+[data-theme="dark"] li,
+[data-theme="dark"] .summary {
+    color: #ffffff;
+    /* pure white for body copy */
+}
+
+/* 5️⃣ Links – electric cyan for clear distinction */
+[data-theme="dark"] a {
+    color: #00e5ff;
+    /* bright cyan */
+    text-decoration: underline;
+}
+
+/* 6️⃣ Buttons (theme toggle, any future buttons) – keep icons bright */
+[data-theme="dark"] .toolbar button {
+    color: #ffeb3b;
+    /* same yellow as headings */
+}
+
+/* 7️⃣ Pre‑formatted answer block – dark background, neon green text */
+[data-theme="dark"] pre.answer {
+    background: #0d0d0d;
+    /* almost black */
+    color: #76ff03;
+    /* neon green for strong contrast */
+    padding: 0.5rem;
+    border-radius: 4px;
+    overflow-x: auto;
+}
+
+/* 8️⃣ Hover effect for menu cards – a subtle teal glow */
+[data-theme="dark"] .menu-item:hover {
+    background: #1a1a1a;
+    box-shadow: 0 0 8px 2px #00e5ff;
+    /* teal glow on hover */
+}
+
+/* 9️⃣ Ensure the language selector dropdown is readable */
+[data-theme="dark"] select {
+    background: #222;
+    color: #ffffff;
+    border: 1px solid #555;
+}
+
+/* Add to any stylesheet that loads after the <style> block in index.html */
+[data-theme] .toolbar {
+    justify-content: flex-start;
+    /* LTR default */
+}
+
+[data-theme][dir="rtl"] .toolbar {
+    justify-content: flex-end;
+    /* RTL mirrors the toolbar */
+}
+
+/* Settings panel styling */
+details {
+    background: var(--panel-bg, #fff);
+    border: 1px solid var(--panel-border, #ddd);
+    border-radius: 4px;
+    padding: 0.5rem;
+}
+
+[data-theme="dark"] details {
+    background: #222;
+    border-color: #444;
+}
+
+/* Simple styling for a custom modal (if you replace alert later) */
+.modal-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+}
+
+.modal {
+    background: var(--modal-bg, #fff);
+    color: var(--modal-fg, #111);
+    max-width: 90%;
+    max-height: 80vh;
+    overflow-y: auto;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+[data-theme="dark"] .modal {
+    background: #222;
+    color: #eee;
+}

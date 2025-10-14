@@ -1,0 +1,389 @@
+<!doctype html>
+<html dir="ltr" lang="en" class="no-js">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="dark light">
+
+    <title>Play</title>
+    <link rel="icon" type="image/x-icon" href="/assets/images/bitcoin-logo.ico">
+    <meta name="description" content="Play">
+    <link rel="home" href="https://ebbi.github.io/">
+
+    <link rel="stylesheet" href="/assets/stylesheet/core.css" media="screen">
+    <link rel="stylesheet" href="/assets/stylesheet/main.css" media="screen">
+    <link rel="stylesheet" href="/assets/stylesheet/editor.css" media="screen">
+
+</head>
+
+<body>
+
+    <header>
+        <nav aria-label="Main">
+            <ul>
+                <li>
+                    <a href="/index.html" hreflang="en">
+                        <img class="" src="/assets/images/home.svg" width="17" height="17" alt="Home" aria-hidden="true"
+                            loading="lazy"></a>
+                </li>
+                <li>
+                    <a target="_blank" hreflang="en" href="https://duckduckgo.com/?q=site%3Aebbi.github.io&ia=web"
+                        class="nav-link icon-link">
+                        <img class="icon" src="/assets/images/search.svg" width="20" height="20" alt aria-hidden="true">
+                    </a>
+                </li>
+                <li>
+                    <a target="_blank" class="nav-link" href="https://github.com/ebbi/ebbi.github.io/" hreflang="en">
+                        <img class="" src="/assets/images/github.svg" width="20" height="20" alt="github"
+                            aria-hidden="true" loading="lazy"></a>
+                </li>
+                <li class="push">
+                    <a id="light-mode" href=""><img src="/assets/images/light-mode.png" width="20" height="20"
+                            alt="light mode"></a>
+                    <a id="dark-mode" href=""><img src="/assets/images/dark-mode.png" width="20" height="20"
+                            alt="dark mode"></a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+
+        <div id="learn-thai">
+
+            <details open>
+                <summary class="background-blue">
+                    <span>Thai lessons </span>
+                </summary>
+
+                <details id="bookListContainer"></details>
+                <div id="multipleChoiceContainer"></div>
+                <div id="sentenceStructureContainer"></div>
+
+                <details>
+                    <summary>Speech Setup Help for Android, IOS and Browsers</summary>
+                    <p>
+                        This app uses Text-To-Speech. First try a lesson, you should be able to hear the Thai (and
+                        English) text by selecting any of the text examples.
+                    </p>
+                    <p>
+                        If you cannot hear the sound, please check the following for your device:
+                    </p>
+                    <div id="setupMobileTTS">
+                        <details>
+                            <summary>Mobile Android and Chrome browser</summary>
+                            <p>
+                                To enable text-to-speech on Android, you can use the built-in accessibility features.
+                            </p>
+                            <div class="text-to-speech-steps">
+                                <ol>
+                                    <li>Go to "Settings" on your Android phone.</li>
+                                    <li>Scroll down and tap on "Accessibility."</li>
+                                    <li>Tap on "Select to Speak" or "TalkBack" (depending on your Android version).</li>
+                                    <li>Turn on the feature and follow the on-screen instructions to set up
+                                        text-to-speech.</li>
+                                    <li>Once enabled, you can select text on your screen, and the device will read it
+                                        aloud.</li>
+                                    <li>To adjust the text-to-speech settings, go back to "Settings," then
+                                        "Accessibility,"
+                                        and tap on "Text-to-Speech output." Here, you can choose the preferred engine,
+                                        language, and speech rate (install Thai/English language packs).</li>
+                                    <li>To test the text-to-speech functionality, you can use any app that supports
+                                        text-to-speech, such as Google Play Books or Google Translate. Simply select the
+                                        text you want to hear, and tap on the "Speak" option.</li>
+                                </ol>
+                                <p>Chrome Browser</p>
+                                <ol>
+                                    <li>Open the Chrome browser on your Android phone.</li>
+                                    <li>Tap the three-dot menu in the top-right corner and select "Settings."</li>
+                                    <li>Scroll down and tap on "Accessibility."</li>
+                                    <li>Turn on "Simplified view" and "Simplified view to speech" options to enable
+                                        Chrome's text-to-speech feature.</li>
+                                    <li>To test the text-to-speech functionality, you can use any website that supports
+                                        text-to-speech, such as Google Translate. Simply select the text you want to
+                                        hear, and tap on the "Speak" option.</li>
+                                </ol>
+                            </div>
+                        </details>
+                        <details>
+                            <summary>Mobile iPhone and Safari browser</summary>
+                            <p>
+                                To enable text-to-speech on iPhone, you can use the built-in accessibility features.
+                            </p>
+                            <div class="text-to-speech-steps">
+                                <ol>
+                                    <li>Go to "Settings" on your iPhone.</li>
+                                    <li>Scroll down and tap on "Accessibility."</li>
+                                    <li>Tap on "Spoken Content."</li>
+                                    <li>Turn on "Speak Selection" or "Speak Screen" to enable text-to-speech.</li>
+                                    <li>To adjust the text-to-speech settings, go back to "Settings," then
+                                        "Accessibility," and tap on "Spoken Content." Here, you can choose the preferred
+                                        voice, speaking rate, and language (install Thai language package).</li>
+                                    <li>To test the text-to-speech functionality, you can use any app that supports
+                                        text-to-speech, such as Safari or Notes. Simply select the text you want to
+                                        hear, and tap on the "Speak" option.</li>
+                                </ol>
+                            </div>
+                            <p>Safari Browser</p>
+                            <ol>
+                                <li>Open the Safari browser on your iPhone.</li>
+                                <li>Tap the "Aa" icon in the top-left corner of the screen.</li>
+                                <li>Select "Speak Selection" or "Speak Screen" to enable text-to-speech.</li>
+                                <li>To test the text-to-speech functionality, you can use any website that supports
+                                    text-to-speech, such as Google Translate. Simply select the text you want to
+                                    hear, and tap on the "Speak" option.</li>
+                            </ol>
+                        </details>
+                    </div>
+
+                    <div id="setupDesktopTTS">
+                        <details>
+                            <summary>Laptop with Chrome browser</summary>
+                            <p>
+                                To enable text-to-speech on a tablet, laptop or desktop, you can use the built-in
+                                accessibility features.
+                                Here are the steps to enable text-to-speech on Windows devices:
+                            </p>
+                            <div class="text-to-speech-steps">
+                                <ol>
+                                    <li>Go to "Settings" on your Windows computer.</li>
+                                    <li>Click on "Ease of Access."</li>
+                                    <li>Click on "Narrator" in the left sidebar.</li>
+                                    <li>Turn on the Narrator toggle switch to enable text-to-speech.</li>
+                                    <li>To adjust the text-to-speech settings, go back to "Settings," then
+                                        "Ease of Access," and click on "Narrator." Here, you can choose the preferred
+                                        voice, speed, and pitch. (install Thai language package)</li>
+                                    <li>To test the text-to-speech functionality, you can use any app that supports
+                                        text-to-speech, such as Microsoft Word or Notepad. Simply select the text you
+                                        want to hear, and press the "Ctrl + Enter" keys.</li>
+                                </ol>
+
+                            </div>
+
+                        </details>
+
+                        <details>
+                            <summary>Laptop with Safari browser</summary>
+                            <p>
+                                To enable text-to-speech on a tablet, laptop or desktop, you can use the built-in
+                                accessibility features.
+                                Here are the steps to enable text-to-speech on Mac devices:
+                            </p>
+                            <div class="text-to-speech-steps">
+                                <ol>
+                                    <li>Go to "System Preferences" on your Mac.</li>
+                                    <li>Click on "Accessibility."</li>
+                                    <li>Click on "Speech" in the left sidebar.</li>
+                                    <li>Turn on the "Speak selected text when the key is pressed" option to enable
+                                        text-to-speech.</li>
+                                    <li>To adjust the text-to-speech settings, go back to "System Preferences," then
+                                        "Accessibility," and click on "Speech." Here, you can choose the preferred
+                                        voice,
+                                        speaking rate, and language. (install Thai language package)</li>
+                                    <li>To test the text-to-speech functionality, you can use
+                                        any app that supports text-to-speech, such as TextEdit or Safari. Simply select
+                                        the text you want to hear, and press the "Option + Esc" keys.</li>
+                                </ol>
+                            </div>
+                        </details>
+
+                    </div>
+
+                    <div id="textToSpeech">
+                        <details>
+                            <summary>Languages / Phonetic Editor / Sound</summary>
+
+                            <div>
+
+                                <form id="lang">
+                                    <label for="txt">Enter text</label>
+                                    <input id="txt" type="text" class="txt" />
+                                    <div>
+                                        <label for="rate">Rate</label><input type="range" min="0.5" max="2" value="1"
+                                            step="0.1" id="rate" />
+                                        <div class="rate-value">1</div>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                    <div>
+                                        <label for="pitch">Pitch</label><input type="range" min="0" max="2" value="1"
+                                            step="0.1" id="pitch" />
+                                        <div class="pitch-value">1</div>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                    <select id="SelectLang"></select>
+                                    <div class="controls">
+                                        <button id="play" type="submit">Play</button>
+                                    </div>
+                                </form>
+
+                            </div>
+
+
+
+                            <div id="editor">
+                                <p>Click text area for keyboard
+                                    <textarea id="keyboardInput" name="keyboard-input"
+                                        class='keyboard-input'></textarea>
+                                </p>
+                            </div>
+                            <hr>
+
+                            <div>
+                                <p class="font-size-medium">
+                                    Paste Thai text and click Get link
+                                    <br>
+                                    <!-- placeholder =  Enter a Thai word to speak aloud  -->
+                                    <input type="text" id="thWord" name="thWord" placeholder="Get &amp; Play link" />
+                                    <button id="thSpeak">Get link</button>
+
+                                    <br>
+                                    <a id="soundLink" target="_blank" class="font-size-medium"
+                                        href="https://translate.google.com/translate_tts?ie=UTF-8&client=tw-ob&tl=th&q=ใส่คำภาษาไทยเพื่อพูดออกเสียง">
+                                        Click here for new browser and click return in new browser address window to
+                                        Play the
+                                        Link
+                                    </a>
+                                </p>
+                            </div>
+
+                        </details>
+
+                    </div>
+                </details>
+            </details>
+        </div>
+        <div class="nav-separator">
+            <nav dir="rtl" lang="fa">
+                <details>
+                    <summary class="background-orange">
+                        <span>
+                            آموزش بیت کوین ( بندری )
+                        </span>
+                    </summary>
+                    <div class="notice text-alignment-center">
+                        <a class="header" href="/fa/ba/courses/btc-diploma/btc-diploma.html">
+                            دوره دیپلم بیت کوین
+                        </a>
+                        "یک سفر ده هفته ای تحول آفرین از طریق آموزش مستقل، بی طرفانه، با کیفیت و مجانی."
+                        <br>
+                        ترجمه بندری از
+                        <a target="_blank" href="https://fa.myfirstbitcoin.io/">Mi Primer Bitcoin</a>
+                        - مرداویج(مروان)
+                    </div>
+                    <div class="notice text-alignment-center">
+                        <a class="header" href="/fa/ba/courses/3blue1brown.html">
+                            داشتن بیت کوین چه معنی ایشستن؟ - ویدئو
+                        </a>
+                        ترجمه فارسی از
+                        <a href="https://www.youtube.com/watch?v=bBC-nXj3Ng4&t=1s">YouTube - 3Blue1Brown</a>
+                    </div>
+                    <div class="notice text-alignment-center">
+                        <a class="header" target="_blank" href="/fa/assets/bitcoin-paper-fa.pdf">
+                            بیت کوین: یک سیستم پول الکترونیکی فرد به فرد - ساتوشی ناکاموتو
+                        </a>
+                        ترجمه فارسی از
+                        <a target="_blank" href="https://bitcoin.org/en/bitcoin-paper">bitcoin.org</a>
+                        &dash;
+                        زهرا امینی
+                    </div>
+                </details>
+            </nav>
+
+            <nav dir="ltr" lang="en">
+                <details>
+
+                    <summary class="background-orange">
+                        <span>
+                            Bitcoin Education
+                        </span>
+                    </summary>
+
+                    <div class="notice text-alignment-center">
+                        <b>
+                            <a href="https://myfirstbitcoin.io/">
+                                <span class="header">The Bitcoin Diploma Course</span>
+                            </a> </b>
+                    </div>
+
+                    <div class="notice text-alignment-center">
+                        <a class="header" href="/en/courses/3blue1brown.html">
+                            What does it mean to own a Bitcoin? - Video
+                        </a>
+                    </div>
+
+                    <div class="notice text-alignment-center">
+                        <a class="header" target="_blank" href="/en/assets/bitcoin-paper-en.pdf">Bitcoin: A
+                            Peer-to-Peer
+                            Electronic
+                            Cash
+                            System - Satoshi Nakamoto</a>
+                    </div>
+
+                </details>
+            </nav>
+        </div>
+
+        <!-- History blogs -->
+        <div class="nav-separator">
+            <nav>
+                <details>
+                    <summary class="background-red">
+                        <span>
+                            History Blogs
+                        </span>
+                    </summary>
+                    <ul class="list-style-none">
+                        <li>
+                            <a class="header" target="_blank"
+                                href="https://twolegsbadblog.wordpress.com/2016/02/21/a-history-of-political-islam-and-the-west-part-3-iran-revolution-1/">
+                                Iran: Revolution #1 <br>
+                                <img src="/fa/iran/iran-revolution-1/images/8.png"
+                                    alt="The army fires on protesters, Black Friday, 8 September 1978" width="600">
+                            </a>
+                        </li>
+                    </ul>
+
+                </details>
+            </nav>
+            <nav dir="rtl" lang="fa">
+                <details>
+                    <summary class="background-red">
+                        <span>
+                            وبلاگ های تاریخ
+                        </span>
+                    </summary>
+                    <ul class="list-style-none">
+                        <li>
+                            <a class="header" href="/fa/iran/iran-revolution-1/iran-revolution-1.html">
+                                ایران: انقلاب فصل اول <br>
+                                <img src="/fa/iran/iran-revolution-1/images/8.png"
+                                    alt=" تیراندازی ارتش به معترضان، جمعه سیاه، ۸ سپتامبر ۱۹۷۸" width="600">
+                            </a>
+                        </li>
+                    </ul>
+
+                </details>
+            </nav>
+        </div>
+
+    </main>
+
+    <footer>
+        <div>
+            <a target="_blank" href="https://creativecommons.org/about/cclicenses/"><img alt="CC BY-SA 4.0"
+                    src="/assets/images/cc-by-sa.png" width="100" height="20"></a>
+        </div>
+    </footer>
+
+    <script src="/assets/javaScript/dark-light.js"></script>
+    <script src="/assets/javaScript/books.js"></script>
+
+    <!--
+    <script src="/assets/javaScript/editor.js"></script>
+    <script src="/assets/javaScript/textToSpeech.js"></script>
+    -->
+
+</body>
+
+</html>

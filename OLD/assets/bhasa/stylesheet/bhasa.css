@@ -1,0 +1,759 @@
+/* =========================================================
+   0️⃣  ROOT VARIABLES (THEME & COLOURS)
+   ========================================================= */
+:root {
+    --primary-color: #00247D;
+    --primary-light: #66aaff;
+    --background-light: #f9f9f9;
+    --background-dark: #222;
+    --text-light: #000;
+    --text-dark: #eee;
+    --border-light: #ccc;
+    --border-dark: #555;
+    --correct-color: #4caf50;
+    --incorrect-color: #f44336;
+    --highlight-light: yellow;
+    --highlight-dark: orange;
+    --header-height: 60px;
+}
+
+/* =========================================================
+   1️⃣  GLOBAL PAGE STYLING (MOBILE‑FIRST)
+   ========================================================= */
+body {
+    font-size: clamp(14px, 2.5vw, 18px);
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: var(--background-light);
+    color: var(--text-light);
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: background .3s, color .3s;
+}
+
+body[data-theme="dark"] {
+    background: var(--background-dark);
+    color: var(--text-dark);
+}
+
+/* =========================================================
+   2️⃣  HEADER
+   ========================================================= */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--primary-color);
+    color: #fff;
+    padding: 0.3em 1em;
+    min-height: 2.5em;
+    flex-shrink: 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+#appTitle {
+    font-size: 1.2rem;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+}
+
+#headerControls {
+    display: flex;
+    align-items: center;
+    gap: 0.8em;
+}
+
+#themeToggle,
+#settingsBtn {
+    background: none !important;
+    border: none !important;
+    color: #fff;
+    padding: 0.3em;
+    cursor: pointer;
+    font-size: 1.1rem;
+    height: 2em;
+    width: 2em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    transition: background .2s;
+}
+
+#themeToggle:hover,
+#settingsBtn:hover {
+    background: rgba(255, 255, 255, .1) !important;
+}
+
+/* -------- Mobile header tweaks -------- */
+@media (max-width: 600px) {
+    header {
+        padding: 0.3em 0.8em;
+    }
+
+    #appTitle {
+        font-size: 1.1rem;
+    }
+
+    #headerControls {
+        gap: 0.6em;
+        font-size: 0.9rem;
+    }
+
+    #themeToggle,
+    #settingsBtn {
+        height: 1.8em;
+        width: 1.8em;
+        font-size: 1rem;
+    }
+}
+
+/* =========================================================
+   3️⃣  MAIN LAYOUT
+   ========================================================= */
+main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.content-area {
+    flex: 1;
+    overflow-y: auto;
+    padding: 1em;
+    -webkit-overflow-scrolling: touch;
+    scroll-margin-top: 120px;
+    scroll-behavior: smooth;
+}
+
+.controls-area {
+    background: var(--background-light);
+    border-top: 1px solid var(--border-light);
+    padding: 1em;
+    flex-shrink: 0;
+    position: sticky;
+    bottom: 0;
+    z-index: 90;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, .1);
+}
+
+body[data-theme="dark"] .controls-area {
+    background: var(--background-dark);
+    border-top-color: var(--border-dark);
+}
+
+/* -------- Sections & Details -------- */
+section {
+    margin-bottom: 1.5em;
+    padding-bottom: 1em;
+    border-bottom: 1px solid var(--border-light);
+}
+
+body[data-theme="dark"] section {
+    border-bottom-color: var(--border-dark);
+}
+
+details {
+    padding: 0.5em 1em;
+    border: 1px solid var(--border-light);
+    border-radius: 4px;
+    margin: 0.5em 0;
+    background: var(--background-light);
+    color: var(--text-light);
+}
+
+details summary {
+    cursor: pointer;
+    color: var(--primary-color);
+}
+
+body[data-theme="dark"] details {
+    background: #2a2a2a;
+    border-color: var(--border-dark);
+    color: var(--text-dark);
+}
+
+body[data-theme="dark"] details summary {
+    color: var(--primary-light);
+}
+
+/* =========================================================
+   4️⃣  FORM ELEMENTS (COMMON)
+   ========================================================= */
+button,
+select,
+input[type="number"] {
+    font-size: 1em;
+    line-height: 1.5;
+    padding: 0.4em 0.6em;
+    height: 2em;
+    border-radius: 4px;
+    border: 1px solid var(--border-light);
+    background: #f0f0f0;
+    color: var(--text-light);
+    cursor: pointer;
+    box-sizing: border-box;
+    transition: background .2s, color .2s, border-color .2s;
+}
+
+input[type="number"] {
+    text-align: center;
+}
+
+button:hover,
+select:hover,
+input[type="number"]:hover {
+    background: #e0e0e0;
+}
+
+body[data-theme="dark"] button,
+body[data-theme="dark"] select,
+body[data-theme="dark"] input[type="number"] {
+    background: #333;
+    border-color: var(--border-dark);
+    color: var(--text-dark);
+}
+
+body[data-theme="dark"] button:hover,
+body[data-theme="dark"] select:hover,
+body[data-theme="dark"] input[type="number"]:hover {
+    background: #444;
+}
+
+/* -------- Touch‑friendly -------- */
+.touch-target {
+    min-height: 44px;
+    min-width: 44px;
+}
+
+/* =========================================================
+   5️⃣  EXAMPLE DISPLAY
+   ========================================================= */
+#exampleDisplay {
+    margin: 0.5em 0 1em;
+    white-space: pre-wrap;
+    min-height: 150px;
+    max-height: 45vh;
+    overflow-y: auto;
+    padding: 1em;
+    border: 1px solid var(--border-light);
+    border-radius: 8px;
+    background: var(--background-light);
+}
+
+body[data-theme="dark"] #exampleDisplay {
+    background: #2a2a2a;
+    border-color: var(--border-dark);
+}
+
+/* -------- Word‑pair styling -------- */
+.word-pair {
+    display: inline-block;
+    vertical-align: top;
+    margin: 0 0.3em 0.5em 0;
+    cursor: pointer;
+    padding: 0.2em;
+    border-radius: 3px;
+    transition: background-color .2s;
+}
+
+.word-pair:hover {
+    background-color: rgba(0, 36, 125, .1);
+}
+
+body[data-theme="dark"] .word-pair:hover {
+    background-color: rgba(102, 170, 255, .1);
+}
+
+/* Language‑specific spans (all share same base) */
+.word-pair span[lang] {
+    display: block;
+    word-break: keep-all;
+    overflow-wrap: break-word;
+    font-size: large;
+    border-top: 1px solid lightskyblue;
+    margin-top: 0.1em;
+    font-size: 0.9em;
+}
+
+/* Colour tweaks for specific languages */
+.word-pair span[lang="fa-IR"] {
+    color: green;
+    direction: rtl;
+}
+
+.word-pair span[lang="zh-CN"] {
+    color: rgb(247, 5, 5);
+}
+
+.word-pair span[lang="ja-JP"] {
+    color: rgb(154, 5, 247);
+}
+
+/* default colour for other languages */
+.word-pair span[lang]:not([lang="th-TH"]):not([lang="fa-IR"]) {
+    color: rgb(5, 154, 247);
+}
+
+/* -------- Highlighting (used by playback & quiz) -------- */
+.highlight-light {
+    background: var(--highlight-light);
+    color: black;
+}
+
+.highlight-dark {
+    background: var(--highlight-dark);
+    color: black;
+}
+
+/* =========================================================
+   6️⃣  PROGRESS BAR
+   ========================================================= */
+.progress-bar {
+    width: 100%;
+    height: 6px;
+    background: var(--border-light);
+    border-radius: 3px;
+    margin: 0.5em 0;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background: var(--primary-color);
+    transition: width .3s ease;
+}
+
+body[data-theme="dark"] .progress-bar {
+    background: var(--border-dark);
+}
+
+/* =========================================================
+   7️⃣  TOPIC & EXAMPLE SELECTION CONTROLS
+   ========================================================= */
+#topicSelectionControls {
+    background: rgba(0, 36, 125, .05);
+    padding: 1em;
+    border-radius: 8px;
+    margin-bottom: 1em;
+    position: sticky;
+    top: 0;
+    z-index: 80;
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--border-light);
+}
+
+body[data-theme="dark"] #topicSelectionControls {
+    background: rgba(102, 170, 255, .1);
+    border-color: var(--border-dark);
+}
+
+#topicSelectionControls label {
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+    font-weight: bold;
+}
+
+@media (min-width: 600px) {
+    #topicSelectionControls {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1em;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    #topicSelectionControls label {
+        flex: 1;
+    }
+}
+
+/* -------- Language grid (used in Settings & Topic) -------- */
+.language-grid {
+    display: grid;
+    grid-template-columns: 60% 20% 20%;
+    /* Language | Display | Speak */
+    gap: 0.4em 0.8em;
+    align-items: center;
+}
+
+.language-grid-header {
+    font-weight: bold;
+    text-align: center;
+}
+
+.language-name {
+    display: flex;
+    align-items: center;
+    gap: 0.4em;
+}
+
+.language-checkbox-cell {
+    text-align: center;
+}
+
+/* Mobile adjustment for language grid */
+@media (max-width: 600px) {
+    .language-grid {
+        font-size: 0.85em;
+    }
+}
+
+/* -------- Language‑options details (Settings) -------- */
+.language-controls {
+    margin: 1em 0;
+    border: 1px solid var(--border-light);
+    border-radius: 6px;
+    background: var(--background-light);
+    overflow: hidden;
+}
+
+body[data-theme="dark"] .language-controls {
+    background: #2a2a2a;
+    border-color: var(--border-dark);
+}
+
+.language-controls-summary {
+    cursor: pointer;
+    padding: 0.6em 1em;
+    font-weight: bold;
+    background: var(--primary-color);
+    color: #fff;
+    user-select: none;
+}
+
+.language-controls-summary::after {
+    content: "▸";
+    float: right;
+    transition: transform .2s;
+}
+
+.language-controls[open] .language-controls-summary::after {
+    transform: rotate(90deg);
+}
+
+.language-controls-content {
+    padding: 0.8em 1em;
+}
+
+/* -------- Playback delay row -------- */
+.language-delay-row {
+    display: flex;
+    align-items: center;
+    gap: 1em;
+    padding: 0.5em 0;
+    margin-top: 0.5em;
+    border-top: 1px solid var(--border-light);
+}
+
+.delay-label {
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+body[data-theme="dark"] .language-delay-row {
+    border-top-color: var(--border-dark);
+}
+
+/* =========================================================
+   8️⃣  EXAMPLE & QUIZ CONTROLS (UNIFIED)
+   ========================================================= */
+.control-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5em;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Example controls (already existed) */
+.example-controls-row {
+    composes: control-row;
+}
+
+/* Quiz controls – identical layout */
+.quiz-controls {
+    composes: control-row;
+    margin-top: 1rem;
+}
+
+/* Buttons inside both rows */
+.touch-target {
+    padding: 0.4em 0.8em;
+    font-size: 1rem;
+    min-height: 2.2em;
+    border-radius: 4px;
+}
+
+/* Score label & Incorrect‑Only checkbox */
+.quiz-score,
+.example-number-label {
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+.quiz-checkbox,
+.example-number-container {
+    margin-right: 1rem;
+}
+
+/* Mobile – stack vertically */
+@media (max-width: 600px) {
+    .control-row {
+        flex-direction: column;
+        align-items: stretch;
+    }
+}
+
+/* =========================================================
+   9️⃣  QUIZ SPECIFIC STYLING
+   ========================================================= */
+#quiz {
+    margin-top: 1em;
+}
+
+.quiz-heading {
+    font-weight: 600;
+    margin-bottom: 0.5em;
+}
+
+.quiz-question {
+    font-size: 1.25rem;
+    margin: .1em 0;
+    padding: 0.5em;
+    background: rgba(0, 36, 125, .05);
+    border-radius: 5px;
+}
+
+body[data-theme="dark"] .quiz-question {
+    background: rgba(102, 170, 255, .1);
+}
+
+.quiz-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5em;
+    margin-top: 0.5em;
+}
+
+.quiz-option {
+    border: 1px solid var(--border-light);
+    padding: 0.5em 0.8em;
+    cursor: pointer;
+    border-radius: 5px;
+    flex: 1;
+    min-width: 120px;
+    text-align: center;
+    transition: all .2s;
+}
+
+.quiz-option.correct {
+    background: var(--correct-color);
+    color: #fff;
+    border-color: var(--correct-color);
+}
+
+.quiz-option.incorrect {
+    background: var(--incorrect-color);
+    color: #fff;
+    border-color: var(--incorrect-color);
+}
+
+/* -------- Quiz control panel (Score, Incorrect Only, Language Options, Buttons) -------- */
+#score {
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+#incorrectOnly {
+    transform: scale(1.1);
+    margin-right: 0.3em;
+}
+
+/* Language‑Options inside Quiz (details) */
+.quiz-language-options {
+    margin: 0.5rem 0;
+    border: 1px solid var(--border-light);
+    border-radius: 6px;
+    background: var(--background-light);
+    overflow: hidden;
+}
+
+body[data-theme="dark"] .quiz-language-options {
+    background: #2a2a2a;
+    border-color: var(--border-dark);
+}
+
+.quiz-language-summary {
+    cursor: pointer;
+    padding: 0.6em 1em;
+    font-weight: bold;
+    background: var(--primary-color);
+    color: #fff;
+    user-select: none;
+}
+
+.quiz-language-summary::after {
+    content: "▸";
+    float: right;
+    transition: transform .2s;
+}
+
+.quiz-language-options[open] .quiz-language-summary::after {
+    transform: rotate(90deg);
+}
+
+.quiz-language-content {
+    padding: 0.8em 1em;
+}
+
+/* Layout for the two radio groups (Question & Answer) */
+.lang-option {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.8em;
+    margin-bottom: 0.5em;
+}
+
+.lang-option>label:first-child {
+    font-weight: bold;
+    min-width: 120px;
+    white-space: nowrap;
+}
+
+.lang-option .radio-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8em;
+    align-items: center;
+}
+
+.lang-option .radio-group input[type="radio"] {
+    transform: scale(1.1);
+}
+
+/* -------------------------------------------------------------
+   10️⃣  SETTINGS OVERLAY (MODAL)
+   ------------------------------------------------------------- */
+.settings-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, .6);
+    z-index: 1000;
+    overflow-y: auto;
+    padding: 2rem;
+    box-sizing: border-box;
+}
+
+.settings-overlay .settings-panel {
+    background: var(--background-light);
+    color: var(--text-light);
+    max-width: 800px;
+    margin: 0 auto;
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, .3);
+}
+
+body[data-theme="dark"] .settings-overlay .settings-panel {
+    background: var(--background-dark);
+    color: var(--text-dark);
+}
+
+/* =========================================================
+   11️⃣  LOADING OVERLAY
+   ========================================================= */
+.loading-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, .7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    color: #fff;
+    font-size: 1.2em;
+}
+
+.loading-spinner {
+    border: 2px solid #f3f3f3;
+    border-top: 2px solid var(--primary-color);
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    animation: spin 1s linear infinite;
+    display: inline-block;
+    margin-right: .5em;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* =========================================================
+   12️⃣  SCROLLBAR STYLING
+   ========================================================= */
+.content-area::-webkit-scrollbar,
+#exampleDisplay::-webkit-scrollbar {
+    width: 8px;
+}
+
+.content-area::-webkit-scrollbar-track,
+#exampleDisplay::-webkit-scrollbar-track {
+    background: var(--background-light);
+}
+
+.content-area::-webkit-scrollbar-thumb,
+#exampleDisplay::-webkit-scrollbar-thumb {
+    background: var(--border-light);
+    border-radius: 4px;
+}
+
+/* Dark‑mode scrollbar colours */
+body[data-theme="dark"] .content-area::-webkit-scrollbar-track,
+body[data-theme="dark"] #exampleDisplay::-webkit-scrollbar-track {
+    background: var(--background-dark);
+}
+
+body[data-theme="dark"] .content-area::-webkit-scrollbar-thumb,
+body[data-theme="dark"] #exampleDisplay::-webkit-scrollbar-thumb {
+    background: var(--border-dark);
+}
+
+/* -------------------------------------------------------------
+   13️⃣  SELECT Z‑INDEX (ensure dropdowns appear above overlays)
+   ------------------------------------------------------------- */
+select:focus {
+    position: relative;
+    z-index: 1000;
+}
+
+/* -------------------------------------------------------------
+   14️⃣  UTILITY CLASSES
+   ------------------------------------------------------------- */
+.hidden {
+    display: none !important;
+}
+
+.visible {
+    display: block !important;
+}
+
+/* -------------------------------------------------------------
+   15️⃣  END OF FILE
+   ------------------------------------------------------------- */
