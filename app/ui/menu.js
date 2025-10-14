@@ -126,10 +126,14 @@ export async function renderMenu(container, UI_LANG) {
     levelWrapper.style.margin = '0 1rem';       // <-- required margin
     levelWrapper.style.fontSize = '0.85rem';   // same font size as the selects
 
+    // ---------------------------------------------------------------
+    // 3️⃣  Build the level‑filter definitions using the locale strings
+    // ---------------------------------------------------------------
+    const localeObj = getLocale(UI_LANG).content;   // already loaded earlier
     const levelDefs = [
-        { label: 'Basic', value: 'basic' },
-        { label: 'Intermediate', value: 'intermediate' },
-        { label: 'Advance', value: 'advance' }
+        { label: localeObj.basic, value: 'basic' },
+        { label: localeObj.intermediate, value: 'intermediate' },
+        { label: localeObj.advance, value: 'advance' }
     ];
     const storedLevels = getStoredLevels(); // default = ['basic']
 

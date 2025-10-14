@@ -8,11 +8,18 @@ export function renderToolbar(container) {
     const router = window.router;                     // global router
 
     // -----------------------------------------------------------------
-    // Ensure the container is empty (in case this runs more than once)
+    // 1️⃣  Empty the container (in case this runs more than once)
     // -----------------------------------------------------------------
     container.innerHTML = '';
 
-    // ---------- Home button ----------
+    // -----------------------------------------------------------------
+    // 2️⃣  Detect page direction (ltr / rtl) – only needed for the tooltip
+    // -----------------------------------------------------------------
+    const isRtl = document.documentElement.getAttribute('dir') === 'rtl';
+
+    // -----------------------------------------------------------------
+    // 3️⃣  Create the three icons
+    // -----------------------------------------------------------------
     const homeBtn = document.createElement('button');
     homeBtn.id = 'homeBtn';
     homeBtn.title = 'Home';
@@ -22,14 +29,6 @@ export function renderToolbar(container) {
         router.navigate(`/${getStoredLang()}`, true);
     };
 
-    // ---------- Right‑hand container (theme + settings) ----------
-    const rightContainer = document.createElement('div');
-    rightContainer.style.display = 'flex';
-    rightContainer.style.alignItems = 'center';
-    rightContainer.style.marginLeft = 'auto';   // pushes it to the far right
-    rightContainer.style.gap = '0.5rem';
-
-    // Theme toggle (light/dark)
     const themeBtn = document.createElement('button');
     themeBtn.id = 'themeToggle';
     themeBtn.title = getLocale(getStoredLang()).content.toggleTheme || 'Toggle light/dark mode';
@@ -37,7 +36,6 @@ export function renderToolbar(container) {
     themeBtn.style.flex = '0 0 auto';
     themeBtn.onclick = toggleTheme;
 
-    // Settings (gear) button
     const settingsBtn = document.createElement('button');
     settingsBtn.id = 'settingsBtn';
     settingsBtn.title = 'Settings';
@@ -47,11 +45,36 @@ export function renderToolbar(container) {
         router.navigate(`/${getStoredLang()}/settings`, true);
     };
 
-    // Assemble right‑hand group
-    rightContainer.appendChild(themeBtn);
-    rightContainer.appendChild(settingsBtn);
+    // -----------------------------------------------------------------
+    // 4️⃣  Two containers – one for Home, one for Theme+Settings
+    // -----------------------------------------------------------------
+    const leftContainer = document.createElement('div');
+    leftContainer.style.display = 'flex';
+    leftContainer.style.alignItems = 'center';
+    leftContainer.appendChild(homeBtn);          // Home stays on the “start” side
 
-    // Assemble the toolbar (left‑to‑right order)
-    container.appendChild(homeBtn);
-    container.appendChild(rightContainer);
+    const rightContainer = document.createElement('div');
+    rightContainer.style.display = 'flex';
+    rightContainer.style.alignItems = 'center';
+    rightContainer.style.gap = '0.5rem';
+    rightContainer.appendChild(themeBtn);
+    rightContainer.appendChild(settingsBtn);     // Theme & Settings stay together
+
+    // -----------------------------------------------------------------
+    // 5️⃣  Assemble the toolbar – space‑between pushes the containers apart
+    // -----------------------------------------------------------------
+    const toolbar = document.createElement('header');
+    toolbar.id = 'toolbar';
+    toolbar.className = 'toolbar';
+    toolbar.style.display = 'flex';
+    toolbar.style.justifyContent = 'space-between';
+    toolbar.style.alignItems = 'center';
+    // No need to flip flex‑direction – the browser handles start/end automatically.
+    toolbar.appendChild(leftContainer);
+    toolbar.appendChild(rightContainer);
+
+    // -----------------------------------------------------------------
+    // 6️⃣  Insert the toolbar into the supplied container
+    // -----------------------------------------------------------------
+    container.appendChild(toolbar);
 }

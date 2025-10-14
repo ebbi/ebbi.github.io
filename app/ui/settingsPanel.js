@@ -27,7 +27,11 @@ export function renderSettingsPanel(afterElement) {
     // Determine the language that is currently stored (fallback handled inside storage)
     const currentLang = getStoredLang();                 // e.g. "en", "th", …
     const localeObj = getLocale(currentLang).content;    // now includes speechSetup
-
+    const levelDefs = [
+        { label: localeObj.basic, value: 'basic' },
+        { label: localeObj.intermediate, value: 'intermediate' },
+        { label: localeObj.advance, value: 'advance' }
+    ];
     // Use the new translation key; fall back to the old “Settings” string, then to a literal.
     summary.textContent = localeObj.speechSetup || localeObj.settings || 'Speech Setup';
     details.appendChild(summary);
