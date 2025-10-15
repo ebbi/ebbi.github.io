@@ -1,17 +1,23 @@
+// ---------------------------------------------------------------
 // app/ui/routes.js
+// ---------------------------------------------------------------
+
+// ────── existing imports ───────────────────────────────────────
 import { renderToolbar } from './toolbar.js';
 import { renderSettingsPanel } from './settingsPanel.js';
 import { renderMenu } from './menu.js';
 import { renderExerciseDetail } from './detail.js';
 import { initDictionaryPage } from './dictionaryExercise.js';
 import { getOSInstructionKey } from '../utils/osDetection.js';
-import { renderHeader } from '/app/ui/renderHeader.js';   // absolute‑from‑root (optional)
-
 import { getLocale, SUPPORTED_LANGS, FALLBACK_LANG } from '../data/locales.js';
 import { setStoredLang, getStoredLang } from '../utils/storage.js';
 import { applyDirection } from '../utils/rtl.js';
-import { showModal } from './modal.js';
+import { loadJSON } from '../utils/fetch.js';   // ← NEW import – needed for deep‑link loading
+// -----------------------------------------------------------------
 
+/* -----------------------------------------------------------------
+   HOME – fresh list of exercises
+   ----------------------------------------------------------------- */
 /* -----------------------------------------------------------------
    Helper – create the page skeleton (header + static nav + empty main)
    ----------------------------------------------------------------- */
@@ -42,7 +48,6 @@ function clearPage() {
    ----------------------------------------------------------------- */
 export async function homeHandler({ lang } = {}) {
     if (!lang) {
-        // use the global router instance
         window.router.navigate(`/${getStoredLang()}/`, true);
         return;
     }
@@ -73,26 +78,58 @@ export async function exercisesHandler({ lang } = {}) {
    SINGLE EXERCISE DETAIL – dispatch based on exercise “type”
    ----------------------------------------------------------------- */
 export async function exerciseDetailHandler({ lang, id } = {}) {
+    // -----------------------------------------------------------------
+    // 0️⃣  Persist language & direction (same as other handlers)
+    // -----------------------------------------------------------------
     if (lang !== getStoredLang()) await setStoredLang(lang);
     applyDirection(lang);
+
+    // -----------------------------------------------------------------
+    // 1️⃣  Ensure the page skeleton exists (toolbar, nav, empty <main>)
+    // -----------------------------------------------------------------
     await renderAppSkeleton();
     clearPage();
 
+    // -----------------------------------------------------------------
+    // 2️⃣  Load the global EXERCISES array if it is still empty.
+    //     This covers the case where the user lands directly on a deep‑link
+    //     (e.g. /en/exercises/02) before the home page has populated it.
+    // -----------------------------------------------------------------
     const { EXERCISES } = await import('../data/exercises.js');
+    if (!EXERCISES.length) {
+        try {
+            const data = await loadJSON('/app/data/exercises.json');
+            EXERCISES.push(...data);
+        } catch (e) {
+            console.warn('⚠️ Could not load exercises catalogue', e);
+            const main = document.getElementById('main');
+            main.innerHTML = `<h2>🚫 Not found</h2>
+                             <p>Failed to load the exercises list.</p>`;
+            return;
+        }
+    }
+
+    // -----------------------------------------------------------------
+    // 3️⃣  Find the requested exercise metadata
+    // -----------------------------------------------------------------
     const meta = EXERCISES.find(e => e.id === id);
     if (!meta) {
         const main = document.getElementById('main');
-        main.innerHTML = `<h2>🚫 Not found</h2><p>No exercise with id ${id}.</p>`;
+        main.innerHTML = `<h2>🚫 Not found</h2>
+                         <p>No exercise with id ${id}.</p>`;
         return;
     }
 
-    // Dictionary‑type exercises have a custom renderer.
+    // -----------------------------------------------------------------
+    // 4️⃣  Dispatch to the appropriate renderer
+    // -----------------------------------------------------------------
+    // Dictionary‑type exercises have a custom UI.
     if (meta.details && meta.details.type === 'dictionary') {
         await initDictionaryPage(lang, id);
         return;
     }
 
-    // Generic detail view – inject into <main>.
+    // Generic detail view – inject a container and let renderExerciseDetail handle it.
     const detailContainer = document.createElement('section');
     detailContainer.id = 'detail';
     detailContainer.className = 'detail-section hidden';
@@ -109,16 +146,9 @@ export async function settingsHandler({ lang } = {}) {
     await renderAppSkeleton();
     clearPage();                     // wipe any leftover dynamic UI
 
-    // At this point the DOM already contains:
-    //   <header id="toolbarContainer">…</header>
-    //   <nav class="menu-nav">…</nav>   (static selectors only)
-    //   <main id="main" class="main"></main>
-
-    // 1️⃣ Render the Settings panel **inside** <main>.
     const main = document.getElementById('main');
     renderSettingsPanel(main);   // panel is appended to <main>
 
-    // 2️⃣ Inject any additional settings‑specific markup into <main>.
     const extra = document.createElement('section');
     extra.innerHTML = `<h2>⚙️ Settings (${lang})</h2>
                        <p>TODO – add more preferences here.</p>`;
