@@ -1,15 +1,32 @@
+// ---------------------------------------------------------------
 // app/ui/dictionaryExercise.js
 // ---------------------------------------------------------------
 // Render a “dictionary”‑type exercise (exercise id = "01").
 // ---------------------------------------------------------------
 import { loadJSON } from '../utils/fetch.js';
 import { renderHeader } from './renderHeader.js';
-// import { renderHeader } from '/app/ui/renderHeader.js';
 import { getLocale, LANGUAGE_LABELS } from '../data/locales.js';
-// 1️⃣  IMPORT THE VOICE‑HELPER (already exists in the repo)
 import { SUPPORTED_LANGS } from '../data/locales.js';
 import { populateVoiceList } from '../utils/speech.js';
-// import { router } from '/app/router/router.js';   // global router instance
+
+/* === PATCH START === */
+// -----------------------------------------------------------------
+// 0️⃣  GLOBAL STATE for the player
+// -----------------------------------------------------------------
+let playerState = {
+    // indices are **zero‑based**
+    tokenIdx: 0,          // which Thai token we are on
+    transIdx: -1,         // -1 means we are about to speak the Thai token,
+    // 0..N‑1 are the selected translations
+    playing: false,
+    paused: false,
+    delaySec: 1,          // default delay between utterances
+    voiceName: null,      // name of the voice selected in the voice <select>
+    // will be filled later with the DOM elements we need to highlight
+    tokenEls: [],         // array of <span class="thai"> elements (order = tokenIdx)
+    transEls: []          // 2‑dimensional: transEls[tokenIdx][langIdx] = <span>
+};
+/* === PATCH END === */
 
 
 /**
@@ -36,26 +53,250 @@ function buildTokenColumn(thaiWord, translations) {
     thaiSpan.style.marginBottom = '0.4rem';
     col.appendChild(thaiSpan);
 
+    // Store the Thai element for later highlighting
+    /* === PATCH START === */
+    playerState.tokenEls.push(thaiSpan);
+    /* === PATCH END === */
+
     // Translations – each on its own line
-    translations.forEach(t => {
+    translations.forEach((t, i) => {
         const transSpan = document.createElement('span');
         transSpan.className = 'trans';
         transSpan.textContent = t || '';          // empty strings are fine
         transSpan.style.fontSize = '0.9rem';
         transSpan.style.color = 'var(--txt-secondary)';
         col.appendChild(transSpan);
+
+        // Keep a reference for highlighting later
+        /* === PATCH START === */
+        if (!playerState.transEls[playerState.tokenEls.length - 1])
+            playerState.transEls[playerState.tokenEls.length - 1] = [];
+        playerState.transEls[playerState.tokenEls.length - 1].push(transSpan);
+        /* === PATCH END === */
     });
+
+    // -----------------------------------------------------------------
+    // Click on any word (Thai or translation) → highlight & start from it
+    // -----------------------------------------------------------------
+    const clickHandler = (ev) => {
+        // Find which token we clicked
+        const tokenIndex = playerState.tokenEls.indexOf(thaiSpan);
+        if (tokenIndex === -1) return;
+
+        // Determine whether we clicked the Thai word or a translation
+        const isThai = ev.target.classList.contains('thai');
+        const transIndex = isThai ? -1 : Array.from(col.children).indexOf(ev.target) - 1; // -1 because first child is Thai
+
+        // Update player state
+        playerState.tokenIdx = tokenIndex;
+        playerState.transIdx = transIndex;   // -1 → next utterance will be Thai
+        highlightCurrent();                 // visual feedback
+        // If we are already playing, we let the current utterance finish;
+        // otherwise we start playing from the selected word.
+        if (!playerState.playing) startPlaying();
+    };
+    thaiSpan.addEventListener('click', clickHandler);
+    col.querySelectorAll('.trans').forEach(tr => tr.addEventListener('click', clickHandler));
 
     return col;
 }
 
-/**
- * Render the dictionary exercise inside the provided <main>.
- *
- * @param {HTMLElement} mainEl – the <main> element returned by renderHeader()
- * @param {Object} exerciseMeta – the entry from exercises.json (id, folder, file, title, …)
- * @param {string} uiLang – UI language code currently selected (e.g. "th")
- */
+/* === PATCH START === */
+// -----------------------------------------------------------------
+// Helper: speak a string with the selected voice, returns a Promise
+// -----------------------------------------------------------------
+function speakText(text) {
+    return new Promise((resolve, reject) => {
+        if (!('speechSynthesis' in window)) {
+            reject(new Error('speechSynthesis not supported'));
+            return;
+        }
+        const utter = new SpeechSynthesisUtterance(text);
+        // Pick the voice that matches the name stored in playerState.voiceName
+        const voices = speechSynthesis.getVoices();
+        const voice = voices.find(v => v.name === playerState.voiceName) || voices[0];
+        if (voice) utter.voice = voice;
+        utter.onend = () => resolve();
+        utter.onerror = (e) => reject(e);
+        speechSynthesis.speak(utter);
+    });
+}
+
+/* -----------------------------------------------------------------
+   Highlight the current token / translation according to playerState
+   ----------------------------------------------------------------- */
+function clearHighlights() {
+    playerState.tokenEls.forEach(el => el.style.background = '');
+    playerState.transEls.flat().forEach(el => el.style.background = '');
+}
+function highlightCurrent() {
+    clearHighlights();
+    const tIdx = playerState.tokenIdx;
+    const trIdx = playerState.transIdx;
+    if (tIdx < 0 || tIdx >= playerState.tokenEls.length) return;
+    if (trIdx === -1) {
+        // Thai token is highlighted
+        playerState.tokenEls[tIdx].style.background = 'var(--link)';
+    } else {
+        const transEl = playerState.transEls[tIdx][trIdx];
+        if (transEl) transEl.style.background = 'var(--link)';
+    }
+}
+
+/* -----------------------------------------------------------------
+   Core playback loop – walks through tokens & selected translations
+   ----------------------------------------------------------------- */
+async function playbackLoop() {
+    playerState.playing = true;
+    while (playerState.playing && playerState.tokenIdx < playerState.tokenEls.length) {
+        const tIdx = playerState.tokenIdx;
+        const transArray = playerState.transEls[tIdx]; // array of translation spans for this token
+
+        // 1️⃣  Speak the Thai token (if we haven’t just spoken it)
+        if (playerState.transIdx === -1) {
+            highlightCurrent();
+            const thaiText = playerState.tokenEls[tIdx].textContent;
+            await speakText(thaiText);
+            await new Promise(r => setTimeout(r, playerState.delaySec * 1000));
+            playerState.transIdx = 0;   // move to first translation
+            continue;                  // go to the top of the loop to handle translation
+        }
+
+        // 2️⃣  Speak the selected translation (if any remain)
+        if (playerState.transIdx < transArray.length) {
+            const transSpan = transArray[playerState.transIdx];
+            highlightCurrent();
+            const txt = transSpan.textContent.trim();
+            if (txt) {
+                await speakText(txt);
+                await new Promise(r => setTimeout(r, playerState.delaySec * 1000));
+            }
+            playerState.transIdx += 1;
+            continue;                  // stay on same token until all translations done
+        }
+
+        // 3️⃣  All translations for this token are done → advance to next token
+        playerState.tokenIdx += 1;
+        playerState.transIdx = -1;      // reset to Thai for the next token
+    }
+    playerState.playing = false;
+    clearHighlights();
+}
+
+/* -----------------------------------------------------------------
+   Public controls – called from the UI buttons
+   ----------------------------------------------------------------- */
+function startPlaying() {
+    if (playerState.playing) return;   // already playing
+    playerState.paused = false;
+    playbackLoop().catch(console.warn);
+}
+function pausePlaying() {
+    if (!playerState.playing) return;
+    speechSynthesis.cancel();          // stop any ongoing utterance
+    playerState.playing = false;
+    playerState.paused = true;
+}
+function resetPlaying() {
+    speechSynthesis.cancel();
+    playerState.tokenIdx = 0;
+    playerState.transIdx = -1;
+    playerState.playing = false;
+    playerState.paused = false;
+    clearHighlights();
+    startPlaying();
+}
+
+/* -----------------------------------------------------------------
+   Build the navigation panel (Play / Pause / Reset / Delay)
+   ----------------------------------------------------------------- */
+function buildNavPanel(locale, uiLang) {
+    const panel = document.createElement('div');
+    panel.style.display = 'flex';
+    panel.style.alignItems = 'center';
+    panel.style.gap = '0.5rem';
+    panel.style.margin = '0.5rem 1rem';
+
+    // ---- Play button -------------------------------------------------
+    const playBtn = document.createElement('button');
+    playBtn.title = 'Play';
+    playBtn.textContent = '▶️';
+    playBtn.onclick = () => startPlaying();
+    panel.appendChild(playBtn);
+
+    // ---- Pause button ------------------------------------------------
+    const pauseBtn = document.createElement('button');
+    pauseBtn.title = 'Pause';
+    pauseBtn.textContent = '⏸️';
+    pauseBtn.onclick = () => pausePlaying();
+    panel.appendChild(pauseBtn);
+
+    // ---- Reset button ------------------------------------------------
+    const resetBtn = document.createElement('button');
+    resetBtn.title = 'Reset';
+    resetBtn.textContent = '🔄';
+    resetBtn.onclick = () => resetPlaying();
+    panel.appendChild(resetBtn);
+
+    // ---- Delay input -------------------------------------------------
+    const delayLabel = document.createElement('label');
+    delayLabel.textContent = locale.delay || 'Delay (s):';
+    delayLabel.style.marginRight = '0.2rem';
+    panel.appendChild(delayLabel);
+
+    const delayInput = document.createElement('input');
+    delayInput.type = 'number';
+    delayInput.min = 1;
+    delayInput.max = 5;
+    delayInput.step = 0.1;
+    delayInput.value = playerState.delaySec;
+    delayInput.style.width = '3rem';
+    delayInput.oninput = () => {
+        const val = parseFloat(delayInput.value);
+        if (!isNaN(val) && val >= 1 && val <= 5) {
+            playerState.delaySec = val;
+        }
+    };
+    panel.appendChild(delayInput);
+
+    return panel;
+}
+
+/* -----------------------------------------------------------------
+   If no voices are available we need to show the “install voice”
+   message and disable the whole control panel.
+   ----------------------------------------------------------------- */
+function maybeDisableControls(panel, locale) {
+    const voiceSelect = document.getElementById('voiceSelect');
+    const hasVoices = voiceSelect && voiceSelect.options.length > 0;
+
+    if (!hasVoices) {
+        // ---------------------------------------------------------
+        // Show the localized “install voice” message
+        // ---------------------------------------------------------
+        const msg = locale.installVoiceSetup ||
+            locale.installMessage ||
+            'You need to set up speech synthesis for the selected languages.';
+        const p = document.createElement('p');
+        p.textContent = msg;
+        p.style.color = 'var(--error)';
+        p.style.fontWeight = 'bold';
+        panel.appendChild(p);
+
+        // ---------------------------------------------------------
+        // Visually disable the whole navigation panel
+        // ---------------------------------------------------------
+        panel.style.opacity = '0.5';            // grey‑out look
+        panel.style.pointerEvents = 'none';     // prevent interaction
+
+        // Also explicitly disable each control (helps screen‑readers)
+        panel.querySelectorAll('button,input').forEach(el => el.disabled = true);
+    }
+}
+
+/* -----------------------------------------------------------------
+   Main entry – render the dictionary exercise inside the provided <main>.
+   ----------------------------------------------------------------- */
 export async function renderDictionaryExercise(mainEl, exerciseMeta, uiLang) {
     // -----------------------------------------------------------------
     // 1️⃣ Load the JSON file that contains the token/translation arrays
@@ -99,6 +340,10 @@ export async function renderDictionaryExercise(mainEl, exerciseMeta, uiLang) {
     // 5️⃣ Helper that rebuilds the token grid based on current states
     // -----------------------------------------------------------------
     function rebuildTokenGrid() {
+        // Reset the highlight‑state arrays each time we rebuild
+        playerState.tokenEls = [];
+        playerState.transEls = [];
+
         tokenGrid.innerHTML = '';
 
         data.forEach(entry => {
@@ -120,20 +365,16 @@ export async function renderDictionaryExercise(mainEl, exerciseMeta, uiLang) {
     // -----------------------------------------------------------------
     // 6️⃣ Build the language‑options UI inside a <details> element
     // -----------------------------------------------------------------
+    // -----------------------------------------------------------------
+    // 6️⃣  Build the language‑options UI inside a <details> element
+    // -----------------------------------------------------------------
+
+
     const details = document.createElement('details');
-    details.open = true;                     // default open
-    details.style.margin = '0.5rem 1rem';
 
-    // ---- Summary (internationalised) ----
-    const summary = document.createElement('summary');
-    // Expected key: "languageOptions". Fallback to English text.
-    summary.textContent = locale.languageOptions || 'Language options';
-    details.appendChild(summary);
-
-
-    // ---------------------------------------------------------------
-    // 🎤  NEW: Voice selector dropdown (right after the summary)
-    // ---------------------------------------------------------------
+    /* -------------------------------------------------------------
+       6️⃣️⃣  Voice selector – appears just below the language options
+       ------------------------------------------------------------- */
     const voiceSelect = document.createElement('select');
     voiceSelect.id = 'voiceSelect';
     voiceSelect.style.width = '100%';
@@ -141,74 +382,38 @@ export async function renderDictionaryExercise(mainEl, exerciseMeta, uiLang) {
     voiceSelect.style.marginBottom = '0.5rem';
     details.appendChild(voiceSelect);
 
-    // Helper that runs after the voices are loaded
-    function afterVoiceLoad(matchingVoices) {
-        // If we got at least one voice → keep the selector visible
-        if (matchingVoices.length > 0) {
-            // Populate the <select> (the helper already does the heavy lifting)
-            populateVoiceList(voiceSelect, SUPPORTED_LANGS);
-            voiceSelect.onchange = ev => {
-                console.log('[Voice] selected for dictionary', ev.target.value);
-                // You can hook your own TTS playback here if you wish.
-            };
-        } else {
-            // Create a new option element
-            var newOption = document.createElement("option");
-            newOption.value = "1"; // Set the value of the new option
-            newOption.text = locale.installVoiceSetup || 'Click ⚙️ and Follow instruction to setup Speech';
-            //"Click ⚙️ and Follow instruction to setup Speech"; // Set the text of the new option
+    // Populate the list with the voices that match any of the app languages.
+    populateVoiceList(voiceSelect, SUPPORTED_LANGS);
 
-            // Append the new option to the select list
-            voiceSelect.appendChild(newOption);
+    // Remember the selected voice for the player.
+    playerState.voiceName = voiceSelect.value;
 
-            // ---- No voices available -------------------------------------------------
-            // Remove the empty <select> (so the UI isn’t confusing)
-            /*
-                        voiceSelect.remove();
-                        
-                                    // Show a friendly message
-                                    const msg = document.createElement('p');
-                                    msg.textContent =
-                                        locale.noVoiceMessage ||
-                                        'No speech synthesis voices are installed for the supported languages. Instructions to setup in 5 seconds';
-                                    msg.style.color = 'var(--error)';
-                                    msg.style.fontWeight = 'bold';
-                                    details.appendChild(msg);
-                        
-                                    // After a short pause, send the user to the Settings page where the
-                                    // install‑steps modal lives (the modal will pop‑up automatically).
-                                    setTimeout(() => {
-                                        // The Settings page will call `showInstallModal()` if the voice list
-                                        // is still empty, giving the user step‑by‑step OS instructions.
-                                        router.navigate(`/${uiLang}/settings`, true);
-                                    }, 5000);
-                        
-                                    */
-        }
+
+    /* -------------------------------------------------------------
+       9️⃣  Sync voiceSelect after the UI is built
+       ------------------------------------------------------------- */
+    // The <select id="voiceSelect"> was created earlier in the UI.
+    // Here we just sync the player state and listen for changes.
+    if (voiceSelect) {
+        // Initialise the player with the current selection
+        playerState.voiceName = voiceSelect.value;
+
+        // Update the player state when the user picks a different voice.
+        voiceSelect.addEventListener('change', ev => {
+            playerState.voiceName = ev.target.value;
+        });
+
     }
 
-    // ---------------------------------------------------------------
-    // Populate the voice list – the SpeechSynthesis API is async.
-    // ---------------------------------------------------------------
-    if ('speechSynthesis' in window) {
-        // `speechSynthesis.getVoices()` may return an empty array initially.
-        // Listen for the `voiceschanged` event and then evaluate.
-        const handle = () => {
-            const all = speechSynthesis.getVoices();
-            const matching = all.filter(v =>
-                SUPPORTED_LANGS.includes(v.lang.slice(0, 2).toLowerCase())
-            );
-            afterVoiceLoad(matching);
-        };
-        speechSynthesis.addEventListener('voiceschanged', handle);
-        // Call once in case the voices are already loaded.
-        handle();
-    } else {
-        // Browser does not support the Web Speech API – treat as “no voices”.
-        afterVoiceLoad([]);
-    }
+    details.open = true;                     // default open
+    details.style.margin = '0.5rem 1rem';
+    mainEl.appendChild(details);
 
-
+    // ---- Summary (internationalised) ----
+    const summary = document.createElement('summary');
+    // Expected key: "languageOptions". Fallback to English text.
+    summary.textContent = locale.languageOptions || 'Language options';
+    details.appendChild(summary);
 
     // ---- Grid for language options (3 columns) ----
     const optionsGrid = document.createElement('div');
@@ -293,7 +498,36 @@ export async function renderDictionaryExercise(mainEl, exerciseMeta, uiLang) {
     });
 
     // -----------------------------------------------------------------
-    // 7️⃣ Assemble the page: title → token grid → language options
+    // 7️⃣  Insert the navigation panel **below** the language‑options <details>
+    // -----------------------------------------------------------------
+    const navPanel = buildNavPanel(locale, uiLang); // pass locale and UI language
+    mainEl.appendChild(navPanel);              // placed after the <details>
+
+    // -----------------------------------------------------------------
+    // 8️⃣  If there are no TTS voices, show the install‑message and
+    //      disable the whole navigation panel.
+    // -----------------------------------------------------------------
+    maybeDisableControls(navPanel, locale);
+
+    // -----------------------------------------------------------------
+    // 9️⃣  Hook up the voice selector (if it exists on the page) so
+    //      the player knows which voice to use.
+    // -----------------------------------------------------------------
+
+    // The <select id="voiceSelect"> was created earlier in the UI.
+    // Here we just sync the player state and listen for changes.
+    if (voiceSelect) {
+        // Initialise the player with the current selection
+        playerState.voiceName = voiceSelect.value;
+
+        // Update the player state whenever the user picks a different voice
+        voiceSelect.addEventListener('change', ev => {
+            playerState.voiceName = ev.target.value;
+        });
+    }
+
+    // -----------------------------------------------------------------
+    // 10️⃣ Assemble the page: title → token grid → language options → nav
     // -----------------------------------------------------------------
     mainEl.innerHTML = '';          // wipe any previous content
 
@@ -309,8 +543,12 @@ export async function renderDictionaryExercise(mainEl, exerciseMeta, uiLang) {
 
     // Token grid (initially empty – will be filled after first rebuild)
     mainEl.appendChild(tokenGrid);
-    // Language options panel
+
+    // Language‑options panel (the <details> we built above)
     mainEl.appendChild(details);
+
+    // Navigation panel (play / pause / reset / delay)
+    mainEl.appendChild(navPanel);
 
     // Initial render of the token grid (reflect default selections)
     rebuildTokenGrid();

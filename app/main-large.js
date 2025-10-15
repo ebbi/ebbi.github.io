@@ -1,6 +1,4 @@
 // app/main.js
-import { Router } from './router.js';
-import { FONT_CATALOG, preloadFonts } from './fonts.js';
 
 // -------------------- CONFIG --------------------
 const SUPPORTED_LANGS = ['th', 'fa', 'zh', 'ja', 'es', 'en', 'hi', 'ar'];
@@ -118,7 +116,7 @@ function renderToolbar() {
     themeBtn.onclick = toggleTheme;
     select.onchange = ev => {
         const newLang = ev.target.value;
-        if (newLang !== UI_LANG) router.navigate(`/${newLang}/`, true);
+        if (newLang !== UI_LANG) window.router.navigate(`/${newLang}/`, true);
     };
 
     // Insert Settings panel
@@ -430,7 +428,7 @@ function populateMenu(container) {
         const item = ev.target.closest('.menu-item');
         if (!item) return;
         const id = item.dataset.id;
-        router.navigate(`/${UI_LANG}/exercises/${id}`);
+        window.router.navigate(`/${UI_LANG}/exercises/${id}`);
     });
 
     menuSection.appendChild(ul);
@@ -552,7 +550,7 @@ async function homeHandler({ lang } = {}) {
         return;
     }
     if (!SUPPORTED_LANGS.includes(lang)) {
-        router.navigate(`/${FALLBACK_LANG}/`, true);
+        window.router.navigate(`/${FALLBACK_LANG}/`, true);
         return;
     }
     if (lang !== UI_LANG) await setLang(lang);

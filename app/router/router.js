@@ -92,7 +92,7 @@ export class Router {
     /** Register a 404 / “not found” handler. */
     setNotFound(handler) {
         if (typeof handler !== 'function')
-            throw new TypeError('Router.setNotFound expects a function');
+            throw new TypeError('window.router.setNotFound expects a function');
         this._notFound = handler;
     }
 

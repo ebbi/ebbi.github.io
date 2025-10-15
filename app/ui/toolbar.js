@@ -27,7 +27,7 @@ export function renderToolbar(container) {
         // *** IMPORTANT *** – navigate to the root of the stored language,
         // using replaceState so the current URL (which might be an exercise)
         // is discarded and the home page is rendered fresh.
-        router.navigate(`/${getStoredLang()}/`, true);
+        window.router.navigate(`/${getStoredLang()}/`, true);
     };
 
     const themeBtn = document.createElement('button');
@@ -44,7 +44,7 @@ export function renderToolbar(container) {
     settingsBtn.textContent = '⚙️';
     settingsBtn.style.flex = '0 0 auto';
     settingsBtn.onclick = () => {
-        router.navigate(`/${getStoredLang()}/settings`, true);
+        window.router.navigate(`/${getStoredLang()}/settings`, true);
     };
 
     // -----------------------------------------------------------------

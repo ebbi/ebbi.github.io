@@ -3,9 +3,6 @@ import { loadJSON } from '../utils/fetch.js';
 import { EXERCISES } from '../data/exercises.js';
 import { getLocale, SUPPORTED_LANGS, FALLBACK_LANG } from '../data/locales.js';
 import { showInstallModal } from './routes.js';          // <-- import the modal helper
-// import { router } from '../router/router.js';            // <-- router for redirects (global instance)
-// The router instance is attached to `window` by bootstrap.js.
-// No import is needed – just use `window.router` below.
 
 /**
  * Render the detail view for a single exercise.
@@ -38,7 +35,7 @@ export async function renderExerciseDetail(container, id, UI_LANG) {
         // -----------------------------------------------------------------
         // 1️⃣  Load the JSON payload for the exercise
         // -----------------------------------------------------------------
-        const jsonPath = `/app${ex.folder}/${ex.file}`;   // correct URL (no double slash)
+        const jsonPath = `/app/${ex.folder}/${ex.file}`;
         const data = await loadJSON(jsonPath);
 
         const block = data.content[UI_LANG] || data.content[FALLBACK_LANG];
@@ -108,7 +105,7 @@ export async function renderExerciseDetail(container, id, UI_LANG) {
                 // Show the existing install‑modal with instructions.
                 showInstallModal();          // pulls OS‑specific steps
                 // Navigate to the Settings page for the current language.
-                router.navigate(`/${UI_LANG}/settings`, true);
+                window.router.navigate(`/${UI_LANG}/settings`, true);
             }, 5000);
         } else {
             // Populate the <select>

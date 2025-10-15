@@ -67,7 +67,7 @@ export async function renderHeader(lang) {
             // Persist language, update direction, then navigate to home for the new lang
             setStoredLang(newLang);
             applyDirection(newLang);
-            router.navigate(`/${newLang}/`, true);
+            window.router.navigate(`/${newLang}/`, true);
         }
     };
     nav.appendChild(langSelect);

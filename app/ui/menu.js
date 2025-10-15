@@ -74,7 +74,7 @@ function renderStaticNav(navEl, UI_LANG) {
             setStoredLang(newLang);
             applyDirection(newLang);
             // Navigate to the home route of the new language.
-            router.navigate(`/${newLang}/`, true);
+            window.router.navigate(`/${newLang}/`, true);
         }
     };
     navEl.appendChild(langSelect);
@@ -222,7 +222,7 @@ export async function renderMenu(container, UI_LANG) {
         const item = ev.target.closest('.menu-item');
         if (!item) return;
         const id = item.dataset.id;
-        router.navigate(`/${UI_LANG}/exercises/${id}`);
+        window.router.navigate(`/${UI_LANG}/exercises/${id}`);
     });
 
     // -------------------------------------------------------------
