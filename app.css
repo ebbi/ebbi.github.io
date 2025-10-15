@@ -200,3 +200,35 @@ details {
     background: #222;
     color: #eee;
 }
+
+/* -------------------------------------------------------------
+   Dictionary‑exercise grid
+   ------------------------------------------------------------- */
+.dict-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    padding: 1rem;
+}
+
+/* Individual token column */
+.token-col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Thai word – larger & bold */
+.token-col .thai {
+    font-weight: bold;
+    font-size: 1.2rem;
+    margin-bottom: 0.4rem;
+    color: var(--heading-accent);
+}
+
+/* Translation lines */
+.token-col .trans {
+    font-size: 0.9rem;
+    color: var(--txt-secondary);
+}

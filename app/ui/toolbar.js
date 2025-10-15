@@ -5,8 +5,6 @@ import { applyDirection } from '../utils/rtl.js';
 import { setStoredLang, getStoredLang } from '../utils/storage.js';
 
 export function renderToolbar(container) {
-    const router = window.router;                     // global router
-
     // -----------------------------------------------------------------
     // 1️⃣  Empty the container (in case this runs more than once)
     // -----------------------------------------------------------------
@@ -26,12 +24,16 @@ export function renderToolbar(container) {
     homeBtn.textContent = '🏠';
     homeBtn.style.flex = '0 0 auto';
     homeBtn.onclick = () => {
-        router.navigate(`/${getStoredLang()}`, true);
+        // *** IMPORTANT *** – navigate to the root of the stored language,
+        // using replaceState so the current URL (which might be an exercise)
+        // is discarded and the home page is rendered fresh.
+        router.navigate(`/${getStoredLang()}/`, true);
     };
 
     const themeBtn = document.createElement('button');
     themeBtn.id = 'themeToggle';
-    themeBtn.title = getLocale(getStoredLang()).content.toggleTheme || 'Toggle light/dark mode';
+    themeBtn.title = getLocale(getStoredLang()).content.toggleTheme ||
+        'Toggle light/dark mode';
     themeBtn.textContent = '🌙';
     themeBtn.style.flex = '0 0 auto';
     themeBtn.onclick = toggleTheme;
@@ -51,14 +53,14 @@ export function renderToolbar(container) {
     const leftContainer = document.createElement('div');
     leftContainer.style.display = 'flex';
     leftContainer.style.alignItems = 'center';
-    leftContainer.appendChild(homeBtn);          // Home stays on the “start” side
+    leftContainer.appendChild(homeBtn); // Home stays on the “start” side
 
     const rightContainer = document.createElement('div');
     rightContainer.style.display = 'flex';
     rightContainer.style.alignItems = 'center';
     rightContainer.style.gap = '0.5rem';
     rightContainer.appendChild(themeBtn);
-    rightContainer.appendChild(settingsBtn);     // Theme & Settings stay together
+    rightContainer.appendChild(settingsBtn); // Theme & Settings together
 
     // -----------------------------------------------------------------
     // 5️⃣  Assemble the toolbar – space‑between pushes the containers apart
@@ -69,7 +71,6 @@ export function renderToolbar(container) {
     toolbar.style.display = 'flex';
     toolbar.style.justifyContent = 'space-between';
     toolbar.style.alignItems = 'center';
-    // No need to flip flex‑direction – the browser handles start/end automatically.
     toolbar.appendChild(leftContainer);
     toolbar.appendChild(rightContainer);
 

@@ -7,7 +7,12 @@ import { getLocale } from '../data/locales.js';
 // Font‑related imports
 // -----------------------------------------------------------------
 import { FONT_CATALOG } from '../data/fonts.js';
-import { getStoredFont, setStoredFont, getStoredLang, setStoredLang } from '../utils/storage.js';
+import {
+    getStoredFont,
+    setStoredFont,
+    getStoredLang,
+    setStoredLang
+} from '../utils/storage.js';
 import { applyFontFamily } from '../utils/fontHelper.js';
 import { SUPPORTED_LANGS, LANGUAGE_LABELS } from '../data/locales.js';
 import { applyDirection } from '../utils/rtl.js';
@@ -22,7 +27,7 @@ const LS_LEVELS_KEY = 'local_storage_levels';
 // -----------------------------------------------------------------
 function getStoredLevels() {
     const raw = localStorage.getItem(LS_LEVELS_KEY);
-    if (!raw) return ['basic'];                       // default: only Basic
+    if (!raw) return ['basic'];
     try {
         const arr = JSON.parse(raw);
         return Array.isArray(arr) ? arr.map(s => s.toLowerCase()) : ['basic'];
@@ -38,42 +43,21 @@ function setStoredLevels(levels) {
     }
 }
 
-// -----------------------------------------------------------------
-// Main render function – called by the router
-// -----------------------------------------------------------------
-export async function renderMenu(container, UI_LANG) {
-    // -------------------------------------------------------------
-    // 0️⃣ Start fresh – clear any previous content
-    // -------------------------------------------------------------
-    container.innerHTML = '';
+/**
+ * Render (or re‑render) the shared navigation bar **without** the
+ * level‑filter checkboxes or the exercise list.
+ *
+ * This function is called once during app start‑up (by renderHeader)
+ * to ensure the nav contains only the static selectors.
+ *
+ * @param {HTMLElement} navEl – the <nav class="menu-nav"> element.
+ * @param {string} UI_LANG – currently selected UI language.
+ */
+function renderStaticNav(navEl, UI_LANG) {
+    // Clear any previous content (should be empty on first run)
+    navEl.innerHTML = '';
 
-    // -------------------------------------------------------------
-    // 1️⃣ Load exercises (once, cached in EXERCISES)
-    // -------------------------------------------------------------
-    if (!EXERCISES.length) {
-        try {
-            const data = await loadJSON('/app/data/exercises.json');
-            EXERCISES.push(...data);
-        } catch (e) {
-            const err = document.createElement('p');
-            err.textContent = '❌ Unable to load exercises.';
-            container.appendChild(err);
-            return;
-        }
-    }
-
-    // -----------------------------------------------------------------
-    // 2️⃣ Navigation bar (language selector, font selector, level checkboxes)
-    // -----------------------------------------------------------------
-    const navBar = document.createElement('section');
-    navBar.className = 'menu-nav';
-    navBar.style.display = 'flex';
-    navBar.style.flexDirection = 'column';
-    navBar.style.gap = '0';                 // no vertical gap between rows
-    navBar.style.marginBottom = '0';
-    container.appendChild(navBar);          // attach early – the rest of the code will append to it
-
-    // -------------------- Language selector (now in the nav) --------------------
+    // -------------------- Language selector --------------------
     const langSelect = document.createElement('select');
     langSelect.id = 'langSelect';
     langSelect.style.width = '100%';
@@ -89,11 +73,11 @@ export async function renderMenu(container, UI_LANG) {
         if (newLang !== getStoredLang()) {
             setStoredLang(newLang);
             applyDirection(newLang);
-            // reload the menu in the newly selected language
-            renderMenu(container, newLang);
+            // Navigate to the home route of the new language.
+            router.navigate(`/${newLang}/`, true);
         }
     };
-    navBar.appendChild(langSelect);
+    navEl.appendChild(langSelect);
 
     // -------------------- Font selector --------------------
     const fontSelect = document.createElement('select');
@@ -114,34 +98,70 @@ export async function renderMenu(container, UI_LANG) {
         applyFontFamily(fontObj.family);
         document.dispatchEvent(new CustomEvent('fontChanged'));
     };
-    navBar.appendChild(fontSelect);
+    navEl.appendChild(fontSelect);
+}
 
-    // -------------------- Level‑filter checkboxes (row, smaller font) --------------------
+/**
+ * Render the **dynamic** part of the UI (level‑filter checkboxes and the
+ * exercise list) inside the supplied `container` (the <main> element).
+ *
+ * @param {HTMLElement} container – the <main> element where dynamic UI goes.
+ * @param {string} UI_LANG – currently selected UI language.
+ */
+export async function renderMenu(container, UI_LANG) {
+    // -------------------------------------------------------------
+    // 0️⃣ Ensure exercises are loaded (once)
+    // -------------------------------------------------------------
+    if (!EXERCISES.length) {
+        try {
+            const data = await loadJSON('/app/data/exercises.json');
+            EXERCISES.push(...data);
+        } catch (e) {
+            const err = document.createElement('p');
+            err.textContent = '❌ Unable to load exercises.';
+            container.appendChild(err);
+            return;
+        }
+    }
+
+    // -------------------------------------------------------------
+    // 1️⃣ Get (or create) the static <nav class="menu-nav"> element.
+    // -------------------------------------------------------------
+    let nav = document.querySelector('nav.menu-nav');
+    if (!nav) {
+        nav = document.createElement('nav');
+        nav.className = 'menu-nav';
+        // Insert the nav directly after the toolbar container (header)
+        const header = document.getElementById('toolbarContainer');
+        header.parentNode.insertBefore(nav, header.nextSibling);
+    }
+    // Populate only the static selectors – no checkboxes or list here.
+    renderStaticNav(nav, UI_LANG);
+
+    // -------------------------------------------------------------
+    // 2️⃣ Level‑filter checkboxes (dynamic, go inside <main>)
+    // -------------------------------------------------------------
     const levelWrapper = document.createElement('div');
     levelWrapper.style.display = 'flex';
     levelWrapper.style.justifyContent = 'space-between';
-    levelWrapper.style.alignItems = 'center';   // vertically align checkboxes with labels
+    levelWrapper.style.alignItems = 'center';
     levelWrapper.style.flexWrap = 'nowrap';
-    levelWrapper.style.gap = '0.5rem';          // small space between the three boxes
-    levelWrapper.style.margin = '0 1rem';       // <-- required margin
-    levelWrapper.style.fontSize = '0.85rem';   // same font size as the selects
+    levelWrapper.style.gap = '0.5rem';
+    levelWrapper.style.margin = '0 1rem';
+    levelWrapper.style.fontSize = '0.85rem';
 
-    // ---------------------------------------------------------------
-    // 3️⃣  Build the level‑filter definitions using the locale strings
-    // ---------------------------------------------------------------
-    const localeObj = getLocale(UI_LANG).content;   // already loaded earlier
+    const localeObj = getLocale(UI_LANG).content;
     const levelDefs = [
         { label: localeObj.basic, value: 'basic' },
         { label: localeObj.intermediate, value: 'intermediate' },
         { label: localeObj.advance, value: 'advance' }
     ];
-    const storedLevels = getStoredLevels(); // default = ['basic']
+    const storedLevels = getStoredLevels();
 
     levelDefs.forEach(def => {
-        // Each label is a flex row: checkbox next to its text
         const label = document.createElement('label');
         label.style.display = 'flex';
-        label.style.alignItems = 'center';    // vertical alignment
+        label.style.alignItems = 'center';
         label.style.cursor = 'pointer';
         label.style.margin = '0';
 
@@ -149,14 +169,15 @@ export async function renderMenu(container, UI_LANG) {
         cb.type = 'checkbox';
         cb.value = def.value;
         cb.checked = storedLevels.includes(def.value);
-        cb.style.margin = '0 0.2rem 0 0';      // tiny space between box and text
+        cb.style.margin = '0 0.2rem 0 0';
 
-        // Update stored levels and re‑render on change
         cb.onchange = () => {
-            const checked = Array.from(levelWrapper.querySelectorAll('input[type="checkbox"]:checked'))
-                .map(i => i.value);
-            const final = checked.length ? checked : ['basic']; // never empty
+            const checked = Array.from(
+                levelWrapper.querySelectorAll('input[type="checkbox"]:checked')
+            ).map(i => i.value);
+            const final = checked.length ? checked : ['basic'];
             setStoredLevels(final);
+            // Re‑render the list while staying on the same page.
             renderMenu(container, UI_LANG);
         };
 
@@ -165,17 +186,13 @@ export async function renderMenu(container, UI_LANG) {
         levelWrapper.appendChild(label);
     });
 
-    navBar.appendChild(levelWrapper);
-
-    container.appendChild(navBar);   // navigation bar appears once at the top
-
     // -------------------------------------------------------------
-    // 3️⃣ Exercise list – filtered by selected levels
+    // 3️⃣ Exercise list (dynamic, also goes inside <main>)
     // -------------------------------------------------------------
     const ul = document.createElement('ul');
     ul.className = 'menu-list';
 
-    const activeLevels = new Set(getStoredLevels()); // lower‑case strings
+    const activeLevels = new Set(getStoredLevels());
 
     EXERCISES
         .filter(ex => activeLevels.has(ex.level.toLowerCase()))
@@ -185,12 +202,14 @@ export async function renderMenu(container, UI_LANG) {
             li.dataset.id = ex.id;
 
             const title = document.createElement('h3');
-            title.textContent = (ex.title && ex.title[UI_LANG]) || ex.title.en || 'Untitled';
+            title.textContent =
+                (ex.title && ex.title[UI_LANG]) || ex.title.en || 'Untitled';
             li.appendChild(title);
 
             const summary = document.createElement('p');
             summary.className = 'summary';
-            summary.textContent = (ex.summary && ex.summary[UI_LANG]) || ex.summary.en || '';
+            summary.textContent =
+                (ex.summary && ex.summary[UI_LANG]) || ex.summary.en || '';
             li.appendChild(summary);
 
             ul.appendChild(li);
@@ -204,5 +223,11 @@ export async function renderMenu(container, UI_LANG) {
         router.navigate(`/${UI_LANG}/exercises/${id}`);
     });
 
+    // -------------------------------------------------------------
+    // 4️⃣ Inject the dynamic pieces into the <main> container.
+    // -------------------------------------------------------------
+    // Clear any previous dynamic content first.
+    container.innerHTML = '';
+    container.appendChild(levelWrapper);
     container.appendChild(ul);
 }

@@ -22,7 +22,14 @@ export async function renderExerciseDetail(container, id, UI_LANG) {
     container.appendChild(loadingP);
 
     try {
-        const data = await loadJSON(`/app/${ex.folder}/${ex.file}`);
+        /* ---------------------------------------------------------
+           NOTE: ex.folder already begins with a leading slash.
+           We must NOT add another slash before it, otherwise the URL
+           becomes "/app//data/…", which 404s.
+           ---------------------------------------------------------- */
+        const jsonPath = `/app${ex.folder}/${ex.file}`; // correct URL
+        const data = await loadJSON(jsonPath);
+
         const block = data.content[UI_LANG] || data.content[FALLBACK_LANG];
 
         // Build the final fragment
@@ -51,8 +58,10 @@ export async function renderExerciseDetail(container, id, UI_LANG) {
         container.innerHTML = '';
         container.appendChild(frag);
     } catch (e) {
+        // If the fetch fails we still replace the loading UI with an error.
         container.innerHTML = `<h2>${ex.title?.[UI_LANG] || ex.title?.en}</h2>
                                <p class="error">⚠️ Failed to load exercise.</p>`;
+        console.error('renderExerciseDetail error:', e);
     }
 }
 
