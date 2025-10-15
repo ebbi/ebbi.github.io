@@ -1,13 +1,23 @@
-In the generated exercise page  below the div with token and translation:
-1. inject an html element details (default open)
-2. add a summary element with internationalized text "language options" 
-3. Within details add a grid with 3 columns (css 6fr 2fr 2fr)
-4. First column does not have a heading, 
-second column heading Display and third column heading Speak 
-5. The first column is the list of languages, second and third column checkboxes
-6. all text to be internationalized and displayed in the currently selected language
 
-7. If a Speak checkbox is selected, the corresponding Display checkbox is automatically selected
-8. If a Display checkbox is deselected, the corresponding Speak checkbox is deselected
-8. Every click event on any of the checkboxes updates the translations words displayed above the Language options
+Double checked:
+
+JASON data: /app/data/exercises/thai/test_dictionary_greetings.json
+
+    {
+        "id": "02",
+        "folder": "data/exercises/thai",
+...
+and 
+app/ui/dictionaryExercise.js
+
+    const jsonPath = `/app${exerciseMeta.folder}/${exerciseMeta.file}`;
+    const data = await loadJSON(jsonPath);   // data is an array of objects
+
+Clear browser cache. Restart the server
+
+http://127.0.0.1:5500/en/exercises/02
+
+[Router] testing {regex: '^\\/([^/]+)\\/exercises\\/([^/]+)$', path: '/en/exercises/02'}
+router.js:82 [Router] MATCH {pattern: '^\\/([^/]+)\\/exercises\\/([^/]+)$', params: {…}}
+VM66:1 Uncaught (in promise) SyntaxError: Unexpected token '<', "<!DOCTYPE "... is not valid JSON
 

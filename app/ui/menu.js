@@ -80,25 +80,27 @@ function renderStaticNav(navEl, UI_LANG) {
     navEl.appendChild(langSelect);
 
     // -------------------- Font selector --------------------
-    const fontSelect = document.createElement('select');
-    fontSelect.id = 'fontSelect';
-    fontSelect.style.width = '100%';
-    fontSelect.style.fontSize = '0.85rem';
-    fontSelect.style.margin = '0';
-    const savedFont = getStoredFont();
-    fontSelect.innerHTML = FONT_CATALOG.map(f => {
-        const sel = f.name === savedFont ? 'selected' : '';
-        return `<option value="${f.name}" ${sel}>${f.name}</option>`;
-    }).join('');
-    fontSelect.onchange = ev => {
-        const chosenName = ev.target.value;
-        const fontObj = FONT_CATALOG.find(f => f.name === chosenName);
-        if (!fontObj) return;
-        setStoredFont(fontObj.name);
-        applyFontFamily(fontObj.family);
-        document.dispatchEvent(new CustomEvent('fontChanged'));
-    };
-    navEl.appendChild(fontSelect);
+    /*
+        const fontSelect = document.createElement('select');
+        fontSelect.id = 'fontSelect';
+        fontSelect.style.width = '100%';
+        fontSelect.style.fontSize = '0.85rem';
+        fontSelect.style.margin = '0';
+        const savedFont = getStoredFont();
+        fontSelect.innerHTML = FONT_CATALOG.map(f => {
+            const sel = f.name === savedFont ? 'selected' : '';
+            return `<option value="${f.name}" ${sel}>${f.name}</option>`;
+        }).join('');
+        fontSelect.onchange = ev => {
+            const chosenName = ev.target.value;
+            const fontObj = FONT_CATALOG.find(f => f.name === chosenName);
+            if (!fontObj) return;
+            setStoredFont(fontObj.name);
+            applyFontFamily(fontObj.family);
+            document.dispatchEvent(new CustomEvent('fontChanged'));
+        };
+        navEl.appendChild(fontSelect);
+        */
 }
 
 /**

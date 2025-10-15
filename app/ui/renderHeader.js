@@ -7,6 +7,8 @@ import { renderMenu } from './menu.js';
 import { applyDirection } from '../utils/rtl.js';
 import { getStoredLang, setStoredLang } from '../utils/storage.js';
 import { SUPPORTED_LANGS, FALLBACK_LANG, LANGUAGE_LABELS } from '../data/locales.js';
+import { populateFontSelect } from './fontSelect.js';
+// import { renderHeader } from '/app/ui/renderHeader.js';
 
 /**
  * Creates the static page skeleton:
@@ -78,7 +80,7 @@ export async function renderHeader(lang) {
     fontSelect.style.margin = '0';
     // The actual options will be filled later by `renderMenu` (it knows the catalog).
     nav.appendChild(fontSelect);
-
+    populateFontSelect(fontSelect);
     // -----------------------------------------------------------------
     // 5️⃣ Return the <main> element for the caller to inject page‑specific UI.
     // -----------------------------------------------------------------

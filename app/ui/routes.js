@@ -5,10 +5,12 @@ import { renderMenu } from './menu.js';
 import { renderExerciseDetail } from './detail.js';
 import { initDictionaryPage } from './dictionaryExercise.js';
 import { getOSInstructionKey } from '../utils/osDetection.js';
+import { renderHeader } from '/app/ui/renderHeader.js';   // absolute‑from‑root (optional)
 
 import { getLocale, SUPPORTED_LANGS, FALLBACK_LANG } from '../data/locales.js';
 import { setStoredLang, getStoredLang } from '../utils/storage.js';
 import { applyDirection } from '../utils/rtl.js';
+import { showModal } from './modal.js';
 
 /* -----------------------------------------------------------------
    Helper – create the page skeleton (header + static nav + empty main)
@@ -40,19 +42,19 @@ function clearPage() {
    ----------------------------------------------------------------- */
 export async function homeHandler({ lang } = {}) {
     if (!lang) {
-        router.navigate(`/${getStoredLang()}/`, true);
+        // use the global router instance
+        window.router.navigate(`/${getStoredLang()}/`, true);
         return;
     }
     if (!SUPPORTED_LANGS.includes(lang)) {
-        router.navigate(`/${FALLBACK_LANG}/`, true);
+        window.router.navigate(`/${FALLBACK_LANG}/`, true);
         return;
     }
     if (lang !== getStoredLang()) await setStoredLang(lang);
     applyDirection(lang);
 
     await renderAppSkeleton();
-    clearPage();
-    // Dynamic UI (checkboxes + exercise list) goes inside <main>.
+    clearPage();                     // ensure a clean slate
     await renderMenu(document.getElementById('main'), lang);
 }
 
@@ -115,6 +117,12 @@ export async function settingsHandler({ lang } = {}) {
     // 1️⃣ Render the Settings panel **inside** <main>.
     const main = document.getElementById('main');
     renderSettingsPanel(main);   // panel is appended to <main>
+
+    // 2️⃣ Inject any additional settings‑specific markup into <main>.
+    const extra = document.createElement('section');
+    extra.innerHTML = `<h2>⚙️ Settings (${lang})</h2>
+                       <p>TODO – add more preferences here.</p>`;
+    main.appendChild(extra);
 }
 
 /* -----------------------------------------------------------------

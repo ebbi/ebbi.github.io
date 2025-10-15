@@ -36,8 +36,14 @@ export function showModal(title, bodyHTML) {
         document.body.appendChild(backdrop);
     }
 
-    // Populate the modal
+    // -----------------------------------------------------------------
+    // Populate the modal – use the global DOMPurify if it exists.
+    // -----------------------------------------------------------------
+    const sanitizer = (typeof window !== 'undefined' && window.DOMPurify)
+        ? window.DOMPurify
+        : { sanitize: (html) => html };   // fallback: no sanitisation
+
     document.getElementById('custom-modal-title').textContent = title;
-    // Sanitize bodyHTML to prevent XSS
-    document.getElementById('custom-modal-body').innerHTML = DOMPurify.sanitize(bodyHTML);
+    // Sanitize bodyHTML to prevent XSS (or pass through unchanged if no lib)
+    document.getElementById('custom-modal-body').innerHTML = sanitizer.sanitize(bodyHTML);
 }
