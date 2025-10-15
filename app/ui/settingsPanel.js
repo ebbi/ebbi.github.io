@@ -57,21 +57,58 @@ export function renderSettingsPanel(container) {
     // -----------------------------------------------------------
     // 5️⃣ OS‑specific installation instructions (as a <ul>)
     // -----------------------------------------------------------
+    /* -------------------------------------------------------------
+       5️⃣  OS‑specific installation instructions (as a <ul>)
+       ------------------------------------------------------------- */
     (async () => {
         try {
-            const osKey = await getOSInstructionKey(); // e.g. installStepsWindows
+            // -----------------------------------------------------------------
+            // Determine which OS‑specific key we need (e.g. installStepsWindows)
+            // -----------------------------------------------------------------
+            const osKey = await getOSInstructionKey(); // returns a string like "installStepsWindows"
             const locale = getLocale(getStoredLang()).content;
-            const stepsRaw = locale[osKey] || locale.installSteps || '';
-            const stepLines = stepsRaw.split(/\r?\n|<br\s*\/?>/i).filter(Boolean);
 
+            // -----------------------------------------------------------------
+            // Grab the raw step text from the locale file.
+            // If the OS‑specific key is missing we fall back to the generic list.
+            // -----------------------------------------------------------------
+            const stepsRaw = locale[osKey] || locale.installSteps || '';
+
+            // -----------------------------------------------------------------
+            // Split the raw text into individual lines, ignoring empty ones.
+            // The locale strings may contain line‑breaks or <br/> tags.
+            // -----------------------------------------------------------------
+            const stepLines = stepsRaw
+                .split(/\r?\n|<br\s*\/?>/i)   // split on newline or <br/>
+                .map(l => l.trim())
+                .filter(l => l.length);
+
+            // -----------------------------------------------------------------
+            // Build a friendly intro sentence that tells the user what to do.
+            // This sentence is also internationalised.
+            // -----------------------------------------------------------------
+            const intro = locale.setupSpeechIntro ||
+                locale.installVoiceSetupIntro ||
+                'Follow these steps to install the speech‑synthesis voice for your system:';
+
+            // -----------------------------------------------------------------
+            // Create the <ul> that will hold the step list.
+            // -----------------------------------------------------------------
             const ul = document.createElement('ul');
             ul.className = 'answer';
             ul.style.paddingLeft = '1.2rem';
             ul.style.margin = '0.5rem 0';
 
+            // Add the introductory sentence as the first <li> (styled bold)
+            const introLi = document.createElement('li');
+            introLi.textContent = intro;
+            introLi.style.fontWeight = 'bold';
+            ul.appendChild(introLi);
+
+            // Append each step as its own <li>
             stepLines.forEach(line => {
                 const li = document.createElement('li');
-                li.textContent = line.trim();
+                li.textContent = line;
                 ul.appendChild(li);
             });
 
@@ -81,11 +118,4 @@ export function renderSettingsPanel(container) {
             console.warn('Unable to load voice‑setup help:', e);
         }
     })();
-
-    // -----------------------------------------------------------
-    // 6️⃣ Font selector – **removed** from the settings panel.
-    // -----------------------------------------------------------
-    // The font selector already lives in the static navigation bar
-    // (rendered by renderHeader / renderMenu).  Keeping it here would
-    // duplicate the control and break the required page structure.
 }

@@ -266,31 +266,87 @@ function buildNavPanel(locale, uiLang) {
    If no voices are available we need to show the “install voice”
    message and disable the whole control panel.
    ----------------------------------------------------------------- */
-function maybeDisableControls(panel, locale) {
-    const voiceSelect = document.getElementById('voiceSelect');
-    const hasVoices = voiceSelect && voiceSelect.options.length > 0;
+function maybeDisableControls(panel, locale, uiLang) {
+    // -----------------------------------------------------------------
+    // Helper that decides whether we have any usable TTS voice for the
+    // languages supported by the app.  We look at the *actual* SpeechSynthesis
+    // voice list, not just the <select> options (which may be empty while the
+    // browser is still loading voices).
+    // -----------------------------------------------------------------
+    const evaluate = () => {
+        // Get all voices known to the browser
+        const allVoices = ('speechSynthesis' in window) ? speechSynthesis.getVoices() : [];
 
-    if (!hasVoices) {
-        // ---------------------------------------------------------
-        // Show the localized “install voice” message
-        // ---------------------------------------------------------
-        const msg = locale.installVoiceSetup ||
-            locale.installMessage ||
-            'You need to set up speech synthesis for the selected languages.';
-        const p = document.createElement('p');
-        p.textContent = msg;
-        p.style.color = 'var(--error)';
-        p.style.fontWeight = 'bold';
-        panel.appendChild(p);
+        // Keep only those whose language code matches one of the app languages
+        const matching = allVoices.filter(v =>
+            SUPPORTED_LANGS.includes(v.lang.slice(0, 2).toLowerCase())
+        );
 
-        // ---------------------------------------------------------
-        // Visually disable the whole navigation panel
-        // ---------------------------------------------------------
+        const hasVoices = matching.length > 0;
+
+        // -------------------------------------------------------------
+        // If we have at least one matching voice → enable the panel.
+        // -------------------------------------------------------------
+        if (hasVoices) {
+            // Remove any previously added warning/message
+            const existingMsg = panel.querySelector('.no-voice-msg');
+            if (existingMsg) existingMsg.remove();
+
+            // Restore normal appearance & interactivity
+            panel.style.opacity = '';
+            panel.style.pointerEvents = '';
+            panel.querySelectorAll('button,input').forEach(el => el.disabled = false);
+            return;
+        }
+
+        // -------------------------------------------------------------
+        // No matching voices → show the instruction message and grey‑out.
+        // -------------------------------------------------------------
+        // (Create the message only once.)
+        if (!panel.querySelector('.no-voice-msg')) {
+            const msg = locale.installVoiceSetup ||
+                locale.installMessage ||
+                'You need to set up speech synthesis for the selected languages.';
+            // -------------------------------------------------------------
+            // 1️⃣  Build a button that says “Click to Setup Speech”
+            // -------------------------------------------------------------
+            const btn = document.createElement('button');
+            btn.type = 'button';
+            btn.className = 'no-voice-btn';
+            btn.textContent = locale.setupSpeechButton ||
+                locale.clickToSetupSpeech ||
+                'Setup Speech';               // fallback English
+
+            // Style the button (you can tweak the CSS later in a global stylesheet)
+            btn.style.background = 'var(--link)';
+            btn.style.color = '#fff';
+            btn.style.border = 'none';
+            btn.style.padding = '0.4rem 0.8rem';
+            btn.style.borderRadius = '4px';
+            btn.style.cursor = 'pointer';
+            btn.style.fontSize = '0.9rem';
+            btn.style.marginTop = '0.5rem';
+
+            // When the user clicks the button, go to the Settings page for the current UI language.
+            btn.onclick = () => {
+                // The Settings page already contains the detailed install‑steps modal.
+                window.router.navigate(`/${uiLang}/settings`, true);
+            };
+
+            panel.appendChild(btn);
+        }
+
         panel.style.opacity = '0.5';            // grey‑out look
-        panel.style.pointerEvents = 'none';     // prevent interaction
-
-        // Also explicitly disable each control (helps screen‑readers)
+        panel.style.pointerEvents = 'none';     // block clicks
         panel.querySelectorAll('button,input').forEach(el => el.disabled = true);
+    };
+
+    // Run the check immediately (in case voices are already loaded)
+    evaluate();
+
+    // Re‑run whenever the browser reports that the voice list has changed.
+    if ('speechSynthesis' in window) {
+        speechSynthesis.addEventListener('voiceschanged', evaluate);
     }
 }
 
@@ -507,7 +563,7 @@ export async function renderDictionaryExercise(mainEl, exerciseMeta, uiLang) {
     // 8️⃣  If there are no TTS voices, show the install‑message and
     //      disable the whole navigation panel.
     // -----------------------------------------------------------------
-    maybeDisableControls(navPanel, locale);
+    maybeDisableControls(navPanel, locale, uiLang);
 
     // -----------------------------------------------------------------
     // 9️⃣  Hook up the voice selector (if it exists on the page) so
