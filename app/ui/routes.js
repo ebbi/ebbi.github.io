@@ -156,11 +156,6 @@ export async function settingsHandler({ lang } = {}) {
     // Render the Settings panel inside the <main> element.
     renderSettingsPanel(main);
 
-    // Optional placeholder content – you can replace or extend this later.
-    const extra = document.createElement('section');
-    extra.innerHTML = `<h2>⚙️ Settings (${lang})</h2>
-                       <p>TODO – add more preferences here.</p>`;
-    main.appendChild(extra);
 }
 
 /* -----------------------------------------------------------------

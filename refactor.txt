@@ -2,6 +2,21 @@
 Note: I am using VSCode and Diff path is problematic.  Please generate code to be searched for to replace followed by corrected code
 
 
+
+For step 1. Save the file (renderSettingsPanel.js). I think you meant settingsPanel.js
+
+.settings-faq ol {
+    margin-left: 0;
+}
+is much better, particularly for rtl and on small screens
+
+The list numbers for rtl are still outside the ol container and need the sudo selector ::before and ::after
+to solve the problem of overlapping list numbers over the details panel border.
+
+second, hi ja zh all have English list numbers not the translation
+
+
+
 In the Settings page:
 Delete the current content entirely.  We wil implement a new design
 
@@ -9,24 +24,47 @@ Delete the modal page help to setup speech entirely.
 
 Delete any flash message in the exercise page for TTS voices not being available
 
+The settings page has now brought back the old content!!!
+Please delete all existing content in the Settings page.
 
-Delete all modal and any references to any modal.  Modal is being replaced by a new design.
+The Settings page new design is successive html details element with a summary element.
 
+Insert an html details element
+Insert a summary element with text:
 
-[Router] testing 
-{regex: '^\\/([^/]+)\\/exercises\\/([^/]+)$', path: '/en/exercises/02'}
-router.js:82 [Router] MATCH 
-{pattern: '^\\/([^/]+)\\/exercises\\/([^/]+)$', params: {…}}
-routes.js:193 Uncaught (in promise) ReferenceError: showModal is not defined
-    at showInstallModal (routes.js:193:5)
-routes.js:193 Uncaught (in promise) ReferenceError: showModal is not defined
-    at showInstallModal (routes.js:193:5)
-showInstallModal	@	routes.js:193
-await in showInstallModal		
-fill	@	speech.js:14
+Q. How to configure Text-to-Speech on an Android mobile phone? 
 
+Within the details element, insert a paragraph: 
 
+ To configure Text-to-Speech (TTS) on an Android mobile phone, follow these steps:
 
+Insert the following Answer as a numbered list:
+
+1.    Open Settings: Start by opening the Settings app on your Android device.
+
+2.    Accessibility: Scroll down and tap on "Accessibility." (On some devices, you may find Text-to-Speech under “Language & input” or “System.”)
+    (alternatively, use 🔍 and search for Text-to-Speech)
+
+3.    Text-to-Speech Output: Look for the option labeled "Text-to-Speech output" and tap on it.
+
+4.    Select TTS Engine: You will see options for different TTS engines. The default is usually Google Text-to-Speech. You can select it or any other installed TTS engine.
+
+5.    Language Settings: Tap on “Language” to choose the language you want to use for TTS. You may need to download additional languages if they are not already installed.
+
+6.    Voice Selection: Under the "Voice" option, you can choose from various available voices, which may include different accents and genders.
+
+7.    Adjust Speech Rate and Pitch: You can modify the speech rate (how fast the text is spoken) and pitch (how high or low the voice sounds) according to your preferences.
+
+8.    Test the Voice: There is usually an option to listen to a sample of the voice to ensure it meets your needs. Tap on "Listen to an example" to hear how the selected voice sounds.
+
+9.    Download Language Packs: If you want to add more languages, you can often download them through the settings by tapping on "Install voice data."
+
+Insert a end paragraph:
+After completing these steps, your device should be ready to utilize Text-to-Speech in the selected languages and voices. 
+
+Include the translation of the above for all the App languages.
+NOTE: The output you are generating hangs and then restarts from an unknown point.  
+COnsider generating each translation block separately.
 
 
 
