@@ -158,13 +158,25 @@ export async function renderMenu(container, UI_LANG) {
     levelWrapper.style.gap = '0.5rem';
     levelWrapper.style.margin = '0 1rem';
     levelWrapper.style.fontSize = '0.85rem';
-
-    const localeObj = getLocale(UI_LANG).content;
+    /*
+        const localeObj = getLocale(UI_LANG).content;
+        const levelDefs = [
+            { label: localeObj.basic, value: 'basic' },
+            { label: localeObj.intermediate, value: 'intermediate' },
+            { label: localeObj.advance, value: 'advance' }
+        ];
+        */
+    // After flattening the locale cache (see locales.js) the locale
+    // object is returned directly – there is no longer a `.content`
+    // wrapper.  Using the old shape caused `localeObj` to be undefined,
+    // which broke the level‑filter UI (basic / intermediate / advance).
+    const localeObj = getLocale(UI_LANG);
     const levelDefs = [
         { label: localeObj.basic, value: 'basic' },
         { label: localeObj.intermediate, value: 'intermediate' },
         { label: localeObj.advance, value: 'advance' }
     ];
+
     const storedLevels = getStoredLevels();
 
     levelDefs.forEach(def => {

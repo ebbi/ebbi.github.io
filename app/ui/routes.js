@@ -49,6 +49,9 @@ function clearPage() {
    HOME – fresh list of exercises
    ----------------------------------------------------------------- */
 export async function homeHandler({ lang } = {}) {
+    // -------------------------------------------------------------
+    // 1️⃣ Normalise language, persist it and set text direction.
+    // -------------------------------------------------------------
     if (!lang) {
         window.router.navigate(`/${getStoredLang()}/`, true);
         return;
@@ -59,7 +62,7 @@ export async function homeHandler({ lang } = {}) {
     }
     if (lang !== getStoredLang()) await setStoredLang(lang);
     applyDirection(lang);
-
+    
     await renderAppSkeleton();
     clearPage();                     // ensure a clean slate
     await renderMenu(document.getElementById('main'), lang);

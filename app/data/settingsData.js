@@ -5,9 +5,9 @@
  * Structure:
  *   {
  *     <langCode>: {
- *       question: string,   // text that goes inside <summary>
- *       intro:    string,   // paragraph shown before the list
- *       steps:    [string], // each step – the <ol> will add the numbers
+ *       question: string,   // goes inside <summary>
+ *       intro:    string,   // paragraph before the list
+ *       steps:    [string], // each step – <ol> will add the numbers
  *       outro:    string    // paragraph after the list
  *     },
  *     …
@@ -17,7 +17,7 @@
  */
 export const SETTINGS_FAQ = {
     // -----------------------------------------------------------------
-    // English (already present – keep it as‑is)
+    // English (default)
     // -----------------------------------------------------------------
     en: {
         question:
@@ -87,8 +87,7 @@ export const SETTINGS_FAQ = {
     // Spanish
     // -----------------------------------------------------------------
     es: {
-        question:
-            'P: ¿Cómo configurar Text-to-Speech en un teléfono Android?',
+        question: 'P: ¿Cómo configurar Text-to-Speech en un teléfono Android?',
         intro:
             'Para configurar Text-to-Speech (TTS) en un teléfono Android, siga estos pasos:',
         steps: [
@@ -110,8 +109,7 @@ export const SETTINGS_FAQ = {
     // Arabic
     // -----------------------------------------------------------------
     ar: {
-        question:
-            'س: كيف يمكن إعداد Text-to-Speech على هاتف Android؟',
+        question: 'س: كيف يمكن إعداد Text-to-Speech على هاتف Android؟',
         intro:
             'لتكوين Text-to-Speech (TTS) على هاتف Android، اتبع الخطوات التالية:',
         steps: [
@@ -174,7 +172,6 @@ export const SETTINGS_FAQ = {
         outro:
             'これらの手順を完了すると、選択した言語と音声で Text-to-Speech を利用できるようになります。'
     },
-
     // -----------------------------------------------------------------
     // Chinese (Simplified)
     // -----------------------------------------------------------------

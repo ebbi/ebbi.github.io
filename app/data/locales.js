@@ -16,7 +16,9 @@ export const LANGUAGE_LABELS = {
     ar: 'AR - العربية'
 };
 
-export const locales = {};   // will be filled with { en:{content:{…}}, … }
+// The locale cache will hold the raw JSON objects directly.
+// Consumers can now do `const loc = getLocale(lang); loc.toggleTheme`.
+export const locales = {};   // will be filled with { en:{…}, th:{…}, … }
 
 /**
  * Load every locale file, wrap it in a `content` object and cache it.
@@ -30,8 +32,8 @@ export async function loadLocales() {
                 return {};                     // empty fallback
             })
             .then(data => {
-                // <<< IMPORTANT >>>  wrap the raw JSON in a `content` property
-                locales[lang] = { content: data };
+                // Store the raw JSON – no extra nesting.
+                locales[lang] = data;
                 console.info(`[Locale] Loaded "${lang}"`);
             })
     );
@@ -39,10 +41,7 @@ export async function loadLocales() {
     await Promise.allSettled(loaders);
 }
 
-/**
- * Retrieve the locale object for a given language (always returns a
- * `{content:{…}}` shape – never undefined).
- */
+/** Return the locale object for *lang* (never undefined). */
 export function getLocale(lang) {
-    return locales[lang] || locales[FALLBACK_LANG];
+    return locales[lang] ?? locales[FALLBACK_LANG];
 }

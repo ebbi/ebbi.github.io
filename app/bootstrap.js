@@ -2,6 +2,8 @@
 /* --------------------------------------------------------------
    Imports
    -------------------------------------------------------------- */
+//import { applyStoredFont } from './utils/fontHelper.js';
+
 import {
     loadLocales,
     getLocale,
@@ -28,7 +30,9 @@ import {
 } from './ui/routes.js';
 
 import { FONT_CATALOG } from './data/fonts.js';               // ← NEW import
-import { applyCurrentFont } from './utils/fontHelper.js';     // ← NEW import
+// import { applyCurrentFont } from './utils/fontHelper.js';     // ← NEW import
+import { applyStoredFont } from './utils/fontHelper.js';     // ← NEW import
+
 //import { isRtlLang } from './utils/rtl.js';                  // ← keep existing import (if you added it)
 import { applyDirection, isRtlLang } from './utils/rtl.js';
 
@@ -68,7 +72,9 @@ import { applyDirection, isRtlLang } from './utils/rtl.js';
         /* --------------------------------------------------------------
            4️⃣ Apply the persisted font (if any) BEFORE any UI is rendered
            -------------------------------------------------------------- */
-        applyCurrentFont(FONT_CATALOG, getStoredFont);
+        //        applyCurrentFont(FONT_CATALOG, getStoredFont);
+        // Apply the persisted font (single source of truth)
+        applyStoredFont();
 
         /* --------------------------------------------------------------
            5️⃣ Finally resolve the current URL → first page view

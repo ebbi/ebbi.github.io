@@ -3,6 +3,7 @@
 // ---------------------------------------------------------------
 // Render a “dictionary”‑type exercise (exercise id = "01").
 // ---------------------------------------------------------------
+import { speakText } from '../utils/speech.js';
 import { loadJSON } from '../utils/fetch.js';
 import { renderHeader } from './renderHeader.js';
 import { getLocale, LANGUAGE_LABELS } from '../data/locales.js';
@@ -27,7 +28,6 @@ let playerState = {
     transEls: []          // 2‑dimensional: transEls[tokenIdx][langIdx] = <span>
 };
 /* === PATCH END === */
-
 
 /**
  * Build the HTML for a single token column.
@@ -105,6 +105,7 @@ function buildTokenColumn(thaiWord, translations) {
 // -----------------------------------------------------------------
 // Helper: speak a string with the selected voice, returns a Promise
 // -----------------------------------------------------------------
+/*
 function speakText(text) {
     return new Promise((resolve, reject) => {
         if (!('speechSynthesis' in window)) {
@@ -121,6 +122,7 @@ function speakText(text) {
         speechSynthesis.speak(utter);
     });
 }
+*/
 
 /* -----------------------------------------------------------------
    Highlight the current token / translation according to playerState
@@ -146,7 +148,8 @@ function highlightCurrent() {
 /* -----------------------------------------------------------------
    Core playback loop – walks through tokens & selected translations
    ----------------------------------------------------------------- */
-async function playbackLoop() {
+/*
+   async function playbackLoop() {
     playerState.playing = true;
     while (playerState.playing && playerState.tokenIdx < playerState.tokenEls.length) {
         const tIdx = playerState.tokenIdx;
@@ -156,8 +159,8 @@ async function playbackLoop() {
         if (playerState.transIdx === -1) {
             highlightCurrent();
             const thaiText = playerState.tokenEls[tIdx].textContent;
-            await speakText(thaiText);
-            await new Promise(r => setTimeout(r, playerState.delaySec * 1000));
+            //            await speakText(thaiText);
+            await speakText(txt, playerState.voiceName);            await new Promise(r => setTimeout(r, playerState.delaySec * 1000));
             playerState.transIdx = 0;   // move to first translation
             continue;                  // go to the top of the loop to handle translation
         }
@@ -169,6 +172,46 @@ async function playbackLoop() {
             const txt = transSpan.textContent.trim();
             if (txt) {
                 await speakText(txt);
+                await new Promise(r => setTimeout(r, playerState.delaySec * 1000));
+            }
+            playerState.transIdx += 1;
+            continue;                  // stay on same token until all translations done
+        }
+
+        // 3️⃣  All translations for this token are done → advance to next token
+        playerState.tokenIdx += 1;
+        playerState.transIdx = -1;      // reset to Thai for the next token
+    }
+    playerState.playing = false;
+    clearHighlights();
+}
+*/
+
+async function playbackLoop() {
+    playerState.playing = true;
+    while (playerState.playing && playerState.tokenIdx < playerState.tokenEls.length) {
+        const tIdx = playerState.tokenIdx;
+        const transArray = playerState.transEls[tIdx]; // array of translation spans for this token
+
+        // 1️⃣  Speak the Thai token (if we haven’t just spoken it)
+        if (playerState.transIdx === -1) {
+            highlightCurrent();
+            const thaiText = playerState.tokenEls[tIdx].textContent;
+            // Pass the selected voice name (playerState.voiceName) to the stateless TTS helper.
+            await speakText(thaiText, playerState.voiceName);
+            await new Promise(r => setTimeout(r, playerState.delaySec * 1000));
+            playerState.transIdx = 0;   // move to first translation
+            continue;                  // go to the top of the loop to handle translation
+        }
+
+        // 2️⃣  Speak the selected translation (if any remain)
+        if (playerState.transIdx < transArray.length) {
+            const transSpan = transArray[playerState.transIdx];
+            highlightCurrent();
+            const txt = transSpan.textContent.trim();
+            if (txt) {
+                // Again, forward the voice name.
+                await speakText(txt, playerState.voiceName);
                 await new Promise(r => setTimeout(r, playerState.delaySec * 1000));
             }
             playerState.transIdx += 1;
@@ -240,7 +283,7 @@ function buildNavPanel(locale, uiLang) {
 
     // ---- Delay input -------------------------------------------------
     const delayLabel = document.createElement('label');
-    delayLabel.textContent = locale.delay || 'Delay (s):';
+    delayLabel.textContent = locale.delay ?? 'Delay (s):';
     delayLabel.style.marginRight = '0.2rem';
     panel.appendChild(delayLabel);
 
@@ -313,8 +356,8 @@ function maybeDisableControls(panel, locale, uiLang) {
             const btn = document.createElement('button');
             btn.type = 'button';
             btn.className = 'no-voice-btn';
-            btn.textContent = locale.setupSpeechButton ||
-                locale.clickToSetupSpeech ||
+            btn.textContent = locale.setupSpeechButton ??
+                locale.clickToSetupSpeech ??
                 'Setup Speech';               // fallback English
 
             // Style the button (you can tweak the CSS later in a global stylesheet)
@@ -374,7 +417,12 @@ export async function renderDictionaryExercise(mainEl, exerciseMeta, uiLang) {
     // -----------------------------------------------------------------
     // 3️⃣ Internationalised UI strings
     // -----------------------------------------------------------------
-    const locale = getLocale(uiLang).content;
+    // After flattening the locale cache (see app/data/locales.js) the
+    // locale object is returned directly – there is no longer a `.content`
+    // wrapper.  Using the old shape caused `locale` to be undefined,
+    // which broke all UI strings that rely on it (e.g. languageOptions,
+    // display, speak, delay, etc.).
+    const locale = getLocale(uiLang);
     const languageKeys = Object.keys(data[0]).filter(k => k !== 'id' && k !== 'tokens');
 
     // -----------------------------------------------------------------
@@ -486,8 +534,8 @@ export async function renderDictionaryExercise(mainEl, exerciseMeta, uiLang) {
     const speakHeader = document.createElement('div');
 
     // Internationalised column headings
-    displayHeader.textContent = locale.display || 'Display';
-    speakHeader.textContent = locale.speak || 'Speak';
+    displayHeader.textContent = locale.display ?? 'Display';
+    speakHeader.textContent = locale.speak ?? 'Speak';
 
     // Center the headings vertically/horizontally
     displayHeader.style.textAlign = 'center';

@@ -32,7 +32,8 @@ export function renderToolbar(container) {
 
     const themeBtn = document.createElement('button');
     themeBtn.id = 'themeToggle';
-    themeBtn.title = getLocale(getStoredLang()).content.toggleTheme ||
+    // Locale objects are now flat.
+    themeBtn.title = getLocale(getStoredLang()).toggleTheme ||
         'Toggle light/dark mode';
     themeBtn.textContent = '🌙';
     themeBtn.style.flex = '0 0 auto';

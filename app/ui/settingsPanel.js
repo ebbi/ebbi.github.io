@@ -26,8 +26,8 @@ export function renderSettingsPanel(container) {
     // 2️⃣  Determine the UI language (fallback to English).
     // -----------------------------------------------------------------
     const lang = getStoredLang();
-    const faq = SETTINGS_FAQ[lang] || SETTINGS_FAQ['en']; // always defined
-
+    const faq = SETTINGS_FAQ[lang] ?? SETTINGS_FAQ['en']; // always defined
+        
     // -----------------------------------------------------------------
     // 3️⃣  Inject a tiny style block (no external CSS file needed).
     // -----------------------------------------------------------------
