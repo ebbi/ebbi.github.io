@@ -2,7 +2,6 @@
 import { loadJSON } from '../utils/fetch.js';
 import { EXERCISES } from '../data/exercises.js';
 import { getLocale, SUPPORTED_LANGS, FALLBACK_LANG } from '../data/locales.js';
-import { showInstallModal } from './routes.js';          // <-- import the modal helper
 
 /**
  * Render the detail view for a single exercise.

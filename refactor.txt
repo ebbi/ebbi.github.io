@@ -10,6 +10,25 @@ Delete the modal page help to setup speech entirely.
 Delete any flash message in the exercise page for TTS voices not being available
 
 
+Delete all modal and any references to any modal.  Modal is being replaced by a new design.
+
+
+[Router] testing 
+{regex: '^\\/([^/]+)\\/exercises\\/([^/]+)$', path: '/en/exercises/02'}
+router.js:82 [Router] MATCH 
+{pattern: '^\\/([^/]+)\\/exercises\\/([^/]+)$', params: {…}}
+routes.js:193 Uncaught (in promise) ReferenceError: showModal is not defined
+    at showInstallModal (routes.js:193:5)
+routes.js:193 Uncaught (in promise) ReferenceError: showModal is not defined
+    at showInstallModal (routes.js:193:5)
+showInstallModal	@	routes.js:193
+await in showInstallModal		
+fill	@	speech.js:14
+
+
+
+
+
 
 ------------------------------------------------------------------------
 

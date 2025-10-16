@@ -176,19 +176,3 @@ export async function notFoundHandler({ search = '', hash = '' } = {}) {
                       <p>Use the menu above to navigate.</p>`;
 }
 
-/* -----------------------------------------------------------------
-   OPTIONAL: Show the OS‑install‑steps modal (called from voice‑list code)
-   ----------------------------------------------------------------- */
-export async function showInstallModal() {
-    const osKey = await getOSInstructionKey();   // async now!
-    const locale = getLocale(getStoredLang()).content;
-
-    const headline = locale.installMessage ||
-        'You need to install the languages you are learning.';
-    const steps = locale[osKey] || locale.installSteps ||
-        'Refer to your OS documentation.';
-
-    const formatted = steps.replace(/<br\s*\/?>/gi, '\n');
-    const bodyHTML = `<pre class="answer">${formatted}</pre>`;
-    showModal(headline, bodyHTML);
-}

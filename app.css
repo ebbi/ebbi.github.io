@@ -174,32 +174,6 @@ details {
     border-color: #444;
 }
 
-/* Simple styling for a custom modal (if you replace alert later) */
-.modal-backdrop {
-    position: fixed;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.5);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 9999;
-}
-
-.modal {
-    background: var(--modal-bg, #fff);
-    color: var(--modal-fg, #111);
-    max-width: 90%;
-    max-height: 80vh;
-    overflow-y: auto;
-    padding: 1.5rem;
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-}
-
-[data-theme="dark"] .modal {
-    background: #222;
-    color: #eee;
-}
 
 /* -------------------------------------------------------------
    Dictionary‑exercise grid
