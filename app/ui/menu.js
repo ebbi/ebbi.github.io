@@ -54,30 +54,37 @@ function setStoredLevels(levels) {
  * @param {string} UI_LANG – currently selected UI language.
  */
 function renderStaticNav(navEl, UI_LANG) {
-    // Clear any previous content (should be empty on first run)
-    navEl.innerHTML = '';
 
-    // -------------------- Language selector --------------------
-    const langSelect = document.createElement('select');
-    langSelect.id = 'langSelect';
-    langSelect.style.width = '100%';
-    langSelect.style.fontSize = '0.85rem';
-    langSelect.style.margin = '0';
-    langSelect.innerHTML = SUPPORTED_LANGS.map(code => {
-        const sel = code === getStoredLang() ? 'selected' : '';
-        const lbl = LANGUAGE_LABELS[code] || code.toUpperCase();
-        return `<option value="${code}" ${sel}>${lbl}</option>`;
-    }).join('');
-    langSelect.onchange = ev => {
-        const newLang = ev.target.value;
-        if (newLang !== getStoredLang()) {
-            setStoredLang(newLang);
-            applyDirection(newLang);
-            // Navigate to the home route of the new language.
-            window.router.navigate(`/${newLang}/`, true);
-        }
-    };
-    navEl.appendChild(langSelect);
+    /* Language selector removed – the static header (renderHeader.js) already
+   provides a single language selector with the correct “stay on page”
+   behaviour. */
+
+    // Clear any previous content (should be empty on first run)
+    /*
+        navEl.innerHTML = '';
+    
+        // -------------------- Language selector --------------------
+        const langSelect = document.createElement('select');
+        langSelect.id = 'langSelect';
+        langSelect.style.width = '100%';
+        langSelect.style.fontSize = '0.85rem';
+        langSelect.style.margin = '0';
+        langSelect.innerHTML = SUPPORTED_LANGS.map(code => {
+            const sel = code === getStoredLang() ? 'selected' : '';
+            const lbl = LANGUAGE_LABELS[code] || code.toUpperCase();
+            return `<option value="${code}" ${sel}>${lbl}</option>`;
+        }).join('');
+        langSelect.onchange = ev => {
+            const newLang = ev.target.value;
+            if (newLang !== getStoredLang()) {
+                setStoredLang(newLang);
+                applyDirection(newLang);
+                // Navigate to the home route of the new language.
+                window.router.navigate(`/${newLang}/`, true);
+            }
+        };
+        navEl.appendChild(langSelect);
+    */
 
     // -------------------- Font selector --------------------
     /*

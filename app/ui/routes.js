@@ -13,6 +13,8 @@ import { getLocale, SUPPORTED_LANGS, FALLBACK_LANG } from '../data/locales.js';
 import { setStoredLang, getStoredLang } from '../utils/storage.js';
 import { applyDirection } from '../utils/rtl.js';
 import { loadJSON } from '../utils/fetch.js';   // ← NEW import – needed for deep‑link loading
+import { renderHeader } from './renderHeader.js';   // <-- added import
+// 
 // -----------------------------------------------------------------
 
 /* -----------------------------------------------------------------
@@ -141,14 +143,20 @@ export async function exerciseDetailHandler({ lang, id } = {}) {
    SETTINGS PAGE – static header + static nav + settings UI inside <main>
    ----------------------------------------------------------------- */
 export async function settingsHandler({ lang } = {}) {
+    // Persist language and set correct text direction.
     if (lang !== getStoredLang()) await setStoredLang(lang);
     applyDirection(lang);
-    await renderAppSkeleton();
-    clearPage();                     // wipe any leftover dynamic UI
 
-    const main = document.getElementById('main');
-    renderSettingsPanel(main);   // panel is appended to <main>
+    // Build the static page skeleton (toolbar + language selector) and get <main>.
+    const main = await renderHeader(lang);
 
+    // Ensure the main area is empty before we inject our UI.
+    clearPage();
+
+    // Render the Settings panel inside the <main> element.
+    renderSettingsPanel(main);
+
+    // Optional placeholder content – you can replace or extend this later.
     const extra = document.createElement('section');
     extra.innerHTML = `<h2>⚙️ Settings (${lang})</h2>
                        <p>TODO – add more preferences here.</p>`;

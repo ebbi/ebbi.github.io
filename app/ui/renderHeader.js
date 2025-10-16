@@ -61,15 +61,35 @@ export async function renderHeader(lang) {
         const label = LANGUAGE_LABELS[code] || code.toUpperCase();
         return `<option value="${code}" ${selected}>${label}</option>`;
     }).join('');
+
     langSelect.onchange = ev => {
         const newLang = ev.target.value;
         if (newLang !== getStoredLang()) {
-            // Persist language, update direction, then navigate to home for the new lang
+            // Persist the new language and update the document direction.
             setStoredLang(newLang);
             applyDirection(newLang);
-            window.router.navigate(`/${newLang}/`, true);
+
+            // -------------------------------------------------------------
+            // Keep the user on the *current* page (home, settings, exercise, …)
+            // by swapping the first path segment (the language code) with the
+            // newly‑selected language.
+            // Example transformations:
+            //   "/en"               → "/fr"
+            //   "/en/settings"      → "/fr/settings"
+            //   "/en/exercises/02"  → "/fr/exercises/02"
+            // -------------------------------------------------------------
+            const currentPath = location.pathname;               // e.g. "/en/settings"
+            const segments = currentPath.split('/');              // ["", "en", "settings"]
+            if (segments.length > 1) {
+                segments[1] = newLang;                           // replace language code
+            }
+            const updatedPath = segments.join('/') || '/';        // rebuild path
+
+            // Use replaceState so the navigation feels seamless (no extra history entry).
+            window.router.navigate(updatedPath, true);
         }
     };
+
     nav.appendChild(langSelect);
 
     // ---- Font selector ----------------------------------------------------

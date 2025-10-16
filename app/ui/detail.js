@@ -90,23 +90,8 @@ export async function renderExerciseDetail(container, id, UI_LANG) {
         });
 
         if (matchingVoices.length === 0) {
-            // -----------------------------------------------------------------
-            // 3️⃣❗  No voices available → flash message + redirect to Settings
-            // -----------------------------------------------------------------
-            const flash = document.createElement('p');
-            flash.textContent = locale.noVoiceMessage ||
-                'You need to set up Text-to-Speech to hear the words.';
-            flash.style.color = 'var(--error)';
-            flash.style.fontWeight = 'bold';
-            frag.appendChild(flash);
-
-            // Give the user a moment to read the message, then go to Settings.
-            setTimeout(() => {
-                // Show the existing install‑modal with instructions.
-                showInstallModal();          // pulls OS‑specific steps
-                // Navigate to the Settings page for the current language.
-                window.router.navigate(`/${UI_LANG}/settings`, true);
-            }, 5000);
+            // No TTS voices are available – we simply omit the voice selector.
+            // (Previously a flash message was shown; it has been removed per requirements.)
         } else {
             // Populate the <select>
             voiceSelect.innerHTML = matchingVoices.map(v => {
