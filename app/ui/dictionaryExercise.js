@@ -9,7 +9,6 @@ import { renderHeader } from './renderHeader.js';
 import { getLocale, LANGUAGE_LABELS } from '../data/locales.js';
 import { SUPPORTED_LANGS } from '../data/locales.js';
 import { populateVoiceList } from '../utils/speech.js';
-import { EXERCISES } from '../data/exercises.js';   // ← needed for Prev/Next navigation
 
 /* === PATCH START === */
 // -----------------------------------------------------------------
@@ -106,9 +105,28 @@ function buildTokenColumn(thaiWord, translations) {
 // -----------------------------------------------------------------
 // Helper: speak a string with the selected voice, returns a Promise
 // -----------------------------------------------------------------
-/* (the old inline version was removed – we now use the stateless
-   `speakText` imported from ../utils/speech.js) */
-// -----------------------------------------------------------------
+/*
+function speakText(text) {
+    return new Promise((resolve, reject) => {
+        if (!('speechSynthesis' in window)) {
+            reject(new Error('speechSynthesis not supported'));
+            return;
+        }
+        const utter = new SpeechSynthesisUtterance(text);
+        // Pick the voice that matches the name stored in playerState.voiceName
+        const voices = speechSynthesis.getVoices();
+        const voice = voices.find(v => v.name === playerState.voiceName) || voices[0];
+        if (voice) utter.voice = voice;
+        utter.onend = () => resolve();
+        utter.onerror = (e) => reject(e);
+        speechSynthesis.speak(utter);
+    });
+}
+*/
+
+/* -----------------------------------------------------------------
+   Highlight the current token / translation according to playerState
+   ----------------------------------------------------------------- */
 function clearHighlights() {
     playerState.tokenEls.forEach(el => el.style.background = '');
     playerState.transEls.flat().forEach(el => el.style.background = '');
@@ -130,6 +148,45 @@ function highlightCurrent() {
 /* -----------------------------------------------------------------
    Core playback loop – walks through tokens & selected translations
    ----------------------------------------------------------------- */
+/*
+   async function playbackLoop() {
+    playerState.playing = true;
+    while (playerState.playing && playerState.tokenIdx < playerState.tokenEls.length) {
+        const tIdx = playerState.tokenIdx;
+        const transArray = playerState.transEls[tIdx]; // array of translation spans for this token
+
+        // 1️⃣  Speak the Thai token (if we haven’t just spoken it)
+        if (playerState.transIdx === -1) {
+            highlightCurrent();
+            const thaiText = playerState.tokenEls[tIdx].textContent;
+            //            await speakText(thaiText);
+            await speakText(txt, playerState.voiceName);            await new Promise(r => setTimeout(r, playerState.delaySec * 1000));
+            playerState.transIdx = 0;   // move to first translation
+            continue;                  // go to the top of the loop to handle translation
+        }
+
+        // 2️⃣  Speak the selected translation (if any remain)
+        if (playerState.transIdx < transArray.length) {
+            const transSpan = transArray[playerState.transIdx];
+            highlightCurrent();
+            const txt = transSpan.textContent.trim();
+            if (txt) {
+                await speakText(txt);
+                await new Promise(r => setTimeout(r, playerState.delaySec * 1000));
+            }
+            playerState.transIdx += 1;
+            continue;                  // stay on same token until all translations done
+        }
+
+        // 3️⃣  All translations for this token are done → advance to next token
+        playerState.tokenIdx += 1;
+        playerState.transIdx = -1;      // reset to Thai for the next token
+    }
+    playerState.playing = false;
+    clearHighlights();
+}
+*/
+
 async function playbackLoop() {
     playerState.playing = true;
     while (playerState.playing && playerState.tokenIdx < playerState.tokenEls.length) {
@@ -140,6 +197,7 @@ async function playbackLoop() {
         if (playerState.transIdx === -1) {
             highlightCurrent();
             const thaiText = playerState.tokenEls[tIdx].textContent;
+            // Pass the selected voice name (playerState.voiceName) to the stateless TTS helper.
             await speakText(thaiText, playerState.voiceName);
             await new Promise(r => setTimeout(r, playerState.delaySec * 1000));
             playerState.transIdx = 0;   // move to first translation
@@ -152,6 +210,7 @@ async function playbackLoop() {
             highlightCurrent();
             const txt = transSpan.textContent.trim();
             if (txt) {
+                // Again, forward the voice name.
                 await speakText(txt, playerState.voiceName);
                 await new Promise(r => setTimeout(r, playerState.delaySec * 1000));
             }
@@ -192,7 +251,7 @@ function resetPlaying() {
 }
 
 /* -----------------------------------------------------------------
-   Build the navigation panel (Play / Pause / Reset / Delay + arrows)
+   Build the navigation panel (Play / Pause / Reset / Delay)
    ----------------------------------------------------------------- */
 function buildNavPanel(locale, uiLang) {
     const panel = document.createElement('div');
@@ -243,44 +302,9 @@ function buildNavPanel(locale, uiLang) {
     };
     panel.appendChild(delayInput);
 
-    // ---- Arrow buttons (Prev / Next) ---------------------------------
-    const prevBtn = document.createElement('button');
-    prevBtn.title = locale.prevExercise ?? 'Previous';
-    prevBtn.textContent = '←';
-    prevBtn.style.marginLeft = '0.4rem';
-    prevBtn.onclick = () => {
-        const curId = window.router.current?.params?.id;
-        if (!curId) return;
-        const idx = EXERCISES.findIndex(e => e.id === curId);
-        if (idx > 0) {
-            const prevId = EXERCISES[idx - 1].id;
-            window.router.navigate(`/${uiLang}/exercises/${prevId}`, true);
-        }
-    };
-    panel.appendChild(prevBtn);
-
-    const nextBtn = document.createElement('button');
-    nextBtn.title = locale.nextExercise ?? 'Next';
-    nextBtn.textContent = '→';
-    nextBtn.style.marginLeft = '0.2rem';
-    nextBtn.onclick = () => {
-        const curId = window.router.current?.params?.id;
-        if (!curId) return;
-        const idx = EXERCISES.findIndex(e => e.id === curId);
-        if (idx >= 0 && idx < EXERCISES.length - 1) {
-            const nextId = EXERCISES[idx + 1].id;
-            window.router.navigate(`/${uiLang}/exercises/${nextId}`, true);
-        }
-    };
-    panel.appendChild(nextBtn);
-
     return panel;
 }
 
-/* -----------------------------------------------------------------
-   maybeDisableControls – disables the whole nav panel when no matching
-   SpeechSynthesis voices are available.
-   ----------------------------------------------------------------- */
 function maybeDisableControls(panel, locale, uiLang) {
     // -----------------------------------------------------------------
     // Helper that decides whether we have any usable TTS voice for the
@@ -311,7 +335,7 @@ function maybeDisableControls(panel, locale, uiLang) {
             panel.style.pointerEvents = '';
             panel.querySelectorAll('button,input,select').forEach(el => {
                 el.disabled = false;
-                el.style.opacity = '';
+                el.style.opacity = '';          // clear any per‑element dimming
             });
             return;
         }
@@ -319,11 +343,15 @@ function maybeDisableControls(panel, locale, uiLang) {
         // -------------------------------------------------------------
         // 4️⃣  No matching voices → show the “Setup Speech” button.
         // -------------------------------------------------------------
+        // (Create the message only once.)
         if (!panel.querySelector('.no-voice-msg')) {
+            // ----- 4️⃣①  Build the button -----
             const btn = document.createElement('button');
             btn.type = 'button';
             btn.className = 'no-voice-btn';
-            btn.textContent = locale.speechSetup ?? 'Setup Speech';
+            btn.textContent = locale.speechSetup ?? 'Setup Speech'; // fallback English
+
+            // Basic styling (feel free to adjust in your global CSS)
             btn.style.background = 'var(--link)';
             btn.style.color = '#fff';
             btn.style.border = 'none';
@@ -332,10 +360,15 @@ function maybeDisableControls(panel, locale, uiLang) {
             btn.style.cursor = 'pointer';
             btn.style.fontSize = '0.9rem';
             btn.style.marginTop = '0.5rem';
+
+            // ----- 4️⃣②  Click → go to the Help page -----
             btn.onclick = () => {
                 // Navigate to the generic help page for the current UI language.
                 window.router.navigate(`/${uiLang}/help`, true);
             };
+
+            // Attach a wrapper element that we can later identify for opacity
+            // handling (helps us keep the button bright while dimming siblings).
             const wrapper = document.createElement('div');
             wrapper.className = 'no-voice-wrapper';
             wrapper.appendChild(btn);
@@ -345,13 +378,19 @@ function maybeDisableControls(panel, locale, uiLang) {
         // -------------------------------------------------------------
         // 5️⃣  Dim *only* the interactive controls (play/pause/reset/delay)
         // -------------------------------------------------------------
+        // Block clicks on the whole panel first.
         panel.style.pointerEvents = 'none';
+
+        // Walk every control inside the panel.
         panel.querySelectorAll('button,input,select').forEach(el => {
+            // Skip the dedicated “Setup Speech” button (identified by its wrapper).
             if (el.closest('.no-voice-wrapper')) {
+                // Keep it fully interactive.
                 el.disabled = false;
                 el.style.pointerEvents = 'auto';
                 el.style.opacity = '1';
             } else {
+                // Grey‑out everything else.
                 el.disabled = true;
                 el.style.pointerEvents = 'none';
                 el.style.opacity = '0.5';
@@ -359,27 +398,24 @@ function maybeDisableControls(panel, locale, uiLang) {
         });
     };
 
+    // -----------------------------------------------------------------
     // Run the check immediately (in case voices are already loaded)
+    // -----------------------------------------------------------------
     evaluate();
 
+    // -----------------------------------------------------------------
     // Re‑run whenever the browser reports that the voice list has changed.
+    // -----------------------------------------------------------------
     if ('speechSynthesis' in window) {
         speechSynthesis.addEventListener('voiceschanged', evaluate);
     }
 }
 
+
 /* -----------------------------------------------------------------
    Main entry – render the dictionary exercise inside the provided <main>.
    ----------------------------------------------------------------- */
 export async function renderDictionaryExercise(mainEl, exerciseMeta, uiLang) {
-    // -----------------------------------------------------------------
-    // 0️⃣  Make <main> a flex column that fills the viewport.
-    // -----------------------------------------------------------------
-    mainEl.style.display = 'flex';
-    mainEl.style.flexDirection = 'column';
-    mainEl.style.height = '100vh';
-    mainEl.style.boxSizing = 'border-box';
-
     // -----------------------------------------------------------------
     // 1️⃣ Load the JSON file that contains the token/translation arrays
     // -----------------------------------------------------------------
@@ -387,29 +423,24 @@ export async function renderDictionaryExercise(mainEl, exerciseMeta, uiLang) {
     const data = await loadJSON(jsonPath);   // data is an array of objects
 
     // -----------------------------------------------------------------
-    // 2️⃣ Prepare a scrollable wrapper for the token grid.
+    // 2️⃣ Prepare the token grid (will be rebuilt on every checkbox change)
     // -----------------------------------------------------------------
-    const scrollWrapper = document.createElement('div');
-    scrollWrapper.style.display = 'flex';
-    scrollWrapper.style.flexDirection = 'column';
-    scrollWrapper.style.flexGrow = '1';
-    scrollWrapper.style.overflowY = 'auto';
-    scrollWrapper.style.padding = '0 1rem';
-
     const tokenGrid = document.createElement('div');
     tokenGrid.className = 'dict-grid';
     tokenGrid.style.display = 'flex';
     tokenGrid.style.flexWrap = 'wrap';
     tokenGrid.style.justifyContent = 'center';
     tokenGrid.style.gap = '1rem';
-    tokenGrid.style.padding = '1rem 0';
-
-    // put the grid inside the scrolling wrapper
-    scrollWrapper.appendChild(tokenGrid);
+    tokenGrid.style.padding = '1rem';
 
     // -----------------------------------------------------------------
     // 3️⃣ Internationalised UI strings
     // -----------------------------------------------------------------
+    // After flattening the locale cache (see app/data/locales.js) the
+    // locale object is returned directly – there is no longer a `.content`
+    // wrapper.  Using the old shape caused `locale` to be undefined,
+    // which broke all UI strings that rely on it (e.g. languageOptions,
+    // display, speak, delay, etc.).
     const locale = getLocale(uiLang);
     const languageKeys = Object.keys(data[0]).filter(k => k !== 'id' && k !== 'tokens');
 
@@ -417,7 +448,7 @@ export async function renderDictionaryExercise(mainEl, exerciseMeta, uiLang) {
     // 4️⃣ State objects – which languages are displayed / spoken
     // -----------------------------------------------------------------
     const displayState = {};   // languageCode -> boolean
-    const speakState = {};     // languageCode -> boolean
+    const speakState = {};   // languageCode -> boolean
 
     // Initialise all languages as NOT displayed / NOT spoken,
     // **except** the currently selected app language (uiLang) which is
@@ -457,6 +488,11 @@ export async function renderDictionaryExercise(mainEl, exerciseMeta, uiLang) {
     // -----------------------------------------------------------------
     // 6️⃣ Build the language‑options UI inside a <details> element
     // -----------------------------------------------------------------
+    // -----------------------------------------------------------------
+    // 6️⃣  Build the language‑options UI inside a <details> element
+    // -----------------------------------------------------------------
+
+
     const details = document.createElement('details');
 
     /* -------------------------------------------------------------
@@ -475,9 +511,12 @@ export async function renderDictionaryExercise(mainEl, exerciseMeta, uiLang) {
     // Remember the selected voice for the player.
     playerState.voiceName = voiceSelect.value;
 
+
     /* -------------------------------------------------------------
        9️⃣  Sync voiceSelect after the UI is built
        ------------------------------------------------------------- */
+    // The <select id="voiceSelect"> was created earlier in the UI.
+    // Here we just sync the player state and listen for changes.
     if (voiceSelect) {
         // Initialise the player with the current selection
         playerState.voiceName = voiceSelect.value;
@@ -486,6 +525,7 @@ export async function renderDictionaryExercise(mainEl, exerciseMeta, uiLang) {
         voiceSelect.addEventListener('change', ev => {
             playerState.voiceName = ev.target.value;
         });
+
     }
 
     details.open = true;                     // default open
@@ -494,12 +534,14 @@ export async function renderDictionaryExercise(mainEl, exerciseMeta, uiLang) {
 
     // ---- Summary (internationalised) ----
     const summary = document.createElement('summary');
+    // Expected key: "languageOptions". Fallback to English text.
     summary.textContent = locale.languageOptions || 'Language options';
     details.appendChild(summary);
 
     // ---- Grid for language options (3 columns) ----
     const optionsGrid = document.createElement('div');
     optionsGrid.style.display = 'grid';
+    // 6fr for language names, 2fr each for the two checkbox columns
     optionsGrid.style.gridTemplateColumns = '6fr 2fr 2fr';
     optionsGrid.style.gap = '0.5rem';
     optionsGrid.style.alignItems = 'center';
@@ -510,9 +552,11 @@ export async function renderDictionaryExercise(mainEl, exerciseMeta, uiLang) {
     const displayHeader = document.createElement('div');
     const speakHeader = document.createElement('div');
 
+    // Internationalised column headings
     displayHeader.textContent = locale.display ?? 'Display';
     speakHeader.textContent = locale.speak ?? 'Speak';
 
+    // Center the headings vertically/horizontally
     displayHeader.style.textAlign = 'center';
     speakHeader.style.textAlign = 'center';
 
@@ -522,35 +566,42 @@ export async function renderDictionaryExercise(mainEl, exerciseMeta, uiLang) {
 
     // ---- One row per language ----
     languageKeys.forEach(langCode => {
+        // Language name (localized if possible, otherwise fallback to label)
         const langLabel = LANGUAGE_LABELS[langCode] || langCode.toUpperCase();
 
+        // Language name cell
         const langCell = document.createElement('div');
         langCell.textContent = langLabel;
         optionsGrid.appendChild(langCell);
 
+        // Display checkbox cell
         const displayCell = document.createElement('div');
         const displayCb = document.createElement('input');
         displayCb.type = 'checkbox';
         displayCb.dataset.lang = langCode;
         displayCb.checked = !!displayState[langCode];
+        // Center the checkbox
         displayCell.style.textAlign = 'center';
         displayCell.appendChild(displayCb);
         optionsGrid.appendChild(displayCell);
 
+        // Speak checkbox cell
         const speakCell = document.createElement('div');
         const speakCb = document.createElement('input');
         speakCb.type = 'checkbox';
         speakCb.dataset.lang = langCode;
         speakCb.checked = !!speakState[langCode];
+        // Center the checkbox
         speakCell.style.textAlign = 'center';
         speakCell.appendChild(speakCb);
         optionsGrid.appendChild(speakCell);
 
+        // -----------------------------------------------------------------
         // Interaction rules
+        // -----------------------------------------------------------------
+        // If Speak is checked → force Display checked
         speakCb.addEventListener('change', () => {
-            // Interaction rules (continued)
             if (speakCb.checked) {
-                // If Speak is checked → force Display checked
                 displayCb.checked = true;
                 displayState[langCode] = true;
             }
@@ -558,12 +609,9 @@ export async function renderDictionaryExercise(mainEl, exerciseMeta, uiLang) {
             rebuildTokenGrid();
         });
 
-        // -----------------------------------------------------------------
-        // When the Display checkbox changes we also need to keep the UI in sync.
-        // -----------------------------------------------------------------
+        // If Display is unchecked → also uncheck Speak
         displayCb.addEventListener('change', () => {
             if (!displayCb.checked) {
-                // If Display is unchecked → also uncheck Speak
                 speakCb.checked = false;
                 speakState[langCode] = false;
             }
@@ -575,7 +623,7 @@ export async function renderDictionaryExercise(mainEl, exerciseMeta, uiLang) {
     // -----------------------------------------------------------------
     // 7️⃣  Insert the navigation panel **below** the language‑options <details>
     // -----------------------------------------------------------------
-    const navPanel = buildNavPanel(locale, uiLang); // now includes Prev/Next arrows
+    const navPanel = buildNavPanel(locale, uiLang); // pass locale and UI language
     mainEl.appendChild(navPanel);              // placed after the <details>
 
     // -----------------------------------------------------------------
@@ -588,6 +636,9 @@ export async function renderDictionaryExercise(mainEl, exerciseMeta, uiLang) {
     // 9️⃣  Hook up the voice selector (if it exists on the page) so
     //      the player knows which voice to use.
     // -----------------------------------------------------------------
+
+    // The <select id="voiceSelect"> was created earlier in the UI.
+    // Here we just sync the player state and listen for changes.
     if (voiceSelect) {
         // Initialise the player with the current selection
         playerState.voiceName = voiceSelect.value;
@@ -599,7 +650,7 @@ export async function renderDictionaryExercise(mainEl, exerciseMeta, uiLang) {
     }
 
     // -----------------------------------------------------------------
-    // 10️⃣ Assemble the page: title → scrollable grid → language options → nav
+    // 10️⃣ Assemble the page: title → token grid → language options → nav
     // -----------------------------------------------------------------
     mainEl.innerHTML = '';          // wipe any previous content
 
@@ -613,13 +664,13 @@ export async function renderDictionaryExercise(mainEl, exerciseMeta, uiLang) {
     heading.style.marginBottom = '1rem';
     mainEl.appendChild(heading);
 
-    // Scrollable wrapper that holds the token grid
-    mainEl.appendChild(scrollWrapper);
+    // Token grid (initially empty – will be filled after first rebuild)
+    mainEl.appendChild(tokenGrid);
 
     // Language‑options panel (the <details> we built above)
     mainEl.appendChild(details);
 
-    // Navigation panel (play / pause / reset / delay + arrows)
+    // Navigation panel (play / pause / reset / delay)
     mainEl.appendChild(navPanel);
 
     // Initial render of the token grid (reflect default selections)
