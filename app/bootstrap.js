@@ -25,7 +25,7 @@ import {
     homeHandler,
     exercisesHandler,
     exerciseDetailHandler,
-    settingsHandler,
+    helpHandler,
     notFoundHandler
 } from './ui/routes.js';
 
@@ -53,7 +53,7 @@ import { applyDirection, isRtlLang } from './utils/rtl.js';
             { path: '/:lang', handler: homeHandler },
             { path: '/:lang/exercises', handler: exercisesHandler },
             { path: '/:lang/exercises/:id', handler: exerciseDetailHandler },
-            { path: '/:lang/settings', handler: settingsHandler },
+            { path: '/:lang/help', handler: helpHandler },
         ]);
         router.setNotFound(notFoundHandler);
 

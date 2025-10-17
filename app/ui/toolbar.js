@@ -15,37 +15,36 @@ export function renderToolbar(container) {
     // -----------------------------------------------------------------
     const isRtl = document.documentElement.getAttribute('dir') === 'rtl';
 
-    // -----------------------------------------------------------------
-    // 3️⃣  Create the three icons
-    // -----------------------------------------------------------------
+    /* -----------------------------------------------------------------
+       3️⃣  Create the three icons (Home, Theme, Help)
+       ----------------------------------------------------------------- */
     const homeBtn = document.createElement('button');
     homeBtn.id = 'homeBtn';
     homeBtn.title = 'Home';
     homeBtn.textContent = '🏠';
     homeBtn.style.flex = '0 0 auto';
     homeBtn.onclick = () => {
-        // *** IMPORTANT *** – navigate to the root of the stored language,
-        // using replaceState so the current URL (which might be an exercise)
-        // is discarded and the home page is rendered fresh.
+        // Navigate to the root of the stored language (replaceState → no extra history entry)
         window.router.navigate(`/${getStoredLang()}/`, true);
     };
 
     const themeBtn = document.createElement('button');
     themeBtn.id = 'themeToggle';
-    // Locale objects are now flat.
     themeBtn.title = getLocale(getStoredLang()).toggleTheme ||
         'Toggle light/dark mode';
     themeBtn.textContent = '🌙';
     themeBtn.style.flex = '0 0 auto';
     themeBtn.onclick = toggleTheme;
 
-    const settingsBtn = document.createElement('button');
-    settingsBtn.id = 'settingsBtn';
-    settingsBtn.title = 'Settings';
-    settingsBtn.textContent = '⚙️';
-    settingsBtn.style.flex = '0 0 auto';
-    settingsBtn.onclick = () => {
-        window.router.navigate(`/${getStoredLang()}/settings`, true);
+    // ----- NEW HELP BUTTON -------------------------------------------------
+    const helpBtn = document.createElement('button');
+    helpBtn.id = 'helpBtn';
+    helpBtn.title = getLocale(getStoredLang()).helpHeader || 'Help';
+    helpBtn.textContent = '❓';               // you can also use ℹ️ or 🛈
+    helpBtn.style.flex = '0 0 auto';
+    helpBtn.onclick = () => {
+        // Navigate to the generic help page, preserving the current language.
+        window.router.navigate(`/${getStoredLang()}/help`, true);
     };
 
     // -----------------------------------------------------------------
@@ -61,7 +60,8 @@ export function renderToolbar(container) {
     rightContainer.style.alignItems = 'center';
     rightContainer.style.gap = '0.5rem';
     rightContainer.appendChild(themeBtn);
-    rightContainer.appendChild(settingsBtn); // Theme & Settings together
+    rightContainer.appendChild(helpBtn);
+    // rightContainer.appendChild(settingsBtn); // Theme & Settings together
 
     // -----------------------------------------------------------------
     // 5️⃣  Assemble the toolbar – space‑between pushes the containers apart

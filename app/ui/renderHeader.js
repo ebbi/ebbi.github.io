@@ -1,6 +1,6 @@
 // app/ui/renderHeader.js
 // ---------------------------------------------------------------
-// Shared header used by Home, Settings and every exercise page.
+// Shared header used by Home, Help and every exercise page.
 // ---------------------------------------------------------------
 import { renderToolbar } from './toolbar.js';
 import { renderMenu } from './menu.js';
@@ -70,16 +70,16 @@ export async function renderHeader(lang) {
             applyDirection(newLang);
 
             // -------------------------------------------------------------
-            // Keep the user on the *current* page (home, settings, exercise, …)
+            // Keep the user on the *current* page (home, help, exercise, …)
             // by swapping the first path segment (the language code) with the
             // newly‑selected language.
             // Example transformations:
             //   "/en"               → "/fr"
-            //   "/en/settings"      → "/fr/settings"
+            //   "/en/help"      → "/fr/help"
             //   "/en/exercises/02"  → "/fr/exercises/02"
             // -------------------------------------------------------------
-            const currentPath = location.pathname;               // e.g. "/en/settings"
-            const segments = currentPath.split('/');              // ["", "en", "settings"]
+            const currentPath = location.pathname;               // e.g. "/en/help"
+            const segments = currentPath.split('/');              // ["", "en", "help"]
             if (segments.length > 1) {
                 segments[1] = newLang;                           // replace language code
             }

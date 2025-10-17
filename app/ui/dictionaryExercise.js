@@ -305,10 +305,6 @@ function buildNavPanel(locale, uiLang) {
     return panel;
 }
 
-/* -----------------------------------------------------------------
-   If no voices are available we need to show the “install voice”
-   message and disable the whole control panel.
-   ----------------------------------------------------------------- */
 function maybeDisableControls(panel, locale, uiLang) {
     // -----------------------------------------------------------------
     // Helper that decides whether we have any usable TTS voice for the
@@ -317,10 +313,10 @@ function maybeDisableControls(panel, locale, uiLang) {
     // browser is still loading voices).
     // -----------------------------------------------------------------
     const evaluate = () => {
-        // Get all voices known to the browser
+        // 1️⃣  Gather all voices known to the browser
         const allVoices = ('speechSynthesis' in window) ? speechSynthesis.getVoices() : [];
 
-        // Keep only those whose language code matches one of the app languages
+        // 2️⃣  Keep only those whose language matches one of the app languages
         const matching = allVoices.filter(v =>
             SUPPORTED_LANGS.includes(v.lang.slice(0, 2).toLowerCase())
         );
@@ -328,7 +324,7 @@ function maybeDisableControls(panel, locale, uiLang) {
         const hasVoices = matching.length > 0;
 
         // -------------------------------------------------------------
-        // If we have at least one matching voice → enable the panel.
+        // 3️⃣  If we have at least one matching voice → enable everything.
         // -------------------------------------------------------------
         if (hasVoices) {
             // Remove any previously added warning/message
@@ -336,31 +332,26 @@ function maybeDisableControls(panel, locale, uiLang) {
             if (existingMsg) existingMsg.remove();
 
             // Restore normal appearance & interactivity
-            panel.style.opacity = '';
             panel.style.pointerEvents = '';
-            panel.querySelectorAll('button,input').forEach(el => el.disabled = false);
+            panel.querySelectorAll('button,input,select').forEach(el => {
+                el.disabled = false;
+                el.style.opacity = '';          // clear any per‑element dimming
+            });
             return;
         }
 
         // -------------------------------------------------------------
-        // No matching voices → show the instruction message and grey‑out.
+        // 4️⃣  No matching voices → show the “Setup Speech” button.
         // -------------------------------------------------------------
         // (Create the message only once.)
         if (!panel.querySelector('.no-voice-msg')) {
-            const msg = locale.installVoiceSetup ||
-                locale.installMessage ||
-                'You need to set up speech synthesis for the selected languages.';
-            // -------------------------------------------------------------
-            // 1️⃣  Build a button that says “Click to Setup Speech”
-            // -------------------------------------------------------------
+            // ----- 4️⃣①  Build the button -----
             const btn = document.createElement('button');
             btn.type = 'button';
             btn.className = 'no-voice-btn';
-            btn.textContent = locale.setupSpeechButton ??
-                locale.clickToSetupSpeech ??
-                'Setup Speech';               // fallback English
+            btn.textContent = locale.speechSetup ?? 'Setup Speech'; // fallback English
 
-            // Style the button (you can tweak the CSS later in a global stylesheet)
+            // Basic styling (feel free to adjust in your global CSS)
             btn.style.background = 'var(--link)';
             btn.style.color = '#fff';
             btn.style.border = 'none';
@@ -370,28 +361,56 @@ function maybeDisableControls(panel, locale, uiLang) {
             btn.style.fontSize = '0.9rem';
             btn.style.marginTop = '0.5rem';
 
-            // When the user clicks the button, go to the Settings page for the current UI language.
+            // ----- 4️⃣②  Click → go to the Help page -----
             btn.onclick = () => {
-                // The Settings page already contains the detailed install‑steps modal.
-                window.router.navigate(`/${uiLang}/settings`, true);
+                // Navigate to the generic help page for the current UI language.
+                window.router.navigate(`/${uiLang}/help`, true);
             };
 
-            panel.appendChild(btn);
+            // Attach a wrapper element that we can later identify for opacity
+            // handling (helps us keep the button bright while dimming siblings).
+            const wrapper = document.createElement('div');
+            wrapper.className = 'no-voice-wrapper';
+            wrapper.appendChild(btn);
+            panel.appendChild(wrapper);
         }
 
-        panel.style.opacity = '0.5';            // grey‑out look
-        panel.style.pointerEvents = 'none';     // block clicks
-        panel.querySelectorAll('button,input').forEach(el => el.disabled = true);
+        // -------------------------------------------------------------
+        // 5️⃣  Dim *only* the interactive controls (play/pause/reset/delay)
+        // -------------------------------------------------------------
+        // Block clicks on the whole panel first.
+        panel.style.pointerEvents = 'none';
+
+        // Walk every control inside the panel.
+        panel.querySelectorAll('button,input,select').forEach(el => {
+            // Skip the dedicated “Setup Speech” button (identified by its wrapper).
+            if (el.closest('.no-voice-wrapper')) {
+                // Keep it fully interactive.
+                el.disabled = false;
+                el.style.pointerEvents = 'auto';
+                el.style.opacity = '1';
+            } else {
+                // Grey‑out everything else.
+                el.disabled = true;
+                el.style.pointerEvents = 'none';
+                el.style.opacity = '0.5';
+            }
+        });
     };
 
+    // -----------------------------------------------------------------
     // Run the check immediately (in case voices are already loaded)
+    // -----------------------------------------------------------------
     evaluate();
 
+    // -----------------------------------------------------------------
     // Re‑run whenever the browser reports that the voice list has changed.
+    // -----------------------------------------------------------------
     if ('speechSynthesis' in window) {
         speechSynthesis.addEventListener('voiceschanged', evaluate);
     }
 }
+
 
 /* -----------------------------------------------------------------
    Main entry – render the dictionary exercise inside the provided <main>.

@@ -57,7 +57,7 @@ function renderStaticNav(navEl, UI_LANG) {
 
     /* Language selector removed – the static header (renderHeader.js) already
    provides a single language selector with the correct “stay on page”
-   behaviour. */
+   behavior. */
 
     // Clear any previous content (should be empty on first run)
     /*

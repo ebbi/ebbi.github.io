@@ -4,37 +4,22 @@
 
 // ────── existing imports ───────────────────────────────────────
 import { renderToolbar } from './toolbar.js';
-import { renderSettingsPanel } from './settingsPanel.js';
+import { renderHelp } from './help.js';   // or wherever you implement it - here
 import { renderMenu } from './menu.js';
 import { renderExerciseDetail } from './detail.js';
 import { initDictionaryPage } from './dictionaryExercise.js';
-import { getOSInstructionKey } from '../utils/osDetection.js';
+// import { getOSInstructionKey } from '../utils/osDetection.js';
 import { getLocale, SUPPORTED_LANGS, FALLBACK_LANG } from '../data/locales.js';
 import { setStoredLang, getStoredLang } from '../utils/storage.js';
 import { applyDirection } from '../utils/rtl.js';
 import { loadJSON } from '../utils/fetch.js';   // ← NEW import – needed for deep‑link loading
-import { renderHeader } from './renderHeader.js';   // <-- added import
+import { renderHeader } from './renderHeader.js';   // <-- use the full header builder
 // 
 // -----------------------------------------------------------------
 
 /* -----------------------------------------------------------------
    HOME – fresh list of exercises
    ----------------------------------------------------------------- */
-/* -----------------------------------------------------------------
-   Helper – create the page skeleton (header + static nav + empty main)
-   ----------------------------------------------------------------- */
-async function renderAppSkeleton() {
-    // Build the skeleton only once; later calls reuse the existing DOM.
-    if (!document.getElementById('toolbarContainer')) {
-        document.body.innerHTML = `
-            <header id="toolbarContainer"></header>
-            <nav class="menu-nav"></nav>
-            <main id="main" class="main"></main>
-        `;
-        // The toolbar lives inside the header.
-        renderToolbar(document.getElementById('toolbarContainer'));
-    }
-}
 
 /* -----------------------------------------------------------------
    Utility – clear page‑specific content (keep header, nav, main)
@@ -62,10 +47,21 @@ export async function homeHandler({ lang } = {}) {
     }
     if (lang !== getStoredLang()) await setStoredLang(lang);
     applyDirection(lang);
-    
-    await renderAppSkeleton();
-    clearPage();                     // ensure a clean slate
-    await renderMenu(document.getElementById('main'), lang);
+
+    // -------------------------------------------------------------
+    // 2️⃣ Build the full header (toolbar + language/font selectors)
+    // -------------------------------------------------------------
+    const mainEl = await renderHeader(lang);
+
+    // -------------------------------------------------------------
+    // 3️⃣ Remove any leftover dynamic UI from a previous view.
+    // -------------------------------------------------------------
+    clearPage();
+
+    // -------------------------------------------------------------
+    // 4️⃣ Render the menu (level filters + exercise list) inside <main>.
+    // -------------------------------------------------------------
+    await renderMenu(mainEl, lang);
 }
 
 /* -----------------------------------------------------------------
@@ -74,9 +70,11 @@ export async function homeHandler({ lang } = {}) {
 export async function exercisesHandler({ lang } = {}) {
     if (lang !== getStoredLang()) await setStoredLang(lang);
     applyDirection(lang);
-    await renderAppSkeleton();
+
+    // Build header and get <main>
+    const mainEl = await renderHeader(lang);
     clearPage();
-    await renderMenu(document.getElementById('main'), lang);
+    await renderMenu(mainEl, lang);
 }
 
 /* -----------------------------------------------------------------
@@ -90,9 +88,9 @@ export async function exerciseDetailHandler({ lang, id } = {}) {
     applyDirection(lang);
 
     // -----------------------------------------------------------------
-    // 1️⃣  Ensure the page skeleton exists (toolbar, nav, empty <main>)
+    // 1️⃣  Build the full page skeleton (toolbar, static nav, empty <main>)
     // -----------------------------------------------------------------
-    await renderAppSkeleton();
+    const mainEl = await renderHeader(lang);
     clearPage();
 
     // -----------------------------------------------------------------
@@ -138,14 +136,15 @@ export async function exerciseDetailHandler({ lang, id } = {}) {
     const detailContainer = document.createElement('section');
     detailContainer.id = 'detail';
     detailContainer.className = 'detail-section hidden';
-    document.getElementById('main').appendChild(detailContainer);
+    mainEl.appendChild(detailContainer);
     await renderExerciseDetail(detailContainer, id, lang);
 }
 
 /* -----------------------------------------------------------------
    SETTINGS PAGE – static header + static nav + settings UI inside <main>
    ----------------------------------------------------------------- */
-export async function settingsHandler({ lang } = {}) {
+/*
+   export async function settingsHandler({ lang } = {}) {
     // Persist language and set correct text direction.
     if (lang !== getStoredLang()) await setStoredLang(lang);
     applyDirection(lang);
@@ -158,19 +157,31 @@ export async function settingsHandler({ lang } = {}) {
 
     // Render the Settings panel inside the <main> element.
     renderSettingsPanel(main);
+}
+*/
 
+// Minimal help handler (already uses renderHeader)
+export async function helpHandler({ lang } = {}) {
+    if (lang !== getStoredLang()) await setStoredLang(lang);
+    applyDirection(lang);
+    const main = await renderHeader(lang);   // renders toolbar + selectors
+    // clear any previous content
+    const mainEl = document.getElementById('main');
+    mainEl.innerHTML = '';
+    // render the help UI (the function exported from helpPanel.js)
+    renderHelp(mainEl);                 // <-- import renderHelp from '../ui/help.js'
 }
 
 /* -----------------------------------------------------------------
    404 – page not found
    ----------------------------------------------------------------- */
 export async function notFoundHandler({ search = '', hash = '' } = {}) {
-    await renderAppSkeleton();
+    // Build the skeleton (toolbar + static nav) and get <main>.
+    const main = await renderHeader(getStoredLang());
     clearPage();
-    const main = document.getElementById('main');
+    const mainEl = document.getElementById('main');
     const attempted = `${location.pathname}${search}${hash}`;
-    main.innerHTML = `<h2>🚫 Not found</h2>
-                      <p>The page <code>${attempted}</code> does not exist.</p>
-                      <p>Use the menu above to navigate.</p>`;
+    mainEl.innerHTML = `<h2>🚫 Not found</h2>
+                       <p>The page <code>${attempted}</code> does not exist.</p>
+                       <p>Use the menu above to navigate.</p>`;
 }
-
