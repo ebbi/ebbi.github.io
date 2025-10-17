@@ -433,6 +433,10 @@ export async function renderDictionaryExercise(mainEl, exerciseMeta, uiLang) {
     tokenGrid.style.gap = '1rem';
     tokenGrid.style.padding = '1rem';
 
+    tokenGrid.style.height = '70vh';
+    tokenGrid.style.overflowY = 'auto';
+
+
     // -----------------------------------------------------------------
     // 3️⃣ Internationalised UI strings
     // -----------------------------------------------------------------
