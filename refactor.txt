@@ -6,5 +6,113 @@ Please note: No diff patches.  Instead, a find / replace blocks of code
 check the locales for redundancy or missing key definitions
 
 
-WHen voices are not available the control panel for speech is lowered in opacity and inactive.
-But the Speech Setup button should be normal display and the click event should load the help page
+As an example, an exercise type dictionary has the following data format:
+{
+        "id": "s1",
+        "tokens": [
+            "สวัสดี",
+            "ครับ",
+            "คุณ"
+        ],
+        "en": [
+            "hello",
+            "sir",
+            "you"
+        ],
+        "zh": [
+            "你好",
+            "",
+            "你"
+        ],
+        "fa": [
+            "سلام",
+            "",
+            "شما"
+        ],
+        "ar": [
+            "مرحبا",
+            "",
+            "أنت"
+        ],
+        "ja": [
+            "こんにちは",
+            "",
+            "あなた"
+        ]
+    },
+    {
+        "id": "s2",
+        "tokens": [
+            "ขอบคุณ",
+            "มาก"
+        ],
+        "en": [
+            "thank",
+            "you"
+        ],
+        "zh": [
+            "谢谢",
+            "你"
+        ],
+        "fa": [
+            "متشکرم",
+            "تو"
+        ],
+        "ar": [
+            "شكرا",
+            "لك"
+        ],
+        "ja": [
+            "ありがとう",
+            ""
+        ]
+    },
+    ....
+
+
+Generate the same json structure for the following Thai words.
+Note: words are separated by a space character and each line defines 
+a JSON block { ... }. The translation array must have the same index
+as the original Thai word (or left blank if there is no direct translation).
+
+
+มานี มี ตา
+กา มี ต
+อา มี ตา
+
+ตา มา นา
+มี ดี ตี
+ตา  ดี นา  ดี
+มานี  มี  ตา
+ตา  มี  นา
+กา  มา  นา ตา  มา  นา
+ตา  มี  นา  ดี
+อา  มา  นา
+
+อา มี นา 
+นา มี งู
+กา ดู ปู
+ งู ดู ปู
+มานี มา นา อา
+นา มี ปู
+
+โต โพ โน โป โม โอ โห
+นา ตา ปา อา วา กา รา
+ดี ตี มี ป วี รี
+ดู รู ปู หู งู
+ตาโต โมโห ปูนา กากี
+นาดี อีกา อารี
+มีโมโห โตตาดี มีงูมา
+พามานา อาดูปู
+อาหาปูนา ปูนามีตา
+มีกามานา มีหูมีตา
+
+ดู ปู งู หู
+ตา มา ปา พา
+นา หา อา กา
+ตี มี ป ดี
+
+ตาปู ปูนา หูตา
+ตีตาปู ดูดีดี อาดูกา
+ตาดูงู มาหาตา ดูปูนา
+หาปูนา งูมีตา มีปูนามา
