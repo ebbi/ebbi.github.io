@@ -22,6 +22,18 @@ body {
     cursor: pointer
 }
 
+details.menu-panel {
+    margin: 1rem 0;
+    padding: 0.5rem;
+    border: 1px solid var(--border-surface);
+    border-radius: .5rem;
+}
+
+
+details.menu-panel>div.select-wrapper {
+    margin-top: 0.75rem;
+}
+
 .menu-section {
     padding: 1rem
 }

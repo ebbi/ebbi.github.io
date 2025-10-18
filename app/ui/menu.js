@@ -43,21 +43,36 @@ function setStoredLevels(levels) {
     }
 }
 
-/**
- * Render (or re‑render) the shared navigation bar **without** the
- * level‑filter checkboxes or the exercise list.
- *
- * This function is called once during app start‑up (by renderHeader)
- * to ensure the nav contains only the static selectors.
- *
- * @param {HTMLElement} navEl – the <nav class="menu-nav"> element.
- * @param {string} UI_LANG – currently selected UI language.
- */
-/* marked for deletion
-function renderStaticNav(navEl, UI_LANG) {
+// -----------------------------------------------------------------
+// Local‑storage key for the “last visited” exercise
+// -----------------------------------------------------------------
+const LS_LAST_EX_ID = 'local_storage_last_exercise';
 
+/**
+ * Save the chosen exercise id to local‑storage.
+ * @param {string} id
+ */
+function storeLastExercise(id) {
+    try {
+        localStorage.setItem(LS_LAST_EX_ID, id);
+    } catch (e) {
+        console.warn('[Menu] could not persist last exercise', e);
+    }
 }
-*/
+
+/**
+ * Retrieve the stored id (or null if none / corrupted).
+ * @returns {string|null}
+ */
+function getLastExercise() {
+    try {
+        return localStorage.getItem(LS_LAST_EX_ID);
+    } catch (_) {
+        return null;
+    }
+}
+
+
 
 /**
  * Render the **dynamic** part of the UI (level‑filter checkboxes and the
@@ -66,6 +81,7 @@ function renderStaticNav(navEl, UI_LANG) {
  * @param {HTMLElement} container – the <main> element where dynamic UI goes.
  * @param {string} UI_LANG – currently selected UI language.
  */
+
 export async function renderMenu(container, UI_LANG) {
     // -------------------------------------------------------------
     // 0️⃣ Ensure exercises are loaded (once)
@@ -107,6 +123,7 @@ export async function renderMenu(container, UI_LANG) {
     levelWrapper.style.flexWrap = 'nowrap';
     levelWrapper.style.gap = '0.5rem';
     levelWrapper.style.margin = '0 1rem';
+
     levelWrapper.style.fontSize = '0.85rem';
 
     // After flattening the locale cache (see locales.js) the locale
@@ -114,6 +131,11 @@ export async function renderMenu(container, UI_LANG) {
     // wrapper.  Using the old shape caused `localeObj` to be undefined,
     // which broke the level‑filter UI (basic / intermediate / advance).
     const localeObj = getLocale(UI_LANG);
+
+    const locale = getLocale(UI_LANG);
+    const practiceLabel = locale.practiceLanguages || 'Practice languages';
+    const chooseExerciseLabel = locale.exercise || 'Exercise';
+
     const levelDefs = [
         { label: localeObj.basic, value: 'basic' },
         { label: localeObj.intermediate, value: 'intermediate' },
@@ -128,6 +150,7 @@ export async function renderMenu(container, UI_LANG) {
         label.style.alignItems = 'center';
         label.style.cursor = 'pointer';
         label.style.margin = '0';
+
 
         const cb = document.createElement('input');
         cb.type = 'checkbox';
@@ -149,6 +172,100 @@ export async function renderMenu(container, UI_LANG) {
         label.appendChild(document.createTextNode(def.label));
         levelWrapper.appendChild(label);
     });
+
+    /* -------------------------------------------------------------
+   3️⃣  Build the “Choose exercise” dropdown (with optgroups & persistence)
+   ------------------------------------------------------------- */
+    function buildExerciseDropdown(UI_LANG, locale) {
+        const wrapper = document.createElement('div');
+        wrapper.style.display = 'flex';
+        //       wrapper.style.alignItems = 'center';
+        wrapper.style.gap = '0.5rem';
+        //        wrapper.style.marginTop = '0.5rem';
+        wrapper.style.margin = "0.5rem 1rem 0.5rem 1rem";
+        wrapper.style.fontSize = '0.9rem';
+
+        const label = document.createElement('label');
+        label.textContent = locale.exercise || 'Exercise';
+        label.htmlFor = 'exerciseSelect';
+        wrapper.appendChild(label);
+
+        const select = document.createElement('select');
+        select.id = 'exerciseSelect';
+        select.style.flex = '1';
+        select.style.maxWidth = '17rem';
+        select.style.padding = 0;
+        wrapper.appendChild(select);
+
+        // ---- Placeholder (disabled) ----
+        const placeholder = document.createElement('option');
+        placeholder.value = '';
+        placeholder.textContent = '--';
+        placeholder.disabled = true;
+        select.appendChild(placeholder);
+
+        // ---- Group by level -------------------------------------------------
+        // Order matters – we want the groups in a predictable sequence.
+        const levelOrder = ['basic', 'intermediate', 'advance'];
+
+        // Build a map: level → array of exercises belonging to that level.
+        const byLevel = levelOrder.reduce((acc, lvl) => {
+            acc[lvl] = [];
+            return acc;
+        }, {});
+
+        EXERCISES.forEach(ex => {
+            const lvl = (ex.level || 'basic').toLowerCase();
+            // Guard against unexpected values – push into “basic” as fallback.
+            const bucket = levelOrder.includes(lvl) ? lvl : 'basic';
+            byLevel[bucket].push(ex);
+        });
+
+        // ---- Create <optgroup>s ------------------------------------------------
+        levelOrder.forEach(lvl => {
+            const group = document.createElement('optgroup');
+            // Use the translated level label (fallback to capitalised English).
+            const grpLabel = locale[lvl] || lvl.charAt(0).toUpperCase() + lvl.slice(1);
+            group.label = grpLabel;
+
+            byLevel[lvl].forEach(ex => {
+                const opt = document.createElement('option');
+                const title = (ex.title && ex.title[UI_LANG]) || ex.title?.en || ex.id;
+                opt.value = ex.id;
+                opt.textContent = title;
+                group.appendChild(opt);
+            });
+
+            // Only append non‑empty groups (avoid empty optgroup UI noise).
+            if (group.children.length) select.appendChild(group);
+        });
+
+        // ---- Pre‑select the last‑visited exercise (if still present) ----
+        const lastId = getLastExercise();
+        if (lastId) {
+            const optionToSelect = Array.from(select.options).find(o => o.value === lastId);
+            if (optionToSelect) {
+                optionToSelect.selected = true;
+            }
+        } else {
+            // No stored id → keep the placeholder selected.
+            placeholder.selected = true;
+        }
+
+        // ---- React to a change ------------------------------------------------
+        select.addEventListener('change', ev => {
+            const chosenId = ev.target.value;
+            if (!chosenId) return;
+
+            // Persist the choice
+            storeLastExercise(chosenId);
+
+            // Navigate exactly like a card click would do.
+            window.router.navigate(`/${UI_LANG}/exercises/${chosenId}`, true);
+        });
+
+        return wrapper;
+    }
 
     // -------------------------------------------------------------
     // 3️⃣ Exercise list (dynamic, also goes inside <main>)
@@ -187,11 +304,33 @@ export async function renderMenu(container, UI_LANG) {
         window.router.navigate(`/${UI_LANG}/exercises/${id}`);
     });
 
+
+    // -------------------------------------------------------------
+    // 2️⃣ Build the <details> wrapper (unchanged)
+    // -------------------------------------------------------------
+    const detailsEl = document.createElement('details');
+    detailsEl.open = true;
+
+    const summaryEl = document.createElement('summary');
+    summaryEl.textContent = practiceLabel;
+    detailsEl.appendChild(summaryEl);
+
+    // level‑filter panel
+    detailsEl.appendChild(levelWrapper);
+
+    // *** NEW: dropdown with grouping & persistence ***
+    detailsEl.appendChild(buildExerciseDropdown(UI_LANG, locale));
+
+    // exercise list (unchanged)
+    detailsEl.appendChild(ul);
+
     // -------------------------------------------------------------
     // 4️⃣ Inject the dynamic pieces into the <main> container.
     // -------------------------------------------------------------
     // Clear any previous dynamic content first.
     container.innerHTML = '';
-    container.appendChild(levelWrapper);
-    container.appendChild(ul);
+    container.appendChild(detailsEl);
+    //   container.appendChild(levelWrapper);
+    //   container.appendChild(ul);
+
 }
