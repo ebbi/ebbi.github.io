@@ -11,8 +11,6 @@ import { SUPPORTED_LANGS } from '../data/locales.js';
 import { populateVoiceList } from '../utils/speech.js';
 import { getStoredVoice, setStoredVoice } from '../utils/storage.js';
 
-
-
 // -----------------------------------------------------------------
 // 0️⃣  GLOBAL STATE for the player
 // -----------------------------------------------------------------
@@ -103,6 +101,7 @@ function clearHighlights() {
     playerState.tokenEls.forEach(el => el.style.background = '');
     playerState.transEls.flat().forEach(el => el.style.background = '');
 }
+
 function highlightCurrent() {
     clearHighlights();
     const tIdx = playerState.tokenIdx;
@@ -116,48 +115,6 @@ function highlightCurrent() {
         if (transEl) transEl.style.background = 'var(--link)';
     }
 }
-
-/* -----------------------------------------------------------------
-   Core playback loop – walks through tokens & selected translations
-   ----------------------------------------------------------------- */
-/*
-   async function playbackLoop() {
-    playerState.playing = true;
-    while (playerState.playing && playerState.tokenIdx < playerState.tokenEls.length) {
-        const tIdx = playerState.tokenIdx;
-        const transArray = playerState.transEls[tIdx]; // array of translation spans for this token
-
-        // 1️⃣  Speak the Thai token (if we haven’t just spoken it)
-        if (playerState.transIdx === -1) {
-            highlightCurrent();
-            const thaiText = playerState.tokenEls[tIdx].textContent;
-            //            await speakText(thaiText);
-            await speakText(txt, playerState.voiceName);            await new Promise(r => setTimeout(r, playerState.delaySec * 1000));
-            playerState.transIdx = 0;   // move to first translation
-            continue;                  // go to the top of the loop to handle translation
-        }
-
-        // 2️⃣  Speak the selected translation (if any remain)
-        if (playerState.transIdx < transArray.length) {
-            const transSpan = transArray[playerState.transIdx];
-            highlightCurrent();
-            const txt = transSpan.textContent.trim();
-            if (txt) {
-                await speakText(txt);
-                await new Promise(r => setTimeout(r, playerState.delaySec * 1000));
-            }
-            playerState.transIdx += 1;
-            continue;                  // stay on same token until all translations done
-        }
-
-        // 3️⃣  All translations for this token are done → advance to next token
-        playerState.tokenIdx += 1;
-        playerState.transIdx = -1;      // reset to Thai for the next token
-    }
-    playerState.playing = false;
-    clearHighlights();
-}
-*/
 
 async function playbackLoop() {
     playerState.playing = true;

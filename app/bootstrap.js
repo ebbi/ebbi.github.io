@@ -19,7 +19,8 @@ import {
     getStoredLang,
     setStoredLang,
     getStoredFont,
-    getStoredVoice
+    getStoredVoice,
+    setStoredVoice
 } from './utils/storage.js';
 
 import {
@@ -73,10 +74,8 @@ import { applyDirection, isRtlLang } from './utils/rtl.js';
         const allVoices = ('speechSynthesis' in window) ? speechSynthesis.getVoices() : [];
 
         if (allVoices.includes(storedVoice)) {
-            setStoredLang(FALLBACK_LANG);
-            storedLang = FALLBACK_LANG; // fallback guaranteed to be valid
+            setStoredVoice(storedVoice);
         }
-
 
         // Apply the correct direction globally (now via the helper)
         applyDirection(storedLang);
