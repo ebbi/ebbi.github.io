@@ -1,11 +1,3 @@
-<div style="display: flex; flex-direction: column; flex-grow: 1; overflow-y: auto; padding: 0px 1rem;"><div class="dict-grid" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; padding: 1rem 0px;"><div class="token-col" style="display: flex; flex-direction: column; align-items: center; margin: 0px 0.5rem;"><span class="thai" style="font-weight: bold; font-size: 1.2rem; margin-bottom: 0.4rem;">สวัสดี</span><span class="trans" style="font-size: 0.9rem; color: var(--txt-secondary);">hello</span><span class="trans" style="font-size: 0.9rem; color: var(--txt-secondary);"></span><span class="trans" style="font-size: 0.9rem; color: var(--txt-secondary);"></span><span class="trans" style="font-size: 0.9rem; color: var(--txt-secondary);"></span><span class="trans" style="font-size: 0.9rem; color: var(--txt-secondary);"></span></div><div class="token-col" style="display: flex; flex-direction: column; align-items: center; margin: 0px 0.5rem;"><span class="thai" style="font-weight: bold; font-size: 1.2rem; margin-bottom: 0.4rem;">ครับ</span><span class="trans" style="font-size: 0.9rem; color: var(--txt-secondary);">sir</span><span class="trans" style="font-size: 0.9rem; color: var(--txt-secondary);"></span><span class="trans" style="font-size: 0.9rem; color: var(--txt-secondary);"></span><span class="trans" style="font-size: 0.9rem; color: var(--txt-secondary);"></span><span class="trans" style="font-size: 0.9rem; color: var(--txt-secondary);"></span></div><div class="token-col" style="display: flex; flex-direction: column; align-items: center; margin: 0px 0.5rem;"><span class="thai" style="font-weight: bold; font-size: 1.2rem; margin-bottom: 0.4rem;">คุณ</span><span class="trans" style="font-size: 0.9rem; color: var(--txt-secondary);">you</span><span class="trans" style="font-size: 0.9rem; color: var(--txt-secondary);"></span><span class="trans" style="font-size: 0.9rem; color: var(--txt-secondary);"></span><span class="trans" style="font-size: 0.9rem; color: var(--txt-secondary);"></span><span class="trans" style="font-size: 0.9rem; color: var(--txt-secondary);"></span></div><div class="token-col" style="display: flex; flex-direction: column; align-items: center; margin: 0px 0.5rem;"><span class="thai" style="font-weight: bold; font-size: 1.2rem; margin-bottom: 0.4rem;">ขอบคุณ</span><span class="trans" style="font-size: 0.9rem; color: var(--txt-secondary);">thank</span><span class="trans" style="font-size: 0.9rem; color: var(--txt-secondary);"></span><span class="trans" style="font-size: 0.9rem; color: var(--txt-secondary);"></span><span class="trans" style="font-size: 0.9rem; color: var(--txt-secondary);"></span><span class="trans" style="font-size: 0.9rem; color: var(--txt-secondary);"></span></div><div class="token-col" style="display: flex; flex-direction: column; align-items: center; margin: 0px 0.5rem;"><span class="thai" style="font-weight: bold; font-size: 1.2rem; margin-bottom: 0.4rem;">มาก</span><span class="trans" style="font-size: 0.9rem; color: var(--txt-secondary);">you</span><span class="trans" style="font-size: 0.9rem; color: var(--txt-secondary);"></span><span class="trans" style="font-size: 0.9rem; color: var(--txt-secondary);"></span><span class="trans" style="font-size: 0.9rem; color: var(--txt-secondary);"></span><span class="trans" style="font-size: 0.9rem; color: var(--txt-secondary);"></span></div></div></div>
-This is the div that is dynamically created and contains the exercise data and needs to be made scrollable
-
-
-
-
-
-
 {
     "en": "This is test data for intermediate level of difficulty because as linguist would tell you the generalized grammar is infinite recursion as infinite as a human imagination and so intermediate examples are tokenized based on sentences rather than words to get a more realistic sense of the language as an expression of the heritage that evolved it and with that I shall one day dream in Thai and the little companion that is my rational mind will too.",
     "th": "นี่คือข้อมูลการทดสอบสำหรับระดับความยากระดับกลาง เพราะนักภาษาศาสตร์จะบอกคุณว่าไวยากรณ์ทั่วไปนั้นมีการเรียกซ้ำอย่างไม่สิ้นสุด ไม่มีที่สิ้นสุดเช่นเดียวกับจินตนาการของมนุษย์ ดังนั้นตัวอย่างระดับกลางจึงถูกทำให้เป็นโทเค็นตามประโยคแทนที่จะเป็นคำ เพื่อให้ได้ความรู้สึกที่สมจริงยิ่งขึ้นเกี่ยวกับภาษาในฐานะการแสดงออกของมรดกที่พัฒนามา และด้วยเหตุนี้ ฉันจึงจะฝันเป็นภาษาไทยสักวันหนึ่ง และเพื่อนตัวน้อยอย่างจิตใจที่ใช้เหตุผลของฉันก็จะทำเช่นเดียวกัน",
@@ -15,29 +7,53 @@ This is the div that is dynamically created and contains the exercise data and n
     "ar": "هذه بيانات اختبار لمستوى متوسط ​​من الصعوبة لأن اللغويين سيخبرونك أن القواعد النحوية المعممة هي تكرار لا نهائي لا نهائي مثل الخيال البشري وبالتالي فإن الأمثلة المتوسطة تعتمد على الجمل بدلاً من الكلمات للحصول على شعور أكثر واقعية باللغة كتعبير عن التراث الذي تطورها ومع ذلك سأحلم ذات يوم باللغة التايلاندية وسوف يحلم الرفيق الصغير الذي هو عقلي العقلاني أيضًا."
 }
 
-[ 
+[
     {
-"tokens": [
-'To be or not to be"
-],
-    "en": [
-        ""
-],
-    "th": "",
-    "es": "",
-    "fa": "',
-    "hi": "",
-    "ja": "",
-    "zh": "",
-    "ar": ""
+        "tokens": [
+            "To be or not to be"
+        ],
+        "en": [
+            ""
+        ],
+        "fa": [
+            ""
+        ],
+        "ja": [
+            ""
+        ],
+        "zh": [
+            ""
+        ],
+        "ar": [
+            ""
+        ]
     }
 ]
 
 {
-            "en": "An intermediate test example based on sentences",
+    "en": "An intermediate test example based on sentences",
     "th": "",
-    "fa": "',
-    "ja": "",
-    "zh": "",
-    "ar": ""
-        }
+    "fa": "',"ja": "","zh": "","ar": ""
+}
+
+
+    {
+    "tokens": [
+        "To be or not to be.  That is the question."
+    ],
+    "en": [
+        ""
+    ],
+    "fa": [
+        ""
+    ],
+    "ja": [
+        ""
+    ],
+    "zh": [
+        ""
+    ],
+    "ar": [
+        ""
+    ]
+}
