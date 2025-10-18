@@ -140,26 +140,6 @@ export async function exerciseDetailHandler({ lang, id } = {}) {
     await renderExerciseDetail(detailContainer, id, lang);
 }
 
-/* -----------------------------------------------------------------
-   SETTINGS PAGE – static header + static nav + settings UI inside <main>
-   ----------------------------------------------------------------- */
-/*
-   export async function settingsHandler({ lang } = {}) {
-    // Persist language and set correct text direction.
-    if (lang !== getStoredLang()) await setStoredLang(lang);
-    applyDirection(lang);
-
-    // Build the static page skeleton (toolbar + language selector) and get <main>.
-    const main = await renderHeader(lang);
-
-    // Ensure the main area is empty before we inject our UI.
-    clearPage();
-
-    // Render the Settings panel inside the <main> element.
-    renderSettingsPanel(main);
-}
-*/
-
 // Minimal help handler (already uses renderHeader)
 export async function helpHandler({ lang } = {}) {
     if (lang !== getStoredLang()) await setStoredLang(lang);
