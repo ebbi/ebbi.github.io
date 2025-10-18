@@ -53,62 +53,11 @@ function setStoredLevels(levels) {
  * @param {HTMLElement} navEl – the <nav class="menu-nav"> element.
  * @param {string} UI_LANG – currently selected UI language.
  */
+/* marked for deletion
 function renderStaticNav(navEl, UI_LANG) {
 
-    /* Language selector removed – the static header (renderHeader.js) already
-   provides a single language selector with the correct “stay on page”
-   behavior. */
-
-    // Clear any previous content (should be empty on first run)
-    /*
-        navEl.innerHTML = '';
-    
-        // -------------------- Language selector --------------------
-        const langSelect = document.createElement('select');
-        langSelect.id = 'langSelect';
-        langSelect.style.width = '100%';
-        langSelect.style.fontSize = '0.85rem';
-        langSelect.style.margin = '0';
-        langSelect.innerHTML = SUPPORTED_LANGS.map(code => {
-            const sel = code === getStoredLang() ? 'selected' : '';
-            const lbl = LANGUAGE_LABELS[code] || code.toUpperCase();
-            return `<option value="${code}" ${sel}>${lbl}</option>`;
-        }).join('');
-        langSelect.onchange = ev => {
-            const newLang = ev.target.value;
-            if (newLang !== getStoredLang()) {
-                setStoredLang(newLang);
-                applyDirection(newLang);
-                // Navigate to the home route of the new language.
-                window.router.navigate(`/${newLang}/`, true);
-            }
-        };
-        navEl.appendChild(langSelect);
-    */
-
-    // -------------------- Font selector --------------------
-    /*
-        const fontSelect = document.createElement('select');
-        fontSelect.id = 'fontSelect';
-        fontSelect.style.width = '100%';
-        fontSelect.style.fontSize = '0.85rem';
-        fontSelect.style.margin = '0';
-        const savedFont = getStoredFont();
-        fontSelect.innerHTML = FONT_CATALOG.map(f => {
-            const sel = f.name === savedFont ? 'selected' : '';
-            return `<option value="${f.name}" ${sel}>${f.name}</option>`;
-        }).join('');
-        fontSelect.onchange = ev => {
-            const chosenName = ev.target.value;
-            const fontObj = FONT_CATALOG.find(f => f.name === chosenName);
-            if (!fontObj) return;
-            setStoredFont(fontObj.name);
-            applyFontFamily(fontObj.family);
-            document.dispatchEvent(new CustomEvent('fontChanged'));
-        };
-        navEl.appendChild(fontSelect);
-        */
 }
+*/
 
 /**
  * Render the **dynamic** part of the UI (level‑filter checkboxes and the
@@ -144,8 +93,9 @@ export async function renderMenu(container, UI_LANG) {
         const header = document.getElementById('toolbarContainer');
         header.parentNode.insertBefore(nav, header.nextSibling);
     }
+
     // Populate only the static selectors – no checkboxes or list here.
-    renderStaticNav(nav, UI_LANG);
+    //   renderStaticNav(nav, UI_LANG);
 
     // -------------------------------------------------------------
     // 2️⃣ Level‑filter checkboxes (dynamic, go inside <main>)
@@ -158,14 +108,7 @@ export async function renderMenu(container, UI_LANG) {
     levelWrapper.style.gap = '0.5rem';
     levelWrapper.style.margin = '0 1rem';
     levelWrapper.style.fontSize = '0.85rem';
-    /*
-        const localeObj = getLocale(UI_LANG).content;
-        const levelDefs = [
-            { label: localeObj.basic, value: 'basic' },
-            { label: localeObj.intermediate, value: 'intermediate' },
-            { label: localeObj.advance, value: 'advance' }
-        ];
-        */
+
     // After flattening the locale cache (see locales.js) the locale
     // object is returned directly – there is no longer a `.content`
     // wrapper.  Using the old shape caused `localeObj` to be undefined,

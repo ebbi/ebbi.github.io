@@ -2,7 +2,7 @@
 import { loadJSON } from '../utils/fetch.js';   // tiny wrapper (see utils/fetch.js)
 
 export const SUPPORTED_LANGS = ['th', 'fa', 'zh', 'ja', 'es', 'en', 'hi', 'ar'];
-export const FALLBACK_LANG = 'en';
+export const FALLBACK_LANG = 'th';
 export const LS_LANG_KEY = 'local_storage_lang';
 
 export const LANGUAGE_LABELS = {

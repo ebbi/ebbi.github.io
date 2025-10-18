@@ -4,7 +4,8 @@ import { SUPPORTED_LANGS, FALLBACK_LANG } from '../data/locales.js';
 export const LS_KEYS = {
     LANG: 'local_storage_lang',
     FONT: 'local_storage_font',
-    THEME: 'local_storage_theme'
+    THEME: 'local_storage_theme',
+    VOICE: 'local_storage_tts_voice'
 };
 
 /* ---------- Language ---------- */
@@ -21,6 +22,14 @@ export function getStoredLang() {
 }
 export function setStoredLang(lang) {
     localStorage.setItem(LS_KEYS.LANG, lang);
+}
+
+/* ---------- TTS VOICE ---------- */
+export function getStoredVoice() {
+    return localStorage.getItem(LS_KEYS.VOICE) || 'th-TH';
+}
+export function setStoredVoice(name) {
+    localStorage.setItem(LS_KEYS.VOICE, name);
 }
 
 /* ---------- Font ---------- */

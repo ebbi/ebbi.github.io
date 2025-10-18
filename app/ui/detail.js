@@ -55,7 +55,7 @@ export async function renderExerciseDetail(container, id, UI_LANG) {
         // -----------------------------------------------------------------
         // 3️⃣  **VOICE SELECTOR**
         // -----------------------------------------------------------------
-        // Internationalised label – expect a key “voices” in the locale files.
+        // internationalized label – expect a key “voices” in the locale files.
         const locale = getLocale(UI_LANG).content;
         const voiceLabel = locale.voices || 'Voices';
 

@@ -9,8 +9,10 @@ import { renderHeader } from './renderHeader.js';
 import { getLocale, LANGUAGE_LABELS } from '../data/locales.js';
 import { SUPPORTED_LANGS } from '../data/locales.js';
 import { populateVoiceList } from '../utils/speech.js';
+import { getStoredVoice, setStoredVoice } from '../utils/storage.js';
 
-/* === PATCH START === */
+
+
 // -----------------------------------------------------------------
 // 0️⃣  GLOBAL STATE for the player
 // -----------------------------------------------------------------
@@ -27,7 +29,6 @@ let playerState = {
     tokenEls: [],         // array of <span class="thai"> elements (order = tokenIdx)
     transEls: []          // 2‑dimensional: transEls[tokenIdx][langIdx] = <span>
 };
-/* === PATCH END === */
 
 /**
  * Build the HTML for a single token column.
@@ -53,12 +54,8 @@ function buildTokenColumn(thaiWord, translations) {
     thaiSpan.style.marginBottom = '0.4rem';
     col.appendChild(thaiSpan);
 
-    // Store the Thai element for later highlighting
-    /* === PATCH START === */
     playerState.tokenEls.push(thaiSpan);
-    /* === PATCH END === */
 
-    // Translations – each on its own line
     translations.forEach((t, i) => {
         const transSpan = document.createElement('span');
         transSpan.className = 'trans';
@@ -68,11 +65,9 @@ function buildTokenColumn(thaiWord, translations) {
         col.appendChild(transSpan);
 
         // Keep a reference for highlighting later
-        /* === PATCH START === */
         if (!playerState.transEls[playerState.tokenEls.length - 1])
             playerState.transEls[playerState.tokenEls.length - 1] = [];
         playerState.transEls[playerState.tokenEls.length - 1].push(transSpan);
-        /* === PATCH END === */
     });
 
     // -----------------------------------------------------------------
@@ -100,29 +95,6 @@ function buildTokenColumn(thaiWord, translations) {
 
     return col;
 }
-
-/* === PATCH START === */
-// -----------------------------------------------------------------
-// Helper: speak a string with the selected voice, returns a Promise
-// -----------------------------------------------------------------
-/*
-function speakText(text) {
-    return new Promise((resolve, reject) => {
-        if (!('speechSynthesis' in window)) {
-            reject(new Error('speechSynthesis not supported'));
-            return;
-        }
-        const utter = new SpeechSynthesisUtterance(text);
-        // Pick the voice that matches the name stored in playerState.voiceName
-        const voices = speechSynthesis.getVoices();
-        const voice = voices.find(v => v.name === playerState.voiceName) || voices[0];
-        if (voice) utter.voice = voice;
-        utter.onend = () => resolve();
-        utter.onerror = (e) => reject(e);
-        speechSynthesis.speak(utter);
-    });
-}
-*/
 
 /* -----------------------------------------------------------------
    Highlight the current token / translation according to playerState
@@ -411,7 +383,6 @@ function maybeDisableControls(panel, locale, uiLang) {
     }
 }
 
-
 /* -----------------------------------------------------------------
    Main entry – render the dictionary exercise inside the provided <main>.
    ----------------------------------------------------------------- */
@@ -438,7 +409,7 @@ export async function renderDictionaryExercise(mainEl, exerciseMeta, uiLang) {
 
 
     // -----------------------------------------------------------------
-    // 3️⃣ Internationalised UI strings
+    // 3️⃣ internationalized UI strings
     // -----------------------------------------------------------------
     // After flattening the locale cache (see app/data/locales.js) the
     // locale object is returned directly – there is no longer a `.content`
@@ -447,6 +418,12 @@ export async function renderDictionaryExercise(mainEl, exerciseMeta, uiLang) {
     // display, speak, delay, etc.).
     const locale = getLocale(uiLang);
     const languageKeys = Object.keys(data[0]).filter(k => k !== 'id' && k !== 'tokens');
+
+    // -----------------------------------------------------------------
+    // Local‑storage key for the TTS Voice
+    // -----------------------------------------------------------------
+    const LS_TTS_VOICE = 'local_storage_tts_voice';
+
 
     // -----------------------------------------------------------------
     // 4️⃣ State objects – which languages are displayed / spoken
@@ -469,7 +446,6 @@ export async function renderDictionaryExercise(mainEl, exerciseMeta, uiLang) {
     function rebuildTokenGrid() {
         // Reset the highlight‑state arrays each time we rebuild
         playerState.tokenEls = [];
-        playerState.transEls = [];
 
         tokenGrid.innerHTML = '';
 
@@ -492,10 +468,6 @@ export async function renderDictionaryExercise(mainEl, exerciseMeta, uiLang) {
     // -----------------------------------------------------------------
     // 6️⃣ Build the language‑options UI inside a <details> element
     // -----------------------------------------------------------------
-    // -----------------------------------------------------------------
-    // 6️⃣  Build the language‑options UI inside a <details> element
-    // -----------------------------------------------------------------
-
 
     const details = document.createElement('details');
 
@@ -515,6 +487,10 @@ export async function renderDictionaryExercise(mainEl, exerciseMeta, uiLang) {
     // Remember the selected voice for the player.
     playerState.voiceName = voiceSelect.value;
 
+    // es replaced above  set voice from localstorage
+    getStoredVoice() !== null ? playerState.voiceName = getStoredVoice() : voiceSelect.value;
+    console.log('voice restored from localstorage: ', getStoredVoice());
+    voiceSelect.value = playerState.voiceName;
 
     /* -------------------------------------------------------------
        9️⃣  Sync voiceSelect after the UI is built
@@ -522,12 +498,16 @@ export async function renderDictionaryExercise(mainEl, exerciseMeta, uiLang) {
     // The <select id="voiceSelect"> was created earlier in the UI.
     // Here we just sync the player state and listen for changes.
     if (voiceSelect) {
+
         // Initialise the player with the current selection
         playerState.voiceName = voiceSelect.value;
 
         // Update the player state when the user picks a different voice.
         voiceSelect.addEventListener('change', ev => {
             playerState.voiceName = ev.target.value;
+            // es  store voice in localstorage
+            setStoredVoice(ev.target.value);
+            console.log('local store voice set to: ', ev.target.value);
         });
 
     }
@@ -536,7 +516,7 @@ export async function renderDictionaryExercise(mainEl, exerciseMeta, uiLang) {
     details.style.margin = '0.5rem 1rem';
     mainEl.appendChild(details);
 
-    // ---- Summary (internationalised) ----
+    // ---- Summary (internationalized) ----
     const summary = document.createElement('summary');
     // Expected key: "languageOptions". Fallback to English text.
     summary.textContent = locale.languageOptions || 'Language options';
@@ -556,7 +536,7 @@ export async function renderDictionaryExercise(mainEl, exerciseMeta, uiLang) {
     const displayHeader = document.createElement('div');
     const speakHeader = document.createElement('div');
 
-    // Internationalised column headings
+    // internationalized column headings
     displayHeader.textContent = locale.display ?? 'Display';
     speakHeader.textContent = locale.speak ?? 'Speak';
 
@@ -650,6 +630,9 @@ export async function renderDictionaryExercise(mainEl, exerciseMeta, uiLang) {
         // Update the player state whenever the user picks a different voice
         voiceSelect.addEventListener('change', ev => {
             playerState.voiceName = ev.target.value;
+            // es
+            setStoredVoice(ev.target.value);
+            console.log('set stored voice', ev.target.value);
         });
     }
 
@@ -658,7 +641,7 @@ export async function renderDictionaryExercise(mainEl, exerciseMeta, uiLang) {
     // -----------------------------------------------------------------
     mainEl.innerHTML = '';          // wipe any previous content
 
-    // Title (internationalised)
+    // Title (internationalized)
     const titleText = (exerciseMeta.title && exerciseMeta.title[uiLang]) ||
         exerciseMeta.title?.en ||
         'Dictionary Exercise';

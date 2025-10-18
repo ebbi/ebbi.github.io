@@ -18,7 +18,8 @@ import { applySavedTheme } from './utils/theme.js';
 import {
     getStoredLang,
     setStoredLang,
-    getStoredFont               // ← NEW import
+    getStoredFont,
+    getStoredVoice
 } from './utils/storage.js';
 
 import {
@@ -29,11 +30,9 @@ import {
     notFoundHandler
 } from './ui/routes.js';
 
-import { FONT_CATALOG } from './data/fonts.js';               // ← NEW import
-// import { applyCurrentFont } from './utils/fontHelper.js';     // ← NEW import
-import { applyStoredFont } from './utils/fontHelper.js';     // ← NEW import
+import { FONT_CATALOG } from './data/fonts.js';
+import { applyStoredFont } from './utils/fontHelper.js';
 
-//import { isRtlLang } from './utils/rtl.js';                  // ← keep existing import (if you added it)
 import { applyDirection, isRtlLang } from './utils/rtl.js';
 
 /* --------------------------------------------------------------
@@ -66,6 +65,19 @@ import { applyDirection, isRtlLang } from './utils/rtl.js';
             storedLang = FALLBACK_LANG; // fallback guaranteed to be valid
         }
 
+
+        /* --------------------------------------------------------------
+           3️⃣ Persist TTS Voice
+           -------------------------------------------------------------- */
+        let storedVoice = getStoredVoice();   // reads from LS or navigator
+        const allVoices = ('speechSynthesis' in window) ? speechSynthesis.getVoices() : [];
+
+        if (allVoices.includes(storedVoice)) {
+            setStoredLang(FALLBACK_LANG);
+            storedLang = FALLBACK_LANG; // fallback guaranteed to be valid
+        }
+
+
         // Apply the correct direction globally (now via the helper)
         applyDirection(storedLang);
 
@@ -81,7 +93,7 @@ import { applyDirection, isRtlLang } from './utils/rtl.js';
            -------------------------------------------------------------- */
         router.resolve();   // this will call the appropriate handler
     } catch (e) {
-        console.error('❌ App initialisation failed:', e);
+        console.error('❌ App initialization failed:', e);
         document.body.textContent = 'Failed to start the application – see console for details.';
     }
 })();
