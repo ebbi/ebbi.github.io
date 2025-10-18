@@ -123,6 +123,7 @@ export async function renderMenu(container, UI_LANG) {
     levelWrapper.style.flexWrap = 'nowrap';
     levelWrapper.style.gap = '0.5rem';
     levelWrapper.style.margin = '0 1rem';
+    levelWrapper.style.width = '21rem';
 
     levelWrapper.style.fontSize = '0.85rem';
 

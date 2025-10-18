@@ -57,6 +57,7 @@ export function renderHelp(container) {
     searchLabel.style.display = 'flex';
     searchLabel.style.alignItems = 'center';
     searchLabel.style.gap = '0.25rem';
+    searchLabel.style.width = '18rem';
 
     const searchIcon = document.createElement('span');
     searchIcon.textContent = '🔍';
@@ -65,9 +66,10 @@ export function renderHelp(container) {
     const searchInput = document.createElement('input');
     searchInput.type = 'search';
     searchInput.placeholder = locale.searchPlaceholder || 'Search…';
-    searchInput.style.padding = '0.2rem 0.4rem';
+    searchInput.style.padding = '0';
     searchInput.style.border = `1px solid var(--border-surface, #ddd)`;
     searchInput.style.borderRadius = '4px';
+    searchInput.style.width = '18rem';
     searchLabel.appendChild(searchInput);
 
     headerRow.appendChild(searchLabel);
@@ -194,7 +196,7 @@ export function renderHelp(container) {
                 //        wrapper.innerHTML = htmlForLang.trim();
                 //        details.appendChild(wrapper);
         */
-       
+
         details.innerHTML = htmlForLang.trim();
         container.appendChild(details);
     });
