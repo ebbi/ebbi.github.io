@@ -123,7 +123,7 @@ export async function renderMenu(container, UI_LANG) {
     levelWrapper.style.flexWrap = 'nowrap';
     levelWrapper.style.gap = '0.5rem';
     levelWrapper.style.margin = '0 1rem';
-    levelWrapper.style.width = '21rem';
+    levelWrapper.style.width = '12rem';
 
     levelWrapper.style.fontSize = '0.85rem';
 
@@ -194,7 +194,7 @@ export async function renderMenu(container, UI_LANG) {
         const select = document.createElement('select');
         select.id = 'exerciseSelect';
         select.style.flex = '1';
-        select.style.maxWidth = '17rem';
+        select.style.maxWidth = '12rem';
         select.style.padding = 0;
         wrapper.appendChild(select);
 

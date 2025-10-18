@@ -57,7 +57,7 @@ export function renderHelp(container) {
     searchLabel.style.display = 'flex';
     searchLabel.style.alignItems = 'center';
     searchLabel.style.gap = '0.25rem';
-    searchLabel.style.width = '18rem';
+    //   searchLabel.style.width = '12rem';
 
     const searchIcon = document.createElement('span');
     searchIcon.textContent = '🔍';
@@ -69,7 +69,7 @@ export function renderHelp(container) {
     searchInput.style.padding = '0';
     searchInput.style.border = `1px solid var(--border-surface, #ddd)`;
     searchInput.style.borderRadius = '4px';
-    searchInput.style.width = '18rem';
+    searchInput.style.width = '12rem';
     searchLabel.appendChild(searchInput);
 
     headerRow.appendChild(searchLabel);
