@@ -39,6 +39,7 @@ export function speakText(text, voiceName) {
             reject(new Error('speechSynthesis not supported'));
             return;
         }
+
         const utter = new SpeechSynthesisUtterance(text);
         const voices = speechSynthesis.getVoices();
 
@@ -50,6 +51,11 @@ export function speakText(text, voiceName) {
         if (voice) utter.voice = voice;
         utter.onend = () => resolve();
         utter.onerror = e => reject(e);
+
+        // es 
+        window.speechSynthesis.cancel();
+        // es end
+
         speechSynthesis.speak(utter);
     });
 }
