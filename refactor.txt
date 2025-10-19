@@ -5,3 +5,49 @@ an event from Play or Reset.
 2. div speech panel should have margin 0.5rem 1rem 
 
 3. Add the previous use case for clicking a word to highlight and play. 
+Still returns an error:
+Uncaught ReferenceError: speechCtrl is not defined
+    clickHandler http://127.0.0.1:5500/app/ui/dictionaryExercise.js:82
+    buildTokenColumn http://127.0.0.1:5500/app/ui/dictionaryExercise.js:86
+    rebuildTokenGrid http://127.0.0.1:5500/app/ui/dictionaryExercise.js:161
+    rebuildTokenGrid http://127.0.0.1:5500/app/ui/dictionaryExercise.js:154
+    rebuildTokenGrid http://127.0.0.1:5500/app/ui/dictionaryExercise.js:151
+    renderDictionaryExercise http://127.0.0.1:5500/app/ui/dictionaryExercise.js:254
+    renderDictionaryExercise http://127.0.0.1:5500/app/ui/dictionaryExercise.js:248
+    renderDictionaryExercise http://127.0.0.1:5500/app/ui/dictionaryExercise.js:206
+    initDictionaryPage http://127.0.0.1:5500/app/ui/dictionaryExercise.js:359
+    exerciseDetailHandler http://127.0.0.1:5500/app/ui/routes.js:131
+    resolve http://127.0.0.1:5500/app/router/router.js:83
+    <anonymous> http://127.0.0.1:5500/app/bootstrap.js:93
+    async* http://127.0.0.1:5500/app/bootstrap.js:98
+dictionaryExercise.js:82:9
+    clickHandler http://127.0.0.1:5500/app/ui/dictionaryExercise.js:82
+    (Async: EventListener.handleEvent)
+    buildTokenColumn http://127.0.0.1:5500/app/ui/dictionaryExercise.js:86
+    rebuildTokenGrid http://127.0.0.1:5500/app/ui/dictionaryExercise.js:161
+    forEach self-hosted:157
+    rebuildTokenGrid http://127.0.0.1:5500/app/ui/dictionaryExercise.js:154
+    forEach self-hosted:157
+    rebuildTokenGrid http://127.0.0.1:5500/app/ui/dictionaryExercise.js:151
+    renderDictionaryExercise http://127.0.0.1:5500/app/ui/dictionaryExercise.js:254
+    (Async: EventListener.handleEvent)
+    renderDictionaryExercise http://127.0.0.1:5500/app/ui/dictionaryExercise.js:248
+    forEach self-hosted:157
+    renderDictionaryExercise http://127.0.0.1:5500/app/ui/dictionaryExercise.js:206
+    InterpretGeneratorResume self-hosted:1432
+    AsyncFunctionNext self-hosted:800
+    (Async: async)
+    initDictionaryPage http://127.0.0.1:5500/app/ui/dictionaryExercise.js:359
+    InterpretGeneratorResume self-hosted:1432
+    AsyncFunctionNext self-hosted:800
+    (Async: async)
+    exerciseDetailHandler http://127.0.0.1:5500/app/ui/routes.js:131
+    InterpretGeneratorResume self-hosted:1432
+    AsyncFunctionNext self-hosted:800
+    (Async: async)
+    resolve http://127.0.0.1:5500/app/router/router.js:83
+    <anonymous> http://127.0.0.1:5500/app/bootstrap.js:93
+    InterpretGeneratorResume self-hosted:1432
+    AsyncFunctionNext self-hosted:800
+    (Async: async)
+    <anonymous> http://127.0.0.1:5500/app/bootstrap.js:98

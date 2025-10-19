@@ -24,6 +24,13 @@ import { createSpeechController } from "../utils/speechController.js";
 let tokenEls = []; // <span class="thai"> elements (order = tokenIdx)
 let transEls = []; // 2‑dimensional: transEls[tokenIdx][langIdx] = <span>
 
+/* -----------------------------------------------------------------
+   Declare the controller **before** any function that uses it.
+   It will be assigned later (after the DOM skeleton exists) but the
+   variable must exist so the click‑handler can reference it.
+   ----------------------------------------------------------------- */
+let speechCtrl;   // will hold the instance returned by createSpeechController
+
 /**
  * Build the HTML for a single token column.
  *
@@ -32,7 +39,6 @@ let transEls = []; // 2‑dimensional: transEls[tokenIdx][langIdx] = <span>
  * @returns {HTMLElement} the column <div>
  */
 function buildTokenColumn(thaiWord, translations) {
-
     const col = document.createElement("div");
     col.className = "token-col";
     col.style.display = "flex";
@@ -79,7 +85,9 @@ function buildTokenColumn(thaiWord, translations) {
 
         // Tell the controller where we want to start from
         // (the controller already knows the latest tokenEls / transEls)
-        speechCtrl.startFrom(tokenIndex, transIndex);
+        if (speechCtrl) {
+            speechCtrl.startFrom(tokenIndex, transIndex);
+        }
     };
 
     // Attach the click handler to both the Thai token and every translation span
@@ -289,9 +297,9 @@ export async function renderDictionaryExercise(mainEl, exerciseMeta, uiLang) {
     mainEl.appendChild(speechPanel);
 
     // -----------------------------------------------------------------
-    // 9️⃣  Build the speech controller **after** the DOM pieces exist
+    // 9️⃣  Build the speech controller **before** the first rebuild
     // -----------------------------------------------------------------
-    const speechCtrl = createSpeechController(speechPanel, {
+    speechCtrl = createSpeechController(speechPanel, {
         // Provide the list of languages your app supports
         getAvailableLanguages: () => SUPPORTED_LANGS,
 
@@ -312,21 +320,14 @@ export async function renderDictionaryExercise(mainEl, exerciseMeta, uiLang) {
     });
 
     // -----------------------------------------------------------------
-    // 10️⃣  The voice selector is already inside the controller's UI,
-    //       so we **do not** append it anywhere else.
-    // -----------------------------------------------------------------
-
-    // -----------------------------------------------------------------
-    // 11️⃣  Initial render of the token grid (reflect default selections)
+    // 10️⃣  Initial render of the token grid (reflect default selections)
     // -----------------------------------------------------------------
     rebuildTokenGrid();
 
     // -----------------------------------------------------------------
-    // 12️⃣  Expose a tiny helper on the controller so the click handler
-    //       inside buildTokenColumn can jump to a specific token.
+    // 11️⃣  No extra work needed – the click‑handler inside
+    //       `buildTokenColumn` now calls `speechCtrl.startFrom(...)`.
     // -----------------------------------------------------------------
-    // (The controller already provides `startFrom`, so we just keep a
-    // reference to it for the click handler above.)
 }
 
 /**
