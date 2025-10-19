@@ -1,0 +1,68 @@
+{
+    "publications": [
+        {
+            "id": "thai-grammar-handbook",
+            "type": "book",
+            "title": {
+                "en": "Thai Grammar Handbook",
+                "th": "คู่มือไวยากรณ์ภาษาไทย",
+                "es": "Manual de gramática tailandesa"
+            },
+            "languages": [
+                "en",
+                "th",
+                "es"
+            ],
+            "coverImage": "/assets/books/thai-grammar.jpg",
+            "latestEntries": [
+                {
+                    "id": "ch1-intro",
+                    "date": "2025-03-01",
+                    "title": {
+                        "en": "Chapter 1 – Introduction",
+                        "th": "บทที่ 1 – แนะนำ"
+                    },
+                    "summary": {
+                        "en": "An overview of Thai consonant classes, short/long vowels and diphthongs.",
+                        "th": "ภาพรวมของประเภทพยัญชนะไทย, สระสั้น/ยาว และสระผสม"
+                    },
+                    "media": {
+                        "image": "/assets/books/thai-grammar/ch1.png",
+                        "video": null
+                    }
+                }
+            ]
+        },
+        {
+            "id": "kyoto-travel-blog",
+            "type": "blog",
+            "title": {
+                "en": "Kyoto Travel Diary",
+                "ja": "京都旅行日記"
+            },
+            "languages": [
+                "en",
+                "ja"
+            ],
+            "coverImage": "/assets/blogs/kyoto.jpg",
+            "latestEntries": [
+                {
+                    "id": "arashiyama-autumn",
+                    "date": "2024-09-15",
+                    "title": {
+                        "en": "Autumn Leaves in Arashiyama",
+                        "ja": "嵐山の紅葉"
+                    },
+                    "summary": {
+                        "en": "Walking through the bamboo forest and the famous maple avenue.",
+                        "ja": "竹林と有名な紅葉並木を散策"
+                    },
+                    "media": {
+                        "image": "/assets/blogs/kyoto/arashiyama.jpg",
+                        "video": null
+                    }
+                }
+            ]
+        }
+    ]
+}

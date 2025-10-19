@@ -1,10 +1,18 @@
 // app/ui/menu.js
+// ---------------------------------------------------------------
+// Render the dynamic part of the UI (level‑filter checkboxes,
+// exercise list, and the Books & Blogs panel) inside the supplied
+// <main> container.
+// ---------------------------------------------------------------
+
 import { loadJSON } from '../utils/fetch.js';
 import { EXERCISES } from '../data/exercises.js';
 import { getLocale } from '../data/locales.js';
 
 // -----------------------------------------------------------------
-// Font‑related imports
+// Font‑related imports (needed for the font selector that lives in the
+// static nav – we keep them here because the original file already
+// imported them).
 // -----------------------------------------------------------------
 import { FONT_CATALOG } from '../data/fonts.js';
 import {
@@ -16,6 +24,11 @@ import {
 import { applyFontFamily } from '../utils/fontHelper.js';
 import { SUPPORTED_LANGS, LANGUAGE_LABELS } from '../data/locales.js';
 import { applyDirection } from '../utils/rtl.js';
+
+// -----------------------------------------------------------------
+// NEW – Books & Blogs panel (rendered *after* the practice panel)
+// -----------------------------------------------------------------
+import { renderBooksPanel } from './booksPanel.js';
 
 // -----------------------------------------------------------------
 // Local‑storage key for the level‑filter checkboxes
@@ -72,19 +85,16 @@ function getLastExercise() {
     }
 }
 
-
-
 /**
- * Render the **dynamic** part of the UI (level‑filter checkboxes and the
- * exercise list) inside the supplied `container` (the <main> element).
+ * Render the **dynamic** part of the UI (level‑filter checkboxes,
+ * exercise list, and the Books & Blogs panel) inside `container`.
  *
  * @param {HTMLElement} container – the <main> element where dynamic UI goes.
  * @param {string} UI_LANG – currently selected UI language.
  */
-
 export async function renderMenu(container, UI_LANG) {
     // -------------------------------------------------------------
-    // 0️⃣ Ensure exercises are loaded (once)
+    // 0️⃣ Ensure the global EXERCISES array is populated (once)
     // -------------------------------------------------------------
     if (!EXERCISES.length) {
         try {
@@ -99,23 +109,18 @@ export async function renderMenu(container, UI_LANG) {
     }
 
     // -------------------------------------------------------------
-    // 1️⃣ Get (or create) the static <nav class="menu-nav"> element.
+    // 1️⃣ Build the **Practice languages** <details> panel
     // -------------------------------------------------------------
-    let nav = document.querySelector('nav.menu-nav');
-    if (!nav) {
-        nav = document.createElement('nav');
-        nav.className = 'menu-nav';
-        // Insert the nav directly after the toolbar container (header)
-        const header = document.getElementById('toolbarContainer');
-        header.parentNode.insertBefore(nav, header.nextSibling);
-    }
+    const practiceDetails = document.createElement('details');
+    practiceDetails.open = true;                     // expanded by default
+    practiceDetails.style.margin = '0.5rem 1rem';
 
-    // Populate only the static selectors – no checkboxes or list here.
-    //   renderStaticNav(nav, UI_LANG);
+    const practiceSummary = document.createElement('summary');
+    const locale = getLocale(UI_LANG);
+    practiceSummary.textContent = locale.practiceLanguages || 'Practice languages';
+    practiceDetails.appendChild(practiceSummary);
 
-    // -------------------------------------------------------------
-    // 2️⃣ Level‑filter checkboxes (dynamic, go inside <main>)
-    // -------------------------------------------------------------
+    // ----- Level‑filter checkboxes -----
     const levelWrapper = document.createElement('div');
     levelWrapper.style.display = 'flex';
     levelWrapper.style.justifyContent = 'space-between';
@@ -124,18 +129,9 @@ export async function renderMenu(container, UI_LANG) {
     levelWrapper.style.gap = '0.5rem';
     levelWrapper.style.margin = '0 1rem';
     levelWrapper.style.width = '14rem';
-
     levelWrapper.style.fontSize = '0.85rem';
 
-    // After flattening the locale cache (see locales.js) the locale
-    // object is returned directly – there is no longer a `.content`
-    // wrapper.  Using the old shape caused `localeObj` to be undefined,
-    // which broke the level‑filter UI (basic / intermediate / advance).
-    const localeObj = getLocale(UI_LANG);
-
-    const locale = getLocale(UI_LANG);
-    const practiceLabel = locale.practiceLanguages || 'Practice languages';
-    const chooseExerciseLabel = locale.exercise || 'Exercise';
+    const localeObj = getLocale(UI_LANG); // raw locale object (no .content wrapper)
 
     const levelDefs = [
         { label: localeObj.basic, value: 'basic' },
@@ -151,7 +147,6 @@ export async function renderMenu(container, UI_LANG) {
         label.style.alignItems = 'center';
         label.style.cursor = 'pointer';
         label.style.margin = '0';
-
 
         const cb = document.createElement('input');
         cb.type = 'checkbox';
@@ -174,17 +169,14 @@ export async function renderMenu(container, UI_LANG) {
         levelWrapper.appendChild(label);
     });
 
-    /* -------------------------------------------------------------
-   3️⃣  Build the “Choose exercise” dropdown (with optgroups & persistence)
-   ------------------------------------------------------------- */
+    practiceDetails.appendChild(levelWrapper);
+
+    // ----- Exercise selector (dropdown with optgroups) -----
     function buildExerciseDropdown(UI_LANG, locale) {
         const wrapper = document.createElement('div');
         wrapper.style.display = 'flex';
-        //       wrapper.style.alignItems = 'center';
         wrapper.style.gap = '0.5rem';
-        //        wrapper.style.marginTop = '0.5rem';
-        wrapper.style.margin = "0.5rem 1rem 0.5rem 1rem";
-        wrapper.style.fontSize = '0.9rem';
+        wrapper.style.margin = '0.5rem 1rem';
 
         const label = document.createElement('label');
         label.textContent = locale.exercise || 'Exercise';
@@ -201,15 +193,12 @@ export async function renderMenu(container, UI_LANG) {
         // ---- Placeholder (disabled) ----
         const placeholder = document.createElement('option');
         placeholder.value = '';
-        placeholder.textContent = '--';
         placeholder.disabled = true;
+        placeholder.textContent = '--';
         select.appendChild(placeholder);
 
         // ---- Group by level -------------------------------------------------
-        // Order matters – we want the groups in a predictable sequence.
         const levelOrder = ['basic', 'intermediate', 'advance'];
-
-        // Build a map: level → array of exercises belonging to that level.
         const byLevel = levelOrder.reduce((acc, lvl) => {
             acc[lvl] = [];
             return acc;
@@ -217,7 +206,6 @@ export async function renderMenu(container, UI_LANG) {
 
         EXERCISES.forEach(ex => {
             const lvl = (ex.level || 'basic').toLowerCase();
-            // Guard against unexpected values – push into “basic” as fallback.
             const bucket = levelOrder.includes(lvl) ? lvl : 'basic';
             byLevel[bucket].push(ex);
         });
@@ -225,7 +213,6 @@ export async function renderMenu(container, UI_LANG) {
         // ---- Create <optgroup>s ------------------------------------------------
         levelOrder.forEach(lvl => {
             const group = document.createElement('optgroup');
-            // Use the translated level label (fallback to capitalised English).
             const grpLabel = locale[lvl] || lvl.charAt(0).toUpperCase() + lvl.slice(1);
             group.label = grpLabel;
 
@@ -237,7 +224,6 @@ export async function renderMenu(container, UI_LANG) {
                 group.appendChild(opt);
             });
 
-            // Only append non‑empty groups (avoid empty optgroup UI noise).
             if (group.children.length) select.appendChild(group);
         });
 
@@ -245,11 +231,8 @@ export async function renderMenu(container, UI_LANG) {
         const lastId = getLastExercise();
         if (lastId) {
             const optionToSelect = Array.from(select.options).find(o => o.value === lastId);
-            if (optionToSelect) {
-                optionToSelect.selected = true;
-            }
+            if (optionToSelect) optionToSelect.selected = true;
         } else {
-            // No stored id → keep the placeholder selected.
             placeholder.selected = true;
         }
 
@@ -268,9 +251,9 @@ export async function renderMenu(container, UI_LANG) {
         return wrapper;
     }
 
-    // -------------------------------------------------------------
-    // 3️⃣ Exercise list (dynamic, also goes inside <main>)
-    // -------------------------------------------------------------
+    practiceDetails.appendChild(buildExerciseDropdown(UI_LANG, locale));
+
+    // ----- Exercise list (cards) -----
     const ul = document.createElement('ul');
     ul.className = 'menu-list';
 
@@ -305,33 +288,25 @@ export async function renderMenu(container, UI_LANG) {
         window.router.navigate(`/${UI_LANG}/exercises/${id}`);
     });
 
+    practiceDetails.appendChild(ul);
 
     // -------------------------------------------------------------
-    // 2️⃣ Build the <details> wrapper (unchanged)
+    // 2️⃣ Build the **Books & Blogs** <details> panel (the one you already have)
     // -------------------------------------------------------------
-    const detailsEl = document.createElement('details');
-    detailsEl.open = true;
-
-    const summaryEl = document.createElement('summary');
-    summaryEl.textContent = practiceLabel;
-    detailsEl.appendChild(summaryEl);
-
-    // level‑filter panel
-    detailsEl.appendChild(levelWrapper);
-
-    // *** NEW: dropdown with grouping & persistence ***
-    detailsEl.appendChild(buildExerciseDropdown(UI_LANG, locale));
-
-    // exercise list (unchanged)
-    detailsEl.appendChild(ul);
+    // The `renderBooksPanel` function creates its own <details> wrapper,
+    // so we just call it and let it append to the container.
+    // It will automatically open (expanded) by default.
+    // -------------------------------------------------------------
+    // Note: we *don’t* pass a pre‑selection here – the home page shows the
+    // panel with no publication selected.
+    // -------------------------------------------------------------
 
     // -------------------------------------------------------------
-    // 4️⃣ Inject the dynamic pieces into the <main> container.
+    // 3️⃣ Assemble everything inside the supplied <main> container
     // -------------------------------------------------------------
-    // Clear any previous dynamic content first.
-    container.innerHTML = '';
-    container.appendChild(detailsEl);
-    //   container.appendChild(levelWrapper);
-    //   container.appendChild(ul);
-
+    container.innerHTML = '';               // wipe any previous content
+    container.appendChild(practiceDetails); // first: Practice languages panel
+    container.appendChild(ul);              // the list lives inside the details already
+    // Now append the Books & Blogs panel *below* the practice panel
+    renderBooksPanel(container, UI_LANG);   // will create its own <details> and append it
 }

@@ -1,14 +1,28 @@
-For the next main use case, please provide a road map and advice on possible alternatives before generating any code.
+Changing bootstrap.js to:
 
-The idea is to have a multilingual blog.  The App toolbar functionality remains the same.
-The home page will have a new detail element "Books & Blogs" under the current Practice languages.
+import { preloadFonts } from './data/fonts.js';
+// Remove the line entirely – the global `window.router` is already defined.
+// import { router } from './router/router.js';
 
-Within the details "Books & Blogs" there will be a search input box,
-a drop-down select list of books $ blogs,
-and a drop-down select list of languages available for the books $ blogs (the language list is updated for each blog)
-Underneath, there will be a similar CS card display of the summary of latest blogs.
-Blogs in different language would have common (as well as language dependant) resources such as images and video 
+has this error:
 
-Approach suggestions?
+    GET
+https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&display=swap
+[HTTP/3 200  97ms]
+
+[Font] preload finished fonts.js:57:17
+❌ App initialization failed: ReferenceError: Router is not defined
+    <anonymous> http://127.0.0.1:5500/app/bootstrap.js:52
+    async* http://127.0.0.1:5500/app/bootstrap.js:99
+bootstrap.js:96:17
 
 
+ANd changing bootstrap.js to:
+
+import { preloadFonts } from './data/fonts.js';
+// Remove the line entirely – the global `window.router` is already defined.
+import { router } from './router/router.js';
+
+has this error:
+
+Uncaught SyntaxError: The requested module 'http://127.0.0.1:5500/app/routerClass.js' doesn't provide an export named: 'default' router.js:5:8

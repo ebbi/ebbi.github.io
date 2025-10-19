@@ -2,18 +2,9 @@
 /* --------------------------------------------------------------
    Imports
    -------------------------------------------------------------- */
-//import { applyStoredFont } from './utils/fontHelper.js';
-
-import {
-    loadLocales,
-    getLocale,
-    SUPPORTED_LANGS,
-    FALLBACK_LANG,
-    LS_LANG_KEY
-} from './data/locales.js';
-
+import { loadLocales, SUPPORTED_LANGS, FALLBACK_LANG } from './data/locales.js';
 import { preloadFonts } from './data/fonts.js';
-import { Router } from './router/router.js';
+import { router } from './router/router.js';          // <-- singleton router
 import { applySavedTheme } from './utils/theme.js';
 import {
     getStoredLang,
@@ -22,75 +13,57 @@ import {
     getStoredVoice,
     setStoredVoice
 } from './utils/storage.js';
-
-import {
-    homeHandler,
-    exercisesHandler,
-    exerciseDetailHandler,
-    helpHandler,
-    notFoundHandler
-} from './ui/routes.js';
-
-import { FONT_CATALOG } from './data/fonts.js';
 import { applyStoredFont } from './utils/fontHelper.js';
-
-import { applyDirection, isRtlLang } from './utils/rtl.js';
+import { applyDirection } from './utils/rtl.js';
 
 /* --------------------------------------------------------------
-   1️⃣ Load locales first – we need them before any UI is built
+   1️⃣ Load everything that must be ready before we render UI
    -------------------------------------------------------------- */
 (async () => {
     try {
-        await loadLocales();          // populates `locales` with {en:{content:{…}}, …}
-        await preloadFonts();         // optional but improves UX
-        applySavedTheme();            // early theme (light/dark)
+        // -----------------------------------------------------------------
+        // 0️⃣ Locales – needed for any UI text
+        // -----------------------------------------------------------------
+        await loadLocales();                 // fills the `locales` cache
 
-        /* --------------------------------------------------------------
-           2️⃣ Router creation – same routes you already used
-           -------------------------------------------------------------- */
-        window.router = new Router([
-            { path: '/', handler: homeHandler },
-            { path: '/:lang', handler: homeHandler },
-            { path: '/:lang/exercises', handler: exercisesHandler },
-            { path: '/:lang/exercises/:id', handler: exerciseDetailHandler },
-            { path: '/:lang/help', handler: helpHandler },
-        ]);
-        router.setNotFound(notFoundHandler);
+        // -----------------------------------------------------------------
+        // 1️⃣ Fonts – optional, but we wait so the UI doesn’t flash
+        // -----------------------------------------------------------------
+        await preloadFonts();                // logs failures, does not block forever
 
-        /* --------------------------------------------------------------
-           3️⃣ Persist language & set text direction (LTR / RTL)
-           -------------------------------------------------------------- */
-        let storedLang = getStoredLang();   // reads from LS or navigator
+        // -----------------------------------------------------------------
+        // 2️⃣ Theme – set light/dark before anything paints
+        // -----------------------------------------------------------------
+        applySavedTheme();
+
+        // -----------------------------------------------------------------
+        // 3️⃣ Language persistence & direction
+        // -----------------------------------------------------------------
+        let storedLang = getStoredLang();    // reads from LS or navigator
         if (!SUPPORTED_LANGS.includes(storedLang)) {
             setStoredLang(FALLBACK_LANG);
-            storedLang = FALLBACK_LANG; // fallback guaranteed to be valid
+            storedLang = FALLBACK_LANG;
         }
+        applyDirection(storedLang);          // adds dir="ltr"/"rtl" attributes
 
-
-        /* --------------------------------------------------------------
-           3️⃣ Persist TTS Voice
-           -------------------------------------------------------------- */
-        let storedVoice = getStoredVoice();   // reads from LS or navigator
+        // -----------------------------------------------------------------
+        // 4️⃣ TTS voice persistence (only if the SpeechSynthesis API exists)
+        // -----------------------------------------------------------------
+        const storedVoice = getStoredVoice();
         const allVoices = ('speechSynthesis' in window) ? speechSynthesis.getVoices() : [];
-
-        if (allVoices.includes(storedVoice)) {
+        if (allVoices.some(v => v.name === storedVoice)) {
             setStoredVoice(storedVoice);
         }
 
-        // Apply the correct direction globally (now via the helper)
-        applyDirection(storedLang);
-
-        /* --------------------------------------------------------------
-           4️⃣ Apply the persisted font (if any) BEFORE any UI is rendered
-           -------------------------------------------------------------- */
-        //        applyCurrentFont(FONT_CATALOG, getStoredFont);
-        // Apply the persisted font (single source of truth)
+        // -----------------------------------------------------------------
+        // 5️⃣ Font – apply the persisted font *before* any UI renders
+        // -----------------------------------------------------------------
         applyStoredFont();
 
-        /* --------------------------------------------------------------
-           5️⃣ Finally resolve the current URL → first page view
-           -------------------------------------------------------------- */
-        router.resolve();   // this will call the appropriate handler
+        // -----------------------------------------------------------------
+        // 6️⃣ Finally resolve the current URL → first page view
+        // -----------------------------------------------------------------
+        router.resolve();   // triggers the appropriate route handler
     } catch (e) {
         console.error('❌ App initialization failed:', e);
         document.body.textContent = 'Failed to start the application – see console for details.';
