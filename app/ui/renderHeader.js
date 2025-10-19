@@ -8,7 +8,8 @@ import { applyDirection } from '../utils/rtl.js';
 import { getStoredLang, setStoredLang } from '../utils/storage.js';
 import { SUPPORTED_LANGS, FALLBACK_LANG, LANGUAGE_LABELS } from '../data/locales.js';
 import { populateFontSelect } from './fontSelect.js';
-// import { renderHeader } from '/app/ui/renderHeader.js';
+// NEW – central speech controller
+import { createSpeechController } from "../utils/speechController.js";
 
 /**
  * Creates the static page skeleton:

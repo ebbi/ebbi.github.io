@@ -52,10 +52,6 @@ export function speakText(text, voiceName) {
         utter.onend = () => resolve();
         utter.onerror = e => reject(e);
 
-        // es 
-        window.speechSynthesis.cancel();
-        // es end
-
         speechSynthesis.speak(utter);
     });
 }
