@@ -6,6 +6,7 @@
 // ---------------------------------------------------------------
 
 import { speakText, populateVoiceList } from "./speech.js";
+import { getStoredVoice, setStoredVoice } from "./storage.js";
 
 /* -----------------------------------------------------------------
    Default internal state – identical to the one you had before.
@@ -123,8 +124,27 @@ export function createSpeechController(container, {
     const { row: statusVoiceRow, status: statusEl, voiceSelect } =
         makeStatusVoiceRow();
 
+    // -----------------------------------------------------------------
     // Populate the voice list **once** (the controller owns the selector)
-    populateVoiceList(voiceSelect, getAvailableLanguages ? getAvailableLanguages() : []);
+    // -----------------------------------------------------------------
+    const availableLangs = getAvailableLanguages ? getAvailableLanguages() : [];
+    populateVoiceList(voiceSelect, availableLangs);
+
+    // -----------------------------------------------------------------
+    // ---- Restore persisted voice (if any) ---------------------------
+    // -----------------------------------------------------------------
+    const persisted = getStoredVoice();               // reads from LS
+    // Try to find a matching <option>.  If we find it, select it.
+    const matchingOption = Array.from(voiceSelect.options)
+        .find(opt => opt.value === persisted);
+    if (matchingOption) {
+        voiceSelect.value = persisted;
+        state.voiceName = persisted;                  // internal state now knows it
+    } else {
+        // No stored voice (or it isn’t available).  Keep the first option
+        // that the populateVoiceList call inserted.
+        state.voiceName = voiceSelect.value || null;
+    }
 
     // -----------------------------------------------------------------
     // Assemble everything inside the supplied container
@@ -207,7 +227,7 @@ export function createSpeechController(container, {
 
             // ---- Speak translation ----------------------------------
             if (state.transIdx < transArray.length) {
-                const span = transArray[state.transIdx];
+                const span = state.transEls[tIdx][state.transIdx];
                 highlightCurrent();
                 const txt = span.textContent.trim();
                 if (txt) {
@@ -287,7 +307,14 @@ export function createSpeechController(container, {
         const newVoice = ev.target.value;
         if ("speechSynthesis" in window) speechSynthesis.cancel();
 
-        state.voiceName = newVoice;
+        state.voiceName = newVoice;                 // remember for playback
+        // Persist the choice using the official helper (keeps the key in one place)
+        try {
+            setStoredVoice(newVoice);
+        } catch (e) {
+            console.warn("[Speech] could not persist voice:", e);
+        }
+
         if (typeof onVoiceChange === "function") onVoiceChange(newVoice);
 
         setPanelEnabled(false, "Voice change – waiting…");

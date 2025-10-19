@@ -177,6 +177,7 @@ export async function renderMenu(container, UI_LANG) {
         wrapper.style.display = 'flex';
         wrapper.style.gap = '0.5rem';
         wrapper.style.margin = '0.5rem 1rem';
+        wrapper.style.fontSize = '0.9rem';
 
         const label = document.createElement('label');
         label.textContent = locale.exercise || 'Exercise';
@@ -193,8 +194,8 @@ export async function renderMenu(container, UI_LANG) {
         // ---- Placeholder (disabled) ----
         const placeholder = document.createElement('option');
         placeholder.value = '';
-        placeholder.disabled = true;
         placeholder.textContent = '--';
+        placeholder.disabled = true;
         select.appendChild(placeholder);
 
         // ---- Group by level -------------------------------------------------
@@ -241,10 +242,7 @@ export async function renderMenu(container, UI_LANG) {
             const chosenId = ev.target.value;
             if (!chosenId) return;
 
-            // Persist the choice
             storeLastExercise(chosenId);
-
-            // Navigate exactly like a card click would do.
             window.router.navigate(`/${UI_LANG}/exercises/${chosenId}`, true);
         });
 
@@ -288,25 +286,21 @@ export async function renderMenu(container, UI_LANG) {
         window.router.navigate(`/${UI_LANG}/exercises/${id}`);
     });
 
+    // **IMPORTANT** – put the list *inside* the <details>!
     practiceDetails.appendChild(ul);
 
     // -------------------------------------------------------------
     // 2️⃣ Build the **Books & Blogs** <details> panel (the one you already have)
     // -------------------------------------------------------------
-    // The `renderBooksPanel` function creates its own <details> wrapper,
-    // so we just call it and let it append to the container.
-    // It will automatically open (expanded) by default.
-    // -------------------------------------------------------------
-    // Note: we *don’t* pass a pre‑selection here – the home page shows the
-    // panel with no publication selected.
+    // `renderBooksPanel` creates its own <details> wrapper and appends it
+    // directly to the container, so we just call it after the practice panel.
     // -------------------------------------------------------------
 
     // -------------------------------------------------------------
     // 3️⃣ Assemble everything inside the supplied <main> container
     // -------------------------------------------------------------
     container.innerHTML = '';               // wipe any previous content
-    container.appendChild(practiceDetails); // first: Practice languages panel
-    container.appendChild(ul);              // the list lives inside the details already
+    container.appendChild(practiceDetails); // Practice languages panel (now contains the list)
     // Now append the Books & Blogs panel *below* the practice panel
     renderBooksPanel(container, UI_LANG);   // will create its own <details> and append it
 }
