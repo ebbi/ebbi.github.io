@@ -319,6 +319,13 @@ export async function renderDictionaryExercise(mainEl, exerciseMeta, uiLang) {
         translationElements: transEls
     });
 
+    // **NEW** – make the selector reflect the stored voice immediately
+    const stored = getStoredVoice();               // from utils/storage.js
+    if (stored) {
+        const sel = speechCtrl.getVoiceSelect();
+        if (sel) sel.value = stored;               // selects the matching <option>
+    }
+
     // -----------------------------------------------------------------
     // 10️⃣  Initial render of the token grid (reflect default selections)
     // -----------------------------------------------------------------
