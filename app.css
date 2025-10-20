@@ -219,3 +219,11 @@ details {
     font-size: 0.9rem;
     color: var(--txt-secondary);
 }
+
+.category-header {
+    flex: 0 0 100%;
+    /* full‑width flex item */
+    font-weight: 600;
+    margin: 0.4rem 0 0.2rem 0;
+    color: var(--txt-primary);
+}

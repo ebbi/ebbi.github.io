@@ -63,5 +63,29 @@ But the checkbox change events are inactive and do not update the main div displ
 This is a self contained and entirely th code you just genera
 
 
-The Play array is out of sink with the Display array!
-The Play is speaking out languages that are not selected or displayed!
+This logic has failed for the last 2 days and repeats the bug because:
+
+ "translations.forEach((txt, idx)" creates and entire set and yet the 
+ selections of checkboxes is only the first element!!!
+
+"translations.forEach((txt, idx) =>"
+The first step in the function causes the bug by creating the 
+ entire dataset of spans and only the first translation is checked for display.
+
+ Instead:
+ 1. the initial first display should only output the first element of
+ the array translations because as an initial condition only the first checkbox
+ is checked and the remaining translation checkboxes are set to false.  
+ No loop, just the first element of translation in the display div as the initial display.
+ 
+ 2. With each user checkbox selection you update the display array and update the display div
+ (the number of spans in the array is determined  by the number of user selection of checkboxes
+ with each selection/deselection of a checkbox the display array is updated accordingly and the display refreshed )
+
+ So, 
+ 1. create a display array with a single element = translation[0]
+ 2. Display it and set the first checkbox to true
+ 3. checkbox event should add/subtract from the display array and update the display
+
+
+  
