@@ -277,8 +277,11 @@ export async function renderDictionaryExercise(mainEl, exerciseMeta, uiLang) {
             });
         });
 
-        // 5️⃣ Tell the speech controller about the new elements.
-        if (speechCtrl) speechCtrl.updateElements(tokenEls, transEls);
+        if (speechCtrl) {
+            speechCtrl.updateElements(tokenEls, transEls);
+            speechCtrl.updateSpeakMap(speakMap);   // <-- keep Play in sync with Display
+        }
+
     }
 
     // -----------------------------------------------------------------
@@ -359,3 +362,4 @@ export async function initDictionaryPage(lang, id) {
     // -----------------------------------------------------------------
     await renderDictionaryExercise(mainEl, meta, lang);
 }
+
