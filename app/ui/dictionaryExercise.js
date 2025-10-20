@@ -27,9 +27,9 @@ let speechCtrl;
 /**
  * Build a column that holds the translations for ONE source token.
  *
- * `translations` – array of strings (full list, first element = source token)
- * `langs`        – parallel array of language codes
- * `displayMap`   – object: lang → true/false (which languages are currently displayed)
+ * `translations` – array of strings, **first element is the source token**
+ * `langs`        – parallel array of language codes (e.g. ["th","en","zh"])
+ * `displayMap`   – object: lang → true/false (which languages are displayed)
  *
  * The function creates a <div class="token-col"> and appends a <span>
  * **only for the languages whose Display checkbox is ON**.
@@ -46,23 +46,22 @@ function buildTokenColumn(translations, langs, displayMap) {
     col.style.margin = "0 0.5rem";
 
     // -----------------------------------------------------------------
-    // 1️⃣  Create a <span> **only** for languages that are displayed.
+    // 1️⃣  Create a <span> only for displayed languages.
     // -----------------------------------------------------------------
     translations.forEach((txt, idx) => {
         const lang = langs[idx];
-        if (!displayMap[lang]) return;               // <-- skip hidden languages
+        if (!displayMap[lang]) return;               // skip hidden languages
 
         const span = document.createElement("span");
         span.className = "trans";
         span.textContent = txt || "";
-        span.style.fontSize = "1rem";
+        span.style.fontSize = "0.9rem";
         span.style.color = "var(--txt-secondary)";
         span.setAttribute("lang", lang);
 
-        // Append the visible span to the column.
         col.appendChild(span);
 
-        // Keep a reference for the speech controller.
+        // Register for the speech controller.
         const colIdx = tokenEls.length;               // one column == one token
         if (!transEls[colIdx]) transEls[colIdx] = [];
         transEls[colIdx].push(span);
@@ -80,20 +79,16 @@ function buildTokenColumn(translations, langs, displayMap) {
         const tokenIdx = tokenEls.indexOf(col);
         if (tokenIdx === -1) return;
 
-        // The child order matches the translation order (only visible ones).
         const transIdx = Array.from(col.children).indexOf(ev.target);
         if (speechCtrl) speechCtrl.startFrom(tokenIdx, transIdx);
     };
 
-    // Delegate clicks from the column – any `.trans` child will fire.
     col.addEventListener("click", (ev) => {
         if (ev.target.classList.contains("trans")) clickHandler(ev);
     });
 
     return col;
 }
-
-
 
 /* -----------------------------------------------------------------
    Main entry – render the dictionary exercise inside the provided <main>.
@@ -117,10 +112,10 @@ export async function renderDictionaryExercise(mainEl, exerciseMeta, uiLang) {
     tokenGrid.className = "dict-grid";
     tokenGrid.style.display = "flex";
     tokenGrid.style.flexWrap = "wrap";
-    tokenGrid.style.justifyContent = "flex-start"; // left‑align rows (no centering gaps)
+    tokenGrid.style.justifyContent = "flex-start"; // left‑align rows
     tokenGrid.style.gap = "1rem";
     tokenGrid.style.padding = "1rem";
-    //   tokenGrid.style.height = "70vh";
+    tokenGrid.style.height = "70vh";
     tokenGrid.style.overflowY = "auto";
 
     // -----------------------------------------------------------------
@@ -147,7 +142,7 @@ export async function renderDictionaryExercise(mainEl, exerciseMeta, uiLang) {
     // 7️⃣ Build the Language‑options panel (Display / Speak check‑boxes)
     // -----------------------------------------------------------------
     const details = document.createElement("details");
-    details.open = true;
+    details.open = false;                     // default closed
     details.style.margin = "0.5rem 1rem";
 
     const summary = document.createElement("summary");
@@ -163,8 +158,8 @@ export async function renderDictionaryExercise(mainEl, exerciseMeta, uiLang) {
 
     // Header row
     const emptyHeader = document.createElement("div");
-    const displayHeader = document.createElement("h5");
-    const speakHeader = document.createElement("h5");
+    const displayHeader = document.createElement("div");
+    const speakHeader = document.createElement("div");
     displayHeader.textContent = locale.display ?? "Display";
     speakHeader.textContent = locale.speak ?? "Speak";
     displayHeader.style.textAlign = "center";
@@ -181,24 +176,23 @@ export async function renderDictionaryExercise(mainEl, exerciseMeta, uiLang) {
         const langLabel = LANGUAGE_LABELS[langCode] || langCode.toUpperCase();
 
         // Language name cell
-        const langCell = document.createElement("span");
+        const langCell = document.createElement("div");
         langCell.textContent = langLabel;
         optionsGrid.appendChild(langCell);
 
         // Display checkbox
-        const displayCell = document.createElement("span");
+        const displayCell = document.createElement("div");
         const displayCb = document.createElement("input");
         displayCb.type = "checkbox";
         displayCb.dataset.lang = langCode;
-        // Source language is checked by default
-        displayCb.checked = (langCode === exerciseLang);
+        displayCb.checked = (langCode === exerciseLang); // only source language on start
         displayCell.style.textAlign = "center";
         displayCell.appendChild(displayCb);
         optionsGrid.appendChild(displayCell);
         displayBoxes.set(langCode, displayCb);
 
         // Speak checkbox
-        const speakCell = document.createElement("span");
+        const speakCell = document.createElement("div");
         const speakCb = document.createElement("input");
         speakCb.type = "checkbox";
         speakCb.dataset.lang = langCode;
@@ -220,35 +214,30 @@ export async function renderDictionaryExercise(mainEl, exerciseMeta, uiLang) {
     });
 
     // -----------------------------------------------------------------
-    // 8️⃣ Create the speech‑control panel (will be placed inside <details>)
+    // 8️⃣ Create the **player control panel** (outside the <details>)
     // -----------------------------------------------------------------
     const speechPanel = document.createElement("div");
     speechPanel.id = "speechPanel";
-    // Horizontal layout, always visible
-    speechPanel.style.display = "flex";
-    speechPanel.style.alignItems = "center";
-    speechPanel.style.gap = "0.5rem";
-    speechPanel.style.margin = "0.5rem 1rem";
 
-    /**
-     * Re‑build the token grid whenever a Display / Speak checkbox changes.
-     *
-     * The algorithm now also inserts a small “category” heading above the
-     * columns that belong to each JSON entry.
-     */
+    // Styling that matches the <details> look
+    speechPanel.style.border = "1px solid var(--border-surface, #ddd)";
+    speechPanel.style.borderRadius = "0.5rem";
+    speechPanel.style.padding = "0.5rem";
+    speechPanel.style.margin = "0.5rem 1rem";
+    speechPanel.style.background = "var(--bg-surface, #fff)";
+
+    // -----------------------------------------------------------------
+    // 9️⃣ Re‑build the token grid based on the current checkbox state
+    // -----------------------------------------------------------------
     function rebuildTokenGrid() {
-        // -------------------------------------------------------------
         // 0️⃣ Reset global collections and clear the visual grid.
-        // -------------------------------------------------------------
         tokenEls = [];
         transEls = [];
         tokenGrid.innerHTML = "";
 
-        // -------------------------------------------------------------
         // 1️⃣ Build lookup maps from the check‑boxes.
-        // -------------------------------------------------------------
-        const displayMap = {}; // lang → true/false (Display)
-        const speakMap = {}; // lang → true/false (Speak)
+        const displayMap = {}; // lang → true/false
+        const speakMap = {}; // lang → true/false (used by the controller)
 
         orderedLangs.forEach(l => {
             const dCb = displayBoxes.get(l);
@@ -257,61 +246,49 @@ export async function renderDictionaryExercise(mainEl, exerciseMeta, uiLang) {
             speakMap[l] = sCb ? sCb.checked : false;
         });
 
-        // -------------------------------------------------------------
         // 2️⃣ Walk through the JSON data and create a column for each token.
-        // -------------------------------------------------------------
         data.forEach(entry => {
-            // -----------------------------------------------------------------
-            // 2a️⃣  Insert the category heading (once per entry)
-            // -----------------------------------------------------------------
+            // Category heading (optional – you can keep or remove)
             if (entry.category) {
-                const catDiv = document.createElement("h5");
+                const catDiv = document.createElement("div");
                 catDiv.className = "category-header";
-                // You can style this class in your existing CSS if you wish.
                 catDiv.textContent = entry.category;
+                catDiv.style.fontWeight = "600";
+                catDiv.style.margin = "0.4rem 0 0.2rem 0";
+                catDiv.style.color = "var(--txt-primary)";
+                // Make the heading a full‑width flex item so it sits on its own line.
                 catDiv.style.flex = "0 0 100%";
                 tokenGrid.appendChild(catDiv);
             }
 
-            // -----------------------------------------------------------------
-            // 2b️⃣  Use the first language in orderedLangs as the deterministic source.
-            // -----------------------------------------------------------------
             const sourceTokens = entry[orderedLangs[0]] || [];
 
             sourceTokens.forEach((srcWord, idx) => {
-                // ---------------------------------------------------------
-                // Build parallel arrays that contain ONLY the displayed languages.
-                // ---------------------------------------------------------
+                // Build parallel arrays that contain ONLY displayed languages.
                 const translations = [];
                 const langs = [];
 
                 orderedLangs.forEach(lang => {
                     if (!displayMap[lang]) return; // skip hidden languages
-
                     const arr = entry[lang] || [];
                     translations.push(arr[idx] ?? ""); // fallback to empty string
                     langs.push(lang);
                 });
 
-                // Safety fallback – the source language is always shown.
+                // Safety fallback – source language is always shown.
                 if (translations.length === 0) {
                     const srcArr = entry[orderedLangs[0]] || [];
                     translations.push(srcArr[idx] ?? "");
                     langs.push(orderedLangs[0]);
                 }
 
-                // ---------------------------------------------------------
-                // 3️⃣ Create the column (only visible spans are added).
-                // ---------------------------------------------------------
+                // Create the column (only visible spans are added).
                 const col = buildTokenColumn(translations, langs, displayMap);
                 tokenGrid.appendChild(col);
             });
         });
 
-        // -------------------------------------------------------------
-        // 4️⃣ Tell the speech controller about the new elements AND the
-        //    current Speak‑checkbox state.
-        // -------------------------------------------------------------
+        // 3️⃣ Update the speech controller.
         if (speechCtrl) {
             speechCtrl.updateElements(tokenEls, transEls);
             speechCtrl.updateSpeakMap(speakMap);   // keep Play in sync with Speak boxes
@@ -319,8 +296,11 @@ export async function renderDictionaryExercise(mainEl, exerciseMeta, uiLang) {
     }
 
     // -----------------------------------------------------------------
-    // 10️⃣ Assemble the page: title → token grid → language options →
-    //      speech‑control panel (inside the <details> panel)
+    // 10️⃣ Assemble the page in the required order:
+    //      1️⃣ Language‑options <details> (top, closed)
+    //      2️⃣ Player control panel (outside the details)
+    //      3️⃣ Exercise heading
+    //      4️⃣ Token grid
     // -----------------------------------------------------------------
     mainEl.innerHTML = ""; // clear any previous content
 
@@ -329,21 +309,19 @@ export async function renderDictionaryExercise(mainEl, exerciseMeta, uiLang) {
         exerciseMeta.title?.en ||
         "Dictionary Exercise";
 
-    const heading = document.createElement("h4");
+    const heading = document.createElement("h2");
     heading.textContent = titleText;
     heading.style.textAlign = "center";
-    // heading.style.marginBottom = "1rem";
+    heading.style.marginBottom = "1rem";
 
-    // Order matters: heading → token grid → language‑options panel (with speech panel inside)
-    mainEl.appendChild(heading);
-    mainEl.appendChild(tokenGrid);
-    mainEl.appendChild(details);          // language‑options panel
-
-    // Insert the speech‑control panel at the **bottom** of the <details> panel
-    details.appendChild(speechPanel);
+    // Order matters:
+    mainEl.appendChild(details);      // 1️⃣ Language options (closed)
+    mainEl.appendChild(speechPanel); // 2️⃣ Player controls (outside details)
+    mainEl.appendChild(heading);      // 3️⃣ Exercise title
+    mainEl.appendChild(tokenGrid);    // 4️⃣ Token grid
 
     // -----------------------------------------------------------------
-    // 11️⃣ Build the speech controller **before** the first rebuild.
+    // 11️⃣ Build the speech controller **inside** the player panel.
     // -----------------------------------------------------------------
     speechCtrl = createSpeechController(speechPanel, {
         getAvailableLanguages: () => SUPPORTED_LANGS,
@@ -359,7 +337,7 @@ export async function renderDictionaryExercise(mainEl, exerciseMeta, uiLang) {
     });
 
     // -----------------------------------------------------------------
-    // 12️⃣ Initial render
+    // 12️⃣ Initial render of the grid.
     // -----------------------------------------------------------------
     rebuildTokenGrid();
 }
