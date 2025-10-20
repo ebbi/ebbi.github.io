@@ -4,6 +4,7 @@
 // Render a “dictionary”‑type exercise (exercise id = "01").
 // ---------------------------------------------------------------
 
+import { speakText } from "../utils/speech.js";
 import { loadJSON } from "../utils/fetch.js";
 import { renderHeader } from "./renderHeader.js";
 import {
@@ -11,37 +12,32 @@ import {
     LANGUAGE_LABELS,
     SUPPORTED_LANGS
 } from "../data/locales.js";
+import { populateVoiceList } from "../utils/speech.js";
+import { getStoredVoice, setStoredVoice } from "../utils/storage.js";
+
+// NEW – central speech controller
 import { createSpeechController } from "../utils/speechController.js";
 
 /* -----------------------------------------------------------------
    GLOBAL UI state – only the arrays that the controller needs.
    ----------------------------------------------------------------- */
-let tokenEls = []; // one element per column (the column <div> itself)
-let transEls = []; // 2‑dimensional: transEls[colIdx][langIdx] = <span>
+let tokenEls = []; // <span class="thai"> elements (order = tokenIdx)
+let transEls = []; // 2‑dimensional: transEls[tokenIdx][langIdx] = <span>
 
 /* -----------------------------------------------------------------
-   Speech controller instance – created after the first rebuild.
+   Declare the controller **before** any function that uses it.
    ----------------------------------------------------------------- */
-let speechCtrl;
+let speechCtrl;   // will hold the instance returned by createSpeechController
 
 /**
- * Build a column that holds the translations for ONE source token.
+ * Build the HTML for a single token column.
  *
- * `translations` – array of strings, **first element is the source token**
- * `langs`        – parallel array of language codes (e.g. ["th","en","zh"])
- *
- * The function:
- *   • creates a <div class="token-col">
- *   • creates a <span class="trans"> for **every** translation
- *   • registers the column and its spans with the global tokenEls /
- *     transEls structures (used by the speech controller)
- *   • wires a click handler that starts playback from this column /
- *     the clicked translation.
- *
- * **Important:** No span is appended here – the caller (`rebuildTokenGrid`)
- * will decide which spans should be visible based on the Display check‑boxes.
+ * @param {string} thaiWord          – the Thai token
+ * @param {Array<string>} translations – parallel array of translations (already filtered)
+ * @param {Array<string>} langs        – parallel array of language codes (e.g. ["en","zh","fa"])
+ * @returns {HTMLElement} the column <div>
  */
-function buildTokenColumn(translations, langs) {
+function buildTokenColumn(thaiWord, translations, langs) {
     const col = document.createElement("div");
     col.className = "token-col";
     col.style.display = "flex";
@@ -49,46 +45,76 @@ function buildTokenColumn(translations, langs) {
     col.style.alignItems = "center";
     col.style.margin = "0 0.5rem";
 
-    // -----------------------------------------------------------------
-    // 1️⃣  Create a <span> for every translation and remember it.
-    // -----------------------------------------------------------------
-    translations.forEach((txt, idx) => {
-        const span = document.createElement("span");
-        span.className = "trans";
-        span.textContent = txt || "";
-        span.style.fontSize = "0.9rem";
-        span.style.color = "var(--txt-secondary)";
+    // ------------------- Thai token (big & bold) -------------------
+    // es no need 
+    /* es -
+        const thaiSpan = document.createElement("span");
+        thaiSpan.className = "thai";
+        thaiSpan.textContent = thaiWord;
+        thaiSpan.style.fontWeight = "bold";
+        thaiSpan.style.fontSize = "1.2rem";
+        thaiSpan.style.marginBottom = "0.4rem";
+        thaiSpan.setAttribute("lang", "th");               // original language
+        col.appendChild(thaiSpan);
+        tokenEls.push(thaiSpan);
+    */
+    // ------------------- Translations -----------------------------
+
+    // es + add thaiWord (rename thaiWord to originalText)
+    translations.unshift(thaiWord);
+
+    translations.forEach((t, idx) => {
+
+        //        console.log("t, idx ", t, idx);
+
+        const transSpan = document.createElement("span");
+        transSpan.className = "trans";
+        transSpan.textContent = t || "";
+        transSpan.style.fontSize = "0.9rem";
+        transSpan.style.color = "var(--txt-secondary)";
 
         const langCode = langs[idx];
-        if (langCode) span.setAttribute("lang", langCode);
+        if (langCode) transSpan.setAttribute("lang", langCode);
 
-        // Keep a reference for the speech controller.
-        const colIdx = tokenEls.length; // one column == one token
-        if (!transEls[colIdx]) transEls[colIdx] = [];
-        transEls[colIdx].push(span);
+        col.appendChild(transSpan);
+
+        // es - const tokenIdx = tokenEls.length - 1;
+        const tokenIdx = tokenEls.length;
+
+
+        if (!transEls[tokenIdx]) transEls[tokenIdx] = [];
+        transEls[tokenIdx].push(transSpan);
     });
 
-    // -----------------------------------------------------------------
-    // 2️⃣  Store the column itself in tokenEls (controller uses the index).
-    // -----------------------------------------------------------------
-    tokenEls.push(col);
-
-    // -----------------------------------------------------------------
-    // 3️⃣  Click handling – start playback from this column / span.
-    // -----------------------------------------------------------------
+    // ------------------- Click handling (jump & play) ------------
     const clickHandler = (ev) => {
-        const tokenIdx = tokenEls.indexOf(col);
-        if (tokenIdx === -1) return;
+        // es -
+        //       const tokenIndex = tokenEls.indexOf(thaiSpan);
+        // es +
+        const tokenIndex = 1;  // start from origin
+        console.log("tokenIndex ", tokenIndex);
 
-        // The child order matches the translation order.
-        const transIdx = Array.from(col.children).indexOf(ev.target);
-        if (speechCtrl) speechCtrl.startFrom(tokenIdx, transIdx);
+        // es allow checkbox for exercise words, sentences, paragraphs - rename thaiSpan to exerciseLandSpan
+        //        if (tokenIndex === -1) return;
+
+        /* es        
+                const isThai = ev.target.classList.contains("thai");
+                const transIndex = isThai
+                    ? -1
+                    : Array.from(col.children).indexOf(ev.target) - 1; // -1 because first child is Thai
+        */
+        // es +
+        transIndex = Array.from(col.children).indexOf(ev.target);
+
+        if (speechCtrl) {
+            speechCtrl.startFrom(tokenIndex, transIndex);
+        }
     };
 
-    // Delegate clicks from the column – any `.trans` child will fire.
-    col.addEventListener("click", (ev) => {
-        if (ev.target.classList.contains("trans")) clickHandler(ev);
-    });
+    //   thaiSpan.addEventListener("click", clickHandler);
+    col.querySelectorAll(".trans").forEach(tr =>
+        tr.addEventListener("click", clickHandler)
+    );
 
     return col;
 }
@@ -103,10 +129,16 @@ export async function renderDictionaryExercise(mainEl, exerciseMeta, uiLang) {
     const jsonPath = `/app/${exerciseMeta.folder}/${exerciseMeta.file}`;
     const data = await loadJSON(jsonPath); // array of objects
 
+    console.log("es mainEl, exerciseMeta, uiLang", mainEl, exerciseMeta, uiLang);
+
+
     // -----------------------------------------------------------------
-    // 2️⃣ Determine the real language of the exercise (source language)
+    // 2️⃣ Determine the **real language of the exercise**.
+    //    This is the language that appears in the JSON as the token column.
+    //    It is stored in the exercise metadata as `language`.
+    //    If for some reason it is missing we fall back to the UI language.
     // -----------------------------------------------------------------
-    const exerciseLang = exerciseMeta.language || uiLang;
+    const exerciseLang = exerciseMeta.language || uiLang;   // <-- NEW
 
     // -----------------------------------------------------------------
     // 3️⃣ Prepare the token grid (will be rebuilt on every checkbox change)
@@ -128,21 +160,26 @@ export async function renderDictionaryExercise(mainEl, exerciseMeta, uiLang) {
 
     // -----------------------------------------------------------------
     // 5️⃣ Derive the list of language columns from the JSON.
+    //    Every key except "id", "category" and "tokens" is a language code.
     // -----------------------------------------------------------------
     const rawLangKeys = Object.keys(data[0]).filter(
         (k) => k !== "id" && k !== "category" && k !== "tokens"
     );
+    console.log("rawLangKeys ", rawLangKeys);
 
     // -----------------------------------------------------------------
-    // 6️⃣ Put the source language first, then the rest.
+    // 6️⃣ Put the *source* language (exerciseLang) first.
     // -----------------------------------------------------------------
     const orderedLangs = [
         exerciseLang,
         ...rawLangKeys.filter(l => l !== exerciseLang)
     ];
+    console.log("orderedLangs ", orderedLangs);
 
     // -----------------------------------------------------------------
-    // 7️⃣ Build the Language‑options panel (Display / Speak check‑boxes)
+    // 7️⃣ Build the **Language options** <details> panel.
+    //    We'll keep a map of the actual checkbox elements so we can
+    //    read their state reliably (no fragile index math).
     // -----------------------------------------------------------------
     const details = document.createElement("details");
     details.open = true;
@@ -152,6 +189,7 @@ export async function renderDictionaryExercise(mainEl, exerciseMeta, uiLang) {
     summary.textContent = locale.languageOptions || "Language options";
     details.appendChild(summary);
 
+    // ---- Grid for language options (3 columns) ----
     const optionsGrid = document.createElement("div");
     optionsGrid.style.display = "grid";
     optionsGrid.style.gridTemplateColumns = "6fr 2fr 2fr";
@@ -159,76 +197,97 @@ export async function renderDictionaryExercise(mainEl, exerciseMeta, uiLang) {
     optionsGrid.style.alignItems = "center";
     details.appendChild(optionsGrid);
 
-    // Header row
+    // ---- Header row (empty, "Display", "Speak") ----
     const emptyHeader = document.createElement("div");
     const displayHeader = document.createElement("div");
     const speakHeader = document.createElement("div");
+
     displayHeader.textContent = locale.display ?? "Display";
     speakHeader.textContent = locale.speak ?? "Speak";
+
     displayHeader.style.textAlign = "center";
     speakHeader.style.textAlign = "center";
+
     optionsGrid.appendChild(emptyHeader);
     optionsGrid.appendChild(displayHeader);
     optionsGrid.appendChild(speakHeader);
 
-    // Maps for the check‑boxes
-    const displayBoxes = new Map(); // lang → <input type="checkbox">
-    const speakBoxes = new Map();
+    // -----------------------------------------------------------------
+    // 8️⃣ Store references to every checkbox in two maps:
+    //    displayBoxes[lang] → the *Display* <input>
+    //    speakBoxes[lang]   → the *Speak*   <input>
+    // -----------------------------------------------------------------
+    const displayBoxes = new Map(); // lang -> checkbox element
+    const speakBoxes = new Map(); // lang -> checkbox element
 
     orderedLangs.forEach(langCode => {
         const langLabel = LANGUAGE_LABELS[langCode] || langCode.toUpperCase();
 
-        // Language name cell
+        // ---- Language name cell ----
         const langCell = document.createElement("div");
         langCell.textContent = langLabel;
         optionsGrid.appendChild(langCell);
 
-        // Display checkbox
+        // ---- Display checkbox cell ----
         const displayCell = document.createElement("div");
         const displayCb = document.createElement("input");
         displayCb.type = "checkbox";
         displayCb.dataset.lang = langCode;
-        // Source language is checked by default
+        // Only the **exercise** language is checked by default
         displayCb.checked = (langCode === exerciseLang);
         displayCell.style.textAlign = "center";
         displayCell.appendChild(displayCb);
         optionsGrid.appendChild(displayCell);
         displayBoxes.set(langCode, displayCb);
 
-        // Speak checkbox
+        // ---- Speak checkbox cell ----
         const speakCell = document.createElement("div");
         const speakCb = document.createElement("input");
         speakCb.type = "checkbox";
         speakCb.dataset.lang = langCode;
+        // Only the **exercise** language is checked by default
         speakCb.checked = (langCode === exerciseLang);
         speakCell.style.textAlign = "center";
         speakCell.appendChild(speakCb);
         optionsGrid.appendChild(speakCell);
         speakBoxes.set(langCode, speakCb);
 
-        // Interaction rules
+        // -----------------------------------------------------------------
+        // Interaction rules (same as before)
+        // -----------------------------------------------------------------
+        // If Speak is checked → force Display checked
         speakCb.addEventListener("change", () => {
-            if (speakCb.checked) displayCb.checked = true;
+            if (speakCb.checked) {
+                displayCb.checked = true;
+            }
             rebuildTokenGrid();
         });
+
+        // If Display is unchecked → also uncheck Speak
         displayCb.addEventListener("change", () => {
-            if (!displayCb.checked) speakCb.checked = false;
+            if (!displayCb.checked) {
+                speakCb.checked = false;
+            }
             rebuildTokenGrid();
         });
     });
 
     // -----------------------------------------------------------------
-    // 8️⃣ Re‑build the token grid based on the current checkbox state
+    // 9️⃣ Helper that rebuilds the token grid based on the **actual**
+    //     checkbox states (no indirect state objects).
     // -----------------------------------------------------------------
     function rebuildTokenGrid() {
-        // 0️⃣ Reset global collections and clear the visual grid.
+        // Reset highlight arrays and clear the grid
         tokenEls = [];
         transEls = [];
         tokenGrid.innerHTML = "";
 
-        // 1️⃣ Build lookup maps from the check‑boxes.
-        const displayMap = {}; // lang → true/false
-        const speakMap = {}; // lang → true/false (used by the controller)
+        // -------------------------------------------------------------
+        // Build two plain objects: displayMap[lang] = true/false,
+        //                         speakMap[lang]   = true/false
+        // -------------------------------------------------------------
+        const displayMap = {};
+        const speakMap = {};
 
         orderedLangs.forEach(l => {
             const dCb = displayBoxes.get(l);
@@ -237,59 +296,60 @@ export async function renderDictionaryExercise(mainEl, exerciseMeta, uiLang) {
             speakMap[l] = sCb ? sCb.checked : false;
         });
 
-        // 2️⃣ Walk through the JSON data and create a column for each token.
+        //        const originalDisplay = displayMap[exerciseLang] ?? true; // <-- use exerciseLang
+
+        console.log("%c[Dictionary] displayedLangs:", "color:#06c",
+            Object.keys(displayMap).filter(l => displayMap[l] && l !== exerciseLang));
+        //        console.log("%c[Dictionary] original language display:", "color:#06c",
+        //            originalDisplay);
+
+        // -------------------------------------------------------------
+        // Build the grid row‑by‑row
+        // -------------------------------------------------------------
         data.forEach(entry => {
-            // Deterministic first column – we just use the first language in
-            // `orderedLangs`.  It can be any language; all are treated equally.
-            const sourceTokens = entry[orderedLangs[0]] || [];
+            const sourceTokens = entry[exerciseLang] || [];
 
             sourceTokens.forEach((srcWord, idx) => {
-                // Build parallel arrays: one entry per language in orderedLangs.
-                const translations = [];
-                const langs = [];
+                // Languages (other than the original) that are currently displayed
+                const otherDisplayed = orderedLangs
+                    .filter(l => l !== exerciseLang && displayMap[l]);
 
-                orderedLangs.forEach(lang => {
-                    const arr = entry[lang] || [];
-                    translations.push(arr[idx] ?? ""); // fallback to empty string
-                    langs.push(lang);
+                // Build the translation array for those languages only
+                const translations = otherDisplayed.map(l => {
+                    const arr = entry[l] || [];
+                    return arr[idx] || "";
                 });
 
-                // 3️⃣ Create the column (contains a <span> for EVERY language).
-                const col = buildTokenColumn(translations, langs);
+                // Parallel array of language codes (null for hidden columns)
+                const columnLangs = otherDisplayed.map(l =>
+                    displayMap[l] ? l : null
+                );
 
-                // 4️⃣ Show / hide each span according to the Display check‑boxes.
-                const colIdx = tokenEls.length - 1; // index of the column we just added
-                langs.forEach((lang, i) => {
-                    const span = transEls[colIdx][i];
-                    if (!span) return; // safety guard
+                const col = buildTokenColumn(srcWord, translations, columnLangs);
 
-                    if (displayMap[lang]) {
-                        // Ensure the span is attached to the column.
-                        if (!col.contains(span)) col.appendChild(span);
-                    } else {
-                        // Remove it if it’s currently attached.
-                        if (col.contains(span)) col.removeChild(span);
-                    }
-                });
-
-                // Append the column to the grid.
+                /* es DO NOT HIDE THE COLUMN ALLOW THE USER TO DECIDE
+                                // Hide the whole column if the original language’s Display is OFF
+                                if (!originalDisplay) {
+                                    col.style.display = "none";
+                                }
+                */
                 tokenGrid.appendChild(col);
             });
         });
 
-        // 5️⃣ Tell the speech controller about the new elements.
+        // Keep the speech controller in sync after every rebuild
         if (speechCtrl) speechCtrl.updateElements(tokenEls, transEls);
     }
 
     // -----------------------------------------------------------------
-    // 9️⃣ Speech‑control panel (created by the controller)
+    // 🔟 Insert the speech‑control panel (created by the controller)
     // -----------------------------------------------------------------
     const speechPanel = document.createElement("div");
     speechPanel.id = "speechPanel";
     speechPanel.style.margin = "0.5rem 1rem";
 
     // -----------------------------------------------------------------
-    // Assemble the page: title → token grid → language options → speech panel
+    // 📦 Assemble the page: title → token grid → language options → speech panel
     // -----------------------------------------------------------------
     mainEl.innerHTML = ""; // clear any previous content
 
@@ -309,29 +369,37 @@ export async function renderDictionaryExercise(mainEl, exerciseMeta, uiLang) {
     mainEl.appendChild(speechPanel); // speech‑control UI
 
     // -----------------------------------------------------------------
-    // 10️⃣ Build the speech controller BEFORE the first rebuild
+    // 11️⃣ Build the speech controller **before** the first rebuild
     // -----------------------------------------------------------------
     speechCtrl = createSpeechController(speechPanel, {
+        // Provide the list of languages your app supports
         getAvailableLanguages: () => SUPPORTED_LANGS,
+
+        // Pass the UI language so the controller can pick a matching voice
         defaultLang: uiLang,
+
+        // Optional callback – you can keep it empty if you don't need extra work
         onVoiceChange: (newVoice) => {
             console.log("[Speech] voice changed →", newVoice);
+            // Persist the choice (mirrors utils/storage.js behaviour)
             try {
                 localStorage.setItem("local_storage_tts_voice", newVoice);
             } catch (_) { }
         },
+
+        // Give the controller the DOM collections it will highlight.
         tokenElements: tokenEls,
         translationElements: transEls
     });
 
     // -----------------------------------------------------------------
-    // 11️⃣ Initial render
+    // 12️⃣ Initial render of the token grid (respecting the default selections)
     // -----------------------------------------------------------------
     rebuildTokenGrid();
 }
 
 /**
- * Wrapper used by the router.
+ * Convenience wrapper used by the router.
  *
  * @param {string} lang – UI language (e.g. "en")
  * @param {string} id   – exercise id ("01")

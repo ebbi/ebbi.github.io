@@ -1,15 +1,69 @@
-{
-    "en": "This is test data for intermediate level of difficulty because as linguist would tell you the generalized grammar is infinite recursion as infinite as a human imagination and so intermediate examples are tokenized based on sentences rather than words to get a more realistic sense of the language as an expression of the heritage that evolved it and with that I shall one day dream in Thai and the little companion that is my rational mind will too.",
-    "th": "นี่คือข้อมูลการทดสอบสำหรับระดับความยากระดับกลาง เพราะนักภาษาศาสตร์จะบอกคุณว่าไวยากรณ์ทั่วไปนั้นมีการเรียกซ้ำอย่างไม่สิ้นสุด ไม่มีที่สิ้นสุดเช่นเดียวกับจินตนาการของมนุษย์ ดังนั้นตัวอย่างระดับกลางจึงถูกทำให้เป็นโทเค็นตามประโยคแทนที่จะเป็นคำ เพื่อให้ได้ความรู้สึกที่สมจริงยิ่งขึ้นเกี่ยวกับภาษาในฐานะการแสดงออกของมรดกที่พัฒนามา และด้วยเหตุนี้ ฉันจึงจะฝันเป็นภาษาไทยสักวันหนึ่ง และเพื่อนตัวน้อยอย่างจิตใจที่ใช้เหตุผลของฉันก็จะทำเช่นเดียวกัน",
-    "fa": "این داده‌های آزمون برای سطح دشواری متوسط ​​است، زیرا همانطور که زبان‌شناسان به شما می‌گویند، دستور زبان تعمیم‌یافته، بازگشتی بی‌نهایت دارد، به بی‌نهایت تخیل انسان، و بنابراین مثال‌های میانی بر اساس جملات به جای کلمات، توکن‌سازی می‌شوند تا درک واقع‌بینانه‌تری از زبان به عنوان بیانی از میراثی که آن را تکامل داده است، به دست آید و با این کار، روزی به زبان تایلندی رویاپردازی خواهم کرد و همراه کوچک من، یعنی ذهن منطقی‌ام، نیز این کار را خواهد کرد.",
-    "ja": "これは中級レベルの難易度のテストデータです。言語学者が言うように、一般化された文法は人間の想像力と同じくらい無限の無限再帰であり、そのため中級の例は単語ではなく文に基づいてトークン化され、言語を進化させた遺産の表現としてより現実的な感覚をつかむためです。それとともに、私はいつかタイ語で夢を見るでしょうし、私の理性的な心という小さな仲間もそうなるでしょう。",
-    "zh": "这是中等难度的测试数据，因为正如语言学家会告诉你的那样，广义语法是无限递归的，就像人类的想象力一样无限，因此中间示例是基于句子而不是单词进行标记的，以更真实地了解语言作为其发展遗产的表达，并且有一天我会用泰语做梦，而我的理性思维的小伙伴也会这样做。",
-    "ar": "هذه بيانات اختبار لمستوى متوسط ​​من الصعوبة لأن اللغويين سيخبرونك أن القواعد النحوية المعممة هي تكرار لا نهائي لا نهائي مثل الخيال البشري وبالتالي فإن الأمثلة المتوسطة تعتمد على الجمل بدلاً من الكلمات للحصول على شعور أكثر واقعية باللغة كتعبير عن التراث الذي تطورها ومع ذلك سأحلم ذات يوم باللغة التايلاندية وسوف يحلم الرفيق الصغير الذي هو عقلي العقلاني أيضًا."
-}
+[
+    {
+        "id": "c_middle",
+        "category": "middle‑class consonant",
+        "th": [
+            "ก",
+            "ข",
+            "ค",
+            "ฆ",
+            "ง"
+        ], // <-- **source language** (Thai)
+        "en": [
+            "k/g",
+            "kh",
+            "kh",
+            "kh",
+            "ng"
+        ],
+        "zh": [
+            "k/g",
+            "kh",
+            "kh",
+            "kh",
+            "ng"
+        ],
+        "fa": [
+            "k/g",
+            "kh",
+            "kh",
+            "kh",
+            "ng"
+        ],
+        "ar": [
+            "k/g",
+            "kh",
+            "kh",
+            "kh",
+            "ng"
+        ],
+        "ja": [
+            "k/g",
+            "kh",
+            "kh",
+            "kh",
+            "ng"
+        ],
+        "es": [
+            "k/g",
+            "kh",
+            "kh",
+            "kh",
+            "ng"
+        ],
+        "hi": [
+            "k/g",
+            "kh",
+            "kh",
+            "kh",
+            "ng"
+        ]
+    }
+]
 
 [
     {
-        "tokens": [
+        "th": [
             "To be or not to be"
         ],
         "en": [
@@ -31,21 +85,21 @@
 ]
 
         "title": {
-            "en": "A poem by Khalil Jibran",
-            "th": "",
-            "fa": "",
-            "ja": "",
-            "zh": "",
-            "ar": ""
-        },
-        "summary": {
-            "en": "Poetry for advance level",
-            "th": "",
-            "fa": "",
-            "ja": "",
-            "zh": "",
-            "ar": ""
-        }
+    "en": "A poem by Khalil Jibran",
+    "th": "",
+    "fa": "",
+    "ja": "",
+    "zh": "",
+    "ar": ""
+},
+"summary": {
+    "en": "Poetry for advance level",
+    "th": "",
+    "fa": "",
+    "ja": "",
+    "zh": "",
+    "ar": ""
+}
 
 
 
@@ -60,7 +114,7 @@
 
 
     {
-    "tokens": [
+    "th": [
         "To be or not to be.  That is the question."
     ],
     "en": [
@@ -82,30 +136,27 @@
 
 Your Children Are Not Your Children
 {
-"en": [
-"Your children are not your children.",
-"They are the sons and daughters of Life's longing for itself.",
-"They come through you but not from you,",
-"And though they are with you, yet they belong not to you.",
-"You may give them your love but not your thoughts,",
-"For they have their own thoughts.",
-"You may house their bodies but not their souls,",
-"For their souls dwell in the house of tomorrow,",
-"Which you cannot visit, not even in your dreams.",
-"You may strive to be like them,",
-"But seek not to make them like you.",
-"For life goes not backward nor tarries with yesterday.",
-"You are the bows from which your children as living arrows are sent forth.",
-"The archer sees the mark upon the path of the infinite,"
-"And He bends you with His might that His arrows may go swift and far."
-"Let your bending in the archer's hand be for gladness;",
-"For even as He loves the arrow that flies,",
-"So He loves also the bow that is stable."
-],
-"th": [],
-"fa": [],
-"ja": [],
-"zh": [],
-"ar": []
+    "en": [
+        "Your children are not your children.",
+        "They are the sons and daughters of Life's longing for itself.",
+        "They come through you but not from you,",
+        "And though they are with you, yet they belong not to you.",
+        "You may give them your love but not your thoughts,",
+        "For they have their own thoughts.",
+        "You may house their bodies but not their souls,",
+        "For their souls dwell in the house of tomorrow,",
+        "Which you cannot visit, not even in your dreams.",
+        "You may strive to be like them,",
+        "But seek not to make them like you.",
+        "For life goes not backward nor tarries with yesterday.",
+        "You are the bows from which your children as living arrows are sent forth.",
+        "The archer sees the mark upon the path of the infinite,""And He bends you with His might that His arrows may go swift and far.""Let your bending in the archer's hand be for gladness;",
+        "For even as He loves the arrow that flies,",
+        "So He loves also the bow that is stable."
+    ],
+    "th": [],
+    "fa": [],
+    "ja": [],
+    "zh": [],
+    "ar": []
 }
-

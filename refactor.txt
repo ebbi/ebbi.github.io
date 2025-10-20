@@ -1,28 +1,66 @@
-Changing bootstrap.js to:
-
-import { preloadFonts } from './data/fonts.js';
-// Remove the line entirely – the global `window.router` is already defined.
-// import { router } from './router/router.js';
-
-has this error:
-
-    GET
-https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&display=swap
-[HTTP/3 200  97ms]
-
-[Font] preload finished fonts.js:57:17
-❌ App initialization failed: ReferenceError: Router is not defined
-    <anonymous> http://127.0.0.1:5500/app/bootstrap.js:52
-    async* http://127.0.0.1:5500/app/bootstrap.js:99
-bootstrap.js:96:17
 
 
-ANd changing bootstrap.js to:
 
-import { preloadFonts } from './data/fonts.js';
-// Remove the line entirely – the global `window.router` is already defined.
-import { router } from './router/router.js';
+A previous refactoring has left the uploaded App with a bug.
 
-has this error:
+The changes centered on the function buildTokenColumn(thaiWord, translations, langs) 
+in the app/util/speechController.js
 
-Uncaught SyntaxError: The requested module 'http://127.0.0.1:5500/app/routerClass.js' doesn't provide an export named: 'default' router.js:5:8
+This function builds the columns of Display and Speak checkboxes with events to display and/or speak the selected text from translations
+
+The refactor was to generalize the function to be language agnostic.  
+That means the first parameter "thaiWord" is just another translation and can be added as the first element of the translations array.
+
+Much of the current code dealing with the thaiWord can be deleted.
+The function should be language agnostic with and array of translation in languages to be selected for display / speak
+
+The function could be simplified to:  buildTokenColumn(translations, langs) or 
+left as buildTokenColumn(thaiWord, translations, langs)  and thaiWord prepended to the translation array.
+translations should now contain the thaiWord as the first element of the translation array
+
+The logic is now simply:
+
+1. loop through translations adding the language name, checkboxes for Display, checkbox for Speak under their respective headings
+2. By default, set the first row of the 2 checkboxes as checked and display its translation span (add the lang attribute to the span) in the display div 
+3. User selection of the checkbox (including the first row) should add or remove the translation span from the display div
+(the array of span being hidden / revealed leaves a gap unsuitable for small displays )
+
+
+
+I am using VSCode and it is problematic with diff patches.  Please generate find/replace code
+
+
+A clean start with cache cleared and started server:
+The Language options has the first language checkbox for Display and Speak selected
+The main display div is blank (it should have the span for the first translation)
+Server log:
+http://localhost:5500
+ npx serve -s . -l 5500
+
+   ┌───────────────────────────────────────────┐
+   │                                           │
+   │   Serving!                                │
+   │                                           │
+   │   - Local:    http://localhost:5500       │
+   │   - Network:  http://192.168.1.115:5500   │
+   │                                           │
+   │   Copied local address to clipboard!      │
+   │                                           │
+   └───────────────────────────────────────────┘
+
+ HTTP  20/10/2025 13:42:21 127.0.0.1 GET /app/data/exercises/thai/thai_consonant_vowel_diphthong_exercise.json
+ HTTP  20/10/2025 13:42:21 127.0.0.1 Returned 200 in 54 ms
+
+ Browser log:
+ [Dictionary] displayedLangs: 
+Array []
+dictionaryExercise.js:342:17
+[Dictionary] original language display: true dictionaryExercise.js:344:17
+
+
+5 hours yesterday.  Similar problem now.  The first record is shown now 
+But the checkbox change events are inactive and do not update the main div display for any of the languages
+This is a self contained and entirely th code you just genera
+
+The checkbox event for the TH display and Speak update the div display
+All other checkboxes for the remaining languages do not update the display

@@ -1,12 +1,10 @@
 // ---------------------------------------------------------------
 // app/utils/speechController.js
 // ---------------------------------------------------------------
-// Centralised speech‑control logic used by dictionaryExercise.js
-// and any future exercise type.
-// ---------------------------------------------------------------
 
 import { speakText, populateVoiceList } from "./speech.js";
 import { getStoredVoice, setStoredVoice } from "./storage.js";
+import { getLocale } from "../data/locales.js";
 
 /* -----------------------------------------------------------------
    Default internal state – identical to the one you had before.
@@ -28,19 +26,19 @@ const defaultState = {
    flex container).  The line gets a subtle border so it looks like a
    boxed message.
    ----------------------------------------------------------------- */
-function makeStatusVoiceRow() {
+function makeStatusVoiceRow(locale) {
     const row = document.createElement("div");
     row.style.display = "flex";
     row.style.alignItems = "center";
     row.style.justifyContent = "space-between";
-    row.style.flexWrap = "wrap";          // mobile‑first: allow wrap when too narrow
-    row.style.gap = "1rem";               // 1 rem gap between message & selector
+    row.style.flexWrap = "wrap";
+    row.style.gap = "1rem";
     row.style.marginTop = "0.5rem";
 
     // ---- status message (left side) ---------------------------------
     const status = document.createElement("div");
-    status.style.flex = "1 1 auto";        // take remaining space
-    status.style.minHeight = "1.2rem";    // reserve height even when empty
+    status.style.flex = "1 1 auto";
+    status.style.minHeight = "1.2rem";
     status.style.fontStyle = "italic";
     status.style.border = "1px solid var(--border-surface, #ddd)";
     status.style.borderRadius = "4px";
@@ -51,9 +49,9 @@ function makeStatusVoiceRow() {
     // ---- voice selector (right side) --------------------------------
     const voiceSelect = document.createElement("select");
     voiceSelect.id = "voiceSelect";
-    voiceSelect.style.flex = "0 0 auto";   // shrink‑to‑fit, never grow
-    voiceSelect.style.maxWidth = "calc(100% - 2rem)"; // never exceed parent width
-    voiceSelect.style.minWidth = "8rem";   // keep it usable on tiny screens
+    voiceSelect.style.flex = "0 0 auto";
+    voiceSelect.style.maxWidth = "calc(100% - 2rem)";
+    voiceSelect.style.minWidth = "8rem";
     voiceSelect.style.boxSizing = "border-box";
 
     row.appendChild(voiceSelect);
@@ -65,13 +63,15 @@ function makeStatusVoiceRow() {
    Factory – builds the UI inside `container` and returns a controller.
    ----------------------------------------------------------------- */
 export function createSpeechController(container, {
+    getAvailableLanguages,
+    onVoiceChange,
+    tokenElements = [],
+    translationElements = [],
+    defaultLang = null,               // <-- UI language of the exercise
     // -----------------------------------------------------------------
-    // Options the host must supply
+    // New: pass the locale object so we can use translated status strings
     // -----------------------------------------------------------------
-    getAvailableLanguages,   // () => Array<string>
-    onVoiceChange,           // (newVoice) => void (optional)
-    tokenElements = [],      // will be overwritten later by the host
-    translationElements = [] // same
+    locale = getLocale(defaultLang || "en")
 } = {}) {
 
     // -----------------------------------------------------------------
@@ -88,25 +88,25 @@ export function createSpeechController(container, {
     controlsRow.style.display = "flex";
     controlsRow.style.alignItems = "center";
     controlsRow.style.gap = "0.5rem";
-    controlsRow.style.flexWrap = "wrap"; // mobile‑first: wrap if needed
+    controlsRow.style.flexWrap = "wrap";
 
     const playBtn = document.createElement("button");
-    playBtn.title = "Play";
+    playBtn.title = locale.playButton || "Play";
     playBtn.textContent = "▶️";
     controlsRow.appendChild(playBtn);
 
     const pauseBtn = document.createElement("button");
-    pauseBtn.title = "Pause";
+    pauseBtn.title = locale.pauseButton || "Pause";
     pauseBtn.textContent = "⏸️";
     controlsRow.appendChild(pauseBtn);
 
     const resetBtn = document.createElement("button");
-    resetBtn.title = "Reset";
+    resetBtn.title = locale.resetButton || "Reset";
     resetBtn.textContent = "🔄";
     controlsRow.appendChild(resetBtn);
 
     const delayLabel = document.createElement("label");
-    delayLabel.textContent = "Delay (s):";
+    delayLabel.textContent = locale.delayLabel || "Delay (s):";
     controlsRow.appendChild(delayLabel);
 
     const delayInput = document.createElement("input");
@@ -122,28 +122,31 @@ export function createSpeechController(container, {
     // UI – Row 2 = status message + voice selector (built together)
     // -----------------------------------------------------------------
     const { row: statusVoiceRow, status: statusEl, voiceSelect } =
-        makeStatusVoiceRow();
+        makeStatusVoiceRow(locale);
 
-    // -----------------------------------------------------------------
-    // Populate the voice list **once** (the controller owns the selector)
-    // -----------------------------------------------------------------
+    // Populate the voice list (once)
     const availableLangs = getAvailableLanguages ? getAvailableLanguages() : [];
     populateVoiceList(voiceSelect, availableLangs);
 
     // -----------------------------------------------------------------
-    // ---- Restore persisted voice (if any) ---------------------------
+    // Auto‑select a voice that matches the exercise language (defaultLang)
     // -----------------------------------------------------------------
-    const persisted = getStoredVoice();               // reads from LS
-    // Try to find a matching <option>.  If we find it, select it.
-    const matchingOption = Array.from(voiceSelect.options)
-        .find(opt => opt.value === persisted);
-    if (matchingOption) {
-        voiceSelect.value = persisted;
-        state.voiceName = persisted;                  // internal state now knows it
-    } else {
-        // No stored voice (or it isn’t available).  Keep the first option
-        // that the populateVoiceList call inserted.
-        state.voiceName = voiceSelect.value || null;
+    const allVoices = speechSynthesis.getVoices();
+    let chosenVoice = null;
+    if (defaultLang) {
+        chosenVoice = allVoices.find(v => v.lang.startsWith(defaultLang));
+    }
+    if (!chosenVoice) {
+        const fallback = (navigator.language || "").slice(0, 2).toLowerCase();
+        chosenVoice = allVoices.find(v => v.lang.startsWith(fallback));
+    }
+    if (!chosenVoice && allVoices.length) chosenVoice = allVoices[0];
+
+    if (chosenVoice) {
+        const opt = Array.from(voiceSelect.options)
+            .find(o => o.value === chosenVoice.name);
+        if (opt) voiceSelect.value = opt.value;
+        state.voiceName = voiceSelect.value;
     }
 
     // -----------------------------------------------------------------
@@ -156,7 +159,6 @@ export function createSpeechController(container, {
     // Helper – enable/disable the whole panel (opacity + disabled attrs)
     // -----------------------------------------------------------------
     function setPanelEnabled(enabled, message) {
-        // `message` is optional – if omitted we keep the current text.
         controlsRow.style.pointerEvents = enabled ? "" : "none";
         statusVoiceRow.style.pointerEvents = enabled ? "" : "none";
 
@@ -169,14 +171,16 @@ export function createSpeechController(container, {
     }
 
     // -----------------------------------------------------------------
-    // Public helper – set the status line text (border already applied)
+    // Public helper – set the status line text (uses locale strings)
     // -----------------------------------------------------------------
-    function setStatus(msg) {
-        statusEl.textContent = msg;
+    function setStatus(key) {
+        // `key` is one of the locale keys defined above.
+        const txt = locale[key] || key;
+        statusEl.textContent = txt;
     }
 
     // -----------------------------------------------------------------
-    // Highlight helpers (same logic you already had)
+    // Highlight helpers (unchanged)
     // -----------------------------------------------------------------
     function clearHighlights() {
         state.tokenEls.forEach(el => (el.style.background = ""));
@@ -207,8 +211,7 @@ export function createSpeechController(container, {
     // -----------------------------------------------------------------
     async function playbackLoop() {
         state.playing = true;
-        setStatus("Playing");
-        // Rule a – after the first Play click we will disable the Play button
+        setStatus("statusPlaying");
         playBtn.disabled = true;
 
         while (state.playing && state.tokenIdx < state.tokenEls.length) {
@@ -244,31 +247,26 @@ export function createSpeechController(container, {
         }
 
         // -------------------------------------------------------------
-        // If we exited because of a **pause**, keep the highlight and
-        // keep the status message (“Paused”).  If we exited because we
-        // reached the end, clear everything.
+        // End of playback – clear status unless we are paused.
         // -------------------------------------------------------------
         if (state.paused) {
-            // keep highlights & status – nothing to do
+            // keep the “Paused” message (already set by pause handler)
         } else {
-            // natural end of the exercise
-            clearHighlights();
-            setStatus(""); // clear message
+            // natural end – clear the status line
+            setStatus("");
         }
 
         state.playing = false;
-        setPanelEnabled(true); // re‑enable UI (status unchanged)
-        playBtn.disabled = false; // allow Play again (rule a)
+        setPanelEnabled(true);
+        playBtn.disabled = false;
     }
 
     // -----------------------------------------------------------------
     // UI event wiring
     // -----------------------------------------------------------------
     playBtn.onclick = () => {
-        if (state.playing) return; // already playing
-        // Reset the “Play” button disabled flag (rule a)
+        if (state.playing) return;
         playBtn.disabled = true;
-        // If we were paused, clear the paused flag so the loop can run
         state.paused = false;
         playbackLoop().catch(console.warn);
     };
@@ -278,8 +276,8 @@ export function createSpeechController(container, {
         if ("speechSynthesis" in window) speechSynthesis.cancel();
         state.playing = false;
         state.paused = true;
-        setStatus("Paused"); // rule c – keep message until Play or Reset
-        // **Do NOT clear highlights** – they stay visible while paused
+        setStatus("statusPaused");
+        // keep highlights – do not clear them
     };
 
     resetBtn.onclick = () => {
@@ -289,8 +287,7 @@ export function createSpeechController(container, {
         state.playing = false;
         state.paused = false;
         clearHighlights();
-        setStatus("Reset"); // rule b – show reset message
-        // Immediately start playing again (same behaviour you had before)
+        setStatus("statusPlaying");   // reset shows “Playing” immediately
         playbackLoop().catch(console.warn);
     };
 
@@ -307,8 +304,7 @@ export function createSpeechController(container, {
         const newVoice = ev.target.value;
         if ("speechSynthesis" in window) speechSynthesis.cancel();
 
-        state.voiceName = newVoice;                 // remember for playback
-        // Persist the choice using the official helper (keeps the key in one place)
+        state.voiceName = newVoice;
         try {
             setStoredVoice(newVoice);
         } catch (e) {
@@ -317,9 +313,16 @@ export function createSpeechController(container, {
 
         if (typeof onVoiceChange === "function") onVoiceChange(newVoice);
 
-        setPanelEnabled(false, "Voice change – waiting…");
+        // Show the “Voice change” message **temporarily**
+        setStatus("statusVoiceChange");
+        setPanelEnabled(false);
+
         // Re‑enable after a short grace period (2 s works well)
-        setTimeout(() => setPanelEnabled(true), 2000);
+        setTimeout(() => {
+            setPanelEnabled(true);
+            // Once the UI is active again we clear the status line.
+            setStatus("");
+        }, 2000);
     });
 
     // -----------------------------------------------------------------
@@ -328,41 +331,29 @@ export function createSpeechController(container, {
     // token/translation (used by the click‑handler in dictionaryExercise).
     // -----------------------------------------------------------------
     return {
-        /** Replace the token / translation element arrays (called after a language‑filter change). */
         updateElements(newTokenEls, newTransEls) {
             state.tokenEls = newTokenEls;
             state.transEls = newTransEls;
-            // Reset playback pointers so a fresh Play starts from the beginning
             state.tokenIdx = 0;
             state.transIdx = -1;
             clearHighlights();
         },
 
-        /** Return the <select> element that the controller created. */
         getVoiceSelect() {
             return voiceSelect;
         },
 
-        /** External callers can set a status message (e.g. “Paused”). */
-        setStatus,
+        setStatus,               // expose for external callers if needed
 
-        /** Start playback from a specific token / translation. */
         startFrom(tokenIdx, transIdx) {
-            // Reset any ongoing speech first
             if ("speechSynthesis" in window) speechSynthesis.cancel();
-
             state.tokenIdx = tokenIdx;
             state.transIdx = transIdx;
-            // Highlight the starting point immediately
             highlightCurrent();
-
-            // If we were paused, clear that flag so the loop can run
             state.paused = false;
-            // Kick off the loop (will respect the current indices)
             playbackLoop().catch(console.warn);
         },
 
-        /** For debugging / unit‑tests – destroy everything inside the container. */
         destroy() {
             container.innerHTML = "";
         }
