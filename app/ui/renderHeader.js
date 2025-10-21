@@ -12,6 +12,9 @@ import { populateFontSelect } from './fontSelect.js';
 // NEW – central speech controller
 import { createSpeechController } from "../utils/speechController.js";
 
+import { getStoredVoice, setStoredVoice } from '../utils/storage.js';
+import { findVoiceForLang } from '../utils/speech.js';
+
 // ---------------------------------------------------------------
 // Load the shared stylesheet that contains all extracted CSS classes.
 // ---------------------------------------------------------------
@@ -43,6 +46,26 @@ export async function renderHeader(lang) {
     if (!SUPPORTED_LANGS.includes(lang)) lang = FALLBACK_LANG;
     if (lang !== getStoredLang()) await setStoredLang(lang);
     applyDirection(lang);
+
+    // -----------------------------------------------------------------
+    // 2️⃣ Ensure a suitable voice is stored (fallback to UI language)
+    // -----------------------------------------------------------------
+    // If the user already has a voice saved, keep it. Otherwise try to
+    // auto‑detect a voice that matches the UI language.
+    const storedVoice = getStoredVoice();
+    const voiceExists = (() => {
+        if (!('speechSynthesis' in window)) return false;
+        const all = speechSynthesis.getVoices();
+        return all.some(v => v.name === storedVoice);
+    })();
+
+    if (!voiceExists) {
+        const autoVoice = findVoiceForLang(lang);
+        if (autoVoice) setStoredVoice(autoVoice);
+        // If no voice matches the UI language we simply keep the default
+        // (the speech controller will fall back to the first available voice).
+    }
+
 
     // -----------------------------------------------------------------
     // 2️⃣ Build the static skeleton (toolbar, static nav, empty <main>)

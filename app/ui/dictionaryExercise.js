@@ -4,7 +4,6 @@
 // Render a “dictionary”‑type exercise (exercise id = "01").
 // ---------------------------------------------------------------
 
-import { BASE_URL } from '../config.js';
 import { loadJSON } from "../utils/fetch.js";
 import { renderHeader } from "./renderHeader.js";
 import {
@@ -13,6 +12,8 @@ import {
     SUPPORTED_LANGS
 } from "../data/locales.js";
 import { createSpeechController } from "../utils/speechController.js";
+import { findVoiceForLang } from "../utils/speech.js";
+import { setStoredVoice } from "../utils/storage.js";
 
 /* -----------------------------------------------------------------
    GLOBAL UI state – only the arrays that the controller needs.
@@ -87,21 +88,27 @@ function buildTokenColumn(translations, langs, displayMap) {
     return col;
 }
 
-/* -----------------------------------------------------------------
-   Main entry – render the dictionary exercise inside the provided <main>.
-   ----------------------------------------------------------------- */
-export async function renderDictionaryExercise(mainEl, exerciseMeta, uiLang) {
+/**
+ * Main entry – render the dictionary exercise inside the provided <main>.
+ *
+ * @param {HTMLElement} mainEl          – container for the UI.
+ * @param {object}      exerciseMeta   – metadata from exercises.json.
+ * @param {string}      uiLang         – UI language (e.g. "en").
+ * @param {string}      exerciseLang   – language code defined in the exercise (e.g. "th").
+ */
+export async function renderDictionaryExercise(mainEl, exerciseMeta, uiLang, exerciseLang) {
     // -----------------------------------------------------------------
     // 1️⃣ Load the JSON payload for the exercise
     // -----------------------------------------------------------------
-    //    const jsonPath = `/app/${exerciseMeta.folder}/${exerciseMeta.file}`;
-    const jsonPath = `${BASE_URL}/app/${exerciseMeta.folder}/${exerciseMeta.file}`;
+    const jsonPath = `/app/${exerciseMeta.folder}/${exerciseMeta.file}`;
     const data = await loadJSON(jsonPath); // array of objects
 
     // -----------------------------------------------------------------
     // 2️⃣ Determine the real language of the exercise (source language)
     // -----------------------------------------------------------------
-    const exerciseLang = exerciseMeta.language || uiLang;
+    // If the exercise file specifies a language, use it; otherwise fall back
+    // to the UI language.
+    const srcLang = exerciseLang || uiLang;
 
     // -----------------------------------------------------------------
     // 3️⃣ Prepare the token grid (will be rebuilt on every checkbox change)
@@ -143,7 +150,7 @@ export async function renderDictionaryExercise(mainEl, exerciseMeta, uiLang) {
     const summary = document.createElement("summary");
     summary.textContent = locale.languageOptions || "Language options";
     details.appendChild(summary);
-    
+
     const optionsGrid = document.createElement("div");
     optionsGrid.classList.add('language-options-grid');
 
@@ -413,9 +420,8 @@ export async function renderDictionaryExercise(mainEl, exerciseMeta, uiLang) {
     mainEl.appendChild(tokenGrid);    // 4️⃣ Token grid
 
     // -----------------------------------------------------------------
-    // 10️⃣ Build the speech controller **inside** the player panel.
+    // 11️⃣ Build the speech controller **inside** the player panel.
     // -----------------------------------------------------------------
-
     speechCtrl = createSpeechController(speechPanel, {
         getAvailableLanguages: () => SUPPORTED_LANGS,
         defaultLang: uiLang,
@@ -429,19 +435,40 @@ export async function renderDictionaryExercise(mainEl, exerciseMeta, uiLang) {
         translationElements: transEls
     });
 
-    // -----------------------------------------------------------------
-    // 12️⃣ Initial render of the grid.
-    // -----------------------------------------------------------------
+    /* -------------------------------------------------------------
+       12️⃣ Select a voice that matches the *exercise* language.
+            If none is found, inform the user.
+       ------------------------------------------------------------- */
+
+    const voiceForExercise = findVoiceForLang(srcLang);
+    if (voiceForExercise) {
+        // Update the voice selector UI
+        const voiceSelect = speechCtrl.getVoiceSelect();
+        const option = Array.from(voiceSelect.options).find(o => o.value === voiceForExercise);
+        if (option) voiceSelect.value = option.value;
+        // Persist the choice for future sessions
+        setStoredVoice(voiceForExercise);
+    } else {
+        // No matching voice – show a gentle notice.
+        // Using a simple alert keeps the implementation minimal.
+        // You can replace this with a nicer modal if you wish.
+        alert(
+            `The TTS voice for language "${srcLang}" is not available in this browser. ` +
+            `The app will still work, but you may want to follow the instructions ` +
+            `in the Help page to install the appropriate voice.`
+        );
+    }
+
+    /* -----------------------------------------------------------------
+       13️⃣ Initial render of the grid.
+       ----------------------------------------------------------------- */
     rebuildTokenGrid();
 }
 
-/**
- * Wrapper used by the router.
- *
- * @param {string} lang – UI language (e.g. "en")
- * @param {string} id   – exercise id ("01")
- */
-export async function initDictionaryPage(lang, id) {
+// -----------------------------------------------------------------
+// Wrapper used by the router.
+// -----------------------------------------------------------------
+export async function initDictionaryPage(lang, id, exerciseLang) {
     // -----------------------------------------------------------------
     // 1️⃣ Pull the exercise metadata from the global EXERCISES array
     // -----------------------------------------------------------------
@@ -462,5 +489,6 @@ export async function initDictionaryPage(lang, id) {
     // -----------------------------------------------------------------
     // 3️⃣ Render the dictionary UI inside that <main>
     // -----------------------------------------------------------------
-    await renderDictionaryExercise(mainEl, meta, lang);
+    // Pass the detected exercise language (or fallback to UI language)
+    await renderDictionaryExercise(mainEl, meta, lang, exerciseLang);
 }

@@ -88,11 +88,18 @@ export async function exerciseDetailHandler({ lang, id } = {}) {
         renderNotFound(main);
         return;
     }
-
+/*
     // Dictionary‑type exercises have a custom UI.
     if (meta.details && meta.details.type === "dictionary") {
         const { initDictionaryPage } = await import("./dictionaryExercise.js");
         await initDictionaryPage(lang, id);
+        return;
+    }
+*/
+    if (meta.details && meta.details.type === "dictionary") {
+        const { initDictionaryPage } = await import("./dictionaryExercise.js");
+        // Pass the exercise's language (meta.language) so the UI can pick a voice.
+        await initDictionaryPage(lang, id, meta.language);
         return;
     }
 

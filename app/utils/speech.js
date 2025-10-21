@@ -122,3 +122,17 @@ export function speakText(text, voiceName) {
         speechSynthesis.speak(utter);
     });
 }
+
+/**
+ * Find the first SpeechSynthesis voice whose language starts with the given
+ * ISO‑639 two‑letter code (e.g. "en", "th", "ja").
+ *
+ * @param {string} lang - two‑letter language code (lower‑case)
+ * @returns {string|null} - the voice name, or null if none matches
+ */
+export function findVoiceForLang(lang) {
+    if (!('speechSynthesis' in window)) return null;
+    const voices = speechSynthesis.getVoices();
+    const match = voices.find(v => v.lang.slice(0, 2).toLowerCase() === lang);
+    return match ? match.name : null;
+}

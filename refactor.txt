@@ -40,3 +40,27 @@ Low (nice‑to‑have)
 4. Add a timeout wrapper around fetch in loadJSON.
 5. Provide a fallback spinner for voice list population.
 
+
+One limitation is the default voice setting.  
+Ideally,the voice selection should be updated at the time of selecting an exercise.
+The exercises.json file has a "language" property defining the language for the exercise
+and the App should load a voice for the same language.
+If the voice is not available in the browser, a message should pop up to inform the
+user that whilst the App will function but they should follow the instructions in the help 
+and install the exercise voice.
+The voice choice should also be persisted in local storage and set at App startup.
+
+3 b) Update the call from the router
+
+File: app/router/routes.js – modify the exerciseDetailHandler block that loads a dictionary exercise.
+
+if (meta.details && meta.details.type === "dictionary") {
+    const { initDictionaryPage } = await import("./dictionaryExercise.js");
+    // Pass the exercise's language (meta.language) so the UI can pick a voice.
+    await initDictionaryPage(lang, id, meta.language);
+    return;
+}
+
+I think you mean app/ui/routes for the above.
+
+
