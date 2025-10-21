@@ -11,7 +11,10 @@ import {
     LANGUAGE_LABELS,
     SUPPORTED_LANGS
 } from "../data/locales.js";
+import { getStoredLang } from "../utils/storage.js";
 import { createSpeechController } from "../utils/speechController.js";
+import { speakText } from "../utils/speech.js";
+
 import { findVoiceForLang } from "../utils/speech.js";
 import { setStoredVoice } from "../utils/storage.js";
 
@@ -441,14 +444,26 @@ export async function renderDictionaryExercise(mainEl, exerciseMeta, uiLang, exe
        ------------------------------------------------------------- */
 
     const voiceForExercise = findVoiceForLang(srcLang);
+
     if (voiceForExercise) {
         // Update the voice selector UI
         const voiceSelect = speechCtrl.getVoiceSelect();
         const option = Array.from(voiceSelect.options).find(o => o.value === voiceForExercise);
         if (option) {
-            voiceSelect.value = option.value;          // set the selected option
-            // *** NEW: fire a change event so the controller updates its internal state ***
+            voiceSelect.value = option.value;
+            // Fire a change event so the controller updates its internal state
             voiceSelect.dispatchEvent(new Event('change'));
+
+            // -------------------------------------------------------------
+            // ②  Auditory confirmation for the *automatic* voice change
+            // -------------------------------------------------------------
+            // Re‑use the same locale string the controller uses.
+
+            const uiLang = getStoredLang();
+            const locale = getLocale(uiLang);
+            const msg = locale.statusVoiceChange || "Voice changed";
+            // Speak the message with the newly selected voice.
+            speakText(msg, voiceForExercise).catch(() => {/* ignore errors */ });
         }
         // Persist the choice for future sessions
         setStoredVoice(voiceForExercise);

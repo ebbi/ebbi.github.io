@@ -8,8 +8,9 @@
 // ---------------------------------------------------------------
 
 import { speakText, populateVoiceList } from "./speech.js";
-import { getStoredVoice, setStoredVoice } from "./storage.js";
+import { getStoredVoice, setStoredVoice } from "./storage.js"; 
 import { getLocale } from "../data/locales.js";
+import { getStoredLang } from "../utils/storage.js";
 
 /* -----------------------------------------------------------------
    Default internal state – identical to the original version.
@@ -292,9 +293,19 @@ export function createSpeechController(container, {
             console.warn("[Speech] could not persist voice:", e);
         }
 
+        // -------------------------------------------------------------
+        // ①  Auditory confirmation – speak a short “Voice changed”
+        // -------------------------------------------------------------
+        // Grab the UI language (the same language used for UI strings)
+        const uiLang = getStoredLang();
+        const locale = getLocale(uiLang);
+        const msg = locale.statusVoiceChange || "Voice changed";
+        // Use the *new* voice for the confirmation so the user hears it
+        speakText(msg, newVoice).catch(() => {/* ignore TTS errors */ });
+
         if (typeof onVoiceChange === "function") onVoiceChange(newVoice);
 
-        // Show the “Voice change” message temporarily
+        // Show the “Voice change” message temporarily (visual cue)
         setStatus("statusVoiceChange");
         setPanelEnabled(false);
 
