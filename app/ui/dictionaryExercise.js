@@ -445,7 +445,11 @@ export async function renderDictionaryExercise(mainEl, exerciseMeta, uiLang, exe
         // Update the voice selector UI
         const voiceSelect = speechCtrl.getVoiceSelect();
         const option = Array.from(voiceSelect.options).find(o => o.value === voiceForExercise);
-        if (option) voiceSelect.value = option.value;
+        if (option) {
+            voiceSelect.value = option.value;          // set the selected option
+            // *** NEW: fire a change event so the controller updates its internal state ***
+            voiceSelect.dispatchEvent(new Event('change'));
+        }
         // Persist the choice for future sessions
         setStoredVoice(voiceForExercise);
     } else {
