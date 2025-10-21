@@ -12,9 +12,19 @@ export function populateVoiceList(selectEl, SUPPORTED_LANGS) {
         return;
     }
 
-    // The list of voices may be empty the first time this runs.
-    // We attach a listener that re‑fills the list when the browser
-    // finishes loading its voice database.
+    // -------------------------------------------------------------
+    // 1️⃣  Insert a tiny spinner next to the <select> while we wait
+    // -------------------------------------------------------------
+    const spinner = document.createElement('div');
+    spinner.className = 'voice-spinner';
+    spinner.setAttribute('aria-live', 'polite');
+    spinner.textContent = 'Loading voices…';
+    // Insert the spinner *after* the select element
+    selectEl.parentNode.insertBefore(spinner, selectEl.nextSibling);
+
+    // -------------------------------------------------------------
+    // 2️⃣  Function that actually fills the <select>
+    // -------------------------------------------------------------
     function fill() {
         const allVoices = speechSynthesis.getVoices();
 
@@ -43,8 +53,18 @@ export function populateVoiceList(selectEl, SUPPORTED_LANGS) {
         if (selectEl.options.length && !selectEl.value) {
             selectEl.selectedIndex = 0;
         }
+
+        // ---------------------------------------------------------
+        // 3️⃣  Hide/remove the spinner – we have the data now.
+        // ---------------------------------------------------------
+        if (spinner && spinner.parentNode) {
+            spinner.parentNode.removeChild(spinner);
+        }
     }
 
+    // -------------------------------------------------------------
+    // 4️⃣  Listen for the asynchronous “voiceschanged” event.
+    // -------------------------------------------------------------
     speechSynthesis.addEventListener('voiceschanged', fill);
     fill();   // initial attempt (may be empty, will be refreshed later)
 }

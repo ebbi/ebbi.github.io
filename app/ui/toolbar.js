@@ -22,9 +22,11 @@ export function renderToolbar(container) {
     homeBtn.id = 'homeBtn';
     homeBtn.title = 'Home';
     homeBtn.textContent = '🏠';
-    homeBtn.style.flex = '0 0 auto';
+    homeBtn.classList.add('toolbar-btn');
+    homeBtn.setAttribute('role', 'button');               // ← ARIA role
+    homeBtn.appendChild(document.createElement('span')).className = 'sr-only';
+    homeBtn.lastChild.textContent = 'Home';
     homeBtn.onclick = () => {
-        // Navigate to the root of the stored language (replaceState → no extra history entry)
         window.router.navigate(`/${getStoredLang()}/`, true);
     };
 
@@ -33,17 +35,21 @@ export function renderToolbar(container) {
     themeBtn.title = getLocale(getStoredLang()).toggleTheme ||
         'Toggle light/dark mode';
     themeBtn.textContent = '🌙';
-    themeBtn.style.flex = '0 0 auto';
+    themeBtn.classList.add('toolbar-btn');
+    themeBtn.setAttribute('role', 'button');               // ← ARIA role
+    themeBtn.appendChild(document.createElement('span')).className = 'sr-only';
+    themeBtn.lastChild.textContent = getLocale(getStoredLang()).toggleTheme || 'Toggle theme';
     themeBtn.onclick = toggleTheme;
 
-    // ----- NEW HELP BUTTON -------------------------------------------------
     const helpBtn = document.createElement('button');
     helpBtn.id = 'helpBtn';
     helpBtn.title = getLocale(getStoredLang()).helpHeader || 'Help';
-    helpBtn.textContent = '❓';               // you can also use ℹ️ or 🛈
-    helpBtn.style.flex = '0 0 auto';
+    helpBtn.textContent = '❓';
+    helpBtn.classList.add('toolbar-btn');
+    helpBtn.setAttribute('role', 'button');               // ← ARIA role
+    helpBtn.appendChild(document.createElement('span')).className = 'sr-only';
+    helpBtn.lastChild.textContent = getLocale(getStoredLang()).helpHeader || 'Help';
     helpBtn.onclick = () => {
-        // Navigate to the generic help page, preserving the current language.
         window.router.navigate(`/${getStoredLang()}/help`, true);
     };
 

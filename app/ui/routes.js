@@ -2,7 +2,7 @@
 // ---------------------------------------------------------------
 // Central place for every route‑handler used by the SPA router.
 // ---------------------------------------------------------------
-
+import { BASE_URL } from '../config.js';
 import { renderHeader } from "./renderHeader.js";
 import { getStoredLang, setStoredLang } from "../utils/storage.js";
 import { applyDirection } from "../utils/rtl.js";

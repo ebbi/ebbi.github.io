@@ -2,6 +2,7 @@
 // ---------------------------------------------------------------
 // Shared header used by Home, Help and every exercise page.
 // ---------------------------------------------------------------
+
 import { renderToolbar } from './toolbar.js';
 import { renderMenu } from './menu.js';
 import { applyDirection } from '../utils/rtl.js';
@@ -10,6 +11,17 @@ import { SUPPORTED_LANGS, FALLBACK_LANG, LANGUAGE_LABELS } from '../data/locales
 import { populateFontSelect } from './fontSelect.js';
 // NEW – central speech controller
 import { createSpeechController } from "../utils/speechController.js";
+
+// ---------------------------------------------------------------
+// Load the shared stylesheet that contains all extracted CSS classes.
+// ---------------------------------------------------------------
+function loadSharedStylesheet() {
+    const link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.href = '/app/ui/common.css';   // adjust if you use a BASE_URL
+    link.type = 'text/css';
+    document.head.appendChild(link);
+}
 
 /**
  * Creates the static page skeleton:
@@ -42,6 +54,11 @@ export async function renderHeader(lang) {
     `;
 
     // -----------------------------------------------------------------
+    // 2️⃣ Load the shared stylesheet (once per page load)
+    // -----------------------------------------------------------------
+    loadSharedStylesheet();
+
+    // -----------------------------------------------------------------
     // 3️⃣ Render the toolbar (top‑of‑page)
     // -----------------------------------------------------------------
     renderToolbar(document.getElementById('toolbarContainer'));
@@ -54,14 +71,25 @@ export async function renderHeader(lang) {
     // ---- Language selector -------------------------------------------------
     const langSelect = document.createElement('select');
     langSelect.id = 'langSelect';
-    langSelect.style.width = '100%';
-    langSelect.style.fontSize = '0.85rem';
-    langSelect.style.margin = '0';
-    langSelect.innerHTML = SUPPORTED_LANGS.map(code => {
-        const selected = code === getStoredLang() ? 'selected' : '';
-        const label = LANGUAGE_LABELS[code] || code.toUpperCase();
-        return `<option value="${code}" ${selected}>${label}</option>`;
-    }).join('');
+    langSelect.classList.add('nav-select');
+    langSelect.setAttribute('aria-label', 'Interface language selector');
+
+    /*
+        langSelect.innerHTML = SUPPORTED_LANGS.map(code => {
+            const selected = code === getStoredLang() ? 'selected' : '';
+            const label = LANGUAGE_LABELS[code] || code.toUpperCase();
+            return `<option value="${code}" ${selected}>${label}</option>`;
+        }).join('');
+    */
+    // Build the language <option> elements programmatically (avoids innerHTML)
+    SUPPORTED_LANGS.forEach(code => {
+        const option = document.createElement('option');
+        option.value = code;
+        option.textContent = LANGUAGE_LABELS[code] || code.toUpperCase();
+        if (code === getStoredLang()) option.selected = true;
+        langSelect.appendChild(option);
+    });
+
 
     langSelect.onchange = ev => {
         const newLang = ev.target.value;
@@ -96,9 +124,7 @@ export async function renderHeader(lang) {
     // ---- Font selector ----------------------------------------------------
     const fontSelect = document.createElement('select');
     fontSelect.id = 'fontSelect';
-    fontSelect.style.width = '100%';
-    fontSelect.style.fontSize = '0.85rem';
-    fontSelect.style.margin = '0';
+    fontSelect.classList.add('nav-select');
     // The actual options will be filled later by `renderMenu` (it knows the catalog).
     nav.appendChild(fontSelect);
     populateFontSelect(fontSelect);

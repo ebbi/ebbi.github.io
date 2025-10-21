@@ -12,10 +12,31 @@ and the rest defined in app.CSS
 
 Can you generate the code for the High (must‑do before next release)?
 
-I am using VSCode and it is problematic with diff patches.  Please generate find/replace code
+I am using VSCode and it is problematic with diff patches.  Please generate plain code to cut & paste
 
 
 
 
 
-  
+  For the Medium (quality & performance)	
+
+  1. Extract repeated inline styles into CSS classes.
+
+Please generate plain code to cut & paste
+
+  2. Move speechPanel markup into a <template>.
+  3. Add lazy‑loading to images in booksPanel.
+  4. Introduce a simple i18n key‑audit script.
+  5. Guard all localStorage accesses with environment checks.
+
+
+
+
+
+Low (nice‑to‑have)	
+1. Add ARIA roles/labels to toolbar buttons and form controls.
+2. Implement a small focus‑management helper after navigation.
+3. Write unit tests for router pattern compilation.
+4. Add a timeout wrapper around fetch in loadJSON.
+5. Provide a fallback spinner for voice list population.
+

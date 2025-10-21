@@ -64,115 +64,19 @@ export function renderHelp(container) {
     searchLabel.appendChild(searchIcon);
 
     const searchInput = document.createElement('input');
+
     searchInput.type = 'search';
     searchInput.placeholder = locale.searchPlaceholder || 'Search…';
+    searchInput.setAttribute('aria-label', locale.searchPlaceholder || 'Search');
     searchInput.style.padding = '0';
     searchInput.style.border = `1px solid var(--border-surface, #ddd)`;
     searchInput.style.borderRadius = '4px';
     searchInput.style.width = '12rem';
+
     searchLabel.appendChild(searchInput);
 
     headerRow.appendChild(searchLabel);
     container.appendChild(headerRow);
-
-    // -----------------------------------------------------------------
-    // 3️⃣a Inject a tiny style block (no external CSS file needed).
-    // -----------------------------------------------------------------
-    const style = document.createElement('style');
-
-    style.textContent = `
-        /* -----------------------------------------------------------------
-           Base card styling
-           ----------------------------------------------------------------- */
-        .help-detail {
-            margin: 1rem 0.5rem;
-            padding: 0.5rem;
-            border: 1px solid var(--border-surface, #ddd);
-            border-radius: 0.5rem;
-            background: var(--bg-surface, #fff);
-        }
-        .help-detail > summary {
-            font-weight: 600;
-            cursor: pointer;
-            margin-bottom: 0.4rem;
-        }
-        .help-detail p {
-            margin: 0.5rem 0;
-        }
-
-        /* -----------------------------------------------------------------
-           1️⃣  Keep the list markers *inside* the <ol> so they never
-               touch the <details> border (important for RTL languages).
-           ----------------------------------------------------------------- */
-        .help-detail ol {
-            list-style-position: inside;   /* marker stays inside the padding box */
-            margin-left: 0;                /* we control spacing ourselves */
-            padding-left: 0;               /* no extra indent */
-        }
-
-        /* -----------------------------------------------------------------
-           2️⃣  RTL adjustments – right‑align text and push the list a bit
-               away from the right border.
-           ----------------------------------------------------------------- */
-        .help-detail[dir="rtl"] {
-            text-align: right;
-        }
-        .help-detail[dir="rtl"] ol {
-            margin-right: 1.5rem;   /* space between numbers and the border */
-        }
-
-        /* -----------------------------------------------------------------
-           3️⃣  Numeral systems per language
-           ----------------------------------------------------------------- */
-        .lang-th ol   { list-style-type: thai; }          /* ๑, ๒, ๓ … */
-        .lang-fa ol   { list-style-type: persian; }       /* ۱, ۲, ۳ … */
-        .lang-ar ol   { list-style-type: arabic-indic; }  /* ١, ٢, ٣ … */
-
-        /* -----------------------------------------------------------------
-           4️⃣  Native numerals for Hindi, Japanese and Chinese (LTR).
-               We hide the default marker and inject a counter with the
-               appropriate Unicode‑numeric style.
-           ----------------------------------------------------------------- */
-        /* Hide the default marker – we’ll generate our own */
-        .lang-hi ol,
-        .lang-ja ol,
-        .lang-zh ol {
-            list-style: none;
-            counter-reset: li-counter;
-        }
-        .lang-hi li::before,
-        .lang-ja li::before,
-        .lang-zh li::before {
-            display: inline-block;
-            width: 1.2em;               /* reserve space for the number */
-            margin-right: 0.3em;
-            text-align: right;
-            font-weight: 600;
-            content: counter(li-counter) ". ";
-            counter-increment: li-counter;
-        }
-        /* Hindi – Devanagari digits */
-        .lang-hi li::before {
-            content: counter(li-counter, devanagari) ". ";
-        }
-        /* Japanese – Katakana (full‑width) digits */
-        .lang-ja li::before {
-            content: counter(li-counter, katakana) ". ";
-        }
-        /* Chinese – CJK‑Ideographic (Chinese numerals) */
-        .lang-zh li::before {
-            content: counter(li-counter, cjk-ideographic) ". ";
-        }
-
-        /* -----------------------------------------------------------------
-           5️⃣  Ensure the <details> element inherits the page direction.
-           ----------------------------------------------------------------- */
-        .help-detail {
-            direction: inherit;   /* picks up the <html dir> value */
-        }
-    `;
-
-    container.appendChild(style);
 
     // -----------------------------------------------------------------
     // 4️⃣  Render every HELP record.

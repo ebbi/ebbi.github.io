@@ -4,6 +4,7 @@
 // Render a “dictionary”‑type exercise (exercise id = "01").
 // ---------------------------------------------------------------
 
+import { BASE_URL } from '../config.js';
 import { loadJSON } from "../utils/fetch.js";
 import { renderHeader } from "./renderHeader.js";
 import {
@@ -40,10 +41,7 @@ let speechCtrl;
 function buildTokenColumn(translations, langs, displayMap) {
     const col = document.createElement("div");
     col.className = "token-col";
-    col.style.display = "flex";
-    col.style.flexDirection = "column";
-    col.style.alignItems = "center";
-    col.style.margin = "0 0.5rem";
+    col.classList.add('token-col');
 
     // -----------------------------------------------------------------
     // 1️⃣  Create a <span> only for displayed languages.
@@ -55,8 +53,7 @@ function buildTokenColumn(translations, langs, displayMap) {
         const span = document.createElement("span");
         span.className = "trans";
         span.textContent = txt || "";
-        span.style.fontSize = "1rem";
-        //        span.style.color = "var(--txt-secondary)";
+        span.classList.add('trans');
         span.setAttribute("lang", lang);
 
         col.appendChild(span);
@@ -97,7 +94,8 @@ export async function renderDictionaryExercise(mainEl, exerciseMeta, uiLang) {
     // -----------------------------------------------------------------
     // 1️⃣ Load the JSON payload for the exercise
     // -----------------------------------------------------------------
-    const jsonPath = `/app/${exerciseMeta.folder}/${exerciseMeta.file}`;
+    //    const jsonPath = `/app/${exerciseMeta.folder}/${exerciseMeta.file}`;
+    const jsonPath = `${BASE_URL}/app/${exerciseMeta.folder}/${exerciseMeta.file}`;
     const data = await loadJSON(jsonPath); // array of objects
 
     // -----------------------------------------------------------------
@@ -110,13 +108,7 @@ export async function renderDictionaryExercise(mainEl, exerciseMeta, uiLang) {
     // -----------------------------------------------------------------
     const tokenGrid = document.createElement("div");
     tokenGrid.className = "dict-grid";
-    tokenGrid.style.display = "flex";
-    tokenGrid.style.flexWrap = "wrap";
-    tokenGrid.style.justifyContent = "flex-start"; // left‑align rows
-    tokenGrid.style.gap = "1rem";
-    tokenGrid.style.padding = "0 1rem 1rem 1rem";
-    //    tokenGrid.style.height = "70vh";
-    tokenGrid.style.overflowY = "auto";
+    tokenGrid.classList.add('dict-grid');
 
     // -----------------------------------------------------------------
     // 4️⃣ Internationalised UI strings
@@ -145,18 +137,16 @@ export async function renderDictionaryExercise(mainEl, exerciseMeta, uiLang) {
     details.open = false;                     // default closed
     // ---- NEW STYLE FOR DETAILS -------------------------------------------------
     details.style.fontSize = "0.85rem";
-    details.style.margin = "0.15rem";
+    details.classList.add('language-options-details');
     details.style.padding = "0.15rem";
     // -----------------------------------------------------------------
     const summary = document.createElement("summary");
     summary.textContent = locale.languageOptions || "Language options";
     details.appendChild(summary);
-
+    
     const optionsGrid = document.createElement("div");
-    optionsGrid.style.display = "grid";
-    optionsGrid.style.gridTemplateColumns = "6fr 2fr 2fr";
-    optionsGrid.style.gap = "0.5rem";
-    optionsGrid.style.alignItems = "center";
+    optionsGrid.classList.add('language-options-grid');
+
     details.appendChild(optionsGrid);
 
     // Header row
@@ -165,8 +155,10 @@ export async function renderDictionaryExercise(mainEl, exerciseMeta, uiLang) {
     const speakHeader = document.createElement("h4");
     displayHeader.textContent = locale.display ?? "Display";
     speakHeader.textContent = locale.speak ?? "Speak";
-    displayHeader.style.textAlign = "center";
-    speakHeader.style.textAlign = "center";
+
+    displayHeader.classList.add('lang-header');
+    speakHeader.classList.add('lang-header');
+
     optionsGrid.appendChild(emptyHeader);
     optionsGrid.appendChild(displayHeader);
     optionsGrid.appendChild(speakHeader);
@@ -189,8 +181,9 @@ export async function renderDictionaryExercise(mainEl, exerciseMeta, uiLang) {
         displayCb.type = "checkbox";
         displayCb.dataset.lang = langCode;
         displayCb.checked = (langCode === exerciseLang); // only source language on start
-        displayCell.style.textAlign = "center";
+        displayCell.classList.add('lang-cell');
         displayCell.appendChild(displayCb);
+
         optionsGrid.appendChild(displayCell);
         displayBoxes.set(langCode, displayCb);
 
@@ -200,7 +193,7 @@ export async function renderDictionaryExercise(mainEl, exerciseMeta, uiLang) {
         speakCb.type = "checkbox";
         speakCb.dataset.lang = langCode;
         speakCb.checked = (langCode === exerciseLang);
-        speakCell.style.textAlign = "center";
+        speakCell.classList.add('lang-cell');
         speakCell.appendChild(speakCb);
         optionsGrid.appendChild(speakCell);
         speakBoxes.set(langCode, speakCb);

@@ -23,6 +23,7 @@ export async function renderExerciseDetail(container, id, UI_LANG) {
     container.classList.remove('hidden');
     container.textContent = '';
 
+    container.classList.add('detail-loading');   // optional – you can style this in CSS if desired
     const loadingH2 = document.createElement('h2');
     loadingH2.textContent = ex.title?.[UI_LANG] || ex.title?.en || '…';
     const loadingP = document.createElement('p');
@@ -34,7 +35,9 @@ export async function renderExerciseDetail(container, id, UI_LANG) {
         // -----------------------------------------------------------------
         // 1️⃣  Load the JSON payload for the exercise
         // -----------------------------------------------------------------
-        const jsonPath = `/app/${ex.folder}/${ex.file}`;
+//        const jsonPath = `/app/${ex.folder}/${ex.file}`;
+        const jsonPath = '${BASE_URL}/app/${ ex.folder }/${ex.file}';
+
         const data = await loadJSON(jsonPath);
 
         const block = data.content[UI_LANG] || data.content[FALLBACK_LANG];

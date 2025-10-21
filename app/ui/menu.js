@@ -4,7 +4,7 @@
 // exercise list, and the Books & Blogs panel) inside the supplied
 // <main> container.
 // ---------------------------------------------------------------
-
+import { BASE_URL } from '../config.js';
 import { loadJSON } from '../utils/fetch.js';
 import { EXERCISES } from '../data/exercises.js';
 import { getLocale } from '../data/locales.js';
@@ -35,55 +35,8 @@ import { renderBooksPanel } from './booksPanel.js';
 // -----------------------------------------------------------------
 const LS_LEVELS_KEY = 'local_storage_levels';
 
-// -----------------------------------------------------------------
-// Helpers for level‑filter persistence
-// -----------------------------------------------------------------
-function getStoredLevels() {
-    const raw = localStorage.getItem(LS_LEVELS_KEY);
-    if (!raw) return ['basic'];
-    try {
-        const arr = JSON.parse(raw);
-        return Array.isArray(arr) ? arr.map(s => s.toLowerCase()) : ['basic'];
-    } catch (_) {
-        return ['basic'];
-    }
-}
-function setStoredLevels(levels) {
-    try {
-        localStorage.setItem(LS_LEVELS_KEY, JSON.stringify(levels));
-    } catch (e) {
-        console.warn('Could not persist level filter', e);
-    }
-}
+import { getStoredLevels, setStoredLevels, getLastExercise, setLastExercise } from '../utils/storage.js';
 
-// -----------------------------------------------------------------
-// Local‑storage key for the “last visited” exercise
-// -----------------------------------------------------------------
-const LS_LAST_EX_ID = 'local_storage_last_exercise';
-
-/**
- * Save the chosen exercise id to local‑storage.
- * @param {string} id
- */
-function storeLastExercise(id) {
-    try {
-        localStorage.setItem(LS_LAST_EX_ID, id);
-    } catch (e) {
-        console.warn('[Menu] could not persist last exercise', e);
-    }
-}
-
-/**
- * Retrieve the stored id (or null if none / corrupted).
- * @returns {string|null}
- */
-function getLastExercise() {
-    try {
-        return localStorage.getItem(LS_LAST_EX_ID);
-    } catch (_) {
-        return null;
-    }
-}
 
 /**
  * Render the **dynamic** part of the UI (level‑filter checkboxes,
@@ -98,7 +51,9 @@ export async function renderMenu(container, UI_LANG) {
     // -------------------------------------------------------------
     if (!EXERCISES.length) {
         try {
-            const data = await loadJSON('/app/data/exercises.json');
+            //const data = await loadJSON('/app/data/exercises.json');
+            const data = await loadJSON(`${BASE_URL}/app/data/exercises.json`);
+ //           const data = await loadJSON('${ BASE_URL } /app/data/exercises.json');
             EXERCISES.push(...data);
         } catch (e) {
             const err = document.createElement('p');
@@ -113,7 +68,7 @@ export async function renderMenu(container, UI_LANG) {
     // -------------------------------------------------------------
     const practiceDetails = document.createElement('details');
     practiceDetails.open = true;                     // expanded by default
-    practiceDetails.style.margin = '0.5rem 1rem';
+    practiceDetails.classList.add('language-options-details');
 
     const practiceSummary = document.createElement('summary');
     const locale = getLocale(UI_LANG);
@@ -191,7 +146,7 @@ export async function renderMenu(container, UI_LANG) {
             const chosenId = ev.target.value;
             if (!chosenId) return;
 
-            storeLastExercise(chosenId);
+            setLastExercise(chosenId);
             window.router.navigate(`/${UI_LANG}/exercises/${chosenId}`, true);
         });
 
