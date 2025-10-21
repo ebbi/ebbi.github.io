@@ -55,8 +55,8 @@ function buildTokenColumn(translations, langs, displayMap) {
         const span = document.createElement("span");
         span.className = "trans";
         span.textContent = txt || "";
-        span.style.fontSize = "1rem";
-        //        span.style.color = "var(--txt-secondary)";
+        span.style.fontSize = "0.9rem";
+        span.style.color = "var(--txt-secondary)";
         span.setAttribute("lang", lang);
 
         col.appendChild(span);
@@ -114,8 +114,8 @@ export async function renderDictionaryExercise(mainEl, exerciseMeta, uiLang) {
     tokenGrid.style.flexWrap = "wrap";
     tokenGrid.style.justifyContent = "flex-start"; // left‑align rows
     tokenGrid.style.gap = "1rem";
-    tokenGrid.style.padding = "0 1rem 1rem 1rem";
-    //    tokenGrid.style.height = "70vh";
+    tokenGrid.style.padding = "1rem";
+    tokenGrid.style.height = "70vh";
     tokenGrid.style.overflowY = "auto";
 
     // -----------------------------------------------------------------
@@ -143,11 +143,8 @@ export async function renderDictionaryExercise(mainEl, exerciseMeta, uiLang) {
     // -----------------------------------------------------------------
     const details = document.createElement("details");
     details.open = false;                     // default closed
-    // ---- NEW STYLE FOR DETAILS -------------------------------------------------
-    details.style.fontSize = "0.85rem";
-    details.style.margin = "0.15rem";
-    details.style.padding = "0.15rem";
-    // -----------------------------------------------------------------
+    details.style.margin = "0.5rem 1rem";
+
     const summary = document.createElement("summary");
     summary.textContent = locale.languageOptions || "Language options";
     details.appendChild(summary);
@@ -160,9 +157,9 @@ export async function renderDictionaryExercise(mainEl, exerciseMeta, uiLang) {
     details.appendChild(optionsGrid);
 
     // Header row
-    const emptyHeader = document.createElement("div"); // language list
-    const displayHeader = document.createElement("h4");
-    const speakHeader = document.createElement("h4");
+    const emptyHeader = document.createElement("div");
+    const displayHeader = document.createElement("div");
+    const speakHeader = document.createElement("div");
     displayHeader.textContent = locale.display ?? "Display";
     speakHeader.textContent = locale.speak ?? "Speak";
     displayHeader.style.textAlign = "center";
@@ -179,7 +176,7 @@ export async function renderDictionaryExercise(mainEl, exerciseMeta, uiLang) {
         const langLabel = LANGUAGE_LABELS[langCode] || langCode.toUpperCase();
 
         // Language name cell
-        const langCell = document.createElement("h4");
+        const langCell = document.createElement("div");
         langCell.textContent = langLabel;
         optionsGrid.appendChild(langCell);
 
@@ -222,112 +219,16 @@ export async function renderDictionaryExercise(mainEl, exerciseMeta, uiLang) {
     const speechPanel = document.createElement("div");
     speechPanel.id = "speechPanel";
 
-    // moved to speechController
-    /* 
-    // -----------------------------------------------------------------
-    // 8️⃣ Create the **player control panel** (outside the <details>)
-    // -----------------------------------------------------------------
-    const speechPanel = document.createElement("div");
-    speechPanel.id = "speechPanel";
-
-    // ---- NEW STYLE FOR PLAYER PANEL -----------------------------------------
-    speechPanel.style.fontSize = "0.85rem";
-    speechPanel.style.margin = "0.15rem 0.15rem 0.25rem 0.15rem";
+    // Styling that matches the <details> look
     speechPanel.style.border = "1px solid var(--border-surface, #ddd)";
     speechPanel.style.borderRadius = "0.5rem";
     speechPanel.style.padding = "0.5rem";
+    speechPanel.style.margin = "0.5rem 1rem";
     speechPanel.style.background = "var(--bg-surface, #fff)";
-    // -----------------------------------------------------------------
 
     // -----------------------------------------------------------------
-    // Row 1 – Play / Pause / Reset / Delay
+    // 9️⃣ Re‑build the token grid based on the current checkbox state
     // -----------------------------------------------------------------
-
-        const controlsRow = document.createElement("div");
-        controlsRow.style.display = "flex";
-        controlsRow.style.alignItems = "center";
-        controlsRow.style.gap = "0.5rem";
-        controlsRow.style.flexWrap = "wrap";
-    
-        const playBtn = document.createElement("button");
-        playBtn.title = locale.playButton || "Play";
-        playBtn.textContent = "▶️";
-        controlsRow.appendChild(playBtn);
-    
-        const pauseBtn = document.createElement("button");
-        pauseBtn.title = locale.pauseButton || "Pause";
-        pauseBtn.textContent = "⏸️";
-        controlsRow.appendChild(pauseBtn);
-    
-        const resetBtn = document.createElement("button");
-        resetBtn.title = locale.resetButton || "Reset";
-        resetBtn.textContent = "🔄";
-        controlsRow.appendChild(resetBtn);
-    
-        const delayLabel = document.createElement("label");
-        delayLabel.textContent = locale.delayLabel || "Delay (s):";
-        controlsRow.appendChild(delayLabel);
-    
-        const delayInput = document.createElement("input");
-        delayInput.type = "number";
-        delayInput.min = 1;
-        delayInput.max = 5;
-        delayInput.step = 0.1;
-        delayInput.value = 1;
-        delayInput.style.width = "3rem";
-        controlsRow.appendChild(delayInput);
-    */
-    // -----------------------------------------------------------------
-    // Row 2 – Status message (¼) + Voice selector (¾)
-    // -----------------------------------------------------------------
-    /*
-        const statusVoiceRow = document.createElement("div");
-        statusVoiceRow.style.display = "flex";
-        statusVoiceRow.style.alignItems = "center";
-        statusVoiceRow.style.gap = "0.5rem";
-        statusVoiceRow.style.marginTop = "0.5rem";
-    
-        const statusEl = document.createElement("div");
-        // ¼ of the row
-        statusEl.style.flex = "0 0 25%";
-        statusEl.style.minHeight = "1.2rem";
-        statusEl.style.fontStyle = "italic";
-        statusEl.style.fontSize = "0.8rem";
-        statusEl.style.border = "1px solid var(--border-surface, #ddd)";
-        statusEl.style.borderRadius = "4px";
-        statusEl.style.padding = "0.7rem 0.15rem";
-        statusEl.style.background = "var(--bg-surface, #fff)";
-        statusVoiceRow.appendChild(statusEl);
-    
-        const voiceSelect = document.createElement("select");
-        voiceSelect.id = "voiceSelect";
-    
-        const defaultOption = document.createElement("option");
-        defaultOption.value = locale.selectExerciseVoice; // No value for the default message
-        defaultOption.text = "Select exercise language voice"; // The default message
-        defaultOption.disabled = true; // Disable the option
-        defaultOption.selected = true; // Set it as the selected option
-        voiceSelect.insertBefore(defaultOption, voiceSelect.firstChild);
-    
-        // ¾ of the row
-        voiceSelect.style.flex = "0 0 75%";
-        // ---- NEW PADDING FOR VOICE SELECT ---------------------------------------
-        voiceSelect.style.padding = "0.11rem";
-        // ------------------------------------------------------------------------
-        voiceSelect.style.boxSizing = "border-box";
-        statusVoiceRow.appendChild(voiceSelect);
-    */
-    // -----------------------------------------------------------------
-    // Assemble the two rows inside the speech panel
-    // -----------------------------------------------------------------
-    //   speechPanel.appendChild(controlsRow);   // Row 1
-    //    speechPanel.appendChild(statusVoiceRow); // Row 2
-
-    // -----------------------------------------------------------------
-    // Re‑build the token grid based on the current checkbox state
-    // -----------------------------------------------------------------
-
-
     function rebuildTokenGrid() {
         // 0️⃣ Reset global collections and clear the visual grid.
         tokenEls = [];
@@ -347,15 +248,15 @@ export async function renderDictionaryExercise(mainEl, exerciseMeta, uiLang) {
 
         // 2️⃣ Walk through the JSON data and create a column for each token.
         data.forEach(entry => {
-            // Category heading (optional – keep if you like)
+            // Category heading (optional – you can keep or remove)
             if (entry.category) {
-                const catDiv = document.createElement("h5");
+                const catDiv = document.createElement("div");
                 catDiv.className = "category-header";
                 catDiv.textContent = entry.category;
-                //                catDiv.style.fontWeight = "600";
-                //               catDiv.style.margin = "0.4rem 0 0.2rem 0";
-                //               catDiv.style.color = "var(--txt-primary)";
-                // Full‑width flex item so it sits on its own line.
+                catDiv.style.fontWeight = "600";
+                catDiv.style.margin = "0.4rem 0 0.2rem 0";
+                catDiv.style.color = "var(--txt-primary)";
+                // Make the heading a full‑width flex item so it sits on its own line.
                 catDiv.style.flex = "0 0 100%";
                 tokenGrid.appendChild(catDiv);
             }
@@ -395,10 +296,10 @@ export async function renderDictionaryExercise(mainEl, exerciseMeta, uiLang) {
     }
 
     // -----------------------------------------------------------------
-    // 9️⃣ Assemble the page in the required order:
+    // 10️⃣ Assemble the page in the required order:
     //      1️⃣ Language‑options <details> (top, closed)
-    //      2️⃣ Player control panel (outside details)
-    //      3️⃣ Exercise heading (<h4>)
+    //      2️⃣ Player control panel (outside the details)
+    //      3️⃣ Exercise heading
     //      4️⃣ Token grid
     // -----------------------------------------------------------------
     mainEl.innerHTML = ""; // clear any previous content
@@ -408,7 +309,7 @@ export async function renderDictionaryExercise(mainEl, exerciseMeta, uiLang) {
         exerciseMeta.title?.en ||
         "Dictionary Exercise";
 
-    const heading = document.createElement("h4"); // <-- changed from h2 to h4
+    const heading = document.createElement("h2");
     heading.textContent = titleText;
     heading.style.textAlign = "center";
     heading.style.marginBottom = "1rem";
@@ -416,13 +317,12 @@ export async function renderDictionaryExercise(mainEl, exerciseMeta, uiLang) {
     // Order matters:
     mainEl.appendChild(details);      // 1️⃣ Language options (closed)
     mainEl.appendChild(speechPanel); // 2️⃣ Player controls (outside details)
-    mainEl.appendChild(heading);      // 3️⃣ Exercise title (h4)
+    mainEl.appendChild(heading);      // 3️⃣ Exercise title
     mainEl.appendChild(tokenGrid);    // 4️⃣ Token grid
 
     // -----------------------------------------------------------------
-    // 10️⃣ Build the speech controller **inside** the player panel.
+    // 11️⃣ Build the speech controller **inside** the player panel.
     // -----------------------------------------------------------------
-
     speechCtrl = createSpeechController(speechPanel, {
         getAvailableLanguages: () => SUPPORTED_LANGS,
         defaultLang: uiLang,

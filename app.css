@@ -187,16 +187,25 @@ details {
     border-color: #444;
 }
 
+.speechPanel {
+    font-Size: "0.85rem";
+    margin: "0.15rem 0.15rem 0.25rem 0.15rem";
+    border: "1px solid var(--border-surface, #ddd)";
+    border-radius: "0.5rem";
+    padding: "0.5rem";
+    background: "var(--bg-surface, #fff)";
+}
 
 /* -------------------------------------------------------------
    Dictionary‑exercise grid
    ------------------------------------------------------------- */
+
 .dict-grid {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     gap: 1rem;
-    padding: 1rem;
+    padding: 0 1rem 1rem 1rem;
 }
 
 /* Individual token column */
