@@ -63,10 +63,18 @@ if (meta.details && meta.details.type === "dictionary") {
 
 I think you mean app/ui/routes for the above.
 
-The voice select updated to the exercise language but 
-the play used the system default voice.
-Once I manually set the voice to the same selected voice then the voice wa enabled.
-In this test the system voice is en and the tet exercise is th for Thai
-The voice select updated to a th voice but play was still in en
-Once the th voice was manually selected then the browser switched to th
+Can you outline a new multiple choice exercise to be integrated.
+The idea is the user typically learn a new language using the dataset for the dictionary exercises.
+THe multiple choice exercise would be generalised to select any 2 languages from the same json data set
+displaying the text from one language and 4 randomly selected text entries from the second language
+only one of which is correct.
+Feedback would be highlighting correct / incorrect answers.  
+Clicking any word would speak it out
+An overall score
+Each Dictionary exercise card entry would then have a link to Test Yourself that would loadup the 
+multiple choice exercise
+
+Before generating any code, advice on approach and finalising a design would be nice.
+
+
 
