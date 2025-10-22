@@ -258,7 +258,7 @@ export async function renderMenu(container, UI_LANG) {
     const activeLevels = new Set(getStoredLevels());
 
     EXERCISES
-        .filter(ex => activeLevels.has((ex.level || 'basic').toLowerCase()))
+        .filter(ex => activeLevels.has(ex.level.toLowerCase()))
         .forEach(ex => {
             const li = document.createElement('li');
             li.className = 'menu-item';
@@ -274,23 +274,6 @@ export async function renderMenu(container, UI_LANG) {
             summary.textContent =
                 (ex.summary && ex.summary[UI_LANG]) || ex.summary.en || '';
             li.appendChild(summary);
-
-            // ---------------------------------------------------------
-            // **Test Yourself** button – only for exercises that list
-            // the "multipleChoice" activity.
-            // ---------------------------------------------------------
-            if (Array.isArray(ex.activities) && ex.activities.includes('multipleChoice')) {
-                const testBtn = document.createElement('button');
-                const label = locale.activityMultipleChoice || 'Test Yourself';
-                testBtn.textContent = label;
-                testBtn.className = 'test-yourself-btn';
-                testBtn.style.marginTop = '0.5rem';
-                testBtn.onclick = () => {
-                    const url = `/${UI_LANG}/exercises/${ex.id}/test`;
-                    window.router.navigate(url, true);
-                };
-                li.appendChild(testBtn);
-            }
 
             ul.appendChild(li);
         });
@@ -314,17 +297,10 @@ export async function renderMenu(container, UI_LANG) {
     // -------------------------------------------------------------
 
     // -------------------------------------------------------------
-    // 3️⃣  Assemble everything inside the supplied <main> container
+    // 3️⃣ Assemble everything inside the supplied <main> container
     // -------------------------------------------------------------
-    // Clear any previous content (e.g. when navigating back to home)
-    container.innerHTML = '';
-
-    // ①  Practice‑languages panel (contains the level filter,
-    //     exercise selector and the list of exercise cards)
-    container.appendChild(practiceDetails);
-
-    // ②  Books & Blogs panel – rendered *after* the practice panel
-    //     The panel creates its own <details> wrapper, so we just invoke it.
-    //     It will append the resulting <details> directly to `container`.
-    renderBooksPanel(container, UI_LANG);
+    container.innerHTML = '';               // wipe any previous content
+    container.appendChild(practiceDetails); // Practice languages panel (now contains the list)
+    // Now append the Books & Blogs panel *below* the practice panel
+    renderBooksPanel(container, UI_LANG);   // will create its own <details> and append it
 }

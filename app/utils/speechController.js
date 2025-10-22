@@ -8,9 +8,8 @@
 // ---------------------------------------------------------------
 
 import { speakText, populateVoiceList } from "./speech.js";
-import { getStoredVoice, setStoredVoice } from "./storage.js"; 
+import { getStoredVoice, setStoredVoice } from "./storage.js";
 import { getLocale } from "../data/locales.js";
-import { getStoredLang } from "../utils/storage.js";
 
 /* -----------------------------------------------------------------
    Default internal state – identical to the original version.
@@ -61,11 +60,17 @@ export function createSpeechController(container, {
     // ---- NEW STYLE FOR PLAYER PANEL -----------------------------------------
     speechPanel.style.fontSize = "0.85rem";
     speechPanel.style.margin = "0.15rem 0.15rem 0.25rem 0.15rem";
+    speechPanel.style.border = "1px solid var(--border-surface, #ddd)";
+    speechPanel.style.borderRadius = "0.5rem";
+    speechPanel.style.padding = "0.5rem";
+    speechPanel.style.background = "var(--bg-surface, #fff)";
 
-    speechPanel.classList.add('speech-panel');
 
     const controlsRow = document.createElement("div");
-    controlsRow.classList.add('speech-controls-row');
+    controlsRow.style.display = "flex";
+    controlsRow.style.alignItems = "center";
+    controlsRow.style.gap = "0.5rem";
+    controlsRow.style.flexWrap = "wrap";
 
     const playBtn = document.createElement("button");
     playBtn.title = locale.playButton || "Play";
@@ -99,16 +104,28 @@ export function createSpeechController(container, {
     // UI – Row 2 = status message + voice selector
     // -----------------------------------------------------------------
     const statusVoiceRow = document.createElement("div");
-    statusVoiceRow.classList.add('speech-status-row');
+    statusVoiceRow.style.display = "flex";
+    statusVoiceRow.style.alignItems = "center";
+    //    statusVoiceRow.style.justifyContent = "space-between";
+    //    statusVoiceRow.style.flexWrap = "wrap";
+    statusVoiceRow.style.gap = "0.5rem";
+    statusVoiceRow.style.marginTop = "0.5rem";
 
     const statusEl = document.createElement("div");
-    statusEl.classList.add('speech-status');
+    //    statusEl.style.flex = "1 1 auto";
+    statusEl.style.flex = "0 0 25%";
+
+    statusEl.style.minHeight = "1.2rem";
+    statusEl.style.fontStyle = "italic";
+    statusEl.style.fontSize = "0.8rem";
+    statusEl.style.border = "1px solid var(--border-surface, #ddd)";
+    statusEl.style.borderRadius = "4px";
+    statusEl.style.padding = "0.7rem 0.15rem";
+    statusEl.style.background = "var(--bg-surface, #fff)";
     statusVoiceRow.appendChild(statusEl);
 
     const voiceSelect = document.createElement("select");
     voiceSelect.id = "voiceSelect";
-    voiceSelect.classList.add('speech-voice-select');
-    statusVoiceRow.appendChild(voiceSelect);
 
     const defaultOption = document.createElement("option");
     defaultOption.value = locale.selectExerciseVoice; // No value for the default message
@@ -117,10 +134,16 @@ export function createSpeechController(container, {
     defaultOption.selected = true; // Set it as the selected option
     voiceSelect.insertBefore(defaultOption, voiceSelect.firstChild);
 
+    // ¾ of the row
+    voiceSelect.style.flex = "0 0 75%";
+    voiceSelect.style.padding = "0.11rem";
+    // ------------------------------------------------------------------------
+    voiceSelect.style.boxSizing = "border-box";
+    statusVoiceRow.appendChild(voiceSelect);
 
     // -----------------------------------------------------------------
-    speechPanel.appendChild(controlsRow);   // Row 1
-    speechPanel.appendChild(statusVoiceRow); // Row 2
+       speechPanel.appendChild(controlsRow);   // Row 1
+        speechPanel.appendChild(statusVoiceRow); // Row 2
 
     // -----------------------------------------------------------------
     // Helper – enable/disable the whole panel (opacity + disabled attrs)
@@ -293,19 +316,9 @@ export function createSpeechController(container, {
             console.warn("[Speech] could not persist voice:", e);
         }
 
-        // -------------------------------------------------------------
-        // ①  Auditory confirmation – speak a short “Voice changed”
-        // -------------------------------------------------------------
-        // Grab the UI language (the same language used for UI strings)
-        const uiLang = getStoredLang();
-        const locale = getLocale(uiLang);
-        const msg = locale.statusVoiceChange || "Voice changed";
-        // Use the *new* voice for the confirmation so the user hears it
-        speakText(msg, newVoice).catch(() => {/* ignore TTS errors */ });
-
         if (typeof onVoiceChange === "function") onVoiceChange(newVoice);
 
-        // Show the “Voice change” message temporarily (visual cue)
+        // Show the “Voice change” message temporarily
         setStatus("statusVoiceChange");
         setPanelEnabled(false);
 

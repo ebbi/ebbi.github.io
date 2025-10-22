@@ -11,12 +11,9 @@ import {
     LANGUAGE_LABELS,
     SUPPORTED_LANGS
 } from "../data/locales.js";
-import { getStoredLang } from "../utils/storage.js";
 import { createSpeechController } from "../utils/speechController.js";
-import { speakText } from "../utils/speech.js";
+import { ensureVoiceForExercise } from '../utils/voiceHelper.js';
 
-import { findVoiceForLang } from "../utils/speech.js";
-import { setStoredVoice } from "../utils/storage.js";
 
 /* -----------------------------------------------------------------
    GLOBAL UI state – only the arrays that the controller needs.
@@ -45,7 +42,10 @@ let speechCtrl;
 function buildTokenColumn(translations, langs, displayMap) {
     const col = document.createElement("div");
     col.className = "token-col";
-    col.classList.add('token-col');
+    col.style.display = "flex";
+    col.style.flexDirection = "column";
+    col.style.alignItems = "center";
+    col.style.margin = "0 0.5rem";
 
     // -----------------------------------------------------------------
     // 1️⃣  Create a <span> only for displayed languages.
@@ -57,7 +57,8 @@ function buildTokenColumn(translations, langs, displayMap) {
         const span = document.createElement("span");
         span.className = "trans";
         span.textContent = txt || "";
-        span.classList.add('trans');
+        span.style.fontSize = "1rem";
+        //        span.style.color = "var(--txt-secondary)";
         span.setAttribute("lang", lang);
 
         col.appendChild(span);
@@ -91,15 +92,10 @@ function buildTokenColumn(translations, langs, displayMap) {
     return col;
 }
 
-/**
- * Main entry – render the dictionary exercise inside the provided <main>.
- *
- * @param {HTMLElement} mainEl          – container for the UI.
- * @param {object}      exerciseMeta   – metadata from exercises.json.
- * @param {string}      uiLang         – UI language (e.g. "en").
- * @param {string}      exerciseLang   – language code defined in the exercise (e.g. "th").
- */
-export async function renderDictionaryExercise(mainEl, exerciseMeta, uiLang, exerciseLang) {
+/* -----------------------------------------------------------------
+   Main entry – render the dictionary exercise inside the provided <main>.
+   ----------------------------------------------------------------- */
+export async function renderDictionaryExercise(mainEl, exerciseMeta, uiLang) {
     // -----------------------------------------------------------------
     // 1️⃣ Load the JSON payload for the exercise
     // -----------------------------------------------------------------
@@ -109,16 +105,20 @@ export async function renderDictionaryExercise(mainEl, exerciseMeta, uiLang, exe
     // -----------------------------------------------------------------
     // 2️⃣ Determine the real language of the exercise (source language)
     // -----------------------------------------------------------------
-    // If the exercise file specifies a language, use it; otherwise fall back
-    // to the UI language.
-    const srcLang = exerciseLang || uiLang;
+    const exerciseLang = exerciseMeta.language || uiLang;
 
     // -----------------------------------------------------------------
     // 3️⃣ Prepare the token grid (will be rebuilt on every checkbox change)
     // -----------------------------------------------------------------
     const tokenGrid = document.createElement("div");
     tokenGrid.className = "dict-grid";
-    tokenGrid.classList.add('dict-grid');
+    tokenGrid.style.display = "flex";
+    tokenGrid.style.flexWrap = "wrap";
+    tokenGrid.style.justifyContent = "flex-start"; // left‑align rows
+    tokenGrid.style.gap = "1rem";
+    tokenGrid.style.padding = "0 1rem 1rem 1rem";
+    //    tokenGrid.style.height = "70vh";
+    tokenGrid.style.overflowY = "auto";
 
     // -----------------------------------------------------------------
     // 4️⃣ Internationalised UI strings
@@ -147,7 +147,7 @@ export async function renderDictionaryExercise(mainEl, exerciseMeta, uiLang, exe
     details.open = false;                     // default closed
     // ---- NEW STYLE FOR DETAILS -------------------------------------------------
     details.style.fontSize = "0.85rem";
-    details.classList.add('language-options-details');
+    details.style.margin = "0.15rem";
     details.style.padding = "0.15rem";
     // -----------------------------------------------------------------
     const summary = document.createElement("summary");
@@ -155,8 +155,10 @@ export async function renderDictionaryExercise(mainEl, exerciseMeta, uiLang, exe
     details.appendChild(summary);
 
     const optionsGrid = document.createElement("div");
-    optionsGrid.classList.add('language-options-grid');
-
+    optionsGrid.style.display = "grid";
+    optionsGrid.style.gridTemplateColumns = "6fr 2fr 2fr";
+    optionsGrid.style.gap = "0.5rem";
+    optionsGrid.style.alignItems = "center";
     details.appendChild(optionsGrid);
 
     // Header row
@@ -165,10 +167,8 @@ export async function renderDictionaryExercise(mainEl, exerciseMeta, uiLang, exe
     const speakHeader = document.createElement("h4");
     displayHeader.textContent = locale.display ?? "Display";
     speakHeader.textContent = locale.speak ?? "Speak";
-
-    displayHeader.classList.add('lang-header');
-    speakHeader.classList.add('lang-header');
-
+    displayHeader.style.textAlign = "center";
+    speakHeader.style.textAlign = "center";
     optionsGrid.appendChild(emptyHeader);
     optionsGrid.appendChild(displayHeader);
     optionsGrid.appendChild(speakHeader);
@@ -191,9 +191,8 @@ export async function renderDictionaryExercise(mainEl, exerciseMeta, uiLang, exe
         displayCb.type = "checkbox";
         displayCb.dataset.lang = langCode;
         displayCb.checked = (langCode === exerciseLang); // only source language on start
-        displayCell.classList.add('lang-cell');
+        displayCell.style.textAlign = "center";
         displayCell.appendChild(displayCb);
-
         optionsGrid.appendChild(displayCell);
         displayBoxes.set(langCode, displayCb);
 
@@ -203,7 +202,7 @@ export async function renderDictionaryExercise(mainEl, exerciseMeta, uiLang, exe
         speakCb.type = "checkbox";
         speakCb.dataset.lang = langCode;
         speakCb.checked = (langCode === exerciseLang);
-        speakCell.classList.add('lang-cell');
+        speakCell.style.textAlign = "center";
         speakCell.appendChild(speakCb);
         optionsGrid.appendChild(speakCell);
         speakBoxes.set(langCode, speakCb);
@@ -224,107 +223,6 @@ export async function renderDictionaryExercise(mainEl, exerciseMeta, uiLang, exe
     // -----------------------------------------------------------------
     const speechPanel = document.createElement("div");
     speechPanel.id = "speechPanel";
-
-    // moved to speechController
-    /* 
-    // -----------------------------------------------------------------
-    // 8️⃣ Create the **player control panel** (outside the <details>)
-    // -----------------------------------------------------------------
-    const speechPanel = document.createElement("div");
-    speechPanel.id = "speechPanel";
-
-    // ---- NEW STYLE FOR PLAYER PANEL -----------------------------------------
-    speechPanel.style.fontSize = "0.85rem";
-    speechPanel.style.margin = "0.15rem 0.15rem 0.25rem 0.15rem";
-    speechPanel.style.border = "1px solid var(--border-surface, #ddd)";
-    speechPanel.style.borderRadius = "0.5rem";
-    speechPanel.style.padding = "0.5rem";
-    speechPanel.style.background = "var(--bg-surface, #fff)";
-    // -----------------------------------------------------------------
-
-    // -----------------------------------------------------------------
-    // Row 1 – Play / Pause / Reset / Delay
-    // -----------------------------------------------------------------
-
-        const controlsRow = document.createElement("div");
-        controlsRow.style.display = "flex";
-        controlsRow.style.alignItems = "center";
-        controlsRow.style.gap = "0.5rem";
-        controlsRow.style.flexWrap = "wrap";
-    
-        const playBtn = document.createElement("button");
-        playBtn.title = locale.playButton || "Play";
-        playBtn.textContent = "▶️";
-        controlsRow.appendChild(playBtn);
-    
-        const pauseBtn = document.createElement("button");
-        pauseBtn.title = locale.pauseButton || "Pause";
-        pauseBtn.textContent = "⏸️";
-        controlsRow.appendChild(pauseBtn);
-    
-        const resetBtn = document.createElement("button");
-        resetBtn.title = locale.resetButton || "Reset";
-        resetBtn.textContent = "🔄";
-        controlsRow.appendChild(resetBtn);
-    
-        const delayLabel = document.createElement("label");
-        delayLabel.textContent = locale.delayLabel || "Delay (s):";
-        controlsRow.appendChild(delayLabel);
-    
-        const delayInput = document.createElement("input");
-        delayInput.type = "number";
-        delayInput.min = 1;
-        delayInput.max = 5;
-        delayInput.step = 0.1;
-        delayInput.value = 1;
-        delayInput.style.width = "3rem";
-        controlsRow.appendChild(delayInput);
-    */
-    // -----------------------------------------------------------------
-    // Row 2 – Status message (¼) + Voice selector (¾)
-    // -----------------------------------------------------------------
-    /*
-        const statusVoiceRow = document.createElement("div");
-        statusVoiceRow.style.display = "flex";
-        statusVoiceRow.style.alignItems = "center";
-        statusVoiceRow.style.gap = "0.5rem";
-        statusVoiceRow.style.marginTop = "0.5rem";
-    
-        const statusEl = document.createElement("div");
-        // ¼ of the row
-        statusEl.style.flex = "0 0 25%";
-        statusEl.style.minHeight = "1.2rem";
-        statusEl.style.fontStyle = "italic";
-        statusEl.style.fontSize = "0.8rem";
-        statusEl.style.border = "1px solid var(--border-surface, #ddd)";
-        statusEl.style.borderRadius = "4px";
-        statusEl.style.padding = "0.7rem 0.15rem";
-        statusEl.style.background = "var(--bg-surface, #fff)";
-        statusVoiceRow.appendChild(statusEl);
-    
-        const voiceSelect = document.createElement("select");
-        voiceSelect.id = "voiceSelect";
-    
-        const defaultOption = document.createElement("option");
-        defaultOption.value = locale.selectExerciseVoice; // No value for the default message
-        defaultOption.text = "Select exercise language voice"; // The default message
-        defaultOption.disabled = true; // Disable the option
-        defaultOption.selected = true; // Set it as the selected option
-        voiceSelect.insertBefore(defaultOption, voiceSelect.firstChild);
-    
-        // ¾ of the row
-        voiceSelect.style.flex = "0 0 75%";
-        // ---- NEW PADDING FOR VOICE SELECT ---------------------------------------
-        voiceSelect.style.padding = "0.11rem";
-        // ------------------------------------------------------------------------
-        voiceSelect.style.boxSizing = "border-box";
-        statusVoiceRow.appendChild(voiceSelect);
-    */
-    // -----------------------------------------------------------------
-    // Assemble the two rows inside the speech panel
-    // -----------------------------------------------------------------
-    //   speechPanel.appendChild(controlsRow);   // Row 1
-    //    speechPanel.appendChild(statusVoiceRow); // Row 2
 
     // -----------------------------------------------------------------
     // Re‑build the token grid based on the current checkbox state
@@ -423,8 +321,9 @@ export async function renderDictionaryExercise(mainEl, exerciseMeta, uiLang, exe
     mainEl.appendChild(tokenGrid);    // 4️⃣ Token grid
 
     // -----------------------------------------------------------------
-    // 11️⃣ Build the speech controller **inside** the player panel.
+    // 10️⃣ Build the speech controller **inside** the player panel.
     // -----------------------------------------------------------------
+
     speechCtrl = createSpeechController(speechPanel, {
         getAvailableLanguages: () => SUPPORTED_LANGS,
         defaultLang: uiLang,
@@ -438,56 +337,19 @@ export async function renderDictionaryExercise(mainEl, exerciseMeta, uiLang, exe
         translationElements: transEls
     });
 
-    /* -------------------------------------------------------------
-       12️⃣ Select a voice that matches the *exercise* language.
-            If none is found, inform the user.
-       ------------------------------------------------------------- */
-
-    const voiceForExercise = findVoiceForLang(srcLang);
-
-    if (voiceForExercise) {
-        // Update the voice selector UI
-        const voiceSelect = speechCtrl.getVoiceSelect();
-        const option = Array.from(voiceSelect.options).find(o => o.value === voiceForExercise);
-        if (option) {
-            voiceSelect.value = option.value;
-            // Fire a change event so the controller updates its internal state
-            voiceSelect.dispatchEvent(new Event('change'));
-
-            // -------------------------------------------------------------
-            // ②  Auditory confirmation for the *automatic* voice change
-            // -------------------------------------------------------------
-            // Re‑use the same locale string the controller uses.
-
-            const uiLang = getStoredLang();
-            const locale = getLocale(uiLang);
-            const msg = locale.statusVoiceChange || "Voice changed";
-            // Speak the message with the newly selected voice.
-            speakText(msg, voiceForExercise).catch(() => {/* ignore errors */ });
-        }
-        // Persist the choice for future sessions
-        setStoredVoice(voiceForExercise);
-    } else {
-        // No matching voice – show a gentle notice.
-        // Using a simple alert keeps the implementation minimal.
-        // You can replace this with a nicer modal if you wish.
-        alert(
-            `The TTS voice for language "${srcLang}" is not available in this browser. ` +
-            `The app will still work, but you may want to follow the instructions ` +
-            `in the Help page to install the appropriate voice.`
-        );
-    }
-
-    /* -----------------------------------------------------------------
-       13️⃣ Initial render of the grid.
-       ----------------------------------------------------------------- */
+    // -----------------------------------------------------------------
+    // 12️⃣ Initial render of the grid.
+    // -----------------------------------------------------------------
     rebuildTokenGrid();
 }
 
-// -----------------------------------------------------------------
-// Wrapper used by the router.
-// -----------------------------------------------------------------
-export async function initDictionaryPage(lang, id, exerciseLang) {
+/**
+ * Wrapper used by the router.
+ *
+ * @param {string} lang – UI language (e.g. "en")
+ * @param {string} id   – exercise id ("01")
+ */
+export async function initDictionaryPage(lang, id) {
     // -----------------------------------------------------------------
     // 1️⃣ Pull the exercise metadata from the global EXERCISES array
     // -----------------------------------------------------------------
@@ -500,6 +362,12 @@ export async function initDictionaryPage(lang, id, exerciseLang) {
         return;
     }
 
+    // -------------------------------------------------------------
+    // NEW – Ensure the voice for the exercise language exists
+    // -------------------------------------------------------------
+    const exerciseLang = meta.language || UI_LANG;   // language field from exercises.json
+    //   await ensureVoiceForExercise(exerciseLang, UI_LANG, true); // speak confirmation
+    await ensureVoiceForExercise(exerciseLang, lang, true); // speak confirmation
     // -----------------------------------------------------------------
     // 2️⃣ Render the shared header (toolbar + nav) and obtain <main>
     // -----------------------------------------------------------------
@@ -508,6 +376,5 @@ export async function initDictionaryPage(lang, id, exerciseLang) {
     // -----------------------------------------------------------------
     // 3️⃣ Render the dictionary UI inside that <main>
     // -----------------------------------------------------------------
-    // Pass the detected exercise language (or fallback to UI language)
-    await renderDictionaryExercise(mainEl, meta, lang, exerciseLang);
+    await renderDictionaryExercise(mainEl, meta, lang);
 }

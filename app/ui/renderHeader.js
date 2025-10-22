@@ -2,7 +2,6 @@
 // ---------------------------------------------------------------
 // Shared header used by Home, Help and every exercise page.
 // ---------------------------------------------------------------
-
 import { renderToolbar } from './toolbar.js';
 import { renderMenu } from './menu.js';
 import { applyDirection } from '../utils/rtl.js';
@@ -11,20 +10,6 @@ import { SUPPORTED_LANGS, FALLBACK_LANG, LANGUAGE_LABELS } from '../data/locales
 import { populateFontSelect } from './fontSelect.js';
 // NEW – central speech controller
 import { createSpeechController } from "../utils/speechController.js";
-
-import { getStoredVoice, setStoredVoice } from '../utils/storage.js';
-import { findVoiceForLang } from '../utils/speech.js';
-
-// ---------------------------------------------------------------
-// Load the shared stylesheet that contains all extracted CSS classes.
-// ---------------------------------------------------------------
-function loadSharedStylesheet() {
-    const link = document.createElement('link');
-    link.rel = 'stylesheet';
-    link.href = '/app/ui/common.css';   // adjust if you use a BASE_URL
-    link.type = 'text/css';
-    document.head.appendChild(link);
-}
 
 /**
  * Creates the static page skeleton:
@@ -48,26 +33,6 @@ export async function renderHeader(lang) {
     applyDirection(lang);
 
     // -----------------------------------------------------------------
-    // 2️⃣ Ensure a suitable voice is stored (fallback to UI language)
-    // -----------------------------------------------------------------
-    // If the user already has a voice saved, keep it. Otherwise try to
-    // auto‑detect a voice that matches the UI language.
-    const storedVoice = getStoredVoice();
-    const voiceExists = (() => {
-        if (!('speechSynthesis' in window)) return false;
-        const all = speechSynthesis.getVoices();
-        return all.some(v => v.name === storedVoice);
-    })();
-
-    if (!voiceExists) {
-        const autoVoice = findVoiceForLang(lang);
-        if (autoVoice) setStoredVoice(autoVoice);
-        // If no voice matches the UI language we simply keep the default
-        // (the speech controller will fall back to the first available voice).
-    }
-
-
-    // -----------------------------------------------------------------
     // 2️⃣ Build the static skeleton (toolbar, static nav, empty <main>)
     // -----------------------------------------------------------------
     document.body.innerHTML = `
@@ -75,11 +40,6 @@ export async function renderHeader(lang) {
         <nav class="menu-nav"></nav>
         <main id="main" class="main"></main>
     `;
-
-    // -----------------------------------------------------------------
-    // 2️⃣ Load the shared stylesheet (once per page load)
-    // -----------------------------------------------------------------
-    loadSharedStylesheet();
 
     // -----------------------------------------------------------------
     // 3️⃣ Render the toolbar (top‑of‑page)
@@ -94,25 +54,14 @@ export async function renderHeader(lang) {
     // ---- Language selector -------------------------------------------------
     const langSelect = document.createElement('select');
     langSelect.id = 'langSelect';
-    langSelect.classList.add('nav-select');
-    langSelect.setAttribute('aria-label', 'Interface language selector');
-
-    /*
-        langSelect.innerHTML = SUPPORTED_LANGS.map(code => {
-            const selected = code === getStoredLang() ? 'selected' : '';
-            const label = LANGUAGE_LABELS[code] || code.toUpperCase();
-            return `<option value="${code}" ${selected}>${label}</option>`;
-        }).join('');
-    */
-    // Build the language <option> elements programmatically (avoids innerHTML)
-    SUPPORTED_LANGS.forEach(code => {
-        const option = document.createElement('option');
-        option.value = code;
-        option.textContent = LANGUAGE_LABELS[code] || code.toUpperCase();
-        if (code === getStoredLang()) option.selected = true;
-        langSelect.appendChild(option);
-    });
-
+    langSelect.style.width = '100%';
+    langSelect.style.fontSize = '0.85rem';
+    langSelect.style.margin = '0';
+    langSelect.innerHTML = SUPPORTED_LANGS.map(code => {
+        const selected = code === getStoredLang() ? 'selected' : '';
+        const label = LANGUAGE_LABELS[code] || code.toUpperCase();
+        return `<option value="${code}" ${selected}>${label}</option>`;
+    }).join('');
 
     langSelect.onchange = ev => {
         const newLang = ev.target.value;
@@ -147,7 +96,9 @@ export async function renderHeader(lang) {
     // ---- Font selector ----------------------------------------------------
     const fontSelect = document.createElement('select');
     fontSelect.id = 'fontSelect';
-    fontSelect.classList.add('nav-select');
+    fontSelect.style.width = '100%';
+    fontSelect.style.fontSize = '0.85rem';
+    fontSelect.style.margin = '0';
     // The actual options will be filled later by `renderMenu` (it knows the catalog).
     nav.appendChild(fontSelect);
     populateFontSelect(fontSelect);

@@ -1,80 +1,102 @@
-App files uploaded.
+The other main refactor from yesterday that needs reinstating:
 
-Can you do a review and optimization or improvements?
+On loading an exercise:
+1. read the exercise language from the exercises.json
+2. If the browser doe not have the voice 
+for the exercise, pop up a message to the user to follow the 
+steps in Help to install the voice and redirect to the help page.
 
-I am using VSCode and it is problematic with diff patches.  Please generate find/replace code
+Or if the voice exists, set it to be the current voice and speak out 
+a message voice set for the exercise.
 
-The CSS code is inline in the HTML header and in app.CSS and defined inline by JavaScript.
-Can you comment out (not delete) and optimize the CSS code 
-with the preference for the minimum CSS in the HTML header
-and the minimum CSS  defined inline by JavaScript
-and the rest defined in app.CSS
-
-Can you generate the code for the High (must‑do before next release)?
-
-I am using VSCode and it is problematic with diff patches.  Please generate plain code to cut & paste
+The general case for any voice change should be a spoken message,
+voice changed to ( and the name of the voice ).
 
 
-
-
-
-  For the Medium (quality & performance)	
-
-  1. Extract repeated inline styles into CSS classes.
-
-Please generate plain code to cut & paste
-
-  2. Move speechPanel markup into a <template>.
-  3. Add lazy‑loading to images in booksPanel.
-  4. Introduce a simple i18n key‑audit script.
-  5. Guard all localStorage accesses with environment checks.
+------------------------
 
 
 
+​
+Logic for the multiple choice tests again
+1. drop down list for user to select the question language
+- didn't do this? !!!
+2. drop down list for user to select the answer languages
+- didn't do this? !!!!
+3. loop through each element of the question array and display the question
+(speak out the text)
+- didn't do this? !!!!!!
+4. display 4 random answer language elements from the answer array
+(speak out the answer words as they are displayed)
+- didn't do this?!!!!! (words are from a mix of languages1111)
+5. all words in question and answer have a click event to speak out the text
+- didn't do this!!!!!
+6. allow the user to try a click, speak ou the text,
+highlight the selected text for 2 seconds, update the score and move to the next question
 
+This feels is randomized failure.
 
-Low (nice‑to‑have)	
-1. Add ARIA roles/labels to toolbar buttons and form controls.
-2. Implement a small focus‑management helper after navigation.
-3. Write unit tests for router pattern compilation.
-4. Add a timeout wrapper around fetch in loadJSON.
-5. Provide a fallback spinner for voice list population.
+A drop down list that freezes after the first selection fr the first language
+second language is a long list and the selection is ignored with 
+the answer randomized with different languages.
 
+Random start button has appeared
 
-One limitation is the default voice setting.  
-Ideally,the voice selection should be updated at the time of selecting an exercise.
-The exercises.json file has a "language" property defining the language for the exercise
-and the App should load a voice for the same language.
-If the voice is not available in the browser, a message should pop up to inform the
-user that whilst the App will function but they should follow the instructions in the help 
-and install the exercise voice.
-The voice choice should also be persisted in local storage and set at App startup.
+etc.
 
-3 b) Update the call from the router
+Your response seems to be based on searches closest to the requirements.
 
-File: app/router/routes.js – modify the exerciseDetailHandler block that loads a dictionary exercise.
-
-if (meta.details && meta.details.type === "dictionary") {
-    const { initDictionaryPage } = await import("./dictionaryExercise.js");
-    // Pass the exercise's language (meta.language) so the UI can pick a voice.
-    await initDictionaryPage(lang, id, meta.language);
-    return;
-}
-
-I think you mean app/ui/routes for the above.
-
-Can you outline a new multiple choice exercise to be integrated.
-The idea is the user typically learn a new language using the dataset for the dictionary exercises.
-THe multiple choice exercise would be generalised to select any 2 languages from the same json data set
-displaying the text from one language and 4 randomly selected text entries from the second language
-only one of which is correct.
-Feedback would be highlighting correct / incorrect answers.  
-Clicking any word would speak it out
-An overall score
-Each Dictionary exercise card entry would then have a link to Test Yourself that would loadup the 
-multiple choice exercise
-
-Before generating any code, advice on approach and finalising a design would be nice.
+Please find a popular multiple choice code base that is for two languages
+and uses sound feedback and keeps a score.
 
 
 
+✅	Action	What you’ll get
+1️⃣ Fix the language selectors	Ensure the question‑language dropdown actually changes the language used for the prompt, and that the answer‑languages multiselect is respected when building the four answer options.	
+2️⃣ Keep answers in a single language	Generate the four answer buttons only from the languages the user selected (no mixing of unrelated languages).	
+3️⃣ Eliminate the “btn is undefined” crash	Guarantee that the four answer buttons always exist and are correctly indexed, so the click handler never accesses an undefined element.	
+4️⃣ Preserve the existing SPA flow	All changes stay inside the current files (multipleChoiceExercise.js, routes.js, router.js, menu.js, etc.) – no new standalone pages or extra HTML files.	
+5️⃣ Add score handling & 2‑second highlight	Highlight the chosen answer for 2 s, then evaluate, update the “Correct / Total” score, and enable the Next button.	
+6️⃣ Provide a minimal, copy‑paste patch	A concise diff (just the lines that need to be changed/added) that you can apply directly to your repo.	
+7️⃣ Test‑ready verification steps	Instructions on how to restart the dev server, clear the cache, and confirm the fix works (network tab checks, UI behavior).	
+8️⃣ Ongoing support	If after applying the patch something still misbehaves, I can walk you through the next debugging step without introducing new features.
+
+
+Attempt 2: (18:10)
+Selected Question and Answer languages
+CLicked start
+Selected an Answer triggers Sound feedback 
+but incorrectly displays feedback message: Paused 
+Then all buttons become inactive
+ANd finally the browser give up with the message:
+Script terminated by timeout at:
+renderQuestion@http://127.0.0.1:5500/app/ui/multipleChoiceExercise.js:271:16
+initMultipleChoicePage/<@http://127.0.0.1:5500/app/ui/multipleChoiceExercise.js:336:9
+EventListener.handleEvent*initMultipleChoicePage@http://127.0.0.1:5500/app/ui/multipleChoiceExercise.js:335:13
+async*testExerciseHandler@http://127.0.0.1:5500/app/ui/routes.js:171:11
+async*resolve@http://127.0.0.1:5500/app/routerClass.js:66:20
+navigate@http://127.0.0.1:5500/app/routerClass.js:53:14
+renderMenu/</testBtn.onclick@http://127.0.0.1:5500/app/ui/menu.js:290:35
+EventHandlerNonNull*renderMenu/<@http://127.0.0.1:5500/app/ui/menu.js:288:17
+renderMenu@http://127.0.0.1:5500/app/ui/menu.js:262:10
+async*homeHandler@http://127.0.0.1:5500/app/ui/routes.js:48:11
+async*resolve@http://127.0.0.1:5500/app/routerClass.js:66:20
+navigate@http://127.0.0.1:5500/app/routerClass.js:53:14
+homeHandler@http://127.0.0.1:5500/app/ui/routes.js:33:23
+resolve@http://127.0.0.1:5500/app/routerClass.js:66:20
+@http://127.0.0.1:5500/app/bootstrap.js:66:16
+async*@http://127.0.0.1:5500/app/bootstrap.js:71:3
+multipleChoiceExercise.js:271:16
+
+
+
+
+For final testing:
+
+1. After Start test
+Set low opacity to inactive controls
+2. Play and Paused are misleading, 
+it seems Play is when there is a correct answer and Paused for incorrect 
+in which case display correct and incorrect
+3. Given there is a Next button now, the 2 second is redundant.
+stop any delay

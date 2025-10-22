@@ -2,9 +2,8 @@
 // ---------------------------------------------------------------
 // Central router configuration
 // ---------------------------------------------------------------
-import { BASE_URL } from '../config.js';
+
 import Router from "../routerClass.js";
-import { getStoredLang } from '../utils/storage.js';
 
 import {
     homeHandler,
@@ -12,14 +11,27 @@ import {
     exerciseDetailHandler,
     helpHandler,
     booksHandler,
-    notFoundHandler
+    notFoundHandler,
+    testExerciseHandler          // <-- import the test handler
 } from "../ui/routes.js";
 
 export const router = new Router([
     { path: "/", handler: homeHandler },
     { path: "/:lang", handler: homeHandler },
 
+    // -------------------------------------------------
+    // 1️⃣  Exercises list (same as before)
+    // -------------------------------------------------
     { path: "/:lang/exercises", handler: exercisesHandler },
+
+    // -------------------------------------------------
+    // 2️⃣  **Test‑yourself** route – must come BEFORE the generic detail route
+    // -------------------------------------------------
+    { path: "/:lang/exercises/:id/test", handler: testExerciseHandler },
+
+    // -------------------------------------------------
+    // 3️⃣  Single‑exercise detail (dictionary, etc.)
+    // -------------------------------------------------
     { path: "/:lang/exercises/:id", handler: exerciseDetailHandler },
 
     { path: "/:lang/help", handler: helpHandler },
@@ -32,7 +44,6 @@ export const router = new Router([
     // -----------------------------------------------------------------
     // Optional‑language shortcut – redirects to the stored UI language
     // -----------------------------------------------------------------
-    /*
     {
         path: "/books/:pubId/:pubLang",
         handler: ({ pubId, pubLang }) => {
@@ -40,18 +51,6 @@ export const router = new Router([
             const { getStoredLang } = require('../utils/storage.js');
             const lang = getStoredLang();
             // Replace the URL (replaceState) so the back button feels natural
-            window.router.navigate(`/${lang}/books/${pubId}/${pubLang}`, true);
-        }
-    },
-*/
-    {
-        path: "/books/:pubId/:pubLang",
-        handler: async ({ pubId, pubLang }) => {
-            // Pull the language the user currently has stored (now via ES‑module import) 
-            const lang = getStoredLang();
-            // 
-            // Replace the URL (replaceState) so the back button feels natural 
-            //           window.router.navigate('/${lang}/books/${pubId}/${pubLang}', true);
             window.router.navigate(`/${lang}/books/${pubId}/${pubLang}`, true);
         }
     },

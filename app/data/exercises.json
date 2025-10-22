@@ -8,6 +8,9 @@
         "details": {
             "type": "dictionary"
         },
+        "activities": [
+            "multipleChoice"
+        ],
         "title": {
             "en": "Thai Consonants, Vowels & Diphthongs",
             "th": "พยัญชนะ, สระ และสระผสมของภาษาไทย",
@@ -34,6 +37,9 @@
         "details": {
             "type": "dictionary"
         },
+        "activities": [
+            "multipleChoice"
+        ],
         "title": {
             "en": "Mana Mani",
             "th": "มานามานิ",
@@ -64,6 +70,9 @@
         "details": {
             "type": "dictionary"
         },
+        "activities": [
+            "multipleChoice"
+        ],
         "title": {
             "en": "An intermediate test example based on sentences",
             "th": "ตัวอย่างการทดสอบระดับกลางที่อิงจากประโยค",
@@ -92,6 +101,9 @@
         "details": {
             "type": "dictionary"
         },
+        "activities": [
+            "multipleChoice"
+        ],
         "title": {
             "en": "A poem by Khalil Jibran",
             "th": "บทกวีโดย Khalil Jibran",
@@ -107,6 +119,24 @@
             "ja": "上級者向けの詩",
             "zh": "适合高级水平的诗歌",
             "ar": "شعر للمستوى المتقدم"
+        }
+    },
+    {
+        "id": "test01",
+        "folder": "data/exercises/thai",
+        "file": "thai_test_data.json",
+        "language": "th",
+        "level": "basic",
+        "details": {
+            "type": "dictionary"
+        },
+        "title": {
+            "en": "Thai Test Data",
+            "th": "ข้อมูลทดสอบภาษาไทย"
+        },
+        "summary": {
+            "en": "Small dataset for testing dictionary and multiple‑choice features.",
+            "th": "ชุดข้อมูลเล็กสำหรับทดสอบฟังก์ชันพจนานุกรมและแบบเลือกตอบ"
         }
     }
 ]

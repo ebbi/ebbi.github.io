@@ -4,7 +4,7 @@
 // Renders the “Books & Blogs” <details> panel that lives on the
 // home page (and also on the deep‑link route).
 // ---------------------------------------------------------------
-import { BASE_URL } from '../config.js';
+
 import { loadJSON } from "../utils/fetch.js";
 import { getLocale } from "../data/locales.js";
 
@@ -23,8 +23,7 @@ export async function renderBooksPanel(container, uiLang, prePubId = null, preLa
     // -----------------------------------------------------------------
     // 0️⃣ Load the static JSON catalogue
     // -----------------------------------------------------------------
-    //   const data = await loadJSON("/app/data/books.json");
-    const data = await loadJSON(`${BASE_URL}/app/data/books.json`);
+    const data = await loadJSON("/app/data/books.json");
     const pubs = data.publications || [];
 
     // -----------------------------------------------------------------
@@ -32,7 +31,7 @@ export async function renderBooksPanel(container, uiLang, prePubId = null, preLa
     // -----------------------------------------------------------------
     const details = document.createElement("details");
     details.open = true;                     // expanded by default
-    details.classList.add('books-details');
+    details.style.margin = "0.5rem 1rem";
 
     const summary = document.createElement("summary");
     summary.textContent = locale.booksAndBlogs || "Books & Blogs";
@@ -44,8 +43,9 @@ export async function renderBooksPanel(container, uiLang, prePubId = null, preLa
     const searchInput = document.createElement("input");
     searchInput.type = "search";
     searchInput.placeholder = locale.searchPlaceholder || "Search…";
-    searchInput.classList.add('nav-select');   // reuse the generic selector style
-    searchInput.style.maxWidth = "20rem";      // keep max‑width constraint
+    searchInput.style.width = "100%";
+    searchInput.style.maxWidth = "20rem";
+    searchInput.style.margin = "0.5rem 0";
     details.appendChild(searchInput);
 
     // -----------------------------------------------------------------
@@ -53,8 +53,9 @@ export async function renderBooksPanel(container, uiLang, prePubId = null, preLa
     // -----------------------------------------------------------------
     const pubSelect = document.createElement("select");
     pubSelect.id = "pubSelect";
-    pubSelect.classList.add('nav-select');
+    pubSelect.style.width = "100%";
     pubSelect.style.maxWidth = "20rem";
+    pubSelect.style.margin = "0.5rem 0";
 
     const pubPlaceholder = document.createElement("option");
     pubPlaceholder.value = "";
@@ -75,8 +76,9 @@ export async function renderBooksPanel(container, uiLang, prePubId = null, preLa
     // -----------------------------------------------------------------
     const langSelect = document.createElement("select");
     langSelect.id = "langSelect";
-    langSelect.classList.add('nav-select');
+    langSelect.style.width = "100%";
     langSelect.style.maxWidth = "20rem";
+    langSelect.style.margin = "0.5rem 0";
 
     const langPlaceholder = document.createElement("option");
     langPlaceholder.value = "";
@@ -90,7 +92,10 @@ export async function renderBooksPanel(container, uiLang, prePubId = null, preLa
     // -----------------------------------------------------------------
     const cardsGrid = document.createElement("div");
     cardsGrid.className = "books-cards-grid";
-    cardsGrid.classList.add('books-grid');
+    cardsGrid.style.display = "grid";
+    cardsGrid.style.gridTemplateColumns = "1fr";
+    cardsGrid.style.gap = "1rem";
+    cardsGrid.style.marginTop = "1rem";
 
     // responsive breakpoints (mobile‑first)
     const style = document.createElement("style");
@@ -179,55 +184,9 @@ export async function renderBooksPanel(container, uiLang, prePubId = null, preLa
 
             // ---- media (image) ----
             if (entry.media && entry.media.image) {
-                const img = document.createElement('img');
-
-                // 1️⃣  Use native lazy‑loading when the browser supports it.
-                //     The attribute is ignored by browsers that don’t understand it,
-                //     so we can safely add it everywhere.
-                img.loading = 'lazy';
-
-                // 2️⃣  Set a low‑resolution placeholder (optional but improves perceived speed).
-                //     You can replace the placeholder URL with a real tiny‑blur image if you have one.
-
-
-                // Tiny 1×1 transparent GIF – replace with your own low‑res thumb if you have one
-                const placeholder = 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==';
-                img.src = placeholder;               // placeholder first
-                img.dataset.src = entry.media.image; // store the real URL
-
-                // In the IntersectionObserver callback (or when native lazy‑load kicks in),
-                // assign the real src:
-                if (!('loading' in HTMLImageElement.prototype)) {
-                    const observer = new IntersectionObserver((entries, obs) => {
-                        entries.forEach(entryObs => {
-                            if (entryObs.isIntersecting) {
-                                const targetImg = entryObs.target;
-                                targetImg.src = targetImg.dataset.src; // swap in real image
-                                obs.unobserve(targetImg);
-                            }
-                        });
-                    });
-                    observer.observe(img);
-                }
-
-                img.alt = entry.title[lang] || entry.title.en || '';
-
-                // 3️⃣  Fallback for browsers that *don’t* support `loading="lazy"`.
-                //     Older Safari versions ignore the attribute, so we use IntersectionObserver.
-                if (!('loading' in HTMLImageElement.prototype)) {
-                    // Defer loading until the image scrolls into view.
-                    const observer = new IntersectionObserver((entries, obs) => {
-                        entries.forEach(entryObs => {
-                            if (entryObs.isIntersecting) {
-                                // Swap the placeholder (if any) with the real src.
-                                // Here we already set src, so nothing else is needed.
-                                obs.unobserve(entryObs.target);
-                            }
-                        });
-                    });
-                    observer.observe(img);
-                }
-
+                const img = document.createElement("img");
+                img.src = entry.media.image;
+                img.alt = (entry.title[lang] || entry.title.en || "");
                 card.appendChild(img);
             }
 

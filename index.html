@@ -277,10 +277,7 @@
     <!-- ==============================================================
          ① Load DOMPurify (no integrity hash – safest for now)
          ============================================================== -->
-    <!--script src="https://cdn.jsdelivr.net/npm/dompurify@2.5.0/dist/purify.min.js"></script-->
-    <script src="https://cdn.jsdelivr.net/npm/dompurify@2.5.0/dist/purify.min.js"
-        integrity="sha384-0/+1qs7Z100zS2gwfVvR9uty4Bj+3r1MHGlX6fyzLRlD5mWCgFo3xSC4OK1qbLVW"
-        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/dompurify@2.5.0/dist/purify.min.js"></script>
 
     <!-- ==== KEEP YOUR APP BOOTSTRAP AFTER DOMPurify ==== -->
     <script type="module">
@@ -294,8 +291,6 @@
     <!-- The SPA will inject everything into <body> -->
     <!-- ABSOLUTE path – the leading slash prevents the “/en/app/main.js” problem -->
     <script type="module" src="/app/bootstrap.js"></script>
-
-
 </body>
 
 </html>

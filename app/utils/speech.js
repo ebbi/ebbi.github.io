@@ -12,19 +12,9 @@ export function populateVoiceList(selectEl, SUPPORTED_LANGS) {
         return;
     }
 
-    // -------------------------------------------------------------
-    // 1️⃣  Insert a tiny spinner next to the <select> while we wait
-    // -------------------------------------------------------------
-    const spinner = document.createElement('div');
-    spinner.className = 'voice-spinner';
-    spinner.setAttribute('aria-live', 'polite');
-    spinner.textContent = 'Loading voices…';
-    // Insert the spinner *after* the select element
-    selectEl.parentNode.insertBefore(spinner, selectEl.nextSibling);
-
-    // -------------------------------------------------------------
-    // 2️⃣  Function that actually fills the <select>
-    // -------------------------------------------------------------
+    // The list of voices may be empty the first time this runs.
+    // We attach a listener that re‑fills the list when the browser
+    // finishes loading its voice database.
     function fill() {
         const allVoices = speechSynthesis.getVoices();
 
@@ -53,18 +43,8 @@ export function populateVoiceList(selectEl, SUPPORTED_LANGS) {
         if (selectEl.options.length && !selectEl.value) {
             selectEl.selectedIndex = 0;
         }
-
-        // ---------------------------------------------------------
-        // 3️⃣  Hide/remove the spinner – we have the data now.
-        // ---------------------------------------------------------
-        if (spinner && spinner.parentNode) {
-            spinner.parentNode.removeChild(spinner);
-        }
     }
 
-    // -------------------------------------------------------------
-    // 4️⃣  Listen for the asynchronous “voiceschanged” event.
-    // -------------------------------------------------------------
     speechSynthesis.addEventListener('voiceschanged', fill);
     fill();   // initial attempt (may be empty, will be refreshed later)
 }
@@ -121,18 +101,4 @@ export function speakText(text, voiceName) {
         // -----------------------------------------------------------------
         speechSynthesis.speak(utter);
     });
-}
-
-/**
- * Find the first SpeechSynthesis voice whose language starts with the given
- * ISO‑639 two‑letter code (e.g. "en", "th", "ja").
- *
- * @param {string} lang - two‑letter language code (lower‑case)
- * @returns {string|null} - the voice name, or null if none matches
- */
-export function findVoiceForLang(lang) {
-    if (!('speechSynthesis' in window)) return null;
-    const voices = speechSynthesis.getVoices();
-    const match = voices.find(v => v.lang.slice(0, 2).toLowerCase() === lang);
-    return match ? match.name : null;
 }
