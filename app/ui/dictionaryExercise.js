@@ -14,7 +14,6 @@ import {
 import { createSpeechController } from "../utils/speechController.js";
 import { ensureVoiceForExercise } from '../utils/voiceHelper.js';
 
-
 /* -----------------------------------------------------------------
    GLOBAL UI state – only the arrays that the controller needs.
    ----------------------------------------------------------------- */
@@ -363,11 +362,12 @@ export async function initDictionaryPage(lang, id) {
     }
 
     // -------------------------------------------------------------
-    // NEW – Ensure the voice for the exercise language exists
+    // 3️⃣  Ensure the voice for the exercise language exists
     // -------------------------------------------------------------
-    const exerciseLang = meta.language || UI_LANG;   // language field from exercises.json
-    //   await ensureVoiceForExercise(exerciseLang, UI_LANG, true); // speak confirmation
+    const exerciseLang = meta.language || lang;   // language field from exercises.json
     await ensureVoiceForExercise(exerciseLang, lang, true); // speak confirmation
+    
+    
     // -----------------------------------------------------------------
     // 2️⃣ Render the shared header (toolbar + nav) and obtain <main>
     // -----------------------------------------------------------------
