@@ -120,12 +120,15 @@ export function createSpeechController(container, {
     statusEl.style.fontSize = "0.8rem";
     statusEl.style.border = "1px solid var(--border-surface, #ddd)";
     statusEl.style.borderRadius = "4px";
-    statusEl.style.padding = "0.7rem 0.15rem";
+   // statusEl.style.padding = "0.7rem 0.15rem";
     statusEl.style.background = "var(--bg-surface, #fff)";
     statusVoiceRow.appendChild(statusEl);
 
     const voiceSelect = document.createElement("select");
     voiceSelect.id = "voiceSelect";
+    voiceSelect.style.width = "100%";
+    voiceSelect.style.maxWidth = "100%";
+    voiceSelect.style.boxSizing = "border-box";
 
     const defaultOption = document.createElement("option");
     defaultOption.value = locale.selectExerciseVoice; // No value for the default message
@@ -142,8 +145,8 @@ export function createSpeechController(container, {
     statusVoiceRow.appendChild(voiceSelect);
 
     // -----------------------------------------------------------------
-       speechPanel.appendChild(controlsRow);   // Row 1
-        speechPanel.appendChild(statusVoiceRow); // Row 2
+    speechPanel.appendChild(controlsRow);   // Row 1
+    speechPanel.appendChild(statusVoiceRow); // Row 2
 
     // -----------------------------------------------------------------
     // Helper – enable/disable the whole panel (opacity + disabled attrs)
@@ -219,7 +222,7 @@ export function createSpeechController(container, {
                 // Speak only if its Speak‑checkbox is ON
                 if (srcLang && state.speakMap[srcLang]) {
                     highlightCurrent();
-                    await speakText(srcSpan.textContent, state.voiceName);
+                    await speakText(srcSpan.textContent, state.voiceName, srcLang);
                     await wait(state.delaySec);
                 }
                 // Move to the first translation (whether spoken or not)
@@ -243,7 +246,7 @@ export function createSpeechController(container, {
                 highlightCurrent();
                 const txt = span.textContent.trim();
                 if (txt) {
-                    await speakText(txt, state.voiceName);
+                    await speakText(txt, state.voiceName, lang);
                     await wait(state.delaySec);
                 }
                 state.transIdx += 1;

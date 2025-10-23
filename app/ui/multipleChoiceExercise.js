@@ -349,16 +349,19 @@ export async function initMultipleChoicePage(uiLang, exId) {
     }
 
     // -------------------------------------------------------------
+    // 1️⃣1️⃣  Back button – return to the normal dictionary view
+    // -------------------------------------------------------------
+    backBtn.addEventListener('click', () => {
+        window.router.navigate(`/${uiLang}/exercises/${exId}`, true);
+    });
+
+
+    // -------------------------------------------------------------
     // 🔟  Next button – load a new random question
     // -------------------------------------------------------------
     nextBtn.addEventListener('click', () => {
         renderQuestion();
     });
 
-    // -------------------------------------------------------------
-    // 1️⃣1️⃣  Back button – return to the normal dictionary view
-    // -------------------------------------------------------------
-    backBtn.addEventListener('click', () => {
-        window.router.navigate(`/${uiLang}/exercises/${exId}`, true);
-    });
+
 }

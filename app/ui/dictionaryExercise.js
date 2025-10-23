@@ -221,6 +221,8 @@ export async function renderDictionaryExercise(mainEl, exerciseMeta, uiLang) {
     // 8️⃣ Create the **player control panel** (outside the <details>)
     // -----------------------------------------------------------------
     const speechPanel = document.createElement("div");
+    speechPanel.style.padding = "0.5rem";
+    speechPanel.style.border = "1px solid var(--border-surface)";
     speechPanel.id = "speechPanel";
 
     // -----------------------------------------------------------------
@@ -244,6 +246,11 @@ export async function renderDictionaryExercise(mainEl, exerciseMeta, uiLang) {
             displayMap[l] = dCb ? dCb.checked : false;
             speakMap[l] = sCb ? sCb.checked : false;
         });
+
+        if (!Object.values(displayMap).some(Boolean)) {
+            displayMap[0] = true;
+            speakMap[0] = true;
+        }
 
         // 2️⃣ Walk through the JSON data and create a column for each token.
         data.forEach(entry => {
@@ -325,12 +332,13 @@ export async function renderDictionaryExercise(mainEl, exerciseMeta, uiLang) {
 
     speechCtrl = createSpeechController(speechPanel, {
         getAvailableLanguages: () => SUPPORTED_LANGS,
-        defaultLang: uiLang,
+        // Use the language defined in the exercise meta (falls back to UI lang)
+        defaultLang: exerciseLang,
         onVoiceChange: (newVoice) => {
             console.log("[Speech] voice changed →", newVoice);
             try {
                 localStorage.setItem("local_storage_tts_voice", newVoice);
-            } catch (_) { }
+            } catch (error) { }
         },
         tokenElements: tokenEls,
         translationElements: transEls
@@ -366,8 +374,8 @@ export async function initDictionaryPage(lang, id) {
     // -------------------------------------------------------------
     const exerciseLang = meta.language || lang;   // language field from exercises.json
     await ensureVoiceForExercise(exerciseLang, lang, true); // speak confirmation
-    
-    
+
+
     // -----------------------------------------------------------------
     // 2️⃣ Render the shared header (toolbar + nav) and obtain <main>
     // -----------------------------------------------------------------
