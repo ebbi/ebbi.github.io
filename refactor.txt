@@ -1,20 +1,2 @@
-Review the /utils/voiceHelper code and update it to ensure:
-1. the app/data/exercises.json language property is set for the all exercises
-2. The default fallback language and voice should be set to Thai for any exercise
-3. The user should hears the voice lang settings (in low volume) 
- the value of voice and language
-4. When a language voice is not available, 
- an internationalized text message pop up to direct the user to the help page 
+Generate the CSS code:
 
-
-a. the correct language
-
- It also shows a modal + redirects to Help
-// when the required voice is missing.
-
-Review the /utils/voiceHelper 
- to check if both language and voice is set when the user 
-
-
-Please generate plain code to find / replace, 
-and do not generate diff patches which are error prone in my development environment.

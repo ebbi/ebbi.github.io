@@ -80,7 +80,7 @@ export async function initMultipleChoicePage(uiLang, exId) {
     const title = document.createElement('h4');
     title.textContent = (meta.title && meta.title[uiLang]) || meta.title?.en || '';
     title.style.textAlign = 'center';
-    title.style.marginBottom = '1rem';
+    title.style.marginBottom = '0.5rem';
     container.appendChild(title);
 
     // -----------------------------------------------------------------
@@ -89,14 +89,13 @@ export async function initMultipleChoicePage(uiLang, exId) {
     const controlsDiv = document.createElement('div');
     controlsDiv.style.display = 'flex';
     controlsDiv.style.flexDirection = 'column';
-    controlsDiv.style.gap = '0.5rem';
-    controlsDiv.style.marginBottom = '1rem';
+    controlsDiv.style.gap = '0.25rem';
+    controlsDiv.style.margin = '0.5rem';
     container.appendChild(controlsDiv);
 
     // ---- Question language selector (single) ----
     const qLangLabel = document.createElement('label');
-    qLangLabel.textContent = getLocale(uiLang).questionLanguage || 'Question language';
-    qLangLabel.style.marginRight = '0.5rem';
+    qLangLabel.textContent = getLocale(uiLang).questionLanguage || 'Question language ';
     const qLangSelect = document.createElement('select');
     allLangCodes.forEach(l => {
         const opt = document.createElement('option');
@@ -104,15 +103,14 @@ export async function initMultipleChoicePage(uiLang, exId) {
         opt.textContent = (getLocale(uiLang).languageLabels?.[l] ?? l.toUpperCase());
         qLangSelect.appendChild(opt);
     });
-    const qLangWrapper = document.createElement('div');
+    const qLangWrapper = document.createElement('span');
     qLangWrapper.appendChild(qLangLabel);
     qLangWrapper.appendChild(qLangSelect);
     controlsDiv.appendChild(qLangWrapper);
 
     // ---- Answer language selector (single) ----
     const aLangLabel = document.createElement('label');
-    aLangLabel.textContent = getLocale(uiLang).answerLanguage || 'Answer language';
-    aLangLabel.style.marginRight = '0.5rem';
+    aLangLabel.textContent = getLocale(uiLang).answerLanguage || 'Answer language ';
     const aLangSelect = document.createElement('select');   // single‑select
     allLangCodes.forEach(l => {
         const opt = document.createElement('option');
@@ -120,7 +118,8 @@ export async function initMultipleChoicePage(uiLang, exId) {
         opt.textContent = (getLocale(uiLang).languageLabels?.[l] ?? l.toUpperCase());
         aLangSelect.appendChild(opt);
     });
-    const aLangWrapper = document.createElement('div');
+    const aLangWrapper = document.createElement('span');
+    aLangWrapper.style.margin = "0.25rem 0 1.5rem 0.85rem"
     aLangWrapper.appendChild(aLangLabel);
     aLangWrapper.appendChild(aLangSelect);
     controlsDiv.appendChild(aLangWrapper);
@@ -136,6 +135,7 @@ export async function initMultipleChoicePage(uiLang, exId) {
     // -----------------------------------------------------------------
     const promptEl = document.createElement('div');
     promptEl.className = 'mc-prompt';
+    promptEl.style.margin = '1rem';
     promptEl.style.fontSize = '1.4rem';
     promptEl.style.fontWeight = '600';
     promptEl.style.marginBottom = '1rem';
@@ -150,7 +150,7 @@ export async function initMultipleChoicePage(uiLang, exId) {
     ul.setAttribute('role', 'listbox');
     ul.style.listStyle = 'none';
     ul.style.padding = '0';
-    ul.style.margin = '0';
+    ul.style.margin = '0 0.25rem';
     ul.style.display = 'flex';
     ul.style.flexDirection = 'column';
     ul.style.gap = '0.5rem';
@@ -176,7 +176,7 @@ export async function initMultipleChoicePage(uiLang, exId) {
     const feedbackEl = document.createElement('div');
     feedbackEl.className = 'mc-feedback';
     feedbackEl.setAttribute('aria-live', 'assertive');
-    feedbackEl.style.marginTop = '0.5rem';
+    feedbackEl.style.margin = '0.5rem';
     feedbackEl.style.fontStyle = 'italic';
     container.appendChild(feedbackEl);
 
@@ -186,26 +186,26 @@ export async function initMultipleChoicePage(uiLang, exId) {
     const scoreEl = document.createElement('div');
     scoreEl.className = 'mc-score';
     scoreEl.innerHTML = `Score: <span data-correct>0</span>/<span data-total>0</span>`;
-    scoreEl.style.marginTop = '0.5rem';
+    scoreEl.style.margin = '0.5rem';
     container.appendChild(scoreEl);
 
     // -----------------------------------------------------------------
     // 5️⃣ G  Navigation buttons (Next & Back)
     // -----------------------------------------------------------------
     const navDiv = document.createElement('div');
-    navDiv.style.marginTop = '1rem';
+    navDiv.style.margin = '1rem 0.5rem';
     navDiv.style.display = 'flex';
     navDiv.style.justifyContent = 'space-between';
     container.appendChild(navDiv);
+
+    const backBtn = document.createElement('button');
+    backBtn.textContent = getLocale(uiLang)['← Back to exercise'] || '← Back to exercise';
+    navDiv.appendChild(backBtn);
 
     const nextBtn = document.createElement('button');
     nextBtn.textContent = getLocale(uiLang).nextExercise || 'Next';
     nextBtn.disabled = true;               // enabled after an answer
     navDiv.appendChild(nextBtn);
-
-    const backBtn = document.createElement('button');
-    backBtn.textContent = getLocale(uiLang)['← Back to exercise'] || '← Back to exercise';
-    navDiv.appendChild(backBtn);
 
     // -------------------------------------------------------------
     // 6️⃣  State & score helpers
@@ -349,19 +349,17 @@ export async function initMultipleChoicePage(uiLang, exId) {
     }
 
     // -------------------------------------------------------------
-    // 1️⃣1️⃣  Back button – return to the normal dictionary view
-    // -------------------------------------------------------------
-    backBtn.addEventListener('click', () => {
-        window.router.navigate(`/${uiLang}/exercises/${exId}`, true);
-    });
-
-
-    // -------------------------------------------------------------
     // 🔟  Next button – load a new random question
     // -------------------------------------------------------------
     nextBtn.addEventListener('click', () => {
         renderQuestion();
     });
 
+    // -------------------------------------------------------------
+    // 1️⃣1️⃣  Back button – return to the normal dictionary view
+    // -------------------------------------------------------------
+    backBtn.addEventListener('click', () => {
+        window.router.navigate(`/${uiLang}/exercises/${exId}`, true);
+    });
 
 }
