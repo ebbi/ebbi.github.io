@@ -266,18 +266,20 @@ export async function renderMenu(container, UI_LANG) {
 
             const title = document.createElement('h3');
             title.textContent =
-                (ex.title && ex.title[UI_LANG]) || ex.title.en || 'Untitled';
+                (ex.title && ex.title[UI_LANG]) || ex.title?.en || 'Untitled';
             li.appendChild(title);
 
             const summary = document.createElement('p');
             summary.className = 'summary';
             summary.textContent =
-                (ex.summary && ex.summary[UI_LANG]) || ex.summary.en || '';
+                (ex.summary && ex.summary[UI_LANG]) || ex.summary?.en || '';
             li.appendChild(summary);
 
             // ---------------------------------------------------------
-            // **Test Yourself** button – only for exercises that list
-            // the "multipleChoice" activity.
+            // “Test Yourself” button – only for exercises that list the
+            // “multipleChoice” activity.  We must stop the click event
+            // from bubbling up to the <ul> listener that would otherwise
+            // navigate to the *detail* page.
             // ---------------------------------------------------------
             if (Array.isArray(ex.activities) && ex.activities.includes('multipleChoice')) {
                 const testBtn = document.createElement('button');
@@ -285,7 +287,13 @@ export async function renderMenu(container, UI_LANG) {
                 testBtn.textContent = label;
                 testBtn.className = 'test-yourself-btn';
                 testBtn.style.marginTop = '0.5rem';
-                testBtn.onclick = () => {
+                // NOTE: the event object is passed so we can stop propagation
+                testBtn.onclick = (ev) => {
+                    // Prevent the click from reaching the <ul> listener.
+                    ev.stopPropagation();
+                    // Optional – cancel any default button behaviour (no‑op in most browsers)
+                    ev.preventDefault?.();
+
                     const url = `/${UI_LANG}/exercises/${ex.id}/test`;
                     window.router.navigate(url, true);
                 };
@@ -316,15 +324,8 @@ export async function renderMenu(container, UI_LANG) {
     // -------------------------------------------------------------
     // 3️⃣  Assemble everything inside the supplied <main> container
     // -------------------------------------------------------------
-    // Clear any previous content (e.g. when navigating back to home)
-    container.innerHTML = '';
-
-    // ①  Practice‑languages panel (contains the level filter,
-    //     exercise selector and the list of exercise cards)
-    container.appendChild(practiceDetails);
-
-    // ②  Books & Blogs panel – rendered *after* the practice panel
-    //     The panel creates its own <details> wrapper, so we just invoke it.
-    //     It will append the resulting <details> directly to `container`.
-    renderBooksPanel(container, UI_LANG);
+    container.innerHTML = '';               // wipe any previous content
+    container.appendChild(practiceDetails); // Practice languages panel (now contains the list)
+    // Now append the Books & Blogs panel *below* the practice panel
+    renderBooksPanel(container, UI_LANG);   // will create its own <details> and append it
 }

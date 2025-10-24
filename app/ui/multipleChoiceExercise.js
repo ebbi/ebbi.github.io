@@ -1,17 +1,7 @@
+// app/ui/multipleChoiceExercise.js
 // ---------------------------------------------------------------
-// Multiple‑Choice (“Test Yourself”) page
-// ---------------------------------------------------------------
-// Features:
-//
-// • Dropdown – question language (source)
-// • Dropdown – answer language (single, all four options come from this language)
-// • Random question from the exercise JSON
-// • Four answer buttons (one correct, three distractors) – all from the selected answer language
-// • Click‑to‑speak for prompt and answers
-// • Immediate evaluation (no 2‑second delay) with green/red highlighting
-// • Score display (Correct / Total)
-// • Next button (loads a new random question)
-// • Back button (returns to the normal dictionary view)
+// Multiple‑Choice (“Test Yourself”) page – fully styled and
+// internationalised.
 // ---------------------------------------------------------------
 
 import { loadJSON } from '../utils/fetch.js';
@@ -32,13 +22,13 @@ import { ensureVoiceForExercise } from '../utils/voiceHelper.js';
  */
 export async function initMultipleChoicePage(uiLang, exId) {
     // -------------------------------------------------------------
-    // 1️⃣  Normalise language (persist it, set direction)
+    // 1️⃣ Normalise language (persist it, set direction)
     // -------------------------------------------------------------
     if (!uiLang) uiLang = getStoredLang();
     applyDirection(uiLang);
 
     // -------------------------------------------------------------
-    // 2️⃣  Load exercise metadata (from the global EXERCISES array)
+    // 2️⃣ Load exercise metadata (from the global EXERCISES array)
     // -------------------------------------------------------------
     const { EXERCISES } = await import('../data/exercises.js');
     const meta = EXERCISES.find(e => e.id === exId);
@@ -48,120 +38,196 @@ export async function initMultipleChoicePage(uiLang, exId) {
     }
 
     // -------------------------------------------------------------
-    // NEW – Ensure the voice for the exercise language exists
+    // 3️⃣ Ensure the voice for the exercise language exists
     // -------------------------------------------------------------
-    const exerciseLang = meta.language || uiLang;   // language field from exercises.json
-    await ensureVoiceForExercise(exerciseLang, uiLang, true); // speak confirmation
+    const exerciseLang = meta.language || uiLang;   // fallback to UI language
+    try {
+        await ensureVoiceForExercise(exerciseLang, uiLang, true);
+    } catch (e) {
+        console.warn('[MC] Voice setup failed:', e);
+        // Continue – the quiz will still work, just without TTS.
+    }
 
     // -------------------------------------------------------------
-    // 3️⃣  Load the raw JSON rows for this exercise
+    // 4️⃣ Render the shared header (toolbar + nav) and obtain <main>
     // -------------------------------------------------------------
-    const jsonPath = `/app/${meta.folder}/${meta.file}`;
-    const rows = await loadJSON(jsonPath);   // array of objects
+    const main = await renderHeader(uiLang);
+    main.innerHTML = '';                     // clear any previous UI
 
     // -------------------------------------------------------------
-    // 4️⃣  Determine all language codes present in the first row
+    // 5️⃣ Page wrapper – margin, border, background (mirrors home page)
+    // -------------------------------------------------------------
+    const pageWrapper = document.createElement('div');
+    pageWrapper.style.margin = '1rem';
+    pageWrapper.style.padding = '1rem';
+    pageWrapper.style.border = '1px solid var(--border-surface, #ddd)';
+    pageWrapper.style.borderRadius = '.5rem';
+    pageWrapper.style.background = 'var(--bg-surface, #fff)';
+    pageWrapper.style.position = 'relative'; // for loading overlay
+    main.appendChild(pageWrapper);
+
+    // -------------------------------------------------------------
+    // 6️⃣ Loading overlay (shown while JSON is fetched)
+    // -------------------------------------------------------------
+    const overlay = document.createElement('div');
+    overlay.textContent = getLocale(uiLang).loading || 'Loading…';
+    overlay.style.cssText = `
+        position:absolute; inset:0; display:flex;
+        align-items:center; justify-content:center;
+        background:rgba(255,255,255,0.8);
+        font-size:1.2rem; z-index:10;
+    `;
+    pageWrapper.appendChild(overlay);
+
+    // -------------------------------------------------------------
+    // 7️⃣ Load the raw JSON rows for this exercise
+    // -------------------------------------------------------------
+    let rows;
+    try {
+        const jsonPath = `/app/${meta.folder}/${meta.file}`;
+        rows = await loadJSON(jsonPath);   // array of objects
+    } catch (e) {
+        pageWrapper.innerHTML = `<p class="error">⚠️ Failed to load exercise data.</p>`;
+        console.error('loadJSON error:', e);
+        return;
+    } finally {
+        pageWrapper.removeChild(overlay);
+    }
+
+    // -------------------------------------------------------------
+    // 8️⃣ Determine all language codes present in the first row
     // -------------------------------------------------------------
     const firstRow = rows[0] || {};
     const allLangCodes = Object.keys(firstRow).filter(
         k => !['id', 'category', 'tokens'].includes(k)
     );
 
-    // -------------------------------------------------------------
-    // 5️⃣  Build the page skeleton (toolbar + static nav + empty <main>)
-    // -------------------------------------------------------------
-    const main = await renderHeader(uiLang);
-    const container = document.getElementById('main');
-    container.innerHTML = '';   // clear any previous content
+    if (!allLangCodes.length) {
+        pageWrapper.innerHTML = `<p class="error">${getLocale(uiLang).noLanguages ||
+            'No language columns found.'
+            }</p>`;
+        return;
+    }
 
-    // -----------------------------------------------------------------
-    // 5️⃣ A  Title
-    // -----------------------------------------------------------------
+    const locale = getLocale(uiLang);
+
+    // -------------------------------------------------------------
+    // 9️⃣ Build the UI (title, selectors, prompt, answer list, etc.)
+    // -------------------------------------------------------------
+
+    // ----- Title -------------------------------------------------
     const title = document.createElement('h4');
-    title.textContent = (meta.title && meta.title[uiLang]) || meta.title?.en || '';
+    title.textContent = (meta.title && meta.title[uiLang]) ||
+        meta.title?.en || 'Multiple Choice';
     title.style.textAlign = 'center';
-    title.style.marginBottom = '0.5rem';
-    container.appendChild(title);
+    title.style.marginBottom = '1rem';
+    pageWrapper.appendChild(title);
 
-    // -----------------------------------------------------------------
-    // 5️⃣ B  Controls – language selectors + Start button
-    // -----------------------------------------------------------------
+    // ----- Controls (language selectors + Start) ---------------
     const controlsDiv = document.createElement('div');
     controlsDiv.style.display = 'flex';
     controlsDiv.style.flexDirection = 'column';
-    controlsDiv.style.gap = '0.25rem';
-    controlsDiv.style.margin = '0.5rem';
-    container.appendChild(controlsDiv);
+    controlsDiv.style.gap = '0.5rem';
+    controlsDiv.style.marginBottom = '1rem';
+    pageWrapper.appendChild(controlsDiv);
 
-    // ---- Question language selector (single) ----
+    // ---- Question language selector (inline) ------------------
     const qLangLabel = document.createElement('label');
-    qLangLabel.textContent = getLocale(uiLang).questionLanguage || 'Question language ';
+    qLangLabel.textContent = locale.questionLanguage || 'Question language';
+    qLangLabel.style.marginRight = '0.5rem';
+    qLangLabel.style.display = 'inline-block';
+    qLangLabel.style.verticalAlign = 'middle';
+
     const qLangSelect = document.createElement('select');
+    qLangSelect.style.display = 'inline-block';
+    qLangSelect.style.verticalAlign = 'middle';
+    qLangSelect.style.maxWidth = '10ch';
+    qLangSelect.style.width = 'auto';
     allLangCodes.forEach(l => {
         const opt = document.createElement('option');
         opt.value = l;
-        opt.textContent = (getLocale(uiLang).languageLabels?.[l] ?? l.toUpperCase());
+        opt.textContent = (locale.languageLabels?.[l] ?? l.toUpperCase());
         qLangSelect.appendChild(opt);
     });
-    const qLangWrapper = document.createElement('span');
+
+    const qLangWrapper = document.createElement('div');
+    qLangWrapper.style.display = 'flex';
+    qLangWrapper.style.alignItems = 'center';
+    qLangWrapper.style.gap = '0.25rem';
     qLangWrapper.appendChild(qLangLabel);
     qLangWrapper.appendChild(qLangSelect);
     controlsDiv.appendChild(qLangWrapper);
 
-    // ---- Answer language selector (single) ----
+    // ---- Answer language selector (inline) -------------------
     const aLangLabel = document.createElement('label');
-    aLangLabel.textContent = getLocale(uiLang).answerLanguage || 'Answer language ';
-    const aLangSelect = document.createElement('select');   // single‑select
+    aLangLabel.textContent = locale.answerLanguage || 'Answer language';
+    aLangLabel.style.marginRight = '0.5rem';
+    aLangLabel.style.display = 'inline-block';
+    aLangLabel.style.verticalAlign = 'middle';
+
+    const aLangSelect = document.createElement('select');
+    aLangSelect.style.display = 'inline-block';
+    aLangSelect.style.verticalAlign = 'middle';
+    aLangSelect.style.maxWidth = '10ch';
+    aLangSelect.style.width = 'auto';
     allLangCodes.forEach(l => {
         const opt = document.createElement('option');
         opt.value = l;
-        opt.textContent = (getLocale(uiLang).languageLabels?.[l] ?? l.toUpperCase());
+        opt.textContent = (locale.languageLabels?.[l] ?? l.toUpperCase());
         aLangSelect.appendChild(opt);
     });
-    const aLangWrapper = document.createElement('span');
-    aLangWrapper.style.margin = "0.25rem 0 1.5rem 0.85rem"
+
+    const aLangWrapper = document.createElement('div');
+    aLangWrapper.style.display = 'flex';
+    aLangWrapper.style.alignItems = 'center';
+    aLangWrapper.style.gap = '0.25rem';
     aLangWrapper.appendChild(aLangLabel);
     aLangWrapper.appendChild(aLangSelect);
     controlsDiv.appendChild(aLangWrapper);
 
-    // ---- Start button ----
+    // ---- Start button -----------------------------------------
     const startBtn = document.createElement('button');
-    startBtn.textContent = getLocale(uiLang).startTest || 'Start test';
+    startBtn.textContent = locale.startTest || 'Start test';
     startBtn.disabled = true;               // enabled only when both selectors have values
     controlsDiv.appendChild(startBtn);
 
-    // -----------------------------------------------------------------
-    // 5️⃣ C  Prompt (question word) – will be filled later
-    // -----------------------------------------------------------------
-    const promptEl = document.createElement('div');
-    promptEl.className = 'mc-prompt';
-    promptEl.style.margin = '1rem';
-    promptEl.style.fontSize = '1.4rem';
-    promptEl.style.fontWeight = '600';
-    promptEl.style.marginBottom = '1rem';
-    promptEl.setAttribute('aria-live', 'polite');
-    container.appendChild(promptEl);
+    // ----- Prompt (centered, with speaker icon) ---------------
+    const promptWrapper = document.createElement('div');
+    promptWrapper.style.display = 'flex';
+    promptWrapper.style.alignItems = 'center';
+    promptWrapper.style.justifyContent = 'center';
+    promptWrapper.style.marginBottom = '1rem';
+    promptWrapper.style.fontSize = '1.4rem';
+    promptWrapper.style.fontWeight = '600';
+    promptWrapper.style.textAlign = 'center';
+    promptWrapper.setAttribute('aria-live', 'polite');
 
-    // -----------------------------------------------------------------
-    // 5️⃣ D  Answer options (four buttons)
-    // -----------------------------------------------------------------
+    const promptIcon = document.createElement('span');
+    promptIcon.textContent = '🔊';
+    promptIcon.style.marginRight = '0.4rem';
+    promptIcon.style.cursor = 'pointer';
+    promptIcon.title = locale.playPrompt || 'Play prompt';
+    promptWrapper.appendChild(promptIcon);
+
+    const promptEl = document.createElement('span');
+    promptWrapper.appendChild(promptEl);
+    pageWrapper.appendChild(promptWrapper);
+
+    // ----- Answer list -----------------------------------------
     const ul = document.createElement('ul');
-    ul.className = 'mc-options';
-    ul.setAttribute('role', 'listbox');
     ul.style.listStyle = 'none';
     ul.style.padding = '0';
-    ul.style.margin = '0 0.25rem';
+    ul.style.margin = '0';
     ul.style.display = 'flex';
     ul.style.flexDirection = 'column';
     ul.style.gap = '0.5rem';
-    container.appendChild(ul);
+    pageWrapper.appendChild(ul);
 
     // create four empty <li><button> slots – we’ll fill them later
     for (let i = 0; i < 4; i++) {
         const li = document.createElement('li');
         const btn = document.createElement('button');
         btn.type = 'button';
-        btn.className = 'mc-option';
         btn.style.width = '100%';
         btn.style.padding = '0.5rem';
         btn.style.fontSize = '1rem';
@@ -170,45 +236,50 @@ export async function initMultipleChoicePage(uiLang, exId) {
         ul.appendChild(li);
     }
 
-    // -----------------------------------------------------------------
-    // 5️⃣ E  Feedback line
-    // -----------------------------------------------------------------
+    // ----- Feedback (correct / incorrect) ----------------------
     const feedbackEl = document.createElement('div');
-    feedbackEl.className = 'mc-feedback';
-    feedbackEl.setAttribute('aria-live', 'assertive');
-    feedbackEl.style.margin = '0.5rem';
     feedbackEl.style.fontStyle = 'italic';
-    container.appendChild(feedbackEl);
+    feedbackEl.style.marginBottom = '0.5rem';
+    feedbackEl.setAttribute('aria-live', 'assertive');
 
-    // -----------------------------------------------------------------
-    // 5️⃣ F  Score display
-    // -----------------------------------------------------------------
+    // ----- Score & Reset button (single row) -------------------
+    const bottomInfoRow = document.createElement('div');
+    bottomInfoRow.style.display = 'flex';
+    bottomInfoRow.style.justifyContent = 'space-between';
+    bottomInfoRow.style.alignItems = 'center';
+    bottomInfoRow.style.marginTop = '1rem';
+    bottomInfoRow.style.gap = '1rem';
+
     const scoreEl = document.createElement('div');
-    scoreEl.className = 'mc-score';
-    scoreEl.innerHTML = `Score: <span data-correct>0</span>/<span data-total>0</span>`;
-    scoreEl.style.margin = '0.5rem';
-    container.appendChild(scoreEl);
+    scoreEl.innerHTML = `<span data-correct>0</span>/<span data-total>0</span>`;
 
-    // -----------------------------------------------------------------
-    // 5️⃣ G  Navigation buttons (Next & Back)
-    // -----------------------------------------------------------------
+    const resetScoreBtn = document.createElement('button');
+    resetScoreBtn.textContent = locale.resetScore || 'Reset score';
+
+    bottomInfoRow.appendChild(feedbackEl);   // left side (feedback)
+    bottomInfoRow.appendChild(scoreEl);      // centre (score)
+    bottomInfoRow.appendChild(resetScoreBtn); // right side (reset)
+    pageWrapper.appendChild(bottomInfoRow);
+
+    // ----- Navigation (Back ←  Next →) -------------------------
     const navDiv = document.createElement('div');
-    navDiv.style.margin = '1rem 0.5rem';
     navDiv.style.display = 'flex';
     navDiv.style.justifyContent = 'space-between';
-    container.appendChild(navDiv);
+    navDiv.style.alignItems = 'center';
+    navDiv.style.marginTop = '1rem';
+    pageWrapper.appendChild(navDiv);
 
     const backBtn = document.createElement('button');
-    backBtn.textContent = getLocale(uiLang)['← Back to exercise'] || '← Back to exercise';
-    navDiv.appendChild(backBtn);
+    backBtn.textContent = locale.backToExercise || '← Back to exercise';
+    navDiv.appendChild(backBtn);   // left side
 
     const nextBtn = document.createElement('button');
-    nextBtn.textContent = getLocale(uiLang).nextExercise || 'Next';
-    nextBtn.disabled = true;               // enabled after an answer
-    navDiv.appendChild(nextBtn);
+    nextBtn.textContent = locale.nextExercise || 'Next';
+    nextBtn.disabled = true;       // enabled after an answer
+    navDiv.appendChild(nextBtn);   // right side
 
     // -------------------------------------------------------------
-    // 6️⃣  State & score helpers
+    // 10️⃣ State handling
     // -------------------------------------------------------------
     const state = { correct: 0, total: 0 };
 
@@ -218,21 +289,18 @@ export async function initMultipleChoicePage(uiLang, exId) {
     }
 
     // -------------------------------------------------------------
-    // 7️⃣  Enable Start button only when both selectors have values
+    // 11️⃣ Enable Start button only when both selectors have values
     // -------------------------------------------------------------
     function validateSelectors() {
-        const qLang = qLangSelect.value;
-        const aLang = aLangSelect.value;
-        startBtn.disabled = !(qLang && aLang);
+        startBtn.disabled = !(qLangSelect.value && aLangSelect.value);
     }
     qLangSelect.addEventListener('change', validateSelectors);
     aLangSelect.addEventListener('change', validateSelectors);
 
     // -------------------------------------------------------------
-    // 8️⃣  Start the quiz – lock selectors, dim them, and render first question
+    // 12️⃣ Start the quiz
     // -------------------------------------------------------------
     startBtn.addEventListener('click', () => {
-        // Dim the selectors to show they are frozen
         qLangSelect.disabled = true;
         aLangSelect.disabled = true;
         qLangSelect.style.opacity = '0.5';
@@ -242,7 +310,7 @@ export async function initMultipleChoicePage(uiLang, exId) {
     });
 
     // -------------------------------------------------------------
-    // 9️⃣  Render a single question (no 2‑second delay)
+    // 13️⃣ Render a single question (no delay)
     // -------------------------------------------------------------
     function renderQuestion() {
         // ---- Reset UI -------------------------------------------------
@@ -254,6 +322,7 @@ export async function initMultipleChoicePage(uiLang, exId) {
         feedbackEl.textContent = '';
         nextBtn.disabled = true;
 
+
         // ---- 1️⃣ Pick a random row -----------------------------------
         const row = rows[Math.floor(Math.random() * rows.length)];
 
@@ -261,44 +330,54 @@ export async function initMultipleChoicePage(uiLang, exId) {
         const qLang = qLangSelect.value;   // language for the prompt
         const aLang = aLangSelect.value;   // answer language (single)
 
-        // ---- 3️⃣ Prompt (spoken) ------------------------------------
-        const promptTxt = (row[qLang] && row[qLang][0]) || '';
+        // -------------------------------------------------------------
+        // 3️⃣ Prompt – pick a random index that is used for BOTH
+        //    the question language and the answer language.
+        // -------------------------------------------------------------
+        const srcTokens = row[qLang] || [];
+        if (!srcTokens.length) {
+            // No source tokens – show a placeholder and disable answers.
+            promptEl.textContent = locale.emptyPrompt || '(no prompt)';
+            ul.querySelectorAll('button').forEach(b => (b.disabled = true));
+            return;
+        }
+        const randIdx = Math.floor(Math.random() * srcTokens.length);
+        const promptTxt = srcTokens[randIdx] || '';
         promptEl.textContent = promptTxt;
         promptEl.style.cursor = 'pointer';
-        promptEl.title = getLocale(uiLang).playPrompt || 'Click to hear the word';
-        promptEl.onclick = () => speakText(promptTxt, getStoredVoice());
+        promptEl.title = getLocale(uiLang).playPrompt || 'Play prompt';
+        promptEl.onclick = () => {
+            speakText(promptTxt, getStoredVoice()).catch(console.warn);
+        };
 
-        // ---- 4️⃣ Build answer options (all from aLang) -------------
-        const tokens = row[aLang] || [];
+        // -----------------------------------------------------------------
+        // 4️⃣ Build answer options – all from the *answer* language column
+        // -----------------------------------------------------------------
+        let answerTokens = row[aLang] || [];
+        // If the answer column is empty, fall back to the source column.
+        if (!answerTokens.length) answerTokens = srcTokens;
 
-        // a) Choose a random index for the correct answer
-        const correctIdx = tokens.length
-            ? Math.floor(Math.random() * tokens.length)
-            : -1;
-        const correctTxt = correctIdx >= 0 ? tokens[correctIdx] : '';
+        // a) Correct answer – the token that sits at the SAME index
+        const correctTxt = answerTokens[randIdx] || '';
 
-        // b) Gather three distinct distractors from the SAME column
-        const usedIdx = new Set();
-        if (correctIdx >= 0) usedIdx.add(correctIdx);
+        // b) Three distinct distractors from the SAME column (but NOT the correct index)
+        const usedIdx = new Set([randIdx]);   // we already used the correct one
         const distractors = [];
         let attempts = 0;
         while (distractors.length < 3 && attempts < 10) {
             attempts++;
-            if (tokens.length === 0) break;
-            const idx = Math.floor(Math.random() * tokens.length);
+            const idx = Math.floor(Math.random() * answerTokens.length);
             if (usedIdx.has(idx)) continue;
-            const txt = tokens[idx];
+            const txt = answerTokens[idx];
             if (txt) {
                 distractors.push(txt);
                 usedIdx.add(idx);
             }
         }
-        // If still not enough, repeat the correct token
-        while (distractors.length < 3) {
-            distractors.push(correctTxt);
-        }
+        // If we still don’t have enough distractors (tiny column), repeat the correct answer.
+        while (distractors.length < 3) distractors.push(correctTxt);
 
-        // d) Shuffle the four options
+        // c) Shuffle the four options and render the buttons (unchanged)
         const options = [correctTxt, ...distractors];
         options.sort(() => Math.random() - 0.5);
 
@@ -306,26 +385,43 @@ export async function initMultipleChoicePage(uiLang, exId) {
         const btns = ul.querySelectorAll('button');
         options.forEach((opt, idx) => {
             const btn = btns[idx];
-            btn.textContent = opt;
+            btn.innerHTML = ''; // clear any previous content
+
+            // ----- speaker icon for each answer --------------------
+            const ansIcon = document.createElement('span');
+            ansIcon.textContent = '🔊';
+            ansIcon.style.marginRight = '0.4rem';
+            ansIcon.style.cursor = 'pointer';
+            ansIcon.title = locale.playAnswer || 'Play answer';
+            ansIcon.onclick = (e) => {
+                e.stopPropagation(); // prevent double‑trigger
+                speakText(opt, getStoredVoice(), aLang).catch(console.warn);
+            };
+
+            const ansText = document.createElement('span');
+            ansText.textContent = opt;
+
+            btn.appendChild(ansIcon);
+            btn.appendChild(ansText);
             btn.dataset.isCorrect = (opt === correctTxt).toString();
 
-            btn.onclick = async () => {
-                // Speak the chosen answer first
-                await speakText(opt, getStoredVoice());
+            // ARIA label for screen readers
+            btn.setAttribute('aria-label', opt);
 
-                // Immediate evaluation (no timeout)
+            btn.onclick = async () => {
+                // Speak the chosen answer (non‑blocking)
+                speakText(opt, getStoredVoice(), aLang).catch(console.warn);
+
                 const isCorrect = btn.dataset.isCorrect === 'true';
                 if (isCorrect) {
-                    // ✅ correct → green
                     btn.style.background = '#4caf50';
                     btn.style.color = '#fff';
-                    feedbackEl.textContent = 'Correct!';
+                    feedbackEl.textContent = locale.correctFeedback || 'Correct!';
                     state.correct++;
                 } else {
-                    // ❌ wrong → red
                     btn.style.background = '#ff5252';
                     btn.style.color = '#fff';
-                    feedbackEl.textContent = 'Incorrect.';
+                    feedbackEl.textContent = locale.incorrectFeedback || 'Incorrect.';
 
                     // also highlight the correct button in green
                     const correctBtn = Array.from(btns).find(b => b.dataset.isCorrect === 'true');
@@ -335,7 +431,6 @@ export async function initMultipleChoicePage(uiLang, exId) {
                     }
                 }
 
-                // Update score
                 state.total++;
                 updateScoreDisplay();
 
@@ -362,4 +457,17 @@ export async function initMultipleChoicePage(uiLang, exId) {
         window.router.navigate(`/${uiLang}/exercises/${exId}`, true);
     });
 
+    // -------------------------------------------------------------
+    // 1️⃣2️⃣  Reset Score button – clears counters and starts over
+    // -------------------------------------------------------------
+    resetScoreBtn.addEventListener('click', () => {
+        state.correct = 0;
+        state.total = 0;
+        updateScoreDisplay();
+        feedbackEl.textContent = '';
+        // If the quiz has already started, render a fresh question
+        if (!startBtn.disabled) {
+            renderQuestion();
+        }
+    });
 }

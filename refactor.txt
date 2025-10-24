@@ -1,2 +1,107 @@
-Generate the CSS code:
+
+
+Runtime bug after the last changes:
+
+http://127.0.0.1:5500/en
+Thai Test Data - Test Yourself 
+<- Back to exercise 
+Home
+Thai Test Data - Test Yourself 
+Loads Exercise instead of Test of test page
+
+Bug 2:
+Used Thai Test Data
+Question does not match the correct answer
+
+The version prior to todays changes is uploaded
+before--lumo--multipleChoiceExercise.js
+
+
+1️⃣ Delete the stray menu copy.js
+Done
+
+2️⃣ Verify the router imports the correct menu file
+
+Open app/router/router.js and check the import line near the top:
+
+import { renderMenu } from "./menu.js";   // <-- should point to menu.js
+
+!! app/router/router.js  does not access menu.js
+
+But
+app/ui/routes.js does and it is correct: import { renderMenu } from "./menu.js";  
+
+The routing was stable before todays changes to the multipleChoiceExercise
+I have reinstated the multipleChoiceExercise and its all fine
+
+So, the problem is entirely in the new multipleChoiceExercise 
+You have the old file uploaded, see:  before--lumo--multipleChoiceExercise.js
+
+
+
+Make sure “Use Regular Expression” (the .* icon) is turned on in the Find box.
+VS Code returns error for regular Expression and in this case blank.
+
+but it is clear the function renderQuestion() was to be replaced and done.
+
+The problem is isolated to the changes today in the multipleChoiceExercise.js
+as the previous file routing works.
+
+Checking the navigation links in th browser at each step is the following:
+
+Home button
+() => {
+  // Navigate to the root of the stored language (replaceState → no extra history entry)
+  window.router.navigate(`/${getStoredLang()}/`, true);
+}
+
+Test Yourself
+() => {
+  const url = `/${UI_LANG}/exercises/${ex.id}/test`;
+  window.router.navigate(url, true);
+}
+
+Back to exercise
+() => {
+  window.router.navigate(`/${uiLang}/exercises/${exId}`, true);
+}
+
+Home button
+homeBtn.onclick = () => {
+    // Navigate to the root of the stored language (replaceState → no extra history entry)
+    window.router.navigate(`/${getStoredLang()}/`, true);
+};
+
+Test Yourself
+() => {
+  const url = `/${UI_LANG}/exercises/${ex.id}/test`;
+  window.router.navigate(url, true);
+}
+
+
+Same problem.
+
+BUT, when I change the multipleChoiceExercise.js to 
+before--lumo--multipleChoiceExercise.js
+
+the routing loads the pages correctly.
+
+Do you have a logical explanation for that?
+
+
+Can we pickup the refactoring that has caused this runtime problem. To recap,
+
+1. After the App starts up. "Test Yourself" events load the correct multipleChoice exercise.
+  From the multipleChoice, Home icon loads the home page.  
+Any subsequent "Test Yourself" loads the exercise and not multipleChoice page.
+
+2. Rolling back with before--lumo--multipleChoiceExercise.js and the problem is resolved.
+
+3. You have generated the entire router.js and menu.js and tried to no avail
+
+( one solution that may be less time consuming is to start with the 
+before--lumo--multipleChoiceExercise.js effectively rolling back the changes 
+and carryout the few changes that were made again, each time testing the "Test Yourself" navigation )
+
+
 

@@ -61,9 +61,15 @@ import { applyDirection } from './utils/rtl.js';
         applyStoredFont();
 
         // -----------------------------------------------------------------
-        // 6️⃣ Finally resolve the current URL → first page view
+        // 6️⃣ Check for redirect path and resolve the appropriate URL
         // -----------------------------------------------------------------
-        router.resolve();   // triggers the appropriate route handler
+        const redirectPath = sessionStorage.getItem('redirect_path');
+        if (redirectPath) {
+            sessionStorage.removeItem('redirect_path');
+            router.navigate(redirectPath, true);  // replace current history entry
+        } else {
+            router.resolve();   // normal route resolution
+        }
     } catch (e) {
         console.error('❌ App initialization failed:', e);
         document.body.textContent = 'Failed to start the application – see console for details.';

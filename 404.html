@@ -1,19 +1,22 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html>
 
 <head>
     <meta charset="utf-8">
-    <title>Redirecting…</title>
-    <meta http-equiv="refresh" content="0; url=/">
+    <title>Redirecting...</title>
     <script>
-        const dest = '/' + location.pathname.replace(/^\/+/, '');
-        if (history.replaceState) history.replaceState(null, '', dest);
-        location.replace('/');
+        // Preserve the path when redirecting
+        const segment = window.location.pathname;
+        sessionStorage.setItem('redirect_path', segment);
+        window.location.href = '/';
     </script>
+    <noscript>
+        <meta http-equiv="refresh" content="0; url=/" />
+    </noscript>
 </head>
 
 <body>
-    <p>Redirecting…</p>
+    <p>Redirecting...</p>
 </body>
 
 </html>
