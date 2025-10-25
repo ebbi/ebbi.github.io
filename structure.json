@@ -1,111 +1,58 @@
-// Given this required example JSON data:
-
-
-
-
-
-
-
-[
-    {
-        "id": "c_middle",
-        "category": "middle‑class consonant",
-        "th": [
-            "ก",
-            "ข",
-            "ค",
-            "ฆ",
-            "ง"
-        ], 
-        "en": [
-            "k/g",
-            "kh",
-            "kh",
-            "kh",
-            "ng"
-        ],
-        "zh": [
-            "k/g",
-            "kh",
-            "kh",
-            "kh",
-            "ng"
-        ],
-        "fa": [
-            "k/g",
-            "kh",
-            "kh",
-            "kh",
-            "ng"
-        ],
-        "ar": [
-            "k/g",
-            "kh",
-            "kh",
-            "kh",
-            "ng"
-        ],
-        "ja": [
-            "k/g",
-            "kh",
-            "kh",
-            "kh",
-            "ng"
-        ],
-        "es": [
-            "k/g",
-            "kh",
-            "kh",
-            "kh",
-            "ng"
-        ],
-        "hi": [
-            "k/g",
-            "kh",
-            "kh",
-            "kh",
-            "ng"
-        ]
-    }
-]
-
-[
-    {
-        "th": [
-            "To be or not to be"
-        ],
-        "en": [
-            ""
-        ],
-        "fa": [
-            ""
-        ],
-        "ja": [
-            ""
-        ],
-        "zh": [
-            ""
-        ],
-        "ar": [
-            ""
-        ]
-    }
-]
-
 {
-    "en": "A poem by Khalil Jibran",
-    "th": "",
-    "fa": "",
-    "ja": "",
-    "zh": "",
-    "ar": ""
+    "id": "03",
+    "folder": "data/exercises/thai",
+    "file": "test_intermediate_sentences.json",
+    "language": "th",
+    "level": "intermediate",
+    "details": {
+        "type": "dictionary"
+    },
+    "activities": [
+        "multipleChoice"
+    ],
+    "title": {
+        "en": "An intermediate test example based on sentences",
+        "th": "ตัวอย่างการทดสอบระดับกลางที่อิงจากประโยค",
+        "fa": "یک مثال آزمایشی متوسط بر اساس جملات",
+        "ja": "文に基づく中間テストの例",
+        "zh": "基于句子的中级测试示例",
+        "ar": "مثال اختبار متوسط يعتمد على الجمل"
+    },
+    "summary": {
+        "en": "Play or click a word to hear it in your chosen languages",
+        "th": "เล่นหรือคลิกคำเพื่อฟังในภาษาที่คุณเลือก",
+        "es": "Reproduce o haz clic en una palabra para escucharla en los idiomas que elegiste",
+        "fa": "بازی کنید یا روی یک کلمه کلیک کنید تا آن را به زبان‌های انتخابی خود بشنوید",
+        "hi": "किसी शब्द को सुनने के लिए उसे खेलें या क्लिक करें, आपकी चुनी हुई भाषाओं में",
+        "ja": "選択した言語で聞くために単語を再生またはクリックしてください",
+        "zh": "播放或点击一个单词，以在您选择的语言中听到它",
+        "ar": "قم بتشغيل أو النقر على كلمة لسماعها بلغاتك المختارة"
+    }
 },
-"summary": {
-    "en": "Poetry for advance level",
-    "th": "",
-    "fa": "",
-    "ja": "",
-    "zh": "",
-    "ar": ""
+{
+    "id": "thai100",
+    "folder": "data/exercises/thai",
+    "file": "thai_100_sentences.json",
+    "language": "en",
+    "level": "basic",
+    "details": {
+        "type": "dictionary"
+    },
+    "activities": [
+        "multipleChoice"
+    ],
+    "title": {
+        "en": "Thai 100 most frequently used words",
+        "th": "100 คำที่ใช้บ่อยที่สุดในภาษาไทย",
+        "zh": "泰语最常用的 100 个词汇",
+        "ja": "タイ語で最も頻繁に使われる 100 語",
+        "fa": "۱۰۰ واژهٔ پرکاربرد زبان تایلندی"
+    },
+    "summary": {
+        "en": "Thai sentences constructed from the 100 most frequently used words",
+        "th": "ประโยคภาษาไทยที่สร้างจาก 100 คำที่ใช้บ่อยที่สุด",
+        "zh": "使用最常用的 100 个泰语词汇构造的句子",
+        "ja": "最も頻繁に使われる 100 語のタイ語単語から作られた文",
+        "fa": "جملات فارسی ساخته شده از ۱۰۰ واژهٔ پرکاربرد زبان تایلندی"
+    }
 }
-
