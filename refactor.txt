@@ -103,5 +103,172 @@ Any subsequent "Test Yourself" loads the exercise and not multipleChoice page.
 before--lumo--multipleChoiceExercise.js effectively rolling back the changes 
 and carryout the few changes that were made again, each time testing the "Test Yourself" navigation )
 
+The problem was the same as the the two json structures for numbers
+
+This is incorrect:
+
+[
+    {
+        "id": "num-1s",
+        "category": "Numbers 1s",
+        "en": [
+            "one",
+            "two",
+            "three",
+            "four",
+            "five",
+            "six",
+            "seven",
+            "eight",
+            "nine",
+            "ten"
+        ],
+        "th": [
+            "หนึ่ง",
+            "สอง",
+            "สาม",
+            "สี่",
+            "ห้า",
+            "หก",
+            "เจ็ด",
+            "แปด",
+            "เก้า",
+            "สิบ"
+        ],
+        "zh": [
+            "一",
+            "二",
+            "三",
+            "四",
+            "五",
+            "六",
+            "七",
+            "八",
+            "九",
+            "十"
+        ],
+        "ja": [
+
+            "一つ",
+            "二つ",
+            "三つ",
+            "四つ",
+            "五つ",
+            "六つ",
+            "七つ",
+            "八つ",
+            "九つ",
+            "十"
+        ],
+        "fa": [
+            "یک",
+            "دو",
+            "سه",
+            "چهار",
+            "پنج",
+            "شش",
+            "هفت",
+            "هشت",
+            "نه",
+            "ده"
+        ]
+    },
+    more category ...
+]
+
+and not this:
+
+[
+  {
+    "th": "ฉัน",
+    "en": "I / me"
+  },
+  {
+    "th": "ไป",
+    "en": "go / travel"
+  },
+  {
+    "th": "ตลาด",
+    "en": "market / bazaar"
+  },
+  ...
+]
+
+Can you provide a script (to run in VS Code)
+to group each language as it is in the first example.
+
+node group-by-language.js thai_100_sentence_raw.json ai_thai_grouped.json
+
+Can you please continue the fix from the last session. 
+
+The task is to generate the complete, ready‑to‑use JSON that groups every Thai‑English pair supplied into parallel language arrays (th, en, zh, ja, fa).
+The values in the arrays should be in their respective language, fa for Farsi, ja for Japanese, zh for Chinese.
+All five arrays should the same length and order, so the dictionary / multiple‑choice engine can safely use the same index for every language.
+
+
+The data set is now almost complete for final testing except one category 
+ that was corrupted and needs to be regenerated.
+ The task is to:
+ 1. loop through the following JSON "th" array and process each word by generating a grammatically correct Thai sentence and store the sentence in an array.
+ This step has produced an sentence array that has a corresponding sentence with the th word array and the same index.
+ In other words, th[0] has sentence[0] 
+ 2. Step one produces a new array of sentences.  Tokenize the sentence array into individual words.
+ 3. Use the new tokenized words array to generate the parallel language arrays (en, zh, ja, fa).
+ All five arrays should the same length and order, so the dictionary / multiple‑choice engine can safely use the same index for every language.
+
+Here is the "th" array JSON data:
+
+
+
+
+
+
+
+The output you are generating is correct but you are repeatedly stopping before completion of all the arrays for the language codes.
+You have had 5 attempts in the last hour and each time the output is incomplete and you hang part way through completing the conversion.
+Perhaps, you could generate each language code array separately and I will concatenate.
+Here is the JSON data to convert:
+
+You have stopped at this point:
+"fa": [
+    "مدرسه / آکادمی",
+    "باز کردن / شروع",
+    "فردا / روز بعد",
+    "معلم / استاد",
+
+This is was the sixth attempt that took more than an hour of failed attempts to complete the task.
+Please do not restart and hang again!!!!  Continue from this point to the end of the conversion output.
+
+
+---------------------
+
+Please stop, We spent much time yesterday with this mistake!!!!
+
+This out should be in th, en, zh, ja, fa languages.  You are outputting English for fa which should be Farsi 
+ and the same for zh which is Chinese and ja which is Japanese.
+
+ {
+  "id": "basic100",
+  "folder": "data/exercises/thai",
+  "file": "basic_100.json",
+  "language": "en",
+  "level": "basic",
+  "details": { "type": "dictionary" },
+  "activities": ["multipleChoice"],
+  "title": {
+    "en": "Thai 100 Most Common Words",
+    "th": "100 คำที่ใช้บ่อยที่สุดในภาษาไทย",
+    "zh": "泰语最常用的 100 个词汇",
+    "ja": "タイ語で最も頻繁に使われる 100 語",
+    "fa": "۱۰۰ واژهٔ پرکاربرد زبان تایلندی"
+  },
+  "summary": {
+    "en": "A mixed set of everyday Thai words with translations in five languages.",
+    "th": "ชุดคำศัพท์ประจำวันทั่วไปในภาษาไทย พร้อมแปลเป็น 5 ภาษา",
+    "zh": "包含日常泰语词汇的混合集合，提供五种语言翻译。",
+    "ja": "日常的なタイ語単語の混合セット、5言語で翻訳付き。",
+    "fa": "مجموعه‌ای ترکیبی از واژگان روزمره تایلندی با ترجمه به پنج زبان."
+  }
+}
 
 

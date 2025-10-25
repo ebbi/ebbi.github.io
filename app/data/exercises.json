@@ -28,33 +28,60 @@
             "ja": "タイ語の子音クラス、短母音・長母音、二重母音を練習する。"
         }
     },
- {
-    "id": "num01",
-    "folder": "data/exercises/thai",
-    "file": "ai_thai_test_numbers_1_and_10s.json",
-    "language": "en",
-    "level": "basic",
-    "details": {
-        "type": "dictionary"
+    {
+        "id": "num01",
+        "folder": "data/exercises/thai",
+        "file": "ai_thai_test_numbers_1_and_10s.json",
+        "language": "en",
+        "level": "basic",
+        "details": {
+            "type": "dictionary"
+        },
+        "activities": [
+            "multipleChoice"
+        ],
+        "title": {
+            "en": "Numbers 1‑10 & 10‑100",
+            "th": "เลข 1‑10 & 10‑100",
+            "zh": "数字 1‑10 与 10‑100",
+            "ja": "数字 1‑10 と 10‑100",
+            "fa": "اعداد ۱‑۱۰ و ۱۰‑۱۰۰"
+        },
+        "summary": {
+            "en": "Practice counting 1‑10 and 10‑100 in five languages.",
+            "th": "ฝึกนับ 1‑10 และ 10‑100 ในห้าภาษา",
+            "zh": "练习用五种语言数 1‑10 与 10‑100",
+            "ja": "5言語で 1‑10 と 10‑100 を練習",
+            "fa": "تمرین شمارش ۱‑۱۰ و ۱۰‑۱۰۰ به پنج زبان"
+        }
     },
-    "activities": [
-        "multipleChoice"
-    ],
-    "title": {
-        "en": "Numbers 1‑10 & 10‑100",
-        "th": "เลข 1‑10 & 10‑100",
-        "zh": "数字 1‑10 与 10‑100",
-        "ja": "数字 1‑10 と 10‑100",
-        "fa": "اعداد ۱‑۱۰ و ۱۰‑۱۰۰"
+    {
+        "id": "thai100",
+        "folder": "data/exercises/thai",
+        "file": "thai_words_100.json",
+        "language": "en",
+        "level": "basic",
+        "details": {
+            "type": "dictionary"
+        },
+        "activities": [
+            "multipleChoice"
+        ],
+        "title": {
+            "en": "Thai 100 most frequently used words",
+            "th": "100 คำที่ใช้บ่อยที่สุดในภาษาไทย",
+            "zh": "泰语最常用的 100 个词汇",
+            "ja": "タイ語で最も頻繁に使われる 100 語",
+            "fa": "۱۰۰ واژهٔ پرکاربرد زبان تایلندی"
+        },
+        "summary": {
+            "en": "Thai sentences constructed from the 100 most frequently used words",
+            "th": "ประโยคภาษาไทยที่สร้างจาก 100 คำที่ใช้บ่อยที่สุด",
+            "zh": "使用最常用的 100 个泰语词汇构造的句子",
+            "ja": "最も頻繁に使われる 100 語のタイ語単語から作られた文",
+            "fa": "جملات فارسی ساخته شده از ۱۰۰ واژهٔ پرکاربرد زبان تایلندی"
+        }
     },
-    "summary": {
-        "en": "Practice counting 1‑10 and 10‑100 in five languages.",
-        "th": "ฝึกนับ 1‑10 และ 10‑100 ในห้าภาษา",
-        "zh": "练习用五种语言数 1‑10 与 10‑100",
-        "ja": "5言語で 1‑10 と 10‑100 を練習",
-        "fa": "تمرین شمارش ۱‑۱۰ و ۱۰‑۱۰۰ به پنج زبان"
-    }
-},
     {
         "id": "02",
         "folder": "data/exercises/thai",
