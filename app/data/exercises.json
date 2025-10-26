@@ -31,7 +31,7 @@
     {
         "id": "02",
         "folder": "data/exercises/thai",
-        "file": "mana_mani.json",
+        "file": "thai_mana_mani.json",
         "language": "th",
         "level": "basic",
         "details": {
@@ -64,8 +64,8 @@
     {
         "id": "num01",
         "folder": "data/exercises/thai",
-        "file": "ai_thai_test_numbers_1_and_10s.json",
-        "language": "en",
+        "file": "thai_numbers_units_and_tens.json",
+        "language": "th",
         "level": "basic",
         "details": {
             "type": "dictionary"
@@ -74,24 +74,24 @@
             "multipleChoice"
         ],
         "title": {
-            "en": "Numbers 1‑10 & 10‑100",
-            "th": "เลข 1‑10 & 10‑100",
-            "zh": "数字 1‑10 与 10‑100",
-            "ja": "数字 1‑10 と 10‑100",
-            "fa": "اعداد ۱‑۱۰ و ۱۰‑۱۰۰"
+            "en": "Numbers: units and tens",
+            "th": "ตัวเลข: หน่วยและสิบ",
+            "zh": "数字：单位和十",
+            "ja": "数字：単位と十",
+            "fa": "اعداد: واحدها و ده‌ها"
         },
         "summary": {
-            "en": "Practice counting 1‑10 and 10‑100 in five languages.",
-            "th": "ฝึกนับ 1‑10 และ 10‑100 ในห้าภาษา",
-            "zh": "练习用五种语言数 1‑10 与 10‑100",
-            "ja": "5言語で 1‑10 と 10‑100 を練習",
-            "fa": "تمرین شمارش ۱‑۱۰ و ۱۰‑۱۰۰ به پنج زبان"
+            "en": "Practice pronouncing number units & tens",
+            "th": "ฝึกออกเสียงหน่วยและสิบ",
+            "zh": "练习发音数字单位和十",
+            "ja": "数字の単位と十を発音する練習",
+            "fa": "تمرین تلفظ واحدها و ده‌ها"
         }
     },
     {
         "id": "04",
         "folder": "data/exercises/thai",
-        "file": "test_advance_poem.json",
+        "file": "th_poem_kalil_jibran.json",
         "language": "th",
         "level": "advance",
         "details": {
@@ -101,7 +101,7 @@
             "multipleChoice"
         ],
         "title": {
-            "en": "A poem by Khalil Jibran",
+            "en": "Listen to a poem by Khalil Jibran",
             "th": "บทกวีโดย Khalil Jibran",
             "fa": "شعری از خلیل جبران",
             "ja": "カリール・ジブランによる詩",
@@ -109,12 +109,41 @@
             "ar": "قصيدة لخليل جبران"
         },
         "summary": {
-            "en": "Poetry for advance level",
+            "en": "Your children are not your children",
             "th": "บทกวีสำหรับระดับสูง",
             "fa": "شعر برای سطح پیشرفته",
             "ja": "上級者向けの詩",
             "zh": "适合高级水平的诗歌",
             "ar": "شعر للمستوى المتقدم"
+        }
+    },
+    {
+        "id": "th100",
+        "folder": "data/exercises/thai",
+        "file": "thai_100_sentences.json",
+        "language": "th",
+        "level": "basic",
+        "details": {
+            "type": "dictionary"
+        },
+        "activities": [
+            "multipleChoice"
+        ],
+        "title": {
+            "en": "Thai 100 most used words",
+            "th": "",
+            "fa": "",
+            "ja": "",
+            "zh": "",
+            "ar": ""
+        },
+        "summary": {
+            "en": "Sentences the have Thai 100 most used words.",
+            "th": "",
+            "fa": "",
+            "ja": "",
+            "zh": "",
+            "ar": ""
         }
     }
 ]

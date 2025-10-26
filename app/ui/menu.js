@@ -283,7 +283,7 @@ export async function renderMenu(container, UI_LANG) {
             // ---------------------------------------------------------
             if (Array.isArray(ex.activities) && ex.activities.includes('multipleChoice')) {
                 const testBtn = document.createElement('button');
-                const label = locale.activityMultipleChoice || 'Test Yourself';
+                const label = locale.testYourself || 'Test yourself';
                 testBtn.textContent = label;
                 testBtn.className = 'test-yourself-btn';
                 testBtn.style.marginTop = '0.5rem';

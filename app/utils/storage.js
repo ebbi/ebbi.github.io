@@ -2,7 +2,7 @@
 import { SUPPORTED_LANGS, FALLBACK_LANG } from '../data/locales.js';
 
 export const LS_KEYS = {
-    LANG: 'local_storage_lang',
+    LANG: 'local_storage_app_lang',
     FONT: 'local_storage_font',
     THEME: 'local_storage_theme',
     VOICE: 'local_storage_tts_voice'
