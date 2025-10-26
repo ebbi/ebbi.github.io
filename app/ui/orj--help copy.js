@@ -1,6 +1,6 @@
 // app/ui/help.js
 // ---------------------------------------------------------------
-// Render the Help page – FAQ style (fully i18n‑aware).
+// Render the Help page – FAQ style (now fully i18n‑aware).
 // ---------------------------------------------------------------
 
 import { getLocale } from '../data/locales.js';
@@ -50,7 +50,7 @@ export function renderHelp(container) {
 
     const searchInput = document.createElement('input');
     searchInput.type = 'search';
-    searchInput.placeholder = locale.searchPlaceholder || 'Search';
+    searchInput.placeholder = locale.searchPlaceholder || 'Search…';
     searchInput.style.padding = '0';
     searchInput.style.border = `1px solid var(--border-surface, #ddd)`;
     searchInput.style.borderRadius = '4px';
@@ -85,48 +85,85 @@ export function renderHelp(container) {
     container.appendChild(style);
 
     // -----------------------------------------------------------------
-    // 5️⃣  Render every HELP_RECORD (including Android, iOS and the
-    //     “How do I use the App?” entry).  The localisation keys follow
-    //     the pattern:
-    //       helpFaq<record.id>Title
-    //       helpFaq<record.id>Body
+    // 5️⃣  Render the **original** HELP records (with proper fallbacks)
     // -----------------------------------------------------------------
     HELP_RECORDS.forEach(record => {
         const details = document.createElement('details');
         details.className = 'help-detail';
         details.id = record.id;                                   // useful for fragment links
 
-        // ---- Summary (title) -------------------------------------------------
-        const titleKey = `helpFaq${record.id}Title`;               // e.g. helpFaqTtsAndroidTitle
+        // ---- Summary (question) ------------------------------------
+        // Prefer a locale‑specific title, then the record’s own title, then the id.
+        const titleKey = `helpFaq${record.id}Title`;               // e.g. helpFaqHowToUseTitle
         const summaryText =
             locale[titleKey] ||
             (record.title && record.title[lang]) ||
-            record.id;                                            // fallback to id if nothing else
+            record.id;
         const summary = document.createElement('summary');
         summary.textContent = summaryText;
         details.appendChild(summary);
 
-        // ---- Body (HTML) ----------------------------------------------------
-        // 1️⃣  Locale‑specific body (if present)
-        // 2️⃣  Record’s own HTML object (fallback)
-        // 3️⃣  Empty string if nothing is found.
-        const bodyKey = `helpFaq${record.id}Body`;
+        // ---- Body (answer) -----------------------------------------
+        // 1️⃣  Locale‑specific body (if you added one)
+        // 2️⃣  Record’s own HTML (the original format)
+        // 3️⃣  Fallback to an empty string.
+        const bodyKey = `helpFaq${record.id}Body`;                 // e.g. helpFaqHowToUseBody
         const rawHtml =
             locale[bodyKey] ||
             (record.html && record.html[lang]) ||
             '';
 
-        // The body may contain multiple paragraphs, lists, etc.
-        // Insert it verbatim – the string is trusted to contain safe HTML.
-        const bodyContainer = document.createElement('div');
-        bodyContainer.innerHTML = rawHtml;
-        details.appendChild(bodyContainer);
-
+        // Split on newline characters and create <p> elements.
+        // Empty lines are ignored.
+        const paragraphs = rawHtml.split('\n').filter(p => p.trim() !== '');
+/*
+        paragraphs.forEach(p => {
+            const pEl = document.createElement('p');
+            pEl.textContent = p;
+            details.appendChild(pEl);
+        });
+*/
         container.appendChild(details);
     });
 
+    /*
     // -----------------------------------------------------------------
-    // 6️⃣  Simple client‑side search – hide/show <details> that match.
+    // 6️⃣  **Add the new “How do I use the App?” FAQ** (i18n)
+    // -----------------------------------------------------------------
+    const newId = 'howToUse';   // any unique id you like
+    const newDetails = document.createElement('details');
+    newDetails.className = 'help-detail';
+    newDetails.id = newId;
+
+    const newSummary = document.createElement('summary');
+    newSummary.textContent = locale.helpFaqHowToUseTitle ||
+        'How do I use the App?';
+    newDetails.appendChild(newSummary);
+
+    const newBodyRaw = locale.helpFaqHowToUseBody ||
+        'Lumo the AI reply is: welcome to the learning environment! 🎉\n' +
+        'Here’s a quick rundown of the main features:\n' +
+        '1. Home / Exercise list – pick any exercise card to open the dictionary view.\n' +
+        '2. Dictionary view – you’ll see the source word in the selected language and its translations. Tap any word (or the speaker icon) to hear it spoken.\n' +
+        '3. Display / Speak check‑boxes – hide or show language columns, and decide which languages the “Play” button will read aloud.\n' +
+        '4. Test Yourself – hit the “Test Yourself” button on an exercise card. Choose a question language and an answer language, then start the quiz. Four answer buttons appear; click one to hear it and get instant feedback.\n' +
+        '5. Score tracking – the quiz shows “Correct / Total” and lets you review any words you got wrong via the “Practice later” link.\n' +
+        '6. Books & Blogs – scroll down on the Home page to discover curated reading material, filtered by language.\n' +
+        '7. Help & Settings – the toolbar at the top gives you quick access to language switching, theme toggling, and the Help section where you can find detailed guides (like this one!).\n' +
+        'Enjoy exploring! If you ever get stuck, the Help page has step‑by‑step instructions for every feature.';
+
+    // Turn the newline‑separated text into <p> elements.
+    newBodyRaw.split('\n').filter(p => p.trim() !== '').forEach(p => {
+        const pEl = document.createElement('p');
+        pEl.textContent = p;
+        newDetails.appendChild(pEl);
+    });
+
+    container.appendChild(newDetails);
+*/
+
+    // -----------------------------------------------------------------
+    // 7️⃣  Simple client‑side search – hide/show <details> that match.
     // -----------------------------------------------------------------
     if (searchInput) {
         searchInput.addEventListener('input', ev => {

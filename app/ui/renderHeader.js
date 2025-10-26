@@ -6,7 +6,8 @@ import { renderToolbar } from './toolbar.js';
 import { renderMenu } from './menu.js';
 import { applyDirection } from '../utils/rtl.js';
 import { getStoredLang, setStoredLang } from '../utils/storage.js';
-import { SUPPORTED_LANGS, FALLBACK_LANG, LANGUAGE_LABELS } from '../data/locales.js';
+// import { SUPPORTED_LANGS, FALLBACK_LANG, LANGUAGE_LABELS } from '../data/locales.js';
+import { SUPPORTED_LANGS, FALLBACK_LANG, LANGUAGE_LABELS, getLocale } from '../data/locales.js';
 import { populateFontSelect } from './fontSelect.js';
 // NEW – central speech controller
 import { createSpeechController } from "../utils/speechController.js";
@@ -25,12 +26,22 @@ import { createSpeechController } from "../utils/speechController.js";
  * @returns {HTMLElement} the <main id="main"> element.
  */
 export async function renderHeader(lang) {
+    /*
     // -----------------------------------------------------------------
     // 1️⃣ Normalise the language (persist it, set direction)
     // -----------------------------------------------------------------
     if (!SUPPORTED_LANGS.includes(lang)) lang = FALLBACK_LANG;
     if (lang !== getStoredLang()) await setStoredLang(lang);
     applyDirection(lang);
+*/
+
+    // 1️⃣ Normalise the language (persist it, set direction)
+    if (!SUPPORTED_LANGS.includes(lang)) lang = FALLBACK_LANG;
+    if (lang !== getStoredLang()) await setStoredLang(lang);
+    applyDirection(lang);
+
+    // 2️⃣ Load the localisation strings for the current UI language
+    const locale = getLocale(lang);
 
     // -----------------------------------------------------------------
     // 2️⃣ Build the static skeleton (toolbar, static nav, empty <main>)
@@ -50,18 +61,44 @@ export async function renderHeader(lang) {
     // 4️⃣ Populate the static navigation bar with language & font selectors
     // -----------------------------------------------------------------
     const nav = document.querySelector('nav.menu-nav');
+    /*
+        // ---- Language selector -------------------------------------------------
+        const langSelect = document.createElement('select');
+        langSelect.id = 'langSelect';
+        langSelect.style.width = '100%';
+        langSelect.style.fontSize = '0.85rem';
+        langSelect.style.margin = '0';
+        langSelect.innerHTML = SUPPORTED_LANGS.map(code => {
+            const selected = code === getStoredLang() ? 'selected' : '';
+            const label = LANGUAGE_LABELS[code] || code.toUpperCase();
+            return `<option value="${code}" ${selected}>${label}</option>`;
+        }).join('');
+    */
 
     // ---- Language selector -------------------------------------------------
     const langSelect = document.createElement('select');
     langSelect.id = 'langSelect';
-    langSelect.style.width = '100%';
+    langSelect.style.flex = '1';               // will share the row with the font selector
     langSelect.style.fontSize = '0.85rem';
     langSelect.style.margin = '0';
-    langSelect.innerHTML = SUPPORTED_LANGS.map(code => {
-        const selected = code === getStoredLang() ? 'selected' : '';
+
+    // placeholder (first row) – not selectable, internationalised
+    const placeholderOption = document.createElement('option');
+    placeholderOption.value = '';
+    placeholderOption.disabled = true;
+    placeholderOption.selected = true;
+    placeholderOption.textContent = locale.appInterfaceLanguage || 'App interface language';
+    langSelect.appendChild(placeholderOption);
+
+    // language options
+    SUPPORTED_LANGS.forEach(code => {
+        const opt = document.createElement('option');
+        opt.value = code;
+        if (code === getStoredLang()) opt.selected = true;
         const label = LANGUAGE_LABELS[code] || code.toUpperCase();
-        return `<option value="${code}" ${selected}>${label}</option>`;
-    }).join('');
+        opt.textContent = label;
+        langSelect.appendChild(opt);
+    });
 
     langSelect.onchange = ev => {
         const newLang = ev.target.value;
@@ -91,17 +128,47 @@ export async function renderHeader(lang) {
         }
     };
 
-    nav.appendChild(langSelect);
-
+    //   nav.appendChild(langSelect);
+    /*
+        // ---- Font selector ----------------------------------------------------
+        const fontSelect = document.createElement('select');
+        fontSelect.id = 'fontSelect';
+        fontSelect.style.width = '100%';
+        fontSelect.style.fontSize = '0.85rem';
+        fontSelect.style.margin = '0';
+        // The actual options will be filled later by `renderMenu` (it knows the catalog).
+        nav.appendChild(fontSelect);
+        populateFontSelect(fontSelect);
+    */
     // ---- Font selector ----------------------------------------------------
     const fontSelect = document.createElement('select');
     fontSelect.id = 'fontSelect';
-    fontSelect.style.width = '100%';
+    fontSelect.style.flex = '1';               // will share the row with the language selector
     fontSelect.style.fontSize = '0.85rem';
     fontSelect.style.margin = '0';
-    // The actual options will be filled later by `renderMenu` (it knows the catalog).
-    nav.appendChild(fontSelect);
+
+    // placeholder (first row) – not selectable, internationalised
+    const fontPlaceholder = document.createElement('option');
+    fontPlaceholder.value = '';
+    fontPlaceholder.disabled = true;
+    fontPlaceholder.selected = true;
+    fontPlaceholder.textContent = locale.appFont || 'App font';
+    fontSelect.appendChild(fontPlaceholder);
+
+    // Fill the rest of the options (existing helper does the work)
     populateFontSelect(fontSelect);
+
+    // ---- Wrap the two selectors in a single flex row -----------------------
+    const selectorsRow = document.createElement('div');
+    selectorsRow.style.display = 'flex';
+    selectorsRow.style.gap = '0.5rem';          // optional spacing between the two selects
+    selectorsRow.style.margin = '0.5rem 0';     // optional vertical margin
+
+    selectorsRow.appendChild(langSelect);
+    selectorsRow.appendChild(fontSelect);
+
+    nav.appendChild(selectorsRow);
+
     // -----------------------------------------------------------------
     // 5️⃣ Return the <main> element for the caller to inject page‑specific UI.
     // -----------------------------------------------------------------
