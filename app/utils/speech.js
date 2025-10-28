@@ -3,7 +3,7 @@
 // ---------------------------------------------------------------
 
 /**
- * Populate the <select> with voices that match any of the languages
+ * Populate a <select> with voices that match any of the languages
  * you support (e.g. ["th", "en", "es", …]).
  *
  * The function is deliberately tolerant – if no matching voices are
@@ -58,6 +58,9 @@ export function speakText(text, voiceName, lang) {
             return;
         }
 
+        // ---------------------------------------------------------
+        // 1️⃣  **Cancel any utterance that might already be playing**.
+        // ---------------------------------------------------------
         speechSynthesis.cancel();
 
         const utter = new SpeechSynthesisUtterance(text);

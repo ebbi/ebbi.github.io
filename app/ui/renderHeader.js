@@ -79,8 +79,8 @@ export async function renderHeader(lang) {
     const langSelect = document.createElement('select');
     langSelect.id = 'langSelect';
     langSelect.style.flex = '1';               // will share the row with the font selector
-    langSelect.style.fontSize = '0.85rem';
-    langSelect.style.margin = '0';
+//    langSelect.style.fontSize = '0.85rem';
+ //   langSelect.style.margin = '0';
 
     // placeholder (first row) – not selectable, internationalised
     const placeholderOption = document.createElement('option');
@@ -103,19 +103,16 @@ export async function renderHeader(lang) {
     langSelect.onchange = ev => {
         const newLang = ev.target.value;
         if (newLang !== getStoredLang()) {
-            // Persist the new language and update the document direction.
+            // ---------------------------------------------------------
+            // 2️⃣  Persist the new language and update the document direction.
+            // ---------------------------------------------------------
             setStoredLang(newLang);
             applyDirection(newLang);
 
-            // -------------------------------------------------------------
-            // Keep the user on the *current* page (home, help, exercise, …)
-            // by swapping the first path segment (the language code) with the
-            // newly‑selected language.
-            // Example transformations:
-            //   "/en"               → "/fr"
-            //   "/en/help"      → "/fr/help"
-            //   "/en/exercises/02"  → "/fr/exercises/02"
-            // -------------------------------------------------------------
+            // ---------------------------------------------------------
+            // 3️⃣  Keep the user on the *current* page (home, help,
+            //     exercise, …) by swapping the first path segment.
+            // ---------------------------------------------------------
             const currentPath = location.pathname;               // e.g. "/en/help"
             const segments = currentPath.split('/');              // ["", "en", "help"]
             if (segments.length > 1) {
@@ -144,8 +141,8 @@ export async function renderHeader(lang) {
     const fontSelect = document.createElement('select');
     fontSelect.id = 'fontSelect';
     fontSelect.style.flex = '1';               // will share the row with the language selector
-    fontSelect.style.fontSize = '0.85rem';
-    fontSelect.style.margin = '0';
+//    fontSelect.style.fontSize = '0.85rem';
+ //   fontSelect.style.margin = '0';
 
     // placeholder (first row) – not selectable, internationalised
     const fontPlaceholder = document.createElement('option');
@@ -162,7 +159,7 @@ export async function renderHeader(lang) {
     const selectorsRow = document.createElement('div');
     selectorsRow.style.display = 'flex';
     selectorsRow.style.gap = '0.5rem';          // optional spacing between the two selects
-    selectorsRow.style.margin = '0.5rem 0';     // optional vertical margin
+ //   selectorsRow.style.margin = '0.5rem 0';     // optional vertical margin
 
     selectorsRow.appendChild(langSelect);
     selectorsRow.appendChild(fontSelect);

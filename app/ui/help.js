@@ -31,7 +31,7 @@ export function renderHelp(container) {
     headerRow.style.display = 'flex';
     headerRow.style.justifyContent = 'space-between';
     headerRow.style.alignItems = 'center';
-    headerRow.style.padding = '0.5rem 1rem';
+ ///   headerRow.style.padding = '0.5rem 1rem';
     headerRow.style.borderBottom = `1px solid var(--border-surface, #ddd)`;
 
     const title = document.createElement('h2');
@@ -51,7 +51,7 @@ export function renderHelp(container) {
     const searchInput = document.createElement('input');
     searchInput.type = 'search';
     searchInput.placeholder = locale.searchPlaceholder || 'Search';
-    searchInput.style.padding = '0';
+ //   searchInput.style.padding = '0';
     searchInput.style.border = `1px solid var(--border-surface, #ddd)`;
     searchInput.style.borderRadius = '4px';
     searchInput.style.width = '12rem';

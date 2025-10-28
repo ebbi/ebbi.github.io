@@ -1,6 +1,7 @@
+// ---------------------------------------------------------------
 // app/ui/routes.js
 // ---------------------------------------------------------------
-// Central place for every route‑handler used by the SPA router.
+// Central place for every route‑handler used by the Lumo SPA.
 // ---------------------------------------------------------------
 
 import { renderHeader } from "./renderHeader.js";
@@ -12,7 +13,8 @@ import {
     FALLBACK_LANG
 } from "../data/locales.js";
 import { loadJSON } from "../utils/fetch.js";
-import { renderMenu } from "./menu.js";               // <‑‑ NEW import
+import { renderMenu } from "./menu.js";
+import { renderDictionaryExercise } from "./dictionaryExercise.js";
 
 /* -----------------------------------------------------------------
    Helper – render a simple 404 page (used by notFoundHandler)
@@ -43,9 +45,13 @@ export async function homeHandler({ lang } = {}) {
     // Build the full page skeleton (toolbar + static nav + empty <main>).
     const mainEl = await renderHeader(lang);
 
-    // ---- NEW: render the dynamic UI (practice panel + books panel) ----
-    // `renderMenu` receives the <main> element and the current UI language.
-    await renderMenu(mainEl, lang);
+    // **Important:** make sure the <main> is empty before we render anything else.
+    // This guarantees that no leftover dictionary UI sticks around.
+    const main = document.getElementById("main");
+    if (main) main.innerHTML = "";
+
+    // Render the dynamic UI (practice panel + books panel)
+    await renderMenu(mainEl, lang);   // default shows “Practice languages”
 }
 
 /* -----------------------------------------------------------------
@@ -55,13 +61,13 @@ export async function exercisesHandler({ lang } = {}) {
     if (lang !== getStoredLang()) await setStoredLang(lang);
     applyDirection(lang);
     const mainEl = await renderHeader(lang);
-
-    // ---- NEW: render the same dynamic UI as the home page ----
-    await renderMenu(mainEl, lang);
+    const main = document.getElementById("main");
+    if (main) main.innerHTML = "";
+    await renderMenu(mainEl, lang, false);   // hide “Practice languages” on the home page
 }
 
 /* -----------------------------------------------------------------
-   3️⃣  Single exercise detail – unchanged from the original code
+   3️⃣  Single exercise detail – dictionary or generic detail
    ----------------------------------------------------------------- */
 export async function exerciseDetailHandler({ lang, id } = {}) {
     if (lang !== getStoredLang()) await setStoredLang(lang);
@@ -69,6 +75,9 @@ export async function exerciseDetailHandler({ lang, id } = {}) {
     const mainEl = await renderHeader(lang);
     const main = document.getElementById("main");
     if (!main) return;
+
+    // Ensure the <main> starts clean – we don’t want any stray UI.
+    main.innerHTML = "";
 
     // Load the global EXERCISES array if it is still empty.
     const { EXERCISES } = await import("../data/exercises.js");
@@ -89,14 +98,23 @@ export async function exerciseDetailHandler({ lang, id } = {}) {
         return;
     }
 
+    // -------------------------------------------------------------
     // Dictionary‑type exercises have a custom UI.
+    // -------------------------------------------------------------
     if (meta.details && meta.details.type === "dictionary") {
-        const { initDictionaryPage } = await import("./dictionaryExercise.js");
-        await initDictionaryPage(lang, id);
+        // Ensure the voice for the exercise language exists.
+        const exerciseLang = meta.language || lang;
+        const { ensureVoiceForExercise } = await import("../utils/voiceHelper.js");
+        await ensureVoiceForExercise(exerciseLang, lang, true);
+
+        // Directly render the dictionary UI inside the <main>.
+        await renderDictionaryExercise(main, meta, lang);
         return;
     }
 
+    // -------------------------------------------------------------
     // Generic detail view – inject a container and let renderExerciseDetail handle it.
+    // -------------------------------------------------------------
     const detailContainer = document.createElement("section");
     detailContainer.id = "detail";
     detailContainer.className = "detail-section hidden";
@@ -123,25 +141,19 @@ export async function helpHandler({ lang } = {}) {
    5️⃣  NEW – Books & Blogs deep‑link handler
    ----------------------------------------------------------------- */
 export async function booksHandler({ lang, pubId, pubLang } = {}) {
-    // -----------------------------------------------------------------
     // Defensive sanity check – if any param is missing, fall back home
-    // -----------------------------------------------------------------
     if (!lang || !pubId || !pubLang) {
         console.warn("[booksHandler] missing parameters – redirecting home");
         window.router.navigate(`/${getStoredLang()}/`, true);
         return;
     }
 
-    // -----------------------------------------------------------------
     // Normalise language (fallback if needed)
-    // -----------------------------------------------------------------
     if (!SUPPORTED_LANGS.includes(lang)) lang = FALLBACK_LANG;
     if (lang !== getStoredLang()) await setStoredLang(lang);
     applyDirection(lang);
 
-    // -----------------------------------------------------------------
     // Build the page skeleton (toolbar + static nav) and render the panel
-    // -----------------------------------------------------------------
     const mainEl = await renderHeader(lang);
     const main = document.getElementById("main");
     if (!main) return;
@@ -162,6 +174,9 @@ export async function notFoundHandler({ search = "", hash = "" } = {}) {
     renderNotFound(main);
 }
 
+/* -----------------------------------------------------------------
+   7️⃣  Test‑yourself (multiple‑choice) page
+   ----------------------------------------------------------------- */
 export async function testExerciseHandler({ lang, id } = {}) {
     if (!lang) lang = getStoredLang();
     if (lang !== getStoredLang()) await setStoredLang(lang);

@@ -8,7 +8,7 @@
 // ---------------------------------------------------------------
 
 import { speakText, populateVoiceList } from "./speech.js";
-import { getStoredVoice, setStoredVoice } from "./storage.js";
+import { getStoredVoice, setStoredVoice, getStoredLang } from "./storage.js";
 import { getLocale } from "../data/locales.js";
 
 /* -----------------------------------------------------------------
@@ -37,12 +37,17 @@ const defaultState = {
  */
 export function createSpeechController(container, {
     getAvailableLanguages,
-    defaultLang,
+    defaultLang,  // exercise language
     onVoiceChange,
     tokenElements = [],
     translationElements = [],
+    // UI locale
     locale = getLocale(defaultLang || "en")
 } = {}) {
+
+    //es +2
+    const uiLang = getStoredLang();               // e.g. "en", "th", …
+    const uiLocale = getLocale(uiLang);            // immutable UI locale object
 
     // -----------------------------------------------------------------
     // Clone a fresh state for this instance
@@ -58,37 +63,37 @@ export function createSpeechController(container, {
     speechPanel.id = "speechPanel";
 
     // ---- NEW STYLE FOR PLAYER PANEL -----------------------------------------
-    speechPanel.style.fontSize = "0.85rem";
-    speechPanel.style.margin = "0.15rem 0.15rem 0.25rem 0.15rem";
+    //   speechPanel.style.fontSize = "0.85rem";
+    //    speechPanel.style.margin = "0.15rem 0.15rem 0.25rem 0.15rem";
     speechPanel.style.border = "1px solid var(--border-surface, #ddd)";
     speechPanel.style.borderRadius = "0.5rem";
-    speechPanel.style.padding = "0.5rem";
+    //    speechPanel.style.padding = "0.5rem";
     speechPanel.style.background = "var(--bg-surface, #fff)";
 
 
     const controlsRow = document.createElement("div");
     controlsRow.style.display = "flex";
     controlsRow.style.alignItems = "center";
-    controlsRow.style.gap = "0.5rem";
+    controlsRow.style.gap = "1.5rem";
     controlsRow.style.flexWrap = "wrap";
 
     const playBtn = document.createElement("button");
-    playBtn.title = locale.playButton || "Play";
+    playBtn.title = uiLocale.playButton || "Play";
     playBtn.textContent = "▶️";
     controlsRow.appendChild(playBtn);
 
     const pauseBtn = document.createElement("button");
-    pauseBtn.title = locale.pauseButton || "Pause";
+    pauseBtn.title = uiLocale.pauseButton || "Pause";
     pauseBtn.textContent = "⏸️";
     controlsRow.appendChild(pauseBtn);
 
     const resetBtn = document.createElement("button");
-    resetBtn.title = locale.resetButton || "Reset";
+    resetBtn.title = uiLocale.resetButton || "Reset";
     resetBtn.textContent = "🔄";
     controlsRow.appendChild(resetBtn);
 
     const delayLabel = document.createElement("label");
-    delayLabel.textContent = locale.delayLabel || "Delay (s):";
+    delayLabel.textContent = uiLocale.delayLabel || "Delay (s):";
     controlsRow.appendChild(delayLabel);
 
     const delayInput = document.createElement("input");
@@ -97,7 +102,7 @@ export function createSpeechController(container, {
     delayInput.max = 5;
     delayInput.step = 0.1;
     delayInput.value = state.delaySec;
-    delayInput.style.width = "3rem";
+    //es  delayInput.style.width = "3rem";
     controlsRow.appendChild(delayInput);
 
     // -----------------------------------------------------------------
@@ -109,18 +114,18 @@ export function createSpeechController(container, {
     //    statusVoiceRow.style.justifyContent = "space-between";
     //    statusVoiceRow.style.flexWrap = "wrap";
     statusVoiceRow.style.gap = "0.5rem";
-    statusVoiceRow.style.marginTop = "0.5rem";
+    //    statusVoiceRow.style.marginTop = "0.5rem";
 
     const statusEl = document.createElement("div");
     //    statusEl.style.flex = "1 1 auto";
     statusEl.style.flex = "0 0 25%";
 
-    statusEl.style.minHeight = "1.2rem";
+    // statusEl.style.minHeight = "1.2rem";
     statusEl.style.fontStyle = "italic";
-    statusEl.style.fontSize = "0.8rem";
+    //  statusEl.style.fontSize = "0.8rem";
     statusEl.style.border = "1px solid var(--border-surface, #ddd)";
     statusEl.style.borderRadius = "4px";
-   // statusEl.style.padding = "0.7rem 0.15rem";
+    // statusEl.style.padding = "0.7rem 0.15rem";
     statusEl.style.background = "var(--bg-surface, #fff)";
     statusVoiceRow.appendChild(statusEl);
 
@@ -139,7 +144,7 @@ export function createSpeechController(container, {
 
     // ¾ of the row
     voiceSelect.style.flex = "0 0 75%";
-    voiceSelect.style.padding = "0.11rem";
+    //    voiceSelect.style.padding = "0.11rem";
     // ------------------------------------------------------------------------
     voiceSelect.style.boxSizing = "border-box";
     statusVoiceRow.appendChild(voiceSelect);
@@ -168,8 +173,16 @@ export function createSpeechController(container, {
     // -----------------------------------------------------------------
     function setStatus(key) {
         // `locale` was passed when the controller was created.
-        const txt = locale[key] || key;
+        //es +2
+        // Do **not** overwrite `locale`. Use the UI locale directly.
+        //   const uiLocale = getLocale(uiLang);
+        const txt = uiLocale[key] || key;
+
+        //const txt = locale[key] || key;
         statusEl.textContent = txt;
+
+        //       console.log('setStatus: locale, key, txt ', locale, key, txt)
+
     }
 
     // -----------------------------------------------------------------
@@ -223,6 +236,7 @@ export function createSpeechController(container, {
                 if (srcLang && state.speakMap[srcLang]) {
                     highlightCurrent();
                     await speakText(srcSpan.textContent, state.voiceName, srcLang);
+                    console.log('delay ', state.delaySec);
                     await wait(state.delaySec);
                 }
                 // Move to the first translation (whether spoken or not)

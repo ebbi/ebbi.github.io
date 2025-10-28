@@ -1,3 +1,4 @@
+// ---------------------------------------------------------------
 // app/ui/multipleChoiceExercise.js
 // ---------------------------------------------------------------
 // Multiple‑Choice (“Test Yourself”) page – fully styled and
@@ -58,8 +59,8 @@ export async function initMultipleChoicePage(uiLang, exId) {
     // 5️⃣ Page wrapper – margin, border, background (mirrors home page)
     // -------------------------------------------------------------
     const pageWrapper = document.createElement('div');
-    pageWrapper.style.margin = '1rem';
-    pageWrapper.style.padding = '1rem';
+ //   pageWrapper.style.margin = '1rem';
+//    pageWrapper.style.padding = '1rem';
     pageWrapper.style.border = '1px solid var(--border-surface, #ddd)';
     pageWrapper.style.borderRadius = '.5rem';
     pageWrapper.style.background = 'var(--bg-surface, #fff)';
@@ -117,10 +118,10 @@ export async function initMultipleChoicePage(uiLang, exId) {
 
     // ----- Title -------------------------------------------------
     const title = document.createElement('h4');
-    title.textContent = (meta.title && meta.title[uiLang]) ||
+    title.textContent = (meta.title?.[uiLang]) ||
         meta.title?.en || 'Multiple Choice';
     title.style.textAlign = 'center';
-    title.style.marginBottom = '1rem';
+ //   title.style.marginBottom = '1rem';
     pageWrapper.appendChild(title);
 
     // ----- Controls (language selectors + Start) ---------------
@@ -128,13 +129,13 @@ export async function initMultipleChoicePage(uiLang, exId) {
     controlsDiv.style.display = 'flex';
     controlsDiv.style.flexDirection = 'column';
     controlsDiv.style.gap = '0.5rem';
-    controlsDiv.style.marginBottom = '1rem';
+//    controlsDiv.style.marginBottom = '1rem';
     pageWrapper.appendChild(controlsDiv);
 
     // ---- Question language selector (inline) ------------------
     const qLangLabel = document.createElement('label');
     qLangLabel.textContent = locale.questionLanguage || 'Question language';
-    qLangLabel.style.marginRight = '0.5rem';
+ //   qLangLabel.style.marginRight = '0.5rem';
     qLangLabel.style.display = 'inline-block';
     qLangLabel.style.verticalAlign = 'middle';
 
@@ -161,7 +162,7 @@ export async function initMultipleChoicePage(uiLang, exId) {
     // ---- Answer language selector (inline) -------------------
     const aLangLabel = document.createElement('label');
     aLangLabel.textContent = locale.answerLanguage || 'Answer language';
-    aLangLabel.style.marginRight = '0.5rem';
+//    aLangLabel.style.marginRight = '0.5rem';
     aLangLabel.style.display = 'inline-block';
     aLangLabel.style.verticalAlign = 'middle';
 
@@ -196,7 +197,7 @@ export async function initMultipleChoicePage(uiLang, exId) {
     promptWrapper.style.display = 'flex';
     promptWrapper.style.alignItems = 'center';
     promptWrapper.style.justifyContent = 'center';
-    promptWrapper.style.marginBottom = '1rem';
+//    promptWrapper.style.marginBottom = '1rem';
     promptWrapper.style.fontSize = '1.4rem';
     promptWrapper.style.fontWeight = '600';
     promptWrapper.style.textAlign = 'center';
@@ -204,7 +205,7 @@ export async function initMultipleChoicePage(uiLang, exId) {
 
     const promptIcon = document.createElement('span');
     promptIcon.textContent = '🔊';
-    promptIcon.style.marginRight = '0.4rem';
+ //   promptIcon.style.marginRight = '0.4rem';
     promptIcon.style.cursor = 'pointer';
     promptIcon.title = locale.playPrompt || 'Play prompt';
     promptWrapper.appendChild(promptIcon);
@@ -239,15 +240,16 @@ export async function initMultipleChoicePage(uiLang, exId) {
     // ----- Feedback (correct / incorrect) ----------------------
     const feedbackEl = document.createElement('div');
     feedbackEl.style.fontStyle = 'italic';
-    feedbackEl.style.marginBottom = '0.5rem';
+//    feedbackEl.style.marginBottom = '0.5rem';
     feedbackEl.setAttribute('aria-live', 'assertive');
+    pageWrapper.appendChild(feedbackEl);
 
     // ----- Score & Reset button (single row) -------------------
     const bottomInfoRow = document.createElement('div');
     bottomInfoRow.style.display = 'flex';
     bottomInfoRow.style.justifyContent = 'space-between';
     bottomInfoRow.style.alignItems = 'center';
-    bottomInfoRow.style.marginTop = '1rem';
+ //   bottomInfoRow.style.marginTop = '1rem';
     bottomInfoRow.style.gap = '1rem';
 
     const scoreEl = document.createElement('div');
@@ -266,7 +268,7 @@ export async function initMultipleChoicePage(uiLang, exId) {
     navDiv.style.display = 'flex';
     navDiv.style.justifyContent = 'space-between';
     navDiv.style.alignItems = 'center';
-    navDiv.style.marginTop = '1rem';
+ //   navDiv.style.marginTop = '1rem';
     pageWrapper.appendChild(navDiv);
 
     const backBtn = document.createElement('button');
@@ -321,7 +323,6 @@ export async function initMultipleChoicePage(uiLang, exId) {
         });
         feedbackEl.textContent = '';
         nextBtn.disabled = true;
-
 
         // ---- 1️⃣ Pick a random row -----------------------------------
         const row = rows[Math.floor(Math.random() * rows.length)];
@@ -390,7 +391,7 @@ export async function initMultipleChoicePage(uiLang, exId) {
             // ----- speaker icon for each answer --------------------
             const ansIcon = document.createElement('span');
             ansIcon.textContent = '🔊';
-            ansIcon.style.marginRight = '0.4rem';
+ //           ansIcon.style.marginRight = '0.4rem';
             ansIcon.style.cursor = 'pointer';
             ansIcon.title = locale.playAnswer || 'Play answer';
             ansIcon.onclick = (e) => {
@@ -465,9 +466,11 @@ export async function initMultipleChoicePage(uiLang, exId) {
         state.total = 0;
         updateScoreDisplay();
         feedbackEl.textContent = '';
-        // If the quiz has already started, render a fresh question
+        // If a quiz is already in progress, start a brand‑new question
         if (!startBtn.disabled) {
             renderQuestion();
         }
     });
 }
+
+// The module exports only the init function; the router imports it.

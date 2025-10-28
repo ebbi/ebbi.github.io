@@ -60,7 +60,7 @@ export async function renderExerciseDetail(container, id, UI_LANG) {
         const voiceLabel = locale.voices || 'Voices';
 
         const voiceWrapper = document.createElement('div');
-        voiceWrapper.style.margin = '0.75rem 0';
+//        voiceWrapper.style.margin = '0.75rem 0';
         voiceWrapper.style.display = 'flex';
         voiceWrapper.style.alignItems = 'center';
         voiceWrapper.style.gap = '0.5rem';

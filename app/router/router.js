@@ -61,7 +61,18 @@ export const router = new Router([
     { path: "*", handler: notFoundHandler }
 ]);
 
+
 // Expose globally – many modules do `window.router.navigate(...)`
 if (typeof window !== "undefined") {
+    // -------------------------------------------------------------
+    //  Global navigation guard – cancel any ongoing speech before
+    //  the router changes the URL (covers Home, Help, language change,
+    //  exercise navigation, etc.).
+    // -------------------------------------------------------------
+    const originalNavigate = router.navigate.bind(router);
+    router.navigate = (dest, replace = false) => {
+        return originalNavigate(dest, replace);
+    };
+
     window.router = router;
 }

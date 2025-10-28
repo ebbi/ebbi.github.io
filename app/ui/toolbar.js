@@ -42,6 +42,7 @@ export function renderToolbar(container) {
     helpBtn.title = getLocale(getStoredLang()).helpHeader || 'Help';
     helpBtn.textContent = '❓';               // you can also use ℹ️ or 🛈
     helpBtn.style.flex = '0 0 auto';
+
     helpBtn.onclick = () => {
         // Navigate to the generic help page, preserving the current language.
         window.router.navigate(`/${getStoredLang()}/help`, true);

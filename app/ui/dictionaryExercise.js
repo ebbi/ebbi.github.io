@@ -44,7 +44,7 @@ function buildTokenColumn(translations, langs, displayMap) {
     col.style.display = "flex";
     col.style.flexDirection = "column";
     col.style.alignItems = "center";
-    col.style.margin = "0 0.5rem";
+// col.style.margin = "0 0.5rem";
 
     // -----------------------------------------------------------------
     // 1️⃣  Create a <span> only for displayed languages.
@@ -115,7 +115,7 @@ export async function renderDictionaryExercise(mainEl, exerciseMeta, uiLang) {
     tokenGrid.style.flexWrap = "wrap";
     tokenGrid.style.justifyContent = "flex-start"; // left‑align rows
     tokenGrid.style.gap = "1rem";
-    tokenGrid.style.padding = "0 1rem 1rem 1rem";
+ //   tokenGrid.style.padding = "0 1rem 1rem 1rem";
     //    tokenGrid.style.height = "70vh";
     tokenGrid.style.overflowY = "auto";
 
@@ -145,9 +145,9 @@ export async function renderDictionaryExercise(mainEl, exerciseMeta, uiLang) {
     const details = document.createElement("details");
     details.open = false;                     // default closed
     // ---- NEW STYLE FOR DETAILS -------------------------------------------------
-    details.style.fontSize = "0.85rem";
-    details.style.margin = "0.15rem";
-    details.style.padding = "0.15rem";
+//    details.style.fontSize = "0.85rem";
+ //   details.style.margin = "0.15rem";
+ //   details.style.padding = "0.15rem";
     // -----------------------------------------------------------------
     const summary = document.createElement("summary");
     summary.textContent = locale.languageOptions || "Language options";
@@ -221,7 +221,7 @@ export async function renderDictionaryExercise(mainEl, exerciseMeta, uiLang) {
     // 8️⃣ Create the **player control panel** (outside the <details>)
     // -----------------------------------------------------------------
     const speechPanel = document.createElement("div");
-    speechPanel.style.padding = "0.5rem";
+ //   speechPanel.style.padding = "0.5rem";
     speechPanel.style.border = "1px solid var(--border-surface)";
     speechPanel.id = "speechPanel";
 
@@ -318,7 +318,7 @@ export async function renderDictionaryExercise(mainEl, exerciseMeta, uiLang) {
     const heading = document.createElement("h4"); // <-- changed from h2 to h4
     heading.textContent = titleText;
     heading.style.textAlign = "center";
-    heading.style.marginBottom = "1rem";
+ //   heading.style.marginBottom = "1rem";
 
     // Order matters:
     mainEl.appendChild(details);      // 1️⃣ Language options (closed)

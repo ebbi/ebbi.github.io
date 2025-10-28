@@ -65,7 +65,7 @@ export function showMissingVoiceModal(missingLang, uiLang) {
         background: "var(--bg-surface, #fff)",
         border: "1px solid var(--border-surface, #ddd)",
         borderRadius: ".5rem",
-        padding: "1rem",
+//        padding: "1rem",
         maxWidth: "28rem",
         textAlign: "center"
     });
@@ -85,7 +85,7 @@ export function showMissingVoiceModal(missingLang, uiLang) {
 
     const btn = document.createElement("button");
     btn.textContent = locale.goToHelp || "Go to Help";
-    btn.style.marginTop = ".5rem";
+ //   btn.style.marginTop = ".5rem";
     btn.onclick = () => {
         document.body.removeChild(overlay);
         // Navigate to the generic Help page (preserve UI language)
