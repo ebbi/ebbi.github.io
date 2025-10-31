@@ -61,9 +61,9 @@ export async function renderExerciseDetail(container, id, UI_LANG) {
 
         const voiceWrapper = document.createElement('div');
 //        voiceWrapper.style.margin = '0.75rem 0';
-        voiceWrapper.style.display = 'flex';
-        voiceWrapper.style.alignItems = 'center';
-        voiceWrapper.style.gap = '0.5rem';
+//        voiceWrapper.style.display = 'flex';
+//        voiceWrapper.style.alignItems = 'center';
+//        voiceWrapper.style.gap = '0.5rem';
 
         const voiceLabelEl = document.createElement('label');
         voiceLabelEl.textContent = voiceLabel;
@@ -72,7 +72,7 @@ export async function renderExerciseDetail(container, id, UI_LANG) {
 
         const voiceSelect = document.createElement('select');
         voiceSelect.id = 'voiceSelect';
-        voiceSelect.style.flex = '1';
+//        voiceSelect.style.flex = '1';
         voiceWrapper.appendChild(voiceSelect);
 
         // Populate the list with voices that match any of the languages used

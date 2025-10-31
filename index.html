@@ -1,295 +1,39 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-<meta charset="UTF-8">
-<title>Zabon</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Security-Policy" content="
+
+<head>
+    <meta charset="UTF-8">
+    <title>Zabon</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- ====================  Content‑Security‑Policy  ==================== -->
+    <meta http-equiv="Content-Security-Policy" content="
         default-src 'self' https://cdn.jsdelivr.net;
         script-src  'self' 'unsafe-inline' https://cdn.jsdelivr.net;
         style-src   'self' 'unsafe-inline' https://fonts.googleapis.com;
-        style-src-elem 'unsafe-inline' https://fonts.googleapis.com;
         img-src     'self' data: https:;
         connect-src 'self' https:;
         font-src    'self' data: https://fonts.gstatic.com;
       ">
-<style>
-    /* --------------------------------------------------------------
-       Global reset & basic layout
-       -------------------------------------------------------------- */
-    *,
-    *::before,
-    *::after {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
 
-    /* --------------------------------------------------------------
-       Body – inherit the font set on <html>
-       -------------------------------------------------------------- */
-    body {
-        font-family: inherit;
-        /* <-- lets the font selector affect everything */
-        background: var(--bg-page);
-        color: var(--txt-primary);
-    }
+    <!-- Your stylesheet (now allowed by the CSP) -->
+    <link rel="stylesheet" href="app.css">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
 
-    /* --------------------------------------------------------------
-       Colour palette – light & dark (CSS custom properties)
-       -------------------------------------------------------------- */
-    :root {
-        /* Light theme */
-        --bg-page: #fafafa;
-        /* page background */
-        --bg-surface: #ffffff;
-        /* toolbar, cards, modal, etc. */
-        --border-surface: #ddd;
-        --txt-primary: #212121;
-        /* main text – 87 % contrast */
-        --txt-secondary: #424242;
-        /* secondary text – 60 % contrast */
-        --heading-accent: #00695c;
-        /* teal for headings */
-        --link: #1565c0;
-        /* blue links */
-        --error: #d32f2f;
-    }
+    <!-- External script you already use (still allowed) -->
+    <script src="https://cdn.jsdelivr.net/npm/dompurify@2.5.0/dist/purify.min.js"></script>
 
-    [data-theme="dark"] {
-        /* Dark theme overrides */
-        --bg-page: #121212;
-        /* true black */
-        --bg-surface: #1e1e1e;
-        /* dark surface */
-        --border-surface: #333;
-        --txt-primary: #e0e0e0;
-        /* light primary text */
-        --txt-secondary: #b0b0b0;
-        /* lighter secondary */
-        --heading-accent: #80cbc4;
-        /* teal‑light for headings */
-        --link: #90caf9;
-        /* soft blue */
-        --error: #ef9a9a;
-    }
+    <!-- Bootstrap the app (module script) -->
+    <script type="module">
+        import { applySavedTheme } from '/app/utils/theme.js';
+        applySavedTheme();   // runs before any body content is painted
+    </script>
 
-    /* --------------------------------------------------------------
-   Menu items – align text according to the page direction
-   -------------------------------------------------------------- */
-    .menu-item {
-        text-align: start;
-        /* respects LTR/RTL automatically */
-    }
-
-    /* --------------------------------------------------------------
-   Toolbar
-   -------------------------------------------------------------- */
-    .toolbar {
-        width: 100%;
-        /* Small vertical padding – the row height will now match the icons */
-        padding: 0.15rem 1rem;
-        /* ← reduced top/bottom padding */
-        background: var(--bg-surface);
-        border-bottom: none;
-        /* ← no bottom border */
-        display: flex;
-        align-items: center;
-        justify-content: flex-start;
-        /* items start at the left; we’ll push the icons right in JS */
-    }
-
-    .toolbar button {
-        background: none;
-        border: none;
-        font-size: 1.2rem;
-        cursor: pointer;
-        color: var(--txt-primary);
-    }
-
-    /* --------------------------------------------------------------
-       Menu & cards
-       -------------------------------------------------------------- */
-    /* --------------------------------------------------------------
-   Menu section – heading + list
-   -------------------------------------------------------------- */
-    .menu-section {
-        padding: 1rem;
-    }
-
-    /* Heading inside the menu section */
-    .menu-section h2 {
-        margin-bottom: 0.6rem;
-        /* space between heading and list */
-        line-height: 1.3;
-        color: var(--heading-accent);
-    }
-
-    /* The list itself – make sure it starts on a new line and fills width */
-    .menu-section ul.menu-list {
-        list-style: none;
-        display: grid;
-        grid-template-columns: 1fr;
-        /* default: single column */
-        gap: .75rem;
-        margin: 0;
-        /* reset default UL margins */
-        padding: 0;
-        /* reset default UL padding */
-    }
-
-    /* Ensure the list respects the page direction (LTR/RTL) */
-    [dir="rtl"] .menu-section ul.menu-list {
-        direction: rtl;
-        /* forces items to flow right‑to‑left */
-    }
-
-    /* Media queries – keep your existing breakpoints */
-    @media (min-width:600px) {
-        .menu-section ul.menu-list {
-            grid-template-columns: repeat(2, 1fr);
-        }
-    }
-
-    @media (min-width:900px) {
-        .menu-section ul.menu-list {
-            grid-template-columns: repeat(3, 1fr);
-        }
-    }
-
-    .menu-list {
-        list-style: none;
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: .75rem;
-        margin: 0 1rem;
-    }
-
-    .menu-item {
-        background: var(--bg-surface);
-        padding: 1rem;
-        border-radius: .5rem;
-        box-shadow: 0 1px 3px rgba(0, 0, 0, .1);
-        cursor: pointer;
-        transition: transform .15s ease,
-            background .15s ease,
-            box-shadow .15s ease;
-    }
-
-    .menu-item:hover {
-        transform: scale(1.02);
-        background: var(--bg-surface);
-        box-shadow: 0 0 8px 2px var(--link);
-    }
-
-    /* --------------------------------------------------------------
-       Detail pane
-       -------------------------------------------------------------- */
-    .detail-section {
-        padding: 1rem;
-        background: var(--bg-surface);
-        margin-top: 1rem;
-        border-radius: .5rem;
-        box-shadow: 0 1px 3px rgba(0, 0, 0, .1);
-    }
-
-    .hidden {
-        display: none;
-    }
-
-    @media (min-width:600px) {
-        .menu-list {
-            grid-template-columns: repeat(2, 1fr);
-        }
-    }
-
-    @media (min-width:900px) {
-        .menu-list {
-            grid-template-columns: repeat(3, 1fr);
-        }
-    }
-
-    /* --------------------------------------------------------------
-       Typography – improved contrast for headings & summaries
-       -------------------------------------------------------------- */
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6 {
-        color: var(--heading-accent);
-        margin: 0.2rem 0;
-        line-height: 1.3;
-    }
-
-    p,
-    li,
-
-    .summary {
-        color: var(--txt-secondary);
-        /* slightly lighter than body text */
-        margin-top: 0.4rem;
-    }
-
-    a {
-        color: var(--link);
-        text-decoration: underline;
-    }
-
-    /* --------------------------------------------------------------
-       Pre‑formatted answer block
-       -------------------------------------------------------------- */
-    pre.answer {
-        background: var(--bg-surface);
-        color: var(--txt-primary);
-        padding: 0.5rem;
-        border-radius: 4px;
-        overflow-x: auto;
-        border: 1px solid var(--border-surface);
-    }
-
-    /* --------------------------------------------------------------
-       help panel & <details>
-       -------------------------------------------------------------- */
-    details {
-        background: var(--bg-surface);
-        border: 1px solid var(--border-surface);
-        border-radius: 4px;
-        padding: 0.5rem;
-    }
-
-    /* --------------------------------------------------------------
-       Form controls (select, inputs, textarea, button)
-       -------------------------------------------------------------- */
-    select,
-    input,
-    textarea,
-    button {
-        font: inherit;
-        color: var(--txt-primary);
-        background: var(--bg-surface);
-        border: 1px solid var(--border-surface);
-        border-radius: 4px;
-        /*       padding: 0.3rem 0.5rem; */
-    }
-
-    select:focus,
-    input:focus,
-    textarea:focus {
-        outline: 2px solid var(--link);
-    }
-</style>
-
-<!-- ==============================================================
+    <!-- ==============================================================
          ① Load DOMPurify (no integrity hash – safest for now)
          ============================================================== -->
-<script src="https://cdn.jsdelivr.net/npm/dompurify@2.5.0/dist/purify.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/dompurify@2.5.0/dist/purify.min.js"></script>
 
-<!-- ==== KEEP YOUR APP BOOTSTRAP AFTER DOMPurify ==== -->
-<script type="module">
-    import { applySavedTheme } from '/app/utils/theme.js';
-    applySavedTheme();   // runs before any body content is painted
-</script>
 
 </head>
 

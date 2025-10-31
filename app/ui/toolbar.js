@@ -1,7 +1,7 @@
 // app/ui/toolbar.js
 import { toggleTheme } from '../utils/theme.js';
 import { getLocale } from '../data/locales.js';
-import { applyDirection } from '../utils/rtl.js';
+// import { applyDirection } from '../utils/rtl.js';
 import { setStoredLang, getStoredLang } from '../utils/storage.js';
 
 export function renderToolbar(container) {
@@ -22,7 +22,7 @@ export function renderToolbar(container) {
     homeBtn.id = 'homeBtn';
     homeBtn.title = 'Home';
     homeBtn.textContent = '🏠';
-    homeBtn.style.flex = '0 0 auto';
+  //  homeBtn.style.flex = '0 0 auto';
     homeBtn.onclick = () => {
         // Navigate to the root of the stored language (replaceState → no extra history entry)
         window.router.navigate(`/${getStoredLang()}/`, true);
@@ -33,7 +33,7 @@ export function renderToolbar(container) {
     themeBtn.title = getLocale(getStoredLang()).toggleTheme ||
         'Toggle light/dark mode';
     themeBtn.textContent = '🌙';
-    themeBtn.style.flex = '0 0 auto';
+//    themeBtn.style.flex = '0 0 auto';
     themeBtn.onclick = toggleTheme;
 
     // ----- NEW HELP BUTTON -------------------------------------------------
@@ -41,7 +41,7 @@ export function renderToolbar(container) {
     helpBtn.id = 'helpBtn';
     helpBtn.title = getLocale(getStoredLang()).helpHeader || 'Help';
     helpBtn.textContent = '❓';               // you can also use ℹ️ or 🛈
-    helpBtn.style.flex = '0 0 auto';
+ //   helpBtn.style.flex = '0 0 auto';
 
     helpBtn.onclick = () => {
         // Navigate to the generic help page, preserving the current language.
@@ -52,14 +52,14 @@ export function renderToolbar(container) {
     // 4️⃣  Two containers – one for Home, one for Theme+Settings
     // -----------------------------------------------------------------
     const leftContainer = document.createElement('div');
-    leftContainer.style.display = 'flex';
-    leftContainer.style.alignItems = 'center';
+ //   leftContainer.style.display = 'flex';
+ //   leftContainer.style.alignItems = 'center';
     leftContainer.appendChild(homeBtn); // Home stays on the “start” side
 
     const rightContainer = document.createElement('div');
-    rightContainer.style.display = 'flex';
-    rightContainer.style.alignItems = 'center';
-    rightContainer.style.gap = '0.5rem';
+//    rightContainer.style.display = 'flex';
+ //   rightContainer.style.alignItems = 'center';
+ //   rightContainer.style.gap = '0.5rem';
     rightContainer.appendChild(themeBtn);
     rightContainer.appendChild(helpBtn);
     // rightContainer.appendChild(settingsBtn); // Theme & Settings together
@@ -70,9 +70,9 @@ export function renderToolbar(container) {
     const toolbar = document.createElement('header');
     toolbar.id = 'toolbar';
     toolbar.className = 'toolbar';
-    toolbar.style.display = 'flex';
-    toolbar.style.justifyContent = 'space-between';
-    toolbar.style.alignItems = 'center';
+ //   toolbar.style.display = 'flex';
+//    toolbar.style.justifyContent = 'space-between';
+ //   toolbar.style.alignItems = 'center';
     toolbar.appendChild(leftContainer);
     toolbar.appendChild(rightContainer);
 

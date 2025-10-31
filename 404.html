@@ -1,22 +1,63 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <title>Redirecting...</title>
+    <meta charset="UTF-8">
+    <title>Redirecting…</title>
+
+    <!-- ==========================================================
+       1️⃣  EXACT SAME CSP THAT index.html USES
+       ========================================================== -->
+    <meta http-equiv="Content-Security-Policy" content="
+        default-src 'self' https://cdn.jsdelivr.net;
+        script-src  'self' 'unsafe-inline' https://cdn.jsdelivr.net;
+        style-src   'self' 'unsafe-inline' https://fonts.googleapis.com;
+        img-src     'self' data: https:;
+        connect-src 'self' https:;
+        font-src    'self' data: https://fonts.gstatic.com;
+      ">
+
+    <!-- ==========================================================
+       2️⃣  SAVE THE ORIGINAL PATH SO THE SPA CAN RE‑NAVIGATE
+       ========================================================== -->
     <script>
-        // Preserve the path when redirecting
-        const segment = window.location.pathname;
-        sessionStorage.setItem('redirect_path', segment);
-        window.location.href = '/';
+        // Preserve the full URL (path + query + hash)
+        const originalPath = window.location.pathname +
+            window.location.search +
+            window.location.hash;
+
+        // Store it in sessionStorage – it survives the upcoming navigation.
+        sessionStorage.setItem('redirect_path', originalPath);
+
+        // ------------------------------------------------------------
+        // 3️⃣  Replace the address bar with '/' (no extra history entry)
+        // ------------------------------------------------------------
+        // Using replaceState means the back button will go to the page
+        // the user was on before they typed the deep link.
+        window.history.replaceState(null, '', '/');
     </script>
+
+    <!-- ==========================================================
+       4️⃣  Fallback for browsers with JS disabled (rare)
+       ========================================================== -->
     <noscript>
-        <meta http-equiv="refresh" content="0; url=/" />
+        <meta http-equiv="refresh" content="0;url=/" />
     </noscript>
+
+    <!-- ==========================================================
+       5️⃣  OPTIONAL – tiny styling so the user sees something
+       ========================================================== -->
+    <style>
+        body {
+            font-family: system-ui, sans-serif;
+            margin: 2rem;
+            color: #555;
+        }
+    </style>
 </head>
 
 <body>
-    <p>Redirecting...</p>
+    <p>Redirecting…</p>
 </body>
 
 </html>

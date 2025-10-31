@@ -59,12 +59,7 @@ export async function initMultipleChoicePage(uiLang, exId) {
     // 5️⃣ Page wrapper – margin, border, background (mirrors home page)
     // -------------------------------------------------------------
     const pageWrapper = document.createElement('div');
- //   pageWrapper.style.margin = '1rem';
-//    pageWrapper.style.padding = '1rem';
-    pageWrapper.style.border = '1px solid var(--border-surface, #ddd)';
-    pageWrapper.style.borderRadius = '.5rem';
-    pageWrapper.style.background = 'var(--bg-surface, #fff)';
-    pageWrapper.style.position = 'relative'; // for loading overlay
+    pageWrapper.className = 'mc-wrapper';
     main.appendChild(pageWrapper);
 
     // -------------------------------------------------------------
@@ -72,12 +67,7 @@ export async function initMultipleChoicePage(uiLang, exId) {
     // -------------------------------------------------------------
     const overlay = document.createElement('div');
     overlay.textContent = getLocale(uiLang).loading || 'Loading…';
-    overlay.style.cssText = `
-        position:absolute; inset:0; display:flex;
-        align-items:center; justify-content:center;
-        background:rgba(255,255,255,0.8);
-        font-size:1.2rem; z-index:10;
-    `;
+    overlay.className = 'mc-overlay';
     pageWrapper.appendChild(overlay);
 
     // -------------------------------------------------------------
@@ -120,30 +110,27 @@ export async function initMultipleChoicePage(uiLang, exId) {
     const title = document.createElement('h4');
     title.textContent = (meta.title?.[uiLang]) ||
         meta.title?.en || 'Multiple Choice';
-    title.style.textAlign = 'center';
- //   title.style.marginBottom = '1rem';
+    //    title.style.textAlign = 'center';
+    //   title.style.marginBottom = '1rem';
     pageWrapper.appendChild(title);
 
     // ----- Controls (language selectors + Start) ---------------
     const controlsDiv = document.createElement('div');
-    controlsDiv.style.display = 'flex';
-    controlsDiv.style.flexDirection = 'column';
-    controlsDiv.style.gap = '0.5rem';
-//    controlsDiv.style.marginBottom = '1rem';
+    controlsDiv.className = 'mc-controls';
     pageWrapper.appendChild(controlsDiv);
 
     // ---- Question language selector (inline) ------------------
     const qLangLabel = document.createElement('label');
     qLangLabel.textContent = locale.questionLanguage || 'Question language';
- //   qLangLabel.style.marginRight = '0.5rem';
-    qLangLabel.style.display = 'inline-block';
-    qLangLabel.style.verticalAlign = 'middle';
+    //   qLangLabel.style.marginRight = '0.5rem';
+    //   qLangLabel.style.display = 'inline-block';
+    //   qLangLabel.style.verticalAlign = 'middle';
 
     const qLangSelect = document.createElement('select');
-    qLangSelect.style.display = 'inline-block';
-    qLangSelect.style.verticalAlign = 'middle';
-    qLangSelect.style.maxWidth = '10ch';
-    qLangSelect.style.width = 'auto';
+    //   qLangSelect.style.display = 'inline-block';
+    //   qLangSelect.style.verticalAlign = 'middle';
+    //   qLangSelect.style.maxWidth = '10ch';
+    //   qLangSelect.style.width = 'auto';
     allLangCodes.forEach(l => {
         const opt = document.createElement('option');
         opt.value = l;
@@ -152,9 +139,9 @@ export async function initMultipleChoicePage(uiLang, exId) {
     });
 
     const qLangWrapper = document.createElement('div');
-    qLangWrapper.style.display = 'flex';
-    qLangWrapper.style.alignItems = 'center';
-    qLangWrapper.style.gap = '0.25rem';
+    //   qLangWrapper.style.display = 'flex';
+    //   qLangWrapper.style.alignItems = 'center';
+    //   qLangWrapper.style.gap = '0.25rem';
     qLangWrapper.appendChild(qLangLabel);
     qLangWrapper.appendChild(qLangSelect);
     controlsDiv.appendChild(qLangWrapper);
@@ -162,15 +149,15 @@ export async function initMultipleChoicePage(uiLang, exId) {
     // ---- Answer language selector (inline) -------------------
     const aLangLabel = document.createElement('label');
     aLangLabel.textContent = locale.answerLanguage || 'Answer language';
-//    aLangLabel.style.marginRight = '0.5rem';
-    aLangLabel.style.display = 'inline-block';
-    aLangLabel.style.verticalAlign = 'middle';
+    //    aLangLabel.style.marginRight = '0.5rem';
+    //   aLangLabel.style.display = 'inline-block';
+    //   aLangLabel.style.verticalAlign = 'middle';
 
     const aLangSelect = document.createElement('select');
-    aLangSelect.style.display = 'inline-block';
-    aLangSelect.style.verticalAlign = 'middle';
-    aLangSelect.style.maxWidth = '10ch';
-    aLangSelect.style.width = 'auto';
+    //   aLangSelect.style.display = 'inline-block';
+    //   aLangSelect.style.verticalAlign = 'middle';
+    //    aLangSelect.style.maxWidth = '10ch';
+    //    aLangSelect.style.width = 'auto';
     allLangCodes.forEach(l => {
         const opt = document.createElement('option');
         opt.value = l;
@@ -179,9 +166,9 @@ export async function initMultipleChoicePage(uiLang, exId) {
     });
 
     const aLangWrapper = document.createElement('div');
-    aLangWrapper.style.display = 'flex';
-    aLangWrapper.style.alignItems = 'center';
-    aLangWrapper.style.gap = '0.25rem';
+    //    aLangWrapper.style.display = 'flex';
+    //   aLangWrapper.style.alignItems = 'center';
+    //    aLangWrapper.style.gap = '0.25rem';
     aLangWrapper.appendChild(aLangLabel);
     aLangWrapper.appendChild(aLangSelect);
     controlsDiv.appendChild(aLangWrapper);
@@ -194,19 +181,12 @@ export async function initMultipleChoicePage(uiLang, exId) {
 
     // ----- Prompt (centered, with speaker icon) ---------------
     const promptWrapper = document.createElement('div');
-    promptWrapper.style.display = 'flex';
-    promptWrapper.style.alignItems = 'center';
-    promptWrapper.style.justifyContent = 'center';
-//    promptWrapper.style.marginBottom = '1rem';
-    promptWrapper.style.fontSize = '1.4rem';
-    promptWrapper.style.fontWeight = '600';
-    promptWrapper.style.textAlign = 'center';
+    promptWrapper.className = 'mc-prompt';
     promptWrapper.setAttribute('aria-live', 'polite');
 
     const promptIcon = document.createElement('span');
+    promptIcon.className = 'icon';
     promptIcon.textContent = '🔊';
- //   promptIcon.style.marginRight = '0.4rem';
-    promptIcon.style.cursor = 'pointer';
     promptIcon.title = locale.playPrompt || 'Play prompt';
     promptWrapper.appendChild(promptIcon);
 
@@ -216,12 +196,7 @@ export async function initMultipleChoicePage(uiLang, exId) {
 
     // ----- Answer list -----------------------------------------
     const ul = document.createElement('ul');
-    ul.style.listStyle = 'none';
-    ul.style.padding = '0';
-    ul.style.margin = '0';
-    ul.style.display = 'flex';
-    ul.style.flexDirection = 'column';
-    ul.style.gap = '0.5rem';
+    ul.className = 'mc-answers';
     pageWrapper.appendChild(ul);
 
     // create four empty <li><button> slots – we’ll fill them later
@@ -229,28 +204,21 @@ export async function initMultipleChoicePage(uiLang, exId) {
         const li = document.createElement('li');
         const btn = document.createElement('button');
         btn.type = 'button';
-        btn.style.width = '100%';
-        btn.style.padding = '0.5rem';
-        btn.style.fontSize = '1rem';
-        btn.style.cursor = 'pointer';
         li.appendChild(btn);
         ul.appendChild(li);
     }
 
     // ----- Feedback (correct / incorrect) ----------------------
     const feedbackEl = document.createElement('div');
-    feedbackEl.style.fontStyle = 'italic';
-//    feedbackEl.style.marginBottom = '0.5rem';
+    feedbackEl.className = 'mc-feedback';
+    //    feedbackEl.style.fontStyle = 'italic';
+    //    feedbackEl.style.marginBottom = '0.5rem';
     feedbackEl.setAttribute('aria-live', 'assertive');
     pageWrapper.appendChild(feedbackEl);
 
     // ----- Score & Reset button (single row) -------------------
     const bottomInfoRow = document.createElement('div');
-    bottomInfoRow.style.display = 'flex';
-    bottomInfoRow.style.justifyContent = 'space-between';
-    bottomInfoRow.style.alignItems = 'center';
- //   bottomInfoRow.style.marginTop = '1rem';
-    bottomInfoRow.style.gap = '1rem';
+    bottomInfoRow.className = 'mc-bottom';
 
     const scoreEl = document.createElement('div');
     scoreEl.innerHTML = `<span data-correct>0</span>/<span data-total>0</span>`;
@@ -265,10 +233,7 @@ export async function initMultipleChoicePage(uiLang, exId) {
 
     // ----- Navigation (Back ←  Next →) -------------------------
     const navDiv = document.createElement('div');
-    navDiv.style.display = 'flex';
-    navDiv.style.justifyContent = 'space-between';
-    navDiv.style.alignItems = 'center';
- //   navDiv.style.marginTop = '1rem';
+    navDiv.className = 'mc-nav';
     pageWrapper.appendChild(navDiv);
 
     const backBtn = document.createElement('button');
@@ -305,8 +270,8 @@ export async function initMultipleChoicePage(uiLang, exId) {
     startBtn.addEventListener('click', () => {
         qLangSelect.disabled = true;
         aLangSelect.disabled = true;
-        qLangSelect.style.opacity = '0.5';
-        aLangSelect.style.opacity = '0.5';
+        //        qLangSelect.style.opacity = '0.5';
+        //       aLangSelect.style.opacity = '0.5';
         startBtn.disabled = true;
         renderQuestion();
     });
@@ -345,7 +310,7 @@ export async function initMultipleChoicePage(uiLang, exId) {
         const randIdx = Math.floor(Math.random() * srcTokens.length);
         const promptTxt = srcTokens[randIdx] || '';
         promptEl.textContent = promptTxt;
-        promptEl.style.cursor = 'pointer';
+        //       promptEl.style.cursor = 'pointer';
         promptEl.title = getLocale(uiLang).playPrompt || 'Play prompt';
         promptEl.onclick = () => {
             speakText(promptTxt, getStoredVoice()).catch(console.warn);
@@ -390,9 +355,8 @@ export async function initMultipleChoicePage(uiLang, exId) {
 
             // ----- speaker icon for each answer --------------------
             const ansIcon = document.createElement('span');
+            ansIcon.className = 'icon';
             ansIcon.textContent = '🔊';
- //           ansIcon.style.marginRight = '0.4rem';
-            ansIcon.style.cursor = 'pointer';
             ansIcon.title = locale.playAnswer || 'Play answer';
             ansIcon.onclick = (e) => {
                 e.stopPropagation(); // prevent double‑trigger
@@ -418,15 +382,17 @@ export async function initMultipleChoicePage(uiLang, exId) {
                     btn.style.background = '#4caf50';
                     btn.style.color = '#fff';
                     feedbackEl.textContent = locale.correctFeedback || 'Correct!';
+                    // btn.classList.add('correct');
                     state.correct++;
                 } else {
                     btn.style.background = '#ff5252';
                     btn.style.color = '#fff';
                     feedbackEl.textContent = locale.incorrectFeedback || 'Incorrect.';
-
+                    //   btn.classList.add('incorrect');
                     // also highlight the correct button in green
                     const correctBtn = Array.from(btns).find(b => b.dataset.isCorrect === 'true');
                     if (correctBtn) {
+                        //      correctBtn.classList.add('correct');
                         correctBtn.style.background = '#4caf50';
                         correctBtn.style.color = '#fff';
                     }

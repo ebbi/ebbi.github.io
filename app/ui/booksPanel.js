@@ -31,7 +31,7 @@ export async function renderBooksPanel(container, uiLang, prePubId = null, preLa
     // -----------------------------------------------------------------
     const details = document.createElement("details");
     details.open = true;                     // expanded by default
-    details.style.margin = "0.5rem 1rem";
+// es    details.style.margin = "0.5rem 1rem";
 
     const summary = document.createElement("summary");
     summary.textContent = locale.booksAndBlogs || "Books & Blogs";
@@ -43,9 +43,9 @@ export async function renderBooksPanel(container, uiLang, prePubId = null, preLa
     const searchInput = document.createElement("input");
     searchInput.type = "search";
     searchInput.placeholder = locale.searchPlaceholder || "Search…";
-    searchInput.style.width = "100%";
-    searchInput.style.maxWidth = "20rem";
-    searchInput.style.margin = "0.5rem 0";
+ // es   searchInput.style.width = "100%";
+  // es    searchInput.style.maxWidth = "20rem";
+ // es     searchInput.style.margin = "0.5rem 0";
     details.appendChild(searchInput);
 
     // -----------------------------------------------------------------
@@ -53,9 +53,9 @@ export async function renderBooksPanel(container, uiLang, prePubId = null, preLa
     // -----------------------------------------------------------------
     const pubSelect = document.createElement("select");
     pubSelect.id = "pubSelect";
-    pubSelect.style.width = "100%";
-    pubSelect.style.maxWidth = "20rem";
-    pubSelect.style.margin = "0.5rem 0";
+//    pubSelect.style.width = "100%";
+//    pubSelect.style.maxWidth = "20rem";
+//    pubSelect.style.margin = "0.5rem 0";
 
     const pubPlaceholder = document.createElement("option");
     pubPlaceholder.value = "";
@@ -76,9 +76,9 @@ export async function renderBooksPanel(container, uiLang, prePubId = null, preLa
     // -----------------------------------------------------------------
     const langSelect = document.createElement("select");
     langSelect.id = "langSelect";
-    langSelect.style.width = "100%";
-    langSelect.style.maxWidth = "20rem";
-    langSelect.style.margin = "0.5rem 0";
+//    langSelect.style.width = "100%";
+ //   langSelect.style.maxWidth = "20rem";
+//    langSelect.style.margin = "0.5rem 0";
 
     const langPlaceholder = document.createElement("option");
     langPlaceholder.value = "";
@@ -92,11 +92,12 @@ export async function renderBooksPanel(container, uiLang, prePubId = null, preLa
     // -----------------------------------------------------------------
     const cardsGrid = document.createElement("div");
     cardsGrid.className = "books-cards-grid";
-    cardsGrid.style.display = "grid";
-    cardsGrid.style.gridTemplateColumns = "1fr";
-    cardsGrid.style.gap = "1rem";
-    cardsGrid.style.marginTop = "1rem";
+ //   cardsGrid.style.display = "grid";
+ //   cardsGrid.style.gridTemplateColumns = "1fr";
+ //   cardsGrid.style.gap = "1rem";
+//    cardsGrid.style.marginTop = "1rem";
 
+/*
     // responsive breakpoints (mobile‑first)
     const style = document.createElement("style");
     style.textContent = `
@@ -141,7 +142,11 @@ export async function renderBooksPanel(container, uiLang, prePubId = null, preLa
             font-size: .9rem;
         }
     `;
+
     details.appendChild(style);
+
+    */
+
     details.appendChild(cardsGrid);
 
     // -----------------------------------------------------------------

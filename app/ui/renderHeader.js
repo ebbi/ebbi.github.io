@@ -6,7 +6,6 @@ import { renderToolbar } from './toolbar.js';
 import { renderMenu } from './menu.js';
 import { applyDirection } from '../utils/rtl.js';
 import { getStoredLang, setStoredLang } from '../utils/storage.js';
-// import { SUPPORTED_LANGS, FALLBACK_LANG, LANGUAGE_LABELS } from '../data/locales.js';
 import { SUPPORTED_LANGS, FALLBACK_LANG, LANGUAGE_LABELS, getLocale } from '../data/locales.js';
 import { populateFontSelect } from './fontSelect.js';
 // NEW – central speech controller
@@ -61,26 +60,10 @@ export async function renderHeader(lang) {
     // 4️⃣ Populate the static navigation bar with language & font selectors
     // -----------------------------------------------------------------
     const nav = document.querySelector('nav.menu-nav');
-    /*
-        // ---- Language selector -------------------------------------------------
-        const langSelect = document.createElement('select');
-        langSelect.id = 'langSelect';
-        langSelect.style.width = '100%';
-        langSelect.style.fontSize = '0.85rem';
-        langSelect.style.margin = '0';
-        langSelect.innerHTML = SUPPORTED_LANGS.map(code => {
-            const selected = code === getStoredLang() ? 'selected' : '';
-            const label = LANGUAGE_LABELS[code] || code.toUpperCase();
-            return `<option value="${code}" ${selected}>${label}</option>`;
-        }).join('');
-    */
 
     // ---- Language selector -------------------------------------------------
     const langSelect = document.createElement('select');
     langSelect.id = 'langSelect';
-    langSelect.style.flex = '1';               // will share the row with the font selector
-//    langSelect.style.fontSize = '0.85rem';
- //   langSelect.style.margin = '0';
 
     // placeholder (first row) – not selectable, internationalised
     const placeholderOption = document.createElement('option');
@@ -125,24 +108,9 @@ export async function renderHeader(lang) {
         }
     };
 
-    //   nav.appendChild(langSelect);
-    /*
-        // ---- Font selector ----------------------------------------------------
-        const fontSelect = document.createElement('select');
-        fontSelect.id = 'fontSelect';
-        fontSelect.style.width = '100%';
-        fontSelect.style.fontSize = '0.85rem';
-        fontSelect.style.margin = '0';
-        // The actual options will be filled later by `renderMenu` (it knows the catalog).
-        nav.appendChild(fontSelect);
-        populateFontSelect(fontSelect);
-    */
     // ---- Font selector ----------------------------------------------------
     const fontSelect = document.createElement('select');
     fontSelect.id = 'fontSelect';
-    fontSelect.style.flex = '1';               // will share the row with the language selector
-//    fontSelect.style.fontSize = '0.85rem';
- //   fontSelect.style.margin = '0';
 
     // placeholder (first row) – not selectable, internationalised
     const fontPlaceholder = document.createElement('option');
@@ -157,10 +125,7 @@ export async function renderHeader(lang) {
 
     // ---- Wrap the two selectors in a single flex row -----------------------
     const selectorsRow = document.createElement('div');
-    selectorsRow.style.display = 'flex';
-    selectorsRow.style.gap = '0.5rem';          // optional spacing between the two selects
- //   selectorsRow.style.margin = '0.5rem 0';     // optional vertical margin
-
+    selectorsRow.className = 'selectors-row';
     selectorsRow.appendChild(langSelect);
     selectorsRow.appendChild(fontSelect);
 

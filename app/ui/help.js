@@ -28,21 +28,21 @@ export function renderHelp(container) {
     // 3️⃣  Header row – left‑aligned “Help” title, right‑aligned search.
     // -----------------------------------------------------------------
     const headerRow = document.createElement('div');
-    headerRow.style.display = 'flex';
-    headerRow.style.justifyContent = 'space-between';
-    headerRow.style.alignItems = 'center';
+//    headerRow.style.display = 'flex';
+ //   headerRow.style.justifyContent = 'space-between';
+ //   headerRow.style.alignItems = 'center';
  ///   headerRow.style.padding = '0.5rem 1rem';
-    headerRow.style.borderBottom = `1px solid var(--border-surface, #ddd)`;
+//    headerRow.style.borderBottom = `1px solid var(--border-surface, #ddd)`;
 
     const title = document.createElement('h2');
     title.textContent = locale.help || 'Help';
-    title.style.margin = '0';
+//    title.style.margin = '0';
     headerRow.appendChild(title);
 
     const searchLabel = document.createElement('label');
-    searchLabel.style.display = 'flex';
-    searchLabel.style.alignItems = 'center';
-    searchLabel.style.gap = '0.25rem';
+ //   searchLabel.style.display = 'flex';
+//    searchLabel.style.alignItems = 'center';
+//    searchLabel.style.gap = '0.25rem';
 
     const searchIcon = document.createElement('span');
     searchIcon.textContent = '🔍';
@@ -52,37 +52,14 @@ export function renderHelp(container) {
     searchInput.type = 'search';
     searchInput.placeholder = locale.searchPlaceholder || 'Search';
  //   searchInput.style.padding = '0';
-    searchInput.style.border = `1px solid var(--border-surface, #ddd)`;
-    searchInput.style.borderRadius = '4px';
-    searchInput.style.width = '12rem';
+//    searchInput.style.border = `1px solid var(--border-surface, #ddd)`;
+//    searchInput.style.borderRadius = '4px';
+ //   searchInput.style.width = '12rem';
     searchLabel.appendChild(searchInput);
 
     headerRow.appendChild(searchLabel);
     container.appendChild(headerRow);
 
-    // -----------------------------------------------------------------
-    // 4️⃣  Tiny style block (no external CSS needed).
-    // -----------------------------------------------------------------
-    const style = document.createElement('style');
-    style.textContent = `
-        .help-detail {
-            margin: 1rem 0.5rem;
-            padding: 0.5rem;
-            border: 1px solid var(--border-surface, #ddd);
-            border-radius: 0.5rem;
-            background: var(--bg-surface, #fff);
-        }
-        .help-detail > summary {
-            font-weight: 600;
-            cursor: pointer;
-            margin-bottom: 0.4rem;
-        }
-        .help-detail p {
-            margin: 0.5rem 0;
-            white-space: pre-line;   /* preserve line‑breaks (\n) */
-        }
-    `;
-    container.appendChild(style);
 
     // -----------------------------------------------------------------
     // 5️⃣  Render every HELP_RECORD (including Android, iOS and the
@@ -136,7 +113,7 @@ export function renderHelp(container) {
                 const q = det.querySelector('summary').textContent.toLowerCase();
                 const a = det.textContent.toLowerCase(); // includes inner HTML text
                 const match = term === '' || q.includes(term) || a.includes(term);
-                det.style.display = match ? '' : 'none';
+ //               det.style.display = match ? '' : 'none';
             });
         });
     }
