@@ -1,6 +1,18 @@
+I am using VS Code and Github.
 
+http://127.0.0.1:5501/en
+returns:
+Cannot GET /en
 
-Do not generate any diff patches, 
+and browser console:
+
+GET
+http://127.0.0.1:5501/en
+[HTTP/1.1 404 Not Found 2ms]
+
+Content-Security-Policy: The page’s settings blocked the loading of a resource (img-src) at http://127.0.0.1:5501/favicon.ico because it violates the following directive: “default-src 'none'” FaviconLoader.sys.mjs:175:20
+
+In your response, do not generate any diff patches, 
  instead indicate any changes with fin/replace and plane code
 
 

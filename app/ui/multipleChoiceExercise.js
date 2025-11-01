@@ -283,8 +283,14 @@ export async function initMultipleChoicePage(uiLang, exId) {
         // ---- Reset UI -------------------------------------------------
         ul.querySelectorAll('button').forEach(b => {
             b.disabled = false;
-            b.style.background = '';
-            b.style.color = '';
+            //    b.style.background = '';
+            //    b.style.color = '';
+            if (b.classList.contains('correct')) {
+                b.classList.remove('correct')
+            }
+            if (b.classList.contains('incorrect')) {
+                b.classList.remove('incorrect')
+            }
         });
         feedbackEl.textContent = '';
         nextBtn.disabled = true;
@@ -379,22 +385,22 @@ export async function initMultipleChoicePage(uiLang, exId) {
 
                 const isCorrect = btn.dataset.isCorrect === 'true';
                 if (isCorrect) {
-                    btn.style.background = '#4caf50';
-                    btn.style.color = '#fff';
+                    //    btn.style.background = '#4caf50';
+                    //    btn.style.color = '#fff';
                     feedbackEl.textContent = locale.correctFeedback || 'Correct!';
-                    // btn.classList.add('correct');
+                    btn.classList.add('correct');
                     state.correct++;
                 } else {
-                    btn.style.background = '#ff5252';
-                    btn.style.color = '#fff';
+                    // btn.style.background = '#ff5252';
+                    // btn.style.color = '#fff';
                     feedbackEl.textContent = locale.incorrectFeedback || 'Incorrect.';
-                    //   btn.classList.add('incorrect');
+                    btn.classList.add('incorrect');
                     // also highlight the correct button in green
                     const correctBtn = Array.from(btns).find(b => b.dataset.isCorrect === 'true');
                     if (correctBtn) {
-                        //      correctBtn.classList.add('correct');
-                        correctBtn.style.background = '#4caf50';
-                        correctBtn.style.color = '#fff';
+                        correctBtn.classList.add('correct');
+                        //   correctBtn.style.background = '#4caf50';
+                        // correctBtn.style.color = '#fff';
                     }
                 }
 

@@ -6,7 +6,7 @@
     <title>Redirecting…</title>
 
     <!-- ==========================================================
-       1️⃣  EXACT SAME CSP THAT index.html USES
+       1️⃣  SAME CSP THAT index.html USES
        ========================================================== -->
     <meta http-equiv="Content-Security-Policy" content="
         default-src 'self' https://cdn.jsdelivr.net;
@@ -18,34 +18,42 @@
       ">
 
     <!-- ==========================================================
-       2️⃣  SAVE THE ORIGINAL PATH SO THE SPA CAN RE‑NAVIGATE
+       2️⃣  STORE THE ORIGINAL DEEP LINK
        ========================================================== -->
     <script>
-        // Preserve the full URL (path + query + hash)
+        // Preserve everything after the domain (path + query + hash)
         const originalPath = window.location.pathname +
             window.location.search +
             window.location.hash;
 
-        // Store it in sessionStorage – it survives the upcoming navigation.
+        // Save it in sessionStorage – bootstrap.js will read it later.
         sessionStorage.setItem('redirect_path', originalPath);
 
         // ------------------------------------------------------------
-        // 3️⃣  Replace the address bar with '/' (no extra history entry)
+        // 3️⃣  CHANGE the address bar to the root ("/") WITHOUT adding
+        //     a new entry to the browser history.
         // ------------------------------------------------------------
         // Using replaceState means the back button will go to the page
-        // the user was on before they typed the deep link.
+        // the user was on before typing the deep link.
         window.history.replaceState(null, '', '/');
+
+        // ------------------------------------------------------------
+        // 4️⃣  Force the browser to actually request "/" now.
+        // ------------------------------------------------------------
+        // location.replace triggers a full navigation (GET /) which
+        // returns index.html with a 200 status.
+        window.location.replace('/');
     </script>
 
     <!-- ==========================================================
-       4️⃣  Fallback for browsers with JS disabled (rare)
+       5️⃣  Fallback for browsers with JS disabled (very rare)
        ========================================================== -->
     <noscript>
         <meta http-equiv="refresh" content="0;url=/" />
     </noscript>
 
     <!-- ==========================================================
-       5️⃣  OPTIONAL – tiny styling so the user sees something
+       6️⃣  Minimal styling – just so the user sees something
        ========================================================== -->
     <style>
         body {
