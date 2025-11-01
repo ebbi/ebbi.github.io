@@ -85,7 +85,6 @@ export function showMissingVoiceModal(missingLang, uiLang) {
 
     const btn = document.createElement("button");
     btn.textContent = locale.goToHelp || "Go to Help";
- //   btn.style.marginTop = ".5rem";
     btn.onclick = () => {
         document.body.removeChild(overlay);
         // Navigate to the generic Help page (preserve UI language)

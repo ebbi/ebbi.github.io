@@ -28,21 +28,12 @@ export function renderHelp(container) {
     // 3️⃣  Header row – left‑aligned “Help” title, right‑aligned search.
     // -----------------------------------------------------------------
     const headerRow = document.createElement('div');
-//    headerRow.style.display = 'flex';
- //   headerRow.style.justifyContent = 'space-between';
- //   headerRow.style.alignItems = 'center';
- ///   headerRow.style.padding = '0.5rem 1rem';
-//    headerRow.style.borderBottom = `1px solid var(--border-surface, #ddd)`;
 
     const title = document.createElement('h2');
     title.textContent = locale.help || 'Help';
-//    title.style.margin = '0';
     headerRow.appendChild(title);
 
     const searchLabel = document.createElement('label');
- //   searchLabel.style.display = 'flex';
-//    searchLabel.style.alignItems = 'center';
-//    searchLabel.style.gap = '0.25rem';
 
     const searchIcon = document.createElement('span');
     searchIcon.textContent = '🔍';
@@ -51,10 +42,6 @@ export function renderHelp(container) {
     const searchInput = document.createElement('input');
     searchInput.type = 'search';
     searchInput.placeholder = locale.searchPlaceholder || 'Search';
- //   searchInput.style.padding = '0';
-//    searchInput.style.border = `1px solid var(--border-surface, #ddd)`;
-//    searchInput.style.borderRadius = '4px';
- //   searchInput.style.width = '12rem';
     searchLabel.appendChild(searchInput);
 
     headerRow.appendChild(searchLabel);
@@ -113,7 +100,6 @@ export function renderHelp(container) {
                 const q = det.querySelector('summary').textContent.toLowerCase();
                 const a = det.textContent.toLowerCase(); // includes inner HTML text
                 const match = term === '' || q.includes(term) || a.includes(term);
- //               det.style.display = match ? '' : 'none';
             });
         });
     }

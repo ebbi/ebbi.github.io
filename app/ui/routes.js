@@ -176,11 +176,45 @@ export async function notFoundHandler({ search = "", hash = "" } = {}) {
 
 /* -----------------------------------------------------------------
    7️⃣  Test‑yourself (multiple‑choice) page
-   ----------------------------------------------------------------- */
+   ----------------------------------------------------------------- 
 export async function testExerciseHandler({ lang, id } = {}) {
     if (!lang) lang = getStoredLang();
     if (lang !== getStoredLang()) await setStoredLang(lang);
     applyDirection(lang);
+    const mainEl = await renderHeader(lang);
+    const { initMultipleChoicePage } = await import('./multipleChoiceExercise.js');
+    await initMultipleChoicePage(lang, id);
+}
+*/
+export async function testExerciseHandler({ lang, id } = {}) {
+    // 1️⃣ Normalise language, persist it and set direction
+    if (!lang) lang = getStoredLang();
+    if (lang !== getStoredLang()) await setStoredLang(lang);
+    applyDirection(lang);
+
+    // 2️⃣ Ensure the global EXERCISES array is populated
+    const { EXERCISES } = await import("../data/exercises.js");
+    if (!EXERCISES.length) {
+        try {
+            const data = await loadJSON("/app/data/exercises.json");
+            EXERCISES.push(...data);
+        } catch (e) {
+            console.warn("⚠️ Could not load exercises catalogue", e);
+            const main = document.getElementById("main");
+            if (main) main.innerHTML = `<p>⚠️ Could not load exercises.</p>`;
+            return;
+        }
+    }
+
+    // 3️⃣ Find the requested exercise meta
+    const meta = EXERCISES.find(e => e.id === id);
+    if (!meta) {
+        const main = document.getElementById("main");
+        if (main) main.innerHTML = `<p>⚠️ Exercise ${id} not found.</p>`;
+        return;
+    }
+
+    // 4️⃣ Render the Multiple‑Choice page
     const mainEl = await renderHeader(lang);
     const { initMultipleChoicePage } = await import('./multipleChoiceExercise.js');
     await initMultipleChoicePage(lang, id);

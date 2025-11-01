@@ -31,7 +31,6 @@ export async function renderBooksPanel(container, uiLang, prePubId = null, preLa
     // -----------------------------------------------------------------
     const details = document.createElement("details");
     details.open = true;                     // expanded by default
-// es    details.style.margin = "0.5rem 1rem";
 
     const summary = document.createElement("summary");
     summary.textContent = locale.booksAndBlogs || "Books & Blogs";
@@ -43,9 +42,6 @@ export async function renderBooksPanel(container, uiLang, prePubId = null, preLa
     const searchInput = document.createElement("input");
     searchInput.type = "search";
     searchInput.placeholder = locale.searchPlaceholder || "Search…";
- // es   searchInput.style.width = "100%";
-  // es    searchInput.style.maxWidth = "20rem";
- // es     searchInput.style.margin = "0.5rem 0";
     details.appendChild(searchInput);
 
     // -----------------------------------------------------------------
@@ -53,9 +49,6 @@ export async function renderBooksPanel(container, uiLang, prePubId = null, preLa
     // -----------------------------------------------------------------
     const pubSelect = document.createElement("select");
     pubSelect.id = "pubSelect";
-//    pubSelect.style.width = "100%";
-//    pubSelect.style.maxWidth = "20rem";
-//    pubSelect.style.margin = "0.5rem 0";
 
     const pubPlaceholder = document.createElement("option");
     pubPlaceholder.value = "";
@@ -76,9 +69,6 @@ export async function renderBooksPanel(container, uiLang, prePubId = null, preLa
     // -----------------------------------------------------------------
     const langSelect = document.createElement("select");
     langSelect.id = "langSelect";
-//    langSelect.style.width = "100%";
- //   langSelect.style.maxWidth = "20rem";
-//    langSelect.style.margin = "0.5rem 0";
 
     const langPlaceholder = document.createElement("option");
     langPlaceholder.value = "";
@@ -92,60 +82,6 @@ export async function renderBooksPanel(container, uiLang, prePubId = null, preLa
     // -----------------------------------------------------------------
     const cardsGrid = document.createElement("div");
     cardsGrid.className = "books-cards-grid";
- //   cardsGrid.style.display = "grid";
- //   cardsGrid.style.gridTemplateColumns = "1fr";
- //   cardsGrid.style.gap = "1rem";
-//    cardsGrid.style.marginTop = "1rem";
-
-/*
-    // responsive breakpoints (mobile‑first)
-    const style = document.createElement("style");
-    style.textContent = `
-        @media (min-width:600px) {
-            .books-cards-grid { grid-template-columns: repeat(2,1fr); }
-        }
-        @media (min-width:900px) {
-            .books-cards-grid { grid-template-columns: repeat(3,1fr); }
-        }
-        .book-card {
-            border: 1px solid var(--border-surface, #ddd);
-            border-radius: .5rem;
-            overflow: hidden;
-            background: var(--bg-surface, #fff);
-            display: flex;
-            flex-direction: column;
-        }
-        .book-card img {
-            width: 100%;
-            height: auto;
-            object-fit: cover;
-        }
-        .book-card .content {
-            padding: .5rem 1rem;
-            flex: 1;
-        }
-        .book-card h3 {
-            margin: .3rem 0;
-            font-size: 1.1rem;
-            color: var(--heading-accent);
-        }
-        .book-card p {
-            margin: .3rem 0;
-            font-size: .9rem;
-            color: var(--txt-secondary);
-        }
-        .book-card a.read-more {
-            margin-top: .5rem;
-            display: inline-block;
-            color: var(--link);
-            text-decoration: underline;
-            font-size: .9rem;
-        }
-    `;
-
-    details.appendChild(style);
-
-    */
 
     details.appendChild(cardsGrid);
 

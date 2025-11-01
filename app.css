@@ -174,7 +174,7 @@ h6 {
 #toolbar button {
     background: none;
     border: none;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     cursor: pointer;
     color: var(--txt-primary);
 }
@@ -469,6 +469,7 @@ details summary {
 .disabled {
     pointer-events: none;
     opacity: .5;
+    filter: grayscale(80%);
 }
 
 /*=====================================================================
@@ -570,6 +571,33 @@ details summary {
     align-items: center;
     margin-top: 1rem;
 }
+
+/* -------------------------------------------------------------
+   Dim‑and‑Grayscale for any disabled UI element
+   ------------------------------------------------------------- */
+button:disabled,
+select:disabled,
+input:disabled,
+textarea:disabled,
+.disabled {
+    /* catches elements that get the .disabled class */
+    /*   opacity: 0.6; */
+    /* keep a subtle see‑through effect */
+    /*   filter: grayscale(80%); */
+    /* strip most colour, leaving a grey tone */
+    cursor: not-allowed;
+    /* visual cue that interaction is blocked */
+}
+
+/* Optional – make the disabled state a little smoother */
+button:disabled,
+select:disabled,
+input:disabled,
+textarea:disabled,
+.disabled {
+    transition: opacity 0.2s ease, filter 0.2s ease;
+}
+
 
 /*=====================================================================
    11️⃣  Help page

@@ -16,26 +16,6 @@ export function applyFontFamily(cssFamily) {
 }
 
 /**
- * Helper that reads the stored font name, finds the matching entry in
- * `FONT_CATALOG`, and applies it.  Returns `true` if a font was applied.
- *
- * @param {Array} catalog – the `FONT_CATALOG` array imported from
- *                          `../data/fonts.js`.
- * @param {Function} getStoredFont – function that reads the LS key.
- */
-/*
-export function applyCurrentFont(catalog, getStoredFont) {
-    const savedName = getStoredFont();
-    const entry = catalog.find(f => f.name === savedName);
-    if (entry) {
-        applyFontFamily(entry.family);
-        return true;
-    }
-    return false;
-}
-*/
-
-/**
  * Apply the font stored in local‑storage (or the default) to the root.
  * This is the single source of truth for “apply the persisted font”.
  */

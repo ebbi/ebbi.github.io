@@ -110,8 +110,6 @@ export async function initMultipleChoicePage(uiLang, exId) {
     const title = document.createElement('h4');
     title.textContent = (meta.title?.[uiLang]) ||
         meta.title?.en || 'Multiple Choice';
-    //    title.style.textAlign = 'center';
-    //   title.style.marginBottom = '1rem';
     pageWrapper.appendChild(title);
 
     // ----- Controls (language selectors + Start) ---------------
@@ -122,15 +120,9 @@ export async function initMultipleChoicePage(uiLang, exId) {
     // ---- Question language selector (inline) ------------------
     const qLangLabel = document.createElement('label');
     qLangLabel.textContent = locale.questionLanguage || 'Question language';
-    //   qLangLabel.style.marginRight = '0.5rem';
-    //   qLangLabel.style.display = 'inline-block';
-    //   qLangLabel.style.verticalAlign = 'middle';
+
 
     const qLangSelect = document.createElement('select');
-    //   qLangSelect.style.display = 'inline-block';
-    //   qLangSelect.style.verticalAlign = 'middle';
-    //   qLangSelect.style.maxWidth = '10ch';
-    //   qLangSelect.style.width = 'auto';
     allLangCodes.forEach(l => {
         const opt = document.createElement('option');
         opt.value = l;
@@ -138,10 +130,9 @@ export async function initMultipleChoicePage(uiLang, exId) {
         qLangSelect.appendChild(opt);
     });
 
+    qLangSelect.value = uiLang;
+
     const qLangWrapper = document.createElement('div');
-    //   qLangWrapper.style.display = 'flex';
-    //   qLangWrapper.style.alignItems = 'center';
-    //   qLangWrapper.style.gap = '0.25rem';
     qLangWrapper.appendChild(qLangLabel);
     qLangWrapper.appendChild(qLangSelect);
     controlsDiv.appendChild(qLangWrapper);
@@ -149,15 +140,8 @@ export async function initMultipleChoicePage(uiLang, exId) {
     // ---- Answer language selector (inline) -------------------
     const aLangLabel = document.createElement('label');
     aLangLabel.textContent = locale.answerLanguage || 'Answer language';
-    //    aLangLabel.style.marginRight = '0.5rem';
-    //   aLangLabel.style.display = 'inline-block';
-    //   aLangLabel.style.verticalAlign = 'middle';
 
     const aLangSelect = document.createElement('select');
-    //   aLangSelect.style.display = 'inline-block';
-    //   aLangSelect.style.verticalAlign = 'middle';
-    //    aLangSelect.style.maxWidth = '10ch';
-    //    aLangSelect.style.width = 'auto';
     allLangCodes.forEach(l => {
         const opt = document.createElement('option');
         opt.value = l;
@@ -165,10 +149,9 @@ export async function initMultipleChoicePage(uiLang, exId) {
         aLangSelect.appendChild(opt);
     });
 
+    aLangSelect.value = exerciseLang;
+
     const aLangWrapper = document.createElement('div');
-    //    aLangWrapper.style.display = 'flex';
-    //   aLangWrapper.style.alignItems = 'center';
-    //    aLangWrapper.style.gap = '0.25rem';
     aLangWrapper.appendChild(aLangLabel);
     aLangWrapper.appendChild(aLangSelect);
     controlsDiv.appendChild(aLangWrapper);
@@ -178,6 +161,12 @@ export async function initMultipleChoicePage(uiLang, exId) {
     startBtn.textContent = locale.startTest || 'Start test';
     startBtn.disabled = true;               // enabled only when both selectors have values
     controlsDiv.appendChild(startBtn);
+
+
+    // After both selectors have been created and defaults assigned
+    validateSelectors();   // <-- add this line right after the two blocks above
+
+
 
     // ----- Prompt (centered, with speaker icon) ---------------
     const promptWrapper = document.createElement('div');
@@ -211,8 +200,6 @@ export async function initMultipleChoicePage(uiLang, exId) {
     // ----- Feedback (correct / incorrect) ----------------------
     const feedbackEl = document.createElement('div');
     feedbackEl.className = 'mc-feedback';
-    //    feedbackEl.style.fontStyle = 'italic';
-    //    feedbackEl.style.marginBottom = '0.5rem';
     feedbackEl.setAttribute('aria-live', 'assertive');
     pageWrapper.appendChild(feedbackEl);
 
@@ -226,9 +213,6 @@ export async function initMultipleChoicePage(uiLang, exId) {
     const resetScoreBtn = document.createElement('button');
     resetScoreBtn.textContent = locale.resetScore || 'Reset score';
 
-    bottomInfoRow.appendChild(feedbackEl);   // left side (feedback)
-    bottomInfoRow.appendChild(scoreEl);      // centre (score)
-    bottomInfoRow.appendChild(resetScoreBtn); // right side (reset)
     pageWrapper.appendChild(bottomInfoRow);
 
     // ----- Navigation (Back ←  Next →) -------------------------
@@ -270,8 +254,6 @@ export async function initMultipleChoicePage(uiLang, exId) {
     startBtn.addEventListener('click', () => {
         qLangSelect.disabled = true;
         aLangSelect.disabled = true;
-        //        qLangSelect.style.opacity = '0.5';
-        //       aLangSelect.style.opacity = '0.5';
         startBtn.disabled = true;
         renderQuestion();
     });
@@ -283,8 +265,6 @@ export async function initMultipleChoicePage(uiLang, exId) {
         // ---- Reset UI -------------------------------------------------
         ul.querySelectorAll('button').forEach(b => {
             b.disabled = false;
-            //    b.style.background = '';
-            //    b.style.color = '';
             if (b.classList.contains('correct')) {
                 b.classList.remove('correct')
             }
@@ -316,7 +296,6 @@ export async function initMultipleChoicePage(uiLang, exId) {
         const randIdx = Math.floor(Math.random() * srcTokens.length);
         const promptTxt = srcTokens[randIdx] || '';
         promptEl.textContent = promptTxt;
-        //       promptEl.style.cursor = 'pointer';
         promptEl.title = getLocale(uiLang).playPrompt || 'Play prompt';
         promptEl.onclick = () => {
             speakText(promptTxt, getStoredVoice()).catch(console.warn);
@@ -385,22 +364,16 @@ export async function initMultipleChoicePage(uiLang, exId) {
 
                 const isCorrect = btn.dataset.isCorrect === 'true';
                 if (isCorrect) {
-                    //    btn.style.background = '#4caf50';
-                    //    btn.style.color = '#fff';
                     feedbackEl.textContent = locale.correctFeedback || 'Correct!';
                     btn.classList.add('correct');
                     state.correct++;
                 } else {
-                    // btn.style.background = '#ff5252';
-                    // btn.style.color = '#fff';
                     feedbackEl.textContent = locale.incorrectFeedback || 'Incorrect.';
                     btn.classList.add('incorrect');
                     // also highlight the correct button in green
                     const correctBtn = Array.from(btns).find(b => b.dataset.isCorrect === 'true');
                     if (correctBtn) {
                         correctBtn.classList.add('correct');
-                        //   correctBtn.style.background = '#4caf50';
-                        // correctBtn.style.color = '#fff';
                     }
                 }
 
