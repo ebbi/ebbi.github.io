@@ -179,6 +179,12 @@ h6 {
     color: var(--txt-primary);
 }
 
+#toolbar button#reloadSoundBtn {
+    background-color: var(--link);
+    padding: 0 0.25rem;
+    margin-right: 0.5rem;
+}
+
 /* --------------------------------------------------------------
    Dark‑mode support – the colour variables already switch
    automatically when `[data‑theme="dark"]` is set on <html>.

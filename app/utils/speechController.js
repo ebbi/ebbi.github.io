@@ -10,6 +10,7 @@
 import { speakText, populateVoiceList } from "./speech.js";
 import { getStoredVoice, setStoredVoice, getStoredLang } from "./storage.js";
 import { getLocale } from "../data/locales.js";
+import { speechManager } from './speechManager.js';
 
 /* -----------------------------------------------------------------
    Default internal state – identical to the original version.
@@ -181,14 +182,32 @@ export function createSpeechController(container, {
     // Core playback loop – now respects the `speakMap` (see below)
     // -----------------------------------------------------------------
     async function playbackLoop() {
+        // ---------------------------------------------------------
+        // Register this session with the global manager
+        // ---------------------------------------------------------
+        speechManager.start();
+
+        // ---------------------------------------------------------
+        // If the user clicks the permanent toolbar button while the
+        // loop is running, `speechManager.signal` will be aborted.
+        // We'll check the signal before each iteration.
+        // ---------------------------------------------------------
+
         state.playing = true;
         setStatus("statusPlaying");
         playBtn.disabled = true;
 
         while (state.playing && state.tokenIdx < state.tokenEls.length) {
+            // Abort check – exit the loop immediately if a navigation or
+            // toolbar‑button abort occurred.
+            if (speechManager.signal?.aborted) {
+                console.info("[Speech] Playback aborted by manager");
+                break;
+            }
+
             const tIdx = state.tokenIdx;
             const col = state.tokenEls[tIdx];               // <div class="token-col">
-            const spans = state.transEls[tIdx];               // array of <span>
+            const spans = state.transEls[tIdx];  
 
             // ---------------------------------------------------------
             // 1️⃣  SOURCE token (transIdx === -1)
@@ -246,6 +265,11 @@ export function createSpeechController(container, {
         state.playing = false;
         setPanelEnabled(true);
         playBtn.disabled = false;
+
+        // ---------------------------------------------------------
+        // Tell the global manager the loop has finished (or was aborted)
+        // ---------------------------------------------------------
+        speechManager.stop();
     }
 
     // -----------------------------------------------------------------

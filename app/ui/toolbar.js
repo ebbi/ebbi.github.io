@@ -64,8 +64,39 @@ export function renderToolbar(container) {
     toolbar.appendChild(leftContainer);
     toolbar.appendChild(rightContainer);
 
-    // -----------------------------------------------------------------
     // 6️⃣  Insert the toolbar into the supplied container
     // -----------------------------------------------------------------
     container.appendChild(toolbar);
+}
+
+// ---------------------------------------------------------------
+// 7️⃣  Add a permanent “Reload / Stop Sound” button
+// ---------------------------------------------------------------
+export function addReloadSoundButton() {
+    const toolbar = document.getElementById('toolbar');
+    if (!toolbar) return;
+
+    // Create the button (placed after the Help button)
+    const reloadBtn = document.createElement('button');
+    reloadBtn.id = 'reloadSoundBtn';
+    reloadBtn.title = getLocale(getStoredLang()).reloadSound || 'Reload page (stop sound)';
+    reloadBtn.textContent = '🔊';
+ //   reloadBtn.style.opacity = 0.5;
+
+    // Click → stop any speech and reload the page
+    reloadBtn.onclick = () => {
+        if (window.speechManager) window.speechManager.stop();
+
+        // Full reload – this also clears the UI and any timers
+        location.reload();
+    };
+
+    // Insert after the Help button (right‑most container)
+    const rightContainer = toolbar.lastElementChild;
+    if (rightContainer) {
+        rightContainer.appendChild(reloadBtn);
+    } else {
+        // Fallback – just append to the toolbar
+        toolbar.appendChild(reloadBtn);
+    }
 }

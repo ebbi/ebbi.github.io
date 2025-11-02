@@ -10,6 +10,8 @@ import { SUPPORTED_LANGS, FALLBACK_LANG, LANGUAGE_LABELS, getLocale } from '../d
 import { populateFontSelect } from './fontSelect.js';
 // NEW – central speech controller
 import { createSpeechController } from "../utils/speechController.js";
+// Ensure the reload‑sound button exists on every page render
+import { addReloadSoundButton } from './toolbar.js';
 
 /**
  * Creates the static page skeleton:
@@ -55,6 +57,7 @@ export async function renderHeader(lang) {
     // 3️⃣ Render the toolbar (top‑of‑page)
     // -----------------------------------------------------------------
     renderToolbar(document.getElementById('toolbarContainer'));
+    addReloadSoundButton();
 
     // -----------------------------------------------------------------
     // 4️⃣ Populate the static navigation bar with language & font selectors

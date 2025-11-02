@@ -71,8 +71,22 @@ if (typeof window !== "undefined") {
     // -------------------------------------------------------------
     const originalNavigate = router.navigate.bind(router);
     router.navigate = (dest, replace = false) => {
+        // Abort any ongoing speech before the URL changes
+        if (window.speechManager) {
+            window.speechManager.stop();
+        }
         return originalNavigate(dest, replace);
     };
 
     window.router = router;
+
+    /* <<< INSERT >>> */
+    // Expose the speech manager on the window so any module (toolbar button,
+    // router guard, etc.) can reach it without circular imports.
+    if (typeof window !== 'undefined') {
+        import('./../utils/speechManager.js').then(mod => {
+            window.speechManager = mod.speechManager;
+        });
+    }
+
 }
