@@ -53,9 +53,15 @@ export function createSpeechController(container, {
     // -----------------------------------------------------------------
     // Clone a fresh state for this instance
     // -----------------------------------------------------------------
-    const state = { ...defaultState };
-    state.tokenEls = tokenElements;
-    state.transEls = translationElements;
+
+    const state = {
+        ...defaultState,
+        // Collections of DOM elements that the controller will highlight.
+        // They are populated initially from the arguments and later refreshed
+        // via the public `updateElements()` method.
+        tokenEls: tokenElements || [],
+        transEls: translationElements || []
+    };
 
     // -----------------------------------------------------------------
     // UI – Row 1 = controls (Play / Pause / Reset / Delay)
@@ -154,10 +160,25 @@ export function createSpeechController(container, {
     // -----------------------------------------------------------------
     // Highlight helpers (unchanged)
     // -----------------------------------------------------------------
+/*
     function clearHighlights() {
         state.tokenEls.forEach(el => (el.style.background = ""));
         state.transEls.flat().forEach(el => (el.style.background = ""));
     }
+*/
+
+    function clearHighlights() {
+        // Guard against the arrays being undefined (should never happen,
+        // but defensive coding avoids runtime errors during fast navigation).
+        if (Array.isArray(state.tokenEls)) {
+            state.tokenEls.forEach(el => el.classList.remove('highlighted-token'));
+        }
+        if (Array.isArray(state.transEls)) {
+            state.transEls.flat().forEach(el => el.classList.remove('highlighted-token'));
+        }
+    }
+
+    /*
     function highlightCurrent() {
         clearHighlights();
         const t = state.tokenIdx;
@@ -168,6 +189,30 @@ export function createSpeechController(container, {
         } else {
             const el = state.transEls[t][tr];
             if (el) el.style.background = "var(--link)";
+        }
+    }
+*/
+
+
+    function highlightCurrent() {
+        // 1️⃣  Remove any previous highlight.
+        clearHighlights();
+
+        const t = state.tokenIdx;
+        const tr = state.transIdx;
+
+        // Guard against out‑of‑range indices (can happen when playback stops early).
+        if (t < 0 || !Array.isArray(state.tokenEls) || t >= state.tokenEls.length) return;
+
+        if (tr === -1) {
+            // Highlight the whole source‑token column.
+            const col = state.tokenEls[t];
+            if (col) col.classList.add('highlighted-token');
+        } else {
+            // Highlight a specific translation span inside the column.
+            const transCol = state.transEls[t];
+            const el = Array.isArray(transCol) ? transCol[tr] : null;
+            if (el) el.classList.add('highlighted-token');
         }
     }
 
@@ -207,7 +252,7 @@ export function createSpeechController(container, {
 
             const tIdx = state.tokenIdx;
             const col = state.tokenEls[tIdx];               // <div class="token-col">
-            const spans = state.transEls[tIdx];  
+            const spans = state.transEls[tIdx];
 
             // ---------------------------------------------------------
             // 1️⃣  SOURCE token (transIdx === -1)

@@ -41,6 +41,28 @@ html {
     --heading-accent: #80cbc4;
     --link: #90caf9;
     --error: #ef9a9a;
+    --heading-accent: #4caf50;
+}
+
+/* -------------------------------------------------------------
+   Highlight for the token currently being spoken
+   ------------------------------------------------------------- */
+.highlighted-token {
+    /* Background – use the accent colour for good contrast */
+    background: var(--heading-accent);
+    /* Optional border for extra definition */
+    border: 2px solid var(--link);
+    /* Enlarge and bold the text */
+    font-size: 115%;
+    /* ~15 % larger */
+    font-weight: 600;
+    /* semi‑bold */
+    /* Ensure the text colour stays readable */
+    color: var(--bg-surface);
+    /* Smooth visual change */
+    transition: background 0.2s, color 0.2s,
+        font-size 0.2s, font-weight 0.2s,
+        border 0.2s;
 }
 
 /* -------------------------------------------------------------
