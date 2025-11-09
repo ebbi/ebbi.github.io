@@ -1,44 +1,14 @@
-The speechController has the async function playbackLoop() 
- that controls the calls for speech utterances in a while loop.
+The dictionaryExercise code generates a div class="dict-grid". 
+This container div needs to scrollable so that the App toolbar and the 
+ div id="speechPanel remain visible at the top of the screen while 
+  the exercise content is scrolled within the div.
 
-Generate the code to display a sound icon 
- (positioned inline after the Home icon in the App toolbar).
-
-The sound icon should appear before the while loop in the function playbackLoop().
-The sound icon should disappear after the playback loop.
-
-If the user clicks the sound icon, 
- there should be a full reload of the current page 
-  (hence stopping any current async speech)
+This container div should scroll as the spans are highlighted and spoken out during play.
 
 In your response, do not generate any diff patches, 
- instead indicate any changes with fin/replace and plane code
+ instead indicate any changes with fin/replace and plane code.
 
-
-The shortcoming of the approach is when the user leaves the exercise page,
- the App toolbar refreshes and the sound-reload icon disappears 
-   ( and the async sound continues to play without any user control)
-
-Can you suggest a fix?  No code, just the explanation of an approach.
- Trying a global flag was not successful!
-
-
-
-
-
-Restarted http-server
-Firefox browser in private mode, no cache
-
-Selected an exercise 
-
-Clicked play
-
-(Speech started and Reset icon appeared on the App toolbar)
-
-Clicked home icon
-
-The Reset icon disappeared !!! 
-(speech continued and no reset button to stop it by reloading the page) 
+ 
 
 
 

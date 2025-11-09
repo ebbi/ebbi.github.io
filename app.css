@@ -386,6 +386,38 @@ details summary {
    9️⃣  Dictionary exercise UI
    =====================================================================*/
 /* Container that holds the whole dictionary view */
+
+/* --------------------------------------------------------------
+   Scrollable wrapper for the dictionary grid.
+   It lives *inside* <main id="main"> and only affects the
+   dictionary‑exercise page.
+   --------------------------------------- */
+.dict-scroll-wrapper {
+    /* Let the wrapper grow to fill the remaining viewport space */
+    overflow-y: auto;
+    /* The height is the viewport minus the known heights of the
+      toolbar, language‑options <details>, and the speech panel.
+       Those heights are approximations – adjust if you change the
+      UI later. */
+    max-height: calc(100vh
+            /* full viewport */
+            - 60px
+            /* toolbar (approx.) */
+            - 48px
+            /* language‑options <details> header */
+            - 80px
+            /* speech panel (buttons, sliders) */
+            - 2rem
+            /* a little breathing room */
+        );
+}
+
+/* Optional – smooth scrolling when the controller highlights a row */
+.dict-scroll-wrapper {
+    scroll-behavior: smooth;
+}
+
+
 .dict-grid {
     display: flex;
     flex-wrap: wrap;

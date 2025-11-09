@@ -105,15 +105,6 @@ export async function renderDictionaryExercise(mainEl, exerciseMeta, uiLang) {
     const tokenGrid = document.createElement("div");
     tokenGrid.className = "dict-grid";
 
-    const scrollWrapper = document.createElement('div');
-    scrollWrapper.className = 'dict-scroll-wrapper';
-
-    scrollWrapper.appendChild(tokenGrid);
-
-
-    // Put the grid inside the wrapper
-    scrollWrapper.appendChild(tokenGrid);
-
     // -----------------------------------------------------------------
     // 4️⃣ Internationalised UI strings
     // -----------------------------------------------------------------
@@ -300,8 +291,7 @@ export async function renderDictionaryExercise(mainEl, exerciseMeta, uiLang) {
     mainEl.appendChild(details);      // 1️⃣ Language options (closed)
     mainEl.appendChild(speechPanel); // 2️⃣ Player controls (outside details)
     mainEl.appendChild(heading);      // 3️⃣ Exercise title (h4)
-    mainEl.appendChild(scrollWrapper);
- //   mainEl.appendChild(tokenGrid);    // 4️⃣ Token grid
+    mainEl.appendChild(tokenGrid);    // 4️⃣ Token grid
 
     // -----------------------------------------------------------------
     // 10️⃣ Build the speech controller **inside** the player panel.
