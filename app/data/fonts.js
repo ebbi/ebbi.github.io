@@ -7,7 +7,7 @@ export const FONT_CATALOG = [
         family: `'Kanit', sans-serif`,
         google: 'Kanit'                         // → https://fonts.googleapis.com/css2?family=Kanit
     },
-    { name: 'Roboto', family: `'Roboto', sans-serif`, google: 'Roboto' },
+    { name: 'Font - Roboto', family: `'Roboto', sans-serif`, google: 'Roboto' },
     {
         // Noto Nastaliq Urdu – beautiful calligraphic Urdu script
         name: 'Font - Noto Nastaliq Urdu',
