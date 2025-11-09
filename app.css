@@ -189,7 +189,7 @@ h6 {
     width: 100%;
     box-sizing: border-box;
     background: var(--bg-surface);
-    border-bottom: 1px solid var(--border-surface);
+    /*    border-bottom: 1px solid var(--border-surface); */
 }
 
 /* (Optional – keep the original look of the buttons inside the toolbar) */
@@ -224,8 +224,9 @@ nav.menu-nav {
     width: 100%;
     /* match the header width */
     box-sizing: border-box;
-    padding: 0.5rem 1rem;
+    padding: 0.15rem;
     /* same vertical padding as the toolbar */
+    border-bottom: 1px solid var(--border-surface);
 }
 
 /* -------------------------------------------------------------

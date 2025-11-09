@@ -106,7 +106,7 @@ export async function renderMenu(container, UI_LANG, showPractice = true) {
     // -------------------------------------------------------------
     if (showPractice) {
         const practiceDetails = document.createElement('details');
-        practiceDetails.open = true;                     // expanded by default
+//        practiceDetails.open = true;                     // expanded by default
 
         const practiceSummary = document.createElement('summary');
         const locale = getLocale(UI_LANG);

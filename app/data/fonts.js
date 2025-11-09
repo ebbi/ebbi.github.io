@@ -3,33 +3,33 @@
 export const FONT_CATALOG = [
     {
         // Kanit – Thai‑friendly sans‑serif
-        name: 'Kanit',
+        name: 'Font - Kanit',
         family: `'Kanit', sans-serif`,
         google: 'Kanit'                         // → https://fonts.googleapis.com/css2?family=Kanit
     },
     { name: 'Roboto', family: `'Roboto', sans-serif`, google: 'Roboto' },
     {
         // Noto Nastaliq Urdu – beautiful calligraphic Urdu script
-        name: 'Noto Nastaliq Urdu',
+        name: 'Font - Noto Nastaliq Urdu',
         family: `'Noto Nastaliq Urdu', serif`,
         // Google‑Fonts URL parameter (spaces become “+”)
         google: 'Noto+Nastaliq+Urdu'   // → https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu
     },
     {
         // Noto Sans Thai – the Thai‑specific variant of Noto Sans
-        name: 'Noto Sans Thai',
+        name: 'Font - Noto Sans Thai',
         family: `'Noto Sans Thai', sans-serif`,
         google: 'Noto+Sans+Thai'                // → https://fonts.googleapis.com/css2?family=Noto+Sans+Thai
     },
     {
         // Open Sans – widely used, highly readable UI font
-        name: 'Open Sans',
+        name: 'Font - Open Sans',
         family: `'Open Sans', sans-serif`,
         google: 'Open+Sans'                     // → https://fonts.googleapis.com/css2?family=Open+Sans
     },
     {
         // Amiri – classic Arabic‑script serif (already in your project)
-        name: 'Amiri',
+        name: 'Font - Amiri',
         family: `'Amiri', serif`,
         google: 'Amiri'                         // → https://fonts.googleapis.com/css2?family=Amiri
     }

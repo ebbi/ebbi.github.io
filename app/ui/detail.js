@@ -86,7 +86,7 @@ export async function renderExerciseDetail(container, id, UI_LANG) {
             // Populate the <select>
             voiceSelect.innerHTML = matchingVoices.map(v => {
                 const selected = v.default ? 'selected' : '';
-                return `<option value="${v.name}" ${selected}>${v.name} (${v.lang})</option>`;
+                return `<option value="(${v.lang}) ${v.name}" ${selected}>${v.name}</option>`;
             }).join('');
             // Optional: react to a change (you can hook your own TTS logic here)
             voiceSelect.addEventListener('change', ev => {

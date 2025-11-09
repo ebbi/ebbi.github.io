@@ -178,22 +178,6 @@ export function createSpeechController(container, {
         }
     }
 
-    /*
-    function highlightCurrent() {
-        clearHighlights();
-        const t = state.tokenIdx;
-        const tr = state.transIdx;
-        if (t < 0 || t >= state.tokenEls.length) return;
-        if (tr === -1) {
-            state.tokenEls[t].style.background = "var(--link)";
-        } else {
-            const el = state.transEls[t][tr];
-            if (el) el.style.background = "var(--link)";
-        }
-    }
-*/
-
-
     function highlightCurrent() {
         // 1️⃣  Remove any previous highlight.
         clearHighlights();

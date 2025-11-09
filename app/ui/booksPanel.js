@@ -30,7 +30,7 @@ export async function renderBooksPanel(container, uiLang, prePubId = null, preLa
     // 1️⃣ Build the <details> wrapper
     // -----------------------------------------------------------------
     const details = document.createElement("details");
-    details.open = true;                     // expanded by default
+//    details.open = true;                     // expanded by default
 
     const summary = document.createElement("summary");
     summary.textContent = locale.booksAndBlogs || "Books & Blogs";
