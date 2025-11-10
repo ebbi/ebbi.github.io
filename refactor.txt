@@ -8,7 +8,34 @@ This container div should scroll as the spans are highlighted and spoken out dur
 In your response, do not generate any diff patches, 
  instead indicate any changes with fin/replace and plane code.
 
- 
 
+
+This is the exact original request:
+"
+Note the datafile thai_201_300_sentences.json 
+The structure is tokenized words from complete sentences in the th array 
+ (followed by other language arrays with the equivalent th words in the same array index).
+ The sentences were constructed from an initial json file providing 
+ the keywords to be used to generate the initial th sentences, tokenizing into words, 
+ and completing the missing language arrays.
+
+ File thai_words_101_200_words has the jason definition of keywords in th and en languages.
+  Loop through each of the keywords and combine the word with any other words in the data set 
+   (and any pronouns) to construct a grammatically correct sentence for the keyword.  Second, tokenize 
+   the sentence into its words and store them in the language arrays in the same structure 
+    as the datafile thai_201_300_sentences.json
+
+"
+
+So, put simple: 
+thai_201_300_sentences.json  is an example of correct test output
+thai_words_101_200_words provides the word set to generate the same 
+ structure as thai_201_300_sentences.json 
+
+ Do not generate placeholders and a separate json structure for placeholder values. Thats just silly! 
+ This data should test the existing code.
+
+ Stop after this!
+ 
 
 
