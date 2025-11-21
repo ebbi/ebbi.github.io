@@ -27,6 +27,35 @@
         }
     },
     {
+        "id": "thai_100_sentences",
+        "folder": "data/exercises/thai/thai_frequent_words",
+        "file": "thai_100.json",
+        "language": "th",
+        "level": "basic",
+        "details": {
+            "type": "dictionary"
+        },
+        "activities": [
+            "multipleChoice"
+        ],
+        "title": {
+            "en": "Thai 100 most used words",
+            "th": "100 คำที่ใช้บ่อยที่สุดในภาษาไทย",
+            "fa": "۱۰۰ کلمه پرکاربرد زبان تایلندی",
+            "ja": "タイ語で最も頻繁に使われる100語",
+            "zh": "泰语最常用的100个词",
+            "ar": "أكثر 100 كلمة مستخدمة في اللغة التايلاندية"
+        },
+        "summary": {
+            "en": "Sentences that have Thai 100 most used words.",
+            "th": "ประโยคที่ประกอบด้วย 100 คำที่ใช้บ่อยที่สุดในภาษาไทย",
+            "fa": "جملاتی که شامل ۱۰۰ کلمه پرکاربرد زبان تایلندی هستند",
+            "ja": "タイ語で最も頻繁に使われる100語を含む文",
+            "zh": "包含泰语最常用的100个词的句子",
+            "ar": "جمل تحتوي على أكثر 100 كلمة مستخدمة في اللغة التايلاندية"
+        }
+    },
+    {
         "id": "thai_numbers",
         "folder": "data/exercises/thai",
         "file": "thai_numbers_units_and_tens.json",
