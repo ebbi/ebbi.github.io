@@ -30,15 +30,6 @@ html {
     --heading-accent: #00695c;
     --link: #1565c0;
     --error: #d32f2f;
-
-    /* Light‑mode (bright background) */
-    --low-class-light: #424242;
-    /* dark gray – meets 4.5:1 on #fff */
-    --mid-class-light: #00695c;
-    /* teal – meets 4.5:1 on #fff */
-    --high-class-light: #d32f2f;
-    /* vivid red – meets 4.5:1 on #fff */
-
 }
 
 [data-theme="dark"] {
@@ -51,29 +42,7 @@ html {
     --link: #90caf9;
     --error: #ef9a9a;
     --heading-accent: #4caf50;
-
-    --low-class-dark: #bdbdbd;
-    /* light gray – 7.2:1 on #1e1e1e */
-    --mid-class-dark: #80cbc4;
-    /* light teal – 7.0:1 on #1e1e1e */
-    --high-class-dark: #ff8a80;
-    /* soft red – 7.1:1 on #1e1e1e */
-
 }
-
-/* Helper variables that automatically pick the right shade */
-:root {
-    --low-class: var(--low-class-light);
-    --mid-class: var(--mid-class-light);
-    --high-class: var(--high-class-light);
-}
-
-[data-theme="dark"] {
-    --low-class: var(--low-class-dark);
-    --mid-class: var(--mid-class-dark);
-    --high-class: var(--high-class-dark);
-}
-
 
 /* -------------------------------------------------------------
    Highlight for the token currently being spoken
@@ -473,26 +442,12 @@ details summary {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 0.5rem;
+    margin: 0 .5rem;
 }
 
 .token-col .trans {
     font-size: 1rem;
 }
-
-.low-class {
-    color: var(--low-class);
-}
-
-.middle-class {
-    color: var(--mid-class);
-}
-
-.high-class {
-    color: var(--high-class);
-}
-
-/* example colour for high‑class */
 
 /* Language‑options panel (inside <details>) */
 .options-grid {

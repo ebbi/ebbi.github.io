@@ -41,24 +41,137 @@ let speechCtrl;
 function buildTokenColumn(translations, langs, displayMap) {
     const col = document.createElement("div");
     col.className = "token-col";
+
     // -----------------------------------------------------------------
     // 1️⃣  Create a <span> only for displayed languages.
     // -----------------------------------------------------------------
     translations.forEach((txt, idx) => {
         const lang = langs[idx];
-        if (!displayMap[lang]) return;               // skip hidden languages
 
-        const span = document.createElement("span");
-        span.className = "trans";
-        span.textContent = txt || "";
-        span.setAttribute("lang", lang);
 
-        col.appendChild(span);
+        // ---------------------------------------------------------
+        // Skip hidden languages (unchanged logic)
+        // ---------------------------------------------------------
+        if (!displayMap[lang]) return;               // skip hidden languages        
 
-        // Register for the speech controller.
+
+        // -------------------------------------------------------------
+        // NEW: Handle "\n" inside the text.
+        // -------------------------------------------------------------
+        // If the string contains a literal newline character we split it
+        // into separate parts.  For each part we create a normal <span>,
+        // and after each part (except the last) we insert a line‑break
+        // element – a <div class="dict-grid"></div>.  This keeps the
+        // visual layout consistent with the rest of the grid.
+        // -------------------------------------------------------------
+        if (typeof txt === "string" && txt.includes("\n")) {
+            const parts = txt.split("\n");               // ["part1","part2",...]
+            parts.forEach((part, partIdx) => {
+                // ---- create the regular span for this piece -----------------
+                const span = document.createElement("span");
+                span.className = "trans";
+                span.textContent = part;
+                span.setAttribute("lang", lang);
+                col.appendChild(span);
+
+                // ---- register the span for the speech controller ----------
+                const colIdx = tokenEls.length;
+                if (!transEls[colIdx]) transEls[colIdx] = [];
+                transEls[colIdx].push(span);
+
+                // ---- after every piece except the last, insert a line‑break div
+                if (partIdx < parts.length - 1) {
+                    const brDiv = document.createElement("div");
+                    brDiv.className = "dict-grid";   // the class you asked for
+                    col.appendChild(brDiv);
+                }
+            });
+            // Skip the normal processing for this entry – we already handled it.
+            return;
+        }
+
+        // ---------------------------------------------------------
+        // Create the outer span that the UI and speech controller
+        // expect (class="trans").
+        // ---------------------------------------------------------
+        const outerSpan = document.createElement("span");
+        outerSpan.className = "trans";
+        outerSpan.setAttribute("lang", lang);
+
+        // -----------------------------------------------------------------
+        //  Thai consonant class lookup tables (corrected)
+        // -----------------------------------------------------------------
+
+        // 1️⃣  High‑class consonants (as you specified)
+        const HIGH_CLASS_CONSONANTS = new Set([
+            "จ", "ฉ", "ช", "ซ", "ฌ", "ญ"
+        ]);
+
+        // 2️⃣  Middle‑class consonants (as you specified)
+        const MIDDLE_CLASS_CONSONANTS = new Set([
+            "ก", "ข", "ค", "ฆ", "ง"
+        ]);
+
+        // 3️⃣  All Thai consonants (the complete inventory of 44 letters)
+        //    Source: standard Thai alphabet tables.
+        const ALL_THAI_CONSONANTS = [
+            "ก", "ข", "ค", "ฆ", "ง", "จ", "ฉ", "ช", "ซ", "ฌ", "ญ", "ฎ", "ฏ", "ฐ", "ฑ", "ฒ", "ณ",
+            "ด", "ต", "ถ", "ท", "ธ", "น", "บ", "ป", "ผ", "ฝ", "พ", "ฟ", "ภ", "ม", "ย", "ร", "ล",
+            "ว", "ศ", "ษ", "ส", "ห", "ฬ", "อ", "ฮ"
+        ];
+
+        // 4️⃣  Low‑class consonants = everything that is a Thai consonant
+        //    but NOT in the high‑ or middle‑class sets.
+        const LOW_CLASS_CONSONANTS = new Set(
+            ALL_THAI_CONSONANTS.filter(ch =>
+                !HIGH_CLASS_CONSONANTS.has(ch) && !MIDDLE_CLASS_CONSONANTS.has(ch)
+            )
+        );
+
+        if (lang === "th" && typeof txt === "string") {
+
+            // ---- 2️⃣  Split the Thai word into Unicode grapheme clusters.
+            // Using spread (…) works for most Thai characters because they are
+            // in the BMP. For full grapheme‑cluster safety you could use
+            // Intl.Segmenter, but the simple split is sufficient for the data
+            // you have.
+            const chars = [...txt];
+
+            // ---- 3️⃣  Create a nested span for each character with the proper class.
+            chars.forEach(ch => {
+                const inner = document.createElement("span");
+
+                // Determine the class:
+                //   * If the character is in the low‑class set → low‑class
+                //   * Else if it is in the high‑class set → high‑class
+                //   * Otherwise (including vowels, tone marks, etc.) → middle‑class
+                if (LOW_CLASS_CONSONANTS.has(ch)) {
+                    inner.className = "low-class";
+                } else if (HIGH_CLASS_CONSONANTS.has(ch)) {
+                    inner.className = "high-class";
+                } else {
+                    inner.className = "middle-class";
+                }
+
+                inner.textContent = ch;
+                outerSpan.appendChild(inner);
+            });
+        } else {
+            // -----------------------------------------------------
+            // Non‑Thai (or non‑string) – just put the whole text.
+            // -----------------------------------------------------
+            outerSpan.textContent = txt || "";
+        }
+
+        // ---------------------------------------------------------
+        // Append the outer span to the column and register it for the
+        // speech controller (identical to the original behaviour).
+        // ---------------------------------------------------------
+        col.appendChild(outerSpan);
+
         const colIdx = tokenEls.length;               // one column == one token
         if (!transEls[colIdx]) transEls[colIdx] = [];
-        transEls[colIdx].push(span);
+        transEls[colIdx].push(outerSpan);
     });
 
     // -----------------------------------------------------------------
@@ -102,17 +215,16 @@ export async function renderDictionaryExercise(mainEl, exerciseMeta, uiLang) {
     // -----------------------------------------------------------------
     // 3️⃣ Prepare the token grid (will be rebuilt on every checkbox change)
     // -----------------------------------------------------------------
-    const tokenGrid = document.createElement("div");
-    tokenGrid.className = "dict-grid";
 
     const scrollWrapper = document.createElement('div');
     scrollWrapper.className = 'dict-scroll-wrapper';
 
-    scrollWrapper.appendChild(tokenGrid);
-
-
-    // Put the grid inside the wrapper
-    scrollWrapper.appendChild(tokenGrid);
+    function createNewGrid() {
+        const g = document.createElement('div');
+        g.className = 'dict-grid';
+        scrollWrapper.appendChild(g);
+        return g;
+    }
 
     // -----------------------------------------------------------------
     // 4️⃣ Internationalised UI strings
@@ -138,7 +250,7 @@ export async function renderDictionaryExercise(mainEl, exerciseMeta, uiLang) {
     // 7️⃣ Build the Language‑options panel (Display / Speak check‑boxes)
     // -----------------------------------------------------------------
     const details = document.createElement("details");
-    details.open = false; 
+    details.open = false;
     // -----------------------------------------------------------------
     const summary = document.createElement("summary");
     summary.textContent = locale.languageOptions || "Language options";
@@ -209,17 +321,18 @@ export async function renderDictionaryExercise(mainEl, exerciseMeta, uiLang) {
     speechPanel.id = "speechPanel";
 
     // -----------------------------------------------------------------
-    // Re‑build the token grid based on the current checkbox state
+    // 2️⃣  Re‑build the token grid based on the current checkbox state
     // -----------------------------------------------------------------
-
-
     function rebuildTokenGrid() {
-        // 0️⃣ Reset global collections and clear the visual grid.
+        // 0️⃣ Reset global collections and clear the visual container.
         tokenEls = [];
         transEls = [];
-        tokenGrid.innerHTML = "";
+        scrollWrapper.innerHTML = "";           // wipe any old grids
 
-        // 1️⃣ Build lookup maps from the check‑boxes.
+        // 1️⃣ Start the first grid.
+        let currentGrid = createNewGrid();     // <-- uses the helper from 2.1
+
+        // 2️⃣ Build lookup maps from the check‑boxes.
         const displayMap = {}; // lang → true/false
         const speakMap = {}; // lang → true/false (used by the controller)
 
@@ -235,14 +348,14 @@ export async function renderDictionaryExercise(mainEl, exerciseMeta, uiLang) {
             speakMap[0] = true;
         }
 
-        // 2️⃣ Walk through the JSON data and create a column for each token.
+        // 3️⃣ Walk through the JSON data and create columns.
         data.forEach(entry => {
-            // Category heading (optional – keep if you like)
+            // Category heading (optional)
             if (entry.category) {
                 const catDiv = document.createElement("h5");
                 catDiv.className = "category-header";
                 catDiv.textContent = entry.category;
-                tokenGrid.appendChild(catDiv);
+                currentGrid.appendChild(catDiv);
             }
 
             const sourceTokens = entry[orderedLangs[0]] || [];
@@ -252,11 +365,17 @@ export async function renderDictionaryExercise(mainEl, exerciseMeta, uiLang) {
                 const translations = [];
                 const langs = [];
 
+                let hasNewline = false; // will become true if any value contains "\n"
+
                 orderedLangs.forEach(lang => {
                     if (!displayMap[lang]) return; // skip hidden languages
                     const arr = entry[lang] || [];
-                    translations.push(arr[idx] ?? ""); // fallback to empty string
+                    const txt = arr[idx] ?? "";
+                    translations.push(txt);
                     langs.push(lang);
+                    if (typeof txt === "string" && txt.includes("\n")) {
+                        hasNewline = true;
+                    }
                 });
 
                 // Safety fallback – source language is always shown.
@@ -266,13 +385,21 @@ export async function renderDictionaryExercise(mainEl, exerciseMeta, uiLang) {
                     langs.push(orderedLangs[0]);
                 }
 
-                // Create the column (only visible spans are added).
+                // Create the column (visible spans only).
                 const col = buildTokenColumn(translations, langs, displayMap);
-                tokenGrid.appendChild(col);
+                currentGrid.appendChild(col);
+
+                // ---------------------------------------------------------
+                // If any of the values for this token contained "\n",
+                // close the current grid and start a fresh one for the next token.
+                // ---------------------------------------------------------
+                if (hasNewline) {
+                    currentGrid = createNewGrid();
+                }
             });
         });
 
-        // 3️⃣ Update the speech controller.
+        // 4️⃣ Update the speech controller with the new element references.
         if (speechCtrl) {
             speechCtrl.updateElements(tokenEls, transEls);
             speechCtrl.updateSpeakMap(speakMap);   // keep Play in sync with Speak boxes
@@ -301,7 +428,7 @@ export async function renderDictionaryExercise(mainEl, exerciseMeta, uiLang) {
     mainEl.appendChild(speechPanel); // 2️⃣ Player controls (outside details)
     mainEl.appendChild(heading);      // 3️⃣ Exercise title (h4)
     mainEl.appendChild(scrollWrapper);
- //   mainEl.appendChild(tokenGrid);    // 4️⃣ Token grid
+    //   mainEl.appendChild(tokenGrid);    // 4️⃣ Token grid
 
     // -----------------------------------------------------------------
     // 10️⃣ Build the speech controller **inside** the player panel.

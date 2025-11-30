@@ -1,7 +1,7 @@
 // ---------------------------------------------------------------
 // app/ui/routes.js
 // ---------------------------------------------------------------
-// Central place for every route‑handler used by the Lumo SPA.
+// Central place for every route‑handler used by the SPA.
 // ---------------------------------------------------------------
 
 import { renderHeader } from "./renderHeader.js";

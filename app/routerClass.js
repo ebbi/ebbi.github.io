@@ -1,7 +1,7 @@
 // ---------------------------------------------------------------
 // app/routerClass.js
 // ---------------------------------------------------------------
-// Lightweight client‑side router used by the Lumo SPA.
+// Lightweight client‑side router used by the SPA.
 // ---------------------------------------------------------------
 
 export default class Router {
