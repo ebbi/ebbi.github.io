@@ -145,12 +145,12 @@ function buildTokenColumn(translations, langs, displayMap) {
                 //   * If the character is in the low‑class set → low‑class
                 //   * Else if it is in the high‑class set → high‑class
                 //   * Otherwise (including vowels, tone marks, etc.) → middle‑class
-                if (LOW_CLASS_CONSONANTS.has(ch)) {
-                    inner.className = "low-class";
-                } else if (HIGH_CLASS_CONSONANTS.has(ch)) {
+                if (HIGH_CLASS_CONSONANTS.has(ch)) {
                     inner.className = "high-class";
-                } else {
+                } else if (MIDDLE_CLASS_CONSONANTS.has(ch)) {
                     inner.className = "middle-class";
+                } else {
+                    inner.className = "low-class";
                 }
 
                 inner.textContent = ch;
