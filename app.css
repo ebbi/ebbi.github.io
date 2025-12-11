@@ -410,7 +410,7 @@ details {
 }
 
 details summary {
-    font-weight: 600;
+    /*    font-weight: 600; */
     cursor: pointer;
 }
 
@@ -572,6 +572,7 @@ details summary {
     max-width: 100%;
     box-sizing: border-box;
     padding: .11rem;
+    margin: 1rem 0;
 }
 
 /* Disabled / dimmed state (used by setPanelEnabled) */

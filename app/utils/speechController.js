@@ -68,11 +68,10 @@ export function createSpeechController(container, {
     };
 
     // -----------------------------------------------------------------
-    // UI – Row 1 = controls (Play / Pause / Reset / Delay)
+    // UI = controls (Play / Pause / Reset / Delay)
     // -----------------------------------------------------------------
     const speechPanel = document.createElement("div");
     speechPanel.id = "speechPanel";
-
 
     const controlsRow = document.createElement("div");
     controlsRow.id = "controlsRow";
@@ -93,27 +92,36 @@ export function createSpeechController(container, {
     resetBtn.textContent = "🔄";
     controlsRow.appendChild(resetBtn);
 
+    const statusEl = document.createElement("span");
+    controlsRow.appendChild(statusEl);
+
+    const settings = document.createElement("details");
+    settings.id = "player-settings"
+    settings.open = false;
+    const summary = document.createElement("summary");
+    summary.textContent = "⚙️";
+    settings.appendChild(summary);
+
     const delayLabel = document.createElement("label");
-    delayLabel.textContent = uiLocale.delayLabel || "Delay (s):";
-    controlsRow.appendChild(delayLabel);
+    delayLabel.textContent = uiLocale.delayLabel || "Delay (s): ";
+    delayLabel.style.padding = "0.5rem";
+    settings.appendChild(delayLabel);
 
     const delayInput = document.createElement("input");
-    delayInput.type = "number";
+    delayInput.type = "range";
     delayInput.min = 1;
     delayInput.max = 5;
-    delayInput.step = 0.1;
+    delayInput.step = "any";
     delayInput.value = state.delaySec;
-    controlsRow.appendChild(delayInput);
 
-    speechPanel.appendChild(controlsRow);
+    settings.appendChild(delayLabel);
+    settings.appendChild(delayInput);
 
     // -----------------------------------------------------------------
-    // UI – Row 2 = status message + voice selector
+    // UI = status message + voice selector
     // -----------------------------------------------------------------
-    const statusVoiceRow = document.createElement("div");
 
-    const statusEl = document.createElement("div");
-    statusVoiceRow.appendChild(statusEl);
+    const statusVoiceRow = document.createElement("span");
 
     const voiceSelect = document.createElement("select");
     voiceSelect.id = "voiceSelect";
@@ -126,9 +134,11 @@ export function createSpeechController(container, {
     voiceSelect.insertBefore(defaultOption, voiceSelect.firstChild);
 
     statusVoiceRow.appendChild(voiceSelect);
+    settings.appendChild(statusVoiceRow);
 
-    speechPanel.appendChild(controlsRow);   // Row 1
-    speechPanel.appendChild(statusVoiceRow); // Row 2
+    controlsRow.appendChild(settings);
+
+    speechPanel.appendChild(controlsRow);
 
     // -----------------------------------------------------------------
     // Helper – enable/disable the whole panel (opacity + disabled attrs)
@@ -386,7 +396,7 @@ export function createSpeechController(container, {
     // Assemble everything inside the supplied container
     // -----------------------------------------------------------------
     container.appendChild(controlsRow);
-    container.appendChild(statusVoiceRow);
+    //    container.appendChild(statusVoiceRow);
 
     // -----------------------------------------------------------------
     // Public API – the host can update the element collections,
