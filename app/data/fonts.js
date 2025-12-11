@@ -2,6 +2,12 @@
 // app/data/fonts.js
 export const FONT_CATALOG = [
     {
+        // Open Sans – widely used, highly readable UI font
+        name: 'Font - Open Sans',
+        family: `'Open Sans', sans-serif`,
+        google: 'Open+Sans'                     // → https://fonts.googleapis.com/css2?family=Open+Sans
+    },
+    {
         // Kanit – Thai‑friendly sans‑serif
         name: 'Font - Kanit',
         family: `'Kanit', sans-serif`,
@@ -20,12 +26,6 @@ export const FONT_CATALOG = [
         name: 'Font - Noto Sans Thai',
         family: `'Noto Sans Thai', sans-serif`,
         google: 'Noto+Sans+Thai'                // → https://fonts.googleapis.com/css2?family=Noto+Sans+Thai
-    },
-    {
-        // Open Sans – widely used, highly readable UI font
-        name: 'Font - Open Sans',
-        family: `'Open Sans', sans-serif`,
-        google: 'Open+Sans'                     // → https://fonts.googleapis.com/css2?family=Open+Sans
     },
     {
         // Amiri – classic Arabic‑script serif (already in your project)
