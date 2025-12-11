@@ -48,21 +48,13 @@ function buildTokenColumn(translations, langs, displayMap) {
     translations.forEach((txt, idx) => {
         const lang = langs[idx];
 
-
         // ---------------------------------------------------------
         // Skip hidden languages (unchanged logic)
         // ---------------------------------------------------------
         if (!displayMap[lang]) return;               // skip hidden languages        
 
-
         // -------------------------------------------------------------
         // NEW: Handle "\n" inside the text.
-        // -------------------------------------------------------------
-        // If the string contains a literal newline character we split it
-        // into separate parts.  For each part we create a normal <span>,
-        // and after each part (except the last) we insert a line‑break
-        // element – a <div class="dict-grid"></div>.  This keeps the
-        // visual layout consistent with the rest of the grid.
         // -------------------------------------------------------------
         if (typeof txt === "string" && txt.includes("\n")) {
             const parts = txt.split("\n");               // ["part1","part2",...]
@@ -215,7 +207,6 @@ export async function renderDictionaryExercise(mainEl, exerciseMeta, uiLang) {
     // -----------------------------------------------------------------
     // 3️⃣ Prepare the token grid (will be rebuilt on every checkbox change)
     // -----------------------------------------------------------------
-
     const scrollWrapper = document.createElement('div');
     scrollWrapper.className = 'dict-scroll-wrapper';
 
@@ -251,13 +242,12 @@ export async function renderDictionaryExercise(mainEl, exerciseMeta, uiLang) {
     // -----------------------------------------------------------------
     const details = document.createElement("details");
     details.open = false;
-    // -----------------------------------------------------------------
     const summary = document.createElement("summary");
     summary.textContent = locale.languageOptions || "Language options";
     details.appendChild(summary);
 
     const optionsGrid = document.createElement("div");
-    optionsGrid.className = 'options-grid'
+    optionsGrid.className = 'options-grid';
     details.appendChild(optionsGrid);
 
     // Header row
@@ -288,7 +278,6 @@ export async function renderDictionaryExercise(mainEl, exerciseMeta, uiLang) {
         displayCb.type = "checkbox";
         displayCb.dataset.lang = langCode;
         displayCb.checked = (langCode === exerciseLang) || (langCode === uiLang);
-
         displayCell.appendChild(displayCb);
         optionsGrid.appendChild(displayCell);
         displayBoxes.set(langCode, displayCb);
@@ -321,7 +310,46 @@ export async function renderDictionaryExercise(mainEl, exerciseMeta, uiLang) {
     speechPanel.id = "speechPanel";
 
     // -----------------------------------------------------------------
-    // 2️⃣  Re‑build the token grid based on the current checkbox state
+    // 9️⃣  Build the speech controller **inside** the player panel.
+    // -----------------------------------------------------------------
+    speechCtrl = createSpeechController(speechPanel, {
+        getAvailableLanguages: () => SUPPORTED_LANGS,
+        defaultLang: exerciseLang,
+        onVoiceChange: (newVoice) => {
+            console.log("[Speech] voice changed →", newVoice);
+            try {
+                localStorage.setItem("local_storage_tts_voice", newVoice);
+            } catch (error) { /* ignore */ }
+        },
+        tokenElements: tokenEls,
+        translationElements: transEls
+    });
+
+    // -----------------------------------------------------------------
+    // 10️⃣  Assemble the page in the required order:
+    //      1️⃣ Language‑options <details> (top, closed)
+    //      2️⃣ Player control panel (outside details)
+    //      3️⃣ Exercise heading (<h4>)
+    //      4️⃣ Token grid
+    // -----------------------------------------------------------------
+    mainEl.innerHTML = ""; // clear any previous content
+
+    const titleText =
+        (exerciseMeta.title && exerciseMeta.title[uiLang]) ||
+        exerciseMeta.title?.en ||
+        "Dictionary Exercise";
+
+    const heading = document.createElement("h4");
+    heading.textContent = titleText;
+
+    // Order matters:
+    mainEl.appendChild(details);      // 1️⃣ Language options (closed)
+    mainEl.appendChild(speechPanel); // 2️⃣ Player controls (outside details)
+    mainEl.appendChild(heading);      // 3️⃣ Exercise title (h4)
+    mainEl.appendChild(scrollWrapper); // 4️⃣ Token grid container
+
+    // -----------------------------------------------------------------
+    // 11️⃣  Build the token grid (will be rebuilt on every checkbox change)
     // -----------------------------------------------------------------
     function rebuildTokenGrid() {
         // 0️⃣ Reset global collections and clear the visual container.
@@ -330,11 +358,11 @@ export async function renderDictionaryExercise(mainEl, exerciseMeta, uiLang) {
         scrollWrapper.innerHTML = "";           // wipe any old grids
 
         // 1️⃣ Start the first grid.
-        let currentGrid = createNewGrid();     // <-- uses the helper from 2.1
+        let currentGrid = createNewGrid();
 
         // 2️⃣ Build lookup maps from the check‑boxes.
         const displayMap = {}; // lang → true/false
-        const speakMap = {}; // lang → true/false (used by the controller)
+        const speakMap = {};   // lang → true/false (used by the controller)
 
         orderedLangs.forEach(l => {
             const dCb = displayBoxes.get(l);
@@ -343,6 +371,7 @@ export async function renderDictionaryExercise(mainEl, exerciseMeta, uiLang) {
             speakMap[l] = sCb ? sCb.checked : false;
         });
 
+        // Ensure at least one language is displayed.
         if (!Object.values(displayMap).some(Boolean)) {
             displayMap[0] = true;
             speakMap[0] = true;
@@ -365,7 +394,7 @@ export async function renderDictionaryExercise(mainEl, exerciseMeta, uiLang) {
                 const translations = [];
                 const langs = [];
 
-                let hasNewline = false; // will become true if any value contains "\n"
+                let hasNewline = false; // becomes true if any value contains "\n"
 
                 orderedLangs.forEach(lang => {
                     if (!displayMap[lang]) return; // skip hidden languages
@@ -389,10 +418,7 @@ export async function renderDictionaryExercise(mainEl, exerciseMeta, uiLang) {
                 const col = buildTokenColumn(translations, langs, displayMap);
                 currentGrid.appendChild(col);
 
-                // ---------------------------------------------------------
-                // If any of the values for this token contained "\n",
-                // close the current grid and start a fresh one for the next token.
-                // ---------------------------------------------------------
+                // If any token contained a newline, start a fresh grid for the next token.
                 if (hasNewline) {
                     currentGrid = createNewGrid();
                 }
@@ -407,49 +433,7 @@ export async function renderDictionaryExercise(mainEl, exerciseMeta, uiLang) {
     }
 
     // -----------------------------------------------------------------
-    // 9️⃣ Assemble the page in the required order:
-    //      1️⃣ Language‑options <details> (top, closed)
-    //      2️⃣ Player control panel (outside details)
-    //      3️⃣ Exercise heading (<h4>)
-    //      4️⃣ Token grid
-    // -----------------------------------------------------------------
-    mainEl.innerHTML = ""; // clear any previous content
-
-    const titleText =
-        (exerciseMeta.title && exerciseMeta.title[uiLang]) ||
-        exerciseMeta.title?.en ||
-        "Dictionary Exercise";
-
-    const heading = document.createElement("h4"); // <-- changed from h2 to h4
-    heading.textContent = titleText;
-
-    // Order matters:
-    mainEl.appendChild(details);      // 1️⃣ Language options (closed)
-    mainEl.appendChild(speechPanel); // 2️⃣ Player controls (outside details)
-    mainEl.appendChild(heading);      // 3️⃣ Exercise title (h4)
-    mainEl.appendChild(scrollWrapper);
-    //   mainEl.appendChild(tokenGrid);    // 4️⃣ Token grid
-
-    // -----------------------------------------------------------------
-    // 10️⃣ Build the speech controller **inside** the player panel.
-    // -----------------------------------------------------------------
-
-    speechCtrl = createSpeechController(speechPanel, {
-        getAvailableLanguages: () => SUPPORTED_LANGS,
-        // Use the language defined in the exercise meta (falls back to UI lang)
-        defaultLang: exerciseLang,
-        onVoiceChange: (newVoice) => {
-            console.log("[Speech] voice changed →", newVoice);
-            try {
-                localStorage.setItem("local_storage_tts_voice", newVoice);
-            } catch (error) { }
-        },
-        tokenElements: tokenEls,
-        translationElements: transEls
-    });
-
-    // -----------------------------------------------------------------
-    // 12️⃣ Initial render of the grid.
+    // 12️⃣  Initial render of the grid.
     // -----------------------------------------------------------------
     rebuildTokenGrid();
 }
@@ -473,20 +457,20 @@ export async function initDictionaryPage(lang, id) {
         return;
     }
 
-    // -------------------------------------------------------------
-    // 3️⃣  Ensure the voice for the exercise language exists
-    // -------------------------------------------------------------
-    const exerciseLang = meta.language || lang;   // language field from exercises.json
+    // -----------------------------------------------------------------
+    // 2️⃣ Ensure the voice for the exercise language exists.
+    // -----------------------------------------------------------------
+    const exerciseLang = meta.language || lang;   // fallback to UI language
     await ensureVoiceForExercise(exerciseLang, lang, true); // speak confirmation
 
+    // -----------------------------------------------------------------
+    // 3️⃣ Render the shared header (toolbar + nav) and obtain <main>
+    // -----------------------------------------------------------------
+    const main = await renderHeader(lang);
+    main.innerHTML = '';                     // clear any previous UI
 
     // -----------------------------------------------------------------
-    // 2️⃣ Render the shared header (toolbar + nav) and obtain <main>
+    // 4️⃣ Render the dictionary UI inside the <main>.
     // -----------------------------------------------------------------
-    const mainEl = await renderHeader(lang);
-
-    // -----------------------------------------------------------------
-    // 3️⃣ Render the dictionary UI inside that <main>
-    // -----------------------------------------------------------------
-    await renderDictionaryExercise(mainEl, meta, lang);
+    await renderDictionaryExercise(main, meta, lang);
 }

@@ -80,7 +80,8 @@ html {
    ------------------------------------------------------------- */
 .highlighted-token {
     /* Background – use the accent colour for good contrast */
-    background: var(--heading-accent);
+    /*    background: var(--heading-accent); */
+    background: lightgrey;
     /* Optional border for extra definition */
     /*    box-sizing: border-box;
     border: 2px solid var(--link);
