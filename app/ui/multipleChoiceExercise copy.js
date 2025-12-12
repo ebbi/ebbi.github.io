@@ -121,6 +121,7 @@ export async function initMultipleChoicePage(uiLang, exId) {
     const qLangLabel = document.createElement('label');
     qLangLabel.textContent = locale.questionLanguage || 'Question language';
 
+
     const qLangSelect = document.createElement('select');
     allLangCodes.forEach(l => {
         const opt = document.createElement('option');
@@ -128,6 +129,7 @@ export async function initMultipleChoicePage(uiLang, exId) {
         opt.textContent = (locale.languageLabels?.[l] ?? l.toUpperCase());
         qLangSelect.appendChild(opt);
     });
+
     qLangSelect.value = uiLang;
 
     const qLangWrapper = document.createElement('div');
@@ -146,6 +148,7 @@ export async function initMultipleChoicePage(uiLang, exId) {
         opt.textContent = (locale.languageLabels?.[l] ?? l.toUpperCase());
         aLangSelect.appendChild(opt);
     });
+
     aLangSelect.value = exerciseLang;
 
     const aLangWrapper = document.createElement('div');
@@ -159,9 +162,11 @@ export async function initMultipleChoicePage(uiLang, exId) {
     startBtn.disabled = true;               // enabled only when both selectors have values
     controlsDiv.appendChild(startBtn);
 
-    // Validate selectors immediately (so the start button can become enabled
-    // if defaults are already set).
-    validateSelectors();
+
+    // After both selectors have been created and defaults assigned
+    validateSelectors();   // <-- add this line right after the two blocks above
+
+
 
     // ----- Prompt (centered, with speaker icon) ---------------
     const promptWrapper = document.createElement('div');
@@ -208,8 +213,6 @@ export async function initMultipleChoicePage(uiLang, exId) {
     const resetScoreBtn = document.createElement('button');
     resetScoreBtn.textContent = locale.resetScore || 'Reset score';
 
-    bottomInfoRow.appendChild(scoreEl);
-    bottomInfoRow.appendChild(resetScoreBtn);
     pageWrapper.appendChild(bottomInfoRow);
 
     // ----- Navigation (Back ←  Next →) -------------------------
@@ -261,8 +264,13 @@ export async function initMultipleChoicePage(uiLang, exId) {
     function renderQuestion() {
         // ---- Reset UI -------------------------------------------------
         ul.querySelectorAll('button').forEach(b => {
-            b.classList.remove('correct', 'incorrect'); // clear any old colour
-            b.disabled = false;                         // re‑enable
+            b.disabled = false;
+            if (b.classList.contains('correct')) {
+                b.classList.remove('correct')
+            }
+            if (b.classList.contains('incorrect')) {
+                b.classList.remove('incorrect')
+            }
         });
         feedbackEl.textContent = '';
         nextBtn.disabled = true;
@@ -345,7 +353,6 @@ export async function initMultipleChoicePage(uiLang, exId) {
 
             btn.appendChild(ansIcon);
             btn.appendChild(ansText);
-            // Ensure the dataset value is a string ("true"/"false")
             btn.dataset.isCorrect = (opt === correctTxt).toString();
 
             // ARIA label for screen readers
@@ -363,10 +370,9 @@ export async function initMultipleChoicePage(uiLang, exId) {
                 } else {
                     feedbackEl.textContent = locale.incorrectFeedback || 'Incorrect.';
                     btn.classList.add('incorrect');
-
-                    // Highlight the actual correct button (if it still exists and is enabled)
+                    // also highlight the correct button in green
                     const correctBtn = Array.from(btns).find(b => b.dataset.isCorrect === 'true');
-                    if (correctBtn && !correctBtn.disabled) {
+                    if (correctBtn) {
                         correctBtn.classList.add('correct');
                     }
                 }
@@ -374,7 +380,7 @@ export async function initMultipleChoicePage(uiLang, exId) {
                 state.total++;
                 updateScoreDisplay();
 
-                // Disable all answer buttons (they stay coloured)
+                // Disable all answer buttons
                 btns.forEach(b => (b.disabled = true));
 
                 // Enable Next button
@@ -405,10 +411,6 @@ export async function initMultipleChoicePage(uiLang, exId) {
         state.total = 0;
         updateScoreDisplay();
         feedbackEl.textContent = '';
-
-        // Remove any lingering colour classes from the answer buttons
-        ul.querySelectorAll('button').forEach(b => b.classList.remove('correct', 'incorrect'));
-
         // If a quiz is already in progress, start a brand‑new question
         if (!startBtn.disabled) {
             renderQuestion();

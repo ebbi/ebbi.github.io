@@ -740,6 +740,7 @@ textarea:disabled,
 /*=====================================================================
    12️⃣  Miscellaneous utility classes
    =====================================================================*/
+
 .correct {
     color: #fff;
     background-color: #4caf50;
@@ -796,3 +797,30 @@ textarea:disabled,
 
     /* ≈18 px */
 }
+
+/* ---- existing styles above ------------------------------------------------ */
+
+/* ==== FORCE COLOUR ON DISABLED CORRECT/INCORRECT BUTTONS ==== */
+button.correct,
+button.incorrect {
+    color: #fff !important;
+}
+
+button.correct {
+    background-color: #4caf50 !important;
+    /* green */
+}
+
+button.incorrect {
+    background-color: #ff5252 !important;
+    /* red */
+}
+
+/* Preserve colour when the button becomes disabled 
+button.correct:disabled,
+button.incorrect:disabled {
+    background-color: inherit !important;
+    opacity: 1 !important;
+}
+*/
+/* -------------------------------------------------------------------------- */
