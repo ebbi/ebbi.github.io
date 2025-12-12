@@ -1,6 +1,7 @@
 // app/ui/toolbar.js
 import { toggleTheme } from '../utils/theme.js';
 import { getLocale } from '../data/locales.js';
+// import { applyDirection } from '../utils/rtl.js';
 import { setStoredLang, getStoredLang } from '../utils/storage.js';
 
 export function renderToolbar(container) {
@@ -22,27 +23,8 @@ export function renderToolbar(container) {
     homeBtn.title = 'Home';
     homeBtn.textContent = '🏠';
     homeBtn.onclick = () => {
-        // -------------------------------------------------------------
-        // 1️⃣  Stop any ongoing speech synthesis (if the manager exists)
-        // -------------------------------------------------------------
-        if (window.speechManager) {
-            window.speechManager.stop();
-        }
-
-        // -------------------------------------------------------------
-        // 2️⃣  Navigate to the language‑specific home route (replaceState)
-        // -------------------------------------------------------------
-        const langPrefix = `/${getStoredLang()}/`;
-        if (location.pathname !== langPrefix) {
-            // Use the router to replace the current URL with the home URL.
-            // The `true` flag means “replaceState”, so we don’t add a history entry.
-            window.router.navigate(langPrefix, true);
-        }
-
-        // -------------------------------------------------------------
-        // 3️⃣  Perform a full page reload – clears UI, timers, etc.
-        // -------------------------------------------------------------
-        location.reload();
+        // Navigate to the root of the stored language (replaceState → no extra history entry)
+        window.router.navigate(`/${getStoredLang()}/`, true);
     };
 
     const themeBtn = document.createElement('button');
@@ -85,4 +67,36 @@ export function renderToolbar(container) {
     // 6️⃣  Insert the toolbar into the supplied container
     // -----------------------------------------------------------------
     container.appendChild(toolbar);
+}
+
+// ---------------------------------------------------------------
+// 7️⃣  Add a permanent “Reload / Stop Sound” button
+// ---------------------------------------------------------------
+export function addReloadSoundButton() {
+    const toolbar = document.getElementById('toolbar');
+    if (!toolbar) return;
+
+    // Create the button (placed after the Help button)
+    const reloadBtn = document.createElement('button');
+    reloadBtn.id = 'reloadSoundBtn';
+    reloadBtn.title = getLocale(getStoredLang()).reloadSound || 'Reload page (stop sound)';
+    reloadBtn.textContent = '🔊';
+ //   reloadBtn.style.opacity = 0.5;
+
+    // Click → stop any speech and reload the page
+    reloadBtn.onclick = () => {
+        if (window.speechManager) window.speechManager.stop();
+
+        // Full reload – this also clears the UI and any timers
+        location.reload();
+    };
+
+    // Insert after the Help button (right‑most container)
+    const rightContainer = toolbar.lastElementChild;
+    if (rightContainer) {
+        rightContainer.appendChild(reloadBtn);
+    } else {
+        // Fallback – just append to the toolbar
+        toolbar.appendChild(reloadBtn);
+    }
 }

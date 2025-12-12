@@ -1,16 +1,11 @@
 
-The dictionaryExercise.js generates words in multiple translations.
-The translations can be selected for display and speak in the language options.
+The button id="reloadSoundBtn" reloads the page and stops any 
+ current speech sound. 
 
-The click event on any translation word should speak out the clicked word.
-Explain why the click event does not always speak out the word.  For example, 
-the thai_consonant_vowel_diphthong_exercise.js has only one translation and 
-while the click event is created, the click event is inactive.  
-For, data files with multiple translations, the click event works for 
-some translations but not other translations.
+Explain the changes to delete button id="reloadSoundBtn" and 
+have the button id="homeBtn" reload the page instead.
 
-The code should speak out any word on initial load and subsequent 
- selection in the language options.
+
 
 
 In your response, do not generate any diff patches, 

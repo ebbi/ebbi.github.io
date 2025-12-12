@@ -10,24 +10,38 @@ import { SUPPORTED_LANGS, FALLBACK_LANG, LANGUAGE_LABELS, getLocale } from '../d
 import { populateFontSelect } from './fontSelect.js';
 // NEW – central speech controller
 import { createSpeechController } from "../utils/speechController.js";
+// Ensure the reload‑sound button exists on every page render
+import { addReloadSoundButton } from './toolbar.js';
 
-// Note: the old import of `addReloadSoundButton` has been removed because the
-// button no longer exists.
-
-// -----------------------------------------------------------------
-// 1️⃣ Normalise the language (persist it, set direction)
-// -----------------------------------------------------------------
+/**
+ * Creates the static page skeleton:
+ *   • <header id="toolbarContainer"> – holds the toolbar.
+ *   • <nav class="menu-nav"> – holds ONLY the language‑ and font‑selectors.
+ *   • <main id="main" class="main"> – where page‑specific content will be injected.
+ *
+ * The dynamic UI elements (level‑filter checkboxes and the exercise list)
+ * are **not** created here. They will be added later by `renderMenu`
+ * when the home page is rendered.
+ *
+ * @param {string} lang – language code that should be active.
+ * @returns {HTMLElement} the <main id="main"> element.
+ */
 export async function renderHeader(lang) {
+    /*
     // -----------------------------------------------------------------
-    // 1️⃣  Normalise the language (persist it, set direction)
+    // 1️⃣ Normalise the language (persist it, set direction)
     // -----------------------------------------------------------------
     if (!SUPPORTED_LANGS.includes(lang)) lang = FALLBACK_LANG;
     if (lang !== getStoredLang()) await setStoredLang(lang);
     applyDirection(lang);
+*/
 
-    // -----------------------------------------------------------------
+    // 1️⃣ Normalise the language (persist it, set direction)
+    if (!SUPPORTED_LANGS.includes(lang)) lang = FALLBACK_LANG;
+    if (lang !== getStoredLang()) await setStoredLang(lang);
+    applyDirection(lang);
+
     // 2️⃣ Load the localisation strings for the current UI language
-    // -----------------------------------------------------------------
     const locale = getLocale(lang);
 
     // -----------------------------------------------------------------
@@ -43,6 +57,7 @@ export async function renderHeader(lang) {
     // 3️⃣ Render the toolbar (top‑of‑page)
     // -----------------------------------------------------------------
     renderToolbar(document.getElementById('toolbarContainer'));
+    addReloadSoundButton();
 
     // -----------------------------------------------------------------
     // 4️⃣ Populate the static navigation bar with language & font selectors
