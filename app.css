@@ -526,7 +526,7 @@ details summary {
     margin-bottom: .5rem;
     border: 1px solid var(--border-surface);
     border-radius: .5rem;
-    padding: .5rem;
+    padding: 0 .5rem;
     background: var(--bg-surface);
 }
 
@@ -539,7 +539,7 @@ details summary {
 }
 
 #speechPanel #controlsRow button {
-    margin-bottom: 0.2rem;
+    /*    margin-bottom: 0.2rem; */
     font-size: 1.2rem;
     background: none;
     border: none;

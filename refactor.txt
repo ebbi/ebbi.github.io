@@ -1,27 +1,18 @@
 
-I can see why this did not work!
+The dictionaryExercise.js generates words in multiple translations.
+The translations can be selected for display and speak in the language options.
 
-Here is a suggestion that would stop the bug.
+The click event on any translation word should speak out the clicked word.
+Explain why the click event does not always speak out the word.  For example, 
+the thai_consonant_vowel_diphthong_exercise.js has only one translation and 
+while the click event is created, the click event is inactive.  
+For, data files with multiple translations, the click event works for 
+some translations but not other translations.
 
-Goal 1, ADD (not replace!) a gear icon after the “Delay (s):” label and the delayInput.
-Goal 2, Clicking the gear opens a Settings <details> panel
-Goal 3, Move the delay control (label + input) and the 
- voice <select> into that Settings panel.  
- Also move the details language options panel (with all child elements) 
- into the settings panel.
-Goal 4, Show the status message inline,
- after the Reset button and before the gear icon 
-Goal 5, Ensure the Play / Pause / Reset buttons
- continue to work exactly as before
-Goal 6, turn the delay input into a sliding scale
-Goal 7, Keep the original speechController.js logic unchanged
-
-Goal 8, to avoid the frequent hanging when outputting code 
- output the entire function to find and replace
-
-
+The code should speak out any word on initial load and subsequent 
+ selection in the language options.
 
 
 In your response, do not generate any diff patches, 
- instead indicate any changes with fin/replace and plane code.
+ instead indicate any changes with find/replace and plane code.
 

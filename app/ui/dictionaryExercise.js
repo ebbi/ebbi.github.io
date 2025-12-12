@@ -91,7 +91,7 @@ function buildTokenColumn(translations, langs, displayMap) {
         outerSpan.setAttribute("lang", lang);
 
         // -----------------------------------------------------------------
-        //  Thai consonant class lookup tables (corrected)
+        // Thai consonant class lookup tables (corrected)
         // -----------------------------------------------------------------
 
         // 1️⃣  High‑class consonants (as you specified)
@@ -133,16 +133,14 @@ function buildTokenColumn(translations, langs, displayMap) {
             chars.forEach(ch => {
                 const inner = document.createElement("span");
 
-                // Determine the class:
-                //   * If the character is in the low‑class set → low‑class
-                //   * Else if it is in the high‑class set → high‑class
-                //   * Otherwise (including vowels, tone marks, etc.) → middle‑class
+                // Determine the class and also mark it as a speakable element
+                // by adding the "trans" class (so the click handler can find it).
                 if (HIGH_CLASS_CONSONANTS.has(ch)) {
-                    inner.className = "high-class";
+                    inner.className = "high-class trans";
                 } else if (MIDDLE_CLASS_CONSONANTS.has(ch)) {
-                    inner.className = "middle-class";
+                    inner.className = "middle-class trans";
                 } else {
-                    inner.className = "low-class";
+                    inner.className = "low-class trans";
                 }
 
                 inner.textContent = ch;
@@ -174,16 +172,40 @@ function buildTokenColumn(translations, langs, displayMap) {
     // -----------------------------------------------------------------
     // 3️⃣  Click handling – start playback from this column / span.
     // -----------------------------------------------------------------
-    const clickHandler = (ev) => {
+
+    // ----- helper functions for robust click handling -----
+    const isSpeakable = (node) => {
+        if (!node || !node.classList) return false;
+        return node.classList.contains('trans') ||
+            node.classList.contains('high-class') ||
+            node.classList.contains('middle-class') ||
+            node.classList.contains('low-class');
+    };
+
+    const findSpeakableTarget = (startNode, column) => {
+        let node = startNode;
+        while (node && node !== column) {
+            if (isSpeakable(node)) return node;
+            node = node.parentNode;
+        }
+        return null;
+    };
+
+    const computeTransIdx = (column, targetNode) => {
+        const speakables = Array.from(column.children).filter(isSpeakable);
+        return speakables.indexOf(targetNode);
+    };
+    // ---------------------------------------------------------
+
+    col.addEventListener("click", (ev) => {
+        const target = findSpeakableTarget(ev.target, col);
+        if (!target) return;               // click was on a non‑speakable element
+
         const tokenIdx = tokenEls.indexOf(col);
         if (tokenIdx === -1) return;
 
-        const transIdx = Array.from(col.children).indexOf(ev.target);
+        const transIdx = computeTransIdx(col, target);
         if (speechCtrl) speechCtrl.startFrom(tokenIdx, transIdx);
-    };
-
-    col.addEventListener("click", (ev) => {
-        if (ev.target.classList.contains("trans")) clickHandler(ev);
     });
 
     return col;
@@ -362,7 +384,7 @@ export async function renderDictionaryExercise(mainEl, exerciseMeta, uiLang) {
 
         // 2️⃣ Build lookup maps from the check‑boxes.
         const displayMap = {}; // lang → true/false
-        const speakMap = {};   // lang → true/false (used by the controller)
+        const speakMap = {}; // lang → true/false (used by the controller)
 
         orderedLangs.forEach(l => {
             const dCb = displayBoxes.get(l);
@@ -373,13 +395,15 @@ export async function renderDictionaryExercise(mainEl, exerciseMeta, uiLang) {
 
         // Ensure at least one language is displayed.
         if (!Object.values(displayMap).some(Boolean)) {
-            displayMap[0] = true;
-            speakMap[0] = true;
+            // If everything is unchecked, force the first language on.
+            const first = orderedLangs[0];
+            displayMap[first] = true;
+            speakMap[first] = true;
         }
 
         // 3️⃣ Walk through the JSON data and create columns.
         data.forEach(entry => {
-            // Category heading (optional)
+            // Optional category heading.
             if (entry.category) {
                 const catDiv = document.createElement("h5");
                 catDiv.className = "category-header";
@@ -414,7 +438,7 @@ export async function renderDictionaryExercise(mainEl, exerciseMeta, uiLang) {
                     langs.push(orderedLangs[0]);
                 }
 
-                // Create the column (visible spans only).
+                // Create the column (visible spans only) and append it.
                 const col = buildTokenColumn(translations, langs, displayMap);
                 currentGrid.appendChild(col);
 
