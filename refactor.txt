@@ -1,12 +1,14 @@
+The exercise json data has properties, id, category followed by arrays of 
+ translations.
 
-The new logic allows a first attempt to highlight the answer selection as 
- correct and incorrect.  Any subsequent click does not highlight 
- correct and incorrect.
+Suggest refactoring of the json data so that exercises could be displayed 
+with the category data internationalised and displayed 
+ in the selected languages.
 
-Refactor the code so that every click event speaks and highlights 
- correct / incorrect selection.
 
- 
+
+
+
 
 
 

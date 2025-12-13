@@ -248,7 +248,7 @@ export async function renderDictionaryExercise(mainEl, exerciseMeta, uiLang) {
     // 5️⃣ Derive the list of language columns from the JSON.
     // -----------------------------------------------------------------
     const rawLangKeys = Object.keys(data[0]).filter(
-        (k) => k !== "id" && k !== "section" && k !== "tokens"
+        (k) => k !== "id" && k !== "category" && k !== "tokens"
     );
 
     // -----------------------------------------------------------------
@@ -403,31 +403,11 @@ export async function renderDictionaryExercise(mainEl, exerciseMeta, uiLang) {
 
         // 3️⃣ Walk through the JSON data and create columns.
         data.forEach(entry => {
-/*
             // Optional category heading.
             if (entry.category) {
                 const catDiv = document.createElement("h5");
                 catDiv.className = "category-header";
                 catDiv.textContent = entry.category;
-                currentGrid.appendChild(catDiv);
-            }
-*/
-
-            if (entry.section) {
-                const catDiv = document.createElement("h5");
-                catDiv.className = "section-header";
-
-                // `entry.section` is an i18n object.  Fallback order:
-                //   1️⃣ UI language
-                //   2️⃣ English
-                //   3️⃣ First available translation (so we never show “undefined”)
-                const localizedSection =
-                    entry.section[uiLang] ||
-                    entry.section.en ||
-                    Object.values(entry.section)[0] ||
-                    "";                       // empty string as ultimate fallback
-
-                catDiv.textContent = localizedSection;
                 currentGrid.appendChild(catDiv);
             }
 

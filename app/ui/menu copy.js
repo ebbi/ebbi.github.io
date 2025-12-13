@@ -106,16 +106,14 @@ export async function renderMenu(container, UI_LANG, showPractice = true) {
     // -------------------------------------------------------------
     if (showPractice) {
         const practiceDetails = document.createElement('details');
-        // practiceDetails.open = true; // optional default open
+//        practiceDetails.open = true;                     // expanded by default
 
         const practiceSummary = document.createElement('summary');
         const locale = getLocale(UI_LANG);
         practiceSummary.textContent = locale.practiceLanguages || 'Practice languages';
         practiceDetails.appendChild(practiceSummary);
 
-        // -----------------------------------------------------------------
-        // 1️⃣️⃣  Build the exercise selector dropdown (unchanged)
-        // -----------------------------------------------------------------
+        // ----- Exercise selector (dropdown with optgroups) -----
         function buildExerciseDropdown(UI_LANG, locale) {
             const wrapper = document.createElement('div');
             wrapper.className = 'exerciseDiv';
@@ -123,13 +121,19 @@ export async function renderMenu(container, UI_LANG, showPractice = true) {
             select.id = 'exerciseSelect';
             wrapper.appendChild(select);
 
+            // ---- Placeholder (disabled) ----
             const placeholder = document.createElement('option');
             placeholder.value = '';
             placeholder.disabled = true;
-            placeholder.selected = true;
-            placeholder.textContent = locale.exercise || 'Exercise';
+            placeholder.selected = true;               // keep it selected initially
+
+            // Use the UI‑language string for “exercise”
+            const localeUI_LANG = getLocale(UI_LANG);         // UI_LANG is already available in this scope
+            placeholder.textContent = localeUI_LANG.exercise || 'Exercise';  // fallback to English
+
             select.appendChild(placeholder);
 
+            // ---- Group by level -------------------------------------------------
             const levelOrder = ['basic', 'intermediate', 'advance'];
             const byLevel = levelOrder.reduce((acc, lvl) => {
                 acc[lvl] = [];
@@ -139,8 +143,10 @@ export async function renderMenu(container, UI_LANG, showPractice = true) {
             EXERCISES.forEach(ex => {
                 const lvl = (ex.level || 'basic').toLowerCase();
                 const bucket = levelOrder.includes(lvl) ? lvl : 'basic';
-                byLevel[lvl].push(ex);
+                byLevel[bucket].push(ex);
             });
+
+            // ---- Create <optgroup>s ------------------------------------------------
 
             levelOrder.forEach(lvl => {
                 const group = document.createElement('optgroup');
@@ -158,6 +164,8 @@ export async function renderMenu(container, UI_LANG, showPractice = true) {
                 if (group.children.length) select.appendChild(group);
             });
 
+
+            // ---- Pre‑select the last‑visited exercise (if still present) ----
             const lastId = getLastExercise();
             if (lastId) {
                 const optionToSelect = Array.from(select.options).find(o => o.value === lastId);
@@ -166,9 +174,11 @@ export async function renderMenu(container, UI_LANG, showPractice = true) {
                 placeholder.selected = true;
             }
 
+            // ---- React to a change ------------------------------------------------
             select.addEventListener('change', ev => {
                 const chosenId = ev.target.value;
                 if (!chosenId) return;
+
                 storeLastExercise(chosenId);
                 window.router.navigate(`/${UI_LANG}/exercises/${chosenId}`, true);
             });
@@ -178,55 +188,28 @@ export async function renderMenu(container, UI_LANG, showPractice = true) {
 
         practiceDetails.appendChild(buildExerciseDropdown(UI_LANG, locale));
 
-        // -----------------------------------------------------------------
-        // 2️⃣️⃣  Render the exercise list **grouped by i18n group key**
-        // -----------------------------------------------------------------
-        // Filter by the level‑filter checkboxes first
+        // ----- Exercise list (cards) -----
+        const ul = document.createElement('ulz');
+        ul.className = 'menu-list';
+
         const activeLevels = new Set(getStoredLevels());
 
-        // Collect exercises into groups (key = group i18n key)
-        const groupsMap = new Map(); // groupKey -> array of exercises
         EXERCISES
             .filter(ex => activeLevels.has((ex.level || 'basic').toLowerCase()))
             .forEach(ex => {
-                const grpKey = ex.group || 'group.other';
-                if (!groupsMap.has(grpKey)) groupsMap.set(grpKey, []);
-                groupsMap.get(grpKey).push(ex);
-            });
-
-        // Sort groups – you can also sort by a numeric `order` if you add it
-        // to the JSON. Here we simply sort alphabetically by the translated label.
-        const sortedGroupKeys = Array.from(groupsMap.keys()).sort((a, b) => {
-            const labelA = locale[a] || a;
-            const labelB = locale[b] || b;
-            return labelA.localeCompare(labelB);
-        });
-
-        // Render each group as its own <details> panel
-        sortedGroupKeys.forEach(groupKey => {
-            const groupDetails = document.createElement('details');
-            groupDetails.open = true; // groups start opened; change as you wish
-
-            const groupSummary = document.createElement('summary');
-            // Translate the group key using the current locale
-            groupSummary.textContent = locale[groupKey] || groupKey;
-            groupDetails.appendChild(groupSummary);
-
-            const ul = document.createElement('ul');
-            ul.className = 'menu-list';
-
-            groupsMap.get(groupKey).forEach(ex => {
                 const li = document.createElement('li');
                 li.className = 'menu-item';
                 li.dataset.id = ex.id;
 
                 const title = document.createElement('h3');
-                title.textContent = (ex.title && ex.title[UI_LANG]) || ex.title?.en || ex.id;
+                title.textContent =
+                    (ex.title && ex.title[UI_LANG]) || ex.title?.en || 'Untitled';
                 li.appendChild(title);
 
                 const summary = document.createElement('p');
                 summary.className = 'summary';
-                summary.textContent = (ex.summary && ex.summary[UI_LANG]) || ex.summary?.en || '';
+                summary.textContent =
+                    (ex.summary && ex.summary[UI_LANG]) || ex.summary?.en || '';
                 li.appendChild(summary);
 
                 // “Test Yourself” button – only for exercises that list the
@@ -236,9 +219,13 @@ export async function renderMenu(container, UI_LANG, showPractice = true) {
                     const label = locale.testYourself || 'Test yourself';
                     testBtn.textContent = label;
                     testBtn.className = 'test-yourself-btn';
+                    // NOTE: the event object is passed so we can stop propagation
                     testBtn.onclick = (ev) => {
+                        // Prevent the click from reaching the <ul> listener.
                         ev.stopPropagation();
+                        // Optional – cancel any default button behaviour (no‑op in most browsers)
                         ev.preventDefault?.();
+
                         const url = `/${UI_LANG}/exercises/${ex.id}/test`;
                         window.router.navigate(url, true);
                     };
@@ -248,20 +235,18 @@ export async function renderMenu(container, UI_LANG, showPractice = true) {
                 ul.appendChild(li);
             });
 
-            // Click on a list item navigates to the exercise detail page
-            const router = window.router;
-            ul.addEventListener('click', ev => {
-                const item = ev.target.closest('.menu-item');
-                if (!item) return;
-                const id = item.dataset.id;
-                window.router.navigate(`/${UI_LANG}/exercises/${id}`);
-            });
-
-            groupDetails.appendChild(ul);
-            practiceDetails.appendChild(groupDetails);
+        const router = window.router; // global router instance
+        ul.addEventListener('click', ev => {
+            const item = ev.target.closest('.menu-item');
+            if (!item) return;
+            const id = item.dataset.id;
+            window.router.navigate(`/${UI_LANG}/exercises/${id}`);
         });
 
-        // Append the whole practice panel to the supplied container
+        // **IMPORTANT** – put the list *inside* the <details>!
+        practiceDetails.appendChild(ul);
+
+        // Append the whole thing to the supplied <main> container
         container.appendChild(practiceDetails);
     }
 

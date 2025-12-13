@@ -5,25 +5,17 @@
         "file": "thai_consonant_vowel_diphthong_exercise.json",
         "language": "th",
         "level": "basic",
-        "details": {
-            "type": "dictionary"
-        },
+        "group": "group.thaiFoundations",
+        "order": 1,
+        "details": { "type": "dictionary" },
         "activities": [ ],
         "title": {
             "en": "Thai Consonants, Vowels & Diphthongs",
-            "th": "พยัญชนะ, สระ และสระผสมของภาษาไทย",
-            "zh": "泰语辅音、元音和双元音",
-            "fa": "حروف صدا، واکه‌ها و دیفتون‌های تایلندی",
-            "ar": "حروف الصوامت، الحركات والثنائيات في اللغة التايلاندية",
-            "ja": "タイ語の子音、母音、二重母音"
+            "th": "พยัญชนะ, สระ และสระผสมของภาษาไทย"
         },
         "summary": {
             "en": "Practice Thai consonant classes, short/long vowels and diphthongs.",
-            "th": "ฝึกพยัญชนะชนิดต่าง ๆ, สระสั้น/ยาว และสระผสม",
-            "zh": "练习泰语辅音分类、短/长元音以及双元音。",
-            "fa": "تمرین دسته‌بندی حروف صدا، واکه‌های کوتاه/طولانی و دیفتون‌ها.",
-            "ar": "تمرين فئات الحروف الصامتة التايلاندية، الحركات القصيرة/ الطويلة والثنائيات.",
-            "ja": "タイ語の子音クラス、短母音・長母音、二重母音を練習する。"
+            "th": "ฝึกพยัญชนะชนิดต่าง ๆ, สระสั้น/ยาว และสระผสม"
         }
     },
     {
@@ -32,27 +24,17 @@
         "file": "thai_100.json",
         "language": "th",
         "level": "basic",
-        "details": {
-            "type": "dictionary"
-        },
-        "activities": [
-            "multipleChoice"
-        ],
+        "group": "group.thaiFoundations",
+        "order": 1,
+        "details": { "type": "dictionary" },
+        "activities": [ "multipleChoice" ],
         "title": {
             "en": "Thai 100 most used words",
-            "th": "100 คำที่ใช้บ่อยที่สุดในภาษาไทย",
-            "fa": "۱۰۰ کلمه پرکاربرد زبان تایلندی",
-            "ja": "タイ語で最も頻繁に使われる100語",
-            "zh": "泰语最常用的100个词",
-            "ar": "أكثر 100 كلمة مستخدمة في اللغة التايلاندية"
+            "th": "100 คำที่ใช้บ่อยที่สุดในภาษาไทย"
         },
         "summary": {
             "en": "Sentences that have Thai 100 most used words.",
-            "th": "ประโยคที่ประกอบด้วย 100 คำที่ใช้บ่อยที่สุดในภาษาไทย",
-            "fa": "جملاتی که شامل ۱۰۰ کلمه پرکاربرد زبان تایلندی هستند",
-            "ja": "タイ語で最も頻繁に使われる100語を含む文",
-            "zh": "包含泰语最常用的100个词的句子",
-            "ar": "جمل تحتوي على أكثر 100 كلمة مستخدمة في اللغة التايلاندية"
+            "th": "ประโยคที่ประกอบด้วย 100 คำที่ใช้บ่อยที่สุดในภาษาไทย"
         }
     },
     {
@@ -61,25 +43,17 @@
         "file": "thai_numbers_units_and_tens.json",
         "language": "th",
         "level": "basic",
-        "details": {
-            "type": "dictionary"
-        },
-        "activities": [
-            "multipleChoice"
-        ],
+        "group": "group.thaiNumbers",
+        "order": 2,
+        "details": { "type": "dictionary" },
+        "activities": [ "multipleChoice" ],
         "title": {
             "en": "Numbers: units and tens",
-            "th": "ตัวเลข: หน่วยและสิบ",
-            "zh": "数字：单位和十",
-            "ja": "数字：単位と十",
-            "fa": "اعداد: واحدها و ده‌ها"
+            "th": "ตัวเลข: หน่วยและสิบ"
         },
         "summary": {
             "en": "Practice pronouncing number units & tens",
-            "th": "ฝึกออกเสียงหน่วยและสิบ",
-            "zh": "练习发音数字单位和十",
-            "ja": "数字の単位と十を発音する練習",
-            "fa": "تمرین تلفظ واحدها و ده‌ها"
+            "th": "ฝึกออกเสียงหน่วยและสิบ"
         }
     },
     {
@@ -88,27 +62,17 @@
         "file": "th_poem_kalil_jibran.json",
         "language": "th",
         "level": "basic",
-        "details": {
-            "type": "dictionary"
-        },
-        "activities": [
-            "multipleChoice"
-        ],
+        "group": "group.thaiPoetry",
+        "order": 3,
+        "details": { "type": "dictionary" },
+        "activities": [ "multipleChoice" ],
         "title": {
             "en": "Listen to a poem by Khalil Jibran",
-            "th": "ฟังบทกวีของ Khalil Jibran",
-            "fa": "به شعر خلیل جبران گوش دهید",
-            "ja": "Khalil Jibran の詩を聴く",
-            "zh": "聆听 Khalil Jibran 的诗",
-            "ar": "استمع إلى قصيدة من خالد جبران"
+            "th": "ฟังบทกวีของ Khalil Jibran"
         },
         "summary": {
             "en": "Your children are not your children",
-            "th": "ลูกของคุณไม่ใช่ลูกของคุณเอง",
-            "fa": "فرزندانتان فرزندانتان نیستند",
-            "ja": "あなたの子どもはあなたの子どもではありません",
-            "zh": "你的孩子不是你的孩子",
-            "ar": "أطفالك ليسوا أطفالك"
+            "th": "ลูกของคุณไม่ใช่ลูกของคุณเอง"
         }
     },
     {
@@ -117,27 +81,17 @@
         "file": "TSL_RW3.json",
         "language": "th",
         "level": "basic",
-        "details": {
-            "type": "dictionary"
-        },
-        "activities": [
-            "multipleChoice"
-        ],
+        "group": "group.thaiReadingWriting",
+        "order": 4,
+        "details": { "type": "dictionary" },
+        "activities": [ "multipleChoice" ],
         "title": {
             "en": "TSL, Read and Write 3",
-            "th": "TSL อ่านและเขียน 3",
-            "fa": "TSL، خواندن و نوشتن ۳",
-            "ja": "TSL、読み取りと書き込み3",
-            "zh": "TSL，读写3",
-            "ar": "TSL، القراءة والكتابة 3"
+            "th": "TSL อ่านและเขียน 3"
         },
         "summary": {
             "en": "TSL, Read and Write 3",
-            "th": "TSL อ่านและเขียน 3",
-            "fa": "TSL، خواندن و نوشتن ۳",
-            "ja": "TSL、読み取りと書き込み3",
-            "zh": "TSL，读写3",
-            "ar": "TSL، القراءة والكتابة 3"
+            "th": "TSL อ่านและเขียน 3"
         }
     }
 ]

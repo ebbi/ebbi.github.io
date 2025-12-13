@@ -123,7 +123,7 @@ export class MCQuizEngine {
         // By default we show **all** languages except the source.
         // The UI can later mutate this map and call `rebuildTokenGrid()`.
         this._rawData[0] && Object.keys(this._rawData[0]).forEach(k => {
-            if (k !== 'id' && k !== 'category' && k !== 'tokens') {
+            if (k !== 'id' && k !== 'section' && k !== 'tokens') {
                 displayMap[k] = true;
             }
         });
@@ -134,7 +134,7 @@ export class MCQuizEngine {
         const rawLangKeys = Object.keys(this._rawData[0] || {});
         const orderedLangs = [
             this._srcLang,
-            ...rawLangKeys.filter(l => l !== this._srcLang && l !== 'id' && l !== 'category' && l !== 'tokens')
+            ...rawLangKeys.filter(l => l !== this._srcLang && l !== 'id' && l !== 'section' && l !== 'tokens')
         ];
 
         // -----------------------------------------------------------------

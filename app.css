@@ -459,7 +459,7 @@ details summary {
     overflow-y: auto;
 }
 
-.dict-grid .category-header {
+.dict-grid .section-header {
     flex-basis: 100%;
     flex-shrink: 0;
     max-width: 100%;
@@ -512,8 +512,8 @@ details summary {
     text-align: center;
 }
 
-/* Category headers that span the full width of the grid */
-.category-header {
+/* Section headers that span the full width of the grid */
+.section-header {
     grid-column: 1 / -1;
     /* full‑width */
     font-weight: 600;

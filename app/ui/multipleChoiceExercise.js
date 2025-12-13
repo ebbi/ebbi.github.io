@@ -90,7 +90,7 @@ export async function initMultipleChoicePage(uiLang, exId) {
     // -------------------------------------------------------------
     const firstRow = rows[0] || {};
     const allLangCodes = Object.keys(firstRow).filter(
-        k => !['id', 'category', 'tokens'].includes(k)
+        k => !['id', 'section', 'tokens'].includes(k)
     );
 
     if (!allLangCodes.length) {
