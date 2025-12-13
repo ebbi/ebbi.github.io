@@ -1,7 +1,15 @@
 
-The button with class="test-yourself-btn" activate a multiple choice quiz.
-Clicking an option answer in the quiz should highlight the selection as red or green.
-Explain why the colour highlighting is not consistent.
+The new logic allows a first attempt to highlight the answer selection as 
+ correct and incorrect.  Any subsequent click does not highlight 
+ correct and incorrect.
+
+Refactor the code so that every click event speaks and highlights 
+ correct / incorrect selection.
+
+ 
+
+
+
 
 
 

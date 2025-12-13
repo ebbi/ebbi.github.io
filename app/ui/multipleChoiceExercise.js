@@ -1,8 +1,8 @@
 // ---------------------------------------------------------------
 // app/ui/multipleChoiceExercise.js
 // ---------------------------------------------------------------
-// Multiple‑Choice (“Test Yourself”) page – fully styled and
-// internationalised.
+// Multiple‑Choice (“Test Yourself”) page – fully styled,
+// internationalised and with a streamlined click‑to‑listen experience.
 // ---------------------------------------------------------------
 
 import { loadJSON } from '../utils/fetch.js';
@@ -120,7 +120,6 @@ export async function initMultipleChoicePage(uiLang, exId) {
     // ---- Question language selector (inline) ------------------
     const qLangLabel = document.createElement('label');
     qLangLabel.textContent = locale.questionLanguage || 'Question language';
-
     const qLangSelect = document.createElement('select');
     allLangCodes.forEach(l => {
         const opt = document.createElement('option');
@@ -129,7 +128,6 @@ export async function initMultipleChoicePage(uiLang, exId) {
         qLangSelect.appendChild(opt);
     });
     qLangSelect.value = uiLang;
-
     const qLangWrapper = document.createElement('div');
     qLangWrapper.appendChild(qLangLabel);
     qLangWrapper.appendChild(qLangSelect);
@@ -138,7 +136,6 @@ export async function initMultipleChoicePage(uiLang, exId) {
     // ---- Answer language selector (inline) -------------------
     const aLangLabel = document.createElement('label');
     aLangLabel.textContent = locale.answerLanguage || 'Answer language';
-
     const aLangSelect = document.createElement('select');
     allLangCodes.forEach(l => {
         const opt = document.createElement('option');
@@ -147,7 +144,6 @@ export async function initMultipleChoicePage(uiLang, exId) {
         aLangSelect.appendChild(opt);
     });
     aLangSelect.value = exerciseLang;
-
     const aLangWrapper = document.createElement('div');
     aLangWrapper.appendChild(aLangLabel);
     aLangWrapper.appendChild(aLangSelect);
@@ -159,24 +155,19 @@ export async function initMultipleChoicePage(uiLang, exId) {
     startBtn.disabled = true;               // enabled only when both selectors have values
     controlsDiv.appendChild(startBtn);
 
-    // Validate selectors immediately (so the start button can become enabled
-    // if defaults are already set).
+    // Validate selectors immediately (in case defaults are already set)
     validateSelectors();
 
-    // ----- Prompt (centered, with speaker icon) ---------------
+    // ----- Prompt (centered, click‑to‑listen) -----------------
     const promptWrapper = document.createElement('div');
     promptWrapper.className = 'mc-prompt';
     promptWrapper.setAttribute('aria-live', 'polite');
-
-    const promptIcon = document.createElement('span');
-    promptIcon.className = 'icon';
-    promptIcon.textContent = '🔊';
-    promptIcon.title = locale.playPrompt || 'Play prompt';
-    promptWrapper.appendChild(promptIcon);
+    promptWrapper.style.cursor = 'pointer';
+    promptWrapper.title = locale.playPrompt || 'Play prompt';
+    pageWrapper.appendChild(promptWrapper);
 
     const promptEl = document.createElement('span');
     promptWrapper.appendChild(promptEl);
-    pageWrapper.appendChild(promptWrapper);
 
     // ----- Answer list -----------------------------------------
     const ul = document.createElement('ul');
@@ -201,16 +192,16 @@ export async function initMultipleChoicePage(uiLang, exId) {
     // ----- Score & Reset button (single row) -------------------
     const bottomInfoRow = document.createElement('div');
     bottomInfoRow.className = 'mc-bottom';
+    pageWrapper.appendChild(bottomInfoRow);
 
     const scoreEl = document.createElement('div');
+    // show “Correct / Total”
     scoreEl.innerHTML = `<span data-correct>0</span>/<span data-total>0</span>`;
+    bottomInfoRow.appendChild(scoreEl);
 
     const resetScoreBtn = document.createElement('button');
     resetScoreBtn.textContent = locale.resetScore || 'Reset score';
-
-    bottomInfoRow.appendChild(scoreEl);
     bottomInfoRow.appendChild(resetScoreBtn);
-    pageWrapper.appendChild(bottomInfoRow);
 
     // ----- Navigation (Back ←  Next →) -------------------------
     const navDiv = document.createElement('div');
@@ -227,7 +218,7 @@ export async function initMultipleChoicePage(uiLang, exId) {
     navDiv.appendChild(nextBtn);   // right side
 
     // -------------------------------------------------------------
-    // 10️⃣ State handling
+    // 10️⃣ State handling (correct / total counters)
     // -------------------------------------------------------------
     const state = { correct: 0, total: 0 };
 
@@ -261,8 +252,8 @@ export async function initMultipleChoicePage(uiLang, exId) {
     function renderQuestion() {
         // ---- Reset UI -------------------------------------------------
         ul.querySelectorAll('button').forEach(b => {
-            b.classList.remove('correct', 'incorrect'); // clear any old colour
-            b.disabled = false;                         // re‑enable
+            b.classList.remove('correct', 'incorrect'); // clear previous colours
+            // buttons stay enabled – we do NOT disable them here
         });
         feedbackEl.textContent = '';
         nextBtn.disabled = true;
@@ -288,9 +279,10 @@ export async function initMultipleChoicePage(uiLang, exId) {
         const randIdx = Math.floor(Math.random() * srcTokens.length);
         const promptTxt = srcTokens[randIdx] || '';
         promptEl.textContent = promptTxt;
-        promptEl.title = getLocale(uiLang).playPrompt || 'Play prompt';
-        promptEl.onclick = () => {
-            speakText(promptTxt, getStoredVoice()).catch(console.warn);
+
+        // Click on the prompt itself → speak it
+        promptWrapper.onclick = () => {
+            speakText(promptTxt, getStoredVoice(), qLang).catch(console.warn);
         };
 
         // -----------------------------------------------------------------
@@ -326,35 +318,27 @@ export async function initMultipleChoicePage(uiLang, exId) {
 
         // ---- 5️⃣ Populate the four answer buttons --------------------
         const btns = ul.querySelectorAll('button');
+
         options.forEach((opt, idx) => {
             const btn = btns[idx];
             btn.innerHTML = ''; // clear any previous content
 
-            // ----- speaker icon for each answer --------------------
-            const ansIcon = document.createElement('span');
-            ansIcon.className = 'icon';
-            ansIcon.textContent = '🔊';
-            ansIcon.title = locale.playAnswer || 'Play answer';
-            ansIcon.onclick = (e) => {
-                e.stopPropagation(); // prevent double‑trigger
-                speakText(opt, getStoredVoice(), aLang).catch(console.warn);
-            };
-
             const ansText = document.createElement('span');
             ansText.textContent = opt;
-
-            btn.appendChild(ansIcon);
             btn.appendChild(ansText);
-            // Ensure the dataset value is a string ("true"/"false")
+
+            // Store correctness as a string ("true"/"false")
             btn.dataset.isCorrect = (opt === correctTxt).toString();
 
             // ARIA label for screen readers
             btn.setAttribute('aria-label', opt);
 
+            // Click on the button → speak first, then evaluate correctness
             btn.onclick = async () => {
-                // Speak the chosen answer (non‑blocking)
+                // 1️⃣ Speak the answer (always)
                 speakText(opt, getStoredVoice(), aLang).catch(console.warn);
 
+                // 2️⃣ Evaluate correctness (every click, not just the first)
                 const isCorrect = btn.dataset.isCorrect === 'true';
                 if (isCorrect) {
                     feedbackEl.textContent = locale.correctFeedback || 'Correct!';
@@ -363,21 +347,11 @@ export async function initMultipleChoicePage(uiLang, exId) {
                 } else {
                     feedbackEl.textContent = locale.incorrectFeedback || 'Incorrect.';
                     btn.classList.add('incorrect');
-
-                    // Highlight the actual correct button (if it still exists and is enabled)
-                    const correctBtn = Array.from(btns).find(b => b.dataset.isCorrect === 'true');
-                    if (correctBtn && !correctBtn.disabled) {
-                        correctBtn.classList.add('correct');
-                    }
                 }
-
                 state.total++;
                 updateScoreDisplay();
 
-                // Disable all answer buttons (they stay coloured)
-                btns.forEach(b => (b.disabled = true));
-
-                // Enable Next button
+                // Enable the “Next” button now that an answer has been given
                 nextBtn.disabled = false;
             };
         });
@@ -405,10 +379,8 @@ export async function initMultipleChoicePage(uiLang, exId) {
         state.total = 0;
         updateScoreDisplay();
         feedbackEl.textContent = '';
-
         // Remove any lingering colour classes from the answer buttons
         ul.querySelectorAll('button').forEach(b => b.classList.remove('correct', 'incorrect'));
-
         // If a quiz is already in progress, start a brand‑new question
         if (!startBtn.disabled) {
             renderQuestion();
