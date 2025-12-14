@@ -403,15 +403,6 @@ export async function renderDictionaryExercise(mainEl, exerciseMeta, uiLang) {
 
         // 3️⃣ Walk through the JSON data and create columns.
         data.forEach(entry => {
-/*
-            // Optional category heading.
-            if (entry.category) {
-                const catDiv = document.createElement("h5");
-                catDiv.className = "category-header";
-                catDiv.textContent = entry.category;
-                currentGrid.appendChild(catDiv);
-            }
-*/
 
             if (entry.section) {
                 const catDiv = document.createElement("h5");
