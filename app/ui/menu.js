@@ -1,61 +1,66 @@
-// ---------------------------------------------------------------
 // app/ui/menu.js
 // ---------------------------------------------------------------
-// Render the dynamic part of the UI (level‑filter checkboxes,
-// exercise list, and the Books & Blogs panel) inside the supplied
-// <main> container.
+// Render the dynamic part of the UI (exercise list, Books & Blogs)
+// inside the supplied <main> container.
 // ---------------------------------------------------------------
 
 import { loadJSON } from '../utils/fetch.js';
 import { EXERCISES } from '../data/exercises.js';
-import { getLocale } from '../data/locales.js';
-
-// Font‑related imports (needed for the font selector that lives in the
-// static nav – we keep them here because the original file already
-// imported them).
-import { FONT_CATALOG } from '../data/fonts.js';
 import {
+    getLocale,
+    SUPPORTED_LANGS,
+    FALLBACK_LANG,          // needed for safe fallback language
+    LANGUAGE_LABELS
+} from '../data/locales.js';
+import {
+    getStoredLang,
+    setStoredLang,
     getStoredFont,
     setStoredFont,
-    getStoredLang,
-    setStoredLang
+    getStoredTheme,
+    setStoredTheme
 } from '../utils/storage.js';
 import { applyFontFamily } from '../utils/fontHelper.js';
-import { SUPPORTED_LANGS, LANGUAGE_LABELS } from '../data/locales.js';
 import { applyDirection } from '../utils/rtl.js';
-
-// Books & Blogs panel (rendered *after* the practice panel)
 import { renderBooksPanel } from './booksPanel.js';
 
-// Local‑storage key for the level‑filter checkboxes
-const LS_LEVELS_KEY = 'local_storage_levels';
+/* -------------------------------------------------------------
+   0️⃣  GLOBAL maps that survive across calls
+   ------------------------------------------------------------- */
+let GROUP_LABELS = {};   // groupId → { en:"...", th:"...", … }
+let GROUP_ORDER = [];   // ordered list of groupIds as they appear in the JSON
 
-// Helpers for level‑filter persistence
-function getStoredLevels() {
-    const raw = localStorage.getItem(LS_LEVELS_KEY);
-    if (!raw) return ['basic'];
+/* -------------------------------------------------------------
+   1️⃣  Load exercises (once) and also capture the group order
+   ------------------------------------------------------------- */
+async function ensureExercisesLoaded() {
+    if (EXERCISES.length) return; // already loaded
+
     try {
-        const arr = JSON.parse(raw);
-        return Array.isArray(arr) ? arr.map(s => s.toLowerCase()) : ['basic'];
-    } catch (_) {
-        return ['basic'];
-    }
-}
-function setStoredLevels(levels) {
-    try {
-        localStorage.setItem(LS_LEVELS_KEY, JSON.stringify(levels));
+        const data = await loadJSON('/app/data/exercises.json');
+
+        // ---- Extract group definitions (if present) -----------------
+        const groupDef = data.find(item => item.type === 'groupDefinitions');
+        if (groupDef && Array.isArray(groupDef.groups)) {
+            groupDef.groups.forEach(g => {
+                GROUP_LABELS[g.id] = g.label;   // e.g. { en:"Thai Foundations", th:"พื้นฐานภาษาไทย", … }
+                GROUP_ORDER.push(g.id);         // preserve the order from the JSON file
+            });
+        }
+
+        // ---- Push only the real exercises into the global array -----
+        const exercisesOnly = data.filter(item => !item.type);
+        EXERCISES.push(...exercisesOnly);
     } catch (e) {
-        console.warn('Could not persist level filter', e);
+        console.warn('⚠️ Could not load exercises catalogue', e);
+        throw e;
     }
 }
 
-// Local‑storage key for the “last visited” exercise
+/* -------------------------------------------------------------
+   2️⃣  Helpers for persisting UI state (last‑visited exercise)
+   ------------------------------------------------------------- */
 const LS_LAST_EX_ID = 'local_storage_last_exercise';
-
-/**
- * Save the chosen exercise id to local‑storage.
- * @param {string} id
- */
 function storeLastExercise(id) {
     try {
         localStorage.setItem(LS_LAST_EX_ID, id);
@@ -63,11 +68,6 @@ function storeLastExercise(id) {
         console.warn('[Menu] could not persist last exercise', e);
     }
 }
-
-/**
- * Retrieve the stored id (or null if none / corrupted).
- * @returns {string|null}
- */
 function getLastExercise() {
     try {
         return localStorage.getItem(LS_LAST_EX_ID);
@@ -76,46 +76,28 @@ function getLastExercise() {
     }
 }
 
-/**
- * Render the **dynamic** part of the UI (level‑filter checkboxes,
- * exercise list, and the Books & Blogs panel) inside `container`.
- *
- * @param {HTMLElement} container – the <main> element where dynamic UI goes.
- * @param {string} UI_LANG – currently selected UI language.
- * @param {boolean} [showPractice=true] – whether to render the
- *        “Practice languages” <details> panel (hide on the home page).
- */
+/* -------------------------------------------------------------
+   3️⃣  MAIN export – renderMenu
+   ------------------------------------------------------------- */
 export async function renderMenu(container, UI_LANG, showPractice = true) {
-    // -------------------------------------------------------------
-    // 0️⃣  Ensure the global EXERCISES array is populated (once)
-    // -------------------------------------------------------------
-    if (!EXERCISES.length) {
-        try {
-            const data = await loadJSON('/app/data/exercises.json');
-            EXERCISES.push(...data);
-        } catch (e) {
-            const err = document.createElement('p');
-            err.textContent = '❌ Unable to load exercises.';
-            container.appendChild(err);
-            return;
-        }
-    }
+    // ---------------------------------------------------------
+    // 0️⃣  Make sure the data (including GROUP_LABELS & GROUP_ORDER) is ready
+    // ---------------------------------------------------------
+    await ensureExercisesLoaded();
 
-    // -------------------------------------------------------------
-    // 1️⃣  Build the **Practice languages** <details> panel
-    // -------------------------------------------------------------
+    // ---------------------------------------------------------
+    // 1️⃣  Build the Practice‑languages panel (unchanged except no level filter)
+    // ---------------------------------------------------------
     if (showPractice) {
         const practiceDetails = document.createElement('details');
-        // practiceDetails.open = true; // optional default open
-
         const practiceSummary = document.createElement('summary');
         const locale = getLocale(UI_LANG);
         practiceSummary.textContent = locale.practiceLanguages || 'Practice languages';
         practiceDetails.appendChild(practiceSummary);
 
-        // -----------------------------------------------------------------
-        // 1️⃣️⃣  Build the exercise selector dropdown (unchanged)
-        // -----------------------------------------------------------------
+        // ---------------------------------------------------------------
+        // 1️⃣  Build the Exercise drop‑down (inside the Practice panel)
+        // ---------------------------------------------------------------
         function buildExerciseDropdown(UI_LANG, locale) {
             const wrapper = document.createElement('div');
             wrapper.className = 'exerciseDiv';
@@ -123,6 +105,9 @@ export async function renderMenu(container, UI_LANG, showPractice = true) {
             select.id = 'exerciseSelect';
             wrapper.appendChild(select);
 
+            // ---------------------------------------------------------
+            // Placeholder – always the first entry (non‑selectable)
+            // ---------------------------------------------------------
             const placeholder = document.createElement('option');
             placeholder.value = '';
             placeholder.disabled = true;
@@ -130,34 +115,47 @@ export async function renderMenu(container, UI_LANG, showPractice = true) {
             placeholder.textContent = locale.exercise || 'Exercise';
             select.appendChild(placeholder);
 
-            const levelOrder = ['basic', 'intermediate', 'advance'];
-            const byLevel = levelOrder.reduce((acc, lvl) => {
-                acc[lvl] = [];
-                return acc;
-            }, {});
-
+            // ---------------------------------------------------------
+            // Build the same ordered group map that the main UI uses
+            // ---------------------------------------------------------
+            const groupsMap = new Map();
             EXERCISES.forEach(ex => {
-                const lvl = (ex.level || 'basic').toLowerCase();
-                const bucket = levelOrder.includes(lvl) ? lvl : 'basic';
-                byLevel[lvl].push(ex);
+                const grpKey = ex.group || 'group.other';
+                if (!groupsMap.has(grpKey)) groupsMap.set(grpKey, []);
+                groupsMap.get(grpKey).push(ex);   // keep JSON order inside each group
             });
 
-            levelOrder.forEach(lvl => {
-                const group = document.createElement('optgroup');
-                const grpLabel = locale[lvl] || lvl.charAt(0).toUpperCase() + lvl.slice(1);
-                group.label = grpLabel;
+            // Ordered list of group IDs (preserves the order from groupDefinitions)
+            const orderedGroupKeys = GROUP_ORDER.filter(gId => groupsMap.has(gId));
 
-                byLevel[lvl].forEach(ex => {
+            // ---------------------------------------------------------
+            // For each group create an <optgroup> with the localized label
+            // ---------------------------------------------------------
+            orderedGroupKeys.forEach(groupKey => {
+                const labelObj = GROUP_LABELS[groupKey] || {};
+                const groupLabel = labelObj[UI_LANG] ||
+                    labelObj[FALLBACK_LANG] ||
+                    groupKey;   // fallback to raw key if translation missing
+
+                const optGroup = document.createElement('optgroup');
+                optGroup.label = groupLabel;   // <-- this is the visible header
+
+                // Add the exercises that belong to this group
+                groupsMap.get(groupKey).forEach(ex => {
                     const opt = document.createElement('option');
                     const title = (ex.title && ex.title[UI_LANG]) || ex.title?.en || ex.id;
                     opt.value = ex.id;
                     opt.textContent = title;
-                    group.appendChild(opt);
+                    optGroup.appendChild(opt);
                 });
 
-                if (group.children.length) select.appendChild(group);
+                // Append the whole group to the <select>
+                select.appendChild(optGroup);
             });
 
+            // ---------------------------------------------------------
+            // Restore previously‑selected exercise (if any)
+            // ---------------------------------------------------------
             const lastId = getLastExercise();
             if (lastId) {
                 const optionToSelect = Array.from(select.options).find(o => o.value === lastId);
@@ -166,6 +164,9 @@ export async function renderMenu(container, UI_LANG, showPractice = true) {
                 placeholder.selected = true;
             }
 
+            // ---------------------------------------------------------
+            // Change handler – navigate to the chosen exercise
+            // ---------------------------------------------------------
             select.addEventListener('change', ev => {
                 const chosenId = ev.target.value;
                 if (!chosenId) return;
@@ -178,43 +179,43 @@ export async function renderMenu(container, UI_LANG, showPractice = true) {
 
         practiceDetails.appendChild(buildExerciseDropdown(UI_LANG, locale));
 
-        // -----------------------------------------------------------------
-        // 2️⃣️⃣  Render the exercise list **grouped by i18n group key**
-        // -----------------------------------------------------------------
-        // Filter by the level‑filter checkboxes first
-        const activeLevels = new Set(getStoredLevels());
+        // ---------------------------------------------------------
+        // 2️⃣  Build the grouped exercise list **inside** practiceDetails
+        // ---------------------------------------------------------
 
-        // Collect exercises into groups (key = group i18n key)
-        const groupsMap = new Map(); // groupKey -> array of exercises
-        EXERCISES
-            .filter(ex => activeLevels.has((ex.level || 'basic').toLowerCase()))
-            .forEach(ex => {
-                const grpKey = ex.group || 'group.other';
-                if (!groupsMap.has(grpKey)) groupsMap.set(grpKey, []);
-                groupsMap.get(grpKey).push(ex);
-            });
-
-        // Sort groups – you can also sort by a numeric `order` if you add it
-        // to the JSON. Here we simply sort alphabetically by the translated label.
-        const sortedGroupKeys = Array.from(groupsMap.keys()).sort((a, b) => {
-            const labelA = locale[a] || a;
-            const labelB = locale[b] || b;
-            return labelA.localeCompare(labelB);
+        // ---- a) Build a map: groupId → [exercises] ------------
+        const groupsMap = new Map();
+        EXERCISES.forEach(ex => {
+            const grpKey = ex.group || 'group.other';
+            if (!groupsMap.has(grpKey)) groupsMap.set(grpKey, []);
+            groupsMap.get(grpKey).push(ex);   // keep the order from the JSON file
         });
 
-        // Render each group as its own <details> panel
-        sortedGroupKeys.forEach(groupKey => {
+        // ---- b) Preserve the order from GROUP_ORDER ----------
+        //      (filter out any groups that have no exercises)
+        const orderedGroupKeys = GROUP_ORDER.filter(gId => groupsMap.has(gId));
+
+        // ---- c) Render each group **into** practiceDetails -----
+        orderedGroupKeys.forEach(groupKey => {
             const groupDetails = document.createElement('details');
-            groupDetails.open = true; // groups start opened; change as you wish
+            groupDetails.open = true; // groups start opened
 
             const groupSummary = document.createElement('summary');
-            // Translate the group key using the current locale
-            groupSummary.textContent = locale[groupKey] || groupKey;
+
+            // ----- Use the label from GROUP_LABELS ---------------
+            const labelObj = GROUP_LABELS[groupKey] || {};
+            const headingText = labelObj[UI_LANG] ||
+                labelObj[FALLBACK_LANG] ||
+                groupKey;   // fallback to raw id
+            groupSummary.textContent = headingText;
+            // -----------------------------------------------------
+
             groupDetails.appendChild(groupSummary);
 
             const ul = document.createElement('ul');
             ul.className = 'menu-list';
 
+            // ---- Exercises inside this group stay in JSON order ----
             groupsMap.get(groupKey).forEach(ex => {
                 const li = document.createElement('li');
                 li.className = 'menu-item';
@@ -229,14 +230,13 @@ export async function renderMenu(container, UI_LANG, showPractice = true) {
                 summary.textContent = (ex.summary && ex.summary[UI_LANG]) || ex.summary?.en || '';
                 li.appendChild(summary);
 
-                // “Test Yourself” button – only for exercises that list the
-                // “multipleChoice” activity.
+                // ---- Test‑yourself button (unchanged) ------------
                 if (Array.isArray(ex.activities) && ex.activities.includes('multipleChoice')) {
                     const testBtn = document.createElement('button');
                     const label = locale.testYourself || 'Test yourself';
                     testBtn.textContent = label;
                     testBtn.className = 'test-yourself-btn';
-                    testBtn.onclick = (ev) => {
+                    testBtn.onclick = ev => {
                         ev.stopPropagation();
                         ev.preventDefault?.();
                         const url = `/${UI_LANG}/exercises/${ex.id}/test`;
@@ -248,8 +248,7 @@ export async function renderMenu(container, UI_LANG, showPractice = true) {
                 ul.appendChild(li);
             });
 
-            // Click on a list item navigates to the exercise detail page
-            const router = window.router;
+            // ---- Click‑handler for the whole list (unchanged) ----
             ul.addEventListener('click', ev => {
                 const item = ev.target.closest('.menu-item');
                 if (!item) return;
@@ -258,17 +257,19 @@ export async function renderMenu(container, UI_LANG, showPractice = true) {
             });
 
             groupDetails.appendChild(ul);
+
+            // *** IMPORTANT *** – add the group panel **to the practiceDetails**
             practiceDetails.appendChild(groupDetails);
         });
 
-        // Append the whole practice panel to the supplied container
+        // ---------------------------------------------------------
+        // 3️⃣  Finally add the whole practice panel to the container
+        // ---------------------------------------------------------
         container.appendChild(practiceDetails);
     }
 
-    // -------------------------------------------------------------
-    // 2️⃣  Build the **Books & Blogs** <details> panel (the one you already have)
-    // -------------------------------------------------------------
-    // `renderBooksPanel` creates its own <details> wrapper and appends it
-    // directly to the container, so we just call it after the practice panel.
-    renderBooksPanel(container, UI_LANG);   // will create its own <details> and append it
+    // ---------------------------------------------------------
+    // 4️⃣  Render the Books & Blogs panel (unchanged)
+    // ---------------------------------------------------------
+    renderBooksPanel(container, UI_LANG);
 }

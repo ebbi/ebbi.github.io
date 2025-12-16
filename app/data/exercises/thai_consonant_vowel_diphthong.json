@@ -1,7 +1,11 @@
 [
     {
         "id": "c_middle",
-        "category": "Middle class consonant",
+        "section": {
+            "en": "Middle class consonant",
+            "th": "พยัญชนะระดับกลาง",
+            "fa": "حروف صامت طبقهٔ میانه"
+        },
         "th": [
             "ก",
             "ข",
@@ -12,7 +16,11 @@
     },
     {
         "id": "c_high",
-        "category": "High class consonant",
+        "section": {
+            "en": "High class consonant",
+            "th": "พยัญชนะระดับสูง",
+            "fa": "حروف صامت طبقهٔ بالا"
+        },
         "th": [
             "จ",
             "ฉ",
@@ -24,7 +32,11 @@
     },
     {
         "id": "c_low",
-        "category": "Low class consonant",
+        "section": {
+            "en": "Low class consonant",
+            "th": "พยัญชนะระดับต่ำ",
+            "fa": "حروف صامت طبقهٔ پایین"
+        },
         "th": [
             "ด",
             "ต",
@@ -44,7 +56,11 @@
     },
     {
         "id": "v_short",
-        "category": "Short vowel",
+        "section": {
+            "en": "Short vowels",
+            "th": "สระสั้น",
+            "fa": "صداهای کوتاه"
+        },
         "th": [
             "ะ",
             "ิ",
@@ -61,7 +77,11 @@
     },
     {
         "id": "v_long",
-        "category": "Long vowel",
+        "section": {
+            "en": "Long vowels",
+            "th": "สระยาว",
+            "fa": "صداهای طولانی"
+        },
         "th": [
             "า",
             "ี",
@@ -73,7 +93,11 @@
     },
     {
         "id": "dipthongs",
-        "category": "Diphthong",
+        "section": {
+            "en": "Diphthong",
+            "th": "สระผสม",
+            "fa": "دفتون"
+        },
         "th": [
             "อย",
             "เอีย",

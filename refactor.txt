@@ -1,15 +1,9 @@
-The exercises.json data has the property, group that is used in the 
-HTML summary text.  
+http://127.0.0.1:8080/en
 
-Suggest refactoring so that summary group could be displayed 
-with the group text data to be internationalised and displayed 
- in the selected language.
-
-
-
-
-
-
+displays the HTML details panel "Practice languages" which contains 
+ a drop down list of exercises followed by HTML details panels for groups of exercises.
+ The panels summary display group ids such as "group.thaiFoundation",
+  "group.thaiNumbers" and so on.  The summary text should not be the exercise group id but the group label
 
 
 
