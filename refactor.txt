@@ -1,9 +1,9 @@
-The exercise json data has properties, id, category followed by arrays of 
- translations.
+The exercises.json data has the property, group that is used in the 
+HTML summary text.  
 
-Suggest refactoring of the json data so that exercises could be displayed 
-with the category data internationalised and displayed 
- in the selected languages.
+Suggest refactoring so that summary group could be displayed 
+with the group text data to be internationalised and displayed 
+ in the selected language.
 
 
 
