@@ -155,54 +155,6 @@ export function createSpeechController(container, {
     // -----------------------------------------------------------------
 
     const statusVoiceRow = document.createElement("span");
-    /*
-        const voiceSelect = document.createElement("select");
-        voiceSelect.id = "voiceSelect";
-    
-        const defaultOption = document.createElement("option");
-        defaultOption.value = locale.selectExerciseVoice; // No value for the default message
-        defaultOption.text = "Select exercise voice language"; // The default message
-        defaultOption.disabled = true; // Disable the option
-        defaultOption.selected = true; // Set it as the selected option
-        voiceSelect.insertBefore(defaultOption, voiceSelect.firstChild);
-    */
-
-    /* -----------------------------------------------------------------
-       Voice selector – now preceded by an inline label that is
-       internationalised (key: “voiceLabel”).  The label is associated
-       with the <select> via the “for” attribute.
-       ----------------------------------------------------------------- */
-    /*
-        const voiceLabel = document.createElement("label");
-        voiceLabel.htmlFor = "voiceSelect";
-        voiceLabel.textContent = uiLocale.voiceLabel || "Voice";   // fallback English
-    
-        const voiceSelect = document.createElement("select");
-        voiceSelect.id = "voiceSelect";
-    
-        const defaultOption = document.createElement("option");
-        defaultOption.value = locale.selectExerciseVoice; // No value for the default message
-        defaultOption.text = "Select exercise voice language"; // The default message
-        defaultOption.disabled = true; // Disable the option
-        defaultOption.selected = true; // Set it as the selected option
-        voiceSelect.insertBefore(defaultOption, voiceSelect.firstChild);
-    
-        // Insert the label **before** the select in the DOM hierarchy.
-        statusVoiceRow.appendChild(voiceLabel);
-        statusVoiceRow.appendChild(voiceSelect);
-    */
-
-    /* -----------------------------------------------------------------
-       Voice selector – now preceded by an inline label that is
-       positioned with the same flex layout used for the delay control.
-       ----------------------------------------------------------------- */
-
-    /* -----------------------------------------------------------------
-       Voice selector – now preceded by an inline label that is
-       positioned with the same flex layout used for the delay control.
-       The <select> is right‑justified and the container gets vertical
-       spacing of 0.5 rem above and below.
-       ----------------------------------------------------------------- */
 
     // ---- 1️⃣  Inline label (internationalised) ------------------------
     const voiceLabel = document.createElement("label");
