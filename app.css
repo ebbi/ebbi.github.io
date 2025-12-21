@@ -476,6 +476,38 @@ details summary {
     display: contents;
 }
 
+/* fix for mobile browser displaying a single column of words with
+display: contents; 
+*/
+/* ==== CSS fallback (Solution A) ==== */
+.section-details {
+    display: contents;
+}
+
+@supports not (display: contents) {
+    .section-details {
+        display: flex;
+        flex-wrap: wrap;
+        width: 100%;
+        margin-block: 0.75rem;
+    }
+
+    .section-details>summary.section-header {
+        flex-basis: 100%;
+        margin-bottom: 0.5rem;
+    }
+
+    .section-details .token-col {
+        /* copy your existing .token-col flex rules here */
+        display: flex;
+        flex-direction: column;
+        flex: 0 0 auto;
+        margin: 0 0.5rem;
+    }
+}
+
+
+
 /* One column (source token + its visible translations) */
 .token-col {
     display: flex;
