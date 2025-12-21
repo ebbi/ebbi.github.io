@@ -469,46 +469,7 @@ details summary {
     color: var(--txt-primary);
 }
 
-.dict-grid>.section-details {
-    /* The element still exists in the DOM (so the <summary> can be
-           clicked to expand/collapse), but it does NOT create a box
-           that participates in the flex/grid calculation. */
-    display: contents;
-}
-
-/* fix for mobile browser displaying a single column of words with
-display: contents; 
-*/
-/* ==== CSS fallback (Solution A) ==== */
-.section-details {
-    display: contents;
-}
-
-@supports not (display: contents) {
-    .section-details {
-        display: flex;
-        flex-wrap: wrap;
-        width: 100%;
-        margin-block: 0.75rem;
-    }
-
-    .section-details>summary.section-header {
-        flex-basis: 100%;
-        margin-bottom: 0.5rem;
-    }
-
-    .section-details .token-col {
-        /* copy your existing .token-col flex rules here */
-        display: flex;
-        flex-direction: column;
-        flex: 0 0 auto;
-        margin: 0 0.5rem;
-    }
-}
-
-
-
-/* One column (source token + its visible translations) */
+/*
 .token-col {
     display: flex;
     flex-direction: column;
@@ -518,6 +479,60 @@ display: contents;
 
 .token-col .trans {
     font-size: 1rem;
+}
+*/
+/* -------------------------------------------------------------
+   1️⃣  Make each <details class="section-details"> a full‑width
+       flex item inside the .dict-grid container.
+   ------------------------------------------------------------- */
+.section-details {
+    display: block;
+    /* block‑level, starts a new line */
+    flex-basis: 100%;
+    /* take the whole row of the parent flex/grid */
+    flex-shrink: 0;
+    /* never shrink */
+}
+
+/* -------------------------------------------------------------
+   2️⃣  Hide token wrappers when the section is collapsed.
+   ------------------------------------------------------------- */
+.section-details .section-tokens {
+    display: none;
+    /* hidden by default */
+}
+
+/* -------------------------------------------------------------
+   3️⃣  Show token wrappers when the section is open.
+   ------------------------------------------------------------- */
+.section-details[open] .section-tokens {
+    display: flex;
+    /* or `display: grid` if you prefer */
+    flex-wrap: wrap;
+    /* keep the same wrapping behaviour */
+    gap: 0.5rem;
+    /* same gap you use for .dict-grid columns */
+}
+
+/* -------------------------------------------------------------
+   4️⃣  Preserve the original token‑column styling.
+   ------------------------------------------------------------- */
+.section-tokens .token-col {
+    /* Copy the exact flex rules you already have for .token-col.
+       Example (adjust to match your existing CSS): */
+    display: flex;
+    flex-direction: column;
+    flex: 0 0 auto;
+    margin: 0 0.5rem;
+    /* horizontal gutter between columns */
+}
+
+/* -------------------------------------------------------------
+   5️⃣  Optional vertical spacing around each section header.
+   ------------------------------------------------------------- */
+.section-details {
+    margin-top: 0.75rem;
+    margin-bottom: 0.25rem;
 }
 
 .low-class {

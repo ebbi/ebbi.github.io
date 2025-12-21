@@ -370,19 +370,57 @@ export async function renderDictionaryExercise(mainEl, exerciseMeta, uiLang) {
     mainEl.appendChild(heading);      // 3️⃣ Exercise title (h4)
     mainEl.appendChild(scrollWrapper); // 4️⃣ Token grid container
 
-    // -----------------------------------------------------------------
-    // 11️⃣  Build the token grid (will be rebuilt on every checkbox change)
-    // -----------------------------------------------------------------
+    /** -------------------------------------------------------------
+     *  rebuildTokenGrid()
+     *
+     *  New DOM shape (per section):
+     *
+     *  <div class="dict-grid">
+     *      <details class="section-details" style="display:block;">
+     *          <summary class="section-header">…section title…</summary>
+     *
+     *          <!-- One or more wrappers that hold the token columns.
+     *               A new wrapper is created after every "\n" line‑break,
+     *               but they are all children of the same <details>. -->
+     *          <div class="section-tokens">
+     *              <div class="token-col">…</div>
+     *              <div class="token-col">…</div>
+     *              …
+     *          </div>
+     *
+     *          <!-- Additional .section‑tokens may appear after a "\n". -->
+     *          <div class="section-tokens">…</div>
+     *      </details>
+     *
+     *      <!-- Sections that have no heading are rendered exactly as before
+     *           (token‑cols are direct children of .dict-grid). -->
+     *  </div>
+     *
+     *  The CSS (see the block after the function) hides/shows the
+     *  .section‑tokens that belong to a closed/open <details>.
+     * ------------------------------------------------------------- */
     function rebuildTokenGrid() {
-        // 0️⃣ Reset global collections and clear the visual container.
+        // -----------------------------------------------------------------
+        // 0️⃣  Reset global collections and clear the visual container.
+        // -----------------------------------------------------------------
         tokenEls = [];
         transEls = [];
-        scrollWrapper.innerHTML = "";           // wipe any old grids
+        scrollWrapper.innerHTML = "";               // wipe any old grids
 
-        // 1️⃣ Start the first grid.
-        let currentGrid = createNewGrid();
+        // -----------------------------------------------------------------
+        // 1️⃣  Start the first .dict-grid container.
+        // -----------------------------------------------------------------
+        let currentGrid = createNewGrid();          // <div class="dict-grid">
 
-        // 2️⃣ Build lookup maps from the check‑boxes.
+        // -----------------------------------------------------------------
+        // 2️⃣  References we need while walking the data.
+        // -----------------------------------------------------------------
+        let activeDetails = null;   // the <details> we are currently inside (if any)
+        let activeSectionContainer = null;   // <div class="section-tokens"> that receives columns
+
+        // -----------------------------------------------------------------
+        // 3️⃣  Build lookup maps from the language check‑boxes.
+        // -----------------------------------------------------------------
         const displayMap = {}; // lang → true/false
         const speakMap = {}; // lang → true/false (used by the controller)
 
@@ -393,58 +431,67 @@ export async function renderDictionaryExercise(mainEl, exerciseMeta, uiLang) {
             speakMap[l] = sCb ? sCb.checked : false;
         });
 
-        // Ensure at least one language is displayed.
+        // -----------------------------------------------------------------
+        // 4️⃣  Ensure at least one language is displayed.
+        // -----------------------------------------------------------------
         if (!Object.values(displayMap).some(Boolean)) {
-            // If everything is unchecked, force the first language on.
             const first = orderedLangs[0];
             displayMap[first] = true;
             speakMap[first] = true;
         }
 
-        // 3️⃣ Walk through the JSON data and create columns.
         // -----------------------------------------------------------------
-        // 0️⃣  Keep a reference to the *active* <details> (if we are inside a
-        //     section).  Tokens that belong to the current section will be
-        //     appended to this element; otherwise they go straight to the
-        //     current grid.
+        // 5️⃣  Walk through the JSON data and create columns.
         // -----------------------------------------------------------------
-        let activeSectionDetails = null;   // <details class="section-details">
-
         data.forEach(entry => {
 
             // -------------------------------------------------------------
-            // 1️⃣  SECTION HEADER → <details><summary>…
+            // 5️⃣①  SECTION HEADER → <details><summary>…
             // -------------------------------------------------------------
             if (entry.section) {
-                // Create the <details> wrapper for this section.
+                // ---- <details class="section-details"> --------------------
                 const detailsEl = document.createElement("details");
                 detailsEl.className = "section-details";
 
-                // Build the <summary> that replaces the old <h5>.
+                // Force block layout (fixes the “inline” problem on mobile)
+                detailsEl.style.display = "block";
+
+                // ---- <summary class="section-header"> --------------------
                 const summaryEl = document.createElement("summary");
                 summaryEl.className = "section-header";
 
-                // Internationalise the title (same fallback chain as before).
+                // Internationalised title (same fallback chain as before)
                 const localizedSection =
                     entry.section[uiLang] ||
                     entry.section.en ||
                     Object.values(entry.section)[0] ||
                     "";
-
                 summaryEl.textContent = localizedSection;
-                detailsEl.appendChild(summaryEl);
 
-                // Append the whole <details> to the current grid.
+                // Assemble <details><summary></summary></details>
+                detailsEl.appendChild(summaryEl);
                 currentGrid.appendChild(detailsEl);
 
-                // Remember that we are now “inside” this section.
-                activeSectionDetails = detailsEl;
+                // ---- First token wrapper for this section.
+                const tokenWrapper = document.createElement("div");
+                tokenWrapper.className = "section-tokens";
+                detailsEl.appendChild(tokenWrapper);
+
+                // Remember where we are.
+                activeDetails = detailsEl;
+                activeSectionContainer = tokenWrapper;
             }
 
+            // -------------------------------------------------------------
+            // 5️⃣②  Grab the source‑language array (first language in order)
+            // -------------------------------------------------------------
             const sourceTokens = entry[orderedLangs[0]] || [];
 
+            // -------------------------------------------------------------
+            // 5️⃣③  Iterate over each token (row) in this entry.
+            // -------------------------------------------------------------
             sourceTokens.forEach((srcWord, idx) => {
-                // Build parallel arrays that contain ONLY displayed languages.
+                // ---- Build parallel arrays that contain ONLY displayed languages.
                 const translations = [];
                 const langs = [];
 
@@ -461,62 +508,52 @@ export async function renderDictionaryExercise(mainEl, exerciseMeta, uiLang) {
                     }
                 });
 
-                // Safety fallback – source language is always shown.
+                // ---- Safety fallback – source language is always shown.
                 if (translations.length === 0) {
                     const srcArr = entry[orderedLangs[0]] || [];
                     translations.push(srcArr[idx] ?? "");
                     langs.push(orderedLangs[0]);
                 }
 
-                // Create the column (visible spans only) and append it.
+                // ---- Create the column (visible spans only) and append it.
                 const col = buildTokenColumn(translations, langs, displayMap);
 
                 // ---------------------------------------------------------
-                // 2️⃣  Where do we put the column?
+                // 5️⃣④  Where do we put the column?
                 // ---------------------------------------------------------
-                // If we are currently inside a section, attach the column to that
-                // <details>. Otherwise attach it directly to the grid.
-                if (activeSectionDetails) {
-                    activeSectionDetails.appendChild(col);
+                if (activeSectionContainer) {
+                    // Inside a <details> → add to the current wrapper.
+                    activeSectionContainer.appendChild(col);
                 } else {
+                    // No active section (regular part of the exercise).
                     currentGrid.appendChild(col);
                 }
 
-                // If any token contained a newline, start a fresh grid for the
-                // next token – and also *reset* the active section because a new
-                // grid means a new visual block (the old <details> stays where it
-                // was).
-                /*
+                // ---------------------------------------------------------
+                // 5️⃣⑤  New‑line handling – start a fresh token‑wrapper.
+                // ---------------------------------------------------------
                 if (hasNewline) {
-                    currentGrid = createNewGrid();
-                    activeSectionDetails = null;
-                }
-*/
-                if (hasNewline) {
-                    // The parent of the current grid (could be scrollWrapper or a
-                    // <details class="section-details"> element).
-                    const parent = currentGrid.parentNode;
+                    // Create a *new* wrapper for the next block of columns.
+                    const newWrapper = document.createElement("div");
+                    newWrapper.className = "section-tokens";
 
-                    // Helper that creates a new .dict-grid and appends it to the given
-                    // parent (or to scrollWrapper if parent is null).
-                    const createNewGrid = (p) => {
-                        const g = document.createElement("div");
-                        g.className = "dict-grid";
-                        if (p) p.appendChild(g);
-                        else scrollWrapper.appendChild(g);
-                        return g;
-                    };
-
-                    // Create the new grid inside the same parent as the old one.
-                    currentGrid = createNewGrid(parent);
-
-                    // NOTE: we intentionally leave `activeSectionDetails` unchanged
-                    // so the next columns stay inside the same <details>.
+                    if (activeDetails) {
+                        // Still inside a section → attach the new wrapper
+                        // to the same <details>.
+                        activeDetails.appendChild(newWrapper);
+                        activeSectionContainer = newWrapper;
+                    } else {
+                        // Not inside a section → the wrapper belongs to the grid.
+                        currentGrid.appendChild(newWrapper);
+                        activeSectionContainer = newWrapper;
+                    }
                 }
             });
         });
 
-        // 4️⃣ Update the speech controller with the new element references.
+        // -----------------------------------------------------------------
+        // 6️⃣  Update the speech controller with the new element references.
+        // -----------------------------------------------------------------
         if (speechCtrl) {
             speechCtrl.updateElements(tokenEls, transEls);
             speechCtrl.updateSpeakMap(speakMap);   // keep Play in sync with Speak boxes
