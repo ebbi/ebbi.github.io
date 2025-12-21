@@ -197,6 +197,13 @@ export function createSpeechController(container, {
        positioned with the same flex layout used for the delay control.
        ----------------------------------------------------------------- */
 
+    /* -----------------------------------------------------------------
+       Voice selector – now preceded by an inline label that is
+       positioned with the same flex layout used for the delay control.
+       The <select> is right‑justified and the container gets vertical
+       spacing of 0.5 rem above and below.
+       ----------------------------------------------------------------- */
+
     // ---- 1️⃣  Inline label (internationalised) ------------------------
     const voiceLabel = document.createElement("label");
     voiceLabel.htmlFor = "voiceSelect";
@@ -215,9 +222,21 @@ export function createSpeechController(container, {
 
     // ---- 3️⃣  Flex container that holds label + select ----------------
     const voiceContainer = document.createElement("div");
+
+    // Flex row, items centered vertically, small gap between label & select
     voiceContainer.style.display = "flex";
     voiceContainer.style.alignItems = "center";
-    voiceContainer.style.gap = "0.5rem";   // same spacing as the delay control
+    voiceContainer.style.gap = "0.5rem";
+
+    // Add vertical spacing (0.5 rem above and below the whole row)
+    voiceContainer.style.marginTop = "0.5rem";
+    voiceContainer.style.marginBottom = "0.5rem";
+
+    // Push the <select> to the far right of the flex container
+    voiceContainer.style.justifyContent = "space-between";
+    // The label stays on the left, the select on the right
+    voiceLabel.style.flex = "0 0 auto";   // keep its natural width
+    voiceSelect.style.flex = "0 0 auto"; // keep its natural width
 
     // Append the label and the select into the container
     voiceContainer.appendChild(voiceLabel);
