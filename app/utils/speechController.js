@@ -102,27 +102,107 @@ export function createSpeechController(container, {
     summary.textContent = "⚙️";
     settings.appendChild(summary);
 
+    /* -----------------------------------------------------------------
+       Delay control – a range slider that shows the current number of
+       seconds next to it while the user drags the thumb.
+       ----------------------------------------------------------------- */
     const delayLabel = document.createElement("label");
     delayLabel.textContent = uiLocale.delayLabel || "Delay (s): ";
-    delayLabel.style.padding = "0.5rem";
-    settings.appendChild(delayLabel);
+    //    delayLabel.style.padding = "0.5rem";
 
+    /* Span that will hold the live numeric value (e.g. “2.3 s”). */
+    const delayValueSpan = document.createElement("span");
+    // Show the value with a single decimal digit (e.g. 2.0 s, 3.5 s)
+    delayValueSpan.textContent = `${state.delaySec.toFixed(1)}s`;
+    delayValueSpan.style.marginLeft = "0.25rem";
+    delayValueSpan.style.fontWeight = "bold";
+
+    /* Container that groups the label, the numeric display, and the slider. */
+    const delayContainer = document.createElement("div");
+    delayContainer.style.display = "flex";
+    delayContainer.style.alignItems = "center";
+    delayContainer.style.gap = "0.5rem";
+
+    /* The actual range input. */
     const delayInput = document.createElement("input");
     delayInput.type = "range";
     delayInput.min = 1;
-    delayInput.max = 5;
+    delayInput.max = 10;
     delayInput.step = "any";
     delayInput.value = state.delaySec;
 
-    settings.appendChild(delayLabel);
-    settings.appendChild(delayInput);
+    /* Wire the live‑update: whenever the slider moves, update the span
+       and also store the new value in the controller state. */
+    delayInput.addEventListener("input", () => {
+        const v = parseFloat(delayInput.value);
+        if (!isNaN(v) && v >= 1 && v <= 5) {
+            state.delaySec = v;
+            // Show the updated value with one decimal digit
+            delayValueSpan.textContent = `${v.toFixed(1)}s`;
+        }
+    });
+
+    /* Assemble the pieces – label + numeric display + slider. */
+    delayContainer.appendChild(delayLabel);
+    delayContainer.appendChild(delayValueSpan);
+    delayContainer.appendChild(delayInput);
+
+    /* Finally add the whole thing to the settings panel. */
+    settings.appendChild(delayContainer);
 
     // -----------------------------------------------------------------
     // UI = status message + voice selector
     // -----------------------------------------------------------------
 
     const statusVoiceRow = document.createElement("span");
+    /*
+        const voiceSelect = document.createElement("select");
+        voiceSelect.id = "voiceSelect";
+    
+        const defaultOption = document.createElement("option");
+        defaultOption.value = locale.selectExerciseVoice; // No value for the default message
+        defaultOption.text = "Select exercise voice language"; // The default message
+        defaultOption.disabled = true; // Disable the option
+        defaultOption.selected = true; // Set it as the selected option
+        voiceSelect.insertBefore(defaultOption, voiceSelect.firstChild);
+    */
 
+    /* -----------------------------------------------------------------
+       Voice selector – now preceded by an inline label that is
+       internationalised (key: “voiceLabel”).  The label is associated
+       with the <select> via the “for” attribute.
+       ----------------------------------------------------------------- */
+    /*
+        const voiceLabel = document.createElement("label");
+        voiceLabel.htmlFor = "voiceSelect";
+        voiceLabel.textContent = uiLocale.voiceLabel || "Voice";   // fallback English
+    
+        const voiceSelect = document.createElement("select");
+        voiceSelect.id = "voiceSelect";
+    
+        const defaultOption = document.createElement("option");
+        defaultOption.value = locale.selectExerciseVoice; // No value for the default message
+        defaultOption.text = "Select exercise voice language"; // The default message
+        defaultOption.disabled = true; // Disable the option
+        defaultOption.selected = true; // Set it as the selected option
+        voiceSelect.insertBefore(defaultOption, voiceSelect.firstChild);
+    
+        // Insert the label **before** the select in the DOM hierarchy.
+        statusVoiceRow.appendChild(voiceLabel);
+        statusVoiceRow.appendChild(voiceSelect);
+    */
+
+    /* -----------------------------------------------------------------
+       Voice selector – now preceded by an inline label that is
+       positioned with the same flex layout used for the delay control.
+       ----------------------------------------------------------------- */
+
+    // ---- 1️⃣  Inline label (internationalised) ------------------------
+    const voiceLabel = document.createElement("label");
+    voiceLabel.htmlFor = "voiceSelect";
+    voiceLabel.textContent = uiLocale.voiceLabel || "Voice";   // fallback English
+
+    // ---- 2️⃣  The <select> itself ------------------------------------
     const voiceSelect = document.createElement("select");
     voiceSelect.id = "voiceSelect";
 
@@ -133,7 +213,20 @@ export function createSpeechController(container, {
     defaultOption.selected = true; // Set it as the selected option
     voiceSelect.insertBefore(defaultOption, voiceSelect.firstChild);
 
-    statusVoiceRow.appendChild(voiceSelect);
+    // ---- 3️⃣  Flex container that holds label + select ----------------
+    const voiceContainer = document.createElement("div");
+    voiceContainer.style.display = "flex";
+    voiceContainer.style.alignItems = "center";
+    voiceContainer.style.gap = "0.5rem";   // same spacing as the delay control
+
+    // Append the label and the select into the container
+    voiceContainer.appendChild(voiceLabel);
+    voiceContainer.appendChild(voiceSelect);
+
+    // ---- 4️⃣  Add the whole container to the status row -------------
+    statusVoiceRow.appendChild(voiceContainer);
+
+    // statusVoiceRow.appendChild(voiceSelect);
     settings.appendChild(statusVoiceRow);
 
     controlsRow.appendChild(settings);

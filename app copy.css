@@ -469,19 +469,12 @@ details summary {
     color: var(--txt-primary);
 }
 
-.dict-grid>.section-details {
-    /* The element still exists in the DOM (so the <summary> can be
-           clicked to expand/collapse), but it does NOT create a box
-           that participates in the flex/grid calculation. */
-    display: contents;
-}
-
 /* One column (source token + its visible translations) */
 .token-col {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 0.25rem;
+    margin: 0.5rem;
 }
 
 .token-col .trans {
@@ -578,40 +571,8 @@ details summary {
     width: 100%;
     max-width: 100%;
     box-sizing: border-box;
-    padding: 0 0.11rem;
-}
-
-/* -------------------------------------------------------------
-   1️⃣  Hide the native disclosure triangle for the #player-settings
-       <details> element.
-   ------------------------------------------------------------- */
-
-/* Chrome / Edge (WebKit‑based) */
-#player-settings>summary::-webkit-details-marker {
-    display: none !important;
-}
-
-/* Firefox (Gecko) */
-#player-settings>summary::-moz-details-marker {
-    display: none !important;
-}
-
-/* Standard syntax (future‑proof, works in newer Chromium & Safari) */
-#player-settings>summary::marker {
-    display: none !important;
-}
-
-/* -------------------------------------------------------------
-   2️⃣  Make absolutely sure the <summary> isn’t treated as a
-       list‑item (some browsers fall back to list‑style rendering).
-   ------------------------------------------------------------- */
-#player-settings>summary {
-    list-style: none;
-    /* removes any default bullet/marker */
-    /* optional – keep the gear icon nicely centered */
-    cursor: pointer;
-    /* show a pointer cursor on hover */
-    /* you can also adjust size / colour here if you like */
+    padding: .11rem;
+    margin: 1rem 0;
 }
 
 /* Disabled / dimmed state (used by setPanelEnabled) */

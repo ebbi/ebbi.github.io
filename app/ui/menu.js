@@ -198,7 +198,7 @@ export async function renderMenu(container, UI_LANG, showPractice = true) {
         // ---- c) Render each group **into** practiceDetails -----
         orderedGroupKeys.forEach(groupKey => {
             const groupDetails = document.createElement('details');
-            groupDetails.open = true; // groups start opened
+            groupDetails.open = false; // groups start opened
 
             const groupSummary = document.createElement('summary');
 

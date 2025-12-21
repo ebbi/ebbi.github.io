@@ -1,0 +1,58 @@
+In the dictionary‑exercise UI each “section” (e.g. Numbers: units, Numbers: tens, …) 
+is currently rendered as:
+
+
+<div class="token-grid">
+
+    <h5 class="section-header">…section title…</h5>
+    <div class="token-col">…</div>
+    <div class="token-col">…</div>
+…
+
+</div>
+
+Change the code so that the section title becomes a 
+collapsible <details> element:
+
+<div class="token-grid">
+
+    <details class="section-details">
+        <summary class="section-header">…section title…</summary>
+        <!-- all token‑column divs that belong to this section go here -->
+        <div class="token-col">…</div>
+        …
+    </details>
+    …
+
+</div>
+
+The summary text must be internationalised 
+(taken from the section object in the JSON, just like the other UI strings).
+
+Please note, the only change is the <h5 class="section-header"> has been replaced by:
+<details class="section-details">
+        <summary class="section-header">…section title…</summary>
+…
+</details>
+
+The new <details class="section-details"> element should appear as a block element.  
+Any CSS for class="section-details" making it appear as a block element should not change 
+the appearance for <div class="token-col"> that currently appears as columns for each token.
+I mention this as a previous unsuccessful refactor ended up with the new details element 
+appearing inline and then a lengthy unsuccessful attempt at bringing back 
+the original column layout for the word tokens!  
+
+Exactly the same problem as the unsuccessful previous refactor!!!
+The new details class="section-details" element 
+appears inline with other section details elements.  
+This is due to the parent div class="dict-grid" imposing a grid display.
+ANd the second problem is the new details child div class="tokens" do not appear 
+as inline columns.
+
+Please do not suggest ad-hoc CSS changes to the new details element.  Consider, the 
+new details element as the child of div class="dict-grid" and parent of div class="token-col" 
+flex boxes.  The CSS code should not change the previous flex layout.
+
+
+
+
