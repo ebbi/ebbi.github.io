@@ -135,7 +135,7 @@ export function createSpeechController(container, {
        and also store the new value in the controller state. */
     delayInput.addEventListener("input", () => {
         const v = parseFloat(delayInput.value);
-        if (!isNaN(v) && v >= 1 && v <= 5) {
+        if (!isNaN(v) && v >= 1 && v <= 10) {
             state.delaySec = v;
             // Show the updated value with one decimal digit
             delayValueSpan.textContent = `${v.toFixed(1)}s`;
