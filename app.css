@@ -469,18 +469,6 @@ details summary {
     color: var(--txt-primary);
 }
 
-/*
-.token-col {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 0.25rem;
-}
-
-.token-col .trans {
-    font-size: 1rem;
-}
-*/
 /* -------------------------------------------------------------
    1️⃣  Make each <details class="section-details"> a full‑width
        flex item inside the .dict-grid container.
@@ -510,8 +498,9 @@ details summary {
     /* or `display: grid` if you prefer */
     flex-wrap: wrap;
     /* keep the same wrapping behaviour */
-    gap: 0.5rem;
+    gap: 0;
     /* same gap you use for .dict-grid columns */
+    margin-bottom: 1rem;
 }
 
 /* -------------------------------------------------------------
