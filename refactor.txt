@@ -1,7 +1,11 @@
-The uploaded PDF is divided into several "LESSON" sections.
+The uploaded PDF is divided into six "LESSON" sections.
 Each LESSON has Thai words and sentences.
+
 Create a JSON data structure with an ID and LESSON title 
-followed by an array of words and sentences for each LESSON.
+followed by an array of ALL the words and sentences for each LESSON.
+
+Extract all the Thai text including any repetition.  The idea is to 
+have the JSON data representing all the Thai content in every lesson.
 
 Please use the following JSON data structure.
 Use complete words and sentences as a single array element.
@@ -27,3 +31,8 @@ equivalent index in en and fa.
         ]
     }
 ]
+
+
+Lesson 2 Sickness is incomplete!  The last sentence extracted is, "คุณเป็ นอะไรคะ คุณดูไม่สบาย" on page 9.
+The rest of page 9 to page 18 for lesson "Sickness" words and sentences are not included in the 
+JASON data!  Can you generate the complete LESSON Sickness from page 6 to page 18?
