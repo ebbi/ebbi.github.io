@@ -12,14 +12,16 @@ Use complete words and sentences as a single array element.
 Use the index of the initial th element for the 
 equivalent index in en and fa.
 
-[
+
+You have lost context.  Please reset.  See the uploaded PDF file. 
+Te task is to extract every Thai word and every Thai sentence for LESSON 6
+Money and Bank which starts on page 50 and ends on page 67.
+Add the words and the sentences to the following JSON structure and 
+complete the "en" and "fa" equivalent.  The index in each array should 
+have the same word in the respective language.  In case of a sentence, 
+add an element "\n" after the sentence.
+
     {
-        "id": "lesson-1",
-        "section": {
-            "th": "",
-            "en": "Lesson 1",
-            "fa": ""
-        },
         "th": [
 /* insert exacted words and entire sentences */
         ],
@@ -30,9 +32,20 @@ equivalent index in en and fa.
 /* insert Farsi */
         ]
     }
-]
 
 
-Lesson 2 Sickness is incomplete!  The last sentence extracted is, "คุณเป็ นอะไรคะ คุณดูไม่สบาย" on page 9.
-The rest of page 9 to page 18 for lesson "Sickness" words and sentences are not included in the 
-JASON data!  Can you generate the complete LESSON Sickness from page 6 to page 18?
+
+Can you do the same and generate the complete JSON data for 
+"LESSON 3 Traveling and tourism" starting on page 9 to page 33 inclusive.
+
+
+
+
+
+
+
+
+
+
+
+
