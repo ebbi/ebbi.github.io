@@ -330,14 +330,7 @@ export function createSpeechController(container, {
 
             if (state.transIdx === -1) {
                 const srcSpan = col.querySelector(".trans"); // first span
-                let srcLang = srcSpan?.getAttribute("lang");
-
-                // Fallback: for languages (e.g., Thai) where the inner character spans
-                // don’t carry a “lang” attribute, we stored the source language on the
-                // column element itself (see dictionaryExercise.js).
-                if (!srcLang) {
-                    srcLang = col.dataset.sourceLang;
-                }
+                const srcLang = srcSpan?.getAttribute("lang");
 
                 // -------------------------------------------------------------
                 // Do NOT speak the source token a second time when the same
@@ -393,7 +386,6 @@ export function createSpeechController(container, {
                     */
                     const repeatCount = Math.max(1, state.repeatMap[lang] || 1);
                     for (let i = 0; i < repeatCount; i++) {
-                        console.info('repeatCount ', repeatCount);
                         await speakText(txt, state.voiceName, lang);
                         if (i < repeatCount - 1) await wait(state.delaySec);
                     }

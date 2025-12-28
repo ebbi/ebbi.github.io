@@ -1,16 +1,28 @@
-The uploaded PDF is divided into six "LESSON" sections.
-Each LESSON has Thai words and sentences.
+The div class="options-grid" has a column of languages followed by 
+adjacent columns of checkboxes for Display and Speak.  Add a column 
+with heading "Repeat" after the Speak column 
+(adjust the grid and font size so that the Display, Speak, and Repeat 
+are positioned in adjacent columns).  
+Under the Repeat heading, add an integer input for each language 
+(the CSS display should be similar to the previous column of checkboxes).  
+Set the repeat integer value to a default 1 for all languages.
 
-Create a JSON data structure with an ID and LESSON title 
-followed by an array of ALL the words and sentences for each LESSON.
+Use the user input value for "Repeat" to Speak the user set number of times.
+For example, the user may set 1 for English and 2 for Thai, consequently,
+the English should be spoken once and Thai spoken twice.
 
-Extract all the Thai text including any repetition.  The idea is to 
-have the JSON data representing all the Thai content in every lesson.
+Same runtime bug! Changing the repeat value has no effect and speak is always once.
 
-Please use the following JSON data structure.
-Use complete words and sentences as a single array element.
-Use the index of the initial th element for the 
-equivalent index in en and fa.
+The debug log message:
+for (let i = 0; i < repeatCount; i++) {
+        console.info('repeatCount ', repeatCount); 
+        ...
+
+Returns the repeatCount 1 when it is set to 2 in the interface.
+
+
+I am using VS Code and Diff patches are problematic.  Output plane code 
+with find/replace instructions.
 
 
 You have lost context.  Please reset.  See the uploaded PDF file. 

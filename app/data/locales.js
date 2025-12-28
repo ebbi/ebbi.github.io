@@ -9,13 +9,15 @@ export const LS_LANG_KEY = 'local_storage_app_lang';
 
 export const LANGUAGE_LABELS = {
     th: 'TH - ไทย',
-    fa: 'FA - فارسی',
+    en: 'EN - English',
+    fa: 'FA - فارسی'
+    /*
     zh: 'ZH - 中文',
     ja: 'JA - 日本語',
     es: 'ES - Español',
-    en: 'EN - English',
     hi: 'HI - हिन्दी',
     ar: 'AR - العربية'
+    */
 };
 
 // The locale cache will hold the raw JSON objects directly.
