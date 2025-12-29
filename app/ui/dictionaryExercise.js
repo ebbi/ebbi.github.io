@@ -295,11 +295,7 @@ export async function renderDictionaryExercise(mainEl, exerciseMeta, uiLang) {
     const speakHeader = document.createElement("h4");
     displayHeader.textContent = locale.display ?? "Display";
     speakHeader.textContent = locale.speak ?? "Speak";
-    /*
-    optionsGrid.appendChild(emptyHeader);
-    optionsGrid.appendChild(displayHeader);
-    optionsGrid.appendChild(speakHeader);
-*/
+
     optionsGrid.appendChild(emptyHeader);
     optionsGrid.appendChild(displayHeader);
     optionsGrid.appendChild(speakHeader);
@@ -309,50 +305,7 @@ export async function renderDictionaryExercise(mainEl, exerciseMeta, uiLang) {
     repeatHeader.textContent = locale.repeat || 'Repeat';
     optionsGrid.appendChild(repeatHeader);
 
-    // Maps for the check‑boxes
-    //    const displayBoxes = new Map(); // lang → <input type="checkbox">
-    //    const speakBoxes = new Map();
 
-    /*
-    orderedLangs.forEach(langCode => {
-        const langLabel = LANGUAGE_LABELS[langCode] || langCode.toUpperCase();
-
-        // Language name cell
-        const langCell = document.createElement("h4");
-        langCell.textContent = langLabel;
-        optionsGrid.appendChild(langCell);
-
-        // Display checkbox
-        const displayCell = document.createElement("div");
-        const displayCb = document.createElement("input");
-        displayCb.type = "checkbox";
-        displayCb.dataset.lang = langCode;
-        displayCb.checked = (langCode === exerciseLang) || (langCode === uiLang);
-        displayCell.appendChild(displayCb);
-        optionsGrid.appendChild(displayCell);
-        displayBoxes.set(langCode, displayCb);
-
-        // Speak checkbox
-        const speakCell = document.createElement("div");
-        const speakCb = document.createElement("input");
-        speakCb.type = "checkbox";
-        speakCb.dataset.lang = langCode;
-        speakCb.checked = (langCode === exerciseLang) || (langCode === uiLang);
-        speakCell.appendChild(speakCb);
-        optionsGrid.appendChild(speakCell);
-        speakBoxes.set(langCode, speakCb);
-
-        // Interaction rules
-        speakCb.addEventListener("change", () => {
-            if (speakCb.checked) displayCb.checked = true;
-            rebuildTokenGrid();
-        });
-        displayCb.addEventListener("change", () => {
-            if (!displayCb.checked) speakCb.checked = false;
-            rebuildTokenGrid();
-        });
-    });
-/*
 /* -------------------------------------------------------------
    Maps for the three columns
    ------------------------------------------------------------- */
@@ -512,17 +465,7 @@ export async function renderDictionaryExercise(mainEl, exerciseMeta, uiLang) {
         // -----------------------------------------------------------------
         // 3️⃣  Build lookup maps from the language check‑boxes.
         // -----------------------------------------------------------------
-        /*
-                const displayMap = {}; // lang → true/false
-                const speakMap = {}; // lang → true/false (used by the controller)
-        
-                orderedLangs.forEach(l => {
-                    const dCb = displayBoxes.get(l);
-                    const sCb = speakBoxes.get(l);
-                    displayMap[l] = dCb ? dCb.checked : false;
-                    speakMap[l] = sCb ? sCb.checked : false;
-                });
-        */
+
         const displayMap = {}; // lang → true/false
         const speakMap = {}; // lang → true/false
         const repeatMap = {}; // lang → integer (≥1)
@@ -667,12 +610,7 @@ export async function renderDictionaryExercise(mainEl, exerciseMeta, uiLang) {
         // -----------------------------------------------------------------
         // 6️⃣  Update the speech controller with the new element references.
         // -----------------------------------------------------------------
-        /*
-        if (speechCtrl) {
-            speechCtrl.updateElements(tokenEls, transEls);
-            speechCtrl.updateSpeakMap(speakMap);   // keep Play in sync with Speak boxes
-        }
-        */
+
         if (speechCtrl) {
             speechCtrl.updateElements(tokenEls, transEls);
             speechCtrl.updateSpeakMap(speakMap);   // keep Play in sync with Speak boxes

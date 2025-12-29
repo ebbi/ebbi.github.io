@@ -15,18 +15,7 @@ import { speechManager } from './speechManager.js';
 /* -----------------------------------------------------------------
    Default internal state – identical to the original version.
    ----------------------------------------------------------------- */
-   /*
-const defaultState = {
-    tokenIdx: 0,          // which column we are on
-    transIdx: -1,         // -1 = source token, >=0 = translation index
-    playing: false,
-    paused: false,
-    delaySec: 1,
-    voiceName: null,
-    tokenEls: [],         // filled by the UI (columns)
-    transEls: []          // 2‑dimensional array of <span> elements
-};
-*/
+
 const defaultState = {
     tokenIdx: 0,
     transIdx: -1,
@@ -353,11 +342,7 @@ export function createSpeechController(container, {
                 // identical‑language translation column.
                 if (srcLang && state.speakMap[srcLang] && !hasSameLangTranslation) {
                     highlightCurrent();
-                    /*
-                    await speakText(srcSpan.textContent, state.voiceName, srcLang);
-                    console.log('delay ', state.delaySec);
-                    await wait(state.delaySec);
-                    */
+
                     const repeatCountSrc = Math.max(1, state.repeatMap[srcLang] || 1);
                     for (let i = 0; i < repeatCountSrc; i++) {
                         await speakText(srcSpan.textContent, state.voiceName, srcLang);
@@ -387,10 +372,7 @@ export function createSpeechController(container, {
                 highlightCurrent();
                 const txt = span.textContent.trim();
                 if (txt) {
-                    /*
-                    await speakText(txt, state.voiceName, lang);
-                    await wait(state.delaySec);
-                    */
+
                     const repeatCount = Math.max(1, state.repeatMap[lang] || 1);
                     for (let i = 0; i < repeatCount; i++) {
                         console.info('repeatCount ', repeatCount);
