@@ -167,7 +167,15 @@ function buildTokenColumn(translations, langs, displayMap) {
     // -----------------------------------------------------------------
     // 2️⃣  Store the column itself in tokenEls (controller uses the index).
     // -----------------------------------------------------------------
+    /*
     tokenEls.push(col);
+    */
+
+    tokenEls.push(col);
+    // Keep the source‑language on the column – needed for Thai where inner spans have no “lang”.
+    if (langs && langs.length) {
+        col.dataset.sourceLang = langs[0];
+    }
 
     // -----------------------------------------------------------------
     // 3️⃣  Click handling – start playback from this column / span.
@@ -269,7 +277,16 @@ export async function renderDictionaryExercise(mainEl, exerciseMeta, uiLang) {
     details.appendChild(summary);
 
     const optionsGrid = document.createElement("div");
+    /*
     optionsGrid.className = 'options-grid';
+    */
+
+    optionsGrid.className = 'options-grid';
+    /* -------------------------------------------------------------
+       Updated CSS: 4 columns – Language | Display | Speak | Repeat
+       ------------------------------------------------------------- */
+    optionsGrid.style.gridTemplateColumns = '6fr 2fr 2fr 2fr';
+
     details.appendChild(optionsGrid);
 
     // Header row
@@ -278,23 +295,33 @@ export async function renderDictionaryExercise(mainEl, exerciseMeta, uiLang) {
     const speakHeader = document.createElement("h4");
     displayHeader.textContent = locale.display ?? "Display";
     speakHeader.textContent = locale.speak ?? "Speak";
+
     optionsGrid.appendChild(emptyHeader);
     optionsGrid.appendChild(displayHeader);
     optionsGrid.appendChild(speakHeader);
 
-    // Maps for the check‑boxes
+    /* ----------- Repeat column header ------------ */
+    const repeatHeader = document.createElement('h4');
+    repeatHeader.textContent = locale.repeat || 'Repeat';
+    optionsGrid.appendChild(repeatHeader);
+
+
+/* -------------------------------------------------------------
+   Maps for the three columns
+   ------------------------------------------------------------- */
     const displayBoxes = new Map(); // lang → <input type="checkbox">
-    const speakBoxes = new Map();
+    const speakBoxes = new Map(); // lang → <input type="checkbox">
+    const repeatBoxes = new Map(); // lang → <input type="number">
 
     orderedLangs.forEach(langCode => {
         const langLabel = LANGUAGE_LABELS[langCode] || langCode.toUpperCase();
 
-        // Language name cell
+        /* ---- Language name cell ---- */
         const langCell = document.createElement("h4");
         langCell.textContent = langLabel;
         optionsGrid.appendChild(langCell);
 
-        // Display checkbox
+        /* ---- Display checkbox ---- */
         const displayCell = document.createElement("div");
         const displayCb = document.createElement("input");
         displayCb.type = "checkbox";
@@ -304,7 +331,7 @@ export async function renderDictionaryExercise(mainEl, exerciseMeta, uiLang) {
         optionsGrid.appendChild(displayCell);
         displayBoxes.set(langCode, displayCb);
 
-        // Speak checkbox
+        /* ---- Speak checkbox ---- */
         const speakCell = document.createElement("div");
         const speakCb = document.createElement("input");
         speakCb.type = "checkbox";
@@ -314,13 +341,30 @@ export async function renderDictionaryExercise(mainEl, exerciseMeta, uiLang) {
         optionsGrid.appendChild(speakCell);
         speakBoxes.set(langCode, speakCb);
 
-        // Interaction rules
+        /* ---- Repeat numeric input ---- */
+        const repeatCell = document.createElement("div");
+        const repeatInput = document.createElement("input");
+        repeatInput.type = "number";
+        repeatInput.min = "1";
+        repeatInput.value = "1";               // default = 1
+        repeatInput.dataset.lang = langCode;
+        repeatInput.style.width = "3rem";      // compact width, similar to the check‑boxes
+        repeatCell.appendChild(repeatInput);
+        optionsGrid.appendChild(repeatCell);
+        repeatBoxes.set(langCode, repeatInput);
+
+        /* ---- Interaction rules (same as before) ---- */
         speakCb.addEventListener("change", () => {
             if (speakCb.checked) displayCb.checked = true;
             rebuildTokenGrid();
         });
         displayCb.addEventListener("change", () => {
             if (!displayCb.checked) speakCb.checked = false;
+            rebuildTokenGrid();
+        });
+        repeatInput.addEventListener('change', () => {
+            // Re‑build the token grid – this will recompute the repeatMap
+            // and push the new values to the speech controller.
             rebuildTokenGrid();
         });
     });
@@ -421,14 +465,26 @@ export async function renderDictionaryExercise(mainEl, exerciseMeta, uiLang) {
         // -----------------------------------------------------------------
         // 3️⃣  Build lookup maps from the language check‑boxes.
         // -----------------------------------------------------------------
+
         const displayMap = {}; // lang → true/false
-        const speakMap = {}; // lang → true/false (used by the controller)
+        const speakMap = {}; // lang → true/false
+        const repeatMap = {}; // lang → integer (≥1)
 
         orderedLangs.forEach(l => {
             const dCb = displayBoxes.get(l);
             const sCb = speakBoxes.get(l);
+            const rIn = repeatBoxes.get(l);
+
             displayMap[l] = dCb ? dCb.checked : false;
             speakMap[l] = sCb ? sCb.checked : false;
+
+            // Parse the repeat value – fallback to 1 if missing/invalid.
+            let rpt = 1;
+            if (rIn) {
+                const parsed = parseInt(rIn.value, 10);
+                if (!isNaN(parsed) && parsed >= 1) rpt = parsed;
+            }
+            repeatMap[l] = rpt;
         });
 
         // -----------------------------------------------------------------
@@ -554,9 +610,11 @@ export async function renderDictionaryExercise(mainEl, exerciseMeta, uiLang) {
         // -----------------------------------------------------------------
         // 6️⃣  Update the speech controller with the new element references.
         // -----------------------------------------------------------------
+
         if (speechCtrl) {
             speechCtrl.updateElements(tokenEls, transEls);
             speechCtrl.updateSpeakMap(speakMap);   // keep Play in sync with Speak boxes
+            speechCtrl.updateRepeatMap(repeatMap); // NEW – tell controller how many times to speak
         }
     }
 

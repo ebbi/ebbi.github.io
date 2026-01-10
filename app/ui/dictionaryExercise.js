@@ -270,11 +270,12 @@ export async function renderDictionaryExercise(mainEl, exerciseMeta, uiLang) {
     // -----------------------------------------------------------------
     // 7️⃣ Build the Language‑options panel (Display / Speak check‑boxes)
     // -----------------------------------------------------------------
-    const details = document.createElement("details");
-    details.open = false;
+    const langDetails = document.createElement("details");
+    langDetails.id = "language-options";
+    langDetails.open = false;
     const summary = document.createElement("summary");
     summary.textContent = locale.languageOptions || "Language options";
-    details.appendChild(summary);
+    langDetails.appendChild(summary);
 
     const optionsGrid = document.createElement("div");
     /*
@@ -287,7 +288,7 @@ export async function renderDictionaryExercise(mainEl, exerciseMeta, uiLang) {
        ------------------------------------------------------------- */
     optionsGrid.style.gridTemplateColumns = '6fr 2fr 2fr 2fr';
 
-    details.appendChild(optionsGrid);
+    langDetails.appendChild(optionsGrid);
 
     // Header row
     const emptyHeader = document.createElement("div"); // language list
@@ -306,9 +307,9 @@ export async function renderDictionaryExercise(mainEl, exerciseMeta, uiLang) {
     optionsGrid.appendChild(repeatHeader);
 
 
-/* -------------------------------------------------------------
-   Maps for the three columns
-   ------------------------------------------------------------- */
+    /* -------------------------------------------------------------
+       Maps for the three columns
+       ------------------------------------------------------------- */
     const displayBoxes = new Map(); // lang → <input type="checkbox">
     const speakBoxes = new Map(); // lang → <input type="checkbox">
     const repeatBoxes = new Map(); // lang → <input type="number">
@@ -391,6 +392,25 @@ export async function renderDictionaryExercise(mainEl, exerciseMeta, uiLang) {
         translationElements: transEls
     });
 
+    /* ---------------------------------------------------------------
+       👉  Move the language‑options <details> into the player‑settings
+           panel that the speech controller created.
+       --------------------------------------------------------------- */
+    // `details` is the language‑options <details> you created earlier
+    // (the block that starts with `const details = document.createElement("details");`)
+    // It already exists as a DOM node, so we don’t need to query the document.
+    // const langDetails = details;                       // <-- reuse the existing reference
+
+    // The speech controller built its own <details id="player-settings"> inside
+    // the `speechPanel` DIV.  Because `speechPanel` is still unattached to the
+    // document, we must look for the target **inside** `speechPanel`.
+    const playerSetting = speechPanel.querySelector('#player-settings');
+
+    // Guard against the (unlikely) case that something went wrong.
+    if (langDetails && playerSetting) {
+        playerSetting.appendChild(langDetails);
+    }
+
     // -----------------------------------------------------------------
     // 10️⃣  Assemble the page in the required order:
     //      1️⃣ Language‑options <details> (top, closed)
@@ -409,7 +429,7 @@ export async function renderDictionaryExercise(mainEl, exerciseMeta, uiLang) {
     heading.textContent = titleText;
 
     // Order matters:
-    mainEl.appendChild(details);      // 1️⃣ Language options (closed)
+    //    mainEl.appendChild(details);      // 1️⃣ Language options (closed)
     mainEl.appendChild(speechPanel); // 2️⃣ Player controls (outside details)
     mainEl.appendChild(heading);      // 3️⃣ Exercise title (h4)
     mainEl.appendChild(scrollWrapper); // 4️⃣ Token grid container
