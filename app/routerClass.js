@@ -63,6 +63,7 @@ export default class Router {
         const cleanPath = pathname.replace(/\/+$/g, "") || "/";
 
         const match = this._match(cleanPath);
+
         if (match) {
             const { handler, params } = match;
             await handler({ ...params, search, hash });
@@ -72,10 +73,6 @@ export default class Router {
             console.warn("[Router] No match and no not‑found handler.");
         }
 
-        console.log("[Router/resolve] Pushing to Controller now...");
-
-        // This ensures Font, Lang, and Dir are all applied 
-        // AFTER the handler has finished its async work.
         syncAppState();
 
     }

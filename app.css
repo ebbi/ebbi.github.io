@@ -145,6 +145,7 @@ nav.menu-nav {
 
 #toolbar {
     position: relative;
+    z-index: 1000;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -193,19 +194,28 @@ nav.menu-nav {
 by an icon for language and fonts */
 /* Positioned hidden select to assist browser picker placement */
 .completely-hidden {
+    /* Critical for .showPicker() compatibility */
+    display: block !important;
+    visibility: visible !important;
+
+    /* Position it right under the button */
     position: absolute !important;
-    /* Adjust these to align with your Right-side icons */
-    top: 100% !important;
+    top: 0 !important;
     right: 0 !important;
 
+    /* Give it 1px size so it's "rendered" but essentially invisible */
     width: 1px !important;
     height: 1px !important;
-    opacity: 0 !important;
-    pointer-events: none !important;
+    opacity: 0.01 !important;
+    /* Almost invisible */
+
     border: none !important;
-    padding: 0 !important;
     margin: 0 !important;
-    z-index: -1;
+    padding: 0 !important;
+    overflow: hidden !important;
+
+    /* Ensure it doesn't block the cursor */
+    pointer-events: none !important;
 }
 
 /*=====================================================================

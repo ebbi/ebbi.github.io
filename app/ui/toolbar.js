@@ -15,7 +15,8 @@ export function renderToolbar(container) {
 
     const toolbar = document.createElement('header');
     toolbar.id = 'toolbar';
-    toolbar.className = 'toolbar';
+    toolbar.className = 'toolbar'; 
+    toolbar.style.position = 'relative';
 
     // --- Left side ---
     const leftContainer = document.createElement('div');
@@ -45,34 +46,41 @@ export function renderToolbar(container) {
         hiddenLangSelect.appendChild(opt);
     });
 
-    hiddenLangSelect.onchange = (e) => {
+    // app/ui/toolbar.js
 
+    hiddenLangSelect.onchange = async (e) => {
         const newLang = e.target.value;
         const currentPath = window.location.pathname;
+
         setStoredLang(newLang);
 
-        let newPath;
+        // Build new path
         const segments = currentPath.split('/').filter(Boolean);
-        // Check if the first segment is a 2-letter lang code (e.g., 'en', 'fa')
         const hasLangPrefix = segments.length > 0 && segments[0].length === 2;
+        const newPath = hasLangPrefix
+            ? '/' + [newLang, ...segments.slice(1)].join('/') + '/'
+            : `/${newLang}${currentPath}`;
 
-        if (hasLangPrefix) {
-            // Replace existing: /en/help -> /th/help
-            segments[0] = newLang;
-            newPath = '/' + segments.join('/') + '/';
-        } else {
-            // Prepend to root: / -> /th/
-            newPath = '/' + newLang + '/' + segments.join('/');
+        window.history.pushState(null, '', newPath);
+
+        if (window.loadLocaleData) {
+            await window.loadLocaleData(newLang);
         }
 
-        console.log(`[Toolbar] Language change detected: ${newLang}`);
-        console.log(`[Toolbar] Redirecting to: ${newPath}`);
+        syncAppState();
 
-        window.location.href = newPath;
+        // Re-run the router to update the main page content
+        await window.router.resolve();
 
-        // Sync attributes immediately for visual consistency (dir/lang)
-        //    syncAppState();
-        //    location.reload(); // Simplest way to sync all states
+        // IMPORTANT: Use a small timeout or wait for the next tick 
+        // to re-render the toolbar. This prevents destroying the 
+        // element while the browser is still processing the 'change' event.
+        setTimeout(() => {
+            const toolbarContainer = document.getElementById('toolbar-container');
+            if (toolbarContainer) {
+                renderToolbar(toolbarContainer);
+            }
+        }, 0);
     };
 
     //   document.body.appendChild(hiddenLangSelect); // Appending to body fixes Firefox rendering
