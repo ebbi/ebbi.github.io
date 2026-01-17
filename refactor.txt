@@ -1,0 +1,37 @@
+The context: I am trying to debug my language learning App font and language setting.  
+The App tool bar has a div class="toolbar-right" with a 
+button for language followed by a button for font settings. 
+The click event on each button reveals the hidden select elements to 
+change the language and font settings. 
+
+The Bug: selecting a language or font is not changing the language or the font for the page.
+
+In the browser developer display, 
+the html element style attribute changes to the newly selected font, 
+but html lang stays as the default "en" 
+
+Diagnosis: A Race Condition? The bootstrap.js sets the language and font, 
+but the router.js is likely resetting them when the route resolves.
+
+Please trace the bug and explain the code and the changes necessary.
+
+============================
+
+The Context: "I am starting a major refactor/redesign of my language learning app's data model. We are starting with a clean slate. The app is currently stable and working correctly after a successful Git restoration.
+
+The Goal: [Insert: e.g., 'I want to move from local JSON files to a more dynamic structure' OR 'I want to simplify how exercises are linked to books.']
+
+The Technical Foundation (Current Working Files): To ensure we don't repeat past mistakes, here is the current 'Source of Truth' for the core architecture. Please analyze these for dependencies before we begin the refactor:
+
+bootstrap.js: (Paste code)
+
+locales.js: (Paste code)
+
+router.js: (Paste code)
+
+app.css (The Global Variables only): (Paste the :root and layout sections)
+
+Constraint: Do not suggest any changes yet. Confirm you understand how these files currently interact with the Google Drive data structure."
+
+One Last Tip for your Rethink
+During your break, if you are looking at the data model, try to sketch it out on paper. Often, "Icon/Slider" bugs happen because the UI is trying to render data that hasn't finished loading yet.

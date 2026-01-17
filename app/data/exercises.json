@@ -1,0 +1,135 @@
+[
+    {
+        "type": "groupDefinitions",
+        "groups": [
+            {
+                "id": "group.common",
+                "label": {
+                    "en": "Thai most used words",
+                    "th": "ภาษาไทยที่ใช้บ่อยที่สุด",
+                    "fa": "پرکاربردترین کلمات تایلندی"
+                }
+            },
+            {
+                "id": "group.tsl",
+                "label": {
+                    "en": "TSL learning",
+                    "th": "การเรียนรู้ TSL",
+                    "fa": "یادگیری TSL"
+                }
+            },
+            {
+                "id": "group.poetry",
+                "label": {
+                    "en": "Poetry",
+                    "th": "บทกวี",
+                    "fa": "شعر"
+                }
+
+            },
+            {
+                "id": "group.other",
+                "label": {
+                    "en": "Other Exercises",
+                    "th": "แบบฝึกอื่น ๆ",
+                    "fa": "تمرینات دیگر"
+                }
+            }
+        ]
+    },
+    {
+        "id": "thai_consonant_vowel",
+        "folder": "data/exercises/common",
+        "file": "thai_consonant_vowel_diphthong.json",
+        "language": "th",
+        "group": "group.common",
+        "details": { "type": "dictionary" },
+        "activities": [ ],
+        "title": {
+            "en": "Thai Consonants, Vowels & Diphthongs",
+            "th": "พยัญชนะ, สระ และสระผสมของภาษาไทย",
+            "fa": "صداهای ترکیبی، مصوت‌ها و حروف صدادار تایلندی"
+        },
+        "summary": {
+            "en": "Practice Thai consonant classes, short/long vowels and diphthongs.",
+            "th": "ฝึกพยัญชนะชนิดต่าง ๆ, สระสั้น/ยาว และสระผสม",
+            "fa": "تمرین کلاس‌های صامت‌های تایلندی، مصوت‌های کوتاه/بلند و دفتون‌ها."
+        }
+    },
+    {
+        "id": "frequent_500",
+        "folder": "data/exercises/common",
+        "file": "frequent_500.json",
+        "language": "th",
+        "group": "group.common",
+        "details": { "type": "dictionary" },
+        "activities": [ "multipleChoice" ],
+        "title": {
+            "en": "Thai 500 most used words",
+            "th": "500 คำที่ใช้บ่อยที่สุดในภาษาไทย",
+            "fa": "۵۰۰ کلمه‌ی پرکاربردترین زبان تایلندی"
+        },
+        "summary": {
+            "en": "Sentences that have Thai 500 most used words in categories.",
+            "th": "ประโยคที่ประกอบด้วย 500 คำที่ใช้บ่อยที่สุดในภาษาไทย",
+            "fa": "جملاتی که شامل ۵۰۰ کلمه‌ی پرکاربرد زبان تایلندی هستند."
+        }
+    },
+    {
+        "id": "TSL_RW3",
+        "folder": "data/exercises/TSL",
+        "file": "TSL_RW3.json",
+        "language": "th",
+        "group": "group.tsl",
+        "details": { "type": "dictionary" },
+        "activities": [ "multipleChoice" ],
+        "title": {
+            "en": "TSL, Read and Write 3",
+            "th": "TSL อ่านและเขียน 3",
+            "fa": "TSL، خواندن و نوشتن ۳"
+        },
+        "summary": {
+            "en": "TSL, Read and Write 3",
+            "th": "TSL อ่านและเขียน 3",
+            "fa": "TSL، خواندن و نوشتن ۳"
+        }
+    },
+    {
+        "id": "TSL_LS4",
+        "folder": "data/exercises/TSL",
+        "file": "TSL_LS4.json",
+        "language": "th",
+        "group": "group.tsl",
+        "details": { "type": "dictionary" },
+        "activities": [ "multipleChoice" ],
+        "title": {
+            "en": "TSL, Listening & Speaking 4",
+            "th": "TSL การฟังและการพูด 4",
+            "fa": "TSL، گوش دادن و صحبت کردن ۴"
+        },
+        "summary": {
+            "en": "TSL, Listening & Speaking 4",
+            "th": "TSL การฟังและการพูด 4",
+            "fa": "TSL، گوش دادن و صحبت کردن ۴"
+        }
+    },
+    {
+        "id": "kalil_jibran",
+        "folder": "data/exercises/poetry",
+        "file": "kalil_jibran.json",
+        "language": "th",
+        "group": "group.poetry",
+        "details": { "type": "dictionary" },
+        "activities": [ "multipleChoice" ],
+        "title": {
+            "en": "Listen to a poem by Khalil Jibran",
+            "th": "ฟังบทกวีของ Khalil Jibran",
+            "fa": "به شعر خلیل جبران گوش کنید"
+        },
+        "summary": {
+            "en": "Your children are not your children",
+            "th": "ลูกของคุณไม่ใช่ลูกของคุณเอง",
+            "fa": "فرزندان شما فرزندان شما نیستند"
+        }
+    }
+]

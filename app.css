@@ -1,0 +1,656 @@
+/*=====================================================================
+   1️⃣ Global Reset & Variables
+   =====================================================================*/
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --app-font: 'System', sans-serif;
+    --bg-page: #fafafa;
+    --bg-surface: #ffffff;
+    --border-surface: #ddd;
+    --txt-primary: #212121;
+    --txt-secondary: #424242;
+    --heading-accent: #00695c;
+    --link: #1565c0;
+    --error: #d32f2f;
+    --low-class: #424242;
+    --mid-class: #00695c;
+    --high-class: #d32f2f;
+}
+
+[data-theme="dark"] {
+    --bg-page: #121212;
+    --bg-surface: #1e1e1e;
+    --border-surface: #333;
+    --txt-primary: #e0e0e0;
+    --txt-secondary: #b0b0b0;
+    --heading-accent: #4caf50;
+    --link: #90caf9;
+    --low-class: #bdbdbd;
+    --mid-class: #80cbc4;
+    --high-class: #ff8a80;
+}
+
+html {
+    font-size: 100%;
+    line-height: 1.5;
+    font-family: system-ui, -apple-system, sans-serif;
+    background: var(--bg-page);
+    color: var(--txt-primary);
+}
+
+body {
+    font-family: var(--app-font);
+}
+
+@media (min-width:900px) {
+    html {
+        font-size: 112%;
+    }
+}
+
+/*=====================================================================
+   2️⃣ Core Components (Buttons, Selects, Details)
+   =====================================================================*/
+body,
+nav,
+main,
+header,
+h1,
+h2,
+h3,
+h4,
+p,
+li,
+a,
+button,
+details,
+summary {
+    color: var(--txt-primary);
+}
+
+small,
+.caption,
+.help-detail summary,
+.book-card p,
+details p {
+    color: var(--txt-secondary);
+}
+
+input,
+select,
+textarea,
+button {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-surface);
+    color: var(--txt-primary);
+    border-radius: .4rem;
+    padding: .4rem .8rem;
+}
+
+button {
+    cursor: pointer;
+    transition: background 0.2s, transform 0.1s;
+}
+
+button:hover:not(:disabled) {
+    background: var(--border-surface);
+}
+
+button:active:not(:disabled) {
+    transform: scale(0.98);
+}
+
+button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    filter: grayscale(80%);
+}
+
+details {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-surface);
+    border-radius: .5rem;
+    padding: .5rem;
+    margin: .15rem 0;
+}
+
+nav.menu-nav {
+    width: 100%;
+    padding: 0.25rem 1rem;
+    border-bottom: 1px solid var(--border-surface);
+}
+
+.selectors-row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+    width: 100%;
+}
+
+.selectors-row select {
+    flex: 1;
+    min-width: 0;
+    padding: 0.3rem;
+}
+
+#toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 50px;
+    padding: 0 1rem;
+    background: var(--bg-surface);
+    border-bottom: 1px solid var(--border-surface);
+}
+
+.toolbar-right {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.hidden-select {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+    pointer-events: none;
+}
+
+#toolbar button,
+.toolbar-right button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+}
+
+#toolbar button {
+    background: none;
+    border: none;
+    font-size: 1.4rem;
+    cursor: pointer;
+    padding: 5px;
+    color: var(--txt-primary);
+}
+
+/* On mobiles the select is hidden in the toolbar and replaced 
+by an icon for language and fonts */
+.completely-hidden {
+    position: fixed !important;
+    top: -100px !important;
+    left: -100px !important;
+    width: 1px !important;
+    height: 1px !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+    z-index: -1;
+}
+
+/*=====================================================================
+   3️⃣ Speech Control Panel (Sticky Header)
+   =====================================================================*/
+#speechPanel {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: var(--bg-surface);
+    padding: 0.15rem 1rem;
+    border-bottom: 2px solid var(--border-surface);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.control-btn {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    line-height: 0 !important;
+    padding: 0 !important;
+    font-size: 1.2rem;
+    transition: all 0.2s;
+}
+
+.play-btn {
+    padding-left: 3px !important;
+    background-color: rgba(76, 175, 80, 0.1) !important;
+}
+
+.stop-btn {
+    font-size: 0.9rem;
+}
+
+.settings-btn {
+    margin-left: auto;
+}
+
+#speech-progress-container {
+    width: 100%;
+    height: 6px;
+    background: var(--border-surface);
+    border-radius: 3px;
+    margin-bottom: 0.5rem;
+    cursor: pointer;
+    overflow: hidden;
+    transition: height 0.2s;
+}
+
+#speech-progress-container:hover {
+    height: 10px;
+}
+
+#speech-progress-bar {
+    height: 100%;
+    background: var(--heading-accent);
+    transition: width 0.3s;
+}
+
+/*=====================================================================
+   4️⃣ Dictionary Grid & Highlighting (RESTORED COLUMNS)
+   =====================================================================*/
+
+/*=====================================================================
+   Restoring Language Options Grid
+   =====================================================================*/
+.options-grid {
+    display: grid !important;
+    /* Force grid layout */
+    grid-template-columns: 2fr 1fr 1fr;
+    /* Logic: Language name gets more space */
+    gap: 0.8rem 0.5rem;
+    align-items: center;
+    /* Vertically center labels with inputs */
+    margin-top: 1rem;
+    padding: 0.5rem;
+}
+
+/* Header styling (Language, Display, Repeat) */
+.options-grid h4 {
+    font-size: 0.9rem;
+    color: var(--txt-secondary);
+    border-bottom: 1px solid var(--border-surface);
+    padding-bottom: 0.4rem;
+    margin-bottom: 0.2rem;
+}
+
+/* Ensure inputs don't stretch or push columns out */
+.options-grid input[type="number"] {
+    width: 3.5rem !important;
+    /* Fixed width for repeat count */
+    padding: 0.2rem;
+    text-align: center;
+}
+
+.options-grid div {
+    display: flex;
+    justify-content: center;
+    /* Center checkboxes/numbers in their columns */
+    align-items: center;
+}
+
+/* Mobile Tweak: If the screen is very narrow, shrink the text */
+@media (max-width: 400px) {
+    .options-grid {
+        grid-template-columns: 1.5fr 1fr 1fr;
+        font-size: 0.85rem;
+    }
+}
+
+
+.dict-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    padding: 1rem 0;
+}
+
+/* The container for the word groups */
+.section-tokens {
+    display: flex;
+    flex-direction: row;
+    /* RESTORE: Keep words side-by-side */
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 0.8rem 1.2rem;
+    /* Vertical and Horizontal spacing */
+    line-height: 1.6;
+}
+
+/* The individual column (Source word + Translation) */
+.token-col {
+    display: flex;
+    flex-direction: column;
+    /* RESTORE: Keep translation UNDER the word */
+    align-items: center;
+    /* Center the translation under the word */
+    flex: 0 0 auto;
+    /* Don't let columns stretch */
+    min-width: fit-content;
+}
+
+/* Base Token Styles (The Jitter-Free Foundation) */
+.token,
+.token-col span,
+.token-col div {
+    display: inline-block;
+    padding: 2px 6px;
+    /* Fixed padding */
+    border-radius: 4px;
+    transition: transform 0.1s ease-out, background-color 0.2s;
+    text-align: center;
+    white-space: nowrap;
+    /* Prevent words from breaking */
+}
+
+/* Ensure translations/adjacent rows have secondary styling */
+.token-col span:last-child {
+    font-size: 0.9em;
+    opacity: 0.8;
+    margin-top: 2px;
+}
+
+/* THE JITTER-FREE HIGHLIGHT */
+.highlighted-token,
+.token.active {
+    background-color: var(--heading-accent) !important;
+    color: #ffffff !important;
+    transform: scale(1.1);
+    text-shadow: 0.5px 0 0 currentColor, -0.5px 0 0 currentColor;
+    outline: 2px solid var(--heading-accent);
+    outline-offset: 1px;
+    z-index: 10;
+    position: relative;
+}
+
+
+.token-col span {
+    display: block;
+    line-height: 1.4;
+    padding: 2px 0;
+}
+
+/* --- Transition Visual Feedback --- */
+.status-loading {
+    animation: status-pulse 0.8s infinite ease-in-out;
+    color: var(--link);
+    font-weight: bold;
+}
+
+@keyframes status-pulse {
+    0% {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 0.5;
+        transform: scale(0.98);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* --- Section Animations --- */
+@keyframes section-entry-pulse {
+    0% {
+        background-color: transparent;
+    }
+
+    30% {
+        background-color: rgba(76, 175, 80, 0.2);
+    }
+
+    100% {
+        background-color: transparent;
+    }
+}
+
+.section-pulse summary {
+    animation: section-entry-pulse 1.5s ease-out;
+}
+
+.section-paused summary {
+    background-color: rgba(255, 152, 0, 0.1) !important;
+    border-left: 5px solid #ff9800;
+}
+
+/*=====================================================================
+   5️⃣ Layout Utilities
+   =====================================================================*/
+.menu-list,
+.books-cards-grid {
+    list-style: none;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+}
+
+@media (min-width:600px) {
+    .menu-list {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width:900px) {
+    .menu-list {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+.menu-item,
+.book-card {
+    background: var(--bg-surface);
+    padding: 1rem;
+    border-radius: .5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform .2s, box-shadow .2s;
+}
+
+.menu-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 12px var(--link);
+}
+
+.low-class {
+    color: var(--low-class);
+}
+
+.middle-class {
+    color: var(--mid-class);
+}
+
+.high-class {
+    color: var(--high-class);
+}
+
+.correct {
+    background-color: #4caf50 !important;
+    color: white !important;
+}
+
+.incorrect {
+    background-color: #ff5252 !important;
+    color: white !important;
+}
+
+/* Ensure the container of the select doesn't push out */
+.mc-select-group,
+.settings-row,
+#speechPanel div {
+    min-width: 0;
+    /* Allows flex children to shrink */
+    width: 100%;
+}
+
+/* Force the select to stay within the screen bounds */
+select {
+    width: 100%;
+    max-width: 100%;
+    /* Never wider than parent */
+    text-overflow: ellipsis;
+    /* Add ... for very long voice names */
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+/* Specific fix for the Voice Select in the Speech Panel */
+#voiceSelect {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/*=====================================================================
+   Multiple‑Choice Layout 
+   =====================================================================*/
+.mc-wrapper {
+    max-width: 600px;
+    margin: 2rem auto;
+    padding: 1.5rem;
+    border: 1px solid var(--border-surface);
+    border-radius: 1rem;
+    background: var(--bg-surface);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.mc-prompt {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100px;
+    margin-bottom: 2rem;
+    padding: 1rem;
+    background: var(--bg-page);
+    border-radius: 0.5rem;
+    text-align: center;
+    cursor: pointer;
+}
+
+.mc-prompt span {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--txt-primary);
+}
+
+.mc-answers {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.mc-answers li {
+    width: 100%;
+}
+
+.mc-answers button {
+    width: 100%;
+    padding: 1rem;
+    font-size: 1.1rem;
+    text-align: center;
+    background: var(--bg-surface);
+    border: 2px solid var(--border-surface);
+    border-radius: 0.75rem;
+    transition: all 0.2s ease;
+}
+
+.mc-answers button.correct {
+    background-color: rgba(76, 175, 80, 0.2) !important;
+    border-color: #4caf50 !important;
+    color: var(--txt-primary) !important;
+    font-weight: 600;
+}
+
+.mc-answers button.incorrect {
+    background-color: rgba(244, 67, 54, 0.2) !important;
+    border-color: #f44336 !important;
+    color: var(--txt-primary) !important;
+}
+
+.mc-answers button:hover:not(:disabled) {
+    border-color: var(--link);
+    background: rgba(21, 101, 192, 0.05);
+}
+
+.mc-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+.mc-select-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.mc-select-group select {
+    width: 100%;
+    padding: 0.6rem;
+    font-size: 1rem;
+}
+
+.mc-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border-surface);
+    font-weight: 600;
+    opacity: 0.8;
+}
+
+.mc-results-screen {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.mc-progress-bar {
+    height: 100%;
+    background-color: var(--heading-accent);
+    width: 0%;
+    transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.review-speak-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    background: var(--bg-page);
+    border-radius: 50%;
+    border: 1px solid var(--border-surface);
+    transition: transform 0.1s;
+    user-select: none;
+}
+
+.review-speak-btn:active {
+    transform: scale(0.9);
+    background: var(--border-surface);
+}
