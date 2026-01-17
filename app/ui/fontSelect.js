@@ -13,7 +13,6 @@ export function populateFontSelect(selectEl) {
     selectEl.onchange = ev => {
         const name = ev.target.value;
         setStoredFont(name);
-        // Centralized font application
         applyStoredFont();
     };
 

@@ -13,6 +13,9 @@ import { getStoredFont } from '../utils/storage.js';
  */
 export function applyFontFamily(cssFamily) {
     document.documentElement.style.fontFamily = cssFamily;
+    if (document.body) {
+        document.body.style.fontFamily = cssFamily;
+    }
 }
 
 /**
@@ -20,7 +23,7 @@ export function applyFontFamily(cssFamily) {
  * This is the single source of truth for “apply the persisted font”.
  */
 export function applyStoredFont() {
-    const name = getStoredFont();               // imported from storage.js
+    const name = getStoredFont();              // imported from storage.js
     const entry = FONT_CATALOG.find(f => f.name === name);
     if (entry) {
         applyFontFamily(entry.family);

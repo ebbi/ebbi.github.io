@@ -1,5 +1,5 @@
 // app/ui/toolbar.js
-import { toggleTheme } from '../utils/theme.js';
+import { toggleTheme, syncAppState } from '../utils/theme.js';
 import { getLocale, SUPPORTED_LANGS, LANGUAGE_LABELS } from '../data/locales.js';
 import { setStoredLang, getStoredLang } from '../utils/storage.js';
 import { applyDirection } from '../utils/rtl.js';
@@ -11,7 +11,7 @@ export function renderToolbar(container) {
 
     container.innerHTML = '';
     const lang = getStoredLang();
-    const locale = getLocale(lang);
+    //   const locale = getLocale(lang);
 
     const toolbar = document.createElement('header');
     toolbar.id = 'toolbar';
@@ -44,11 +44,39 @@ export function renderToolbar(container) {
         opt.textContent = LANGUAGE_LABELS[code] || code.toUpperCase();
         hiddenLangSelect.appendChild(opt);
     });
+
     hiddenLangSelect.onchange = (e) => {
-        setStoredLang(e.target.value);
-        location.reload(); // Simplest way to sync all states
+
+        const newLang = e.target.value;
+        const currentPath = window.location.pathname;
+        setStoredLang(newLang);
+
+        let newPath;
+        const segments = currentPath.split('/').filter(Boolean);
+        // Check if the first segment is a 2-letter lang code (e.g., 'en', 'fa')
+        const hasLangPrefix = segments.length > 0 && segments[0].length === 2;
+
+        if (hasLangPrefix) {
+            // Replace existing: /en/help -> /th/help
+            segments[0] = newLang;
+            newPath = '/' + segments.join('/') + '/';
+        } else {
+            // Prepend to root: / -> /th/
+            newPath = '/' + newLang + '/' + segments.join('/');
+        }
+
+        console.log(`[Toolbar] Language change detected: ${newLang}`);
+        console.log(`[Toolbar] Redirecting to: ${newPath}`);
+
+        window.location.href = newPath;
+
+        // Sync attributes immediately for visual consistency (dir/lang)
+        //    syncAppState();
+        //    location.reload(); // Simplest way to sync all states
     };
-    document.body.appendChild(hiddenLangSelect); // Appending to body fixes Firefox rendering
+
+    //   document.body.appendChild(hiddenLangSelect); // Appending to body fixes Firefox rendering
+    toolbar.appendChild(hiddenLangSelect);
     langBtn.onclick = () => hiddenLangSelect.showPicker();
 
     // 🔠 Font Trigger
@@ -57,7 +85,9 @@ export function renderToolbar(container) {
     const hiddenFontSelect = document.createElement('select');
     hiddenFontSelect.className = 'completely-hidden';
     populateFontSelect(hiddenFontSelect);
-    document.body.appendChild(hiddenFontSelect);
+    //   document.body.appendChild(hiddenFontSelect);
+    toolbar.appendChild(hiddenFontSelect);
+
     fontBtn.onclick = () => hiddenFontSelect.showPicker();
 
     // Theme & Help

@@ -1,6 +1,6 @@
 // app/utils/fontHelper.js
 import { FONT_CATALOG } from '../data/fonts.js';
-import { getStoredFont } from '../utils/storage.js';
+import { getStoredFont, getStoredLang } from '../utils/storage.js';
 
 /**
  * Apply a CSS font‑family string to the root element.
@@ -10,6 +10,10 @@ import { getStoredFont } from '../utils/storage.js';
  */
 export function applyFontFamily(cssFamily) {
     document.documentElement.style.fontFamily = cssFamily;
+    // Update the body explicitly
+    if (document.body) {
+        document.body.style.setProperty('font-family', cssFamily, 'important');
+    }
 }
 
 /**
@@ -20,17 +24,6 @@ export function applyFontFamily(cssFamily) {
  * @param {Function} getStoredFont – function that reads the LS key.
  * @returns {boolean} true if a font was applied, false otherwise.
  */
-/*
-export function applyCurrentFont(catalog, getStoredFont) {
-    const savedName = getStoredFont();
-    const entry = catalog.find(f => f.name === savedName);
-    if (entry) {
-        applyFontFamily(entry.family);
-        return true;
-    }
-    return false;
-}
-*/
 
 /**
  * Apply the font stored in local‑storage (or the default) to the root.
@@ -47,4 +40,5 @@ export function applyStoredFont() {
         // Fallback to the first font in the catalog.
         applyFontFamily(FONT_CATALOG[0].family);
     }
+    
 }

@@ -1,5 +1,6 @@
 // app/utils/theme.js
 import { getStoredTheme, setStoredTheme } from './storage.js';
+import { getStoredLang } from '../utils/storage.js';
 
 export function applySavedTheme() {
     const saved = getStoredTheme();
@@ -32,4 +33,22 @@ export function toggleTheme() {
     // Optional: update UA color-scheme hint
     const meta = document.querySelector('meta[name="color-scheme"]');
     if (meta) meta.content = nxt;
+}
+
+// Suggested location: utils/theme.js or similar
+export function syncAppState() {
+    // 1. Sync Font
+    if (typeof applyStoredFont === 'function') {
+        applyStoredFont();
+    }
+
+    // 2. Sync Language & Direction
+    const savedLang = getStoredLang();
+    
+    const savedDir = (savedLang === 'fa' || savedLang === 'ar') ? 'rtl' : 'ltr';
+
+    console.log(`[Sync] Applying Lang: ${savedLang}, Dir: ${savedDir}`);
+
+    document.documentElement.lang = savedLang;
+    document.documentElement.dir = savedDir;
 }

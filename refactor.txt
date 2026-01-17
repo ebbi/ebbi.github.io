@@ -1,4 +1,5 @@
-The context: I am trying to debug my language learning App font and language setting.  
+The context: I am trying to debug my language learning App (see uploaded compressed file) 
+ font and language setting options.  
 The App tool bar has a div class="toolbar-right" with a 
 button for language followed by a button for font settings. 
 The click event on each button reveals the hidden select elements to 
@@ -8,7 +9,7 @@ The Bug: selecting a language or font is not changing the language or the font f
 
 In the browser developer display, 
 the html element style attribute changes to the newly selected font, 
-but html lang stays as the default "en" 
+but html dir and lang stays as the default "en" 
 
 Diagnosis: A Race Condition? The bootstrap.js sets the language and font, 
 but the router.js is likely resetting them when the route resolves.

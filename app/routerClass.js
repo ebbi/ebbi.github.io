@@ -4,6 +4,8 @@
 // Lightweight client‑side router used by the SPA.
 // ---------------------------------------------------------------
 
+import { syncAppState } from './utils/theme.js';
+
 export default class Router {
     /**
      * @param {Array<{path:string, handler:function}>} routes
@@ -54,7 +56,7 @@ export default class Router {
     }
 
     /** Resolve the current location against the route table. */
-    resolve() {
+    async resolve() {
         if (typeof window === "undefined" || typeof location === "undefined") return;
 
         const { pathname, search, hash } = location;
@@ -63,12 +65,19 @@ export default class Router {
         const match = this._match(cleanPath);
         if (match) {
             const { handler, params } = match;
-            handler({ ...params, search, hash });
+            await handler({ ...params, search, hash });
         } else if (this._notFound) {
             this._notFound({ search, hash });
         } else {
             console.warn("[Router] No match and no not‑found handler.");
         }
+
+        console.log("[Router/resolve] Pushing to Controller now...");
+
+        // This ensures Font, Lang, and Dir are all applied 
+        // AFTER the handler has finished its async work.
+        syncAppState();
+
     }
 
     /** Register a 404 / “not found” handler. */

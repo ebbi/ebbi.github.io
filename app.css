@@ -144,10 +144,11 @@ nav.menu-nav {
 }
 
 #toolbar {
+    position: relative;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 50px;
+    height: 60px;
     padding: 0 1rem;
     background: var(--bg-surface);
     border-bottom: 1px solid var(--border-surface);
@@ -190,14 +191,20 @@ nav.menu-nav {
 
 /* On mobiles the select is hidden in the toolbar and replaced 
 by an icon for language and fonts */
+/* Positioned hidden select to assist browser picker placement */
 .completely-hidden {
-    position: fixed !important;
-    top: -100px !important;
-    left: -100px !important;
+    position: absolute !important;
+    /* Adjust these to align with your Right-side icons */
+    top: 100% !important;
+    right: 0 !important;
+
     width: 1px !important;
     height: 1px !important;
     opacity: 0 !important;
     pointer-events: none !important;
+    border: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
     z-index: -1;
 }
 
