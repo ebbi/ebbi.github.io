@@ -182,33 +182,31 @@ export function createSpeechController(container, {
             statusEl.appendChild(dBadge);
 
             // --- REPEAT BADGE (Fixed Logic) ---
-            const rBadge = document.createElement("span");
-            rBadge.className = "repeat-badge";
+            if (state.repeatMap) {
+                Object.keys(state.repeatMap).forEach(langCode => {
+                    const count = state.repeatMap[langCode];
 
-            // Find current repeat value from any language in the map (e.g., 'en')
-            // Default to 1 if not set, because your loop uses count > 0 to speak
-            let currentR = state.repeatMap?.['en'] || 1;
-            rBadge.textContent = `${currentR}r`;
+                    // Only show badge if the language is "active" (count > 0)
+                    if (count > 0) {
+                        const rBadge = document.createElement("span");
+                        rBadge.className = "repeat-badge";
+                        rBadge.textContent = `${langCode} ${count}r`;
+                        rBadge.title = `Tap to change repeats for ${langCode}`;
 
-            rBadge.onclick = (e) => {
-                e.stopPropagation();
-                let val = parseInt(rBadge.textContent);
-                if (isNaN(val)) val = 1;
+                        rBadge.onclick = (e) => {
+                            e.stopPropagation();
+                            // Cycle 1r to 5r for this specific language
+                            let nextCount = (count >= 5) ? 1 : count + 1;
+                            state.repeatMap[langCode] = nextCount;
 
-                // Cycle 1 to 5 (0 is usually avoided as it mutes the loop in your logic)
-                let nextR = (val >= 5) ? 1 : val + 1;
+                            // Refresh the status to update the UI
+                            setStatus(key);
+                        };
 
-                // 1. Update the Map for all languages so the Loop reacts
-                if (state.repeatMap) {
-                    Object.keys(state.repeatMap).forEach(lang => {
-                        state.repeatMap[lang] = nextR;
-                    });
-                }
-
-                // 2. Update Visuals
-                rBadge.textContent = `${nextR}r`;
-            };
-            statusEl.appendChild(rBadge);
+                        statusEl.appendChild(rBadge);
+                    }
+                });
+            }
 
             statusEl.style.visibility = "visible";
             statusEl.style.opacity = "1";
@@ -408,12 +406,13 @@ export function createSpeechController(container, {
                     const span = spans[state.transIdx];
                     const txt = span?.textContent?.trim();
                     const lang = span?.getAttribute("lang");
-                    const count = state.repeatMap[lang] || 0;
 
                     highlightCurrent();
 
                     // FIX: Only speak if it's NOT the same element we just spoke in Phase 1
                     // and if the count is greater than 0.
+
+                    const count = state.repeatMap[lang] || 0;
                     if (count > 0 && txt && span !== srcSpan) {
                         for (let i = 0; i < count; i++) {
                             await abortCheck();

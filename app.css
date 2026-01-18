@@ -269,8 +269,10 @@ by an icon for language and fonts */
 #speech-status {
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
+    /* Allows badges to wrap on small screens */
+    gap: 4px;
 }
-
 
 @keyframes fadeIn {
     from {
@@ -317,7 +319,6 @@ by an icon for language and fonts */
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    background-color: rgba(255, 152, 0, 0.1);
     /* Subtle Orange */
     color: rgb(230, 126, 34);
     font-size: 0.7rem;
@@ -329,6 +330,9 @@ by an icon for language and fonts */
     cursor: pointer;
     user-select: none;
     transition: all 0.2s ease;
+    /*   text-transform: uppercase; */
+    background-color: rgba(255, 152, 0, 0.05);
+    border: 1px solid rgba(255, 152, 0, 0.3);
 }
 
 .repeat-badge:hover {
@@ -476,7 +480,7 @@ by an icon for language and fonts */
     width: 100%;
     text-align: left;
     white-space: normal;
-/*    word-break: break-word; */
+    /*    word-break: break-word; */
     font-size: 1rem;
     line-height: 1.4;
 }
