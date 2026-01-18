@@ -313,6 +313,29 @@ by an icon for language and fonts */
     color: #ffffff;
 }
 
+.repeat-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(255, 152, 0, 0.1);
+    /* Subtle Orange */
+    color: rgb(230, 126, 34);
+    font-size: 0.7rem;
+    font-weight: 800;
+    padding: 2px 6px;
+    border-radius: 12px;
+    margin-left: 6px;
+    border: 1px solid rgba(255, 152, 0, 0.5);
+    cursor: pointer;
+    user-select: none;
+    transition: all 0.2s ease;
+}
+
+.repeat-badge:hover {
+    background-color: rgb(230, 126, 34);
+    color: #ffffff;
+}
+
 .control-btn {
     width: 42px;
     height: 42px;
@@ -453,7 +476,7 @@ by an icon for language and fonts */
     width: 100%;
     text-align: left;
     white-space: normal;
-    word-break: break-word;
+/*    word-break: break-word; */
     font-size: 1rem;
     line-height: 1.4;
 }

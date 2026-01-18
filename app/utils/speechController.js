@@ -153,12 +153,11 @@ export function createSpeechController(container, {
         statusEl.innerHTML = '';
 
         if (text) {
-            // 1. Label
             const label = document.createElement("span");
             label.textContent = text;
             statusEl.appendChild(label);
 
-            // 2. Speed Badge (Existing Logic)
+            // --- SPEED BADGE ---
             const sBadge = document.createElement("span");
             sBadge.className = "speed-badge";
             sBadge.textContent = `${state.rate % 1 === 0 ? state.rate : state.rate.toFixed(1)}x`;
@@ -170,23 +169,46 @@ export function createSpeechController(container, {
             };
             statusEl.appendChild(sBadge);
 
-            // 3. Delay Badge (New Logic)
+            // --- DELAY BADGE ---
             const dBadge = document.createElement("span");
             dBadge.className = "delay-badge";
             dBadge.textContent = `${state.delaySec}s`;
-            dBadge.title = "Tap to change pause between words";
-
             dBadge.onclick = (e) => {
                 e.stopPropagation();
-                // Cycle: 0s -> 0.5s -> 1s -> 2s -> 3s
                 const delays = [0, 1, 2, 3, 4, 5];
-                let nextIndex = (delays.indexOf(state.delaySec) + 1) % delays.length;
-                state.delaySec = delays[nextIndex];
-
+                state.delaySec = delays[(delays.indexOf(state.delaySec) + 1) % delays.length];
                 dBadge.textContent = `${state.delaySec}s`;
             };
-
             statusEl.appendChild(dBadge);
+
+            // --- REPEAT BADGE (Fixed Logic) ---
+            const rBadge = document.createElement("span");
+            rBadge.className = "repeat-badge";
+
+            // Find current repeat value from any language in the map (e.g., 'en')
+            // Default to 1 if not set, because your loop uses count > 0 to speak
+            let currentR = state.repeatMap?.['en'] || 1;
+            rBadge.textContent = `${currentR}r`;
+
+            rBadge.onclick = (e) => {
+                e.stopPropagation();
+                let val = parseInt(rBadge.textContent);
+                if (isNaN(val)) val = 1;
+
+                // Cycle 1 to 5 (0 is usually avoided as it mutes the loop in your logic)
+                let nextR = (val >= 5) ? 1 : val + 1;
+
+                // 1. Update the Map for all languages so the Loop reacts
+                if (state.repeatMap) {
+                    Object.keys(state.repeatMap).forEach(lang => {
+                        state.repeatMap[lang] = nextR;
+                    });
+                }
+
+                // 2. Update Visuals
+                rBadge.textContent = `${nextR}r`;
+            };
+            statusEl.appendChild(rBadge);
 
             statusEl.style.visibility = "visible";
             statusEl.style.opacity = "1";
