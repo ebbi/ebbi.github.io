@@ -525,19 +525,20 @@ by an icon for language and fonts */
 .token.active {
     background-color: var(--heading-accent) !important;
     color: #ffffff !important;
-    transform: scale(1.05);
-    text-shadow: 0.5px 0 0 currentColor, -0.5px 0 0 currentColor;
-    outline: 2px solid var(--heading-accent);
-    outline-offset: 1px;
-    z-index: 10;
-    position: relative;
 
-    /*    animation: highlight-glow 1.5s infinite ease-in-out; 
-    transition: transform 0.2s ease, background-color 0.2s ease;
+    /* REMOVED: transform: scale(1.05) -> No more jumping */
+    /* REMOVED: text-shadow -> No more blurry re-paints */
+
+    /*    outline: 2px solid var(--heading-accent);
+    outline-offset: 1px;
 */
-    /* inline-block is essential to sit side-by-side */
+    /* Keeps the layout stable */
     display: inline-block;
-    max-width: 95%;
+    position: relative;
+    /*   border-radius: 4px; */
+
+    /* Ensure no transitions fight with the scroll logic */
+    transition: none !important;
 }
 
 @keyframes highlight-glow {

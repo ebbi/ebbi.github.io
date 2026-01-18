@@ -55,7 +55,7 @@ export function speakText(text, voiceName, lang, rate = 1, pitch = 1) { // ✨ A
     return new Promise((resolve, reject) => {
         if (!("speechSynthesis" in window)) return reject("No TTS support");
 
-        window.speechSynthesis.cancel();
+ //       window.speechSynthesis.cancel();
 
         const utterance = new SpeechSynthesisUtterance(text);
         utterance.rate = rate;

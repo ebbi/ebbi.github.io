@@ -1,30 +1,20 @@
-Project Status Summary: Font, Language & Hot Swap
-1. Core Logic:
+Tips for your Repomix upload:
+When you're ready for the next session, run it with the instruction or custom header flag if you want to be extra precise. For example:
 
-Centralized Storage: Using storage.js with LS_KEYS.LANG and getStoredLang().
+Run: npx repomix
 
-State Sync: syncAppState() (in theme.js) is the "Single Source of Truth." It updates document.documentElement.lang, dir, and the Font based on localStorage.
+Upload: Provide the repomix-output.txt.
 
-Router Integration: routerClass.js is now async. It awaits the page handler (content render) before calling syncAppState() to prevent the "English Flash" and ensure fonts apply to existing DOM elements.
+The Prompt: "Here is my current codebase. I want to refactor my JSON data model to support [New Use Case X]. How should I restructure the data and the rebuildTokenGrid logic to accommodate this?"
 
-2. UI & Navigation:
+A "Save Point" for your Refactor
+Before we sign off, remember that your current success relies on two things:
 
-Toolbar: Uses a "Hot Swap" strategy. When the language changes, it:
+Decoupled Scrolling: Only the loop controls the page position.
 
-Updates localStorage.
+Strict Normalization: Lang codes are shortened before map lookups.
 
-Updates the URL path (e.g., /en/ to /th/) using window.history.pushState.
-
-Triggers router.resolve() and a setTimeout based renderToolbar() to refresh the UI without a full page reload.
-
-Hidden Selects: Positioned absolute within a relative toolbar with opacity: 0.01 and 1px size to satisfy browser .showPicker() visibility requirements.
-
-3. Pending UX Task:
-
-Interruption Logic: Need to implement listeners for wheel, touchmove, and keydown to stop the speechManager singleton and clear the speechController auto-scroll/sentence timeouts when the user interacts manually.
-
-Analyse the Uploaded updated ZIP and "Implement the Manual Scroll Interruption logic in speechController.js based on the provided summary."
-
+Keep those two principles in mind as you change the data model, and you'll avoid re-introducing the bugs we just squashed.
 
 ============================
 

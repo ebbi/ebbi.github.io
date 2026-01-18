@@ -20,6 +20,7 @@ import { getStoredVoice } from '../utils/storage.js';
 import { applyDirection } from '../utils/rtl.js';
 import { ensureVoiceForExercise } from '../utils/voiceHelper.js';
 import { getOrCreateSpeechPanel } from '../utils/speech.js';
+import { state, setStatus } from '../utils/speechController.js';
 
 /* -----------------------------------------------------------------
    GLOBAL UI state – the arrays that the speech controller needs.
@@ -44,6 +45,8 @@ const sectionsMap = new Map(); // secId → { entry, tokenEls, transEls }
 let speakMap = {};   // lang → true/false
 let repeatMap = {};  // lang → integer (>=1)
 
+export const repeatBoxes = new Map();
+
 /* -----------------------------------------------------------------
    Helper – build a column that holds the translations for ONE source token.
    ----------------------------------------------------------------- */
@@ -51,58 +54,45 @@ function buildTokenColumn(translations, langs, displayMap) {
     const col = document.createElement('div');
     col.className = 'token-col';
 
-    // -----------------------------------------------------------------
-    // 1️⃣  Create a <span> for each language that is currently displayed.
-    // -----------------------------------------------------------------
+    // 1️⃣ PUSH IMMEDIATELY so tokenEls.length is correct for colIdx
+    const colIdx = tokenEls.length;
+    tokenEls.push(col);
+    transEls[colIdx] = []; // Initialize the translation row for this column
+
     translations.forEach((txt, idx) => {
         const lang = langs[idx];
+        if (!displayMap[lang]) return;
 
-        // -------------------------------------------------------------
-        // Skip hidden languages (unchanged logic)
-        // -------------------------------------------------------------
-        if (!displayMap[lang]) return;               // hidden language
-
-        // -------------------------------------------------------------
-        // NEW: handle "\n" inside the text – split into separate spans.
-        // -------------------------------------------------------------
+        // NEW: handle "\n"
         if (typeof txt === 'string' && txt.includes('\n')) {
-            const parts = txt.split('\n');               // ["part1","part2",…]
+            const parts = txt.split('\n');
             parts.forEach((part, partIdx) => {
-                // ---- regular span for this piece -----------------
                 const span = document.createElement('span');
                 span.className = 'trans';
                 span.textContent = part;
                 span.setAttribute('lang', lang);
                 col.appendChild(span);
 
-                // ---- register the span for the speech controller ----
-                const colIdx = tokenEls.length;
-                if (!transEls[colIdx]) transEls[colIdx] = [];
+                // Add to the row we initialized above
                 transEls[colIdx].push(span);
 
-                // ---- after every piece except the last, insert a line‑break div
                 if (partIdx < parts.length - 1) {
                     const brDiv = document.createElement('div');
                     brDiv.className = 'dict-grid';
                     col.appendChild(brDiv);
                 }
             });
-            // Skip the normal processing for this entry – we already handled it.
             return;
         }
 
-        // -------------------------------------------------------------
-        // Normal span (including Thai‑character handling – unchanged)
-        // -------------------------------------------------------------
+        // Normal span
         const outerSpan = document.createElement('span');
         outerSpan.className = 'trans';
         outerSpan.setAttribute('lang', lang);
         outerSpan.textContent = txt || '';
         col.appendChild(outerSpan);
 
-        // Register for the speech controller
-        const colIdx = tokenEls.length;
-        if (!transEls[colIdx]) transEls[colIdx] = [];
+        // Add to the row we initialized above
         transEls[colIdx].push(outerSpan);
     });
 
@@ -165,7 +155,7 @@ function buildTokenColumn(translations, langs, displayMap) {
     // -----------------------------------------------------------------
     // 4️⃣  Store the column itself in tokenEls (controller uses the index)
     // -----------------------------------------------------------------
-    tokenEls.push(col);
+ //   tokenEls.push(col);
     return col;
 }
 
@@ -173,56 +163,54 @@ function buildTokenColumn(translations, langs, displayMap) {
    Main entry – render the dictionary exercise inside the provided <main>.
    ----------------------------------------------------------------- */
 
+/**
+ * Main render function for Dictionary Exercise
+ */
 export async function renderDictionaryExercise(mainEl, exerciseMeta, uiLang) {
+
     // -----------------------------------------------------------------
-    // 1️⃣ Load the JSON payload for the exercise
+    // 1️⃣ INITIALIZE DATA & STATE (Must happen first)
     // -----------------------------------------------------------------
+    if (!state.repeatMap) state.repeatMap = {};
+
     const jsonPath = `/app/${exerciseMeta.folder}/${exerciseMeta.file}`;
-    const data = await loadJSON(jsonPath); // array of objects
+    const data = await loadJSON(jsonPath);
+    window.__debugData = data;
 
-    // -------------------------------------------------------------
-    // DEBUG – expose the raw data array so we can inspect it from the console
-    // -------------------------------------------------------------
-    window.__debugData = data;   // <-- add this line
-
-
-    // -----------------------------------------------------------------
-    // 2️⃣ Determine the real language of the exercise (source language)
-    // -----------------------------------------------------------------
     const exerciseLang = exerciseMeta.language || uiLang;
-
-    // -----------------------------------------------------------------
-    // 3️⃣ Prepare the scroll wrapper that will hold the token grid
-    // -----------------------------------------------------------------
-    const scrollWrapper = document.createElement('div');
-    scrollWrapper.className = 'dict-scroll-wrapper';
-
-    // -----------------------------------------------------------------
-    // 4️⃣ Internationalised UI strings
-    // -----------------------------------------------------------------
     const locale = getLocale(uiLang);
 
-    // -----------------------------------------------------------------
-    // 5️⃣ Derive the list of language columns from the JSON.
-    // -----------------------------------------------------------------
+    // Inject the locale into the speech state
+    state.uiLocale = locale;
+
+    // Derive languages from the JSON payload
     const rawLangKeys = Object.keys(data[0]).filter(
         (k) => k !== 'id' && k !== 'section' && k !== 'tokens'
     );
 
-    // -----------------------------------------------------------------
-    // 6️⃣ Put the source language first, then the rest.
-    // -----------------------------------------------------------------
     const orderedLangs = [
         exerciseLang,
         ...rawLangKeys.filter(l => l !== exerciseLang)
     ];
 
+    // Sync state.repeatMap with available languages
+    orderedLangs.forEach(langCode => {
+        if (state.repeatMap[langCode] === undefined) {
+            state.repeatMap[langCode] = (langCode === exerciseLang) ? 1 : 0;
+        }
+    });
+
     // -----------------------------------------------------------------
-    // 7️⃣ Build the Language‑options <details>
+    // 2️⃣ PREPARE UI CONTAINERS
+    // -----------------------------------------------------------------
+    const scrollWrapper = document.createElement('div');
+    scrollWrapper.className = 'dict-scroll-wrapper';
+
+    // -----------------------------------------------------------------
+    // 3️⃣ BUILD LANGUAGE OPTIONS GRID
     // -----------------------------------------------------------------
     const langDetails = document.createElement('details');
     langDetails.id = 'language-options';
-    langDetails.open = false;
 
     const langSummary = document.createElement('summary');
     langSummary.textContent = locale.languageOptions || 'Language options';
@@ -230,20 +218,18 @@ export async function renderDictionaryExercise(mainEl, exerciseMeta, uiLang) {
 
     const optionsGrid = document.createElement('div');
     optionsGrid.className = 'options-grid';
-    // Simplified to 3 columns: Label | Display | Repeat (which implies Speak)
     optionsGrid.style.gridTemplateColumns = '1fr 1fr 1fr';
     langDetails.appendChild(optionsGrid);
 
-    // Header row
-    const headers = [locale.language || 'Language', locale.display || 'Display', locale.repeat || 'Repeat'];
-    headers.forEach(text => {
+    // Headers
+    [locale.language || 'Language', locale.display || 'Display', locale.repeat || 'Repeat'].forEach(text => {
         const h = document.createElement('h4');
         h.textContent = text;
         optionsGrid.appendChild(h);
     });
 
     const displayBoxes = new Map();
-    const repeatBoxes = new Map();
+    repeatBoxes.clear(); // Using the exported Map from top of file
 
     orderedLangs.forEach(langCode => {
         const langLabel = LANGUAGE_LABELS[langCode] || langCode.toUpperCase();
@@ -252,149 +238,121 @@ export async function renderDictionaryExercise(mainEl, exerciseMeta, uiLang) {
         langCell.textContent = langLabel;
         optionsGrid.appendChild(langCell);
 
-        // 1. Display checkbox
         const displayCell = document.createElement('div');
         const displayCb = document.createElement('input');
         displayCb.type = 'checkbox';
-        displayCb.checked = (langCode === exerciseLang) || (langCode === uiLang);
+        displayCb.checked = (langCode === exerciseLang) || (langCode === uiLang) || (state.repeatMap[langCode] > 0);
         displayCell.appendChild(displayCb);
         optionsGrid.appendChild(displayCell);
         displayBoxes.set(langCode, displayCb);
 
-        // 2. Repeat input (0 = Don't speak)
         const repeatCell = document.createElement('div');
         const repeatInput = document.createElement('input');
         repeatInput.type = 'number';
         repeatInput.min = '0';
         repeatInput.max = '5';
-        // Source defaults to 1, others to 0
-        repeatInput.value = (langCode === exerciseLang) ? '1' : '0';
+        repeatInput.value = state.repeatMap[langCode] || 0;
         repeatInput.style.width = '3rem';
         repeatCell.appendChild(repeatInput);
         optionsGrid.appendChild(repeatCell);
         repeatBoxes.set(langCode, repeatInput);
 
-        // Interaction Logic
+        // Interaction Listeners
         displayCb.addEventListener('change', () => {
-            // If we hide it, we shouldn't speak it
-            if (!displayCb.checked) repeatInput.value = 0;
+            if (!displayCb.checked) {
+                repeatInput.value = 0;
+                delete state.repeatMap[langCode];
+            } else {
+                if (!state.repeatMap[langCode]) {
+                    state.repeatMap[langCode] = 1;
+                    repeatInput.value = 1;
+                }
+            }
             rebuildTokenGrid();
+            if (state.playing && typeof setStatus === 'function') setStatus("statusPlaying");
         });
 
         repeatInput.addEventListener('change', () => {
-            // If we speak it, we must display it
-            if (parseInt(repeatInput.value) > 0) displayCb.checked = true;
+            const val = parseInt(repeatInput.value) || 0;
+            if (val > 0) {
+                displayCb.checked = true;
+                state.repeatMap[langCode] = val;
+            } else {
+                delete state.repeatMap[langCode];
+            }
             rebuildTokenGrid();
+            if (state.playing && typeof setStatus === 'function') setStatus("statusPlaying");
         });
     });
 
     // -----------------------------------------------------------------
-    // 8️⃣  Speech panel (contains Play / Pause / Reset / Settings)
+    // 4️⃣ SPEECH CONTROLLER SETUP
     // -----------------------------------------------------------------
-    //   const speechPanel = document.createElement('div');
-    //   speechPanel.id = 'speechPanel';
     const main = document.getElementById('main');
     const speechPanel = getOrCreateSpeechPanel(main);
-    speechPanel.textContent = ""; // Start clean
+    speechPanel.textContent = "";
 
-    // -----------------------------------------------------------------
-    // 9️⃣  Create the speech controller (will later receive the token arrays)
-    // -----------------------------------------------------------------
     speechCtrl = createSpeechController(speechPanel, {
         getAvailableLanguages: () => SUPPORTED_LANGS,
         defaultLang: exerciseLang,
-        onVoiceChange: (newVoice) => {
-            console.log('[Speech] voice changed →', newVoice);
-            try {
-                localStorage.setItem('local_storage_tts_voice', newVoice);
-            } catch (_) { }
-        },
-        tokenElements: tokenEls,
-        translationElements: transEls
+        onVoiceChange: (v) => { try { localStorage.setItem('local_storage_tts_voice', v); } catch (_) { } }
     });
 
-    // ---------------------------------------------------------------
-    // 10️⃣  Move the language‑options <details> into the player‑settings
-    // ---------------------------------------------------------------
-    // The speech controller already added a <details id="player-settings">
-    // inside `speechPanel`. Because `speechPanel` is still unattached to the
-    // document, we must query inside it.
     const playerSetting = speechPanel.querySelector('#player-settings');
-    if (playerSetting) {
-        playerSetting.appendChild(langDetails);
-    }
+    if (playerSetting) playerSetting.appendChild(langDetails);
 
     // -----------------------------------------------------------------
-    // 11️⃣  Assemble the page (order matters)
+    // 5️⃣ ASSEMBLE PAGE
     // -----------------------------------------------------------------
-    mainEl.innerHTML = '';               // clear any previous UI
-    mainEl.appendChild(speechPanel);     // 1️⃣ player‑settings (now contains language‑options)
-    mainEl.appendChild(scrollWrapper);   // 2️⃣ token grid container
+    mainEl.innerHTML = '';
+    mainEl.appendChild(speechPanel);
+    mainEl.appendChild(scrollWrapper);
 
     // -----------------------------------------------------------------
-    // 12️⃣ Helper – rebuild the token grid
+    // 6️⃣ REBUILD TOKEN GRID (Logic for column generation)
     // -----------------------------------------------------------------
     function rebuildTokenGrid() {
-        // -----------------------------------------------------------------
-        // 0️⃣ Reset global collections and clear the visual container
-        // -----------------------------------------------------------------
         tokenEls = [];
         transEls = [];
         scrollWrapper.innerHTML = '';
 
-        // -----------------------------------------------------------------
-        // 1️⃣ Build lookup maps from UI inputs (Display vs Repeats)
-        // -----------------------------------------------------------------
         const displayMap = {};
-        const speakMapTmp = {};
-        const repeatMapTmp = {};
 
+        // --- Sync repeatMap from UI inputs ---
         orderedLangs.forEach(l => {
             const dCb = displayBoxes.get(l);
             const rIn = repeatBoxes.get(l);
-
-            // Display is true if checked
             displayMap[l] = dCb ? dCb.checked : false;
 
-            // Repeat is a number (default 0)
-            const rpt = parseInt(rIn?.value || 0, 10);
-            repeatMapTmp[l] = rpt;
-
-            // ✨ LOGIC: If repeat count > 0, it belongs in the speak loop
-            speakMapTmp[l] = rpt > 0;
+            if (displayMap[l] && rIn) {
+                state.repeatMap[l] = parseInt(rIn.value) || 0;
+            } else {
+                state.repeatMap[l] = 0;
+            }
         });
 
-        // Ensure safety: always show at least the first language
         if (!Object.values(displayMap).some(Boolean)) {
             displayMap[orderedLangs[0]] = true;
-            // If we force display, let's assume the user might want to hear it too
-            if (repeatMapTmp[orderedLangs[0]] === 0) {
-                repeatMapTmp[orderedLangs[0]] = 1;
-                speakMapTmp[orderedLangs[0]] = true;
+            if (displayBoxes.get(orderedLangs[0])) {
+                displayBoxes.get(orderedLangs[0]).checked = true;
+                state.repeatMap[orderedLangs[0]] = 1;
             }
         }
 
-        // Assign to exercise-level globals
-        speakMap = speakMapTmp;
-        repeatMap = repeatMapTmp;
-
-        // Debug log to verify maps are ready before token creation
-        console.log("Rebuild: Syncing maps to Controller...");
-        console.table(repeatMapTmp);
-
-        // -----------------------------------------------------------------
-        // 2️⃣ Walk through the JSON data and create columns / sections
-        // -----------------------------------------------------------------
         let currentSectionContainer = null;
-
         data.forEach(entry => {
-            // --- SECTION HEADERS ---
             if (entry.section) {
+                // ... (Section creation logic remains the same)
                 const detailsEl = document.createElement('details');
                 detailsEl.className = 'section-details';
-                detailsEl.style.display = 'block';
-                detailsEl.dataset.secId = `sec-${sectionsMap.size}`;
+                detailsEl.open = true;
+                const secId = `sec-${sectionsMap.size}`;
+                detailsEl.dataset.secId = secId;
                 detailsEl.dataset.headerId = entry.id;
+
+                const summaryEl = document.createElement('summary');
+                summaryEl.className = 'section-header';
+                summaryEl.textContent = entry.section[uiLang] || entry.section.en || "";
 
                 const testBtn = document.createElement('button');
                 testBtn.textContent = locale.testYourself || 'Test yourself';
@@ -402,117 +360,82 @@ export async function renderDictionaryExercise(mainEl, exerciseMeta, uiLang) {
                 testBtn.onclick = (e) => {
                     e.stopPropagation();
                     const targetId = detailsEl.dataset.headerId;
-                    const headerIdx = data.findIndex(item => item && item.id && String(item.id) === String(targetId));
+                    const headerIdx = data.findIndex(item => item && item.id === targetId);
                     if (headerIdx !== -1) launchSectionQuiz(headerIdx);
                 };
-
-                detailsEl.appendChild(testBtn);
-
-                const summaryEl = document.createElement('summary');
-                summaryEl.className = 'section-header';
-                summaryEl.textContent = entry.section[uiLang] || entry.section.en || Object.values(entry.section)[0] || '';
+                summaryEl.appendChild(testBtn);
                 detailsEl.appendChild(summaryEl);
 
                 const tokenWrapper = document.createElement('div');
                 tokenWrapper.className = 'section-tokens';
                 detailsEl.appendChild(tokenWrapper);
 
-                sectionsMap.set(detailsEl.dataset.secId, {
-                    entry,
-                    tokenEls: [],
-                    transEls: []
-                });
+                sectionsMap.set(secId, { entry, tokenEls: [], transEls: [] });
                 currentSectionContainer = tokenWrapper;
                 scrollWrapper.appendChild(detailsEl);
             }
 
-            // --- TOKEN ROWS ---
             const sourceTokens = entry[orderedLangs[0]] || [];
 
-            sourceTokens.forEach((srcWord, idx) => {
+            // --- 1️⃣ FILTERING LOGIC STARTS HERE ---
+            sourceTokens.forEach((tokenText, idx) => {
+
+                // Skip the index if the source token is exactly a newline
+                if (tokenText === "\n") {
+                    // If you want a visual line break in the grid, uncomment below:
+                    /*
+                    const br = document.createElement('div');
+                    br.style.flexBasis = '100%';
+                    br.style.height = '0';
+                    if (currentSectionContainer) currentSectionContainer.appendChild(br);
+                    */
+                    return;
+                }
+
                 const translations = [];
                 const langs = [];
-                let hasNewline = false;
 
                 orderedLangs.forEach(lang => {
                     if (!displayMap[lang]) return;
-                    const arr = entry[lang] || [];
-                    const txt = arr[idx] ?? '';
+                    const txt = (entry[lang] || [])[idx] ?? '';
                     translations.push(txt);
                     langs.push(lang);
-                    if (typeof txt === 'string' && txt.includes('\n')) hasNewline = true;
                 });
 
-                if (translations.length === 0) {
-                    translations.push(srcWord || '');
-                    langs.push(orderedLangs[0]);
-                }
-
-                // buildTokenColumn pushes elements into the global tokenEls/transEls arrays
+                // --- 2️⃣ BUILDING THE COLUMN ---
                 const col = buildTokenColumn(translations, langs, displayMap);
 
                 if (currentSectionContainer) {
                     currentSectionContainer.appendChild(col);
-                } else {
-                    scrollWrapper.appendChild(col);
-                }
-
-                // Associate tokens with their parent section for the Quiz
-                if (currentSectionContainer && currentSectionContainer.parentElement) {
                     const secId = currentSectionContainer.parentElement.dataset.secId;
                     const secInfo = sectionsMap.get(secId);
                     if (secInfo) {
                         secInfo.tokenEls.push(col);
-                        const colIdx = tokenEls.length - 1;
-                        secInfo.transEls.push(transEls[colIdx] || []);
+                        // buildTokenColumn pushes to global arrays; use length-1 to sync
+                        secInfo.transEls.push(transEls[tokenEls.length - 1] || []);
                     }
-                }
-
-                if (hasNewline) {
-                    const newWrapper = document.createElement('div');
-                    newWrapper.className = 'section-tokens';
-                    if (currentSectionContainer && currentSectionContainer.parentElement) {
-                        currentSectionContainer.parentElement.appendChild(newWrapper);
-                        currentSectionContainer = newWrapper;
-                    } else {
-                        scrollWrapper.appendChild(newWrapper);
-                        currentSectionContainer = newWrapper;
-                    }
+                } else {
+                    scrollWrapper.appendChild(col);
                 }
             });
         });
 
-        // -----------------------------------------------------------------
-        // 3️⃣ Sync everything with the speech controller
-        // -----------------------------------------------------------------
         if (speechCtrl) {
-            // Push the new DOM elements
             speechCtrl.updateElements(tokenEls, transEls);
-            // Push the new logic maps
-            console.log("Pushing to Controller now...");
-            speechCtrl.updateSpeakMap(speakMap);
-            speechCtrl.updateRepeatMap(repeatMap);
-
-            // Highlight current position (usually 0 after a rebuild)
-            speechCtrl.setActiveElements(tokenEls, transEls);
-        } else {
-            console.error("CRITICAL: rebuildTokenGrid tried to sync but speechCtrl is NULL");
+            speechCtrl.updateRepeatMap(state.repeatMap);
         }
     }
 
+    // -----------------------------------------------------------------
+    // 7️⃣ LAUNCH SECTION QUIZ
+    // -----------------------------------------------------------------
     async function launchSectionQuiz(headerIdx) {
-        const exId = exerciseMeta.id;
         const sectionData = data[headerIdx];
+        if (!sectionData) return;
 
-        if (!sectionData) {
-            console.error("Section data not found for index:", headerIdx);
-            return;
-        }
+        const sectionTitle = sectionData.section ? (sectionData.section[uiLang] || sectionData.section['en'] || "") : "";
 
-        // --- NEW: Capture the Section Title ---
-        // Assuming your data has a 'header' object with language keys
-        const sectionTitle = sectionData.header ? (sectionData.header[uiLang] || sectionData.header['en'] || "") : "";
-
+        // Collect rows belonging to this section
         const firstKey = Object.keys(sectionData).find(k => Array.isArray(sectionData[k]));
         const rowsForQuiz = sectionData[firstKey].map((_, i) => {
             const row = { id: `section-${headerIdx}-${i}` };
@@ -524,38 +447,16 @@ export async function renderDictionaryExercise(mainEl, exerciseMeta, uiLang) {
             return row;
         });
 
-        // --- UPDATED: Store as an object so we can pass the title too ---
-        const quizPayload = {
-            title: sectionTitle,
-            rows: rowsForQuiz
-        };
+        const quizPayload = { title: sectionTitle, rows: rowsForQuiz };
         sessionStorage.setItem('custom_quiz_data', JSON.stringify(quizPayload));
 
-        // Ensure this matches your NEW router path in router.js
-        const targetPath = `/${uiLang}/quiz/${exId}`;
-
-        if (window.router && typeof window.router.navigate === 'function') {
-            window.router.navigate(targetPath);
-        } else {
-            window.location.hash = `#${targetPath}`;
-        }
+        const targetPath = `/${uiLang}/quiz/${exerciseMeta.id}`;
+        window.router.navigate(targetPath);
     }
 
-    // -----------------------------------------------------------------
-    // 15️⃣  Initial render of the grid (populate tokenEls / transEls)
-    // -----------------------------------------------------------------
-
-    // 1. Call rebuild. This populates tokenEls/transEls AND 
-    // internally calls speechCtrl.updateRepeatMap with the CORRECT data.
+    // Initial trigger
     rebuildTokenGrid();
-
-    // 2. Final visual sync to ensure the controller knows which elements to highlight.
-    if (speechCtrl) {
-        speechCtrl.setActiveElements(tokenEls, transEls);
-    }
-
 }
-
 
 // -----------------------------------------------------------------
 // Export the entry point (the router calls this)
