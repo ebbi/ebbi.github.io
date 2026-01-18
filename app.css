@@ -231,6 +231,88 @@ by an icon for language and fonts */
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
+.speed-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--heading-accent-low);
+    /* A lighter version of your accent */
+    color: var(--heading-accent);
+    font-size: 0.7rem;
+    font-weight: 800;
+    padding: 2px 6px;
+    border-radius: 12px;
+    margin-left: 8px;
+    border: 1px solid var(--heading-accent);
+    vertical-align: middle;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    user-select: none;
+    transition: all 0.2s ease;
+}
+
+.speed-badge {
+    cursor: pointer;
+    user-select: none;
+    transition: all 0.2s ease;
+}
+
+.speed-badge:hover {
+    background-color: var(--heading-accent);
+    color: #ffffff;
+}
+
+.speed-badge:active {
+    transform: scale(0.9);
+}
+
+#speech-status {
+    display: flex;
+    align-items: center;
+}
+
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateX(-5px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Optional: Add a subtle animation when the status appears */
+#speech-status:not(:empty) {
+    animation: fadeIn 0.3s ease-out;
+}
+
+.delay-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 150, 136, 0.1);
+    /* Subtle teal/green */
+    color: rgb(0, 121, 107);
+    font-size: 0.7rem;
+    font-weight: 800;
+    padding: 2px 6px;
+    border-radius: 12px;
+    margin-left: 6px;
+    /* Small gap after Speed badge */
+    border: 1px solid rgba(0, 150, 136, 0.5);
+    cursor: pointer;
+    user-select: none;
+    transition: all 0.2s ease;
+}
+
+.delay-badge:hover {
+    background-color: rgba(0, 150, 136, 0.8);
+    color: #ffffff;
+}
+
 .control-btn {
     width: 42px;
     height: 42px;
@@ -277,10 +359,6 @@ by an icon for language and fonts */
     background: var(--heading-accent);
     transition: width 0.3s;
 }
-
-/*=====================================================================
-   4️⃣ Dictionary Grid & Highlighting (RESTORED COLUMNS)
-   =====================================================================*/
 
 /*=====================================================================
    Restoring Language Options Grid
@@ -341,25 +419,52 @@ by an icon for language and fonts */
 .section-tokens {
     display: flex;
     flex-direction: row;
-    /* RESTORE: Keep words side-by-side */
     flex-wrap: wrap;
+    /* Allows tokens to wrap to next line when space runs out */
     align-items: flex-start;
-    gap: 0.8rem 1.2rem;
-    /* Vertical and Horizontal spacing */
+    gap: 1rem 1.2rem;
+    /* Row gap (1rem) and Column gap (1.2rem) */
     line-height: 1.6;
+    width: 100%;
 }
 
 /* The individual column (Source word + Translation) */
 .token-col {
     display: flex;
     flex-direction: column;
-    /* RESTORE: Keep translation UNDER the word */
-    align-items: center;
-    /* Center the translation under the word */
+    align-items: flex-start;
+    /* FIX: Width auto lets them sit side-by-side; max-width prevents overflow */
+    width: auto;
+    max-width: 100%;
     flex: 0 0 auto;
-    /* Don't let columns stretch */
-    min-width: fit-content;
+    /* Do not grow, do not shrink automatically */
+    margin-bottom: 0.75rem;
+    box-sizing: border-box;
 }
+
+.token-col .trans {
+    display: block;
+    width: 100%;
+    text-align: left;
+    white-space: normal;
+    word-break: break-word;
+    font-size: 1rem;
+    line-height: 1.4;
+}
+
+/* RTL Specific Override for Persian (fa) */
+.token-col .trans[lang="fa"],
+.token-col [lang="fa"] {
+    text-align: right;
+    direction: rtl;
+    unicode-bidi: embed;
+}
+
+/* Ensure the parent also aligns the flex items correctly for RTL */
+.token-col:has([lang="fa"]) {
+    align-items: flex-end;
+}
+
 
 /* Base Token Styles (The Jitter-Free Foundation) */
 .token,
@@ -387,14 +492,37 @@ by an icon for language and fonts */
 .token.active {
     background-color: var(--heading-accent) !important;
     color: #ffffff !important;
-    transform: scale(1.1);
+    transform: scale(1.05);
     text-shadow: 0.5px 0 0 currentColor, -0.5px 0 0 currentColor;
     outline: 2px solid var(--heading-accent);
     outline-offset: 1px;
     z-index: 10;
     position: relative;
+
+    animation: highlight-glow 1.5s infinite ease-in-out;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+
+    /* inline-block is essential to sit side-by-side */
+    display: inline-block;
+    max-width: 95%;
 }
 
+@keyframes highlight-glow {
+    0% {
+        box-shadow: 0 0 0px var(--heading-accent);
+        outline-color: var(--heading-accent);
+    }
+
+    50% {
+        box-shadow: 0 0 12px var(--heading-accent);
+        outline-color: #ffffff;
+    }
+
+    100% {
+        box-shadow: 0 0 0px var(--heading-accent);
+        outline-color: var(--heading-accent);
+    }
+}
 
 .token-col span {
     display: block;

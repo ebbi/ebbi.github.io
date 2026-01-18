@@ -39,6 +39,27 @@ export function createSpeechController(container, {
     const uiLang = getStoredLang();
     const uiLocale = getLocale(uiLang);
 
+    // --- MANUAL INTERRUPTION ---
+    const initInterruption = () => {
+        if (typeof window === 'undefined') return;
+        const events = ['wheel', 'touchmove', 'keydown'];
+        const handleManualInterruption = (e) => {
+            // 'state' is the original object from your 505-line file
+            if (state && state.playing) {
+                // Ignore modifier keys
+                if (e.type === 'keydown' && ['Control', 'Shift', 'Alt', 'Meta'].includes(e.key)) return;
+
+                console.log(`[SpeechController] Interrupted by ${e.type}`);
+
+                speechCtrl.stopPlayback();
+            }
+        };
+        events.forEach(type => window.addEventListener(type, handleManualInterruption, { passive: true }));
+    };
+
+    initInterruption();
+
+
     const state = {
         ...defaultState,
         tokenEls: tokenElements || [],
@@ -55,9 +76,6 @@ export function createSpeechController(container, {
 
     const speechPanel = getOrCreateSpeechPanel(); // Don't need a parent if it already exists
 
-    //    speechPanel.textContent = currentText;
-
-    // --- Progress Bar ---
     // --- Progress Bar ---
     const progressContainer = document.createElement("div");
     progressContainer.id = "speech-progress-container";
@@ -73,15 +91,7 @@ export function createSpeechController(container, {
 
     // --- Player Controls Bar ---
     const playerControls = document.createElement("div");
-    playerControls.style.cssText = `
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 10px;
-    padding: 1px 0;
-    width: 100%;
-`;
-
+    playerControls.style.cssText = `display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 1px 0; width: 100%;`;
     const playBtn = document.createElement("button");
     playBtn.className = "control-btn play-btn"; // Use CSS below for centering
     playBtn.textContent = "▶";
@@ -99,18 +109,15 @@ export function createSpeechController(container, {
     settingsBtn.className = "control-btn settings-btn";
     settingsBtn.textContent = "⚙️";
 
-    // Wrap Play/Stop in their own div to keep them together on the left
     const leftGroup = document.createElement("div");
-    leftGroup.style.display = "flex";
-    leftGroup.style.gap = "8px";
-    leftGroup.append(playBtn, stopBtn);
+    leftGroup.style.cssText = `display: flex; align-items: center; gap: 8px; flex: 1;`; // Added flex: 1 to let this group take available space
 
-    // Status in the middle
-    statusEl.style.flex = "1";
-    statusEl.style.textAlign = "center";
+    leftGroup.append(playBtn, stopBtn, statusEl);
+
+    statusEl.style.cssText = "font-size:0.85rem; font-weight:600; color:var(--text-secondary); margin-left: 4px; white-space: nowrap;";
 
     // Settings on the right
-    playerControls.append(leftGroup, statusEl, settingsBtn);
+    playerControls.append(leftGroup, settingsBtn);
     //    playerControls.append(playBtn, stopBtn, statusEl, settingsBtn);
     speechPanel.appendChild(playerControls);
 
@@ -142,12 +149,51 @@ export function createSpeechController(container, {
     // -----------------------------------------------------------------
 
     function setStatus(key) {
-        // Look up the localized string
         const text = uiLocale[key] || "";
-        statusEl.textContent = text;
+        statusEl.innerHTML = '';
 
-        // Optional: Hide the element if there is no text to save space
-        statusEl.style.visibility = text ? "visible" : "hidden";
+        if (text) {
+            // 1. Label
+            const label = document.createElement("span");
+            label.textContent = text;
+            statusEl.appendChild(label);
+
+            // 2. Speed Badge (Existing Logic)
+            const sBadge = document.createElement("span");
+            sBadge.className = "speed-badge";
+            sBadge.textContent = `${state.rate % 1 === 0 ? state.rate : state.rate.toFixed(1)}x`;
+            sBadge.onclick = (e) => {
+                e.stopPropagation();
+                const speeds = [0.8, 1.0, 1.2, 1.5, 2.0];
+                state.rate = speeds[(speeds.indexOf(state.rate) + 1) % speeds.length];
+                sBadge.textContent = `${state.rate}x`;
+            };
+            statusEl.appendChild(sBadge);
+
+            // 3. Delay Badge (New Logic)
+            const dBadge = document.createElement("span");
+            dBadge.className = "delay-badge";
+            dBadge.textContent = `${state.delaySec}s`;
+            dBadge.title = "Tap to change pause between words";
+
+            dBadge.onclick = (e) => {
+                e.stopPropagation();
+                // Cycle: 0s -> 0.5s -> 1s -> 2s -> 3s
+                const delays = [0, 1, 2, 3, 4, 5];
+                let nextIndex = (delays.indexOf(state.delaySec) + 1) % delays.length;
+                state.delaySec = delays[nextIndex];
+
+                dBadge.textContent = `${state.delaySec}s`;
+            };
+
+            statusEl.appendChild(dBadge);
+
+            statusEl.style.visibility = "visible";
+            statusEl.style.opacity = "1";
+        } else {
+            statusEl.style.visibility = "hidden";
+            statusEl.style.opacity = "0";
+        }
     }
 
     function updateProgressBar() {
@@ -163,8 +209,6 @@ export function createSpeechController(container, {
         });
     }
 
-    // --- ADD SEEKING LOGIC ---
-    // Add this inside createSpeechController where you create progressContainer
     progressContainer.style.cursor = "pointer";
     progressContainer.onclick = (e) => {
         const rect = progressContainer.getBoundingClientRect();
@@ -267,7 +311,7 @@ export function createSpeechController(container, {
         state.isLoopRunning = true;
 
         state.playing = true;
-        speechManager.start();
+
         playBtn.textContent = "⏸";
         setStatus("statusPlaying");
 
@@ -409,6 +453,10 @@ export function createSpeechController(container, {
     populateVoiceList(voiceSelect, getAvailableLanguages?.() || []);
 
     const speechCtrl = {
+        stop: () => speechCtrl.stopPlayback(),
+        //        play: () => playLoop(state.currentIndex),
+        play: () => playbackLoop().catch(err => console.warn("Play error:", err)),
+
         updateElements(tokens, trans) {
             state.tokenEls = tokens;
             state.transEls = trans;
@@ -482,7 +530,10 @@ export function createSpeechController(container, {
             container.innerHTML = "";
         }
     };
+
     stopBtn.onclick = () => speechCtrl.stopPlayback();
+
+    window.activeSpeechController = speechCtrl;
 
     return speechCtrl;
 }

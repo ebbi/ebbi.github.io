@@ -1,20 +1,30 @@
-The context: I am trying to debug my language learning App (see uploaded compressed file) 
- font and language setting options.  
-The App tool bar has a div class="toolbar-right" with a 
-button for language followed by a button for font settings. 
-The click event on each button reveals the hidden select elements to 
-change the language and font settings. 
+Project Status Summary: Font, Language & Hot Swap
+1. Core Logic:
 
-The Bug: selecting a language or font is not changing the language or the font for the page.
+Centralized Storage: Using storage.js with LS_KEYS.LANG and getStoredLang().
 
-In the browser developer display, 
-the html element style attribute changes to the newly selected font, 
-but html dir and lang stays as the default "en" 
+State Sync: syncAppState() (in theme.js) is the "Single Source of Truth." It updates document.documentElement.lang, dir, and the Font based on localStorage.
 
-Diagnosis: A Race Condition? The bootstrap.js sets the language and font, 
-but the router.js is likely resetting them when the route resolves.
+Router Integration: routerClass.js is now async. It awaits the page handler (content render) before calling syncAppState() to prevent the "English Flash" and ensure fonts apply to existing DOM elements.
 
-Please trace the bug and explain the code and the changes necessary.
+2. UI & Navigation:
+
+Toolbar: Uses a "Hot Swap" strategy. When the language changes, it:
+
+Updates localStorage.
+
+Updates the URL path (e.g., /en/ to /th/) using window.history.pushState.
+
+Triggers router.resolve() and a setTimeout based renderToolbar() to refresh the UI without a full page reload.
+
+Hidden Selects: Positioned absolute within a relative toolbar with opacity: 0.01 and 1px size to satisfy browser .showPicker() visibility requirements.
+
+3. Pending UX Task:
+
+Interruption Logic: Need to implement listeners for wheel, touchmove, and keydown to stop the speechManager singleton and clear the speechController auto-scroll/sentence timeouts when the user interacts manually.
+
+Analyse the Uploaded updated ZIP and "Implement the Manual Scroll Interruption logic in speechController.js based on the provided summary."
+
 
 ============================
 

@@ -59,6 +59,20 @@ export default class Router {
     async resolve() {
         if (typeof window === "undefined" || typeof location === "undefined") return;
 
+        // --- IMPROVED CLEANUP ---
+        // 1. Try to click the physical UI stop button to trigger your original 505-line cleanup
+        const stopBtn = document.querySelector('.stop-btn');
+        if (stopBtn) stopBtn.click();
+
+        // 2. Fallback: If the controller exists but the button wasn't found, try to call stop
+        if (window.activeSpeechController && typeof window.activeSpeechController.stop === 'function') {
+            window.activeSpeechController.stop();
+        }
+
+        // 3. Hard reset the browser audio queue
+        if (window.speechSynthesis) window.speechSynthesis.cancel();
+        // -------------------------
+
         const { pathname, search, hash } = location;
         const cleanPath = pathname.replace(/\/+$/g, "") || "/";
 
@@ -74,8 +88,9 @@ export default class Router {
         }
 
         syncAppState();
-
     }
+
+
 
     /** Register a 404 / “not found” handler. */
     setNotFound(handler) {

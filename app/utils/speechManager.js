@@ -1,29 +1,18 @@
-/* app/utils/speechManager.js */
+// app/utils/speechManager.js
+
 class SpeechManager {
     constructor() {
-        this.abortController = null;   // will be created per playback session
+        this.voices = [];
         this.isPlaying = false;
+        this.abortController = null;
+        if (this.utterance) this.utterance = null;
 
-        // The browser provides 'document' globally
-        if (typeof document !== 'undefined') {
-            document.addEventListener('visibilitychange', () => {
-                if (document.hidden) {
-                    // Logic to stop audio if the user leaves the app
-                    this.stop();
-                }
-            });
-        }
-    }
-
-    /** Called by a SpeechController when a playback loop starts */
-    start() {
-        if (this.isPlaying) this.stop();
-        this.abortController = new AbortController();
-        this.isPlaying = true;
-        const btn = document.getElementById('reloadSoundBtn');
-        if (btn) {
-            btn.style.display = 'inline-block';
-            btn.style.opacity = 1;
+        if (typeof window !== 'undefined' && window.speechSynthesis) {
+            const loadVoices = () => {
+                this.voices = window.speechSynthesis.getVoices();
+            };
+            window.speechSynthesis.onvoiceschanged = loadVoices;
+            loadVoices();
         }
     }
 
@@ -34,28 +23,58 @@ class SpeechManager {
         }
 
         // 2. Clear the browser's audio queue
-        if ('speechSynthesis' in window) {
-            speechSynthesis.cancel();
+        if (typeof window !== 'undefined' && 'speechSynthesis' in window) {
+            window.speechSynthesis.cancel();
         }
 
         this.isPlaying = false;
         this.abortController = null;
+        if (this.utterance) this.utterance = null;
 
         // UI Updates
         const btn = document.getElementById('reloadSoundBtn');
         if (btn) {
             btn.style.opacity = 0.5;
-            // Optionally add a "stopped" class for CSS styling
             btn.classList.remove('active');
         }
     }
 
-    /** Getter for the current AbortSignal (used inside playbackLoop) */
-    get signal() {
-        return this.abortController?.signal;
-    }
+    async speak(text, lang = 'en', rate = 1.0) {
+        this.stop();
+        if (!text) return;
 
+        this.abortController = new AbortController();
+        const signal = this.abortController.signal;
+
+        return new Promise((resolve, reject) => {
+            this.utterance = new SpeechSynthesisUtterance(text);
+            this.utterance.lang = lang;
+            this.utterance.rate = rate;
+
+            this.utterance.onstart = () => { this.isPlaying = true; };
+            this.utterance.onend = () => {
+                this.isPlaying = false;
+                resolve();
+            };
+            this.utterance.onerror = (e) => {
+                this.isPlaying = false;
+                if (e.error === 'interrupted') resolve();
+                else reject(e);
+            };
+
+            if (signal.aborted) {
+                resolve();
+                return;
+            }
+
+            window.speechSynthesis.speak(this.utterance);
+
+            signal.addEventListener('abort', () => {
+                window.speechSynthesis.cancel();
+                resolve();
+            });
+        });
+    }
 }
 
-/* Export a singleton */
 export const speechManager = new SpeechManager();
