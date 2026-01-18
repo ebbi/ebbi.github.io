@@ -362,7 +362,6 @@ export function createSpeechController(container, {
 
         try {
             while (state.tokenIdx < state.tokenEls.length && state.playing) {
-                // Check before starting a new word
                 await abortCheck();
 
                 const col = state.tokenEls[state.tokenIdx];
@@ -370,6 +369,9 @@ export function createSpeechController(container, {
                     state.tokenIdx++;
                     continue;
                 }
+
+                // SCROLL ONLY ONCE PER TOKEN
+                col.scrollIntoView({ behavior: 'smooth', block: 'center' });
 
                 const spans = state.transEls[state.tokenIdx] || [];
                 syncAccordion(col);
@@ -380,43 +382,53 @@ export function createSpeechController(container, {
 
                 // --- Phase 1: Source ---
                 if (state.transIdx === -1) {
+                    highlightCurrent();
+
                     const count = state.repeatMap[srcLang] || 0;
                     const txt = srcSpan?.textContent?.trim();
+
                     if (count > 0 && txt) {
-                        highlightCurrent();
                         for (let i = 0; i < count; i++) {
-                            await abortCheck(); // Check session before every individual speech call
+                            await abortCheck();
                             await speakText(txt, state.voiceName, srcLang, state.rate, state.pitch);
                             if (i < count - 1) await wait(state.delaySec * 0.5);
                         }
                         await wait(state.delaySec);
+                    } else {
+                        await wait(0.1);
                     }
+                    // Move to first translation for Phase 2
                     state.transIdx = 0;
                 }
 
                 // --- Phase 2: Translations ---
                 while (state.transIdx < spans.length) {
                     await abortCheck();
+
                     const span = spans[state.transIdx];
                     const txt = span?.textContent?.trim();
                     const lang = span?.getAttribute("lang");
                     const count = state.repeatMap[lang] || 0;
 
-                    if (count > 0 && lang !== srcLang && txt) {
-                        highlightCurrent();
+                    highlightCurrent();
+
+                    // FIX: Only speak if it's NOT the same element we just spoke in Phase 1
+                    // and if the count is greater than 0.
+                    if (count > 0 && txt && span !== srcSpan) {
                         for (let i = 0; i < count; i++) {
                             await abortCheck();
                             await speakText(txt, state.voiceName, lang, state.rate, state.pitch);
                             if (i < count - 1) await wait(state.delaySec * 0.5);
                         }
                         await wait(state.delaySec);
+                    } else {
+                        // Skip quickly but keep highlight visible
+                        await wait(0.05);
                     }
                     state.transIdx++;
                 }
 
                 // --- PROTECTED INDEX ADVANCE ---
-                // Only increment the index if this session is still the authority.
-                // This prevents "Two Words Forward" bug after a pause/click.
                 if (state.currentSessionId === mySessionId && state.playing) {
                     state.tokenIdx++;
                     state.transIdx = -1;
