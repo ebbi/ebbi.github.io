@@ -1,0 +1,236 @@
+I have an existing web App implemented as a SPA with an internationalised, mobile first, 
+user friendly URL, design.  The implementation uses only HTML, CSS, and JavaScript.
+
+I want to design and implement the second version from scratch with a new data model and the same UI and functionality.
+
+Overall plan:
+
+Implementation note: 
+All text should be internationalised with locales en, fa, th 
+All CSS should be in the external CSS file not in the JavaScript code.
+All translations should be locale.json files. 
+All HTML should be HTML5 compliant with semantic elements
+Be semantic and consistent with naming convention.
+Use established design patterns.
+Adhere to SPA.
+
+Task 1 complete - data model.
+
+Task 2 - Create App folder structure and router for skeleton index.html page in readiness 
+for the SPA to inject all content dynamically with JavaScript.
+
+Task 3 - Create Mobile first CSS design including fonts suitable for English, Thai, and Farsi text 
+and dark/light theme.  
+Do not hardcode translations in JS, instead use locale.json files for translations
+
+Task 4 - Implement the friendly URL routing and 
+ bootstrap the app with initial settings from local storage for font, theme, last learning object, 
+ (other parameters)
+
+Task 5 - As always use HTML semantic elements (nav, section, div, span) and create an App toolbar fixed at the top of the view with 
+left justified Home icon and right justified language, font, light/dark theme, and help icons.
+Click event on the home icon should reset the state to the library view. 
+Click event on language icon should open a selection list with English, Farsi, and Thai list options.
+Click event on font icon should open a selection list with suitable fonts for English, Thai, and Farsi text.
+Click event on theme toggle icon should toggle light / dark mode.
+Click event on help icon should inject an html section element that has an internationalised heading, 
+Help and in the same row a right justified Search input box 
+with a search icon.  Clicking the search icon should do a text search of all the help content.
+
+Task 5 - Update the Help file: 
+Adhere to the Implementation notes. 
+
+After the section and heading element insert: 
+Add an internationalised "Test Speech" button to verify the current setup with feedback. 
+HTML details and summary element with the internationalised text, Setup Android for speech
+ the details element should have an ordered list of instructions to setup TTS. (First step, search for Text to Speech in Settings )
+HTML details and summary element with the internationalised text, Setup Apple Mac and iPhone for speech
+ the details element should have an ordered list of instructions to setup TTS. 
+HTML details and summary element with the internationalised text, Setup Apple Mac and iPhone for speech
+HTML details and summary element with the internationalised text, Generate JSON data.
+ the details element should have an HTML form with an input box for Thai text (source in the JSON data model)
+ and generates the tokens and translations json.  For example:
+
+{
+    "type": "sentence",
+    "source": "ประโยคสั้นๆ หนึ่งประโยค",
+    "tokens": [
+        { "t": "ประโยค", "r": [ 0, 6 ], "lit": { "en": "sentence", "fa": "جمله" } },
+        { "t": "สั้นๆ", "r": [ 6, 11 ], "lit": { "en": "short", "fa": "کوتاه" } },
+        { "t": "หนึ่ง", "r": [ 12, 17 ], "lit": { "en": "one", "fa": "یک" } },
+        { "t": "ประโยค", "r": [ 17, 23 ], "lit": { "en": "sentence", "fa": "جمله" } }
+    ],
+    "translations": {
+        "en": "One short sentence.",
+        "fa": "یک جمله کوتاه."
+    }
+}   
+
+Task 6 - Update the index page.
+Adhere to the Implementation notes.
+
+Under the App fixed toolbar, for each learningObjects in the manifest.json 
+
+Add an HTML nav element and within it a select dropdown list with the first element of the list 
+ being "Select options" literal internationalised text.  
+Populate the list with the learningObjects title from the manifest.json
+
+Under the select nav, add another nav element and loop through learningObjects and for each learningObject  
+add an HTML element section (styled as a card) with internationalised learningObjects.title 
+ For the second child element of the nav, add a dropdown list of documents.title with the first option being 
+ internationalised text, Select options  
+ For the third element in the nav add an HTML details element with a summary internationalised "Documents".
+ Within the details element should be section elements styled as cards with each card having the details, title, 
+ description and level from the json data.
+
+ A selection from the drop-down list or a click event on a card should carry out the next step.
+
+Task 7 - Handle select or click event on a learning object document from Task 6.
+ Select or Click event on the card should replace the content under the fixed tool bar and insert the following: 
+
+Add an HTML nav element and within it a select dropdown list with the first element of the list 
+ being "Select options" literal internationalised text.  
+Populate the list with the sections.heading 
+
+Loop through the sections array for each section create a closed HTML details element 
+with a summary element with its text being internationalised section heading. 
+Insert an HTML section element with card style for each JSON section, and the internationalised heading and 
+buttons for each of the section.activities 
+(N.B. for activities, wordQuiz indicates a multiple-choice quiz for block type word, 
+and sentenceQuiz is also a multiple-choice quiz but the data is from block type sentence
+  with caveat, only display activities if there are at least 5 data entry; 
+  for example, random question word and 4 possible answers to choose from).
+
+Task 8 - Handle section selection event.
+
+For the section view, add a media player row fixed under the app toolbar.
+
+The media row left column should have a Play/Pause toggle and stop icons, and 
+a small font unobtrusive feedback message for "Paused / Playing". 
+
+The middle column should have a series of small badges, for example: 
+1x (for play speed 0.25, 0.5, 1, 1.25, 1.5, 2), 
+1s (for delay between reading a word or sentence with range 1 to 2)
+th 1r (for repetition of each locale, in this example th repeats 1, 0 indicated do not speak the particular locale )
+click event on each badge should increment by on step range.
+
+The right most column should have a gear icon for settings.
+Click event on the gear icon should open an overlay panel with"
+A slider for the Reading delay, Speed, and Pitch. 
+A voice select dropdown list (from the available installed voices)
+An HTML details element wit internationalised summary element text, Language options
+the details panel should have a table of 3 internationalised column headings: Language, Display, and repeat 
+and the rows would be the source and translation languages, 
+a check box to display or omit the source or translations 
+and an input integer for 0 to 5 play repetition for the source or translations tex.
+
+Selection should be stored in local storage to be reinstated during App bootstrap.
+
+Task 9 - The multiple-choice quiz for type words and sentences.
+Functionality should include selecting the question and answer languages, a score, and a review list at the end for incorrect answers.  
+Highlight the correct / incorrect answers with CSS.
+Reset score (to try the test again).
+
+
+Please do not generate any code! Instead comment on the plan so far. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+I want to revisit the data model for a second version of the App.
+
+The idea is to model text and its translations into other languages.
+(The app highlights and uses TTS to speak the text and its corresponding translations)
+
+To clarify the requirement for a new data model, here is an example text and translation:
+
+คุณชื่ออะไร
+What is your name?
+
+The app should display and speak:
+
+คุณ (you)  ชื่อ (name)  อะไร (what)
+
+and also display and speak the grammatically correct translation, 
+What is your name?
+
+An XML schema or JSON is the obvious choice. Current App uses JSON
+
+My current thinking is to start with tokenising the sentence into words.
+So, in the example, the sentence, คุณชื่ออะไร 
+becomes a set with 3 word tokens, namely: คุณ , ชื่อ , and อะไร
+with corresponding 3 translation word tokens, namely: name, you, what
+This does not capture the grammatically correct translation: What is your name? 
+which also needs to be stored.
+
+The final App speak and display a column of words / translation sets 
+and the grammatically correct complete sentence.
+
+Any suggestions for a data model?
+
+If you extend the model to include another translation fa 
+what would be the data model?
+
+I would like to finalise the data model before any code (or hopefully merging with the existing App)
+Next is to extend from a sentence to a paragraph or a section of paragraphs.
+
+Please generate the new model for the following Thai exercise with translation into en and fa for Farsi
+ประโยคสั้นๆ หนึ่งประโยค ประโยคที่สองสำหรับย่อหน้าสั้นๆ
+
+ย่อหน้าที่สองเพื่อทดสอบแบบจำลอง
+
+To be more semantic, instead of lesson or exercise we have a section with an array of blocks.
+The top level node can be a document that has many sections which inturn have the array of blocks.
+
+
+
+========================================================
+
+Tips for your Repomix upload:
+When you're ready for the next session, run it with the instruction or custom header flag if you want to be extra precise. For example:
+
+Run: npx repomix
+
+Upload: Provide the repomix-output.txt.
+
+The Prompt: "Here is my current codebase. I want to refactor my JSON data model to support [New Use Case X]. How should I restructure the data and the rebuildTokenGrid logic to accommodate this?"
+
+A "Save Point" for your Refactor
+Before we sign off, remember that your current success relies on two things:
+
+Decoupled Scrolling: Only the loop controls the page position.
+
+Strict Normalization: Lang codes are shortened before map lookups.
+
+Keep those two principles in mind as you change the data model, and you'll avoid re-introducing the bugs we just squashed.
+
+============================
+
+The Context: "I am starting a major refactor/redesign of my language learning app's data model. We are starting with a clean slate. The app is currently stable and working correctly after a successful Git restoration.
+
+The Goal: [Insert: e.g., 'I want to move from local JSON files to a more dynamic structure' OR 'I want to simplify how exercises are linked to books.']
+
+The Technical Foundation (Current Working Files): To ensure we don't repeat past mistakes, here is the current 'Source of Truth' for the core architecture. Please analyze these for dependencies before we begin the refactor:
+
+bootstrap.js: (Paste code)
+
+locales.js: (Paste code)
+
+router.js: (Paste code)
+
+app.css (The Global Variables only): (Paste the :root and layout sections)
+
+Constraint: Do not suggest any changes yet. Confirm you understand how these files currently interact with the Google Drive data structure."
+
+One Last Tip for your Rethink
+During your break, if you are looking at the data model, try to sketch it out on paper. Often, "Icon/Slider" bugs happen because the UI is trying to render data that hasn't finished loading yet.
