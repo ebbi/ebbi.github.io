@@ -1,0 +1,75 @@
+{
+    "learningObjects": [
+        {
+            "id": "testObjects",
+            "title": {
+                "en": "Learning Objects Test",
+                "fa": "تست شیء یادگیری",
+                "th": "แบบทดสอบวัตถุการเรียนรู้"
+            },
+            "documents": [
+                {
+                    "id": "test",
+                    "title": {
+                        "en": "Test Document 1",
+                        "fa": "عنوان مدرک آزمون ۱",
+                        "th": "เอกสารทดสอบ ๑ ชื่อ"
+                    },
+                    "description": {
+                        "en": "Test document 1 description",
+                        "fa": "شرح سند آزمایشی ۱",
+                        "th": "คำอธิบายเอกสารทดสอบ ๑"
+                    },
+                    "sourceLang": "th",
+                    "targetLangs": [ "en", "fa" ],
+                    "filePath": "data/tests/test.json",
+                    "status": "published",
+                    "level": "basic",
+                    "activities": [ "multipleChoiceWord", "multipleChoiceSentence" ]
+                },
+                {
+                    "id": "test2",
+                    "title": {
+                        "en": "Test Document 2",
+                        "fa": "عنوان مدرک آزمون ۲",
+                        "th": "เอกสารทดสอบ ๒ ชื่อ"
+                    },
+                    "description": {
+                        "en": "Test document 2 description",
+                        "fa": "شرح سند آزمایشی ۲",
+                        "th": "เอกสารทดสอบ ๒ คำอธิบาย"
+                    },
+                    "sourceLang": "th",
+                    "targetLangs": [ "en", "fa" ],
+                    "filePath": "data/tests/test2.json",
+                    "status": "published",
+                    "level": "intermediate"
+                }
+            ]
+        },
+        {
+            "id": "tsl",
+            "title": {
+                "en": "TSL Learning Material",
+                "fa": "مطالب آموزشی TSL",
+                "th": "สื่อการเรียนรู้ TSL"
+            },
+            "documents": [
+                {
+                    "id": "ls4",
+                    "title": {
+                        "en": "Listening and Speaking 4",
+                        "fa": "گوش دادن و صحبت کردن ۴",
+                        "th": "การฟังและการพูด ๔"
+                    },
+                    "sourceLang": "th",
+                    "targetLangs": [ "en", "fa" ],
+                    "filePath": "data/tsl/ls4.json",
+                    "status": "published",
+                    "level": "basic",
+                    "activities": [ "multipleChoiceWord", "multipleChoiceSentence" ]
+                }
+            ]
+        }
+    ]
+}

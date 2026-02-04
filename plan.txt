@@ -1,0 +1,11 @@
+
+There are still text without HTML lang and dir attributes.
+For example,
+                        <span class="material-icons audio-preview-icon" onclick="event.stopPropagation();App.playAudio('ทีห้างเมย่าค่ะทีนันมีธนาคารเยอะ', 'th')">
+                            volume_up
+                        </span>
+                        <span>ทีห้างเมย่าค่ะทีนันมีธนาคารเยอะ</span>
+
+Also, the last CSS changes was not complete and the merge was error prone. 
+Please output the complete merged CSS for the last update.
+                    

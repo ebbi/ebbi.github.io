@@ -1,0 +1,416 @@
+{
+    "documentId": "ls4",
+    "sections": [
+        {
+            "heading": {
+                "en": "Money and Bank",
+                "fa": "پول و بانک",
+                "th": "เงินและธนาคาร"
+            },
+            "activities": [ "multipleChoiceWord", "multipleChoiceSentence" ],
+            "blocks": [
+                {
+                    "type": "words",
+                    "data": [
+                        {
+                            "word": "เงิน",
+                            "translations": {
+                                "en": "Money",
+                                "fa": "پول"
+                            }
+                        },
+                        {
+                            "word": "สตางค์",
+                            "translations": {
+                                "en": "Money",
+                                "fa": "پول"
+                            }
+                        },
+                        {
+                            "word": "แลกเงิน",
+                            "translations": {
+                                "en": "Exchange money",
+                                "fa": "پول مبادله کنید"
+                            }
+                        },
+                        {
+                            "word": "โอนเงิน",
+                            "translations": {
+                                "en": "cash out money",
+                                "fa": "انتقال پول"
+                            }
+                        },
+                        {
+                            "word": "ถอนเงิน",
+                            "translations": {
+                                "en": "Withdrawals",
+                                "fa": "برداشت پول"
+                            }
+                        },
+                        {
+                            "word": "ฝากเงิน",
+                            "translations": {
+                                "en": "Deposits",
+                                "fa": "واریز پول"
+                            }
+                        },
+                        {
+                            "word": "ธนาคาร",
+                            "translations": {
+                                "en": "Bank",
+                                "fa": "بانک"
+                            }
+                        },
+                        {
+                            "word": "ตู้เอทีเอ็ม",
+                            "translations": {
+                                "en": "ATMs",
+                                "fa": "خودپرداز"
+                            }
+                        },
+                        {
+                            "word": "จ่าย",
+                            "translations": {
+                                "en": "Pay",
+                                "fa": "پرداخت"
+                            }
+                        },
+                        {
+                            "word": "ยืม",
+                            "translations": {
+                                "en": "Borrow",
+                                "fa": "قرض گرفتن"
+                            }
+                        },
+                        {
+                            "word": "คืน",
+                            "translations": {
+                                "en": "Night",
+                                "fa": "شب"
+                            }
+                        },
+                        {
+                            "word": "บัญชีธนาคาร",
+                            "translations": {
+                                "en": "Bank account",
+                                "fa": "حساب بانکی"
+                            }
+                        },
+                        {
+                            "word": "บัตรเครดิต",
+                            "translations": {
+                                "en": "Credit card",
+                                "fa": "کارت اعتباری"
+                            }
+                        },
+                        {
+                            "word": "บัตรประชาชน",
+                            "translations": {
+                                "en": "ID card",
+                                "fa": "کارت شناسایی ملی"
+                            }
+                        },
+                        {
+                            "word": "สมุดบัญชี",
+                            "translations": {
+                                "en": "Book of account",
+                                "fa": "دفترچه حساب"
+                            }
+                        },
+                        {
+                            "word": "หาย",
+                            "translations": {
+                                "en": "Missing",
+                                "fa": "ناپدید شدن"
+                            }
+                        },
+                        {
+                            "word": "แนะนํา",
+                            "translations": {
+                                "en": "Recommended",
+                                "fa": "توصیه شده"
+                            }
+                        },
+                        {
+                            "word": "เงินสด",
+                            "translations": {
+                                "en": "Cash",
+                                "fa": "پول نقد"
+                            }
+                        },
+                        {
+                            "word": "เงินเหรียญ",
+                            "translations": {
+                                "en": "CoinPayments",
+                                "fa": "سکه‌ها"
+                            }
+                        },
+                        {
+                            "word": "ซือของ",
+                            "translations": {
+                                "en": "Shop",
+                                "fa": "خرید"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "paragraph",
+                    "elements": [
+                        {
+                            "type": "sentence",
+                            "source": "ขอโทษค่ะธนาคารอยู่ไหนคะฉันอยากแลกเงิน",
+                            "words": [
+                                {
+                                    "word": "ขอโทษ",
+                                    "range": [
+                                        0,
+                                        5
+                                    ],
+                                    "translations": {
+                                        "en": "excuse me",
+                                        "fa": "ببخشید"
+                                    }
+                                },
+                                {
+                                    "word": "ค่ะ",
+                                    "range": [
+                                        5,
+                                        8
+                                    ],
+                                    "translations": {
+                                        "en": "yes",
+                                        "fa": "بله"
+                                    }
+                                },
+                                {
+                                    "word": "ธนาคาร",
+                                    "range": [
+                                        8,
+                                        14
+                                    ],
+                                    "translations": {
+                                        "en": "Bank",
+                                        "fa": "بانک"
+                                    }
+                                },
+                                {
+                                    "word": "อยู่",
+                                    "range": [
+                                        14,
+                                        18
+                                    ],
+                                    "translations": {
+                                        "en": "is",
+                                        "fa": "زنده"
+                                    }
+                                },
+                                {
+                                    "word": "ไหน",
+                                    "range": [
+                                        18,
+                                        21
+                                    ],
+                                    "translations": {
+                                        "en": "which",
+                                        "fa": "که"
+                                    }
+                                },
+                                {
+                                    "word": "คะ",
+                                    "range": [
+                                        21,
+                                        23
+                                    ],
+                                    "translations": {
+                                        "en": "yes",
+                                        "fa": "بله"
+                                    }
+                                },
+                                {
+                                    "word": "ฉัน",
+                                    "range": [
+                                        23,
+                                        26
+                                    ],
+                                    "translations": {
+                                        "en": "Me",
+                                        "fa": "من"
+                                    }
+                                },
+                                {
+                                    "word": "อยาก",
+                                    "range": [
+                                        26,
+                                        30
+                                    ],
+                                    "translations": {
+                                        "en": "Want",
+                                        "fa": "می خواهم"
+                                    }
+                                },
+                                {
+                                    "word": "แลกเงิน",
+                                    "range": [
+                                        30,
+                                        37
+                                    ],
+                                    "translations": {
+                                        "en": "Exchange money",
+                                        "fa": "پول مبادله کنید"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Sorry, where is the bank? I want to exchange money.",
+                                "fa": "ببخشید، بانک کجاست؟ من می‌خواهم مقداری پول تبدیل کنم."
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "paragraph",
+                    "elements": [
+                        {
+                            "type": "sentence",
+                            "source": "ทีห้างเมย่าค่ะทีนันมีธนาคารเยอะ",
+                            "words": [
+                                {
+                                    "word": "ทีห้าง",
+                                    "range": [
+                                        0,
+                                        6
+                                    ],
+                                    "translations": {
+                                        "en": "At the mall",
+                                        "fa": "در مرکز خرید"
+                                    }
+                                },
+                                {
+                                    "word": "เมย่า",
+                                    "range": [
+                                        6,
+                                        11
+                                    ],
+                                    "translations": {
+                                        "en": "Maya",
+                                        "fa": "میا"
+                                    }
+                                },
+                                {
+                                    "word": "ค่ะ",
+                                    "range": [
+                                        11,
+                                        14
+                                    ],
+                                    "translations": {
+                                        "en": "yes",
+                                        "fa": "بله"
+                                    }
+                                },
+                                {
+                                    "word": "ทีนัน",
+                                    "range": [
+                                        14,
+                                        19
+                                    ],
+                                    "translations": {
+                                        "en": "there",
+                                        "fa": "آنجا"
+                                    }
+                                },
+                                {
+                                    "word": "มี",
+                                    "range": [
+                                        19,
+                                        21
+                                    ],
+                                    "translations": {
+                                        "en": "have",
+                                        "fa": "داشته باشند"
+                                    }
+                                },
+                                {
+                                    "word": "ธนาคาร",
+                                    "range": [
+                                        21,
+                                        27
+                                    ],
+                                    "translations": {
+                                        "en": "Bank",
+                                        "fa": "بانک"
+                                    }
+                                },
+                                {
+                                    "word": "เยอะ",
+                                    "range": [
+                                        27,
+                                        31
+                                    ],
+                                    "translations": {
+                                        "en": "A lot",
+                                        "fa": "خیلی زیاد"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "At Maya department store, They have a lot of banks.",
+                                "fa": "در مرکز خرید مایا بانک‌های زیادی وجود دارد."
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "paragraph",
+                    "elements": [
+                        {
+                            "type": "sentence",
+                            "source": "ขอบคุณค่ะ",
+                            "words": [
+                                {
+                                    "word": "ขอบคุณค่ะ",
+                                    "range": [
+                                        0,
+                                        9
+                                    ],
+                                    "translations": {
+                                        "en": "Thank you.",
+                                        "fa": "متشکرم"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Thank you.",
+                                "fa": "متشکرم"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "paragraph",
+                    "elements": [
+
+                    ]
+                },
+                {
+                    "type": "paragraph",
+                    "elements": [
+
+                    ]
+                },
+                {
+                    "type": "paragraph",
+                    "elements": [
+
+                    ]
+                },
+                {
+                    "type": "paragraph",
+                    "elements": [
+
+                    ]
+                }
+            ]
+        }
+    ]
+}
