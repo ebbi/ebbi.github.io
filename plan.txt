@@ -1,11 +1,7 @@
+I did not implement this word highlighting solution.  Another requirement.
 
-There are still text without HTML lang and dir attributes.
-For example,
-                        <span class="material-icons audio-preview-icon" onclick="event.stopPropagation();App.playAudio('ทีห้างเมย่าค่ะทีนันมีธนาคารเยอะ', 'th')">
-                            volume_up
-                        </span>
-                        <span>ทีห้างเมย่าค่ะทีนันมีธนาคารเยอะ</span>
+The multiple choice quiz for words currently uses the JSON data from blocks of 
+type "word".  The data set for the test should also include the word data arrays 
+from the type sentence.
 
-Also, the last CSS changes was not complete and the merge was error prone. 
-Please output the complete merged CSS for the last update.
-                    
+

@@ -1,0 +1,1845 @@
+{
+    "documentId": "thai500_health",
+    "sections": [
+        {
+            "heading": {
+                "en": "Health and Medical",
+                "fa": "سلامت و پزشکی",
+                "th": "สุขภาพและการแพทย์"
+            },
+            "activities": [ "multipleChoiceWord", "multipleChoiceSentence" ],
+            "blocks": [
+                {
+                    "type": "words",
+                    "data": [
+                        {
+                            "word": "สุขภาพ",
+                            "translations": {
+                                "en": "Health",
+                                "fa": "سلامتی"
+                            }
+                        },
+                        {
+                            "word": "ป่วย",
+                            "translations": {
+                                "en": "Sick",
+                                "fa": "مریض"
+                            }
+                        },
+                        {
+                            "word": "หมอ",
+                            "translations": {
+                                "en": "Doctor",
+                                "fa": "دکتر"
+                            }
+                        },
+                        {
+                            "word": "ยา",
+                            "translations": {
+                                "en": "Medicine",
+                                "fa": "دارو"
+                            }
+                        },
+                        {
+                            "word": "โรงพยาบาล",
+                            "translations": {
+                                "en": "Hospital",
+                                "fa": "بیمارستان"
+                            }
+                        },
+                        {
+                            "word": "เจ็บ",
+                            "translations": {
+                                "en": "Pain/hurt",
+                                "fa": "درد/آسیب"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "paragraph",
+                    "elements": [
+                        {
+                            "type": "sentence",
+                            "source": "ฉันไม่สบายครับ/ค่ะ",
+                            "words": [
+                                {
+                                    "word": "ฉัน",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "I (informal)",
+                                        "fa": "من (غیررسمی)"
+                                    }
+                                },
+                                {
+                                    "word": "ไม่",
+                                    "range": [ 3, 6 ],
+                                    "translations": {
+                                        "en": "Not",
+                                        "fa": "نه"
+                                    }
+                                },
+                                {
+                                    "word": "สบาย",
+                                    "range": [ 6, 10 ],
+                                    "translations": {
+                                        "en": "Well/comfortable",
+                                        "fa": "خوب/راحت"
+                                    }
+                                },
+                                {
+                                    "word": "ครับ/ค่ะ",
+                                    "range": [ 10, 16 ],
+                                    "translations": {
+                                        "en": "polite particle",
+                                        "fa": "ذره مؤدب"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "I'm not feeling well.",
+                                "fa": "من احساس خوبی ندارم."
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "คุณปวดหัวไหมคะ",
+                            "words": [
+                                {
+                                    "word": "คุณ",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "You (polite)",
+                                        "fa": "شما (مودبانه)"
+                                    }
+                                },
+                                {
+                                    "word": "ปวดหัว",
+                                    "range": [ 3, 8 ],
+                                    "translations": {
+                                        "en": "headache",
+                                        "fa": "سردرد"
+                                    }
+                                },
+                                {
+                                    "word": "ไหม",
+                                    "range": [ 8, 11 ],
+                                    "translations": {
+                                        "en": "question particle",
+                                        "fa": "ذره پرسشی"
+                                    }
+                                },
+                                {
+                                    "word": "คะ",
+                                    "range": [ 11, 12 ],
+                                    "translations": {
+                                        "en": "polite particle (female)",
+                                        "fa": "ذره مؤدب (زن)"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Do you have a headache?",
+                                "fa": "آیا شما سردرد دارید؟"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ฉันมีไข้สูง",
+                            "words": [
+                                {
+                                    "word": "ฉัน",
+                                    "range": [ 0, 2 ],
+                                    "translations": {
+                                        "en": "I/me (informal, female)",
+                                        "fa": "من (غیررسمی، زن)"
+                                    }
+                                },
+                                {
+                                    "word": "มี",
+                                    "range": [ 2, 4 ],
+                                    "translations": {
+                                        "en": "to have",
+                                        "fa": "داشتن"
+                                    }
+                                },
+                                {
+                                    "word": "ไข้",
+                                    "range": [ 4, 6 ],
+                                    "translations": {
+                                        "en": "fever",
+                                        "fa": "تب"
+                                    }
+                                },
+                                {
+                                    "word": "สูง",
+                                    "range": [ 6, 9 ],
+                                    "translations": {
+                                        "en": "high",
+                                        "fa": "بالا"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "I have a high fever.",
+                                "fa": "من تب بالا دارم."
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ช่วยเรียกหมอให้หน่อยครับ",
+                            "words": [
+                                {
+                                    "word": "ช่วย",
+                                    "range": [ 0, 4 ],
+                                    "translations": {
+                                        "en": "please/help",
+                                        "fa": "لطفاً/کمک"
+                                    }
+                                },
+                                {
+                                    "word": "เรียก",
+                                    "range": [ 4, 8 ],
+                                    "translations": {
+                                        "en": "to call",
+                                        "fa": "صدا زدن"
+                                    }
+                                },
+                                {
+                                    "word": "หมอ",
+                                    "range": [ 8, 10 ],
+                                    "translations": {
+                                        "en": "doctor",
+                                        "fa": "دکتر"
+                                    }
+                                },
+                                {
+                                    "word": "ให้",
+                                    "range": [ 10, 12 ],
+                                    "translations": {
+                                        "en": "for",
+                                        "fa": "برای"
+                                    }
+                                },
+                                {
+                                    "word": "หน่อย",
+                                    "range": [ 12, 16 ],
+                                    "translations": {
+                                        "en": "a little (polite request)",
+                                        "fa": "کمی (درخواست مودبانه)"
+                                    }
+                                },
+                                {
+                                    "word": "ครับ",
+                                    "range": [ 16, 19 ],
+                                    "translations": {
+                                        "en": "polite particle (male)",
+                                        "fa": "ذره مؤدب (مرد)"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Please call a doctor for me.",
+                                "fa": "لطفاً یک دکتر برایم صدا بزنید."
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ฉันต้องไปโรงพยาบาล",
+                            "words": [
+                                {
+                                    "word": "ฉัน",
+                                    "range": [ 0, 2 ],
+                                    "translations": {
+                                        "en": "I/me (informal, female)",
+                                        "fa": "من (غیررسمی، زن)"
+                                    }
+                                },
+                                {
+                                    "word": "ต้อง",
+                                    "range": [ 2, 5 ],
+                                    "translations": {
+                                        "en": "must/have to",
+                                        "fa": "باید"
+                                    }
+                                },
+                                {
+                                    "word": "ไป",
+                                    "range": [ 5, 7 ],
+                                    "translations": {
+                                        "en": "to go",
+                                        "fa": "رفتن"
+                                    }
+                                },
+                                {
+                                    "word": "โรงพยาบาล",
+                                    "range": [ 7, 16 ],
+                                    "translations": {
+                                        "en": "hospital",
+                                        "fa": "بیمارستان"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "I need to go to the hospital.",
+                                "fa": "من باید به بیمارستان بروم."
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ท้องเสียค่ะ",
+                            "words": [
+                                {
+                                    "word": "ท้องเสีย",
+                                    "range": [ 0, 6 ],
+                                    "translations": {
+                                        "en": "diarrhea",
+                                        "fa": "اسهال"
+                                    }
+                                },
+                                {
+                                    "word": "ค่ะ",
+                                    "range": [ 6, 8 ],
+                                    "translations": {
+                                        "en": "polite particle (female)",
+                                        "fa": "ذره مؤدب (زن)"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "I have diarrhea.",
+                                "fa": "من اسهال دارم."
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ปวดฟันมาก",
+                            "words": [
+                                {
+                                    "word": "ปวดฟัน",
+                                    "range": [ 0, 5 ],
+                                    "translations": {
+                                        "en": "toothache",
+                                        "fa": "دندان درد"
+                                    }
+                                },
+                                {
+                                    "word": "มาก",
+                                    "range": [ 5, 8 ],
+                                    "translations": {
+                                        "en": "very much",
+                                        "fa": "خیلی زیاد"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Very bad toothache.",
+                                "fa": "دندان درد خیلی بدی دارم."
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ฉันแพ้ยานี้",
+                            "words": [
+                                {
+                                    "word": "ฉัน",
+                                    "range": [ 0, 2 ],
+                                    "translations": {
+                                        "en": "I/me (informal, female)",
+                                        "fa": "من (غیررسمی، زن)"
+                                    }
+                                },
+                                {
+                                    "word": "แพ้",
+                                    "range": [ 2, 4 ],
+                                    "translations": {
+                                        "en": "allergic to",
+                                        "fa": "حساسیت داشتن به"
+                                    }
+                                },
+                                {
+                                    "word": "ยา",
+                                    "range": [ 4, 5 ],
+                                    "translations": {
+                                        "en": "medicine",
+                                        "fa": "دارو"
+                                    }
+                                },
+                                {
+                                    "word": "นี้",
+                                    "range": [ 5, 7 ],
+                                    "translations": {
+                                        "en": "this",
+                                        "fa": "این"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "I'm allergic to this medicine.",
+                                "fa": "من به این دارو حساسیت دارم."
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "วัดความดันเลือดให้หน่อยครับ",
+                            "words": [
+                                {
+                                    "word": "วัด",
+                                    "range": [ 0, 2 ],
+                                    "translations": {
+                                        "en": "to measure",
+                                        "fa": "اندازه گیری کردن"
+                                    }
+                                },
+                                {
+                                    "word": "ความดัน",
+                                    "range": [ 2, 7 ],
+                                    "translations": {
+                                        "en": "pressure",
+                                        "fa": "فشار"
+                                    }
+                                },
+                                {
+                                    "word": "เลือด",
+                                    "range": [ 7, 11 ],
+                                    "translations": {
+                                        "en": "blood",
+                                        "fa": "خون"
+                                    }
+                                },
+                                {
+                                    "word": "ให้",
+                                    "range": [ 11, 13 ],
+                                    "translations": {
+                                        "en": "for",
+                                        "fa": "برای"
+                                    }
+                                },
+                                {
+                                    "word": "หน่อย",
+                                    "range": [ 13, 17 ],
+                                    "translations": {
+                                        "en": "a little (polite request)",
+                                        "fa": "کمی (درخواست مودبانه)"
+                                    }
+                                },
+                                {
+                                    "word": "ครับ",
+                                    "range": [ 17, 20 ],
+                                    "translations": {
+                                        "en": "polite particle (male)",
+                                        "fa": "ذره مؤدب (مرد)"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Please take my blood pressure.",
+                                "fa": "لطفاً فشار خونم را بگیرید."
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ฉันต้องผ่าตัด",
+                            "words": [
+                                {
+                                    "word": "ฉัน",
+                                    "range": [ 0, 2 ],
+                                    "translations": {
+                                        "en": "I/me (informal, female)",
+                                        "fa": "من (غیررسمی، زن)"
+                                    }
+                                },
+                                {
+                                    "word": "ต้อง",
+                                    "range": [ 2, 5 ],
+                                    "translations": {
+                                        "en": "must/have to",
+                                        "fa": "باید"
+                                    }
+                                },
+                                {
+                                    "word": "ผ่าตัด",
+                                    "range": [ 5, 10 ],
+                                    "translations": {
+                                        "en": "surgery",
+                                        "fa": "جراحی"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "I need to have surgery.",
+                                "fa": "من باید جراحی کنم."
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "มีอาการไอและจาม",
+                            "words": [
+                                {
+                                    "word": "มี",
+                                    "range": [ 0, 2 ],
+                                    "translations": {
+                                        "en": "to have",
+                                        "fa": "داشتن"
+                                    }
+                                },
+                                {
+                                    "word": "อาการ",
+                                    "range": [ 2, 6 ],
+                                    "translations": {
+                                        "en": "symptoms",
+                                        "fa": "علائم"
+                                    }
+                                },
+                                {
+                                    "word": "ไอ",
+                                    "range": [ 6, 8 ],
+                                    "translations": {
+                                        "en": "cough",
+                                        "fa": "سرفه"
+                                    }
+                                },
+                                {
+                                    "word": "และ",
+                                    "range": [ 8, 11 ],
+                                    "translations": {
+                                        "en": "and",
+                                        "fa": "و"
+                                    }
+                                },
+                                {
+                                    "word": "จาม",
+                                    "range": [ 11, 13 ],
+                                    "translations": {
+                                        "en": "sneeze",
+                                        "fa": "عطسه"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "I have coughing and sneezing symptoms.",
+                                "fa": "من علائم سرفه و عطسه دارم."
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "กินยาหลังอาหาร",
+                            "words": [
+                                {
+                                    "word": "กิน",
+                                    "range": [ 0, 2 ],
+                                    "translations": {
+                                        "en": "to eat/take",
+                                        "fa": "خوردن/گرفتن"
+                                    }
+                                },
+                                {
+                                    "word": "ยา",
+                                    "range": [ 2, 3 ],
+                                    "translations": {
+                                        "en": "medicine",
+                                        "fa": "دارو"
+                                    }
+                                },
+                                {
+                                    "word": "หลัง",
+                                    "range": [ 3, 6 ],
+                                    "translations": {
+                                        "en": "after",
+                                        "fa": "بعد از"
+                                    }
+                                },
+                                {
+                                    "word": "อาหาร",
+                                    "range": [ 6, 10 ],
+                                    "translations": {
+                                        "en": "meal/food",
+                                        "fa": "غذا"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Take medicine after meals.",
+                                "fa": "دارو را بعد از غذا بخورید."
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "หายใจลำบาก",
+                            "words": [
+                                {
+                                    "word": "หายใจ",
+                                    "range": [ 0, 5 ],
+                                    "translations": {
+                                        "en": "to breathe",
+                                        "fa": "نفس کشیدن"
+                                    }
+                                },
+                                {
+                                    "word": "ลำบาก",
+                                    "range": [ 5, 10 ],
+                                    "translations": {
+                                        "en": "difficult",
+                                        "fa": "سخت"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Difficulty breathing.",
+                                "fa": "نفس کشیدن سخت است."
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ไปพบหมอพรุ่งนี้",
+                            "words": [
+                                {
+                                    "word": "ไป",
+                                    "range": [ 0, 2 ],
+                                    "translations": {
+                                        "en": "to go",
+                                        "fa": "رفتن"
+                                    }
+                                },
+                                {
+                                    "word": "พบ",
+                                    "range": [ 2, 4 ],
+                                    "translations": {
+                                        "en": "to meet/see",
+                                        "fa": "ملاقات کردن/دیدن"
+                                    }
+                                },
+                                {
+                                    "word": "หมอ",
+                                    "range": [ 4, 6 ],
+                                    "translations": {
+                                        "en": "doctor",
+                                        "fa": "دکتر"
+                                    }
+                                },
+                                {
+                                    "word": "พรุ่งนี้",
+                                    "range": [ 6, 12 ],
+                                    "translations": {
+                                        "en": "tomorrow",
+                                        "fa": "فردا"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "I'll see the doctor tomorrow.",
+                                "fa": "من فردا دکتر را می‌بینم."
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ฉันปวดท้อง",
+                            "words": [
+                                {
+                                    "word": "ฉัน",
+                                    "range": [ 0, 2 ],
+                                    "translations": {
+                                        "en": "I/me (informal, female)",
+                                        "fa": "من (غیررسمی، زن)"
+                                    }
+                                },
+                                {
+                                    "word": "ปวดท้อง",
+                                    "range": [ 2, 7 ],
+                                    "translations": {
+                                        "en": "stomachache",
+                                        "fa": "دل درد"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "I have a stomachache.",
+                                "fa": "من دل درد دارم."
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "กินยาวันละสามครั้ง",
+                            "words": [
+                                {
+                                    "word": "กิน",
+                                    "range": [ 0, 2 ],
+                                    "translations": {
+                                        "en": "to eat/take",
+                                        "fa": "خوردن/گرفتن"
+                                    }
+                                },
+                                {
+                                    "word": "ยา",
+                                    "range": [ 2, 3 ],
+                                    "translations": {
+                                        "en": "medicine",
+                                        "fa": "دارو"
+                                    }
+                                },
+                                {
+                                    "word": "วันละ",
+                                    "range": [ 3, 7 ],
+                                    "translations": {
+                                        "en": "per day",
+                                        "fa": "در روز"
+                                    }
+                                },
+                                {
+                                    "word": "สาม",
+                                    "range": [ 7, 10 ],
+                                    "translations": {
+                                        "en": "three",
+                                        "fa": "سه"
+                                    }
+                                },
+                                {
+                                    "word": "ครั้ง",
+                                    "range": [ 10, 14 ],
+                                    "translations": {
+                                        "en": "times",
+                                        "fa": "بار"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Take medicine three times a day.",
+                                "fa": "دارو را سه بار در روز بخورید."
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "คุณหมออยู่ไหนคะ",
+                            "words": [
+                                {
+                                    "word": "คุณหมอ",
+                                    "range": [ 0, 6 ],
+                                    "translations": {
+                                        "en": "doctor (polite)",
+                                        "fa": "دکتر (مودبانه)"
+                                    }
+                                },
+                                {
+                                    "word": "อยู่",
+                                    "range": [ 6, 8 ],
+                                    "translations": {
+                                        "en": "to be located",
+                                        "fa": "قرار داشتن"
+                                    }
+                                },
+                                {
+                                    "word": "ไหน",
+                                    "range": [ 8, 11 ],
+                                    "translations": {
+                                        "en": "where",
+                                        "fa": "کجا"
+                                    }
+                                },
+                                {
+                                    "word": "คะ",
+                                    "range": [ 11, 12 ],
+                                    "translations": {
+                                        "en": "polite particle (female)",
+                                        "fa": "ذره مؤدب (زن)"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Where is the doctor?",
+                                "fa": "دکتر کجاست؟"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ฉันแพ้อาหารทะเล",
+                            "words": [
+                                {
+                                    "word": "ฉัน",
+                                    "range": [ 0, 2 ],
+                                    "translations": {
+                                        "en": "I/me (informal, female)",
+                                        "fa": "من (غیررسمی، زن)"
+                                    }
+                                },
+                                {
+                                    "word": "แพ้",
+                                    "range": [ 2, 4 ],
+                                    "translations": {
+                                        "en": "allergic to",
+                                        "fa": "حساسیت داشتن به"
+                                    }
+                                },
+                                {
+                                    "word": "อาหารทะเล",
+                                    "range": [ 4, 12 ],
+                                    "translations": {
+                                        "en": "seafood",
+                                        "fa": "غذای دریایی"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "I'm allergic to seafood.",
+                                "fa": "من به غذای دریایی حساسیت دارم."
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "เลือดออกมากไหม",
+                            "words": [
+                                {
+                                    "word": "เลือด",
+                                    "range": [ 0, 4 ],
+                                    "translations": {
+                                        "en": "blood",
+                                        "fa": "خون"
+                                    }
+                                },
+                                {
+                                    "word": "ออก",
+                                    "range": [ 4, 6 ],
+                                    "translations": {
+                                        "en": "to come out",
+                                        "fa": "بیرون آمدن"
+                                    }
+                                },
+                                {
+                                    "word": "มาก",
+                                    "range": [ 6, 9 ],
+                                    "translations": {
+                                        "en": "a lot",
+                                        "fa": "زیاد"
+                                    }
+                                },
+                                {
+                                    "word": "ไหม",
+                                    "range": [ 9, 12 ],
+                                    "translations": {
+                                        "en": "question particle",
+                                        "fa": "ذره پرسشی"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Is there a lot of bleeding?",
+                                "fa": "آیا خونریزی زیادی است؟"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ฉันเวียนหัว",
+                            "words": [
+                                {
+                                    "word": "ฉัน",
+                                    "range": [ 0, 2 ],
+                                    "translations": {
+                                        "en": "I/me (informal, female)",
+                                        "fa": "من (غیررسمی، زن)"
+                                    }
+                                },
+                                {
+                                    "word": "เวียนหัว",
+                                    "range": [ 2, 7 ],
+                                    "translations": {
+                                        "en": "dizzy",
+                                        "fa": "گیج"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "I feel dizzy.",
+                                "fa": "من احساس گیجی می‌کنم."
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "หมอนัดวันไหนครับ",
+                            "words": [
+                                {
+                                    "word": "หมอ",
+                                    "range": [ 0, 2 ],
+                                    "translations": {
+                                        "en": "doctor",
+                                        "fa": "دکتر"
+                                    }
+                                },
+                                {
+                                    "word": "นัด",
+                                    "range": [ 2, 4 ],
+                                    "translations": {
+                                        "en": "appointment",
+                                        "fa": "قرار ملاقات"
+                                    }
+                                },
+                                {
+                                    "word": "วัน",
+                                    "range": [ 4, 6 ],
+                                    "translations": {
+                                        "en": "day",
+                                        "fa": "روز"
+                                    }
+                                },
+                                {
+                                    "word": "ไหน",
+                                    "range": [ 6, 9 ],
+                                    "translations": {
+                                        "en": "which",
+                                        "fa": "کدام"
+                                    }
+                                },
+                                {
+                                    "word": "ครับ",
+                                    "range": [ 9, 12 ],
+                                    "translations": {
+                                        "en": "polite particle (male)",
+                                        "fa": "ذره مؤدب (مرد)"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "What day is the doctor's appointment?",
+                                "fa": "قرار ملاقات دکتر چه روزی است؟"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ต้องฉีดยาครับ",
+                            "words": [
+                                {
+                                    "word": "ต้อง",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "must/have to",
+                                        "fa": "باید"
+                                    }
+                                },
+                                {
+                                    "word": "ฉีดยา",
+                                    "range": [ 3, 7 ],
+                                    "translations": {
+                                        "en": "injection",
+                                        "fa": "تزریق"
+                                    }
+                                },
+                                {
+                                    "word": "ครับ",
+                                    "range": [ 7, 10 ],
+                                    "translations": {
+                                        "en": "polite particle (male)",
+                                        "fa": "ذره مؤدب (مرد)"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "I need an injection.",
+                                "fa": "من نیاز به تزریق دارم."
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ฉันนอนไม่หลับ",
+                            "words": [
+                                {
+                                    "word": "ฉัน",
+                                    "range": [ 0, 2 ],
+                                    "translations": {
+                                        "en": "I/me (informal, female)",
+                                        "fa": "من (غیررسمی، زن)"
+                                    }
+                                },
+                                {
+                                    "word": "นอน",
+                                    "range": [ 2, 5 ],
+                                    "translations": {
+                                        "en": "to sleep",
+                                        "fa": "خوابیدن"
+                                    }
+                                },
+                                {
+                                    "word": "ไม่",
+                                    "range": [ 5, 8 ],
+                                    "translations": {
+                                        "en": "not",
+                                        "fa": "نه"
+                                    }
+                                },
+                                {
+                                    "word": "หลับ",
+                                    "range": [ 8, 11 ],
+                                    "translations": {
+                                        "en": "to fall asleep",
+                                        "fa": "به خواب رفتن"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "I can't sleep.",
+                                "fa": "من نمی‌توانم بخوابم."
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "อุณหภูมิร่างกายเท่าไหร่",
+                            "words": [
+                                {
+                                    "word": "อุณหภูมิ",
+                                    "range": [ 0, 7 ],
+                                    "translations": {
+                                        "en": "temperature",
+                                        "fa": "دما"
+                                    }
+                                },
+                                {
+                                    "word": "ร่างกาย",
+                                    "range": [ 7, 12 ],
+                                    "translations": {
+                                        "en": "body",
+                                        "fa": "بدن"
+                                    }
+                                },
+                                {
+                                    "word": "เท่าไหร่",
+                                    "range": [ 12, 18 ],
+                                    "translations": {
+                                        "en": "how much",
+                                        "fa": "چقدر"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "What is your body temperature?",
+                                "fa": "دمای بدن شما چقدر است؟"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "เจ็บคอมากค่ะ",
+                            "words": [
+                                {
+                                    "word": "เจ็บคอ",
+                                    "range": [ 0, 5 ],
+                                    "translations": {
+                                        "en": "sore throat",
+                                        "fa": "گلو درد"
+                                    }
+                                },
+                                {
+                                    "word": "มาก",
+                                    "range": [ 5, 8 ],
+                                    "translations": {
+                                        "en": "very much",
+                                        "fa": "خیلی زیاد"
+                                    }
+                                },
+                                {
+                                    "word": "ค่ะ",
+                                    "range": [ 8, 10 ],
+                                    "translations": {
+                                        "en": "polite particle (female)",
+                                        "fa": "ذره مؤدب (زن)"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Very sore throat.",
+                                "fa": "گلودرد خیلی بدی دارم."
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "กินยาแล้วนอนพัก",
+                            "words": [
+                                {
+                                    "word": "กิน",
+                                    "range": [ 0, 2 ],
+                                    "translations": {
+                                        "en": "to eat/take",
+                                        "fa": "خوردن/گرفتن"
+                                    }
+                                },
+                                {
+                                    "word": "ยา",
+                                    "range": [ 2, 3 ],
+                                    "translations": {
+                                        "en": "medicine",
+                                        "fa": "دارو"
+                                    }
+                                },
+                                {
+                                    "word": "แล้ว",
+                                    "range": [ 3, 6 ],
+                                    "translations": {
+                                        "en": "already/then",
+                                        "fa": "بعد/سپس"
+                                    }
+                                },
+                                {
+                                    "word": "นอนพัก",
+                                    "range": [ 6, 11 ],
+                                    "translations": {
+                                        "en": "to rest/sleep",
+                                        "fa": "استراحت کردن/خوابیدن"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Take medicine and then rest.",
+                                "fa": "دارو بخورید و سپس استراحت کنید."
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ฉันอาเจียน",
+                            "words": [
+                                {
+                                    "word": "ฉัน",
+                                    "range": [ 0, 2 ],
+                                    "translations": {
+                                        "en": "I/me (informal, female)",
+                                        "fa": "من (غیررسمی، زن)"
+                                    }
+                                },
+                                {
+                                    "word": "อาเจียน",
+                                    "range": [ 2, 7 ],
+                                    "translations": {
+                                        "en": "vomit",
+                                        "fa": "استفراغ"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "I'm vomiting.",
+                                "fa": "من استفراغ می‌کنم."
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ต้องตรวจเลือด",
+                            "words": [
+                                {
+                                    "word": "ต้อง",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "must/have to",
+                                        "fa": "باید"
+                                    }
+                                },
+                                {
+                                    "word": "ตรวจ",
+                                    "range": [ 3, 7 ],
+                                    "translations": {
+                                        "en": "to check/examine",
+                                        "fa": "بررسی کردن/معاینه کردن"
+                                    }
+                                },
+                                {
+                                    "word": "เลือด",
+                                    "range": [ 7, 11 ],
+                                    "translations": {
+                                        "en": "blood",
+                                        "fa": "خون"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "I need a blood test.",
+                                "fa": "من نیاز به آزمایش خون دارم."
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "หมอสั่งยาอะไร",
+                            "words": [
+                                {
+                                    "word": "หมอ",
+                                    "range": [ 0, 2 ],
+                                    "translations": {
+                                        "en": "doctor",
+                                        "fa": "دکتر"
+                                    }
+                                },
+                                {
+                                    "word": "สั่ง",
+                                    "range": [ 2, 5 ],
+                                    "translations": {
+                                        "en": "to prescribe/order",
+                                        "fa": "تجویز کردن/دستور دادن"
+                                    }
+                                },
+                                {
+                                    "word": "ยา",
+                                    "range": [ 5, 6 ],
+                                    "translations": {
+                                        "en": "medicine",
+                                        "fa": "دارو"
+                                    }
+                                },
+                                {
+                                    "word": "อะไร",
+                                    "range": [ 6, 9 ],
+                                    "translations": {
+                                        "en": "what",
+                                        "fa": "چه"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "What medicine did the doctor prescribe?",
+                                "fa": "دکتر چه دارویی تجویز کرد؟"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ฉันปวดหลัง",
+                            "words": [
+                                {
+                                    "word": "ฉัน",
+                                    "range": [ 0, 2 ],
+                                    "translations": {
+                                        "en": "I/me (informal, female)",
+                                        "fa": "من (غیررسمی، زن)"
+                                    }
+                                },
+                                {
+                                    "word": "ปวดหลัง",
+                                    "range": [ 2, 7 ],
+                                    "translations": {
+                                        "en": "back pain",
+                                        "fa": "کمر درد"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "I have back pain.",
+                                "fa": "من کمر درد دارم."
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "มีรอยฟกช้ำ",
+                            "words": [
+                                {
+                                    "word": "มี",
+                                    "range": [ 0, 2 ],
+                                    "translations": {
+                                        "en": "to have",
+                                        "fa": "داشتن"
+                                    }
+                                },
+                                {
+                                    "word": "รอย",
+                                    "range": [ 2, 5 ],
+                                    "translations": {
+                                        "en": "mark",
+                                        "fa": "نشان"
+                                    }
+                                },
+                                {
+                                    "word": "ฟกช้ำ",
+                                    "range": [ 5, 10 ],
+                                    "translations": {
+                                        "en": "bruise",
+                                        "fa": "کبودی"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "There's a bruise.",
+                                "fa": "یک کبودی وجود دارد."
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ฉันเป็นหวัด",
+                            "words": [
+                                {
+                                    "word": "ฉัน",
+                                    "range": [ 0, 2 ],
+                                    "translations": {
+                                        "en": "I/me (informal, female)",
+                                        "fa": "من (غیررسمی، زن)"
+                                    }
+                                },
+                                {
+                                    "word": "เป็น",
+                                    "range": [ 2, 5 ],
+                                    "translations": {
+                                        "en": "to be/have",
+                                        "fa": "بودن/داشتن"
+                                    }
+                                },
+                                {
+                                    "word": "หวัด",
+                                    "range": [ 5, 7 ],
+                                    "translations": {
+                                        "en": "cold (illness)",
+                                        "fa": "سرماخوردگی"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "I have a cold.",
+                                "fa": "من سرماخورده‌ام."
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ต้องเอกซเรย์",
+                            "words": [
+                                {
+                                    "word": "ต้อง",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "must/have to",
+                                        "fa": "باید"
+                                    }
+                                },
+                                {
+                                    "word": "เอกซเรย์",
+                                    "range": [ 3, 9 ],
+                                    "translations": {
+                                        "en": "X-ray",
+                                        "fa": "اشعه ایکس"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "I need an X-ray.",
+                                "fa": "من نیاز به عکسبرداری با اشعه ایکس دارم."
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "เจ็บเวลาเคลื่อนไหว",
+                            "words": [
+                                {
+                                    "word": "เจ็บ",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "pain/hurt",
+                                        "fa": "درد/آسیب"
+                                    }
+                                },
+                                {
+                                    "word": "เวลา",
+                                    "range": [ 3, 7 ],
+                                    "translations": {
+                                        "en": "when/time",
+                                        "fa": "وقتی/زمان"
+                                    }
+                                },
+                                {
+                                    "word": "เคลื่อนไหว",
+                                    "range": [ 7, 14 ],
+                                    "translations": {
+                                        "en": "to move",
+                                        "fa": "حرکت کردن"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "It hurts when I move.",
+                                "fa": "وقتی حرکت می‌کنم درد می‌گیرد."
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "น้ำมูกไหล",
+                            "words": [
+                                {
+                                    "word": "น้ำมูก",
+                                    "range": [ 0, 5 ],
+                                    "translations": {
+                                        "en": "mucus/runny nose",
+                                        "fa": "مخاط/آبریزش بینی"
+                                    }
+                                },
+                                {
+                                    "word": "ไหล",
+                                    "range": [ 5, 8 ],
+                                    "translations": {
+                                        "en": "to flow",
+                                        "fa": "جاری شدن"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Runny nose.",
+                                "fa": "آبریزش بینی دارم."
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ไปหาหมอฟัน",
+                            "words": [
+                                {
+                                    "word": "ไป",
+                                    "range": [ 0, 2 ],
+                                    "translations": {
+                                        "en": "to go",
+                                        "fa": "رفتن"
+                                    }
+                                },
+                                {
+                                    "word": "หา",
+                                    "range": [ 2, 4 ],
+                                    "translations": {
+                                        "en": "to see/visit",
+                                        "fa": "دیدن/ملاقات کردن"
+                                    }
+                                },
+                                {
+                                    "word": "หมอฟัน",
+                                    "range": [ 4, 10 ],
+                                    "translations": {
+                                        "en": "dentist",
+                                        "fa": "دندانپزشک"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Go see a dentist.",
+                                "fa": "به دندانپزشک مراجعه کنید."
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ฉันเครียดมาก",
+                            "words": [
+                                {
+                                    "word": "ฉัน",
+                                    "range": [ 0, 2 ],
+                                    "translations": {
+                                        "en": "I/me (informal, female)",
+                                        "fa": "من (غیررسمی، زن)"
+                                    }
+                                },
+                                {
+                                    "word": "เครียด",
+                                    "range": [ 2, 7 ],
+                                    "translations": {
+                                        "en": "stressed",
+                                        "fa": "استرس داشتن"
+                                    }
+                                },
+                                {
+                                    "word": "มาก",
+                                    "range": [ 7, 10 ],
+                                    "translations": {
+                                        "en": "very much",
+                                        "fa": "خیلی زیاد"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "I'm very stressed.",
+                                "fa": "من خیلی استرس دارم."
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ต้องพักฟื้น",
+                            "words": [
+                                {
+                                    "word": "ต้อง",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "must/have to",
+                                        "fa": "باید"
+                                    }
+                                },
+                                {
+                                    "word": "พักฟื้น",
+                                    "range": [ 3, 9 ],
+                                    "translations": {
+                                        "en": "to recuperate",
+                                        "fa": "بهبود یافتن"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "I need to recuperate.",
+                                "fa": "من نیاز به استراحت و بهبودی دارم."
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "กินอาหารไม่ออก",
+                            "words": [
+                                {
+                                    "word": "กิน",
+                                    "range": [ 0, 2 ],
+                                    "translations": {
+                                        "en": "to eat",
+                                        "fa": "خوردن"
+                                    }
+                                },
+                                {
+                                    "word": "อาหาร",
+                                    "range": [ 2, 6 ],
+                                    "translations": {
+                                        "en": "food",
+                                        "fa": "غذا"
+                                    }
+                                },
+                                {
+                                    "word": "ไม่",
+                                    "range": [ 6, 9 ],
+                                    "translations": {
+                                        "en": "not",
+                                        "fa": "نه"
+                                    }
+                                },
+                                {
+                                    "word": "ออก",
+                                    "range": [ 9, 11 ],
+                                    "translations": {
+                                        "en": "out/can't",
+                                        "fa": "بیرون/نمی‌تواند"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Can't eat.",
+                                "fa": "نمی‌توانم غذا بخورم."
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ต้องผ้าพันแผล",
+                            "words": [
+                                {
+                                    "word": "ต้อง",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "must/have to",
+                                        "fa": "باید"
+                                    }
+                                },
+                                {
+                                    "word": "ผ้าพันแผล",
+                                    "range": [ 3, 10 ],
+                                    "translations": {
+                                        "en": "bandage",
+                                        "fa": "نوار زخم"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Need a bandage.",
+                                "fa": "نیاز به نوار زخم دارم."
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ฉันอ่อนเพลีย",
+                            "words": [
+                                {
+                                    "word": "ฉัน",
+                                    "range": [ 0, 2 ],
+                                    "translations": {
+                                        "en": "I/me (informal, female)",
+                                        "fa": "من (غیررسمی، زن)"
+                                    }
+                                },
+                                {
+                                    "word": "อ่อนเพลีย",
+                                    "range": [ 2, 9 ],
+                                    "translations": {
+                                        "en": "fatigued",
+                                        "fa": "خسته"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "I feel fatigued.",
+                                "fa": "من احساس خستگی می‌کنم."
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "มีไข้หวัดใหญ่",
+                            "words": [
+                                {
+                                    "word": "มี",
+                                    "range": [ 0, 2 ],
+                                    "translations": {
+                                        "en": "to have",
+                                        "fa": "داشتن"
+                                    }
+                                },
+                                {
+                                    "word": "ไข้หวัดใหญ่",
+                                    "range": [ 2, 10 ],
+                                    "translations": {
+                                        "en": "influenza",
+                                        "fa": "آنفولانزا"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "I have influenza.",
+                                "fa": "من آنفولانزا دارم."
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ต้องตรวจร่างกาย",
+                            "words": [
+                                {
+                                    "word": "ต้อง",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "must/have to",
+                                        "fa": "باید"
+                                    }
+                                },
+                                {
+                                    "word": "ตรวจ",
+                                    "range": [ 3, 7 ],
+                                    "translations": {
+                                        "en": "to check/examine",
+                                        "fa": "بررسی کردن/معاینه کردن"
+                                    }
+                                },
+                                {
+                                    "word": "ร่างกาย",
+                                    "range": [ 7, 12 ],
+                                    "translations": {
+                                        "en": "body",
+                                        "fa": "بدن"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Need a physical examination.",
+                                "fa": "نیاز به معاینه فیزیکی دارم."
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ยาหมดแล้ว",
+                            "words": [
+                                {
+                                    "word": "ยา",
+                                    "range": [ 0, 1 ],
+                                    "translations": {
+                                        "en": "medicine",
+                                        "fa": "دارو"
+                                    }
+                                },
+                                {
+                                    "word": "หมด",
+                                    "range": [ 1, 4 ],
+                                    "translations": {
+                                        "en": "finished",
+                                        "fa": "تمام شده"
+                                    }
+                                },
+                                {
+                                    "word": "แล้ว",
+                                    "range": [ 4, 7 ],
+                                    "translations": {
+                                        "en": "already",
+                                        "fa": "در حال حاضر"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "The medicine is finished.",
+                                "fa": "دارو تمام شده است."
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ต้องนอนโรงพยาบาล",
+                            "words": [
+                                {
+                                    "word": "ต้อง",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "must/have to",
+                                        "fa": "باید"
+                                    }
+                                },
+                                {
+                                    "word": "นอน",
+                                    "range": [ 3, 6 ],
+                                    "translations": {
+                                        "en": "to sleep/stay",
+                                        "fa": "خوابیدن/ماندن"
+                                    }
+                                },
+                                {
+                                    "word": "โรงพยาบาล",
+                                    "range": [ 6, 15 ],
+                                    "translations": {
+                                        "en": "hospital",
+                                        "fa": "بیمارستان"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Need to be hospitalized.",
+                                "fa": "نیاز به بستری در بیمارستان دارم."
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "อาการดีขึ้นแล้ว",
+                            "words": [
+                                {
+                                    "word": "อาการ",
+                                    "range": [ 0, 4 ],
+                                    "translations": {
+                                        "en": "symptoms",
+                                        "fa": "علائم"
+                                    }
+                                },
+                                {
+                                    "word": "ดีขึ้น",
+                                    "range": [ 4, 9 ],
+                                    "translations": {
+                                        "en": "better",
+                                        "fa": "بهتر"
+                                    }
+                                },
+                                {
+                                    "word": "แล้ว",
+                                    "range": [ 9, 12 ],
+                                    "translations": {
+                                        "en": "already",
+                                        "fa": "در حال حاضر"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "The symptoms are better now.",
+                                "fa": "علائم الان بهتر شده‌اند."
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ฉันผ่าตัดแล้ว",
+                            "words": [
+                                {
+                                    "word": "ฉัน",
+                                    "range": [ 0, 2 ],
+                                    "translations": {
+                                        "en": "I/me (informal, female)",
+                                        "fa": "من (غیررسمی، زن)"
+                                    }
+                                },
+                                {
+                                    "word": "ผ่าตัด",
+                                    "range": [ 2, 7 ],
+                                    "translations": {
+                                        "en": "surgery",
+                                        "fa": "جراحی"
+                                    }
+                                },
+                                {
+                                    "word": "แล้ว",
+                                    "range": [ 7, 10 ],
+                                    "translations": {
+                                        "en": "already",
+                                        "fa": "در حال حاضر"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "I already had surgery.",
+                                "fa": "من قبلاً جراحی کرده‌ام."
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "รักษาตัวที่บ้าน",
+                            "words": [
+                                {
+                                    "word": "รักษา",
+                                    "range": [ 0, 5 ],
+                                    "translations": {
+                                        "en": "to treat/cure",
+                                        "fa": "درمان کردن"
+                                    }
+                                },
+                                {
+                                    "word": "ตัว",
+                                    "range": [ 5, 7 ],
+                                    "translations": {
+                                        "en": "self",
+                                        "fa": "خود"
+                                    }
+                                },
+                                {
+                                    "word": "ที่",
+                                    "range": [ 7, 9 ],
+                                    "translations": {
+                                        "en": "at",
+                                        "fa": "در"
+                                    }
+                                },
+                                {
+                                    "word": "บ้าน",
+                                    "range": [ 9, 12 ],
+                                    "translations": {
+                                        "en": "home",
+                                        "fa": "خانه"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Treating myself at home.",
+                                "fa": "در خانه خودم را درمان می‌کنم."
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ฉันสุขภาพดีแล้ว",
+                            "words": [
+                                {
+                                    "word": "ฉัน",
+                                    "range": [ 0, 2 ],
+                                    "translations": {
+                                        "en": "I/me (informal, female)",
+                                        "fa": "من (غیررسمی، زن)"
+                                    }
+                                },
+                                {
+                                    "word": "สุขภาพ",
+                                    "range": [ 2, 7 ],
+                                    "translations": {
+                                        "en": "health",
+                                        "fa": "سلامتی"
+                                    }
+                                },
+                                {
+                                    "word": "ดี",
+                                    "range": [ 7, 8 ],
+                                    "translations": {
+                                        "en": "good",
+                                        "fa": "خوب"
+                                    }
+                                },
+                                {
+                                    "word": "แล้ว",
+                                    "range": [ 8, 11 ],
+                                    "translations": {
+                                        "en": "already",
+                                        "fa": "در حال حاضر"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "I'm healthy now.",
+                                "fa": "الان سالم هستم."
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

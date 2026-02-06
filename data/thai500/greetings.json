@@ -1,0 +1,3157 @@
+{
+    "documentId": "thai500_greetings",
+    "sections": [
+        {
+            "heading": {
+                "en": "Greetings and Introductions",
+                "fa": "احوالپرسی و معرفی",
+                "th": "การทักทายและการแนะนำตัว"
+            },
+            "activities": [ "multipleChoiceWord", "multipleChoiceSentence" ],
+            "blocks": [
+                {
+                    "type": "words",
+                    "data": [
+                        {
+                            "word": "สวัสดี",
+                            "translations": {
+                                "en": "Hello",
+                                "fa": "سلام"
+                            }
+                        },
+                        {
+                            "word": "สบายดี",
+                            "translations": {
+                                "en": "Fine/well",
+                                "fa": "خوب"
+                            }
+                        },
+                        {
+                            "word": "ขอบคุณ",
+                            "translations": {
+                                "en": "Thank you",
+                                "fa": "متشکرم"
+                            }
+                        },
+                        {
+                            "word": "ขอโทษ",
+                            "translations": {
+                                "en": "Sorry",
+                                "fa": "ببخشید"
+                            }
+                        },
+                        {
+                            "word": "ลาก่อน",
+                            "translations": {
+                                "en": "Goodbye",
+                                "fa": "خداحافظ"
+                            }
+                        },
+                        {
+                            "word": "พบกันใหม่",
+                            "translations": {
+                                "en": "See you again",
+                                "fa": "دوباره می بینمت"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "paragraph",
+                    "elements": [
+                        {
+                            "type": "sentence",
+                            "source": "สวัสดีครับ/ค่ะ",
+                            "words": [
+                                {
+                                    "word": "สวัสดี",
+                                    "range": [ 0, 6 ],
+                                    "translations": {
+                                        "en": "Hello",
+                                        "fa": "سلام"
+                                    }
+                                },
+                                {
+                                    "word": "ครับ/ค่ะ",
+                                    "range": [ 6, 12 ],
+                                    "translations": {
+                                        "en": "polite particle",
+                                        "fa": "ذره مؤدب"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Hello (formal)",
+                                "fa": "سلام (رسمی)"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "สบายดีไหม",
+                            "words": [
+                                {
+                                    "word": "สบายดี",
+                                    "range": [ 0, 6 ],
+                                    "translations": {
+                                        "en": "Well/fine",
+                                        "fa": "خوب"
+                                    }
+                                },
+                                {
+                                    "word": "ไหม",
+                                    "range": [ 6, 9 ],
+                                    "translations": {
+                                        "en": "Question particle",
+                                        "fa": "ذره سوالی"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "How are you?",
+                                "fa": "حالتان چطور است؟"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "สบายดีครับ/ค่ะ",
+                            "words": [
+                                {
+                                    "word": "สบายดี",
+                                    "range": [ 0, 6 ],
+                                    "translations": {
+                                        "en": "Well/fine",
+                                        "fa": "خوب"
+                                    }
+                                },
+                                {
+                                    "word": "ครับ/ค่ะ",
+                                    "range": [ 6, 12 ],
+                                    "translations": {
+                                        "en": "polite particle",
+                                        "fa": "ذره مؤدب"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "I'm fine",
+                                "fa": "من خوبم"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ขอบคุณครับ/ค่ะ",
+                            "words": [
+                                {
+                                    "word": "ขอบคุณ",
+                                    "range": [ 0, 6 ],
+                                    "translations": {
+                                        "en": "Thank you",
+                                        "fa": "متشکرم"
+                                    }
+                                },
+                                {
+                                    "word": "ครับ/ค่ะ",
+                                    "range": [ 6, 12 ],
+                                    "translations": {
+                                        "en": "polite particle",
+                                        "fa": "ذره مؤدب"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Thank you",
+                                "fa": "متشکرم"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ขอโทษครับ/ค่ะ",
+                            "words": [
+                                {
+                                    "word": "ขอโทษ",
+                                    "range": [ 0, 6 ],
+                                    "translations": {
+                                        "en": "Sorry",
+                                        "fa": "ببخشید"
+                                    }
+                                },
+                                {
+                                    "word": "ครับ/ค่ะ",
+                                    "range": [ 6, 12 ],
+                                    "translations": {
+                                        "en": "polite particle",
+                                        "fa": "ذره مؤدب"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "I'm sorry/Excuse me",
+                                "fa": "ببخشید"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ลาก่อนครับ/ค่ะ",
+                            "words": [
+                                {
+                                    "word": "ลาก่อน",
+                                    "range": [ 0, 6 ],
+                                    "translations": {
+                                        "en": "Goodbye",
+                                        "fa": "خداحافظ"
+                                    }
+                                },
+                                {
+                                    "word": "ครับ/ค่ะ",
+                                    "range": [ 6, 12 ],
+                                    "translations": {
+                                        "en": "polite particle",
+                                        "fa": "ذره مؤدب"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Goodbye",
+                                "fa": "خداحافظ"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "พบกันใหม่ครับ/ค่ะ",
+                            "words": [
+                                {
+                                    "word": "พบกันใหม่",
+                                    "range": [ 0, 8 ],
+                                    "translations": {
+                                        "en": "See you again",
+                                        "fa": "دوباره می‌بینمت"
+                                    }
+                                },
+                                {
+                                    "word": "ครับ/ค่ะ",
+                                    "range": [ 8, 14 ],
+                                    "translations": {
+                                        "en": "polite particle",
+                                        "fa": "ذره مؤدب"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "See you again",
+                                "fa": "دوباره می‌بینمت"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "คุณชื่ออะไรครับ",
+                            "words": [
+                                {
+                                    "word": "คุณ",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "You",
+                                        "fa": "شما"
+                                    }
+                                },
+                                {
+                                    "word": "ชื่อ",
+                                    "range": [ 3, 6 ],
+                                    "translations": {
+                                        "en": "Name",
+                                        "fa": "اسم"
+                                    }
+                                },
+                                {
+                                    "word": "อะไร",
+                                    "range": [ 6, 10 ],
+                                    "translations": {
+                                        "en": "What",
+                                        "fa": "چه"
+                                    }
+                                },
+                                {
+                                    "word": "ครับ",
+                                    "range": [ 10, 13 ],
+                                    "translations": {
+                                        "en": "polite particle (male)",
+                                        "fa": "ذره مؤدب (مرد)"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "What's your name?",
+                                "fa": "اسم شما چیست؟"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ฉันชื่อ...",
+                            "words": [
+                                {
+                                    "word": "ฉัน",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "I (female)",
+                                        "fa": "من (زن)"
+                                    }
+                                },
+                                {
+                                    "word": "ชื่อ",
+                                    "range": [ 3, 6 ],
+                                    "translations": {
+                                        "en": "Name",
+                                        "fa": "اسم"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "My name is...",
+                                "fa": "اسم من ... است"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ผมชื่อ...",
+                            "words": [
+                                {
+                                    "word": "ผม",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "I (male)",
+                                        "fa": "من (مرد)"
+                                    }
+                                },
+                                {
+                                    "word": "ชื่อ",
+                                    "range": [ 3, 6 ],
+                                    "translations": {
+                                        "en": "Name",
+                                        "fa": "اسم"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "My name is...",
+                                "fa": "اسم من ... است"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ยินดีที่ได้รู้จัก",
+                            "words": [
+                                {
+                                    "word": "ยินดี",
+                                    "range": [ 0, 5 ],
+                                    "translations": {
+                                        "en": "Pleased",
+                                        "fa": "خوشحال"
+                                    }
+                                },
+                                {
+                                    "word": "ที่",
+                                    "range": [ 5, 8 ],
+                                    "translations": {
+                                        "en": "That",
+                                        "fa": "که"
+                                    }
+                                },
+                                {
+                                    "word": "ได้",
+                                    "range": [ 8, 11 ],
+                                    "translations": {
+                                        "en": "To get",
+                                        "fa": "گرفتن"
+                                    }
+                                },
+                                {
+                                    "word": "รู้จัก",
+                                    "range": [ 11, 17 ],
+                                    "translations": {
+                                        "en": "Know",
+                                        "fa": "شناختن"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Nice to meet you",
+                                "fa": "از آشنایی با شما خوشوقتم"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "เป็นยังไงบ้าง",
+                            "words": [
+                                {
+                                    "word": "เป็น",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "To be",
+                                        "fa": "بودن"
+                                    }
+                                },
+                                {
+                                    "word": "ยังไง",
+                                    "range": [ 3, 8 ],
+                                    "translations": {
+                                        "en": "How",
+                                        "fa": "چطور"
+                                    }
+                                },
+                                {
+                                    "word": "บ้าง",
+                                    "range": [ 8, 12 ],
+                                    "translations": {
+                                        "en": "Some",
+                                        "fa": "بعضی"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "How are things?",
+                                "fa": "اوضاع چطور است؟"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ไม่ได้เจอกันนานเลย",
+                            "words": [
+                                {
+                                    "word": "ไม่ได้",
+                                    "range": [ 0, 5 ],
+                                    "translations": {
+                                        "en": "Did not",
+                                        "fa": "نکرد"
+                                    }
+                                },
+                                {
+                                    "word": "เจอกัน",
+                                    "range": [ 5, 10 ],
+                                    "translations": {
+                                        "en": "Meet each other",
+                                        "fa": "یکدیگر را ملاقات کنید"
+                                    }
+                                },
+                                {
+                                    "word": "นาน",
+                                    "range": [ 10, 13 ],
+                                    "translations": {
+                                        "en": "Long time",
+                                        "fa": "مدت زمان طولانی"
+                                    }
+                                },
+                                {
+                                    "word": "เลย",
+                                    "range": [ 13, 16 ],
+                                    "translations": {
+                                        "en": "Really",
+                                        "fa": "واقعاً"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Long time no see",
+                                "fa": "خیلی وقت است که همدیگر را ندیده‌ایم"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "เป็นไงบ้าง",
+                            "words": [
+                                {
+                                    "word": "เป็น",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "To be",
+                                        "fa": "بودن"
+                                    }
+                                },
+                                {
+                                    "word": "ไง",
+                                    "range": [ 3, 6 ],
+                                    "translations": {
+                                        "en": "How",
+                                        "fa": "چطور"
+                                    }
+                                },
+                                {
+                                    "word": "บ้าง",
+                                    "range": [ 6, 10 ],
+                                    "translations": {
+                                        "en": "Some",
+                                        "fa": "بعضی"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "How's it going?",
+                                "fa": "چطور می‌گذره؟"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "สบายดีไหมครับ",
+                            "words": [
+                                {
+                                    "word": "สบายดี",
+                                    "range": [ 0, 6 ],
+                                    "translations": {
+                                        "en": "Well/fine",
+                                        "fa": "خوب"
+                                    }
+                                },
+                                {
+                                    "word": "ไหม",
+                                    "range": [ 6, 9 ],
+                                    "translations": {
+                                        "en": "Question particle",
+                                        "fa": "ذره سوالی"
+                                    }
+                                },
+                                {
+                                    "word": "ครับ",
+                                    "range": [ 9, 12 ],
+                                    "translations": {
+                                        "en": "polite particle (male)",
+                                        "fa": "ذره مؤدب (مرد)"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Are you well?",
+                                "fa": "حالتان خوب است؟"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ไม่ค่อยสบาย",
+                            "words": [
+                                {
+                                    "word": "ไม่",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "Not",
+                                        "fa": "نه"
+                                    }
+                                },
+                                {
+                                    "word": "ค่อย",
+                                    "range": [ 3, 6 ],
+                                    "translations": {
+                                        "en": "Quite",
+                                        "fa": "کاملاً"
+                                    }
+                                },
+                                {
+                                    "word": "สบาย",
+                                    "range": [ 6, 10 ],
+                                    "translations": {
+                                        "en": "Well",
+                                        "fa": "خوب"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Not very well",
+                                "fa": "خیلی خوب نیستم"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "วันนี้เป็นยังไงบ้าง",
+                            "words": [
+                                {
+                                    "word": "วันนี้",
+                                    "range": [ 0, 5 ],
+                                    "translations": {
+                                        "en": "Today",
+                                        "fa": "امروز"
+                                    }
+                                },
+                                {
+                                    "word": "เป็น",
+                                    "range": [ 5, 8 ],
+                                    "translations": {
+                                        "en": "To be",
+                                        "fa": "بودن"
+                                    }
+                                },
+                                {
+                                    "word": "ยังไง",
+                                    "range": [ 8, 13 ],
+                                    "translations": {
+                                        "en": "How",
+                                        "fa": "چطور"
+                                    }
+                                },
+                                {
+                                    "word": "บ้าง",
+                                    "range": [ 13, 17 ],
+                                    "translations": {
+                                        "en": "Some",
+                                        "fa": "بعضی"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "How's your day?",
+                                "fa": "روزتان چطور بوده است؟"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "มาไหนมา",
+                            "words": [
+                                {
+                                    "word": "มา",
+                                    "range": [ 0, 2 ],
+                                    "translations": {
+                                        "en": "Come",
+                                        "fa": "آمدن"
+                                    }
+                                },
+                                {
+                                    "word": "ไหน",
+                                    "range": [ 2, 5 ],
+                                    "translations": {
+                                        "en": "Where",
+                                        "fa": "کجا"
+                                    }
+                                },
+                                {
+                                    "word": "มา",
+                                    "range": [ 5, 7 ],
+                                    "translations": {
+                                        "en": "Come",
+                                        "fa": "آمدن"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Where have you been?",
+                                "fa": "کجا بوده‌اید؟"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "จะไปไหน",
+                            "words": [
+                                {
+                                    "word": "จะ",
+                                    "range": [ 0, 2 ],
+                                    "translations": {
+                                        "en": "Will",
+                                        "fa": "خواهد"
+                                    }
+                                },
+                                {
+                                    "word": "ไป",
+                                    "range": [ 2, 4 ],
+                                    "translations": {
+                                        "en": "Go",
+                                        "fa": "رفتن"
+                                    }
+                                },
+                                {
+                                    "word": "ไหน",
+                                    "range": [ 4, 7 ],
+                                    "translations": {
+                                        "en": "Where",
+                                        "fa": "کجا"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Where are you going?",
+                                "fa": "کجا می‌روید؟"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ไปไหนมา",
+                            "words": [
+                                {
+                                    "word": "ไป",
+                                    "range": [ 0, 2 ],
+                                    "translations": {
+                                        "en": "Go",
+                                        "fa": "رفتن"
+                                    }
+                                },
+                                {
+                                    "word": "ไหน",
+                                    "range": [ 2, 5 ],
+                                    "translations": {
+                                        "en": "Where",
+                                        "fa": "کجا"
+                                    }
+                                },
+                                {
+                                    "word": "มา",
+                                    "range": [ 5, 7 ],
+                                    "translations": {
+                                        "en": "Come",
+                                        "fa": "آمدن"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Where did you go?",
+                                "fa": "کجا رفته بودید؟"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ฉันมาจาก...",
+                            "words": [
+                                {
+                                    "word": "ฉัน",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "I (female)",
+                                        "fa": "من (زن)"
+                                    }
+                                },
+                                {
+                                    "word": "มา",
+                                    "range": [ 3, 5 ],
+                                    "translations": {
+                                        "en": "Come",
+                                        "fa": "آمدن"
+                                    }
+                                },
+                                {
+                                    "word": "จาก",
+                                    "range": [ 5, 8 ],
+                                    "translations": {
+                                        "en": "From",
+                                        "fa": "از"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "I'm from...",
+                                "fa": "من از ... هستم"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ผมมาจาก...",
+                            "words": [
+                                {
+                                    "word": "ผม",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "I (male)",
+                                        "fa": "من (مرد)"
+                                    }
+                                },
+                                {
+                                    "word": "มา",
+                                    "range": [ 3, 5 ],
+                                    "translations": {
+                                        "en": "Come",
+                                        "fa": "آمدن"
+                                    }
+                                },
+                                {
+                                    "word": "จาก",
+                                    "range": [ 5, 8 ],
+                                    "translations": {
+                                        "en": "From",
+                                        "fa": "از"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "I'm from...",
+                                "fa": "من از ... هستم"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "คุณมาจากไหน",
+                            "words": [
+                                {
+                                    "word": "คุณ",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "You",
+                                        "fa": "شما"
+                                    }
+                                },
+                                {
+                                    "word": "มา",
+                                    "range": [ 3, 5 ],
+                                    "translations": {
+                                        "en": "Come",
+                                        "fa": "آمدن"
+                                    }
+                                },
+                                {
+                                    "word": "จาก",
+                                    "range": [ 5, 8 ],
+                                    "translations": {
+                                        "en": "From",
+                                        "fa": "از"
+                                    }
+                                },
+                                {
+                                    "word": "ไหน",
+                                    "range": [ 8, 11 ],
+                                    "translations": {
+                                        "en": "Where",
+                                        "fa": "کجا"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Where are you from?",
+                                "fa": "اهل کجا هستید؟"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "คุณอายุเท่าไหร่",
+                            "words": [
+                                {
+                                    "word": "คุณ",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "You",
+                                        "fa": "شما"
+                                    }
+                                },
+                                {
+                                    "word": "อายุ",
+                                    "range": [ 3, 6 ],
+                                    "translations": {
+                                        "en": "Age",
+                                        "fa": "سن"
+                                    }
+                                },
+                                {
+                                    "word": "เท่าไหร่",
+                                    "range": [ 6, 13 ],
+                                    "translations": {
+                                        "en": "How much",
+                                        "fa": "چقدر"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "How old are you?",
+                                "fa": "چند سال دارید؟"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ฉันอายุ...ปี",
+                            "words": [
+                                {
+                                    "word": "ฉัน",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "I (female)",
+                                        "fa": "من (زن)"
+                                    }
+                                },
+                                {
+                                    "word": "อายุ",
+                                    "range": [ 3, 6 ],
+                                    "translations": {
+                                        "en": "Age",
+                                        "fa": "سن"
+                                    }
+                                },
+                                {
+                                    "word": "ปี",
+                                    "range": [ 9, 11 ],
+                                    "translations": {
+                                        "en": "Year",
+                                        "fa": "سال"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "I'm ... years old",
+                                "fa": "من ... سال دارم"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ผมอายุ...ปี",
+                            "words": [
+                                {
+                                    "word": "ผม",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "I (male)",
+                                        "fa": "من (مرد)"
+                                    }
+                                },
+                                {
+                                    "word": "อายุ",
+                                    "range": [ 3, 6 ],
+                                    "translations": {
+                                        "en": "Age",
+                                        "fa": "سن"
+                                    }
+                                },
+                                {
+                                    "word": "ปี",
+                                    "range": [ 9, 11 ],
+                                    "translations": {
+                                        "en": "Year",
+                                        "fa": "سال"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "I'm ... years old",
+                                "fa": "من ... سال دارم"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "คุณทำอาชีพอะไร",
+                            "words": [
+                                {
+                                    "word": "คุณ",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "You",
+                                        "fa": "شما"
+                                    }
+                                },
+                                {
+                                    "word": "ทำ",
+                                    "range": [ 3, 6 ],
+                                    "translations": {
+                                        "en": "Do",
+                                        "fa": "انجام دادن"
+                                    }
+                                },
+                                {
+                                    "word": "อาชีพ",
+                                    "range": [ 6, 11 ],
+                                    "translations": {
+                                        "en": "Occupation",
+                                        "fa": "شغل"
+                                    }
+                                },
+                                {
+                                    "word": "อะไร",
+                                    "range": [ 11, 15 ],
+                                    "translations": {
+                                        "en": "What",
+                                        "fa": "چه"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "What do you do for a living?",
+                                "fa": "شغل شما چیست؟"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ฉันเป็น...",
+                            "words": [
+                                {
+                                    "word": "ฉัน",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "I (female)",
+                                        "fa": "من (زن)"
+                                    }
+                                },
+                                {
+                                    "word": "เป็น",
+                                    "range": [ 3, 6 ],
+                                    "translations": {
+                                        "en": "Am/is/are",
+                                        "fa": "هستم/هست"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "I'm a...",
+                                "fa": "من یک ... هستم"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ผมเป็น...",
+                            "words": [
+                                {
+                                    "word": "ผม",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "I (male)",
+                                        "fa": "من (مرد)"
+                                    }
+                                },
+                                {
+                                    "word": "เป็น",
+                                    "range": [ 3, 6 ],
+                                    "translations": {
+                                        "en": "Am/is/are",
+                                        "fa": "هستم/هست"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "I'm a...",
+                                "fa": "من یک ... هستم"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "คุณพูดไทยได้ไหม",
+                            "words": [
+                                {
+                                    "word": "คุณ",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "You",
+                                        "fa": "شما"
+                                    }
+                                },
+                                {
+                                    "word": "พูด",
+                                    "range": [ 3, 6 ],
+                                    "translations": {
+                                        "en": "Speak",
+                                        "fa": "صحبت کردن"
+                                    }
+                                },
+                                {
+                                    "word": "ไทย",
+                                    "range": [ 6, 9 ],
+                                    "translations": {
+                                        "en": "Thai",
+                                        "fa": "تایلندی"
+                                    }
+                                },
+                                {
+                                    "word": "ได้",
+                                    "range": [ 9, 12 ],
+                                    "translations": {
+                                        "en": "Can",
+                                        "fa": "توانستن"
+                                    }
+                                },
+                                {
+                                    "word": "ไหม",
+                                    "range": [ 12, 15 ],
+                                    "translations": {
+                                        "en": "Question particle",
+                                        "fa": "ذره سوالی"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Can you speak Thai?",
+                                "fa": "آیا می‌توانید تایلندی صحبت کنید؟"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "พูดนิดหน่อย",
+                            "words": [
+                                {
+                                    "word": "พูด",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "Speak",
+                                        "fa": "صحبت کردن"
+                                    }
+                                },
+                                {
+                                    "word": "นิดหน่อย",
+                                    "range": [ 3, 11 ],
+                                    "translations": {
+                                        "en": "A little",
+                                        "fa": "کمی"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "I speak a little",
+                                "fa": "کمی صحبت می‌کنم"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "พูดไม่ได้",
+                            "words": [
+                                {
+                                    "word": "พูด",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "Speak",
+                                        "fa": "صحبت کردن"
+                                    }
+                                },
+                                {
+                                    "word": "ไม่ได้",
+                                    "range": [ 3, 8 ],
+                                    "translations": {
+                                        "en": "Cannot",
+                                        "fa": "نمی‌تواند"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "I can't speak",
+                                "fa": "نمی‌توانم صحبت کنم"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "อยู่ที่นี่มานานไหม",
+                            "words": [
+                                {
+                                    "word": "อยู่",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "Stay/live",
+                                        "fa": "ماندن/زندگی کردن"
+                                    }
+                                },
+                                {
+                                    "word": "ที่",
+                                    "range": [ 3, 6 ],
+                                    "translations": {
+                                        "en": "At",
+                                        "fa": "در"
+                                    }
+                                },
+                                {
+                                    "word": "นี่",
+                                    "range": [ 6, 9 ],
+                                    "translations": {
+                                        "en": "Here",
+                                        "fa": "اینجا"
+                                    }
+                                },
+                                {
+                                    "word": "มา",
+                                    "range": [ 9, 11 ],
+                                    "translations": {
+                                        "en": "Come",
+                                        "fa": "آمدن"
+                                    }
+                                },
+                                {
+                                    "word": "นาน",
+                                    "range": [ 11, 14 ],
+                                    "translations": {
+                                        "en": "Long time",
+                                        "fa": "مدت زمان طولانی"
+                                    }
+                                },
+                                {
+                                    "word": "ไหม",
+                                    "range": [ 14, 17 ],
+                                    "translations": {
+                                        "en": "Question particle",
+                                        "fa": "ذره سوالی"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Have you been here long?",
+                                "fa": "آیا مدت زیادی است که اینجا هستید؟"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "อยู่มานานแล้ว",
+                            "words": [
+                                {
+                                    "word": "อยู่",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "Stay/live",
+                                        "fa": "ماندن/زندگی کردن"
+                                    }
+                                },
+                                {
+                                    "word": "มา",
+                                    "range": [ 3, 5 ],
+                                    "translations": {
+                                        "en": "Come",
+                                        "fa": "آمدن"
+                                    }
+                                },
+                                {
+                                    "word": "นาน",
+                                    "range": [ 5, 8 ],
+                                    "translations": {
+                                        "en": "Long time",
+                                        "fa": "مدت زمان طولانی"
+                                    }
+                                },
+                                {
+                                    "word": "แล้ว",
+                                    "range": [ 8, 12 ],
+                                    "translations": {
+                                        "en": "Already",
+                                        "fa": "قبلاً"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "I've been here a long time",
+                                "fa": "مدت زیادی است که اینجا هستم"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "เพิ่งมาถึง",
+                            "words": [
+                                {
+                                    "word": "เพิ่ง",
+                                    "range": [ 0, 5 ],
+                                    "translations": {
+                                        "en": "Just",
+                                        "fa": "تازه"
+                                    }
+                                },
+                                {
+                                    "word": "มา",
+                                    "range": [ 5, 7 ],
+                                    "translations": {
+                                        "en": "Come",
+                                        "fa": "آمدن"
+                                    }
+                                },
+                                {
+                                    "word": "ถึง",
+                                    "range": [ 7, 10 ],
+                                    "translations": {
+                                        "en": "Arrive",
+                                        "fa": "رسیدن"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "I just arrived",
+                                "fa": "تازه رسیده‌ام"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "คุณแต่งงานแล้วหรือยัง",
+                            "words": [
+                                {
+                                    "word": "คุณ",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "You",
+                                        "fa": "شما"
+                                    }
+                                },
+                                {
+                                    "word": "แต่งงาน",
+                                    "range": [ 3, 9 ],
+                                    "translations": {
+                                        "en": "Marry",
+                                        "fa": "ازدواج کردن"
+                                    }
+                                },
+                                {
+                                    "word": "แล้ว",
+                                    "range": [ 9, 13 ],
+                                    "translations": {
+                                        "en": "Already",
+                                        "fa": "قبلاً"
+                                    }
+                                },
+                                {
+                                    "word": "หรือ",
+                                    "range": [ 13, 16 ],
+                                    "translations": {
+                                        "en": "Or",
+                                        "fa": "یا"
+                                    }
+                                },
+                                {
+                                    "word": "ยัง",
+                                    "range": [ 16, 19 ],
+                                    "translations": {
+                                        "en": "Yet",
+                                        "fa": "هنوز"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Are you married?",
+                                "fa": "آیا شما ازدواج کرده‌اید؟"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "แต่งงานแล้ว",
+                            "words": [
+                                {
+                                    "word": "แต่งงาน",
+                                    "range": [ 0, 6 ],
+                                    "translations": {
+                                        "en": "Marry",
+                                        "fa": "ازدواج کردن"
+                                    }
+                                },
+                                {
+                                    "word": "แล้ว",
+                                    "range": [ 6, 10 ],
+                                    "translations": {
+                                        "en": "Already",
+                                        "fa": "قبلاً"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "I'm married",
+                                "fa": "من ازدواج کرده‌ام"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ยังไม่ได้แต่งงาน",
+                            "words": [
+                                {
+                                    "word": "ยัง",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "Still/yet",
+                                        "fa": "هنوز"
+                                    }
+                                },
+                                {
+                                    "word": "ไม่ได้",
+                                    "range": [ 3, 8 ],
+                                    "translations": {
+                                        "en": "Have not",
+                                        "fa": "نکرده‌ام"
+                                    }
+                                },
+                                {
+                                    "word": "แต่งงาน",
+                                    "range": [ 8, 14 ],
+                                    "translations": {
+                                        "en": "Marry",
+                                        "fa": "ازدواج کردن"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "I'm not married yet",
+                                "fa": "هنوز ازدواج نکرده‌ام"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "คุณมีลูกไหม",
+                            "words": [
+                                {
+                                    "word": "คุณ",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "You",
+                                        "fa": "شما"
+                                    }
+                                },
+                                {
+                                    "word": "มี",
+                                    "range": [ 3, 5 ],
+                                    "translations": {
+                                        "en": "Have",
+                                        "fa": "داشتن"
+                                    }
+                                },
+                                {
+                                    "word": "ลูก",
+                                    "range": [ 5, 8 ],
+                                    "translations": {
+                                        "en": "Child",
+                                        "fa": "فرزند"
+                                    }
+                                },
+                                {
+                                    "word": "ไหม",
+                                    "range": [ 8, 11 ],
+                                    "translations": {
+                                        "en": "Question particle",
+                                        "fa": "ذره سوالی"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Do you have children?",
+                                "fa": "آیا فرزند دارید؟"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ไม่มีลูก",
+                            "words": [
+                                {
+                                    "word": "ไม่มี",
+                                    "range": [ 0, 5 ],
+                                    "translations": {
+                                        "en": "Don't have",
+                                        "fa": "ندارم"
+                                    }
+                                },
+                                {
+                                    "word": "ลูก",
+                                    "range": [ 5, 8 ],
+                                    "translations": {
+                                        "en": "Child",
+                                        "fa": "فرزند"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "I don't have children",
+                                "fa": "فرزند ندارم"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "มีลูก...คน",
+                            "words": [
+                                {
+                                    "word": "มี",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "Have",
+                                        "fa": "داشتن"
+                                    }
+                                },
+                                {
+                                    "word": "ลูก",
+                                    "range": [ 3, 6 ],
+                                    "translations": {
+                                        "en": "Child",
+                                        "fa": "فرزند"
+                                    }
+                                },
+                                {
+                                    "word": "คน",
+                                    "range": [ 9, 12 ],
+                                    "translations": {
+                                        "en": "Person",
+                                        "fa": "نفر"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "I have ... children",
+                                "fa": "من ... فرزند دارم"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "คุณอาศัยอยู่ที่ไหน",
+                            "words": [
+                                {
+                                    "word": "คุณ",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "You",
+                                        "fa": "شما"
+                                    }
+                                },
+                                {
+                                    "word": "อาศัย",
+                                    "range": [ 3, 8 ],
+                                    "translations": {
+                                        "en": "Live/reside",
+                                        "fa": "زندگی کردن"
+                                    }
+                                },
+                                {
+                                    "word": "อยู่",
+                                    "range": [ 8, 11 ],
+                                    "translations": {
+                                        "en": "Stay/live",
+                                        "fa": "ماندن"
+                                    }
+                                },
+                                {
+                                    "word": "ที่",
+                                    "range": [ 11, 14 ],
+                                    "translations": {
+                                        "en": "At",
+                                        "fa": "در"
+                                    }
+                                },
+                                {
+                                    "word": "ไหน",
+                                    "range": [ 14, 17 ],
+                                    "translations": {
+                                        "en": "Where",
+                                        "fa": "کجا"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Where do you live?",
+                                "fa": "کجا زندگی می‌کنید؟"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ฉันอาศัยอยู่ที่...",
+                            "words": [
+                                {
+                                    "word": "ฉัน",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "I (female)",
+                                        "fa": "من (زن)"
+                                    }
+                                },
+                                {
+                                    "word": "อาศัย",
+                                    "range": [ 3, 8 ],
+                                    "translations": {
+                                        "en": "Live/reside",
+                                        "fa": "زندگی کردن"
+                                    }
+                                },
+                                {
+                                    "word": "อยู่",
+                                    "range": [ 8, 11 ],
+                                    "translations": {
+                                        "en": "Stay/live",
+                                        "fa": "ماندن"
+                                    }
+                                },
+                                {
+                                    "word": "ที่",
+                                    "range": [ 11, 14 ],
+                                    "translations": {
+                                        "en": "At",
+                                        "fa": "در"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "I live in...",
+                                "fa": "من در ... زندگی می‌کنم"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ผมอาศัยอยู่ที่...",
+                            "words": [
+                                {
+                                    "word": "ผม",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "I (male)",
+                                        "fa": "من (مرد)"
+                                    }
+                                },
+                                {
+                                    "word": "อาศัย",
+                                    "range": [ 3, 8 ],
+                                    "translations": {
+                                        "en": "Live/reside",
+                                        "fa": "زندگی کردن"
+                                    }
+                                },
+                                {
+                                    "word": "อยู่",
+                                    "range": [ 8, 11 ],
+                                    "translations": {
+                                        "en": "Stay/live",
+                                        "fa": "ماندن"
+                                    }
+                                },
+                                {
+                                    "word": "ที่",
+                                    "range": [ 11, 14 ],
+                                    "translations": {
+                                        "en": "At",
+                                        "fa": "در"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "I live in...",
+                                "fa": "من در ... زندگی می‌کنم"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "รบกวนหน่อยได้ไหม",
+                            "words": [
+                                {
+                                    "word": "รบกวน",
+                                    "range": [ 0, 6 ],
+                                    "translations": {
+                                        "en": "Disturb/bother",
+                                        "fa": "مزاحم شدن"
+                                    }
+                                },
+                                {
+                                    "word": "หน่อย",
+                                    "range": [ 6, 11 ],
+                                    "translations": {
+                                        "en": "A little",
+                                        "fa": "کمی"
+                                    }
+                                },
+                                {
+                                    "word": "ได้",
+                                    "range": [ 11, 14 ],
+                                    "translations": {
+                                        "en": "Can",
+                                        "fa": "توانستن"
+                                    }
+                                },
+                                {
+                                    "word": "ไหม",
+                                    "range": [ 14, 17 ],
+                                    "translations": {
+                                        "en": "Question particle",
+                                        "fa": "ذره سوالی"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Can I bother you for a moment?",
+                                "fa": "می‌توانم یک لحظه مزاحم شما شوم؟"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ไม่เป็นไร",
+                            "words": [
+                                {
+                                    "word": "ไม่",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "Not",
+                                        "fa": "نه"
+                                    }
+                                },
+                                {
+                                    "word": "เป็นไร",
+                                    "range": [ 3, 8 ],
+                                    "translations": {
+                                        "en": "Anything",
+                                        "fa": "چیزی"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "It's okay/No problem",
+                                "fa": "مشکلی نیست"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ได้เลย",
+                            "words": [
+                                {
+                                    "word": "ได้",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "Can",
+                                        "fa": "توانستن"
+                                    }
+                                },
+                                {
+                                    "word": "เลย",
+                                    "range": [ 3, 6 ],
+                                    "translations": {
+                                        "en": "Certainly",
+                                        "fa": "قطعاً"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Sure/Certainly",
+                                "fa": "حتماً"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ขอโทษที",
+                            "words": [
+                                {
+                                    "word": "ขอโทษ",
+                                    "range": [ 0, 6 ],
+                                    "translations": {
+                                        "en": "Sorry",
+                                        "fa": "ببخشید"
+                                    }
+                                },
+                                {
+                                    "word": "ที",
+                                    "range": [ 6, 8 ],
+                                    "translations": {
+                                        "en": "Time",
+                                        "fa": "بار"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Sorry about that",
+                                "fa": "بابت آن ببخشید"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ไม่เป็นไรครับ/ค่ะ",
+                            "words": [
+                                {
+                                    "word": "ไม่",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "Not",
+                                        "fa": "نه"
+                                    }
+                                },
+                                {
+                                    "word": "เป็นไร",
+                                    "range": [ 3, 8 ],
+                                    "translations": {
+                                        "en": "Anything",
+                                        "fa": "چیزی"
+                                    }
+                                },
+                                {
+                                    "word": "ครับ/ค่ะ",
+                                    "range": [ 8, 14 ],
+                                    "translations": {
+                                        "en": "polite particle",
+                                        "fa": "ذره مؤدب"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "It's okay (formal)",
+                                "fa": "مشکلی نیست (رسمی)"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "คุณเป็นคนชาติอะไร",
+                            "words": [
+                                {
+                                    "word": "คุณ",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "You",
+                                        "fa": "شما"
+                                    }
+                                },
+                                {
+                                    "word": "เป็น",
+                                    "range": [ 3, 6 ],
+                                    "translations": {
+                                        "en": "Are",
+                                        "fa": "هستید"
+                                    }
+                                },
+                                {
+                                    "word": "คน",
+                                    "range": [ 6, 9 ],
+                                    "translations": {
+                                        "en": "Person",
+                                        "fa": "شخص"
+                                    }
+                                },
+                                {
+                                    "word": "ชาติ",
+                                    "range": [ 9, 12 ],
+                                    "translations": {
+                                        "en": "Nationality",
+                                        "fa": "ملیت"
+                                    }
+                                },
+                                {
+                                    "word": "อะไร",
+                                    "range": [ 12, 16 ],
+                                    "translations": {
+                                        "en": "What",
+                                        "fa": "چه"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "What's your nationality?",
+                                "fa": "ملیت شما چیست؟"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ฉันเป็นคน...",
+                            "words": [
+                                {
+                                    "word": "ฉัน",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "I (female)",
+                                        "fa": "من (زن)"
+                                    }
+                                },
+                                {
+                                    "word": "เป็น",
+                                    "range": [ 3, 6 ],
+                                    "translations": {
+                                        "en": "Am",
+                                        "fa": "هستم"
+                                    }
+                                },
+                                {
+                                    "word": "คน",
+                                    "range": [ 6, 9 ],
+                                    "translations": {
+                                        "en": "Person",
+                                        "fa": "شخص"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "I'm ... (nationality)",
+                                "fa": "من ... هستم (ملیت)"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ผมเป็นคน...",
+                            "words": [
+                                {
+                                    "word": "ผม",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "I (male)",
+                                        "fa": "من (مرد)"
+                                    }
+                                },
+                                {
+                                    "word": "เป็น",
+                                    "range": [ 3, 6 ],
+                                    "translations": {
+                                        "en": "Am",
+                                        "fa": "هستم"
+                                    }
+                                },
+                                {
+                                    "word": "คน",
+                                    "range": [ 6, 9 ],
+                                    "translations": {
+                                        "en": "Person",
+                                        "fa": "شخص"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "I'm ... (nationality)",
+                                "fa": "من ... هستم (ملیت)"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "คุณมาทำงานหรือเที่ยว",
+                            "words": [
+                                {
+                                    "word": "คุณ",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "You",
+                                        "fa": "شما"
+                                    }
+                                },
+                                {
+                                    "word": "มา",
+                                    "range": [ 3, 5 ],
+                                    "translations": {
+                                        "en": "Come",
+                                        "fa": "آمدن"
+                                    }
+                                },
+                                {
+                                    "word": "ทำงาน",
+                                    "range": [ 5, 10 ],
+                                    "translations": {
+                                        "en": "Work",
+                                        "fa": "کار کردن"
+                                    }
+                                },
+                                {
+                                    "word": "หรือ",
+                                    "range": [ 10, 13 ],
+                                    "translations": {
+                                        "en": "Or",
+                                        "fa": "یا"
+                                    }
+                                },
+                                {
+                                    "word": "เที่ยว",
+                                    "range": [ 13, 18 ],
+                                    "translations": {
+                                        "en": "Travel/tour",
+                                        "fa": "مسافرت/گشت و گذار"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Are you here for work or travel?",
+                                "fa": "آیا برای کار آمده‌اید یا مسافرت؟"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "มาทำงาน",
+                            "words": [
+                                {
+                                    "word": "มา",
+                                    "range": [ 0, 2 ],
+                                    "translations": {
+                                        "en": "Come",
+                                        "fa": "آمدن"
+                                    }
+                                },
+                                {
+                                    "word": "ทำงาน",
+                                    "range": [ 2, 7 ],
+                                    "translations": {
+                                        "en": "Work",
+                                        "fa": "کار کردن"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "I'm here for work",
+                                "fa": "برای کار آمده‌ام"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "มาเที่ยว",
+                            "words": [
+                                {
+                                    "word": "มา",
+                                    "range": [ 0, 2 ],
+                                    "translations": {
+                                        "en": "Come",
+                                        "fa": "آمدن"
+                                    }
+                                },
+                                {
+                                    "word": "เที่ยว",
+                                    "range": [ 2, 7 ],
+                                    "translations": {
+                                        "en": "Travel/tour",
+                                        "fa": "مسافرت/گشت و گذار"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "I'm here for travel",
+                                "fa": "برای مسافرت آمده‌ام"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "คุณชอบประเทศไทยไหม",
+                            "words": [
+                                {
+                                    "word": "คุณ",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "You",
+                                        "fa": "شما"
+                                    }
+                                },
+                                {
+                                    "word": "ชอบ",
+                                    "range": [ 3, 7 ],
+                                    "translations": {
+                                        "en": "Like",
+                                        "fa": "دوست داشتن"
+                                    }
+                                },
+                                {
+                                    "word": "ประเทศไทย",
+                                    "range": [ 7, 15 ],
+                                    "translations": {
+                                        "en": "Thailand",
+                                        "fa": "تایلند"
+                                    }
+                                },
+                                {
+                                    "word": "ไหม",
+                                    "range": [ 15, 18 ],
+                                    "translations": {
+                                        "en": "Question particle",
+                                        "fa": "ذره سوالی"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Do you like Thailand?",
+                                "fa": "آیا تایلند را دوست دارید؟"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ชอบมาก",
+                            "words": [
+                                {
+                                    "word": "ชอบ",
+                                    "range": [ 0, 4 ],
+                                    "translations": {
+                                        "en": "Like",
+                                        "fa": "دوست داشتن"
+                                    }
+                                },
+                                {
+                                    "word": "มาก",
+                                    "range": [ 4, 7 ],
+                                    "translations": {
+                                        "en": "Very much",
+                                        "fa": "خیلی"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "I like it very much",
+                                "fa": "خیلی دوست دارم"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ชอบอาหารไทยไหม",
+                            "words": [
+                                {
+                                    "word": "ชอบ",
+                                    "range": [ 0, 4 ],
+                                    "translations": {
+                                        "en": "Like",
+                                        "fa": "دوست داشتن"
+                                    }
+                                },
+                                {
+                                    "word": "อาหาร",
+                                    "range": [ 4, 8 ],
+                                    "translations": {
+                                        "en": "Food",
+                                        "fa": "غذا"
+                                    }
+                                },
+                                {
+                                    "word": "ไทย",
+                                    "range": [ 8, 11 ],
+                                    "translations": {
+                                        "en": "Thai",
+                                        "fa": "تایلندی"
+                                    }
+                                },
+                                {
+                                    "word": "ไหม",
+                                    "range": [ 11, 14 ],
+                                    "translations": {
+                                        "en": "Question particle",
+                                        "fa": "ذره سوالی"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Do you like Thai food?",
+                                "fa": "آیا غذاهای تایلندی را دوست دارید؟"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "อร่อยมาก",
+                            "words": [
+                                {
+                                    "word": "อร่อย",
+                                    "range": [ 0, 5 ],
+                                    "translations": {
+                                        "en": "Delicious",
+                                        "fa": "خوشمزه"
+                                    }
+                                },
+                                {
+                                    "word": "มาก",
+                                    "range": [ 5, 8 ],
+                                    "translations": {
+                                        "en": "Very much",
+                                        "fa": "خیلی"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Very delicious",
+                                "fa": "خیلی خوشمزه است"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ไม่ชอบเผ็ด",
+                            "words": [
+                                {
+                                    "word": "ไม่",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "Not",
+                                        "fa": "نه"
+                                    }
+                                },
+                                {
+                                    "word": "ชอบ",
+                                    "range": [ 3, 7 ],
+                                    "translations": {
+                                        "en": "Like",
+                                        "fa": "دوست داشتن"
+                                    }
+                                },
+                                {
+                                    "word": "เผ็ด",
+                                    "range": [ 7, 10 ],
+                                    "translations": {
+                                        "en": "Spicy",
+                                        "fa": "تند"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "I don't like spicy food",
+                                "fa": "غذای تند دوست ندارم"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "คุณมาอยู่คนเดียวหรือเปล่า",
+                            "words": [
+                                {
+                                    "word": "คุณ",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "You",
+                                        "fa": "شما"
+                                    }
+                                },
+                                {
+                                    "word": "มา",
+                                    "range": [ 3, 5 ],
+                                    "translations": {
+                                        "en": "Come",
+                                        "fa": "آمدن"
+                                    }
+                                },
+                                {
+                                    "word": "อยู่",
+                                    "range": [ 5, 8 ],
+                                    "translations": {
+                                        "en": "Stay",
+                                        "fa": "ماندن"
+                                    }
+                                },
+                                {
+                                    "word": "คนเดียว",
+                                    "range": [ 8, 14 ],
+                                    "translations": {
+                                        "en": "Alone",
+                                        "fa": "تنها"
+                                    }
+                                },
+                                {
+                                    "word": "หรือเปล่า",
+                                    "range": [ 14, 21 ],
+                                    "translations": {
+                                        "en": "Or not",
+                                        "fa": "یا نه"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Are you here alone?",
+                                "fa": "آیا شما تنها اینجا هستید؟"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "มากับเพื่อน",
+                            "words": [
+                                {
+                                    "word": "มา",
+                                    "range": [ 0, 2 ],
+                                    "translations": {
+                                        "en": "Come",
+                                        "fa": "آمدن"
+                                    }
+                                },
+                                {
+                                    "word": "กับ",
+                                    "range": [ 2, 5 ],
+                                    "translations": {
+                                        "en": "With",
+                                        "fa": "با"
+                                    }
+                                },
+                                {
+                                    "word": "เพื่อน",
+                                    "range": [ 5, 10 ],
+                                    "translations": {
+                                        "en": "Friend",
+                                        "fa": "دوست"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "I came with friends",
+                                "fa": "با دوستان آمده‌ام"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "มากับครอบครัว",
+                            "words": [
+                                {
+                                    "word": "มา",
+                                    "range": [ 0, 2 ],
+                                    "translations": {
+                                        "en": "Come",
+                                        "fa": "آمدن"
+                                    }
+                                },
+                                {
+                                    "word": "กับ",
+                                    "range": [ 2, 5 ],
+                                    "translations": {
+                                        "en": "With",
+                                        "fa": "با"
+                                    }
+                                },
+                                {
+                                    "word": "ครอบครัว",
+                                    "range": [ 5, 12 ],
+                                    "translations": {
+                                        "en": "Family",
+                                        "fa": "خانواده"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "I came with family",
+                                "fa": "با خانواده آمده‌ام"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "คุณจะอยู่ที่นี่นานไหม",
+                            "words": [
+                                {
+                                    "word": "คุณ",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "You",
+                                        "fa": "شما"
+                                    }
+                                },
+                                {
+                                    "word": "จะ",
+                                    "range": [ 3, 5 ],
+                                    "translations": {
+                                        "en": "Will",
+                                        "fa": "خواهد"
+                                    }
+                                },
+                                {
+                                    "word": "อยู่",
+                                    "range": [ 5, 8 ],
+                                    "translations": {
+                                        "en": "Stay",
+                                        "fa": "ماندن"
+                                    }
+                                },
+                                {
+                                    "word": "ที่",
+                                    "range": [ 8, 11 ],
+                                    "translations": {
+                                        "en": "At",
+                                        "fa": "در"
+                                    }
+                                },
+                                {
+                                    "word": "นี่",
+                                    "range": [ 11, 14 ],
+                                    "translations": {
+                                        "en": "Here",
+                                        "fa": "اینجا"
+                                    }
+                                },
+                                {
+                                    "word": "นาน",
+                                    "range": [ 14, 17 ],
+                                    "translations": {
+                                        "en": "Long time",
+                                        "fa": "مدت زمان طولانی"
+                                    }
+                                },
+                                {
+                                    "word": "ไหม",
+                                    "range": [ 17, 20 ],
+                                    "translations": {
+                                        "en": "Question particle",
+                                        "fa": "ذره سوالی"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Will you stay here long?",
+                                "fa": "آیا مدت زیادی اینجا خواهید ماند؟"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "อยู่แค่นี้...วัน",
+                            "words": [
+                                {
+                                    "word": "อยู่",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "Stay",
+                                        "fa": "ماندن"
+                                    }
+                                },
+                                {
+                                    "word": "แค่นี้",
+                                    "range": [ 3, 8 ],
+                                    "translations": {
+                                        "en": "Only this",
+                                        "fa": "فقط این"
+                                    }
+                                },
+                                {
+                                    "word": "วัน",
+                                    "range": [ 11, 14 ],
+                                    "translations": {
+                                        "en": "Day",
+                                        "fa": "روز"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "I'll stay only ... days",
+                                "fa": "فقط ... روز خواهم ماند"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "อยู่...เดือน",
+                            "words": [
+                                {
+                                    "word": "อยู่",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "Stay",
+                                        "fa": "ماندن"
+                                    }
+                                },
+                                {
+                                    "word": "เดือน",
+                                    "range": [ 4, 8 ],
+                                    "translations": {
+                                        "en": "Month",
+                                        "fa": "ماه"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "I'll stay ... months",
+                                "fa": "... ماه خواهم ماند"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "คุณเคยมาที่นี่มาก่อนไหม",
+                            "words": [
+                                {
+                                    "word": "คุณ",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "You",
+                                        "fa": "شما"
+                                    }
+                                },
+                                {
+                                    "word": "เคย",
+                                    "range": [ 3, 6 ],
+                                    "translations": {
+                                        "en": "Have ever",
+                                        "fa": "تا به حال"
+                                    }
+                                },
+                                {
+                                    "word": "มา",
+                                    "range": [ 6, 8 ],
+                                    "translations": {
+                                        "en": "Come",
+                                        "fa": "آمدن"
+                                    }
+                                },
+                                {
+                                    "word": "ที่",
+                                    "range": [ 8, 11 ],
+                                    "translations": {
+                                        "en": "At",
+                                        "fa": "در"
+                                    }
+                                },
+                                {
+                                    "word": "นี่",
+                                    "range": [ 11, 14 ],
+                                    "translations": {
+                                        "en": "Here",
+                                        "fa": "اینجا"
+                                    }
+                                },
+                                {
+                                    "word": "มาก่อน",
+                                    "range": [ 14, 20 ],
+                                    "translations": {
+                                        "en": "Before",
+                                        "fa": "قبلاً"
+                                    }
+                                },
+                                {
+                                    "word": "ไหม",
+                                    "range": [ 20, 23 ],
+                                    "translations": {
+                                        "en": "Question particle",
+                                        "fa": "ذره سوالی"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Have you been here before?",
+                                "fa": "آیا قبلاً اینجا بوده‌اید؟"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "เคยมาแล้ว",
+                            "words": [
+                                {
+                                    "word": "เคย",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "Have ever",
+                                        "fa": "تا به حال"
+                                    }
+                                },
+                                {
+                                    "word": "มา",
+                                    "range": [ 3, 5 ],
+                                    "translations": {
+                                        "en": "Come",
+                                        "fa": "آمدن"
+                                    }
+                                },
+                                {
+                                    "word": "แล้ว",
+                                    "range": [ 5, 9 ],
+                                    "translations": {
+                                        "en": "Already",
+                                        "fa": "قبلاً"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "I've been here before",
+                                "fa": "قبلاً اینجا بوده‌ام"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ครั้งแรก",
+                            "words": [
+                                {
+                                    "word": "ครั้ง",
+                                    "range": [ 0, 5 ],
+                                    "translations": {
+                                        "en": "Time",
+                                        "fa": "بار"
+                                    }
+                                },
+                                {
+                                    "word": "แรก",
+                                    "range": [ 5, 8 ],
+                                    "translations": {
+                                        "en": "First",
+                                        "fa": "اول"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "First time",
+                                "fa": "اولین بار"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "คุณชอบอะไรในประเทศไทย",
+                            "words": [
+                                {
+                                    "word": "คุณ",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "You",
+                                        "fa": "شما"
+                                    }
+                                },
+                                {
+                                    "word": "ชอบ",
+                                    "range": [ 3, 7 ],
+                                    "translations": {
+                                        "en": "Like",
+                                        "fa": "دوست داشتن"
+                                    }
+                                },
+                                {
+                                    "word": "อะไร",
+                                    "range": [ 7, 11 ],
+                                    "translations": {
+                                        "en": "What",
+                                        "fa": "چه"
+                                    }
+                                },
+                                {
+                                    "word": "ใน",
+                                    "range": [ 11, 13 ],
+                                    "translations": {
+                                        "en": "In",
+                                        "fa": "در"
+                                    }
+                                },
+                                {
+                                    "word": "ประเทศไทย",
+                                    "range": [ 13, 21 ],
+                                    "translations": {
+                                        "en": "Thailand",
+                                        "fa": "تایلند"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "What do you like in Thailand?",
+                                "fa": "چه چیزی در تایلند دوست دارید؟"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ชอบวัฒนธรรม",
+                            "words": [
+                                {
+                                    "word": "ชอบ",
+                                    "range": [ 0, 4 ],
+                                    "translations": {
+                                        "en": "Like",
+                                        "fa": "دوست داشتن"
+                                    }
+                                },
+                                {
+                                    "word": "วัฒนธรรม",
+                                    "range": [ 4, 12 ],
+                                    "translations": {
+                                        "en": "Culture",
+                                        "fa": "فرهنگ"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "I like the culture",
+                                "fa": "فرهنگ را دوست دارم"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ชอบธรรมชาติ",
+                            "words": [
+                                {
+                                    "word": "ชอบ",
+                                    "range": [ 0, 4 ],
+                                    "translations": {
+                                        "en": "Like",
+                                        "fa": "دوست داشتن"
+                                    }
+                                },
+                                {
+                                    "word": "ธรรมชาติ",
+                                    "range": [ 4, 11 ],
+                                    "translations": {
+                                        "en": "Nature",
+                                        "fa": "طبیعت"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "I like the nature",
+                                "fa": "طبیعت را دوست دارم"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "คนไทยน่ารักมาก",
+                            "words": [
+                                {
+                                    "word": "คน",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "People",
+                                        "fa": "مردم"
+                                    }
+                                },
+                                {
+                                    "word": "ไทย",
+                                    "range": [ 3, 6 ],
+                                    "translations": {
+                                        "en": "Thai",
+                                        "fa": "تایلندی"
+                                    }
+                                },
+                                {
+                                    "word": "น่ารัก",
+                                    "range": [ 6, 12 ],
+                                    "translations": {
+                                        "en": "Lovely/kind",
+                                        "fa": "دوست‌داشتنی/مهربان"
+                                    }
+                                },
+                                {
+                                    "word": "มาก",
+                                    "range": [ 12, 15 ],
+                                    "translations": {
+                                        "en": "Very much",
+                                        "fa": "خیلی"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Thai people are very kind",
+                                "fa": "مردم تایلند خیلی مهربان هستند"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "อากาศดี",
+                            "words": [
+                                {
+                                    "word": "อากาศ",
+                                    "range": [ 0, 4 ],
+                                    "translations": {
+                                        "en": "Weather",
+                                        "fa": "آب و هوا"
+                                    }
+                                },
+                                {
+                                    "word": "ดี",
+                                    "range": [ 4, 6 ],
+                                    "translations": {
+                                        "en": "Good",
+                                        "fa": "خوب"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "The weather is good",
+                                "fa": "آب و هوا خوب است"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ขอเบอร์โทรศัพท์ได้ไหม",
+                            "words": [
+                                {
+                                    "word": "ขอ",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "Ask for",
+                                        "fa": "درخواست کردن"
+                                    }
+                                },
+                                {
+                                    "word": "เบอร์โทรศัพท์",
+                                    "range": [ 3, 14 ],
+                                    "translations": {
+                                        "en": "Phone number",
+                                        "fa": "شماره تلفن"
+                                    }
+                                },
+                                {
+                                    "word": "ได้",
+                                    "range": [ 14, 17 ],
+                                    "translations": {
+                                        "en": "Can",
+                                        "fa": "توانستن"
+                                    }
+                                },
+                                {
+                                    "word": "ไหม",
+                                    "range": [ 17, 20 ],
+                                    "translations": {
+                                        "en": "Question particle",
+                                        "fa": "ذره سوالی"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Can I have your phone number?",
+                                "fa": "می‌توانم شماره تلفن شما را داشته باشم؟"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ขออีเมลได้ไหม",
+                            "words": [
+                                {
+                                    "word": "ขอ",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "Ask for",
+                                        "fa": "درخواست کردن"
+                                    }
+                                },
+                                {
+                                    "word": "อีเมล",
+                                    "range": [ 3, 8 ],
+                                    "translations": {
+                                        "en": "Email",
+                                        "fa": "ایمیل"
+                                    }
+                                },
+                                {
+                                    "word": "ได้",
+                                    "range": [ 8, 11 ],
+                                    "translations": {
+                                        "en": "Can",
+                                        "fa": "توانستن"
+                                    }
+                                },
+                                {
+                                    "word": "ไหม",
+                                    "range": [ 11, 14 ],
+                                    "translations": {
+                                        "en": "Question particle",
+                                        "fa": "ذره سوالی"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Can I have your email?",
+                                "fa": "می‌توانم ایمیل شما را داشته باشم؟"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "มีไลน์ไหม",
+                            "words": [
+                                {
+                                    "word": "มี",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "Have",
+                                        "fa": "داشتن"
+                                    }
+                                },
+                                {
+                                    "word": "ไลน์",
+                                    "range": [ 3, 7 ],
+                                    "translations": {
+                                        "en": "LINE (messaging app)",
+                                        "fa": "لاین (برنامه پیام‌رسانی)"
+                                    }
+                                },
+                                {
+                                    "word": "ไหม",
+                                    "range": [ 7, 10 ],
+                                    "translations": {
+                                        "en": "Question particle",
+                                        "fa": "ذره سوالی"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Do you have LINE?",
+                                "fa": "آیا لاین دارید؟"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ใช่ครับ/ค่ะ",
+                            "words": [
+                                {
+                                    "word": "ใช่",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "Yes",
+                                        "fa": "بله"
+                                    }
+                                },
+                                {
+                                    "word": "ครับ/ค่ะ",
+                                    "range": [ 3, 9 ],
+                                    "translations": {
+                                        "en": "polite particle",
+                                        "fa": "ذره مؤدب"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Yes (formal)",
+                                "fa": "بله (رسمی)"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ไม่ใช่ครับ/ค่ะ",
+                            "words": [
+                                {
+                                    "word": "ไม่",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "Not",
+                                        "fa": "نه"
+                                    }
+                                },
+                                {
+                                    "word": "ใช่",
+                                    "range": [ 3, 6 ],
+                                    "translations": {
+                                        "en": "Yes",
+                                        "fa": "بله"
+                                    }
+                                },
+                                {
+                                    "word": "ครับ/ค่ะ",
+                                    "range": [ 6, 12 ],
+                                    "translations": {
+                                        "en": "polite particle",
+                                        "fa": "ذره مؤدب"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "No (formal)",
+                                "fa": "نه (رسمی)"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "อาจจะ",
+                            "words": [
+                                {
+                                    "word": "อาจจะ",
+                                    "range": [ 0, 5 ],
+                                    "translations": {
+                                        "en": "Maybe",
+                                        "fa": "شاید"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Maybe",
+                                "fa": "شاید"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ไม่แน่ใจ",
+                            "words": [
+                                {
+                                    "word": "ไม่",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "Not",
+                                        "fa": "نه"
+                                    }
+                                },
+                                {
+                                    "word": "แน่ใจ",
+                                    "range": [ 3, 8 ],
+                                    "translations": {
+                                        "en": "Sure",
+                                        "fa": "مطمئن"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "I'm not sure",
+                                "fa": "مطمئن نیستم"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ขอตัวก่อนนะ",
+                            "words": [
+                                {
+                                    "word": "ขอตัว",
+                                    "range": [ 0, 6 ],
+                                    "translations": {
+                                        "en": "Excuse myself",
+                                        "fa": "عذر خواستن"
+                                    }
+                                },
+                                {
+                                    "word": "ก่อน",
+                                    "range": [ 6, 10 ],
+                                    "translations": {
+                                        "en": "Before",
+                                        "fa": "قبل"
+                                    }
+                                },
+                                {
+                                    "word": "นะ",
+                                    "range": [ 10, 12 ],
+                                    "translations": {
+                                        "en": "Particle for softening",
+                                        "fa": "ذره برای نرم کردن"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "I have to go now",
+                                "fa": "باید بروم"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ไว้เจอกันใหม่",
+                            "words": [
+                                {
+                                    "word": "ไว้",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "For later",
+                                        "fa": "برای بعد"
+                                    }
+                                },
+                                {
+                                    "word": "เจอกัน",
+                                    "range": [ 3, 8 ],
+                                    "translations": {
+                                        "en": "Meet each other",
+                                        "fa": "یکدیگر را ملاقات کنید"
+                                    }
+                                },
+                                {
+                                    "word": "ใหม่",
+                                    "range": [ 8, 11 ],
+                                    "translations": {
+                                        "en": "Again/new",
+                                        "fa": "دوباره/جدید"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "See you again",
+                                "fa": "دوباره می‌بینمت"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "เดินทางปลอดภัยนะ",
+                            "words": [
+                                {
+                                    "word": "เดินทาง",
+                                    "range": [ 0, 6 ],
+                                    "translations": {
+                                        "en": "Travel",
+                                        "fa": "مسافرت"
+                                    }
+                                },
+                                {
+                                    "word": "ปลอดภัย",
+                                    "range": [ 6, 13 ],
+                                    "translations": {
+                                        "en": "Safe",
+                                        "fa": "امن"
+                                    }
+                                },
+                                {
+                                    "word": "นะ",
+                                    "range": [ 13, 15 ],
+                                    "translations": {
+                                        "en": "Particle for softening",
+                                        "fa": "ذره برای نرم کردن"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Have a safe trip",
+                                "fa": "سفر ایمنی داشته باشید"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "โชคดีนะ",
+                            "words": [
+                                {
+                                    "word": "โชคดี",
+                                    "range": [ 0, 5 ],
+                                    "translations": {
+                                        "en": "Good luck",
+                                        "fa": "موفق باشید"
+                                    }
+                                },
+                                {
+                                    "word": "นะ",
+                                    "range": [ 5, 7 ],
+                                    "translations": {
+                                        "en": "Particle for softening",
+                                        "fa": "ذره برای نرم کردن"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Good luck",
+                                "fa": "موفق باشید"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ดูแลตัวเองด้วย",
+                            "words": [
+                                {
+                                    "word": "ดูแล",
+                                    "range": [ 0, 4 ],
+                                    "translations": {
+                                        "en": "Take care",
+                                        "fa": "مراقبت کردن"
+                                    }
+                                },
+                                {
+                                    "word": "ตัวเอง",
+                                    "range": [ 4, 9 ],
+                                    "translations": {
+                                        "en": "Yourself",
+                                        "fa": "خودت"
+                                    }
+                                },
+                                {
+                                    "word": "ด้วย",
+                                    "range": [ 9, 13 ],
+                                    "translations": {
+                                        "en": "Too/also",
+                                        "fa": "هم"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Take care of yourself",
+                                "fa": "مواظب خودت باش"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ฝากสวัสดีไปหา...ด้วย",
+                            "words": [
+                                {
+                                    "word": "ฝาก",
+                                    "range": [ 0, 4 ],
+                                    "translations": {
+                                        "en": "Send regards",
+                                        "fa": "سلام رساندن"
+                                    }
+                                },
+                                {
+                                    "word": "สวัสดี",
+                                    "range": [ 4, 10 ],
+                                    "translations": {
+                                        "en": "Hello",
+                                        "fa": "سلام"
+                                    }
+                                },
+                                {
+                                    "word": "ไปหา",
+                                    "range": [ 10, 14 ],
+                                    "translations": {
+                                        "en": "To",
+                                        "fa": "به"
+                                    }
+                                },
+                                {
+                                    "word": "ด้วย",
+                                    "range": [ 16, 20 ],
+                                    "translations": {
+                                        "en": "Too/also",
+                                        "fa": "هم"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Say hello to... for me",
+                                "fa": "سلام مرا به ... برسان"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "คิดถึงนะ",
+                            "words": [
+                                {
+                                    "word": "คิดถึง",
+                                    "range": [ 0, 6 ],
+                                    "translations": {
+                                        "en": "Miss",
+                                        "fa": "دوست داشتن"
+                                    }
+                                },
+                                {
+                                    "word": "นะ",
+                                    "range": [ 6, 8 ],
+                                    "translations": {
+                                        "en": "Particle for softening",
+                                        "fa": "ذره برای نرم کردن"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "I'll miss you",
+                                "fa": "دوستت خواهم داشت"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "แล้วเจอกัน",
+                            "words": [
+                                {
+                                    "word": "แล้ว",
+                                    "range": [ 0, 4 ],
+                                    "translations": {
+                                        "en": "Then",
+                                        "fa": "سپس"
+                                    }
+                                },
+                                {
+                                    "word": "เจอกัน",
+                                    "range": [ 4, 9 ],
+                                    "translations": {
+                                        "en": "Meet each other",
+                                        "fa": "یکدیگر را ملاقات کنید"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "See you later",
+                                "fa": "بعداً می‌بینمت"
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

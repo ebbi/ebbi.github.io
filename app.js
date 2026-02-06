@@ -1399,6 +1399,24 @@ const App = {
     ============================================================================ */
 
     /**
+     * Remove duplicate word items from quiz data
+     * @param {Array} items - Quiz items array
+     * @param {string} sourceLanguage - Source language code
+     * @returns {Array} Unique items
+     */
+    removeDuplicateWordItems(items, sourceLanguage) {
+        const seen = new Set();
+        return items.filter(item => {
+            const key = item.languageMap[sourceLanguage];
+            if (seen.has(key)) {
+                return false;
+            }
+            seen.add(key);
+            return true;
+        });
+    },
+    
+    /**
      * Extract flat quiz items from a document (or a single section)
      * @param {Object} document - Document object
      * @param {number|null} sectionIndex - Section index or null for entire document
@@ -1412,11 +1430,40 @@ const App = {
 
         sections.forEach(section => {
             section.blocks.forEach(block => {
-                if (type === 'multipleChoiceWord' && block.type === 'words') {
-                    block.data.forEach(word => {
-                        const languageMap = { ...word.translations, [sourceLanguage]: word.word };
-                        items.push({ id: Math.random().toString(36), languageMap });
-                    });
+                if (type === 'multipleChoiceWord') {
+                    // 1. Include words from 'words' blocks
+                    if (block.type === 'words') {
+                        block.data.forEach(word => {
+                            const languageMap = {
+                                ...word.translations,
+                                [sourceLanguage]: word.word
+                            };
+                            items.push({
+                                id: Math.random().toString(36),
+                                languageMap,
+                                source: 'words-block'
+                            });
+                        });
+                    }
+                    // 2. ALSO include individual words from 'sentence' elements
+                    else if (block.type === 'paragraph') {
+                        block.elements.forEach(element => {
+                            if (element.type === 'sentence' && element.words && element.words.length > 0) {
+                                element.words.forEach(word => {
+                                    const languageMap = {
+                                        ...word.translations,
+                                        [sourceLanguage]: word.word
+                                    };
+                                    items.push({
+                                        id: Math.random().toString(36),
+                                        languageMap,
+                                        source: 'sentence-words',
+                                        sentenceSource: element.source
+                                    });
+                                });
+                            }
+                        });
+                    }
                 } else if (type === 'multipleChoiceSentence' && block.type === 'paragraph') {
                     block.elements.forEach(element => {
                         if (element.type === 'sentence') {
@@ -1424,13 +1471,25 @@ const App = {
                                 ...element.translations,
                                 [sourceLanguage]: element.source
                             };
-                            items.push({ id: Math.random().toString(36), languageMap });
+                            items.push({
+                                id: Math.random().toString(36),
+                                languageMap,
+                                source: 'sentence'
+                            });
                         }
                     });
                 }
             });
         });
-        return items;
+
+        // Remove duplicate words
+        const uniqueItems = this.removeDuplicateWordItems(items, sourceLanguage);
+
+        // Shuffle and optionally limit the number of quiz items
+        const shuffledItems = uniqueItems.sort(() => Math.random() - 0.5);
+
+        // Return all items or limit to a reasonable number
+        return shuffledItems; // Or: return shuffledItems.slice(0, 20);
     },
 
     /**

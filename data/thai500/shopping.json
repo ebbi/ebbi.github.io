@@ -1,0 +1,1823 @@
+{
+    "documentId": "thai500_shopping",
+    "sections": [
+        {
+            "heading": {
+                "en": "Shopping",
+                "fa": "خرید",
+                "th": "การช้อปปิ้ง"
+            },
+            "activities": [ "multipleChoiceWord", "multipleChoiceSentence" ],
+            "blocks": [
+                {
+                    "type": "words",
+                    "data": [
+                        {
+                            "word": "ซื้อ",
+                            "translations": {
+                                "en": "Buy",
+                                "fa": "خرید"
+                            }
+                        },
+                        {
+                            "word": "ขาย",
+                            "translations": {
+                                "en": "Sell",
+                                "fa": "فروش"
+                            }
+                        },
+                        {
+                            "word": "ราคา",
+                            "translations": {
+                                "en": "Price",
+                                "fa": "قیمت"
+                            }
+                        },
+                        {
+                            "word": "ตลาด",
+                            "translations": {
+                                "en": "Market",
+                                "fa": "บ��زار"
+                            }
+                        },
+                        {
+                            "word": "ลดราคา",
+                            "translations": {
+                                "en": "Discount",
+                                "fa": "تخفیف"
+                            }
+                        },
+                        {
+                            "word": "จ่ายเงิน",
+                            "translations": {
+                                "en": "Pay money",
+                                "fa": "پول پرداخت کن"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "paragraph",
+                    "elements": [
+                        {
+                            "type": "sentence",
+                            "source": "อันนี้ราคาเท่าไหร่ครับ",
+                            "words": [
+                                {
+                                    "word": "อัน",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "Item/thing",
+                                        "fa": "مورد/چیز"
+                                    }
+                                },
+                                {
+                                    "word": "นี้",
+                                    "range": [ 3, 6 ],
+                                    "translations": {
+                                        "en": "This",
+                                        "fa": "این"
+                                    }
+                                },
+                                {
+                                    "word": "ราคา",
+                                    "range": [ 6, 10 ],
+                                    "translations": {
+                                        "en": "Price",
+                                        "fa": "قیمت"
+                                    }
+                                },
+                                {
+                                    "word": "เท่าไหร่",
+                                    "range": [ 10, 17 ],
+                                    "translations": {
+                                        "en": "How much",
+                                        "fa": "چقدر"
+                                    }
+                                },
+                                {
+                                    "word": "ครับ",
+                                    "range": [ 17, 20 ],
+                                    "translations": {
+                                        "en": "polite particle (male)",
+                                        "fa": "ذره مؤدب (مرد)"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "How much is this?",
+                                "fa": "این چقدر است؟"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ลดหน่อยได้ไหม",
+                            "words": [
+                                {
+                                    "word": "ลด",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "Reduce",
+                                        "fa": "کاهش دادن"
+                                    }
+                                },
+                                {
+                                    "word": "หน่อย",
+                                    "range": [ 3, 8 ],
+                                    "translations": {
+                                        "en": "A little",
+                                        "fa": "کمی"
+                                    }
+                                },
+                                {
+                                    "word": "ได้",
+                                    "range": [ 8, 11 ],
+                                    "translations": {
+                                        "en": "Can",
+                                        "fa": "توانستن"
+                                    }
+                                },
+                                {
+                                    "word": "ไหม",
+                                    "range": [ 11, 14 ],
+                                    "translations": {
+                                        "en": "Question particle",
+                                        "fa": "ذره سوالی"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Can you reduce the price a little?",
+                                "fa": "می‌توانید قیمت را کمی کاهش دهید؟"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "แพงเกินไป",
+                            "words": [
+                                {
+                                    "word": "แพง",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "Expensive",
+                                        "fa": "گران"
+                                    }
+                                },
+                                {
+                                    "word": "เกินไป",
+                                    "range": [ 3, 8 ],
+                                    "translations": {
+                                        "en": "Too much",
+                                        "fa": "خیلی زیاد"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Too expensive",
+                                "fa": "خیلی گران است"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ถูกกว่านี้ได้ไหม",
+                            "words": [
+                                {
+                                    "word": "ถูก",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "Cheap",
+                                        "fa": "ارزان"
+                                    }
+                                },
+                                {
+                                    "word": "กว่า",
+                                    "range": [ 3, 6 ],
+                                    "translations": {
+                                        "en": "More than",
+                                        "fa": "بیشتر از"
+                                    }
+                                },
+                                {
+                                    "word": "นี้",
+                                    "range": [ 6, 9 ],
+                                    "translations": {
+                                        "en": "This",
+                                        "fa": "این"
+                                    }
+                                },
+                                {
+                                    "word": "ได้",
+                                    "range": [ 9, 12 ],
+                                    "translations": {
+                                        "en": "Can",
+                                        "fa": "توانستن"
+                                    }
+                                },
+                                {
+                                    "word": "ไหม",
+                                    "range": [ 12, 15 ],
+                                    "translations": {
+                                        "en": "Question particle",
+                                        "fa": "ذره سوالی"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Can it be cheaper than this?",
+                                "fa": "می‌تواند ارزان‌تر از این باشد؟"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ขอตัวอย่างหน่อย",
+                            "words": [
+                                {
+                                    "word": "ขอ",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "Please give",
+                                        "fa": "لطفاً بدهید"
+                                    }
+                                },
+                                {
+                                    "word": "ตัวอย่าง",
+                                    "range": [ 3, 9 ],
+                                    "translations": {
+                                        "en": "Sample",
+                                        "fa": "نمونه"
+                                    }
+                                },
+                                {
+                                    "word": "หน่อย",
+                                    "range": [ 9, 14 ],
+                                    "translations": {
+                                        "en": "A little",
+                                        "fa": "کمی"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Can I see a sample?",
+                                "fa": "می‌توانم یک نمونه ببینم؟"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "มีสีอื่นไหม",
+                            "words": [
+                                {
+                                    "word": "มี",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "Have",
+                                        "fa": "داشتن"
+                                    }
+                                },
+                                {
+                                    "word": "สี",
+                                    "range": [ 3, 5 ],
+                                    "translations": {
+                                        "en": "Color",
+                                        "fa": "رنگ"
+                                    }
+                                },
+                                {
+                                    "word": "อื่น",
+                                    "range": [ 5, 8 ],
+                                    "translations": {
+                                        "en": "Other",
+                                        "fa": "دیگر"
+                                    }
+                                },
+                                {
+                                    "word": "ไหม",
+                                    "range": [ 8, 11 ],
+                                    "translations": {
+                                        "en": "Question particle",
+                                        "fa": "ذره سوالی"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Do you have other colors?",
+                                "fa": "آیا رنگ‌های دیگر دارید؟"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "มีไซส์ใหญ่กว่านี้ไหม",
+                            "words": [
+                                {
+                                    "word": "มี",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "Have",
+                                        "fa": "داشتن"
+                                    }
+                                },
+                                {
+                                    "word": "ไซส์",
+                                    "range": [ 3, 7 ],
+                                    "translations": {
+                                        "en": "Size",
+                                        "fa": "سایز"
+                                    }
+                                },
+                                {
+                                    "word": "ใหญ่",
+                                    "range": [ 7, 11 ],
+                                    "translations": {
+                                        "en": "Large",
+                                        "fa": "بزرگ"
+                                    }
+                                },
+                                {
+                                    "word": "กว่า",
+                                    "range": [ 11, 14 ],
+                                    "translations": {
+                                        "en": "More than",
+                                        "fa": "بیشتر از"
+                                    }
+                                },
+                                {
+                                    "word": "นี้",
+                                    "range": [ 14, 17 ],
+                                    "translations": {
+                                        "en": "This",
+                                        "fa": "این"
+                                    }
+                                },
+                                {
+                                    "word": "ไหม",
+                                    "range": [ 17, 20 ],
+                                    "translations": {
+                                        "en": "Question particle",
+                                        "fa": "ذره سوالی"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Do you have a larger size?",
+                                "fa": "آیا سایز بزرگ‌تری دارید؟"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ลองได้ไหม",
+                            "words": [
+                                {
+                                    "word": "ลอง",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "Try",
+                                        "fa": "امتحان کردن"
+                                    }
+                                },
+                                {
+                                    "word": "ได้",
+                                    "range": [ 3, 6 ],
+                                    "translations": {
+                                        "en": "Can",
+                                        "fa": "توانستن"
+                                    }
+                                },
+                                {
+                                    "word": "ไหม",
+                                    "range": [ 6, 9 ],
+                                    "translations": {
+                                        "en": "Question particle",
+                                        "fa": "ذره سوالی"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Can I try it?",
+                                "fa": "می‌توانم آن را امتحان کنم؟"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ห้องลองเสื้อผ้าอยู่ไหน",
+                            "words": [
+                                {
+                                    "word": "ห้อง",
+                                    "range": [ 0, 4 ],
+                                    "translations": {
+                                        "en": "Room",
+                                        "fa": "اتاق"
+                                    }
+                                },
+                                {
+                                    "word": "ลอง",
+                                    "range": [ 4, 7 ],
+                                    "translations": {
+                                        "en": "Fitting",
+                                        "fa": "امتحان"
+                                    }
+                                },
+                                {
+                                    "word": "เสื้อผ้า",
+                                    "range": [ 7, 13 ],
+                                    "translations": {
+                                        "en": "Clothes",
+                                        "fa": "لباس"
+                                    }
+                                },
+                                {
+                                    "word": "อยู่",
+                                    "range": [ 13, 16 ],
+                                    "translations": {
+                                        "en": "Is located",
+                                        "fa": "قرار دارد"
+                                    }
+                                },
+                                {
+                                    "word": "ไหน",
+                                    "range": [ 16, 19 ],
+                                    "translations": {
+                                        "en": "Where",
+                                        "fa": "کجا"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Where is the fitting room?",
+                                "fa": "اتاق پرو کجاست؟"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "เอาแล้ว",
+                            "words": [
+                                {
+                                    "word": "เอา",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "Take",
+                                        "fa": "گرفتن"
+                                    }
+                                },
+                                {
+                                    "word": "แล้ว",
+                                    "range": [ 3, 7 ],
+                                    "translations": {
+                                        "en": "Already",
+                                        "fa": "قبلاً"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "I'll take it",
+                                "fa": "آن را می‌خرم"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "คิดเงินที",
+                            "words": [
+                                {
+                                    "word": "คิด",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "Calculate",
+                                        "fa": "محاسبه کردن"
+                                    }
+                                },
+                                {
+                                    "word": "เงิน",
+                                    "range": [ 3, 6 ],
+                                    "translations": {
+                                        "en": "Money",
+                                        "fa": "پول"
+                                    }
+                                },
+                                {
+                                    "word": "ที",
+                                    "range": [ 6, 8 ],
+                                    "translations": {
+                                        "en": "Please",
+                                        "fa": "لطفاً"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Check, please",
+                                "fa": "لطفاً صورت حساب را بیاورید"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "รวมกันเท่าไหร่",
+                            "words": [
+                                {
+                                    "word": "รวม",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "Total",
+                                        "fa": "مجموع"
+                                    }
+                                },
+                                {
+                                    "word": "กัน",
+                                    "range": [ 3, 6 ],
+                                    "translations": {
+                                        "en": "Together",
+                                        "fa": "با هم"
+                                    }
+                                },
+                                {
+                                    "word": "เท่าไหร่",
+                                    "range": [ 6, 13 ],
+                                    "translations": {
+                                        "en": "How much",
+                                        "fa": "چقدر"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "How much is the total?",
+                                "fa": "مجموع چقدر می‌شود؟"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "รับบัตรเครดิตไหม",
+                            "words": [
+                                {
+                                    "word": "รับ",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "Accept",
+                                        "fa": "پذیرفتن"
+                                    }
+                                },
+                                {
+                                    "word": "บัตรเครดิต",
+                                    "range": [ 3, 11 ],
+                                    "translations": {
+                                        "en": "Credit card",
+                                        "fa": "کارت اعتباری"
+                                    }
+                                },
+                                {
+                                    "word": "ไหม",
+                                    "range": [ 11, 14 ],
+                                    "translations": {
+                                        "en": "Question particle",
+                                        "fa": "ذره سوالی"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Do you accept credit cards?",
+                                "fa": "آیا کارت اعتباری قبول می‌کنید؟"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ขอถุงพลาสติก",
+                            "words": [
+                                {
+                                    "word": "ขอ",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "Please give",
+                                        "fa": "لطفاً بدهید"
+                                    }
+                                },
+                                {
+                                    "word": "ถุง",
+                                    "range": [ 3, 6 ],
+                                    "translations": {
+                                        "en": "Bag",
+                                        "fa": "کیسه"
+                                    }
+                                },
+                                {
+                                    "word": "พลาสติก",
+                                    "range": [ 6, 13 ],
+                                    "translations": {
+                                        "en": "Plastic",
+                                        "fa": "پلاستیکی"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Plastic bag, please",
+                                "fa": "لطفاً کیسه پلاستیکی بدهید"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "เก็บไว้ก่อน",
+                            "words": [
+                                {
+                                    "word": "เก็บ",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "Keep",
+                                        "fa": "نگه داشتن"
+                                    }
+                                },
+                                {
+                                    "word": "ไว้",
+                                    "range": [ 3, 6 ],
+                                    "translations": {
+                                        "en": "For later",
+                                        "fa": "برای بعد"
+                                    }
+                                },
+                                {
+                                    "word": "ก่อน",
+                                    "range": [ 6, 10 ],
+                                    "translations": {
+                                        "en": "First",
+                                        "fa": "اول"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "I'll think about it first",
+                                "fa": "اول درباره آن فکر می‌کنم"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ไม่เอาละ",
+                            "words": [
+                                {
+                                    "word": "ไม่",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "Not",
+                                        "fa": "نه"
+                                    }
+                                },
+                                {
+                                    "word": "เอา",
+                                    "range": [ 3, 6 ],
+                                    "translations": {
+                                        "en": "Take",
+                                        "fa": "گرفتن"
+                                    }
+                                },
+                                {
+                                    "word": "ละ",
+                                    "range": [ 6, 8 ],
+                                    "translations": {
+                                        "en": "Particle",
+                                        "fa": "ذره"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "I don't want it",
+                                "fa": "آن را نمی‌خواهم"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "มาดูเฉยๆ",
+                            "words": [
+                                {
+                                    "word": "มา",
+                                    "range": [ 0, 2 ],
+                                    "translations": {
+                                        "en": "Come",
+                                        "fa": "آمدن"
+                                    }
+                                },
+                                {
+                                    "word": "ดู",
+                                    "range": [ 2, 4 ],
+                                    "translations": {
+                                        "en": "Look",
+                                        "fa": "نگاه کردن"
+                                    }
+                                },
+                                {
+                                    "word": "เฉยๆ",
+                                    "range": [ 4, 9 ],
+                                    "translations": {
+                                        "en": "Just",
+                                        "fa": "فقط"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Just looking",
+                                "fa": "فقط نگاه می‌کنم"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ที่ไหนมีขาย",
+                            "words": [
+                                {
+                                    "word": "ที่",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "Where",
+                                        "fa": "کجا"
+                                    }
+                                },
+                                {
+                                    "word": "ไหน",
+                                    "range": [ 3, 6 ],
+                                    "translations": {
+                                        "en": "Which",
+                                        "fa": "کدام"
+                                    }
+                                },
+                                {
+                                    "word": "มี",
+                                    "range": [ 6, 8 ],
+                                    "translations": {
+                                        "en": "Have",
+                                        "fa": "داشتن"
+                                    }
+                                },
+                                {
+                                    "word": "ขาย",
+                                    "range": [ 8, 11 ],
+                                    "translations": {
+                                        "en": "Sell",
+                                        "fa": "فروش"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Where can I buy it?",
+                                "fa": "کجا می‌توانم آن را بخرم؟"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "คุณภาพดีไหม",
+                            "words": [
+                                {
+                                    "word": "คุณภาพ",
+                                    "range": [ 0, 6 ],
+                                    "translations": {
+                                        "en": "Quality",
+                                        "fa": "کیفیت"
+                                    }
+                                },
+                                {
+                                    "word": "ดี",
+                                    "range": [ 6, 8 ],
+                                    "translations": {
+                                        "en": "Good",
+                                        "fa": "خوب"
+                                    }
+                                },
+                                {
+                                    "word": "ไหม",
+                                    "range": [ 8, 11 ],
+                                    "translations": {
+                                        "en": "Question particle",
+                                        "fa": "ذره سوالی"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Is the quality good?",
+                                "fa": "کیفیت خوب است؟"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ของแท้ไหม",
+                            "words": [
+                                {
+                                    "word": "ของ",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "Item",
+                                        "fa": "کالا"
+                                    }
+                                },
+                                {
+                                    "word": "แท้",
+                                    "range": [ 3, 6 ],
+                                    "translations": {
+                                        "en": "Authentic",
+                                        "fa": "اصلی"
+                                    }
+                                },
+                                {
+                                    "word": "ไหม",
+                                    "range": [ 6, 9 ],
+                                    "translations": {
+                                        "en": "Question particle",
+                                        "fa": "ذره سوالی"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Is it authentic?",
+                                "fa": "آیا اصل است؟"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "รับประกันไหม",
+                            "words": [
+                                {
+                                    "word": "รับประกัน",
+                                    "range": [ 0, 7 ],
+                                    "translations": {
+                                        "en": "Guarantee",
+                                        "fa": "گارانتی"
+                                    }
+                                },
+                                {
+                                    "word": "ไหม",
+                                    "range": [ 7, 10 ],
+                                    "translations": {
+                                        "en": "Question particle",
+                                        "fa": "ذره سوالی"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Is there a guarantee?",
+                                "fa": "آیا گارانتی دارد؟"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "รับคืนได้ไหม",
+                            "words": [
+                                {
+                                    "word": "รับ",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "Accept",
+                                        "fa": "پذیرفتن"
+                                    }
+                                },
+                                {
+                                    "word": "คืน",
+                                    "range": [ 3, 6 ],
+                                    "translations": {
+                                        "en": "Return",
+                                        "fa": "بازگشت"
+                                    }
+                                },
+                                {
+                                    "word": "ได้",
+                                    "range": [ 6, 9 ],
+                                    "translations": {
+                                        "en": "Can",
+                                        "fa": "توانستن"
+                                    }
+                                },
+                                {
+                                    "word": "ไหม",
+                                    "range": [ 9, 12 ],
+                                    "translations": {
+                                        "en": "Question particle",
+                                        "fa": "ذره سوالی"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Can I return it?",
+                                "fa": "می‌توانم آن را برگردانم؟"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ขอใบเสร็จ",
+                            "words": [
+                                {
+                                    "word": "ขอ",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "Please give",
+                                        "fa": "لطفاً بدهید"
+                                    }
+                                },
+                                {
+                                    "word": "ใบเสร็จ",
+                                    "range": [ 3, 9 ],
+                                    "translations": {
+                                        "en": "Receipt",
+                                        "fa": "رسید"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Receipt, please",
+                                "fa": "لطفاً رسید بدهید"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "เอาเป็นเซ็ต",
+                            "words": [
+                                {
+                                    "word": "เอา",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "Take",
+                                        "fa": "گرفتن"
+                                    }
+                                },
+                                {
+                                    "word": "เป็น",
+                                    "range": [ 3, 6 ],
+                                    "translations": {
+                                        "en": "As",
+                                        "fa": "به عنوان"
+                                    }
+                                },
+                                {
+                                    "word": "เซ็ต",
+                                    "range": [ 6, 9 ],
+                                    "translations": {
+                                        "en": "Set",
+                                        "fa": "ست"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "I'll take it as a set",
+                                "fa": "آن را به صورت ست می‌خرم"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ให้ราคาสุดท้าย",
+                            "words": [
+                                {
+                                    "word": "ให้",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "Give",
+                                        "fa": "دادن"
+                                    }
+                                },
+                                {
+                                    "word": "ราคา",
+                                    "range": [ 3, 7 ],
+                                    "translations": {
+                                        "en": "Price",
+                                        "fa": "قیمت"
+                                    }
+                                },
+                                {
+                                    "word": "สุดท้าย",
+                                    "range": [ 7, 13 ],
+                                    "translations": {
+                                        "en": "Final",
+                                        "fa": "نهایی"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Give me your final price",
+                                "fa": "قیمت نهاییتان را بگویید"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "เอามาจากไหน",
+                            "words": [
+                                {
+                                    "word": "เอา",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "Bring",
+                                        "fa": "آوردن"
+                                    }
+                                },
+                                {
+                                    "word": "มา",
+                                    "range": [ 3, 5 ],
+                                    "translations": {
+                                        "en": "Come",
+                                        "fa": "آمدن"
+                                    }
+                                },
+                                {
+                                    "word": "จาก",
+                                    "range": [ 5, 8 ],
+                                    "translations": {
+                                        "en": "From",
+                                        "fa": "از"
+                                    }
+                                },
+                                {
+                                    "word": "ไหน",
+                                    "range": [ 8, 11 ],
+                                    "translations": {
+                                        "en": "Where",
+                                        "fa": "کجا"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Where is it from?",
+                                "fa": "از کجا آورده‌اید؟"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ทำจากอะไร",
+                            "words": [
+                                {
+                                    "word": "ทำ",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "Made",
+                                        "fa": "ساخته شده"
+                                    }
+                                },
+                                {
+                                    "word": "จาก",
+                                    "range": [ 3, 6 ],
+                                    "translations": {
+                                        "en": "From",
+                                        "fa": "از"
+                                    }
+                                },
+                                {
+                                    "word": "อะไร",
+                                    "range": [ 6, 10 ],
+                                    "translations": {
+                                        "en": "What",
+                                        "fa": "چه"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "What is it made from?",
+                                "fa": "از چه چیزی ساخته شده است؟"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ใช้ยังไง",
+                            "words": [
+                                {
+                                    "word": "ใช้",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "Use",
+                                        "fa": "استفاده کردن"
+                                    }
+                                },
+                                {
+                                    "word": "ยังไง",
+                                    "range": [ 3, 8 ],
+                                    "translations": {
+                                        "en": "How",
+                                        "fa": "چطور"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "How do I use it?",
+                                "fa": "چطور از آن استفاده کنم؟"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ซักได้ไหม",
+                            "words": [
+                                {
+                                    "word": "ซัก",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "Wash",
+                                        "fa": "شستن"
+                                    }
+                                },
+                                {
+                                    "word": "ได้",
+                                    "range": [ 3, 6 ],
+                                    "translations": {
+                                        "en": "Can",
+                                        "fa": "توانستن"
+                                    }
+                                },
+                                {
+                                    "word": "ไหม",
+                                    "range": [ 6, 9 ],
+                                    "translations": {
+                                        "en": "Question particle",
+                                        "fa": "ذره سوالی"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Can it be washed?",
+                                "fa": "آیا می‌توان آن را شست؟"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ห้างนี้ใหญ่ดี",
+                            "words": [
+                                {
+                                    "word": "ห้าง",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "Department store",
+                                        "fa": "فروشگاه بزرگ"
+                                    }
+                                },
+                                {
+                                    "word": "นี้",
+                                    "range": [ 3, 6 ],
+                                    "translations": {
+                                        "en": "This",
+                                        "fa": "این"
+                                    }
+                                },
+                                {
+                                    "word": "ใหญ่",
+                                    "range": [ 6, 10 ],
+                                    "translations": {
+                                        "en": "Big",
+                                        "fa": "بزرگ"
+                                    }
+                                },
+                                {
+                                    "word": "ดี",
+                                    "range": [ 10, 12 ],
+                                    "translations": {
+                                        "en": "Good",
+                                        "fa": "خوب"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "This department store is big and good",
+                                "fa": "این فروشگاه بزرگ، بزرگ و خوب است"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ของในตลาดถูกกว่า",
+                            "words": [
+                                {
+                                    "word": "ของ",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "Items",
+                                        "fa": "کالاها"
+                                    }
+                                },
+                                {
+                                    "word": "ใน",
+                                    "range": [ 3, 5 ],
+                                    "translations": {
+                                        "en": "In",
+                                        "fa": "در"
+                                    }
+                                },
+                                {
+                                    "word": "ตลาด",
+                                    "range": [ 5, 9 ],
+                                    "translations": {
+                                        "en": "Market",
+                                        "fa": "بازار"
+                                    }
+                                },
+                                {
+                                    "word": "ถูก",
+                                    "range": [ 9, 12 ],
+                                    "translations": {
+                                        "en": "Cheap",
+                                        "fa": "ارزان"
+                                    }
+                                },
+                                {
+                                    "word": "กว่า",
+                                    "range": [ 12, 15 ],
+                                    "translations": {
+                                        "en": "More than",
+                                        "fa": "بیشتر از"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Items in the market are cheaper",
+                                "fa": "کالاها در بازار ارزان‌تر هستند"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ของลดราคา",
+                            "words": [
+                                {
+                                    "word": "ของ",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "Items",
+                                        "fa": "کالاها"
+                                    }
+                                },
+                                {
+                                    "word": "ลดราคา",
+                                    "range": [ 3, 9 ],
+                                    "translations": {
+                                        "en": "On sale",
+                                        "fa": "تخفیف خورده"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Items on sale",
+                                "fa": "کالاهای تخفیف‌خورده"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ช่วงลดราคา",
+                            "words": [
+                                {
+                                    "word": "ช่วง",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "Period",
+                                        "fa": "دوره"
+                                    }
+                                },
+                                {
+                                    "word": "ลดราคา",
+                                    "range": [ 3, 9 ],
+                                    "translations": {
+                                        "en": "Sale",
+                                        "fa": "تخفیف"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Sale period",
+                                "fa": "دوره تخفیف"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ของเก่า",
+                            "words": [
+                                {
+                                    "word": "ของ",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "Item",
+                                        "fa": "کالا"
+                                    }
+                                },
+                                {
+                                    "word": "เก่า",
+                                    "range": [ 3, 6 ],
+                                    "translations": {
+                                        "en": "Old",
+                                        "fa": "قدیمی"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Old item",
+                                "fa": "کالای قدیمی"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ของใหม่",
+                            "words": [
+                                {
+                                    "word": "ของ",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "Item",
+                                        "fa": "کالا"
+                                    }
+                                },
+                                {
+                                    "word": "ใหม่",
+                                    "range": [ 3, 7 ],
+                                    "translations": {
+                                        "en": "New",
+                                        "fa": "جدید"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "New item",
+                                "fa": "کالای جدید"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ของหายาก",
+                            "words": [
+                                {
+                                    "word": "ของ",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "Item",
+                                        "fa": "کالا"
+                                    }
+                                },
+                                {
+                                    "word": "หายาก",
+                                    "range": [ 3, 8 ],
+                                    "translations": {
+                                        "en": "Rare",
+                                        "fa": "نادر"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Rare item",
+                                "fa": "کالای نادر"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ของพิเศษ",
+                            "words": [
+                                {
+                                    "word": "ของ",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "Item",
+                                        "fa": "کالا"
+                                    }
+                                },
+                                {
+                                    "word": "พิเศษ",
+                                    "range": [ 3, 8 ],
+                                    "translations": {
+                                        "en": "Special",
+                                        "fa": "ویژه"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Special item",
+                                "fa": "کالای ویژه"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ของแถม",
+                            "words": [
+                                {
+                                    "word": "ของ",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "Item",
+                                        "fa": "کالا"
+                                    }
+                                },
+                                {
+                                    "word": "แถม",
+                                    "range": [ 3, 6 ],
+                                    "translations": {
+                                        "en": "Free gift",
+                                        "fa": "هدیه رایگان"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Free gift",
+                                "fa": "هدیه رایگان"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "มีโปรโมชั่นไหม",
+                            "words": [
+                                {
+                                    "word": "มี",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "Have",
+                                        "fa": "داشتن"
+                                    }
+                                },
+                                {
+                                    "word": "โปรโมชั่น",
+                                    "range": [ 3, 11 ],
+                                    "translations": {
+                                        "en": "Promotion",
+                                        "fa": "پروپوزال"
+                                    }
+                                },
+                                {
+                                    "word": "ไหม",
+                                    "range": [ 11, 14 ],
+                                    "translations": {
+                                        "en": "Question particle",
+                                        "fa": "ذره سوالی"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Do you have any promotions?",
+                                "fa": "آیا پروپوزال دارید؟"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ซื้อเยอะลดให้ไหม",
+                            "words": [
+                                {
+                                    "word": "ซื้อ",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "Buy",
+                                        "fa": "خریدن"
+                                    }
+                                },
+                                {
+                                    "word": "เยอะ",
+                                    "range": [ 3, 7 ],
+                                    "translations": {
+                                        "en": "A lot",
+                                        "fa": "زیاد"
+                                    }
+                                },
+                                {
+                                    "word": "ลด",
+                                    "range": [ 7, 10 ],
+                                    "translations": {
+                                        "en": "Discount",
+                                        "fa": "تخفیف"
+                                    }
+                                },
+                                {
+                                    "word": "ให้",
+                                    "range": [ 10, 13 ],
+                                    "translations": {
+                                        "en": "Give",
+                                        "fa": "دادن"
+                                    }
+                                },
+                                {
+                                    "word": "ไหม",
+                                    "range": [ 13, 16 ],
+                                    "translations": {
+                                        "en": "Question particle",
+                                        "fa": "ذره سوالی"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Do you give discounts for bulk purchases?",
+                                "fa": "آیا برای خرید عمده تخفیف می‌دهید؟"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ขอแลกเงิน",
+                            "words": [
+                                {
+                                    "word": "ขอ",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "Please",
+                                        "fa": "لطفاً"
+                                    }
+                                },
+                                {
+                                    "word": "แลก",
+                                    "range": [ 3, 6 ],
+                                    "translations": {
+                                        "en": "Exchange",
+                                        "fa": "تبدیل کردن"
+                                    }
+                                },
+                                {
+                                    "word": "เงิน",
+                                    "range": [ 6, 9 ],
+                                    "translations": {
+                                        "en": "Money",
+                                        "fa": "پول"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Can I exchange money?",
+                                "fa": "می‌توانم پول تبدیل کنم؟"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ตู้เอทีเอ็มอยู่ไหน",
+                            "words": [
+                                {
+                                    "word": "ตู้เอทีเอ็ม",
+                                    "range": [ 0, 8 ],
+                                    "translations": {
+                                        "en": "ATM",
+                                        "fa": "خودپرداز"
+                                    }
+                                },
+                                {
+                                    "word": "อยู่",
+                                    "range": [ 8, 11 ],
+                                    "translations": {
+                                        "en": "Is located",
+                                        "fa": "قرار دارد"
+                                    }
+                                },
+                                {
+                                    "word": "ไหน",
+                                    "range": [ 11, 14 ],
+                                    "translations": {
+                                        "en": "Where",
+                                        "fa": "کجا"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Where is the ATM?",
+                                "fa": "خودپرداز کجاست؟"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ของหมด",
+                            "words": [
+                                {
+                                    "word": "ของ",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "Item",
+                                        "fa": "کالا"
+                                    }
+                                },
+                                {
+                                    "word": "หมด",
+                                    "range": [ 3, 6 ],
+                                    "translations": {
+                                        "en": "Out of stock",
+                                        "fa": "تمام شده"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Out of stock",
+                                "fa": "تمام شده"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "มาสักพัก",
+                            "words": [
+                                {
+                                    "word": "มา",
+                                    "range": [ 0, 2 ],
+                                    "translations": {
+                                        "en": "Come",
+                                        "fa": "آمدن"
+                                    }
+                                },
+                                {
+                                    "word": "สักพัก",
+                                    "range": [ 2, 8 ],
+                                    "translations": {
+                                        "en": "A while",
+                                        "fa": "مدتی"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Come back later",
+                                "fa": "بعداً بیایید"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "สั่งของพิเศษ",
+                            "words": [
+                                {
+                                    "word": "สั่ง",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "Order",
+                                        "fa": "سفارش دادن"
+                                    }
+                                },
+                                {
+                                    "word": "ของ",
+                                    "range": [ 3, 6 ],
+                                    "translations": {
+                                        "en": "Item",
+                                        "fa": "کالا"
+                                    }
+                                },
+                                {
+                                    "word": "พิเศษ",
+                                    "range": [ 6, 11 ],
+                                    "translations": {
+                                        "en": "Special",
+                                        "fa": "ویژه"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Order special items",
+                                "fa": "کالاهای ویژه سفارش دهید"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ส่งถึงบ้าน",
+                            "words": [
+                                {
+                                    "word": "ส่ง",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "Deliver",
+                                        "fa": "تحویل دادن"
+                                    }
+                                },
+                                {
+                                    "word": "ถึง",
+                                    "range": [ 3, 6 ],
+                                    "translations": {
+                                        "en": "To",
+                                        "fa": "به"
+                                    }
+                                },
+                                {
+                                    "word": "บ้าน",
+                                    "range": [ 6, 9 ],
+                                    "translations": {
+                                        "en": "Home",
+                                        "fa": "خانه"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Deliver to home",
+                                "fa": "به خانه تحویل دهید"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ค่าส่งเท่าไหร่",
+                            "words": [
+                                {
+                                    "word": "ค่า",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "Cost",
+                                        "fa": "هزینه"
+                                    }
+                                },
+                                {
+                                    "word": "ส่ง",
+                                    "range": [ 3, 6 ],
+                                    "translations": {
+                                        "en": "Delivery",
+                                        "fa": "تحویل"
+                                    }
+                                },
+                                {
+                                    "word": "เท่าไหร่",
+                                    "range": [ 6, 13 ],
+                                    "translations": {
+                                        "en": "How much",
+                                        "fa": "چقدر"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "How much is delivery?",
+                                "fa": "هزینه تحویل چقدر است؟"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ซื้อแล้วชอบมาก",
+                            "words": [
+                                {
+                                    "word": "ซื้อ",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "Buy",
+                                        "fa": "خریدن"
+                                    }
+                                },
+                                {
+                                    "word": "แล้ว",
+                                    "range": [ 3, 7 ],
+                                    "translations": {
+                                        "en": "Already",
+                                        "fa": "قبلاً"
+                                    }
+                                },
+                                {
+                                    "word": "ชอบ",
+                                    "range": [ 7, 11 ],
+                                    "translations": {
+                                        "en": "Like",
+                                        "fa": "دوست داشتن"
+                                    }
+                                },
+                                {
+                                    "word": "มาก",
+                                    "range": [ 11, 14 ],
+                                    "translations": {
+                                        "en": "Very much",
+                                        "fa": "خیلی"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "I bought it and I like it very much",
+                                "fa": "آن را خریدم و خیلی دوست دارم"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "แนะนำร้านนี้",
+                            "words": [
+                                {
+                                    "word": "แนะนำ",
+                                    "range": [ 0, 5 ],
+                                    "translations": {
+                                        "en": "Recommend",
+                                        "fa": "توصیه کردن"
+                                    }
+                                },
+                                {
+                                    "word": "ร้าน",
+                                    "range": [ 5, 8 ],
+                                    "translations": {
+                                        "en": "Shop",
+                                        "fa": "فروشگاه"
+                                    }
+                                },
+                                {
+                                    "word": "นี้",
+                                    "range": [ 8, 11 ],
+                                    "translations": {
+                                        "en": "This",
+                                        "fa": "این"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "I recommend this shop",
+                                "fa": "این فروشگاه را توصیه می‌کنم"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "จะมาซื้ออีก",
+                            "words": [
+                                {
+                                    "word": "จะ",
+                                    "range": [ 0, 2 ],
+                                    "translations": {
+                                        "en": "Will",
+                                        "fa": "خواهد"
+                                    }
+                                },
+                                {
+                                    "word": "มา",
+                                    "range": [ 2, 4 ],
+                                    "translations": {
+                                        "en": "Come",
+                                        "fa": "آمدن"
+                                    }
+                                },
+                                {
+                                    "word": "ซื้อ",
+                                    "range": [ 4, 7 ],
+                                    "translations": {
+                                        "en": "Buy",
+                                        "fa": "خریدن"
+                                    }
+                                },
+                                {
+                                    "word": "อีก",
+                                    "range": [ 7, 10 ],
+                                    "translations": {
+                                        "en": "Again",
+                                        "fa": "دوباره"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "I'll come buy again",
+                                "fa": "دوباره برای خرید خواهم آمد"
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

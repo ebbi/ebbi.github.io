@@ -1,49 +1,202 @@
 {
     "learningObjects": [
         {
-            "id": "testObjects",
+            "id": "thai500sentences",
             "title": {
-                "en": "Learning Objects Test",
-                "fa": "تست شیء یادگیری",
-                "th": "แบบทดสอบวัตถุการเรียนรู้"
+                "en": "Thai most frequently used 500 sentences",
+                "fa": "۱۰۰۰ جمله پرکاربرد تایلندی",
+                "th": "ประโยคภาษาไทยที่ใช้บ่อยที่สุด ๑๐๐๐ ประโยค"
             },
             "documents": [
                 {
-                    "id": "test",
+                    "id": "thai500_greetings",
                     "title": {
-                        "en": "Test Document 1",
-                        "fa": "عنوان مدرک آزمون ۱",
-                        "th": "เอกสารทดสอบ ๑ ชื่อ"
+                        "en": "Greetings and Introductions",
+                        "fa": "احوالپرسی و معرفی",
+                        "th": "การทักทายและการแนะนำตัว"
                     },
                     "description": {
-                        "en": "Test document 1 description",
-                        "fa": "شرح سند آزمایشی ۱",
-                        "th": "คำอธิบายเอกสารทดสอบ ๑"
+                        "en": "Basic greetings, introductions, and everyday polite expressions",
+                        "fa": "احوالپرسی های پایه، معرفی و عبارات مودبانه روزمره",
+                        "th": "การทักทายพื้นฐาน การแนะนำตัว และสำนวนสุภาพในชีวิตประจำวัน"
                     },
                     "sourceLang": "th",
                     "targetLangs": [ "en", "fa" ],
-                    "filePath": "data/tests/test.json",
+                    "filePath": "data/thai500/greetings.json",
                     "status": "published",
                     "level": "basic",
                     "activities": [ "multipleChoiceWord", "multipleChoiceSentence" ]
                 },
                 {
-                    "id": "test2",
+                    "id": "thai500_food",
                     "title": {
-                        "en": "Test Document 2",
-                        "fa": "عنوان مدرک آزمون ۲",
-                        "th": "เอกสารทดสอบ ๒ ชื่อ"
+                        "en": "Food and Dining",
+                        "fa": "غذا و رستوران",
+                        "th": "อาหารและการรับประทานอาหาร"
                     },
                     "description": {
-                        "en": "Test document 2 description",
-                        "fa": "شرح سند آزمایشی ۲",
-                        "th": "เอกสารทดสอบ ๒ คำอธิบาย"
+                        "en": "Ordering food, discussing meals, and food-related conversations",
+                        "fa": "سفارش غذا، بحث درباره وعده های غذایی و مکالمات مرتبط با غذا",
+                        "th": "การสั่งอาหาร การพูดคุยเกี่ยวกับมื้ออาหาร และบทสนทนาที่เกี่ยวข้องกับอาหาร"
                     },
                     "sourceLang": "th",
                     "targetLangs": [ "en", "fa" ],
-                    "filePath": "data/tests/test2.json",
+                    "filePath": "data/thai500/food.json",
                     "status": "published",
-                    "level": "intermediate"
+                    "level": "basic",
+                    "activities": [ "multipleChoiceWord", "multipleChoiceSentence" ]
+                },
+                {
+                    "id": "thai500_travel",
+                    "title": {
+                        "en": "Travel and Transportation",
+                        "fa": "سفر و حمل و نقل",
+                        "th": "การเดินทางและการขนส่ง"
+                    },
+                    "description": {
+                        "en": "Asking for directions, transportation, and travel-related phrases",
+                        "fa": "پرسیدن آدرس، حمل و نقل و عبارات مرتبط با سفر",
+                        "th": "การถามทาง การขนส่ง และวลีที่เกี่ยวข้องกับการเดินทาง"
+                    },
+                    "sourceLang": "th",
+                    "targetLangs": [ "en", "fa" ],
+                    "filePath": "data/thai500/travel.json",
+                    "status": "published",
+                    "level": "intermediate",
+                    "activities": [ "multipleChoiceWord", "multipleChoiceSentence" ]
+                },
+                {
+                    "id": "thai500_shopping",
+                    "title": {
+                        "en": "Shopping",
+                        "fa": "خرید",
+                        "th": "การช้อปปิ้ง"
+                    },
+                    "description": {
+                        "en": "Market and store conversations, bargaining, and asking about prices",
+                        "fa": "مکالمات در بازار و فروشگاه، چانه زدن و پرسیدن قیمت",
+                        "th": "บทสนทนาในตลาดและร้านค้า การต่อรอง และการถามราคา"
+                    },
+                    "sourceLang": "th",
+                    "targetLangs": [ "en", "fa" ],
+                    "filePath": "data/thai500/shopping.json",
+                    "status": "published",
+                    "level": "basic",
+                    "activities": [ "multipleChoiceWord", "multipleChoiceSentence" ]
+                },
+                {
+                    "id": "thai500_family",
+                    "title": {
+                        "en": "Family and Relationships",
+                        "fa": "خانواده و روابط",
+                        "th": "ครอบครัวและความสัมพันธ์"
+                    },
+                    "description": {
+                        "en": "Talking about family members, relationships, and personal life",
+                        "fa": "صحبت درباره اعضای خانواده، روابط و زندگی شخصی",
+                        "th": "การพูดคุยเกี่ยวกับสมาชิกในครอบครัว ความสัมพันธ์ และชีวิตส่วนตัว"
+                    },
+                    "sourceLang": "th",
+                    "targetLangs": [ "en", "fa" ],
+                    "filePath": "data/thai500/family.json",
+                    "status": "published",
+                    "level": "basic",
+                    "activities": [ "multipleChoiceWord", "multipleChoiceSentence" ]
+                },
+                {
+                    "id": "thai500_health",
+                    "title": {
+                        "en": "Health and Medical",
+                        "fa": "سلامت و پزشکی",
+                        "th": "สุขภาพและการแพทย์"
+                    },
+                    "description": {
+                        "en": "Medical conversations, describing symptoms, and pharmacy visits",
+                        "fa": "مکالمات پزشکی، توصیف علائم و مراجعه به داروخانه",
+                        "th": "บทสนทนาเกี่ยวกับการแพทย์ การบรรยายอาการ และการไปร้านยา"
+                    },
+                    "sourceLang": "th",
+                    "targetLangs": [ "en", "fa" ],
+                    "filePath": "data/thai500/health.json",
+                    "status": "published",
+                    "level": "intermediate",
+                    "activities": [ "multipleChoiceWord", "multipleChoiceSentence" ]
+                },
+                {
+                    "id": "thai500_work",
+                    "title": {
+                        "en": "Work and Business",
+                        "fa": "کار و کسب و کار",
+                        "th": "งานและธุรกิจ"
+                    },
+                    "description": {
+                        "en": "Office conversations, job-related phrases, and business meetings",
+                        "fa": "مکالمات اداری، عبارات مرتبط با شغل و جلسات کاری",
+                        "th": "บทสนทนาในที่ทำงาน วลีที่เกี่ยวข้องกับงาน และการประชุมธุรกิจ"
+                    },
+                    "sourceLang": "th",
+                    "targetLangs": [ "en", "fa" ],
+                    "filePath": "data/thai500/work.json",
+                    "status": "published",
+                    "level": "intermediate",
+                    "activities": [ "multipleChoiceWord", "multipleChoiceSentence" ]
+                },
+                {
+                    "id": "thai500_time",
+                    "title": {
+                        "en": "Time and Dates",
+                        "fa": "زمان و تاریخ",
+                        "th": "เวลาและวันที่"
+                    },
+                    "description": {
+                        "en": "Telling time, discussing schedules, and making appointments",
+                        "fa": "گفتن زمان، بحث درباره برنامه ها و تعیین قرار ملاقات",
+                        "th": "การบอกเวลา การพูดคุยเกี่ยวกับตารางเวลา และการนัดหมาย"
+                    },
+                    "sourceLang": "th",
+                    "targetLangs": [ "en", "fa" ],
+                    "filePath": "data/thai500/time.json",
+                    "status": "published",
+                    "level": "basic",
+                    "activities": [ "multipleChoiceWord", "multipleChoiceSentence" ]
+                },
+                {
+                    "id": "thai500_weather",
+                    "title": {
+                        "en": "Weather and Seasons",
+                        "fa": "آب و هوا و فصل ها",
+                        "th": "สภาพอากาศและฤดูกาล"
+                    },
+                    "description": {
+                        "en": "Discussing weather conditions, seasons, and temperature",
+                        "fa": "بحث درباره شرایط آب و هوایی، فصل ها و دما",
+                        "th": "การพูดคุยเกี่ยวกับสภาพอากาศ ฤดูกาล และอุณหภูมิ"
+                    },
+                    "sourceLang": "th",
+                    "targetLangs": [ "en", "fa" ],
+                    "filePath": "data/thai500/weather.json",
+                    "status": "published",
+                    "level": "basic",
+                    "activities": [ "multipleChoiceWord", "multipleChoiceSentence" ]
+                },
+                {
+                    "id": "thai500_hobbies",
+                    "title": {
+                        "en": "Hobbies and Entertainment",
+                        "fa": "سرگرمی ها و تفریحات",
+                        "th": "งานอดิเรกและความบันเทิง"
+                    },
+                    "description": {
+                        "en": "Talking about hobbies, sports, movies, music, and leisure activities",
+                        "fa": "صحبت درباره سرگرمی ها، ورزش، فیلم، موسیقی و فعالیت های اوقات فراغت",
+                        "th": "การพูดคุยเกี่ยวกับงานอดิเรก กีฬา ภาพยนตร์ ดนตรี และกิจกรรมยามว่าง"
+                    },
+                    "sourceLang": "th",
+                    "targetLangs": [ "en", "fa" ],
+                    "filePath": "data/thai500/hobbies.json",
+                    "status": "published",
+                    "level": "intermediate",
+                    "activities": [ "multipleChoiceWord", "multipleChoiceSentence" ]
                 }
             ]
         },
