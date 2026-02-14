@@ -272,13 +272,129 @@ const App = {
     },
 
     /**
+     * More robust version that finds words by searching rather than using ranges
+     */
+    /*
+    hydrateSource(text, words, uid) {
+        if (!words || words.length === 0) return this.escapeHtml(text);
+
+        let html = '';
+        let cursor = 0;
+
+        // Sort words by their position in the text (just in case)
+        const sortedWords = [...words].sort((a, b) => {
+            // Find position if not provided or incorrect
+            const posA = a.range?.[0] ?? text.indexOf(a.word, 0);
+            const posB = b.range?.[0] ?? text.indexOf(b.word, 0);
+            return posA - posB;
+        });
+
+        for (let i = 0; i < sortedWords.length; i++) {
+            const word = sortedWords[i];
+
+            // Find this word in the remaining text
+            const start = text.indexOf(word.word, cursor);
+
+            if (start === -1) {
+                console.error(`Could not find word "${word.word}" in "${text.slice(cursor)}"`);
+                continue;
+            }
+
+            const end = start + word.word.length;
+
+            // Add text before the word
+            if (start > cursor) {
+                html += this.escapeHtml(text.slice(cursor, start));
+            }
+
+            // Wrap the word
+            html += `<span id="source-${uid}-w-${i}"
+             class="word-span"
+             data-link="${uid}-card-${i}"
+             lang="th" dir="ltr">${this.escapeHtml(word.word)}</span>`;
+
+            cursor = end;
+        }
+
+        // Add any remaining text
+        if (cursor < text.length) {
+            html += this.escapeHtml(text.slice(cursor));
+        }
+
+        return html;
+    },
+*/
+    /**
+hydrateSource(text, words, uid) {
+    if (!words || words.length === 0) return this.escapeHtml(text);
+
+    // Pre-calculate all possible positions for each word
+    const wordPositions = words.map(word => {
+        const positions = [];
+        let pos = -1;
+        while ((pos = text.indexOf(word.word, pos + 1)) !== -1) {
+            positions.push(pos);
+        }
+        return { word, positions };
+    });
+
+    let html = '';
+    let cursor = 0;
+    const usedPositions = new Set();
+    
+    for (let i = 0; i < wordPositions.length; i++) {
+        const { word, positions } = wordPositions[i];
+        
+        // Find the next unused position that's >= cursor
+        let start = -1;
+        for (const pos of positions) {
+            if (pos >= cursor && !usedPositions.has(pos)) {
+                start = pos;
+                usedPositions.add(pos);
+                break;
+            }
+        }
+        
+        if (start === -1) {
+            console.warn(`No available position for word "${word.word}" in "${text}"`);
+            continue;
+        }
+        
+        const end = start + word.word.length;
+        
+        // Add text before the word
+        if (start > cursor) {
+            html += this.escapeHtml(text.slice(cursor, start));
+        }
+        
+        // Wrap the word
+        html += `<span id="source-${uid}-w-${i}"
+             class="word-span"
+             data-link="${uid}-card-${i}"
+             lang="th" dir="ltr">${this.escapeHtml(word.word)}</span>`;
+
+        cursor = end;
+    }
+
+    // Add remaining text
+    if (cursor < text.length) {
+        html += this.escapeHtml(text.slice(cursor));
+    }
+
+    return html;
+},
+
+
+    /**
      * Inject `<span>` tags around the words that have a word‑breakdown.
-     * Each span gets a unique id and a `data‑link` attribute that points 
-     * to the corresponding word‑card.
+     * Finds words by searching in the text, no ranges needed.
      * @param {string} text - The original source sentence (Thai)
-     * @param {Array} words - Array of word objects with range and translations
+     * @param {Array} words - Array of word objects with translations (no ranges)
      * @param {string} uid - A unique identifier for the sentence
      * @returns {string} HTML with word spans wrapped around matching text
+     */
+    /**
+     * Simplified version that processes words in order
      */
     hydrateSource(text, words, uid) {
         if (!words || words.length === 0) return this.escapeHtml(text);
@@ -286,34 +402,41 @@ const App = {
         let html = '';
         let cursor = 0;
 
-        words.forEach((word, index) => {
-            // Add text before the current word
-            html += this.escapeHtml(text.slice(cursor, word.range[0]));
+        // Process each word in the order they appear in the array
+        for (let i = 0; i < words.length; i++) {
+            const word = words[i];
 
-            // Wrap the word in a span that can be linked/highlighted
-            // ADD "source-" prefix to distinguish from translation spans
-            html += `<span id="source-${uid}-w-${index}"
-                 class="word-span"
-                 data-link="${uid}-card-${index}"
-                 lang="th" dir="ltr">${this.escapeHtml(word.word)}</span>`;
+            // Find the word starting from current cursor position
+            const start = text.indexOf(word.word, cursor);
 
-            // Move cursor past this word
-            cursor = word.range[1];
-        });
+            if (start === -1) {
+                // If we can't find it from cursor, log warning and continue
+                console.warn(`Could not find word "${word.word}" in "${text}" at or after position ${cursor}`);
+                continue;
+            }
 
-        // Append any trailing text after the last word
-        html += this.escapeHtml(text.slice(cursor));
+            const end = start + word.word.length;
+
+            // Add text before the word
+            if (start > cursor) {
+                html += this.escapeHtml(text.slice(cursor, start));
+            }
+
+            // Wrap the word
+            html += `<span id="source-${uid}-w-${i}"
+             class="word-span"
+             data-link="${uid}-card-${i}"
+             lang="th" dir="ltr">${this.escapeHtml(word.word)}</span>`;
+
+            cursor = end;
+        }
+
+        // Add any remaining text after the last word
+        if (cursor < text.length) {
+            html += this.escapeHtml(text.slice(cursor));
+        }
+
         return html;
-    },
-
-    /**
-     * Pause playback without resetting the index (used when user scrolls manually)
-     */
-    pausePlayback() {
-        this.state.media.isPlaying = false;
-        window.speechSynthesis.cancel();
-        // Do NOT reset currentIndex – keep position for later resume
-        this.renderMediaBar(document.getElementById('media-player-container'));
     },
 
     /* ============================================================================
@@ -1415,7 +1538,7 @@ const App = {
             return true;
         });
     },
-    
+
     /**
      * Extract flat quiz items from a document (or a single section)
      * @param {Object} document - Document object

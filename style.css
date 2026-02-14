@@ -305,7 +305,6 @@ h6 {
 
 /* Section Details */
 .section-details {
-    border-bottom: 1px solid #ddd;
     background: var(--card);
     clear: both;
 }
@@ -576,7 +575,7 @@ h6 {
 }
 
 .block-container {
-    border-bottom: 1px solid var(--primary);
+    border-bottom: 1px solid #3b82f626;
     margin-bottom: 1.5rem;
 }
 

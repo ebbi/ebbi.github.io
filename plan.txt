@@ -1,48 +1,90 @@
-For your suggested, Part 1: The "Essential Life" Conversational Corpus, 
-please see the uploaded files for a language learning App.
+This was a great fix and it simplified the data file.
 
-Mapping your "Essential Life" Conversational Corpus to the App data model:
+Returning to your suggestions for improving the App.
 
-The "Essential Life" Conversational Corpus becomes an entry in the manifest.json file.
-And each of your categories is defined as an entry in the "documents" array in the manifest.json file.
+My first choice is to add grammar notes.
+Here was your suggestion:
 
-Each of your categories data is defined in a separate JSON datafile.
-Each category JSON datafile would have a single entry in the JSON "sections" array.
-And each of your "conversations" becomes a JSON "blocks" entry of "type": "paragraph", 
-with individual conversation sentences defined as  "type": "sentence" in the "elements" array.
+Add Grammar Notes
+{
+    "type": "sentence",
+    "source": "กำลังจะไป",
+    "grammar": {
+        "pattern": "กำลังจะ + verb",
+        "meaning": "about to do something",
+        "examples": ["กำลังจะกิน", "กำลังจะนอน"]
+    },
+    "words": [...]
+}
 
-Before proceeding any further, please double check the above data mapping is correct.
+My school text books adopts a similar approach by introducing a sentence structure 
+followed by examples using the grammatical structure.
 
-
-
-
-
-
-
-Please generate the same JSON data structure file for The "Essential Life" Conversational Corpus.
-
-
-
-The requirement is to create data files for conversations in everyday life.  
-For examples, conversations with a dentist, hairdresser, bank staff and so on.
-
-The number of sentences is dependant on the conversation, but a minimum of 50 or more 
-sentences in each conversation seems reasonable.
-
-The requirement is to develop the data for learning languages for everyday life.
-
-Please list the number of conversations and the number of sentences in each conversation 
-that would be sufficient for effective communication in daily life.  
-
-Please suggest any alternative approach to learning a language for daily life.
+Before adapting the code, can you identify a set of grammar patterns and 
+corresponding example sets?
 
 
-Unless you have a better alternative suggestion, please 
-generate a data file for each conversation.
+Before the App view update for the grammar icon, lets complete the data model.
 
+First and entry in the manifest.json for the Core Thai Grammar Patterns with Examples, 
+including documents array JSON entries for each of the grammar pattern.  
+
+The manifest.json documents array JSON entries for each of the grammar pattern has a 
+filepath which should follow the existing model (see social.json example).  
+There should be enough examples of the pattern to allow for understanding and practice.
+
+
+The grammar icon is a great idea.  What is the best mobile first solution to 
+display the grammar information?  A pop up or an HTML details element or any other suggestion?
+
+Yes, Please!  Uploaded the current 
 
 
 
+Context-Aware Flashcards
 
+Generate flashcards from sentences the user has encountered:
 
+generateFlashcards() {
+    const dueForReview = this.state.srs.dueItems;
+    
+    return dueForReview.map(item => {
+        if (item.type === 'word') {
+            return {
+                front: item.word,
+                back: item.translations[this.state.lang],
+                example: this.findExampleSentence(item.word)
+            };
+        } else {
+            // Sentence with cloze deletion
+            const cloze = this.createClozeDeletion(item.sentence);
+            return {
+                front: cloze,
+                back: item.sentence,
+                translation: item.translations[this.state.lang]
+            };
+        }
+    });
+}
+
+Sentence Building Games
+
+Drag-and-drop word ordering:
+renderWordOrderGame() {
+    const words = this.shuffleArray(this.currentItem.words.map(w => w.word));
+    
+    return `
+    <div class="word-order-game">
+        <div class="word-bank">
+            ${words.map(word => 
+                `<button class="word-tile" draggable="true">${word}</button>`
+            ).join('')}
+        </div>
+        <div class="sentence-construction" id="sentence-construction">
+            <!-- Droppable area for building sentence -->
+        </div>
+        <button onclick="App.checkSentenceOrder()">Check</button>
+    </div>
+    `;
+}
 
