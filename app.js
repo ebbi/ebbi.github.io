@@ -187,98 +187,98 @@ const App = {
      * @param {number} sectionIndex - Index of the section (for unique IDs)
      * @returns {string} HTML string
      */
-/*
-    renderBlocks(blocks, sectionIndex = 0) {
-        const settings = this.state.media.languageSettings;
-
-        return blocks.map((block, blockIndex) => {
-            let blockHtml = `<div class="block-container">`;
-
-            // ------------------------------------------------------------------
-            // Paragraph blocks – sentences with source text, optional word list,
-            // and per‑language translations.
-            // ------------------------------------------------------------------
-            if (block.type === 'paragraph') {
-                block.elements.forEach((element, elementIndex) => {
-                    if (element.type !== 'sentence') return;
-
-                    // ADD sectionIndex to make UID globally unique
-                    const uid = `s-${sectionIndex}-${blockIndex}-${elementIndex}`;
-
-                    // Source sentence (Thai)
-                    blockHtml += `<div class="sentence-group">
-                <div class="stack-column">
-                    <div class="stack-item source audio-element"
-                         lang="th" dir="ltr"
-                         data-text="${this.escapeHtml(element.source)}"
-                         data-lang="th"
-                         data-uid="${uid}"
-                         onclick="App.seekAndPlay(this)">
-                        ${this.hydrateSource(element.source, element.words, uid)}
-                    </div>`;
-
-                    // Word‑by‑word breakdown
-                    if (element.words && element.words.length > 0) {
-                        blockHtml += `<div class="sent-word-block">`;
-
-                        element.words.forEach((word, wordIndex) => {
-                            blockHtml += `<div id="${uid}-card-${wordIndex}"
-                         class="sent-word-item audio-element"
-                         data-text="${this.escapeHtml(word.word)}"
-                         data-lang="th"
-                         data-link="source-${uid}-w-${wordIndex}"
-                         onclick="App.seekAndPlay(this)">
-                        <div class="sent-word-source" lang="th" dir="ltr">${this.escapeHtml(word.word)}</div>`;
-
-                            // Show translations for each enabled language
-                            Object.keys(settings).forEach(lang => {
-                                if (lang !== 'th' && settings[lang].show && word.translations?.[lang]) {
-                                    const dir = lang === 'fa' ? 'rtl' : 'ltr';
-                                    blockHtml += `<div class="sent-word-trans lang-${lang}" lang="${lang}" dir="${dir}">${this.escapeHtml(word.translations[lang])}</div>`;
-                                }
+    /*
+        renderBlocks(blocks, sectionIndex = 0) {
+            const settings = this.state.media.languageSettings;
+    
+            return blocks.map((block, blockIndex) => {
+                let blockHtml = `<div class="block-container">`;
+    
+                // ------------------------------------------------------------------
+                // Paragraph blocks – sentences with source text, optional word list,
+                // and per‑language translations.
+                // ------------------------------------------------------------------
+                if (block.type === 'paragraph') {
+                    block.elements.forEach((element, elementIndex) => {
+                        if (element.type !== 'sentence') return;
+    
+                        // ADD sectionIndex to make UID globally unique
+                        const uid = `s-${sectionIndex}-${blockIndex}-${elementIndex}`;
+    
+                        // Source sentence (Thai)
+                        blockHtml += `<div class="sentence-group">
+                    <div class="stack-column">
+                        <div class="stack-item source audio-element"
+                             lang="th" dir="ltr"
+                             data-text="${this.escapeHtml(element.source)}"
+                             data-lang="th"
+                             data-uid="${uid}"
+                             onclick="App.seekAndPlay(this)">
+                            ${this.hydrateSource(element.source, element.words, uid)}
+                        </div>`;
+    
+                        // Word‑by‑word breakdown
+                        if (element.words && element.words.length > 0) {
+                            blockHtml += `<div class="sent-word-block">`;
+    
+                            element.words.forEach((word, wordIndex) => {
+                                blockHtml += `<div id="${uid}-card-${wordIndex}"
+                             class="sent-word-item audio-element"
+                             data-text="${this.escapeHtml(word.word)}"
+                             data-lang="th"
+                             data-link="source-${uid}-w-${wordIndex}"
+                             onclick="App.seekAndPlay(this)">
+                            <div class="sent-word-source" lang="th" dir="ltr">${this.escapeHtml(word.word)}</div>`;
+    
+                                // Show translations for each enabled language
+                                Object.keys(settings).forEach(lang => {
+                                    if (lang !== 'th' && settings[lang].show && word.translations?.[lang]) {
+                                        const dir = lang === 'fa' ? 'rtl' : 'ltr';
+                                        blockHtml += `<div class="sent-word-trans lang-${lang}" lang="${lang}" dir="${dir}">${this.escapeHtml(word.translations[lang])}</div>`;
+                                    }
+                                });
+                                blockHtml += `</div>`;
                             });
                             blockHtml += `</div>`;
-                        });
-                        blockHtml += `</div>`;
-                    }
-
-                    // Translations for the whole sentence
-                    Object.keys(settings).forEach(lang => {
-                        if (lang !== 'th' && settings[lang].show && element.translations?.[lang]) {
-                            const transUid = `${uid}-trans-${lang}`;
-                            const dir = lang === 'fa' ? 'rtl' : 'ltr';
-                            blockHtml += `<div class="stack-item trans lang-${lang} audio-element"
-                                 lang="${lang}" dir="${dir}"
-                                 data-text="${this.escapeHtml(element.translations[lang])}"
-                                 data-lang="${lang}"
-                                 onclick="App.seekAndPlay(this)">
-                        ${this.renderTranslationSpan(element.translations[lang], lang, transUid)}
-                    </div>`;
                         }
+    
+                        // Translations for the whole sentence
+                        Object.keys(settings).forEach(lang => {
+                            if (lang !== 'th' && settings[lang].show && element.translations?.[lang]) {
+                                const transUid = `${uid}-trans-${lang}`;
+                                const dir = lang === 'fa' ? 'rtl' : 'ltr';
+                                blockHtml += `<div class="stack-item trans lang-${lang} audio-element"
+                                     lang="${lang}" dir="${dir}"
+                                     data-text="${this.escapeHtml(element.translations[lang])}"
+                                     data-lang="${lang}"
+                                     onclick="App.seekAndPlay(this)">
+                            ${this.renderTranslationSpan(element.translations[lang], lang, transUid)}
+                        </div>`;
+                            }
+                        });
+    
+                        blockHtml += `</div></div>`; // close stack-column & sentence-group
                     });
-
-                    blockHtml += `</div></div>`; // close stack-column & sentence-group
-                });
-            }
-
-            // ------------------------------------------------------------------
-            // Words‑grid blocks – a simple grid of independent word cards.
-            // ------------------------------------------------------------------
-            else if (block.type === 'words') {
-                blockHtml += `<div class="words-grid">`;
-                block.data.forEach((word, wordIndex) => {
-                    // Use unique UID for word cards too
-                    const wordUid = `w-${sectionIndex}-${blockIndex}-${wordIndex}`;
-                    blockHtml += this.renderWordCard(word, wordUid);
-                });
-                blockHtml += `</div>`;
-            }
-
-            blockHtml += `</div>`; // close block-container
-            return blockHtml;
-        }).join('');
-    },
-*/
+                }
+    
+                // ------------------------------------------------------------------
+                // Words‑grid blocks – a simple grid of independent word cards.
+                // ------------------------------------------------------------------
+                else if (block.type === 'words') {
+                    blockHtml += `<div class="words-grid">`;
+                    block.data.forEach((word, wordIndex) => {
+                        // Use unique UID for word cards too
+                        const wordUid = `w-${sectionIndex}-${blockIndex}-${wordIndex}`;
+                        blockHtml += this.renderWordCard(word, wordUid);
+                    });
+                    blockHtml += `</div>`;
+                }
+    
+                blockHtml += `</div>`; // close block-container
+                return blockHtml;
+            }).join('');
+        },
+    */
     renderBlocks(blocks, sectionIndex = 0) {
         const settings = this.state.media.languageSettings;
 
@@ -551,6 +551,16 @@ hydrateSource(text, words, uid) {
         return html;
     },
 
+    /** Pause playback without resetting the index (used when the user
+        scrolls manually) */
+    pausePlayback() {
+        this.state.media.isPlaying = false;
+        window.speechSynthesis.cancel();
+        // Do *not* reset currentIndex – keep the position for later resume
+        this.renderMediaBar(document.getElementById('media-player-container'));
+    },
+
+
     /* ============================================================================
        INITIALISATION & GLOBAL SETUP
     ============================================================================ */
@@ -558,6 +568,7 @@ hydrateSource(text, words, uid) {
     /**
      * Initialize the application
      */
+/*
     async init() {
         try {
             this.state.scrolledRows = new Set();
@@ -583,10 +594,79 @@ hydrateSource(text, words, uid) {
             this.applyGlobalSettings();
             this.renderLayout();
 
-            // Setup scroll/touch listeners to pause playback
+            // Setup user interaction listeners to pause playback
+            // BUT exclude clicks on audio elements and the play button
+            ['wheel', 'touchmove', 'mousedown', 'keydown', 'scroll'].forEach(event => {
+                window.addEventListener(event, () => {
+                    if (this.state.media.isPlaying && !this.state.isAutoScrolling) {
+                        this.stopSequence();
+                    }
+                }, { passive: true });
+            });
+
+            // Setup user interaction listeners to pause playback
+            // BUT exclude clicks on audio elements and the play button
+            ['wheel', 'touchmove', 'mousedown', 'keydown', 'scroll'].forEach(event => {
+                window.addEventListener(event, () => {
+                    if (this.state.media.isPlaying && !this.state.isAutoScrolling) {
+                        this.stopSequence();
+                    }
+                }, { passive: true });
+            });
+
+            // Handle clicks separately - ONLY stop if click is NOT on audio elements
+            window.addEventListener('click', (e) => {
+                // Check if click is on an audio element or its parent
+                const isAudioClick = e.target.closest('.audio-element, .player-ctrl, .grammar-icon-btn');
+
+                // Only stop if it's NOT an audio click AND media is playing
+                if (this.state.media.isPlaying && !this.state.isAutoScrolling && !isAudioClick) {
+                    this.stopSequence();
+                }
+            }, { passive: true });
+
+            // Setup routing
+            window.onhashchange = () => this.router();
+            this.router();
+        } catch (error) {
+            this.logError('App initialization failed', error, {
+                state: this.state,
+                lang: this.state.lang,
+                theme: this.state.theme
+            });
+        }
+    },
+*/
+
+    async init() {
+        try {
+            this.state.scrolledRows = new Set();
+            this.state.currentRowId = null;
+
+            // Set up voices changed handler FIRST
+            window.speechSynthesis.onvoiceschanged = () => {
+                this.cachedVoices = window.speechSynthesis.getVoices();
+                this.autoSelectThaiVoice();
+            };
+
+            // Check if voices are already loaded
+            setTimeout(() => {
+                if (window.speechSynthesis.getVoices().length > 0) {
+                    this.cachedVoices = window.speechSynthesis.getVoices();
+                    this.autoSelectThaiVoice();
+                }
+            }, 100);
+
+            // Rest of initialization...
+            await this.loadTranslations();
+            await this.loadManifest();
+            this.applyGlobalSettings();
+            this.renderLayout();
+
+            // Setup scroll/touch listeners to pause playback (ORIGINAL WORKING VERSION)
             const stopOnScroll = () => {
                 if (this.state.media.isPlaying && !this.state.isAutoScrolling) {
-                    this.pausePlayback();
+                    this.pausePlayback();  // This pauses without resetting index
                 }
             };
             window.addEventListener('wheel', stopOnScroll);
@@ -603,7 +683,7 @@ hydrateSource(text, words, uid) {
             });
         }
     },
-
+    
     /**
      * Automatically select Thai voice if available and none selected
      */
@@ -883,6 +963,9 @@ hydrateSource(text, words, uid) {
     /* ============================================================================
        MEDIA PLAYBACK
     ============================================================================ */
+    /**
+     * Pause playback without resetting the index (used when user interacts)
+     */
 
     /**
      * Toggle play/pause state

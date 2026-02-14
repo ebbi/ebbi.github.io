@@ -1168,43 +1168,38 @@ select:focus-visible {
     bottom: 0;
     left: 0;
     right: 0;
-    background: var(--bg-primary);
+    background: var(--card);
     border-radius: 20px 20px 0 0;
-    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.2);
     transform: translateY(100%);
     transition: transform 0.3s ease-out;
     z-index: 1000;
     max-height: 80vh;
     display: flex;
     flex-direction: column;
+    color: var(--text);
 }
 
 .bottom-sheet.open {
     transform: translateY(0);
 }
 
-.bottom-sheet.dark-theme {
-    background: #2d2d2d;
-    color: #ffffff;
-}
-
 .sheet-handle {
     width: 40px;
     height: 4px;
-    background: #ccc;
+    background: var(--border);
     border-radius: 2px;
     margin: 12px auto;
     cursor: pointer;
 }
 
 .sheet-header {
-    padding: 0 20px 12px;
-    border-bottom: 1px solid var(--border-color);
+    padding: 16px 20px;
+    border-bottom: 1px solid var(--border);
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
-
 .sheet-header h3 {
     margin: 0;
     font-size: 1.2rem;
@@ -1272,7 +1267,7 @@ select:focus-visible {
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.6);
     opacity: 0;
     visibility: hidden;
     transition: opacity 0.3s ease;
@@ -1329,4 +1324,3 @@ select:focus-visible {
 .dark-theme .grammar-icon-btn:hover {
     background: rgba(96, 165, 250, 0.15);
 }
-

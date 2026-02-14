@@ -44,6 +44,15 @@ You identified nearly 20 grammar patterns.  Please update the manifest.json for
 all grammar patterns and generate the corresponding JSON data files with plenty of 
 examples (10 or more) to practice the pattern.
 
+The last suggestion seems ad-hoc! Previously the speech stopped on any event not just 
+scrolling.  Play should not continue due to any event, scrolling or selecting 
+an option from the toolbar.
+
+The CSS update is also becoming bloated with multitude of updates, please see the 
+style.css and suggest more specific updates.
+
+
+The bug remains!  Play does not stop with other events!  
 
 
 
