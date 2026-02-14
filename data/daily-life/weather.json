@@ -1,0 +1,1297 @@
+{
+    "documentId": "daily_weather",
+    "sections": [
+        {
+            "heading": {
+                "en": "General Weather Questions",
+                "fa": "سوالات عمومی آب و هوا",
+                "th": "คำถามทั่วไปเกี่ยวกับสภาพอากาศ"
+            },
+            "activities": [ "multipleChoiceWord", "multipleChoiceSentence" ],
+            "blocks": [
+                {
+                    "type": "paragraph",
+                    "elements": [
+                        {
+                            "type": "sentence",
+                            "source": "วันนี้อากาศเป็นยังไง",
+                            "words": [
+                                {
+                                    "word": "วันนี้",
+                                    "range": [ 0, 5 ],
+                                    "translations": {
+                                        "en": "today",
+                                        "fa": "امروز"
+                                    }
+                                },
+                                {
+                                    "word": "อากาศ",
+                                    "range": [ 5, 10 ],
+                                    "translations": {
+                                        "en": "weather",
+                                        "fa": "آب و هوا"
+                                    }
+                                },
+                                {
+                                    "word": "เป็น",
+                                    "range": [ 10, 13 ],
+                                    "translations": {
+                                        "en": "is",
+                                        "fa": "است"
+                                    }
+                                },
+                                {
+                                    "word": "ยังไง",
+                                    "range": [ 13, 18 ],
+                                    "translations": {
+                                        "en": "how",
+                                        "fa": "چطور"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "How's the weather today?",
+                                "fa": "امروز هوا چطور است؟"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "พรุ่งนี้อากาศจะดีไหม",
+                            "words": [
+                                {
+                                    "word": "พรุ่งนี้",
+                                    "range": [ 0, 6 ],
+                                    "translations": {
+                                        "en": "tomorrow",
+                                        "fa": "فردا"
+                                    }
+                                },
+                                {
+                                    "word": "อากาศ",
+                                    "range": [ 6, 11 ],
+                                    "translations": {
+                                        "en": "weather",
+                                        "fa": "هوا"
+                                    }
+                                },
+                                {
+                                    "word": "จะ",
+                                    "range": [ 11, 13 ],
+                                    "translations": {
+                                        "en": "will",
+                                        "fa": "خواهد"
+                                    }
+                                },
+                                {
+                                    "word": "ดี",
+                                    "range": [ 13, 15 ],
+                                    "translations": {
+                                        "en": "good",
+                                        "fa": "خوب"
+                                    }
+                                },
+                                {
+                                    "word": "ไหม",
+                                    "range": [ 15, 18 ],
+                                    "translations": {
+                                        "en": "question particle",
+                                        "fa": "ذره سوالی"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Will the weather be good tomorrow?",
+                                "fa": "فردا هوا خوب خواهد بود؟"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "อากาศร้อนไหม",
+                            "words": [
+                                {
+                                    "word": "อากาศ",
+                                    "range": [ 0, 5 ],
+                                    "translations": {
+                                        "en": "weather",
+                                        "fa": "هوا"
+                                    }
+                                },
+                                {
+                                    "word": "ร้อน",
+                                    "range": [ 5, 8 ],
+                                    "translations": {
+                                        "en": "hot",
+                                        "fa": "گرم"
+                                    }
+                                },
+                                {
+                                    "word": "ไหม",
+                                    "range": [ 8, 11 ],
+                                    "translations": {
+                                        "en": "question particle",
+                                        "fa": "ذره سوالی"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Is it hot?",
+                                "fa": "هوا گرم است؟"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "อากาศหนาวไหม",
+                            "words": [
+                                {
+                                    "word": "อากาศ",
+                                    "range": [ 0, 5 ],
+                                    "translations": {
+                                        "en": "weather",
+                                        "fa": "هوا"
+                                    }
+                                },
+                                {
+                                    "word": "หนาว",
+                                    "range": [ 5, 9 ],
+                                    "translations": {
+                                        "en": "cold",
+                                        "fa": "سرد"
+                                    }
+                                },
+                                {
+                                    "word": "ไหม",
+                                    "range": [ 9, 12 ],
+                                    "translations": {
+                                        "en": "question particle",
+                                        "fa": "ذره سوالی"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Is it cold?",
+                                "fa": "هوا سرد است؟"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "heading": {
+                "en": "Describing Weather",
+                "fa": "توصیف آب و هوا",
+                "th": "การบรรยายสภาพอากาศ"
+            },
+            "activities": [ "multipleChoiceWord", "multipleChoiceSentence" ],
+            "blocks": [
+                {
+                    "type": "paragraph",
+                    "elements": [
+                        {
+                            "type": "sentence",
+                            "source": "วันนี้อากาศร้อนมาก",
+                            "words": [
+                                {
+                                    "word": "วันนี้",
+                                    "range": [ 0, 5 ],
+                                    "translations": {
+                                        "en": "today",
+                                        "fa": "امروز"
+                                    }
+                                },
+                                {
+                                    "word": "อากาศ",
+                                    "range": [ 5, 10 ],
+                                    "translations": {
+                                        "en": "weather",
+                                        "fa": "هوا"
+                                    }
+                                },
+                                {
+                                    "word": "ร้อน",
+                                    "range": [ 10, 13 ],
+                                    "translations": {
+                                        "en": "hot",
+                                        "fa": "گرم"
+                                    }
+                                },
+                                {
+                                    "word": "มาก",
+                                    "range": [ 13, 16 ],
+                                    "translations": {
+                                        "en": "very",
+                                        "fa": "خیلی"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "It's very hot today",
+                                "fa": "امروز هوا خیلی گرم است"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "วันนี้อากาศหนาวมาก",
+                            "words": [
+                                {
+                                    "word": "วันนี้",
+                                    "range": [ 0, 5 ],
+                                    "translations": {
+                                        "en": "today",
+                                        "fa": "امروز"
+                                    }
+                                },
+                                {
+                                    "word": "อากาศ",
+                                    "range": [ 5, 10 ],
+                                    "translations": {
+                                        "en": "weather",
+                                        "fa": "هوا"
+                                    }
+                                },
+                                {
+                                    "word": "หนาว",
+                                    "range": [ 10, 14 ],
+                                    "translations": {
+                                        "en": "cold",
+                                        "fa": "سرد"
+                                    }
+                                },
+                                {
+                                    "word": "มาก",
+                                    "range": [ 14, 17 ],
+                                    "translations": {
+                                        "en": "very",
+                                        "fa": "خیلی"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "It's very cold today",
+                                "fa": "امروز هوا خیلی سرد است"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "อากาศดี",
+                            "words": [
+                                {
+                                    "word": "อากาศ",
+                                    "range": [ 0, 5 ],
+                                    "translations": {
+                                        "en": "weather",
+                                        "fa": "هوا"
+                                    }
+                                },
+                                {
+                                    "word": "ดี",
+                                    "range": [ 5, 7 ],
+                                    "translations": {
+                                        "en": "good",
+                                        "fa": "خوب"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "The weather is nice",
+                                "fa": "هوا خوب است"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "อากาศสบาย",
+                            "words": [
+                                {
+                                    "word": "อากาศ",
+                                    "range": [ 0, 5 ],
+                                    "translations": {
+                                        "en": "weather",
+                                        "fa": "هوا"
+                                    }
+                                },
+                                {
+                                    "word": "สบาย",
+                                    "range": [ 5, 9 ],
+                                    "translations": {
+                                        "en": "comfortable",
+                                        "fa": "مطبوع"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "The weather is comfortable",
+                                "fa": "هوا مطبوع است"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "อากาศร้อนอบอ้าว",
+                            "words": [
+                                {
+                                    "word": "อากาศ",
+                                    "range": [ 0, 5 ],
+                                    "translations": {
+                                        "en": "weather",
+                                        "fa": "هوا"
+                                    }
+                                },
+                                {
+                                    "word": "ร้อนอบอ้าว",
+                                    "range": [ 5, 13 ],
+                                    "translations": {
+                                        "en": "humid and hot",
+                                        "fa": "گرم و شرجی"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "It's humid and hot",
+                                "fa": "هوا گرم و شرجی است"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "อากาศเย็นสบาย",
+                            "words": [
+                                {
+                                    "word": "อากาศ",
+                                    "range": [ 0, 5 ],
+                                    "translations": {
+                                        "en": "weather",
+                                        "fa": "هوا"
+                                    }
+                                },
+                                {
+                                    "word": "เย็นสบาย",
+                                    "range": [ 5, 12 ],
+                                    "translations": {
+                                        "en": "cool and comfortable",
+                                        "fa": "خنک و مطبوع"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "It's cool and comfortable",
+                                "fa": "هوا خنک و مطبوع است"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "words",
+                    "data": [
+                        {
+                            "word": "ร้อน",
+                            "translations": {
+                                "en": "hot",
+                                "fa": "گرم"
+                            }
+                        },
+                        {
+                            "word": "หนาว",
+                            "translations": {
+                                "en": "cold",
+                                "fa": "سرد"
+                            }
+                        },
+                        {
+                            "word": "เย็น",
+                            "translations": {
+                                "en": "cool",
+                                "fa": "خنک"
+                            }
+                        },
+                        {
+                            "word": "สบาย",
+                            "translations": {
+                                "en": "comfortable",
+                                "fa": "مطبوع"
+                            }
+                        },
+                        {
+                            "word": "อบอ้าว",
+                            "translations": {
+                                "en": "humid",
+                                "fa": "شرجی"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "heading": {
+                "en": "Rain and Storms",
+                "fa": "باران و طوفان",
+                "th": "ฝนและพายุ"
+            },
+            "activities": [ "multipleChoiceWord", "multipleChoiceSentence" ],
+            "blocks": [
+                {
+                    "type": "paragraph",
+                    "elements": [
+                        {
+                            "type": "sentence",
+                            "source": "ฝนตก",
+                            "words": [
+                                {
+                                    "word": "ฝน",
+                                    "range": [ 0, 4 ],
+                                    "translations": {
+                                        "en": "rain",
+                                        "fa": "باران"
+                                    }
+                                },
+                                {
+                                    "word": "ตก",
+                                    "range": [ 4, 6 ],
+                                    "translations": {
+                                        "en": "fall",
+                                        "fa": "می‌بارد"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "It's raining",
+                                "fa": "باران می‌بارد"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ฝนตกหนัก",
+                            "words": [
+                                {
+                                    "word": "ฝน",
+                                    "range": [ 0, 4 ],
+                                    "translations": {
+                                        "en": "rain",
+                                        "fa": "باران"
+                                    }
+                                },
+                                {
+                                    "word": "ตก",
+                                    "range": [ 4, 6 ],
+                                    "translations": {
+                                        "en": "fall",
+                                        "fa": "می‌بارد"
+                                    }
+                                },
+                                {
+                                    "word": "หนัก",
+                                    "range": [ 6, 9 ],
+                                    "translations": {
+                                        "en": "heavy",
+                                        "fa": "سنگین"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "It's raining heavily",
+                                "fa": "باران سنگین می‌بارد"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ฝนตกปรอยๆ",
+                            "words": [
+                                {
+                                    "word": "ฝน",
+                                    "range": [ 0, 4 ],
+                                    "translations": {
+                                        "en": "rain",
+                                        "fa": "باران"
+                                    }
+                                },
+                                {
+                                    "word": "ตก",
+                                    "range": [ 4, 6 ],
+                                    "translations": {
+                                        "en": "fall",
+                                        "fa": "می‌بارد"
+                                    }
+                                },
+                                {
+                                    "word": "ปรอยๆ",
+                                    "range": [ 6, 12 ],
+                                    "translations": {
+                                        "en": "lightly",
+                                        "fa": "نرم"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "It's drizzling",
+                                "fa": "باران نرم می‌بارد"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ฝนจะตกไหม",
+                            "words": [
+                                {
+                                    "word": "ฝน",
+                                    "range": [ 0, 4 ],
+                                    "translations": {
+                                        "en": "rain",
+                                        "fa": "باران"
+                                    }
+                                },
+                                {
+                                    "word": "จะ",
+                                    "range": [ 4, 6 ],
+                                    "translations": {
+                                        "en": "will",
+                                        "fa": "خواهد"
+                                    }
+                                },
+                                {
+                                    "word": "ตก",
+                                    "range": [ 6, 8 ],
+                                    "translations": {
+                                        "en": "fall",
+                                        "fa": "بارید"
+                                    }
+                                },
+                                {
+                                    "word": "ไหม",
+                                    "range": [ 8, 11 ],
+                                    "translations": {
+                                        "en": "question particle",
+                                        "fa": "ذره سوالی"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Will it rain?",
+                                "fa": "آیا باران خواهد بارید؟"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "มีพายุ",
+                            "words": [
+                                {
+                                    "word": "มี",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "there is",
+                                        "fa": "وجود دارد"
+                                    }
+                                },
+                                {
+                                    "word": "พายุ",
+                                    "range": [ 3, 7 ],
+                                    "translations": {
+                                        "en": "storm",
+                                        "fa": "طوفان"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "There's a storm",
+                                "fa": "طوفان است"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ฟ้าผ่า",
+                            "words": [
+                                {
+                                    "word": "ฟ้า",
+                                    "range": [ 0, 4 ],
+                                    "translations": {
+                                        "en": "sky",
+                                        "fa": "آسمان"
+                                    }
+                                },
+                                {
+                                    "word": "ผ่า",
+                                    "range": [ 4, 7 ],
+                                    "translations": {
+                                        "en": "strike",
+                                        "fa": "صاعقه"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Lightning",
+                                "fa": "صاعقه می‌زند"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ฟ้าร้อง",
+                            "words": [
+                                {
+                                    "word": "ฟ้า",
+                                    "range": [ 0, 4 ],
+                                    "translations": {
+                                        "en": "sky",
+                                        "fa": "آسمان"
+                                    }
+                                },
+                                {
+                                    "word": "ร้อง",
+                                    "range": [ 4, 8 ],
+                                    "translations": {
+                                        "en": "cry/roar",
+                                        "fa": "رعد"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Thunder",
+                                "fa": "رعد و برق"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "น้ำท่วม",
+                            "words": [
+                                {
+                                    "word": "น้ำ",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "water",
+                                        "fa": "آب"
+                                    }
+                                },
+                                {
+                                    "word": "ท่วม",
+                                    "range": [ 3, 7 ],
+                                    "translations": {
+                                        "en": "flood",
+                                        "fa": "سیل"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Flood",
+                                "fa": "سیل"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "พายุเข้า",
+                            "words": [
+                                {
+                                    "word": "พายุ",
+                                    "range": [ 0, 5 ],
+                                    "translations": {
+                                        "en": "storm",
+                                        "fa": "طوفان"
+                                    }
+                                },
+                                {
+                                    "word": "เข้า",
+                                    "range": [ 5, 8 ],
+                                    "translations": {
+                                        "en": "enter",
+                                        "fa": "می‌آید"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "The storm is coming",
+                                "fa": "طوفان می‌آید"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "heading": {
+                "en": "Sun and Clouds",
+                "fa": "آفتاب و ابر",
+                "th": "แดดและเมฆ"
+            },
+            "activities": [ "multipleChoiceWord", "multipleChoiceSentence" ],
+            "blocks": [
+                {
+                    "type": "paragraph",
+                    "elements": [
+                        {
+                            "type": "sentence",
+                            "source": "แดดออก",
+                            "words": [
+                                {
+                                    "word": "แดด",
+                                    "range": [ 0, 4 ],
+                                    "translations": {
+                                        "en": "sun",
+                                        "fa": "آفتاب"
+                                    }
+                                },
+                                {
+                                    "word": "ออก",
+                                    "range": [ 4, 7 ],
+                                    "translations": {
+                                        "en": "out",
+                                        "fa": "است"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "The sun is out",
+                                "fa": "آفتاب است"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "แดดแรง",
+                            "words": [
+                                {
+                                    "word": "แดด",
+                                    "range": [ 0, 4 ],
+                                    "translations": {
+                                        "en": "sun",
+                                        "fa": "آفتاب"
+                                    }
+                                },
+                                {
+                                    "word": "แรง",
+                                    "range": [ 4, 7 ],
+                                    "translations": {
+                                        "en": "strong",
+                                        "fa": "شدید"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "The sun is strong",
+                                "fa": "آفتاب شدید است"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "มีเมฆมาก",
+                            "words": [
+                                {
+                                    "word": "มี",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "there is",
+                                        "fa": "وجود دارد"
+                                    }
+                                },
+                                {
+                                    "word": "เมฆ",
+                                    "range": [ 3, 6 ],
+                                    "translations": {
+                                        "en": "cloud",
+                                        "fa": "ابر"
+                                    }
+                                },
+                                {
+                                    "word": "มาก",
+                                    "range": [ 6, 9 ],
+                                    "translations": {
+                                        "en": "a lot",
+                                        "fa": "زیاد"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "It's cloudy",
+                                "fa": "ابری است"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ท้องฟ้าโปร่ง",
+                            "words": [
+                                {
+                                    "word": "ท้องฟ้า",
+                                    "range": [ 0, 6 ],
+                                    "translations": {
+                                        "en": "sky",
+                                        "fa": "آسمان"
+                                    }
+                                },
+                                {
+                                    "word": "โปร่ง",
+                                    "range": [ 6, 10 ],
+                                    "translations": {
+                                        "en": "clear",
+                                        "fa": "صاف"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "The sky is clear",
+                                "fa": "آسمان صاف است"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ท้องฟ้ามืดครึ้ม",
+                            "words": [
+                                {
+                                    "word": "ท้องฟ้า",
+                                    "range": [ 0, 6 ],
+                                    "translations": {
+                                        "en": "sky",
+                                        "fa": "آسمان"
+                                    }
+                                },
+                                {
+                                    "word": "มืดครึ้ม",
+                                    "range": [ 6, 13 ],
+                                    "translations": {
+                                        "en": "overcast",
+                                        "fa": "تاریک و ابری"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "The sky is overcast",
+                                "fa": "آسمان تاریک و ابری است"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "words",
+                    "data": [
+                        {
+                            "word": "แดด",
+                            "translations": {
+                                "en": "sun",
+                                "fa": "آفتاب"
+                            }
+                        },
+                        {
+                            "word": "เมฆ",
+                            "translations": {
+                                "en": "cloud",
+                                "fa": "ابر"
+                            }
+                        },
+                        {
+                            "word": "ท้องฟ้า",
+                            "translations": {
+                                "en": "sky",
+                                "fa": "آسمان"
+                            }
+                        },
+                        {
+                            "word": "โปร่ง",
+                            "translations": {
+                                "en": "clear",
+                                "fa": "صاف"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "heading": {
+                "en": "Temperature",
+                "fa": "دما",
+                "th": "อุณหภูมิ"
+            },
+            "activities": [ "multipleChoiceWord", "multipleChoiceSentence" ],
+            "blocks": [
+                {
+                    "type": "paragraph",
+                    "elements": [
+                        {
+                            "type": "sentence",
+                            "source": "กี่องศา",
+                            "words": [
+                                {
+                                    "word": "กี่",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "how many",
+                                        "fa": "چند"
+                                    }
+                                },
+                                {
+                                    "word": "องศา",
+                                    "range": [ 3, 7 ],
+                                    "translations": {
+                                        "en": "degrees",
+                                        "fa": "درجه"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "How many degrees?",
+                                "fa": "چند درجه است؟"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "30 องศา",
+                            "words": [
+                                {
+                                    "word": "30",
+                                    "range": [ 0, 2 ],
+                                    "translations": {
+                                        "en": "30",
+                                        "fa": "۳۰"
+                                    }
+                                },
+                                {
+                                    "word": "องศา",
+                                    "range": [ 2, 6 ],
+                                    "translations": {
+                                        "en": "degrees",
+                                        "fa": "درجه"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "30 degrees",
+                                "fa": "۳۰ درجه"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ร้อน 35 องศา",
+                            "words": [
+                                {
+                                    "word": "ร้อน",
+                                    "range": [ 0, 4 ],
+                                    "translations": {
+                                        "en": "hot",
+                                        "fa": "گرم"
+                                    }
+                                },
+                                {
+                                    "word": "35",
+                                    "range": [ 4, 6 ],
+                                    "translations": {
+                                        "en": "35",
+                                        "fa": "۳۵"
+                                    }
+                                },
+                                {
+                                    "word": "องศา",
+                                    "range": [ 6, 10 ],
+                                    "translations": {
+                                        "en": "degrees",
+                                        "fa": "درجه"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "It's hot, 35 degrees",
+                                "fa": "۳۵ درجه، گرم است"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "หนาว 15 องศา",
+                            "words": [
+                                {
+                                    "word": "หนาว",
+                                    "range": [ 0, 5 ],
+                                    "translations": {
+                                        "en": "cold",
+                                        "fa": "سرد"
+                                    }
+                                },
+                                {
+                                    "word": "15",
+                                    "range": [ 5, 7 ],
+                                    "translations": {
+                                        "en": "15",
+                                        "fa": "۱۵"
+                                    }
+                                },
+                                {
+                                    "word": "องศา",
+                                    "range": [ 7, 11 ],
+                                    "translations": {
+                                        "en": "degrees",
+                                        "fa": "درجه"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "It's cold, 15 degrees",
+                                "fa": "۱۵ درجه، سرد است"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "อุณหภูมิสูงสุด",
+                            "words": [
+                                {
+                                    "word": "อุณหภูมิ",
+                                    "range": [ 0, 7 ],
+                                    "translations": {
+                                        "en": "temperature",
+                                        "fa": "دما"
+                                    }
+                                },
+                                {
+                                    "word": "สูงสุด",
+                                    "range": [ 7, 12 ],
+                                    "translations": {
+                                        "en": "maximum",
+                                        "fa": "حداکثر"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Maximum temperature",
+                                "fa": "حداکثر دما"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "อุณหภูมิต่ำสุด",
+                            "words": [
+                                {
+                                    "word": "อุณหภูมิ",
+                                    "range": [ 0, 7 ],
+                                    "translations": {
+                                        "en": "temperature",
+                                        "fa": "دما"
+                                    }
+                                },
+                                {
+                                    "word": "ต่ำสุด",
+                                    "range": [ 7, 12 ],
+                                    "translations": {
+                                        "en": "minimum",
+                                        "fa": "حداقل"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Minimum temperature",
+                                "fa": "حداقل دما"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "heading": {
+                "en": "Weather Warnings and Advice",
+                "fa": "هشدارها و توصیه‌های آب و هوایی",
+                "th": "คำเตือนและคำแนะนำเกี่ยวกับสภาพอากาศ"
+            },
+            "activities": [ "multipleChoiceWord", "multipleChoiceSentence" ],
+            "blocks": [
+                {
+                    "type": "paragraph",
+                    "elements": [
+                        {
+                            "type": "sentence",
+                            "source": "พก umbrella ไปด้วย",
+                            "words": [
+                                {
+                                    "word": "พก",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "carry",
+                                        "fa": "همراه داشته باش"
+                                    }
+                                },
+                                {
+                                    "word": "umbrella",
+                                    "range": [ 3, 11 ],
+                                    "translations": {
+                                        "en": "umbrella",
+                                        "fa": "چتر"
+                                    }
+                                },
+                                {
+                                    "word": "ไปด้วย",
+                                    "range": [ 11, 16 ],
+                                    "translations": {
+                                        "en": "with you",
+                                        "fa": "با خودت"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Take an umbrella with you",
+                                "fa": "چتر با خودت ببر"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ทาครีมกันแดด",
+                            "words": [
+                                {
+                                    "word": "ทา",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "apply",
+                                        "fa": "بزن"
+                                    }
+                                },
+                                {
+                                    "word": "ครีมกันแดด",
+                                    "range": [ 3, 11 ],
+                                    "translations": {
+                                        "en": "sunscreen",
+                                        "fa": "ضد آفتاب"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Apply sunscreen",
+                                "fa": "ضد آفتاب بزن"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ใส่เสื้อกันหนาว",
+                            "words": [
+                                {
+                                    "word": "ใส่",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "wear",
+                                        "fa": "بپوش"
+                                    }
+                                },
+                                {
+                                    "word": "เสื้อกันหนาว",
+                                    "range": [ 3, 11 ],
+                                    "translations": {
+                                        "en": "warm clothes",
+                                        "fa": "لباس گرم"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Wear warm clothes",
+                                "fa": "لباس گرم بپوش"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ระวังรถลื่น",
+                            "words": [
+                                {
+                                    "word": "ระวัง",
+                                    "range": [ 0, 5 ],
+                                    "translations": {
+                                        "en": "be careful",
+                                        "fa": "مراقب باش"
+                                    }
+                                },
+                                {
+                                    "word": "รถลื่น",
+                                    "range": [ 5, 10 ],
+                                    "translations": {
+                                        "en": "slippery road",
+                                        "fa": "جاده لغزنده"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Be careful, slippery road",
+                                "fa": "مراقب باش، جاده لغزنده است"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "อยู่แต่ในบ้าน",
+                            "words": [
+                                {
+                                    "word": "อยู่",
+                                    "range": [ 0, 4 ],
+                                    "translations": {
+                                        "en": "stay",
+                                        "fa": "بمان"
+                                    }
+                                },
+                                {
+                                    "word": "แต่",
+                                    "range": [ 4, 6 ],
+                                    "translations": {
+                                        "en": "only",
+                                        "fa": "فقط"
+                                    }
+                                },
+                                {
+                                    "word": "ในบ้าน",
+                                    "range": [ 6, 11 ],
+                                    "translations": {
+                                        "en": "at home",
+                                        "fa": "خانه"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Stay at home",
+                                "fa": "تو خونه بمون"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ดื่มน้ำเยอะๆ",
+                            "words": [
+                                {
+                                    "word": "ดื่มน้ำ",
+                                    "range": [ 0, 5 ],
+                                    "translations": {
+                                        "en": "drink water",
+                                        "fa": "آب بنوش"
+                                    }
+                                },
+                                {
+                                    "word": "เยอะๆ",
+                                    "range": [ 5, 10 ],
+                                    "translations": {
+                                        "en": "a lot",
+                                        "fa": "زیاد"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Drink plenty of water",
+                                "fa": "آب زیاد بنوش"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "words",
+                    "data": [
+                        {
+                            "word": "ครีมกันแดด",
+                            "translations": {
+                                "en": "sunscreen",
+                                "fa": "ضد آفتاب"
+                            }
+                        },
+                        {
+                            "word": "เสื้อกันหนาว",
+                            "translations": {
+                                "en": "warm clothes",
+                                "fa": "لباس گرم"
+                            }
+                        },
+                        {
+                            "word": "ร่ม",
+                            "translations": {
+                                "en": "umbrella",
+                                "fa": "چتر"
+                            }
+                        },
+                        {
+                            "word": "ระวัง",
+                            "translations": {
+                                "en": "be careful",
+                                "fa": "مراقب باش"
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

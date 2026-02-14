@@ -1,0 +1,2048 @@
+{
+    "documentId": "daily_work",
+    "sections": [
+        {
+            "heading": {
+                "en": "Jobs and Occupations",
+                "fa": "شغل‌ها و حرفه‌ها",
+                "th": "อาชีพและการงาน"
+            },
+            "activities": [ "multipleChoiceWord", "multipleChoiceSentence" ],
+            "blocks": [
+                {
+                    "type": "paragraph",
+                    "elements": [
+                        {
+                            "type": "sentence",
+                            "source": "คุณทำงานอะไร",
+                            "words": [
+                                {
+                                    "word": "คุณ",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "you",
+                                        "fa": "شما"
+                                    }
+                                },
+                                {
+                                    "word": "ทำงาน",
+                                    "range": [ 3, 8 ],
+                                    "translations": {
+                                        "en": "work",
+                                        "fa": "کار می‌کنید"
+                                    }
+                                },
+                                {
+                                    "word": "อะไร",
+                                    "range": [ 8, 11 ],
+                                    "translations": {
+                                        "en": "what",
+                                        "fa": "چه"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "What do you do for work?",
+                                "fa": "شغل شما چیست؟"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ฉันเป็นครู",
+                            "words": [
+                                {
+                                    "word": "ฉัน",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "I",
+                                        "fa": "من"
+                                    }
+                                },
+                                {
+                                    "word": "เป็น",
+                                    "range": [ 3, 6 ],
+                                    "translations": {
+                                        "en": "am",
+                                        "fa": "هستم"
+                                    }
+                                },
+                                {
+                                    "word": "ครู",
+                                    "range": [ 6, 8 ],
+                                    "translations": {
+                                        "en": "teacher",
+                                        "fa": "معلم"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "I'm a teacher",
+                                "fa": "من معلم هستم"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ฉันเป็นวิศวกร",
+                            "words": [
+                                {
+                                    "word": "ฉัน",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "I",
+                                        "fa": "من"
+                                    }
+                                },
+                                {
+                                    "word": "เป็น",
+                                    "range": [ 3, 6 ],
+                                    "translations": {
+                                        "en": "am",
+                                        "fa": "هستم"
+                                    }
+                                },
+                                {
+                                    "word": "วิศวกร",
+                                    "range": [ 6, 11 ],
+                                    "translations": {
+                                        "en": "engineer",
+                                        "fa": "مهندس"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "I'm an engineer",
+                                "fa": "من مهندس هستم"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ฉันเป็นหมอ",
+                            "words": [
+                                {
+                                    "word": "ฉัน",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "I",
+                                        "fa": "من"
+                                    }
+                                },
+                                {
+                                    "word": "เป็น",
+                                    "range": [ 3, 6 ],
+                                    "translations": {
+                                        "en": "am",
+                                        "fa": "هستم"
+                                    }
+                                },
+                                {
+                                    "word": "หมอ",
+                                    "range": [ 6, 9 ],
+                                    "translations": {
+                                        "en": "doctor",
+                                        "fa": "پزشک"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "I'm a doctor",
+                                "fa": "من پزشک هستم"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ฉันเป็นพนักงานบริษัท",
+                            "words": [
+                                {
+                                    "word": "ฉัน",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "I",
+                                        "fa": "من"
+                                    }
+                                },
+                                {
+                                    "word": "เป็น",
+                                    "range": [ 3, 6 ],
+                                    "translations": {
+                                        "en": "am",
+                                        "fa": "هستم"
+                                    }
+                                },
+                                {
+                                    "word": "พนักงานบริษัท",
+                                    "range": [ 6, 16 ],
+                                    "translations": {
+                                        "en": "company employee",
+                                        "fa": "کارمند شرکت"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "I'm a company employee",
+                                "fa": "من کارمند شرکت هستم"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ฉันทำธุรกิจส่วนตัว",
+                            "words": [
+                                {
+                                    "word": "ฉัน",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "I",
+                                        "fa": "من"
+                                    }
+                                },
+                                {
+                                    "word": "ทำ",
+                                    "range": [ 3, 6 ],
+                                    "translations": {
+                                        "en": "do",
+                                        "fa": "دارم"
+                                    }
+                                },
+                                {
+                                    "word": "ธุรกิจส่วนตัว",
+                                    "range": [ 6, 15 ],
+                                    "translations": {
+                                        "en": "own business",
+                                        "fa": "کسب و کار شخصی"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "I have my own business",
+                                "fa": "کسب و کار شخصی دارم"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ฉันทำงานอิสระ",
+                            "words": [
+                                {
+                                    "word": "ฉัน",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "I",
+                                        "fa": "من"
+                                    }
+                                },
+                                {
+                                    "word": "ทำงาน",
+                                    "range": [ 3, 8 ],
+                                    "translations": {
+                                        "en": "work",
+                                        "fa": "کار می‌کنم"
+                                    }
+                                },
+                                {
+                                    "word": "อิสระ",
+                                    "range": [ 8, 12 ],
+                                    "translations": {
+                                        "en": "freelance",
+                                        "fa": "آزاد"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "I'm a freelancer",
+                                "fa": "آزاد کار می‌کنم"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "words",
+                    "data": [
+                        {
+                            "word": "ครู",
+                            "translations": {
+                                "en": "teacher",
+                                "fa": "معلم"
+                            }
+                        },
+                        {
+                            "word": "หมอ",
+                            "translations": {
+                                "en": "doctor",
+                                "fa": "پزشک"
+                            }
+                        },
+                        {
+                            "word": "วิศวกร",
+                            "translations": {
+                                "en": "engineer",
+                                "fa": "مهندس"
+                            }
+                        },
+                        {
+                            "word": "พนักงาน",
+                            "translations": {
+                                "en": "employee",
+                                "fa": "کارمند"
+                            }
+                        },
+                        {
+                            "word": "ธุรกิจส่วนตัว",
+                            "translations": {
+                                "en": "own business",
+                                "fa": "کسب و کار شخصی"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "heading": {
+                "en": "Talking About Your Job",
+                "fa": "صحبت درباره شغل",
+                "th": "การพูดคุยเกี่ยวกับงาน"
+            },
+            "activities": [ "multipleChoiceWord", "multipleChoiceSentence" ],
+            "blocks": [
+                {
+                    "type": "paragraph",
+                    "elements": [
+                        {
+                            "type": "sentence",
+                            "source": "ฉันทำงานที่ไหน",
+                            "words": [
+                                {
+                                    "word": "ฉัน",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "I",
+                                        "fa": "من"
+                                    }
+                                },
+                                {
+                                    "word": "ทำงาน",
+                                    "range": [ 3, 8 ],
+                                    "translations": {
+                                        "en": "work",
+                                        "fa": "کار می‌کنم"
+                                    }
+                                },
+                                {
+                                    "word": "ที่ไหน",
+                                    "range": [ 8, 12 ],
+                                    "translations": {
+                                        "en": "where",
+                                        "fa": "کجا"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Where do I work?",
+                                "fa": "کجا کار می‌کنم؟"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ฉันทำงานที่บริษัท...",
+                            "words": [
+                                {
+                                    "word": "ฉัน",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "I",
+                                        "fa": "من"
+                                    }
+                                },
+                                {
+                                    "word": "ทำงาน",
+                                    "range": [ 3, 8 ],
+                                    "translations": {
+                                        "en": "work",
+                                        "fa": "کار می‌کنم"
+                                    }
+                                },
+                                {
+                                    "word": "ที่",
+                                    "range": [ 8, 10 ],
+                                    "translations": {
+                                        "en": "at",
+                                        "fa": "در"
+                                    }
+                                },
+                                {
+                                    "word": "บริษัท",
+                                    "range": [ 10, 14 ],
+                                    "translations": {
+                                        "en": "company",
+                                        "fa": "شرکت"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "I work at ... company",
+                                "fa": "من در شرکت ... کار می‌کنم"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ฉันทำงานที่บ้าน",
+                            "words": [
+                                {
+                                    "word": "ฉัน",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "I",
+                                        "fa": "من"
+                                    }
+                                },
+                                {
+                                    "word": "ทำงาน",
+                                    "range": [ 3, 8 ],
+                                    "translations": {
+                                        "en": "work",
+                                        "fa": "کار می‌کنم"
+                                    }
+                                },
+                                {
+                                    "word": "ที่",
+                                    "range": [ 8, 10 ],
+                                    "translations": {
+                                        "en": "at",
+                                        "fa": "در"
+                                    }
+                                },
+                                {
+                                    "word": "บ้าน",
+                                    "range": [ 10, 13 ],
+                                    "translations": {
+                                        "en": "home",
+                                        "fa": "خانه"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "I work from home",
+                                "fa": "از خانه کار می‌کنم"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ฉันทำงานวันละกี่ชั่วโมง",
+                            "words": [
+                                {
+                                    "word": "ฉัน",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "I",
+                                        "fa": "من"
+                                    }
+                                },
+                                {
+                                    "word": "ทำงาน",
+                                    "range": [ 3, 8 ],
+                                    "translations": {
+                                        "en": "work",
+                                        "fa": "کار می‌کنم"
+                                    }
+                                },
+                                {
+                                    "word": "วันละ",
+                                    "range": [ 8, 12 ],
+                                    "translations": {
+                                        "en": "per day",
+                                        "fa": "در روز"
+                                    }
+                                },
+                                {
+                                    "word": "กี่ชั่วโมง",
+                                    "range": [ 12, 19 ],
+                                    "translations": {
+                                        "en": "how many hours",
+                                        "fa": "چند ساعت"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "How many hours a day do I work?",
+                                "fa": "چند ساعت در روز کار می‌کنم؟"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ฉันทำงาน 8 ชั่วโมงต่อวัน",
+                            "words": [
+                                {
+                                    "word": "ฉัน",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "I",
+                                        "fa": "من"
+                                    }
+                                },
+                                {
+                                    "word": "ทำงาน",
+                                    "range": [ 3, 8 ],
+                                    "translations": {
+                                        "en": "work",
+                                        "fa": "کار می‌کنم"
+                                    }
+                                },
+                                {
+                                    "word": "8",
+                                    "range": [ 8, 9 ],
+                                    "translations": {
+                                        "en": "8",
+                                        "fa": "۸"
+                                    }
+                                },
+                                {
+                                    "word": "ชั่วโมง",
+                                    "range": [ 9, 14 ],
+                                    "translations": {
+                                        "en": "hours",
+                                        "fa": "ساعت"
+                                    }
+                                },
+                                {
+                                    "word": "ต่อวัน",
+                                    "range": [ 14, 18 ],
+                                    "translations": {
+                                        "en": "per day",
+                                        "fa": "در روز"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "I work 8 hours a day",
+                                "fa": "روزی ۸ ساعت کار می‌کنم"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ฉันทำงาน 5 วันต่อสัปดาห์",
+                            "words": [
+                                {
+                                    "word": "ฉัน",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "I",
+                                        "fa": "من"
+                                    }
+                                },
+                                {
+                                    "word": "ทำงาน",
+                                    "range": [ 3, 8 ],
+                                    "translations": {
+                                        "en": "work",
+                                        "fa": "کار می‌کنم"
+                                    }
+                                },
+                                {
+                                    "word": "5",
+                                    "range": [ 8, 9 ],
+                                    "translations": {
+                                        "en": "5",
+                                        "fa": "۵"
+                                    }
+                                },
+                                {
+                                    "word": "วัน",
+                                    "range": [ 9, 11 ],
+                                    "translations": {
+                                        "en": "days",
+                                        "fa": "روز"
+                                    }
+                                },
+                                {
+                                    "word": "ต่อสัปดาห์",
+                                    "range": [ 11, 18 ],
+                                    "translations": {
+                                        "en": "per week",
+                                        "fa": "در هفته"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "I work 5 days a week",
+                                "fa": "هفته‌ای ۵ روز کار می‌کنم"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ฉันชอบงานของฉัน",
+                            "words": [
+                                {
+                                    "word": "ฉัน",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "I",
+                                        "fa": "من"
+                                    }
+                                },
+                                {
+                                    "word": "ชอบ",
+                                    "range": [ 3, 7 ],
+                                    "translations": {
+                                        "en": "like",
+                                        "fa": "دوست دارم"
+                                    }
+                                },
+                                {
+                                    "word": "งาน",
+                                    "range": [ 7, 10 ],
+                                    "translations": {
+                                        "en": "job",
+                                        "fa": "کارم"
+                                    }
+                                },
+                                {
+                                    "word": "ของฉัน",
+                                    "range": [ 10, 14 ],
+                                    "translations": {
+                                        "en": "my",
+                                        "fa": "را"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "I like my job",
+                                "fa": "کارم را دوست دارم"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "งานของฉันเหนื่อย",
+                            "words": [
+                                {
+                                    "word": "งาน",
+                                    "range": [ 0, 4 ],
+                                    "translations": {
+                                        "en": "job",
+                                        "fa": "کارم"
+                                    }
+                                },
+                                {
+                                    "word": "ของฉัน",
+                                    "range": [ 4, 8 ],
+                                    "translations": {
+                                        "en": "my",
+                                        "fa": "من"
+                                    }
+                                },
+                                {
+                                    "word": "เหนื่อย",
+                                    "range": [ 8, 12 ],
+                                    "translations": {
+                                        "en": "tiring",
+                                        "fa": "خسته‌کننده"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "My job is tiring",
+                                "fa": "کارم خسته‌کننده است"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "heading": {
+                "en": "At the Office",
+                "fa": "در دفتر کار",
+                "th": "ในที่ทำงาน"
+            },
+            "activities": [ "multipleChoiceWord", "multipleChoiceSentence" ],
+            "blocks": [
+                {
+                    "type": "paragraph",
+                    "elements": [
+                        {
+                            "type": "sentence",
+                            "source": "คุณทำงานถึงกี่โมง",
+                            "words": [
+                                {
+                                    "word": "คุณ",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "you",
+                                        "fa": "شما"
+                                    }
+                                },
+                                {
+                                    "word": "ทำงาน",
+                                    "range": [ 3, 8 ],
+                                    "translations": {
+                                        "en": "work",
+                                        "fa": "کار می‌کنید"
+                                    }
+                                },
+                                {
+                                    "word": "ถึง",
+                                    "range": [ 8, 11 ],
+                                    "translations": {
+                                        "en": "until",
+                                        "fa": "تا"
+                                    }
+                                },
+                                {
+                                    "word": "กี่โมง",
+                                    "range": [ 11, 15 ],
+                                    "translations": {
+                                        "en": "what time",
+                                        "fa": "ساعت چند"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "What time do you work until?",
+                                "fa": "تا ساعت چند کار می‌کنید؟"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ฉันเริ่มงาน 8 โมง",
+                            "words": [
+                                {
+                                    "word": "ฉัน",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "I",
+                                        "fa": "من"
+                                    }
+                                },
+                                {
+                                    "word": "เริ่มงาน",
+                                    "range": [ 3, 8 ],
+                                    "translations": {
+                                        "en": "start work",
+                                        "fa": "کار را شروع می‌کنم"
+                                    }
+                                },
+                                {
+                                    "word": "8",
+                                    "range": [ 8, 9 ],
+                                    "translations": {
+                                        "en": "8",
+                                        "fa": "۸"
+                                    }
+                                },
+                                {
+                                    "word": "โมง",
+                                    "range": [ 9, 12 ],
+                                    "translations": {
+                                        "en": "o'clock",
+                                        "fa": "ساعت"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "I start work at 8 o'clock",
+                                "fa": "ساعت ۸ کار را شروع می‌کنم"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ฉันเลิกงาน 5 โมง",
+                            "words": [
+                                {
+                                    "word": "ฉัน",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "I",
+                                        "fa": "من"
+                                    }
+                                },
+                                {
+                                    "word": "เลิกงาน",
+                                    "range": [ 3, 8 ],
+                                    "translations": {
+                                        "en": "finish work",
+                                        "fa": "کار تمام می‌شود"
+                                    }
+                                },
+                                {
+                                    "word": "5",
+                                    "range": [ 8, 9 ],
+                                    "translations": {
+                                        "en": "5",
+                                        "fa": "۵"
+                                    }
+                                },
+                                {
+                                    "word": "โมง",
+                                    "range": [ 9, 12 ],
+                                    "translations": {
+                                        "en": "o'clock",
+                                        "fa": "ساعت"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "I finish work at 5 o'clock",
+                                "fa": "ساعت ۵ کار تمام می‌شود"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "พักเที่ยงกี่โมง",
+                            "words": [
+                                {
+                                    "word": "พักเที่ยง",
+                                    "range": [ 0, 6 ],
+                                    "translations": {
+                                        "en": "lunch break",
+                                        "fa": "ناهار"
+                                    }
+                                },
+                                {
+                                    "word": "กี่โมง",
+                                    "range": [ 6, 10 ],
+                                    "translations": {
+                                        "en": "what time",
+                                        "fa": "ساعت چند"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "What time is lunch break?",
+                                "fa": "ساعت ناهار چند است؟"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ไปกินข้าวเที่ยงกันไหม",
+                            "words": [
+                                {
+                                    "word": "ไป",
+                                    "range": [ 0, 2 ],
+                                    "translations": {
+                                        "en": "go",
+                                        "fa": "برویم"
+                                    }
+                                },
+                                {
+                                    "word": "กินข้าวเที่ยง",
+                                    "range": [ 2, 12 ],
+                                    "translations": {
+                                        "en": "eat lunch",
+                                        "fa": "ناهار بخوریم"
+                                    }
+                                },
+                                {
+                                    "word": "กัน",
+                                    "range": [ 12, 14 ],
+                                    "translations": {
+                                        "en": "together",
+                                        "fa": "با هم"
+                                    }
+                                },
+                                {
+                                    "word": "ไหม",
+                                    "range": [ 14, 17 ],
+                                    "translations": {
+                                        "en": "question particle",
+                                        "fa": "ذره سوالی"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Want to go to lunch together?",
+                                "fa": "با هم ناهار برویم؟"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ประชุมกี่โมง",
+                            "words": [
+                                {
+                                    "word": "ประชุม",
+                                    "range": [ 0, 5 ],
+                                    "translations": {
+                                        "en": "meeting",
+                                        "fa": "جلسه"
+                                    }
+                                },
+                                {
+                                    "word": "กี่โมง",
+                                    "range": [ 5, 9 ],
+                                    "translations": {
+                                        "en": "what time",
+                                        "fa": "ساعت چند"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "What time is the meeting?",
+                                "fa": "جلسه ساعت چند است؟"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "วันหยุดคือวันไหน",
+                            "words": [
+                                {
+                                    "word": "วันหยุด",
+                                    "range": [ 0, 6 ],
+                                    "translations": {
+                                        "en": "day off",
+                                        "fa": "روز تعطیل"
+                                    }
+                                },
+                                {
+                                    "word": "คือ",
+                                    "range": [ 6, 9 ],
+                                    "translations": {
+                                        "en": "is",
+                                        "fa": "است"
+                                    }
+                                },
+                                {
+                                    "word": "วันไหน",
+                                    "range": [ 9, 14 ],
+                                    "translations": {
+                                        "en": "which day",
+                                        "fa": "کدام روز"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Which day is the day off?",
+                                "fa": "روز تعطیل کدام روز است؟"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "เสาร์-อาทิตย์หยุด",
+                            "words": [
+                                {
+                                    "word": "เสาร์",
+                                    "range": [ 0, 5 ],
+                                    "translations": {
+                                        "en": "Saturday",
+                                        "fa": "شنبه"
+                                    }
+                                },
+                                {
+                                    "word": "อาทิตย์",
+                                    "range": [ 5, 11 ],
+                                    "translations": {
+                                        "en": "Sunday",
+                                        "fa": "یکشنبه"
+                                    }
+                                },
+                                {
+                                    "word": "หยุด",
+                                    "range": [ 11, 14 ],
+                                    "translations": {
+                                        "en": "off",
+                                        "fa": "تعطیل"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Saturday-Sunday off",
+                                "fa": "شنبه و یکشنبه تعطیل"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "heading": {
+                "en": "Colleagues and Teamwork",
+                "fa": "همکاران و کار تیمی",
+                "th": "เพื่อนร่วมงานและการทำงานเป็นทีม"
+            },
+            "activities": [ "multipleChoiceWord", "multipleChoiceSentence" ],
+            "blocks": [
+                {
+                    "type": "paragraph",
+                    "elements": [
+                        {
+                            "type": "sentence",
+                            "source": "นี่คือเพื่อนร่วมงาน",
+                            "words": [
+                                {
+                                    "word": "นี่",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "this",
+                                        "fa": "این"
+                                    }
+                                },
+                                {
+                                    "word": "คือ",
+                                    "range": [ 3, 6 ],
+                                    "translations": {
+                                        "en": "is",
+                                        "fa": "است"
+                                    }
+                                },
+                                {
+                                    "word": "เพื่อนร่วมงาน",
+                                    "range": [ 6, 15 ],
+                                    "translations": {
+                                        "en": "colleague",
+                                        "fa": "همکار"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "This is my colleague",
+                                "fa": "این همکار من است"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "เขาทำงานเก่ง",
+                            "words": [
+                                {
+                                    "word": "เขา",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "he/she",
+                                        "fa": "او"
+                                    }
+                                },
+                                {
+                                    "word": "ทำงาน",
+                                    "range": [ 3, 8 ],
+                                    "translations": {
+                                        "en": "work",
+                                        "fa": "کار می‌کند"
+                                    }
+                                },
+                                {
+                                    "word": "เก่ง",
+                                    "range": [ 8, 11 ],
+                                    "translations": {
+                                        "en": "skilled",
+                                        "fa": "ماهر"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "He/She is good at work",
+                                "fa": "او در کار ماهر است"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "เราช่วยกันทำงาน",
+                            "words": [
+                                {
+                                    "word": "เรา",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "we",
+                                        "fa": "ما"
+                                    }
+                                },
+                                {
+                                    "word": "ช่วยกัน",
+                                    "range": [ 3, 8 ],
+                                    "translations": {
+                                        "en": "help each other",
+                                        "fa": "به هم کمک می‌کنیم"
+                                    }
+                                },
+                                {
+                                    "word": "ทำงาน",
+                                    "range": [ 8, 12 ],
+                                    "translations": {
+                                        "en": "work",
+                                        "fa": "کار می‌کنیم"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "We work together",
+                                "fa": "ما با هم کار می‌کنیم"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "แบ่งงานกันทำ",
+                            "words": [
+                                {
+                                    "word": "แบ่งงาน",
+                                    "range": [ 0, 6 ],
+                                    "translations": {
+                                        "en": "divide work",
+                                        "fa": "کار را تقسیم کنیم"
+                                    }
+                                },
+                                {
+                                    "word": "กัน",
+                                    "range": [ 6, 8 ],
+                                    "translations": {
+                                        "en": "each other",
+                                        "fa": "با هم"
+                                    }
+                                },
+                                {
+                                    "word": "ทำ",
+                                    "range": [ 8, 10 ],
+                                    "translations": {
+                                        "en": "do",
+                                        "fa": "انجام دهیم"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Let's divide the work",
+                                "fa": "کار را تقسیم کنیم"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ช่วยหน่อยได้ไหม",
+                            "words": [
+                                {
+                                    "word": "ช่วย",
+                                    "range": [ 0, 4 ],
+                                    "translations": {
+                                        "en": "help",
+                                        "fa": "کمک"
+                                    }
+                                },
+                                {
+                                    "word": "หน่อย",
+                                    "range": [ 4, 8 ],
+                                    "translations": {
+                                        "en": "a little",
+                                        "fa": "کمی"
+                                    }
+                                },
+                                {
+                                    "word": "ได้",
+                                    "range": [ 8, 11 ],
+                                    "translations": {
+                                        "en": "can",
+                                        "fa": "می‌توانی"
+                                    }
+                                },
+                                {
+                                    "word": "ไหม",
+                                    "range": [ 11, 14 ],
+                                    "translations": {
+                                        "en": "question particle",
+                                        "fa": "ذره سوالی"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Can you help me?",
+                                "fa": "می‌توانی کمکم کنی؟"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ขอบคุณที่ช่วย",
+                            "words": [
+                                {
+                                    "word": "ขอบคุณ",
+                                    "range": [ 0, 6 ],
+                                    "translations": {
+                                        "en": "thank you",
+                                        "fa": "متشکرم"
+                                    }
+                                },
+                                {
+                                    "word": "ที่",
+                                    "range": [ 6, 8 ],
+                                    "translations": {
+                                        "en": "that",
+                                        "fa": "که"
+                                    }
+                                },
+                                {
+                                    "word": "ช่วย",
+                                    "range": [ 8, 12 ],
+                                    "translations": {
+                                        "en": "helped",
+                                        "fa": "کمک کردی"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Thank you for your help",
+                                "fa": "ممنون از کمکت"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "words",
+                    "data": [
+                        {
+                            "word": "เพื่อนร่วมงาน",
+                            "translations": {
+                                "en": "colleague",
+                                "fa": "همکار"
+                            }
+                        },
+                        {
+                            "word": "หัวหน้า",
+                            "translations": {
+                                "en": "boss",
+                                "fa": "رئیس"
+                            }
+                        },
+                        {
+                            "word": "ทีม",
+                            "translations": {
+                                "en": "team",
+                                "fa": "تیم"
+                            }
+                        },
+                        {
+                            "word": "ช่วยกัน",
+                            "translations": {
+                                "en": "help each other",
+                                "fa": "کمک متقابل"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "heading": {
+                "en": "Meetings and Discussions",
+                "fa": "جلسات و بحث‌ها",
+                "th": "การประชุมและการอภิปราย"
+            },
+            "activities": [ "multipleChoiceWord", "multipleChoiceSentence" ],
+            "blocks": [
+                {
+                    "type": "paragraph",
+                    "elements": [
+                        {
+                            "type": "sentence",
+                            "source": "เรามีประชุมวันนี้",
+                            "words": [
+                                {
+                                    "word": "เรา",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "we",
+                                        "fa": "ما"
+                                    }
+                                },
+                                {
+                                    "word": "มี",
+                                    "range": [ 3, 5 ],
+                                    "translations": {
+                                        "en": "have",
+                                        "fa": "داریم"
+                                    }
+                                },
+                                {
+                                    "word": "ประชุม",
+                                    "range": [ 5, 10 ],
+                                    "translations": {
+                                        "en": "meeting",
+                                        "fa": "جلسه"
+                                    }
+                                },
+                                {
+                                    "word": "วันนี้",
+                                    "range": [ 10, 14 ],
+                                    "translations": {
+                                        "en": "today",
+                                        "fa": "امروز"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "We have a meeting today",
+                                "fa": "امروز جلسه داریم"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ประชุมเรื่องอะไร",
+                            "words": [
+                                {
+                                    "word": "ประชุม",
+                                    "range": [ 0, 5 ],
+                                    "translations": {
+                                        "en": "meeting",
+                                        "fa": "جلسه"
+                                    }
+                                },
+                                {
+                                    "word": "เรื่อง",
+                                    "range": [ 5, 9 ],
+                                    "translations": {
+                                        "en": "about",
+                                        "fa": "درباره"
+                                    }
+                                },
+                                {
+                                    "word": "อะไร",
+                                    "range": [ 9, 12 ],
+                                    "translations": {
+                                        "en": "what",
+                                        "fa": "چه"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "What's the meeting about?",
+                                "fa": "جلسه درباره چیست؟"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ใครเป็นคนนำประชุม",
+                            "words": [
+                                {
+                                    "word": "ใคร",
+                                    "range": [ 0, 4 ],
+                                    "translations": {
+                                        "en": "who",
+                                        "fa": "چه کسی"
+                                    }
+                                },
+                                {
+                                    "word": "เป็น",
+                                    "range": [ 4, 7 ],
+                                    "translations": {
+                                        "en": "is",
+                                        "fa": "است"
+                                    }
+                                },
+                                {
+                                    "word": "คน",
+                                    "range": [ 7, 9 ],
+                                    "translations": {
+                                        "en": "person",
+                                        "fa": "شخص"
+                                    }
+                                },
+                                {
+                                    "word": "นำประชุม",
+                                    "range": [ 9, 15 ],
+                                    "translations": {
+                                        "en": "lead meeting",
+                                        "fa": "رهبر جلسه"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Who is leading the meeting?",
+                                "fa": "چه کسی جلسه را رهبری می‌کند؟"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ฉันเห็นด้วย",
+                            "words": [
+                                {
+                                    "word": "ฉัน",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "I",
+                                        "fa": "من"
+                                    }
+                                },
+                                {
+                                    "word": "เห็นด้วย",
+                                    "range": [ 3, 8 ],
+                                    "translations": {
+                                        "en": "agree",
+                                        "fa": "موافقم"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "I agree",
+                                "fa": "موافقم"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ฉันไม่เห็นด้วย",
+                            "words": [
+                                {
+                                    "word": "ฉัน",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "I",
+                                        "fa": "من"
+                                    }
+                                },
+                                {
+                                    "word": "ไม่เห็นด้วย",
+                                    "range": [ 3, 10 ],
+                                    "translations": {
+                                        "en": "disagree",
+                                        "fa": "موافق نیستم"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "I disagree",
+                                "fa": "موافق نیستم"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ฉันมีความคิดเห็น",
+                            "words": [
+                                {
+                                    "word": "ฉัน",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "I",
+                                        "fa": "من"
+                                    }
+                                },
+                                {
+                                    "word": "มี",
+                                    "range": [ 3, 5 ],
+                                    "translations": {
+                                        "en": "have",
+                                        "fa": "دارم"
+                                    }
+                                },
+                                {
+                                    "word": "ความคิดเห็น",
+                                    "range": [ 5, 13 ],
+                                    "translations": {
+                                        "en": "opinion",
+                                        "fa": "نظر"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "I have an opinion",
+                                "fa": "نظری دارم"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ขอเสนอแนะ",
+                            "words": [
+                                {
+                                    "word": "ขอ",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "ask to",
+                                        "fa": "اجازه بدهید"
+                                    }
+                                },
+                                {
+                                    "word": "เสนอแนะ",
+                                    "range": [ 3, 9 ],
+                                    "translations": {
+                                        "en": "suggest",
+                                        "fa": "پیشنهاد بدهم"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "I'd like to make a suggestion",
+                                "fa": "اجازه بدهید پیشنهادی بدهم"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "สรุปแล้วตกลงอะไร",
+                            "words": [
+                                {
+                                    "word": "สรุปแล้ว",
+                                    "range": [ 0, 6 ],
+                                    "translations": {
+                                        "en": "in conclusion",
+                                        "fa": "خلاصه"
+                                    }
+                                },
+                                {
+                                    "word": "ตกลง",
+                                    "range": [ 6, 10 ],
+                                    "translations": {
+                                        "en": "agree",
+                                        "fa": "توافق شد"
+                                    }
+                                },
+                                {
+                                    "word": "อะไร",
+                                    "range": [ 10, 13 ],
+                                    "translations": {
+                                        "en": "what",
+                                        "fa": "چه"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "What did we agree on?",
+                                "fa": "بر سر چه توافق شد؟"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "heading": {
+                "en": "Work Deadlines and Tasks",
+                "fa": "ضرب‌الاجل‌ها و وظایف کاری",
+                "th": "กำหนดส่งงานและภารกิจ"
+            },
+            "activities": [ "multipleChoiceWord", "multipleChoiceSentence" ],
+            "blocks": [
+                {
+                    "type": "paragraph",
+                    "elements": [
+                        {
+                            "type": "sentence",
+                            "source": "งานนี้ต้องเสร็จเมื่อไหร่",
+                            "words": [
+                                {
+                                    "word": "งานนี้",
+                                    "range": [ 0, 5 ],
+                                    "translations": {
+                                        "en": "this work",
+                                        "fa": "این کار"
+                                    }
+                                },
+                                {
+                                    "word": "ต้อง",
+                                    "range": [ 5, 8 ],
+                                    "translations": {
+                                        "en": "must",
+                                        "fa": "باید"
+                                    }
+                                },
+                                {
+                                    "word": "เสร็จ",
+                                    "range": [ 8, 12 ],
+                                    "translations": {
+                                        "en": "finished",
+                                        "fa": "تمام شود"
+                                    }
+                                },
+                                {
+                                    "word": "เมื่อไหร่",
+                                    "range": [ 12, 18 ],
+                                    "translations": {
+                                        "en": "when",
+                                        "fa": "کی"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "When does this need to be finished?",
+                                "fa": "این کار کی باید تمام شود؟"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "กำหนดส่งวันจันทร์",
+                            "words": [
+                                {
+                                    "word": "กำหนดส่ง",
+                                    "range": [ 0, 7 ],
+                                    "translations": {
+                                        "en": "deadline",
+                                        "fa": "ضرب‌الاجل"
+                                    }
+                                },
+                                {
+                                    "word": "วันจันทร์",
+                                    "range": [ 7, 14 ],
+                                    "translations": {
+                                        "en": "Monday",
+                                        "fa": "دوشنبه"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "The deadline is Monday",
+                                "fa": "ضرب‌الاجل دوشنبه است"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ยังไม่เสร็จ",
+                            "words": [
+                                {
+                                    "word": "ยัง",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "still",
+                                        "fa": "هنوز"
+                                    }
+                                },
+                                {
+                                    "word": "ไม่เสร็จ",
+                                    "range": [ 3, 9 ],
+                                    "translations": {
+                                        "en": "not finished",
+                                        "fa": "تمام نشده"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "It's not finished yet",
+                                "fa": "هنوز تمام نشده"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "เสร็จแล้ว",
+                            "words": [
+                                {
+                                    "word": "เสร็จ",
+                                    "range": [ 0, 5 ],
+                                    "translations": {
+                                        "en": "finished",
+                                        "fa": "تمام شد"
+                                    }
+                                },
+                                {
+                                    "word": "แล้ว",
+                                    "range": [ 5, 8 ],
+                                    "translations": {
+                                        "en": "already",
+                                        "fa": "قبلاً"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "It's finished",
+                                "fa": "تمام شد"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ขอต่อเวลาได้ไหม",
+                            "words": [
+                                {
+                                    "word": "ขอ",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "ask for",
+                                        "fa": "درخواست"
+                                    }
+                                },
+                                {
+                                    "word": "ต่อเวลา",
+                                    "range": [ 3, 9 ],
+                                    "translations": {
+                                        "en": "extension",
+                                        "fa": "تمدید وقت"
+                                    }
+                                },
+                                {
+                                    "word": "ได้",
+                                    "range": [ 9, 12 ],
+                                    "translations": {
+                                        "en": "can",
+                                        "fa": "می‌شود"
+                                    }
+                                },
+                                {
+                                    "word": "ไหม",
+                                    "range": [ 12, 15 ],
+                                    "translations": {
+                                        "en": "question particle",
+                                        "fa": "ذره سوالی"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Can I have an extension?",
+                                "fa": "می‌شود وقت را تمدید کنم؟"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "งานเยอะมาก",
+                            "words": [
+                                {
+                                    "word": "งาน",
+                                    "range": [ 0, 4 ],
+                                    "translations": {
+                                        "en": "work",
+                                        "fa": "کار"
+                                    }
+                                },
+                                {
+                                    "word": "เยอะมาก",
+                                    "range": [ 4, 10 ],
+                                    "translations": {
+                                        "en": "a lot",
+                                        "fa": "زیاد"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "There's a lot of work",
+                                "fa": "کار زیاد است"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "มีงานด่วน",
+                            "words": [
+                                {
+                                    "word": "มี",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "have",
+                                        "fa": "دارم"
+                                    }
+                                },
+                                {
+                                    "word": "งานด่วน",
+                                    "range": [ 3, 8 ],
+                                    "translations": {
+                                        "en": "urgent work",
+                                        "fa": "کار فوری"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "I have urgent work",
+                                "fa": "کار فوری دارم"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "โอทีได้ไหม",
+                            "words": [
+                                {
+                                    "word": "โอที",
+                                    "range": [ 0, 5 ],
+                                    "translations": {
+                                        "en": "overtime",
+                                        "fa": "اضافه کاری"
+                                    }
+                                },
+                                {
+                                    "word": "ได้",
+                                    "range": [ 5, 8 ],
+                                    "translations": {
+                                        "en": "can",
+                                        "fa": "می‌شود"
+                                    }
+                                },
+                                {
+                                    "word": "ไหม",
+                                    "range": [ 8, 11 ],
+                                    "translations": {
+                                        "en": "question particle",
+                                        "fa": "ذره سوالی"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Can I work overtime?",
+                                "fa": "اضافه کاری می‌شود؟"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "heading": {
+                "en": "Business Communication",
+                "fa": "ارتباطات تجاری",
+                "th": "การสื่อสารทางธุรกิจ"
+            },
+            "activities": [ "multipleChoiceWord", "multipleChoiceSentence" ],
+            "blocks": [
+                {
+                    "type": "paragraph",
+                    "elements": [
+                        {
+                            "type": "sentence",
+                            "source": "ขอนามบัตรหน่อย",
+                            "words": [
+                                {
+                                    "word": "ขอ",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "ask for",
+                                        "fa": "درخواست"
+                                    }
+                                },
+                                {
+                                    "word": "นามบัตร",
+                                    "range": [ 3, 9 ],
+                                    "translations": {
+                                        "en": "business card",
+                                        "fa": "کارت ویزیت"
+                                    }
+                                },
+                                {
+                                    "word": "หน่อย",
+                                    "range": [ 9, 13 ],
+                                    "translations": {
+                                        "en": "a little",
+                                        "fa": "لطفاً"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Can I have your business card?",
+                                "fa": "کارت ویزیت شما را می‌توانم داشته باشم؟"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ติดต่อทางอีเมล",
+                            "words": [
+                                {
+                                    "word": "ติดต่อ",
+                                    "range": [ 0, 6 ],
+                                    "translations": {
+                                        "en": "contact",
+                                        "fa": "تماس"
+                                    }
+                                },
+                                {
+                                    "word": "ทาง",
+                                    "range": [ 6, 9 ],
+                                    "translations": {
+                                        "en": "via",
+                                        "fa": "از طریق"
+                                    }
+                                },
+                                {
+                                    "word": "อีเมล",
+                                    "range": [ 9, 13 ],
+                                    "translations": {
+                                        "en": "email",
+                                        "fa": "ایمیل"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Contact by email",
+                                "fa": "تماس از طریق ایمیل"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ฉันจะส่งอีเมลไปหา",
+                            "words": [
+                                {
+                                    "word": "ฉัน",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "I",
+                                        "fa": "من"
+                                    }
+                                },
+                                {
+                                    "word": "จะ",
+                                    "range": [ 3, 5 ],
+                                    "translations": {
+                                        "en": "will",
+                                        "fa": "خواهم"
+                                    }
+                                },
+                                {
+                                    "word": "ส่ง",
+                                    "range": [ 5, 8 ],
+                                    "translations": {
+                                        "en": "send",
+                                        "fa": "فرستاد"
+                                    }
+                                },
+                                {
+                                    "word": "อีเมล",
+                                    "range": [ 8, 12 ],
+                                    "translations": {
+                                        "en": "email",
+                                        "fa": "ایمیل"
+                                    }
+                                },
+                                {
+                                    "word": "ไปหา",
+                                    "range": [ 12, 15 ],
+                                    "translations": {
+                                        "en": "to",
+                                        "fa": "به"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "I'll send an email",
+                                "fa": "ایمیل خواهم فرستاد"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "รอตอบกลับ",
+                            "words": [
+                                {
+                                    "word": "รอ",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "wait",
+                                        "fa": "منتظر"
+                                    }
+                                },
+                                {
+                                    "word": "ตอบกลับ",
+                                    "range": [ 3, 8 ],
+                                    "translations": {
+                                        "en": "reply",
+                                        "fa": "پاسخ"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Waiting for a reply",
+                                "fa": "منتظر پاسخ هستم"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ขอคุยด้วยหน่อย",
+                            "words": [
+                                {
+                                    "word": "ขอ",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "ask to",
+                                        "fa": "اجازه می‌خواهم"
+                                    }
+                                },
+                                {
+                                    "word": "คุย",
+                                    "range": [ 3, 6 ],
+                                    "translations": {
+                                        "en": "talk",
+                                        "fa": "صحبت کنم"
+                                    }
+                                },
+                                {
+                                    "word": "ด้วย",
+                                    "range": [ 6, 9 ],
+                                    "translations": {
+                                        "en": "with",
+                                        "fa": "با"
+                                    }
+                                },
+                                {
+                                    "word": "หน่อย",
+                                    "range": [ 9, 13 ],
+                                    "translations": {
+                                        "en": "a little",
+                                        "fa": "لطفاً"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Can I talk to you for a moment?",
+                                "fa": "می‌توانم یک لحظه با شما صحبت کنم؟"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ขอประชุมสั้นๆ",
+                            "words": [
+                                {
+                                    "word": "ขอ",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "ask to",
+                                        "fa": "اجازه می‌خواهم"
+                                    }
+                                },
+                                {
+                                    "word": "ประชุม",
+                                    "range": [ 3, 8 ],
+                                    "translations": {
+                                        "en": "meet",
+                                        "fa": "جلسه"
+                                    }
+                                },
+                                {
+                                    "word": "สั้นๆ",
+                                    "range": [ 8, 12 ],
+                                    "translations": {
+                                        "en": "brief",
+                                        "fa": "کوتاه"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Can we have a brief meeting?",
+                                "fa": "می‌توانیم یک جلسه کوتاه داشته باشیم؟"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ขอเบอร์ติดต่อ",
+                            "words": [
+                                {
+                                    "word": "ขอ",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "ask for",
+                                        "fa": "درخواست"
+                                    }
+                                },
+                                {
+                                    "word": "เบอร์ติดต่อ",
+                                    "range": [ 3, 11 ],
+                                    "translations": {
+                                        "en": "contact number",
+                                        "fa": "شماره تماس"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Can I have your contact number?",
+                                "fa": "شماره تماس شما را می‌توانم داشته باشم؟"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "words",
+                    "data": [
+                        {
+                            "word": "นามบัตร",
+                            "translations": {
+                                "en": "business card",
+                                "fa": "کارت ویزیت"
+                            }
+                        },
+                        {
+                            "word": "อีเมล",
+                            "translations": {
+                                "en": "email",
+                                "fa": "ایمیل"
+                            }
+                        },
+                        {
+                            "word": "ติดต่อ",
+                            "translations": {
+                                "en": "contact",
+                                "fa": "تماس"
+                            }
+                        },
+                        {
+                            "word": "ตอบกลับ",
+                            "translations": {
+                                "en": "reply",
+                                "fa": "پاسخ"
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

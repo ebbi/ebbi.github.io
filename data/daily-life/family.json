@@ -1,0 +1,2031 @@
+{
+    "documentId": "daily_family",
+    "sections": [
+        {
+            "heading": {
+                "en": "Family Members",
+                "fa": "اعضای خانواده",
+                "th": "สมาชิกในครอบครัว"
+            },
+            "activities": [ "multipleChoiceWord", "multipleChoiceSentence" ],
+            "blocks": [
+                {
+                    "type": "paragraph",
+                    "elements": [
+                        {
+                            "type": "sentence",
+                            "source": "นี่คือรูปครอบครัว",
+                            "words": [
+                                {
+                                    "word": "นี่",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "this",
+                                        "fa": "این"
+                                    }
+                                },
+                                {
+                                    "word": "คือ",
+                                    "range": [ 3, 6 ],
+                                    "translations": {
+                                        "en": "is",
+                                        "fa": "است"
+                                    }
+                                },
+                                {
+                                    "word": "รูป",
+                                    "range": [ 6, 9 ],
+                                    "translations": {
+                                        "en": "picture",
+                                        "fa": "عکس"
+                                    }
+                                },
+                                {
+                                    "word": "ครอบครัว",
+                                    "range": [ 9, 15 ],
+                                    "translations": {
+                                        "en": "family",
+                                        "fa": "خانواده"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "This is a family picture",
+                                "fa": "این عکس خانواده است"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "นี่คือพ่อ",
+                            "words": [
+                                {
+                                    "word": "นี่",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "this",
+                                        "fa": "این"
+                                    }
+                                },
+                                {
+                                    "word": "คือ",
+                                    "range": [ 3, 6 ],
+                                    "translations": {
+                                        "en": "is",
+                                        "fa": "است"
+                                    }
+                                },
+                                {
+                                    "word": "พ่อ",
+                                    "range": [ 6, 8 ],
+                                    "translations": {
+                                        "en": "father",
+                                        "fa": "پدر"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "This is my father",
+                                "fa": "این پدرم است"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "นี่คือแม่",
+                            "words": [
+                                {
+                                    "word": "นี่",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "this",
+                                        "fa": "این"
+                                    }
+                                },
+                                {
+                                    "word": "คือ",
+                                    "range": [ 3, 6 ],
+                                    "translations": {
+                                        "en": "is",
+                                        "fa": "است"
+                                    }
+                                },
+                                {
+                                    "word": "แม่",
+                                    "range": [ 6, 8 ],
+                                    "translations": {
+                                        "en": "mother",
+                                        "fa": "مادر"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "This is my mother",
+                                "fa": "این مادرم است"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "นี่คือพี่ชาย",
+                            "words": [
+                                {
+                                    "word": "นี่",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "this",
+                                        "fa": "این"
+                                    }
+                                },
+                                {
+                                    "word": "คือ",
+                                    "range": [ 3, 6 ],
+                                    "translations": {
+                                        "en": "is",
+                                        "fa": "است"
+                                    }
+                                },
+                                {
+                                    "word": "พี่ชาย",
+                                    "range": [ 6, 11 ],
+                                    "translations": {
+                                        "en": "older brother",
+                                        "fa": "برادر بزرگتر"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "This is my older brother",
+                                "fa": "این برادر بزرگترم است"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "นี่คือพี่สาว",
+                            "words": [
+                                {
+                                    "word": "นี่",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "this",
+                                        "fa": "این"
+                                    }
+                                },
+                                {
+                                    "word": "คือ",
+                                    "range": [ 3, 6 ],
+                                    "translations": {
+                                        "en": "is",
+                                        "fa": "است"
+                                    }
+                                },
+                                {
+                                    "word": "พี่สาว",
+                                    "range": [ 6, 11 ],
+                                    "translations": {
+                                        "en": "older sister",
+                                        "fa": "خواهر بزرگتر"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "This is my older sister",
+                                "fa": "این خواهر بزرگترم است"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "นี่คือน้องชาย",
+                            "words": [
+                                {
+                                    "word": "นี่",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "this",
+                                        "fa": "این"
+                                    }
+                                },
+                                {
+                                    "word": "คือ",
+                                    "range": [ 3, 6 ],
+                                    "translations": {
+                                        "en": "is",
+                                        "fa": "است"
+                                    }
+                                },
+                                {
+                                    "word": "น้องชาย",
+                                    "range": [ 6, 12 ],
+                                    "translations": {
+                                        "en": "younger brother",
+                                        "fa": "برادر کوچکتر"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "This is my younger brother",
+                                "fa": "این برادر کوچکترم است"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "นี่คือน้องสาว",
+                            "words": [
+                                {
+                                    "word": "นี่",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "this",
+                                        "fa": "این"
+                                    }
+                                },
+                                {
+                                    "word": "คือ",
+                                    "range": [ 3, 6 ],
+                                    "translations": {
+                                        "en": "is",
+                                        "fa": "است"
+                                    }
+                                },
+                                {
+                                    "word": "น้องสาว",
+                                    "range": [ 6, 12 ],
+                                    "translations": {
+                                        "en": "younger sister",
+                                        "fa": "خواهر کوچکتر"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "This is my younger sister",
+                                "fa": "این خواهر کوچکترم است"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "นี่คือปู่/ตา",
+                            "words": [
+                                {
+                                    "word": "นี่",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "this",
+                                        "fa": "این"
+                                    }
+                                },
+                                {
+                                    "word": "คือ",
+                                    "range": [ 3, 6 ],
+                                    "translations": {
+                                        "en": "is",
+                                        "fa": "است"
+                                    }
+                                },
+                                {
+                                    "word": "ปู่/ตา",
+                                    "range": [ 6, 11 ],
+                                    "translations": {
+                                        "en": "grandfather",
+                                        "fa": "پدربزرگ"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "This is my grandfather",
+                                "fa": "این پدربزرگم است"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "นี่คือย่า/ยาย",
+                            "words": [
+                                {
+                                    "word": "นี่",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "this",
+                                        "fa": "این"
+                                    }
+                                },
+                                {
+                                    "word": "คือ",
+                                    "range": [ 3, 6 ],
+                                    "translations": {
+                                        "en": "is",
+                                        "fa": "است"
+                                    }
+                                },
+                                {
+                                    "word": "ย่า/ยาย",
+                                    "range": [ 6, 11 ],
+                                    "translations": {
+                                        "en": "grandmother",
+                                        "fa": "مادربزرگ"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "This is my grandmother",
+                                "fa": "این مادربزرگم است"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "words",
+                    "data": [
+                        {
+                            "word": "พ่อ",
+                            "translations": {
+                                "en": "father",
+                                "fa": "پدر"
+                            }
+                        },
+                        {
+                            "word": "แม่",
+                            "translations": {
+                                "en": "mother",
+                                "fa": "مادر"
+                            }
+                        },
+                        {
+                            "word": "พี่ชาย",
+                            "translations": {
+                                "en": "older brother",
+                                "fa": "برادر بزرگتر"
+                            }
+                        },
+                        {
+                            "word": "พี่สาว",
+                            "translations": {
+                                "en": "older sister",
+                                "fa": "خواهر بزرگتر"
+                            }
+                        },
+                        {
+                            "word": "น้องชาย",
+                            "translations": {
+                                "en": "younger brother",
+                                "fa": "برادر کوچکتر"
+                            }
+                        },
+                        {
+                            "word": "น้องสาว",
+                            "translations": {
+                                "en": "younger sister",
+                                "fa": "خواهر کوچکتر"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "heading": {
+                "en": "Talking About Family",
+                "fa": "صحبت درباره خانواده",
+                "th": "การพูดคุยเกี่ยวกับครอบครัว"
+            },
+            "activities": [ "multipleChoiceWord", "multipleChoiceSentence" ],
+            "blocks": [
+                {
+                    "type": "paragraph",
+                    "elements": [
+                        {
+                            "type": "sentence",
+                            "source": "คุณมีพี่น้องกี่คน",
+                            "words": [
+                                {
+                                    "word": "คุณ",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "you",
+                                        "fa": "شما"
+                                    }
+                                },
+                                {
+                                    "word": "มี",
+                                    "range": [ 3, 5 ],
+                                    "translations": {
+                                        "en": "have",
+                                        "fa": "دارید"
+                                    }
+                                },
+                                {
+                                    "word": "พี่น้อง",
+                                    "range": [ 5, 11 ],
+                                    "translations": {
+                                        "en": "siblings",
+                                        "fa": "خواهر و برادر"
+                                    }
+                                },
+                                {
+                                    "word": "กี่คน",
+                                    "range": [ 11, 15 ],
+                                    "translations": {
+                                        "en": "how many people",
+                                        "fa": "چند نفر"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "How many siblings do you have?",
+                                "fa": "چند خواهر و برادر دارید؟"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ฉันมีพี่ชายหนึ่งคน",
+                            "words": [
+                                {
+                                    "word": "ฉัน",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "I",
+                                        "fa": "من"
+                                    }
+                                },
+                                {
+                                    "word": "มี",
+                                    "range": [ 3, 5 ],
+                                    "translations": {
+                                        "en": "have",
+                                        "fa": "دارم"
+                                    }
+                                },
+                                {
+                                    "word": "พี่ชาย",
+                                    "range": [ 5, 10 ],
+                                    "translations": {
+                                        "en": "older brother",
+                                        "fa": "برادر بزرگتر"
+                                    }
+                                },
+                                {
+                                    "word": "หนึ่งคน",
+                                    "range": [ 10, 15 ],
+                                    "translations": {
+                                        "en": "one person",
+                                        "fa": "یک نفر"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "I have one older brother",
+                                "fa": "یک برادر بزرگتر دارم"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ฉันมีน้องสาวสองคน",
+                            "words": [
+                                {
+                                    "word": "ฉัน",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "I",
+                                        "fa": "من"
+                                    }
+                                },
+                                {
+                                    "word": "มี",
+                                    "range": [ 3, 5 ],
+                                    "translations": {
+                                        "en": "have",
+                                        "fa": "دارم"
+                                    }
+                                },
+                                {
+                                    "word": "น้องสาว",
+                                    "range": [ 5, 11 ],
+                                    "translations": {
+                                        "en": "younger sister",
+                                        "fa": "خواهر کوچکتر"
+                                    }
+                                },
+                                {
+                                    "word": "สองคน",
+                                    "range": [ 11, 15 ],
+                                    "translations": {
+                                        "en": "two people",
+                                        "fa": "دو نفر"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "I have two younger sisters",
+                                "fa": "دو خواهر کوچکتر دارم"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ฉันเป็นลูกคนเดียว",
+                            "words": [
+                                {
+                                    "word": "ฉัน",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "I",
+                                        "fa": "من"
+                                    }
+                                },
+                                {
+                                    "word": "เป็น",
+                                    "range": [ 3, 6 ],
+                                    "translations": {
+                                        "en": "am",
+                                        "fa": "هستم"
+                                    }
+                                },
+                                {
+                                    "word": "ลูกคนเดียว",
+                                    "range": [ 6, 14 ],
+                                    "translations": {
+                                        "en": "only child",
+                                        "fa": "تک فرزند"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "I'm an only child",
+                                "fa": "من تک فرزند هستم"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ครอบครัวฉันมีสี่คน",
+                            "words": [
+                                {
+                                    "word": "ครอบครัว",
+                                    "range": [ 0, 7 ],
+                                    "translations": {
+                                        "en": "family",
+                                        "fa": "خانواده"
+                                    }
+                                },
+                                {
+                                    "word": "ฉัน",
+                                    "range": [ 7, 10 ],
+                                    "translations": {
+                                        "en": "my",
+                                        "fa": "من"
+                                    }
+                                },
+                                {
+                                    "word": "มี",
+                                    "range": [ 10, 12 ],
+                                    "translations": {
+                                        "en": "has",
+                                        "fa": "دارد"
+                                    }
+                                },
+                                {
+                                    "word": "สี่คน",
+                                    "range": [ 12, 16 ],
+                                    "translations": {
+                                        "en": "four people",
+                                        "fa": "چهار نفر"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "My family has four people",
+                                "fa": "خانواده من چهار نفر است"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "พ่อแม่ยังมีชีวิตอยู่",
+                            "words": [
+                                {
+                                    "word": "พ่อแม่",
+                                    "range": [ 0, 5 ],
+                                    "translations": {
+                                        "en": "parents",
+                                        "fa": "پدر و مادر"
+                                    }
+                                },
+                                {
+                                    "word": "ยัง",
+                                    "range": [ 5, 8 ],
+                                    "translations": {
+                                        "en": "still",
+                                        "fa": "هنوز"
+                                    }
+                                },
+                                {
+                                    "word": "มีชีวิต",
+                                    "range": [ 8, 13 ],
+                                    "translations": {
+                                        "en": "alive",
+                                        "fa": "زنده"
+                                    }
+                                },
+                                {
+                                    "word": "อยู่",
+                                    "range": [ 13, 16 ],
+                                    "translations": {
+                                        "en": "are",
+                                        "fa": "هستند"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "My parents are still alive",
+                                "fa": "پدر و مادرم هنوز زنده هستند"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "พ่อแม่เสียชีวิตแล้ว",
+                            "words": [
+                                {
+                                    "word": "พ่อแม่",
+                                    "range": [ 0, 5 ],
+                                    "translations": {
+                                        "en": "parents",
+                                        "fa": "پدر و مادر"
+                                    }
+                                },
+                                {
+                                    "word": "เสียชีวิต",
+                                    "range": [ 5, 12 ],
+                                    "translations": {
+                                        "en": "passed away",
+                                        "fa": "فوت شده‌اند"
+                                    }
+                                },
+                                {
+                                    "word": "แล้ว",
+                                    "range": [ 12, 15 ],
+                                    "translations": {
+                                        "en": "already",
+                                        "fa": "قبلاً"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "My parents have passed away",
+                                "fa": "پدر و مادرم فوت شده‌اند"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "heading": {
+                "en": "Marital Status",
+                "fa": "وضعیت تأهل",
+                "th": "สถานภาพสมรส"
+            },
+            "activities": [ "multipleChoiceWord", "multipleChoiceSentence" ],
+            "blocks": [
+                {
+                    "type": "paragraph",
+                    "elements": [
+                        {
+                            "type": "sentence",
+                            "source": "คุณแต่งงานแล้วหรือยัง",
+                            "words": [
+                                {
+                                    "word": "คุณ",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "you",
+                                        "fa": "شما"
+                                    }
+                                },
+                                {
+                                    "word": "แต่งงาน",
+                                    "range": [ 3, 9 ],
+                                    "translations": {
+                                        "en": "married",
+                                        "fa": "ازدواج کرده"
+                                    }
+                                },
+                                {
+                                    "word": "แล้ว",
+                                    "range": [ 9, 12 ],
+                                    "translations": {
+                                        "en": "already",
+                                        "fa": "قبلاً"
+                                    }
+                                },
+                                {
+                                    "word": "หรือยัง",
+                                    "range": [ 12, 17 ],
+                                    "translations": {
+                                        "en": "or not yet",
+                                        "fa": "یا نه"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Are you married?",
+                                "fa": "آیا ازدواج کرده‌اید؟"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ฉันแต่งงานแล้ว",
+                            "words": [
+                                {
+                                    "word": "ฉัน",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "I",
+                                        "fa": "من"
+                                    }
+                                },
+                                {
+                                    "word": "แต่งงาน",
+                                    "range": [ 3, 9 ],
+                                    "translations": {
+                                        "en": "married",
+                                        "fa": "ازدواج کرده"
+                                    }
+                                },
+                                {
+                                    "word": "แล้ว",
+                                    "range": [ 9, 12 ],
+                                    "translations": {
+                                        "en": "already",
+                                        "fa": "ام"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "I'm married",
+                                "fa": "من ازدواج کرده‌ام"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ฉันยังโสด",
+                            "words": [
+                                {
+                                    "word": "ฉัน",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "I",
+                                        "fa": "من"
+                                    }
+                                },
+                                {
+                                    "word": "ยัง",
+                                    "range": [ 3, 6 ],
+                                    "translations": {
+                                        "en": "still",
+                                        "fa": "هنوز"
+                                    }
+                                },
+                                {
+                                    "word": "โสด",
+                                    "range": [ 6, 9 ],
+                                    "translations": {
+                                        "en": "single",
+                                        "fa": "مجرد"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "I'm still single",
+                                "fa": "من هنوز مجرد هستم"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ฉันหย่า",
+                            "words": [
+                                {
+                                    "word": "ฉัน",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "I",
+                                        "fa": "من"
+                                    }
+                                },
+                                {
+                                    "word": "หย่า",
+                                    "range": [ 3, 6 ],
+                                    "translations": {
+                                        "en": "divorced",
+                                        "fa": "طلاق گرفته"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "I'm divorced",
+                                "fa": "طلاق گرفته‌ام"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ฉันเป็นหม้าย",
+                            "words": [
+                                {
+                                    "word": "ฉัน",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "I",
+                                        "fa": "من"
+                                    }
+                                },
+                                {
+                                    "word": "เป็นหม้าย",
+                                    "range": [ 3, 9 ],
+                                    "translations": {
+                                        "en": "widowed",
+                                        "fa": "بیوه"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "I'm widowed",
+                                "fa": "همسرم فوت شده"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ฉันมีแฟนแล้ว",
+                            "words": [
+                                {
+                                    "word": "ฉัน",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "I",
+                                        "fa": "من"
+                                    }
+                                },
+                                {
+                                    "word": "มี",
+                                    "range": [ 3, 5 ],
+                                    "translations": {
+                                        "en": "have",
+                                        "fa": "دارم"
+                                    }
+                                },
+                                {
+                                    "word": "แฟน",
+                                    "range": [ 5, 8 ],
+                                    "translations": {
+                                        "en": "boyfriend/girlfriend",
+                                        "fa": "دوست پسر/دختر"
+                                    }
+                                },
+                                {
+                                    "word": "แล้ว",
+                                    "range": [ 8, 11 ],
+                                    "translations": {
+                                        "en": "already",
+                                        "fa": "قبلاً"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "I have a boyfriend/girlfriend",
+                                "fa": "دوست پسر/دختر دارم"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ฉันยังไม่มีแฟน",
+                            "words": [
+                                {
+                                    "word": "ฉัน",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "I",
+                                        "fa": "من"
+                                    }
+                                },
+                                {
+                                    "word": "ยัง",
+                                    "range": [ 3, 6 ],
+                                    "translations": {
+                                        "en": "still",
+                                        "fa": "هنوز"
+                                    }
+                                },
+                                {
+                                    "word": "ไม่มี",
+                                    "range": [ 6, 9 ],
+                                    "translations": {
+                                        "en": "don't have",
+                                        "fa": "ندارم"
+                                    }
+                                },
+                                {
+                                    "word": "แฟน",
+                                    "range": [ 9, 12 ],
+                                    "translations": {
+                                        "en": "boyfriend/girlfriend",
+                                        "fa": "دوست پسر/دختر"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "I don't have a boyfriend/girlfriend",
+                                "fa": "دوست پسر/دختر ندارم"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "words",
+                    "data": [
+                        {
+                            "word": "แต่งงาน",
+                            "translations": {
+                                "en": "married",
+                                "fa": "ازدواج کرده"
+                            }
+                        },
+                        {
+                            "word": "โสด",
+                            "translations": {
+                                "en": "single",
+                                "fa": "مجرد"
+                            }
+                        },
+                        {
+                            "word": "หย่า",
+                            "translations": {
+                                "en": "divorced",
+                                "fa": "طلاق گرفته"
+                            }
+                        },
+                        {
+                            "word": "หม้าย",
+                            "translations": {
+                                "en": "widowed",
+                                "fa": "بیوه"
+                            }
+                        },
+                        {
+                            "word": "แฟน",
+                            "translations": {
+                                "en": "boyfriend/girlfriend",
+                                "fa": "دوست پسر/دختر"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "heading": {
+                "en": "Children",
+                "fa": "فرزندان",
+                "th": "ลูก"
+            },
+            "activities": [ "multipleChoiceWord", "multipleChoiceSentence" ],
+            "blocks": [
+                {
+                    "type": "paragraph",
+                    "elements": [
+                        {
+                            "type": "sentence",
+                            "source": "คุณมีลูกไหม",
+                            "words": [
+                                {
+                                    "word": "คุณ",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "you",
+                                        "fa": "شما"
+                                    }
+                                },
+                                {
+                                    "word": "มี",
+                                    "range": [ 3, 5 ],
+                                    "translations": {
+                                        "en": "have",
+                                        "fa": "دارید"
+                                    }
+                                },
+                                {
+                                    "word": "ลูก",
+                                    "range": [ 5, 8 ],
+                                    "translations": {
+                                        "en": "children",
+                                        "fa": "فرزند"
+                                    }
+                                },
+                                {
+                                    "word": "ไหม",
+                                    "range": [ 8, 11 ],
+                                    "translations": {
+                                        "en": "question particle",
+                                        "fa": "ذره سوالی"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Do you have children?",
+                                "fa": "فرزند دارید؟"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ฉันมีลูกสองคน",
+                            "words": [
+                                {
+                                    "word": "ฉัน",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "I",
+                                        "fa": "من"
+                                    }
+                                },
+                                {
+                                    "word": "มี",
+                                    "range": [ 3, 5 ],
+                                    "translations": {
+                                        "en": "have",
+                                        "fa": "دارم"
+                                    }
+                                },
+                                {
+                                    "word": "ลูก",
+                                    "range": [ 5, 8 ],
+                                    "translations": {
+                                        "en": "children",
+                                        "fa": "فرزند"
+                                    }
+                                },
+                                {
+                                    "word": "สองคน",
+                                    "range": [ 8, 12 ],
+                                    "translations": {
+                                        "en": "two people",
+                                        "fa": "دو نفر"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "I have two children",
+                                "fa": "دو فرزند دارم"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ลูกชายอายุ...ขวบ",
+                            "words": [
+                                {
+                                    "word": "ลูกชาย",
+                                    "range": [ 0, 5 ],
+                                    "translations": {
+                                        "en": "son",
+                                        "fa": "پسر"
+                                    }
+                                },
+                                {
+                                    "word": "อายุ",
+                                    "range": [ 5, 8 ],
+                                    "translations": {
+                                        "en": "age",
+                                        "fa": "سن"
+                                    }
+                                },
+                                {
+                                    "word": "ขวบ",
+                                    "range": [ 10, 13 ],
+                                    "translations": {
+                                        "en": "years old (for children)",
+                                        "fa": "سال"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "My son is ... years old",
+                                "fa": "پسرم ... سال دارد"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ลูกสาวอายุ...ขวบ",
+                            "words": [
+                                {
+                                    "word": "ลูกสาว",
+                                    "range": [ 0, 5 ],
+                                    "translations": {
+                                        "en": "daughter",
+                                        "fa": "دختر"
+                                    }
+                                },
+                                {
+                                    "word": "อายุ",
+                                    "range": [ 5, 8 ],
+                                    "translations": {
+                                        "en": "age",
+                                        "fa": "سن"
+                                    }
+                                },
+                                {
+                                    "word": "ขวบ",
+                                    "range": [ 10, 13 ],
+                                    "translations": {
+                                        "en": "years old (for children)",
+                                        "fa": "سال"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "My daughter is ... years old",
+                                "fa": "دخترم ... سال دارد"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ลูกไปโรงเรียนแล้ว",
+                            "words": [
+                                {
+                                    "word": "ลูก",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "child",
+                                        "fa": "بچه"
+                                    }
+                                },
+                                {
+                                    "word": "ไป",
+                                    "range": [ 3, 5 ],
+                                    "translations": {
+                                        "en": "go",
+                                        "fa": "می‌رود"
+                                    }
+                                },
+                                {
+                                    "word": "โรงเรียน",
+                                    "range": [ 5, 11 ],
+                                    "translations": {
+                                        "en": "school",
+                                        "fa": "مدرسه"
+                                    }
+                                },
+                                {
+                                    "word": "แล้ว",
+                                    "range": [ 11, 14 ],
+                                    "translations": {
+                                        "en": "already",
+                                        "fa": "قبلاً"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "My child goes to school already",
+                                "fa": "بچه‌ام به مدرسه می‌رود"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ลูกยังเล็ก",
+                            "words": [
+                                {
+                                    "word": "ลูก",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "child",
+                                        "fa": "بچه"
+                                    }
+                                },
+                                {
+                                    "word": "ยัง",
+                                    "range": [ 3, 6 ],
+                                    "translations": {
+                                        "en": "still",
+                                        "fa": "هنوز"
+                                    }
+                                },
+                                {
+                                    "word": "เล็ก",
+                                    "range": [ 6, 9 ],
+                                    "translations": {
+                                        "en": "young/small",
+                                        "fa": "کوچک"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "My child is still young",
+                                "fa": "بچه‌ام هنوز کوچک است"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ฉันไม่มีลูก",
+                            "words": [
+                                {
+                                    "word": "ฉัน",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "I",
+                                        "fa": "من"
+                                    }
+                                },
+                                {
+                                    "word": "ไม่มี",
+                                    "range": [ 3, 6 ],
+                                    "translations": {
+                                        "en": "don't have",
+                                        "fa": "ندارم"
+                                    }
+                                },
+                                {
+                                    "word": "ลูก",
+                                    "range": [ 6, 9 ],
+                                    "translations": {
+                                        "en": "children",
+                                        "fa": "فرزند"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "I don't have children",
+                                "fa": "فرزند ندارم"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "heading": {
+                "en": "Extended Family",
+                "fa": "خانواده گسترده",
+                "th": "ญาติ"
+            },
+            "activities": [ "multipleChoiceWord", "multipleChoiceSentence" ],
+            "blocks": [
+                {
+                    "type": "paragraph",
+                    "elements": [
+                        {
+                            "type": "sentence",
+                            "source": "ฉันมีลุง",
+                            "words": [
+                                {
+                                    "word": "ฉัน",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "I",
+                                        "fa": "من"
+                                    }
+                                },
+                                {
+                                    "word": "มี",
+                                    "range": [ 3, 5 ],
+                                    "translations": {
+                                        "en": "have",
+                                        "fa": "دارم"
+                                    }
+                                },
+                                {
+                                    "word": "ลุง",
+                                    "range": [ 5, 8 ],
+                                    "translations": {
+                                        "en": "uncle (older than parent)",
+                                        "fa": "عمو/دایی"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "I have an uncle",
+                                "fa": "عمو/دایی دارم"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ฉันมีป้า",
+                            "words": [
+                                {
+                                    "word": "ฉัน",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "I",
+                                        "fa": "من"
+                                    }
+                                },
+                                {
+                                    "word": "มี",
+                                    "range": [ 3, 5 ],
+                                    "translations": {
+                                        "en": "have",
+                                        "fa": "دارم"
+                                    }
+                                },
+                                {
+                                    "word": "ป้า",
+                                    "range": [ 5, 8 ],
+                                    "translations": {
+                                        "en": "aunt (older than parent)",
+                                        "fa": "عمه/خاله"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "I have an aunt",
+                                "fa": "عمه/خاله دارم"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ฉันมีน้า",
+                            "words": [
+                                {
+                                    "word": "ฉัน",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "I",
+                                        "fa": "من"
+                                    }
+                                },
+                                {
+                                    "word": "มี",
+                                    "range": [ 3, 5 ],
+                                    "translations": {
+                                        "en": "have",
+                                        "fa": "دارم"
+                                    }
+                                },
+                                {
+                                    "word": "น้า",
+                                    "range": [ 5, 8 ],
+                                    "translations": {
+                                        "en": "aunt/uncle (younger than parent)",
+                                        "fa": "خاله/دایی کوچکتر"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "I have an aunt/uncle (younger)",
+                                "fa": "خاله/دایی کوچکتر دارم"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ฉันมีอา",
+                            "words": [
+                                {
+                                    "word": "ฉัน",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "I",
+                                        "fa": "من"
+                                    }
+                                },
+                                {
+                                    "word": "มี",
+                                    "range": [ 3, 5 ],
+                                    "translations": {
+                                        "en": "have",
+                                        "fa": "دارم"
+                                    }
+                                },
+                                {
+                                    "word": "อา",
+                                    "range": [ 5, 7 ],
+                                    "translations": {
+                                        "en": "aunt/uncle (youngest)",
+                                        "fa": "عمه/عمو کوچک"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "I have an aunt/uncle (youngest)",
+                                "fa": "عمه/عمو کوچک دارم"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ฉันมีลูกพี่ลูกน้อง",
+                            "words": [
+                                {
+                                    "word": "ฉัน",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "I",
+                                        "fa": "من"
+                                    }
+                                },
+                                {
+                                    "word": "มี",
+                                    "range": [ 3, 5 ],
+                                    "translations": {
+                                        "en": "have",
+                                        "fa": "دارم"
+                                    }
+                                },
+                                {
+                                    "word": "ลูกพี่ลูกน้อง",
+                                    "range": [ 5, 16 ],
+                                    "translations": {
+                                        "en": "cousins",
+                                        "fa": "پسرعمو/دخترعمو"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "I have cousins",
+                                "fa": "پسرعمو/دخترعمو دارم"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ครอบครัวใหญ่",
+                            "words": [
+                                {
+                                    "word": "ครอบครัว",
+                                    "range": [ 0, 7 ],
+                                    "translations": {
+                                        "en": "family",
+                                        "fa": "خانواده"
+                                    }
+                                },
+                                {
+                                    "word": "ใหญ่",
+                                    "range": [ 7, 10 ],
+                                    "translations": {
+                                        "en": "big",
+                                        "fa": "بزرگ"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "big family",
+                                "fa": "خانواده بزرگ"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ครอบครัวเล็ก",
+                            "words": [
+                                {
+                                    "word": "ครอบครัว",
+                                    "range": [ 0, 7 ],
+                                    "translations": {
+                                        "en": "family",
+                                        "fa": "خانواده"
+                                    }
+                                },
+                                {
+                                    "word": "เล็ก",
+                                    "range": [ 7, 10 ],
+                                    "translations": {
+                                        "en": "small",
+                                        "fa": "کوچک"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "small family",
+                                "fa": "خانواده کوچک"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "words",
+                    "data": [
+                        {
+                            "word": "ลุง",
+                            "translations": {
+                                "en": "uncle (older)",
+                                "fa": "عمو/دایی"
+                            }
+                        },
+                        {
+                            "word": "ป้า",
+                            "translations": {
+                                "en": "aunt (older)",
+                                "fa": "عمه/خاله"
+                            }
+                        },
+                        {
+                            "word": "น้า",
+                            "translations": {
+                                "en": "aunt/uncle (younger)",
+                                "fa": "خاله/دایی"
+                            }
+                        },
+                        {
+                            "word": "อา",
+                            "translations": {
+                                "en": "aunt/uncle (youngest)",
+                                "fa": "عمه/عمو"
+                            }
+                        },
+                        {
+                            "word": "ลูกพี่ลูกน้อง",
+                            "translations": {
+                                "en": "cousins",
+                                "fa": "پسرعمو/دخترعمو"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "heading": {
+                "en": "Relationships and Dating",
+                "fa": "روابط و دوستیابی",
+                "th": "ความสัมพันธ์และการเดท"
+            },
+            "activities": [ "multipleChoiceWord", "multipleChoiceSentence" ],
+            "blocks": [
+                {
+                    "type": "paragraph",
+                    "elements": [
+                        {
+                            "type": "sentence",
+                            "source": "คุณมีแฟนหรือยัง",
+                            "words": [
+                                {
+                                    "word": "คุณ",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "you",
+                                        "fa": "شما"
+                                    }
+                                },
+                                {
+                                    "word": "มี",
+                                    "range": [ 3, 5 ],
+                                    "translations": {
+                                        "en": "have",
+                                        "fa": "دارید"
+                                    }
+                                },
+                                {
+                                    "word": "แฟน",
+                                    "range": [ 5, 8 ],
+                                    "translations": {
+                                        "en": "boyfriend/girlfriend",
+                                        "fa": "دوست پسر/دختر"
+                                    }
+                                },
+                                {
+                                    "word": "หรือยัง",
+                                    "range": [ 8, 13 ],
+                                    "translations": {
+                                        "en": "or not yet",
+                                        "fa": "یا نه"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Do you have a boyfriend/girlfriend?",
+                                "fa": "دوست پسر/دختر دارید؟"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "คบกันมานานเท่าไหร่",
+                            "words": [
+                                {
+                                    "word": "คบกัน",
+                                    "range": [ 0, 5 ],
+                                    "translations": {
+                                        "en": "date each other",
+                                        "fa": "با هم هستیم"
+                                    }
+                                },
+                                {
+                                    "word": "มา",
+                                    "range": [ 5, 7 ],
+                                    "translations": {
+                                        "en": "for",
+                                        "fa": "مدت"
+                                    }
+                                },
+                                {
+                                    "word": "นาน",
+                                    "range": [ 7, 10 ],
+                                    "translations": {
+                                        "en": "long",
+                                        "fa": "طولانی"
+                                    }
+                                },
+                                {
+                                    "word": "เท่าไหร่",
+                                    "range": [ 10, 17 ],
+                                    "translations": {
+                                        "en": "how much",
+                                        "fa": "چقدر"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "How long have you been together?",
+                                "fa": "چقدر است با هم هستید؟"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "เราคบกันมาสองปี",
+                            "words": [
+                                {
+                                    "word": "เรา",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "we",
+                                        "fa": "ما"
+                                    }
+                                },
+                                {
+                                    "word": "คบกัน",
+                                    "range": [ 3, 8 ],
+                                    "translations": {
+                                        "en": "date",
+                                        "fa": "دوست هستیم"
+                                    }
+                                },
+                                {
+                                    "word": "มา",
+                                    "range": [ 8, 10 ],
+                                    "translations": {
+                                        "en": "for",
+                                        "fa": "مدت"
+                                    }
+                                },
+                                {
+                                    "word": "สองปี",
+                                    "range": [ 10, 14 ],
+                                    "translations": {
+                                        "en": "two years",
+                                        "fa": "دو سال"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "We've been together for two years",
+                                "fa": "دو سال است با هم هستیم"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "เราเจอกันที่ทำงาน",
+                            "words": [
+                                {
+                                    "word": "เรา",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "we",
+                                        "fa": "ما"
+                                    }
+                                },
+                                {
+                                    "word": "เจอกัน",
+                                    "range": [ 3, 8 ],
+                                    "translations": {
+                                        "en": "met",
+                                        "fa": "همدیگر را دیدیم"
+                                    }
+                                },
+                                {
+                                    "word": "ที่",
+                                    "range": [ 8, 10 ],
+                                    "translations": {
+                                        "en": "at",
+                                        "fa": "در"
+                                    }
+                                },
+                                {
+                                    "word": "ทำงาน",
+                                    "range": [ 10, 15 ],
+                                    "translations": {
+                                        "en": "work",
+                                        "fa": "کار"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "We met at work",
+                                "fa": "سر کار همدیگر را دیدیم"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "เราเจอกันที่มหาวิทยาลัย",
+                            "words": [
+                                {
+                                    "word": "เรา",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "we",
+                                        "fa": "ما"
+                                    }
+                                },
+                                {
+                                    "word": "เจอกัน",
+                                    "range": [ 3, 8 ],
+                                    "translations": {
+                                        "en": "met",
+                                        "fa": "دیدیم"
+                                    }
+                                },
+                                {
+                                    "word": "ที่",
+                                    "range": [ 8, 10 ],
+                                    "translations": {
+                                        "en": "at",
+                                        "fa": "در"
+                                    }
+                                },
+                                {
+                                    "word": "มหาวิทยาลัย",
+                                    "range": [ 10, 19 ],
+                                    "translations": {
+                                        "en": "university",
+                                        "fa": "دانشگاه"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "We met at university",
+                                "fa": "در دانشگاه دیدیم"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "เราจะแต่งงานกัน",
+                            "words": [
+                                {
+                                    "word": "เรา",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "we",
+                                        "fa": "ما"
+                                    }
+                                },
+                                {
+                                    "word": "จะ",
+                                    "range": [ 3, 5 ],
+                                    "translations": {
+                                        "en": "will",
+                                        "fa": "خواهیم"
+                                    }
+                                },
+                                {
+                                    "word": "แต่งงาน",
+                                    "range": [ 5, 11 ],
+                                    "translations": {
+                                        "en": "marry",
+                                        "fa": "ازدواج"
+                                    }
+                                },
+                                {
+                                    "word": "กัน",
+                                    "range": [ 11, 13 ],
+                                    "translations": {
+                                        "en": "each other",
+                                        "fa": "با هم"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "We're going to get married",
+                                "fa": "ما با هم ازدواج خواهیم کرد"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "เราเลิกกันแล้ว",
+                            "words": [
+                                {
+                                    "word": "เรา",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "we",
+                                        "fa": "ما"
+                                    }
+                                },
+                                {
+                                    "word": "เลิกกัน",
+                                    "range": [ 3, 8 ],
+                                    "translations": {
+                                        "en": "broke up",
+                                        "fa": "تمام کردیم"
+                                    }
+                                },
+                                {
+                                    "word": "แล้ว",
+                                    "range": [ 8, 11 ],
+                                    "translations": {
+                                        "en": "already",
+                                        "fa": "قبلاً"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "We broke up",
+                                "fa": "ما تمام کردیم"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "heading": {
+                "en": "Family Gatherings",
+                "fa": "جمع‌های خانوادگی",
+                "th": "การรวมตัวของครอบครัว"
+            },
+            "activities": [ "multipleChoiceWord", "multipleChoiceSentence" ],
+            "blocks": [
+                {
+                    "type": "paragraph",
+                    "elements": [
+                        {
+                            "type": "sentence",
+                            "source": "ครอบครัวฉันเจอกันทุกปี",
+                            "words": [
+                                {
+                                    "word": "ครอบครัว",
+                                    "range": [ 0, 7 ],
+                                    "translations": {
+                                        "en": "family",
+                                        "fa": "خانواده"
+                                    }
+                                },
+                                {
+                                    "word": "ฉัน",
+                                    "range": [ 7, 10 ],
+                                    "translations": {
+                                        "en": "my",
+                                        "fa": "من"
+                                    }
+                                },
+                                {
+                                    "word": "เจอกัน",
+                                    "range": [ 10, 15 ],
+                                    "translations": {
+                                        "en": "meet",
+                                        "fa": "جمع می‌شویم"
+                                    }
+                                },
+                                {
+                                    "word": "ทุกปี",
+                                    "range": [ 15, 19 ],
+                                    "translations": {
+                                        "en": "every year",
+                                        "fa": "هر سال"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "My family meets every year",
+                                "fa": "خانواده من هر سال جمع می‌شوند"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "เรากินข้าวด้วยกันวันอาทิตย์",
+                            "words": [
+                                {
+                                    "word": "เรา",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "we",
+                                        "fa": "ما"
+                                    }
+                                },
+                                {
+                                    "word": "กินข้าว",
+                                    "range": [ 3, 9 ],
+                                    "translations": {
+                                        "en": "eat",
+                                        "fa": "غذا می‌خوریم"
+                                    }
+                                },
+                                {
+                                    "word": "ด้วยกัน",
+                                    "range": [ 9, 15 ],
+                                    "translations": {
+                                        "en": "together",
+                                        "fa": "با هم"
+                                    }
+                                },
+                                {
+                                    "word": "วันอาทิตย์",
+                                    "range": [ 15, 23 ],
+                                    "translations": {
+                                        "en": "Sunday",
+                                        "fa": "یکشنبه"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "We eat together on Sundays",
+                                "fa": "ما یکشنبه‌ها با هم غذا می‌خوریم"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "งานเลี้ยงวันเกิดคุณยาย",
+                            "words": [
+                                {
+                                    "word": "งานเลี้ยง",
+                                    "range": [ 0, 7 ],
+                                    "translations": {
+                                        "en": "party",
+                                        "fa": "جشن"
+                                    }
+                                },
+                                {
+                                    "word": "วันเกิด",
+                                    "range": [ 7, 13 ],
+                                    "translations": {
+                                        "en": "birthday",
+                                        "fa": "تولد"
+                                    }
+                                },
+                                {
+                                    "word": "คุณยาย",
+                                    "range": [ 13, 18 ],
+                                    "translations": {
+                                        "en": "grandmother",
+                                        "fa": "مادربزرگ"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Grandmother's birthday party",
+                                "fa": "جشن تولد مادربزرگ"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "สงกรานต์ครอบครัวจะกลับบ้าน",
+                            "words": [
+                                {
+                                    "word": "สงกรานต์",
+                                    "range": [ 0, 7 ],
+                                    "translations": {
+                                        "en": "Songkran",
+                                        "fa": "سونگکران"
+                                    }
+                                },
+                                {
+                                    "word": "ครอบครัว",
+                                    "range": [ 7, 13 ],
+                                    "translations": {
+                                        "en": "family",
+                                        "fa": "خانواده"
+                                    }
+                                },
+                                {
+                                    "word": "จะ",
+                                    "range": [ 13, 15 ],
+                                    "translations": {
+                                        "en": "will",
+                                        "fa": "خواهد"
+                                    }
+                                },
+                                {
+                                    "word": "กลับบ้าน",
+                                    "range": [ 15, 21 ],
+                                    "translations": {
+                                        "en": "return home",
+                                        "fa": "برمی‌گردد خانه"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "For Songkran, the family will return home",
+                                "fa": "برای سونگکران، خانواده به خانه برمی‌گردند"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "คิดถึงครอบครัว",
+                            "words": [
+                                {
+                                    "word": "คิดถึง",
+                                    "range": [ 0, 5 ],
+                                    "translations": {
+                                        "en": "miss",
+                                        "fa": "دلتنگ"
+                                    }
+                                },
+                                {
+                                    "word": "ครอบครัว",
+                                    "range": [ 5, 12 ],
+                                    "translations": {
+                                        "en": "family",
+                                        "fa": "خانواده"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "I miss my family",
+                                "fa": "دلتنگ خانواده‌ام هستم"
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

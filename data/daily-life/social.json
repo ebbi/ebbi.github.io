@@ -1,0 +1,847 @@
+{
+    "documentId": "daily_social",
+    "sections": [
+        {
+            "heading": {
+                "en": "Basic Greetings",
+                "fa": "احوالپرسی پایه",
+                "th": "การทักทายพื้นฐาน"
+            },
+            "activities": [ "multipleChoiceWord", "multipleChoiceSentence" ],
+            "blocks": [
+                {
+                    "type": "paragraph",
+                    "elements": [
+                        {
+                            "type": "sentence",
+                            "source": "สวัสดีครับ",
+                            "words": [
+                                {
+                                    "word": "สวัสดี",
+                                    "range": [ 0, 6 ],
+                                    "translations": {
+                                        "en": "Hello",
+                                        "fa": "سلام"
+                                    }
+                                },
+                                {
+                                    "word": "ครับ",
+                                    "range": [ 6, 9 ],
+                                    "translations": {
+                                        "en": "polite particle (male)",
+                                        "fa": "ذره مؤدب (مرد)"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Hello (male speaker)",
+                                "fa": "سلام (گوینده مرد)"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "สวัสดีค่ะ",
+                            "words": [
+                                {
+                                    "word": "สวัสดี",
+                                    "range": [ 0, 6 ],
+                                    "translations": {
+                                        "en": "Hello",
+                                        "fa": "سلام"
+                                    }
+                                },
+                                {
+                                    "word": "ค่ะ",
+                                    "range": [ 6, 9 ],
+                                    "translations": {
+                                        "en": "polite particle (female)",
+                                        "fa": "ذره مؤدب (زن)"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Hello (female speaker)",
+                                "fa": "سلام (گوینده زن)"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "สบายดีไหม",
+                            "words": [
+                                {
+                                    "word": "สบายดี",
+                                    "range": [ 0, 6 ],
+                                    "translations": {
+                                        "en": "well/fine",
+                                        "fa": "خوب"
+                                    }
+                                },
+                                {
+                                    "word": "ไหม",
+                                    "range": [ 6, 9 ],
+                                    "translations": {
+                                        "en": "question particle",
+                                        "fa": "ذره سوالی"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "How are you?",
+                                "fa": "حالت چطوره؟"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "สบายดีครับ แล้วคุณล่ะ",
+                            "words": [
+                                {
+                                    "word": "สบายดี",
+                                    "range": [ 0, 6 ],
+                                    "translations": {
+                                        "en": "well/fine",
+                                        "fa": "خوب"
+                                    }
+                                },
+                                {
+                                    "word": "ครับ",
+                                    "range": [ 6, 9 ],
+                                    "translations": {
+                                        "en": "polite particle",
+                                        "fa": "ذره مؤدب"
+                                    }
+                                },
+                                {
+                                    "word": "แล้ว",
+                                    "range": [ 9, 12 ],
+                                    "translations": {
+                                        "en": "then",
+                                        "fa": "سپس"
+                                    }
+                                },
+                                {
+                                    "word": "คุณ",
+                                    "range": [ 12, 15 ],
+                                    "translations": {
+                                        "en": "you",
+                                        "fa": "شما"
+                                    }
+                                },
+                                {
+                                    "word": "ล่ะ",
+                                    "range": [ 15, 17 ],
+                                    "translations": {
+                                        "en": "what about",
+                                        "fa": "چطور"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "I'm fine. And you?",
+                                "fa": "من خوبم. شما چطور؟"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "words",
+                    "data": [
+                        {
+                            "word": "สวัสดี",
+                            "translations": {
+                                "en": "hello",
+                                "fa": "سلام"
+                            }
+                        },
+                        {
+                            "word": "ครับ",
+                            "translations": {
+                                "en": "polite particle (male)",
+                                "fa": "ذره مؤدب (مرد)"
+                            }
+                        },
+                        {
+                            "word": "ค่ะ",
+                            "translations": {
+                                "en": "polite particle (female)",
+                                "fa": "ذره مؤدب (زن)"
+                            }
+                        },
+                        {
+                            "word": "สบายดี",
+                            "translations": {
+                                "en": "well/fine",
+                                "fa": "خوب"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "heading": {
+                "en": "Deeper Check-in",
+                "fa": "احوالپرسی بیشتر",
+                "th": "การถามสารทุกข์สุกดิบ"
+            },
+            "activities": [ "multipleChoiceWord", "multipleChoiceSentence" ],
+            "blocks": [
+                {
+                    "type": "paragraph",
+                    "elements": [
+                        {
+                            "type": "sentence",
+                            "source": "เป็นยังไงบ้างวันนี้",
+                            "words": [
+                                {
+                                    "word": "เป็น",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "to be",
+                                        "fa": "بودن"
+                                    }
+                                },
+                                {
+                                    "word": "ยังไง",
+                                    "range": [ 3, 8 ],
+                                    "translations": {
+                                        "en": "how",
+                                        "fa": "چطور"
+                                    }
+                                },
+                                {
+                                    "word": "บ้าง",
+                                    "range": [ 8, 11 ],
+                                    "translations": {
+                                        "en": "some/any",
+                                        "fa": "بعضی"
+                                    }
+                                },
+                                {
+                                    "word": "วันนี้",
+                                    "range": [ 11, 16 ],
+                                    "translations": {
+                                        "en": "today",
+                                        "fa": "امروز"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "How's your day going?",
+                                "fa": "روزت چطور پیش میره؟"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ทำงานเหนื่อยไหม",
+                            "words": [
+                                {
+                                    "word": "ทำงาน",
+                                    "range": [ 0, 5 ],
+                                    "translations": {
+                                        "en": "work",
+                                        "fa": "کار کردن"
+                                    }
+                                },
+                                {
+                                    "word": "เหนื่อย",
+                                    "range": [ 5, 10 ],
+                                    "translations": {
+                                        "en": "tired",
+                                        "fa": "خسته"
+                                    }
+                                },
+                                {
+                                    "word": "ไหม",
+                                    "range": [ 10, 13 ],
+                                    "translations": {
+                                        "en": "question particle",
+                                        "fa": "ذره سوالی"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Are you tired from work?",
+                                "fa": "از کار خسته شدی؟"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ดีใจที่ได้เจอกัน",
+                            "words": [
+                                {
+                                    "word": "ดีใจ",
+                                    "range": [ 0, 5 ],
+                                    "translations": {
+                                        "en": "glad",
+                                        "fa": "خوشحال"
+                                    }
+                                },
+                                {
+                                    "word": "ที่",
+                                    "range": [ 5, 8 ],
+                                    "translations": {
+                                        "en": "that",
+                                        "fa": "که"
+                                    }
+                                },
+                                {
+                                    "word": "ได้",
+                                    "range": [ 8, 11 ],
+                                    "translations": {
+                                        "en": "can/get to",
+                                        "fa": "توانستن"
+                                    }
+                                },
+                                {
+                                    "word": "เจอกัน",
+                                    "range": [ 11, 16 ],
+                                    "translations": {
+                                        "en": "meet",
+                                        "fa": "ملاقات کردن"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "I'm glad to see you",
+                                "fa": "خوشحالم که می‌بینمت"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "heading": {
+                "en": "Giving and Receiving Compliments",
+                "fa": "تعریف و تمجید",
+                "th": "การชมเชยและการรับคำชม"
+            },
+            "activities": [ "multipleChoiceWord", "multipleChoiceSentence" ],
+            "blocks": [
+                {
+                    "type": "paragraph",
+                    "elements": [
+                        {
+                            "type": "sentence",
+                            "source": "วันนี้คุณสวยจัง",
+                            "words": [
+                                {
+                                    "word": "วันนี้",
+                                    "range": [ 0, 5 ],
+                                    "translations": {
+                                        "en": "today",
+                                        "fa": "امروز"
+                                    }
+                                },
+                                {
+                                    "word": "คุณ",
+                                    "range": [ 5, 8 ],
+                                    "translations": {
+                                        "en": "you",
+                                        "fa": "شما"
+                                    }
+                                },
+                                {
+                                    "word": "สวย",
+                                    "range": [ 8, 11 ],
+                                    "translations": {
+                                        "en": "beautiful",
+                                        "fa": "زیبا"
+                                    }
+                                },
+                                {
+                                    "word": "จัง",
+                                    "range": [ 11, 13 ],
+                                    "translations": {
+                                        "en": "very (emphasizer)",
+                                        "fa": "بسیار"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "You look beautiful today",
+                                "fa": "امروز خیلی زیبا هستی"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ขอบคุณนะ",
+                            "words": [
+                                {
+                                    "word": "ขอบคุณ",
+                                    "range": [ 0, 6 ],
+                                    "translations": {
+                                        "en": "thank you",
+                                        "fa": "متشکرم"
+                                    }
+                                },
+                                {
+                                    "word": "นะ",
+                                    "range": [ 6, 8 ],
+                                    "translations": {
+                                        "en": "softening particle",
+                                        "fa": "ذره نرم‌کننده"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Thank you",
+                                "fa": "ممنون"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "คุณพูดไทยเก่งมาก",
+                            "words": [
+                                {
+                                    "word": "คุณ",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "you",
+                                        "fa": "شما"
+                                    }
+                                },
+                                {
+                                    "word": "พูด",
+                                    "range": [ 3, 6 ],
+                                    "translations": {
+                                        "en": "speak",
+                                        "fa": "صحبت کردن"
+                                    }
+                                },
+                                {
+                                    "word": "ไทย",
+                                    "range": [ 6, 9 ],
+                                    "translations": {
+                                        "en": "Thai",
+                                        "fa": "تایلندی"
+                                    }
+                                },
+                                {
+                                    "word": "เก่ง",
+                                    "range": [ 9, 12 ],
+                                    "translations": {
+                                        "en": "skilled",
+                                        "fa": "ماهر"
+                                    }
+                                },
+                                {
+                                    "word": "มาก",
+                                    "range": [ 12, 15 ],
+                                    "translations": {
+                                        "en": "very",
+                                        "fa": "خیلی"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "You speak Thai very well",
+                                "fa": "خیلی خوب تایلندی صحبت می‌کنی"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ยังไม่เก่งเท่าไหร่",
+                            "words": [
+                                {
+                                    "word": "ยัง",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "still",
+                                        "fa": "هنوز"
+                                    }
+                                },
+                                {
+                                    "word": "ไม่",
+                                    "range": [ 3, 6 ],
+                                    "translations": {
+                                        "en": "not",
+                                        "fa": "نه"
+                                    }
+                                },
+                                {
+                                    "word": "เก่ง",
+                                    "range": [ 6, 9 ],
+                                    "translations": {
+                                        "en": "skilled",
+                                        "fa": "ماهر"
+                                    }
+                                },
+                                {
+                                    "word": "เท่าไหร่",
+                                    "range": [ 9, 16 ],
+                                    "translations": {
+                                        "en": "that much",
+                                        "fa": "آنقدر"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "I'm not that good yet",
+                                "fa": "هنوز آنقدر خوب نیستم"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "heading": {
+                "en": "Apologies and Excuses",
+                "fa": "عذرخواهی",
+                "th": "การขอโทษและการแก้ตัว"
+            },
+            "activities": [ "multipleChoiceWord", "multipleChoiceSentence" ],
+            "blocks": [
+                {
+                    "type": "paragraph",
+                    "elements": [
+                        {
+                            "type": "sentence",
+                            "source": "ขอโทษที่มาสาย",
+                            "words": [
+                                {
+                                    "word": "ขอโทษ",
+                                    "range": [ 0, 6 ],
+                                    "translations": {
+                                        "en": "sorry",
+                                        "fa": "ببخشید"
+                                    }
+                                },
+                                {
+                                    "word": "ที่",
+                                    "range": [ 6, 9 ],
+                                    "translations": {
+                                        "en": "that",
+                                        "fa": "که"
+                                    }
+                                },
+                                {
+                                    "word": "มา",
+                                    "range": [ 9, 11 ],
+                                    "translations": {
+                                        "en": "come",
+                                        "fa": "آمدن"
+                                    }
+                                },
+                                {
+                                    "word": "สาย",
+                                    "range": [ 11, 14 ],
+                                    "translations": {
+                                        "en": "late",
+                                        "fa": "دیر"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Sorry I'm late",
+                                "fa": "ببخشید دیر کردم"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ไม่เป็นไรครับ",
+                            "words": [
+                                {
+                                    "word": "ไม่",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "no/not",
+                                        "fa": "نه"
+                                    }
+                                },
+                                {
+                                    "word": "เป็นไร",
+                                    "range": [ 3, 8 ],
+                                    "translations": {
+                                        "en": "anything",
+                                        "fa": "چیزی"
+                                    }
+                                },
+                                {
+                                    "word": "ครับ",
+                                    "range": [ 8, 11 ],
+                                    "translations": {
+                                        "en": "polite particle",
+                                        "fa": "ذره مؤدب"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "No problem",
+                                "fa": "مشکلی نیست"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ขอโทษทีลืม",
+                            "words": [
+                                {
+                                    "word": "ขอโทษ",
+                                    "range": [ 0, 6 ],
+                                    "translations": {
+                                        "en": "sorry",
+                                        "fa": "ببخشید"
+                                    }
+                                },
+                                {
+                                    "word": "ที",
+                                    "range": [ 6, 8 ],
+                                    "translations": {
+                                        "en": "that time",
+                                        "fa": "آن بار"
+                                    }
+                                },
+                                {
+                                    "word": "ลืม",
+                                    "range": [ 8, 11 ],
+                                    "translations": {
+                                        "en": "forget",
+                                        "fa": "فراموش کردن"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Sorry I forgot",
+                                "fa": "ببخشید فراموش کردم"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "heading": {
+                "en": "Making Plans",
+                "fa": "برنامه ریزی",
+                "th": "การนัดหมาย"
+            },
+            "activities": [ "multipleChoiceWord", "multipleChoiceSentence" ],
+            "blocks": [
+                {
+                    "type": "paragraph",
+                    "elements": [
+                        {
+                            "type": "sentence",
+                            "source": "วันว่างไหม",
+                            "words": [
+                                {
+                                    "word": "วัน",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "day",
+                                        "fa": "روز"
+                                    }
+                                },
+                                {
+                                    "word": "ว่าง",
+                                    "range": [ 3, 6 ],
+                                    "translations": {
+                                        "en": "free",
+                                        "fa": "آزاد"
+                                    }
+                                },
+                                {
+                                    "word": "ไหม",
+                                    "range": [ 6, 9 ],
+                                    "translations": {
+                                        "en": "question particle",
+                                        "fa": "ذره سوالی"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Are you free someday?",
+                                "fa": "یک روز وقت داری؟"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ไปกินข้าวกันไหม",
+                            "words": [
+                                {
+                                    "word": "ไป",
+                                    "range": [ 0, 2 ],
+                                    "translations": {
+                                        "en": "go",
+                                        "fa": "رفتن"
+                                    }
+                                },
+                                {
+                                    "word": "กินข้าว",
+                                    "range": [ 2, 8 ],
+                                    "translations": {
+                                        "en": "eat (rice)",
+                                        "fa": "غذا خوردن"
+                                    }
+                                },
+                                {
+                                    "word": "กัน",
+                                    "range": [ 8, 11 ],
+                                    "translations": {
+                                        "en": "together",
+                                        "fa": "با هم"
+                                    }
+                                },
+                                {
+                                    "word": "ไหม",
+                                    "range": [ 11, 14 ],
+                                    "translations": {
+                                        "en": "question particle",
+                                        "fa": "ذره سوالی"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Want to go eat together?",
+                                "fa": "می‌خوای با هم بریم غذا بخوریم؟"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ได้สิ วันไหนดี",
+                            "words": [
+                                {
+                                    "word": "ได้",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "can/ok",
+                                        "fa": "باشه"
+                                    }
+                                },
+                                {
+                                    "word": "สิ",
+                                    "range": [ 3, 5 ],
+                                    "translations": {
+                                        "en": "emphasizer",
+                                        "fa": "تاکید"
+                                    }
+                                },
+                                {
+                                    "word": "วัน",
+                                    "range": [ 5, 8 ],
+                                    "translations": {
+                                        "en": "day",
+                                        "fa": "روز"
+                                    }
+                                },
+                                {
+                                    "word": "ไหน",
+                                    "range": [ 8, 11 ],
+                                    "translations": {
+                                        "en": "which",
+                                        "fa": "کدام"
+                                    }
+                                },
+                                {
+                                    "word": "ดี",
+                                    "range": [ 11, 13 ],
+                                    "translations": {
+                                        "en": "good",
+                                        "fa": "خوب"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Sure! Which day is good?",
+                                "fa": "باشه! چه روزی خوبه؟"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "เสาร์นี้ได้ไหม",
+                            "words": [
+                                {
+                                    "word": "เสาร์",
+                                    "range": [ 0, 5 ],
+                                    "translations": {
+                                        "en": "Saturday",
+                                        "fa": "شنبه"
+                                    }
+                                },
+                                {
+                                    "word": "นี้",
+                                    "range": [ 5, 8 ],
+                                    "translations": {
+                                        "en": "this",
+                                        "fa": "این"
+                                    }
+                                },
+                                {
+                                    "word": "ได้",
+                                    "range": [ 8, 11 ],
+                                    "translations": {
+                                        "en": "can/ok",
+                                        "fa": "می‌شه"
+                                    }
+                                },
+                                {
+                                    "word": "ไหม",
+                                    "range": [ 11, 14 ],
+                                    "translations": {
+                                        "en": "question particle",
+                                        "fa": "ذره سوالی"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Is this Saturday ok?",
+                                "fa": "این شنبه می‌شه؟"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ขอเลื่อนนัดได้ไหม",
+                            "words": [
+                                {
+                                    "word": "ขอ",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "ask for",
+                                        "fa": "درخواست"
+                                    }
+                                },
+                                {
+                                    "word": "เลื่อน",
+                                    "range": [ 3, 8 ],
+                                    "translations": {
+                                        "en": "postpone",
+                                        "fa": "عقب انداختن"
+                                    }
+                                },
+                                {
+                                    "word": "นัด",
+                                    "range": [ 8, 11 ],
+                                    "translations": {
+                                        "en": "appointment",
+                                        "fa": "قرار"
+                                    }
+                                },
+                                {
+                                    "word": "ได้",
+                                    "range": [ 11, 14 ],
+                                    "translations": {
+                                        "en": "can",
+                                        "fa": "توانستن"
+                                    }
+                                },
+                                {
+                                    "word": "ไหม",
+                                    "range": [ 14, 17 ],
+                                    "translations": {
+                                        "en": "question particle",
+                                        "fa": "ذره سوالی"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Can we reschedule?",
+                                "fa": "می‌توانیم قرار را عوض کنیم؟"
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

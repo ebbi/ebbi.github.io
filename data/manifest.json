@@ -1,6 +1,207 @@
 {
     "learningObjects": [
         {
+            "id": "thai_corpus",
+            "title": {
+                "en": "The 'Essential Life' Conversational Corpus",
+                "fa": "پیکره محاوره‌ای «ضروریات زندگی»",
+                "th": "ชุดข้อมูลบทสนทนา 'ชีวิตที่จำเป็น'"
+            },
+            "documents": [
+                {
+                    "id": "daily_social",
+                    "title": {
+                        "en": "Social Interactions and Politeness",
+                        "fa": "تعاملات اجتماعی و ادب",
+                        "th": "การปฏิสัมพันธ์ทางสังคมและความสุภาพ"
+                    },
+                    "description": {
+                        "en": "Essential conversations for social situations - greetings, compliments, apologies, and making plans",
+                        "fa": "مکالمات ضروری برای موقعیت‌های اجتماعی - احوالپرسی، تعریف، عذرخواهی و برنامه‌ریزی",
+                        "th": "บทสนทนาที่จำเป็นสำหรับสถานการณ์ทางสังคม - การทักทาย การชมเชย การขอโทษ และการนัดหมาย"
+                    },
+                    "sourceLang": "th",
+                    "targetLangs": [ "en", "fa" ],
+                    "filePath": "data/daily-life/social.json",
+                    "status": "published",
+                    "level": "basic",
+                    "activities": [ "multipleChoiceWord", "multipleChoiceSentence" ]
+                },
+                {
+                    "id": "daily_food",
+                    "title": {
+                        "en": "Food and Dining",
+                        "fa": "غذا و رستوران",
+                        "th": "อาหารและการรับประทานอาหาร"
+                    },
+                    "description": {
+                        "en": "Ordering food, discussing meals, restaurant conversations, and food-related expressions",
+                        "fa": "سفارش غذا، بحث درباره وعده‌های غذایی، مکالمات رستوران و اصطلاحات مرتبط با غذا",
+                        "th": "การสั่งอาหาร การพูดคุยเกี่ยวกับมื้ออาหาร บทสนทนาในร้านอาหาร และสำนวนที่เกี่ยวข้องกับอาหาร"
+                    },
+                    "sourceLang": "th",
+                    "targetLangs": [ "en", "fa" ],
+                    "filePath": "data/daily-life/food.json",
+                    "status": "published",
+                    "level": "basic",
+                    "activities": [ "multipleChoiceWord", "multipleChoiceSentence" ]
+                },
+                {
+                    "id": "daily_travel",
+                    "title": {
+                        "en": "Travel and Transportation",
+                        "fa": "سفر و حمل و نقل",
+                        "th": "การเดินทางและการขนส่ง"
+                    },
+                    "description": {
+                        "en": "Asking for directions, using public transport, taxis, and travel-related conversations",
+                        "fa": "پرسیدن آدرس، استفاده از حمل و نقل عمومی، تاکسی و مکالمات مرتبط با سفر",
+                        "th": "การถามทาง การใช้ระบบขนส่งสาธารณะ แท็กซี่ และบทสนทนาที่เกี่ยวข้องกับการเดินทาง"
+                    },
+                    "sourceLang": "th",
+                    "targetLangs": [ "en", "fa" ],
+                    "filePath": "data/daily-life/travel.json",
+                    "status": "published",
+                    "level": "intermediate",
+                    "activities": [ "multipleChoiceWord", "multipleChoiceSentence" ]
+                },
+                {
+                    "id": "daily_shopping",
+                    "title": {
+                        "en": "Shopping",
+                        "fa": "خرید",
+                        "th": "การช้อปปิ้ง"
+                    },
+                    "description": {
+                        "en": "Market and store conversations, bargaining, asking about prices, sizes, and returning items",
+                        "fa": "مکالمات در بازار و فروشگاه، چانه زدن، پرسیدن قیمت، سایز و بازگرداندن کالا",
+                        "th": "บทสนทนาในตลาดและร้านค้า การต่อรองราคา การถามราคา ขนาด และการคืนสินค้า"
+                    },
+                    "sourceLang": "th",
+                    "targetLangs": [ "en", "fa" ],
+                    "filePath": "data/daily-life/shopping.json",
+                    "status": "published",
+                    "level": "basic",
+                    "activities": [ "multipleChoiceWord", "multipleChoiceSentence" ]
+                },
+                {
+                    "id": "daily_health",
+                    "title": {
+                        "en": "Health and Medical",
+                        "fa": "سلامت و پزشکی",
+                        "th": "สุขภาพและการแพทย์"
+                    },
+                    "description": {
+                        "en": "Medical conversations, describing symptoms, doctor visits, pharmacy interactions, and health concerns",
+                        "fa": "مکالمات پزشکی، توصیف علائم، مراجعه به پزشک، تعامل با داروخانه و نگرانی‌های سلامتی",
+                        "th": "บทสนทนาเกี่ยวกับการแพทย์ การบรรยายอาการ การพบแพทย์ การติดต่อร้านขายยา และข้อกังวลด้านสุขภาพ"
+                    },
+                    "sourceLang": "th",
+                    "targetLangs": [ "en", "fa" ],
+                    "filePath": "data/daily-life/health.json",
+                    "status": "published",
+                    "level": "intermediate",
+                    "activities": [ "multipleChoiceWord", "multipleChoiceSentence" ]
+                },
+                {
+                    "id": "daily_family",
+                    "title": {
+                        "en": "Family and Relationships",
+                        "fa": "خانواده و روابط",
+                        "th": "ครอบครัวและความสัมพันธ์"
+                    },
+                    "description": {
+                        "en": "Talking about family members, relationships, marital status, and personal life",
+                        "fa": "صحبت درباره اعضای خانواده، روابط، وضعیت تأهل و زندگی شخصی",
+                        "th": "การพูดคุยเกี่ยวกับสมาชิกในครอบครัว ความสัมพันธ์ สถานภาพสมรส และชีวิตส่วนตัว"
+                    },
+                    "sourceLang": "th",
+                    "targetLangs": [ "en", "fa" ],
+                    "filePath": "data/daily-life/family.json",
+                    "status": "published",
+                    "level": "basic",
+                    "activities": [ "multipleChoiceWord", "multipleChoiceSentence" ]
+                },
+                {
+                    "id": "daily_work",
+                    "title": {
+                        "en": "Work and Business",
+                        "fa": "کار و کسب و کار",
+                        "th": "งานและธุรกิจ"
+                    },
+                    "description": {
+                        "en": "Office conversations, job-related phrases, business meetings, and workplace interactions",
+                        "fa": "مکالمات اداری، عبارات مرتبط با شغل، جلسات کاری و تعاملات محیط کار",
+                        "th": "บทสนทนาในที่ทำงาน วลีที่เกี่ยวข้องกับงาน การประชุมธุรกิจ และการปฏิสัมพันธ์ในสถานที่ทำงาน"
+                    },
+                    "sourceLang": "th",
+                    "targetLangs": [ "en", "fa" ],
+                    "filePath": "data/daily-life/work.json",
+                    "status": "published",
+                    "level": "intermediate",
+                    "activities": [ "multipleChoiceWord", "multipleChoiceSentence" ]
+                },
+                {
+                    "id": "daily_time",
+                    "title": {
+                        "en": "Time and Dates",
+                        "fa": "زمان و تاریخ",
+                        "th": "เวลาและวันที่"
+                    },
+                    "description": {
+                        "en": "Telling time, discussing schedules, making appointments, and talking about days, weeks, and months",
+                        "fa": "گفتن زمان، بحث درباره برنامه‌ها، تعیین قرار ملاقات و صحبت درباره روزها، هفته‌ها و ماه‌ها",
+                        "th": "การบอกเวลา การพูดคุยเกี่ยวกับตารางเวลา การนัดหมาย และการพูดคุยเกี่ยวกับวัน สัปดาห์ และเดือน"
+                    },
+                    "sourceLang": "th",
+                    "targetLangs": [ "en", "fa" ],
+                    "filePath": "data/daily-life/time.json",
+                    "status": "published",
+                    "level": "basic",
+                    "activities": [ "multipleChoiceWord", "multipleChoiceSentence" ]
+                },
+                {
+                    "id": "daily_weather",
+                    "title": {
+                        "en": "Weather and Seasons",
+                        "fa": "آب و هوا و فصل‌ها",
+                        "th": "สภาพอากาศและฤดูกาล"
+                    },
+                    "description": {
+                        "en": "Discussing weather conditions, seasons, temperature, and weather-related conversations",
+                        "fa": "بحث درباره شرایط آب و هوایی، فصل‌ها، دما و مکالمات مرتبط با آب و هوا",
+                        "th": "การพูดคุยเกี่ยวกับสภาพอากาศ ฤดูกาล อุณหภูมิ และบทสนทนาที่เกี่ยวข้องกับสภาพอากาศ"
+                    },
+                    "sourceLang": "th",
+                    "targetLangs": [ "en", "fa" ],
+                    "filePath": "data/daily-life/weather.json",
+                    "status": "published",
+                    "level": "basic",
+                    "activities": [ "multipleChoiceWord", "multipleChoiceSentence" ]
+                },
+                {
+                    "id": "daily_hobbies",
+                    "title": {
+                        "en": "Hobbies and Entertainment",
+                        "fa": "سرگرمی‌ها و تفریحات",
+                        "th": "งานอดิเรกและความบันเทิง"
+                    },
+                    "description": {
+                        "en": "Talking about hobbies, sports, movies, music, books, and leisure activities",
+                        "fa": "صحبت درباره سرگرمی‌ها، ورزش، فیلم، موسیقی، کتاب و فعالیت‌های اوقات فراغت",
+                        "th": "การพูดคุยเกี่ยวกับงานอดิเรก กีฬา ภาพยนตร์ ดนตรี หนังสือ และกิจกรรมยามว่าง"
+                    },
+                    "sourceLang": "th",
+                    "targetLangs": [ "en", "fa" ],
+                    "filePath": "data/daily-life/hobbies.json",
+                    "status": "published",
+                    "level": "intermediate",
+                    "activities": [ "multipleChoiceWord", "multipleChoiceSentence" ]
+                }
+            ]
+
+        },
+        {
             "id": "thai500sentences",
             "title": {
                 "en": "Thai most frequently used 500 sentences",

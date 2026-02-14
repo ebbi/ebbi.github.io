@@ -1,0 +1,1390 @@
+{
+    "documentId": "daily_travel",
+    "sections": [
+        {
+            "heading": {
+                "en": "Asking for Directions",
+                "fa": "پرسیدن آدرس",
+                "th": "การถามทาง"
+            },
+            "activities": [ "multipleChoiceWord", "multipleChoiceSentence" ],
+            "blocks": [
+                {
+                    "type": "paragraph",
+                    "elements": [
+                        {
+                            "type": "sentence",
+                            "source": "ไปสนามบินอย่างไร",
+                            "words": [
+                                {
+                                    "word": "ไป",
+                                    "range": [ 0, 2 ],
+                                    "translations": {
+                                        "en": "go",
+                                        "fa": "رفتن"
+                                    }
+                                },
+                                {
+                                    "word": "สนามบิน",
+                                    "range": [ 2, 9 ],
+                                    "translations": {
+                                        "en": "airport",
+                                        "fa": "فرودگاه"
+                                    }
+                                },
+                                {
+                                    "word": "อย่างไร",
+                                    "range": [ 9, 14 ],
+                                    "translations": {
+                                        "en": "how",
+                                        "fa": "چطور"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "How do I get to the airport?",
+                                "fa": "چطور به فرودگاه بروم؟"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "สถานีรถไฟอยู่ที่ไหน",
+                            "words": [
+                                {
+                                    "word": "สถานี",
+                                    "range": [ 0, 5 ],
+                                    "translations": {
+                                        "en": "station",
+                                        "fa": "ایستگاه"
+                                    }
+                                },
+                                {
+                                    "word": "รถไฟ",
+                                    "range": [ 5, 9 ],
+                                    "translations": {
+                                        "en": "train",
+                                        "fa": "قطار"
+                                    }
+                                },
+                                {
+                                    "word": "อยู่",
+                                    "range": [ 9, 12 ],
+                                    "translations": {
+                                        "en": "is located",
+                                        "fa": "قرار دارد"
+                                    }
+                                },
+                                {
+                                    "word": "ที่ไหน",
+                                    "range": [ 12, 17 ],
+                                    "translations": {
+                                        "en": "where",
+                                        "fa": "کجا"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Where is the train station?",
+                                "fa": "ایستگاه قطار کجاست؟"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ใกล้ที่สุดอยู่ไหน",
+                            "words": [
+                                {
+                                    "word": "ใกล้",
+                                    "range": [ 0, 4 ],
+                                    "translations": {
+                                        "en": "near",
+                                        "fa": "نزدیک"
+                                    }
+                                },
+                                {
+                                    "word": "ที่สุด",
+                                    "range": [ 4, 8 ],
+                                    "translations": {
+                                        "en": "most",
+                                        "fa": "ترین"
+                                    }
+                                },
+                                {
+                                    "word": "อยู่",
+                                    "range": [ 8, 11 ],
+                                    "translations": {
+                                        "en": "is",
+                                        "fa": "است"
+                                    }
+                                },
+                                {
+                                    "word": "ไหน",
+                                    "range": [ 11, 14 ],
+                                    "translations": {
+                                        "en": "where",
+                                        "fa": "کجا"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Where is the nearest one?",
+                                "fa": "نزدیک‌ترین کجاست؟"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "เดินไปถึงไหม",
+                            "words": [
+                                {
+                                    "word": "เดิน",
+                                    "range": [ 0, 4 ],
+                                    "translations": {
+                                        "en": "walk",
+                                        "fa": "پیاده"
+                                    }
+                                },
+                                {
+                                    "word": "ไป",
+                                    "range": [ 4, 6 ],
+                                    "translations": {
+                                        "en": "go",
+                                        "fa": "رفتن"
+                                    }
+                                },
+                                {
+                                    "word": "ถึง",
+                                    "range": [ 6, 9 ],
+                                    "translations": {
+                                        "en": "arrive",
+                                        "fa": "رسید"
+                                    }
+                                },
+                                {
+                                    "word": "ไหม",
+                                    "range": [ 9, 12 ],
+                                    "translations": {
+                                        "en": "question particle",
+                                        "fa": "ذره سوالی"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Can I walk there?",
+                                "fa": "پیاده می‌شود رفت؟"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ตรงไปแล้วเลี้ยวซ้าย",
+                            "words": [
+                                {
+                                    "word": "ตรงไป",
+                                    "range": [ 0, 5 ],
+                                    "translations": {
+                                        "en": "straight ahead",
+                                        "fa": "مستقیم"
+                                    }
+                                },
+                                {
+                                    "word": "แล้ว",
+                                    "range": [ 5, 8 ],
+                                    "translations": {
+                                        "en": "then",
+                                        "fa": "بعد"
+                                    }
+                                },
+                                {
+                                    "word": "เลี้ยว",
+                                    "range": [ 8, 12 ],
+                                    "translations": {
+                                        "en": "turn",
+                                        "fa": "پیچیدن"
+                                    }
+                                },
+                                {
+                                    "word": "ซ้าย",
+                                    "range": [ 12, 15 ],
+                                    "translations": {
+                                        "en": "left",
+                                        "fa": "چپ"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Go straight then turn left",
+                                "fa": "مستقیم بروید بعد به چپ بپیچید"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "เลี้ยวขวา",
+                            "words": [
+                                {
+                                    "word": "เลี้ยว",
+                                    "range": [ 0, 5 ],
+                                    "translations": {
+                                        "en": "turn",
+                                        "fa": "پیچیدن"
+                                    }
+                                },
+                                {
+                                    "word": "ขวา",
+                                    "range": [ 5, 8 ],
+                                    "translations": {
+                                        "en": "right",
+                                        "fa": "راست"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Turn right",
+                                "fa": "به راست بپیچید"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "อยู่ตรงข้าม",
+                            "words": [
+                                {
+                                    "word": "อยู่",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "is",
+                                        "fa": "است"
+                                    }
+                                },
+                                {
+                                    "word": "ตรงข้าม",
+                                    "range": [ 3, 9 ],
+                                    "translations": {
+                                        "en": "opposite",
+                                        "fa": "روبرو"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "It's opposite",
+                                "fa": "روبرو است"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "อยู่ติดกับ",
+                            "words": [
+                                {
+                                    "word": "อยู่",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "is",
+                                        "fa": "است"
+                                    }
+                                },
+                                {
+                                    "word": "ติดกับ",
+                                    "range": [ 3, 8 ],
+                                    "translations": {
+                                        "en": "next to",
+                                        "fa": "کنار"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "It's next to",
+                                "fa": "کنار است"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "words",
+                    "data": [
+                        {
+                            "word": "สนามบิน",
+                            "translations": {
+                                "en": "airport",
+                                "fa": "فرودگاه"
+                            }
+                        },
+                        {
+                            "word": "สถานีรถไฟ",
+                            "translations": {
+                                "en": "train station",
+                                "fa": "ایستگاه قطار"
+                            }
+                        },
+                        {
+                            "word": "ซ้าย",
+                            "translations": {
+                                "en": "left",
+                                "fa": "چپ"
+                            }
+                        },
+                        {
+                            "word": "ขวา",
+                            "translations": {
+                                "en": "right",
+                                "fa": "راست"
+                            }
+                        },
+                        {
+                            "word": "ตรงไป",
+                            "translations": {
+                                "en": "straight",
+                                "fa": "مستقیم"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "heading": {
+                "en": "Taking a Taxi",
+                "fa": "تاکسی گرفتن",
+                "th": "การขึ้นแท็กซี่"
+            },
+            "activities": [ "multipleChoiceWord", "multipleChoiceSentence" ],
+            "blocks": [
+                {
+                    "type": "paragraph",
+                    "elements": [
+                        {
+                            "type": "sentence",
+                            "source": "ไป...เท่าไหร่",
+                            "words": [
+                                {
+                                    "word": "ไป",
+                                    "range": [ 0, 2 ],
+                                    "translations": {
+                                        "en": "go",
+                                        "fa": "رفتن"
+                                    }
+                                },
+                                {
+                                    "word": "เท่าไหร่",
+                                    "range": [ 4, 11 ],
+                                    "translations": {
+                                        "en": "how much",
+                                        "fa": "چقدر"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "How much to go to...?",
+                                "fa": "تا ... چقدر می‌شود؟"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "เปิดมิเตอร์ได้ไหม",
+                            "words": [
+                                {
+                                    "word": "เปิด",
+                                    "range": [ 0, 4 ],
+                                    "translations": {
+                                        "en": "turn on",
+                                        "fa": "روشن کردن"
+                                    }
+                                },
+                                {
+                                    "word": "มิเตอร์",
+                                    "range": [ 4, 10 ],
+                                    "translations": {
+                                        "en": "meter",
+                                        "fa": "متر"
+                                    }
+                                },
+                                {
+                                    "word": "ได้",
+                                    "range": [ 10, 13 ],
+                                    "translations": {
+                                        "en": "can",
+                                        "fa": "می‌شود"
+                                    }
+                                },
+                                {
+                                    "word": "ไหม",
+                                    "range": [ 13, 16 ],
+                                    "translations": {
+                                        "en": "question particle",
+                                        "fa": "ذره سوالی"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Can you turn on the meter?",
+                                "fa": "می‌توانید تاکسی متر را روشن کنید؟"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ตรงนี้นี่จอด",
+                            "words": [
+                                {
+                                    "word": "ตรงนี้",
+                                    "range": [ 0, 5 ],
+                                    "translations": {
+                                        "en": "right here",
+                                        "fa": "همینجا"
+                                    }
+                                },
+                                {
+                                    "word": "นี่",
+                                    "range": [ 5, 7 ],
+                                    "translations": {
+                                        "en": "this",
+                                        "fa": "این"
+                                    }
+                                },
+                                {
+                                    "word": "จอด",
+                                    "range": [ 7, 10 ],
+                                    "translations": {
+                                        "en": "stop",
+                                        "fa": "نگه داشتن"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Stop right here",
+                                "fa": "همینجا نگه دار"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "จอดตรงป้ายรถเมล์",
+                            "words": [
+                                {
+                                    "word": "จอด",
+                                    "range": [ 0, 4 ],
+                                    "translations": {
+                                        "en": "stop",
+                                        "fa": "نگه دار"
+                                    }
+                                },
+                                {
+                                    "word": "ตรง",
+                                    "range": [ 4, 7 ],
+                                    "translations": {
+                                        "en": "at",
+                                        "fa": "جلوی"
+                                    }
+                                },
+                                {
+                                    "word": "ป้ายรถเมล์",
+                                    "range": [ 7, 15 ],
+                                    "translations": {
+                                        "en": "bus stop",
+                                        "fa": "ایستگاه اتوبوس"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Stop at the bus stop",
+                                "fa": "جلوی ایستگاه اتوبوس نگه دار"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "รอตรงนี้นะ",
+                            "words": [
+                                {
+                                    "word": "รอ",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "wait",
+                                        "fa": "صبر کن"
+                                    }
+                                },
+                                {
+                                    "word": "ตรงนี้",
+                                    "range": [ 3, 8 ],
+                                    "translations": {
+                                        "en": "right here",
+                                        "fa": "همینجا"
+                                    }
+                                },
+                                {
+                                    "word": "นะ",
+                                    "range": [ 8, 10 ],
+                                    "translations": {
+                                        "en": "softening particle",
+                                        "fa": "لطفاً"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Wait here, please",
+                                "fa": "لطفاً همینجا صبر کن"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "heading": {
+                "en": "Taking the Bus",
+                "fa": "اتوبوس سواری",
+                "th": "การขึ้นรถเมล์"
+            },
+            "activities": [ "multipleChoiceWord", "multipleChoiceSentence" ],
+            "blocks": [
+                {
+                    "type": "paragraph",
+                    "elements": [
+                        {
+                            "type": "sentence",
+                            "source": "รถเมล์สายนี้ไป...ไหม",
+                            "words": [
+                                {
+                                    "word": "รถเมล์",
+                                    "range": [ 0, 5 ],
+                                    "translations": {
+                                        "en": "bus",
+                                        "fa": "اتوبوس"
+                                    }
+                                },
+                                {
+                                    "word": "สายนี้",
+                                    "range": [ 5, 10 ],
+                                    "translations": {
+                                        "en": "this route",
+                                        "fa": "این خط"
+                                    }
+                                },
+                                {
+                                    "word": "ไป",
+                                    "range": [ 10, 12 ],
+                                    "translations": {
+                                        "en": "go",
+                                        "fa": "می‌رود"
+                                    }
+                                },
+                                {
+                                    "word": "ไหม",
+                                    "range": [ 14, 17 ],
+                                    "translations": {
+                                        "en": "question particle",
+                                        "fa": "ذره سوالی"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Does this bus go to...?",
+                                "fa": "این اتوبوس به ... می‌رود؟"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ค่ารถเท่าไหร่",
+                            "words": [
+                                {
+                                    "word": "ค่ารถ",
+                                    "range": [ 0, 5 ],
+                                    "translations": {
+                                        "en": "bus fare",
+                                        "fa": "کرایه اتوبوس"
+                                    }
+                                },
+                                {
+                                    "word": "เท่าไหร่",
+                                    "range": [ 5, 12 ],
+                                    "translations": {
+                                        "en": "how much",
+                                        "fa": "چقدر"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "How much is the bus fare?",
+                                "fa": "کرایه اتوبوس چقدر است؟"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "กี่บาท",
+                            "words": [
+                                {
+                                    "word": "กี่",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "how many",
+                                        "fa": "چند"
+                                    }
+                                },
+                                {
+                                    "word": "บาท",
+                                    "range": [ 3, 6 ],
+                                    "translations": {
+                                        "en": "baht",
+                                        "fa": "بات"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "How many baht?",
+                                "fa": "چند بات؟"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ถึง...กี่ป้าย",
+                            "words": [
+                                {
+                                    "word": "ถึง",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "arrive",
+                                        "fa": "می‌رسد"
+                                    }
+                                },
+                                {
+                                    "word": "กี่",
+                                    "range": [ 5, 8 ],
+                                    "translations": {
+                                        "en": "how many",
+                                        "fa": "چند"
+                                    }
+                                },
+                                {
+                                    "word": "ป้าย",
+                                    "range": [ 8, 11 ],
+                                    "translations": {
+                                        "en": "stop",
+                                        "fa": "ایستگاه"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "How many stops to...?",
+                                "fa": "تا ... چند ایستگاه است؟"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ถึงเมื่อไหร่บอกหน่อย",
+                            "words": [
+                                {
+                                    "word": "ถึง",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "arrive",
+                                        "fa": "رسیدیم"
+                                    }
+                                },
+                                {
+                                    "word": "เมื่อไหร่",
+                                    "range": [ 3, 9 ],
+                                    "translations": {
+                                        "en": "when",
+                                        "fa": "کی"
+                                    }
+                                },
+                                {
+                                    "word": "บอก",
+                                    "range": [ 9, 12 ],
+                                    "translations": {
+                                        "en": "tell",
+                                        "fa": "بگو"
+                                    }
+                                },
+                                {
+                                    "word": "หน่อย",
+                                    "range": [ 12, 16 ],
+                                    "translations": {
+                                        "en": "a little",
+                                        "fa": "لطفاً"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Please tell me when we arrive",
+                                "fa": "لطفاً وقتی رسیدیم به من بگو"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "heading": {
+                "en": "Taking the BTS/MRT (Skytrain/Subway)",
+                "fa": "بی‌تی‌اس و ام‌آر‌تی",
+                "th": "การขึ้นบีทีเอส/เอ็มอาร์ที"
+            },
+            "activities": [ "multipleChoiceWord", "multipleChoiceSentence" ],
+            "blocks": [
+                {
+                    "type": "paragraph",
+                    "elements": [
+                        {
+                            "type": "sentence",
+                            "source": "ซื้อตั๋วที่ไหน",
+                            "words": [
+                                {
+                                    "word": "ซื้อ",
+                                    "range": [ 0, 4 ],
+                                    "translations": {
+                                        "en": "buy",
+                                        "fa": "خریدن"
+                                    }
+                                },
+                                {
+                                    "word": "ตั๋ว",
+                                    "range": [ 4, 7 ],
+                                    "translations": {
+                                        "en": "ticket",
+                                        "fa": "بلیط"
+                                    }
+                                },
+                                {
+                                    "word": "ที่ไหน",
+                                    "range": [ 7, 12 ],
+                                    "translations": {
+                                        "en": "where",
+                                        "fa": "کجا"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Where do I buy tickets?",
+                                "fa": "بلیط را از کجا بخرم؟"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ไป...ลงสถานีไหน",
+                            "words": [
+                                {
+                                    "word": "ไป",
+                                    "range": [ 0, 2 ],
+                                    "translations": {
+                                        "en": "go",
+                                        "fa": "رفتن"
+                                    }
+                                },
+                                {
+                                    "word": "ลง",
+                                    "range": [ 5, 7 ],
+                                    "translations": {
+                                        "en": "get off",
+                                        "fa": "پیاده شدن"
+                                    }
+                                },
+                                {
+                                    "word": "สถานี",
+                                    "range": [ 7, 11 ],
+                                    "translations": {
+                                        "en": "station",
+                                        "fa": "ایستگاه"
+                                    }
+                                },
+                                {
+                                    "word": "ไหน",
+                                    "range": [ 11, 14 ],
+                                    "translations": {
+                                        "en": "which",
+                                        "fa": "کدام"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Which station do I get off for...?",
+                                "fa": "برای ... کدام ایستگاه پیاده شوم؟"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ต่อรถที่สถานีไหน",
+                            "words": [
+                                {
+                                    "word": "ต่อรถ",
+                                    "range": [ 0, 5 ],
+                                    "translations": {
+                                        "en": "transfer",
+                                        "fa": "تعویض خط"
+                                    }
+                                },
+                                {
+                                    "word": "ที่",
+                                    "range": [ 5, 8 ],
+                                    "translations": {
+                                        "en": "at",
+                                        "fa": "در"
+                                    }
+                                },
+                                {
+                                    "word": "สถานี",
+                                    "range": [ 8, 12 ],
+                                    "translations": {
+                                        "en": "station",
+                                        "fa": "ایستگاه"
+                                    }
+                                },
+                                {
+                                    "word": "ไหน",
+                                    "range": [ 12, 15 ],
+                                    "translations": {
+                                        "en": "which",
+                                        "fa": "کدام"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Which station do I transfer at?",
+                                "fa": "در کدام ایستگاه تعویض خط کنم؟"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "มีรถไฟฟรีไหม",
+                            "words": [
+                                {
+                                    "word": "มี",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "have",
+                                        "fa": "دارد"
+                                    }
+                                },
+                                {
+                                    "word": "รถไฟฟรี",
+                                    "range": [ 3, 9 ],
+                                    "translations": {
+                                        "en": "free shuttle",
+                                        "fa": "شاتل رایگان"
+                                    }
+                                },
+                                {
+                                    "word": "ไหม",
+                                    "range": [ 9, 12 ],
+                                    "translations": {
+                                        "en": "question particle",
+                                        "fa": "ذره سوالی"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Is there a free shuttle?",
+                                "fa": "شاتل رایگان هست؟"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "heading": {
+                "en": "Taking a Boat",
+                "fa": "قایق سواری",
+                "th": "การขึ้นเรือ"
+            },
+            "activities": [ "multipleChoiceWord", "multipleChoiceSentence" ],
+            "blocks": [
+                {
+                    "type": "paragraph",
+                    "elements": [
+                        {
+                            "type": "sentence",
+                            "source": "เรือไป...ท่าไหน",
+                            "words": [
+                                {
+                                    "word": "เรือ",
+                                    "range": [ 0, 4 ],
+                                    "translations": {
+                                        "en": "boat",
+                                        "fa": "قایق"
+                                    }
+                                },
+                                {
+                                    "word": "ไป",
+                                    "range": [ 4, 6 ],
+                                    "translations": {
+                                        "en": "go",
+                                        "fa": "می‌رود"
+                                    }
+                                },
+                                {
+                                    "word": "ท่าไหน",
+                                    "range": [ 8, 13 ],
+                                    "translations": {
+                                        "en": "which pier",
+                                        "fa": "کدام اسکله"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Which pier for the boat to...?",
+                                "fa": "قایق به ... از کدام اسکله است؟"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "เรือเที่ยวสุดท้ายกี่โมง",
+                            "words": [
+                                {
+                                    "word": "เรือ",
+                                    "range": [ 0, 4 ],
+                                    "translations": {
+                                        "en": "boat",
+                                        "fa": "قایق"
+                                    }
+                                },
+                                {
+                                    "word": "เที่ยวสุดท้าย",
+                                    "range": [ 4, 14 ],
+                                    "translations": {
+                                        "en": "last trip",
+                                        "fa": "آخرین سفر"
+                                    }
+                                },
+                                {
+                                    "word": "กี่โมง",
+                                    "range": [ 14, 19 ],
+                                    "translations": {
+                                        "en": "what time",
+                                        "fa": "ساعت چند"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "What time is the last boat?",
+                                "fa": "آخرین قایق ساعت چند است؟"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "นั่งเรือนานไหม",
+                            "words": [
+                                {
+                                    "word": "นั่งเรือ",
+                                    "range": [ 0, 6 ],
+                                    "translations": {
+                                        "en": "take boat",
+                                        "fa": "قایق سواری"
+                                    }
+                                },
+                                {
+                                    "word": "นาน",
+                                    "range": [ 6, 9 ],
+                                    "translations": {
+                                        "en": "long",
+                                        "fa": "طولانی"
+                                    }
+                                },
+                                {
+                                    "word": "ไหม",
+                                    "range": [ 9, 12 ],
+                                    "translations": {
+                                        "en": "question particle",
+                                        "fa": "ذره سوالی"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Is the boat ride long?",
+                                "fa": "قایق سواری طولانی است؟"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "heading": {
+                "en": "Travel Problems",
+                "fa": "مشکلات سفر",
+                "th": "ปัญหาในการเดินทาง"
+            },
+            "activities": [ "multipleChoiceWord", "multipleChoiceSentence" ],
+            "blocks": [
+                {
+                    "type": "paragraph",
+                    "elements": [
+                        {
+                            "type": "sentence",
+                            "source": "รถติดมาก",
+                            "words": [
+                                {
+                                    "word": "รถติด",
+                                    "range": [ 0, 5 ],
+                                    "translations": {
+                                        "en": "traffic jam",
+                                        "fa": "ترافیک"
+                                    }
+                                },
+                                {
+                                    "word": "มาก",
+                                    "range": [ 5, 8 ],
+                                    "translations": {
+                                        "en": "very",
+                                        "fa": "خیلی"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Traffic is very bad",
+                                "fa": "ترافیک خیلی سنگین است"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ขึ้นรถผิดสาย",
+                            "words": [
+                                {
+                                    "word": "ขึ้นรถ",
+                                    "range": [ 0, 5 ],
+                                    "translations": {
+                                        "en": "get on vehicle",
+                                        "fa": "سوار شدن"
+                                    }
+                                },
+                                {
+                                    "word": "ผิด",
+                                    "range": [ 5, 8 ],
+                                    "translations": {
+                                        "en": "wrong",
+                                        "fa": "اشتباه"
+                                    }
+                                },
+                                {
+                                    "word": "สาย",
+                                    "range": [ 8, 11 ],
+                                    "translations": {
+                                        "en": "route",
+                                        "fa": "خط"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "I got on the wrong bus/train",
+                                "fa": "سوار خط اشتباه شدم"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ลงผิดสถานี",
+                            "words": [
+                                {
+                                    "word": "ลง",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "get off",
+                                        "fa": "پیاده شدن"
+                                    }
+                                },
+                                {
+                                    "word": "ผิด",
+                                    "range": [ 3, 6 ],
+                                    "translations": {
+                                        "en": "wrong",
+                                        "fa": "اشتباه"
+                                    }
+                                },
+                                {
+                                    "word": "สถานี",
+                                    "range": [ 6, 10 ],
+                                    "translations": {
+                                        "en": "station",
+                                        "fa": "ایستگاه"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "I got off at the wrong station",
+                                "fa": "در ایستگاه اشتباه پیاده شدم"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "รถเสีย",
+                            "words": [
+                                {
+                                    "word": "รถ",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "vehicle",
+                                        "fa": "ماشین"
+                                    }
+                                },
+                                {
+                                    "word": "เสีย",
+                                    "range": [ 3, 6 ],
+                                    "translations": {
+                                        "en": "broken",
+                                        "fa": "خراب"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "The vehicle broke down",
+                                "fa": "ماشین خراب شد"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "หลงทาง",
+                            "words": [
+                                {
+                                    "word": "หลง",
+                                    "range": [ 0, 4 ],
+                                    "translations": {
+                                        "en": "lost",
+                                        "fa": "گم شده"
+                                    }
+                                },
+                                {
+                                    "word": "ทาง",
+                                    "range": [ 4, 7 ],
+                                    "translations": {
+                                        "en": "way/road",
+                                        "fa": "راه"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "I'm lost",
+                                "fa": "گم شده‌ام"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ช่วยบอกทางหน่อย",
+                            "words": [
+                                {
+                                    "word": "ช่วย",
+                                    "range": [ 0, 4 ],
+                                    "translations": {
+                                        "en": "help",
+                                        "fa": "کمک"
+                                    }
+                                },
+                                {
+                                    "word": "บอกทาง",
+                                    "range": [ 4, 10 ],
+                                    "translations": {
+                                        "en": "tell the way",
+                                        "fa": "راه را گفتن"
+                                    }
+                                },
+                                {
+                                    "word": "หน่อย",
+                                    "range": [ 10, 14 ],
+                                    "translations": {
+                                        "en": "a little",
+                                        "fa": "لطفاً"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Can you help me with directions?",
+                                "fa": "می‌توانید راه را به من بگویید؟"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "heading": {
+                "en": "Buying Tickets",
+                "fa": "خرید بلیط",
+                "th": "การซื้อตั๋ว"
+            },
+            "activities": [ "multipleChoiceWord", "multipleChoiceSentence" ],
+            "blocks": [
+                {
+                    "type": "paragraph",
+                    "elements": [
+                        {
+                            "type": "sentence",
+                            "source": "ขอซื้อตั๋ว...ใบ",
+                            "words": [
+                                {
+                                    "word": "ขอซื้อ",
+                                    "range": [ 0, 5 ],
+                                    "translations": {
+                                        "en": "want to buy",
+                                        "fa": "می‌خواهم بخرم"
+                                    }
+                                },
+                                {
+                                    "word": "ตั๋ว",
+                                    "range": [ 5, 8 ],
+                                    "translations": {
+                                        "en": "ticket",
+                                        "fa": "بلیط"
+                                    }
+                                },
+                                {
+                                    "word": "ใบ",
+                                    "range": [ 9, 11 ],
+                                    "translations": {
+                                        "en": "ticket (classifier)",
+                                        "fa": "عدد"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "I'd like to buy ... tickets",
+                                "fa": "می‌خواهم ... بلیط بخرم"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ผู้ใหญ่...เด็ก...",
+                            "words": [
+                                {
+                                    "word": "ผู้ใหญ่",
+                                    "range": [ 0, 6 ],
+                                    "translations": {
+                                        "en": "adult",
+                                        "fa": "بزرگسال"
+                                    }
+                                },
+                                {
+                                    "word": "เด็ก",
+                                    "range": [ 7, 11 ],
+                                    "translations": {
+                                        "en": "child",
+                                        "fa": "کودک"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "... adults, ... children",
+                                "fa": "... بزرگسال، ... کودک"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "มีส่วนลดไหม",
+                            "words": [
+                                {
+                                    "word": "มี",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "have",
+                                        "fa": "دارد"
+                                    }
+                                },
+                                {
+                                    "word": "ส่วนลด",
+                                    "range": [ 3, 8 ],
+                                    "translations": {
+                                        "en": "discount",
+                                        "fa": "تخفیف"
+                                    }
+                                },
+                                {
+                                    "word": "ไหม",
+                                    "range": [ 8, 11 ],
+                                    "translations": {
+                                        "en": "question particle",
+                                        "fa": "ذره سوالی"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Is there a discount?",
+                                "fa": "تخفیف دارد؟"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ตั๋วไปกลับ",
+                            "words": [
+                                {
+                                    "word": "ตั๋ว",
+                                    "range": [ 0, 4 ],
+                                    "translations": {
+                                        "en": "ticket",
+                                        "fa": "بلیط"
+                                    }
+                                },
+                                {
+                                    "word": "ไปกลับ",
+                                    "range": [ 4, 9 ],
+                                    "translations": {
+                                        "en": "round trip",
+                                        "fa": "رفت و برگشت"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "round trip ticket",
+                                "fa": "بلیط رفت و برگشت"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ตั๋วเที่ยวเดียว",
+                            "words": [
+                                {
+                                    "word": "ตั๋ว",
+                                    "range": [ 0, 4 ],
+                                    "translations": {
+                                        "en": "ticket",
+                                        "fa": "بلیط"
+                                    }
+                                },
+                                {
+                                    "word": "เที่ยวเดียว",
+                                    "range": [ 4, 12 ],
+                                    "translations": {
+                                        "en": "one way",
+                                        "fa": "یک طرفه"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "one way ticket",
+                                "fa": "بلیط یک طرفه"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "words",
+                    "data": [
+                        {
+                            "word": "ตั๋ว",
+                            "translations": {
+                                "en": "ticket",
+                                "fa": "بلیط"
+                            }
+                        },
+                        {
+                            "word": "ผู้ใหญ่",
+                            "translations": {
+                                "en": "adult",
+                                "fa": "بزرگسال"
+                            }
+                        },
+                        {
+                            "word": "เด็ก",
+                            "translations": {
+                                "en": "child",
+                                "fa": "کودک"
+                            }
+                        },
+                        {
+                            "word": "ไปกลับ",
+                            "translations": {
+                                "en": "round trip",
+                                "fa": "رفت و برگشت"
+                            }
+                        },
+                        {
+                            "word": "เที่ยวเดียว",
+                            "translations": {
+                                "en": "one way",
+                                "fa": "یک طرفه"
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

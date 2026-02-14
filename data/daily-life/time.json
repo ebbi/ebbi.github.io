@@ -1,0 +1,2259 @@
+{
+    "documentId": "daily_time",
+    "sections": [
+        {
+            "heading": {
+                "en": "Asking for the Time",
+                "fa": "پرسیدن ساعت",
+                "th": "การถามเวลา"
+            },
+            "activities": [ "multipleChoiceWord", "multipleChoiceSentence" ],
+            "blocks": [
+                {
+                    "type": "paragraph",
+                    "elements": [
+                        {
+                            "type": "sentence",
+                            "source": "กี่โมงแล้ว",
+                            "words": [
+                                {
+                                    "word": "กี่",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "how many",
+                                        "fa": "چند"
+                                    }
+                                },
+                                {
+                                    "word": "โมง",
+                                    "range": [ 3, 6 ],
+                                    "translations": {
+                                        "en": "hour",
+                                        "fa": "ساعت"
+                                    }
+                                },
+                                {
+                                    "word": "แล้ว",
+                                    "range": [ 6, 9 ],
+                                    "translations": {
+                                        "en": "already",
+                                        "fa": "شده"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "What time is it?",
+                                "fa": "ساعت چند است؟"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ตอนนี้กี่โมง",
+                            "words": [
+                                {
+                                    "word": "ตอนนี้",
+                                    "range": [ 0, 5 ],
+                                    "translations": {
+                                        "en": "now",
+                                        "fa": "الان"
+                                    }
+                                },
+                                {
+                                    "word": "กี่โมง",
+                                    "range": [ 5, 10 ],
+                                    "translations": {
+                                        "en": "what time",
+                                        "fa": "ساعت چند"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "What time is it now?",
+                                "fa": "الان ساعت چند است؟"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ขอทราบเวลาได้ไหม",
+                            "words": [
+                                {
+                                    "word": "ขอ",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "ask for",
+                                        "fa": "درخواست"
+                                    }
+                                },
+                                {
+                                    "word": "ทราบ",
+                                    "range": [ 3, 7 ],
+                                    "translations": {
+                                        "en": "know",
+                                        "fa": "بدانم"
+                                    }
+                                },
+                                {
+                                    "word": "เวลา",
+                                    "range": [ 7, 11 ],
+                                    "translations": {
+                                        "en": "time",
+                                        "fa": "زمان"
+                                    }
+                                },
+                                {
+                                    "word": "ได้",
+                                    "range": [ 11, 14 ],
+                                    "translations": {
+                                        "en": "can",
+                                        "fa": "می‌شود"
+                                    }
+                                },
+                                {
+                                    "word": "ไหม",
+                                    "range": [ 14, 17 ],
+                                    "translations": {
+                                        "en": "question particle",
+                                        "fa": "ذره سوالی"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Can you tell me the time?",
+                                "fa": "می‌شود ساعت را بگویید؟"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "heading": {
+                "en": "Telling the Time",
+                "fa": "گفتن ساعت",
+                "th": "การบอกเวลา"
+            },
+            "activities": [ "multipleChoiceWord", "multipleChoiceSentence" ],
+            "blocks": [
+                {
+                    "type": "paragraph",
+                    "elements": [
+                        {
+                            "type": "sentence",
+                            "source": "8 โมง",
+                            "words": [
+                                {
+                                    "word": "8",
+                                    "range": [ 0, 1 ],
+                                    "translations": {
+                                        "en": "8",
+                                        "fa": "۸"
+                                    }
+                                },
+                                {
+                                    "word": "โมง",
+                                    "range": [ 1, 4 ],
+                                    "translations": {
+                                        "en": "o'clock (morning)",
+                                        "fa": "صبح"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "8 o'clock (am)",
+                                "fa": "ساعت ۸ صبح"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "เที่ยง",
+                            "words": [
+                                {
+                                    "word": "เที่ยง",
+                                    "range": [ 0, 5 ],
+                                    "translations": {
+                                        "en": "noon",
+                                        "fa": "ظهر"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "12 o'clock (noon)",
+                                "fa": "ساعت ۱۲ ظهر"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "บ่าย 3 โมง",
+                            "words": [
+                                {
+                                    "word": "บ่าย",
+                                    "range": [ 0, 4 ],
+                                    "translations": {
+                                        "en": "afternoon",
+                                        "fa": "بعدازظهر"
+                                    }
+                                },
+                                {
+                                    "word": "3",
+                                    "range": [ 4, 5 ],
+                                    "translations": {
+                                        "en": "3",
+                                        "fa": "۳"
+                                    }
+                                },
+                                {
+                                    "word": "โมง",
+                                    "range": [ 5, 8 ],
+                                    "translations": {
+                                        "en": "o'clock",
+                                        "fa": "ساعت"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "3 o'clock (pm)",
+                                "fa": "ساعت ۳ بعدازظهر"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "5 โมงเย็น",
+                            "words": [
+                                {
+                                    "word": "5",
+                                    "range": [ 0, 1 ],
+                                    "translations": {
+                                        "en": "5",
+                                        "fa": "۵"
+                                    }
+                                },
+                                {
+                                    "word": "โมงเย็น",
+                                    "range": [ 1, 7 ],
+                                    "translations": {
+                                        "en": "evening",
+                                        "fa": "عصر"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "5 o'clock (pm)",
+                                "fa": "ساعت ۵ عصر"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "6 โมงเย็น",
+                            "words": [
+                                {
+                                    "word": "6",
+                                    "range": [ 0, 1 ],
+                                    "translations": {
+                                        "en": "6",
+                                        "fa": "۶"
+                                    }
+                                },
+                                {
+                                    "word": "โมงเย็น",
+                                    "range": [ 1, 7 ],
+                                    "translations": {
+                                        "en": "evening",
+                                        "fa": "عصر"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "6 o'clock (pm)",
+                                "fa": "ساعت ۶ عصر"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "1 ทุ่ม",
+                            "words": [
+                                {
+                                    "word": "1",
+                                    "range": [ 0, 1 ],
+                                    "translations": {
+                                        "en": "7",
+                                        "fa": "۷"
+                                    }
+                                },
+                                {
+                                    "word": "ทุ่ม",
+                                    "range": [ 1, 4 ],
+                                    "translations": {
+                                        "en": "pm (7-11 pm)",
+                                        "fa": "شب"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "7 o'clock (pm)",
+                                "fa": "ساعت ۷ شب"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "2 ทุ่ม",
+                            "words": [
+                                {
+                                    "word": "2",
+                                    "range": [ 0, 1 ],
+                                    "translations": {
+                                        "en": "8",
+                                        "fa": "۸"
+                                    }
+                                },
+                                {
+                                    "word": "ทุ่ม",
+                                    "range": [ 1, 4 ],
+                                    "translations": {
+                                        "en": "pm",
+                                        "fa": "شب"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "8 o'clock (pm)",
+                                "fa": "ساعت ۸ شب"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "3 ทุ่ม",
+                            "words": [
+                                {
+                                    "word": "3",
+                                    "range": [ 0, 1 ],
+                                    "translations": {
+                                        "en": "9",
+                                        "fa": "۹"
+                                    }
+                                },
+                                {
+                                    "word": "ทุ่ม",
+                                    "range": [ 1, 4 ],
+                                    "translations": {
+                                        "en": "pm",
+                                        "fa": "شب"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "9 o'clock (pm)",
+                                "fa": "ساعت ۹ شب"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "เที่ยงคืน",
+                            "words": [
+                                {
+                                    "word": "เที่ยงคืน",
+                                    "range": [ 0, 7 ],
+                                    "translations": {
+                                        "en": "midnight",
+                                        "fa": "نیمه شب"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "12 o'clock (midnight)",
+                                "fa": "ساعت ۱۲ نیمه شب"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ตี 1",
+                            "words": [
+                                {
+                                    "word": "ตี",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "early morning",
+                                        "fa": "بامداد"
+                                    }
+                                },
+                                {
+                                    "word": "1",
+                                    "range": [ 3, 4 ],
+                                    "translations": {
+                                        "en": "1",
+                                        "fa": "۱"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "1 o'clock (am)",
+                                "fa": "ساعت ۱ بامداد"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ตี 2",
+                            "words": [
+                                {
+                                    "word": "ตี",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "early morning",
+                                        "fa": "بامداد"
+                                    }
+                                },
+                                {
+                                    "word": "2",
+                                    "range": [ 3, 4 ],
+                                    "translations": {
+                                        "en": "2",
+                                        "fa": "۲"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "2 o'clock (am)",
+                                "fa": "ساعت ۲ بامداد"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ตี 3",
+                            "words": [
+                                {
+                                    "word": "ตี",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "early morning",
+                                        "fa": "بامداد"
+                                    }
+                                },
+                                {
+                                    "word": "3",
+                                    "range": [ 3, 4 ],
+                                    "translations": {
+                                        "en": "3",
+                                        "fa": "۳"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "3 o'clock (am)",
+                                "fa": "ساعت ۳ بامداد"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ตี 4",
+                            "words": [
+                                {
+                                    "word": "ตี",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "early morning",
+                                        "fa": "بامداد"
+                                    }
+                                },
+                                {
+                                    "word": "4",
+                                    "range": [ 3, 4 ],
+                                    "translations": {
+                                        "en": "4",
+                                        "fa": "۴"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "4 o'clock (am)",
+                                "fa": "ساعت ۴ بامداد"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ตี 5",
+                            "words": [
+                                {
+                                    "word": "ตี",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "early morning",
+                                        "fa": "بامداد"
+                                    }
+                                },
+                                {
+                                    "word": "5",
+                                    "range": [ 3, 4 ],
+                                    "translations": {
+                                        "en": "5",
+                                        "fa": "۵"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "5 o'clock (am)",
+                                "fa": "ساعت ۵ بامداد"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "words",
+                    "data": [
+                        {
+                            "word": "โมง",
+                            "translations": {
+                                "en": "morning hours",
+                                "fa": "ساعات صبح"
+                            }
+                        },
+                        {
+                            "word": "บ่าย",
+                            "translations": {
+                                "en": "afternoon",
+                                "fa": "بعدازظهر"
+                            }
+                        },
+                        {
+                            "word": "เย็น",
+                            "translations": {
+                                "en": "evening",
+                                "fa": "عصر"
+                            }
+                        },
+                        {
+                            "word": "ทุ่ม",
+                            "translations": {
+                                "en": "night hours (7-11 pm)",
+                                "fa": "ساعات شب"
+                            }
+                        },
+                        {
+                            "word": "ตี",
+                            "translations": {
+                                "en": "early morning (1-5 am)",
+                                "fa": "بامداد"
+                            }
+                        },
+                        {
+                            "word": "เที่ยง",
+                            "translations": {
+                                "en": "noon",
+                                "fa": "ظهر"
+                            }
+                        },
+                        {
+                            "word": "เที่ยงคืน",
+                            "translations": {
+                                "en": "midnight",
+                                "fa": "نیمه شب"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "heading": {
+                "en": "Minutes and Approximate Time",
+                "fa": "دقیقه و زمان تقریبی",
+                "th": "นาทีและเวลาโดยประมาณ"
+            },
+            "activities": [ "multipleChoiceWord", "multipleChoiceSentence" ],
+            "blocks": [
+                {
+                    "type": "paragraph",
+                    "elements": [
+                        {
+                            "type": "sentence",
+                            "source": "8 โมง 15 นาที",
+                            "words": [
+                                {
+                                    "word": "8",
+                                    "range": [ 0, 1 ],
+                                    "translations": {
+                                        "en": "8",
+                                        "fa": "۸"
+                                    }
+                                },
+                                {
+                                    "word": "โมง",
+                                    "range": [ 1, 4 ],
+                                    "translations": {
+                                        "en": "o'clock",
+                                        "fa": "ساعت"
+                                    }
+                                },
+                                {
+                                    "word": "15",
+                                    "range": [ 4, 6 ],
+                                    "translations": {
+                                        "en": "15",
+                                        "fa": "۱۵"
+                                    }
+                                },
+                                {
+                                    "word": "นาที",
+                                    "range": [ 6, 9 ],
+                                    "translations": {
+                                        "en": "minutes",
+                                        "fa": "دقیقه"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "8:15",
+                                "fa": "۸ و ۱۵ دقیقه"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "9 โมงครึ่ง",
+                            "words": [
+                                {
+                                    "word": "9",
+                                    "range": [ 0, 1 ],
+                                    "translations": {
+                                        "en": "9",
+                                        "fa": "۹"
+                                    }
+                                },
+                                {
+                                    "word": "โมง",
+                                    "range": [ 1, 4 ],
+                                    "translations": {
+                                        "en": "o'clock",
+                                        "fa": "ساعت"
+                                    }
+                                },
+                                {
+                                    "word": "ครึ่ง",
+                                    "range": [ 4, 7 ],
+                                    "translations": {
+                                        "en": "half",
+                                        "fa": "و نیم"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "9:30",
+                                "fa": "۹ و نیم"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "2 ทุ่มครึ่ง",
+                            "words": [
+                                {
+                                    "word": "2",
+                                    "range": [ 0, 1 ],
+                                    "translations": {
+                                        "en": "8",
+                                        "fa": "۸"
+                                    }
+                                },
+                                {
+                                    "word": "ทุ่ม",
+                                    "range": [ 1, 4 ],
+                                    "translations": {
+                                        "en": "pm",
+                                        "fa": "شب"
+                                    }
+                                },
+                                {
+                                    "word": "ครึ่ง",
+                                    "range": [ 4, 7 ],
+                                    "translations": {
+                                        "en": "half",
+                                        "fa": "و نیم"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "8:30 pm",
+                                "fa": "۸ و نیم شب"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "อีก 5 นาที",
+                            "words": [
+                                {
+                                    "word": "อีก",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "another",
+                                        "fa": "دیگر"
+                                    }
+                                },
+                                {
+                                    "word": "5",
+                                    "range": [ 3, 4 ],
+                                    "translations": {
+                                        "en": "5",
+                                        "fa": "۵"
+                                    }
+                                },
+                                {
+                                    "word": "นาที",
+                                    "range": [ 4, 7 ],
+                                    "translations": {
+                                        "en": "minutes",
+                                        "fa": "دقیقه"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "In 5 minutes",
+                                "fa": "۵ دقیقه دیگر"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "อีก 10 นาที",
+                            "words": [
+                                {
+                                    "word": "อีก",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "another",
+                                        "fa": "دیگر"
+                                    }
+                                },
+                                {
+                                    "word": "10",
+                                    "range": [ 3, 5 ],
+                                    "translations": {
+                                        "en": "10",
+                                        "fa": "۱۰"
+                                    }
+                                },
+                                {
+                                    "word": "นาที",
+                                    "range": [ 5, 8 ],
+                                    "translations": {
+                                        "en": "minutes",
+                                        "fa": "دقیقه"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "In 10 minutes",
+                                "fa": "۱۰ دقیقه دیگر"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "อีกครึ่งชั่วโมง",
+                            "words": [
+                                {
+                                    "word": "อีก",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "another",
+                                        "fa": "دیگر"
+                                    }
+                                },
+                                {
+                                    "word": "ครึ่ง",
+                                    "range": [ 3, 7 ],
+                                    "translations": {
+                                        "en": "half",
+                                        "fa": "نیم"
+                                    }
+                                },
+                                {
+                                    "word": "ชั่วโมง",
+                                    "range": [ 7, 12 ],
+                                    "translations": {
+                                        "en": "hour",
+                                        "fa": "ساعت"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "In half an hour",
+                                "fa": "نیم ساعت دیگر"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "อีก 1 ชั่วโมง",
+                            "words": [
+                                {
+                                    "word": "อีก",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "another",
+                                        "fa": "دیگر"
+                                    }
+                                },
+                                {
+                                    "word": "1",
+                                    "range": [ 3, 4 ],
+                                    "translations": {
+                                        "en": "1",
+                                        "fa": "۱"
+                                    }
+                                },
+                                {
+                                    "word": "ชั่วโมง",
+                                    "range": [ 4, 9 ],
+                                    "translations": {
+                                        "en": "hour",
+                                        "fa": "ساعت"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "In 1 hour",
+                                "fa": "۱ ساعت دیگر"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ประมาณเที่ยง",
+                            "words": [
+                                {
+                                    "word": "ประมาณ",
+                                    "range": [ 0, 5 ],
+                                    "translations": {
+                                        "en": "approximately",
+                                        "fa": "حدود"
+                                    }
+                                },
+                                {
+                                    "word": "เที่ยง",
+                                    "range": [ 5, 10 ],
+                                    "translations": {
+                                        "en": "noon",
+                                        "fa": "ظهر"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Around noon",
+                                "fa": "حدود ظهر"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ประมาณบ่าย 2",
+                            "words": [
+                                {
+                                    "word": "ประมาณ",
+                                    "range": [ 0, 5 ],
+                                    "translations": {
+                                        "en": "approximately",
+                                        "fa": "حدود"
+                                    }
+                                },
+                                {
+                                    "word": "บ่าย",
+                                    "range": [ 5, 8 ],
+                                    "translations": {
+                                        "en": "afternoon",
+                                        "fa": "بعدازظهر"
+                                    }
+                                },
+                                {
+                                    "word": "2",
+                                    "range": [ 8, 9 ],
+                                    "translations": {
+                                        "en": "2",
+                                        "fa": "۲"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Around 2 pm",
+                                "fa": "حدود ۲ بعدازظهر"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "heading": {
+                "en": "Days of the Week",
+                "fa": "روزهای هفته",
+                "th": "วันต่างๆ ในสัปดาห์"
+            },
+            "activities": [ "multipleChoiceWord", "multipleChoiceSentence" ],
+            "blocks": [
+                {
+                    "type": "paragraph",
+                    "elements": [
+                        {
+                            "type": "sentence",
+                            "source": "วันจันทร์",
+                            "words": [
+                                {
+                                    "word": "วันจันทร์",
+                                    "range": [ 0, 8 ],
+                                    "translations": {
+                                        "en": "Monday",
+                                        "fa": "دوشنبه"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Monday",
+                                "fa": "دوشنبه"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "วันอังคาร",
+                            "words": [
+                                {
+                                    "word": "วันอังคาร",
+                                    "range": [ 0, 9 ],
+                                    "translations": {
+                                        "en": "Tuesday",
+                                        "fa": "سه‌شنبه"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Tuesday",
+                                "fa": "سه‌شنبه"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "วันพุธ",
+                            "words": [
+                                {
+                                    "word": "วันพุธ",
+                                    "range": [ 0, 6 ],
+                                    "translations": {
+                                        "en": "Wednesday",
+                                        "fa": "چهارشنبه"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Wednesday",
+                                "fa": "چهارشنبه"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "วันพฤหัสบดี",
+                            "words": [
+                                {
+                                    "word": "วันพฤหัสบดี",
+                                    "range": [ 0, 11 ],
+                                    "translations": {
+                                        "en": "Thursday",
+                                        "fa": "پنجشنبه"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Thursday",
+                                "fa": "پنجشنبه"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "วันศุกร์",
+                            "words": [
+                                {
+                                    "word": "วันศุกร์",
+                                    "range": [ 0, 7 ],
+                                    "translations": {
+                                        "en": "Friday",
+                                        "fa": "جمعه"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Friday",
+                                "fa": "جمعه"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "วันเสาร์",
+                            "words": [
+                                {
+                                    "word": "วันเสาร์",
+                                    "range": [ 0, 7 ],
+                                    "translations": {
+                                        "en": "Saturday",
+                                        "fa": "شنبه"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Saturday",
+                                "fa": "شنبه"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "วันอาทิตย์",
+                            "words": [
+                                {
+                                    "word": "วันอาทิตย์",
+                                    "range": [ 0, 9 ],
+                                    "translations": {
+                                        "en": "Sunday",
+                                        "fa": "یکشنبه"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Sunday",
+                                "fa": "یکشنبه"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "วันนี้วันอะไร",
+                            "words": [
+                                {
+                                    "word": "วันนี้",
+                                    "range": [ 0, 5 ],
+                                    "translations": {
+                                        "en": "today",
+                                        "fa": "امروز"
+                                    }
+                                },
+                                {
+                                    "word": "วัน",
+                                    "range": [ 5, 7 ],
+                                    "translations": {
+                                        "en": "day",
+                                        "fa": "چه روزی"
+                                    }
+                                },
+                                {
+                                    "word": "อะไร",
+                                    "range": [ 7, 10 ],
+                                    "translations": {
+                                        "en": "what",
+                                        "fa": "است"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "What day is today?",
+                                "fa": "امروز چه روزی است؟"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "วันนี้วันจันทร์",
+                            "words": [
+                                {
+                                    "word": "วันนี้",
+                                    "range": [ 0, 5 ],
+                                    "translations": {
+                                        "en": "today",
+                                        "fa": "امروز"
+                                    }
+                                },
+                                {
+                                    "word": "วันจันทร์",
+                                    "range": [ 5, 12 ],
+                                    "translations": {
+                                        "en": "Monday",
+                                        "fa": "دوشنبه"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Today is Monday",
+                                "fa": "امروز دوشنبه است"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "พรุ่งนี้วันอังคาร",
+                            "words": [
+                                {
+                                    "word": "พรุ่งนี้",
+                                    "range": [ 0, 6 ],
+                                    "translations": {
+                                        "en": "tomorrow",
+                                        "fa": "فردا"
+                                    }
+                                },
+                                {
+                                    "word": "วันอังคาร",
+                                    "range": [ 6, 14 ],
+                                    "translations": {
+                                        "en": "Tuesday",
+                                        "fa": "سه‌شنبه"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Tomorrow is Tuesday",
+                                "fa": "فردا سه‌شنبه است"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "เมื่อวานวันอาทิตย์",
+                            "words": [
+                                {
+                                    "word": "เมื่อวาน",
+                                    "range": [ 0, 6 ],
+                                    "translations": {
+                                        "en": "yesterday",
+                                        "fa": "دیروز"
+                                    }
+                                },
+                                {
+                                    "word": "วันอาทิตย์",
+                                    "range": [ 6, 14 ],
+                                    "translations": {
+                                        "en": "Sunday",
+                                        "fa": "یکشنبه"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Yesterday was Sunday",
+                                "fa": "دیروز یکشنبه بود"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "words",
+                    "data": [
+                        {
+                            "word": "วันจันทร์",
+                            "translations": {
+                                "en": "Monday",
+                                "fa": "دوشنبه"
+                            }
+                        },
+                        {
+                            "word": "วันอังคาร",
+                            "translations": {
+                                "en": "Tuesday",
+                                "fa": "سه‌شنبه"
+                            }
+                        },
+                        {
+                            "word": "วันพุธ",
+                            "translations": {
+                                "en": "Wednesday",
+                                "fa": "چهارشنبه"
+                            }
+                        },
+                        {
+                            "word": "วันพฤหัสบดี",
+                            "translations": {
+                                "en": "Thursday",
+                                "fa": "پنجشنبه"
+                            }
+                        },
+                        {
+                            "word": "วันศุกร์",
+                            "translations": {
+                                "en": "Friday",
+                                "fa": "جمعه"
+                            }
+                        },
+                        {
+                            "word": "วันเสาร์",
+                            "translations": {
+                                "en": "Saturday",
+                                "fa": "شنبه"
+                            }
+                        },
+                        {
+                            "word": "วันอาทิตย์",
+                            "translations": {
+                                "en": "Sunday",
+                                "fa": "یکشنبه"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "heading": {
+                "en": "Months and Seasons",
+                "fa": "ماه‌ها و فصل‌ها",
+                "th": "เดือนและฤดูกาล"
+            },
+            "activities": [ "multipleChoiceWord", "multipleChoiceSentence" ],
+            "blocks": [
+                {
+                    "type": "paragraph",
+                    "elements": [
+                        {
+                            "type": "sentence",
+                            "source": "เดือนมกราคม",
+                            "words": [
+                                {
+                                    "word": "เดือน",
+                                    "range": [ 0, 5 ],
+                                    "translations": {
+                                        "en": "month",
+                                        "fa": "ماه"
+                                    }
+                                },
+                                {
+                                    "word": "มกราคม",
+                                    "range": [ 5, 11 ],
+                                    "translations": {
+                                        "en": "January",
+                                        "fa": "ژانویه"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "January",
+                                "fa": "ژانویه"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "เดือนกุมภาพันธ์",
+                            "words": [
+                                {
+                                    "word": "เดือน",
+                                    "range": [ 0, 5 ],
+                                    "translations": {
+                                        "en": "month",
+                                        "fa": "ماه"
+                                    }
+                                },
+                                {
+                                    "word": "กุมภาพันธ์",
+                                    "range": [ 5, 14 ],
+                                    "translations": {
+                                        "en": "February",
+                                        "fa": "فوریه"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "February",
+                                "fa": "فوریه"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "เดือนมีนาคม",
+                            "words": [
+                                {
+                                    "word": "เดือน",
+                                    "range": [ 0, 5 ],
+                                    "translations": {
+                                        "en": "month",
+                                        "fa": "ماه"
+                                    }
+                                },
+                                {
+                                    "word": "มีนาคม",
+                                    "range": [ 5, 11 ],
+                                    "translations": {
+                                        "en": "March",
+                                        "fa": "مارس"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "March",
+                                "fa": "مارس"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "เดือนเมษายน",
+                            "words": [
+                                {
+                                    "word": "เดือน",
+                                    "range": [ 0, 5 ],
+                                    "translations": {
+                                        "en": "month",
+                                        "fa": "ماه"
+                                    }
+                                },
+                                {
+                                    "word": "เมษายน",
+                                    "range": [ 5, 11 ],
+                                    "translations": {
+                                        "en": "April",
+                                        "fa": "آوریل"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "April",
+                                "fa": "آوریل"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "เดือนพฤษภาคม",
+                            "words": [
+                                {
+                                    "word": "เดือน",
+                                    "range": [ 0, 5 ],
+                                    "translations": {
+                                        "en": "month",
+                                        "fa": "ماه"
+                                    }
+                                },
+                                {
+                                    "word": "พฤษภาคม",
+                                    "range": [ 5, 13 ],
+                                    "translations": {
+                                        "en": "May",
+                                        "fa": "مه"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "May",
+                                "fa": "مه"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "เดือนมิถุนายน",
+                            "words": [
+                                {
+                                    "word": "เดือน",
+                                    "range": [ 0, 5 ],
+                                    "translations": {
+                                        "en": "month",
+                                        "fa": "ماه"
+                                    }
+                                },
+                                {
+                                    "word": "มิถุนายน",
+                                    "range": [ 5, 13 ],
+                                    "translations": {
+                                        "en": "June",
+                                        "fa": "ژوئن"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "June",
+                                "fa": "ژوئن"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "เดือนกรกฎาคม",
+                            "words": [
+                                {
+                                    "word": "เดือน",
+                                    "range": [ 0, 5 ],
+                                    "translations": {
+                                        "en": "month",
+                                        "fa": "ماه"
+                                    }
+                                },
+                                {
+                                    "word": "กรกฎาคม",
+                                    "range": [ 5, 13 ],
+                                    "translations": {
+                                        "en": "July",
+                                        "fa": "ژوئیه"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "July",
+                                "fa": "ژوئیه"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "เดือนสิงหาคม",
+                            "words": [
+                                {
+                                    "word": "เดือน",
+                                    "range": [ 0, 5 ],
+                                    "translations": {
+                                        "en": "month",
+                                        "fa": "ماه"
+                                    }
+                                },
+                                {
+                                    "word": "สิงหาคม",
+                                    "range": [ 5, 13 ],
+                                    "translations": {
+                                        "en": "August",
+                                        "fa": "اوت"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "August",
+                                "fa": "اوت"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "เดือนกันยายน",
+                            "words": [
+                                {
+                                    "word": "เดือน",
+                                    "range": [ 0, 5 ],
+                                    "translations": {
+                                        "en": "month",
+                                        "fa": "ماه"
+                                    }
+                                },
+                                {
+                                    "word": "กันยายน",
+                                    "range": [ 5, 12 ],
+                                    "translations": {
+                                        "en": "September",
+                                        "fa": "سپتامبر"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "September",
+                                "fa": "سپتامبر"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "เดือนตุลาคม",
+                            "words": [
+                                {
+                                    "word": "เดือน",
+                                    "range": [ 0, 5 ],
+                                    "translations": {
+                                        "en": "month",
+                                        "fa": "ماه"
+                                    }
+                                },
+                                {
+                                    "word": "ตุลาคม",
+                                    "range": [ 5, 11 ],
+                                    "translations": {
+                                        "en": "October",
+                                        "fa": "اکتبر"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "October",
+                                "fa": "اکتبر"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "เดือนพฤศจิกายน",
+                            "words": [
+                                {
+                                    "word": "เดือน",
+                                    "range": [ 0, 5 ],
+                                    "translations": {
+                                        "en": "month",
+                                        "fa": "ماه"
+                                    }
+                                },
+                                {
+                                    "word": "พฤศจิกายน",
+                                    "range": [ 5, 15 ],
+                                    "translations": {
+                                        "en": "November",
+                                        "fa": "نوامبر"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "November",
+                                "fa": "نوامبر"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "เดือนธันวาคม",
+                            "words": [
+                                {
+                                    "word": "เดือน",
+                                    "range": [ 0, 5 ],
+                                    "translations": {
+                                        "en": "month",
+                                        "fa": "ماه"
+                                    }
+                                },
+                                {
+                                    "word": "ธันวาคม",
+                                    "range": [ 5, 12 ],
+                                    "translations": {
+                                        "en": "December",
+                                        "fa": "دسامبر"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "December",
+                                "fa": "دسامبر"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "เดือนนี้เดือนอะไร",
+                            "words": [
+                                {
+                                    "word": "เดือนนี้",
+                                    "range": [ 0, 6 ],
+                                    "translations": {
+                                        "en": "this month",
+                                        "fa": "این ماه"
+                                    }
+                                },
+                                {
+                                    "word": "เดือน",
+                                    "range": [ 6, 10 ],
+                                    "translations": {
+                                        "en": "month",
+                                        "fa": "ماه"
+                                    }
+                                },
+                                {
+                                    "word": "อะไร",
+                                    "range": [ 10, 13 ],
+                                    "translations": {
+                                        "en": "what",
+                                        "fa": "چه"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "What month is this?",
+                                "fa": "این چه ماهی است؟"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "เดือนนี้มิถุนายน",
+                            "words": [
+                                {
+                                    "word": "เดือนนี้",
+                                    "range": [ 0, 6 ],
+                                    "translations": {
+                                        "en": "this month",
+                                        "fa": "این ماه"
+                                    }
+                                },
+                                {
+                                    "word": "มิถุนายน",
+                                    "range": [ 6, 13 ],
+                                    "translations": {
+                                        "en": "June",
+                                        "fa": "ژوئن"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "This month is June",
+                                "fa": "این ماه ژوئن است"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ฤดูร้อน",
+                            "words": [
+                                {
+                                    "word": "ฤดูร้อน",
+                                    "range": [ 0, 6 ],
+                                    "translations": {
+                                        "en": "summer",
+                                        "fa": "تابستان"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Summer",
+                                "fa": "تابستان"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ฤดูฝน",
+                            "words": [
+                                {
+                                    "word": "ฤดูฝน",
+                                    "range": [ 0, 5 ],
+                                    "translations": {
+                                        "en": "rainy season",
+                                        "fa": "فصل بارانی"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Rainy season",
+                                "fa": "فصل بارانی"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ฤดูหนาว",
+                            "words": [
+                                {
+                                    "word": "ฤดูหนาว",
+                                    "range": [ 0, 6 ],
+                                    "translations": {
+                                        "en": "winter",
+                                        "fa": "زمستان"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Winter",
+                                "fa": "زمستان"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "words",
+                    "data": [
+                        {
+                            "word": "ฤดูร้อน",
+                            "translations": {
+                                "en": "summer",
+                                "fa": "تابستان"
+                            }
+                        },
+                        {
+                            "word": "ฤดูฝน",
+                            "translations": {
+                                "en": "rainy season",
+                                "fa": "فصل بارانی"
+                            }
+                        },
+                        {
+                            "word": "ฤดูหนาว",
+                            "translations": {
+                                "en": "winter",
+                                "fa": "زمستان"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "heading": {
+                "en": "Dates and Years",
+                "fa": "تاریخ و سال",
+                "th": "วันที่และปี"
+            },
+            "activities": [ "multipleChoiceWord", "multipleChoiceSentence" ],
+            "blocks": [
+                {
+                    "type": "paragraph",
+                    "elements": [
+                        {
+                            "type": "sentence",
+                            "source": "วันที่เท่าไหร่",
+                            "words": [
+                                {
+                                    "word": "วันที่",
+                                    "range": [ 0, 5 ],
+                                    "translations": {
+                                        "en": "date",
+                                        "fa": "تاریخ"
+                                    }
+                                },
+                                {
+                                    "word": "เท่าไหร่",
+                                    "range": [ 5, 12 ],
+                                    "translations": {
+                                        "en": "how much",
+                                        "fa": "چند"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "What's the date?",
+                                "fa": "چندم است؟"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "วันที่ 15 มีนาคม",
+                            "words": [
+                                {
+                                    "word": "วันที่",
+                                    "range": [ 0, 5 ],
+                                    "translations": {
+                                        "en": "date",
+                                        "fa": "تاریخ"
+                                    }
+                                },
+                                {
+                                    "word": "15",
+                                    "range": [ 5, 7 ],
+                                    "translations": {
+                                        "en": "15th",
+                                        "fa": "۱۵"
+                                    }
+                                },
+                                {
+                                    "word": "มีนาคม",
+                                    "range": [ 7, 12 ],
+                                    "translations": {
+                                        "en": "March",
+                                        "fa": "مارس"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "March 15th",
+                                "fa": "۱۵ مارس"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "วันเกิดฉันวันที่ 10",
+                            "words": [
+                                {
+                                    "word": "วันเกิด",
+                                    "range": [ 0, 6 ],
+                                    "translations": {
+                                        "en": "birthday",
+                                        "fa": "تولد"
+                                    }
+                                },
+                                {
+                                    "word": "ฉัน",
+                                    "range": [ 6, 9 ],
+                                    "translations": {
+                                        "en": "my",
+                                        "fa": "من"
+                                    }
+                                },
+                                {
+                                    "word": "วันที่",
+                                    "range": [ 9, 13 ],
+                                    "translations": {
+                                        "en": "on the",
+                                        "fa": "روز"
+                                    }
+                                },
+                                {
+                                    "word": "10",
+                                    "range": [ 13, 15 ],
+                                    "translations": {
+                                        "en": "10th",
+                                        "fa": "۱۰"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "My birthday is on the 10th",
+                                "fa": "تولد من روز ۱۰ است"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ปีนี้ปีอะไร",
+                            "words": [
+                                {
+                                    "word": "ปีนี้",
+                                    "range": [ 0, 4 ],
+                                    "translations": {
+                                        "en": "this year",
+                                        "fa": "امسال"
+                                    }
+                                },
+                                {
+                                    "word": "ปี",
+                                    "range": [ 4, 6 ],
+                                    "translations": {
+                                        "en": "year",
+                                        "fa": "سال"
+                                    }
+                                },
+                                {
+                                    "word": "อะไร",
+                                    "range": [ 6, 9 ],
+                                    "translations": {
+                                        "en": "what",
+                                        "fa": "چه"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "What year is this?",
+                                "fa": "امسال چه سالی است؟"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ปีนี้ พ.ศ. 2568",
+                            "words": [
+                                {
+                                    "word": "ปีนี้",
+                                    "range": [ 0, 4 ],
+                                    "translations": {
+                                        "en": "this year",
+                                        "fa": "امسال"
+                                    }
+                                },
+                                {
+                                    "word": "พ.ศ.",
+                                    "range": [ 4, 9 ],
+                                    "translations": {
+                                        "en": "Buddhist era",
+                                        "fa": "سال بودایی"
+                                    }
+                                },
+                                {
+                                    "word": "2568",
+                                    "range": [ 9, 13 ],
+                                    "translations": {
+                                        "en": "2568",
+                                        "fa": "۲۵۶۸"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "This year is 2568 BE (2025 AD)",
+                                "fa": "امسال سال ۲۵۶۸ بودایی است"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ค.ศ. 2025",
+                            "words": [
+                                {
+                                    "word": "ค.ศ.",
+                                    "range": [ 0, 5 ],
+                                    "translations": {
+                                        "en": "Christian era",
+                                        "fa": "میلادی"
+                                    }
+                                },
+                                {
+                                    "word": "2025",
+                                    "range": [ 5, 9 ],
+                                    "translations": {
+                                        "en": "2025",
+                                        "fa": "۲۰۲۵"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "2025 AD",
+                                "fa": "۲۰۲۵ میلادی"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "เกิดปี พ.ศ. 2540",
+                            "words": [
+                                {
+                                    "word": "เกิด",
+                                    "range": [ 0, 4 ],
+                                    "translations": {
+                                        "en": "born",
+                                        "fa": "متولد شدم"
+                                    }
+                                },
+                                {
+                                    "word": "ปี",
+                                    "range": [ 4, 6 ],
+                                    "translations": {
+                                        "en": "year",
+                                        "fa": "سال"
+                                    }
+                                },
+                                {
+                                    "word": "พ.ศ.",
+                                    "range": [ 6, 11 ],
+                                    "translations": {
+                                        "en": "BE",
+                                        "fa": "بودایی"
+                                    }
+                                },
+                                {
+                                    "word": "2540",
+                                    "range": [ 11, 15 ],
+                                    "translations": {
+                                        "en": "2540",
+                                        "fa": "۲۵۴۰"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Born in 2540 BE (1997 AD)",
+                                "fa": "متولد سال ۲۵۴۰ بودایی"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "heading": {
+                "en": "Making Appointments",
+                "fa": "تنظیم قرار ملاقات",
+                "th": "การนัดหมาย"
+            },
+            "activities": [ "multipleChoiceWord", "multipleChoiceSentence" ],
+            "blocks": [
+                {
+                    "type": "paragraph",
+                    "elements": [
+                        {
+                            "type": "sentence",
+                            "source": "นัดวันไหนดี",
+                            "words": [
+                                {
+                                    "word": "นัด",
+                                    "range": [ 0, 4 ],
+                                    "translations": {
+                                        "en": "appointment",
+                                        "fa": "قرار"
+                                    }
+                                },
+                                {
+                                    "word": "วันไหน",
+                                    "range": [ 4, 9 ],
+                                    "translations": {
+                                        "en": "which day",
+                                        "fa": "چه روزی"
+                                    }
+                                },
+                                {
+                                    "word": "ดี",
+                                    "range": [ 9, 11 ],
+                                    "translations": {
+                                        "en": "good",
+                                        "fa": "خوب است"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Which day is good to meet?",
+                                "fa": "چه روزی برای قرار خوب است؟"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "นัดวันศุกร์ไหม",
+                            "words": [
+                                {
+                                    "word": "นัด",
+                                    "range": [ 0, 4 ],
+                                    "translations": {
+                                        "en": "appointment",
+                                        "fa": "قرار"
+                                    }
+                                },
+                                {
+                                    "word": "วันศุกร์",
+                                    "range": [ 4, 10 ],
+                                    "translations": {
+                                        "en": "Friday",
+                                        "fa": "جمعه"
+                                    }
+                                },
+                                {
+                                    "word": "ไหม",
+                                    "range": [ 10, 13 ],
+                                    "translations": {
+                                        "en": "question particle",
+                                        "fa": "ذره سوالی"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Shall we meet on Friday?",
+                                "fa": "جمعه قرار بگذاریم؟"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "นัดกี่โมง",
+                            "words": [
+                                {
+                                    "word": "นัด",
+                                    "range": [ 0, 4 ],
+                                    "translations": {
+                                        "en": "appointment",
+                                        "fa": "قرار"
+                                    }
+                                },
+                                {
+                                    "word": "กี่โมง",
+                                    "range": [ 4, 8 ],
+                                    "translations": {
+                                        "en": "what time",
+                                        "fa": "ساعت چند"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "What time is the appointment?",
+                                "fa": "قرار ساعت چند است؟"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "นัดบ่าย 2 โมง",
+                            "words": [
+                                {
+                                    "word": "นัด",
+                                    "range": [ 0, 4 ],
+                                    "translations": {
+                                        "en": "appointment",
+                                        "fa": "قرار"
+                                    }
+                                },
+                                {
+                                    "word": "บ่าย",
+                                    "range": [ 4, 7 ],
+                                    "translations": {
+                                        "en": "afternoon",
+                                        "fa": "بعدازظهر"
+                                    }
+                                },
+                                {
+                                    "word": "2",
+                                    "range": [ 7, 8 ],
+                                    "translations": {
+                                        "en": "2",
+                                        "fa": "۲"
+                                    }
+                                },
+                                {
+                                    "word": "โมง",
+                                    "range": [ 8, 11 ],
+                                    "translations": {
+                                        "en": "o'clock",
+                                        "fa": "ساعت"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "The appointment is at 2 pm",
+                                "fa": "قرار ساعت ۲ بعدازظهر است"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "สะดวกวันไหน",
+                            "words": [
+                                {
+                                    "word": "สะดวก",
+                                    "range": [ 0, 6 ],
+                                    "translations": {
+                                        "en": "convenient",
+                                        "fa": "ممکن است"
+                                    }
+                                },
+                                {
+                                    "word": "วันไหน",
+                                    "range": [ 6, 11 ],
+                                    "translations": {
+                                        "en": "which day",
+                                        "fa": "چه روزی"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Which day is convenient?",
+                                "fa": "چه روزی برایتان ممکن است؟"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "สะดวกกี่โมง",
+                            "words": [
+                                {
+                                    "word": "สะดวก",
+                                    "range": [ 0, 6 ],
+                                    "translations": {
+                                        "en": "convenient",
+                                        "fa": "ممکن است"
+                                    }
+                                },
+                                {
+                                    "word": "กี่โมง",
+                                    "range": [ 6, 10 ],
+                                    "translations": {
+                                        "en": "what time",
+                                        "fa": "ساعت چند"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "What time is convenient?",
+                                "fa": "ساعت چند برایتان ممکن است؟"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ขอเลื่อนนัด",
+                            "words": [
+                                {
+                                    "word": "ขอ",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "ask to",
+                                        "fa": "درخواست"
+                                    }
+                                },
+                                {
+                                    "word": "เลื่อน",
+                                    "range": [ 3, 7 ],
+                                    "translations": {
+                                        "en": "postpone",
+                                        "fa": "عقب انداختن"
+                                    }
+                                },
+                                {
+                                    "word": "นัด",
+                                    "range": [ 7, 10 ],
+                                    "translations": {
+                                        "en": "appointment",
+                                        "fa": "قرار"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "I'd like to reschedule",
+                                "fa": "می‌خواهم قرار را عوض کنم"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ขอยกเลิกนัด",
+                            "words": [
+                                {
+                                    "word": "ขอ",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "ask to",
+                                        "fa": "درخواست"
+                                    }
+                                },
+                                {
+                                    "word": "ยกเลิก",
+                                    "range": [ 3, 8 ],
+                                    "translations": {
+                                        "en": "cancel",
+                                        "fa": "لغو"
+                                    }
+                                },
+                                {
+                                    "word": "นัด",
+                                    "range": [ 8, 11 ],
+                                    "translations": {
+                                        "en": "appointment",
+                                        "fa": "قرار"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "I'd like to cancel the appointment",
+                                "fa": "می‌خواهم قرار را لغو کنم"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "เจอกันวันพรุ่งนี้",
+                            "words": [
+                                {
+                                    "word": "เจอกัน",
+                                    "range": [ 0, 5 ],
+                                    "translations": {
+                                        "en": "meet",
+                                        "fa": "می‌بینمت"
+                                    }
+                                },
+                                {
+                                    "word": "วันพรุ่งนี้",
+                                    "range": [ 5, 12 ],
+                                    "translations": {
+                                        "en": "tomorrow",
+                                        "fa": "فردا"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "See you tomorrow",
+                                "fa": "فردا می‌بینمت"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "เจอกันวันจันทร์",
+                            "words": [
+                                {
+                                    "word": "เจอกัน",
+                                    "range": [ 0, 5 ],
+                                    "translations": {
+                                        "en": "meet",
+                                        "fa": "می‌بینمت"
+                                    }
+                                },
+                                {
+                                    "word": "วันจันทร์",
+                                    "range": [ 5, 12 ],
+                                    "translations": {
+                                        "en": "Monday",
+                                        "fa": "دوشنبه"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "See you on Monday",
+                                "fa": "دوشنبه می‌بینمت"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "words",
+                    "data": [
+                        {
+                            "word": "นัด",
+                            "translations": {
+                                "en": "appointment",
+                                "fa": "قرار"
+                            }
+                        },
+                        {
+                            "word": "เลื่อน",
+                            "translations": {
+                                "en": "postpone",
+                                "fa": "عقب انداختن"
+                            }
+                        },
+                        {
+                            "word": "ยกเลิก",
+                            "translations": {
+                                "en": "cancel",
+                                "fa": "لغو"
+                            }
+                        },
+                        {
+                            "word": "สะดวก",
+                            "translations": {
+                                "en": "convenient",
+                                "fa": "ممکن"
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

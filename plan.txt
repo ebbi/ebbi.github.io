@@ -1,7 +1,48 @@
-I did not implement this word highlighting solution.  Another requirement.
+For your suggested, Part 1: The "Essential Life" Conversational Corpus, 
+please see the uploaded files for a language learning App.
 
-The multiple choice quiz for words currently uses the JSON data from blocks of 
-type "word".  The data set for the test should also include the word data arrays 
-from the type sentence.
+Mapping your "Essential Life" Conversational Corpus to the App data model:
+
+The "Essential Life" Conversational Corpus becomes an entry in the manifest.json file.
+And each of your categories is defined as an entry in the "documents" array in the manifest.json file.
+
+Each of your categories data is defined in a separate JSON datafile.
+Each category JSON datafile would have a single entry in the JSON "sections" array.
+And each of your "conversations" becomes a JSON "blocks" entry of "type": "paragraph", 
+with individual conversation sentences defined as  "type": "sentence" in the "elements" array.
+
+Before proceeding any further, please double check the above data mapping is correct.
+
+
+
+
+
+
+
+Please generate the same JSON data structure file for The "Essential Life" Conversational Corpus.
+
+
+
+The requirement is to create data files for conversations in everyday life.  
+For examples, conversations with a dentist, hairdresser, bank staff and so on.
+
+The number of sentences is dependant on the conversation, but a minimum of 50 or more 
+sentences in each conversation seems reasonable.
+
+The requirement is to develop the data for learning languages for everyday life.
+
+Please list the number of conversations and the number of sentences in each conversation 
+that would be sufficient for effective communication in daily life.  
+
+Please suggest any alternative approach to learning a language for daily life.
+
+
+Unless you have a better alternative suggestion, please 
+generate a data file for each conversation.
+
+
+
+
+
 
 

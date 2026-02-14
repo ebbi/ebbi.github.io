@@ -1,0 +1,1325 @@
+{
+    "documentId": "daily_food",
+    "sections": [
+        {
+            "heading": {
+                "en": "Finding a Restaurant",
+                "fa": "پیدا کردن رستوران",
+                "th": "การหาร้านอาหาร"
+            },
+            "activities": [ "multipleChoiceWord", "multipleChoiceSentence" ],
+            "blocks": [
+                {
+                    "type": "paragraph",
+                    "elements": [
+                        {
+                            "type": "sentence",
+                            "source": "ร้านอาหารไทยอยู่แถวไหน",
+                            "words": [
+                                {
+                                    "word": "ร้านอาหาร",
+                                    "range": [ 0, 8 ],
+                                    "translations": {
+                                        "en": "restaurant",
+                                        "fa": "رستوران"
+                                    }
+                                },
+                                {
+                                    "word": "ไทย",
+                                    "range": [ 8, 11 ],
+                                    "translations": {
+                                        "en": "Thai",
+                                        "fa": "تایلندی"
+                                    }
+                                },
+                                {
+                                    "word": "อยู่",
+                                    "range": [ 11, 14 ],
+                                    "translations": {
+                                        "en": "is located",
+                                        "fa": "قرار دارد"
+                                    }
+                                },
+                                {
+                                    "word": "แถวไหน",
+                                    "range": [ 14, 20 ],
+                                    "translations": {
+                                        "en": "around where",
+                                        "fa": "کجا حدوداً"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Where is the Thai restaurant around here?",
+                                "fa": "رستوران تایلندی حدوداً کجاست؟"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "มีร้านแนะนำไหม",
+                            "words": [
+                                {
+                                    "word": "มี",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "have",
+                                        "fa": "دارد"
+                                    }
+                                },
+                                {
+                                    "word": "ร้าน",
+                                    "range": [ 3, 7 ],
+                                    "translations": {
+                                        "en": "restaurant/shop",
+                                        "fa": "رستوران/فروشگاه"
+                                    }
+                                },
+                                {
+                                    "word": "แนะนำ",
+                                    "range": [ 7, 12 ],
+                                    "translations": {
+                                        "en": "recommend",
+                                        "fa": "توصیه کردن"
+                                    }
+                                },
+                                {
+                                    "word": "ไหม",
+                                    "range": [ 12, 15 ],
+                                    "translations": {
+                                        "en": "question particle",
+                                        "fa": "ذره سوالی"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Do you have any restaurant recommendations?",
+                                "fa": "رستورانی برای توصیه دارید؟"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "words",
+                    "data": [
+                        {
+                            "word": "ร้านอาหาร",
+                            "translations": {
+                                "en": "restaurant",
+                                "fa": "رستوران"
+                            }
+                        },
+                        {
+                            "word": "แนะนำ",
+                            "translations": {
+                                "en": "recommend",
+                                "fa": "توصیه کردن"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "heading": {
+                "en": "Arriving and Getting a Table",
+                "fa": "ورود و گرفتن میز",
+                "th": "การมาถึงและขอโต๊ะ"
+            },
+            "activities": [ "multipleChoiceWord", "multipleChoiceSentence" ],
+            "blocks": [
+                {
+                    "type": "paragraph",
+                    "elements": [
+                        {
+                            "type": "sentence",
+                            "source": "มีโต๊ะว่างไหม",
+                            "words": [
+                                {
+                                    "word": "มี",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "have",
+                                        "fa": "دارد"
+                                    }
+                                },
+                                {
+                                    "word": "โต๊ะ",
+                                    "range": [ 3, 7 ],
+                                    "translations": {
+                                        "en": "table",
+                                        "fa": "میز"
+                                    }
+                                },
+                                {
+                                    "word": "ว่าง",
+                                    "range": [ 7, 10 ],
+                                    "translations": {
+                                        "en": "available/empty",
+                                        "fa": "خالی"
+                                    }
+                                },
+                                {
+                                    "word": "ไหม",
+                                    "range": [ 10, 13 ],
+                                    "translations": {
+                                        "en": "question particle",
+                                        "fa": "ذره سوالی"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Do you have a table available?",
+                                "fa": "میز خالی دارید؟"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "จองไว้ ชื่อ...",
+                            "words": [
+                                {
+                                    "word": "จอง",
+                                    "range": [ 0, 4 ],
+                                    "translations": {
+                                        "en": "reserve",
+                                        "fa": "رزرو کردن"
+                                    }
+                                },
+                                {
+                                    "word": "ไว้",
+                                    "range": [ 4, 7 ],
+                                    "translations": {
+                                        "en": "for later/already",
+                                        "fa": "قبلاً"
+                                    }
+                                },
+                                {
+                                    "word": "ชื่อ",
+                                    "range": [ 7, 10 ],
+                                    "translations": {
+                                        "en": "name",
+                                        "fa": "اسم"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "I have a reservation under the name...",
+                                "fa": "رزرو کرده‌ام با اسم..."
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "รอนานไหม",
+                            "words": [
+                                {
+                                    "word": "รอ",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "wait",
+                                        "fa": "صبر کردن"
+                                    }
+                                },
+                                {
+                                    "word": "นาน",
+                                    "range": [ 3, 6 ],
+                                    "translations": {
+                                        "en": "long time",
+                                        "fa": "مدت طولانی"
+                                    }
+                                },
+                                {
+                                    "word": "ไหม",
+                                    "range": [ 6, 9 ],
+                                    "translations": {
+                                        "en": "question particle",
+                                        "fa": "ذره سوالی"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Is it a long wait?",
+                                "fa": "انتظار طولانی دارد؟"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ประมาณ ๑๕ นาที",
+                            "words": [
+                                {
+                                    "word": "ประมาณ",
+                                    "range": [ 0, 6 ],
+                                    "translations": {
+                                        "en": "approximately",
+                                        "fa": "حدوداً"
+                                    }
+                                },
+                                {
+                                    "word": "นาที",
+                                    "range": [ 8, 12 ],
+                                    "translations": {
+                                        "en": "minutes",
+                                        "fa": "دقیقه"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "About 15 minutes",
+                                "fa": "حدود ۱۵ دقیقه"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "heading": {
+                "en": "Ordering Food",
+                "fa": "سفارش غذا",
+                "th": "การสั่งอาหาร"
+            },
+            "activities": [ "multipleChoiceWord", "multipleChoiceSentence" ],
+            "blocks": [
+                {
+                    "type": "paragraph",
+                    "elements": [
+                        {
+                            "type": "sentence",
+                            "source": "ขอดูเมนูหน่อย",
+                            "words": [
+                                {
+                                    "word": "ขอ",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "ask for",
+                                        "fa": "درخواست"
+                                    }
+                                },
+                                {
+                                    "word": "ดู",
+                                    "range": [ 3, 5 ],
+                                    "translations": {
+                                        "en": "look",
+                                        "fa": "دیدن"
+                                    }
+                                },
+                                {
+                                    "word": "เมนู",
+                                    "range": [ 5, 9 ],
+                                    "translations": {
+                                        "en": "menu",
+                                        "fa": "منو"
+                                    }
+                                },
+                                {
+                                    "word": "หน่อย",
+                                    "range": [ 9, 13 ],
+                                    "translations": {
+                                        "en": "a little",
+                                        "fa": "کمی"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Can I see the menu, please?",
+                                "fa": "می‌توانم منو را ببینم؟"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "วันนี้มีอะไรพิเศษ",
+                            "words": [
+                                {
+                                    "word": "วันนี้",
+                                    "range": [ 0, 5 ],
+                                    "translations": {
+                                        "en": "today",
+                                        "fa": "امروز"
+                                    }
+                                },
+                                {
+                                    "word": "มี",
+                                    "range": [ 5, 7 ],
+                                    "translations": {
+                                        "en": "have",
+                                        "fa": "دارد"
+                                    }
+                                },
+                                {
+                                    "word": "อะไร",
+                                    "range": [ 7, 11 ],
+                                    "translations": {
+                                        "en": "what",
+                                        "fa": "چه"
+                                    }
+                                },
+                                {
+                                    "word": "พิเศษ",
+                                    "range": [ 11, 15 ],
+                                    "translations": {
+                                        "en": "special",
+                                        "fa": "ویژه"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "What's special today?",
+                                "fa": "امروز چه چیز ویژه‌ای دارید؟"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ขอสั่ง...",
+                            "words": [
+                                {
+                                    "word": "ขอ",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "ask for",
+                                        "fa": "درخواست"
+                                    }
+                                },
+                                {
+                                    "word": "สั่ง",
+                                    "range": [ 3, 6 ],
+                                    "translations": {
+                                        "en": "order",
+                                        "fa": "سفارش دادن"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "I'd like to order...",
+                                "fa": "می‌خواهم سفارش دهم..."
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ไม่เผ็ดนะ",
+                            "words": [
+                                {
+                                    "word": "ไม่",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "no/not",
+                                        "fa": "نه"
+                                    }
+                                },
+                                {
+                                    "word": "เผ็ด",
+                                    "range": [ 3, 6 ],
+                                    "translations": {
+                                        "en": "spicy",
+                                        "fa": "تند"
+                                    }
+                                },
+                                {
+                                    "word": "นะ",
+                                    "range": [ 6, 8 ],
+                                    "translations": {
+                                        "en": "softening particle",
+                                        "fa": "ذره نرم‌کننده"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Not spicy, please",
+                                "fa": "تند نباشه لطفاً"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "เผ็ดน้อย",
+                            "words": [
+                                {
+                                    "word": "เผ็ด",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "spicy",
+                                        "fa": "تند"
+                                    }
+                                },
+                                {
+                                    "word": "น้อย",
+                                    "range": [ 3, 6 ],
+                                    "translations": {
+                                        "en": "little",
+                                        "fa": "کم"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "a little spicy",
+                                "fa": "کمی تند"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ใส่น้ำปลาด้วย",
+                            "words": [
+                                {
+                                    "word": "ใส่",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "put/add",
+                                        "fa": "اضافه کردن"
+                                    }
+                                },
+                                {
+                                    "word": "น้ำปลา",
+                                    "range": [ 3, 8 ],
+                                    "translations": {
+                                        "en": "fish sauce",
+                                        "fa": "سس ماهی"
+                                    }
+                                },
+                                {
+                                    "word": "ด้วย",
+                                    "range": [ 8, 11 ],
+                                    "translations": {
+                                        "en": "too/also",
+                                        "fa": "هم"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Add fish sauce too",
+                                "fa": "سس ماهی هم اضافه کن"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "เอาอย่างเดียวกัน",
+                            "words": [
+                                {
+                                    "word": "เอา",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "take/want",
+                                        "fa": "خواستن"
+                                    }
+                                },
+                                {
+                                    "word": "อย่าง",
+                                    "range": [ 3, 7 ],
+                                    "translations": {
+                                        "en": "kind/type",
+                                        "fa": "نوع"
+                                    }
+                                },
+                                {
+                                    "word": "เดียวกัน",
+                                    "range": [ 7, 13 ],
+                                    "translations": {
+                                        "en": "same",
+                                        "fa": "همان"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "I'll have the same",
+                                "fa": "همان را می‌خواهم"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "words",
+                    "data": [
+                        {
+                            "word": "เมนู",
+                            "translations": {
+                                "en": "menu",
+                                "fa": "منو"
+                            }
+                        },
+                        {
+                            "word": "สั่ง",
+                            "translations": {
+                                "en": "order",
+                                "fa": "سفارش دادن"
+                            }
+                        },
+                        {
+                            "word": "เผ็ด",
+                            "translations": {
+                                "en": "spicy",
+                                "fa": "تند"
+                            }
+                        },
+                        {
+                            "word": "น้ำปลา",
+                            "translations": {
+                                "en": "fish sauce",
+                                "fa": "سس ماهی"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "heading": {
+                "en": "Asking About Food",
+                "fa": "پرسیدن درباره غذا",
+                "th": "การถามเกี่ยวกับอาหาร"
+            },
+            "activities": [ "multipleChoiceWord", "multipleChoiceSentence" ],
+            "blocks": [
+                {
+                    "type": "paragraph",
+                    "elements": [
+                        {
+                            "type": "sentence",
+                            "source": "นี่คืออะไร",
+                            "words": [
+                                {
+                                    "word": "นี่",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "this",
+                                        "fa": "این"
+                                    }
+                                },
+                                {
+                                    "word": "คือ",
+                                    "range": [ 3, 6 ],
+                                    "translations": {
+                                        "en": "is",
+                                        "fa": "است"
+                                    }
+                                },
+                                {
+                                    "word": "อะไร",
+                                    "range": [ 6, 10 ],
+                                    "translations": {
+                                        "en": "what",
+                                        "fa": "چه"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "What is this?",
+                                "fa": "این چیست؟"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "มีส่วนผสมอะไรบ้าง",
+                            "words": [
+                                {
+                                    "word": "มี",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "have",
+                                        "fa": "دارد"
+                                    }
+                                },
+                                {
+                                    "word": "ส่วนผสม",
+                                    "range": [ 3, 9 ],
+                                    "translations": {
+                                        "en": "ingredients",
+                                        "fa": "مواد تشکیل‌دهنده"
+                                    }
+                                },
+                                {
+                                    "word": "อะไร",
+                                    "range": [ 9, 13 ],
+                                    "translations": {
+                                        "en": "what",
+                                        "fa": "چه"
+                                    }
+                                },
+                                {
+                                    "word": "บ้าง",
+                                    "range": [ 13, 16 ],
+                                    "translations": {
+                                        "en": "some/all",
+                                        "fa": "همه"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "What ingredients are in it?",
+                                "fa": "چه موادی دارد؟"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "รสชาติเป็นยังไง",
+                            "words": [
+                                {
+                                    "word": "รสชาติ",
+                                    "range": [ 0, 6 ],
+                                    "translations": {
+                                        "en": "taste",
+                                        "fa": "مزه"
+                                    }
+                                },
+                                {
+                                    "word": "เป็น",
+                                    "range": [ 6, 9 ],
+                                    "translations": {
+                                        "en": "is",
+                                        "fa": "است"
+                                    }
+                                },
+                                {
+                                    "word": "ยังไง",
+                                    "range": [ 9, 14 ],
+                                    "translations": {
+                                        "en": "how",
+                                        "fa": "چطور"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "What does it taste like?",
+                                "fa": "مزه‌اش چطور است؟"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "heading": {
+                "en": "During the Meal",
+                "fa": "در طول غذا",
+                "th": "ระหว่างมื้ออาหาร"
+            },
+            "activities": [ "multipleChoiceWord", "multipleChoiceSentence" ],
+            "blocks": [
+                {
+                    "type": "paragraph",
+                    "elements": [
+                        {
+                            "type": "sentence",
+                            "source": "ขอเพิ่มน้ำเปล่า",
+                            "words": [
+                                {
+                                    "word": "ขอ",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "ask for",
+                                        "fa": "درخواست"
+                                    }
+                                },
+                                {
+                                    "word": "เพิ่ม",
+                                    "range": [ 3, 6 ],
+                                    "translations": {
+                                        "en": "more/additional",
+                                        "fa": "بیشتر"
+                                    }
+                                },
+                                {
+                                    "word": "น้ำเปล่า",
+                                    "range": [ 6, 12 ],
+                                    "translations": {
+                                        "en": "water",
+                                        "fa": "آب"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Can I have more water?",
+                                "fa": "آب بیشتر می‌توانم داشته باشم؟"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ขอเพิ่มข้าว",
+                            "words": [
+                                {
+                                    "word": "ขอ",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "ask for",
+                                        "fa": "درخواست"
+                                    }
+                                },
+                                {
+                                    "word": "เพิ่ม",
+                                    "range": [ 3, 6 ],
+                                    "translations": {
+                                        "en": "more",
+                                        "fa": "بیشتر"
+                                    }
+                                },
+                                {
+                                    "word": "ข้าว",
+                                    "range": [ 6, 9 ],
+                                    "translations": {
+                                        "en": "rice",
+                                        "fa": "برنج"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "More rice, please",
+                                "fa": "برنج بیشتر لطفاً"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ขอช้อนเพิ่ม",
+                            "words": [
+                                {
+                                    "word": "ขอ",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "ask for",
+                                        "fa": "درخواست"
+                                    }
+                                },
+                                {
+                                    "word": "ช้อน",
+                                    "range": [ 3, 7 ],
+                                    "translations": {
+                                        "en": "spoon",
+                                        "fa": "قاشق"
+                                    }
+                                },
+                                {
+                                    "word": "เพิ่ม",
+                                    "range": [ 7, 10 ],
+                                    "translations": {
+                                        "en": "more",
+                                        "fa": "بیشتر"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Can I have another spoon?",
+                                "fa": "یک قاشق دیگر می‌توانم داشته باشم؟"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ขอผ้าเช็ดมือ",
+                            "words": [
+                                {
+                                    "word": "ขอ",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "ask for",
+                                        "fa": "درخواست"
+                                    }
+                                },
+                                {
+                                    "word": "ผ้าเช็ดมือ",
+                                    "range": [ 3, 11 ],
+                                    "translations": {
+                                        "en": "napkin/towel",
+                                        "fa": "دستمال"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Can I have a napkin?",
+                                "fa": "دستمال می‌توانم داشته باشم؟"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "heading": {
+                "en": "Problems and Complaints",
+                "fa": "مشکلات و شکایات",
+                "th": "ปัญหาและการร้องเรียน"
+            },
+            "activities": [ "multipleChoiceWord", "multipleChoiceSentence" ],
+            "blocks": [
+                {
+                    "type": "paragraph",
+                    "elements": [
+                        {
+                            "type": "sentence",
+                            "source": "อาหารมาช้า",
+                            "words": [
+                                {
+                                    "word": "อาหาร",
+                                    "range": [ 0, 5 ],
+                                    "translations": {
+                                        "en": "food",
+                                        "fa": "غذا"
+                                    }
+                                },
+                                {
+                                    "word": "มา",
+                                    "range": [ 5, 7 ],
+                                    "translations": {
+                                        "en": "come",
+                                        "fa": "آمد"
+                                    }
+                                },
+                                {
+                                    "word": "ช้า",
+                                    "range": [ 7, 9 ],
+                                    "translations": {
+                                        "en": "slow",
+                                        "fa": "دیر"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "The food is slow",
+                                "fa": "غذا دیر آمد"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "สั่งไปนานแล้ว",
+                            "words": [
+                                {
+                                    "word": "สั่ง",
+                                    "range": [ 0, 4 ],
+                                    "translations": {
+                                        "en": "order",
+                                        "fa": "سفارش دادم"
+                                    }
+                                },
+                                {
+                                    "word": "ไป",
+                                    "range": [ 4, 6 ],
+                                    "translations": {
+                                        "en": "already",
+                                        "fa": "قبلاً"
+                                    }
+                                },
+                                {
+                                    "word": "นาน",
+                                    "range": [ 6, 9 ],
+                                    "translations": {
+                                        "en": "long time",
+                                        "fa": "مدت زیادی"
+                                    }
+                                },
+                                {
+                                    "word": "แล้ว",
+                                    "range": [ 9, 12 ],
+                                    "translations": {
+                                        "en": "already",
+                                        "fa": "است"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "I ordered a long time ago",
+                                "fa": "مدت زیادی است سفارش داده‌ام"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "อันนี้เผ็ดเกินไป",
+                            "words": [
+                                {
+                                    "word": "อันนี้",
+                                    "range": [ 0, 5 ],
+                                    "translations": {
+                                        "en": "this one",
+                                        "fa": "این یکی"
+                                    }
+                                },
+                                {
+                                    "word": "เผ็ด",
+                                    "range": [ 5, 8 ],
+                                    "translations": {
+                                        "en": "spicy",
+                                        "fa": "تند"
+                                    }
+                                },
+                                {
+                                    "word": "เกินไป",
+                                    "range": [ 8, 13 ],
+                                    "translations": {
+                                        "en": "too much",
+                                        "fa": "زیادی"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "This is too spicy",
+                                "fa": "این زیادی تند است"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "เค็มไป",
+                            "words": [
+                                {
+                                    "word": "เค็ม",
+                                    "range": [ 0, 4 ],
+                                    "translations": {
+                                        "en": "salty",
+                                        "fa": "شور"
+                                    }
+                                },
+                                {
+                                    "word": "ไป",
+                                    "range": [ 4, 6 ],
+                                    "translations": {
+                                        "en": "too",
+                                        "fa": "زیادی"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Too salty",
+                                "fa": "زیادی شور است"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "หวานไป",
+                            "words": [
+                                {
+                                    "word": "หวาน",
+                                    "range": [ 0, 4 ],
+                                    "translations": {
+                                        "en": "sweet",
+                                        "fa": "شیرین"
+                                    }
+                                },
+                                {
+                                    "word": "ไป",
+                                    "range": [ 4, 6 ],
+                                    "translations": {
+                                        "en": "too",
+                                        "fa": "زیادی"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Too sweet",
+                                "fa": "زیادی شیرین است"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "เปลี่ยนให้ได้ไหม",
+                            "words": [
+                                {
+                                    "word": "เปลี่ยน",
+                                    "range": [ 0, 6 ],
+                                    "translations": {
+                                        "en": "change",
+                                        "fa": "عوض کردن"
+                                    }
+                                },
+                                {
+                                    "word": "ให้",
+                                    "range": [ 6, 8 ],
+                                    "translations": {
+                                        "en": "give",
+                                        "fa": "به من"
+                                    }
+                                },
+                                {
+                                    "word": "ได้",
+                                    "range": [ 8, 11 ],
+                                    "translations": {
+                                        "en": "can",
+                                        "fa": "می‌توانید"
+                                    }
+                                },
+                                {
+                                    "word": "ไหม",
+                                    "range": [ 11, 14 ],
+                                    "translations": {
+                                        "en": "question particle",
+                                        "fa": "ذره سوالی"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Can you change this?",
+                                "fa": "می‌توانید این را عوض کنید؟"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "heading": {
+                "en": "Paying and Leaving",
+                "fa": "پرداخت و خروج",
+                "th": "การจ่ายเงินและออกจากร้าน"
+            },
+            "activities": [ "multipleChoiceWord", "multipleChoiceSentence" ],
+            "blocks": [
+                {
+                    "type": "paragraph",
+                    "elements": [
+                        {
+                            "type": "sentence",
+                            "source": "เก็บตังค์ด้วย",
+                            "words": [
+                                {
+                                    "word": "เก็บ",
+                                    "range": [ 0, 4 ],
+                                    "translations": {
+                                        "en": "collect",
+                                        "fa": "گرفتن"
+                                    }
+                                },
+                                {
+                                    "word": "ตังค์",
+                                    "range": [ 4, 9 ],
+                                    "translations": {
+                                        "en": "money",
+                                        "fa": "پول"
+                                    }
+                                },
+                                {
+                                    "word": "ด้วย",
+                                    "range": [ 9, 12 ],
+                                    "translations": {
+                                        "en": "please",
+                                        "fa": "لطفاً"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Check, please",
+                                "fa": "صورت‌حساب لطفاً"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ขอบิลหน่อย",
+                            "words": [
+                                {
+                                    "word": "ขอ",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "ask for",
+                                        "fa": "درخواست"
+                                    }
+                                },
+                                {
+                                    "word": "บิล",
+                                    "range": [ 3, 6 ],
+                                    "translations": {
+                                        "en": "bill",
+                                        "fa": "صورت‌حساب"
+                                    }
+                                },
+                                {
+                                    "word": "หน่อย",
+                                    "range": [ 6, 10 ],
+                                    "translations": {
+                                        "en": "a little",
+                                        "fa": "لطفاً"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Bill, please",
+                                "fa": "صورت‌حساب لطفاً"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "จ่ายรวมกัน",
+                            "words": [
+                                {
+                                    "word": "จ่าย",
+                                    "range": [ 0, 4 ],
+                                    "translations": {
+                                        "en": "pay",
+                                        "fa": "پرداخت"
+                                    }
+                                },
+                                {
+                                    "word": "รวมกัน",
+                                    "range": [ 4, 9 ],
+                                    "translations": {
+                                        "en": "together",
+                                        "fa": "با هم"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Pay together (one bill)",
+                                "fa": "با هم پرداخت کنیم"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "แยกกันจ่าย",
+                            "words": [
+                                {
+                                    "word": "แยกกัน",
+                                    "range": [ 0, 5 ],
+                                    "translations": {
+                                        "en": "separately",
+                                        "fa": "جدا"
+                                    }
+                                },
+                                {
+                                    "word": "จ่าย",
+                                    "range": [ 5, 9 ],
+                                    "translations": {
+                                        "en": "pay",
+                                        "fa": "پرداخت"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Pay separately",
+                                "fa": "جداگانه پرداخت کنیم"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "รับบัตรเครดิตไหม",
+                            "words": [
+                                {
+                                    "word": "รับ",
+                                    "range": [ 0, 3 ],
+                                    "translations": {
+                                        "en": "accept",
+                                        "fa": "قبول کردن"
+                                    }
+                                },
+                                {
+                                    "word": "บัตรเครดิต",
+                                    "range": [ 3, 11 ],
+                                    "translations": {
+                                        "en": "credit card",
+                                        "fa": "کارت اعتباری"
+                                    }
+                                },
+                                {
+                                    "word": "ไหม",
+                                    "range": [ 11, 14 ],
+                                    "translations": {
+                                        "en": "question particle",
+                                        "fa": "ذره سوالی"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Do you accept credit cards?",
+                                "fa": "کارت اعتباری قبول می‌کنید؟"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "เก็บเศษไว้ด้วย",
+                            "words": [
+                                {
+                                    "word": "เก็บ",
+                                    "range": [ 0, 4 ],
+                                    "translations": {
+                                        "en": "keep",
+                                        "fa": "نگه داشتن"
+                                    }
+                                },
+                                {
+                                    "word": "เศษ",
+                                    "range": [ 4, 7 ],
+                                    "translations": {
+                                        "en": "change",
+                                        "fa": "بقیه پول"
+                                    }
+                                },
+                                {
+                                    "word": "ไว้",
+                                    "range": [ 7, 10 ],
+                                    "translations": {
+                                        "en": "for",
+                                        "fa": "برای"
+                                    }
+                                },
+                                {
+                                    "word": "ด้วย",
+                                    "range": [ 10, 13 ],
+                                    "translations": {
+                                        "en": "please",
+                                        "fa": "لطفاً"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Keep the change",
+                                "fa": "بقیه اش برای خودت"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "อาหารอร่อยมาก",
+                            "words": [
+                                {
+                                    "word": "อาหาร",
+                                    "range": [ 0, 5 ],
+                                    "translations": {
+                                        "en": "food",
+                                        "fa": "غذا"
+                                    }
+                                },
+                                {
+                                    "word": "อร่อย",
+                                    "range": [ 5, 9 ],
+                                    "translations": {
+                                        "en": "delicious",
+                                        "fa": "خوشمزه"
+                                    }
+                                },
+                                {
+                                    "word": "มาก",
+                                    "range": [ 9, 12 ],
+                                    "translations": {
+                                        "en": "very",
+                                        "fa": "خیلی"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "The food was delicious",
+                                "fa": "غذا خیلی خوشمزه بود"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "words",
+                    "data": [
+                        {
+                            "word": "บิล",
+                            "translations": {
+                                "en": "bill",
+                                "fa": "صورت‌حساب"
+                            }
+                        },
+                        {
+                            "word": "จ่าย",
+                            "translations": {
+                                "en": "pay",
+                                "fa": "پرداخت کردن"
+                            }
+                        },
+                        {
+                            "word": "บัตรเครดิต",
+                            "translations": {
+                                "en": "credit card",
+                                "fa": "کارت اعتباری"
+                            }
+                        },
+                        {
+                            "word": "เศษ",
+                            "translations": {
+                                "en": "change",
+                                "fa": "بقیه پول"
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
