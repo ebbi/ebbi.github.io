@@ -35,7 +35,13 @@ const App = {
         },
 
         scrolledRows: null,
-        currentRowId: null
+        currentRowId: null,
+
+        grammarSheet: {
+            isOpen: false,
+            content: null
+        }
+
     },
 
     /* ============================================================================
@@ -181,6 +187,7 @@ const App = {
      * @param {number} sectionIndex - Index of the section (for unique IDs)
      * @returns {string} HTML string
      */
+/*
     renderBlocks(blocks, sectionIndex = 0) {
         const settings = this.state.media.languageSettings;
 
@@ -211,6 +218,111 @@ const App = {
                     </div>`;
 
                     // Word‑by‑word breakdown
+                    if (element.words && element.words.length > 0) {
+                        blockHtml += `<div class="sent-word-block">`;
+
+                        element.words.forEach((word, wordIndex) => {
+                            blockHtml += `<div id="${uid}-card-${wordIndex}"
+                         class="sent-word-item audio-element"
+                         data-text="${this.escapeHtml(word.word)}"
+                         data-lang="th"
+                         data-link="source-${uid}-w-${wordIndex}"
+                         onclick="App.seekAndPlay(this)">
+                        <div class="sent-word-source" lang="th" dir="ltr">${this.escapeHtml(word.word)}</div>`;
+
+                            // Show translations for each enabled language
+                            Object.keys(settings).forEach(lang => {
+                                if (lang !== 'th' && settings[lang].show && word.translations?.[lang]) {
+                                    const dir = lang === 'fa' ? 'rtl' : 'ltr';
+                                    blockHtml += `<div class="sent-word-trans lang-${lang}" lang="${lang}" dir="${dir}">${this.escapeHtml(word.translations[lang])}</div>`;
+                                }
+                            });
+                            blockHtml += `</div>`;
+                        });
+                        blockHtml += `</div>`;
+                    }
+
+                    // Translations for the whole sentence
+                    Object.keys(settings).forEach(lang => {
+                        if (lang !== 'th' && settings[lang].show && element.translations?.[lang]) {
+                            const transUid = `${uid}-trans-${lang}`;
+                            const dir = lang === 'fa' ? 'rtl' : 'ltr';
+                            blockHtml += `<div class="stack-item trans lang-${lang} audio-element"
+                                 lang="${lang}" dir="${dir}"
+                                 data-text="${this.escapeHtml(element.translations[lang])}"
+                                 data-lang="${lang}"
+                                 onclick="App.seekAndPlay(this)">
+                        ${this.renderTranslationSpan(element.translations[lang], lang, transUid)}
+                    </div>`;
+                        }
+                    });
+
+                    blockHtml += `</div></div>`; // close stack-column & sentence-group
+                });
+            }
+
+            // ------------------------------------------------------------------
+            // Words‑grid blocks – a simple grid of independent word cards.
+            // ------------------------------------------------------------------
+            else if (block.type === 'words') {
+                blockHtml += `<div class="words-grid">`;
+                block.data.forEach((word, wordIndex) => {
+                    // Use unique UID for word cards too
+                    const wordUid = `w-${sectionIndex}-${blockIndex}-${wordIndex}`;
+                    blockHtml += this.renderWordCard(word, wordUid);
+                });
+                blockHtml += `</div>`;
+            }
+
+            blockHtml += `</div>`; // close block-container
+            return blockHtml;
+        }).join('');
+    },
+*/
+    renderBlocks(blocks, sectionIndex = 0) {
+        const settings = this.state.media.languageSettings;
+
+        return blocks.map((block, blockIndex) => {
+            let blockHtml = `<div class="block-container">`;
+
+            // ------------------------------------------------------------------
+            // Paragraph blocks – sentences with source text, optional word list,
+            // and per‑language translations.
+            // ------------------------------------------------------------------
+            if (block.type === 'paragraph') {
+                block.elements.forEach((element, elementIndex) => {
+                    if (element.type !== 'sentence') return;
+
+                    // ADD sectionIndex to make UID globally unique
+                    const uid = `s-${sectionIndex}-${blockIndex}-${elementIndex}`;
+
+                    // Source sentence (Thai) with grammar icon
+                    blockHtml += `<div class="sentence-group">
+            <div class="stack-column">
+                <div class="source-wrapper" style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">`;
+
+                    // Add grammar icon if present
+                    if (element.grammar) {
+                        blockHtml += `<button class="grammar-icon-btn"
+                           onclick="App.showGrammarSheet('${uid}', event)"
+                           aria-label="Show grammar explanation"
+                           title="View grammar note">
+                            <span class="material-icons">menu_book</span>
+                        </button>`;
+                    }
+
+                    // Add the source sentence with ALL original attributes preserved
+                    blockHtml += `<div class="stack-item source audio-element"
+                         lang="th" dir="ltr"
+                         data-text="${this.escapeHtml(element.source)}"
+                         data-lang="th"
+                         data-uid="${uid}"
+                         onclick="App.seekAndPlay(this)">
+                        ${this.hydrateSource(element.source, element.words, uid)}
+                    </div>
+                </div>`;
+
+                    // Word‑by‑word breakdown (unchanged)
                     if (element.words && element.words.length > 0) {
                         blockHtml += `<div class="sent-word-block">`;
                         element.words.forEach((word, wordIndex) => {
@@ -1928,7 +2040,205 @@ hydrateSource(text, words, uid) {
         this.state.quiz.score = 0;
         this.state.quiz.incorrect = [];
         this.renderQuiz();
+    },
+
+    /**
+     * Show grammar information in bottom sheet
+     * @param {string} sentenceUid - Unique ID of the sentence
+     * @param {Event} event - Click event
+     */
+    showGrammarSheet(sentenceUid, event) {
+        event.stopPropagation();
+        event.preventDefault(); // Add this for safety
+
+        // Find the sentence data
+        const sentence = this.findSentenceByUid(sentenceUid);
+        if (!sentence || !sentence.grammar) {
+            console.warn('No grammar data found for sentence:', sentenceUid);
+            return;
+        }
+
+        // Find related examples (same pattern in current document)
+        const relatedExamples = this.findRelatedExamples(sentence.grammar.pattern);
+
+        this.state.grammarSheet.content = {
+            ...sentence.grammar,
+            examples: relatedExamples,
+            source: sentence.source,
+            translation: sentence.translations[this.state.lang]
+        };
+
+        // Render first, then open
+        this.renderGrammarSheet();
+
+        // Small delay to ensure DOM is updated
+        setTimeout(() => {
+            this.openGrammarSheet();
+        }, 10);
+    },
+
+    /**
+     * Find sentence by UID (you'll need to implement this based on your data structure)
+     */
+    findSentenceByUid(uid) {
+        // Parse the UID: s-sectionIndex-blockIndex-elementIndex
+        const parts = uid.split('-');
+        if (parts[0] !== 's') return null;
+
+        const sectionIndex = parseInt(parts[1]);
+        const blockIndex = parseInt(parts[2]);
+        const elementIndex = parseInt(parts[3]);
+
+        try {
+            const section = this.state.currentDocument.sections[sectionIndex];
+            const block = section.blocks[blockIndex];
+            return block.elements[elementIndex];
+        } catch (e) {
+            console.error('Error finding sentence:', e);
+            return null;
+        }
+    },
+
+    /**
+     * Find examples with the same grammar pattern
+     */
+    findRelatedExamples(pattern) {
+        if (!pattern || !this.state.currentDocument) return [];
+
+        const examples = [];
+        this.state.currentDocument.sections.forEach(section => {
+            section.blocks.forEach(block => {
+                if (block.type === 'paragraph') {
+                    block.elements.forEach(element => {
+                        if (element.type === 'sentence' &&
+                            element.grammar &&
+                            element.grammar.pattern === pattern) {
+                            examples.push({
+                                source: element.source,
+                                translation: element.translations[this.state.lang]
+                            });
+                        }
+                    });
+                }
+            });
+        });
+
+        return examples.slice(0, 5); // Limit to 5 examples
+    },
+
+    /**
+     * Render the grammar bottom sheet content
+     */
+    /**
+     * Render the grammar bottom sheet content
+     */
+    renderGrammarSheet() {
+        const content = this.state.grammarSheet.content;
+        if (!content) return;
+
+        // Get or create anchor
+        let anchor = document.getElementById('grammar-sheet-anchor');
+        if (!anchor) {
+            anchor = document.createElement('div');
+            anchor.id = 'grammar-sheet-anchor';
+            document.body.appendChild(anchor);
+        }
+
+        const dir = this.state.lang === 'fa' ? 'rtl' : 'ltr';
+        const examples = content.examples || [];
+
+        // Clear any existing content first
+        anchor.innerHTML = '';
+
+        // Set the new content
+        anchor.innerHTML = `
+        <div class="sheet-backdrop" id="grammar-backdrop" onclick="App.closeGrammarSheet()"></div>
+        <div class="bottom-sheet ${this.state.theme === 'dark' ? 'dark-theme' : ''}" id="grammar-sheet">
+            <div class="sheet-handle" onclick="App.closeGrammarSheet()"></div>
+            <div class="sheet-header">
+                <h3 lang="${this.state.lang}" dir="${dir}">Grammar Note</h3>
+                <button class="sheet-close material-icons" onclick="App.closeGrammarSheet()">close</button>
+            </div>
+            <div class="sheet-content">
+                <div class="grammar-pattern">
+                    <div class="pattern-title" lang="${this.state.lang}" dir="${dir}">Pattern</div>
+                    <div class="pattern-example">
+                        <span class="example-thai" lang="th">${this.escapeHtml(content.pattern || '')}</span>
+                    </div>
+                </div>
+                
+                ${content.note ? `
+                    <div class="grammar-note" lang="${this.state.lang}" dir="${dir}">
+                        ${this.escapeHtml(content.note[this.state.lang] || content.note.en || '')}
+                    </div>
+                ` : ''}
+                
+                <div class="current-sentence">
+                    <div class="pattern-title" lang="${this.state.lang}" dir="${dir}">In this sentence</div>
+                    <div class="pattern-example">
+                        <span class="example-thai" lang="th">${this.escapeHtml(content.source || '')}</span>
+                        <span class="example-en" lang="${this.state.lang}" dir="${dir}">${this.escapeHtml(content.translation || '')}</span>
+                    </div>
+                </div>
+                
+                ${examples.length > 0 ? `
+                    <div class="more-examples">
+                        <div class="pattern-title" lang="${this.state.lang}" dir="${dir}">More examples</div>
+                        ${examples.map(ex => `
+                            <div class="pattern-example" onclick="App.playAudio('${this.escapeHtml(ex.source)}', 'th')">
+                                <span class="material-icons">volume_up</span>
+                                <span class="example-thai" lang="th">${this.escapeHtml(ex.source)}</span>
+                                <span class="example-en" lang="${this.state.lang}" dir="${dir}">${this.escapeHtml(ex.translation || '')}</span>
+                            </div>
+                        `).join('')}
+                    </div>
+                ` : ''}
+            </div>
+        </div>
+    `;
+    },
+
+    /**
+     * Open the grammar sheet
+     */
+    openGrammarSheet() {
+        const sheet = document.getElementById('grammar-sheet');
+        const backdrop = document.getElementById('grammar-backdrop');
+
+        if (sheet) {
+            sheet.classList.add('open');
+        } else {
+            console.warn('Grammar sheet element not found');
+            return;
+        }
+
+        if (backdrop) {
+            backdrop.classList.add('visible');
+        }
+
+        this.state.grammarSheet.isOpen = true;
+    },
+
+    /**
+     * Close the grammar sheet
+     */
+    closeGrammarSheet() {
+        const sheet = document.getElementById('grammar-sheet');
+        const backdrop = document.getElementById('grammar-backdrop');
+
+        if (sheet) sheet.classList.remove('open');
+        if (backdrop) backdrop.classList.remove('visible');
+
+        // Clear content after animation
+        setTimeout(() => {
+            const anchor = document.getElementById('grammar-sheet-anchor');
+            if (anchor) anchor.innerHTML = '';
+            this.state.grammarSheet.content = null;
+        }, 300);
     }
+
+
+
 }; // End of App object
 
 // Kick‑off the SPA

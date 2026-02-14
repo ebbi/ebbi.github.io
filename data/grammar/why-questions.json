@@ -1,0 +1,189 @@
+{
+    "documentId": "grammar_why_questions",
+    "grammar": {
+        "pattern": "ทำไม (why)",
+        "explanation": {
+            "en": "ทำไม (tam-mai) means 'why'. It usually comes at the beginning of a question, but can also be placed at the end in casual speech.",
+            "fa": "ทำไม (tam-mai) به معنی 'چرا' است. معمولاً در ابتدای سوال می‌آید، اما در گفتار غیررسمی می‌تواند در پایان نیز بیاید.",
+            "th": "ทำไม ใช้ถามถึงสาเหตุหรือเหตุผล โดยปกติจะวางไว้หน้าประโยค แต่ในการพูดไม่เป็นทางการสามารถวางไว้ท้ายประโยคได้"
+        }
+    },
+    "sections": [
+        {
+            "heading": {
+                "en": "Why Questions",
+                "fa": "سوالات چرا",
+                "th": "คำถามทำไม"
+            },
+            "activities": [ "multipleChoiceWord", "multipleChoiceSentence" ],
+            "blocks": [
+                {
+                    "type": "paragraph",
+                    "elements": [
+                        {
+                            "type": "sentence",
+                            "source": "ทำไมคุณไม่มา",
+                            "grammar": {
+                                "pattern": "ทำไม + คุณ + ไม่ + มา",
+                                "note": {
+                                    "en": "Why didn't you come?",
+                                    "fa": "چرا نیامدید؟",
+                                    "th": "ทำไมคุณไม่มา"
+                                }
+                            },
+                            "words": [
+                                { "word": "ทำไม", "translations": { "en": "why", "fa": "چرا" } },
+                                { "word": "คุณ", "translations": { "en": "you", "fa": "شما" } },
+                                { "word": "ไม่", "translations": { "en": "not", "fa": "نکردید" } },
+                                { "word": "มา", "translations": { "en": "come", "fa": "آمد" } }
+                            ],
+                            "translations": {
+                                "en": "Why didn't you come?",
+                                "fa": "چرا نیامدید؟"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ทำไมเขาร้องไห้",
+                            "words": [
+                                { "word": "ทำไม", "translations": { "en": "why", "fa": "چرا" } },
+                                { "word": "เขา", "translations": { "en": "he", "fa": "او" } },
+                                { "word": "ร้องไห้", "translations": { "en": "cry", "fa": "گریه می‌کند" } }
+                            ],
+                            "translations": {
+                                "en": "Why is he crying?",
+                                "fa": "چرا گریه می‌کند؟"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ทำไมคุณถึงชอบ",
+                            "words": [
+                                { "word": "ทำไม", "translations": { "en": "why", "fa": "چرا" } },
+                                { "word": "คุณ", "translations": { "en": "you", "fa": "شما" } },
+                                { "word": "ถึง", "translations": { "en": "so/emph", "fa": "اینقدر" } },
+                                { "word": "ชอบ", "translations": { "en": "like", "fa": "دوست دارید" } }
+                            ],
+                            "translations": {
+                                "en": "Why do you like it?",
+                                "fa": "چرا دوست دارید؟"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ทำไมรถติด",
+                            "words": [
+                                { "word": "ทำไม", "translations": { "en": "why", "fa": "چرا" } },
+                                { "word": "รถ", "translations": { "en": "traffic", "fa": "ترافیک" } },
+                                { "word": "ติด", "translations": { "en": "jam", "fa": "سنگین است" } }
+                            ],
+                            "translations": {
+                                "en": "Why is there traffic?",
+                                "fa": "چرا ترافیک است؟"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ทำไมคุณพูดแบบนั้น",
+                            "words": [
+                                { "word": "ทำไม", "translations": { "en": "why", "fa": "چرا" } },
+                                { "word": "คุณ", "translations": { "en": "you", "fa": "شما" } },
+                                { "word": "พูด", "translations": { "en": "say", "fa": "گفتید" } },
+                                { "word": "แบบนั้น", "translations": { "en": "like that", "fa": "آنطور" } }
+                            ],
+                            "translations": {
+                                "en": "Why did you say that?",
+                                "fa": "چرا آنطور گفتید؟"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ทำไมวันนี้ร้อนจัง",
+                            "words": [
+                                { "word": "ทำไม", "translations": { "en": "why", "fa": "چرا" } },
+                                { "word": "วันนี้", "translations": { "en": "today", "fa": "امروز" } },
+                                { "word": "ร้อน", "translations": { "en": "hot", "fa": "گرم" } },
+                                { "word": "จัง", "translations": { "en": "so", "fa": "اینقدر" } }
+                            ],
+                            "translations": {
+                                "en": "Why is it so hot today?",
+                                "fa": "چرا امروز اینقدر گرم است؟"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ทำไมคุณถึงมาสาย",
+                            "words": [
+                                { "word": "ทำไม", "translations": { "en": "why", "fa": "چرا" } },
+                                { "word": "คุณ", "translations": { "en": "you", "fa": "شما" } },
+                                { "word": "ถึง", "translations": { "en": "emph", "fa": "اینقدر" } },
+                                { "word": "มา", "translations": { "en": "come", "fa": "آمدید" } },
+                                { "word": "สาย", "translations": { "en": "late", "fa": "دیر" } }
+                            ],
+                            "translations": {
+                                "en": "Why are you late?",
+                                "fa": "چرا دیر آمدید؟"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ทำไมอาหารแพงจัง",
+                            "words": [
+                                { "word": "ทำไม", "translations": { "en": "why", "fa": "چرا" } },
+                                { "word": "อาหาร", "translations": { "en": "food", "fa": "غذا" } },
+                                { "word": "แพง", "translations": { "en": "expensive", "fa": "گران" } },
+                                { "word": "จัง", "translations": { "en": "so", "fa": "اینقدر" } }
+                            ],
+                            "translations": {
+                                "en": "Why is the food so expensive?",
+                                "fa": "چرا غذا اینقدر گران است؟"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ทำไมคุณไม่บอกฉัน",
+                            "words": [
+                                { "word": "ทำไม", "translations": { "en": "why", "fa": "چرا" } },
+                                { "word": "คุณ", "translations": { "en": "you", "fa": "شما" } },
+                                { "word": "ไม่", "translations": { "en": "not", "fa": "نکردید" } },
+                                { "word": "บอก", "translations": { "en": "tell", "fa": "گفت" } },
+                                { "word": "ฉัน", "translations": { "en": "me", "fa": "به من" } }
+                            ],
+                            "translations": {
+                                "en": "Why didn't you tell me?",
+                                "fa": "چرا به من نگفتید؟"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ทำไมต้องไป",
+                            "words": [
+                                { "word": "ทำไม", "translations": { "en": "why", "fa": "چرا" } },
+                                { "word": "ต้อง", "translations": { "en": "must", "fa": "باید" } },
+                                { "word": "ไป", "translations": { "en": "go", "fa": "برویم" } }
+                            ],
+                            "translations": {
+                                "en": "Why must we go?",
+                                "fa": "چرا باید برویم؟"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ทำไมไม่ลองดู",
+                            "words": [
+                                { "word": "ทำไม", "translations": { "en": "why", "fa": "چرا" } },
+                                { "word": "ไม่", "translations": { "en": "not", "fa": "نمی" } },
+                                { "word": "ลอง", "translations": { "en": "try", "fa": "امتحان" } },
+                                { "word": "ดู", "translations": { "en": "look", "fa": "کنید" } }
+                            ],
+                            "translations": {
+                                "en": "Why don't you try?",
+                                "fa": "چرا امتحان نمی‌کنید؟"
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

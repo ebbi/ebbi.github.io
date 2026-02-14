@@ -1,0 +1,231 @@
+{
+    "documentId": "grammar_negative",
+    "grammar": {
+        "pattern": "ไม่ + Verb",
+        "explanation": {
+            "en": "To make a negative sentence in Thai, simply put ไม่ (mai) before the verb. Unlike English, there's no need for auxiliary verbs like 'do not' or 'does not'.",
+            "fa": "برای منفی کردن جمله در تایلندی، کافی است ไม่ (mai) را قبل از فعل قرار دهید. برخلاف انگلیسی، نیازی به افعال کمکی مانند 'do not' یا 'does not' نیست.",
+            "th": "การทำให้ประโยคเป็นปฏิเสธในภาษาไทย เพียงแค่ใส่ ไม่ หน้าคำกริยา ไม่เหมือนภาษาอังกฤษที่ไม่ต้องใช้กริยาช่วยเช่น 'do not' หรือ 'does not'"
+        }
+    },
+    "sections": [
+        {
+            "heading": {
+                "en": "Negating Basic Actions",
+                "fa": "منفی کردن کارهای پایه",
+                "th": "การปฏิเสธการกระทำพื้นฐาน"
+            },
+            "activities": [ "multipleChoiceWord", "multipleChoiceSentence" ],
+            "blocks": [
+                {
+                    "type": "grammar-intro",
+                    "content": {
+                        "en": "Compare positive and negative sentences. Notice how ไม่ comes right before the verb.",
+                        "fa": "جملات مثبت و منفی را مقایسه کنید. توجه کنید که ไม่ درست قبل از فعل می‌آید.",
+                        "th": "เปรียบเทียบประโยคบอกเล่าและปฏิเสธ สังเกตว่า ไม่ อยู่หน้าคำกริยา"
+                    }
+                },
+                {
+                    "type": "paragraph",
+                    "elements": [
+                        {
+                            "type": "sentence",
+                            "source": "ฉันกินข้าว",
+                            "grammar": {
+                                "pattern": "ฉัน + กิน + ข้าว",
+                                "note": { "en": "Positive: I eat", "fa": "مثبت: من می‌خورم", "th": "บอกเล่า: ฉันกิน" }
+                            },
+                            "words": [
+                                { "word": "ฉัน", "translations": { "en": "I", "fa": "من" } },
+                                { "word": "กิน", "translations": { "en": "eat", "fa": "می‌خورم" } },
+                                { "word": "ข้าว", "translations": { "en": "rice", "fa": "برنج" } }
+                            ],
+                            "translations": { "en": "I eat", "fa": "من می‌خورم" }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ฉันไม่กินข้าว",
+                            "grammar": {
+                                "pattern": "ฉัน + ไม่ + กิน + ข้าว",
+                                "note": { "en": "Negative: I don't eat", "fa": "منفی: من نمی‌خورم", "th": "ปฏิเสธ: ฉันไม่กิน" }
+                            },
+                            "words": [
+                                { "word": "ฉัน", "translations": { "en": "I", "fa": "من" } },
+                                { "word": "ไม่", "translations": { "en": "not", "fa": "نمی" } },
+                                { "word": "กิน", "translations": { "en": "eat", "fa": "خورم" } },
+                                { "word": "ข้าว", "translations": { "en": "rice", "fa": "برنج" } }
+                            ],
+                            "translations": { "en": "I don't eat", "fa": "من نمی‌خورم" }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "เขาดื่มน้ำ",
+                            "words": [
+                                { "word": "เขา", "translations": { "en": "he", "fa": "او" } },
+                                { "word": "ดื่ม", "translations": { "en": "drink", "fa": "می‌نوشد" } },
+                                { "word": "น้ำ", "translations": { "en": "water", "fa": "آب" } }
+                            ],
+                            "translations": { "en": "He drinks", "fa": "او می‌نوشد" }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "เขาไม่ดื่มน้ำ",
+                            "words": [
+                                { "word": "เขา", "translations": { "en": "he", "fa": "او" } },
+                                { "word": "ไม่", "translations": { "en": "not", "fa": "نمی" } },
+                                { "word": "ดื่ม", "translations": { "en": "drink", "fa": "نوشد" } },
+                                { "word": "น้ำ", "translations": { "en": "water", "fa": "آب" } }
+                            ],
+                            "translations": { "en": "He doesn't drink", "fa": "او نمی‌نوشد" }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "heading": {
+                "en": "10+ Negative Examples",
+                "fa": "۱۰+ مثال منفی",
+                "th": "ตัวอย่างประโยคปฏิเสธ ๑๐+"
+            },
+            "activities": [ "multipleChoiceWord", "multipleChoiceSentence" ],
+            "blocks": [
+                {
+                    "type": "paragraph",
+                    "elements": [
+                        {
+                            "type": "sentence",
+                            "source": "ฉันไม่ชอบกาแฟ",
+                            "words": [
+                                { "word": "ฉัน", "translations": { "en": "I", "fa": "من" } },
+                                { "word": "ไม่", "translations": { "en": "not", "fa": "نمی" } },
+                                { "word": "ชอบ", "translations": { "en": "like", "fa": "پسندم" } },
+                                { "word": "กาแฟ", "translations": { "en": "coffee", "fa": "قهوه" } }
+                            ],
+                            "translations": { "en": "I don't like coffee", "fa": "من قهوه دوست ندارم" }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "เขาไม่ทำงานวันอาทิตย์",
+                            "words": [
+                                { "word": "เขา", "translations": { "en": "he", "fa": "او" } },
+                                { "word": "ไม่", "translations": { "en": "not", "fa": "نمی" } },
+                                { "word": "ทำงาน", "translations": { "en": "work", "fa": "کند" } },
+                                { "word": "วันอาทิตย์", "translations": { "en": "Sunday", "fa": "یکشنبه" } }
+                            ],
+                            "translations": { "en": "He doesn't work on Sundays", "fa": "او یکشنبه‌ها کار نمی‌کند" }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "เราไม่เข้าใจ",
+                            "words": [
+                                { "word": "เรา", "translations": { "en": "we", "fa": "ما" } },
+                                { "word": "ไม่", "translations": { "en": "not", "fa": "نمی" } },
+                                { "word": "เข้าใจ", "translations": { "en": "understand", "fa": "فهمیم" } }
+                            ],
+                            "translations": { "en": "We don't understand", "fa": "ما نمی‌فهمیم" }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "คุณไม่พูดภาษาไทย",
+                            "words": [
+                                { "word": "คุณ", "translations": { "en": "you", "fa": "شما" } },
+                                { "word": "ไม่", "translations": { "en": "not", "fa": "نمی" } },
+                                { "word": "พูด", "translations": { "en": "speak", "fa": "گویید" } },
+                                { "word": "ภาษาไทย", "translations": { "en": "Thai", "fa": "تایلندی" } }
+                            ],
+                            "translations": { "en": "You don't speak Thai", "fa": "شما تایلندی صحبت نمی‌کنید" }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "พวกเขาไม่มา",
+                            "words": [
+                                { "word": "พวกเขา", "translations": { "en": "they", "fa": "آنها" } },
+                                { "word": "ไม่", "translations": { "en": "not", "fa": "نمی" } },
+                                { "word": "มา", "translations": { "en": "come", "fa": "آیند" } }
+                            ],
+                            "translations": { "en": "They don't come", "fa": "آنها نمی‌آیند" }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ฉันไม่ไปงานเลี้ยง",
+                            "words": [
+                                { "word": "ฉัน", "translations": { "en": "I", "fa": "من" } },
+                                { "word": "ไม่", "translations": { "en": "not", "fa": "نمی" } },
+                                { "word": "ไป", "translations": { "en": "go", "fa": "روم" } },
+                                { "word": "งานเลี้ยง", "translations": { "en": "party", "fa": "مهمانی" } }
+                            ],
+                            "translations": { "en": "I don't go to the party", "fa": "من به مهمانی نمی‌روم" }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "เขาไม่ชอบอาหารเผ็ด",
+                            "words": [
+                                { "word": "เขา", "translations": { "en": "he", "fa": "او" } },
+                                { "word": "ไม่", "translations": { "en": "not", "fa": "نمی" } },
+                                { "word": "ชอบ", "translations": { "en": "like", "fa": "پسندد" } },
+                                { "word": "อาหาร", "translations": { "en": "food", "fa": "غذا" } },
+                                { "word": "เผ็ด", "translations": { "en": "spicy", "fa": "تند" } }
+                            ],
+                            "translations": { "en": "He doesn't like spicy food", "fa": "او غذای تند دوست ندارد" }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "เราไม่ขับรถ",
+                            "words": [
+                                { "word": "เรา", "translations": { "en": "we", "fa": "ما" } },
+                                { "word": "ไม่", "translations": { "en": "not", "fa": "نمی" } },
+                                { "word": "ขับ", "translations": { "en": "drive", "fa": "رانیم" } },
+                                { "word": "รถ", "translations": { "en": "car", "fa": "ماشین" } }
+                            ],
+                            "translations": { "en": "We don't drive", "fa": "ما رانندگی نمی‌کنیم" }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "คุณไม่ซื้อของ",
+                            "words": [
+                                { "word": "คุณ", "translations": { "en": "you", "fa": "شما" } },
+                                { "word": "ไม่", "translations": { "en": "not", "fa": "نمی" } },
+                                { "word": "ซื้อ", "translations": { "en": "buy", "fa": "خرید" } },
+                                { "word": "ของ", "translations": { "en": "things", "fa": "چیزها" } }
+                            ],
+                            "translations": { "en": "You don't buy things", "fa": "شما خرید نمی‌کنید" }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ฉันไม่เห็นเขา",
+                            "words": [
+                                { "word": "ฉัน", "translations": { "en": "I", "fa": "من" } },
+                                { "word": "ไม่", "translations": { "en": "not", "fa": "نمی" } },
+                                { "word": "เห็น", "translations": { "en": "see", "fa": "بینم" } },
+                                { "word": "เขา", "translations": { "en": "him", "fa": "او" } }
+                            ],
+                            "translations": { "en": "I don't see him", "fa": "من او را نمی‌بینم" }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "เขาไม่อ่านหนังสือ",
+                            "words": [
+                                { "word": "เขา", "translations": { "en": "he", "fa": "او" } },
+                                { "word": "ไม่", "translations": { "en": "not", "fa": "نمی" } },
+                                { "word": "อ่าน", "translations": { "en": "read", "fa": "خواند" } },
+                                { "word": "หนังสือ", "translations": { "en": "book", "fa": "کتاب" } }
+                            ],
+                            "translations": { "en": "He doesn't read books", "fa": "او کتاب نمی‌خواند" }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ฉันไม่รู้",
+                            "words": [
+                                { "word": "ฉัน", "translations": { "en": "I", "fa": "من" } },
+                                { "word": "ไม่", "translations": { "en": "not", "fa": "نمی" } },
+                                { "word": "รู้", "translations": { "en": "know", "fa": "دانم" } }
+                            ],
+                            "translations": { "en": "I don't know", "fa": "نمی‌دانم" }
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

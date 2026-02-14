@@ -1,0 +1,457 @@
+{
+    "documentId": "grammar_location_words",
+    "grammar": {
+        "pattern": "ใน (in) / นอก (outside) / บน (on) / ใต้ (under)",
+        "explanation": {
+            "en": "Use location words to describe where things are: ใน (nai) means 'in', นอก (nâwk) means 'outside', บน (bon) means 'on', and ใต้ (dtâi) means 'under'.",
+            "fa": "از کلمات مکان برای توصیف مکان اشیا استفاده کنید: ใน (nai) به معنی 'داخل', นอก (nâwk) به معنی 'بیرون', บน (bon) به معنی 'روی', و ใต้ (dtâi) به معنی 'زیر'.",
+            "th": "ใช้คำบอกสถานที่เพื่อบรรยายว่าสิ่งต่างๆ อยู่ที่ไหน: ใน (in), นอก (outside), บน (on), และ ใต้ (under)"
+        }
+    },
+    "sections": [
+        {
+            "heading": {
+                "en": "In (ใน)",
+                "fa": "داخل (ใน)",
+                "th": "ใน"
+            },
+            "activities": [ "multipleChoiceWord", "multipleChoiceSentence" ],
+            "blocks": [
+                {
+                    "type": "grammar-intro",
+                    "content": {
+                        "en": "Use ใน to say something is inside a place or container.",
+                        "fa": "از ใน برای گفتن اینکه چیزی داخل یک مکان یا ظرف است استفاده کنید.",
+                        "th": "ใช้ ใน เพื่อบอกว่ามีอะไรอยู่ภายในสถานที่หรือภาชนะ"
+                    }
+                },
+                {
+                    "type": "paragraph",
+                    "elements": [
+                        {
+                            "type": "sentence",
+                            "source": "อยู่ในบ้าน",
+                            "grammar": {
+                                "pattern": "อยู่ + ใน + บ้าน",
+                                "note": {
+                                    "en": "Is in the house",
+                                    "fa": "داخل خانه است",
+                                    "th": "อยู่ในบ้าน"
+                                }
+                            },
+                            "words": [
+                                { "word": "อยู่", "translations": { "en": "is", "fa": "است" } },
+                                { "word": "ใน", "translations": { "en": "in", "fa": "داخل" } },
+                                { "word": "บ้าน", "translations": { "en": "house", "fa": "خانه" } }
+                            ],
+                            "translations": {
+                                "en": "Is in the house",
+                                "fa": "داخل خانه است"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "น้ำในแก้ว",
+                            "words": [
+                                { "word": "น้ำ", "translations": { "en": "water", "fa": "آب" } },
+                                { "word": "ใน", "translations": { "en": "in", "fa": "داخل" } },
+                                { "word": "แก้ว", "translations": { "en": "glass", "fa": "لیوان" } }
+                            ],
+                            "translations": {
+                                "en": "Water in the glass",
+                                "fa": "آب داخل لیوان"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ในเมืองมีรถติด",
+                            "words": [
+                                { "word": "ใน", "translations": { "en": "in", "fa": "داخل" } },
+                                { "word": "เมือง", "translations": { "en": "city", "fa": "شهر" } },
+                                { "word": "มี", "translations": { "en": "have", "fa": "هست" } },
+                                { "word": "รถติด", "translations": { "en": "traffic", "fa": "ترافیک" } }
+                            ],
+                            "translations": {
+                                "en": "In the city there is traffic",
+                                "fa": "داخل شهر ترافیک است"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "heading": {
+                "en": "Outside (นอก)",
+                "fa": "بیرون (นอก)",
+                "th": "นอก"
+            },
+            "activities": [ "multipleChoiceWord", "multipleChoiceSentence" ],
+            "blocks": [
+                {
+                    "type": "grammar-intro",
+                    "content": {
+                        "en": "Use นอก to say something is outside.",
+                        "fa": "از นอก برای گفتن اینکه چیزی بیرون است استفاده کنید.",
+                        "th": "ใช้ นอก เพื่อบอกว่ามีอะไรอยู่ข้างนอก"
+                    }
+                },
+                {
+                    "type": "paragraph",
+                    "elements": [
+                        {
+                            "type": "sentence",
+                            "source": "นั่งนอกบ้าน",
+                            "grammar": {
+                                "pattern": "นั่ง + นอก + บ้าน",
+                                "note": {
+                                    "en": "Sit outside the house",
+                                    "fa": "بیرون خانه بنشین",
+                                    "th": "นั่งนอกบ้าน"
+                                }
+                            },
+                            "words": [
+                                { "word": "นั่ง", "translations": { "en": "sit", "fa": "بنشین" } },
+                                { "word": "นอก", "translations": { "en": "outside", "fa": "بیرون" } },
+                                { "word": "บ้าน", "translations": { "en": "house", "fa": "خانه" } }
+                            ],
+                            "translations": {
+                                "en": "Sit outside the house",
+                                "fa": "بیرون خانه بنشین"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "รอข้างนอก",
+                            "words": [
+                                { "word": "รอ", "translations": { "en": "wait", "fa": "منتظر باش" } },
+                                { "word": "ข้างนอก", "translations": { "en": "outside", "fa": "بیرون" } }
+                            ],
+                            "translations": {
+                                "en": "Wait outside",
+                                "fa": "بیرون منتظر باش"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "นอกเมืองอากาศดี",
+                            "words": [
+                                { "word": "นอก", "translations": { "en": "outside", "fa": "بیرون" } },
+                                { "word": "เมือง", "translations": { "en": "city", "fa": "شهر" } },
+                                { "word": "อากาศ", "translations": { "en": "air", "fa": "هوا" } },
+                                { "word": "ดี", "translations": { "en": "good", "fa": "خوب" } }
+                            ],
+                            "translations": {
+                                "en": "Outside the city, the air is good",
+                                "fa": "بیرون شهر هوا خوب است"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "heading": {
+                "en": "On (บน)",
+                "fa": "روی (บน)",
+                "th": "บน"
+            },
+            "activities": [ "multipleChoiceWord", "multipleChoiceSentence" ],
+            "blocks": [
+                {
+                    "type": "grammar-intro",
+                    "content": {
+                        "en": "Use บน to say something is on top of a surface.",
+                        "fa": "از บน برای گفتن اینکه چیزی روی سطح است استفاده کنید.",
+                        "th": "ใช้ บน เพื่อบอกว่ามีอะไรอยู่บนพื้นผิว"
+                    }
+                },
+                {
+                    "type": "paragraph",
+                    "elements": [
+                        {
+                            "type": "sentence",
+                            "source": "หนังสือบนโต๊ะ",
+                            "grammar": {
+                                "pattern": "หนังสือ + บน + โต๊ะ",
+                                "note": {
+                                    "en": "Book on the table",
+                                    "fa": "کتاب روی میز",
+                                    "th": "หนังสือบนโต๊ะ"
+                                }
+                            },
+                            "words": [
+                                { "word": "หนังสือ", "translations": { "en": "book", "fa": "کتاب" } },
+                                { "word": "บน", "translations": { "en": "on", "fa": "روی" } },
+                                { "word": "โต๊ะ", "translations": { "en": "table", "fa": "میز" } }
+                            ],
+                            "translations": {
+                                "en": "Book on the table",
+                                "fa": "کتاب روی میز"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "แมวบนหลังคา",
+                            "words": [
+                                { "word": "แมว", "translations": { "en": "cat", "fa": "گربه" } },
+                                { "word": "บน", "translations": { "en": "on", "fa": "روی" } },
+                                { "word": "หลังคา", "translations": { "en": "roof", "fa": "پشت بام" } }
+                            ],
+                            "translations": {
+                                "en": "Cat on the roof",
+                                "fa": "گربه روی پشت بام"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "นั่งบนเก้าอี้",
+                            "words": [
+                                { "word": "นั่ง", "translations": { "en": "sit", "fa": "بنشین" } },
+                                { "word": "บน", "translations": { "en": "on", "fa": "روی" } },
+                                { "word": "เก้าอี้", "translations": { "en": "chair", "fa": "صندلی" } }
+                            ],
+                            "translations": {
+                                "en": "Sit on the chair",
+                                "fa": "روی صندلی بنشین"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "heading": {
+                "en": "Under (ใต้)",
+                "fa": "زیر (ใต้)",
+                "th": "ใต้"
+            },
+            "activities": [ "multipleChoiceWord", "multipleChoiceSentence" ],
+            "blocks": [
+                {
+                    "type": "grammar-intro",
+                    "content": {
+                        "en": "Use ใต้ to say something is under something else.",
+                        "fa": "از ใต้ برای گفتن اینکه چیزی زیر چیز دیگری است استفاده کنید.",
+                        "th": "ใช้ ใต้ เพื่อบอกว่ามีอะไรอยู่ภายใต้สิ่งอื่น"
+                    }
+                },
+                {
+                    "type": "paragraph",
+                    "elements": [
+                        {
+                            "type": "sentence",
+                            "source": "รองเท้าใต้เตียง",
+                            "grammar": {
+                                "pattern": "รองเท้า + ใต้ + เตียง",
+                                "note": {
+                                    "en": "Shoes under the bed",
+                                    "fa": "کفش زیر تخت",
+                                    "th": "รองเท้าใต้เตียง"
+                                }
+                            },
+                            "words": [
+                                { "word": "รองเท้า", "translations": { "en": "shoes", "fa": "کفش" } },
+                                { "word": "ใต้", "translations": { "en": "under", "fa": "زیر" } },
+                                { "word": "เตียง", "translations": { "en": "bed", "fa": "تخت" } }
+                            ],
+                            "translations": {
+                                "en": "Shoes under the bed",
+                                "fa": "کفش زیر تخت"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "แมวใต้โต๊ะ",
+                            "words": [
+                                { "word": "แมว", "translations": { "en": "cat", "fa": "گربه" } },
+                                { "word": "ใต้", "translations": { "en": "under", "fa": "زیر" } },
+                                { "word": "โต๊ะ", "translations": { "en": "table", "fa": "میز" } }
+                            ],
+                            "translations": {
+                                "en": "Cat under the table",
+                                "fa": "گربه زیر میز"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "นอนใต้ต้นไม้",
+                            "words": [
+                                { "word": "นอน", "translations": { "en": "lie", "fa": "بخواب" } },
+                                { "word": "ใต้", "translations": { "en": "under", "fa": "زیر" } },
+                                { "word": "ต้นไม้", "translations": { "en": "tree", "fa": "درخت" } }
+                            ],
+                            "translations": {
+                                "en": "Lie under the tree",
+                                "fa": "زیر درخت بخواب"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "heading": {
+                "en": "10+ Location Words Examples",
+                "fa": "۱۰+ مثال کلمات مکان",
+                "th": "ตัวอย่างคำบอกสถานที่ ๑๐+ ประโยค"
+            },
+            "activities": [ "multipleChoiceWord", "multipleChoiceSentence" ],
+            "blocks": [
+                {
+                    "type": "paragraph",
+                    "elements": [
+                        {
+                            "type": "sentence",
+                            "source": "เงินอยู่ในกระเป๋า",
+                            "words": [
+                                { "word": "เงิน", "translations": { "en": "money", "fa": "پول" } },
+                                { "word": "อยู่", "translations": { "en": "is", "fa": "است" } },
+                                { "word": "ใน", "translations": { "en": "in", "fa": "داخل" } },
+                                { "word": "กระเป๋า", "translations": { "en": "bag", "fa": "کیف" } }
+                            ],
+                            "translations": {
+                                "en": "Money is in the bag",
+                                "fa": "پول داخل کیف است"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "รออยู่ข้างนอก",
+                            "words": [
+                                { "word": "รอ", "translations": { "en": "wait", "fa": "منتظر" } },
+                                { "word": "อยู่", "translations": { "en": "is", "fa": "است" } },
+                                { "word": "ข้างนอก", "translations": { "en": "outside", "fa": "بیرون" } }
+                            ],
+                            "translations": {
+                                "en": "Waiting outside",
+                                "fa": "بیرون منتظر است"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "วางบนโต๊ะ",
+                            "words": [
+                                { "word": "วาง", "translations": { "en": "put", "fa": "بگذار" } },
+                                { "word": "บน", "translations": { "en": "on", "fa": "روی" } },
+                                { "word": "โต๊ะ", "translations": { "en": "table", "fa": "میز" } }
+                            ],
+                            "translations": {
+                                "en": "Put on the table",
+                                "fa": "روی میز بگذار"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ซ่อนใต้เตียง",
+                            "words": [
+                                { "word": "ซ่อน", "translations": { "en": "hide", "fa": "پنهان کن" } },
+                                { "word": "ใต้", "translations": { "en": "under", "fa": "زیر" } },
+                                { "word": "เตียง", "translations": { "en": "bed", "fa": "تخت" } }
+                            ],
+                            "translations": {
+                                "en": "Hide under the bed",
+                                "fa": "زیر تخت پنهان کن"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "นกอยู่บนต้นไม้",
+                            "words": [
+                                { "word": "นก", "translations": { "en": "bird", "fa": "پرنده" } },
+                                { "word": "อยู่", "translations": { "en": "is", "fa": "است" } },
+                                { "word": "บน", "translations": { "en": "on", "fa": "روی" } },
+                                { "word": "ต้นไม้", "translations": { "en": "tree", "fa": "درخت" } }
+                            ],
+                            "translations": {
+                                "en": "Bird is on the tree",
+                                "fa": "پرنده روی درخت است"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ปลาในน้ำ",
+                            "words": [
+                                { "word": "ปลา", "translations": { "en": "fish", "fa": "ماهی" } },
+                                { "word": "ใน", "translations": { "en": "in", "fa": "داخل" } },
+                                { "word": "น้ำ", "translations": { "en": "water", "fa": "آب" } }
+                            ],
+                            "translations": {
+                                "en": "Fish in the water",
+                                "fa": "ماهی در آب"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "เด็กเล่นนอกบ้าน",
+                            "words": [
+                                { "word": "เด็ก", "translations": { "en": "children", "fa": "بچه‌ها" } },
+                                { "word": "เล่น", "translations": { "en": "play", "fa": "بازی می‌کنند" } },
+                                { "word": "นอก", "translations": { "en": "outside", "fa": "بیرون" } },
+                                { "word": "บ้าน", "translations": { "en": "house", "fa": "خانه" } }
+                            ],
+                            "translations": {
+                                "en": "Children play outside the house",
+                                "fa": "بچه‌ها بیرون از خانه بازی می‌کنند"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "หนังสืออยู่ในลิ้นชัก",
+                            "words": [
+                                { "word": "หนังสือ", "translations": { "en": "book", "fa": "کتاب" } },
+                                { "word": "อยู่", "translations": { "en": "is", "fa": "است" } },
+                                { "word": "ใน", "translations": { "en": "in", "fa": "داخل" } },
+                                { "word": "ลิ้นชัก", "translations": { "en": "drawer", "fa": "کشو" } }
+                            ],
+                            "translations": {
+                                "en": "Book is in the drawer",
+                                "fa": "کتاب داخل کشو است"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "หมานอนใต้ถุนบ้าน",
+                            "words": [
+                                { "word": "หมา", "translations": { "en": "dog", "fa": "سگ" } },
+                                { "word": "นอน", "translations": { "en": "sleep", "fa": "می‌خوابد" } },
+                                { "word": "ใต้ถุน", "translations": { "en": "under", "fa": "زیر" } },
+                                { "word": "บ้าน", "translations": { "en": "house", "fa": "خانه" } }
+                            ],
+                            "translations": {
+                                "en": "Dog sleeps under the house",
+                                "fa": "سگ زیر خانه می‌خوابد"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "รูปภาพบนผนัง",
+                            "words": [
+                                { "word": "รูปภาพ", "translations": { "en": "picture", "fa": "عکس" } },
+                                { "word": "บน", "translations": { "en": "on", "fa": "روی" } },
+                                { "word": "ผนัง", "translations": { "en": "wall", "fa": "دیوار" } }
+                            ],
+                            "translations": {
+                                "en": "Picture on the wall",
+                                "fa": "عکس روی دیوار"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "words",
+                    "data": [
+                        { "word": "ใน", "translations": { "en": "in", "fa": "داخل" } },
+                        { "word": "นอก", "translations": { "en": "outside", "fa": "بیرون" } },
+                        { "word": "บน", "translations": { "en": "on", "fa": "روی" } },
+                        { "word": "ใต้", "translations": { "en": "under", "fa": "زیر" } },
+                        { "word": "ข้างใน", "translations": { "en": "inside", "fa": "داخل" } },
+                        { "word": "ข้างนอก", "translations": { "en": "outside", "fa": "بیرون" } },
+                        { "word": "ข้างบน", "translations": { "en": "above", "fa": "بالا" } },
+                        { "word": "ข้างล่าง", "translations": { "en": "below", "fa": "پایین" } }
+                    ]
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,243 @@
+{
+    "documentId": "grammar_superlatives",
+    "grammar": {
+        "pattern": "Adjective + ที่สุด",
+        "explanation": {
+            "en": "ที่สุด (tîi-sùt) means 'the most' and is used to form superlatives, similar to '-est' in English. Place it after the adjective.",
+            "fa": "ที่สุด (tîi-sùt) به معنی 'ترین' است و برای تشکیل صفت عالی استفاده می‌شود، مشابه 'ترین' در فارسی. آن را بعد از صفت قرار دهید.",
+            "th": "ที่สุด หมายถึง 'มากที่สุด' ใช้สำหรับขั้นสูงสุด คล้ายกับ 'ที่สุด' ในภาษาไทย วางไว้หลังคำคุณศัพท์"
+        }
+    },
+    "sections": [
+        {
+            "heading": {
+                "en": "Basic Superlatives",
+                "fa": "صفت عالی پایه",
+                "th": "ขั้นสูงสุดพื้นฐาน"
+            },
+            "activities": [ "multipleChoiceWord", "multipleChoiceSentence" ],
+            "blocks": [
+                {
+                    "type": "grammar-intro",
+                    "content": {
+                        "en": "To say something is the most, put ที่สุด after the adjective.",
+                        "fa": "برای گفتن اینکه چیزی 'ترین' است، ที่สุด را بعد از صفت قرار دهید.",
+                        "th": "ในการบอกว่าบางอย่าง 'ที่สุด' ให้วาง ที่สุด หลังคำคุณศัพท์"
+                    }
+                },
+                {
+                    "type": "paragraph",
+                    "elements": [
+                        {
+                            "type": "sentence",
+                            "source": "อร่อยที่สุด",
+                            "grammar": {
+                                "pattern": "อร่อย + ที่สุด",
+                                "note": {
+                                    "en": "Most delicious",
+                                    "fa": "خوشمزه‌ترین",
+                                    "th": "อร่อยที่สุด"
+                                }
+                            },
+                            "words": [
+                                { "word": "อร่อย", "translations": { "en": "delicious", "fa": "خوشمزه" } },
+                                { "word": "ที่สุด", "translations": { "en": "most", "fa": "ترین" } }
+                            ],
+                            "translations": {
+                                "en": "Most delicious",
+                                "fa": "خوشمزه‌ترین"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ถูกที่สุด",
+                            "words": [
+                                { "word": "ถูก", "translations": { "en": "cheap", "fa": "ارزان" } },
+                                { "word": "ที่สุด", "translations": { "en": "most", "fa": "ترین" } }
+                            ],
+                            "translations": {
+                                "en": "Cheapest",
+                                "fa": "ارزان‌ترین"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ดีที่สุด",
+                            "words": [
+                                { "word": "ดี", "translations": { "en": "good", "fa": "خوب" } },
+                                { "word": "ที่สุด", "translations": { "en": "most", "fa": "ترین" } }
+                            ],
+                            "translations": {
+                                "en": "Best",
+                                "fa": "بهترین"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "heading": {
+                "en": "10+ Superlative Examples",
+                "fa": "۱۰+ مثال عالی",
+                "th": "ตัวอย่างที่สุด ๑๐+ ประโยค"
+            },
+            "activities": [ "multipleChoiceWord", "multipleChoiceSentence" ],
+            "blocks": [
+                {
+                    "type": "paragraph",
+                    "elements": [
+                        {
+                            "type": "sentence",
+                            "source": "ร้านนี้อร่อยที่สุด",
+                            "words": [
+                                { "word": "ร้านนี้", "translations": { "en": "this shop", "fa": "این فروشگاه" } },
+                                { "word": "อร่อย", "translations": { "en": "delicious", "fa": "خوشمزه" } },
+                                { "word": "ที่สุด", "translations": { "en": "most", "fa": "ترین" } }
+                            ],
+                            "translations": {
+                                "en": "This shop is the most delicious",
+                                "fa": "این فروشگاه خوشمزه‌ترین است"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "หนังเรื่องนี้สนุกที่สุด",
+                            "words": [
+                                { "word": "หนัง", "translations": { "en": "movie", "fa": "فیلم" } },
+                                { "word": "เรื่องนี้", "translations": { "en": "this", "fa": "این" } },
+                                { "word": "สนุก", "translations": { "en": "fun", "fa": "سرگرم‌کننده" } },
+                                { "word": "ที่สุด", "translations": { "en": "most", "fa": "ترین" } }
+                            ],
+                            "translations": {
+                                "en": "This movie is the most fun",
+                                "fa": "این فیلم سرگرم‌کننده‌ترین است"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "เขาสวยที่สุดในห้อง",
+                            "words": [
+                                { "word": "เขา", "translations": { "en": "she", "fa": "او" } },
+                                { "word": "สวย", "translations": { "en": "beautiful", "fa": "زیبا" } },
+                                { "word": "ที่สุด", "translations": { "en": "most", "fa": "ترین" } },
+                                { "word": "ใน", "translations": { "en": "in", "fa": "در" } },
+                                { "word": "ห้อง", "translations": { "en": "room", "fa": "اتاق" } }
+                            ],
+                            "translations": {
+                                "en": "She is the most beautiful in the room",
+                                "fa": "او زیباترین در اتاق است"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "วันนี้ร้อนที่สุด",
+                            "words": [
+                                { "word": "วันนี้", "translations": { "en": "today", "fa": "امروز" } },
+                                { "word": "ร้อน", "translations": { "en": "hot", "fa": "گرم" } },
+                                { "word": "ที่สุด", "translations": { "en": "most", "fa": "ترین" } }
+                            ],
+                            "translations": {
+                                "en": "Today is the hottest",
+                                "fa": "امروز گرم‌ترین روز است"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "นี่คือโรงแรมที่ดีที่สุด",
+                            "words": [
+                                { "word": "นี่", "translations": { "en": "this", "fa": "این" } },
+                                { "word": "คือ", "translations": { "en": "is", "fa": "است" } },
+                                { "word": "โรงแรม", "translations": { "en": "hotel", "fa": "هتل" } },
+                                { "word": "ที่", "translations": { "en": "that", "fa": "که" } },
+                                { "word": "ดี", "translations": { "en": "good", "fa": "خوب" } },
+                                { "word": "ที่สุด", "translations": { "en": "most", "fa": "ترین" } }
+                            ],
+                            "translations": {
+                                "en": "This is the best hotel",
+                                "fa": "این بهترین هتل است"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "เขาเป็นคนรวยที่สุด",
+                            "words": [
+                                { "word": "เขา", "translations": { "en": "he", "fa": "او" } },
+                                { "word": "เป็น", "translations": { "en": "is", "fa": "است" } },
+                                { "word": "คน", "translations": { "en": "person", "fa": "شخص" } },
+                                { "word": "รวย", "translations": { "en": "rich", "fa": "ثروتمند" } },
+                                { "word": "ที่สุด", "translations": { "en": "most", "fa": "ترین" } }
+                            ],
+                            "translations": {
+                                "en": "He is the richest person",
+                                "fa": "او ثروتمندترین فرد است"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "นี่คือปัญหาที่ยากที่สุด",
+                            "words": [
+                                { "word": "นี่", "translations": { "en": "this", "fa": "این" } },
+                                { "word": "คือ", "translations": { "en": "is", "fa": "است" } },
+                                { "word": "ปัญหา", "translations": { "en": "problem", "fa": "مشکل" } },
+                                { "word": "ที่", "translations": { "en": "that", "fa": "که" } },
+                                { "word": "ยาก", "translations": { "en": "difficult", "fa": "سخت" } },
+                                { "word": "ที่สุด", "translations": { "en": "most", "fa": "ترین" } }
+                            ],
+                            "translations": {
+                                "en": "This is the most difficult problem",
+                                "fa": "این سخت‌ترین مشکل است"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "เขาพูดเร็วที่สุด",
+                            "words": [
+                                { "word": "เขา", "translations": { "en": "he", "fa": "او" } },
+                                { "word": "พูด", "translations": { "en": "speak", "fa": "صحبت می‌کند" } },
+                                { "word": "เร็ว", "translations": { "en": "fast", "fa": "سریع" } },
+                                { "word": "ที่สุด", "translations": { "en": "most", "fa": "ترین" } }
+                            ],
+                            "translations": {
+                                "en": "He speaks the fastest",
+                                "fa": "او سریع‌ترین صحبت می‌کند"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "นกเป็นสัตว์ที่บินได้สูงที่สุด",
+                            "words": [
+                                { "word": "นก", "translations": { "en": "bird", "fa": "پرنده" } },
+                                { "word": "เป็น", "translations": { "en": "is", "fa": "است" } },
+                                { "word": "สัตว์", "translations": { "en": "animal", "fa": "حیوان" } },
+                                { "word": "ที่", "translations": { "en": "that", "fa": "که" } },
+                                { "word": "บิน", "translations": { "en": "fly", "fa": "پرواز می‌کند" } },
+                                { "word": "ได้", "translations": { "en": "can", "fa": "می‌تواند" } },
+                                { "word": "สูง", "translations": { "en": "high", "fa": "بلند" } },
+                                { "word": "ที่สุด", "translations": { "en": "most", "fa": "ترین" } }
+                            ],
+                            "translations": {
+                                "en": "Birds are the animals that can fly the highest",
+                                "fa": "پرنده‌ها حیواناتی هستند که می‌توانند بلندترین پرواز کنند"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ฉันรักคุณที่สุด",
+                            "words": [
+                                { "word": "ฉัน", "translations": { "en": "I", "fa": "من" } },
+                                { "word": "รัก", "translations": { "en": "love", "fa": "دوست دارم" } },
+                                { "word": "คุณ", "translations": { "en": "you", "fa": "شما" } },
+                                { "word": "ที่สุด", "translations": { "en": "most", "fa": "ترین" } }
+                            ],
+                            "translations": {
+                                "en": "I love you the most",
+                                "fa": "من شما را بیشتر از همه دوست دارم"
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

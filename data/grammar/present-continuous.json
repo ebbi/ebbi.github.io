@@ -1,0 +1,249 @@
+{
+    "documentId": "grammar_present_continuous",
+    "grammar": {
+        "pattern": "กำลัง + Verb",
+        "explanation": {
+            "en": "กำลัง (gam-lang) is placed before a verb to indicate an action that is happening right now, similar to the English '-ing' form.",
+            "fa": "กำลัง (gam-lang) قبل از فعل قرار می‌گیرد تا عملی را نشان دهد که در حال حاضر در حال انجام است، مشابه فرم '-ing' در انگلیسی.",
+            "th": "กำลัง วางหน้าคำกริยาเพื่อบอกว่าการกระทำกำลังเกิดขึ้นตอนนี้ คล้ายกับรูป '-ing' ในภาษาอังกฤษ"
+        }
+    },
+    "sections": [
+        {
+            "heading": {
+                "en": "Actions Happening Now",
+                "fa": "کارهای در حال انجام",
+                "th": "การกระทำที่กำลังเกิดขึ้น"
+            },
+            "activities": [ "multipleChoiceWord", "multipleChoiceSentence" ],
+            "blocks": [
+                {
+                    "type": "grammar-intro",
+                    "content": {
+                        "en": "Use กำลัง before the verb to describe what someone is doing right now.",
+                        "fa": "از กำลัง قبل از فعل استفاده کنید تا توصیف کنید کسی الان چه کار می‌کند.",
+                        "th": "ใช้ กำลัง หน้าคำกริยาเพื่อบอกว่ามีคนกำลังทำอะไรอยู่ตอนนี้"
+                    }
+                },
+                {
+                    "type": "paragraph",
+                    "elements": [
+                        {
+                            "type": "sentence",
+                            "source": "ฉันกำลังกินข้าว",
+                            "grammar": {
+                                "pattern": "ฉัน + กำลัง + กิน + ข้าว",
+                                "note": {
+                                    "en": "I am eating right now",
+                                    "fa": "من الان دارم غذا می‌خورم",
+                                    "th": "ฉันกำลังกินข้าวตอนนี้"
+                                }
+                            },
+                            "words": [
+                                { "word": "ฉัน", "translations": { "en": "I", "fa": "من" } },
+                                { "word": "กำลัง", "translations": { "en": "-ing", "fa": "دارم" } },
+                                { "word": "กิน", "translations": { "en": "eat", "fa": "می‌خورم" } },
+                                { "word": "ข้าว", "translations": { "en": "rice", "fa": "غذا" } }
+                            ],
+                            "translations": {
+                                "en": "I am eating",
+                                "fa": "من دارم غذا می‌خورم"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "เขากำลังอ่านหนังสือ",
+                            "words": [
+                                { "word": "เขา", "translations": { "en": "he", "fa": "او" } },
+                                { "word": "กำลัง", "translations": { "en": "-ing", "fa": "دارد" } },
+                                { "word": "อ่าน", "translations": { "en": "read", "fa": "می‌خواند" } },
+                                { "word": "หนังสือ", "translations": { "en": "book", "fa": "کتاب" } }
+                            ],
+                            "translations": {
+                                "en": "He is reading a book",
+                                "fa": "او دارد کتاب می‌خواند"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ฝนกำลังตก",
+                            "words": [
+                                { "word": "ฝน", "translations": { "en": "rain", "fa": "باران" } },
+                                { "word": "กำลัง", "translations": { "en": "-ing", "fa": "دارد" } },
+                                { "word": "ตก", "translations": { "en": "fall", "fa": "می‌بارد" } }
+                            ],
+                            "translations": {
+                                "en": "It is raining",
+                                "fa": "باران می‌بارد"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "เรากำลังรอรถ",
+                            "words": [
+                                { "word": "เรา", "translations": { "en": "we", "fa": "ما" } },
+                                { "word": "กำลัง", "translations": { "en": "-ing", "fa": "داریم" } },
+                                { "word": "รอ", "translations": { "en": "wait", "fa": "منتظر" } },
+                                { "word": "รถ", "translations": { "en": "bus", "fa": "اتوبوس" } }
+                            ],
+                            "translations": {
+                                "en": "We are waiting for the bus",
+                                "fa": "ما منتظر اتوبوس هستیم"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "heading": {
+                "en": "10+ Present Continuous Examples",
+                "fa": "۱۰+ مثال حال استمراری",
+                "th": "ตัวอย่างกำลังทำ ๑๐+ ประโยค"
+            },
+            "activities": [ "multipleChoiceWord", "multipleChoiceSentence" ],
+            "blocks": [
+                {
+                    "type": "paragraph",
+                    "elements": [
+                        {
+                            "type": "sentence",
+                            "source": "ฉันกำลังทำงาน",
+                            "words": [
+                                { "word": "ฉัน", "translations": { "en": "I", "fa": "من" } },
+                                { "word": "กำลัง", "translations": { "en": "-ing", "fa": "دارم" } },
+                                { "word": "ทำงาน", "translations": { "en": "work", "fa": "کار می‌کنم" } }
+                            ],
+                            "translations": {
+                                "en": "I am working",
+                                "fa": "من دارم کار می‌کنم"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "เธอกำลังดูทีวี",
+                            "words": [
+                                { "word": "เธอ", "translations": { "en": "she", "fa": "او" } },
+                                { "word": "กำลัง", "translations": { "en": "-ing", "fa": "دارد" } },
+                                { "word": "ดู", "translations": { "en": "watch", "fa": "تماشا می‌کند" } },
+                                { "word": "ทีวี", "translations": { "en": "TV", "fa": "تلویزیون" } }
+                            ],
+                            "translations": {
+                                "en": "She is watching TV",
+                                "fa": "او دارد تلویزیون تماشا می‌کند"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "พวกเขากำลังเล่นฟุตบอล",
+                            "words": [
+                                { "word": "พวกเขา", "translations": { "en": "they", "fa": "آنها" } },
+                                { "word": "กำลัง", "translations": { "en": "-ing", "fa": "دارند" } },
+                                { "word": "เล่น", "translations": { "en": "play", "fa": "بازی می‌کنند" } },
+                                { "word": "ฟุตบอล", "translations": { "en": "football", "fa": "فوتبال" } }
+                            ],
+                            "translations": {
+                                "en": "They are playing football",
+                                "fa": "آنها دارند فوتبال بازی می‌کنند"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "คุณกำลังทำอะไร",
+                            "words": [
+                                { "word": "คุณ", "translations": { "en": "you", "fa": "شما" } },
+                                { "word": "กำลัง", "translations": { "en": "-ing", "fa": "دارید" } },
+                                { "word": "ทำ", "translations": { "en": "do", "fa": "انجام می‌دهید" } },
+                                { "word": "อะไร", "translations": { "en": "what", "fa": "چه" } }
+                            ],
+                            "translations": {
+                                "en": "What are you doing?",
+                                "fa": "دارید چه کار می‌کنید؟"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ฉันกำลังเขียนอีเมล",
+                            "words": [
+                                { "word": "ฉัน", "translations": { "en": "I", "fa": "من" } },
+                                { "word": "กำลัง", "translations": { "en": "-ing", "fa": "دارم" } },
+                                { "word": "เขียน", "translations": { "en": "write", "fa": "می‌نویسم" } },
+                                { "word": "อีเมล", "translations": { "en": "email", "fa": "ایمیل" } }
+                            ],
+                            "translations": {
+                                "en": "I am writing an email",
+                                "fa": "من دارم ایمیل می‌نویسم"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "น้องกำลังร้องไห้",
+                            "words": [
+                                { "word": "น้อง", "translations": { "en": "younger sibling", "fa": "برادر/خواهر کوچک" } },
+                                { "word": "กำลัง", "translations": { "en": "-ing", "fa": "دارد" } },
+                                { "word": "ร้องไห้", "translations": { "en": "cry", "fa": "گریه می‌کند" } }
+                            ],
+                            "translations": {
+                                "en": "My younger sibling is crying",
+                                "fa": "برادر/خواهر کوچکم دارد گریه می‌کند"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "คุณยายกำลังทำอาหาร",
+                            "words": [
+                                { "word": "คุณยาย", "translations": { "en": "grandmother", "fa": "مادربزرگ" } },
+                                { "word": "กำลัง", "translations": { "en": "-ing", "fa": "دارد" } },
+                                { "word": "ทำอาหาร", "translations": { "en": "cook", "fa": "آشپزی می‌کند" } }
+                            ],
+                            "translations": {
+                                "en": "Grandmother is cooking",
+                                "fa": "مادربزرگ دارد آشپزی می‌کند"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "หมากำลังเห่า",
+                            "words": [
+                                { "word": "หมา", "translations": { "en": "dog", "fa": "سگ" } },
+                                { "word": "กำลัง", "translations": { "en": "-ing", "fa": "دارد" } },
+                                { "word": "เห่า", "translations": { "en": "bark", "fa": "پارس می‌کند" } }
+                            ],
+                            "translations": {
+                                "en": "The dog is barking",
+                                "fa": "سگ دارد پارس می‌کند"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ฉันกำลังฟังเพลง",
+                            "words": [
+                                { "word": "ฉัน", "translations": { "en": "I", "fa": "من" } },
+                                { "word": "กำลัง", "translations": { "en": "-ing", "fa": "دارم" } },
+                                { "word": "ฟัง", "translations": { "en": "listen", "fa": "گوش می‌دهم" } },
+                                { "word": "เพลง", "translations": { "en": "music", "fa": "موسیقی" } }
+                            ],
+                            "translations": {
+                                "en": "I am listening to music",
+                                "fa": "من دارم به موسیقی گوش می‌دهم"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "พวกเรากำลังเดินทาง",
+                            "words": [
+                                { "word": "พวกเรา", "translations": { "en": "we", "fa": "ما" } },
+                                { "word": "กำลัง", "translations": { "en": "-ing", "fa": "داریم" } },
+                                { "word": "เดินทาง", "translations": { "en": "travel", "fa": "سفر می‌کنیم" } }
+                            ],
+                            "translations": {
+                                "en": "We are traveling",
+                                "fa": "ما داریم سفر می‌کنیم"
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

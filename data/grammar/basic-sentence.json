@@ -1,0 +1,240 @@
+{
+    "documentId": "grammar_basic_sentence",
+    "grammar": {
+        "pattern": "Subject + Verb + Object",
+        "explanation": {
+            "en": "Thai follows the same basic word order as English: Subject-Verb-Object. This makes it easy for English speakers to form basic sentences.",
+            "fa": "تایلندی از همان ترتیب کلمات پایه انگلیسی پیروی می‌کند: فاعل-فعل-مفعول. این امر تشکیل جملات پایه را برای انگلیسی‌زبانان آسان می‌کند.",
+            "th": "ภาษาไทยมีโครงสร้างประโยคพื้นฐานเหมือนภาษาอังกฤษ: ประธาน-กริยา-กรรม ทำให้ผู้พูดภาษาอังกฤษสามารถสร้างประโยคพื้นฐานได้ง่าย"
+        },
+        "usage": {
+            "en": "Place the subject first, then the verb, then the object. Thai has no verb conjugation - the verb stays the same regardless of tense or subject.",
+            "fa": "ابتدا فاعل، سپس فعل، سپس مفعول را قرار دهید. تایلندی صرف فعل ندارد - فعل بدون توجه به زمان یا فاعل ثابت می‌ماند.",
+            "th": "วางประธานก่อน ตามด้วยกริยา แล้วตามด้วยกรรม ภาษาไทยไม่มีการผันกริยา - กริยาไม่เปลี่ยนแปลงตามกาลหรือประธาน"
+        }
+    },
+    "sections": [
+        {
+            "heading": {
+                "en": "Basic Actions",
+                "fa": "کارهای پایه",
+                "th": "การกระทำพื้นฐาน"
+            },
+            "activities": [ "multipleChoiceWord", "multipleChoiceSentence" ],
+            "blocks": [
+                {
+                    "type": "grammar-intro",
+                    "content": {
+                        "en": "Let's start with simple actions using common verbs.",
+                        "fa": "بیایید با کارهای ساده با استفاده از افعال رایج شروع کنیم.",
+                        "th": "มาเริ่มด้วยการกระทำง่ายๆ โดยใช้กริยาที่พบบ่อย"
+                    }
+                },
+                {
+                    "type": "paragraph",
+                    "elements": [
+                        {
+                            "type": "sentence",
+                            "source": "ฉันกินข้าว",
+                            "grammar": {
+                                "pattern": "ฉัน + กิน + ข้าว",
+                                "note": {
+                                    "en": "Basic 'I eat rice' - the most common Thai sentence",
+                                    "fa": "پایه 'من برنج می‌خورم' - رایج‌ترین جمله تایلندی",
+                                    "th": "ประโยคพื้นฐาน 'ฉันกินข้าว' - ประโยคภาษาไทยที่พบบ่อยที่สุด"
+                                }
+                            },
+                            "words": [
+                                { "word": "ฉัน", "translations": { "en": "I", "fa": "من" } },
+                                { "word": "กิน", "translations": { "en": "eat", "fa": "می‌خورم" } },
+                                { "word": "ข้าว", "translations": { "en": "rice", "fa": "برنج" } }
+                            ],
+                            "translations": {
+                                "en": "I eat rice",
+                                "fa": "من برنج می‌خورم"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "เขาดื่มน้ำ",
+                            "grammar": {
+                                "pattern": "เขา + ดื่ม + น้ำ",
+                                "note": {
+                                    "en": "He/she drinks water",
+                                    "fa": "او آب می‌نوشد",
+                                    "th": "เขาดื่มน้ำ"
+                                }
+                            },
+                            "words": [
+                                { "word": "เขา", "translations": { "en": "he/she", "fa": "او" } },
+                                { "word": "ดื่ม", "translations": { "en": "drink", "fa": "می‌نوشد" } },
+                                { "word": "น้ำ", "translations": { "en": "water", "fa": "آب" } }
+                            ],
+                            "translations": {
+                                "en": "He/She drinks water",
+                                "fa": "او آب می‌نوشد"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "คุณอ่านหนังสือ",
+                            "grammar": {
+                                "pattern": "คุณ + อ่าน + หนังสือ",
+                                "note": {
+                                    "en": "You read a book",
+                                    "fa": "شما کتاب می‌خوانید",
+                                    "th": "คุณอ่านหนังสือ"
+                                }
+                            },
+                            "words": [
+                                { "word": "คุณ", "translations": { "en": "you", "fa": "شما" } },
+                                { "word": "อ่าน", "translations": { "en": "read", "fa": "می‌خوانید" } },
+                                { "word": "หนังสือ", "translations": { "en": "book", "fa": "کتاب" } }
+                            ],
+                            "translations": {
+                                "en": "You read a book",
+                                "fa": "شما کتاب می‌خوانید"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "เราทำงาน",
+                            "grammar": {
+                                "pattern": "เรา + ทำ + งาน",
+                                "note": {
+                                    "en": "We work",
+                                    "fa": "ما کار می‌کنیم",
+                                    "th": "เราทำงาน"
+                                }
+                            },
+                            "words": [
+                                { "word": "เรา", "translations": { "en": "we", "fa": "ما" } },
+                                { "word": "ทำ", "translations": { "en": "do/work", "fa": "انجام می‌دهیم" } },
+                                { "word": "งาน", "translations": { "en": "work", "fa": "کار" } }
+                            ],
+                            "translations": {
+                                "en": "We work",
+                                "fa": "ما کار می‌کنیم"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "พวกเขาเล่นฟุตบอล",
+                            "grammar": {
+                                "pattern": "พวกเขา + เล่น + ฟุตบอล",
+                                "note": {
+                                    "en": "They play football",
+                                    "fa": "آنها فوتبال بازی می‌کنند",
+                                    "th": "พวกเขาเล่นฟุตบอล"
+                                }
+                            },
+                            "words": [
+                                { "word": "พวกเขา", "translations": { "en": "they", "fa": "آنها" } },
+                                { "word": "เล่น", "translations": { "en": "play", "fa": "بازی می‌کنند" } },
+                                { "word": "ฟุตบอล", "translations": { "en": "football", "fa": "فوتبال" } }
+                            ],
+                            "translations": {
+                                "en": "They play football",
+                                "fa": "آنها فوتبال بازی می‌کنند"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "heading": {
+                "en": "More Actions",
+                "fa": "کارهای بیشتر",
+                "th": "การกระทำเพิ่มเติม"
+            },
+            "activities": [ "multipleChoiceWord", "multipleChoiceSentence" ],
+            "blocks": [
+                {
+                    "type": "paragraph",
+                    "elements": [
+                        {
+                            "type": "sentence",
+                            "source": "ฉันชอบแมว",
+                            "words": [
+                                { "word": "ฉัน", "translations": { "en": "I", "fa": "من" } },
+                                { "word": "ชอบ", "translations": { "en": "like", "fa": "دوست دارم" } },
+                                { "word": "แมว", "translations": { "en": "cat", "fa": "گربه" } }
+                            ],
+                            "translations": {
+                                "en": "I like cats",
+                                "fa": "من گربه دوست دارم"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "เขาขับรถ",
+                            "words": [
+                                { "word": "เขา", "translations": { "en": "he/she", "fa": "او" } },
+                                { "word": "ขับ", "translations": { "en": "drive", "fa": "رانندگی می‌کند" } },
+                                { "word": "รถ", "translations": { "en": "car", "fa": "ماشین" } }
+                            ],
+                            "translations": {
+                                "en": "He/She drives a car",
+                                "fa": "او ماشین رانندگی می‌کند"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "คุณซื้อของ",
+                            "words": [
+                                { "word": "คุณ", "translations": { "en": "you", "fa": "شما" } },
+                                { "word": "ซื้อ", "translations": { "en": "buy", "fa": "می‌خرید" } },
+                                { "word": "ของ", "translations": { "en": "things", "fa": "چیزها" } }
+                            ],
+                            "translations": {
+                                "en": "You buy things",
+                                "fa": "شما چیزها می‌خرید"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "เราเรียนภาษาไทย",
+                            "words": [
+                                { "word": "เรา", "translations": { "en": "we", "fa": "ما" } },
+                                { "word": "เรียน", "translations": { "en": "study", "fa": "یاد می‌گیریم" } },
+                                { "word": "ภาษาไทย", "translations": { "en": "Thai language", "fa": "زبان تایلندی" } }
+                            ],
+                            "translations": {
+                                "en": "We study Thai",
+                                "fa": "ما زبان تایلندی یاد می‌گیریم"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "พวกเขาขายบ้าน",
+                            "words": [
+                                { "word": "พวกเขา", "translations": { "en": "they", "fa": "آنها" } },
+                                { "word": "ขาย", "translations": { "en": "sell", "fa": "می‌فروشند" } },
+                                { "word": "บ้าน", "translations": { "en": "house", "fa": "خانه" } }
+                            ],
+                            "translations": {
+                                "en": "They sell houses",
+                                "fa": "آنها خانه می‌فروشند"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "words",
+                    "data": [
+                        { "word": "ฉัน", "translations": { "en": "I", "fa": "من" } },
+                        { "word": "คุณ", "translations": { "en": "you", "fa": "شما" } },
+                        { "word": "เขา", "translations": { "en": "he/she", "fa": "او" } },
+                        { "word": "เรา", "translations": { "en": "we", "fa": "ما" } },
+                        { "word": "พวกเขา", "translations": { "en": "they", "fa": "آنها" } },
+                        { "word": "กิน", "translations": { "en": "eat", "fa": "خوردن" } },
+                        { "word": "ดื่ม", "translations": { "en": "drink", "fa": "نوشیدن" } },
+                        { "word": "อ่าน", "translations": { "en": "read", "fa": "خواندن" } },
+                        { "word": "ชอบ", "translations": { "en": "like", "fa": "دوست داشتن" } }
+                    ]
+                }
+            ]
+        }
+    ]
+}

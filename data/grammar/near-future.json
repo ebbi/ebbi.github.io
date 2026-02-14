@@ -1,0 +1,231 @@
+{
+    "documentId": "grammar_near_future",
+    "grammar": {
+        "pattern": "กำลังจะ + Verb",
+        "explanation": {
+            "en": "กำลังจะ (gam-lang jà) is placed before a verb to indicate an action that is about to happen very soon.",
+            "fa": "กำลังจะ (gam-lang jà) قبل از فعل قرار می‌گیرد تا عملی را نشان دهد که به زودی انجام خواهد شد.",
+            "th": "กำลังจะ วางหน้าคำกริยาเพื่อบอกว่าการกระทำกำลังจะเกิดขึ้นในเร็วๆ นี้"
+        }
+    },
+    "sections": [
+        {
+            "heading": {
+                "en": "Actions About to Happen",
+                "fa": "کارهایی که به زودی انجام می‌شوند",
+                "th": "การกระทำที่กำลังจะเกิดขึ้น"
+            },
+            "activities": [ "multipleChoiceWord", "multipleChoiceSentence" ],
+            "blocks": [
+                {
+                    "type": "grammar-intro",
+                    "content": {
+                        "en": "Use กำลังจะ before the verb to say something is about to happen immediately.",
+                        "fa": "از กำลังจะ قبل از فعل استفاده کنید تا بگویید چیزی به زودی اتفاق می‌افتد.",
+                        "th": "ใช้ กำลังจะ หน้าคำกริยาเพื่อบอกว่ามีบางอย่างกำลังจะเกิดขึ้นทันที"
+                    }
+                },
+                {
+                    "type": "paragraph",
+                    "elements": [
+                        {
+                            "type": "sentence",
+                            "source": "ฉันกำลังจะไป",
+                            "grammar": {
+                                "pattern": "ฉัน + กำลังจะ + ไป",
+                                "note": {
+                                    "en": "I'm about to go",
+                                    "fa": "من الان می‌روم",
+                                    "th": "ฉันกำลังจะไป"
+                                }
+                            },
+                            "words": [
+                                { "word": "ฉัน", "translations": { "en": "I", "fa": "من" } },
+                                { "word": "กำลังจะ", "translations": { "en": "about to", "fa": "الان" } },
+                                { "word": "ไป", "translations": { "en": "go", "fa": "می‌روم" } }
+                            ],
+                            "translations": {
+                                "en": "I'm about to go",
+                                "fa": "من الان می‌روم"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ฝนกำลังจะตก",
+                            "words": [
+                                { "word": "ฝน", "translations": { "en": "rain", "fa": "باران" } },
+                                { "word": "กำลังจะ", "translations": { "en": "about to", "fa": "می‌خواهد" } },
+                                { "word": "ตก", "translations": { "en": "fall", "fa": "ببارد" } }
+                            ],
+                            "translations": {
+                                "en": "It's about to rain",
+                                "fa": "می‌خواهد باران ببارد"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "รถกำลังจะมา",
+                            "words": [
+                                { "word": "รถ", "translations": { "en": "bus", "fa": "اتوبوس" } },
+                                { "word": "กำลังจะ", "translations": { "en": "about to", "fa": "می‌خواهد" } },
+                                { "word": "มา", "translations": { "en": "come", "fa": "بیاید" } }
+                            ],
+                            "translations": {
+                                "en": "The bus is about to come",
+                                "fa": "اتوبوس می‌خواهد بیاید"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "heading": {
+                "en": "10+ Near Future Examples",
+                "fa": "۱۰+ مثال آینده نزدیک",
+                "th": "ตัวอย่างกำลังจะ ๑๐+ ประโยค"
+            },
+            "activities": [ "multipleChoiceWord", "multipleChoiceSentence" ],
+            "blocks": [
+                {
+                    "type": "paragraph",
+                    "elements": [
+                        {
+                            "type": "sentence",
+                            "source": "หนังกำลังจะเริ่ม",
+                            "words": [
+                                { "word": "หนัง", "translations": { "en": "movie", "fa": "فیلم" } },
+                                { "word": "กำลังจะ", "translations": { "en": "about to", "fa": "می‌خواهد" } },
+                                { "word": "เริ่ม", "translations": { "en": "start", "fa": "شروع شود" } }
+                            ],
+                            "translations": {
+                                "en": "The movie is about to start",
+                                "fa": "فیلم می‌خواهد شروع شود"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ฉันกำลังจะกินข้าว",
+                            "words": [
+                                { "word": "ฉัน", "translations": { "en": "I", "fa": "من" } },
+                                { "word": "กำลังจะ", "translations": { "en": "about to", "fa": "می‌خواهم" } },
+                                { "word": "กิน", "translations": { "en": "eat", "fa": "بخورم" } },
+                                { "word": "ข้าว", "translations": { "en": "rice", "fa": "غذا" } }
+                            ],
+                            "translations": {
+                                "en": "I'm about to eat",
+                                "fa": "می‌خواهم غذا بخورم"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "เขากำลังจะออก",
+                            "words": [
+                                { "word": "เขา", "translations": { "en": "he", "fa": "او" } },
+                                { "word": "กำลังจะ", "translations": { "en": "about to", "fa": "می‌خواهد" } },
+                                { "word": "ออก", "translations": { "en": "leave", "fa": "برود" } }
+                            ],
+                            "translations": {
+                                "en": "He's about to leave",
+                                "fa": "او می‌خواهد برود"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ร้านกำลังจะปิด",
+                            "words": [
+                                { "word": "ร้าน", "translations": { "en": "shop", "fa": "فروشگاه" } },
+                                { "word": "กำลังจะ", "translations": { "en": "about to", "fa": "می‌خواهد" } },
+                                { "word": "ปิด", "translations": { "en": "close", "fa": "ببندد" } }
+                            ],
+                            "translations": {
+                                "en": "The shop is about to close",
+                                "fa": "فروشگاه می‌خواهد بسته شود"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "เรากำลังจะไปเที่ยว",
+                            "words": [
+                                { "word": "เรา", "translations": { "en": "we", "fa": "ما" } },
+                                { "word": "กำลังจะ", "translations": { "en": "about to", "fa": "می‌خواهیم" } },
+                                { "word": "ไป", "translations": { "en": "go", "fa": "برویم" } },
+                                { "word": "เที่ยว", "translations": { "en": "travel", "fa": "سفر" } }
+                            ],
+                            "translations": {
+                                "en": "We're about to go on a trip",
+                                "fa": "ما می‌خواهیم به سفر برویم"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "คุณกำลังจะไปไหน",
+                            "words": [
+                                { "word": "คุณ", "translations": { "en": "you", "fa": "شما" } },
+                                { "word": "กำลังจะ", "translations": { "en": "about to", "fa": "می‌خواهید" } },
+                                { "word": "ไป", "translations": { "en": "go", "fa": "بروید" } },
+                                { "word": "ไหน", "translations": { "en": "where", "fa": "کجا" } }
+                            ],
+                            "translations": {
+                                "en": "Where are you about to go?",
+                                "fa": "کجا می‌خواهید بروید؟"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "พระอาทิตย์กำลังจะตก",
+                            "words": [
+                                { "word": "พระอาทิตย์", "translations": { "en": "sun", "fa": "خورشید" } },
+                                { "word": "กำลังจะ", "translations": { "en": "about to", "fa": "می‌خواهد" } },
+                                { "word": "ตก", "translations": { "en": "set", "fa": "غروب کند" } }
+                            ],
+                            "translations": {
+                                "en": "The sun is about to set",
+                                "fa": "خورشید می‌خواهد غروب کند"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ฉันกำลังจะนอน",
+                            "words": [
+                                { "word": "ฉัน", "translations": { "en": "I", "fa": "من" } },
+                                { "word": "กำลังจะ", "translations": { "en": "about to", "fa": "می‌خواهم" } },
+                                { "word": "นอน", "translations": { "en": "sleep", "fa": "بخوابم" } }
+                            ],
+                            "translations": {
+                                "en": "I'm about to sleep",
+                                "fa": "می‌خواهم بخوابم"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "เขากำลังจะแต่งงาน",
+                            "words": [
+                                { "word": "เขา", "translations": { "en": "he", "fa": "او" } },
+                                { "word": "กำลังจะ", "translations": { "en": "about to", "fa": "می‌خواهد" } },
+                                { "word": "แต่งงาน", "translations": { "en": "marry", "fa": "ازدواج کند" } }
+                            ],
+                            "translations": {
+                                "en": "He's about to get married",
+                                "fa": "او می‌خواهد ازدواج کند"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ปีใหม่กำลังจะมา",
+                            "words": [
+                                { "word": "ปีใหม่", "translations": { "en": "New Year", "fa": "سال نو" } },
+                                { "word": "กำลังจะ", "translations": { "en": "about to", "fa": "می‌خواهد" } },
+                                { "word": "มา", "translations": { "en": "come", "fa": "برسد" } }
+                            ],
+                            "translations": {
+                                "en": "New Year is about to come",
+                                "fa": "سال نو می‌خواهد برسد"
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

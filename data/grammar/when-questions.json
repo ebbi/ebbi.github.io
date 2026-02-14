@@ -1,0 +1,180 @@
+{
+    "documentId": "grammar_when_questions",
+    "grammar": {
+        "pattern": "เมื่อไหร่ (when)",
+        "explanation": {
+            "en": "เมื่อไหร่ (mûea-rài) means 'when'. It usually comes at the end of a question, but can also come at the beginning for emphasis.",
+            "fa": "เมื่อไหร่ (mûea-rài) به معنی 'کی' است. معمولاً در پایان سوال می‌آید، اما برای تأکید می‌تواند در ابتدا نیز بیاید.",
+            "th": "เมื่อไหร่ ใช้ถามเกี่ยวกับเวลา โดยปกติจะวางไว้ท้ายประโยค แต่สามารถวางไว้หน้าประโยคเพื่อเน้นได้"
+        }
+    },
+    "sections": [
+        {
+            "heading": {
+                "en": "When Questions",
+                "fa": "سوالات کی",
+                "th": "คำถามเมื่อไหร่"
+            },
+            "activities": [ "multipleChoiceWord", "multipleChoiceSentence" ],
+            "blocks": [
+                {
+                    "type": "paragraph",
+                    "elements": [
+                        {
+                            "type": "sentence",
+                            "source": "คุณมาเมื่อไหร่",
+                            "grammar": {
+                                "pattern": "คุณ + มา + เมื่อไหร่",
+                                "note": {
+                                    "en": "When did you come?",
+                                    "fa": "کی آمدید؟",
+                                    "th": "คุณมาเมื่อไหร่"
+                                }
+                            },
+                            "words": [
+                                { "word": "คุณ", "translations": { "en": "you", "fa": "شما" } },
+                                { "word": "มา", "translations": { "en": "come", "fa": "آمدید" } },
+                                { "word": "เมื่อไหร่", "translations": { "en": "when", "fa": "کی" } }
+                            ],
+                            "translations": {
+                                "en": "When did you come?",
+                                "fa": "کی آمدید؟"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "เราจะไปกันเมื่อไหร่",
+                            "words": [
+                                { "word": "เรา", "translations": { "en": "we", "fa": "ما" } },
+                                { "word": "จะ", "translations": { "en": "will", "fa": "خواهیم" } },
+                                { "word": "ไป", "translations": { "en": "go", "fa": "رفت" } },
+                                { "word": "กัน", "translations": { "en": "together", "fa": "با هم" } },
+                                { "word": "เมื่อไหร่", "translations": { "en": "when", "fa": "کی" } }
+                            ],
+                            "translations": {
+                                "en": "When will we go?",
+                                "fa": "کی خواهیم رفت؟"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "งานเลี้ยงเริ่มเมื่อไหร่",
+                            "words": [
+                                { "word": "งานเลี้ยง", "translations": { "en": "party", "fa": "مهمانی" } },
+                                { "word": "เริ่ม", "translations": { "en": "start", "fa": "شروع می‌شود" } },
+                                { "word": "เมื่อไหร่", "translations": { "en": "when", "fa": "کی" } }
+                            ],
+                            "translations": {
+                                "en": "When does the party start?",
+                                "fa": "مهمانی کی شروع می‌شود؟"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "คุณจะกลับบ้านเมื่อไหร่",
+                            "words": [
+                                { "word": "คุณ", "translations": { "en": "you", "fa": "شما" } },
+                                { "word": "จะ", "translations": { "en": "will", "fa": "خواهید" } },
+                                { "word": "กลับ", "translations": { "en": "return", "fa": "برگشت" } },
+                                { "word": "บ้าน", "translations": { "en": "home", "fa": "خانه" } },
+                                { "word": "เมื่อไหร่", "translations": { "en": "when", "fa": "کی" } }
+                            ],
+                            "translations": {
+                                "en": "When will you return home?",
+                                "fa": "کی به خانه برمی‌گردید؟"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "เขาเกิดเมื่อไหร่",
+                            "words": [
+                                { "word": "เขา", "translations": { "en": "he", "fa": "او" } },
+                                { "word": "เกิด", "translations": { "en": "born", "fa": "متولد شد" } },
+                                { "word": "เมื่อไหร่", "translations": { "en": "when", "fa": "کی" } }
+                            ],
+                            "translations": {
+                                "en": "When was he born?",
+                                "fa": "او کی متولد شد؟"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "คุณจะแต่งงานเมื่อไหร่",
+                            "words": [
+                                { "word": "คุณ", "translations": { "en": "you", "fa": "شما" } },
+                                { "word": "จะ", "translations": { "en": "will", "fa": "خواهید" } },
+                                { "word": "แต่งงาน", "translations": { "en": "marry", "fa": "ازدواج کرد" } },
+                                { "word": "เมื่อไหร่", "translations": { "en": "when", "fa": "کی" } }
+                            ],
+                            "translations": {
+                                "en": "When will you get married?",
+                                "fa": "کی ازدواج خواهید کرد؟"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ร้านปิดเมื่อไหร่",
+                            "words": [
+                                { "word": "ร้าน", "translations": { "en": "shop", "fa": "فروشگاه" } },
+                                { "word": "ปิด", "translations": { "en": "close", "fa": "بسته می‌شود" } },
+                                { "word": "เมื่อไหร่", "translations": { "en": "when", "fa": "کی" } }
+                            ],
+                            "translations": {
+                                "en": "When does the shop close?",
+                                "fa": "فروشگاه کی بسته می‌شود؟"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "รถออกเมื่อไหร่",
+                            "words": [
+                                { "word": "รถ", "translations": { "en": "bus/train", "fa": "اتوبوس/قطار" } },
+                                { "word": "ออก", "translations": { "en": "depart", "fa": "حرکت می‌کند" } },
+                                { "word": "เมื่อไหร่", "translations": { "en": "when", "fa": "کی" } }
+                            ],
+                            "translations": {
+                                "en": "When does the bus/train depart?",
+                                "fa": "اتوبوس/قطار کی حرکت می‌کند؟"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "คุณว่างเมื่อไหร่",
+                            "words": [
+                                { "word": "คุณ", "translations": { "en": "you", "fa": "شما" } },
+                                { "word": "ว่าง", "translations": { "en": "free", "fa": "وقت دارید" } },
+                                { "word": "เมื่อไหร่", "translations": { "en": "when", "fa": "کی" } }
+                            ],
+                            "translations": {
+                                "en": "When are you free?",
+                                "fa": "کی وقت دارید؟"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "เมื่อไหร่คุณจะมา",
+                            "grammar": {
+                                "pattern": "เมื่อไหร่ + คุณ + จะ + มา",
+                                "note": {
+                                    "en": "When will you come? (emphasis on when)",
+                                    "fa": "کی خواهید آمد؟ (تأکید بر کی)",
+                                    "th": "เมื่อไหร่คุณจะมา (เน้นที่เมื่อไหร่)"
+                                }
+                            },
+                            "words": [
+                                { "word": "เมื่อไหร่", "translations": { "en": "when", "fa": "کی" } },
+                                { "word": "คุณ", "translations": { "en": "you", "fa": "شما" } },
+                                { "word": "จะ", "translations": { "en": "will", "fa": "خواهید" } },
+                                { "word": "มา", "translations": { "en": "come", "fa": "آمد" } }
+                            ],
+                            "translations": {
+                                "en": "When will you come?",
+                                "fa": "کی خواهید آمد؟"
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

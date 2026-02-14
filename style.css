@@ -1162,3 +1162,171 @@ select:focus-visible {
         transition-duration: 0.01ms !important;
     }
 }
+
+.bottom-sheet {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: var(--bg-primary);
+    border-radius: 20px 20px 0 0;
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.15);
+    transform: translateY(100%);
+    transition: transform 0.3s ease-out;
+    z-index: 1000;
+    max-height: 80vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.bottom-sheet.open {
+    transform: translateY(0);
+}
+
+.bottom-sheet.dark-theme {
+    background: #2d2d2d;
+    color: #ffffff;
+}
+
+.sheet-handle {
+    width: 40px;
+    height: 4px;
+    background: #ccc;
+    border-radius: 2px;
+    margin: 12px auto;
+    cursor: pointer;
+}
+
+.sheet-header {
+    padding: 0 20px 12px;
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.sheet-header h3 {
+    margin: 0;
+    font-size: 1.2rem;
+}
+
+.sheet-close {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    padding: 0 8px;
+}
+
+.sheet-content {
+    padding: 20px;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Grammar-specific styles */
+.grammar-pattern {
+    background: var(--bg-secondary);
+    padding: 16px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+}
+
+.pattern-title {
+    font-weight: bold;
+    color: var(--accent-thai);
+    margin-bottom: 8px;
+}
+
+.pattern-example {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px;
+    background: var(--bg-primary);
+    border-radius: 8px;
+    margin: 8px 0;
+}
+
+.example-thai {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.example-en {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+.grammar-note {
+    font-style: italic;
+    padding: 12px;
+    background: rgba(255, 193, 7, 0.1);
+    border-left: 4px solid #ffc107;
+    border-radius: 4px;
+}
+
+.sheet-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease;
+    z-index: 999;
+}
+
+.sheet-backdrop.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.source-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 8px;
+}
+
+.grammar-icon-btn {
+    background: none;
+    border: none;
+    color: var(--thai-color);
+    cursor: pointer;
+    padding: 6px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    flex-shrink: 0;
+}
+
+.grammar-icon-btn:hover {
+    background: rgba(29, 78, 216, 0.1);
+    transform: scale(1.1);
+}
+
+.grammar-icon-btn .material-icons {
+    font-size: 20px;
+}
+
+/* For RTL languages */
+[dir="rtl"] .grammar-icon-btn {
+    margin-left: 0;
+    margin-right: 8px;
+}
+
+/* Dark theme support */
+.dark-theme .grammar-icon-btn {
+    color: var(--thai-color);
+}
+
+.dark-theme .grammar-icon-btn:hover {
+    background: rgba(96, 165, 250, 0.15);
+}
+

@@ -1,0 +1,171 @@
+{
+    "documentId": "grammar_yes_no_questions",
+    "grammar": {
+        "pattern": "Verb + ไหม",
+        "explanation": {
+            "en": "To form a yes/no question in Thai, add ไหม (mai) at the end of a statement. The word order stays exactly the same as a statement.",
+            "fa": "برای تشکیل سوال بله/خیر در تایلندی، ไหม (mai) را به پایان جمله اضافه کنید. ترتیب کلمات دقیقاً مانند جمله خبری باقی می‌ماند.",
+            "th": "การสร้างคำถามใช่/ไม่ใช่ในภาษาไทย ให้เติม ไหม ต่อท้ายประโยค ลำดับคำยังคงเหมือนประโยคบอกเล่า"
+        }
+    },
+    "sections": [
+        {
+            "heading": {
+                "en": "Basic Questions",
+                "fa": "سوالات پایه",
+                "th": "คำถามพื้นฐาน"
+            },
+            "blocks": [
+                {
+                    "type": "paragraph",
+                    "elements": [
+                        {
+                            "type": "sentence",
+                            "source": "กินข้าวไหม",
+                            "grammar": {
+                                "pattern": "กินข้าว + ไหม",
+                                "note": { "en": "Question: Do you want to eat?", "fa": "سوال: می‌خواهی بخوری؟", "th": "คำถาม: กินไหม" }
+                            },
+                            "words": [
+                                { "word": "กิน", "translations": { "en": "eat", "fa": "می‌خوری" } },
+                                { "word": "ข้าว", "translations": { "en": "rice", "fa": "برنج" } },
+                                { "word": "ไหม", "translations": { "en": "question particle", "fa": "ذره سوالی" } }
+                            ],
+                            "translations": { "en": "Do you want to eat?", "fa": "می‌خواهی بخوری؟" }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ไปเที่ยวไหม",
+                            "words": [
+                                { "word": "ไป", "translations": { "en": "go", "fa": "برویم" } },
+                                { "word": "เที่ยว", "translations": { "en": "travel/hang out", "fa": "گشت‌وگذار" } },
+                                { "word": "ไหม", "translations": { "en": "question particle", "fa": "ذره سوالی" } }
+                            ],
+                            "translations": { "en": "Want to go out?", "fa": "می‌خواهی بریم بیرون؟" }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ชอบไหม",
+                            "words": [
+                                { "word": "ชอบ", "translations": { "en": "like", "fa": "دوست داری" } },
+                                { "word": "ไหม", "translations": { "en": "question particle", "fa": "ذره سوالی" } }
+                            ],
+                            "translations": { "en": "Do you like it?", "fa": "دوست داری؟" }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "เข้าใจไหม",
+                            "words": [
+                                { "word": "เข้าใจ", "translations": { "en": "understand", "fa": "می‌فهمی" } },
+                                { "word": "ไหม", "translations": { "en": "question particle", "fa": "ذره سوالی" } }
+                            ],
+                            "translations": { "en": "Do you understand?", "fa": "می‌فهمی؟" }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "สบายดีไหม",
+                            "words": [
+                                { "word": "สบายดี", "translations": { "en": "fine", "fa": "حالت خوبه" } },
+                                { "word": "ไหม", "translations": { "en": "question particle", "fa": "ذره سوالی" } }
+                            ],
+                            "translations": { "en": "Are you fine?", "fa": "حالت خوبه؟" }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ทำงานไหม",
+                            "words": [
+                                { "word": "ทำงาน", "translations": { "en": "work", "fa": "کار می‌کنی" } },
+                                { "word": "ไหม", "translations": { "en": "question particle", "fa": "ذره سوالی" } }
+                            ],
+                            "translations": { "en": "Do you work?", "fa": "کار می‌کنی؟" }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "heading": {
+                "en": "10+ Questions with Subjects",
+                "fa": "۱۰+ سوال با فاعل",
+                "th": "คำถาม ๑๐+ ประโยค"
+            },
+            "blocks": [
+                {
+                    "type": "paragraph",
+                    "elements": [
+                        {
+                            "type": "sentence",
+                            "source": "คุณกินข้าวไหม",
+                            "words": [
+                                { "word": "คุณ", "translations": { "en": "you", "fa": "شما" } },
+                                { "word": "กิน", "translations": { "en": "eat", "fa": "می‌خورید" } },
+                                { "word": "ข้าว", "translations": { "en": "rice", "fa": "برنج" } },
+                                { "word": "ไหม", "translations": { "en": "question particle", "fa": "ذره سوالی" } }
+                            ],
+                            "translations": { "en": "Do you eat?", "fa": "آیا شما می‌خورید؟" }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "เขาชอบไหม",
+                            "words": [
+                                { "word": "เขา", "translations": { "en": "he", "fa": "او" } },
+                                { "word": "ชอบ", "translations": { "en": "like", "fa": "دوست دارد" } },
+                                { "word": "ไหม", "translations": { "en": "question particle", "fa": "ذره سوالی" } }
+                            ],
+                            "translations": { "en": "Does he like it?", "fa": "آیا او دوست دارد؟" }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "เรามาสายไหม",
+                            "words": [
+                                { "word": "เรา", "translations": { "en": "we", "fa": "ما" } },
+                                { "word": "มา", "translations": { "en": "come", "fa": "آمدیم" } },
+                                { "word": "สาย", "translations": { "en": "late", "fa": "دیر" } },
+                                { "word": "ไหม", "translations": { "en": "question particle", "fa": "ذره سوالی" } }
+                            ],
+                            "translations": { "en": "Are we late?", "fa": "آیا ما دیر آمدیم؟" }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "พวกเขาไปไหม",
+                            "words": [
+                                { "word": "พวกเขา", "translations": { "en": "they", "fa": "آنها" } },
+                                { "word": "ไป", "translations": { "en": "go", "fa": "می‌روند" } },
+                                { "word": "ไหม", "translations": { "en": "question particle", "fa": "ذره سوالی" } }
+                            ],
+                            "translations": { "en": "Are they going?", "fa": "آیا آنها می‌روند؟" }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "คุณชื่ออะไร",
+                            "words": [
+                                { "word": "คุณ", "translations": { "en": "you", "fa": "شما" } },
+                                { "word": "ชื่อ", "translations": { "en": "name", "fa": "اسم" } },
+                                { "word": "อะไร", "translations": { "en": "what", "fa": "چیست" } }
+                            ],
+                            "translations": { "en": "What's your name?", "fa": "اسم شما چیست؟" }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ราคาเท่าไหร่",
+                            "words": [
+                                { "word": "ราคา", "translations": { "en": "price", "fa": "قیمت" } },
+                                { "word": "เท่าไหร่", "translations": { "en": "how much", "fa": "چقدر" } }
+                            ],
+                            "translations": { "en": "How much is it?", "fa": "قیمتش چقدر است؟" }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "นี่อะไร",
+                            "words": [
+                                { "word": "นี่", "translations": { "en": "this", "fa": "این" } },
+                                { "word": "อะไร", "translations": { "en": "what", "fa": "چیست" } }
+                            ],
+                            "translations": { "en": "What's this?", "fa": "این چیست؟" }
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

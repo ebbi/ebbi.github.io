@@ -1,0 +1,332 @@
+{
+    "documentId": "grammar_connectors",
+    "grammar": {
+        "pattern": "Sentence A + และ/แต่/หรือ + Sentence B",
+        "explanation": {
+            "en": "Connect sentences using และ (lâe) for 'and', แต่ (dtàe) for 'but', and หรือ (rǔe) for 'or'.",
+            "fa": "جملات را با استفاده از และ (lâe) برای 'و', แต่ (dtàe) برای 'اما', และ หรือ (rǔe) برای 'یا' به هم وصل کنید.",
+            "th": "เชื่อมประโยคโดยใช้ และ (และ), แต่ (แต่) และ หรือ (หรือ)"
+        }
+    },
+    "sections": [
+        {
+            "heading": {
+                "en": "And (และ)",
+                "fa": "و (และ)",
+                "th": "และ"
+            },
+            "activities": [ "multipleChoiceWord", "multipleChoiceSentence" ],
+            "blocks": [
+                {
+                    "type": "paragraph",
+                    "elements": [
+                        {
+                            "type": "sentence",
+                            "source": "ฉันกินข้าวและดื่มน้ำ",
+                            "grammar": {
+                                "pattern": "ฉันกินข้าว + และ + ดื่มน้ำ",
+                                "note": {
+                                    "en": "I eat rice and drink water",
+                                    "fa": "من برنج می‌خورم و آب می‌نوشم",
+                                    "th": "ฉันกินข้าวและดื่มน้ำ"
+                                }
+                            },
+                            "words": [
+                                { "word": "ฉัน", "translations": { "en": "I", "fa": "من" } },
+                                { "word": "กิน", "translations": { "en": "eat", "fa": "می‌خورم" } },
+                                { "word": "ข้าว", "translations": { "en": "rice", "fa": "برنج" } },
+                                { "word": "และ", "translations": { "en": "and", "fa": "و" } },
+                                { "word": "ดื่ม", "translations": { "en": "drink", "fa": "می‌نوشم" } },
+                                { "word": "น้ำ", "translations": { "en": "water", "fa": "آب" } }
+                            ],
+                            "translations": {
+                                "en": "I eat rice and drink water",
+                                "fa": "من برنج می‌خورم و آب می‌نوشم"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "เขาสูงและหล่อ",
+                            "words": [
+                                { "word": "เขา", "translations": { "en": "he", "fa": "او" } },
+                                { "word": "สูง", "translations": { "en": "tall", "fa": "قدبلند" } },
+                                { "word": "และ", "translations": { "en": "and", "fa": "و" } },
+                                { "word": "หล่อ", "translations": { "en": "handsome", "fa": "خوش‌تیپ" } }
+                            ],
+                            "translations": {
+                                "en": "He is tall and handsome",
+                                "fa": "او قدبلند و خوش‌تیپ است"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "heading": {
+                "en": "But (แต่)",
+                "fa": "اما (แต่)",
+                "th": "แต่"
+            },
+            "activities": [ "multipleChoiceWord", "multipleChoiceSentence" ],
+            "blocks": [
+                {
+                    "type": "paragraph",
+                    "elements": [
+                        {
+                            "type": "sentence",
+                            "source": "อยากไปแต่ไม่มีเวลา",
+                            "grammar": {
+                                "pattern": "อยากไป + แต่ + ไม่มีเวลา",
+                                "note": {
+                                    "en": "Want to go but don't have time",
+                                    "fa": "می‌خواهم بروم اما وقت ندارم",
+                                    "th": "อยากไปแต่ไม่มีเวลา"
+                                }
+                            },
+                            "words": [
+                                { "word": "อยาก", "translations": { "en": "want", "fa": "می‌خواهم" } },
+                                { "word": "ไป", "translations": { "en": "go", "fa": "بروم" } },
+                                { "word": "แต่", "translations": { "en": "but", "fa": "اما" } },
+                                { "word": "ไม่มี", "translations": { "en": "no", "fa": "ندارم" } },
+                                { "word": "เวลา", "translations": { "en": "time", "fa": "وقت" } }
+                            ],
+                            "translations": {
+                                "en": "Want to go but don't have time",
+                                "fa": "می‌خواهم بروم اما وقت ندارم"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ร้านนี้เล็กแต่อร่อย",
+                            "words": [
+                                { "word": "ร้านนี้", "translations": { "en": "this shop", "fa": "این فروشگاه" } },
+                                { "word": "เล็ก", "translations": { "en": "small", "fa": "کوچک" } },
+                                { "word": "แต่", "translations": { "en": "but", "fa": "اما" } },
+                                { "word": "อร่อย", "translations": { "en": "delicious", "fa": "خوشمزه" } }
+                            ],
+                            "translations": {
+                                "en": "This shop is small but delicious",
+                                "fa": "این فروشگاه کوچک اما خوشمزه است"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "heading": {
+                "en": "Or (หรือ)",
+                "fa": "یا (หรือ)",
+                "th": "หรือ"
+            },
+            "activities": [ "multipleChoiceWord", "multipleChoiceSentence" ],
+            "blocks": [
+                {
+                    "type": "paragraph",
+                    "elements": [
+                        {
+                            "type": "sentence",
+                            "source": "กินข้าวหรือกินก๋วยเตี๋ยว",
+                            "grammar": {
+                                "pattern": "กินข้าว + หรือ + กินก๋วยเตี๋ยว",
+                                "note": {
+                                    "en": "Eat rice or eat noodles?",
+                                    "fa": "برنج می‌خوری یا نودل؟",
+                                    "th": "กินข้าวหรือกินก๋วยเตี๋ยว"
+                                }
+                            },
+                            "words": [
+                                { "word": "กิน", "translations": { "en": "eat", "fa": "می‌خوری" } },
+                                { "word": "ข้าว", "translations": { "en": "rice", "fa": "برنج" } },
+                                { "word": "หรือ", "translations": { "en": "or", "fa": "یا" } },
+                                { "word": "กิน", "translations": { "en": "eat", "fa": "می‌خوری" } },
+                                { "word": "ก๋วยเตี๋ยว", "translations": { "en": "noodles", "fa": "نودل" } }
+                            ],
+                            "translations": {
+                                "en": "Eat rice or eat noodles?",
+                                "fa": "برنج می‌خوری یا نودل؟"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "คุณชอบสีแดงหรือสีน้ำเงิน",
+                            "words": [
+                                { "word": "คุณ", "translations": { "en": "you", "fa": "شما" } },
+                                { "word": "ชอบ", "translations": { "en": "like", "fa": "دوست دارید" } },
+                                { "word": "สีแดง", "translations": { "en": "red", "fa": "قرمز" } },
+                                { "word": "หรือ", "translations": { "en": "or", "fa": "یا" } },
+                                { "word": "สีน้ำเงิน", "translations": { "en": "blue", "fa": "آبی" } }
+                            ],
+                            "translations": {
+                                "en": "Do you like red or blue?",
+                                "fa": "قرمز دوست دارید یا آبی؟"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "heading": {
+                "en": "10+ Connector Examples",
+                "fa": "۱۰+ مثال حروف ربط",
+                "th": "ตัวอย่างคำเชื่อม ๑๐+ ประโยค"
+            },
+            "activities": [ "multipleChoiceWord", "multipleChoiceSentence" ],
+            "blocks": [
+                {
+                    "type": "paragraph",
+                    "elements": [
+                        {
+                            "type": "sentence",
+                            "source": "ฉันชอบไทยและญี่ปุ่น",
+                            "words": [
+                                { "word": "ฉัน", "translations": { "en": "I", "fa": "من" } },
+                                { "word": "ชอบ", "translations": { "en": "like", "fa": "دوست دارم" } },
+                                { "word": "ไทย", "translations": { "en": "Thailand", "fa": "تایلند" } },
+                                { "word": "และ", "translations": { "en": "and", "fa": "و" } },
+                                { "word": "ญี่ปุ่น", "translations": { "en": "Japan", "fa": "ژاپن" } }
+                            ],
+                            "translations": {
+                                "en": "I like Thailand and Japan",
+                                "fa": "من تایلند و ژاپن را دوست دارم"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "เขาพยายามแต่ไม่สำเร็จ",
+                            "words": [
+                                { "word": "เขา", "translations": { "en": "he", "fa": "او" } },
+                                { "word": "พยายาม", "translations": { "en": "try", "fa": "تلاش کرد" } },
+                                { "word": "แต่", "translations": { "en": "but", "fa": "اما" } },
+                                { "word": "ไม่", "translations": { "en": "not", "fa": "نشد" } },
+                                { "word": "สำเร็จ", "translations": { "en": "succeed", "fa": "موفق" } }
+                            ],
+                            "translations": {
+                                "en": "He tried but didn't succeed",
+                                "fa": "او تلاش کرد اما موفق نشد"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "คุณจะไปหรืออยู่",
+                            "words": [
+                                { "word": "คุณ", "translations": { "en": "you", "fa": "شما" } },
+                                { "word": "จะ", "translations": { "en": "will", "fa": "می‌خواهید" } },
+                                { "word": "ไป", "translations": { "en": "go", "fa": "بروید" } },
+                                { "word": "หรือ", "translations": { "en": "or", "fa": "یا" } },
+                                { "word": "อยู่", "translations": { "en": "stay", "fa": "بمانید" } }
+                            ],
+                            "translations": {
+                                "en": "Will you go or stay?",
+                                "fa": "می‌خواهید بروید یا بمانید؟"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ฉันเหนื่อยและหิว",
+                            "words": [
+                                { "word": "ฉัน", "translations": { "en": "I", "fa": "من" } },
+                                { "word": "เหนื่อย", "translations": { "en": "tired", "fa": "خسته" } },
+                                { "word": "และ", "translations": { "en": "and", "fa": "و" } },
+                                { "word": "หิว", "translations": { "en": "hungry", "fa": "گرسنه" } }
+                            ],
+                            "translations": {
+                                "en": "I'm tired and hungry",
+                                "fa": "من خسته و گرسنه هستم"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "เขารวยแต่ไม่มีความสุข",
+                            "words": [
+                                { "word": "เขา", "translations": { "en": "he", "fa": "او" } },
+                                { "word": "รวย", "translations": { "en": "rich", "fa": "ثروتمند" } },
+                                { "word": "แต่", "translations": { "en": "but", "fa": "اما" } },
+                                { "word": "ไม่มี", "translations": { "en": "no", "fa": "ندارد" } },
+                                { "word": "ความสุข", "translations": { "en": "happiness", "fa": "خوشبختی" } }
+                            ],
+                            "translations": {
+                                "en": "He's rich but not happy",
+                                "fa": "او ثروتمند است اما خوشبخت نیست"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ชาหรือกาแฟ",
+                            "words": [
+                                { "word": "ชา", "translations": { "en": "tea", "fa": "چای" } },
+                                { "word": "หรือ", "translations": { "en": "or", "fa": "یا" } },
+                                { "word": "กาแฟ", "translations": { "en": "coffee", "fa": "قهوه" } }
+                            ],
+                            "translations": {
+                                "en": "Tea or coffee?",
+                                "fa": "چای یا قهوه؟"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "เขาพูดช้าและชัดเจน",
+                            "words": [
+                                { "word": "เขา", "translations": { "en": "he", "fa": "او" } },
+                                { "word": "พูด", "translations": { "en": "speak", "fa": "صحبت می‌کند" } },
+                                { "word": "ช้า", "translations": { "en": "slowly", "fa": "آهسته" } },
+                                { "word": "และ", "translations": { "en": "and", "fa": "و" } },
+                                { "word": "ชัดเจน", "translations": { "en": "clearly", "fa": "واضح" } }
+                            ],
+                            "translations": {
+                                "en": "He speaks slowly and clearly",
+                                "fa": "او آهسته و واضح صحبت می‌کند"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ฉันซื้อแต่ของถูก",
+                            "words": [
+                                { "word": "ฉัน", "translations": { "en": "I", "fa": "من" } },
+                                { "word": "ซื้อ", "translations": { "en": "buy", "fa": "می‌خرم" } },
+                                { "word": "แต่", "translations": { "en": "only", "fa": "فقط" } },
+                                { "word": "ของ", "translations": { "en": "things", "fa": "چیزها" } },
+                                { "word": "ถูก", "translations": { "en": "cheap", "fa": "ارزان" } }
+                            ],
+                            "translations": {
+                                "en": "I only buy cheap things",
+                                "fa": "من فقط چیزهای ارزان می‌خرم"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "เขาสูงหรือเตี้ย",
+                            "words": [
+                                { "word": "เขา", "translations": { "en": "he", "fa": "او" } },
+                                { "word": "สูง", "translations": { "en": "tall", "fa": "قدبلند" } },
+                                { "word": "หรือ", "translations": { "en": "or", "fa": "یا" } },
+                                { "word": "เตี้ย", "translations": { "en": "short", "fa": "کوتاه" } }
+                            ],
+                            "translations": {
+                                "en": "Is he tall or short?",
+                                "fa": "او قدبلند است یا کوتاه؟"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ฉันพยายามแล้วแต่ไม่ได้",
+                            "words": [
+                                { "word": "ฉัน", "translations": { "en": "I", "fa": "من" } },
+                                { "word": "พยายาม", "translations": { "en": "try", "fa": "تلاش کردم" } },
+                                { "word": "แล้ว", "translations": { "en": "already", "fa": "قبلاً" } },
+                                { "word": "แต่", "translations": { "en": "but", "fa": "اما" } },
+                                { "word": "ไม่ได้", "translations": { "en": "can't", "fa": "نتوانستم" } }
+                            ],
+                            "translations": {
+                                "en": "I tried but couldn't",
+                                "fa": "تلاش کردم اما نتوانستم"
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

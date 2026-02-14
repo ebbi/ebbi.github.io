@@ -1,0 +1,341 @@
+{
+    "documentId": "grammar_what_questions",
+    "grammar": {
+        "pattern": "อะไร (what)",
+        "explanation": {
+            "en": "อะไร (à-rai) means 'what'. It can come at the end of a question or in the middle, depending on what you're asking about.",
+            "fa": "อะไร (à-rai) به معنی 'چه چیزی' است. بسته به اینکه درباره چه چیزی می‌پرسید، می‌تواند در پایان سوال یا در وسط آن بیاید.",
+            "th": "อะไร ใช้ถามถึงสิ่งต่างๆ สามารถวางไว้ท้ายประโยคหรือกลางประโยคได้ ขึ้นอยู่กับสิ่งที่ต้องการถาม"
+        },
+        "usage": {
+            "en": "Place อะไร at the end for 'What is/are...?' questions. Place it in the middle for 'What do/does...?' questions.",
+            "fa": "برای سوالات '... چیست/هستند؟' อะไร را در پایان قرار دهید. برای سوالات '... چه کار می‌کند/می‌کنند؟' آن را در وسط قرار دهید.",
+            "th": "วาง อะไร ท้ายประโยคสำหรับคำถาม '...คืออะไร' วางกลางประโยคสำหรับคำถาม '...ทำอะไร'"
+        }
+    },
+    "sections": [
+        {
+            "heading": {
+                "en": "What is/are...?",
+                "fa": "... چیست/هستند؟",
+                "th": "...คืออะไร"
+            },
+            "activities": [ "multipleChoiceWord", "multipleChoiceSentence" ],
+            "blocks": [
+                {
+                    "type": "grammar-intro",
+                    "content": {
+                        "en": "When asking 'What is this/that?' or 'What are these?', อะไร comes at the end.",
+                        "fa": "هنگام پرسیدن 'این/آن چیست؟' یا 'اینها چیستند؟'، อะไร در پایان می‌آید.",
+                        "th": "เมื่อถาม 'นี่/นั่นคืออะไร' หรือ 'เหล่านี้คืออะไร' ให้วาง อะไร ท้ายประโยค"
+                    }
+                },
+                {
+                    "type": "paragraph",
+                    "elements": [
+                        {
+                            "type": "sentence",
+                            "source": "นี่อะไร",
+                            "grammar": {
+                                "pattern": "นี่ + อะไร",
+                                "note": {
+                                    "en": "What is this? (pointing to something close)",
+                                    "fa": "این چیست؟ (اشاره به چیزی نزدیک)",
+                                    "th": "นี่คืออะไร (ชี้ไปที่สิ่งที่อยู่ใกล้)"
+                                }
+                            },
+                            "words": [
+                                { "word": "นี่", "translations": { "en": "this", "fa": "این" } },
+                                { "word": "อะไร", "translations": { "en": "what", "fa": "چیست" } }
+                            ],
+                            "translations": {
+                                "en": "What is this?",
+                                "fa": "این چیست؟"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "นั่นอะไร",
+                            "words": [
+                                { "word": "นั่น", "translations": { "en": "that", "fa": "آن" } },
+                                { "word": "อะไร", "translations": { "en": "what", "fa": "چیست" } }
+                            ],
+                            "translations": {
+                                "en": "What is that?",
+                                "fa": "آن چیست؟"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "นี่คืออะไร",
+                            "words": [
+                                { "word": "นี่", "translations": { "en": "this", "fa": "این" } },
+                                { "word": "คือ", "translations": { "en": "is", "fa": "است" } },
+                                { "word": "อะไร", "translations": { "en": "what", "fa": "چیست" } }
+                            ],
+                            "translations": {
+                                "en": "What is this? (more formal)",
+                                "fa": "این چیست؟ (رسمی‌تر)"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "นั่นคืออะไร",
+                            "words": [
+                                { "word": "นั่น", "translations": { "en": "that", "fa": "آن" } },
+                                { "word": "คือ", "translations": { "en": "is", "fa": "است" } },
+                                { "word": "อะไร", "translations": { "en": "what", "fa": "چیست" } }
+                            ],
+                            "translations": {
+                                "en": "What is that? (more formal)",
+                                "fa": "آن چیست؟ (رسمی‌تر)"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "สิ่งนี้คืออะไร",
+                            "words": [
+                                { "word": "สิ่งนี้", "translations": { "en": "this thing", "fa": "این چیز" } },
+                                { "word": "คือ", "translations": { "en": "is", "fa": "است" } },
+                                { "word": "อะไร", "translations": { "en": "what", "fa": "چیست" } }
+                            ],
+                            "translations": {
+                                "en": "What is this thing?",
+                                "fa": "این چیز چیست؟"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "heading": {
+                "en": "What do/does...?",
+                "fa": "... چه کار می‌کند/می‌کنند؟",
+                "th": "...ทำอะไร"
+            },
+            "activities": [ "multipleChoiceWord", "multipleChoiceSentence" ],
+            "blocks": [
+                {
+                    "type": "paragraph",
+                    "elements": [
+                        {
+                            "type": "sentence",
+                            "source": "คุณทำอะไร",
+                            "grammar": {
+                                "pattern": "คุณ + ทำ + อะไร",
+                                "note": {
+                                    "en": "What are you doing? / What do you do?",
+                                    "fa": "چه کار می‌کنی؟ / شغل تو چیست؟",
+                                    "th": "คุณทำอะไร"
+                                }
+                            },
+                            "words": [
+                                { "word": "คุณ", "translations": { "en": "you", "fa": "شما" } },
+                                { "word": "ทำ", "translations": { "en": "do", "fa": "انجام می‌دهید" } },
+                                { "word": "อะไร", "translations": { "en": "what", "fa": "چه" } }
+                            ],
+                            "translations": {
+                                "en": "What are you doing?",
+                                "fa": "چه کار می‌کنید؟"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "เขากินอะไร",
+                            "words": [
+                                { "word": "เขา", "translations": { "en": "he", "fa": "او" } },
+                                { "word": "กิน", "translations": { "en": "eat", "fa": "می‌خورد" } },
+                                { "word": "อะไร", "translations": { "en": "what", "fa": "چه" } }
+                            ],
+                            "translations": {
+                                "en": "What is he eating?",
+                                "fa": "او چه می‌خورد؟"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "คุณชอบอะไร",
+                            "words": [
+                                { "word": "คุณ", "translations": { "en": "you", "fa": "شما" } },
+                                { "word": "ชอบ", "translations": { "en": "like", "fa": "دوست دارید" } },
+                                { "word": "อะไร", "translations": { "en": "what", "fa": "چه" } }
+                            ],
+                            "translations": {
+                                "en": "What do you like?",
+                                "fa": "چه چیزی دوست دارید؟"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "พวกเขาต้องการอะไร",
+                            "words": [
+                                { "word": "พวกเขา", "translations": { "en": "they", "fa": "آنها" } },
+                                { "word": "ต้องการ", "translations": { "en": "want", "fa": "می‌خواهند" } },
+                                { "word": "อะไร", "translations": { "en": "what", "fa": "چه" } }
+                            ],
+                            "translations": {
+                                "en": "What do they want?",
+                                "fa": "آنها چه می‌خواهند؟"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "คุณพูดอะไร",
+                            "words": [
+                                { "word": "คุณ", "translations": { "en": "you", "fa": "شما" } },
+                                { "word": "พูด", "translations": { "en": "say", "fa": "گفتید" } },
+                                { "word": "อะไร", "translations": { "en": "what", "fa": "چه" } }
+                            ],
+                            "translations": {
+                                "en": "What did you say?",
+                                "fa": "چه گفتید؟"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "heading": {
+                "en": "10+ What Questions",
+                "fa": "۱۰+ سوال با چه",
+                "th": "คำถามอะไร ๑๐+ ประโยค"
+            },
+            "activities": [ "multipleChoiceWord", "multipleChoiceSentence" ],
+            "blocks": [
+                {
+                    "type": "paragraph",
+                    "elements": [
+                        {
+                            "type": "sentence",
+                            "source": "ชื่ออะไร",
+                            "words": [
+                                { "word": "ชื่อ", "translations": { "en": "name", "fa": "اسم" } },
+                                { "word": "อะไร", "translations": { "en": "what", "fa": "چیست" } }
+                            ],
+                            "translations": {
+                                "en": "What's (your) name?",
+                                "fa": "اسمت چیست؟"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ราคาเท่าไหร่",
+                            "words": [
+                                { "word": "ราคา", "translations": { "en": "price", "fa": "قیمت" } },
+                                { "word": "เท่าไหร่", "translations": { "en": "how much", "fa": "چقدر" } }
+                            ],
+                            "translations": {
+                                "en": "What's the price?",
+                                "fa": "قیمت چقدر است؟"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "เวลาอะไร",
+                            "words": [
+                                { "word": "เวลา", "translations": { "en": "time", "fa": "زمان" } },
+                                { "word": "อะไร", "translations": { "en": "what", "fa": "چه" } }
+                            ],
+                            "translations": {
+                                "en": "What time?",
+                                "fa": "چه ساعتی؟"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "วันอะไร",
+                            "words": [
+                                { "word": "วัน", "translations": { "en": "day", "fa": "روز" } },
+                                { "word": "อะไร", "translations": { "en": "what", "fa": "چه" } }
+                            ],
+                            "translations": {
+                                "en": "What day?",
+                                "fa": "چه روزی؟"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "คุณคิดยังไง",
+                            "words": [
+                                { "word": "คุณ", "translations": { "en": "you", "fa": "شما" } },
+                                { "word": "คิด", "translations": { "en": "think", "fa": "فکر می‌کنید" } },
+                                { "word": "ยังไง", "translations": { "en": "how", "fa": "چطور" } }
+                            ],
+                            "translations": {
+                                "en": "What do you think?",
+                                "fa": "چه فکر می‌کنید؟"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "เกิดอะไรขึ้น",
+                            "words": [
+                                { "word": "เกิด", "translations": { "en": "happen", "fa": "اتفاق افتاد" } },
+                                { "word": "อะไร", "translations": { "en": "what", "fa": "چه" } },
+                                { "word": "ขึ้น", "translations": { "en": "up", "fa": "رخ داد" } }
+                            ],
+                            "translations": {
+                                "en": "What happened?",
+                                "fa": "چه اتفاقی افتاد؟"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "นี่คืออะไร",
+                            "words": [
+                                { "word": "นี่", "translations": { "en": "this", "fa": "این" } },
+                                { "word": "คือ", "translations": { "en": "is", "fa": "است" } },
+                                { "word": "อะไร", "translations": { "en": "what", "fa": "چه" } }
+                            ],
+                            "translations": {
+                                "en": "What is this?",
+                                "fa": "این چیست؟"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "คุณหมายถึงอะไร",
+                            "words": [
+                                { "word": "คุณ", "translations": { "en": "you", "fa": "شما" } },
+                                { "word": "หมายถึง", "translations": { "en": "mean", "fa": "منظورتان" } },
+                                { "word": "อะไร", "translations": { "en": "what", "fa": "چیست" } }
+                            ],
+                            "translations": {
+                                "en": "What do you mean?",
+                                "fa": "منظورتان چیست؟"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "เรื่องอะไร",
+                            "words": [
+                                { "word": "เรื่อง", "translations": { "en": "story/matter", "fa": "موضوع" } },
+                                { "word": "อะไร", "translations": { "en": "what", "fa": "چه" } }
+                            ],
+                            "translations": {
+                                "en": "What's the matter?",
+                                "fa": "چه موضوعی؟"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "คุณทำอาชีพอะไร",
+                            "words": [
+                                { "word": "คุณ", "translations": { "en": "you", "fa": "شما" } },
+                                { "word": "ทำ", "translations": { "en": "do", "fa": "انجام می‌دهید" } },
+                                { "word": "อาชีพ", "translations": { "en": "occupation", "fa": "شغل" } },
+                                { "word": "อะไร", "translations": { "en": "what", "fa": "چه" } }
+                            ],
+                            "translations": {
+                                "en": "What's your occupation?",
+                                "fa": "شغل شما چیست؟"
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

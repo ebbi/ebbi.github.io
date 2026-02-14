@@ -1,0 +1,269 @@
+{
+    "documentId": "grammar_past_tense",
+    "grammar": {
+        "pattern": "Verb + แล้ว OR ได้ + Verb",
+        "explanation": {
+            "en": "Thai has two main ways to express past tense: put แล้ว (láew) at the end of a sentence, or put ได้ (dâi) before the verb. แล้ว is more common for completed actions, ได้ is often used for events in the past.",
+            "fa": "تایلندی دو راه اصلی برای بیان زمان گذشته دارد: แล้ว (láew) را در پایان جمله قرار دهید، یا ได้ (dâi) را قبل از فعل قرار دهید. แล้ว برای کارهای انجام شده رایج‌تر است، ได้ اغلب برای رویدادهای گذشته استفاده می‌شود.",
+            "th": "ภาษาไทยมีสองวิธีหลักในการบอกอดีตกาล: ใส่ แล้ว ท้ายประโยค หรือใส่ ได้ หน้าคำกริยา แล้ว พบได้บ่อยสำหรับการกระทำที่เสร็จสิ้นแล้ว ได้ มักใช้สำหรับเหตุการณ์ในอดีต"
+        }
+    },
+    "sections": [
+        {
+            "heading": {
+                "en": "Using แล้ว for Completed Actions",
+                "fa": "استفاده از แล้ว برای کارهای انجام شده",
+                "th": "การใช้ แล้ว สำหรับการกระทำที่เสร็จสิ้น"
+            },
+            "activities": [ "multipleChoiceWord", "multipleChoiceSentence" ],
+            "blocks": [
+                {
+                    "type": "paragraph",
+                    "elements": [
+                        {
+                            "type": "sentence",
+                            "source": "กินข้าวแล้ว",
+                            "grammar": {
+                                "pattern": "กินข้าว + แล้ว",
+                                "note": {
+                                    "en": "Already ate (literally: eat rice already)",
+                                    "fa": "قبلاً غذا خوردم (به معنای واقعی: غذا خوردن قبلاً)",
+                                    "th": "กินข้าวแล้ว"
+                                }
+                            },
+                            "words": [
+                                { "word": "กิน", "translations": { "en": "eat", "fa": "خوردم" } },
+                                { "word": "ข้าว", "translations": { "en": "rice", "fa": "غذا" } },
+                                { "word": "แล้ว", "translations": { "en": "already", "fa": "قبلاً" } }
+                            ],
+                            "translations": {
+                                "en": "I already ate",
+                                "fa": "قبلاً غذا خوردم"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ไปแล้ว",
+                            "words": [
+                                { "word": "ไป", "translations": { "en": "go", "fa": "رفتم" } },
+                                { "word": "แล้ว", "translations": { "en": "already", "fa": "قبلاً" } }
+                            ],
+                            "translations": {
+                                "en": "Already went / I'm gone",
+                                "fa": "رفتم / قبلاً رفتم"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ทำงานเสร็จแล้ว",
+                            "words": [
+                                { "word": "ทำงาน", "translations": { "en": "work", "fa": "کار" } },
+                                { "word": "เสร็จ", "translations": { "en": "finish", "fa": "تمام شد" } },
+                                { "word": "แล้ว", "translations": { "en": "already", "fa": "قبلاً" } }
+                            ],
+                            "translations": {
+                                "en": "Finished work already",
+                                "fa": "کار را قبلاً تمام کردم"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "heading": {
+                "en": "Using ได้ for Past Events",
+                "fa": "استفاده از ได้ برای رویدادهای گذشته",
+                "th": "การใช้ ได้ สำหรับเหตุการณ์ในอดีต"
+            },
+            "activities": [ "multipleChoiceWord", "multipleChoiceSentence" ],
+            "blocks": [
+                {
+                    "type": "paragraph",
+                    "elements": [
+                        {
+                            "type": "sentence",
+                            "source": "ได้ไปเที่ยว",
+                            "grammar": {
+                                "pattern": "ได้ + ไปเที่ยว",
+                                "note": {
+                                    "en": "Went traveling (emphasizes the experience)",
+                                    "fa": "به سفر رفتم (بر تجربه تأکید می‌کند)",
+                                    "th": "ได้ไปเที่ยว"
+                                }
+                            },
+                            "words": [
+                                { "word": "ได้", "translations": { "en": "past marker", "fa": "قبلاً" } },
+                                { "word": "ไป", "translations": { "en": "go", "fa": "رفتم" } },
+                                { "word": "เที่ยว", "translations": { "en": "travel", "fa": "سفر" } }
+                            ],
+                            "translations": {
+                                "en": "Went traveling",
+                                "fa": "به سفر رفتم"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ได้เจอเขา",
+                            "words": [
+                                { "word": "ได้", "translations": { "en": "past marker", "fa": "قبلاً" } },
+                                { "word": "เจอ", "translations": { "en": "meet", "fa": "دیدم" } },
+                                { "word": "เขา", "translations": { "en": "him", "fa": "او" } }
+                            ],
+                            "translations": {
+                                "en": "Met him",
+                                "fa": "او را دیدم"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "heading": {
+                "en": "10+ Past Tense Examples",
+                "fa": "۱۰+ مثال گذشته",
+                "th": "ตัวอย่างอดีตกาล ๑๐+ ประโยค"
+            },
+            "activities": [ "multipleChoiceWord", "multipleChoiceSentence" ],
+            "blocks": [
+                {
+                    "type": "paragraph",
+                    "elements": [
+                        {
+                            "type": "sentence",
+                            "source": "เมื่อวานไปทะเล",
+                            "words": [
+                                { "word": "เมื่อวาน", "translations": { "en": "yesterday", "fa": "دیروز" } },
+                                { "word": "ไป", "translations": { "en": "go", "fa": "رفتم" } },
+                                { "word": "ทะเล", "translations": { "en": "beach", "fa": "دریا" } }
+                            ],
+                            "translations": {
+                                "en": "Yesterday went to the beach",
+                                "fa": "دیروز به دریا رفتم"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "กินข้าวเช้าแล้ว",
+                            "words": [
+                                { "word": "กิน", "translations": { "en": "eat", "fa": "خوردم" } },
+                                { "word": "ข้าวเช้า", "translations": { "en": "breakfast", "fa": "صبحانه" } },
+                                { "word": "แล้ว", "translations": { "en": "already", "fa": "قبلاً" } }
+                            ],
+                            "translations": {
+                                "en": "Already ate breakfast",
+                                "fa": "صبحانه را قبلاً خوردم"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "เขาเพิ่งกลับมา",
+                            "words": [
+                                { "word": "เขา", "translations": { "en": "he", "fa": "او" } },
+                                { "word": "เพิ่ง", "translations": { "en": "just", "fa": "تازه" } },
+                                { "word": "กลับมา", "translations": { "en": "return", "fa": "برگشت" } }
+                            ],
+                            "translations": {
+                                "en": "He just returned",
+                                "fa": "او تازه برگشت"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ได้ยินข่าวร้าย",
+                            "words": [
+                                { "word": "ได้", "translations": { "en": "past", "fa": "قبلاً" } },
+                                { "word": "ยิน", "translations": { "en": "hear", "fa": "شنیدم" } },
+                                { "word": "ข่าวร้าย", "translations": { "en": "bad news", "fa": "خبر بد" } }
+                            ],
+                            "translations": {
+                                "en": "Heard bad news",
+                                "fa": "خبر بد شنیدم"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ซื้อของมาแล้ว",
+                            "words": [
+                                { "word": "ซื้อ", "translations": { "en": "buy", "fa": "خریدم" } },
+                                { "word": "ของ", "translations": { "en": "things", "fa": "چیزها" } },
+                                { "word": "มา", "translations": { "en": "come", "fa": "آوردم" } },
+                                { "word": "แล้ว", "translations": { "en": "already", "fa": "قبلاً" } }
+                            ],
+                            "translations": {
+                                "en": "Already bought things",
+                                "fa": "قبلاً خریدم"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ฝนตกเมื่อคืน",
+                            "words": [
+                                { "word": "ฝน", "translations": { "en": "rain", "fa": "باران" } },
+                                { "word": "ตก", "translations": { "en": "fall", "fa": "بارید" } },
+                                { "word": "เมื่อคืน", "translations": { "en": "last night", "fa": "دیشب" } }
+                            ],
+                            "translations": {
+                                "en": "It rained last night",
+                                "fa": "دیشب باران بارید"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "เขาเสียชีวิตแล้ว",
+                            "words": [
+                                { "word": "เขา", "translations": { "en": "he", "fa": "او" } },
+                                { "word": "เสียชีวิต", "translations": { "en": "die", "fa": "فوت کرد" } },
+                                { "word": "แล้ว", "translations": { "en": "already", "fa": "قبلاً" } }
+                            ],
+                            "translations": {
+                                "en": "He has passed away",
+                                "fa": "او فوت کرده است"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "เรียนจบแล้ว",
+                            "words": [
+                                { "word": "เรียน", "translations": { "en": "study", "fa": "تحصیل" } },
+                                { "word": "จบ", "translations": { "en": "graduate", "fa": "فارغ‌التحصیل شدم" } },
+                                { "word": "แล้ว", "translations": { "en": "already", "fa": "قبلاً" } }
+                            ],
+                            "translations": {
+                                "en": "Already graduated",
+                                "fa": "قبلاً فارغ‌التحصیل شدم"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ได้ไปต่างประเทศ",
+                            "words": [
+                                { "word": "ได้", "translations": { "en": "past", "fa": "قبلاً" } },
+                                { "word": "ไป", "translations": { "en": "go", "fa": "رفتم" } },
+                                { "word": "ต่างประเทศ", "translations": { "en": "abroad", "fa": "خارج از کشور" } }
+                            ],
+                            "translations": {
+                                "en": "Went abroad",
+                                "fa": "به خارج از کشور رفتم"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ลืมปิดไฟ",
+                            "words": [
+                                { "word": "ลืม", "translations": { "en": "forget", "fa": "فراموش کردم" } },
+                                { "word": "ปิด", "translations": { "en": "turn off", "fa": "خاموش کنم" } },
+                                { "word": "ไฟ", "translations": { "en": "light", "fa": "چراغ" } }
+                            ],
+                            "translations": {
+                                "en": "Forgot to turn off the light",
+                                "fa": "فراموش کردم چراغ را خاموش کنم"
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

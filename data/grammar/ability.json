@@ -1,0 +1,285 @@
+{
+    "documentId": "grammar_ability",
+    "grammar": {
+        "pattern": "Verb + ได้ OR Verb + เป็น",
+        "explanation": {
+            "en": "Thai uses two different words to express ability: ได้ (dâi) means 'can' in a general sense, while เป็น (bpen) means 'know how to' (implying a learned skill).",
+            "fa": "تایلندی از دو کلمه متفاوت برای بیان توانایی استفاده می‌کند: ได้ (dâi) به معنی 'می‌توانم' به صورت کلی است، در حالی که เป็น (bpen) به معنی 'بلدم' است (به معنای مهارت آموخته شده).",
+            "th": "ภาษาไทยใช้สองคำที่แตกต่างกันเพื่อบอกความสามารถ: ได้ หมายถึง 'สามารถ' โดยทั่วไป ในขณะที่ เป็น หมายถึง 'ทำเป็น' (หมายถึงทักษะที่เรียนรู้มา)"
+        }
+    },
+    "sections": [
+        {
+            "heading": {
+                "en": "General Ability with ได้",
+                "fa": "توانایی کلی با ได้",
+                "th": "ความสามารถทั่วไปด้วย ได้"
+            },
+            "activities": [ "multipleChoiceWord", "multipleChoiceSentence" ],
+            "blocks": [
+                {
+                    "type": "paragraph",
+                    "elements": [
+                        {
+                            "type": "sentence",
+                            "source": "พูดไทยได้",
+                            "grammar": {
+                                "pattern": "พูดไทย + ได้",
+                                "note": {
+                                    "en": "Can speak Thai (able to)",
+                                    "fa": "می‌توانم تایلندی صحبت کنم (قادر بودن)",
+                                    "th": "พูดไทยได้"
+                                }
+                            },
+                            "words": [
+                                { "word": "พูด", "translations": { "en": "speak", "fa": "صحبت کنم" } },
+                                { "word": "ไทย", "translations": { "en": "Thai", "fa": "تایلندی" } },
+                                { "word": "ได้", "translations": { "en": "can", "fa": "می‌توانم" } }
+                            ],
+                            "translations": {
+                                "en": "Can speak Thai",
+                                "fa": "می‌توانم تایلندی صحبت کنم"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ไปได้",
+                            "words": [
+                                { "word": "ไป", "translations": { "en": "go", "fa": "بروم" } },
+                                { "word": "ได้", "translations": { "en": "can", "fa": "می‌توانم" } }
+                            ],
+                            "translations": {
+                                "en": "Can go",
+                                "fa": "می‌توانم بروم"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ช่วยได้",
+                            "words": [
+                                { "word": "ช่วย", "translations": { "en": "help", "fa": "کمک کنم" } },
+                                { "word": "ได้", "translations": { "en": "can", "fa": "می‌توانم" } }
+                            ],
+                            "translations": {
+                                "en": "Can help",
+                                "fa": "می‌توانم کمک کنم"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "heading": {
+                "en": "Learned Skills with เป็น",
+                "fa": "مهارت‌های آموخته شده با เป็น",
+                "th": "ทักษะที่เรียนรู้ด้วย เป็น"
+            },
+            "activities": [ "multipleChoiceWord", "multipleChoiceSentence" ],
+            "blocks": [
+                {
+                    "type": "paragraph",
+                    "elements": [
+                        {
+                            "type": "sentence",
+                            "source": "ขับรถเป็น",
+                            "grammar": {
+                                "pattern": "ขับรถ + เป็น",
+                                "note": {
+                                    "en": "Know how to drive (learned skill)",
+                                    "fa": "بلدم رانندگی کنم (مهارت آموخته شده)",
+                                    "th": "ขับรถเป็น"
+                                }
+                            },
+                            "words": [
+                                { "word": "ขับ", "translations": { "en": "drive", "fa": "رانندگی" } },
+                                { "word": "รถ", "translations": { "en": "car", "fa": "ماشین" } },
+                                { "word": "เป็น", "translations": { "en": "know how", "fa": "بلدم" } }
+                            ],
+                            "translations": {
+                                "en": "Know how to drive",
+                                "fa": "بلدم رانندگی کنم"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ว่ายน้ำเป็น",
+                            "words": [
+                                { "word": "ว่ายน้ำ", "translations": { "en": "swim", "fa": "شنا" } },
+                                { "word": "เป็น", "translations": { "en": "know how", "fa": "بلدم" } }
+                            ],
+                            "translations": {
+                                "en": "Know how to swim",
+                                "fa": "بلدم شنا کنم"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ทำอาหารเป็น",
+                            "words": [
+                                { "word": "ทำอาหาร", "translations": { "en": "cook", "fa": "آشپزی" } },
+                                { "word": "เป็น", "translations": { "en": "know how", "fa": "بلدم" } }
+                            ],
+                            "translations": {
+                                "en": "Know how to cook",
+                                "fa": "بلدم آشپزی کنم"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "heading": {
+                "en": "10+ Ability Examples",
+                "fa": "۱۰+ مثال توانایی",
+                "th": "ตัวอย่างความสามารถ ๑๐+ ประโยค"
+            },
+            "activities": [ "multipleChoiceWord", "multipleChoiceSentence" ],
+            "blocks": [
+                {
+                    "type": "paragraph",
+                    "elements": [
+                        {
+                            "type": "sentence",
+                            "source": "กินเผ็ดได้",
+                            "words": [
+                                { "word": "กิน", "translations": { "en": "eat", "fa": "بخورم" } },
+                                { "word": "เผ็ด", "translations": { "en": "spicy", "fa": "تند" } },
+                                { "word": "ได้", "translations": { "en": "can", "fa": "می‌توانم" } }
+                            ],
+                            "translations": {
+                                "en": "Can eat spicy food",
+                                "fa": "می‌توانم غذای تند بخورم"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "เขาเล่นกีตาร์เป็น",
+                            "words": [
+                                { "word": "เขา", "translations": { "en": "he", "fa": "او" } },
+                                { "word": "เล่น", "translations": { "en": "play", "fa": "بزند" } },
+                                { "word": "กีตาร์", "translations": { "en": "guitar", "fa": "گیتار" } },
+                                { "word": "เป็น", "translations": { "en": "know how", "fa": "بلدم" } }
+                            ],
+                            "translations": {
+                                "en": "He knows how to play guitar",
+                                "fa": "او بلد است گیتار بزند"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "คุณมาได้ไหม",
+                            "words": [
+                                { "word": "คุณ", "translations": { "en": "you", "fa": "شما" } },
+                                { "word": "มา", "translations": { "en": "come", "fa": "بیایید" } },
+                                { "word": "ได้", "translations": { "en": "can", "fa": "می‌توانید" } },
+                                { "word": "ไหม", "translations": { "en": "question", "fa": "آیا" } }
+                            ],
+                            "translations": {
+                                "en": "Can you come?",
+                                "fa": "می‌توانید بیایید؟"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ฉันช่วยคุณได้",
+                            "words": [
+                                { "word": "ฉัน", "translations": { "en": "I", "fa": "من" } },
+                                { "word": "ช่วย", "translations": { "en": "help", "fa": "کمک کنم" } },
+                                { "word": "คุณ", "translations": { "en": "you", "fa": "به شما" } },
+                                { "word": "ได้", "translations": { "en": "can", "fa": "می‌توانم" } }
+                            ],
+                            "translations": {
+                                "en": "I can help you",
+                                "fa": "می‌توانم به شما کمک کنم"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "เขาเขียนหนังสือได้",
+                            "words": [
+                                { "word": "เขา", "translations": { "en": "he", "fa": "او" } },
+                                { "word": "เขียน", "translations": { "en": "write", "fa": "بنویسد" } },
+                                { "word": "หนังสือ", "translations": { "en": "book", "fa": "کتاب" } },
+                                { "word": "ได้", "translations": { "en": "can", "fa": "می‌تواند" } }
+                            ],
+                            "translations": {
+                                "en": "He can write books",
+                                "fa": "او می‌تواند کتاب بنویسد"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "คุณพูดช้าๆ ได้ไหม",
+                            "words": [
+                                { "word": "คุณ", "translations": { "en": "you", "fa": "شما" } },
+                                { "word": "พูด", "translations": { "en": "speak", "fa": "صحبت کنید" } },
+                                { "word": "ช้าๆ", "translations": { "en": "slowly", "fa": "آهسته" } },
+                                { "word": "ได้", "translations": { "en": "can", "fa": "می‌توانید" } },
+                                { "word": "ไหม", "translations": { "en": "question", "fa": "آیا" } }
+                            ],
+                            "translations": {
+                                "en": "Can you speak slowly?",
+                                "fa": "می‌توانید آهسته صحبت کنید؟"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ฉันไม่กินเหล้า",
+                            "words": [
+                                { "word": "ฉัน", "translations": { "en": "I", "fa": "من" } },
+                                { "word": "ไม่", "translations": { "en": "not", "fa": "نمی" } },
+                                { "word": "กิน", "translations": { "en": "drink", "fa": "خورم" } },
+                                { "word": "เหล้า", "translations": { "en": "alcohol", "fa": "الکل" } }
+                            ],
+                            "translations": {
+                                "en": "I don't drink alcohol",
+                                "fa": "من الکل نمی‌خورم"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "เขาไม่เข้าใจ",
+                            "words": [
+                                { "word": "เขา", "translations": { "en": "he", "fa": "او" } },
+                                { "word": "ไม่", "translations": { "en": "not", "fa": "نمی" } },
+                                { "word": "เข้าใจ", "translations": { "en": "understand", "fa": "فهمد" } }
+                            ],
+                            "translations": {
+                                "en": "He doesn't understand",
+                                "fa": "او نمی‌فهمد"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "เราไม่ไปเที่ยว",
+                            "words": [
+                                { "word": "เรา", "translations": { "en": "we", "fa": "ما" } },
+                                { "word": "ไม่", "translations": { "en": "not", "fa": "نمی" } },
+                                { "word": "ไป", "translations": { "en": "go", "fa": "رویم" } },
+                                { "word": "เที่ยว", "translations": { "en": "travel", "fa": "سفر" } }
+                            ],
+                            "translations": {
+                                "en": "We're not going traveling",
+                                "fa": "ما به سفر نمی‌رویم"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ไม่เป็นไร",
+                            "words": [
+                                { "word": "ไม่", "translations": { "en": "no", "fa": "نه" } },
+                                { "word": "เป็นไร", "translations": { "en": "matter", "fa": "مشکلی" } }
+                            ],
+                            "translations": {
+                                "en": "It's okay / No problem",
+                                "fa": "مشکلی نیست"
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

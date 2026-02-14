@@ -1,0 +1,278 @@
+{
+    "documentId": "grammar_must_should",
+    "grammar": {
+        "pattern": "ต้อง + Verb (must) / ควร + Verb (should)",
+        "explanation": {
+            "en": "ต้อง (tâwng) expresses necessity or obligation (must/have to). ควร (kuan) expresses advice or recommendation (should).",
+            "fa": "ต้อง (tâwng) بیانگر ضرورت یا اجبار است (باید). ควร (kuan) بیانگر توصیه یا پیشنهاد است (باید / بهتر است).",
+            "th": "ต้อง แสดงความจำเป็นหรือข้อบังคับ (must/have to) ควร แสดงคำแนะนำ (should)"
+        }
+    },
+    "sections": [
+        {
+            "heading": {
+                "en": "Must / Have to (ต้อง)",
+                "fa": "باید (ต้อง)",
+                "th": "ต้อง"
+            },
+            "activities": [ "multipleChoiceWord", "multipleChoiceSentence" ],
+            "blocks": [
+                {
+                    "type": "paragraph",
+                    "elements": [
+                        {
+                            "type": "sentence",
+                            "source": "ต้องไปทำงาน",
+                            "grammar": {
+                                "pattern": "ต้อง + ไป + ทำงาน",
+                                "note": {
+                                    "en": "Must go to work (obligation)",
+                                    "fa": "باید بروم سر کار (اجبار)",
+                                    "th": "ต้องไปทำงาน"
+                                }
+                            },
+                            "words": [
+                                { "word": "ต้อง", "translations": { "en": "must", "fa": "باید" } },
+                                { "word": "ไป", "translations": { "en": "go", "fa": "بروم" } },
+                                { "word": "ทำงาน", "translations": { "en": "work", "fa": "کار" } }
+                            ],
+                            "translations": {
+                                "en": "Must go to work",
+                                "fa": "باید بروم سر کار"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ต้องรีบ",
+                            "words": [
+                                { "word": "ต้อง", "translations": { "en": "must", "fa": "باید" } },
+                                { "word": "รีบ", "translations": { "en": "hurry", "fa": "عجله کنم" } }
+                            ],
+                            "translations": {
+                                "en": "Must hurry",
+                                "fa": "باید عجله کنم"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ต้องจ่ายเงิน",
+                            "words": [
+                                { "word": "ต้อง", "translations": { "en": "must", "fa": "باید" } },
+                                { "word": "จ่าย", "translations": { "en": "pay", "fa": "پرداخت کنم" } },
+                                { "word": "เงิน", "translations": { "en": "money", "fa": "پول" } }
+                            ],
+                            "translations": {
+                                "en": "Must pay",
+                                "fa": "باید پول بدهم"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "heading": {
+                "en": "Should (ควร)",
+                "fa": "بهتر است (ควร)",
+                "th": "ควร"
+            },
+            "activities": [ "multipleChoiceWord", "multipleChoiceSentence" ],
+            "blocks": [
+                {
+                    "type": "paragraph",
+                    "elements": [
+                        {
+                            "type": "sentence",
+                            "source": "ควรพักผ่อน",
+                            "grammar": {
+                                "pattern": "ควร + พักผ่อน",
+                                "note": {
+                                    "en": "Should rest (advice)",
+                                    "fa": "بهتر است استراحت کنی (توصیه)",
+                                    "th": "ควรพักผ่อน"
+                                }
+                            },
+                            "words": [
+                                { "word": "ควร", "translations": { "en": "should", "fa": "بهتر است" } },
+                                { "word": "พักผ่อน", "translations": { "en": "rest", "fa": "استراحت کنم" } }
+                            ],
+                            "translations": {
+                                "en": "Should rest",
+                                "fa": "بهتر است استراحت کنم"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ควรกินผัก",
+                            "words": [
+                                { "word": "ควร", "translations": { "en": "should", "fa": "بهتر است" } },
+                                { "word": "กิน", "translations": { "en": "eat", "fa": "بخورم" } },
+                                { "word": "ผัก", "translations": { "en": "vegetables", "fa": "سبزیجات" } }
+                            ],
+                            "translations": {
+                                "en": "Should eat vegetables",
+                                "fa": "بهتر است سبزیجات بخورم"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ควรออกกำลังกาย",
+                            "words": [
+                                { "word": "ควร", "translations": { "en": "should", "fa": "بهتر است" } },
+                                { "word": "ออกกำลังกาย", "translations": { "en": "exercise", "fa": "ورزش کنم" } }
+                            ],
+                            "translations": {
+                                "en": "Should exercise",
+                                "fa": "بهتر است ورزش کنم"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "heading": {
+                "en": "10+ Must/Should Examples",
+                "fa": "۱۰+ مثال باید/بهتر است",
+                "th": "ตัวอย่างต้อง/ควร ๑๐+ ประโยค"
+            },
+            "activities": [ "multipleChoiceWord", "multipleChoiceSentence" ],
+            "blocks": [
+                {
+                    "type": "paragraph",
+                    "elements": [
+                        {
+                            "type": "sentence",
+                            "source": "ต้องไปธนาคาร",
+                            "words": [
+                                { "word": "ต้อง", "translations": { "en": "must", "fa": "باید" } },
+                                { "word": "ไป", "translations": { "en": "go", "fa": "بروم" } },
+                                { "word": "ธนาคาร", "translations": { "en": "bank", "fa": "بانک" } }
+                            ],
+                            "translations": {
+                                "en": "Must go to the bank",
+                                "fa": "باید به بانک بروم"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ต้องซื้อของ",
+                            "words": [
+                                { "word": "ต้อง", "translations": { "en": "must", "fa": "باید" } },
+                                { "word": "ซื้อ", "translations": { "en": "buy", "fa": "بخرم" } },
+                                { "word": "ของ", "translations": { "en": "things", "fa": "چیزها" } }
+                            ],
+                            "translations": {
+                                "en": "Must buy things",
+                                "fa": "باید خرید کنم"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ต้องจองตั๋ว",
+                            "words": [
+                                { "word": "ต้อง", "translations": { "en": "must", "fa": "باید" } },
+                                { "word": "จอง", "translations": { "en": "book", "fa": "رزرو کنم" } },
+                                { "word": "ตั๋ว", "translations": { "en": "ticket", "fa": "بلیط" } }
+                            ],
+                            "translations": {
+                                "en": "Must book tickets",
+                                "fa": "باید بلیط رزرو کنم"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ต้องบอกเขา",
+                            "words": [
+                                { "word": "ต้อง", "translations": { "en": "must", "fa": "باید" } },
+                                { "word": "บอก", "translations": { "en": "tell", "fa": "بگویم" } },
+                                { "word": "เขา", "translations": { "en": "him", "fa": "به او" } }
+                            ],
+                            "translations": {
+                                "en": "Must tell him",
+                                "fa": "باید به او بگویم"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ควรดื่มน้ำมากๆ",
+                            "words": [
+                                { "word": "ควร", "translations": { "en": "should", "fa": "بهتر است" } },
+                                { "word": "ดื่ม", "translations": { "en": "drink", "fa": "بنوشم" } },
+                                { "word": "น้ำ", "translations": { "en": "water", "fa": "آب" } },
+                                { "word": "มากๆ", "translations": { "en": "a lot", "fa": "زیاد" } }
+                            ],
+                            "translations": {
+                                "en": "Should drink a lot of water",
+                                "fa": "بهتر است آب زیاد بنوشم"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ควรนอนแต่หัวค่ำ",
+                            "words": [
+                                { "word": "ควร", "translations": { "en": "should", "fa": "بهتر است" } },
+                                { "word": "นอน", "translations": { "en": "sleep", "fa": "بخوابم" } },
+                                { "word": "แต่หัวค่ำ", "translations": { "en": "early", "fa": "زود" } }
+                            ],
+                            "translations": {
+                                "en": "Should sleep early",
+                                "fa": "بهتر است زود بخوابم"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ควรเรียนรู้",
+                            "words": [
+                                { "word": "ควร", "translations": { "en": "should", "fa": "بهتر است" } },
+                                { "word": "เรียนรู้", "translations": { "en": "learn", "fa": "یاد بگیرم" } }
+                            ],
+                            "translations": {
+                                "en": "Should learn",
+                                "fa": "بهتر است یاد بگیرم"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ควรฟังความคิดเห็น",
+                            "words": [
+                                { "word": "ควร", "translations": { "en": "should", "fa": "بهتر است" } },
+                                { "word": "ฟัง", "translations": { "en": "listen", "fa": "گوش کنم" } },
+                                { "word": "ความคิดเห็น", "translations": { "en": "opinions", "fa": "نظرات" } }
+                            ],
+                            "translations": {
+                                "en": "Should listen to opinions",
+                                "fa": "بهتر است به نظرات گوش کنم"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ต้องไม่สาย",
+                            "words": [
+                                { "word": "ต้อง", "translations": { "en": "must", "fa": "نباید" } },
+                                { "word": "ไม่", "translations": { "en": "not", "fa": "نباشم" } },
+                                { "word": "สาย", "translations": { "en": "late", "fa": "دیر" } }
+                            ],
+                            "translations": {
+                                "en": "Must not be late",
+                                "fa": "نباید دیر کنم"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ควรใจเย็นๆ",
+                            "words": [
+                                { "word": "ควร", "translations": { "en": "should", "fa": "بهتر است" } },
+                                { "word": "ใจเย็นๆ", "translations": { "en": "calm", "fa": "آرام باشم" } }
+                            ],
+                            "translations": {
+                                "en": "Should be calm",
+                                "fa": "بهتر است آرام باشم"
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,241 @@
+{
+    "documentId": "grammar_comparatives",
+    "grammar": {
+        "pattern": "A + Adjective + กว่า + B",
+        "explanation": {
+            "en": "กว่า (kwàa) is used to make comparisons, similar to '-er than' in English. Place it after the adjective.",
+            "fa": "กว่า (kwàa) برای مقایسه استفاده می‌شود، مشابه 'تر از' در فارسی. آن را بعد از صفت قرار دهید.",
+            "th": "กว่า ใช้สำหรับเปรียบเทียบ คล้ายกับ 'กว่า' ในภาษาไทย วางไว้หลังคำคุณศัพท์"
+        }
+    },
+    "sections": [
+        {
+            "heading": {
+                "en": "Basic Comparisons",
+                "fa": "مقایسه‌های پایه",
+                "th": "การเปรียบเทียบพื้นฐาน"
+            },
+            "activities": [ "multipleChoiceWord", "multipleChoiceSentence" ],
+            "blocks": [
+                {
+                    "type": "grammar-intro",
+                    "content": {
+                        "en": "To compare two things, put กว่า after the adjective.",
+                        "fa": "برای مقایسه دو چیز، กว่า را بعد از صفت قرار دهید.",
+                        "th": "ในการเปรียบเทียบสองสิ่ง ให้วาง กว่า หลังคำคุณศัพท์"
+                    }
+                },
+                {
+                    "type": "paragraph",
+                    "elements": [
+                        {
+                            "type": "sentence",
+                            "source": "รถไฟเร็วกว่ารถเมล์",
+                            "grammar": {
+                                "pattern": "รถไฟ + เร็ว + กว่า + รถเมล์",
+                                "note": {
+                                    "en": "Train is faster than bus",
+                                    "fa": "قطار سریع‌تر از اتوبوس است",
+                                    "th": "รถไฟเร็วกว่ารถเมล์"
+                                }
+                            },
+                            "words": [
+                                { "word": "รถไฟ", "translations": { "en": "train", "fa": "قطار" } },
+                                { "word": "เร็ว", "translations": { "en": "fast", "fa": "سریع" } },
+                                { "word": "กว่า", "translations": { "en": "than", "fa": "تر از" } },
+                                { "word": "รถเมล์", "translations": { "en": "bus", "fa": "اتوبوس" } }
+                            ],
+                            "translations": {
+                                "en": "Train is faster than bus",
+                                "fa": "قطار سریع‌تر از اتوبوس است"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "บ้านหลังใหญ่กว่า",
+                            "words": [
+                                { "word": "บ้าน", "translations": { "en": "house", "fa": "خانه" } },
+                                { "word": "หลัง", "translations": { "en": "classifier", "fa": "خانه" } },
+                                { "word": "ใหญ่", "translations": { "en": "big", "fa": "بزرگ" } },
+                                { "word": "กว่า", "translations": { "en": "than", "fa": "تر" } }
+                            ],
+                            "translations": {
+                                "en": "This house is bigger",
+                                "fa": "این خانه بزرگ‌تر است"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ถูกกว่า",
+                            "words": [
+                                { "word": "ถูก", "translations": { "en": "cheap", "fa": "ارزان" } },
+                                { "word": "กว่า", "translations": { "en": "than", "fa": "تر" } }
+                            ],
+                            "translations": {
+                                "en": "Cheaper",
+                                "fa": "ارزان‌تر"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "heading": {
+                "en": "10+ Comparative Examples",
+                "fa": "۱۰+ مثال مقایسه‌ای",
+                "th": "ตัวอย่างกว่า ๑๐+ ประโยค"
+            },
+            "activities": [ "multipleChoiceWord", "multipleChoiceSentence" ],
+            "blocks": [
+                {
+                    "type": "paragraph",
+                    "elements": [
+                        {
+                            "type": "sentence",
+                            "source": "เมืองไทยร้อนกว่าญี่ปุ่น",
+                            "words": [
+                                { "word": "เมืองไทย", "translations": { "en": "Thailand", "fa": "تایلند" } },
+                                { "word": "ร้อน", "translations": { "en": "hot", "fa": "گرم" } },
+                                { "word": "กว่า", "translations": { "en": "than", "fa": "تر از" } },
+                                { "word": "ญี่ปุ่น", "translations": { "en": "Japan", "fa": "ژاپن" } }
+                            ],
+                            "translations": {
+                                "en": "Thailand is hotter than Japan",
+                                "fa": "تایلند گرم‌تر از ژاپن است"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ฉันอายุมากกว่าคุณ",
+                            "words": [
+                                { "word": "ฉัน", "translations": { "en": "I", "fa": "من" } },
+                                { "word": "อายุ", "translations": { "en": "age", "fa": "سن" } },
+                                { "word": "มาก", "translations": { "en": "more", "fa": "بیشتر" } },
+                                { "word": "กว่า", "translations": { "en": "than", "fa": "تر از" } },
+                                { "word": "คุณ", "translations": { "en": "you", "fa": "شما" } }
+                            ],
+                            "translations": {
+                                "en": "I am older than you",
+                                "fa": "من از شما بزرگ‌تر هستم"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "เขาเรียนเก่งกว่าฉัน",
+                            "words": [
+                                { "word": "เขา", "translations": { "en": "he", "fa": "او" } },
+                                { "word": "เรียน", "translations": { "en": "study", "fa": "درس می‌خواند" } },
+                                { "word": "เก่ง", "translations": { "en": "good", "fa": "بهتر" } },
+                                { "word": "กว่า", "translations": { "en": "than", "fa": "از" } },
+                                { "word": "ฉัน", "translations": { "en": "me", "fa": "من" } }
+                            ],
+                            "translations": {
+                                "en": "He studies better than me",
+                                "fa": "او بهتر از من درس می‌خواند"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "วันนี้ร้อนกว่าเมื่อวาน",
+                            "words": [
+                                { "word": "วันนี้", "translations": { "en": "today", "fa": "امروز" } },
+                                { "word": "ร้อน", "translations": { "en": "hot", "fa": "گرم" } },
+                                { "word": "กว่า", "translations": { "en": "than", "fa": "تر از" } },
+                                { "word": "เมื่อวาน", "translations": { "en": "yesterday", "fa": "دیروز" } }
+                            ],
+                            "translations": {
+                                "en": "Today is hotter than yesterday",
+                                "fa": "امروز گرم‌تر از دیروز است"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "รถคันนี้แพงกว่ารถคันนั้น",
+                            "words": [
+                                { "word": "รถ", "translations": { "en": "car", "fa": "ماشین" } },
+                                { "word": "คันนี้", "translations": { "en": "this", "fa": "این" } },
+                                { "word": "แพง", "translations": { "en": "expensive", "fa": "گران" } },
+                                { "word": "กว่า", "translations": { "en": "than", "fa": "تر از" } },
+                                { "word": "คันนั้น", "translations": { "en": "that", "fa": "آن" } }
+                            ],
+                            "translations": {
+                                "en": "This car is more expensive than that car",
+                                "fa": "این ماشین گران‌تر از آن ماشین است"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "หนังสือเล่มนี้หนากว่า",
+                            "words": [
+                                { "word": "หนังสือ", "translations": { "en": "book", "fa": "کتاب" } },
+                                { "word": "เล่มนี้", "translations": { "en": "this", "fa": "این" } },
+                                { "word": "หนา", "translations": { "en": "thick", "fa": "ضخیم" } },
+                                { "word": "กว่า", "translations": { "en": "than", "fa": "تر" } }
+                            ],
+                            "translations": {
+                                "en": "This book is thicker",
+                                "fa": "این کتاب ضخیم‌تر است"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "น้องสาวสวยกว่าพี่สาว",
+                            "words": [
+                                { "word": "น้องสาว", "translations": { "en": "younger sister", "fa": "خواهر کوچک" } },
+                                { "word": "สวย", "translations": { "en": "beautiful", "fa": "زیبا" } },
+                                { "word": "กว่า", "translations": { "en": "than", "fa": "تر از" } },
+                                { "word": "พี่สาว", "translations": { "en": "older sister", "fa": "خواهر بزرگ" } }
+                            ],
+                            "translations": {
+                                "en": "Younger sister is more beautiful than older sister",
+                                "fa": "خواهر کوچک زیباتر از خواهر بزرگ است"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ที่นี่เงียบกว่าที่นั่น",
+                            "words": [
+                                { "word": "ที่นี่", "translations": { "en": "here", "fa": "اینجا" } },
+                                { "word": "เงียบ", "translations": { "en": "quiet", "fa": "آرام" } },
+                                { "word": "กว่า", "translations": { "en": "than", "fa": "تر از" } },
+                                { "word": "ที่นั่น", "translations": { "en": "there", "fa": "آنجا" } }
+                            ],
+                            "translations": {
+                                "en": "Here is quieter than there",
+                                "fa": "اینجا آرام‌تر از آنجاست"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ร้านนี้ใกล้กว่า",
+                            "words": [
+                                { "word": "ร้านนี้", "translations": { "en": "this shop", "fa": "این فروشگاه" } },
+                                { "word": "ใกล้", "translations": { "en": "near", "fa": "نزدیک" } },
+                                { "word": "กว่า", "translations": { "en": "than", "fa": "تر" } }
+                            ],
+                            "translations": {
+                                "en": "This shop is closer",
+                                "fa": "این فروشگاه نزدیک‌تر است"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ภาษาไทยยากกว่าภาษาอังกฤษ",
+                            "words": [
+                                { "word": "ภาษาไทย", "translations": { "en": "Thai", "fa": "تایلندی" } },
+                                { "word": "ยาก", "translations": { "en": "difficult", "fa": "سخت" } },
+                                { "word": "กว่า", "translations": { "en": "than", "fa": "تر از" } },
+                                { "word": "ภาษาอังกฤษ", "translations": { "en": "English", "fa": "انگلیسی" } }
+                            ],
+                            "translations": {
+                                "en": "Thai is more difficult than English",
+                                "fa": "تایلندی سخت‌تر از انگلیسی است"
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

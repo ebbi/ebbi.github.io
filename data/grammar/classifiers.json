@@ -1,0 +1,326 @@
+{
+    "documentId": "grammar_classifiers",
+    "grammar": {
+        "pattern": "Noun + Number + Classifier",
+        "explanation": {
+            "en": "Thai uses special words called classifiers when counting things. The pattern is always: Noun + Number + Classifier. Different types of nouns use different classifiers.",
+            "fa": "تایلندی از کلمات ویژه‌ای به نام طبقه‌بند هنگام شمارش اشیا استفاده می‌کند. الگو همیشه این است: اسم + عدد + طبقه‌بند. انواع مختلف اسم‌ها از طبقه‌بندهای متفاوتی استفاده می‌کنند.",
+            "th": "ภาษาไทยใช้คำพิเศษที่เรียกว่า 'ลักษณะนาม' เมื่อนับสิ่งต่างๆ รูปแบบคือ: คำนาม + จำนวน + ลักษณะนาม คำนามประเภทต่างๆ ใช้ลักษณะนามต่างกัน"
+        }
+    },
+    "sections": [
+        {
+            "heading": {
+                "en": "Classifiers for People",
+                "fa": "طبقه‌بند برای افراد",
+                "th": "ลักษณะนามสำหรับคน"
+            },
+            "activities": [ "multipleChoiceWord", "multipleChoiceSentence" ],
+            "blocks": [
+                {
+                    "type": "grammar-intro",
+                    "content": {
+                        "en": "For people, use the classifier 'คน' (khon). Sometimes the classifier is the same as the noun.",
+                        "fa": "برای افراد، از طبقه‌بند 'คน' (khon) استفاده کنید. گاهی طبقه‌بند با اسم یکی است.",
+                        "th": "สำหรับคน ใช้ลักษณะนาม 'คน' บางครั้งลักษณะนามก็ซ้ำกับคำนาม"
+                    }
+                },
+                {
+                    "type": "paragraph",
+                    "elements": [
+                        {
+                            "type": "sentence",
+                            "source": "คนหนึ่งคน",
+                            "grammar": {
+                                "pattern": "คน + หนึ่ง + คน",
+                                "note": {
+                                    "en": "one person (literally: person one person)",
+                                    "fa": "یک نفر (به معنای واقعی: شخص یک شخص)",
+                                    "th": "คนหนึ่งคน (ความหมายตามตัว: คน หนึ่ง คน)"
+                                }
+                            },
+                            "words": [
+                                { "word": "คน", "translations": { "en": "person", "fa": "شخص" } },
+                                { "word": "หนึ่ง", "translations": { "en": "one", "fa": "یک" } },
+                                { "word": "คน", "translations": { "en": "classifier", "fa": "نفر" } }
+                            ],
+                            "translations": {
+                                "en": "one person",
+                                "fa": "یک نفر"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "นักเรียนสองคน",
+                            "words": [
+                                { "word": "นักเรียน", "translations": { "en": "student", "fa": "دانش‌آموز" } },
+                                { "word": "สอง", "translations": { "en": "two", "fa": "دو" } },
+                                { "word": "คน", "translations": { "en": "classifier", "fa": "نفر" } }
+                            ],
+                            "translations": {
+                                "en": "two students",
+                                "fa": "دو دانش‌آموز"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ครูสามคน",
+                            "words": [
+                                { "word": "ครู", "translations": { "en": "teacher", "fa": "معلم" } },
+                                { "word": "สาม", "translations": { "en": "three", "fa": "سه" } },
+                                { "word": "คน", "translations": { "en": "classifier", "fa": "نفر" } }
+                            ],
+                            "translations": {
+                                "en": "three teachers",
+                                "fa": "سه معلم"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "heading": {
+                "en": "Classifiers for Animals",
+                "fa": "طبقه‌بند برای حیوانات",
+                "th": "ลักษณะนามสำหรับสัตว์"
+            },
+            "activities": [ "multipleChoiceWord", "multipleChoiceSentence" ],
+            "blocks": [
+                {
+                    "type": "paragraph",
+                    "elements": [
+                        {
+                            "type": "sentence",
+                            "source": "หมาหนึ่งตัว",
+                            "grammar": {
+                                "pattern": "หมา + หนึ่ง + ตัว",
+                                "note": {
+                                    "en": "one dog (ตัว is classifier for animals)",
+                                    "fa": "یک سگ (ตัว طبقه‌بند حیوانات است)",
+                                    "th": "หมา + หนึ่ง + ตัว"
+                                }
+                            },
+                            "words": [
+                                { "word": "หมา", "translations": { "en": "dog", "fa": "سگ" } },
+                                { "word": "หนึ่ง", "translations": { "en": "one", "fa": "یک" } },
+                                { "word": "ตัว", "translations": { "en": "classifier", "fa": "عدد" } }
+                            ],
+                            "translations": {
+                                "en": "one dog",
+                                "fa": "یک سگ"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "แมวสองตัว",
+                            "words": [
+                                { "word": "แมว", "translations": { "en": "cat", "fa": "گربه" } },
+                                { "word": "สอง", "translations": { "en": "two", "fa": "دو" } },
+                                { "word": "ตัว", "translations": { "en": "classifier", "fa": "عدد" } }
+                            ],
+                            "translations": {
+                                "en": "two cats",
+                                "fa": "دو گربه"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "นกสามตัว",
+                            "words": [
+                                { "word": "นก", "translations": { "en": "bird", "fa": "پرنده" } },
+                                { "word": "สาม", "translations": { "en": "three", "fa": "سه" } },
+                                { "word": "ตัว", "translations": { "en": "classifier", "fa": "عدد" } }
+                            ],
+                            "translations": {
+                                "en": "three birds",
+                                "fa": "سه پرنده"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ปลาสี่ตัว",
+                            "words": [
+                                { "word": "ปลา", "translations": { "en": "fish", "fa": "ماهی" } },
+                                { "word": "สี่", "translations": { "en": "four", "fa": "چهار" } },
+                                { "word": "ตัว", "translations": { "en": "classifier", "fa": "عدد" } }
+                            ],
+                            "translations": {
+                                "en": "four fish",
+                                "fa": "چهار ماهی"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "heading": {
+                "en": "Classifiers for Objects",
+                "fa": "طبقه‌بند برای اشیا",
+                "th": "ลักษณะนามสำหรับสิ่งของ"
+            },
+            "activities": [ "multipleChoiceWord", "multipleChoiceSentence" ],
+            "blocks": [
+                {
+                    "type": "paragraph",
+                    "elements": [
+                        {
+                            "type": "sentence",
+                            "source": "หนังสือหนึ่งเล่ม",
+                            "grammar": {
+                                "pattern": "หนังสือ + หนึ่ง + เล่ม",
+                                "note": {
+                                    "en": "one book (เล่ม for books, magazines)",
+                                    "fa": "یک کتاب (เล่ม برای کتاب، مجله)",
+                                    "th": "หนังสือ + หนึ่ง + เล่ม"
+                                }
+                            },
+                            "words": [
+                                { "word": "หนังสือ", "translations": { "en": "book", "fa": "کتاب" } },
+                                { "word": "หนึ่ง", "translations": { "en": "one", "fa": "یک" } },
+                                { "word": "เล่ม", "translations": { "en": "classifier", "fa": "جلد" } }
+                            ],
+                            "translations": {
+                                "en": "one book",
+                                "fa": "یک جلد کتاب"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "รถสองคัน",
+                            "words": [
+                                { "word": "รถ", "translations": { "en": "car", "fa": "ماشین" } },
+                                { "word": "สอง", "translations": { "en": "two", "fa": "دو" } },
+                                { "word": "คัน", "translations": { "en": "classifier", "fa": "دستگاه" } }
+                            ],
+                            "translations": {
+                                "en": "two cars",
+                                "fa": "دو دستگاه ماشین"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "โต๊ะสามตัว",
+                            "words": [
+                                { "word": "โต๊ะ", "translations": { "en": "table", "fa": "میز" } },
+                                { "word": "สาม", "translations": { "en": "three", "fa": "سه" } },
+                                { "word": "ตัว", "translations": { "en": "classifier", "fa": "عدد" } }
+                            ],
+                            "translations": {
+                                "en": "three tables",
+                                "fa": "سه عدد میز"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "เก้าอี้สี่ตัว",
+                            "words": [
+                                { "word": "เก้าอี้", "translations": { "en": "chair", "fa": "صندلی" } },
+                                { "word": "สี่", "translations": { "en": "four", "fa": "چهار" } },
+                                { "word": "ตัว", "translations": { "en": "classifier", "fa": "عدد" } }
+                            ],
+                            "translations": {
+                                "en": "four chairs",
+                                "fa": "چهار عدد صندلی"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "heading": {
+                "en": "More Classifiers",
+                "fa": "طبقه‌بندهای بیشتر",
+                "th": "ลักษณะนามอื่นๆ"
+            },
+            "activities": [ "multipleChoiceWord", "multipleChoiceSentence" ],
+            "blocks": [
+                {
+                    "type": "paragraph",
+                    "elements": [
+                        {
+                            "type": "sentence",
+                            "source": "บ้านสองหลัง",
+                            "words": [
+                                { "word": "บ้าน", "translations": { "en": "house", "fa": "خانه" } },
+                                { "word": "สอง", "translations": { "en": "two", "fa": "دو" } },
+                                { "word": "หลัง", "translations": { "en": "classifier", "fa": "واحد" } }
+                            ],
+                            "translations": {
+                                "en": "two houses",
+                                "fa": "دو خانه"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "เสื้อสามตัว",
+                            "words": [
+                                { "word": "เสื้อ", "translations": { "en": "shirt", "fa": "پیراهن" } },
+                                { "word": "สาม", "translations": { "en": "three", "fa": "سه" } },
+                                { "word": "ตัว", "translations": { "en": "classifier", "fa": "عدد" } }
+                            ],
+                            "translations": {
+                                "en": "three shirts",
+                                "fa": "سه عدد پیراهن"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ดินสอสองแท่ง",
+                            "words": [
+                                { "word": "ดินสอ", "translations": { "en": "pencil", "fa": "مداد" } },
+                                { "word": "สอง", "translations": { "en": "two", "fa": "دو" } },
+                                { "word": "แท่ง", "translations": { "en": "classifier", "fa": "عدد" } }
+                            ],
+                            "translations": {
+                                "en": "two pencils",
+                                "fa": "دو عدد مداد"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ดอกไม้ห้าดอก",
+                            "words": [
+                                { "word": "ดอกไม้", "translations": { "en": "flower", "fa": "گل" } },
+                                { "word": "ห้า", "translations": { "en": "five", "fa": "پنج" } },
+                                { "word": "ดอก", "translations": { "en": "classifier", "fa": "شاخه" } }
+                            ],
+                            "translations": {
+                                "en": "five flowers",
+                                "fa": "پنج شاخه گل"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ไข่สิบฟอง",
+                            "words": [
+                                { "word": "ไข่", "translations": { "en": "egg", "fa": "تخم‌مرغ" } },
+                                { "word": "สิบ", "translations": { "en": "ten", "fa": "ده" } },
+                                { "word": "ฟอง", "translations": { "en": "classifier", "fa": "عدد" } }
+                            ],
+                            "translations": {
+                                "en": "ten eggs",
+                                "fa": "ده عدد تخم‌مرغ"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "words",
+                    "data": [
+                        { "word": "คน", "translations": { "en": "classifier for people", "fa": "طبقه‌بند افراد" } },
+                        { "word": "ตัว", "translations": { "en": "classifier for animals/objects", "fa": "طبقه‌بند حیوانات/اشیا" } },
+                        { "word": "เล่ม", "translations": { "en": "classifier for books", "fa": "طبقه‌بند کتاب" } },
+                        { "word": "คัน", "translations": { "en": "classifier for vehicles", "fa": "طبقه‌بند وسایل نقلیه" } },
+                        { "word": "หลัง", "translations": { "en": "classifier for houses", "fa": "طبقه‌بند خانه" } },
+                        { "word": "ดอก", "translations": { "en": "classifier for flowers", "fa": "طبقه‌بند گل" } },
+                        { "word": "ฟอง", "translations": { "en": "classifier for eggs", "fa": "طبقه‌بند تخم‌مرغ" } },
+                        { "word": "แท่ง", "translations": { "en": "classifier for pencils/sticks", "fa": "طبقه‌بند مداد/اشیای استوانه‌ای" } }
+                    ]
+                }
+            ]
+        }
+    ]
+}

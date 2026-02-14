@@ -1,0 +1,225 @@
+{
+    "documentId": "grammar_want",
+    "grammar": {
+        "pattern": "อยาก + Verb",
+        "explanation": {
+            "en": "อยาก (yàak) means 'want to' and is placed before a verb to express desires or wishes.",
+            "fa": "อยาก (yàak) به معنی 'می‌خواهم' است و قبل از فعل قرار می‌گیرد تا خواسته‌ها یا آرزوها را بیان کند.",
+            "th": "อยาก หมายถึง 'ต้องการ' และวางหน้าคำกริยาเพื่อแสดงความปรารถนาหรือความต้องการ"
+        }
+    },
+    "sections": [
+        {
+            "heading": {
+                "en": "Basic Wants",
+                "fa": "خواسته‌های پایه",
+                "th": "ความต้องการพื้นฐาน"
+            },
+            "activities": [ "multipleChoiceWord", "multipleChoiceSentence" ],
+            "blocks": [
+                {
+                    "type": "grammar-intro",
+                    "content": {
+                        "en": "Use อยาก before any verb to say what you want to do.",
+                        "fa": "از อยาก قبل از هر فعلی استفاده کنید تا بگویید چه می‌خواهید انجام دهید.",
+                        "th": "ใช้ อยาก หน้าคำกริยาเพื่อบอกว่าคุณต้องการทำอะไร"
+                    }
+                },
+                {
+                    "type": "paragraph",
+                    "elements": [
+                        {
+                            "type": "sentence",
+                            "source": "อยากกินข้าว",
+                            "grammar": {
+                                "pattern": "อยาก + กิน + ข้าว",
+                                "note": {
+                                    "en": "Want to eat",
+                                    "fa": "می‌خواهم غذا بخورم",
+                                    "th": "อยากกินข้าว"
+                                }
+                            },
+                            "words": [
+                                { "word": "อยาก", "translations": { "en": "want", "fa": "می‌خواهم" } },
+                                { "word": "กิน", "translations": { "en": "eat", "fa": "بخورم" } },
+                                { "word": "ข้าว", "translations": { "en": "rice", "fa": "غذا" } }
+                            ],
+                            "translations": {
+                                "en": "Want to eat",
+                                "fa": "می‌خواهم غذا بخورم"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "อยากไปเที่ยว",
+                            "words": [
+                                { "word": "อยาก", "translations": { "en": "want", "fa": "می‌خواهم" } },
+                                { "word": "ไป", "translations": { "en": "go", "fa": "بروم" } },
+                                { "word": "เที่ยว", "translations": { "en": "travel", "fa": "سفر" } }
+                            ],
+                            "translations": {
+                                "en": "Want to travel",
+                                "fa": "می‌خواهم سفر بروم"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "อยากดูหนัง",
+                            "words": [
+                                { "word": "อยาก", "translations": { "en": "want", "fa": "می‌خواهم" } },
+                                { "word": "ดู", "translations": { "en": "watch", "fa": "ببینم" } },
+                                { "word": "หนัง", "translations": { "en": "movie", "fa": "فیلم" } }
+                            ],
+                            "translations": {
+                                "en": "Want to watch a movie",
+                                "fa": "می‌خواهم فیلم ببینم"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "heading": {
+                "en": "10+ Want Examples",
+                "fa": "۱۰+ مثال خواستن",
+                "th": "ตัวอย่างอยาก ๑๐+ ประโยค"
+            },
+            "activities": [ "multipleChoiceWord", "multipleChoiceSentence" ],
+            "blocks": [
+                {
+                    "type": "paragraph",
+                    "elements": [
+                        {
+                            "type": "sentence",
+                            "source": "อยากดื่มน้ำ",
+                            "words": [
+                                { "word": "อยาก", "translations": { "en": "want", "fa": "می‌خواهم" } },
+                                { "word": "ดื่ม", "translations": { "en": "drink", "fa": "بنوشم" } },
+                                { "word": "น้ำ", "translations": { "en": "water", "fa": "آب" } }
+                            ],
+                            "translations": {
+                                "en": "Want to drink water",
+                                "fa": "می‌خواهم آب بنوشم"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "อยากนอน",
+                            "words": [
+                                { "word": "อยาก", "translations": { "en": "want", "fa": "می‌خواهم" } },
+                                { "word": "นอน", "translations": { "en": "sleep", "fa": "بخوابم" } }
+                            ],
+                            "translations": {
+                                "en": "Want to sleep",
+                                "fa": "می‌خواهم بخوابم"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "อยากเรียนภาษาไทย",
+                            "words": [
+                                { "word": "อยาก", "translations": { "en": "want", "fa": "می‌خواهم" } },
+                                { "word": "เรียน", "translations": { "en": "study", "fa": "یاد بگیرم" } },
+                                { "word": "ภาษาไทย", "translations": { "en": "Thai", "fa": "زبان تایلندی" } }
+                            ],
+                            "translations": {
+                                "en": "Want to learn Thai",
+                                "fa": "می‌خواهم زبان تایلندی یاد بگیرم"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "อยากเจอคุณ",
+                            "words": [
+                                { "word": "อยาก", "translations": { "en": "want", "fa": "می‌خواهم" } },
+                                { "word": "เจอ", "translations": { "en": "meet", "fa": "ببینم" } },
+                                { "word": "คุณ", "translations": { "en": "you", "fa": "شما" } }
+                            ],
+                            "translations": {
+                                "en": "Want to meet you",
+                                "fa": "می‌خواهم شما را ببینم"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "อยากลอง",
+                            "words": [
+                                { "word": "อยาก", "translations": { "en": "want", "fa": "می‌خواهم" } },
+                                { "word": "ลอง", "translations": { "en": "try", "fa": "امتحان کنم" } }
+                            ],
+                            "translations": {
+                                "en": "Want to try",
+                                "fa": "می‌خواهم امتحان کنم"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "อยากกลับบ้าน",
+                            "words": [
+                                { "word": "อยาก", "translations": { "en": "want", "fa": "می‌خواهم" } },
+                                { "word": "กลับ", "translations": { "en": "return", "fa": "برگردم" } },
+                                { "word": "บ้าน", "translations": { "en": "home", "fa": "خانه" } }
+                            ],
+                            "translations": {
+                                "en": "Want to go home",
+                                "fa": "می‌خواهم به خانه برگردم"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "อยากรู้",
+                            "words": [
+                                { "word": "อยาก", "translations": { "en": "want", "fa": "می‌خواهم" } },
+                                { "word": "รู้", "translations": { "en": "know", "fa": "بدانم" } }
+                            ],
+                            "translations": {
+                                "en": "Want to know",
+                                "fa": "می‌خواهم بدانم"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "อยากซื้อรถ",
+                            "words": [
+                                { "word": "อยาก", "translations": { "en": "want", "fa": "می‌خواهم" } },
+                                { "word": "ซื้อ", "translations": { "en": "buy", "fa": "بخرم" } },
+                                { "word": "รถ", "translations": { "en": "car", "fa": "ماشین" } }
+                            ],
+                            "translations": {
+                                "en": "Want to buy a car",
+                                "fa": "می‌خواهم ماشین بخرم"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "อยากเป็นหมอ",
+                            "words": [
+                                { "word": "อยาก", "translations": { "en": "want", "fa": "می‌خواهم" } },
+                                { "word": "เป็น", "translations": { "en": "be", "fa": "باشم" } },
+                                { "word": "หมอ", "translations": { "en": "doctor", "fa": "پزشک" } }
+                            ],
+                            "translations": {
+                                "en": "Want to be a doctor",
+                                "fa": "می‌خواهم پزشک شوم"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "อยากมีความสุข",
+                            "words": [
+                                { "word": "อยาก", "translations": { "en": "want", "fa": "می‌خواهم" } },
+                                { "word": "มี", "translations": { "en": "have", "fa": "داشته باشم" } },
+                                { "word": "ความสุข", "translations": { "en": "happiness", "fa": "خوشبختی" } }
+                            ],
+                            "translations": {
+                                "en": "Want to be happy",
+                                "fa": "می‌خواهم خوشبخت باشم"
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

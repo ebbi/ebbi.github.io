@@ -1,0 +1,184 @@
+{
+    "documentId": "grammar_where_questions",
+    "grammar": {
+        "pattern": "ที่ไหน (where)",
+        "explanation": {
+            "en": "ที่ไหน (tîi-năi) means 'where'. It usually comes at the end of a question.",
+            "fa": "ที่ไหน (tîi-năi) به معنی 'کجا' است. معمولاً در پایان سوال می‌آید.",
+            "th": "ที่ไหน ใช้ถามสถานที่ โดยปกติจะวางไว้ท้ายประโยค"
+        }
+    },
+    "sections": [
+        {
+            "heading": {
+                "en": "Where Questions",
+                "fa": "سوالات کجا",
+                "th": "คำถามที่ไหน"
+            },
+            "activities": [ "multipleChoiceWord", "multipleChoiceSentence" ],
+            "blocks": [
+                {
+                    "type": "paragraph",
+                    "elements": [
+                        {
+                            "type": "sentence",
+                            "source": "คุณอยู่ที่ไหน",
+                            "grammar": {
+                                "pattern": "คุณ + อยู่ + ที่ไหน",
+                                "note": {
+                                    "en": "Where are you?",
+                                    "fa": "کجا هستید؟",
+                                    "th": "คุณอยู่ที่ไหน"
+                                }
+                            },
+                            "words": [
+                                { "word": "คุณ", "translations": { "en": "you", "fa": "شما" } },
+                                { "word": "อยู่", "translations": { "en": "are/stay", "fa": "هستید" } },
+                                { "word": "ที่ไหน", "translations": { "en": "where", "fa": "کجا" } }
+                            ],
+                            "translations": {
+                                "en": "Where are you?",
+                                "fa": "کجا هستید؟"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "เขาไปไหน",
+                            "words": [
+                                { "word": "เขา", "translations": { "en": "he", "fa": "او" } },
+                                { "word": "ไป", "translations": { "en": "go", "fa": "رفت" } },
+                                { "word": "ไหน", "translations": { "en": "where", "fa": "کجا" } }
+                            ],
+                            "translations": {
+                                "en": "Where did he go?",
+                                "fa": "او کجا رفت؟"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ห้องน้ำอยู่ที่ไหน",
+                            "words": [
+                                { "word": "ห้องน้ำ", "translations": { "en": "bathroom", "fa": "دستشویی" } },
+                                { "word": "อยู่", "translations": { "en": "is located", "fa": "است" } },
+                                { "word": "ที่ไหน", "translations": { "en": "where", "fa": "کجا" } }
+                            ],
+                            "translations": {
+                                "en": "Where is the bathroom?",
+                                "fa": "دستشویی کجاست؟"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ร้านอาหารอยู่ไหน",
+                            "words": [
+                                { "word": "ร้านอาหาร", "translations": { "en": "restaurant", "fa": "رستوران" } },
+                                { "word": "อยู่", "translations": { "en": "is", "fa": "است" } },
+                                { "word": "ไหน", "translations": { "en": "where", "fa": "کجا" } }
+                            ],
+                            "translations": {
+                                "en": "Where is the restaurant?",
+                                "fa": "رستوران کجاست؟"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "คุณมาจากไหน",
+                            "words": [
+                                { "word": "คุณ", "translations": { "en": "you", "fa": "شما" } },
+                                { "word": "มา", "translations": { "en": "come", "fa": "آمدید" } },
+                                { "word": "จาก", "translations": { "en": "from", "fa": "از" } },
+                                { "word": "ไหน", "translations": { "en": "where", "fa": "کجا" } }
+                            ],
+                            "translations": {
+                                "en": "Where are you from?",
+                                "fa": "اهل کجا هستید؟"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "สถานีรถไฟอยู่ที่ไหน",
+                            "words": [
+                                { "word": "สถานี", "translations": { "en": "station", "fa": "ایستگاه" } },
+                                { "word": "รถไฟ", "translations": { "en": "train", "fa": "قطار" } },
+                                { "word": "อยู่", "translations": { "en": "is", "fa": "است" } },
+                                { "word": "ที่ไหน", "translations": { "en": "where", "fa": "کجا" } }
+                            ],
+                            "translations": {
+                                "en": "Where is the train station?",
+                                "fa": "ایستگاه قطار کجاست؟"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "คุณทำงานที่ไหน",
+                            "words": [
+                                { "word": "คุณ", "translations": { "en": "you", "fa": "شما" } },
+                                { "word": "ทำงาน", "translations": { "en": "work", "fa": "کار می‌کنید" } },
+                                { "word": "ที่ไหน", "translations": { "en": "where", "fa": "کجا" } }
+                            ],
+                            "translations": {
+                                "en": "Where do you work?",
+                                "fa": "کجا کار می‌کنید؟"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "เธอเรียนที่ไหน",
+                            "words": [
+                                { "word": "เธอ", "translations": { "en": "she", "fa": "او" } },
+                                { "word": "เรียน", "translations": { "en": "study", "fa": "درس می‌خواند" } },
+                                { "word": "ที่ไหน", "translations": { "en": "where", "fa": "کجا" } }
+                            ],
+                            "translations": {
+                                "en": "Where does she study?",
+                                "fa": "کجا درس می‌خواند؟"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "เราจะเจอกันที่ไหน",
+                            "words": [
+                                { "word": "เรา", "translations": { "en": "we", "fa": "ما" } },
+                                { "word": "จะ", "translations": { "en": "will", "fa": "خواهیم" } },
+                                { "word": "เจอกัน", "translations": { "en": "meet", "fa": "ملاقات کنیم" } },
+                                { "word": "ที่ไหน", "translations": { "en": "where", "fa": "کجا" } }
+                            ],
+                            "translations": {
+                                "en": "Where will we meet?",
+                                "fa": "کجا ملاقات خواهیم کرد؟"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "กระเป๋าของฉันอยู่ไหน",
+                            "words": [
+                                { "word": "กระเป๋า", "translations": { "en": "bag", "fa": "کیف" } },
+                                { "word": "ของฉัน", "translations": { "en": "my", "fa": "من" } },
+                                { "word": "อยู่", "translations": { "en": "is", "fa": "است" } },
+                                { "word": "ไหน", "translations": { "en": "where", "fa": "کجا" } }
+                            ],
+                            "translations": {
+                                "en": "Where is my bag?",
+                                "fa": "کیف من کجاست؟"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ร้านขายยาอยู่ที่ไหน",
+                            "words": [
+                                { "word": "ร้าน", "translations": { "en": "shop", "fa": "فروشگاه" } },
+                                { "word": "ขายยา", "translations": { "en": "medicine", "fa": "دارو" } },
+                                { "word": "อยู่", "translations": { "en": "is", "fa": "است" } },
+                                { "word": "ที่ไหน", "translations": { "en": "where", "fa": "کجا" } }
+                            ],
+                            "translations": {
+                                "en": "Where is the pharmacy?",
+                                "fa": "داروخانه کجاست؟"
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

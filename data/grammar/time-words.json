@@ -1,0 +1,392 @@
+{
+    "documentId": "grammar_time_words",
+    "grammar": {
+        "pattern": "ก่อน (before) / หลัง (after) / ตอน (during)",
+        "explanation": {
+            "en": "Use time words to show when things happen: ก่อน (gòn) means 'before', หลัง (lǎng) means 'after', and ตอน (dtòn) means 'during' or 'at the time of'.",
+            "fa": "از کلمات زمان برای نشان دادن زمان وقوع رویدادها استفاده کنید: ก่อน (gòn) به معنی 'قبل', หลัง (lǎng) به معنی 'بعد', و ตอน (dtòn) به معنی 'هنگام' یا 'در زمان'.",
+            "th": "ใช้คำบอกเวลาเพื่อแสดงว่าเหตุการณ์เกิดขึ้นเมื่อใด: ก่อน (before), หลัง (after), และ ตอน (during)"
+        }
+    },
+    "sections": [
+        {
+            "heading": {
+                "en": "Before (ก่อน)",
+                "fa": "قبل (ก่อน)",
+                "th": "ก่อน"
+            },
+            "activities": [ "multipleChoiceWord", "multipleChoiceSentence" ],
+            "blocks": [
+                {
+                    "type": "grammar-intro",
+                    "content": {
+                        "en": "Use ก่อน to talk about actions that happen before something else.",
+                        "fa": "از ก่อน برای صحبت درباره کارهایی که قبل از چیز دیگری اتفاق می‌افتند استفاده کنید.",
+                        "th": "ใช้ ก่อน เพื่อพูดถึงการกระทำที่เกิดขึ้นก่อนสิ่งอื่น"
+                    }
+                },
+                {
+                    "type": "paragraph",
+                    "elements": [
+                        {
+                            "type": "sentence",
+                            "source": "กินข้าวก่อนไปทำงาน",
+                            "grammar": {
+                                "pattern": "กินข้าว + ก่อน + ไปทำงาน",
+                                "note": {
+                                    "en": "Eat before going to work",
+                                    "fa": "قبل از رفتن به سر کار غذا بخور",
+                                    "th": "กินข้าวก่อนไปทำงาน"
+                                }
+                            },
+                            "words": [
+                                { "word": "กิน", "translations": { "en": "eat", "fa": "بخور" } },
+                                { "word": "ข้าว", "translations": { "en": "rice", "fa": "غذا" } },
+                                { "word": "ก่อน", "translations": { "en": "before", "fa": "قبل" } },
+                                { "word": "ไป", "translations": { "en": "go", "fa": "رفتن" } },
+                                { "word": "ทำงาน", "translations": { "en": "work", "fa": "سر کار" } }
+                            ],
+                            "translations": {
+                                "en": "Eat before going to work",
+                                "fa": "قبل از رفتن به سر کار غذا بخور"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "อาบน้ำก่อนนอน",
+                            "words": [
+                                { "word": "อาบน้ำ", "translations": { "en": "shower", "fa": "دوش بگیر" } },
+                                { "word": "ก่อน", "translations": { "en": "before", "fa": "قبل" } },
+                                { "word": "นอน", "translations": { "en": "sleep", "fa": "خواب" } }
+                            ],
+                            "translations": {
+                                "en": "Shower before sleeping",
+                                "fa": "قبل از خواب دوش بگیر"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "โทรก่อนมา",
+                            "words": [
+                                { "word": "โทร", "translations": { "en": "call", "fa": "زنگ بزن" } },
+                                { "word": "ก่อน", "translations": { "en": "before", "fa": "قبل" } },
+                                { "word": "มา", "translations": { "en": "come", "fa": "آمدن" } }
+                            ],
+                            "translations": {
+                                "en": "Call before coming",
+                                "fa": "قبل از آمدن زنگ بزن"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "heading": {
+                "en": "After (หลัง)",
+                "fa": "بعد (หลัง)",
+                "th": "หลัง"
+            },
+            "activities": [ "multipleChoiceWord", "multipleChoiceSentence" ],
+            "blocks": [
+                {
+                    "type": "grammar-intro",
+                    "content": {
+                        "en": "Use หลัง to talk about actions that happen after something else.",
+                        "fa": "از หลัง برای صحبت درباره کارهایی که بعد از چیز دیگری اتفاق می‌افتند استفاده کنید.",
+                        "th": "ใช้ หลัง เพื่อพูดถึงการกระทำที่เกิดขึ้นหลังจากสิ่งอื่น"
+                    }
+                },
+                {
+                    "type": "paragraph",
+                    "elements": [
+                        {
+                            "type": "sentence",
+                            "source": "ไปเที่ยวหลังเลิกงาน",
+                            "grammar": {
+                                "pattern": "ไปเที่ยว + หลัง + เลิกงาน",
+                                "note": {
+                                    "en": "Go out after finishing work",
+                                    "fa": "بعد از تمام شدن کار برو بیرون",
+                                    "th": "ไปเที่ยวหลังเลิกงาน"
+                                }
+                            },
+                            "words": [
+                                { "word": "ไป", "translations": { "en": "go", "fa": "برو" } },
+                                { "word": "เที่ยว", "translations": { "en": "out", "fa": "بیرون" } },
+                                { "word": "หลัง", "translations": { "en": "after", "fa": "بعد" } },
+                                { "word": "เลิก", "translations": { "en": "finish", "fa": "تمام" } },
+                                { "word": "งาน", "translations": { "en": "work", "fa": "کار" } }
+                            ],
+                            "translations": {
+                                "en": "Go out after work",
+                                "fa": "بعد از کار برو بیرون"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "หลังกินข้าวแปรงฟัน",
+                            "words": [
+                                { "word": "หลัง", "translations": { "en": "after", "fa": "بعد" } },
+                                { "word": "กิน", "translations": { "en": "eat", "fa": "خوردن" } },
+                                { "word": "ข้าว", "translations": { "en": "rice", "fa": "غذا" } },
+                                { "word": "แปรงฟัน", "translations": { "en": "brush teeth", "fa": "مسواک بزن" } }
+                            ],
+                            "translations": {
+                                "en": "Brush teeth after eating",
+                                "fa": "بعد از غذا مسواک بزن"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "พบกันหลังเลิกเรียน",
+                            "words": [
+                                { "word": "พบกัน", "translations": { "en": "meet", "fa": "ملاقات کنیم" } },
+                                { "word": "หลัง", "translations": { "en": "after", "fa": "بعد" } },
+                                { "word": "เลิก", "translations": { "en": "finish", "fa": "تمام" } },
+                                { "word": "เรียน", "translations": { "en": "class", "fa": "کلاس" } }
+                            ],
+                            "translations": {
+                                "en": "Meet after class",
+                                "fa": "بعد از کلاس ملاقات کنیم"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "heading": {
+                "en": "During (ตอน)",
+                "fa": "هنگام (ตอน)",
+                "th": "ตอน"
+            },
+            "activities": [ "multipleChoiceWord", "multipleChoiceSentence" ],
+            "blocks": [
+                {
+                    "type": "grammar-intro",
+                    "content": {
+                        "en": "Use ตอน to talk about actions that happen during a specific time.",
+                        "fa": "از ตอน برای صحبت درباره کارهایی که در یک زمان خاص اتفاق می‌افتند استفاده کنید.",
+                        "th": "ใช้ ตอน เพื่อพูดถึงการกระทำที่เกิดขึ้นในช่วงเวลาเฉพาะ"
+                    }
+                },
+                {
+                    "type": "paragraph",
+                    "elements": [
+                        {
+                            "type": "sentence",
+                            "source": "ตอนเช้าดื่มกาแฟ",
+                            "grammar": {
+                                "pattern": "ตอนเช้า + ดื่มกาแฟ",
+                                "note": {
+                                    "en": "In the morning, drink coffee",
+                                    "fa": "صبح‌ها قهوه می‌نوشم",
+                                    "th": "ตอนเช้าดื่มกาแฟ"
+                                }
+                            },
+                            "words": [
+                                { "word": "ตอน", "translations": { "en": "during", "fa": "وقت" } },
+                                { "word": "เช้า", "translations": { "en": "morning", "fa": "صبح" } },
+                                { "word": "ดื่ม", "translations": { "en": "drink", "fa": "می‌نوشم" } },
+                                { "word": "กาแฟ", "translations": { "en": "coffee", "fa": "قهوه" } }
+                            ],
+                            "translations": {
+                                "en": "In the morning, I drink coffee",
+                                "fa": "صبح‌ها قهوه می‌نوشم"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ตอนกลางวันอากาศร้อน",
+                            "words": [
+                                { "word": "ตอน", "translations": { "en": "during", "fa": "وقت" } },
+                                { "word": "กลางวัน", "translations": { "en": "daytime", "fa": "روز" } },
+                                { "word": "อากาศ", "translations": { "en": "weather", "fa": "هوا" } },
+                                { "word": "ร้อน", "translations": { "en": "hot", "fa": "گرم" } }
+                            ],
+                            "translations": {
+                                "en": "During the day, it's hot",
+                                "fa": "در طول روز هوا گرم است"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ตอนฝนตกอยู่บ้าน",
+                            "words": [
+                                { "word": "ตอน", "translations": { "en": "during", "fa": "وقتی" } },
+                                { "word": "ฝน", "translations": { "en": "rain", "fa": "باران" } },
+                                { "word": "ตก", "translations": { "en": "fall", "fa": "می‌بارد" } },
+                                { "word": "อยู่", "translations": { "en": "stay", "fa": "می‌مانم" } },
+                                { "word": "บ้าน", "translations": { "en": "home", "fa": "خانه" } }
+                            ],
+                            "translations": {
+                                "en": "When it rains, I stay home",
+                                "fa": "وقتی باران می‌بارد، در خانه می‌مانم"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "heading": {
+                "en": "10+ Time Words Examples",
+                "fa": "۱۰+ مثال کلمات زمان",
+                "th": "ตัวอย่างคำบอกเวลา ๑๐+ ประโยค"
+            },
+            "activities": [ "multipleChoiceWord", "multipleChoiceSentence" ],
+            "blocks": [
+                {
+                    "type": "paragraph",
+                    "elements": [
+                        {
+                            "type": "sentence",
+                            "source": "ล้างมือก่อนกินข้าว",
+                            "words": [
+                                { "word": "ล้าง", "translations": { "en": "wash", "fa": "بشوی" } },
+                                { "word": "มือ", "translations": { "en": "hands", "fa": "دست‌ها" } },
+                                { "word": "ก่อน", "translations": { "en": "before", "fa": "قبل" } },
+                                { "word": "กิน", "translations": { "en": "eat", "fa": "خوردن" } },
+                                { "word": "ข้าว", "translations": { "en": "rice", "fa": "غذا" } }
+                            ],
+                            "translations": {
+                                "en": "Wash hands before eating",
+                                "fa": "قبل از غذا دست‌ها را بشوی"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "หลังอาหารห้ามออกกำลังกาย",
+                            "words": [
+                                { "word": "หลัง", "translations": { "en": "after", "fa": "بعد" } },
+                                { "word": "อาหาร", "translations": { "en": "meal", "fa": "غذا" } },
+                                { "word": "ห้าม", "translations": { "en": "don't", "fa": "نباید" } },
+                                { "word": "ออกกำลังกาย", "translations": { "en": "exercise", "fa": "ورزش کرد" } }
+                            ],
+                            "translations": {
+                                "en": "Don't exercise after meals",
+                                "fa": "بعد از غذا نباید ورزش کرد"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ตอนเย็นไปเดินเล่น",
+                            "words": [
+                                { "word": "ตอน", "translations": { "en": "in the", "fa": "وقت" } },
+                                { "word": "เย็น", "translations": { "en": "evening", "fa": "عصر" } },
+                                { "word": "ไป", "translations": { "en": "go", "fa": "می‌روم" } },
+                                { "word": "เดินเล่น", "translations": { "en": "walk", "fa": "پیاده‌روی" } }
+                            ],
+                            "translations": {
+                                "en": "In the evening, go for a walk",
+                                "fa": "عصرها می‌روم پیاده‌روی"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ก่อนนอนแปรงฟัน",
+                            "words": [
+                                { "word": "ก่อน", "translations": { "en": "before", "fa": "قبل" } },
+                                { "word": "นอน", "translations": { "en": "sleep", "fa": "خواب" } },
+                                { "word": "แปรงฟัน", "translations": { "en": "brush teeth", "fa": "مسواک بزن" } }
+                            ],
+                            "translations": {
+                                "en": "Brush teeth before sleeping",
+                                "fa": "قبل از خواب مسواک بزن"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "หลังฝนตกอากาศสดชื่น",
+                            "words": [
+                                { "word": "หลัง", "translations": { "en": "after", "fa": "بعد" } },
+                                { "word": "ฝน", "translations": { "en": "rain", "fa": "باران" } },
+                                { "word": "ตก", "translations": { "en": "fall", "fa": "باریدن" } },
+                                { "word": "อากาศ", "translations": { "en": "air", "fa": "هوا" } },
+                                { "word": "สดชื่น", "translations": { "en": "fresh", "fa": "تازه" } }
+                            ],
+                            "translations": {
+                                "en": "After rain, the air is fresh",
+                                "fa": "بعد از باران، هوا تازه است"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ตอนเช้าตื่นแต่ไก่โห่",
+                            "words": [
+                                { "word": "ตอน", "translations": { "en": "in the", "fa": "وقت" } },
+                                { "word": "เช้า", "translations": { "en": "morning", "fa": "صبح" } },
+                                { "word": "ตื่น", "translations": { "en": "wake up", "fa": "بیدار می‌شوم" } },
+                                { "word": "แต่ไก่โห่", "translations": { "en": "very early", "fa": "خیلی زود" } }
+                            ],
+                            "translations": {
+                                "en": "In the morning, I wake up very early",
+                                "fa": "صبح‌ها خیلی زود بیدار می‌شوم"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ก่อนออกจากบ้านเช็กอีกที",
+                            "words": [
+                                { "word": "ก่อน", "translations": { "en": "before", "fa": "قبل" } },
+                                { "word": "ออก", "translations": { "en": "leave", "fa": "خروج" } },
+                                { "word": "จาก", "translations": { "en": "from", "fa": "از" } },
+                                { "word": "บ้าน", "translations": { "en": "home", "fa": "خانه" } },
+                                { "word": "เช็ก", "translations": { "en": "check", "fa": "چک کن" } },
+                                { "word": "อีกที", "translations": { "en": "again", "fa": "دوباره" } }
+                            ],
+                            "translations": {
+                                "en": "Before leaving home, check again",
+                                "fa": "قبل از خروج از خانه، دوباره چک کن"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "หลังเลิกงานไปออกกำลังกาย",
+                            "words": [
+                                { "word": "หลัง", "translations": { "en": "after", "fa": "بعد" } },
+                                { "word": "เลิก", "translations": { "en": "finish", "fa": "تمام" } },
+                                { "word": "งาน", "translations": { "en": "work", "fa": "کار" } },
+                                { "word": "ไป", "translations": { "en": "go", "fa": "می‌روم" } },
+                                { "word": "ออกกำลังกาย", "translations": { "en": "exercise", "fa": "ورزش" } }
+                            ],
+                            "translations": {
+                                "en": "After work, go exercise",
+                                "fa": "بعد از کار می‌روم ورزش"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ตอนกลางคืนนอนหลับ",
+                            "words": [
+                                { "word": "ตอน", "translations": { "en": "at", "fa": "وقت" } },
+                                { "word": "กลางคืน", "translations": { "en": "night", "fa": "شب" } },
+                                { "word": "นอน", "translations": { "en": "sleep", "fa": "می‌خوابم" } },
+                                { "word": "หลับ", "translations": { "en": "asleep", "fa": "خواب" } }
+                            ],
+                            "translations": {
+                                "en": "At night, I sleep",
+                                "fa": "شب‌ها می‌خوابم"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ก่อนตัดสินใจคิดให้ดี",
+                            "words": [
+                                { "word": "ก่อน", "translations": { "en": "before", "fa": "قبل" } },
+                                { "word": "ตัดสินใจ", "translations": { "en": "decide", "fa": "تصمیم گرفتن" } },
+                                { "word": "คิด", "translations": { "en": "think", "fa": "فکر کن" } },
+                                { "word": "ให้ดี", "translations": { "en": "carefully", "fa": "با دقت" } }
+                            ],
+                            "translations": {
+                                "en": "Before deciding, think carefully",
+                                "fa": "قبل از تصمیم‌گیری، با دقت فکر کن"
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
