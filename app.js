@@ -568,75 +568,75 @@ hydrateSource(text, words, uid) {
     /**
      * Initialize the application
      */
-/*
-    async init() {
-        try {
-            this.state.scrolledRows = new Set();
-            this.state.currentRowId = null;
-
-            // Set up voices changed handler FIRST
-            window.speechSynthesis.onvoiceschanged = () => {
-                this.cachedVoices = window.speechSynthesis.getVoices();
-                this.autoSelectThaiVoice();
-            };
-
-            // Check if voices are already loaded
-            setTimeout(() => {
-                if (window.speechSynthesis.getVoices().length > 0) {
+    /*
+        async init() {
+            try {
+                this.state.scrolledRows = new Set();
+                this.state.currentRowId = null;
+    
+                // Set up voices changed handler FIRST
+                window.speechSynthesis.onvoiceschanged = () => {
                     this.cachedVoices = window.speechSynthesis.getVoices();
                     this.autoSelectThaiVoice();
-                }
-            }, 100);
-
-            // Rest of initialization...
-            await this.loadTranslations();
-            await this.loadManifest();
-            this.applyGlobalSettings();
-            this.renderLayout();
-
-            // Setup user interaction listeners to pause playback
-            // BUT exclude clicks on audio elements and the play button
-            ['wheel', 'touchmove', 'mousedown', 'keydown', 'scroll'].forEach(event => {
-                window.addEventListener(event, () => {
-                    if (this.state.media.isPlaying && !this.state.isAutoScrolling) {
+                };
+    
+                // Check if voices are already loaded
+                setTimeout(() => {
+                    if (window.speechSynthesis.getVoices().length > 0) {
+                        this.cachedVoices = window.speechSynthesis.getVoices();
+                        this.autoSelectThaiVoice();
+                    }
+                }, 100);
+    
+                // Rest of initialization...
+                await this.loadTranslations();
+                await this.loadManifest();
+                this.applyGlobalSettings();
+                this.renderLayout();
+    
+                // Setup user interaction listeners to pause playback
+                // BUT exclude clicks on audio elements and the play button
+                ['wheel', 'touchmove', 'mousedown', 'keydown', 'scroll'].forEach(event => {
+                    window.addEventListener(event, () => {
+                        if (this.state.media.isPlaying && !this.state.isAutoScrolling) {
+                            this.stopSequence();
+                        }
+                    }, { passive: true });
+                });
+    
+                // Setup user interaction listeners to pause playback
+                // BUT exclude clicks on audio elements and the play button
+                ['wheel', 'touchmove', 'mousedown', 'keydown', 'scroll'].forEach(event => {
+                    window.addEventListener(event, () => {
+                        if (this.state.media.isPlaying && !this.state.isAutoScrolling) {
+                            this.stopSequence();
+                        }
+                    }, { passive: true });
+                });
+    
+                // Handle clicks separately - ONLY stop if click is NOT on audio elements
+                window.addEventListener('click', (e) => {
+                    // Check if click is on an audio element or its parent
+                    const isAudioClick = e.target.closest('.audio-element, .player-ctrl, .grammar-icon-btn');
+    
+                    // Only stop if it's NOT an audio click AND media is playing
+                    if (this.state.media.isPlaying && !this.state.isAutoScrolling && !isAudioClick) {
                         this.stopSequence();
                     }
                 }, { passive: true });
-            });
-
-            // Setup user interaction listeners to pause playback
-            // BUT exclude clicks on audio elements and the play button
-            ['wheel', 'touchmove', 'mousedown', 'keydown', 'scroll'].forEach(event => {
-                window.addEventListener(event, () => {
-                    if (this.state.media.isPlaying && !this.state.isAutoScrolling) {
-                        this.stopSequence();
-                    }
-                }, { passive: true });
-            });
-
-            // Handle clicks separately - ONLY stop if click is NOT on audio elements
-            window.addEventListener('click', (e) => {
-                // Check if click is on an audio element or its parent
-                const isAudioClick = e.target.closest('.audio-element, .player-ctrl, .grammar-icon-btn');
-
-                // Only stop if it's NOT an audio click AND media is playing
-                if (this.state.media.isPlaying && !this.state.isAutoScrolling && !isAudioClick) {
-                    this.stopSequence();
-                }
-            }, { passive: true });
-
-            // Setup routing
-            window.onhashchange = () => this.router();
-            this.router();
-        } catch (error) {
-            this.logError('App initialization failed', error, {
-                state: this.state,
-                lang: this.state.lang,
-                theme: this.state.theme
-            });
-        }
-    },
-*/
+    
+                // Setup routing
+                window.onhashchange = () => this.router();
+                this.router();
+            } catch (error) {
+                this.logError('App initialization failed', error, {
+                    state: this.state,
+                    lang: this.state.lang,
+                    theme: this.state.theme
+                });
+            }
+        },
+    */
 
     async init() {
         try {
@@ -683,7 +683,7 @@ hydrateSource(text, words, uid) {
             });
         }
     },
-    
+
     /**
      * Automatically select Thai voice if available and none selected
      */

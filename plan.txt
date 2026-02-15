@@ -1,58 +1,5 @@
-This was a great fix and it simplified the data file.
-
-Returning to your suggestions for improving the App.
-
-My first choice is to add grammar notes.
-Here was your suggestion:
-
-Add Grammar Notes
-{
-    "type": "sentence",
-    "source": "กำลังจะไป",
-    "grammar": {
-        "pattern": "กำลังจะ + verb",
-        "meaning": "about to do something",
-        "examples": ["กำลังจะกิน", "กำลังจะนอน"]
-    },
-    "words": [...]
-}
-
-My school text books adopts a similar approach by introducing a sentence structure 
-followed by examples using the grammatical structure.
-
-Before adapting the code, can you identify a set of grammar patterns and 
-corresponding example sets?
 
 
-Before the App view update for the grammar icon, lets complete the data model.
-
-First and entry in the manifest.json for the Core Thai Grammar Patterns with Examples, 
-including documents array JSON entries for each of the grammar pattern.  
-
-The manifest.json documents array JSON entries for each of the grammar pattern has a 
-filepath which should follow the existing model (see social.json example).  
-There should be enough examples of the pattern to allow for understanding and practice.
-
-
-The grammar icon is a great idea.  What is the best mobile first solution to 
-display the grammar information?  A pop up or an HTML details element or any other suggestion?
-
-Yes, Please!  Also, see updated files.  I do not see the grammar icon!
-
-The grammar pattern test case is working.  
-You identified nearly 20 grammar patterns.  Please update the manifest.json for 
-all grammar patterns and generate the corresponding JSON data files with plenty of 
-examples (10 or more) to practice the pattern.
-
-The last suggestion seems ad-hoc! Previously the speech stopped on any event not just 
-scrolling.  Play should not continue due to any event, scrolling or selecting 
-an option from the toolbar.
-
-The CSS update is also becoming bloated with multitude of updates, please see the 
-style.css and suggest more specific updates.
-
-
-The bug remains!  Play does not stop with other events!  
 
 
 
