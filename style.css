@@ -53,6 +53,7 @@
 /* Material Icons Fix */
 .material-icons {
     font-family: 'Material Icons';
+    vertical-align: middle;
 }
 
 /* ============================================================================
@@ -225,7 +226,7 @@ h6 {
 .media-col {
     display: flex;
     align-items: center;
-    gap: 4px;
+    gap: 2vw;
 }
 
 .media-col.middle {
@@ -256,7 +257,7 @@ h6 {
     color: white;
     border: none;
     border-radius: 6px;
-/*    padding: 4px 8px;
+    /*    padding: 4px 8px;
     font-size: 0.75rem;
     font-weight: bold; */
     min-width: 40px;
@@ -334,7 +335,6 @@ h6 {
 .doc-activity-row {
     display: flex;
     gap: 0.5rem;
-    margin: 1rem 0;
     padding: 0 10px 15px;
     flex-wrap: wrap;
 }
@@ -576,7 +576,6 @@ h6 {
 
 .block-container {
     border-bottom: 1px solid #3b82f626;
-    margin-bottom: 1.5rem;
 }
 
 /* Word blocks */
@@ -1171,6 +1170,7 @@ select:focus-visible {
     left: 0;
     right: 0;
     padding: 0 1rem;
+    margin: 1rem;
     background: var(--card);
     border-radius: 20px 20px 0 0;
     box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.2);
@@ -1294,7 +1294,6 @@ select:focus-visible {
     border: none;
     color: var(--thai-color);
     cursor: pointer;
-    padding: 6px;
     border-radius: 50%;
     display: inline-flex;
     align-items: center;

@@ -122,23 +122,23 @@ const App = {
         const settings = this.state.media.languageSettings;
         let html = `<div class="word-card">`;
 
-        // Thai source word
+        // Thai source word - ALWAYS RENDER (this is the source text)
         html += `<div class="word-source audio-element"
-                     lang="th" dir="ltr"
-                     data-text="${this.escapeHtml(wordObj.word)}"
-                     data-lang="th"
-                     onclick="App.seekAndPlay(this)">${this.escapeHtml(wordObj.word)}</div>`;
+                 lang="th" dir="ltr"
+                 data-text="${this.escapeHtml(wordObj.word)}"
+                 data-lang="th"
+                 onclick="App.seekAndPlay(this)">${this.escapeHtml(wordObj.word)}</div>`;
 
-        // Translations
+        // Translations - render all enabled languages (including Thai if enabled as a translation)
         html += `<div class="word-trans-group">`;
         Object.entries(settings).forEach(([code, config]) => {
-            if (code !== 'th' && config.show && wordObj.translations?.[code]) {
+            if (config.show && wordObj.translations?.[code]) {
                 const dir = code === 'fa' ? 'rtl' : 'ltr';
                 html += `<div class="word-trans lang-${code} audio-element"
-                             lang="${code}" dir="${dir}"
-                             data-text="${this.escapeHtml(wordObj.translations[code])}"
-                             data-lang="${code}"
-                             onclick="App.seekAndPlay(this)">${this.escapeHtml(wordObj.translations[code])}</div>`;
+                         lang="${code}" dir="${dir}"
+                         data-text="${this.escapeHtml(wordObj.translations[code])}"
+                         data-lang="${code}"
+                         onclick="App.seekAndPlay(this)">${this.escapeHtml(wordObj.translations[code])}</div>`;
             }
         });
         html += `</div></div>`;
@@ -187,6 +187,7 @@ const App = {
      * @param {number} sectionIndex - Index of the section (for unique IDs)
      * @returns {string} HTML string
      */
+
     /*
         renderBlocks(blocks, sectionIndex = 0) {
             const settings = this.state.media.languageSettings;
@@ -199,36 +200,39 @@ const App = {
                 // and per‑language translations.
                 // ------------------------------------------------------------------
                 if (block.type === 'paragraph') {
+    
                     block.elements.forEach((element, elementIndex) => {
                         if (element.type !== 'sentence') return;
-    
+                        
                         // ADD sectionIndex to make UID globally unique
                         const uid = `s-${sectionIndex}-${blockIndex}-${elementIndex}`;
     
-                        // Source sentence (Thai)
+                        // Source sentence (Thai) with grammar icon
                         blockHtml += `<div class="sentence-group">
-                    <div class="stack-column">
-                        <div class="stack-item source audio-element"
-                             lang="th" dir="ltr"
-                             data-text="${this.escapeHtml(element.source)}"
-                             data-lang="th"
-                             data-uid="${uid}"
-                             onclick="App.seekAndPlay(this)">
-                            ${this.hydrateSource(element.source, element.words, uid)}
-                        </div>`;
+                        <div class="stack-column">`;
     
-                        // Word‑by‑word breakdown
+                        // Add grammar icon if present
+                        if (element.grammar) {
+                            blockHtml += `<button class="grammar-icon-btn"
+                                    onclick="App.showGrammarSheet('${uid}', event)"
+                                    aria-label="Show grammar explanation"
+                                    title="View grammar note">
+                                        <span class="material-icons">menu_book</span>
+                                    </button>`;
+                        }
+    
+    
+                        // Word‑by‑word breakdown (unchanged)
                         if (element.words && element.words.length > 0) {
                             blockHtml += `<div class="sent-word-block">`;
-    
                             element.words.forEach((word, wordIndex) => {
                                 blockHtml += `<div id="${uid}-card-${wordIndex}"
-                             class="sent-word-item audio-element"
-                             data-text="${this.escapeHtml(word.word)}"
-                             data-lang="th"
-                             data-link="source-${uid}-w-${wordIndex}"
-                             onclick="App.seekAndPlay(this)">
-                            <div class="sent-word-source" lang="th" dir="ltr">${this.escapeHtml(word.word)}</div>`;
+                                class="sent-word-item audio-element"
+                                data-text="${this.escapeHtml(word.word)}"
+                                data-lang="th"
+                                data-link="source-${uid}-w-${wordIndex}"
+                                onclick="App.seekAndPlay(this)">
+                                <div class="sent-word-source" lang="th" dir="ltr">${this.escapeHtml(word.word)}</div>`;
     
                                 // Show translations for each enabled language
                                 Object.keys(settings).forEach(lang => {
@@ -241,6 +245,19 @@ const App = {
                             });
                             blockHtml += `</div>`;
                         }
+                        blockHtml += `
+                            <div class="source-wrapper" style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">`;
+    
+                        // Add the source sentence with ALL original attributes preserved
+                        blockHtml += `<div class="stack-item source audio-element"
+                                    lang="th" dir="ltr"
+                                    data-text="${this.escapeHtml(element.source)}"
+                                    data-lang="th"
+                                    data-uid="${uid}"
+                                    onclick="App.seekAndPlay(this)">
+                                    ${this.hydrateSource(element.source, element.words, uid)}
+                                </div>
+                            </div>`;
     
                         // Translations for the whole sentence
                         Object.keys(settings).forEach(lang => {
@@ -248,12 +265,12 @@ const App = {
                                 const transUid = `${uid}-trans-${lang}`;
                                 const dir = lang === 'fa' ? 'rtl' : 'ltr';
                                 blockHtml += `<div class="stack-item trans lang-${lang} audio-element"
-                                     lang="${lang}" dir="${dir}"
-                                     data-text="${this.escapeHtml(element.translations[lang])}"
-                                     data-lang="${lang}"
-                                     onclick="App.seekAndPlay(this)">
-                            ${this.renderTranslationSpan(element.translations[lang], lang, transUid)}
-                        </div>`;
+                                        lang="${lang}" dir="${dir}"
+                                        data-text="${this.escapeHtml(element.translations[lang])}"
+                                        data-lang="${lang}"
+                                        onclick="App.seekAndPlay(this)">
+                                ${this.renderTranslationSpan(element.translations[lang], lang, transUid)}
+                            </div>`;
                             }
                         });
     
@@ -279,6 +296,7 @@ const App = {
             }).join('');
         },
     */
+
     renderBlocks(blocks, sectionIndex = 0) {
         const settings = this.state.media.languageSettings;
 
@@ -290,52 +308,44 @@ const App = {
             // and per‑language translations.
             // ------------------------------------------------------------------
             if (block.type === 'paragraph') {
+
                 block.elements.forEach((element, elementIndex) => {
                     if (element.type !== 'sentence') return;
 
                     // ADD sectionIndex to make UID globally unique
                     const uid = `s-${sectionIndex}-${blockIndex}-${elementIndex}`;
 
-                    // Source sentence (Thai) with grammar icon
-                    blockHtml += `<div class="sentence-group">
-            <div class="stack-column">
-                <div class="source-wrapper" style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">`;
-
                     // Add grammar icon if present
                     if (element.grammar) {
                         blockHtml += `<button class="grammar-icon-btn"
-                           onclick="App.showGrammarSheet('${uid}', event)"
-                           aria-label="Show grammar explanation"
-                           title="View grammar note">
-                            <span class="material-icons">menu_book</span>
-                        </button>`;
+                            onclick="App.showGrammarSheet('${uid}', event)"
+                            aria-label="Show grammar explanation"
+                            title="View grammar note">
+                                <span class="material-icons">menu_book</span>
+                            </button>`;
                     }
 
-                    // Add the source sentence with ALL original attributes preserved
-                    blockHtml += `<div class="stack-item source audio-element"
-                         lang="th" dir="ltr"
-                         data-text="${this.escapeHtml(element.source)}"
-                         data-lang="th"
-                         data-uid="${uid}"
-                         onclick="App.seekAndPlay(this)">
-                        ${this.hydrateSource(element.source, element.words, uid)}
-                    </div>
-                </div>`;
+                    // Source sentence container - ALWAYS RENDER the sentence wrapper
+                    blockHtml += `<div class="sentence-group">
+                    <div class="stack-column">`;
 
-                    // Word‑by‑word breakdown (unchanged)
-                    if (element.words && element.words.length > 0) {
+
+
+                    // Word‑by‑word breakdown - ONLY render if Thai source words are enabled
+                    if (settings.th && settings.th.show && element.words && element.words.length > 0) {
                         blockHtml += `<div class="sent-word-block">`;
                         element.words.forEach((word, wordIndex) => {
                             blockHtml += `<div id="${uid}-card-${wordIndex}"
-                         class="sent-word-item audio-element"
-                         data-text="${this.escapeHtml(word.word)}"
-                         data-lang="th"
-                         data-link="source-${uid}-w-${wordIndex}"
-                         onclick="App.seekAndPlay(this)">
+                        class="sent-word-item audio-element"
+                        data-text="${this.escapeHtml(word.word)}"
+                        data-lang="th"
+                        data-link="source-${uid}-w-${wordIndex}"
+                        onclick="App.seekAndPlay(this)">
                         <div class="sent-word-source" lang="th" dir="ltr">${this.escapeHtml(word.word)}</div>`;
 
-                            // Show translations for each enabled language
+                            // Show translations for each enabled language (EN, FA, etc.)
                             Object.keys(settings).forEach(lang => {
+                                // Only show translations for languages that are enabled (excluding Thai since Thai is the source)
                                 if (lang !== 'th' && settings[lang].show && word.translations?.[lang]) {
                                     const dir = lang === 'fa' ? 'rtl' : 'ltr';
                                     blockHtml += `<div class="sent-word-trans lang-${lang}" lang="${lang}" dir="${dir}">${this.escapeHtml(word.translations[lang])}</div>`;
@@ -346,16 +356,32 @@ const App = {
                         blockHtml += `</div>`;
                     }
 
-                    // Translations for the whole sentence
+                    // Source sentence wrapper - ALWAYS RENDER the source sentence
+                    blockHtml += `
+                    <div class="source-wrapper" style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">`;
+
+                    // Add the source sentence with ALL original attributes preserved
+                    blockHtml += `<div class="stack-item source audio-element"
+                            lang="th" dir="ltr"
+                            data-text="${this.escapeHtml(element.source)}"
+                            data-lang="th"
+                            data-uid="${uid}"
+                            onclick="App.seekAndPlay(this)">
+                            ${this.hydrateSource(element.source, element.words, uid)}
+                        </div>
+                    </div>`;
+
+                    // Translations for the whole sentence - ONLY render if language is enabled (EN, FA, etc.)
                     Object.keys(settings).forEach(lang => {
+                        // Check if this language is enabled AND has a translation AND is not Thai
                         if (lang !== 'th' && settings[lang].show && element.translations?.[lang]) {
                             const transUid = `${uid}-trans-${lang}`;
                             const dir = lang === 'fa' ? 'rtl' : 'ltr';
                             blockHtml += `<div class="stack-item trans lang-${lang} audio-element"
-                                 lang="${lang}" dir="${dir}"
-                                 data-text="${this.escapeHtml(element.translations[lang])}"
-                                 data-lang="${lang}"
-                                 onclick="App.seekAndPlay(this)">
+                                lang="${lang}" dir="${dir}"
+                                data-text="${this.escapeHtml(element.translations[lang])}"
+                                data-lang="${lang}"
+                                onclick="App.seekAndPlay(this)">
                         ${this.renderTranslationSpan(element.translations[lang], lang, transUid)}
                     </div>`;
                         }
@@ -383,131 +409,36 @@ const App = {
         }).join('');
     },
 
-    /**
-     * More robust version that finds words by searching rather than using ranges
-     */
-    /*
-    hydrateSource(text, words, uid) {
-        if (!words || words.length === 0) return this.escapeHtml(text);
+    // Update renderWordCard to respect Thai checkbox for source words
+    renderWordCard(wordObj, uid) {
+        const settings = this.state.media.languageSettings;
+        let html = `<div class="word-card">`;
 
-        let html = '';
-        let cursor = 0;
+        // Thai source word - ONLY render if Thai source words are enabled
+        if (settings.th && settings.th.show) {
+            html += `<div class="word-source audio-element"
+                 lang="th" dir="ltr"
+                 data-text="${this.escapeHtml(wordObj.word)}"
+                 data-lang="th"
+                 onclick="App.seekAndPlay(this)">${this.escapeHtml(wordObj.word)}</div>`;
+        }
 
-        // Sort words by their position in the text (just in case)
-        const sortedWords = [...words].sort((a, b) => {
-            // Find position if not provided or incorrect
-            const posA = a.range?.[0] ?? text.indexOf(a.word, 0);
-            const posB = b.range?.[0] ?? text.indexOf(b.word, 0);
-            return posA - posB;
+        // Translations - render all enabled languages (EN, FA, etc.)
+        html += `<div class="word-trans-group">`;
+        Object.entries(settings).forEach(([code, config]) => {
+            if (code !== 'th' && config.show && wordObj.translations?.[code]) {
+                const dir = code === 'fa' ? 'rtl' : 'ltr';
+                html += `<div class="word-trans lang-${code} audio-element"
+                     lang="${code}" dir="${dir}"
+                     data-text="${this.escapeHtml(wordObj.translations[code])}"
+                     data-lang="${code}"
+                     onclick="App.seekAndPlay(this)">${this.escapeHtml(wordObj.translations[code])}</div>`;
+            }
         });
-
-        for (let i = 0; i < sortedWords.length; i++) {
-            const word = sortedWords[i];
-
-            // Find this word in the remaining text
-            const start = text.indexOf(word.word, cursor);
-
-            if (start === -1) {
-                console.error(`Could not find word "${word.word}" in "${text.slice(cursor)}"`);
-                continue;
-            }
-
-            const end = start + word.word.length;
-
-            // Add text before the word
-            if (start > cursor) {
-                html += this.escapeHtml(text.slice(cursor, start));
-            }
-
-            // Wrap the word
-            html += `<span id="source-${uid}-w-${i}"
-             class="word-span"
-             data-link="${uid}-card-${i}"
-             lang="th" dir="ltr">${this.escapeHtml(word.word)}</span>`;
-
-            cursor = end;
-        }
-
-        // Add any remaining text
-        if (cursor < text.length) {
-            html += this.escapeHtml(text.slice(cursor));
-        }
-
+        html += `</div></div>`;
         return html;
     },
-*/
-    /**
-hydrateSource(text, words, uid) {
-    if (!words || words.length === 0) return this.escapeHtml(text);
 
-    // Pre-calculate all possible positions for each word
-    const wordPositions = words.map(word => {
-        const positions = [];
-        let pos = -1;
-        while ((pos = text.indexOf(word.word, pos + 1)) !== -1) {
-            positions.push(pos);
-        }
-        return { word, positions };
-    });
-
-    let html = '';
-    let cursor = 0;
-    const usedPositions = new Set();
-    
-    for (let i = 0; i < wordPositions.length; i++) {
-        const { word, positions } = wordPositions[i];
-        
-        // Find the next unused position that's >= cursor
-        let start = -1;
-        for (const pos of positions) {
-            if (pos >= cursor && !usedPositions.has(pos)) {
-                start = pos;
-                usedPositions.add(pos);
-                break;
-            }
-        }
-        
-        if (start === -1) {
-            console.warn(`No available position for word "${word.word}" in "${text}"`);
-            continue;
-        }
-        
-        const end = start + word.word.length;
-        
-        // Add text before the word
-        if (start > cursor) {
-            html += this.escapeHtml(text.slice(cursor, start));
-        }
-        
-        // Wrap the word
-        html += `<span id="source-${uid}-w-${i}"
-             class="word-span"
-             data-link="${uid}-card-${i}"
-             lang="th" dir="ltr">${this.escapeHtml(word.word)}</span>`;
-
-        cursor = end;
-    }
-
-    // Add remaining text
-    if (cursor < text.length) {
-        html += this.escapeHtml(text.slice(cursor));
-    }
-
-    return html;
-},
-
-
-    /**
-     * Inject `<span>` tags around the words that have a word‑breakdown.
-     * Finds words by searching in the text, no ranges needed.
-     * @param {string} text - The original source sentence (Thai)
-     * @param {Array} words - Array of word objects with translations (no ranges)
-     * @param {string} uid - A unique identifier for the sentence
-     * @returns {string} HTML with word spans wrapped around matching text
-     */
-    /**
-     * Simplified version that processes words in order
-     */
     hydrateSource(text, words, uid) {
         if (!words || words.length === 0) return this.escapeHtml(text);
 
@@ -1333,9 +1264,11 @@ hydrateSource(text, words, uid) {
             <table>
                 <thead>
                     <tr>
-                        <th lang="${this.state.lang}" dir="${currentDir}">${t.language || 'Language'}</th>
+                        <th lang="${this.state.lang}" dir="${currentDir}">${t.translation || 'Translation'}</th>
                         <th lang="${this.state.lang}" dir="${currentDir}">${t.show || 'Show'}</th>
-                        <th lang="${this.state.lang}" dir="${currentDir}">${t.repeat || 'Repeat'}</th>
+                        <th lang="${this.state.lang}" dir="${currentDir}">
+                            <span class="material-icons">volume_up</span> ${t.repeat || 'Repeat'}
+                        </th>
                     </tr>
                 </thead>
                 <tbody>
@@ -1469,40 +1402,6 @@ hydrateSource(text, words, uid) {
             <div class="card card-help"><ol>${renderSteps(t.apple_steps)}</ol></div>
         </details>
 
-        <details class="section-details">
-            <summary lang="${this.state.lang}" dir="${currentDir}">${t.generate_json || 'JSON Generator'}</summary>
-            <div class="card card-help">
-                <div class="gen-options" style="display:flex;gap:15px;margin-bottom:15px;">
-                    <label style="cursor:pointer" lang="${this.state.lang}" dir="${currentDir}">
-                        <input type="radio" name="genMode" value="sentence"
-                               checked onchange="App.resetJsonState()">
-                        ${t.mode_sentence || 'Sentence'}
-                    </label>
-                    <label style="cursor:pointer" lang="${this.state.lang}" dir="${currentDir}">
-                        <input type="radio" name="genMode" value="words"
-                               onchange="App.resetJsonState()">
-                        ${t.mode_words || 'Words'}
-                    </label>
-                </div>
-
-                <label style="display:block;margin-bottom:8px;" lang="${this.state.lang}" dir="${currentDir}">
-                    ${t.thai_input_label || 'Input (Comma Separated):'}
-                </label>
-                <input type="text" id="thai-input" class="gen-input"
-                       style="width:100%;padding:10px;margin-bottom:10px;"
-                       placeholder="word one, word two, word three"
-                       oninput="App.resetJsonState()">
-
-                <button id="btn-generate" class="btn-activity"
-                        onclick="App.generateJsonSample(document.getElementById('thai-input').value)"
-                        lang="${this.state.lang}" dir="${currentDir}">
-                    ${t.btn_generate || 'Generate'}
-                </button>
-
-                <pre id="json-output" class="json-output-box"
-                     style="margin-top:15px;background:#1e1e1e;color:#a9dc76;padding:15px;display:none;overflow-x:auto;"></pre>
-            </div>
-        </details>
     </section>`;
     },
 
@@ -1536,77 +1435,6 @@ hydrateSource(text, words, uid) {
             console.error('Translation error:', error);
             return '';
         }
-    },
-
-    /**
-     * Generate JSON sample from Thai input
-     * @param {string} input - Thai text input
-     */
-    async generateJsonSample(input) {
-        if (!input || input.trim() === '') return;
-
-        const outputBox = document.getElementById('json-output');
-        outputBox.style.display = 'block';
-        outputBox.textContent = 'Processing translations… please wait (throttled)…';
-
-        const mode = document.querySelector('input[name="genMode"]:checked').value;
-        const tokens = input.split(',')
-            .map(token => token.trim())
-            .filter(token => token.length > 0);
-
-        let output = {};
-
-        if (mode === 'words') {
-            const wordList = [];
-            for (const token of tokens) {
-                const english = await this.fetchTranslation(token, 'th|en');
-                await this.sleep(200);
-                const farsi = await this.fetchTranslation(token, 'th|fa');
-                await this.sleep(200);
-                wordList.push({
-                    word: token,
-                    translations: { en: english, fa: farsi }
-                });
-            }
-            output = { type: 'words', data: wordList };
-        } else {
-            // Sentence mode
-            const source = tokens.join('');
-            const englishSentence = await this.fetchTranslation(source, 'th|en');
-            await this.sleep(300);
-            const farsiSentence = await this.fetchTranslation(source, 'th|fa');
-            await this.sleep(300);
-
-            const wordsData = [];
-            let cursor = 0;
-
-            for (const token of tokens) {
-                const length = token.length;
-                const start = cursor;
-                const end = cursor + length;
-
-                const englishWord = await this.fetchTranslation(token, 'th|en');
-                await this.sleep(200);
-                const farsiWord = await this.fetchTranslation(token, 'th|fa');
-                await this.sleep(200);
-
-                wordsData.push({
-                    word: token,
-                    range: [start, end],
-                    translations: { en: englishWord, fa: farsiWord }
-                });
-                cursor = end;
-            }
-
-            output = {
-                type: 'sentence',
-                source,
-                words: wordsData,
-                translations: { en: englishSentence, fa: farsiSentence }
-            };
-        }
-
-        outputBox.textContent = JSON.stringify(output, null, 4);
     },
 
     /**

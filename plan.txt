@@ -1,4 +1,18 @@
 
+On the Settings overlay page the Show checkboxes for each translation should determine 
+whether the translation text is rendered.
+The Show checkboxes work correctly for EN and FA but the TH checkbox has no effect and the 
+TH text is always displayed.
+
+Change the code so that the TH checkbox determines whether  
+the TH text is rendered in the same way as the FA and EN translations.
+
+Same problem! I have deselected all (TH, EN, FA) show checkboxes and in the browser source code you see:
+
+<div id="s-0-1-0-card-0" class="sent-word-item audio-element" data-text="ฉัน" data-lang="th" data-link="source-s-0-1-0-w-0" onclick="App.seekAndPlay(this)">
+                        <div class="sent-word-source" lang="th" dir="ltr">ฉัน</div></div><div id="s-0-1-0-card-1" class="sent-word-item audio-element" data-text="กิน" data-lang="th" data-link="source-s-0-1-0-w-1" onclick="App.seekAndPlay(this)">
+                        <div class="sent-word-source" lang="th" dir="ltr">กิน</div></div><div id="s-0-1-0-card-2" class="sent-word-item audio-element" data-text="ข้าว" data-lang="th" data-link="source-s-0-1-0-w-2" onclick="App.seekAndPlay(this)">
+                        <div class="sent-word-source" lang="th" dir="ltr">ข้าว</div></div>
 
 
 
