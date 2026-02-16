@@ -1,15 +1,14 @@
 http://127.0.0.1:8080/#sentence-game/grammar_polite_particles/0
 
-Selecting the words does construct the sentence, but 
-when check button is clicked, the warning message, Not quite right. Try again! is displayed 
-even though the sentense is correct!
+On help page, Quick Reference is the only summary text that is not displayed!
 
-Clicking Show Answer, displays, Perfect! You built the sentence correctly. 
-(even though it displayed, Not quite right. Try again! is displayed  )
+<summary lang="en" dir="ltr">
+                <span class="material-icons">quick_reference</span>
+                📋 Quick Reference
+            </summary>
 
-Please arrange the Rest, Check and Next buttons equally spaced in one row.
-
-
+Looking at the browser developer tool, layout, there is the message:
+-154px Item was set to shrink !
 
 
 Sentence Building Games for the existing data files.

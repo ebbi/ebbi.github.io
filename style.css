@@ -316,7 +316,9 @@ h6 {
 .section-quiz-btn,
 .btn-flashcard,
 .btn-flashcard-small,
-.btn-activity {
+.btn-activity,
+.btn-sentence-game,
+.btn-sentence-game-small {
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -401,7 +403,9 @@ h6 {
 .dark-theme .section-quiz-btn,
 .dark-theme .btn-flashcard,
 .dark-theme .btn-flashcard-small,
-.dark-theme .btn-activity {
+.dark-theme .btn-activity,
+.dark-theme .btn-sentence-game,
+.dark-theme .btn-sentence-game-small {
     background: var(--primary);
     color: white;
 }
@@ -2231,7 +2235,8 @@ select:focus-visible {
     .sentence-game-area {
         padding: 16px 12px;
     }
-/*
+
+    /*
     .game-controls {
         flex-direction: column; 
     }
@@ -2379,5 +2384,307 @@ select:focus-visible {
     .btn-activity:active,
     .constructed-word:active {
         transform: none;
+    }
+}
+
+/* ============================================================================
+   HELP SECTION - DETAILED USER GUIDE
+   ============================================================================ */
+
+.help-section {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+}
+
+.help-section h2 {
+    margin-top: 0;
+    margin-bottom: 20px;
+    color: var(--primary);
+    font-size: 1.8rem;
+}
+
+.help-details {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    margin-bottom: 12px;
+    overflow: hidden;
+    transition: all 0.2s ease;
+}
+
+.help-details:hover {
+    border-color: var(--primary);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.help-details summary {
+    padding: 18px 20px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: linear-gradient(to right, rgba(37, 99, 235, 0.03), transparent);
+    -webkit-tap-highlight-color: transparent;
+    flex-shrink: 0;
+    /* Prevent shrinking */
+    min-height: 70px;
+    /* Ensure minimum height */
+    box-sizing: border-box;
+}
+
+.help-details summary .material-icons {
+    color: var(--primary);
+    font-size: 28px;
+    flex-shrink: 0;
+    /* Prevent icon from shrinking */
+}
+
+.help-details summary span:not(.material-icons) {
+    flex: 1;
+    /* Allow text to take available space */
+    white-space: normal;
+    /* Allow text to wrap */
+    word-break: break-word;
+}
+
+.help-details summary::-webkit-details-marker {
+    display: none;
+}
+
+.help-details summary::after {
+    content: 'expand_more';
+    font-family: 'Material Icons';
+    margin-left: auto;
+    transition: transform 0.2s ease;
+    color: var(--text-secondary);
+    font-size: 24px;
+    flex-shrink: 0;
+    /* Prevent arrow from shrinking */
+}
+
+.help-details[open] summary::after {
+    transform: rotate(180deg);
+}
+
+.help-details[open] summary {
+    border-bottom: 1px solid var(--border);
+    background: linear-gradient(to right, rgba(37, 99, 235, 0.08), transparent);
+}
+
+.help-content {
+    padding: 20px;
+    background: var(--bg);
+}
+
+.help-content h4 {
+    margin: 0 0 12px 0;
+    color: var(--text);
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.help-content h4:not(:first-child) {
+    margin-top: 24px;
+}
+
+.help-content h4::before {
+    content: '•';
+    color: var(--primary);
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.help-steps,
+.help-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 16px 0;
+}
+
+.help-steps li,
+.help-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 12px;
+    margin-bottom: 8px;
+    background: var(--card);
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    transition: all 0.2s ease;
+}
+
+.help-list li:hover {
+    border-color: var(--primary);
+    transform: translateX(4px);
+}
+
+.help-steps li .material-icons,
+.help-list li .material-icons {
+    color: var(--primary);
+    font-size: 22px;
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+.help-steps li strong,
+.help-list li strong {
+    color: var(--text);
+    font-weight: 600;
+    min-width: 120px;
+}
+
+.help-steps li span:not(.material-icons),
+.help-list li span:not(.material-icons) {
+    color: var(--text-secondary);
+    line-height: 1.5;
+}
+
+.help-note {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 16px;
+    background: rgba(37, 99, 235, 0.08);
+    border-radius: 8px;
+    border-left: 4px solid var(--primary);
+    margin: 16px 0;
+}
+
+.help-note .material-icons {
+    color: var(--primary);
+    font-size: 24px;
+    flex-shrink: 0;
+}
+
+.help-note p {
+    margin: 0;
+    color: var(--text);
+    line-height: 1.6;
+}
+
+.help-note ul {
+    margin: 8px 0 0 0;
+    padding-left: 20px;
+    color: var(--text-secondary);
+}
+
+.help-note li {
+    margin-bottom: 4px;
+}
+
+.help-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 16px 0;
+    background: var(--card);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.help-table th,
+.help-table td {
+    padding: 14px 16px;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+}
+
+.help-table th {
+    background: rgba(37, 99, 235, 0.1);
+    color: var(--text);
+    font-weight: 600;
+}
+
+.help-table tr:last-child td {
+    border-bottom: none;
+}
+
+.help-table td:first-child {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    white-space: nowrap;
+}
+
+.help-table td:first-child .material-icons {
+    color: var(--primary);
+    font-size: 22px;
+}
+
+.help-table td:last-child {
+    color: var(--text-secondary);
+    width: 100%;
+}
+
+[dir="rtl"] .help-table td:first-child {
+    justify-content: flex-end;
+}
+
+[dir="rtl"] .help-note {
+    border-left: none;
+    border-right: 4px solid var(--primary);
+}
+
+[dir="rtl"] .help-list li:hover {
+    transform: translateX(-4px);
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+    .help-section {
+        padding: 12px;
+    }
+
+    .help-details summary {
+        padding: 14px 16px;
+        font-size: 1.1rem;
+    }
+
+    .help-content {
+        padding: 16px;
+    }
+
+    .help-steps li,
+    .help-list li {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .help-steps li strong,
+    .help-list li strong {
+        min-width: auto;
+    }
+
+    .help-table td:first-child {
+        white-space: normal;
+    }
+}
+
+@media (max-width: 480px) {
+    .help-section h2 {
+        font-size: 1.5rem;
+    }
+
+    .help-details summary {
+        font-size: 1rem;
+        padding: 12px;
+    }
+
+    .help-details summary .material-icons {
+        font-size: 24px;
+    }
+
+    .help-content {
+        padding: 12px;
+    }
+
+    .help-note {
+        flex-direction: column;
+        gap: 8px;
     }
 }

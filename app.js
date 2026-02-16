@@ -1329,51 +1329,478 @@ const App = {
         const t = this.state.translations;
         const currentDir = this.state.lang === 'fa' ? 'rtl' : 'ltr';
 
-        const renderSteps = steps =>
-            (Array.isArray(steps) ? steps : [])
-                .map(step => `<li lang="${this.state.lang}" dir="${currentDir}">${this.escapeHtml(step)}</li>`)
-                .join('');
-
         container.innerHTML = `
-    <section class="card">
-        <h2 lang="${this.state.lang}" dir="${currentDir}">${t.help_title || 'Help'}</h2>
+    <section class="card help-section">
+        <h2 lang="${this.state.lang}" dir="${currentDir}">${t.help_title || 'Help & User Guide'}</h2>
 
-        <!-- App Overview -->
-        <details class="section-details">
-            <summary lang="${this.state.lang}" dir="${currentDir}">${t.app_overview_title || 'App Overview and Usage'}</summary>
-            <div class="card card-help">
-                <ol>
-                    ${renderSteps(t.app_overview_steps || [
-            'Browse documents in the Library section',
-            'Click on any document to open it',
-            'Click on sentences or words to hear them spoken',
-            'Use the media player to control playback',
-            'Adjust settings for language, speed, and voice',
-            'Take quizzes to test your knowledge'
-        ])}
+        <!-- Quick Start -->
+        <details class="help-details" open>
+            <summary lang="${this.state.lang}" dir="${currentDir}">
+                <span class="material-icons">rocket_launch</span>
+                ${t.quick_start || '🚀 Quick Start'}
+            </summary>
+            <div class="help-content">
+                <ol class="help-steps">
+                    <li lang="${this.state.lang}" dir="${currentDir}">
+                        <strong>${t.step_1 || '1. Choose a Document'}</strong> - ${t.step_1_desc || 'From the Library, select any learning document (like "Present Continuous" or "Polite Particles")'}
+                    </li>
+                    <li lang="${this.state.lang}" dir="${currentDir}">
+                        <strong>${t.step_2 || '2. Explore Content'}</strong> - ${t.step_2_desc || 'Each document has expandable sections with sentences and vocabulary'}
+                    </li>
+                    <li lang="${this.state.lang}" dir="${currentDir}">
+                        <strong>${t.step_3 || '3. Click to Listen'}</strong> - ${t.step_3_desc || 'Click any Thai sentence or word to hear pronunciation'}
+                    </li>
+                    <li lang="${this.state.lang}" dir="${currentDir}">
+                        <strong>${t.step_4 || '4. Practice & Test'}</strong> - ${t.step_4_desc || 'Use the buttons to access flashcards, quizzes, and sentence-building games'}
+                    </li>
                 </ol>
             </div>
         </details>
 
-        <div style="margin:20px;">
-            <button class="btn-activity"
-                    onclick="App.testSpeech()"
-                    lang="${this.state.lang}" dir="${currentDir}">
-                ${t.test_speech || 'Test Speech'}
-            </button>
-        </div>
+        <!-- Voice Setup & Audio -->
+        <details class="help-details">
+            <summary lang="${this.state.lang}" dir="${currentDir}">
+                <span class="material-icons">record_voice_over</span>
+                ${t.voice_setup || '🎤 Voice Setup & Audio'}
+            </summary>
+            <div class="help-content">
+                <h4 lang="${this.state.lang}" dir="${currentDir}">${t.initial_setup || 'Initial Setup'}</h4>
+                <ul class="help-list">
+                    <li lang="${this.state.lang}" dir="${currentDir}">
+                        <span class="material-icons">check_circle</span>
+                        <strong>${t.auto_voice || 'Automatic Voice Selection'}:</strong> ${t.auto_voice_desc || 'The app automatically selects a Thai voice when available. You can change this in Settings.'}
+                    </li>
+                    <li lang="${this.state.lang}" dir="${currentDir}">
+                        <span class="material-icons">check_circle</span>
+                        <strong>${t.test_voice || 'Test Your Voice'}:</strong> ${t.test_voice_desc || 'Click the "Test Speech" button below to verify Thai speech synthesis is working.'}
+                    </li>
+                </ul>
 
-        <details class="section-details">
-            <summary lang="${this.state.lang}" dir="${currentDir}">${t.setup_android || 'Android'}</summary>
-            <div class="card card-help"><ol>${renderSteps(t.android_steps)}</ol></div>
+                <h4 lang="${this.state.lang}" dir="${currentDir}">${t.audio_controls || 'Audio Controls'}</h4>
+                <ul class="help-list">
+                    <li lang="${this.state.lang}" dir="${currentDir}">
+                        <span class="material-icons">play_arrow</span>
+                        <strong>${t.playback || 'Playback'}:</strong> ${t.playback_desc || 'Use the media player at the top to play/pause, stop, and control audio sequence.'}
+                    </li>
+                    <li lang="${this.state.lang}" dir="${currentDir}">
+                        <span class="material-icons">speed</span>
+                        <strong>${t.speed_control || 'Speed Control'}:</strong> ${t.speed_desc || 'Adjust speaking speed from 0.5x to 1.5x using the speed button.'}
+                    </li>
+                    <li lang="${this.state.lang}" dir="${currentDir}">
+                        <span class="material-icons">timer</span>
+                        <strong>${t.delay_control || 'Delay Control'}:</strong> ${t.delay_desc || 'Set pause duration between sentences (1-5 seconds).'}
+                    </li>
+                    <li lang="${this.state.lang}" dir="${currentDir}">
+                        <span class="material-icons">graphic_eq</span>
+                        <strong>${t.pitch_control || 'Pitch Control'}:</strong> ${t.pitch_desc || 'Adjust voice pitch from low to high.'}
+                    </li>
+                    <li lang="${this.state.lang}" dir="${currentDir}">
+                        <span class="material-icons">repeat</span>
+                        <strong>${t.repeat_control || 'Repeat Control'}:</strong> ${t.repeat_desc || 'Set how many times each language repeats (1-3 times).'}
+                    </li>
+                </ul>
+
+                <div class="help-note">
+                    <span class="material-icons">info</span>
+                    <p lang="${this.state.lang}" dir="${currentDir}">${t.voice_note || 'Note: Voice quality depends on your device\'s text-to-speech engine. For best results on Android, install Google Text-to-Speech and download Thai voice data.'}</p>
+                </div>
+
+                <button class="btn-activity" onclick="App.testSpeech()" lang="${this.state.lang}" dir="${currentDir}">
+                    <span class="material-icons">volume_up</span>
+                    ${t.test_speech || 'Test Thai Speech'}
+                </button>
+            </div>
         </details>
 
-        <details class="section-details">
-            <summary lang="${this.state.lang}" dir="${currentDir}">${t.setup_apple || 'Apple'}</summary>
-            <div class="card card-help"><ol>${renderSteps(t.apple_steps)}</ol></div>
+        <!-- Document Navigation -->
+        <details class="help-details">
+            <summary lang="${this.state.lang}" dir="${currentDir}">
+                <span class="material-icons">menu_book</span>
+                ${t.doc_navigation || '📖 Document Navigation'}
+            </summary>
+            <div class="help-content">
+                <h4 lang="${this.state.lang}" dir="${currentDir}">${t.library_section || 'Library'}</h4>
+                <ul class="help-list">
+                    <li lang="${this.state.lang}" dir="${currentDir}">
+                        <span class="material-icons">folder</span>
+                        <strong>${t.learning_objects || 'Learning Objects'}:</strong> ${t.learning_objects_desc || 'Documents are organized by topic (grammar, vocabulary, etc.)'}
+                    </li>
+                    <li lang="${this.state.lang}" dir="${currentDir}">
+                        <span class="material-icons">expand_more</span>
+                        <strong>${t.expand_collapse || 'Expand/Collapse'}:</strong> ${t.expand_desc || 'Click section headers to expand or collapse content.'}
+                    </li>
+                </ul>
+
+                <h4 lang="${this.state.lang}" dir="${currentDir}">${t.sentence_view || 'Sentence View'}</h4>
+                <ul class="help-list">
+                    <li lang="${this.state.lang}" dir="${currentDir}">
+                        <span class="material-icons">translate</span>
+                        <strong>${t.translations || 'Translations'}:</strong> ${t.translations_desc || 'Each sentence shows translations in your selected languages (enable/disable in Settings).'}
+                    </li>
+                    <li lang="${this.state.lang}" dir="${currentDir}">
+                        <span class="material-icons">menu_book</span>
+                        <strong>${t.grammar_notes || 'Grammar Notes'}:</strong> ${t.grammar_desc || 'Look for the book icon to access detailed grammar explanations.'}
+                    </li>
+                    <li lang="${this.state.lang}" dir="${currentDir}">
+                        <span class="material-icons">word</span>
+                        <strong>${t.word_breakdown || 'Word Breakdown'}:</strong> ${t.word_desc || 'Click on individual words in sentences to hear them separately.'}
+                    </li>
+                </ul>
+            </div>
         </details>
 
-    </section>`;
+        <!-- Flashcards & SRS -->
+        <details class="help-details">
+            <summary lang="${this.state.lang}" dir="${currentDir}">
+                <span class="material-icons">style</span>
+                ${t.flashcards || '📚 Flashcards & Spaced Repetition'}
+            </summary>
+            <div class="help-content">
+                <h4 lang="${this.state.lang}" dir="${currentDir}">${t.starting_flashcards || 'Starting Flashcards'}</h4>
+                <ul class="help-list">
+                    <li lang="${this.state.lang}" dir="${currentDir}">
+                        <span class="material-icons">touch_app</span>
+                        <strong>${t.access_flashcards || 'Access'}:</strong> ${t.access_flashcards_desc || 'Click the "Words" or "Sentences" buttons next to any document or section.'}
+                    </li>
+                    <li lang="${this.state.lang}" dir="${currentDir}">
+                        <span class="material-icons">settings_overscan</span>
+                        <strong>${t.scope || 'Scope'}:</strong> ${t.scope_desc || 'Document-level buttons include all content; section-level buttons focus on that section only.'}
+                    </li>
+                </ul>
+
+                <h4 lang="${this.state.lang}" dir="${currentDir}">${t.studying || 'Studying'}</h4>
+                <ul class="help-list">
+                    <li lang="${this.state.lang}" dir="${currentDir}">
+                        <span class="material-icons">front_hand</span>
+                        <strong>${t.front_back || 'Front/Back'}:</strong> ${t.front_desc || 'Front shows Thai word/sentence, back shows translations for all enabled languages.'}
+                    </li>
+                    <li lang="${this.state.lang}" dir="${currentDir}">
+                        <span class="material-icons">volume_up</span>
+                        <strong>${t.audio_cards || 'Audio'}:</strong> ${t.audio_cards_desc || 'Click the speaker icon on any card to hear pronunciation.'}
+                    </li>
+                    <li lang="${this.state.lang}" dir="${currentDir}">
+                        <span class="material-icons">rate_review</span>
+                        <strong>${t.rating || 'Self-Rating'}:</strong> ${t.rating_desc || 'After seeing the answer, rate how well you knew it: Again (0), Hard (3), Good (4), or Easy (5).'}
+                    </li>
+                </ul>
+
+                <h4 lang="${this.state.lang}" dir="${currentDir}">${t.srs_explained || 'How Spaced Repetition Works'}</h4>
+                <div class="help-note">
+                    <p lang="${this.state.lang}" dir="${currentDir}">${t.srs_desc || 'The app uses the SM-2 algorithm (like Anki) to schedule reviews:'}</p>
+                    <ul>
+                        <li lang="${this.state.lang}" dir="${currentDir}">${t.srs_bullet1 || '• Cards you know well appear less frequently'}</li>
+                        <li lang="${this.state.lang}" dir="${currentDir}">${t.srs_bullet2 || '• Cards you struggle with appear more often'}</li>
+                        <li lang="${this.state.lang}" dir="${currentDir}">${t.srs_bullet3 || '• New cards are shown immediately, then spaced over increasing intervals'}</li>
+                        <li lang="${this.state.lang}" dir="${currentDir}">${t.srs_bullet4 || '• Your progress is saved locally in your browser'}</li>
+                    </ul>
+                </div>
+
+                <h4 lang="${this.state.lang}" dir="${currentDir}">${t.flashcard_features || 'Additional Features'}</h4>
+                <ul class="help-list">
+                    <li lang="${this.state.lang}" dir="${currentDir}">
+                        <span class="material-icons">bookmark</span>
+                        <strong>${t.bookmark_cards || 'Bookmark'}:</strong> ${t.bookmark_desc || 'Save cards for later review by clicking the bookmark icon.'}
+                    </li>
+                    <li lang="${this.state.lang}" dir="${currentDir}">
+                        <span class="material-icons">link</span>
+                        <strong>${t.link_context || 'View Context'}:</strong> ${t.link_context_desc || 'Click the link icon to see the word in its original sentence.'}
+                    </li>
+                    <li lang="${this.state.lang}" dir="${currentDir}">
+                        <span class="material-icons">info</span>
+                        <strong>${t.context || 'Context'}:</strong> ${t.context_desc || 'After showing the answer, example sentences appear to provide context.'}
+                    </li>
+                </ul>
+            </div>
+        </details>
+
+        <!-- Multiple Choice Quiz -->
+        <details class="help-details">
+            <summary lang="${this.state.lang}" dir="${currentDir}">
+                <span class="material-icons">quiz</span>
+                ${t.mcq || '✍️ Multiple Choice Quiz'}
+            </summary>
+            <div class="help-content">
+                <h4 lang="${this.state.lang}" dir="${currentDir}">${t.quiz_start || 'Starting a Quiz'}</h4>
+                <ul class="help-list">
+                    <li lang="${this.state.lang}" dir="${currentDir}">
+                        <span class="material-icons">touch_app</span>
+                        <strong>${t.quiz_access || 'Access'}:</strong> ${t.quiz_access_desc || 'Click the "Quiz" buttons next to documents or sections.'}
+                    </li>
+                    <li lang="${this.state.lang}" dir="${currentDir}">
+                        <span class="material-icons">swap_horiz</span>
+                        <strong>${t.quiz_languages || 'Languages'}:</strong> ${t.quiz_languages_desc || 'Use the dropdown menus to change question and answer languages during the quiz.'}
+                    </li>
+                </ul>
+
+                <h4 lang="${this.state.lang}" dir="${currentDir}">${t.quiz_taking || 'Taking a Quiz'}</h4>
+                <ul class="help-list">
+                    <li lang="${this.state.lang}" dir="${currentDir}">
+                        <span class="material-icons">volume_up</span>
+                        <strong>${t.quiz_audio || 'Audio'}:</strong> ${t.quiz_audio_desc || 'Click the speaker icon next to any question or answer to hear pronunciation.'}
+                    </li>
+                    <li lang="${this.state.lang}" dir="${currentDir}">
+                        <span class="material-icons">touch_app</span>
+                        <strong>${t.quiz_answers || 'Answers'}:</strong> ${t.quiz_answers_desc || 'Click on your chosen answer. Correct answers turn green, incorrect turn red.'}
+                    </li>
+                    <li lang="${this.state.lang}" dir="${currentDir}">
+                        <span class="material-icons">refresh</span>
+                        <strong>${t.quiz_retry || 'Retry'}:</strong> ${t.quiz_retry_desc || 'After the quiz, you can retry only the questions you got wrong.'}
+                    </li>
+                </ul>
+
+                <div class="help-note">
+                    <span class="material-icons">lightbulb</span>
+                    <p lang="${this.state.lang}" dir="${currentDir}">${t.quiz_tip || 'Tip: The quiz pulls distractors from other items in the same set, making it challenging but fair!'}</p>
+                </div>
+            </div>
+        </details>
+
+        <!-- Sentence Building Game -->
+        <details class="help-details">
+            <summary lang="${this.state.lang}" dir="${currentDir}">
+                <span class="material-icons">dashboard</span>
+                ${t.sentence_game_help || '🧩 Sentence Building Game'}
+            </summary>
+            <div class="help-content">
+                <h4 lang="${this.state.lang}" dir="${currentDir}">${t.game_start || 'How to Play'}</h4>
+                <ul class="help-list">
+                    <li lang="${this.state.lang}" dir="${currentDir}">
+                        <span class="material-icons">touch_app</span>
+                        <strong>${t.game_access || 'Access'}:</strong> ${t.game_access_desc || 'Click the "Sentences" button (with dashboard icon) next to any document or section.'}
+                    </li>
+                    <li lang="${this.state.lang}" dir="${currentDir}">
+                        <span class="material-icons">add_circle</span>
+                        <strong>${t.game_add || 'Adding Words'}:</strong> ${t.game_add_desc || 'Tap any word in the "Available Words" area to add it to your sentence.'}
+                    </li>
+                    <li lang="${this.state.lang}" dir="${currentDir}">
+                        <span class="material-icons">remove_circle</span>
+                        <strong>${t.game_remove || 'Removing Words'}:</strong> ${t.game_remove_desc || 'Tap the X on any constructed word to remove it.'}
+                    </li>
+                </ul>
+
+                <h4 lang="${this.state.lang}" dir="${currentDir}">${t.game_controls || 'Controls'}</h4>
+                <ul class="help-list">
+                    <li lang="${this.state.lang}" dir="${currentDir}">
+                        <span class="material-icons">refresh</span>
+                        <strong>${t.game_reset || 'Reset'}:</strong> ${t.game_reset_desc || 'Clear your current sentence and start over.'}
+                    </li>
+                    <li lang="${this.state.lang}" dir="${currentDir}">
+                        <span class="material-icons">check</span>
+                        <strong>${t.game_check || 'Check'}:</strong> ${t.game_check_desc || 'Verify if your sentence order is correct.'}
+                    </li>
+                    <li lang="${this.state.lang}" dir="${currentDir}">
+                        <span class="material-icons">arrow_forward</span>
+                        <strong>${t.game_next || 'Next'}:</strong> ${t.game_next_desc || 'Move to the next sentence after completing the current one.'}
+                    </li>
+                </ul>
+
+                <h4 lang="${this.state.lang}" dir="${currentDir}">${t.game_features || 'Features'}</h4>
+                <ul class="help-list">
+                    <li lang="${this.state.lang}" dir="${currentDir}">
+                        <span class="material-icons">translate</span>
+                        <strong>${t.game_hint || 'Translation Hint'}:</strong> ${t.game_hint_desc || 'The sentence translation is shown as a hint at the top.'}
+                    </li>
+                    <li lang="${this.state.lang}" dir="${currentDir}">
+                        <span class="material-icons">campaign</span>
+                        <strong>${t.game_audio || 'Audio Feedback'}:</strong> ${t.game_audio_desc || 'Correct sentences are automatically spoken.'}
+                    </li>
+                    <li lang="${this.state.lang}" dir="${currentDir}">
+                        <span class="material-icons">lightbulb</span>
+                        <strong>${t.game_show_answer || 'Show Answer'}:</strong> ${t.game_show_answer_desc || 'If stuck, click "Show Answer" to see the correct sentence.'}
+                    </li>
+                </ul>
+            </div>
+        </details>
+
+        <!-- Settings & Customization -->
+        <details class="help-details">
+            <summary lang="${this.state.lang}" dir="${currentDir}">
+                <span class="material-icons">settings</span>
+                ${t.settings_custom || '⚙️ Settings & Customization'}
+            </summary>
+            <div class="help-content">
+                <h4 lang="${this.state.lang}" dir="${currentDir}">${t.language_settings || 'Language Settings'}</h4>
+                <ul class="help-list">
+                    <li lang="${this.state.lang}" dir="${currentDir}">
+                        <span class="material-icons">language</span>
+                        <strong>${t.ui_language || 'UI Language'}:</strong> ${t.ui_language_desc || 'Change the app interface language using the language button in the toolbar.'}
+                    </li>
+                    <li lang="${this.state.lang}" dir="${currentDir}">
+                        <span class="material-icons">check_box</span>
+                        <strong>${t.translation_languages || 'Translation Languages'}:</strong> ${t.translation_languages_desc || 'In Settings, check/uncheck languages to show/hide their translations throughout the app.'}
+                    </li>
+                    <li lang="${this.state.lang}" dir="${currentDir}">
+                        <span class="material-icons">format_list_numbered</span>
+                        <strong>${t.repeat_counts || 'Repeat Counts'}:</strong> ${t.repeat_counts_desc || 'Set how many times each language repeats during audio playback (1-3).'}
+                    </li>
+                </ul>
+
+                <h4 lang="${this.state.lang}" dir="${currentDir}">${t.appearance || 'Appearance'}</h4>
+                <ul class="help-list">
+                    <li lang="${this.state.lang}" dir="${currentDir}">
+                        <span class="material-icons">dark_mode</span>
+                        <strong>${t.theme || 'Theme'}:</strong> ${t.theme_desc || 'Toggle between light and dark mode using the theme button.'}
+                    </li>
+                    <li lang="${this.state.lang}" dir="${currentDir}">
+                        <span class="material-icons">text_fields</span>
+                        <strong>${t.font || 'Font'}:</strong> ${t.font_desc || 'Choose from different font styles for better readability.'}
+                    </li>
+                </ul>
+
+                <h4 lang="${this.state.lang}" dir="${currentDir}">${t.progress || 'Progress & Data'}</h4>
+                <ul class="help-list">
+                    <li lang="${this.state.lang}" dir="${currentDir}">
+                        <span class="material-icons">save</span>
+                        <strong>${t.auto_save || 'Auto-Save'}:</strong> ${t.auto_save_desc || 'All your flashcard progress, settings, and bookmarks are automatically saved in your browser.'}
+                    </li>
+                    <li lang="${this.state.lang}" dir="${currentDir}">
+                        <span class="material-icons">backup</span>
+                        <strong>${t.export_import || 'Export/Import'}:</strong> ${t.export_import_desc || 'Use the export/import feature (in SRS settings) to backup or transfer your progress.'}
+                    </li>
+                </ul>
+            </div>
+        </details>
+
+        <!-- Troubleshooting -->
+        <details class="help-details">
+            <summary lang="${this.state.lang}" dir="${currentDir}">
+                <span class="material-icons">support_agent</span>
+                ${t.troubleshooting || '🔧 Troubleshooting'}
+            </summary>
+            <div class="help-content">
+                <h4 lang="${this.state.lang}" dir="${currentDir}">${t.no_audio || 'No Audio?'}</h4>
+                <ul class="help-list">
+                    <li lang="${this.state.lang}" dir="${currentDir}">
+                        <span class="material-icons">smartphone</span>
+                        <strong>${t.android || 'Android'}:</strong> ${t.android_help || 'Install Google Text-to-Speech from Play Store, then download Thai voice data in Settings > Language & Input > Text-to-Speech.'}
+                    </li>
+                    <li lang="${this.state.lang}" dir="${currentDir}">
+                        <span class="material-icons">laptop</span>
+                        <strong>${t.ios_mac || 'iOS/macOS'}:</strong> ${t.ios_help || 'Go to Settings > Accessibility > Spoken Content > Voices to download Thai voice.'}
+                    </li>
+                    <li lang="${this.state.lang}" dir="${currentDir}">
+                        <span class="material-icons">computer</span>
+                        <strong>${t.windows || 'Windows'}:</strong> ${t.windows_help || 'Install Thai language pack in Settings > Time & Language > Language.'}
+                    </li>
+                </ul>
+
+                <h4 lang="${this.state.lang}" dir="${currentDir}">${t.progress_lost || 'Progress Lost?'}</h4>
+                <ul class="help-list">
+                    <li lang="${this.state.lang}" dir="${currentDir}">
+                        <span class="material-icons">cookie</span>
+                        <strong>${t.clear_data || 'Cleared Browser Data'}:</strong> ${t.clear_data_desc || 'Progress is stored locally. Clearing browser data will reset your progress. Use export feature to backup.'}
+                    </li>
+                    <li lang="${this.state.lang}" dir="${currentDir}">
+                        <span class="material-icons">sync_disabled</span>
+                        <strong>${t.private_mode || 'Private/Incognito Mode'}:</strong> ${t.private_desc || 'Progress may not persist in private browsing modes.'}
+                    </li>
+                </ul>
+
+                <h4 lang="${this.state.lang}" dir="${currentDir}">${t.other_issues || 'Other Issues'}</h4>
+                <ul class="help-list">
+                    <li lang="${this.state.lang}" dir="${currentDir}">
+                        <span class="material-icons">refresh</span>
+                        <strong>${t.refresh || 'Refresh'}:</strong> ${t.refresh_desc || 'If something isn\'t working, try refreshing the page.'}
+                    </li>
+                    <li lang="${this.state.lang}" dir="${currentDir}">
+                        <span class="material-icons">bug_report</span>
+                        <strong>${t.report || 'Report Issues'}:</strong> ${t.report_desc || 'Tell your instructor about any bugs you find!'}
+                    </li>
+                </ul>
+            </div>
+        </details>
+
+        <!-- Quick Reference -->
+        <details class="help-details">
+            <summary lang="${this.state.lang}" dir="${currentDir}">
+                <span class="material-icons">menu_book</span>
+                ${t.quick_reference || '📋 Quick Reference'}
+            </summary>
+            <div class="help-content">
+                <table class="help-table">
+                    <tr>
+                        <th lang="${this.state.lang}" dir="${currentDir}">${t.button || 'Button'}</th>
+                        <th lang="${this.state.lang}" dir="${currentDir}">${t.action || 'Action'}</th>
+                    </tr>
+                    <tr>
+                        <td><span class="material-icons">home</span></td>
+                        <td lang="${this.state.lang}" dir="${currentDir}">${t.home_action || 'Return to Library'}</td>
+                    </tr>
+                    <tr>
+                        <td><span class="material-icons">language</span></td>
+                        <td lang="${this.state.lang}" dir="${currentDir}">${t.language_action || 'Change UI Language'}</td>
+                    </tr>
+                    <tr>
+                        <td><span class="material-icons">text_fields</span></td>
+                        <td lang="${this.state.lang}" dir="${currentDir}">${t.font_action || 'Change Font Style'}</td>
+                    </tr>
+                    <tr>
+                        <td><span class="material-icons">dark_mode</span>/<span class="material-icons">light_mode</span></td>
+                        <td lang="${this.state.lang}" dir="${currentDir}">${t.theme_action || 'Toggle Dark/Light Theme'}</td>
+                    </tr>
+                    <tr>
+                        <td><span class="material-icons">style</span></td>
+                        <td lang="${this.state.lang}" dir="${currentDir}">${t.flashcard_action || 'Start Flashcards'}</td>
+                    </tr>
+                    <tr>
+                        <td><span class="material-icons">quiz</span></td>
+                        <td lang="${this.state.lang}" dir="${currentDir}">${t.quiz_action || 'Start Quiz'}</td>
+                    </tr>
+                    <tr>
+                        <td><span class="material-icons">dashboard</span></td>
+                        <td lang="${this.state.lang}" dir="${currentDir}">${t.game_action || 'Start Sentence Game'}</td>
+                    </tr>
+                    <tr>
+                        <td><span class="material-icons">settings</span></td>
+                        <td lang="${this.state.lang}" dir="${currentDir}">${t.settings_action || 'Open Settings'}</td>
+                    </tr>
+                </table>
+            </div>
+        </details>
+
+        <!-- Device-Specific Setup -->
+        <details class="help-details">
+            <summary lang="${this.state.lang}" dir="${currentDir}">
+                <span class="material-icons">phonelink_setup</span>
+                ${t.device_setup || '📱 Device-Specific Setup'}
+            </summary>
+            <div class="help-content">
+                <h4 lang="${this.state.lang}" dir="${currentDir}">${t.android_title || 'Android'}</h4>
+                <ol>
+                    <li lang="${this.state.lang}" dir="${currentDir}">${t.android_1 || 'Install Google Text-to-Speech from Play Store'}</li>
+                    <li lang="${this.state.lang}" dir="${currentDir}">${t.android_2 || 'Go to Settings > Language & Input > Text-to-Speech output'}</li>
+                    <li lang="${this.state.lang}" dir="${currentDir}">${t.android_3 || 'Select Google Text-to-Speech as preferred engine'}</li>
+                    <li lang="${this.state.lang}" dir="${currentDir}">${t.android_4 || 'Click settings icon next to Google Text-to-Speech'}</li>
+                    <li lang="${this.state.lang}" dir="${currentDir}">${t.android_5 || 'Install Thai voice data'}</li>
+                </ol>
+
+                <h4 lang="${this.state.lang}" dir="${currentDir}">${t.ios_title || 'iOS (iPhone/iPad)'}</h4>
+                <ol>
+                    <li lang="${this.state.lang}" dir="${currentDir}">${t.ios_1 || 'Go to Settings > Accessibility > Spoken Content'}</li>
+                    <li lang="${this.state.lang}" dir="${currentDir}">${t.ios_2 || 'Turn on "Speak Selection" and "Speak Screen"'}</li>
+                    <li lang="${this.state.lang}" dir="${currentDir}">${t.ios_3 || 'Go to Settings > Accessibility > Spoken Content > Voices'}</li>
+                    <li lang="${this.state.lang}" dir="${currentDir}">${t.ios_4 || 'Download Thai voice (under "Thai")'}</li>
+                </ol>
+
+                <h4 lang="${this.state.lang}" dir="${currentDir}">${t.macos_title || 'macOS'}</h4>
+                <ol>
+                    <li lang="${this.state.lang}" dir="${currentDir}">${t.macos_1 || 'Go to System Preferences > Accessibility > Spoken Content'}</li>
+                    <li lang="${this.state.lang}" dir="${currentDir}">${t.macos_2 || 'Check "Speak selected text when key is pressed"'}</li>
+                    <li lang="${this.state.lang}" dir="${currentDir}">${t.macos_3 || 'Click "System Voice" dropdown and choose "Customize"'}</li>
+                    <li lang="${this.state.lang}" dir="${currentDir}">${t.macos_4 || 'Select and download Thai voice'}</li>
+                </ol>
+
+                <h4 lang="${this.state.lang}" dir="${currentDir}">${t.windows_title || 'Windows'}</h4>
+                <ol>
+                    <li lang="${this.state.lang}" dir="${currentDir}">${t.windows_1 || 'Go to Settings > Time & Language > Language'}</li>
+                    <li lang="${this.state.lang}" dir="${currentDir}">${t.windows_2 || 'Add Thai language pack'}</li>
+                    <li lang="${this.state.lang}" dir="${currentDir}">${t.windows_3 || 'Go to Settings > Time & Language > Speech'}</li>
+                    <li lang="${this.state.lang}" dir="${currentDir}">${t.windows_4 || 'Select Thai as speech language'}</li>
+                </ol>
+            </div>
+        </details>
+    </section>
+    `;
     },
 
     /* ============================================================================
