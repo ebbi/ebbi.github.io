@@ -162,7 +162,21 @@ h6 {
     margin: 0;
     padding: 5px;
 }
+.loading-spinner {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    border: 3px solid var(--border);
+    border-top-color: var(--primary);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
 
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
 /* ============================================================================
    MEDIA PLAYER
    ============================================================================ */
@@ -338,7 +352,9 @@ h6 {
 .section-quiz-btn:hover,
 .btn-flashcard:hover,
 .btn-flashcard-small:hover,
-.btn-activity:hover {
+.btn-activity:hover,
+.btn-sentence-game:hover,
+.btn-sentence-game-small:hover {
     background: var(--primary-dark);
     transform: translateY(-2px);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
@@ -348,7 +364,9 @@ h6 {
 .section-quiz-btn .material-icons,
 .btn-flashcard .material-icons,
 .btn-flashcard-small .material-icons,
-.btn-activity .material-icons {
+.btn-activity .material-icons,
+.btn-sentence-game .material-icons,
+.btn-sentence-game-small .material-icons {
     font-size: 18px;
 }
 
@@ -414,7 +432,9 @@ h6 {
 .dark-theme .section-quiz-btn:hover,
 .dark-theme .btn-flashcard:hover,
 .dark-theme .btn-flashcard-small:hover,
-.dark-theme .btn-activity:hover {
+.dark-theme .btn-activity:hover,
+.dark-theme .btn-sentence-game:hover,
+.dark-theme .btn-sentence-game-small:hover {
     background: var(--primary-dark);
 }
 

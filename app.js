@@ -593,7 +593,7 @@ const App = {
         } else if (hash.startsWith('quiz/')) {
             this.initQuizFromHash(hash.split('/'));
 
-         } else if (hash.startsWith('sentence-game/')) {
+        } else if (hash.startsWith('sentence-game/')) {
             const parts = hash.split('/');
             const documentId = parts[1];
             const sectionIndex = parts[2] === 'null' ? null : parseInt(parts[2], 10);
@@ -605,7 +605,7 @@ const App = {
 
             // Start the sentence game
             this.startSentenceGame(documentId, sectionIndex);
-        
+
 
         } else if (hash.startsWith('flashcard/')) {
             // Flashcard route - parse parameters
@@ -685,6 +685,10 @@ const App = {
      * @param {HTMLElement} container - Container element for document content
      */
     async handleDocumentSelection(documentId, container) {
+
+        container.innerHTML = '<div class="loading-spinner"></div>';
+        // then load document
+
         // 1. Load the document JSON (if it isn't already in state)
         if (!this.state.currentDocument || this.state.currentDocument.documentId !== documentId) {
             try {
@@ -828,23 +832,23 @@ const App = {
     </div>
 </details>`;
         });
-/*
-        // Section level flashcard and quiz commented out for small data sets
-        this.state.currentDocument.sections.forEach((section, index) => {
-            const heading = section.heading[this.state.lang] ||
-                section.heading.en ||
-                'Untitled Section';
-
-            html += `<details class="section-details" open>
-    <summary>
-        <span class="section-title-text" lang="${this.state.lang}" dir="${currentDir}">${this.escapeHtml(heading)}</span>
-    </summary>
-    <div class="section-card">
-        ${this.renderBlocks(section.blocks, index)}
-    </div>
-</details>`;
-        });
-*/
+        /*
+                // Section level flashcard and quiz commented out for small data sets
+                this.state.currentDocument.sections.forEach((section, index) => {
+                    const heading = section.heading[this.state.lang] ||
+                        section.heading.en ||
+                        'Untitled Section';
+        
+                    html += `<details class="section-details" open>
+            <summary>
+                <span class="section-title-text" lang="${this.state.lang}" dir="${currentDir}">${this.escapeHtml(heading)}</span>
+            </summary>
+            <div class="section-card">
+                ${this.renderBlocks(section.blocks, index)}
+            </div>
+        </details>`;
+                });
+        */
         html += `</div>`;
         container.innerHTML = html;
     },
