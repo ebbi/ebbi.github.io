@@ -654,17 +654,28 @@ h6 {
     padding: 0 1rem;
 }
 
-.quiz-header h2 {
-    margin: 0 0 10px 0;
+.quiz-header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+    gap: 16px;
+}
+
+.quiz-header-top h2 {
+    margin: 0;
     font-size: 1.2rem;
+    flex: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .quiz-progress-container {
-    width: 100%;
+    flex: 1;
     height: 6px;
     background: #e0e0e0;
     border-radius: 3px;
-    margin: 8px 0;
     overflow: hidden;
 }
 
@@ -674,12 +685,36 @@ h6 {
     transition: width 0.3s ease;
 }
 
+.quiz-counter {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    min-width: 60px;
+    text-align: center;
+    background: var(--card);
+    padding: 4px 8px;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+}
+
+[dir="rtl"] .quiz-counter {
+    direction: ltr;
+    /* Keep numbers LTR even in RTL mode */
+}
+
+.quiz-progress-section {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin: 16px 0 20px;
+}
+
 .quiz-lang-selectors {
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 8px;
-    margin-bottom: 10px;
+    margin-bottom: 12px;
 }
 
 .quiz-lang-selectors select {
@@ -689,6 +724,13 @@ h6 {
     border: 1px solid var(--primary);
     background: var(--card);
     color: var(--text);
+}
+
+.quiz-score {
+    text-align: center;
+    font-weight: 500;
+    margin-bottom: 20px;
+    color: var(--text-secondary);
 }
 
 .quiz-question-card,
@@ -738,6 +780,35 @@ h6 {
 .quiz-option-btn:hover {
     border-color: var(--primary);
     background: rgba(37, 99, 235, 0.05);
+}
+
+.quiz-close-btn {
+    background: none;
+    border: none;
+    color: var(--text-secondary);
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    min-width: 40px;
+    min-height: 40px;
+}
+
+.quiz-close-btn:hover {
+    background: rgba(0, 0, 0, 0.05);
+    color: var(--text);
+    transform: scale(1.1);
+}
+
+.quiz-close-btn .material-icons {
+    font-size: 24px;
+}
+
+.dark-theme .quiz-close-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
 }
 
 .dark-theme .quiz-option-btn:hover {
@@ -1390,6 +1461,61 @@ td {
     justify-content: center;
 }
 
+.flashcard-translations {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+}
+
+.flashcard-translation-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px;
+    background: var(--bg-secondary);
+    border-radius: 8px;
+    border-left: 3px solid var(--primary-color);
+}
+
+.flashcard-translation-item[dir="rtl"] {
+    border-left: none;
+    border-right: 3px solid var(--primary-color);
+}
+
+.translation-lang {
+    font-weight: bold;
+    color: var(--primary-color);
+    min-width: 40px;
+}
+
+.translation-text {
+    flex: 1;
+    font-size: 1.1rem;
+}
+
+.btn-audio-small {
+    background: none;
+    border: none;
+    color: var(--text-secondary);
+    cursor: pointer;
+    padding: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: all 0.2s ease;
+}
+
+.btn-audio-small:hover {
+    background: var(--bg-hover);
+    color: var(--primary-color);
+}
+
+.btn-audio-small .material-icons {
+    font-size: 18px;
+}
+
 .notification {
     position: fixed;
     bottom: 20px;
@@ -1539,10 +1665,29 @@ td {
         border: none;
     }
 
+    .quiz-progress-section {
+        gap: 12px;
+    }
+
+    .quiz-counter {
+        min-width: 50px;
+        font-size: 0.85rem;
+        padding: 2px 6px;
+    }
+
+    .quiz-close-btn {
+        min-width: 36px;
+        min-height: 36px;
+    }
+
+    .quiz-close-btn .material-icons {
+        font-size: 20px;
+    }
+
     .flashcard-front,
     .flashcard-back {
         padding: 24px 16px;
-        min-height: 120px;
+        min-height: 80px;
     }
 
     .flashcard-content {

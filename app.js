@@ -709,12 +709,24 @@ const App = {
         // Document-level controls - COMBINED into a single container with 4 buttons
         html += `<div class="document-controls-wrapper">`;
 
+        // Flashcard buttons
+        html += `
+        <button class="btn-flashcard" onclick="App.initFlashcards('${documentId}', null, 'word')" title="${t.study_words_section || 'Study all words'}">
+            <span class="material-icons">style</span>
+            <span>${t.words || 'Words'}</span>
+        </button>
+        <button class="btn-flashcard" onclick="App.initFlashcards('${documentId}', null, 'sentence')" title="${t.study_sentences_section || 'Study all sentences'}">
+            <span class="material-icons">style</span>
+            <span>${t.sentences || 'Sentences'}</span>
+        </button>
+    `;
+
         // Quiz buttons
         if (documentMeta.activities && documentMeta.activities.length > 0) {
             documentMeta.activities.forEach(activity => {
                 const isWordQuiz = activity.includes('Word');
                 const label = isWordQuiz ? (t.words || 'Words') : (t.sentences || 'Sentences');
-                const icon = isWordQuiz ? 'quiz' : 'quiz'; // Both use quiz icon for consistency
+                const icon = isWordQuiz ? 'quiz' : 'quiz';
                 html += `<button class="doc-quiz-btn"
                  onclick="location.hash='quiz/${documentId}/${activity}'"
                  title="${isWordQuiz ? (t.word_quiz || 'Word Quiz') : (t.sentence_quiz || 'Sentence Quiz')}"
@@ -725,22 +737,9 @@ const App = {
             });
         }
 
-        // Flashcard buttons
-        html += `
-        <button class="btn-flashcard" onclick="App.initFlashcards('${documentId}', null, 'word')" title="${t.study_words_section || 'Study all words'}">
-            <span class="material-icons">style</span>
-            <span>${t.words || 'Words'}</span>
-        </button>
-        <button class="btn-flashcard" onclick="App.initFlashcards('${documentId}', null, 'sentence')" title="${t.study_sentences_section || 'Study all sentences'}">
-            <span class="material-icons">quiz</span>
-            <span>${t.sentences || 'Sentences'}</span>
-        </button>
-    `;
-
         html += `</div>`;
 
-        // Sections
-        // Sections
+        // Sections        
         this.state.currentDocument.sections.forEach((section, index) => {
             const heading = section.heading[this.state.lang] ||
                 section.heading.en ||
@@ -749,10 +748,11 @@ const App = {
             html += `<details class="section-details" open>
     <summary>
         <span class="section-title-text" lang="${this.state.lang}" dir="${currentDir}">${this.escapeHtml(heading)}</span>
-        
+       
         <div class="section-controls-wrapper">
             <!-- All section buttons in a single container for proper flex distribution -->
             <div class="section-all-controls">
+
                 ${section.blocks.some(block => block.type === 'words' || block.type === 'paragraph') ? `
                 <!-- Flashcard buttons -->
                 <button class="btn-flashcard-small" onclick="App.initFlashcards('${documentId}', ${index}, 'word')" title="${t.study_words_section || 'Study words from this section'}">
@@ -760,7 +760,7 @@ const App = {
                     <span>${t.words || 'Words'}</span>
                 </button>
                 <button class="btn-flashcard-small" onclick="App.initFlashcards('${documentId}', ${index}, 'sentence')" title="${t.study_sentences_section || 'Study sentences from this section'}">
-                    <span class="material-icons">quiz</span>
+                    <span class="material-icons">style</span>
                     <span>${t.sentences || 'Sentences'}</span>
                 </button>
                 ` : ''}
@@ -781,13 +781,30 @@ const App = {
                 ` : ''}
             </div>
         </div>
+
     </summary>
     <div class="section-card">
         ${this.renderBlocks(section.blocks, index)}
     </div>
 </details>`;
         });
+/*
+        // Section level flashcard and quiz commented out for small data sets
+        this.state.currentDocument.sections.forEach((section, index) => {
+            const heading = section.heading[this.state.lang] ||
+                section.heading.en ||
+                'Untitled Section';
 
+            html += `<details class="section-details" open>
+    <summary>
+        <span class="section-title-text" lang="${this.state.lang}" dir="${currentDir}">${this.escapeHtml(heading)}</span>
+    </summary>
+    <div class="section-card">
+        ${this.renderBlocks(section.blocks, index)}
+    </div>
+</details>`;
+        });
+*/
         html += `</div>`;
         container.innerHTML = html;
     },
@@ -1691,68 +1708,82 @@ const App = {
         const escapedQuestionText = this.escapeHtml(questionText).replace(/'/g, "\\'").replace(/"/g, '\\"');
         const escapedCorrectText = this.escapeHtml(correctText).replace(/'/g, "\\'").replace(/"/g, '\\"');
 
-        // Render the quiz UI
+        // Render the quiz UI with counter and close button
         main.innerHTML = `
-        <div class="quiz-container">
-            <div class="quiz-header">
+    <div class="quiz-container">
+        <div class="quiz-header">
+            <div class="quiz-header-top">
                 <h2 lang="${this.state.lang}" dir="${this.state.lang === 'fa' ? 'rtl' : 'ltr'}">${this.escapeHtml(heading)}</h2>
+                <button class="quiz-close-btn" onclick="location.hash='doc/${quiz.documentId}'" title="${t.close_quiz || 'Close quiz'}">
+                    <span class="material-icons">close</span>
+                </button>
+            </div>
+            
+            <div class="quiz-progress-section">
                 <div class="quiz-progress-container">
-                    <div class="quiz-progress-fill"
-                         style="width:${progress}%"></div>
+                    <div class="quiz-progress-fill" style="width:${progress}%"></div>
                 </div>
-                <div class="quiz-lang-selectors">
-                    <select onchange="App.state.quiz.questionLanguage=this.value;App.renderQuiz()">
-                        ${availableLanguages
+                <div class="quiz-counter">
+                    ${quiz.currentIndex + 1} / ${quiz.items.length}
+                </div>
+            </div>
+            
+            <div class="quiz-lang-selectors">
+                <select onchange="App.state.quiz.questionLanguage=this.value;App.renderQuiz()">
+                    ${availableLanguages
                 .map(lang =>
                     `<option value="${lang}" ${lang === quiz.questionLanguage ? 'selected' : ''}>
-                                    ${lang.toUpperCase()}
-                                 </option>`
+                                ${lang.toUpperCase()}
+                             </option>`
                 )
                 .join('')}
-                    </select>
-                    <span class="material-icons">arrow_forward</span>
-                    <select onchange="App.state.quiz.answerLanguage=this.value;App.renderQuiz()">
-                        ${availableLanguages
+                </select>
+                <span class="material-icons">arrow_forward</span>
+                <select onchange="App.state.quiz.answerLanguage=this.value;App.renderQuiz()">
+                    ${availableLanguages
                 .map(lang =>
                     `<option value="${lang}" ${lang === quiz.answerLanguage ? 'selected' : ''}>
-                                    ${lang.toUpperCase()}
-                                 </option>`
+                                ${lang.toUpperCase()}
+                             </option>`
                 )
                 .join('')}
-                    </select>
-                </div>
-                <div lang="${this.state.lang}" dir="${this.state.lang === 'fa' ? 'rtl' : 'ltr'}">${scoreLabel}: ${quiz.score}</div>
+                </select>
             </div>
-
-            <div class="quiz-question-card">
-                <span class="material-icons audio-preview-icon"
-                      onclick="App.playAudio('${escapedQuestionText}', '${quiz.questionLanguage}')">
-                    volume_up
-                </span>
-                <div class="quiz-question-text" lang="${quiz.questionLanguage}" dir="${questionDir}">
-                    ${this.escapeHtml(questionText)}
-                </div>
+            
+            <div class="quiz-score" lang="${this.state.lang}" dir="${this.state.lang === 'fa' ? 'rtl' : 'ltr'}">
+                ${scoreLabel}: ${quiz.score}
             </div>
+        </div>
 
-            <div class="quiz-options-grid">
-                ${options.map(option => {
+        <div class="quiz-question-card">
+            <span class="material-icons audio-preview-icon"
+                  onclick="App.playAudio('${escapedQuestionText}', '${quiz.questionLanguage}')">
+                volume_up
+            </span>
+            <div class="quiz-question-text" lang="${quiz.questionLanguage}" dir="${questionDir}">
+                ${this.escapeHtml(questionText)}
+            </div>
+        </div>
+
+        <div class="quiz-options-grid">
+            ${options.map(option => {
                     const escapedOption = this.escapeHtml(option).replace(/'/g, "\\'").replace(/"/g, '\\"');
                     const escapedOptionForClick = this.escapeHtml(option).replace(/'/g, "\\\\'").replace(/"/g, '\\\\"');
                     return `
-                    <button class="quiz-option-btn"
-                            lang="${quiz.answerLanguage}" dir="${answerDir}"
-                            onclick="App.handleAnswer(this, '${escapedOption}', '${escapedCorrectText}')">
-                        <span class="material-icons audio-preview-icon"
-                            lang="${quiz.answerLanguage}" dir="${answerDir}"
-                            onclick="event.stopPropagation();App.playAudio('${escapedOptionForClick}', '${quiz.answerLanguage}')">
-                            volume_up
-                        </span>
-                        <span lang="${quiz.answerLanguage}" dir="${answerDir}">${this.escapeHtml(option)}</span>
-                    </button>`;
+                <button class="quiz-option-btn"
+                        lang="${quiz.answerLanguage}" dir="${answerDir}"
+                        onclick="App.handleAnswer(this, '${escapedOption}', '${escapedCorrectText}')">
+                    <span class="material-icons audio-preview-icon"
+                        lang="${quiz.answerLanguage}" dir="${answerDir}"
+                        onclick="event.stopPropagation();App.playAudio('${escapedOptionForClick}', '${quiz.answerLanguage}')">
+                        volume_up
+                    </span>
+                    <span lang="${quiz.answerLanguage}" dir="${answerDir}">${this.escapeHtml(option)}</span>
+                </button>`;
                 }).join('')}
-            </div>
         </div>
-    `;
+    </div>
+`;
 
         // Auto-play the question when the UI appears
         this.playAudio(questionText, quiz.questionLanguage);
@@ -2119,72 +2150,122 @@ const App = {
      * Generate unique ID for an SRS item
      */
     generateItemId(item) {
+        const sectionPart = item.sectionIndex !== null && item.sectionIndex !== undefined
+            ? item.sectionIndex
+            : 'all';
+
         if (item.type === 'word') {
-            return `word-${item.documentId}-${item.sectionIndex}-${item.word}`;
+            return `word-${item.documentId}-${sectionPart}-${item.word}`;
         } else {
-            return `sent-${item.documentId}-${item.sectionIndex}-${item.sentence}`;
+            return `sent-${item.documentId}-${sectionPart}-${item.sentence}`;
         }
     },
 
     /**
      * Get all potential flashcard items from content
+     * @param {string} documentId - Document ID
+     * @param {number|null} sectionIndex - Section index (null for whole doc)
+     * @param {string} type - 'word' or 'sentence'
+     * @returns {Array} Flashcard items
      */
     getFlashcardItems(documentId, sectionIndex, type) {
         const items = [];
         const doc = this.state.currentDocument;
-        const sections = sectionIndex !== null ? [doc.sections[sectionIndex]] : doc.sections;
+
+        if (!doc || !doc.sections) {
+            console.error('No document or sections found');
+            return items;
+        }
+
+        // Handle section filtering
+        let sections = [];
+        if (sectionIndex !== null) {
+            // Single section
+            const section = doc.sections[sectionIndex];
+            if (section) {
+                sections = [section];
+            } else {
+                console.error(`Section ${sectionIndex} not found`);
+                return items;
+            }
+        } else {
+            // All sections
+            sections = doc.sections;
+        }
+
+        // Track seen words to avoid duplicates at the document/section level
+        const seenWords = new Set();
 
         sections.forEach((section, idx) => {
-            section.blocks.forEach((block, blockIdx) => {  // Capture blockIndex
+            // Skip if section or blocks is undefined
+            if (!section || !section.blocks) {
+                console.warn('Section missing blocks:', section);
+                return;
+            }
+
+            section.blocks.forEach((block) => {
+                if (!block) return;
+
                 if (type === 'word') {
                     // Words from word blocks
-                    if (block.type === 'words') {
+                    if (block.type === 'words' && block.data) {
                         block.data.forEach(word => {
-                            items.push({
-                                type: 'word',
-                                documentId,
-                                sectionIndex: idx,
-                                word: word.word,
-                                translations: word.translations,
-                                context: {
-                                    exampleSentences: this.findExampleSentences(word.word)
-                                }
-                            });
+                            if (!word || !word.word) return;
+
+                            const wordKey = word.word;
+                            if (!seenWords.has(wordKey)) {
+                                seenWords.add(wordKey);
+                                items.push({
+                                    type: 'word',
+                                    documentId,
+                                    sectionIndex: sectionIndex !== null ? idx : null,
+                                    word: word.word,
+                                    translations: word.translations || {}, // Store ALL translations
+                                    context: {
+                                        exampleSentences: this.findExampleSentences(word.word)
+                                    }
+                                });
+                            }
                         });
                     }
                     // Words from sentence breakdowns
-                    else if (block.type === 'paragraph') {
-                        block.elements.forEach((element, elementIdx) => {  // Capture elementIndex
-                            if (element.words) {
+                    else if (block.type === 'paragraph' && block.elements) {
+                        block.elements.forEach((element) => {
+                            if (element && element.words) {
                                 element.words.forEach(word => {
-                                    items.push({
-                                        type: 'word',
-                                        documentId,
-                                        sectionIndex: idx,
-                                        word: word.word,
-                                        translations: word.translations,
-                                        context: {
-                                            sourceSentence: element.source,
-                                            sourceTranslation: element.translations[this.state.lang],
-                                            sentenceId: `s-${idx}-${blockIdx}-${elementIdx}`  // Now blockIdx and elementIdx are defined
-                                        }
-                                    });
+                                    if (!word || !word.word) return;
+
+                                    const wordKey = word.word;
+                                    if (!seenWords.has(wordKey)) {
+                                        seenWords.add(wordKey);
+                                        items.push({
+                                            type: 'word',
+                                            documentId,
+                                            sectionIndex: sectionIndex !== null ? idx : null,
+                                            word: word.word,
+                                            translations: word.translations || {}, // Store ALL translations
+                                            context: {
+                                                exampleSentences: this.findExampleSentences(word.word),
+                                                sourceSentence: element.source
+                                            }
+                                        });
+                                    }
                                 });
                             }
                         });
                     }
                 } else if (type === 'sentence') {
-                    // Sentences
-                    if (block.type === 'paragraph') {
-                        block.elements.forEach((element, elementIdx) => {
-                            if (element.type === 'sentence') {
+                    // Sentences from paragraph blocks
+                    if (block.type === 'paragraph' && block.elements) {
+                        block.elements.forEach((element) => {
+                            if (element && element.type === 'sentence' && element.source) {
                                 items.push({
                                     type: 'sentence',
                                     documentId,
-                                    sectionIndex: idx,
+                                    sectionIndex: sectionIndex !== null ? idx : null,
                                     sentence: element.source,
-                                    translations: element.translations,
-                                    words: element.words // for cloze deletions
+                                    translations: element.translations || {}, // Store ALL translations
+                                    words: element.words // for context
                                 });
                             }
                         });
@@ -2198,10 +2279,14 @@ const App = {
 
     /**
      * Find example sentences containing a word
+     * @param {string} word - The word to find examples for
+     * @returns {Array} Example sentences with translations
      */
     findExampleSentences(word) {
         const examples = [];
         const doc = this.state.currentDocument;
+
+        if (!doc) return examples;
 
         doc.sections.forEach(section => {
             section.blocks.forEach(block => {
@@ -2210,7 +2295,7 @@ const App = {
                         if (element.source && element.source.includes(word)) {
                             examples.push({
                                 sentence: element.source,
-                                translation: element.translations[this.state.lang]
+                                translation: element.translations ? element.translations[this.state.lang] : null
                             });
                         }
                     });
@@ -2237,21 +2322,24 @@ const App = {
     showNoFlashcardItemsMessage(type) {
         const main = document.getElementById('main-content');
         const t = this.state.translations;
+        const displayType = type === 'word' ?
+            (t.words || 'words') :
+            (t.sentences || 'sentences');
 
         main.innerHTML = `
-        <div class="flashcard-empty-state">
-            <span class="material-icons" style="font-size: 64px; color: var(--text-secondary);">info</span>
-            <h2 lang="${this.state.lang}" dir="${this.state.lang === 'fa' ? 'rtl' : 'ltr'}">
-                ${t.no_flashcard_items || 'No flashcards available'}
-            </h2>
-            <p lang="${this.state.lang}" dir="${this.state.lang === 'fa' ? 'rtl' : 'ltr'}">
-                ${t.no_flashcard_items_message || `No ${type} found in this section.`}
-            </p>
-            <button class="btn-activity" onclick="history.back()">
-                <span class="material-icons">arrow_back</span>
-                ${t.go_back || 'Go Back'}
-            </button>
-        </div>
+    <div class="flashcard-empty-state">
+        <span class="material-icons" style="font-size: 64px; color: var(--text-secondary);">info</span>
+        <h2 lang="${this.state.lang}" dir="${this.state.lang === 'fa' ? 'rtl' : 'ltr'}">
+            ${t.no_flashcard_items || 'No flashcards available'}
+        </h2>
+        <p lang="${this.state.lang}" dir="${this.state.lang === 'fa' ? 'rtl' : 'ltr'}">
+            ${t.no_flashcard_items_message || `No ${displayType} found.`}
+        </p>
+        <button class="btn-activity" onclick="history.back()">
+            <span class="material-icons">arrow_back</span>
+            ${t.go_back || 'Go Back'}
+        </button>
+    </div>
     `;
     },
 
@@ -2259,7 +2347,7 @@ const App = {
      * Start a flashcard session (called from router)
      */
     startFlashcardSession(documentId, sectionIndex, type) {
-        // Get all potential items from the document
+        // Get all potential items from the document/section
         const items = this.getFlashcardItems(documentId, sectionIndex, type);
 
         if (items.length === 0) {
@@ -2267,10 +2355,15 @@ const App = {
             return;
         }
 
-        // Create SRS items for new content
+        // Create SRS items for new content (but don't mix with existing ones)
+        const sessionItems = [];
+
         items.forEach(item => {
             const itemId = this.generateItemId(item);
+
+            // Check if we already have this item in SRS
             if (!this.state.srs.items[itemId]) {
+                // Create new SRS item
                 this.state.srs.items[itemId] = {
                     ...item,
                     id: itemId,
@@ -2284,19 +2377,22 @@ const App = {
                     bookmarked: false
                 };
             }
+
+            // Always add to session items (even existing ones)
+            sessionItems.push(this.state.srs.items[itemId]);
         });
 
-        // Get due items
-        const dueItems = this.getDueItems();
-
-        if (dueItems.length === 0) {
+        if (sessionItems.length === 0) {
             this.showNoCardsMessage();
             return;
         }
 
-        // Set up flashcard session
+        // Shuffle the session items
+        const shuffledItems = sessionItems.sort(() => Math.random() - 0.5);
+
+        // Set up flashcard session with ONLY items from this document/section
         this.state.flashcards = {
-            currentDeck: dueItems,
+            currentDeck: shuffledItems,
             currentIndex: 0,
             showAnswer: false,
             documentId: documentId,
@@ -2367,6 +2463,9 @@ const App = {
     /**
      * Render flashcard UI
      */
+    /**
+     * Render flashcard UI
+     */
     renderFlashcard() {
         const main = document.getElementById('main-content');
         const card = this.state.flashcards.currentDeck[this.state.flashcards.currentIndex];
@@ -2378,16 +2477,61 @@ const App = {
             return;
         }
 
-        let frontContent, backContent;
+        let frontContent;
+
+        // Get all enabled languages (excluding Thai as source)
+        const enabledLangs = Object.entries(this.state.media.languageSettings)
+            .filter(([code, config]) => config.show && code !== 'th')
+            .map(([code]) => code);
 
         if (card.type === 'word') {
             frontContent = card.word;
-            backContent = card.translations[this.state.lang];
         } else {
-            // Sentence with cloze
-            const cloze = this.createClozeDeletion(card.sentence, card.words);
-            frontContent = cloze;
-            backContent = card.sentence;
+            // Sentence
+            frontContent = card.sentence;
+        }
+
+        // Build translations HTML for the back of the card
+        let translationsHtml = '';
+        if (showAnswer) {
+            if (card.type === 'word') {
+                // For word cards, show translations for each enabled language
+                enabledLangs.forEach(lang => {
+                    if (card.translations && card.translations[lang]) {
+                        const dir = lang === 'fa' ? 'rtl' : 'ltr';
+                        translationsHtml += `
+                        <div class="flashcard-translation-item" lang="${lang}" dir="${dir}">
+                            <span class="translation-lang">${lang.toUpperCase()}:</span>
+                            <span class="translation-text">${this.escapeHtml(card.translations[lang])}</span>
+                            <button class="btn-audio-small" onclick="event.stopPropagation(); App.playAudio('${this.escapeHtml(card.translations[lang]).replace(/'/g, "\\'")}', '${lang}')">
+                                <span class="material-icons">volume_up</span>
+                            </button>
+                        </div>
+                    `;
+                    }
+                });
+            } else {
+                // For sentence cards, show translations for each enabled language
+                enabledLangs.forEach(lang => {
+                    if (card.translations && card.translations[lang]) {
+                        const dir = lang === 'fa' ? 'rtl' : 'ltr';
+                        translationsHtml += `
+                        <div class="flashcard-translation-item" lang="${lang}" dir="${dir}">
+                            <span class="translation-lang">${lang.toUpperCase()}:</span>
+                            <span class="translation-text">${this.escapeHtml(card.translations[lang])}</span>
+                            <button class="btn-audio-small" onclick="event.stopPropagation(); App.playAudio('${this.escapeHtml(card.translations[lang]).replace(/'/g, "\\'")}', '${lang}')">
+                                <span class="material-icons">volume_up</span>
+                            </button>
+                        </div>
+                    `;
+                    }
+                });
+            }
+
+            // If no enabled translations found, show a message
+            if (!translationsHtml) {
+                translationsHtml = `<div class="flashcard-translation-item">${t.no_translation_available || 'No translation available'}</div>`;
+            }
         }
 
         // Get example sentences for context
@@ -2395,82 +2539,81 @@ const App = {
         const isBookmarked = card.bookmarked || false;
 
         main.innerHTML = `
-        <div class="flashcard-container">
-            <div class="flashcard-header">
-                <div class="flashcard-progress">
-                    ${t.card || 'Card'} ${this.state.flashcards.currentIndex + 1} / ${this.state.flashcards.currentDeck.length}
-                </div>
-                <div class="flashcard-header-buttons">
-                    <button class="flashcard-header-btn" onclick="App.goToBookmarks()" title="${t.view_bookmarks || 'View Bookmarks'}">
-                        <span class="material-icons">bookmarks</span>
-                    </button>
-                    <button class="flashcard-header-btn" onclick="App.exitFlashcards()" title="${t.exit || 'Exit'}">
-                        <span class="material-icons">close</span>
-                    </button>
-                </div>
+    <div class="flashcard-container">
+        <div class="flashcard-header">
+            <div class="flashcard-progress">
+                ${t.card || 'Card'} ${this.state.flashcards.currentIndex + 1} / ${this.state.flashcards.currentDeck.length}
             </div>
-            
-            <div class="flashcard ${showAnswer ? 'show-answer' : ''}">
-                <div class="flashcard-front">
-                    <div class="flashcard-content" lang="th">${this.escapeHtml(frontContent)}</div>
-                    <button class="btn-audio" onclick="App.playAudio('${this.escapeHtml(frontContent).replace(/'/g, "\\'")}', 'th')">
-                        <span class="material-icons">volume_up</span>
-                    </button>
-                </div>
-                
-                <div class="flashcard-back">
-                    <div class="flashcard-content" lang="${this.state.lang}" dir="${this.state.lang === 'fa' ? 'rtl' : 'ltr'}">
-                        ${this.escapeHtml(backContent)}
-                    </div>
-                    <button class="btn-audio" onclick="App.playAudio('${this.escapeHtml(backContent).replace(/'/g, "\\'")}', '${this.state.lang}')">
-                        <span class="material-icons">volume_up</span>
-                    </button>
-                </div>
-            </div>
-            
-            ${examples.length > 0 && showAnswer ? `
-                <div class="flashcard-context">
-                    <h4>${t.example_sentences || 'Example Sentences'}:</h4>
-                    ${examples.map(ex => `
-                        <div class="context-sentence" onclick="App.playAudio('${this.escapeHtml(ex.sentence).replace(/'/g, "\\'")}', 'th')">
-                            <span class="material-icons">volume_up</span>
-                            <span lang="th">${this.escapeHtml(ex.sentence)}</span>
-                            <small lang="${this.state.lang}" dir="${this.state.lang === 'fa' ? 'rtl' : 'ltr'}">
-                                ${this.escapeHtml(ex.translation)}
-                            </small>
-                        </div>
-                    `).join('')}
-                </div>
-            ` : ''}
-            
-            ${!showAnswer ? `
-                <button class="btn-activity btn-show-answer" onclick="App.showFlashcardAnswer()">
-                    ${t.show_answer || 'Show Answer'}
+            <div class="flashcard-header-buttons">
+                <button class="flashcard-header-btn" onclick="App.goToBookmarks()" title="${t.view_bookmarks || 'View Bookmarks'}">
+                    <span class="material-icons">bookmarks</span>
                 </button>
-            ` : `
-                <div class="answer-rating">
-                    <p>${t.how_well || 'How well did you know this?'}</p>
-                    <div class="rating-buttons">
-                        <button class="rating-btn" onclick="App.processAnswer(0)">${t.again || 'Again'}</button>
-                        <button class="rating-btn" onclick="App.processAnswer(3)">${t.hard || 'Hard'}</button>
-                        <button class="rating-btn" onclick="App.processAnswer(4)">${t.good || 'Good'}</button>
-                        <button class="rating-btn" onclick="App.processAnswer(5)">${t.easy || 'Easy'}</button>
-                    </div>
-                </div>
-            `}
-            
-            <div class="flashcard-footer">
-                <button class="flashcard-footer-btn" onclick="App.reviewContext()" title="${t.view_context || 'View in context'}">
-                    <span class="material-icons">info</span>
-                </button>
-                <button class="flashcard-footer-btn" onclick="App.bookmarkFlashcard()" title="${isBookmarked ? (t.remove_bookmark || 'Remove bookmark') : (t.bookmark || 'Bookmark')}">
-                    <span class="material-icons">${isBookmarked ? 'bookmark' : 'bookmark_border'}</span>
-                </button>
-                <button class="flashcard-footer-btn" onclick="App.linkToOriginal()" title="${t.view_original || 'View original'}">
-                    <span class="material-icons">link</span>
+                <button class="flashcard-header-btn" onclick="App.exitFlashcards()" title="${t.exit || 'Exit'}">
+                    <span class="material-icons">close</span>
                 </button>
             </div>
         </div>
+        
+        <div class="flashcard ${showAnswer ? 'show-answer' : ''}">
+            <div class="flashcard-front">
+                <div class="flashcard-content" lang="th">${this.escapeHtml(frontContent)}</div>
+                <button class="btn-audio" onclick="App.playAudio('${this.escapeHtml(frontContent).replace(/'/g, "\\'")}', 'th')">
+                    <span class="material-icons">volume_up</span>
+                </button>
+            </div>
+            
+            <div class="flashcard-back">
+                <div class="flashcard-translations">
+                    ${translationsHtml}
+                </div>
+            </div>
+        </div>
+        
+        ${examples.length > 0 && showAnswer ? `
+            <div class="flashcard-context">
+                <h4>${t.example_sentences || 'Example Sentences'}:</h4>
+                ${examples.map(ex => `
+                    <div class="context-sentence" onclick="App.playAudio('${this.escapeHtml(ex.sentence).replace(/'/g, "\\'")}', 'th')">
+                        <span class="material-icons">volume_up</span>
+                        <span lang="th">${this.escapeHtml(ex.sentence)}</span>
+                        ${ex.translation ? `
+                            <small lang="${enabledLangs[0] || 'en'}" dir="${enabledLangs[0] === 'fa' ? 'rtl' : 'ltr'}">
+                                ${this.escapeHtml(ex.translation)}
+                            </small>
+                        ` : ''}
+                    </div>
+                `).join('')}
+            </div>
+        ` : ''}
+        
+        ${!showAnswer ? `
+            <button class="btn-activity btn-show-answer" onclick="App.showFlashcardAnswer()">
+                ${t.show_answer || 'Show Answer'}
+            </button>
+        ` : `
+            <div class="answer-rating">
+                <p>${t.how_well || 'How well did you know this?'}</p>
+                <div class="rating-buttons">
+                    <button class="rating-btn" onclick="App.processAnswer(0)">${t.again || 'Again'}</button>
+                    <button class="rating-btn" onclick="App.processAnswer(3)">${t.hard || 'Hard'}</button>
+                    <button class="rating-btn" onclick="App.processAnswer(4)">${t.good || 'Good'}</button>
+                    <button class="rating-btn" onclick="App.processAnswer(5)">${t.easy || 'Easy'}</button>
+                </div>
+            </div>
+        `}
+        
+        <div class="flashcard-footer">
+            <button class="flashcard-footer-btn" onclick="App.reviewContext()" title="${t.view_context || 'View in context'}">
+                <span class="material-icons">info</span>
+            </button>
+            <button class="flashcard-footer-btn" onclick="App.bookmarkFlashcard()" title="${isBookmarked ? (t.remove_bookmark || 'Remove bookmark') : (t.bookmark || 'Bookmark')}">
+                <span class="material-icons">${isBookmarked ? 'bookmark' : 'bookmark_border'}</span>
+            </button>
+            <button class="flashcard-footer-btn" onclick="App.linkToOriginal()" title="${t.view_original || 'View original'}">
+                <span class="material-icons">link</span>
+            </button>
+        </div>
+    </div>
     `;
     },
 
@@ -2966,35 +3109,34 @@ const App = {
         const t = this.state.translations;
         const totalCards = this.state.flashcards.currentDeck.length;
         const studiedToday = this.state.srs.stats.studiedToday || 0;
+        const documentId = this.state.flashcards.documentId;
 
         main.innerHTML = `
-        <div class="flashcard-complete">
-            <span class="material-icons" style="font-size: 64px; color: var(--success-color);">celebration</span>
-            <h2 lang="${this.state.lang}" dir="${this.state.lang === 'fa' ? 'rtl' : 'ltr'}">
-                ${t.session_complete || 'Session Complete!'}
-            </h2>
-            <p lang="${this.state.lang}" dir="${this.state.lang === 'fa' ? 'rtl' : 'ltr'}">
-                ${t.cards_reviewed || 'You reviewed'} ${totalCards} ${t.cards || 'cards'}.
-            </p>
-            <p lang="${this.state.lang}" dir="${this.state.lang === 'fa' ? 'rtl' : 'ltr'}">
-                ${t.total_studied || 'Total studied today'}: ${studiedToday}
-            </p>
-            
-            <div class="flashcard-complete-buttons">
-                <button class="btn-activity" onclick="location.hash='library'">
-                    <span class="material-icons">home</span>
-                    ${t.back_to_library || 'Library'}
-                </button>
-                <button class="btn-activity" onclick="App.startFlashcardSession()">
-                    <span class="material-icons">refresh</span>
-                    ${t.study_more || 'Study More'}
-                </button>
-            </div>
+    <div class="flashcard-complete">
+        <span class="material-icons" style="font-size: 64px; color: var(--success-color);">celebration</span>
+        <h2 lang="${this.state.lang}" dir="${this.state.lang === 'fa' ? 'rtl' : 'ltr'}">
+            ${t.session_complete || 'Session Complete!'}
+        </h2>
+        <p lang="${this.state.lang}" dir="${this.state.lang === 'fa' ? 'rtl' : 'ltr'}">
+            ${t.cards_reviewed || 'You reviewed'} ${totalCards} ${t.cards || 'cards'}.
+        </p>
+        <p lang="${this.state.lang}" dir="${this.state.lang === 'fa' ? 'rtl' : 'ltr'}">
+            ${t.total_studied || 'Total studied today'}: ${studiedToday}
+        </p>
+        
+        <div class="flashcard-complete-buttons">
+            <button class="btn-activity" onclick="location.hash='doc/${documentId}'">
+                <span class="material-icons">arrow_back</span>
+                ${t.back_to_document || 'Back to Document'}
+            </button>
+            <button class="btn-activity" onclick="location.hash='library'">
+                <span class="material-icons">home</span>
+                ${t.back_to_library || 'Library'}
+            </button>
         </div>
+    </div>
     `;
     },
-
-
 
     /* --------------------------------------------
        Data Import/Export
@@ -3108,7 +3250,7 @@ const App = {
      */
     exitFlashcards() {
         const flashcard = this.state.flashcards;
-        if (flashcard.documentId) {
+        if (flashcard && flashcard.documentId) {
             location.hash = `doc/${flashcard.documentId}`;
         } else {
             location.hash = 'library';

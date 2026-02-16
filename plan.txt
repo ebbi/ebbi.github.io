@@ -1,19 +1,30 @@
-On a mobile display the document buttons resize to 2 rows and 
-the section buttons are in a single column with 4 rows !!!!
+Testing the multiple-choice quiz.
 
-The App is unusable with 8 large buttons taking up more than half of the display!
-
-
-The last 4 hours has been unsuccessful in getting a consistent resizing of 
-4 identical buttons in the document and section !!!
-
-I am out of ideas of how to describe the problem!
+Please insert a question counter / total questions next to the progress bar.
+Also add an "x" at the top right corner to close the quiz page and 
+return to the exercise.
 
 
 
 
 
+Testing flashcard system with:
+http://127.0.0.1:8080/#doc/grammar_present_continuous
 
+The data sets for the flashcards are still incorrect!
+For example, for section words, the flashcard shows: Card 1 / 343 which is incorrect.  Similarly, for the other data sets.
+Also, the show answer does not show the selected translation selected in Settings!
+
+The data sets for document level words and sentences are incorrect.
+The document level words should only include the JSON "words" array in the entire document.
+The document level sentences should include all "source" sentences with the flashcard answers being the JSON "translations" 
+(the selected translation(s) in the Settings show checkboxes should determine which translation is shown as the flashcard answer)
+
+
+The data sets for section level words and sentences are incorrect.
+The section level words should only include the JSON "words" array from the section.
+The section level sentences should include only the section "source" sentences with the flashcard answers being the JSON "translations" 
+(the selected translation(s) in the Settings show checkboxes should determine which translation is shown as the flashcard answer)
 
 
 
