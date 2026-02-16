@@ -1,71 +1,21 @@
-Testing the multiple-choice quiz.
+http://127.0.0.1:8080/#sentence-game/grammar_polite_particles/0
 
-Please insert a question counter / total questions next to the progress bar.
-Also add an "x" at the top right corner to close the quiz page and 
-return to the exercise.
+Selecting the words does construct the sentence, but 
+when check button is clicked, the warning message, Not quite right. Try again! is displayed 
+even though the sentense is correct!
 
+Clicking Show Answer, displays, Perfect! You built the sentence correctly. 
+(even though it displayed, Not quite right. Try again! is displayed  )
 
-
-
-
-Testing flashcard system with:
-http://127.0.0.1:8080/#doc/grammar_present_continuous
-
-The data sets for the flashcards are still incorrect!
-For example, for section words, the flashcard shows: Card 1 / 343 which is incorrect.  Similarly, for the other data sets.
-Also, the show answer does not show the selected translation selected in Settings!
-
-The data sets for document level words and sentences are incorrect.
-The document level words should only include the JSON "words" array in the entire document.
-The document level sentences should include all "source" sentences with the flashcard answers being the JSON "translations" 
-(the selected translation(s) in the Settings show checkboxes should determine which translation is shown as the flashcard answer)
-
-
-The data sets for section level words and sentences are incorrect.
-The section level words should only include the JSON "words" array from the section.
-The section level sentences should include only the section "source" sentences with the flashcard answers being the JSON "translations" 
-(the selected translation(s) in the Settings show checkboxes should determine which translation is shown as the flashcard answer)
+Please arrange the Rest, Check and Next buttons equally spaced in one row.
 
 
 
 
+Sentence Building Games for the existing data files.
 
-Exploring a new feature, Context-Aware Flashcards
+Drag-and-drop word ordering along these lines:
 
-Generate flashcards from words or sentences 
-
-generateFlashcards() {
-    const dueForReview = this.state.srs.dueItems;
-    
-    return dueForReview.map(item => {
-        if (item.type === 'word') {
-            return {
-                front: item.word,
-                back: item.translations[this.state.lang],
-                example: this.findExampleSentence(item.word)
-            };
-        } else {
-            // Sentence with cloze deletion
-            const cloze = this.createClozeDeletion(item.sentence);
-            return {
-                front: cloze,
-                back: item.sentence,
-                translation: item.translations[this.state.lang]
-            };
-        }
-    });
-}
-
-Please explain how this could be incorporated into the App and the 
-typical user interaction.
-
-
-
-
-
-Sentence Building Games
-
-Drag-and-drop word ordering:
 renderWordOrderGame() {
     const words = this.shuffleArray(this.currentItem.words.map(w => w.word));
     

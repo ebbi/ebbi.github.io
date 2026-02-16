@@ -65,6 +65,17 @@ const App = {
             currentIndex: 0,
             showAnswer: false,
             deckType: 'word' // or 'sentence'
+        },
+
+        sentenceGame: {
+            currentItem: null,
+            currentIndex: 0,
+            items: [],
+            documentId: null,
+            sectionIndex: null,
+            userAnswer: [],
+            showResult: false,
+            isCorrect: false
         }
 
     },
@@ -581,6 +592,21 @@ const App = {
             await this.handleDocumentSelection(hash.split('/')[1], main);
         } else if (hash.startsWith('quiz/')) {
             this.initQuizFromHash(hash.split('/'));
+
+         } else if (hash.startsWith('sentence-game/')) {
+            const parts = hash.split('/');
+            const documentId = parts[1];
+            const sectionIndex = parts[2] === 'null' ? null : parseInt(parts[2], 10);
+
+            // Make sure the document is loaded
+            if (!this.state.currentDocument || this.state.currentDocument.documentId !== documentId) {
+                await this.handleDocumentSelection(documentId, document.createElement('div'));
+            }
+
+            // Start the sentence game
+            this.startSentenceGame(documentId, sectionIndex);
+        
+
         } else if (hash.startsWith('flashcard/')) {
             // Flashcard route - parse parameters
             const parts = hash.split('/');
@@ -721,6 +747,14 @@ const App = {
         </button>
     `;
 
+        html += `
+    <button class="btn-sentence-game" onclick="App.initSentenceGame('${documentId}', null)" title="${t.sentence_game || 'Build sentences'}">
+        <span class="material-icons">dashboard</span>
+        <span>${t.sentences || 'Sentences'}</span>
+    </button>
+`;
+
+
         // Quiz buttons
         if (documentMeta.activities && documentMeta.activities.length > 0) {
             documentMeta.activities.forEach(activity => {
@@ -763,6 +797,12 @@ const App = {
                     <span class="material-icons">style</span>
                     <span>${t.sentences || 'Sentences'}</span>
                 </button>
+
+<button class="btn-sentence-game-small" onclick="App.initSentenceGame('${documentId}', ${index})" title="${t.sentence_game_section || 'Build sentences from this section'}">
+    <span class="material-icons">dashboard</span>
+    <span>${t.sentences || 'Sentences'}</span>
+</button>
+
                 ` : ''}
                 
                 ${section.activities ? `
@@ -3304,6 +3344,502 @@ const App = {
 
         this.renderFlashcard();
     },
+    /* ============================================================================
+       SENTENCE BUILDING GAME
+       ============================================================================ */
+
+    /**
+     * Initialize sentence building game
+     * @param {string} documentId - Document ID
+     * @param {number|null} sectionIndex - Section index or null for whole doc
+     */
+    initSentenceGame(documentId, sectionIndex) {
+        // Set the hash to trigger routing
+        location.hash = `sentence-game/${documentId}/${sectionIndex}`;
+    },
+
+    /**
+     * Start sentence game session (called from router)
+     */
+    startSentenceGame(documentId, sectionIndex) {
+        // Get all sentences from the document/section
+        const items = this.getSentenceGameItems(documentId, sectionIndex);
+
+        if (items.length === 0) {
+            this.showNoSentenceItemsMessage();
+            return;
+        }
+
+        // Set up game session
+        this.state.sentenceGame = {
+            items: this.shuffleArray(items),
+            currentIndex: 0,
+            currentItem: items[0],
+            documentId: documentId,
+            sectionIndex: sectionIndex,
+            userAnswer: [],
+            showResult: false,
+            isCorrect: false
+        };
+
+        this.renderSentenceGame();
+    },
+
+    /**
+     * Get all sentences for the game
+     * @param {string} documentId - Document ID
+     *- @param {number|null} sectionIndex - Section index
+     * @returns {Array} Sentence items
+     */
+    getSentenceGameItems(documentId, sectionIndex) {
+        const items = [];
+        const doc = this.state.currentDocument;
+
+        if (!doc || !doc.sections) return items;
+
+        const sections = sectionIndex !== null ? [doc.sections[sectionIndex]] : doc.sections;
+
+        sections.forEach((section, idx) => {
+            section.blocks.forEach(block => {
+                if (block.type === 'paragraph' && block.elements) {
+                    block.elements.forEach(element => {
+                        if (element.type === 'sentence' && element.source) {
+                            // Use the words array from the data if available
+                            const words = element.words ?
+                                element.words.map(w => w.word) :
+                                // If no words array, fallback to character-based splitting for Thai
+                                this.splitThaiIntoSyllables(element.source);
+
+                            items.push({
+                                id: `sentence-${documentId}-${idx}-${items.length}`,
+                                original: element.source,
+                                words: words,
+                                translation: element.translations?.[this.state.lang] || element.translations?.en || '',
+                                sourceSentence: element.source
+                            });
+                        }
+                    });
+                }
+            });
+        });
+
+        return items;
+    },
+
+    /**
+     * Split Thai text into syllables/words (simple fallback method)
+     * @param {string} text - Thai text to split
+     * @returns {Array} Array of syllables/words
+     */
+    splitThaiIntoSyllables(text) {
+        // This is a simplified approach - in a real app you might want a proper Thai word breaker
+        // For now, we'll split by common Thai word boundaries
+        // Thai characters range: \u0E00-\u0E7F
+
+        const words = [];
+        let currentWord = '';
+
+        for (let i = 0; i < text.length; i++) {
+            const char = text[i];
+            currentWord += char;
+
+            // Simple heuristic: after certain particles or common word endings
+            if (char === ' ' || char === 'ครับ' || char === 'ค่ะ' || char === 'คะ' ||
+                char === 'ไหม' || char === 'หรือ' || char === 'และ' || i === text.length - 1) {
+                if (currentWord.trim()) {
+                    words.push(currentWord.trim());
+                    currentWord = '';
+                }
+            }
+        }
+
+        // If we couldn't split properly, just return the whole text as one word
+        return words.length > 0 ? words : [text];
+    },
+
+    /**
+     * Show message when no sentences are found
+     */
+    showNoSentenceItemsMessage() {
+        const main = document.getElementById('main-content');
+        const t = this.state.translations;
+
+        main.innerHTML = `
+        <div class="flashcard-empty-state">
+            <span class="material-icons" style="font-size: 64px; color: var(--text-secondary);">info</span>
+            <h2 lang="${this.state.lang}" dir="${this.state.lang === 'fa' ? 'rtl' : 'ltr'}">
+                ${t.no_sentences || 'No sentences available'}
+            </h2>
+            <p lang="${this.state.lang}" dir="${this.state.lang === 'fa' ? 'rtl' : 'ltr'}">
+                ${t.no_sentences_message || 'This section has no sentences to practice.'}
+            </p>
+            <button class="btn-activity" onclick="history.back()">
+                <span class="material-icons">arrow_back</span>
+                ${t.go_back || 'Go Back'}
+            </button>
+        </div>
+    `;
+    },
+
+    /**
+     * Render the sentence building game (mobile-optimized)
+     */
+    renderSentenceGame() {
+        const main = document.getElementById('main-content');
+        const game = this.state.sentenceGame;
+        const t = this.state.translations;
+        const item = game.items[game.currentIndex];
+
+        if (!item) {
+            this.renderSentenceGameComplete();
+            return;
+        }
+
+        // Track unused words for UI
+        const usedWords = game.userAnswer;
+        const unusedWords = item.words.filter(word => !usedWords.includes(word));
+
+        // Build the game HTML with touch-friendly interactions
+        main.innerHTML = `
+        <div class="sentence-game-container">
+            <div class="game-header">
+                <div class="game-header-top">
+                    <h2 lang="${this.state.lang}" dir="${this.state.lang === 'fa' ? 'rtl' : 'ltr'}">
+                        ${t.build_sentence || 'Build the Sentence'}
+                    </h2>
+                    <button class="game-close-btn" onclick="location.hash='doc/${game.documentId}'" title="${t.close || 'Close'}">
+                        <span class="material-icons">close</span>
+                    </button>
+                </div>
+                
+                <div class="game-progress-section">
+                    <div class="game-progress-container">
+                        <div class="game-progress-fill" style="width:${(game.currentIndex / game.items.length) * 100}%"></div>
+                    </div>
+                    <div class="game-counter">
+                        ${game.currentIndex + 1} / ${game.items.length}
+                    </div>
+                </div>
+                
+                ${item.translation ? `
+                    <div class="sentence-hint" lang="${this.state.lang}" dir="${this.state.lang === 'fa' ? 'rtl' : 'ltr'}">
+                        <span class="material-icons">translate</span>
+                        ${this.escapeHtml(item.translation)}
+                    </div>
+                ` : ''}
+            </div>
+            
+            <div class="sentence-game-area">
+                <!-- Construction Zone (Your Sentence) -->
+                <div class="construction-zone">
+                    <div class="construction-label">${t.your_sentence || 'Your Sentence:'}</div>
+                    <div class="word-construction ${game.showResult && game.isCorrect ? 'correct' : ''} ${game.showResult && !game.isCorrect ? 'incorrect' : ''}" id="word-construction">
+                        ${game.userAnswer.length > 0 ?
+                game.userAnswer.map((word, index) => `
+                                <div class="constructed-word" data-index="${index}">
+                                    <span class="word-text">${this.escapeHtml(word)}</span>
+                                    ${!game.showResult ? `
+                                        <button class="remove-word-btn" onclick="App.removeConstructedWord(${index})" aria-label="${t.remove_word || 'Remove word'}">
+                                            <span class="material-icons">close</span>
+                                        </button>
+                                    ` : ''}
+                                </div>
+                            `).join('') :
+                `<div class="construction-placeholder">${t.tap_words_to_build || 'Tap words below to build your sentence'}</div>`
+            }
+                    </div>
+                </div>
+                
+                <!-- Word Bank (Available Words) -->
+                <div class="word-bank">
+                    <div class="word-bank-label">${t.available_words || 'Available Words:'}</div>
+                    <div class="words-container" id="words-container">
+
+${unusedWords.map((word, index) => `
+<button class="word-tile"
+        data-word="${this.escapeHtml(word)}"
+        onclick="App.addWordToConstruction(this.dataset.word)"
+        ${game.showResult ? 'disabled' : ''}>
+    ${this.escapeHtml(word)}
+</button>
+`).join('')}
+
+                        ${unusedWords.length === 0 ? `
+                            <div class="no-words-message">${t.all_words_used || 'All words used!'}</div>
+                        ` : ''}
+                    </div>
+                </div>
+            </div>
+            
+<!-- Game Controls -->
+<div class="game-controls">
+    <button class="btn-activity btn-reset" onclick="App.resetCurrentSentence()" ${game.userAnswer.length === 0 || game.showResult ? 'disabled' : ''}>
+        <span class="material-icons">refresh</span>
+        <span class="btn-text">${t.reset || 'Reset'}</span>
+    </button>
+    <button class="btn-activity btn-check" onclick="App.checkSentenceOrder()" ${game.userAnswer.length === 0 || game.showResult ? 'disabled' : ''}>
+        <span class="material-icons">check</span>
+        <span class="btn-text">${t.check || 'Check'}</span>
+    </button>
+    <button class="btn-activity btn-next" onclick="App.nextSentence()" ${!game.showResult ? 'disabled' : ''}>
+        <span class="material-icons">arrow_forward</span>
+        <span class="btn-text">${t.next || 'Next'}</span>
+    </button>
+</div>
+            
+            <!-- Result Feedback -->
+            ${game.showResult ? `
+                <div class="result-feedback ${game.isCorrect ? 'correct' : 'incorrect'}">
+                    <span class="material-icons">${game.isCorrect ? 'check_circle' : 'error'}</span>
+                    <span class="feedback-text">
+                        ${game.isCorrect ?
+                    (t.correct_sentence || 'Perfect! You built the sentence correctly.') :
+                    (t.incorrect_sentence || 'Not quite right. Try again!')}
+                    </span>
+                    ${!game.isCorrect ? `
+                        <button class="btn-show-answer" onclick="App.showCorrectAnswer()">
+                            ${t.show_answer || 'Show Answer'}
+                        </button>
+                    ` : ''}
+                </div>
+            ` : ''}
+            
+            <!-- Exit Button -->
+            <div class="game-footer">
+                <button class="btn-activity btn-exit" onclick="App.exitSentenceGame()">
+                    <span class="material-icons">exit_to_app</span>
+                    <span class="btn-text">${t.exit_game || 'Exit Game'}</span>
+                </button>
+            </div>
+        </div>
+    `;
+    },
+
+    /**
+     * Set up drop zone for drag and drop
+     */
+    setupDropZone() {
+        const constructionZone = document.getElementById('word-construction');
+        if (!constructionZone) return;
+
+        constructionZone.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            constructionZone.classList.add('drag-over');
+        });
+
+        constructionZone.addEventListener('dragleave', () => {
+            constructionZone.classList.remove('drag-over');
+        });
+
+        constructionZone.addEventListener('drop', (e) => {
+            e.preventDefault();
+            constructionZone.classList.remove('drag-over');
+
+            const word = e.dataTransfer.getData('text/plain');
+            if (word) {
+                this.addWordToConstruction(word);
+            }
+        });
+    },
+
+    /**
+     * Handle drag start
+     */
+    dragWord(event) {
+        const word = event.target.getAttribute('data-word');
+        event.dataTransfer.setData('text/plain', word);
+        event.target.classList.add('dragging');
+    },
+
+    /**
+     * Handle drag end
+     */
+    dragEnd(event) {
+        event.target.classList.remove('dragging');
+    },
+
+    /**
+     * Add word to construction area
+     * @param {string} word - Word to add
+     */
+    addWordToConstruction(word) {
+        const game = this.state.sentenceGame;
+
+        // Don't add if we're showing results
+        if (game.showResult) return;
+
+        // Add the word
+        game.userAnswer.push(word);
+
+        // Re-render to update UI
+        this.renderSentenceGame();
+    },
+
+    /**
+     * Remove word from construction
+     * @param {number} index - Index of word to remove
+     */
+    removeConstructedWord(index) {
+        const game = this.state.sentenceGame;
+
+        // Don't remove if we're showing results
+        if (game.showResult) return;
+
+        game.userAnswer.splice(index, 1);
+        this.renderSentenceGame();
+    },
+
+    /**
+     * Reset current sentence
+     */
+    resetCurrentSentence() {
+        const game = this.state.sentenceGame;
+        game.userAnswer = [];
+        game.showResult = false;
+        game.isCorrect = false;
+        this.renderSentenceGame();
+    },
+
+    /**
+     * Show the correct answer when user gets it wrong
+     */
+    showCorrectAnswer() {
+        const game = this.state.sentenceGame;
+        const item = game.items[game.currentIndex];
+
+        // Set the user's answer to the correct order using the word array
+        game.userAnswer = [...item.words];
+        game.showResult = true;
+        game.isCorrect = true;
+
+        this.renderSentenceGame();
+
+        // Speak the correct sentence
+        this.playAudio(item.original, 'th');
+    },
+
+    /**
+     * Check if the sentence order is correct
+     */
+    /**
+     * Check if the sentence order is correct
+     */
+    checkSentenceOrder() {
+        const game = this.state.sentenceGame;
+        const item = game.items[game.currentIndex];
+
+        // Compare the word arrays directly
+        const userWords = game.userAnswer;
+        const originalWords = item.words;
+
+        // Check if arrays have the same length
+        if (userWords.length !== originalWords.length) {
+            game.showResult = true;
+            game.isCorrect = false;
+            this.renderSentenceGame();
+            return;
+        }
+
+        // Compare each word
+        let isCorrect = true;
+        for (let i = 0; i < userWords.length; i++) {
+            if (userWords[i] !== originalWords[i]) {
+                isCorrect = false;
+                break;
+            }
+        }
+
+        game.showResult = true;
+        game.isCorrect = isCorrect;
+
+        this.renderSentenceGame();
+
+        // If correct, speak the sentence
+        if (isCorrect) {
+            this.playAudio(item.original, 'th');
+        } else {
+            // Provide haptic feedback on mobile
+            if (navigator.vibrate) {
+                navigator.vibrate(50);
+            }
+        }
+    },
+
+    /**
+     * Move to next sentence
+     */
+    nextSentence() {
+        const game = this.state.sentenceGame;
+
+        if (game.currentIndex < game.items.length - 1) {
+            game.currentIndex++;
+            game.currentItem = game.items[game.currentIndex];
+            game.userAnswer = [];
+            game.showResult = false;
+            this.renderSentenceGame();
+        } else {
+            this.renderSentenceGameComplete();
+        }
+    },
+
+    /**
+     * Render completion screen
+     */
+    renderSentenceGameComplete() {
+        const main = document.getElementById('main-content');
+        const game = this.state.sentenceGame;
+        const t = this.state.translations;
+
+        main.innerHTML = `
+        <div class="game-complete">
+            <span class="material-icons" style="font-size: 64px; color: var(--success);">celebration</span>
+            <h2 lang="${this.state.lang}" dir="${this.state.lang === 'fa' ? 'rtl' : 'ltr'}">
+                ${t.game_complete || 'Great job!'}
+            </h2>
+            <p lang="${this.state.lang}" dir="${this.state.lang === 'fa' ? 'rtl' : 'ltr'}">
+                ${t.sentences_completed || 'You\'ve practiced all the sentences!'}
+            </p>
+            
+            <div class="game-complete-buttons">
+                <button class="btn-activity" onclick="location.hash='doc/${game.documentId}'">
+                    <span class="material-icons">arrow_back</span>
+                    ${t.back_to_document || 'Back to Document'}
+                </button>
+                <button class="btn-activity" onclick="App.startSentenceGame('${game.documentId}', ${game.sectionIndex})">
+                    <span class="material-icons">refresh</span>
+                    ${t.play_again || 'Play Again'}
+                </button>
+            </div>
+        </div>
+    `;
+    },
+
+    /**
+     * Exit the game
+     */
+    exitSentenceGame() {
+        const game = this.state.sentenceGame;
+        if (game && game.documentId) {
+            location.hash = `doc/${game.documentId}`;
+        } else {
+            location.hash = 'library';
+        }
+    },
+
+    /**
+     * Shuffle array utility
+     * @param {Array} array - Array to shuffle
+     * @returns {Array} Shuffled array
+     */
+    shuffleArray(array) {
+        const shuffled = [...array];
+        for (let i = shuffled.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+        }
+        return shuffled;
+    }
+
 
 
 }; // End of App object
