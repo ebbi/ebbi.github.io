@@ -1427,7 +1427,8 @@ td {
     color: var(--thai-color);
     cursor: pointer;
     border-radius: 50%;
-    padding: 4px;
+    padding: 0 4px;
+    vertical-align: top;
     transition: all 0.2s;
 }
 

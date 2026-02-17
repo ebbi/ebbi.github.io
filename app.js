@@ -242,6 +242,26 @@ const App = {
                     // ADD sectionIndex to make UID globally unique
                     const uid = `s-${sectionIndex}-${blockIndex}-${elementIndex}`;
 
+
+                    blockHtml += `<div class="sentence-group">
+                    <div class="stack-column">`;
+
+                    // Source sentence wrapper - ALWAYS RENDER the source sentence
+                    blockHtml += `
+                    <div class="source-wrapper" style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">`;
+
+
+
+                    // Add the source sentence with ALL original attributes preserved
+                    blockHtml += `<div class="stack-item source audio-element"
+                            lang="th" dir="ltr"
+                            data-text="${this.escapeHtml(element.source)}"
+                            data-lang="th"
+                            data-uid="${uid}"
+                            onclick="App.seekAndPlay(this)">`;
+
+
+
                     // Add grammar icon if present
                     if (element.grammar) {
                         blockHtml += `<button class="grammar-icon-btn"
@@ -252,11 +272,11 @@ const App = {
                             </button>`;
                     }
 
-                    // Source sentence container - ALWAYS RENDER the sentence wrapper
-                    blockHtml += `<div class="sentence-group">
-                    <div class="stack-column">`;
 
-
+                    blockHtml += `
+                            ${this.hydrateSource(element.source, element.words, uid)}
+                        </div>
+                    </div>`;
 
                     // Word‑by‑word breakdown - ONLY render if Thai source words are enabled
                     if (settings.th && settings.th.show && element.words && element.words.length > 0) {
@@ -282,21 +302,6 @@ const App = {
                         });
                         blockHtml += `</div>`;
                     }
-
-                    // Source sentence wrapper - ALWAYS RENDER the source sentence
-                    blockHtml += `
-                    <div class="source-wrapper" style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">`;
-
-                    // Add the source sentence with ALL original attributes preserved
-                    blockHtml += `<div class="stack-item source audio-element"
-                            lang="th" dir="ltr"
-                            data-text="${this.escapeHtml(element.source)}"
-                            data-lang="th"
-                            data-uid="${uid}"
-                            onclick="App.seekAndPlay(this)">
-                            ${this.hydrateSource(element.source, element.words, uid)}
-                        </div>
-                    </div>`;
 
                     // Translations for the whole sentence - ONLY render if language is enabled (EN, FA, etc.)
                     Object.keys(settings).forEach(lang => {
