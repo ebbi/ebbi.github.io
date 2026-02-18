@@ -788,10 +788,12 @@ const App = {
                 section.heading.en ||
                 'Untitled Section';
 
-            html += `<details class="section-details" open>
+    html += `<details class="section-details">
     <summary>
         <span class="section-title-text" lang="${this.state.lang}" dir="${currentDir}">${this.escapeHtml(heading)}</span>
-       
+    </summary>
+    <div class="section-card">
+
         <div class="section-controls-wrapper">
             <!-- All section buttons in a single container for proper flex distribution -->
             <div class="section-all-controls">
@@ -807,10 +809,10 @@ const App = {
                     <span>${t.sentences || 'Sentences'}</span>
                 </button>
 
-<button class="btn-sentence-game-small" onclick="App.initSentenceGame('${documentId}', ${index})" title="${t.sentence_game_section || 'Build sentences from this section'}">
-    <span class="material-icons">dashboard</span>
-    <span>${t.sentences || 'Sentences'}</span>
-</button>
+                <button class="btn-sentence-game-small" onclick="App.initSentenceGame('${documentId}', ${index})" title="${t.sentence_game_section || 'Build sentences from this section'}">
+                    <span class="material-icons">dashboard</span>
+                    <span>${t.sentences || 'Sentences'}</span>
+                </button>
 
                 ` : ''}
                 
@@ -827,33 +829,16 @@ const App = {
                                 <span>${label}</span>
                             </button>`;
             }).join('')}
-                ` : ''}
+                    ` : ''}
             </div>
         </div>
 
-    </summary>
-    <div class="section-card">
         ${this.renderBlocks(section.blocks, index)}
+
     </div>
-</details>`;
+    </details>`;
         });
-        /*
-                // Section level flashcard and quiz commented out for small data sets
-                this.state.currentDocument.sections.forEach((section, index) => {
-                    const heading = section.heading[this.state.lang] ||
-                        section.heading.en ||
-                        'Untitled Section';
-        
-                    html += `<details class="section-details" open>
-            <summary>
-                <span class="section-title-text" lang="${this.state.lang}" dir="${currentDir}">${this.escapeHtml(heading)}</span>
-            </summary>
-            <div class="section-card">
-                ${this.renderBlocks(section.blocks, index)}
-            </div>
-        </details>`;
-                });
-        */
+
         html += `</div>`;
         container.innerHTML = html;
     },

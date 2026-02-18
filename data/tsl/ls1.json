@@ -1,0 +1,481 @@
+{
+    "documentId": "ls1",
+    "sections": [
+        {
+            "heading": {
+                "en": "Greeting",
+                "fa": "احوالپرسی",
+                "th": "การทักทาย"
+            },
+            "activities": [ "multipleChoiceWord", "multipleChoiceSentence" ],
+            "blocks": [
+                {
+                    "type": "words",
+                    "data": [
+                        {
+                            "word": "สวัสดี",
+                            "translations": {
+                                "en": "Hi",
+                                "fa": "سلام"
+                            }
+                        },
+                        {
+                            "word": "ขอบคุณ",
+                            "translations": {
+                                "en": "Thank you",
+                                "fa": "متشکرم"
+                            }
+                        },
+                        {
+                            "word": "ไม่เป็นไร",
+                            "translations": {
+                                "en": "It's fine",
+                                "fa": "بیخیال"
+                            }
+                        },
+                        {
+                            "word": "ขอโทษ",
+                            "translations": {
+                                "en": "Sorry",
+                                "fa": "ببخشید"
+                            }
+                        },
+                        {
+                            "word": "ยินดีทีได้รู้จัก",
+                            "translations": {
+                                "en": "Nice to meet you",
+                                "fa": "از آشنایی با شما خوشبختم."
+                            }
+                        },
+                        {
+                            "word": "แล้วคุณล่ะ",
+                            "translations": {
+                                "en": "How about you?”",
+                                "fa": "و شما؟"
+                            }
+                        },
+                        {
+                            "word": "สวัสดีครับ",
+                            "translations": {
+                                "en": "Hello",
+                                "fa": "سلام"
+                            }
+                        },
+                        {
+                            "word": "สวัสดีค่ะ",
+                            "translations": {
+                                "en": "Quote",
+                                "fa": "سلام"
+                            }
+                        },
+                        {
+                            "word": "ครับ",
+                            "translations": {
+                                "en": "OK",
+                                "fa": "بله"
+                            }
+                        },
+                        {
+                            "word": "ค่ะ",
+                            "translations": {
+                                "en": "Thank you",
+                                "fa": "بله"
+                            }
+                        },
+                        {
+                            "word": "คะ",
+                            "translations": {
+                                "en": "Ka",
+                                "fa": "بله"
+                            }
+                        },
+                        {
+                            "word": "ผม",
+                            "translations": {
+                                "en": "Hair",
+                                "fa": "من:"
+                            }
+                        },
+                        {
+                            "word": "ฉัน",
+                            "translations": {
+                                "en": "Me",
+                                "fa": "من"
+                            }
+                        },
+                        {
+                            "word": "คุณ",
+                            "translations": {
+                                "en": "You",
+                                "fa": "شما:"
+                            }
+                        },
+                        {
+                            "word": "เขา",
+                            "translations": {
+                                "en": "He, She",
+                                "fa": "او"
+                            }
+                        },
+                        {
+                            "word": "พวกเรา",
+                            "translations": {
+                                "en": "Us",
+                                "fa": "ما"
+                            }
+                        },
+                        {
+                            "word": "พวกเขา",
+                            "translations": {
+                                "en": "They",
+                                "fa": "آنها"
+                            }
+                        },
+                        {
+                            "word": "ของ",
+                            "translations": {
+                                "en": "of",
+                                "fa": "از"
+                            }
+                        },
+                        {
+                            "word": "ของผม",
+                            "translations": {
+                                "en": "My",
+                                "fa": "مال من"
+                            }
+                        },
+                        {
+                            "word": "ของฉัน",
+                            "translations": {
+                                "en": "My",
+                                "fa": "من"
+                            }
+                        },
+                        {
+                            "word": "ของคุณ",
+                            "translations": {
+                                "en": "Your",
+                                "fa": "مال تو"
+                            }
+                        },
+                        {
+                            "word": "ของเขา",
+                            "translations": {
+                                "en": "his",
+                                "fa": "او"
+                            }
+                        },
+                        {
+                            "word": "ของพวกเรา",
+                            "translations": {
+                                "en": "Ours",
+                                "fa": "مال ما"
+                            }
+                        },
+                        {
+                            "word": "ของพวกเขา",
+                            "translations": {
+                                "en": "Your",
+                                "fa": "مال آنها"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "paragraph",
+                    "elements": [
+                        {
+                            "type": "sentence",
+                            "source": "คุณชืออะไรครับ/ค่ะ",
+                            "words": [
+                                {
+                                    "word": "คุณ",
+                                    "translations": {
+                                        "en": "You",
+                                        "fa": "شما:"
+                                    }
+                                },
+                                {
+                                    "word": "ชือ",
+                                    "translations": {
+                                        "en": "Name",
+                                        "fa": "نام"
+                                    }
+                                },
+                                {
+                                    "word": "อะไร",
+                                    "translations": {
+                                        "en": "WHAT",
+                                        "fa": "چه:"
+                                    }
+                                },
+                                {
+                                    "word": "ครับ/ค่ะ",
+                                    "translations": {
+                                        "en": "Yes.",
+                                        "fa": "بله/باشه."
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "What is your name?",
+                                "fa": "اسم شما چیست؟"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ผม/ฉันชือ...ครับ/ค่ะ",
+                            "words": [
+                                {
+                                    "word": "ผม/ฉัน",
+                                    "translations": {
+                                        "en": "Hair",
+                                        "fa": "من"
+                                    }
+                                },
+                                {
+                                    "word": "ชือ",
+                                    "translations": {
+                                        "en": "Name",
+                                        "fa": "نام"
+                                    }
+                                },
+                                {
+                                    "word": "...",
+                                    "translations": {
+                                        "en": "...",
+                                        "fa": "..."
+                                    }
+                                },
+                                {
+                                    "word": "ครับ/ค่ะ",
+                                    "translations": {
+                                        "en": "Yes.",
+                                        "fa": "بله/باشه."
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Yes, my name is... Yes",
+                                "fa": "اسم من ..."
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "จอห์น: สวัสดี ครับ",
+                            "words": [
+                                {
+                                    "word": "จอห์น:",
+                                    "translations": {
+                                        "en": "John",
+                                        "fa": "جان:"
+                                    }
+                                },
+                                {
+                                    "word": "สวัสดี",
+                                    "translations": {
+                                        "en": "Hi",
+                                        "fa": "سلام"
+                                    }
+                                },
+                                {
+                                    "word": "ครับ",
+                                    "translations": {
+                                        "en": "OK",
+                                        "fa": "بله"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "John: Hi.",
+                                "fa": "جان: سلام."
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "แอน: สวัสดี ค่ะ",
+                            "words": [
+                                {
+                                    "word": "แอน:",
+                                    "translations": {
+                                        "en": "Ann:",
+                                        "fa": "آن:"
+                                    }
+                                },
+                                {
+                                    "word": "สวัสดี",
+                                    "translations": {
+                                        "en": "Hi",
+                                        "fa": "سلام"
+                                    }
+                                },
+                                {
+                                    "word": "ค่ะ",
+                                    "translations": {
+                                        "en": "Thank you.",
+                                        "fa": "بله"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "AN: Hi.",
+                                "fa": "آن: سلام."
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "จอห์น: คุณ ชือ อะไร ครับ",
+                            "words": [
+                                {
+                                    "word": "จอห์น:",
+                                    "translations": {
+                                        "en": "John",
+                                        "fa": "جان:"
+                                    }
+                                },
+                                {
+                                    "word": "คุณ",
+                                    "translations": {
+                                        "en": "You",
+                                        "fa": "شما:"
+                                    }
+                                },
+                                {
+                                    "word": "ชือ",
+                                    "translations": {
+                                        "en": "Name",
+                                        "fa": "نام"
+                                    }
+                                },
+                                {
+                                    "word": "อะไร",
+                                    "translations": {
+                                        "en": "WHAT",
+                                        "fa": "چه:"
+                                    }
+                                },
+                                {
+                                    "word": "ครับ",
+                                    "translations": {
+                                        "en": "OK",
+                                        "fa": "بله"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "John: What's your name?",
+                                "fa": "جان: اسمت چیه؟"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "แอน: ฉัน ชือ แอน ค่ะ แล้วคุณล่ะ ค่ะ",
+                            "words": [
+                                {
+                                    "word": "แอน:",
+                                    "translations": {
+                                        "en": "Ann:",
+                                        "fa": "آن:"
+                                    }
+                                },
+                                {
+                                    "word": "ฉัน",
+                                    "translations": {
+                                        "en": "Me",
+                                        "fa": "من"
+                                    }
+                                },
+                                {
+                                    "word": "ชือ",
+                                    "translations": {
+                                        "en": "Name",
+                                        "fa": "نام"
+                                    }
+                                },
+                                {
+                                    "word": "แอน",
+                                    "translations": {
+                                        "en": "Ann",
+                                        "fa": "آن"
+                                    }
+                                },
+                                {
+                                    "word": "ค่ะ",
+                                    "translations": {
+                                        "en": "Thank you.",
+                                        "fa": "بله"
+                                    }
+                                },
+                                {
+                                    "word": "แล้วคุณล่ะ",
+                                    "translations": {
+                                        "en": "How about you guys?”",
+                                        "fa": "و شما؟"
+                                    }
+                                },
+                                {
+                                    "word": "ค่ะ",
+                                    "translations": {
+                                        "en": "Thank you.",
+                                        "fa": "بله"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "AN: My name is Anne, and how about you?",
+                                "fa": "آن: اسم من آن است. شما چطور؟"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "จอห์น: ผม ชือ จอห์น ครับ",
+                            "words": [
+                                {
+                                    "word": "จอห์น:",
+                                    "translations": {
+                                        "en": "John",
+                                        "fa": "جان:"
+                                    }
+                                },
+                                {
+                                    "word": "ผม",
+                                    "translations": {
+                                        "en": "Hair",
+                                        "fa": "من:"
+                                    }
+                                },
+                                {
+                                    "word": "ชือ",
+                                    "translations": {
+                                        "en": "Name",
+                                        "fa": "نام"
+                                    }
+                                },
+                                {
+                                    "word": "จอห์น",
+                                    "translations": {
+                                        "en": "John",
+                                        "fa": "جان"
+                                    }
+                                },
+                                {
+                                    "word": "ครับ",
+                                    "translations": {
+                                        "en": "OK",
+                                        "fa": "بله"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "John: My name is John.",
+                                "fa": "جان: اسم من جان است."
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
+

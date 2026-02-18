@@ -1,0 +1,155 @@
+Restoring functionality for the new version and fixing one issue at a time.
+
+
+
+
+http://127.0.0.1:8080/#quiz/test_all_features/multipleChoiceWord
+
+Most of the Quiz styles have been reinstated except for 
+the answer button in dark mode have black text on dark blue background.
+
+You will now suggest a snippet CSS change again! 
+And I am not sure what else is broken in the same way.
+
+But, the worrying part is why has the original CSS styling that took so long 
+to perfect just disappear?  
+
+Would it help if I uploaded the version 1 of style-v1.css and app-v1.js so 
+that the current versions can be validated?
+
+
+Much time is being spent on finding CSS snippets that often already exists! 
+I can see further polluted code with unnecessary !importnat ...
+This simple return of an X to the quiz form has taken over 3 hours! 
+and we have lost the original context and the original planned changes.
+
+The data model is also much more complex to generate and on balance 
+not worth the additional functionality.
+
+There is 4284 lines of code in app.js version 1 and the new version has 2550 
+lines of code ?!! 
+
+I can not reconcile this with the suggested snippet changes.
+
+
+
+
+
+
+
+
+
+
+Renders:
+1. The document title from the manifest.json file which for this example is: 
+Complete Feature Test
+
+2. Renders meta-data styled in badges which in this case are:
+advanced v2.0.0 test comprehensive all-features grammar practice
+
+The specific changes:
+
+1. Place a standard arrow for opening a details panel before the document title.
+Click event on the arrow should open a panel under the title to reveal the 
+document description from the manifest.json 
+Below the description, insert a row with the buttons for:
+Words, Sentences, Game and Quiz
+(this is the same as section controls except the data is for the whole document)
+
+2. Delete the meta-data badges entirely.
+
+
+The information icon i does hide/reveal the information panel but the icon 
+has been placed incorrectly before the grammar rule and not the heading.
+
+Again, the idea is to place an inline clickable icon before the document title,
+(the title for this document is, Complete Feature Test ) and similarly before the data
+section 
+
+
+ Testing:
+http://127.0.0.1:8080/#doc/test_all_features
+
+This page has too much meta-data and options visible and needs a redesign.
+
+The overall idea is to place an inline clickable icon before the document title 
+(the title for this document is, Complete Feature Test )
+
+Similarly, place an inline clickable icon before the sections heading 
+(the section headings in this example are: )
+
+
+
+
+
+For Fix 4: Fix the startFlashcards function (it's currently causing a loop)
+The function has no logic! please provide the code.
+
+startFlashcards(documentId, sectionIndex, type) {
+    console.log('startFlashcards called', { documentId, sectionIndex, type });
+    console.log('currentDocument:', this.state.currentDocument);
+    
+    // REMOVE THIS LINE - it causes a loop:
+    // location.hash = `flashcard/${documentId}/${sectionIndex}/${type}`;
+    
+    // The actual flashcard start logic should be here
+    // This function should be called after the document is loaded
+},
+
+
+
+
+
+
+
+
+
+
+
+Testing: http://127.0.0.1:8080/#doc/test_all_features
+
+1. Bug Remains unchanged! - The overlay Recommended: Study, pops up and disappears quickly. 
+It should remain visible until the user closes the pop out page.
+
+2. the Gear icon is now visible but it does not load the settings overlay page!
+
+3. Bug Remains unchanged! The flashcard Words loads:
+http://127.0.0.1:8080/#flashcard/test_all_features/null/word
+
+but it is a blank page.  Same bug remains!
+
+4. Bug Remains unchanged! The flashcard Sentences loads:
+http://127.0.0.1:8080/#flashcard/test_all_features/null/sentence
+
+but it is a blank page.
+
+5. Bug Remains unchanged! The Game click event loads:
+http://127.0.0.1:8080/#sentence-game/test_all_features/null
+
+but it is a blank page. Same bug remains!
+
+It has been a very long session. I need to take a break!
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

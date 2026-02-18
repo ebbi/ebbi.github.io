@@ -1,6 +1,30 @@
 {
     "learningObjects": [
         {
+            "id": "tsl",
+            "title": {
+                "en": "TSL Learning Material",
+                "fa": "مطالب آموزشی TSL",
+                "th": "สื่อการเรียนรู้ TSL"
+            },
+            "documents": [
+                {
+                    "id": "ls1",
+                    "title": {
+                        "en": "Listening and Speaking 1",
+                        "fa": "گوش دادن و صحبت کردن ۱",
+                        "th": "การฟังและการพูด ๑"
+                    },
+                    "sourceLang": "th",
+                    "targetLangs": [ "en", "fa" ],
+                    "filePath": "data/tsl/ls1.json",
+                    "status": "published",
+                    "level": "basic",
+                    "activities": [ "multipleChoiceWord", "multipleChoiceSentence" ]
+                }
+            ]
+        },
+        {
             "id": "thai_grammar",
             "title": {
                 "en": "Core Thai Grammar Patterns",
@@ -787,30 +811,6 @@
                     "filePath": "data/thai500/hobbies.json",
                     "status": "published",
                     "level": "intermediate",
-                    "activities": [ "multipleChoiceWord", "multipleChoiceSentence" ]
-                }
-            ]
-        },
-        {
-            "id": "tsl",
-            "title": {
-                "en": "TSL Learning Material",
-                "fa": "مطالب آموزشی TSL",
-                "th": "สื่อการเรียนรู้ TSL"
-            },
-            "documents": [
-                {
-                    "id": "ls4",
-                    "title": {
-                        "en": "Listening and Speaking 4",
-                        "fa": "گوش دادن و صحبت کردن ۴",
-                        "th": "การฟังและการพูด ๔"
-                    },
-                    "sourceLang": "th",
-                    "targetLangs": [ "en", "fa" ],
-                    "filePath": "data/tsl/ls4.json",
-                    "status": "published",
-                    "level": "basic",
                     "activities": [ "multipleChoiceWord", "multipleChoiceSentence" ]
                 }
             ]

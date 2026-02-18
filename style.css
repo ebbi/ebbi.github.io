@@ -162,6 +162,7 @@ h6 {
     margin: 0;
     padding: 5px;
 }
+
 .loading-spinner {
     display: inline-block;
     width: 40px;
@@ -177,6 +178,7 @@ h6 {
         transform: rotate(360deg);
     }
 }
+
 /* ============================================================================
    MEDIA PLAYER
    ============================================================================ */
@@ -301,14 +303,16 @@ h6 {
 }
 
 .section-details summary {
-    padding: 15px;
     font-weight: bold;
     cursor: pointer;
+    /*
+    padding: 15px;
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
     flex-wrap: wrap;
     gap: 12px;
+    */
 }
 
 .section-title-text {
@@ -401,6 +405,7 @@ h6 {
 /* Section level controls - 4 buttons in one container */
 .section-controls-wrapper {
     width: 100%;
+    margin-bottom: 1rem;
 }
 
 .section-all-controls {
@@ -474,10 +479,11 @@ h6 {
     background-color: rgba(255, 255, 255, 0.05);
 }
 
+/*
 .library-summary::-webkit-details-marker {
-    display: none;
+    display: none; 
 }
-
+*/
 .library-summary .material-icons {
     font-size: 20px;
     transition: transform 0.2s;
