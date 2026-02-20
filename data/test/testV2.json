@@ -1,0 +1,666 @@
+{
+    "documentId": "testV2",
+    "metadata": {
+        "version": "2.0.0",
+        "created": "2026-02-20T10:00:00Z",
+        "updated": "2026-02-20T10:07:44.210Z",
+        "authors": [
+            "test_author"
+        ],
+        "reviewers": [
+            "test_reviewer"
+        ],
+        "difficulty": 2,
+        "prerequisites": [
+            "thai-basics-1"
+        ],
+        "tags": [
+            "test",
+            "permutations",
+            "comprehensive"
+        ]
+    },
+    "vocabulary": {
+        "สวัสดี": {
+            "translations": {
+                "en": "hello",
+                "fa": "سلام"
+            }
+        },
+        "ครับ": {
+            "translations": {
+                "en": "polite particle (male)",
+                "fa": "ذره مؤدب (مرد)"
+            },
+            "blankable": true,
+            "alternatives": [
+                "ครับ",
+                "ค่ะ"
+            ]
+        },
+        "ค่ะ": {
+            "translations": {
+                "en": "polite particle (female)",
+                "fa": "ذره مؤدب (زن)"
+            },
+            "blankable": true,
+            "alternatives": [
+                "ครับ",
+                "ค่ะ"
+            ]
+        },
+        "ขอบคุณ": {
+            "translations": {
+                "en": "thank you",
+                "fa": "متشکرم"
+            }
+        },
+        "กิน": {
+            "translations": {
+                "en": "eat",
+                "fa": "خوردن"
+            }
+        },
+        "ดื่ม": {
+            "translations": {
+                "en": "drink",
+                "fa": "نوشیدن"
+            }
+        },
+        "น้ำ": {
+            "translations": {
+                "en": "water",
+                "fa": "آب"
+            }
+        },
+        "ข้าว": {
+            "translations": {
+                "en": "rice",
+                "fa": "برنج"
+            }
+        },
+        "ผม": {
+            "translations": {
+                "en": "I (male)",
+                "fa": "من (مرد)"
+            }
+        },
+        "คุณ": {
+            "translations": {
+                "en": "you",
+                "fa": "شما"
+            }
+        },
+        "ชื่อ": {
+            "translations": {
+                "en": "name",
+                "fa": "اسم"
+            }
+        },
+        "อะไร": {
+            "translations": {
+                "en": "what",
+                "fa": "چه"
+            }
+        },
+        "สบายดี": {
+            "translations": {
+                "en": "fine/well",
+                "fa": "خوب"
+            }
+        },
+        "ไหม": {
+            "translations": {
+                "en": "question particle",
+                "fa": "ذره سوال"
+            }
+        }
+    },
+    "activitySettings": {
+        "words": {
+            "types": [
+                "multipleChoiceWord",
+                "flashcardWord"
+            ]
+        },
+        "sentences": {
+            "inherit": true,
+            "types": [
+                "multipleChoiceWord",
+                "flashcardWord",
+                "multipleChoiceSentence",
+                "flashcardSentence",
+                "buildSentence"
+            ]
+        }
+    },
+    "sections": [
+        {
+            "sectionId": "testV2Section",
+            "heading": {
+                "en": "Test V2",
+                "fa": "احوالپرسی پایه با ذرات مؤدبانه",
+                "th": "การทักทายพื้นฐานด้วยคำลงท้ายแสดงความสุภาพ"
+            },
+            "content": [
+                {
+                    "type": "words",
+                    "activity": {
+                        "inherit": false
+                    },
+                    "wordIds": [
+                        "สวัสดี",
+                        "ครับ",
+                        "ค่ะ"
+                    ]
+                },
+                {
+                    "type": "words",
+                    "heading": {
+                        "en": "Basic Polite Particles",
+                        "fa": "ذرات مؤدبانه پایه",
+                        "th": "คำลงท้ายแสดงความสุภาพพื้นฐาน"
+                    },
+                    "activity": {
+                        "inherit": true
+                    },
+                    "wordIds": [
+                        "ครับ",
+                        "ค่ะ"
+                    ]
+                },
+                {
+                    "type": "words",
+                    "heading": {
+                        "en": "Common Greetings",
+                        "fa": "سلام های رایج",
+                        "th": "คำทักทายที่พบบ่อย"
+                    },
+                    "activity": {
+                        "inherit": false,
+                        "types": [
+                            "multipleChoiceWord"
+                        ]
+                    },
+                    "wordIds": [
+                        "สวัสดี",
+                        "ขอบคุณ"
+                    ]
+                },
+                {
+                    "type": "words",
+                    "heading": {
+                        "en": "Daily Verbs",
+                        "fa": "افعال روزانه",
+                        "th": "คำกริยาในชีวิตประจำวัน"
+                    },
+                    "activity": {
+                        "inherit": true
+                    },
+                    "wordIds": [
+                        "กิน",
+                        "ดื่ม",
+                        "นอน",
+                        "เดิน",
+                        "วิ่ง",
+                        "พูด",
+                        "ฟัง",
+                        "อ่าน",
+                        "เขียน",
+                        "ดู",
+                        "ซื้อ",
+                        "ขาย"
+                    ]
+                },
+                {
+                    "type": "words",
+                    "heading": {
+                        "en": "Food Vocabulary",
+                        "fa": "واژگان غذا",
+                        "th": "คำศัพท์อาหาร"
+                    },
+                    "activity": {
+                        "inherit": true,
+                        "add": [
+                            "buildSentence"
+                        ],
+                        "remove": [
+                            "flashcardWord"
+                        ]
+                    },
+                    "wordIds": [
+                        "น้ำ",
+                        "ข้าว",
+                        "ผลไม้",
+                        "ผัก",
+                        "เนื้อ"
+                    ]
+                },
+                {
+                    "type": "paragraph",
+                    "heading": {
+                        "en": "Basic Polite Particles",
+                        "fa": "ذرات مؤدبانه پایه",
+                        "th": "คำลงท้ายแสดงความสุภาพพื้นฐาน"
+                    },
+                    "activity": {
+                        "inherit": false
+                    },
+                    "sentences": [
+                        {
+                            "type": "sentence",
+                            "source": "สวัสดีครับ",
+                            "wordIds": [
+                                "สวัสดี",
+                                "ครับ"
+                            ],
+                            "translations": {
+                                "en": "Hello (male speaker)",
+                                "fa": "سلام (گوینده مرد)"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "paragraph",
+                    "heading": {
+                        "en": "Basic Greetings",
+                        "fa": "سلام های اولیه",
+                        "th": "การทักทายพื้นฐาน"
+                    },
+                    "activity": {
+                        "inherit": true
+                    },
+                    "sentences": [
+                        {
+                            "type": "sentence",
+                            "source": "สวัสดีครับ",
+                            "wordIds": [
+                                "สวัสดี",
+                                "ครับ"
+                            ],
+                            "translations": {
+                                "en": "Hello (male speaker)",
+                                "fa": "سلام (گوینده مرد)"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "สวัสดีค่ะ",
+                            "wordIds": [
+                                "สวัสดี",
+                                "ค่ะ"
+                            ],
+                            "translations": {
+                                "en": "Hello (female speaker)",
+                                "fa": "سلام (گوینده زن)"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "paragraph",
+                    "heading": {
+                        "en": "Grammar Focus: Polite Particles",
+                        "fa": "تمرکز گرامر: ذرات مؤدبانه",
+                        "th": "เน้นไวยากรณ์: คำลงท้ายแสดงความสุภาพ"
+                    },
+                    "grammar": {
+                        "pattern": "Sentence + ครับ (male) / ค่ะ (female)"
+                    },
+                    "activity": {
+                        "inherit": true
+                    },
+                    "sentences": [
+                        {
+                            "type": "sentence",
+                            "source": "สวัสดีครับ",
+                            "wordIds": [
+                                "สวัสดี",
+                                "ครับ"
+                            ],
+                            "translations": {
+                                "en": "Hello (male)",
+                                "fa": "سلام (مرد)"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "paragraph",
+                    "heading": {
+                        "en": "Grammar: Sentence Structure",
+                        "fa": "گرامر: ساختار جمله",
+                        "th": "ไวยากรณ์: โครงสร้างประโยค"
+                    },
+                    "grammar": {
+                        "pattern": "Subject + Verb + Object",
+                        "examples": [
+                            {
+                                "sentenceSource": "ผมกินข้าว",
+                                "translations": {
+                                    "en": "I eat rice",
+                                    "fa": "من برنج می‌خورم"
+                                }
+                            },
+                            {
+                                "sentenceSource": "คุณดื่มน้ำ",
+                                "translations": {
+                                    "en": "You drink water",
+                                    "fa": "شما آب می‌نوشید"
+                                }
+                            }
+                        ]
+                    },
+                    "activity": {
+                        "inherit": true
+                    },
+                    "sentences": [
+                        {
+                            "type": "sentence",
+                            "source": "ผมกินข้าว",
+                            "wordIds": [
+                                "ผม",
+                                "กิน",
+                                "ข้าว"
+                            ],
+                            "translations": {
+                                "en": "I eat rice",
+                                "fa": "من برنج می‌خورم"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "คุณดื่มน้ำ",
+                            "wordIds": [
+                                "คุณ",
+                                "ดื่ม",
+                                "น้ำ"
+                            ],
+                            "translations": {
+                                "en": "You drink water",
+                                "fa": "شما آب می‌نوشید"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "paragraph",
+                    "heading": {
+                        "en": "Grammar Explanation",
+                        "fa": "توضیح گرامر",
+                        "th": "คำอธิบายไวยากรณ์"
+                    },
+                    "grammar": {
+                        "pattern": "Sentence + ครับ/ค่ะ",
+                        "explanation": {
+                            "en": "Polite particles are added at the end of sentences to show respect. Men use ครับ, women use ค่ะ.",
+                            "fa": "ذرات مؤدبانه در پایان جملات اضافه می‌شوند تا احترام نشان دهند. مردان از ครับ و زنان از ค่ะ استفاده می‌کنند.",
+                            "th": "คำลงท้ายแสดงความสุภาพใช้เติมท้ายประโยคเพื่อแสดงความเคารพ ผู้ชายใช้ ครับ ผู้หญิงใช้ ค่ะ"
+                        }
+                    },
+                    "activity": {
+                        "inherit": true
+                    },
+                    "sentences": [
+                        {
+                            "type": "sentence",
+                            "source": "ขอบคุณครับ",
+                            "wordIds": [
+                                "ขอบคุณ",
+                                "ครับ"
+                            ],
+                            "translations": {
+                                "en": "Thank you (male)",
+                                "fa": "متشکرم (مرد)"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ขอบคุณค่ะ",
+                            "wordIds": [
+                                "ขอบคุณ",
+                                "ค่ะ"
+                            ],
+                            "translations": {
+                                "en": "Thank you (female)",
+                                "fa": "متشکرم (زن)"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "paragraph",
+                    "heading": {
+                        "en": "Complete Grammar Reference",
+                        "fa": "مرجع کامل گرامر",
+                        "th": "อ้างอิงไวยากรณ์ฉบับสมบูรณ์"
+                    },
+                    "grammar": {
+                        "pattern": "Sentence + ครับ (male) / ค่ะ (female)",
+                        "explanation": {
+                            "en": "Polite particles are essential in Thai. They don't change the meaning, only add politeness.",
+                            "fa": "ذرات مؤدبانه در زبان تایلندی ضروری هستند. آنها معنی جمله را تغییر نمی‌دهند، فقط ادب را اضافه می‌کنند.",
+                            "th": "คำลงท้ายแสดงความสุภาพมีความจำเป็นในภาษาไทย ไม่ได้เปลี่ยนความหมาย แค่เพิ่มความสุภาพ"
+                        },
+                        "examples": [
+                            {
+                                "sentenceSource": "สวัสดีครับ",
+                                "translations": {
+                                    "en": "Hello (male)",
+                                    "fa": "سلام (مرد)"
+                                }
+                            },
+                            {
+                                "sentenceSource": "สวัสดีค่ะ",
+                                "translations": {
+                                    "en": "Hello (female)",
+                                    "fa": "سلام (زن)"
+                                }
+                            },
+                            {
+                                "sentenceSource": "ขอบคุณครับ",
+                                "translations": {
+                                    "en": "Thank you (male)",
+                                    "fa": "متشکرم (مرد)"
+                                }
+                            }
+                        ]
+                    },
+                    "activity": {
+                        "inherit": true
+                    },
+                    "sentences": [
+                        {
+                            "type": "sentence",
+                            "source": "สวัสดีครับ",
+                            "wordIds": [
+                                "สวัสดี",
+                                "ครับ"
+                            ],
+                            "translations": {
+                                "en": "Hello (male)",
+                                "fa": "سلام (مرد)"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "สวัสดีค่ะ",
+                            "wordIds": [
+                                "สวัสดี",
+                                "ค่ะ"
+                            ],
+                            "translations": {
+                                "en": "Hello (female)",
+                                "fa": "سلام (زن)"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "paragraph",
+                    "heading": {
+                        "en": "Conversation Practice",
+                        "fa": "تمرین مکالمه",
+                        "th": "ฝึกสนทนา"
+                    },
+                    "activity": {
+                        "inherit": false,
+                        "types": [
+                            "buildSentence",
+                            "flashcardSentence"
+                        ]
+                    },
+                    "sentences": [
+                        {
+                            "type": "sentence",
+                            "source": "คุณชื่ออะไร",
+                            "wordIds": [
+                                "คุณ",
+                                "ชื่อ",
+                                "อะไร"
+                            ],
+                            "translations": {
+                                "en": "What is your name?",
+                                "fa": "اسم شما چیست؟"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ผมชื่อจอห์น",
+                            "wordIds": [
+                                "ผม",
+                                "ชื่อ",
+                                "จอห์น"
+                            ],
+                            "translations": {
+                                "en": "My name is John",
+                                "fa": "اسم من جان است"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "paragraph",
+                    "heading": {
+                        "en": "Advanced Sentences",
+                        "fa": "جملات پیشرفته",
+                        "th": "ประโยคขั้นสูง"
+                    },
+                    "activity": {
+                        "inherit": true,
+                        "add": [
+                            "multipleChoiceSentence"
+                        ],
+                        "remove": [
+                            "flashcardSentence"
+                        ]
+                    },
+                    "sentences": [
+                        {
+                            "type": "sentence",
+                            "source": "คุณสบายดีไหมครับ",
+                            "wordIds": [
+                                "คุณ",
+                                "สบายดี",
+                                "ไหม",
+                                "ครับ"
+                            ],
+                            "translations": {
+                                "en": "How are you? (male asking)",
+                                "fa": "حال شما چطور است؟ (مرد می‌پرسد)"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "paragraph",
+                    "heading": {
+                        "en": "Daily Conversation",
+                        "fa": "مکالمه روزانه",
+                        "th": "บทสนทนาในชีวิตประจำวัน"
+                    },
+                    "grammar": {
+                        "pattern": "Question + Response patterns"
+                    },
+                    "activity": {
+                        "inherit": true
+                    },
+                    "sentences": [
+                        {
+                            "type": "sentence",
+                            "source": "กินข้าวหรือยัง",
+                            "wordIds": [
+                                "กิน",
+                                "ข้าว",
+                                "หรือ",
+                                "ยัง"
+                            ],
+                            "translations": {
+                                "en": "Have you eaten yet?",
+                                "fa": "غذا خورده‌ای؟"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "กินแล้วครับ",
+                            "wordIds": [
+                                "กิน",
+                                "แล้ว",
+                                "ครับ"
+                            ],
+                            "translations": {
+                                "en": "Yes, I have eaten (male)",
+                                "fa": "بله، خورده‌ام (مرد)"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ไปทำงานไหม",
+                            "wordIds": [
+                                "ไป",
+                                "ทำงาน",
+                                "ไหม"
+                            ],
+                            "translations": {
+                                "en": "Going to work?",
+                                "fa": "می‌روی سر کار؟"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "words",
+                    "activity": {
+                        "inherit": true
+                    },
+                    "wordIds": [ ]
+                },
+                {
+                    "type": "paragraph",
+                    "heading": {
+                        "en": "Single Word Sentence",
+                        "fa": "جمله تک کلمه",
+                        "th": "ประโยคคำเดียว"
+                    },
+                    "activity": {
+                        "inherit": true
+                    },
+                    "sentences": [
+                        {
+                            "type": "sentence",
+                            "source": "ครับ",
+                            "wordIds": [
+                                "ครับ"
+                            ],
+                            "translations": {
+                                "en": "Yes (polite male)",
+                                "fa": "بله (مرد مؤدب)"
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

@@ -1,23 +1,31 @@
-Testing this input:
+What is the best approach to update the existing App that used a previous JSON model to 
+be updated to the new version of the JSON data?
 
-สวัสดี ขอบคุณ ไม่เป็นไร ขอโทษ ยินดีทีได้รู้จัก แล้วคุณล่ะ
+Here are the main changes:
 
+Version 2 adds JSON objects:
+metadata - currently not used in the App
+vocabulary - allows for words array to use an id to the single copy of the word in vocabulary.
 
+"blocks" in version 1 is renamed "content" in version 2
 
-bugs:
+Version 2 standardizes JSON grammar definition with 
+"pattern" and "example" (example was "note" in version 1)
+The grammar book icon should be rendered inline before the heading.
 
-The sentence input is space separated to identify individual words, 
-but the outout should strip out the sentences
+Version 1 "type": "grammar-intro" has been deprecated and is not used.
 
-currently, the output does not strip out the extra spaces.
-"source": "คุณ สบายดี ไหม"
+"activities" in version 1 has been remodelled in version 2.
+In version 2, "activitySettings" is defined once and 
+any section types, word or paragraph can now have: 
+"activity": { "inherit": true } to inherit the corresponding word or sentence activities in the "activitySettings"
+If the "activitySettings" also has "activity": { "inherit": true } then the activity is inherited at document level.
 
-The Preview window should have a Copy and Clear buttons.
+For "activity": { "inherit": true } in the content, "type": "words" uses the words from the "wordIds" array. 
+For "activity": { "inherit": true } in the content, "type": "paragraph" uses the words from the "wordIds" array and the "source" and "translations" sentences.
+For "activity": { "inherit": true } in "activitySettings" uses all the words and sentences in the entire document.
 
-The Cache vocabulary includes words and sentences, 
-only words should be cached to be merged into document vocabulary. 
-
-
+The activities buttons are displayed at the top (below any heading) of the section where they are defined.
 
 
 

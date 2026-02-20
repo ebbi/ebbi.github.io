@@ -1,0 +1,469 @@
+{
+    "documentId": "grammar_polite_particles",
+    "grammar": {
+        "pattern": "Sentence + ครับ (male) / ค่ะ (female)",
+        "explanation": {
+            "en": "Polite particles are added at the end of sentences to show respect. Men use ครับ, women use ค่ะ. They don't change the meaning, only the politeness level.",
+            "fa": "ذرات مؤدبانه در پایان جملات اضافه می‌شوند تا احترام نشان دهند. مردان از ครับ و زنان از ค่ะ استفاده می‌کنند. این ذرات معنی جمله را تغییر نمی‌دهند، فقط سطح ادب را افزایش می‌دهند.",
+            "th": "คำลงท้ายแสดงความสุภาพใช้เติมท้ายประโยคเพื่อแสดงความเคารพ ผู้ชายใช้ ครับ ผู้หญิงใช้ ค่ะ คำเหล่านี้ไม่ได้เปลี่ยนความหมายของประโยค แค่เพิ่มระดับความสุภาพ"
+        },
+        "usage": {
+            "en": "Use ครับ if you are male, ค่ะ if you are female. Use with anyone you want to show respect to, especially elders, strangers, and in formal situations.",
+            "fa": "اگر مرد هستید از ครับ استفاده کنید، اگر زن هستید از ค่ะ استفاده کنید. با هر کسی که می‌خواهید احترام نشان دهید استفاده کنید، به ویژه با بزرگترها، غریبه‌ها و در موقعیت‌های رسمی.",
+            "th": "ถ้าคุณเป็นผู้ชายใช้ ครับ ถ้าคุณเป็นผู้หญิงใช้ ค่ะ ใช้กับทุกคนที่คุณต้องการแสดงความเคารพ โดยเฉพาะผู้ใหญ่ คนแปลกหน้า และในสถานการณ์ที่เป็นทางการ"
+        }
+    },
+    "sections": [
+        {
+            "heading": {
+                "en": "Basic Greetings with Polite Particles",
+                "fa": "احوالپرسی پایه با ذرات مؤدبانه",
+                "th": "การทักทายพื้นฐานด้วยคำลงท้ายแสดงความสุภาพ"
+            },
+            "activities": [ "multipleChoiceWord", "multipleChoiceSentence" ],
+            "blocks": [
+                {
+                    "type": "grammar-intro",
+                    "content": {
+                        "en": "Let's start with the most common greetings. Notice how the polite particle changes based on the speaker's gender.",
+                        "fa": "بیایید با رایج‌ترین احوالپرسی‌ها شروع کنیم. توجه کنید که ذره مؤدبانه بر اساس جنسیت گوینده تغییر می‌کند.",
+                        "th": "มาเริ่มด้วยการทักทายที่พบบ่อยที่สุด สังเกตว่าคำลงท้ายแสดงความสุภาพเปลี่ยนไปตามเพศของผู้พูด"
+                    }
+                },
+                {
+                    "type": "paragraph",
+                    "elements": [
+                        {
+                            "type": "sentence",
+                            "source": "สวัสดีครับ",
+                            "grammar": {
+                                "pattern": "สวัสดี + ครับ",
+                                "note": {
+                                    "en": "Male speaker greeting",
+                                    "fa": "سلام گوینده مرد",
+                                    "th": "การทักทายของผู้พูดชาย"
+                                }
+                            },
+                            "words": [
+                                {
+                                    "word": "สวัสดี",
+                                    "translations": {
+                                        "en": "hello",
+                                        "fa": "سلام"
+                                    }
+                                },
+                                {
+                                    "word": "ครับ",
+                                    "translations": {
+                                        "en": "polite particle (male)",
+                                        "fa": "ذره مؤدب (مرد)"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Hello (male speaker)",
+                                "fa": "سلام (گوینده مرد)"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "สวัสดีค่ะ",
+                            "grammar": {
+                                "pattern": "สวัสดี + ค่ะ",
+                                "note": {
+                                    "en": "Female speaker greeting",
+                                    "fa": "سلام گوینده زن",
+                                    "th": "การทักทายของผู้พูดหญิง"
+                                }
+                            },
+                            "words": [
+                                {
+                                    "word": "สวัสดี",
+                                    "translations": {
+                                        "en": "hello",
+                                        "fa": "سلام"
+                                    }
+                                },
+                                {
+                                    "word": "ค่ะ",
+                                    "translations": {
+                                        "en": "polite particle (female)",
+                                        "fa": "ذره مؤدب (زن)"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Hello (female speaker)",
+                                "fa": "سلام (گوینده زن)"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "grammar-practice",
+                    "prompt": {
+                        "en": "Try saying hello as a male speaker:",
+                        "fa": "سعی کنید به عنوان یک گوینده مرد سلام کنید:",
+                        "th": "ลองทักทายในฐานะผู้พูดชาย:"
+                    },
+                    "correct": "สวัสดีครับ",
+                    "feedback": {
+                        "en": "Great! Remember: men use ครับ, women use ค่ะ",
+                        "fa": "عالی! به خاطر داشته باشید: مردان از ครับ استفاده می‌کنند، زنان از ค่ะ",
+                        "th": "เยี่ยม! จำไว้ว่า: ผู้ชายใช้ ครับ ผู้หญิงใช้ ค่ะ"
+                    }
+                }
+            ]
+        },
+        {
+            "heading": {
+                "en": "Statements with Polite Particles",
+                "fa": "جملات خبری با ذرات مؤدبانه",
+                "th": "ประโยคบอกเล่าด้วยคำลงท้ายแสดงความสุภาพ"
+            },
+            "activities": [ "multipleChoiceWord", "multipleChoiceSentence" ],
+            "blocks": [
+                {
+                    "type": "grammar-intro",
+                    "content": {
+                        "en": "Add polite particles to any statement to make it more courteous.",
+                        "fa": "ذرات مؤدبانه را به هر جمله خبری اضافه کنید تا مؤدبانه‌تر شود.",
+                        "th": "เติมคำลงท้ายแสดงความสุภาพลงท้ายประโยคบอกเล่าเพื่อทำให้สุภาพมากขึ้น"
+                    }
+                },
+                {
+                    "type": "paragraph",
+                    "elements": [
+                        {
+                            "type": "sentence",
+                            "source": "สบายดีครับ",
+                            "grammar": {
+                                "pattern": "สบายดี + ครับ",
+                                "note": {
+                                    "en": "Male speaker: I'm fine",
+                                    "fa": "گوینده مرد: من خوبم",
+                                    "th": "ผู้พูดชาย: ฉันสบายดี"
+                                }
+                            },
+                            "words": [
+                                {
+                                    "word": "สบายดี",
+                                    "translations": {
+                                        "en": "fine/well",
+                                        "fa": "خوب"
+                                    }
+                                },
+                                {
+                                    "word": "ครับ",
+                                    "translations": {
+                                        "en": "polite particle (male)",
+                                        "fa": "ذره مؤدب (مرد)"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "I'm fine (male speaker)",
+                                "fa": "من خوبم (گوینده مرد)"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "สบายดีค่ะ",
+                            "grammar": {
+                                "pattern": "สบายดี + ค่ะ",
+                                "note": {
+                                    "en": "Female speaker: I'm fine",
+                                    "fa": "گوینده زن: من خوبم",
+                                    "th": "ผู้พูดหญิง: ฉันสบายดี"
+                                }
+                            },
+                            "words": [
+                                {
+                                    "word": "สบายดี",
+                                    "translations": {
+                                        "en": "fine/well",
+                                        "fa": "خوب"
+                                    }
+                                },
+                                {
+                                    "word": "ค่ะ",
+                                    "translations": {
+                                        "en": "polite particle (female)",
+                                        "fa": "ذره مؤدب (زن)"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "I'm fine (female speaker)",
+                                "fa": "من خوبم (گوینده زن)"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ขอบคุณครับ",
+                            "grammar": {
+                                "pattern": "ขอบคุณ + ครับ",
+                                "note": {
+                                    "en": "Male speaker: Thank you",
+                                    "fa": "گوینده مرد: متشکرم",
+                                    "th": "ผู้พูดชาย: ขอบคุณ"
+                                }
+                            },
+                            "words": [
+                                {
+                                    "word": "ขอบคุณ",
+                                    "translations": {
+                                        "en": "thank you",
+                                        "fa": "متشکرم"
+                                    }
+                                },
+                                {
+                                    "word": "ครับ",
+                                    "translations": {
+                                        "en": "polite particle (male)",
+                                        "fa": "ذره مؤدب (مرد)"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Thank you (male speaker)",
+                                "fa": "متشکرم (گوینده مرد)"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ขอบคุณค่ะ",
+                            "grammar": {
+                                "pattern": "ขอบคุณ + ค่ะ",
+                                "note": {
+                                    "en": "Female speaker: Thank you",
+                                    "fa": "گوینده زن: متشکرم",
+                                    "th": "ผู้พูดหญิง: ขอบคุณ"
+                                }
+                            },
+                            "words": [
+                                {
+                                    "word": "ขอบคุณ",
+                                    "translations": {
+                                        "en": "thank you",
+                                        "fa": "متشکرم"
+                                    }
+                                },
+                                {
+                                    "word": "ค่ะ",
+                                    "translations": {
+                                        "en": "polite particle (female)",
+                                        "fa": "ذره مؤدب (زن)"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Thank you (female speaker)",
+                                "fa": "متشکرم (گوینده زن)"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "heading": {
+                "en": "Questions with Polite Particles",
+                "fa": "سوالات با ذرات مؤدبانه",
+                "th": "คำถามด้วยคำลงท้ายแสดงความสุภาพ"
+            },
+            "activities": [ "multipleChoiceWord", "multipleChoiceSentence" ],
+            "blocks": [
+                {
+                    "type": "grammar-intro",
+                    "content": {
+                        "en": "Questions also take polite particles. Notice how the particle comes after the question word.",
+                        "fa": "سوالات نیز ذرات مؤدبانه می‌گیرند. توجه کنید که ذره بعد از کلمه سوال می‌آید.",
+                        "th": "คำถามก็ใช้คำลงท้ายแสดงความสุภาพเช่นกัน สังเกตว่าคำลงท้ายอยู่หลังคำถาม"
+                    }
+                },
+                {
+                    "type": "paragraph",
+                    "elements": [
+                        {
+                            "type": "sentence",
+                            "source": "สบายดีไหมครับ",
+                            "grammar": {
+                                "pattern": "สบายดีไหม + ครับ",
+                                "note": {
+                                    "en": "Male speaker: How are you?",
+                                    "fa": "گوینده مرد: حالت چطوره؟",
+                                    "th": "ผู้พูดชาย: สบายดีไหม"
+                                }
+                            },
+                            "words": [
+                                {
+                                    "word": "สบายดี",
+                                    "translations": {
+                                        "en": "fine",
+                                        "fa": "خوب"
+                                    }
+                                },
+                                {
+                                    "word": "ไหม",
+                                    "translations": {
+                                        "en": "question particle",
+                                        "fa": "ذره سوالی"
+                                    }
+                                },
+                                {
+                                    "word": "ครับ",
+                                    "translations": {
+                                        "en": "polite particle (male)",
+                                        "fa": "ذره مؤدب (مرد)"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "How are you? (male speaker asking)",
+                                "fa": "حالت چطوره؟ (گوینده مرد)"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "สบายดีไหมคะ",
+                            "grammar": {
+                                "pattern": "สบายดีไหม + คะ",
+                                "note": {
+                                    "en": "Female speaker: How are you? (Note: คะ for questions, ค่ะ for statements)",
+                                    "fa": "گوینده زن: حالت چطوره؟ (توجه: คะ برای سوال، ค่ะ برای جمله خبری)",
+                                    "th": "ผู้พูดหญิง: สบายดีไหม (หมายเหตุ: คะ สำหรับคำถาม ค่ะ สำหรับประโยคบอกเล่า)"
+                                }
+                            },
+                            "words": [
+                                {
+                                    "word": "สบายดี",
+                                    "translations": {
+                                        "en": "fine",
+                                        "fa": "خوب"
+                                    }
+                                },
+                                {
+                                    "word": "ไหม",
+                                    "translations": {
+                                        "en": "question particle",
+                                        "fa": "ذره سوالی"
+                                    }
+                                },
+                                {
+                                    "word": "คะ",
+                                    "translations": {
+                                        "en": "polite question particle (female)",
+                                        "fa": "ذره مؤدب سوالی (زن)"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "How are you? (female speaker asking)",
+                                "fa": "حالت چطوره؟ (گوینده زن)"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ไปไหมครับ",
+                            "grammar": {
+                                "pattern": "ไปไหม + ครับ",
+                                "note": {
+                                    "en": "Male speaker: Shall we go?",
+                                    "fa": "گوینده مرد: بریم؟",
+                                    "th": "ผู้พูดชาย: ไปไหม"
+                                }
+                            },
+                            "words": [
+                                {
+                                    "word": "ไป",
+                                    "translations": {
+                                        "en": "go",
+                                        "fa": "رفتن"
+                                    }
+                                },
+                                {
+                                    "word": "ไหม",
+                                    "translations": {
+                                        "en": "question particle",
+                                        "fa": "ذره سوالی"
+                                    }
+                                },
+                                {
+                                    "word": "ครับ",
+                                    "translations": {
+                                        "en": "polite particle (male)",
+                                        "fa": "ذره مؤدب (مرد)"
+                                    }
+                                }
+                            ],
+                            "translations": {
+                                "en": "Shall we go? (male speaker)",
+                                "fa": "بریم؟ (گوینده مرد)"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "heading": {
+                "en": "Practice Exercise",
+                "fa": "تمرین",
+                "th": "แบบฝึกหัด"
+            },
+            "activities": [ "multipleChoiceWord", "multipleChoiceSentence" ],
+            "blocks": [
+                {
+                    "type": "words",
+                    "data": [
+                        {
+                            "word": "ครับ",
+                            "translations": {
+                                "en": "polite particle (male)",
+                                "fa": "ذره مؤدب (مرد)"
+                            }
+                        },
+                        {
+                            "word": "ค่ะ",
+                            "translations": {
+                                "en": "polite particle (female)",
+                                "fa": "ذره مؤدب (زن)"
+                            }
+                        },
+                        {
+                            "word": "คะ",
+                            "translations": {
+                                "en": "polite question particle (female)",
+                                "fa": "ذره مؤدب سوالی (زن)"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "grammar-challenge",
+                    "questions": [
+                        {
+                            "prompt": {
+                                "en": "If you are a male speaker, how do you say 'Thank you'?",
+                                "fa": "اگر گوینده مرد هستید، 'متشکرم' را چگونه می‌گویید؟",
+                                "th": "ถ้าคุณเป็นผู้พูดชาย จะพูดว่า 'ขอบคุณ' อย่างไร?"
+                            },
+                            "correct": "ขอบคุณครับ",
+                            "options": [ "ขอบคุณครับ", "ขอบคุณค่ะ", "ขอบคุณคะ" ]
+                        },
+                        {
+                            "prompt": {
+                                "en": "If you are a female speaker, how do you ask 'How are you?'?",
+                                "fa": "اگر گوینده زن هستید، 'حالت چطوره؟' را چگونه می‌پرسید؟",
+                                "th": "ถ้าคุณเป็นผู้พูดหญิง จะถามว่า 'สบายดีไหม' อย่างไร?"
+                            },
+                            "correct": "สบายดีไหมคะ",
+                            "options": [ "สบายดีไหมครับ", "สบายดีไหมคะ", "สบายดีไหมค่ะ" ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
