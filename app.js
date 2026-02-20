@@ -1094,7 +1094,7 @@ const App = {
      * Cycle through delay options
      */
     cycleDelay() {
-        const nextDelay = (this.state.media.delay % 5) + 1; // allow 1‑5 seconds
+        const nextDelay = (this.state.media.delay % 10) + 1; // allow 1‑10 seconds
         this.updateMediaParam('delay', nextDelay);
     },
 
@@ -4261,9 +4261,7 @@ ${unusedWords.map((word, index) => `
         return shuffled;
     }
 
-
-
 }; // End of App object
 
-// Kick‑off the SPA
+// initialize the SPA
 App.init();

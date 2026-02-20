@@ -1,17 +1,18 @@
-<!-- thai-json-generator-final-v3.html -->
+<!-- thai-json-generator-v2.html -->
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Thai Learning App - Exact JSON Structure Generator</title>
+    <title>Thai Learning App - v2 Data Model Generator</title>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <style>
         :root {
             --primary: #2563eb;
             --primary-light: #60a5fa;
             --primary-dark: #1d4ed8;
+            --secondary: #7c3aed;
             --bg: #ffffff;
             --text: #1a1a1a;
             --card: #f8fafc;
@@ -19,6 +20,7 @@
             --success: #059669;
             --warning: #d97706;
             --error: #dc2626;
+            --code-bg: #1e1e1e;
         }
 
         * {
@@ -36,33 +38,27 @@
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
         }
 
         .header {
-            background: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
             color: white;
             padding: 30px;
             border-radius: 16px;
             margin-bottom: 30px;
         }
 
-        .header small {
-            font-size: 0.9rem;
-            opacity: 0.9;
-        }
-
-        /* Row 1: Configuration and Languages side by side */
-        .config-row {
+        /* Two Column Layout */
+        .two-column {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 20px;
             margin-bottom: 20px;
         }
 
-        .config-panel,
-        .languages-panel {
+        .panel {
             background: var(--card);
             border: 1px solid var(--border);
             border-radius: 12px;
@@ -70,8 +66,76 @@
             height: fit-content;
         }
 
-        /* Row 2: Thai Input */
-        .input-row {
+        .panel h3 {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* Session Buttons */
+        .session-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .session-btn {
+            padding: 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            transition: all 0.2s;
+            text-align: left;
+        }
+
+        .session-btn .material-icons {
+            font-size: 32px;
+        }
+
+        .session-btn.init {
+            background: var(--secondary);
+            color: white;
+        }
+
+        .session-btn.load {
+            background: var(--primary);
+            color: white;
+        }
+
+        .session-btn:hover {
+            transform: translateY(-2px);
+            filter: brightness(1.1);
+        }
+
+        /* Import/Export */
+        .import-section textarea {
+            width: 100%;
+            min-height: 200px;
+            padding: 15px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            font-family: monospace;
+            font-size: 13px;
+            resize: vertical;
+            margin: 15px 0;
+        }
+
+        .file-input-wrapper {
+            display: flex;
+            gap: 10px;
+        }
+
+        .file-input-wrapper .btn {
+            flex: 1;
+        }
+
+        /* Vocabulary Status */
+        .vocab-status {
             background: var(--card);
             border: 1px solid var(--border);
             border-radius: 12px;
@@ -79,91 +143,76 @@
             margin-bottom: 20px;
         }
 
-        /* Row 3: Preview */
-        .preview-row {
+        .status-grid {
+            display: flex;
+            gap: 20px;
+            margin-top: 15px;
+        }
+
+        .status-item {
+            flex: 1;
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 15px;
+            text-align: center;
+        }
+
+        .status-number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--primary);
+        }
+
+        .status-label {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        /* Radio Selection */
+        .radio-group {
+            display: flex;
+            gap: 20px;
+            margin-top: 15px;
+        }
+
+        .radio-card {
+            flex: 1;
+            border: 2px solid var(--border);
+            border-radius: 8px;
+            padding: 20px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .radio-card.selected {
+            border-color: var(--primary);
+            background: rgba(37, 99, 235, 0.05);
+        }
+
+        .radio-card .material-icons {
+            font-size: 32px;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .radio-card h4 {
+            margin-bottom: 5px;
+        }
+
+        .radio-card small {
+            color: var(--text-secondary);
+        }
+
+        /* Thai Input */
+        .input-section {
             background: var(--card);
             border: 1px solid var(--border);
             border-radius: 12px;
             padding: 20px;
+            margin-bottom: 20px;
         }
 
-        .data-type-selector {
-            display: flex;
-            gap: 10px;
-            margin-top: 15px;
-        }
-
-        .type-btn {
-            flex: 1;
-            padding: 15px;
-            border: 2px solid var(--border);
-            border-radius: 8px;
-            background: var(--bg);
-            cursor: pointer;
-            text-align: center;
-            transition: all 0.2s;
-        }
-
-        .type-btn.active {
-            border-color: var(--primary);
-            background: rgba(37, 99, 235, 0.1);
-        }
-
-        .type-btn .material-icons {
-            font-size: 32px;
-            color: var(--primary);
-            margin-bottom: 5px;
-        }
-
-        .language-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 8px;
-            margin-top: 15px;
-        }
-
-        .lang-checkbox {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            padding: 8px;
-            background: var(--bg);
-            border: 1px solid var(--border);
-            border-radius: 6px;
-            cursor: pointer;
-        }
-
-        .lang-checkbox.selected {
-            background: var(--primary);
-            color: white;
-            border-color: var(--primary);
-        }
-
-        .lang-checkbox.disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-            background: var(--bg);
-        }
-
-        .instruction-box {
-            background: rgba(37, 99, 235, 0.05);
-            border-left: 4px solid var(--primary);
-            padding: 15px;
-            margin: 15px 0;
-            border-radius: 4px;
-            font-size: 0.95rem;
-        }
-
-        .instruction-box kbd {
-            background: var(--bg);
-            border: 1px solid var(--border);
-            border-radius: 4px;
-            padding: 2px 6px;
-            font-family: monospace;
-            font-size: 0.9rem;
-        }
-
-        /* Extra large font for Thai input */
         #thaiInput {
             width: 100%;
             min-height: 200px;
@@ -174,29 +223,139 @@
             font-size: 1.8rem;
             line-height: 2.2rem;
             background: var(--bg);
-            color: var(--text);
             resize: vertical;
+            margin: 15px 0;
         }
 
-        #thaiInput:focus {
-            border-color: var(--primary);
-            outline: none;
+        .input-stats {
+            display: flex;
+            gap: 20px;
+            margin: 15px 0;
+            flex-wrap: wrap;
         }
 
-        .stats-row {
+        .instruction-box {
+            background: rgba(37, 99, 235, 0.05);
+            border-left: 4px solid var(--primary);
+            padding: 15px;
+            border-radius: 4px;
+        }
+
+        /* Generate Button */
+        .generate-section {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .generate-button {
+            width: 100%;
+            padding: 20px;
+            background: var(--success);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            transition: all 0.2s;
+        }
+
+        .generate-button:hover {
+            filter: brightness(1.1);
+            transform: translateY(-2px);
+        }
+
+        .generated-blocks {
+            margin-top: 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 15px;
+        }
+
+        .block-card {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 15px;
+        }
+
+        .block-header {
             display: flex;
             justify-content: space-between;
-            margin: 15px 0;
-            padding: 10px;
-            background: var(--bg);
-            border-radius: 6px;
-            font-size: 0.95rem;
+            align-items: center;
+            margin-bottom: 10px;
+            padding-bottom: 5px;
+            border-bottom: 1px solid var(--border);
         }
 
-        .button-group {
+        .block-type {
+            background: var(--primary-light);
+            color: white;
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 0.8rem;
+        }
+
+        /* Preview */
+        .preview-section {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+        }
+
+        .preview-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .preview-tabs {
             display: flex;
             gap: 10px;
-            margin: 20px 0;
+            flex-wrap: wrap;
+        }
+
+        .preview-tab {
+            padding: 8px 16px;
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            cursor: pointer;
+            background: var(--bg);
+            white-space: nowrap;
+        }
+
+        .preview-tab.active {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        .json-viewer {
+            max-height: 500px;
+            overflow-y: auto;
+            background: var(--code-bg);
+            border-radius: 8px;
+            padding: 20px;
+            font-family: 'Monaco', monospace;
+            font-size: 13px;
+            color: #d4d4d4;
+            white-space: pre-wrap;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+            flex-wrap: wrap;
         }
 
         .btn {
@@ -207,33 +366,17 @@
             font-weight: 600;
             display: inline-flex;
             align-items: center;
-            justify-content: center;
             gap: 8px;
             transition: all 0.2s;
-            font-size: 1rem;
         }
 
         .btn-primary {
             background: var(--primary);
             color: white;
-            flex: 2;
         }
 
         .btn-primary:hover {
             background: var(--primary-dark);
-            transform: translateY(-2px);
-        }
-
-        .btn-outline {
-            background: transparent;
-            border: 1px solid var(--border);
-            color: var(--text);
-            flex: 1;
-        }
-
-        .btn-outline:hover {
-            background: var(--bg);
-            border-color: var(--primary);
         }
 
         .btn-success {
@@ -241,148 +384,20 @@
             color: white;
         }
 
-        .btn-copy {
-            background: var(--primary-light);
-            color: white;
-        }
-
-        .preview-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 15px;
-            padding-bottom: 10px;
-            border-bottom: 2px solid var(--border);
-        }
-
-        .preview-tabs {
-            display: flex;
-            gap: 10px;
-        }
-
-        .preview-tab {
-            padding: 8px 16px;
+        .btn-outline {
+            background: transparent;
             border: 1px solid var(--border);
-            border-radius: 20px;
-            cursor: pointer;
-            background: var(--bg);
+            color: var(--text);
         }
 
-        .preview-tab.active {
-            background: var(--primary);
-            color: white;
+        .btn-outline:hover {
+            background: var(--bg);
             border-color: var(--primary);
         }
 
-        #structureView {
-            max-height: 500px;
-            overflow-y: auto;
-        }
-
-        .word-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 15px;
-        }
-
-        .word-card {
-            background: var(--bg);
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            padding: 15px;
-        }
-
-        .word-thai {
-            font-size: 1.3rem;
-            font-weight: bold;
-            color: var(--primary);
-            margin-bottom: 10px;
-            padding-bottom: 5px;
-            border-bottom: 1px solid var(--border);
-        }
-
-        .translation-row {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            margin: 8px 0;
-        }
-
-        .translation-row input {
-            flex: 1;
-            padding: 8px;
-            border: 1px solid var(--border);
-            border-radius: 4px;
-            background: var(--bg);
-        }
-
-        .sentence-card {
-            background: var(--bg);
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            padding: 20px;
-            margin-bottom: 15px;
-        }
-
-        .sentence-header {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 15px;
-            padding-bottom: 10px;
-            border-bottom: 1px solid var(--border);
-        }
-
-        .sentence-thai {
-            font-size: 1.2rem;
-            color: var(--primary);
-            font-weight: 500;
-        }
-
-        .word-chips {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin: 15px 0;
-            padding: 15px;
-            background: rgba(0, 0, 0, 0.02);
-            border-radius: 8px;
-        }
-
-        .word-chip {
-            padding: 8px 12px;
-            background: rgba(37, 99, 235, 0.1);
-            border-radius: 20px;
-            font-size: 0.95rem;
-            display: inline-flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .word-chip .word {
-            font-weight: 500;
-        }
-
-        .word-chip .translations {
-            display: flex;
-            gap: 5px;
-            margin-top: 3px;
-            font-size: 0.8rem;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-
-        .json-output-container {
-            background: #1e1e1e;
-            border-radius: 8px;
-            padding: 5px;
-        }
-
-        .json-content {
-            color: #d4d4d4;
-            font-family: 'Monaco', monospace;
-            font-size: 13px;
-            white-space: pre-wrap;
-            overflow-x: auto;
+        .btn-warning {
+            background: var(--warning);
+            color: white;
         }
 
         .status-badge {
@@ -397,341 +412,707 @@
             background: var(--success);
         }
 
-        .status-pending {
+        .status-warning {
             background: var(--warning);
         }
 
-        .output-format-info {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 10px;
-            padding: 10px;
-            background: rgba(37, 99, 235, 0.05);
-            border-radius: 6px;
-            font-size: 0.9rem;
+        .duplicate-warning {
+            background: rgba(217, 119, 6, 0.1);
+            border-left: 4px solid var(--warning);
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 4px;
         }
 
-        .action-buttons {
-            display: flex;
-            gap: 10px;
-            margin-top: 15px;
-        }
-
-        .action-buttons .btn {
-            flex: 1;
-        }
-
-        .json-viewer {
-            max-height: 500px;
-            overflow-y: auto;
-            background: #1e1e1e;
-            border-radius: 8px;
-            padding: 20px;
-            font-family: 'Monaco', monospace;
-            font-size: 13px;
-            color: #d4d4d4;
-            white-space: pre-wrap;
-        }
-
-        .default-lang-badge {
-            background: var(--primary);
+        .tag {
+            background: var(--primary-light);
             color: white;
-            padding: 2px 8px;
-            border-radius: 12px;
-            font-size: 0.8rem;
-            margin-left: 5px;
+            padding: 4px 10px;
+            border-radius: 16px;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
         }
     </style>
 </head>
 
 <body>
     <div class="container">
+        <!-- Header -->
         <div class="header">
-            <h1>📝 Thai JSON Generator - Exact Structure</h1>
-            <p>Generates JSON matching your app's exact format | <strong>en</strong> and <strong>fa</strong> are default
-                translations</p>
+            <h1>📝 Thai Learning App - v2 Data Model Generator</h1>
+            <p>Build vocabulary incrementally | Words are space-separated, sentences are newline-separated</p>
         </div>
 
-        <!-- Row 1: Configuration and Languages side by side -->
-        <div class="config-row">
-            <!-- Configuration Panel -->
-            <div class="config-panel">
-                <h3>⚙️ Configuration</h3>
-                <div class="data-type-selector">
-                    <div class="type-btn active" id="typeWord" onclick="setDataType('word')">
-                        <span class="material-icons">grid_view</span>
-                        <div>Word List</div>
-                        <small>space between words</small>
-                    </div>
-                    <div class="type-btn" id="typeParagraph" onclick="setDataType('paragraph')">
-                        <span class="material-icons">chat</span>
-                        <div>Paragraph</div>
-                        <small>return between sentences</small>
+        <!-- Document Metadata -->
+        <div class="panel" style="margin-bottom: 20px;">
+            <h3>📋 Document Metadata</h3>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
+                <div>
+                    <label style="display: block; font-weight: 600; margin-bottom: 5px;">Document ID</label>
+                    <input type="text" id="docId" value="ls1"
+                        style="width: 100%; padding: 8px; border: 1px solid var(--border); border-radius: 6px;">
+                </div>
+                <div>
+                    <label style="display: block; font-weight: 600; margin-bottom: 5px;">Version</label>
+                    <input type="text" id="version" value="1.0.0"
+                        style="width: 100%; padding: 8px; border: 1px solid var(--border); border-radius: 6px;">
+                </div>
+                <div>
+                    <label style="display: block; font-weight: 600; margin-bottom: 5px;">Difficulty</label>
+                    <select id="difficulty"
+                        style="width: 100%; padding: 8px; border: 1px solid var(--border); border-radius: 6px;">
+                        <option value="1">1 - Beginner</option>
+                        <option value="2" selected>2 - Elementary</option>
+                        <option value="3">3 - Intermediate</option>
+                        <option value="4">4 - Upper Intermediate</option>
+                        <option value="5">5 - Advanced</option>
+                    </select>
+                </div>
+                <div>
+                    <label style="display: block; font-weight: 600; margin-bottom: 5px;">Authors</label>
+                    <input type="text" id="authors" value="author1, author2"
+                        style="width: 100%; padding: 8px; border: 1px solid var(--border); border-radius: 6px;">
+                </div>
+                <div>
+                    <label style="display: block; font-weight: 600; margin-bottom: 5px;">Reviewers</label>
+                    <input type="text" id="reviewers" value="reviewer1"
+                        style="width: 100%; padding: 8px; border: 1px solid var(--border); border-radius: 6px;">
+                </div>
+                <div>
+                    <label style="display: block; font-weight: 600; margin-bottom: 5px;">Prerequisites</label>
+                    <input type="text" id="prerequisites" value="thai-basics-1"
+                        style="width: 100%; padding: 8px; border: 1px solid var(--border); border-radius: 6px;">
+                </div>
+                <div style="grid-column: span 2;">
+                    <label style="display: block; font-weight: 600; margin-bottom: 5px;">Tags</label>
+                    <div class="tags-input"
+                        style="display: flex; flex-wrap: wrap; gap: 8px; padding: 8px; border: 1px solid var(--border); border-radius: 6px; background: var(--bg);"
+                        id="tagsContainer">
+                        <input type="text" id="newTag" placeholder="Add tag and press Enter..."
+                            style="border: none; outline: none; flex: 1;">
                     </div>
                 </div>
             </div>
+        </div>
 
-            <!-- Languages Panel -->
-            <div class="languages-panel">
-                <h3>🌐 Target Languages <span class="default-lang-badge">en & fa always included</span></h3>
-                <div class="language-grid" id="languageGrid"></div>
+        <!-- Two Column: Session Workflow and Import/Export -->
+        <div class="two-column">
+            <!-- Left Column: Session Workflow -->
+            <div class="panel">
+                <h3><span class="material-icons">timeline</span> Session Workflow</h3>
+                <div class="session-buttons">
+                    <button class="session-btn init" onclick="initializeNewDocument()">
+                        <span class="material-icons">fiber_new</span>
+                        <div>
+                            <strong>Initialize New Document</strong><br>
+                            <small>Creates new document with current metadata only</small>
+                        </div>
+                    </button>
+                    <button class="session-btn load" onclick="importDocument()">
+                        <span class="material-icons">upload_file</span>
+                        <div>
+                            <strong>Import Document</strong><br>
+                            <small>Loads existing document and caches vocabulary</small>
+                        </div>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Right Column: Import/Export -->
+            <div class="panel">
+                <h3><span class="material-icons">import_export</span> Import/Export Document</h3>
+                <div class="import-section">
+                    <textarea id="importJson" placeholder="Document JSON will appear here..."></textarea>
+                    <div class="file-input-wrapper">
+                        <input type="file" id="fileInput" accept=".json" style="display: none;" onchange="loadFile()">
+                        <button class="btn btn-outline" onclick="document.getElementById('fileInput').click()">
+                            <span class="material-icons">folder_open</span> Upload JSON
+                        </button>
+                        <button class="btn btn-outline" onclick="copyToClipboard()">
+                            <span class="material-icons">content_copy</span> Copy
+                        </button>
+                        <button class="btn btn-outline" onclick="clearImport()">
+                            <span class="material-icons">clear</span> Clear
+                        </button>
+                    </div>
+                </div>
             </div>
         </div>
 
-        <!-- Row 2: Thai Input -->
-        <div class="input-row">
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
-                <h3>📝 Enter Thai Text</h3>
-                <span id="inputStats" style="font-size: 1.1rem; color: var(--text-secondary);">0 words, 0
-                    sentences</span>
+        <!-- Vocabulary Status -->
+        <div class="vocab-status">
+            <h3>📚 Vocabulary Status</h3>
+            <div class="status-grid">
+                <div class="status-item">
+                    <div class="status-number" id="mainVocabCount">0</div>
+                    <div class="status-label">Main Vocabulary (Words Only)</div>
+                </div>
+                <div class="status-item">
+                    <div class="status-number" id="cachedCount">0</div>
+                    <div class="status-label">Cached New Words</div>
+                </div>
             </div>
+            <div id="duplicateWarning" class="duplicate-warning" style="display: none;">
+                <span class="material-icons">warning</span>
+                <span id="duplicateMessage"></span>
+            </div>
+        </div>
 
-            <div class="instruction-box" id="instructionBox">
+        <!-- Input Configuration - Radio Selection -->
+        <div class="panel" style="margin-bottom: 20px;">
+            <h3>⚙️ Input Configuration</h3>
+            <div class="radio-group">
+                <div class="radio-card" id="radioWord" onclick="setDataType('word')">
+                    <span class="material-icons">grid_view</span>
+                    <h4>Word List</h4>
+                    <small>space between words</small>
+                </div>
+                <div class="radio-card" id="radioParagraph" onclick="setDataType('paragraph')">
+                    <span class="material-icons">chat</span>
+                    <h4>Paragraph</h4>
+                    <small>new lines between sentences, spaces between words</small>
+                </div>
+            </div>
+        </div>
+
+        <!-- Thai Input -->
+        <div class="input-section">
+            <h3>📝 Enter New Thai Text</h3>
+            <div class="instruction-box">
                 <span class="material-icons">info</span>
-                <span id="instructionText"></span>
+                <span id="instructionText">Separate words with space. Example: กิน ดื่ม ดู ฟัง ตื่น</span>
             </div>
-
-            <textarea id="thaiInput" placeholder=""></textarea>
-
-            <div class="stats-row">
+            <textarea id="thaiInput" placeholder="กิน ดื่ม ดู ฟัง ตื่น"></textarea>
+            <div class="input-stats">
                 <span><span class="material-icons">abc</span> Words: <span id="wordCount">0</span></span>
                 <span><span class="material-icons">sentence</span> Sentences: <span id="sentenceCount">0</span></span>
-                <span><span class="material-icons">cleaning_services</span> Allowed: Thai, English, /, ., space,
-                    return</span>
-            </div>
-
-            <div class="button-group">
-                <button class="btn btn-outline" onclick="cleanText()">
-                    <span class="material-icons">brush</span> Clean
-                </button>
-                <button class="btn btn-primary" onclick="generatePreview()">
-                    <span class="material-icons">auto_awesome</span> Generate
-                </button>
+                <span><span class="material-icons">cleaning_services</span> <button class="btn btn-outline"
+                        style="padding: 5px 10px;" onclick="cleanText()">Clean Text</button></span>
+                <span><span class="material-icons">sync</span> <button class="btn btn-outline"
+                        style="padding: 5px 10px;" onclick="checkDuplicates()">Check Duplicates</button></span>
             </div>
         </div>
 
-        <!-- Row 3: Preview -->
-        <div class="preview-row">
+        <!-- Generate Section -->
+        <div class="generate-section">
+            <button class="generate-button" onclick="generateBlock()">
+                <span class="material-icons">auto_awesome</span>
+                Generate New Block from Input
+            </button>
+            <div id="generatedBlocks" class="generated-blocks"></div>
+        </div>
+
+        <!-- Preview -->
+        <div class="preview-section">
             <div class="preview-header">
-                <h3>👁️ Preview & Verify</h3>
+                <h3>👁️ Preview</h3>
                 <div class="preview-tabs">
-                    <div class="preview-tab active" onclick="switchPreview('structure')">Structure</div>
-                    <div class="preview-tab" onclick="switchPreview('json')">JSON</div>
+                    <div class="preview-tab active" onclick="switchPreview('full')">Full Document</div>
+                    <div class="preview-tab" onclick="switchPreview('blocks')">Blocks Only (JSON)</div>
+                    <div class="preview-tab" onclick="switchPreview('vocab')">Main Vocabulary</div>
+                    <div class="preview-tab" onclick="switchPreview('cache')">Cache Vocabulary</div>
                 </div>
             </div>
-
-            <!-- Structure View -->
-            <div id="structureView">
-                <div id="previewContent" style="color: var(--text-secondary); text-align: center; padding: 40px;">
-                    Click Generate to see preview
-                </div>
-            </div>
-
-            <!-- JSON View -->
-            <div id="jsonView" style="display: none;">
-                <div class="output-format-info">
-                    <span class="material-icons">info</span>
-                    <span id="formatDisplay"></span>
-                </div>
-                <div id="jsonContent" class="json-viewer"></div>
-
-                <!-- Action Buttons (appear after generate) -->
-                <div id="actionSection" style="display: none;" class="action-buttons">
-                    <button class="btn btn-success" onclick="downloadJSON()">
-                        <span class="material-icons">download</span> Download
-                    </button>
-                    <button class="btn btn-copy" onclick="copyJSON()">
-                        <span class="material-icons">content_copy</span> Copy
-                    </button>
-                </div>
-            </div>
-
-            <!-- Translation Status -->
-            <div style="margin-top: 15px; display: flex; gap: 20px; justify-content: flex-end;" id="translationStatus">
-                <span><span class="status-badge status-complete"></span> Translated</span>
-                <span><span class="status-badge status-pending"></span> Pending</span>
+            <div id="jsonViewer" class="json-viewer"></div>
+            <div class="action-buttons">
+                <button class="btn btn-success" onclick="downloadJSON('full')">
+                    <span class="material-icons">download</span> Download Full
+                </button>
+                <button class="btn btn-outline" onclick="downloadJSON('blocks')">
+                    <span class="material-icons">download</span> Download Block
+                </button>
+                <button class="btn btn-outline" onclick="copyPreview()">
+                    <span class="material-icons">content_copy</span> Copy Preview
+                </button>
+                <button class="btn btn-outline" onclick="clearPreview()">
+                    <span class="material-icons">clear</span> Clear Preview
+                </button>
+                <button class="btn btn-warning" onclick="updateVocabulary()">
+                    <span class="material-icons">save</span> Update Vocabulary
+                </button>
             </div>
         </div>
     </div>
 
     <script>
-        // ==================== TRANSLATION API ====================
+        // Translation API
         const TranslationAPI = {
-            cache: JSON.parse(localStorage.getItem('translationCache') || '{}'),
+            cache: JSON.parse(localStorage.getItem('translationCache_v2') || '{}'),
 
             async translate(text, targetLang) {
                 if (!text || text.trim() === '') return '';
-
                 const cacheKey = `${text}_${targetLang}`;
-                if (this.cache[cacheKey]) {
-                    return this.cache[cacheKey];
-                }
+                if (this.cache[cacheKey]) return this.cache[cacheKey];
 
                 try {
                     const response = await fetch(
                         `https://api.mymemory.translated.net/get?q=${encodeURIComponent(text)}&langpair=th|${targetLang}`
                     );
                     const data = await response.json();
-
                     if (data.responseStatus === 200) {
                         const translation = data.responseData.translatedText;
                         this.cache[cacheKey] = translation;
-                        localStorage.setItem('translationCache', JSON.stringify(this.cache));
+                        localStorage.setItem('translationCache_v2', JSON.stringify(this.cache));
                         return translation;
                     }
-                } catch (error) {
-                    console.warn('Translation failed:', error);
+                } catch (e) {
+                    console.warn('Translation failed:', e);
                 }
-
-                return ''; // Return empty if translation fails
+                return '';
             }
         };
 
-        // ==================== CLEANER ====================
+        // Text Cleaner - Keep only Thai characters
         const Cleaner = {
             clean(text) {
                 if (!text) return text;
-
-                let cleaned = text;
-
-                // Remove non-Thai characters except:
-                // - English letters (for transliterations)
-                // - spaces, newlines
-                // - punctuation (.,!?:-'"())
-                // - forward slash (/)
-                cleaned = cleaned.replace(/[^\u0E00-\u0E7Fa-zA-Z\s\n.,!?:\-'"()\/]/g, '');
-
-                // Fix common PDF artifacts
+                // Keep only Thai characters, spaces, and newlines
+                let cleaned = text.replace(/[^\u0E00-\u0E7F\s\n]/g, '');
+                // Clean up whitespace
                 cleaned = cleaned
-                    .replace(/x/g, '')
-                    .replace(/X/g, '')
-                    .replace(/[ﬁﬂ]/g, match => match === 'ﬁ' ? 'fi' : 'fl')
-                    .replace(/[‘’´`]/g, "'")
-                    .replace(/[“”]/g, '"')
-                    .replace(/\s*:\s*/g, ': ')
-                    .replace(/[^\S\n]+/g, ' ') // Replace multiple spaces with single space (preserve newlines)
-                    .replace(/\s+\./g, '.')
-                    .replace(/\s+\,/g, ',')
+                    .replace(/[^\S\n]+/g, ' ')
                     .replace(/^\s+/gm, '')
-                    .replace(/\s+$/gm, '');
-
-                return cleaned;
+                    .replace(/\s+$/gm, '')
+                    .replace(/\n\s+\n/g, '\n\n')
+                    .replace(/\n{3,}/g, '\n\n');
+                return cleaned.trim();
             }
         };
 
-        // ==================== APP STATE ====================
+        // App State
         const AppState = {
             dataType: 'word',
-            // Default languages are en and fa - these are always included
-            defaultLanguages: ['en', 'fa'],
             languages: [
-                { code: 'en', name: 'English', flag: '🇬🇧', selected: true, isDefault: true },
-                { code: 'fa', name: 'Farsi', flag: '🇮🇷', selected: true, isDefault: true },
-                { code: 'ar', name: 'Arabic', flag: '🇸🇦', selected: false, isDefault: false },
-                { code: 'zh', name: 'Chinese', flag: '🇨🇳', selected: false, isDefault: false },
-                { code: 'ja', name: 'Japanese', flag: '🇯🇵', selected: false, isDefault: false },
-                { code: 'km', name: 'Khmer', flag: '🇰🇭', selected: false, isDefault: false },
-                { code: 'bn', name: 'Banderi', flag: '🇧🇩', selected: false, isDefault: false }
+                { code: 'en', name: 'English', flag: '🇬🇧', selected: true },
+                { code: 'fa', name: 'Farsi', flag: '🇮🇷', selected: true }
             ],
-            words: [],
-            sentences: [],
-            wordTranslations: {},      // For word list mode
-            sentenceTranslations: [],   // For paragraph mode
-            wordLevelTranslations: {},  // For individual words in sentences
-            generatedContent: null,
-            generatedJSONString: ''
+            mainVocabulary: {},
+            cacheVocabulary: {},
+            blocks: []
         };
 
-        // ==================== INITIALIZATION ====================
+        // Initialize
         function init() {
-            renderLanguageGrid();
             setDataType('word');
+            updateStats();
+            updateCacheDisplay();
+            showFullDocument();
 
-            // Set up textarea stats update
-            const textarea = document.getElementById('thaiInput');
-            textarea.addEventListener('input', updateStats);
+            // Add event listener for tags
+            document.getElementById('newTag').addEventListener('keypress', handleTagKeyPress);
         }
 
-        function renderLanguageGrid() {
-            const grid = document.getElementById('languageGrid');
-            let html = '';
+        // ==================== SESSION WORKFLOW ====================
 
-            AppState.languages.forEach(lang => {
-                // Disable checkbox for default languages (en and fa)
-                const disabled = lang.isDefault ? 'disabled' : '';
-                const selected = lang.selected ? 'selected' : '';
-                const disabledClass = lang.isDefault ? 'disabled' : '';
+        function initializeNewDocument() {
+            if (confirm('Start a new document? Current unsaved data will be cleared.')) {
+                AppState.mainVocabulary = {};
+                AppState.cacheVocabulary = {};
+                AppState.blocks = [];
 
-                html += `
-                    <div class="lang-checkbox ${selected} ${disabledClass}" 
-                         onclick="${!lang.isDefault ? `toggleLanguage('${lang.code}')` : ''}">
-                        <input type="checkbox" 
-                               ${lang.selected ? 'checked' : ''} 
-                               ${disabled}
-                               onchange="${!lang.isDefault ? `toggleLanguage('${lang.code}')` : ''}"
-                               style="width: 16px; height: 16px;">
-                        <span>${lang.flag} ${lang.name}</span>
-                        ${lang.isDefault ? '<span class="default-lang-badge">default</span>' : ''}
-                    </div>
-                `;
-            });
+                const newDoc = buildFullDocument();
+                document.getElementById('importJson').value = JSON.stringify(newDoc, null, 2);
 
-            grid.innerHTML = html;
-        }
-
-        function toggleLanguage(code) {
-            const lang = AppState.languages.find(l => l.code === code);
-            if (lang && !lang.isDefault) {
-                lang.selected = !lang.selected;
-                renderLanguageGrid();
+                updateCacheDisplay();
+                showFullDocument();
+                updateBlocksDisplay();
             }
         }
+
+        function importDocument() {
+            try {
+                const jsonText = document.getElementById('importJson').value;
+                if (!jsonText.trim()) {
+                    alert('Please paste JSON or upload a file first');
+                    return;
+                }
+
+                const data = JSON.parse(jsonText);
+
+                if (!data.documentId) throw new Error('Missing documentId');
+
+                // Load metadata
+                document.getElementById('docId').value = data.documentId;
+                document.getElementById('version').value = data.metadata?.version || '1.0.0';
+                document.getElementById('difficulty').value = data.metadata?.difficulty || 2;
+                document.getElementById('authors').value = (data.metadata?.authors || ['author1']).join(', ');
+                document.getElementById('reviewers').value = (data.metadata?.reviewers || ['reviewer1']).join(', ');
+                document.getElementById('prerequisites').value = (data.metadata?.prerequisites || []).join(', ');
+
+                // Load tags
+                document.getElementById('tagsContainer').innerHTML = '<input type="text" id="newTag" placeholder="Add tag and press Enter..." style="border: none; outline: none; flex: 1;">';
+                document.getElementById('newTag').addEventListener('keypress', handleTagKeyPress);
+                if (data.metadata?.tags) {
+                    data.metadata.tags.forEach(tag => addTag(tag));
+                }
+
+                // Load main vocabulary
+                if (data.vocabulary) {
+                    AppState.mainVocabulary = data.vocabulary;
+                }
+
+                // Load existing blocks
+                if (data.sections && data.sections[0]?.content) {
+                    AppState.blocks = data.sections[0].content;
+                }
+
+                // Clear cache
+                AppState.cacheVocabulary = {};
+
+                updateCacheDisplay();
+                showFullDocument();
+                updateBlocksDisplay();
+                alert('Document imported successfully!');
+
+            } catch (e) {
+                alert('Invalid JSON: ' + e.message);
+            }
+        }
+
+        // ==================== BLOCK GENERATION ====================
+
+        async function generateBlock() {
+            const text = document.getElementById('thaiInput').value;
+            if (!text.trim()) {
+                alert('Please enter some Thai text');
+                return;
+            }
+
+            const selectedLangs = AppState.languages.filter(l => l.selected).map(l => l.code);
+            if (selectedLangs.length === 0) {
+                alert('Please select at least one target language');
+                return;
+            }
+
+            if (AppState.dataType === 'word') {
+                await generateWordBlock(text, selectedLangs);
+            } else {
+                await generateParagraphBlock(text, selectedLangs);
+            }
+
+            updateCacheDisplay();
+            updateBlocksDisplay();
+            showBlocksOnly();
+        }
+
+        async function generateWordBlock(text, selectedLangs) {
+            const words = text.split(/\s+/).filter(w => w.trim().length > 0);
+            if (words.length === 0) return;
+
+            // Remove duplicates
+            const uniqueWords = [...new Set(words)];
+
+            // Cache ONLY words (not sentences)
+            for (const word of uniqueWords) {
+                if (!AppState.mainVocabulary[word] && !AppState.cacheVocabulary[word]) {
+                    AppState.cacheVocabulary[word] = {
+                        translations: {}
+                    };
+                    for (const lang of selectedLangs) {
+                        AppState.cacheVocabulary[word].translations[lang] = await TranslationAPI.translate(word, lang);
+                    }
+                }
+            }
+
+            // Create word list block
+            const newBlock = {
+                type: 'words',
+                config: {
+                    heading: {
+                        en: 'Vocabulary List',
+                        fa: 'لیست واژگان',
+                        th: 'รายการคำศัพท์'
+                    },
+                    activity: {
+                        inherit: true
+                    }
+                },
+                wordIds: uniqueWords
+            };
+
+            AppState.blocks.push(newBlock);
+        }
+
+        async function generateParagraphBlock(text, selectedLangs) {
+            // Split by newlines to get sentences
+            const sentences = text.split('\n').filter(s => s.trim().length > 0);
+            if (sentences.length === 0) return;
+
+            const sentencesData = [];
+            const allWords = new Set();
+
+            for (const sentence of sentences) {
+                // Split sentence into words by spaces
+                const words = sentence.split(/\s+/).filter(w => w.trim().length > 0);
+
+                // Add words to set for vocabulary (words only, not full sentences)
+                words.forEach(w => allWords.add(w));
+
+                // Get sentence-level translations
+                const translations = {};
+                for (const lang of selectedLangs) {
+                    translations[lang] = await TranslationAPI.translate(sentence, lang);
+                }
+
+                // IMPORTANT: Remove spaces from source to create continuous Thai text
+                // Thai sentences don't have spaces between words
+                const continuousSource = words.join('');
+
+                sentencesData.push({
+                    type: 'sentence',
+                    source: continuousSource,  // No spaces!
+                    wordIds: words,  // Keep words array for vocabulary reference
+                    translations: translations
+                });
+            }
+
+            // Cache ONLY words (not sentences)
+            for (const word of allWords) {
+                if (!AppState.mainVocabulary[word] && !AppState.cacheVocabulary[word]) {
+                    AppState.cacheVocabulary[word] = {
+                        translations: {}
+                    };
+                    for (const lang of selectedLangs) {
+                        AppState.cacheVocabulary[word].translations[lang] = await TranslationAPI.translate(word, lang);
+                    }
+                }
+            }
+
+            // Create paragraph block
+            const newBlock = {
+                type: 'paragraph',
+                config: {
+                    heading: {
+                        en: 'Conversation Practice',
+                        fa: 'تمرین مکالمه',
+                        th: 'ฝึกสนทนา'
+                    },
+                    grammar: {
+                        pattern: '',
+                        explanation: {},
+                        usage: {},
+                        examples: []
+                    },
+                    activity: {
+                        inherit: true
+                    }
+                },
+                sentences: sentencesData
+            };
+
+            AppState.blocks.push(newBlock);
+        }
+
+        // ==================== VOCABULARY MANAGEMENT ====================
+
+        function updateVocabulary() {
+            const cacheSize = Object.keys(AppState.cacheVocabulary).length;
+            if (cacheSize === 0) {
+                alert('No cached words to update');
+                return;
+            }
+
+            if (confirm(`Merge ${cacheSize} new word(s) into main vocabulary?`)) {
+                Object.assign(AppState.mainVocabulary, AppState.cacheVocabulary);
+                AppState.cacheVocabulary = {};
+                updateCacheDisplay();
+                showFullDocument();
+                alert('Vocabulary updated!');
+            }
+        }
+
+        function checkDuplicates() {
+            const text = document.getElementById('thaiInput').value;
+            const newWords = new Set();
+
+            if (AppState.dataType === 'word') {
+                text.split(/\s+/).filter(w => w.trim()).forEach(w => newWords.add(w));
+            } else {
+                text.split('\n').filter(s => s.trim()).forEach(s => {
+                    s.split(/\s+/).filter(w => w.trim()).forEach(w => newWords.add(w));
+                });
+            }
+
+            const existing = [];
+            const cached = [];
+            const trulyNew = [];
+
+            newWords.forEach(word => {
+                if (AppState.mainVocabulary[word]) {
+                    existing.push(word);
+                } else if (AppState.cacheVocabulary[word]) {
+                    cached.push(word);
+                } else {
+                    trulyNew.push(word);
+                }
+            });
+
+            const warning = document.getElementById('duplicateWarning');
+            if (existing.length > 0 || cached.length > 0) {
+                warning.style.display = 'block';
+                let message = '';
+                if (existing.length > 0) message += `📚 Main: ${existing.join(', ')}. `;
+                if (cached.length > 0) message += `💾 Cache: ${cached.join(', ')}. `;
+                message += `✨ New: ${trulyNew.length}`;
+                document.getElementById('duplicateMessage').innerHTML = message;
+            } else {
+                warning.style.display = 'none';
+            }
+        }
+
+        // ==================== DISPLAY FUNCTIONS ====================
+
+        function updateCacheDisplay() {
+            document.getElementById('mainVocabCount').textContent = Object.keys(AppState.mainVocabulary).length;
+            document.getElementById('cachedCount').textContent = Object.keys(AppState.cacheVocabulary).length;
+        }
+
+        function updateBlocksDisplay() {
+            const container = document.getElementById('generatedBlocks');
+            container.innerHTML = '';
+
+            AppState.blocks.forEach((block, index) => {
+                const card = document.createElement('div');
+                card.className = 'block-card';
+
+                if (block.type === 'words') {
+                    card.innerHTML = `
+                        <div class="block-header">
+                            <span class="block-type">📚 Word List</span>
+                            <span class="material-icons" onclick="removeBlock(${index})">close</span>
+                        </div>
+                        <div><strong>Words:</strong> ${block.wordIds?.length || 0}</div>
+                        <div style="margin-top: 10px; font-size: 0.9rem;">${block.wordIds?.slice(0, 5).join(' · ')}${block.wordIds?.length > 5 ? '...' : ''}</div>
+                    `;
+                } else {
+                    card.innerHTML = `
+                        <div class="block-header">
+                            <span class="block-type">📝 Paragraph</span>
+                            <span class="material-icons" onclick="removeBlock(${index})">close</span>
+                        </div>
+                        <div><strong>Sentences:</strong> ${block.sentences?.length || 0}</div>
+                        <div style="margin-top: 10px; font-size: 0.9rem;">${block.sentences?.slice(0, 2).map(s => s.source).join('<br>')}${block.sentences?.length > 2 ? '<br>...' : ''}</div>
+                    `;
+                }
+                container.appendChild(card);
+            });
+        }
+
+        function buildFullDocument() {
+            const docId = document.getElementById('docId').value;
+            const version = document.getElementById('version').value;
+            const difficulty = parseInt(document.getElementById('difficulty').value);
+            const authors = document.getElementById('authors').value.split(',').map(s => s.trim()).filter(s => s);
+            const reviewers = document.getElementById('reviewers').value.split(',').map(s => s.trim()).filter(s => s);
+            const prerequisites = document.getElementById('prerequisites').value.split(',').map(s => s.trim()).filter(s => s);
+            const tags = getTags();
+
+            // Activity settings
+            const wordTypes = ['multipleChoiceWord', 'flashcardWord'];
+            const sentenceTypes = ['multipleChoiceSentence', 'flashcardSentence', 'buildSentence'];
+
+            // Combine main and cache vocabulary
+            const combinedVocabulary = { ...AppState.mainVocabulary, ...AppState.cacheVocabulary };
+
+            return {
+                documentId: docId,
+                metadata: {
+                    version: version,
+                    created: new Date().toISOString().split('T')[0] + 'T10:00:00Z',
+                    updated: new Date().toISOString(),
+                    authors: authors.length ? authors : ['author1'],
+                    reviewers: reviewers.length ? reviewers : ['reviewer1'],
+                    difficulty: difficulty,
+                    prerequisites: prerequisites,
+                    tags: tags
+                },
+                vocabulary: combinedVocabulary,
+                activitySettings: {
+                    words: {
+                        enabled: true,
+                        types: wordTypes
+                    },
+                    sentences: {
+                        enabled: true,
+                        types: sentenceTypes
+                    }
+                },
+                sections: [
+                    {
+                        sectionId: docId + 'Section',
+                        content: AppState.blocks
+                    }
+                ]
+            };
+        }
+
+        function showFullDocument() {
+            const doc = buildFullDocument();
+            document.getElementById('jsonViewer').textContent = JSON.stringify(doc, null, 2);
+        }
+
+        function showBlocksOnly() {
+            if (AppState.blocks.length > 0) {
+                const lastBlock = AppState.blocks[AppState.blocks.length - 1];
+                document.getElementById('jsonViewer').textContent = JSON.stringify(lastBlock, null, 2);
+            }
+        }
+
+        // ==================== UTILITY FUNCTIONS ====================
 
         function setDataType(type) {
             AppState.dataType = type;
-            document.getElementById('typeWord').classList.remove('active');
-            document.getElementById('typeParagraph').classList.remove('active');
-            document.getElementById(`type${type.charAt(0).toUpperCase() + type.slice(1)}`).classList.add('active');
+            document.getElementById('radioWord').classList.remove('selected');
+            document.getElementById('radioParagraph').classList.remove('selected');
+            document.getElementById(`radio${type.charAt(0).toUpperCase() + type.slice(1)}`).classList.add('selected');
 
-            // Update instruction text
-            const instructionText = document.getElementById('instructionText');
-            const textarea = document.getElementById('thaiInput');
-
+            const instruction = document.getElementById('instructionText');
             if (type === 'word') {
-                instructionText.innerHTML = 'Separate words with <kbd>space</kbd>. Example: กิน ดื่ม ดู ฟัง ตื่น';
-                textarea.placeholder = "กิน ดื่ม ดู ฟัง ตื่น";
+                instruction.innerHTML = 'Separate words with <kbd>space</kbd>. Example: กิน ดื่ม ดู ฟัง ตื่น';
             } else {
-                instructionText.innerHTML = 'Separate sentences with <kbd>Enter</kbd>. Words within sentences with <kbd>space</kbd>.';
-                textarea.placeholder = "สวัสดีครับ\nผมชื่อจอห์น\nคุณสบายดีไหม";
+                instruction.innerHTML = 'Separate sentences with <kbd>new lines</kbd>. Words within sentences with <kbd>space</kbd>. Example: สวัสดีครับ<br>ผมชื่อจอห์น<br>คุณสบายดีไหม';
             }
-
-            updateFormatDisplay();
-            updateStats();
         }
 
-        function updateFormatDisplay() {
-            const formatDiv = document.getElementById('formatDisplay');
-            if (AppState.dataType === 'word') {
-                formatDiv.innerHTML = `Output: Word objects with en and fa translations (plus any selected languages)`;
-            } else {
-                formatDiv.innerHTML = `Output: Sentence objects with "type", "source", "words" array, and "translations" object`;
+        function handleTagKeyPress(e) {
+            if (e.key === 'Enter') {
+                const input = document.getElementById('newTag');
+                const tag = input.value.trim();
+                if (tag) {
+                    addTag(tag);
+                    input.value = '';
+                }
             }
+        }
+
+        function addTag(tag) {
+            const container = document.getElementById('tagsContainer');
+            const tagEl = document.createElement('span');
+            tagEl.className = 'tag';
+            tagEl.innerHTML = `${tag} <span class="material-icons" style="font-size: 14px; cursor: pointer;" onclick="this.parentElement.remove()">close</span>`;
+            container.insertBefore(tagEl, document.getElementById('newTag'));
+        }
+
+        function getTags() {
+            const tags = [];
+            document.querySelectorAll('.tag').forEach(t => {
+                tags.push(t.textContent.replace('close', '').trim());
+            });
+            return tags;
         }
 
         function updateStats() {
             const text = document.getElementById('thaiInput').value;
-
             if (AppState.dataType === 'word') {
                 const words = text.split(/\s+/).filter(w => w.trim().length > 0);
                 document.getElementById('wordCount').textContent = words.length;
                 document.getElementById('sentenceCount').textContent = 'N/A';
-                document.getElementById('inputStats').textContent = `${words.length} words`;
             } else {
                 const sentences = text.split('\n').filter(s => s.trim().length > 0);
                 const words = text.split(/\s+/).filter(w => w.trim().length > 0);
                 document.getElementById('wordCount').textContent = words.length;
                 document.getElementById('sentenceCount').textContent = sentences.length;
-                document.getElementById('inputStats').textContent = `${words.length} words, ${sentences.length} sentences`;
             }
         }
 
@@ -741,383 +1122,118 @@
             updateStats();
         }
 
-        // ==================== GENERATE PREVIEW ====================
-        async function generatePreview() {
-            const text = document.getElementById('thaiInput').value;
+        function removeBlock(index) {
+            if (confirm('Remove this block?')) {
+                AppState.blocks.splice(index, 1);
+                updateBlocksDisplay();
+                showFullDocument();
+            }
+        }
 
-            // Show loading
-            document.getElementById('previewContent').innerHTML = `
-                <div style="text-align: center; padding: 40px;">
-                    <span class="material-icons" style="font-size: 40px; animation: spin 1s infinite;">sync</span>
-                    <p>Generating translations...</p>
-                </div>
-            `;
+        function switchPreview(mode) {
+            document.querySelectorAll('.preview-tab').forEach(t => t.classList.remove('active'));
+            event.target.classList.add('active');
 
-            if (AppState.dataType === 'word') {
-                await generateWordPreview(text);
+            if (mode === 'full') {
+                showFullDocument();
+            } else if (mode === 'blocks') {
+                if (AppState.blocks.length > 0) {
+                    const lastBlock = AppState.blocks[AppState.blocks.length - 1];
+                    document.getElementById('jsonViewer').textContent = JSON.stringify(lastBlock, null, 2);
+                } else {
+                    document.getElementById('jsonViewer').textContent = '{}';
+                }
+            } else if (mode === 'vocab') {
+                document.getElementById('jsonViewer').textContent = JSON.stringify(AppState.mainVocabulary, null, 2);
+            } else if (mode === 'cache') {
+                document.getElementById('jsonViewer').textContent = JSON.stringify(AppState.cacheVocabulary, null, 2);
+            }
+        }
+
+        function downloadJSON(type) {
+            let data;
+            let filename;
+
+            if (type === 'full') {
+                data = buildFullDocument();
+                filename = `${document.getElementById('docId').value}_full.json`;
             } else {
-                await generateParagraphPreview(text);
-            }
-
-            // Show action buttons
-            document.getElementById('actionSection').style.display = 'flex';
-        }
-
-        // ==================== WORD LIST MODE ====================
-        async function generateWordPreview(text) {
-            // Words are separated by spaces
-            const words = text.split(/\s+/).filter(w => w.trim().length > 0);
-            const uniqueWords = [...new Set(words)];
-
-            AppState.words = uniqueWords;
-            AppState.wordTranslations = {};
-
-            // Get selected languages (including defaults)
-            const selectedLangs = AppState.languages.filter(l => l.selected);
-
-            // Translate all words
-            for (const word of uniqueWords) {
-                AppState.wordTranslations[word] = {};
-                for (const lang of selectedLangs) {
-                    AppState.wordTranslations[word][lang.code] =
-                        await TranslationAPI.translate(word, lang.code);
+                if (AppState.blocks.length === 0) {
+                    alert('No blocks to download');
+                    return;
                 }
+                data = AppState.blocks[AppState.blocks.length - 1];
+                filename = `${document.getElementById('docId').value}_block_${AppState.blocks.length}.json`;
             }
 
-            // Render preview
-            renderWordPreview(uniqueWords, selectedLangs);
-
-            // Generate content
-            generateWordContent(uniqueWords, selectedLangs);
-        }
-
-        function renderWordPreview(words, selectedLangs) {
-            let html = '<div class="word-grid">';
-            let translatedCount = 0;
-            let totalCount = words.length;
-
-            words.forEach(word => {
-                const translations = AppState.wordTranslations[word] || {};
-                let wordTranslated = 0;
-
-                html += `<div class="word-card">`;
-                html += `<div class="word-thai">${word}</div>`;
-
-                selectedLangs.forEach(lang => {
-                    const hasTranslation = translations[lang.code] ? true : false;
-                    if (hasTranslation) wordTranslated++;
-
-                    html += `
-                        <div class="translation-row">
-                            <span>${lang.flag}</span>
-                            <input type="text" 
-                                   value="${translations[lang.code] || ''}"
-                                   placeholder="${lang.name}..."
-                                   onchange="updateWordTranslation('${word}', '${lang.code}', this.value)"
-                                   style="${!hasTranslation ? 'border-color: var(--warning);' : ''}">
-                        </div>
-                    `;
-                });
-
-                html += `</div>`;
-
-                if (wordTranslated === selectedLangs.length) translatedCount++;
-            });
-
-            html += '</div>';
-            document.getElementById('previewContent').innerHTML = html;
-
-            // Update status
-            updateTranslationStatus(translatedCount, totalCount);
-        }
-
-        function updateWordTranslation(word, langCode, value) {
-            if (!AppState.wordTranslations[word]) {
-                AppState.wordTranslations[word] = {};
-            }
-            AppState.wordTranslations[word][langCode] = value;
-
-            // Update content
-            generateWordContent(AppState.words, AppState.languages.filter(l => l.selected));
-        }
-
-        function generateWordContent(words, selectedLangs) {
-            // Generate word objects with translations
-            const content = words.map(word => {
-                const translations = {};
-                // Include all selected languages
-                selectedLangs.forEach(lang => {
-                    translations[lang.code] = AppState.wordTranslations[word]?.[lang.code] || '';
-                });
-
-                return {
-                    word: word,
-                    translations: translations
-                };
-            });
-
-            AppState.generatedContent = content;
-
-            // Convert to JSON string and remove outer brackets
-            const jsonString = JSON.stringify(content, null, 2);
-            AppState.generatedJSONString = jsonString.substring(1, jsonString.length - 1).trim();
-
-            document.getElementById('jsonContent').textContent = AppState.generatedJSONString;
-        }
-
-        // ==================== PARAGRAPH MODE ====================
-        async function generateParagraphPreview(text) {
-            // Sentences are separated by newlines
-            const sentences = text.split('\n').filter(s => s.trim().length > 0);
-
-            AppState.sentences = sentences;
-            AppState.sentenceTranslations = [];
-            AppState.wordLevelTranslations = {};
-
-            // Get selected languages (including defaults)
-            const selectedLangs = AppState.languages.filter(l => l.selected);
-
-            // First, collect all unique words across all sentences
-            const allWords = new Set();
-            sentences.forEach(sentence => {
-                sentence.split(/\s+/).forEach(word => {
-                    if (word.trim()) allWords.add(word.trim());
-                });
-            });
-
-            // Translate all unique words (for word-level translations)
-            for (const word of allWords) {
-                AppState.wordLevelTranslations[word] = {};
-                for (const lang of selectedLangs) {
-                    AppState.wordLevelTranslations[word][lang.code] =
-                        await TranslationAPI.translate(word, lang.code);
-                }
-            }
-
-            // Then translate full sentences
-            for (let i = 0; i < sentences.length; i++) {
-                const sentence = sentences[i].trim();
-                const sentenceTrans = {};
-
-                for (const lang of selectedLangs) {
-                    sentenceTrans[lang.code] = await TranslationAPI.translate(sentence, lang.code);
-                }
-
-                AppState.sentenceTranslations[i] = sentenceTrans;
-            }
-
-            // Render preview
-            renderParagraphPreview(selectedLangs);
-
-            // Generate content
-            generateParagraphContent(selectedLangs);
-        }
-
-        function renderParagraphPreview(selectedLangs) {
-            let html = '';
-            let translatedCount = 0;
-            let totalCount = AppState.sentences.length;
-
-            AppState.sentences.forEach((sentence, sIndex) => {
-                const words = sentence.split(/\s+/).filter(w => w.trim().length > 0);
-                let sentenceTranslated = 0;
-
-                html += `<div class="sentence-card">`;
-
-                // Header with sentence number
-                html += `<div class="sentence-header">`;
-                html += `<span class="sentence-thai">${sentence}</span>`;
-                html += `<span>S${sIndex + 1}</span>`;
-                html += `</div>`;
-
-                // Word breakdown with translations
-                html += `<div class="word-chips">`;
-                words.forEach(word => {
-                    const wordTrans = AppState.wordLevelTranslations[word] || {};
-
-                    html += `<span class="word-chip">`;
-                    html += `<span class="word">${word}</span>`;
-                    html += `<span class="translations">`;
-                    selectedLangs.forEach(lang => {
-                        if (wordTrans[lang.code]) {
-                            html += `<span class="translation" title="${lang.name}">${lang.flag} ${wordTrans[lang.code]}</span>`;
-                        }
-                    });
-                    html += `</span>`;
-                    html += `</span>`;
-                });
-                html += `</div>`;
-
-                // Sentence-level translations
-                const sentenceTrans = AppState.sentenceTranslations[sIndex] || {};
-
-                selectedLangs.forEach(lang => {
-                    const hasTranslation = sentenceTrans[lang.code] ? true : false;
-                    if (hasTranslation) sentenceTranslated++;
-
-                    html += `
-                        <div class="translation-row">
-                            <span>${lang.flag}</span>
-                            <input type="text" 
-                                   value="${sentenceTrans[lang.code] || ''}"
-                                   placeholder="Full sentence ${lang.name}..."
-                                   onchange="updateSentenceTranslation(${sIndex}, '${lang.code}', this.value)"
-                                   style="${!hasTranslation ? 'border-color: var(--warning);' : ''}">
-                        </div>
-                    `;
-                });
-
-                html += `</div>`;
-
-                if (sentenceTranslated === selectedLangs.length) translatedCount++;
-            });
-
-            document.getElementById('previewContent').innerHTML = html;
-            updateTranslationStatus(translatedCount, totalCount);
-        }
-
-        function updateSentenceTranslation(sIndex, langCode, value) {
-            if (!AppState.sentenceTranslations[sIndex]) {
-                AppState.sentenceTranslations[sIndex] = {};
-            }
-            AppState.sentenceTranslations[sIndex][langCode] = value;
-
-            // Update content
-            generateParagraphContent(AppState.languages.filter(l => l.selected));
-        }
-
-        function generateParagraphContent(selectedLangs) {
-            // Generate sentence objects with the exact structure
-            const elements = AppState.sentences.map((sentence, sIndex) => {
-                const words = sentence.split(/\s+/).filter(w => w.trim().length > 0);
-
-                // Create word objects with their translations
-                const wordObjects = words.map(word => {
-                    const wordTrans = AppState.wordLevelTranslations[word] || {};
-                    const translations = {};
-
-                    // Include all selected languages
-                    selectedLangs.forEach(lang => {
-                        translations[lang.code] = wordTrans[lang.code] || '';
-                    });
-
-                    return {
-                        word: word,
-                        translations: translations
-                    };
-                });
-
-                // Create sentence-level translations
-                const sentenceTrans = AppState.sentenceTranslations[sIndex] || {};
-                const translations = {};
-
-                // Include all selected languages
-                selectedLangs.forEach(lang => {
-                    translations[lang.code] = sentenceTrans[lang.code] || '';
-                });
-
-                return {
-                    type: "sentence",
-                    source: sentence,
-                    words: wordObjects,
-                    translations: translations
-                };
-            });
-
-            AppState.generatedContent = elements;
-
-            // Convert to JSON string and remove outer brackets
-            const jsonString = JSON.stringify(elements, null, 2);
-            AppState.generatedJSONString = jsonString.substring(1, jsonString.length - 1).trim();
-
-            document.getElementById('jsonContent').textContent = AppState.generatedJSONString;
-        }
-
-        function updateTranslationStatus(translated, total) {
-            const statusDiv = document.getElementById('translationStatus');
-            statusDiv.innerHTML = `
-                <span><span class="status-badge status-complete"></span> ${translated}/${total} Complete</span>
-                <span><span class="status-badge status-pending"></span> ${total - translated} Pending</span>
-            `;
-        }
-
-        // ==================== DOWNLOAD / COPY ====================
-        function downloadJSON() {
-            if (!AppState.generatedJSONString) {
-                alert('Please click Generate first');
-                return;
-            }
-
-            const blob = new Blob([AppState.generatedJSONString], { type: 'application/json' });
+            const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
             const url = URL.createObjectURL(blob);
             const a = document.createElement('a');
             a.href = url;
-
-            const type = AppState.dataType === 'word' ? 'words' : 'sentences';
-            a.download = `thai_${type}_${Date.now()}.json`;
-
+            a.download = filename;
             a.click();
             URL.revokeObjectURL(url);
         }
 
-        function copyJSON() {
-            if (!AppState.generatedJSONString) {
-                alert('Please click Generate first');
-                return;
-            }
-
-            navigator.clipboard.writeText(AppState.generatedJSONString);
-
-            // Show feedback
-            const btn = event.target.closest('button');
-            const originalText = btn.innerHTML;
-            btn.innerHTML = '<span class="material-icons">check</span> Copied!';
-            setTimeout(() => {
-                btn.innerHTML = originalText;
-            }, 2000);
-        }
-
-        // ==================== PREVIEW SWITCHING ====================
-        function switchPreview(view) {
-            const structureView = document.getElementById('structureView');
-            const jsonView = document.getElementById('jsonView');
-            const tabs = document.querySelectorAll('.preview-tab');
-
-            tabs.forEach(t => t.classList.remove('active'));
-            event.target.classList.add('active');
-
-            if (view === 'structure') {
-                structureView.style.display = 'block';
-                jsonView.style.display = 'none';
-            } else {
-                structureView.style.display = 'none';
-                jsonView.style.display = 'block';
+        function copyPreview() {
+            const text = document.getElementById('jsonViewer').textContent;
+            if (text && text !== '{}') {
+                navigator.clipboard.writeText(text);
+ //               alert('Preview copied to clipboard!');
             }
         }
 
-        // Add CSS animation
-        const style = document.createElement('style');
-        style.textContent = `
-            @keyframes spin {
-                from { transform: rotate(0deg); }
-                to { transform: rotate(360deg); }
+        function clearPreview() {
+            document.getElementById('jsonViewer').textContent = '';
+        }
+
+        function loadFile() {
+            const file = document.getElementById('fileInput').files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    document.getElementById('importJson').value = e.target.result;
+                };
+                reader.readAsText(file);
             }
-        `;
-        document.head.appendChild(style);
+        }
+
+        function copyToClipboard() {
+            const text = document.getElementById('importJson').value;
+            if (text) {
+                navigator.clipboard.writeText(text);
+ //               alert('Copied to clipboard!');
+            }
+        }
+
+        function clearImport() {
+            document.getElementById('importJson').value = '';
+        }
+
+        // Event listeners
+        document.getElementById('thaiInput').addEventListener('input', updateStats);
 
         // Initialize
         init();
 
         // Make functions global
         window.setDataType = setDataType;
-        window.toggleLanguage = toggleLanguage;
         window.cleanText = cleanText;
-        window.generatePreview = generatePreview;
         window.downloadJSON = downloadJSON;
-        window.copyJSON = copyJSON;
         window.switchPreview = switchPreview;
-        window.updateWordTranslation = updateWordTranslation;
-        window.updateSentenceTranslation = updateSentenceTranslation;
+        window.removeBlock = removeBlock;
+        window.handleTagKeyPress = handleTagKeyPress;
+        window.loadFile = loadFile;
+        window.importDocument = importDocument;
+        window.initializeNewDocument = initializeNewDocument;
+        window.updateVocabulary = updateVocabulary;
+        window.generateBlock = generateBlock;
+        window.checkDuplicates = checkDuplicates;
+        window.addTag = addTag;
+        window.copyToClipboard = copyToClipboard;
+        window.clearImport = clearImport;
+        window.copyPreview = copyPreview;
+        window.clearPreview = clearPreview;
     </script>
 </body>
 

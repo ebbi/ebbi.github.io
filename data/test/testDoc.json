@@ -1,0 +1,118 @@
+{
+    "documentId": "testDoc",
+    "metadata": {
+        "version": "1.0.0",
+        "created": "2024-01-15T10:00:00Z",
+        "updated": "2024-01-20T14:30:00Z",
+        "authors": [ "author1", "author2" ],
+        "reviewers": [ "reviewer1" ],
+        "difficulty": 2,
+        "prerequisites": [ "thai-basics-1" ],
+        "tags": [ "particles", "politeness", "beginners" ]
+    },
+    "vocabulary": {
+        "สวัสดี": {
+            "translations": {
+                "en": "hello",
+                "fa": "سلام"
+            },
+            "examples": [ "sสวัสดีค่ะ", "sentence-2" ]
+        },
+        "ครับ": {
+            "translations": {
+                "en": "polite particle (male)",
+                "fa": "ذره مؤدب (مرد)"
+            },
+            "blankable": true,
+            "alternatives": [ "ครับ", "ค่ะ" ]
+        }
+    },
+    "activitySettings": {
+        "global": [ "multipleChoiceWord", "multipleChoiceSentence" ],
+        "words": {
+            "enabled": true,
+            "types": [ "multipleChoiceWord", "flashcardWord" ]
+        },
+        "sentences": {
+            "enabled": true,
+            "types": [ "multipleChoiceSentence", "buildSentence", "flashcardSentence" ]
+        }
+    },
+    "sections":
+    [
+        {
+            "sectionId": "testSectionGreeting",
+            "content": [
+                {
+                    "type": "paragraph",
+                    "config": {
+                        "heading": {
+                            "en": "Basic Greetings with Polite Particles",
+                            "fa": "احوالپرسی پایه با ذرات مؤدبانه",
+                            "th": "การทักทายพื้นฐานด้วยคำลงท้ายแสดงความสุภาพ"
+                        },
+                        "grammar": {
+                            "pattern": "Sentence + ครับ (male) / ค่ะ (female)",
+                            "explanation": {
+                                "en": "Paragraph specific grammar Polite particles are added at the end of sentences to show respect. Men use ครับ, women use ค่ะ. They don't change the meaning, only the politeness level.",
+                                "fa": "ذرات مؤدبانه در پایان جملات اضافه می‌شوند تا احترام نشان دهند. مردان از ครับ و زنان از ค่ะ استفاده می‌کنند. این ذرات معنی جمله را تغییر نمی‌دهند، فقط سطح ادب را افزایش می‌دهند.",
+                                "th": "คำลงท้ายแสดงความสุภาพใช้เติมท้ายประโยคเพื่อแสดงความเคารพ ผู้ชายใช้ ครับ ผู้หญิงใช้ ค่ะ คำเหล่านี้ไม่ได้เปลี่ยนความหมายของประโยค แค่เพิ่มระดับความสุภาพ"
+                            },
+                            "usage": {
+                                "en": "Use ครับ if you are male, ค่ะ if you are female. Use with anyone you want to show respect to, especially elders, strangers, and in formal situations.",
+                                "fa": "اگر مرد هستید از ครับ استفاده کنید، اگر زن هستید از ค่ะ استفاده کنید. با هر کسی که می‌خواهید احترام نشان دهید استفاده کنید، به ویژه با بزرگترها، غریبه‌ها و در موقعیت‌های رسمی.",
+                                "th": "ถ้าคุณเป็นผู้ชายใช้ ครับ ถ้าคุณเป็นผู้หญิงใช้ ค่ะ ใช้กับทุกคนที่คุณต้องการแสดงความเคารพ โดยเฉพาะผู้ใหญ่ คนแปลกหน้า และในสถานการณ์ที่เป็นทางการ"
+                            },
+                            "examples": [
+                                {
+                                    "sentenceSource": "สังเกตว่าผู้พูดชายใช้ ครับ",
+                                    "translations": {
+                                        "en": "Notice how the male speaker uses ครับ",
+                                        "fa": "توجه کنید که گوینده مرد چگونه از ครับ استفاده می‌کند"
+                                    }
+                                },
+                                {
+                                    "sentenceSource": "สวัสดีค่ะ",
+                                    "translations": {
+                                        "en": "Hello (female speaker)",
+                                        "fa": "سلام (گوینده زن)"
+                                    }
+                                }
+                            ]
+                        },
+                        "activity": {
+                            "inherit": true
+                        }
+                    },
+                    "sentences": [
+                        {
+                            "type": "sentence",
+                            "source": "สวัสดีครับ",
+                            "wordIds": [ "สวัสดี", "ครับ" ],
+                            "translations": {
+                                "en": "Hello (male speaker)",
+                                "fa": "سلام (گوینده مرد)"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "words",
+                    "config": {
+                        "heading": {
+                            "en": "Basic Greetings with Polite Particles",
+                            "fa": "احوالپرسی پایه با ذرات مؤدبانه",
+                            "th": "การทักทายพื้นฐานด้วยคำลงท้ายแสดงความสุภาพ"
+                        },
+                        "activity": {
+                            "inherit": true,
+                            "add": [ "buildSentence" ],
+                            "remove": [ "flashcardSentence" ]
+                        }
+                    },
+                    "wordIds": [ "สวัสดี", "ครับ" ]
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,113 @@
+{
+    "documentId": "ls1",
+    "metadata": {
+        "version": "1.0.0",
+        "created": "2026-02-20T10:00:00Z",
+        "updated": "2026-02-20T04:34:06.806Z",
+        "authors": [
+            "author1",
+            "author2"
+        ],
+        "reviewers": [
+            "reviewer1"
+        ],
+        "difficulty": 2,
+        "prerequisites": [
+            "thai-basics-1"
+        ],
+        "tags": [ ]
+    },
+    "vocabulary": { },
+    "activitySettings": {
+        "words": {
+            "enabled": true,
+            "types": [
+                "multipleChoiceWord",
+                "flashcardWord"
+            ]
+        },
+        "sentences": {
+            "enabled": true,
+            "types": [
+                "multipleChoiceSentence",
+                "flashcardSentence",
+                "buildSentence"
+            ]
+        }
+    },
+    "sections": [
+        {
+            "sectionId": "ls1Section",
+            "content": [
+                {
+                    "type": "words",
+                    "config": {
+                        "heading": {
+                            "en": "Vocabulary List",
+                            "fa": "لیست واژگان",
+                            "th": "รายการคำศัพท์"
+                        },
+                        "activity": {
+                            "inherit": true
+                        }
+                    },
+                    "wordIds": [
+                        "กิน",
+                        "ดื่ม",
+                        "ดู",
+                        "ฟัง",
+                        "ตื่น"
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "paragraph",
+            "config": {
+                "heading": {
+                    "en": "Conversation Practice",
+                    "fa": "تمرین مکالمه",
+                    "th": "ฝึกสนทนา"
+                },
+                "grammar": {
+                    "pattern": "",
+                    "explanation": { },
+                    "usage": { },
+                    "examples": [ ]
+                },
+                "activity": {
+                    "inherit": true
+                }
+            },
+            "sentences": [
+                {
+                    "type": "sentence",
+                    "source": "ผมชื่อจอห์น",
+                    "wordIds": [
+                        "ผม",
+                        "ชื่",
+                        "อจอห์น"
+                    ],
+                    "translations": {
+                        "en": "My name is John.",
+                        "fa": "اسم من جان است."
+                    }
+                },
+                {
+                    "type": "sentence",
+                    "source": "คุณสบายดีไหม",
+                    "wordIds": [
+                        "คุณ",
+                        "สบายดี",
+                        "ไหม"
+                    ],
+                    "translations": {
+                        "en": "How are you?",
+                        "fa": "حالت خوبه؟"
+                    }
+                }
+            ]
+        }
+
+    ]
+}

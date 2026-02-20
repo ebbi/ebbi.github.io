@@ -299,7 +299,7 @@ h6 {
 /* Section Details */
 .section-details {
     background: var(--card);
-    margin-bottom: 8px;
+    margin: 0 8px 12px;
 }
 
 .section-details summary {
@@ -1054,7 +1054,7 @@ h6 {
     padding: 12px 8px;
     border: none;
     border-radius: 8px;
-    background: var(--card);
+   background: var(--card); 
     color: var(--text);
     border: 1px solid var(--border);
     cursor: pointer;
@@ -1069,19 +1069,19 @@ h6 {
     transform: translateY(-2px);
 }
 
-.rating-btn:nth-child(1):hover {
+.rating-btn:nth-child(1) {
     background: #dc2626;
 }
 
-.rating-btn:nth-child(2):hover {
+.rating-btn:nth-child(2) {
     background: #d97706;
 }
 
-.rating-btn:nth-child(3):hover {
+.rating-btn:nth-child(3) {
     background: #059669;
 }
 
-.rating-btn:nth-child(4):hover {
+.rating-btn:nth-child(4) {
     background: #2563eb;
 }
 
@@ -1656,9 +1656,11 @@ td {
 
     .document-controls-wrapper>*,
     .section-all-controls>* {
-        flex: 0 1 calc(50% - 4px);
-        /* 2 columns with gap */
+        /*   flex: 0 1 calc(50% - 4px);
+        2 columns with gap */
         min-width: 0;
+        flex: 0 1 calc(30% - 4px);
+        font-size: 0.80rem;
     }
 }
 
@@ -1676,7 +1678,9 @@ td {
     /* Keep 2 columns at this width */
     .document-controls-wrapper>*,
     .section-all-controls>* {
-        flex: 0 1 calc(50% - 4px);
+        /*        flex: 0 1 calc(50% - 4px); */
+        flex: 0 1 calc(30% - 4px);
+        font-size: 0.80rem;
     }
 
     .library-container {
