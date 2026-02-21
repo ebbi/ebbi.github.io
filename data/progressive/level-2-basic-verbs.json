@@ -1,0 +1,275 @@
+{
+    "documentId": "level-2-basic-verbs",
+    "metadata": {
+        "version": "2.0.0",
+        "created": "2026-02-21T10:00:00Z",
+        "title": {
+            "en": "Level 2: Basic Verbs & Food",
+            "th": "ระดับ 2: คำกริยาพื้นฐานและอาหาร",
+            "fa": "سطح ۲: افعال پایه و غذا"
+        },
+        "difficulty": 1,
+        "newWords": 25,
+        "reviewWords": 10,
+        "totalWords": 35,
+        "sentences": 15,
+        "prerequisites": [ "level-1-meeting-people" ],
+        "estimatedTime": 20
+    },
+    "vocabulary": {
+        "กิน": {
+            "translations": { "en": "eat", "fa": "خوردن" }
+        },
+        "ดื่ม": {
+            "translations": { "en": "drink", "fa": "نوشیدن" }
+        },
+        "ชอบ": {
+            "translations": { "en": "like", "fa": "دوست داشتن" }
+        },
+        "ไม่": {
+            "translations": { "en": "no/not", "fa": "نه" }
+        },
+        "ไหม": {
+            "translations": { "en": "question particle", "fa": "ذره سوال" }
+        },
+        "ข้าว": {
+            "translations": { "en": "rice", "fa": "برنج" }
+        },
+        "น้ำ": {
+            "translations": { "en": "water", "fa": "آب" }
+        },
+        "กาแฟ": {
+            "translations": { "en": "coffee", "fa": "قهوه" }
+        },
+        "ชา": {
+            "translations": { "en": "tea", "fa": "چای" }
+        },
+        "ผลไม้": {
+            "translations": { "en": "fruit", "fa": "میوه" }
+        },
+        "กับ": {
+            "translations": { "en": "with", "fa": "با" }
+        },
+        "และ": {
+            "translations": { "en": "and", "fa": "و" }
+        },
+        "มื้อเช้า": {
+            "translations": { "en": "breakfast", "fa": "صبحانه" }
+        },
+        "มื้อกลางวัน": {
+            "translations": { "en": "lunch", "fa": "ناهار" }
+        },
+        "มื้อเย็น": {
+            "translations": { "en": "dinner", "fa": "شام" }
+        },
+        "อร่อย": {
+            "translations": { "en": "delicious", "fa": "خوشمزه" }
+        },
+        "มาก": {
+            "translations": { "en": "very", "fa": "بسیار" }
+        },
+        "หน่อย": {
+            "translations": { "en": "a little/please", "fa": "کمی/لطفاً" }
+        },
+        "ขอ": {
+            "translations": { "en": "request", "fa": "درخواست" }
+        },
+        "Review from Level 1": {
+            "สวัสดี": { "translations": { "en": "hello", "fa": "سلام" } },
+            "ครับ": { "translations": { "en": "polite particle (male)", "fa": "ذره مؤدب (مرد)" } },
+            "ค่ะ": { "translations": { "en": "polite particle (female)", "fa": "ذره مؤدب (زن)" } },
+            "ผม": { "translations": { "en": "I (male)", "fa": "من (مرد)" } },
+            "ดิฉัน": { "translations": { "en": "I (female)", "fa": "من (زن)" } },
+            "คุณ": { "translations": { "en": "you", "fa": "شما" } },
+            "ชื่อ": { "translations": { "en": "name", "fa": "اسم" } },
+            "อะไร": { "translations": { "en": "what", "fa": "چه" } },
+            "ได้": { "translations": { "en": "can", "fa": "توانستن" } },
+            "นิดหน่อย": { "translations": { "en": "a little", "fa": "کمی" } }
+        }
+    },
+    "activity": {
+        "words": true,
+        "sentences": true
+    },
+    "sections": [
+        {
+            "sectionId": "level2-vocab-1",
+            "heading": {
+                "en": "Food & Drink Verbs",
+                "th": "คำกริยาเกี่ยวกับอาหารและเครื่องดื่ม",
+                "fa": "افعال مربوط به غذا و نوشیدنی"
+            },
+            "content": [
+                {
+                    "type": "words",
+                    "wordIds": [ "กิน", "ดื่ม", "ชอบ", "ไม่", "ไหม", "ข้าว", "น้ำ", "กาแฟ", "ชา", "ผลไม้" ]
+                }
+            ]
+        },
+        {
+            "sectionId": "level2-conv-1",
+            "heading": {
+                "en": "Conversation 1: Talking About Food",
+                "th": "บทสนทนา 1: พูดถึงอาหาร",
+                "fa": "مکالمه ۱: صحبت درباره غذا"
+            },
+            "content": [
+                {
+                    "type": "paragraph",
+                    "sentences": [
+                        {
+                            "source": "คุณชอบกินอะไรครับ",
+                            "wordIds": [ "คุณ", "ชอบ", "กิน", "อะไร", "ครับ" ],
+                            "translations": {
+                                "en": "What do you like to eat?",
+                                "fa": "چه چیزی دوست دارید بخورید؟"
+                            }
+                        },
+                        {
+                            "source": "ฉันชอบกินผลไม้ค่ะ",
+                            "wordIds": [ "ฉัน", "ชอบ", "กิน", "ผลไม้", "ค่ะ" ],
+                            "translations": {
+                                "en": "I like to eat fruit",
+                                "fa": "میوه دوست دارم بخورم"
+                            }
+                        },
+                        {
+                            "source": "แล้วคุณชอบดื่มอะไรครับ",
+                            "wordIds": [ "แล้ว", "คุณ", "ชอบ", "ดื่ม", "อะไร", "ครับ" ],
+                            "translations": {
+                                "en": "And what do you like to drink?",
+                                "fa": "و چه چیزی دوست دارید بنوشید؟"
+                            }
+                        },
+                        {
+                            "source": "ชอบดื่มชาค่ะ",
+                            "wordIds": [ "ชอบ", "ดื่ม", "ชา", "ค่ะ" ],
+                            "translations": {
+                                "en": "I like to drink tea",
+                                "fa": "چای دوست دارم"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "sectionId": "level2-conv-2",
+            "heading": {
+                "en": "Conversation 2: Ordering Food",
+                "th": "บทสนทนา 2: สั่งอาหาร",
+                "fa": "مکالمه ۲: سفارش غذا"
+            },
+            "content": [
+                {
+                    "type": "paragraph",
+                    "sentences": [
+                        {
+                            "source": "สวัสดีครับ ขอข้าวผัดหน่อยครับ",
+                            "wordIds": [ "สวัสดี", "ครับ", "ขอ", "ข้าว", "ผัด", "หน่อย", "ครับ" ],
+                            "translations": {
+                                "en": "Hello, can I have fried rice please?",
+                                "fa": "سلام، برنج سرخ‌شده می‌خواهم لطفاً"
+                            }
+                        },
+                        {
+                            "source": "ได้ค่ะ กับอะไรคะ",
+                            "wordIds": [ "ได้", "ค่ะ", "กับ", "อะไร", "คะ" ],
+                            "translations": {
+                                "en": "Certainly, with what?",
+                                "fa": "حتماً، با چه چیزی؟"
+                            }
+                        },
+                        {
+                            "source": "กับไก่ครับ",
+                            "wordIds": [ "กับ", "ไก่", "ครับ" ],
+                            "translations": {
+                                "en": "With chicken",
+                                "fa": "با مرغ"
+                            }
+                        },
+                        {
+                            "source": "และขอน้ำเปล่าหนึ่งขวดครับ",
+                            "wordIds": [ "และ", "ขอ", "น้ำ", "เปล่า", "หนึ่ง", "ขวด", "ครับ" ],
+                            "translations": {
+                                "en": "And one bottle of water please",
+                                "fa": "و یک بطری آب لطفاً"
+                            }
+                        },
+                        {
+                            "source": "ได้ค่ะ อร่อยแน่นอนค่ะ",
+                            "wordIds": [ "ได้", "ค่ะ", "อร่อย", "แน่นอน", "ค่ะ" ],
+                            "translations": {
+                                "en": "Certainly, it will be delicious",
+                                "fa": "حتماً، خوشمزه خواهد بود"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "sectionId": "level2-conv-3",
+            "heading": {
+                "en": "Conversation 3: Meals of the Day",
+                "th": "บทสนทนา 3: มื้ออาหารของวัน",
+                "fa": "مکالمه ۳: وعده‌های غذایی روز"
+            },
+            "content": [
+                {
+                    "type": "paragraph",
+                    "sentences": [
+                        {
+                            "source": "มื้อเช้าคุณกินอะไรครับ",
+                            "wordIds": [ "มื้อเช้า", "คุณ", "กิน", "อะไร", "ครับ" ],
+                            "translations": {
+                                "en": "What do you eat for breakfast?",
+                                "fa": "برای صبحانه چه می‌خورید؟"
+                            }
+                        },
+                        {
+                            "source": "มื้อเช้าฉันกินข้าวต้มกับไข่ค่ะ",
+                            "wordIds": [ "มื้อเช้า", "ฉัน", "กิน", "ข้าวต้ม", "กับ", "ไข่", "ค่ะ" ],
+                            "translations": {
+                                "en": "For breakfast, I eat rice porridge with egg",
+                                "fa": "برای صبحانه، برنج‌پخته با تخم‌مرغ می‌خورم"
+                            }
+                        },
+                        {
+                            "source": "มื้อกลางวันกินอะไรครับ",
+                            "wordIds": [ "มื้อกลางวัน", "กิน", "อะไร", "ครับ" ],
+                            "translations": {
+                                "en": "What about lunch?",
+                                "fa": "ناهار چطور؟"
+                            }
+                        },
+                        {
+                            "source": "มื้อกลางวันกินก๋วยเตี๋ยวค่ะ",
+                            "wordIds": [ "มื้อกลางวัน", "กิน", "ก๋วยเตี๋ยว", "ค่ะ" ],
+                            "translations": {
+                                "en": "For lunch, I eat noodles",
+                                "fa": "برای ناهار، نودل می‌خورم"
+                            }
+                        },
+                        {
+                            "source": "อร่อยไหมครับ",
+                            "wordIds": [ "อร่อย", "ไหม", "ครับ" ],
+                            "translations": {
+                                "en": "Is it delicious?",
+                                "fa": "خوشمزه است؟"
+                            }
+                        },
+                        {
+                            "source": "อร่อยมากค่ะ",
+                            "wordIds": [ "อร่อย", "มาก", "ค่ะ" ],
+                            "translations": {
+                                "en": "Very delicious",
+                                "fa": "بسیار خوشمزه"
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

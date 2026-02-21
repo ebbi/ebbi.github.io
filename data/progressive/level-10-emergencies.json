@@ -1,0 +1,550 @@
+{
+    "documentId": "level-10-emergencies",
+    "metadata": {
+        "version": "2.0.0",
+        "created": "2026-02-21T10:00:00Z",
+        "title": {
+            "en": "Level 10: Emergencies & Problem Solving",
+            "th": "ระดับ 10: เหตุฉุกเฉินและการแก้ปัญหา",
+            "fa": "سطح ۱۰: شرایط اضطراری و حل مسئله"
+        },
+        "difficulty": 4,
+        "newWords": 35,
+        "reviewWords": 50,
+        "totalWords": 85,
+        "sentences": 32,
+        "prerequisites": [ "level-9-travel" ],
+        "estimatedTime": 40
+    },
+    "vocabulary": {
+        "ช่วย": {
+            "translations": { "en": "help", "fa": "کمک" }
+        },
+        "ด้วย": {
+            "translations": { "en": "please/particle", "fa": "لطفاً" }
+        },
+        "โทร": {
+            "translations": { "en": "call", "fa": "تلفن کردن" }
+        },
+        "ตำรวจ": {
+            "translations": { "en": "police", "fa": "پلیس" }
+        },
+        "โรงพยาบาล": {
+            "translations": { "en": "hospital", "fa": "بیمارستان" }
+        },
+        "รถพยาบาล": {
+            "translations": { "en": "ambulance", "fa": "آمبولانس" }
+        },
+        "หน่วยกู้ภัย": {
+            "translations": { "en": "rescue unit", "fa": "واحد نجات" }
+        },
+        "ไฟไหม้": {
+            "translations": { "en": "fire", "fa": "آتش‌سوزی" }
+        },
+        "อุบัติเหตุ": {
+            "translations": { "en": "accident", "fa": "تصادف" }
+        },
+        "หาย": {
+            "translations": { "en": "lost/missing", "fa": "گم شده" }
+        },
+        "กระเป๋าเงิน": {
+            "translations": { "en": "wallet", "fa": "کیف پول" }
+        },
+        "โทรศัพท์": {
+            "translations": { "en": "phone", "fa": "تلفن" }
+        },
+        "ขโมย": {
+            "translations": { "en": "steal", "fa": "دزدیدن" }
+        },
+        "ทำหาย": {
+            "translations": { "en": "lose", "fa": "گم کردن" }
+        },
+        "พบ": {
+            "translations": { "en": "find", "fa": "پیدا کردن" }
+        },
+        "แจ้ง": {
+            "translations": { "en": "report/notify", "fa": "گزارش دادن" }
+        },
+        "ประกัน": {
+            "translations": { "en": "insurance", "fa": "بیمه" }
+        },
+        "สถานทูต": {
+            "translations": { "en": "embassy", "fa": "سفارت" }
+        },
+        "เอกสาร": {
+            "translations": { "en": "documents", "fa": "مدارک" }
+        },
+        "บัตรประชาชน": {
+            "translations": { "en": "ID card", "fa": "کارت شناسایی" }
+        },
+        "ใบขับขี่": {
+            "translations": { "en": "driver's license", "fa": "گواهینامه" }
+        },
+        "ร้องเรียน": {
+            "translations": { "en": "complain", "fa": "شکایت" }
+        },
+        "เสีย": {
+            "translations": { "en": "broken/damaged", "fa": "خراب" }
+        },
+        "พัง": {
+            "translations": { "en": "broken", "fa": "خراب شده" }
+        },
+        "ซ่อม": {
+            "translations": { "en": "repair", "fa": "تعمیر" }
+        },
+        "เปลี่ยน": {
+            "translations": { "en": "change/replace", "fa": "تعویض" }
+        },
+        "คืนเงิน": {
+            "translations": { "en": "refund", "fa": "بازپرداخت" }
+        },
+        "เข้าใจ": {
+            "translations": { "en": "understand", "fa": "فهمیدن" }
+        },
+        "ไม่เข้าใจ": {
+            "translations": { "en": "don't understand", "fa": "نفهمیدن" }
+        },
+        "พูดช้าๆ": {
+            "translations": { "en": "speak slowly", "fa": "آهسته صحبت کردن" }
+        },
+        "อีกครั้ง": {
+            "translations": { "en": "again", "fa": "دوباره" }
+        },
+        "ขอโทษ": {
+            "translations": { "en": "sorry", "fa": "ببخشید" }
+        },
+        "ไม่เป็นไร": {
+            "translations": { "en": "never mind/it's okay", "fa": "مهم نیست" }
+        },
+        "เรียบร้อย": {
+            "translations": { "en": "finished/ready", "fa": "تمام شده" }
+        },
+        "สำเร็จ": {
+            "translations": { "en": "success", "fa": "موفقیت" }
+        }
+    },
+    "activity": {
+        "words": true,
+        "sentences": true
+    },
+    "sections": [
+        {
+            "sectionId": "level10-vocab-1",
+            "heading": {
+                "en": "Emergency Vocabulary",
+                "th": "คำศัพท์เหตุฉุกเฉิน",
+                "fa": "واژگان اضطراری"
+            },
+            "content": [
+                {
+                    "type": "words",
+                    "wordIds": [ "ช่วย", "ด้วย", "โทร", "ตำรวจ", "โรงพยาบาล", "รถพยาบาล", "หน่วยกู้ภัย", "ไฟไหม้", "อุบัติเหตุ" ]
+                }
+            ]
+        },
+        {
+            "sectionId": "level10-vocab-2",
+            "heading": {
+                "en": "Lost & Found",
+                "th": "ของหาย",
+                "fa": "گم شده و پیدا شده"
+            },
+            "content": [
+                {
+                    "type": "words",
+                    "wordIds": [ "หาย", "กระเป๋าเงิน", "โทรศัพท์", "ขโมย", "ทำหาย", "พบ", "แจ้ง", "ประกัน", "สถานทูต", "เอกสาร" ]
+                }
+            ]
+        },
+        {
+            "sectionId": "level10-conv-1",
+            "heading": {
+                "en": "Conversation 1: Calling for Help",
+                "th": "บทสนทนา 1: ขอความช่วยเหลือ",
+                "fa": "مکالمه ۱: درخواست کمک"
+            },
+            "content": [
+                {
+                    "type": "paragraph",
+                    "sentences": [
+                        {
+                            "source": "ช่วยด้วย! มีอุบัติเหตุ",
+                            "wordIds": [ "ช่วย", "ด้วย", "มี", "อุบัติเหตุ" ],
+                            "translations": {
+                                "en": "Help! There's an accident",
+                                "fa": "کمک! تصادف شده"
+                            }
+                        },
+                        {
+                            "source": "เกิดอะไรขึ้นครับ",
+                            "wordIds": [ "เกิด", "อะไร", "ขึ้น", "ครับ" ],
+                            "translations": {
+                                "en": "What happened?",
+                                "fa": "چه اتفاقی افتاده؟"
+                            }
+                        },
+                        {
+                            "source": "รถชนกัน มีคนเจ็บ",
+                            "wordIds": [ "รถ", "ชน", "กัน", "มี", "คน", "เจ็บ" ],
+                            "translations": {
+                                "en": "A car crash, someone is injured",
+                                "fa": "تصادف ماشین، کسی زخمی شده"
+                            }
+                        },
+                        {
+                            "source": "โทรเรียกรถพยาบาลเร็วๆ",
+                            "wordIds": [ "โทร", "เรียก", "รถพยาบาล", "เร็ว", "ๆ" ],
+                            "translations": {
+                                "en": "Call an ambulance quickly!",
+                                "fa": "زود آمبولانس خبر کنید!"
+                            }
+                        },
+                        {
+                            "source": "เบอร์โทรอะไรครับ",
+                            "wordIds": [ "เบอร์", "โทร", "อะไร", "ครับ" ],
+                            "translations": {
+                                "en": "What's the number?",
+                                "fa": "شماره چنده؟"
+                            }
+                        },
+                        {
+                            "source": "1669 รถพยาบาล",
+                            "wordIds": [ "หนึ่งหกหกเก้า", "รถพยาบาล" ],
+                            "translations": {
+                                "en": "1669 for ambulance",
+                                "fa": "۱۶۶۹ آمبولانس"
+                            }
+                        },
+                        {
+                            "source": "ที่ไหนครับ",
+                            "wordIds": [ "ที่ไหน", "ครับ" ],
+                            "translations": {
+                                "en": "Where?",
+                                "fa": "کجا؟"
+                            }
+                        },
+                        {
+                            "source": "ถนนสุขุมวิท ใกล้สถานี BTS อโศก",
+                            "wordIds": [ "ถนน", "สุขุมวิท", "ใกล้", "สถานี", "BTS", "อโศก" ],
+                            "translations": {
+                                "en": "Sukhumvit Road, near BTS Asok station",
+                                "fa": "خیابان سوخومویت، نزدیک ایستگاه BTS اسوک"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "sectionId": "level10-conv-2",
+            "heading": {
+                "en": "Conversation 2: Reporting a Theft",
+                "th": "บทสนทนา 2: แจ้งความของหาย",
+                "fa": "مکالمه ۲: گزارش دزدی"
+            },
+            "content": [
+                {
+                    "type": "paragraph",
+                    "sentences": [
+                        {
+                            "source": "ขอแจ้งความครับ กระเป๋าเงินหาย",
+                            "wordIds": [ "ขอ", "แจ้งความ", "ครับ", "กระเป๋าเงิน", "หาย" ],
+                            "translations": {
+                                "en": "I want to report a lost wallet",
+                                "fa": "می‌خواهم گم شدن کیف پول را گزارش دهم"
+                            }
+                        },
+                        {
+                            "source": "หายที่ไหนครับ",
+                            "wordIds": [ "หาย", "ที่ไหน", "ครับ" ],
+                            "translations": {
+                                "en": "Where did you lose it?",
+                                "fa": "کجا گم کردید؟"
+                            }
+                        },
+                        {
+                            "source": "น่าจะที่ตลาดนัดจตุจักรครับ",
+                            "wordIds": [ "น่าจะ", "ที่", "ตลาดนัด", "จตุจักร", "ครับ" ],
+                            "translations": {
+                                "en": "Probably at Chatuchak market",
+                                "fa": "احتمالاً در بازار چاتوچاک"
+                            }
+                        },
+                        {
+                            "source": "ในกระเป๋ามีอะไรบ้าง",
+                            "wordIds": [ "ใน", "กระเป๋า", "มี", "อะไร", "บ้าง" ],
+                            "translations": {
+                                "en": "What was in the wallet?",
+                                "fa": "توی کیف چی بود؟"
+                            }
+                        },
+                        {
+                            "source": "มีเงินสดสามพันบาท บัตรเครดิต และบัตรประชาชน",
+                            "wordIds": [ "มี", "เงินสด", "สาม", "พัน", "บาท", "บัตรเครดิต", "และ", "บัตรประชาชน" ],
+                            "translations": {
+                                "en": "3000 baht cash, credit cards, and ID card",
+                                "fa": "۳۰۰۰ بات نقد، کارت اعتباری، و کارت شناسایی"
+                            }
+                        },
+                        {
+                            "source": "เบอร์โทรติดต่อกลับครับ",
+                            "wordIds": [ "เบอร์", "โทร", "ติดต่อ", "กลับ", "ครับ" ],
+                            "translations": {
+                                "en": "Your contact number?",
+                                "fa": "شماره تماس شما؟"
+                            }
+                        },
+                        {
+                            "source": "เบอร์ 089-xxxxxxx ครับ",
+                            "wordIds": [ ],
+                            "translations": {
+                                "en": "089-xxxxxxx",
+                                "fa": "۰۸۹-xxxxxxx"
+                            }
+                        },
+                        {
+                            "source": "ถ้าเจอจะโทรแจ้งครับ",
+                            "wordIds": [ "ถ้า", "เจอ", "จะ", "โทร", "แจ้ง", "ครับ" ],
+                            "translations": {
+                                "en": "If found, we'll call you",
+                                "fa": "اگر پیدا شد، به شما زنگ می‌زنیم"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "sectionId": "level10-conv-3",
+            "heading": {
+                "en": "Conversation 3: At the Embassy",
+                "th": "บทสนทนา 3: ที่สถานทูต",
+                "fa": "مکالمه ۳: در سفارت"
+            },
+            "content": [
+                {
+                    "type": "paragraph",
+                    "sentences": [
+                        {
+                            "source": "สวัสดีค่ะ ต้องการให้ช่วยอะไรคะ",
+                            "wordIds": [ "สวัสดี", "ค่ะ", "ต้องการ", "ให้", "ช่วย", "อะไร", "คะ" ],
+                            "translations": {
+                                "en": "Hello, how can I help you?",
+                                "fa": "سلام، چطور می‌توانم کمک کنم؟"
+                            }
+                        },
+                        {
+                            "source": "ผมทำพาสปอร์ตหายครับ",
+                            "wordIds": [ "ผม", "ทำ", "พาสปอร์ต", "หาย", "ครับ" ],
+                            "translations": {
+                                "en": "I lost my passport",
+                                "fa": "پاسپورتم را گم کرده‌ام"
+                            }
+                        },
+                        {
+                            "source": "แจ้งความที่สถานีตำรวจหรือยังคะ",
+                            "wordIds": [ "แจ้งความ", "ที่", "สถานี", "ตำรวจ", "หรือ", "ยัง", "คะ" ],
+                            "translations": {
+                                "en": "Have you reported it to the police?",
+                                "fa": "به پلیس گزارش داده‌اید؟"
+                            }
+                        },
+                        {
+                            "source": "แจ้งแล้วครับ ได้เอกสารมาแล้ว",
+                            "wordIds": [ "แจ้ง", "แล้ว", "ครับ", "ได้", "เอกสาร", "มา", "แล้ว" ],
+                            "translations": {
+                                "en": "Yes, I have the police report",
+                                "fa": "بله، گزارش پلیس را گرفته‌ام"
+                            }
+                        },
+                        {
+                            "source": "ดีค่ะ ขอเอกสารและรูปถ่ายด้วยค่ะ",
+                            "wordIds": [ "ดี", "ค่ะ", "ขอ", "เอกสาร", "และ", "รูปถ่าย", "ด้วย", "ค่ะ" ],
+                            "translations": {
+                                "en": "Good, please give me the documents and photos",
+                                "fa": "خوبه، لطفاً مدارک و عکس را بدهید"
+                            }
+                        },
+                        {
+                            "source": "พาสปอร์ตใหม่จะใช้เวลากี่วันครับ",
+                            "wordIds": [ "พาสปอร์ต", "ใหม่", "จะ", "ใช้", "เวลา", "กี่", "วัน", "ครับ" ],
+                            "translations": {
+                                "en": "How many days for a new passport?",
+                                "fa": "پاسپورت جدید چند روز طول می‌کشد؟"
+                            }
+                        },
+                        {
+                            "source": "ประมาณหนึ่งสัปดาห์ค่ะ",
+                            "wordIds": [ "ประมาณ", "หนึ่ง", "สัปดาห์", "ค่ะ" ],
+                            "translations": {
+                                "en": "About one week",
+                                "fa": "حدود یک هفته"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "sectionId": "level10-conv-4",
+            "heading": {
+                "en": "Conversation 4: Language Problems",
+                "th": "บทสนทนา 4: ปัญหาด้านภาษา",
+                "fa": "مکالمه ۴: مشکلات زبانی"
+            },
+            "content": [
+                {
+                    "type": "paragraph",
+                    "sentences": [
+                        {
+                            "source": "ขอโทษครับ ผมพูดภาษาไทยไม่เก่ง",
+                            "wordIds": [ "ขอโทษ", "ครับ", "ผม", "พูด", "ภาษาไทย", "ไม่", "เก่ง" ],
+                            "translations": {
+                                "en": "Sorry, I don't speak Thai well",
+                                "fa": "ببخشید، من تایلندی خوب صحبت نمی‌کنم"
+                            }
+                        },
+                        {
+                            "source": "ไม่เป็นไรค่ะ พูดช้าๆก็ได้",
+                            "wordIds": [ "ไม่เป็นไร", "ค่ะ", "พูด", "ช้า", "ๆ", "ก็", "ได้" ],
+                            "translations": {
+                                "en": "It's okay, you can speak slowly",
+                                "fa": "مهم نیست، می‌توانید آهسته صحبت کنید"
+                            }
+                        },
+                        {
+                            "source": "คุณพูดภาษาอังกฤษได้ไหมครับ",
+                            "wordIds": [ "คุณ", "พูด", "ภาษาอังกฤษ", "ได้", "ไหม", "ครับ" ],
+                            "translations": {
+                                "en": "Can you speak English?",
+                                "fa": "می‌توانید انگلیسی صحبت کنید؟"
+                            }
+                        },
+                        {
+                            "source": "ได้นิดหน่อยค่ะ",
+                            "wordIds": [ "ได้", "นิดหน่อย", "ค่ะ" ],
+                            "translations": {
+                                "en": "A little bit",
+                                "fa": "کمی می‌توانم"
+                            }
+                        },
+                        {
+                            "source": "ขอพูดอีกครั้งได้ไหมครับ",
+                            "wordIds": [ "ขอ", "พูด", "อีก", "ครั้ง", "ได้", "ไหม", "ครับ" ],
+                            "translations": {
+                                "en": "Can you say that again?",
+                                "fa": "می‌توانید دوباره بگویید؟"
+                            }
+                        },
+                        {
+                            "source": "ได้ค่ะ ช้าๆนะคะ",
+                            "wordIds": [ "ได้", "ค่ะ", "ช้า", "ๆ", "นะ", "คะ" ],
+                            "translations": {
+                                "en": "Yes, slowly",
+                                "fa": "بله، آهسته"
+                            }
+                        },
+                        {
+                            "source": "เข้าใจหรือยังครับ",
+                            "wordIds": [ "เข้าใจ", "หรือ", "ยัง", "ครับ" ],
+                            "translations": {
+                                "en": "Do you understand now?",
+                                "fa": "متوجه شدید؟"
+                            }
+                        },
+                        {
+                            "source": "เข้าใจแล้วค่ะ ขอบคุณมาก",
+                            "wordIds": [ "เข้าใจ", "แล้ว", "ค่ะ", "ขอบคุณ", "มาก" ],
+                            "translations": {
+                                "en": "I understand now, thank you very much",
+                                "fa": "متوجه شدم، خیلی متشکرم"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "sectionId": "level10-conv-5",
+            "heading": {
+                "en": "Conversation 5: Hotel Problems",
+                "th": "บทสนทนา 5: ปัญหาในโรงแรม",
+                "fa": "مکالمه ۵: مشکلات هتل"
+            },
+            "content": [
+                {
+                    "type": "paragraph",
+                    "sentences": [
+                        {
+                            "source": "แอร์ในห้องไม่เย็นครับ",
+                            "wordIds": [ "แอร์", "ใน", "ห้อง", "ไม่", "เย็น", "ครับ" ],
+                            "translations": {
+                                "en": "The AC in my room isn't cold",
+                                "fa": "کولر اتاق من سرد نیست"
+                            }
+                        },
+                        {
+                            "source": "ขอโทษด้วยค่ะ เดี๋ยวให้ช่างไปดูให้",
+                            "wordIds": [ "ขอโทษ", "ด้วย", "ค่ะ", "เดี๋ยว", "ให้", "ช่าง", "ไป", "ดู", "ให้" ],
+                            "translations": {
+                                "en": "I'm sorry, I'll send a technician to check",
+                                "fa": "متاسفم، یک تکنسین می‌فرستم"
+                            }
+                        },
+                        {
+                            "source": "แล้วน้ำอุ่นก็ไม่ไหลด้วยครับ",
+                            "wordIds": [ "แล้ว", "น้ำอุ่น", "ก็", "ไม่", "ไหล", "ด้วย", "ครับ" ],
+                            "translations": {
+                                "en": "And there's no hot water either",
+                                "fa": "و آب گرم هم نداریم"
+                            }
+                        },
+                        {
+                            "source": "เสียใจด้วยนะคะ จะเปลี่ยนห้องให้ไหมคะ",
+                            "wordIds": [ "เสียใจ", "ด้วย", "นะ", "คะ", "จะ", "เปลี่ยน", "ห้อง", "ให้", "ไหม", "คะ" ],
+                            "translations": {
+                                "en": "I'm sorry about that. Would you like to change rooms?",
+                                "fa": "متاسفم. می‌خواهید اتاق عوض کنید؟"
+                            }
+                        },
+                        {
+                            "source": "ได้ไหมครับ",
+                            "wordIds": [ "ได้", "ไหม", "ครับ" ],
+                            "translations": {
+                                "en": "Can I?",
+                                "fa": "می‌شود؟"
+                            }
+                        },
+                        {
+                            "source": "ได้ค่ะ รอสักครู่นะคะ",
+                            "wordIds": [ "ได้", "ค่ะ", "รอ", "สักครู่", "นะ", "คะ" ],
+                            "translations": {
+                                "en": "Yes, just a moment",
+                                "fa": "بله، یک لحظه"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "sectionId": "level10-review",
+            "heading": {
+                "en": "Complete Level 10 Review",
+                "th": "ทบทวนระดับ 10 ทั้งหมด",
+                "fa": "مرور کامل سطح ۱۰"
+            },
+            "content": [
+                {
+                    "type": "words",
+                    "heading": {
+                        "en": "All Level 10 Vocabulary",
+                        "th": "คำศัพท์ระดับ 10 ทั้งหมด",
+                        "fa": "همه واژگان سطح ۱۰"
+                    },
+                    "wordIds": [ "ช่วย", "ด้วย", "โทร", "ตำรวจ", "โรงพยาบาล", "รถพยาบาล", "ไฟไหม้", "อุบัติเหตุ", "หาย", "กระเป๋าเงิน", "โทรศัพท์", "ขโมย", "ทำหาย", "พบ", "แจ้ง", "ประกัน", "สถานทูต", "เอกสาร", "เข้าใจ", "ไม่เข้าใจ", "พูดช้าๆ", "อีกครั้ง", "ขอโทษ", "ไม่เป็นไร" ]
+                }
+            ]
+        }
+    ]
+}

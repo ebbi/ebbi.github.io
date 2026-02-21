@@ -1,0 +1,109 @@
+{
+    "documentId": "grammar-8-prepositions",
+    "metadata": {
+        "version": "2.0.0",
+        "created": "2026-02-21T10:00:00Z",
+        "title": {
+            "en": "Grammar 8: Prepositions of Place",
+            "th": "ไวยากรณ์ 8: คำบุพบทบอกสถานที่",
+            "fa": "گرامر ۸: حروف اضافه مکان"
+        },
+        "difficulty": 3,
+        "newWords": 15,
+        "reviewWords": 40,
+        "sentenceCount": 25,
+        "estimatedTime": 30
+    },
+    "vocabulary": {
+        "ใน": { "translations": { "en": "in", "fa": "داخل" } },
+        "นอก": { "translations": { "en": "outside", "fa": "بیرون" } },
+        "บน": { "translations": { "en": "on", "fa": "روی" } },
+        "ใต้": { "translations": { "en": "under", "fa": "زیر" } },
+        "ข้าง": { "translations": { "en": "beside/next to", "fa": "کنار" } },
+        "หน้า": { "translations": { "en": "in front of", "fa": "جلوی" } },
+        "หลัง": { "translations": { "en": "behind", "fa": "پشت" } },
+        "ระหว่าง": { "translations": { "en": "between", "fa": "بین" } },
+        "ใกล้": { "translations": { "en": "near", "fa": "نزدیک" } },
+        "ไกล": { "translations": { "en": "far", "fa": "دور" } },
+        "โต๊ะ": { "translations": { "en": "table", "fa": "میز" } },
+        "เก้าอี้": { "translations": { "en": "chair", "fa": "صندلی" } },
+        "ตู้เย็น": { "translations": { "en": "refrigerator", "fa": "یخچال" } },
+        "เตียง": { "translations": { "en": "bed", "fa": "تخت" } }
+    },
+    "sections": [
+        {
+            "sectionId": "grammar-8-1",
+            "heading": {
+                "en": "Grammar Focus: Prepositions",
+                "th": "เน้นไวยากรณ์: คำบุพบท",
+                "fa": "تمرکز گرامر: حروف اضافه"
+            },
+            "content": [
+                {
+                    "type": "paragraph",
+                    "heading": {
+                        "en": "Grammar Explanation",
+                        "th": "คำอธิบายไวยากรณ์",
+                        "fa": "توضیح گرامر"
+                    },
+                    "grammar": {
+                        "pattern": "Subject + อยู่ + Preposition + Location",
+                        "note": {
+                            "en": "To express location, use อยู่ (yoo) followed by the preposition and location. This is different from English where we use 'be' + preposition.",
+                            "th": "การบอกสถานที่ ใช้ 'อยู่' ตามด้วยคำบุพบทและสถานที่",
+                            "fa": "برای بیان مکان، از 'อยู่' استفاده کنید و بعد حرف اضافه و مکان بیاید."
+                        },
+                        "examples": [
+                            { "source": "หนังสืออยู่บนโต๊ะ", "translation": "The book is on the table" },
+                            { "source": "ผมอยู่ในบ้าน", "translation": "I am in the house" },
+                            { "source": "ร้านอยู่ใกล้ตลาด", "translation": "The shop is near the market" }
+                        ]
+                    },
+                    "sentences": [ ]
+                },
+                {
+                    "type": "paragraph",
+                    "heading": {
+                        "en": "Practice 1: Locations",
+                        "th": "ฝึกหัด 1: สถานที่",
+                        "fa": "تمرین ۱: مکان‌ها"
+                    },
+                    "sentences": [
+                        {
+                            "source": "หนังสืออยู่บนโต๊ะ",
+                            "wordIds": [ "หนังสือ", "อยู่", "บน", "โต๊ะ" ],
+                            "translations": {
+                                "en": "The book is on the table",
+                                "fa": "کتاب روی میز است"
+                            }
+                        },
+                        {
+                            "source": "แมวอยู่ใต้เตียง",
+                            "wordIds": [ "แมว", "อยู่", "ใต้", "เตียง" ],
+                            "translations": {
+                                "en": "The cat is under the bed",
+                                "fa": "گربه زیر تخت است"
+                            }
+                        },
+                        {
+                            "source": "ร้านอาหารอยู่ข้างธนาคาร",
+                            "wordIds": [ "ร้านอาหาร", "อยู่", "ข้าง", "ธนาคาร" ],
+                            "translations": {
+                                "en": "The restaurant is next to the bank",
+                                "fa": "رستوران کنار بانک است"
+                            }
+                        },
+                        {
+                            "source": "ตลาดอยู่ใกล้โรงเรียน",
+                            "wordIds": [ "ตลาด", "อยู่", "ใกล้", "โรงเรียน" ],
+                            "translations": {
+                                "en": "The market is near the school",
+                                "fa": "بازار نزدیک مدرسه است"
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

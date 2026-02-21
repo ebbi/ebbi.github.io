@@ -1,0 +1,173 @@
+{
+    "documentId": "grammar-1-basic-svo",
+    "metadata": {
+        "version": "2.0.0",
+        "created": "2026-02-21T10:00:00Z",
+        "title": {
+            "en": "Grammar 1: Subject + Verb + Object",
+            "th": "ไวยากรณ์ 1: ประธาน + กริยา + กรรม",
+            "fa": "گرامر ۱: فاعل + فعل + مفعول"
+        },
+        "difficulty": 1,
+        "newWords": 15,
+        "sentenceCount": 18,
+        "estimatedTime": 20
+    },
+    "vocabulary": {
+        "ผม": { "translations": { "en": "I (male)", "fa": "من (مرد)" } },
+        "ดิฉัน": { "translations": { "en": "I (female)", "fa": "من (زن)" } },
+        "คุณ": { "translations": { "en": "you", "fa": "شما" } },
+        "เขา": { "translations": { "en": "he/she", "fa": "او" } },
+        "กิน": { "translations": { "en": "eat", "fa": "خوردن" } },
+        "ดื่ม": { "translations": { "en": "drink", "fa": "نوشیدن" } },
+        "ซื้อ": { "translations": { "en": "buy", "fa": "خریدن" } },
+        "ขาย": { "translations": { "en": "sell", "fa": "فروختن" } },
+        "ชอบ": { "translations": { "en": "like", "fa": "دوست داشتن" } },
+        "ข้าว": { "translations": { "en": "rice", "fa": "برنج" } },
+        "น้ำ": { "translations": { "en": "water", "fa": "آب" } },
+        "กาแฟ": { "translations": { "en": "coffee", "fa": "قهوه" } },
+        "ชา": { "translations": { "en": "tea", "fa": "چای" } },
+        "ผลไม้": { "translations": { "en": "fruit", "fa": "میوه" } },
+        "หนังสือ": { "translations": { "en": "book", "fa": "کتاب" } }
+    },
+    "sections": [
+        {
+            "sectionId": "grammar-1-1",
+            "heading": {
+                "en": "Grammar Focus: Subject + Verb + Object",
+                "th": "เน้นไวยากรณ์: ประธาน + กริยา + กรรม",
+                "fa": "تمرکز گرامر: فاعل + فعل + مفعول"
+            },
+            "content": [
+                {
+                    "type": "paragraph",
+                    "heading": {
+                        "en": "Grammar Explanation",
+                        "th": "คำอธิบายไวยากรณ์",
+                        "fa": "توضیح گرامر"
+                    },
+                    "grammar": {
+                        "pattern": "Subject + Verb + Object",
+                        "note": {
+                            "en": "Thai uses the same word order as English: Subject first, then verb, then object. There's no conjugation - the verb stays the same for all subjects.",
+                            "th": "ภาษาไทยใช้ลำดับคำเหมือนภาษาอังกฤษ: ประธานขึ้นก่อน ตามด้วยกริยา และกรรม ไม่มีการผันกริยา",
+                            "fa": "تایلندی از همان ترتیب کلمات انگلیسی استفاده می‌کند: اول فاعل، بعد فعل، بعد مفعول. فعل برای همه فاعل‌ها یکسان می‌ماند."
+                        },
+                        "examples": [
+                            { "source": "ผมกินข้าว", "translation": "I eat rice" },
+                            { "source": "คุณดื่มน้ำ", "translation": "You drink water" },
+                            { "source": "เขาซื้อหนังสือ", "translation": "He/She buys a book" }
+                        ]
+                    },
+                    "sentences": [ ]
+                },
+                {
+                    "type": "paragraph",
+                    "heading": {
+                        "en": "Practice 1: Basic Sentences",
+                        "th": "ฝึกหัด 1: ประโยคพื้นฐาน",
+                        "fa": "تمرین ۱: جملات پایه"
+                    },
+                    "sentences": [
+                        {
+                            "source": "ผมกินข้าว",
+                            "wordIds": [ "ผม", "กิน", "ข้าว" ],
+                            "translations": {
+                                "en": "I eat rice",
+                                "fa": "من برنج می‌خورم"
+                            }
+                        },
+                        {
+                            "source": "คุณดื่มน้ำ",
+                            "wordIds": [ "คุณ", "ดื่ม", "น้ำ" ],
+                            "translations": {
+                                "en": "You drink water",
+                                "fa": "شما آب می‌نوشید"
+                            }
+                        },
+                        {
+                            "source": "เขาซื้อกาแฟ",
+                            "wordIds": [ "เขา", "ซื้อ", "กาแฟ" ],
+                            "translations": {
+                                "en": "He buys coffee",
+                                "fa": "او قهوه می‌خرد"
+                            }
+                        },
+                        {
+                            "source": "ดิฉันชอบชา",
+                            "wordIds": [ "ดิฉัน", "ชอบ", "ชา" ],
+                            "translations": {
+                                "en": "I (female) like tea",
+                                "fa": "من (زن) چای دوست دارم"
+                            }
+                        },
+                        {
+                            "source": "คุณชอบผลไม้",
+                            "wordIds": [ "คุณ", "ชอบ", "ผลไม้" ],
+                            "translations": {
+                                "en": "You like fruit",
+                                "fa": "شما میوه دوست دارید"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "sectionId": "grammar-1-2",
+            "heading": {
+                "en": "More Practice with Different Verbs",
+                "th": "ฝึกเพิ่มเติมกับคำกริยาต่างๆ",
+                "fa": "تمرین بیشتر با افعال مختلف"
+            },
+            "content": [
+                {
+                    "type": "words",
+                    "heading": {
+                        "en": "New Vocabulary: More Verbs",
+                        "th": "คำศัพท์ใหม่: คำกริยาเพิ่มเติม",
+                        "fa": "واژگان جدید: افعال بیشتر"
+                    },
+                    "wordIds": [ "กิน", "ดื่ม", "ซื้อ", "ขาย", "ชอบ" ]
+                },
+                {
+                    "type": "paragraph",
+                    "sentences": [
+                        {
+                            "source": "ผมขายหนังสือ",
+                            "wordIds": [ "ผม", "ขาย", "หนังสือ" ],
+                            "translations": {
+                                "en": "I sell books",
+                                "fa": "من کتاب می‌فروشم"
+                            }
+                        },
+                        {
+                            "source": "คุณซื้อข้าว",
+                            "wordIds": [ "คุณ", "ซื้อ", "ข้าว" ],
+                            "translations": {
+                                "en": "You buy rice",
+                                "fa": "شما برنج می‌خرید"
+                            }
+                        },
+                        {
+                            "source": "เขาดื่มกาแฟ",
+                            "wordIds": [ "เขา", "ดื่ม", "กาแฟ" ],
+                            "translations": {
+                                "en": "He drinks coffee",
+                                "fa": "او قهوه می‌نوشد"
+                            }
+                        },
+                        {
+                            "source": "ดิฉันชอบผลไม้",
+                            "wordIds": [ "ดิฉัน", "ชอบ", "ผลไม้" ],
+                            "translations": {
+                                "en": "I like fruit",
+                                "fa": "من میوه دوست دارم"
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

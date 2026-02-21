@@ -1,0 +1,329 @@
+{
+    "documentId": "thematic-post-office",
+    "metadata": {
+        "version": "2.0.0",
+        "created": "2026-02-21T10:00:00Z",
+        "title": {
+            "en": "At the Post Office",
+            "th": "ที่ไปรษณีย์",
+            "fa": "در اداره پست"
+        },
+        "difficulty": 1,
+        "wordCount": 25,
+        "sentenceCount": 18,
+        "estimatedTime": 15,
+        "tags": [ "post", "mail", "shipping", "services" ]
+    },
+    "vocabulary": {
+        "ไปรษณีย์": {
+            "translations": { "en": "post office", "fa": "اداره پست" }
+        },
+        "บุรุษไปรษณีย์": {
+            "translations": { "en": "mailman", "fa": "پستچی" }
+        },
+        "พัสดุ": {
+            "translations": { "en": "parcel", "fa": "بسته" }
+        },
+        "จดหมาย": {
+            "translations": { "en": "letter", "fa": "نامه" }
+        },
+        "ไปรษณียบัตร": {
+            "translations": { "en": "postcard", "fa": "کارت پستال" }
+        },
+        "ซองจดหมาย": {
+            "translations": { "en": "envelope", "fa": "پاکت نامه" }
+        },
+        "แสตมป์": {
+            "translations": { "en": "stamp", "fa": "تمبر" }
+        },
+        "ดวง": {
+            "translations": { "en": "stamp (classifier)", "fa": "عدد (برای تمبر)" }
+        },
+        "ส่ง": {
+            "translations": { "en": "send", "fa": "فرستادن" }
+        },
+        "รับ": {
+            "translations": { "en": "receive", "fa": "دریافت کردن" }
+        },
+        "ถึง": {
+            "translations": { "en": "to", "fa": "به" }
+        },
+        "จาก": {
+            "translations": { "en": "from", "fa": "از" }
+        },
+        "น้ำหนัก": {
+            "translations": { "en": "weight", "fa": "وزن" }
+        },
+        "ชั่ง": {
+            "translations": { "en": "weigh", "fa": "وزن کردن" }
+        },
+        "ราคา": {
+            "translations": { "en": "price", "fa": "قیمت" }
+        },
+        "ค่าส่ง": {
+            "translations": { "en": "shipping cost", "fa": "هزینه ارسال" }
+        },
+        "ธรรมดา": {
+            "translations": { "en": "regular mail", "fa": "پست معمولی" }
+        },
+        "ด่วน": {
+            "translations": { "en": "express", "fa": "پیشتاز" }
+        },
+        "ลงทะเบียน": {
+            "translations": { "en": "registered mail", "fa": "پست سفارشی" }
+        },
+        "EMS": {
+            "translations": { "en": "EMS", "fa": "پست سریع" }
+        },
+        "ทางอากาศ": {
+            "translations": { "en": "air mail", "fa": "پست هوایی" }
+        },
+        "ทางเรือ": {
+            "translations": { "en": "sea mail", "fa": "پست دریایی" }
+        },
+        "กล่อง": {
+            "translations": { "en": "box", "fa": "جعبه" }
+        },
+        "เทป": {
+            "translations": { "en": "tape", "fa": "چسب" }
+        },
+        "ที่อยู่": {
+            "translations": { "en": "address", "fa": "آدرس" }
+        }
+    },
+    "activity": {
+        "words": true,
+        "sentences": true
+    },
+    "sections": [
+        {
+            "sectionId": "post-conv-1",
+            "heading": {
+                "en": "Conversation 1: Buying Stamps",
+                "th": "บทสนทนา 1: ซื้อแสตมป์",
+                "fa": "مکالمه ۱: خرید تمبر"
+            },
+            "content": [
+                {
+                    "type": "paragraph",
+                    "sentences": [
+                        {
+                            "source": "ขอซื้อแสตมป์ครับ",
+                            "wordIds": [ "ขอ", "ซื้อ", "แสตมป์", "ครับ" ],
+                            "translations": {
+                                "en": "I'd like to buy stamps",
+                                "fa": "تمبر می‌خواهم بخرم"
+                            }
+                        },
+                        {
+                            "source": "ต้องการส่งอะไรคะ",
+                            "wordIds": [ "ต้องการ", "ส่ง", "อะไร", "คะ" ],
+                            "translations": {
+                                "en": "What are you sending?",
+                                "fa": "چه می‌خواهید بفرستید؟"
+                            }
+                        },
+                        {
+                            "source": "ส่งไปรษณียบัตรไปอเมริกาครับ",
+                            "wordIds": [ "ส่ง", "ไปรษณียบัตร", "ไป", "อเมริกา", "ครับ" ],
+                            "translations": {
+                                "en": "Sending postcards to America",
+                                "fa": "کارت پستال به آمریکا می‌فرستم"
+                            }
+                        },
+                        {
+                            "source": "ใบละ 25 บาทค่ะ",
+                            "wordIds": [ "ใบ", "ละ", "ยี่สิบห้า", "บาท", "ค่ะ" ],
+                            "translations": {
+                                "en": "25 baht each",
+                                "fa": "هر عدد ۲۵ بات"
+                            }
+                        },
+                        {
+                            "source": "ขอ 5 ใบครับ",
+                            "wordIds": [ "ขอ", "ห้า", "ใบ", "ครับ" ],
+                            "translations": {
+                                "en": "5 please",
+                                "fa": "۵ تا لطفاً"
+                            }
+                        },
+                        {
+                            "source": "125 บาทค่ะ",
+                            "wordIds": [ "หนึ่งร้อยยี่สิบห้า", "บาท", "ค่ะ" ],
+                            "translations": {
+                                "en": "125 baht",
+                                "fa": "۱۲۵ بات"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "sectionId": "post-conv-2",
+            "heading": {
+                "en": "Conversation 2: Sending a Parcel",
+                "th": "บทสนทนา 2: ส่งพัสดุ",
+                "fa": "مکالمه ۲: فرستادن بسته"
+            },
+            "content": [
+                {
+                    "type": "paragraph",
+                    "sentences": [
+                        {
+                            "source": "ส่งพัสดุครับ",
+                            "wordIds": [ "ส่ง", "พัสดุ", "ครับ" ],
+                            "translations": {
+                                "en": "I want to send a parcel",
+                                "fa": "می‌خواهم بسته بفرستم"
+                            }
+                        },
+                        {
+                            "source": "ได้ค่ะ ใส่กล่องแล้วหรือยัง",
+                            "wordIds": [ "ได้", "ค่ะ", "ใส่", "กล่อง", "แล้ว", "หรือ", "ยัง" ],
+                            "translations": {
+                                "en": "Okay, is it in a box already?",
+                                "fa": "باشه، داخل جعبه گذاشته‌اید؟"
+                            }
+                        },
+                        {
+                            "source": "ยังเลยครับ ขอกล่องหน่อย",
+                            "wordIds": [ "ยัง", "เลย", "ครับ", "ขอ", "กล่อง", "หน่อย" ],
+                            "translations": {
+                                "en": "Not yet, can I have a box?",
+                                "fa": "نه هنوز، یک جعبه می‌خواهم"
+                            }
+                        },
+                        {
+                            "source": "นี่ค่ะ กล่องขนาดนี้ 15 บาท",
+                            "wordIds": [ "นี่", "ค่ะ", "กล่อง", "ขนาด", "นี้", "สิบห้า", "บาท" ],
+                            "translations": {
+                                "en": "Here's a box this size, 15 baht",
+                                "fa": "بفرمایید، این جعبه ۱۵ بات"
+                            }
+                        },
+                        {
+                            "source": "ขอชั่งน้ำหนักหน่อยครับ",
+                            "wordIds": [ "ขอ", "ชั่ง", "น้ำหนัก", "หน่อย", "ครับ" ],
+                            "translations": {
+                                "en": "Please weigh it",
+                                "fa": "لطفاً وزن کنید"
+                            }
+                        },
+                        {
+                            "source": "2 กิโลกรัม จะส่งแบบไหนคะ",
+                            "wordIds": [ "สอง", "กิโลกรัม", "จะ", "ส่ง", "แบบ", "ไหน", "คะ" ],
+                            "translations": {
+                                "en": "2 kilograms. How would you like to send it?",
+                                "fa": "۲ کیلو. چه نوع ارسالی می‌خواهید؟"
+                            }
+                        },
+                        {
+                            "source": "ส่งแบบลงทะเบียน",
+                            "wordIds": [ "ส่ง", "แบบ", "ลงทะเบียน" ],
+                            "translations": {
+                                "en": "Registered mail",
+                                "fa": "سفارشی"
+                            }
+                        },
+                        {
+                            "source": "ค่าส่ง 350 บาทค่ะ",
+                            "wordIds": [ "ค่าส่ง", "สามร้อยห้าสิบ", "บาท", "ค่ะ" ],
+                            "translations": {
+                                "en": "Shipping cost 350 baht",
+                                "fa": "هزینه ارسال ۳۵۰ بات"
+                            }
+                        },
+                        {
+                            "source": "ถึงอังกฤษใช้เวลากี่วัน",
+                            "wordIds": [ "ถึง", "อังกฤษ", "ใช้เวลา", "กี่", "วัน" ],
+                            "translations": {
+                                "en": "How many days to reach England?",
+                                "fa": "چند روز طول می‌کشد به انگلستان برسد؟"
+                            }
+                        },
+                        {
+                            "source": "ประมาณ 7-10 วันค่ะ",
+                            "wordIds": [ "ประมาณ", "เจ็ด", "ถึง", "สิบ", "วัน", "ค่ะ" ],
+                            "translations": {
+                                "en": "About 7-10 days",
+                                "fa": "حدود ۷-۱۰ روز"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "sectionId": "post-conv-3",
+            "heading": {
+                "en": "Conversation 3: Picking Up a Parcel",
+                "th": "บทสนทนา 3: รับพัสดุ",
+                "fa": "مکالمه ۳: دریافت بسته"
+            },
+            "content": [
+                {
+                    "type": "paragraph",
+                    "sentences": [
+                        {
+                            "source": "ขอรับพัสดุครับ",
+                            "wordIds": [ "ขอ", "รับ", "พัสดุ", "ครับ" ],
+                            "translations": {
+                                "en": "I'm here to pick up a parcel",
+                                "fa": "برای دریافت بسته آمده‌ام"
+                            }
+                        },
+                        {
+                            "source": "หมายเลขพัสดุอะไรคะ",
+                            "wordIds": [ "หมายเลข", "พัสดุ", "อะไร", "คะ" ],
+                            "translations": {
+                                "en": "What's the tracking number?",
+                                "fa": "شماره پیگیری چیست؟"
+                            }
+                        },
+                        {
+                            "source": "EE 1234 5678 TH ครับ",
+                            "wordIds": [ ],
+                            "translations": {
+                                "en": "EE 1234 5678 TH",
+                                "fa": "EE 1234 5678 TH"
+                            }
+                        },
+                        {
+                            "source": "ขอแสดงบัตรประชาชนด้วยค่ะ",
+                            "wordIds": [ "ขอ", "แสดง", "บัตรประชาชน", "ด้วย", "ค่ะ" ],
+                            "translations": {
+                                "en": "Please show your ID card",
+                                "fa": "لطفاً کارت شناسایی نشان دهید"
+                            }
+                        },
+                        {
+                            "source": "นี่ครับ",
+                            "wordIds": [ "นี่", "ครับ" ],
+                            "translations": {
+                                "en": "Here you are",
+                                "fa": "بفرمایید"
+                            }
+                        },
+                        {
+                            "source": "เซ็นต์รับของตรงนี้ค่ะ",
+                            "wordIds": [ "เซ็นต์", "รับ", "ของ", "ตรง", "นี้", "ค่ะ" ],
+                            "translations": {
+                                "en": "Sign here to receive",
+                                "fa": "اینجا امضا کنید برای دریافت"
+                            }
+                        },
+                        {
+                            "source": "เรียบร้อยครับ ขอบคุณ",
+                            "wordIds": [ "เรียบร้อย", "ครับ", "ขอบคุณ" ],
+                            "translations": {
+                                "en": "Done, thank you",
+                                "fa": "تمام شد، متشکرم"
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

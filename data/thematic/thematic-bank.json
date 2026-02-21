@@ -1,0 +1,462 @@
+{
+    "documentId": "thematic-bank",
+    "metadata": {
+        "version": "2.0.0",
+        "created": "2026-02-21T10:00:00Z",
+        "title": {
+            "en": "At the Bank",
+            "th": "ที่ธนาคาร",
+            "fa": "در بانک"
+        },
+        "difficulty": 2,
+        "wordCount": 35,
+        "sentenceCount": 22,
+        "estimatedTime": 20,
+        "tags": [ "bank", "money", "finance", "services" ]
+    },
+    "vocabulary": {
+        "ธนาคาร": {
+            "translations": { "en": "bank", "fa": "بانک" }
+        },
+        "พนักงาน": {
+            "translations": { "en": "bank teller", "fa": "کارمند بانک" }
+        },
+        "บัญชี": {
+            "translations": { "en": "account", "fa": "حساب" }
+        },
+        "ออมทรัพย์": {
+            "translations": { "en": "savings", "fa": "پس‌انداز" }
+        },
+        "กระแสรายวัน": {
+            "translations": { "en": "current account", "fa": "حساب جاری" }
+        },
+        "ฝาก": {
+            "translations": { "en": "deposit", "fa": "واریز" }
+        },
+        "ถอน": {
+            "translations": { "en": "withdraw", "fa": "برداشت" }
+        },
+        "โอน": {
+            "translations": { "en": "transfer", "fa": "انتقال وجه" }
+        },
+        "เงิน": {
+            "translations": { "en": "money", "fa": "پول" }
+        },
+        "ธนบัตร": {
+            "translations": { "en": "banknote", "fa": "اسکناس" }
+        },
+        "เหรียญ": {
+            "translations": { "en": "coin", "fa": "سکه" }
+        },
+        "เช็ค": {
+            "translations": { "en": "check", "fa": "چک" }
+        },
+        "บัตรเอทีเอ็ม": {
+            "translations": { "en": "ATM card", "fa": "کارت عابربانک" }
+        },
+        "บัตรเครดิต": {
+            "translations": { "en": "credit card", "fa": "کارت اعتباری" }
+        },
+        "สมุดบัญชี": {
+            "translations": { "en": "bank book", "fa": "دفترچه حساب" }
+        },
+        "ดอกเบี้ย": {
+            "translations": { "en": "interest", "fa": "سود" }
+        },
+        "เงินกู้": {
+            "translations": { "en": "loan", "fa": "وام" }
+        },
+        "อัตราแลกเปลี่ยน": {
+            "translations": { "en": "exchange rate", "fa": "نرخ ارز" }
+        },
+        "แลกเงิน": {
+            "translations": { "en": "exchange money", "fa": "تبدیل ارز" }
+        },
+        "สกุลเงิน": {
+            "translations": { "en": "currency", "fa": "واحد پول" }
+        },
+        "บาท": {
+            "translations": { "en": "baht", "fa": "بات" }
+        },
+        "ดอลลาร์": {
+            "translations": { "en": "dollar", "fa": "دلار" }
+        },
+        "ยูโร": {
+            "translations": { "en": "euro", "fa": "یورو" }
+        },
+        "เยน": {
+            "translations": { "en": "yen", "fa": "ین" }
+        },
+        "ค่าธรรมเนียม": {
+            "translations": { "en": "fee", "fa": "کارمزد" }
+        },
+        "เปิดบัญชี": {
+            "translations": { "en": "open account", "fa": "افتتاح حساب" }
+        },
+        "ปิดบัญชี": {
+            "translations": { "en": "close account", "fa": "بستن حساب" }
+        },
+        "ยอดเงิน": {
+            "translations": { "en": "balance", "fa": "موجودی" }
+        },
+        "เหลือ": {
+            "translations": { "en": "remaining", "fa": "باقی مانده" }
+        },
+        "ไม่พอ": {
+            "translations": { "en": "insufficient", "fa": "ناکافی" }
+        },
+        "กรอก": {
+            "translations": { "en": "fill out", "fa": "پر کردن" }
+        },
+        "แบบฟอร์ม": {
+            "translations": { "en": "form", "fa": "فرم" }
+        },
+        "เซ็น": {
+            "translations": { "en": "sign", "fa": "امضا کردن" }
+        },
+        "ลายเซ็น": {
+            "translations": { "en": "signature", "fa": "امضا" }
+        },
+        "ตู้เอทีเอ็ม": {
+            "translations": { "en": "ATM machine", "fa": "خودپرداز" }
+        }
+    },
+    "activity": {
+        "words": true,
+        "sentences": true
+    },
+    "sections": [
+        {
+            "sectionId": "bank-conv-1",
+            "heading": {
+                "en": "Conversation 1: Opening an Account",
+                "th": "บทสนทนา 1: เปิดบัญชี",
+                "fa": "مکالمه ۱: افتتاح حساب"
+            },
+            "content": [
+                {
+                    "type": "paragraph",
+                    "sentences": [
+                        {
+                            "source": "ต้องการเปิดบัญชีครับ",
+                            "wordIds": [ "ต้องการ", "เปิดบัญชี", "ครับ" ],
+                            "translations": {
+                                "en": "I'd like to open an account",
+                                "fa": "می‌خواهم حساب باز کنم"
+                            }
+                        },
+                        {
+                            "source": "ยินดีค่ะ เปิดบัญชีประเภทไหนคะ",
+                            "wordIds": [ "ยินดี", "ค่ะ", "เปิดบัญชี", "ประเภท", "ไหน", "คะ" ],
+                            "translations": {
+                                "en": "Certainly. What type of account?",
+                                "fa": "حتماً. چه نوع حسابی؟"
+                            }
+                        },
+                        {
+                            "source": "ออมทรัพย์ครับ",
+                            "wordIds": [ "ออมทรัพย์", "ครับ" ],
+                            "translations": {
+                                "en": "Savings account",
+                                "fa": "پس‌انداز"
+                            }
+                        },
+                        {
+                            "source": "ได้ค่ะ กรุณากรอกแบบฟอร์มนี้",
+                            "wordIds": [ "ได้", "ค่ะ", "กรุณา", "กรอก", "แบบฟอร์ม", "นี้" ],
+                            "translations": {
+                                "en": "Please fill out this form",
+                                "fa": "لطفاً این فرم را پر کنید"
+                            }
+                        },
+                        {
+                            "source": "ต้องใช้อะไรบ้างครับ",
+                            "wordIds": [ "ต้อง", "ใช้", "อะไร", "บ้าง", "ครับ" ],
+                            "translations": {
+                                "en": "What documents do I need?",
+                                "fa": "چه مدارکی نیاز دارم؟"
+                            }
+                        },
+                        {
+                            "source": "บัตรประชาชน กับเงินเปิดบัญชี 500 บาท",
+                            "wordIds": [ "บัตรประชาชน", "กับ", "เงิน", "เปิดบัญชี", "ห้าร้อย", "บาท" ],
+                            "translations": {
+                                "en": "ID card and 500 baht initial deposit",
+                                "fa": "کارت شناسایی و ۵۰۰ بات برای افتتاح حساب"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "sectionId": "bank-conv-2",
+            "heading": {
+                "en": "Conversation 2: Depositing and Withdrawing",
+                "th": "บทสนทนา 2: ฝากและถอนเงิน",
+                "fa": "مکالمه ۲: واریز و برداشت"
+            },
+            "content": [
+                {
+                    "type": "paragraph",
+                    "sentences": [
+                        {
+                            "source": "ขอฝากเงินครับ",
+                            "wordIds": [ "ขอ", "ฝากเงิน", "ครับ" ],
+                            "translations": {
+                                "en": "I'd like to make a deposit",
+                                "fa": "واریز می‌خواهم"
+                            }
+                        },
+                        {
+                            "source": "เท่าไหร่คะ",
+                            "wordIds": [ "เท่าไหร่", "คะ" ],
+                            "translations": {
+                                "en": "How much?",
+                                "fa": "چقدر؟"
+                            }
+                        },
+                        {
+                            "source": "10,000 บาทครับ",
+                            "wordIds": [ "หนึ่งหมื่น", "บาท", "ครับ" ],
+                            "translations": {
+                                "en": "10,000 baht",
+                                "fa": "۱۰۰۰۰ بات"
+                            }
+                        },
+                        {
+                            "source": "ขอดูสมุดบัญชีหน่อยค่ะ",
+                            "wordIds": [ "ขอ", "ดู", "สมุดบัญชี", "หน่อย", "ค่ะ" ],
+                            "translations": {
+                                "en": "Can I see your bank book?",
+                                "fa": "دفترچه حساب را ببینم لطفاً"
+                            }
+                        },
+                        {
+                            "source": "เสร็จแล้วค่ะ ยอดเงินเหลือ 25,430 บาท",
+                            "wordIds": [ "เสร็จ", "แล้ว", "ค่ะ", "ยอดเงิน", "เหลือ", "สองหมื่นห้าพันสี่ร้อยสามสิบ", "บาท" ],
+                            "translations": {
+                                "en": "Done. Your balance is 25,430 baht",
+                                "fa": "تمام شد. موجودی شما ۲۵۴۳۰ بات است"
+                            }
+                        },
+                        {
+                            "source": "แล้วขอลองถอนเงินหน่อย",
+                            "wordIds": [ "แล้ว", "ขอ", "ลอง", "ถอนเงิน", "หน่อย" ],
+                            "translations": {
+                                "en": "And I'd like to withdraw some money",
+                                "fa": "و می‌خواهم پول برداشت کنم"
+                            }
+                        },
+                        {
+                            "source": "เท่าไหร่คะ",
+                            "wordIds": [ "เท่าไหร่", "คะ" ],
+                            "translations": {
+                                "en": "How much?",
+                                "fa": "چقدر؟"
+                            }
+                        },
+                        {
+                            "source": "3,000 บาทครับ",
+                            "wordIds": [ "สามพัน", "บาท", "ครับ" ],
+                            "translations": {
+                                "en": "3,000 baht",
+                                "fa": "۳۰۰۰ بات"
+                            }
+                        },
+                        {
+                            "source": "รับธนบัตรแบบไหนคะ",
+                            "wordIds": [ "รับ", "ธนบัตร", "แบบ", "ไหน", "คะ" ],
+                            "translations": {
+                                "en": "How would you like the bills?",
+                                "fa": "چه اسکناسی می‌خواهید؟"
+                            }
+                        },
+                        {
+                            "source": "一千 สามใบครับ",
+                            "wordIds": [ "หนึ่งพัน", "สาม", "ใบ", "ครับ" ],
+                            "translations": {
+                                "en": "Three 1000 baht bills",
+                                "fa": "سه اسکناس هزارباتی"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "sectionId": "bank-conv-3",
+            "heading": {
+                "en": "Conversation 3: Currency Exchange",
+                "th": "บทสนทนา 3: แลกเปลี่ยนเงินตรา",
+                "fa": "مکالمه ۳: صرافی"
+            },
+            "content": [
+                {
+                    "type": "paragraph",
+                    "sentences": [
+                        {
+                            "source": "ขอแลกเงินครับ",
+                            "wordIds": [ "ขอ", "แลกเงิน", "ครับ" ],
+                            "translations": {
+                                "en": "I'd like to exchange money",
+                                "fa": "می‌خواهم ارز عوض کنم"
+                            }
+                        },
+                        {
+                            "source": "มีสกุลเงินอะไรคะ",
+                            "wordIds": [ "มี", "สกุลเงิน", "อะไร", "คะ" ],
+                            "translations": {
+                                "en": "What currency do you have?",
+                                "fa": "چه ارزی دارید؟"
+                            }
+                        },
+                        {
+                            "source": "มีดอลลาร์ 500",
+                            "wordIds": [ "มี", "ดอลลาร์", "ห้าร้อย" ],
+                            "translations": {
+                                "en": "500 dollars",
+                                "fa": "۵۰۰ دلار"
+                            }
+                        },
+                        {
+                            "source": "อัตราแลกเปลี่ยนวันนี้ 35.50 บาทต่อดอลลาร์",
+                            "wordIds": [ "อัตราแลกเปลี่ยน", "วันนี้", "สามสิบห้าห้าสิบ", "บาท", "ต่อ", "ดอลลาร์" ],
+                            "translations": {
+                                "en": "Today's rate is 35.50 baht per dollar",
+                                "fa": "نرخ امروز ۳۵.۵۰ بات به ازای هر دلار"
+                            }
+                        },
+                        {
+                            "source": "รวมเป็นเงิน 17,750 บาท",
+                            "wordIds": [ "รวม", "เป็น", "เงิน", "หนึ่งหมื่นเจ็ดพันเจ็ดร้อยห้าสิบ", "บาท" ],
+                            "translations": {
+                                "en": "Total 17,750 baht",
+                                "fa": "جمعاً ۱۷۷۵۰ بات"
+                            }
+                        },
+                        {
+                            "source": "มีค่าธรรมเนียมไหม",
+                            "wordIds": [ "มี", "ค่าธรรมเนียม", "ไหม" ],
+                            "translations": {
+                                "en": "Is there a fee?",
+                                "fa": "کارمزد دارد؟"
+                            }
+                        },
+                        {
+                            "source": "ไม่มีค่าธรรมเนียมค่ะ",
+                            "wordIds": [ "ไม่มี", "ค่าธรรมเนียม", "ค่ะ" ],
+                            "translations": {
+                                "en": "No fee",
+                                "fa": "کارمزد ندارد"
+                            }
+                        },
+                        {
+                            "source": "โอเค ขอแลกครับ",
+                            "wordIds": [ "โอเค", "ขอ", "แลก", "ครับ" ],
+                            "translations": {
+                                "en": "OK, I'll exchange",
+                                "fa": "باشه، تبدیل می‌کنم"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "sectionId": "bank-conv-4",
+            "heading": {
+                "en": "Conversation 4: Money Transfer",
+                "th": "บทสนทนา 4: โอนเงิน",
+                "fa": "مکالمه ۴: انتقال وجه"
+            },
+            "content": [
+                {
+                    "type": "paragraph",
+                    "sentences": [
+                        {
+                            "source": "ขอโอนเงินครับ",
+                            "wordIds": [ "ขอ", "โอนเงิน", "ครับ" ],
+                            "translations": {
+                                "en": "I'd like to transfer money",
+                                "fa": "انتقال وجه می‌خواهم"
+                            }
+                        },
+                        {
+                            "source": "โอนเข้าบัญชีธนาคารอะไรคะ",
+                            "wordIds": [ "โอน", "เข้า", "บัญชี", "ธนาคาร", "อะไร", "คะ" ],
+                            "translations": {
+                                "en": "To which bank account?",
+                                "fa": "به کدام حساب بانکی؟"
+                            }
+                        },
+                        {
+                            "source": "ธนาคารกรุงเทพ",
+                            "wordIds": [ "ธนาคาร", "กรุงเทพ" ],
+                            "translations": {
+                                "en": "Bangkok Bank",
+                                "fa": "بانک بانکوک"
+                            }
+                        },
+                        {
+                            "source": "เลขที่บัญชีอะไรคะ",
+                            "wordIds": [ "เลขที่", "บัญชี", "อะไร", "คะ" ],
+                            "translations": {
+                                "en": "Account number?",
+                                "fa": "شماره حساب؟"
+                            }
+                        },
+                        {
+                            "source": "123-4-56789-0 ครับ",
+                            "wordIds": [ ],
+                            "translations": {
+                                "en": "123-4-56789-0",
+                                "fa": "۱۲۳-۴-۵۶۷۸۹-۰"
+                            }
+                        },
+                        {
+                            "source": "ชื่อบัญชีอะไรคะ",
+                            "wordIds": [ "ชื่อ", "บัญชี", "อะไร", "คะ" ],
+                            "translations": {
+                                "en": "Account name?",
+                                "fa": "نام حساب؟"
+                            }
+                        },
+                        {
+                            "source": "นายสมชาย ใจดี ครับ",
+                            "wordIds": [ "นาย", "สมชาย", "ใจดี", "ครับ" ],
+                            "translations": {
+                                "en": "Mr. Somchai Jaidee",
+                                "fa": "آقای سامچای جایدی"
+                            }
+                        },
+                        {
+                            "source": "จำนวนเงินเท่าไหร่คะ",
+                            "wordIds": [ "จำนวน", "เงิน", "เท่าไหร่", "คะ" ],
+                            "translations": {
+                                "en": "How much?",
+                                "fa": "چه مبلغی؟"
+                            }
+                        },
+                        {
+                            "source": "5,000 บาทครับ",
+                            "wordIds": [ "ห้าพัน", "บาท", "ครับ" ],
+                            "translations": {
+                                "en": "5,000 baht",
+                                "fa": "۵۰۰۰ بات"
+                            }
+                        },
+                        {
+                            "source": "โอนเรียบร้อยแล้วค่ะ",
+                            "wordIds": [ "โอน", "เรียบร้อย", "แล้ว", "ค่ะ" ],
+                            "translations": {
+                                "en": "Transfer completed",
+                                "fa": "انتقال انجام شد"
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

@@ -68,21 +68,6 @@ const App = (function () {
             grammarSheet: { isOpen: false, content: null }
         },
 
-        // MOVE DEFAULTS HERE - at the same level as data, not inside data
-        defaults: {
-            media: {
-                speed: 1,
-                delay: 1,
-                pitch: 1,
-                voice: '',
-                languageSettings: {
-                    th: { show: true, repeat: 1 },
-                    en: { show: true, repeat: 1 },
-                    fa: { show: true, repeat: 1 }
-                }
-            }
-        },
-
         get(key) { return this.data[key]; },
         set(key, value) { this.data[key] = value; this.save(key); },
         update(key, fn) { this.data[key] = fn(this.data[key]); this.save(key); },
@@ -123,60 +108,60 @@ const App = (function () {
     const Router = {
         routes: {
             'library': () => {
-                // console.log('Navigating to library');
+                console.log('Navigating to library');
                 UI.Library.render();
                 App.hideMediaBar();
             },
             'doc/:id': (id) => {
-                // console.log('Navigating to document:', id);
+                console.log('Navigating to document:', id);
                 UI.Document.render(id);
                 App.showMediaBar();
             },
             'flashcard/:docId/:section/:type': (docId, section, type) => {
-                // console.log('Flashcard route:', { docId, section, type });
+                console.log('Flashcard route:', { docId, section, type });
                 const sectionIdx = section === 'null' ? null : parseInt(section);
                 UI.Flashcard.render(docId, sectionIdx, type);
                 App.hideMediaBar();
             },
             'flashcard/:docId/:type': (docId, type) => {
-                // console.log('Flashcard route (document level):', { docId, type });
+                console.log('Flashcard route (document level):', { docId, type });
                 UI.Flashcard.render(docId, null, type);
                 App.hideMediaBar();
             },
             'sentence-game/:docId/:section': (docId, section) => {
-                // console.log('Sentence game route:', { docId, section });
+                console.log('Sentence game route:', { docId, section });
                 const sectionIdx = section === 'null' ? null : parseInt(section);
                 UI.Game.render(docId, sectionIdx);
                 App.hideMediaBar();
             },
             'sentence-game/:docId': (docId) => {
-                // console.log('Sentence game route (document level):', docId);
+                console.log('Sentence game route (document level):', docId);
                 UI.Game.render(docId, null);
                 App.hideMediaBar();
             },
             'quiz/:docId/:section/:activity': (docId, section, activity) => {
-                // console.log('Quiz route with section:', { docId, section, activity });
+                console.log('Quiz route with section:', { docId, section, activity });
                 const sectionIdx = section === 'null' ? null : parseInt(section);
                 UI.Quiz.render(docId, sectionIdx, activity);
                 App.hideMediaBar();
             },
             'quiz/:docId/:activity': (docId, activity) => {
-                // console.log('Quiz route without section:', { docId, activity });
+                console.log('Quiz route without section:', { docId, activity });
                 UI.Quiz.render(docId, null, activity);
                 App.hideMediaBar();
             },
             'help': () => {
-                // console.log('Navigating to help');
+                console.log('Navigating to help');
                 UI.Help.render();
                 App.hideMediaBar();
             },
             'bookmarks': () => {
-                // console.log('Navigating to bookmarks');
+                console.log('Navigating to bookmarks');
                 UI.Bookmarks.render();
                 App.hideMediaBar();
             },
             'settings': () => {
-                // console.log('Navigating to settings');
+                console.log('Navigating to settings');
                 App.showSettingsOverlay();
             }
         },
@@ -188,13 +173,13 @@ const App = (function () {
 
         handle() {
             const hash = window.location.hash.slice(1) || 'library';
-            // console.log('Routing to hash:', hash);
+            console.log('Routing to hash:', hash);
 
             let matched = false;
             for (const [pattern, handler] of Object.entries(this.routes)) {
                 const matches = this.matchRoute(pattern, hash);
                 if (matches) {
-                    // console.log('Route matched:', pattern, 'with params:', matches);
+                    console.log('Route matched:', pattern, 'with params:', matches);
                     handler(...matches);
                     matched = true;
                     break;
@@ -227,7 +212,7 @@ const App = (function () {
         },
 
         go(path) {
-            // console.log('Navigating to:', path);
+            console.log('Navigating to:', path);
             location.hash = path;
         }
     };
@@ -445,11 +430,11 @@ const App = (function () {
             constructor(globalSettings, localSettings) {
                 this.global = globalSettings || { words: {}, sentences: {} };
                 this.local = localSettings || {};
-                // console.log('ActivityResolver created with:', { global: this.global, local: this.local });
+                console.log('ActivityResolver created with:', { global: this.global, local: this.local });
             }
 
             resolveForContent(contentItem, sectionLevel = false) {
-                // console.log('Resolving activities for:', {
+                console.log('Resolving activities for:', {
                     contentItem,
                     sectionLevel,
                     global: this.global,
@@ -457,17 +442,17 @@ const App = (function () {
                 });
 
                 if (contentItem?.activity?.types?.length) {
-                    // console.log('Content has explicit types');
+                    console.log('Content has explicit types');
                     return contentItem.activity.types;
                 }
 
                 if (contentItem?.activity?.inherit === true) {
-                    // console.log('Content inherits from global');
+                    console.log('Content inherits from global');
                     return this.getGlobalTypes(contentItem.type);
                 }
 
                 if (sectionLevel) {
-                    // console.log('Section-level resolution');
+                    console.log('Section-level resolution');
                     if (this.local.inherit === true) {
                         return this.getAllDocumentTypes();
                     }
@@ -475,19 +460,19 @@ const App = (function () {
                 }
 
                 if (this.global.inherit === true) {
-                    // console.log('Document-level inheritance detected');
+                    console.log('Document-level inheritance detected');
                     return this.getAllDocumentTypes();
                 }
 
                 if (contentItem?.type) {
                     const types = this.getGlobalTypes(contentItem.type);
                     if (types.length > 0) {
-                        // console.log('Using global types for', contentItem.type, types);
+                        console.log('Using global types for', contentItem.type, types);
                         return types;
                     }
                 }
 
-                // console.log('No activities found');
+                console.log('No activities found');
                 return [];
             }
 
@@ -504,7 +489,7 @@ const App = (function () {
                 const wordTypes = this.global.words?.types || [];
                 const sentenceTypes = this.global.sentences?.types || [];
                 const allTypes = [...new Set([...wordTypes, ...sentenceTypes])];
-                // console.log('All document types:', allTypes);
+                console.log('All document types:', allTypes);
                 return allTypes;
             }
         },
@@ -560,7 +545,7 @@ const App = (function () {
                         return;
                     }
 
-                    // console.log('pauseOnInteraction triggered by:', event?.type || 'unknown', {
+                    console.log('pauseOnInteraction triggered by:', event?.type || 'unknown', {
                         isPlaying: State.data.media.isPlaying,
                         isAutoScrolling: State.data.isAutoScrolling,
                         scrollLockUntil: window.scrollLockUntil,
@@ -569,13 +554,13 @@ const App = (function () {
 
                     // Don't pause if we're in auto-scroll mode
                     if (State.data.isAutoScrolling) {
-                        // console.log('Auto-scrolling in progress, ignoring pause');
+                        console.log('Auto-scrolling in progress, ignoring pause');
                         return;
                     }
 
                     // Check if we're in the scroll buffer period
                     if (window.scrollLockUntil && Date.now() < window.scrollLockUntil) {
-                        // console.log('In scroll buffer period, ignoring pause');
+                        console.log('In scroll buffer period, ignoring pause');
                         return;
                     }
 
@@ -584,7 +569,7 @@ const App = (function () {
                         const e = event;
                         if (e.key.includes('Arrow') || e.key === ' ' || e.key.includes('Page')) {
                             if (State.data.isAutoScrolling) {
-                                // console.log('Keyboard navigation during auto-scroll, ignoring');
+                                console.log('Keyboard navigation during auto-scroll, ignoring');
                                 return;
                             }
                         }
@@ -598,14 +583,14 @@ const App = (function () {
                         window.lastScrollTime = now;
 
                         if (now - lastScrollTime < 500) {
-                            // console.log('Rapid scroll detected, adding extra buffer');
+                            console.log('Rapid scroll detected, adding extra buffer');
                             window.scrollLockUntil = now + 300;
                             return;
                         }
                     }
 
                     if (State.data.media.isPlaying) {
-                        // console.log('PAUSING playback due to interaction');
+                        console.log('PAUSING playback due to interaction');
                         State.data.media.isPlaying = false;
                         window.speechSynthesis.cancel();
 
@@ -797,20 +782,20 @@ const App = (function () {
                 if (this._scrollListenersEnabled) return;
 
                 this._scrollListenersEnabled = true;
-                // console.log('Scroll listeners enabled');
+                console.log('Scroll listeners enabled');
             },
 
             disableScrollListeners() {
                 if (!this._scrollListenersEnabled) return;
 
                 this._scrollListenersEnabled = false;
-                // console.log('Scroll listeners disabled');
+                console.log('Scroll listeners disabled');
             },
 
             stopSequence() {
 
-                // console.log('stopSequence called');
-                // console.log('Current state before stop:', {
+                console.log('stopSequence called');
+                console.log('Current state before stop:', {
                     isPlaying: State.data.media.isPlaying,
                     currentIndex: State.data.media.currentIndex,
                     totalElements: document.querySelectorAll('.audio-element').length
@@ -842,7 +827,7 @@ const App = (function () {
 
                 App.showMediaBar();
 
-                // console.log('After stop:', {
+                console.log('After stop:', {
                     isPlaying: State.data.media.isPlaying,
                     currentIndex: State.data.media.currentIndex
                 });
@@ -979,7 +964,7 @@ const App = (function () {
                     let html = `<div class="document-content">`;
 
                     const documentActivities = this.getDocumentActivities(doc);
-                    // console.log('Document activities:', documentActivities);
+                    console.log('Document activities:', documentActivities);
 
                     html += `<div class="document-controls-wrapper">`;
 
@@ -1090,7 +1075,7 @@ const App = (function () {
                 const t = Services.I18n.t;
                 const activityTypes = section.getActivityTypes();
 
-                // console.log('Section activity types:', activityTypes);
+                console.log('Section activity types:', activityTypes);
 
                 let html = '<div class="section-all-controls">';
 
@@ -1129,32 +1114,50 @@ const App = (function () {
                 html += '</div>';
                 return html;
             },
-
+            /*
+                        getDocumentActivities(doc) {
+                            const types = [];
+                            if (doc.activity.words) {
+                                types.push(
+                                    'multipleChoiceWord',
+                                    'flashcardWord'
+                                );
+                            }
+                            if (doc.activity.sentences) {
+                                types.push(
+                                    'multipleChoiceSentence',
+                                    'flashcardSentence',
+                                    'buildSentence'
+                                );
+                            }
+                            return types;
+                        },
+            */
             renderContent(content, sectionIdx) {
                 return content.map((item, blockIdx) => {
                     let html = '';
 
-                    // Render heading with grammar icon inline (if heading exists)
+                    // Render heading if present
                     if (item.heading) {
-                        const grammarId = `grammar-${sectionIdx}-${blockIdx}`;
-                        const grammarIcon = (item.type === 'paragraph' && item.grammar) ? `
-                <button class="grammar-icon-btn-inline" 
-                        onclick="App.showGrammarSheet('${grammarId}')"
-                        aria-label="Show grammar explanation"
-                        title="View grammar note">
-                    <span class="material-icons">menu_book</span>
-                </button>
-            ` : '';
+                        html += `<h3 class="block-heading">${UI.escapeHtml(item.heading)}</h3>`;
+                    }
 
+                    // Render grammar icon before heading if present
+                    if (item.type === 'paragraph' && item.grammar) {
+                        const grammarId = `grammar-${sectionIdx}-${blockIdx}`;
                         html += `
-                <div class="heading-with-grammar">
-                    ${grammarIcon}
-                    <h3 class="block-heading">${UI.escapeHtml(item.heading)}</h3>
+                <div class="grammar-header">
+                    <button class="grammar-icon-btn" 
+                            onclick="App.showGrammarSheet('${grammarId}')"
+                            aria-label="Show grammar explanation"
+                            title="View grammar note">
+                        <span class="material-icons">menu_book</span>
+                    </button>
                 </div>
             `;
                     }
 
-                    // Render the content (NO separate grammar header here)
+                    // Render the content
                     if (item.type === 'words') {
                         html += UI.Document.renderWords(item, sectionIdx, blockIdx);
                     } else if (item.type === 'paragraph') {
@@ -1329,14 +1332,14 @@ const App = (function () {
         // ------------------------------------------------------------------------
         Quiz: {
             render(docId, sectionIdx, activityType) {
-                // // console.log('UI.Quiz.render called with:', { docId, sectionIdx, activityType });
+                console.log('UI.Quiz.render called with:', { docId, sectionIdx, activityType });
                 const container = UI.getContainer();
                 if (!container) return;
 
                 container.innerHTML = '<div class="loading-spinner"></div>';
 
                 const items = this.getQuizItems(docId, sectionIdx, activityType);
-                // // console.log('Quiz items found:', items.length);
+                console.log('Quiz items found:', items.length);
 
                 if (items.length === 0) {
                     container.innerHTML = `
@@ -1565,14 +1568,14 @@ const App = (function () {
         // ------------------------------------------------------------------------
         Flashcard: {
             render(docId, sectionIdx, type) {
-                // // console.log('UI.Flashcard.render called with:', { docId, sectionIdx, type });
+                console.log('UI.Flashcard.render called with:', { docId, sectionIdx, type });
                 const container = UI.getContainer();
                 if (!container) return;
 
                 container.innerHTML = '<div class="loading-spinner"></div>';
 
                 const items = this.getFlashcardItems(docId, sectionIdx, type);
-                // console.log('Flashcard items found:', items.length);
+                console.log('Flashcard items found:', items.length);
 
                 if (items.length === 0) {
                     container.innerHTML = `
@@ -1730,7 +1733,7 @@ const App = (function () {
         // ------------------------------------------------------------------------
         Game: {
             render(docId, sectionIdx) {
-                // console.log('UI.Game.render called with:', { docId, sectionIdx });
+                console.log('UI.Game.render called with:', { docId, sectionIdx });
                 const container = UI.getContainer();
                 if (!container) return;
 
@@ -1738,7 +1741,7 @@ const App = (function () {
 
                 // Get sentences for the game
                 const sentences = this.getGameSentences(docId, sectionIdx);
-                // console.log('Game sentences found:', sentences.length);
+                console.log('Game sentences found:', sentences.length);
 
                 if (sentences.length === 0) {
                     container.innerHTML = `
@@ -2533,18 +2536,16 @@ const App = (function () {
                             <td>${code.toUpperCase()}</td>
                             <td>
                                 <input type="checkbox" id="show-${code}"
-                                    ${config.show ? 'checked' : ''}
-                                    onchange="App.updateLanguageConfig('${code}', 'show', this.checked, true)">
+                                       ${config.show ? 'checked' : ''}
+                                       onchange="App.updateLanguageConfig('${code}', 'show', this.checked)">
                             </td>
                             <td>
                                 <input type="number" style="width:40px" id="repeat-${code}"
-                                    value="${config.repeat}" min="1" max="3"
-                                    onchange="App.updateLanguageConfig('${code}', 'repeat', this.value, true)">
+                                       value="${config.repeat}" min="1" max="3"
+                                       onchange="App.updateLanguageConfig('${code}', 'repeat', this.value)">
                             </td>
                         </tr>
                     `).join('');
-
-                // In UI.Settings.render method, add the button after the table but before closing the overlay div:
 
                 anchor.innerHTML = `
                     <div class="overlay-full card">
@@ -2557,22 +2558,22 @@ const App = (function () {
                             <div class="control-row-inline">
                                 <label>${t('speed', 'Speed')}</label>
                                 <input type="range" min="0.5" max="2" step="0.25"
-                                    value="${media.speed}"
-                                    oninput="this.nextElementSibling.innerText = this.value + 'x'; App.updateMediaParam('speed', this.value, true)">
+                                       value="${media.speed}"
+                                       oninput="App.updateMediaParam('speed', this.value)">
                                 <span class="val-label">${media.speed}x</span>
                             </div>
                             <div class="control-row-inline">
                                 <label>${t('delay', 'Delay')}</label>
                                 <input type="range" min="1" max="5" step="1"
-                                    value="${media.delay}"
-                                    oninput="this.nextElementSibling.innerText = this.value + 's'; App.updateMediaParam('delay', this.value, true)">
+                                       value="${media.delay}"
+                                       oninput="App.updateMediaParam('delay', this.value)">
                                 <span class="val-label">${media.delay}s</span>
                             </div>
                             <div class="control-row-inline">
                                 <label>${t('pitch', 'Pitch')}</label>
                                 <input type="range" min="0.5" max="1.5" step="0.1"
-                                    value="${media.pitch}"
-                                    oninput="this.nextElementSibling.innerText = this.value; App.updateMediaParam('pitch', this.value, true)">
+                                       value="${media.pitch}"
+                                       oninput="App.updateMediaParam('pitch', this.value)">
                                 <span class="val-label">${media.pitch}</span>
                             </div>
                         </div>
@@ -2596,17 +2597,8 @@ const App = (function () {
                             </thead>
                             <tbody>${langRows}</tbody>
                         </table>
-                        
-                        <!-- Reset to Defaults Button -->
-                        <div style="display: flex; justify-content: center; margin-top: 20px; padding-top: 15px; border-top: 1px solid var(--border);">
-                            <button class="btn-activity" onclick="App.resetSettingsToDefaults()" style="background: var(--text-secondary);">
-                                <span class="material-icons">restore</span>
-                                ${t('reset_defaults', 'Reset to Defaults')}
-                            </button>
-                        </div>
                     </div>
                 `;
-
             }
         },
 
@@ -2821,25 +2813,42 @@ const App = (function () {
 
         renderMediaBar(container) {
             const media = State.data.media;
+            const t = Services.I18n.t;
+
+            const repeatBadges = Object.entries(media.languageSettings)
+                .filter(([, config]) => config.show)
+                .map(([code, config]) => `
+                    <button class="media-badge"
+                            onclick="App.cycleLanguageRep('${code}')">
+                        ${code} ${config.repeat}r
+                    </button>`)
+                .join('');
 
             container.innerHTML = `
-        <div class="media-row">
-            <div class="media-col">
-                <button class="material-icons player-ctrl"
-                        onclick="App.togglePlay()">
-                    ${media.isPlaying ? 'pause' : 'play_arrow'}
-                </button>
-                <button class="material-icons player-ctrl"
-                        onclick="App.stopSequence()">stop</button>
-            </div>
-            <div class="media-col middle" style="flex: 1; min-width: 0;">
-                <div id="media-text-display" class="media-text-display"></div>
-            </div>
-            <div class="media-col">
-                <button class="material-icons player-ctrl"
-                        onclick="App.showSettingsOverlay()">settings</button>
-            </div>
-        </div>`;
+                <div class="media-row">
+                    <div class="media-col">
+                        <button class="material-icons player-ctrl"
+                                onclick="App.togglePlay()">
+                            ${media.isPlaying ? 'pause' : 'play_arrow'}
+                        </button>
+                        <button class="material-icons player-ctrl"
+                                onclick="App.stopSequence()">stop</button>
+                    </div>
+                    <div class="media-col middle" style="flex: 1; min-width: 0;">
+                        <div id="media-text-display" class="media-text-display"></div>
+                    </div>
+                    <div class="media-col">
+                        <button class="media-badge"
+                                onclick="App.cycleSpeed()">${media.speed}x</button>
+                        <button class="media-badge"
+                                onclick="App.cycleDelay()">${media.delay}s</button>
+                        ${repeatBadges}
+                    </div>
+                    <div class="media-col">
+                        <button class="material-icons player-ctrl"
+                                onclick="App.showSettingsOverlay()">settings</button>
+                    </div>
+                </div>`;
 
             document.body.classList.add('has-media-bar');
         },
@@ -2861,87 +2870,42 @@ const App = (function () {
             this.showMediaBar();
         },
 
+        cycleSpeed() {
+            const speeds = [0.5, 0.75, 1, 1.25, 1.5];
+            const currentIndex = speeds.indexOf(State.data.media.speed);
+            const nextSpeed = speeds[(currentIndex + 1) % speeds.length];
+            State.data.media.speed = nextSpeed;
+            State.save('media');
+            this.showMediaBar();
+        },
+
+        cycleDelay() {
+            const nextDelay = (State.data.media.delay % 10) + 1;
+            State.data.media.delay = nextDelay;
+            State.save('media');
+            this.showMediaBar();
+        },
+
+        cycleLanguageRep(langCode) {
+            const current = State.data.media.languageSettings[langCode].repeat;
+            State.data.media.languageSettings[langCode].repeat = (current % 3) + 1;
+            State.save('media');
+            this.showMediaBar();
+        },
+
         showSettingsOverlay() {
             UI.Settings.render();
         },
 
-        resetSettingsToDefaults() {
-            // console.log('Resetting settings to defaults');
-
-            // Reset media settings to defaults
-            State.data.media.speed = State.defaults.media.speed;
-            State.data.media.delay = State.defaults.media.delay;
-            State.data.media.pitch = State.defaults.media.pitch;
-            State.data.media.voice = State.defaults.media.voice;
-            State.data.media.languageSettings = JSON.parse(JSON.stringify(State.defaults.media.languageSettings)); // Deep copy
-
-            // Save all media settings
-            State.save('media');
-
-            // Clear any selected voice from localStorage (though save() already does this)
-            localStorage.removeItem('localStorageVoice');
-
-            // Close the settings overlay
-            const anchor = document.getElementById('overlay-anchor');
-            if (anchor) anchor.innerHTML = '';
-
-            // Refresh the media bar to show updated values
-            const mediaBar = document.getElementById('media-player-container');
-            if (mediaBar) {
-                this.renderMediaBar(mediaBar);
-            }
-
-            // Re-render the current view to apply language visibility changes
-            Router.handle();
-
-            // Show confirmation notification
-            this.showNotification(Services.I18n.t('settings_reset', 'Settings reset to defaults'));
-        },
-
-        // Add this helper method to the App return object:
-
-        showNotification(message) {
-            // Remove any existing notification
-            const existing = document.getElementById('settings-notification');
-            if (existing) existing.remove();
-
-            // Create notification element
-            const notification = document.createElement('div');
-            notification.id = 'settings-notification';
-            notification.textContent = message;
-            notification.style.cssText = `
-                position: fixed;
-                bottom: 20px;
-                left: 50%;
-                transform: translateX(-50%);
-                background: var(--primary);
-                color: white;
-                padding: 10px 20px;
-                border-radius: 20px;
-                z-index: 3000;
-                box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-                animation: fadeInOut 2s ease;
-            `;
-
-            document.body.appendChild(notification);
-
-            // Remove after 2 seconds
-            setTimeout(() => {
-                if (notification.parentNode) {
-                    notification.remove();
-                }
-            }, 2000);
-        },
-
         playSequence() {
-            // console.log('=== playSequence started ===');
-            // console.log('Current index:', State.data.media.currentIndex);
+            console.log('=== playSequence started ===');
+            console.log('Current index:', State.data.media.currentIndex);
 
             // Enable scroll listeners when playback starts
             Services.MediaService.enableScrollListeners();
 
             const elements = document.querySelectorAll('.audio-element');
-            // console.log('Total audio elements found:', elements.length);
+            console.log('Total audio elements found:', elements.length);
 
             const settings = State.data.media.languageSettings;
 
@@ -2963,13 +2927,13 @@ const App = (function () {
                 }
 
                 scrollEndTimer = setTimeout(() => {
-                    // console.log('Scroll has completely ended');
+                    console.log('Scroll has completely ended');
                     // Set a longer lock after scroll ends to catch any final events
                     window.scrollLockUntil = Date.now() + 500;
 
                     // Don't set isAutoScrolling false immediately - wait a bit
                     setTimeout(() => {
-                        // console.log('Setting isAutoScrolling = false');
+                        console.log('Setting isAutoScrolling = false');
                         State.data.isAutoScrolling = false;
                         pendingScrollCompletion = false;
                     }, 200);
@@ -2979,29 +2943,29 @@ const App = (function () {
             };
 
             const playNext = () => {
-                // console.log('playNext called, currentIndex:', State.data.media.currentIndex);
+                console.log('playNext called, currentIndex:', State.data.media.currentIndex);
 
                 // Check if we should pause due to pending scroll completion
                 if (pendingScrollCompletion && State.data.media.isPlaying) {
-                    // console.log('Pending scroll completion, waiting...');
+                    console.log('Pending scroll completion, waiting...');
                     setTimeout(playNext, 50);
                     return;
                 }
 
                 if (!State.data.media.isPlaying) {
-                    // console.log('Playback stopped by user');
+                    console.log('Playback stopped by user');
                     return;
                 }
 
                 if (State.data.media.currentIndex >= elements.length) {
-                    // console.log('Reached end of elements, stopping');
+                    console.log('Reached end of elements, stopping');
                     this.stopSequence();
                     return;
                 }
 
                 const element = elements[State.data.media.currentIndex];
                 if (!element) {
-                    // console.log('Element not found at index', State.data.media.currentIndex);
+                    console.log('Element not found at index', State.data.media.currentIndex);
                     State.data.media.currentIndex++;
                     setTimeout(playNext, 100);
                     return;
@@ -3011,18 +2975,18 @@ const App = (function () {
                 let row = null;
                 if (element.closest('.words-grid')) {
                     row = element.closest('.words-grid');
-                    // console.log('Element is in words-grid, row:', row?.id || 'no id');
+                    console.log('Element is in words-grid, row:', row?.id || 'no id');
                 } else {
                     row = element.closest('.sentence-group, .word-card, .flashcard-front, .quiz-question-card');
-                    // console.log('Element is in other container, row:', row?.className);
+                    console.log('Element is in other container, row:', row?.className);
                 }
 
                 const rowId = row?.id || row?.getAttribute('data-uid') || `row-${State.data.media.currentIndex}`;
-                // console.log('Row ID:', rowId, 'Current row ID:', State.data.currentRowId);
+                console.log('Row ID:', rowId, 'Current row ID:', State.data.currentRowId);
 
                 // Scroll when we enter a new row
                 if (rowId && rowId !== State.data.currentRowId) {
-                    // console.log('New row detected, scrolling...');
+                    console.log('New row detected, scrolling...');
                     State.data.isAutoScrolling = true;
                     pendingScrollCompletion = true;
 
@@ -3048,7 +3012,7 @@ const App = (function () {
                     window.addEventListener('scroll', scrollHandler, { passive: true });
 
                     setTimeout(() => {
-                        // console.log('Initial scroll timeout complete');
+                        console.log('Initial scroll timeout complete');
                         window.removeEventListener('scroll', scrollHandler);
 
                         State.data.currentRowId = rowId;
@@ -3060,7 +3024,7 @@ const App = (function () {
                         }, 100);
                     }, 400); // Increased from 300ms to 400ms
                 } else {
-                    // console.log('Same row, speaking current element');
+                    console.log('Same row, speaking current element');
                     speakCurrent();
                 }
             };
@@ -3073,7 +3037,7 @@ const App = (function () {
                 const lang = element.getAttribute('data-lang');
                 const repeats = parseInt(settings[lang]?.repeat) || 1;
 
-                // console.log('Speaking:', { text, lang, repeats, index: State.data.media.currentIndex });
+                console.log('Speaking:', { text, lang, repeats, index: State.data.media.currentIndex });
 
                 // Observe this element to pause if it goes out of view
                 Services.MediaService.observeCurrentElement(element);
@@ -3115,17 +3079,17 @@ const App = (function () {
 
                             repeatCount++;
                             if (repeatCount < repeats) {
-                                // console.log('Repeating, count:', repeatCount);
+                                console.log('Repeating, count:', repeatCount);
                                 setTimeout(speakRepeat, 100);
                             } else {
-                                // console.log('Moving to next element');
+                                console.log('Moving to next element');
                                 State.data.media.currentIndex++;
-                                // console.log('New index:', State.data.media.currentIndex);
-                                // console.log('Elements length:', elements.length);
+                                console.log('New index:', State.data.media.currentIndex);
+                                console.log('Elements length:', elements.length);
 
                                 // Check if we've reached the end
                                 if (State.data.media.currentIndex >= elements.length) {
-                                    // console.log('END REACHED: currentIndex >= elements.length');
+                                    console.log('END REACHED: currentIndex >= elements.length');
                                 }
 
                                 setTimeout(playNext, State.data.media.delay * 1000);
@@ -3163,33 +3127,17 @@ const App = (function () {
             Router.handle();
         },
 
-        updateMediaParam(key, value, skipMediaBarRefresh = false) {
+        updateMediaParam(key, value) {
             State.data.media[key] = parseFloat(value);
             State.save('media');
-
-            // Only refresh the media bar if explicitly requested and not in the middle of slider adjustment
-            if (!skipMediaBarRefresh) {
-                const mediaBar = document.getElementById('media-player-container');
-                if (mediaBar && mediaBar.innerHTML) {
-                    this.renderMediaBar(mediaBar);
-                }
-            }
+            const mediaBar = document.getElementById('media-player-container');
+            if (mediaBar) mediaBar.innerHTML = '';
         },
 
-        updateLanguageConfig(code, key, value, skipMediaBarRefresh = false) {
+        updateLanguageConfig(code, key, value) {
             State.data.media.languageSettings[code][key] =
                 key === 'show' ? !!value : parseInt(value, 10);
             State.save('media');
-
-            // Only refresh if needed and if the media bar exists
-            if (!skipMediaBarRefresh) {
-                const mediaBar = document.getElementById('media-player-container');
-                if (mediaBar && mediaBar.innerHTML) {
-                    this.renderMediaBar(mediaBar);
-                }
-            }
-
-            // Re-render the current view to show/hide translations
             Router.handle();
         },
 

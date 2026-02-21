@@ -1,0 +1,96 @@
+{
+    "documentId": "grammar-9-comparatives",
+    "metadata": {
+        "version": "2.0.0",
+        "created": "2026-02-21T10:00:00Z",
+        "title": {
+            "en": "Grammar 9: Comparatives and Superlatives",
+            "th": "ไวยากรณ์ 9: การเปรียบเทียบ",
+            "fa": "گرامر ۹: صفت برتر و برترین"
+        },
+        "difficulty": 3,
+        "newWords": 10,
+        "reviewWords": 45,
+        "sentenceCount": 25,
+        "estimatedTime": 30
+    },
+    "vocabulary": {
+        "กว่า": { "translations": { "en": "than", "fa": "از" } },
+        "ที่สุด": { "translations": { "en": "most", "fa": "ترین" } },
+        "เท่ากับ": { "translations": { "en": "equal to", "fa": "برابر با" } },
+        "เหมือน": { "translations": { "en": "same as", "fa": "مثل" } },
+        "ต่าง": { "translations": { "en": "different", "fa": "متفاوت" } },
+        "ถูกกว่า": { "translations": { "en": "cheaper", "fa": "ارزان‌تر" } },
+        "แพงกว่า": { "translations": { "en": "more expensive", "fa": "گران‌تر" } },
+        "ดีกว่า": { "translations": { "en": "better", "fa": "بهتر" } },
+        "แย่กว่า": { "translations": { "en": "worse", "fa": "بدتر" } },
+        "เร็วกว่า": { "translations": { "en": "faster", "fa": "سریع‌تر" } }
+    },
+    "sections": [
+        {
+            "sectionId": "grammar-9-1",
+            "heading": {
+                "en": "Grammar Focus: Comparisons",
+                "th": "เน้นไวยากรณ์: การเปรียบเทียบ",
+                "fa": "تمرکز گرامر: مقایسه"
+            },
+            "content": [
+                {
+                    "type": "paragraph",
+                    "heading": {
+                        "en": "Grammar Explanation",
+                        "th": "คำอธิบายไวยากรณ์",
+                        "fa": "توضیح گرامر"
+                    },
+                    "grammar": {
+                        "pattern": "A + Adjective + กว่า + B",
+                        "note": {
+                            "en": "For comparatives, add กว่า (kwa) after the adjective. For superlatives, add ที่สุด (thi sut) at the end.",
+                            "th": "การเปรียบเทียบขั้นกว่า ใส่ 'กว่า' หลังคำคุณศัพท์ ขั้นสุดใส่ 'ที่สุด' ต่อท้าย",
+                            "fa": "برای صفت برتر، 'กว่า' را بعد از صفت بیاورید. برای صفت برترین، 'ที่สุด' را در انتها اضافه کنید."
+                        },
+                        "examples": [
+                            { "source": "รถคันนี้แพงกว่ารถคันนั้น", "translation": "This car is more expensive than that car" },
+                            { "source": "บ้านหลังนี้ใหญ่ที่สุด", "translation": "This house is the biggest" }
+                        ]
+                    },
+                    "sentences": [ ]
+                },
+                {
+                    "type": "paragraph",
+                    "heading": {
+                        "en": "Practice 1: Comparatives",
+                        "th": "ฝึกหัด 1: การเปรียบเทียบขั้นกว่า",
+                        "fa": "تمرین ۱: صفت برتر"
+                    },
+                    "sentences": [
+                        {
+                            "source": "รถคันนี้แพงกว่ารถคันนั้น",
+                            "wordIds": [ "รถ", "คันนี้", "แพงกว่า", "รถ", "คันนั้น" ],
+                            "translations": {
+                                "en": "This car is more expensive than that car",
+                                "fa": "این ماشین از آن ماشین گران‌تر است"
+                            }
+                        },
+                        {
+                            "source": "อาหารไทยอร่อยกว่าอาหารอเมริกัน",
+                            "wordIds": [ "อาหารไทย", "อร่อยกว่า", "อาหารอเมริกัน" ],
+                            "translations": {
+                                "en": "Thai food is more delicious than American food",
+                                "fa": "غذای تایلندی از غذای آمریکایی خوشمزه‌تر است"
+                            }
+                        },
+                        {
+                            "source": "ผมสูงกว่าคุณ",
+                            "wordIds": [ "ผม", "สูงกว่า", "คุณ" ],
+                            "translations": {
+                                "en": "I am taller than you",
+                                "fa": "من از شما بلندتر هستم"
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

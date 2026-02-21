@@ -1,0 +1,342 @@
+{
+    "documentId": "thematic-gym",
+    "metadata": {
+        "version": "2.0.0",
+        "created": "2026-02-21T10:00:00Z",
+        "title": {
+            "en": "At the Gym",
+            "th": "ที่ฟิตเนส",
+            "fa": "در باشگاه"
+        },
+        "difficulty": 2,
+        "wordCount": 30,
+        "sentenceCount": 20,
+        "estimatedTime": 20,
+        "tags": [ "gym", "fitness", "exercise", "health" ]
+    },
+    "vocabulary": {
+        "ฟิตเนส": {
+            "translations": { "en": "gym/fitness center", "fa": "باشگاه بدنسازی" }
+        },
+        "ยิม": {
+            "translations": { "en": "gym", "fa": "باشگاه" }
+        },
+        "เทรนเนอร์": {
+            "translations": { "en": "trainer", "fa": "مربی" }
+        },
+        "สมาชิก": {
+            "translations": { "en": "member", "fa": "عضو" }
+        },
+        "สมัคร": {
+            "translations": { "en": "sign up", "fa": "ثبت نام" }
+        },
+        "รายเดือน": {
+            "translations": { "en": "monthly", "fa": "ماهانه" }
+        },
+        "รายปี": {
+            "translations": { "en": "yearly", "fa": "سالیانه" }
+        },
+        "ค่าสมาชิก": {
+            "translations": { "en": "membership fee", "fa": "هزینه عضویت" }
+        },
+        "ออกกำลังกาย": {
+            "translations": { "en": "exercise", "fa": "ورزش کردن" }
+        },
+        "วิ่ง": {
+            "translations": { "en": "run", "fa": "دویدن" }
+        },
+        "เดิน": {
+            "translations": { "en": "walk", "fa": "راه رفتن" }
+        },
+        "ยกน้ำหนัก": {
+            "translations": { "en": "lift weights", "fa": "وزنه زدن" }
+        },
+        "เล่นเวท": {
+            "translations": { "en": "weight training", "fa": "بدنسازی" }
+        },
+        "โยคะ": {
+            "translations": { "en": "yoga", "fa": "یوگا" }
+        },
+        "พิลาทิส": {
+            "translations": { "en": "pilates", "fa": "پیلاتس" }
+        },
+        "ปั่นจักรยาน": {
+            "translations": { "en": "cycling", "fa": "دوچرخه سواری" }
+        },
+        "ว่ายน้ำ": {
+            "translations": { "en": "swim", "fa": "شنا" }
+        },
+        "เครื่อง": {
+            "translations": { "en": "machine", "fa": "دستگاه" }
+        },
+        "ลู่วิ่ง": {
+            "translations": { "en": "treadmill", "fa": "تردمیل" }
+        },
+        "จักรยาน": {
+            "translations": { "en": "exercise bike", "fa": "دوچرخه ثابت" }
+        },
+        "ดัมเบล": {
+            "translations": { "en": "dumbbell", "fa": "دمبل" }
+        },
+        "บาร์เบล": {
+            "translations": { "en": "barbell", "fa": "هالتر" }
+        },
+        "เสื่อ": {
+            "translations": { "en": "yoga mat", "fa": "مت" }
+        },
+        "ลูกบอล": {
+            "translations": { "en": "exercise ball", "fa": "توپ ورزشی" }
+        },
+        "เหงื่อ": {
+            "translations": { "en": "sweat", "fa": "عرق" }
+        },
+        "เหนื่อย": {
+            "translations": { "en": "tired", "fa": "خسته" }
+        },
+        "แข็งแรง": {
+            "translations": { "en": "strong", "fa": "قوی" }
+        },
+        "ผอม": {
+            "translations": { "en": "thin", "fa": "لاغر" }
+        },
+        "ซิกแพ็ค": {
+            "translations": { "en": "six-pack abs", "fa": "شش تکه" }
+        },
+        "กล้ามเนื้อ": {
+            "translations": { "en": "muscle", "fa": "عضله" }
+        }
+    },
+    "activity": {
+        "words": true,
+        "sentences": true
+    },
+    "sections": [
+        {
+            "sectionId": "gym-vocab-1",
+            "heading": {
+                "en": "Gym Equipment",
+                "th": "อุปกรณ์ออกกำลังกาย",
+                "fa": "تجهیزات باشگاه"
+            },
+            "content": [
+                {
+                    "type": "words",
+                    "wordIds": [ "ลู่วิ่ง", "จักรยาน", "ดัมเบล", "บาร์เบล", "เสื่อ", "เครื่อง" ]
+                }
+            ]
+        },
+        {
+            "sectionId": "gym-conv-1",
+            "heading": {
+                "en": "Conversation 1: Signing Up",
+                "th": "บทสนทนา 1: สมัครสมาชิก",
+                "fa": "مکالمه ۱: ثبت نام"
+            },
+            "content": [
+                {
+                    "type": "paragraph",
+                    "sentences": [
+                        {
+                            "source": "สนใจสมัครฟิตเนสครับ",
+                            "wordIds": [ "สนใจ", "สมัคร", "ฟิตเนส", "ครับ" ],
+                            "translations": {
+                                "en": "I'm interested in joining the gym",
+                                "fa": "علاقه‌مند به ثبت نام در باشگاه هستم"
+                            }
+                        },
+                        {
+                            "source": "ยินดีต้อนรับค่ะ มีโปรโมชั่นหลายแบบ",
+                            "wordIds": [ "ยินดี", "ต้อนรับ", "ค่ะ", "มี", "โปรโมชั่น", "หลาย", "แบบ" ],
+                            "translations": {
+                                "en": "Welcome! We have several promotions",
+                                "fa": "خوش آمدید! چندین طرح ویژه داریم"
+                            }
+                        },
+                        {
+                            "source": "รายเดือนเท่าไหร่ครับ",
+                            "wordIds": [ "รายเดือน", "เท่าไหร่", "ครับ" ],
+                            "translations": {
+                                "en": "How much for monthly?",
+                                "fa": "ماهانه چقدر است؟"
+                            }
+                        },
+                        {
+                            "source": "เดือนละ 1,500 บาท ค่าสมัครครั้งแรก 1,000 บาท",
+                            "wordIds": [ "เดือนละ", "หนึ่งพันห้าร้อย", "บาท", "ค่าสมัคร", "ครั้งแรก", "หนึ่งพัน", "บาท" ],
+                            "translations": {
+                                "en": "1,500 baht per month, first time registration fee 1,000 baht",
+                                "fa": "۱۵۰۰ بات در ماه، هزینه ثبت نام اولیه ۱۰۰۰ بات"
+                            }
+                        },
+                        {
+                            "source": "ถ้าสมัครรายปีล่ะ",
+                            "wordIds": [ "ถ้า", "สมัคร", "รายปี", "ล่ะ" ],
+                            "translations": {
+                                "en": "What about yearly?",
+                                "fa": "سالیانه چطور؟"
+                            }
+                        },
+                        {
+                            "source": "รายปี 15,000 บาท ฟรีค่าสมัคร",
+                            "wordIds": [ "รายปี", "หนึ่งหมื่นห้าพัน", "บาท", "ฟรี", "ค่าสมัคร" ],
+                            "translations": {
+                                "en": "15,000 baht per year, free registration",
+                                "fa": "۱۵۰۰۰ بات سالانه، ثبت نام رایگان"
+                            }
+                        },
+                        {
+                            "source": "สมัครรายปีครับ",
+                            "wordIds": [ "สมัคร", "รายปี", "ครับ" ],
+                            "translations": {
+                                "en": "I'll take the yearly membership",
+                                "fa": "عضویت سالیانه می‌خواهم"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "sectionId": "gym-conv-2",
+            "heading": {
+                "en": "Conversation 2: Asking for Help",
+                "th": "บทสนทนา 2: ขอความช่วยเหลือ",
+                "fa": "مکالمه ۲: درخواست کمک"
+            },
+            "content": [
+                {
+                    "type": "paragraph",
+                    "sentences": [
+                        {
+                            "source": "ขอโทษครับ เครื่องนี้ใช้ยังไง",
+                            "wordIds": [ "ขอโทษ", "ครับ", "เครื่อง", "นี้", "ใช้", "ยังไง" ],
+                            "translations": {
+                                "en": "Excuse me, how do I use this machine?",
+                                "fa": "ببخشید، این دستگاه چطور استفاده می‌شود؟"
+                            }
+                        },
+                        {
+                            "source": "ให้เทรนเนอร์ช่วยสอนไหมคะ",
+                            "wordIds": [ "ให้", "เทรนเนอร์", "ช่วย", "สอน", "ไหม", "คะ" ],
+                            "translations": {
+                                "en": "Would you like a trainer to help?",
+                                "fa": "می‌خواهید مربی کمک کند؟"
+                            }
+                        },
+                        {
+                            "source": "ดีครับ",
+                            "wordIds": [ "ดี", "ครับ" ],
+                            "translations": {
+                                "en": "That would be good",
+                                "fa": "خوب است"
+                            }
+                        },
+                        {
+                            "source": "สวัสดีครับ ผมชื่อเจมส์ เป็นเทรนเนอร์",
+                            "wordIds": [ "สวัสดี", "ครับ", "ผม", "ชื่อ", "เจมส์", "เป็น", "เทรนเนอร์" ],
+                            "translations": {
+                                "en": "Hello, I'm James, your trainer",
+                                "fa": "سلام، من جیمز هستم، مربی شما"
+                            }
+                        },
+                        {
+                            "source": "คุณอยากเล่นส่วนไหนครับ",
+                            "wordIds": [ "คุณ", "อยาก", "เล่น", "ส่วน", "ไหน", "ครับ" ],
+                            "translations": {
+                                "en": "Which part do you want to work on?",
+                                "fa": "کدام بخش را می‌خواهید کار کنید؟"
+                            }
+                        },
+                        {
+                            "source": "อยากเล่นแขนกับหน้าท้อง",
+                            "wordIds": [ "อยาก", "เล่น", "แขน", "กับ", "หน้าท้อง" ],
+                            "translations": {
+                                "en": "Arms and abs",
+                                "fa": "بازوها و شکم"
+                            }
+                        },
+                        {
+                            "source": "งั้นเริ่มด้วยท่าง่ายๆก่อนนะครับ",
+                            "wordIds": [ "งั้น", "เริ่ม", "ด้วย", "ท่า", "ง่าย", "ๆ", "ก่อน", "นะ", "ครับ" ],
+                            "translations": {
+                                "en": "Let's start with easy exercises first",
+                                "fa": "بیایید با حرکات ساده شروع کنیم"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "sectionId": "gym-conv-3",
+            "heading": {
+                "en": "Conversation 3: Talking About Progress",
+                "th": "บทสนทนา 3: พูดคุยเกี่ยวกับความคืบหน้า",
+                "fa": "مکالمه ۳: صحبت درباره پیشرفت"
+            },
+            "content": [
+                {
+                    "type": "paragraph",
+                    "sentences": [
+                        {
+                            "source": "มาเล่นกล้ามทุกวันเลยเหรอ",
+                            "wordIds": [ "มา", "เล่น", "กล้าม", "ทุก", "วัน", "เลย", "เหรอ" ],
+                            "translations": {
+                                "en": "You come to work out every day?",
+                                "fa": "هر روز می‌آیی باشگاه؟"
+                            }
+                        },
+                        {
+                            "source": "อาทิตย์ละ 4-5 วันครับ",
+                            "wordIds": [ "อาทิตย์", "ละ", "สี่", "ห้า", "วัน", "ครับ" ],
+                            "translations": {
+                                "en": "4-5 days a week",
+                                "fa": "هفته‌ای ۴-۵ روز"
+                            }
+                        },
+                        {
+                            "source": "เห็นผลชัดเลยนะ",
+                            "wordIds": [ "เห็น", "ผล", "ชัด", "เลย", "นะ" ],
+                            "translations": {
+                                "en": "The results are really visible",
+                                "fa": "نتیجه خیلی واضح است"
+                            }
+                        },
+                        {
+                            "source": "ขอบคุณครับ ตั้งใจมาก",
+                            "wordIds": [ "ขอบคุณ", "ครับ", "ตั้งใจ", "มาก" ],
+                            "translations": {
+                                "en": "Thanks, I'm very dedicated",
+                                "fa": "ممنون، خیلی مصمم هستم"
+                            }
+                        },
+                        {
+                            "source": "ทานอาหารเสริมอะไรไหม",
+                            "wordIds": [ "ทาน", "อาหารเสริม", "อะไร", "ไหม" ],
+                            "translations": {
+                                "en": "Do you take any supplements?",
+                                "fa": "مکمل می‌گیری؟"
+                            }
+                        },
+                        {
+                            "source": "ทานเวย์โปรตีน กับครีเอทีนครับ",
+                            "wordIds": [ "ทาน", "เวย์โปรตีน", "กับ", "ครีเอทีน", "ครับ" ],
+                            "translations": {
+                                "en": "Whey protein and creatine",
+                                "fa": "پروتئین وی و کراتین"
+                            }
+                        },
+                        {
+                            "source": "แนะนำหน่อยได้ไหม",
+                            "wordIds": [ "แนะนำ", "หน่อย", "ได้", "ไหม" ],
+                            "translations": {
+                                "en": "Can you give me some advice?",
+                                "fa": "می‌توانی راهنمایی کنی؟"
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

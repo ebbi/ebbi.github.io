@@ -1,0 +1,104 @@
+{
+    "documentId": "grammar-6-ability",
+    "metadata": {
+        "version": "2.0.0",
+        "created": "2026-02-21T10:00:00Z",
+        "title": {
+            "en": "Grammar 6: Expressing Ability (ได้)",
+            "th": "ไวยากรณ์ 6: การแสดงความสามารถ (ได้)",
+            "fa": "گرامر ۶: بیان توانایی (ได้)"
+        },
+        "difficulty": 2,
+        "newWords": 15,
+        "reviewWords": 35,
+        "sentenceCount": 24,
+        "estimatedTime": 25
+    },
+    "vocabulary": {
+        "ได้": { "translations": { "en": "can/able to", "fa": "توانستن" } },
+        "พูด": { "translations": { "en": "speak", "fa": "صحبت کردن" } },
+        "อ่าน": { "translations": { "en": "read", "fa": "خواندن" } },
+        "เขียน": { "translations": { "en": "write", "fa": "نوشتن" } },
+        "ฟัง": { "translations": { "en": "listen", "fa": "گوش دادن" } },
+        "เข้าใจ": { "translations": { "en": "understand", "fa": "فهمیدن" } },
+        "ขับรถ": { "translations": { "en": "drive", "fa": "رانندگی کردن" } },
+        "ทำอาหาร": { "translations": { "en": "cook", "fa": "آشپزی کردن" } },
+        "ภาษาไทย": { "translations": { "en": "Thai language", "fa": "زبان تایلندی" } },
+        "ภาษาอังกฤษ": { "translations": { "en": "English language", "fa": "زبان انگلیسی" } }
+    },
+    "sections": [
+        {
+            "sectionId": "grammar-6-1",
+            "heading": {
+                "en": "Grammar Focus: Can/Can't",
+                "th": "เน้นไวยากรณ์: สามารถ/ไม่สามารถ",
+                "fa": "تمرکز گرامر: می‌توانم/نمی‌توانم"
+            },
+            "content": [
+                {
+                    "type": "paragraph",
+                    "heading": {
+                        "en": "Grammar Explanation",
+                        "th": "คำอธิบายไวยากรณ์",
+                        "fa": "توضیح گرامر"
+                    },
+                    "grammar": {
+                        "pattern": "Subject + Verb + ได้ / Subject + ไม่ + Verb + ได้",
+                        "note": {
+                            "en": "Use ได้ (dai) after the verb to express ability. For negative, put ไม่ before the verb.",
+                            "th": "ใช้ 'ได้' หลังคำกริยาเพื่อแสดงความสามารถ สำหรับปฏิเสธ ใส่ 'ไม่' หน้ากริยา",
+                            "fa": "برای بیان توانایی، 'ได้' را بعد از فعل بیاورید. برای منفی کردن، 'ไม่' را قبل از فعل بگذارید."
+                        },
+                        "examples": [
+                            { "source": "ผมพูดไทยได้", "translation": "I can speak Thai" },
+                            { "source": "ผมพูดไทยไม่ได้", "translation": "I can't speak Thai" }
+                        ]
+                    },
+                    "sentences": [ ]
+                },
+                {
+                    "type": "paragraph",
+                    "heading": {
+                        "en": "Practice 1: Abilities",
+                        "th": "ฝึกหัด 1: ความสามารถ",
+                        "fa": "تمرین ۱: توانایی‌ها"
+                    },
+                    "sentences": [
+                        {
+                            "source": "ผมพูดภาษาไทยได้",
+                            "wordIds": [ "ผม", "พูด", "ภาษาไทย", "ได้" ],
+                            "translations": {
+                                "en": "I can speak Thai",
+                                "fa": "من می‌توانم تایلندی صحبت کنم"
+                            }
+                        },
+                        {
+                            "source": "คุณอ่านภาษาอังกฤษได้ไหม",
+                            "wordIds": [ "คุณ", "อ่าน", "ภาษาอังกฤษ", "ได้", "ไหม" ],
+                            "translations": {
+                                "en": "Can you read English?",
+                                "fa": "آیا می‌توانید انگلیسی بخوانید؟"
+                            }
+                        },
+                        {
+                            "source": "เขาเขียนภาษาไทยไม่ได้",
+                            "wordIds": [ "เขา", "เขียน", "ภาษาไทย", "ไม่", "ได้" ],
+                            "translations": {
+                                "en": "He can't write Thai",
+                                "fa": "او نمی‌تواند تایلندی بنویسد"
+                            }
+                        },
+                        {
+                            "source": "ฉันขับรถได้",
+                            "wordIds": [ "ฉัน", "ขับรถ", "ได้" ],
+                            "translations": {
+                                "en": "I can drive",
+                                "fa": "من می‌توانم رانندگی کنم"
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

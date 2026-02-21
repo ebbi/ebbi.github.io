@@ -20,6 +20,9 @@
     --thai-color: #1d4ed8;
     --english-color: #059669;
     --farsi-color: #b91c1c;
+
+    /* Hover states */
+    --hover-bg: rgba(0, 0, 0, 0.05);
 }
 
 .dark-theme {
@@ -39,6 +42,9 @@
     --thai-color: #60a5fa;
     --english-color: #34d399;
     --farsi-color: #f87171;
+
+    /* Hover states */
+    --hover-bg: rgba(255, 255, 255, 0.05);
 }
 
 /* Material Icons Fix */
@@ -100,6 +106,21 @@ h5,
 h6 {
     color: var(--text);
     font-weight: 700;
+}
+
+/* Block Headings */
+.block-heading {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text);
+    margin: 1.5rem 0 0.75rem 0;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--primary-light);
+    opacity: 0.9;
+}
+
+.block-heading:first-of-type {
+    margin-top: 0.5rem;
 }
 
 /* ============================================================================
@@ -176,6 +197,28 @@ h6 {
 @keyframes spin {
     to {
         transform: rotate(360deg);
+    }
+}
+
+@keyframes fadeInOut {
+    0% {
+        opacity: 0;
+        transform: translateX(-50%) translateY(20px);
+    }
+
+    15% {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+    }
+
+    85% {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateX(-50%) translateY(-20px);
     }
 }
 
@@ -296,33 +339,59 @@ h6 {
     font-size: 1.4rem;
 }
 
-/* Section Details */
+/* Section Details - Match Library Styling */
 .section-details {
+    margin: 12px 8px;
+    border-radius: 8px;
     background: var(--card);
-    margin: 0 8px 12px;
+    overflow: hidden;
+    border: 1px solid var(--border);
 }
 
 .section-details summary {
-    font-weight: bold;
-    cursor: pointer;
-    /*
-    padding: 15px;
+    padding: 14px 16px;
     display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    flex-wrap: wrap;
+    align-items: center;
     gap: 12px;
-    */
+    cursor: pointer;
+    font-weight: 500;
+    color: var(--text);
+    transition: background-color 0.2s;
+    list-style: none;
+}
+
+.section-details summary:hover {
+    background-color: var(--hover-bg);
+}
+
+.section-details summary::-webkit-details-marker {
+    display: none;
+}
+
+.section-details summary::before {
+    content: 'chevron_right';
+    font-family: 'Material Icons';
+    font-size: 20px;
+    transition: transform 0.2s;
+    color: var(--primary);
+}
+
+.section-details[open] summary::before {
+    transform: rotate(90deg);
 }
 
 .section-title-text {
     flex: 1;
-    min-width: 200px;
+    font-size: 1rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .section-card {
-    margin: 0;
-    padding: 15px;
+    padding: 16px;
+    border-top: 1px solid var(--border);
+    background: var(--bg);
 }
 
 /* ============================================================================
@@ -383,17 +452,18 @@ h6 {
 }
 
 .section-quiz-btn,
-.btn-flashcard-small {
+.btn-flashcard-small,
+.btn-sentence-game-small {
     padding: 8px 12px;
     font-size: 0.9rem;
 }
 
-/* Document level controls - 4 buttons in one container */
+/* Document level controls */
 .document-controls-wrapper {
     display: flex;
     flex-direction: row;
     gap: 12px;
-    padding: 0 16px 20px;
+    padding: 8px;
     flex-wrap: wrap;
 }
 
@@ -402,7 +472,7 @@ h6 {
     min-width: 120px;
 }
 
-/* Section level controls - 4 buttons in one container */
+/* Section level controls */
 .section-controls-wrapper {
     width: 100%;
     margin-bottom: 1rem;
@@ -414,11 +484,12 @@ h6 {
     gap: 8px;
     flex-wrap: wrap;
     width: 100%;
+    margin-bottom: 16px;
 }
 
 .section-all-controls>* {
     flex: 1;
-    min-width: 120px;
+    min-width: 100px;
 }
 
 /* Dark theme consistency */
@@ -469,21 +540,17 @@ h6 {
     font-weight: 500;
     color: var(--text);
     transition: background-color 0.2s;
+    list-style: none;
 }
 
 .library-summary:hover {
-    background-color: rgba(0, 0, 0, 0.03);
+    background-color: var(--hover-bg);
 }
 
-.dark-theme .library-summary:hover {
-    background-color: rgba(255, 255, 255, 0.05);
-}
-
-/*
 .library-summary::-webkit-details-marker {
-    display: none; 
+    display: none;
 }
-*/
+
 .library-summary .material-icons {
     font-size: 20px;
     transition: transform 0.2s;
@@ -507,12 +574,8 @@ h6 {
 }
 
 .library-docs {
-    padding: 0 0 8px 0;
-    border-top: 1px solid rgba(0, 0, 0, 0.08);
-}
-
-.dark-theme .library-docs {
-    border-top-color: rgba(255, 255, 255, 0.1);
+    padding: 8px 0;
+    border-top: 1px solid var(--border);
 }
 
 .doc-btn {
@@ -530,11 +593,7 @@ h6 {
 }
 
 .doc-btn:hover {
-    background-color: rgba(0, 0, 0, 0.03);
-}
-
-.dark-theme .doc-btn:hover {
-    background-color: rgba(255, 255, 255, 0.05);
+    background-color: var(--hover-bg);
 }
 
 .doc-btn-icon {
@@ -565,7 +624,7 @@ h6 {
     vertical-align: top;
     margin: 0 1rem 1rem 0;
     padding: 0 1rem 1rem 0;
-    border-right: 1px solid #3b82f626;
+    /*    border-right: 1px solid #3b82f626; */
 }
 
 .stack-column {
@@ -673,6 +732,110 @@ h6 {
     color: var(--english-color);
     font-weight: 500;
 }
+
+.grammar-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.grammar-icon-btn {
+    background: none;
+    border: none;
+    color: var(--thai-color);
+    cursor: pointer;
+    padding: 4px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+.grammar-icon-btn:hover {
+    background: rgba(29, 78, 216, 0.1);
+    transform: scale(1.1);
+}
+
+.grammar-icon-btn .material-icons {
+    font-size: 24px;
+}
+
+/* Source wrapper for grammar icon */
+.source-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 8px;
+}
+
+.heading-with-grammar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 1.5rem 0 0.75rem 0;
+}
+
+.heading-with-grammar .block-heading {
+    margin: 0;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid #60a5fa3d;
+    flex: 1;
+}
+
+.grammar-icon-btn-inline {
+    background: none;
+    border: none;
+    color: var(--thai-color);
+    cursor: pointer;
+    padding: 4px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    margin-bottom: 0.5rem;
+    /* Align with heading's border-bottom */
+    flex-shrink: 0;
+    /* Prevent icon from shrinking */
+    order: -1;
+    /* Ensure icon stays first even if HTML order changes */
+}
+
+.grammar-icon-btn-inline:hover {
+    background: rgba(29, 78, 216, 0.1);
+    transform: scale(1.1);
+}
+
+.grammar-icon-btn-inline .material-icons {
+    font-size: 24px;
+}
+
+.grammar-icon-btn-inline {
+    background: none;
+    border: none;
+    color: var(--thai-color);
+    cursor: pointer;
+    padding: 4px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    margin-bottom: 0.5rem;
+    /*  Align with heading's border-bottom */
+}
+
+.grammar-icon-btn-inline:hover {
+    background: rgba(29, 78, 216, 0.1);
+    transform: scale(1.1);
+}
+
+.grammar-icon-btn-inline .material-icons {
+    font-size: 24px;
+}
+
 
 /* ============================================================================
    QUIZ SYSTEM
@@ -792,6 +955,8 @@ h6 {
     font-weight: bold;
     color: var(--thai-color);
     line-height: 1.2;
+    cursor: pointer;
+    flex: 1;
 }
 
 .quiz-options-grid {
@@ -865,11 +1030,11 @@ h6 {
     cursor: pointer;
     padding: 8px;
     z-index: 2;
+    border-radius: 50%;
 }
 
 .audio-preview-icon:hover {
     background: rgba(37, 99, 235, 0.15);
-    border-radius: 50%;
 }
 
 .review-list {
@@ -957,6 +1122,7 @@ h6 {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    cursor: pointer;
 }
 
 .flashcard-front {
@@ -996,6 +1162,37 @@ h6 {
 
 .flashcard-back .flashcard-content {
     color: var(--english-color);
+}
+
+/* Audio Icons */
+.audio-icon {
+    position: absolute;
+    bottom: 8px;
+    right: 8px;
+    font-size: 20px;
+    color: var(--primary);
+    opacity: 0.7;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.audio-icon-small {
+    font-size: 16px;
+    color: var(--primary);
+    opacity: 0.7;
+    cursor: pointer;
+    margin-left: 4px;
+    transition: all 0.2s;
+}
+
+.audio-icon-small:hover,
+.audio-icon:hover {
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+.flashcard-front:hover .audio-icon {
+    opacity: 1;
 }
 
 .btn-audio {
@@ -1054,7 +1251,7 @@ h6 {
     padding: 12px 8px;
     border: none;
     border-radius: 8px;
-   background: var(--card); 
+    background: var(--card);
     color: var(--text);
     border: 1px solid var(--border);
     cursor: pointer;
@@ -1069,20 +1266,71 @@ h6 {
     transform: translateY(-2px);
 }
 
-.rating-btn:nth-child(1) {
-    background: #dc2626;
+/* Flashcard Translations */
+.flashcard-translations {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
 }
 
-.rating-btn:nth-child(2) {
-    background: #d97706;
+.flashcard-translation-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 16px;
+    background: var(--card);
+    border-radius: 8px;
+    border-left: 3px solid var(--primary);
+    cursor: pointer;
+    transition: all 0.2s;
 }
 
-.rating-btn:nth-child(3) {
-    background: #059669;
+.flashcard-translation-item:hover {
+    background: var(--hover-bg);
+    transform: translateX(4px);
 }
 
-.rating-btn:nth-child(4) {
-    background: #2563eb;
+.flashcard-translation-item[dir="rtl"] {
+    border-left: none;
+    border-right: 3px solid var(--primary);
+}
+
+[dir="rtl"] .flashcard-translation-item:hover {
+    transform: translateX(-4px);
+}
+
+.translation-lang {
+    font-weight: bold;
+    color: var(--primary);
+    min-width: 40px;
+}
+
+.translation-text {
+    flex: 1;
+    font-size: 1.1rem;
+}
+
+.btn-audio-small {
+    background: none;
+    border: none;
+    color: var(--text-secondary);
+    cursor: pointer;
+    padding: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: all 0.2s ease;
+}
+
+.btn-audio-small:hover {
+    background: var(--hover-bg);
+    color: var(--primary);
+}
+
+.btn-audio-small .material-icons {
+    font-size: 18px;
 }
 
 .flashcard-context {
@@ -1225,7 +1473,7 @@ h6 {
 }
 
 .overlay-menu button:hover {
-    background: rgba(0, 0, 0, 0.05);
+    background: var(--hover-bg);
 }
 
 .settings-header {
@@ -1301,26 +1549,56 @@ td {
    GRAMMAR SHEET
    ============================================================================ */
 
+#grammar-sheet-anchor {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 2000;
+    pointer-events: none;
+}
+
 .bottom-sheet {
     position: fixed;
     bottom: 0;
     left: 0;
     right: 0;
-    margin: 1rem;
+    margin: 0;
     background: var(--card);
     border-radius: 20px 20px 0 0;
     box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.2);
     transform: translateY(100%);
-    transition: transform 0.3s ease-out;
-    z-index: 1000;
-    max-height: 80vh;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 2001;
+    max-height: 85vh;
     display: flex;
     flex-direction: column;
-    color: var(--text);
+    pointer-events: auto;
+    border-top: 1px solid var(--border);
 }
 
 .bottom-sheet.open {
     transform: translateY(0);
+}
+
+.sheet-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    z-index: 2000;
+    pointer-events: auto;
+    backdrop-filter: blur(2px);
+}
+
+.sheet-backdrop.visible {
+    opacity: 1;
+    visibility: visible;
 }
 
 .sheet-handle {
@@ -1330,19 +1608,31 @@ td {
     border-radius: 2px;
     margin: 12px auto;
     cursor: pointer;
+    transition: background 0.2s;
+}
+
+.sheet-handle:hover {
+    background: var(--text-secondary);
+}
+
+.sheet-handle:active {
+    transform: scale(0.95);
 }
 
 .sheet-header {
-    padding: 3px 20px;
+    padding: 8px 20px 16px;
     border-bottom: 1px solid var(--border);
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-shrink: 0;
 }
 
 .sheet-header h3 {
     margin: 0;
-    font-size: 1.2rem;
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--text);
 }
 
 .sheet-close {
@@ -1350,97 +1640,158 @@ td {
     border: none;
     font-size: 24px;
     cursor: pointer;
-    padding: 0 8px;
+    padding: 8px;
+    color: var(--text-secondary);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    min-width: 44px;
+    min-height: 44px;
+}
+
+.sheet-close:hover {
+    background: var(--hover-bg);
     color: var(--text);
+    transform: scale(1.1);
 }
 
 .sheet-content {
     overflow-y: auto;
-    padding: 16px;
-}
-
-.sheet-backdrop {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.6);
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.3s ease;
-    z-index: 999;
-}
-
-.sheet-backdrop.visible {
-    opacity: 1;
-    visibility: visible;
+    padding: 20px;
+    flex: 1;
+    -webkit-overflow-scrolling: touch;
 }
 
 .grammar-pattern {
-    background: rgba(0, 0, 0, 0.02);
-    padding: 3px 16px;
-    border-radius: 12px;
+    background: rgba(37, 99, 235, 0.08);
+    padding: 20px;
+    border-radius: 16px;
+    margin-bottom: 20px;
+    border: 1px solid rgba(37, 99, 235, 0.2);
 }
 
 .pattern-title {
-    font-weight: bold;
-    color: var(--thai-color);
-    margin-bottom: 8px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--primary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 12px;
 }
 
 .pattern-example {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 16px;
+    padding: 16px;
     background: var(--card);
-    border-radius: 8px;
-    margin: 8px 0;
-    padding: 8px;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: 1px solid var(--border);
+    margin-bottom: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.pattern-example:last-child {
+    margin-bottom: 0;
+}
+
+.pattern-example:hover {
+    background: rgba(37, 99, 235, 0.05);
+    border-color: var(--primary);
+    transform: translateX(4px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.pattern-example:active {
+    transform: scale(0.99);
 }
 
 .example-thai {
     font-size: 1.2rem;
-    font-weight: bold;
+    font-weight: 500;
     color: var(--thai-color);
+    flex: 1;
+    line-height: 1.4;
 }
 
 .example-en {
+    font-size: 0.95rem;
     color: var(--text-secondary);
-    font-size: 0.9rem;
+    max-width: 45%;
+    text-align: right;
+    line-height: 1.4;
 }
 
 .grammar-note {
     font-style: italic;
-    padding: 6px;
-    margin-bottom: 1rem;
-    background: rgba(255, 193, 7, 0.1);
-    border-left: 4px solid #ffc107;
-    border-radius: 4px;
+    padding: 20px;
+    margin-bottom: 20px;
+    background: rgba(255, 193, 7, 0.08);
+    border-left: 4px solid #fbbf24;
+    border-radius: 8px;
+    line-height: 1.6;
+    font-size: 1rem;
+    color: var(--text);
 }
 
-.source-wrapper {
+/* Grammar Usage */
+.grammar-usage {
+    padding: 16px;
+    margin-bottom: 20px;
+    background: rgba(5, 150, 105, 0.08);
+    border-radius: 12px;
+    border: 1px solid rgba(5, 150, 105, 0.2);
+}
+
+.grammar-usage p {
+    margin: 8px 0 0 0;
+    line-height: 1.6;
+    color: var(--text);
+}
+
+/* Current Sentence */
+.current-sentence {
+    margin-top: 20px;
+    padding-top: 16px;
+    border-top: 1px solid var(--border);
+}
+
+.current-sentence .pattern-example {
+    background: rgba(37, 99, 235, 0.05);
+    border-color: var(--primary);
+}
+
+/* More Examples */
+.more-examples {
+    margin-top: 24px;
+    padding-top: 16px;
+    border-top: 1px solid var(--border);
+}
+
+/* Empty State */
+.grammar-empty {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    gap: 8px;
-    flex-wrap: wrap;
-    margin-bottom: 8px;
+    justify-content: center;
+    padding: 48px 24px;
+    text-align: center;
+    color: var(--text-secondary);
 }
 
-.grammar-icon-btn {
-    background: none;
-    border: none;
-    color: var(--thai-color);
-    cursor: pointer;
-    border-radius: 50%;
-    padding: 0 4px;
-    vertical-align: top;
-    transition: all 0.2s;
+.grammar-empty .material-icons {
+    font-size: 48px;
+    margin-bottom: 16px;
+    opacity: 0.5;
 }
 
-.grammar-icon-btn:hover {
-    background: rgba(29, 78, 216, 0.1);
-    transform: scale(1.1);
+.grammar-empty p {
+    margin: 0;
+    font-size: 1rem;
 }
 
 /* ============================================================================
@@ -1448,7 +1799,8 @@ td {
    ============================================================================ */
 
 .flashcard-empty-state,
-.flashcard-complete {
+.flashcard-complete,
+.game-complete {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -1460,91 +1812,41 @@ td {
 }
 
 .flashcard-empty-state .material-icons,
-.flashcard-complete .material-icons {
+.flashcard-complete .material-icons,
+.game-complete .material-icons {
     font-size: 64px;
     color: var(--text-secondary);
     margin-bottom: 16px;
 }
 
-.flashcard-complete .material-icons {
+.flashcard-complete .material-icons,
+.game-complete .material-icons {
     color: var(--success);
 }
 
 .flashcard-empty-state h2,
-.flashcard-complete h2 {
+.flashcard-complete h2,
+.game-complete h2 {
     margin: 0;
     color: var(--text);
     font-size: 1.5rem;
 }
 
 .flashcard-empty-state p,
-.flashcard-complete p {
+.flashcard-complete p,
+.game-complete p {
     color: var(--text-secondary);
     max-width: 400px;
     margin: 0;
 }
 
-.flashcard-complete-buttons {
+.flashcard-complete-buttons,
+.game-complete-buttons {
     display: flex;
     gap: 16px;
     margin-top: 24px;
     flex-wrap: wrap;
     justify-content: center;
-}
-
-.flashcard-translations {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    width: 100%;
-}
-
-.flashcard-translation-item {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    padding: 8px 12px;
-    background: var(--bg-secondary);
-    border-radius: 8px;
-    border-left: 3px solid var(--primary-color);
-}
-
-.flashcard-translation-item[dir="rtl"] {
-    border-left: none;
-    border-right: 3px solid var(--primary-color);
-}
-
-.translation-lang {
-    font-weight: bold;
-    color: var(--primary-color);
-    min-width: 40px;
-}
-
-.translation-text {
-    flex: 1;
-    font-size: 1.1rem;
-}
-
-.btn-audio-small {
-    background: none;
-    border: none;
-    color: var(--text-secondary);
-    cursor: pointer;
-    padding: 4px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-    transition: all 0.2s ease;
-}
-
-.btn-audio-small:hover {
-    background: var(--bg-hover);
-    color: var(--primary-color);
-}
-
-.btn-audio-small .material-icons {
-    font-size: 18px;
 }
 
 .notification {
@@ -1591,214 +1893,6 @@ td {
 .dark-theme .context-highlight {
     background-color: rgba(255, 255, 0, 0.15);
 }
-
-/* ============================================================================
-   RTL SUPPORT
-   ============================================================================ */
-
-[dir="rtl"] .btn-audio {
-    right: auto;
-    left: 8px;
-}
-
-[dir="rtl"] .context-sentence small {
-    text-align: left;
-}
-
-[dir="rtl"] .grammar-icon-btn {
-    margin-left: 0;
-    margin-right: 8px;
-}
-
-[dir="rtl"] .stack-item .lang-fa {
-    text-align: left !important;
-}
-
-[dir="rtl"] .section-controls-wrapper {
-    flex-direction: row-reverse;
-}
-
-/* ============================================================================
-   RESPONSIVE DESIGN - CONSISTENT BUTTON BEHAVIOR
-   ============================================================================ */
-
-@media (max-width: 768px) {
-    .document-content>.doc-title {
-        margin: 0 8px 12px;
-        padding: 12px;
-        font-size: 1.2rem;
-    }
-
-    .section-details summary {
-        padding: 12px;
-    }
-
-    /* Both document and section buttons have same responsive behavior */
-    .document-controls-wrapper,
-    .section-all-controls {
-        gap: 8px;
-    }
-
-    .document-controls-wrapper>*,
-    .section-all-controls>* {
-        min-width: 0;
-        /* Allow buttons to shrink */
-    }
-}
-
-@media (max-width: 640px) {
-
-    /* At this width, 4 buttons become 2 rows of 2 */
-    .document-controls-wrapper,
-    .section-all-controls {
-        gap: 8px;
-    }
-
-    .document-controls-wrapper>*,
-    .section-all-controls>* {
-        /*   flex: 0 1 calc(50% - 4px);
-        2 columns with gap */
-        min-width: 0;
-        flex: 0 1 calc(30% - 4px);
-        font-size: 0.80rem;
-    }
-}
-
-@media (max-width: 480px) {
-    .document-content>.doc-title {
-        margin: 0 6px 10px;
-        padding: 10px;
-        font-size: 1.1rem;
-    }
-
-    .section-details summary {
-        padding: 10px;
-    }
-
-    /* Keep 2 columns at this width */
-    .document-controls-wrapper>*,
-    .section-all-controls>* {
-        /*        flex: 0 1 calc(50% - 4px); */
-        flex: 0 1 calc(30% - 4px);
-        font-size: 0.80rem;
-    }
-
-    .library-container {
-        padding: 0 8px;
-    }
-
-    .library-summary {
-        padding: 12px 14px;
-        font-size: 0.95rem;
-    }
-
-    .doc-btn {
-        padding: 10px 14px;
-    }
-
-    .sentence-group {
-        border: none;
-    }
-
-    .quiz-progress-section {
-        gap: 12px;
-    }
-
-    .quiz-counter {
-        min-width: 50px;
-        font-size: 0.85rem;
-        padding: 2px 6px;
-    }
-
-    .quiz-close-btn {
-        min-width: 36px;
-        min-height: 36px;
-    }
-
-    .quiz-close-btn .material-icons {
-        font-size: 20px;
-    }
-
-    .flashcard-front,
-    .flashcard-back {
-        padding: 24px 16px;
-        min-height: 80px;
-    }
-
-    .flashcard-content {
-        font-size: 1.5rem;
-    }
-
-    .rating-buttons {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .flashcard-footer {
-        gap: 16px;
-    }
-}
-
-@media (max-width: 360px) {
-    .library-container {
-        padding: 0 6px;
-    }
-
-    .library-summary {
-        padding: 10px 12px;
-        font-size: 0.9rem;
-        gap: 10px;
-    }
-
-    .doc-btn {
-        padding: 8px 12px;
-        gap: 10px;
-    }
-
-    .doc-btn-text {
-        font-size: 0.9rem;
-    }
-}
-
-/* ============================================================================
-   ACCESSIBILITY
-   ============================================================================ */
-
-button:focus-visible,
-input:focus-visible,
-select:focus-visible {
-    outline: 2px solid var(--primary);
-    outline-offset: 2px;
-}
-
-@media (prefers-contrast: high) {
-    :root {
-        --primary: #0056b3;
-        --text: #000000;
-        --thai-color: #0000ff;
-        --english-color: #006400;
-        --farsi-color: #8b0000;
-    }
-
-    .dark-theme {
-        --primary: #4da6ff;
-        --text: #ffffff;
-        --thai-color: #add8e6;
-        --english-color: #90ee90;
-        --farsi-color: #ffb6c1;
-    }
-}
-
-@media (prefers-reduced-motion: reduce) {
-
-    *,
-    *::before,
-    *::after {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
-    }
-}
-
 
 /* ============================================================================
    SENTENCE BUILDING GAME - MOBILE OPTIMIZED
@@ -1861,7 +1955,6 @@ select:focus-visible {
 .game-progress-container {
     flex: 1;
     height: 8px;
-    /* Slightly taller for better visibility */
     background: #e0e0e0;
     border-radius: 4px;
     overflow: hidden;
@@ -1899,6 +1992,12 @@ select:focus-visible {
     line-height: 1.5;
     margin-bottom: 20px;
     word-break: break-word;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.sentence-hint:hover {
+    background: rgba(37, 99, 235, 0.12);
 }
 
 .sentence-hint .material-icons {
@@ -1944,6 +2043,16 @@ select:focus-visible {
     transition: all 0.2s ease;
 }
 
+.word-construction.correct {
+    border-color: var(--success);
+    background: rgba(5, 150, 105, 0.05);
+}
+
+.word-construction.incorrect {
+    border-color: var(--error);
+    background: rgba(220, 38, 38, 0.05);
+}
+
 /* Touch-friendly constructed words */
 .constructed-word {
     display: inline-flex;
@@ -1953,7 +2062,6 @@ select:focus-visible {
     background: var(--primary);
     color: white;
     border-radius: 30px;
-    /* Pill shape for easier tapping */
     font-size: 1.1rem;
     font-weight: 500;
     box-shadow: 0 2px 6px rgba(37, 99, 235, 0.3);
@@ -1962,6 +2070,11 @@ select:focus-visible {
 
 .constructed-word .word-text {
     padding: 2px 0;
+    cursor: pointer;
+}
+
+.constructed-word .word-text:hover {
+    text-decoration: underline;
 }
 
 /* 44px minimum touch target for remove button */
@@ -2029,12 +2142,19 @@ select:focus-visible {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     flex: 0 1 auto;
     touch-action: manipulation;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
 }
 
 .word-tile:active {
     background: var(--primary);
     color: white;
     transform: scale(0.95);
+}
+
+.word-tile:active .audio-icon-small {
+    color: white;
 }
 
 .word-tile:disabled {
@@ -2197,44 +2317,7 @@ select:focus-visible {
 
 /* Completion screen */
 .game-complete {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 40px 20px;
     min-height: 70vh;
-    gap: 20px;
-}
-
-.game-complete .material-icons {
-    font-size: 72px;
-    color: var(--success);
-    margin-bottom: 8px;
-}
-
-.game-complete h2 {
-    margin: 0;
-    color: var(--text);
-    font-size: 2rem;
-    line-height: 1.3;
-}
-
-.game-complete p {
-    color: var(--text-secondary);
-    font-size: 1.2rem;
-    line-height: 1.5;
-    max-width: 400px;
-    margin: 0;
-}
-
-.game-complete-buttons {
-    display: flex;
-    gap: 16px;
-    margin-top: 24px;
-    flex-wrap: wrap;
-    justify-content: center;
-    width: 100%;
 }
 
 .game-complete-buttons .btn-activity {
@@ -2244,178 +2327,6 @@ select:focus-visible {
     font-size: 1rem;
     flex: 1 1 auto;
     min-width: 160px;
-}
-
-/* RTL support */
-[dir="rtl"] .constructed-word .remove-word-btn {
-    margin-left: 0;
-    margin-right: 4px;
-}
-
-[dir="rtl"] .sentence-hint {
-    border-left: none;
-    border-right: 4px solid var(--primary);
-}
-
-/* Responsive breakpoints */
-@media (max-width: 640px) {
-    .sentence-game-container {
-        padding: 0 8px;
-    }
-
-    .sentence-game-area {
-        padding: 16px 12px;
-    }
-
-    /*
-    .game-controls {
-        flex-direction: column; 
-    }
-*/
-    .game-controls .btn-activity {
-        width: 100%;
-    }
-
-    .word-tile {
-        font-size: 1rem;
-        padding: 10px 16px;
-    }
-
-    .constructed-word {
-        font-size: 1rem;
-        padding: 8px 12px;
-    }
-
-    .game-header-top h2 {
-        font-size: 1.2rem;
-    }
-
-    .game-counter {
-        min-width: 55px;
-        font-size: 0.85rem;
-        padding: 4px 8px;
-    }
-}
-
-@media (max-width: 480px) {
-    .sentence-hint {
-        font-size: 0.95rem;
-        padding: 12px;
-    }
-
-    .word-construction {
-        min-height: 80px;
-        padding: 12px;
-    }
-
-    .construction-placeholder {
-        font-size: 0.95rem;
-        padding: 16px 8px;
-    }
-
-    .game-controls {
-        gap: 8px;
-    }
-
-    .game-controls .btn-activity {
-        min-width: 0;
-        padding: 12px 4px;
-        font-size: 0.9rem;
-    }
-
-    .game-controls .btn-activity .material-icons {
-        font-size: 20px;
-    }
-
-    .game-complete h2 {
-        font-size: 1.6rem;
-    }
-
-    .game-complete p {
-        font-size: 1rem;
-    }
-
-    .game-complete-buttons {
-        flex-direction: column;
-        width: 100%;
-    }
-
-    .game-complete-buttons .btn-activity {
-        width: 100%;
-    }
-}
-
-/* iOS-specific fixes */
-@supports (-webkit-touch-callout: none) {
-
-    .word-tile,
-    .constructed-word,
-    .btn-activity,
-    .game-close-btn,
-    .remove-word-btn {
-        -webkit-touch-callout: none;
-        -webkit-user-select: none;
-    }
-}
-
-/* Remove tap highlight on mobile */
-.word-tile,
-.constructed-word,
-.btn-activity,
-.game-close-btn,
-.remove-word-btn,
-.btn-show-answer {
-    -webkit-tap-highlight-color: transparent;
-    -webkit-touch-callout: none;
-}
-
-/* Ensure buttons are usable on all devices */
-@media (hover: none) and (pointer: coarse) {
-
-    .word-tile:hover,
-    .btn-activity:hover,
-    .constructed-word:hover {
-        transform: none;
-    }
-
-    .word-tile:active,
-    .btn-activity:active,
-    .constructed-word:active {
-        transform: scale(0.97);
-    }
-}
-
-/* High contrast mode support */
-@media (prefers-contrast: high) {
-    .word-tile {
-        border-width: 3px;
-    }
-
-    .word-construction {
-        border-width: 3px;
-    }
-
-    .result-feedback {
-        border-width: 3px;
-    }
-}
-
-/* Reduced motion preference */
-@media (prefers-reduced-motion: reduce) {
-
-    .word-tile,
-    .constructed-word,
-    .btn-activity,
-    .game-progress-fill,
-    .result-feedback {
-        transition: none;
-    }
-
-    .word-tile:active,
-    .btn-activity:active,
-    .constructed-word:active {
-        transform: none;
-    }
 }
 
 /* ============================================================================
@@ -2460,25 +2371,9 @@ select:focus-visible {
     background: linear-gradient(to right, rgba(37, 99, 235, 0.03), transparent);
     -webkit-tap-highlight-color: transparent;
     flex-shrink: 0;
-    /* Prevent shrinking */
     min-height: 70px;
-    /* Ensure minimum height */
     box-sizing: border-box;
-}
-
-.help-details summary .material-icons {
-    color: var(--primary);
-    font-size: 28px;
-    flex-shrink: 0;
-    /* Prevent icon from shrinking */
-}
-
-.help-details summary span:not(.material-icons) {
-    flex: 1;
-    /* Allow text to take available space */
-    white-space: normal;
-    /* Allow text to wrap */
-    word-break: break-word;
+    list-style: none;
 }
 
 .help-details summary::-webkit-details-marker {
@@ -2493,11 +2388,22 @@ select:focus-visible {
     color: var(--text-secondary);
     font-size: 24px;
     flex-shrink: 0;
-    /* Prevent arrow from shrinking */
 }
 
 .help-details[open] summary::after {
     transform: rotate(180deg);
+}
+
+.help-details summary .material-icons {
+    color: var(--primary);
+    font-size: 28px;
+    flex-shrink: 0;
+}
+
+.help-details summary span:not(.material-icons) {
+    flex: 1;
+    white-space: normal;
+    word-break: break-word;
 }
 
 .help-details[open] summary {
@@ -2652,6 +2558,54 @@ select:focus-visible {
     width: 100%;
 }
 
+/* ============================================================================
+   RTL SUPPORT
+   ============================================================================ */
+
+[dir="rtl"] .btn-audio {
+    right: auto;
+    left: 8px;
+}
+
+[dir="rtl"] .context-sentence small {
+    text-align: left;
+}
+
+[dir="rtl"] .grammar-icon-btn {
+    margin-left: 0;
+    margin-right: 8px;
+}
+
+[dir="rtl"] .stack-item .lang-fa {
+    text-align: left !important;
+}
+
+[dir="rtl"] .section-controls-wrapper {
+    flex-direction: row-reverse;
+}
+
+[dir="rtl"] .section-details summary::before {
+    content: 'chevron_left';
+}
+
+[dir="rtl"] .pattern-example {
+    flex-direction: row-reverse;
+}
+
+[dir="rtl"] .example-en {
+    text-align: left;
+}
+
+[dir="rtl"] .grammar-note {
+    border-left: none;
+    border-right: 4px solid #fbbf24;
+}
+
+[dir="rtl"] .sheet-close {
+    margin-left: 0;
+    margin-right: auto;
+}
+
 [dir="rtl"] .help-table td:first-child {
     justify-content: flex-end;
 }
@@ -2665,38 +2619,259 @@ select:focus-visible {
     transform: translateX(-4px);
 }
 
-/* Responsive */
-@media (max-width: 640px) {
-    .help-section {
+[dir="rtl"] .constructed-word .remove-word-btn {
+    margin-left: 0;
+    margin-right: 4px;
+}
+
+[dir="rtl"] .sentence-hint {
+    border-left: none;
+    border-right: 4px solid var(--primary);
+}
+
+[dir="rtl"] .flashcard-translation-item {
+    border-left: none;
+    border-right: 3px solid var(--primary);
+}
+
+[dir="rtl"] .flashcard-translation-item:hover {
+    transform: translateX(-4px);
+}
+
+[dir="rtl"] .audio-preview-icon {
+    left: auto;
+    right: 3px;
+}
+
+/* ============================================================================
+   RESPONSIVE DESIGN - CONSISTENT BUTTON BEHAVIOR
+   ============================================================================ */
+
+@media (max-width: 768px) {
+    .document-content>.doc-title {
+        margin: 0 8px 12px;
+        padding: 12px;
+        font-size: 1.2rem;
+    }
+
+    .section-details summary {
         padding: 12px;
     }
 
-    .help-details summary {
-        padding: 14px 16px;
-        font-size: 1.1rem;
-    }
-
-    .help-content {
-        padding: 16px;
-    }
-
-    .help-steps li,
-    .help-list li {
-        flex-direction: column;
+    .document-controls-wrapper,
+    .section-all-controls {
         gap: 8px;
     }
 
-    .help-steps li strong,
-    .help-list li strong {
-        min-width: auto;
+    .document-controls-wrapper>*,
+    .section-all-controls>* {
+        min-width: 0;
+    }
+}
+
+@media (max-width: 640px) {
+
+    .document-controls-wrapper,
+    .section-all-controls {
+        gap: 8px;
     }
 
-    .help-table td:first-child {
-        white-space: normal;
+    .document-controls-wrapper>*,
+    .section-all-controls>* {
+        min-width: 0;
+        flex: 0 1 calc(30% - 4px);
+        font-size: 0.80rem;
+    }
+
+    .library-container {
+        padding: 0 8px;
+    }
+
+    .library-summary {
+        padding: 12px 14px;
+        font-size: 0.95rem;
+    }
+
+    .doc-btn {
+        padding: 10px 14px;
+    }
+
+    .sentence-group {
+        border: none;
+    }
+
+    .quiz-progress-section {
+        gap: 12px;
+    }
+
+    .quiz-counter {
+        min-width: 50px;
+        font-size: 0.85rem;
+        padding: 2px 6px;
+    }
+
+    .pattern-example {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+
+    .example-en {
+        max-width: 100%;
+        text-align: left;
+        padding-left: 28px;
+    }
+
+    [dir="rtl"] .pattern-example {
+        align-items: flex-end;
+    }
+
+    [dir="rtl"] .example-en {
+        text-align: right;
+        padding-left: 0;
+        padding-right: 28px;
+    }
+
+    .sentence-game-container {
+        padding: 0 8px;
+    }
+
+    .sentence-game-area {
+        padding: 16px 12px;
+    }
+
+    .game-controls .btn-activity {
+        width: 100%;
+    }
+
+    .word-tile {
+        font-size: 1rem;
+        padding: 10px 16px;
+    }
+
+    .constructed-word {
+        font-size: 1rem;
+        padding: 8px 12px;
+    }
+
+    .game-header-top h2 {
+        font-size: 1.2rem;
+    }
+
+    .game-counter {
+        min-width: 55px;
+        font-size: 0.85rem;
+        padding: 4px 8px;
     }
 }
 
 @media (max-width: 480px) {
+    .document-content>.doc-title {
+        margin: 0 6px 10px;
+        padding: 10px;
+        font-size: 1.1rem;
+    }
+
+    .section-details summary {
+        padding: 10px;
+    }
+
+    .document-controls-wrapper>*,
+    .section-all-controls>* {
+        flex: 0 1 calc(30% - 4px);
+        font-size: 0.80rem;
+    }
+
+    .library-container {
+        padding: 0 6px;
+    }
+
+    .library-summary {
+        padding: 10px 12px;
+        font-size: 0.9rem;
+    }
+
+    .quiz-close-btn {
+        min-width: 36px;
+        min-height: 36px;
+    }
+
+    .quiz-close-btn .material-icons {
+        font-size: 20px;
+    }
+
+    .flashcard-front,
+    .flashcard-back {
+        padding: 24px 16px;
+        min-height: 80px;
+    }
+
+    .flashcard-content {
+        font-size: 1.5rem;
+    }
+
+    .rating-buttons {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .sheet-header h3 {
+        font-size: 1.2rem;
+    }
+
+    .sheet-content {
+        padding: 16px;
+    }
+
+    .grammar-pattern {
+        padding: 16px;
+    }
+
+    .sentence-hint {
+        font-size: 0.95rem;
+        padding: 12px;
+    }
+
+    .word-construction {
+        min-height: 80px;
+        padding: 12px;
+    }
+
+    .construction-placeholder {
+        font-size: 0.95rem;
+        padding: 16px 8px;
+    }
+
+    .game-controls {
+        gap: 8px;
+    }
+
+    .game-controls .btn-activity {
+        min-width: 0;
+        padding: 12px 4px;
+        font-size: 0.9rem;
+    }
+
+    .game-controls .btn-activity .material-icons {
+        font-size: 20px;
+    }
+
+    .game-complete h2 {
+        font-size: 1.6rem;
+    }
+
+    .game-complete p {
+        font-size: 1rem;
+    }
+
+    .game-complete-buttons {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .game-complete-buttons .btn-activity {
+        width: 100%;
+    }
+
     .help-section h2 {
         font-size: 1.5rem;
     }
@@ -2717,5 +2892,155 @@ select:focus-visible {
     .help-note {
         flex-direction: column;
         gap: 8px;
+    }
+}
+
+@media (max-width: 360px) {
+    .library-summary {
+        padding: 10px 12px;
+        font-size: 0.9rem;
+        gap: 10px;
+    }
+
+    .doc-btn {
+        padding: 8px 12px;
+        gap: 10px;
+    }
+
+    .doc-btn-text {
+        font-size: 0.9rem;
+    }
+}
+
+/* ============================================================================
+   ACCESSIBILITY
+   ============================================================================ */
+
+button:focus-visible,
+input:focus-visible,
+select:focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
+}
+
+/* iOS-specific fixes */
+@supports (-webkit-touch-callout: none) {
+
+    .word-tile,
+    .constructed-word,
+    .btn-activity,
+    .game-close-btn,
+    .remove-word-btn {
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+    }
+}
+
+/* Remove tap highlight on mobile */
+.word-tile,
+.constructed-word,
+.btn-activity,
+.game-close-btn,
+.remove-word-btn,
+.btn-show-answer,
+.pattern-example,
+.flashcard-translation-item,
+.sentence-hint {
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+}
+
+/* Ensure buttons are usable on all devices */
+@media (hover: none) and (pointer: coarse) {
+
+    .word-tile:hover,
+    .btn-activity:hover,
+    .constructed-word:hover,
+    .pattern-example:hover,
+    .flashcard-translation-item:hover {
+        transform: none;
+    }
+
+    .word-tile:active,
+    .btn-activity:active,
+    .constructed-word:active,
+    .pattern-example:active,
+    .flashcard-translation-item:active {
+        transform: scale(0.97);
+    }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+    :root {
+        --primary: #0056b3;
+        --text: #000000;
+        --thai-color: #0000ff;
+        --english-color: #006400;
+        --farsi-color: #8b0000;
+    }
+
+    .dark-theme {
+        --primary: #4da6ff;
+        --text: #ffffff;
+        --thai-color: #add8e6;
+        --english-color: #90ee90;
+        --farsi-color: #ffb6c1;
+    }
+
+    .word-tile {
+        border-width: 3px;
+    }
+
+    .word-construction {
+        border-width: 3px;
+    }
+
+    .result-feedback {
+        border-width: 3px;
+    }
+
+    .grammar-pattern {
+        border: 2px solid var(--primary);
+    }
+
+    .pattern-example {
+        border: 2px solid var(--border);
+    }
+
+    .grammar-note {
+        border-left: 6px solid #fbbf24;
+    }
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+
+    .word-tile,
+    .constructed-word,
+    .btn-activity,
+    .game-progress-fill,
+    .result-feedback,
+    .bottom-sheet,
+    .sheet-backdrop,
+    .pattern-example,
+    .flashcard-translation-item {
+        transition: none;
+    }
+
+    .word-tile:active,
+    .btn-activity:active,
+    .constructed-word:active,
+    .pattern-example:active,
+    .flashcard-translation-item:active {
+        transform: none;
     }
 }

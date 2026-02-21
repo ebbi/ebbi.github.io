@@ -1,0 +1,551 @@
+{
+    "documentId": "thematic-hospital",
+    "metadata": {
+        "version": "2.0.0",
+        "created": "2026-02-21T10:00:00Z",
+        "title": {
+            "en": "At the Hospital",
+            "th": "ที่โรงพยาบาล",
+            "fa": "در بیمارستان"
+        },
+        "difficulty": 3,
+        "wordCount": 45,
+        "sentenceCount": 28,
+        "estimatedTime": 30,
+        "tags": [ "health", "hospital", "doctor", "emergency" ]
+    },
+    "vocabulary": {
+        "โรงพยาบาล": {
+            "translations": { "en": "hospital", "fa": "بیمارستان" }
+        },
+        "คลินิก": {
+            "translations": { "en": "clinic", "fa": "درمانگاه" }
+        },
+        "หมอ": {
+            "translations": { "en": "doctor", "fa": "دکتر" }
+        },
+        "พยาบาล": {
+            "translations": { "en": "nurse", "fa": "پرستار" }
+        },
+        "เภสัชกร": {
+            "translations": { "en": "pharmacist", "fa": "داروساز" }
+        },
+        "คนไข้": {
+            "translations": { "en": "patient", "fa": "بیمار" }
+        },
+        "แผนก": {
+            "translations": { "en": "department", "fa": "بخش" }
+        },
+        "แผนกผู้ป่วยนอก": {
+            "translations": { "en": "outpatient department", "fa": "بخش سرپایی" }
+        },
+        "แผนกฉุกเฉิน": {
+            "translations": { "en": "emergency room", "fa": "بخش اورژانس" }
+        },
+        "หอผู้ป่วย": {
+            "translations": { "en": "ward", "fa": "بخش بستری" }
+        },
+        "ห้องตรวจ": {
+            "translations": { "en": "examination room", "fa": "اتاق معاینه" }
+        },
+        "เตียง": {
+            "translations": { "en": "bed", "fa": "تخت" }
+        },
+        "อาการ": {
+            "translations": { "en": "symptom", "fa": "علائم" }
+        },
+        "ปวด": {
+            "translations": { "en": "pain", "fa": "درد" }
+        },
+        "เจ็บ": {
+            "translations": { "en": "hurt", "fa": "درد داشتن" }
+        },
+        "บวม": {
+            "translations": { "en": "swollen", "fa": "ورم" }
+        },
+        "แดง": {
+            "translations": { "en": "red", "fa": "قرمز" }
+        },
+        "คัน": {
+            "translations": { "en": "itchy", "fa": "خارش" }
+        },
+        "คลื่นไส้": {
+            "translations": { "en": "nauseous", "fa": "تهوع" }
+        },
+        "อาเจียน": {
+            "translations": { "en": "vomit", "fa": "استفراغ" }
+        },
+        "ท้องเสีย": {
+            "translations": { "en": "diarrhea", "fa": "اسهال" }
+        },
+        "ท้องผูก": {
+            "translations": { "en": "constipation", "fa": "یبوست" }
+        },
+        "ความดัน": {
+            "translations": { "en": "blood pressure", "fa": "فشار خون" }
+        },
+        "สูง": {
+            "translations": { "en": "high", "fa": "بالا" }
+        },
+        "ต่ำ": {
+            "translations": { "en": "low", "fa": "پایین" }
+        },
+        "น้ำตาล": {
+            "translations": { "en": "sugar", "fa": "قند" }
+        },
+        "ไขมัน": {
+            "translations": { "en": "cholesterol", "fa": "چربی" }
+        },
+        "เอ็กซเรย์": {
+            "translations": { "en": "X-ray", "fa": "عکسبرداری" }
+        },
+        "ตรวจเลือด": {
+            "translations": { "en": "blood test", "fa": "آزمایش خون" }
+        },
+        "ตรวจปัสสาวะ": {
+            "translations": { "en": "urine test", "fa": "آزمایش ادرار" }
+        },
+        "ฉีดยา": {
+            "translations": { "en": "injection", "fa": "تزریق" }
+        },
+        "กินยา": {
+            "translations": { "en": "take medicine", "fa": "دارو خوردن" }
+        },
+        "ยาฉีด": {
+            "translations": { "en": "injectable medicine", "fa": "داروی تزریقی" }
+        },
+        "ยาน้ำ": {
+            "translations": { "en": "liquid medicine", "fa": "داروی مایع" }
+        },
+        "ยาเม็ด": {
+            "translations": { "en": "pill", "fa": "قرص" }
+        },
+        "ยาทา": {
+            "translations": { "en": "ointment", "fa": "پماد" }
+        },
+        "ผ่าตัด": {
+            "translations": { "en": "surgery", "fa": "جراحی" }
+        },
+        "พักฟื้น": {
+            "translations": { "en": "recovery", "fa": "بهبودی" }
+        },
+        "นัด": {
+            "translations": { "en": "appointment", "fa": "نوبت" }
+        },
+        "ประวัติ": {
+            "translations": { "en": "medical history", "fa": "سابقه پزشکی" }
+        },
+        "แพ้ยา": {
+            "translations": { "en": "drug allergy", "fa": "حساسیت دارویی" }
+        },
+        "เบอร์ติดต่อ": {
+            "translations": { "en": "contact number", "fa": "شماره تماس" }
+        },
+        "ประกันสุขภาพ": {
+            "translations": { "en": "health insurance", "fa": "بیمه سلامت" }
+        },
+        "บัตรประชาชน": {
+            "translations": { "en": "ID card", "fa": "کارت شناسایی" }
+        },
+        "ค่ารักษา": {
+            "translations": { "en": "medical fee", "fa": "هزینه درمان" }
+        }
+    },
+    "activity": {
+        "words": true,
+        "sentences": true
+    },
+    "sections": [
+        {
+            "sectionId": "hospital-vocab-1",
+            "heading": {
+                "en": "Hospital Departments",
+                "th": "แผนกต่างๆในโรงพยาบาล",
+                "fa": "بخش‌های بیمارستان"
+            },
+            "content": [
+                {
+                    "type": "words",
+                    "wordIds": [ "โรงพยาบาล", "คลินิก", "แผนก", "แผนกผู้ป่วยนอก", "แผนกฉุกเฉิน", "หอผู้ป่วย", "ห้องตรวจ" ]
+                }
+            ]
+        },
+        {
+            "sectionId": "hospital-vocab-2",
+            "heading": {
+                "en": "Symptoms",
+                "th": "อาการ",
+                "fa": "علائم"
+            },
+            "content": [
+                {
+                    "type": "words",
+                    "wordIds": [ "อาการ", "ปวด", "เจ็บ", "บวม", "แดง", "คัน", "คลื่นไส้", "อาเจียน", "ท้องเสีย", "ท้องผูก" ]
+                }
+            ]
+        },
+        {
+            "sectionId": "hospital-conv-1",
+            "heading": {
+                "en": "Conversation 1: At Reception",
+                "th": "บทสนทนา 1: ที่แผนกต้อนรับ",
+                "fa": "مکالمه ۱: در پذیرش"
+            },
+            "content": [
+                {
+                    "type": "paragraph",
+                    "sentences": [
+                        {
+                            "source": "สวัสดีครับ มาหาหมอครับ",
+                            "wordIds": [ "สวัสดี", "ครับ", "มา", "หา", "หมอ", "ครับ" ],
+                            "translations": {
+                                "en": "Hello, I'm here to see the doctor",
+                                "fa": "سلام، برای دیدن دکتر آمده‌ام"
+                            }
+                        },
+                        {
+                            "source": "มีนัดหมายหรือเปล่าคะ",
+                            "wordIds": [ "มี", "นัดหมาย", "หรือ", "เปล่า", "คะ" ],
+                            "translations": {
+                                "en": "Do you have an appointment?",
+                                "fa": "نوبت دارید؟"
+                            }
+                        },
+                        {
+                            "source": "ไม่มีครับ มาแบบไม่นัด",
+                            "wordIds": [ "ไม่มี", "ครับ", "มา", "แบบ", "ไม่", "นัด" ],
+                            "translations": {
+                                "en": "No, I'm a walk-in patient",
+                                "fa": "نه، بدون نوبت آمده‌ام"
+                            }
+                        },
+                        {
+                            "source": "ได้ค่ะ ขอชื่อนามสกุลหน่อยค่ะ",
+                            "wordIds": [ "ได้", "ค่ะ", "ขอ", "ชื่อ", "นามสกุล", "หน่อย", "ค่ะ" ],
+                            "translations": {
+                                "en": "Okay, your name please?",
+                                "fa": "باشه، نام و نام خانوادگی لطفاً"
+                            }
+                        },
+                        {
+                            "source": "นายสมชาย ใจดีครับ",
+                            "wordIds": [ "นาย", "สมชาย", "ใจดี", "ครับ" ],
+                            "translations": {
+                                "en": "Mr. Somchai Jaidee",
+                                "fa": "آقای سامچای جایدی"
+                            }
+                        },
+                        {
+                            "source": "รอสักครู่ค่ะ เดี๋ยวเปิดประวัติให้",
+                            "wordIds": [ "รอ", "สักครู่", "ค่ะ", "เดี๋ยว", "เปิด", "ประวัติ", "ให้" ],
+                            "translations": {
+                                "en": "Please wait, I'll open your file",
+                                "fa": "لطفاً صبر کنید، پرونده شما را باز می‌کنم"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "sectionId": "hospital-conv-2",
+            "heading": {
+                "en": "Conversation 2: Describing Symptoms",
+                "th": "บทสนทนา 2: บอกอาการ",
+                "fa": "مکالمه ۲: شرح علائم"
+            },
+            "content": [
+                {
+                    "type": "paragraph",
+                    "sentences": [
+                        {
+                            "source": "มีอาการอะไรบ้างครับ",
+                            "wordIds": [ "มี", "อาการ", "อะไร", "บ้าง", "ครับ" ],
+                            "translations": {
+                                "en": "What symptoms do you have?",
+                                "fa": "چه علائمی دارید؟"
+                            }
+                        },
+                        {
+                            "source": "ปวดท้องมากครับ",
+                            "wordIds": [ "ปวด", "ท้อง", "มาก", "ครับ" ],
+                            "translations": {
+                                "en": "I have severe stomach pain",
+                                "fa": "درد شدید شکم دارم"
+                            }
+                        },
+                        {
+                            "source": "ปวดตรงไหนครับ",
+                            "wordIds": [ "ปวด", "ตรง", "ไหน", "ครับ" ],
+                            "translations": {
+                                "en": "Where does it hurt?",
+                                "fa": "کجا درد دارد؟"
+                            }
+                        },
+                        {
+                            "source": "ปวดท้องน้อยด้านขวาครับ",
+                            "wordIds": [ "ปวด", "ท้องน้อย", "ด้าน", "ขวา", "ครับ" ],
+                            "translations": {
+                                "en": "Lower right abdomen",
+                                "fa": "پایین شکم سمت راست"
+                            }
+                        },
+                        {
+                            "source": "ปวดมานานแค่ไหนแล้ว",
+                            "wordIds": [ "ปวด", "มา", "นาน", "แค่ไหน", "แล้ว" ],
+                            "translations": {
+                                "en": "How long have you had the pain?",
+                                "fa": "چقدر است درد دارید؟"
+                            }
+                        },
+                        {
+                            "source": "ตั้งแต่เมื่อคืนครับ",
+                            "wordIds": [ "ตั้งแต่", "เมื่อคืน", "ครับ" ],
+                            "translations": {
+                                "en": "Since last night",
+                                "fa": "از دیشب"
+                            }
+                        },
+                        {
+                            "source": "มีไข้ไหมครับ",
+                            "wordIds": [ "มี", "ไข้", "ไหม", "ครับ" ],
+                            "translations": {
+                                "en": "Do you have a fever?",
+                                "fa": "تب دارید؟"
+                            }
+                        },
+                        {
+                            "source": "มีครับ 38 องศา",
+                            "wordIds": [ "มี", "ครับ", "สามสิบแปด", "องศา" ],
+                            "translations": {
+                                "en": "Yes, 38 degrees",
+                                "fa": "بله، ۳۸ درجه"
+                            }
+                        },
+                        {
+                            "source": "คลื่นไส้ไหมครับ",
+                            "wordIds": [ "คลื่นไส้", "ไหม", "ครับ" ],
+                            "translations": {
+                                "en": "Nauseous?",
+                                "fa": "تهوع دارید؟"
+                            }
+                        },
+                        {
+                            "source": "ครับ คลื่นไส้ด้วย",
+                            "wordIds": [ "ครับ", "คลื่นไส้", "ด้วย" ],
+                            "translations": {
+                                "en": "Yes, nauseous too",
+                                "fa": "بله، تهوع هم دارم"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "sectionId": "hospital-conv-3",
+            "heading": {
+                "en": "Conversation 3: Examination",
+                "th": "บทสนทนา 3: ตรวจร่างกาย",
+                "fa": "مکالمه ۳: معاینه"
+            },
+            "content": [
+                {
+                    "type": "paragraph",
+                    "sentences": [
+                        {
+                            "source": "นอนลงบนเตียงก่อนนะครับ",
+                            "wordIds": [ "นอน", "ลง", "บน", "เตียง", "ก่อน", "นะ", "ครับ" ],
+                            "translations": {
+                                "en": "Lie down on the bed first",
+                                "fa": "اول روی تخت دراز بکشید"
+                            }
+                        },
+                        {
+                            "source": "จะตรวจดูท้องนะครับ",
+                            "wordIds": [ "จะ", "ตรวจ", "ดู", "ท้อง", "นะ", "ครับ" ],
+                            "translations": {
+                                "en": "I'm going to examine your abdomen",
+                                "fa": "شکم شما را معاینه می‌کنم"
+                            }
+                        },
+                        {
+                            "source": "ตรงนี้เจ็บไหมครับ",
+                            "wordIds": [ "ตรง", "นี้", "เจ็บ", "ไหม", "ครับ" ],
+                            "translations": {
+                                "en": "Does it hurt here?",
+                                "fa": "اینجا درد دارد؟"
+                            }
+                        },
+                        {
+                            "source": "เจ็บครับ",
+                            "wordIds": [ "เจ็บ", "ครับ" ],
+                            "translations": {
+                                "en": "Yes, it hurts",
+                                "fa": "بله درد دارد"
+                            }
+                        },
+                        {
+                            "source": "หายใจเข้าลึกๆครับ",
+                            "wordIds": [ "หายใจ", "เข้า", "ลึก", "ๆ", "ครับ" ],
+                            "translations": {
+                                "en": "Take a deep breath",
+                                "fa": "نفس عمیق بکشید"
+                            }
+                        },
+                        {
+                            "source": "ผมสงสัยว่าเป็นไส้ติ่งอักเสบ",
+                            "wordIds": [ "ผม", "สงสัย", "ว่า", "เป็น", "ไส้ติ่ง", "อักเสบ" ],
+                            "translations": {
+                                "en": "I suspect appendicitis",
+                                "fa": "من شک دارم آپاندیس باشد"
+                            }
+                        },
+                        {
+                            "source": "ต้องตรวจเลือดเพิ่มครับ",
+                            "wordIds": [ "ต้อง", "ตรวจเลือด", "เพิ่ม", "ครับ" ],
+                            "translations": {
+                                "en": "Need more blood tests",
+                                "fa": "آزمایش خون بیشتری نیاز است"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "sectionId": "hospital-conv-4",
+            "heading": {
+                "en": "Conversation 4: Pharmacy",
+                "th": "บทสนทนา 4: ห้องยา",
+                "fa": "مکالمه ۴: داروخانه"
+            },
+            "content": [
+                {
+                    "type": "paragraph",
+                    "sentences": [
+                        {
+                            "source": "นี่คือใบสั่งยาค่ะ",
+                            "wordIds": [ "นี่", "คือ", "ใบสั่งยา", "ค่ะ" ],
+                            "translations": {
+                                "en": "Here's the prescription",
+                                "fa": "این نسخه است"
+                            }
+                        },
+                        {
+                            "source": "ยาทานวันละกี่ครั้งครับ",
+                            "wordIds": [ "ยา", "ทาน", "วันละ", "กี่", "ครั้ง", "ครับ" ],
+                            "translations": {
+                                "en": "How many times a day should I take this?",
+                                "fa": "روزی چند بار باید بخورم؟"
+                            }
+                        },
+                        {
+                            "source": "ยาน้ำ ทานครั้งละ 2 ช้อนชา วันละ 3 ครั้ง หลังอาหาร",
+                            "wordIds": [ "ยาน้ำ", "ทาน", "ครั้งละ", "สอง", "ช้อนชา", "วันละ", "สาม", "ครั้ง", "หลัง", "อาหาร" ],
+                            "translations": {
+                                "en": "Liquid medicine, take 2 teaspoons, 3 times a day after meals",
+                                "fa": "داروی مایع، روزی ۳ بار هر بار ۲ قاشق چایخوری بعد از غذا"
+                            }
+                        },
+                        {
+                            "source": "ยาเม็ดสีขาว ทานก่อนนอน 1 เม็ด",
+                            "wordIds": [ "ยาเม็ด", "สีขาว", "ทาน", "ก่อนนอน", "หนึ่ง", "เม็ด" ],
+                            "translations": {
+                                "en": "White pills, take 1 before bed",
+                                "fa": "قرص سفید، شب قبل از خواب ۱ عدد"
+                            }
+                        },
+                        {
+                            "source": "ต้องกินจนหมดไหมครับ",
+                            "wordIds": [ "ต้อง", "กิน", "จน", "หมด", "ไหม", "ครับ" ],
+                            "translations": {
+                                "en": "Do I need to finish all of it?",
+                                "fa": "باید همه را بخورم؟"
+                            }
+                        },
+                        {
+                            "source": "ค่ะ ทานจนหมดนะคะ",
+                            "wordIds": [ "ค่ะ", "ทาน", "จน", "หมด", "นะ", "คะ" ],
+                            "translations": {
+                                "en": "Yes, finish all of it",
+                                "fa": "بله، همه را بخورید"
+                            }
+                        },
+                        {
+                            "source": "มีผลข้างเคียงอะไรไหมครับ",
+                            "wordIds": [ "มี", "ผลข้างเคียง", "อะไร", "ไหม", "ครับ" ],
+                            "translations": {
+                                "en": "Any side effects?",
+                                "fa": "عوارض جانبی دارد؟"
+                            }
+                        },
+                        {
+                            "source": "อาจจะง่วงนอนได้ค่ะ ไม่ควรขับรถ",
+                            "wordIds": [ "อาจจะ", "ง่วงนอน", "ได้", "ค่ะ", "ไม่", "ควร", "ขับรถ" ],
+                            "translations": {
+                                "en": "May cause drowsiness, don't drive",
+                                "fa": "ممکن است خواب‌آور باشد، رانندگی نکنید"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "sectionId": "hospital-conv-5",
+            "heading": {
+                "en": "Conversation 5: Follow-up Appointment",
+                "th": "บทสนทนา 5: นัดติดตามผล",
+                "fa": "مکالمه ۵: نوبت پیگیری"
+            },
+            "content": [
+                {
+                    "type": "paragraph",
+                    "sentences": [
+                        {
+                            "source": "หมอนัดอีกทีเมื่อไหร่คะ",
+                            "wordIds": [ "หมอ", "นัด", "อีก", "ที", "เมื่อไหร่", "คะ" ],
+                            "translations": {
+                                "en": "When is the follow-up appointment?",
+                                "fa": "نوبت بعدی کی است؟"
+                            }
+                        },
+                        {
+                            "source": "อาทิตย์หน้าครับ วันจันทร์เวลา 10 โมง",
+                            "wordIds": [ "อาทิตย์", "หน้า", "ครับ", "วันจันทร์", "เวลา", "สิบ", "โมง" ],
+                            "translations": {
+                                "en": "Next week, Monday at 10 a.m.",
+                                "fa": "هفته بعد، دوشنبه ساعت ۱۰ صبح"
+                            }
+                        },
+                        {
+                            "source": "แล้วต้องเตรียมตัวยังไงบ้างคะ",
+                            "wordIds": [ "แล้ว", "ต้อง", "เตรียมตัว", "ยังไง", "บ้าง", "คะ" ],
+                            "translations": {
+                                "en": "How should I prepare?",
+                                "fa": "چطور باید آماده شوم؟"
+                            }
+                        },
+                        {
+                            "source": "งดน้ำงดอาหารก่อนมาพบหมอ 8 ชั่วโมงครับ",
+                            "wordIds": [ "งด", "น้ำ", "งด", "อาหาร", "ก่อน", "มา", "พบ", "หมอ", "แปด", "ชั่วโมง", "ครับ" ],
+                            "translations": {
+                                "en": "Fast for 8 hours before coming",
+                                "fa": "۸ ساعت قبل از آمدن ناشتا باشید"
+                            }
+                        },
+                        {
+                            "source": "เอาผลตรวจเลือดมาด้วยนะครับ",
+                            "wordIds": [ "เอา", "ผล", "ตรวจเลือด", "มา", "ด้วย", "นะ", "ครับ" ],
+                            "translations": {
+                                "en": "Bring your blood test results",
+                                "fa": "نتایج آزمایش خون را همراه بیاورید"
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

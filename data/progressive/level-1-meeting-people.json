@@ -1,0 +1,245 @@
+{
+    "documentId": "level-1-meeting-people",
+    "metadata": {
+        "version": "2.0.0",
+        "created": "2026-02-21T10:00:00Z",
+        "title": {
+            "en": "Level 1: Meeting People",
+            "th": "ระดับ 1: การพบปะผู้คน",
+            "fa": "سطح ۱: ملاقات با مردم"
+        },
+        "difficulty": 1,
+        "newWords": 20,
+        "reviewWords": 0,
+        "totalWords": 20,
+        "sentences": 12,
+        "estimatedTime": 15
+    },
+    "vocabulary": {
+        "สวัสดี": {
+            "translations": { "en": "hello", "fa": "سلام" }
+        },
+        "ครับ": {
+            "translations": { "en": "polite particle (male)", "fa": "ذره مؤدب (مرد)" }
+        },
+        "ค่ะ": {
+            "translations": { "en": "polite particle (female)", "fa": "ذره مؤدب (زن)" }
+        },
+        "ผม": {
+            "translations": { "en": "I (male)", "fa": "من (مرد)" }
+        },
+        "ดิฉัน": {
+            "translations": { "en": "I (female)", "fa": "من (زن)" }
+        },
+        "คุณ": {
+            "translations": { "en": "you", "fa": "شما" }
+        },
+        "ชื่อ": {
+            "translations": { "en": "name", "fa": "اسم" }
+        },
+        "อะไร": {
+            "translations": { "en": "what", "fa": "چه" }
+        },
+        "ยินดีที่ได้รู้จัก": {
+            "translations": { "en": "nice to meet you", "fa": "از آشنایی خوشبختم" }
+        },
+        "ประเทศ": {
+            "translations": { "en": "country", "fa": "کشور" }
+        },
+        "ไทย": {
+            "translations": { "en": "Thailand", "fa": "تایلند" }
+        },
+        "อเมริกา": {
+            "translations": { "en": "America", "fa": "آمریکا" }
+        },
+        "อังกฤษ": {
+            "translations": { "en": "England", "fa": "انگلستان" }
+        },
+        "มาจาก": {
+            "translations": { "en": "come from", "fa": "آمدن از" }
+        },
+        "อยู่": {
+            "translations": { "en": "live/stay", "fa": "زندگی کردن" }
+        },
+        "เมืองไทย": {
+            "translations": { "en": "Thailand", "fa": "تایلند" }
+        },
+        "ภาษา": {
+            "translations": { "en": "language", "fa": "زبان" }
+        },
+        "พูด": {
+            "translations": { "en": "speak", "fa": "صحبت کردن" }
+        },
+        "ได้": {
+            "translations": { "en": "can", "fa": "توانستن" }
+        },
+        "นิดหน่อย": {
+            "translations": { "en": "a little bit", "fa": "کمی" }
+        }
+    },
+    "activity": {
+        "words": true,
+        "sentences": true
+    },
+    "sections": [
+        {
+            "sectionId": "level1-vocab-1",
+            "heading": {
+                "en": "Essential Greetings",
+                "th": "การทักทายที่จำเป็น",
+                "fa": "سلام‌های ضروری"
+            },
+            "content": [
+                {
+                    "type": "words",
+                    "heading": {
+                        "en": "Basic Greetings",
+                        "th": "การทักทายพื้นฐาน",
+                        "fa": "سلام‌های پایه"
+                    },
+                    "wordIds": [ "สวัสดี", "ครับ", "ค่ะ", "คุณ", "ผม", "ดิฉัน" ]
+                }
+            ]
+        },
+        {
+            "sectionId": "level1-conv-1",
+            "heading": {
+                "en": "Conversation 1: First Meeting",
+                "th": "บทสนทนา 1: การพบกันครั้งแรก",
+                "fa": "مکالمه ۱: اولین ملاقات"
+            },
+            "content": [
+                {
+                    "type": "paragraph",
+                    "sentences": [
+                        {
+                            "source": "สวัสดีครับ",
+                            "wordIds": [ "สวัสดี", "ครับ" ],
+                            "translations": {
+                                "en": "Hello",
+                                "fa": "سلام"
+                            }
+                        },
+                        {
+                            "source": "สวัสดีค่ะ",
+                            "wordIds": [ "สวัสดี", "ค่ะ" ],
+                            "translations": {
+                                "en": "Hello",
+                                "fa": "سلام"
+                            }
+                        },
+                        {
+                            "source": "ผมชื่อสมชายครับ คุณชื่ออะไรครับ",
+                            "wordIds": [ "ผม", "ชื่อ", "สมชาย", "ครับ", "คุณ", "ชื่อ", "อะไร", "ครับ" ],
+                            "translations": {
+                                "en": "My name is Somchai. What is your name?",
+                                "fa": "اسم من سامچای است. اسم شما چیست؟"
+                            }
+                        },
+                        {
+                            "source": "ดิฉันชื่อซาร่าห์ค่ะ",
+                            "wordIds": [ "ดิฉัน", "ชื่อ", "ซาร่าห์", "ค่ะ" ],
+                            "translations": {
+                                "en": "My name is Sarah",
+                                "fa": "اسم من سارا است"
+                            }
+                        },
+                        {
+                            "source": "ยินดีที่ได้รู้จักครับ",
+                            "wordIds": [ "ยินดีที่ได้รู้จัก", "ครับ" ],
+                            "translations": {
+                                "en": "Nice to meet you",
+                                "fa": "از آشنایی خوشبختم"
+                            }
+                        },
+                        {
+                            "source": "ยินดีที่ได้รู้จักค่ะ",
+                            "wordIds": [ "ยินดีที่ได้รู้จัก", "ค่ะ" ],
+                            "translations": {
+                                "en": "Nice to meet you too",
+                                "fa": "من هم خوشبختم"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "sectionId": "level1-vocab-2",
+            "heading": {
+                "en": "Countries & Languages",
+                "th": "ประเทศและภาษา",
+                "fa": "کشورها و زبان‌ها"
+            },
+            "content": [
+                {
+                    "type": "words",
+                    "wordIds": [ "ประเทศ", "ไทย", "อเมริกา", "อังกฤษ", "ภาษา", "พูด", "ได้", "นิดหน่อย" ]
+                }
+            ]
+        },
+        {
+            "sectionId": "level1-conv-2",
+            "heading": {
+                "en": "Conversation 2: Where are you from?",
+                "th": "บทสนทนา 2: คุณมาจากไหน",
+                "fa": "مکالمه ۲: اهل کجا هستید؟"
+            },
+            "content": [
+                {
+                    "type": "paragraph",
+                    "sentences": [
+                        {
+                            "source": "คุณมาจากประเทศอะไรครับ",
+                            "wordIds": [ "คุณ", "มาจาก", "ประเทศ", "อะไร", "ครับ" ],
+                            "translations": {
+                                "en": "What country are you from?",
+                                "fa": "اهل کدام کشور هستید؟"
+                            }
+                        },
+                        {
+                            "source": "ฉันมาจากอเมริกาค่ะ",
+                            "wordIds": [ "ฉัน", "มาจาก", "อเมริกา", "ค่ะ" ],
+                            "translations": {
+                                "en": "I'm from America",
+                                "fa": "اهل آمریکا هستم"
+                            }
+                        },
+                        {
+                            "source": "คุณอยู่เมืองไทยนานหรือยังครับ",
+                            "wordIds": [ "คุณ", "อยู่", "เมืองไทย", "นาน", "หรือ", "ยัง", "ครับ" ],
+                            "translations": {
+                                "en": "Have you been in Thailand long?",
+                                "fa": "مدت طولانی است در تایلند هستید؟"
+                            }
+                        },
+                        {
+                            "source": "อยู่มาสองเดือนค่ะ",
+                            "wordIds": [ "อยู่", "มา", "สอง", "เดือน", "ค่ะ" ],
+                            "translations": {
+                                "en": "I've been here for two months",
+                                "fa": "دو ماه است اینجا هستم"
+                            }
+                        },
+                        {
+                            "source": "พูดภาษาไทยได้ไหมครับ",
+                            "wordIds": [ "พูด", "ภาษา", "ไทย", "ได้", "ไหม", "ครับ" ],
+                            "translations": {
+                                "en": "Can you speak Thai?",
+                                "fa": "می‌توانید تایلندی صحبت کنید؟"
+                            }
+                        },
+                        {
+                            "source": "ได้นิดหน่อยค่ะ",
+                            "wordIds": [ "ได้", "นิดหน่อย", "ค่ะ" ],
+                            "translations": {
+                                "en": "A little bit",
+                                "fa": "کمی می‌توانم"
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

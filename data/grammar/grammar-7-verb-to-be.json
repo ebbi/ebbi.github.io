@@ -1,0 +1,105 @@
+{
+    "documentId": "grammar-7-verb-to-be",
+    "metadata": {
+        "version": "2.0.0",
+        "created": "2026-02-21T10:00:00Z",
+        "title": {
+            "en": "Grammar 7: Verb 'To Be' (เป็น อยู่ คือ)",
+            "th": "ไวยากรณ์ 7: คำกริยา 'เป็น' (เป็น อยู่ คือ)",
+            "fa": "گرامر ۷: فعل 'بودن' (เป็น อยู่ คือ)"
+        },
+        "difficulty": 3,
+        "newWords": 15,
+        "reviewWords": 40,
+        "sentenceCount": 25,
+        "estimatedTime": 30
+    },
+    "vocabulary": {
+        "เป็น": { "translations": { "en": "to be (for professions, nationalities)", "fa": "بودن (برای شغل، ملیت)" } },
+        "อยู่": { "translations": { "en": "to be (for location)", "fa": "بودن (برای مکان)" } },
+        "คือ": { "translations": { "en": "to be (for definitions)", "fa": "بودن (برای تعریف)" } },
+        "หมอ": { "translations": { "en": "doctor", "fa": "دکتر" } },
+        "ครู": { "translations": { "en": "teacher", "fa": "معلم" } },
+        "นักศึกษา": { "translations": { "en": "student", "fa": "دانشجو" } },
+        "คนไทย": { "translations": { "en": "Thai person", "fa": "آدم تایلندی" } },
+        "คนอเมริกัน": { "translations": { "en": "American person", "fa": "آدم آمریکایی" } },
+        "ที่นี่": { "translations": { "en": "here", "fa": "اینجا" } },
+        "นี่": { "translations": { "en": "this", "fa": "این" } }
+    },
+    "sections": [
+        {
+            "sectionId": "grammar-7-1",
+            "heading": {
+                "en": "Grammar Focus: Three Ways to Say 'To Be'",
+                "th": "เน้นไวยากรณ์: สามวิธีในการใช้ 'เป็น'",
+                "fa": "تمرکز گرامر: سه روش برای گفتن 'بودن'"
+            },
+            "content": [
+                {
+                    "type": "paragraph",
+                    "heading": {
+                        "en": "Grammar Explanation",
+                        "th": "คำอธิบายไวยากรณ์",
+                        "fa": "توضیح گرامر"
+                    },
+                    "grammar": {
+                        "pattern": "เป็น for identity, อยู่ for location, คือ for definition",
+                        "note": {
+                            "en": "Thai has three different words for 'to be'. เป็น (pen) for professions and nationalities, อยู่ (yoo) for location, and คือ (kheu) for definitions and equivalence.",
+                            "th": "ภาษาไทยมีคำว่า 'เป็น' สามแบบ: เป็นสำหรับอาชีพและสัญชาติ อยู่สำหรับสถานที่ และคือสำหรับคำนิยาม",
+                            "fa": "تایلندی سه کلمه متفاوت برای 'بودن' دارد: เป็น برای شغل و ملیت، อยู่ برای مکان، คือ برای تعریف و برابری."
+                        },
+                        "examples": [
+                            { "source": "ผมเป็นครู", "translation": "I am a teacher" },
+                            { "source": "ผมอยู่บ้าน", "translation": "I am at home" },
+                            { "source": "นี่คือหนังสือ", "translation": "This is a book" }
+                        ]
+                    },
+                    "sentences": [ ]
+                },
+                {
+                    "type": "paragraph",
+                    "heading": {
+                        "en": "Practice 1: Identity (เป็น)",
+                        "th": "ฝึกหัด 1: ตัวตน (เป็น)",
+                        "fa": "تمرین ۱: هویت (เป็น)"
+                    },
+                    "sentences": [
+                        {
+                            "source": "ผมเป็นหมอ",
+                            "wordIds": [ "ผม", "เป็น", "หมอ" ],
+                            "translations": {
+                                "en": "I am a doctor",
+                                "fa": "من دکتر هستم"
+                            }
+                        },
+                        {
+                            "source": "เขาเป็นครู",
+                            "wordIds": [ "เขา", "เป็น", "ครู" ],
+                            "translations": {
+                                "en": "He/She is a teacher",
+                                "fa": "او معلم است"
+                            }
+                        },
+                        {
+                            "source": "คุณเป็นคนไทยไหม",
+                            "wordIds": [ "คุณ", "เป็น", "คนไทย", "ไหม" ],
+                            "translations": {
+                                "en": "Are you Thai?",
+                                "fa": "آیا شما تایلندی هستید؟"
+                            }
+                        },
+                        {
+                            "source": "ฉันเป็นนักศึกษา",
+                            "wordIds": [ "ฉัน", "เป็น", "นักศึกษา" ],
+                            "translations": {
+                                "en": "I am a student",
+                                "fa": "من دانشجو هستم"
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

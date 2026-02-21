@@ -1,49 +1,639 @@
 {
     "learningObjects": [
         {
-            "learningObjectId": "testApp",
+            "learningObjectId": "grammar-structures",
             "title": {
-                "en": "Test Version 2",
-                "fa": "الگوهای اصلی گرامر تایلندی",
-                "th": "ไวยากรณ์ภาษาไทยที่จำเป็น"
+                "en": "Thai Grammar Structures",
+                "fa": "ساختارهای گرامر تایلندی",
+                "th": "โครงสร้างไวยากรณ์ภาษาไทย"
             },
+            "description": {
+                "en": "Learn Thai through systematic grammar explanations followed by practice sentences. Each level introduces a new grammatical structure with clear explanations and multiple examples.",
+                "fa": "یادگیری تایلندی از طریق توضیحات سیستماتیک گرامر و جملات تمرینی. هر سطح یک ساختار گرامری جدید را با توضیحات واضح و مثال‌های متعدد معرفی می‌کند.",
+                "th": "เรียนรู้ภาษาไทยผ่านคำอธิบายไวยากรณ์ที่เป็นระบบ ตามด้วยประโยคฝึกหัด แต่ละระดับจะแนะนำโครงสร้างไวยากรณ์ใหม่พร้อมคำอธิบายที่ชัดเจนและตัวอย่างหลากหลาย"
+            },
+            "order": 1,
+            "icon": "menu_book",
+            "totalLevels": 10,
+            "totalWords": 135,
+            "totalSentences": 238,
+            "estimatedTime": 265,
             "documents": [
                 {
-                    "id": "testV2",
+                    "id": "grammar-1-basic-svo",
                     "title": {
-                        "en": "Test V2",
-                        "fa": "ذرات مؤدبانه: ครับ و ค่ะ",
-                        "th": "คำลงท้ายแสดงความสุภาพ: ครับ และ ค่ะ"
+                        "en": "Grammar 1: Subject + Verb + Object",
+                        "th": "ไวยากรณ์ 1: ประธาน + กริยา + กรรม",
+                        "fa": "گرامر ۱: فاعل + فعل + مفعول"
                     },
                     "sourceLang": "th",
                     "targetLangs": [ "en", "fa" ],
-                    "filePath": "data/test/testV2.json",
+                    "filePath": "data/grammar/grammar-1-basic-svo.json",
                     "status": "published",
-                    "level": "basic"
+                    "level": 1,
+                    "difficulty": "beginner",
+                    "wordCount": 15,
+                    "sentenceCount": 18,
+                    "estimatedTime": 20,
+                    "grammarPoint": "Basic sentence structure",
+                    "tags": [ "basics", "word-order", "simple-sentences" ]
+                },
+                {
+                    "id": "grammar-2-negation",
+                    "title": {
+                        "en": "Grammar 2: Negative Sentences (ไม่)",
+                        "th": "ไวยากรณ์ 2: ประโยคปฏิเสธ (ไม่)",
+                        "fa": "گرامر ۲: جملات منفی (ไม่)"
+                    },
+                    "sourceLang": "th",
+                    "targetLangs": [ "en", "fa" ],
+                    "filePath": "data/grammar/grammar-2-negation.json",
+                    "status": "published",
+                    "level": 2,
+                    "difficulty": "beginner",
+                    "wordCount": 25,
+                    "sentenceCount": 20,
+                    "estimatedTime": 25,
+                    "grammarPoint": "Negation with ไม่",
+                    "tags": [ "negation", "negative-sentences", "basics" ]
+                },
+                {
+                    "id": "grammar-3-questions",
+                    "title": {
+                        "en": "Grammar 3: Yes/No Questions (ไหม)",
+                        "th": "ไวยากรณ์ 3: คำถามใช่/ไม่ใช่ (ไหม)",
+                        "fa": "گرامر ۳: سوالات بله/خیر (ไหม)"
+                    },
+                    "sourceLang": "th",
+                    "targetLangs": [ "en", "fa" ],
+                    "filePath": "data/grammar/grammar-3-questions.json",
+                    "status": "published",
+                    "level": 3,
+                    "difficulty": "beginner",
+                    "wordCount": 30,
+                    "sentenceCount": 22,
+                    "estimatedTime": 25,
+                    "grammarPoint": "Yes/No questions with ไหม",
+                    "tags": [ "questions", "interrogative", "yes-no" ]
+                },
+                {
+                    "id": "grammar-4-adjectives",
+                    "title": {
+                        "en": "Grammar 4: Descriptive Sentences (Noun + Adjective)",
+                        "th": "ไวยากรณ์ 4: ประโยคบอกลักษณะ (นาม + คุณศัพท์)",
+                        "fa": "گرامر ۴: جملات توصیفی (اسم + صفت)"
+                    },
+                    "sourceLang": "th",
+                    "targetLangs": [ "en", "fa" ],
+                    "filePath": "data/grammar/grammar-4-adjectives.json",
+                    "status": "published",
+                    "level": 4,
+                    "difficulty": "beginner",
+                    "wordCount": 40,
+                    "sentenceCount": 24,
+                    "estimatedTime": 25,
+                    "grammarPoint": "Adjectives after nouns",
+                    "tags": [ "adjectives", "description", "attributes" ]
+                },
+                {
+                    "id": "grammar-5-time",
+                    "title": {
+                        "en": "Grammar 5: Time Words and Word Order",
+                        "th": "ไวยากรณ์ 5: คำบอกเวลาและลำดับคำ",
+                        "fa": "گرامر ۵: کلمات زمان و ترتیب کلمات"
+                    },
+                    "sourceLang": "th",
+                    "targetLangs": [ "en", "fa" ],
+                    "filePath": "data/grammar/grammar-5-time.json",
+                    "status": "published",
+                    "level": 5,
+                    "difficulty": "intermediate",
+                    "wordCount": 45,
+                    "sentenceCount": 25,
+                    "estimatedTime": 25,
+                    "grammarPoint": "Time expressions placement",
+                    "tags": [ "time", "word-order", "temporal" ]
+                },
+                {
+                    "id": "grammar-6-ability",
+                    "title": {
+                        "en": "Grammar 6: Expressing Ability (ได้)",
+                        "th": "ไวยากรณ์ 6: การแสดงความสามารถ (ได้)",
+                        "fa": "گرامر ۶: بیان توانایی (ได้)"
+                    },
+                    "sourceLang": "th",
+                    "targetLangs": [ "en", "fa" ],
+                    "filePath": "data/grammar/grammar-6-ability.json",
+                    "status": "published",
+                    "level": 6,
+                    "difficulty": "intermediate",
+                    "wordCount": 50,
+                    "sentenceCount": 24,
+                    "estimatedTime": 25,
+                    "grammarPoint": "Ability with ได้",
+                    "tags": [ "ability", "can", "potential" ]
+                },
+                {
+                    "id": "grammar-7-verb-to-be",
+                    "title": {
+                        "en": "Grammar 7: Verb 'To Be' (เป็น อยู่ คือ)",
+                        "th": "ไวยากรณ์ 7: คำกริยา 'เป็น' (เป็น อยู่ คือ)",
+                        "fa": "گرامر ۷: فعل 'بودن' (เป็น อยู่ คือ)"
+                    },
+                    "sourceLang": "th",
+                    "targetLangs": [ "en", "fa" ],
+                    "filePath": "data/grammar/grammar-7-verb-to-be.json",
+                    "status": "published",
+                    "level": 7,
+                    "difficulty": "intermediate",
+                    "wordCount": 55,
+                    "sentenceCount": 25,
+                    "estimatedTime": 30,
+                    "grammarPoint": "Three ways to say 'to be'",
+                    "tags": [ "verb-to-be", "identity", "location", "definition" ]
+                },
+                {
+                    "id": "grammar-8-prepositions",
+                    "title": {
+                        "en": "Grammar 8: Prepositions of Place",
+                        "th": "ไวยากรณ์ 8: คำบุพบทบอกสถานที่",
+                        "fa": "گرامر ۸: حروف اضافه مکان"
+                    },
+                    "sourceLang": "th",
+                    "targetLangs": [ "en", "fa" ],
+                    "filePath": "data/grammar/grammar-8-prepositions.json",
+                    "status": "published",
+                    "level": 8,
+                    "difficulty": "intermediate",
+                    "wordCount": 60,
+                    "sentenceCount": 25,
+                    "estimatedTime": 30,
+                    "grammarPoint": "Prepositions and locations",
+                    "tags": [ "prepositions", "location", "position" ]
+                },
+                {
+                    "id": "grammar-9-comparatives",
+                    "title": {
+                        "en": "Grammar 9: Comparatives and Superlatives",
+                        "th": "ไวยากรณ์ 9: การเปรียบเทียบขั้นกว่าและขั้นสุด",
+                        "fa": "گرامر ۹: صفت برتر و برترین"
+                    },
+                    "sourceLang": "th",
+                    "targetLangs": [ "en", "fa" ],
+                    "filePath": "data/grammar/grammar-9-comparatives.json",
+                    "status": "published",
+                    "level": 9,
+                    "difficulty": "intermediate",
+                    "wordCount": 65,
+                    "sentenceCount": 25,
+                    "estimatedTime": 30,
+                    "grammarPoint": "Comparatives with กว่า and ที่สุด",
+                    "tags": [ "comparatives", "superlatives", "comparison" ]
+                },
+                {
+                    "id": "grammar-10-complex",
+                    "title": {
+                        "en": "Grammar 10: Complex Sentences (เพราะ ว่า แต่)",
+                        "th": "ไวยากรณ์ 10: ประโยคความซ้อน (เพราะ ว่า แต่)",
+                        "fa": "گرامر ۱۰: جملات مرکب (เพราะ ว่า แต่)"
+                    },
+                    "sourceLang": "th",
+                    "targetLangs": [ "en", "fa" ],
+                    "filePath": "data/grammar/grammar-10-complex.json",
+                    "status": "published",
+                    "level": 10,
+                    "difficulty": "advanced",
+                    "wordCount": 70,
+                    "sentenceCount": 25,
+                    "estimatedTime": 35,
+                    "grammarPoint": "Connecting clauses with conjunctions",
+                    "tags": [ "complex-sentences", "conjunctions", "connectors" ]
                 }
             ]
         },
         {
-            "id": "thai_grammar",
+            "learningObjectId": "thematic-conversations",
             "title": {
-                "en": "Core Thai Grammar Patterns",
-                "fa": "الگوهای اصلی گرامر تایلندی",
-                "th": "ไวยากรณ์ภาษาไทยที่จำเป็น"
+                "en": "Thematic Conversations",
+                "fa": "مکالمات موضوعی",
+                "th": "บทสนทนาตามหัวข้อ"
             },
+            "description": {
+                "en": "Real-life conversations organized by everyday situations. Practice Thai in context with vocabulary and phrases for specific scenarios.",
+                "fa": "مکالمات واقعی زندگی بر اساس موقعیت‌های روزمره. تمرین تایلندی در زمینه با واژگان و عبارات برای سناریوهای خاص.",
+                "th": "บทสนทนาในชีวิตจริงแบ่งตามสถานการณ์ในชีวิตประจำวัน ฝึกภาษาไทยในบริบทด้วยคำศัพท์และวลีสำหรับสถานการณ์เฉพาะ"
+            },
+            "order": 2,
+            "icon": "chat",
+            "totalDocuments": 12,
+            "totalWords": 418,
+            "totalSentences": 268,
+            "estimatedTime": 250,
             "documents": [
                 {
-                    "id": "testV1",
+                    "id": "thematic-restaurant",
                     "title": {
-                        "en": "Polite Particles: ครับ and ค่ะ",
-                        "fa": "ذرات مؤدبانه: ครับ و ค่ะ",
-                        "th": "คำลงท้ายแสดงความสุภาพ: ครับ และ ค่ะ"
+                        "en": "Eating Out: Restaurant Conversations",
+                        "fa": "غذا خوردن در بیرون: مکالمات رستوران",
+                        "th": "กินข้าวนอกบ้าน: บทสนทนาในร้านอาหาร"
                     },
                     "sourceLang": "th",
                     "targetLangs": [ "en", "fa" ],
-                    "filePath": "data/test/testV1.json",
+                    "filePath": "data/thematic/thematic-restaurant.json",
                     "status": "published",
-                    "level": "basic",
-                    "activities": [ "multipleChoiceWord", "multipleChoiceSentence" ]
+                    "level": "beginner",
+                    "wordCount": 38,
+                    "sentenceCount": 24,
+                    "estimatedTime": 25,
+                    "tags": [ "food", "restaurant", "ordering", "social" ]
+                },
+                {
+                    "id": "thematic-shopping-mall",
+                    "title": {
+                        "en": "At the Shopping Mall",
+                        "th": "ที่ห้างสรรพสินค้า",
+                        "fa": "در مرکز خرید"
+                    },
+                    "sourceLang": "th",
+                    "targetLangs": [ "en", "fa" ],
+                    "filePath": "data/thematic/thematic-shopping-mall.json",
+                    "status": "published",
+                    "level": "beginner",
+                    "wordCount": 40,
+                    "sentenceCount": 25,
+                    "estimatedTime": 25,
+                    "tags": [ "shopping", "mall", "clothes", "electronics" ]
+                },
+                {
+                    "id": "thematic-hospital",
+                    "title": {
+                        "en": "At the Hospital",
+                        "th": "ที่โรงพยาบาล",
+                        "fa": "در بیمارستان"
+                    },
+                    "sourceLang": "th",
+                    "targetLangs": [ "en", "fa" ],
+                    "filePath": "data/thematic/thematic-hospital.json",
+                    "status": "published",
+                    "level": "intermediate",
+                    "wordCount": 45,
+                    "sentenceCount": 28,
+                    "estimatedTime": 30,
+                    "tags": [ "health", "hospital", "doctor", "emergency" ]
+                },
+                {
+                    "id": "thematic-hotel",
+                    "title": {
+                        "en": "At the Hotel",
+                        "th": "ที่โรงแรม",
+                        "fa": "در هتل"
+                    },
+                    "sourceLang": "th",
+                    "targetLangs": [ "en", "fa" ],
+                    "filePath": "data/thematic/thematic-hotel.json",
+                    "status": "published",
+                    "level": "beginner",
+                    "wordCount": 40,
+                    "sentenceCount": 26,
+                    "estimatedTime": 25,
+                    "tags": [ "hotel", "accommodation", "travel", "services" ]
+                },
+                {
+                    "id": "thematic-beach",
+                    "title": {
+                        "en": "At the Beach",
+                        "th": "ที่ทะเล",
+                        "fa": "در ساحل"
+                    },
+                    "sourceLang": "th",
+                    "targetLangs": [ "en", "fa" ],
+                    "filePath": "data/thematic/thematic-beach.json",
+                    "status": "published",
+                    "level": "beginner",
+                    "wordCount": 35,
+                    "sentenceCount": 22,
+                    "estimatedTime": 20,
+                    "tags": [ "beach", "vacation", "water", "activities" ]
+                },
+                {
+                    "id": "thematic-hair-salon",
+                    "title": {
+                        "en": "At the Hair Salon",
+                        "th": "ที่ร้านทำผม",
+                        "fa": "در آرایشگاه"
+                    },
+                    "sourceLang": "th",
+                    "targetLangs": [ "en", "fa" ],
+                    "filePath": "data/thematic/thematic-hair-salon.json",
+                    "status": "published",
+                    "level": "beginner",
+                    "wordCount": 30,
+                    "sentenceCount": 20,
+                    "estimatedTime": 20,
+                    "tags": [ "hair", "beauty", "salon", "personal care" ]
+                },
+                {
+                    "id": "thematic-post-office",
+                    "title": {
+                        "en": "At the Post Office",
+                        "th": "ที่ไปรษณีย์",
+                        "fa": "در اداره پست"
+                    },
+                    "sourceLang": "th",
+                    "targetLangs": [ "en", "fa" ],
+                    "filePath": "data/thematic/thematic-post-office.json",
+                    "status": "published",
+                    "level": "beginner",
+                    "wordCount": 25,
+                    "sentenceCount": 18,
+                    "estimatedTime": 15,
+                    "tags": [ "post", "mail", "shipping", "services" ]
+                },
+                {
+                    "id": "thematic-bank",
+                    "title": {
+                        "en": "At the Bank",
+                        "th": "ที่ธนาคาร",
+                        "fa": "در بانک"
+                    },
+                    "sourceLang": "th",
+                    "targetLangs": [ "en", "fa" ],
+                    "filePath": "data/thematic/thematic-bank.json",
+                    "status": "published",
+                    "level": "beginner",
+                    "wordCount": 35,
+                    "sentenceCount": 22,
+                    "estimatedTime": 20,
+                    "tags": [ "bank", "money", "finance", "services" ]
+                },
+                {
+                    "id": "thematic-gym",
+                    "title": {
+                        "en": "At the Gym",
+                        "th": "ที่ฟิตเนส",
+                        "fa": "در باشگاه"
+                    },
+                    "sourceLang": "th",
+                    "targetLangs": [ "en", "fa" ],
+                    "filePath": "data/thematic/thematic-gym.json",
+                    "status": "published",
+                    "level": "beginner",
+                    "wordCount": 30,
+                    "sentenceCount": 20,
+                    "estimatedTime": 20,
+                    "tags": [ "gym", "fitness", "exercise", "health" ]
+                },
+                {
+                    "id": "thematic-school",
+                    "title": {
+                        "en": "At School",
+                        "th": "ที่โรงเรียน",
+                        "fa": "در مدرسه"
+                    },
+                    "sourceLang": "th",
+                    "targetLangs": [ "en", "fa" ],
+                    "filePath": "data/thematic/thematic-school.json",
+                    "status": "published",
+                    "level": "beginner",
+                    "wordCount": 40,
+                    "sentenceCount": 25,
+                    "estimatedTime": 25,
+                    "tags": [ "school", "education", "classroom", "learning" ]
+                },
+                {
+                    "id": "thematic-temple",
+                    "title": {
+                        "en": "At the Temple",
+                        "th": "ที่วัด",
+                        "fa": "در معبد"
+                    },
+                    "sourceLang": "th",
+                    "targetLangs": [ "en", "fa" ],
+                    "filePath": "data/thematic/thematic-temple.json",
+                    "status": "published",
+                    "level": "intermediate",
+                    "wordCount": 35,
+                    "sentenceCount": 20,
+                    "estimatedTime": 20,
+                    "tags": [ "temple", "religion", "culture", "thai-culture" ]
+                },
+                {
+                    "id": "thematic-cinema",
+                    "title": {
+                        "en": "At the Cinema",
+                        "th": "ที่โรงหนัง",
+                        "fa": "در سینما"
+                    },
+                    "sourceLang": "th",
+                    "targetLangs": [ "en", "fa" ],
+                    "filePath": "data/thematic/thematic-cinema.json",
+                    "status": "published",
+                    "level": "beginner",
+                    "wordCount": 25,
+                    "sentenceCount": 18,
+                    "estimatedTime": 15,
+                    "tags": [ "cinema", "movies", "entertainment" ]
+                }
+            ]
+        },
+        {
+            "learningObjectId": "progressive-thai",
+            "title": {
+                "en": "Progressive Thai - Conversation Series",
+                "fa": "تایلندی پیشرونده - سری مکالمات",
+                "th": "ภาษาไทยแบบก้าวหน้า - ชุดบทสนทนา"
+            },
+            "description": {
+                "en": "A carefully sequenced series building from basic to intermediate conversations. Each level introduces new vocabulary and builds on previous knowledge.",
+                "fa": "یک سری منظم و پیشرونده از مکالمات پایه تا متوسط. هر سطح واژگان جدید را معرفی می‌کند و بر دانش قبلی بنا می‌شود.",
+                "th": "ชุดบทเรียนที่เรียงลำดับอย่างดีจากพื้นฐานถึงระดับกลาง แต่ละระดับจะแนะนำคำศัพท์ใหม่และต่อยอดจากความรู้เดิม"
+            },
+            "order": 3,
+            "icon": "trending_up",
+            "totalLevels": 10,
+            "totalWords": 540,
+            "totalSentences": 234,
+            "estimatedTime": 295,
+            "documents": [
+                {
+                    "id": "level-1-meeting-people",
+                    "title": {
+                        "en": "Level 1: Meeting People",
+                        "fa": "سطح ۱: ملاقات با مردم",
+                        "th": "ระดับ 1: การพบปะผู้คน"
+                    },
+                    "sourceLang": "th",
+                    "targetLangs": [ "en", "fa" ],
+                    "filePath": "data/progressive/level-1-meeting-people.json",
+                    "status": "published",
+                    "level": 1,
+                    "difficulty": "beginner",
+                    "wordCount": 20,
+                    "sentenceCount": 12,
+                    "estimatedTime": 15,
+                    "tags": [ "greetings", "introductions", "basics" ]
+                },
+                {
+                    "id": "level-2-basic-verbs",
+                    "title": {
+                        "en": "Level 2: Basic Verbs & Food",
+                        "fa": "سطح ۲: افعال پایه و غذا",
+                        "th": "ระดับ 2: คำกริยาพื้นฐานและอาหาร"
+                    },
+                    "sourceLang": "th",
+                    "targetLangs": [ "en", "fa" ],
+                    "filePath": "data/progressive/level-2-basic-verbs.json",
+                    "status": "published",
+                    "level": 2,
+                    "difficulty": "beginner",
+                    "wordCount": 25,
+                    "sentenceCount": 15,
+                    "estimatedTime": 20,
+                    "tags": [ "verbs", "food", "eating" ]
+                },
+                {
+                    "id": "level-3-daily-routines",
+                    "title": {
+                        "en": "Level 3: Daily Routines & Time",
+                        "fa": "سطح ۳: کارهای روزمره و زمان",
+                        "th": "ระดับ 3: กิจวัตรประจำวันและเวลา"
+                    },
+                    "sourceLang": "th",
+                    "targetLangs": [ "en", "fa" ],
+                    "filePath": "data/progressive/level-3-daily-routines.json",
+                    "status": "published",
+                    "level": 3,
+                    "difficulty": "beginner",
+                    "wordCount": 40,
+                    "sentenceCount": 20,
+                    "estimatedTime": 25,
+                    "tags": [ "routines", "time", "daily-life" ]
+                },
+                {
+                    "id": "level-4-shopping",
+                    "title": {
+                        "en": "Level 4: Shopping & Numbers",
+                        "fa": "سطح ۴: خرید و اعداد",
+                        "th": "ระดับ 4: ช้อปปิ้งและตัวเลข"
+                    },
+                    "sourceLang": "th",
+                    "targetLangs": [ "en", "fa" ],
+                    "filePath": "data/progressive/level-4-shopping.json",
+                    "status": "published",
+                    "level": 4,
+                    "difficulty": "beginner",
+                    "wordCount": 45,
+                    "sentenceCount": 22,
+                    "estimatedTime": 25,
+                    "tags": [ "shopping", "numbers", "prices" ]
+                },
+                {
+                    "id": "level-5-transportation",
+                    "title": {
+                        "en": "Level 5: Transportation & Directions",
+                        "fa": "سطح ۵: حمل و نقل و مسیریابی",
+                        "th": "ระดับ 5: การเดินทางและเส้นทาง"
+                    },
+                    "sourceLang": "th",
+                    "targetLangs": [ "en", "fa" ],
+                    "filePath": "data/progressive/level-5-transportation.json",
+                    "status": "published",
+                    "level": 5,
+                    "difficulty": "intermediate",
+                    "wordCount": 55,
+                    "sentenceCount": 25,
+                    "estimatedTime": 30,
+                    "tags": [ "transportation", "directions", "travel" ]
+                },
+                {
+                    "id": "level-6-health",
+                    "title": {
+                        "en": "Level 6: Health & Body",
+                        "fa": "سطح ۶: سلامت و بدن",
+                        "th": "ระดับ 6: สุขภาพและร่างกาย"
+                    },
+                    "sourceLang": "th",
+                    "targetLangs": [ "en", "fa" ],
+                    "filePath": "data/progressive/level-6-health.json",
+                    "status": "published",
+                    "level": 6,
+                    "difficulty": "intermediate",
+                    "wordCount": 55,
+                    "sentenceCount": 24,
+                    "estimatedTime": 30,
+                    "tags": [ "health", "body", "doctor", "medicine" ]
+                },
+                {
+                    "id": "level-7-social-events",
+                    "title": {
+                        "en": "Level 7: Social Events & Invitations",
+                        "fa": "سطح ۷: رویدادهای اجتماعی و دعوت‌ها",
+                        "th": "ระดับ 7: งานสังคมและการเชิญ"
+                    },
+                    "sourceLang": "th",
+                    "targetLangs": [ "en", "fa" ],
+                    "filePath": "data/progressive/level-7-social-events.json",
+                    "status": "published",
+                    "level": 7,
+                    "difficulty": "intermediate",
+                    "wordCount": 65,
+                    "sentenceCount": 28,
+                    "estimatedTime": 35,
+                    "tags": [ "social", "parties", "invitations", "festivals" ]
+                },
+                {
+                    "id": "level-8-work",
+                    "title": {
+                        "en": "Level 8: Work & Career",
+                        "fa": "سطح ۸: کار و حرفه",
+                        "th": "ระดับ 8: การทำงานและอาชีพ"
+                    },
+                    "sourceLang": "th",
+                    "targetLangs": [ "en", "fa" ],
+                    "filePath": "data/progressive/level-8-work.json",
+                    "status": "published",
+                    "level": 8,
+                    "difficulty": "intermediate",
+                    "wordCount": 70,
+                    "sentenceCount": 26,
+                    "estimatedTime": 35,
+                    "tags": [ "work", "career", "office", "job" ]
+                },
+                {
+                    "id": "level-9-travel",
+                    "title": {
+                        "en": "Level 9: Travel & Accommodation",
+                        "fa": "سطح ۹: سفر و اقامت",
+                        "th": "ระดับ 9: การเดินทางและที่พัก"
+                    },
+                    "sourceLang": "th",
+                    "targetLangs": [ "en", "fa" ],
+                    "filePath": "data/progressive/level-9-travel.json",
+                    "status": "published",
+                    "level": 9,
+                    "difficulty": "intermediate",
+                    "wordCount": 80,
+                    "sentenceCount": 30,
+                    "estimatedTime": 40,
+                    "tags": [ "travel", "hotel", "airport", "vacation" ]
+                },
+                {
+                    "id": "level-10-emergencies",
+                    "title": {
+                        "en": "Level 10: Emergencies & Problem Solving",
+                        "fa": "سطح ۱۰: شرایط اضطراری و حل مسئله",
+                        "th": "ระดับ 10: เหตุฉุกเฉินและการแก้ปัญหา"
+                    },
+                    "sourceLang": "th",
+                    "targetLangs": [ "en", "fa" ],
+                    "filePath": "data/progressive/level-10-emergencies.json",
+                    "status": "published",
+                    "level": 10,
+                    "difficulty": "advanced",
+                    "wordCount": 85,
+                    "sentenceCount": 32,
+                    "estimatedTime": 40,
+                    "tags": [ "emergencies", "problems", "help", "police" ]
                 }
             ]
         }

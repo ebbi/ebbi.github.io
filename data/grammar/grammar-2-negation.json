@@ -1,0 +1,173 @@
+{
+    "documentId": "grammar-2-negation",
+    "metadata": {
+        "version": "2.0.0",
+        "created": "2026-02-21T10:00:00Z",
+        "title": {
+            "en": "Grammar 2: Negative Sentences (ไม่)",
+            "th": "ไวยากรณ์ 2: ประโยคปฏิเสธ (ไม่)",
+            "fa": "گرامر ۲: جملات منفی (ไม่)"
+        },
+        "difficulty": 1,
+        "newWords": 10,
+        "reviewWords": 15,
+        "sentenceCount": 20,
+        "estimatedTime": 25
+    },
+    "vocabulary": {
+        "ไม่": { "translations": { "en": "no/not", "fa": "نه" } },
+        "กิน": { "translations": { "en": "eat", "fa": "خوردن" } },
+        "ดื่ม": { "translations": { "en": "drink", "fa": "نوشیدن" } },
+        "ซื้อ": { "translations": { "en": "buy", "fa": "خریدن" } },
+        "ชอบ": { "translations": { "en": "like", "fa": "دوست داشتن" } },
+        "ไป": { "translations": { "en": "go", "fa": "رفتن" } },
+        "มา": { "translations": { "en": "come", "fa": "آمدن" } },
+        "อยู่": { "translations": { "en": "stay/live", "fa": "ماندن" } },
+        "ข้าว": { "translations": { "en": "rice", "fa": "برنج" } },
+        "น้ำ": { "translations": { "en": "water", "fa": "آب" } },
+        "กาแฟ": { "translations": { "en": "coffee", "fa": "قهوه" } },
+        "ชา": { "translations": { "en": "tea", "fa": "چای" } },
+        "บ้าน": { "translations": { "en": "home", "fa": "خانه" } },
+        "ตลาด": { "translations": { "en": "market", "fa": "بازار" } }
+    },
+    "sections": [
+        {
+            "sectionId": "grammar-2-1",
+            "heading": {
+                "en": "Grammar Focus: Making Negative Sentences",
+                "th": "เน้นไวยากรณ์: การทำประโยคปฏิเสธ",
+                "fa": "تمرکز گرامر: ساختن جملات منفی"
+            },
+            "content": [
+                {
+                    "type": "paragraph",
+                    "heading": {
+                        "en": "Grammar Explanation",
+                        "th": "คำอธิบายไวยากรณ์",
+                        "fa": "توضیح گرامر"
+                    },
+                    "grammar": {
+                        "pattern": "Subject + ไม่ + Verb + Object",
+                        "note": {
+                            "en": "To make a negative sentence in Thai, put ไม่ (mai) before the verb. The structure becomes Subject + ไม่ + Verb + Object.",
+                            "th": "การทำประโยคปฏิเสธในภาษาไทย ใส่ 'ไม่' หน้ากริยา โครงสร้างคือ ประธาน + ไม่ + กริยา + กรรม",
+                            "fa": "برای ساختن جمله منفی در تایلندی، 'ไม่' را قبل از فعل قرار دهید. ساختار می‌شود: فاعل + ไม่ + فعل + مفعول"
+                        },
+                        "examples": [
+                            { "source": "ผมกินข้าว", "translation": "I eat rice" },
+                            { "source": "ผมไม่กินข้าว", "translation": "I don't eat rice" },
+                            { "source": "คุณชอบกาแฟ", "translation": "You like coffee" },
+                            { "source": "คุณไม่ชอบกาแฟ", "translation": "You don't like coffee" }
+                        ]
+                    },
+                    "sentences": [ ]
+                },
+                {
+                    "type": "paragraph",
+                    "heading": {
+                        "en": "Practice 1: Affirmative vs Negative",
+                        "th": "ฝึกหัด 1: ประโยคบอกเล่าและปฏิเสธ",
+                        "fa": "تمرین ۱: مثبت و منفی"
+                    },
+                    "sentences": [
+                        {
+                            "source": "ผมกินข้าว",
+                            "wordIds": [ "ผม", "กิน", "ข้าว" ],
+                            "translations": {
+                                "en": "I eat rice",
+                                "fa": "من برنج می‌خورم"
+                            }
+                        },
+                        {
+                            "source": "ผมไม่กินข้าว",
+                            "wordIds": [ "ผม", "ไม่", "กิน", "ข้าว" ],
+                            "translations": {
+                                "en": "I don't eat rice",
+                                "fa": "من برنج نمی‌خورم"
+                            }
+                        },
+                        {
+                            "source": "คุณดื่มกาแฟ",
+                            "wordIds": [ "คุณ", "ดื่ม", "กาแฟ" ],
+                            "translations": {
+                                "en": "You drink coffee",
+                                "fa": "شما قهوه می‌نوشید"
+                            }
+                        },
+                        {
+                            "source": "คุณไม่ดื่มกาแฟ",
+                            "wordIds": [ "คุณ", "ไม่", "ดื่ม", "กาแฟ" ],
+                            "translations": {
+                                "en": "You don't drink coffee",
+                                "fa": "شما قهوه نمی‌نوشید"
+                            }
+                        },
+                        {
+                            "source": "เขาชอบชา",
+                            "wordIds": [ "เขา", "ชอบ", "ชา" ],
+                            "translations": {
+                                "en": "He likes tea",
+                                "fa": "او چای دوست دارد"
+                            }
+                        },
+                        {
+                            "source": "เขาไม่ชอบชา",
+                            "wordIds": [ "เขา", "ไม่", "ชอบ", "ชา" ],
+                            "translations": {
+                                "en": "He doesn't like tea",
+                                "fa": "او چای دوست ندارد"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "sectionId": "grammar-2-2",
+            "heading": {
+                "en": "Practice 2: More Negative Sentences",
+                "th": "ฝึกหัด 2: ประโยคปฏิเสธเพิ่มเติม",
+                "fa": "تمرین ۲: جملات منفی بیشتر"
+            },
+            "content": [
+                {
+                    "type": "paragraph",
+                    "sentences": [
+                        {
+                            "source": "ฉันไปตลาด",
+                            "wordIds": [ "ฉัน", "ไป", "ตลาด" ],
+                            "translations": {
+                                "en": "I go to the market",
+                                "fa": "من به بازار می‌روم"
+                            }
+                        },
+                        {
+                            "source": "ฉันไม่ไปตลาด",
+                            "wordIds": [ "ฉัน", "ไม่", "ไป", "ตลาด" ],
+                            "translations": {
+                                "en": "I don't go to the market",
+                                "fa": "من به بازار نمی‌روم"
+                            }
+                        },
+                        {
+                            "source": "คุณอยู่บ้าน",
+                            "wordIds": [ "คุณ", "อยู่", "บ้าน" ],
+                            "translations": {
+                                "en": "You stay home",
+                                "fa": "شما در خانه می‌مانید"
+                            }
+                        },
+                        {
+                            "source": "คุณไม่อยู่บ้าน",
+                            "wordIds": [ "คุณ", "ไม่", "อยู่", "บ้าน" ],
+                            "translations": {
+                                "en": "You don't stay home",
+                                "fa": "شما در خانه نمی‌مانید"
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,410 @@
+{
+    "documentId": "thematic-temple",
+    "metadata": {
+        "version": "2.0.0",
+        "created": "2026-02-21T10:00:00Z",
+        "title": {
+            "en": "At the Temple",
+            "th": "ที่วัด",
+            "fa": "در معبد"
+        },
+        "difficulty": 2,
+        "wordCount": 35,
+        "sentenceCount": 20,
+        "estimatedTime": 20,
+        "tags": [ "temple", "religion", "culture", "thai-culture" ]
+    },
+    "vocabulary": {
+        "วัด": {
+            "translations": { "en": "temple", "fa": "معبد" }
+        },
+        "พระ": {
+            "translations": { "en": "monk", "fa": "راهب" }
+        },
+        "พระสงฆ์": {
+            "translations": { "en": "monk", "fa": "راهب" }
+        },
+        "สามเณร": {
+            "translations": { "en": "novice monk", "fa": "راهب نوجوان" }
+        },
+        "วัด": {
+            "translations": { "en": "temple", "fa": "معبد" }
+        },
+        "โบสถ์": {
+            "translations": { "en": "ordination hall", "fa": "سالن عبادت" }
+        },
+        "วิหาร": {
+            "translations": { "en": "assembly hall", "fa": "تالار اجتماعات" }
+        },
+        "เจดีย์": {
+            "translations": { "en": "pagoda", "fa": "استوپا" }
+        },
+        "พระพุทธรูป": {
+            "translations": { "en": "Buddha image", "fa": "مجسمه بودا" }
+        },
+        "ไหว้": {
+            "translations": { "en": "wai (pay respect)", "fa": "احترام گذاشتن" }
+        },
+        "กราบ": {
+            "translations": { "en": "prostrate", "fa": "سجده" }
+        },
+        "ทำบุญ": {
+            "translations": { "en": "make merit", "fa": "کار نیک" }
+        },
+        "ตักบาตร": {
+            "translations": { "en": "offer food to monks", "fa": "غذا دادن به راهبان" }
+        },
+        "ใส่บาตร": {
+            "translations": { "en": "put food in alms bowl", "fa": "غذا در کاسه راهبان گذاشتن" }
+        },
+        "ฟังธรรม": {
+            "translations": { "en": "listen to dharma", "fa": "گوش دادن به موعظه" }
+        },
+        "สวดมนต์": {
+            "translations": { "en": "chant prayers", "fa": "دعا خواندن" }
+        },
+        "นั่งสมาธิ": {
+            "translations": { "en": "meditate", "fa": "مراقبه" }
+        },
+        "ถวาย": {
+            "translations": { "en": "offer to monks", "fa": "اهداء به راهبان" }
+        },
+        "ปัจจัย": {
+            "translations": { "en": "donation (money)", "fa": "کمک مالی" }
+        },
+        "ของถวาย": {
+            "translations": { "en": "offerings", "fa": "نذری" }
+        },
+        "ดอกไม้": {
+            "translations": { "en": "flowers", "fa": "گل" }
+        },
+        "ธูป": {
+            "translations": { "en": "incense", "fa": "عود" }
+        },
+        "เทียน": {
+            "translations": { "en": "candle", "fa": "شمع" }
+        },
+        "ผ้าเหลือง": {
+            "translations": { "en": "monk's robe", "fa": "لباس راهب" }
+        },
+        "บาตร": {
+            "translations": { "en": "alms bowl", "fa": "کاسه صدقه" }
+        },
+        "ศีล": {
+            "translations": { "en": "precepts", "fa": "اخلاقیات" }
+        },
+        "บาป": {
+            "translations": { "en": "sin", "fa": "گناه" }
+        },
+        "บุญ": {
+            "translations": { "en": "merit", "fa": "ثواب" }
+        },
+        "สงฆ์": {
+            "translations": { "en": "sangha (monk community)", "fa": "جامعه راهبان" }
+        },
+        "วัดไทย": {
+            "translations": { "en": "Thai temple", "fa": "معبد تایلندی" }
+        },
+        "พระเครื่อง": {
+            "translations": { "en": "amulets", "fa": "طلسم" }
+        },
+        "รอยพระพุทธบาท": {
+            "translations": { "en": "Buddha's footprint", "fa": "جای پای بودا" }
+        },
+        "กฐิน": {
+            "translations": { "en": "Kathin ceremony", "fa": "مراسم کاتین" }
+        },
+        "วันพระ": {
+            "translations": { "en": "Buddhist holy day", "fa": "روز مقدس بودایی" }
+        },
+        "วันวิสาขบูชา": {
+            "translations": { "en": "Visakha Bucha day", "fa": "روز ویساخا بوچا" }
+        }
+    },
+    "activity": {
+        "words": true,
+        "sentences": true
+    },
+    "sections": [
+        {
+            "sectionId": "temple-vocab-1",
+            "heading": {
+                "en": "Temple Buildings",
+                "th": "สิ่งก่อสร้างในวัด",
+                "fa": "ساختمان‌های معبد"
+            },
+            "content": [
+                {
+                    "type": "words",
+                    "wordIds": [ "วัด", "โบสถ์", "วิหาร", "เจดีย์" ]
+                }
+            ]
+        },
+        {
+            "sectionId": "temple-vocab-2",
+            "heading": {
+                "en": "Merit Making",
+                "th": "การทำบุญ",
+                "fa": "کار نیک"
+            },
+            "content": [
+                {
+                    "type": "words",
+                    "wordIds": [ "ทำบุญ", "ตักบาตร", "ใส่บาตร", "ฟังธรรม", "สวดมนต์", "นั่งสมาธิ", "ถวาย", "ปัจจัย" ]
+                }
+            ]
+        },
+        {
+            "sectionId": "temple-conv-1",
+            "heading": {
+                "en": "Conversation 1: Going to the Temple",
+                "th": "บทสนทนา 1: ไปวัด",
+                "fa": "مکالمه ۱: رفتن به معبد"
+            },
+            "content": [
+                {
+                    "type": "paragraph",
+                    "sentences": [
+                        {
+                            "source": "พรุ่งนี้วันพระ ไปวัดกันไหม",
+                            "wordIds": [ "พรุ่งนี้", "วันพระ", "ไป", "วัด", "กัน", "ไหม" ],
+                            "translations": {
+                                "en": "Tomorrow is a holy day, want to go to the temple?",
+                                "fa": "فردا روز مقدسه، می‌خواهی به معبد برویم؟"
+                            }
+                        },
+                        {
+                            "source": "ไปสิ อยากทำบุญ",
+                            "wordIds": [ "ไป", "สิ", "อยาก", "ทำบุญ" ],
+                            "translations": {
+                                "en": "Yes, I want to make merit",
+                                "fa": "بله، می‌خواهم کار نیک انجام بدم"
+                            }
+                        },
+                        {
+                            "source": "จะไปตักบาตรแต่เช้า",
+                            "wordIds": [ "จะ", "ไป", "ตักบาตร", "แต่", "เช้า" ],
+                            "translations": {
+                                "en": "We'll go for alms offering early in the morning",
+                                "fa": "صبح زود می‌رویم غذا به راهبان بدهیم"
+                            }
+                        },
+                        {
+                            "source": "ต้องเตรียมอะไรบ้าง",
+                            "wordIds": [ "ต้อง", "เตรียม", "อะไร", "บ้าง" ],
+                            "translations": {
+                                "en": "What should we prepare?",
+                                "fa": "چه چیزی باید آماده کنیم؟"
+                            }
+                        },
+                        {
+                            "source": "เตรียมข้าวสาร กับข้าวแห้ง",
+                            "wordIds": [ "เตรียม", "ข้าวสาร", "กับ", "ข้าวแห้ง" ],
+                            "translations": {
+                                "en": "Rice and dried food",
+                                "fa": "برنج و غذای خشک"
+                            }
+                        },
+                        {
+                            "source": "แล้วก็ดอกไม้ ธูป เทียน",
+                            "wordIds": [ "แล้ว", "ก็", "ดอกไม้", "ธูป", "เทียน" ],
+                            "translations": {
+                                "en": "And flowers, incense, candles",
+                                "fa": "و گل، عود، شمع"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "sectionId": "temple-conv-2",
+            "heading": {
+                "en": "Conversation 2: At the Temple",
+                "th": "บทสนทนา 2: ที่วัด",
+                "fa": "مکالمه ۲: در معبد"
+            },
+            "content": [
+                {
+                    "type": "paragraph",
+                    "sentences": [
+                        {
+                            "source": "สวัสดีค่ะ พระสงฆ์กำลังเดินบิณฑบาต",
+                            "wordIds": [ "สวัสดี", "ค่ะ", "พระสงฆ์", "กำลัง", "เดิน", "บิณฑบาต" ],
+                            "translations": {
+                                "en": "Look, the monks are on their alms round",
+                                "fa": "ببین، راهبان در حال گدایی هستند"
+                            }
+                        },
+                        {
+                            "source": "เตรียมของใส่บาตรเร็ว",
+                            "wordIds": [ "เตรียม", "ของ", "ใส่บาตร", "เร็ว" ],
+                            "translations": {
+                                "en": "Quick, prepare the offerings",
+                                "fa": "زود، نذری‌ها را آماده کن"
+                            }
+                        },
+                        {
+                            "source": "นี่ค่ะ ข้าวสารและอาหาร",
+                            "wordIds": [ "นี่", "ค่ะ", "ข้าวสาร", "และ", "อาหาร" ],
+                            "translations": {
+                                "en": "Here, rice and food",
+                                "fa": "بفرما، برنج و غذا"
+                            }
+                        },
+                        {
+                            "source": "กราบพระก่อนใส่บาตร",
+                            "wordIds": [ "กราบ", "พระ", "ก่อน", "ใส่บาตร" ],
+                            "translations": {
+                                "en": "Pay respect to the monks before offering",
+                                "fa": "قبل از غذا دادن به راهبان احترام بگذار"
+                            }
+                        },
+                        {
+                            "source": "เสร็จแล้ว ไปฟังธรรมต่อไหม",
+                            "wordIds": [ "เสร็จ", "แล้ว", "ไป", "ฟังธรรม", "ต่อ", "ไหม" ],
+                            "translations": {
+                                "en": "Done, want to listen to the dharma talk?",
+                                "fa": "تمام شد، می‌خواهی به موعظه گوش بدیم؟"
+                            }
+                        },
+                        {
+                            "source": "ไปค่ะ อยากฟัง",
+                            "wordIds": [ "ไป", "ค่ะ", "อยาก", "ฟัง" ],
+                            "translations": {
+                                "en": "Yes, I'd like to listen",
+                                "fa": "بله، می‌خواهم بشنوم"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "sectionId": "temple-conv-3",
+            "heading": {
+                "en": "Conversation 3: Inside the Temple",
+                "th": "บทสนทนา 3: ในโบสถ์",
+                "fa": "مکالمه ۳: داخل معبد"
+            },
+            "content": [
+                {
+                    "type": "paragraph",
+                    "sentences": [
+                        {
+                            "source": "เข้าไปในโบสถ์ต้องถอดรองเท้า",
+                            "wordIds": [ "เข้า", "ไป", "ใน", "โบสถ์", "ต้อง", "ถอด", "รองเท้า" ],
+                            "translations": {
+                                "en": "We must take off our shoes before entering the temple",
+                                "fa": "باید کفش‌ها را در بیاوریم قبل از ورود به معبد"
+                            }
+                        },
+                        {
+                            "source": "แล้วก็ไม่ควรพูดเสียงดัง",
+                            "wordIds": [ "แล้ว", "ก็", "ไม่", "ควร", "พูด", "เสียงดัง" ],
+                            "translations": {
+                                "en": "And we shouldn't speak loudly",
+                                "fa": "و نباید با صدای بلند صحبت کنیم"
+                            }
+                        },
+                        {
+                            "source": "เห็นพระพุทธรูปสวยจัง",
+                            "wordIds": [ "เห็น", "พระพุทธรูป", "สวย", "จัง" ],
+                            "translations": {
+                                "en": "The Buddha image is so beautiful",
+                                "fa": "مجسمه بودا خیلی زیباست"
+                            }
+                        },
+                        {
+                            "source": "จุดธูปเทียนไหว้พระกัน",
+                            "wordIds": [ "จุด", "ธูป", "เทียน", "ไหว้พระ", "กัน" ],
+                            "translations": {
+                                "en": "Let's light incense and candles to pay respect",
+                                "fa": "بیا عود و شمع روشن کنیم و احترام بگذاریم"
+                            }
+                        },
+                        {
+                            "source": "บนบานอะไรไหม",
+                            "wordIds": [ "บนบาน", "อะไร", "ไหม" ],
+                            "translations": {
+                                "en": "Do you have any wishes?",
+                                "fa": "آرزویی داری؟"
+                            }
+                        },
+                        {
+                            "source": "ขอให้สุขภาพแข็งแรง",
+                            "wordIds": [ "ขอให้", "สุขภาพ", "แข็งแรง" ],
+                            "translations": {
+                                "en": "I wish for good health",
+                                "fa": "آرزوی سلامتی دارم"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "sectionId": "temple-conv-4",
+            "heading": {
+                "en": "Conversation 4: Talking About Buddhism",
+                "th": "บทสนทนา 4: พูดคุยเกี่ยวกับพุทธศาสนา",
+                "fa": "مکالمه ۴: صحبت درباره بودیسم"
+            },
+            "content": [
+                {
+                    "type": "paragraph",
+                    "sentences": [
+                        {
+                            "source": "คุณนับถือศาสนาอะไร",
+                            "wordIds": [ "คุณ", "นับถือ", "ศาสนา", "อะไร" ],
+                            "translations": {
+                                "en": "What religion do you follow?",
+                                "fa": "چه دینی داری؟"
+                            }
+                        },
+                        {
+                            "source": "นับถือศาสนาพุทธครับ",
+                            "wordIds": [ "นับถือ", "ศาสนาพุทธ", "ครับ" ],
+                            "translations": {
+                                "en": "I'm Buddhist",
+                                "fa": "بودایی هستم"
+                            }
+                        },
+                        {
+                            "source": "ไปวัดบ่อยไหม",
+                            "wordIds": [ "ไป", "วัด", "บ่อย", "ไหม" ],
+                            "translations": {
+                                "en": "Do you go to the temple often?",
+                                "fa": "زیاد به معبد می‌روی؟"
+                            }
+                        },
+                        {
+                            "source": "ไปทุกวันพระครับ",
+                            "wordIds": [ "ไป", "ทุก", "วันพระ", "ครับ" ],
+                            "translations": {
+                                "en": "Every holy day",
+                                "fa": "هر روز مقدس"
+                            }
+                        },
+                        {
+                            "source": "ทำไมถึงไปวัด",
+                            "wordIds": [ "ทำไม", "ถึง", "ไป", "วัด" ],
+                            "translations": {
+                                "en": "Why do you go to the temple?",
+                                "fa": "چرا به معبد می‌روی؟"
+                            }
+                        },
+                        {
+                            "source": "ไปทำบุญ ทำให้จิตใจสงบ",
+                            "wordIds": [ "ไป", "ทำบุญ", "ทำให้", "จิตใจ", "สงบ" ],
+                            "translations": {
+                                "en": "To make merit, it calms the mind",
+                                "fa": "برای کار نیک، باعث آرامش ذهن می‌شود"
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

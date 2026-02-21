@@ -1,0 +1,476 @@
+{
+    "documentId": "level-9-travel",
+    "metadata": {
+        "version": "2.0.0",
+        "created": "2026-02-21T10:00:00Z",
+        "title": {
+            "en": "Level 9: Travel & Accommodation",
+            "th": "ระดับ 9: การเดินทางและที่พัก",
+            "fa": "سطح ۹: سفر و اقامت"
+        },
+        "difficulty": 3,
+        "newWords": 35,
+        "reviewWords": 45,
+        "totalWords": 80,
+        "sentences": 30,
+        "prerequisites": [ "level-8-work" ],
+        "estimatedTime": 40
+    },
+    "vocabulary": {
+        "เที่ยว": {
+            "translations": { "en": "travel/trip", "fa": "سفر" }
+        },
+        "ท่องเที่ยว": {
+            "translations": { "en": "tourism", "fa": "گردشگری" }
+        },
+        "โรงแรม": {
+            "translations": { "en": "hotel", "fa": "هتل" }
+        },
+        "ที่พัก": {
+            "translations": { "en": "accommodation", "fa": "اقامتگاه" }
+        },
+        "จอง": {
+            "translations": { "en": "reserve/book", "fa": "رزرو کردن" }
+        },
+        "ห้อง": {
+            "translations": { "en": "room", "fa": "اتاق" }
+        },
+        "เตียง": {
+            "translations": { "en": "bed", "fa": "تخت" }
+        },
+        "เดี่ยว": {
+            "translations": { "en": "single", "fa": "تک" }
+        },
+        "คู่": {
+            "translations": { "en": "double", "fa": "دو نفره" }
+        },
+        "พัดลม": {
+            "translations": { "en": "fan", "fa": "پنکه" }
+        },
+        "แอร์": {
+            "translations": { "en": "air conditioning", "fa": "کولر" }
+        },
+        "น้ำอุ่น": {
+            "translations": { "en": "hot water", "fa": "آب گرم" }
+        },
+        "อาหารเช้า": {
+            "translations": { "en": "breakfast", "fa": "صبحانه" }
+        },
+        "รวม": {
+            "translations": { "en": "included", "fa": "شامل" }
+        },
+        "คืน": {
+            "translations": { "en": "night", "fa": "شب" }
+        },
+        "เข้าพัก": {
+            "translations": { "en": "check-in", "fa": "ورود" }
+        },
+        "ออก": {
+            "translations": { "en": "check-out", "fa": "خروج" }
+        },
+        "ตั๋ว": {
+            "translations": { "en": "ticket", "fa": "بلیط" }
+        },
+        "เครื่องบิน": {
+            "translations": { "en": "airplane", "fa": "هواپیما" }
+        },
+        "เที่ยวบิน": {
+            "translations": { "en": "flight", "fa": "پرواز" }
+        },
+        "เช็คอิน": {
+            "translations": { "en": "check-in", "fa": "چک‌این" }
+        },
+        "กระเป๋า": {
+            "translations": { "en": "bag/luggage", "fa": "چمدان" }
+        },
+        "น้ำหนัก": {
+            "translations": { "en": "weight", "fa": "وزن" }
+        },
+        "เกิน": {
+            "translations": { "en": "over/exceed", "fa": "زیاد" }
+        },
+        "ที่นั่ง": {
+            "translations": { "en": "seat", "fa": "صندلی" }
+        },
+        "ทางเดิน": {
+            "translations": { "en": "aisle", "fa": "راهرو" }
+        },
+        "หน้าต่าง": {
+            "translations": { "en": "window", "fa": "پنجره" }
+        },
+        "ขึ้นเครื่อง": {
+            "translations": { "en": "boarding", "fa": "سوار شدن" }
+        },
+        "ประตู": {
+            "translations": { "en": "gate", "fa": "دروازه/گیت" }
+        },
+        "ดีเลย์": {
+            "translations": { "en": "delayed", "fa": "تأخیر" }
+        },
+        "ยกเลิก": {
+            "translations": { "en": "cancel", "fa": "لغو" }
+        },
+        "พาสปอร์ต": {
+            "translations": { "en": "passport", "fa": "پاسپورت" }
+        },
+        "วีซ่า": {
+            "translations": { "en": "visa", "fa": "ویزا" }
+        },
+        "ศุลกากร": {
+            "translations": { "en": "customs", "fa": "گمرک" }
+        },
+        "ตรวจคนเข้าเมือง": {
+            "translations": { "en": "immigration", "fa": "پاسپورت کنترل" }
+        }
+    },
+    "activity": {
+        "words": true,
+        "sentences": true
+    },
+    "sections": [
+        {
+            "sectionId": "level9-vocab-1",
+            "heading": {
+                "en": "Hotel Vocabulary",
+                "th": "คำศัพท์โรงแรม",
+                "fa": "واژگان هتل"
+            },
+            "content": [
+                {
+                    "type": "words",
+                    "wordIds": [ "โรงแรม", "ที่พัก", "จอง", "ห้อง", "เตียง", "เดี่ยว", "คู่", "พัดลม", "แอร์", "น้ำอุ่น", "อาหารเช้า", "รวม", "คืน", "เข้าพัก", "ออก" ]
+                }
+            ]
+        },
+        {
+            "sectionId": "level9-vocab-2",
+            "heading": {
+                "en": "Airport Vocabulary",
+                "th": "คำศัพท์สนามบิน",
+                "fa": "واژگان فرودگاه"
+            },
+            "content": [
+                {
+                    "type": "words",
+                    "wordIds": [ "ตั๋ว", "เครื่องบิน", "เที่ยวบิน", "เช็คอิน", "กระเป๋า", "น้ำหนัก", "เกิน", "ที่นั่ง", "ทางเดิน", "หน้าต่าง", "ขึ้นเครื่อง", "ประตู", "ดีเลย์", "ยกเลิก" ]
+                }
+            ]
+        },
+        {
+            "sectionId": "level9-conv-1",
+            "heading": {
+                "en": "Conversation 1: Booking a Hotel",
+                "th": "บทสนทนา 1: จองโรงแรม",
+                "fa": "مکالمه ۱: رزرو هتل"
+            },
+            "content": [
+                {
+                    "type": "paragraph",
+                    "sentences": [
+                        {
+                            "source": "สวัสดีครับ ขอจองห้องพักหน่อยครับ",
+                            "wordIds": [ "สวัสดี", "ครับ", "ขอ", "จอง", "ห้องพัก", "หน่อย", "ครับ" ],
+                            "translations": {
+                                "en": "Hello, I'd like to book a room",
+                                "fa": "سلام، می‌خواهم یک اتاق رزرو کنم"
+                            }
+                        },
+                        {
+                            "source": "ได้ค่ะ วันที่เท่าไหร่คะ",
+                            "wordIds": [ "ได้", "ค่ะ", "วันที่", "เท่าไหร่", "คะ" ],
+                            "translations": {
+                                "en": "Certainly, what date?",
+                                "fa": "حتماً، چه تاریخی؟"
+                            }
+                        },
+                        {
+                            "source": "วันที่ 15 ถึง 18 มีนาคมครับ",
+                            "wordIds": [ "วันที่", "สิบห้า", "ถึง", "สิบแปด", "มีนาคม", "ครับ" ],
+                            "translations": {
+                                "en": "March 15th to 18th",
+                                "fa": "۱۵ تا ۱۸ مارس"
+                            }
+                        },
+                        {
+                            "source": "กี่ท่านคะ",
+                            "wordIds": [ "กี่", "ท่าน", "คะ" ],
+                            "translations": {
+                                "en": "How many people?",
+                                "fa": "چند نفر؟"
+                            }
+                        },
+                        {
+                            "source": "สองท่านครับ",
+                            "wordIds": [ "สอง", "ท่าน", "ครับ" ],
+                            "translations": {
+                                "en": "Two people",
+                                "fa": "دو نفر"
+                            }
+                        },
+                        {
+                            "source": "ต้องการห้องเดี่ยวหรือห้องคู่คะ",
+                            "wordIds": [ "ต้องการ", "ห้อง", "เดี่ยว", "หรือ", "ห้อง", "คู่", "คะ" ],
+                            "translations": {
+                                "en": "Do you want single or double room?",
+                                "fa": "اتاق یک تخته یا دو تخته می‌خواهید؟"
+                            }
+                        },
+                        {
+                            "source": "ห้องคู่ครับ ขอเป็นห้องปรับอากาศ",
+                            "wordIds": [ "ห้อง", "คู่", "ครับ", "ขอ", "เป็น", "ห้อง", "ปรับอากาศ" ],
+                            "translations": {
+                                "en": "Double room with air conditioning",
+                                "fa": "اتاق دو تخته با کولر"
+                            }
+                        },
+                        {
+                            "source": "ราคาคืนละ 1200 บาท รวมอาหารเช้าค่ะ",
+                            "wordIds": [ "ราคา", "คืน", "ละ", "หนึ่งพันสองร้อย", "บาท", "รวม", "อาหารเช้า", "ค่ะ" ],
+                            "translations": {
+                                "en": "1200 baht per night, breakfast included",
+                                "fa": "شبی ۱۲۰۰ بات، شامل صبحانه"
+                            }
+                        },
+                        {
+                            "source": "ตกลงครับ จองให้ด้วยครับ",
+                            "wordIds": [ "ตกลง", "ครับ", "จอง", "ให้", "ด้วย", "ครับ" ],
+                            "translations": {
+                                "en": "Agreed, please book it",
+                                "fa": "قبول است، لطفاً رزرو کنید"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "sectionId": "level9-conv-2",
+            "heading": {
+                "en": "Conversation 2: At the Airport",
+                "th": "บทสนทนา 2: ที่สนามบิน",
+                "fa": "مکالمه ۲: در فرودگاه"
+            },
+            "content": [
+                {
+                    "type": "paragraph",
+                    "sentences": [
+                        {
+                            "source": "เที่ยวบิน TG 675 ไปเชียงใหม่ เช็คอินที่เคาน์เตอร์ไหนคะ",
+                            "wordIds": [ "เที่ยวบิน", "TG", "หกร้อยเจ็ดสิบห้า", "ไป", "เชียงใหม่", "เช็คอิน", "ที่", "เคาน์เตอร์", "ไหน", "คะ" ],
+                            "translations": {
+                                "en": "Flight TG675 to Chiang Mai, which counter for check-in?",
+                                "fa": "پرواز TG675 به چیانگ مای، کدام کانتر برای چک‌این است؟"
+                            }
+                        },
+                        {
+                            "source": "เคาน์เตอร์ 10-12 ครับ",
+                            "wordIds": [ "เคาน์เตอร์", "สิบ", "ถึง", "สิบสอง", "ครับ" ],
+                            "translations": {
+                                "en": "Counters 10-12",
+                                "fa": "کانتر ۱۰ تا ۱۲"
+                            }
+                        },
+                        {
+                            "source": "ขอนั่งที่นั่งติดหน้าต่างได้ไหมคะ",
+                            "wordIds": [ "ขอ", "นั่ง", "ที่นั่ง", "ติด", "หน้าต่าง", "ได้", "ไหม", "คะ" ],
+                            "translations": {
+                                "en": "Can I have a window seat?",
+                                "fa": "می‌توانم صندلی کنار پنجره داشته باشم؟"
+                            }
+                        },
+                        {
+                            "source": "ได้ค่ะ ขอดูพาสปอร์ตหน่อยค่ะ",
+                            "wordIds": [ "ได้", "ค่ะ", "ขอ", "ดู", "พาสปอร์ต", "หน่อย", "ค่ะ" ],
+                            "translations": {
+                                "en": "Yes, can I see your passport please?",
+                                "fa": "بله، پاسپورت شما را می‌بینم لطفاً"
+                            }
+                        },
+                        {
+                            "source": "กระเป๋าใบนี้จะโหลดใต้เครื่องนะคะ",
+                            "wordIds": [ "กระเป๋า", "ใบนี้", "จะ", "โหลด", "ใต้", "เครื่อง", "นะ", "คะ" ],
+                            "translations": {
+                                "en": "This bag will be checked in",
+                                "fa": "این چمدان را تحویل می‌گیریم"
+                            }
+                        },
+                        {
+                            "source": "น้ำหนักเกินไหมครับ",
+                            "wordIds": [ "น้ำหนัก", "เกิน", "ไหม", "ครับ" ],
+                            "translations": {
+                                "en": "Is it overweight?",
+                                "fa": "اضافه وزن دارد؟"
+                            }
+                        },
+                        {
+                            "source": "ไม่เกินค่ะ 15 กิโลกรัม",
+                            "wordIds": [ "ไม่", "เกิน", "ค่ะ", "สิบห้า", "กิโลกรัม" ],
+                            "translations": {
+                                "en": "No, 15 kilograms",
+                                "fa": "نه، ۱۵ کیلو"
+                            }
+                        },
+                        {
+                            "source": "ขึ้นเครื่องที่ประตูอะไรครับ",
+                            "wordIds": [ "ขึ้นเครื่อง", "ที่", "ประตู", "อะไร", "ครับ" ],
+                            "translations": {
+                                "en": "Which gate for boarding?",
+                                "fa": "سوار شدن از کدام گیت است؟"
+                            }
+                        },
+                        {
+                            "source": "ประตู D7 ค่ะ ขึ้นเครื่อง 10:45",
+                            "wordIds": [ "ประตู", "D7", "ค่ะ", "ขึ้นเครื่อง", "สิบ", "สี่สิบห้า" ],
+                            "translations": {
+                                "en": "Gate D7, boarding at 10:45",
+                                "fa": "گیت D7، سوار شدن ساعت ۱۰:۴۵"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "sectionId": "level9-conv-3",
+            "heading": {
+                "en": "Conversation 3: At Immigration",
+                "th": "บทสนทนา 3: ตรวจคนเข้าเมือง",
+                "fa": "مکالمه ۳: گذرنامه"
+            },
+            "content": [
+                {
+                    "type": "paragraph",
+                    "sentences": [
+                        {
+                            "source": "สวัสดีครับ ขอดูพาสปอร์ตด้วยครับ",
+                            "wordIds": [ "สวัสดี", "ครับ", "ขอ", "ดู", "พาสปอร์ต", "ด้วย", "ครับ" ],
+                            "translations": {
+                                "en": "Hello, can I see your passport?",
+                                "fa": "سلام، پاسپورت شما را می‌بینم"
+                            }
+                        },
+                        {
+                            "source": "ครับ/ค่ะ",
+                            "wordIds": [ ],
+                            "translations": {
+                                "en": "Here you are",
+                                "fa": "بفرمایید"
+                            }
+                        },
+                        {
+                            "source": "มาประเทศไทยกี่วันครับ",
+                            "wordIds": [ "มา", "ประเทศ", "ไทย", "กี่", "วัน", "ครับ" ],
+                            "translations": {
+                                "en": "How many days in Thailand?",
+                                "fa": "چند روز در تایلند هستید؟"
+                            }
+                        },
+                        {
+                            "source": "สิบวันครับ",
+                            "wordIds": [ "สิบ", "วัน", "ครับ" ],
+                            "translations": {
+                                "en": "Ten days",
+                                "fa": "ده روز"
+                            }
+                        },
+                        {
+                            "source": "พักที่ไหนครับ",
+                            "wordIds": [ "พัก", "ที่", "ไหน", "ครับ" ],
+                            "translations": {
+                                "en": "Where are you staying?",
+                                "fa": "کجا اقامت دارید؟"
+                            }
+                        },
+                        {
+                            "source": "พักที่โรงแรมในกรุงเทพฯ และเชียงใหม่ครับ",
+                            "wordIds": [ "พัก", "ที่", "โรงแรม", "ใน", "กรุงเทพฯ", "และ", "เชียงใหม่", "ครับ" ],
+                            "translations": {
+                                "en": "Staying at hotels in Bangkok and Chiang Mai",
+                                "fa": "در هتل‌های بانکوک و چیانگ مای"
+                            }
+                        },
+                        {
+                            "source": "เที่ยวให้สนุกนะครับ",
+                            "wordIds": [ "เที่ยว", "ให้", "สนุก", "นะ", "ครับ" ],
+                            "translations": {
+                                "en": "Enjoy your trip",
+                                "fa": "سفر خوشی داشته باشید"
+                            }
+                        },
+                        {
+                            "source": "ขอบคุณครับ/ค่ะ",
+                            "wordIds": [ "ขอบคุณ", "ครับ" ],
+                            "translations": {
+                                "en": "Thank you",
+                                "fa": "متشکرم"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "sectionId": "level9-conv-4",
+            "heading": {
+                "en": "Conversation 4: Flight Delay",
+                "th": "บทสนทนา 4: เที่ยวบินล่าช้า",
+                "fa": "مکالمه ۴: تأخیر پرواز"
+            },
+            "content": [
+                {
+                    "type": "paragraph",
+                    "sentences": [
+                        {
+                            "source": "ขอโทษครับ เที่ยวบินไปภูเก็ตดีเลย์ไหมครับ",
+                            "wordIds": [ "ขอโทษ", "ครับ", "เที่ยวบิน", "ไป", "ภูเก็ต", "ดีเลย์", "ไหม", "ครับ" ],
+                            "translations": {
+                                "en": "Excuse me, is the flight to Phuket delayed?",
+                                "fa": "ببخشید، پرواز به پوکت تأخیر دارد؟"
+                            }
+                        },
+                        {
+                            "source": "ใช่ค่ะ ดีเลย์ประมาณ 2 ชั่วโมง",
+                            "wordIds": [ "ใช่", "ค่ะ", "ดีเลย์", "ประมาณ", "สอง", "ชั่วโมง" ],
+                            "translations": {
+                                "en": "Yes, delayed about 2 hours",
+                                "fa": "بله، حدود ۲ ساعت تأخیر دارد"
+                            }
+                        },
+                        {
+                            "source": "ทำไมถึงดีเลย์ครับ",
+                            "wordIds": [ "ทำไม", "ถึง", "ดีเลย์", "ครับ" ],
+                            "translations": {
+                                "en": "Why is it delayed?",
+                                "fa": "چرا تأخیر دارد؟"
+                            }
+                        },
+                        {
+                            "source": "เนื่องจากสภาพอากาศค่ะ",
+                            "wordIds": [ "เนื่องจาก", "สภาพ", "อากาศ", "ค่ะ" ],
+                            "translations": {
+                                "en": "Due to weather conditions",
+                                "fa": "به دلیل شرایط جوی"
+                            }
+                        },
+                        {
+                            "source": "แล้วจะขึ้นเครื่องเมื่อไหร่ครับ",
+                            "wordIds": [ "แล้ว", "จะ", "ขึ้นเครื่อง", "เมื่อไหร่", "ครับ" ],
+                            "translations": {
+                                "en": "When will boarding be?",
+                                "fa": "کی سوار می‌شویم؟"
+                            }
+                        },
+                        {
+                            "source": "กรุณารอฟังประกาศอีกครั้งค่ะ",
+                            "wordIds": [ "กรุณา", "รอ", "ฟัง", "ประกาศ", "อีก", "ครั้ง", "ค่ะ" ],
+                            "translations": {
+                                "en": "Please wait for further announcement",
+                                "fa": "لطفاً منتظر اعلام بعدی باشید"
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

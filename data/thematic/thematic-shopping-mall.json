@@ -1,0 +1,507 @@
+{
+    "documentId": "thematic-shopping-mall",
+    "metadata": {
+        "version": "2.0.0",
+        "created": "2026-02-21T10:00:00Z",
+        "title": {
+            "en": "At the Shopping Mall",
+            "th": "ที่ห้างสรรพสินค้า",
+            "fa": "در مرکز خرید"
+        },
+        "difficulty": 2,
+        "wordCount": 40,
+        "sentenceCount": 25,
+        "estimatedTime": 25,
+        "tags": [ "shopping", "mall", "clothes", "electronics" ]
+    },
+    "vocabulary": {
+        "ห้าง": {
+            "translations": { "en": "department store/mall", "fa": "مرکز خرید" }
+        },
+        "ชั้น": {
+            "translations": { "en": "floor", "fa": "طبقه" }
+        },
+        "ลิฟต์": {
+            "translations": { "en": "elevator", "fa": "آسانسور" }
+        },
+        "บันไดเลื่อน": {
+            "translations": { "en": "escalator", "fa": "پله برقی" }
+        },
+        "ร้าน": {
+            "translations": { "en": "shop", "fa": "فروشگاه" }
+        },
+        "แผนก": {
+            "translations": { "en": "department", "fa": "بخش" }
+        },
+        "เสื้อผ้า": {
+            "translations": { "en": "clothes", "fa": "لباس" }
+        },
+        "รองเท้า": {
+            "translations": { "en": "shoes", "fa": "کفش" }
+        },
+        "กระเป๋า": {
+            "translations": { "en": "bag", "fa": "کیف" }
+        },
+        "เครื่องสำอาง": {
+            "translations": { "en": "cosmetics", "fa": "لوازم آرایشی" }
+        },
+        "โทรศัพท์": {
+            "translations": { "en": "phone", "fa": "تلفن" }
+        },
+        "คอมพิวเตอร์": {
+            "translations": { "en": "computer", "fa": "کامپیوتر" }
+        },
+        "ทีวี": {
+            "translations": { "en": "TV", "fa": "تلویزیون" }
+        },
+        "ของเล่น": {
+            "translations": { "en": "toys", "fa": "اسباب‌بازی" }
+        },
+        "หนังสือ": {
+            "translations": { "en": "book", "fa": "کتاب" }
+        },
+        "ร้านอาหาร": {
+            "translations": { "en": "restaurant", "fa": "رستوران" }
+        },
+        "ฟู้ดคอร์ท": {
+            "translations": { "en": "food court", "fa": "فودکورت" }
+        },
+        "โรงหนัง": {
+            "translations": { "en": "cinema", "fa": "سینما" }
+        },
+        "โปรโมชั่น": {
+            "translations": { "en": "promotion", "fa": "تخفیف" }
+        },
+        "ลดราคา": {
+            "translations": { "en": "discount", "fa": "حراج" }
+        },
+        "เปอร์เซ็นต์": {
+            "translations": { "en": "percent", "fa": "درصد" }
+        },
+        "ชิ้น": {
+            "translations": { "en": "piece", "fa": "عدد" }
+        },
+        "ชำระเงิน": {
+            "translations": { "en": "payment", "fa": "پرداخت" }
+        },
+        "เงินสด": {
+            "translations": { "en": "cash", "fa": "نقد" }
+        },
+        "บัตรเครดิต": {
+            "translations": { "en": "credit card", "fa": "کارت اعتباری" }
+        },
+        "เคาน์เตอร์": {
+            "translations": { "en": "counter", "fa": "صندوق" }
+        },
+        "แคชเชียร์": {
+            "translations": { "en": "cashier", "fa": "صندوقدار" }
+        },
+        "ใบเสร็จ": {
+            "translations": { "en": "receipt", "fa": "رسید" }
+        },
+        "เปลี่ยน": {
+            "translations": { "en": "exchange", "fa": "تعویض" }
+        },
+        "คืน": {
+            "translations": { "en": "return", "fa": "پس دادن" }
+        },
+        "ลอง": {
+            "translations": { "en": "try on", "fa": "پرو کردن" }
+        },
+        "ห้องลอง": {
+            "translations": { "en": "fitting room", "fa": "اتاق پرو" }
+        },
+        "ไซส์": {
+            "translations": { "en": "size", "fa": "سایز" }
+        },
+        "สี": {
+            "translations": { "en": "color", "fa": "رنگ" }
+        },
+        "คับ": {
+            "translations": { "en": "tight", "fa": "تنگ" }
+        },
+        "หลวม": {
+            "translations": { "en": "loose", "fa": "گشاد" }
+        },
+        "พอดี": {
+            "translations": { "en": "just right", "fa": "مناسب" }
+        },
+        "สวย": {
+            "translations": { "en": "beautiful", "fa": "زیبا" }
+        },
+        "หล่อ": {
+            "translations": { "en": "handsome", "fa": "خوش‌تیپ" }
+        },
+        "แพง": {
+            "translations": { "en": "expensive", "fa": "گران" }
+        },
+        "ถูก": {
+            "translations": { "en": "cheap", "fa": "ارزان" }
+        }
+    },
+    "activity": {
+        "words": true,
+        "sentences": true
+    },
+    "sections": [
+        {
+            "sectionId": "mall-vocab-1",
+            "heading": {
+                "en": "Mall Areas",
+                "th": "พื้นที่ในห้าง",
+                "fa": "بخش‌های مرکز خرید"
+            },
+            "content": [
+                {
+                    "type": "words",
+                    "wordIds": [ "ห้าง", "ชั้น", "ลิฟต์", "บันไดเลื่อน", "ร้าน", "แผนก", "ฟู้ดคอร์ท", "โรงหนัง" ]
+                }
+            ]
+        },
+        {
+            "sectionId": "mall-vocab-2",
+            "heading": {
+                "en": "Products",
+                "th": "สินค้า",
+                "fa": "محصولات"
+            },
+            "content": [
+                {
+                    "type": "words",
+                    "wordIds": [ "เสื้อผ้า", "รองเท้า", "กระเป๋า", "เครื่องสำอาง", "โทรศัพท์", "คอมพิวเตอร์", "ทีวี", "ของเล่น", "หนังสือ" ]
+                }
+            ]
+        },
+        {
+            "sectionId": "mall-conv-1",
+            "heading": {
+                "en": "Conversation 1: Asking for a Store",
+                "th": "บทสนทนา 1: ถามหาร้าน",
+                "fa": "مکالمه ۱: پرسیدن فروشگاه"
+            },
+            "content": [
+                {
+                    "type": "paragraph",
+                    "sentences": [
+                        {
+                            "source": "ขอโทษครับ ร้านขายรองเท้าอยู่ชั้นไหนครับ",
+                            "wordIds": [ "ขอโทษ", "ครับ", "ร้าน", "ขาย", "รองเท้า", "อยู่", "ชั้น", "ไหน", "ครับ" ],
+                            "translations": {
+                                "en": "Excuse me, which floor is the shoe store on?",
+                                "fa": "ببخشید، فروشگاه کفش کدام طبقه است؟"
+                            }
+                        },
+                        {
+                            "source": "ชั้น 3 ค่ะ ข้างๆ แผนกเครื่องสำอาง",
+                            "wordIds": [ "ชั้น", "สาม", "ค่ะ", "ข้าง", "ๆ", "แผนก", "เครื่องสำอาง" ],
+                            "translations": {
+                                "en": "3rd floor, next to the cosmetics department",
+                                "fa": "طبقه سوم، کنار بخش لوازم آرایشی"
+                            }
+                        },
+                        {
+                            "source": "มีบันไดเลื่อนขึ้นไปไหมครับ",
+                            "wordIds": [ "มี", "บันไดเลื่อน", "ขึ้น", "ไป", "ไหม", "ครับ" ],
+                            "translations": {
+                                "en": "Is there an escalator going up?",
+                                "fa": "پله برقی برای بالا رفتن هست؟"
+                            }
+                        },
+                        {
+                            "source": "มีค่ะ อยู่ตรงนั้น",
+                            "wordIds": [ "มี", "ค่ะ", "อยู่", "ตรง", "นั้น" ],
+                            "translations": {
+                                "en": "Yes, right there",
+                                "fa": "بله، همانجا"
+                            }
+                        },
+                        {
+                            "source": "ขอบคุณครับ",
+                            "wordIds": [ "ขอบคุณ", "ครับ" ],
+                            "translations": {
+                                "en": "Thank you",
+                                "fa": "متشکرم"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "sectionId": "mall-conv-2",
+            "heading": {
+                "en": "Conversation 2: Buying Clothes",
+                "th": "บทสนทนา 2: ซื้อเสื้อผ้า",
+                "fa": "مکالمه ۲: خرید لباس"
+            },
+            "content": [
+                {
+                    "type": "paragraph",
+                    "sentences": [
+                        {
+                            "source": "สนใจเสื้อตัวไหนเป็นพิเศษไหมคะ",
+                            "wordIds": [ "สนใจ", "เสื้อ", "ตัว", "ไหน", "เป็น", "พิเศษ", "ไหม", "คะ" ],
+                            "translations": {
+                                "en": "Are you interested in any particular shirt?",
+                                "fa": "به پیراهن خاصی علاقه دارید؟"
+                            }
+                        },
+                        {
+                            "source": "ขอดูเสื้อสีฟ้าตัวนั้นหน่อยครับ",
+                            "wordIds": [ "ขอ", "ดู", "เสื้อ", "สี", "ฟ้า", "ตัว", "นั้น", "หน่อย", "ครับ" ],
+                            "translations": {
+                                "en": "Can I see that blue shirt?",
+                                "fa": "آن پیراهن آبی را ببینم؟"
+                            }
+                        },
+                        {
+                            "source": "ได้ค่ะ ไซส์อะไรคะ",
+                            "wordIds": [ "ได้", "ค่ะ", "ไซส์", "อะไร", "คะ" ],
+                            "translations": {
+                                "en": "Sure, what size?",
+                                "fa": "حتماً، چه سایزی؟"
+                            }
+                        },
+                        {
+                            "source": "ไซส์ L ครับ",
+                            "wordIds": [ "ไซส์", "L", "ครับ" ],
+                            "translations": {
+                                "en": "Size L",
+                                "fa": "سایز L"
+                            }
+                        },
+                        {
+                            "source": "นี่ค่ะ ลองใส่ได้นะคะ",
+                            "wordIds": [ "นี่", "ค่ะ", "ลอง", "ใส่", "ได้", "นะ", "คะ" ],
+                            "translations": {
+                                "en": "Here you are. You can try it on",
+                                "fa": "بفرمایید. می‌توانید پرو کنید"
+                            }
+                        },
+                        {
+                            "source": "ห้องลองอยู่ไหนครับ",
+                            "wordIds": [ "ห้องลอง", "อยู่", "ไหน", "ครับ" ],
+                            "translations": {
+                                "en": "Where's the fitting room?",
+                                "fa": "اتاق پرو کجاست؟"
+                            }
+                        },
+                        {
+                            "source": "ด้านซ้ายมือค่ะ",
+                            "wordIds": [ "ด้าน", "ซ้าย", "มือ", "ค่ะ" ],
+                            "translations": {
+                                "en": "On the left",
+                                "fa": "طرف چپ"
+                            }
+                        },
+                        {
+                            "source": "พอดีครับ เอาตัวนี้ครับ",
+                            "wordIds": [ "พอดี", "ครับ", "เอา", "ตัว", "นี้", "ครับ" ],
+                            "translations": {
+                                "en": "It fits. I'll take this one",
+                                "fa": "مناسب است. این را می‌خواهم"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "sectionId": "mall-conv-3",
+            "heading": {
+                "en": "Conversation 3: At the Electronics Store",
+                "th": "บทสนทนา 3: ที่ร้านขายเครื่องใช้ไฟฟ้า",
+                "fa": "مکالمه ۳: در فروشگاه الکترونیک"
+            },
+            "content": [
+                {
+                    "type": "paragraph",
+                    "sentences": [
+                        {
+                            "source": "โทรศัพท์รุ่นนี้ราคาเท่าไหร่ครับ",
+                            "wordIds": [ "โทรศัพท์", "รุ่น", "นี้", "ราคา", "เท่าไหร่", "ครับ" ],
+                            "translations": {
+                                "en": "How much is this phone model?",
+                                "fa": "قیمت این مدل تلفن چقدر است؟"
+                            }
+                        },
+                        {
+                            "source": "รุ่นนี้ 15,900 บาทค่ะ",
+                            "wordIds": [ "รุ่น", "นี้", "หนึ่งหมื่นห้าพันเก้าร้อย", "บาท", "ค่ะ" ],
+                            "translations": {
+                                "en": "This model is 15,900 baht",
+                                "fa": "این مدل ۱۵۹۰۰ بات است"
+                            }
+                        },
+                        {
+                            "source": "มีโปรโมชั่นอะไรไหมครับ",
+                            "wordIds": [ "มี", "โปรโมชั่น", "อะไร", "ไหม", "ครับ" ],
+                            "translations": {
+                                "en": "Are there any promotions?",
+                                "fa": "تخفیف دارد؟"
+                            }
+                        },
+                        {
+                            "source": "ลดราคา 10% ค่ะ",
+                            "wordIds": [ "ลดราคา", "สิบ", "เปอร์เซ็นต์", "ค่ะ" ],
+                            "translations": {
+                                "en": "10% discount",
+                                "fa": "۱۰٪ تخفیف"
+                            }
+                        },
+                        {
+                            "source": "รวมแล้วเท่าไหร่ครับ",
+                            "wordIds": [ "รวม", "แล้ว", "เท่าไหร่", "ครับ" ],
+                            "translations": {
+                                "en": "What's the total?",
+                                "fa": "جمعاً چقدر می‌شود؟"
+                            }
+                        },
+                        {
+                            "source": "14,310 บาทค่ะ",
+                            "wordIds": [ "หนึ่งหมื่นสี่พันสามร้อยสิบ", "บาท", "ค่ะ" ],
+                            "translations": {
+                                "en": "14,310 baht",
+                                "fa": "۱۴۳۱۰ بات"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "sectionId": "mall-conv-4",
+            "heading": {
+                "en": "Conversation 4: At the Food Court",
+                "th": "บทสนทนา 4: ที่ฟู้ดคอร์ท",
+                "fa": "مکالمه ۴: در فودکورت"
+            },
+            "content": [
+                {
+                    "type": "paragraph",
+                    "sentences": [
+                        {
+                            "source": "บัตรเติมเงินอยู่ที่ไหนคะ",
+                            "wordIds": [ "บัตร", "เติมเงิน", "อยู่", "ที่", "ไหน", "คะ" ],
+                            "translations": {
+                                "en": "Where can I get a prepaid card?",
+                                "fa": "کارت شارژ کجا می‌توانم بگیرم؟"
+                            }
+                        },
+                        {
+                            "source": "ที่เคาน์เตอร์ด้านหน้าน่ะครับ",
+                            "wordIds": [ "ที่", "เคาน์เตอร์", "ด้านหน้า", "ครับ" ],
+                            "translations": {
+                                "en": "At the counter in front",
+                                "fa": "پیشخوان روبرو"
+                            }
+                        },
+                        {
+                            "source": "เติมเงินเท่าไหร่ดีคะ",
+                            "wordIds": [ "เติมเงิน", "เท่าไหร่", "ดี", "คะ" ],
+                            "translations": {
+                                "en": "How much should I put in?",
+                                "fa": "چقدر شارژ کنم؟"
+                            }
+                        },
+                        {
+                            "source": "แล้วแต่คุณครับ ส่วนใหญ่เติม 100-200",
+                            "wordIds": [ "แล้วแต่", "คุณ", "ครับ", "ส่วนใหญ่", "เติม", "หนึ่งร้อย", "สองร้อย" ],
+                            "translations": {
+                                "en": "Up to you, most people put 100-200",
+                                "fa": "بستگی به شما دارد، معمولاً ۱۰۰-۲۰۰"
+                            }
+                        },
+                        {
+                            "source": "ร้านก๋วยเตี๋ยวอยู่ตรงไหนคะ",
+                            "wordIds": [ "ร้าน", "ก๋วยเตี๋ยว", "อยู่", "ตรง", "ไหน", "คะ" ],
+                            "translations": {
+                                "en": "Where's the noodle shop?",
+                                "fa": "فروشگاه نودل کجاست؟"
+                            }
+                        },
+                        {
+                            "source": "อยู่สุดทางด้านขวาครับ",
+                            "wordIds": [ "อยู่", "สุด", "ทาง", "ด้าน", "ขวา", "ครับ" ],
+                            "translations": {
+                                "en": "At the far right end",
+                                "fa": "انتهای سمت راست"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "sectionId": "mall-conv-5",
+            "heading": {
+                "en": "Conversation 5: Returning an Item",
+                "th": "บทสนทนา 5: คืนสินค้า",
+                "fa": "مکالمه ۵: پس دادن کالا"
+            },
+            "content": [
+                {
+                    "type": "paragraph",
+                    "sentences": [
+                        {
+                            "source": "ขอคืนสินค้าหน่อยครับ",
+                            "wordIds": [ "ขอ", "คืน", "สินค้า", "หน่อย", "ครับ" ],
+                            "translations": {
+                                "en": "I'd like to return this item",
+                                "fa": "می‌خواهم این کالا را پس بدهم"
+                            }
+                        },
+                        {
+                            "source": "มีปัญหาอะไรหรือคะ",
+                            "wordIds": [ "มี", "ปัญหา", "อะไร", "หรือ", "คะ" ],
+                            "translations": {
+                                "en": "What's the problem?",
+                                "fa": "چه مشکلی دارد؟"
+                            }
+                        },
+                        {
+                            "source": "ไซส์ไม่พอดีครับ เล็กเกินไป",
+                            "wordIds": [ "ไซส์", "ไม่", "พอดี", "ครับ", "เล็ก", "เกินไป" ],
+                            "translations": {
+                                "en": "It doesn't fit, too small",
+                                "fa": "سایز مناسب نیست، خیلی کوچک است"
+                            }
+                        },
+                        {
+                            "source": "มีใบเสร็จไหมคะ",
+                            "wordIds": [ "มี", "ใบเสร็จ", "ไหม", "คะ" ],
+                            "translations": {
+                                "en": "Do you have the receipt?",
+                                "fa": "رسید دارید؟"
+                            }
+                        },
+                        {
+                            "source": "มีครับ นี่ครับ",
+                            "wordIds": [ "มี", "ครับ", "นี่", "ครับ" ],
+                            "translations": {
+                                "en": "Yes, here it is",
+                                "fa": "بله، بفرمایید"
+                            }
+                        },
+                        {
+                            "source": "คืนเงินหรือเปลี่ยนให้คะ",
+                            "wordIds": [ "คืนเงิน", "หรือ", "เปลี่ยน", "ให้", "คะ" ],
+                            "translations": {
+                                "en": "Refund or exchange?",
+                                "fa": "پس می‌دهید یا تعویض می‌کنید؟"
+                            }
+                        },
+                        {
+                            "source": "ขอเปลี่ยนเป็นไซส์ใหญ่กว่าครับ",
+                            "wordIds": [ "ขอ", "เปลี่ยน", "เป็น", "ไซส์", "ใหญ่", "กว่า", "ครับ" ],
+                            "translations": {
+                                "en": "I'd like to exchange for a larger size",
+                                "fa": "می‌خواهم با سایز بزرگتر تعویض کنم"
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

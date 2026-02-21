@@ -116,6 +116,10 @@
             }
         }
     },
+    "activity": {
+        "words": true,
+        "sentences": true
+    },
     "activitySettings": {
         "words": {
             "types": [
@@ -124,10 +128,7 @@
             ]
         },
         "sentences": {
-            "inherit": true,
             "types": [
-                "multipleChoiceWord",
-                "flashcardWord",
                 "multipleChoiceSentence",
                 "flashcardSentence",
                 "buildSentence"
@@ -142,12 +143,13 @@
                 "fa": "احوالپرسی پایه با ذرات مؤدبانه",
                 "th": "การทักทายพื้นฐานด้วยคำลงท้ายแสดงความสุภาพ"
             },
+            "activity": {
+                "words": true,
+                "sentences": true
+            },
             "content": [
                 {
                     "type": "words",
-                    "activity": {
-                        "inherit": false
-                    },
                     "wordIds": [
                         "สวัสดี",
                         "ครับ",
@@ -160,9 +162,6 @@
                         "en": "Basic Polite Particles",
                         "fa": "ذرات مؤدبانه پایه",
                         "th": "คำลงท้ายแสดงความสุภาพพื้นฐาน"
-                    },
-                    "activity": {
-                        "inherit": true
                     },
                     "wordIds": [
                         "ครับ",
@@ -193,9 +192,6 @@
                         "en": "Daily Verbs",
                         "fa": "افعال روزانه",
                         "th": "คำกริยาในชีวิตประจำวัน"
-                    },
-                    "activity": {
-                        "inherit": true
                     },
                     "wordIds": [
                         "กิน",
@@ -243,9 +239,6 @@
                         "fa": "ذرات مؤدبانه پایه",
                         "th": "คำลงท้ายแสดงความสุภาพพื้นฐาน"
                     },
-                    "activity": {
-                        "inherit": false
-                    },
                     "sentences": [
                         {
                             "type": "sentence",
@@ -267,9 +260,6 @@
                         "en": "Basic Greetings",
                         "fa": "سلام های اولیه",
                         "th": "การทักทายพื้นฐาน"
-                    },
-                    "activity": {
-                        "inherit": true
                     },
                     "sentences": [
                         {
@@ -304,12 +294,6 @@
                         "en": "Grammar Focus: Polite Particles",
                         "fa": "تمرکز گرامر: ذرات مؤدبانه",
                         "th": "เน้นไวยากรณ์: คำลงท้ายแสดงความสุภาพ"
-                    },
-                    "grammar": {
-                        "pattern": "Sentence + ครับ (male) / ค่ะ (female)"
-                    },
-                    "activity": {
-                        "inherit": true
                     },
                     "sentences": [
                         {
@@ -352,9 +336,6 @@
                             }
                         ]
                     },
-                    "activity": {
-                        "inherit": true
-                    },
                     "sentences": [
                         {
                             "type": "sentence",
@@ -391,17 +372,6 @@
                         "fa": "توضیح گرامر",
                         "th": "คำอธิบายไวยากรณ์"
                     },
-                    "grammar": {
-                        "pattern": "Sentence + ครับ/ค่ะ",
-                        "explanation": {
-                            "en": "Polite particles are added at the end of sentences to show respect. Men use ครับ, women use ค่ะ.",
-                            "fa": "ذرات مؤدبانه در پایان جملات اضافه می‌شوند تا احترام نشان دهند. مردان از ครับ و زنان از ค่ะ استفاده می‌کنند.",
-                            "th": "คำลงท้ายแสดงความสุภาพใช้เติมท้ายประโยคเพื่อแสดงความเคารพ ผู้ชายใช้ ครับ ผู้หญิงใช้ ค่ะ"
-                        }
-                    },
-                    "activity": {
-                        "inherit": true
-                    },
                     "sentences": [
                         {
                             "type": "sentence",
@@ -435,40 +405,6 @@
                         "en": "Complete Grammar Reference",
                         "fa": "مرجع کامل گرامر",
                         "th": "อ้างอิงไวยากรณ์ฉบับสมบูรณ์"
-                    },
-                    "grammar": {
-                        "pattern": "Sentence + ครับ (male) / ค่ะ (female)",
-                        "explanation": {
-                            "en": "Polite particles are essential in Thai. They don't change the meaning, only add politeness.",
-                            "fa": "ذرات مؤدبانه در زبان تایلندی ضروری هستند. آنها معنی جمله را تغییر نمی‌دهند، فقط ادب را اضافه می‌کنند.",
-                            "th": "คำลงท้ายแสดงความสุภาพมีความจำเป็นในภาษาไทย ไม่ได้เปลี่ยนความหมาย แค่เพิ่มความสุภาพ"
-                        },
-                        "examples": [
-                            {
-                                "sentenceSource": "สวัสดีครับ",
-                                "translations": {
-                                    "en": "Hello (male)",
-                                    "fa": "سلام (مرد)"
-                                }
-                            },
-                            {
-                                "sentenceSource": "สวัสดีค่ะ",
-                                "translations": {
-                                    "en": "Hello (female)",
-                                    "fa": "سلام (زن)"
-                                }
-                            },
-                            {
-                                "sentenceSource": "ขอบคุณครับ",
-                                "translations": {
-                                    "en": "Thank you (male)",
-                                    "fa": "متشکرم (مرد)"
-                                }
-                            }
-                        ]
-                    },
-                    "activity": {
-                        "inherit": true
                     },
                     "sentences": [
                         {
@@ -580,12 +516,6 @@
                         "fa": "مکالمه روزانه",
                         "th": "บทสนทนาในชีวิตประจำวัน"
                     },
-                    "grammar": {
-                        "pattern": "Question + Response patterns"
-                    },
-                    "activity": {
-                        "inherit": true
-                    },
                     "sentences": [
                         {
                             "type": "sentence",
@@ -631,9 +561,6 @@
                 },
                 {
                     "type": "words",
-                    "activity": {
-                        "inherit": true
-                    },
                     "wordIds": [ ]
                 },
                 {
@@ -642,9 +569,6 @@
                         "en": "Single Word Sentence",
                         "fa": "جمله تک کلمه",
                         "th": "ประโยคคำเดียว"
-                    },
-                    "activity": {
-                        "inherit": true
                     },
                     "sentences": [
                         {

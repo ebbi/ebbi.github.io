@@ -1,0 +1,368 @@
+{
+    "documentId": "thematic-hair-salon",
+    "metadata": {
+        "version": "2.0.0",
+        "created": "2026-02-21T10:00:00Z",
+        "title": {
+            "en": "At the Hair Salon",
+            "th": "ที่ร้านทำผม",
+            "fa": "در آرایشگاه"
+        },
+        "difficulty": 2,
+        "wordCount": 30,
+        "sentenceCount": 20,
+        "estimatedTime": 20,
+        "tags": [ "hair", "beauty", "salon", "personal care" ]
+    },
+    "vocabulary": {
+        "ร้านทำผม": {
+            "translations": { "en": "hair salon", "fa": "آرایشگاه مو" }
+        },
+        "ช่าง": {
+            "translations": { "en": "stylist", "fa": "آرایشگر" }
+        },
+        "ตัดผม": {
+            "translations": { "en": "haircut", "fa": "کوتاه کردن مو" }
+        },
+        "สระ": {
+            "translations": { "en": "wash", "fa": "شستن" }
+        },
+        "ไดร์": {
+            "translations": { "en": "blow dry", "fa": "سشوار کردن" }
+        },
+        "เล็ม": {
+            "translations": { "en": "trim", "fa": "کوتاه کردن نوک مو" }
+        },
+        "ซอย": {
+            "translations": { "en": "layer", "fa": "لایه لایه کردن" }
+        },
+        "ยืด": {
+            "translations": { "en": "straighten", "fa": "صاف کردن" }
+        },
+        "ดัด": {
+            "translations": { "en": "perm/curl", "fa": "فر کردن" }
+        },
+        "ทำสี": {
+            "translations": { "en": "color/dye", "fa": "رنگ کردن" }
+        },
+        "ไฮไลท์": {
+            "translations": { "en": "highlight", "fa": "مش" }
+        },
+        "ยาว": {
+            "translations": { "en": "long", "fa": "بلند" }
+        },
+        "สั้น": {
+            "translations": { "en": "short", "fa": "کوتاه" }
+        },
+        "กลาง": {
+            "translations": { "en": "medium", "fa": "متوسط" }
+        },
+        "หนา": {
+            "translations": { "en": "thick", "fa": "ضخیم" }
+        },
+        "บาง": {
+            "translations": { "en": "thin", "fa": "نازک" }
+        },
+        "ตรง": {
+            "translations": { "en": "straight", "fa": "صاف" }
+        },
+        "หยิก": {
+            "translations": { "en": "curly", "fa": "مجعد" }
+        },
+        "ลอน": {
+            "translations": { "en": "wavy", "fa": "موج‌دار" }
+        },
+        "หน้าม้า": {
+            "translations": { "en": "bangs", "fa": "چتری" }
+        },
+        "ข้าง": {
+            "translations": { "en": "side", "fa": "کنار" }
+        },
+        "หลัง": {
+            "translations": { "en": "back", "fa": "پشت" }
+        },
+        "บน": {
+            "translations": { "en": "top", "fa": "بالا" }
+        },
+        "รูปทรง": {
+            "translations": { "en": "style/shape", "fa": "مدل" }
+        },
+        "แบบ": {
+            "translations": { "en": "style", "fa": "مدل" }
+        },
+        "ทรง": {
+            "translations": { "en": "style (for men)", "fa": "مدل مردانه" }
+        },
+        "รองทรง": {
+            "translations": { "en": "tapered sides", "fa": "کناره‌های کوتاه" }
+        },
+        "ทรงสูง": {
+            "translations": { "en": "high fade", "fa": "فید بالا" }
+        },
+        "ทรงต่ำ": {
+            "translations": { "en": "low fade", "fa": "فید پایین" }
+        },
+        "เกรียน": {
+            "translations": { "en": "very short/buzz cut", "fa": "کوتاه خیلی کوتاه" }
+        }
+    },
+    "activity": {
+        "words": true,
+        "sentences": true
+    },
+    "sections": [
+        {
+            "sectionId": "salon-conv-1",
+            "heading": {
+                "en": "Conversation 1: Men's Haircut",
+                "th": "บทสนทนา 1: ตัดผมชาย",
+                "fa": "مکالمه ۱: کوتاهی موی مردانه"
+            },
+            "content": [
+                {
+                    "type": "paragraph",
+                    "sentences": [
+                        {
+                            "source": "ตัดผมครับ",
+                            "wordIds": [ "ตัดผม", "ครับ" ],
+                            "translations": {
+                                "en": "Haircut please",
+                                "fa": "کوتاهی مو لطفاً"
+                            }
+                        },
+                        {
+                            "source": "นั่งก่อนค่ะ ต้องการทรงอะไรคะ",
+                            "wordIds": [ "นั่ง", "ก่อน", "ค่ะ", "ต้องการ", "ทรง", "อะไร", "คะ" ],
+                            "translations": {
+                                "en": "Have a seat. What style would you like?",
+                                "fa": "بفرمایید بشینید. چه مدلی می‌خواهید؟"
+                            }
+                        },
+                        {
+                            "source": "ทรงเดิมครับ แต่สั้นขึ้นหน่อย",
+                            "wordIds": [ "ทรง", "เดิม", "ครับ", "แต่", "สั้น", "ขึ้น", "หน่อย" ],
+                            "translations": {
+                                "en": "Same style, but a bit shorter",
+                                "fa": "همان مدل، ولی کمی کوتاه‌تر"
+                            }
+                        },
+                        {
+                            "source": "ด้านข้างสั้นแค่ไหนคะ",
+                            "wordIds": [ "ด้าน", "ข้าง", "สั้น", "แค่ไหน", "คะ" ],
+                            "translations": {
+                                "en": "How short on the sides?",
+                                "fa": "کناره‌ها چقدر کوتاه شوند؟"
+                            }
+                        },
+                        {
+                            "source": "รองทรงครับ ด้านบนไว้ยาวหน่อย",
+                            "wordIds": [ "รองทรง", "ครับ", "ด้านบน", "ไว้", "ยาว", "หน่อย" ],
+                            "translations": {
+                                "en": "Tapered sides, leave the top a bit longer",
+                                "fa": "کناره‌ها کوتاه، بالا کمی بلندتر"
+                            }
+                        },
+                        {
+                            "source": "ด้านหลังด้วยไหมคะ",
+                            "wordIds": [ "ด้าน", "หลัง", "ด้วย", "ไหม", "คะ" ],
+                            "translations": {
+                                "en": "The back as well?",
+                                "fa": "پشت هم؟"
+                            }
+                        },
+                        {
+                            "source": "ครับ บางๆหน่อย",
+                            "wordIds": [ "ครับ", "บาง", "ๆ", "หน่อย" ],
+                            "translations": {
+                                "en": "Yes, thin it out a bit",
+                                "fa": "بله، کمی نازک کن"
+                            }
+                        },
+                        {
+                            "source": "เสร็จแล้วครับ ถูกใจไหม",
+                            "wordIds": [ "เสร็จ", "แล้ว", "ครับ", "ถูกใจ", "ไหม" ],
+                            "translations": {
+                                "en": "Finished. Do you like it?",
+                                "fa": "تمام شد. راضی هستید؟"
+                            }
+                        },
+                        {
+                            "source": "ถูกใจครับ ขอบคุณ",
+                            "wordIds": [ "ถูกใจ", "ครับ", "ขอบคุณ" ],
+                            "translations": {
+                                "en": "Yes, thank you",
+                                "fa": "بله، متشکرم"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "sectionId": "salon-conv-2",
+            "heading": {
+                "en": "Conversation 2: Women's Haircut & Style",
+                "th": "บทสนทนา 2: ตัดผมและจัดแต่งทรงผมผู้หญิง",
+                "fa": "مکالمه ۲: کوتاهی و حالت دادن موی زنانه"
+            },
+            "content": [
+                {
+                    "type": "paragraph",
+                    "sentences": [
+                        {
+                            "source": "อยากเปลี่ยนทรงผมค่ะ",
+                            "wordIds": [ "อยาก", "เปลี่ยน", "ทรงผม", "ค่ะ" ],
+                            "translations": {
+                                "en": "I want to change my hairstyle",
+                                "fa": "می‌خواهم مدل مویم را عوض کنم"
+                            }
+                        },
+                        {
+                            "source": "ทรงไหนดีคะ",
+                            "wordIds": [ "ทรง", "ไหน", "ดี", "คะ" ],
+                            "translations": {
+                                "en": "What style would you like?",
+                                "fa": "چه مدلی می‌خواهید؟"
+                            }
+                        },
+                        {
+                            "source": "ซอยเป็นชั้นๆหน่อย",
+                            "wordIds": [ "ซอย", "เป็น", "ชั้น", "ๆ", "หน่อย" ],
+                            "translations": {
+                                "en": "Some layers please",
+                                "fa": "کمی لایه لایه کن"
+                            }
+                        },
+                        {
+                            "source": "แล้วก็เล็มปลายผมหน่อย",
+                            "wordIds": [ "แล้ว", "ก็", "เล็ม", "ปลายผม", "หน่อย" ],
+                            "translations": {
+                                "en": "And trim the ends",
+                                "fa": "و نوک موها را کوتاه کن"
+                            }
+                        },
+                        {
+                            "source": "ต้องการสระไดร์ด้วยไหมคะ",
+                            "wordIds": [ "ต้องการ", "สระ", "ไดร์", "ด้วย", "ไหม", "คะ" ],
+                            "translations": {
+                                "en": "Would you like a wash and blow dry?",
+                                "fa": "شستشو و سشوار هم می‌خواهید؟"
+                            }
+                        },
+                        {
+                            "source": "ด้วยค่ะ",
+                            "wordIds": [ "ด้วย", "ค่ะ" ],
+                            "translations": {
+                                "en": "Yes please",
+                                "fa": "بله لطفاً"
+                            }
+                        },
+                        {
+                            "source": "หน้าม้าอยากได้แบบไหน",
+                            "wordIds": [ "หน้าม้า", "อยากได้", "แบบ", "ไหน" ],
+                            "translations": {
+                                "en": "What style for the bangs?",
+                                "fa": "چتری‌ها چه مدلی باشد؟"
+                            }
+                        },
+                        {
+                            "source": "ยาวหน่อย แล้วแสกข้าง",
+                            "wordIds": [ "ยาว", "หน่อย", "แล้ว", "แสก", "ข้าง" ],
+                            "translations": {
+                                "en": "A bit longer, side-swept",
+                                "fa": "کمی بلندتر، به کنار"
+                            }
+                        },
+                        {
+                            "source": "สวยมากค่ะ",
+                            "wordIds": [ "สวย", "มาก", "ค่ะ" ],
+                            "translations": {
+                                "en": "Beautiful!",
+                                "fa": "خیلی زیبا شد"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "sectionId": "salon-conv-3",
+            "heading": {
+                "en": "Conversation 3: Hair Coloring",
+                "th": "บทสนทนา 3: ทำสีผม",
+                "fa": "مکالمه ۳: رنگ مو"
+            },
+            "content": [
+                {
+                    "type": "paragraph",
+                    "sentences": [
+                        {
+                            "source": "อยากทำสีผมค่ะ",
+                            "wordIds": [ "อยาก", "ทำสี", "ผม", "ค่ะ" ],
+                            "translations": {
+                                "en": "I want to color my hair",
+                                "fa": "می‌خواهم موهایم را رنگ کنم"
+                            }
+                        },
+                        {
+                            "source": "สีอะไรดีคะ",
+                            "wordIds": [ "สี", "อะไร", "ดี", "คะ" ],
+                            "translations": {
+                                "en": "What color?",
+                                "fa": "چه رنگی؟"
+                            }
+                        },
+                        {
+                            "source": "สีน้ำตาลประกายแดง",
+                            "wordIds": [ "สี", "น้ำตาล", "ประกาย", "แดง" ],
+                            "translations": {
+                                "en": "Brown with red highlights",
+                                "fa": "قهوه‌ای با ته‌رنگ قرمز"
+                            }
+                        },
+                        {
+                            "source": "แล้วก็ทำไฮไลท์ด้วย",
+                            "wordIds": [ "แล้ว", "ก็", "ทำ", "ไฮไลท์", "ด้วย" ],
+                            "translations": {
+                                "en": "And also highlights",
+                                "fa": "و مش هم بزن"
+                            }
+                        },
+                        {
+                            "source": "ใช้เวลานานไหมคะ",
+                            "wordIds": [ "ใช้เวลา", "นาน", "ไหม", "คะ" ],
+                            "translations": {
+                                "en": "Will it take long?",
+                                "fa": "طول می‌کشد؟"
+                            }
+                        },
+                        {
+                            "source": "ประมาณ 2 ชั่วโมงค่ะ",
+                            "wordIds": [ "ประมาณ", "สอง", "ชั่วโมง", "ค่ะ" ],
+                            "translations": {
+                                "en": "About 2 hours",
+                                "fa": "حدود ۲ ساعت"
+                            }
+                        },
+                        {
+                            "source": "ราคาเท่าไหร่คะ",
+                            "wordIds": [ "ราคา", "เท่าไหร่", "คะ" ],
+                            "translations": {
+                                "en": "How much?",
+                                "fa": "قیمتش چقدر است؟"
+                            }
+                        },
+                        {
+                            "source": "2500 บาทค่ะ รวมทำสีและไฮไลท์",
+                            "wordIds": [ "สองพันห้าร้อย", "บาท", "ค่ะ", "รวม", "ทำสี", "และ", "ไฮไลท์" ],
+                            "translations": {
+                                "en": "2500 baht, including color and highlights",
+                                "fa": "۲۵۰۰ بات، شامل رنگ و مش"
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

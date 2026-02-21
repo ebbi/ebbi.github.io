@@ -1,0 +1,400 @@
+{
+    "documentId": "level-6-health",
+    "metadata": {
+        "version": "2.0.0",
+        "created": "2026-02-21T10:00:00Z",
+        "title": {
+            "en": "Level 6: Health & Body",
+            "th": "ระดับ 6: สุขภาพและร่างกาย",
+            "fa": "سطح ۶: سلامت و بدن"
+        },
+        "difficulty": 2,
+        "newWords": 25,
+        "reviewWords": 30,
+        "totalWords": 55,
+        "sentences": 24,
+        "prerequisites": [ "level-5-transportation" ],
+        "estimatedTime": 30
+    },
+    "vocabulary": {
+        "ป่วย": {
+            "translations": { "en": "sick", "fa": "مریض" }
+        },
+        "เจ็บ": {
+            "translations": { "en": "hurt/pain", "fa": "درد" }
+        },
+        "ปวด": {
+            "translations": { "en": "ache", "fa": "درد داشتن" }
+        },
+        "หัว": {
+            "translations": { "en": "head", "fa": "سر" }
+        },
+        "ท้อง": {
+            "translations": { "en": "stomach", "fa": "شکم" }
+        },
+        "ฟัน": {
+            "translations": { "en": "tooth", "fa": "دندان" }
+        },
+        "คอ": {
+            "translations": { "en": "throat", "fa": "گلو" }
+        },
+        "หลัง": {
+            "translations": { "en": "back", "fa": "کمر" }
+        },
+        "มือ": {
+            "translations": { "en": "hand", "fa": "دست" }
+        },
+        "เท้า": {
+            "translations": { "en": "foot", "fa": "پا" }
+        },
+        "ไข้": {
+            "translations": { "en": "fever", "fa": "تب" }
+        },
+        "ไอ": {
+            "translations": { "en": "cough", "fa": "سرفه" }
+        },
+        "น้ำมูก": {
+            "translations": { "en": "runny nose", "fa": "آبریزش بینی" }
+        },
+        "ยา": {
+            "translations": { "en": "medicine", "fa": "دارو" }
+        },
+        "หมอ": {
+            "translations": { "en": "doctor", "fa": "دکتر" }
+        },
+        "พยาบาล": {
+            "translations": { "en": "nurse", "fa": "پرستار" }
+        },
+        "โรงพยาบาล": {
+            "translations": { "en": "hospital", "fa": "بیمارستان" }
+        },
+        "คลินิก": {
+            "translations": { "en": "clinic", "fa": "درمانگاه" }
+        },
+        "ตรวจ": {
+            "translations": { "en": "check/examine", "fa": "معاینه" }
+        },
+        "รักษา": {
+            "translations": { "en": "treat", "fa": "درمان" }
+        },
+        "พัก": {
+            "translations": { "en": "rest", "fa": "استراحت" }
+        },
+        "หาย": {
+            "translations": { "en": "recover", "fa": "بهبود یافتن" }
+        },
+        "แข็งแรง": {
+            "translations": { "en": "strong/healthy", "fa": "قوی/سالم" }
+        },
+        "ออกกำลังกาย": {
+            "translations": { "en": "exercise", "fa": "ورزش" }
+        },
+        "Review from Levels 1-5": {
+            "กิน": { },
+            "ดื่ม": { },
+            "น้ำ": { },
+            "ข้าว": { },
+            "ไป": { },
+            "มา": { },
+            "โรง": { },
+            "บาล": { },
+            "เท่าไหร่": { },
+            "บาท": { },
+            "กี่โมง": { },
+            "นาที": { },
+            "ชั่วโมง": { },
+            "วัน": { },
+            "อาทิตย์": { },
+            "เดือน": { },
+            "ปี": { },
+            "ชื่อ": { },
+            "ครับ": { },
+            "ค่ะ": { },
+            "ผม": { },
+            "ดิฉัน": { },
+            "คุณ": { },
+            "สวัสดี": { },
+            "ขอบคุณ": { },
+            "อร่อย": { },
+            "มาก": { }
+        }
+    },
+    "activity": {
+        "words": true,
+        "sentences": true
+    },
+    "sections": [
+        {
+            "sectionId": "level6-vocab-1",
+            "heading": {
+                "en": "Body Parts",
+                "th": "ส่วนต่างๆของร่างกาย",
+                "fa": "اعضای بدن"
+            },
+            "content": [
+                {
+                    "type": "words",
+                    "wordIds": [ "หัว", "ท้อง", "ฟัน", "คอ", "หลัง", "มือ", "เท้า" ]
+                }
+            ]
+        },
+        {
+            "sectionId": "level6-vocab-2",
+            "heading": {
+                "en": "Symptoms & Medicine",
+                "th": "อาการและยา",
+                "fa": "علائم و دارو"
+            },
+            "content": [
+                {
+                    "type": "words",
+                    "wordIds": [ "ป่วย", "เจ็บ", "ปวด", "ไข้", "ไอ", "น้ำมูก", "ยา" ]
+                }
+            ]
+        },
+        {
+            "sectionId": "level6-conv-1",
+            "heading": {
+                "en": "Conversation 1: Feeling Unwell",
+                "th": "บทสนทนา 1: รู้สึกไม่สบาย",
+                "fa": "مکالمه ۱: احساس ناخوشی"
+            },
+            "content": [
+                {
+                    "type": "paragraph",
+                    "sentences": [
+                        {
+                            "source": "วันนี้คุณไม่สบายหรือครับ",
+                            "wordIds": [ "วันนี้", "คุณ", "ไม่", "สบาย", "หรือ", "ครับ" ],
+                            "translations": {
+                                "en": "Are you feeling unwell today?",
+                                "fa": "امروز حالتان خوب نیست؟"
+                            }
+                        },
+                        {
+                            "source": "ใช่ค่ะ ปวดหัวมาก",
+                            "wordIds": [ "ใช่", "ค่ะ", "ปวด", "หัว", "มาก" ],
+                            "translations": {
+                                "en": "Yes, I have a bad headache",
+                                "fa": "بله، سردرد شدید دارم"
+                            }
+                        },
+                        {
+                            "source": "เป็นไข้ด้วยไหมครับ",
+                            "wordIds": [ "เป็น", "ไข้", "ด้วย", "ไหม", "ครับ" ],
+                            "translations": {
+                                "en": "Do you have a fever too?",
+                                "fa": "تب هم دارید؟"
+                            }
+                        },
+                        {
+                            "source": "ไม่แน่ใจ รู้สึกตัวร้อนๆ",
+                            "wordIds": [ "ไม่", "แน่ใจ", "รู้สึก", "ตัว", "ร้อน", "ๆ" ],
+                            "translations": {
+                                "en": "I'm not sure, I feel warm",
+                                "fa": "مطمئن نیستم، احساس گرما می‌کنم"
+                            }
+                        },
+                        {
+                            "source": "ไปหาหมอดีไหมครับ",
+                            "wordIds": [ "ไป", "หา", "หมอ", "ดี", "ไหม", "ครับ" ],
+                            "translations": {
+                                "en": "Should you see a doctor?",
+                                "fa": "بهتر نیست دکتر بروید؟"
+                            }
+                        },
+                        {
+                            "source": "คงต้องไปคลินิกแล้วค่ะ",
+                            "wordIds": [ "คง", "ต้อง", "ไป", "คลินิก", "แล้ว", "ค่ะ" ],
+                            "translations": {
+                                "en": "I probably need to go to the clinic",
+                                "fa": "احتمالاً باید به درمانگاه بروم"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "sectionId": "level6-conv-2",
+            "heading": {
+                "en": "Conversation 2: At the Clinic",
+                "th": "บทสนทนา 2: ที่คลินิก",
+                "fa": "مکالمه ۲: در درمانگاه"
+            },
+            "content": [
+                {
+                    "type": "paragraph",
+                    "sentences": [
+                        {
+                            "source": "มีอาการอะไรบ้างคะ",
+                            "wordIds": [ "มี", "อาการ", "อะไร", "บ้าง", "คะ" ],
+                            "translations": {
+                                "en": "What symptoms do you have?",
+                                "fa": "چه علائمی دارید؟"
+                            }
+                        },
+                        {
+                            "source": "ปวดหัว เจ็บคอ และไอด้วยครับ",
+                            "wordIds": [ "ปวด", "หัว", "เจ็บ", "คอ", "และ", "ไอ", "ด้วย", "ครับ" ],
+                            "translations": {
+                                "en": "Headache, sore throat, and coughing",
+                                "fa": "سردرد، گلودرد، و سرفه"
+                            }
+                        },
+                        {
+                            "source": "เป็นกี่วันแล้วคะ",
+                            "wordIds": [ "เป็น", "กี่", "วัน", "แล้ว", "คะ" ],
+                            "translations": {
+                                "en": "How many days have you had this?",
+                                "fa": "چند روز است اینطور هستید؟"
+                            }
+                        },
+                        {
+                            "source": "สองวันแล้วครับ",
+                            "wordIds": [ "สอง", "วัน", "แล้ว", "ครับ" ],
+                            "translations": {
+                                "en": "Two days",
+                                "fa": "دو روز"
+                            }
+                        },
+                        {
+                            "source": "ขอวัดไข้หน่อยนะคะ",
+                            "wordIds": [ "ขอ", "วัด", "ไข้", "หน่อย", "นะ", "คะ" ],
+                            "translations": {
+                                "en": "Let me take your temperature",
+                                "fa": "بگذارید تب شما را بگیرم"
+                            }
+                        },
+                        {
+                            "source": "ไข้สูงนิดหน่อยค่ะ 38 องศา",
+                            "wordIds": [ "ไข้", "สูง", "นิดหน่อย", "ค่ะ", "สามสิบแปด", "องศา" ],
+                            "translations": {
+                                "en": "Slight fever, 38 degrees",
+                                "fa": "تب کمی دارید، ۳۸ درجه"
+                            }
+                        },
+                        {
+                            "source": "เป็นหวัดธรรมดา ไม่ต้องกังวล",
+                            "wordIds": [ "เป็น", "หวัด", "ธรรมดา", "ไม่", "ต้อง", "กังวล" ],
+                            "translations": {
+                                "en": "It's just a common cold, don't worry",
+                                "fa": "فقط سرماخوردگی معمولی است، نگران نباشید"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "sectionId": "level6-conv-3",
+            "heading": {
+                "en": "Conversation 3: Getting Medicine",
+                "th": "บทสนทนา 3: รับยา",
+                "fa": "مکالمه ۳: دریافت دارو"
+            },
+            "content": [
+                {
+                    "type": "paragraph",
+                    "sentences": [
+                        {
+                            "source": "นี่คือยาค่ะ ทานครั้งละ 1 เม็ด วันละ 3 ครั้ง หลังอาหาร",
+                            "wordIds": [ "นี่", "คือ", "ยา", "ค่ะ", "ทาน", "ครั้งละ", "หนึ่ง", "เม็ด", "วันละ", "สาม", "ครั้ง", "หลัง", "อาหาร" ],
+                            "translations": {
+                                "en": "Here's your medicine. Take 1 pill, 3 times a day after meals",
+                                "fa": "این داروی شماست. روزی ۳ بار، هر بار ۱ قرص بعد از غذا"
+                            }
+                        },
+                        {
+                            "source": "ต้องกินกี่วันครับ",
+                            "wordIds": [ "ต้อง", "กิน", "กี่", "วัน", "ครับ" ],
+                            "translations": {
+                                "en": "How many days should I take it?",
+                                "fa": "چند روز باید بخورم؟"
+                            }
+                        },
+                        {
+                            "source": "สามวัน ถ้าไม่ดีขึ้นกลับมาพบหมออีกนะคะ",
+                            "wordIds": [ "สาม", "วัน", "ถ้า", "ไม่", "ดี", "ขึ้น", "กลับ", "มา", "พบ", "หมอ", "อีก", "นะ", "คะ" ],
+                            "translations": {
+                                "en": "Three days. If not better, come back to see the doctor",
+                                "fa": "سه روز. اگر بهتر نشدید، دوباره پیش دکتر بیایید"
+                            }
+                        },
+                        {
+                            "source": "พักผ่อนมากๆ ดื่มน้ำอุ่นเยอะๆ นะคะ",
+                            "wordIds": [ "พักผ่อน", "มาก", "ๆ", "ดื่ม", "น้ำ", "อุ่น", "เยอะ", "ๆ", "นะ", "คะ" ],
+                            "translations": {
+                                "en": "Rest a lot and drink plenty of warm water",
+                                "fa": "خیلی استراحت کنید و آب گرم زیاد بنوشید"
+                            }
+                        },
+                        {
+                            "source": "ขอบคุณครับ",
+                            "wordIds": [ "ขอบคุณ", "ครับ" ],
+                            "translations": {
+                                "en": "Thank you",
+                                "fa": "متشکرم"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "sectionId": "level6-conv-4",
+            "heading": {
+                "en": "Conversation 4: Healthy Habits",
+                "th": "บทสนทนา 4: นิสัยสุขภาพดี",
+                "fa": "مکالمه ۴: عادت‌های سالم"
+            },
+            "content": [
+                {
+                    "type": "paragraph",
+                    "sentences": [
+                        {
+                            "source": "คุณออกกำลังกายบ่อยไหมครับ",
+                            "wordIds": [ "คุณ", "ออกกำลังกาย", "บ่อย", "ไหม", "ครับ" ],
+                            "translations": {
+                                "en": "Do you exercise often?",
+                                "fa": "آیا مرتب ورزش می‌کنید؟"
+                            }
+                        },
+                        {
+                            "source": "ออกกำลังกายสัปดาห์ละสามครั้งค่ะ",
+                            "wordIds": [ "ออกกำลังกาย", "สัปดาห์", "ละ", "สาม", "ครั้ง", "ค่ะ" ],
+                            "translations": {
+                                "en": "I exercise three times a week",
+                                "fa": "هفته‌ای سه بار ورزش می‌کنم"
+                            }
+                        },
+                        {
+                            "source": "ชอบออกกำลังกายแบบไหนครับ",
+                            "wordIds": [ "ชอบ", "ออกกำลังกาย", "แบบ", "ไหน", "ครับ" ],
+                            "translations": {
+                                "en": "What kind of exercise do you like?",
+                                "fa": "چه نوع ورزشی دوست دارید؟"
+                            }
+                        },
+                        {
+                            "source": "ชอบวิ่งกับว่ายน้ำค่ะ แล้วคุณล่ะ",
+                            "wordIds": [ "ชอบ", "วิ่ง", "กับ", "ว่ายน้ำ", "ค่ะ", "แล้ว", "คุณ", "ล่ะ" ],
+                            "translations": {
+                                "en": "I like running and swimming. And you?",
+                                "fa": "دویدن و شنا را دوست دارم. شما چطور؟"
+                            }
+                        },
+                        {
+                            "source": "ผมชอบเล่นฟิตเนสครับ",
+                            "wordIds": [ "ผม", "ชอบ", "เล่น", "ฟิตเนส", "ครับ" ],
+                            "translations": {
+                                "en": "I like going to the gym",
+                                "fa": "من باشگاه رفتن را دوست دارم"
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

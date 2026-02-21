@@ -1,0 +1,381 @@
+{
+    "documentId": "level-5-transportation",
+    "metadata": {
+        "version": "2.0.0",
+        "created": "2026-02-21T10:00:00Z",
+        "title": {
+            "en": "Level 5: Transportation & Directions",
+            "th": "ระดับ 5: การเดินทางและเส้นทาง",
+            "fa": "سطح ۵: حمل و نقل و مسیریابی"
+        },
+        "difficulty": 2,
+        "newWords": 30,
+        "reviewWords": 25,
+        "totalWords": 55,
+        "sentences": 25,
+        "prerequisites": [ "level-4-shopping" ],
+        "estimatedTime": 30
+    },
+    "vocabulary": {
+        "รถ": {
+            "translations": { "en": "vehicle/car", "fa": "ماشین" }
+        },
+        "รถเมล์": {
+            "translations": { "en": "bus", "fa": "اتوبوس" }
+        },
+        "รถไฟฟ้า": {
+            "translations": { "en": "skytrain/subway", "fa": "قطار شهری" }
+        },
+        "รถไฟ": {
+            "translations": { "en": "train", "fa": "قطار" }
+        },
+        "รถตู้": {
+            "translations": { "en": "van", "fa": "ون" }
+        },
+        " taxi": {
+            "translations": { "en": "taxi", "fa": "تاکسی" }
+        },
+        "มอเตอร์ไซค์": {
+            "translations": { "en": "motorcycle", "fa": "موتورسیکلت" }
+        },
+        "เรือ": {
+            "translations": { "en": "boat", "fa": "قایق" }
+        },
+        "เครื่องบิน": {
+            "translations": { "en": "airplane", "fa": "هواپیما" }
+        },
+        "ไป": {
+            "translations": { "en": "go", "fa": "رفتن" }
+        },
+        "มา": {
+            "translations": { "en": "come", "fa": "آمدن" }
+        },
+        "ถึง": {
+            "translations": { "en": "arrive", "fa": "رسیدن" }
+        },
+        "ออก": {
+            "translations": { "en": "leave/depart", "fa": "حرکت کردن" }
+        },
+        "ตรง": {
+            "translations": { "en": "straight", "fa": "مستقیم" }
+        },
+        "เลี้ยว": {
+            "translations": { "en": "turn", "fa": "پیچیدن" }
+        },
+        "ซ้าย": {
+            "translations": { "en": "left", "fa": "چپ" }
+        },
+        "ขวา": {
+            "translations": { "en": "right", "fa": "راست" }
+        },
+        "ใกล้": {
+            "translations": { "en": "near", "fa": "نزدیک" }
+        },
+        "ไกล": {
+            "translations": { "en": "far", "fa": "دور" }
+        },
+        "แยก": {
+            "translations": { "en": "intersection", "fa": "چهارراه" }
+        },
+        "ป้าย": {
+            "translations": { "en": "sign/stop", "fa": "ایستگاه" }
+        },
+        "สถานี": {
+            "translations": { "en": "station", "fa": "ایستگاه" }
+        },
+        "ทาง": {
+            "translations": { "en": "way/path", "fa": "راه" }
+        },
+        "กี่โมง": {
+            "translations": { "en": "what time", "fa": "ساعت چند" }
+        },
+        "นาที": {
+            "translations": { "en": "minute", "fa": "دقیقه" }
+        },
+        "ชั่วโมง": {
+            "translations": { "en": "hour", "fa": "ساعت" }
+        },
+        "ตั๋ว": {
+            "translations": { "en": "ticket", "fa": "بلیط" }
+        },
+        "ค่าโดยสาร": {
+            "translations": { "en": "fare", "fa": "کرایه" }
+        },
+        "ลง": {
+            "translations": { "en": "get off", "fa": "پیاده شدن" }
+        },
+        "ขึ้น": {
+            "translations": { "en": "get on", "fa": "سوار شدن" }
+        }
+    },
+    "activity": {
+        "words": true,
+        "sentences": true
+    },
+    "sections": [
+        {
+            "sectionId": "level5-vocab-1",
+            "heading": {
+                "en": "Transportation Types",
+                "th": "ประเภทยานพาหนะ",
+                "fa": "انواع وسایل نقلیه"
+            },
+            "content": [
+                {
+                    "type": "words",
+                    "wordIds": [ "รถ", "รถเมล์", "รถไฟฟ้า", "รถไฟ", "รถตู้", "taxi", "มอเตอร์ไซค์", "เรือ", "เครื่องบิน" ]
+                }
+            ]
+        },
+        {
+            "sectionId": "level5-vocab-2",
+            "heading": {
+                "en": "Direction Words",
+                "th": "คำศัพท์บอกทิศทาง",
+                "fa": "کلمات مسیریابی"
+            },
+            "content": [
+                {
+                    "type": "words",
+                    "wordIds": [ "ตรง", "เลี้ยว", "ซ้าย", "ขวา", "ใกล้", "ไกล", "แยก", "ทาง" ]
+                }
+            ]
+        },
+        {
+            "sectionId": "level5-conv-1",
+            "heading": {
+                "en": "Conversation 1: Asking for Directions",
+                "th": "บทสนทนา 1: ถามทาง",
+                "fa": "مکالمه ۱: پرسیدن مسیر"
+            },
+            "content": [
+                {
+                    "type": "paragraph",
+                    "sentences": [
+                        {
+                            "source": "ขอโทษครับ สถานีรถไฟฟ้าไปทางไหนครับ",
+                            "wordIds": [ "ขอโทษ", "ครับ", "สถานี", "รถไฟฟ้า", "ไป", "ทาง", "ไหน", "ครับ" ],
+                            "translations": {
+                                "en": "Excuse me, which way to the BTS station?",
+                                "fa": "ببخشید، ایستگاه قطار شهری کدام طرف است؟"
+                            }
+                        },
+                        {
+                            "source": "ตรงไปแล้วเลี้ยวซ้ายครับ",
+                            "wordIds": [ "ตรง", "ไป", "แล้ว", "เลี้ยว", "ซ้าย", "ครับ" ],
+                            "translations": {
+                                "en": "Go straight then turn left",
+                                "fa": "مستقیم بروید بعد به چپ بپیچید"
+                            }
+                        },
+                        {
+                            "source": "ใกล้ไหมครับ",
+                            "wordIds": [ "ใกล้", "ไหม", "ครับ" ],
+                            "translations": {
+                                "en": "Is it near?",
+                                "fa": "نزدیک است؟"
+                            }
+                        },
+                        {
+                            "source": "ไม่ไกลครับ เดินประมาณห้านาที",
+                            "wordIds": [ "ไม่", "ไกล", "ครับ", "เดิน", "ประมาณ", "ห้า", "นาที" ],
+                            "translations": {
+                                "en": "Not far, about 5 minutes walk",
+                                "fa": "دور نیست، حدود ۵ دقیقه راه"
+                            }
+                        },
+                        {
+                            "source": "ขอบคุณมากครับ",
+                            "wordIds": [ "ขอบคุณ", "มาก", "ครับ" ],
+                            "translations": {
+                                "en": "Thank you very much",
+                                "fa": "خیلی متشکرم"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "sectionId": "level5-conv-2",
+            "heading": {
+                "en": "Conversation 2: Taking a Taxi",
+                "th": "บทสนทนา 2: นั่งแท็กซี่",
+                "fa": "مکالمه ۲: سوار تاکسی شدن"
+            },
+            "content": [
+                {
+                    "type": "paragraph",
+                    "sentences": [
+                        {
+                            "source": "ไปสนามบินสุวรรณภูมิเท่าไหร่ครับ",
+                            "wordIds": [ "ไป", "สนามบิน", "สุวรรณภูมิ", "เท่าไหร่", "ครับ" ],
+                            "translations": {
+                                "en": "How much to Suvarnabhumi Airport?",
+                                "fa": "تا فرودگاه سووارنابومی چقدر می‌شود؟"
+                            }
+                        },
+                        {
+                            "source": "สามร้อยห้าสิบบาทครับ",
+                            "wordIds": [ "สาม", "ร้อย", "ห้า", "สิบ", "บาท", "ครับ" ],
+                            "translations": {
+                                "en": "350 baht",
+                                "fa": "۳۵۰ بات"
+                            }
+                        },
+                        {
+                            "source": "ตกลงครับ ไปทางด่วนได้ไหมครับ",
+                            "wordIds": [ "ตกลง", "ครับ", "ไป", "ทางด่วน", "ได้", "ไหม", "ครับ" ],
+                            "translations": {
+                                "en": "Agreed. Can we take the highway?",
+                                "fa": "قبول است. می‌توانیم از بزرگراه برویم؟"
+                            }
+                        },
+                        {
+                            "source": "ได้ครับ แต่ค่าทางด่วนอีกห้าสิบบาทนะครับ",
+                            "wordIds": [ "ได้", "ครับ", "แต่", "ค่าทางด่วน", "อีก", "ห้า", "สิบ", "บาท", "นะ", "ครับ" ],
+                            "translations": {
+                                "en": "Yes, but the toll is another 50 baht",
+                                "fa": "بله، اما عوارض بزرگراه ۵۰ بات اضافه دارد"
+                            }
+                        },
+                        {
+                            "source": "ได้ครับ ไปเลยครับ",
+                            "wordIds": [ "ได้", "ครับ", "ไป", "เลย", "ครับ" ],
+                            "translations": {
+                                "en": "Okay, let's go",
+                                "fa": "باشه، برویم"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "sectionId": "level5-conv-3",
+            "heading": {
+                "en": "Conversation 3: Taking the Bus",
+                "th": "บทสนทนา 3: นั่งรถเมล์",
+                "fa": "مکالمه ۳: سوار اتوبوس شدن"
+            },
+            "content": [
+                {
+                    "type": "paragraph",
+                    "sentences": [
+                        {
+                            "source": "รถเมล์สายอะไรไปสยามพารากอนคะ",
+                            "wordIds": [ "รถเมล์", "สาย", "อะไร", "ไป", "สยามพารากอน", "คะ" ],
+                            "translations": {
+                                "en": "Which bus goes to Siam Paragon?",
+                                "fa": "کدام اتوبوس به سیام پاراگون می‌رود؟"
+                            }
+                        },
+                        {
+                            "source": "สาย 15 กับ 48 ไปค่ะ",
+                            "wordIds": [ "สาย", "สิบห้า", "กับ", "สี่สิบแปด", "ไป", "ค่ะ" ],
+                            "translations": {
+                                "en": "Number 15 and 48 go there",
+                                "fa": "شماره ۱۵ و ۴۸ می‌روند"
+                            }
+                        },
+                        {
+                            "source": "ป้ายรถเมล์อยู่ไหนคะ",
+                            "wordIds": [ "ป้าย", "รถเมล์", "อยู่", "ไหน", "คะ" ],
+                            "translations": {
+                                "en": "Where is the bus stop?",
+                                "fa": "ایستگاه اتوبوس کجاست؟"
+                            }
+                        },
+                        {
+                            "source": "อยู่ตรงแยกข้างหน้า",
+                            "wordIds": [ "อยู่", "ตรง", "แยก", "ข้าง", "หน้า" ],
+                            "translations": {
+                                "en": "At the intersection ahead",
+                                "fa": "سر چهارراه جلو"
+                            }
+                        },
+                        {
+                            "source": "ค่าโดยสารเท่าไหร่คะ",
+                            "wordIds": [ "ค่าโดยสาร", "เท่าไหร่", "คะ" ],
+                            "translations": {
+                                "en": "How much is the fare?",
+                                "fa": "کرایه چقدر است؟"
+                            }
+                        },
+                        {
+                            "source": "ตลอดสาย 25 บาทครับ",
+                            "wordIds": [ "ตลอด", "สาย", "ยี่สิบห้า", "บาท", "ครับ" ],
+                            "translations": {
+                                "en": "25 baht for the whole route",
+                                "fa": "۲۵ بات تا آخر خط"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "sectionId": "level5-conv-4",
+            "heading": {
+                "en": "Conversation 4: Taking the Skytrain",
+                "th": "บทสนทนา 4: นั่งรถไฟฟ้า",
+                "fa": "مکالمه ۴: سوار قطار شهری شدن"
+            },
+            "content": [
+                {
+                    "type": "paragraph",
+                    "sentences": [
+                        {
+                            "source": "ขอซื้อตั๋วรถไฟฟ้าหน่อยครับ",
+                            "wordIds": [ "ขอ", "ซื้อ", "ตั๋ว", "รถไฟฟ้า", "หน่อย", "ครับ" ],
+                            "translations": {
+                                "en": "I'd like to buy a BTS ticket please",
+                                "fa": "یک بلیط قطار شهری می‌خواهم لطفاً"
+                            }
+                        },
+                        {
+                            "source": "ไปสถานีไหนคะ",
+                            "wordIds": [ "ไป", "สถานี", "ไหน", "คะ" ],
+                            "translations": {
+                                "en": "Which station?",
+                                "fa": "کدام ایستگاه؟"
+                            }
+                        },
+                        {
+                            "source": "ไปสถานีอโศกครับ",
+                            "wordIds": [ "ไป", "สถานี", "อโศก", "ครับ" ],
+                            "translations": {
+                                "en": "To Asok station",
+                                "fa": "ایستگاه اسوک"
+                            }
+                        },
+                        {
+                            "source": "สี่สิบสองบาทค่ะ",
+                            "wordIds": [ "สี่สิบสอง", "บาท", "ค่ะ" ],
+                            "translations": {
+                                "en": "42 baht",
+                                "fa": "۴۲ بات"
+                            }
+                        },
+                        {
+                            "source": "รถมากี่นาทีมาครั้งครับ",
+                            "wordIds": [ "รถ", "มา", "กี่", "นาที", "มา", "ครั้ง", "ครับ" ],
+                            "translations": {
+                                "en": "How often do trains come?",
+                                "fa": "قطارها هر چند دقیقه یکبار می‌آیند؟"
+                            }
+                        },
+                        {
+                            "source": "ทุกๆ ห้านาทีครับ",
+                            "wordIds": [ "ทุก", "ห้า", "นาที", "ครับ" ],
+                            "translations": {
+                                "en": "Every 5 minutes",
+                                "fa": "هر ۵ دقیقه"
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

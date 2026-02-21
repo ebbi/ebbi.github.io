@@ -1,0 +1,507 @@
+{
+    "documentId": "thematic-hotel",
+    "metadata": {
+        "version": "2.0.0",
+        "created": "2026-02-21T10:00:00Z",
+        "title": {
+            "en": "At the Hotel",
+            "th": "ที่โรงแรม",
+            "fa": "در هتل"
+        },
+        "difficulty": 2,
+        "wordCount": 40,
+        "sentenceCount": 26,
+        "estimatedTime": 25,
+        "tags": [ "hotel", "accommodation", "travel", "services" ]
+    },
+    "vocabulary": {
+        "โรงแรม": {
+            "translations": { "en": "hotel", "fa": "هتل" }
+        },
+        "ที่พัก": {
+            "translations": { "en": "accommodation", "fa": "اقامتگاه" }
+        },
+        "รีสอร์ท": {
+            "translations": { "en": "resort", "fa": "تفریحگاه" }
+        },
+        "เกสต์เฮาส์": {
+            "translations": { "en": "guesthouse", "fa": "مسافرخانه" }
+        },
+        "แผนกต้อนรับ": {
+            "translations": { "en": "reception", "fa": "پذیرش" }
+        },
+        "พนักงาน": {
+            "translations": { "en": "staff", "fa": "کارمند" }
+        },
+        "แคชเชียร์": {
+            "translations": { "en": "cashier", "fa": "صندوقدار" }
+        },
+        "กระเป๋า": {
+            "translations": { "en": "bellboy/luggage", "fa": "باربر" }
+        },
+        "ห้อง": {
+            "translations": { "en": "room", "fa": "اتاق" }
+        },
+        "ประเภทห้อง": {
+            "translations": { "en": "room type", "fa": "نوع اتاق" }
+        },
+        "ห้องเดี่ยว": {
+            "translations": { "en": "single room", "fa": "اتاق یک تخته" }
+        },
+        "ห้องคู่": {
+            "translations": { "en": "double room", "fa": "اتاق دو تخته" }
+        },
+        "ห้องสวีท": {
+            "translations": { "en": "suite", "fa": "سوئیت" }
+        },
+        "เตียง": {
+            "translations": { "en": "bed", "fa": "تخت" }
+        },
+        "เตียงใหญ่": {
+            "translations": { "en": "king size bed", "fa": "تخت بزرگ" }
+        },
+        "เตียงเดี่ยว": {
+            "translations": { "en": "twin beds", "fa": "تخت‌های جدا" }
+        },
+        "พัดลม": {
+            "translations": { "en": "fan", "fa": "پنکه" }
+        },
+        "แอร์": {
+            "translations": { "en": "air conditioning", "fa": "کولر" }
+        },
+        "ทีวี": {
+            "translations": { "en": "TV", "fa": "تلویزیون" }
+        },
+        "ตู้เย็น": {
+            "translations": { "en": "refrigerator", "fa": "یخچال" }
+        },
+        "มินิบาร์": {
+            "translations": { "en": "minibar", "fa": "مینی‌بار" }
+        },
+        "น้ำอุ่น": {
+            "translations": { "en": "hot water", "fa": "آب گرم" }
+        },
+        "ไดร์เป่าผม": {
+            "translations": { "en": "hair dryer", "fa": "سشوار" }
+        },
+        "อินเทอร์เน็ต": {
+            "translations": { "en": "internet", "fa": "اینترنت" }
+        },
+        "ไวไฟ": {
+            "translations": { "en": "WiFi", "fa": "وای‌فای" }
+        },
+        "อาหารเช้า": {
+            "translations": { "en": "breakfast", "fa": "صبحانه" }
+        },
+        "ห้องอาหาร": {
+            "translations": { "en": "restaurant", "fa": "رستوران" }
+        },
+        "สระว่ายน้ำ": {
+            "translations": { "en": "swimming pool", "fa": "استخر" }
+        },
+        "ฟิตเนส": {
+            "translations": { "en": "fitness center", "fa": "باشگاه" }
+        },
+        "ที่จอดรถ": {
+            "translations": { "en": "parking", "fa": "پارکینگ" }
+        },
+        "บริการ": {
+            "translations": { "en": "service", "fa": "خدمات" }
+        },
+        "รูมเซอร์วิส": {
+            "translations": { "en": "room service", "fa": "خدمات اتاق" }
+        },
+        "ซักรีด": {
+            "translations": { "en": "laundry", "fa": "خشکشویی" }
+        },
+        "ปลุก": {
+            "translations": { "en": "wake-up call", "fa": "بیدارباش" }
+        },
+        "เช็คอิน": {
+            "translations": { "en": "check-in", "fa": "ورود" }
+        },
+        "เช็คเอาท์": {
+            "translations": { "en": "check-out", "fa": "خروج" }
+        },
+        "เข้าพัก": {
+            "translations": { "en": "stay", "fa": "اقامت" }
+        },
+        "ขยายเวลา": {
+            "translations": { "en": "extend", "fa": "تمدید" }
+        },
+        "เลทเช็คเอาท์": {
+            "translations": { "en": "late check-out", "fa": "خروج دیرهنگام" }
+        },
+        "มัดจำ": {
+            "translations": { "en": "deposit", "fa": "پیش‌پرداخت" }
+        }
+    },
+    "activity": {
+        "words": true,
+        "sentences": true
+    },
+    "sections": [
+        {
+            "sectionId": "hotel-vocab-1",
+            "heading": {
+                "en": "Room Types & Facilities",
+                "th": "ประเภทห้องและสิ่งอำนวยความสะดวก",
+                "fa": "انواع اتاق و امکانات"
+            },
+            "content": [
+                {
+                    "type": "words",
+                    "wordIds": [ "ห้องเดี่ยว", "ห้องคู่", "ห้องสวีท", "เตียงใหญ่", "เตียงเดี่ยว", "แอร์", "พัดลม", "ทีวี", "ตู้เย็น", "น้ำอุ่น", "ไดร์เป่าผม", "ไวไฟ" ]
+                }
+            ]
+        },
+        {
+            "sectionId": "hotel-conv-1",
+            "heading": {
+                "en": "Conversation 1: Checking In",
+                "th": "บทสนทนา 1: เช็คอิน",
+                "fa": "مکالمه ۱: ورود"
+            },
+            "content": [
+                {
+                    "type": "paragraph",
+                    "sentences": [
+                        {
+                            "source": "สวัสดีครับ ผมมีจองห้องพักไว้",
+                            "wordIds": [ "สวัสดี", "ครับ", "ผม", "มี", "จอง", "ห้องพัก", "ไว้" ],
+                            "translations": {
+                                "en": "Hello, I have a room reservation",
+                                "fa": "سلام، من اتاق رزرو کرده‌ام"
+                            }
+                        },
+                        {
+                            "source": "ยินดีต้อนรับค่ะ ขอชื่อผู้จองหน่อยค่ะ",
+                            "wordIds": [ "ยินดี", "ต้อนรับ", "ค่ะ", "ขอ", "ชื่อ", "ผู้จอง", "หน่อย", "ค่ะ" ],
+                            "translations": {
+                                "en": "Welcome! What's the name on the reservation?",
+                                "fa": "خوش آمدید! نام رزرو کننده چیست؟"
+                            }
+                        },
+                        {
+                            "source": "นายสมชาย ใจดีครับ",
+                            "wordIds": [ "นาย", "สมชาย", "ใจดี", "ครับ" ],
+                            "translations": {
+                                "en": "Mr. Somchai Jaidee",
+                                "fa": "آقای سامچای جایدی"
+                            }
+                        },
+                        {
+                            "source": "เจอแล้วค่ะ คุณสมชาย จองไว้ 3 คืน ห้องดีลักซ์",
+                            "wordIds": [ "เจอ", "แล้ว", "ค่ะ", "คุณ", "สมชาย", "จอง", "ไว้", "สาม", "คืน", "ห้อง", "ดีลักซ์" ],
+                            "translations": {
+                                "en": "Found it. Mr. Somchai, 3 nights, Deluxe room",
+                                "fa": "پیدا شد. آقای جایدی، ۳ شب، اتاق دلوکس"
+                            }
+                        },
+                        {
+                            "source": "ถูกต้องครับ",
+                            "wordIds": [ "ถูกต้อง", "ครับ" ],
+                            "translations": {
+                                "en": "That's correct",
+                                "fa": "درست است"
+                            }
+                        },
+                        {
+                            "source": "กรุณาแสดงบัตรประชาชนด้วยค่ะ",
+                            "wordIds": [ "กรุณา", "แสดง", "บัตรประชาชน", "ด้วย", "ค่ะ" ],
+                            "translations": {
+                                "en": "Please show your ID card",
+                                "fa": "لطفاً کارت شناسایی نشان دهید"
+                            }
+                        },
+                        {
+                            "source": "นี่ครับ",
+                            "wordIds": [ "นี่", "ครับ" ],
+                            "translations": {
+                                "en": "Here you are",
+                                "fa": "بفرمایید"
+                            }
+                        },
+                        {
+                            "source": "ขอมัดจำไว้ 1000 บาทนะคะ",
+                            "wordIds": [ "ขอ", "มัดจำ", "ไว้", "หนึ่งพัน", "บาท", "นะ", "คะ" ],
+                            "translations": {
+                                "en": "A deposit of 1000 baht please",
+                                "fa": "۱۰۰۰ بات پیش‌پرداخت لطفاً"
+                            }
+                        },
+                        {
+                            "source": "ได้ครับ จ่ายด้วยบัตรเครดิต",
+                            "wordIds": [ "ได้", "ครับ", "จ่าย", "ด้วย", "บัตรเครดิต" ],
+                            "translations": {
+                                "en": "Okay, by credit card",
+                                "fa": "باشه، با کارت اعتباری"
+                            }
+                        },
+                        {
+                            "source": "นี่คือกุญแจห้องค่ะ ห้อง 1208 ชั้น 12",
+                            "wordIds": [ "นี่", "คือ", "กุญแจ", "ห้อง", "ค่ะ", "ห้อง", "หนึ่งสองศูนย์แปด", "ชั้น", "สิบสอง" ],
+                            "translations": {
+                                "en": "Here's your key, room 1208 on the 12th floor",
+                                "fa": "این کلید شما، اتاق ۱۲۰۸ طبقه ۱۲"
+                            }
+                        },
+                        {
+                            "source": "อาหารเช้าตั้งแต่ 6 โมง ถึง 10 โมงค่ะ",
+                            "wordIds": [ "อาหารเช้า", "ตั้งแต่", "หก", "โมง", "ถึง", "สิบ", "โมง", "ค่ะ" ],
+                            "translations": {
+                                "en": "Breakfast from 6 to 10 a.m.",
+                                "fa": "صبحانه از ۶ تا ۱۰ صبح"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "sectionId": "hotel-conv-2",
+            "heading": {
+                "en": "Conversation 2: Requesting Services",
+                "th": "บทสนทนา 2: ขอบริการ",
+                "fa": "مکالمه ۲: درخواست خدمات"
+            },
+            "content": [
+                {
+                    "type": "paragraph",
+                    "sentences": [
+                        {
+                            "source": "รูมเซอร์วิสครับ",
+                            "wordIds": [ "รูมเซอร์วิส", "ครับ" ],
+                            "translations": {
+                                "en": "Room service",
+                                "fa": "خدمات اتاق"
+                            }
+                        },
+                        {
+                            "source": "สวัสดีค่ะ ต้องการอะไรคะ",
+                            "wordIds": [ "สวัสดี", "ค่ะ", "ต้องการ", "อะไร", "คะ" ],
+                            "translations": {
+                                "en": "Hello, what would you like?",
+                                "fa": "سلام، چه می‌خواهید؟"
+                            }
+                        },
+                        {
+                            "source": "ขอน้ำดื่มเพิ่ม 2 ขวดครับ",
+                            "wordIds": [ "ขอ", "น้ำดื่ม", "เพิ่ม", "สอง", "ขวด", "ครับ" ],
+                            "translations": {
+                                "en": "Two more bottles of water please",
+                                "fa": "دو بطری آب بیشتر لطفاً"
+                            }
+                        },
+                        {
+                            "source": "ได้ค่ะ จะส่งให้ภายใน 10 นาที",
+                            "wordIds": [ "ได้", "ค่ะ", "จะ", "ส่ง", "ให้", "ภายใน", "สิบ", "นาที" ],
+                            "translations": {
+                                "en": "Certainly, will send within 10 minutes",
+                                "fa": "حتماً، تا ۱۰ دقیقه دیگر می‌فرستیم"
+                            }
+                        },
+                        {
+                            "source": "แล้วก็ขอปลุกด้วยครับ พรุ่งนี้ 7 โมงเช้า",
+                            "wordIds": [ "แล้ว", "ก็", "ขอ", "ปลุก", "ด้วย", "ครับ", "พรุ่งนี้", "เจ็ด", "โมง", "เช้า" ],
+                            "translations": {
+                                "en": "And a wake-up call tomorrow at 7 a.m.",
+                                "fa": "و بیدارباش فردا ساعت ۷ صبح"
+                            }
+                        },
+                        {
+                            "source": "ได้ค่ะ 7 โมงเช้า",
+                            "wordIds": [ "ได้", "ค่ะ", "เจ็ด", "โมง", "เช้า" ],
+                            "translations": {
+                                "en": "Okay, 7 a.m.",
+                                "fa": "باشه، ساعت ۷ صبح"
+                            }
+                        },
+                        {
+                            "source": "ขอบคุณครับ",
+                            "wordIds": [ "ขอบคุณ", "ครับ" ],
+                            "translations": {
+                                "en": "Thank you",
+                                "fa": "متشکرم"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "sectionId": "hotel-conv-3",
+            "heading": {
+                "en": "Conversation 3: Hotel Problems",
+                "th": "บทสนทนา 3: ปัญหาในโรงแรม",
+                "fa": "مکالمه ۳: مشکلات هتل"
+            },
+            "content": [
+                {
+                    "type": "paragraph",
+                    "sentences": [
+                        {
+                            "source": "ขอโทษครับ แอร์ในห้องไม่เย็น",
+                            "wordIds": [ "ขอโทษ", "ครับ", "แอร์", "ใน", "ห้อง", "ไม่", "เย็น" ],
+                            "translations": {
+                                "en": "Excuse me, the AC in my room isn't cold",
+                                "fa": "ببخشید، کولر اتاق من سرد نیست"
+                            }
+                        },
+                        {
+                            "source": "ขออภัยด้วยค่ะ ห้องอะไรคะ",
+                            "wordIds": [ "ขออภัย", "ด้วย", "ค่ะ", "ห้อง", "อะไร", "คะ" ],
+                            "translations": {
+                                "en": "I'm sorry, what room?",
+                                "fa": "متاسفم، کدام اتاق؟"
+                            }
+                        },
+                        {
+                            "source": "ห้อง 1208 ครับ",
+                            "wordIds": [ "ห้อง", "หนึ่งสองศูนย์แปด", "ครับ" ],
+                            "translations": {
+                                "en": "Room 1208",
+                                "fa": "اتاق ۱۲۰۸"
+                            }
+                        },
+                        {
+                            "source": "เดี๋ยวให้ช่างขึ้นไปดูให้ค่ะ",
+                            "wordIds": [ "เดี๋ยว", "ให้", "ช่าง", "ขึ้น", "ไป", "ดู", "ให้", "ค่ะ" ],
+                            "translations": {
+                                "en": "I'll send a technician to check",
+                                "fa": "تکنسین را می‌فرستم تا بررسی کند"
+                            }
+                        },
+                        {
+                            "source": "แล้วน้ำอุ่นก็ไม่มีด้วยครับ",
+                            "wordIds": [ "แล้ว", "น้ำอุ่น", "ก็", "ไม่มี", "ด้วย", "ครับ" ],
+                            "translations": {
+                                "en": "And there's no hot water either",
+                                "fa": "و آب گرم هم نداریم"
+                            }
+                        },
+                        {
+                            "source": "เสียใจด้วยนะคะ จะเปลี่ยนห้องให้ไหมคะ",
+                            "wordIds": [ "เสียใจ", "ด้วย", "นะ", "คะ", "จะ", "เปลี่ยน", "ห้อง", "ให้", "ไหม", "คะ" ],
+                            "translations": {
+                                "en": "I'm very sorry. Would you like to change rooms?",
+                                "fa": "خیلی متاسفم. می‌خواهید اتاق عوض کنید؟"
+                            }
+                        },
+                        {
+                            "source": "ได้ไหมครับ",
+                            "wordIds": [ "ได้", "ไหม", "ครับ" ],
+                            "translations": {
+                                "en": "Can I?",
+                                "fa": "می‌شود؟"
+                            }
+                        },
+                        {
+                            "source": "ได้ค่ะ รอสักครู่นะคะ",
+                            "wordIds": [ "ได้", "ค่ะ", "รอ", "สักครู่", "นะ", "คะ" ],
+                            "translations": {
+                                "en": "Yes, just a moment",
+                                "fa": "بله، یک لحظه"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "sectionId": "hotel-conv-4",
+            "heading": {
+                "en": "Conversation 4: Checking Out",
+                "th": "บทสนทนา 4: เช็คเอาท์",
+                "fa": "مکالمه ۴: خروج"
+            },
+            "content": [
+                {
+                    "type": "paragraph",
+                    "sentences": [
+                        {
+                            "source": "เช็คเอาท์ครับ",
+                            "wordIds": [ "เช็คเอาท์", "ครับ" ],
+                            "translations": {
+                                "en": "Checking out",
+                                "fa": "تسویه حساب"
+                            }
+                        },
+                        {
+                            "source": "ได้ค่ะ ห้องอะไรคะ",
+                            "wordIds": [ "ได้", "ค่ะ", "ห้อง", "อะไร", "คะ" ],
+                            "translations": {
+                                "en": "Certainly, what room?",
+                                "fa": "حتماً، کدام اتاق؟"
+                            }
+                        },
+                        {
+                            "source": "ห้อง 1208 ครับ",
+                            "wordIds": [ "ห้อง", "หนึ่งสองศูนย์แปด", "ครับ" ],
+                            "translations": {
+                                "en": "Room 1208",
+                                "fa": "اتاق ۱۲۰۸"
+                            }
+                        },
+                        {
+                            "source": "รอสักครู่นะคะ ขอเช็คห้องก่อน",
+                            "wordIds": [ "รอ", "สักครู่", "นะ", "คะ", "ขอ", "เช็ค", "ห้อง", "ก่อน" ],
+                            "translations": {
+                                "en": "One moment, we need to check the room",
+                                "fa": "یک لحظه، باید اتاق را چک کنیم"
+                            }
+                        },
+                        {
+                            "source": "เรียบร้อยแล้วค่ะ ค่าห้อง 3 คืน 3600 บาท",
+                            "wordIds": [ "เรียบร้อย", "แล้ว", "ค่ะ", "ค่าห้อง", "สาม", "คืน", "สามพันหกร้อย", "บาท" ],
+                            "translations": {
+                                "en": "All set. Room charges for 3 nights: 3600 baht",
+                                "fa": "آماده است. هزینه اتاق ۳ شب: ۳۶۰۰ بات"
+                            }
+                        },
+                        {
+                            "source": "รวมค่ามัดจำ 1000 บาทด้วยไหม",
+                            "wordIds": [ "รวม", "ค่ามัดจำ", "หนึ่งพัน", "บาท", "ด้วย", "ไหม" ],
+                            "translations": {
+                                "en": "Does that include the 1000 baht deposit?",
+                                "fa": "آیا پیش‌پرداخت ۱۰۰۰ بات شامل شده؟"
+                            }
+                        },
+                        {
+                            "source": "หักออกให้แล้วค่ะ จ่ายเพิ่ม 2600 บาท",
+                            "wordIds": [ "หัก", "ออก", "ให้", "แล้ว", "ค่ะ", "จ่าย", "เพิ่ม", "สองพันหกร้อย", "บาท" ],
+                            "translations": {
+                                "en": "It's been deducted, you pay 2600 baht",
+                                "fa": "کسر شده، ۲۶۰۰ بات پرداخت می‌کنید"
+                            }
+                        },
+                        {
+                            "source": "จ่ายด้วยบัตรเครดิตครับ",
+                            "wordIds": [ "จ่าย", "ด้วย", "บัตรเครดิต", "ครับ" ],
+                            "translations": {
+                                "en": "Pay by credit card",
+                                "fa": "با کارت اعتباری پرداخت می‌کنم"
+                            }
+                        },
+                        {
+                            "source": "เซ็นต์ตรงนี้ค่ะ ขอบคุณที่ใช้บริการนะคะ",
+                            "wordIds": [ "เซ็นต์", "ตรง", "นี้", "ค่ะ", "ขอบคุณ", "ที่", "ใช้", "บริการ", "นะ", "คะ" ],
+                            "translations": {
+                                "en": "Sign here please. Thank you for staying with us",
+                                "fa": "اینجا امضا کنید. متشکریم که از ما استفاده کردید"
+                            }
+                        },
+                        {
+                            "source": "ขอบคุณครับ",
+                            "wordIds": [ "ขอบคุณ", "ครับ" ],
+                            "translations": {
+                                "en": "Thank you",
+                                "fa": "متشکرم"
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

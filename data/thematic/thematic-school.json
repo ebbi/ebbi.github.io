@@ -1,0 +1,483 @@
+{
+    "documentId": "thematic-school",
+    "metadata": {
+        "version": "2.0.0",
+        "created": "2026-02-21T10:00:00Z",
+        "title": {
+            "en": "At School",
+            "th": "ที่โรงเรียน",
+            "fa": "در مدرسه"
+        },
+        "difficulty": 2,
+        "wordCount": 40,
+        "sentenceCount": 25,
+        "estimatedTime": 25,
+        "tags": [ "school", "education", "classroom", "learning" ]
+    },
+    "vocabulary": {
+        "โรงเรียน": {
+            "translations": { "en": "school", "fa": "مدرسه" }
+        },
+        "มหาวิทยาลัย": {
+            "translations": { "en": "university", "fa": "دانشگاه" }
+        },
+        "ครู": {
+            "translations": { "en": "teacher", "fa": "معلم" }
+        },
+        "อาจารย์": {
+            "translations": { "en": "professor", "fa": "استاد" }
+        },
+        "นักเรียน": {
+            "translations": { "en": "student", "fa": "دانش‌آموز" }
+        },
+        "นักศึกษา": {
+            "translations": { "en": "college student", "fa": "دانشجو" }
+        },
+        "เพื่อน": {
+            "translations": { "en": "friend/classmate", "fa": "همکلاسی" }
+        },
+        "ห้องเรียน": {
+            "translations": { "en": "classroom", "fa": "کلاس درس" }
+        },
+        "วิชา": {
+            "translations": { "en": "subject", "fa": "درس" }
+        },
+        "คณิตศาสตร์": {
+            "translations": { "en": "mathematics", "fa": "ریاضی" }
+        },
+        "วิทยาศาสตร์": {
+            "translations": { "en": "science", "fa": "علوم" }
+        },
+        "ภาษาไทย": {
+            "translations": { "en": "Thai language", "fa": "زبان تایلندی" }
+        },
+        "ภาษาอังกฤษ": {
+            "translations": { "en": "English", "fa": "زبان انگلیسی" }
+        },
+        "ประวัติศาสตร์": {
+            "translations": { "en": "history", "fa": "تاریخ" }
+        },
+        "เรียน": {
+            "translations": { "en": "study", "fa": "درس خواندن" }
+        },
+        "สอน": {
+            "translations": { "en": "teach", "fa": "تدریس کردن" }
+        },
+        "สอบ": {
+            "translations": { "en": "exam/test", "fa": "امتحان" }
+        },
+        "การบ้าน": {
+            "translations": { "en": "homework", "fa": "تکلیف" }
+        },
+        "ส่ง": {
+            "translations": { "en": "submit", "fa": "تحویل دادن" }
+        },
+        "คะแนน": {
+            "translations": { "en": "score/grade", "fa": "نمره" }
+        },
+        "เกรด": {
+            "translations": { "en": "grade", "fa": "نمره" }
+        },
+        "ผ่าน": {
+            "translations": { "en": "pass", "fa": "قبول شدن" }
+        },
+        "ตก": {
+            "translations": { "en": "fail", "fa": "رد شدن" }
+        },
+        "เข้าใจ": {
+            "translations": { "en": "understand", "fa": "فهمیدن" }
+        },
+        "ไม่เข้าใจ": {
+            "translations": { "en": "don't understand", "fa": "نفهمیدن" }
+        },
+        "ถาม": {
+            "translations": { "en": "ask", "fa": "پرسیدن" }
+        },
+        "ตอบ": {
+            "translations": { "en": "answer", "fa": "جواب دادن" }
+        },
+        "หนังสือ": {
+            "translations": { "en": "book", "fa": "کتاب" }
+        },
+        "สมุด": {
+            "translations": { "en": "notebook", "fa": "دفتر" }
+        },
+        "ปากกา": {
+            "translations": { "en": "pen", "fa": "خودکار" }
+        },
+        "ดินสอ": {
+            "translations": { "en": "pencil", "fa": "مداد" }
+        },
+        "ยางลบ": {
+            "translations": { "en": "eraser", "fa": "پاک‌کن" }
+        },
+        "ไม้บรรทัด": {
+            "translations": { "en": "ruler", "fa": "خط‌کش" }
+        },
+        "กระเป๋า": {
+            "translations": { "en": "bag", "fa": "کیف" }
+        },
+        "ตารางเรียน": {
+            "translations": { "en": "schedule", "fa": "برنامه درسی" }
+        },
+        "คาบ": {
+            "translations": { "en": "period", "fa": "زنگ" }
+        },
+        "พัก": {
+            "translations": { "en": "break", "fa": "تعطیل" }
+        },
+        "เที่ยง": {
+            "translations": { "en": "noon", "fa": "ظهر" }
+        },
+        "เลิกเรียน": {
+            "translations": { "en": "school ends", "fa": "تعطیلی مدرسه" }
+        },
+        "หอสมุด": {
+            "translations": { "en": "library", "fa": "کتابخانه" }
+        }
+    },
+    "activity": {
+        "words": true,
+        "sentences": true
+    },
+    "sections": [
+        {
+            "sectionId": "school-vocab-1",
+            "heading": {
+                "en": "School Subjects",
+                "th": "วิชาเรียน",
+                "fa": "درس‌ها"
+            },
+            "content": [
+                {
+                    "type": "words",
+                    "wordIds": [ "คณิตศาสตร์", "วิทยาศาสตร์", "ภาษาไทย", "ภาษาอังกฤษ", "ประวัติศาสตร์" ]
+                }
+            ]
+        },
+        {
+            "sectionId": "school-conv-1",
+            "heading": {
+                "en": "Conversation 1: First Day of School",
+                "th": "บทสนทนา 1: วันแรกที่โรงเรียน",
+                "fa": "مکالمه ۱: اولین روز مدرسه"
+            },
+            "content": [
+                {
+                    "type": "paragraph",
+                    "sentences": [
+                        {
+                            "source": "สวัสดีครับ เป็นนักเรียนใหม่เหรอ",
+                            "wordIds": [ "สวัสดี", "ครับ", "เป็น", "นักเรียน", "ใหม่", "เหรอ" ],
+                            "translations": {
+                                "en": "Hello, are you a new student?",
+                                "fa": "سلام، دانش‌آموز جدیدی؟"
+                            }
+                        },
+                        {
+                            "source": "ใช่ค่ะ เพิ่งย้ายมา",
+                            "wordIds": [ "ใช่", "ค่ะ", "เพิ่ง", "ย้าย", "มา" ],
+                            "translations": {
+                                "en": "Yes, I just transferred",
+                                "fa": "بله، تازه منتقل شدم"
+                            }
+                        },
+                        {
+                            "source": "ชื่ออะไรครับ",
+                            "wordIds": [ "ชื่อ", "อะไร", "ครับ" ],
+                            "translations": {
+                                "en": "What's your name?",
+                                "fa": "اسمت چیه؟"
+                            }
+                        },
+                        {
+                            "source": "ชื่อลินดาค่ะ แล้วคุณล่ะ",
+                            "wordIds": [ "ชื่อ", "ลินดา", "ค่ะ", "แล้ว", "คุณ", "ล่ะ" ],
+                            "translations": {
+                                "en": "My name is Linda. And you?",
+                                "fa": "اسم من لیندا است. تو چطور؟"
+                            }
+                        },
+                        {
+                            "source": "ชื่อโตโมครับ ยินดีที่ได้รู้จัก",
+                            "wordIds": [ "ชื่อ", "โตโม", "ครับ", "ยินดีที่ได้รู้จัก" ],
+                            "translations": {
+                                "en": "I'm Tomo. Nice to meet you",
+                                "fa": "من تومو هستم. از آشنایی خوشبختم"
+                            }
+                        },
+                        {
+                            "source": "วันนี้เรียนวิชาอะไรบ้างคะ",
+                            "wordIds": [ "วันนี้", "เรียน", "วิชา", "อะไร", "บ้าง", "คะ" ],
+                            "translations": {
+                                "en": "What subjects do we have today?",
+                                "fa": "امروز چه درس‌هایی داریم؟"
+                            }
+                        },
+                        {
+                            "source": "คาบแรกคณิตศาสตร์ คาบสองวิทยาศาสตร์",
+                            "wordIds": [ "คาบแรก", "คณิตศาสตร์", "คาบสอง", "วิทยาศาสตร์" ],
+                            "translations": {
+                                "en": "First period math, second period science",
+                                "fa": "زنگ اول ریاضی، زنگ دوم علوم"
+                            }
+                        },
+                        {
+                            "source": "ขอบคุณค่ะ",
+                            "wordIds": [ "ขอบคุณ", "ค่ะ" ],
+                            "translations": {
+                                "en": "Thank you",
+                                "fa": "ممنون"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "sectionId": "school-conv-2",
+            "heading": {
+                "en": "Conversation 2: In the Classroom",
+                "th": "บทสนทนา 2: ในห้องเรียน",
+                "fa": "مکالمه ۲: در کلاس"
+            },
+            "content": [
+                {
+                    "type": "paragraph",
+                    "sentences": [
+                        {
+                            "source": "วันนี้เราจะเรียนเรื่องอะไรคะ",
+                            "wordIds": [ "วันนี้", "เรา", "จะ", "เรียน", "เรื่อง", "อะไร", "คะ" ],
+                            "translations": {
+                                "en": "What will we study today?",
+                                "fa": "امروز چه چیزی یاد می‌گیریم؟"
+                            }
+                        },
+                        {
+                            "source": "วันนี้เรียนเรื่องสมการ",
+                            "wordIds": [ "วันนี้", "เรียน", "เรื่อง", "สมการ" ],
+                            "translations": {
+                                "en": "Today we're studying equations",
+                                "fa": "امروز معادلات را می‌خوانیم"
+                            }
+                        },
+                        {
+                            "source": "เข้าใจไหมครับ",
+                            "wordIds": [ "เข้าใจ", "ไหม", "ครับ" ],
+                            "translations": {
+                                "en": "Do you understand?",
+                                "fa": "می‌فهمی؟"
+                            }
+                        },
+                        {
+                            "source": "ไม่เข้าใจตรงนี้ค่ะ",
+                            "wordIds": [ "ไม่เข้าใจ", "ตรง", "นี้", "ค่ะ" ],
+                            "translations": {
+                                "en": "I don't understand this part",
+                                "fa": "این قسمت را نمی‌فهمم"
+                            }
+                        },
+                        {
+                            "source": "ให้ช่วยอธิบายไหม",
+                            "wordIds": [ "ให้", "ช่วย", "อธิบาย", "ไหม" ],
+                            "translations": {
+                                "en": "Want me to explain?",
+                                "fa": "می‌خواهی توضیح بدم؟"
+                            }
+                        },
+                        {
+                            "source": "ได้ไหมคะ",
+                            "wordIds": [ "ได้", "ไหม", "คะ" ],
+                            "translations": {
+                                "en": "Could you?",
+                                "fa": "می‌شود؟"
+                            }
+                        },
+                        {
+                            "source": "ตรงนี้เราต้องย้ายข้างสมการ...",
+                            "wordIds": [ "ตรง", "นี้", "เรา", "ต้อง", "ย้าย", "ข้าง", "สมการ" ],
+                            "translations": {
+                                "en": "Here we need to rearrange the equation...",
+                                "fa": "اینجا باید معادله را جابجا کنیم..."
+                            }
+                        },
+                        {
+                            "source": "อ๋อ เข้าใจแล้ว ขอบคุณมาก",
+                            "wordIds": [ "อ๋อ", "เข้าใจ", "แล้ว", "ขอบคุณ", "มาก" ],
+                            "translations": {
+                                "en": "Oh, now I understand! Thank you very much",
+                                "fa": "آها، فهمیدم! خیلی ممنون"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "sectionId": "school-conv-3",
+            "heading": {
+                "en": "Conversation 3: Homework and Exams",
+                "th": "บทสนทนา 3: การบ้านและการสอบ",
+                "fa": "مکالمه ۳: تکلیف و امتحان"
+            },
+            "content": [
+                {
+                    "type": "paragraph",
+                    "sentences": [
+                        {
+                            "source": "อาจารย์ให้การบ้านเยอะจัง",
+                            "wordIds": [ "อาจารย์", "ให้", "การบ้าน", "เยอะ", "จัง" ],
+                            "translations": {
+                                "en": "The teacher gave so much homework",
+                                "fa": "استاد خیلی تکلیف داده"
+                            }
+                        },
+                        {
+                            "source": "ใช่ ทำไม่ทันแน่เลย",
+                            "wordIds": [ "ใช่", "ทำ", "ไม่", "ทัน", "แน่", "เลย" ],
+                            "translations": {
+                                "en": "Yeah, I'll never finish on time",
+                                "fa": "آره، حتماً نمی‌رسم انجام بدم"
+                            }
+                        },
+                        {
+                            "source": "แล้วส่งเมื่อไหร่",
+                            "wordIds": [ "แล้ว", "ส่ง", "เมื่อไหร่" ],
+                            "translations": {
+                                "en": "When is it due?",
+                                "fa": "کی باید تحویل بدیم؟"
+                            }
+                        },
+                        {
+                            "source": "วันศุกร์นี้",
+                            "wordIds": [ "วันศุกร์", "นี้" ],
+                            "translations": {
+                                "en": "This Friday",
+                                "fa": "این جمعه"
+                            }
+                        },
+                        {
+                            "source": "แล้วสอบอาทิตย์หน้าด้วย",
+                            "wordIds": [ "แล้ว", "สอบ", "อาทิตย์", "หน้า", "ด้วย" ],
+                            "translations": {
+                                "en": "And we have exams next week too",
+                                "fa": "و هفته بعد امتحان هم داریم"
+                            }
+                        },
+                        {
+                            "source": "เตรียมตัวยัง",
+                            "wordIds": [ "เตรียมตัว", "ยัง" ],
+                            "translations": {
+                                "en": "Have you prepared?",
+                                "fa": "آماده شده‌ای؟"
+                            }
+                        },
+                        {
+                            "source": "ยังเลย ต้องอ่านหนังสืออีกเยอะ",
+                            "wordIds": [ "ยัง", "เลย", "ต้อง", "อ่านหนังสือ", "อีก", "เยอะ" ],
+                            "translations": {
+                                "en": "Not yet, I need to study a lot more",
+                                "fa": "نه هنوز، باید خیلی درس بخونم"
+                            }
+                        },
+                        {
+                            "source": "สู้ๆ นะ",
+                            "wordIds": [ "สู้", "ๆ", "นะ" ],
+                            "translations": {
+                                "en": "Good luck!",
+                                "fa": "موفق باشی!"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "sectionId": "school-conv-4",
+            "heading": {
+                "en": "Conversation 4: At the Library",
+                "th": "บทสนทนา 4: ที่ห้องสมุด",
+                "fa": "مکالمه ۴: در کتابخانه"
+            },
+            "content": [
+                {
+                    "type": "paragraph",
+                    "sentences": [
+                        {
+                            "source": "ขอยืมหนังสือหน่อยครับ",
+                            "wordIds": [ "ขอ", "ยืม", "หนังสือ", "หน่อย", "ครับ" ],
+                            "translations": {
+                                "en": "I'd like to borrow a book",
+                                "fa": "می‌خواهم کتاب امانت بگیرم"
+                            }
+                        },
+                        {
+                            "source": "มีบัตรห้องสมุดไหมคะ",
+                            "wordIds": [ "มี", "บัตร", "ห้องสมุด", "ไหม", "คะ" ],
+                            "translations": {
+                                "en": "Do you have a library card?",
+                                "fa": "کارت کتابخانه دارید؟"
+                            }
+                        },
+                        {
+                            "source": "มีครับ",
+                            "wordIds": [ "มี", "ครับ" ],
+                            "translations": {
+                                "en": "Yes",
+                                "fa": "بله"
+                            }
+                        },
+                        {
+                            "source": "ขอดูหน่อยค่ะ",
+                            "wordIds": [ "ขอ", "ดู", "หน่อย", "ค่ะ" ],
+                            "translations": {
+                                "en": "Can I see it?",
+                                "fa": "می‌بینم لطفاً؟"
+                            }
+                        },
+                        {
+                            "source": "ต้องการยืมหนังสืออะไรคะ",
+                            "wordIds": [ "ต้องการ", "ยืม", "หนังสือ", "อะไร", "คะ" ],
+                            "translations": {
+                                "en": "What book would you like to borrow?",
+                                "fa": "چه کتابی می‌خواهید امانت بگیرید؟"
+                            }
+                        },
+                        {
+                            "source": "หนังสือวิทยาศาสตร์ เล่มนี้ครับ",
+                            "wordIds": [ "หนังสือ", "วิทยาศาสตร์", "เล่ม", "นี้", "ครับ" ],
+                            "translations": {
+                                "en": "This science book",
+                                "fa": "این کتاب علوم"
+                            }
+                        },
+                        {
+                            "source": "ยืมได้ 7 วันนะคะ",
+                            "wordIds": [ "ยืม", "ได้", "เจ็ด", "วัน", "นะ", "คะ" ],
+                            "translations": {
+                                "en": "You can borrow it for 7 days",
+                                "fa": "۷ روز می‌توانید امانت بگیرید"
+                            }
+                        },
+                        {
+                            "source": "ต่ออายุได้ไหมครับ",
+                            "wordIds": [ "ต่ออายุ", "ได้", "ไหม", "ครับ" ],
+                            "translations": {
+                                "en": "Can I renew it?",
+                                "fa": "می‌توانم تمدید کنم؟"
+                            }
+                        },
+                        {
+                            "source": "ได้ค่ะ ถ้าไม่มีคนจอง",
+                            "wordIds": [ "ได้", "ค่ะ", "ถ้า", "ไม่มี", "คน", "จอง" ],
+                            "translations": {
+                                "en": "Yes, if no one has reserved it",
+                                "fa": "بله، اگر کسی رزرو نکرده باشد"
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

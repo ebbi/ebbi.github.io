@@ -1,0 +1,169 @@
+{
+    "documentId": "grammar-3-questions",
+    "metadata": {
+        "version": "2.0.0",
+        "created": "2026-02-21T10:00:00Z",
+        "title": {
+            "en": "Grammar 3: Yes/No Questions (ไหม)",
+            "th": "ไวยากรณ์ 3: คำถามใช่/ไม่ใช่ (ไหม)",
+            "fa": "گرامر ۳: سوالات بله/خیر (ไหม)"
+        },
+        "difficulty": 1,
+        "newWords": 10,
+        "reviewWords": 20,
+        "sentenceCount": 22,
+        "estimatedTime": 25
+    },
+    "vocabulary": {
+        "ไหม": { "translations": { "en": "question particle", "fa": "ذره سوال" } },
+        "กิน": { "translations": { "en": "eat", "fa": "خوردن" } },
+        "ดื่ม": { "translations": { "en": "drink", "fa": "نوشیدن" } },
+        "ชอบ": { "translations": { "en": "like", "fa": "دوست داشتن" } },
+        "อยาก": { "translations": { "en": "want", "fa": "خواستن" } },
+        "ได้": { "translations": { "en": "can", "fa": "توانستن" } },
+        "อร่อย": { "translations": { "en": "delicious", "fa": "خوشمزه" } },
+        "สวย": { "translations": { "en": "beautiful", "fa": "زیبا" } },
+        "แพง": { "translations": { "en": "expensive", "fa": "گران" } },
+        "ถูก": { "translations": { "en": "cheap", "fa": "ارزان" } }
+    },
+    "sections": [
+        {
+            "sectionId": "grammar-3-1",
+            "heading": {
+                "en": "Grammar Focus: Yes/No Questions",
+                "th": "เน้นไวยากรณ์: คำถามใช่/ไม่ใช่",
+                "fa": "تمرکز گرامر: سوالات بله/خیر"
+            },
+            "content": [
+                {
+                    "type": "paragraph",
+                    "heading": {
+                        "en": "Grammar Explanation",
+                        "th": "คำอธิบายไวยากรณ์",
+                        "fa": "توضیح گرامر"
+                    },
+                    "grammar": {
+                        "pattern": "Statement + ไหม ?",
+                        "note": {
+                            "en": "To form a yes/no question in Thai, add ไหม (mai) at the end of a statement. Word order stays the same.",
+                            "th": "การสร้างคำถามใช่/ไม่ใช่ในภาษาไทย ใส่ 'ไหม' ต่อท้ายประโยคบอกเล่า ลำดับคำคงเดิม",
+                            "fa": "برای ساختن سوال بله/خیر در تایلندی، 'ไหม' را به انتهای جمله اضافه کنید. ترتیب کلمات ثابت می‌ماند."
+                        },
+                        "examples": [
+                            { "source": "คุณกินข้าว", "translation": "You eat rice" },
+                            { "source": "คุณกินข้าวไหม", "translation": "Do you eat rice?" },
+                            { "source": "เขาชอบกาแฟ", "translation": "He likes coffee" },
+                            { "source": "เขาชอบกาแฟไหม", "translation": "Does he like coffee?" }
+                        ]
+                    },
+                    "sentences": [ ]
+                },
+                {
+                    "type": "paragraph",
+                    "heading": {
+                        "en": "Practice 1: Forming Questions",
+                        "th": "ฝึกหัด 1: การสร้างคำถาม",
+                        "fa": "تمرین ۱: ساختن سوال"
+                    },
+                    "sentences": [
+                        {
+                            "source": "คุณกินข้าวไหม",
+                            "wordIds": [ "คุณ", "กิน", "ข้าว", "ไหม" ],
+                            "translations": {
+                                "en": "Do you eat rice?",
+                                "fa": "آیا شما برنج می‌خورید؟"
+                            }
+                        },
+                        {
+                            "source": "เขาดื่มกาแฟไหม",
+                            "wordIds": [ "เขา", "ดื่ม", "กาแฟ", "ไหม" ],
+                            "translations": {
+                                "en": "Does he drink coffee?",
+                                "fa": "آیا او قهوه می‌نوشد؟"
+                            }
+                        },
+                        {
+                            "source": "คุณชอบชาไหม",
+                            "wordIds": [ "คุณ", "ชอบ", "ชา", "ไหม" ],
+                            "translations": {
+                                "en": "Do you like tea?",
+                                "fa": "آیا شما چای دوست دارید؟"
+                            }
+                        },
+                        {
+                            "source": "อาหารอร่อยไหม",
+                            "wordIds": [ "อาหาร", "อร่อย", "ไหม" ],
+                            "translations": {
+                                "en": "Is the food delicious?",
+                                "fa": "آیا غذا خوشمزه است؟"
+                            }
+                        },
+                        {
+                            "source": "กระเป๋าใบนี้แพงไหม",
+                            "wordIds": [ "กระเป๋า", "ใบนี้", "แพง", "ไหม" ],
+                            "translations": {
+                                "en": "Is this bag expensive?",
+                                "fa": "آیا این کیف گران است؟"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "sectionId": "grammar-3-2",
+            "heading": {
+                "en": "Practice 2: Questions and Answers",
+                "th": "ฝึกหัด 2: คำถามและคำตอบ",
+                "fa": "تمرین ۲: سوال و جواب"
+            },
+            "content": [
+                {
+                    "type": "paragraph",
+                    "sentences": [
+                        {
+                            "source": "คุณอยากไปตลาดไหม",
+                            "wordIds": [ "คุณ", "อยาก", "ไป", "ตลาด", "ไหม" ],
+                            "translations": {
+                                "en": "Do you want to go to the market?",
+                                "fa": "آیا می‌خواهید به بازار بروید؟"
+                            }
+                        },
+                        {
+                            "source": "อยากไปครับ",
+                            "wordIds": [ "อยาก", "ไป", "ครับ" ],
+                            "translations": {
+                                "en": "Yes, I want to go",
+                                "fa": "بله، می‌خواهم بروم"
+                            }
+                        },
+                        {
+                            "source": "เขาพูดภาษาไทยได้ไหม",
+                            "wordIds": [ "เขา", "พูด", "ภาษาไทย", "ได้", "ไหม" ],
+                            "translations": {
+                                "en": "Can he speak Thai?",
+                                "fa": "آیا او می‌تواند تایلندی صحبت کند؟"
+                            }
+                        },
+                        {
+                            "source": "ได้ครับ",
+                            "wordIds": [ "ได้", "ครับ" ],
+                            "translations": {
+                                "en": "Yes, he can",
+                                "fa": "بله، می‌تواند"
+                            }
+                        },
+                        {
+                            "source": "ไม่ครับ",
+                            "wordIds": [ "ไม่", "ครับ" ],
+                            "translations": {
+                                "en": "No, he can't",
+                                "fa": "نه، نمی‌تواند"
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

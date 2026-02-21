@@ -1,0 +1,135 @@
+{
+    "documentId": "grammar-5-time",
+    "metadata": {
+        "version": "2.0.0",
+        "created": "2026-02-21T10:00:00Z",
+        "title": {
+            "en": "Grammar 5: Time Words",
+            "th": "ไวยากรณ์ 5: คำบอกเวลา",
+            "fa": "گرامر ۵: کلمات زمان"
+        },
+        "difficulty": 2,
+        "newWords": 15,
+        "reviewWords": 30,
+        "sentenceCount": 25,
+        "estimatedTime": 25
+    },
+    "vocabulary": {
+        "เมื่อวาน": { "translations": { "en": "yesterday", "fa": "دیروز" } },
+        "วันนี้": { "translations": { "en": "today", "fa": "امروز" } },
+        "พรุ่งนี้": { "translations": { "en": "tomorrow", "fa": "فردا" } },
+        "เช้า": { "translations": { "en": "morning", "fa": "صبح" } },
+        "สาย": { "translations": { "en": "late", "fa": "دیر" } },
+        "เย็น": { "translations": { "en": "evening", "fa": "عصر" } },
+        "กลางคืน": { "translations": { "en": "night", "fa": "شب" } },
+        "ทุกวัน": { "translations": { "en": "every day", "fa": "هر روز" } },
+        "เมื่อกี้": { "translations": { "en": "just now", "fa": "همین الان" } },
+        "เดี๋ยว": { "translations": { "en": "soon/in a moment", "fa": "الآن" } }
+    },
+    "sections": [
+        {
+            "sectionId": "grammar-5-1",
+            "heading": {
+                "en": "Grammar Focus: Time Words Position",
+                "th": "เน้นไวยากรณ์: ตำแหน่งคำบอกเวลา",
+                "fa": "تمرکز گرامر: جایگاه کلمات زمان"
+            },
+            "content": [
+                {
+                    "type": "paragraph",
+                    "heading": {
+                        "en": "Grammar Explanation",
+                        "th": "คำอธิบายไวยากรณ์",
+                        "fa": "توضیح گرامر"
+                    },
+                    "grammar": {
+                        "pattern": "Subject + Verb + Object + Time / Time + Subject + Verb + Object",
+                        "note": {
+                            "en": "Time words in Thai can go at the beginning or end of the sentence. Both positions are correct and common.",
+                            "th": "คำบอกเวลาในภาษาไทยสามารถวางไว้หน้าสุดหรือหลังสุดของประโยคก็ได้",
+                            "fa": "کلمات زمان در تایلندی می‌توانند در ابتدا یا انتهای جمله بیایند. هر دو موقعیت صحیح و رایج است."
+                        },
+                        "examples": [
+                            { "source": "เมื่อวานผมไปตลาด", "translation": "Yesterday I went to the market" },
+                            { "source": "ผมไปตลาดเมื่อวาน", "translation": "I went to the market yesterday" }
+                        ]
+                    },
+                    "sentences": [ ]
+                },
+                {
+                    "type": "paragraph",
+                    "heading": {
+                        "en": "Practice 1: Time at the Beginning",
+                        "th": "ฝึกหัด 1: เวลาหน้าประโยค",
+                        "fa": "تمرین ۱: زمان در ابتدای جمله"
+                    },
+                    "sentences": [
+                        {
+                            "source": "เมื่อวานผมกินข้าว",
+                            "wordIds": [ "เมื่อวาน", "ผม", "กิน", "ข้าว" ],
+                            "translations": {
+                                "en": "Yesterday I ate rice",
+                                "fa": "دیروز من برنج خوردم"
+                            }
+                        },
+                        {
+                            "source": "วันนี้คุณไปทำงานไหม",
+                            "wordIds": [ "วันนี้", "คุณ", "ไป", "ทำงาน", "ไหม" ],
+                            "translations": {
+                                "en": "Today, are you going to work?",
+                                "fa": "امروز، شما به کار می‌روید؟"
+                            }
+                        },
+                        {
+                            "source": "พรุ่งนี้เขาจะมาบ้าน",
+                            "wordIds": [ "พรุ่งนี้", "เขา", "จะ", "มา", "บ้าน" ],
+                            "translations": {
+                                "en": "Tomorrow he will come home",
+                                "fa": "فردا او به خانه می‌آید"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "sectionId": "grammar-5-2",
+            "heading": {
+                "en": "Practice 2: Time at the End",
+                "th": "ฝึกหัด 2: เวลาท้ายประโยค",
+                "fa": "تمرین ۲: زمان در انتهای جمله"
+            },
+            "content": [
+                {
+                    "type": "paragraph",
+                    "sentences": [
+                        {
+                            "source": "ผมกินข้าวเมื่อวาน",
+                            "wordIds": [ "ผม", "กิน", "ข้าว", "เมื่อวาน" ],
+                            "translations": {
+                                "en": "I ate rice yesterday",
+                                "fa": "من برنج دیروز خوردم"
+                            }
+                        },
+                        {
+                            "source": "คุณไปทำงานวันนี้ไหม",
+                            "wordIds": [ "คุณ", "ไป", "ทำงาน", "วันนี้", "ไหม" ],
+                            "translations": {
+                                "en": "Are you going to work today?",
+                                "fa": "آیا شما امروز به کار می‌روید؟"
+                            }
+                        },
+                        {
+                            "source": "เขาจะมาบ้านพรุ่งนี้",
+                            "wordIds": [ "เขา", "จะ", "มา", "บ้าน", "พรุ่งนี้" ],
+                            "translations": {
+                                "en": "He will come home tomorrow",
+                                "fa": "او فردا به خانه می‌آید"
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
