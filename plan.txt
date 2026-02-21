@@ -1,55 +1,13 @@
 
+The bug that took 2 days to resolve has unfortunately reappeared !!!
+
+The Play button highlights and speaks the text.  
+
+It took 2 full days to stop the speech when the text was not visible due to user interaction. 
+
+Unfortunately, the bug has returned and speech continues after navigating to another page!
 
 
-Testing
-http://127.0.0.1:8080/#doc/testV2
-
-Further improvements.
-
-Position the inline grammar button before the heading.
-It is currently right justified after the heading.
-
-=======================================
-
-The purpose of the App is to help to learn speak Thai for 
-everyday life.
-
-For proficiency, I am not sure, but 500 to 1000 words as vocabulary.
-
-A data file with complete sentences that demonstrate the basic 
-structure and Thai grammar.  But the context for the complete sentences 
-should be everyday conversations between people and not individual contextually separate sentences. 
-
-A data file with the most common sentences and again the context for the complete sentences 
-should be everyday conversations between people and not individual contextually separate sentences. 
-
-Any suggestions?
-
-
-
-Both options A and B will be useful.  
- 
-While conversations are not directly modelled in the App JSON data structure, a conversation can be 
-simulated by the order of the sentences in the data file.
-
-Assuming no enhancement or changes to the current data structure and and the App code, 
-can the data be generated for both options A and B? 
-
-Excellent! Both options A and B will be useful.  Another question.  The App has a Constructing a sentence game, a flash card game for 
-words and sentences and a multiple choice quiz for words and sentences.
-
-The question is how many words / sentences should be included in each file to 
-make it an effective learning experience?  Please advise.
-
-
-Yes please, I would like both the progressive series and the thematic files.  Before you do that, 
-please generate the manifest.json for the files already generated.
-
-
-My school text follows an approach that may be useful for another set of data files.
-Sentence structures (or grammatical structure) are introduced followed by 
-example sentences for practice.   
-Is this feasible?
 
 
 

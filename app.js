@@ -190,6 +190,12 @@ const App = (function () {
             const hash = window.location.hash.slice(1) || 'library';
             // console.log('Routing to hash:', hash);
 
+            // FORCE CLEANUP: Disable scroll listeners and stop playback before any route change
+            Services.MediaService.disableScrollListeners();
+            if (State.data.media.isPlaying) {
+                Services.MediaService.stopSequence();
+            }
+
             let matched = false;
             for (const [pattern, handler] of Object.entries(this.routes)) {
                 const matches = this.matchRoute(pattern, hash);
@@ -543,6 +549,29 @@ const App = (function () {
             scrolledRows: new Set(),
 
             init() {
+
+                // Watch for DOM changes to detect when document content is removed
+                this.domObserver = new MutationObserver((mutations) => {
+                    for (const mutation of mutations) {
+                        if (mutation.removedNodes.length > 0) {
+                            // Check if any removed node was the document content
+                            const wasDocumentRemoved = Array.from(mutation.removedNodes).some(node =>
+                                node.nodeType === 1 && node.querySelector?.('.document-content')
+                            );
+
+                            if (wasDocumentRemoved && State.data.media.isPlaying) {
+                                // console.log('Document content removed, stopping playback');
+                                this.stopSequence();
+                            }
+                        }
+                    }
+                });
+
+                this.domObserver.observe(document.getElementById('main-content'), {
+                    childList: true,
+                    subtree: true
+                });
+
                 window.speechSynthesis.onvoiceschanged = () => {
                     this.cachedVoices = window.speechSynthesis.getVoices();
                     this.autoSelectThaiVoice();
@@ -556,6 +585,15 @@ const App = (function () {
                 }, 100);
 
                 const pauseOnInteraction = (event) => {
+
+                    const mainContent = document.getElementById('main-content');
+                    const isInDocument = mainContent?.querySelector('.document-content') !== null;
+
+                    if (!isInDocument) {
+                        // console.log('Not in document view, ignoring pause');
+                        return;
+                    }
+
                     // EARLY RETURN: If playback is already stopped, do nothing
                     if (!State.data.media.isPlaying) {
                         return;
@@ -795,6 +833,15 @@ const App = (function () {
             // Add these methods to Services.MediaService:
 
             enableScrollListeners() {
+                // Only enable if we're in a document view
+                const mainContent = document.getElementById('main-content');
+                const isInDocument = mainContent?.querySelector('.document-content') !== null;
+
+                if (!isInDocument) {
+                    // console.log('Not in document view, not enabling scroll listeners');
+                    return;
+                }
+
                 if (this._scrollListenersEnabled) return;
 
                 this._scrollListenersEnabled = true;
@@ -809,15 +856,9 @@ const App = (function () {
             },
 
             stopSequence() {
-
                 // console.log('stopSequence called');
-                /*
-                console.log('Current state before stop:', {
-                    isPlaying: State.data.media.isPlaying,
-                    currentIndex: State.data.media.currentIndex,
-                    totalElements: document.querySelectorAll('.audio-element').length
-                });
-*/
+
+                // Always stop playback regardless of current state
                 State.data.media.isPlaying = false;
                 State.data.media.currentIndex = 0;
 
@@ -827,6 +868,7 @@ const App = (function () {
                 }
                 State.data.currentRowId = null;
 
+                // Cancel any ongoing speech
                 window.speechSynthesis.cancel();
 
                 // Remove all highlights
@@ -834,23 +876,26 @@ const App = (function () {
                     el.classList.remove('active-highlight');
                 });
 
-                // Disconnect observer
-                if (Services.MediaService.observer) {
-                    Services.MediaService.observer.disconnect();
+                // Disconnect observers
+                if (this.observer) {
+                    this.observer.disconnect();
                 }
 
-                // Disable scroll listeners when playback stops
+                if (this.domObserver) {
+                    this.domObserver.disconnect();
+                }
+
+                // CRITICAL: Disable scroll listeners when playback stops
                 this.disableScrollListeners();
 
+                // Clear any pending scroll locks
+                window.scrollLockUntil = null;
+                window.lastScrollTime = null;
+
+                // Refresh the media bar to show stopped state
                 App.showMediaBar();
 
-                /*
-                console.log('After stop:', {
-                    isPlaying: State.data.media.isPlaying,
-                    currentIndex: State.data.media.currentIndex
-                });
-                */
-
+                // console.log('After stop: Playback stopped and listeners disabled');
             },
 
             isElementInViewport(el) {
@@ -2940,6 +2985,17 @@ const App = (function () {
 
         playSequence() {
             // console.log('=== playSequence started ===');
+
+            // CRITICAL: Check if we're still in a document view
+            const mainContent = document.getElementById('main-content');
+            const isInDocument = mainContent?.querySelector('.document-content') !== null;
+
+            if (!isInDocument) {
+                // console.log('Not in document view, stopping playback');
+                this.stopSequence();
+                return;
+            }
+
             // console.log('Current index:', State.data.media.currentIndex);
 
             // Enable scroll listeners when playback starts
