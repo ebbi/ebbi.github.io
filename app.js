@@ -227,7 +227,7 @@ const App = (function () {
         },
 
         go(path) {
-            // console.log('Navigating to:', path);
+            // // console.log('Navigating to:', path);
             location.hash = path;
         }
     };
@@ -445,17 +445,18 @@ const App = (function () {
             constructor(globalSettings, localSettings) {
                 this.global = globalSettings || { words: {}, sentences: {} };
                 this.local = localSettings || {};
-                // console.log('ActivityResolver created with:', { global: this.global, local: this.local });
+                // // console.log('ActivityResolver created with:', { global: this.global, local: this.local });
             }
 
             resolveForContent(contentItem, sectionLevel = false) {
-                // console.log('Resolving activities for:', {
+                /*
+                console.log('Resolving activities for:', {
                     contentItem,
                     sectionLevel,
                     global: this.global,
                     local: this.local
                 });
-
+*/
                 if (contentItem?.activity?.types?.length) {
                     // console.log('Content has explicit types');
                     return contentItem.activity.types;
@@ -559,14 +560,14 @@ const App = (function () {
                     if (!State.data.media.isPlaying) {
                         return;
                     }
-
-                    // console.log('pauseOnInteraction triggered by:', event?.type || 'unknown', {
-                        isPlaying: State.data.media.isPlaying,
-                        isAutoScrolling: State.data.isAutoScrolling,
-                        scrollLockUntil: window.scrollLockUntil,
-                        currentTime: Date.now()
-                    });
-
+                    /*
+                                        // console.log('pauseOnInteraction triggered by:', event?.type || 'unknown', {
+                                            isPlaying: State.data.media.isPlaying,
+                                            isAutoScrolling: State.data.isAutoScrolling,
+                                            scrollLockUntil: window.scrollLockUntil,
+                                            currentTime: Date.now()
+                                        });
+                    */
                     // Don't pause if we're in auto-scroll mode
                     if (State.data.isAutoScrolling) {
                         // console.log('Auto-scrolling in progress, ignoring pause');
@@ -810,12 +811,13 @@ const App = (function () {
             stopSequence() {
 
                 // console.log('stopSequence called');
-                // console.log('Current state before stop:', {
+                /*
+                console.log('Current state before stop:', {
                     isPlaying: State.data.media.isPlaying,
                     currentIndex: State.data.media.currentIndex,
                     totalElements: document.querySelectorAll('.audio-element').length
                 });
-
+*/
                 State.data.media.isPlaying = false;
                 State.data.media.currentIndex = 0;
 
@@ -842,10 +844,13 @@ const App = (function () {
 
                 App.showMediaBar();
 
-                // console.log('After stop:', {
+                /*
+                console.log('After stop:', {
                     isPlaying: State.data.media.isPlaying,
                     currentIndex: State.data.media.currentIndex
                 });
+                */
+
             },
 
             isElementInViewport(el) {
@@ -1329,14 +1334,14 @@ const App = (function () {
         // ------------------------------------------------------------------------
         Quiz: {
             render(docId, sectionIdx, activityType) {
-                // // console.log('UI.Quiz.render called with:', { docId, sectionIdx, activityType });
+                // console.log('UI.Quiz.render called with:', { docId, sectionIdx, activityType });
                 const container = UI.getContainer();
                 if (!container) return;
 
                 container.innerHTML = '<div class="loading-spinner"></div>';
 
                 const items = this.getQuizItems(docId, sectionIdx, activityType);
-                // // console.log('Quiz items found:', items.length);
+                // console.log('Quiz items found:', items.length);
 
                 if (items.length === 0) {
                     container.innerHTML = `
@@ -1565,7 +1570,7 @@ const App = (function () {
         // ------------------------------------------------------------------------
         Flashcard: {
             render(docId, sectionIdx, type) {
-                // // console.log('UI.Flashcard.render called with:', { docId, sectionIdx, type });
+                // console.log('UI.Flashcard.render called with:', { docId, sectionIdx, type });
                 const container = UI.getContainer();
                 if (!container) return;
 
