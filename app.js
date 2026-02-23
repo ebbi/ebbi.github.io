@@ -12,7 +12,7 @@ const App = (function () {
         data: {
             lang: localStorage.getItem('localStorageLang') || 'en',
             theme: localStorage.getItem('localStorageTheme') || 'light',
-            font: localStorage.getItem('localStorageFont') || 'font-serif',
+            font: localStorage.getItem('localStorageFont') || 'font-serif', // Changed from 'font-serif' to 'font-serif' (Noto Serif Thai)
             translations: {},
             manifest: null,
             currentDocument: null,
@@ -429,15 +429,22 @@ const App = (function () {
             constructor(data, vocabulary, currentLang) {
                 this.type = 'paragraph';
                 this.heading = data.heading?.[currentLang] || data.heading?.en;
-                this.grammar = data.grammar; // Store the grammar object
+                this.grammar = data.grammar;
                 this.activity = data.activity;
 
-                this.sentences = (data.sentences || []).map(s => ({
-                    source: s.source,
-                    translations: s.translations || {},
-                    grammar: s.grammar,
-                    words: vocabulary.resolveWordIds(s.wordIds || [])
-                }));
+                this.sentences = (data.sentences || []).map(s => {
+                    // Debug: log the wordIds being resolved
+                    console.log(`Resolving wordIds for sentence "${s.source}":`, s.wordIds);
+                    const words = vocabulary.resolveWordIds(s.wordIds || []);
+                    console.log(`Resolved words:`, words.map(w => w.word));
+
+                    return {
+                        source: s.source,
+                        translations: s.translations || {},
+                        grammar: s.grammar,
+                        words: words
+                    };
+                });
             }
         }
     };
@@ -523,10 +530,17 @@ const App = (function () {
                 return State.data.manifest;
             },
 
+            // In app.js, modify the DataService.loadDocument method:
+
             async loadDocument(documentId) {
                 const filePath = this.findDocumentPath(documentId);
-                const response = await fetch(filePath);
+                // Add cache busting parameter
+                const response = await fetch(filePath + '?t=' + Date.now());
                 const data = await response.json();
+
+                // Debug: log all vocabulary entries before creating the document
+                console.log('Vocabulary from JSON:', Object.keys(data.vocabulary || {}));
+
                 State.data.currentDocument = new Models.Document(data, State.data.lang);
                 EventBus.emit('document:loaded', State.data.currentDocument);
                 return State.data.currentDocument;
@@ -1262,61 +1276,78 @@ const App = (function () {
             renderParagraph(paragraph, sectionIdx, blockIdx) {
                 return paragraph.sentences.map((sentence, sentIdx) => {
                     const uid = `s-${sectionIdx}-${blockIdx}-${sentIdx}`;
+
+                    // Debug: log the words being passed
+                    console.log(`Sentence ${sentIdx}: "${sentence.source}" has words:`,
+                        sentence.words.map(w => w.word));
+
                     let html = '<div class="sentence-group"><div class="stack-column">';
 
                     html += `
-                        <div class="source-wrapper">
-                            ${sentence.grammar ? `
-                                <button class="grammar-icon-btn" onclick="App.showGrammarSheet('${uid}')">
-                                    <span class="material-icons">menu_book</span>
-                                </button>
-                            ` : ''}
-                            <div class="stack-item source audio-element"
-                                 lang="th" dir="ltr"
-                                 data-text="${UI.escapeHtml(sentence.source)}"
-                                 data-lang="th"
-                                 data-uid="${uid}"
-                                 onclick="App.media.play(this)">
-                                ${UI.Document.hydrateSource(sentence.source, sentence.words, uid)}
-                            </div>
-                        </div>
-                    `;
+            <div class="source-wrapper">
+                ${sentence.grammar ? `
+                    <button class="grammar-icon-btn" onclick="App.showGrammarSheet('${uid}')">
+                        <span class="material-icons">menu_book</span>
+                    </button>
+                ` : ''}
+                <div class="stack-item source audio-element"
+                     lang="th" dir="ltr"
+                     data-text="${UI.escapeHtml(sentence.source)}"
+                     data-lang="th"
+                     data-uid="${uid}"
+                     onclick="App.media.play(this)">
+                    ${UI.Document.hydrateSource(sentence.source, sentence.words, uid)}
+                </div>
+            </div>
+        `;
 
+                    // Add word breakdown blocks
                     if (State.data.media.languageSettings.th?.show && sentence.words.length) {
                         html += '<div class="sent-word-block">';
                         sentence.words.forEach((word, wordIdx) => {
+                            // Create a unique ID for the breakdown item
+                            const breakdownId = `${uid}-card-${wordIdx}`;
+                            const sourceWordId = `source-${uid}-w-${wordIdx}`;
+
                             html += `
-                                <div id="${uid}-card-${wordIdx}" class="sent-word-item audio-element"
-                                     data-text="${UI.escapeHtml(word.word)}"
-                                     data-lang="th"
-                                     data-link="source-${uid}-w-${wordIdx}"
-                                     onclick="App.media.play(this)">
-                                    <div class="sent-word-source">${UI.escapeHtml(word.word)}</div>
-                                    ${Object.entries(State.data.media.languageSettings)
+                    <div id="${breakdownId}" class="sent-word-item audio-element"
+                         data-text="${UI.escapeHtml(word.word)}"
+                         data-lang="th"
+                         data-link="${sourceWordId}"
+                         onclick="App.media.play(this)">
+                        <div class="sent-word-source">${UI.escapeHtml(word.word)}</div>
+                        ${Object.entries(State.data.media.languageSettings)
                                     .filter(([code]) => code !== 'th')
                                     .map(([code, config]) => config.show && word.translations[code] ? `
-                                            <div class="sent-word-trans lang-${code}" lang="${code}" dir="${code === 'fa' ? 'rtl' : 'ltr'}">
-                                                ${UI.escapeHtml(word.translations[code])}
-                                            </div>
-                                        ` : '').join('')}
+                                <div class="sent-word-trans lang-${code} audio-element"
+                                     lang="${code}" dir="${code === 'fa' ? 'rtl' : 'ltr'}"
+                                     data-text="${UI.escapeHtml(word.translations[code])}"
+                                     data-lang="${code}"
+                                     data-link="${sourceWordId}"
+                                     onclick="App.media.play(this); event.stopPropagation();">
+                                    ${UI.escapeHtml(word.translations[code])}
                                 </div>
-                            `;
+                            ` : '').join('')}
+                    </div>
+                `;
                         });
                         html += '</div>';
                     }
 
+                    // Add translations
                     Object.entries(State.data.media.languageSettings).forEach(([code, config]) => {
                         if (code !== 'th' && config.show && sentence.translations[code]) {
                             const dir = code === 'fa' ? 'rtl' : 'ltr';
                             html += `
-                                <div class="stack-item trans lang-${code} audio-element"
-                                     lang="${code}" dir="${dir}"
-                                     data-text="${UI.escapeHtml(sentence.translations[code])}"
-                                     data-lang="${code}"
-                                     onclick="App.media.play(this)">
-                                    ${UI.Document.renderTranslationSpan(sentence.translations[code], code, `${uid}-trans-${code}`)}
-                                </div>
-                            `;
+                    <div class="stack-item trans lang-${code} audio-element"
+                         lang="${code}" dir="${dir}"
+                         data-text="${UI.escapeHtml(sentence.translations[code])}"
+                         data-lang="${code}"
+                         data-uid="${uid}-trans-${code}"
+                         onclick="App.media.play(this)">
+                        ${UI.Document.renderTranslationSpan(sentence.translations[code], code, `${uid}-trans-${code}`)}
+                    </div>
+                `;
                         }
                     });
 
@@ -1330,26 +1361,114 @@ const App = (function () {
 
                 let html = '';
                 let cursor = 0;
+                let wordIndex = 0;
 
-                words.forEach((word, i) => {
-                    const start = text.indexOf(word.word, cursor);
-                    if (start === -1) return;
+                while (cursor < text.length && wordIndex < words.length) {
+                    const currentWord = words[wordIndex];
+                    const wordText = currentWord.word;
 
-                    if (start > cursor) {
-                        html += UI.escapeHtml(text.slice(cursor, start));
+                    // Check if the current word matches at the current cursor position
+                    if (text.startsWith(wordText, cursor)) {
+                        // Found a match - add it as a span with bidirectional links
+                        const sourceWordId = `source-${uid}-w-${wordIndex}`;
+                        const breakdownId = `${uid}-card-${wordIndex}`;
+
+                        // FIX: Escape the word text content
+                        html += `<span id="${sourceWordId}" 
+                           class="word-span matched-word"
+                           data-link="${breakdownId}"  
+                           lang="th" dir="ltr">${UI.escapeHtml(wordText)}</span>`;
+                        cursor += wordText.length;
+                        wordIndex++;
+                    } else {
+                        // For Thai text, we need to be more careful - only add single characters
+                        // when we're not at a word match to avoid breaking character clusters
+                        const char = text[cursor];
+
+                        // Check if this character might be part of a Thai character cluster
+                        if (this.isThaiCompositeChar(text, cursor)) {
+                            // Get the full character cluster (consonant + vowel/tone marks)
+                            const cluster = this.getThaiCharCluster(text, cursor);
+                            html += `<span class="unmatched-text">${UI.escapeHtml(cluster)}</span>`;
+                            cursor += cluster.length;
+                        } else {
+                            // Add single character as unmatched text
+                            html += `<span class="unmatched-text">${UI.escapeHtml(char)}</span>`;
+                            cursor++;
+                        }
                     }
+                }
 
-                    html += `<span id="source-${uid}-w-${i}" class="word-span"
-                                   data-link="${uid}-card-${i}"
-                                   lang="th" dir="ltr">${UI.escapeHtml(word.word)}</span>`;
-                    cursor = start + word.word.length;
-                });
-
+                // Add any remaining text after the last matched word
                 if (cursor < text.length) {
-                    html += UI.escapeHtml(text.slice(cursor));
+                    const remainingText = text.slice(cursor);
+                    html += `<span class="unmatched-text">${UI.escapeHtml(remainingText)}</span>`;
+                }
+
+                // Log if we didn't use all words
+                if (wordIndex < words.length) {
+                    console.warn(
+                        `Not all words were matched in sentence "${text}":\n` +
+                        `Used ${wordIndex} of ${words.length} words\n` +
+                        `Remaining words: ${words.slice(wordIndex).map(w => w.word).join(', ')}`
+                    );
                 }
 
                 return html;
+            },
+
+            // Helper method to check if a character is part of a Thai composite character
+            isThaiCompositeChar(text, index) {
+                if (index >= text.length) return false;
+
+                const char = text[index];
+                const charCode = char.charCodeAt(0);
+
+                // Thai consonants range (ก-ฮ)
+                if (charCode >= 0x0E01 && charCode <= 0x0E2E) return true;
+
+                // Thai vowels that appear above/below (สระอา, สระอี, etc.)
+                if (charCode >= 0x0E30 && charCode <= 0x0E3A) return true;
+
+                // Thai tone marks (ไม้เอก, ไม้โท, ไม้ตรี, ไม้จัตวา)
+                if (charCode >= 0x0E47 && charCode <= 0x0E4E) return true;
+
+                // Thai vowel signs that appear above (สระอิ, สระอี, สระอึ, สระอื)
+                if (charCode === 0x0E34 || charCode === 0x0E35 ||
+                    charCode === 0x0E36 || charCode === 0x0E37) return true;
+
+                return false;
+            },
+
+            // Helper method to get a complete Thai character cluster
+            getThaiCharCluster(text, startIndex) {
+                if (startIndex >= text.length) return '';
+
+                let cluster = text[startIndex];
+                let index = startIndex + 1;
+
+                // Thai combining characters (vowels and tone marks that appear above/below)
+                while (index < text.length) {
+                    const char = text[index];
+                    const charCode = char.charCodeAt(0);
+
+                    // Check if this is a combining character (vowel or tone mark)
+                    const isCombining = (
+                        (charCode >= 0x0E30 && charCode <= 0x0E3A) || // vowels
+                        (charCode >= 0x0E47 && charCode <= 0x0E4E) || // tone marks
+                        charCode === 0x0E34 || charCode === 0x0E35 ||  // vowel signs
+                        charCode === 0x0E36 || charCode === 0x0E37
+                    );
+
+                    if (isCombining) {
+                        cluster += char;
+                        index++;
+                    } else {
+                        break;
+                    }
+                }
+
+                return cluster;
             },
 
             renderTranslationSpan(text, lang, uid) {
@@ -2103,13 +2222,55 @@ const App = (function () {
 
                         <div class="help-note">
                             <span class="material-icons">info</span>
-                            <p>${t('voice_note', 'Note: Voice quality depends on your device\'s text-to-speech engine. For best results, install Thai voice data in your device settings.')}</p>
+                            <p>${t('voice_note', 'Note: Voice quality depends on your device\'s text-to-speech engine. For best results, install Thai and English voice data in your device settings. See the Device-Specific Setup below for instructions.')}</p>
                         </div>
 
                         <button class="btn-activity" onclick="App.testSpeech()">
                             <span class="material-icons">volume_up</span>
                             ${t('test_speech', 'Test Thai Speech')}
                         </button>
+                    </div>
+                </details>
+
+                <!-- Device-Specific Setup -->
+                <details class="help-details">
+                    <summary>
+                        <span class="material-icons">phonelink_setup</span>
+                        ${t('device_setup', 'Device-Specific Setup')}
+                    </summary>
+                    <div class="help-content">
+
+                        <h4>${t('android_title', 'Android')}</h4>
+                        <ol>
+                            <li>${t('android_1', 'Go to Settings > Language & Input > Text-to-Speech output (or in Settings, search for \"Text to speech\")')}</li>
+                            <li>${t('android_2', 'Select Google Text-to-Speech as preferred engine')}</li>
+                            <li>${t('android_3', 'Click settings icon next to Google Text-to-Speech')}</li>
+                            <li>${t('android_4', 'Install Thai and English voice data')}</li>
+                        </ol>
+
+                        <h4>${t('ios_title', 'iOS (iPhone/iPad)')}</h4>
+                        <ol>
+                            <li>${t('ios_1', 'Go to Settings > Accessibility > Spoken Content')}</li>
+                            <li>${t('ios_2', 'Turn on "Speak Selection" and "Speak Screen"')}</li>
+                            <li>${t('ios_3', 'Go to Settings > Accessibility > Spoken Content > Voices')}</li>
+                            <li>${t('ios_4', 'Download Thai voice (under "Thai")')}</li>
+                        </ol>
+
+                        <h4>${t('macos_title', 'macOS')}</h4>
+                        <ol>
+                            <li>${t('macos_1', 'Go to System Preferences > Accessibility > Spoken Content')}</li>
+                            <li>${t('macos_2', 'Check "Speak selected text when key is pressed"')}</li>
+                            <li>${t('macos_3', 'Click "System Voice" dropdown and choose "Customize"')}</li>
+                            <li>${t('macos_4', 'Select and download Thai voice')}</li>
+                        </ol>
+
+                        <h4>${t('windows_title', 'Windows')}</h4>
+                        <ol>
+                            <li>${t('windows_1', 'Go to Settings > Time & Language > Language')}</li>
+                            <li>${t('windows_2', 'Add Thai language pack')}</li>
+                            <li>${t('windows_3', 'Go to Settings > Time & Language > Speech')}</li>
+                            <li>${t('windows_4', 'Select Thai as speech language')}</li>
+                        </ol>
                     </div>
                 </details>
 
@@ -2473,48 +2634,6 @@ const App = (function () {
                                 <span>${t('report_desc', 'Tell your instructor about any bugs you find!')}</span>
                             </li>
                         </ul>
-                    </div>
-                </details>
-
-                <!-- Device-Specific Setup -->
-                <details class="help-details">
-                    <summary>
-                        <span class="material-icons">phonelink_setup</span>
-                        ${t('device_setup', 'Device-Specific Setup')}
-                    </summary>
-                    <div class="help-content">
-                        <h4>${t('android_title', 'Android')}</h4>
-                        <ol>
-                            <li>${t('android_1', 'Install Google Text-to-Speech from Play Store')}</li>
-                            <li>${t('android_2', 'Go to Settings > Language & Input > Text-to-Speech output')}</li>
-                            <li>${t('android_3', 'Select Google Text-to-Speech as preferred engine')}</li>
-                            <li>${t('android_4', 'Click settings icon next to Google Text-to-Speech')}</li>
-                            <li>${t('android_5', 'Install Thai voice data')}</li>
-                        </ol>
-
-                        <h4>${t('ios_title', 'iOS (iPhone/iPad)')}</h4>
-                        <ol>
-                            <li>${t('ios_1', 'Go to Settings > Accessibility > Spoken Content')}</li>
-                            <li>${t('ios_2', 'Turn on "Speak Selection" and "Speak Screen"')}</li>
-                            <li>${t('ios_3', 'Go to Settings > Accessibility > Spoken Content > Voices')}</li>
-                            <li>${t('ios_4', 'Download Thai voice (under "Thai")')}</li>
-                        </ol>
-
-                        <h4>${t('macos_title', 'macOS')}</h4>
-                        <ol>
-                            <li>${t('macos_1', 'Go to System Preferences > Accessibility > Spoken Content')}</li>
-                            <li>${t('macos_2', 'Check "Speak selected text when key is pressed"')}</li>
-                            <li>${t('macos_3', 'Click "System Voice" dropdown and choose "Customize"')}</li>
-                            <li>${t('macos_4', 'Select and download Thai voice')}</li>
-                        </ol>
-
-                        <h4>${t('windows_title', 'Windows')}</h4>
-                        <ol>
-                            <li>${t('windows_1', 'Go to Settings > Time & Language > Language')}</li>
-                            <li>${t('windows_2', 'Add Thai language pack')}</li>
-                            <li>${t('windows_3', 'Go to Settings > Time & Language > Speech')}</li>
-                            <li>${t('windows_4', 'Select Thai as speech language')}</li>
-                        </ol>
                     </div>
                 </details>
 
@@ -3678,11 +3797,12 @@ const App = (function () {
                 html += '</div>';
                 anchor.innerHTML = html;
             } else {
+                // Font options with 'font-serif' (Noto Serif Thai) as the first/default option
                 options = {
-                    'font-standard': t('font_standard', 'Standard (Sans)'),
-                    'font-serif': t('font_serif', 'Classic (Serif)'),
-                    'font-thai-modern': t('font_thai', 'Modern Thai (Loopless)'),
-                    'font-fa-vazir': t('font_farsi', 'Farsi Script (Vazir)')
+                    'font-serif': t('font_serif', 'Classic Serif (Noto Serif Thai)'),
+                    'font-standard': t('font_standard', 'Standard Sans (Noto Sans Thai)'),
+                    'font-thai-modern': t('font_thai', 'Modern Thai (Kanit)'),
+                    'font-fa-vazir': t('font_farsi', 'Farsi Script (Vazirmatn)')
                 };
 
                 let html = '<div class="overlay-menu card">';

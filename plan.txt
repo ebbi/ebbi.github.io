@@ -1,30 +1,68 @@
 
-The bug that took 2 days to resolve has unfortunately reappeared !!!
+Same bug.
+Warning logs have disappeared. Please allow warning logs.  
 
-The Play button highlights and speaks the text.  
+Testing:
+http://127.0.0.1:8080/#doc/thematic-restaurant
 
-It took 2 full days to stop the speech when the text was not visible due to user interaction. 
+The data is:
+            {
+              "source": "สองคนครับ",
+              "wordIds": [
+                "สอง",
+                "คน",
+                "ครับ"
+              ],
+              "translations": {
+                "en": "Two people",
+                "fa": "دو نفر"
+              }
+            },
 
-Unfortunately, the bug has returned and speech continues after navigating to another page!
+But the output is incorrect, and only renders the last word! 
+
+สองคนครับ
+ครับ
+เชิญทางนี้ค่ะ
+ค่ะ
 
 
+Also admin.html does not show any errors.
 
+But the App has the the following logs:
 
+Word mismatch in sentence "สองคนครับ":
+Expected "ครับ" at position 0 but found "ส"
+This indicates incorrect wordIds in the data file. app.js:1352:33
+Word mismatch in sentence "สองคนครับ":
+Expected "ครับ" at position 1 but found "อ"
+This indicates incorrect wordIds in the data file. app.js:1352:33
+Word mismatch in sentence "สองคนครับ":
+Expected "ครับ" at position 2 but found "ง"
+This indicates incorrect wordIds in the data file. app.js:1352:33
 
+...  more on line 1352
+.source-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    width: 100%;
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+<div class="sentence-group"><div class="stack-column">
+                        <div class="source-wrapper">
+                            
+                            <div class="stack-item source audio-element" lang="th" dir="ltr" data-text="สองคนครับ" data-lang="th" data-uid="s-1-0-2" onclick="App.media.play(this)">
+                                <span class="unmatched-text">ส</span><span class="unmatched-text">อ</span><span class="unmatched-text">ง</span><span class="unmatched-text">ค</span><span class="unmatched-text">น</span><span id="source-s-1-0-2-w-0" class="word-span matched-word" data-link="s-1-0-2-card-0" lang="th" dir="ltr">ครับ</span>
+                            </div>
+                        </div>
+                    <div class="sent-word-block">
+                                <div id="s-1-0-2-card-0" class="sent-word-item audio-element" data-text="ครับ" data-lang="th" data-link="source-s-1-0-2-w-0" onclick="App.media.play(this)">
+                                    <div class="sent-word-source">ครับ</div>
+                                    
+                                </div>
+                            </div></div></div>
 
 
 
