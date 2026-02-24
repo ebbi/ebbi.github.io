@@ -12,19 +12,158 @@
         "newWords": 10,
         "reviewWords": 20,
         "sentenceCount": 22,
-        "estimatedTime": 25
+        "estimatedTime": 25,
+        "authors": [ ],
+        "reviewers": [ ],
+        "prerequisites": [ ],
+        "tags": [ ],
+        "updated": "2026-02-24T14:50:30.460Z"
     },
     "vocabulary": {
-        "ไหม": { "translations": { "en": "question particle", "fa": "ذره سوال" } },
-        "กิน": { "translations": { "en": "eat", "fa": "خوردن" } },
-        "ดื่ม": { "translations": { "en": "drink", "fa": "نوشیدن" } },
-        "ชอบ": { "translations": { "en": "like", "fa": "دوست داشتن" } },
-        "อยาก": { "translations": { "en": "want", "fa": "خواستن" } },
-        "ได้": { "translations": { "en": "can", "fa": "توانستن" } },
-        "อร่อย": { "translations": { "en": "delicious", "fa": "خوشمزه" } },
-        "สวย": { "translations": { "en": "beautiful", "fa": "زیبا" } },
-        "แพง": { "translations": { "en": "expensive", "fa": "گران" } },
-        "ถูก": { "translations": { "en": "cheap", "fa": "ارزان" } }
+        "ไหม": {
+            "translations": {
+                "en": "question particle",
+                "fa": "ذره سوال"
+            }
+        },
+        "กิน": {
+            "translations": {
+                "en": "eat",
+                "fa": "خوردن"
+            }
+        },
+        "ดื่ม": {
+            "translations": {
+                "en": "drink",
+                "fa": "نوشیدن"
+            }
+        },
+        "ชอบ": {
+            "translations": {
+                "en": "like",
+                "fa": "دوست داشتن"
+            }
+        },
+        "อยาก": {
+            "translations": {
+                "en": "want",
+                "fa": "خواستن"
+            }
+        },
+        "ได้": {
+            "translations": {
+                "en": "can",
+                "fa": "توانستن"
+            }
+        },
+        "อร่อย": {
+            "translations": {
+                "en": "delicious",
+                "fa": "خوشمزه"
+            }
+        },
+        "สวย": {
+            "translations": {
+                "en": "beautiful",
+                "fa": "زیبا"
+            }
+        },
+        "แพง": {
+            "translations": {
+                "en": "expensive",
+                "fa": "گران"
+            }
+        },
+        "ถูก": {
+            "translations": {
+                "en": "cheap",
+                "fa": "ارزان"
+            }
+        },
+        "คุณ": {
+            "translations": {
+                "en": "You",
+                "fa": "شما:"
+            }
+        },
+        "ข้าว": {
+            "translations": {
+                "en": "Rice",
+                "fa": "برنج"
+            }
+        },
+        "เขา": {
+            "translations": {
+                "en": "He, She",
+                "fa": "او"
+            }
+        },
+        "กาแฟ": {
+            "translations": {
+                "en": "Coffee",
+                "fa": "قهوه"
+            }
+        },
+        "ชา": {
+            "translations": {
+                "en": "Tea",
+                "fa": "چای"
+            }
+        },
+        "อาหาร": {
+            "translations": {
+                "en": "Food",
+                "fa": "غذا"
+            }
+        },
+        "กระเป๋า": {
+            "translations": {
+                "en": "bags ",
+                "fa": "کیسه"
+            }
+        },
+        "ใบนี้": {
+            "translations": {
+                "en": "This one.",
+                "fa": "این برگ"
+            }
+        },
+        "ไป": {
+            "translations": {
+                "en": "I'm going",
+                "fa": "& برو‌"
+            }
+        },
+        "ตลาด": {
+            "translations": {
+                "en": "Market Name",
+                "fa": "بازار"
+            }
+        },
+        "ครับ": {
+            "translations": {
+                "en": "OK",
+                "fa": "بله"
+            }
+        },
+        "พูด": {
+            "translations": {
+                "en": "Speech",
+                "fa": "& جستجوSpeak custom text"
+            }
+        },
+        "ภาษาไทย": {
+            "translations": {
+                "en": "Thai",
+                "fa": "زبان تایلندی"
+            }
+        },
+        "ไม่": {
+            "translations": {
+                "en": "No",
+                "fa": "خیر"
+            }
+        }
     },
     "sections": [
         {
@@ -50,10 +189,22 @@
                             "fa": "برای ساختن سوال بله/خیر در تایلندی، 'ไหม' را به انتهای جمله اضافه کنید. ترتیب کلمات ثابت می‌ماند."
                         },
                         "examples": [
-                            { "source": "คุณกินข้าว", "translation": "You eat rice" },
-                            { "source": "คุณกินข้าวไหม", "translation": "Do you eat rice?" },
-                            { "source": "เขาชอบกาแฟ", "translation": "He likes coffee" },
-                            { "source": "เขาชอบกาแฟไหม", "translation": "Does he like coffee?" }
+                            {
+                                "source": "คุณกินข้าว",
+                                "translation": "You eat rice"
+                            },
+                            {
+                                "source": "คุณกินข้าวไหม",
+                                "translation": "Do you eat rice?"
+                            },
+                            {
+                                "source": "เขาชอบกาแฟ",
+                                "translation": "He likes coffee"
+                            },
+                            {
+                                "source": "เขาชอบกาแฟไหม",
+                                "translation": "Does he like coffee?"
+                            }
                         ]
                     },
                     "sentences": [ ]
@@ -68,7 +219,12 @@
                     "sentences": [
                         {
                             "source": "คุณกินข้าวไหม",
-                            "wordIds": [ "คุณ", "กิน", "ข้าว", "ไหม" ],
+                            "wordIds": [
+                                "คุณ",
+                                "กิน",
+                                "ข้าว",
+                                "ไหม"
+                            ],
                             "translations": {
                                 "en": "Do you eat rice?",
                                 "fa": "آیا شما برنج می‌خورید؟"
@@ -76,7 +232,12 @@
                         },
                         {
                             "source": "เขาดื่มกาแฟไหม",
-                            "wordIds": [ "เขา", "ดื่ม", "กาแฟ", "ไหม" ],
+                            "wordIds": [
+                                "เขา",
+                                "ดื่ม",
+                                "กาแฟ",
+                                "ไหม"
+                            ],
                             "translations": {
                                 "en": "Does he drink coffee?",
                                 "fa": "آیا او قهوه می‌نوشد؟"
@@ -84,7 +245,12 @@
                         },
                         {
                             "source": "คุณชอบชาไหม",
-                            "wordIds": [ "คุณ", "ชอบ", "ชา", "ไหม" ],
+                            "wordIds": [
+                                "คุณ",
+                                "ชอบ",
+                                "ชา",
+                                "ไหม"
+                            ],
                             "translations": {
                                 "en": "Do you like tea?",
                                 "fa": "آیا شما چای دوست دارید؟"
@@ -92,7 +258,11 @@
                         },
                         {
                             "source": "อาหารอร่อยไหม",
-                            "wordIds": [ "อาหาร", "อร่อย", "ไหม" ],
+                            "wordIds": [
+                                "อาหาร",
+                                "อร่อย",
+                                "ไหม"
+                            ],
                             "translations": {
                                 "en": "Is the food delicious?",
                                 "fa": "آیا غذا خوشمزه است؟"
@@ -100,7 +270,12 @@
                         },
                         {
                             "source": "กระเป๋าใบนี้แพงไหม",
-                            "wordIds": [ "กระเป๋า", "ใบนี้", "แพง", "ไหม" ],
+                            "wordIds": [
+                                "กระเป๋า",
+                                "ใบนี้",
+                                "แพง",
+                                "ไหม"
+                            ],
                             "translations": {
                                 "en": "Is this bag expensive?",
                                 "fa": "آیا این کیف گران است؟"
@@ -123,7 +298,13 @@
                     "sentences": [
                         {
                             "source": "คุณอยากไปตลาดไหม",
-                            "wordIds": [ "คุณ", "อยาก", "ไป", "ตลาด", "ไหม" ],
+                            "wordIds": [
+                                "คุณ",
+                                "อยาก",
+                                "ไป",
+                                "ตลาด",
+                                "ไหม"
+                            ],
                             "translations": {
                                 "en": "Do you want to go to the market?",
                                 "fa": "آیا می‌خواهید به بازار بروید؟"
@@ -131,7 +312,11 @@
                         },
                         {
                             "source": "อยากไปครับ",
-                            "wordIds": [ "อยาก", "ไป", "ครับ" ],
+                            "wordIds": [
+                                "อยาก",
+                                "ไป",
+                                "ครับ"
+                            ],
                             "translations": {
                                 "en": "Yes, I want to go",
                                 "fa": "بله، می‌خواهم بروم"
@@ -139,7 +324,13 @@
                         },
                         {
                             "source": "เขาพูดภาษาไทยได้ไหม",
-                            "wordIds": [ "เขา", "พูด", "ภาษาไทย", "ได้", "ไหม" ],
+                            "wordIds": [
+                                "เขา",
+                                "พูด",
+                                "ภาษาไทย",
+                                "ได้",
+                                "ไหม"
+                            ],
                             "translations": {
                                 "en": "Can he speak Thai?",
                                 "fa": "آیا او می‌تواند تایلندی صحبت کند؟"
@@ -147,7 +338,10 @@
                         },
                         {
                             "source": "ได้ครับ",
-                            "wordIds": [ "ได้", "ครับ" ],
+                            "wordIds": [
+                                "ได้",
+                                "ครับ"
+                            ],
                             "translations": {
                                 "en": "Yes, he can",
                                 "fa": "بله، می‌تواند"
@@ -155,7 +349,10 @@
                         },
                         {
                             "source": "ไม่ครับ",
-                            "wordIds": [ "ไม่", "ครับ" ],
+                            "wordIds": [
+                                "ไม่",
+                                "ครับ"
+                            ],
                             "translations": {
                                 "en": "No, he can't",
                                 "fa": "نه، نمی‌تواند"

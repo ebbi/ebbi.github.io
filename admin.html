@@ -78,7 +78,8 @@
 
         /* Thai text in edit fields */
         .edit-field input[lang="th"],
-        .edit-field textarea[lang="th"] {
+        .edit-field textarea[lang="th"],
+        .edit-field textarea {
             font-size: 1.4rem;
             font-family: 'Noto Serif Thai', serif;
         }
@@ -2237,7 +2238,7 @@
             <div style="margin: 15px 0; padding: 10px; background: var(--card); border-radius: 4px;">
                 <div><strong>Sentence ${m.sentenceIdx + 1}:</strong></div>
                 <div style="padding: 5px; background: var(--bg); border-radius: 4px; margin: 5px 0;">
-                    <span style="color: var(--primary);">${escapeHtml(m.sentence)}</span>
+                    <span style="  color: var(--primary);">${escapeHtml(m.sentence)}</span>
                 </div>
                 <div><strong>Continuous:</strong> <span>${escapeHtml(m.continuous)}</span></div>
                 <div style="margin-top: 8px;">
@@ -2424,14 +2425,14 @@
                 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 10px;">
                     <div>
                         <div style="font-weight: 600; margin-bottom: 5px;">Current Source (no spaces):</div>
-                        <div style="background: var(--bg); padding: 10px; border-radius: 4px; border-left: 3px solid var(--warning);">
+                        <div style="font-size: 1.5rem; background: var(--bg); padding: 10px; border-radius: 4px; border-left: 3px solid var(--warning);">
                             ${escapeHtml(m.source)}
                         </div>
                     </div>
                     <div>
                         <div style="font-weight: 600; margin-bottom: 5px;">Word IDs (${m.wordIds.length} words):</div>
                         <div style="background: var(--bg); padding: 10px; border-radius: 4px; border-left: 3px solid var(--primary);">
-                            ${m.wordIds.map(w => `<span style="color: var(--primary);">${escapeHtml(w)}</span>`).join(' ')}
+                            ${m.wordIds.map(w => `<span style="font-size: 1.25rem; color: var(--primary);">${escapeHtml(w)}</span>`).join(' ')}
                         </div>
                     </div>
                 </div>
@@ -2884,7 +2885,7 @@
                     <div>
                         <div style="font-weight: 600; margin-bottom: 5px;">Word IDs (${m.wordIds.length} words):</div>
                         <div style="font-family: monospace; background: var(--bg); padding: 10px; border-radius: 4px; border-left: 3px solid var(--primary);">
-                            ${m.wordIds.map(w => `<span style="color: var(--primary);">${escapeHtml(w)}</span>`).join(' ')}
+                            ${m.wordIds.map(w => `<span font-size: 1.25rem; style="color: var(--primary);">${escapeHtml(w)}</span>`).join(' ')}
                         </div>
                     </div>
                 </div>

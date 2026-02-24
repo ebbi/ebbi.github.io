@@ -12,98 +12,509 @@
         "wordCount": 30,
         "sentenceCount": 20,
         "estimatedTime": 20,
-        "tags": [ "hair", "beauty", "salon", "personal care" ]
+        "tags": [
+            "hair",
+            "beauty",
+            "salon",
+            "personal care"
+        ],
+        "authors": [ ],
+        "reviewers": [ ],
+        "prerequisites": [ ],
+        "updated": "2026-02-24T15:07:41.606Z"
     },
     "vocabulary": {
         "ร้านทำผม": {
-            "translations": { "en": "hair salon", "fa": "آرایشگاه مو" }
+            "translations": {
+                "en": "hair salon",
+                "fa": "آرایشگاه مو"
+            }
         },
         "ช่าง": {
-            "translations": { "en": "stylist", "fa": "آرایشگر" }
+            "translations": {
+                "en": "stylist",
+                "fa": "آرایشگر"
+            }
         },
         "ตัดผม": {
-            "translations": { "en": "haircut", "fa": "کوتاه کردن مو" }
+            "translations": {
+                "en": "haircut",
+                "fa": "کوتاه کردن مو"
+            }
         },
         "สระ": {
-            "translations": { "en": "wash", "fa": "شستن" }
+            "translations": {
+                "en": "wash",
+                "fa": "شستن"
+            }
         },
         "ไดร์": {
-            "translations": { "en": "blow dry", "fa": "سشوار کردن" }
+            "translations": {
+                "en": "blow dry",
+                "fa": "سشوار کردن"
+            }
         },
         "เล็ม": {
-            "translations": { "en": "trim", "fa": "کوتاه کردن نوک مو" }
+            "translations": {
+                "en": "trim",
+                "fa": "کوتاه کردن نوک مو"
+            }
         },
         "ซอย": {
-            "translations": { "en": "layer", "fa": "لایه لایه کردن" }
+            "translations": {
+                "en": "layer",
+                "fa": "لایه لایه کردن"
+            }
         },
         "ยืด": {
-            "translations": { "en": "straighten", "fa": "صاف کردن" }
+            "translations": {
+                "en": "straighten",
+                "fa": "صاف کردن"
+            }
         },
         "ดัด": {
-            "translations": { "en": "perm/curl", "fa": "فر کردن" }
+            "translations": {
+                "en": "perm/curl",
+                "fa": "فر کردن"
+            }
         },
         "ทำสี": {
-            "translations": { "en": "color/dye", "fa": "رنگ کردن" }
+            "translations": {
+                "en": "color/dye",
+                "fa": "رنگ کردن"
+            }
         },
         "ไฮไลท์": {
-            "translations": { "en": "highlight", "fa": "مش" }
+            "translations": {
+                "en": "highlight",
+                "fa": "مش"
+            }
         },
         "ยาว": {
-            "translations": { "en": "long", "fa": "بلند" }
+            "translations": {
+                "en": "long",
+                "fa": "بلند"
+            }
         },
         "สั้น": {
-            "translations": { "en": "short", "fa": "کوتاه" }
+            "translations": {
+                "en": "short",
+                "fa": "کوتاه"
+            }
         },
         "กลาง": {
-            "translations": { "en": "medium", "fa": "متوسط" }
+            "translations": {
+                "en": "medium",
+                "fa": "متوسط"
+            }
         },
         "หนา": {
-            "translations": { "en": "thick", "fa": "ضخیم" }
+            "translations": {
+                "en": "thick",
+                "fa": "ضخیم"
+            }
         },
         "บาง": {
-            "translations": { "en": "thin", "fa": "نازک" }
+            "translations": {
+                "en": "thin",
+                "fa": "نازک"
+            }
         },
         "ตรง": {
-            "translations": { "en": "straight", "fa": "صاف" }
+            "translations": {
+                "en": "straight",
+                "fa": "صاف"
+            }
         },
         "หยิก": {
-            "translations": { "en": "curly", "fa": "مجعد" }
+            "translations": {
+                "en": "curly",
+                "fa": "مجعد"
+            }
         },
         "ลอน": {
-            "translations": { "en": "wavy", "fa": "موج‌دار" }
+            "translations": {
+                "en": "wavy",
+                "fa": "موج‌دار"
+            }
         },
         "หน้าม้า": {
-            "translations": { "en": "bangs", "fa": "چتری" }
+            "translations": {
+                "en": "bangs",
+                "fa": "چتری"
+            }
         },
         "ข้าง": {
-            "translations": { "en": "side", "fa": "کنار" }
+            "translations": {
+                "en": "side",
+                "fa": "کنار"
+            }
         },
         "หลัง": {
-            "translations": { "en": "back", "fa": "پشت" }
+            "translations": {
+                "en": "back",
+                "fa": "پشت"
+            }
         },
         "บน": {
-            "translations": { "en": "top", "fa": "بالا" }
+            "translations": {
+                "en": "top",
+                "fa": "بالا"
+            }
         },
         "รูปทรง": {
-            "translations": { "en": "style/shape", "fa": "مدل" }
+            "translations": {
+                "en": "style/shape",
+                "fa": "مدل"
+            }
         },
         "แบบ": {
-            "translations": { "en": "style", "fa": "مدل" }
+            "translations": {
+                "en": "style",
+                "fa": "مدل"
+            }
         },
         "ทรง": {
-            "translations": { "en": "style (for men)", "fa": "مدل مردانه" }
+            "translations": {
+                "en": "style (for men)",
+                "fa": "مدل مردانه"
+            }
         },
         "รองทรง": {
-            "translations": { "en": "tapered sides", "fa": "کناره‌های کوتاه" }
+            "translations": {
+                "en": "tapered sides",
+                "fa": "کناره‌های کوتاه"
+            }
         },
         "ทรงสูง": {
-            "translations": { "en": "high fade", "fa": "فید بالا" }
+            "translations": {
+                "en": "high fade",
+                "fa": "فید بالا"
+            }
         },
         "ทรงต่ำ": {
-            "translations": { "en": "low fade", "fa": "فید پایین" }
+            "translations": {
+                "en": "low fade",
+                "fa": "فید پایین"
+            }
         },
         "เกรียน": {
-            "translations": { "en": "very short/buzz cut", "fa": "کوتاه خیلی کوتاه" }
+            "translations": {
+                "en": "very short/buzz cut",
+                "fa": "کوتاه خیلی کوتاه"
+            }
+        },
+        "ประมาณ": {
+            "translations": {
+                "en": "Estimate",
+                "fa": "درباره"
+            }
+        },
+        "สอง": {
+            "translations": {
+                "en": "TWO.",
+                "fa": "دو"
+            }
+        },
+        "ชั่วโมง": {
+            "translations": {
+                "en": "HOURS",
+                "fa": "ساعت"
+            }
+        },
+        "ค่ะ": {
+            "translations": {
+                "en": "Thank you.",
+                "fa": "بله"
+            }
+        },
+        "สองพันห้าร้อย": {
+            "translations": {
+                "en": "Two thousand and five hundred.",
+                "fa": "دو هزار و پانصد"
+            }
+        },
+        "บาท": {
+            "translations": {
+                "en": "Baht",
+                "fa": "بات"
+            }
+        },
+        "รวม": {
+            "translations": {
+                "en": "Total",
+                "fa": "فقط نتایج کل"
+            }
+        },
+        "และ": {
+            "translations": {
+                "en": "and",
+                "fa": "، و"
+            }
+        },
+        "ครับ": {
+            "translations": {
+                "en": "OK",
+                "fa": "بله"
+            }
+        },
+        "นั่ง": {
+            "translations": {
+                "en": "Sitting",
+                "fa": "نشستن"
+            }
+        },
+        "ก่อน": {
+            "translations": {
+                "en": "Prev",
+                "fa": "قبل از"
+            }
+        },
+        "ต้องการ": {
+            "translations": {
+                "en": "Need",
+                "fa": "مورد نیاز"
+            }
+        },
+        "อะไร": {
+            "translations": {
+                "en": "WHAT",
+                "fa": "چه:"
+            }
+        },
+        "คะ": {
+            "translations": {
+                "en": "Ka",
+                "fa": "بله"
+            }
+        },
+        "เดิม": {
+            "translations": {
+                "en": "(Old building)",
+                "fa": "قدیمی"
+            }
+        },
+        "แต่": {
+            "translations": {
+                "en": "But",
+                "fa": "اما"
+            }
+        },
+        "ขึ้น": {
+            "translations": {
+                "en": "Up",
+                "fa": "& بالا‌"
+            }
+        },
+        "หน่อย": {
+            "translations": {
+                "en": "A little bit",
+                "fa": "بیت"
+            }
+        },
+        "ด้าน": {
+            "translations": {
+                "en": "Aspect",
+                "fa": "مات"
+            }
+        },
+        "แค่ไหน": {
+            "translations": {
+                "en": "Just how much.",
+                "fa": "چقدر؟"
+            }
+        },
+        "ด้านบน": {
+            "translations": {
+                "en": "inting up.",
+                "fa": "بالایی"
+            }
+        },
+        "ไว้": {
+            "translations": {
+                "en": "pressed)",
+                "fa": "نگه داشتن"
+            }
+        },
+        "ด้วย": {
+            "translations": {
+                "en": "With",
+                "fa": "با"
+            }
+        },
+        "ไหม": {
+            "translations": {
+                "en": "Silk",
+                "fa": "ابریشم"
+            }
+        },
+        "ๆ": {
+            "translations": {
+                "en": "if",
+                "fa": "و غیره"
+            }
+        },
+        "เสร็จ": {
+            "translations": {
+                "en": "Done",
+                "fa": "پایان"
+            }
+        },
+        "แล้ว": {
+            "translations": {
+                "en": "So ",
+                "fa": "قبلاً"
+            }
+        },
+        "ถูกใจ": {
+            "translations": {
+                "en": "Like",
+                "fa": "مانند"
+            }
+        },
+        "ขอบคุณ": {
+            "translations": {
+                "en": "Thanks!",
+                "fa": "متشکرم"
+            }
+        },
+        "อยาก": {
+            "translations": {
+                "en": "Want",
+                "fa": "می خواهم"
+            }
+        },
+        "เปลี่ยน": {
+            "translations": {
+                "en": "Change",
+                "fa": "نارنجی"
+            }
+        },
+        "ทรงผม": {
+            "translations": {
+                "en": "Hairstyle",
+                "fa": "مدل مو"
+            }
+        },
+        "ไหน": {
+            "translations": {
+                "en": "Plum",
+                "fa": "که"
+            }
+        },
+        "ดี": {
+            "translations": {
+                "en": "Good",
+                "fa": "خوب"
+            }
+        },
+        "เป็น": {
+            "translations": {
+                "en": "is",
+                "fa": "هست"
+            }
+        },
+        "ชั้น": {
+            "translations": {
+                "en": "Class",
+                "fa": "کف"
+            }
+        },
+        "ก็": {
+            "translations": {
+                "en": "Well. ",
+                "fa": "همچنین"
+            }
+        },
+        "ปลายผม": {
+            "translations": {
+                "en": "Hair Tip",
+                "fa": "انتهای مو"
+            }
+        },
+        "อยากได้": {
+            "translations": {
+                "en": "I want it",
+                "fa": "می خواهم داشته باشم"
+            }
+        },
+        "แสก": {
+            "translations": {
+                "en": "Scan",
+                "fa": "فراق"
+            }
+        },
+        "สวย": {
+            "translations": {
+                "en": "Beauty",
+                "fa": "زیبا"
+            }
+        },
+        "มาก": {
+            "translations": {
+                "en": "Many",
+                "fa": "بیشتر"
+            }
+        },
+        "ผม": {
+            "translations": {
+                "en": "Hair",
+                "fa": "من:"
+            }
+        },
+        "สี": {
+            "translations": {
+                "en": "Color",
+                "fa": "& رنگ: ‌"
+            }
+        },
+        "น้ำตาล": {
+            "translations": {
+                "en": "sugar.\r",
+                "fa": "قهوه‌ای"
+            }
+        },
+        "ประกาย": {
+            "translations": {
+                "en": "Sparkle",
+                "fa": "درخشش"
+            }
+        },
+        "แดง": {
+            "translations": {
+                "en": "Red",
+                "fa": "قرمز"
+            }
+        },
+        "ทำ": {
+            "translations": {
+                "en": "Call thunder strikes dealing TAL({0}~{1}) [thunder] m.dmg to LVL({2}~{3}) targets.",
+                "fa": "انجام دادن"
+            }
+        },
+        "ใช้เวลา": {
+            "translations": {
+                "en": "Take time",
+                "fa": "زمان می‌برد."
+            }
+        },
+        "นาน": {
+            "translations": {
+                "en": "For",
+                "fa": "طولانی"
+            }
+        },
+        "ราคา": {
+            "translations": {
+                "en": "Price",
+                "fa": "قیمت"
+            }
+        },
+        "เท่าไหร่": {
+            "translations": {
+                "en": "How much is it?",
+                "fa": "چقدر"
+            }
         }
     },
     "activity": {
@@ -124,23 +535,42 @@
                     "sentences": [
                         {
                             "source": "ตัดผมครับ",
-                            "wordIds": [ "ตัดผม", "ครับ" ],
+                            "wordIds": [
+                                "ตัดผม",
+                                "ครับ"
+                            ],
                             "translations": {
                                 "en": "Haircut please",
                                 "fa": "کوتاهی مو لطفاً"
                             }
                         },
                         {
-                            "source": "นั่งก่อนค่ะ ต้องการทรงอะไรคะ",
-                            "wordIds": [ "นั่ง", "ก่อน", "ค่ะ", "ต้องการ", "ทรง", "อะไร", "คะ" ],
+                            "source": "นั่งก่อนค่ะต้องการทรงอะไรคะ",
+                            "wordIds": [
+                                "นั่ง",
+                                "ก่อน",
+                                "ค่ะ",
+                                "ต้องการ",
+                                "ทรง",
+                                "อะไร",
+                                "คะ"
+                            ],
                             "translations": {
                                 "en": "Have a seat. What style would you like?",
                                 "fa": "بفرمایید بشینید. چه مدلی می‌خواهید؟"
                             }
                         },
                         {
-                            "source": "ทรงเดิมครับ แต่สั้นขึ้นหน่อย",
-                            "wordIds": [ "ทรง", "เดิม", "ครับ", "แต่", "สั้น", "ขึ้น", "หน่อย" ],
+                            "source": "ทรงเดิมครับแต่สั้นขึ้นหน่อย",
+                            "wordIds": [
+                                "ทรง",
+                                "เดิม",
+                                "ครับ",
+                                "แต่",
+                                "สั้น",
+                                "ขึ้น",
+                                "หน่อย"
+                            ],
                             "translations": {
                                 "en": "Same style, but a bit shorter",
                                 "fa": "همان مدل، ولی کمی کوتاه‌تر"
@@ -148,15 +578,28 @@
                         },
                         {
                             "source": "ด้านข้างสั้นแค่ไหนคะ",
-                            "wordIds": [ "ด้าน", "ข้าง", "สั้น", "แค่ไหน", "คะ" ],
+                            "wordIds": [
+                                "ด้าน",
+                                "ข้าง",
+                                "สั้น",
+                                "แค่ไหน",
+                                "คะ"
+                            ],
                             "translations": {
                                 "en": "How short on the sides?",
                                 "fa": "کناره‌ها چقدر کوتاه شوند؟"
                             }
                         },
                         {
-                            "source": "รองทรงครับ ด้านบนไว้ยาวหน่อย",
-                            "wordIds": [ "รองทรง", "ครับ", "ด้านบน", "ไว้", "ยาว", "หน่อย" ],
+                            "source": "รองทรงครับด้านบนไว้ยาวหน่อย",
+                            "wordIds": [
+                                "รองทรง",
+                                "ครับ",
+                                "ด้านบน",
+                                "ไว้",
+                                "ยาว",
+                                "หน่อย"
+                            ],
                             "translations": {
                                 "en": "Tapered sides, leave the top a bit longer",
                                 "fa": "کناره‌ها کوتاه، بالا کمی بلندتر"
@@ -164,31 +607,52 @@
                         },
                         {
                             "source": "ด้านหลังด้วยไหมคะ",
-                            "wordIds": [ "ด้าน", "หลัง", "ด้วย", "ไหม", "คะ" ],
+                            "wordIds": [
+                                "ด้าน",
+                                "หลัง",
+                                "ด้วย",
+                                "ไหม",
+                                "คะ"
+                            ],
                             "translations": {
                                 "en": "The back as well?",
                                 "fa": "پشت هم؟"
                             }
                         },
                         {
-                            "source": "ครับ บางๆหน่อย",
-                            "wordIds": [ "ครับ", "บาง", "ๆ", "หน่อย" ],
+                            "source": "ครับบางๆหน่อย",
+                            "wordIds": [
+                                "ครับ",
+                                "บาง",
+                                "ๆ",
+                                "หน่อย"
+                            ],
                             "translations": {
                                 "en": "Yes, thin it out a bit",
                                 "fa": "بله، کمی نازک کن"
                             }
                         },
                         {
-                            "source": "เสร็จแล้วครับ ถูกใจไหม",
-                            "wordIds": [ "เสร็จ", "แล้ว", "ครับ", "ถูกใจ", "ไหม" ],
+                            "source": "เสร็จแล้วครับถูกใจไหม",
+                            "wordIds": [
+                                "เสร็จ",
+                                "แล้ว",
+                                "ครับ",
+                                "ถูกใจ",
+                                "ไหม"
+                            ],
                             "translations": {
                                 "en": "Finished. Do you like it?",
                                 "fa": "تمام شد. راضی هستید؟"
                             }
                         },
                         {
-                            "source": "ถูกใจครับ ขอบคุณ",
-                            "wordIds": [ "ถูกใจ", "ครับ", "ขอบคุณ" ],
+                            "source": "ถูกใจครับขอบคุณ",
+                            "wordIds": [
+                                "ถูกใจ",
+                                "ครับ",
+                                "ขอบคุณ"
+                            ],
                             "translations": {
                                 "en": "Yes, thank you",
                                 "fa": "بله، متشکرم"
@@ -211,7 +675,12 @@
                     "sentences": [
                         {
                             "source": "อยากเปลี่ยนทรงผมค่ะ",
-                            "wordIds": [ "อยาก", "เปลี่ยน", "ทรงผม", "ค่ะ" ],
+                            "wordIds": [
+                                "อยาก",
+                                "เปลี่ยน",
+                                "ทรงผม",
+                                "ค่ะ"
+                            ],
                             "translations": {
                                 "en": "I want to change my hairstyle",
                                 "fa": "می‌خواهم مدل مویم را عوض کنم"
@@ -219,7 +688,12 @@
                         },
                         {
                             "source": "ทรงไหนดีคะ",
-                            "wordIds": [ "ทรง", "ไหน", "ดี", "คะ" ],
+                            "wordIds": [
+                                "ทรง",
+                                "ไหน",
+                                "ดี",
+                                "คะ"
+                            ],
                             "translations": {
                                 "en": "What style would you like?",
                                 "fa": "چه مدلی می‌خواهید؟"
@@ -227,7 +701,13 @@
                         },
                         {
                             "source": "ซอยเป็นชั้นๆหน่อย",
-                            "wordIds": [ "ซอย", "เป็น", "ชั้น", "ๆ", "หน่อย" ],
+                            "wordIds": [
+                                "ซอย",
+                                "เป็น",
+                                "ชั้น",
+                                "ๆ",
+                                "หน่อย"
+                            ],
                             "translations": {
                                 "en": "Some layers please",
                                 "fa": "کمی لایه لایه کن"
@@ -235,7 +715,13 @@
                         },
                         {
                             "source": "แล้วก็เล็มปลายผมหน่อย",
-                            "wordIds": [ "แล้ว", "ก็", "เล็ม", "ปลายผม", "หน่อย" ],
+                            "wordIds": [
+                                "แล้ว",
+                                "ก็",
+                                "เล็ม",
+                                "ปลายผม",
+                                "หน่อย"
+                            ],
                             "translations": {
                                 "en": "And trim the ends",
                                 "fa": "و نوک موها را کوتاه کن"
@@ -243,7 +729,14 @@
                         },
                         {
                             "source": "ต้องการสระไดร์ด้วยไหมคะ",
-                            "wordIds": [ "ต้องการ", "สระ", "ไดร์", "ด้วย", "ไหม", "คะ" ],
+                            "wordIds": [
+                                "ต้องการ",
+                                "สระ",
+                                "ไดร์",
+                                "ด้วย",
+                                "ไหม",
+                                "คะ"
+                            ],
                             "translations": {
                                 "en": "Would you like a wash and blow dry?",
                                 "fa": "شستشو و سشوار هم می‌خواهید؟"
@@ -251,7 +744,10 @@
                         },
                         {
                             "source": "ด้วยค่ะ",
-                            "wordIds": [ "ด้วย", "ค่ะ" ],
+                            "wordIds": [
+                                "ด้วย",
+                                "ค่ะ"
+                            ],
                             "translations": {
                                 "en": "Yes please",
                                 "fa": "بله لطفاً"
@@ -259,15 +755,26 @@
                         },
                         {
                             "source": "หน้าม้าอยากได้แบบไหน",
-                            "wordIds": [ "หน้าม้า", "อยากได้", "แบบ", "ไหน" ],
+                            "wordIds": [
+                                "หน้าม้า",
+                                "อยากได้",
+                                "แบบ",
+                                "ไหน"
+                            ],
                             "translations": {
                                 "en": "What style for the bangs?",
                                 "fa": "چتری‌ها چه مدلی باشد؟"
                             }
                         },
                         {
-                            "source": "ยาวหน่อย แล้วแสกข้าง",
-                            "wordIds": [ "ยาว", "หน่อย", "แล้ว", "แสก", "ข้าง" ],
+                            "source": "ยาวหน่อยแล้วแสกข้าง",
+                            "wordIds": [
+                                "ยาว",
+                                "หน่อย",
+                                "แล้ว",
+                                "แสก",
+                                "ข้าง"
+                            ],
                             "translations": {
                                 "en": "A bit longer, side-swept",
                                 "fa": "کمی بلندتر، به کنار"
@@ -275,7 +782,11 @@
                         },
                         {
                             "source": "สวยมากค่ะ",
-                            "wordIds": [ "สวย", "มาก", "ค่ะ" ],
+                            "wordIds": [
+                                "สวย",
+                                "มาก",
+                                "ค่ะ"
+                            ],
                             "translations": {
                                 "en": "Beautiful!",
                                 "fa": "خیلی زیبا شد"
@@ -298,7 +809,12 @@
                     "sentences": [
                         {
                             "source": "อยากทำสีผมค่ะ",
-                            "wordIds": [ "อยาก", "ทำสี", "ผม", "ค่ะ" ],
+                            "wordIds": [
+                                "อยาก",
+                                "ทำสี",
+                                "ผม",
+                                "ค่ะ"
+                            ],
                             "translations": {
                                 "en": "I want to color my hair",
                                 "fa": "می‌خواهم موهایم را رنگ کنم"
@@ -306,7 +822,12 @@
                         },
                         {
                             "source": "สีอะไรดีคะ",
-                            "wordIds": [ "สี", "อะไร", "ดี", "คะ" ],
+                            "wordIds": [
+                                "สี",
+                                "อะไร",
+                                "ดี",
+                                "คะ"
+                            ],
                             "translations": {
                                 "en": "What color?",
                                 "fa": "چه رنگی؟"
@@ -314,7 +835,12 @@
                         },
                         {
                             "source": "สีน้ำตาลประกายแดง",
-                            "wordIds": [ "สี", "น้ำตาล", "ประกาย", "แดง" ],
+                            "wordIds": [
+                                "สี",
+                                "น้ำตาล",
+                                "ประกาย",
+                                "แดง"
+                            ],
                             "translations": {
                                 "en": "Brown with red highlights",
                                 "fa": "قهوه‌ای با ته‌رنگ قرمز"
@@ -322,7 +848,13 @@
                         },
                         {
                             "source": "แล้วก็ทำไฮไลท์ด้วย",
-                            "wordIds": [ "แล้ว", "ก็", "ทำ", "ไฮไลท์", "ด้วย" ],
+                            "wordIds": [
+                                "แล้ว",
+                                "ก็",
+                                "ทำ",
+                                "ไฮไลท์",
+                                "ด้วย"
+                            ],
                             "translations": {
                                 "en": "And also highlights",
                                 "fa": "و مش هم بزن"
@@ -330,15 +862,25 @@
                         },
                         {
                             "source": "ใช้เวลานานไหมคะ",
-                            "wordIds": [ "ใช้เวลา", "นาน", "ไหม", "คะ" ],
+                            "wordIds": [
+                                "ใช้เวลา",
+                                "นาน",
+                                "ไหม",
+                                "คะ"
+                            ],
                             "translations": {
                                 "en": "Will it take long?",
                                 "fa": "طول می‌کشد؟"
                             }
                         },
                         {
-                            "source": "ประมาณ 2 ชั่วโมงค่ะ",
-                            "wordIds": [ "ประมาณ", "สอง", "ชั่วโมง", "ค่ะ" ],
+                            "source": "ประมาณสองชั่วโมงค่ะ",
+                            "wordIds": [
+                                "ประมาณ",
+                                "สอง",
+                                "ชั่วโมง",
+                                "ค่ะ"
+                            ],
                             "translations": {
                                 "en": "About 2 hours",
                                 "fa": "حدود ۲ ساعت"
@@ -346,15 +888,27 @@
                         },
                         {
                             "source": "ราคาเท่าไหร่คะ",
-                            "wordIds": [ "ราคา", "เท่าไหร่", "คะ" ],
+                            "wordIds": [
+                                "ราคา",
+                                "เท่าไหร่",
+                                "คะ"
+                            ],
                             "translations": {
                                 "en": "How much?",
                                 "fa": "قیمتش چقدر است؟"
                             }
                         },
                         {
-                            "source": "2500 บาทค่ะ รวมทำสีและไฮไลท์",
-                            "wordIds": [ "สองพันห้าร้อย", "บาท", "ค่ะ", "รวม", "ทำสี", "และ", "ไฮไลท์" ],
+                            "source": "สองพันห้าร้อยบาทค่ะรวมทำสีและไฮไลท์",
+                            "wordIds": [
+                                "สองพันห้าร้อย",
+                                "บาท",
+                                "ค่ะ",
+                                "รวม",
+                                "ทำสี",
+                                "และ",
+                                "ไฮไลท์"
+                            ],
                             "translations": {
                                 "en": "2500 baht, including color and highlights",
                                 "fa": "۲۵۰۰ بات، شامل رنگ و مش"

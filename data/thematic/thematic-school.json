@@ -12,128 +12,701 @@
         "wordCount": 40,
         "sentenceCount": 25,
         "estimatedTime": 25,
-        "tags": [ "school", "education", "classroom", "learning" ]
+        "tags": [
+            "school",
+            "education",
+            "classroom",
+            "learning"
+        ],
+        "authors": [ ],
+        "reviewers": [ ],
+        "prerequisites": [ ],
+        "updated": "2026-02-24T15:19:10.926Z"
     },
     "vocabulary": {
         "โรงเรียน": {
-            "translations": { "en": "school", "fa": "مدرسه" }
+            "translations": {
+                "en": "school",
+                "fa": "مدرسه"
+            }
         },
         "มหาวิทยาลัย": {
-            "translations": { "en": "university", "fa": "دانشگاه" }
+            "translations": {
+                "en": "university",
+                "fa": "دانشگاه"
+            }
         },
         "ครู": {
-            "translations": { "en": "teacher", "fa": "معلم" }
+            "translations": {
+                "en": "teacher",
+                "fa": "معلم"
+            }
         },
         "อาจารย์": {
-            "translations": { "en": "professor", "fa": "استاد" }
+            "translations": {
+                "en": "professor",
+                "fa": "استاد"
+            }
         },
         "นักเรียน": {
-            "translations": { "en": "student", "fa": "دانش‌آموز" }
+            "translations": {
+                "en": "student",
+                "fa": "دانش‌آموز"
+            }
         },
         "นักศึกษา": {
-            "translations": { "en": "college student", "fa": "دانشجو" }
+            "translations": {
+                "en": "college student",
+                "fa": "دانشجو"
+            }
         },
         "เพื่อน": {
-            "translations": { "en": "friend/classmate", "fa": "همکلاسی" }
+            "translations": {
+                "en": "friend/classmate",
+                "fa": "همکلاسی"
+            }
         },
         "ห้องเรียน": {
-            "translations": { "en": "classroom", "fa": "کلاس درس" }
+            "translations": {
+                "en": "classroom",
+                "fa": "کلاس درس"
+            }
         },
         "วิชา": {
-            "translations": { "en": "subject", "fa": "درس" }
+            "translations": {
+                "en": "subject",
+                "fa": "درس"
+            }
         },
         "คณิตศาสตร์": {
-            "translations": { "en": "mathematics", "fa": "ریاضی" }
+            "translations": {
+                "en": "mathematics",
+                "fa": "ریاضی"
+            }
         },
         "วิทยาศาสตร์": {
-            "translations": { "en": "science", "fa": "علوم" }
+            "translations": {
+                "en": "science",
+                "fa": "علوم"
+            }
         },
         "ภาษาไทย": {
-            "translations": { "en": "Thai language", "fa": "زبان تایلندی" }
+            "translations": {
+                "en": "Thai language",
+                "fa": "زبان تایلندی"
+            }
         },
         "ภาษาอังกฤษ": {
-            "translations": { "en": "English", "fa": "زبان انگلیسی" }
+            "translations": {
+                "en": "English",
+                "fa": "زبان انگلیسی"
+            }
         },
         "ประวัติศาสตร์": {
-            "translations": { "en": "history", "fa": "تاریخ" }
+            "translations": {
+                "en": "history",
+                "fa": "تاریخ"
+            }
         },
         "เรียน": {
-            "translations": { "en": "study", "fa": "درس خواندن" }
+            "translations": {
+                "en": "study",
+                "fa": "درس خواندن"
+            }
         },
         "สอน": {
-            "translations": { "en": "teach", "fa": "تدریس کردن" }
+            "translations": {
+                "en": "teach",
+                "fa": "تدریس کردن"
+            }
         },
         "สอบ": {
-            "translations": { "en": "exam/test", "fa": "امتحان" }
+            "translations": {
+                "en": "exam/test",
+                "fa": "امتحان"
+            }
         },
         "การบ้าน": {
-            "translations": { "en": "homework", "fa": "تکلیف" }
+            "translations": {
+                "en": "homework",
+                "fa": "تکلیف"
+            }
         },
         "ส่ง": {
-            "translations": { "en": "submit", "fa": "تحویل دادن" }
+            "translations": {
+                "en": "submit",
+                "fa": "تحویل دادن"
+            }
         },
         "คะแนน": {
-            "translations": { "en": "score/grade", "fa": "نمره" }
+            "translations": {
+                "en": "score/grade",
+                "fa": "نمره"
+            }
         },
         "เกรด": {
-            "translations": { "en": "grade", "fa": "نمره" }
+            "translations": {
+                "en": "grade",
+                "fa": "نمره"
+            }
         },
         "ผ่าน": {
-            "translations": { "en": "pass", "fa": "قبول شدن" }
+            "translations": {
+                "en": "pass",
+                "fa": "قبول شدن"
+            }
         },
         "ตก": {
-            "translations": { "en": "fail", "fa": "رد شدن" }
+            "translations": {
+                "en": "fail",
+                "fa": "رد شدن"
+            }
         },
         "เข้าใจ": {
-            "translations": { "en": "understand", "fa": "فهمیدن" }
+            "translations": {
+                "en": "understand",
+                "fa": "فهمیدن"
+            }
         },
         "ไม่เข้าใจ": {
-            "translations": { "en": "don't understand", "fa": "نفهمیدن" }
+            "translations": {
+                "en": "don't understand",
+                "fa": "نفهمیدن"
+            }
         },
         "ถาม": {
-            "translations": { "en": "ask", "fa": "پرسیدن" }
+            "translations": {
+                "en": "ask",
+                "fa": "پرسیدن"
+            }
         },
         "ตอบ": {
-            "translations": { "en": "answer", "fa": "جواب دادن" }
+            "translations": {
+                "en": "answer",
+                "fa": "جواب دادن"
+            }
         },
         "หนังสือ": {
-            "translations": { "en": "book", "fa": "کتاب" }
+            "translations": {
+                "en": "book",
+                "fa": "کتاب"
+            }
         },
         "สมุด": {
-            "translations": { "en": "notebook", "fa": "دفتر" }
+            "translations": {
+                "en": "notebook",
+                "fa": "دفتر"
+            }
         },
         "ปากกา": {
-            "translations": { "en": "pen", "fa": "خودکار" }
+            "translations": {
+                "en": "pen",
+                "fa": "خودکار"
+            }
         },
         "ดินสอ": {
-            "translations": { "en": "pencil", "fa": "مداد" }
+            "translations": {
+                "en": "pencil",
+                "fa": "مداد"
+            }
         },
         "ยางลบ": {
-            "translations": { "en": "eraser", "fa": "پاک‌کن" }
+            "translations": {
+                "en": "eraser",
+                "fa": "پاک‌کن"
+            }
         },
         "ไม้บรรทัด": {
-            "translations": { "en": "ruler", "fa": "خط‌کش" }
+            "translations": {
+                "en": "ruler",
+                "fa": "خط‌کش"
+            }
         },
         "กระเป๋า": {
-            "translations": { "en": "bag", "fa": "کیف" }
+            "translations": {
+                "en": "bag",
+                "fa": "کیف"
+            }
         },
         "ตารางเรียน": {
-            "translations": { "en": "schedule", "fa": "برنامه درسی" }
+            "translations": {
+                "en": "schedule",
+                "fa": "برنامه درسی"
+            }
         },
         "คาบ": {
-            "translations": { "en": "period", "fa": "زنگ" }
+            "translations": {
+                "en": "period",
+                "fa": "زنگ"
+            }
         },
         "พัก": {
-            "translations": { "en": "break", "fa": "تعطیل" }
+            "translations": {
+                "en": "break",
+                "fa": "تعطیل"
+            }
         },
         "เที่ยง": {
-            "translations": { "en": "noon", "fa": "ظهر" }
+            "translations": {
+                "en": "noon",
+                "fa": "ظهر"
+            }
         },
         "เลิกเรียน": {
-            "translations": { "en": "school ends", "fa": "تعطیلی مدرسه" }
+            "translations": {
+                "en": "school ends",
+                "fa": "تعطیلی مدرسه"
+            }
         },
         "หอสมุด": {
-            "translations": { "en": "library", "fa": "کتابخانه" }
+            "translations": {
+                "en": "library",
+                "fa": "کتابخانه"
+            }
+        },
+        "ตรง": {
+            "translations": {
+                "en": "Straight",
+                "fa": "مستقیم"
+            }
+        },
+        "นี้": {
+            "translations": {
+                "en": "This",
+                "fa": "این"
+            }
+        },
+        "เรา": {
+            "translations": {
+                "en": "We",
+                "fa": "ما"
+            }
+        },
+        "ต้อง": {
+            "translations": {
+                "en": "to",
+                "fa": "باید"
+            }
+        },
+        "ย้าย": {
+            "translations": {
+                "en": "Move",
+                "fa": "& حرکت‌"
+            }
+        },
+        "ข้าง": {
+            "translations": {
+                "en": "side, lateral ",
+                "fa": "سمت"
+            }
+        },
+        "สมการ": {
+            "translations": {
+                "en": "Equation",
+                "fa": "معادله"
+            }
+        },
+        "ยืม": {
+            "translations": {
+                "en": "Borrow",
+                "fa": "قرض گرفتن"
+            }
+        },
+        "ได้": {
+            "translations": {
+                "en": "Yes",
+                "fa": "می‌تواند"
+            }
+        },
+        "เจ็ด": {
+            "translations": {
+                "en": "SEVEN.",
+                "fa": "هفت"
+            }
+        },
+        "วัน": {
+            "translations": {
+                "en": "DAYS",
+                "fa": "روز"
+            }
+        },
+        "นะ": {
+            "translations": {
+                "en": "Yes?",
+                "fa": "نا"
+            }
+        },
+        "คะ": {
+            "translations": {
+                "en": "Ka",
+                "fa": "بله"
+            }
+        },
+        "สวัสดี": {
+            "translations": {
+                "en": "Hi.",
+                "fa": "سلام"
+            }
+        },
+        "ครับ": {
+            "translations": {
+                "en": "OK",
+                "fa": "بله"
+            }
+        },
+        "เป็น": {
+            "translations": {
+                "en": "is",
+                "fa": "هست"
+            }
+        },
+        "ใหม่": {
+            "translations": {
+                "en": "New",
+                "fa": "جدید"
+            }
+        },
+        "เหรอ": {
+            "translations": {
+                "en": "Yeah?&#10;",
+                "fa": "واقعاً؟"
+            }
+        },
+        "ใช่": {
+            "translations": {
+                "en": "Yes",
+                "fa": "& بله"
+            }
+        },
+        "ค่ะ": {
+            "translations": {
+                "en": "Thank you.",
+                "fa": "بله"
+            }
+        },
+        "เพิ่ง": {
+            "translations": {
+                "en": "Just",
+                "fa": "فقط"
+            }
+        },
+        "มา": {
+            "translations": {
+                "en": "Come.",
+                "fa": "بیا"
+            }
+        },
+        "ชื่อ": {
+            "translations": {
+                "en": "First name",
+                "fa": "عنوان"
+            }
+        },
+        "อะไร": {
+            "translations": {
+                "en": "WHAT",
+                "fa": "چه:"
+            }
+        },
+        "ลินดา": {
+            "translations": {
+                "en": "Linda",
+                "fa": "لیندا"
+            }
+        },
+        "แล้ว": {
+            "translations": {
+                "en": "So ",
+                "fa": "قبلاً"
+            }
+        },
+        "คุณ": {
+            "translations": {
+                "en": "You",
+                "fa": "شما:"
+            }
+        },
+        "ล่ะ": {
+            "translations": {
+                "en": "What?",
+                "fa": "خب؟"
+            }
+        },
+        "โตโม": {
+            "translations": {
+                "en": "Tomo",
+                "fa": "تومو"
+            }
+        },
+        "ยินดีที่ได้รู้จัก": {
+            "translations": {
+                "en": "Nice to meet you.”",
+                "fa": "از ملاقات خوشحال شدم"
+            }
+        },
+        "วันนี้": {
+            "translations": {
+                "en": "TODAY",
+                "fa": "امروز"
+            }
+        },
+        "บ้าง": {
+            "translations": {
+                "en": "Somewhat",
+                "fa": "برخی"
+            }
+        },
+        "คาบแรก": {
+            "translations": {
+                "en": "First period",
+                "fa": "دوره اول"
+            }
+        },
+        "คาบสอง": {
+            "translations": {
+                "en": "Second period",
+                "fa": "دوره دوم"
+            }
+        },
+        "ขอบคุณ": {
+            "translations": {
+                "en": "Thanks!",
+                "fa": "متشکرم"
+            }
+        },
+        "จะ": {
+            "translations": {
+                "en": "Ca",
+                "fa": "اراده"
+            }
+        },
+        "เรื่อง": {
+            "translations": {
+                "en": "Title",
+                "fa": "& موضوع‌"
+            }
+        },
+        "ไหม": {
+            "translations": {
+                "en": "Silk",
+                "fa": "ابریشم"
+            }
+        },
+        "ให้": {
+            "translations": {
+                "en": "to give",
+                "fa": "دادن"
+            }
+        },
+        "ช่วย": {
+            "translations": {
+                "en": "Help",
+                "fa": "کمک"
+            }
+        },
+        "อธิบาย": {
+            "translations": {
+                "en": "Descriptive",
+                "fa": "توضیح دهید"
+            }
+        },
+        "อ๋อ": {
+            "translations": {
+                "en": "ahhh... ",
+                "fa": "اوه"
+            }
+        },
+        "มาก": {
+            "translations": {
+                "en": "Many",
+                "fa": "بیشتر"
+            }
+        },
+        "เยอะ": {
+            "translations": {
+                "en": "A lot",
+                "fa": "خیلی زیاد"
+            }
+        },
+        "จัง": {
+            "translations": {
+                "en": "Japanese name",
+                "fa": "جانگ"
+            }
+        },
+        "ทำ": {
+            "translations": {
+                "en": "Call thunder strikes dealing TAL({0}~{1}) [thunder] m.dmg to LVL({2}~{3}) targets.",
+                "fa": "انجام دادن"
+            }
+        },
+        "ไม่": {
+            "translations": {
+                "en": "No",
+                "fa": "خیر"
+            }
+        },
+        "ทัน": {
+            "translations": {
+                "en": "Yes",
+                "fa": "پهلو به پهلو"
+            }
+        },
+        "แน่": {
+            "translations": {
+                "en": "Of course.",
+                "fa": "قطعاً"
+            }
+        },
+        "เลย": {
+            "translations": {
+                "en": "Loei Province",
+                "fa": "اصلاً"
+            }
+        },
+        "เมื่อไหร่": {
+            "translations": {
+                "en": "WHEN",
+                "fa": "چه زمانی"
+            }
+        },
+        "วันศุกร์": {
+            "translations": {
+                "en": "Friday",
+                "fa": "روز جمعه"
+            }
+        },
+        "อาทิตย์": {
+            "translations": {
+                "en": "Sunday",
+                "fa": "یکشنبه"
+            }
+        },
+        "หน้า": {
+            "translations": {
+                "en": "Page",
+                "fa": "صفحه"
+            }
+        },
+        "ด้วย": {
+            "translations": {
+                "en": "With",
+                "fa": "با"
+            }
+        },
+        "เตรียมตัว": {
+            "translations": {
+                "en": "Set.",
+                "fa": "خودت را آماده کن"
+            }
+        },
+        "ยัง": {
+            "translations": {
+                "en": "yet",
+                "fa": "هنوز نه"
+            }
+        },
+        "อ่านหนังสือ": {
+            "translations": {
+                "en": "Read a book. ",
+                "fa": "کتاب بخوانید"
+            }
+        },
+        "อีก": {
+            "translations": {
+                "en": "for",
+                "fa": "بیشتر"
+            }
+        },
+        "สู้": {
+            "translations": {
+                "en": "Fight",
+                "fa": "مبارزه"
+            }
+        },
+        "ๆ": {
+            "translations": {
+                "en": "if",
+                "fa": "و غیره"
+            }
+        },
+        "ขอ": {
+            "translations": {
+                "en": "I'm looking at it.",
+                "fa": "خواهش می‌کنم"
+            }
+        },
+        "หน่อย": {
+            "translations": {
+                "en": "A little bit",
+                "fa": "بیت"
+            }
+        },
+        "มี": {
+            "translations": {
+                "en": "Yes",
+                "fa": "محتویات"
+            }
+        },
+        "บัตร": {
+            "translations": {
+                "en": "Card ",
+                "fa": "کارت"
+            }
+        },
+        "ห้องสมุด": {
+            "translations": {
+                "en": "Library",
+                "fa": "کتابخانه"
+            }
+        },
+        "ดู": {
+            "translations": {
+                "en": "View",
+                "fa": "_انتظار"
+            }
+        },
+        "ต้องการ": {
+            "translations": {
+                "en": "Need",
+                "fa": "مورد نیاز"
+            }
+        },
+        "เล่ม": {
+            "translations": {
+                "en": "<g id=\"5\">Volume</g>…….",
+                "fa": "کتاب"
+            }
+        },
+        "ต่ออายุ": {
+            "translations": {
+                "en": "Renew",
+                "fa": "تجدید"
+            }
+        },
+        "ถ้า": {
+            "translations": {
+                "en": "Well, if",
+                "fa": "اگر"
+            }
+        },
+        "ไม่มี": {
+            "translations": {
+                "en": "No",
+                "fa": "هیچ"
+            }
+        },
+        "คน": {
+            "translations": {
+                "en": "   persons",
+                "fa": "شخص"
+            }
+        },
+        "จอง": {
+            "translations": {
+                "en": "Reserve",
+                "fa": "ذخیره"
+            }
         }
     },
     "activity": {
@@ -151,7 +724,13 @@
             "content": [
                 {
                     "type": "words",
-                    "wordIds": [ "คณิตศาสตร์", "วิทยาศาสตร์", "ภาษาไทย", "ภาษาอังกฤษ", "ประวัติศาสตร์" ]
+                    "wordIds": [
+                        "คณิตศาสตร์",
+                        "วิทยาศาสตร์",
+                        "ภาษาไทย",
+                        "ภาษาอังกฤษ",
+                        "ประวัติศาสตร์"
+                    ]
                 }
             ]
         },
@@ -167,16 +746,29 @@
                     "type": "paragraph",
                     "sentences": [
                         {
-                            "source": "สวัสดีครับ เป็นนักเรียนใหม่เหรอ",
-                            "wordIds": [ "สวัสดี", "ครับ", "เป็น", "นักเรียน", "ใหม่", "เหรอ" ],
+                            "source": "สวัสดีครับเป็นนักเรียนใหม่เหรอ",
+                            "wordIds": [
+                                "สวัสดี",
+                                "ครับ",
+                                "เป็น",
+                                "นักเรียน",
+                                "ใหม่",
+                                "เหรอ"
+                            ],
                             "translations": {
                                 "en": "Hello, are you a new student?",
                                 "fa": "سلام، دانش‌آموز جدیدی؟"
                             }
                         },
                         {
-                            "source": "ใช่ค่ะ เพิ่งย้ายมา",
-                            "wordIds": [ "ใช่", "ค่ะ", "เพิ่ง", "ย้าย", "มา" ],
+                            "source": "ใช่ค่ะเพิ่งย้ายมา",
+                            "wordIds": [
+                                "ใช่",
+                                "ค่ะ",
+                                "เพิ่ง",
+                                "ย้าย",
+                                "มา"
+                            ],
                             "translations": {
                                 "en": "Yes, I just transferred",
                                 "fa": "بله، تازه منتقل شدم"
@@ -184,23 +776,39 @@
                         },
                         {
                             "source": "ชื่ออะไรครับ",
-                            "wordIds": [ "ชื่อ", "อะไร", "ครับ" ],
+                            "wordIds": [
+                                "ชื่อ",
+                                "อะไร",
+                                "ครับ"
+                            ],
                             "translations": {
                                 "en": "What's your name?",
                                 "fa": "اسمت چیه؟"
                             }
                         },
                         {
-                            "source": "ชื่อลินดาค่ะ แล้วคุณล่ะ",
-                            "wordIds": [ "ชื่อ", "ลินดา", "ค่ะ", "แล้ว", "คุณ", "ล่ะ" ],
+                            "source": "ชื่อลินดาค่ะแล้วคุณล่ะ",
+                            "wordIds": [
+                                "ชื่อ",
+                                "ลินดา",
+                                "ค่ะ",
+                                "แล้ว",
+                                "คุณ",
+                                "ล่ะ"
+                            ],
                             "translations": {
                                 "en": "My name is Linda. And you?",
                                 "fa": "اسم من لیندا است. تو چطور؟"
                             }
                         },
                         {
-                            "source": "ชื่อโตโมครับ ยินดีที่ได้รู้จัก",
-                            "wordIds": [ "ชื่อ", "โตโม", "ครับ", "ยินดีที่ได้รู้จัก" ],
+                            "source": "ชื่อโตโมครับยินดีที่ได้รู้จัก",
+                            "wordIds": [
+                                "ชื่อ",
+                                "โตโม",
+                                "ครับ",
+                                "ยินดีที่ได้รู้จัก"
+                            ],
                             "translations": {
                                 "en": "I'm Tomo. Nice to meet you",
                                 "fa": "من تومو هستم. از آشنایی خوشبختم"
@@ -208,15 +816,27 @@
                         },
                         {
                             "source": "วันนี้เรียนวิชาอะไรบ้างคะ",
-                            "wordIds": [ "วันนี้", "เรียน", "วิชา", "อะไร", "บ้าง", "คะ" ],
+                            "wordIds": [
+                                "วันนี้",
+                                "เรียน",
+                                "วิชา",
+                                "อะไร",
+                                "บ้าง",
+                                "คะ"
+                            ],
                             "translations": {
                                 "en": "What subjects do we have today?",
                                 "fa": "امروز چه درس‌هایی داریم؟"
                             }
                         },
                         {
-                            "source": "คาบแรกคณิตศาสตร์ คาบสองวิทยาศาสตร์",
-                            "wordIds": [ "คาบแรก", "คณิตศาสตร์", "คาบสอง", "วิทยาศาสตร์" ],
+                            "source": "คาบแรกคณิตศาสตร์คาบสองวิทยาศาสตร์",
+                            "wordIds": [
+                                "คาบแรก",
+                                "คณิตศาสตร์",
+                                "คาบสอง",
+                                "วิทยาศาสตร์"
+                            ],
                             "translations": {
                                 "en": "First period math, second period science",
                                 "fa": "زنگ اول ریاضی، زنگ دوم علوم"
@@ -224,7 +844,10 @@
                         },
                         {
                             "source": "ขอบคุณค่ะ",
-                            "wordIds": [ "ขอบคุณ", "ค่ะ" ],
+                            "wordIds": [
+                                "ขอบคุณ",
+                                "ค่ะ"
+                            ],
                             "translations": {
                                 "en": "Thank you",
                                 "fa": "ممنون"
@@ -247,7 +870,15 @@
                     "sentences": [
                         {
                             "source": "วันนี้เราจะเรียนเรื่องอะไรคะ",
-                            "wordIds": [ "วันนี้", "เรา", "จะ", "เรียน", "เรื่อง", "อะไร", "คะ" ],
+                            "wordIds": [
+                                "วันนี้",
+                                "เรา",
+                                "จะ",
+                                "เรียน",
+                                "เรื่อง",
+                                "อะไร",
+                                "คะ"
+                            ],
                             "translations": {
                                 "en": "What will we study today?",
                                 "fa": "امروز چه چیزی یاد می‌گیریم؟"
@@ -255,7 +886,12 @@
                         },
                         {
                             "source": "วันนี้เรียนเรื่องสมการ",
-                            "wordIds": [ "วันนี้", "เรียน", "เรื่อง", "สมการ" ],
+                            "wordIds": [
+                                "วันนี้",
+                                "เรียน",
+                                "เรื่อง",
+                                "สมการ"
+                            ],
                             "translations": {
                                 "en": "Today we're studying equations",
                                 "fa": "امروز معادلات را می‌خوانیم"
@@ -263,7 +899,11 @@
                         },
                         {
                             "source": "เข้าใจไหมครับ",
-                            "wordIds": [ "เข้าใจ", "ไหม", "ครับ" ],
+                            "wordIds": [
+                                "เข้าใจ",
+                                "ไหม",
+                                "ครับ"
+                            ],
                             "translations": {
                                 "en": "Do you understand?",
                                 "fa": "می‌فهمی؟"
@@ -271,7 +911,12 @@
                         },
                         {
                             "source": "ไม่เข้าใจตรงนี้ค่ะ",
-                            "wordIds": [ "ไม่เข้าใจ", "ตรง", "นี้", "ค่ะ" ],
+                            "wordIds": [
+                                "ไม่เข้าใจ",
+                                "ตรง",
+                                "นี้",
+                                "ค่ะ"
+                            ],
                             "translations": {
                                 "en": "I don't understand this part",
                                 "fa": "این قسمت را نمی‌فهمم"
@@ -279,7 +924,12 @@
                         },
                         {
                             "source": "ให้ช่วยอธิบายไหม",
-                            "wordIds": [ "ให้", "ช่วย", "อธิบาย", "ไหม" ],
+                            "wordIds": [
+                                "ให้",
+                                "ช่วย",
+                                "อธิบาย",
+                                "ไหม"
+                            ],
                             "translations": {
                                 "en": "Want me to explain?",
                                 "fa": "می‌خواهی توضیح بدم؟"
@@ -287,23 +937,41 @@
                         },
                         {
                             "source": "ได้ไหมคะ",
-                            "wordIds": [ "ได้", "ไหม", "คะ" ],
+                            "wordIds": [
+                                "ได้",
+                                "ไหม",
+                                "คะ"
+                            ],
                             "translations": {
                                 "en": "Could you?",
                                 "fa": "می‌شود؟"
                             }
                         },
                         {
-                            "source": "ตรงนี้เราต้องย้ายข้างสมการ...",
-                            "wordIds": [ "ตรง", "นี้", "เรา", "ต้อง", "ย้าย", "ข้าง", "สมการ" ],
+                            "source": "ตรงนี้เราต้องย้ายข้างสมการ",
+                            "wordIds": [
+                                "ตรง",
+                                "นี้",
+                                "เรา",
+                                "ต้อง",
+                                "ย้าย",
+                                "ข้าง",
+                                "สมการ"
+                            ],
                             "translations": {
                                 "en": "Here we need to rearrange the equation...",
                                 "fa": "اینجا باید معادله را جابجا کنیم..."
                             }
                         },
                         {
-                            "source": "อ๋อ เข้าใจแล้ว ขอบคุณมาก",
-                            "wordIds": [ "อ๋อ", "เข้าใจ", "แล้ว", "ขอบคุณ", "มาก" ],
+                            "source": "อ๋อเข้าใจแล้วขอบคุณมาก",
+                            "wordIds": [
+                                "อ๋อ",
+                                "เข้าใจ",
+                                "แล้ว",
+                                "ขอบคุณ",
+                                "มาก"
+                            ],
                             "translations": {
                                 "en": "Oh, now I understand! Thank you very much",
                                 "fa": "آها، فهمیدم! خیلی ممنون"
@@ -326,15 +994,28 @@
                     "sentences": [
                         {
                             "source": "อาจารย์ให้การบ้านเยอะจัง",
-                            "wordIds": [ "อาจารย์", "ให้", "การบ้าน", "เยอะ", "จัง" ],
+                            "wordIds": [
+                                "อาจารย์",
+                                "ให้",
+                                "การบ้าน",
+                                "เยอะ",
+                                "จัง"
+                            ],
                             "translations": {
                                 "en": "The teacher gave so much homework",
                                 "fa": "استاد خیلی تکلیف داده"
                             }
                         },
                         {
-                            "source": "ใช่ ทำไม่ทันแน่เลย",
-                            "wordIds": [ "ใช่", "ทำ", "ไม่", "ทัน", "แน่", "เลย" ],
+                            "source": "ใช่ทำไม่ทันแน่เลย",
+                            "wordIds": [
+                                "ใช่",
+                                "ทำ",
+                                "ไม่",
+                                "ทัน",
+                                "แน่",
+                                "เลย"
+                            ],
                             "translations": {
                                 "en": "Yeah, I'll never finish on time",
                                 "fa": "آره، حتماً نمی‌رسم انجام بدم"
@@ -342,7 +1023,11 @@
                         },
                         {
                             "source": "แล้วส่งเมื่อไหร่",
-                            "wordIds": [ "แล้ว", "ส่ง", "เมื่อไหร่" ],
+                            "wordIds": [
+                                "แล้ว",
+                                "ส่ง",
+                                "เมื่อไหร่"
+                            ],
                             "translations": {
                                 "en": "When is it due?",
                                 "fa": "کی باید تحویل بدیم؟"
@@ -350,7 +1035,10 @@
                         },
                         {
                             "source": "วันศุกร์นี้",
-                            "wordIds": [ "วันศุกร์", "นี้" ],
+                            "wordIds": [
+                                "วันศุกร์",
+                                "นี้"
+                            ],
                             "translations": {
                                 "en": "This Friday",
                                 "fa": "این جمعه"
@@ -358,7 +1046,13 @@
                         },
                         {
                             "source": "แล้วสอบอาทิตย์หน้าด้วย",
-                            "wordIds": [ "แล้ว", "สอบ", "อาทิตย์", "หน้า", "ด้วย" ],
+                            "wordIds": [
+                                "แล้ว",
+                                "สอบ",
+                                "อาทิตย์",
+                                "หน้า",
+                                "ด้วย"
+                            ],
                             "translations": {
                                 "en": "And we have exams next week too",
                                 "fa": "و هفته بعد امتحان هم داریم"
@@ -366,23 +1060,37 @@
                         },
                         {
                             "source": "เตรียมตัวยัง",
-                            "wordIds": [ "เตรียมตัว", "ยัง" ],
+                            "wordIds": [
+                                "เตรียมตัว",
+                                "ยัง"
+                            ],
                             "translations": {
                                 "en": "Have you prepared?",
                                 "fa": "آماده شده‌ای؟"
                             }
                         },
                         {
-                            "source": "ยังเลย ต้องอ่านหนังสืออีกเยอะ",
-                            "wordIds": [ "ยัง", "เลย", "ต้อง", "อ่านหนังสือ", "อีก", "เยอะ" ],
+                            "source": "ยังเลยต้องอ่านหนังสืออีกเยอะ",
+                            "wordIds": [
+                                "ยัง",
+                                "เลย",
+                                "ต้อง",
+                                "อ่านหนังสือ",
+                                "อีก",
+                                "เยอะ"
+                            ],
                             "translations": {
                                 "en": "Not yet, I need to study a lot more",
                                 "fa": "نه هنوز، باید خیلی درس بخونم"
                             }
                         },
                         {
-                            "source": "สู้ๆ นะ",
-                            "wordIds": [ "สู้", "ๆ", "นะ" ],
+                            "source": "สู้ๆนะ",
+                            "wordIds": [
+                                "สู้",
+                                "ๆ",
+                                "นะ"
+                            ],
                             "translations": {
                                 "en": "Good luck!",
                                 "fa": "موفق باشی!"
@@ -405,7 +1113,13 @@
                     "sentences": [
                         {
                             "source": "ขอยืมหนังสือหน่อยครับ",
-                            "wordIds": [ "ขอ", "ยืม", "หนังสือ", "หน่อย", "ครับ" ],
+                            "wordIds": [
+                                "ขอ",
+                                "ยืม",
+                                "หนังสือ",
+                                "หน่อย",
+                                "ครับ"
+                            ],
                             "translations": {
                                 "en": "I'd like to borrow a book",
                                 "fa": "می‌خواهم کتاب امانت بگیرم"
@@ -413,7 +1127,13 @@
                         },
                         {
                             "source": "มีบัตรห้องสมุดไหมคะ",
-                            "wordIds": [ "มี", "บัตร", "ห้องสมุด", "ไหม", "คะ" ],
+                            "wordIds": [
+                                "มี",
+                                "บัตร",
+                                "ห้องสมุด",
+                                "ไหม",
+                                "คะ"
+                            ],
                             "translations": {
                                 "en": "Do you have a library card?",
                                 "fa": "کارت کتابخانه دارید؟"
@@ -421,7 +1141,10 @@
                         },
                         {
                             "source": "มีครับ",
-                            "wordIds": [ "มี", "ครับ" ],
+                            "wordIds": [
+                                "มี",
+                                "ครับ"
+                            ],
                             "translations": {
                                 "en": "Yes",
                                 "fa": "بله"
@@ -429,7 +1152,12 @@
                         },
                         {
                             "source": "ขอดูหน่อยค่ะ",
-                            "wordIds": [ "ขอ", "ดู", "หน่อย", "ค่ะ" ],
+                            "wordIds": [
+                                "ขอ",
+                                "ดู",
+                                "หน่อย",
+                                "ค่ะ"
+                            ],
                             "translations": {
                                 "en": "Can I see it?",
                                 "fa": "می‌بینم لطفاً؟"
@@ -437,23 +1165,42 @@
                         },
                         {
                             "source": "ต้องการยืมหนังสืออะไรคะ",
-                            "wordIds": [ "ต้องการ", "ยืม", "หนังสือ", "อะไร", "คะ" ],
+                            "wordIds": [
+                                "ต้องการ",
+                                "ยืม",
+                                "หนังสือ",
+                                "อะไร",
+                                "คะ"
+                            ],
                             "translations": {
                                 "en": "What book would you like to borrow?",
                                 "fa": "چه کتابی می‌خواهید امانت بگیرید؟"
                             }
                         },
                         {
-                            "source": "หนังสือวิทยาศาสตร์ เล่มนี้ครับ",
-                            "wordIds": [ "หนังสือ", "วิทยาศาสตร์", "เล่ม", "นี้", "ครับ" ],
+                            "source": "หนังสือวิทยาศาสตร์เล่มนี้ครับ",
+                            "wordIds": [
+                                "หนังสือ",
+                                "วิทยาศาสตร์",
+                                "เล่ม",
+                                "นี้",
+                                "ครับ"
+                            ],
                             "translations": {
                                 "en": "This science book",
                                 "fa": "این کتاب علوم"
                             }
                         },
                         {
-                            "source": "ยืมได้ 7 วันนะคะ",
-                            "wordIds": [ "ยืม", "ได้", "เจ็ด", "วัน", "นะ", "คะ" ],
+                            "source": "ยืมได้เจ็ดวันนะคะ",
+                            "wordIds": [
+                                "ยืม",
+                                "ได้",
+                                "เจ็ด",
+                                "วัน",
+                                "นะ",
+                                "คะ"
+                            ],
                             "translations": {
                                 "en": "You can borrow it for 7 days",
                                 "fa": "۷ روز می‌توانید امانت بگیرید"
@@ -461,15 +1208,27 @@
                         },
                         {
                             "source": "ต่ออายุได้ไหมครับ",
-                            "wordIds": [ "ต่ออายุ", "ได้", "ไหม", "ครับ" ],
+                            "wordIds": [
+                                "ต่ออายุ",
+                                "ได้",
+                                "ไหม",
+                                "ครับ"
+                            ],
                             "translations": {
                                 "en": "Can I renew it?",
                                 "fa": "می‌توانم تمدید کنم؟"
                             }
                         },
                         {
-                            "source": "ได้ค่ะ ถ้าไม่มีคนจอง",
-                            "wordIds": [ "ได้", "ค่ะ", "ถ้า", "ไม่มี", "คน", "จอง" ],
+                            "source": "ได้ค่ะถ้าไม่มีคนจอง",
+                            "wordIds": [
+                                "ได้",
+                                "ค่ะ",
+                                "ถ้า",
+                                "ไม่มี",
+                                "คน",
+                                "จอง"
+                            ],
                             "translations": {
                                 "en": "Yes, if no one has reserved it",
                                 "fa": "بله، اگر کسی رزرو نکرده باشد"

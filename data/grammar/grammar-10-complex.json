@@ -12,19 +12,188 @@
         "newWords": 15,
         "reviewWords": 50,
         "sentenceCount": 25,
-        "estimatedTime": 35
+        "estimatedTime": 35,
+        "authors": [ ],
+        "reviewers": [ ],
+        "prerequisites": [ ],
+        "tags": [ ],
+        "updated": "2026-02-24T14:55:37.018Z"
     },
     "vocabulary": {
-        "และ": { "translations": { "en": "and", "fa": "و" } },
-        "หรือ": { "translations": { "en": "or", "fa": "یا" } },
-        "แต่": { "translations": { "en": "but", "fa": "اما" } },
-        "เพราะ": { "translations": { "en": "because", "fa": "چون" } },
-        "ดังนั้น": { "translations": { "en": "therefore", "fa": "بنابراین" } },
-        "ถ้า": { "translations": { "en": "if", "fa": "اگر" } },
-        "เมื่อ": { "translations": { "en": "when", "fa": "وقتی" } },
-        "ขณะ": { "translations": { "en": "while", "fa": "در حالی که" } },
-        "ก่อน": { "translations": { "en": "before", "fa": "قبل از" } },
-        "หลัง": { "translations": { "en": "after", "fa": "بعد از" } }
+        "และ": {
+            "translations": {
+                "en": "and",
+                "fa": "و"
+            }
+        },
+        "หรือ": {
+            "translations": {
+                "en": "or",
+                "fa": "یا"
+            }
+        },
+        "แต่": {
+            "translations": {
+                "en": "but",
+                "fa": "اما"
+            }
+        },
+        "เพราะ": {
+            "translations": {
+                "en": "because",
+                "fa": "چون"
+            }
+        },
+        "ดังนั้น": {
+            "translations": {
+                "en": "therefore",
+                "fa": "بنابراین"
+            }
+        },
+        "ถ้า": {
+            "translations": {
+                "en": "if",
+                "fa": "اگر"
+            }
+        },
+        "เมื่อ": {
+            "translations": {
+                "en": "when",
+                "fa": "وقتی"
+            }
+        },
+        "ขณะ": {
+            "translations": {
+                "en": "while",
+                "fa": "در حالی که"
+            }
+        },
+        "ก่อน": {
+            "translations": {
+                "en": "before",
+                "fa": "قبل از"
+            }
+        },
+        "หลัง": {
+            "translations": {
+                "en": "after",
+                "fa": "بعد از"
+            }
+        },
+        "ผม": {
+            "translations": {
+                "en": "Hair",
+                "fa": "من:"
+            }
+        },
+        "กิน": {
+            "translations": {
+                "en": "Eating",
+                "fa": "خوردن"
+            }
+        },
+        "ข้าว": {
+            "translations": {
+                "en": "Rice",
+                "fa": "برنج"
+            }
+        },
+        "ดื่ม": {
+            "translations": {
+                "en": "Cheers",
+                "fa": "نوشیدنی"
+            }
+        },
+        "น้ำ": {
+            "translations": {
+                "en": "Water",
+                "fa": "آب"
+            }
+        },
+        "เขา": {
+            "translations": {
+                "en": "He, She",
+                "fa": "او"
+            }
+        },
+        "อยาก": {
+            "translations": {
+                "en": "Want",
+                "fa": "می خواهم"
+            }
+        },
+        "ไป": {
+            "translations": {
+                "en": "I'm going",
+                "fa": "& برو‌"
+            }
+        },
+        "ตลาด": {
+            "translations": {
+                "en": "Market Name",
+                "fa": "بازار"
+            }
+        },
+        "ไม่มี": {
+            "translations": {
+                "en": "No",
+                "fa": "هیچ"
+            }
+        },
+        "เวลา": {
+            "translations": {
+                "en": "Time:",
+                "fa": "زمان"
+            }
+        },
+        "ฉัน": {
+            "translations": {
+                "en": "Me",
+                "fa": "من"
+            }
+        },
+        "ไม่": {
+            "translations": {
+                "en": "No",
+                "fa": "خیر"
+            }
+        },
+        "ทำงาน": {
+            "translations": {
+                "en": "Work...",
+                "fa": "پنجرۀ غیرفعال"
+            }
+        },
+        "สบาย": {
+            "translations": {
+                "en": "Sabya",
+                "fa": "راحت"
+            }
+        },
+        "ฝนตก": {
+            "translations": {
+                "en": "Rain",
+                "fa": "باران"
+            }
+        },
+        "จะ": {
+            "translations": {
+                "en": "Ca",
+                "fa": "اراده"
+            }
+        },
+        "อยู่": {
+            "translations": {
+                "en": "is",
+                "fa": "زنده"
+            }
+        },
+        "บ้าน": {
+            "translations": {
+                "en": "House",
+                "fa": "خانه"
+            }
+        }
     },
     "sections": [
         {
@@ -50,9 +219,18 @@
                             "fa": "از کلمات ربط مانند และ (و), แต่ (اما), เพราะ (چون) برای پیوند دادن جملات استفاده کنید. ترتیب کلمات در هر بخش ثابت می‌ماند."
                         },
                         "examples": [
-                            { "source": "ผมกินข้าว และดื่มน้ำ", "translation": "I eat rice and drink water" },
-                            { "source": "เขาอยากไปแต่ไม่ว่าง", "translation": "He wants to go but is busy" },
-                            { "source": "ฉันไม่ไปเพราะฝนตก", "translation": "I'm not going because it's raining" }
+                            {
+                                "source": "ผมกินข้าว และดื่มน้ำ",
+                                "translation": "I eat rice and drink water"
+                            },
+                            {
+                                "source": "เขาอยากไปแต่ไม่ว่าง",
+                                "translation": "He wants to go but is busy"
+                            },
+                            {
+                                "source": "ฉันไม่ไปเพราะฝนตก",
+                                "translation": "I'm not going because it's raining"
+                            }
                         ]
                     },
                     "sentences": [ ]
@@ -66,32 +244,61 @@
                     },
                     "sentences": [
                         {
-                            "source": "ผมกินข้าว และดื่มน้ำ",
-                            "wordIds": [ "ผม", "กิน", "ข้าว", "และ", "ดื่ม", "น้ำ" ],
+                            "source": "ผมกินข้าวและดื่มน้ำ",
+                            "wordIds": [
+                                "ผม",
+                                "กิน",
+                                "ข้าว",
+                                "และ",
+                                "ดื่ม",
+                                "น้ำ"
+                            ],
                             "translations": {
                                 "en": "I eat rice and drink water",
                                 "fa": "من برنج می‌خورم و آب می‌نوشم"
                             }
                         },
                         {
-                            "source": "เขาอยากไปตลาด แต่ไม่มีเวลา",
-                            "wordIds": [ "เขา", "อยาก", "ไป", "ตลาด", "แต่", "ไม่มี", "เวลา" ],
+                            "source": "เขาอยากไปตลาดแต่ไม่มีเวลา",
+                            "wordIds": [
+                                "เขา",
+                                "อยาก",
+                                "ไป",
+                                "ตลาด",
+                                "แต่",
+                                "ไม่มี",
+                                "เวลา"
+                            ],
                             "translations": {
                                 "en": "He wants to go to the market but doesn't have time",
                                 "fa": "او می‌خواهد به بازار برود اما وقت ندارد"
                             }
                         },
                         {
-                            "source": "ฉันไม่ไปทำงาน เพราะไม่สบาย",
-                            "wordIds": [ "ฉัน", "ไม่", "ไป", "ทำงาน", "เพราะ", "ไม่", "สบาย" ],
+                            "source": "ฉันไม่ไปทำงานเพราะไม่สบาย",
+                            "wordIds": [
+                                "ฉัน",
+                                "ไม่",
+                                "ไป",
+                                "ทำงาน",
+                                "เพราะ",
+                                "ไม่",
+                                "สบาย"
+                            ],
                             "translations": {
                                 "en": "I'm not going to work because I'm sick",
                                 "fa": "من به کار نمی‌روم چون مریضم"
                             }
                         },
                         {
-                            "source": "ถ้าฝนตก จะอยู่บ้าน",
-                            "wordIds": [ "ถ้า", "ฝนตก", "จะ", "อยู่", "บ้าน" ],
+                            "source": "ถ้าฝนตกจะอยู่บ้าน",
+                            "wordIds": [
+                                "ถ้า",
+                                "ฝนตก",
+                                "จะ",
+                                "อยู่",
+                                "บ้าน"
+                            ],
                             "translations": {
                                 "en": "If it rains, I will stay home",
                                 "fa": "اگر باران ببارد، در خانه می‌مانم"

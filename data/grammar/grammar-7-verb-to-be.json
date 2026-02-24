@@ -12,19 +12,104 @@
         "newWords": 15,
         "reviewWords": 40,
         "sentenceCount": 25,
-        "estimatedTime": 30
+        "estimatedTime": 30,
+        "authors": [ ],
+        "reviewers": [ ],
+        "prerequisites": [ ],
+        "tags": [ ],
+        "updated": "2026-02-24T14:53:36.499Z"
     },
     "vocabulary": {
-        "เป็น": { "translations": { "en": "to be (for professions, nationalities)", "fa": "بودن (برای شغل، ملیت)" } },
-        "อยู่": { "translations": { "en": "to be (for location)", "fa": "بودن (برای مکان)" } },
-        "คือ": { "translations": { "en": "to be (for definitions)", "fa": "بودن (برای تعریف)" } },
-        "หมอ": { "translations": { "en": "doctor", "fa": "دکتر" } },
-        "ครู": { "translations": { "en": "teacher", "fa": "معلم" } },
-        "นักศึกษา": { "translations": { "en": "student", "fa": "دانشجو" } },
-        "คนไทย": { "translations": { "en": "Thai person", "fa": "آدم تایلندی" } },
-        "คนอเมริกัน": { "translations": { "en": "American person", "fa": "آدم آمریکایی" } },
-        "ที่นี่": { "translations": { "en": "here", "fa": "اینجا" } },
-        "นี่": { "translations": { "en": "this", "fa": "این" } }
+        "เป็น": {
+            "translations": {
+                "en": "to be (for professions, nationalities)",
+                "fa": "بودن (برای شغل، ملیت)"
+            }
+        },
+        "อยู่": {
+            "translations": {
+                "en": "to be (for location)",
+                "fa": "بودن (برای مکان)"
+            }
+        },
+        "คือ": {
+            "translations": {
+                "en": "to be (for definitions)",
+                "fa": "بودن (برای تعریف)"
+            }
+        },
+        "หมอ": {
+            "translations": {
+                "en": "doctor",
+                "fa": "دکتر"
+            }
+        },
+        "ครู": {
+            "translations": {
+                "en": "teacher",
+                "fa": "معلم"
+            }
+        },
+        "นักศึกษา": {
+            "translations": {
+                "en": "student",
+                "fa": "دانشجو"
+            }
+        },
+        "คนไทย": {
+            "translations": {
+                "en": "Thai person",
+                "fa": "آدم تایلندی"
+            }
+        },
+        "คนอเมริกัน": {
+            "translations": {
+                "en": "American person",
+                "fa": "آدم آمریکایی"
+            }
+        },
+        "ที่นี่": {
+            "translations": {
+                "en": "here",
+                "fa": "اینجا"
+            }
+        },
+        "นี่": {
+            "translations": {
+                "en": "this",
+                "fa": "این"
+            }
+        },
+        "ผม": {
+            "translations": {
+                "en": "Hair",
+                "fa": "من:"
+            }
+        },
+        "เขา": {
+            "translations": {
+                "en": "He, She",
+                "fa": "او"
+            }
+        },
+        "คุณ": {
+            "translations": {
+                "en": "You",
+                "fa": "شما:"
+            }
+        },
+        "ไหม": {
+            "translations": {
+                "en": "Silk",
+                "fa": "ابریشم"
+            }
+        },
+        "ฉัน": {
+            "translations": {
+                "en": "Me",
+                "fa": "من"
+            }
+        }
     },
     "sections": [
         {
@@ -50,9 +135,18 @@
                             "fa": "تایلندی سه کلمه متفاوت برای 'بودن' دارد: เป็น برای شغل و ملیت، อยู่ برای مکان، คือ برای تعریف و برابری."
                         },
                         "examples": [
-                            { "source": "ผมเป็นครู", "translation": "I am a teacher" },
-                            { "source": "ผมอยู่บ้าน", "translation": "I am at home" },
-                            { "source": "นี่คือหนังสือ", "translation": "This is a book" }
+                            {
+                                "source": "ผมเป็นครู",
+                                "translation": "I am a teacher"
+                            },
+                            {
+                                "source": "ผมอยู่บ้าน",
+                                "translation": "I am at home"
+                            },
+                            {
+                                "source": "นี่คือหนังสือ",
+                                "translation": "This is a book"
+                            }
                         ]
                     },
                     "sentences": [ ]
@@ -67,7 +161,11 @@
                     "sentences": [
                         {
                             "source": "ผมเป็นหมอ",
-                            "wordIds": [ "ผม", "เป็น", "หมอ" ],
+                            "wordIds": [
+                                "ผม",
+                                "เป็น",
+                                "หมอ"
+                            ],
                             "translations": {
                                 "en": "I am a doctor",
                                 "fa": "من دکتر هستم"
@@ -75,7 +173,11 @@
                         },
                         {
                             "source": "เขาเป็นครู",
-                            "wordIds": [ "เขา", "เป็น", "ครู" ],
+                            "wordIds": [
+                                "เขา",
+                                "เป็น",
+                                "ครู"
+                            ],
                             "translations": {
                                 "en": "He/She is a teacher",
                                 "fa": "او معلم است"
@@ -83,7 +185,12 @@
                         },
                         {
                             "source": "คุณเป็นคนไทยไหม",
-                            "wordIds": [ "คุณ", "เป็น", "คนไทย", "ไหม" ],
+                            "wordIds": [
+                                "คุณ",
+                                "เป็น",
+                                "คนไทย",
+                                "ไหม"
+                            ],
                             "translations": {
                                 "en": "Are you Thai?",
                                 "fa": "آیا شما تایلندی هستید؟"
@@ -91,7 +198,11 @@
                         },
                         {
                             "source": "ฉันเป็นนักศึกษา",
-                            "wordIds": [ "ฉัน", "เป็น", "นักศึกษา" ],
+                            "wordIds": [
+                                "ฉัน",
+                                "เป็น",
+                                "นักศึกษา"
+                            ],
                             "translations": {
                                 "en": "I am a student",
                                 "fa": "من دانشجو هستم"

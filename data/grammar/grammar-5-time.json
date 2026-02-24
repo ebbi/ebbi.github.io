@@ -12,19 +12,140 @@
         "newWords": 15,
         "reviewWords": 30,
         "sentenceCount": 25,
-        "estimatedTime": 25
+        "estimatedTime": 25,
+        "authors": [ ],
+        "reviewers": [ ],
+        "prerequisites": [ ],
+        "tags": [ ],
+        "updated": "2026-02-24T14:52:23.327Z"
     },
     "vocabulary": {
-        "เมื่อวาน": { "translations": { "en": "yesterday", "fa": "دیروز" } },
-        "วันนี้": { "translations": { "en": "today", "fa": "امروز" } },
-        "พรุ่งนี้": { "translations": { "en": "tomorrow", "fa": "فردا" } },
-        "เช้า": { "translations": { "en": "morning", "fa": "صبح" } },
-        "สาย": { "translations": { "en": "late", "fa": "دیر" } },
-        "เย็น": { "translations": { "en": "evening", "fa": "عصر" } },
-        "กลางคืน": { "translations": { "en": "night", "fa": "شب" } },
-        "ทุกวัน": { "translations": { "en": "every day", "fa": "هر روز" } },
-        "เมื่อกี้": { "translations": { "en": "just now", "fa": "همین الان" } },
-        "เดี๋ยว": { "translations": { "en": "soon/in a moment", "fa": "الآن" } }
+        "เมื่อวาน": {
+            "translations": {
+                "en": "yesterday",
+                "fa": "دیروز"
+            }
+        },
+        "วันนี้": {
+            "translations": {
+                "en": "today",
+                "fa": "امروز"
+            }
+        },
+        "พรุ่งนี้": {
+            "translations": {
+                "en": "tomorrow",
+                "fa": "فردا"
+            }
+        },
+        "เช้า": {
+            "translations": {
+                "en": "morning",
+                "fa": "صبح"
+            }
+        },
+        "สาย": {
+            "translations": {
+                "en": "late",
+                "fa": "دیر"
+            }
+        },
+        "เย็น": {
+            "translations": {
+                "en": "evening",
+                "fa": "عصر"
+            }
+        },
+        "กลางคืน": {
+            "translations": {
+                "en": "night",
+                "fa": "شب"
+            }
+        },
+        "ทุกวัน": {
+            "translations": {
+                "en": "every day",
+                "fa": "هر روز"
+            }
+        },
+        "เมื่อกี้": {
+            "translations": {
+                "en": "just now",
+                "fa": "همین الان"
+            }
+        },
+        "เดี๋ยว": {
+            "translations": {
+                "en": "soon/in a moment",
+                "fa": "الآن"
+            }
+        },
+        "ผม": {
+            "translations": {
+                "en": "Hair",
+                "fa": "من:"
+            }
+        },
+        "กิน": {
+            "translations": {
+                "en": "Eating",
+                "fa": "خوردن"
+            }
+        },
+        "ข้าว": {
+            "translations": {
+                "en": "Rice",
+                "fa": "برنج"
+            }
+        },
+        "คุณ": {
+            "translations": {
+                "en": "You",
+                "fa": "شما:"
+            }
+        },
+        "ไป": {
+            "translations": {
+                "en": "I'm going",
+                "fa": "& برو‌"
+            }
+        },
+        "ทำงาน": {
+            "translations": {
+                "en": "Work...",
+                "fa": "پنجرۀ غیرفعال"
+            }
+        },
+        "ไหม": {
+            "translations": {
+                "en": "Silk",
+                "fa": "ابریشم"
+            }
+        },
+        "เขา": {
+            "translations": {
+                "en": "He, She",
+                "fa": "او"
+            }
+        },
+        "จะ": {
+            "translations": {
+                "en": "Ca",
+                "fa": "اراده"
+            }
+        },
+        "มา": {
+            "translations": {
+                "en": "Come.",
+                "fa": "بیا"
+            }
+        },
+        "บ้าน": {
+            "translations": {
+                "en": "House",
+                "fa": "خانه"
+            }
+        }
     },
     "sections": [
         {
@@ -50,8 +171,14 @@
                             "fa": "کلمات زمان در تایلندی می‌توانند در ابتدا یا انتهای جمله بیایند. هر دو موقعیت صحیح و رایج است."
                         },
                         "examples": [
-                            { "source": "เมื่อวานผมไปตลาด", "translation": "Yesterday I went to the market" },
-                            { "source": "ผมไปตลาดเมื่อวาน", "translation": "I went to the market yesterday" }
+                            {
+                                "source": "เมื่อวานผมไปตลาด",
+                                "translation": "Yesterday I went to the market"
+                            },
+                            {
+                                "source": "ผมไปตลาดเมื่อวาน",
+                                "translation": "I went to the market yesterday"
+                            }
                         ]
                     },
                     "sentences": [ ]
@@ -66,7 +193,12 @@
                     "sentences": [
                         {
                             "source": "เมื่อวานผมกินข้าว",
-                            "wordIds": [ "เมื่อวาน", "ผม", "กิน", "ข้าว" ],
+                            "wordIds": [
+                                "เมื่อวาน",
+                                "ผม",
+                                "กิน",
+                                "ข้าว"
+                            ],
                             "translations": {
                                 "en": "Yesterday I ate rice",
                                 "fa": "دیروز من برنج خوردم"
@@ -74,7 +206,13 @@
                         },
                         {
                             "source": "วันนี้คุณไปทำงานไหม",
-                            "wordIds": [ "วันนี้", "คุณ", "ไป", "ทำงาน", "ไหม" ],
+                            "wordIds": [
+                                "วันนี้",
+                                "คุณ",
+                                "ไป",
+                                "ทำงาน",
+                                "ไหม"
+                            ],
                             "translations": {
                                 "en": "Today, are you going to work?",
                                 "fa": "امروز، شما به کار می‌روید؟"
@@ -82,7 +220,13 @@
                         },
                         {
                             "source": "พรุ่งนี้เขาจะมาบ้าน",
-                            "wordIds": [ "พรุ่งนี้", "เขา", "จะ", "มา", "บ้าน" ],
+                            "wordIds": [
+                                "พรุ่งนี้",
+                                "เขา",
+                                "จะ",
+                                "มา",
+                                "บ้าน"
+                            ],
                             "translations": {
                                 "en": "Tomorrow he will come home",
                                 "fa": "فردا او به خانه می‌آید"
@@ -105,7 +249,12 @@
                     "sentences": [
                         {
                             "source": "ผมกินข้าวเมื่อวาน",
-                            "wordIds": [ "ผม", "กิน", "ข้าว", "เมื่อวาน" ],
+                            "wordIds": [
+                                "ผม",
+                                "กิน",
+                                "ข้าว",
+                                "เมื่อวาน"
+                            ],
                             "translations": {
                                 "en": "I ate rice yesterday",
                                 "fa": "من برنج دیروز خوردم"
@@ -113,7 +262,13 @@
                         },
                         {
                             "source": "คุณไปทำงานวันนี้ไหม",
-                            "wordIds": [ "คุณ", "ไป", "ทำงาน", "วันนี้", "ไหม" ],
+                            "wordIds": [
+                                "คุณ",
+                                "ไป",
+                                "ทำงาน",
+                                "วันนี้",
+                                "ไหม"
+                            ],
                             "translations": {
                                 "en": "Are you going to work today?",
                                 "fa": "آیا شما امروز به کار می‌روید؟"
@@ -121,7 +276,13 @@
                         },
                         {
                             "source": "เขาจะมาบ้านพรุ่งนี้",
-                            "wordIds": [ "เขา", "จะ", "มา", "บ้าน", "พรุ่งนี้" ],
+                            "wordIds": [
+                                "เขา",
+                                "จะ",
+                                "มา",
+                                "บ้าน",
+                                "พรุ่งนี้"
+                            ],
                             "translations": {
                                 "en": "He will come home tomorrow",
                                 "fa": "او فردا به خانه می‌آید"

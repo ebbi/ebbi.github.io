@@ -12,83 +12,461 @@
         "wordCount": 25,
         "sentenceCount": 18,
         "estimatedTime": 15,
-        "tags": [ "post", "mail", "shipping", "services" ]
+        "tags": [
+            "post",
+            "mail",
+            "shipping",
+            "services"
+        ],
+        "authors": [ ],
+        "reviewers": [ ],
+        "prerequisites": [ ],
+        "updated": "2026-02-24T15:15:28.496Z"
     },
     "vocabulary": {
         "ไปรษณีย์": {
-            "translations": { "en": "post office", "fa": "اداره پست" }
+            "translations": {
+                "en": "post office",
+                "fa": "اداره پست"
+            }
         },
         "บุรุษไปรษณีย์": {
-            "translations": { "en": "mailman", "fa": "پستچی" }
+            "translations": {
+                "en": "mailman",
+                "fa": "پستچی"
+            }
         },
         "พัสดุ": {
-            "translations": { "en": "parcel", "fa": "بسته" }
+            "translations": {
+                "en": "parcel",
+                "fa": "بسته"
+            }
         },
         "จดหมาย": {
-            "translations": { "en": "letter", "fa": "نامه" }
+            "translations": {
+                "en": "letter",
+                "fa": "نامه"
+            }
         },
         "ไปรษณียบัตร": {
-            "translations": { "en": "postcard", "fa": "کارت پستال" }
+            "translations": {
+                "en": "postcard",
+                "fa": "کارت پستال"
+            }
         },
         "ซองจดหมาย": {
-            "translations": { "en": "envelope", "fa": "پاکت نامه" }
+            "translations": {
+                "en": "envelope",
+                "fa": "پاکت نامه"
+            }
         },
         "แสตมป์": {
-            "translations": { "en": "stamp", "fa": "تمبر" }
+            "translations": {
+                "en": "stamp",
+                "fa": "تمبر"
+            }
         },
         "ดวง": {
-            "translations": { "en": "stamp (classifier)", "fa": "عدد (برای تمبر)" }
+            "translations": {
+                "en": "stamp (classifier)",
+                "fa": "عدد (برای تمبر)"
+            }
         },
         "ส่ง": {
-            "translations": { "en": "send", "fa": "فرستادن" }
+            "translations": {
+                "en": "send",
+                "fa": "فرستادن"
+            }
         },
         "รับ": {
-            "translations": { "en": "receive", "fa": "دریافت کردن" }
+            "translations": {
+                "en": "receive",
+                "fa": "دریافت کردن"
+            }
         },
         "ถึง": {
-            "translations": { "en": "to", "fa": "به" }
+            "translations": {
+                "en": "to",
+                "fa": "به"
+            }
         },
         "จาก": {
-            "translations": { "en": "from", "fa": "از" }
+            "translations": {
+                "en": "from",
+                "fa": "از"
+            }
         },
         "น้ำหนัก": {
-            "translations": { "en": "weight", "fa": "وزن" }
+            "translations": {
+                "en": "weight",
+                "fa": "وزن"
+            }
         },
         "ชั่ง": {
-            "translations": { "en": "weigh", "fa": "وزن کردن" }
+            "translations": {
+                "en": "weigh",
+                "fa": "وزن کردن"
+            }
         },
         "ราคา": {
-            "translations": { "en": "price", "fa": "قیمت" }
+            "translations": {
+                "en": "price",
+                "fa": "قیمت"
+            }
         },
         "ค่าส่ง": {
-            "translations": { "en": "shipping cost", "fa": "هزینه ارسال" }
+            "translations": {
+                "en": "shipping cost",
+                "fa": "هزینه ارسال"
+            }
         },
         "ธรรมดา": {
-            "translations": { "en": "regular mail", "fa": "پست معمولی" }
+            "translations": {
+                "en": "regular mail",
+                "fa": "پست معمولی"
+            }
         },
         "ด่วน": {
-            "translations": { "en": "express", "fa": "پیشتاز" }
+            "translations": {
+                "en": "express",
+                "fa": "پیشتاز"
+            }
         },
         "ลงทะเบียน": {
-            "translations": { "en": "registered mail", "fa": "پست سفارشی" }
+            "translations": {
+                "en": "registered mail",
+                "fa": "پست سفارشی"
+            }
         },
         "EMS": {
-            "translations": { "en": "EMS", "fa": "پست سریع" }
+            "translations": {
+                "en": "EMS",
+                "fa": "پست سریع"
+            }
         },
         "ทางอากาศ": {
-            "translations": { "en": "air mail", "fa": "پست هوایی" }
+            "translations": {
+                "en": "air mail",
+                "fa": "پست هوایی"
+            }
         },
         "ทางเรือ": {
-            "translations": { "en": "sea mail", "fa": "پست دریایی" }
+            "translations": {
+                "en": "sea mail",
+                "fa": "پست دریایی"
+            }
         },
         "กล่อง": {
-            "translations": { "en": "box", "fa": "جعبه" }
+            "translations": {
+                "en": "box",
+                "fa": "جعبه"
+            }
         },
         "เทป": {
-            "translations": { "en": "tape", "fa": "چسب" }
+            "translations": {
+                "en": "tape",
+                "fa": "چسب"
+            }
         },
         "ที่อยู่": {
-            "translations": { "en": "address", "fa": "آدرس" }
+            "translations": {
+                "en": "address",
+                "fa": "آدرس"
+            }
+        },
+        "ใบ": {
+            "translations": {
+                "en": "Leaf",
+                "fa": "تیغه"
+            }
+        },
+        "ละ": {
+            "translations": {
+                "en": "and ",
+                "fa": "به ازای هر"
+            }
+        },
+        "ยี่สิบห้า": {
+            "translations": {
+                "en": "Twenty Five",
+                "fa": "بیست و پنج"
+            }
+        },
+        "บาท": {
+            "translations": {
+                "en": "Baht",
+                "fa": "بات"
+            }
+        },
+        "ค่ะ": {
+            "translations": {
+                "en": "Thank you.",
+                "fa": "بله"
+            }
+        },
+        "ขอ": {
+            "translations": {
+                "en": "I'm looking at it.",
+                "fa": "خواهش می‌کنم"
+            }
+        },
+        "ห้า": {
+            "translations": {
+                "en": "FIVE.",
+                "fa": "پنج"
+            }
+        },
+        "ครับ": {
+            "translations": {
+                "en": "OK",
+                "fa": "بله"
+            }
+        },
+        "หนึ่งร้อยยี่สิบห้า": {
+            "translations": {
+                "en": "One hundred and twenty-five.",
+                "fa": "صد و بیست و پنج"
+            }
+        },
+        "นี่": {
+            "translations": {
+                "en": "Hey. ",
+                "fa": "این"
+            }
+        },
+        "ขนาด": {
+            "translations": {
+                "en": "Size",
+                "fa": "اندازه"
+            }
+        },
+        "นี้": {
+            "translations": {
+                "en": "This",
+                "fa": "این"
+            }
+        },
+        "สิบห้า": {
+            "translations": {
+                "en": "Fifteen",
+                "fa": "پانزده"
+            }
+        },
+        "สอง": {
+            "translations": {
+                "en": "TWO.",
+                "fa": "دو"
+            }
+        },
+        "กิโลกรัม": {
+            "translations": {
+                "en": "Kg",
+                "fa": "کیلوگرم"
+            }
+        },
+        "จะ": {
+            "translations": {
+                "en": "Ca",
+                "fa": "اراده"
+            }
+        },
+        "แบบ": {
+            "translations": {
+                "en": "Drawing",
+                "fa": "حالت‌ها"
+            }
+        },
+        "ไหน": {
+            "translations": {
+                "en": "Plum",
+                "fa": "که"
+            }
+        },
+        "คะ": {
+            "translations": {
+                "en": "Ka",
+                "fa": "بله"
+            }
+        },
+        "สามร้อยห้าสิบ": {
+            "translations": {
+                "en": "Three hundred and fifty.",
+                "fa": "سیصد و پنجاه"
+            }
+        },
+        "ประมาณ": {
+            "translations": {
+                "en": "Estimate",
+                "fa": "درباره"
+            }
+        },
+        "เจ็ด": {
+            "translations": {
+                "en": "SEVEN.",
+                "fa": "هفت"
+            }
+        },
+        "สิบ": {
+            "translations": {
+                "en": "Ten",
+                "fa": "ده"
+            }
+        },
+        "วัน": {
+            "translations": {
+                "en": "DAYS",
+                "fa": "روز"
+            }
+        },
+        "EE12345678TH": {
+            "translations": {
+                "en": "EE12345678TH",
+                "fa": "EE12345678TH"
+            }
+        },
+        "ซื้อ": {
+            "translations": {
+                "en": "Purchase",
+                "fa": "خرید"
+            }
+        },
+        "ต้องการ": {
+            "translations": {
+                "en": "Need",
+                "fa": "مورد نیاز"
+            }
+        },
+        "อะไร": {
+            "translations": {
+                "en": "WHAT",
+                "fa": "چه:"
+            }
+        },
+        "ไป": {
+            "translations": {
+                "en": "I'm going",
+                "fa": "& برو‌"
+            }
+        },
+        "อเมริกา": {
+            "translations": {
+                "en": "America",
+                "fa": "آمریکا"
+            }
+        },
+        "ได้": {
+            "translations": {
+                "en": "Yes",
+                "fa": "می‌تواند"
+            }
+        },
+        "ใส่": {
+            "translations": {
+                "en": "Insert",
+                "fa": "پوشیدن"
+            }
+        },
+        "แล้ว": {
+            "translations": {
+                "en": "So ",
+                "fa": "قبلاً"
+            }
+        },
+        "หรือ": {
+            "translations": {
+                "en": "OR",
+                "fa": "یا"
+            }
+        },
+        "ยัง": {
+            "translations": {
+                "en": "yet",
+                "fa": "هنوز نه"
+            }
+        },
+        "เลย": {
+            "translations": {
+                "en": "Loei Province",
+                "fa": "اصلاً"
+            }
+        },
+        "หน่อย": {
+            "translations": {
+                "en": "A little bit",
+                "fa": "بیت"
+            }
+        },
+        "อังกฤษ": {
+            "translations": {
+                "en": "English",
+                "fa": "انگلیسی"
+            }
+        },
+        "ใช้เวลา": {
+            "translations": {
+                "en": "Take time",
+                "fa": "زمان می‌برد."
+            }
+        },
+        "กี่": {
+            "translations": {
+                "en": "Loom",
+                "fa": "چند تا؟"
+            }
+        },
+        "หมายเลข": {
+            "translations": {
+                "en": "Number",
+                "fa": "شناسه"
+            }
+        },
+        "แสดง": {
+            "translations": {
+                "en": "DISPLAYING",
+                "fa": "& نمایش‌"
+            }
+        },
+        "บัตรประชาชน": {
+            "translations": {
+                "en": "ID card",
+                "fa": "کارت شناسایی ملی"
+            }
+        },
+        "ด้วย": {
+            "translations": {
+                "en": "With",
+                "fa": "با"
+            }
+        },
+        "เซ็นต์": {
+            "translations": {
+                "en": "cent",
+                "fa": "سنت"
+            }
+        },
+        "ของ": {
+            "translations": {
+                "en": "of",
+                "fa": "از"
+            }
+        },
+        "ตรง": {
+            "translations": {
+                "en": "Straight",
+                "fa": "مستقیم"
+            }
+        },
+        "เรียบร้อย": {
+            "translations": {
+                "en": ", tidy",
+                "fa": "مرتب"
+            }
+        },
+        "ขอบคุณ": {
+            "translations": {
+                "en": "Thanks!",
+                "fa": "متشکرم"
+            }
         }
     },
     "activity": {
@@ -109,7 +487,12 @@
                     "sentences": [
                         {
                             "source": "ขอซื้อแสตมป์ครับ",
-                            "wordIds": [ "ขอ", "ซื้อ", "แสตมป์", "ครับ" ],
+                            "wordIds": [
+                                "ขอ",
+                                "ซื้อ",
+                                "แสตมป์",
+                                "ครับ"
+                            ],
                             "translations": {
                                 "en": "I'd like to buy stamps",
                                 "fa": "تمبر می‌خواهم بخرم"
@@ -117,7 +500,12 @@
                         },
                         {
                             "source": "ต้องการส่งอะไรคะ",
-                            "wordIds": [ "ต้องการ", "ส่ง", "อะไร", "คะ" ],
+                            "wordIds": [
+                                "ต้องการ",
+                                "ส่ง",
+                                "อะไร",
+                                "คะ"
+                            ],
                             "translations": {
                                 "en": "What are you sending?",
                                 "fa": "چه می‌خواهید بفرستید؟"
@@ -125,31 +513,52 @@
                         },
                         {
                             "source": "ส่งไปรษณียบัตรไปอเมริกาครับ",
-                            "wordIds": [ "ส่ง", "ไปรษณียบัตร", "ไป", "อเมริกา", "ครับ" ],
+                            "wordIds": [
+                                "ส่ง",
+                                "ไปรษณียบัตร",
+                                "ไป",
+                                "อเมริกา",
+                                "ครับ"
+                            ],
                             "translations": {
                                 "en": "Sending postcards to America",
                                 "fa": "کارت پستال به آمریکا می‌فرستم"
                             }
                         },
                         {
-                            "source": "ใบละ 25 บาทค่ะ",
-                            "wordIds": [ "ใบ", "ละ", "ยี่สิบห้า", "บาท", "ค่ะ" ],
+                            "source": "ใบละยี่สิบห้าบาทค่ะ",
+                            "wordIds": [
+                                "ใบ",
+                                "ละ",
+                                "ยี่สิบห้า",
+                                "บาท",
+                                "ค่ะ"
+                            ],
                             "translations": {
                                 "en": "25 baht each",
                                 "fa": "هر عدد ۲۵ بات"
                             }
                         },
                         {
-                            "source": "ขอ 5 ใบครับ",
-                            "wordIds": [ "ขอ", "ห้า", "ใบ", "ครับ" ],
+                            "source": "ขอห้าใบครับ",
+                            "wordIds": [
+                                "ขอ",
+                                "ห้า",
+                                "ใบ",
+                                "ครับ"
+                            ],
                             "translations": {
                                 "en": "5 please",
                                 "fa": "۵ تا لطفاً"
                             }
                         },
                         {
-                            "source": "125 บาทค่ะ",
-                            "wordIds": [ "หนึ่งร้อยยี่สิบห้า", "บาท", "ค่ะ" ],
+                            "source": "หนึ่งร้อยยี่สิบห้าบาทค่ะ",
+                            "wordIds": [
+                                "หนึ่งร้อยยี่สิบห้า",
+                                "บาท",
+                                "ค่ะ"
+                            ],
                             "translations": {
                                 "en": "125 baht",
                                 "fa": "۱۲۵ بات"
@@ -172,31 +581,58 @@
                     "sentences": [
                         {
                             "source": "ส่งพัสดุครับ",
-                            "wordIds": [ "ส่ง", "พัสดุ", "ครับ" ],
+                            "wordIds": [
+                                "ส่ง",
+                                "พัสดุ",
+                                "ครับ"
+                            ],
                             "translations": {
                                 "en": "I want to send a parcel",
                                 "fa": "می‌خواهم بسته بفرستم"
                             }
                         },
                         {
-                            "source": "ได้ค่ะ ใส่กล่องแล้วหรือยัง",
-                            "wordIds": [ "ได้", "ค่ะ", "ใส่", "กล่อง", "แล้ว", "หรือ", "ยัง" ],
+                            "source": "ได้ค่ะใส่กล่องแล้วหรือยัง",
+                            "wordIds": [
+                                "ได้",
+                                "ค่ะ",
+                                "ใส่",
+                                "กล่อง",
+                                "แล้ว",
+                                "หรือ",
+                                "ยัง"
+                            ],
                             "translations": {
                                 "en": "Okay, is it in a box already?",
                                 "fa": "باشه، داخل جعبه گذاشته‌اید؟"
                             }
                         },
                         {
-                            "source": "ยังเลยครับ ขอกล่องหน่อย",
-                            "wordIds": [ "ยัง", "เลย", "ครับ", "ขอ", "กล่อง", "หน่อย" ],
+                            "source": "ยังเลยครับขอกล่องหน่อย",
+                            "wordIds": [
+                                "ยัง",
+                                "เลย",
+                                "ครับ",
+                                "ขอ",
+                                "กล่อง",
+                                "หน่อย"
+                            ],
                             "translations": {
                                 "en": "Not yet, can I have a box?",
                                 "fa": "نه هنوز، یک جعبه می‌خواهم"
                             }
                         },
                         {
-                            "source": "นี่ค่ะ กล่องขนาดนี้ 15 บาท",
-                            "wordIds": [ "นี่", "ค่ะ", "กล่อง", "ขนาด", "นี้", "สิบห้า", "บาท" ],
+                            "source": "นี่ค่ะกล่องขนาดนี้สิบห้าบาท",
+                            "wordIds": [
+                                "นี่",
+                                "ค่ะ",
+                                "กล่อง",
+                                "ขนาด",
+                                "นี้",
+                                "สิบห้า",
+                                "บาท"
+                            ],
                             "translations": {
                                 "en": "Here's a box this size, 15 baht",
                                 "fa": "بفرمایید، این جعبه ۱۵ بات"
@@ -204,15 +640,29 @@
                         },
                         {
                             "source": "ขอชั่งน้ำหนักหน่อยครับ",
-                            "wordIds": [ "ขอ", "ชั่ง", "น้ำหนัก", "หน่อย", "ครับ" ],
+                            "wordIds": [
+                                "ขอ",
+                                "ชั่ง",
+                                "น้ำหนัก",
+                                "หน่อย",
+                                "ครับ"
+                            ],
                             "translations": {
                                 "en": "Please weigh it",
                                 "fa": "لطفاً وزن کنید"
                             }
                         },
                         {
-                            "source": "2 กิโลกรัม จะส่งแบบไหนคะ",
-                            "wordIds": [ "สอง", "กิโลกรัม", "จะ", "ส่ง", "แบบ", "ไหน", "คะ" ],
+                            "source": "สองกิโลกรัมจะส่งแบบไหนคะ",
+                            "wordIds": [
+                                "สอง",
+                                "กิโลกรัม",
+                                "จะ",
+                                "ส่ง",
+                                "แบบ",
+                                "ไหน",
+                                "คะ"
+                            ],
                             "translations": {
                                 "en": "2 kilograms. How would you like to send it?",
                                 "fa": "۲ کیلو. چه نوع ارسالی می‌خواهید؟"
@@ -220,15 +670,24 @@
                         },
                         {
                             "source": "ส่งแบบลงทะเบียน",
-                            "wordIds": [ "ส่ง", "แบบ", "ลงทะเบียน" ],
+                            "wordIds": [
+                                "ส่ง",
+                                "แบบ",
+                                "ลงทะเบียน"
+                            ],
                             "translations": {
                                 "en": "Registered mail",
                                 "fa": "سفارشی"
                             }
                         },
                         {
-                            "source": "ค่าส่ง 350 บาทค่ะ",
-                            "wordIds": [ "ค่าส่ง", "สามร้อยห้าสิบ", "บาท", "ค่ะ" ],
+                            "source": "ค่าส่งสามร้อยห้าสิบบาทค่ะ",
+                            "wordIds": [
+                                "ค่าส่ง",
+                                "สามร้อยห้าสิบ",
+                                "บาท",
+                                "ค่ะ"
+                            ],
                             "translations": {
                                 "en": "Shipping cost 350 baht",
                                 "fa": "هزینه ارسال ۳۵۰ بات"
@@ -236,15 +695,28 @@
                         },
                         {
                             "source": "ถึงอังกฤษใช้เวลากี่วัน",
-                            "wordIds": [ "ถึง", "อังกฤษ", "ใช้เวลา", "กี่", "วัน" ],
+                            "wordIds": [
+                                "ถึง",
+                                "อังกฤษ",
+                                "ใช้เวลา",
+                                "กี่",
+                                "วัน"
+                            ],
                             "translations": {
                                 "en": "How many days to reach England?",
                                 "fa": "چند روز طول می‌کشد به انگلستان برسد؟"
                             }
                         },
                         {
-                            "source": "ประมาณ 7-10 วันค่ะ",
-                            "wordIds": [ "ประมาณ", "เจ็ด", "ถึง", "สิบ", "วัน", "ค่ะ" ],
+                            "source": "ประมาณเจ็ดถึงสิบวันค่ะ",
+                            "wordIds": [
+                                "ประมาณ",
+                                "เจ็ด",
+                                "ถึง",
+                                "สิบ",
+                                "วัน",
+                                "ค่ะ"
+                            ],
                             "translations": {
                                 "en": "About 7-10 days",
                                 "fa": "حدود ۷-۱۰ روز"
@@ -267,7 +739,12 @@
                     "sentences": [
                         {
                             "source": "ขอรับพัสดุครับ",
-                            "wordIds": [ "ขอ", "รับ", "พัสดุ", "ครับ" ],
+                            "wordIds": [
+                                "ขอ",
+                                "รับ",
+                                "พัสดุ",
+                                "ครับ"
+                            ],
                             "translations": {
                                 "en": "I'm here to pick up a parcel",
                                 "fa": "برای دریافت بسته آمده‌ام"
@@ -275,15 +752,23 @@
                         },
                         {
                             "source": "หมายเลขพัสดุอะไรคะ",
-                            "wordIds": [ "หมายเลข", "พัสดุ", "อะไร", "คะ" ],
+                            "wordIds": [
+                                "หมายเลข",
+                                "พัสดุ",
+                                "อะไร",
+                                "คะ"
+                            ],
                             "translations": {
                                 "en": "What's the tracking number?",
                                 "fa": "شماره پیگیری چیست؟"
                             }
                         },
                         {
-                            "source": "EE 1234 5678 TH ครับ",
-                            "wordIds": [ ],
+                            "source": "EE12345678THครับ",
+                            "wordIds": [
+                                "EE12345678TH",
+                                "ครับ"
+                            ],
                             "translations": {
                                 "en": "EE 1234 5678 TH",
                                 "fa": "EE 1234 5678 TH"
@@ -291,7 +776,13 @@
                         },
                         {
                             "source": "ขอแสดงบัตรประชาชนด้วยค่ะ",
-                            "wordIds": [ "ขอ", "แสดง", "บัตรประชาชน", "ด้วย", "ค่ะ" ],
+                            "wordIds": [
+                                "ขอ",
+                                "แสดง",
+                                "บัตรประชาชน",
+                                "ด้วย",
+                                "ค่ะ"
+                            ],
                             "translations": {
                                 "en": "Please show your ID card",
                                 "fa": "لطفاً کارت شناسایی نشان دهید"
@@ -299,7 +790,10 @@
                         },
                         {
                             "source": "นี่ครับ",
-                            "wordIds": [ "นี่", "ครับ" ],
+                            "wordIds": [
+                                "นี่",
+                                "ครับ"
+                            ],
                             "translations": {
                                 "en": "Here you are",
                                 "fa": "بفرمایید"
@@ -307,15 +801,26 @@
                         },
                         {
                             "source": "เซ็นต์รับของตรงนี้ค่ะ",
-                            "wordIds": [ "เซ็นต์", "รับ", "ของ", "ตรง", "นี้", "ค่ะ" ],
+                            "wordIds": [
+                                "เซ็นต์",
+                                "รับ",
+                                "ของ",
+                                "ตรง",
+                                "นี้",
+                                "ค่ะ"
+                            ],
                             "translations": {
                                 "en": "Sign here to receive",
                                 "fa": "اینجا امضا کنید برای دریافت"
                             }
                         },
                         {
-                            "source": "เรียบร้อยครับ ขอบคุณ",
-                            "wordIds": [ "เรียบร้อย", "ครับ", "ขอบคุณ" ],
+                            "source": "เรียบร้อยครับขอบคุณ",
+                            "wordIds": [
+                                "เรียบร้อย",
+                                "ครับ",
+                                "ขอบคุณ"
+                            ],
                             "translations": {
                                 "en": "Done, thank you",
                                 "fa": "تمام شد، متشکرم"

@@ -12,143 +12,947 @@
         "wordCount": 45,
         "sentenceCount": 28,
         "estimatedTime": 30,
-        "tags": [ "health", "hospital", "doctor", "emergency" ]
+        "tags": [
+            "health",
+            "hospital",
+            "doctor",
+            "emergency"
+        ],
+        "authors": [ ],
+        "reviewers": [ ],
+        "prerequisites": [ ],
+        "updated": "2026-02-24T15:10:10.779Z"
     },
     "vocabulary": {
         "โรงพยาบาล": {
-            "translations": { "en": "hospital", "fa": "بیمارستان" }
+            "translations": {
+                "en": "hospital",
+                "fa": "بیمارستان"
+            }
         },
         "คลินิก": {
-            "translations": { "en": "clinic", "fa": "درمانگاه" }
+            "translations": {
+                "en": "clinic",
+                "fa": "درمانگاه"
+            }
         },
         "หมอ": {
-            "translations": { "en": "doctor", "fa": "دکتر" }
+            "translations": {
+                "en": "doctor",
+                "fa": "دکتر"
+            }
         },
         "พยาบาล": {
-            "translations": { "en": "nurse", "fa": "پرستار" }
+            "translations": {
+                "en": "nurse",
+                "fa": "پرستار"
+            }
         },
         "เภสัชกร": {
-            "translations": { "en": "pharmacist", "fa": "داروساز" }
+            "translations": {
+                "en": "pharmacist",
+                "fa": "داروساز"
+            }
         },
         "คนไข้": {
-            "translations": { "en": "patient", "fa": "بیمار" }
+            "translations": {
+                "en": "patient",
+                "fa": "بیمار"
+            }
         },
         "แผนก": {
-            "translations": { "en": "department", "fa": "بخش" }
+            "translations": {
+                "en": "department",
+                "fa": "بخش"
+            }
         },
         "แผนกผู้ป่วยนอก": {
-            "translations": { "en": "outpatient department", "fa": "بخش سرپایی" }
+            "translations": {
+                "en": "outpatient department",
+                "fa": "بخش سرپایی"
+            }
         },
         "แผนกฉุกเฉิน": {
-            "translations": { "en": "emergency room", "fa": "بخش اورژانس" }
+            "translations": {
+                "en": "emergency room",
+                "fa": "بخش اورژانس"
+            }
         },
         "หอผู้ป่วย": {
-            "translations": { "en": "ward", "fa": "بخش بستری" }
+            "translations": {
+                "en": "ward",
+                "fa": "بخش بستری"
+            }
         },
         "ห้องตรวจ": {
-            "translations": { "en": "examination room", "fa": "اتاق معاینه" }
+            "translations": {
+                "en": "examination room",
+                "fa": "اتاق معاینه"
+            }
         },
         "เตียง": {
-            "translations": { "en": "bed", "fa": "تخت" }
+            "translations": {
+                "en": "bed",
+                "fa": "تخت"
+            }
         },
         "อาการ": {
-            "translations": { "en": "symptom", "fa": "علائم" }
+            "translations": {
+                "en": "symptom",
+                "fa": "علائم"
+            }
         },
         "ปวด": {
-            "translations": { "en": "pain", "fa": "درد" }
+            "translations": {
+                "en": "pain",
+                "fa": "درد"
+            }
         },
         "เจ็บ": {
-            "translations": { "en": "hurt", "fa": "درد داشتن" }
+            "translations": {
+                "en": "hurt",
+                "fa": "درد داشتن"
+            }
         },
         "บวม": {
-            "translations": { "en": "swollen", "fa": "ورم" }
+            "translations": {
+                "en": "swollen",
+                "fa": "ورم"
+            }
         },
         "แดง": {
-            "translations": { "en": "red", "fa": "قرمز" }
+            "translations": {
+                "en": "red",
+                "fa": "قرمز"
+            }
         },
         "คัน": {
-            "translations": { "en": "itchy", "fa": "خارش" }
+            "translations": {
+                "en": "itchy",
+                "fa": "خارش"
+            }
         },
         "คลื่นไส้": {
-            "translations": { "en": "nauseous", "fa": "تهوع" }
+            "translations": {
+                "en": "nauseous",
+                "fa": "تهوع"
+            }
         },
         "อาเจียน": {
-            "translations": { "en": "vomit", "fa": "استفراغ" }
+            "translations": {
+                "en": "vomit",
+                "fa": "استفراغ"
+            }
         },
         "ท้องเสีย": {
-            "translations": { "en": "diarrhea", "fa": "اسهال" }
+            "translations": {
+                "en": "diarrhea",
+                "fa": "اسهال"
+            }
         },
         "ท้องผูก": {
-            "translations": { "en": "constipation", "fa": "یبوست" }
+            "translations": {
+                "en": "constipation",
+                "fa": "یبوست"
+            }
         },
         "ความดัน": {
-            "translations": { "en": "blood pressure", "fa": "فشار خون" }
+            "translations": {
+                "en": "blood pressure",
+                "fa": "فشار خون"
+            }
         },
         "สูง": {
-            "translations": { "en": "high", "fa": "بالا" }
+            "translations": {
+                "en": "high",
+                "fa": "بالا"
+            }
         },
         "ต่ำ": {
-            "translations": { "en": "low", "fa": "پایین" }
+            "translations": {
+                "en": "low",
+                "fa": "پایین"
+            }
         },
         "น้ำตาล": {
-            "translations": { "en": "sugar", "fa": "قند" }
+            "translations": {
+                "en": "sugar",
+                "fa": "قند"
+            }
         },
         "ไขมัน": {
-            "translations": { "en": "cholesterol", "fa": "چربی" }
+            "translations": {
+                "en": "cholesterol",
+                "fa": "چربی"
+            }
         },
         "เอ็กซเรย์": {
-            "translations": { "en": "X-ray", "fa": "عکسبرداری" }
+            "translations": {
+                "en": "X-ray",
+                "fa": "عکسبرداری"
+            }
         },
         "ตรวจเลือด": {
-            "translations": { "en": "blood test", "fa": "آزمایش خون" }
+            "translations": {
+                "en": "blood test",
+                "fa": "آزمایش خون"
+            }
         },
         "ตรวจปัสสาวะ": {
-            "translations": { "en": "urine test", "fa": "آزمایش ادرار" }
+            "translations": {
+                "en": "urine test",
+                "fa": "آزمایش ادرار"
+            }
         },
         "ฉีดยา": {
-            "translations": { "en": "injection", "fa": "تزریق" }
+            "translations": {
+                "en": "injection",
+                "fa": "تزریق"
+            }
         },
         "กินยา": {
-            "translations": { "en": "take medicine", "fa": "دارو خوردن" }
+            "translations": {
+                "en": "take medicine",
+                "fa": "دارو خوردن"
+            }
         },
         "ยาฉีด": {
-            "translations": { "en": "injectable medicine", "fa": "داروی تزریقی" }
+            "translations": {
+                "en": "injectable medicine",
+                "fa": "داروی تزریقی"
+            }
         },
         "ยาน้ำ": {
-            "translations": { "en": "liquid medicine", "fa": "داروی مایع" }
+            "translations": {
+                "en": "liquid medicine",
+                "fa": "داروی مایع"
+            }
         },
         "ยาเม็ด": {
-            "translations": { "en": "pill", "fa": "قرص" }
+            "translations": {
+                "en": "pill",
+                "fa": "قرص"
+            }
         },
         "ยาทา": {
-            "translations": { "en": "ointment", "fa": "پماد" }
+            "translations": {
+                "en": "ointment",
+                "fa": "پماد"
+            }
         },
         "ผ่าตัด": {
-            "translations": { "en": "surgery", "fa": "جراحی" }
+            "translations": {
+                "en": "surgery",
+                "fa": "جراحی"
+            }
         },
         "พักฟื้น": {
-            "translations": { "en": "recovery", "fa": "بهبودی" }
+            "translations": {
+                "en": "recovery",
+                "fa": "بهبودی"
+            }
         },
         "นัด": {
-            "translations": { "en": "appointment", "fa": "نوبت" }
+            "translations": {
+                "en": "appointment",
+                "fa": "نوبت"
+            }
         },
         "ประวัติ": {
-            "translations": { "en": "medical history", "fa": "سابقه پزشکی" }
+            "translations": {
+                "en": "medical history",
+                "fa": "سابقه پزشکی"
+            }
         },
         "แพ้ยา": {
-            "translations": { "en": "drug allergy", "fa": "حساسیت دارویی" }
+            "translations": {
+                "en": "drug allergy",
+                "fa": "حساسیت دارویی"
+            }
         },
         "เบอร์ติดต่อ": {
-            "translations": { "en": "contact number", "fa": "شماره تماس" }
+            "translations": {
+                "en": "contact number",
+                "fa": "شماره تماس"
+            }
         },
         "ประกันสุขภาพ": {
-            "translations": { "en": "health insurance", "fa": "بیمه سلامت" }
+            "translations": {
+                "en": "health insurance",
+                "fa": "بیمه سلامت"
+            }
         },
         "บัตรประชาชน": {
-            "translations": { "en": "ID card", "fa": "کارت شناسایی" }
+            "translations": {
+                "en": "ID card",
+                "fa": "کارت شناسایی"
+            }
         },
         "ค่ารักษา": {
-            "translations": { "en": "medical fee", "fa": "هزینه درمان" }
+            "translations": {
+                "en": "medical fee",
+                "fa": "هزینه درمان"
+            }
+        },
+        "มี": {
+            "translations": {
+                "en": "Yes",
+                "fa": "محتویات"
+            }
+        },
+        "ครับ": {
+            "translations": {
+                "en": "OK",
+                "fa": "بله"
+            }
+        },
+        "สามสิบแปด": {
+            "translations": {
+                "en": "Thirty-eight.",
+                "fa": "سی و هشت"
+            }
+        },
+        "องศา": {
+            "translations": {
+                "en": "Degree",
+                "fa": "درجه"
+            }
+        },
+        "ทาน": {
+            "translations": {
+                "en": "Eat",
+                "fa": "خوردن"
+            }
+        },
+        "ครั้งละ": {
+            "translations": {
+                "en": "at a time",
+                "fa": "یک بار"
+            }
+        },
+        "สอง": {
+            "translations": {
+                "en": "TWO.",
+                "fa": "دو"
+            }
+        },
+        "ช้อนชา": {
+            "translations": {
+                "en": "Teaspoon",
+                "fa": "قاشق چایخوری"
+            }
+        },
+        "วันละ": {
+            "translations": {
+                "en": "a day",
+                "fa": "یک روز"
+            }
+        },
+        "สาม": {
+            "translations": {
+                "en": "THREE.",
+                "fa": "سه"
+            }
+        },
+        "ครั้ง": {
+            "translations": {
+                "en": "times",
+                "fa": "زمان"
+            }
+        },
+        "หลัง": {
+            "translations": {
+                "en": "Back",
+                "fa": "پشت"
+            }
+        },
+        "อาหาร": {
+            "translations": {
+                "en": "Food",
+                "fa": "غذا"
+            }
+        },
+        "สีขาว": {
+            "translations": {
+                "en": "White.",
+                "fa": "سفید"
+            }
+        },
+        "ก่อนนอน": {
+            "translations": {
+                "en": "Before bed",
+                "fa": "قبل از خواب"
+            }
+        },
+        "หนึ่ง": {
+            "translations": {
+                "en": "“One.”",
+                "fa": "یک"
+            }
+        },
+        "เม็ด": {
+            "translations": {
+                "en": "Granules",
+                "fa": "دانه"
+            }
+        },
+        "อาทิตย์": {
+            "translations": {
+                "en": "Sunday",
+                "fa": "یکشنبه"
+            }
+        },
+        "หน้า": {
+            "translations": {
+                "en": "Page",
+                "fa": "صفحه"
+            }
+        },
+        "วันจันทร์": {
+            "translations": {
+                "en": "Monday",
+                "fa": "روز دوشنبه"
+            }
+        },
+        "เวลา": {
+            "translations": {
+                "en": "Time:",
+                "fa": "زمان"
+            }
+        },
+        "สิบ": {
+            "translations": {
+                "en": "Ten",
+                "fa": "ده"
+            }
+        },
+        "โมง": {
+            "translations": {
+                "en": "<g id=\"1\">Hours</g>",
+                "fa": "ساعت"
+            }
+        },
+        "งด": {
+            "translations": {
+                "en": "Abstain",
+                "fa": "مبهوت"
+            }
+        },
+        "น้ำ": {
+            "translations": {
+                "en": "Water",
+                "fa": "آب"
+            }
+        },
+        "ก่อน": {
+            "translations": {
+                "en": "Prev",
+                "fa": "قبل از"
+            }
+        },
+        "มา": {
+            "translations": {
+                "en": "Come.",
+                "fa": "بیا"
+            }
+        },
+        "พบ": {
+            "translations": {
+                "en": "Found",
+                "fa": "ملاقات"
+            }
+        },
+        "แปด": {
+            "translations": {
+                "en": "EIGHTH.",
+                "fa": "هشت"
+            }
+        },
+        "ชั่วโมง": {
+            "translations": {
+                "en": "HOURS",
+                "fa": "ساعت"
+            }
+        },
+        "สวัสดี": {
+            "translations": {
+                "en": "Hi.",
+                "fa": "سلام"
+            }
+        },
+        "หา": {
+            "translations": {
+                "en": "\"Na.",
+                "fa": "_پیدا کردن"
+            }
+        },
+        "นัดหมาย": {
+            "translations": {
+                "en": "Appointment",
+                "fa": "قرار ملاقات بگذارید"
+            }
+        },
+        "หรือ": {
+            "translations": {
+                "en": "OR",
+                "fa": "یا"
+            }
+        },
+        "เปล่า": {
+            "translations": {
+                "en": "Nothing.",
+                "fa": "هیچ چیز"
+            }
+        },
+        "คะ": {
+            "translations": {
+                "en": "Ka",
+                "fa": "بله"
+            }
+        },
+        "ไม่มี": {
+            "translations": {
+                "en": "No",
+                "fa": "هیچ"
+            }
+        },
+        "แบบ": {
+            "translations": {
+                "en": "Drawing",
+                "fa": "حالت‌ها"
+            }
+        },
+        "ไม่": {
+            "translations": {
+                "en": "No",
+                "fa": "خیر"
+            }
+        },
+        "ได้": {
+            "translations": {
+                "en": "Yes",
+                "fa": "می‌تواند"
+            }
+        },
+        "ค่ะ": {
+            "translations": {
+                "en": "Thank you.",
+                "fa": "بله"
+            }
+        },
+        "ขอ": {
+            "translations": {
+                "en": "I'm looking at it.",
+                "fa": "خواهش می‌کنم"
+            }
+        },
+        "ชื่อ": {
+            "translations": {
+                "en": "First name",
+                "fa": "عنوان"
+            }
+        },
+        "นามสกุล": {
+            "translations": {
+                "en": "Family name",
+                "fa": "نام خانوادگی"
+            }
+        },
+        "หน่อย": {
+            "translations": {
+                "en": "A little bit",
+                "fa": "بیت"
+            }
+        },
+        "นาย": {
+            "translations": {
+                "en": "Mr",
+                "fa": "آقای"
+            }
+        },
+        "สมชาย": {
+            "translations": {
+                "en": "Somchai",
+                "fa": "سومچای"
+            }
+        },
+        "ใจดี": {
+            "translations": {
+                "en": "Kind",
+                "fa": "مهربان"
+            }
+        },
+        "รอ": {
+            "translations": {
+                "en": "Stand-By",
+                "fa": "انتظار"
+            }
+        },
+        "สักครู่": {
+            "translations": {
+                "en": "Just a moment.",
+                "fa": "یک لحظه"
+            }
+        },
+        "เดี๋ยว": {
+            "translations": {
+                "en": "Wait.",
+                "fa": "یک دقیقه صبر کن"
+            }
+        },
+        "เปิด": {
+            "translations": {
+                "en": "Open",
+                "fa": "عملیات"
+            }
+        },
+        "ให้": {
+            "translations": {
+                "en": "to give",
+                "fa": "دادن"
+            }
+        },
+        "อะไร": {
+            "translations": {
+                "en": "WHAT",
+                "fa": "چه:"
+            }
+        },
+        "บ้าง": {
+            "translations": {
+                "en": "Somewhat",
+                "fa": "برخی"
+            }
+        },
+        "ท้อง": {
+            "translations": {
+                "en": "Belly",
+                "fa": "شکم"
+            }
+        },
+        "มาก": {
+            "translations": {
+                "en": "Many",
+                "fa": "بیشتر"
+            }
+        },
+        "ตรง": {
+            "translations": {
+                "en": "Straight",
+                "fa": "مستقیم"
+            }
+        },
+        "ไหน": {
+            "translations": {
+                "en": "Plum",
+                "fa": "که"
+            }
+        },
+        "ท้องน้อย": {
+            "translations": {
+                "en": "Belly",
+                "fa": "پایین شکم"
+            }
+        },
+        "ด้าน": {
+            "translations": {
+                "en": "Aspect",
+                "fa": "مات"
+            }
+        },
+        "ขวา": {
+            "translations": {
+                "en": "Right?! ",
+                "fa": "& راست: ‌"
+            }
+        },
+        "นาน": {
+            "translations": {
+                "en": "For",
+                "fa": "طولانی"
+            }
+        },
+        "แค่ไหน": {
+            "translations": {
+                "en": "Just how much.",
+                "fa": "چقدر؟"
+            }
+        },
+        "แล้ว": {
+            "translations": {
+                "en": "So ",
+                "fa": "قبلاً"
+            }
+        },
+        "ตั้งแต่": {
+            "translations": {
+                "en": "From",
+                "fa": "از آنجایی که"
+            }
+        },
+        "เมื่อคืน": {
+            "translations": {
+                "en": "Last night",
+                "fa": "دیشب"
+            }
+        },
+        "ไข้": {
+            "translations": {
+                "en": "Fever",
+                "fa": "تب"
+            }
+        },
+        "ไหม": {
+            "translations": {
+                "en": "Silk",
+                "fa": "ابریشم"
+            }
+        },
+        "ด้วย": {
+            "translations": {
+                "en": "With",
+                "fa": "با"
+            }
+        },
+        "นอน": {
+            "translations": {
+                "en": "Sleep",
+                "fa": "خواب"
+            }
+        },
+        "ลง": {
+            "translations": {
+                "en": "down",
+                "fa": "& پایین‌"
+            }
+        },
+        "บน": {
+            "translations": {
+                "en": "Wing",
+                "fa": "& نوع: ‌"
+            }
+        },
+        "นะ": {
+            "translations": {
+                "en": "Yes?",
+                "fa": "نا"
+            }
+        },
+        "จะ": {
+            "translations": {
+                "en": "Ca",
+                "fa": "اراده"
+            }
+        },
+        "ตรวจ": {
+            "translations": {
+                "en": "& Check",
+                "fa": "& بررسی تکلیف‌"
+            }
+        },
+        "ดู": {
+            "translations": {
+                "en": "View",
+                "fa": "_انتظار"
+            }
+        },
+        "นี้": {
+            "translations": {
+                "en": "This",
+                "fa": "این"
+            }
+        },
+        "หายใจ": {
+            "translations": {
+                "en": "Cellular respiration",
+                "fa": "نفس کشیدن"
+            }
+        },
+        "เข้า": {
+            "translations": {
+                "en": "in",
+                "fa": "ورود"
+            }
+        },
+        "ลึก": {
+            "translations": {
+                "en": "Depth",
+                "fa": "عمیق"
+            }
+        },
+        "ๆ": {
+            "translations": {
+                "en": "if",
+                "fa": "و غیره"
+            }
+        },
+        "ผม": {
+            "translations": {
+                "en": "Hair",
+                "fa": "من:"
+            }
+        },
+        "สงสัย": {
+            "translations": {
+                "en": "Suspect",
+                "fa": "تعجب"
+            }
+        },
+        "ว่า": {
+            "translations": {
+                "en": "That",
+                "fa": "که"
+            }
+        },
+        "เป็น": {
+            "translations": {
+                "en": "is",
+                "fa": "هست"
+            }
+        },
+        "ไส้ติ่ง": {
+            "translations": {
+                "en": "Appendix",
+                "fa": "ضمیمه"
+            }
+        },
+        "อักเสบ": {
+            "translations": {
+                "en": "Inflammation",
+                "fa": "التهاب"
+            }
+        },
+        "ต้อง": {
+            "translations": {
+                "en": "to",
+                "fa": "باید"
+            }
+        },
+        "เพิ่ม": {
+            "translations": {
+                "en": "Add",
+                "fa": "& افزودن... ‌"
+            }
+        },
+        "นี่": {
+            "translations": {
+                "en": "Hey. ",
+                "fa": "این"
+            }
+        },
+        "คือ": {
+            "translations": {
+                "en": "but",
+                "fa": "است"
+            }
+        },
+        "ใบสั่งยา": {
+            "translations": {
+                "en": "prescription",
+                "fa": "نسخه"
+            }
+        },
+        "ยา": {
+            "translations": {
+                "en": "Pharmaceutical drug",
+                "fa": "دارو"
+            }
+        },
+        "กี่": {
+            "translations": {
+                "en": "Loom",
+                "fa": "چند تا؟"
+            }
+        },
+        "กิน": {
+            "translations": {
+                "en": "Eating",
+                "fa": "خوردن"
+            }
+        },
+        "จน": {
+            "translations": {
+                "en": "Until",
+                "fa": "تا"
+            }
+        },
+        "หมด": {
+            "translations": {
+                "en": "OUT",
+                "fa": "مورچه"
+            }
+        },
+        "ผลข้างเคียง": {
+            "translations": {
+                "en": "The side effects",
+                "fa": "عوارض جانبی"
+            }
+        },
+        "อาจจะ": {
+            "translations": {
+                "en": "“Maybe. ",
+                "fa": "ممکن است"
+            }
+        },
+        "ง่วงนอน": {
+            "translations": {
+                "en": "Sleepy",
+                "fa": "خواب آلود"
+            }
+        },
+        "ควร": {
+            "translations": {
+                "en": "yes ",
+                "fa": "باید"
+            }
+        },
+        "ขับรถ": {
+            "translations": {
+                "en": "Drive",
+                "fa": "رانندگی کردن"
+            }
+        },
+        "อีก": {
+            "translations": {
+                "en": "for",
+                "fa": "بیشتر"
+            }
+        },
+        "ที": {
+            "translations": {
+                "en": "T.",
+                "fa": "زمان"
+            }
+        },
+        "เมื่อไหร่": {
+            "translations": {
+                "en": "WHEN",
+                "fa": "چه زمانی"
+            }
+        },
+        "เตรียมตัว": {
+            "translations": {
+                "en": "Set.",
+                "fa": "خودت را آماده کن"
+            }
+        },
+        "ยังไง": {
+            "translations": {
+                "en": "Together",
+                "fa": "چگونه"
+            }
+        },
+        "เอา": {
+            "translations": {
+                "en": "\"Yes~~!\"",
+                "fa": "گرفتن"
+            }
+        },
+        "ผล": {
+            "translations": {
+                "en": "Effect",
+                "fa": "نتیجه"
+            }
         }
     },
     "activity": {
@@ -166,7 +970,15 @@
             "content": [
                 {
                     "type": "words",
-                    "wordIds": [ "โรงพยาบาล", "คลินิก", "แผนก", "แผนกผู้ป่วยนอก", "แผนกฉุกเฉิน", "หอผู้ป่วย", "ห้องตรวจ" ]
+                    "wordIds": [
+                        "โรงพยาบาล",
+                        "คลินิก",
+                        "แผนก",
+                        "แผนกผู้ป่วยนอก",
+                        "แผนกฉุกเฉิน",
+                        "หอผู้ป่วย",
+                        "ห้องตรวจ"
+                    ]
                 }
             ]
         },
@@ -180,7 +992,18 @@
             "content": [
                 {
                     "type": "words",
-                    "wordIds": [ "อาการ", "ปวด", "เจ็บ", "บวม", "แดง", "คัน", "คลื่นไส้", "อาเจียน", "ท้องเสีย", "ท้องผูก" ]
+                    "wordIds": [
+                        "อาการ",
+                        "ปวด",
+                        "เจ็บ",
+                        "บวม",
+                        "แดง",
+                        "คัน",
+                        "คลื่นไส้",
+                        "อาเจียน",
+                        "ท้องเสีย",
+                        "ท้องผูก"
+                    ]
                 }
             ]
         },
@@ -196,8 +1019,15 @@
                     "type": "paragraph",
                     "sentences": [
                         {
-                            "source": "สวัสดีครับ มาหาหมอครับ",
-                            "wordIds": [ "สวัสดี", "ครับ", "มา", "หา", "หมอ", "ครับ" ],
+                            "source": "สวัสดีครับมาหาหมอครับ",
+                            "wordIds": [
+                                "สวัสดี",
+                                "ครับ",
+                                "มา",
+                                "หา",
+                                "หมอ",
+                                "ครับ"
+                            ],
                             "translations": {
                                 "en": "Hello, I'm here to see the doctor",
                                 "fa": "سلام، برای دیدن دکتر آمده‌ام"
@@ -205,39 +1035,73 @@
                         },
                         {
                             "source": "มีนัดหมายหรือเปล่าคะ",
-                            "wordIds": [ "มี", "นัดหมาย", "หรือ", "เปล่า", "คะ" ],
+                            "wordIds": [
+                                "มี",
+                                "นัดหมาย",
+                                "หรือ",
+                                "เปล่า",
+                                "คะ"
+                            ],
                             "translations": {
                                 "en": "Do you have an appointment?",
                                 "fa": "نوبت دارید؟"
                             }
                         },
                         {
-                            "source": "ไม่มีครับ มาแบบไม่นัด",
-                            "wordIds": [ "ไม่มี", "ครับ", "มา", "แบบ", "ไม่", "นัด" ],
+                            "source": "ไม่มีครับมาแบบไม่นัด",
+                            "wordIds": [
+                                "ไม่มี",
+                                "ครับ",
+                                "มา",
+                                "แบบ",
+                                "ไม่",
+                                "นัด"
+                            ],
                             "translations": {
                                 "en": "No, I'm a walk-in patient",
                                 "fa": "نه، بدون نوبت آمده‌ام"
                             }
                         },
                         {
-                            "source": "ได้ค่ะ ขอชื่อนามสกุลหน่อยค่ะ",
-                            "wordIds": [ "ได้", "ค่ะ", "ขอ", "ชื่อ", "นามสกุล", "หน่อย", "ค่ะ" ],
+                            "source": "ได้ค่ะขอชื่อนามสกุลหน่อยค่ะ",
+                            "wordIds": [
+                                "ได้",
+                                "ค่ะ",
+                                "ขอ",
+                                "ชื่อ",
+                                "นามสกุล",
+                                "หน่อย",
+                                "ค่ะ"
+                            ],
                             "translations": {
                                 "en": "Okay, your name please?",
                                 "fa": "باشه، نام و نام خانوادگی لطفاً"
                             }
                         },
                         {
-                            "source": "นายสมชาย ใจดีครับ",
-                            "wordIds": [ "นาย", "สมชาย", "ใจดี", "ครับ" ],
+                            "source": "นายสมชายใจดีครับ",
+                            "wordIds": [
+                                "นาย",
+                                "สมชาย",
+                                "ใจดี",
+                                "ครับ"
+                            ],
                             "translations": {
                                 "en": "Mr. Somchai Jaidee",
                                 "fa": "آقای سامچای جایدی"
                             }
                         },
                         {
-                            "source": "รอสักครู่ค่ะ เดี๋ยวเปิดประวัติให้",
-                            "wordIds": [ "รอ", "สักครู่", "ค่ะ", "เดี๋ยว", "เปิด", "ประวัติ", "ให้" ],
+                            "source": "รอสักครู่ค่ะเดี๋ยวเปิดประวัติให้",
+                            "wordIds": [
+                                "รอ",
+                                "สักครู่",
+                                "ค่ะ",
+                                "เดี๋ยว",
+                                "เปิด",
+                                "ประวัติ",
+                                "ให้"
+                            ],
                             "translations": {
                                 "en": "Please wait, I'll open your file",
                                 "fa": "لطفاً صبر کنید، پرونده شما را باز می‌کنم"
@@ -260,7 +1124,13 @@
                     "sentences": [
                         {
                             "source": "มีอาการอะไรบ้างครับ",
-                            "wordIds": [ "มี", "อาการ", "อะไร", "บ้าง", "ครับ" ],
+                            "wordIds": [
+                                "มี",
+                                "อาการ",
+                                "อะไร",
+                                "บ้าง",
+                                "ครับ"
+                            ],
                             "translations": {
                                 "en": "What symptoms do you have?",
                                 "fa": "چه علائمی دارید؟"
@@ -268,7 +1138,12 @@
                         },
                         {
                             "source": "ปวดท้องมากครับ",
-                            "wordIds": [ "ปวด", "ท้อง", "มาก", "ครับ" ],
+                            "wordIds": [
+                                "ปวด",
+                                "ท้อง",
+                                "มาก",
+                                "ครับ"
+                            ],
                             "translations": {
                                 "en": "I have severe stomach pain",
                                 "fa": "درد شدید شکم دارم"
@@ -276,7 +1151,12 @@
                         },
                         {
                             "source": "ปวดตรงไหนครับ",
-                            "wordIds": [ "ปวด", "ตรง", "ไหน", "ครับ" ],
+                            "wordIds": [
+                                "ปวด",
+                                "ตรง",
+                                "ไหน",
+                                "ครับ"
+                            ],
                             "translations": {
                                 "en": "Where does it hurt?",
                                 "fa": "کجا درد دارد؟"
@@ -284,7 +1164,13 @@
                         },
                         {
                             "source": "ปวดท้องน้อยด้านขวาครับ",
-                            "wordIds": [ "ปวด", "ท้องน้อย", "ด้าน", "ขวา", "ครับ" ],
+                            "wordIds": [
+                                "ปวด",
+                                "ท้องน้อย",
+                                "ด้าน",
+                                "ขวา",
+                                "ครับ"
+                            ],
                             "translations": {
                                 "en": "Lower right abdomen",
                                 "fa": "پایین شکم سمت راست"
@@ -292,7 +1178,13 @@
                         },
                         {
                             "source": "ปวดมานานแค่ไหนแล้ว",
-                            "wordIds": [ "ปวด", "มา", "นาน", "แค่ไหน", "แล้ว" ],
+                            "wordIds": [
+                                "ปวด",
+                                "มา",
+                                "นาน",
+                                "แค่ไหน",
+                                "แล้ว"
+                            ],
                             "translations": {
                                 "en": "How long have you had the pain?",
                                 "fa": "چقدر است درد دارید؟"
@@ -300,7 +1192,11 @@
                         },
                         {
                             "source": "ตั้งแต่เมื่อคืนครับ",
-                            "wordIds": [ "ตั้งแต่", "เมื่อคืน", "ครับ" ],
+                            "wordIds": [
+                                "ตั้งแต่",
+                                "เมื่อคืน",
+                                "ครับ"
+                            ],
                             "translations": {
                                 "en": "Since last night",
                                 "fa": "از دیشب"
@@ -308,15 +1204,25 @@
                         },
                         {
                             "source": "มีไข้ไหมครับ",
-                            "wordIds": [ "มี", "ไข้", "ไหม", "ครับ" ],
+                            "wordIds": [
+                                "มี",
+                                "ไข้",
+                                "ไหม",
+                                "ครับ"
+                            ],
                             "translations": {
                                 "en": "Do you have a fever?",
                                 "fa": "تب دارید؟"
                             }
                         },
                         {
-                            "source": "มีครับ 38 องศา",
-                            "wordIds": [ "มี", "ครับ", "สามสิบแปด", "องศา" ],
+                            "source": "มีครับสามสิบแปดองศา",
+                            "wordIds": [
+                                "มี",
+                                "ครับ",
+                                "สามสิบแปด",
+                                "องศา"
+                            ],
                             "translations": {
                                 "en": "Yes, 38 degrees",
                                 "fa": "بله، ۳۸ درجه"
@@ -324,15 +1230,23 @@
                         },
                         {
                             "source": "คลื่นไส้ไหมครับ",
-                            "wordIds": [ "คลื่นไส้", "ไหม", "ครับ" ],
+                            "wordIds": [
+                                "คลื่นไส้",
+                                "ไหม",
+                                "ครับ"
+                            ],
                             "translations": {
                                 "en": "Nauseous?",
                                 "fa": "تهوع دارید؟"
                             }
                         },
                         {
-                            "source": "ครับ คลื่นไส้ด้วย",
-                            "wordIds": [ "ครับ", "คลื่นไส้", "ด้วย" ],
+                            "source": "ครับคลื่นไส้ด้วย",
+                            "wordIds": [
+                                "ครับ",
+                                "คลื่นไส้",
+                                "ด้วย"
+                            ],
                             "translations": {
                                 "en": "Yes, nauseous too",
                                 "fa": "بله، تهوع هم دارم"
@@ -355,7 +1269,15 @@
                     "sentences": [
                         {
                             "source": "นอนลงบนเตียงก่อนนะครับ",
-                            "wordIds": [ "นอน", "ลง", "บน", "เตียง", "ก่อน", "นะ", "ครับ" ],
+                            "wordIds": [
+                                "นอน",
+                                "ลง",
+                                "บน",
+                                "เตียง",
+                                "ก่อน",
+                                "นะ",
+                                "ครับ"
+                            ],
                             "translations": {
                                 "en": "Lie down on the bed first",
                                 "fa": "اول روی تخت دراز بکشید"
@@ -363,7 +1285,14 @@
                         },
                         {
                             "source": "จะตรวจดูท้องนะครับ",
-                            "wordIds": [ "จะ", "ตรวจ", "ดู", "ท้อง", "นะ", "ครับ" ],
+                            "wordIds": [
+                                "จะ",
+                                "ตรวจ",
+                                "ดู",
+                                "ท้อง",
+                                "นะ",
+                                "ครับ"
+                            ],
                             "translations": {
                                 "en": "I'm going to examine your abdomen",
                                 "fa": "شکم شما را معاینه می‌کنم"
@@ -371,7 +1300,13 @@
                         },
                         {
                             "source": "ตรงนี้เจ็บไหมครับ",
-                            "wordIds": [ "ตรง", "นี้", "เจ็บ", "ไหม", "ครับ" ],
+                            "wordIds": [
+                                "ตรง",
+                                "นี้",
+                                "เจ็บ",
+                                "ไหม",
+                                "ครับ"
+                            ],
                             "translations": {
                                 "en": "Does it hurt here?",
                                 "fa": "اینجا درد دارد؟"
@@ -379,7 +1314,10 @@
                         },
                         {
                             "source": "เจ็บครับ",
-                            "wordIds": [ "เจ็บ", "ครับ" ],
+                            "wordIds": [
+                                "เจ็บ",
+                                "ครับ"
+                            ],
                             "translations": {
                                 "en": "Yes, it hurts",
                                 "fa": "بله درد دارد"
@@ -387,7 +1325,13 @@
                         },
                         {
                             "source": "หายใจเข้าลึกๆครับ",
-                            "wordIds": [ "หายใจ", "เข้า", "ลึก", "ๆ", "ครับ" ],
+                            "wordIds": [
+                                "หายใจ",
+                                "เข้า",
+                                "ลึก",
+                                "ๆ",
+                                "ครับ"
+                            ],
                             "translations": {
                                 "en": "Take a deep breath",
                                 "fa": "نفس عمیق بکشید"
@@ -395,7 +1339,14 @@
                         },
                         {
                             "source": "ผมสงสัยว่าเป็นไส้ติ่งอักเสบ",
-                            "wordIds": [ "ผม", "สงสัย", "ว่า", "เป็น", "ไส้ติ่ง", "อักเสบ" ],
+                            "wordIds": [
+                                "ผม",
+                                "สงสัย",
+                                "ว่า",
+                                "เป็น",
+                                "ไส้ติ่ง",
+                                "อักเสบ"
+                            ],
                             "translations": {
                                 "en": "I suspect appendicitis",
                                 "fa": "من شک دارم آپاندیس باشد"
@@ -403,7 +1354,12 @@
                         },
                         {
                             "source": "ต้องตรวจเลือดเพิ่มครับ",
-                            "wordIds": [ "ต้อง", "ตรวจเลือด", "เพิ่ม", "ครับ" ],
+                            "wordIds": [
+                                "ต้อง",
+                                "ตรวจเลือด",
+                                "เพิ่ม",
+                                "ครับ"
+                            ],
                             "translations": {
                                 "en": "Need more blood tests",
                                 "fa": "آزمایش خون بیشتری نیاز است"
@@ -426,7 +1382,12 @@
                     "sentences": [
                         {
                             "source": "นี่คือใบสั่งยาค่ะ",
-                            "wordIds": [ "นี่", "คือ", "ใบสั่งยา", "ค่ะ" ],
+                            "wordIds": [
+                                "นี่",
+                                "คือ",
+                                "ใบสั่งยา",
+                                "ค่ะ"
+                            ],
                             "translations": {
                                 "en": "Here's the prescription",
                                 "fa": "این نسخه است"
@@ -434,23 +1395,48 @@
                         },
                         {
                             "source": "ยาทานวันละกี่ครั้งครับ",
-                            "wordIds": [ "ยา", "ทาน", "วันละ", "กี่", "ครั้ง", "ครับ" ],
+                            "wordIds": [
+                                "ยา",
+                                "ทาน",
+                                "วันละ",
+                                "กี่",
+                                "ครั้ง",
+                                "ครับ"
+                            ],
                             "translations": {
                                 "en": "How many times a day should I take this?",
                                 "fa": "روزی چند بار باید بخورم؟"
                             }
                         },
                         {
-                            "source": "ยาน้ำ ทานครั้งละ 2 ช้อนชา วันละ 3 ครั้ง หลังอาหาร",
-                            "wordIds": [ "ยาน้ำ", "ทาน", "ครั้งละ", "สอง", "ช้อนชา", "วันละ", "สาม", "ครั้ง", "หลัง", "อาหาร" ],
+                            "source": "ยาน้ำทานครั้งละสองช้อนชาวันละสามครั้งหลังอาหาร",
+                            "wordIds": [
+                                "ยาน้ำ",
+                                "ทาน",
+                                "ครั้งละ",
+                                "สอง",
+                                "ช้อนชา",
+                                "วันละ",
+                                "สาม",
+                                "ครั้ง",
+                                "หลัง",
+                                "อาหาร"
+                            ],
                             "translations": {
                                 "en": "Liquid medicine, take 2 teaspoons, 3 times a day after meals",
                                 "fa": "داروی مایع، روزی ۳ بار هر بار ۲ قاشق چایخوری بعد از غذا"
                             }
                         },
                         {
-                            "source": "ยาเม็ดสีขาว ทานก่อนนอน 1 เม็ด",
-                            "wordIds": [ "ยาเม็ด", "สีขาว", "ทาน", "ก่อนนอน", "หนึ่ง", "เม็ด" ],
+                            "source": "ยาเม็ดสีขาวทานก่อนนอนหนึ่งเม็ด",
+                            "wordIds": [
+                                "ยาเม็ด",
+                                "สีขาว",
+                                "ทาน",
+                                "ก่อนนอน",
+                                "หนึ่ง",
+                                "เม็ด"
+                            ],
                             "translations": {
                                 "en": "White pills, take 1 before bed",
                                 "fa": "قرص سفید، شب قبل از خواب ۱ عدد"
@@ -458,15 +1444,29 @@
                         },
                         {
                             "source": "ต้องกินจนหมดไหมครับ",
-                            "wordIds": [ "ต้อง", "กิน", "จน", "หมด", "ไหม", "ครับ" ],
+                            "wordIds": [
+                                "ต้อง",
+                                "กิน",
+                                "จน",
+                                "หมด",
+                                "ไหม",
+                                "ครับ"
+                            ],
                             "translations": {
                                 "en": "Do I need to finish all of it?",
                                 "fa": "باید همه را بخورم؟"
                             }
                         },
                         {
-                            "source": "ค่ะ ทานจนหมดนะคะ",
-                            "wordIds": [ "ค่ะ", "ทาน", "จน", "หมด", "นะ", "คะ" ],
+                            "source": "ค่ะทานจนหมดนะคะ",
+                            "wordIds": [
+                                "ค่ะ",
+                                "ทาน",
+                                "จน",
+                                "หมด",
+                                "นะ",
+                                "คะ"
+                            ],
                             "translations": {
                                 "en": "Yes, finish all of it",
                                 "fa": "بله، همه را بخورید"
@@ -474,15 +1474,29 @@
                         },
                         {
                             "source": "มีผลข้างเคียงอะไรไหมครับ",
-                            "wordIds": [ "มี", "ผลข้างเคียง", "อะไร", "ไหม", "ครับ" ],
+                            "wordIds": [
+                                "มี",
+                                "ผลข้างเคียง",
+                                "อะไร",
+                                "ไหม",
+                                "ครับ"
+                            ],
                             "translations": {
                                 "en": "Any side effects?",
                                 "fa": "عوارض جانبی دارد؟"
                             }
                         },
                         {
-                            "source": "อาจจะง่วงนอนได้ค่ะ ไม่ควรขับรถ",
-                            "wordIds": [ "อาจจะ", "ง่วงนอน", "ได้", "ค่ะ", "ไม่", "ควร", "ขับรถ" ],
+                            "source": "อาจจะง่วงนอนได้ค่ะไม่ควรขับรถ",
+                            "wordIds": [
+                                "อาจจะ",
+                                "ง่วงนอน",
+                                "ได้",
+                                "ค่ะ",
+                                "ไม่",
+                                "ควร",
+                                "ขับรถ"
+                            ],
                             "translations": {
                                 "en": "May cause drowsiness, don't drive",
                                 "fa": "ممکن است خواب‌آور باشد، رانندگی نکنید"
@@ -505,15 +1519,30 @@
                     "sentences": [
                         {
                             "source": "หมอนัดอีกทีเมื่อไหร่คะ",
-                            "wordIds": [ "หมอ", "นัด", "อีก", "ที", "เมื่อไหร่", "คะ" ],
+                            "wordIds": [
+                                "หมอ",
+                                "นัด",
+                                "อีก",
+                                "ที",
+                                "เมื่อไหร่",
+                                "คะ"
+                            ],
                             "translations": {
                                 "en": "When is the follow-up appointment?",
                                 "fa": "نوبت بعدی کی است؟"
                             }
                         },
                         {
-                            "source": "อาทิตย์หน้าครับ วันจันทร์เวลา 10 โมง",
-                            "wordIds": [ "อาทิตย์", "หน้า", "ครับ", "วันจันทร์", "เวลา", "สิบ", "โมง" ],
+                            "source": "อาทิตย์หน้าครับวันจันทร์เวลาสิบโมง",
+                            "wordIds": [
+                                "อาทิตย์",
+                                "หน้า",
+                                "ครับ",
+                                "วันจันทร์",
+                                "เวลา",
+                                "สิบ",
+                                "โมง"
+                            ],
                             "translations": {
                                 "en": "Next week, Monday at 10 a.m.",
                                 "fa": "هفته بعد، دوشنبه ساعت ۱۰ صبح"
@@ -521,15 +1550,34 @@
                         },
                         {
                             "source": "แล้วต้องเตรียมตัวยังไงบ้างคะ",
-                            "wordIds": [ "แล้ว", "ต้อง", "เตรียมตัว", "ยังไง", "บ้าง", "คะ" ],
+                            "wordIds": [
+                                "แล้ว",
+                                "ต้อง",
+                                "เตรียมตัว",
+                                "ยังไง",
+                                "บ้าง",
+                                "คะ"
+                            ],
                             "translations": {
                                 "en": "How should I prepare?",
                                 "fa": "چطور باید آماده شوم؟"
                             }
                         },
                         {
-                            "source": "งดน้ำงดอาหารก่อนมาพบหมอ 8 ชั่วโมงครับ",
-                            "wordIds": [ "งด", "น้ำ", "งด", "อาหาร", "ก่อน", "มา", "พบ", "หมอ", "แปด", "ชั่วโมง", "ครับ" ],
+                            "source": "งดน้ำงดอาหารก่อนมาพบหมอแปดชั่วโมงครับ",
+                            "wordIds": [
+                                "งด",
+                                "น้ำ",
+                                "งด",
+                                "อาหาร",
+                                "ก่อน",
+                                "มา",
+                                "พบ",
+                                "หมอ",
+                                "แปด",
+                                "ชั่วโมง",
+                                "ครับ"
+                            ],
                             "translations": {
                                 "en": "Fast for 8 hours before coming",
                                 "fa": "۸ ساعت قبل از آمدن ناشتا باشید"
@@ -537,7 +1585,15 @@
                         },
                         {
                             "source": "เอาผลตรวจเลือดมาด้วยนะครับ",
-                            "wordIds": [ "เอา", "ผล", "ตรวจเลือด", "มา", "ด้วย", "นะ", "ครับ" ],
+                            "wordIds": [
+                                "เอา",
+                                "ผล",
+                                "ตรวจเลือด",
+                                "มา",
+                                "ด้วย",
+                                "นะ",
+                                "ครับ"
+                            ],
                             "translations": {
                                 "en": "Bring your blood test results",
                                 "fa": "نتایج آزمایش خون را همراه بیاورید"

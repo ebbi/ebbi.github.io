@@ -12,24 +12,218 @@
         "newWords": 15,
         "reviewWords": 25,
         "sentenceCount": 24,
-        "estimatedTime": 25
+        "estimatedTime": 25,
+        "authors": [ ],
+        "reviewers": [ ],
+        "prerequisites": [ ],
+        "tags": [ ],
+        "updated": "2026-02-24T14:51:38.367Z"
     },
     "vocabulary": {
-        "ใหญ่": { "translations": { "en": "big", "fa": "بزرگ" } },
-        "เล็ก": { "translations": { "en": "small", "fa": "کوچک" } },
-        "ยาว": { "translations": { "en": "long", "fa": "بلند" } },
-        "สั้น": { "translations": { "en": "short", "fa": "کوتاه" } },
-        "สูง": { "translations": { "en": "tall/high", "fa": "بلند" } },
-        "เตี้ย": { "translations": { "en": "short (height)", "fa": "کوتاه (قد)" } },
-        "ร้อน": { "translations": { "en": "hot", "fa": "داغ" } },
-        "เย็น": { "translations": { "en": "cold", "fa": "سرد" } },
-        "ใหม่": { "translations": { "en": "new", "fa": "نو" } },
-        "เก่า": { "translations": { "en": "old", "fa": "قدیمی" } },
-        "สะอาด": { "translations": { "en": "clean", "fa": "تمیز" } },
-        "สกปรก": { "translations": { "en": "dirty", "fa": "کثیف" } },
-        "ง่าย": { "translations": { "en": "easy", "fa": "آسان" } },
-        "ยาก": { "translations": { "en": "difficult", "fa": "سخت" } },
-        "ดี": { "translations": { "en": "good", "fa": "خوب" } }
+        "ใหญ่": {
+            "translations": {
+                "en": "big",
+                "fa": "بزرگ"
+            }
+        },
+        "เล็ก": {
+            "translations": {
+                "en": "small",
+                "fa": "کوچک"
+            }
+        },
+        "ยาว": {
+            "translations": {
+                "en": "long",
+                "fa": "بلند"
+            }
+        },
+        "สั้น": {
+            "translations": {
+                "en": "short",
+                "fa": "کوتاه"
+            }
+        },
+        "สูง": {
+            "translations": {
+                "en": "tall/high",
+                "fa": "بلند"
+            }
+        },
+        "เตี้ย": {
+            "translations": {
+                "en": "short (height)",
+                "fa": "کوتاه (قد)"
+            }
+        },
+        "ร้อน": {
+            "translations": {
+                "en": "hot",
+                "fa": "داغ"
+            }
+        },
+        "เย็น": {
+            "translations": {
+                "en": "cold",
+                "fa": "سرد"
+            }
+        },
+        "ใหม่": {
+            "translations": {
+                "en": "new",
+                "fa": "نو"
+            }
+        },
+        "เก่า": {
+            "translations": {
+                "en": "old",
+                "fa": "قدیمی"
+            }
+        },
+        "สะอาด": {
+            "translations": {
+                "en": "clean",
+                "fa": "تمیز"
+            }
+        },
+        "สกปรก": {
+            "translations": {
+                "en": "dirty",
+                "fa": "کثیف"
+            }
+        },
+        "ง่าย": {
+            "translations": {
+                "en": "easy",
+                "fa": "آسان"
+            }
+        },
+        "ยาก": {
+            "translations": {
+                "en": "difficult",
+                "fa": "سخت"
+            }
+        },
+        "ดี": {
+            "translations": {
+                "en": "good",
+                "fa": "خوب"
+            }
+        },
+        "บ้าน": {
+            "translations": {
+                "en": "House",
+                "fa": "خانه"
+            }
+        },
+        "หลัง": {
+            "translations": {
+                "en": "Back",
+                "fa": "پشت"
+            }
+        },
+        "รถ": {
+            "translations": {
+                "en": "Automobile",
+                "fa": "ماشین"
+            }
+        },
+        "คัน": {
+            "translations": {
+                "en": "vehicle ",
+                "fa": "وسیله نقلیه"
+            }
+        },
+        "กาแฟ": {
+            "translations": {
+                "en": "Coffee",
+                "fa": "قهوه"
+            }
+        },
+        "น้ำ": {
+            "translations": {
+                "en": "Water",
+                "fa": "آب"
+            }
+        },
+        "หนังสือ": {
+            "translations": {
+                "en": "BOOKS",
+                "fa": "کتاب"
+            }
+        },
+        "เล่ม": {
+            "translations": {
+                "en": "<g id=\"5\">Volume</g>…….",
+                "fa": "کتاب"
+            }
+        },
+        "หนา": {
+            "translations": {
+                "en": "page",
+                "fa": "سریع"
+            }
+        },
+        "ผม": {
+            "translations": {
+                "en": "Hair",
+                "fa": "من:"
+            }
+        },
+        "ชอบ": {
+            "translations": {
+                "en": "Like",
+                "fa": "مانند"
+            }
+        },
+        "เขา": {
+            "translations": {
+                "en": "He, She",
+                "fa": "او"
+            }
+        },
+        "ซื้อ": {
+            "translations": {
+                "en": "Purchase",
+                "fa": "خرید"
+            }
+        },
+        "คุณ": {
+            "translations": {
+                "en": "You",
+                "fa": "شما:"
+            }
+        },
+        "กิน": {
+            "translations": {
+                "en": "Eating",
+                "fa": "خوردن"
+            }
+        },
+        "อาหาร": {
+            "translations": {
+                "en": "Food",
+                "fa": "غذا"
+            }
+        },
+        "ไหม": {
+            "translations": {
+                "en": "Silk",
+                "fa": "ابریشم"
+            }
+        },
+        "ฉัน": {
+            "translations": {
+                "en": "Me",
+                "fa": "من"
+            }
+        },
+        "ไม่": {
+            "translations": {
+                "en": "No",
+                "fa": "خیر"
+            }
+        }
     },
     "sections": [
         {
@@ -55,9 +249,18 @@
                             "fa": "در تایلندی، صفت بعد از اسمی که توصیف می‌کند می‌آید. این برعکس انگلیسی است که صفت قبل از اسم می‌آید."
                         },
                         "examples": [
-                            { "source": "บ้านใหญ่", "translation": "big house" },
-                            { "source": "รถใหม่", "translation": "new car" },
-                            { "source": "อาหารร้อน", "translation": "hot food" }
+                            {
+                                "source": "บ้านใหญ่",
+                                "translation": "big house"
+                            },
+                            {
+                                "source": "รถใหม่",
+                                "translation": "new car"
+                            },
+                            {
+                                "source": "อาหารร้อน",
+                                "translation": "hot food"
+                            }
                         ]
                     },
                     "sentences": [ ]
@@ -72,7 +275,11 @@
                     "sentences": [
                         {
                             "source": "บ้านหลังใหญ่",
-                            "wordIds": [ "บ้าน", "หลัง", "ใหญ่" ],
+                            "wordIds": [
+                                "บ้าน",
+                                "หลัง",
+                                "ใหญ่"
+                            ],
                             "translations": {
                                 "en": "The house is big",
                                 "fa": "خانه بزرگ است"
@@ -80,7 +287,11 @@
                         },
                         {
                             "source": "รถคันใหม่",
-                            "wordIds": [ "รถ", "คัน", "ใหม่" ],
+                            "wordIds": [
+                                "รถ",
+                                "คัน",
+                                "ใหม่"
+                            ],
                             "translations": {
                                 "en": "The car is new",
                                 "fa": "ماشین نو است"
@@ -88,7 +299,10 @@
                         },
                         {
                             "source": "กาแฟร้อน",
-                            "wordIds": [ "กาแฟ", "ร้อน" ],
+                            "wordIds": [
+                                "กาแฟ",
+                                "ร้อน"
+                            ],
                             "translations": {
                                 "en": "The coffee is hot",
                                 "fa": "قهوه داغ است"
@@ -96,7 +310,10 @@
                         },
                         {
                             "source": "น้ำเย็น",
-                            "wordIds": [ "น้ำ", "เย็น" ],
+                            "wordIds": [
+                                "น้ำ",
+                                "เย็น"
+                            ],
                             "translations": {
                                 "en": "The water is cold",
                                 "fa": "آب سرد است"
@@ -104,7 +321,11 @@
                         },
                         {
                             "source": "หนังสือเล่มหนา",
-                            "wordIds": [ "หนังสือ", "เล่ม", "หนา" ],
+                            "wordIds": [
+                                "หนังสือ",
+                                "เล่ม",
+                                "หนา"
+                            ],
                             "translations": {
                                 "en": "The book is thick",
                                 "fa": "کتاب ضخیم است"
@@ -127,7 +348,12 @@
                     "sentences": [
                         {
                             "source": "ผมชอบบ้านใหญ่",
-                            "wordIds": [ "ผม", "ชอบ", "บ้าน", "ใหญ่" ],
+                            "wordIds": [
+                                "ผม",
+                                "ชอบ",
+                                "บ้าน",
+                                "ใหญ่"
+                            ],
                             "translations": {
                                 "en": "I like big houses",
                                 "fa": "من خانه بزرگ دوست دارم"
@@ -135,7 +361,12 @@
                         },
                         {
                             "source": "เขาซื้อรถใหม่",
-                            "wordIds": [ "เขา", "ซื้อ", "รถ", "ใหม่" ],
+                            "wordIds": [
+                                "เขา",
+                                "ซื้อ",
+                                "รถ",
+                                "ใหม่"
+                            ],
                             "translations": {
                                 "en": "He buys a new car",
                                 "fa": "او ماشین نو می‌خرد"
@@ -143,7 +374,13 @@
                         },
                         {
                             "source": "คุณกินอาหารร้อนไหม",
-                            "wordIds": [ "คุณ", "กิน", "อาหาร", "ร้อน", "ไหม" ],
+                            "wordIds": [
+                                "คุณ",
+                                "กิน",
+                                "อาหาร",
+                                "ร้อน",
+                                "ไหม"
+                            ],
                             "translations": {
                                 "en": "Do you eat hot food?",
                                 "fa": "آیا شما غذای داغ می‌خورید؟"
@@ -151,7 +388,13 @@
                         },
                         {
                             "source": "ฉันไม่ชอบน้ำเย็น",
-                            "wordIds": [ "ฉัน", "ไม่", "ชอบ", "น้ำ", "เย็น" ],
+                            "wordIds": [
+                                "ฉัน",
+                                "ไม่",
+                                "ชอบ",
+                                "น้ำ",
+                                "เย็น"
+                            ],
                             "translations": {
                                 "en": "I don't like cold water",
                                 "fa": "من آب سرد دوست ندارم"

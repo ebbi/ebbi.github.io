@@ -11,122 +11,463 @@
         "difficulty": 2,
         "wordCount": 38,
         "sentenceCount": 24,
-        "estimatedTime": 25
+        "estimatedTime": 25,
+        "authors": [ ],
+        "reviewers": [ ],
+        "prerequisites": [ ],
+        "tags": [ ],
+        "updated": "2026-02-24T15:16:39.972Z"
     },
     "vocabulary": {
         "ร้านอาหาร": {
-            "translations": { "en": "restaurant", "fa": "رستوران" }
+            "translations": {
+                "en": "restaurant",
+                "fa": "رستوران"
+            }
         },
         "โต๊ะ": {
-            "translations": { "en": "table", "fa": "میز" }
+            "translations": {
+                "en": "table",
+                "fa": "میز"
+            }
         },
         "สำหรับ": {
-            "translations": { "en": "for", "fa": "برای" }
-        },
-        "คน": {
-            "translations": { "en": "person", "fa": "نفر" }
+            "translations": {
+                "en": "for",
+                "fa": "برای"
+            }
         },
         "เมนู": {
-            "translations": { "en": "menu", "fa": "منو" }
+            "translations": {
+                "en": "menu",
+                "fa": "منو"
+            }
         },
         "ขอ": {
-            "translations": { "en": "request/ask for", "fa": "درخواست کردن" }
+            "translations": {
+                "en": "request/ask for",
+                "fa": "درخواست کردن"
+            }
         },
         "หน่อย": {
-            "translations": { "en": "a little/please", "fa": "کمی/لطفاً" }
+            "translations": {
+                "en": "a little/please",
+                "fa": "کمی/لطفاً"
+            }
         },
         "สั่ง": {
-            "translations": { "en": "order", "fa": "سفارش دادن" }
+            "translations": {
+                "en": "order",
+                "fa": "سفارش دادن"
+            }
         },
         "อาหาร": {
-            "translations": { "en": "food", "fa": "غذا" }
+            "translations": {
+                "en": "food",
+                "fa": "غذا"
+            }
         },
         "น้ำ": {
-            "translations": { "en": "water", "fa": "آب" }
+            "translations": {
+                "en": "water",
+                "fa": "آب"
+            }
         },
         "ชา": {
-            "translations": { "en": "tea", "fa": "چای" }
+            "translations": {
+                "en": "tea",
+                "fa": "چای"
+            }
         },
         "เย็น": {
-            "translations": { "en": "cold/iced", "fa": "سرد" }
+            "translations": {
+                "en": "cold/iced",
+                "fa": "سرد"
+            }
         },
         "ร้อน": {
-            "translations": { "en": "hot", "fa": "داغ" }
+            "translations": {
+                "en": "hot",
+                "fa": "داغ"
+            }
         },
         "ผัดไทย": {
-            "translations": { "en": "Pad Thai", "fa": "پد تای" }
+            "translations": {
+                "en": "Pad Thai",
+                "fa": "پد تای"
+            }
         },
         "ต้มยำกุ้ง": {
-            "translations": { "en": "Tom Yum Goong", "fa": "تام یام گونگ" }
+            "translations": {
+                "en": "Tom Yum Goong",
+                "fa": "تام یام گونگ"
+            }
         },
         "เขียวหวาน": {
-            "translations": { "en": "green curry", "fa": "کاری سبز" }
+            "translations": {
+                "en": "green curry",
+                "fa": "کاری سبز"
+            }
         },
         "ไก่": {
-            "translations": { "en": "chicken", "fa": "مرغ" }
+            "translations": {
+                "en": "chicken",
+                "fa": "مرغ"
+            }
         },
         "หมู": {
-            "translations": { "en": "pork", "fa": "گوشت خوک" }
+            "translations": {
+                "en": "pork",
+                "fa": "گوشت خوک"
+            }
         },
         "เนื้อ": {
-            "translations": { "en": "beef", "fa": "گوشت گاو" }
+            "translations": {
+                "en": "beef",
+                "fa": "گوشت گاو"
+            }
         },
         "ทะเล": {
-            "translations": { "en": "seafood", "fa": "غذای دریایی" }
+            "translations": {
+                "en": "seafood",
+                "fa": "غذای دریایی"
+            }
         },
         "เผ็ด": {
-            "translations": { "en": "spicy", "fa": "تند" }
+            "translations": {
+                "en": "spicy",
+                "fa": "تند"
+            }
         },
         "ไม่": {
-            "translations": { "en": "no/not", "fa": "نه" }
+            "translations": {
+                "en": "no/not",
+                "fa": "نه"
+            }
         },
         "ไหม": {
-            "translations": { "en": "question particle", "fa": "ذره سوال" }
+            "translations": {
+                "en": "question particle",
+                "fa": "ذره سوال"
+            }
         },
         "นิดหน่อย": {
-            "translations": { "en": "a little bit", "fa": "کمی" }
+            "translations": {
+                "en": "a little bit",
+                "fa": "کمی"
+            }
         },
         "อร่อย": {
-            "translations": { "en": "delicious", "fa": "خوشمزه" }
+            "translations": {
+                "en": "delicious",
+                "fa": "خوشمزه"
+            }
         },
         "มาก": {
-            "translations": { "en": "very", "fa": "بسیار" }
+            "translations": {
+                "en": "very",
+                "fa": "بسیار"
+            }
         },
         "เชฟ": {
-            "translations": { "en": "chef", "fa": "آشپز" }
+            "translations": {
+                "en": "chef",
+                "fa": "آشپز"
+            }
         },
         "แนะนำ": {
-            "translations": { "en": "recommend", "fa": "توصیه کردن" }
+            "translations": {
+                "en": "recommend",
+                "fa": "توصیه کردن"
+            }
         },
         "จาน": {
-            "translations": { "en": "dish/plate", "fa": "ظرف" }
+            "translations": {
+                "en": "dish/plate",
+                "fa": "ظرف"
+            }
         },
         "พิเศษ": {
-            "translations": { "en": "special", "fa": "ویژه" }
+            "translations": {
+                "en": "special",
+                "fa": "ویژه"
+            }
         },
         "เพิ่ม": {
-            "translations": { "en": "add more", "fa": "اضافه کردن" }
+            "translations": {
+                "en": "add more",
+                "fa": "اضافه کردن"
+            }
         },
         "อีก": {
-            "translations": { "en": "more/again", "fa": "بیشتر" }
+            "translations": {
+                "en": "more/again",
+                "fa": "بیشتر"
+            }
         },
         "พอ": {
-            "translations": { "en": "enough", "fa": "کافی" }
+            "translations": {
+                "en": "enough",
+                "fa": "کافی"
+            }
         },
         "แล้ว": {
-            "translations": { "en": "already", "fa": "قبلاً" }
+            "translations": {
+                "en": "already",
+                "fa": "قبلاً"
+            }
         },
         "บิล": {
-            "translations": { "en": "bill", "fa": "صورتحساب" }
+            "translations": {
+                "en": "bill",
+                "fa": "صورتحساب"
+            }
         },
         "เก็บเงิน": {
-            "translations": { "en": "cashier/pay", "fa": "پرداخت" }
+            "translations": {
+                "en": "cashier/pay",
+                "fa": "پرداخت"
+            }
         },
         "ทิป": {
-            "translations": { "en": "tip", "fa": "انعام" }
+            "translations": {
+                "en": "tip",
+                "fa": "انعام"
+            }
         },
         "บริการ": {
-            "translations": { "en": "service", "fa": "خدمات" }
+            "translations": {
+                "en": "service",
+                "fa": "خدمات"
+            }
+        },
+        "สวัสดี": {
+            "translations": {
+                "en": "Hi.",
+                "fa": "سلام"
+            }
+        },
+        "ครับ": {
+            "translations": {
+                "en": "OK",
+                "fa": "بله"
+            }
+        },
+        "มี": {
+            "translations": {
+                "en": "Yes",
+                "fa": "محتویات"
+            }
+        },
+        "ว่าง": {
+            "translations": {
+                "en": "Free time",
+                "fa": "خالی"
+            }
+        },
+        "ค่า": {
+            "translations": {
+                "en": "Value",
+                "fa": "مقدار"
+            }
+        },
+        "ใช่": {
+            "translations": {
+                "en": "Yes",
+                "fa": "& بله"
+            }
+        },
+        "ค่ะ": {
+            "translations": {
+                "en": "Thank you.",
+                "fa": "بله"
+            }
+        },
+        "กี่": {
+            "translations": {
+                "en": "Loom",
+                "fa": "چند تا؟"
+            }
+        },
+        "ท่าน": {
+            "translations": {
+                "en": "You",
+                "fa": "آقا"
+            }
+        },
+        "คะ": {
+            "translations": {
+                "en": "Ka",
+                "fa": "بله"
+            }
+        },
+        "ขอบคุณ": {
+            "translations": {
+                "en": "Thanks!",
+                "fa": "متشکرم"
+            }
+        },
+        "ทาน": {
+            "translations": {
+                "en": "Eat",
+                "fa": "خوردن"
+            }
+        },
+        "ให้": {
+            "translations": {
+                "en": "to give",
+                "fa": "دادن"
+            }
+        },
+        "นะคะ": {
+            "translations": {
+                "en": ".",
+                "fa": "باشه؟"
+            }
+        },
+        "ได้": {
+            "translations": {
+                "en": "Yes",
+                "fa": "می‌تواند"
+            }
+        },
+        "รอ": {
+            "translations": {
+                "en": "Stand-By",
+                "fa": "انتظار"
+            }
+        },
+        "สักครู่": {
+            "translations": {
+                "en": "Just a moment.",
+                "fa": "یک لحظه"
+            }
+        },
+        "นะ": {
+            "translations": {
+                "en": "Yes?",
+                "fa": "نا"
+            }
+        },
+        "เช็คบิล": {
+            "translations": {
+                "en": "Check Bills",
+                "fa": "صورتحساب را بررسی کنید"
+            }
+        },
+        "ด้วย": {
+            "translations": {
+                "en": "With",
+                "fa": "با"
+            }
+        },
+        "รวมทั้งหมด": {
+            "translations": {
+                "en": "Total",
+                "fa": "مجموع"
+            }
+        },
+        "ห้าร้อยยี่สิบบาท": {
+            "translations": {
+                "en": "Five hundred and twenty baht",
+                "fa": "پانصد و بیست بات"
+            }
+        },
+        "สอง": {
+            "translations": {
+                "en": "TWO.",
+                "fa": "دو"
+            }
+        },
+        "คน": {
+            "translations": {
+                "en": "   persons",
+                "fa": "شخص"
+            }
+        },
+        "เชิญ": {
+            "translations": {
+                "en": "Invite",
+                "fa": "دعوت کردن"
+            }
+        },
+        "ทาง": {
+            "translations": {
+                "en": "way",
+                "fa": "راه"
+            }
+        },
+        "นี้": {
+            "translations": {
+                "en": "This",
+                "fa": "این"
+            }
+        },
+        "นี่": {
+            "translations": {
+                "en": "Hey. ",
+                "fa": "این"
+            }
+        },
+        "วันนี้": {
+            "translations": {
+                "en": "TODAY",
+                "fa": "امروز"
+            }
+        },
+        "อะไร": {
+            "translations": {
+                "en": "WHAT",
+                "fa": "چه:"
+            }
+        },
+        "เอา": {
+            "translations": {
+                "en": "\"Yes~~!\"",
+                "fa": "گرفتن"
+            }
+        },
+        "นึง": {
+            "translations": {
+                "en": "One",
+                "fa": "یکی"
+            }
+        },
+        "หวาน": {
+            "translations": {
+                "en": "Sweet",
+                "fa": "شیرین"
+            }
+        },
+        "เค็ม": {
+            "translations": {
+                "en": "Salty",
+                "fa": "شور"
+            }
+        },
+        "เปรี้ยว": {
+            "translations": {
+                "en": "Sour",
+                "fa": "ترش"
+            }
+        },
+        "รวม": {
+            "translations": {
+                "en": "Total",
+                "fa": "فقط نتایج کل"
+            }
+        },
+        "ยินดี": {
+            "translations": {
+                "en": "Happy",
+                "fa": "خشنود"
+            }
+        },
+        "ต้อนรับ": {
+            "translations": {
+                "en": "Welcome",
+                "fa": "خوش آمدید"
+            }
         }
     },
     "activity": {
@@ -149,7 +490,14 @@
                         "th": "คำศัพท์พื้นฐานในร้านอาหาร",
                         "fa": "کلمات پایه رستوران"
                     },
-                    "wordIds": [ "ร้านอาหาร", "โต๊ะ", "เมนู", "สั่ง", "อาหาร", "น้ำ" ]
+                    "wordIds": [
+                        "ร้านอาหาร",
+                        "โต๊ะ",
+                        "เมนู",
+                        "สั่ง",
+                        "อาหาร",
+                        "น้ำ"
+                    ]
                 }
             ]
         },
@@ -165,16 +513,30 @@
                     "type": "paragraph",
                     "sentences": [
                         {
-                            "source": "สวัสดีครับ มีโต๊ะว่างไหมครับ",
-                            "wordIds": [ "สวัสดี", "ครับ", "มี", "โต๊ะ", "ไหม", "ครับ" ],
+                            "source": "สวัสดีครับมีโต๊ะว่างไหมครับ",
+                            "wordIds": [
+                                "สวัสดี",
+                                "ครับ",
+                                "มี",
+                                "โต๊ะ",
+                                "ว่าง",
+                                "ไหม",
+                                "ครับ"
+                            ],
                             "translations": {
                                 "en": "Hello, do you have a free table?",
                                 "fa": "سلام، میز خالی دارید؟"
                             }
                         },
                         {
-                            "source": "มีค่ะ กี่ท่านคะ",
-                            "wordIds": [ "มี", "ค่ะ", "คน" ],
+                            "source": "มีค่ะกี่ท่านคะ",
+                            "wordIds": [
+                                "มี",
+                                "ค่ะ",
+                                "กี่",
+                                "ท่าน",
+                                "คะ"
+                            ],
                             "translations": {
                                 "en": "Yes, we do. How many people?",
                                 "fa": "بله داریم. چند نفر؟"
@@ -182,7 +544,11 @@
                         },
                         {
                             "source": "สองคนครับ",
-                            "wordIds": [ "สอง", "คน", "ครับ" ],
+                            "wordIds": [
+                                "สอง",
+                                "คน",
+                                "ครับ"
+                            ],
                             "translations": {
                                 "en": "Two people",
                                 "fa": "دو نفر"
@@ -190,7 +556,12 @@
                         },
                         {
                             "source": "เชิญทางนี้ค่ะ",
-                            "wordIds": [ "เชิญ", "ทาง", "นี้", "ค่ะ" ],
+                            "wordIds": [
+                                "เชิญ",
+                                "ทาง",
+                                "นี้",
+                                "ค่ะ"
+                            ],
                             "translations": {
                                 "en": "Please come this way",
                                 "fa": "لطفاً از این طرف بیایید"
@@ -215,7 +586,15 @@
                         "th": "อาหารไทยยอดนิยม",
                         "fa": "غذاهای معروف تایلندی"
                     },
-                    "wordIds": [ "ผัดไทย", "ต้มยำกุ้ง", "เขียวหวาน", "ไก่", "หมู", "เนื้อ", "ทะเล" ]
+                    "wordIds": [
+                        "ผัดไทย",
+                        "ต้มยำกุ้ง",
+                        "เขียวหวาน",
+                        "ไก่",
+                        "หมู",
+                        "เนื้อ",
+                        "ทะเล"
+                    ]
                 }
             ]
         },
@@ -232,15 +611,26 @@
                     "sentences": [
                         {
                             "source": "ขอเมนูหน่อยครับ",
-                            "wordIds": [ "ขอ", "เมนู", "หน่อย", "ครับ" ],
+                            "wordIds": [
+                                "ขอ",
+                                "เมนู",
+                                "หน่อย",
+                                "ครับ"
+                            ],
                             "translations": {
                                 "en": "Can I see the menu, please?",
                                 "fa": "منو را می‌توانم ببینم لطفاً؟"
                             }
                         },
                         {
-                            "source": "ได้ค่ะ นี่ค่ะเมนู",
-                            "wordIds": [ "ได้", "ค่ะ", "นี่", "ค่ะ", "เมนู" ],
+                            "source": "ได้ค่ะนี่ค่ะเมนู",
+                            "wordIds": [
+                                "ได้",
+                                "ค่ะ",
+                                "นี่",
+                                "ค่ะ",
+                                "เมนู"
+                            ],
                             "translations": {
                                 "en": "Certainly, here's the menu",
                                 "fa": "حتماً، این هم منو"
@@ -248,7 +638,13 @@
                         },
                         {
                             "source": "วันนี้เชฟแนะนำอะไรคะ",
-                            "wordIds": [ "วันนี้", "เชฟ", "แนะนำ", "อะไร", "คะ" ],
+                            "wordIds": [
+                                "วันนี้",
+                                "เชฟ",
+                                "แนะนำ",
+                                "อะไร",
+                                "คะ"
+                            ],
                             "translations": {
                                 "en": "What's the chef's recommendation today?",
                                 "fa": "توصیه آشپز امروز چیست؟"
@@ -256,7 +652,13 @@
                         },
                         {
                             "source": "วันนี้มีต้มยำกุ้งพิเศษค่ะ",
-                            "wordIds": [ "วันนี้", "มี", "ต้มยำกุ้ง", "พิเศษ", "ค่ะ" ],
+                            "wordIds": [
+                                "วันนี้",
+                                "มี",
+                                "ต้มยำกุ้ง",
+                                "พิเศษ",
+                                "ค่ะ"
+                            ],
                             "translations": {
                                 "en": "Today we have special Tom Yum Goong",
                                 "fa": "امروز تام یام گونگ ویژه داریم"
@@ -264,7 +666,13 @@
                         },
                         {
                             "source": "เอาต้มยำกุ้งจานนึงครับ",
-                            "wordIds": [ "เอา", "ต้มยำกุ้ง", "จาน", "นึง", "ครับ" ],
+                            "wordIds": [
+                                "เอา",
+                                "ต้มยำกุ้ง",
+                                "จาน",
+                                "นึง",
+                                "ครับ"
+                            ],
                             "translations": {
                                 "en": "I'll have one Tom Yum Goong",
                                 "fa": "یک تام یام گونگ می‌خواهم"
@@ -272,7 +680,12 @@
                         },
                         {
                             "source": "เผ็ดมากไหมครับ",
-                            "wordIds": [ "เผ็ด", "มาก", "ไหม", "ครับ" ],
+                            "wordIds": [
+                                "เผ็ด",
+                                "มาก",
+                                "ไหม",
+                                "ครับ"
+                            ],
                             "translations": {
                                 "en": "Is it very spicy?",
                                 "fa": "خیلی تند است؟"
@@ -280,7 +693,11 @@
                         },
                         {
                             "source": "เผ็ดนิดหน่อยค่ะ",
-                            "wordIds": [ "เผ็ด", "นิดหน่อย", "ค่ะ" ],
+                            "wordIds": [
+                                "เผ็ด",
+                                "นิดหน่อย",
+                                "ค่ะ"
+                            ],
                             "translations": {
                                 "en": "Just a little spicy",
                                 "fa": "کمی تند است"
@@ -300,7 +717,16 @@
             "content": [
                 {
                     "type": "words",
-                    "wordIds": [ "อร่อย", "เผ็ด", "หวาน", "เค็ม", "เปรี้ยว", "ไม่", "นิดหน่อย", "มาก" ]
+                    "wordIds": [
+                        "อร่อย",
+                        "เผ็ด",
+                        "หวาน",
+                        "เค็ม",
+                        "เปรี้ยว",
+                        "ไม่",
+                        "นิดหน่อย",
+                        "มาก"
+                    ]
                 }
             ]
         },
@@ -317,15 +743,27 @@
                     "sentences": [
                         {
                             "source": "อาหารอร่อยมากครับ",
-                            "wordIds": [ "อาหาร", "อร่อย", "มาก", "ครับ" ],
+                            "wordIds": [
+                                "อาหาร",
+                                "อร่อย",
+                                "มาก",
+                                "ครับ"
+                            ],
                             "translations": {
                                 "en": "The food is delicious",
                                 "fa": "غذا خیلی خوشمزه است"
                             }
                         },
                         {
-                            "source": "ขอบคุณค่ะ ทานให้อร่อยนะคะ",
-                            "wordIds": [ "ขอบคุณ", "ค่ะ", "อร่อย", "คะ" ],
+                            "source": "ขอบคุณค่ะทานให้อร่อยนะคะ",
+                            "wordIds": [
+                                "ขอบคุณ",
+                                "ค่ะ",
+                                "ทาน",
+                                "ให้",
+                                "อร่อย",
+                                "นะคะ"
+                            ],
                             "translations": {
                                 "en": "Thank you, enjoy your meal",
                                 "fa": "متشکرم، نوش جان"
@@ -333,15 +771,28 @@
                         },
                         {
                             "source": "ขอน้ำเพิ่มหน่อยครับ",
-                            "wordIds": [ "ขอ", "น้ำ", "เพิ่ม", "หน่อย", "ครับ" ],
+                            "wordIds": [
+                                "ขอ",
+                                "น้ำ",
+                                "เพิ่ม",
+                                "หน่อย",
+                                "ครับ"
+                            ],
                             "translations": {
                                 "en": "Can I have more water, please?",
                                 "fa": "آب بیشتر می‌توانم داشته باشم لطفاً؟"
                             }
                         },
                         {
-                            "source": "ได้ค่ะ รอสักครูนะคะ",
-                            "wordIds": [ "ได้", "ค่ะ", "รอ", "สักครู่", "นะ", "คะ" ],
+                            "source": "ได้ค่ะรอสักครู่นะคะ",
+                            "wordIds": [
+                                "ได้",
+                                "ค่ะ",
+                                "รอ",
+                                "สักครู่",
+                                "นะ",
+                                "คะ"
+                            ],
                             "translations": {
                                 "en": "Certainly, just a moment",
                                 "fa": "حتماً، یک لحظه"
@@ -364,15 +815,25 @@
                     "sentences": [
                         {
                             "source": "เช็คบิลด้วยครับ",
-                            "wordIds": [ "บิล", "ด้วย", "ครับ" ],
+                            "wordIds": [
+                                "เช็คบิล",
+                                "ด้วย",
+                                "ครับ"
+                            ],
                             "translations": {
                                 "en": "Check, please",
                                 "fa": "صورتحساب لطفاً"
                             }
                         },
                         {
-                            "source": "ได้ค่ะ รวมทั้งหมดห้าร้อยยี่สิบบาทค่ะ",
-                            "wordIds": [ "ได้", "ค่ะ", "รวม", "บาท", "ค่ะ" ],
+                            "source": "ได้ค่ะรวมทั้งหมดห้าร้อยยี่สิบบาทค่ะ",
+                            "wordIds": [
+                                "ได้",
+                                "ค่ะ",
+                                "รวมทั้งหมด",
+                                "ห้าร้อยยี่สิบบาท",
+                                "ค่ะ"
+                            ],
                             "translations": {
                                 "en": "Certainly, total is 520 baht",
                                 "fa": "حتماً، جمعاً پانصد و بیست بات"
@@ -380,7 +841,15 @@
                         },
                         {
                             "source": "รวมค่าบริการแล้วใช่ไหมครับ",
-                            "wordIds": [ "รวม", "บริการ", "แล้ว", "ใช่", "ไหม", "ครับ" ],
+                            "wordIds": [
+                                "รวม",
+                                "ค่า",
+                                "บริการ",
+                                "แล้ว",
+                                "ใช่",
+                                "ไหม",
+                                "ครับ"
+                            ],
                             "translations": {
                                 "en": "Does that include service charge?",
                                 "fa": "آیا شامل هزینه خدمات هم می‌شود؟"
@@ -388,23 +857,41 @@
                         },
                         {
                             "source": "รวมแล้วค่ะ",
-                            "wordIds": [ "รวม", "แล้ว", "ค่ะ" ],
+                            "wordIds": [
+                                "รวม",
+                                "แล้ว",
+                                "ค่ะ"
+                            ],
                             "translations": {
                                 "en": "Yes, it's included",
                                 "fa": "بله شامل می‌شود"
                             }
                         },
                         {
-                            "source": "ขอบคุณครับ อาหารอร่อยมาก",
-                            "wordIds": [ "ขอบคุณ", "ครับ", "อาหาร", "อร่อย", "มาก" ],
+                            "source": "ขอบคุณครับอาหารอร่อยมาก",
+                            "wordIds": [
+                                "ขอบคุณ",
+                                "ครับ",
+                                "อาหาร",
+                                "อร่อย",
+                                "มาก"
+                            ],
                             "translations": {
                                 "en": "Thank you, the food was delicious",
                                 "fa": "متشکرم، غذا خیلی خوشمزه بود"
                             }
                         },
                         {
-                            "source": "ขอบคุณค่ะ ยินดีต้อนรับอีกนะคะ",
-                            "wordIds": [ "ขอบคุณ", "ค่ะ", "ยินดี", "ต้อนรับ", "อีก", "นะ", "คะ" ],
+                            "source": "ขอบคุณค่ะยินดีต้อนรับอีกนะคะ",
+                            "wordIds": [
+                                "ขอบคุณ",
+                                "ค่ะ",
+                                "ยินดี",
+                                "ต้อนรับ",
+                                "อีก",
+                                "นะ",
+                                "คะ"
+                            ],
                             "translations": {
                                 "en": "Thank you, please come again",
                                 "fa": "متشکرم، دوباره خوش آمدید"
@@ -429,7 +916,25 @@
                         "th": "คำศัพท์ร้านอาหารทั้งหมด",
                         "fa": "همه واژگان رستوران"
                     },
-                    "wordIds": [ "ร้านอาหาร", "โต๊ะ", "เมนู", "สั่ง", "อาหาร", "น้ำ", "ผัดไทย", "ต้มยำกุ้ง", "เขียวหวาน", "ไก่", "หมู", "เนื้อ", "ทะเล", "เผ็ด", "อร่อย", "บิล", "บริการ" ]
+                    "wordIds": [
+                        "ร้านอาหาร",
+                        "โต๊ะ",
+                        "เมนู",
+                        "สั่ง",
+                        "อาหาร",
+                        "น้ำ",
+                        "ผัดไทย",
+                        "ต้มยำกุ้ง",
+                        "เขียวหวาน",
+                        "ไก่",
+                        "หมู",
+                        "เนื้อ",
+                        "ทะเล",
+                        "เผ็ด",
+                        "อร่อย",
+                        "บิล",
+                        "บริการ"
+                    ]
                 }
             ]
         }

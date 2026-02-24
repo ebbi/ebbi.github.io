@@ -12,83 +12,532 @@
         "wordCount": 25,
         "sentenceCount": 18,
         "estimatedTime": 15,
-        "tags": [ "cinema", "movies", "entertainment" ]
+        "tags": [
+            "cinema",
+            "movies",
+            "entertainment"
+        ],
+        "authors": [ ],
+        "reviewers": [ ],
+        "prerequisites": [ ],
+        "updated": "2026-02-24T15:04:18.196Z"
     },
     "vocabulary": {
         "โรงหนัง": {
-            "translations": { "en": "cinema", "fa": "سینما" }
+            "translations": {
+                "en": "cinema",
+                "fa": "سینما"
+            }
         },
         "หนัง": {
-            "translations": { "en": "movie", "fa": "فیلم" }
+            "translations": {
+                "en": "movie",
+                "fa": "فیلم"
+            }
         },
         "เรื่อง": {
-            "translations": { "en": "title/story", "fa": "عنوان" }
+            "translations": {
+                "en": "title/story",
+                "fa": "عنوان"
+            }
         },
         "รอบ": {
-            "translations": { "en": "showtime", "fa": "سانس" }
+            "translations": {
+                "en": "showtime",
+                "fa": "سانس"
+            }
         },
         "ที่นั่ง": {
-            "translations": { "en": "seat", "fa": "صندلی" }
+            "translations": {
+                "en": "seat",
+                "fa": "صندلی"
+            }
         },
         "ตั๋ว": {
-            "translations": { "en": "ticket", "fa": "بلیط" }
+            "translations": {
+                "en": "ticket",
+                "fa": "بلیط"
+            }
         },
         "ซื้อตั๋ว": {
-            "translations": { "en": "buy ticket", "fa": "خرید بلیط" }
+            "translations": {
+                "en": "buy ticket",
+                "fa": "خرید بلیط"
+            }
         },
         "จอง": {
-            "translations": { "en": "reserve", "fa": "رزرو" }
+            "translations": {
+                "en": "reserve",
+                "fa": "رزرو"
+            }
         },
         "แถว": {
-            "translations": { "en": "row", "fa": "ردیف" }
-        },
-        "ที่นั่ง": {
-            "translations": { "en": "seat", "fa": "صندلی" }
+            "translations": {
+                "en": "row",
+                "fa": "ردیف"
+            }
         },
         "เก้าอี้": {
-            "translations": { "en": "chair", "fa": "صندلی" }
+            "translations": {
+                "en": "chair",
+                "fa": "صندلی"
+            }
         },
         "กลาง": {
-            "translations": { "en": "middle", "fa": "وسط" }
+            "translations": {
+                "en": "middle",
+                "fa": "وسط"
+            }
         },
         "ข้าง": {
-            "translations": { "en": "side", "fa": "کنار" }
+            "translations": {
+                "en": "side",
+                "fa": "کنار"
+            }
         },
         "หน้า": {
-            "translations": { "en": "front", "fa": "جلو" }
+            "translations": {
+                "en": "front",
+                "fa": "جلو"
+            }
         },
         "หลัง": {
-            "translations": { "en": "back", "fa": "عقب" }
+            "translations": {
+                "en": "back",
+                "fa": "عقب"
+            }
         },
         "ป๊อปคอร์น": {
-            "translations": { "en": "popcorn", "fa": "پاپ کورن" }
+            "translations": {
+                "en": "popcorn",
+                "fa": "پاپ کورن"
+            }
         },
         "น้ำอัดลม": {
-            "translations": { "en": "soda", "fa": "نوشابه" }
+            "translations": {
+                "en": "soda",
+                "fa": "نوشابه"
+            }
         },
         "เครื่องดื่ม": {
-            "translations": { "en": "drinks", "fa": "نوشیدنی" }
+            "translations": {
+                "en": "drinks",
+                "fa": "نوشیدنی"
+            }
         },
         "สนุก": {
-            "translations": { "en": "fun/enjoyable", "fa": "مفرح" }
+            "translations": {
+                "en": "fun/enjoyable",
+                "fa": "مفرح"
+            }
         },
         "ตลก": {
-            "translations": { "en": "funny", "fa": "خنده‌دار" }
+            "translations": {
+                "en": "funny",
+                "fa": "خنده‌دار"
+            }
         },
         "น่ากลัว": {
-            "translations": { "en": "scary", "fa": "ترسناک" }
+            "translations": {
+                "en": "scary",
+                "fa": "ترسناک"
+            }
         },
         "ซึ้ง": {
-            "translations": { "en": "touching", "fa": "تاثیرگذار" }
+            "translations": {
+                "en": "touching",
+                "fa": "تاثیرگذار"
+            }
         },
         "น่าเบื่อ": {
-            "translations": { "en": "boring", "fa": "کسالت‌آور" }
+            "translations": {
+                "en": "boring",
+                "fa": "کسالت‌آور"
+            }
         },
         "นักแสดง": {
-            "translations": { "en": "actor", "fa": "بازیگر" }
+            "translations": {
+                "en": "actor",
+                "fa": "بازیگر"
+            }
         },
         "ผู้กำกับ": {
-            "translations": { "en": "director", "fa": "کارگردان" }
+            "translations": {
+                "en": "director",
+                "fa": "کارگردان"
+            }
+        },
+        "Avengers": {
+            "translations": {
+                "en": "Avengers",
+                "fa": "انتقام‌جویان"
+            }
+        },
+        "สอง": {
+            "translations": {
+                "en": "TWO.",
+                "fa": "دو"
+            }
+        },
+        "ทุ่ม": {
+            "translations": {
+                "en": "7 p.m.",
+                "fa": "ساعت ۱۹"
+            }
+        },
+        "ครับ": {
+            "translations": {
+                "en": "OK",
+                "fa": "بله"
+            }
+        },
+        "รวม": {
+            "translations": {
+                "en": "Total",
+                "fa": "فقط نتایج کل"
+            }
+        },
+        "หกร้อย": {
+            "translations": {
+                "en": "Six hundred.",
+                "fa": "ششصد"
+            }
+        },
+        "บาท": {
+            "translations": {
+                "en": "Baht",
+                "fa": "بات"
+            }
+        },
+        "สุดสัปดาห์": {
+            "translations": {
+                "en": "Weekend",
+                "fa": "آخر هفته"
+            }
+        },
+        "นี้": {
+            "translations": {
+                "en": "This",
+                "fa": "این"
+            }
+        },
+        "ไป": {
+            "translations": {
+                "en": "I'm going",
+                "fa": "& برو‌"
+            }
+        },
+        "ดูหนัง": {
+            "translations": {
+                "en": "Movies",
+                "fa": "تماشای فیلم"
+            }
+        },
+        "กัน": {
+            "translations": {
+                "en": "together",
+                "fa": "با هم"
+            }
+        },
+        "ไหม": {
+            "translations": {
+                "en": "Silk",
+                "fa": "ابریشم"
+            }
+        },
+        "ดี": {
+            "translations": {
+                "en": "Good",
+                "fa": "خوب"
+            }
+        },
+        "เหมือนกัน": {
+            "translations": {
+                "en": "too. ",
+                "fa": "همان"
+            }
+        },
+        "มี": {
+            "translations": {
+                "en": "Yes",
+                "fa": "محتویات"
+            }
+        },
+        "อะไร": {
+            "translations": {
+                "en": "WHAT",
+                "fa": "چه:"
+            }
+        },
+        "เข้า": {
+            "translations": {
+                "en": "in",
+                "fa": "ورود"
+            }
+        },
+        "บ้าง": {
+            "translations": {
+                "en": "Somewhat",
+                "fa": "برخی"
+            }
+        },
+        "หนังตลก": {
+            "translations": {
+                "en": "Comedy",
+                "fa": "کمدی"
+            }
+        },
+        "กับ": {
+            "translations": {
+                "en": "With",
+                "fa": "با"
+            }
+        },
+        "หนังผี": {
+            "translations": {
+                "en": "Ghost movies",
+                "fa": "فیلم‌های ترسناک"
+            }
+        },
+        "ดู": {
+            "translations": {
+                "en": "View",
+                "fa": "_انتظار"
+            }
+        },
+        "ดีกว่า": {
+            "translations": {
+                "en": " Better",
+                "fa": "بهتر"
+            }
+        },
+        "ตาม": {
+            "translations": {
+                "en": "as per",
+                "fa": "دنبال کردن"
+            }
+        },
+        "นั้น": {
+            "translations": {
+                "en": "one. ",
+                "fa": "که"
+            }
+        },
+        "ซื้อ": {
+            "translations": {
+                "en": "Purchase",
+                "fa": "خرید"
+            }
+        },
+        "คะ": {
+            "translations": {
+                "en": "Ka",
+                "fa": "بله"
+            }
+        },
+        "ขอ": {
+            "translations": {
+                "en": "I'm looking at it.",
+                "fa": "خواهش می‌کنم"
+            }
+        },
+        "ตรงกลาง": {
+            "translations": {
+                "en": "Center",
+                "fa": "مرکزی"
+            }
+        },
+        "G": {
+            "translations": {
+                "en": "G",
+                "fa": "جی"
+            }
+        },
+        "ค่ะ": {
+            "translations": {
+                "en": "Thank you.",
+                "fa": "بله"
+            }
+        },
+        "เหลือ": {
+            "translations": {
+                "en": "left",
+                "fa": "چپ"
+            }
+        },
+        "G7": {
+            "translations": {
+                "en": "G7",
+                "fa": "جی۷"
+            }
+        },
+        "G8": {
+            "translations": {
+                "en": "G8",
+                "fa": "جی۸"
+            }
+        },
+        "โอเค": {
+            "translations": {
+                "en": "Okay",
+                "fa": "باشه"
+            }
+        },
+        "สิ": {
+            "translations": {
+                "en": "XI",
+                "fa": "سی"
+            }
+        },
+        "ต้อง": {
+            "translations": {
+                "en": "to",
+                "fa": "باید"
+            }
+        },
+        "เอา": {
+            "translations": {
+                "en": "\"Yes~~!\"",
+                "fa": "گرفتن"
+            }
+        },
+        "ขนาด": {
+            "translations": {
+                "en": "Size",
+                "fa": "اندازه"
+            }
+        },
+        "ไหน": {
+            "translations": {
+                "en": "Plum",
+                "fa": "که"
+            }
+        },
+        "ขนาดใหญ่": {
+            "translations": {
+                "en": "Large size",
+                "fa": "سایز بزرگ"
+            }
+        },
+        "แบ่งกัน": {
+            "translations": {
+                "en": "Split",
+                "fa": "به اشتراک بگذارید"
+            }
+        },
+        "กิน": {
+            "translations": {
+                "en": "Eating",
+                "fa": "خوردن"
+            }
+        },
+        "แล้ว": {
+            "translations": {
+                "en": "So ",
+                "fa": "قبلاً"
+            }
+        },
+        "ด้วย": {
+            "translations": {
+                "en": "With",
+                "fa": "با"
+            }
+        },
+        "แก้ว": {
+            "translations": {
+                "en": "Glass",
+                "fa": "شیشه"
+            }
+        },
+        "เป็น": {
+            "translations": {
+                "en": "is",
+                "fa": "هست"
+            }
+        },
+        "ยังไง": {
+            "translations": {
+                "en": "Together",
+                "fa": "چگونه"
+            }
+        },
+        "มาก": {
+            "translations": {
+                "en": "Many",
+                "fa": "بیشتر"
+            }
+        },
+        "ฮา": {
+            "translations": {
+                "en": "Ha.",
+                "fa": "هههه"
+            }
+        },
+        "ทุก": {
+            "translations": {
+                "en": "Every",
+                "fa": "هر کدام"
+            }
+        },
+        "ฉาก": {
+            "translations": {
+                "en": "Edit this scene",
+                "fa": "صحنه"
+            }
+        },
+        "เล่นดี": {
+            "translations": {
+                "en": "Play nice.",
+                "fa": "خوب بازی کن"
+            }
+        },
+        "คน": {
+            "translations": {
+                "en": "   persons",
+                "fa": "شخص"
+            }
+        },
+        "ใช่": {
+            "translations": {
+                "en": "Yes",
+                "fa": "& بله"
+            }
+        },
+        "อยากดู": {
+            "translations": {
+                "en": "Want to see",
+                "fa": "می‌خواهم تماشایش کنم."
+            }
+        },
+        "อีก": {
+            "translations": {
+                "en": "for",
+                "fa": "بیشتر"
+            }
+        },
+        "ครั้ง": {
+            "translations": {
+                "en": "times",
+                "fa": "زمان"
+            }
+        },
+        "คราวหน้า": {
+            "translations": {
+                "en": "Next Time",
+                "fa": "دفعه‌ی بعد"
+            }
+        },
+        "ค่อย": {
+            "translations": {
+                "en": "Slowly",
+                "fa": "به تدریج"
+            }
+        },
+        "ใหม่": {
+            "translations": {
+                "en": "New",
+                "fa": "جدید"
+            }
         }
     },
     "activity": {
@@ -108,24 +557,44 @@
                     "type": "paragraph",
                     "sentences": [
                         {
-                            "source": "สุดสัปดาห์นี้ ไปดูหนังกันไหม",
-                            "wordIds": [ "สุดสัปดาห์", "นี้", "ไป", "ดูหนัง", "กัน", "ไหม" ],
+                            "source": "สุดสัปดาห์นี้ไปดูหนังกันไหม",
+                            "wordIds": [
+                                "สุดสัปดาห์",
+                                "นี้",
+                                "ไป",
+                                "ดูหนัง",
+                                "กัน",
+                                "ไหม"
+                            ],
                             "translations": {
                                 "en": "Want to go see a movie this weekend?",
                                 "fa": "این آخر هفته می‌خواهی بریم سینما؟"
                             }
                         },
                         {
-                            "source": "ดีเหมือนกัน มีเรื่องอะไรเข้าบ้าง",
-                            "wordIds": [ "ดี", "เหมือนกัน", "มี", "เรื่อง", "อะไร", "เข้า", "บ้าง" ],
+                            "source": "ดีเหมือนกันมีเรื่องอะไรเข้าบ้าง",
+                            "wordIds": [
+                                "ดี",
+                                "เหมือนกัน",
+                                "มี",
+                                "เรื่อง",
+                                "อะไร",
+                                "เข้า",
+                                "บ้าง"
+                            ],
                             "translations": {
                                 "en": "Sounds good. What movies are playing?",
                                 "fa": "عالیه. چه فیلم‌هایی اکران شده؟"
                             }
                         },
                         {
-                            "source": "มีหนังตลก กับหนังผี",
-                            "wordIds": [ "มี", "หนังตลก", "กับ", "หนังผี" ],
+                            "source": "มีหนังตลกกับหนังผี",
+                            "wordIds": [
+                                "มี",
+                                "หนังตลก",
+                                "กับ",
+                                "หนังผี"
+                            ],
                             "translations": {
                                 "en": "There's a comedy and a horror movie",
                                 "fa": "یک فیلم کمدی و یک فیلم ترسناک"
@@ -133,7 +602,11 @@
                         },
                         {
                             "source": "ดูหนังตลกดีกว่า",
-                            "wordIds": [ "ดู", "หนังตลก", "ดีกว่า" ],
+                            "wordIds": [
+                                "ดู",
+                                "หนังตลก",
+                                "ดีกว่า"
+                            ],
                             "translations": {
                                 "en": "Better watch the comedy",
                                 "fa": "بهتره کمدی ببینیم"
@@ -141,7 +614,10 @@
                         },
                         {
                             "source": "ตามนั้น",
-                            "wordIds": [ "ตาม", "นั้น" ],
+                            "wordIds": [
+                                "ตาม",
+                                "นั้น"
+                            ],
                             "translations": {
                                 "en": "Agreed",
                                 "fa": "موافقم"
@@ -164,7 +640,14 @@
                     "sentences": [
                         {
                             "source": "ซื้อตั๋วหนังสองที่นั่งครับ",
-                            "wordIds": [ "ซื้อ", "ตั๋ว", "หนัง", "สอง", "ที่นั่ง", "ครับ" ],
+                            "wordIds": [
+                                "ซื้อ",
+                                "ตั๋ว",
+                                "หนัง",
+                                "สอง",
+                                "ที่นั่ง",
+                                "ครับ"
+                            ],
                             "translations": {
                                 "en": "Two movie tickets please",
                                 "fa": "دو تا بلیط سینما لطفاً"
@@ -172,31 +655,55 @@
                         },
                         {
                             "source": "เรื่องอะไรคะ",
-                            "wordIds": [ "เรื่อง", "อะไร", "คะ" ],
+                            "wordIds": [
+                                "เรื่อง",
+                                "อะไร",
+                                "คะ"
+                            ],
                             "translations": {
                                 "en": "What movie?",
                                 "fa": "کدام فیلم؟"
                             }
                         },
                         {
-                            "source": "เรื่อง Avengers รอบ 2 ทุ่มครับ",
-                            "wordIds": [ "เรื่อง", "Avengers", "รอบ", "สอง", "ทุ่ม", "ครับ" ],
+                            "source": "เรื่องAvengersรอบสองทุ่มครับ",
+                            "wordIds": [
+                                "เรื่อง",
+                                "Avengers",
+                                "รอบ",
+                                "สอง",
+                                "ทุ่ม",
+                                "ครับ"
+                            ],
                             "translations": {
                                 "en": "Avengers, 8 p.m. show",
                                 "fa": "اونجرز، سانس ۸ شب"
                             }
                         },
                         {
-                            "source": "ขอที่นั่งตรงกลางแถว G ค่ะ",
-                            "wordIds": [ "ขอ", "ที่นั่ง", "ตรงกลาง", "แถว", "G", "ค่ะ" ],
+                            "source": "ขอที่นั่งตรงกลางแถวGค่ะ",
+                            "wordIds": [
+                                "ขอ",
+                                "ที่นั่ง",
+                                "ตรงกลาง",
+                                "แถว",
+                                "G",
+                                "ค่ะ"
+                            ],
                             "translations": {
                                 "en": "Middle seats in row G please",
                                 "fa": "صندلی‌های وسط ردیف G لطفاً"
                             }
                         },
                         {
-                            "source": "เหลือ G7 กับ G8 ครับ",
-                            "wordIds": [ "เหลือ", "G7", "กับ", "G8", "ครับ" ],
+                            "source": "เหลือG7กับG8ครับ",
+                            "wordIds": [
+                                "เหลือ",
+                                "G7",
+                                "กับ",
+                                "G8",
+                                "ครับ"
+                            ],
                             "translations": {
                                 "en": "G7 and G8 are available",
                                 "fa": "G7 و G8 موجود است"
@@ -204,15 +711,23 @@
                         },
                         {
                             "source": "โอเคค่ะ",
-                            "wordIds": [ "โอเค", "ค่ะ" ],
+                            "wordIds": [
+                                "โอเค",
+                                "ค่ะ"
+                            ],
                             "translations": {
                                 "en": "OK",
                                 "fa": "باشه"
                             }
                         },
                         {
-                            "source": "รวม 600 บาทครับ",
-                            "wordIds": [ "รวม", "หกร้อย", "บาท", "ครับ" ],
+                            "source": "รวมหกร้อยบาทครับ",
+                            "wordIds": [
+                                "รวม",
+                                "หกร้อย",
+                                "บาท",
+                                "ครับ"
+                            ],
                             "translations": {
                                 "en": "Total 600 baht",
                                 "fa": "جمعاً ۶۰۰ بات"
@@ -235,15 +750,26 @@
                     "sentences": [
                         {
                             "source": "ซื้อป๊อปคอร์นไหม",
-                            "wordIds": [ "ซื้อ", "ป๊อปคอร์น", "ไหม" ],
+                            "wordIds": [
+                                "ซื้อ",
+                                "ป๊อปคอร์น",
+                                "ไหม"
+                            ],
                             "translations": {
                                 "en": "Want to buy popcorn?",
                                 "fa": "پاپ کورن بخریم؟"
                             }
                         },
                         {
-                            "source": "ซื้อสิ ดูหนังต้องมีป๊อปคอร์น",
-                            "wordIds": [ "ซื้อ", "สิ", "ดูหนัง", "ต้อง", "มี", "ป๊อปคอร์น" ],
+                            "source": "ซื้อสิดูหนังต้องมีป๊อปคอร์น",
+                            "wordIds": [
+                                "ซื้อ",
+                                "สิ",
+                                "ดูหนัง",
+                                "ต้อง",
+                                "มี",
+                                "ป๊อปคอร์น"
+                            ],
                             "translations": {
                                 "en": "Of course, watching a movie requires popcorn",
                                 "fa": "حتماً، سینما رفتن بدون پاپ کورن نمی‌شه"
@@ -251,15 +777,25 @@
                         },
                         {
                             "source": "เอาขนาดไหนดี",
-                            "wordIds": [ "เอา", "ขนาด", "ไหน", "ดี" ],
+                            "wordIds": [
+                                "เอา",
+                                "ขนาด",
+                                "ไหน",
+                                "ดี"
+                            ],
                             "translations": {
                                 "en": "What size should we get?",
                                 "fa": "چه سایزی بگیریم؟"
                             }
                         },
                         {
-                            "source": "เอาขนาดใหญ่ แบ่งกันกิน",
-                            "wordIds": [ "เอา", "ขนาดใหญ่", "แบ่งกัน", "กิน" ],
+                            "source": "เอาขนาดใหญ่แบ่งกันกิน",
+                            "wordIds": [
+                                "เอา",
+                                "ขนาดใหญ่",
+                                "แบ่งกัน",
+                                "กิน"
+                            ],
                             "translations": {
                                 "en": "Large, we can share",
                                 "fa": "بزرگ، باهم می‌خوریم"
@@ -267,7 +803,12 @@
                         },
                         {
                             "source": "แล้วเอาน้ำอัดลมด้วย",
-                            "wordIds": [ "แล้ว", "เอา", "น้ำอัดลม", "ด้วย" ],
+                            "wordIds": [
+                                "แล้ว",
+                                "เอา",
+                                "น้ำอัดลม",
+                                "ด้วย"
+                            ],
                             "translations": {
                                 "en": "And get sodas too",
                                 "fa": "و نوشابه هم بگیر"
@@ -275,7 +816,10 @@
                         },
                         {
                             "source": "สองแก้ว",
-                            "wordIds": [ "สอง", "แก้ว" ],
+                            "wordIds": [
+                                "สอง",
+                                "แก้ว"
+                            ],
                             "translations": {
                                 "en": "Two cups",
                                 "fa": "دو لیوان"
@@ -297,16 +841,28 @@
                     "type": "paragraph",
                     "sentences": [
                         {
-                            "source": "เป็นยังไงบ้าง สนุกไหม",
-                            "wordIds": [ "เป็น", "ยังไง", "บ้าง", "สนุก", "ไหม" ],
+                            "source": "เป็นยังไงบ้างสนุกไหม",
+                            "wordIds": [
+                                "เป็น",
+                                "ยังไง",
+                                "บ้าง",
+                                "สนุก",
+                                "ไหม"
+                            ],
                             "translations": {
                                 "en": "How was it? Did you enjoy it?",
                                 "fa": "چطور بود؟ خوشت اومد؟"
                             }
                         },
                         {
-                            "source": "สนุกมาก ฮาทุกฉาก",
-                            "wordIds": [ "สนุก", "มาก", "ฮา", "ทุก", "ฉาก" ],
+                            "source": "สนุกมากฮาทุกฉาก",
+                            "wordIds": [
+                                "สนุก",
+                                "มาก",
+                                "ฮา",
+                                "ทุก",
+                                "ฉาก"
+                            ],
                             "translations": {
                                 "en": "Very funny, laughed at every scene",
                                 "fa": "خیلی مفرح بود، همه صحنه‌ها خنده‌دار بود"
@@ -314,15 +870,25 @@
                         },
                         {
                             "source": "นักแสดงเล่นดีทุกคน",
-                            "wordIds": [ "นักแสดง", "เล่นดี", "ทุก", "คน" ],
+                            "wordIds": [
+                                "นักแสดง",
+                                "เล่นดี",
+                                "ทุก",
+                                "คน"
+                            ],
                             "translations": {
                                 "en": "The actors all performed well",
                                 "fa": "همه بازیگرها خوب بازی کردند"
                             }
                         },
                         {
-                            "source": "ใช่ อยากดูอีกครั้ง",
-                            "wordIds": [ "ใช่", "อยากดู", "อีก", "ครั้ง" ],
+                            "source": "ใช่อยากดูอีกครั้ง",
+                            "wordIds": [
+                                "ใช่",
+                                "อยากดู",
+                                "อีก",
+                                "ครั้ง"
+                            ],
                             "translations": {
                                 "en": "Yes, I'd like to watch it again",
                                 "fa": "آره، دوباره دوست دارم ببینم"
@@ -330,7 +896,13 @@
                         },
                         {
                             "source": "คราวหน้าค่อยดูเรื่องใหม่",
-                            "wordIds": [ "คราวหน้า", "ค่อย", "ดู", "เรื่อง", "ใหม่" ],
+                            "wordIds": [
+                                "คราวหน้า",
+                                "ค่อย",
+                                "ดู",
+                                "เรื่อง",
+                                "ใหม่"
+                            ],
                             "translations": {
                                 "en": "Next time we'll watch a new movie",
                                 "fa": "دفعه بعد یه فیلم جدید می‌بینیم"

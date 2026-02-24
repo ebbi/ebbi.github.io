@@ -12,19 +12,110 @@
         "newWords": 15,
         "reviewWords": 35,
         "sentenceCount": 24,
-        "estimatedTime": 25
+        "estimatedTime": 25,
+        "authors": [ ],
+        "reviewers": [ ],
+        "prerequisites": [ ],
+        "tags": [ ],
+        "updated": "2026-02-24T14:52:59.281Z"
     },
     "vocabulary": {
-        "ได้": { "translations": { "en": "can/able to", "fa": "توانستن" } },
-        "พูด": { "translations": { "en": "speak", "fa": "صحبت کردن" } },
-        "อ่าน": { "translations": { "en": "read", "fa": "خواندن" } },
-        "เขียน": { "translations": { "en": "write", "fa": "نوشتن" } },
-        "ฟัง": { "translations": { "en": "listen", "fa": "گوش دادن" } },
-        "เข้าใจ": { "translations": { "en": "understand", "fa": "فهمیدن" } },
-        "ขับรถ": { "translations": { "en": "drive", "fa": "رانندگی کردن" } },
-        "ทำอาหาร": { "translations": { "en": "cook", "fa": "آشپزی کردن" } },
-        "ภาษาไทย": { "translations": { "en": "Thai language", "fa": "زبان تایلندی" } },
-        "ภาษาอังกฤษ": { "translations": { "en": "English language", "fa": "زبان انگلیسی" } }
+        "ได้": {
+            "translations": {
+                "en": "can/able to",
+                "fa": "توانستن"
+            }
+        },
+        "พูด": {
+            "translations": {
+                "en": "speak",
+                "fa": "صحبت کردن"
+            }
+        },
+        "อ่าน": {
+            "translations": {
+                "en": "read",
+                "fa": "خواندن"
+            }
+        },
+        "เขียน": {
+            "translations": {
+                "en": "write",
+                "fa": "نوشتن"
+            }
+        },
+        "ฟัง": {
+            "translations": {
+                "en": "listen",
+                "fa": "گوش دادن"
+            }
+        },
+        "เข้าใจ": {
+            "translations": {
+                "en": "understand",
+                "fa": "فهمیدن"
+            }
+        },
+        "ขับรถ": {
+            "translations": {
+                "en": "drive",
+                "fa": "رانندگی کردن"
+            }
+        },
+        "ทำอาหาร": {
+            "translations": {
+                "en": "cook",
+                "fa": "آشپزی کردن"
+            }
+        },
+        "ภาษาไทย": {
+            "translations": {
+                "en": "Thai language",
+                "fa": "زبان تایلندی"
+            }
+        },
+        "ภาษาอังกฤษ": {
+            "translations": {
+                "en": "English language",
+                "fa": "زبان انگلیسی"
+            }
+        },
+        "ผม": {
+            "translations": {
+                "en": "Hair",
+                "fa": "من:"
+            }
+        },
+        "คุณ": {
+            "translations": {
+                "en": "You",
+                "fa": "شما:"
+            }
+        },
+        "ไหม": {
+            "translations": {
+                "en": "Silk",
+                "fa": "ابریشم"
+            }
+        },
+        "เขา": {
+            "translations": {
+                "en": "He, She",
+                "fa": "او"
+            }
+        },
+        "ไม่": {
+            "translations": {
+                "en": "No",
+                "fa": "خیر"
+            }
+        },
+        "ฉัน": {
+            "translations": {
+                "en": "Me",
+                "fa": "من"
+            }
+        }
     },
     "sections": [
         {
@@ -50,8 +141,14 @@
                             "fa": "برای بیان توانایی، 'ได้' را بعد از فعل بیاورید. برای منفی کردن، 'ไม่' را قبل از فعل بگذارید."
                         },
                         "examples": [
-                            { "source": "ผมพูดไทยได้", "translation": "I can speak Thai" },
-                            { "source": "ผมพูดไทยไม่ได้", "translation": "I can't speak Thai" }
+                            {
+                                "source": "ผมพูดไทยได้",
+                                "translation": "I can speak Thai"
+                            },
+                            {
+                                "source": "ผมพูดไทยไม่ได้",
+                                "translation": "I can't speak Thai"
+                            }
                         ]
                     },
                     "sentences": [ ]
@@ -66,7 +163,12 @@
                     "sentences": [
                         {
                             "source": "ผมพูดภาษาไทยได้",
-                            "wordIds": [ "ผม", "พูด", "ภาษาไทย", "ได้" ],
+                            "wordIds": [
+                                "ผม",
+                                "พูด",
+                                "ภาษาไทย",
+                                "ได้"
+                            ],
                             "translations": {
                                 "en": "I can speak Thai",
                                 "fa": "من می‌توانم تایلندی صحبت کنم"
@@ -74,7 +176,13 @@
                         },
                         {
                             "source": "คุณอ่านภาษาอังกฤษได้ไหม",
-                            "wordIds": [ "คุณ", "อ่าน", "ภาษาอังกฤษ", "ได้", "ไหม" ],
+                            "wordIds": [
+                                "คุณ",
+                                "อ่าน",
+                                "ภาษาอังกฤษ",
+                                "ได้",
+                                "ไหม"
+                            ],
                             "translations": {
                                 "en": "Can you read English?",
                                 "fa": "آیا می‌توانید انگلیسی بخوانید؟"
@@ -82,7 +190,13 @@
                         },
                         {
                             "source": "เขาเขียนภาษาไทยไม่ได้",
-                            "wordIds": [ "เขา", "เขียน", "ภาษาไทย", "ไม่", "ได้" ],
+                            "wordIds": [
+                                "เขา",
+                                "เขียน",
+                                "ภาษาไทย",
+                                "ไม่",
+                                "ได้"
+                            ],
                             "translations": {
                                 "en": "He can't write Thai",
                                 "fa": "او نمی‌تواند تایلندی بنویسد"
@@ -90,7 +204,11 @@
                         },
                         {
                             "source": "ฉันขับรถได้",
-                            "wordIds": [ "ฉัน", "ขับรถ", "ได้" ],
+                            "wordIds": [
+                                "ฉัน",
+                                "ขับรถ",
+                                "ได้"
+                            ],
                             "translations": {
                                 "en": "I can drive",
                                 "fa": "من می‌توانم رانندگی کنم"

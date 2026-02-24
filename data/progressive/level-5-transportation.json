@@ -13,99 +13,483 @@
         "reviewWords": 25,
         "totalWords": 55,
         "sentences": 25,
-        "prerequisites": [ "level-4-shopping" ],
-        "estimatedTime": 30
+        "prerequisites": [
+            "level-4-shopping"
+        ],
+        "estimatedTime": 30,
+        "authors": [ ],
+        "reviewers": [ ],
+        "tags": [ ],
+        "updated": "2026-02-24T14:10:01.175Z"
     },
     "vocabulary": {
         "รถ": {
-            "translations": { "en": "vehicle/car", "fa": "ماشین" }
+            "translations": {
+                "en": "vehicle/car",
+                "fa": "ماشین"
+            }
         },
         "รถเมล์": {
-            "translations": { "en": "bus", "fa": "اتوبوس" }
+            "translations": {
+                "en": "bus",
+                "fa": "اتوبوس"
+            }
         },
         "รถไฟฟ้า": {
-            "translations": { "en": "skytrain/subway", "fa": "قطار شهری" }
+            "translations": {
+                "en": "skytrain/subway",
+                "fa": "قطار شهری"
+            }
         },
         "รถไฟ": {
-            "translations": { "en": "train", "fa": "قطار" }
+            "translations": {
+                "en": "train",
+                "fa": "قطار"
+            }
         },
         "รถตู้": {
-            "translations": { "en": "van", "fa": "ون" }
+            "translations": {
+                "en": "van",
+                "fa": "ون"
+            }
         },
         " taxi": {
-            "translations": { "en": "taxi", "fa": "تاکسی" }
+            "translations": {
+                "en": "taxi",
+                "fa": "تاکسی"
+            }
         },
         "มอเตอร์ไซค์": {
-            "translations": { "en": "motorcycle", "fa": "موتورسیکلت" }
+            "translations": {
+                "en": "motorcycle",
+                "fa": "موتورسیکلت"
+            }
         },
         "เรือ": {
-            "translations": { "en": "boat", "fa": "قایق" }
+            "translations": {
+                "en": "boat",
+                "fa": "قایق"
+            }
         },
         "เครื่องบิน": {
-            "translations": { "en": "airplane", "fa": "هواپیما" }
+            "translations": {
+                "en": "airplane",
+                "fa": "هواپیما"
+            }
         },
         "ไป": {
-            "translations": { "en": "go", "fa": "رفتن" }
+            "translations": {
+                "en": "go",
+                "fa": "رفتن"
+            }
         },
         "มา": {
-            "translations": { "en": "come", "fa": "آمدن" }
+            "translations": {
+                "en": "come",
+                "fa": "آمدن"
+            }
         },
         "ถึง": {
-            "translations": { "en": "arrive", "fa": "رسیدن" }
+            "translations": {
+                "en": "arrive",
+                "fa": "رسیدن"
+            }
         },
         "ออก": {
-            "translations": { "en": "leave/depart", "fa": "حرکت کردن" }
+            "translations": {
+                "en": "leave/depart",
+                "fa": "حرکت کردن"
+            }
         },
         "ตรง": {
-            "translations": { "en": "straight", "fa": "مستقیم" }
+            "translations": {
+                "en": "straight",
+                "fa": "مستقیم"
+            }
         },
         "เลี้ยว": {
-            "translations": { "en": "turn", "fa": "پیچیدن" }
+            "translations": {
+                "en": "turn",
+                "fa": "پیچیدن"
+            }
         },
         "ซ้าย": {
-            "translations": { "en": "left", "fa": "چپ" }
+            "translations": {
+                "en": "left",
+                "fa": "چپ"
+            }
         },
         "ขวา": {
-            "translations": { "en": "right", "fa": "راست" }
+            "translations": {
+                "en": "right",
+                "fa": "راست"
+            }
         },
         "ใกล้": {
-            "translations": { "en": "near", "fa": "نزدیک" }
+            "translations": {
+                "en": "near",
+                "fa": "نزدیک"
+            }
         },
         "ไกล": {
-            "translations": { "en": "far", "fa": "دور" }
+            "translations": {
+                "en": "far",
+                "fa": "دور"
+            }
         },
         "แยก": {
-            "translations": { "en": "intersection", "fa": "چهارراه" }
+            "translations": {
+                "en": "intersection",
+                "fa": "چهارراه"
+            }
         },
         "ป้าย": {
-            "translations": { "en": "sign/stop", "fa": "ایستگاه" }
+            "translations": {
+                "en": "sign/stop",
+                "fa": "ایستگاه"
+            }
         },
         "สถานี": {
-            "translations": { "en": "station", "fa": "ایستگاه" }
+            "translations": {
+                "en": "station",
+                "fa": "ایستگاه"
+            }
         },
         "ทาง": {
-            "translations": { "en": "way/path", "fa": "راه" }
+            "translations": {
+                "en": "way/path",
+                "fa": "راه"
+            }
         },
         "กี่โมง": {
-            "translations": { "en": "what time", "fa": "ساعت چند" }
+            "translations": {
+                "en": "what time",
+                "fa": "ساعت چند"
+            }
         },
         "นาที": {
-            "translations": { "en": "minute", "fa": "دقیقه" }
+            "translations": {
+                "en": "minute",
+                "fa": "دقیقه"
+            }
         },
         "ชั่วโมง": {
-            "translations": { "en": "hour", "fa": "ساعت" }
+            "translations": {
+                "en": "hour",
+                "fa": "ساعت"
+            }
         },
         "ตั๋ว": {
-            "translations": { "en": "ticket", "fa": "بلیط" }
+            "translations": {
+                "en": "ticket",
+                "fa": "بلیط"
+            }
         },
         "ค่าโดยสาร": {
-            "translations": { "en": "fare", "fa": "کرایه" }
+            "translations": {
+                "en": "fare",
+                "fa": "کرایه"
+            }
         },
         "ลง": {
-            "translations": { "en": "get off", "fa": "پیاده شدن" }
+            "translations": {
+                "en": "get off",
+                "fa": "پیاده شدن"
+            }
         },
         "ขึ้น": {
-            "translations": { "en": "get on", "fa": "سوار شدن" }
+            "translations": {
+                "en": "get on",
+                "fa": "سوار شدن"
+            }
+        },
+        "สาย": {
+            "translations": {
+                "en": "late",
+                "fa": "خط"
+            }
+        },
+        "สิบห้า": {
+            "translations": {
+                "en": "Fifteen",
+                "fa": "پانزده"
+            }
+        },
+        "กับ": {
+            "translations": {
+                "en": "With",
+                "fa": "با"
+            }
+        },
+        "สี่สิบแปด": {
+            "translations": {
+                "en": "Forty-eight.",
+                "fa": "چهل و هشت"
+            }
+        },
+        "ค่ะ": {
+            "translations": {
+                "en": "Thank you.",
+                "fa": "بله"
+            }
+        },
+        "ทุกๆ": {
+            "translations": {
+                "en": "Every",
+                "fa": "هر"
+            }
+        },
+        "ห้า": {
+            "translations": {
+                "en": "FIVE.",
+                "fa": "پنج"
+            }
+        },
+        "ครับ": {
+            "translations": {
+                "en": "OK",
+                "fa": "بله"
+            }
+        },
+        "ตลอด": {
+            "translations": {
+                "en": "Through",
+                "fa": "همیشه"
+            }
+        },
+        "ยี่สิบห้า": {
+            "translations": {
+                "en": "Twenty Five",
+                "fa": "بیست و پنج"
+            }
+        },
+        "บาท": {
+            "translations": {
+                "en": "Baht",
+                "fa": "بات"
+            }
+        },
+        "taxi": {
+            "translations": {
+                "en": "taxi",
+                "fa": "تاکسی"
+            }
+        },
+        "ขอโทษ": {
+            "translations": {
+                "en": "Sorry...",
+                "fa": "ببخشید"
+            }
+        },
+        "ไหน": {
+            "translations": {
+                "en": "Plum",
+                "fa": "که"
+            }
+        },
+        "แล้ว": {
+            "translations": {
+                "en": "So ",
+                "fa": "قبلاً"
+            }
+        },
+        "ไหม": {
+            "translations": {
+                "en": "Silk",
+                "fa": "ابریشم"
+            }
+        },
+        "ไม่": {
+            "translations": {
+                "en": "No",
+                "fa": "خیر"
+            }
+        },
+        "เดิน": {
+            "translations": {
+                "en": "walk",
+                "fa": "پیاده روی"
+            }
+        },
+        "ประมาณ": {
+            "translations": {
+                "en": "Estimate",
+                "fa": "درباره"
+            }
+        },
+        "ขอบคุณ": {
+            "translations": {
+                "en": "Thanks!",
+                "fa": "متشکرم"
+            }
+        },
+        "มาก": {
+            "translations": {
+                "en": "Many",
+                "fa": "بیشتر"
+            }
+        },
+        "สนามบิน": {
+            "translations": {
+                "en": "Airport",
+                "fa": "فرودگاه"
+            }
+        },
+        "สุวรรณภูมิ": {
+            "translations": {
+                "en": "Suvarnabhumi",
+                "fa": "سووارنابومی"
+            }
+        },
+        "เท่าไหร่": {
+            "translations": {
+                "en": "How much is it?",
+                "fa": "چقدر"
+            }
+        },
+        "สาม": {
+            "translations": {
+                "en": "THREE.",
+                "fa": "سه"
+            }
+        },
+        "ร้อย": {
+            "translations": {
+                "en": "Hundred",
+                "fa": "صد"
+            }
+        },
+        "สิบ": {
+            "translations": {
+                "en": "Ten",
+                "fa": "ده"
+            }
+        },
+        "ตกลง": {
+            "translations": {
+                "en": "OK",
+                "fa": "تأیید"
+            }
+        },
+        "ทางด่วน": {
+            "translations": {
+                "en": "chute(1)",
+                "fa": "بزرگراه"
+            }
+        },
+        "ได้": {
+            "translations": {
+                "en": "Yes",
+                "fa": "می‌تواند"
+            }
+        },
+        "แต่": {
+            "translations": {
+                "en": "But",
+                "fa": "اما"
+            }
+        },
+        "ค่าทางด่วน": {
+            "translations": {
+                "en": "Toll fee",
+                "fa": "هزینه‌های عوارض"
+            }
+        },
+        "อีก": {
+            "translations": {
+                "en": "for",
+                "fa": "بیشتر"
+            }
+        },
+        "นะ": {
+            "translations": {
+                "en": "Yes?",
+                "fa": "نا"
+            }
+        },
+        "เลย": {
+            "translations": {
+                "en": "Loei Province",
+                "fa": "اصلاً"
+            }
+        },
+        "อะไร": {
+            "translations": {
+                "en": "WHAT",
+                "fa": "چه:"
+            }
+        },
+        "สยามพารากอน": {
+            "translations": {
+                "en": "Siam Paragon",
+                "fa": "سیام پاراگون"
+            }
+        },
+        "คะ": {
+            "translations": {
+                "en": "Ka",
+                "fa": "بله"
+            }
+        },
+        "อยู่": {
+            "translations": {
+                "en": "is",
+                "fa": "زنده"
+            }
+        },
+        "ข้าง": {
+            "translations": {
+                "en": "side, lateral ",
+                "fa": "سمت"
+            }
+        },
+        "หน้า": {
+            "translations": {
+                "en": "Page",
+                "fa": "صفحه"
+            }
+        },
+        "ขอ": {
+            "translations": {
+                "en": "I'm looking at it.",
+                "fa": "خواهش می‌کنم"
+            }
+        },
+        "ซื้อ": {
+            "translations": {
+                "en": "Purchase",
+                "fa": "خرید"
+            }
+        },
+        "หน่อย": {
+            "translations": {
+                "en": "A little bit",
+                "fa": "بیت"
+            }
+        },
+        "อโศก": {
+            "translations": {
+                "en": "Ashoka",
+                "fa": "آشوکا"
+            }
+        },
+        "สี่สิบสอง": {
+            "translations": {
+                "en": "Forty-two.",
+                "fa": "چهل و دو"
+            }
+        },
+        "กี่": {
+            "translations": {
+                "en": "Loom",
+                "fa": "چند تا؟"
+            }
+        },
+        "ครั้ง": {
+            "translations": {
+                "en": "times",
+                "fa": "زمان"
+            }
         }
     },
     "activity": {
@@ -123,7 +507,17 @@
             "content": [
                 {
                     "type": "words",
-                    "wordIds": [ "รถ", "รถเมล์", "รถไฟฟ้า", "รถไฟ", "รถตู้", "taxi", "มอเตอร์ไซค์", "เรือ", "เครื่องบิน" ]
+                    "wordIds": [
+                        "รถ",
+                        "รถเมล์",
+                        "รถไฟฟ้า",
+                        "รถไฟ",
+                        "รถตู้",
+                        "taxi",
+                        "มอเตอร์ไซค์",
+                        "เรือ",
+                        "เครื่องบิน"
+                    ]
                 }
             ]
         },
@@ -137,7 +531,16 @@
             "content": [
                 {
                     "type": "words",
-                    "wordIds": [ "ตรง", "เลี้ยว", "ซ้าย", "ขวา", "ใกล้", "ไกล", "แยก", "ทาง" ]
+                    "wordIds": [
+                        "ตรง",
+                        "เลี้ยว",
+                        "ซ้าย",
+                        "ขวา",
+                        "ใกล้",
+                        "ไกล",
+                        "แยก",
+                        "ทาง"
+                    ]
                 }
             ]
         },
@@ -153,8 +556,17 @@
                     "type": "paragraph",
                     "sentences": [
                         {
-                            "source": "ขอโทษครับ สถานีรถไฟฟ้าไปทางไหนครับ",
-                            "wordIds": [ "ขอโทษ", "ครับ", "สถานี", "รถไฟฟ้า", "ไป", "ทาง", "ไหน", "ครับ" ],
+                            "source": "ขอโทษครับสถานีรถไฟฟ้าไปทางไหนครับ",
+                            "wordIds": [
+                                "ขอโทษ",
+                                "ครับ",
+                                "สถานี",
+                                "รถไฟฟ้า",
+                                "ไป",
+                                "ทาง",
+                                "ไหน",
+                                "ครับ"
+                            ],
                             "translations": {
                                 "en": "Excuse me, which way to the BTS station?",
                                 "fa": "ببخشید، ایستگاه قطار شهری کدام طرف است؟"
@@ -162,7 +574,14 @@
                         },
                         {
                             "source": "ตรงไปแล้วเลี้ยวซ้ายครับ",
-                            "wordIds": [ "ตรง", "ไป", "แล้ว", "เลี้ยว", "ซ้าย", "ครับ" ],
+                            "wordIds": [
+                                "ตรง",
+                                "ไป",
+                                "แล้ว",
+                                "เลี้ยว",
+                                "ซ้าย",
+                                "ครับ"
+                            ],
                             "translations": {
                                 "en": "Go straight then turn left",
                                 "fa": "مستقیم بروید بعد به چپ بپیچید"
@@ -170,15 +589,27 @@
                         },
                         {
                             "source": "ใกล้ไหมครับ",
-                            "wordIds": [ "ใกล้", "ไหม", "ครับ" ],
+                            "wordIds": [
+                                "ใกล้",
+                                "ไหม",
+                                "ครับ"
+                            ],
                             "translations": {
                                 "en": "Is it near?",
                                 "fa": "نزدیک است؟"
                             }
                         },
                         {
-                            "source": "ไม่ไกลครับ เดินประมาณห้านาที",
-                            "wordIds": [ "ไม่", "ไกล", "ครับ", "เดิน", "ประมาณ", "ห้า", "นาที" ],
+                            "source": "ไม่ไกลครับเดินประมาณห้านาที",
+                            "wordIds": [
+                                "ไม่",
+                                "ไกล",
+                                "ครับ",
+                                "เดิน",
+                                "ประมาณ",
+                                "ห้า",
+                                "นาที"
+                            ],
                             "translations": {
                                 "en": "Not far, about 5 minutes walk",
                                 "fa": "دور نیست، حدود ۵ دقیقه راه"
@@ -186,7 +617,11 @@
                         },
                         {
                             "source": "ขอบคุณมากครับ",
-                            "wordIds": [ "ขอบคุณ", "มาก", "ครับ" ],
+                            "wordIds": [
+                                "ขอบคุณ",
+                                "มาก",
+                                "ครับ"
+                            ],
                             "translations": {
                                 "en": "Thank you very much",
                                 "fa": "خیلی متشکرم"
@@ -209,7 +644,13 @@
                     "sentences": [
                         {
                             "source": "ไปสนามบินสุวรรณภูมิเท่าไหร่ครับ",
-                            "wordIds": [ "ไป", "สนามบิน", "สุวรรณภูมิ", "เท่าไหร่", "ครับ" ],
+                            "wordIds": [
+                                "ไป",
+                                "สนามบิน",
+                                "สุวรรณภูมิ",
+                                "เท่าไหร่",
+                                "ครับ"
+                            ],
                             "translations": {
                                 "en": "How much to Suvarnabhumi Airport?",
                                 "fa": "تا فرودگاه سووارنابومی چقدر می‌شود؟"
@@ -217,31 +658,63 @@
                         },
                         {
                             "source": "สามร้อยห้าสิบบาทครับ",
-                            "wordIds": [ "สาม", "ร้อย", "ห้า", "สิบ", "บาท", "ครับ" ],
+                            "wordIds": [
+                                "สาม",
+                                "ร้อย",
+                                "ห้า",
+                                "สิบ",
+                                "บาท",
+                                "ครับ"
+                            ],
                             "translations": {
                                 "en": "350 baht",
                                 "fa": "۳۵۰ بات"
                             }
                         },
                         {
-                            "source": "ตกลงครับ ไปทางด่วนได้ไหมครับ",
-                            "wordIds": [ "ตกลง", "ครับ", "ไป", "ทางด่วน", "ได้", "ไหม", "ครับ" ],
+                            "source": "ตกลงครับไปทางด่วนได้ไหมครับ",
+                            "wordIds": [
+                                "ตกลง",
+                                "ครับ",
+                                "ไป",
+                                "ทางด่วน",
+                                "ได้",
+                                "ไหม",
+                                "ครับ"
+                            ],
                             "translations": {
                                 "en": "Agreed. Can we take the highway?",
                                 "fa": "قبول است. می‌توانیم از بزرگراه برویم؟"
                             }
                         },
                         {
-                            "source": "ได้ครับ แต่ค่าทางด่วนอีกห้าสิบบาทนะครับ",
-                            "wordIds": [ "ได้", "ครับ", "แต่", "ค่าทางด่วน", "อีก", "ห้า", "สิบ", "บาท", "นะ", "ครับ" ],
+                            "source": "ได้ครับแต่ค่าทางด่วนอีกห้าสิบบาทนะครับ",
+                            "wordIds": [
+                                "ได้",
+                                "ครับ",
+                                "แต่",
+                                "ค่าทางด่วน",
+                                "อีก",
+                                "ห้า",
+                                "สิบ",
+                                "บาท",
+                                "นะ",
+                                "ครับ"
+                            ],
                             "translations": {
                                 "en": "Yes, but the toll is another 50 baht",
                                 "fa": "بله، اما عوارض بزرگراه ۵۰ بات اضافه دارد"
                             }
                         },
                         {
-                            "source": "ได้ครับ ไปเลยครับ",
-                            "wordIds": [ "ได้", "ครับ", "ไป", "เลย", "ครับ" ],
+                            "source": "ได้ครับไปเลยครับ",
+                            "wordIds": [
+                                "ได้",
+                                "ครับ",
+                                "ไป",
+                                "เลย",
+                                "ครับ"
+                            ],
                             "translations": {
                                 "en": "Okay, let's go",
                                 "fa": "باشه، برویم"
@@ -264,15 +737,29 @@
                     "sentences": [
                         {
                             "source": "รถเมล์สายอะไรไปสยามพารากอนคะ",
-                            "wordIds": [ "รถเมล์", "สาย", "อะไร", "ไป", "สยามพารากอน", "คะ" ],
+                            "wordIds": [
+                                "รถเมล์",
+                                "สาย",
+                                "อะไร",
+                                "ไป",
+                                "สยามพารากอน",
+                                "คะ"
+                            ],
                             "translations": {
                                 "en": "Which bus goes to Siam Paragon?",
                                 "fa": "کدام اتوبوس به سیام پاراگون می‌رود؟"
                             }
                         },
                         {
-                            "source": "สาย 15 กับ 48 ไปค่ะ",
-                            "wordIds": [ "สาย", "สิบห้า", "กับ", "สี่สิบแปด", "ไป", "ค่ะ" ],
+                            "source": "สายสิบห้ากับสี่สิบแปดไปค่ะ",
+                            "wordIds": [
+                                "สาย",
+                                "สิบห้า",
+                                "กับ",
+                                "สี่สิบแปด",
+                                "ไป",
+                                "ค่ะ"
+                            ],
                             "translations": {
                                 "en": "Number 15 and 48 go there",
                                 "fa": "شماره ۱۵ و ۴۸ می‌روند"
@@ -280,7 +767,13 @@
                         },
                         {
                             "source": "ป้ายรถเมล์อยู่ไหนคะ",
-                            "wordIds": [ "ป้าย", "รถเมล์", "อยู่", "ไหน", "คะ" ],
+                            "wordIds": [
+                                "ป้าย",
+                                "รถเมล์",
+                                "อยู่",
+                                "ไหน",
+                                "คะ"
+                            ],
                             "translations": {
                                 "en": "Where is the bus stop?",
                                 "fa": "ایستگاه اتوبوس کجاست؟"
@@ -288,7 +781,13 @@
                         },
                         {
                             "source": "อยู่ตรงแยกข้างหน้า",
-                            "wordIds": [ "อยู่", "ตรง", "แยก", "ข้าง", "หน้า" ],
+                            "wordIds": [
+                                "อยู่",
+                                "ตรง",
+                                "แยก",
+                                "ข้าง",
+                                "หน้า"
+                            ],
                             "translations": {
                                 "en": "At the intersection ahead",
                                 "fa": "سر چهارراه جلو"
@@ -296,15 +795,25 @@
                         },
                         {
                             "source": "ค่าโดยสารเท่าไหร่คะ",
-                            "wordIds": [ "ค่าโดยสาร", "เท่าไหร่", "คะ" ],
+                            "wordIds": [
+                                "ค่าโดยสาร",
+                                "เท่าไหร่",
+                                "คะ"
+                            ],
                             "translations": {
                                 "en": "How much is the fare?",
                                 "fa": "کرایه چقدر است؟"
                             }
                         },
                         {
-                            "source": "ตลอดสาย 25 บาทครับ",
-                            "wordIds": [ "ตลอด", "สาย", "ยี่สิบห้า", "บาท", "ครับ" ],
+                            "source": "ตลอดสายยี่สิบห้าบาทครับ",
+                            "wordIds": [
+                                "ตลอด",
+                                "สาย",
+                                "ยี่สิบห้า",
+                                "บาท",
+                                "ครับ"
+                            ],
                             "translations": {
                                 "en": "25 baht for the whole route",
                                 "fa": "۲۵ بات تا آخر خط"
@@ -327,7 +836,14 @@
                     "sentences": [
                         {
                             "source": "ขอซื้อตั๋วรถไฟฟ้าหน่อยครับ",
-                            "wordIds": [ "ขอ", "ซื้อ", "ตั๋ว", "รถไฟฟ้า", "หน่อย", "ครับ" ],
+                            "wordIds": [
+                                "ขอ",
+                                "ซื้อ",
+                                "ตั๋ว",
+                                "รถไฟฟ้า",
+                                "หน่อย",
+                                "ครับ"
+                            ],
                             "translations": {
                                 "en": "I'd like to buy a BTS ticket please",
                                 "fa": "یک بلیط قطار شهری می‌خواهم لطفاً"
@@ -335,7 +851,12 @@
                         },
                         {
                             "source": "ไปสถานีไหนคะ",
-                            "wordIds": [ "ไป", "สถานี", "ไหน", "คะ" ],
+                            "wordIds": [
+                                "ไป",
+                                "สถานี",
+                                "ไหน",
+                                "คะ"
+                            ],
                             "translations": {
                                 "en": "Which station?",
                                 "fa": "کدام ایستگاه؟"
@@ -343,7 +864,12 @@
                         },
                         {
                             "source": "ไปสถานีอโศกครับ",
-                            "wordIds": [ "ไป", "สถานี", "อโศก", "ครับ" ],
+                            "wordIds": [
+                                "ไป",
+                                "สถานี",
+                                "อโศก",
+                                "ครับ"
+                            ],
                             "translations": {
                                 "en": "To Asok station",
                                 "fa": "ایستگاه اسوک"
@@ -351,7 +877,11 @@
                         },
                         {
                             "source": "สี่สิบสองบาทค่ะ",
-                            "wordIds": [ "สี่สิบสอง", "บาท", "ค่ะ" ],
+                            "wordIds": [
+                                "สี่สิบสอง",
+                                "บาท",
+                                "ค่ะ"
+                            ],
                             "translations": {
                                 "en": "42 baht",
                                 "fa": "۴۲ بات"
@@ -359,15 +889,28 @@
                         },
                         {
                             "source": "รถมากี่นาทีมาครั้งครับ",
-                            "wordIds": [ "รถ", "มา", "กี่", "นาที", "มา", "ครั้ง", "ครับ" ],
+                            "wordIds": [
+                                "รถ",
+                                "มา",
+                                "กี่",
+                                "นาที",
+                                "มา",
+                                "ครั้ง",
+                                "ครับ"
+                            ],
                             "translations": {
                                 "en": "How often do trains come?",
                                 "fa": "قطارها هر چند دقیقه یکبار می‌آیند؟"
                             }
                         },
                         {
-                            "source": "ทุกๆ ห้านาทีครับ",
-                            "wordIds": [ "ทุก", "ห้า", "นาที", "ครับ" ],
+                            "source": "ทุกๆห้านาทีครับ",
+                            "wordIds": [
+                                "ทุกๆ",
+                                "ห้า",
+                                "นาที",
+                                "ครับ"
+                            ],
                             "translations": {
                                 "en": "Every 5 minutes",
                                 "fa": "هر ۵ دقیقه"

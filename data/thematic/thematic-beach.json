@@ -12,113 +12,695 @@
         "wordCount": 35,
         "sentenceCount": 22,
         "estimatedTime": 20,
-        "tags": [ "beach", "vacation", "water", "activities" ]
+        "tags": [
+            "beach",
+            "vacation",
+            "water",
+            "activities"
+        ],
+        "authors": [ ],
+        "reviewers": [ ],
+        "prerequisites": [ ],
+        "updated": "2026-02-24T15:02:13.727Z"
     },
     "vocabulary": {
         "ทะเล": {
-            "translations": { "en": "sea/ocean", "fa": "دریا" }
+            "translations": {
+                "en": "sea/ocean",
+                "fa": "دریا"
+            }
         },
         "ชายหาด": {
-            "translations": { "en": "beach", "fa": "ساحل" }
+            "translations": {
+                "en": "beach",
+                "fa": "ساحل"
+            }
         },
         "เกาะ": {
-            "translations": { "en": "island", "fa": "جزیره" }
+            "translations": {
+                "en": "island",
+                "fa": "جزیره"
+            }
         },
         "ทราย": {
-            "translations": { "en": "sand", "fa": "شن" }
+            "translations": {
+                "en": "sand",
+                "fa": "شن"
+            }
         },
         "คลื่น": {
-            "translations": { "en": "wave", "fa": "موج" }
+            "translations": {
+                "en": "wave",
+                "fa": "موج"
+            }
         },
         "น้ำทะเล": {
-            "translations": { "en": "sea water", "fa": "آب دریا" }
+            "translations": {
+                "en": "sea water",
+                "fa": "آب دریا"
+            }
         },
         "แดด": {
-            "translations": { "en": "sunshine", "fa": "آفتاب" }
+            "translations": {
+                "en": "sunshine",
+                "fa": "آفتاب"
+            }
         },
         "ร่ม": {
-            "translations": { "en": "umbrella", "fa": "چتر" }
+            "translations": {
+                "en": "umbrella",
+                "fa": "چتر"
+            }
         },
         "เก้าอี้": {
-            "translations": { "en": "chair", "fa": "صندلی" }
+            "translations": {
+                "en": "chair",
+                "fa": "صندلی"
+            }
         },
         "ผ้าเช็ดตัว": {
-            "translations": { "en": "towel", "fa": "حوله" }
+            "translations": {
+                "en": "towel",
+                "fa": "حوله"
+            }
         },
         "แว่นกันแดด": {
-            "translations": { "en": "sunglasses", "fa": "عینک آفتابی" }
+            "translations": {
+                "en": "sunglasses",
+                "fa": "عینک آفتابی"
+            }
         },
         "ครีมกันแดด": {
-            "translations": { "en": "sunscreen", "fa": "کرم ضد آفتاب" }
+            "translations": {
+                "en": "sunscreen",
+                "fa": "کرم ضد آفتاب"
+            }
         },
         "หมวก": {
-            "translations": { "en": "hat", "fa": "کلاه" }
+            "translations": {
+                "en": "hat",
+                "fa": "کلاه"
+            }
         },
         "ชุดว่ายน้ำ": {
-            "translations": { "en": "swimsuit", "fa": "لباس شنا" }
+            "translations": {
+                "en": "swimsuit",
+                "fa": "لباس شنا"
+            }
         },
         "กางเกงว่ายน้ำ": {
-            "translations": { "en": "swim trunks", "fa": "شلوار شنا" }
+            "translations": {
+                "en": "swim trunks",
+                "fa": "شلوار شنا"
+            }
         },
         "ห่วงยาง": {
-            "translations": { "en": "float ring", "fa": "حلقه بادی" }
+            "translations": {
+                "en": "float ring",
+                "fa": "حلقه بادی"
+            }
         },
         "ดำน้ำ": {
-            "translations": { "en": "dive/snorkel", "fa": "غواصی" }
+            "translations": {
+                "en": "dive/snorkel",
+                "fa": "غواصی"
+            }
         },
         " snorkeling": {
-            "translations": { "en": "snorkeling", "fa": "غواصی سطحی" }
+            "translations": {
+                "en": "snorkeling",
+                "fa": "غواصی سطحی"
+            }
         },
         "ตากแดด": {
-            "translations": { "en": "sunbathe", "fa": "آفتاب گرفتن" }
+            "translations": {
+                "en": "sunbathe",
+                "fa": "آفتاب گرفتن"
+            }
         },
         "เล่นน้ำ": {
-            "translations": { "en": "play in water", "fa": "بازی در آب" }
+            "translations": {
+                "en": "play in water",
+                "fa": "بازی در آب"
+            }
         },
         "ว่ายน้ำ": {
-            "translations": { "en": "swim", "fa": "شنا کردن" }
+            "translations": {
+                "en": "swim",
+                "fa": "شنا کردن"
+            }
         },
         "เดินเล่น": {
-            "translations": { "en": "stroll", "fa": "قدم زدن" }
+            "translations": {
+                "en": "stroll",
+                "fa": "قدم زدن"
+            }
         },
         "ตกปลา": {
-            "translations": { "en": "fish", "fa": "ماهیگیری" }
+            "translations": {
+                "en": "fish",
+                "fa": "ماهیگیری"
+            }
         },
         "เรือ": {
-            "translations": { "en": "boat", "fa": "قایق" }
+            "translations": {
+                "en": "boat",
+                "fa": "قایق"
+            }
         },
         "เรือหางยาว": {
-            "translations": { "en": "long-tail boat", "fa": "قایق دم‌دراز" }
+            "translations": {
+                "en": "long-tail boat",
+                "fa": "قایق دم‌دراز"
+            }
         },
         "สปีดโบ๊ท": {
-            "translations": { "en": "speedboat", "fa": "قایق تندرو" }
+            "translations": {
+                "en": "speedboat",
+                "fa": "قایق تندرو"
+            }
         },
         "เจ็ทสกี": {
-            "translations": { "en": "jet ski", "fa": "جت‌اسکی" }
+            "translations": {
+                "en": "jet ski",
+                "fa": "جت‌اسکی"
+            }
         },
         "ร้านอาหาร": {
-            "translations": { "en": "restaurant", "fa": "رستوران" }
+            "translations": {
+                "en": "restaurant",
+                "fa": "رستوران"
+            }
         },
         "อาหารทะเล": {
-            "translations": { "en": "seafood", "fa": "غذای دریایی" }
+            "translations": {
+                "en": "seafood",
+                "fa": "غذای دریایی"
+            }
         },
         "ปลา": {
-            "translations": { "en": "fish", "fa": "ماهی" }
+            "translations": {
+                "en": "fish",
+                "fa": "ماهی"
+            }
         },
         "กุ้ง": {
-            "translations": { "en": "shrimp", "fa": "میگو" }
+            "translations": {
+                "en": "shrimp",
+                "fa": "میگو"
+            }
         },
         "ปู": {
-            "translations": { "en": "crab", "fa": "خرچنگ" }
+            "translations": {
+                "en": "crab",
+                "fa": "خرچنگ"
+            }
         },
         "หอย": {
-            "translations": { "en": "shellfish", "fa": "صدف" }
+            "translations": {
+                "en": "shellfish",
+                "fa": "صدف"
+            }
         },
         "หมึก": {
-            "translations": { "en": "squid", "fa": "ماهی مرکب" }
+            "translations": {
+                "en": "squid",
+                "fa": "ماهی مرکب"
+            }
         },
         "มะพร้าว": {
-            "translations": { "en": "coconut", "fa": "نارگیل" }
+            "translations": {
+                "en": "coconut",
+                "fa": "نارگیل"
+            }
+        },
+        "ตัว": {
+            "translations": {
+                "en": "lower piece",
+                "fa": "یکی"
+            }
+        },
+        "ละ": {
+            "translations": {
+                "en": "and ",
+                "fa": "به ازای هر"
+            }
+        },
+        "ห้าสิบ": {
+            "translations": {
+                "en": "Fifty",
+                "fa": "پنجاه"
+            }
+        },
+        "บาท": {
+            "translations": {
+                "en": "Baht",
+                "fa": "بات"
+            }
+        },
+        "ค่ะ": {
+            "translations": {
+                "en": "Thank you.",
+                "fa": "بله"
+            }
+        },
+        "ขอ": {
+            "translations": {
+                "en": "I'm looking at it.",
+                "fa": "خواهش می‌کنم"
+            }
+        },
+        "สอง": {
+            "translations": {
+                "en": "TWO.",
+                "fa": "دو"
+            }
+        },
+        "ครับ": {
+            "translations": {
+                "en": "OK",
+                "fa": "بله"
+            }
+        },
+        "แล้ว": {
+            "translations": {
+                "en": "So ",
+                "fa": "قبلاً"
+            }
+        },
+        "ก็": {
+            "translations": {
+                "en": "Well. ",
+                "fa": "همچنین"
+            }
+        },
+        "อีก": {
+            "translations": {
+                "en": "for",
+                "fa": "بیشتر"
+            }
+        },
+        "หนึ่ง": {
+            "translations": {
+                "en": "“One.”",
+                "fa": "یک"
+            }
+        },
+        "คัน": {
+            "translations": {
+                "en": "vehicle ",
+                "fa": "وسیله نقلیه"
+            }
+        },
+        "รวม": {
+            "translations": {
+                "en": "Total",
+                "fa": "فقط نتایج کل"
+            }
+        },
+        "หนึ่งร้อยห้าสิบ": {
+            "translations": {
+                "en": "One hundred and fifty.",
+                "fa": "صد و پنجاه"
+            }
+        },
+        "ครึ่ง": {
+            "translations": {
+                "en": "Halves",
+                "fa": "نیم"
+            }
+        },
+        "ชั่วโมง": {
+            "translations": {
+                "en": "HOURS",
+                "fa": "ساعت"
+            }
+        },
+        "ห้าร้อย": {
+            "translations": {
+                "en": "500",
+                "fa": "پانصد"
+            }
+        },
+        "ลด": {
+            "translations": {
+                "en": "less",
+                "fa": "کاهش دادن"
+            }
+        },
+        "ให้": {
+            "translations": {
+                "en": "to give",
+                "fa": "دادن"
+            }
+        },
+        "หน่อย": {
+            "translations": {
+                "en": "A little bit",
+                "fa": "بیت"
+            }
+        },
+        "สี่ร้อยห้าสิบ": {
+            "translations": {
+                "en": "Four hundred and fifty.",
+                "fa": "چهارصد و پنجاه"
+            }
+        },
+        "กับ": {
+            "translations": {
+                "en": "With",
+                "fa": "با"
+            }
+        },
+        "ข้าวเปล่า": {
+            "translations": {
+                "en": "'Plain rice'",
+                "fa": "برنج ساده"
+            }
+        },
+        "สาม": {
+            "translations": {
+                "en": "THREE.",
+                "fa": "سه"
+            }
+        },
+        "จาน": {
+            "translations": {
+                "en": "Plate",
+                "fa": "بشقاب"
+            }
+        },
+        "สุด": {
+            "translations": {
+                "en": "Extreme",
+                "fa": "پایان"
+            }
+        },
+        "สัปดาห์": {
+            "translations": {
+                "en": "Weeks",
+                "fa": "هفته"
+            }
+        },
+        "นี้": {
+            "translations": {
+                "en": "This",
+                "fa": "این"
+            }
+        },
+        "อยาก": {
+            "translations": {
+                "en": "Want",
+                "fa": "می خواهم"
+            }
+        },
+        "ไป": {
+            "translations": {
+                "en": "I'm going",
+                "fa": "& برو‌"
+            }
+        },
+        "ไหม": {
+            "translations": {
+                "en": "Silk",
+                "fa": "ابریشم"
+            }
+        },
+        "สิ": {
+            "translations": {
+                "en": "XI",
+                "fa": "سی"
+            }
+        },
+        "ที่": {
+            "translations": {
+                "en": "No.",
+                "fa": "در"
+            }
+        },
+        "ไหน": {
+            "translations": {
+                "en": "Plum",
+                "fa": "که"
+            }
+        },
+        "ดี": {
+            "translations": {
+                "en": "Good",
+                "fa": "خوب"
+            }
+        },
+        "พัทยา": {
+            "translations": {
+                "en": "PATTAYA",
+                "fa": "پاتایا"
+            }
+        },
+        "ใกล้": {
+            "translations": {
+                "en": "Close",
+                "fa": "نزدیک"
+            }
+        },
+        "ๆ": {
+            "translations": {
+                "en": "if",
+                "fa": "و غیره"
+            }
+        },
+        "หรือ": {
+            "translations": {
+                "en": "OR",
+                "fa": "یا"
+            }
+        },
+        "เกาะเสม็ด": {
+            "translations": {
+                "en": "Ko Samet",
+                "fa": "کوه سامت"
+            }
+        },
+        "ได้": {
+            "translations": {
+                "en": "Yes",
+                "fa": "می‌تواند"
+            }
+        },
+        "กว่า": {
+            "translations": {
+                "en": "over",
+                "fa": "از"
+            }
+        },
+        "ใส": {
+            "translations": {
+                "en": "Transparent",
+                "fa": "واضح"
+            }
+        },
+        "เช่า": {
+            "translations": {
+                "en": "hire ",
+                "fa": "استخدام"
+            }
+        },
+        "ผ้าใบ": {
+            "translations": {
+                "en": "canvas",
+                "fa": "بوم نقاشی"
+            }
+        },
+        "เท่าไหร่": {
+            "translations": {
+                "en": "How much is it?",
+                "fa": "چقدر"
+            }
+        },
+        "ด้วย": {
+            "translations": {
+                "en": "With",
+                "fa": "با"
+            }
+        },
+        "แพง": {
+            "translations": {
+                "en": "expensive",
+                "fa": "گران"
+            }
+        },
+        "จัง": {
+            "translations": {
+                "en": "Japanese name",
+                "fa": "جانگ"
+            }
+        },
+        "วันนี้": {
+            "translations": {
+                "en": "TODAY",
+                "fa": "امروز"
+            }
+        },
+        "แรง": {
+            "translations": {
+                "en": "Forces",
+                "fa": "نیرو"
+            }
+        },
+        "ทา": {
+            "translations": {
+                "en": "Ta",
+                "fa": "اعمال کردن"
+            }
+        },
+        "ยัง": {
+            "translations": {
+                "en": "yet",
+                "fa": "هنوز نه"
+            }
+        },
+        "เลย": {
+            "translations": {
+                "en": "Loei Province",
+                "fa": "اصلاً"
+            }
+        },
+        "ลืม": {
+            "translations": {
+                "en": "forgotyour",
+                "fa": "فراموش کردن"
+            }
+        },
+        "เอา": {
+            "translations": {
+                "en": "\"Yes~~!\"",
+                "fa": "گرفتن"
+            }
+        },
+        "มา": {
+            "translations": {
+                "en": "Come.",
+                "fa": "بیا"
+            }
+        },
+        "ใช้": {
+            "translations": {
+                "en": "Use",
+                "fa": "استفاده"
+            }
+        },
+        "ของ": {
+            "translations": {
+                "en": "of",
+                "fa": "از"
+            }
+        },
+        "ฉัน": {
+            "translations": {
+                "en": "Me",
+                "fa": "من"
+            }
+        },
+        "ก่อน": {
+            "translations": {
+                "en": "Prev",
+                "fa": "قبل از"
+            }
+        },
+        "ขอบใจ": {
+            "translations": {
+                "en": "Thanks!",
+                "fa": "تشکر"
+            }
+        },
+        "กัน": {
+            "translations": {
+                "en": "together",
+                "fa": "با هم"
+            }
+        },
+        "เถอะ": {
+            "translations": {
+                "en": "Come on.",
+                "fa": "بریم"
+            }
+        },
+        "มาก": {
+            "translations": {
+                "en": "Many",
+                "fa": "بیشتر"
+            }
+        },
+        "เห็น": {
+            "translations": {
+                "en": "Seen",
+                "fa": "دیدن"
+            }
+        },
+        "ร้าน": {
+            "translations": {
+                "en": "salons",
+                "fa": "فروشگاه"
+            }
+        },
+        "สด": {
+            "translations": {
+                "en": "Fresh",
+                "fa": "تازه"
+            }
+        },
+        "สั่ง": {
+            "translations": {
+                "en": "Direct",
+                "fa": "سفارش"
+            }
+        },
+        "อะไร": {
+            "translations": {
+                "en": "WHAT",
+                "fa": "چه:"
+            }
+        },
+        "ปลาย่าง": {
+            "translations": {
+                "en": "Grilled fish",
+                "fa": "ماهی کبابی"
+            }
+        },
+        "ต้มยำกุ้ง": {
+            "translations": {
+                "en": "Tom Yum Kung",
+                "fa": "سوپ میگوی تند"
+            }
+        },
+        "ผัดผักรวมมิตร": {
+            "translations": {
+                "en": "Stir-fried mixed vegetables",
+                "fa": "سبزیجات سرخ شده مخلوط"
+            }
+        },
+        "กะปิทอด": {
+            "translations": {
+                "en": "Deep Fried Kapi",
+                "fa": "خمیر میگوی سرخ شده"
+            }
+        },
+        "อร่อย": {
+            "translations": {
+                "en": "Delicious",
+                "fa": "خوشمزه"
+            }
+        },
+        "ทุก": {
+            "translations": {
+                "en": "Every",
+                "fa": "هر کدام"
+            }
+        },
+        "อย่าง": {
+            "translations": {
+                "en": "ulture",
+                "fa": "در"
+            }
         }
     },
     "activity": {
@@ -136,7 +718,19 @@
             "content": [
                 {
                     "type": "words",
-                    "wordIds": [ "ชายหาด", "ทราย", "คลื่น", "แดด", "ร่ม", "เก้าอี้", "ผ้าเช็ดตัว", "แว่นกันแดด", "ครีมกันแดด", "หมวก", "ชุดว่ายน้ำ" ]
+                    "wordIds": [
+                        "ชายหาด",
+                        "ทราย",
+                        "คลื่น",
+                        "แดด",
+                        "ร่ม",
+                        "เก้าอี้",
+                        "ผ้าเช็ดตัว",
+                        "แว่นกันแดด",
+                        "ครีมกันแดด",
+                        "หมวก",
+                        "ชุดว่ายน้ำ"
+                    ]
                 }
             ]
         },
@@ -150,7 +744,17 @@
             "content": [
                 {
                     "type": "words",
-                    "wordIds": [ "เล่นน้ำ", "ว่ายน้ำ", "ดำน้ำ", "ตากแดด", "เดินเล่น", "ตกปลา", "เรือ", "เรือหางยาว", "เจ็ทสกี" ]
+                    "wordIds": [
+                        "เล่นน้ำ",
+                        "ว่ายน้ำ",
+                        "ดำน้ำ",
+                        "ตากแดด",
+                        "เดินเล่น",
+                        "ตกปลา",
+                        "เรือ",
+                        "เรือหางยาว",
+                        "เจ็ทสกี"
+                    ]
                 }
             ]
         },
@@ -166,24 +770,46 @@
                     "type": "paragraph",
                     "sentences": [
                         {
-                            "source": "สุดสัปดาห์นี้ อยากไปทะเลไหม",
-                            "wordIds": [ "สุด", "สัปดาห์", "นี้", "อยาก", "ไป", "ทะเล", "ไหม" ],
+                            "source": "สุดสัปดาห์นี้อยากไปทะเลไหม",
+                            "wordIds": [
+                                "สุด",
+                                "สัปดาห์",
+                                "นี้",
+                                "อยาก",
+                                "ไป",
+                                "ทะเล",
+                                "ไหม"
+                            ],
                             "translations": {
                                 "en": "Want to go to the beach this weekend?",
                                 "fa": "این آخر هفته می‌خواهی به ساحل بروی؟"
                             }
                         },
                         {
-                            "source": "ไปสิ ไปทะเลที่ไหนดี",
-                            "wordIds": [ "ไป", "สิ", "ไป", "ทะเล", "ที่", "ไหน", "ดี" ],
+                            "source": "ไปสิไปทะเลที่ไหนดี",
+                            "wordIds": [
+                                "ไป",
+                                "สิ",
+                                "ไป",
+                                "ทะเล",
+                                "ที่",
+                                "ไหน",
+                                "ดี"
+                            ],
                             "translations": {
                                 "en": "Yes! Which beach should we go to?",
                                 "fa": "بله! کدام ساحل برویم؟"
                             }
                         },
                         {
-                            "source": "ไปพัทยาไหม ใกล้ๆ",
-                            "wordIds": [ "ไป", "พัทยา", "ไหม", "ใกล้", "ๆ" ],
+                            "source": "ไปพัทยาไหมใกล้ๆ",
+                            "wordIds": [
+                                "ไป",
+                                "พัทยา",
+                                "ไหม",
+                                "ใกล้",
+                                "ๆ"
+                            ],
                             "translations": {
                                 "en": "How about Pattaya? It's close",
                                 "fa": "پاتایا چطور؟ نزدیک است"
@@ -191,15 +817,27 @@
                         },
                         {
                             "source": "หรือไปเกาะเสม็ดก็ได้",
-                            "wordIds": [ "หรือ", "ไป", "เกาะเสม็ด", "ก็", "ได้" ],
+                            "wordIds": [
+                                "หรือ",
+                                "ไป",
+                                "เกาะเสม็ด",
+                                "ก็",
+                                "ได้"
+                            ],
                             "translations": {
                                 "en": "Or we could go to Koh Samet",
                                 "fa": "یا می‌توانیم به کوه سامت برویم"
                             }
                         },
                         {
-                            "source": "เกาะเสม็ดดีกว่า น้ำทะเลใส",
-                            "wordIds": [ "เกาะเสม็ด", "ดี", "กว่า", "น้ำทะเล", "ใส" ],
+                            "source": "เกาะเสม็ดดีกว่าน้ำทะเลใส",
+                            "wordIds": [
+                                "เกาะเสม็ด",
+                                "ดี",
+                                "กว่า",
+                                "น้ำทะเล",
+                                "ใส"
+                            ],
                             "translations": {
                                 "en": "Koh Samet is better, the water is clear",
                                 "fa": "کوه سامت بهتر است، آب زلال است"
@@ -222,31 +860,59 @@
                     "sentences": [
                         {
                             "source": "เช่าเก้าอี้ผ้าใบเท่าไหร่",
-                            "wordIds": [ "เช่า", "เก้าอี้", "ผ้าใบ", "เท่าไหร่" ],
+                            "wordIds": [
+                                "เช่า",
+                                "เก้าอี้",
+                                "ผ้าใบ",
+                                "เท่าไหร่"
+                            ],
                             "translations": {
                                 "en": "How much to rent a beach chair?",
                                 "fa": "کرایه صندلی ساحلی چقدر است؟"
                             }
                         },
                         {
-                            "source": "ตัวละ 50 บาทค่ะ",
-                            "wordIds": [ "ตัว", "ละ", "ห้าสิบ", "บาท", "ค่ะ" ],
+                            "source": "ตัวละห้าสิบบาทค่ะ",
+                            "wordIds": [
+                                "ตัว",
+                                "ละ",
+                                "ห้าสิบ",
+                                "บาท",
+                                "ค่ะ"
+                            ],
                             "translations": {
                                 "en": "50 baht each",
                                 "fa": "هر عدد ۵۰ بات"
                             }
                         },
                         {
-                            "source": "ขอสองตัวครับ แล้วก็ร่มอีก 1 คัน",
-                            "wordIds": [ "ขอ", "สอง", "ตัว", "ครับ", "แล้ว", "ก็", "ร่ม", "อีก", "หนึ่ง", "คัน", "ครับ" ],
+                            "source": "ขอสองตัวครับแล้วก็ร่มอีกหนึ่งคันครับ",
+                            "wordIds": [
+                                "ขอ",
+                                "สอง",
+                                "ตัว",
+                                "ครับ",
+                                "แล้ว",
+                                "ก็",
+                                "ร่ม",
+                                "อีก",
+                                "หนึ่ง",
+                                "คัน",
+                                "ครับ"
+                            ],
                             "translations": {
                                 "en": "Two chairs and one umbrella please",
                                 "fa": "دو صندلی و یک چتر لطفاً"
                             }
                         },
                         {
-                            "source": "รวม 150 บาทค่ะ",
-                            "wordIds": [ "รวม", "หนึ่งร้อยห้าสิบ", "บาท", "ค่ะ" ],
+                            "source": "รวมหนึ่งร้อยห้าสิบบาทค่ะ",
+                            "wordIds": [
+                                "รวม",
+                                "หนึ่งร้อยห้าสิบ",
+                                "บาท",
+                                "ค่ะ"
+                            ],
                             "translations": {
                                 "en": "Total 150 baht",
                                 "fa": "جمعاً ۱۵۰ بات"
@@ -254,31 +920,55 @@
                         },
                         {
                             "source": "แล้วเช่าเจ็ทสกีด้วย",
-                            "wordIds": [ "แล้ว", "เช่า", "เจ็ทสกี", "ด้วย" ],
+                            "wordIds": [
+                                "แล้ว",
+                                "เช่า",
+                                "เจ็ทสกี",
+                                "ด้วย"
+                            ],
                             "translations": {
                                 "en": "Also want to rent a jet ski",
                                 "fa": "و جت‌اسکی هم می‌خواهم کرایه کنم"
                             }
                         },
                         {
-                            "source": "ครึ่งชั่วโมง 500 บาทค่ะ",
-                            "wordIds": [ "ครึ่ง", "ชั่วโมง", "ห้าร้อย", "บาท", "ค่ะ" ],
+                            "source": "ครึ่งชั่วโมงห้าร้อยบาทค่ะ",
+                            "wordIds": [
+                                "ครึ่ง",
+                                "ชั่วโมง",
+                                "ห้าร้อย",
+                                "บาท",
+                                "ค่ะ"
+                            ],
                             "translations": {
                                 "en": "Half hour 500 baht",
                                 "fa": "نیم ساعت ۵۰۰ بات"
                             }
                         },
                         {
-                            "source": "แพงจัง ลดได้ไหม",
-                            "wordIds": [ "แพง", "จัง", "ลด", "ได้", "ไหม" ],
+                            "source": "แพงจังลดได้ไหม",
+                            "wordIds": [
+                                "แพง",
+                                "จัง",
+                                "ลด",
+                                "ได้",
+                                "ไหม"
+                            ],
                             "translations": {
                                 "en": "That's expensive, can you reduce?",
                                 "fa": "گران است، تخفیف دارید؟"
                             }
                         },
                         {
-                            "source": "ลดให้หน่อยค่ะ 450 บาท",
-                            "wordIds": [ "ลด", "ให้", "หน่อย", "ค่ะ", "สี่ร้อยห้าสิบ", "บาท" ],
+                            "source": "ลดให้หน่อยค่ะสี่ร้อยห้าสิบบาท",
+                            "wordIds": [
+                                "ลด",
+                                "ให้",
+                                "หน่อย",
+                                "ค่ะ",
+                                "สี่ร้อยห้าสิบ",
+                                "บาท"
+                            ],
                             "translations": {
                                 "en": "I'll reduce it, 450 baht",
                                 "fa": "کم می‌کنم، ۴۵۰ بات"
@@ -301,7 +991,12 @@
                     "sentences": [
                         {
                             "source": "วันนี้แดดแรงจัง",
-                            "wordIds": [ "วันนี้", "แดด", "แรง", "จัง" ],
+                            "wordIds": [
+                                "วันนี้",
+                                "แดด",
+                                "แรง",
+                                "จัง"
+                            ],
                             "translations": {
                                 "en": "The sun is so strong today",
                                 "fa": "امروز آفتاب خیلی تند است"
@@ -309,15 +1004,26 @@
                         },
                         {
                             "source": "ทาครีมกันแดดหรือยัง",
-                            "wordIds": [ "ทา", "ครีมกันแดด", "หรือ", "ยัง" ],
+                            "wordIds": [
+                                "ทา",
+                                "ครีมกันแดด",
+                                "หรือ",
+                                "ยัง"
+                            ],
                             "translations": {
                                 "en": "Did you put on sunscreen?",
                                 "fa": "کرم ضد آفتاب زده‌ای؟"
                             }
                         },
                         {
-                            "source": "ยังเลย ลืมเอามา",
-                            "wordIds": [ "ยัง", "เลย", "ลืม", "เอา", "มา" ],
+                            "source": "ยังเลยลืมเอามา",
+                            "wordIds": [
+                                "ยัง",
+                                "เลย",
+                                "ลืม",
+                                "เอา",
+                                "มา"
+                            ],
                             "translations": {
                                 "en": "Not yet, I forgot to bring it",
                                 "fa": "نه، فراموش کردم بیاورم"
@@ -325,23 +1031,42 @@
                         },
                         {
                             "source": "ใช้ของฉันก่อนไหม",
-                            "wordIds": [ "ใช้", "ของ", "ฉัน", "ก่อน", "ไหม" ],
+                            "wordIds": [
+                                "ใช้",
+                                "ของ",
+                                "ฉัน",
+                                "ก่อน",
+                                "ไหม"
+                            ],
                             "translations": {
                                 "en": "Want to use mine?",
                                 "fa": "می‌خواهی از مال من استفاده کنی؟"
                             }
                         },
                         {
-                            "source": "ขอบใจ ไปเล่นน้ำกันเถอะ",
-                            "wordIds": [ "ขอบใจ", "ไป", "เล่นน้ำ", "กัน", "เถอะ" ],
+                            "source": "ขอบใจไปเล่นน้ำกันเถอะ",
+                            "wordIds": [
+                                "ขอบใจ",
+                                "ไป",
+                                "เล่นน้ำ",
+                                "กัน",
+                                "เถอะ"
+                            ],
                             "translations": {
                                 "en": "Thanks! Let's go play in the water",
                                 "fa": "ممنون! برویم توی آب بازی کنیم"
                             }
                         },
                         {
-                            "source": "น้ำทะเลใสมาก เห็นปลาด้วย",
-                            "wordIds": [ "น้ำทะเล", "ใส", "มาก", "เห็น", "ปลา", "ด้วย" ],
+                            "source": "น้ำทะเลใสมากเห็นปลาด้วย",
+                            "wordIds": [
+                                "น้ำทะเล",
+                                "ใส",
+                                "มาก",
+                                "เห็น",
+                                "ปลา",
+                                "ด้วย"
+                            ],
                             "translations": {
                                 "en": "The water is so clear, I can see fish",
                                 "fa": "آب خیلی زلال است، ماهی هم می‌بینم"
@@ -364,7 +1089,13 @@
                     "sentences": [
                         {
                             "source": "ร้านนี้อาหารทะเลสดมาก",
-                            "wordIds": [ "ร้าน", "นี้", "อาหารทะเล", "สด", "มาก" ],
+                            "wordIds": [
+                                "ร้าน",
+                                "นี้",
+                                "อาหารทะเล",
+                                "สด",
+                                "มาก"
+                            ],
                             "translations": {
                                 "en": "This restaurant's seafood is very fresh",
                                 "fa": "غذای دریایی این رستوران خیلی تازه است"
@@ -372,15 +1103,24 @@
                         },
                         {
                             "source": "สั่งอะไรดี",
-                            "wordIds": [ "สั่ง", "อะไร", "ดี" ],
+                            "wordIds": [
+                                "สั่ง",
+                                "อะไร",
+                                "ดี"
+                            ],
                             "translations": {
                                 "en": "What should we order?",
                                 "fa": "چی سفارش بدهیم؟"
                             }
                         },
                         {
-                            "source": "เอาปลาย่าง กับ ต้มยำกุ้ง",
-                            "wordIds": [ "เอา", "ปลาย่าง", "กับ", "ต้มยำกุ้ง" ],
+                            "source": "เอาปลาย่างกับต้มยำกุ้ง",
+                            "wordIds": [
+                                "เอา",
+                                "ปลาย่าง",
+                                "กับ",
+                                "ต้มยำกุ้ง"
+                            ],
                             "translations": {
                                 "en": "Grilled fish and Tom Yum Goong",
                                 "fa": "ماهی کبابی و تام یام گونگ"
@@ -388,7 +1128,11 @@
                         },
                         {
                             "source": "แล้วก็ผัดผักรวมมิตร",
-                            "wordIds": [ "แล้ว", "ก็", "ผัดผักรวมมิตร" ],
+                            "wordIds": [
+                                "แล้ว",
+                                "ก็",
+                                "ผัดผักรวมมิตร"
+                            ],
                             "translations": {
                                 "en": "And mixed vegetable stir-fry",
                                 "fa": "و سبزیجات مخلوط تفت داده شده"
@@ -396,15 +1140,24 @@
                         },
                         {
                             "source": "ขอกะปิทอดด้วย",
-                            "wordIds": [ "ขอ", "กะปิทอด", "ด้วย" ],
+                            "wordIds": [
+                                "ขอ",
+                                "กะปิทอด",
+                                "ด้วย"
+                            ],
                             "translations": {
                                 "en": "Also fried shrimp paste balls",
                                 "fa": "و کاپی تود (خوراک میگوی سرخ شده)"
                             }
                         },
                         {
-                            "source": "กับข้าวเปล่า 3 จาน",
-                            "wordIds": [ "กับ", "ข้าวเปล่า", "สาม", "จาน" ],
+                            "source": "กับข้าวเปล่าสามจาน",
+                            "wordIds": [
+                                "กับ",
+                                "ข้าวเปล่า",
+                                "สาม",
+                                "จาน"
+                            ],
                             "translations": {
                                 "en": "And 3 plates of rice",
                                 "fa": "و ۳ بشقاب برنج ساده"
@@ -412,7 +1165,12 @@
                         },
                         {
                             "source": "อร่อยทุกอย่างเลย",
-                            "wordIds": [ "อร่อย", "ทุก", "อย่าง", "เลย" ],
+                            "wordIds": [
+                                "อร่อย",
+                                "ทุก",
+                                "อย่าง",
+                                "เลย"
+                            ],
                             "translations": {
                                 "en": "Everything is delicious",
                                 "fa": "همه چیز خوشمزه است"

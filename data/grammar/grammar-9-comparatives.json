@@ -12,19 +12,128 @@
         "newWords": 10,
         "reviewWords": 45,
         "sentenceCount": 25,
-        "estimatedTime": 30
+        "estimatedTime": 30,
+        "authors": [ ],
+        "reviewers": [ ],
+        "prerequisites": [ ],
+        "tags": [ ],
+        "updated": "2026-02-24T14:55:04.792Z"
     },
     "vocabulary": {
-        "กว่า": { "translations": { "en": "than", "fa": "از" } },
-        "ที่สุด": { "translations": { "en": "most", "fa": "ترین" } },
-        "เท่ากับ": { "translations": { "en": "equal to", "fa": "برابر با" } },
-        "เหมือน": { "translations": { "en": "same as", "fa": "مثل" } },
-        "ต่าง": { "translations": { "en": "different", "fa": "متفاوت" } },
-        "ถูกกว่า": { "translations": { "en": "cheaper", "fa": "ارزان‌تر" } },
-        "แพงกว่า": { "translations": { "en": "more expensive", "fa": "گران‌تر" } },
-        "ดีกว่า": { "translations": { "en": "better", "fa": "بهتر" } },
-        "แย่กว่า": { "translations": { "en": "worse", "fa": "بدتر" } },
-        "เร็วกว่า": { "translations": { "en": "faster", "fa": "سریع‌تر" } }
+        "กว่า": {
+            "translations": {
+                "en": "than",
+                "fa": "از"
+            }
+        },
+        "ที่สุด": {
+            "translations": {
+                "en": "most",
+                "fa": "ترین"
+            }
+        },
+        "เท่ากับ": {
+            "translations": {
+                "en": "equal to",
+                "fa": "برابر با"
+            }
+        },
+        "เหมือน": {
+            "translations": {
+                "en": "same as",
+                "fa": "مثل"
+            }
+        },
+        "ต่าง": {
+            "translations": {
+                "en": "different",
+                "fa": "متفاوت"
+            }
+        },
+        "ถูกกว่า": {
+            "translations": {
+                "en": "cheaper",
+                "fa": "ارزان‌تر"
+            }
+        },
+        "แพงกว่า": {
+            "translations": {
+                "en": "more expensive",
+                "fa": "گران‌تر"
+            }
+        },
+        "ดีกว่า": {
+            "translations": {
+                "en": "better",
+                "fa": "بهتر"
+            }
+        },
+        "แย่กว่า": {
+            "translations": {
+                "en": "worse",
+                "fa": "بدتر"
+            }
+        },
+        "เร็วกว่า": {
+            "translations": {
+                "en": "faster",
+                "fa": "سریع‌تر"
+            }
+        },
+        "รถ": {
+            "translations": {
+                "en": "Automobile",
+                "fa": "ماشین"
+            }
+        },
+        "คันนี้": {
+            "translations": {
+                "en": "This one.",
+                "fa": "این ماشین"
+            }
+        },
+        "คันนั้น": {
+            "translations": {
+                "en": "That car.",
+                "fa": "اون یکی"
+            }
+        },
+        "อาหารไทย": {
+            "translations": {
+                "en": "Thai cuisine",
+                "fa": "غذای تایلندی"
+            }
+        },
+        "อร่อยกว่า": {
+            "translations": {
+                "en": "It's better",
+                "fa": "خوشمزه تره"
+            }
+        },
+        "อาหารอเมริกัน": {
+            "translations": {
+                "en": "American",
+                "fa": "غذای آمریکایی"
+            }
+        },
+        "ผม": {
+            "translations": {
+                "en": "Hair",
+                "fa": "من:"
+            }
+        },
+        "สูงกว่า": {
+            "translations": {
+                "en": "Higher",
+                "fa": "بالاتر"
+            }
+        },
+        "คุณ": {
+            "translations": {
+                "en": "You",
+                "fa": "شما:"
+            }
+        }
     },
     "sections": [
         {
@@ -50,8 +159,14 @@
                             "fa": "برای صفت برتر، 'กว่า' را بعد از صفت بیاورید. برای صفت برترین، 'ที่สุด' را در انتها اضافه کنید."
                         },
                         "examples": [
-                            { "source": "รถคันนี้แพงกว่ารถคันนั้น", "translation": "This car is more expensive than that car" },
-                            { "source": "บ้านหลังนี้ใหญ่ที่สุด", "translation": "This house is the biggest" }
+                            {
+                                "source": "รถคันนี้แพงกว่ารถคันนั้น",
+                                "translation": "This car is more expensive than that car"
+                            },
+                            {
+                                "source": "บ้านหลังนี้ใหญ่ที่สุด",
+                                "translation": "This house is the biggest"
+                            }
                         ]
                     },
                     "sentences": [ ]
@@ -66,7 +181,13 @@
                     "sentences": [
                         {
                             "source": "รถคันนี้แพงกว่ารถคันนั้น",
-                            "wordIds": [ "รถ", "คันนี้", "แพงกว่า", "รถ", "คันนั้น" ],
+                            "wordIds": [
+                                "รถ",
+                                "คันนี้",
+                                "แพงกว่า",
+                                "รถ",
+                                "คันนั้น"
+                            ],
                             "translations": {
                                 "en": "This car is more expensive than that car",
                                 "fa": "این ماشین از آن ماشین گران‌تر است"
@@ -74,7 +195,11 @@
                         },
                         {
                             "source": "อาหารไทยอร่อยกว่าอาหารอเมริกัน",
-                            "wordIds": [ "อาหารไทย", "อร่อยกว่า", "อาหารอเมริกัน" ],
+                            "wordIds": [
+                                "อาหารไทย",
+                                "อร่อยกว่า",
+                                "อาหารอเมริกัน"
+                            ],
                             "translations": {
                                 "en": "Thai food is more delicious than American food",
                                 "fa": "غذای تایلندی از غذای آمریکایی خوشمزه‌تر است"
@@ -82,7 +207,11 @@
                         },
                         {
                             "source": "ผมสูงกว่าคุณ",
-                            "wordIds": [ "ผม", "สูงกว่า", "คุณ" ],
+                            "wordIds": [
+                                "ผม",
+                                "สูงกว่า",
+                                "คุณ"
+                            ],
                             "translations": {
                                 "en": "I am taller than you",
                                 "fa": "من از شما بلندتر هستم"

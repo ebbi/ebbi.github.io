@@ -12,23 +12,140 @@
         "newWords": 15,
         "reviewWords": 40,
         "sentenceCount": 25,
-        "estimatedTime": 30
+        "estimatedTime": 30,
+        "authors": [ ],
+        "reviewers": [ ],
+        "prerequisites": [ ],
+        "tags": [ ],
+        "updated": "2026-02-24T14:54:21.574Z"
     },
     "vocabulary": {
-        "ใน": { "translations": { "en": "in", "fa": "داخل" } },
-        "นอก": { "translations": { "en": "outside", "fa": "بیرون" } },
-        "บน": { "translations": { "en": "on", "fa": "روی" } },
-        "ใต้": { "translations": { "en": "under", "fa": "زیر" } },
-        "ข้าง": { "translations": { "en": "beside/next to", "fa": "کنار" } },
-        "หน้า": { "translations": { "en": "in front of", "fa": "جلوی" } },
-        "หลัง": { "translations": { "en": "behind", "fa": "پشت" } },
-        "ระหว่าง": { "translations": { "en": "between", "fa": "بین" } },
-        "ใกล้": { "translations": { "en": "near", "fa": "نزدیک" } },
-        "ไกล": { "translations": { "en": "far", "fa": "دور" } },
-        "โต๊ะ": { "translations": { "en": "table", "fa": "میز" } },
-        "เก้าอี้": { "translations": { "en": "chair", "fa": "صندلی" } },
-        "ตู้เย็น": { "translations": { "en": "refrigerator", "fa": "یخچال" } },
-        "เตียง": { "translations": { "en": "bed", "fa": "تخت" } }
+        "ใน": {
+            "translations": {
+                "en": "in",
+                "fa": "داخل"
+            }
+        },
+        "นอก": {
+            "translations": {
+                "en": "outside",
+                "fa": "بیرون"
+            }
+        },
+        "บน": {
+            "translations": {
+                "en": "on",
+                "fa": "روی"
+            }
+        },
+        "ใต้": {
+            "translations": {
+                "en": "under",
+                "fa": "زیر"
+            }
+        },
+        "ข้าง": {
+            "translations": {
+                "en": "beside/next to",
+                "fa": "کنار"
+            }
+        },
+        "หน้า": {
+            "translations": {
+                "en": "in front of",
+                "fa": "جلوی"
+            }
+        },
+        "หลัง": {
+            "translations": {
+                "en": "behind",
+                "fa": "پشت"
+            }
+        },
+        "ระหว่าง": {
+            "translations": {
+                "en": "between",
+                "fa": "بین"
+            }
+        },
+        "ใกล้": {
+            "translations": {
+                "en": "near",
+                "fa": "نزدیک"
+            }
+        },
+        "ไกล": {
+            "translations": {
+                "en": "far",
+                "fa": "دور"
+            }
+        },
+        "โต๊ะ": {
+            "translations": {
+                "en": "table",
+                "fa": "میز"
+            }
+        },
+        "เก้าอี้": {
+            "translations": {
+                "en": "chair",
+                "fa": "صندلی"
+            }
+        },
+        "ตู้เย็น": {
+            "translations": {
+                "en": "refrigerator",
+                "fa": "یخچال"
+            }
+        },
+        "เตียง": {
+            "translations": {
+                "en": "bed",
+                "fa": "تخت"
+            }
+        },
+        "หนังสือ": {
+            "translations": {
+                "en": "BOOKS",
+                "fa": "کتاب"
+            }
+        },
+        "อยู่": {
+            "translations": {
+                "en": "is",
+                "fa": "زنده"
+            }
+        },
+        "แมว": {
+            "translations": {
+                "en": "A cat. ",
+                "fa": "گربه"
+            }
+        },
+        "ร้านอาหาร": {
+            "translations": {
+                "en": "Restaurant",
+                "fa": "رستوران"
+            }
+        },
+        "ธนาคาร": {
+            "translations": {
+                "en": "Bank",
+                "fa": "بانک"
+            }
+        },
+        "ตลาด": {
+            "translations": {
+                "en": "Market Name",
+                "fa": "بازار"
+            }
+        },
+        "โรงเรียน": {
+            "translations": {
+                "en": "School",
+                "fa": "مدرسه"
+            }
+        }
     },
     "sections": [
         {
@@ -54,9 +171,18 @@
                             "fa": "برای بیان مکان، از 'อยู่' استفاده کنید و بعد حرف اضافه و مکان بیاید."
                         },
                         "examples": [
-                            { "source": "หนังสืออยู่บนโต๊ะ", "translation": "The book is on the table" },
-                            { "source": "ผมอยู่ในบ้าน", "translation": "I am in the house" },
-                            { "source": "ร้านอยู่ใกล้ตลาด", "translation": "The shop is near the market" }
+                            {
+                                "source": "หนังสืออยู่บนโต๊ะ",
+                                "translation": "The book is on the table"
+                            },
+                            {
+                                "source": "ผมอยู่ในบ้าน",
+                                "translation": "I am in the house"
+                            },
+                            {
+                                "source": "ร้านอยู่ใกล้ตลาด",
+                                "translation": "The shop is near the market"
+                            }
                         ]
                     },
                     "sentences": [ ]
@@ -71,7 +197,12 @@
                     "sentences": [
                         {
                             "source": "หนังสืออยู่บนโต๊ะ",
-                            "wordIds": [ "หนังสือ", "อยู่", "บน", "โต๊ะ" ],
+                            "wordIds": [
+                                "หนังสือ",
+                                "อยู่",
+                                "บน",
+                                "โต๊ะ"
+                            ],
                             "translations": {
                                 "en": "The book is on the table",
                                 "fa": "کتاب روی میز است"
@@ -79,7 +210,12 @@
                         },
                         {
                             "source": "แมวอยู่ใต้เตียง",
-                            "wordIds": [ "แมว", "อยู่", "ใต้", "เตียง" ],
+                            "wordIds": [
+                                "แมว",
+                                "อยู่",
+                                "ใต้",
+                                "เตียง"
+                            ],
                             "translations": {
                                 "en": "The cat is under the bed",
                                 "fa": "گربه زیر تخت است"
@@ -87,7 +223,12 @@
                         },
                         {
                             "source": "ร้านอาหารอยู่ข้างธนาคาร",
-                            "wordIds": [ "ร้านอาหาร", "อยู่", "ข้าง", "ธนาคาร" ],
+                            "wordIds": [
+                                "ร้านอาหาร",
+                                "อยู่",
+                                "ข้าง",
+                                "ธนาคาร"
+                            ],
                             "translations": {
                                 "en": "The restaurant is next to the bank",
                                 "fa": "رستوران کنار بانک است"
@@ -95,7 +236,12 @@
                         },
                         {
                             "source": "ตลาดอยู่ใกล้โรงเรียน",
-                            "wordIds": [ "ตลาด", "อยู่", "ใกล้", "โรงเรียน" ],
+                            "wordIds": [
+                                "ตลาด",
+                                "อยู่",
+                                "ใกล้",
+                                "โรงเรียน"
+                            ],
                             "translations": {
                                 "en": "The market is near the school",
                                 "fa": "بازار نزدیک مدرسه است"

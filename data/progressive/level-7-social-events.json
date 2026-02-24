@@ -1,111 +1,741 @@
 {
-    "documentId": "level-7-social-events",
+    "documentId": "level-8-work",
     "metadata": {
         "version": "2.0.0",
         "created": "2026-02-21T10:00:00Z",
         "title": {
-            "en": "Level 7: Social Events & Invitations",
-            "th": "ระดับ 7: งานสังคมและการเชิญ",
-            "fa": "سطح ۷: رویدادهای اجتماعی و دعوت‌ها"
+            "en": "Level 8: Work & Career",
+            "th": "ระดับ 8: การทำงานและอาชีพ",
+            "fa": "سطح ۸: کار و حرفه"
         },
         "difficulty": 3,
         "newWords": 30,
-        "reviewWords": 35,
-        "totalWords": 65,
-        "sentences": 28,
-        "prerequisites": [ "level-6-health" ],
-        "estimatedTime": 35
+        "reviewWords": 40,
+        "totalWords": 70,
+        "sentences": 26,
+        "prerequisites": [
+            "level-7-social-events"
+        ],
+        "estimatedTime": 35,
+        "authors": [ ],
+        "reviewers": [ ],
+        "tags": [ ],
+        "updated": "2026-02-24T14:34:27.168Z"
     },
     "vocabulary": {
-        "วันเกิด": {
-            "translations": { "en": "birthday", "fa": "تولد" }
+        "ทำงาน": {
+            "translations": {
+                "en": "work",
+                "fa": "کار کردن"
+            }
         },
-        "งาน": {
-            "translations": { "en": "party/event", "fa": "مهمانی" }
+        "อาชีพ": {
+            "translations": {
+                "en": "occupation",
+                "fa": "شغل"
+            }
+        },
+        "บริษัท": {
+            "translations": {
+                "en": "company",
+                "fa": "شرکت"
+            }
+        },
+        "ออฟฟิศ": {
+            "translations": {
+                "en": "office",
+                "fa": "دفتر"
+            }
+        },
+        "เจ้านาย": {
+            "translations": {
+                "en": "boss",
+                "fa": "رئیس"
+            }
+        },
+        "ลูกน้อง": {
+            "translations": {
+                "en": "subordinate",
+                "fa": "زیردست"
+            }
+        },
+        "เพื่อนร่วมงาน": {
+            "translations": {
+                "en": "colleague",
+                "fa": "همکار"
+            }
+        },
+        "เงินเดือน": {
+            "translations": {
+                "en": "salary",
+                "fa": "حقوق"
+            }
+        },
+        "เลื่อนตำแหน่ง": {
+            "translations": {
+                "en": "promotion",
+                "fa": "ارتقاء شغلی"
+            }
+        },
+        "ลาออก": {
+            "translations": {
+                "en": "resign",
+                "fa": "استعفا دادن"
+            }
+        },
+        "สมัครงาน": {
+            "translations": {
+                "en": "apply for job",
+                "fa": "درخواست کار"
+            }
+        },
+        "สัมภาษณ์": {
+            "translations": {
+                "en": "interview",
+                "fa": "مصاحبه"
+            }
+        },
+        "ประสบการณ์": {
+            "translations": {
+                "en": "experience",
+                "fa": "تجربه"
+            }
+        },
+        "ความสามารถ": {
+            "translations": {
+                "en": "ability",
+                "fa": "توانایی"
+            }
+        },
+        "ภาษา": {
+            "translations": {
+                "en": "language",
+                "fa": "زبان"
+            }
+        },
+        "คอมพิวเตอร์": {
+            "translations": {
+                "en": "computer",
+                "fa": "کامپیوتر"
+            }
+        },
+        "ประชุม": {
+            "translations": {
+                "en": "meeting",
+                "fa": "جلسه"
+            }
+        },
+        "รายงาน": {
+            "translations": {
+                "en": "report",
+                "fa": "گزارش"
+            }
+        },
+        "โปรเจค": {
+            "translations": {
+                "en": "project",
+                "fa": "پروژه"
+            }
+        },
+        "ลูกค้า": {
+            "translations": {
+                "en": "customer",
+                "fa": "مشتری"
+            }
+        },
+        "เลิกงาน": {
+            "translations": {
+                "en": "finish work",
+                "fa": "تعطیلی کار"
+            }
+        },
+        "โอที": {
+            "translations": {
+                "en": "overtime",
+                "fa": "اضافه کاری"
+            }
+        },
+        "วันหยุด": {
+            "translations": {
+                "en": "day off",
+                "fa": "روز تعطیل"
+            }
+        },
+        "ลาพักร้อน": {
+            "translations": {
+                "en": "vacation leave",
+                "fa": "مرخصی"
+            }
+        },
+        "ลาป่วย": {
+            "translations": {
+                "en": "sick leave",
+                "fa": "مرخصی استعلاجی"
+            }
+        },
+        "ธุรกิจ": {
+            "translations": {
+                "en": "business",
+                "fa": "کسب و کار"
+            }
+        },
+        "ลูกจ้าง": {
+            "translations": {
+                "en": "employee",
+                "fa": "کارمند"
+            }
+        },
+        "นายจ้าง": {
+            "translations": {
+                "en": "employer",
+                "fa": "کارفرما"
+            }
+        },
+        "สัญญา": {
+            "translations": {
+                "en": "contract",
+                "fa": "قرارداد"
+            }
+        },
+        "เป้าหมาย": {
+            "translations": {
+                "en": "goal",
+                "fa": "هدف"
+            }
+        },
+        "ผม": {
+            "translations": {
+                "en": "Hair",
+                "fa": "من:"
+            }
+        },
+        "ชื่อ": {
+            "translations": {
+                "en": "First name",
+                "fa": "عنوان"
+            }
+        },
+        "จบ": {
+            "translations": {
+                "en": "FINISHED",
+                "fa": "پایان"
+            }
+        },
+        "การศึกษา": {
+            "translations": {
+                "en": "the findings",
+                "fa": "تحصیلات"
+            }
+        },
+        "จาก": {
+            "translations": {
+                "en": "From",
+                "fa": "& از‌"
+            }
+        },
+        "มี": {
+            "translations": {
+                "en": "Yes",
+                "fa": "محتویات"
+            }
+        },
+        "ด้าน": {
+            "translations": {
+                "en": "Aspect",
+                "fa": "مات"
+            }
+        },
+        "การตลาด": {
+            "translations": {
+                "en": "Below the Line",
+                "fa": "بازاریابی"
+            }
+        },
+        "สาม": {
+            "translations": {
+                "en": "THREE.",
+                "fa": "سه"
+            }
+        },
+        "ปี": {
+            "translations": {
+                "en": "Y",
+                "fa": "& سال‌"
+            }
+        },
+        "ครับ": {
+            "translations": {
+                "en": "OK",
+                "fa": "بله"
+            }
+        },
+        "คุณ": {
+            "translations": {
+                "en": "You",
+                "fa": "شما:"
+            }
+        },
+        "อะไร": {
+            "translations": {
+                "en": "WHAT",
+                "fa": "چه:"
+            }
+        },
+        "ฉัน": {
+            "translations": {
+                "en": "Me",
+                "fa": "من"
+            }
+        },
+        "เป็น": {
+            "translations": {
+                "en": "is",
+                "fa": "هست"
+            }
+        },
+        "ครู": {
+            "translations": {
+                "en": "Teacher",
+                "fa": "معلم"
+            }
+        },
+        "ค่ะ": {
+            "translations": {
+                "en": "Thank you.",
+                "fa": "بله"
+            }
+        },
+        "สอน": {
+            "translations": {
+                "en": "Tutorials",
+                "fa": "آموزش دادن"
+            }
+        },
+        "คะ": {
+            "translations": {
+                "en": "Ka",
+                "fa": "بله"
+            }
+        },
+        "อังกฤษ": {
+            "translations": {
+                "en": "English",
+                "fa": "انگلیسی"
+            }
+        },
+        "ที่": {
+            "translations": {
+                "en": "No.",
+                "fa": "در"
+            }
+        },
+        "โรงเรียน": {
+            "translations": {
+                "en": "School",
+                "fa": "مدرسه"
+            }
+        },
+        "นานาชาติ": {
+            "translations": {
+                "en": "Internationalization",
+                "fa": "بین‌المللی"
+            }
+        },
+        "แล้ว": {
+            "translations": {
+                "en": "So ",
+                "fa": "قبلاً"
+            }
+        },
+        "ล่ะ": {
+            "translations": {
+                "en": "What?",
+                "fa": "خب؟"
+            }
+        },
+        "ใน": {
+            "translations": {
+                "en": "In",
+                "fa": "در"
+            }
+        },
+        "เทคโนโลยี": {
+            "translations": {
+                "en": "Technology",
+                "fa": "فناوری"
+            }
+        },
+        "สวัสดี": {
+            "translations": {
+                "en": "Hi.",
+                "fa": "سلام"
+            }
         },
         "เชิญ": {
-            "translations": { "en": "invite", "fa": "دعوت کردن" }
+            "translations": {
+                "en": "Invite",
+                "fa": "دعوت کردن"
+            }
         },
-        "มา": {
-            "translations": { "en": "come", "fa": "آمدن" }
+        "นั่ง": {
+            "translations": {
+                "en": "Sitting",
+                "fa": "نشستن"
+            }
         },
-        "ได้": {
-            "translations": { "en": "can", "fa": "توانستن" }
-        },
-        "ว่าง": {
-            "translations": { "en": "free (time)", "fa": "وقت آزاد" }
-        },
-        "ไม่ว่าง": {
-            "translations": { "en": "busy", "fa": "سرشلوغ" }
-        },
-        "เวลา": {
-            "translations": { "en": "time", "fa": "زمان" }
-        },
-        "สถานที่": {
-            "translations": { "en": "place/location", "fa": "مکان" }
-        },
-        "ร้าน": {
-            "translations": { "en": "shop/restaurant", "fa": "فروشگاه/رستوران" }
-        },
-        "บ้าน": {
-            "translations": { "en": "home", "fa": "خانه" }
-        },
-        "เพื่อน": {
-            "translations": { "en": "friend", "fa": "دوست" }
-        },
-        "ครอบครัว": {
-            "translations": { "en": "family", "fa": "خانواده" }
-        },
-        "ของขวัญ": {
-            "translations": { "en": "gift", "fa": "هدیه" }
-        },
-        "เค้ก": {
-            "translations": { "en": "cake", "fa": "کیک" }
-        },
-        "ดอกไม้": {
-            "translations": { "en": "flower", "fa": "گل" }
-        },
-        "สนุก": {
-            "translations": { "en": "fun", "fa": "مفرح" }
-        },
-        "น่าเบื่อ": {
-            "translations": { "en": "boring", "fa": "کسالت‌آور" }
-        },
-        "ดีใจ": {
-            "translations": { "en": "glad", "fa": "خوشحال" }
-        },
-        "เสียใจ": {
-            "translations": { "en": "sorry", "fa": "متاسف" }
-        },
-        "ขอโทษ": {
-            "translations": { "en": "sorry/excuse me", "fa": "ببخشید" }
+        "ก่อน": {
+            "translations": {
+                "en": "Prev",
+                "fa": "قبل از"
+            }
         },
         "ขอบคุณ": {
-            "translations": { "en": "thank you", "fa": "متشکرم" }
+            "translations": {
+                "en": "Thanks!",
+                "fa": "متشکرم"
+            }
         },
-        "แสดงความยินดี": {
-            "translations": { "en": "congratulate", "fa": "تبریک گفتن" }
+        "ช่วย": {
+            "translations": {
+                "en": "Help",
+                "fa": "کمک"
+            }
         },
-        "ฉลอง": {
-            "translations": { "en": "celebrate", "fa": "جشن گرفتن" }
+        "แนะนำ": {
+            "translations": {
+                "en": "Recommend",
+                "fa": "توصیه کردن"
+            }
         },
-        "ปีใหม่": {
-            "translations": { "en": "New Year", "fa": "سال نو" }
+        "ตัวเอง": {
+            "translations": {
+                "en": "Self",
+                "fa": "خودش"
+            }
         },
-        "สงกรานต์": {
-            "translations": { "en": "Songkran (Thai New Year)", "fa": "سونگکران (سال نوی تایلندی)" }
+        "หน่อย": {
+            "translations": {
+                "en": "A little bit",
+                "fa": "بیت"
+            }
         },
-        "ลอยกระทง": {
-            "translations": { "en": "Loy Krathong festival", "fa": "جشن لوی کراتونگ" }
+        "ทำไม": {
+            "translations": {
+                "en": "Why is",
+                "fa": "چرا"
+            }
         },
-        "แต่งงาน": {
-            "translations": { "en": "wedding", "fa": "عروسی" }
+        "ถึง": {
+            "translations": {
+                "en": "To",
+                "fa": "به"
+            }
         },
-        "งานเลี้ยง": {
-            "translations": { "en": "party", "fa": "مهمانی" }
+        "อยาก": {
+            "translations": {
+                "en": "Want",
+                "fa": "می خواهم"
+            }
         },
-        "ดนตรี": {
-            "translations": { "en": "music", "fa": "موسیقی" }
+        "มา": {
+            "translations": {
+                "en": "Come.",
+                "fa": "بیا"
+            }
+        },
+        "นี่": {
+            "translations": {
+                "en": "Hey. ",
+                "fa": "این"
+            }
+        },
+        "ชอบ": {
+            "translations": {
+                "en": "Like",
+                "fa": "مانند"
+            }
+        },
+        "วัฒนธรรม": {
+            "translations": {
+                "en": "Culture",
+                "fa": "فرهنگ"
+            }
+        },
+        "องค์กร": {
+            "translations": {
+                "en": "ORGANIZATIONS",
+                "fa": "سازمان"
+            }
+        },
+        "ของ": {
+            "translations": {
+                "en": "of",
+                "fa": "از"
+            }
+        },
+        "และ": {
+            "translations": {
+                "en": "and",
+                "fa": "، و"
+            }
+        },
+        "พัฒนา": {
+            "translations": {
+                "en": "develop ",
+                "fa": "توسعه دادن"
+            }
+        },
+        "ดี": {
+            "translations": {
+                "en": "Good",
+                "fa": "خوب"
+            }
+        },
+        "เดี๋ยว": {
+            "translations": {
+                "en": "Wait.",
+                "fa": "یک دقیقه صبر کن"
+            }
+        },
+        "จะ": {
+            "translations": {
+                "en": "Ca",
+                "fa": "اراده"
+            }
+        },
+        "ติดต่อ": {
+            "translations": {
+                "en": "Contact",
+                "fa": "تماس"
+            }
+        },
+        "กลับ": {
+            "translations": {
+                "en": "Return",
+                "fa": "> پس‌سو‌"
+            }
+        },
+        "ไป": {
+            "translations": {
+                "en": "I'm going",
+                "fa": "& برو‌"
+            }
+        },
+        "วันนี้": {
+            "translations": {
+                "en": "TODAY",
+                "fa": "امروز"
+            }
+        },
+        "กี่": {
+            "translations": {
+                "en": "Loom",
+                "fa": "چند تا؟"
+            }
+        },
+        "โมง": {
+            "translations": {
+                "en": "<g id=\"1\">Hours</g>",
+                "fa": "ساعت"
+            }
+        },
+        "บ่าย": {
+            "translations": {
+                "en": "Afternoon",
+                "fa": "بعد از ظهر"
+            }
+        },
+        "สอง": {
+            "translations": {
+                "en": "TWO.",
+                "fa": "دو"
+            }
+        },
+        "พร้อม": {
+            "translations": {
+                "en": "READY",
+                "fa": "Ø¢ÙØ§Ø¯Ù."
+            }
+        },
+        "ยัง": {
+            "translations": {
+                "en": "yet",
+                "fa": "هنوز نه"
+            }
+        },
+        "เกือบ": {
+            "translations": {
+                "en": "Almost",
+                "fa": "تقریباً"
+            }
+        },
+        "เสร็จ": {
+            "translations": {
+                "en": "Done",
+                "fa": "پایان"
+            }
+        },
+        "อีก": {
+            "translations": {
+                "en": "for",
+                "fa": "بیشتر"
+            }
+        },
+        "นิดเดียว": {
+            "translations": {
+                "en": "Just a little.",
+                "fa": "کمی"
+            }
+        },
+        "ตรงเวลา": {
+            "translations": {
+                "en": "On time",
+                "fa": "به موقع"
+            }
+        },
+        "ไหม": {
+            "translations": {
+                "en": "Silk",
+                "fa": "ابریشم"
+            }
+        },
+        "ไม่": {
+            "translations": {
+                "en": "No",
+                "fa": "خیر"
+            }
+        },
+        "แน่ใจ": {
+            "translations": {
+                "en": "Yes.",
+                "fa": "مطمئن"
+            }
+        },
+        "อาจจะ": {
+            "translations": {
+                "en": "“Maybe. ",
+                "fa": "ممکن است"
+            }
+        },
+        "ต้อง": {
+            "translations": {
+                "en": "to",
+                "fa": "باید"
+            }
+        },
+        "ทำ": {
+            "translations": {
+                "en": "Call thunder strikes dealing TAL({0}~{1}) [thunder] m.dmg to LVL({2}~{3}) targets.",
+                "fa": "انجام دادن"
+            }
+        },
+        "ขอ": {
+            "translations": {
+                "en": "I'm looking at it.",
+                "fa": "خواهش می‌کنم"
+            }
+        },
+        "อนุญาต": {
+            "translations": {
+                "en": "permission.",
+                "fa": "اجازه"
+            }
+        },
+        "ลา": {
+            "translations": {
+                "en": "Donkey",
+                "fa": "خر"
+            }
+        },
+        "พักร้อน": {
+            "translations": {
+                "en": "Vacation",
+                "fa": "تعطیلات"
+            }
+        },
+        "สัปดาห์": {
+            "translations": {
+                "en": "Weeks",
+                "fa": "هفته"
+            }
+        },
+        "หน้า": {
+            "translations": {
+                "en": "Page",
+                "fa": "صفحه"
+            }
+        },
+        "วัน": {
+            "translations": {
+                "en": "DAYS",
+                "fa": "روز"
+            }
+        },
+        "จันทร์": {
+            "translations": {
+                "en": "Mon",
+                "fa": "دوشنبه"
+            }
+        },
+        "พุธ": {
+            "translations": {
+                "en": "Wed",
+                "fa": "چهارشنبه"
+            }
+        },
+        "ได้": {
+            "translations": {
+                "en": "Yes",
+                "fa": "می‌تواند"
+            }
+        },
+        "แต่": {
+            "translations": {
+                "en": "But",
+                "fa": "اما"
+            }
+        },
+        "ฝาก": {
+            "translations": {
+                "en": "Credit",
+                "fa": "سپرده"
+            }
+        },
+        "งาน": {
+            "translations": {
+                "en": "Task",
+                "fa": "& کارها‌"
+            }
+        },
+        "กับ": {
+            "translations": {
+                "en": "With",
+                "fa": "با"
+            }
+        },
+        "เพื่อน": {
+            "translations": {
+                "en": "Friend",
+                "fa": "دوست"
+            }
+        },
+        "นะ": {
+            "translations": {
+                "en": "Yes?",
+                "fa": "نا"
+            }
+        },
+        "จัดการ": {
+            "translations": {
+                "en": "manage",
+                "fa": "& تغییر... ‌"
+            }
+        },
+        "เรียบร้อย": {
+            "translations": {
+                "en": ", tidy",
+                "fa": "مرتب"
+            }
         }
     },
     "activity": {
@@ -114,90 +744,141 @@
     },
     "sections": [
         {
-            "sectionId": "level7-vocab-1",
+            "sectionId": "level8-vocab-1",
             "heading": {
-                "en": "Social Event Vocabulary",
-                "th": "คำศัพท์งานสังคม",
-                "fa": "واژگان رویدادهای اجتماعی"
+                "en": "Job & Workplace",
+                "th": "งานและสถานที่ทำงาน",
+                "fa": "شغل و محل کار"
             },
             "content": [
                 {
                     "type": "words",
-                    "wordIds": [ "งาน", "วันเกิด", "ปีใหม่", "สงกรานต์", "ลอยกระทง", "แต่งงาน", "งานเลี้ยง" ]
+                    "wordIds": [
+                        "ทำงาน",
+                        "อาชีพ",
+                        "บริษัท",
+                        "ออฟฟิศ",
+                        "เจ้านาย",
+                        "ลูกน้อง",
+                        "เพื่อนร่วมงาน"
+                    ]
                 }
             ]
         },
         {
-            "sectionId": "level7-vocab-2",
+            "sectionId": "level8-vocab-2",
             "heading": {
-                "en": "Invitation Words",
-                "th": "คำศัพท์การเชิญ",
-                "fa": "کلمات دعوت"
+                "en": "Work Activities",
+                "th": "กิจกรรมการทำงาน",
+                "fa": "فعالیت‌های کاری"
             },
             "content": [
                 {
                     "type": "words",
-                    "wordIds": [ "เชิญ", "มา", "ได้", "ว่าง", "ไม่ว่าง", "เวลา", "สถานที่", "ร้าน", "บ้าน" ]
+                    "wordIds": [
+                        "ประชุม",
+                        "รายงาน",
+                        "โปรเจค",
+                        "ลูกค้า",
+                        "เลิกงาน",
+                        "โอที",
+                        "วันหยุด"
+                    ]
                 }
             ]
         },
         {
-            "sectionId": "level7-conv-1",
+            "sectionId": "level8-conv-1",
             "heading": {
-                "en": "Conversation 1: Birthday Party Invitation",
-                "th": "บทสนทนา 1: เชิญไปงานวันเกิด",
-                "fa": "مکالمه ۱: دعوت به مهمانی تولد"
+                "en": "Conversation 1: Talking About Jobs",
+                "th": "บทสนทนา 1: พูดคุยเกี่ยวกับงาน",
+                "fa": "مکالمه ۱: صحبت درباره کار"
             },
             "content": [
                 {
                     "type": "paragraph",
                     "sentences": [
                         {
-                            "source": "วันเสาร์นี้ว่างไหมครับ",
-                            "wordIds": [ "วันเสาร์", "นี้", "ว่าง", "ไหม", "ครับ" ],
+                            "source": "คุณทำงานอะไรครับ",
+                            "wordIds": [
+                                "คุณ",
+                                "ทำงาน",
+                                "อะไร",
+                                "ครับ"
+                            ],
                             "translations": {
-                                "en": "Are you free this Saturday?",
-                                "fa": "این شنبه وقت آزاد دارید؟"
+                                "en": "What do you do for work?",
+                                "fa": "شغل شما چیست؟"
                             }
                         },
                         {
-                            "source": "ว่างค่ะ มีอะไรหรือเปล่า",
-                            "wordIds": [ "ว่าง", "ค่ะ", "มี", "อะไร", "หรือ", "เปล่า" ],
+                            "source": "ฉันทำงานเป็นครูค่ะ",
+                            "wordIds": [
+                                "ฉัน",
+                                "ทำงาน",
+                                "เป็น",
+                                "ครู",
+                                "ค่ะ"
+                            ],
                             "translations": {
-                                "en": "I'm free. What's up?",
-                                "fa": "وقت دارم. چه خبر؟"
+                                "en": "I work as a teacher",
+                                "fa": "من معلم هستم"
                             }
                         },
                         {
-                            "source": "วันเกิดผมครับ อยากเชิญคุณมาด้วย",
-                            "wordIds": [ "วันเกิด", "ผม", "ครับ", "อยาก", "เชิญ", "คุณ", "มา", "ด้วย" ],
+                            "source": "สอนอะไรคะ",
+                            "wordIds": [
+                                "สอน",
+                                "อะไร",
+                                "คะ"
+                            ],
                             "translations": {
-                                "en": "It's my birthday. I'd like to invite you",
-                                "fa": "تولد من است. می‌خواهم شما را دعوت کنم"
+                                "en": "What do you teach?",
+                                "fa": "چه چیزی تدریس می‌کنید؟"
                             }
                         },
                         {
-                            "source": "ดีใจจังเลยค่ะ กี่โมงคะ",
-                            "wordIds": [ "ดีใจ", "จัง", "เลย", "ค่ะ", "กี่", "โมง", "คะ" ],
+                            "source": "สอนภาษาอังกฤษที่โรงเรียนนานาชาติ",
+                            "wordIds": [
+                                "สอน",
+                                "ภาษา",
+                                "อังกฤษ",
+                                "ที่",
+                                "โรงเรียน",
+                                "นานาชาติ"
+                            ],
                             "translations": {
-                                "en": "I'm so glad! What time?",
-                                "fa": "چه خوشحالم! ساعت چند؟"
+                                "en": "I teach English at an international school",
+                                "fa": "در یک مدرسه بین‌المللی انگلیسی تدریس می‌کنم"
                             }
                         },
                         {
-                            "source": "หกโมงเย็น ที่บ้านผมครับ",
-                            "wordIds": [ "หก", "โมง", "เย็น", "ที่", "บ้าน", "ผม", "ครับ" ],
+                            "source": "แล้วคุณล่ะทำงานอะไร",
+                            "wordIds": [
+                                "แล้ว",
+                                "คุณ",
+                                "ล่ะ",
+                                "ทำงาน",
+                                "อะไร"
+                            ],
                             "translations": {
-                                "en": "6 p.m. at my place",
-                                "fa": "ساعت ۶ عصر در خانه من"
+                                "en": "And you? What do you do?",
+                                "fa": "شما چطور؟ چه کار می‌کنید؟"
                             }
                         },
                         {
-                            "source": "ได้ค่ะ ไปแน่นอน",
-                            "wordIds": [ "ได้", "ค่ะ", "ไป", "แน่นอน" ],
+                            "source": "ผมทำงานในบริษัทเทคโนโลยีครับ",
+                            "wordIds": [
+                                "ผม",
+                                "ทำงาน",
+                                "ใน",
+                                "บริษัท",
+                                "เทคโนโลยี",
+                                "ครับ"
+                            ],
                             "translations": {
-                                "en": "Okay, definitely going",
-                                "fa": "باشه، حتماً می‌آیم"
+                                "en": "I work at a technology company",
+                                "fa": "من در یک شرکت فناوری کار می‌کنم"
                             }
                         }
                     ]
@@ -205,54 +886,128 @@
             ]
         },
         {
-            "sectionId": "level7-conv-2",
+            "sectionId": "level8-conv-2",
             "heading": {
-                "en": "Conversation 2: Declining an Invitation",
-                "th": "บทสนทนา 2: ปฏิเสธคำเชิญ",
-                "fa": "مکالمه ۲: رد دعوت"
+                "en": "Conversation 2: Job Interview",
+                "th": "บทสนทนา 2: สัมภาษณ์งาน",
+                "fa": "مکالمه ۲: مصاحبه شغلی"
             },
             "content": [
                 {
                     "type": "paragraph",
                     "sentences": [
                         {
-                            "source": "วันอาทิตย์นี้ไปเที่ยวทะเลกันไหม",
-                            "wordIds": [ "วันอาทิตย์", "นี้", "ไป", "เที่ยว", "ทะเล", "กัน", "ไหม" ],
+                            "source": "สวัสดีค่ะเชิญนั่งก่อน",
+                            "wordIds": [
+                                "สวัสดี",
+                                "ค่ะ",
+                                "เชิญ",
+                                "นั่ง",
+                                "ก่อน"
+                            ],
                             "translations": {
-                                "en": "Want to go to the beach this Sunday?",
-                                "fa": "این یکشنبه می‌خواهید به ساحل برویم؟"
+                                "en": "Hello, please have a seat",
+                                "fa": "سلام، لطفاً بنشینید"
                             }
                         },
                         {
-                            "source": "เสียใจด้วยค่ะ อาทิตย์นี้ไม่ว่าง",
-                            "wordIds": [ "เสียใจ", "ด้วย", "ค่ะ", "อาทิตย์", "นี้", "ไม่", "ว่าง" ],
+                            "source": "ขอบคุณครับ",
+                            "wordIds": [
+                                "ขอบคุณ",
+                                "ครับ"
+                            ],
                             "translations": {
-                                "en": "I'm sorry, I'm busy this week",
-                                "fa": "متاسفم، این هفته وقت ندارم"
+                                "en": "Thank you",
+                                "fa": "متشکرم"
                             }
                         },
                         {
-                            "source": "แล้วอาทิตย์หน้าล่ะครับ",
-                            "wordIds": [ "แล้ว", "อาทิตย์", "หน้า", "ล่ะ", "ครับ" ],
+                            "source": "ช่วยแนะนำตัวเองหน่อยค่ะ",
+                            "wordIds": [
+                                "ช่วย",
+                                "แนะนำ",
+                                "ตัวเอง",
+                                "หน่อย",
+                                "ค่ะ"
+                            ],
                             "translations": {
-                                "en": "How about next week?",
-                                "fa": "هفته بعد چطور؟"
+                                "en": "Please introduce yourself",
+                                "fa": "لطفاً خودتان را معرفی کنید"
                             }
                         },
                         {
-                            "source": "อาทิตย์หน้าว่างค่ะ",
-                            "wordIds": [ "อาทิตย์", "หน้า", "ว่าง", "ค่ะ" ],
+                            "source": "ผมชื่อจบการศึกษาจากมีประสบการณ์ทำงานด้านการตลาดสามปีครับ",
+                            "wordIds": [
+                                "ผม",
+                                "ชื่อ",
+                                "จบ",
+                                "การศึกษา",
+                                "จาก",
+                                "มี",
+                                "ประสบการณ์",
+                                "ทำงาน",
+                                "ด้าน",
+                                "การตลาด",
+                                "สาม",
+                                "ปี",
+                                "ครับ"
+                            ],
                             "translations": {
-                                "en": "Next week I'm free",
-                                "fa": "هفته بعد وقت دارم"
+                                "en": "My name is... I graduated from... I have 3 years experience in marketing",
+                                "fa": "اسم من... فارغ‌التحصیل از... سه سال سابقه کار در بازاریابی دارم"
                             }
                         },
                         {
-                            "source": "งั้นนัดกันใหม่นะครับ",
-                            "wordIds": [ "งั้น", "นัด", "กัน", "ใหม่", "นะ", "ครับ" ],
+                            "source": "ทำไมถึงอยากมาทำงานที่นี่คะ",
+                            "wordIds": [
+                                "ทำไม",
+                                "ถึง",
+                                "อยาก",
+                                "มา",
+                                "ทำงาน",
+                                "ที่",
+                                "นี่",
+                                "คะ"
+                            ],
                             "translations": {
-                                "en": "Let's schedule again then",
-                                "fa": "پس دوباره هماهنگ می‌کنیم"
+                                "en": "Why do you want to work here?",
+                                "fa": "چرا می‌خواهید اینجا کار کنید؟"
+                            }
+                        },
+                        {
+                            "source": "ชอบวัฒนธรรมองค์กรของที่นี่ครับและอยากพัฒนาตัวเอง",
+                            "wordIds": [
+                                "ชอบ",
+                                "วัฒนธรรม",
+                                "องค์กร",
+                                "ของ",
+                                "ที่",
+                                "นี่",
+                                "ครับ",
+                                "และ",
+                                "อยาก",
+                                "พัฒนา",
+                                "ตัวเอง"
+                            ],
+                            "translations": {
+                                "en": "I like the company culture here and want to develop myself",
+                                "fa": "فرهنگ سازمانی اینجا را دوست دارم و می‌خواهم پیشرفت کنم"
+                            }
+                        },
+                        {
+                            "source": "ดีค่ะเดี๋ยวจะติดต่อกลับไป",
+                            "wordIds": [
+                                "ดี",
+                                "ค่ะ",
+                                "เดี๋ยว",
+                                "จะ",
+                                "ติดต่อ",
+                                "กลับ",
+                                "ไป"
+                            ],
+                            "translations": {
+                                "en": "Good, we'll contact you later",
+                                "fa": "خوبه، بعداً با شما تماس می‌گیریم"
                             }
                         }
                     ]
@@ -260,62 +1015,97 @@
             ]
         },
         {
-            "sectionId": "level7-conv-3",
+            "sectionId": "level8-conv-3",
             "heading": {
-                "en": "Conversation 3: At the Party",
-                "th": "บทสนทนา 3: ในงานเลี้ยง",
-                "fa": "مکالمه ۳: در مهمانی"
+                "en": "Conversation 3: Office Small Talk",
+                "th": "บทสนทนา 3: พูดคุยในออฟฟิศ",
+                "fa": "مکالمه ۳: گفتگوی روزمره در دفتر"
             },
             "content": [
                 {
                     "type": "paragraph",
                     "sentences": [
                         {
-                            "source": "สุขสันต์วันเกิดครับ",
-                            "wordIds": [ "สุขสันต์", "วันเกิด", "ครับ" ],
+                            "source": "วันนี้ประชุมกี่โมงครับ",
+                            "wordIds": [
+                                "วันนี้",
+                                "ประชุม",
+                                "กี่",
+                                "โมง",
+                                "ครับ"
+                            ],
                             "translations": {
-                                "en": "Happy birthday",
-                                "fa": "تولدت مبارک"
+                                "en": "What time is the meeting today?",
+                                "fa": "جلسه امروز ساعت چند است؟"
                             }
                         },
                         {
-                            "source": "ขอบคุณมากค่ะ ที่มางาน",
-                            "wordIds": [ "ขอบคุณ", "มาก", "ค่ะ", "ที่", "มา", "งาน" ],
+                            "source": "บ่ายสองโมงค่ะ",
+                            "wordIds": [
+                                "บ่าย",
+                                "สอง",
+                                "โมง",
+                                "ค่ะ"
+                            ],
                             "translations": {
-                                "en": "Thank you so much for coming",
-                                "fa": "خیلی متشکرم که آمدید"
+                                "en": "At 2 p.m.",
+                                "fa": "ساعت ۲ بعد از ظهر"
                             }
                         },
                         {
-                            "source": "นี่คือของขวัญเล็กน้อยครับ",
-                            "wordIds": [ "นี่", "คือ", "ของขวัญ", "เล็กน้อย", "ครับ" ],
+                            "source": "รายงานพร้อมยังคะ",
+                            "wordIds": [
+                                "รายงาน",
+                                "พร้อม",
+                                "ยัง",
+                                "คะ"
+                            ],
                             "translations": {
-                                "en": "This is a small gift",
-                                "fa": "این یک هدیه کوچک است"
+                                "en": "Is the report ready?",
+                                "fa": "گزارش آماده است؟"
                             }
                         },
                         {
-                            "source": "โอ้ ขอบคุณมาก ไม่ต้องก็ได้นะคะ",
-                            "wordIds": [ "โอ้", "ขอบคุณ", "มาก", "ไม่", "ต้อง", "ก็", "ได้", "นะ", "คะ" ],
+                            "source": "เกือบเสร็จแล้วครับอีกนิดเดียว",
+                            "wordIds": [
+                                "เกือบ",
+                                "เสร็จ",
+                                "แล้ว",
+                                "ครับ",
+                                "อีก",
+                                "นิดเดียว"
+                            ],
                             "translations": {
-                                "en": "Oh, thank you so much, you didn't have to",
-                                "fa": "اوه، خیلی متشکرم، لازم نبود"
+                                "en": "Almost finished, just a little more",
+                                "fa": "نزدیک است تمام شود، کمی دیگر"
                             }
                         },
                         {
-                            "source": "งานสนุกดีนะครับ",
-                            "wordIds": [ "งาน", "สนุก", "ดี", "นะ", "ครับ" ],
+                            "source": "วันนี้เลิกงานตรงเวลาไหม",
+                            "wordIds": [
+                                "วันนี้",
+                                "เลิกงาน",
+                                "ตรงเวลา",
+                                "ไหม"
+                            ],
                             "translations": {
-                                "en": "The party is fun",
-                                "fa": "مهمانی خوب و مفرحی است"
+                                "en": "Are we finishing on time today?",
+                                "fa": "امروز سر موقع تعطیل می‌کنیم؟"
                             }
                         },
                         {
-                            "source": "ใช่ค่ะ ขอบคุณที่มาแบ่งปันความสุข",
-                            "wordIds": [ "ใช่", "ค่ะ", "ขอบคุณ", "ที่", "มา", "แบ่งปัน", "ความสุข" ],
+                            "source": "ไม่แน่ใจอาจจะต้องทำโอที",
+                            "wordIds": [
+                                "ไม่",
+                                "แน่ใจ",
+                                "อาจจะ",
+                                "ต้อง",
+                                "ทำ",
+                                "โอที"
+                            ],
                             "translations": {
-                                "en": "Yes, thank you for sharing the happiness",
-                                "fa": "بله، ممنون که در شادی ما شریک شدید"
+                                "en": "Not sure, might have to work overtime",
+                                "fa": "مطمئن نیستم، ممکن است اضافه کاری داشته باشیم"
                             }
                         }
                     ]
@@ -323,62 +1113,88 @@
             ]
         },
         {
-            "sectionId": "level7-conv-4",
+            "sectionId": "level8-conv-4",
             "heading": {
-                "en": "Conversation 4: Thai Festival",
-                "th": "บทสนทนา 4: เทศกาลไทย",
-                "fa": "مکالمه ۴: جشن تایلندی"
+                "en": "Conversation 4: Asking for Leave",
+                "th": "บทสนทนา 4: ขอลา",
+                "fa": "مکالمه ۴: درخواست مرخصی"
             },
             "content": [
                 {
                     "type": "paragraph",
                     "sentences": [
                         {
-                            "source": "คุณเคยไปเที่ยวงานลอยกระทงไหมครับ",
-                            "wordIds": [ "คุณ", "เคย", "ไป", "เที่ยว", "งาน", "ลอยกระทง", "ไหม", "ครับ" ],
+                            "source": "ขออนุญาตลาพักร้อนสัปดาห์หน้าครับ",
+                            "wordIds": [
+                                "ขอ",
+                                "อนุญาต",
+                                "ลา",
+                                "พักร้อน",
+                                "สัปดาห์",
+                                "หน้า",
+                                "ครับ"
+                            ],
                             "translations": {
-                                "en": "Have you ever been to Loy Krathong festival?",
-                                "fa": "تا حالا به جشن لوی کراتونگ رفته‌اید؟"
+                                "en": "I'd like to request vacation leave next week",
+                                "fa": "می‌خواهم هفته آینده مرخصی بگیرم"
                             }
                         },
                         {
-                            "source": "เคยไปค่ะ สวยมาก",
-                            "wordIds": [ "เคย", "ไป", "ค่ะ", "สวย", "มาก" ],
+                            "source": "กี่วันคะ",
+                            "wordIds": [
+                                "กี่",
+                                "วัน",
+                                "คะ"
+                            ],
                             "translations": {
-                                "en": "Yes, I have. It's very beautiful",
-                                "fa": "بله رفته‌ام. خیلی قشنگ است"
+                                "en": "How many days?",
+                                "fa": "چند روز؟"
                             }
                         },
                         {
-                            "source": "ปีนี้จะไปอีกไหมครับ",
-                            "wordIds": [ "ปีนี้", "จะ", "ไป", "อีก", "ไหม", "ครับ" ],
+                            "source": "สามวันครับจันทร์ถึงพุธ",
+                            "wordIds": [
+                                "สาม",
+                                "วัน",
+                                "ครับ",
+                                "จันทร์",
+                                "ถึง",
+                                "พุธ"
+                            ],
                             "translations": {
-                                "en": "Will you go again this year?",
-                                "fa": "امسال دوباره می‌روید؟"
+                                "en": "Three days, Monday to Wednesday",
+                                "fa": "سه روز، دوشنبه تا چهارشنبه"
                             }
                         },
                         {
-                            "source": "ไปค่ะ ชวนเพื่อนๆไปด้วย",
-                            "wordIds": [ "ไป", "ค่ะ", "ชวน", "เพื่อน", "ๆ", "ไป", "ด้วย" ],
+                            "source": "ได้ค่ะแต่ฝากงานกับเพื่อนก่อนนะ",
+                            "wordIds": [
+                                "ได้",
+                                "ค่ะ",
+                                "แต่",
+                                "ฝาก",
+                                "งาน",
+                                "กับ",
+                                "เพื่อน",
+                                "ก่อน",
+                                "นะ"
+                            ],
                             "translations": {
-                                "en": "Yes, inviting friends to go together",
-                                "fa": "بله، دوستان را هم دعوت می‌کنم با هم برویم"
+                                "en": "Okay, but leave your work with a colleague first",
+                                "fa": "باشه، ولی کارتان را به همکارتان بسپارید"
                             }
                         },
                         {
-                            "source": "ขอไปด้วยคนได้ไหมครับ",
-                            "wordIds": [ "ขอ", "ไป", "ด้วย", "คน", "ได้", "ไหม", "ครับ" ],
+                            "source": "ครับจัดการเรียบร้อยแล้ว",
+                            "wordIds": [
+                                "ครับ",
+                                "จัดการ",
+                                "เรียบร้อย",
+                                "แล้ว"
+                            ],
                             "translations": {
-                                "en": "Can I join too?",
-                                "fa": "می‌توانم من هم بیایم؟"
-                            }
-                        },
-                        {
-                            "source": "ได้สิคะ ดีใจจัง",
-                            "wordIds": [ "ได้", "สิ", "คะ", "ดีใจ", "จัง" ],
-                            "translations": {
-                                "en": "Of course! I'm so glad",
-                                "fa": "البته! چه خوشحالم"
+                                "en": "Yes, already arranged",
+                                "fa": "باشه، هماهنگ شده"
                             }
                         }
                     ]

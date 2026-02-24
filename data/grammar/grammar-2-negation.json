@@ -12,23 +12,122 @@
         "newWords": 10,
         "reviewWords": 15,
         "sentenceCount": 20,
-        "estimatedTime": 25
+        "estimatedTime": 25,
+        "authors": [ ],
+        "reviewers": [ ],
+        "prerequisites": [ ],
+        "tags": [ ],
+        "updated": "2026-02-24T14:49:20.056Z"
     },
     "vocabulary": {
-        "ไม่": { "translations": { "en": "no/not", "fa": "نه" } },
-        "กิน": { "translations": { "en": "eat", "fa": "خوردن" } },
-        "ดื่ม": { "translations": { "en": "drink", "fa": "نوشیدن" } },
-        "ซื้อ": { "translations": { "en": "buy", "fa": "خریدن" } },
-        "ชอบ": { "translations": { "en": "like", "fa": "دوست داشتن" } },
-        "ไป": { "translations": { "en": "go", "fa": "رفتن" } },
-        "มา": { "translations": { "en": "come", "fa": "آمدن" } },
-        "อยู่": { "translations": { "en": "stay/live", "fa": "ماندن" } },
-        "ข้าว": { "translations": { "en": "rice", "fa": "برنج" } },
-        "น้ำ": { "translations": { "en": "water", "fa": "آب" } },
-        "กาแฟ": { "translations": { "en": "coffee", "fa": "قهوه" } },
-        "ชา": { "translations": { "en": "tea", "fa": "چای" } },
-        "บ้าน": { "translations": { "en": "home", "fa": "خانه" } },
-        "ตลาด": { "translations": { "en": "market", "fa": "بازار" } }
+        "ไม่": {
+            "translations": {
+                "en": "no/not",
+                "fa": "نه"
+            }
+        },
+        "กิน": {
+            "translations": {
+                "en": "eat",
+                "fa": "خوردن"
+            }
+        },
+        "ดื่ม": {
+            "translations": {
+                "en": "drink",
+                "fa": "نوشیدن"
+            }
+        },
+        "ซื้อ": {
+            "translations": {
+                "en": "buy",
+                "fa": "خریدن"
+            }
+        },
+        "ชอบ": {
+            "translations": {
+                "en": "like",
+                "fa": "دوست داشتن"
+            }
+        },
+        "ไป": {
+            "translations": {
+                "en": "go",
+                "fa": "رفتن"
+            }
+        },
+        "มา": {
+            "translations": {
+                "en": "come",
+                "fa": "آمدن"
+            }
+        },
+        "อยู่": {
+            "translations": {
+                "en": "stay/live",
+                "fa": "ماندن"
+            }
+        },
+        "ข้าว": {
+            "translations": {
+                "en": "rice",
+                "fa": "برنج"
+            }
+        },
+        "น้ำ": {
+            "translations": {
+                "en": "water",
+                "fa": "آب"
+            }
+        },
+        "กาแฟ": {
+            "translations": {
+                "en": "coffee",
+                "fa": "قهوه"
+            }
+        },
+        "ชา": {
+            "translations": {
+                "en": "tea",
+                "fa": "چای"
+            }
+        },
+        "บ้าน": {
+            "translations": {
+                "en": "home",
+                "fa": "خانه"
+            }
+        },
+        "ตลาด": {
+            "translations": {
+                "en": "market",
+                "fa": "بازار"
+            }
+        },
+        "ผม": {
+            "translations": {
+                "en": "Hair",
+                "fa": "من:"
+            }
+        },
+        "คุณ": {
+            "translations": {
+                "en": "You",
+                "fa": "شما:"
+            }
+        },
+        "เขา": {
+            "translations": {
+                "en": "He, She",
+                "fa": "او"
+            }
+        },
+        "ฉัน": {
+            "translations": {
+                "en": "Me",
+                "fa": "من"
+            }
+        }
     },
     "sections": [
         {
@@ -54,10 +153,22 @@
                             "fa": "برای ساختن جمله منفی در تایلندی، 'ไม่' را قبل از فعل قرار دهید. ساختار می‌شود: فاعل + ไม่ + فعل + مفعول"
                         },
                         "examples": [
-                            { "source": "ผมกินข้าว", "translation": "I eat rice" },
-                            { "source": "ผมไม่กินข้าว", "translation": "I don't eat rice" },
-                            { "source": "คุณชอบกาแฟ", "translation": "You like coffee" },
-                            { "source": "คุณไม่ชอบกาแฟ", "translation": "You don't like coffee" }
+                            {
+                                "source": "ผมกินข้าว",
+                                "translation": "I eat rice"
+                            },
+                            {
+                                "source": "ผมไม่กินข้าว",
+                                "translation": "I don't eat rice"
+                            },
+                            {
+                                "source": "คุณชอบกาแฟ",
+                                "translation": "You like coffee"
+                            },
+                            {
+                                "source": "คุณไม่ชอบกาแฟ",
+                                "translation": "You don't like coffee"
+                            }
                         ]
                     },
                     "sentences": [ ]
@@ -72,7 +183,11 @@
                     "sentences": [
                         {
                             "source": "ผมกินข้าว",
-                            "wordIds": [ "ผม", "กิน", "ข้าว" ],
+                            "wordIds": [
+                                "ผม",
+                                "กิน",
+                                "ข้าว"
+                            ],
                             "translations": {
                                 "en": "I eat rice",
                                 "fa": "من برنج می‌خورم"
@@ -80,7 +195,12 @@
                         },
                         {
                             "source": "ผมไม่กินข้าว",
-                            "wordIds": [ "ผม", "ไม่", "กิน", "ข้าว" ],
+                            "wordIds": [
+                                "ผม",
+                                "ไม่",
+                                "กิน",
+                                "ข้าว"
+                            ],
                             "translations": {
                                 "en": "I don't eat rice",
                                 "fa": "من برنج نمی‌خورم"
@@ -88,7 +208,11 @@
                         },
                         {
                             "source": "คุณดื่มกาแฟ",
-                            "wordIds": [ "คุณ", "ดื่ม", "กาแฟ" ],
+                            "wordIds": [
+                                "คุณ",
+                                "ดื่ม",
+                                "กาแฟ"
+                            ],
                             "translations": {
                                 "en": "You drink coffee",
                                 "fa": "شما قهوه می‌نوشید"
@@ -96,7 +220,12 @@
                         },
                         {
                             "source": "คุณไม่ดื่มกาแฟ",
-                            "wordIds": [ "คุณ", "ไม่", "ดื่ม", "กาแฟ" ],
+                            "wordIds": [
+                                "คุณ",
+                                "ไม่",
+                                "ดื่ม",
+                                "กาแฟ"
+                            ],
                             "translations": {
                                 "en": "You don't drink coffee",
                                 "fa": "شما قهوه نمی‌نوشید"
@@ -104,7 +233,11 @@
                         },
                         {
                             "source": "เขาชอบชา",
-                            "wordIds": [ "เขา", "ชอบ", "ชา" ],
+                            "wordIds": [
+                                "เขา",
+                                "ชอบ",
+                                "ชา"
+                            ],
                             "translations": {
                                 "en": "He likes tea",
                                 "fa": "او چای دوست دارد"
@@ -112,7 +245,12 @@
                         },
                         {
                             "source": "เขาไม่ชอบชา",
-                            "wordIds": [ "เขา", "ไม่", "ชอบ", "ชา" ],
+                            "wordIds": [
+                                "เขา",
+                                "ไม่",
+                                "ชอบ",
+                                "ชา"
+                            ],
                             "translations": {
                                 "en": "He doesn't like tea",
                                 "fa": "او چای دوست ندارد"
@@ -135,7 +273,11 @@
                     "sentences": [
                         {
                             "source": "ฉันไปตลาด",
-                            "wordIds": [ "ฉัน", "ไป", "ตลาด" ],
+                            "wordIds": [
+                                "ฉัน",
+                                "ไป",
+                                "ตลาด"
+                            ],
                             "translations": {
                                 "en": "I go to the market",
                                 "fa": "من به بازار می‌روم"
@@ -143,7 +285,12 @@
                         },
                         {
                             "source": "ฉันไม่ไปตลาด",
-                            "wordIds": [ "ฉัน", "ไม่", "ไป", "ตลาด" ],
+                            "wordIds": [
+                                "ฉัน",
+                                "ไม่",
+                                "ไป",
+                                "ตลาด"
+                            ],
                             "translations": {
                                 "en": "I don't go to the market",
                                 "fa": "من به بازار نمی‌روم"
@@ -151,7 +298,11 @@
                         },
                         {
                             "source": "คุณอยู่บ้าน",
-                            "wordIds": [ "คุณ", "อยู่", "บ้าน" ],
+                            "wordIds": [
+                                "คุณ",
+                                "อยู่",
+                                "บ้าน"
+                            ],
                             "translations": {
                                 "en": "You stay home",
                                 "fa": "شما در خانه می‌مانید"
@@ -159,7 +310,12 @@
                         },
                         {
                             "source": "คุณไม่อยู่บ้าน",
-                            "wordIds": [ "คุณ", "ไม่", "อยู่", "บ้าน" ],
+                            "wordIds": [
+                                "คุณ",
+                                "ไม่",
+                                "อยู่",
+                                "บ้าน"
+                            ],
                             "translations": {
                                 "en": "You don't stay home",
                                 "fa": "شما در خانه نمی‌مانید"
