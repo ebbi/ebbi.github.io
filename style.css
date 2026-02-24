@@ -89,7 +89,7 @@ body.font-fa-vazir {
 /* Language-specific text direction */
 :lang(fa) {
     direction: rtl;
-    text-align: right;
+    /*    text-align: right; better alignment with other language translations */
 }
 
 :lang(th),
@@ -641,7 +641,7 @@ h6 {
 .stack-item.source {
     font-size: 1.2rem;
     color: var(--thai-color);
-/*    font-weight: 600;  thinner lines on Thai text */
+    /*    font-weight: 600;  thinner lines on Thai text */
     line-height: 1.8;
     word-break: break-word;
     font-family: inherit;
@@ -684,7 +684,7 @@ h6 {
 .sent-word-source,
 .word-source {
     color: var(--thai-color);
-/*    font-weight: 600; thin lines on Thai text */
+    /*    font-weight: 600; thin lines on Thai text */
     font-family: inherit;
     /* Inherit from body font */
 }
@@ -721,7 +721,7 @@ h6 {
     display: inline-block;
     background-color: rgba(37, 99, 235, 0.1);
     border-radius: 4px;
-/*    padding: 0 1px;
+    /*    padding: 0 1px;
     margin: 0 1px; no spaces in Thai sentences */
     cursor: pointer;
     color: var(--thai-color);
@@ -730,7 +730,9 @@ h6 {
 }
 
 .word-span.matched-word:hover {
-    background-color: rgba(37, 99, 235, 0.2);
+    /*   background-color: rgba(37, 99, 235, 0.2); */
+    background-color: var(--hover-bg);
+    border-bottom: var(--primary-light) 1px solid;
 }
 
 .unmatched-text {
@@ -2451,6 +2453,7 @@ td {
 .help-steps li,
 .help-list li {
     display: flex;
+    flex-direction: column;
     align-items: flex-start;
     gap: 12px;
     padding: 12px;
