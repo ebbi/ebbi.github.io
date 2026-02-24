@@ -13,68 +13,187 @@
         "reviewWords": 0,
         "totalWords": 20,
         "sentences": 12,
-        "estimatedTime": 15
+        "estimatedTime": 15,
+        "authors": [ ],
+        "reviewers": [ ],
+        "prerequisites": [ ],
+        "tags": [ ],
+        "updated": "2026-02-24T04:24:51.526Z"
     },
     "vocabulary": {
         "สวัสดี": {
-            "translations": { "en": "hello", "fa": "سلام" }
+            "translations": {
+                "en": "hello",
+                "fa": "سلام"
+            }
         },
         "ครับ": {
-            "translations": { "en": "polite particle (male)", "fa": "ذره مؤدب (مرد)" }
+            "translations": {
+                "en": "yes (male)",
+                "fa": "بله (مرد)"
+            }
         },
         "ค่ะ": {
-            "translations": { "en": "polite particle (female)", "fa": "ذره مؤدب (زن)" }
+            "translations": {
+                "en": "yes (female)",
+                "fa": "بله (زن)"
+            }
         },
         "ผม": {
-            "translations": { "en": "I (male)", "fa": "من (مرد)" }
+            "translations": {
+                "en": "I (male)",
+                "fa": "من (مرد)"
+            }
         },
         "ดิฉัน": {
-            "translations": { "en": "I (female)", "fa": "من (زن)" }
+            "translations": {
+                "en": "I (female)",
+                "fa": "من (زن)"
+            }
         },
         "คุณ": {
-            "translations": { "en": "you", "fa": "شما" }
+            "translations": {
+                "en": "you",
+                "fa": "شما"
+            }
         },
         "ชื่อ": {
-            "translations": { "en": "name", "fa": "اسم" }
+            "translations": {
+                "en": "name",
+                "fa": "اسم"
+            }
         },
         "อะไร": {
-            "translations": { "en": "what", "fa": "چه" }
+            "translations": {
+                "en": "what",
+                "fa": "چه"
+            }
         },
         "ยินดีที่ได้รู้จัก": {
-            "translations": { "en": "nice to meet you", "fa": "از آشنایی خوشبختم" }
+            "translations": {
+                "en": "nice to meet you",
+                "fa": "از آشنایی خوشبختم"
+            }
         },
         "ประเทศ": {
-            "translations": { "en": "country", "fa": "کشور" }
+            "translations": {
+                "en": "country",
+                "fa": "کشور"
+            }
         },
         "ไทย": {
-            "translations": { "en": "Thailand", "fa": "تایلند" }
+            "translations": {
+                "en": "Thailand",
+                "fa": "تایلند"
+            }
         },
         "อเมริกา": {
-            "translations": { "en": "America", "fa": "آمریکا" }
+            "translations": {
+                "en": "America",
+                "fa": "آمریکا"
+            }
         },
         "อังกฤษ": {
-            "translations": { "en": "England", "fa": "انگلستان" }
+            "translations": {
+                "en": "England",
+                "fa": "انگلستان"
+            }
         },
         "มาจาก": {
-            "translations": { "en": "come from", "fa": "آمدن از" }
+            "translations": {
+                "en": "come from",
+                "fa": "آمدن از"
+            }
         },
         "อยู่": {
-            "translations": { "en": "live/stay", "fa": "زندگی کردن" }
+            "translations": {
+                "en": "live/stay",
+                "fa": "زندگی کردن"
+            }
         },
         "เมืองไทย": {
-            "translations": { "en": "Thailand", "fa": "تایلند" }
+            "translations": {
+                "en": "Thailand",
+                "fa": "تایلند"
+            }
         },
         "ภาษา": {
-            "translations": { "en": "language", "fa": "زبان" }
+            "translations": {
+                "en": "language",
+                "fa": "زبان"
+            }
         },
         "พูด": {
-            "translations": { "en": "speak", "fa": "صحبت کردن" }
+            "translations": {
+                "en": "speak",
+                "fa": "صحبت کردن"
+            }
         },
         "ได้": {
-            "translations": { "en": "can", "fa": "توانستن" }
+            "translations": {
+                "en": "can",
+                "fa": "توانستن"
+            }
         },
         "นิดหน่อย": {
-            "translations": { "en": "a little bit", "fa": "کمی" }
+            "translations": {
+                "en": "a little bit",
+                "fa": "کمی"
+            }
+        },
+        "สมชาย": {
+            "translations": {
+                "en": "Somchai",
+                "fa": "سومچای"
+            }
+        },
+        "ซาร่าห์": {
+            "translations": {
+                "en": "Sarah",
+                "fa": "سارا"
+            }
+        },
+        "ฉัน": {
+            "translations": {
+                "en": "Me",
+                "fa": "من"
+            }
+        },
+        "นาน": {
+            "translations": {
+                "en": "For",
+                "fa": "طولانی"
+            }
+        },
+        "หรือยัง": {
+            "translations": {
+                "en": "or not yet.",
+                "fa": "یا هنوز نه؟"
+            }
+        },
+        "มา": {
+            "translations": {
+                "en": "Come.",
+                "fa": "بیا"
+            }
+        },
+        "สอง": {
+            "translations": {
+                "en": "TWO.",
+                "fa": "دو"
+            }
+        },
+        "เดือน": {
+            "translations": {
+                "en": "Month",
+                "fa": "دوشنبه"
+            }
+        },
+        "ไหม": {
+            "translations": {
+                "en": "Silk",
+                "fa": "ابریشم"
+            }
         }
     },
     "activity": {
@@ -97,7 +216,14 @@
                         "th": "การทักทายพื้นฐาน",
                         "fa": "سلام‌های پایه"
                     },
-                    "wordIds": [ "สวัสดี", "ครับ", "ค่ะ", "คุณ", "ผม", "ดิฉัน" ]
+                    "wordIds": [
+                        "สวัสดี",
+                        "ครับ",
+                        "ค่ะ",
+                        "คุณ",
+                        "ผม",
+                        "ดิฉัน"
+                    ]
                 }
             ]
         },
@@ -114,7 +240,10 @@
                     "sentences": [
                         {
                             "source": "สวัสดีครับ",
-                            "wordIds": [ "สวัสดี", "ครับ" ],
+                            "wordIds": [
+                                "สวัสดี",
+                                "ครับ"
+                            ],
                             "translations": {
                                 "en": "Hello",
                                 "fa": "سلام"
@@ -122,15 +251,27 @@
                         },
                         {
                             "source": "สวัสดีค่ะ",
-                            "wordIds": [ "สวัสดี", "ค่ะ" ],
+                            "wordIds": [
+                                "สวัสดี",
+                                "ค่ะ"
+                            ],
                             "translations": {
                                 "en": "Hello",
                                 "fa": "سلام"
                             }
                         },
                         {
-                            "source": "ผมชื่อสมชายครับ คุณชื่ออะไรครับ",
-                            "wordIds": [ "ผม", "ชื่อ", "สมชาย", "ครับ", "คุณ", "ชื่อ", "อะไร", "ครับ" ],
+                            "source": "ผมชื่อสมชายครับคุณชื่ออะไรครับ",
+                            "wordIds": [
+                                "ผม",
+                                "ชื่อ",
+                                "สมชาย",
+                                "ครับ",
+                                "คุณ",
+                                "ชื่อ",
+                                "อะไร",
+                                "ครับ"
+                            ],
                             "translations": {
                                 "en": "My name is Somchai. What is your name?",
                                 "fa": "اسم من سامچای است. اسم شما چیست؟"
@@ -138,7 +279,12 @@
                         },
                         {
                             "source": "ดิฉันชื่อซาร่าห์ค่ะ",
-                            "wordIds": [ "ดิฉัน", "ชื่อ", "ซาร่าห์", "ค่ะ" ],
+                            "wordIds": [
+                                "ดิฉัน",
+                                "ชื่อ",
+                                "ซาร่าห์",
+                                "ค่ะ"
+                            ],
                             "translations": {
                                 "en": "My name is Sarah",
                                 "fa": "اسم من سارا است"
@@ -146,7 +292,10 @@
                         },
                         {
                             "source": "ยินดีที่ได้รู้จักครับ",
-                            "wordIds": [ "ยินดีที่ได้รู้จัก", "ครับ" ],
+                            "wordIds": [
+                                "ยินดีที่ได้รู้จัก",
+                                "ครับ"
+                            ],
                             "translations": {
                                 "en": "Nice to meet you",
                                 "fa": "از آشنایی خوشبختم"
@@ -154,7 +303,10 @@
                         },
                         {
                             "source": "ยินดีที่ได้รู้จักค่ะ",
-                            "wordIds": [ "ยินดีที่ได้รู้จัก", "ค่ะ" ],
+                            "wordIds": [
+                                "ยินดีที่ได้รู้จัก",
+                                "ค่ะ"
+                            ],
                             "translations": {
                                 "en": "Nice to meet you too",
                                 "fa": "من هم خوشبختم"
@@ -174,7 +326,16 @@
             "content": [
                 {
                     "type": "words",
-                    "wordIds": [ "ประเทศ", "ไทย", "อเมริกา", "อังกฤษ", "ภาษา", "พูด", "ได้", "นิดหน่อย" ]
+                    "wordIds": [
+                        "ประเทศ",
+                        "ไทย",
+                        "อเมริกา",
+                        "อังกฤษ",
+                        "ภาษา",
+                        "พูด",
+                        "ได้",
+                        "นิดหน่อย"
+                    ]
                 }
             ]
         },
@@ -191,7 +352,13 @@
                     "sentences": [
                         {
                             "source": "คุณมาจากประเทศอะไรครับ",
-                            "wordIds": [ "คุณ", "มาจาก", "ประเทศ", "อะไร", "ครับ" ],
+                            "wordIds": [
+                                "คุณ",
+                                "มาจาก",
+                                "ประเทศ",
+                                "อะไร",
+                                "ครับ"
+                            ],
                             "translations": {
                                 "en": "What country are you from?",
                                 "fa": "اهل کدام کشور هستید؟"
@@ -199,7 +366,12 @@
                         },
                         {
                             "source": "ฉันมาจากอเมริกาค่ะ",
-                            "wordIds": [ "ฉัน", "มาจาก", "อเมริกา", "ค่ะ" ],
+                            "wordIds": [
+                                "ฉัน",
+                                "มาจาก",
+                                "อเมริกา",
+                                "ค่ะ"
+                            ],
                             "translations": {
                                 "en": "I'm from America",
                                 "fa": "اهل آمریکا هستم"
@@ -207,7 +379,14 @@
                         },
                         {
                             "source": "คุณอยู่เมืองไทยนานหรือยังครับ",
-                            "wordIds": [ "คุณ", "อยู่", "เมืองไทย", "นาน", "หรือ", "ยัง", "ครับ" ],
+                            "wordIds": [
+                                "คุณ",
+                                "อยู่",
+                                "เมืองไทย",
+                                "นาน",
+                                "หรือยัง",
+                                "ครับ"
+                            ],
                             "translations": {
                                 "en": "Have you been in Thailand long?",
                                 "fa": "مدت طولانی است در تایلند هستید؟"
@@ -215,7 +394,13 @@
                         },
                         {
                             "source": "อยู่มาสองเดือนค่ะ",
-                            "wordIds": [ "อยู่", "มา", "สอง", "เดือน", "ค่ะ" ],
+                            "wordIds": [
+                                "อยู่",
+                                "มา",
+                                "สอง",
+                                "เดือน",
+                                "ค่ะ"
+                            ],
                             "translations": {
                                 "en": "I've been here for two months",
                                 "fa": "دو ماه است اینجا هستم"
@@ -223,7 +408,14 @@
                         },
                         {
                             "source": "พูดภาษาไทยได้ไหมครับ",
-                            "wordIds": [ "พูด", "ภาษา", "ไทย", "ได้", "ไหม", "ครับ" ],
+                            "wordIds": [
+                                "พูด",
+                                "ภาษา",
+                                "ไทย",
+                                "ได้",
+                                "ไหม",
+                                "ครับ"
+                            ],
                             "translations": {
                                 "en": "Can you speak Thai?",
                                 "fa": "می‌توانید تایلندی صحبت کنید؟"
@@ -231,7 +423,11 @@
                         },
                         {
                             "source": "ได้นิดหน่อยค่ะ",
-                            "wordIds": [ "ได้", "นิดหน่อย", "ค่ะ" ],
+                            "wordIds": [
+                                "ได้",
+                                "นิดหน่อย",
+                                "ค่ะ"
+                            ],
                             "translations": {
                                 "en": "A little bit",
                                 "fa": "کمی می‌توانم"

@@ -13,78 +13,299 @@
         "reviewWords": 10,
         "totalWords": 35,
         "sentences": 15,
-        "prerequisites": [ "level-1-meeting-people" ],
-        "estimatedTime": 20
+        "prerequisites": [
+            "level-1-meeting-people"
+        ],
+        "estimatedTime": 20,
+        "authors": [ ],
+        "reviewers": [ ],
+        "tags": [ ],
+        "updated": "2026-02-24T04:43:37.177Z"
     },
     "vocabulary": {
         "กิน": {
-            "translations": { "en": "eat", "fa": "خوردن" }
+            "translations": {
+                "en": "eat",
+                "fa": "خوردن"
+            }
         },
         "ดื่ม": {
-            "translations": { "en": "drink", "fa": "نوشیدن" }
+            "translations": {
+                "en": "drink",
+                "fa": "نوشیدن"
+            }
         },
         "ชอบ": {
-            "translations": { "en": "like", "fa": "دوست داشتن" }
+            "translations": {
+                "en": "like",
+                "fa": "دوست داشتن"
+            }
         },
         "ไม่": {
-            "translations": { "en": "no/not", "fa": "نه" }
+            "translations": {
+                "en": "no/not",
+                "fa": "نه"
+            }
         },
         "ไหม": {
-            "translations": { "en": "question particle", "fa": "ذره سوال" }
+            "translations": {
+                "en": "is it?",
+                "fa": "آیا اینطور است؟"
+            }
         },
         "ข้าว": {
-            "translations": { "en": "rice", "fa": "برنج" }
+            "translations": {
+                "en": "rice",
+                "fa": "برنج"
+            }
         },
         "น้ำ": {
-            "translations": { "en": "water", "fa": "آب" }
+            "translations": {
+                "en": "water",
+                "fa": "آب"
+            }
         },
         "กาแฟ": {
-            "translations": { "en": "coffee", "fa": "قهوه" }
+            "translations": {
+                "en": "coffee",
+                "fa": "قهوه"
+            }
         },
         "ชา": {
-            "translations": { "en": "tea", "fa": "چای" }
+            "translations": {
+                "en": "tea",
+                "fa": "چای"
+            }
         },
         "ผลไม้": {
-            "translations": { "en": "fruit", "fa": "میوه" }
+            "translations": {
+                "en": "fruit",
+                "fa": "میوه"
+            }
         },
         "กับ": {
-            "translations": { "en": "with", "fa": "با" }
+            "translations": {
+                "en": "with",
+                "fa": "با"
+            }
         },
         "และ": {
-            "translations": { "en": "and", "fa": "و" }
+            "translations": {
+                "en": "and",
+                "fa": "و"
+            }
         },
         "มื้อเช้า": {
-            "translations": { "en": "breakfast", "fa": "صبحانه" }
+            "translations": {
+                "en": "breakfast",
+                "fa": "صبحانه"
+            }
         },
         "มื้อกลางวัน": {
-            "translations": { "en": "lunch", "fa": "ناهار" }
+            "translations": {
+                "en": "lunch",
+                "fa": "ناهار"
+            }
         },
         "มื้อเย็น": {
-            "translations": { "en": "dinner", "fa": "شام" }
+            "translations": {
+                "en": "dinner",
+                "fa": "شام"
+            }
         },
         "อร่อย": {
-            "translations": { "en": "delicious", "fa": "خوشمزه" }
+            "translations": {
+                "en": "delicious",
+                "fa": "خوشمزه"
+            }
         },
         "มาก": {
-            "translations": { "en": "very", "fa": "بسیار" }
+            "translations": {
+                "en": "very",
+                "fa": "بسیار"
+            }
         },
         "หน่อย": {
-            "translations": { "en": "a little/please", "fa": "کمی/لطفاً" }
+            "translations": {
+                "en": "a little/please",
+                "fa": "کمی/لطفاً"
+            }
         },
         "ขอ": {
-            "translations": { "en": "request", "fa": "درخواست" }
+            "translations": {
+                "en": "request",
+                "fa": "درخواست"
+            }
         },
         "Review from Level 1": {
-            "สวัสดี": { "translations": { "en": "hello", "fa": "سلام" } },
-            "ครับ": { "translations": { "en": "polite particle (male)", "fa": "ذره مؤدب (مرد)" } },
-            "ค่ะ": { "translations": { "en": "polite particle (female)", "fa": "ذره مؤدب (زن)" } },
-            "ผม": { "translations": { "en": "I (male)", "fa": "من (مرد)" } },
-            "ดิฉัน": { "translations": { "en": "I (female)", "fa": "من (زن)" } },
-            "คุณ": { "translations": { "en": "you", "fa": "شما" } },
-            "ชื่อ": { "translations": { "en": "name", "fa": "اسم" } },
-            "อะไร": { "translations": { "en": "what", "fa": "چه" } },
-            "ได้": { "translations": { "en": "can", "fa": "توانستن" } },
-            "นิดหน่อย": { "translations": { "en": "a little", "fa": "کمی" } }
+            "สวัสดี": {
+                "translations": {
+                    "en": "hello",
+                    "fa": "سلام"
+                }
+            },
+            "ครับ": {
+                "translations": {
+                    "en": "polite particle (male)",
+                    "fa": "ذره مؤدب (مرد)"
+                }
+            },
+            "ค่ะ": {
+                "translations": {
+                    "en": "polite particle (female)",
+                    "fa": "ذره مؤدب (زن)"
+                }
+            },
+            "ผม": {
+                "translations": {
+                    "en": "I (male)",
+                    "fa": "من (مرد)"
+                }
+            },
+            "ดิฉัน": {
+                "translations": {
+                    "en": "I (female)",
+                    "fa": "من (زن)"
+                }
+            },
+            "คุณ": {
+                "translations": {
+                    "en": "you",
+                    "fa": "شما"
+                }
+            },
+            "ชื่อ": {
+                "translations": {
+                    "en": "name",
+                    "fa": "اسم"
+                }
+            },
+            "อะไร": {
+                "translations": {
+                    "en": "what",
+                    "fa": "چه"
+                }
+            },
+            "ได้": {
+                "translations": {
+                    "en": "can",
+                    "fa": "توانستن"
+                }
+            },
+            "นิดหน่อย": {
+                "translations": {
+                    "en": "a little",
+                    "fa": "کمی"
+                }
+            }
+        },
+        "คุณ": {
+            "translations": {
+                "en": "You",
+                "fa": "شما:"
+            }
+        },
+        "อะไร": {
+            "translations": {
+                "en": "WHAT",
+                "fa": "چه:"
+            }
+        },
+        "ครับ": {
+            "translations": {
+                "en": "OK",
+                "fa": "بله"
+            }
+        },
+        "ฉัน": {
+            "translations": {
+                "en": "Me",
+                "fa": "من"
+            }
+        },
+        "ค่ะ": {
+            "translations": {
+                "en": "Thank you.",
+                "fa": "بله"
+            }
+        },
+        "แล้ว": {
+            "translations": {
+                "en": "So ",
+                "fa": "قبلاً"
+            }
+        },
+        "สวัสดี": {
+            "translations": {
+                "en": "Hi.",
+                "fa": "سلام"
+            }
+        },
+        "ข้าวผัด": {
+            "translations": {
+                "en": "Fried rice",
+                "fa": "برنج سرخ شده"
+            }
+        },
+        "ได้": {
+            "translations": {
+                "en": "Yes",
+                "fa": "می‌تواند"
+            }
+        },
+        "คะ": {
+            "translations": {
+                "en": "Ka",
+                "fa": "بله"
+            }
+        },
+        "ไก่": {
+            "translations": {
+                "en": "Chicken",
+                "fa": "مرغ"
+            }
+        },
+        "น้ำเปล่า": {
+            "translations": {
+                "en": "Water",
+                "fa": "آب ساده"
+            }
+        },
+        "หนึ่ง": {
+            "translations": {
+                "en": "“One.”",
+                "fa": "یک"
+            }
+        },
+        "ขวด": {
+            "translations": {
+                "en": "Bottle",
+                "fa": "بطری"
+            }
+        },
+        "แน่นอน": {
+            "translations": {
+                "en": "Of course",
+                "fa": "قطعی"
+            }
+        },
+        "ข้าวต้ม": {
+            "translations": {
+                "en": "Rice soup",
+                "fa": "برنج آب‌پز"
+            }
+        },
+        "ไข่": {
+            "translations": {
+                "en": "Egg",
+                "fa": "تخم‌مرغ"
+            }
+        },
+        "ก๋วยเตี๋ยว": {
+            "translations": {
+                "en": "Noodle",
+                "fa": "رشته فرنگی"
+            }
         }
     },
     "activity": {
@@ -102,7 +323,18 @@
             "content": [
                 {
                     "type": "words",
-                    "wordIds": [ "กิน", "ดื่ม", "ชอบ", "ไม่", "ไหม", "ข้าว", "น้ำ", "กาแฟ", "ชา", "ผลไม้" ]
+                    "wordIds": [
+                        "กิน",
+                        "ดื่ม",
+                        "ชอบ",
+                        "ไม่",
+                        "ไหม",
+                        "ข้าว",
+                        "น้ำ",
+                        "กาแฟ",
+                        "ชา",
+                        "ผลไม้"
+                    ]
                 }
             ]
         },
@@ -119,7 +351,13 @@
                     "sentences": [
                         {
                             "source": "คุณชอบกินอะไรครับ",
-                            "wordIds": [ "คุณ", "ชอบ", "กิน", "อะไร", "ครับ" ],
+                            "wordIds": [
+                                "คุณ",
+                                "ชอบ",
+                                "กิน",
+                                "อะไร",
+                                "ครับ"
+                            ],
                             "translations": {
                                 "en": "What do you like to eat?",
                                 "fa": "چه چیزی دوست دارید بخورید؟"
@@ -127,7 +365,13 @@
                         },
                         {
                             "source": "ฉันชอบกินผลไม้ค่ะ",
-                            "wordIds": [ "ฉัน", "ชอบ", "กิน", "ผลไม้", "ค่ะ" ],
+                            "wordIds": [
+                                "ฉัน",
+                                "ชอบ",
+                                "กิน",
+                                "ผลไม้",
+                                "ค่ะ"
+                            ],
                             "translations": {
                                 "en": "I like to eat fruit",
                                 "fa": "میوه دوست دارم بخورم"
@@ -135,7 +379,14 @@
                         },
                         {
                             "source": "แล้วคุณชอบดื่มอะไรครับ",
-                            "wordIds": [ "แล้ว", "คุณ", "ชอบ", "ดื่ม", "อะไร", "ครับ" ],
+                            "wordIds": [
+                                "แล้ว",
+                                "คุณ",
+                                "ชอบ",
+                                "ดื่ม",
+                                "อะไร",
+                                "ครับ"
+                            ],
                             "translations": {
                                 "en": "And what do you like to drink?",
                                 "fa": "و چه چیزی دوست دارید بنوشید؟"
@@ -143,7 +394,12 @@
                         },
                         {
                             "source": "ชอบดื่มชาค่ะ",
-                            "wordIds": [ "ชอบ", "ดื่ม", "ชา", "ค่ะ" ],
+                            "wordIds": [
+                                "ชอบ",
+                                "ดื่ม",
+                                "ชา",
+                                "ค่ะ"
+                            ],
                             "translations": {
                                 "en": "I like to drink tea",
                                 "fa": "چای دوست دارم"
@@ -165,16 +421,29 @@
                     "type": "paragraph",
                     "sentences": [
                         {
-                            "source": "สวัสดีครับ ขอข้าวผัดหน่อยครับ",
-                            "wordIds": [ "สวัสดี", "ครับ", "ขอ", "ข้าว", "ผัด", "หน่อย", "ครับ" ],
+                            "source": "สวัสดีครับขอข้าวผัดหน่อยครับ",
+                            "wordIds": [
+                                "สวัสดี",
+                                "ครับ",
+                                "ขอ",
+                                "ข้าวผัด",
+                                "หน่อย",
+                                "ครับ"
+                            ],
                             "translations": {
-                                "en": "Hello, can I have fried rice please?",
+                                "en": "Hello, can I have a little fried rice please?",
                                 "fa": "سلام، برنج سرخ‌شده می‌خواهم لطفاً"
                             }
                         },
                         {
-                            "source": "ได้ค่ะ กับอะไรคะ",
-                            "wordIds": [ "ได้", "ค่ะ", "กับ", "อะไร", "คะ" ],
+                            "source": "ได้ค่ะกับอะไรคะ",
+                            "wordIds": [
+                                "ได้",
+                                "ค่ะ",
+                                "กับ",
+                                "อะไร",
+                                "คะ"
+                            ],
                             "translations": {
                                 "en": "Certainly, with what?",
                                 "fa": "حتماً، با چه چیزی؟"
@@ -182,7 +451,11 @@
                         },
                         {
                             "source": "กับไก่ครับ",
-                            "wordIds": [ "กับ", "ไก่", "ครับ" ],
+                            "wordIds": [
+                                "กับ",
+                                "ไก่",
+                                "ครับ"
+                            ],
                             "translations": {
                                 "en": "With chicken",
                                 "fa": "با مرغ"
@@ -190,15 +463,28 @@
                         },
                         {
                             "source": "และขอน้ำเปล่าหนึ่งขวดครับ",
-                            "wordIds": [ "และ", "ขอ", "น้ำ", "เปล่า", "หนึ่ง", "ขวด", "ครับ" ],
+                            "wordIds": [
+                                "และ",
+                                "ขอ",
+                                "น้ำเปล่า",
+                                "หนึ่ง",
+                                "ขวด",
+                                "ครับ"
+                            ],
                             "translations": {
                                 "en": "And one bottle of water please",
                                 "fa": "و یک بطری آب لطفاً"
                             }
                         },
                         {
-                            "source": "ได้ค่ะ อร่อยแน่นอนค่ะ",
-                            "wordIds": [ "ได้", "ค่ะ", "อร่อย", "แน่นอน", "ค่ะ" ],
+                            "source": "ได้ค่ะอร่อยแน่นอนค่ะ",
+                            "wordIds": [
+                                "ได้",
+                                "ค่ะ",
+                                "อร่อย",
+                                "แน่นอน",
+                                "ค่ะ"
+                            ],
                             "translations": {
                                 "en": "Certainly, it will be delicious",
                                 "fa": "حتماً، خوشمزه خواهد بود"
@@ -221,7 +507,13 @@
                     "sentences": [
                         {
                             "source": "มื้อเช้าคุณกินอะไรครับ",
-                            "wordIds": [ "มื้อเช้า", "คุณ", "กิน", "อะไร", "ครับ" ],
+                            "wordIds": [
+                                "มื้อเช้า",
+                                "คุณ",
+                                "กิน",
+                                "อะไร",
+                                "ครับ"
+                            ],
                             "translations": {
                                 "en": "What do you eat for breakfast?",
                                 "fa": "برای صبحانه چه می‌خورید؟"
@@ -229,7 +521,15 @@
                         },
                         {
                             "source": "มื้อเช้าฉันกินข้าวต้มกับไข่ค่ะ",
-                            "wordIds": [ "มื้อเช้า", "ฉัน", "กิน", "ข้าวต้ม", "กับ", "ไข่", "ค่ะ" ],
+                            "wordIds": [
+                                "มื้อเช้า",
+                                "ฉัน",
+                                "กิน",
+                                "ข้าวต้ม",
+                                "กับ",
+                                "ไข่",
+                                "ค่ะ"
+                            ],
                             "translations": {
                                 "en": "For breakfast, I eat rice porridge with egg",
                                 "fa": "برای صبحانه، برنج‌پخته با تخم‌مرغ می‌خورم"
@@ -237,7 +537,12 @@
                         },
                         {
                             "source": "มื้อกลางวันกินอะไรครับ",
-                            "wordIds": [ "มื้อกลางวัน", "กิน", "อะไร", "ครับ" ],
+                            "wordIds": [
+                                "มื้อกลางวัน",
+                                "กิน",
+                                "อะไร",
+                                "ครับ"
+                            ],
                             "translations": {
                                 "en": "What about lunch?",
                                 "fa": "ناهار چطور؟"
@@ -245,7 +550,12 @@
                         },
                         {
                             "source": "มื้อกลางวันกินก๋วยเตี๋ยวค่ะ",
-                            "wordIds": [ "มื้อกลางวัน", "กิน", "ก๋วยเตี๋ยว", "ค่ะ" ],
+                            "wordIds": [
+                                "มื้อกลางวัน",
+                                "กิน",
+                                "ก๋วยเตี๋ยว",
+                                "ค่ะ"
+                            ],
                             "translations": {
                                 "en": "For lunch, I eat noodles",
                                 "fa": "برای ناهار، نودل می‌خورم"
@@ -253,7 +563,11 @@
                         },
                         {
                             "source": "อร่อยไหมครับ",
-                            "wordIds": [ "อร่อย", "ไหม", "ครับ" ],
+                            "wordIds": [
+                                "อร่อย",
+                                "ไหม",
+                                "ครับ"
+                            ],
                             "translations": {
                                 "en": "Is it delicious?",
                                 "fa": "خوشمزه است؟"
@@ -261,7 +575,11 @@
                         },
                         {
                             "source": "อร่อยมากค่ะ",
-                            "wordIds": [ "อร่อย", "มาก", "ค่ะ" ],
+                            "wordIds": [
+                                "อร่อย",
+                                "มาก",
+                                "ค่ะ"
+                            ],
                             "translations": {
                                 "en": "Very delicious",
                                 "fa": "بسیار خوشمزه"

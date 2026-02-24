@@ -13,98 +13,486 @@
         "reviewWords": 15,
         "totalWords": 40,
         "sentences": 20,
-        "prerequisites": [ "level-1-meeting-people", "level-2-basic-verbs" ],
-        "estimatedTime": 25
+        "prerequisites": [
+            "level-1-meeting-people",
+            "level-2-basic-verbs"
+        ],
+        "estimatedTime": 25,
+        "authors": [ ],
+        "reviewers": [ ],
+        "tags": [ ],
+        "updated": "2026-02-24T05:44:48.035Z"
     },
     "vocabulary": {
         "ตื่น": {
-            "translations": { "en": "wake up", "fa": "بیدار شدن" }
+            "translations": {
+                "en": "wake up",
+                "fa": "بیدار شدن"
+            }
         },
         "นอน": {
-            "translations": { "en": "sleep", "fa": "خوابیدن" }
+            "translations": {
+                "en": "sleep",
+                "fa": "خوابیدن"
+            }
         },
         "อาบน้ำ": {
-            "translations": { "en": "shower/bathe", "fa": "دوش گرفتن" }
+            "translations": {
+                "en": "shower",
+                "fa": "دوش گرفتن"
+            }
         },
         "แปรงฟัน": {
-            "translations": { "en": "brush teeth", "fa": "مسواک زدن" }
+            "translations": {
+                "en": "brush teeth",
+                "fa": "مسواک زدن"
+            }
         },
         "แต่งตัว": {
-            "translations": { "en": "get dressed", "fa": "لباس پوشیدن" }
+            "translations": {
+                "en": "get dressed",
+                "fa": "لباس پوشیدن"
+            }
         },
         "ออก": {
-            "translations": { "en": "leave/exit", "fa": "خروج" }
+            "translations": {
+                "en": "leave/exit",
+                "fa": "خروج"
+            }
         },
         "กลับ": {
-            "translations": { "en": "return", "fa": "بازگشتن" }
+            "translations": {
+                "en": "return",
+                "fa": "بازگشتن"
+            }
         },
         "บ้าน": {
-            "translations": { "en": "home/house", "fa": "خانه" }
+            "translations": {
+                "en": "home/house",
+                "fa": "خانه"
+            }
         },
         "เช้า": {
-            "translations": { "en": "morning", "fa": "صبح" }
+            "translations": {
+                "en": "morning",
+                "fa": "صبح"
+            }
         },
         "สาย": {
-            "translations": { "en": "late", "fa": "دیر" }
+            "translations": {
+                "en": "late",
+                "fa": "دیر"
+            }
         },
         "ตรงเวลา": {
-            "translations": { "en": "on time", "fa": "به موقع" }
+            "translations": {
+                "en": "on time",
+                "fa": "به موقع"
+            }
         },
         "โมง": {
-            "translations": { "en": "o'clock", "fa": "ساعت" }
+            "translations": {
+                "en": "o'clock",
+                "fa": "ساعت"
+            }
         },
         "ทุ่ม": {
-            "translations": { "en": "p.m. (7-11 pm)", "fa": "بعد از ظهر" }
+            "translations": {
+                "en": "p.m. (7-11 pm)",
+                "fa": "بعد از ظهر"
+            }
         },
         "ตี": {
-            "translations": { "en": "a.m. (1-5 am)", "fa": "صبح زود" }
+            "translations": {
+                "en": "a.m. (1-5 am)",
+                "fa": "صبح زود"
+            }
         },
         "ครึ่ง": {
-            "translations": { "en": "half", "fa": "نیم" }
+            "translations": {
+                "en": "half",
+                "fa": "نیم"
+            }
         },
         "นาที": {
-            "translations": { "en": "minute", "fa": "دقیقه" }
+            "translations": {
+                "en": "minute",
+                "fa": "دقیقه"
+            }
         },
         "ทุก": {
-            "translations": { "en": "every", "fa": "هر" }
+            "translations": {
+                "en": "every",
+                "fa": "هر"
+            }
         },
         "วัน": {
-            "translations": { "en": "day", "fa": "روز" }
+            "translations": {
+                "en": "day",
+                "fa": "روز"
+            }
         },
         "ทำงาน": {
-            "translations": { "en": "work", "fa": "کار کردن" }
+            "translations": {
+                "en": "work",
+                "fa": "کار کردن"
+            }
         },
         "เรียน": {
-            "translations": { "en": "study", "fa": "درس خواندن" }
+            "translations": {
+                "en": "study",
+                "fa": "درس خواندن"
+            }
         },
         "พัก": {
-            "translations": { "en": "rest/break", "fa": "استراحت" }
+            "translations": {
+                "en": "rest/break",
+                "fa": "استراحت"
+            }
         },
         "กลางวัน": {
-            "translations": { "en": "afternoon/noon", "fa": "ظهر" }
+            "translations": {
+                "en": "afternoon/noon",
+                "fa": "ظهر"
+            }
         },
         "เย็น": {
-            "translations": { "en": "evening", "fa": "عصر" }
+            "translations": {
+                "en": "evening",
+                "fa": "عصر"
+            }
         },
         "ก่อน": {
-            "translations": { "en": "before", "fa": "قبل" }
+            "translations": {
+                "en": "before",
+                "fa": "قبل"
+            }
         },
         "หลัง": {
-            "translations": { "en": "after", "fa": "بعد" }
+            "translations": {
+                "en": "after",
+                "fa": "بعد"
+            }
         },
         "Review words from Level 1 & 2": {
-            "กิน": { "translations": { "en": "eat", "fa": "خوردن" } },
-            "ดื่ม": { "translations": { "en": "drink", "fa": "نوشیدن" } },
-            "ไป": { "translations": { "en": "go", "fa": "رفتن" } },
-            "มา": { "translations": { "en": "come", "fa": "آمدن" } },
-            "ชื่อ": { "translations": { "en": "name", "fa": "اسم" } },
-            "คุณ": { "translations": { "en": "you", "fa": "شما" } },
-            "ผม": { "translations": { "en": "I (male)", "fa": "من (مرد)" } },
-            "ดิฉัน": { "translations": { "en": "I (female)", "fa": "من (زن)" } },
-            "ขอบคุณ": { "translations": { "en": "thank you", "fa": "متشکرم" } },
-            "ครับ": { "translations": { "en": "polite particle (male)", "fa": "ذره مؤدب (مرد)" } },
-            "ค่ะ": { "translations": { "en": "polite particle (female)", "fa": "ذره مؤدب (زن)" } },
-            "ไหม": { "translations": { "en": "question particle", "fa": "ذره سوال" } }
+            "กิน": {
+                "translations": {
+                    "en": "eat",
+                    "fa": "خوردن"
+                }
+            },
+            "ดื่ม": {
+                "translations": {
+                    "en": "drink",
+                    "fa": "نوشیدن"
+                }
+            },
+            "ไป": {
+                "translations": {
+                    "en": "go",
+                    "fa": "رفتن"
+                }
+            },
+            "มา": {
+                "translations": {
+                    "en": "come",
+                    "fa": "آمدن"
+                }
+            },
+            "ชื่อ": {
+                "translations": {
+                    "en": "name",
+                    "fa": "اسم"
+                }
+            },
+            "คุณ": {
+                "translations": {
+                    "en": "you",
+                    "fa": "شما"
+                }
+            },
+            "ผม": {
+                "translations": {
+                    "en": "I (male)",
+                    "fa": "من (مرد)"
+                }
+            },
+            "ดิฉัน": {
+                "translations": {
+                    "en": "I (female)",
+                    "fa": "من (زن)"
+                }
+            },
+            "ขอบคุณ": {
+                "translations": {
+                    "en": "thank you",
+                    "fa": "متشکرم"
+                }
+            },
+            "ครับ": {
+                "translations": {
+                    "en": "polite particle (male)",
+                    "fa": "ذره مؤدب (مرد)"
+                }
+            },
+            "ค่ะ": {
+                "translations": {
+                    "en": "polite particle (female)",
+                    "fa": "ذره مؤدب (زن)"
+                }
+            },
+            "ไหม": {
+                "translations": {
+                    "en": "question particle",
+                    "fa": "ذره سوال"
+                }
+            }
+        },
+        "คุณ": {
+            "translations": {
+                "en": "You",
+                "fa": "شما"
+            }
+        },
+        "กี่โมง": {
+            "translations": {
+                "en": "what time",
+                "fa": "چه ساعتی"
+            }
+        },
+        "ครับ": {
+            "translations": {
+                "en": "yes",
+                "fa": "بله"
+            }
+        },
+        "ไป": {
+            "translations": {
+                "en": "go",
+                "fa": "برو‌"
+            }
+        },
+        "ยังไง": {
+            "translations": {
+                "en": "together",
+                "fa": "چگونه"
+            }
+        },
+        "รถเมล์": {
+            "translations": {
+                "en": "bus",
+                "fa": "اتوبوس"
+            }
+        },
+        "หรือ": {
+            "translations": {
+                "en": "or",
+                "fa": "یا"
+            }
+        },
+        "รถไฟฟ้า": {
+            "translations": {
+                "en": "sky train",
+                "fa": "قطار هوایی"
+            }
+        },
+        "เลิก": {
+            "translations": {
+                "en": "Give up",
+                "fa": "پایان"
+            }
+        },
+        "งาน": {
+            "translations": {
+                "en": "task",
+                "fa": "کارها‌"
+            }
+        },
+        "ไม่": {
+            "translations": {
+                "en": "no",
+                "fa": "خیر"
+            }
+        },
+        "ถึง": {
+            "translations": {
+                "en": "to",
+                "fa": "به"
+            }
+        },
+        "หก": {
+            "translations": {
+                "en": "six",
+                "fa": "شش"
+            }
+        },
+        "แล้ว": {
+            "translations": {
+                "en": "So ",
+                "fa": "قبلاً"
+            }
+        },
+        "ทำ": {
+            "translations": {
+                "en": "do",
+                "fa": "انجام دادن"
+            }
+        },
+        "อะไร": {
+            "translations": {
+                "en": "what",
+                "fa": "چه:"
+            }
+        },
+        "ต่อ": {
+            "translations": {
+                "en": "next",
+                "fa": "ادامه"
+            }
+        },
+        "ก็": {
+            "translations": {
+                "en": "well",
+                "fa": "همچنین"
+            }
+        },
+        "ผม": {
+            "translations": {
+                "en": "I (male)",
+                "fa": "من:"
+            }
+        },
+        "ฉัน": {
+            "translations": {
+                "en": "I (female)",
+                "fa": "من"
+            }
+        },
+        "แปด": {
+            "translations": {
+                "en": "eight",
+                "fa": "هشت"
+            }
+        },
+        "ค่ะ": {
+            "translations": {
+                "en": "thank you",
+                "fa": "بله"
+            }
+        },
+        "นั่ง": {
+            "translations": {
+                "en": "sitting",
+                "fa": "نشستن"
+            }
+        },
+        "ไหม": {
+            "translations": {
+                "en": "what",
+                "fa": "چه"
+            }
+        },
+        "คะ": {
+            "translations": {
+                "en": "yes",
+                "fa": "بله"
+            }
+        },
+        "ห้า": {
+            "translations": {
+                "en": "five",
+                "fa": "پنج"
+            }
+        },
+        "ประมาณ": {
+            "translations": {
+                "en": "about",
+                "fa": "درباره"
+            }
+        },
+        "กิน": {
+            "translations": {
+                "en": "eat",
+                "fa": "خوردن"
+            }
+        },
+        "ข้าว": {
+            "translations": {
+                "en": "rice",
+                "fa": "برنج"
+            }
+        },
+        "ดู": {
+            "translations": {
+                "en": "watch",
+                "fa": "تماشا"
+            }
+        },
+        "ทีวี": {
+            "translations": {
+                "en": "TV",
+                "fa": "تلویزیون"
+            }
+        },
+        "หยุด": {
+            "translations": {
+                "en": "stop",
+                "fa": "متوقف کردن"
+            }
+        },
+        "ชอบ": {
+            "translations": {
+                "en": "Like",
+                "fa": "مانند"
+            }
+        },
+        "ๆ": {
+            "translations": {
+                "en": "if",
+                "fa": "غیره"
+            }
+        },
+        "เที่ยว": {
+            "translations": {
+                "en": "travel",
+                "fa": "سفر"
+            }
+        },
+        "ที่": {
+            "translations": {
+                "en": "at",
+                "fa": "در"
+            }
+        },
+        "ไหน": {
+            "translations": {
+                "en": "which",
+                "fa": "که"
+            }
+        },
+        "บางที": {
+            "translations": {
+                "en": "maybe",
+                "fa": "گاهی اوقات"
+            }
+        },
+        "นอก": {
+            "translations": {
+                "en": "out",
+                "fa": "بیرون"
+            }
+        },
+        "กับ": {
+            "translations": {
+                "en": "with",
+                "fa": "با"
+            }
+        },
+        "เพื่อน": {
+            "translations": {
+                "en": "friend",
+                "fa": "دوست"
+            }
         }
     },
     "activity": {
@@ -127,7 +515,14 @@
                         "th": "กิจวัตรตอนเช้า",
                         "fa": "کارهای صبحگاهی"
                     },
-                    "wordIds": [ "ตื่น", "อาบน้ำ", "แปรงฟัน", "แต่งตัว", "กิน", "ดื่ม" ]
+                    "wordIds": [
+                        "ตื่น",
+                        "อาบน้ำ",
+                        "แปรงฟัน",
+                        "แต่งตัว",
+                        "กิน",
+                        "ดื่ม"
+                    ]
                 }
             ]
         },
@@ -144,7 +539,12 @@
                     "sentences": [
                         {
                             "source": "คุณตื่นกี่โมงครับ",
-                            "wordIds": [ "คุณ", "ตื่น", "โมง", "ครับ" ],
+                            "wordIds": [
+                                "คุณ",
+                                "ตื่น",
+                                "กี่โมง",
+                                "ครับ"
+                            ],
                             "translations": {
                                 "en": "What time do you wake up?",
                                 "fa": "ساعت چند بیدار می‌شوید؟"
@@ -152,7 +552,14 @@
                         },
                         {
                             "source": "ผมตื่นหกโมงเช้าครับ",
-                            "wordIds": [ "ผม", "ตื่น", "หก", "โมง", "เช้า", "ครับ" ],
+                            "wordIds": [
+                                "ผม",
+                                "ตื่น",
+                                "หก",
+                                "โมง",
+                                "เช้า",
+                                "ครับ"
+                            ],
                             "translations": {
                                 "en": "I wake up at 6 a.m.",
                                 "fa": "ساعت ۶ صبح بیدار می‌شوم"
@@ -160,15 +567,29 @@
                         },
                         {
                             "source": "แล้วทำอะไรต่อครับ",
-                            "wordIds": [ "แล้ว", "ทำ", "อะไร", "ต่อ", "ครับ" ],
+                            "wordIds": [
+                                "แล้ว",
+                                "ทำ",
+                                "อะไร",
+                                "ต่อ",
+                                "ครับ"
+                            ],
                             "translations": {
                                 "en": "Then what do you do next?",
                                 "fa": "بعد چه کار می‌کنید؟"
                             }
                         },
                         {
-                            "source": "ผมอาบน้ำ แปรงฟัน แล้วก็แต่งตัวครับ",
-                            "wordIds": [ "ผม", "อาบน้ำ", "แปรงฟัน", "แล้ว", "ก็", "แต่งตัว", "ครับ" ],
+                            "source": "ผมอาบน้ำแปรงฟันแล้วก็แต่งตัวครับ",
+                            "wordIds": [
+                                "ผม",
+                                "อาบน้ำ",
+                                "แปรงฟัน",
+                                "แล้ว",
+                                "ก็",
+                                "แต่งตัว",
+                                "ครับ"
+                            ],
                             "translations": {
                                 "en": "I shower, brush my teeth, then get dressed",
                                 "fa": "دوش می‌گیرم، مسواک می‌زنم، بعد لباس می‌پوشم"
@@ -193,7 +614,17 @@
                         "th": "การบอกเวลา",
                         "fa": "گفتن زمان"
                     },
-                    "wordIds": [ "โมง", "ทุ่ม", "ตี", "ครึ่ง", "นาที", "เช้า", "สาย", "เย็น", "กลางวัน" ]
+                    "wordIds": [
+                        "โมง",
+                        "ทุ่ม",
+                        "ตี",
+                        "ครึ่ง",
+                        "นาที",
+                        "เช้า",
+                        "สาย",
+                        "เย็น",
+                        "กลางวัน"
+                    ]
                 }
             ]
         },
@@ -210,7 +641,13 @@
                     "sentences": [
                         {
                             "source": "คุณไปทำงานกี่โมงครับ",
-                            "wordIds": [ "คุณ", "ไป", "ทำงาน", "โมง", "ครับ" ],
+                            "wordIds": [
+                                "คุณ",
+                                "ไป",
+                                "ทำงาน",
+                                "กี่โมง",
+                                "ครับ"
+                            ],
                             "translations": {
                                 "en": "What time do you go to work?",
                                 "fa": "ساعت چند می‌روید سر کار؟"
@@ -218,31 +655,62 @@
                         },
                         {
                             "source": "ฉันไปทำงานแปดโมงครึ่งค่ะ",
-                            "wordIds": [ "ฉัน", "ไป", "ทำงาน", "แปด", "โมง", "ครึ่ง", "ค่ะ" ],
+                            "wordIds": [
+                                "ฉัน",
+                                "ไป",
+                                "ทำงาน",
+                                "แปด",
+                                "โมง",
+                                "ครึ่ง",
+                                "ค่ะ"
+                            ],
                             "translations": {
                                 "en": "I go to work at 8:30",
                                 "fa": "ساعت ۸:۳۰ می‌روم سر کار"
                             }
                         },
                         {
-                            "source": "ไปยังไงครับ รถเมล์หรือรถไฟฟ้า",
-                            "wordIds": [ "ไป", "ยังไง", "ครับ", "รถเมล์", "หรือ", "รถไฟฟ้า", "ครับ" ],
+                            "source": "ไปยังไงครับรถเมล์หรือรถไฟฟ้าครับ",
+                            "wordIds": [
+                                "ไป",
+                                "ยังไง",
+                                "ครับ",
+                                "รถเมล์",
+                                "หรือ",
+                                "รถไฟฟ้า",
+                                "ครับ"
+                            ],
                             "translations": {
                                 "en": "How do you go? By bus or train?",
                                 "fa": "چطور می‌روید؟ با اتوبوس یا قطار؟"
                             }
                         },
                         {
-                            "source": "นั่งรถไฟฟ้าค่ะ สายไหมคะ",
-                            "wordIds": [ "นั่ง", "รถไฟฟ้า", "ค่ะ", "สาย", "ไหม", "คะ" ],
+                            "source": "นั่งรถไฟฟ้าค่ะสายไหมคะ",
+                            "wordIds": [
+                                "นั่ง",
+                                "รถไฟฟ้า",
+                                "ค่ะ",
+                                "สาย",
+                                "ไหม",
+                                "คะ"
+                            ],
                             "translations": {
                                 "en": "I take the train. Are you late?",
                                 "fa": "قطار سوار می‌شوم. دیرتان نمی‌شود؟"
                             }
                         },
                         {
-                            "source": "ไม่สายครับ ไปถึงตรงเวลา",
-                            "wordIds": [ "ไม่", "สาย", "ครับ", "ไป", "ถึง", "ตรงเวลา", "ครับ" ],
+                            "source": "ไม่สายครับไปถึงตรงเวลาครับ",
+                            "wordIds": [
+                                "ไม่",
+                                "สาย",
+                                "ครับ",
+                                "ไป",
+                                "ถึง",
+                                "ตรงเวลา",
+                                "ครับ"
+                            ],
                             "translations": {
                                 "en": "Not late, I arrive on time",
                                 "fa": "دیر نمی‌شوم، به موقع می‌رسم"
@@ -265,7 +733,12 @@
                     "sentences": [
                         {
                             "source": "เลิกงานกี่โมงครับ",
-                            "wordIds": [ "เลิก", "งาน", "โมง", "ครับ" ],
+                            "wordIds": [
+                                "เลิก",
+                                "งาน",
+                                "กี่โมง",
+                                "ครับ"
+                            ],
                             "translations": {
                                 "en": "What time do you finish work?",
                                 "fa": "ساعت چند کار تمام می‌شود؟"
@@ -273,7 +746,14 @@
                         },
                         {
                             "source": "เลิกงานห้าโมงเย็นค่ะ",
-                            "wordIds": [ "เลิก", "งาน", "ห้า", "โมง", "เย็น", "ค่ะ" ],
+                            "wordIds": [
+                                "เลิก",
+                                "งาน",
+                                "ห้า",
+                                "โมง",
+                                "เย็น",
+                                "ค่ะ"
+                            ],
                             "translations": {
                                 "en": "I finish at 5 p.m.",
                                 "fa": "ساعت ۵ عصر کار تمام می‌شود"
@@ -281,7 +761,12 @@
                         },
                         {
                             "source": "กลับบ้านกี่โมงครับ",
-                            "wordIds": [ "กลับ", "บ้าน", "โมง", "ครับ" ],
+                            "wordIds": [
+                                "กลับ",
+                                "บ้าน",
+                                "กี่โมง",
+                                "ครับ"
+                            ],
                             "translations": {
                                 "en": "What time do you get home?",
                                 "fa": "ساعت چند به خانه می‌رسید؟"
@@ -289,7 +774,15 @@
                         },
                         {
                             "source": "กลับบ้านประมาณหกโมงครึ่งค่ะ",
-                            "wordIds": [ "กลับ", "บ้าน", "ประมาณ", "หก", "โมง", "ครึ่ง", "ค่ะ" ],
+                            "wordIds": [
+                                "กลับ",
+                                "บ้าน",
+                                "ประมาณ",
+                                "หก",
+                                "โมง",
+                                "ครึ่ง",
+                                "ค่ะ"
+                            ],
                             "translations": {
                                 "en": "I get home around 6:30",
                                 "fa": "حدود ساعت ۶:۳۰ به خانه می‌رسم"
@@ -297,15 +790,32 @@
                         },
                         {
                             "source": "กลับบ้านแล้วทำอะไรครับ",
-                            "wordIds": [ "กลับ", "บ้าน", "แล้ว", "ทำ", "อะไร", "ครับ" ],
+                            "wordIds": [
+                                "กลับ",
+                                "บ้าน",
+                                "แล้ว",
+                                "ทำ",
+                                "อะไร",
+                                "ครับ"
+                            ],
                             "translations": {
                                 "en": "What do you do after getting home?",
                                 "fa": "بعد از رسیدن به خانه چه می‌کنید؟"
                             }
                         },
                         {
-                            "source": "กินข้าวเย็น ดูทีวี แล้วก็นอนค่ะ",
-                            "wordIds": [ "กิน", "ข้าว", "เย็น", "ดู", "ทีวี", "แล้ว", "ก็", "นอน", "ค่ะ" ],
+                            "source": "กินข้าวเย็นดูทีวีแล้วก็นอนค่ะ",
+                            "wordIds": [
+                                "กิน",
+                                "ข้าว",
+                                "เย็น",
+                                "ดู",
+                                "ทีวี",
+                                "แล้ว",
+                                "ก็",
+                                "นอน",
+                                "ค่ะ"
+                            ],
                             "translations": {
                                 "en": "Eat dinner, watch TV, then sleep",
                                 "fa": "شام می‌خورم، تلویزیون می‌بینم، بعد می‌خوابم"
@@ -328,7 +838,15 @@
                     "sentences": [
                         {
                             "source": "วันหยุดคุณชอบทำอะไรครับ",
-                            "wordIds": [ "วัน", "หยุด", "คุณ", "ชอบ", "ทำ", "อะไร", "ครับ" ],
+                            "wordIds": [
+                                "วัน",
+                                "หยุด",
+                                "คุณ",
+                                "ชอบ",
+                                "ทำ",
+                                "อะไร",
+                                "ครับ"
+                            ],
                             "translations": {
                                 "en": "What do you like to do on weekends?",
                                 "fa": "آخر هفته دوست دارید چه کار کنید؟"
@@ -336,7 +854,14 @@
                         },
                         {
                             "source": "ฉันชอบนอนสายๆค่ะ",
-                            "wordIds": [ "ฉัน", "ชอบ", "นอน", "สาย", "ๆ", "ค่ะ" ],
+                            "wordIds": [
+                                "ฉัน",
+                                "ชอบ",
+                                "นอน",
+                                "สาย",
+                                "ๆ",
+                                "ค่ะ"
+                            ],
                             "translations": {
                                 "en": "I like to sleep in",
                                 "fa": "دوست دارم دیر بخوابم"
@@ -344,7 +869,15 @@
                         },
                         {
                             "source": "แล้วไปเที่ยวที่ไหนไหมครับ",
-                            "wordIds": [ "แล้ว", "ไป", "เที่ยว", "ที่", "ไหน", "ไหม", "ครับ" ],
+                            "wordIds": [
+                                "แล้ว",
+                                "ไป",
+                                "เที่ยว",
+                                "ที่",
+                                "ไหน",
+                                "ไหม",
+                                "ครับ"
+                            ],
                             "translations": {
                                 "en": "Do you go anywhere?",
                                 "fa": "جایی می‌روید؟"
@@ -352,7 +885,17 @@
                         },
                         {
                             "source": "บางทีไปกินข้าวนอกบ้านกับเพื่อนค่ะ",
-                            "wordIds": [ "บางที", "ไป", "กิน", "ข้าว", "นอก", "บ้าน", "กับ", "เพื่อน", "ค่ะ" ],
+                            "wordIds": [
+                                "บางที",
+                                "ไป",
+                                "กิน",
+                                "ข้าว",
+                                "นอก",
+                                "บ้าน",
+                                "กับ",
+                                "เพื่อน",
+                                "ค่ะ"
+                            ],
                             "translations": {
                                 "en": "Sometimes I eat out with friends",
                                 "fa": "بعضی وقت‌ها با دوستان بیرون غذا می‌خورم"
@@ -377,7 +920,33 @@
                         "th": "รายการคำศัพท์ระดับ 3",
                         "fa": "فهرست کلمات سطح ۳"
                     },
-                    "wordIds": [ "ตื่น", "นอน", "อาบน้ำ", "แปรงฟัน", "แต่งตัว", "ออก", "กลับ", "บ้าน", "เช้า", "สาย", "ตรงเวลา", "โมง", "ทุ่ม", "ตี", "ครึ่ง", "นาที", "ทุก", "วัน", "ทำงาน", "เรียน", "พัก", "กลางวัน", "เย็น", "ก่อน", "หลัง" ]
+                    "wordIds": [
+                        "ตื่น",
+                        "นอน",
+                        "อาบน้ำ",
+                        "แปรงฟัน",
+                        "แต่งตัว",
+                        "ออก",
+                        "กลับ",
+                        "บ้าน",
+                        "เช้า",
+                        "สาย",
+                        "ตรงเวลา",
+                        "โมง",
+                        "ทุ่ม",
+                        "ตี",
+                        "ครึ่ง",
+                        "นาที",
+                        "ทุก",
+                        "วัน",
+                        "ทำงาน",
+                        "เรียน",
+                        "พัก",
+                        "กลางวัน",
+                        "เย็น",
+                        "ก่อน",
+                        "หลัง"
+                    ]
                 }
             ]
         }
