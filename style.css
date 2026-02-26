@@ -327,8 +327,29 @@ h6 {
    DOCUMENT VIEW
    ============================================================================ */
 
+.document-content .source-wrapper,
+.document-content .word-card,
+.document-content .sentence-group,
+.document-content .words-grid,
+.section-details {
+    scroll-margin-top: 126px;
+    /* Toolbar (56px) + Media bar (50px) + extra padding (20px) */
+}
+
+/* When media bar is not visible */
+body:not(.has-media-bar) .active-highlight,
+body:not(.has-media-bar) .document-content .source-wrapper,
+body:not(.has-media-bar) .document-content .word-card,
+body:not(.has-media-bar) .document-content .sentence-group,
+body:not(.has-media-bar) .document-content .words-grid,
+body:not(.has-media-bar) .section-details {
+    scroll-margin-top: 76px;
+    /* Toolbar (56px) + extra padding (20px) */
+}
+
 .document-content {
     padding-bottom: 20px;
+    scroll-padding-top: 126px;
 }
 
 .document-content>.doc-title {
@@ -786,7 +807,6 @@ h6 {
 .stack-item.source.active-highlight {
     background-color: #fbbf24 !important;
     color: #000000 !important;
-    border-radius: 4px;
 }
 
 .dark-theme .stack-item.source.active-highlight {
@@ -797,12 +817,10 @@ h6 {
 /* Word breakdown items */
 .sent-word-item.active-highlight {
     background-color: rgba(251, 191, 36, 0.3) !important;
-    border-radius: 6px;
 }
 
 .sent-word-item.active-highlight .sent-word-source {
     color: #000000 !important;
-    font-weight: 600;
 }
 
 .dark-theme .sent-word-item.active-highlight {
@@ -819,7 +837,6 @@ h6 {
 .stack-item.trans.active-highlight {
     background-color: #fbbf24 !important;
     color: #000000 !important;
-    border-radius: 4px;
 }
 
 .dark-theme .word-trans.active-highlight,
@@ -833,7 +850,6 @@ h6 {
 .word-card .word-source.active-highlight {
     background-color: #fbbf24 !important;
     color: #000000 !important;
-    border-radius: 4px;
 }
 
 .dark-theme .word-card .word-source.active-highlight {

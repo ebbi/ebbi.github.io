@@ -955,7 +955,7 @@ const App = (function () {
                 );
             },
 
-            seekToElement(element) {
+            seekToElement: function (element) {
                 // Find the index directly from all audio elements - simpler and more reliable
                 const allElements = Array.from(document.querySelectorAll('.audio-element'));
                 const targetIndex = allElements.indexOf(element);
@@ -968,6 +968,24 @@ const App = (function () {
                         State.data.scrolledRows.clear();
                     }
                     State.data.currentRowId = null;
+
+                    // Calculate total offset based on media bar visibility
+                    const toolbarHeight = 56; // #app-toolbar height
+                    const mediaBar = document.getElementById('media-player-container');
+                    const mediaBarHeight = mediaBar && mediaBar.innerHTML ? 50 : 0; // media-row height when visible
+                    const totalOffset = toolbarHeight + mediaBarHeight + 20; // Add 20px extra padding for safety
+
+                    // Scroll to the element with offset
+                    setTimeout(() => {
+                        const rect = element.getBoundingClientRect();
+                        const absoluteTop = window.scrollY + rect.top;
+                        const offsetPosition = absoluteTop - totalOffset;
+
+                        window.scrollTo({
+                            top: offsetPosition,
+                            behavior: 'smooth'
+                        });
+                    }, 100);
 
                     if (!State.data.media.isPlaying) {
                         State.data.media.isPlaying = true;
@@ -983,14 +1001,6 @@ const App = (function () {
                 }
             },
 
-/* moved to return object 
-            updatePlayPauseIcon(isPlaying) {
-                const playPauseBtn = document.querySelector('.player-ctrl[onclick="App.togglePlay()"]');
-                if (playPauseBtn) {
-                    playPauseBtn.textContent = isPlaying ? 'pause' : 'play_arrow';
-                }
-            },
-*/
             togglePlay(){
                 State.data.media.isPlaying = !State.data.media.isPlaying;
                 if (State.data.media.isPlaying) {
@@ -3319,6 +3329,7 @@ const App = (function () {
                 // console.log('Row ID:', rowId, 'Current row ID:', State.data.currentRowId);
 
                 // Scroll when we enter a new row
+                // Scroll when we enter a new row
                 if (rowId && rowId !== State.data.currentRowId) {
                     // console.log('New row detected, scrolling...');
                     State.data.isAutoScrolling = true;
@@ -3327,17 +3338,31 @@ const App = (function () {
                     // Set a long scroll lock immediately
                     window.scrollLockUntil = Date.now() + 1500;
 
+                    // Calculate total offset based on media bar visibility
+                    const toolbarHeight = 56; // #app-toolbar height
+                    const mediaBar = document.getElementById('media-player-container');
+                    const mediaBarHeight = mediaBar && mediaBar.innerHTML ? 50 : 0; // media-row height when visible
+                    const totalOffset = toolbarHeight + mediaBarHeight + 20; // Add 20px extra padding for safety
+
                     if (row) {
-                        row.scrollIntoView({
-                            behavior: 'smooth',
-                            block: 'center',
-                            inline: 'nearest'
+                        // Use a more precise scroll with offset
+                        const rect = row.getBoundingClientRect();
+                        const absoluteTop = window.scrollY + rect.top;
+                        const offsetPosition = absoluteTop - totalOffset;
+
+                        window.scrollTo({
+                            top: offsetPosition,
+                            behavior: 'smooth'
                         });
                     } else {
-                        element.scrollIntoView({
-                            behavior: 'smooth',
-                            block: 'center',
-                            inline: 'nearest'
+                        // Use a more precise scroll with offset
+                        const rect = element.getBoundingClientRect();
+                        const absoluteTop = window.scrollY + rect.top;
+                        const offsetPosition = absoluteTop - totalOffset;
+
+                        window.scrollTo({
+                            top: offsetPosition,
+                            behavior: 'smooth'
                         });
                     }
 

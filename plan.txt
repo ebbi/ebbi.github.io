@@ -24,4 +24,9 @@ During play, in dark mode, each word in the source sentence is highlighted at th
 translation words, but in light mode only the translation words are highlighted and not the 
 corresponding word in the source sentence.
 
+Same bug remains! (the source sentence is now completely hidden under the play toolbar!) 
+For vey long source sentences that wrap on several lines, the play highlights the 
+source sentence word but it is hidden under the media play toolbar. Only the last 
+part of the wrapped sentence is visible with the top part of the sentence hidden 
+under the play toolbar.
 
