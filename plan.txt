@@ -1,32 +1,6 @@
 Fix:
 
-1. The initial page with the details panel list defaults to the first panel 
-being open.  
-After opening another panel, the previously opened details panels remain opened.  
-Change the opening and closing panels behave like and accordion with only the currently selected panel open.
-
-2. Apply the same accordion effect to the document sections list.
-
-3. Store the current document in local storage, and on App restart open the panel with the last stored document.
-
-4. Source sentence word and translation word highlighting in light mode does not highlight 
-the source sentence words. Chang the highlight colour for better contrast.
-
-5. Multiple choice question and distractors answers language drop-down list should display 
-the current selected languages from settings page and change the language rendition of question and 
-distractors answers accordingly.
 
 
-A Click event on words and sentences that starts highlight / speech should also 
-change the toggle play icon to pause icon.
 
-During play, in dark mode, each word in the source sentence is highlighted at the same time as the 
-translation words, but in light mode only the translation words are highlighted and not the 
-corresponding word in the source sentence.
-
-Same bug remains! (the source sentence is now completely hidden under the play toolbar!) 
-For vey long source sentences that wrap on several lines, the play highlights the 
-source sentence word but it is hidden under the media play toolbar. Only the last 
-part of the wrapped sentence is visible with the top part of the sentence hidden 
-under the play toolbar.
 

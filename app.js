@@ -487,6 +487,7 @@ const App = (function () {
     // ----------------------------------------------------------------------------
 
     const Services = {
+
         ActivityResolver: class {
             constructor(globalSettings, localSettings) {
                 this.global = globalSettings || { words: {}, sentences: {} };
@@ -956,52 +957,81 @@ const App = (function () {
             },
 
             seekToElement: function (element) {
+
                 // Find the index directly from all audio elements - simpler and more reliable
                 const allElements = Array.from(document.querySelectorAll('.audio-element'));
                 const targetIndex = allElements.indexOf(element);
 
                 if (targetIndex !== -1) {
-                    State.data.media.currentIndex = targetIndex;
+                    // Check if the element is inside a closed details panel and open it
+                    const details = element.closest('details');
+                    if (details && !details.open) {
+                        details.open = true;
 
-                    // Clear tracking
-                    if (State.data.scrolledRows) {
-                        State.data.scrolledRows.clear();
-                    }
-                    State.data.currentRowId = null;
+                        // Find the section index from the details element
+                        const sectionIndex = details.getAttribute('data-section-index');
+                        if (sectionIndex !== null) {
+                            const documentId = State.data.currentDocument?.id;
+                            if (documentId) {
+                                // Update the accordion state to reflect that this section is now open
+                                // and all others should be closed (accordion behavior)
+                                State.data.documentAccordion.openSections[documentId] = parseInt(sectionIndex);
+                                State.save('documentAccordion');
+                            }
+                        }
 
-                    // Calculate total offset based on media bar visibility
-                    const toolbarHeight = 56; // #app-toolbar height
-                    const mediaBar = document.getElementById('media-player-container');
-                    const mediaBarHeight = mediaBar && mediaBar.innerHTML ? 50 : 0; // media-row height when visible
-                    const totalOffset = toolbarHeight + mediaBarHeight + 20; // Add 20px extra padding for safety
-
-                    // Scroll to the element with offset
-                    setTimeout(() => {
-                        const rect = element.getBoundingClientRect();
-                        const absoluteTop = window.scrollY + rect.top;
-                        const offsetPosition = absoluteTop - totalOffset;
-
-                        window.scrollTo({
-                            top: offsetPosition,
-                            behavior: 'smooth'
-                        });
-                    }, 100);
-
-                    if (!State.data.media.isPlaying) {
-                        State.data.media.isPlaying = true;
-                        App.playSequence();
-                        // Update the play button to pause icon
-                        App.updatePlayPauseIcon(true);
+                        // Small delay to allow the details panel to expand before proceeding
+                        setTimeout(() => {
+                            this.performSeekWithScroll(element, targetIndex);
+                        }, 150);
                     } else {
-                        window.speechSynthesis.cancel();
-                        App.playSequence();
-                        // Icon should already be pause, but ensure it's correct
-                        App.updatePlayPauseIcon(true);
+                        this.performSeekWithScroll(element, targetIndex);
                     }
                 }
             },
 
-            togglePlay(){
+            performSeekWithScroll(element, targetIndex) {
+
+                State.data.media.currentIndex = targetIndex;
+
+                // Clear tracking
+                if (State.data.scrolledRows) {
+                    State.data.scrolledRows.clear();
+                }
+                State.data.currentRowId = null;
+
+                // Calculate total offset based on media bar visibility
+                const toolbarHeight = 56; // #app-toolbar height
+                const mediaBar = document.getElementById('media-player-container');
+                const mediaBarHeight = mediaBar && mediaBar.innerHTML ? 50 : 0; // media-row height when visible
+                const totalOffset = toolbarHeight + mediaBarHeight + 20; // Add 20px extra padding for safety
+
+                // Scroll to the element with offset
+                setTimeout(() => {
+                    const rect = element.getBoundingClientRect();
+                    const absoluteTop = window.scrollY + rect.top;
+                    const offsetPosition = absoluteTop - totalOffset;
+
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
+                    });
+                }, 100);
+
+                if (!State.data.media.isPlaying) {
+                    State.data.media.isPlaying = true;
+                    App.playSequence();
+                    // Update the play button to pause icon
+                    App.updatePlayPauseIcon(true);
+                } else {
+                    window.speechSynthesis.cancel();
+                    App.playSequence();
+                    // Icon should already be pause, but ensure it's correct
+                    App.updatePlayPauseIcon(true);
+                }
+            },
+
+            togglePlay() {
                 State.data.media.isPlaying = !State.data.media.isPlaying;
                 if (State.data.media.isPlaying) {
                     this.playSequence();
@@ -1025,6 +1055,7 @@ const App = (function () {
                 return State.data.translations[key] || fallback;
             }
         }
+
     };
 
     // ----------------------------------------------------------------------------
@@ -1167,16 +1198,17 @@ const App = (function () {
                         const isOpen = docAccordion.openSections[documentId] === idx;
 
                         html += `
-                <details class="section-details" ${isOpen ? 'open' : ''} data-section-index="${idx}">
-                    <summary onclick="App.handleDocumentAccordion('${documentId}', ${idx})">
-                        <span class="section-title-text">${UI.escapeHtml(section.heading)}</span>
-                    </summary>
-                    <div class="section-card">
-                        ${UI.Document.renderSectionControls(doc.id, idx, section)}
-                        ${UI.Document.renderContent(section.content, idx)}
-                    </div>
-                </details>
-            `;
+        <details class="section-details" ${isOpen ? 'open' : ''} data-section-index="${idx}"
+                 ontoggle="App.handleDetailsToggle(this, this.open)">
+            <summary onclick="App.handleDocumentAccordion('${documentId}', ${idx})">
+                <span class="section-title-text">${UI.escapeHtml(section.heading)}</span>
+            </summary>
+            <div class="section-card">
+                ${UI.Document.renderSectionControls(doc.id, idx, section)}
+                ${UI.Document.renderContent(section.content, idx)}
+            </div>
+        </details>
+    `;
                     });
 
                     html += '</div>';
@@ -1562,7 +1594,9 @@ const App = (function () {
         // ------------------------------------------------------------------------
         // Quiz View
         // ------------------------------------------------------------------------
+
         Quiz: {
+
             render(docId, sectionIdx, activityType) {
                 // console.log('UI.Quiz.render called with:', { docId, sectionIdx, activityType });
                 const container = UI.getContainer();
@@ -1575,15 +1609,23 @@ const App = (function () {
 
                 if (items.length === 0) {
                     container.innerHTML = `
-                        <div class="flashcard-empty-state">
-                            <span class="material-icons">info</span>
-                            <h2>No quiz items available</h2>
-                            <p>No items found for this quiz type.</p>
-                            <button class="btn-activity" onclick="history.back()">Go Back</button>
-                        </div>
-                    `;
+                    <div class="flashcard-empty-state">
+                        <span class="material-icons">info</span>
+                        <h2>No quiz items available</h2>
+                        <p>No items found for this quiz type.</p>
+                        <button class="btn-activity" onclick="history.back()">Go Back</button>
+                    </div>
+                `;
                     return;
                 }
+
+                // Get all enabled languages from settings
+                const allLangs = Object.keys(State.data.media.languageSettings)
+                    .filter(code => State.data.media.languageSettings[code].show);
+
+                // Set default languages
+                const defaultQuestionLang = allLangs.includes('th') ? 'th' : (allLangs[0] || 'en');
+                const defaultAnswerLang = allLangs.filter(l => l !== 'th')[0] || allLangs[0] || 'en';
 
                 State.data.quiz = {
                     items: items.sort(() => Math.random() - 0.5),
@@ -1593,8 +1635,8 @@ const App = (function () {
                     activityType: activityType,
                     documentId: docId,
                     sectionIndex: sectionIdx,
-                    questionLang: 'th',
-                    answerLang: 'en'
+                    questionLang: defaultQuestionLang,
+                    answerLang: defaultAnswerLang
                 };
 
                 this.renderQuestion();
@@ -1646,6 +1688,8 @@ const App = (function () {
                 }
             },
 
+            // In app.js - Update UI.Quiz.renderQuestion method to handle Thai answers correctly
+
             renderQuestion() {
                 const container = UI.getContainer();
                 const quiz = State.data.quiz;
@@ -1654,13 +1698,20 @@ const App = (function () {
                 const item = quiz.items[quiz.currentIndex];
                 const t = Services.I18n.t;
 
-                // Get available languages from settings
-                const availableLangs = Object.keys(State.data.media.languageSettings)
-                    .filter(code => code !== 'th' && State.data.media.languageSettings[code].show);
+                // Get ALL languages from settings, including Thai
+                const allLangs = Object.keys(State.data.media.languageSettings)
+                    .filter(code => State.data.media.languageSettings[code].show);
 
                 // Set default languages if not set
-                if (!quiz.questionLang) quiz.questionLang = 'th';
-                if (!quiz.answerLang) quiz.answerLang = availableLangs[0] || 'en';
+                if (!quiz.questionLang) {
+                    // Default question to Thai if available, otherwise first available language
+                    quiz.questionLang = allLangs.includes('th') ? 'th' : (allLangs[0] || 'en');
+                }
+
+                if (!quiz.answerLang) {
+                    // Default answer to first non-Thai language, or first available if only Thai
+                    quiz.answerLang = allLangs.filter(l => l !== 'th')[0] || allLangs[0] || 'en';
+                }
 
                 // Get question text based on selected question language
                 let questionText = item.question;
@@ -1670,13 +1721,29 @@ const App = (function () {
                 }
 
                 // Get correct answer based on selected answer language
-                const correctAnswer = item.translations[quiz.answerLang] || '';
+                // For Thai answers, use the question itself (since it's already Thai)
+                let correctAnswer = '';
+                if (quiz.answerLang === 'th') {
+                    correctAnswer = item.question; // Thai answer is the question itself
+                } else {
+                    correctAnswer = item.translations[quiz.answerLang] || '';
+                }
 
                 // Generate distractors from other items in the same language
-                const otherAnswers = quiz.items
-                    .filter(i => i.id !== item.id)
-                    .map(i => i.translations[quiz.answerLang])
-                    .filter(a => a && a !== correctAnswer);
+                let otherAnswers = [];
+                if (quiz.answerLang === 'th') {
+                    // For Thai answers, use other items' questions as distractors
+                    otherAnswers = quiz.items
+                        .filter(i => i.id !== item.id)
+                        .map(i => i.question)
+                        .filter(a => a && a !== correctAnswer);
+                } else {
+                    // For other languages, use translations
+                    otherAnswers = quiz.items
+                        .filter(i => i.id !== item.id)
+                        .map(i => i.translations[quiz.answerLang])
+                        .filter(a => a && a !== correctAnswer);
+                }
 
                 const uniqueDistractors = [...new Set(otherAnswers)].slice(0, 3);
                 const options = [correctAnswer, ...uniqueDistractors].sort(() => Math.random() - 0.5);
@@ -1703,20 +1770,34 @@ const App = (function () {
                 </div>
                 
                 <div class="quiz-lang-selectors">
-                    <select onchange="App.quiz.setQuestionLanguage(this.value)">
-                        ${['th', ...availableLangs].map(code => `
-                            <option value="${code}" ${code === quiz.questionLang ? 'selected' : ''}>
-                                ${code.toUpperCase()} ${code === 'th' ? '(Question)' : ''}
-                            </option>
-                        `).join('')}
+                    <select class="lang-select" onchange="App.quiz.setQuestionLanguage(this.value)">
+                        ${allLangs.map(code => {
+                    const langName = {
+                        'th': 'ไทย',
+                        'en': 'English',
+                        'fa': 'فارسی'
+                    }[code] || code.toUpperCase();
+                    return `
+                                <option value="${code}" ${code === quiz.questionLang ? 'selected' : ''}>
+                                    ${langName}
+                                </option>
+                            `;
+                }).join('')}
                     </select>
-                    <span class="material-icons">arrow_forward</span>
-                    <select onchange="App.quiz.setAnswerLanguage(this.value)">
-                        ${availableLangs.map(code => `
-                            <option value="${code}" ${code === quiz.answerLang ? 'selected' : ''}>
-                                ${code.toUpperCase()} ${code === quiz.answerLang ? '(Answer)' : ''}
-                            </option>
-                        `).join('')}
+                    <span class="material-icons lang-arrow">arrow_forward</span>
+                    <select class="lang-select" onchange="App.quiz.setAnswerLanguage(this.value)">
+                        ${allLangs.map(code => {
+                    const langName = {
+                        'th': 'ไทย',
+                        'en': 'English',
+                        'fa': 'فارسی'
+                    }[code] || code.toUpperCase();
+                    return `
+                                <option value="${code}" ${code === quiz.answerLang ? 'selected' : ''}>
+                                    ${langName}
+                                </option>
+                            `;
+                }).join('')}
                     </select>
                 </div>
                 
@@ -1725,17 +1806,12 @@ const App = (function () {
                 </div>
             </div>
 
-            <div class="quiz-question-card">
-                <span class="material-icons audio-preview-icon"
-                      onclick="App.media.play(this); event.stopPropagation();"
-                      data-text="${UI.escapeHtml(item.question)}"
-                      data-lang="th">
-                    volume_up
-                </span>
+            <div class="quiz-question-card" 
+                 onclick="App.media.play(this)"
+                 data-text="${UI.escapeHtml(quiz.questionLang === 'th' ? item.question : questionText)}"
+                 data-lang="${quiz.questionLang}">
                 <div class="quiz-question-text" lang="${quiz.questionLang}" 
-                     onclick="App.media.play(this)"
-                     data-text="${UI.escapeHtml(quiz.questionLang === 'th' ? item.question : questionText)}"
-                     data-lang="${quiz.questionLang}">
+                     dir="${quiz.questionLang === 'fa' ? 'rtl' : 'ltr'}">
                     ${UI.escapeHtml(questionText)}
                 </div>
             </div>
@@ -1744,17 +1820,10 @@ const App = (function () {
                 ${options.map(option => `
                     <button class="quiz-option-btn" 
                             onclick="App.quiz.handleAnswer(this, '${UI.escapeHtml(option)}', '${UI.escapeHtml(correctAnswer)}')"
-                            data-answer="${UI.escapeHtml(option)}">
-                        <span class="material-icons audio-preview-icon"
-                              onclick="event.stopPropagation(); App.media.play(this)"
-                              data-text="${UI.escapeHtml(option)}"
-                              data-lang="${quiz.answerLang}">
-                            volume_up
-                        </span>
-                        <span lang="${quiz.answerLang}" dir="${quiz.answerLang === 'fa' ? 'rtl' : 'ltr'}"
-                              onclick="event.stopPropagation(); App.media.play(this)"
-                              data-text="${UI.escapeHtml(option)}"
-                              data-lang="${quiz.answerLang}">
+                            data-answer="${UI.escapeHtml(option)}"
+                            data-text="${UI.escapeHtml(option)}"
+                            data-lang="${quiz.answerLang}">
+                        <span lang="${quiz.answerLang}" dir="${quiz.answerLang === 'fa' ? 'rtl' : 'ltr'}">
                             ${UI.escapeHtml(option)}
                         </span>
                     </button>
@@ -1774,38 +1843,74 @@ const App = (function () {
                 const quiz = State.data.quiz;
                 const t = Services.I18n.t;
 
+                // Get available languages for speech
+                const availableLangs = Object.keys(State.data.media.languageSettings)
+                    .filter(code => code !== 'th' && State.data.media.languageSettings[code].show);
+
                 container.innerHTML = `
-                    <div class="quiz-container">
-                        <h2>${t('review', 'Review')}</h2>
-                        <div class="card">
-                            <h3>${t('score', 'Score')}: ${quiz.score} / ${quiz.items.length}</h3>
-                        </div>
-                        
-                        ${quiz.incorrect.length > 0 ? `
-                            <div class="review-list">
-                                <h4>${t('incorrect_answers', 'Incorrect Answers')}</h4>
-                                ${quiz.incorrect.map(item => `
-                                    <div class="card review-item">
-                                        <strong lang="th">${UI.escapeHtml(item.question)}</strong>
-                                        <small>${UI.escapeHtml(item.translations[quiz.answerLang || 'en'])}</small>
-                                    </div>
-                                `).join('')}
+        <div class="quiz-container">
+            <h2>${t('review', 'Review')}</h2>
+            <div class="card">
+                <h3>${t('score', 'Score')}: ${quiz.score} / ${quiz.items.length}</h3>
+            </div>
+            
+            ${quiz.incorrect.length > 0 ? `
+                <div class="review-list">
+                    <h4>${t('incorrect_answers', 'Incorrect Answers')}</h4>
+                    ${quiz.incorrect.map(item => {
+                    // Get the translation in the quiz answer language (or fallback to first available)
+                    const answerLang = quiz.answerLang || availableLangs[0] || 'en';
+                    const translation = item.translations[answerLang] ||
+                        item.translations[availableLangs[0]] ||
+                        item.translations.en || '';
+
+                    return `
+                            <div class="card review-item">
+                                <div class="review-item-content">
+                                    <strong class="review-question" 
+                                            onclick="App.media.play(this)"
+                                            data-text="${UI.escapeHtml(item.question)}"
+                                            data-lang="th">
+                                        <span class="material-icons review-speech-icon">volume_up</span>
+                                        ${UI.escapeHtml(item.question)}
+                                    </strong>
+                                    ${translation ? `
+                                        <small class="review-answer"
+                                               onclick="App.media.play(this)"
+                                               data-text="${UI.escapeHtml(translation)}"
+                                               data-lang="${answerLang}">
+                                            <span class="material-icons review-speech-icon-small">volume_up</span>
+                                            ${UI.escapeHtml(translation)}
+                                        </small>
+                                    ` : ''}
+                                </div>
                             </div>
-                        ` : ''}
-                        
-                        <div class="quiz-footer-btns">
-                            <button class="btn-activity" onclick="location.hash='doc/${quiz.documentId}'">
-                                ${t('finish', 'Finish')}
-                            </button>
-                            ${quiz.incorrect.length > 0 ? `
-                                <button class="btn-activity" onclick="App.quiz.retryIncorrect()">
-                                    ${t('retry_incorrect', 'Retry Incorrect')}
-                                </button>
-                            ` : ''}
-                        </div>
-                    </div>
-                `;
+                        `;
+                }).join('')}
+                </div>
+            ` : `
+                <div class="perfect-score">
+                    <span class="material-icons perfect-icon">emoji_events</span>
+                    <p>${t('perfect_score', 'Perfect score! Great job!')}</p>
+                </div>
+            `}
+            
+            <div class="quiz-footer-btns">
+                <button class="btn-activity" onclick="location.hash='doc/${quiz.documentId}'">
+                    <span class="material-icons">arrow_back</span>
+                    ${t('finish', 'Finish')}
+                </button>
+                ${quiz.incorrect.length > 0 ? `
+                    <button class="btn-activity" onclick="App.quiz.retryIncorrect()">
+                        <span class="material-icons">refresh</span>
+                        ${t('retry_incorrect', 'Retry Incorrect')}
+                    </button>
+                ` : ''}
+            </div>
+        </div>
+    `;
             }
+
         },
 
         // ------------------------------------------------------------------------
@@ -1915,10 +2020,11 @@ const App = (function () {
             </div>
             
             <div class="flashcard ${cards.showAnswer ? 'show-answer' : ''}">
-                <div class="flashcard-front" onclick="App.media.play(this)"
-                     data-text="${UI.escapeHtml(card.front)}" data-lang="th">
+                <div class="flashcard-front" 
+                     onclick="App.media.play(this)"
+                     data-text="${UI.escapeHtml(card.front)}" 
+                     data-lang="th">
                     <div class="flashcard-content" lang="th">${UI.escapeHtml(card.front)}</div>
-                    <span class="material-icons audio-icon">volume_up</span>
                 </div>
                 
                 <div class="flashcard-back">
@@ -1929,12 +2035,14 @@ const App = (function () {
                     if (code !== 'th' && config.show && card.back[code]) {
                         const dir = code === 'fa' ? 'rtl' : 'ltr';
                         html += `
-                <div class="flashcard-translation-item" lang="${code}" dir="${dir}"
+                <div class="flashcard-translation-item" 
+                     lang="${code}" 
+                     dir="${dir}"
                      onclick="App.media.play(this)"
-                     data-text="${UI.escapeHtml(card.back[code])}" data-lang="${code}">
+                     data-text="${UI.escapeHtml(card.back[code])}" 
+                     data-lang="${code}">
                     <span class="translation-lang">${code.toUpperCase()}:</span>
                     <span class="translation-text">${UI.escapeHtml(card.back[code])}</span>
-                    <span class="material-icons audio-icon-small">volume_up</span>
                 </div>
             `;
                     }
@@ -3054,7 +3162,7 @@ const App = (function () {
             document.documentElement.dir = State.data.lang === 'fa' ? 'rtl' : 'ltr';
         },
 
-        handleLibraryAccordion(clickedIndex){
+        handleLibraryAccordion(clickedIndex) {
             // Close all other sections by updating state
             // If clicking the same section that's already open, close it (null means no section open)
             // Otherwise open the clicked section
@@ -3082,11 +3190,24 @@ const App = (function () {
             // We just need to save the state for next time
         },
 
-        handleDocumentClick(documentId){
+        handleDocumentClick(documentId) {
             // Store this as the last opened document and navigate
             State.data.lastDocument = documentId;
             State.save('lastDocument');
             App.router.go(`doc/${documentId}`);
+        },
+
+        handleDetailsToggle: function (details, isOpen) {
+            // If a details panel is being closed and we're playing, we should stop
+            if (!isOpen && State.data.media.isPlaying) {
+                // Check if the currently playing element is inside this details panel
+                const currentElements = document.querySelectorAll('.audio-element');
+                const currentElement = currentElements[State.data.media.currentIndex];
+                if (currentElement && details.contains(currentElement)) {
+                    // The element being played is inside the panel being closed, stop playback
+                    Services.MediaService.stopSequence();
+                }
+            }
         },
 
         startFlashcards(docId, sectionIdx, type) {
@@ -3301,17 +3422,52 @@ const App = (function () {
                     return;
                 }
 
-                if (State.data.media.currentIndex >= elements.length) {
+                // Re-query elements in case DOM has changed
+                const currentElements = document.querySelectorAll('.audio-element');
+
+                if (State.data.media.currentIndex >= currentElements.length) {
                     // console.log('Reached end of elements, stopping');
                     this.stopSequence();
                     return;
                 }
 
-                const element = elements[State.data.media.currentIndex];
+                const element = currentElements[State.data.media.currentIndex];
                 if (!element) {
                     // console.log('Element not found at index', State.data.media.currentIndex);
                     State.data.media.currentIndex++;
                     setTimeout(playNext, 100);
+                    return;
+                }
+
+                // Check if the element is inside a closed details panel and open it
+                const details = element.closest('details');
+                if (details && !details.open) {
+                    // console.log('Opening closed details panel for element at index', State.data.media.currentIndex);
+                    details.open = true;
+
+                    // Find the section index from the details element
+                    const sectionIndex = details.getAttribute('data-section-index');
+                    if (sectionIndex !== null) {
+                        const documentId = State.data.currentDocument?.id;
+                        if (documentId) {
+                            // Update the accordion state to reflect that this section is now open
+                            // and all others should be closed (accordion behavior)
+                            State.data.documentAccordion.openSections[documentId] = parseInt(sectionIndex);
+                            State.save('documentAccordion');
+                        }
+                    }
+
+                    // Small delay to allow the details panel to expand before continuing
+                    setTimeout(() => {
+                        // Re-get the elements array as the DOM has changed
+                        const updatedElements = document.querySelectorAll('.audio-element');
+                        // Find the new index of the same element in the updated DOM
+                        const updatedIndex = Array.from(updatedElements).indexOf(element);
+                        if (updatedIndex !== -1) {
+                            State.data.media.currentIndex = updatedIndex;
+                        }
+                        playNext();
+                    }, 150); // Increased delay to ensure panel expansion completes
                     return;
                 }
 
@@ -3328,7 +3484,6 @@ const App = (function () {
                 const rowId = row?.id || row?.getAttribute('data-uid') || `row-${State.data.media.currentIndex}`;
                 // console.log('Row ID:', rowId, 'Current row ID:', State.data.currentRowId);
 
-                // Scroll when we enter a new row
                 // Scroll when we enter a new row
                 if (rowId && rowId !== State.data.currentRowId) {
                     // console.log('New row detected, scrolling...');
@@ -3391,7 +3546,34 @@ const App = (function () {
             const speakCurrent = () => {
                 if (!State.data.media.isPlaying) return;
 
-                const element = elements[State.data.media.currentIndex];
+                // Re-query current elements in case DOM has changed
+                const currentElements = document.querySelectorAll('.audio-element');
+
+                if (State.data.media.currentIndex >= currentElements.length) {
+                    // console.log('Element no longer exists, stopping playback');
+                    this.stopSequence();
+                    return;
+                }
+
+                const element = currentElements[State.data.media.currentIndex];
+                if (!element) {
+                    // console.log('Element not found, moving to next');
+                    State.data.media.currentIndex++;
+                    setTimeout(playNext, 100);
+                    return;
+                }
+
+                // Double-check that the element is in an open details panel
+                const details = element.closest('details');
+                if (details && !details.open) {
+                    // If somehow we got here with a closed panel, open it and retry
+                    details.open = true;
+                    setTimeout(() => {
+                        speakCurrent();
+                    }, 100);
+                    return;
+                }
+
                 const text = element.getAttribute('data-text');
                 const lang = element.getAttribute('data-lang');
                 const repeats = parseInt(settings[lang]?.repeat) || 1;
@@ -3444,12 +3626,7 @@ const App = (function () {
                                 // console.log('Moving to next element');
                                 State.data.media.currentIndex++;
                                 // console.log('New index:', State.data.media.currentIndex);
-                                // console.log('Elements length:', elements.length);
-
-                                // Check if we've reached the end
-                                if (State.data.media.currentIndex >= elements.length) {
-                                    // console.log('END REACHED: currentIndex >= elements.length');
-                                }
+                                // console.log('Elements length:', currentElements.length);
 
                                 setTimeout(playNext, State.data.media.delay * 1000);
                             }
@@ -3462,7 +3639,6 @@ const App = (function () {
 
             playNext();
         },
-
 
         updatePlayPauseIcon(isPlaying) {
             const playPauseBtn = document.querySelector('.player-ctrl[onclick="App.togglePlay()"]');
