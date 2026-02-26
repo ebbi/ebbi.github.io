@@ -376,11 +376,6 @@ h6 {
     color: var(--primary);
 }
 
-.section-details[open] summary {
-    background-color: rgba(37, 99, 235, 0.1);
-    border-bottom: 1px solid var(--primary);
-}
-
 .section-details[open] summary::before {
     transform: rotate(90deg);
 }
@@ -564,7 +559,6 @@ h6 {
 
 .library-section[open] .library-summary .material-icons {
     transform: rotate(180deg);
-    background-color: rgba(37, 99, 235, 0.1);
 }
 
 .library-title {
@@ -619,19 +613,6 @@ h6 {
 .doc-btn-arrow {
     font-size: 20px;
     opacity: 0.5;
-}
-
-.doc-btn.last-opened {
-    border-left: 3px solid var(--primary);
-    background-color: rgba(37, 99, 235, 0.05);
-}
-
-.doc-btn.last-opened .doc-btn-icon {
-    color: var(--primary);
-}
-
-.dark-theme .doc-btn.last-opened {
-    background-color: rgba(59, 130, 246, 0.15);
 }
 
 /* ============================================================================
@@ -762,141 +743,16 @@ h6 {
     /* Inherit from body font */
 }
 
+/* Active highlighting */
 .active-highlight {
-    background-color: #fbbf24 !important;
-    color: #000000 !important;
-    transition: all 0.2s ease;
+    background-color: #fef3c7;
+    color: #92400e;
+    border-radius: 4px;
 }
 
 .dark-theme .active-highlight {
     background-color: #fbbf24;
     color: #78350f;
-}
-
-.word-span.matched-word.active-highlight {
-    background-color: #fbbf24 !important;
-    color: #000000 !important;
-}
-
-.dark-theme .word-span.matched-word.active-highlight {
-    background-color: #fcd34d !important;
-    color: #000000 !important;
-}
-
-.stack-item.source.active-highlight {
-    background-color: #fbbf24 !important;
-    color: #000000 !important;
-    border-radius: 4px;
-}
-
-.dark-theme .stack-item.source.active-highlight {
-    background-color: #fcd34d !important;
-    color: #000000 !important;
-}
-
-/* Word breakdown items */
-.sent-word-item.active-highlight {
-    background-color: rgba(251, 191, 36, 0.3) !important;
-    border-radius: 6px;
-}
-
-.sent-word-item.active-highlight .sent-word-source {
-    color: #000000 !important;
-    font-weight: 600;
-}
-
-.dark-theme .sent-word-item.active-highlight {
-    background-color: rgba(252, 211, 77, 0.3) !important;
-}
-
-.dark-theme .sent-word-item.active-highlight .sent-word-source {
-    color: #000000 !important;
-}
-
-/* Translation word highlighting */
-.word-trans.active-highlight,
-.sent-word-trans.active-highlight,
-.stack-item.trans.active-highlight {
-    background-color: #fbbf24 !important;
-    color: #000000 !important;
-    border-radius: 4px;
-}
-
-.dark-theme .word-trans.active-highlight,
-.dark-theme .sent-word-trans.active-highlight,
-.dark-theme .stack-item.trans.active-highlight {
-    background-color: #fcd34d !important;
-    color: #000000 !important;
-}
-
-/* Word card highlighting */
-.word-card .word-source.active-highlight {
-    background-color: #fbbf24 !important;
-    color: #000000 !important;
-    border-radius: 4px;
-}
-
-.dark-theme .word-card .word-source.active-highlight {
-    background-color: #fcd34d !important;
-    color: #000000 !important;
-}
-
-/* Linked elements - ensure both source and breakdown are highlighted */
-[data-link].active-highlight {
-    background-color: #fbbf24 !important;
-    color: #000000 !important;
-}
-
-.dark-theme [data-link].active-highlight {
-    background-color: #fcd34d !important;
-    color: #000000 !important;
-}
-
-/* Ensure linked elements show highlight */
-span[data-link].active-highlight,
-div[data-link].active-highlight {
-    background-color: #fbbf24 !important;
-    color: #000000 !important;
-}
-
-.dark-theme span[data-link].active-highlight,
-.dark-theme div[data-link].active-highlight {
-    background-color: #fcd34d !important;
-    color: #000000 !important;
-}
-
-/* Quiz option highlighting */
-.quiz-option-btn.active-highlight {
-    background-color: #fbbf24 !important;
-    color: #000000 !important;
-    border-color: #d97706 !important;
-    transform: scale(1.02);
-}
-
-.dark-theme .quiz-option-btn.active-highlight {
-    background-color: #fcd34d !important;
-    color: #000000 !important;
-    border-color: #b45309 !important;
-}
-
-/* Word hover effects - keep subtle */
-.word-span.matched-word:hover {
-    background-color: rgba(251, 191, 36, 0.3);
-    cursor: pointer;
-}
-
-.dark-theme .word-span.matched-word:hover {
-    background-color: rgba(252, 211, 77, 0.3);
-    border-bottom: 2px solid #fbbf24;
-}
-
-.sent-word-item:hover {
-    background-color: rgba(251, 191, 36, 0.15);
-    border-radius: 6px;
-}
-
-.dark-theme .sent-word-item:hover {
-    background-color: rgba(252, 211, 77, 0.15);
 }
 
 /* Language-specific text colors */
@@ -1054,39 +910,17 @@ div[data-link].active-highlight {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 12px;
-    margin: 16px 0;
-    padding: 12px;
-    background: var(--card);
-    border-radius: 8px;
-    border: 1px solid var(--border);
+    gap: 8px;
+    margin-bottom: 12px;
 }
 
 .quiz-lang-selectors select {
-    padding: 8px 12px;
-    font-size: 0.95rem;
-    border-radius: 6px;
-    border: 2px solid var(--primary);
-    background: var(--bg);
+    padding: 4px 8px;
+    font-size: 0.9rem;
+    border-radius: 4px;
+    border: 1px solid var(--primary);
+    background: var(--card);
     color: var(--text);
-    cursor: pointer;
-    min-width: 100px;
-}
-
-.quiz-lang-selectors select:hover {
-    border-color: var(--primary-dark);
-    background: var(--hover-bg);
-}
-
-.quiz-lang-selectors .material-icons {
-    color: var(--primary);
-    font-size: 20px;
-}
-
-/* Selected language indicator */
-.quiz-lang-selectors select option:checked {
-    background: var(--primary);
-    color: white;
 }
 
 .quiz-score {

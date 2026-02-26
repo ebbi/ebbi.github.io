@@ -17,3 +17,11 @@ the current selected languages from settings page and change the language rendit
 distractors answers accordingly.
 
 
+A Click event on words and sentences that starts highlight / speech should also 
+change the toggle play icon to pause icon.
+
+During play, in dark mode, each word in the source sentence is highlighted at the same time as the 
+translation words, but in light mode only the translation words are highlighted and not the 
+corresponding word in the source sentence.
+
+

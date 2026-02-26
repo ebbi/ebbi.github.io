@@ -12,20 +12,11 @@ const App = (function () {
         data: {
             lang: localStorage.getItem('localStorageLang') || 'en',
             theme: localStorage.getItem('localStorageTheme') || 'light',
-            font: localStorage.getItem('localStorageFont') || 'font-serif',
+            font: localStorage.getItem('localStorageFont') || 'font-serif', // Changed from 'font-serif' to 'font-serif' (Noto Serif Thai)
             translations: {},
             manifest: null,
             currentDocument: null,
             isAutoScrolling: false,
-
-            // NEW: Track last opened document and accordion states
-            lastDocument: localStorage.getItem('lastDocument') || null,
-            libraryAccordion: {
-                openSection: 0 // Index of currently open library section
-            },
-            documentAccordion: {
-                openSections: {} // Will store open state per document
-            },
 
             media: {
                 isPlaying: false,
@@ -71,7 +62,6 @@ const App = (function () {
                     lastStudied: null
                 }
             },
-
             flashcards: null,
             quiz: null,
             sentenceGame: null,
@@ -99,13 +89,6 @@ const App = (function () {
             if (key === 'theme') localStorage.setItem('localStorageTheme', this.data.theme);
             if (key === 'lang') localStorage.setItem('localStorageLang', this.data.lang);
             if (key === 'font') localStorage.setItem('localStorageFont', this.data.font);
-            if (key === 'lastDocument') localStorage.setItem('lastDocument', this.data.lastDocument);
-            if (key === 'libraryAccordion') {
-                localStorage.setItem('libraryAccordion', JSON.stringify(this.data.libraryAccordion));
-            }
-            if (key === 'documentAccordion') {
-                localStorage.setItem('documentAccordion', JSON.stringify(this.data.documentAccordion));
-            }
             if (key === 'media') {
                 localStorage.setItem('localStorageSpeed', this.data.media.speed);
                 localStorage.setItem('localStorageDelay', this.data.media.delay);
@@ -114,24 +97,7 @@ const App = (function () {
                 localStorage.setItem('localStorageLangMap',
                     JSON.stringify(this.data.media.languageSettings));
             }
-        },
-
-        loadAccordionStates() {
-            try {
-                const savedLibrary = localStorage.getItem('libraryAccordion');
-                if (savedLibrary) {
-                    this.data.libraryAccordion = JSON.parse(savedLibrary);
-                }
-
-                const savedDocument = localStorage.getItem('documentAccordion');
-                if (savedDocument) {
-                    this.data.documentAccordion = JSON.parse(savedDocument);
-                }
-            } catch (e) {
-                console.warn('Failed to load accordion states', e);
-            }
         }
-
     };
 
     const EventBus = {
@@ -972,35 +938,11 @@ const App = (function () {
                     if (!State.data.media.isPlaying) {
                         State.data.media.isPlaying = true;
                         App.playSequence();
-                        // Update the play button to pause icon
-                        App.updatePlayPauseIcon(true);
                     } else {
                         window.speechSynthesis.cancel();
                         App.playSequence();
-                        // Icon should already be pause, but ensure it's correct
-                        App.updatePlayPauseIcon(true);
                     }
                 }
-            },
-
-/* moved to return object 
-            updatePlayPauseIcon(isPlaying) {
-                const playPauseBtn = document.querySelector('.player-ctrl[onclick="App.togglePlay()"]');
-                if (playPauseBtn) {
-                    playPauseBtn.textContent = isPlaying ? 'pause' : 'play_arrow';
-                }
-            },
-*/
-            togglePlay(){
-                State.data.media.isPlaying = !State.data.media.isPlaying;
-                if (State.data.media.isPlaying) {
-                    this.playSequence();
-                    this.updatePlayPauseIcon(true);
-                } else {
-                    Services.MediaService.pausePlayback();
-                    this.updatePlayPauseIcon(false);
-                }
-                this.showMediaBar();
             }
 
         },
@@ -1048,36 +990,30 @@ const App = (function () {
                 const lang = State.data.lang;
                 const t = Services.I18n.t;
 
-                // Get current open section from state
-                const openSection = State.data.libraryAccordion.openSection;
-
                 let html = '<div class="library-container">';
 
                 manifest.learningObjects.forEach((obj, idx) => {
                     const title = obj.title[lang] || obj.title.en;
-                    const isOpen = idx === openSection;
 
                     html += `
-            <details class="library-section" ${isOpen ? 'open' : ''} data-section-index="${idx}">
-                <summary class="library-summary" onclick="App.handleLibraryAccordion(${idx})">
-                    <span class="material-icons">expand_more</span>
-                    <span class="library-title">${UI.escapeHtml(title)}</span>
-                    <span class="library-count">(${obj.documents.length})</span>
-                </summary>
-                <div class="library-docs">
-        `;
+                        <details class="library-section" ${idx === 0 ? 'open' : ''}>
+                            <summary class="library-summary">
+                                <span class="material-icons">expand_more</span>
+                                <span class="library-title">${UI.escapeHtml(title)}</span>
+                                <span class="library-count">(${obj.documents.length})</span>
+                            </summary>
+                            <div class="library-docs">
+                    `;
 
                     obj.documents.forEach(doc => {
                         const docTitle = doc.title[lang] || doc.title.en;
-                        const isLastDocument = doc.id === State.data.lastDocument;
                         html += `
-                <button class="doc-btn ${isLastDocument ? 'last-opened' : ''}" 
-                        onclick="App.handleDocumentClick('${doc.id}')">
-                    <span class="material-icons doc-btn-icon">description</span>
-                    <span class="doc-btn-text">${UI.escapeHtml(docTitle)}</span>
-                    <span class="material-icons doc-btn-arrow">chevron_right</span>
-                </button>
-            `;
+                            <button class="doc-btn" onclick="App.router.go('doc/${doc.id}')">
+                                <span class="material-icons doc-btn-icon">description</span>
+                                <span class="doc-btn-text">${UI.escapeHtml(docTitle)}</span>
+                                <span class="material-icons doc-btn-arrow">chevron_right</span>
+                            </button>
+                        `;
                     });
 
                     html += `</div></details>`;
@@ -1092,7 +1028,6 @@ const App = (function () {
         // Document View
         // ------------------------------------------------------------------------
         Document: {
-
             async render(documentId) {
                 const container = UI.getContainer();
                 if (!container) return;
@@ -1104,22 +1039,11 @@ const App = (function () {
                     const lang = State.data.lang;
                     const t = Services.I18n.t;
 
-                    // Store this as the last opened document
-                    State.data.lastDocument = documentId;
-                    State.save('lastDocument');
-
-                    // Get saved accordion state for this document
-                    const docAccordion = State.data.documentAccordion;
-
-                    // Initialize if this document doesn't have a saved state
-                    if (docAccordion.openSections[documentId] === undefined) {
-                        docAccordion.openSections[documentId] = 0; // First section open by default
-                        State.save('documentAccordion');
-                    }
-
                     let html = `<div class="document-content">`;
 
                     const documentActivities = this.getDocumentActivities(doc);
+                    // console.log('Document activities:', documentActivities);
+
                     html += `<div class="document-controls-wrapper">`;
 
                     documentActivities.forEach(activity => {
@@ -1128,45 +1052,43 @@ const App = (function () {
 
                         if (isGame) {
                             html += `
-                    <button class="btn-sentence-game" onclick="App.startSentenceGame('${doc.id}', null)">
-                        <span class="material-icons">dashboard</span>
-                        <span>${t('sentences', 'Sentences')}</span>
-                    </button>
-                `;
+                                <button class="btn-sentence-game" onclick="App.startSentenceGame('${doc.id}', null)">
+                                    <span class="material-icons">dashboard</span>
+                                    <span>${t('sentences', 'Sentences')}</span>
+                                </button>
+                            `;
                         } else if (activity.startsWith('flashcard')) {
                             const type = isWord ? 'word' : 'sentence';
                             html += `
-                    <button class="btn-flashcard" onclick="App.startFlashcards('${doc.id}', null, '${type}')">
-                        <span class="material-icons">style</span>
-                        <span>${isWord ? t('words', 'Words') : t('sentences', 'Sentences')}</span>
-                    </button>
-                `;
+                                <button class="btn-flashcard" onclick="App.startFlashcards('${doc.id}', null, '${type}')">
+                                    <span class="material-icons">style</span>
+                                    <span>${isWord ? t('words', 'Words') : t('sentences', 'Sentences')}</span>
+                                </button>
+                            `;
                         } else if (activity.startsWith('multipleChoice')) {
                             html += `
-                    <button class="doc-quiz-btn" onclick="location.hash='quiz/${doc.id}/null/${activity}'">
-                        <span class="material-icons">quiz</span>
-                        <span>${isWord ? t('words', 'Words') : t('sentences', 'Sentences')}</span>
-                    </button>
-                `;
+                                <button class="doc-quiz-btn" onclick="location.hash='quiz/${doc.id}/null/${activity}'">
+                                    <span class="material-icons">quiz</span>
+                                    <span>${isWord ? t('words', 'Words') : t('sentences', 'Sentences')}</span>
+                                </button>
+                            `;
                         }
                     });
 
                     html += `</div>`;
 
                     doc.sections.forEach((section, idx) => {
-                        const isOpen = docAccordion.openSections[documentId] === idx;
-
                         html += `
-                <details class="section-details" ${isOpen ? 'open' : ''} data-section-index="${idx}">
-                    <summary onclick="App.handleDocumentAccordion('${documentId}', ${idx})">
-                        <span class="section-title-text">${UI.escapeHtml(section.heading)}</span>
-                    </summary>
-                    <div class="section-card">
-                        ${UI.Document.renderSectionControls(doc.id, idx, section)}
-                        ${UI.Document.renderContent(section.content, idx)}
-                    </div>
-                </details>
-            `;
+                            <details class="section-details" open>
+                                <summary>
+                                    <span class="section-title-text">${UI.escapeHtml(section.heading)}</span>
+                                </summary>
+                                <div class="section-card">
+                                    ${UI.Document.renderSectionControls(doc.id, idx, section)}
+                                    ${UI.Document.renderContent(section.content, idx)}
+                                </div>
+                            </details>
+                        `;
                     });
 
                     html += '</div>';
@@ -1175,7 +1097,28 @@ const App = (function () {
                     container.innerHTML = `<div class="card">Error loading document: ${error.message}</div>`;
                 }
             },
-
+            /*
+                        getDocumentActivities(doc) {
+                            const activities = [];
+                            const settings = doc.activitySettings;
+            
+                            if (settings.inherit === true) {
+                                const wordTypes = settings.words?.types || [];
+                                const sentenceTypes = settings.sentences?.types || [];
+                                return [...new Set([...wordTypes, ...sentenceTypes])];
+                            }
+            
+                            if (settings.words?.types) {
+                                activities.push(...settings.words.types);
+                            }
+                            if (settings.sentences?.types) {
+                                activities.push(...settings.sentences.types);
+                            }
+            
+                            return [...new Set(activities)];
+                        },
+            */
+            // Replace both getDocumentActivities methods with this one:
             getDocumentActivities(doc) {
                 const activities = [];
 
@@ -1644,28 +1587,15 @@ const App = (function () {
                 const item = quiz.items[quiz.currentIndex];
                 const t = Services.I18n.t;
 
-                // Get available languages from settings
                 const availableLangs = Object.keys(State.data.media.languageSettings)
                     .filter(code => code !== 'th' && State.data.media.languageSettings[code].show);
 
-                // Set default languages if not set
-                if (!quiz.questionLang) quiz.questionLang = 'th';
-                if (!quiz.answerLang) quiz.answerLang = availableLangs[0] || 'en';
+                const answerLang = quiz.answerLang || availableLangs[0] || 'en';
+                const correctAnswer = item.translations[answerLang];
 
-                // Get question text based on selected question language
-                let questionText = item.question;
-                if (quiz.questionLang !== 'th') {
-                    // If question language is not Thai, use translation
-                    questionText = item.translations[quiz.questionLang] || item.question;
-                }
-
-                // Get correct answer based on selected answer language
-                const correctAnswer = item.translations[quiz.answerLang] || '';
-
-                // Generate distractors from other items in the same language
                 const otherAnswers = quiz.items
                     .filter(i => i.id !== item.id)
-                    .map(i => i.translations[quiz.answerLang])
+                    .map(i => i.translations[answerLang])
                     .filter(a => a && a !== correctAnswer);
 
                 const uniqueDistractors = [...new Set(otherAnswers)].slice(0, 3);
@@ -1696,7 +1626,7 @@ const App = (function () {
                     <select onchange="App.quiz.setQuestionLanguage(this.value)">
                         ${['th', ...availableLangs].map(code => `
                             <option value="${code}" ${code === quiz.questionLang ? 'selected' : ''}>
-                                ${code.toUpperCase()} ${code === 'th' ? '(Question)' : ''}
+                                ${code.toUpperCase()}
                             </option>
                         `).join('')}
                     </select>
@@ -1704,7 +1634,7 @@ const App = (function () {
                     <select onchange="App.quiz.setAnswerLanguage(this.value)">
                         ${availableLangs.map(code => `
                             <option value="${code}" ${code === quiz.answerLang ? 'selected' : ''}>
-                                ${code.toUpperCase()} ${code === quiz.answerLang ? '(Answer)' : ''}
+                                ${code.toUpperCase()}
                             </option>
                         `).join('')}
                     </select>
@@ -1722,11 +1652,11 @@ const App = (function () {
                       data-lang="th">
                     volume_up
                 </span>
-                <div class="quiz-question-text" lang="${quiz.questionLang}" 
+                <div class="quiz-question-text" lang="th" 
                      onclick="App.media.play(this)"
-                     data-text="${UI.escapeHtml(quiz.questionLang === 'th' ? item.question : questionText)}"
-                     data-lang="${quiz.questionLang}">
-                    ${UI.escapeHtml(questionText)}
+                     data-text="${UI.escapeHtml(item.question)}"
+                     data-lang="th">
+                    ${UI.escapeHtml(item.question)}
                 </div>
             </div>
 
@@ -1738,13 +1668,13 @@ const App = (function () {
                         <span class="material-icons audio-preview-icon"
                               onclick="event.stopPropagation(); App.media.play(this)"
                               data-text="${UI.escapeHtml(option)}"
-                              data-lang="${quiz.answerLang}">
+                              data-lang="${answerLang}">
                             volume_up
                         </span>
-                        <span lang="${quiz.answerLang}" dir="${quiz.answerLang === 'fa' ? 'rtl' : 'ltr'}"
+                        <span lang="${answerLang}" dir="${answerLang === 'fa' ? 'rtl' : 'ltr'}"
                               onclick="event.stopPropagation(); App.media.play(this)"
                               data-text="${UI.escapeHtml(option)}"
-                              data-lang="${quiz.answerLang}">
+                              data-lang="${answerLang}">
                             ${UI.escapeHtml(option)}
                         </span>
                     </button>
@@ -1755,7 +1685,7 @@ const App = (function () {
 
                 // Auto-play the question
                 setTimeout(() => {
-                    Services.MediaService.speak(questionText, quiz.questionLang);
+                    Services.MediaService.speak(item.question, 'th');
                 }, 100);
             },
 
@@ -2971,25 +2901,12 @@ const App = (function () {
         router: Router,
 
         async init() {
-
-            // Load accordion states first
-            State.loadAccordionStates();
-
             this.renderLayout();
             await Services.I18n.loadTranslations();
             await Services.DataService.loadManifest();
             this.applyTheme();
             Router.init();
             Services.MediaService.init();
-
-            // Check if we should auto-open last document based on URL
-            const hash = window.location.hash.slice(1);
-            if (!hash && State.data.lastDocument) {
-                // Optional: Uncomment if you want to auto-navigate to last document on startup
-                // this.router.go(`doc/${State.data.lastDocument}`);
-                // For now, we just highlight it in the library (already handled by UI.Library.render)
-                console.log('Last document available:', State.data.lastDocument);
-            }
 
             const pauseOnInteraction = () => {
                 if (State.data.media.isPlaying && !State.data.isAutoScrolling) {
@@ -3002,11 +2919,15 @@ const App = (function () {
             window.addEventListener('wheel', pauseOnInteraction, { passive: true });
             window.addEventListener('touchmove', pauseOnInteraction, { passive: true });
             window.addEventListener('keydown', (e) => {
+
+                // Don't pause during auto-scrolling
                 if (State.data.isAutoScrolling) return;
+
                 if (e.key.includes('Arrow') || e.key === ' ' || e.key.includes('Page')) {
                     pauseOnInteraction();
                 }
             });
+
         },
 
         renderLayout() {
@@ -3042,41 +2963,6 @@ const App = (function () {
             document.body.className = `${State.data.theme}-theme ${State.data.font}`;
             document.documentElement.lang = State.data.lang;
             document.documentElement.dir = State.data.lang === 'fa' ? 'rtl' : 'ltr';
-        },
-
-        handleLibraryAccordion(clickedIndex){
-            // Close all other sections by updating state
-            // If clicking the same section that's already open, close it (null means no section open)
-            // Otherwise open the clicked section
-            State.data.libraryAccordion.openSection =
-                State.data.libraryAccordion.openSection === clickedIndex ? null : clickedIndex;
-            State.save('libraryAccordion');
-
-            // Force re-render of library to reflect changes
-            if (window.location.hash === '#library' || window.location.hash === '') {
-                UI.Library.render();
-            }
-        },
-
-        handleDocumentAccordion(documentId, clickedIndex) {
-            // Get current open section for this document
-            const currentOpen = State.data.documentAccordion.openSections[documentId];
-
-            // Update state - if clicking same section, close it; otherwise open new one
-            // Using null to represent closed state (no sections open)
-            State.data.documentAccordion.openSections[documentId] =
-                currentOpen === clickedIndex ? null : clickedIndex;
-            State.save('documentAccordion');
-
-            // Note: The actual opening/closing is handled by the browser's details/summary elements
-            // We just need to save the state for next time
-        },
-
-        handleDocumentClick(documentId){
-            // Store this as the last opened document and navigate
-            State.data.lastDocument = documentId;
-            State.save('lastDocument');
-            App.router.go(`doc/${documentId}`);
         },
 
         startFlashcards(docId, sectionIdx, type) {
@@ -3126,24 +3012,21 @@ const App = (function () {
             document.body.classList.add('has-media-bar');
         },
 
-        togglePlay: function () {
+        togglePlay() {
             State.data.media.isPlaying = !State.data.media.isPlaying;
             if (State.data.media.isPlaying) {
-                this.playSequence();
-                this.updatePlayPauseIcon(true);
+                this.playSequence(); // This calls App.playSequence, not Services.MediaService.playSequence
             } else {
                 Services.MediaService.pausePlayback();
-                this.updatePlayPauseIcon(false);
             }
             this.showMediaBar();
         },
 
-        stopSequence: function () {
+        stopSequence() {
             State.data.media.isPlaying = false;
             State.data.media.currentIndex = 0;
             window.speechSynthesis.cancel();
             this.showMediaBar();
-            this.updatePlayPauseIcon(false);
         },
 
         showSettingsOverlay() {
@@ -3182,6 +3065,8 @@ const App = (function () {
             // Show confirmation notification
             this.showNotification(Services.I18n.t('settings_reset', 'Settings reset to defaults'));
         },
+
+        // Add this helper method to the App return object:
 
         showNotification(message) {
             // Remove any existing notification
@@ -3226,12 +3111,8 @@ const App = (function () {
             if (!isInDocument) {
                 // console.log('Not in document view, stopping playback');
                 this.stopSequence();
-                this.updatePlayPauseIcon(false);
                 return;
             }
-
-            // Ensure play icon is set to pause
-            this.updatePlayPauseIcon(true);
 
             // console.log('Current index:', State.data.media.currentIndex);
 
@@ -3273,7 +3154,7 @@ const App = (function () {
                     }, 200);
 
                     scrollEndTimer = null;
-                }, 200);
+                }, 200); // Increased from 150ms to 200ms
             };
 
             const playNext = () => {
@@ -3325,7 +3206,7 @@ const App = (function () {
                     pendingScrollCompletion = true;
 
                     // Set a long scroll lock immediately
-                    window.scrollLockUntil = Date.now() + 1500;
+                    window.scrollLockUntil = Date.now() + 1500; // Increased to 1500ms
 
                     if (row) {
                         row.scrollIntoView({
@@ -3356,7 +3237,7 @@ const App = (function () {
                             pendingScrollCompletion = false;
                             speakCurrent();
                         }, 100);
-                    }, 400);
+                    }, 400); // Increased from 300ms to 400ms
                 } else {
                     // console.log('Same row, speaking current element');
                     speakCurrent();
@@ -3438,30 +3319,18 @@ const App = (function () {
             playNext();
         },
 
-
-        updatePlayPauseIcon(isPlaying) {
-            const playPauseBtn = document.querySelector('.player-ctrl[onclick="App.togglePlay()"]');
-            if (playPauseBtn) {
-                playPauseBtn.textContent = isPlaying ? 'pause' : 'play_arrow';
-            }
-        },
-
         media: {
-            play: function (element) {
+            play(element) {
                 const inDocument = element.closest('.document-content') !== null;
 
                 if (inDocument) {
                     // Use seekToElement for document content
                     Services.MediaService.seekToElement(element);
-                    // The icon update will happen in seekToElement via App.updatePlayPauseIcon
                 } else {
                     // Single playback for flashcards, quizzes, etc.
                     const text = element.getAttribute('data-text');
                     const lang = element.getAttribute('data-lang');
                     Services.MediaService.speak(text, lang);
-
-                    // For single playback, we don't change the play/pause state
-                    // because it's not part of the sequence
                 }
             }
         },
@@ -3503,6 +3372,7 @@ const App = (function () {
             Router.handle();
         },
 
+        // Quiz helpers
         quiz: {
             setQuestionLanguage(lang) {
                 if (State.data.quiz) {
@@ -3563,7 +3433,7 @@ const App = (function () {
                 }
             }
         },
-
+        // Game helpers
         game: {
             // In the game helpers
             addWord(word) {
@@ -3721,6 +3591,7 @@ const App = (function () {
             }
         },
 
+        // Flashcard helpers
         showFlashcardAnswer() {
             if (State.data.flashcards) {
                 State.data.flashcards.showAnswer = true;
@@ -3765,6 +3636,7 @@ const App = (function () {
             }
         },
 
+        // Grammar sheet
         showGrammarSheet(grammarId) {
             // Parse the grammar ID: grammar-sectionIdx-blockIdx
             const parts = grammarId.split('-');
@@ -3957,9 +3829,7 @@ const App = (function () {
 
             Router.handle();
         }
-
     };
-
 })();
 
 // Initialize on load
