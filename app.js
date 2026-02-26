@@ -34,7 +34,7 @@ const App = (function () {
                     const defaults = {
                         th: { show: true, repeat: 1 },
                         en: { show: true, repeat: 1 },
-                        fa: { show: true, repeat: 1 }
+                        fa: { show: false, repeat: 1 }
                     };
                     try {
                         const stored = JSON.parse(localStorage.getItem('localStorageLangMap'));
@@ -68,7 +68,6 @@ const App = (function () {
             grammarSheet: { isOpen: false, content: null }
         },
 
-        // MOVE DEFAULTS HERE - at the same level as data, not inside data
         defaults: {
             media: {
                 speed: 1,
@@ -78,7 +77,7 @@ const App = (function () {
                 languageSettings: {
                     th: { show: true, repeat: 1 },
                     en: { show: true, repeat: 1 },
-                    fa: { show: true, repeat: 1 }
+                    fa: { show: false, repeat: 1 }
                 }
             }
         },
