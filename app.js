@@ -2834,7 +2834,7 @@ const App = (function () {
         <div style="
             background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
             border-radius: 16px;
-            padding: 32px 24px;
+            padding: 32px 4px;
             color: white;
             text-align: center;
         ">
@@ -2856,8 +2856,8 @@ const App = (function () {
                 background: white;
                 color: var(--primary-dark);
                 text-decoration: none;
-                padding: 14px;
-                border-radius: 50px;
+                padding: 14px 0;
+                border-radius: 16px;
                 font-weight: 600;
                 font-size: 1rem;
                 transition: all 0.2s ease;
@@ -2866,7 +2866,7 @@ const App = (function () {
                onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 16px rgba(0,0,0,0.25)';"
                onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 12px rgba(0,0,0,0.2)';">
                 <span class="material-icons" style="font-size: 22px;">person</span>
-                <span>Ebbi at ebbi40@gmail.com</span>
+                <span>Ebbi at ebrahimShaghouei@gmail.com</span>
                 <span class="material-icons" style="font-size: 18px; opacity: 0.7;">open_in_new</span>
             </a>
         </div>
