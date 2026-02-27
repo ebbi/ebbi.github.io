@@ -2856,10 +2856,10 @@ const App = (function () {
                 background: white;
                 color: var(--primary-dark);
                 text-decoration: none;
-                padding: 14px 28px;
+                padding: 14px;
                 border-radius: 50px;
                 font-weight: 600;
-                font-size: 1.1rem;
+                font-size: 1rem;
                 transition: all 0.2s ease;
                 box-shadow: 0 4px 12px rgba(0,0,0,0.2);
             "
