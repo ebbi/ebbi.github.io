@@ -2865,7 +2865,7 @@ const App = (function () {
             "
                onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 16px rgba(0,0,0,0.25)';"
                onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 12px rgba(0,0,0,0.2)';">
-                <span>Contact Ebbi at: ebrahimShaghouei@gmail.com</span>
+                <span>Ebbi <span lang="th">หล่อ</span> ebrahimShaghouei@gmail.com</span>
              </a>
         </div>
     </div>
