@@ -2848,7 +2848,7 @@ const App = (function () {
                 ${t('contact_message', 'Have a question, feedback, or need help?')}
             </p>
             
-            <a href="mailto:ebbi40@gmail.com" 
+            <a href="mailto:ebrahimShaghouei@gmail.com" 
                style="
                 display: inline-flex;
                 align-items: center;
@@ -2856,19 +2856,17 @@ const App = (function () {
                 background: white;
                 color: var(--primary-dark);
                 text-decoration: none;
-                padding: 14px 0;
+                padding: 1rem;
                 border-radius: 16px;
                 font-weight: 600;
-                font-size: 1rem;
+                font-size: 0.9rem;
                 transition: all 0.2s ease;
                 box-shadow: 0 4px 12px rgba(0,0,0,0.2);
             "
                onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 16px rgba(0,0,0,0.25)';"
                onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 12px rgba(0,0,0,0.2)';">
-                <span class="material-icons" style="font-size: 22px;">person</span>
                 <span>Contact Ebbi at: ebrahimShaghouei@gmail.com</span>
-                <span class="material-icons" style="font-size: 18px; opacity: 0.7;">open_in_new</span>
-            </a>
+             </a>
         </div>
     </div>
 </details>
