@@ -33,6 +33,7 @@
             padding: 0;
         }
 
+        /* Single system font for everything */
         body,
         button,
         input,
@@ -48,6 +49,7 @@
             padding: 20px;
         }
 
+        /* Thai text - same font, just larger */
         [lang="th"],
         #thaiInput,
         textarea[lang="th"],
@@ -60,6 +62,7 @@
             font-family: 'Noto Serif Thai', serif;
         }
 
+        /* Thai input field */
         #thaiInput {
             font-family: 'Noto Serif Thai', 'Courier New', monospace;
             font-size: var(--thai-font-size);
@@ -73,6 +76,7 @@
             font-family: 'Noto Serif Thai', serif;
         }
 
+        /* Thai text in edit fields */
         .edit-field input[lang="th"],
         .edit-field textarea[lang="th"],
         .edit-field textarea {
@@ -102,6 +106,7 @@
             background: var(--primary-dark);
         }
 
+        /* Thai text in preview */
         .json-viewer [lang="th"] {
             font-size: 1.4rem;
             color: var(--primary);
@@ -169,15 +174,13 @@
             margin-bottom: 20px;
         }
 
-        details.metadata-details,
-        details.edit-section-details {
+        details.metadata-details {
             border: 1px solid var(--border);
             border-radius: 8px;
             background: var(--bg);
         }
 
-        details.metadata-details summary,
-        details.edit-section-details summary {
+        details.metadata-details summary {
             padding: 15px;
             cursor: pointer;
             font-weight: 600;
@@ -188,8 +191,7 @@
             border-radius: 8px;
         }
 
-        details.metadata-details[open] summary,
-        details.edit-section-details[open] summary {
+        details.metadata-details[open] summary {
             border-bottom: 1px solid var(--border);
             border-radius: 8px 8px 0 0;
         }
@@ -689,41 +691,6 @@
         .hidden {
             display: none !important;
         }
-
-        /* New add content panel */
-        .add-content-panel {
-            background: var(--card);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 20px;
-            margin-top: 20px;
-        }
-
-        details.add-content-details {
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            background: var(--bg);
-        }
-
-        details.add-content-details summary {
-            padding: 15px;
-            cursor: pointer;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            background: var(--card);
-            border-radius: 8px;
-        }
-
-        details.add-content-details[open] summary {
-            border-bottom: 1px solid var(--border);
-            border-radius: 8px 8px 0 0;
-        }
-
-        .add-content-inner {
-            padding: 20px;
-        }
     </style>
 </head>
 
@@ -850,10 +817,9 @@
                 <h3>📝 Enter New Thai Text</h3>
 
                 <div class="heading-input">
-                    <label>Heading (Optional - Thai)</label>
-                    <input type="text" id="headingInput" placeholder="เช่น: ทักทายเบื้องต้น, รายการคำศัพท์ ฯลฯ"
-                        lang="th">
-                    <small>Will be automatically translated to English and Farsi in the output</small>
+                    <label>Heading (Optional - English)</label>
+                    <input type="text" id="headingInput" placeholder="e.g., Basic Greetings, Vocabulary List, etc.">
+                    <small>Will be automatically translated to Farsi and Thai in the output</small>
                 </div>
 
                 <div class="instruction-box"
@@ -956,22 +922,8 @@
 
         <!-- Update Document View -->
         <div id="updateView" class="hidden">
-            <!-- Edit Document Content panel (details, default closed) -->
             <div class="document-edit-container" id="documentEditContainer">
-                <!-- Will be populated dynamically with a details panel -->
-            </div>
-            <!-- Add New Content panel (new) -->
-            <div class="add-content-panel">
-                <details class="add-content-details">
-                    <summary>
-                        <span class="material-icons">add_box</span>
-                        Add New Content
-                    </summary>
-                    <div class="add-content-inner" id="addContentInner">
-                        <!-- This will be populated with the create view's input section (minus vocab status) -->
-                        <!-- We'll clone the create view's input section via JS -->
-                    </div>
-                </details>
+                <!-- Will be populated dynamically -->
             </div>
         </div>
 
@@ -1015,7 +967,8 @@
     <input type="file" id="updateFileInput" accept=".json" style="display: none;">
 
     <script>
-        // Translation API (unchanged)
+        // [Keep all your existing JavaScript code exactly as is]
+        // Translation API
         const TranslationAPI = {
             cache: JSON.parse(localStorage.getItem('translationCache_v2') || '{}'),
 
@@ -1042,40 +995,22 @@
             },
 
             async translateHeading(text) {
-                if (!text) return { en: '', fa: '', th: text };
-
-                console.log('Translating heading from Thai:', text);
-
-                try {
-                    const enTranslation = await this.translate(text, 'en');
-                    console.log('EN translation:', enTranslation);
-
-                    const faTranslation = await this.translate(text, 'fa');
-                    console.log('FA translation:', faTranslation);
-
-                    return {
-                        en: enTranslation,
-                        fa: faTranslation,
-                        th: text  // Thai is the source text
-                    };
-                } catch (error) {
-                    console.error('Error in translateHeading:', error);
-                    return {
-                        en: '',
-                        fa: '',
-                        th: text
-                    };
-                }
+                if (!text) return { en: text, fa: '', th: '' };
+                const faTranslation = await this.translate(text, 'fa');
+                const thTranslation = await this.translate(text, 'th');
+                return {
+                    en: text,
+                    fa: faTranslation,
+                    th: thTranslation
+                };
             }
-
         };
 
-        // Text Cleaner - Updated to preserve / : ( ) characters
+        // Text Cleaner
         const Cleaner = {
             clean(text) {
                 if (!text) return text;
-                // Allow Thai characters, spaces, newlines, and punctuation: / : ( )
-                let cleaned = text.replace(/[^\u0E00-\u0E7F\s\n\/:\(\)]/g, '');
+                let cleaned = text.replace(/[^\u0E00-\u0E7F\s\n]/g, '');
                 cleaned = cleaned
                     .replace(/[^\S\n]+/g, ' ')
                     .replace(/^\s+/gm, '')
@@ -1210,8 +1145,7 @@
                     document.getElementById('metadataPanel').classList.remove('hidden');
                     document.getElementById('updateView').classList.remove('hidden');
 
-                    renderEditableDocument();  // This now creates a details panel for edit content
-                    setupAddContentPanel();    // Populate the "Add New Content" panel
+                    renderEditableDocument();
                     validateWordTranslations();
                     showFullDocument();
                     showDocumentValidationWarnings();
@@ -1224,336 +1158,30 @@
             reader.readAsText(file);
         }
 
-        // New function to set up the Add New Content panel (clone of create view's input section)
-        function setupAddContentPanel() {
-            const container = document.getElementById('addContentInner');
-            if (!container) return;
-
-            // Clone the essential input elements from createView but keep them functional
-            // We'll rebuild a simplified version that uses the same generateBlock logic but targets update workflow
-            container.innerHTML = `
-                <div class="input-section" style="margin-top:0;">
-                    <h3>⚙️ Input Configuration</h3>
-                    <div class="radio-group">
-                        <div class="radio-card" id="updateRadioWord" onclick="setDataType('word')">
-                            <span class="material-icons">grid_view</span>
-                            <h4>Word List</h4>
-                            <small>space between words</small>
-                        </div>
-                        <div class="radio-card" id="updateRadioParagraph" onclick="setDataType('paragraph')">
-                            <span class="material-icons">chat</span>
-                            <h4>Paragraph</h4>
-                            <small>new lines between sentences, spaces between words</small>
-                        </div>
-                    </div>
-                </div>
-                <div class="input-section">
-                    <h3>📝 Enter New Thai Text</h3>
-                    <div class="heading-input">
-<label>Heading (Optional - Thai)</label>
-<input type="text" id="updateHeadingInput" placeholder="เช่น: ทักทายเบื้องต้น, รายการคำศัพท์ ฯลฯ" lang="th">
-<small>Will be automatically translated to English and Farsi in the output</small>                    </div>
-                    <div class="instruction-box" style="background: rgba(37, 99, 235, 0.05); border-left: 4px solid var(--primary); padding: 15px; border-radius: 4px; margin-bottom: 15px;">
-                        <span class="material-icons">info</span>
-                        <span id="updateInstructionText">Separate words with space. Example: กิน ดื่ม ดู ฟัง ตื่น</span>
-                    </div>
-                    <div id="updateGrammarPanel" class="grammar-panel" style="display: none;">
-                        <h4>📐 Grammar Settings (Optional)</h4>
-                        <small style="color: var(--text-secondary);">Leave blank to omit grammar from block</small>
-                        <div class="grammar-grid">
-                            <div class="grammar-field">
-                                <label>Pattern</label>
-                                <input type="text" id="updateGrammarPattern" placeholder="e.g., Sentence + ครับ/ค่ะ">
-                            </div>
-                            <div class="grammar-field">
-                                <label>Example</label>
-                                <input type="text" id="updateGrammarExample" placeholder="e.g., สวัสดีครับ" lang="th">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="activity-block-panel">
-                        <h4>🎮 Block-level Activity Settings (Optional)</h4>
-                        <small style="color: var(--text-secondary);">Leave as "inherit" to use document settings</small>
-                        <div class="activity-mode-selector">
-                            <label><input type="radio" name="updateActivityMode" value="inherit" checked onchange="toggleUpdateActivityMode()"> Inherit from document</label>
-                            <label><input type="radio" name="updateActivityMode" value="override" onchange="toggleUpdateActivityMode()"> Override</label>
-                        </div>
-                        <div id="updateActivityOverridePanel" style="display: none;">
-                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
-                                <div><h5>Word Activities</h5><label><input type="checkbox" id="updateBlockWordMCQ"> Multiple Choice Word</label><br><label><input type="checkbox" id="updateBlockWordFlash"> Flashcard Word</label></div>
-                                <div><h5>Sentence Activities</h5><label><input type="checkbox" id="updateBlockSentMCQ"> Multiple Choice Sentence</label><br><label><input type="checkbox" id="updateBlockSentFlash"> Flashcard Sentence</label><br><label><input type="checkbox" id="updateBlockSentBuild"> Build Sentence</label></div>
-                            </div>
-                            <div style="margin-top: 15px;">
-                                <h5>Add/Remove Modifiers</h5>
-                                <div style="display: flex; gap: 20px;">
-                                    <div style="flex: 1;"><label>Add types:</label><input type="text" id="updateBlockActivityAdd" placeholder="e.g., buildSentence" style="width: 100%; padding: 5px;"></div>
-                                    <div style="flex: 1;"><label>Remove types:</label><input type="text" id="updateBlockActivityRemove" placeholder="e.g., flashcardWord" style="width: 100%; padding: 5px;"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <textarea id="updateThaiInput" placeholder="กิน ดื่ม ดู ฟัง ตื่น" lang="th" style="width:100%; min-height:150px; padding:10px; margin:15px 0;"></textarea>
-                    <div class="input-stats">
-                        <span><span class="material-icons">abc</span> Words: <span id="updateWordCount">0</span></span>
-                        <span><span class="material-icons">sentence</span> Sentences: <span id="updateSentenceCount">0</span></span>
-                        <span><span class="material-icons">cleaning_services</span> <button class="btn btn-outline" style="padding:5px 10px;" onclick="cleanUpdateText()">Clean Text</button></span>
-                        <span><span class="material-icons">sync</span> <button class="btn btn-outline" style="padding:5px 10px;" onclick="checkUpdateDuplicates()">Check Duplicates</button></span>
-                    </div>
-                    <button class="generate-button" onclick="generateUpdateBlock()" id="updateGenerateBtn">
-                        <span class="material-icons">auto_awesome</span>
-                        Generate New Block and Add to Document
-                    </button>
-                    <div id="updateGeneratedBlocks" class="generated-blocks"></div>
-                </div>
-            `;
-
-            // Sync dataType display
-            if (AppState.dataType === 'word') {
-                document.getElementById('updateRadioWord').classList.add('selected');
-                document.getElementById('updateRadioParagraph').classList.remove('selected');
-                document.getElementById('updateGrammarPanel').style.display = 'none';
-                document.getElementById('updateInstructionText').innerText = 'Separate words with space. Example: กิน ดื่ม ดู ฟัง ตื่น';
-            } else {
-                document.getElementById('updateRadioParagraph').classList.add('selected');
-                document.getElementById('updateRadioWord').classList.remove('selected');
-                document.getElementById('updateGrammarPanel').style.display = 'block';
-                document.getElementById('updateInstructionText').innerText = 'Separate sentences with new lines. Words within sentences with space.';
-            }
-
-            // Add event listener for textarea to update stats
-            document.getElementById('updateThaiInput').addEventListener('input', updateUpdateStats);
-        }
-
-        // Toggle activity override for update panel
-        function toggleUpdateActivityMode() {
-            const mode = document.querySelector('input[name="updateActivityMode"]:checked')?.value;
-            document.getElementById('updateActivityOverridePanel').style.display = mode === 'override' ? 'block' : 'none';
-        }
-
-        function cleanUpdateText() {
-            const textarea = document.getElementById('updateThaiInput');
-            textarea.value = Cleaner.clean(textarea.value);
-            updateUpdateStats();
-        }
-
-        function checkUpdateDuplicates() {
-            const text = document.getElementById('updateThaiInput').value;
-            const newWords = new Set();
-            if (AppState.dataType === 'word') {
-                text.split(/\s+/).filter(w => w.trim()).forEach(w => newWords.add(w));
-            } else {
-                text.split('\n').filter(s => s.trim()).forEach(s => {
-                    s.split(/\s+/).filter(w => w.trim()).forEach(w => newWords.add(w));
-                });
-            }
-            const existing = [];
-            newWords.forEach(word => {
-                if (AppState.mainVocabulary[word]) existing.push(word);
-            });
-            const warning = document.getElementById('duplicateWarning');
-            if (existing.length > 0) {
-                warning.style.display = 'flex';
-                document.getElementById('duplicateMessage').innerHTML = `📚 Existing: ${existing.join(', ')}. ✨ New: ${newWords.size - existing.length}`;
-            } else {
-                warning.style.display = 'none';
-            }
-        }
-
-        function updateUpdateStats() {
-            const text = document.getElementById('updateThaiInput').value;
-            if (AppState.dataType === 'word') {
-                const words = text.split(/\s+/).filter(w => w.trim().length > 0);
-                document.getElementById('updateWordCount').textContent = words.length;
-                document.getElementById('updateSentenceCount').textContent = 'N/A';
-            } else {
-                const sentences = text.split('\n').filter(s => s.trim().length > 0);
-                const words = text.split(/\s+/).filter(w => w.trim().length > 0);
-                document.getElementById('updateWordCount').textContent = words.length;
-                document.getElementById('updateSentenceCount').textContent = sentences.length;
-            }
-        }
-
-        // Generate block for update workflow (uses same logic as create but appends to current doc)
-        async function generateUpdateBlock() {
-            const text = document.getElementById('updateThaiInput').value;
-            if (!text.trim()) {
-                alert('Please enter some Thai text');
-                return;
-            }
-
-            showLoading('Generating translations...');
-
-            try {
-                if (AppState.dataType === 'word') {
-                    await generateWordBlockForUpdate(text);
-                } else {
-                    await generateParagraphBlockForUpdate(text);
-                }
-            } finally {
-                hideLoading();
-            }
-
-            updateCacheDisplay();
-            updateBlocksDisplay();
-            validateWordTranslations();
-            showFullDocument();
-            renderEditableDocument(); // refresh edit view
-        }
-
-        async function generateWordBlockForUpdate(text) {
-            const words = text.split(/\s+/).filter(w => w.trim().length > 0);
-            if (words.length === 0) return;
-
-            const uniqueWords = [...new Set(words)];
-
-            for (const word of uniqueWords) {
-                if (!AppState.mainVocabulary[word]) {
-                    const enTranslation = await TranslationAPI.translate(word, 'en');
-                    const faTranslation = await TranslationAPI.translate(word, 'fa');
-                    AppState.mainVocabulary[word] = { translations: { en: enTranslation, fa: faTranslation } };
-                }
-            }
-
-            const heading = document.getElementById('updateHeadingInput').value.trim();
-            const newBlock = { type: 'words' };
-            if (heading) {
-                // Get all three translations - Thai is source
-                const enTranslation = await TranslationAPI.translate(heading, 'en');
-                const faTranslation = await TranslationAPI.translate(heading, 'fa');
-                newBlock.heading = {
-                    en: enTranslation,
-                    fa: faTranslation,
-                    th: heading  // Thai is the source text
-                };
-            }
-            newBlock.activity = getUpdateBlockActivitySettings();
-            newBlock.wordIds = uniqueWords;
-
-            AppState.blocks.push(newBlock);
-            if (window.currentDocument) {
-                window.currentDocument.sections[0].content = AppState.blocks;
-                window.currentDocument.vocabulary = AppState.mainVocabulary;
-            }
-        }
-
-        async function generateParagraphBlockForUpdate(text) {
-            const sentences = text.split('\n').filter(s => s.trim().length > 0);
-            if (sentences.length === 0) return;
-
-            const sentencesData = [];
-            const allWords = new Set();
-
-            for (const sentence of sentences) {
-                const words = sentence.split(/\s+/).filter(w => w.trim().length > 0);
-                words.forEach(w => allWords.add(w));
-
-                const enTranslation = await TranslationAPI.translate(sentence, 'en');
-                const faTranslation = await TranslationAPI.translate(sentence, 'fa');
-                const continuousSource = words.join('');
-
-                sentencesData.push({
-                    type: 'sentence',
-                    source: continuousSource,
-                    wordIds: words,
-                    translations: { en: enTranslation, fa: faTranslation }
-                });
-            }
-
-            for (const word of allWords) {
-                if (!AppState.mainVocabulary[word]) {
-                    const enTranslation = await TranslationAPI.translate(word, 'en');
-                    const faTranslation = await TranslationAPI.translate(word, 'fa');
-                    AppState.mainVocabulary[word] = { translations: { en: enTranslation, fa: faTranslation } };
-                }
-            }
-
-            const heading = document.getElementById('updateHeadingInput').value.trim();
-            const newBlock = { type: 'paragraph' };
-
-            if (heading) {
-                // Get all three translations - Thai is source
-                const enTranslation = await TranslationAPI.translate(heading, 'en');
-                const faTranslation = await TranslationAPI.translate(heading, 'fa');
-                newBlock.heading = {
-                    en: enTranslation,
-                    fa: faTranslation,
-                    th: heading  // Thai is the source text
-                };
-            }
-
-            const grammarPattern = document.getElementById('updateGrammarPattern').value.trim();
-            const grammarExample = document.getElementById('updateGrammarExample').value.trim();
-            if (grammarPattern || grammarExample) {
-                newBlock.grammar = {};
-                if (grammarPattern) newBlock.grammar.pattern = grammarPattern;
-                if (grammarExample) {
-                    newBlock.grammar.examples = [{
-                        sentenceSource: grammarExample,
-                        translations: {
-                            en: await TranslationAPI.translate(grammarExample, 'en'),
-                            fa: await TranslationAPI.translate(grammarExample, 'fa')
-                        }
-                    }];
-                }
-            }
-
-            newBlock.activity = getUpdateBlockActivitySettings();
-            newBlock.sentences = sentencesData;
-
-            AppState.blocks.push(newBlock);
-            if (window.currentDocument) {
-                window.currentDocument.sections[0].content = AppState.blocks;
-                window.currentDocument.vocabulary = AppState.mainVocabulary;
-            }
-        }
-        function getUpdateBlockActivitySettings() {
-            const mode = document.querySelector('input[name="updateActivityMode"]:checked')?.value;
-            if (mode === 'inherit' || !mode) return { inherit: true };
-
-            const activity = { inherit: false };
-            const types = [];
-
-            if (document.getElementById('updateBlockWordMCQ')?.checked) types.push('multipleChoiceWord');
-            if (document.getElementById('updateBlockWordFlash')?.checked) types.push('flashcardWord');
-            if (document.getElementById('updateBlockSentMCQ')?.checked) types.push('multipleChoiceSentence');
-            if (document.getElementById('updateBlockSentFlash')?.checked) types.push('flashcardSentence');
-            if (document.getElementById('updateBlockSentBuild')?.checked) types.push('buildSentence');
-
-            if (types.length > 0) activity.types = types;
-
-            const addTypes = document.getElementById('updateBlockActivityAdd')?.value.trim();
-            if (addTypes) activity.add = addTypes.split(',').map(t => t.trim());
-
-            const removeTypes = document.getElementById('updateBlockActivityRemove')?.value.trim();
-            if (removeTypes) activity.remove = removeTypes.split(',').map(t => t.trim());
-
-            return activity;
-        }
-
-        // ==================== RENDER EDIT DOCUMENT (now inside details) ====================
         function renderEditableDocument() {
             const container = document.getElementById('documentEditContainer');
             if (!container || !AppState.currentDocument) return;
 
             const doc = AppState.currentDocument;
-            let html = `
-                <details class="edit-section-details" open>
-                    <summary>
-                        <span class="material-icons">edit_document</span>
-                        Edit Document Content
-                    </summary>
-                    <div class="edit-content">
-            `;
+            let html = '<h3>📝 Edit Document Content</h3>';
 
             if (doc.sections && doc.sections.length > 0) {
                 doc.sections.forEach((section, sectionIdx) => {
                     html += `
-                        <div class="edit-section" style="margin-bottom:20px;">
-                            <div class="edit-field">
-                                <label>Section Heading (English)</label>
-                                <input type="text" id="sectionHeading-${sectionIdx}" value="${escapeHtml(section.heading?.en || '')}" 
-                                       onchange="updateSectionHeading(${sectionIdx}, this.value)">
-                            </div>
+                        <details class="edit-section" open>
+                            <summary>
+                                <span class="material-icons">folder</span>
+                                Section: ${section.heading?.en || section.sectionId || 'Unnamed Section'}
+                            </summary>
+                            <div class="edit-content">
+                    `;
+
+                    html += `
+                        <div class="edit-field">
+                            <label>Section Heading (English)</label>
+                            <input type="text" id="sectionHeading-${sectionIdx}" value="${escapeHtml(section.heading?.en || '')}" 
+                                   onchange="updateSectionHeading(${sectionIdx}, this.value)">
+                        </div>
                     `;
 
                     if (section.content && section.content.length > 0) {
@@ -1562,16 +1190,15 @@
                         });
                     }
 
-                    html += `</div>`;
+                    html += `
+                            </div>
+                        </details>
+                    `;
                 });
             }
 
-            html += `
-                    </div>
-                </details>
-            `;
-
             container.innerHTML = html;
+            updateBlocksDisplay();
         }
 
         function renderEditableBlock(block, sectionIdx, blockIdx) {
@@ -1590,17 +1217,13 @@
 
             if (block.heading) {
                 html += `
-        <div class="edit-field">
-            <label>Heading (Thai)</label>
-            <input type="text" id="blockHeading-${sectionIdx}-${blockIdx}" 
-                   value="${escapeHtml(block.heading?.th || '')}" lang="th"
-                   onchange="updateBlockHeading(${sectionIdx}, ${blockIdx}, this.value)">
-            <div style="display: flex; gap: 20px; margin-top: 5px; font-size: 0.9rem; color: var(--text-secondary);">
-                <span><strong>EN:</strong> ${escapeHtml(block.heading?.en || '')}</span>
-                <span><strong>FA:</strong> ${escapeHtml(block.heading?.fa || '')}</span>
-            </div>
-        </div>
-    `;
+                    <div class="edit-field">
+                        <label>Heading (English)</label>
+                        <input type="text" id="blockHeading-${sectionIdx}-${blockIdx}" 
+                               value="${escapeHtml(block.heading?.en || '')}"
+                               onchange="updateBlockHeading(${sectionIdx}, ${blockIdx}, this.value)">
+                    </div>
+                `;
             }
 
             if (block.type === 'words') {
@@ -1729,35 +1352,10 @@
             const block = AppState.currentDocument?.sections?.[sectionIdx]?.content?.[blockIdx];
             if (block) {
                 if (!block.heading) block.heading = {};
-
-                // Immediately set the Thai heading
-                block.heading.th = value;
-
-                // Show loading indicator
-                showLoading('Translating heading...');
-
-                // Fetch translations and update
+                block.heading.en = value;
                 TranslationAPI.translateHeading(value).then(translations => {
-                    console.log('Received translations:', translations);
-
-                    // Ensure we keep existing translations if new ones are empty
-                    block.heading = {
-                        en: translations.en || block.heading?.en || '',
-                        fa: translations.fa || block.heading?.fa || '',
-                        th: value  // Thai is the source text
-                    };
-
-                    // Force a complete re-render of the edit view
-                    renderEditableDocument();
+                    block.heading = translations;
                     showFullDocument();
-                    hideLoading();
-
-                    // Show success message with all translations
-                    showTranslationWarning(`✅ Heading updated - TH: "${value}", EN: "${translations.en}", FA: "${translations.fa}"`);
-                }).catch(error => {
-                    console.error('Error translating heading:', error);
-                    hideLoading();
-                    showTranslationWarning('⚠️ Failed to translate heading');
                 });
             }
         }
@@ -2267,14 +1865,7 @@
 
             const heading = document.getElementById('headingInput').value.trim();
             if (heading) {
-                // Get all three translations - Thai is source
-                const enTranslation = await TranslationAPI.translate(heading, 'en');
-                const faTranslation = await TranslationAPI.translate(heading, 'fa');
-                newBlock.heading = {
-                    en: enTranslation,
-                    fa: faTranslation,
-                    th: heading  // Thai is the source text
-                };
+                newBlock.heading = await TranslationAPI.translateHeading(heading);
             }
 
             newBlock.activity = getBlockActivitySettings();
@@ -2355,14 +1946,7 @@
 
             const heading = document.getElementById('headingInput').value.trim();
             if (heading) {
-                // Get all three translations - Thai is source
-                const enTranslation = await TranslationAPI.translate(heading, 'en');
-                const faTranslation = await TranslationAPI.translate(heading, 'fa');
-                newBlock.heading = {
-                    en: enTranslation,
-                    fa: faTranslation,
-                    th: heading  // Thai is the source text
-                };
+                newBlock.heading = await TranslationAPI.translateHeading(heading);
             }
 
             const grammarPattern = document.getElementById('grammarPattern').value.trim();
@@ -3113,8 +2697,6 @@
 
         function setDataType(type) {
             AppState.dataType = type;
-
-            // Update create view
             document.getElementById('radioWord').classList.remove('selected');
             document.getElementById('radioParagraph').classList.remove('selected');
             document.getElementById(`radio${type.charAt(0).toUpperCase() + type.slice(1)}`).classList.add('selected');
@@ -3128,31 +2710,6 @@
             } else {
                 instruction.innerHTML = 'Separate sentences with <kbd>new lines</kbd>. Words within sentences with <kbd>space</kbd>. Example: สวัสดีครับ<br>ผมชื่อจอห์น<br>คุณสบายดีไหม';
                 grammarPanel.style.display = 'block';
-            }
-
-            // Also update update view if it exists and is visible
-            const updateRadioWord = document.getElementById('updateRadioWord');
-            const updateRadioParagraph = document.getElementById('updateRadioParagraph');
-            const updateGrammarPanel = document.getElementById('updateGrammarPanel');
-            const updateInstructionText = document.getElementById('updateInstructionText');
-
-            if (updateRadioWord && updateRadioParagraph) {
-                updateRadioWord.classList.remove('selected');
-                updateRadioParagraph.classList.remove('selected');
-
-                if (type === 'word') {
-                    updateRadioWord.classList.add('selected');
-                    if (updateGrammarPanel) updateGrammarPanel.style.display = 'none';
-                    if (updateInstructionText) {
-                        updateInstructionText.innerHTML = 'Separate words with <kbd>space</kbd>. Example: กิน ดื่ม ดู ฟัง ตื่น';
-                    }
-                } else {
-                    updateRadioParagraph.classList.add('selected');
-                    if (updateGrammarPanel) updateGrammarPanel.style.display = 'block';
-                    if (updateInstructionText) {
-                        updateInstructionText.innerHTML = 'Separate sentences with <kbd>new lines</kbd>. Words within sentences with <kbd>space</kbd>. Example: สวัสดีครับ<br>ผมชื่อจอห์น<br>คุณสบายดีไหม';
-                    }
-                }
             }
         }
 
@@ -3378,37 +2935,12 @@
             container.innerHTML = html;
         }
 
-        function clearVocabularyCache() {
-            // In the admin tool, we don't need to clear any cache
-            // Just refresh the display
-            console.log('Vocabulary updated');
-        }
+    function clearVocabularyCache() {
+        // In the admin tool, we don't need to clear any cache
+        // Just refresh the display
+        console.log('Vocabulary updated');
+    }
 
-        // Add this function to test translations
-        async function testThaiTranslation() {
-            const testWord = 'สวัสดี';
-            console.log('Testing Thai translation API...');
-
-            try {
-                const thaiToEnglish = await TranslationAPI.translate(testWord, 'en');
-                console.log(`Thai "${testWord}" to English:`, thaiToEnglish);
-
-                const englishToThai = await TranslationAPI.translate('Hello', 'th');
-                console.log('English "Hello" to Thai:', englishToThai);
-
-                if (!englishToThai) {
-                    alert('⚠️ Thai translation API might not be working. Check console for details.');
-                } else {
-                    alert('✅ Translation test successful. Check console for results.');
-                }
-            } catch (error) {
-                console.error('Translation test failed:', error);
-                alert('❌ Translation test failed. See console.');
-            }
-        }
-
-        // Add a test button (optional - you can call this from browser console)
-        // You can run testThaiTranslation() in the browser console to test
 
         // Initialize
         init();

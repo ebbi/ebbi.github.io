@@ -1,6 +1,46 @@
 {
     "learningObjects": [
         {
+            "learningObjectId": "tsl",
+            "title": {
+                "en": "TSL",
+                "fa": "تی‌اس‌ال TSL",
+                "th": "ทีเอสแอล TSL"
+            },
+            "description": {
+                "en": "Thai As A Second Language School, Chiang Mai, Thailand",
+                "fa": "مدرسه زبان تایلندی به عنوان زبان دوم، چیانگ مای، تایلند",
+                "th": "โรงเรียนสอนภาษาไทยเป็นภาษาที่สอง เชียงใหม่ ประเทศไทย"
+            },
+            "order": 1,
+            "icon": "menu_book",
+            "totalLevels": 10,
+            "totalWords": 135,
+            "totalSentences": 238,
+            "estimatedTime": 265,
+            "documents": [
+                {
+                    "id": "ls1",
+                    "title": {
+                        "en": "Listening and Speaking 1",
+                        "th": "การฟังและการพูด 1",
+                        "fa": "گوش دادن و صحبت کردن ۱"
+                    },
+                    "sourceLang": "th",
+                    "targetLangs": [ "en", "fa" ],
+                    "filePath": "data/tsl/ls1.json",
+                    "status": "published",
+                    "level": 1,
+                    "difficulty": "intermediate",
+                    "wordCount": 15,
+                    "sentenceCount": 18,
+                    "estimatedTime": 20,
+                    "grammarPoint": "Grammar overview, verb, adverb, adjective",
+                    "tags": [ "verb", "adverb", "adjective" ]
+                }
+            ]
+        },
+        {
             "learningObjectId": "grammar-structures",
             "title": {
                 "en": "Thai Grammar Structures",

@@ -3,7 +3,7 @@
     "metadata": {
         "version": "1.0.0",
         "created": "2026-02-27T10:00:00Z",
-        "updated": "2026-02-27T15:45:31.156Z",
+        "updated": "2026-02-27T11:56:18.914Z",
         "authors": [
             "Ebbi"
         ],
@@ -447,48 +447,6 @@
             "translations": {
                 "en": "yet",
                 "fa": "هنوز نه"
-            }
-        },
-        "มาจาก": {
-            "translations": {
-                "en": "Arrived from",
-                "fa": "بیا از"
-            }
-        },
-        "ทีไหนครับ": {
-            "translations": {
-                "en": "Where?",
-                "fa": "کجا؟"
-            }
-        },
-        "(ประเทศ)": {
-            "translations": {
-                "en": "(country)",
-                "fa": "کشور"
-            }
-        },
-        "อังกฤษ": {
-            "translations": {
-                "en": "English",
-                "fa": "انگلیسی"
-            }
-        },
-        "(แล้ว)": {
-            "translations": {
-                "en": "(already)",
-                "fa": "(از قبل)"
-            }
-        },
-        "ล่ะ": {
-            "translations": {
-                "en": "What?",
-                "fa": "خب؟"
-            }
-        },
-        "อเมริกา": {
-            "translations": {
-                "en": "America",
-                "fa": "آمریکا"
             }
         }
     },
@@ -1177,92 +1135,6 @@
                             "translations": {
                                 "en": "yet",
                                 "fa": "هنوز نه"
-                            }
-                        }
-                    ]
-                },
-                {
-                    "type": "paragraph",
-                    "heading": {
-                        "en": "Structure 4: Where are you from? Or where are you from?",
-                        "fa": "ساختار ۴: اهل کجا هستید؟ یا اهل کجا هستید؟",
-                        "th": "โครงสร้างที่ 4 : คุณมาจากไหน? หรือ คุณมาจากที่ไหน?"
-                    },
-                    "grammar": {
-                        "pattern": "Subject + Verb + Preposition + Question Word + Particle",
-                        "examples": [
-                            {
-                                "sentenceSource": "คุณ มา จาก ทีWไหน ครับ/คะ",
-                                "translations": {
-                                    "en": "Where are you from W?",
-                                    "fa": "اهل کجایی؟"
-                                }
-                            }
-                        ]
-                    },
-                    "activity": {
-                        "inherit": true
-                    },
-                    "sentences": [
-                        {
-                            "type": "sentence",
-                            "source": "สวัสดีครับคุณมาจากทีไหนครับ",
-                            "wordIds": [
-                                "สวัสดี",
-                                "ครับ",
-                                "คุณ",
-                                "มาจาก",
-                                "ทีไหนครับ"
-                            ],
-                            "translations": {
-                                "en": "Hello, where are you from?",
-                                "fa": "سلام. اهل کجایی؟"
-                            }
-                        },
-                        {
-                            "type": "sentence",
-                            "source": "สวัสดีค่ะฉันมาจาก(ประเทศ)อังกฤษค่ะ",
-                            "wordIds": [
-                                "สวัสดี",
-                                "ค่ะ",
-                                "ฉัน",
-                                "มาจาก",
-                                "(ประเทศ)",
-                                "อังกฤษ",
-                                "ค่ะ"
-                            ],
-                            "translations": {
-                                "en": "Hi, I'm from (country) England.",
-                                "fa": "سلام. من اهل انگلستان هستم."
-                            }
-                        },
-                        {
-                            "type": "sentence",
-                            "source": "(แล้ว)คุณล่ะคะ",
-                            "wordIds": [
-                                "(แล้ว)",
-                                "คุณ",
-                                "ล่ะ",
-                                "คะ"
-                            ],
-                            "translations": {
-                                "en": "(How about) You?",
-                                "fa": "و شما؟"
-                            }
-                        },
-                        {
-                            "type": "sentence",
-                            "source": "ผมมาจาก(ประเทศ)อเมริกาครับ",
-                            "wordIds": [
-                                "ผม",
-                                "มาจาก",
-                                "(ประเทศ)",
-                                "อเมริกา",
-                                "ครับ"
-                            ],
-                            "translations": {
-                                "en": "I'm from (country) America.",
-                                "fa": "من اهل آمریکا هستم."
                             }
                         }
                     ]
