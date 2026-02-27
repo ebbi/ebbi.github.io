@@ -2823,6 +2823,56 @@ const App = (function () {
                         </ul>
                     </div>
                 </details>
+        
+<!-- Contact Us -->
+<details class="help-details">
+    <summary>
+        <span class="material-icons">contact_support</span>
+        ${t('contact_us', 'Contact Us')}
+    </summary>
+    <div class="help-content">
+        <div style="
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            border-radius: 16px;
+            padding: 32px 24px;
+            color: white;
+            text-align: center;
+        ">
+            <span class="material-icons" style="font-size: 48px; margin-bottom: 16px;">email</span>
+            
+            <h3 style="margin: 0 0 8px 0; color: white; font-size: 1.5rem; font-weight: 600;">
+                ${t('get_in_touch', 'Get in Touch')}
+            </h3>
+            
+            <p style="margin: 0 0 24px 0; opacity: 0.9; font-size: 1rem; line-height: 1.5;">
+                ${t('contact_message', 'Have a question, feedback, or need help?')}
+            </p>
+            
+            <a href="mailto:ebbi40@gmail.com" 
+               style="
+                display: inline-flex;
+                align-items: center;
+                gap: 12px;
+                background: white;
+                color: var(--primary-dark);
+                text-decoration: none;
+                padding: 14px 28px;
+                border-radius: 50px;
+                font-weight: 600;
+                font-size: 1.1rem;
+                transition: all 0.2s ease;
+                box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            "
+               onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 16px rgba(0,0,0,0.25)';"
+               onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 12px rgba(0,0,0,0.2)';">
+                <span class="material-icons" style="font-size: 22px;">person</span>
+                <span>Ebbi at ebbi40@gmail.com</span>
+                <span class="material-icons" style="font-size: 18px; opacity: 0.7;">open_in_new</span>
+            </a>
+        </div>
+    </div>
+</details>
+
 
                 <!-- Back to Library Button -->
                 <div class="help-footer">
