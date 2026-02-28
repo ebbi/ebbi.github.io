@@ -69,13 +69,92 @@ const App = (function () {
                     studiedToday: 0,
                     dueToday: 0,
                     lastStudied: null
-                }
+                },
             },
+
+            sessionHistory: {
+                lastVisit: localStorage.getItem('lastVisit') || new Date().toISOString(),
+                totalVisits: parseInt(localStorage.getItem('totalVisits') || '0'),
+                timeSpent: parseInt(localStorage.getItem('timeSpent') || '0'), // in minutes
+                sessionsCompleted: parseInt(localStorage.getItem('sessionsCompleted') || '0')
+            },
+
+            activityCounts: (() => {
+                try {
+                    return JSON.parse(localStorage.getItem('activityCounts')) || {
+                        documentsOpened: 0,
+                        flashcardsReviewed: 0,
+                        quizzesTaken: 0,
+                        gamesPlayed: 0,
+                        grammarSheetsOpened: 0,
+                        audioPlays: 0
+                    };
+                } catch {
+                    return {
+                        documentsOpened: 0,
+                        flashcardsReviewed: 0,
+                        quizzesTaken: 0,
+                        gamesPlayed: 0,
+                        grammarSheetsOpened: 0,
+                        audioPlays: 0
+                    };
+                }
+            })(),
+
+            // Achievements
+            achievements: (() => {
+                try {
+                    return JSON.parse(localStorage.getItem('achievements')) || {
+                        firstDocument: false,
+                        firstFlashcard: false,
+                        firstQuiz: false,
+                        firstGame: false,
+                        studiedThreeDays: false,
+                        reviewedFiftyCards: false
+                    };
+                } catch {
+                    return {
+                        firstDocument: false,
+                        firstFlashcard: false,
+                        firstQuiz: false,
+                        firstGame: false,
+                        studiedThreeDays: false,
+                        reviewedFiftyCards: false
+                    };
+                }
+            })(),
+
+            // Streak tracking
+            streak: (() => {
+                try {
+                    return JSON.parse(localStorage.getItem('streak')) || {
+                        current: 0,
+                        longest: 0,
+                        lastStudyDate: ''
+                    };
+                } catch {
+                    return {
+                        current: 0,
+                        longest: 0,
+                        lastStudyDate: ''
+                    };
+                }
+            })(),
+
+            // Activity history (last 20 actions)
+            activityHistory: (() => {
+                try {
+                    return JSON.parse(localStorage.getItem('activityHistory')) || [];
+                } catch {
+                    return [];
+                }
+            })(),
 
             flashcards: null,
             quiz: null,
             sentenceGame: null,
-            grammarSheet: { isOpen: false, content: null }
+            grammarSheet: { isOpen: false, content: null },
+
         },
 
         defaults: {
@@ -95,6 +174,7 @@ const App = (function () {
         get(key) { return this.data[key]; },
         set(key, value) { this.data[key] = value; this.save(key); },
         update(key, fn) { this.data[key] = fn(this.data[key]); this.save(key); },
+
         save(key) {
             if (key === 'theme') localStorage.setItem('localStorageTheme', this.data.theme);
             if (key === 'lang') localStorage.setItem('localStorageLang', this.data.lang);
@@ -113,6 +193,26 @@ const App = (function () {
                 localStorage.setItem('localStorageVoice', this.data.media.voice);
                 localStorage.setItem('localStorageLangMap',
                     JSON.stringify(this.data.media.languageSettings));
+            }
+
+            // ===== NEW SAVE CASES =====
+            if (key === 'activityCounts') {
+                localStorage.setItem('activityCounts', JSON.stringify(this.data.activityCounts));
+            }
+            if (key === 'achievements') {
+                localStorage.setItem('achievements', JSON.stringify(this.data.achievements));
+            }
+            if (key === 'streak') {
+                localStorage.setItem('streak', JSON.stringify(this.data.streak));
+            }
+            if (key === 'activityHistory') {
+                localStorage.setItem('activityHistory', JSON.stringify(this.data.activityHistory));
+            }
+            if (key === 'sessionHistory') {
+                localStorage.setItem('lastVisit', this.data.sessionHistory.lastVisit);
+                localStorage.setItem('totalVisits', this.data.sessionHistory.totalVisits);
+                localStorage.setItem('timeSpent', this.data.sessionHistory.timeSpent);
+                localStorage.setItem('sessionsCompleted', this.data.sessionHistory.sessionsCompleted);
             }
         },
 
@@ -2823,6 +2923,103 @@ const App = (function () {
                         </ul>
                     </div>
                 </details>
+
+<!-- Your Progress Panel -->
+<details class="help-details" open>
+    <summary>
+        <span class="material-icons">insights</span>
+        ${t('your_learning_progress', 'Your Learning Progress')}
+    </summary>
+    <div class="help-content">
+        <!-- Study Streak -->
+        <div class="progress-streak">
+            <div class="streak-card">
+                <span class="material-icons">local_fire_department</span>
+                <div class="streak-numbers">
+                    <span class="streak-current">${App.getStreak()} ${App.getStreak() === 1 ? t('day', 'day') : t('days', 'days')}</span>
+                    <span class="streak-label">${t('current_streak', 'Current Streak')}</span>
+                </div>
+            </div>
+            <div class="streak-calendar">
+                ${App.renderStreakCalendar()}
+            </div>
+        </div>
+
+        <!-- Stats Grid -->
+        <div class="progress-stats-grid">
+            <div class="stat-card">
+                <span class="material-icons">menu_book</span>
+                <div class="stat-value">${App.getDocumentsOpened()}</div>
+                <div class="stat-label">${t('documents_studied', 'Documents Studied')}</div>
+            </div>
+            <div class="stat-card">
+                <span class="material-icons">style</span>
+                <div class="stat-value">${App.getFlashcardsReviewed()}</div>
+                <div class="stat-label">${t('flashcards_reviewed', 'Flashcards Reviewed')}</div>
+            </div>
+            <div class="stat-card">
+                <span class="material-icons">quiz</span>
+                <div class="stat-value">${App.getQuizzesTaken()}</div>
+                <div class="stat-label">${t('quizzes_taken', 'Quizzes Taken')}</div>
+            </div>
+            <div class="stat-card">
+                <span class="material-icons">dashboard</span>
+                <div class="stat-value">${App.getGamesPlayed()}</div>
+                <div class="stat-label">${t('games_played', 'Games Played')}</div>
+            </div>
+        </div>
+
+        <!-- Due Cards -->
+        <div class="progress-due">
+            <h4>${t('due_for_review', 'Due for Review')}</h4>
+            <div class="due-cards">
+                <div class="due-item">
+                    <span class="due-count">${App.getDueToday()}</span>
+                    <span class="due-label">${t('cards_today', 'cards today')}</span>
+                </div>
+                <div class="due-progress">
+                    <div class="due-progress-bar" style="width: ${App.getReviewProgress()}%"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Recent Activity -->
+        <div class="recent-activity">
+            <h4>${t('recent_activity', 'Recent Activity')}</h4>
+            <div class="activity-timeline">
+                ${App.renderActivityTimeline(t)}
+            </div>
+        </div>
+
+        <!-- Achievements -->
+        <div class="achievements-section">
+            <h4>${t('achievements', 'Achievements')}</h4>
+            <div class="achievements-grid">
+                ${App.renderAchievements(t)}
+            </div>
+        </div>
+
+        <!-- Next Milestone -->
+        <div class="next-milestone">
+            <div class="milestone-header">
+                <span class="material-icons">flag</span>
+                <span>${t('next_milestone', 'Next Milestone')}</span>
+            </div>
+            <div class="milestone-progress">
+                <div class="milestone-bar" style="width: ${App.getMilestoneProgress()}%"></div>
+            </div>
+            <div class="milestone-text">${App.getNextMilestoneText(t)}</div>
+        </div>
+
+        <!-- Reset Data Option -->
+        <div class="progress-footer">
+            <button class="btn-activity" onclick="App.resetProgressData()" style="background: var(--error);">
+                <span class="material-icons">restore</span>
+                ${t('reset_progress_data', 'Reset Progress Data')}
+            </button>
+        </div>
+    </div>
+</details>
         
 <!-- Contact Us -->
 <details class="help-details">
@@ -3141,6 +3338,11 @@ const App = (function () {
             // Load accordion states first
             State.loadAccordionStates();
 
+            // Track this visit
+            State.data.sessionHistory.totalVisits = (State.data.sessionHistory.totalVisits || 0) + 1;
+            State.data.sessionHistory.lastVisit = new Date().toISOString();
+            State.save('sessionHistory');            
+
             this.renderLayout();
             await Services.I18n.loadTranslations();
             await Services.DataService.loadManifest();
@@ -3242,6 +3444,17 @@ const App = (function () {
             // Store this as the last opened document and navigate
             State.data.lastDocument = documentId;
             State.save('lastDocument');
+
+            // Increment document counter
+            State.data.activityCounts.documentsOpened = (State.data.activityCounts.documentsOpened || 0) + 1;
+            State.save('activityCounts');
+
+            // Add to activity history
+            this.addActivity('menu_book', 'activity_opened_document', { name: documentId });
+
+            // Update streak
+            this.updateStreak();
+
             App.router.go(`doc/${documentId}`);
         },
 
@@ -3259,10 +3472,23 @@ const App = (function () {
         },
 
         startFlashcards(docId, sectionIdx, type) {
+            // Will be incremented when flashcards are actually viewed
+            // The actual count will be updated in rateFlashcard
+
             Router.go(`flashcard/${docId}/${sectionIdx}/${type}`);
         },
 
         startSentenceGame(docId, sectionIdx) {
+
+            State.data.activityCounts.gamesPlayed = (State.data.activityCounts.gamesPlayed || 0) + 1;
+            State.save('activityCounts');
+
+            // Add to activity history
+            this.addActivity('dashboard', 'activity_started_game');
+
+            // Update streak
+            this.updateStreak();
+
             Router.go(`sentence-game/${docId}/${sectionIdx}`);
         },
 
@@ -3697,6 +3923,10 @@ const App = (function () {
 
         media: {
             play: function (element) {
+
+                State.data.activityCounts.audioPlays = (State.data.activityCounts.audioPlays || 0) + 1;
+                State.save('activityCounts');
+
                 const inDocument = element.closest('.document-content') !== null;
 
                 if (inDocument) {
@@ -3771,6 +4001,9 @@ const App = (function () {
                 const quiz = State.data.quiz;
                 const isCorrect = selected === correct;
 
+                // Increment when answer is submitted (count as one quiz interaction)
+                // You might want to track this differently
+
                 // Speak the selected answer
                 Services.MediaService.speak(selected, quiz.answerLang);
 
@@ -3796,6 +4029,13 @@ const App = (function () {
                     if (quiz.currentIndex < quiz.items.length) {
                         UI.Quiz.renderQuestion();
                     } else {
+                        // Quiz completed
+                        State.data.activityCounts.quizzesTaken = (State.data.activityCounts.quizzesTaken || 0) + 1;
+                        State.save('activityCounts');
+
+                        this.addActivity('quiz', 'activity_completed_quiz');
+                        this.updateStreak();
+
                         UI.Quiz.renderResults();
                     }
                 }, 1500);
@@ -3981,6 +4221,12 @@ const App = (function () {
             if (State.data.flashcards) {
                 const cards = State.data.flashcards;
 
+                State.data.activityCounts.flashcardsReviewed = (State.data.activityCounts.flashcardsReviewed || 0) + 1;
+                State.save('activityCounts');
+
+                // Update streak (studying counts as activity)
+                this.updateStreak();
+
                 if (cards.currentIndex < cards.currentDeck.length - 1) {
                     cards.currentIndex++;
                     cards.showAnswer = false;
@@ -4015,6 +4261,12 @@ const App = (function () {
         },
 
         showGrammarSheet(grammarId) {
+
+            State.data.activityCounts.grammarSheetsOpened = (State.data.activityCounts.grammarSheetsOpened || 0) + 1;
+            State.save('activityCounts');
+
+            this.addActivity('menu_book', 'activity_viewed_grammar');
+
             // Parse the grammar ID: grammar-sectionIdx-blockIdx
             const parts = grammarId.split('-');
             if (parts[0] !== 'grammar') return;
@@ -4187,6 +4439,285 @@ const App = (function () {
                 });
                 html += '</div>';
                 anchor.innerHTML = html;
+            }
+        },
+
+        getStreak() {
+            return State.data.streak?.current || 0;
+        },
+
+        getDocumentsOpened() {
+            return State.data.activityCounts?.documentsOpened || 0;
+        },
+
+        getFlashcardsReviewed() {
+            return State.data.activityCounts?.flashcardsReviewed || 0;
+        },
+
+        getQuizzesTaken() {
+            return State.data.activityCounts?.quizzesTaken || 0;
+        },
+
+        getGamesPlayed() {
+            return State.data.activityCounts?.gamesPlayed || 0;
+        },
+
+        getDueToday() {
+            return State.data.srs?.stats?.dueToday || 0;
+        },
+
+        getReviewProgress() {
+            const due = this.getDueToday();
+            const total = State.data.srs?.stats?.totalCards || 1;
+            return Math.min(100, Math.round((due / total) * 100));
+        },
+
+        renderStreakCalendar() {
+            // Generate last 7 days
+            let html = '';
+            const today = new Date();
+            for (let i = 6; i >= 0; i--) {
+                const date = new Date(today);
+                date.setDate(date.getDate() - i);
+                const dateStr = date.toISOString().split('T')[0];
+                const isActive = this.isDateInStreak(dateStr);
+                html += `<div class="streak-day ${isActive ? 'active' : ''}">${date.getDate()}</div>`;
+            }
+            return html;
+        },
+
+        isDateInStreak(dateStr) {
+            // Simple check - you can enhance this based on your streak tracking
+            const lastDate = State.data.streak?.lastStudyDate;
+            return lastDate === dateStr;
+        },
+
+        renderActivityTimeline(t) {
+            // Get last 5 activities from history
+            const activities = State.data.activityHistory?.slice(-5) || [];
+            if (activities.length === 0) {
+                return `<div class="activity-item">${t('no_recent_activity', 'No recent activity')}</div>`;
+            }
+
+            return activities.map(act => `
+        <div class="activity-item">
+            <div class="activity-icon">
+                <span class="material-icons">${act.icon}</span>
+            </div>
+            <div class="activity-details">
+                <div class="activity-text">${act.text}</div>
+                <div class="activity-time">${act.time}</div>
+            </div>
+        </div>
+    `).join('');
+        },
+
+        renderAchievements(t) {
+            const achievements = [
+                { id: 'firstDocument', icon: 'menu_book', label: t('achievement_first_document', 'First Document') },
+                { id: 'firstFlashcard', icon: 'style', label: t('achievement_first_flashcard', 'First Flashcard') },
+                { id: 'firstQuiz', icon: 'quiz', label: t('achievement_first_quiz', 'First Quiz') },
+                { id: 'firstGame', icon: 'dashboard', label: t('achievement_first_game', 'First Game') },
+                { id: 'studiedThreeDays', icon: 'local_fire_department', label: t('achievement_streak_3', '3-Day Streak') },
+                { id: 'reviewedFiftyCards', icon: 'star', label: t('achievement_cards_50', '50 Cards Reviewed') }
+            ];
+
+            return achievements.map(ach => {
+                const unlocked = State.data.achievements?.[ach.id] || false;
+                return `
+            <div class="achievement-badge ${unlocked ? 'unlocked' : ''}">
+                <span class="material-icons">${ach.icon}</span>
+                <div class="achievement-label">${ach.label}</div>
+            </div>
+        `;
+            }).join('');
+        },
+
+        getMilestoneProgress() {
+            const docs = this.getDocumentsOpened();
+            if (docs < 5) {
+                return (docs / 5) * 100;
+            }
+            const cards = this.getFlashcardsReviewed();
+            if (cards < 50) {
+                return (cards / 50) * 100;
+            }
+            return 100;
+        },
+
+        getNextMilestoneText(t) {
+            const docs = this.getDocumentsOpened();
+            if (docs < 5) {
+                const remaining = 5 - docs;
+                return t('milestone_study_docs', 'Study {remaining} more document{plural} to reach 5 total')
+                    .replace('{remaining}', remaining)
+                    .replace('{plural}', remaining === 1 ? '' : 's');
+            }
+            const cards = this.getFlashcardsReviewed();
+            if (cards < 50) {
+                const remaining = 50 - cards;
+                return t('milestone_review_cards', 'Review {remaining} more card{plural} to reach 50 total')
+                    .replace('{remaining}', remaining)
+                    .replace('{plural}', remaining === 1 ? '' : 's');
+            }
+            return t('milestone_completed', '🎉 You\'ve completed all milestones! Keep up the great work!');
+        },
+
+        // Method to add activity to history
+        addActivity(icon, textKey, textParams = {}) {
+            const t = Services.I18n.t;
+            let text = textKey;
+
+            // If it's a translation key, translate it
+            if (typeof textKey === 'string' && textKey.startsWith('activity_')) {
+                text = t(textKey, textKey);
+                // Replace placeholders
+                Object.keys(textParams).forEach(key => {
+                    text = text.replace(`{${key}}`, textParams[key]);
+                });
+            }
+
+            const history = State.data.activityHistory || [];
+            history.push({
+                icon: icon,
+                text: text,
+                time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+            });
+
+            // Keep only last 20 activities
+            if (history.length > 20) {
+                history.shift();
+            }
+
+            State.data.activityHistory = history;
+            State.save('activityHistory');
+        },
+
+        // Method to update streak
+        updateStreak() {
+            const today = new Date().toISOString().split('T')[0];
+            const streak = State.data.streak;
+
+            if (streak.lastStudyDate === today) {
+                // Already studied today
+                return;
+            }
+
+            const yesterday = new Date();
+            yesterday.setDate(yesterday.getDate() - 1);
+            const yesterdayStr = yesterday.toISOString().split('T')[0];
+
+            if (streak.lastStudyDate === yesterdayStr) {
+                // Consecutive day
+                streak.current++;
+            } else {
+                // Streak broken
+                streak.current = 1;
+            }
+
+            if (streak.current > streak.longest) {
+                streak.longest = streak.current;
+            }
+
+            streak.lastStudyDate = today;
+            State.save('streak');
+
+            // Check for streak achievements
+            this.checkAchievements();
+        },
+
+        // Method to check and unlock achievements
+        checkAchievements() {
+            const ach = State.data.achievements;
+            const t = Services.I18n.t; // Add this line to get the translation function
+
+            if (this.getDocumentsOpened() >= 1 && !ach.firstDocument) {
+                ach.firstDocument = true;
+                this.addActivity('emoji_events', 'activity_achievement_unlocked', {
+                    name: t('achievement_first_document', 'First Document')
+                });
+            }
+
+            if (this.getFlashcardsReviewed() >= 1 && !ach.firstFlashcard) {
+                ach.firstFlashcard = true;
+                this.addActivity('emoji_events', 'activity_achievement_unlocked', {
+                    name: t('achievement_first_flashcard', 'First Flashcard')
+                });
+            }
+
+            if (this.getQuizzesTaken() >= 1 && !ach.firstQuiz) {
+                ach.firstQuiz = true;
+                this.addActivity('emoji_events', 'activity_achievement_unlocked', {
+                    name: t('achievement_first_quiz', 'First Quiz')
+                });
+            }
+
+            if (this.getGamesPlayed() >= 1 && !ach.firstGame) {
+                ach.firstGame = true;
+                this.addActivity('emoji_events', 'activity_achievement_unlocked', {
+                    name: t('achievement_first_game', 'First Game')
+                });
+            }
+
+            if (State.data.streak?.current >= 3 && !ach.studiedThreeDays) {
+                ach.studiedThreeDays = true;
+                this.addActivity('emoji_events', 'activity_achievement_unlocked', {
+                    name: t('achievement_streak_3', '3-Day Streak')
+                });
+            }
+
+            if (this.getFlashcardsReviewed() >= 50 && !ach.reviewedFiftyCards) {
+                ach.reviewedFiftyCards = true;
+                this.addActivity('emoji_events', 'activity_achievement_unlocked', {
+                    name: t('achievement_cards_50', '50 Cards Reviewed')
+                });
+            }
+
+            State.save('achievements');
+        },
+
+        resetProgressData() {
+            const t = Services.I18n.t;
+            if (confirm(t('confirm_reset_progress', 'Are you sure? This will reset all your progress data.'))) {
+                // Reset to defaults
+                State.data.activityCounts = {
+                    documentsOpened: 0,
+                    flashcardsReviewed: 0,
+                    quizzesTaken: 0,
+                    gamesPlayed: 0,
+                    grammarSheetsOpened: 0,
+                    audioPlays: 0
+                };
+
+                State.data.streak = {
+                    current: 0,
+                    longest: 0,
+                    lastStudyDate: ''
+                };
+
+                State.data.achievements = {
+                    firstDocument: false,
+                    firstFlashcard: false,
+                    firstQuiz: false,
+                    firstGame: false,
+                    studiedThreeDays: false,
+                    reviewedFiftyCards: false
+                };
+
+                State.data.activityHistory = [];
+
+                // Save all
+                State.save('activityCounts');
+                State.save('streak');
+                State.save('achievements');
+                State.save('activityHistory');
+
+                // Refresh the help page if we're on it
+                if (window.location.hash.includes('help')) {
+                    Router.handle();
+                }
+
+                this.showNotification(t('progress_data_reset', 'Progress data reset'));
             }
         },
 
