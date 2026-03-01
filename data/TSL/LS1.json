@@ -1,9 +1,9 @@
 {
-    "documentId": "ls1",
+    "documentId": "LS1",
     "metadata": {
         "version": "1.0.0",
         "created": "2026-02-27T10:00:00Z",
-        "updated": "2026-02-27T11:56:18.914Z",
+        "updated": "2026-03-01T10:10:15.348Z",
         "authors": [
             "Ebbi"
         ],
@@ -19,7 +19,7 @@
     "vocabulary": {
         "สวัสดี": {
             "translations": {
-                "en": "hi",
+                "en": "hello",
                 "fa": "سلام"
             }
         },
@@ -185,6 +185,18 @@
                 "fa": "جان"
             }
         },
+        "ชือ": {
+            "translations": {
+                "en": "name",
+                "fa": "نام"
+            }
+        },
+        "อะไร": {
+            "translations": {
+                "en": "what",
+                "fa": "چه"
+            }
+        },
         "หนังสือ": {
             "translations": {
                 "en": "book",
@@ -247,7 +259,7 @@
         },
         "สวัสดีค่ะ": {
             "translations": {
-                "en": "quote",
+                "en": "hello",
                 "fa": "سلام"
             }
         },
@@ -313,7 +325,7 @@
         },
         "ขอโทษค่ะ": {
             "translations": {
-                "en": "I'm sorry",
+                "en": "I am sorry",
                 "fa": "ببخشید"
             }
         },
@@ -337,19 +349,19 @@
         },
         "ครูของคุณชืออะไร": {
             "translations": {
-                "en": "What is the name of your teacher?",
+                "en": "What is your teacher's name?",
                 "fa": "اسم معلمت چیه؟"
             }
         },
         "เพือนของคุณชืออะไร": {
             "translations": {
-                "en": "What is the name of your friend?",
+                "en": "What is your friend's name?",
                 "fa": "اسم دوستت چیه؟"
             }
         },
         "หมาของคุณชืออะไร": {
             "translations": {
-                "en": "What is the name of your dog?",
+                "en": "What is your dog's name?",
                 "fa": "اسم سگت چیه؟"
             }
         },
@@ -371,16 +383,16 @@
                 "fa": "آیا اینطور است؟"
             }
         },
-        "ครับคะ": {
+        "ครับ/คะ": {
             "translations": {
                 "en": "yes",
-                "fa": "بله، خانم."
+                "fa": "بله، خانم"
             }
         },
         "ครับ/ค่ะ": {
             "translations": {
                 "en": "yes",
-                "fa": "بله/باشه."
+                "fa": "بله/باشه"
             }
         },
         "ไม่": {
@@ -397,7 +409,7 @@
         },
         "เป็นยังไงบ้าง": {
             "translations": {
-                "en": "How are you feeling? ",
+                "en": "How are you feeling?",
                 "fa": "حالتون چطوره؟"
             }
         },
@@ -416,7 +428,7 @@
         "ก็โอเค": {
             "translations": {
                 "en": "It's okay",
-                "fa": "باشه."
+                "fa": "باشه"
             }
         },
         "งั้นงั้น": {
@@ -440,13 +452,139 @@
         "กินแล้ว": {
             "translations": {
                 "en": "eaten",
-                "fa": "خورده شده"
+                "fa": "خورده‌ام"
             }
         },
         "ยัง": {
             "translations": {
                 "en": "yet",
                 "fa": "هنوز نه"
+            }
+        },
+        "มาจาก": {
+            "translations": {
+                "en": "from",
+                "fa": "از"
+            }
+        },
+        "ทีไหน": {
+            "translations": {
+                "en": "Where?",
+                "fa": "کجا؟"
+            }
+        },
+        "ประเทศ": {
+            "translations": {
+                "en": "country",
+                "fa": "کشور"
+            }
+        },
+        "อังกฤษ": {
+            "translations": {
+                "en": "English",
+                "fa": "انگلیسی"
+            }
+        },
+        "แล้ว": {
+            "translations": {
+                "en": "already",
+                "fa": "از قبل"
+            }
+        },
+        "ล่ะ": {
+            "translations": {
+                "en": "what",
+                "fa": "خب"
+            }
+        },
+        "อเมริกา": {
+            "translations": {
+                "en": "America",
+                "fa": "آمریکا"
+            }
+        },
+        "รัฐ": {
+            "translations": {
+                "en": "State (polity)",
+                "fa": "استان"
+            }
+        },
+        "จังหวัด": {
+            "translations": {
+                "en": "Province ",
+                "fa": "استان"
+            }
+        },
+        "เมือง": {
+            "translations": {
+                "en": "City",
+                "fa": "شهر"
+            }
+        },
+        "ประเทศไทย": {
+            "translations": {
+                "en": "Thailand",
+                "fa": "تایلند"
+            }
+        },
+        "ประเทศอังกฤษ": {
+            "translations": {
+                "en": "England",
+                "fa": "انگلستان"
+            }
+        },
+        "ประเทศอเมริกา": {
+            "translations": {
+                "en": "America",
+                "fa": "ایالات متحده"
+            }
+        },
+        "ประเทศออสเตรเลีย": {
+            "translations": {
+                "en": "Australien",
+                "fa": "استرالیا"
+            }
+        },
+        "ประเทศฝรังเศส": {
+            "translations": {
+                "en": "France",
+                "fa": "فرانسه"
+            }
+        },
+        "ประเทศเยอรมัน": {
+            "translations": {
+                "en": "Germany",
+                "fa": "آلمان"
+            }
+        },
+        "ประเทศจีน": {
+            "translations": {
+                "en": "China:",
+                "fa": "چین"
+            }
+        },
+        "ประเทศญีปุ่น": {
+            "translations": {
+                "en": "Japan",
+                "fa": "ژاپن"
+            }
+        },
+        "ประเทศเกาหลี(ใต้)": {
+            "translations": {
+                "en": "Korea (South)",
+                "fa": "کره جنوبی"
+            }
+        },
+        "มาเลเซีย": {
+            "translations": {
+                "en": "Malaysia",
+                "fa": "مالزی"
+            }
+        },
+        "สิงคโปร์": {
+            "translations": {
+                "en": "Singapore",
+                "fa": "آسیا/ سنگاپور"
             }
         }
     },
@@ -458,9 +596,9 @@
         {
             "sectionId": "lesson-1-greetings",
             "heading": {
-                "en": "Listening and Speaking 1",
-                "fa": "گوش دادن و صحبت کردن ۱",
-                "th": "การฟังและการพูด 1"
+                "en": "Lesson 1",
+                "fa": "درس ۱",
+                "th": "บทเรียนที่ 1"
             },
             "content": [
                 {
@@ -646,7 +784,7 @@
                                 "เรา"
                             ],
                             "translations": {
-                                "en": "Our family",
+                                "en": "our family",
                                 "fa": "خانواده ما"
                             }
                         },
@@ -718,7 +856,8 @@
                             "source": "แอนสวัสดีค่ะ",
                             "wordIds": [
                                 "แอน",
-                                "สวัสดีค่ะ"
+                                "สวัสดี",
+                                "ค่ะ"
                             ],
                             "translations": {
                                 "en": "Anne: Hi.",
@@ -730,7 +869,10 @@
                             "source": "จอห์นคุณชืออะไรครับ",
                             "wordIds": [
                                 "จอห์น",
-                                "คุณชืออะไรครับ"
+                                "คุณ",
+                                "ชือ",
+                                "อะไร",
+                                "ครับ"
                             ],
                             "translations": {
                                 "en": "John, what is your name?",
@@ -742,9 +884,12 @@
                             "source": "แอนฉันชือแอนค่ะแล้วคุณล่ะคะ",
                             "wordIds": [
                                 "แอน",
-                                "ฉันชือแอนค่ะ",
-                                "แล้",
-                                "วคุณล่ะคะ"
+                                "ฉัน",
+                                "ชือ",
+                                "แอน",
+                                "ค่ะ",
+                                "แล้วคุณล่ะ",
+                                "คะ"
                             ],
                             "translations": {
                                 "en": "Anne, my name is Anne, how about you?",
@@ -756,7 +901,10 @@
                             "source": "จอห์นผมชือจอห์นครับ",
                             "wordIds": [
                                 "จอห์น",
-                                "ผมชือจอห์นครับ"
+                                "ผม",
+                                "ชือ",
+                                "จอห์น",
+                                "ครับ"
                             ],
                             "translations": {
                                 "en": "John, my name is John.",
@@ -781,7 +929,8 @@
                             "source": "ไมค์สวัสดีครับ",
                             "wordIds": [
                                 "ไมค์",
-                                "สวัสดีครับ"
+                                "สวัสดี",
+                                "ครับ"
                             ],
                             "translations": {
                                 "en": "Mike, hello.",
@@ -793,7 +942,10 @@
                             "source": "ไมค์คุณชืออะไรครับ",
                             "wordIds": [
                                 "ไมค์",
-                                "คุณชืออะไรครับ"
+                                "คุณ",
+                                "ชือ",
+                                "อะไร",
+                                "ครับ"
                             ],
                             "translations": {
                                 "en": "Mike, what's your name?",
@@ -805,7 +957,10 @@
                             "source": "ไมค์ผมชือไมค์ครับ",
                             "wordIds": [
                                 "ไมค์",
-                                "ผมชือไมค์ครับ"
+                                "ผม",
+                                "ชือ",
+                                "ไมค์",
+                                "ครับ"
                             ],
                             "translations": {
                                 "en": "Mike, my name is Mike.",
@@ -817,7 +972,8 @@
                             "source": "ไมค์ยินดีทีได้รู้จักครับ",
                             "wordIds": [
                                 "ไมค์",
-                                "ยินดีทีได้รู้จักครับ"
+                                "ยินดีทีได้รู้จัก",
+                                "ครับ"
                             ],
                             "translations": {
                                 "en": "Mike, nice to meet you.",
@@ -842,7 +998,8 @@
                             "source": "ไดอาน่าขอบคุณค่ะ",
                             "wordIds": [
                                 "ไดอาน่า",
-                                "ขอบคุณค่ะ"
+                                "ขอบคุณ",
+                                "ค่ะ"
                             ],
                             "translations": {
                                 "en": "Diana, thank you.",
@@ -867,10 +1024,11 @@
                             "source": "ไดอาน่าขอโทษค่ะ",
                             "wordIds": [
                                 "ไดอาน่า",
-                                "ขอโทษค่ะ"
+                                "ขอโทษ",
+                                "ค่ะ"
                             ],
                             "translations": {
-                                "en": "Diana, I'm sorry.",
+                                "en": "Diana, I am sorry.",
                                 "fa": "دایانا، متاسفم."
                             }
                         }
@@ -943,7 +1101,7 @@
                                 "เขาชืออะไร"
                             ],
                             "translations": {
-                                "en": "What was his name?",
+                                "en": "What is his name?",
                                 "fa": "اسمش چیه؟"
                             }
                         }
@@ -974,12 +1132,12 @@
                     "sentences": [
                         {
                             "type": "sentence",
-                            "source": "คุณสบายดีไหมครับคะ",
+                            "source": "คุณสบายดีไหมครับ/คะ",
                             "wordIds": [
                                 "คุณ",
                                 "สบายดี",
                                 "ไหม",
-                                "ครับคะ"
+                                "ครับ/คะ"
                             ],
                             "translations": {
                                 "en": "How are you?",
@@ -1007,7 +1165,7 @@
                                 "ครับ/ค่ะ"
                             ],
                             "translations": {
-                                "en": "I'm not feeling well.",
+                                "en": "I am not feeling well.",
                                 "fa": "حالم خوب نیست."
                             }
                         },
@@ -1082,14 +1240,14 @@
                         },
                         {
                             "type": "sentence",
-                            "source": "งันงันเฉยเฉย",
+                            "source": "งั้นงั้นเฉยเฉย",
                             "wordIds": [
-                                "งันงัน",
+                                "งั้นงั้น",
                                 "เฉยเฉย"
                             ],
                             "translations": {
-                                "en": "Idle Stupidity",
-                                "fa": "ساکت، بی‌تفاوت، فقط ساکت بودن."
+                                "en": "so so",
+                                "fa": "نه خوب نه بد"
                             }
                         },
                         {
@@ -1111,8 +1269,8 @@
                                 "กินข้าวรึยัง"
                             ],
                             "translations": {
-                                "en": "Have you eaten yet?",
-                                "fa": "برنج خوردی تا حالا؟"
+                                "en": "Have you eaten?",
+                                "fa": "غذا خوردی؟"
                             }
                         },
                         {
@@ -1123,7 +1281,7 @@
                             ],
                             "translations": {
                                 "en": "eaten",
-                                "fa": "خورده شده"
+                                "fa": "خوردم"
                             }
                         },
                         {
@@ -1135,6 +1293,162 @@
                             "translations": {
                                 "en": "yet",
                                 "fa": "هنوز نه"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "paragraph",
+                    "heading": {
+                        "en": "Structure 4: Where do you from? Or where are you from?",
+                        "fa": "ساختار ۴: اهل کجا هستید؟ یا اهل کجا هستید؟",
+                        "th": "โครงสร้างประโยคที่ 4: คุณมาจากไหน? หรือ คุณมาจากที่ไหน?"
+                    },
+                    "grammar": {
+                        "pattern": "Subject + Verb + Preposition + Question Word + Particle",
+                        "examples": [
+                            {
+                                "sentenceSource": "คุณ มา จาก ทีไหน ครับ/คะ",
+                                "translations": {
+                                    "en": "Where are you from?",
+                                    "fa": "اهل کجایی؟"
+                                }
+                            }
+                        ]
+                    },
+                    "activity": {
+                        "inherit": true
+                    },
+                    "sentences": [
+                        {
+                            "type": "sentence",
+                            "source": "สวัสดีครับคุณมาจากทีไหนครับ",
+                            "wordIds": [
+                                "สวัสดี",
+                                "ครับ",
+                                "คุณ",
+                                "มาจาก",
+                                "ทีไหน",
+                                "ครับ"
+                            ],
+                            "translations": {
+                                "en": "Hello, where are you from?",
+                                "fa": "سلام. اهل کجایی؟"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "สวัสดีค่ะฉันมาจากประเทศอังกฤษค่ะ",
+                            "wordIds": [
+                                "สวัสดี",
+                                "ค่ะ",
+                                "ฉัน",
+                                "มาจาก",
+                                "ประเทศ",
+                                "อังกฤษ",
+                                "ค่ะ"
+                            ],
+                            "translations": {
+                                "en": "Hi, I am from England.",
+                                "fa": "سلام. من اهل انگلستان هستم."
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "แล้วคุณล่ะคะ",
+                            "wordIds": [
+                                "แล้ว",
+                                "คุณ",
+                                "ล่ะ",
+                                "คะ"
+                            ],
+                            "translations": {
+                                "en": "(How about) You?",
+                                "fa": "و شما؟"
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ผมมาจากประเทศอเมริกาครับ",
+                            "wordIds": [
+                                "ผม",
+                                "มาจาก",
+                                "ประเทศ",
+                                "อเมริกา",
+                                "ครับ"
+                            ],
+                            "translations": {
+                                "en": "I am from America.",
+                                "fa": "من اهل آمریکا هستم."
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "words",
+                    "heading": {
+                        "en": "Where are you from? ",
+                        "fa": "از کجا می‌آیی؟",
+                        "th": "คุณมาจากที่ไหน"
+                    },
+                    "activity": {
+                        "inherit": true
+                    },
+                    "wordIds": [
+                        "ประเทศ",
+                        "รัฐ",
+                        "จังหวัด",
+                        "เมือง",
+                        "ประเทศไทย",
+                        "ประเทศอังกฤษ",
+                        "ประเทศอเมริกา",
+                        "ประเทศออสเตรเลีย",
+                        "ประเทศฝรังเศส",
+                        "ประเทศเยอรมัน",
+                        "ประเทศจีน",
+                        "ประเทศญีปุ่น",
+                        "ประเทศเกาหลี(ใต้)"
+                    ]
+                },
+                {
+                    "type": "paragraph",
+                    "heading": {
+                        "en": "Examples",
+                        "fa": "عکس",
+                        "th": "ตัวอย่าง"
+                    },
+                    "activity": {
+                        "inherit": true
+                    },
+                    "sentences": [
+                        {
+                            "type": "sentence",
+                            "source": "ฉันมาจากประเทศมาเลเซียค่ะ",
+                            "wordIds": [
+                                "ฉัน",
+                                "มาจาก",
+                                "ประเทศ",
+                                "มาเลเซีย",
+                                "ค่ะ"
+                            ],
+                            "translations": {
+                                "en": "I am from Malaysia.",
+                                "fa": "من اهل مالزی هستم."
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ผมมาจากประเทศสิงคโปร์ครับ",
+                            "wordIds": [
+                                "ผม",
+                                "มาจาก",
+                                "ประเทศ",
+                                "สิงคโปร์",
+                                "ครับ"
+                            ],
+                            "translations": {
+                                "en": "I am from Singapore.",
+                                "fa": "من اهل سنگاپور هستم."
                             }
                         }
                     ]

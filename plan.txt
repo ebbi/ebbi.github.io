@@ -1,10 +1,41 @@
 
-The requirement is to add a "Your Progress" panel to the help page.
-
-The panel should show the user usage and engagement based on the browser 
-local storage.  The purpose is to encourage engagement and learning.
-
-Can you provide an outline of what is possible?
 
 
+The Grammar Pattern section should add an Example input box to render the th example.
+The example will be inputed in Thai and the code should generate/update the fa and en values.
+
+
+
+The Grammar Note example is now showing more examples taht do not exist in the data file!
+
+And the example translations is not rendered!
+
+
+In ls2.json the grammar example:
+
+                    "grammar": {
+                        "pattern": "The question words, what, when, where, who, why, and how, are generally placed at the end of the sentence.",
+                        "examples": [
+                            {
+                                "sentenceSource": "คุณชืออะไรครับ",
+                                "translations": {
+                                    "en": "What is your name?",
+                                    "fa": "اسم شما چیست؟"
+                                }
+                            }
+                        ]
+                    },
+
+is being rendered as:
+
+In this sentence
+volume_up จอห์นสวัสดีครับ
+volume_up John, hello.
+volume_up سلام، جان.
+More examples
+volume_up คุณชืออะไรครับ
+volume_up What is your name?
+volume_up اسم شما چیست؟
+
+More examples are not defined in the data file and rendered incorrectly.
 

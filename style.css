@@ -1477,6 +1477,50 @@ div[data-link].active-highlight {
     font-size: 1.1rem;
 }
 
+.translation-example {
+    margin-left: 24px !important;
+    background: var(--card) !important;
+    border-left: 3px solid var(--primary-light) !important;
+    opacity: 0.9;
+}
+
+.translation-example:hover {
+    border-left-color: var(--primary) !important;
+    transform: translateX(8px) !important;
+    opacity: 1;
+}
+.example-group {
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 1px dashed var(--border);
+}
+
+.example-group:last-child {
+    border-bottom: none;
+}
+
+.audio-icon-small {
+    font-size: 18px !important;
+    color: var(--primary);
+    opacity: 0.7;
+    transition: opacity 0.2s ease;
+}
+
+.pattern-example:hover .audio-icon-small {
+    opacity: 1;
+}
+
+[dir="rtl"] .translation-example {
+    margin-left: 0 !important;
+    margin-right: 24px !important;
+    border-left: none !important;
+    border-right: 3px solid var(--primary-light) !important;
+}
+
+[dir="rtl"] .translation-example:hover {
+    transform: translateX(-8px) !important;
+}
+
 /* ============================================================================
    13. SENTENCE BUILDING GAME
    ============================================================================ */
@@ -2231,7 +2275,7 @@ td {
 }
 
 .current-sentence {
-    margin-top: 20px;
+    margin-top: 16px;
     padding-top: 16px;
     border-top: 1px solid var(--border);
 }
@@ -2242,7 +2286,7 @@ td {
 }
 
 .more-examples {
-    margin-top: 24px;
+    margin-top: 16px;
     padding-top: 16px;
     border-top: 1px solid var(--border);
 }

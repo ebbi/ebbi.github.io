@@ -1483,6 +1483,7 @@
 
             const grammarPattern = document.getElementById('updateGrammarPattern').value.trim();
             const grammarExample = document.getElementById('updateGrammarExample').value.trim();
+
             if (grammarPattern || grammarExample) {
                 newBlock.grammar = {};
                 if (grammarPattern) newBlock.grammar.pattern = grammarPattern;
@@ -1506,6 +1507,43 @@
                 window.currentDocument.vocabulary = AppState.mainVocabulary;
             }
         }
+
+        async function updateGrammarExample(sectionIdx, blockIdx, exampleIdx, value) {
+            const block = AppState.currentDocument?.sections?.[sectionIdx]?.content?.[blockIdx];
+            if (!block || !block.grammar || !block.grammar.examples) return;
+
+            showLoading('Translating grammar example...');
+
+            try {
+                // Update the example source
+                block.grammar.examples[exampleIdx].sentenceSource = value;
+
+                // Fetch new translations
+                const enTranslation = await TranslationAPI.translate(value, 'en');
+                const faTranslation = await TranslationAPI.translate(value, 'fa');
+
+                // Ensure translations object exists
+                if (!block.grammar.examples[exampleIdx].translations) {
+                    block.grammar.examples[exampleIdx].translations = {};
+                }
+
+                // Update translations
+                block.grammar.examples[exampleIdx].translations.en = enTranslation;
+                block.grammar.examples[exampleIdx].translations.fa = faTranslation;
+
+                // Refresh the display
+                renderEditableDocument();
+                showFullDocument();
+
+                showTranslationWarning(`✅ Grammar example updated with translations - EN: "${enTranslation}", FA: "${faTranslation}"`);
+            } catch (error) {
+                console.error('Error translating grammar example:', error);
+                showTranslationWarning('⚠️ Failed to translate grammar example');
+            } finally {
+                hideLoading();
+            }
+        }
+
         function getUpdateBlockActivitySettings() {
             const mode = document.querySelector('input[name="updateActivityMode"]:checked')?.value;
             if (mode === 'inherit' || !mode) return { inherit: true };
@@ -1590,17 +1628,17 @@
 
             if (block.heading) {
                 html += `
-        <div class="edit-field">
-            <label>Heading (Thai)</label>
-            <input type="text" id="blockHeading-${sectionIdx}-${blockIdx}" 
-                   value="${escapeHtml(block.heading?.th || '')}" lang="th"
-                   onchange="updateBlockHeading(${sectionIdx}, ${blockIdx}, this.value)">
-            <div style="display: flex; gap: 20px; margin-top: 5px; font-size: 0.9rem; color: var(--text-secondary);">
-                <span><strong>EN:</strong> ${escapeHtml(block.heading?.en || '')}</span>
-                <span><strong>FA:</strong> ${escapeHtml(block.heading?.fa || '')}</span>
-            </div>
-        </div>
-    `;
+                    <div class="edit-field">
+                        <label>Heading (Thai)</label>
+                        <input type="text" id="blockHeading-${sectionIdx}-${blockIdx}" 
+                            value="${escapeHtml(block.heading?.th || '')}" lang="th"
+                            onchange="updateBlockHeading(${sectionIdx}, ${blockIdx}, this.value)">
+                        <div style="display: flex; gap: 20px; margin-top: 5px; font-size: 0.9rem; color: var(--text-secondary);">
+                            <span><strong>EN:</strong> ${escapeHtml(block.heading?.en || '')}</span>
+                            <span><strong>FA:</strong> ${escapeHtml(block.heading?.fa || '')}</span>
+                        </div>
+                    </div>
+                `;
             }
 
             if (block.type === 'words') {
@@ -1653,19 +1691,68 @@
                         <div class="edit-field">
                             <label>Grammar Pattern</label>
                             <input type="text" value="${escapeHtml(block.grammar.pattern || '')}"
-                                   onchange="updateGrammar(${sectionIdx}, ${blockIdx}, 'pattern', this.value)">
+                                onchange="updateGrammar(${sectionIdx}, ${blockIdx}, 'pattern', this.value)">
                         </div>
                     `;
+
+                    if (block.grammar.examples && block.grammar.examples.length > 0) {
+                        block.grammar.examples.forEach((example, exampleIdx) => {
+                            html += `
+                                <div class="edit-field" style="border-left: 2px solid var(--secondary); padding-left: 10px; margin: 10px 0;">
+                                    <label>Grammar Example ${exampleIdx + 1} (Thai)</label>
+                                    <input type="text" value="${escapeHtml(example.sentenceSource || '')}" lang="th"
+                                        onchange="updateGrammarExample(${sectionIdx}, ${blockIdx}, ${exampleIdx}, this.value)">
+                                    <div style="display: flex; gap: 20px; margin-top: 5px; font-size: 0.9rem; color: var(--text-secondary);">
+                                        <span><strong>EN:</strong> ${escapeHtml(example.translations?.en || '')}</span>
+                                        <span><strong>FA:</strong> ${escapeHtml(example.translations?.fa || '')}</span>
+                                    </div>
+                                </div>
+                            `;
+                        });
+                    }
+
+                    // Add button to add another example
+                    html += `
+                        <button class="update-btn" onclick="addGrammarExample(${sectionIdx}, ${blockIdx})" style="margin-top: 10px;">
+                            <span class="material-icons">add</span> Add Grammar Example
+                        </button>
+                    `;
+
                 }
+
+                html += `
+                    <button class="update-btn" onclick="updateBlock(${sectionIdx}, ${blockIdx}, event)">
+                        <span class="material-icons">save</span> Update Block
+                    </button>
+                `;
+
+                return html;
+            }
+        }
+        
+        async function addGrammarExample(sectionIdx, blockIdx) {
+            const block = AppState.currentDocument?.sections?.[sectionIdx]?.content?.[blockIdx];
+            if (!block) return;
+
+            if (!block.grammar) {
+                block.grammar = {};
             }
 
-            html += `
-    <button class="update-btn" onclick="updateBlock(${sectionIdx}, ${blockIdx}, event)">
-        <span class="material-icons">save</span> Update Block
-    </button>
-`;
+            if (!block.grammar.examples) {
+                block.grammar.examples = [];
+            }
 
-            return html;
+            // Add empty example that can be edited later
+            block.grammar.examples.push({
+                sentenceSource: '',
+                translations: {
+                    en: '',
+                    fa: ''
+                }
+            });
+
+            renderEditableDocument();
+            showFullDocument();
         }
 
         function renderActivityInfo(block) {

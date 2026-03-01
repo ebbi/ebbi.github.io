@@ -567,9 +567,9 @@ const App = (function () {
 
                 this.sentences = (data.sentences || []).map(s => {
                     // Debug: log the wordIds being resolved
-                    console.log(`Resolving wordIds for sentence "${s.source}":`, s.wordIds);
+                    // console.log(`Resolving wordIds for sentence "${s.source}":`, s.wordIds);
                     const words = vocabulary.resolveWordIds(s.wordIds || []);
-                    console.log(`Resolved words:`, words.map(w => w.word));
+                    //  console.log(`Resolved words:`, words.map(w => w.word));
 
                     return {
                         source: s.source,
@@ -673,7 +673,7 @@ const App = (function () {
                 const data = await response.json();
 
                 // Debug: log all vocabulary entries before creating the document
-                console.log('Vocabulary from JSON:', Object.keys(data.vocabulary || {}));
+                //  console.log('Vocabulary from JSON:', Object.keys(data.vocabulary || {}));
 
                 State.data.currentDocument = new Models.Document(data, State.data.lang);
                 EventBus.emit('document:loaded', State.data.currentDocument);
@@ -1476,8 +1476,8 @@ const App = (function () {
                     const uid = `s-${sectionIdx}-${blockIdx}-${sentIdx}`;
 
                     // Debug: log the words being passed
-                    console.log(`Sentence ${sentIdx}: "${sentence.source}" has words:`,
-                        sentence.words.map(w => w.word));
+                    //  console.log(`Sentence ${sentIdx}: "${sentence.source}" has words:`,
+                    //  sentence.words.map(w => w.word));
 
                     let html = '<div class="sentence-group"><div class="stack-column">';
 
@@ -3214,6 +3214,7 @@ const App = (function () {
         // ------------------------------------------------------------------------
         // Grammar Sheet
         // ------------------------------------------------------------------------
+
         GrammarSheet: {
             render(content) {
                 let anchor = document.getElementById('grammar-sheet-anchor');
@@ -3226,6 +3227,10 @@ const App = (function () {
                 const t = Services.I18n.t;
                 const currentLang = State.data.lang;
                 const dir = currentLang === 'fa' ? 'rtl' : 'ltr';
+
+                // Get all enabled languages from settings
+                const enabledLangs = Object.keys(State.data.media.languageSettings)
+                    .filter(code => State.data.media.languageSettings[code].show);
 
                 // Format pattern display
                 const patternHtml = content.pattern ? `
@@ -3244,37 +3249,59 @@ const App = (function () {
             </div>
         ` : '';
 
-                // Format current sentence
+                // Format current sentence with ALL language translations
                 const currentSentenceHtml = content.source ? `
             <div class="current-sentence">
                 <div class="pattern-title">${t('in_this_sentence', 'In this sentence')}</div>
-                <div class="pattern-example" onclick="App.media.play(this)"
-                     data-text="${UI.escapeHtml(content.source)}" data-lang="th">
-                    <span class="material-icons audio-icon-small">volume_up</span>
-                    <span class="example-thai" lang="th">${UI.escapeHtml(content.source)}</span>
-                    ${content.translation ? `
-                        <span class="example-en" lang="${currentLang}" dir="${dir}">
-                            ${UI.escapeHtml(content.translation)}
-                        </span>
-                    ` : ''}
+                <div class="example-group">
+                    <div class="pattern-example" onclick="App.media.play(this)"
+                         data-text="${UI.escapeHtml(content.source)}" data-lang="th">
+                        <span class="material-icons audio-icon-small">volume_up</span>
+                        <span class="example-thai" lang="th">${UI.escapeHtml(content.source)}</span>
+                    </div>
+                    ${enabledLangs.filter(lang => lang !== 'th' && content.translations && content.translations[lang]).map(lang => {
+                    const dir = lang === 'fa' ? 'rtl' : 'ltr';
+                    return `
+                            <div class="pattern-example translation-example" 
+                                 onclick="App.media.play(this)"
+                                 data-text="${UI.escapeHtml(content.translations[lang])}" 
+                                 data-lang="${lang}">
+                                <span class="material-icons audio-icon-small">volume_up</span>
+                                <span class="example-${lang}" lang="${lang}" dir="${dir}">
+                                    ${UI.escapeHtml(content.translations[lang])}
+                                </span>
+                            </div>
+                        `;
+                }).join('')}
                 </div>
             </div>
         ` : '';
 
-                // Format examples
+                // Format examples from grammar data - ONLY use examples from the grammar object
                 const examplesHtml = content.examples && content.examples.length > 0 ? `
             <div class="more-examples">
                 <div class="pattern-title">${t('more_examples', 'More examples')}</div>
                 ${content.examples.map(ex => `
-                    <div class="pattern-example" onclick="App.media.play(this)"
-                         data-text="${UI.escapeHtml(ex.source)}" data-lang="th">
-                        <span class="material-icons audio-icon-small">volume_up</span>
-                        <span class="example-thai" lang="th">${UI.escapeHtml(ex.source)}</span>
-                        ${ex.translation ? `
-                            <span class="example-en" lang="${currentLang}" dir="${dir}">
-                                ${UI.escapeHtml(ex.translation)}
-                            </span>
-                        ` : ''}
+                    <div class="example-group">
+                        <div class="pattern-example" onclick="App.media.play(this)"
+                             data-text="${UI.escapeHtml(ex.source)}" data-lang="th">
+                            <span class="material-icons audio-icon-small">volume_up</span>
+                            <span class="example-thai" lang="th">${UI.escapeHtml(ex.source)}</span>
+                        </div>
+                        ${enabledLangs.filter(lang => lang !== 'th' && ex.translations && ex.translations[lang]).map(lang => {
+                    const dir = lang === 'fa' ? 'rtl' : 'ltr';
+                    return `
+                                <div class="pattern-example translation-example" 
+                                     onclick="App.media.play(this)"
+                                     data-text="${UI.escapeHtml(ex.translations[lang])}" 
+                                     data-lang="${lang}">
+                                    <span class="material-icons audio-icon-small">volume_up</span>
+                                    <span class="example-${lang}" lang="${lang}" dir="${dir}">
+                                        ${UI.escapeHtml(ex.translations[lang])}
+                                    </span>
+                                </div>
+                            `;
+                }).join('')}
                     </div>
                 `).join('')}
             </div>
@@ -3323,6 +3350,7 @@ const App = (function () {
                 }, 10);
             }
         }
+
     };
 
     // ----------------------------------------------------------------------------
@@ -3341,7 +3369,7 @@ const App = (function () {
             // Track this visit
             State.data.sessionHistory.totalVisits = (State.data.sessionHistory.totalVisits || 0) + 1;
             State.data.sessionHistory.lastVisit = new Date().toISOString();
-            State.save('sessionHistory');            
+            State.save('sessionHistory');
 
             this.renderLayout();
             await Services.I18n.loadTranslations();
@@ -4261,7 +4289,6 @@ const App = (function () {
         },
 
         showGrammarSheet(grammarId) {
-
             State.data.activityCounts.grammarSheetsOpened = (State.data.activityCounts.grammarSheetsOpened || 0) + 1;
             State.save('activityCounts');
 
@@ -4284,45 +4311,29 @@ const App = (function () {
                 }
 
                 const grammar = block.grammar;
-                const examples = [];
 
-                // Find examples from current document
-                State.data.currentDocument.sections.forEach(s => {
-                    s.content.forEach(b => {
-                        if (b.type === 'paragraph' && b.sentences) {
-                            b.sentences.forEach(sent => {
-                                // Check if sentence matches the grammar pattern
-                                if (sent.source && grammar.pattern) {
-                                    // Simple pattern matching - you might want to enhance this
-                                    if (sent.source.includes(grammar.pattern.replace(/[+]/g, '').trim())) {
-                                        examples.push({
-                                            source: sent.source,
-                                            translation: sent.translations[State.data.lang] ||
-                                                sent.translations.en || ''
-                                        });
-                                    }
-                                }
+                // IMPORTANT: We DO NOT use any sentences from the block
+                // Only use examples explicitly defined in the grammar object
+                const examples = [];
+                if (grammar.examples && Array.isArray(grammar.examples)) {
+                    grammar.examples.forEach(ex => {
+                        if (ex.sentenceSource) {
+                            examples.push({
+                                source: ex.sentenceSource,
+                                translations: ex.translations || {} // Pass the FULL translations object
                             });
                         }
                     });
-                });
-
-                // Get current sentence if available
-                let currentSource = '';
-                let currentTranslation = '';
-
-                if (block.sentences && block.sentences[0]) {
-                    currentSource = block.sentences[0].source;
-                    currentTranslation = block.sentences[0].translations[State.data.lang] ||
-                        block.sentences[0].translations.en || '';
                 }
+
+                console.log('Grammar examples being passed:', examples);
 
                 UI.GrammarSheet.render({
                     pattern: grammar.pattern,
                     note: grammar.note || grammar.explanation,
-                    examples: examples.slice(0, 5), // Limit to 5 examples
-                    source: currentSource,
-                    translation: currentTranslation
+                    examples: examples, // ONLY use examples from the grammar object
+                    source: null, // No current sentence - we don't want to show a sentence from the block
+                    translations: {} // No current translations
                 });
 
             } catch (error) {
