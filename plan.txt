@@ -1,41 +1,76 @@
 
+The App is partly an aid for my school text for learning Thai and it generally works well for 
+vocabulary, sentences and paragraphs with useful multiple choice quiz, flash card and constructing sentences.
+
+The uploaded PDF text is an exception as it tries to teach Thai alphabet, vowels and basic spelling and reading.
+
+Please advise with an overview as to how the uploaded text could be incorporated in the App.  
 
 
-The Grammar Pattern section should add an Example input box to render the th example.
-The example will be inputed in Thai and the code should generate/update the fa and en values.
+Excellent! 
+
+I should have mentioned, this is a mobile first App by design.
+
+With that in mind, can you reconsider your advice, particularly with point 
+5. New Interactive Exercise: Character Grid and the 
+Create a drag-and-drop matching interface: exercise.
+
+A click based exercise may be more suitable.
+
+After that please give detail instructions for updating the current App.
+
+
+For point 1 - Record or source audio files. 
+
+Can the exisitng App TTS be used instead?
+
+=======================================
+
+Excellent. 
+
+I am happy with no further queries.  
+
+In the current chat, there has been several updates to the gegenerated code.  Rather than trying to merge the replies, please generate the instruction to actually 
+start editing the current code base.
+
+===================================
+
+Code is updated and ready for data.
+
+The folder and naming convention used is as follows:
+
+The file for the uploaded PDF text should be:
+data/TSL/RW1.json 
+ Each entry in the Content page is in a separate section definition
+
+Please avoid comments in the JSON data file, it causes an error
+
+I would like to keep all files in data/TSL 
+ so, any other data file should be in this folder
+
+Please generate the manifest.json and the JSON data files.
+
+=========================================
+
+The data in "type": "explanation" should be rendered in an HTML details element with default closed.
+
+Click event on a consonant returns the error: 
+
+Uncaught ReferenceError: Services is not defined
+    onclick http://127.0.0.1:8080/#doc/RW1:1
+127.0.0.1:8080:1:1
+    onclick http://127.0.0.1:8080/#doc/RW1:1
+
+==================================
 
 
 
-The Grammar Note example is now showing more examples taht do not exist in the data file!
-
-And the example translations is not rendered!
 
 
-In ls2.json the grammar example:
 
-                    "grammar": {
-                        "pattern": "The question words, what, when, where, who, why, and how, are generally placed at the end of the sentence.",
-                        "examples": [
-                            {
-                                "sentenceSource": "คุณชืออะไรครับ",
-                                "translations": {
-                                    "en": "What is your name?",
-                                    "fa": "اسم شما چیست؟"
-                                }
-                            }
-                        ]
-                    },
 
-is being rendered as:
 
-In this sentence
-volume_up จอห์นสวัสดีครับ
-volume_up John, hello.
-volume_up سلام، جان.
-More examples
-volume_up คุณชืออะไรครับ
-volume_up What is your name?
-volume_up اسم شما چیست؟
 
-More examples are not defined in the data file and rendered incorrectly.
+
+
 

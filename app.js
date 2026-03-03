@@ -472,8 +472,24 @@ const App = (function () {
                     } else if (item.type === 'paragraph') {
                         return new Models.ParagraphContent(item, document.vocabulary, currentLang);
                     }
+                    else if (item.type === 'alphabet-table') {
+                        return new Models.AlphabetTableContent(item);
+                    } else if (item.type === 'character-grid') {
+                        return new Models.CharacterGridContent(item);
+                    } else if (item.type === 'character-card') {
+                        return new Models.CharacterCardContent(item);
+                    } else if (item.type === 'matching-exercise') {
+                        return new Models.MatchingExercise(item);
+                    } else if (item.type === 'sound-matching') {
+                        return new Models.SoundMatching(item);
+                    } else if (item.type === 'tone-rule-table') {
+                        return new Models.ToneRuleTable(item);
+                    } else if (item.type === 'explanation') {
+                        return new Models.ExplanationContent(item);
+                    }
                     return item;
                 });
+
             }
 
             // Check if word activities are enabled for this section
@@ -494,6 +510,20 @@ const App = (function () {
                 }
                 // Fall back to document level
                 return this.document.activity.sentences || false;
+            }
+
+            // Add this method to the Section class (around line 450-500)
+            getCharacterItems() {
+                const characters = [];
+                this.content.forEach(block => {
+                    if (block.type === 'alphabet-table') {
+                        characters.push(...block.characters);
+                    } else if (block.type === 'character-grid') {
+                        // If it's a grid of character IDs, we'd need to resolve them
+                        // For now, we'll handle this in the flashcard renderer
+                    }
+                });
+                return characters;
             }
 
             // Get word items for this section only
@@ -579,7 +609,94 @@ const App = (function () {
                     };
                 });
             }
+        },
+
+        // ============================================================================
+        // ADD THIS AFTER Models.ParagraphContent
+        // ============================================================================
+
+        // Alphabet Character class
+        AlphabetCharacter: class {
+            constructor(data) {
+                this.id = data.id || data.symbol;
+                this.symbol = data.symbol;
+                this.sound = data.sound;
+                this.name = data.name;
+                this.meaning = data.meaning;
+                this.class = data.class; // 'middle', 'high', 'low-paired', 'low-unpaired'
+                this.audio = data.audio;
+                this.strokeOrder = data.strokeOrder || [];
+                this.examples = (data.examples || []).map(ex => ({
+                    word: ex.word,
+                    meaning: ex.meaning,
+                    audio: ex.audio
+                }));
+            }
+        },
+
+        // New content types for alphabet learning
+        AlphabetTableContent: class {
+            constructor(data) {
+                this.type = 'alphabet-table';
+                this.title = data.title;
+                this.classification = data.classification;
+                this.characters = (data.characters || []).map(c =>
+                    new Models.AlphabetCharacter(c)
+                );
+            }
+        },
+
+        CharacterGridContent: class {
+            constructor(data) {
+                this.type = 'character-grid';
+                this.characters = data.characters || [];
+                this.display = data.display || 'grid';
+            }
+        },
+
+        CharacterCardContent: class {
+            constructor(data) {
+                this.type = 'character-card';
+                this.characterId = data.characterId;
+                this.showStrokeOrder = data.showStrokeOrder || false;
+                this.showExamples = data.showExamples || false;
+            }
+        },
+
+        MatchingExercise: class {
+            constructor(data) {
+                this.type = 'matching-exercise';
+                this.title = data.title;
+                this.characters = data.characters || [];
+                this.matches = data.matches || [];
+                this.pairs = data.pairs || [];
+            }
+        },
+
+        SoundMatching: class {
+            constructor(data) {
+                this.type = 'sound-matching';
+                this.title = data.title;
+                this.items = data.items || [];
+            }
+        },
+
+        ToneRuleTable: class {
+            constructor(data) {
+                this.type = 'tone-rule-table';
+                this.class = data.class;
+                this.rules = data.rules || [];
+                this.examples = data.examples || [];
+            }
+        },
+
+        ExplanationContent: class {
+            constructor(data) {
+                this.type = 'explanation';
+                this.text = data.text;
+            }
         }
+
     };
 
     // ----------------------------------------------------------------------------
@@ -1154,6 +1271,66 @@ const App = (function () {
             t(key, fallback = '') {
                 return State.data.translations[key] || fallback;
             }
+        },
+
+        PronunciationService: {
+            pronunciationMap: null,
+
+            async init() {
+                try {
+                    // Change this path to point to data/TSL/
+                    const response = await fetch('./data/TSL/pronunciation-map.json');
+                    this.pronunciationMap = await response.json();
+                } catch (e) {
+                    console.warn('Could not load pronunciation map', e);
+                    this.pronunciationMap = { characterPronunciations: {}, characterNames: {} };
+                }
+            },
+
+            getCharacterSpeech(character, mode = 'sound') {
+                if (!this.pronunciationMap) return character;
+
+                const charData = this.pronunciationMap.characterPronunciations?.[character];
+                if (!charData) return character;
+
+                switch (mode) {
+                    case 'sound':
+                        return charData.th || character;
+                    case 'name':
+                        const name = this.pronunciationMap.characterNames?.[character];
+                        return name ? `${charData.th || character} ${name}` : (charData.th || character);
+                    case 'description':
+                        return charData.description || character;
+                    default:
+                        return charData.th || character;
+                }
+            },
+
+            speakCharacter(character, mode = 'sound') {
+                const text = this.getCharacterSpeech(character, mode);
+                Services.MediaService.speak(text, 'th');
+            },
+
+            speakWord(word, slow = false) {
+                if (slow) {
+                    const chars = word.split('');
+                    let index = 0;
+
+                    const speakNext = () => {
+                        if (index < chars.length) {
+                            const char = chars[index];
+                            const text = this.getCharacterSpeech(char, 'sound');
+                            Services.MediaService.speak(text, 'th', null, () => {
+                                index++;
+                                setTimeout(speakNext, 300);
+                            });
+                        }
+                    };
+                    speakNext();
+                } else {
+                    Services.MediaService.speak(word, 'th');
+                }
+            }
         }
 
     };
@@ -1163,6 +1340,7 @@ const App = (function () {
     // ----------------------------------------------------------------------------
 
     const UI = {
+
         escapeHtml(str) {
             if (str == null) return '';
             return String(str)
@@ -1329,6 +1507,10 @@ const App = (function () {
                     activities.push('multipleChoiceSentence', 'flashcardSentence', 'buildSentence');
                 }
 
+                if (doc.activity?.alphabet) {
+                    activities.push('flashcardCharacter');
+                }
+
                 // If no activity flags, fall back to activitySettings (legacy)
                 if (activities.length === 0 && doc.activitySettings) {
                     const settings = doc.activitySettings;
@@ -1351,8 +1533,6 @@ const App = (function () {
             renderSectionControls(docId, sectionIdx, section) {
                 const t = Services.I18n.t;
                 const activityTypes = section.getActivityTypes();
-
-                // console.log('Section activity types:', activityTypes);
 
                 let html = '<div class="section-all-controls">';
 
@@ -1388,6 +1568,18 @@ const App = (function () {
         `;
                 }
 
+                // ===== ADD THIS =====
+                // Character-based activities (for alphabet)
+                if (section.activity?.alphabet || section.document.activity?.alphabet) {
+                    html += `
+            <button class="btn-flashcard-small" onclick="App.startFlashcards('${docId}', ${sectionIdx}, 'character')">
+                <span class="material-icons">style</span>
+                <span>${t('characters', 'Characters')}</span>
+            </button>
+        `;
+                }
+                // ===== END ADDITION =====
+
                 html += '</div>';
                 return html;
             },
@@ -1421,6 +1613,14 @@ const App = (function () {
                         html += UI.Document.renderWords(item, sectionIdx, blockIdx);
                     } else if (item.type === 'paragraph') {
                         html += UI.Document.renderParagraph(item, sectionIdx, blockIdx);
+                    } else if (item.type === 'explanation' ||
+                        item.type === 'character-grid' ||
+                        item.type === 'character-card' ||
+                        item.type === 'matching-exercise' ||
+                        item.type === 'sound-matching' ||
+                        item.type === 'tone-rule-table' ||
+                        item.type === 'alphabet-table') {
+                        html += UI.alphabet.renderContent(item);
                     }
 
                     return html;
@@ -1688,6 +1888,209 @@ const App = (function () {
                     }
                     return UI.escapeHtml(token);
                 }).join('');
+            }
+        },
+
+        alphabet: {
+            getCharacterData(characterId) {
+                // This would need to be loaded from your data files
+                // For now, return null - will be implemented when data is loaded
+                return null;
+            },
+
+            renderContent(contentItem) {
+                // Use a local reference to avoid 'this' issues
+                const self = this;
+
+                switch (contentItem.type) {
+                    case 'explanation':
+                        return self.renderExplanation(contentItem);
+                    case 'character-grid':
+                        return self.renderCharacterGrid(contentItem);
+                    case 'character-card':
+                        return self.renderCharacterCard(contentItem);
+                    case 'matching-exercise':
+                        return self.renderMatchingExercise(contentItem);
+                    case 'sound-matching':
+                        return self.renderSoundMatching(contentItem);
+                    case 'tone-rule-table':
+                        return self.renderToneRuleTable(contentItem);
+                    case 'alphabet-table':
+                        return self.renderAlphabetTable(contentItem);
+                    default:
+                        console.warn('Unknown alphabet content type:', contentItem.type);
+                        return '';
+                }
+            },
+
+            renderExplanation(item) {
+                const lang = State.data.lang;
+                const text = item.text?.[lang] || item.text?.en || '';
+
+                return `
+            <details class="explanation-details">
+                <summary>
+                    <span class="material-icons">info</span>
+                    <span>${lang === 'th' ? 'คำอธิบาย' : (lang === 'fa' ? 'توضیحات' : 'Explanation')}</span>
+                </summary>
+                <div class="explanation-content card">
+                    <p>${UI.escapeHtml(text)}</p>
+                </div>
+            </details>
+        `;
+            },
+
+            renderCharacterGrid(item) {
+                return `
+            <div class="character-grid">
+                ${item.characters.map(char => {
+                    const charId = char.id || char;
+                    const charSymbol = char.symbol || char;
+                    const charSound = char.sound || '';
+                    return `
+                        <button class="character-grid-item" 
+                                onclick="App.alphabet.showCharacterDetail('${charId}')">
+                            <span class="character-symbol">${charSymbol}</span>
+                            ${charSound ? `<span class="character-sound">${charSound}</span>` : ''}
+                        </button>
+                    `;
+                }).join('')}
+            </div>
+        `;
+            },
+
+            renderCharacterCard(item) {
+                // This will be fully implemented when character data is available
+                const charId = item.characterId;
+                return `
+            <div class="character-card-detailed" data-character-id="${charId}">
+                <div class="character-main">
+                    <div class="character-large">${charId}</div>
+                    <div class="character-info">
+                        <div class="character-sound-large">Loading...</div>
+                        <button class="btn-audio" onclick="App.Services.MediaService.speak('${charId}', 'th')">
+                            <span class="material-icons">volume_up</span> Hear
+                        </button>
+                    </div>
+                </div>
+            </div>
+        `;
+            },
+
+            renderMatchingExercise(item) {
+                const gameId = 'matching_' + Date.now() + '_' + Math.random().toString(36).substr(2, 5);
+
+                return `
+            <div class="alphabet-match-game mobile-friendly" id="${gameId}">
+                <div class="match-instruction">
+                    <span class="material-icons">touch_app</span>
+                    <span>Tap a character, then tap its match</span>
+                </div>
+                
+                <div class="match-grid mobile-grid">
+                    <div class="match-column">
+                        <h3>Characters</h3>
+                        <div class="match-items">
+                            ${item.characters.map(char => `
+                                <button class="match-item" 
+                                        onclick="App.alphabetMatching.select('${gameId}', '${char.id}', 'char')"
+                                        data-id="${char.id}">
+                                    <span class="match-thai">${char.display}</span>
+                                </button>
+                            `).join('')}
+                        </div>
+                    </div>
+                    
+                    <div class="match-column">
+                        <h3>Meanings / Sounds</h3>
+                        <div class="match-items">
+                            ${item.matches.map(match => `
+                                <button class="match-item match-item-right"
+                                        onclick="App.alphabetMatching.select('${gameId}', '${match.id}', 'match')"
+                                        data-id="${match.id}">
+                                    <span class="match-content">${match.display}</span>
+                                </button>
+                            `).join('')}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
+            },
+
+            renderSoundMatching(item) {
+                return `
+            <div class="sound-matching-exercise">
+                <h3>${item.title?.[State.data.lang] || item.title?.en || 'Listen and choose'}</h3>
+                <div class="sound-items">
+                    ${item.items.map((soundItem, index) => `
+                        <div class="sound-item" data-index="${index}">
+                            <button class="btn-play-sound" 
+                                    onclick="App.Services.MediaService.speak('${soundItem.sound}', 'th')">
+                                <span class="material-icons">volume_up</span>
+                            </button>
+                            <div class="sound-options">
+                                ${this.renderSoundOptions(soundItem)}
+                            </div>
+                        </div>
+                    `).join('')}
+                </div>
+            </div>
+        `;
+            },
+
+            renderSoundOptions(soundItem) {
+                // Simplified - would need actual options from data
+                return `
+            <button class="sound-option" onclick="App.alphabet.checkSoundAnswer('${soundItem.characterId}', this)">
+                <span class="character-symbol">?</span>
+            </button>
+        `;
+            },
+
+            renderToneRuleTable(item) {
+                return `
+            <div class="tone-rule-table-container">
+                <h3>${item.class} Class Tone Rules</h3>
+                <table class="tone-rule-table">
+                    <thead>
+                        <tr>
+                            <th>Condition</th>
+                            <th>Tone</th>
+                            <th>Example</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        ${item.rules.map(rule => `
+                            <tr>
+                                <td>${rule.condition}</td>
+                                <td><span class="tone-indicator tone-${rule.tone ? rule.tone.toLowerCase() : 'mid'}">${rule.tone || 'Mid'}</span></td>
+                                <td class="example-word" onclick="App.Services.MediaService.speak('${rule.example}', 'th')">
+                                    ${rule.example}
+                                </td>
+                            </tr>
+                        `).join('')}
+                    </tbody>
+                </table>
+            </div>
+        `;
+            },
+
+            renderAlphabetTable(item) {
+                return `
+            <div class="alphabet-table-container">
+                <h3>${item.title?.[State.data.lang] || item.title?.en || ''}</h3>
+                <div class="alphabet-grid">
+                    ${item.characters.map(char => `
+                        <div class="alphabet-grid-item" onclick="App.Services.MediaService.speak('${char.symbol}', 'th')">
+                            <span class="alphabet-symbol">${char.symbol}</span>
+                            <span class="alphabet-sound">${char.sound || ''}</span>
+                            <span class="alphabet-name">${char.name || ''}</span>
+                        </div>
+                    `).join('')}
+                </div>
+            </div>
+        `;
             }
         },
 
@@ -2051,7 +2454,7 @@ const App = (function () {
                 this.renderCard();
             },
 
-            // In UI.Flashcard.getFlashcardItems method:
+            // In UI.Flashcard.getFlashcardItems (around line 1900-2000)
             getFlashcardItems(docId, sectionIdx, type) {
                 const doc = State.data.currentDocument;
                 if (!doc) return [];
@@ -2067,7 +2470,7 @@ const App = (function () {
                             back: word.translations,
                             word: word
                         }));
-                    } else {
+                    } else if (type === 'sentence') {
                         return section.getSentenceItems().map(sentence => ({
                             type: 'sentence',
                             id: `sent-${sentence.source}`,
@@ -2075,7 +2478,30 @@ const App = (function () {
                             back: sentence.translations,
                             words: sentence.words
                         }));
+                        // ===== ADD THIS =====
+                    } else if (type === 'character') {
+                        // Collect all characters from alphabet content in this section
+                        const characters = [];
+                        section.content.forEach(block => {
+                            if (block.type === 'alphabet-table') {
+                                characters.push(...block.characters);
+                            }
+                        });
+
+                        return characters.map(char => ({
+                            type: 'character',
+                            id: `char-${char.symbol}`,
+                            front: char.symbol,
+                            back: {
+                                sound: char.sound,
+                                name: char.name,
+                                meaning: char.meaning,
+                                class: char.class
+                            },
+                            character: char
+                        }));
                     }
+                    // ===== END ADDITION =====
                 } else {
                     // Document-level flashcards
                     if (type === 'word') {
@@ -2086,7 +2512,7 @@ const App = (function () {
                             back: word.translations,
                             word: word
                         }));
-                    } else {
+                    } else if (type === 'sentence') {
                         return doc.getAllSentenceItems().map(sentence => ({
                             type: 'sentence',
                             id: `sent-${sentence.source}`,
@@ -2094,10 +2520,36 @@ const App = (function () {
                             back: sentence.translations,
                             words: sentence.words
                         }));
+                    } else if (type === 'character') {
+                        // Collect all characters from all sections
+                        const characters = [];
+                        doc.sections.forEach(section => {
+                            section.content.forEach(block => {
+                                if (block.type === 'alphabet-table') {
+                                    characters.push(...block.characters);
+                                }
+                            });
+                        });
+
+                        return characters.map(char => ({
+                            type: 'character',
+                            id: `char-${char.symbol}`,
+                            front: char.symbol,
+                            back: {
+                                sound: char.sound,
+                                name: char.name,
+                                meaning: char.meaning,
+                                class: char.class
+                            },
+                            character: char
+                        }));
                     }
                 }
+
+                return [];
             },
 
+            // In UI.Flashcard.renderCard (around line 2000-2100)
             renderCard() {
                 const container = UI.getContainer();
                 const cards = State.data.flashcards;
@@ -2121,32 +2573,76 @@ const App = (function () {
             
             <div class="flashcard ${cards.showAnswer ? 'show-answer' : ''}">
                 <div class="flashcard-front" 
-                     onclick="App.media.play(this)"
+                     onclick="App.Services.MediaService.speak('${UI.escapeHtml(card.front)}', 'th')"
                      data-text="${UI.escapeHtml(card.front)}" 
                      data-lang="th">
-                    <div class="flashcard-content" lang="th">${UI.escapeHtml(card.front)}</div>
+    `;
+
+                // Customize front display based on card type
+                if (card.type === 'character') {
+                    // Character card front - show large character
+                    html += `
+            <div class="flashcard-content character-front" lang="th">
+                <div class="character-large-display">${UI.escapeHtml(card.front)}</div>
+            </div>
+        `;
+                } else {
+                    // Word or sentence card front
+                    html += `
+            <div class="flashcard-content" lang="th">${UI.escapeHtml(card.front)}</div>
+        `;
+                }
+
+                html += `
                 </div>
                 
                 <div class="flashcard-back">
                     <div class="flashcard-translations">
     `;
 
-                Object.entries(State.data.media.languageSettings).forEach(([code, config]) => {
-                    if (code !== 'th' && config.show && card.back[code]) {
-                        const dir = code === 'fa' ? 'rtl' : 'ltr';
-                        html += `
-                <div class="flashcard-translation-item" 
-                     lang="${code}" 
-                     dir="${dir}"
-                     onclick="App.media.play(this)"
-                     data-text="${UI.escapeHtml(card.back[code])}" 
-                     data-lang="${code}">
-                    <span class="translation-lang">${code.toUpperCase()}:</span>
-                    <span class="translation-text">${UI.escapeHtml(card.back[code])}</span>
-                </div>
-            `;
-                    }
-                });
+                if (card.type === 'character') {
+                    // Character card back - show sound, name, meaning, class
+                    html += `
+            <div class="flashcard-translation-item character-sound"
+                 onclick="App.Services.MediaService.speak('${card.back.sound}', 'th')"
+                 data-text="${card.back.sound}" data-lang="th">
+                <span class="translation-lang">Sound:</span>
+                <span class="translation-text">${card.back.sound}</span>
+                <span class="material-icons audio-icon">volume_up</span>
+            </div>
+            <div class="flashcard-translation-item character-name">
+                <span class="translation-lang">Name:</span>
+                <span class="translation-text">${card.back.name}</span>
+            </div>
+            <div class="flashcard-translation-item character-meaning">
+                <span class="translation-lang">Meaning:</span>
+                <span class="translation-text">${card.back.meaning}</span>
+            </div>
+            <div class="flashcard-translation-item character-class ${card.back.class}">
+                <span class="translation-lang">Class:</span>
+                <span class="translation-text">${card.back.class}</span>
+            </div>
+        `;
+                } else {
+                    // Word or sentence card back - show translations
+                    Object.entries(State.data.media.languageSettings).forEach(([code, config]) => {
+                        if (code !== 'th' && config.show && card.back[code]) {
+                            const dir = code === 'fa' ? 'rtl' : 'ltr';
+                            html += `
+                    <div class="flashcard-translation-item" 
+                         lang="${code}" 
+                         dir="${dir}"
+                         onclick="App.Services.MediaService.speak('${UI.escapeHtml(card.back[code])}', '${code}')"
+                         data-text="${UI.escapeHtml(card.back[code])}" 
+                         data-lang="${code}">
+                        <span class="translation-lang">${code.toUpperCase()}:</span>
+                        <span class="translation-text">${UI.escapeHtml(card.back[code])}</span>
+                        <span class="material-icons audio-icon">volume_up</span>
+                    </div>
+                `;
+                        }
+                    });
+                }
 
                 html += `
                     </div>
@@ -2179,6 +2675,7 @@ const App = (function () {
                     Services.MediaService.speak(card.front, 'th');
                 }, 100);
             }
+
         },
 
         // ------------------------------------------------------------------------
@@ -3360,6 +3857,7 @@ const App = (function () {
     return {
         state: State,
         router: Router,
+        Services: Services,
 
         async init() {
 
@@ -3374,6 +3872,7 @@ const App = (function () {
             this.renderLayout();
             await Services.I18n.loadTranslations();
             await Services.DataService.loadManifest();
+            await Services.PronunciationService.init();
             this.applyTheme();
             Router.init();
             Services.MediaService.init();
@@ -3484,6 +3983,115 @@ const App = (function () {
             this.updateStreak();
 
             App.router.go(`doc/${documentId}`);
+        },
+
+        // Add these inside the returned object, after existing methods
+        alphabet: {
+            // In App.alphabet.showCharacterDetail (around line 2500-2600)
+            showCharacterDetail(characterId) {
+                const anchor = document.getElementById('overlay-anchor');
+                if (!anchor) return;
+
+                anchor.innerHTML = `
+        <div class="overlay-full card character-detail-overlay">
+            <div class="settings-header">
+                <h2>Character Details</h2>
+                <button class="material-icons" onclick="this.closest('.overlay-full').remove()">close</button>
+            </div>
+            <div class="character-large">${characterId}</div>
+            <div class="character-actions">
+                <button class="btn-activity" onclick="App.Services.MediaService.speak('${characterId}', 'th')">
+                    <span class="material-icons">volume_up</span> Hear
+                </button>
+                <!-- REMOVE or COMMENT OUT this button 
+                <button class="btn-activity" onclick="App.alphabet.addToFlashcards('${characterId}')">
+                    <span class="material-icons">style</span> Study
+                </button>
+                -->
+            </div>
+        </div>
+    `;
+            },
+
+            addToFlashcards(characterId) {
+                App.showNotification('Added to flashcards');
+                // SRS integration would go here
+            },
+
+            checkSoundAnswer(correctId, button) {
+                // Simplified feedback
+                button.classList.add('correct');
+                setTimeout(() => button.classList.remove('correct'), 1000);
+            }
+        },
+
+        alphabetMatching: {
+            gameStates: {},
+
+            select(gameId, itemId, type) {
+                if (!this.gameStates[gameId]) {
+                    this.gameStates[gameId] = {
+                        selectedId: null,
+                        selectedType: null,
+                        completed: []
+                    };
+                }
+
+                const game = this.gameStates[gameId];
+                const container = document.getElementById(gameId);
+
+                // If nothing selected
+                if (!game.selectedId) {
+                    game.selectedId = itemId;
+                    game.selectedType = type;
+                    this.updateSelectionUI(container, itemId);
+                    return;
+                }
+
+                // If same item tapped twice
+                if (game.selectedId === itemId) {
+                    game.selectedId = null;
+                    game.selectedType = null;
+                    this.clearSelectionUI(container);
+                    return;
+                }
+
+                // Different items - this would check against actual pairs
+                // For now, just show success
+                game.completed.push([game.selectedId, itemId]);
+                game.selectedId = null;
+                game.selectedType = null;
+
+                // Update UI
+                this.markAsCompleted(container, itemId);
+                this.markAsCompleted(container, game.selectedId);
+                this.clearSelectionUI(container);
+
+                // Play sound
+                Services.MediaService.speak('✓', 'th');
+            },
+
+            updateSelectionUI(container, selectedId) {
+                container.querySelectorAll('.match-item').forEach(el => {
+                    el.classList.remove('selected');
+                    if (el.dataset.id === selectedId) {
+                        el.classList.add('selected');
+                    }
+                });
+            },
+
+            clearSelectionUI(container) {
+                container.querySelectorAll('.match-item').forEach(el => {
+                    el.classList.remove('selected');
+                });
+            },
+
+            markAsCompleted(container, itemId) {
+                container.querySelectorAll(`.match-item[data-id="${itemId}"]`).forEach(el => {
+                    el.classList.add('completed');
+                    el.disabled = true;
+                });
+            }
         },
 
         handleDetailsToggle: function (details, isOpen) {
@@ -3647,6 +4255,10 @@ const App = (function () {
                     notification.remove();
                 }
             }, 2000);
+        },
+
+        playAudio: function (text, lang = 'th') {
+            Services.MediaService.speak(text, lang);
         },
 
         playSequence() {

@@ -1,0 +1,1379 @@
+{
+    "documentId": "RW1",
+    "metadata": {
+        "title": {
+            "en": "Reading and Writing Thai Level 1",
+            "th": "การอ่านและการเขียนภาษาไทยระดับ ๑",
+            "fa": "خواندن و نوشتن تایلندی سطح ۱"
+        }
+    },
+    "activity": {
+        "alphabet": true,
+        "words": false,
+        "sentences": false
+    },
+    "activitySettings": {
+        "alphabet": {
+            "types": [
+                "flashcardCharacter",
+                "character-recognition",
+                "sound-matching",
+                "class-identification",
+                "tone-practice"
+            ]
+        }
+    },
+    "sections": [
+        {
+            "sectionId": "thai-consonants",
+            "heading": {
+                "en": "1.2 Thai Consonants",
+                "th": "๑.๒ พยัญชนะไทย",
+                "fa": "۱.۲ همخوان‌های تایلندی"
+            },
+            "activity": {
+                "alphabet": true
+            },
+            "content": [
+                {
+                    "type": "alphabet-table",
+                    "title": {
+                        "en": "44 Thai Consonants and their names",
+                        "th": "พยัญชนะไทย ๔๔ ตัวและชื่อ",
+                        "fa": "۴۴ همخوان تایلندی و نام‌های آنها"
+                    },
+                    "classification": "all",
+                    "characters": [
+                        {
+                            "number": 1,
+                            "symbol": "ก",
+                            "sound": "กอ",
+                            "name": "ไก่",
+                            "meaning": "Chicken",
+                            "class": "middle",
+                            "examples": [
+                                { "word": "ไก่", "meaning": "chicken" },
+                                { "word": "กลาง", "meaning": "middle" }
+                            ]
+                        },
+                        {
+                            "number": 2,
+                            "symbol": "ข",
+                            "sound": "ขอ",
+                            "name": "ไข่",
+                            "meaning": "Egg",
+                            "class": "high",
+                            "examples": [
+                                { "word": "ไข่", "meaning": "egg" },
+                                { "word": "ขาว", "meaning": "white" }
+                            ]
+                        },
+                        {
+                            "number": 3,
+                            "symbol": "ฃ",
+                            "sound": "ขอ",
+                            "name": "ขวด",
+                            "meaning": "Bottle",
+                            "class": "high",
+                            "note": "Obsolete - replaced by ข",
+                            "examples": [ ]
+                        },
+                        {
+                            "number": 4,
+                            "symbol": "ค",
+                            "sound": "คอ",
+                            "name": "ควาย",
+                            "meaning": "Water buffalo",
+                            "class": "low-paired",
+                            "examples": [
+                                { "word": "ควาย", "meaning": "water buffalo" },
+                                { "word": "ความ", "meaning": "matter, topic" }
+                            ]
+                        },
+                        {
+                            "number": 5,
+                            "symbol": "ฅ",
+                            "sound": "คอ",
+                            "name": "คน",
+                            "meaning": "Human",
+                            "class": "low-paired",
+                            "note": "Obsolete - replaced by ค",
+                            "examples": [ ]
+                        },
+                        {
+                            "number": 6,
+                            "symbol": "ฆ",
+                            "sound": "คอ",
+                            "name": "ระฆัง",
+                            "meaning": "Bell",
+                            "class": "low-paired",
+                            "examples": [
+                                { "word": "ระฆัง", "meaning": "bell" }
+                            ]
+                        },
+                        {
+                            "number": 7,
+                            "symbol": "ง",
+                            "sound": "งอ",
+                            "name": "งู",
+                            "meaning": "Snake",
+                            "class": "low-unpaired",
+                            "examples": [
+                                { "word": "งู", "meaning": "snake" },
+                                { "word": "งาน", "meaning": "work" }
+                            ]
+                        },
+                        {
+                            "number": 8,
+                            "symbol": "จ",
+                            "sound": "จอ",
+                            "name": "จาน",
+                            "meaning": "Plate",
+                            "class": "middle",
+                            "examples": [
+                                { "word": "จาน", "meaning": "plate" },
+                                { "word": "ใจ", "meaning": "heart" }
+                            ]
+                        },
+                        {
+                            "number": 9,
+                            "symbol": "ฉ",
+                            "sound": "ฉอ",
+                            "name": "ฉิ่ง",
+                            "meaning": "Cymbal",
+                            "class": "high",
+                            "examples": [
+                                { "word": "ฉิ่ง", "meaning": "small cymbals" }
+                            ]
+                        },
+                        {
+                            "number": 10,
+                            "symbol": "ช",
+                            "sound": "ชอ",
+                            "name": "ช้าง",
+                            "meaning": "Elephant",
+                            "class": "low-paired",
+                            "examples": [
+                                { "word": "ช้าง", "meaning": "elephant" },
+                                { "word": "ชอบ", "meaning": "like" }
+                            ]
+                        },
+                        {
+                            "number": 11,
+                            "symbol": "ซ",
+                            "sound": "ซอ",
+                            "name": "โซ่",
+                            "meaning": "Chain",
+                            "class": "low-paired",
+                            "examples": [
+                                { "word": "โซ่", "meaning": "chain" }
+                            ]
+                        },
+                        {
+                            "number": 12,
+                            "symbol": "ฌ",
+                            "sound": "ชอ",
+                            "name": "เฌอ",
+                            "meaning": "Name of tree",
+                            "class": "low-paired",
+                            "examples": [ ]
+                        },
+                        {
+                            "number": 13,
+                            "symbol": "ญ",
+                            "sound": "ยอ",
+                            "name": "หญิง",
+                            "meaning": "Female",
+                            "class": "low-unpaired",
+                            "examples": [
+                                { "word": "หญิง", "meaning": "female, woman" },
+                                { "word": "ญาติ", "meaning": "relative" }
+                            ]
+                        },
+                        {
+                            "number": 14,
+                            "symbol": "ฎ",
+                            "sound": "ดอ",
+                            "name": "ชฎา",
+                            "meaning": "Head dress",
+                            "class": "middle",
+                            "examples": [
+                                { "word": "ชฎา", "meaning": "traditional headgear" }
+                            ]
+                        },
+                        {
+                            "number": 15,
+                            "symbol": "ฏ",
+                            "sound": "ตอ",
+                            "name": "ปฏัก",
+                            "meaning": "Lance",
+                            "class": "middle",
+                            "examples": [
+                                { "word": "ปฏัก", "meaning": "goad, lance" }
+                            ]
+                        },
+                        {
+                            "number": 16,
+                            "symbol": "ฐ",
+                            "sound": "ถอ",
+                            "name": "ฐาน",
+                            "meaning": "Pedestal",
+                            "class": "high",
+                            "examples": [
+                                { "word": "ฐาน", "meaning": "base, pedestal" }
+                            ]
+                        },
+                        {
+                            "number": 17,
+                            "symbol": "ฑ",
+                            "sound": "ทอ",
+                            "name": "มนโท",
+                            "meaning": "Lady Montho",
+                            "class": "low-paired",
+                            "examples": [ ]
+                        },
+                        {
+                            "number": 18,
+                            "symbol": "ฒ",
+                            "sound": "ทอ",
+                            "name": "ผู้เฒ่า",
+                            "meaning": "Elderly",
+                            "class": "low-paired",
+                            "examples": [
+                                { "word": "ผู้เฒ่า", "meaning": "elderly person" }
+                            ]
+                        },
+                        {
+                            "number": 19,
+                            "symbol": "ณ",
+                            "sound": "นอ",
+                            "name": "เณร",
+                            "meaning": "Novice monk",
+                            "class": "low-unpaired",
+                            "examples": [
+                                { "word": "เณร", "meaning": "novice monk" }
+                            ]
+                        },
+                        {
+                            "number": 20,
+                            "symbol": "ด",
+                            "sound": "ดอ",
+                            "name": "เด็ก",
+                            "meaning": "Child",
+                            "class": "middle",
+                            "examples": [
+                                { "word": "เด็ก", "meaning": "child" },
+                                { "word": "ดี", "meaning": "good" }
+                            ]
+                        },
+                        {
+                            "number": 21,
+                            "symbol": "ต",
+                            "sound": "ตอ",
+                            "name": "เต่า",
+                            "meaning": "Turtle",
+                            "class": "middle",
+                            "examples": [
+                                { "word": "เต่า", "meaning": "turtle" },
+                                { "word": "ตา", "meaning": "eye" }
+                            ]
+                        },
+                        {
+                            "number": 22,
+                            "symbol": "ถ",
+                            "sound": "ถอ",
+                            "name": "ถุง",
+                            "meaning": "Bag",
+                            "class": "high",
+                            "examples": [
+                                { "word": "ถุง", "meaning": "bag" },
+                                { "word": "ถาม", "meaning": "ask" }
+                            ]
+                        },
+                        {
+                            "number": 23,
+                            "symbol": "ท",
+                            "sound": "ทอ",
+                            "name": "ทหาร",
+                            "meaning": "Soldier",
+                            "class": "low-paired",
+                            "examples": [
+                                { "word": "ทหาร", "meaning": "soldier" },
+                                { "word": "ที่", "meaning": "place" }
+                            ]
+                        },
+                        {
+                            "number": 24,
+                            "symbol": "ธ",
+                            "sound": "ทอ",
+                            "name": "ธง",
+                            "meaning": "Flag",
+                            "class": "low-paired",
+                            "examples": [
+                                { "word": "ธง", "meaning": "flag" }
+                            ]
+                        },
+                        {
+                            "number": 25,
+                            "symbol": "น",
+                            "sound": "นอ",
+                            "name": "หนู",
+                            "meaning": "Mouse",
+                            "class": "low-unpaired",
+                            "examples": [
+                                { "word": "หนู", "meaning": "mouse" },
+                                { "word": "นอน", "meaning": "sleep" }
+                            ]
+                        },
+                        {
+                            "number": 26,
+                            "symbol": "บ",
+                            "sound": "บอ",
+                            "name": "ใบไม้",
+                            "meaning": "Leaf",
+                            "class": "middle",
+                            "examples": [
+                                { "word": "ใบไม้", "meaning": "leaf" },
+                                { "word": "บ้าน", "meaning": "house" }
+                            ]
+                        },
+                        {
+                            "number": 27,
+                            "symbol": "ป",
+                            "sound": "ปอ",
+                            "name": "ปลา",
+                            "meaning": "Fish",
+                            "class": "middle",
+                            "examples": [
+                                { "word": "ปลา", "meaning": "fish" },
+                                { "word": "ป่า", "meaning": "forest" }
+                            ]
+                        },
+                        {
+                            "number": 28,
+                            "symbol": "ผ",
+                            "sound": "ผอ",
+                            "name": "ผึ้ง",
+                            "meaning": "Bee",
+                            "class": "high",
+                            "examples": [
+                                { "word": "ผึ้ง", "meaning": "bee" },
+                                { "word": "ผ้า", "meaning": "cloth" }
+                            ]
+                        },
+                        {
+                            "number": 29,
+                            "symbol": "ฝ",
+                            "sound": "ฝอ",
+                            "name": "ฝา",
+                            "meaning": "Lid / Cover",
+                            "class": "high",
+                            "examples": [
+                                { "word": "ฝา", "meaning": "lid, cover" },
+                                { "word": "ฝน", "meaning": "rain" }
+                            ]
+                        },
+                        {
+                            "number": 30,
+                            "symbol": "พ",
+                            "sound": "พอ",
+                            "name": "พาน",
+                            "meaning": "Offering tray",
+                            "class": "low-paired",
+                            "examples": [
+                                { "word": "พาน", "meaning": "offering tray" },
+                                { "word": "พ่อ", "meaning": "father" }
+                            ]
+                        },
+                        {
+                            "number": 31,
+                            "symbol": "ฟ",
+                            "sound": "ฟอ",
+                            "name": "ฟัน",
+                            "meaning": "Tooth",
+                            "class": "low-paired",
+                            "examples": [
+                                { "word": "ฟัน", "meaning": "tooth" },
+                                { "word": "ฟ้า", "meaning": "sky" }
+                            ]
+                        },
+                        {
+                            "number": 32,
+                            "symbol": "ภ",
+                            "sound": "พอ",
+                            "name": "สำเภา",
+                            "meaning": "Junk (ship)",
+                            "class": "low-paired",
+                            "examples": [
+                                { "word": "สำเภา", "meaning": "Chinese junk" }
+                            ]
+                        },
+                        {
+                            "number": 33,
+                            "symbol": "ม",
+                            "sound": "มอ",
+                            "name": "ม้า",
+                            "meaning": "Horse",
+                            "class": "low-unpaired",
+                            "examples": [
+                                { "word": "ม้า", "meaning": "horse" },
+                                { "word": "มา", "meaning": "come" }
+                            ]
+                        },
+                        {
+                            "number": 34,
+                            "symbol": "ย",
+                            "sound": "ยอ",
+                            "name": "ยักษ์",
+                            "meaning": "Giant",
+                            "class": "low-unpaired",
+                            "examples": [
+                                { "word": "ยักษ์", "meaning": "giant" },
+                                { "word": "ยา", "meaning": "medicine" }
+                            ]
+                        },
+                        {
+                            "number": 35,
+                            "symbol": "ร",
+                            "sound": "รอ",
+                            "name": "เรือ",
+                            "meaning": "Boat",
+                            "class": "low-unpaired",
+                            "examples": [
+                                { "word": "เรือ", "meaning": "boat" },
+                                { "word": "รัก", "meaning": "love" }
+                            ]
+                        },
+                        {
+                            "number": 36,
+                            "symbol": "ล",
+                            "sound": "ลอ",
+                            "name": "ลิง",
+                            "meaning": "Monkey",
+                            "class": "low-unpaired",
+                            "examples": [
+                                { "word": "ลิง", "meaning": "monkey" },
+                                { "word": "ลา", "meaning": "donkey, goodbye" }
+                            ]
+                        },
+                        {
+                            "number": 37,
+                            "symbol": "ว",
+                            "sound": "วอ",
+                            "name": "แหวน",
+                            "meaning": "Ring",
+                            "class": "low-unpaired",
+                            "examples": [
+                                { "word": "แหวน", "meaning": "ring" },
+                                { "word": "ว่า", "meaning": "say" }
+                            ]
+                        },
+                        {
+                            "number": 38,
+                            "symbol": "ศ",
+                            "sound": "สอ",
+                            "name": "ศาลา",
+                            "meaning": "Pavilion",
+                            "class": "high",
+                            "examples": [
+                                { "word": "ศาลา", "meaning": "pavilion" }
+                            ]
+                        },
+                        {
+                            "number": 39,
+                            "symbol": "ษ",
+                            "sound": "สอ",
+                            "name": "ฤษี",
+                            "meaning": "Hermit",
+                            "class": "high",
+                            "examples": [
+                                { "word": "ฤษี", "meaning": "hermit" }
+                            ]
+                        },
+                        {
+                            "number": 40,
+                            "symbol": "ส",
+                            "sound": "สอ",
+                            "name": "เสือ",
+                            "meaning": "Tiger",
+                            "class": "high",
+                            "examples": [
+                                { "word": "เสือ", "meaning": "tiger" },
+                                { "word": "สี", "meaning": "color" }
+                            ]
+                        },
+                        {
+                            "number": 41,
+                            "symbol": "ห",
+                            "sound": "หอ",
+                            "name": "หีบ",
+                            "meaning": "Treasure Box",
+                            "class": "high",
+                            "examples": [
+                                { "word": "หีบ", "meaning": "chest, box" },
+                                { "word": "หา", "meaning": "find, look for" }
+                            ]
+                        },
+                        {
+                            "number": 42,
+                            "symbol": "ฬ",
+                            "sound": "ลอ",
+                            "name": "จุฬา",
+                            "meaning": "Kite",
+                            "class": "low-unpaired",
+                            "examples": [
+                                { "word": "จุฬา", "meaning": "kite" }
+                            ]
+                        },
+                        {
+                            "number": 43,
+                            "symbol": "อ",
+                            "sound": "ออ",
+                            "name": "อ่าง",
+                            "meaning": "Basin",
+                            "class": "middle",
+                            "examples": [
+                                { "word": "อ่าง", "meaning": "basin" },
+                                { "word": "อก", "meaning": "chest" }
+                            ]
+                        },
+                        {
+                            "number": 44,
+                            "symbol": "ฮ",
+                            "sound": "ฮอ",
+                            "name": "นกฮูก",
+                            "meaning": "Owl",
+                            "class": "low-paired",
+                            "examples": [
+                                { "word": "นกฮูก", "meaning": "owl" }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "sectionId": "middle-class-consonants",
+            "heading": {
+                "en": "1.4 Middle Class Consonants",
+                "th": "๑.๔ พยัญชนะกลาง",
+                "fa": "۱.۴ همخوان‌های طبقه میانی"
+            },
+            "activity": {
+                "alphabet": true
+            },
+            "content": [
+                {
+                    "type": "alphabet-table",
+                    "title": {
+                        "en": "Middle Class Consonants (9 letters)",
+                        "th": "พยัญชนะกลาง (๙ ตัว)",
+                        "fa": "همخوان‌های طبقه میانی (۹ حرف)"
+                    },
+                    "classification": "middle",
+                    "characters": [
+                        {
+                            "symbol": "ก",
+                            "sound": "กอ",
+                            "name": "ไก่",
+                            "meaning": "Chicken",
+                            "class": "middle"
+                        },
+                        {
+                            "symbol": "จ",
+                            "sound": "จอ",
+                            "name": "จาน",
+                            "meaning": "Plate",
+                            "class": "middle"
+                        },
+                        {
+                            "symbol": "ด",
+                            "sound": "ดอ",
+                            "name": "เด็ก",
+                            "meaning": "Child",
+                            "class": "middle"
+                        },
+                        {
+                            "symbol": "ต",
+                            "sound": "ตอ",
+                            "name": "เต่า",
+                            "meaning": "Turtle",
+                            "class": "middle"
+                        },
+                        {
+                            "symbol": "บ",
+                            "sound": "บอ",
+                            "name": "ใบไม้",
+                            "meaning": "Leaf",
+                            "class": "middle"
+                        },
+                        {
+                            "symbol": "ป",
+                            "sound": "ปอ",
+                            "name": "ปลา",
+                            "meaning": "Fish",
+                            "class": "middle"
+                        },
+                        {
+                            "symbol": "อ",
+                            "sound": "ออ",
+                            "name": "อ่าง",
+                            "meaning": "Basin",
+                            "class": "middle"
+                        },
+                        {
+                            "symbol": "ฎ",
+                            "sound": "ดอ",
+                            "name": "ชฎา",
+                            "meaning": "Head dress",
+                            "class": "middle"
+                        },
+                        {
+                            "symbol": "ฏ",
+                            "sound": "ตอ",
+                            "name": "ปฏัก",
+                            "meaning": "Lance",
+                            "class": "middle"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "sectionId": "high-class-consonants",
+            "heading": {
+                "en": "1.5 High Class Consonants",
+                "th": "๑.๕ พยัญชนะสูง",
+                "fa": "۱.۵ همخوان‌های طبقه بالا"
+            },
+            "activity": {
+                "alphabet": true
+            },
+            "content": [
+                {
+                    "type": "alphabet-table",
+                    "title": {
+                        "en": "High Class Consonants (11 letters)",
+                        "th": "พยัญชนะสูง (๑๑ ตัว)",
+                        "fa": "همخوان‌های طبقه بالا (۱۱ حرف)"
+                    },
+                    "classification": "high",
+                    "characters": [
+                        {
+                            "symbol": "ข",
+                            "sound": "ขอ",
+                            "name": "ไข่",
+                            "meaning": "Egg",
+                            "class": "high"
+                        },
+                        {
+                            "symbol": "ฉ",
+                            "sound": "ฉอ",
+                            "name": "ฉิ่ง",
+                            "meaning": "Cymbal",
+                            "class": "high"
+                        },
+                        {
+                            "symbol": "ฐ",
+                            "sound": "ถอ",
+                            "name": "ฐาน",
+                            "meaning": "Pedestal",
+                            "class": "high"
+                        },
+                        {
+                            "symbol": "ถ",
+                            "sound": "ถอ",
+                            "name": "ถุง",
+                            "meaning": "Bag",
+                            "class": "high"
+                        },
+                        {
+                            "symbol": "ผ",
+                            "sound": "ผอ",
+                            "name": "ผึ้ง",
+                            "meaning": "Bee",
+                            "class": "high"
+                        },
+                        {
+                            "symbol": "ฝ",
+                            "sound": "ฝอ",
+                            "name": "ฝา",
+                            "meaning": "Lid / Cover",
+                            "class": "high"
+                        },
+                        {
+                            "symbol": "ศ",
+                            "sound": "สอ",
+                            "name": "ศาลา",
+                            "meaning": "Pavilion",
+                            "class": "high"
+                        },
+                        {
+                            "symbol": "ษ",
+                            "sound": "สอ",
+                            "name": "ฤษี",
+                            "meaning": "Hermit",
+                            "class": "high"
+                        },
+                        {
+                            "symbol": "ส",
+                            "sound": "สอ",
+                            "name": "เสือ",
+                            "meaning": "Tiger",
+                            "class": "high"
+                        },
+                        {
+                            "symbol": "ห",
+                            "sound": "หอ",
+                            "name": "หีบ",
+                            "meaning": "Treasure Box",
+                            "class": "high"
+                        },
+                        {
+                            "symbol": "ฬ",
+                            "sound": "ลอ",
+                            "name": "จุฬา",
+                            "meaning": "Kite",
+                            "class": "high"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "sectionId": "low-class-consonants-paired",
+            "heading": {
+                "en": "1.6 Low Class Consonants (Paired)",
+                "th": "๑.๖ พยัญชนะต่ำคู่",
+                "fa": "۱.۶ همخوان‌های طبقه پایین (جفت)"
+            },
+            "activity": {
+                "alphabet": true
+            },
+            "content": [
+                {
+                    "type": "alphabet-table",
+                    "title": {
+                        "en": "Low Class Paired Consonants",
+                        "th": "พยัญชนะต่ำคู่",
+                        "fa": "همخوان‌های طبقه پایین جفت"
+                    },
+                    "classification": "low-paired",
+                    "characters": [
+                        {
+                            "symbol": "ค",
+                            "sound": "คอ",
+                            "name": "ควาย",
+                            "meaning": "Water buffalo",
+                            "class": "low-paired"
+                        },
+                        {
+                            "symbol": "ฅ",
+                            "sound": "คอ",
+                            "name": "คน",
+                            "meaning": "Human",
+                            "class": "low-paired"
+                        },
+                        {
+                            "symbol": "ฆ",
+                            "sound": "คอ",
+                            "name": "ระฆัง",
+                            "meaning": "Bell",
+                            "class": "low-paired"
+                        },
+                        {
+                            "symbol": "ช",
+                            "sound": "ชอ",
+                            "name": "ช้าง",
+                            "meaning": "Elephant",
+                            "class": "low-paired"
+                        },
+                        {
+                            "symbol": "ซ",
+                            "sound": "ซอ",
+                            "name": "โซ่",
+                            "meaning": "Chain",
+                            "class": "low-paired"
+                        },
+                        {
+                            "symbol": "ฌ",
+                            "sound": "ชอ",
+                            "name": "เฌอ",
+                            "meaning": "Name of tree",
+                            "class": "low-paired"
+                        },
+                        {
+                            "symbol": "ฑ",
+                            "sound": "ทอ",
+                            "name": "มนโท",
+                            "meaning": "Lady Montho",
+                            "class": "low-paired"
+                        },
+                        {
+                            "symbol": "ฒ",
+                            "sound": "ทอ",
+                            "name": "ผู้เฒ่า",
+                            "meaning": "Elderly",
+                            "class": "low-paired"
+                        },
+                        {
+                            "symbol": "ท",
+                            "sound": "ทอ",
+                            "name": "ทหาร",
+                            "meaning": "Soldier",
+                            "class": "low-paired"
+                        },
+                        {
+                            "symbol": "ธ",
+                            "sound": "ทอ",
+                            "name": "ธง",
+                            "meaning": "Flag",
+                            "class": "low-paired"
+                        },
+                        {
+                            "symbol": "พ",
+                            "sound": "พอ",
+                            "name": "พาน",
+                            "meaning": "Offering tray",
+                            "class": "low-paired"
+                        },
+                        {
+                            "symbol": "ฟ",
+                            "sound": "ฟอ",
+                            "name": "ฟัน",
+                            "meaning": "Tooth",
+                            "class": "low-paired"
+                        },
+                        {
+                            "symbol": "ภ",
+                            "sound": "พอ",
+                            "name": "สำเภา",
+                            "meaning": "Junk (ship)",
+                            "class": "low-paired"
+                        },
+                        {
+                            "symbol": "ฮ",
+                            "sound": "ฮอ",
+                            "name": "นกฮูก",
+                            "meaning": "Owl",
+                            "class": "low-paired"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "sectionId": "low-class-consonants-unpaired",
+            "heading": {
+                "en": "Low Class Consonants (Unpaired)",
+                "th": "พยัญชนะต่ำเดี่ยว",
+                "fa": "همخوان‌های طبقه پایین (بی‌جفت)"
+            },
+            "activity": {
+                "alphabet": true
+            },
+            "content": [
+                {
+                    "type": "alphabet-table",
+                    "title": {
+                        "en": "Low Class Unpaired Consonants",
+                        "th": "พยัญชนะต่ำเดี่ยว",
+                        "fa": "همخوان‌های طبقه پایین بی‌جفت"
+                    },
+                    "classification": "low-unpaired",
+                    "characters": [
+                        {
+                            "symbol": "ง",
+                            "sound": "งอ",
+                            "name": "งู",
+                            "meaning": "Snake",
+                            "class": "low-unpaired"
+                        },
+                        {
+                            "symbol": "ญ",
+                            "sound": "ยอ",
+                            "name": "หญิง",
+                            "meaning": "Female",
+                            "class": "low-unpaired"
+                        },
+                        {
+                            "symbol": "ณ",
+                            "sound": "นอ",
+                            "name": "เณร",
+                            "meaning": "Novice monk",
+                            "class": "low-unpaired"
+                        },
+                        {
+                            "symbol": "น",
+                            "sound": "นอ",
+                            "name": "หนู",
+                            "meaning": "Mouse",
+                            "class": "low-unpaired"
+                        },
+                        {
+                            "symbol": "ม",
+                            "sound": "มอ",
+                            "name": "ม้า",
+                            "meaning": "Horse",
+                            "class": "low-unpaired"
+                        },
+                        {
+                            "symbol": "ย",
+                            "sound": "ยอ",
+                            "name": "ยักษ์",
+                            "meaning": "Giant",
+                            "class": "low-unpaired"
+                        },
+                        {
+                            "symbol": "ร",
+                            "sound": "รอ",
+                            "name": "เรือ",
+                            "meaning": "Boat",
+                            "class": "low-unpaired"
+                        },
+                        {
+                            "symbol": "ล",
+                            "sound": "ลอ",
+                            "name": "ลิง",
+                            "meaning": "Monkey",
+                            "class": "low-unpaired"
+                        },
+                        {
+                            "symbol": "ว",
+                            "sound": "วอ",
+                            "name": "แหวน",
+                            "meaning": "Ring",
+                            "class": "low-unpaired"
+                        },
+                        {
+                            "symbol": "ฬ",
+                            "sound": "ลอ",
+                            "name": "จุฬา",
+                            "meaning": "Kite",
+                            "class": "low-unpaired"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "sectionId": "consonant-review-exercise",
+            "heading": {
+                "en": "Review: Match consonants with pictures",
+                "th": "ทบทวน: จับคู่พยัญชนะกับรูปภาพ",
+                "fa": "مرور: همخوان‌ها را با تصاویر مطابقت دهید"
+            },
+            "activity": {
+                "alphabet": true
+            },
+            "content": [
+                {
+                    "type": "matching-exercise",
+                    "title": {
+                        "en": "Match the consonants with their pictures",
+                        "th": "จับคู่พยัญชนะกับรูปภาพ",
+                        "fa": "همخوان‌ها را با تصاویرشان مطابقت دهید"
+                    },
+                    "characters": [
+                        { "id": "ko-kai", "display": "ก" },
+                        { "id": "kho-khai", "display": "ข" },
+                        { "id": "kho-khuat", "display": "ฃ" },
+                        { "id": "kho-khwaay", "display": "ค" },
+                        { "id": "kho-khon", "display": "ฅ" },
+                        { "id": "kho-rakhan", "display": "ฆ" },
+                        { "id": "ngo-ngu", "display": "ง" },
+                        { "id": "jo-jaan", "display": "จ" },
+                        { "id": "cho-ching", "display": "ฉ" },
+                        { "id": "cho-chang", "display": "ช" },
+                        { "id": "so-so", "display": "ซ" },
+                        { "id": "cho-choe", "display": "ฌ" },
+                        { "id": "yo-ying", "display": "ญ" }
+                    ],
+                    "matches": [
+                        { "id": "chicken", "display": "🐔 ไก่" },
+                        { "id": "egg", "display": "🥚 ไข่" },
+                        { "id": "bottle", "display": "🧴 ขวด" },
+                        { "id": "water-buffalo", "display": "🐃 ควาย" },
+                        { "id": "human", "display": "👤 คน" },
+                        { "id": "bell", "display": "🔔 ระฆัง" },
+                        { "id": "snake", "display": "🐍 งู" },
+                        { "id": "plate", "display": "🍽️ จาน" },
+                        { "id": "cymbal", "display": "🥁 ฉิ่ง" },
+                        { "id": "elephant", "display": "🐘 ช้าง" },
+                        { "id": "chain", "display": "⛓️ โซ่" },
+                        { "id": "tree", "display": "🌳 เฌอ" },
+                        { "id": "female", "display": "👩 หญิง" }
+                    ],
+                    "pairs": [
+                        [ "ko-kai", "chicken" ],
+                        [ "kho-khai", "egg" ],
+                        [ "kho-khuat", "bottle" ],
+                        [ "kho-khwaay", "water-buffalo" ],
+                        [ "kho-khon", "human" ],
+                        [ "kho-rakhan", "bell" ],
+                        [ "ngo-ngu", "snake" ],
+                        [ "jo-jaan", "plate" ],
+                        [ "cho-ching", "cymbal" ],
+                        [ "cho-chang", "elephant" ],
+                        [ "so-so", "chain" ],
+                        [ "cho-choe", "tree" ],
+                        [ "yo-ying", "female" ]
+                    ]
+                }
+            ]
+        },
+        {
+            "sectionId": "short-long-vowels",
+            "heading": {
+                "en": "2.1 Short & Long Vowels",
+                "th": "๒.๑ สระเสียงสั้นและสระเสียงยาว",
+                "fa": "۲.۱ مصوت‌های کوتاه و بلند"
+            },
+            "activity": {
+                "alphabet": true
+            },
+            "content": [
+                {
+                    "type": "alphabet-table",
+                    "title": {
+                        "en": "Single Vowels",
+                        "th": "สระเดี่ยว",
+                        "fa": "مصوت‌های تکی"
+                    },
+                    "classification": "vowels",
+                    "characters": [
+                        {
+                            "symbol": "-ะ",
+                            "sound": "อะ",
+                            "name": "short a",
+                            "meaning": "Short a",
+                            "class": "vowel"
+                        },
+                        {
+                            "symbol": "-า",
+                            "sound": "อา",
+                            "name": "long aa",
+                            "meaning": "Long aa",
+                            "class": "vowel"
+                        },
+                        {
+                            "symbol": "-ิ",
+                            "sound": "อิ",
+                            "name": "short i",
+                            "meaning": "Short i",
+                            "class": "vowel"
+                        },
+                        {
+                            "symbol": "-ี",
+                            "sound": "อี",
+                            "name": "long ii",
+                            "meaning": "Long ii",
+                            "class": "vowel"
+                        },
+                        {
+                            "symbol": "-ึ",
+                            "sound": "อึ",
+                            "name": "short ue",
+                            "meaning": "Short ue",
+                            "class": "vowel"
+                        },
+                        {
+                            "symbol": "-ื",
+                            "sound": "อือ",
+                            "name": "long uee",
+                            "meaning": "Long uee",
+                            "class": "vowel"
+                        },
+                        {
+                            "symbol": "-ุ",
+                            "sound": "อุ",
+                            "name": "short u",
+                            "meaning": "Short u",
+                            "class": "vowel"
+                        },
+                        {
+                            "symbol": "-ู",
+                            "sound": "อู",
+                            "name": "long uu",
+                            "meaning": "Long uu",
+                            "class": "vowel"
+                        },
+                        {
+                            "symbol": "เ-ะ",
+                            "sound": "เอะ",
+                            "name": "short e",
+                            "meaning": "Short e",
+                            "class": "vowel"
+                        },
+                        {
+                            "symbol": "เ-",
+                            "sound": "เอ",
+                            "name": "long ee",
+                            "meaning": "Long ee",
+                            "class": "vowel"
+                        },
+                        {
+                            "symbol": "แ-ะ",
+                            "sound": "แอะ",
+                            "name": "short ae",
+                            "meaning": "Short ae",
+                            "class": "vowel"
+                        },
+                        {
+                            "symbol": "แ-",
+                            "sound": "แอ",
+                            "name": "long aae",
+                            "meaning": "Long aae",
+                            "class": "vowel"
+                        },
+                        {
+                            "symbol": "โ-ะ",
+                            "sound": "โอะ",
+                            "name": "short o",
+                            "meaning": "Short o",
+                            "class": "vowel"
+                        },
+                        {
+                            "symbol": "โ-",
+                            "sound": "โอ",
+                            "name": "long oo",
+                            "meaning": "Long oo",
+                            "class": "vowel"
+                        },
+                        {
+                            "symbol": "เ-าะ",
+                            "sound": "เอาะ",
+                            "name": "short o",
+                            "meaning": "Short o",
+                            "class": "vowel"
+                        },
+                        {
+                            "symbol": "-อ",
+                            "sound": "ออ",
+                            "name": "long oo",
+                            "meaning": "Long oo",
+                            "class": "vowel"
+                        },
+                        {
+                            "symbol": "เ-อะ",
+                            "sound": "เออะ",
+                            "name": "short oe",
+                            "meaning": "Short oe",
+                            "class": "vowel"
+                        },
+                        {
+                            "symbol": "เ-อ",
+                            "sound": "เออ",
+                            "name": "long ooe",
+                            "meaning": "Long ooe",
+                            "class": "vowel"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "sectionId": "diphthongs",
+            "heading": {
+                "en": "2.2 Diphthongs",
+                "th": "๒.๒ สระประสม",
+                "fa": "۲.۲ مصوت‌های مرکب"
+            },
+            "activity": {
+                "alphabet": true
+            },
+            "content": [
+                {
+                    "type": "alphabet-table",
+                    "title": {
+                        "en": "Diphthongs",
+                        "th": "สระประสม",
+                        "fa": "مصوت‌های مرکب"
+                    },
+                    "classification": "vowels",
+                    "characters": [
+                        {
+                            "symbol": "เ-ียะ",
+                            "sound": "เอียะ",
+                            "name": "short ia",
+                            "meaning": "Short ia",
+                            "class": "vowel"
+                        },
+                        {
+                            "symbol": "เ-ีย",
+                            "sound": "เอีย",
+                            "name": "long ia",
+                            "meaning": "Long ia",
+                            "class": "vowel"
+                        },
+                        {
+                            "symbol": "เ-ือะ",
+                            "sound": "เอือะ",
+                            "name": "short uea",
+                            "meaning": "Short uea",
+                            "class": "vowel"
+                        },
+                        {
+                            "symbol": "เ-ือ",
+                            "sound": "เอือ",
+                            "name": "long uea",
+                            "meaning": "Long uea",
+                            "class": "vowel"
+                        },
+                        {
+                            "symbol": "-ัวะ",
+                            "sound": "อัวะ",
+                            "name": "short ua",
+                            "meaning": "Short ua",
+                            "class": "vowel"
+                        },
+                        {
+                            "symbol": "-ัว",
+                            "sound": "อัว",
+                            "name": "long ua",
+                            "meaning": "Long ua",
+                            "class": "vowel"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "sectionId": "special-vowels",
+            "heading": {
+                "en": "2.3 Special Vowels",
+                "th": "๒.๓ สระพิเศษ",
+                "fa": "۲.۳ مصوت‌های ویژه"
+            },
+            "activity": {
+                "alphabet": true
+            },
+            "content": [
+                {
+                    "type": "alphabet-table",
+                    "title": {
+                        "en": "Special Vowel Forms",
+                        "th": "รูปสระพิเศษ",
+                        "fa": "اشکال مصوت ویژه"
+                    },
+                    "classification": "vowels",
+                    "characters": [
+                        {
+                            "symbol": "ฤ",
+                            "sound": "รึ",
+                            "name": "rue",
+                            "meaning": "rue",
+                            "class": "vowel"
+                        },
+                        {
+                            "symbol": "ฤๅ",
+                            "sound": "รือ",
+                            "name": "ruee",
+                            "meaning": "ruee",
+                            "class": "vowel"
+                        },
+                        {
+                            "symbol": "ฦ",
+                            "sound": "ลึ",
+                            "name": "lue",
+                            "meaning": "lue",
+                            "class": "vowel"
+                        },
+                        {
+                            "symbol": "ฦๅ",
+                            "sound": "ลือ",
+                            "name": "luee",
+                            "meaning": "luee",
+                            "class": "vowel"
+                        },
+                        {
+                            "symbol": "ไ-",
+                            "sound": "ไอ",
+                            "name": "ai",
+                            "meaning": "ai",
+                            "class": "vowel"
+                        },
+                        {
+                            "symbol": "ใ-",
+                            "sound": "ไอ",
+                            "name": "ai",
+                            "meaning": "ai",
+                            "class": "vowel"
+                        },
+                        {
+                            "symbol": "เ-า",
+                            "sound": "เอา",
+                            "name": "ao",
+                            "meaning": "ao",
+                            "class": "vowel"
+                        },
+                        {
+                            "symbol": "ำ",
+                            "sound": "อำ",
+                            "name": "am",
+                            "meaning": "am",
+                            "class": "vowel"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "sectionId": "vowel-exercise",
+            "heading": {
+                "en": "Exercise: Match the sounds with the vowels",
+                "th": "แบบฝึกหัด: จับคู่เสียงกับสระ",
+                "fa": "تمرین: صداها را با مصوت‌ها مطابقت دهید"
+            },
+            "activity": {
+                "alphabet": true
+            },
+            "content": [
+                {
+                    "type": "matching-exercise",
+                    "title": {
+                        "en": "Match each vowel with its sound",
+                        "th": "จับคู่สระกับเสียง",
+                        "fa": "هر مصوت را با صدای آن مطابقت دهید"
+                    },
+                    "characters": [
+                        { "id": "a", "display": "-ะ" },
+                        { "id": "aa", "display": "-า" },
+                        { "id": "i", "display": "-ิ" },
+                        { "id": "ii", "display": "-ี" },
+                        { "id": "ue", "display": "-ึ" },
+                        { "id": "uee", "display": "-ื" },
+                        { "id": "u", "display": "-ุ" },
+                        { "id": "uu", "display": "-ู" },
+                        { "id": "e", "display": "เ-ะ" },
+                        { "id": "ee", "display": "เ-" }
+                    ],
+                    "matches": [
+                        { "id": "a-sound", "display": "อะ (a)" },
+                        { "id": "aa-sound", "display": "อา (aa)" },
+                        { "id": "i-sound", "display": "อิ (i)" },
+                        { "id": "ii-sound", "display": "อี (ii)" },
+                        { "id": "ue-sound", "display": "อึ (ue)" },
+                        { "id": "uee-sound", "display": "อือ (uee)" },
+                        { "id": "u-sound", "display": "อุ (u)" },
+                        { "id": "uu-sound", "display": "อู (uu)" },
+                        { "id": "e-sound", "display": "เอะ (e)" },
+                        { "id": "ee-sound", "display": "เอ (ee)" }
+                    ],
+                    "pairs": [
+                        [ "a", "a-sound" ],
+                        [ "aa", "aa-sound" ],
+                        [ "i", "i-sound" ],
+                        [ "ii", "ii-sound" ],
+                        [ "ue", "ue-sound" ],
+                        [ "uee", "uee-sound" ],
+                        [ "u", "u-sound" ],
+                        [ "uu", "uu-sound" ],
+                        [ "e", "e-sound" ],
+                        [ "ee", "ee-sound" ]
+                    ]
+                }
+            ]
+        }
+    ]
+}
