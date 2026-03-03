@@ -488,8 +488,6 @@ const App = (function () {
                         return new Models.CharacterGridContent(item);
                     } else if (item.type === 'character-card') {
                         return new Models.CharacterCardContent(item);
-                    } else if (item.type === 'matching-exercise') {
-                        return new Models.MatchingExercise(item);
                     } else if (item.type === 'sound-matching') {
                         return new Models.SoundMatching(item);
                     } else if (item.type === 'tone-rule-table') {
@@ -624,16 +622,6 @@ const App = (function () {
                 this.characterId = data.characterId;
                 this.showStrokeOrder = data.showStrokeOrder || false;
                 this.showExamples = data.showExamples || false;
-            }
-        },
-
-        MatchingExercise: class {
-            constructor(data) {
-                this.type = 'matching-exercise';
-                this.title = data.title;
-                this.characters = data.characters || [];
-                this.matches = data.matches || [];
-                this.pairs = data.pairs || [];
             }
         },
 
@@ -1868,7 +1856,6 @@ const App = (function () {
             },
 
             renderContent(contentItem) {
-                // Use a local reference to avoid 'this' issues
                 const self = this;
 
                 switch (contentItem.type) {
@@ -1878,8 +1865,8 @@ const App = (function () {
                         return self.renderCharacterGrid(contentItem);
                     case 'character-card':
                         return self.renderCharacterCard(contentItem);
-                    case 'matching-exercise':
-                        return self.renderMatchingExercise(contentItem);
+                    // case 'matching-exercise':   ← DELETE this line
+                    //     return self.renderMatchingExercise(contentItem); ← DELETE this line
                     case 'sound-matching':
                         return self.renderSoundMatching(contentItem);
                     case 'tone-rule-table':
@@ -1946,51 +1933,6 @@ const App = (function () {
                 </div>
             </div>
         `;
-            },
-
-            renderMatchingExercise(item) {
-                const gameId = 'matching_' + Date.now() + '_' + Math.random().toString(36).substr(2, 5);
-
-                return `
-                    <div class="alphabet-match-game mobile-friendly" id="${gameId}">
-                        <div class="match-instruction">
-                            <span class="material-icons">touch_app</span>
-                            <span>Tap a character, then tap its match</span>
-                        </div>
-                        
-                        <div class="match-grid mobile-grid">
-                            <div class="match-column">
-                                <h3>Characters</h3>
-                                <div class="match-items">
-                                    ${item.characters.map(char => `
-                                        <button class="match-item audio-element" 
-                                                onclick="App.media.play(this)"
-                                                data-id="${char.id}"
-                                                data-text="${char.display}" 
-                                                data-lang="th">
-                                            <span class="match-thai">${char.display}</span>
-                                        </button>
-                                    `).join('')}
-                                </div>
-                            </div>
-                            
-                            <div class="match-column">
-                                <h3>Meanings / Sounds</h3>
-                                <div class="match-items">
-                                    ${item.matches.map(match => `
-                                        <button class="match-item match-item-right audio-element"
-                                                onclick="App.media.play(this)"
-                                                data-id="${match.id}"
-                                                data-text="${match.display}" 
-                                                data-lang="${State.data.lang}">
-                                            <span class="match-content">${match.display}</span>
-                                        </button>
-                                    `).join('')}
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                `;
             },
 
             renderSoundMatching(item) {
@@ -4003,75 +3945,6 @@ const App = (function () {
                 // Simplified feedback
                 button.classList.add('correct');
                 setTimeout(() => button.classList.remove('correct'), 1000);
-            }
-        },
-
-        alphabetMatching: {
-            gameStates: {},
-
-            select(gameId, itemId, type) {
-                if (!this.gameStates[gameId]) {
-                    this.gameStates[gameId] = {
-                        selectedId: null,
-                        selectedType: null,
-                        completed: []
-                    };
-                }
-
-                const game = this.gameStates[gameId];
-                const container = document.getElementById(gameId);
-
-                // If nothing selected
-                if (!game.selectedId) {
-                    game.selectedId = itemId;
-                    game.selectedType = type;
-                    this.updateSelectionUI(container, itemId);
-                    return;
-                }
-
-                // If same item tapped twice
-                if (game.selectedId === itemId) {
-                    game.selectedId = null;
-                    game.selectedType = null;
-                    this.clearSelectionUI(container);
-                    return;
-                }
-
-                // Different items - this would check against actual pairs
-                // For now, just show success
-                game.completed.push([game.selectedId, itemId]);
-                game.selectedId = null;
-                game.selectedType = null;
-
-                // Update UI
-                this.markAsCompleted(container, itemId);
-                this.markAsCompleted(container, game.selectedId);
-                this.clearSelectionUI(container);
-
-                // Play sound
-                Services.MediaService.speak('✓', 'th');
-            },
-
-            updateSelectionUI(container, selectedId) {
-                container.querySelectorAll('.match-item').forEach(el => {
-                    el.classList.remove('selected');
-                    if (el.dataset.id === selectedId) {
-                        el.classList.add('selected');
-                    }
-                });
-            },
-
-            clearSelectionUI(container) {
-                container.querySelectorAll('.match-item').forEach(el => {
-                    el.classList.remove('selected');
-                });
-            },
-
-            markAsCompleted(container, itemId) {
-                container.querySelectorAll(`.match-item[data-id="${itemId}"]`).forEach(el => {
-                    el.classList.add('completed');
-                    el.disabled = true;
-                });
             }
         },
 
