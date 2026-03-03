@@ -39,6 +39,8 @@ const App = (function () {
                 delay: parseInt(localStorage.getItem('localStorageDelay')) || 1,
                 pitch: parseFloat(localStorage.getItem('localStoragePitch')) || 1,
                 voice: localStorage.getItem('localStorageVoice') || '',
+                // NEW: Control whether word breakdowns are shown and spoken
+                showWordBreakdown: localStorage.getItem('localStorageShowWordBreakdown') !== 'false', // default true
                 languageSettings: (() => {
                     const defaults = {
                         th: { show: true, repeat: 1 },
@@ -53,6 +55,7 @@ const App = (function () {
                     }
                 })()
             },
+
 
             srs: {
                 items: {},
@@ -163,6 +166,7 @@ const App = (function () {
                 delay: 1,
                 pitch: 1,
                 voice: '',
+                showWordBreakdown: true, // NEW default
                 languageSettings: {
                     th: { show: true, repeat: 1 },
                     en: { show: true, repeat: 1 },
@@ -170,6 +174,7 @@ const App = (function () {
                 }
             }
         },
+
 
         get(key) { return this.data[key]; },
         set(key, value) { this.data[key] = value; this.save(key); },
@@ -191,6 +196,7 @@ const App = (function () {
                 localStorage.setItem('localStorageDelay', this.data.media.delay);
                 localStorage.setItem('localStoragePitch', this.data.media.pitch);
                 localStorage.setItem('localStorageVoice', this.data.media.voice);
+                localStorage.setItem('localStorageShowWordBreakdown', this.data.media.showWordBreakdown); // NEW
                 localStorage.setItem('localStorageLangMap',
                     JSON.stringify(this.data.media.languageSettings));
             }
@@ -469,11 +475,12 @@ const App = (function () {
                     sentences: data.activity?.sentences ?? false
                 };
 
-                console.log('Section initialized:', {
-                    id: this.id,
-                    activity: this.activity,
-                    sourceData: data.activity
-                });
+                /*  console.log('Section initialized:', {
+                      id: this.id,
+                      activity: this.activity,
+                      sourceData: data.activity
+                  });
+  */
 
                 // Process content items
                 this.content = (data.content || []).map(item => {
@@ -1130,38 +1137,41 @@ const App = (function () {
                 );
             },
 
-            // In Services.MediaService, update the isSequenceElement method with detailed logging:
-
             isSequenceElement(el) {
-                console.log('Checking element:', {
-                    classes: Array.from(el.classList),
-                    hasDataLink: el.hasAttribute('data-link'),
-                    hasDataUid: el.hasAttribute('data-uid'),
-                    inSentWordBlock: el.closest('.sent-word-block') !== null,
-                    text: el.getAttribute('data-text')
-                });
+                // If we're showing word breakdowns, include them in the sequence
+                if (State.data.media.showWordBreakdown) {
+                    // Check if this is a word breakdown element
+                    const isBreakdownElement =
+                        el.classList.contains('sent-word-item') ||
+                        el.classList.contains('sent-word-trans') ||
+                        (el.hasAttribute('data-link') && el.closest('.sent-word-block'));
 
-                // If it has data-link, it's a linked element (word breakdown) - NOT sequence
-                if (el.hasAttribute('data-link')) {
-                    console.log('  → Filtered out: has data-link');
+                    if (isBreakdownElement) {
+                        //   console.log('  → Including word breakdown element in sequence');
+                        return true;
+                    }
+                }
+
+                // If it has data-link, it's a linked element (word breakdown) - NOT sequence when breakdown is OFF
+                if (el.hasAttribute('data-link') && !State.data.media.showWordBreakdown) {
                     return false;
                 }
 
-                // If it's inside sent-word-block, it's a breakdown - NOT sequence
-                if (el.closest('.sent-word-block')) {
-                    console.log('  → Filtered out: inside sent-word-block');
+                // If it's inside sent-word-block, it's a breakdown - NOT sequence when breakdown is OFF
+                if (el.closest('.sent-word-block') && !State.data.media.showWordBreakdown) {
                     return false;
                 }
 
-                // Check by class
+                // Check by class - these are ALWAYS breakdown elements
                 const classList = el.classList;
 
-                // These classes are ALWAYS breakdown elements - NEVER sequence
-                if (classList.contains('sent-word-item') ||
-                    classList.contains('sent-word-trans') ||
-                    classList.contains('matched-word')) {
-                    console.log('  → Filtered out: is breakdown element');
-                    return false;
+                if (!State.data.media.showWordBreakdown) {
+                    // When breakdown is OFF, filter these out
+                    if (classList.contains('sent-word-item') ||
+                        classList.contains('sent-word-trans') ||
+                        classList.contains('matched-word')) {
+                        return false;
+                    }
                 }
 
                 // These classes are ALWAYS main sequence elements
@@ -1170,15 +1180,15 @@ const App = (function () {
                     classList.contains('alphabet-grid-item') ||
                     classList.contains('character-grid-item') ||
                     classList.contains('example-word')) {
-                    console.log('  → Included: is main sequence element by class');
+                    //    console.log('  → Included: is main sequence element by class');
                     return true;
                 }
 
                 // Check for elements with data-uid (sentences and translations)
                 if (el.hasAttribute('data-uid')) {
-                    // But make sure they're not in a breakdown block
-                    if (el.closest('.sent-word-block') === null) {
-                        console.log('  → Included: has data-uid and not in breakdown');
+                    // If it's a sentence or translation, include it
+                    if (el.closest('.sentence-group') || el.closest('.stack-item')) {
+                        //   console.log('  → Included: has data-uid and is in sentence group');
                         return true;
                     }
                 }
@@ -1186,27 +1196,32 @@ const App = (function () {
                 // Check for elements in sentence-group with source or trans classes
                 if (el.closest('.sentence-group')) {
                     if (classList.contains('source') || classList.contains('trans')) {
-                        // But make sure they're not in a breakdown block
-                        if (el.closest('.sent-word-block') === null) {
-                            console.log('  → Included: in sentence-group with source/trans');
-                            return true;
-                        }
+                        //   console.log('  → Included: in sentence-group with source/trans');
+                        return true;
                     }
                 }
 
                 // Check for elements in alphabet-table-container
                 if (el.closest('.alphabet-table-container') !== null) {
-                    // But make sure they're not in a breakdown block
-                    if (el.closest('.sent-word-block') === null) {
-                        console.log('  → Included: in alphabet-table-container');
+                    //  console.log('  → Included: in alphabet-table-container');
+                    return true;
+                }
+
+                // Check for word breakdown elements when setting is ON
+                if (State.data.media.showWordBreakdown) {
+                    // Include any element that has data-text and is in a word breakdown context
+                    if (el.hasAttribute('data-text') &&
+                        (el.closest('.sent-word-block') ||
+                            el.classList.contains('sent-word-item') ||
+                            el.classList.contains('sent-word-trans'))) {
+                        //   console.log('  → Included: word breakdown element');
                         return true;
                     }
                 }
 
-                console.log('  → Filtered out: no matching criteria');
+                //  console.log('  → Filtered out: no matching criteria');
                 return false;
             },
-
             seekToElement: function (element) {
                 // Clear any pending seek timer
                 if (this._seekTimer) {
@@ -1216,7 +1231,7 @@ const App = (function () {
 
                 // Prevent multiple seeks
                 if (this._isSeeking) {
-                    console.log('Already seeking, queueing this request');
+                    //  console.log('Already seeking, queueing this request');
                     this._seekQueue = element;
                     return;
                 }
@@ -1227,67 +1242,17 @@ const App = (function () {
                 // Get all audio elements
                 const allElements = Array.from(document.querySelectorAll('.audio-element'));
 
-                /*
-                                const isSequenceElement = (el) => {
-                                    // If it has data-link, it's a linked element (word breakdown) - NOT sequence
-                                    if (el.hasAttribute('data-link')) return false;
-                
-                                    // If it's inside sent-word-block, it's a breakdown - NOT sequence
-                                    if (el.closest('.sent-word-block')) return false;
-                
-                                    // Check by class
-                                    const classList = el.classList;
-                                    if (classList.contains('sent-word-item') ||
-                                        classList.contains('sent-word-trans') ||
-                                        classList.contains('matched-word')) {
-                                        return false;
-                                    }
-                
-                                    // Sequence elements are those that:
-                                    // 1. Have data-uid (sentences and translations)
-                                    // 2. Are word-source or word-trans in word cards
-                                    // 3. Are in sentence-group with class source or trans
-                                    // 4. Are alphabet/character grid items
-                                    // 5. Are example words in tone rule tables
-                                    return (el.hasAttribute('data-uid') ||
-                                        classList.contains('word-source') ||
-                                        classList.contains('word-trans') ||
-                                        (el.closest('.sentence-group') &&
-                                            (classList.contains('source') || classList.contains('trans'))) ||
-                                        classList.contains('alphabet-grid-item') ||
-                                        classList.contains('character-grid-item') ||
-                                        classList.contains('example-word') ||
-                                        el.closest('.alphabet-table-container') !== null);
-                                };
-                */
-
-                // Filter to only include sequence elements
-                /*
-                const sequenceElements = allElements.filter(el => {
-                    const isSeq = isSequenceElement(el);
-                    if (!isSeq) {
-                        console.log('Filtered out element:', {
-                            classes: el.classList,
-                            hasDataLink: el.hasAttribute('data-link'),
-                            inSentWordBlock: el.closest('.sent-word-block') !== null,
-                            hasDataUid: el.hasAttribute('data-uid')
-                        });
-                    }
-                    return isSeq;
-                });
-*/
-
                 const sequenceElements = allElements.filter(el => this.isSequenceElement(el));
 
-                console.log('Seek - All elements:', allElements.length);
-                console.log('Seek - Sequence elements:', sequenceElements.length);
-                console.log('Seek - Clicked element classes:', element.classList);
-                console.log('Seek - Clicked element has data-uid:', element.hasAttribute('data-uid'));
+                //  console.log('Seek - All elements:', allElements.length);
+                //   console.log('Seek - Sequence elements:', sequenceElements.length);
+                //   console.log('Seek - Clicked element classes:', element.classList);
+                //   console.log('Seek - Clicked element has data-uid:', element.hasAttribute('data-uid'));
 
                 const targetIndex = sequenceElements.indexOf(element);
 
                 if (targetIndex !== -1) {
-                    console.log('Found in sequence at index:', targetIndex);
+                    //        console.log('Found in sequence at index:', targetIndex);
 
                     // Check if the element is inside a closed details panel and open it
                     const details = element.closest('details');
@@ -1312,7 +1277,7 @@ const App = (function () {
                         this.performSeekWithScroll(element, targetIndex);
                     }
                 } else {
-                    console.log('Element not in sequence, playing directly');
+                    //   console.log('Element not in sequence, playing directly');
                     // If the element isn't in the sequence elements, just play it directly
                     const text = element.getAttribute('data-text') || element.textContent.trim();
                     const lang = element.getAttribute('data-lang') || 'th';
@@ -1667,16 +1632,16 @@ const App = (function () {
 
             renderSectionControls(docId, sectionIdx, section) {
                 const t = Services.I18n.t;
-
-                console.log('Rendering section controls for:', {
-                    sectionId: section.id,
-                    hasWordActivities: section.hasWordActivities(),
-                    hasSentenceActivities: section.hasSentenceActivities(),
-                    hasAlphabetActivities: section.hasAlphabetActivities(),
-                    activity: section.activity,
-                    documentActivity: section.document.activity
-                });
-
+                /*
+                                console.log('Rendering section controls for:', {
+                                    sectionId: section.id,
+                                    hasWordActivities: section.hasWordActivities(),
+                                    hasSentenceActivities: section.hasSentenceActivities(),
+                                    hasAlphabetActivities: section.hasAlphabetActivities(),
+                                    activity: section.activity,
+                                    documentActivity: section.document.activity
+                                });
+                */
 
                 let html = '<div class="section-all-controls">';
 
@@ -1842,7 +1807,9 @@ const App = (function () {
         `;
 
                     // Add word breakdown blocks
-                    if (State.data.media.languageSettings.th?.show && sentence.words.length) {
+                    if (State.data.media.showWordBreakdown &&
+                        State.data.media.languageSettings.th?.show &&
+                        sentence.words.length) {
                         html += '<div class="sent-word-block">';
                         sentence.words.forEach((word, wordIdx) => {
                             // Create a unique ID for the breakdown item
@@ -1850,26 +1817,26 @@ const App = (function () {
                             const sourceWordId = `source-${uid}-w-${wordIdx}`;
 
                             html += `
-                    <div id="${breakdownId}" class="sent-word-item audio-element"
-                         data-text="${UI.escapeHtml(word.word)}"
-                         data-lang="th"
-                         data-link="${sourceWordId}"
-                         onclick="App.media.play(this)">
-                        <div class="sent-word-source">${UI.escapeHtml(word.word)}</div>
-                        ${Object.entries(State.data.media.languageSettings)
+                                <div id="${breakdownId}" class="sent-word-item audio-element"
+                                    data-text="${UI.escapeHtml(word.word)}"
+                                    data-lang="th"
+                                    data-link="${sourceWordId}"
+                                    onclick="App.media.play(this)">
+                                    <div class="sent-word-source">${UI.escapeHtml(word.word)}</div>
+                                    ${Object.entries(State.data.media.languageSettings)
                                     .filter(([code]) => code !== 'th')
                                     .map(([code, config]) => config.show && word.translations[code] ? `
-                                <div class="sent-word-trans lang-${code} audio-element"
-                                     lang="${code}" dir="${code === 'fa' ? 'rtl' : 'ltr'}"
-                                     data-text="${UI.escapeHtml(word.translations[code])}"
-                                     data-lang="${code}"
-                                     data-link="${sourceWordId}"
-                                     onclick="App.media.play(this); event.stopPropagation();">
-                                    ${UI.escapeHtml(word.translations[code])}
+                                        <div class="sent-word-trans lang-${code} audio-element"
+                                            lang="${code}" dir="${code === 'fa' ? 'rtl' : 'ltr'}"
+                                            data-text="${UI.escapeHtml(word.translations[code])}"
+                                            data-lang="${code}"
+                                            data-link="${sourceWordId}"
+                                            onclick="App.media.play(this); event.stopPropagation();">
+                                            ${UI.escapeHtml(word.translations[code])}
+                                        </div>
+                                    ` : '').join('')}
                                 </div>
-                            ` : '').join('')}
-                    </div>
-                `;
+                                `;
                         });
                         html += '</div>';
                     }
@@ -3728,6 +3695,7 @@ const App = (function () {
         // ------------------------------------------------------------------------
         // Settings Overlay
         // ------------------------------------------------------------------------
+        // UI.Settings.render method (around line 3700-3800)
         Settings: {
             render() {
                 const anchor = document.getElementById('overlay-anchor');
@@ -3738,84 +3706,107 @@ const App = (function () {
 
                 const langRows = Object.entries(media.languageSettings)
                     .map(([code, config]) => `
-                        <tr>
-                            <td>${code.toUpperCase()}</td>
-                            <td>
-                                <input type="checkbox" id="show-${code}"
-                                    ${config.show ? 'checked' : ''}
-                                    onchange="App.updateLanguageConfig('${code}', 'show', this.checked, true)">
-                            </td>
-                            <td>
-                                <input type="number" style="width:40px" id="repeat-${code}"
-                                    value="${config.repeat}" min="1" max="3"
-                                    onchange="App.updateLanguageConfig('${code}', 'repeat', this.value, true)">
-                            </td>
-                        </tr>
-                    `).join('');
+                <tr>
+                    <td>${code.toUpperCase()}</td>
+                    <td>
+                        <input type="checkbox" id="show-${code}"
+                            ${config.show ? 'checked' : ''}
+                            onchange="App.updateLanguageConfig('${code}', 'show', this.checked, true)">
+                    </td>
+                    <td>
+                        <input type="number" style="width:40px" id="repeat-${code}"
+                            value="${config.repeat}" min="1" max="3"
+                            onchange="App.updateLanguageConfig('${code}', 'repeat', this.value, true)">
+                    </td>
+                </tr>
+            `).join('');
 
-                // In UI.Settings.render method, add the button after the table but before closing the overlay div:
-
-                anchor.innerHTML = `
-                    <div class="overlay-full card">
-                        <div class="settings-header">
-                            <h2>${t('settings', 'Settings')}</h2>
-                            <button class="material-icons" onclick="document.getElementById('overlay-anchor').innerHTML=''">close</button>
-                        </div>
-                        
-                        <div class="settings-sliders">
-                            <div class="control-row-inline">
-                                <label>${t('speed', 'Speed')}</label>
-                                <input type="range" min="0.5" max="2" step="0.25"
-                                    value="${media.speed}"
-                                    oninput="this.nextElementSibling.innerText = this.value + 'x'; App.updateMediaParam('speed', this.value, true)">
-                                <span class="val-label">${media.speed}x</span>
-                            </div>
-                            <div class="control-row-inline">
-                                <label>${t('delay', 'Delay')}</label>
-                                <input type="range" min="1" max="5" step="1"
-                                    value="${media.delay}"
-                                    oninput="this.nextElementSibling.innerText = this.value + 's'; App.updateMediaParam('delay', this.value, true)">
-                                <span class="val-label">${media.delay}s</span>
-                            </div>
-                            <div class="control-row-inline">
-                                <label>${t('pitch', 'Pitch')}</label>
-                                <input type="range" min="0.5" max="1.5" step="0.1"
-                                    value="${media.pitch}"
-                                    oninput="this.nextElementSibling.innerText = this.value; App.updateMediaParam('pitch', this.value, true)">
-                                <span class="val-label">${media.pitch}</span>
-                            </div>
-                        </div>
-                        
-                        <label>${t('voice', 'Voice')}</label>
-                        <select id="voice-select" onchange="App.updateMediaParam('voice', this.value)" style="width:100%; margin-bottom:15px;">
-                            ${Services.MediaService.cachedVoices.map(v => `
-                                <option value="${v.name}" ${media.voice === v.name ? 'selected' : ''}>
-                                    ${v.name}
-                                </option>
-                            `).join('')}
-                        </select>
-                        
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>${t('translation', 'Translation')}</th>
-                                    <th>${t('show', 'Show')}</th>
-                                    <th><span class="material-icons">volume_up</span> ${t('repeat', 'Repeat')}</th>
-                                </tr>
-                            </thead>
-                            <tbody>${langRows}</tbody>
-                        </table>
-                        
-                        <!-- Reset to Defaults Button -->
-                        <div style="display: flex; justify-content: center; margin-top: 20px; padding-top: 15px; border-top: 1px solid var(--border);">
-                            <button class="btn-activity" onclick="App.resetSettingsToDefaults()" style="background: var(--text-secondary);">
-                                <span class="material-icons">restore</span>
-                                ${t('reset_defaults', 'Reset to Defaults')}
-                            </button>
-                        </div>
+                // Build the complete HTML string
+                let html = `
+            <div class="overlay-full card">
+                <div class="settings-header">
+                    <h2>${t('settings', 'Settings')}</h2>
+                    <button class="material-icons" onclick="document.getElementById('overlay-anchor').innerHTML=''">close</button>
+                </div>
+                
+                <div class="settings-sliders">
+                    <div class="control-row-inline">
+                        <label>${t('speed', 'Speed')}</label>
+                        <input type="range" min="0.5" max="2" step="0.25"
+                            value="${media.speed}"
+                            oninput="this.nextElementSibling.innerText = this.value + 'x'; App.updateMediaParam('speed', this.value, true)">
+                        <span class="val-label">${media.speed}x</span>
                     </div>
-                `;
+                    <div class="control-row-inline">
+                        <label>${t('delay', 'Delay')}</label>
+                        <input type="range" min="1" max="5" step="1"
+                            value="${media.delay}"
+                            oninput="this.nextElementSibling.innerText = this.value + 's'; App.updateMediaParam('delay', this.value, true)">
+                        <span class="val-label">${media.delay}s</span>
+                    </div>
+                    <div class="control-row-inline">
+                        <label>${t('pitch', 'Pitch')}</label>
+                        <input type="range" min="0.5" max="1.5" step="0.1"
+                            value="${media.pitch}"
+                            oninput="this.nextElementSibling.innerText = this.value; App.updateMediaParam('pitch', this.value, true)">
+                        <span class="val-label">${media.pitch}</span>
+                    </div>
+                </div>
+                
+                <label>${t('voice', 'Voice')}</label>
+                <select id="voice-select" onchange="App.updateMediaParam('voice', this.value)" style="width:100%; margin-bottom:15px;">
+                    ${Services.MediaService.cachedVoices.map(v => `
+                        <option value="${v.name}" ${media.voice === v.name ? 'selected' : ''}>
+                            ${v.name}
+                        </option>
+                    `).join('')}
+                </select>
+                
+                <table>
+                    <thead>
+                        <tr>
+                            <th>${t('translation', 'Translation')}</th>
+                            <th>${t('show', 'Show')}</th>
+                            <th><span class="material-icons">volume_up</span> ${t('repeat', 'Repeat')}</th>
+                        </tr>
+                    </thead>
+                    <tbody>${langRows}</tbody>
+                </table>
+        `;
 
+                // Add Word Breakdown Toggle
+                html += `
+                <div style="margin-top: 20px; padding-top: 15px; border-top: 1px solid var(--border);">
+                    <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px;">
+                        <label for="showWordBreakdown" style="font-weight: 600;">
+                            <span class="material-icons" style="vertical-align: middle; margin-right: 8px;">format_list_bulleted</span>
+                            ${t('show_word_breakdown', 'Show Word Breakdown')}
+                        </label>
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="showWordBreakdown" 
+                                   ${State.data.media.showWordBreakdown ? 'checked' : ''}
+                                   onchange="App.updateShowWordBreakdown(this.checked)">
+                            <span class="toggle-slider"></span>
+                        </label>
+                    </div>
+                    <p style="font-size: 0.85rem; color: var(--text-secondary); margin: 0 0 10px 0;">
+                        ${t('show_word_breakdown_desc', 'When enabled, individual words in sentences will be shown and spoken during audio playback.')}
+                    </p>
+                </div>
+        `;
+
+                // Add Reset to Defaults Button
+                html += `
+                <div style="display: flex; justify-content: center; margin-top: 20px; padding-top: 15px; border-top: 1px solid var(--border);">
+                    <button class="btn-activity" onclick="App.resetSettingsToDefaults()" style="background: var(--text-secondary);">
+                        <span class="material-icons">restore</span>
+                        ${t('reset_defaults', 'Reset to Defaults')}
+                    </button>
+                </div>
+            </div>
+        `;
+
+                anchor.innerHTML = html;
             }
         },
 
@@ -3994,7 +3985,7 @@ const App = (function () {
                 // Optional: Uncomment if you want to auto-navigate to last document on startup
                 // this.router.go(`doc/${State.data.lastDocument}`);
                 // For now, we just highlight it in the library (already handled by UI.Library.render)
-                console.log('Last document available:', State.data.lastDocument);
+                //  console.log('Last document available:', State.data.lastDocument);
             }
 
             const pauseOnInteraction = () => {
@@ -4237,20 +4228,20 @@ const App = (function () {
         },
 
         resetSettingsToDefaults() {
-            // console.log('Resetting settings to defaults');
-
             // Reset media settings to defaults
             State.data.media.speed = State.defaults.media.speed;
             State.data.media.delay = State.defaults.media.delay;
             State.data.media.pitch = State.defaults.media.pitch;
             State.data.media.voice = State.defaults.media.voice;
+            State.data.media.showWordBreakdown = State.defaults.media.showWordBreakdown; // NEW
             State.data.media.languageSettings = JSON.parse(JSON.stringify(State.defaults.media.languageSettings)); // Deep copy
 
             // Save all media settings
             State.save('media');
 
-            // Clear any selected voice from localStorage (though save() already does this)
+            // Clear any selected voice from localStorage
             localStorage.removeItem('localStorageVoice');
+            localStorage.removeItem('localStorageShowWordBreakdown'); // NEW
 
             // Close the settings overlay
             const anchor = document.getElementById('overlay-anchor');
@@ -4333,12 +4324,30 @@ const App = (function () {
             const allElements = document.querySelectorAll('.audio-element');
 
             // Use the MediaService method for filtering
-            const sequenceElements = Array.from(allElements).filter(el => Services.MediaService.isSequenceElement(el));
-
-            console.log('PlaySequence - All elements:', allElements.length);
-            console.log('PlaySequence - Sequence elements:', sequenceElements.length);
-            console.log('PlaySequence - Starting from index:', State.data.media.currentIndex);
-
+            const sequenceElements = Array.from(allElements).filter(el => {
+                const isSeq = Services.MediaService.isSequenceElement(el);
+                if (isSeq && State.data.media.showWordBreakdown) {
+                    // Log breakdown elements to verify they're being included
+                    if (el.closest('.sent-word-block') ||
+                        el.classList.contains('sent-word-item') ||
+                        el.classList.contains('sent-word-trans')) {
+                        /*
+                                                console.log('Including breakdown element in sequence:', {
+                                                    classes: el.classList,
+                                                    text: el.getAttribute('data-text')
+                                                });
+                                                */
+                    }
+                }
+                return isSeq;
+            });
+            /*
+                        console.log('PlaySequence - All elements:', allElements.length);
+                        console.log('PlaySequence - Sequence elements:', sequenceElements.length);
+                        console.log('PlaySequence - Breakdown elements count:',
+                            sequenceElements.filter(el => el.closest('.sent-word-block')).length);
+                        console.log('PlaySequence - Starting from index:', State.data.media.currentIndex);
+            */
             // If current index is beyond sequence elements, reset to 0
             if (State.data.media.currentIndex >= sequenceElements.length) {
                 State.data.media.currentIndex = 0;
@@ -4647,7 +4656,7 @@ const App = (function () {
             // In the media.play function, simplify the notification:
             play: function (element) {
                 if (State.data.media.isPlaying) {
-                    console.log('Playback in progress, stopping before playing clicked element');
+                    //   console.log('Playback in progress, stopping before playing clicked element');
 
                     // Stop the current playback
                     Services.MediaService.stopSequence();
@@ -4674,7 +4683,7 @@ const App = (function () {
             _executePlay: function (element) {
                 // Add a disabled attribute to prevent multiple clicks on the same element
                 if (element.getAttribute('data-processing') === 'true') {
-                    console.log('Element already being processed, ignoring');
+                    //   console.log('Element already being processed, ignoring');
                     return;
                 }
 
@@ -4689,7 +4698,7 @@ const App = (function () {
 
                 // Prevent rapid successive clicks
                 if (this._isPlaying) {
-                    console.log('Already processing a play request, ignoring');
+                    //   console.log('Already processing a play request, ignoring');
                     setTimeout(() => {
                         element.removeAttribute('data-processing');
                     }, 500);
@@ -4706,6 +4715,7 @@ const App = (function () {
 
                 if (inDocument) {
                     // Log element details for debugging
+                    /*
                     console.log('Element clicked:', {
                         classes: element.classList,
                         attributes: {
@@ -4720,6 +4730,9 @@ const App = (function () {
                             'sent-word-block': element.closest('.sent-word-block') !== null
                         }
                     });
+*/
+                    // Determine element type based on clear criteria
+                    // In the media._executePlay method, around line 5000-5100, update the element classification:
 
                     // Determine element type based on clear criteria
                     const isBreakdownElement =
@@ -4730,7 +4743,8 @@ const App = (function () {
                         element.classList.contains('matched-word'); // Is a matched word in source
 
                     // Main sequence elements are those that should trigger seeking
-                    // These are: sentence sources, word card sources, their translations, AND alphabet grid items
+                    // These are: sentence sources, word card sources, their translations, alphabet grid items,
+                    // AND word breakdown elements when the setting is enabled
                     const isMainSequence =
                         // Sentence source (has data-uid AND is in sentence-group)
                         (element.hasAttribute('data-uid') && element.closest('.sentence-group') !== null) ||
@@ -4752,8 +4766,18 @@ const App = (function () {
                         // Tone rule table examples
                         element.classList.contains('example-word');
 
-                    if (isBreakdownElement) {
-                        console.log('Playing breakdown element directly');
+                    if (State.data.media.showWordBreakdown && isBreakdownElement) {
+                        //   console.log('Playing breakdown element as part of sequence with seek');
+                        // When breakdown is enabled, treat breakdown elements as part of the sequence
+                        Services.MediaService.seekToElement(element);
+
+                        this._clickTimer = setTimeout(() => {
+                            this._isPlaying = false;
+                            element.removeAttribute('data-processing');
+                            this._clickTimer = null;
+                        }, 1000);
+                    } else if (isBreakdownElement) {
+                        //   console.log('Playing breakdown element directly');
                         // For word breakdown elements, just play this single word without seeking
                         const text = element.getAttribute('data-text');
                         const lang = element.getAttribute('data-lang');
@@ -4772,7 +4796,7 @@ const App = (function () {
                             this._clickTimer = null;
                         }, 500);
                     } else if (isMainSequence) {
-                        console.log('Playing main sequence element with seek');
+                        //   console.log('Playing main sequence element with seek');
 
                         // Then seek to the clicked element (playback already stopped above)
                         Services.MediaService.seekToElement(element);
@@ -4784,7 +4808,7 @@ const App = (function () {
                             this._clickTimer = null;
                         }, 1000);
                     } else {
-                        console.log('Element not classified, playing directly');
+                        //  console.log('Element not classified, playing directly');
                         // Fallback - play directly
                         const text = element.getAttribute('data-text') || element.textContent.trim();
                         const lang = element.getAttribute('data-lang') || 'th';
@@ -4853,6 +4877,23 @@ const App = (function () {
 
             // Re-render the current view to show/hide translations
             Router.handle();
+        },
+
+        updateShowWordBreakdown(show) {
+            State.data.media.showWordBreakdown = show;
+            State.save('media');
+
+            // Re-render the current document to show/hide word breakdowns
+            const currentHash = window.location.hash.slice(1);
+            if (currentHash.startsWith('doc/')) {
+                Router.handle();
+            }
+
+            // Show confirmation
+            const message = show ?
+                Services.I18n.t('word_breakdown_enabled', 'Word breakdown enabled') :
+                Services.I18n.t('word_breakdown_disabled', 'Word breakdown disabled');
+            this.showNotification(message);
         },
 
         quiz: {
@@ -5171,7 +5212,7 @@ const App = (function () {
                     });
                 }
 
-                console.log('Grammar examples being passed:', examples);
+                //   console.log('Grammar examples being passed:', examples);
 
                 UI.GrammarSheet.render({
                     pattern: grammar.pattern,
