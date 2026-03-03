@@ -1,88 +1,60 @@
+The PDF is a school text for learning Thai.
 
-The App is partly an aid for my school text for learning Thai and it generally works well for 
-vocabulary, sentences and paragraphs with useful multiple choice quiz, flash card and constructing sentences.
+Generte the app.js JSON data file from the PDF file.
 
-The uploaded PDF text is an exception as it tries to teach Thai alphabet, vowels and basic spelling and reading.
+Guidelines for generating the JSON data:
 
-Please advise with an overview as to how the uploaded text could be incorporated in the App.  
+1. Ignore the preambles and general explanatory notes.
+2. There is a Content page identifying each lesson, generate separate sections for each entry in the content page.
+3. Vocabulary and standalone words become model "word" type.
+4. Sentences and paragraphs becomce model, "paragraph" type.
+5. Structure in the PDF becomes Grammer Notes in tha App.
+5. Activity for the JSON output for both document and section level data is:
+    "activity": {
+        "words": true,
+        "sentences": true
+    },
 
+The output JSON filename is LS1.json and it will be stored in the folder data/TSL 
 
-Excellent! 
+The manifest.json needs to be updated for the new LS1.json
 
-I should have mentioned, this is a mobile first App by design.
+The JSON input data file, grammar-1-svo.json is an example input file.
 
-With that in mind, can you reconsider your advice, particularly with point 
-5. New Interactive Exercise: Character Grid and the 
-Create a drag-and-drop matching interface: exercise.
+Please clarify any ambiguity before the final conversion and output.
 
-A click based exercise may be more suitable.
+====================================
 
-After that please give detail instructions for updating the current App.
+Filename and ID is: LS9
 
+Here is the document structure 
 
-For point 1 - Record or source audio files. 
+Lesson 1: Feeling
+Lesson 2: Everyone Turns to Take Care of Their Health
+Lesson 3: You Said You Will Return My Money Today
+Lesson 4: Types of Movie
+Lesson 5: Besides Him, I Won't Love Anyone Else
+Lesson 6: 15 Thai Phrases for Daily Use
 
-Can the exisitng App TTS be used instead?
+All the other previous clarifications also apply to this text book.
 
-=======================================
-
-Excellent. 
-
-I am happy with no further queries.  
-
-In the current chat, there has been several updates to the gegenerated code.  Rather than trying to merge the replies, please generate the instruction to actually 
-start editing the current code base.
-
-===================================
-
-Code is updated and ready for data.
-
-The folder and naming convention used is as follows:
-
-The file for the uploaded PDF text should be:
-data/TSL/RW1.json 
- Each entry in the Content page is in a separate section definition
-
-Please avoid comments in the JSON data file, it causes an error
-
-I would like to keep all files in data/TSL 
- so, any other data file should be in this folder
-
-Please generate the manifest.json and the JSON data files.
-
-=========================================
-
-The data in "type": "explanation" should be rendered in an HTML details element with default closed.
-
-Click event on a consonant returns the error: 
-
-Uncaught ReferenceError: Services is not defined
-    onclick http://127.0.0.1:8080/#doc/RW1:1
-127.0.0.1:8080:1:1
-    onclick http://127.0.0.1:8080/#doc/RW1:1
+Please clarify any further ambiguity before the final conversion and output.
 
 ==================================
 
-Testing:
-http://127.0.0.1:8080/#doc/RW1
+After adding the alphabet model, a new bug has appeared.
+  
+Previously, the Play button 
+ 1. highlighted and spoke the source sentence then 
+ 2. highlighted each word and its translations (selected in Settings) and spoke each translation and then 
+ highlighted and then 
+ 3. spoke each selected translation sentence. 
 
-But that is the Bug!
+Now step 2 does not occur.
 
-Clicking on an element does start playing from that element BUT 
-it then misses playing some elements.  It should not! It should play all element from the selected element onwards.
-
-Is it a timing issue? 
-
-
-===============================
-
-Comment out any redundant data in the locales and synchronise them.
-
-
-
-
-
-
+As well as fixing the bug, the new requirement is to add a selection input set by default to true 
+to indicate whether step 2 should happen.  If not selected, the words making up the source sentence 
+should not be displayed nor spoken.
 
 
 

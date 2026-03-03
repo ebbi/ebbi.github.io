@@ -31,12 +31,145 @@
                     "filePath": "data/TSL/LS1.json",
                     "status": "published",
                     "level": 1,
+                    "difficulty": "beginner",
+                    "wordCount": 135,
+                    "sentenceCount": 238,
+                    "estimatedTime": 265,
+                    "grammarPoint": "Greetings, basic verbs, adjectives, comparatives, superlatives, shopping phrases, location words",
+                    "tags": [ "greetings", "verbs", "adjectives", "comparatives", "shopping", "locations" ]
+                },
+                {
+                    "id": "LS2",
+                    "title": {
+                        "en": "Listening and Speaking 2",
+                        "th": "การฟังและการพูด 2",
+                        "fa": "گوش دادن و صحبت کردن ۲"
+                    },
+                    "sourceLang": "th",
+                    "targetLangs": [ "en", "fa" ],
+                    "filePath": "data/TSL/LS2.json",
+                    "status": "published",
+                    "level": 2,
+                    "difficulty": "beginner",
+                    "wordCount": 215,
+                    "sentenceCount": 168,
+                    "estimatedTime": 280,
+                    "grammarPoint": "Ordering food and drinks, classifiers, colors, prepositions, asking about quantities",
+                    "tags": [ "food", "drinks", "classifiers", "colors", "prepositions", "shopping" ]
+                },
+                {
+                    "id": "LS4",
+                    "title": {
+                        "en": "Listening and Speaking 4",
+                        "th": "การฟังและการพูด 4",
+                        "fa": "گوش دادن و صحبت کردن ۴"
+                    },
+                    "sourceLang": "th",
+                    "targetLangs": [ "en", "fa" ],
+                    "filePath": "data/TSL/LS4.json",
+                    "status": "published",
+                    "level": 4,
                     "difficulty": "intermediate",
-                    "wordCount": 15,
-                    "sentenceCount": 18,
-                    "estimatedTime": 20,
-                    "grammarPoint": "Grammar overview, verb, adverb, adjective",
-                    "tags": [ "verb", "adverb", "adjective" ]
+                    "wordCount": 245,
+                    "sentenceCount": 185,
+                    "estimatedTime": 320,
+                    "grammarPoint": "Body parts, sickness expressions, travel planning, transportation, visa types, banking transactions",
+                    "tags": [ "body", "health", "travel", "transportation", "visa", "banking" ]
+                },
+                {
+                    "id": "RW1",
+                    "title": {
+                        "en": "Reading and Writing Thai Level 1",
+                        "th": "การอ่านและการเขียนภาษาไทยระดับ ๑",
+                        "fa": "خواندن و نوشتن تایلندی سطح ۱"
+                    },
+                    "sourceLang": "th",
+                    "targetLangs": [ "en", "fa" ],
+                    "filePath": "data/TSL/RW1.json",
+                    "status": "published",
+                    "level": 1,
+                    "difficulty": "beginner",
+                    "wordCount": 44,
+                    "sentenceCount": 120,
+                    "estimatedTime": 180,
+                    "grammarPoint": "Thai alphabet, consonants, vowels, tone rules",
+                    "tags": [ "alphabet", "consonants", "vowels", "tones", "reading", "writing" ]
+                },
+                {
+                    "id": "RW2",
+                    "title": {
+                        "en": "Reading and Writing Thai Level 2",
+                        "th": "การอ่านและการเขียนภาษาไทยระดับ ๒",
+                        "fa": "خواندن و نوشتن تایلندی سطح ۲"
+                    },
+                    "sourceLang": "th",
+                    "targetLangs": [ "en", "fa" ],
+                    "filePath": "data/TSL/RW2.json",
+                    "status": "published",
+                    "level": 2,
+                    "difficulty": "beginner",
+                    "wordCount": 280,
+                    "sentenceCount": 110,
+                    "estimatedTime": 350,
+                    "grammarPoint": "Final consonants, change form vowels, extra final consonants, true clusters, fake clusters, words with ใ",
+                    "tags": [ "final consonants", "vowels", "clusters", "spelling", "reading", "writing" ]
+                },
+                {
+                    "id": "RW3",
+                    "title": {
+                        "en": "Reading and Writing Thai Level 3",
+                        "th": "การอ่านและการเขียนภาษาไทยระดับ ๓",
+                        "fa": "خواندن و نوشتن تایلندی سطح ۳"
+                    },
+                    "sourceLang": "th",
+                    "targetLangs": [ "en", "fa" ],
+                    "filePath": "data/TSL/RW3.json",
+                    "status": "published",
+                    "level": 3,
+                    "difficulty": "intermediate",
+                    "wordCount": 320,
+                    "sentenceCount": 95,
+                    "estimatedTime": 380,
+                    "grammarPoint": "Leading consonant clusters, silent marks, double consonants, syllable endings, loanwords, irregular pronunciation, writing signs, modern fonts",
+                    "tags": [ "leading consonants", "silent marks", "loanwords", "irregular pronunciation", "writing signs", "modern fonts" ]
+                },
+                {
+                    "id": "LS7",
+                    "title": {
+                        "en": "Listening and Speaking 7",
+                        "th": "การฟังและการพูด 7",
+                        "fa": "گوش دادن و صحبت کردن ۷"
+                    },
+                    "sourceLang": "th",
+                    "targetLangs": [ "en", "fa" ],
+                    "filePath": "data/TSL/LS7.json",
+                    "status": "published",
+                    "level": 7,
+                    "difficulty": "advanced",
+                    "wordCount": 215,
+                    "sentenceCount": 145,
+                    "estimatedTime": 360,
+                    "grammarPoint": "Accidents and injuries, coordinate conjunctions (contrast, alternatives, cause-effect), cost of living, daily life expressions, opposite words",
+                    "tags": [ "accidents", "injuries", "conjunctions", "cost of living", "daily life", "opposites" ]
+                },
+                {
+                    "id": "LS9",
+                    "title": {
+                        "en": "Listening and Speaking 9",
+                        "th": "การฟังและการพูด 9",
+                        "fa": "گوش دادن و صحبت کردن ۹"
+                    },
+                    "sourceLang": "th",
+                    "targetLangs": [ "en", "fa" ],
+                    "filePath": "data/TSL/LS9.json",
+                    "status": "published",
+                    "level": 9,
+                    "difficulty": "advanced",
+                    "wordCount": 185,
+                    "sentenceCount": 175,
+                    "estimatedTime": 340,
+                    "grammarPoint": "Feelings and emotions, expressions about health trends, rhetorical questions, movie genres, complex conjunctions (นอกจาก, ไม่ว่า...หรือ...), 15 daily phrases",
+                    "tags": [ "feelings", "health", "movie genres", "conjunctions", "daily phrases", "rhetorical questions" ]
                 }
             ]
         },

@@ -1,0 +1,1670 @@
+{
+    "documentId": "LS4",
+    "metadata": {
+        "version": "2.0.0",
+        "created": "2026-03-03T16:00:00Z",
+        "title": {
+            "en": "Listening and Speaking 4",
+            "th": "การฟังและการพูด 4",
+            "fa": "گوش دادن و صحبت کردن ۴"
+        },
+        "difficulty": 4,
+        "newWords": 245,
+        "sentenceCount": 185,
+        "estimatedTime": 320
+    },
+    "vocabulary": {
+        "ร่างกาย": { "translations": { "en": "body", "fa": "بدن" } },
+        "ตัว": { "translations": { "en": "body", "fa": "بدن" } },
+        "หัว": { "translations": { "en": "head", "fa": "سر" } },
+        "ตา": { "translations": { "en": "eyes", "fa": "چشم" } },
+        "จมูก": { "translations": { "en": "nose", "fa": "بینی" } },
+        "ปาก": { "translations": { "en": "mouth", "fa": "دهان" } },
+        "หู": { "translations": { "en": "ears", "fa": "گوش" } },
+        "คอ": { "translations": { "en": "neck", "fa": "گردن" } },
+        "ไหล่": { "translations": { "en": "shoulders", "fa": "شانه" } },
+        "หลัง": { "translations": { "en": "back", "fa": "پشت" } },
+        "แขน": { "translations": { "en": "arms", "fa": "بازو" } },
+        "มือ": { "translations": { "en": "hands", "fa": "دست" } },
+        "ขา": { "translations": { "en": "legs", "fa": "پا" } },
+        "เข่า": { "translations": { "en": "knee", "fa": "زانو" } },
+        "เท้า": { "translations": { "en": "feet", "fa": "پا" } },
+        "ท้อง": { "translations": { "en": "stomach", "fa": "شکم" } },
+        "ฟัน": { "translations": { "en": "teeth", "fa": "دندان" } },
+        "คือ": { "translations": { "en": "is/am/are (equals)", "fa": "است (برابر)" } },
+        "ไม่ใช่": { "translations": { "en": "is not", "fa": "نیست" } },
+        "เจ็บ": { "translations": { "en": "hurt", "fa": "درد داشتن" } },
+        "ปวด": { "translations": { "en": "ache / sore", "fa": "درد" } },
+        "เมื่อย": { "translations": { "en": "ache / stiff", "fa": "درد / خشکی" } },
+        "คัน": { "translations": { "en": "itchy", "fa": "خارش" } },
+        "เป็นหวัด": { "translations": { "en": "have a cold", "fa": "سرماخوردگی داشتن" } },
+        "เป็นไข้": { "translations": { "en": "have a fever", "fa": "تب داشتن" } },
+        "มีไข้": { "translations": { "en": "have a fever", "fa": "تب داشتن" } },
+        "เป็นลม": { "translations": { "en": "to faint", "fa": "غش کردن" } },
+        "ไม่สบาย": { "translations": { "en": "to feel unwell", "fa": "حال نداشتن" } },
+        "ท้องเสีย": { "translations": { "en": "diarrhea", "fa": "اسهال" } },
+        "อาหารเป็นพิษ": { "translations": { "en": "food poisoning", "fa": "مسمومیت غذایی" } },
+        "อาเจียน": { "translations": { "en": "to vomit", "fa": "استفراغ کردن" } },
+        "อ้วก": { "translations": { "en": "to vomit (slang)", "fa": "استفراغ کردن (خودمانی)" } },
+        "ไอ": { "translations": { "en": "to cough", "fa": "سرفه کردن" } },
+        "จาม": { "translations": { "en": "to sneeze", "fa": "عطسه کردن" } },
+        "มีน้ำมูก": { "translations": { "en": "have a runny nose", "fa": "آب بینی داشتن" } },
+        "เวียนหัว": { "translations": { "en": "dizzy", "fa": "سرگیجه" } },
+        "นอนไม่หลับ": { "translations": { "en": "insomnia", "fa": "بی‌خوابی" } },
+        "แพ้": { "translations": { "en": "allergic", "fa": "حساسیت" } },
+        "รู้สึก": { "translations": { "en": "to feel", "fa": "احساس کردن" } },
+        "ดีขึ้น": { "translations": { "en": "to get better", "fa": "بهتر شدن" } },
+        "แย่ลง": { "translations": { "en": "to get worse", "fa": "بدتر شدن" } },
+        "หาย": { "translations": { "en": "to recover / lost", "fa": "بهبود یافتن / گم شدن" } },
+        "คลื่นไส้": { "translations": { "en": "nauseous", "fa": "حالت تهوع" } },
+        "ติด": { "translations": { "en": "to catch (illness)", "fa": "گرفتن (بیماری)" } },
+        "โควิด": { "translations": { "en": "Covid", "fa": "کووید" } },
+        "ทั้งวัน": { "translations": { "en": "all day", "fa": "تمام روز" } },
+        "หลายวัน": { "translations": { "en": "many days", "fa": "چند روز" } },
+        "อาการ": { "translations": { "en": "symptom", "fa": "علامت" } },
+        "ไปเที่ยว": { "translations": { "en": "to travel / take a trip", "fa": "مسافرت رفتن" } },
+        "ไปหา": { "translations": { "en": "to visit / go to see", "fa": "دیدار کردن" } },
+        "ใช้เวลา": { "translations": { "en": "to take time", "fa": "زمان بردن" } },
+        "นาน": { "translations": { "en": "long (time)", "fa": "طولانی" } },
+        "สถานที่ท่องเที่ยว": { "translations": { "en": "tourist attraction", "fa": "جاذبه گردشگری" } },
+        "ที่พัก": { "translations": { "en": "accommodation", "fa": "محل اقامت" } },
+        "วันหยุด": { "translations": { "en": "day off / holiday", "fa": "تعطیلات" } },
+        "ประเทศ": { "translations": { "en": "country", "fa": "کشور" } },
+        "ต่างประเทศ": { "translations": { "en": "foreign country", "fa": "کشور خارجی" } },
+        "จังหวัด": { "translations": { "en": "province", "fa": "استان" } },
+        "ต่างจังหวัด": { "translations": { "en": "provincial town / upcountry", "fa": "شهرستان" } },
+        "นักท่องเที่ยว": { "translations": { "en": "tourist", "fa": "توریست" } },
+        "น่าสนใจ": { "translations": { "en": "interesting", "fa": "جالب" } },
+        "อากาศ": { "translations": { "en": "weather", "fa": "آب و هوا" } },
+        "เหมือน": { "translations": { "en": "same", "fa": "مشابه" } },
+        "ภาคเหนือ": { "translations": { "en": "northern region", "fa": "منطقه شمال" } },
+        "ภาคกลาง": { "translations": { "en": "central region", "fa": "منطقه مرکزی" } },
+        "ภาคอีสาน": { "translations": { "en": "northeastern region", "fa": "منطقه شمال شرقی" } },
+        "ภาคใต้": { "translations": { "en": "southern region", "fa": "منطقه جنوب" } },
+        "ภาคตะวันออก": { "translations": { "en": "eastern region", "fa": "منطقه شرق" } },
+        "ภาคตะวันตก": { "translations": { "en": "western region", "fa": "منطقه غرب" } },
+        "ตื่นเต้น": { "translations": { "en": "excited", "fa": "هیجان‌زده" } },
+        "ที่สุด": { "translations": { "en": "the most", "fa": "ترین" } },
+        "รถติด": { "translations": { "en": "traffic jam", "fa": "ترافیک" } },
+        "เมืองหลวง": { "translations": { "en": "capital city", "fa": "پایتخت" } },
+        "รถไฟ": { "translations": { "en": "train", "fa": "قطار" } },
+        "รถยนต์": { "translations": { "en": "car", "fa": "ماشین" } },
+        "รถเมล์": { "translations": { "en": "city bus", "fa": "اتوبوس شهری" } },
+        "รถทัวร์": { "translations": { "en": "coach bus", "fa": "اتوبوس بین شهری" } },
+        "เครื่องบิน": { "translations": { "en": "airplane", "fa": "هواپیما" } },
+        "เรือ": { "translations": { "en": "boat / ship", "fa": "قایق / کشتی" } },
+        "สถานีรถไฟ": { "translations": { "en": "train station", "fa": "ایستگاه قطار" } },
+        "สถานีขนส่ง": { "translations": { "en": "bus station", "fa": "ایستگاه اتوبوس" } },
+        "สนามบิน": { "translations": { "en": "airport", "fa": "فرودگاه" } },
+        "ป้ายรถเมล์": { "translations": { "en": "bus stop", "fa": "ایستگاه اتوبوس" } },
+        "ท่าเรือ": { "translations": { "en": "pier", "fa": "اسکله" } },
+        "ขึ้น": { "translations": { "en": "get in / on", "fa": "سوار شدن" } },
+        "ลง": { "translations": { "en": "get off", "fa": "پیاده شدن" } },
+        "ยังไง": { "translations": { "en": "how", "fa": "چطور" } },
+        "จอด": { "translations": { "en": "to park", "fa": "پارک کردن" } },
+        "โดย": { "translations": { "en": "by (via)", "fa": "با (وسیله)" } },
+        "นั่ง": { "translations": { "en": "to sit / ride", "fa": "نشستن / سوار شدن" } },
+        "วีซ่า": { "translations": { "en": "visa", "fa": "ویزا" } },
+        "วีซ่านักเรียน": { "translations": { "en": "student visa", "fa": "ویزای دانشجویی" } },
+        "วีซ่าทำงาน": { "translations": { "en": "work visa", "fa": "ویزای کاری" } },
+        "วีซ่าเกษียณ": { "translations": { "en": "retirement visa", "fa": "ویزای بازنشستگی" } },
+        "วีซ่าแต่งงาน": { "translations": { "en": "marriage visa", "fa": "ویزای ازدواج" } },
+        "วีซ่าอาสาสมัคร": { "translations": { "en": "volunteer visa", "fa": "ویزای داوطلبی" } },
+        "วีซ่านักท่องเที่ยว": { "translations": { "en": "tourist visa", "fa": "ویزای توریستی" } },
+        "ขอวีซ่า": { "translations": { "en": "apply for visa", "fa": "درخواست ویزا" } },
+        "ต่อวีซ่า": { "translations": { "en": "extend visa", "fa": "تمدید ویزا" } },
+        "หมดอายุ": { "translations": { "en": "expired", "fa": "منقضی شده" } },
+        "ยกเลิก": { "translations": { "en": "cancel", "fa": "لغو کردن" } },
+        "เจ้าหน้าที่": { "translations": { "en": "officer", "fa": "افسر / مسئول" } },
+        "เอกสาร": { "translations": { "en": "document", "fa": "مدرک" } },
+        "ถ่ายเอกสาร": { "translations": { "en": "to copy documents", "fa": "فتوکپی کردن" } },
+        "สำเนาเอกสาร": { "translations": { "en": "document copy", "fa": "کپی مدرک" } },
+        "รูปถ่าย": { "translations": { "en": "photo", "fa": "عکس" } },
+        "ข้อมูล": { "translations": { "en": "information", "fa": "اطلاعات" } },
+        "หนังสือเดินทาง": { "translations": { "en": "passport", "fa": "گذرنامه" } },
+        "รอ": { "translations": { "en": "to wait", "fa": "صبر کردن" } },
+        "เข้าแถว": { "translations": { "en": "line up", "fa": "صف کشیدن" } },
+        "สมัคร": { "translations": { "en": "to apply", "fa": "درخواست دادن" } },
+        "ครบ": { "translations": { "en": "complete", "fa": "کامل" } },
+        "ตรวจคนเข้าเมือง": { "translations": { "en": "immigration", "fa": "اداره مهاجرت" } },
+        "เงิน": { "translations": { "en": "money", "fa": "پول" } },
+        "สตางค์": { "translations": { "en": "money", "fa": "پول" } },
+        "แลกเงิน": { "translations": { "en": "exchange money", "fa": "تبدیل پول" } },
+        "โอนเงิน": { "translations": { "en": "transfer money", "fa": "انتقال پول" } },
+        "ถอนเงิน": { "translations": { "en": "withdraw money", "fa": "برداشت پول" } },
+        "ฝากเงิน": { "translations": { "en": "deposit money", "fa": "سپرده پول" } },
+        "ธนาคาร": { "translations": { "en": "bank", "fa": "بانک" } },
+        "ตู้เอทีเอ็ม": { "translations": { "en": "ATM", "fa": "خودپرداز" } },
+        "จ่าย": { "translations": { "en": "to pay", "fa": "پرداخت کردن" } },
+        "ยืม": { "translations": { "en": "to borrow", "fa": "قرض گرفتن" } },
+        "คืน": { "translations": { "en": "to return", "fa": "بازگرداندن" } },
+        "บัญชีธนาคาร": { "translations": { "en": "bank account", "fa": "حساب بانکی" } },
+        "บัตรเครดิต": { "translations": { "en": "credit card", "fa": "کارت اعتباری" } },
+        "บัตรประชาชน": { "translations": { "en": "ID card", "fa": "کارت ملی" } },
+        "สมุดบัญชี": { "translations": { "en": "bank book", "fa": "دفترچه بانکی" } },
+        "เงินสด": { "translations": { "en": "cash", "fa": "پول نقد" } },
+        "เงินเหรียญ": { "translations": { "en": "coin", "fa": "سکه" } },
+        "ซื้อของ": { "translations": { "en": "shopping", "fa": "خرید کردن" } },
+        "เปิดบัญชี": { "translations": { "en": "open account", "fa": "حساب باز کردن" } },
+        "โกหก": { "translations": { "en": "to lie", "fa": "دروغ گفتن" } },
+        "สัญญา": { "translations": { "en": "to promise", "fa": "قول دادن" } },
+        "โปรโมชั่น": { "translations": { "en": "promotion", "fa": "تخفیف ویژه" } },
+        "พร้อมเพย์": { "translations": { "en": "PromptPay", "fa": "پرامپت پی" } }
+    },
+    "activity": {
+        "words": true,
+        "sentences": true
+    },
+    "sections": [
+        {
+            "sectionId": "ls4-lesson-1",
+            "heading": {
+                "en": "Lesson 1: Body Parts",
+                "th": "บทที่ 1: ร่างกาย",
+                "fa": "درس ۱: اعضای بدن"
+            },
+            "activity": {
+                "words": true,
+                "sentences": true
+            },
+            "content": [
+                {
+                    "type": "words",
+                    "heading": {
+                        "en": "Body Parts",
+                        "th": "ส่วนต่างๆ ของร่างกาย",
+                        "fa": "اعضای بدن"
+                    },
+                    "wordIds": [ "ร่างกาย", "ตัว", "หัว", "ตา", "จมูก", "ปาก", "หู", "คอ", "ไหล่", "หลัง", "แขน", "มือ", "ขา", "เข่า", "เท้า", "ท้อง", "ฟัน" ]
+                },
+                {
+                    "type": "paragraph",
+                    "heading": {
+                        "en": "Structure 1: What is this?",
+                        "th": "โครงสร้าง 1: นี่คืออะไร?",
+                        "fa": "ساختار ۱: این چیست؟"
+                    },
+                    "grammar": {
+                        "pattern": "นี่คืออะไร? - นี่คือ...",
+                        "note": {
+                            "en": "Use นี่คืออะไร? to ask 'What is this?' and นั่นคืออะไร? for 'What is that?'. Answer with นี่คือ... (This is...) or นั่นคือ... (That is...). คือ is like an equals sign.",
+                            "th": "ใช้ นี่คืออะไร? ถาม 'นี่คืออะไร' และ นั่นคืออะไร? ถาม 'นั่นคืออะไร' ตอบด้วย นี่คือ... หรือ นั่นคือ... คือ เหมือนเครื่องหมายเท่ากับ",
+                            "fa": "از นี่คืออะไร؟ برای پرسیدن 'این چیست؟' و از นั่นคืออะไร؟ برای 'آن چیست؟' استفاده کنید. پاسخ با นี่คือ... (این است...) یا นั่นคือ... (آن است...). คือ مانند علامت مساوی است."
+                        },
+                        "examples": [
+                            { "source": "นี่คืออะไรคะ", "translation": "What is this?" },
+                            { "source": "นี่คือหัว", "translation": "This is a head." },
+                            { "source": "นั่นคืออะไรคะ", "translation": "What is that?" },
+                            { "source": "นั่นคือจมูก", "translation": "That is a nose." }
+                        ]
+                    },
+                    "sentences": [
+                        {
+                            "source": "นี่คืออะไรคะ",
+                            "wordIds": [ "นี่", "คือ", "อะไร", "คะ" ],
+                            "translations": { "en": "What is this?", "fa": "این چیست؟" }
+                        },
+                        {
+                            "source": "นี่คือหัว",
+                            "wordIds": [ "นี่", "คือ", "หัว" ],
+                            "translations": { "en": "This is a head.", "fa": "این سر است." }
+                        },
+                        {
+                            "source": "นั่นคืออะไรคะ",
+                            "wordIds": [ "นั่น", "คือ", "อะไร", "คะ" ],
+                            "translations": { "en": "What is that?", "fa": "آن چیست؟" }
+                        },
+                        {
+                            "source": "นั่นคือจมูก",
+                            "wordIds": [ "นั่น", "คือ", "จมูก" ],
+                            "translations": { "en": "That is a nose.", "fa": "آن بینی است." }
+                        }
+                    ]
+                },
+                {
+                    "type": "paragraph",
+                    "heading": {
+                        "en": "Structure 2: This is not...",
+                        "th": "โครงสร้าง 2: นี่ไม่ใช่...",
+                        "fa": "ساختار ۲: این ... نیست"
+                    },
+                    "grammar": {
+                        "pattern": "นี่ไม่ใช่ + Noun",
+                        "note": {
+                            "en": "Use ไม่ใช่ to negate: นี่ไม่ใช่... (This is not...).",
+                            "th": "ใช้ ไม่ใช่ เพื่อปฏิเสธ: นี่ไม่ใช่...",
+                            "fa": "برای منفی کردن از ไม่ใช่ استفاده کنید: นี่ไม่ใช่... (این ... نیست)."
+                        },
+                        "examples": [
+                            { "source": "นี่ไม่ใช่หัว", "translation": "This is not a head." },
+                            { "source": "นี่ไม่ใช่จมูก", "translation": "This is not a nose." }
+                        ]
+                    },
+                    "sentences": [
+                        {
+                            "source": "นี่ไม่ใช่หัว",
+                            "wordIds": [ "นี่", "ไม่ใช่", "หัว" ],
+                            "translations": { "en": "This is not a head.", "fa": "این سر نیست." }
+                        },
+                        {
+                            "source": "นี่ไม่ใช่จมูก",
+                            "wordIds": [ "นี่", "ไม่ใช่", "จมูก" ],
+                            "translations": { "en": "This is not a nose.", "fa": "این بینی نیست." }
+                        },
+                        {
+                            "source": "นี่ไม่ใช่ขา",
+                            "wordIds": [ "นี่", "ไม่ใช่", "ขา" ],
+                            "translations": { "en": "This is not a leg.", "fa": "این پا نیست." }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "sectionId": "ls4-lesson-2",
+            "heading": {
+                "en": "Lesson 2: Sickness",
+                "th": "บทที่ 2: ความเจ็บป่วย",
+                "fa": "درس ۲: بیماری"
+            },
+            "activity": {
+                "words": true,
+                "sentences": true
+            },
+            "content": [
+                {
+                    "type": "words",
+                    "heading": {
+                        "en": "Sickness Vocabulary",
+                        "th": "คำศัพท์เกี่ยวกับอาการเจ็บป่วย",
+                        "fa": "واژگان بیماری"
+                    },
+                    "wordIds": [ "เจ็บ", "ปวด", "เมื่อย", "คัน", "เป็นหวัด", "เป็นไข้", "มีไข้", "เป็นลม", "ไม่สบาย", "ท้องเสีย", "อาหารเป็นพิษ", "อาเจียน", "อ้วก", "ไอ", "จาม", "มีน้ำมูก", "เวียนหัว", "นอนไม่หลับ", "แพ้" ]
+                },
+                {
+                    "type": "paragraph",
+                    "heading": {
+                        "en": "Structure 1: How do you feel today?",
+                        "th": "โครงสร้าง 1: วันนี้คุณรู้สึกยังไง?",
+                        "fa": "ساختار ۱: امروز چه احساسی دارید؟"
+                    },
+                    "grammar": {
+                        "pattern": "วันนี้คุณรู้สึกยังไง",
+                        "note": {
+                            "en": "Use รู้สึก (to feel) to ask about someone's condition or feelings.",
+                            "th": "ใช้ รู้สึก เพื่อถามเกี่ยวกับอาการหรือความรู้สึกของใครบางคน",
+                            "fa": "از รู้สึก (احساس کردن) برای پرسیدن درباره وضعیت یا احساس کسی استفاده کنید."
+                        },
+                        "examples": [
+                            { "source": "วันนี้ฉันรู้สึกไม่สบาย", "translation": "I feel unwell today." },
+                            { "source": "ฉันรู้สึกปวดหัวมาก", "translation": "I have a bad headache." }
+                        ]
+                    },
+                    "sentences": [
+                        {
+                            "source": "วันนี้คุณรู้สึกยังไงคะ",
+                            "wordIds": [ "วันนี้", "คุณ", "รู้สึก", "ยังไง", "คะ" ],
+                            "translations": { "en": "How do you feel today?", "fa": "امروز چه احساسی دارید؟" }
+                        },
+                        {
+                            "source": "วันนี้ฉันรู้สึกไม่สบาย",
+                            "wordIds": [ "วันนี้", "ฉัน", "รู้สึก", "ไม่สบาย" ],
+                            "translations": { "en": "I feel unwell today.", "fa": "امروز حالم خوب نیست." }
+                        },
+                        {
+                            "source": "ฉันรู้สึกปวดหัวมาก",
+                            "wordIds": [ "ฉัน", "รู้สึก", "ปวด", "หัว", "มาก" ],
+                            "translations": { "en": "I have a bad headache.", "fa": "سردرد شدید دارم." }
+                        },
+                        {
+                            "source": "ฉันรู้สึกเหนื่อย",
+                            "wordIds": [ "ฉัน", "รู้สึก", "เหนื่อย" ],
+                            "translations": { "en": "I feel tired.", "fa": "احساس خستگی می‌کنم." }
+                        },
+                        {
+                            "source": "ผมเมื่อยทั้งตัว",
+                            "wordIds": [ "ผม", "เมื่อย", "ทั้ง", "ตัว" ],
+                            "translations": { "en": "I'm aching all over.", "fa": "تمام بدنم درد می‌کند." }
+                        },
+                        {
+                            "source": "ผมปวดท้อง",
+                            "wordIds": [ "ผม", "ปวด", "ท้อง" ],
+                            "translations": { "en": "I have a stomach ache.", "fa": "دل درد دارم." }
+                        }
+                    ]
+                },
+                {
+                    "type": "paragraph",
+                    "heading": {
+                        "en": "Other Ways to Describe Sickness",
+                        "th": "วิธีอื่นในการบอกอาการป่วย",
+                        "fa": "روش‌های دیگر برای توصیف بیماری"
+                    },
+                    "sentences": [
+                        {
+                            "source": "ผมเป็นหวัด",
+                            "wordIds": [ "ผม", "เป็นหวัด" ],
+                            "translations": { "en": "I have a cold.", "fa": "سرماخوردگی دارم." }
+                        },
+                        {
+                            "source": "ผมเป็นไข้ / มีไข้",
+                            "wordIds": [ "ผม", "เป็นไข้", "มีไข้" ],
+                            "translations": { "en": "I have a fever.", "fa": "تب دارم." }
+                        },
+                        {
+                            "source": "ผมไอ",
+                            "wordIds": [ "ผม", "ไอ" ],
+                            "translations": { "en": "I have a cough.", "fa": "سرفه می‌کنم." }
+                        },
+                        {
+                            "source": "ผมท้องเสีย",
+                            "wordIds": [ "ผม", "ท้องเสีย" ],
+                            "translations": { "en": "I have diarrhea.", "fa": "اسهال دارم." }
+                        },
+                        {
+                            "source": "ฉันอาหารเป็นพิษ",
+                            "wordIds": [ "ฉัน", "อาหารเป็นพิษ" ],
+                            "translations": { "en": "I have food poisoning.", "fa": "مسمومیت غذایی دارم." }
+                        },
+                        {
+                            "source": "ฉันเวียนหัว",
+                            "wordIds": [ "ฉัน", "เวียนหัว" ],
+                            "translations": { "en": "I am dizzy.", "fa": "سرگیجه دارم." }
+                        },
+                        {
+                            "source": "ฉันคลื่นไส้",
+                            "wordIds": [ "ฉัน", "คลื่นไส้" ],
+                            "translations": { "en": "I am nauseous.", "fa": "حالت تهوع دارم." }
+                        },
+                        {
+                            "source": "ฉันอาเจียน",
+                            "wordIds": [ "ฉัน", "อาเจียน" ],
+                            "translations": { "en": "I vomited.", "fa": "استفراغ کردم." }
+                        },
+                        {
+                            "source": "ผมมีน้ำมูก",
+                            "wordIds": [ "ผม", "มี", "น้ำมูก" ],
+                            "translations": { "en": "I have a runny nose.", "fa": "آب بینی دارم." }
+                        }
+                    ]
+                },
+                {
+                    "type": "paragraph",
+                    "heading": {
+                        "en": "Structure 2: What's wrong?",
+                        "th": "โครงสร้าง 2: คุณเป็นอะไร?",
+                        "fa": "ساختار ۲: چه مشکلی دارید؟"
+                    },
+                    "grammar": {
+                        "pattern": "คุณเป็นอะไร? คุณดูไม่สบาย",
+                        "note": {
+                            "en": "Use เป็นอะไร? to ask what's wrong, especially when someone looks unwell.",
+                            "th": "ใช้ เป็นอะไร? เพื่อถามว่าเป็นอะไร โดยเฉพาะเมื่อใครดูไม่สบาย",
+                            "fa": "از เป็นอะไร؟ برای پرسیدن مشکل چیست استفاده کنید، مخصوصاً وقتی کسی حالش خوب به نظر نمی‌رسد."
+                        },
+                        "examples": [
+                            { "source": "คุณเป็นอะไรคะ คุณดูไม่สบาย", "translation": "What's wrong? You look unwell." },
+                            { "source": "ผมติดโควิด", "translation": "I have Covid." }
+                        ]
+                    },
+                    "sentences": [
+                        {
+                            "source": "คุณเป็นอะไรคะ คุณดูไม่สบาย",
+                            "wordIds": [ "คุณ", "เป็น", "อะไร", "คะ", "คุณ", "ดู", "ไม่สบาย" ],
+                            "translations": { "en": "What's wrong? You look unwell.", "fa": "چه مشکلی دارید؟ به نظر می‌رسد حالتان خوب نیست." }
+                        },
+                        {
+                            "source": "ผมติดโควิด",
+                            "wordIds": [ "ผม", "ติด", "โควิด" ],
+                            "translations": { "en": "I have Covid.", "fa": "کووید گرفته‌ام." }
+                        },
+                        {
+                            "source": "ผมเจ็บแขน",
+                            "wordIds": [ "ผม", "เจ็บ", "แขน" ],
+                            "translations": { "en": "My arm hurts.", "fa": "بازویم درد می‌کند." }
+                        },
+                        {
+                            "source": "ผมท้องเสียทั้งวัน",
+                            "wordIds": [ "ผม", "ท้องเสีย", "ทั้งวัน" ],
+                            "translations": { "en": "I have diarrhea all day.", "fa": "تمام روز اسهال دارم." }
+                        },
+                        {
+                            "source": "ผมเป็นหวัดหลายวันแล้ว",
+                            "wordIds": [ "ผม", "เป็นหวัด", "หลายวัน", "แล้ว" ],
+                            "translations": { "en": "I have had a cold for many days.", "fa": "چند روز است که سرما خورده‌ام." }
+                        },
+                        {
+                            "source": "ผมไอและเจ็บคอมาก",
+                            "wordIds": [ "ผม", "ไอ", "และ", "เจ็บ", "คอ", "มาก" ],
+                            "translations": { "en": "I cough and have a sore throat.", "fa": "سرفه می‌کنم و گلودرد شدید دارم." }
+                        }
+                    ]
+                },
+                {
+                    "type": "paragraph",
+                    "heading": {
+                        "en": "Conversation 1: Cold Symptoms",
+                        "th": "บทสนทนา 1: อาการหวัด",
+                        "fa": "مکالمه ۱: علائم سرماخوردگی"
+                    },
+                    "sentences": [
+                        {
+                            "source": "คุณเป็นอะไรคะ",
+                            "wordIds": [ "คุณ", "เป็น", "อะไร", "คะ" ],
+                            "translations": { "en": "What's your symptom?", "fa": "چه علامتی دارید؟" }
+                        },
+                        {
+                            "source": "ผมเป็นหวัดครับ",
+                            "wordIds": [ "ผม", "เป็นหวัด", "ครับ" ],
+                            "translations": { "en": "I have a cold.", "fa": "سرماخوردگی دارم." }
+                        },
+                        {
+                            "source": "คุณเจ็บคอไหมคะ",
+                            "wordIds": [ "คุณ", "เจ็บ", "คอ", "ไหม", "คะ" ],
+                            "translations": { "en": "Do you have a sore throat?", "fa": "گلو درد دارید؟" }
+                        },
+                        {
+                            "source": "เจ็บครับ",
+                            "wordIds": [ "เจ็บ", "ครับ" ],
+                            "translations": { "en": "Yes, I do.", "fa": "بله دارم." }
+                        },
+                        {
+                            "source": "คุณปวดหัวไหมคะ",
+                            "wordIds": [ "คุณ", "ปวด", "หัว", "ไหม", "คะ" ],
+                            "translations": { "en": "Do you have a headache?", "fa": "سردرد دارید؟" }
+                        },
+                        {
+                            "source": "ปวดครับ",
+                            "wordIds": [ "ปวด", "ครับ" ],
+                            "translations": { "en": "Yes, I do.", "fa": "بله دارم." }
+                        }
+                    ]
+                },
+                {
+                    "type": "paragraph",
+                    "heading": {
+                        "en": "Conversation 2: Stomach Issues",
+                        "th": "บทสนทนา 2: อาการท้องเสีย",
+                        "fa": "مکالمه ۲: مشکلات معده"
+                    },
+                    "sentences": [
+                        {
+                            "source": "คุณเป็นอะไรครับ",
+                            "wordIds": [ "คุณ", "เป็น", "อะไร", "ครับ" ],
+                            "translations": { "en": "What's your symptom?", "fa": "چه علامتی دارید؟" }
+                        },
+                        {
+                            "source": "ฉันปวดท้องและอาเจียนค่ะ",
+                            "wordIds": [ "ฉัน", "ปวด", "ท้อง", "และ", "อาเจียน", "ค่ะ" ],
+                            "translations": { "en": "I have a stomachache and I've been vomiting.", "fa": "دل درد دارم و استفراغ کرده‌ام." }
+                        },
+                        {
+                            "source": "คุณมีไข้ไหมคะ",
+                            "wordIds": [ "คุณ", "มี", "ไข้", "ไหม", "คะ" ],
+                            "translations": { "en": "Do you have a fever?", "fa": "تب دارید؟" }
+                        },
+                        {
+                            "source": "ไม่มีค่ะ",
+                            "wordIds": [ "ไม่มี", "ค่ะ" ],
+                            "translations": { "en": "No, I don't.", "fa": "نه ندارم." }
+                        }
+                    ]
+                },
+                {
+                    "type": "paragraph",
+                    "heading": {
+                        "en": "Structure 3: What are the symptoms?",
+                        "th": "โครงสร้าง 3: คุณมีอาการยังไงบ้าง?",
+                        "fa": "ساختار ۳: چه علائمی دارید؟"
+                    },
+                    "grammar": {
+                        "pattern": "คุณมีอาการยังไงบ้าง",
+                        "note": {
+                            "en": "Use อาการ (symptom) to ask for a detailed description of symptoms.",
+                            "th": "ใช้ อาการ เพื่อถามถึงรายละเอียดอาการ",
+                            "fa": "از อาการ (علائم) برای پرسیدن شرح دقیق علائم استفاده کنید."
+                        },
+                        "examples": [
+                            { "source": "คุณมีอาการยังไงบ้างครับ", "translation": "What are your symptoms?" },
+                            { "source": "ผมมีอาการเจ็บคอ ปวดหัว และมีน้ำมูก", "translation": "I have a sore throat, headache, and runny nose." }
+                        ]
+                    },
+                    "sentences": [
+                        {
+                            "source": "คุณมีอาการยังไงบ้างครับ",
+                            "wordIds": [ "คุณ", "มี", "อาการ", "ยังไง", "บ้าง", "ครับ" ],
+                            "translations": { "en": "What are your symptoms?", "fa": "چه علائمی دارید؟" }
+                        },
+                        {
+                            "source": "ผมมีอาการเจ็บคอ ปวดหัว และมีน้ำมูกครับ",
+                            "wordIds": [ "ผม", "มี", "อาการ", "เจ็บ", "คอ", "ปวด", "หัว", "และ", "มี", "น้ำมูก", "ครับ" ],
+                            "translations": { "en": "I have a sore throat, headache, and runny nose.", "fa": "گلودرد، سردرد و آبریزش بینی دارم." }
+                        }
+                    ]
+                },
+                {
+                    "type": "paragraph",
+                    "heading": {
+                        "en": "Structure 4: Have you gotten over your...?",
+                        "th": "โครงสร้าง 4: คุณหาย...รียัง?",
+                        "fa": "ساختار ۴: آیا ... شما خوب شده؟"
+                    },
+                    "grammar": {
+                        "pattern": "คุณหาย...รียัง?",
+                        "note": {
+                            "en": "Use หาย (recover) to ask if someone has recovered from an illness. Answer with หายแล้ว (recovered) or ยัง (not yet).",
+                            "th": "ใช้ หาย เพื่อถามว่าหายป่วยหรือยัง ตอบด้วย หายแล้ว หรือ ยัง",
+                            "fa": "از หาย (بهبود یافتن) برای پرسیدن اینکه آیا کسی از بیماری بهبود یافته استفاده کنید. پاسخ با หายแล้ว (بهبود یافته) یا ยัง (هنوز نه)."
+                        },
+                        "examples": [
+                            { "source": "คุณหายเป็นหวัดรียังครับ", "translation": "Have you gotten over your cold yet?" },
+                            { "source": "หายแล้วครับ", "translation": "Yes, I have." },
+                            { "source": "ยังครับ", "translation": "Not yet." }
+                        ]
+                    },
+                    "sentences": [
+                        {
+                            "source": "คุณหายเป็นหวัดรียังครับ",
+                            "wordIds": [ "คุณ", "หาย", "เป็นหวัด", "หรือยัง", "ครับ" ],
+                            "translations": { "en": "Have you gotten over your cold yet?", "fa": "سرماخوردگی‌ات خوب شده؟" }
+                        },
+                        {
+                            "source": "หายแล้วครับ",
+                            "wordIds": [ "หาย", "แล้ว", "ครับ" ],
+                            "translations": { "en": "Yes, I have.", "fa": "بله خوب شده." }
+                        },
+                        {
+                            "source": "ยังครับ",
+                            "wordIds": [ "ยัง", "ครับ" ],
+                            "translations": { "en": "Not yet.", "fa": "هنوز نه." }
+                        },
+                        {
+                            "source": "คุณหายไอรียังคะ",
+                            "wordIds": [ "คุณ", "หาย", "ไอ", "หรือยัง", "คะ" ],
+                            "translations": { "en": "Have you recovered from your cough?", "fa": "سرفه‌ات خوب شده؟" }
+                        }
+                    ]
+                },
+                {
+                    "type": "paragraph",
+                    "heading": {
+                        "en": "Structure 5 & 6: Are you getting better? / How long?",
+                        "th": "โครงสร้าง 5 และ 6: คุณดีขึ้นรียัง? / นานเท่าไหร่?",
+                        "fa": "ساختار ۵ و ۶: بهتر شدی؟ / چقدر طول کشیده؟"
+                    },
+                    "grammar": {
+                        "pattern": "ดีขึ้น (better) / แย่ลง (worse) / มานานเท่าไหร่แล้ว (how long have you been...)",
+                        "note": {
+                            "en": "Use ดีขึ้น to ask if someone is getting better. Use มานานเท่าไหร่แล้ว to ask how long a condition has lasted.",
+                            "th": "ใช้ ดีขึ้น ถามว่าดีขึ้นหรือยัง ใช้ มานานเท่าไหร่แล้ว ถามว่าอาการเป็นมานานเท่าไหร่",
+                            "fa": "از ดีขึ้น برای پرسیدن اینکه آیا کسی بهتر شده استفاده کنید. از มานานเท่าไหร่แล้ว برای پرسیدن اینکه یک وضعیت چقدر طول کشیده استفاده کنید."
+                        },
+                        "examples": [
+                            { "source": "คุณดีขึ้นรียังคะ", "translation": "Are you getting better?" },
+                            { "source": "คุณปวดหัวมานานเท่าไหร่แล้ว", "translation": "How long have you been having a headache?" }
+                        ]
+                    },
+                    "sentences": [
+                        {
+                            "source": "คุณดีขึ้นรียังคะ",
+                            "wordIds": [ "คุณ", "ดีขึ้น", "หรือยัง", "คะ" ],
+                            "translations": { "en": "Are you getting better?", "fa": "بهتر شدی؟" }
+                        },
+                        {
+                            "source": "ดีขึ้นแล้วครับ",
+                            "wordIds": [ "ดีขึ้น", "แล้ว", "ครับ" ],
+                            "translations": { "en": "Yes, I'm getting better.", "fa": "بله بهتر شده‌ام." }
+                        },
+                        {
+                            "source": "คุณปวดหัวมานานเท่าไหร่แล้ว",
+                            "wordIds": [ "คุณ", "ปวด", "หัว", "มา", "นาน", "เท่าไหร่", "แล้ว" ],
+                            "translations": { "en": "How long have you been having a headache?", "fa": "چقدر است سردرد دارید؟" }
+                        },
+                        {
+                            "source": "ฉันปวดหัวมา 4 วันแล้ว",
+                            "wordIds": [ "ฉัน", "ปวด", "หัว", "มา", "4", "วัน", "แล้ว" ],
+                            "translations": { "en": "I have had a headache for 4 days now.", "fa": "۴ روز است سردرد دارم." }
+                        }
+                    ]
+                },
+                {
+                    "type": "paragraph",
+                    "heading": {
+                        "en": "Structure 7: Are you allergic to anything?",
+                        "th": "โครงสร้าง 7: คุณแพ้อะไรไหม?",
+                        "fa": "ساختار ۷: به چیزی حساسیت دارید؟"
+                    },
+                    "grammar": {
+                        "pattern": "ฉันแพ้...",
+                        "note": {
+                            "en": "Use แพ้ (allergic) to talk about allergies.",
+                            "th": "ใช้ แพ้ เพื่อพูดถึงอาการแพ้",
+                            "fa": "از แพ้ (حساسیت) برای صحبت درباره آلرژی استفاده کنید."
+                        },
+                        "examples": [
+                            { "source": "ฉันแพ้อาหารทะเลค่ะ", "translation": "I'm allergic to seafood." },
+                            { "source": "ผมแพ้นม กินไม่ได้เลย", "translation": "I'm allergic to milk, I can't drink it at all." }
+                        ]
+                    },
+                    "sentences": [
+                        {
+                            "source": "ฉันแพ้อาหารทะเลค่ะ",
+                            "wordIds": [ "ฉัน", "แพ้", "อาหารทะเล", "ค่ะ" ],
+                            "translations": { "en": "I'm allergic to seafood.", "fa": "به غذای دریایی حساسیت دارم." }
+                        },
+                        {
+                            "source": "ผมแพ้นม กินไม่ได้เลย",
+                            "wordIds": [ "ผม", "แพ้", "นม", "กิน", "ไม่ได้", "เลย" ],
+                            "translations": { "en": "I'm allergic to milk, I can't drink it at all.", "fa": "به شیر حساسیت دارم، اصلاً نمی‌توانم بخورم." }
+                        },
+                        {
+                            "source": "ผมไม่แพ้อะไรครับ",
+                            "wordIds": [ "ผม", "ไม่", "แพ้", "อะไร", "ครับ" ],
+                            "translations": { "en": "I'm not allergic to anything.", "fa": "به چیزی حساسیت ندارم." }
+                        }
+                    ]
+                },
+                {
+                    "type": "paragraph",
+                    "heading": {
+                        "en": "Conversation 3: Eye Pain",
+                        "th": "บทสนทนา 3: เจ็บตา",
+                        "fa": "مکالمه ۳: درد چشم"
+                    },
+                    "sentences": [
+                        {
+                            "source": "คุณเป็นอะไรคะ",
+                            "wordIds": [ "คุณ", "เป็น", "อะไร", "คะ" ],
+                            "translations": { "en": "What's your symptom?", "fa": "چه علامتی دارید؟" }
+                        },
+                        {
+                            "source": "ผมเจ็บตาครับ",
+                            "wordIds": [ "ผม", "เจ็บ", "ตา", "ครับ" ],
+                            "translations": { "en": "My eyes are sore.", "fa": "چشمانم درد می‌کند." }
+                        },
+                        {
+                            "source": "คุณเจ็บตามานานเท่าไหร่แล้วคะ",
+                            "wordIds": [ "คุณ", "เจ็บ", "ตา", "มา", "นาน", "เท่าไหร่", "แล้ว", "คะ" ],
+                            "translations": { "en": "How long have your eyes been sore?", "fa": "چقدر است چشمانتان درد می‌کند؟" }
+                        },
+                        {
+                            "source": "ผมเจ็บตามา 2 วันแล้วครับ",
+                            "wordIds": [ "ผม", "เจ็บ", "ตา", "มา", "2", "วัน", "แล้ว", "ครับ" ],
+                            "translations": { "en": "My eyes have been sore for 2 days.", "fa": "۲ روز است چشمانم درد می‌کند." }
+                        }
+                    ]
+                },
+                {
+                    "type": "paragraph",
+                    "heading": {
+                        "en": "Conversation 4: Long-term Symptoms",
+                        "th": "บทสนทนา 4: อาการเรื้อรัง",
+                        "fa": "مکالمه ۴: علائم طولانی مدت"
+                    },
+                    "sentences": [
+                        {
+                            "source": "คุณเป็นอะไรครับ",
+                            "wordIds": [ "คุณ", "เป็น", "อะไร", "ครับ" ],
+                            "translations": { "en": "What's your symptom?", "fa": "چه علامتی دارید؟" }
+                        },
+                        {
+                            "source": "ฉันท้องเสีย ปวดท้องและอาเจียนค่ะ",
+                            "wordIds": [ "ฉัน", "ท้องเสีย", "ปวด", "ท้อง", "และ", "อาเจียน", "ค่ะ" ],
+                            "translations": { "en": "I have diarrhea, a stomachache, and I've been vomiting.", "fa": "اسهال، دل درد و استفراغ دارم." }
+                        },
+                        {
+                            "source": "คุณมีอาการมานานเท่าไหร่แล้วคะ",
+                            "wordIds": [ "คุณ", "มี", "อาการ", "มา", "นาน", "เท่าไหร่", "แล้ว", "คะ" ],
+                            "translations": { "en": "How long have you been having these symptoms?", "fa": "چقدر است این علائم را دارید؟" }
+                        },
+                        {
+                            "source": "ฉันมีอาการมา 1 อาทิตย์แล้วค่ะ",
+                            "wordIds": [ "ฉัน", "มี", "อาการ", "มา", "1", "อาทิตย์", "แล้ว", "ค่ะ" ],
+                            "translations": { "en": "I have had these symptoms for a week.", "fa": "یک هفته است این علائم را دارم." }
+                        }
+                    ]
+                },
+                {
+                    "type": "paragraph",
+                    "heading": {
+                        "en": "Structure 8: I have... because...",
+                        "th": "โครงสร้าง 8: ...เพราะว่า...",
+                        "fa": "ساختار ۸: ... چون ..."
+                    },
+                    "grammar": {
+                        "pattern": "Subject + Symptom + เพราะว่า + Reason",
+                        "note": {
+                            "en": "Use เพราะว่า (because) to explain the reason for an illness or condition.",
+                            "th": "ใช้ เพราะว่า เพื่ออธิบายสาเหตุของอาการป่วย",
+                            "fa": "از เพราะว่า (چون) برای توضیح دلیل بیماری یا وضعیت استفاده کنید."
+                        },
+                        "examples": [
+                            { "source": "ผมปวดท้องเพราะว่าผมกินเยอะเกินไป", "translation": "I have a stomach ache because I ate too much." },
+                            { "source": "ผมปวดหัวเพราะว่าใช้คอมพิวเตอร์มากเกินไป", "translation": "I have a headache because I use the computer too much." }
+                        ]
+                    },
+                    "sentences": [
+                        {
+                            "source": "ทำไมคุณปวดหัว",
+                            "wordIds": [ "ทำไม", "คุณ", "ปวด", "หัว" ],
+                            "translations": { "en": "Why do you have a headache?", "fa": "چرا سردرد دارید؟" }
+                        },
+                        {
+                            "source": "ผมปวดหัวเพราะว่าใช้คอมพิวเตอร์มากเกินไป",
+                            "wordIds": [ "ผม", "ปวด", "หัว", "เพราะว่า", "ใช้", "คอมพิวเตอร์", "มากเกินไป" ],
+                            "translations": { "en": "I have a headache because I use the computer too much.", "fa": "سردرد دارم چون زیاد از کامپیوتر استفاده می‌کنم." }
+                        },
+                        {
+                            "source": "ทำไมเขาท้องเสีย",
+                            "wordIds": [ "ทำไม", "เขา", "ท้องเสีย" ],
+                            "translations": { "en": "Why does he have diarrhea?", "fa": "چرا او اسهال دارد؟" }
+                        },
+                        {
+                            "source": "เขาท้องเสียเพราะว่าเขากินอาหารเผ็ดมากเกินไป",
+                            "wordIds": [ "เขา", "ท้องเสีย", "เพราะว่า", "เขา", "กิน", "อาหาร", "เผ็ด", "มากเกินไป" ],
+                            "translations": { "en": "He has diarrhea because he ate too much spicy food.", "fa": "او اسهال دارد چون غذای خیلی تند خورده است." }
+                        },
+                        {
+                            "source": "ทำไมเมื่อคืนพี่ชายของคุณนอนไม่หลับ",
+                            "wordIds": [ "ทำไม", "เมื่อคืน", "พี่ชาย", "ของ", "คุณ", "นอนไม่หลับ" ],
+                            "translations": { "en": "Why couldn't your brother sleep last night?", "fa": "چرا برادرت دیشب نتوانست بخوابد؟" }
+                        },
+                        {
+                            "source": "เขานอนไม่หลับเพราะว่าเมื่อวานเขาดื่มกาแฟมากเกินไป",
+                            "wordIds": [ "เขา", "นอนไม่หลับ", "เพราะว่า", "เมื่อวาน", "เขา", "ดื่ม", "กาแฟ", "มากเกินไป" ],
+                            "translations": { "en": "He couldn't sleep because he drank too much coffee yesterday.", "fa": "او نتوانست بخوابد چون دیروز زیاد قهوه خورده بود." }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "sectionId": "ls4-lesson-3",
+            "heading": {
+                "en": "Lesson 3: Travel and Tourism",
+                "th": "บทที่ 3: การเดินทางและท่องเที่ยว",
+                "fa": "درس ۳: سفر و گردشگری"
+            },
+            "activity": {
+                "words": true,
+                "sentences": true
+            },
+            "content": [
+                {
+                    "type": "words",
+                    "heading": {
+                        "en": "Travel Vocabulary",
+                        "th": "คำศัพท์การเดินทาง",
+                        "fa": "واژگان سفر"
+                    },
+                    "wordIds": [ "ไปเที่ยว", "ไปหา", "ใช้เวลา", "นาน", "สถานที่ท่องเที่ยว", "ที่พัก", "วันหยุด", "ประเทศ", "ต่างประเทศ", "จังหวัด", "ต่างจังหวัด", "นักท่องเที่ยว", "น่าสนใจ", "อากาศ", "เหมือน" ]
+                },
+                {
+                    "type": "paragraph",
+                    "heading": {
+                        "en": "Structure 1: Where will you go this holiday?",
+                        "th": "โครงสร้าง 1: วันหยุดนี้คุณจะไปเที่ยวที่ไหน?",
+                        "fa": "ساختار ۱: این تعطیلات کجا می‌روید؟"
+                    },
+                    "grammar": {
+                        "pattern": "วันหยุดนี้คุณจะไปเที่ยวที่ไหน",
+                        "note": {
+                            "en": "Use this pattern to ask about travel plans for an upcoming holiday or weekend.",
+                            "th": "ใช้รูปแบบนี้เพื่อถามเกี่ยวกับแผนการท่องเที่ยวในวันหยุดหรือสุดสัปดาห์ที่จะถึง",
+                            "fa": "از این الگو برای پرسیدن درباره برنامه سفر برای تعطیلات پیش رو یا آخر هفته استفاده کنید."
+                        },
+                        "examples": [
+                            { "source": "วันหยุดนี้คุณจะไปเที่ยวที่ไหนคะ", "translation": "Where will you go on this holiday?" },
+                            { "source": "ผมจะไปเที่ยวทะเลกับครอบครัวครับ", "translation": "I will go to the beach with my family." }
+                        ]
+                    },
+                    "sentences": [
+                        {
+                            "source": "วันหยุดนี้คุณจะไปเที่ยวที่ไหนคะ",
+                            "wordIds": [ "วันหยุด", "นี้", "คุณ", "จะ", "ไปเที่ยว", "ที่ไหน", "คะ" ],
+                            "translations": { "en": "Where will you go on this holiday?", "fa": "این تعطیلات کجا می‌روید؟" }
+                        },
+                        {
+                            "source": "ผมจะไปเที่ยวทะเลกับครอบครัวครับ",
+                            "wordIds": [ "ผม", "จะ", "ไปเที่ยว", "ทะเล", "กับ", "ครอบครัว", "ครับ" ],
+                            "translations": { "en": "I will go to the beach with my family.", "fa": "با خانواده به ساحل می‌روم." }
+                        },
+                        {
+                            "source": "วันเสาร์อาทิตย์นี้คุณจะไปเที่ยวที่ไหนครับ",
+                            "wordIds": [ "วันเสาร์อาทิตย์", "นี้", "คุณ", "จะ", "ไปเที่ยว", "ที่ไหน", "ครับ" ],
+                            "translations": { "en": "Where are you going this weekend?", "fa": "این آخر هفته کجا می‌روید؟" }
+                        },
+                        {
+                            "source": "ฉันจะไปเที่ยวดอยสุเทพกับเพื่อนค่ะ เพราะเดือนนี้อากาศดี",
+                            "wordIds": [ "ฉัน", "จะ", "ไปเที่ยว", "ดอยสุเทพ", "กับ", "เพื่อน", "ค่ะ", "เพราะ", "เดือน", "นี้", "อากาศ", "ดี" ],
+                            "translations": { "en": "I will go to Doi Suthep with my friend because the weather is good this month.", "fa": "با دوستم به دوی سوتپ می‌روم چون هوا این ماه خوب است." }
+                        },
+                        {
+                            "source": "เดือนหน้าคุณจะไปเที่ยวที่ไหนครับ",
+                            "wordIds": [ "เดือนหน้า", "คุณ", "จะ", "ไปเที่ยว", "ที่ไหน", "ครับ" ],
+                            "translations": { "en": "Where will you go next month?", "fa": "ماه آینده کجا می‌روید؟" }
+                        },
+                        {
+                            "source": "ฉันจะไปเดินป่ากับสามีค่ะ ตอนนี้นักท่องเที่ยวน้อย",
+                            "wordIds": [ "ฉัน", "จะ", "ไป", "เดินป่า", "กับ", "สามี", "ค่ะ", "ตอนนี้", "นักท่องเที่ยว", "น้อย" ],
+                            "translations": { "en": "I will go hiking with my husband. There aren't many tourists now.", "fa": "با شوهرم به کوهنوردی می‌روم. الان توریست کم است." }
+                        }
+                    ]
+                },
+                {
+                    "type": "paragraph",
+                    "heading": {
+                        "en": "Structure 2: What country do you want to visit the most?",
+                        "th": "โครงสร้าง 2: คุณอยากไปเที่ยวประเทศอะไรมากที่สุด?",
+                        "fa": "ساختار ۲: بیشتر از همه دوست دارید به کدام کشور سفر کنید؟"
+                    },
+                    "grammar": {
+                        "pattern": "คุณอยากไปเที่ยว...อะไรมากที่สุด",
+                        "note": {
+                            "en": "Use อยาก (want) with มากที่สุด (the most) to ask about top travel destinations.",
+                            "th": "ใช้ อยาก กับ มากที่สุด เพื่อถามเกี่ยวกับจุดหมายปลายทางที่อยากไปมากที่สุด",
+                            "fa": "از อยาก (خواستن) با มากที่สุด (بیشترین) برای پرسیدن درباره مقاصد برتر سفر استفاده کنید."
+                        },
+                        "examples": [
+                            { "source": "คุณอยากไปเที่ยวประเทศอะไรมากที่สุดคะ", "translation": "What country do you want to visit the most?" },
+                            { "source": "ผมอยากไปเที่ยวประเทศญี่ปุ่นมากที่สุดครับ", "translation": "I want to visit Japan the most." }
+                        ]
+                    },
+                    "sentences": [
+                        {
+                            "source": "คุณอยากไปเที่ยวประเทศอะไรมากที่สุดคะ",
+                            "wordIds": [ "คุณ", "อยาก", "ไปเที่ยว", "ประเทศ", "อะไร", "มากที่สุด", "คะ" ],
+                            "translations": { "en": "What country do you want to visit the most?", "fa": "بیشتر از همه دوست دارید به کدام کشور سفر کنید؟" }
+                        },
+                        {
+                            "source": "ผมอยากไปเที่ยวประเทศญี่ปุ่นมากที่สุดครับ",
+                            "wordIds": [ "ผม", "อยาก", "ไปเที่ยว", "ประเทศ", "ญี่ปุ่น", "มากที่สุด", "ครับ" ],
+                            "translations": { "en": "I want to visit Japan the most.", "fa": "بیشتر از همه دوست دارم به ژاپن سفر کنم." }
+                        },
+                        {
+                            "source": "ทำไมคะ",
+                            "wordIds": [ "ทำไม", "คะ" ],
+                            "translations": { "en": "Why?", "fa": "چرا؟" }
+                        },
+                        {
+                            "source": "เพราะอากาศไม่ร้อนและอาหารอร่อยค่ะ",
+                            "wordIds": [ "เพราะ", "อากาศ", "ไม่", "ร้อน", "และ", "อาหาร", "อร่อย", "ค่ะ" ],
+                            "translations": { "en": "Because the weather is not hot and the food is delicious.", "fa": "چون هوا گرم نیست و غذا خوشمزه است." }
+                        },
+                        {
+                            "source": "คุณอยากไปเที่ยวจังหวัดอะไรมากที่สุด ทำไมคะ",
+                            "wordIds": [ "คุณ", "อยาก", "ไปเที่ยว", "จังหวัด", "อะไร", "มากที่สุด", "ทำไม", "คะ" ],
+                            "translations": { "en": "What province do you want to visit the most? Why?", "fa": "بیشتر از همه دوست دارید به کدام استان سفر کنید؟ چرا؟" }
+                        },
+                        {
+                            "source": "ฉันอยากไปเที่ยวจังหวัดภูเก็ตมากที่สุดค่ะ เพราะฉันยังไม่เคยไปที่นั่นค่ะ",
+                            "wordIds": [ "ฉัน", "อยาก", "ไปเที่ยว", "จังหวัด", "ภูเก็ต", "มากที่สุด", "ค่ะ", "เพราะ", "ฉัน", "ยัง", "ไม่เคย", "ไป", "ที่นั่น", "ค่ะ" ],
+                            "translations": { "en": "I want to visit Phuket the most because I have never been there.", "fa": "بیشتر از همه دوست دارم به پوکت سفر کنم چون تا حالا آنجا نرفته‌ام." }
+                        }
+                    ]
+                },
+                {
+                    "type": "paragraph",
+                    "heading": {
+                        "en": "Structure 3: Have you ever been to...?",
+                        "th": "โครงสร้าง 3: คุณเคยไป...ไหม?",
+                        "fa": "ساختار ۳: تا حالا به ... رفته‌اید؟"
+                    },
+                    "grammar": {
+                        "pattern": "คุณเคยไป...ไหม",
+                        "note": {
+                            "en": "Use เคย (ever) to ask about travel experiences. Answer with เคย (yes) or ไม่เคย (no).",
+                            "th": "ใช้ เคย เพื่อถามเกี่ยวกับประสบการณ์การเดินทาง ตอบด้วย เคย หรือ ไม่เคย",
+                            "fa": "از เคย (تا حالا) برای پرسیدن درباره تجربیات سفر استفاده کنید. پاسخ با เคย (بله) یا ไม่เคย (نه)."
+                        },
+                        "examples": [
+                            { "source": "คุณเคยไปออสเตรเลียไหม", "translation": "Have you ever been to Australia?" },
+                            { "source": "เคย", "translation": "Yes, I have." }
+                        ]
+                    },
+                    "sentences": [
+                        {
+                            "source": "คุณเคยไปประเทศออสเตรเลียไหม",
+                            "wordIds": [ "คุณ", "เคย", "ไป", "ประเทศ", "ออสเตรเลีย", "ไหม" ],
+                            "translations": { "en": "Have you ever been to Australia?", "fa": "تا حالا به استرالیا رفته‌اید؟" }
+                        },
+                        {
+                            "source": "เคยครับ",
+                            "wordIds": [ "เคย", "ครับ" ],
+                            "translations": { "en": "Yes, I have.", "fa": "بله رفته‌ام." }
+                        },
+                        {
+                            "source": "ไม่เคยครับ",
+                            "wordIds": [ "ไม่", "เคย", "ครับ" ],
+                            "translations": { "en": "No, I haven't.", "fa": "نه نرفته‌ام." }
+                        },
+                        {
+                            "source": "คุณเคยไปจังหวัดสุโขทัยไหม",
+                            "wordIds": [ "คุณ", "เคย", "ไป", "จังหวัด", "สุโขทัย", "ไหม" ],
+                            "translations": { "en": "Have you ever been to Sukhothai?", "fa": "تا حالا به سوکوتای رفته‌اید؟" }
+                        },
+                        {
+                            "source": "คุณเคยเห็นช้างไหม",
+                            "wordIds": [ "คุณ", "เคย", "เห็น", "ช้าง", "ไหม" ],
+                            "translations": { "en": "Have you ever seen an elephant?", "fa": "تا حالا فیل دیده‌اید؟" }
+                        }
+                    ]
+                },
+                {
+                    "type": "paragraph",
+                    "heading": {
+                        "en": "Structure 4: What countries have you been to?",
+                        "th": "โครงสร้าง 4: คุณเคยไปประเทศอะไรบ้าง?",
+                        "fa": "ساختار ۴: به چه کشورهایی رفته‌اید؟"
+                    },
+                    "grammar": {
+                        "pattern": "คุณเคยไป...อะไรบ้าง",
+                        "note": {
+                            "en": "Add บ้าง to ask for multiple answers when asking about travel destinations.",
+                            "th": "เติม บ้าง เพื่อถามหาหลายคำตอบเมื่อถามเกี่ยวกับสถานที่ท่องเที่ยว",
+                            "fa": "برای پرسیدن چند پاسخ هنگام سوال درباره مقاصد سفر، บ้าง را اضافه کنید."
+                        },
+                        "examples": [
+                            { "source": "คุณเคยไปประเทศอะไรบ้าง", "translation": "What countries have you been to?" },
+                            { "source": "ผมเคยไปญี่ปุ่น ฝรั่งเศส และอิตาลี", "translation": "I have been to Japan, France, and Italy." }
+                        ]
+                    },
+                    "sentences": [
+                        {
+                            "source": "คุณเคยไปประเทศอะไรบ้าง",
+                            "wordIds": [ "คุณ", "เคย", "ไป", "ประเทศ", "อะไร", "บ้าง" ],
+                            "translations": { "en": "What countries have you been to?", "fa": "به چه کشورهایی رفته‌اید؟" }
+                        },
+                        {
+                            "source": "ผมเคยไปประเทศญี่ปุ่น ฝรั่งเศส และอิตาลี",
+                            "wordIds": [ "ผม", "เคย", "ไป", "ประเทศ", "ญี่ปุ่น", "ฝรั่งเศส", "และ", "อิตาลี" ],
+                            "translations": { "en": "I have been to Japan, France, and Italy.", "fa": "به ژاپن، فرانسه و ایتالیا رفته‌ام." }
+                        },
+                        {
+                            "source": "คุณเคยไปจังหวัดอะไรบ้าง",
+                            "wordIds": [ "คุณ", "เคย", "ไป", "จังหวัด", "อะไร", "บ้าง" ],
+                            "translations": { "en": "What provinces have you been to?", "fa": "به چه استان‌هایی رفته‌اید؟" }
+                        },
+                        {
+                            "source": "ผมเคยไปจังหวัดเชียงราย ลำปาง และน่าน",
+                            "wordIds": [ "ผม", "เคย", "ไป", "จังหวัด", "เชียงราย", "ลำปาง", "และ", "น่าน" ],
+                            "translations": { "en": "I have been to Chiang Rai, Lampang, and Nan.", "fa": "به چیانگ رای، لامپانگ و نان رفته‌ام." }
+                        },
+                        {
+                            "source": "ผมเคยไปหลายประเทศ",
+                            "wordIds": [ "ผม", "เคย", "ไป", "หลาย", "ประเทศ" ],
+                            "translations": { "en": "I have been to many countries.", "fa": "به کشورهای زیادی رفته‌ام." }
+                        }
+                    ]
+                },
+                {
+                    "type": "words",
+                    "heading": {
+                        "en": "Thai Regions",
+                        "th": "ภาคต่างๆ ของไทย",
+                        "fa": "مناطق تایلند"
+                    },
+                    "wordIds": [ "ภาคเหนือ", "ภาคกลาง", "ภาคอีสาน", "ภาคใต้", "ภาคตะวันออก", "ภาคตะวันตก", "เมืองหลวง" ]
+                },
+                {
+                    "type": "paragraph",
+                    "heading": {
+                        "en": "Structure 5: What region is... in?",
+                        "th": "โครงสร้าง 5: ...อยู่ภาคอะไร?",
+                        "fa": "ساختار ۵: ... در کدام منطقه است؟"
+                    },
+                    "grammar": {
+                        "pattern": "...อยู่ภาคอะไร",
+                        "note": {
+                            "en": "Use this to ask which region a place is located in.",
+                            "th": "ใช้ถามว่าสถานที่นั้นอยู่ในภาคใด",
+                            "fa": "از این برای پرسیدن اینکه یک مکان در کدام منطقه قرار دارد استفاده کنید."
+                        },
+                        "examples": [
+                            { "source": "กรุงเทพฯอยู่ภาคอะไรคะ", "translation": "What region is Bangkok in?" },
+                            { "source": "กรุงเทพฯอยู่ภาคกลางครับ", "translation": "Bangkok is in the central region." }
+                        ]
+                    },
+                    "sentences": [
+                        {
+                            "source": "กรุงเทพฯอยู่ภาคอะไรคะ",
+                            "wordIds": [ "กรุงเทพฯ", "อยู่", "ภาค", "อะไร", "คะ" ],
+                            "translations": { "en": "What region is Bangkok in?", "fa": "بانکوک در کدام منطقه است؟" }
+                        },
+                        {
+                            "source": "กรุงเทพฯอยู่ภาคกลางครับ",
+                            "wordIds": [ "กรุงเทพฯ", "อยู่", "ภาคกลาง", "ครับ" ],
+                            "translations": { "en": "Bangkok is in the central region.", "fa": "بانکوک در منطقه مرکزی است." }
+                        },
+                        {
+                            "source": "รัฐแคลิฟอร์เนียอยู่ภาคอะไรคะ",
+                            "wordIds": [ "รัฐ", "แคลิฟอร์เนีย", "อยู่", "ภาค", "อะไร", "คะ" ],
+                            "translations": { "en": "What region is the state of California in?", "fa": "ایالت کالیفرنیا در کدام منطقه است؟" }
+                        },
+                        {
+                            "source": "รัฐแคลิฟอร์เนียอยู่ภาคตะวันตกครับ",
+                            "wordIds": [ "รัฐ", "แคลิฟอร์เนีย", "อยู่", "ภาคตะวันตก", "ครับ" ],
+                            "translations": { "en": "California is in the western region.", "fa": "کالیفرنیا در منطقه غرب است." }
+                        }
+                    ]
+                },
+                {
+                    "type": "paragraph",
+                    "heading": {
+                        "en": "Conversation 1: Travel Experiences",
+                        "th": "บทสนทนา 1: ประสบการณ์การท่องเที่ยว",
+                        "fa": "مکالمه ۱: تجربیات سفر"
+                    },
+                    "sentences": [
+                        {
+                            "source": "คุณเคยไปเที่ยวประเทศอะไรบ้างคะ",
+                            "wordIds": [ "คุณ", "เคย", "ไปเที่ยว", "ประเทศ", "อะไร", "บ้าง", "คะ" ],
+                            "translations": { "en": "What countries have you been to?", "fa": "به چه کشورهایی سفر کرده‌اید؟" }
+                        },
+                        {
+                            "source": "ผมเคยไปเที่ยวหลายประเทศครับ เช่น ญี่ปุ่น จีน อินเดีย มาเลเซีย อิตาลี และเม็กซิโกครับ แล้วคุณล่ะ",
+                            "wordIds": [ "ผม", "เคย", "ไปเที่ยว", "หลาย", "ประเทศ", "ครับ", "เช่น", "ญี่ปุ่น", "จีน", "อินเดีย", "มาเลเซีย", "ایتالیا", "และ", "เม็กซิโก", "ครับ", "แล้ว", "คุณ", "ล่ะ" ],
+                            "translations": { "en": "I have been to many countries such as Japan, China, India, Malaysia, Italy, and Mexico. How about you?", "fa": "به کشورهای زیادی سفر کرده‌ام مثل ژاپن، چین، هند، مالزی، ایتالیا و مکزیک. شما چطور؟" }
+                        },
+                        {
+                            "source": "ฉันเคยไปประเทศนิวซีแลนด์ เนปาล และเวียดนามค่ะ",
+                            "wordIds": [ "ฉัน", "เคย", "ไป", "ประเทศ", "นิวซีแลนด์", "เนปาล", "และ", "เวียดนาม", "ค่ะ" ],
+                            "translations": { "en": "I have been to New Zealand, Nepal, and Vietnam.", "fa": "به نیوزیلند، نپال و ویتنام رفته‌ام." }
+                        },
+                        {
+                            "source": "คุณชอบประเทศอะไรมากที่สุดคะ",
+                            "wordIds": [ "คุณ", "ชอบ", "ประเทศ", "อะไร", "มากที่สุด", "คะ" ],
+                            "translations": { "en": "What country do you like the most?", "fa": "کدام کشور را بیشتر از همه دوست دارید؟" }
+                        },
+                        {
+                            "source": "ผมชอบประเทศอินเดียมากที่สุดครับ",
+                            "wordIds": [ "ผม", "ชอบ", "ประเทศ", "อินเดีย", "มากที่สุด", "ครับ" ],
+                            "translations": { "en": "I like India the most.", "fa": "من هند را بیشتر از همه دوست دارم." }
+                        },
+                        {
+                            "source": "ทำไมคะ",
+                            "wordIds": [ "ทำไม", "คะ" ],
+                            "translations": { "en": "Why?", "fa": "چرا؟" }
+                        },
+                        {
+                            "source": "เพราะว่าที่นั่นมีสถานที่ท่องเที่ยวหลายที่และอาหารอร่อยมากครับ",
+                            "wordIds": [ "เพราะว่า", "ที่นั่น", "มี", "สถานที่ท่องเที่ยว", "หลาย", "ที่", "และ", "อาหาร", "อร่อย", "มาก", "ครับ" ],
+                            "translations": { "en": "Because there are many tourist attractions and the food is very delicious.", "fa": "چون آنجا جاذبه‌های گردشگری زیادی دارد و غذا خیلی خوشمزه است." }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "sectionId": "ls4-lesson-4",
+            "heading": {
+                "en": "Lesson 4: Transportation",
+                "th": "บทที่ 4: การเดินทาง",
+                "fa": "درس ۴: حمل و نقل"
+            },
+            "activity": {
+                "words": true,
+                "sentences": true
+            },
+            "content": [
+                {
+                    "type": "words",
+                    "heading": {
+                        "en": "Transportation Vocabulary",
+                        "th": "คำศัพท์การเดินทาง",
+                        "fa": "واژگان حمل و نقل"
+                    },
+                    "wordIds": [ "รถไฟ", "รถยนต์", "รถเมล์", "รถทัวร์", "เครื่องบิน", "เรือ", "สถานีรถไฟ", "สถานีขนส่ง", "สนามบิน", "ป้ายรถเมล์", "ท่าเรือ", "ขึ้น", "ลง", "ยังไง", "ใช้เวลา", "จอด", "โดย", "นั่ง" ]
+                },
+                {
+                    "type": "paragraph",
+                    "heading": {
+                        "en": "Structures 1-3: How do you get to...?",
+                        "th": "โครงสร้าง 1-3: คุณไป...ยังไง?",
+                        "fa": "ساختار ۱-۳: چطور به ... می‌روید؟"
+                    },
+                    "grammar": {
+                        "pattern": "คุณไป...ยังไง? / ไปโดย... / นั่ง...ไป",
+                        "note": {
+                            "en": "There are multiple ways to ask and answer about transportation: 1) ไป...ยังไง? (How do you go to...?), 2) ไปโดย... (go by...), 3) นั่ง...ไป (ride...to).",
+                            "th": "มีหลายวิธีในการถามและตอบเกี่ยวกับการเดินทาง: 1) ไป...ยังไง? 2) ไปโดย... 3) นั่ง...ไป",
+                            "fa": "راه‌های متعددی برای پرسیدن و پاسخ درباره حمل و نقل وجود دارد: ۱) ไป...ยังไง؟ (چطور به ... می‌روید؟)، ۲) ไปโดย... (با ... می‌روم)، ۳) นั่ง...ไป (سوار ... می‌شوم و می‌روم)."
+                        },
+                        "examples": [
+                            { "source": "คุณไปกรุงเทพยังไง", "translation": "How do you get to Bangkok?" },
+                            { "source": "ผมไปโดยรถไฟ", "translation": "I go by train." },
+                            { "source": "ผมนั่งรถไฟไป", "translation": "I take the train." }
+                        ]
+                    },
+                    "sentences": [
+                        {
+                            "source": "คุณจะไปจังหวัดลพบุรียังไงคะ",
+                            "wordIds": [ "คุณ", "จะ", "ไป", "จังหวัด", "ลพบุรี", "ยังไง", "คะ" ],
+                            "translations": { "en": "How will you get to Lopburi?", "fa": "چطور به لوپ بوری می‌روید؟" }
+                        },
+                        {
+                            "source": "ผมจะไปโดยรถไฟครับ",
+                            "wordIds": [ "ผม", "จะ", "ไป", "โดย", "รถไฟ", "ครับ" ],
+                            "translations": { "en": "I will go by train.", "fa": "با قطار می‌روم." }
+                        },
+                        {
+                            "source": "ผมจะนั่งรถไฟไปครับ",
+                            "wordIds": [ "ผม", "จะ", "นั่ง", "รถไฟ", "ไป", "ครับ" ],
+                            "translations": { "en": "I will take the train.", "fa": "سوار قطار می‌شوم و می‌روم." }
+                        },
+                        {
+                            "source": "คุณไปเกาะสมุยยังไงคะ",
+                            "wordIds": [ "คุณ", "ไป", "เกาะสมุย", "ยังไง", "คะ" ],
+                            "translations": { "en": "How did you get to Samui island?", "fa": "چطور به جزیره سامویی رفتید؟" }
+                        },
+                        {
+                            "source": "ผมไปเกาะสมุยโดยเรือครับ",
+                            "wordIds": [ "ผม", "ไป", "เกาะสมุย", "โดย", "เรือ", "ครับ" ],
+                            "translations": { "en": "I got to Samui island by boat.", "fa": "با قایق به جزیره سامویی رفتم." }
+                        },
+                        {
+                            "source": "ผมนั่งเรือไปครับ",
+                            "wordIds": [ "ผม", "นั่ง", "เรือ", "ไป", "ครับ" ],
+                            "translations": { "en": "I took a boat.", "fa": "سوار قایق شدم و رفتم." }
+                        },
+                        {
+                            "source": "คุณมาที่นี่ยังไงคะ",
+                            "wordIds": [ "คุณ", "มา", "ที่นี่", "ยังไง", "คะ" ],
+                            "translations": { "en": "How did you get here?", "fa": "چطور به اینجا آمدید؟" }
+                        },
+                        {
+                            "source": "ผมมาที่นี่โดยรถเมล์ครับ",
+                            "wordIds": [ "ผม", "มา", "ที่นี่", "โดย", "รถเมล์", "ครับ" ],
+                            "translations": { "en": "I got here by city bus.", "fa": "با اتوبوس شهری به اینجا آمدم." }
+                        },
+                        {
+                            "source": "ผมนั่งรถเมล์มาครับ",
+                            "wordIds": [ "ผม", "นั่ง", "รถเมล์", "มา", "ครับ" ],
+                            "translations": { "en": "I took the bus.", "fa": "سوار اتوبوس شدم و آمدم." }
+                        }
+                    ]
+                },
+                {
+                    "type": "paragraph",
+                    "heading": {
+                        "en": "Structures 4-5: How long does it take?",
+                        "th": "โครงสร้าง 4-5: ใช้เวลานานเท่าไหร่?",
+                        "fa": "ساختار ۴-۵: چقدر طول می‌کشد؟"
+                    },
+                    "grammar": {
+                        "pattern": "จาก A ไป B ใช้เวลานานเท่าไหร่? - ใช้เวลา...",
+                        "note": {
+                            "en": "Use ใช้เวลา (take time) to ask and answer about travel duration.",
+                            "th": "ใช้ ใช้เวลา เพื่อถามและตอบเกี่ยวกับระยะเวลาเดินทาง",
+                            "fa": "از ใช้เวลา (زمان بردن) برای پرسیدن و پاسخ درباره مدت زمان سفر استفاده کنید."
+                        },
+                        "examples": [
+                            { "source": "จากเชียงใหม่ไปภูเก็ตใช้เวลานานเท่าไหร่", "translation": "How long does it take from Chiang Mai to Phuket?" },
+                            { "source": "ใช้เวลา 2 ชั่วโมง", "translation": "It takes 2 hours." }
+                        ]
+                    },
+                    "sentences": [
+                        {
+                            "source": "จากเชียงใหม่ไปกรุงเทพฯใช้เวลาเท่าไหร่",
+                            "wordIds": [ "จาก", "เชียงใหม่", "ไป", "กรุงเทพฯ", "ใช้เวลา", "เท่าไหร่" ],
+                            "translations": { "en": "How long does it take from Chiang Mai to Bangkok?", "fa": "از چیانگ مای تا بانکوک چقدر طول می‌کشد؟" }
+                        },
+                        {
+                            "source": "ถ้านั่งเครื่องบินไป ใช้เวลาประมาณ 1 ชั่วโมง",
+                            "wordIds": [ "ถ้า", "นั่ง", "เครื่องบิน", "ไป", "ใช้เวลา", "ประมาณ", "1", "ชั่วโมง" ],
+                            "translations": { "en": "If you go by plane, it takes about 1 hour.", "fa": "اگر با هواپیما بروید، حدود ۱ ساعت طول می‌کشد." }
+                        }
+                    ]
+                },
+                {
+                    "type": "paragraph",
+                    "heading": {
+                        "en": "Conversation 2: Trip to Samui",
+                        "th": "บทสนทนา 2: ทริปเกาะสมุย",
+                        "fa": "مکالمه ۲: سفر به سامویی"
+                    },
+                    "sentences": [
+                        {
+                            "source": "วันหยุดยาวนี้คุณจะทำอะไรครับ",
+                            "wordIds": [ "วันหยุดยาว", "นี้", "คุณ", "จะ", "ทำ", "อะไร", "ครับ" ],
+                            "translations": { "en": "What are you going to do on this long holiday?", "fa": "این تعطیلات طولانی چه کار می‌کنید؟" }
+                        },
+                        {
+                            "source": "ฉันจะไปเที่ยวเกาะสมุยกับครอบครัวค่ะ",
+                            "wordIds": [ "ฉัน", "จะ", "ไปเที่ยว", "เกาะสมุย", "กับ", "ครอบครัว", "ค่ะ" ],
+                            "translations": { "en": "I am going to Samui Island with my family.", "fa": "با خانواده به جزیره سامویی می‌روم." }
+                        },
+                        {
+                            "source": "คุณจะไปเกาะสมุยยังไงครับ",
+                            "wordIds": [ "คุณ", "จะ", "ไป", "เกาะสมุย", "ยังไง", "ครับ" ],
+                            "translations": { "en": "How will you get to Samui island?", "fa": "چطور به جزیره سامویی می‌روید؟" }
+                        },
+                        {
+                            "source": "ฉันจะนั่งเครื่องบินไปจังหวัดสุราษฎร์ธานีก่อน แล้วนั่งเรือไปเกาะสมุยค่ะ",
+                            "wordIds": [ "ฉัน", "จะ", "นั่ง", "เครื่องบิน", "ไป", "จังหวัด", "สุราษฎร์ธานี", "ก่อน", "แล้ว", "นั่ง", "เรือ", "ไป", "เกาะสมุย", "ค่ะ" ],
+                            "translations": { "en": "I will fly to Surat Thani province first, then take a boat to Samui island.", "fa": "اول با هواپیما به استان سورات تانی می‌روم، بعد با قایق به جزیره سامویی می‌روم." }
+                        },
+                        {
+                            "source": "ใช้เวลานานเท่าไหร่ครับ จากท่าเรือไปเกาะสมุย",
+                            "wordIds": [ "ใช้เวลา", "นาน", "เท่าไหร่", "ครับ", "จาก", "ท่าเรือ", "ไป", "เกาะสมุย" ],
+                            "translations": { "en": "How long does it take from the pier to Samui island?", "fa": "از اسکله تا جزیره سامویی چقدر طول می‌کشد؟" }
+                        },
+                        {
+                            "source": "ใช้เวลาประมาณ 1 ชั่วโมงครึ่ง ถ้านั่งเรือเฟอร์รี่ไปค่ะ",
+                            "wordIds": [ "ใช้เวลา", "ประมาณ", "1", "ชั่วโมง", "ครึ่ง", "ถ้า", "นั่ง", "เรือเฟอร์รี่", "ไป", "ค่ะ" ],
+                            "translations": { "en": "It takes about 1 and a half hours if we go by ferry.", "fa": "اگر با فری برویم، حدود یک ساعت و نیم طول می‌کشد." }
+                        },
+                        {
+                            "source": "ใช้เวลาไม่ค่อยนานนะครับ ยังไงก็เที่ยวให้สนุกนะครับ",
+                            "wordIds": [ "ใช้เวลา", "ไม่ค่อย", "นาน", "นะ", "ครับ", "ยังไงก็", "เที่ยว", "ให้สนุก", "นะ", "ครับ" ],
+                            "translations": { "en": "That doesn't take long. Anyway, have fun!", "fa": "زیاد طول نمی‌کشد. به هر حال، خوش بگذره!" }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "sectionId": "ls4-lesson-5",
+            "heading": {
+                "en": "Lesson 5: Visa",
+                "th": "บทที่ 5: วีซ่า",
+                "fa": "درس ۵: ویزا"
+            },
+            "activity": {
+                "words": true,
+                "sentences": true
+            },
+            "content": [
+                {
+                    "type": "words",
+                    "heading": {
+                        "en": "Visa Vocabulary",
+                        "th": "คำศัพท์เกี่ยวกับวีซ่า",
+                        "fa": "واژگان ویزا"
+                    },
+                    "wordIds": [ "วีซ่า", "วีซ่านักเรียน", "วีซ่าทำงาน", "วีซ่าเกษียณ", "วีซ่าแต่งงาน", "วีซ่าอาสาสมัคร", "วีซ่านักท่องเที่ยว", "ขอวีซ่า", "ต่อวีซ่า", "หมดอายุ", "ยกเลิก", "เจ้าหน้าที่", "เอกสาร", "ถ่ายเอกสาร", "สำเนาเอกสาร", "รูปถ่าย", "ข้อมูล", "หนังสือเดินทาง", "รอ", "เข้าแถว", "สมัคร", "ครบ", "ตรวจคนเข้าเมือง" ]
+                },
+                {
+                    "type": "paragraph",
+                    "heading": {
+                        "en": "Structure 1: What visa do you have?",
+                        "th": "โครงสร้าง 1: คุณมีวีซ่าอะไร?",
+                        "fa": "ساختار ۱: چه ویزایی دارید؟"
+                    },
+                    "grammar": {
+                        "pattern": "คุณมีวีซ่าอะไร",
+                        "note": {
+                            "en": "Use this to ask about someone's visa type.",
+                            "th": "ใช้ถามเกี่ยวกับประเภทวีซ่าของใครบางคน",
+                            "fa": "از این برای پرسیدن درباره نوع ویزای کسی استفاده کنید."
+                        },
+                        "examples": [
+                            { "source": "ตอนนี้คุณมีวีซ่าอะไรคะ", "translation": "What kind of visa do you have now?" },
+                            { "source": "ตอนนี้ฉันมีวีซ่านักท่องเที่ยว 3 เดือนค่ะ", "translation": "Now I have a 3-month tourist visa." }
+                        ]
+                    },
+                    "sentences": [
+                        {
+                            "source": "ตอนนี้คุณมีวีซ่าอะไรคะ",
+                            "wordIds": [ "ตอนนี้", "คุณ", "มี", "วีซ่า", "อะไร", "คะ" ],
+                            "translations": { "en": "What kind of visa do you have now?", "fa": "الان چه نوع ویزایی دارید؟" }
+                        },
+                        {
+                            "source": "ตอนนี้ฉันมีวีซ่านักท่องเที่ยว 3 เดือนค่ะ คุณล่ะ",
+                            "wordIds": [ "ตอนนี้", "ฉัน", "มี", "วีซ่านักท่องเที่ยว", "3", "เดือน", "ค่ะ", "คุณ", "ล่ะ" ],
+                            "translations": { "en": "Now I have a 3-month tourist visa. What about you?", "fa": "الان ویزای توریستی ۳ ماهه دارم. شما چطور؟" }
+                        },
+                        {
+                            "source": "ฉันมีวีซ่านักเรียนค่ะ",
+                            "wordIds": [ "ฉัน", "มี", "วีซ่านักเรียน", "ค่ะ" ],
+                            "translations": { "en": "I have a student visa.", "fa": "ویزای دانشجویی دارم." }
+                        },
+                        {
+                            "source": "โอ้ น่าสนใจ ปีหน้าฉันอยากสมัครวีซ่านักเรียน คุณสมัครวีซ่านักเรียนที่ไหนคะ",
+                            "wordIds": [ "โอ้", "น่าสนใจ", "ปีหน้า", "ฉัน", "อยาก", "สมัคร", "วีซ่านักเรียน", "คุณ", "สมัคร", "วีซ่านักเรียน", "ที่ไหน", "คะ" ],
+                            "translations": { "en": "Oh, that's interesting! Next year I want to apply for a student visa. Where did you apply for your student visa?", "fa": "اوه، جالبه! سال آینده می‌خواهم برای ویزای دانشجویی اقدام کنم. کجا برای ویزای دانشجویی اقدام کردید؟" }
+                        },
+                        {
+                            "source": "ฉันสมัครวีซ่านักเรียนที่โรงเรียน TSL ค่ะ",
+                            "wordIds": [ "ฉัน", "สมัคร", "วีซ่านักเรียน", "ที่", "โรงเรียน", "TSL", "ค่ะ" ],
+                            "translations": { "en": "I applied for my student visa at TSL school.", "fa": "از طریق مدرسه TSL برای ویزای دانشجویی اقدام کردم." }
+                        },
+                        {
+                            "source": "ยากไหมคะ",
+                            "wordIds": [ "ยาก", "ไหม", "คะ" ],
+                            "translations": { "en": "Was it difficult?", "fa": "سخت بود؟" }
+                        },
+                        {
+                            "source": "ไม่อยากค่ะ ถ้าคุณมีเอกสารครบ และอยากเรียนภาษาไทยจริงๆ พวกเขาแนะนำได้",
+                            "wordIds": [ "ไม่", "ยาก", "ค่ะ", "ถ้า", "คุณ", "มี", "เอกสาร", "ครบ", "และ", "อยาก", "เรียน", "ภาษาไทย", "จริงๆ", "พวกเขา", "แนะนำ", "ได้" ],
+                            "translations": { "en": "No, it's not difficult if you have all your documents and really want to study Thai. They can advise you.", "fa": "نه سخت نیست اگر مدارکت کامل باشد و واقعاً بخواهی تایلندی یاد بگیری. آنها می‌توانند راهنمایی کنند." }
+                        }
+                    ]
+                },
+                {
+                    "type": "paragraph",
+                    "heading": {
+                        "en": "Useful Visa Expressions",
+                        "th": "วลีที่เป็นประโยชน์เกี่ยวกับวีซ่า",
+                        "fa": "عبارات مفید ویزا"
+                    },
+                    "sentences": [
+                        {
+                            "source": "ฉันมีวีซ่าเกษียณ และอยู่ที่นี่หลายปีแล้ว",
+                            "wordIds": [ "ฉัน", "มี", "วีซ่าเกษียณ", "และ", "อยู่", "ที่นี่", "หลายปี", "แล้ว" ],
+                            "translations": { "en": "I have a retirement visa, I've lived here for many years already.", "fa": "ویزای بازنشستگی دارم، سال‌هاست اینجا زندگی می‌کنم." }
+                        },
+                        {
+                            "source": "ฉันอยากสมัครวีซ่านักเรียนคะ ฉันต้องทำยังไง?",
+                            "wordIds": [ "ฉัน", "อยาก", "สมัคร", "วีซ่านักเรียน", "คะ", "ฉัน", "ต้อง", "ทำ", "ยังไง" ],
+                            "translations": { "en": "I want to apply for a student visa. How do I do it?", "fa": "می‌خواهم برای ویزای دانشجویی اقدام کنم. چکار باید بکنم؟" }
+                        },
+                        {
+                            "source": "คุณมีเอกสารครบไหมคะ",
+                            "wordIds": [ "คุณ", "มี", "เอกสาร", "ครบ", "ไหม", "คะ" ],
+                            "translations": { "en": "Do you have all your documents ready?", "fa": "همه مدارکت کامل است؟" }
+                        },
+                        {
+                            "source": "ขอถ่ายเอกสาร 2 ใบ",
+                            "wordIds": [ "ขอ", "ถ่ายเอกสาร", "2", "ใบ" ],
+                            "translations": { "en": "I want to make 2 copies.", "fa": "می‌خواهم ۲ تا کپی بگیرم." }
+                        },
+                        {
+                            "source": "ฉันอยากยกเลิกวีซ่าค่ะ",
+                            "wordIds": [ "ฉัน", "อยาก", "ยกเลิก", "วีซ่า", "ค่ะ" ],
+                            "translations": { "en": "I want to cancel my visa.", "fa": "می‌خواهم ویزایم را لغو کنم." }
+                        },
+                        {
+                            "source": "ขอโทษค่ะ ตรวจคนเข้าเมืองไปทางไหนคะ",
+                            "wordIds": [ "ขอโทษ", "ค่ะ", "ตรวจคนเข้าเมือง", "ไป", "ทางไหน", "คะ" ],
+                            "translations": { "en": "Excuse me, which way to immigration?", "fa": "ببخشید، اداره مهاجرت کدام طرف است؟" }
+                        },
+                        {
+                            "source": "คนไทยต้องขอวีซ่าถ้าอยากไปอเมริกา",
+                            "wordIds": [ "คนไทย", "ต้อง", "ขอวีซ่า", "ถ้า", "อยาก", "ไป", "อเมริกา" ],
+                            "translations": { "en": "Thai people need to apply for a visa if they want to go to America.", "fa": "تایلندی‌ها اگر بخواهند به آمریکا بروند باید ویزا بگیرند." }
+                        },
+                        {
+                            "source": "วีซ่าผมจะหมดอายุภายใน 2 อาทิตย์",
+                            "wordIds": [ "วีซ่า", "ผม", "จะ", "หมดอายุ", "ภายใน", "2", "อาทิตย์" ],
+                            "translations": { "en": "My visa will expire within 2 weeks.", "fa": "ویزای من تا ۲ هفته دیگر منقضی می‌شود." }
+                        },
+                        {
+                            "source": "ขอดูหนังสือเดินทางหน่อยครับ",
+                            "wordIds": [ "ขอ", "ดู", "หนังสือเดินทาง", "หน่อย", "ครับ" ],
+                            "translations": { "en": "Can I see your passport please?", "fa": "گذرنامه را ببینم لطفاً؟" }
+                        },
+                        {
+                            "source": "หนังสือเดินทางของผมหมดอายุ",
+                            "wordIds": [ "หนังสือเดินทาง", "ของ", "ผม", "หมดอายุ" ],
+                            "translations": { "en": "My passport is expired.", "fa": "گذرنامه من منقضی شده است." }
+                        },
+                        {
+                            "source": "ขอรอเจ้าหน้าที่ประมาณ 10 นาทีนะคะ",
+                            "wordIds": [ "ขอ", "รอ", "เจ้าหน้าที่", "ประมาณ", "10", "นาที", "นะ", "คะ" ],
+                            "translations": { "en": "Please wait for an officer, about 10 minutes.", "fa": "لطفاً برای مسئول صبر کنید، حدود ۱۰ دقیقه." }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "sectionId": "ls4-lesson-6",
+            "heading": {
+                "en": "Lesson 6: Money and Bank",
+                "th": "บทที่ 6: เงินและธนาคาร",
+                "fa": "درس ۶: پول و بانک"
+            },
+            "activity": {
+                "words": true,
+                "sentences": true
+            },
+            "content": [
+                {
+                    "type": "words",
+                    "heading": {
+                        "en": "Money and Bank Vocabulary",
+                        "th": "คำศัพท์เกี่ยวกับเงินและธนาคาร",
+                        "fa": "واژگان پول و بانک"
+                    },
+                    "wordIds": [ "เงิน", "สตางค์", "แลกเงิน", "โอนเงิน", "ถอนเงิน", "ฝากเงิน", "ธนาคาร", "ตู้เอทีเอ็ม", "จ่าย", "ยืม", "คืน", "บัญชีธนาคาร", "บัตรเครดิต", "บัตรประชาชน", "สมุดบัญชี", "เงินสด", "เงินเหรียญ", "ซื้อของ", "เปิดบัญชี", "โกหก", "สัญญา", "โปรโมชั่น", "พร้อมเพย์" ]
+                },
+                {
+                    "type": "paragraph",
+                    "heading": {
+                        "en": "Banking Conversations",
+                        "th": "บทสนทนาธนาคาร",
+                        "fa": "مکالمات بانکی"
+                    },
+                    "sentences": [
+                        {
+                            "source": "ขอโทษค่ะ ธนาคารอยู่ไหนคะ ฉันอยากแลกเงิน",
+                            "wordIds": [ "ขอโทษ", "ค่ะ", "ธนาคาร", "อยู่", "ไหน", "คะ", "ฉัน", "อยาก", "แลกเงิน" ],
+                            "translations": { "en": "Excuse me, where is the bank? I want to exchange money.", "fa": "ببخشید، بانک کجاست؟ می‌خواهم پول عوض کنم." }
+                        },
+                        {
+                            "source": "ที่ห้างเมย่าค่ะ ที่นั่นมีธนาคารเยอะ",
+                            "wordIds": [ "ที่", "ห้าง", "เมย่า", "ค่ะ", "ที่นั่น", "มี", "ธนาคาร", "เยอะ" ],
+                            "translations": { "en": "At Maya Mall. There are many banks there.", "fa": "در مال مایا. آنجا بانک زیاد است." }
+                        },
+                        {
+                            "source": "ขอบคุณค่ะ",
+                            "wordIds": [ "ขอบคุณ", "ค่ะ" ],
+                            "translations": { "en": "Thank you.", "fa": "متشکرم." }
+                        }
+                    ]
+                },
+                {
+                    "type": "paragraph",
+                    "heading": {
+                        "en": "Conversation: Lost Wallet",
+                        "th": "บทสนทนา: กระเป๋าเงินหาย",
+                        "fa": "مکالمه: کیف پول گم شده"
+                    },
+                    "sentences": [
+                        {
+                            "source": "กระเป๋าเงินของฉันหาย ฉันไม่มีเงินเลย",
+                            "wordIds": [ "กระเป๋าเงิน", "ของ", "ฉัน", "หาย", "ฉัน", "ไม่มี", "เงิน", "เลย" ],
+                            "translations": { "en": "My wallet is lost. I have no money at all.", "fa": "کیف پولم گم شده. اصلاً پول ندارم." }
+                        },
+                        {
+                            "source": "เธอยืมเงินฉันก่อนได้นะ",
+                            "wordIds": [ "เธอ", "ยืม", "เงิน", "ฉัน", "ก่อน", "ได้", "นะ" ],
+                            "translations": { "en": "You can borrow money from me first.", "fa": "می‌توانی اول از من پول قرض کنی." }
+                        },
+                        {
+                            "source": "จริงหรอ ขอบคุณนะ เธอใจดีมากๆ",
+                            "wordIds": [ "จริง", "หรือ", "ขอบคุณ", "นะ", "เธอ", "ใจดี", "มากๆ" ],
+                            "translations": { "en": "Really? Thank you. You are very kind.", "fa": "واقعاً؟ متشکرم. خیلی مهربانی." }
+                        },
+                        {
+                            "source": "แต่ต้องคืนนะ",
+                            "wordIds": [ "แต่", "ต้อง", "คืน", "นะ" ],
+                            "translations": { "en": "But you have to return it.", "fa": "اما باید پس بدی." }
+                        }
+                    ]
+                },
+                {
+                    "type": "paragraph",
+                    "heading": {
+                        "en": "Conversation: Money Transfer",
+                        "th": "บทสนทนา: โอนเงิน",
+                        "fa": "مکالمه: انتقال پول"
+                    },
+                    "sentences": [
+                        {
+                            "source": "สวัสดีค่ะแม่ พรุ่งนี้หนูจะไปเที่ยวกับเพื่อน แม่โอนเงินให้หน่อยได้ไหมคะ",
+                            "wordIds": [ "สวัสดี", "ค่ะ", "แม่", "พรุ่งนี้", "หนู", "จะ", "ไปเที่ยว", "กับ", "เพื่อน", "แม่", "โอนเงิน", "ให้", "หน่อย", "ได้", "ไหม", "คะ" ],
+                            "translations": { "en": "Hello Mom. Tomorrow I'm going out with friends. Can you transfer some money to me?", "fa": "سلام مامان. فردا با دوستان می‌روم بیرون. می‌توانی پول برایم انتقال دهی؟" }
+                        },
+                        {
+                            "source": "ลูกอยากได้เท่าไหร่ พรุ่งนี้แม่จะไปโอนเงินที่ตู้เอทีเอ็ม",
+                            "wordIds": [ "ลูก", "อยาก", "ได้", "เท่าไหร่", "พรุ่งนี้", "แม่", "จะ", "ไป", "โอนเงิน", "ที่", "ตู้เอทีเอ็ม" ],
+                            "translations": { "en": "How much do you want? Tomorrow I'll go transfer money at the ATM.", "fa": "چقدر می‌خواهی؟ فردا می‌روم از خودپرداز پول انتقال دهم." }
+                        },
+                        {
+                            "source": "1000 บาทพอค่ะแม่ ขอบคุณค่ะ",
+                            "wordIds": [ "1000", "บาท", "พอ", "ค่ะ", "แม่", "ขอบคุณ", "ค่ะ" ],
+                            "translations": { "en": "1000 Baht is enough, Mom. Thank you.", "fa": "۱۰۰۰ بات کافی است مامان. متشکرم." }
+                        },
+                        {
+                            "source": "เที่ยวให้สนุกนะ",
+                            "wordIds": [ "เที่ยว", "ให้สนุก", "นะ" ],
+                            "translations": { "en": "Have fun!", "fa": "خوش بگذره!" }
+                        }
+                    ]
+                },
+                {
+                    "type": "paragraph",
+                    "heading": {
+                        "en": "Conversation: Credit Card",
+                        "th": "บทสนทนา: บัตรเครดิต",
+                        "fa": "مکالمه: کارت اعتباری"
+                    },
+                    "sentences": [
+                        {
+                            "source": "ขอโทษค่ะ ที่นี่รับบัตรเครดิตไหมคะ",
+                            "wordIds": [ "ขอโทษ", "ค่ะ", "ที่นี่", "รับ", "บัตรเครดิต", "ไหม", "คะ" ],
+                            "translations": { "en": "Excuse me, do you accept credit cards here?", "fa": "ببخشید، اینجا کارت اعتباری قبول می‌کنید؟" }
+                        },
+                        {
+                            "source": "ไม่ค่ะ รับแค่เงินสดค่ะ",
+                            "wordIds": [ "ไม่", "ค่ะ", "รับ", "แค่", "เงินสด", "ค่ะ" ],
+                            "translations": { "en": "No, we only accept cash.", "fa": "نه، فقط پول نقد قبول می‌کنیم." }
+                        },
+                        {
+                            "source": "ฉันไม่มีเงินสดเลย โอนได้ไหม",
+                            "wordIds": [ "ฉัน", "ไม่มี", "เงินสด", "เลย", "โอน", "ได้", "ไหม" ],
+                            "translations": { "en": "I have no cash at all. Can I transfer?", "fa": "اصلاً پول نقد ندارم. می‌توانم انتقال دهم؟" }
+                        },
+                        {
+                            "source": "โอนพร้อมเพย์ได้ค่ะ",
+                            "wordIds": [ "โอน", "พร้อมเพย์", "ได้", "ค่ะ" ],
+                            "translations": { "en": "You can transfer via PromptPay.", "fa": "می‌توانید از طریق پرامت‌پی انتقال دهید." }
+                        }
+                    ]
+                },
+                {
+                    "type": "paragraph",
+                    "heading": {
+                        "en": "Conversation: Opening a Bank Account",
+                        "th": "บทสนทนา: การเปิดบัญชีธนาคาร",
+                        "fa": "مکالمه: افتتاح حساب بانکی"
+                    },
+                    "sentences": [
+                        {
+                            "source": "ฉันอยากเปิดบัญชีที่ประเทศไทย ฉันต้องทำยังไง",
+                            "wordIds": [ "ฉัน", "อยาก", "เปิดบัญชี", "ที่", "ประเทศไทย", "ฉัน", "ต้อง", "ทำ", "ยังไง" ],
+                            "translations": { "en": "I want to open a bank account in Thailand. What do I need to do?", "fa": "می‌خواهم در تایلند حساب بانکی باز کنم. چکار باید بکنم؟" }
+                        },
+                        {
+                            "source": "คุณต้องมีวีซ่าทำงานหรือวีซ่านักเรียนก่อน",
+                            "wordIds": [ "คุณ", "ต้อง", "มี", "วีซ่าทำงาน", "หรือ", "วีซ่านักเรียน", "ก่อน" ],
+                            "translations": { "en": "You need to have a work visa or student visa first.", "fa": "اول باید ویزای کاری یا ویزای دانشجویی داشته باشید." }
+                        },
+                        {
+                            "source": "วีซ่านักท่องเที่ยวได้มั้ย",
+                            "wordIds": [ "วีซ่านักท่องเที่ยว", "ได้", "มั้ย" ],
+                            "translations": { "en": "Can I with a tourist visa?", "fa": "با ویزای توریستی می‌شود؟" }
+                        },
+                        {
+                            "source": "วีซ่านักท่องเที่ยวเปิดบัญชีธนาคารไม่ได้",
+                            "wordIds": [ "วีซ่านักท่องเที่ยว", "เปิดบัญชี", "ธนาคาร", "ไม่ได้" ],
+                            "translations": { "en": "You cannot open a bank account with a tourist visa.", "fa": "با ویزای توریستی نمی‌توانید حساب بانکی باز کنید." }
+                        }
+                    ]
+                },
+                {
+                    "type": "paragraph",
+                    "heading": {
+                        "en": "Conversation: Borrowing Money",
+                        "th": "บทสนทนา: การยืมเงิน",
+                        "fa": "مکالمه: قرض پول"
+                    },
+                    "sentences": [
+                        {
+                            "source": "เจนนี่ เดือนที่แล้วเธอยืมเงินฉัน 2000 บาท เมื่อไหร่จะคืน",
+                            "wordIds": [ "เจนนี่", "เดือนที่แล้ว", "เธอ", "ยืม", "เงิน", "ฉัน", "2000", "บาท", "เมื่อไหร่", "จะ", "คืน" ],
+                            "translations": { "en": "Jenny, last month you borrowed 2000 Baht from me. When will you return it?", "fa": "جنی، ماه پیش ۲۰۰۰ بات از من قرض کردی. کی پس می‌دهی؟" }
+                        },
+                        {
+                            "source": "ขอโทษนะ ฉันยังไม่มีเงิน",
+                            "wordIds": [ "ขอโทษ", "นะ", "ฉัน", "ยัง", "ไม่มี", "เงิน" ],
+                            "translations": { "en": "I'm sorry, I still don't have money.", "fa": "ببخشید، هنوز پول ندارم." }
+                        },
+                        {
+                            "source": "โกหก! ฉันเห็นเธอเพิ่งซื้อ iPhone ใหม่",
+                            "wordIds": [ "โกหก", "ฉัน", "เห็น", "เธอ", "เพิ่ง", "ซื้อ", "iPhone", "ใหม่" ],
+                            "translations": { "en": "Liar! I saw you just bought a new iPhone.", "fa": "دروغ! دیدم تازه آیفون جدید خریدی." }
+                        },
+                        {
+                            "source": "ฉันสัญญา อาทิตย์หน้าฉันจะคืนเงิน",
+                            "wordIds": [ "ฉัน", "สัญญา", "อาทิตย์หน้า", "ฉัน", "จะ", "คืน", "เงิน" ],
+                            "translations": { "en": "I promise, next week I will return the money.", "fa": "قول می‌دهم، هفته آینده پول را پس می‌دهم." }
+                        }
+                    ]
+                },
+                {
+                    "type": "paragraph",
+                    "heading": {
+                        "en": "Conversation: Credit Card Promotion",
+                        "th": "บทสนทนา: โปรโมชั่นบัตรเครดิต",
+                        "fa": "مکالمه: پیشنهاد ویژه کارت اعتباری"
+                    },
+                    "sentences": [
+                        {
+                            "source": "สวัสดีค่ะ คุณสนใจสมัครบัตรเครดิตไหมคะ",
+                            "wordIds": [ "สวัสดี", "ค่ะ", "คุณ", "สนใจ", "สมัคร", "บัตรเครดิต", "ไหม", "คะ" ],
+                            "translations": { "en": "Hello, are you interested in applying for a credit card?", "fa": "سلام، علاقه‌مند به درخواست کارت اعتباری هستید؟" }
+                        },
+                        {
+                            "source": "ไม่ค่ะ ฉันมีบัตรเครดิตสองใบแล้ว",
+                            "wordIds": [ "ไม่", "ค่ะ", "ฉัน", "มี", "บัตรเครดิต", "สอง", "ใบ", "แล้ว" ],
+                            "translations": { "en": "No, I already have two credit cards.", "fa": "نه، من دو تا کارت اعتباری دارم." }
+                        },
+                        {
+                            "source": "มีอีกก็ได้นะคะ ตอนนี้ธนาคารเรามีโปรโมชั่นดีๆ เยอะมาก",
+                            "wordIds": [ "มี", "อีก", "ก็", "ได้", "นะ", "คะ", "ตอนนี้", "ธนาคาร", "เรา", "มี", "โปรโมชั่น", "ดีๆ", "เยอะ", "มาก" ],
+                            "translations": { "en": "You can have more. Our bank has many good promotions now.", "fa": "می‌توانید بیشتر داشته باشید. الان بانک ما تخفیف‌های ویژه زیادی دارد." }
+                        },
+                        {
+                            "source": "ไม่เป็นไรค่ะ ขอบคุณค่ะ",
+                            "wordIds": [ "ไม่เป็นไร", "ค่ะ", "ขอบคุณ", "ค่ะ" ],
+                            "translations": { "en": "No thanks. Thank you.", "fa": "نه ممنون. متشکرم." }
+                        }
+                    ]
+                },
+                {
+                    "type": "paragraph",
+                    "heading": {
+                        "en": "Conversation: Exchanging Coins",
+                        "th": "บทสนทนา: ขอแลกเหรียญ",
+                        "fa": "مکالمه: تعویض سکه"
+                    },
+                    "sentences": [
+                        {
+                            "source": "ขอโทษค่ะ ขอแลกเหรียญได้ไหม",
+                            "wordIds": [ "ขอโทษ", "ค่ะ", "ขอ", "แลก", "เหรียญ", "ได้", "ไหม" ],
+                            "translations": { "en": "Excuse me, can I exchange coins?", "fa": "ببخشید، می‌توانم سکه عوض کنم؟" }
+                        },
+                        {
+                            "source": "เอาเท่าไหร่คะ",
+                            "wordIds": [ "เอา", "เท่าไหร่", "คะ" ],
+                            "translations": { "en": "How much do you want?", "fa": "چقدر می‌خواهید؟" }
+                        },
+                        {
+                            "source": "ขอเหรียญสิบ 2 เหรียญค่ะ",
+                            "wordIds": [ "ขอ", "เหรียญ", "สิบ", "2", "เหรียญ", "ค่ะ" ],
+                            "translations": { "en": "I would like 2 ten-baht coins.", "fa": "۲ تا سکه ده باتی می‌خواهم." }
+                        },
+                        {
+                            "source": "ได้ค่ะ",
+                            "wordIds": [ "ได้", "ค่ะ" ],
+                            "translations": { "en": "Sure.", "fa": "باشه." }
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

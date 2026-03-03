@@ -1,0 +1,2343 @@
+{
+    "documentId": "LS7",
+    "metadata": {
+        "version": "2.0.0",
+        "created": "2026-03-03T21:00:00Z",
+        "title": {
+            "en": "Listening and Speaking 7",
+            "th": "การฟังและการพูด 7",
+            "fa": "گوش دادن و صحبت کردن ۷"
+        },
+        "difficulty": 7,
+        "newWords": 215,
+        "sentenceCount": 145,
+        "estimatedTime": 360
+    },
+    "vocabulary": {
+        "อุบัติเหตุ": { "translations": { "en": "accident", "fa": "تصادف" } },
+        "ได้รับอุบัติเหตุ": { "translations": { "en": "to have an accident", "fa": "تصادف کردن" } },
+        "ได้รับบาดเจ็บ": { "translations": { "en": "to get injured", "fa": "مجروح شدن" } },
+        "รถชน": { "translations": { "en": "to crash / drive into", "fa": "تصادف کردن با ماشین" } },
+        "รถเฉี่ยว": { "translations": { "en": "to get clipped by a car", "fa": "گرفته شدن توسط ماشین" } },
+        "รถล้ม": { "translations": { "en": "to fall off the bike/motorcycle", "fa": "افتادن از موتور/دوچرخه" } },
+        "ลื่นล้ม": { "translations": { "en": "to slip", "fa": "سر خوردن" } },
+        "หกล้ม": { "translations": { "en": "to fall over", "fa": "افتادن" } },
+        "ตกบันได": { "translations": { "en": "to fall down the stairs", "fa": "از پله افتادن" } },
+        "น้ำร้อนลวก": { "translations": { "en": "to burn / scald (by hot water)", "fa": "سوختن با آب جوش" } },
+        "มีดบาด": { "translations": { "en": "to cut / get cut (by a knife)", "fa": "بریدن با چاقو" } },
+        "กัด": { "translations": { "en": "to bite", "fa": "گاز گرفتن" } },
+        "ขาหัก": { "translations": { "en": "broken leg", "fa": "پای شکسته" } },
+        "แขนหัก": { "translations": { "en": "broken arm", "fa": "بازوی شکسته" } },
+        "นิ้วหัก": { "translations": { "en": "broken finger", "fa": "انگشت شکسته" } },
+        "แผล": { "translations": { "en": "wound", "fa": "زخم" } },
+        "สะดุดล้ม": { "translations": { "en": "to stumble", "fa": "تلو خوردن" } },
+        "ชน": { "translations": { "en": "to crash / hit", "fa": "زدن" } },
+        "กับ": { "translations": { "en": "with", "fa": "با" } },
+        "รถเมล์": { "translations": { "en": "bus", "fa": "اتوبوس" } },
+        "รถยนต์": { "translations": { "en": "car", "fa": "ماشین" } },
+        "ต้นไม้": { "translations": { "en": "tree", "fa": "درخت" } },
+        "ถนน": { "translations": { "en": "road", "fa": "خیابان" } },
+        "สีแดง": { "translations": { "en": "red", "fa": "قرمز" } },
+        "สีเขียว": { "translations": { "en": "green", "fa": "سبز" } },
+        "กัน": { "translations": { "en": "each other", "fa": "یکدیگر" } },
+        "ประตู": { "translations": { "en": "door", "fa": "در" } },
+        "นักเรียน": { "translations": { "en": "student", "fa": "دانش‌آموز" } },
+        "ขี่จักรยาน": { "translations": { "en": "to ride a bicycle", "fa": "دوچرخه سواری کردن" } },
+        "คนแก่": { "translations": { "en": "elderly person", "fa": "پیرمرد/پیرزن" } },
+        "เสาไฟฟ้า": { "translations": { "en": "electric pole", "fa": "تیر برق" } },
+        "เด็กชาย": { "translations": { "en": "boy", "fa": "پسر" } },
+        "ปกติ": { "translations": { "en": "normally", "fa": "معمولاً" } },
+        "ไปโรงเรียน": { "translations": { "en": "to go to school", "fa": "به مدرسه رفتن" } },
+        "ไม่ไกล": { "translations": { "en": "not far", "fa": "دور نیست" } },
+        "เทอมนี้": { "translations": { "en": "this semester", "fa": "این ترم" } },
+        "ระดับประถม": { "translations": { "en": "elementary level", "fa": "دوره ابتدایی" } },
+        "อนุญาต": { "translations": { "en": "to allow", "fa": "اجازه دادن" } },
+        "เอง": { "translations": { "en": "by oneself", "fa": "خود" } },
+        "ตื่นเต้น": { "translations": { "en": "excited", "fa": "هیجان‌زده" } },
+        "วันที่สาม": { "translations": { "en": "the third day", "fa": "روز سوم" } },
+        "คู่ใจ": { "translations": { "en": "beloved / trusted", "fa": "محبوب" } },
+        "เช้านี้": { "translations": { "en": "this morning", "fa": "امروز صبح" } },
+        "โชคไม่ค่อยดี": { "translations": { "en": "not very lucky", "fa": "خیلی خوش شانس نیست" } },
+        "ฝนตกหนัก": { "translations": { "en": "heavy rain", "fa": "باران شدید" } },
+        "เตือน": { "translations": { "en": "to warn", "fa": "هشدار دادن" } },
+        "เร็วเกินไป": { "translations": { "en": "too fast", "fa": "خیلی سریع" } },
+        "อันตราย": { "translations": { "en": "dangerous", "fa": "خطرناک" } },
+        "ความมั่นใจ": { "translations": { "en": "confidence", "fa": "اعتماد به نفس" } },
+        "ประมาท": { "translations": { "en": "careless", "fa": "بی احتیاط" } },
+        "ไม่สนใจ": { "translations": { "en": "to not care / ignore", "fa": "بی توجهی کردن" } },
+        "คำเตือน": { "translations": { "en": "warning", "fa": "هشدار" } },
+        "รีบ": { "translations": { "en": "to hurry", "fa": "عجله کردن" } },
+        "กลัว": { "translations": { "en": "to be afraid", "fa": "ترسیدن" } },
+        "เข้าเรียนไม่ทัน": { "translations": { "en": "to be late for class", "fa": "دیر رسیدن به کلاس" } },
+        "ตื่นสาย": { "translations": { "en": "to wake up late", "fa": "دیر بیدار شدن" } },
+        "มัวแต่": { "translations": { "en": "to be absorbed in", "fa": "غرق شدن در" } },
+        "เล่นเกมออนไลน์": { "translations": { "en": "to play online games", "fa": "بازی آنلاین کردن" } },
+        "กิจกรรมพิเศษ": { "translations": { "en": "special activity", "fa": "فعالیت ویژه" } },
+        "ไม่ระวัง": { "translations": { "en": "careless", "fa": "بی احتیاط" } },
+        "ข้างๆ": { "translations": { "en": "next to", "fa": "کنار" } },
+        "ทาง": { "translations": { "en": "way / path", "fa": "راه" } },
+        "ขนาดใหญ่": { "translations": { "en": "large size", "fa": "اندازه بزرگ" } },
+        "พลเมืองดี": { "translations": { "en": "good citizen", "fa": "شهروند خوب" } },
+        "ช่วย": { "translations": { "en": "to help", "fa": "کمک کردن" } },
+        "ส่ง": { "translations": { "en": "to take / send", "fa": "فرستادن" } },
+        "โรงพยาบาล": { "translations": { "en": "hospital", "fa": "بیمارستان" } },
+        "ถูก": { "translations": { "en": "passive marker / cheap / correct", "fa": "نشانه مجهول" } },
+        "ห้าม": { "translations": { "en": "to forbid", "fa": "منع کردن" } },
+        "รู้สึกผิด": { "translations": { "en": "to feel guilty", "fa": "احساس گناه کردن" } },
+        "อีกแล้ว": { "translations": { "en": "again", "fa": "دوباره" } },
+        "ได้รับ": { "translations": { "en": "to receive", "fa": "دریافت کردن" } },
+        "มีใคร": { "translations": { "en": "anyone", "fa": "کسی" } },
+        "เกิดขึ้น": { "translations": { "en": "to happen", "fa": "اتفاق افتادن" } },
+        "สี่แยก": { "translations": { "en": "intersection", "fa": "چهارراه" } },
+        "เรียกรถพยาบาล": { "translations": { "en": "to call an ambulance", "fa": "آمبولانس صدا کردن" } },
+        "โทร": { "translations": { "en": "to call", "fa": "تلفن کردن" } },
+        "นิดหน่อย": { "translations": { "en": "a little bit", "fa": "کمی" } },
+        "ถลอก": { "translations": { "en": "scratched", "fa": "خراشیده" } },
+        "ไปหาหมอ": { "translations": { "en": "to go see a doctor", "fa": "به دکتر مراجعه کردن" } },
+        "ทายา": { "translations": { "en": "to apply medicine", "fa": "دارو زدن" } },
+        "ไม่ต้องเป็นห่วง": { "translations": { "en": "don't worry", "fa": "نگران نباش" } },
+        "หายเร็วๆ": { "translations": { "en": "get well soon", "fa": "زود خوب شو" } },
+        "น้องสาว": { "translations": { "en": "younger sister", "fa": "خواهر کوچکتر" } },
+        "ฉีดยา": { "translations": { "en": "to get an injection", "fa": "آمپول زدن" } },
+        "ดีขึ้น": { "translations": { "en": "to get better", "fa": "بهتر شدن" } },
+        "แต่": { "translations": { "en": "but", "fa": "اما" } },
+        "ถึงแม้ว่า": { "translations": { "en": "although", "fa": "اگرچه" } },
+        "ทั้งๆ ที่": { "translations": { "en": "despite", "fa": "با وجود اینکه" } },
+        "กว่าจะ...ก็": { "translations": { "en": "by the time", "fa": "تا وقتی که" } },
+        "ถึง...ก็": { "translations": { "en": "even though", "fa": "حتی اگر" } },
+        "ใจร้อน": { "translations": { "en": "hot-tempered", "fa": "زودرنج" } },
+        "ใจดี": { "translations": { "en": "kind", "fa": "مهربان" } },
+        "การเรียน": { "translations": { "en": "studying", "fa": "درس خواندن" } },
+        "เข้าใจ": { "translations": { "en": "to understand", "fa": "فهمیدن" } },
+        "เสมอ": { "translations": { "en": "always", "fa": "همیشه" } },
+        "ไม่มีใคร": { "translations": { "en": "no one", "fa": "هیچ کس" } },
+        "เหนื่อย": { "translations": { "en": "tired", "fa": "خسته" } },
+        "อะไรเลย": { "translations": { "en": "nothing at all", "fa": "هیچ چیز" } },
+        "เต็มโต๊ะ": { "translations": { "en": "full table", "fa": "میز پر" } },
+        "มาสาย": { "translations": { "en": "to arrive late", "fa": "دیر رسیدن" } },
+        "บอก": { "translations": { "en": "to tell", "fa": "گفتن" } },
+        "รัก": { "translations": { "en": "love", "fa": "عشق" } },
+        "ไม่มีเงิน": { "translations": { "en": "no money", "fa": "بی پول" } },
+        "รอ": { "translations": { "en": "to wait", "fa": "صبر کردن" } },
+        "ลูก": { "translations": { "en": "child", "fa": "بچه" } },
+        "ต้อง": { "translations": { "en": "must", "fa": "باید" } },
+        "หรือ": { "translations": { "en": "or", "fa": "یا" } },
+        "ไม่...ก็...": { "translations": { "en": "either... or...", "fa": "یا... یا..." } },
+        "ไม่อย่างนั้น": { "translations": { "en": "otherwise", "fa": "وگرنه" } },
+        "วันพรุ่งนี้": { "translations": { "en": "tomorrow", "fa": "فردا" } },
+        "พักผ่อน": { "translations": { "en": "to rest", "fa": "استراحت کردن" } },
+        "อาหารเช้า": { "translations": { "en": "breakfast", "fa": "صبحانه" } },
+        "แบบอเมริกัน": { "translations": { "en": "American style", "fa": "سبک آمریکایی" } },
+        "แบบอังกฤษ": { "translations": { "en": "English style", "fa": "سبک انگلیسی" } },
+        "คืนนี้": { "translations": { "en": "tonight", "fa": "امشب" } },
+        "ดูหนัง": { "translations": { "en": "to watch a movie", "fa": "فیلم دیدن" } },
+        "ออกไป": { "translations": { "en": "to go out", "fa": "بیرون رفتن" } },
+        "กินเบียร์": { "translations": { "en": "to drink beer", "fa": "آبجو خوردن" } },
+        "วันหยุดยาว": { "translations": { "en": "long holiday", "fa": "تعطیلات طولانی" } },
+        "เกาะสมุย": { "translations": { "en": "Koh Samui", "fa": "کوه سامویی" } },
+        "เกาะช้าง": { "translations": { "en": "Koh Chang", "fa": "کوه چانگ" } },
+        "ของขวัญ": { "translations": { "en": "gift", "fa": "هدیه" } },
+        "วันวาเลนไทน์": { "translations": { "en": "Valentine's Day", "fa": "روز ولنتاین" } },
+        "เครื่องประดับ": { "translations": { "en": "jewelry", "fa": "زیورآلات" } },
+        "ดอกไม้": { "translations": { "en": "flower", "fa": "گل" } },
+        "วัดอุณหภูมิ": { "translations": { "en": "to take temperature", "fa": "دمای بدن را گرفتن" } },
+        "เข้าห้าง": { "translations": { "en": "to enter the mall", "fa": "وارد شدن به فروشگاه" } },
+        "แต่งตัว": { "translations": { "en": "to dress", "fa": "لباس پوشیدن" } },
+        "เหมาะสม": { "translations": { "en": "appropriate", "fa": "مناسب" } },
+        "เข้าไป": { "translations": { "en": "to go in", "fa": "وارد شدن" } },
+        "วัด": { "translations": { "en": "temple", "fa": "معبد" } },
+        "ประชุม": { "translations": { "en": "meeting", "fa": "جلسه" } },
+        "ตั้งใจ": { "translations": { "en": "to intend / to be serious", "fa": "قصد داشتن / جدی بودن" } },
+        "ไล่ออก": { "translations": { "en": "to fire / expel", "fa": "اخراج کردن" } },
+        "ก็เลย": { "translations": { "en": "so", "fa": "بنابراین" } },
+        "จึง": { "translations": { "en": "so / therefore", "fa": "بنابراین" } },
+        "ดังนั้น": { "translations": { "en": "therefore", "fa": "بنابراین" } },
+        "เพราะฉะนั้น": { "translations": { "en": "therefore", "fa": "بنابراین" } },
+        "เนื่องจาก": { "translations": { "en": "due to", "fa": "به دلیل" } },
+        "ทำงานหนัก": { "translations": { "en": "to work hard", "fa": "سخت کار کردن" } },
+        "เลื่อนตำแหน่ง": { "translations": { "en": "to get promoted", "fa": "ترفیع گرفتن" } },
+        "นอนไม่หลับ": { "translations": { "en": "can't sleep", "fa": "نمی‌تواند بخوابد" } },
+        "ทำความสะอาด": { "translations": { "en": "to clean", "fa": "تمیز کردن" } },
+        "จ้าง": { "translations": { "en": "to hire", "fa": "استخدام کردن" } },
+        "แม่บ้าน": { "translations": { "en": "housekeeper", "fa": "خانه‌دار" } },
+        "เมื่อเช้านี้": { "translations": { "en": "this morning", "fa": "امروز صبح" } },
+        "หัวหน้า": { "translations": { "en": "boss", "fa": "رئیس" } },
+        "บริษัท": { "translations": { "en": "company", "fa": "شرکت" } },
+        "ตั้งใจเรียน": { "translations": { "en": "to study diligently", "fa": "با دقت درس خواندن" } },
+        "สอบผ่าน": { "translations": { "en": "to pass an exam", "fa": "قبول شدن در امتحان" } },
+        "ทุกครั้ง": { "translations": { "en": "every time", "fa": "هر بار" } },
+        "มีน้ำใจ": { "translations": { "en": "considerate", "fa": "با محبت" } },
+        "ออกกำลังกาย": { "translations": { "en": "to exercise", "fa": "ورزش کردن" } },
+        "มีประโยชน์": { "translations": { "en": "beneficial", "fa": "مفید" } },
+        "สุขภาพแข็งแรง": { "translations": { "en": "healthy", "fa": "سالم" } },
+        "ซ้อม": { "translations": { "en": "to practice", "fa": "تمرین کردن" } },
+        "เปียโน": { "translations": { "en": "piano", "fa": "پیانو" } },
+        "ชนะ": { "translations": { "en": "to win", "fa": "بردن" } },
+        "การแข่งขัน": { "translations": { "en": "competition", "fa": "مسابقه" } },
+        "สัญญา": { "translations": { "en": "to promise", "fa": "قول دادن" } },
+        "โกหก": { "translations": { "en": "to lie", "fa": "دروغ گفتن" } },
+        "ไม่ควร": { "translations": { "en": "should not", "fa": "نباید" } },
+        "เตรียมตัว": { "translations": { "en": "to prepare", "fa": "آماده شدن" } },
+        "พกร่ม": { "translations": { "en": "to carry an umbrella", "fa": "چتر همراه داشتن" } },
+        "สถานการณ์": { "translations": { "en": "situation", "fa": "وضعیت" } },
+        "โควิด": { "translations": { "en": "Covid", "fa": "کووید" } },
+        "ตกงาน": { "translations": { "en": "to lose a job", "fa": "بیکار شدن" } },
+        "จำนวน": { "translations": { "en": "number / amount", "fa": "تعداد" } },
+        "พนักงาน": { "translations": { "en": "staff / employee", "fa": "کارمند" } },
+        "ไม่พอ": { "translations": { "en": "not enough", "fa": "کافی نیست" } },
+        "บริการ": { "translations": { "en": "service", "fa": "خدمات" } },
+        "ล่าช้า": { "translations": { "en": "slow / delayed", "fa": "کند / تاخیر" } },
+        "ทำใจ": { "translations": { "en": "to accept", "fa": "قبول کردن" } },
+        "การระบาด": { "translations": { "en": "outbreak", "fa": "شیوع" } },
+        "สวม": { "translations": { "en": "to wear", "fa": "پوشیدن" } },
+        "หน้ากากอนามัย": { "translations": { "en": "face mask", "fa": "ماسک صورت" } },
+        "รถไฟฟ้า": { "translations": { "en": "electric train", "fa": "قطار برقی" } },
+        "ค่า": { "translations": { "en": "fee / cost", "fa": "هزینه" } },
+        "ค่าน้ำ": { "translations": { "en": "water bill", "fa": "قبض آب" } },
+        "ค่าไฟ": { "translations": { "en": "electricity bill", "fa": "قبض برق" } },
+        "ค่าเช่า": { "translations": { "en": "rental fee", "fa": "اجاره بها" } },
+        "ค่าเข้า": { "translations": { "en": "entrance fee", "fa": "هزینه ورودی" } },
+        "ค่ารถ": { "translations": { "en": "transportation cost", "fa": "هزینه حمل و نقل" } },
+        "ค่าครองชีพ": { "translations": { "en": "cost of living", "fa": "هزینه زندگی" } },
+        "ค่าเทอม": { "translations": { "en": "tuition fee", "fa": "شهریه" } },
+        "ชีวิต": { "translations": { "en": "life", "fa": "زندگی" } },
+        "ของกินของใช้": { "translations": { "en": "groceries", "fa": "مواد غذایی" } },
+        "สตรีทฟู้ด": { "translations": { "en": "street food", "fa": "غذای خیابانی" } },
+        "ย้ายไป/มา": { "translations": { "en": "moving in/out", "fa": "نقل مکان کردن" } },
+        "เพื่อนบ้าน": { "translations": { "en": "neighbors", "fa": "همسایه‌ها" } },
+        "อื่นๆ": { "translations": { "en": "others", "fa": "دیگران" } },
+        "ไม่......เลย": { "translations": { "en": "not at all", "fa": "اصلاً نه" } },
+        "ของใช้": { "translations": { "en": "household items", "fa": "وسایل خانه" } },
+        "ตลาดสด": { "translations": { "en": "fresh market", "fa": "بازار تازه" } },
+        "ส่วนใหญ่": { "translations": { "en": "most of", "fa": "بیشتر" } },
+        "คนต่างชาติ": { "translations": { "en": "foreigners", "fa": "خارجی‌ها" } },
+        "ไม่ค่อย": { "translations": { "en": "not quite / not really", "fa": "نه خیلی" } },
+        "เพิ่มขึ้น": { "translations": { "en": "to increase", "fa": "افزایش یافتن" } },
+        "หลายเท่า": { "translations": { "en": "many times", "fa": "چندین برابر" } },
+        "เทศกาล": { "translations": { "en": "festival", "fa": "جشنواره" } },
+        "เปิดแอร์": { "translations": { "en": "to turn on AC", "fa": "کولر روشن کردن" } },
+        "ทั้งวันทั้งคืน": { "translations": { "en": "all day and night", "fa": "تمام روز و شب" } },
+        "นักท่องเที่ยว": { "translations": { "en": "tourist", "fa": "توریست" } },
+        "สนใจ": { "translations": { "en": "interested", "fa": "علاقه‌مند" } },
+        "เดินทาง": { "translations": { "en": "to travel", "fa": "سفر کردن" } },
+        "จำนวนมาก": { "translations": { "en": "large number", "fa": "تعداد زیاد" } },
+        "เปรียบเทียบ": { "translations": { "en": "to compare", "fa": "مقایسه کردن" } },
+        "ห้าง": { "translations": { "en": "department store", "fa": "فروشگاه بزرگ" } },
+        "ถูกกว่า": { "translations": { "en": "cheaper", "fa": "ارزان‌تر" } },
+        "ความอดทน": { "translations": { "en": "patience", "fa": "صبر" } },
+        "คนเยอะ": { "translations": { "en": "crowded", "fa": "شلوغ" } },
+        "ใช้ชีวิต": { "translations": { "en": "to live life", "fa": "زندگی کردن" } },
+        "ต้องลอง": { "translations": { "en": "must try", "fa": "باید امتحان کرد" } },
+        "ข้าวเหนียว": { "translations": { "en": "sticky rice", "fa": "برنج چسبناک" } },
+        "ส้มตำ": { "translations": { "en": "papaya salad", "fa": "سالاد پاپایا" } },
+        "ไก่ย่าง": { "translations": { "en": "grilled chicken", "fa": "مرغ کبابی" } },
+        "ผลไม้": { "translations": { "en": "fruit", "fa": "میوه" } },
+        "รถเข็น": { "translations": { "en": "cart", "fa": "گاری" } },
+        "ปลอดภัย": { "translations": { "en": "safe", "fa": "ایمن" } },
+        "สอดรู้สอดเห็น": { "translations": { "en": "nosy", "fa": "فضول" } },
+        "ไม่กล้า": { "translations": { "en": "dare not", "fa": "جرات نکردن" } },
+        "อาหารข้างทาง": { "translations": { "en": "street food", "fa": "غذای خیابانی" } },
+        "ท้องเสีย": { "translations": { "en": "diarrhea", "fa": "اسهال" } },
+        "สงสัย": { "translations": { "en": "to wonder", "fa": "تعجب کردن" } },
+        "เข้าใจผิด": { "translations": { "en": "to misunderstand", "fa": "سوء تفاهم کردن" } },
+        "จำคนผิด": { "translations": { "en": "to mistake someone", "fa": "کسی را اشتباه گرفتن" } },
+        "พูดผิด": { "translations": { "en": "to misspeak", "fa": "اشتباه گفتن" } },
+        "โทรผิด": { "translations": { "en": "to dial wrong", "fa": "شماره اشتباه گرفتن" } },
+        "จำเวลาผิด": { "translations": { "en": "to mistake the time", "fa": "زمان را اشتباه گرفتن" } },
+        "ฟังผิด": { "translations": { "en": "to mishear", "fa": "اشتباه شنیدن" } },
+        "งานด่วน": { "translations": { "en": "urgent work", "fa": "کار فوری" } },
+        "วางแผน": { "translations": { "en": "to plan", "fa": "برنامه ریزی کردن" } },
+        "น่าเบื่อ": { "translations": { "en": "boring", "fa": "کسالت‌آور" } },
+        "ชีวิตแต่งงาน": { "translations": { "en": "married life", "fa": "زندگی زناشویی" } },
+        "พอๆกับ": { "translations": { "en": "as same as", "fa": "به اندازه" } },
+        "ไทม์โซน": { "translations": { "en": "time zone", "fa": "منطقه زمانی" } },
+        "มักจะ": { "translations": { "en": "usually", "fa": "معمولاً" } },
+        "อุตส่าห์": { "translations": { "en": "to make an effort to", "fa": "تلاش کردن برای" } },
+        "ชีวิตประจำวัน": { "translations": { "en": "daily life", "fa": "زندگی روزمره" } },
+        "การดำเนินชีวิต": { "translations": { "en": "living", "fa": "زندگی کردن" } },
+        "ดูไม่ออก": { "translations": { "en": "can't tell / unclear", "fa": "نمی‌توان فهمید" } },
+        "พูดไม่ออก": { "translations": { "en": "speechless", "fa": "بی‌زبان" } },
+        "ฟังไม่ออก": { "translations": { "en": "don't understand / unclear", "fa": "نمی‌فهمم" } },
+        "คิดไม่ออก": { "translations": { "en": "have no idea", "fa": "ایده ندارم" } },
+        "เพื่อที่จะ": { "translations": { "en": "in order to", "fa": "برای اینکه" } },
+        "แปลกใหม่": { "translations": { "en": "something new", "fa": "چیز جدید" } },
+        "ออนไลน์": { "translations": { "en": "online", "fa": "آنلاین" } },
+        "เรื่อยๆ": { "translations": { "en": "continuously", "fa": "به طور مداوم" } },
+        "ฟรีแลนซ์": { "translations": { "en": "freelance", "fa": "آزادکار" } },
+        "อาชีพอิสระ": { "translations": { "en": "freelance / self-employed", "fa": "آزادکار" } },
+        "ฟังดู": { "translations": { "en": "sounds like", "fa": "به نظر می‌رسد" } },
+        "น่าสนใจ": { "translations": { "en": "interesting", "fa": "جالب" } },
+        "จริงๆแล้ว": { "translations": { "en": "actually", "fa": "در واقع" } },
+        "พนักงานออฟฟิศ": { "translations": { "en": "office worker", "fa": "کارمند اداری" } },
+        "นอกจาก": { "translations": { "en": "besides", "fa": "علاوه بر" } },
+        "บางครั้ง": { "translations": { "en": "sometimes", "fa": "بعضی وقت‌ها" } },
+        "ร้านกาแฟ": { "translations": { "en": "coffee shop", "fa": "کافی‌شاپ" } },
+        "ไม่แน่นอน": { "translations": { "en": "uncertain", "fa": "نامشخص" } },
+        "รับไว้": { "translations": { "en": "to take (a job)", "fa": "قبول کردن (کار)" } },
+        "ไม่แน่ใจ": { "translations": { "en": "not sure", "fa": "مطمئن نیستم" } },
+        "ลูกค้า": { "translations": { "en": "customer", "fa": "مشتری" } },
+        "ต่างประเทศ": { "translations": { "en": "abroad", "fa": "خارج از کشور" } },
+        "ดีสองดีสาม": { "translations": { "en": "2-3 AM", "fa": "۲-۳ صبح" } },
+        "ทะเลาะกัน": { "translations": { "en": "to argue", "fa": "جر و بحث کردن" } },
+        "ไม่เหมือนกัน": { "translations": { "en": "not the same", "fa": "یکسان نیست" } },
+        "เอายังไงกับ": { "translations": { "en": "what to do with", "fa": "چه کار با" } },
+        "น่าเกลียด": { "translations": { "en": "ugly", "fa": "زشت" } },
+        "สวย": { "translations": { "en": "beautiful", "fa": "زیبا" } },
+        "ร้อน": { "translations": { "en": "hot", "fa": "گرم" } },
+        "เย็น": { "translations": { "en": "cold / cool", "fa": "سرد / خنک" } },
+        "ต่ำ": { "translations": { "en": "low", "fa": "پایین" } },
+        "สูง": { "translations": { "en": "high / tall", "fa": "بلند" } },
+        "มีชีวิต": { "translations": { "en": "alive", "fa": "زنده" } },
+        "ตาย": { "translations": { "en": "dead", "fa": "مرده" } },
+        "ใหญ่": { "translations": { "en": "big", "fa": "بزرگ" } },
+        "เล็ก": { "translations": { "en": "small", "fa": "کوچک" } },
+        "อุ่น": { "translations": { "en": "warm", "fa": "گرم" } },
+        "หนาว": { "translations": { "en": "cold", "fa": "سرد" } },
+        "น่าเบื่อ": { "translations": { "en": "boring", "fa": "کسالت‌آور" } },
+        "น่าสนใจ": { "translations": { "en": "interesting", "fa": "جالب" } },
+        "ข้างล่าง": { "translations": { "en": "below", "fa": "پایین" } },
+        "ข้างบน": { "translations": { "en": "above", "fa": "بالا" } },
+        "เลว / แย่": { "translations": { "en": "bad", "fa": "بد" } },
+        "ดี": { "translations": { "en": "good", "fa": "خوب" } },
+        "เบา": { "translations": { "en": "light", "fa": "سبک" } },
+        "หนัก": { "translations": { "en": "heavy", "fa": "سنگین" } },
+        "ว่างเปล่า": { "translations": { "en": "empty", "fa": "خالی" } },
+        "เต็ม": { "translations": { "en": "full", "fa": "پر" } },
+        "ก่อน": { "translations": { "en": "before", "fa": "قبل" } },
+        "หลัง": { "translations": { "en": "after", "fa": "بعد" } },
+        "เศร้า / เสียใจ": { "translations": { "en": "sad", "fa": "غمگین" } },
+        "มีความสุข": { "translations": { "en": "happy", "fa": "خوشحال" } },
+        "ดีที่สุด": { "translations": { "en": "best", "fa": "بهترین" } },
+        "แย่ที่สุด": { "translations": { "en": "worst", "fa": "بدترین" } },
+        "สะอาด": { "translations": { "en": "clean", "fa": "تمیز" } },
+        "สกปรก": { "translations": { "en": "dirty", "fa": "کثیف" } },
+        "มีด": { "translations": { "en": "dark", "fa": "تاریک" } },
+        "สว่าง": { "translations": { "en": "bright", "fa": "روشن" } },
+        "ที่นั่น": { "translations": { "en": "there", "fa": "آنجا" } },
+        "ที่นี่": { "translations": { "en": "here", "fa": "اینجا" } },
+        "ง่าย": { "translations": { "en": "easy", "fa": "آسان" } },
+        "ยาก": { "translations": { "en": "difficult", "fa": "سخت" } },
+        "สุขภาพดี": { "translations": { "en": "healthy", "fa": "سالم" } },
+        "ป่วย": { "translations": { "en": "sick", "fa": "بیمار" } },
+        "ผอม": { "translations": { "en": "thin", "fa": "لاغر" } },
+        "อ้วน": { "translations": { "en": "fat", "fa": "چاق" } },
+        "ตื่นสาย": { "translations": { "en": "wake up late", "fa": "دیر بیدار شدن" } },
+        "ตื่นเช้า": { "translations": { "en": "wake up early", "fa": "زود بیدار شدن" } },
+        "ฉลาด": { "translations": { "en": "clever", "fa": "باهوش" } },
+        "โง่": { "translations": { "en": "stupid", "fa": "احمق" } },
+        "ช้า": { "translations": { "en": "slow", "fa": "آرام" } },
+        "เร็ว": { "translations": { "en": "fast", "fa": "سریع" } },
+        "ใกล้": { "translations": { "en": "near", "fa": "نزدیک" } },
+        "ไกล": { "translations": { "en": "far", "fa": "دور" } },
+        "ลง": { "translations": { "en": "down", "fa": "پایین" } },
+        "ขึ้น": { "translations": { "en": "up", "fa": "بالا" } },
+        "อ่อน": { "translations": { "en": "soft / weak", "fa": "نرم / ضعیف" } },
+        "แข็ง": { "translations": { "en": "hard / strong", "fa": "سخت / قوی" } },
+        "ใหม่": { "translations": { "en": "new", "fa": "جدید" } },
+        "เก่า": { "translations": { "en": "old", "fa": "قدیمی" } },
+        "บ่อย": { "translations": { "en": "often", "fa": "اغلب" } },
+        "นานๆครั้ง": { "translations": { "en": "rarely", "fa": "به ندرت" } },
+        "ทิศใต้": { "translations": { "en": "south", "fa": "جنوب" } },
+        "ทิศเหนือ": { "translations": { "en": "north", "fa": "شمال" } },
+        "ใน": { "translations": { "en": "in", "fa": "داخل" } },
+        "นอก": { "translations": { "en": "out", "fa": "بیرون" } },
+        "ยาว": { "translations": { "en": "long", "fa": "بلند" } },
+        "สั้น": { "translations": { "en": "short", "fa": "کوتاه" } },
+        "หนา": { "translations": { "en": "thick", "fa": "ضخیم" } },
+        "บาง": { "translations": { "en": "thin", "fa": "نازک" } },
+        "เสียงดัง": { "translations": { "en": "loud", "fa": "بلند" } },
+        "เงียบ": { "translations": { "en": "quiet", "fa": "آرام" } },
+        "รวย": { "translations": { "en": "rich", "fa": "پولدار" } },
+        "จน": { "translations": { "en": "poor", "fa": "فقیر" } },
+        "แข็งแรง": { "translations": { "en": "strong", "fa": "قوی" } },
+        "อ่อนแอ": { "translations": { "en": "weak", "fa": "ضعیف" } },
+        "กว้าง": { "translations": { "en": "wide", "fa": "عریض" } },
+        "แคบ": { "translations": { "en": "narrow", "fa": "باریک" } },
+        "รัก": { "translations": { "en": "love", "fa": "عشق" } },
+        "เกลียด": { "translations": { "en": "hate", "fa": "نفرت" } },
+        "ซ้าย": { "translations": { "en": "left", "fa": "چپ" } },
+        "ขวา": { "translations": { "en": "right", "fa": "راست" } },
+        "ชนะ": { "translations": { "en": "win", "fa": "بردن" } },
+        "แพ้": { "translations": { "en": "lose", "fa": "باختن" } },
+        "มีประโยชน์": { "translations": { "en": "useful", "fa": "مفید" } },
+        "ไม่มีประโยชน์": { "translations": { "en": "useless", "fa": "بی فایده" } },
+        "ผลัก": { "translations": { "en": "to push", "fa": "فشار دادن" } },
+        "ดึง": { "translations": { "en": "to pull", "fa": "کشیدن" } },
+        "โสด": { "translations": { "en": "single", "fa": "مجرد" } },
+        "แต่งงานแล้ว": { "translations": { "en": "married", "fa": "متاهل" } },
+        "ปลอดภัย": { "translations": { "en": "safe", "fa": "ایمن" } },
+        "อันตราย": { "translations": { "en": "dangerous", "fa": "خطرناک" } },
+        "ผิด": { "translations": { "en": "wrong", "fa": "اشتباه" } },
+        "ถูก": { "translations": { "en": "correct", "fa": "درست" } },
+        "แก่ / อายุมาก": { "translations": { "en": "old (age)", "fa": "پیر" } },
+        "หนุ่ม / สาว": { "translations": { "en": "young", "fa": "جوان" } },
+        "สมัยเก่า": { "translations": { "en": "old times", "fa": "قدیم" } },
+        "สมัยใหม่": { "translations": { "en": "modern times", "fa": "جدید" } },
+        "ถูกใจ": { "translations": { "en": "to like", "fa": "پسندیدن" } },
+        "ใจร้าย": { "translations": { "en": "mean", "fa": "بدجنس" } },
+        "ดี": { "translations": { "en": "good", "fa": "خوب" } },
+        "ว่าง": { "translations": { "en": "free / available", "fa": "آزاد" } },
+        "ยุ่ง": { "translations": { "en": "busy", "fa": "مشغول" } },
+        "คิดถึง": { "translations": { "en": "to miss", "fa": "دلتنگ بودن" } },
+        "ความคิดเห็น": { "translations": { "en": "opinion", "fa": "نظر" } },
+        "นาที": { "translations": { "en": "minute", "fa": "دقیقه" } },
+        "ชั่วโมง": { "translations": { "en": "hour", "fa": "ساعت" } },
+        "วินาที": { "translations": { "en": "second", "fa": "ثانیه" } },
+        "ยกเว้น": { "translations": { "en": "except", "fa": "به جز" } },
+        "ปวด": { "translations": { "en": "to ache", "fa": "درد داشتن" } },
+        "เกิด": { "translations": { "en": "to be born", "fa": "متولد شدن" } },
+        "วันเกิด": { "translations": { "en": "birthday", "fa": "تولد" } },
+        "ย้าย": { "translations": { "en": "to move", "fa": "نقل مکان کردن" } },
+        "หมอนัด": { "translations": { "en": "doctor's appointment", "fa": "وقت دکتر" } },
+        "อาหารเป็นพิษ": { "translations": { "en": "food poisoning", "fa": "مسمومیت غذایی" } },
+        "ตลาดนัด": { "translations": { "en": "flea market", "fa": "بازار هفتگی" } },
+        "ตลาดมืด": { "translations": { "en": "black market", "fa": "بازار سیاه" } },
+        "ป่าช้า": { "translations": { "en": "cemetery", "fa": "قبرستان" } },
+        "รถติด": { "translations": { "en": "traffic jam", "fa": "ترافیک" } },
+        "ติดฝน": { "translations": { "en": "rainy", "fa": "بارانی" } },
+        "วันเว้นวัน": { "translations": { "en": "every other day", "fa": "یک روز در میان" } },
+        "วันธรรมดา": { "translations": { "en": "weekday", "fa": "روزهای هفته" } },
+        "เกษียณ": { "translations": { "en": "retired", "fa": "بازنشسته" } },
+        "ตัวเอง": { "translations": { "en": "oneself", "fa": "خود" } },
+        "วิบ": { "translations": { "en": "to rush", "fa": "عجله کردن" } },
+        "ฤดู": { "translations": { "en": "season", "fa": "فصل" } },
+        "กลางวัน": { "translations": { "en": "daytime", "fa": "روز" } },
+        "กลางคืน": { "translations": { "en": "nighttime", "fa": "شب" } },
+        "เมื่อคืนนี้": { "translations": { "en": "last night", "fa": "دیشب" } },
+        "จนกว่า": { "translations": { "en": "until", "fa": "تا زمانی که" } },
+        "ถึง": { "translations": { "en": "to / until", "fa": "به / تا" } },
+        "เสร็จ": { "translations": { "en": "finished", "fa": "تمام شده" } },
+        "จบ": { "translations": { "en": "to finish", "fa": "تمام کردن" } },
+        "เลิก": { "translations": { "en": "to quit / end", "fa": "تمام کردن" } },
+        "อยากให้": { "translations": { "en": "to want (something to happen)", "fa": "خواستن" } },
+        "ครอบครัว": { "translations": { "en": "family", "fa": "خانواده" } },
+        "คนรัก": { "translations": { "en": "lover", "fa": "معشوق" } },
+        "เพื่อนร่วมงาน": { "translations": { "en": "coworker", "fa": "همکار" } },
+        "ทำ...แตก": { "translations": { "en": "to break (glass)", "fa": "شکستن" } },
+        "ทำ...เสีย": { "translations": { "en": "to ruin", "fa": "خراب کردن" } },
+        "ทำ...หัก": { "translations": { "en": "to break", "fa": "شکستن" } },
+        "ไหว": { "translations": { "en": "to be able to", "fa": "توانستن" } },
+        "ติด": { "translations": { "en": "addicted", "fa": "معتاد" } },
+        "มือถือ": { "translations": { "en": "mobile phone", "fa": "تلفن همراه" } },
+        "ไม่ใส่ใจ": { "translations": { "en": "to not care", "fa": "بی توجهی کردن" } },
+        "ฟอง": { "translations": { "en": "classifier for eggs", "fa": "شمارشگر تخم مرغ" } },
+        "สงคราม": { "translations": { "en": "war", "fa": "جنگ" } },
+        "ประสบการณ์": { "translations": { "en": "experience", "fa": "تجربه" } },
+        "ลอง": { "translations": { "en": "to try", "fa": "امتحان کردن" } },
+        "มีนัด": { "translations": { "en": "to have an appointment", "fa": "قرار داشتن" } },
+        "โกรธ": { "translations": { "en": "angry", "fa": "عصبانی" } }
+    },
+    "activity": {
+        "words": true,
+        "sentences": true
+    },
+    "sections": [
+        {
+            "sectionId": "ls7-lesson-1",
+            "heading": {
+                "en": "Lesson 1: Accident and Injuries",
+                "th": "บทที่ 1: อุบัติเหตุและการบาดเจ็บ",
+                "fa": "درس ۱: تصادف و جراحات"
+            },
+            "activity": {
+                "words": true,
+                "sentences": true
+            },
+            "content": [
+                {
+                    "type": "words",
+                    "heading": {
+                        "en": "Accident Vocabulary",
+                        "th": "คำศัพท์อุบัติเหตุ",
+                        "fa": "واژگان تصادف"
+                    },
+                    "wordIds": [ "อุบัติเหตุ", "ได้รับอุบัติเหตุ", "ได้รับบาดเจ็บ", "รถชน", "รถเฉี่ยว", "รถล้ม", "ลื่นล้ม", "หกล้ม", "ตกบันได", "น้ำร้อนลวก", "มีดบาด", "กัด", "ขาหัก", "แขนหัก", "นิ้วหัก", "แผล", "สะดุดล้ม" ]
+                },
+                {
+                    "type": "paragraph",
+                    "heading": {
+                        "en": "Structure: Describing Accidents with ชน",
+                        "th": "โครงสร้าง: การบรรยายอุบัติเหตุด้วย ชน",
+                        "fa": "ساختار: توصیف تصادفات با ชน"
+                    },
+                    "grammar": {
+                        "pattern": "A ชนกับ B / A กับ B ชนกัน",
+                        "note": {
+                            "en": "Use ชน to describe collisions. Use ชนกับ for one thing hitting another, and ชนกัน for two things hitting each other.",
+                            "th": "ใช้ ชน เพื่อบรรยายการชน ใช้ ชนกับ สำหรับสิ่งหนึ่งชนอีกสิ่งหนึ่ง และ ชนกัน สำหรับสองสิ่งชนกัน",
+                            "fa": "از ชน برای توصیف برخورد استفاده کنید. از ชนกับ برای برخورد یک چیز با چیز دیگر، و از ชนกัน برای دو چیز که به هم برخورد می‌کنند استفاده کنید."
+                        }
+                    }
+                },
+                {
+                    "type": "paragraph",
+                    "heading": {
+                        "en": "Example Sentences with ชน",
+                        "th": "ประโยคตัวอย่างด้วย ชน",
+                        "fa": "جملات مثال با ชน"
+                    },
+                    "sentences": [
+                        {
+                            "source": "รถเมล์ชนกับรถยนต์",
+                            "wordIds": [ "รถเมล์", "ชน", "กับ", "รถยนต์" ],
+                            "translations": { "en": "The bus collided with a car.", "fa": "اتوبوس با ماشین تصادف کرد." }
+                        },
+                        {
+                            "source": "รถยนต์ชนกับต้นไม้",
+                            "wordIds": [ "รถยนต์", "ชน", "กับ", "ต้นไม้" ],
+                            "translations": { "en": "The car crashed into the tree.", "fa": "ماشین به درخت برخورد کرد." }
+                        },
+                        {
+                            "source": "ฉันชนกับคนอื่นบนถนน",
+                            "wordIds": [ "ฉัน", "ชน", "กับ", "คนอื่น", "บน", "ถนน" ],
+                            "translations": { "en": "I collided with another person on the street.", "fa": "من با شخص دیگری در خیابان برخورد کردم." }
+                        },
+                        {
+                            "source": "รถยนต์สีแดงและสีเขียวชนกัน",
+                            "wordIds": [ "รถยนต์", "สีแดง", "و", "สีเขียว", "ชน", "กัน" ],
+                            "translations": { "en": "The red car and green car crashed into one another.", "fa": "ماشین قرمز و سبز به یکدیگر برخورد کردند." }
+                        },
+                        {
+                            "source": "ฉันเดินชนประตู",
+                            "wordIds": [ "ฉัน", "เดิน", "ชน", "ประตู" ],
+                            "translations": { "en": "I bumped into the door.", "fa": "به در خوردم." }
+                        },
+                        {
+                            "source": "นักเรียนขี่จักรยานชนคนแก่",
+                            "wordIds": [ "นักเรียน", "ขี่จักรยาน", "ชน", "คนแก่" ],
+                            "translations": { "en": "The student bumped into the elderly with his bicycle.", "fa": "دانش‌آموز با دوچرخه به پیرمرد زد." }
+                        },
+                        {
+                            "source": "เขาขับรถชนเสาไฟฟ้า",
+                            "wordIds": [ "เขา", "ขับรถ", "ชน", "เสาไฟฟ้า" ],
+                            "translations": { "en": "He crashed his car into an electric pole.", "fa": "او با ماشین به تیر برق زد." }
+                        }
+                    ]
+                },
+                {
+                    "type": "paragraph",
+                    "heading": {
+                        "en": "Story: Tony's Accident",
+                        "th": "เรื่อง: อุบัติเหตุของโทนี่",
+                        "fa": "داستان: تصادف تونی"
+                    },
+                    "sentences": [
+                        {
+                            "source": "ปกติโทนี่จะขี่จักรยานไปโรงเรียนเพราะโรงเรียนของเค้าอยู่ไม่ไกลจากบ้านมาก",
+                            "wordIds": [ "ปกติ", "โทนี่", "จะ", "ขี่จักรยาน", "ไปโรงเรียน", "เพราะ", "โรงเรียน", "ของ", "เค้า", "อยู่", "ไม่ไกล", "จาก", "บ้าน", "มาก" ],
+                            "translations": { "en": "Normally Tony rides his bike to school because his school is not far from home.", "fa": "معمولاً تونی با دوچرخه به مدرسه می‌رود چون مدرسه‌اش خیلی از خانه دور نیست." }
+                        },
+                        {
+                            "source": "เทอมนี้เขาเรียนระดับประถมแล้ว แม่อนุญาตให้เขาไปโรงเรียนเองได้",
+                            "wordIds": [ "เทอมนี้", "เขา", "เรียน", "ระดับประถม", "แล้ว", "แม่", "อนุญาต", "ให้", "เขา", "ไปโรงเรียน", "เอง", "ได้" ],
+                            "translations": { "en": "This semester he's in elementary school. His mother allows him to go to school by himself.", "fa": "این ترم او در دوره ابتدایی است. مادرش به او اجازه می‌دهد تنها به مدرسه برود." }
+                        },
+                        {
+                            "source": "โทนี่ตื่นเต้นที่จะได้ไปโรงเรียนเอง",
+                            "wordIds": [ "โทนี่", "ตื่นเต้น", "ที่จะ", "ได้", "ไปโรงเรียน", "เอง" ],
+                            "translations": { "en": "Tony is excited to go to school by himself.", "fa": "تونی هیجان‌زده است که تنها به مدرسه برود." }
+                        },
+                        {
+                            "source": "วันนี้เป็นวันที่สามที่เขาจะขี่จักรยานสีแดงคู่ใจ",
+                            "wordIds": [ "วันนี้", "เป็น", "วันที่สาม", "ที่", "เขา", "จะ", "ขี่จักรยาน", "สีแดง", "คู่ใจ" ],
+                            "translations": { "en": "Today is the third day he will ride his beloved red bicycle.", "fa": "امروز سومین روزی است که با دوچرخه قرمز محبوبش می‌رود." }
+                        },
+                        {
+                            "source": "แต่เช้านี้โชคไม่ค่อยดีเพราะว่าฝนตกหนักทำให้ถนนลื่น",
+                            "wordIds": [ "แต่", "เช้านี้", "โชคไม่ค่อยดี", "เพราะว่า", "ฝนตกหนัก", "ทำให้", "ถนน", "ลื่น" ],
+                            "translations": { "en": "But this morning he wasn't very lucky because it rained heavily, making the road slippery.", "fa": "اما امروز صبح خیلی خوش شانس نبود چون باران شدید بارید و جاده لغزنده شد." }
+                        },
+                        {
+                            "source": "แม่เตือนโทนี่ก่อนออกบ้านว่า อย่าขี่จักรยานเร็วเกินไป",
+                            "wordIds": [ "แม่", "เตือน", "โทนี่", "ก่อน", "ออก", "บ้าน", "ว่า", "อย่า", "ขี่จักรยาน", "เร็วเกินไป" ],
+                            "translations": { "en": "His mother warned Tony before leaving the house not to ride his bike too fast.", "fa": "مادرش قبل از بیرون رفتن به تونی هشدار داد که زیاد سریع دوچرخه‌سواری نکند." }
+                        },
+                        {
+                            "source": "แต่เพราะความมั่นใจและประมาทเกินไปทำให้เขาไม่สนใจคำเตือนของแม่",
+                            "wordIds": [ "แต่", "เพราะ", "ความมั่นใจ", "และ", "ประมาท", "เกินไป", "ทำให้", "เขา", "ไม่สนใจ", "คำเตือน", "ของ", "แม่" ],
+                            "translations": { "en": "But because he was overconfident and careless, he ignored his mother's warning.", "fa": "اما به دلیل اعتماد به نفس بیش از حد و بی احتیاطی، هشدار مادرش را نادیده گرفت." }
+                        },
+                        {
+                            "source": "เขารีบขี่จักรยานเพราะกลัวเข้าเรียนไม่ทันเนื่องจากเค้าตื่นสายเพราะมัวแต่เล่นเกมออนไลน์กับเพื่อน",
+                            "wordIds": [ "เขา", "รีบ", "ขี่จักรยาน", "เพราะ", "กลัว", "เข้าเรียนไม่ทัน", "เนื่องจาก", "เค้า", "ตื่นสาย", "เพราะ", "มัวแต่", "เล่นเกมออนไลน์", "กับ", "เพื่อน" ],
+                            "translations": { "en": "He hurried on his bike because he was afraid of being late for school, as he woke up late because he was absorbed in playing online games with friends.", "fa": "او با دوچرخه عجله کرد چون می‌ترسید به کلاس دیر برسد، چون دیر بیدار شده بود چون مشغول بازی آنلاین با دوستان بود." }
+                        },
+                        {
+                            "source": "และวันนี้ที่โรงเรียนมีกิจกรรมพิเศษทำให้เค้ารีบและไม่ระวังเกิดอุบัติเหตุ",
+                            "wordIds": [ "و", "วันนี้", "ที่", "โรงเรียน", "มี", "กิจกรรมพิเศษ", "ทำให้", "เค้า", "รีบ", "و", "ไม่ระวัง", "เกิด", "อุบัติเหตุ" ],
+                            "translations": { "en": "And today there was a special activity at school, making him hurry and be careless, causing an accident.", "fa": "و امروز یک فعالیت ویژه در مدرسه بود که باعث شد عجله کند و بی احتیاط باشد و تصادف کند." }
+                        },
+                        {
+                            "source": "รถจักรยานเขาชนกับต้นไม้ข้างๆทางจนแขนหักและมีแผลขนาดใหญ่ที่ขา",
+                            "wordIds": [ "รถจักรยาน", "เขา", "ชน", "กับ", "ต้นไม้", "ข้างๆ", "ทาง", "จน", "แขนหัก", "و", "มี", "แผล", "ขนาดใหญ่", "ที่", "ขา" ],
+                            "translations": { "en": "His bicycle crashed into a tree by the road, causing a broken arm and a large wound on his leg.", "fa": "دوچرخه‌اش به درخت کنار جاده برخورد کرد و باعث شکستگی بازو و زخم بزرگی روی پایش شد." }
+                        },
+                        {
+                            "source": "โชคดีที่พลเมืองดีมาช่วยไว้ และพาเขาส่งโรงพยาบาล",
+                            "wordIds": [ "โชคดี", "ที่", "พลเมืองดี", "มา", "ช่วย", "ไว้", "و", "پا", "เขา", "ส่ง", "โรงพยาบาล" ],
+                            "translations": { "en": "Luckily, a good citizen came to help and took him to the hospital.", "fa": "خوشبختانه یک شهروند خوب آمد و کمک کرد و او را به بیمارستان برد." }
+                        },
+                        {
+                            "source": "โทนี่ถูกแม่ห้ามไม่ให้ขี่จักรยาน 1 อาทิตย์",
+                            "wordIds": [ "โทนี่", "ถูก", "แม่", "ห้าม", "ไม่ให้", "ขี่จักรยาน", "1", "อาทิตย์" ],
+                            "translations": { "en": "Tony was forbidden by his mother to ride his bike for a week.", "fa": "تونی توسط مادرش به مدت یک هفته از دوچرخه‌سواری منع شد." }
+                        },
+                        {
+                            "source": "เขารู้สึกผิดและคิดว่าจะไม่ประมาทอีกแล้ว",
+                            "wordIds": [ "เขา", "รู้สึกผิด", "و", "คิดว่า", "จะ", "ไม่", "ประมาท", "อีกแล้ว" ],
+                            "translations": { "en": "He felt guilty and thought he would not be careless again.", "fa": "او احساس گناه کرد و فکر کرد دیگر بی احتیاط نخواهد بود." }
+                        }
+                    ]
+                },
+                {
+                    "type": "words",
+                    "heading": {
+                        "en": "Useful Expressions for Accidents",
+                        "th": "วลีที่เป็นประโยชน์เกี่ยวกับอุบัติเหตุ",
+                        "fa": "عبارات مفید برای تصادفات"
+                    },
+                    "wordIds": [ "ได้รับ", "ได้รับบาดเจ็บ", "มีใคร", "เกิดขึ้น", "สี่แยก", "เรียกรถพยาบาล", "โทร" ]
+                },
+                {
+                    "type": "paragraph",
+                    "heading": {
+                        "en": "Structure 1: I was hit by...",
+                        "th": "โครงสร้าง 1: ผมถูก...",
+                        "fa": "ساختار ۱: من توسط... زده شدم"
+                    },
+                    "grammar": {
+                        "pattern": "Subject + ถูก + Something + Verb",
+                        "note": {
+                            "en": "Use ถูก as a passive marker to indicate that something happened to you.",
+                            "th": "ใช้ ถูก เป็นเครื่องหมายกรรมวาจก เพื่อบอกว่ามีสิ่งหนึ่งเกิดขึ้นกับคุณ",
+                            "fa": "از ถูก به عنوان نشانه مجهول برای نشان دادن اینکه چیزی برای شما اتفاق افتاده است استفاده کنید."
+                        }
+                    }
+                },
+                {
+                    "type": "paragraph",
+                    "heading": {
+                        "en": "Example Sentences with ถูก",
+                        "th": "ประโยคตัวอย่างด้วย ถูก",
+                        "fa": "جملات مثال با ถูก"
+                    },
+                    "sentences": [
+                        {
+                            "source": "ผมถูกรถยนต์ชน",
+                            "wordIds": [ "ผม", "ถูก", "รถยนต์", "ชน" ],
+                            "translations": { "en": "I was hit by a car.", "fa": "من توسط ماشین زده شدم." }
+                        },
+                        {
+                            "source": "ฉันถูกรถมอเตอร์ไซค์เฉี่ยว",
+                            "wordIds": [ "ฉัน", "ถูก", "รถมอเตอร์ไซค์", "เฉี่ยว" ],
+                            "translations": { "en": "I was clipped by a motorcycle.", "fa": "من توسط موتورسیکلت گرفته شدم." }
+                        },
+                        {
+                            "source": "เขาถูกหมากัด",
+                            "wordIds": [ "เขา", "ถูก", "หมา", "กัด" ],
+                            "translations": { "en": "He was bitten by a dog.", "fa": "او توسط سگ گاز گرفته شد." }
+                        },
+                        {
+                            "source": "พวกเราถูกมีดบาดมือ",
+                            "wordIds": [ "พวกเรา", "ถูก", "มีด", "บาด", "มือ" ],
+                            "translations": { "en": "We cut our hands with a knife.", "fa": "ما دستمان را با چاقو بریدیم." }
+                        },
+                        {
+                            "source": "แม่ถูกน้ำร้อนลวกแขน",
+                            "wordIds": [ "แม่", "ถูก", "น้ำร้อน", "ลวก", "แขน" ],
+                            "translations": { "en": "My mother scalded her arm with hot water.", "fa": "مادرم بازویش را با آب جوش سوزاند." }
+                        },
+                        {
+                            "source": "พวกเราถูกครูทำโทษ",
+                            "wordIds": [ "พวกเรา", "ถูก", "ครู", "ทำโทษ" ],
+                            "translations": { "en": "We were punished by our teacher.", "fa": "ما توسط معلم تنبیه شدیم." }
+                        }
+                    ]
+                },
+                {
+                    "type": "paragraph",
+                    "heading": {
+                        "en": "Injury Vocabulary",
+                        "th": "คำศัพท์การบาดเจ็บ",
+                        "fa": "واژگان جراحت"
+                    },
+                    "wordIds": [ "ขาหัก", "แขนหัก", "นิ้วหัก", "ช้ำ", "ถลอก", "แผล", "บวม", "เลือดออก" ]
+                },
+                {
+                    "type": "paragraph",
+                    "heading": {
+                        "en": "Conversation 1: Car Accident",
+                        "th": "บทสนทนา 1: รถชน",
+                        "fa": "مکالمه ۱: تصادف ماشین"
+                    },
+                    "sentences": [
+                        {
+                            "source": "เกิดอะไรขึ้น",
+                            "wordIds": [ "เกิด", "อะไร", "ขึ้น" ],
+                            "translations": { "en": "What happened?", "fa": "چه اتفاقی افتاد؟" }
+                        },
+                        {
+                            "source": "มีอุบัติเหตุรถชนที่สี่แยก",
+                            "wordIds": [ "มี", "อุบัติเหตุ", "รถชน", "ที่", "สี่แยก" ],
+                            "translations": { "en": "There was a car accident at the intersection.", "fa": "یک تصادف ماشین در چهارراه بود." }
+                        },
+                        {
+                            "source": "มีใครเป็นอะไรไหม",
+                            "wordIds": [ "มีใคร", "เป็น", "อะไร", "ไหม" ],
+                            "translations": { "en": "Is anyone hurt?", "fa": "کسی آسیب دیده؟" }
+                        },
+                        {
+                            "source": "มีผู้ชาย 1 คนได้รับบาดเจ็บนิดหน่อยที่แขน",
+                            "wordIds": [ "มี", "ผู้ชาย", "1", "คน", "ได้รับบาดเจ็บ", "นิดหน่อย", "ที่", "แขน" ],
+                            "translations": { "en": "One man was slightly injured on his arm.", "fa": "یک مرد کمی از بازو آسیب دیده." }
+                        },
+                        {
+                            "source": "มีใครเรียกรถพยาบาลรียัง",
+                            "wordIds": [ "มีใคร", "เรียกรถพยาบาล", "รียัง" ],
+                            "translations": { "en": "Has anyone called an ambulance yet?", "fa": "کسی آمبولانس صدا کرده؟" }
+                        },
+                        {
+                            "source": "ฉันโทรเรียกรถพยาบาลแล้ว",
+                            "wordIds": [ "ฉัน", "โทร", "เรียกรถพยาบาล", "แล้ว" ],
+                            "translations": { "en": "I've already called the ambulance.", "fa": "من آمبولانس صدا کرده‌ام." }
+                        }
+                    ]
+                },
+                {
+                    "type": "paragraph",
+                    "heading": {
+                        "en": "Conversation 2: Girl Hit by Car",
+                        "th": "บทสนทนา 2: เด็กผู้หญิงถูกรถชน",
+                        "fa": "مکالمه ۲: دختر توسط ماشین زده شد"
+                    },
+                    "sentences": [
+                        {
+                            "source": "มีอุบัติเหตุที่ถนน",
+                            "wordIds": [ "มี", "อุบัติเหตุ", "ที่", "ถนน" ],
+                            "translations": { "en": "There was an accident on the road.", "fa": "یک تصادف در جاده بود." }
+                        },
+                        {
+                            "source": "เด็กผู้หญิงถูกรถยนต์ชน",
+                            "wordIds": [ "เด็กผู้หญิง", "ถูก", "รถยนต์", "ชน" ],
+                            "translations": { "en": "A girl was hit by a car.", "fa": "یک دختر توسط ماشین زده شد." }
+                        },
+                        {
+                            "source": "เขาบาดเจ็บตรงไหนรึเปล่า",
+                            "wordIds": [ "เขา", "بادجیب", "ตรงไหน", "รึเปล่า" ],
+                            "translations": { "en": "Where is she injured?", "fa": "کجا آسیب دیده؟" }
+                        },
+                        {
+                            "source": "ขาของเขาหักและมีแผลถลอกที่แขนนิดหน่อย",
+                            "wordIds": [ "ขา", "ของ", "เขา", "หัก", "و", "มี", "แผล", "ถลอก", "ที่", "แขน", "نیدหน่อย" ],
+                            "translations": { "en": "Her leg is broken and she has a few scratches on her arm.", "fa": "پایش شکسته و چند خراش روی بازویش دارد." }
+                        }
+                    ]
+                },
+                {
+                    "type": "paragraph",
+                    "heading": {
+                        "en": "Conversation 3: Cut with Knife",
+                        "th": "บทสนทนา 3: มีดบาด",
+                        "fa": "مکالمه ۳: بریدگی با چاقو"
+                    },
+                    "sentences": [
+                        {
+                            "source": "คุณเป็นอะไร",
+                            "wordIds": [ "คุณ", "เป็น", "อะไร" ],
+                            "translations": { "en": "What's wrong with you?", "fa": "چه مشکلی داری؟" }
+                        },
+                        {
+                            "source": "ฉันถูกมีดบาดนิ้วเพราะว่าทำอาหารเมื่อวาน",
+                            "wordIds": [ "ฉัน", "ถูก", "มีด", "บาด", "นิ้ว", "เพราะว่า", "ทำอาหาร", "เมื่อวาน" ],
+                            "translations": { "en": "I cut my finger with a knife while cooking yesterday.", "fa": "دیروز هنگام آشپزی انگشتم را با چاقو بریدم." }
+                        },
+                        {
+                            "source": "คุณไปหาหมอมารึยัง",
+                            "wordIds": [ "คุณ", "ไป", "หาหมอ", "มา", "รึยัง" ],
+                            "translations": { "en": "Have you gone to see a doctor yet?", "fa": "به دکتر مراجعه کرده‌ای؟" }
+                        },
+                        {
+                            "source": "ไปแล้วเมื่อวาน",
+                            "wordIds": [ "ไป", "แล้ว", "เมื่อวาน" ],
+                            "translations": { "en": "I went yesterday.", "fa": "دیروز رفتم." }
+                        },
+                        {
+                            "source": "คุณเจ็บมากไหม",
+                            "wordIds": [ "คุณ", "เจ็บ", "มาก", "ไหม" ],
+                            "translations": { "en": "Does it hurt a lot?", "fa": "خیلی درد دارد؟" }
+                        },
+                        {
+                            "source": "เจ็บนิดหน่อย ทายาแล้ว ไม่ต้องเป็นห่วง",
+                            "wordIds": [ "เจ็บ", "نیدหน่อย", "ทายา", "แล้ว", "ไม่ต้องเป็นห่วง" ],
+                            "translations": { "en": "It hurts a little. I've applied medicine. Don't worry.", "fa": "کمی درد دارد. دارو زدم. نگران نباش." }
+                        },
+                        {
+                            "source": "หายเร็วๆนะ",
+                            "wordIds": [ "หาย", "เร็วๆ", "นะ" ],
+                            "translations": { "en": "Get well soon.", "fa": "زود خوب شو." }
+                        },
+                        {
+                            "source": "ขอบคุณนะ",
+                            "wordIds": [ "ขอบคุณ", "นะ" ],
+                            "translations": { "en": "Thank you.", "fa": "متشکرم." }
+                        }
+                    ]
+                },
+                {
+                    "type": "paragraph",
+                    "heading": {
+                        "en": "Conversation 4: Dog Bite",
+                        "th": "บทสนทนา 4: หมากัด",
+                        "fa": "مکالمه ۴: گازگرفتگی سگ"
+                    },
+                    "sentences": [
+                        {
+                            "source": "น้องสาวของคุณเป็นอะไร",
+                            "wordIds": [ "น้องสาว", "ของ", "คุณ", "เป็น", "อะไร" ],
+                            "translations": { "en": "What's wrong with your younger sister?", "fa": "خواهر کوچکت چه مشکلی دارد؟" }
+                        },
+                        {
+                            "source": "เขาถูกหมากัด",
+                            "wordIds": [ "เขา", "ถูก", "หมา", "กัด" ],
+                            "translations": { "en": "She was bitten by a dog.", "fa": "او توسط سگ گاز گرفته شد." }
+                        },
+                        {
+                            "source": "เขาไปหาหมอมารึยัง",
+                            "wordIds": [ "เขา", "ไป", "หาหมอ", "มา", "รึยัง" ],
+                            "translations": { "en": "Has she gone to see a doctor yet?", "fa": "به دکتر مراجعه کرده؟" }
+                        },
+                        {
+                            "source": "ไปแล้วเมื่อวันจันทร์ที่แล้ว",
+                            "wordIds": [ "ไป", "แล้ว", "เมื่อ", "วันจันทร์", "ที่แล้ว" ],
+                            "translations": { "en": "She went last Monday.", "fa": "دوشنبه گذشته رفت." }
+                        },
+                        {
+                            "source": "เขาฉีดยารึยัง",
+                            "wordIds": [ "เขา", "ฉีดยา", "รึยัง" ],
+                            "translations": { "en": "Has she gotten an injection?", "fa": "آمپول زده؟" }
+                        },
+                        {
+                            "source": "ฉีดแล้ว",
+                            "wordIds": [ "ฉีด", "แล้ว" ],
+                            "translations": { "en": "Yes, she has.", "fa": "بله زده." }
+                        },
+                        {
+                            "source": "วันนี้เขาดีขึ้นรึยัง",
+                            "wordIds": [ "วันนี้", "เขา", "ดีขึ้น", "รึยัง" ],
+                            "translations": { "en": "Is she better today?", "fa": "امروز بهتر شده؟" }
+                        },
+                        {
+                            "source": "ดีขึ้นแล้ว",
+                            "wordIds": [ "ดีขึ้น", "แล้ว" ],
+                            "translations": { "en": "Yes, she's better.", "fa": "بله بهتر شده." }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "sectionId": "ls7-lesson-2",
+            "heading": {
+                "en": "Lesson 2: Coordinate Conjunction Part 1",
+                "th": "บทที่ 2: คำสันธานเชื่อมความคล้อยตามกัน ส่วนที่ 1",
+                "fa": "درس ۲: حروف ربط همپایه بخش ۱"
+            },
+            "activity": {
+                "words": true,
+                "sentences": true
+            },
+            "content": [
+                {
+                    "type": "words",
+                    "heading": {
+                        "en": "Conjunctions Part 1",
+                        "th": "คำสันธาน ส่วนที่ 1",
+                        "fa": "حروف ربط بخش ۱"
+                    },
+                    "wordIds": [ "แต่", "ถึงแม้ว่า", "ทั้งๆ ที่", "กว่าจะ...ก็", "ถึง...ก็" ]
+                },
+                {
+                    "type": "paragraph",
+                    "heading": {
+                        "en": "Structure 1: แต่ (But)",
+                        "th": "โครงสร้าง 1: แต่",
+                        "fa": "ساختار ۱: اما"
+                    },
+                    "grammar": {
+                        "pattern": "Clause 1 + แต่ + Clause 2",
+                        "note": {
+                            "en": "ใช้ แต่ to connect contrasting ideas, like 'but' in English.",
+                            "th": "ใช้ แต่ เชื่อมความคิดที่ขัดแย้งกัน",
+                            "fa": "از แต่ برای اتصال ایده‌های متضاد استفاده کنید."
+                        }
+                    }
+                },
+                {
+                    "type": "paragraph",
+                    "heading": {
+                        "en": "Example Sentences with แต่",
+                        "th": "ประโยคตัวอย่างด้วย แต่",
+                        "fa": "جملات مثال با اما"
+                    },
+                    "sentences": [
+                        {
+                            "source": "ผมอยู่ที่ประเทศไทยแต่ภรรยาอยู่ที่ประเทศแคนาดา",
+                            "wordIds": [ "ผม", "อยู่", "ที่", "ประเทศไทย", "แต่", "ภรรยา", "อยู่", "ที่", "ประเทศ", "แคนادا" ],
+                            "translations": { "en": "I live in Thailand but my wife lives in Canada.", "fa": "من در تایلند زندگی می‌کنم اما همسرم در کانادا زندگی می‌کند." }
+                        },
+                        {
+                            "source": "ผมอยากออกกำลังกายทุกวันแต่ทำไม่ได้",
+                            "wordIds": [ "ผม", "อยาก", "ออกกำลังกาย", "ทุก", "วัน", "แต่", "ทำ", "ไม่ได้" ],
+                            "translations": { "en": "I want to exercise every day but I can't.", "fa": "می‌خواهم هر روز ورزش کنم اما نمی‌توانم." }
+                        },
+                        {
+                            "source": "วันนี้ฉันลืมเอากระเป๋าสตางค์มาแต่ปกติฉันเอามานะ",
+                            "wordIds": [ "วันนี้", "ฉัน", "ลืม", "เอา", "กระเป๋าสตางค์", "มา", "แต่", "ปกติ", "ฉัน", "เอา", "มา", "นะ" ],
+                            "translations": { "en": "Today I forgot to bring my wallet, but normally I bring it.", "fa": "امروز کیف پولم را آوردم فراموش کردم، اما معمولاً می‌آورم." }
+                        }
+                    ]
+                },
+                {
+                    "type": "paragraph",
+                    "heading": {
+                        "en": "Structure 2: ถึงแม้ว่า...จะ... (Although)",
+                        "th": "โครงสร้าง 2: ถึงแม้ว่า...จะ...",
+                        "fa": "ساختار ۲: اگرچه"
+                    },
+                    "grammar": {
+                        "pattern": "ถึงแม้ว่า + Subject + จะ + Adjective/Verb, (ก็) + Clause",
+                        "note": {
+                            "en": "ใช้ ถึงแม้ว่า to express concession, similar to 'although' or 'even though'.",
+                            "th": "ใช้ ถึงแม้ว่า เพื่อแสดงการยอมรับข้อเท็จจริงที่ขัดแย้ง",
+                            "fa": "از ถึงแม้ว่า برای بیان امتیاز استفاده کنید، مشابه 'اگرچه'."
+                        }
+                    }
+                },
+                {
+                    "type": "paragraph",
+                    "heading": {
+                        "en": "Example Sentences with ถึงแม้ว่า",
+                        "th": "ประโยคตัวอย่างด้วย ถึงแม้ว่า",
+                        "fa": "جملات مثال با اگرچه"
+                    },
+                    "sentences": [
+                        {
+                            "source": "ถึงแม้ว่าเขาจะเป็นคนใจร้อนแต่เขาเป็นคนใจดี",
+                            "wordIds": [ "ถึงแม้ว่า", "เขา", "จะ", "เป็น", "คน", "ใจร้อน", "แต่", "เขา", "เป็น", "คน", "ใจดี" ],
+                            "translations": { "en": "Although he is hot-tempered, he is a kind person.", "fa": "اگرچه او زودرنج است، اما آدم مهربانی است." }
+                        },
+                        {
+                            "source": "ถึงแม้ว่าการเรียนภาษาไทยจะยากแต่พวกเราชอบเรียน",
+                            "wordIds": [ "ถึงแม้ว่า", "การเรียน", "ภาษาไทย", "จะ", "ยาก", "แต่", "พวกเรา", "ชอบ", "เรียน" ],
+                            "translations": { "en": "Although studying Thai is difficult, we like studying it.", "fa": "اگرچه یادگیری تایلندی سخت است، ما دوست داریم یاد بگیریم." }
+                        },
+                        {
+                            "source": "ถึงแม้ว่าคุณจะไม่เข้าใจฉันแต่ฉันเข้าใจคุณเสมอ",
+                            "wordIds": [ "ถึงแม้ว่า", "คุณ", "จะ", "ไม่", "เข้าใจ", "ฉัน", "แต่", "ฉัน", "เข้าใจ", "คุณ", "เสมอ" ],
+                            "translations": { "en": "Even if you don't understand me, I always understand you.", "fa": "حتی اگر شما من را نمی‌فهمید، من همیشه شما را می‌فهمم." }
+                        }
+                    ]
+                },
+                {
+                    "type": "paragraph",
+                    "heading": {
+                        "en": "Structure 3: ทั้งๆ ที่ (Despite)",
+                        "th": "โครงสร้าง 3: ทั้งๆ ที่",
+                        "fa": "ساختار ۳: با وجود اینکه"
+                    },
+                    "grammar": {
+                        "pattern": "ทั้งๆ ที่ + Clause",
+                        "note": {
+                            "en": "ใช้ ทั้งๆ ที่ to indicate something happens despite another circumstance.",
+                            "th": "ใช้ ทั้งๆ ที่ เพื่อบอกว่ามีสิ่งหนึ่งเกิดขึ้นทั้งๆ ที่มีอีกสิ่งหนึ่ง",
+                            "fa": "از ทั้งๆ ที่ برای نشان دادن اینکه چیزی با وجود شرایط دیگر اتفاق می‌افتد استفاده کنید."
+                        }
+                    }
+                },
+                {
+                    "type": "paragraph",
+                    "heading": {
+                        "en": "Example Sentences with ทั้งๆ ที่",
+                        "th": "ประโยคตัวอย่างด้วย ทั้งๆ ที่",
+                        "fa": "جملات مثال با با وجود اینکه"
+                    },
+                    "sentences": [
+                        {
+                            "source": "ผมรู้สึกเหนื่อยมากทั้งๆ ที่ผมไม่ได้ทำอะไรเลย",
+                            "wordIds": [ "ผม", "รู้สึก", "เหนื่อย", "มาก", "ทั้งๆ ที่", "ผม", "ไม่ได้", "ทำ", "อะไร", "เลย" ],
+                            "translations": { "en": "I feel very tired even though I haven't done anything.", "fa": "خیلی احساس خستگی می‌کنم با وجود اینکه هیچ کاری نکرده‌ام." }
+                        },
+                        {
+                            "source": "เขาไม่กินอะไรเลยทั้งๆ ที่มีอาหารอยู่เต็มโต๊ะ",
+                            "wordIds": [ "เขา", "ไม่", "กิน", "อะไร", "เลย", "ทั้งๆ ที่", "มี", "อาหาร", "อยู่", "เต็ม", "โต๊ะ" ],
+                            "translations": { "en": "He doesn't eat anything even though there is food all over the table.", "fa": "او هیچ چیز نمی‌خورد با وجود اینکه میز پر از غذا است." }
+                        },
+                        {
+                            "source": "วันนี้พนักงานของผมมาสายมากทั้งๆ ที่เขาบอกว่าจะไม่มาสายอีกแล้ว",
+                            "wordIds": [ "วันนี้", "พนักงาน", "ของ", "ผม", "มา", "สาย", "มาก", "ทั้งๆ ที่", "เขา", "บอก", "ว่า", "จะ", "ไม่", "มา", "สาย", "อีกแล้ว" ],
+                            "translations": { "en": "Today my employee came very late even though he said he wouldn't be late again.", "fa": "امروز کارمند من خیلی دیر آمد با وجود اینکه گفت دیگر دیر نمی‌آید." }
+                        },
+                        {
+                            "source": "คุณแดเนียลอยากได้รถคันใหม่ทั้งๆ ที่เขาไม่มีงานทำ",
+                            "wordIds": [ "คุณ", "دانیل", "อยาก", "ได้", "รถ", "คันใหม่", "ทั้งๆ ที่", "เขา", "ไม่มี", "งาน", "ทำ" ],
+                            "translations": { "en": "Daniel wants a new car even though he doesn't have a job.", "fa": "دانیل ماشین جدید می‌خواهد با وجود اینکه کار ندارد." }
+                        }
+                    ]
+                },
+                {
+                    "type": "paragraph",
+                    "heading": {
+                        "en": "Structure 4: กว่าจะ...ก็ (By the time)",
+                        "th": "โครงสร้าง 4: กว่าจะ...ก็",
+                        "fa": "ساختار ۴: تا وقتی که"
+                    },
+                    "grammar": {
+                        "pattern": "กว่าจะ + Clause 1 + ก็ + Clause 2 + แล้ว",
+                        "note": {
+                            "en": "ใช้ กว่าจะ...ก็ to indicate that by the time something happens, something else has already happened.",
+                            "th": "ใช้ กว่าจะ...ก็ เพื่อบอกว่าเมื่อสิ่งหนึ่งเกิดขึ้น อีกสิ่งหนึ่งได้เกิดขึ้นแล้ว",
+                            "fa": "از กว่าจะ...ก็ برای نشان دادن اینکه تا وقتی چیزی اتفاق می‌افتد، چیز دیگری قبلاً اتفاق افتاده است استفاده کنید."
+                        }
+                    }
+                },
+                {
+                    "type": "paragraph",
+                    "heading": {
+                        "en": "Example Sentences with กว่าจะ...ก็",
+                        "th": "ประโยคตัวอย่างด้วย กว่าจะ...ก็",
+                        "fa": "جملات مثال با تا وقتی که"
+                    },
+                    "sentences": [
+                        {
+                            "source": "กว่าคุณแม่จะแต่งหน้าเสร็จคุณพ่อก็ออกไปทำงานแล้ว",
+                            "wordIds": [ "กว่า", "คุณแม่", "จะ", "แต่งหน้า", "เสร็จ", "คุณพ่อ", "ก็", "ออก", "ไป", "ทำงาน", "แล้ว" ],
+                            "translations": { "en": "By the time mother finished putting on makeup, father had already gone out to work.", "fa": "تا وقتی مادر آرایشش را تمام کرد، پدر رفته بود سر کار." }
+                        },
+                        {
+                            "source": "กว่าภรรยาของผมจะมาถึงที่นี่ งานเลี้ยงก็เลิกแล้ว",
+                            "wordIds": [ "กว่า", "ภรรยา", "ของ", "ผม", "จะ", "มา", "ถึง", "ที่นี่", "งานเลี้ยง", "ก็", "เลิก", "แล้ว" ],
+                            "translations": { "en": "By the time my wife arrived here, the party had already ended.", "fa": "تا وقتی همسرم به اینجا رسید، مهمانی تمام شده بود." }
+                        },
+                        {
+                            "source": "เมื่อคืนนี้กว่าพวกเราจะทำงานเสร็จ ร้านเหล้าก็ปิดหมดแล้ว",
+                            "wordIds": [ "เมื่อคืนนี้", "กว่า", "พวกเรา", "จะ", "ทำงาน", "เสร็จ", "ร้านเหล้า", "ก็", "ปิด", "หมด", "แล้ว" ],
+                            "translations": { "en": "Last night, by the time we finished work, all the bars had already closed.", "fa": "دیشب، تا وقتی کارمان تمام شد، همه بارها بسته شده بودند." }
+                        },
+                        {
+                            "source": "กว่าตำรวจจะมาคนร้ายก็หนีไปแล้ว",
+                            "wordIds": [ "กว่า", "ตำรวจ", "จะ", "มา", "คนร้าย", "ก็", "หนี", "ไป", "แล้ว" ],
+                            "translations": { "en": "By the time the police arrived, the criminal had already fled.", "fa": "تا وقتی پلیس رسید، مجرم فرار کرده بود." }
+                        }
+                    ]
+                },
+                {
+                    "type": "paragraph",
+                    "heading": {
+                        "en": "Structure 5: ถึง...ก็ (Even though)",
+                        "th": "โครงสร้าง 5: ถึง...ก็",
+                        "fa": "ساختار ۵: حتی اگر"
+                    },
+                    "grammar": {
+                        "pattern": "ถึง + Clause + ก็ + Clause",
+                        "note": {
+                            "en": "ใช้ ถึง...ก็ to express 'even though', similar to ถึงแม้ว่า but more informal.",
+                            "th": "ใช้ ถึง...ก็ แทน ถึงแม้ว่า ในภาษาพูด",
+                            "fa": "از ถึง...ก็ برای بیان 'حتی اگر' استفاده کنید، مشابه ถึงแม้ว่า اما غیررسمی‌تر."
+                        }
+                    }
+                },
+                {
+                    "type": "paragraph",
+                    "heading": {
+                        "en": "Example Sentences with ถึง...ก็",
+                        "th": "ประโยคตัวอย่างด้วย ถึง...ก็",
+                        "fa": "جملات مثال با حتی اگر"
+                    },
+                    "sentences": [
+                        {
+                            "source": "ถึงแฟนจะโกรธฉันก็ไม่สนใจ",
+                            "wordIds": [ "ถึง", "แฟน", "จะ", "โกรธ", "ฉัน", "ก็", "ไม่", "สนใจ" ],
+                            "translations": { "en": "Even if my boyfriend/girlfriend is angry, I don't care.", "fa": "حتی اگر دوستم عصبانی باشد، اهمیت نمی‌دهم." }
+                        },
+                        {
+                            "source": "ถึงเขาจะไม่มีเงิน ฉันก็รักเขามาก",
+                            "wordIds": [ "ถึง", "เขา", "จะ", "ไม่มี", "เงิน", "ฉัน", "ก็", "รัก", "เขา", "มาก" ],
+                            "translations": { "en": "Even if he has no money, I love him very much.", "fa": "حتی اگر او پول نداشته باشد، من خیلی دوستش دارم." }
+                        },
+                        {
+                            "source": "ถึงคุณจะรอเขา เขาก็ไม่มา",
+                            "wordIds": [ "ถึง", "คุณ", "จะ", "รอ", "เขา", "เขา", "ก็", "ไม่", "มา" ],
+                            "translations": { "en": "Even if you wait for him, he won't come.", "fa": "حتی اگر منتظرش بمانی، او نمی‌آید." }
+                        },
+                        {
+                            "source": "ถึงลูกจะไม่อยากกิน ก็ต้องกินนะ",
+                            "wordIds": [ "ถึง", "ลูก", "จะ", "ไม่", "อยาก", "กิน", "ก็", "ต้อง", "กิน", "นะ" ],
+                            "translations": { "en": "Even if the child doesn't want to eat, he has to eat.", "fa": "حتی اگر بچه نمی‌خواهد بخورد، باید بخورد." }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "sectionId": "ls7-lesson-3",
+            "heading": {
+                "en": "Lesson 3: Coordinate Conjunction Part 2",
+                "th": "บทที่ 3: คำสันธานเชื่อมการเลือกเอาอย่างใดอย่างหนึ่ง",
+                "fa": "درس ۳: حروف ربط همپایه بخش ۲ - انتخاب"
+            },
+            "activity": {
+                "words": true,
+                "sentences": true
+            },
+            "content": [
+                {
+                    "type": "words",
+                    "heading": {
+                        "en": "Conjunctions Part 2",
+                        "th": "คำสันธาน ส่วนที่ 2",
+                        "fa": "حروف ربط بخش ۲"
+                    },
+                    "wordIds": [ "หรือ", "ไม่...ก็...", "ไม่อย่างนั้น" ]
+                },
+                {
+                    "type": "paragraph",
+                    "heading": {
+                        "en": "Structure 1: หรือ (Or)",
+                        "th": "โครงสร้าง 1: หรือ",
+                        "fa": "ساختار ۱: یا"
+                    },
+                    "grammar": {
+                        "pattern": "Choice A + หรือ + Choice B",
+                        "note": {
+                            "en": "ใช้ หรือ to present alternatives, like 'or' in English.",
+                            "th": "ใช้ หรือ เพื่อเสนอทางเลือก",
+                            "fa": "از หรือ برای ارائه گزینه‌ها استفاده کنید."
+                        }
+                    }
+                },
+                {
+                    "type": "paragraph",
+                    "heading": {
+                        "en": "Example Sentences with หรือ",
+                        "th": "ประโยคตัวอย่างด้วย หรือ",
+                        "fa": "جملات مثال با یا"
+                    },
+                    "sentences": [
+                        {
+                            "source": "วันพรุ่งนี้คุณจะไปทำงานหรือพักผ่อนอยู่ที่บ้าน",
+                            "wordIds": [ "วันพรุ่งนี้", "คุณ", "จะ", "ไป", "ทำงาน", "หรือ", "พักผ่อน", "อยู่", "ที่", "บ้าน" ],
+                            "translations": { "en": "Tomorrow will you go to work or rest at home?", "fa": "فردا می‌روی سر کار یا در خانه استراحت می‌کنی؟" }
+                        },
+                        {
+                            "source": "คุณจะเลือกอาหารเช้าแบบอเมริกันหรือแบบอังกฤษ",
+                            "wordIds": [ "คุณ", "จะ", "เลือก", "อาหารเช้า", "แบบอเมริกัน", "หรือ", "แบบอังกฤษ" ],
+                            "translations": { "en": "Will you choose American-style breakfast or English-style?", "fa": "صبحانه به سبک آمریکایی می‌خواهی یا انگلیسی؟" }
+                        }
+                    ]
+                },
+                {
+                    "type": "paragraph",
+                    "heading": {
+                        "en": "Structure 2: ไม่...ก็... (Either... or...)",
+                        "th": "โครงสร้าง 2: ไม่...ก็...",
+                        "fa": "ساختار ۲: یا... یا..."
+                    },
+                    "grammar": {
+                        "pattern": "Option A + ไม่ + Option B + ก็",
+                        "note": {
+                            "en": "ใช้ ไม่...ก็... to present two alternatives, meaning 'either...or...'.",
+                            "th": "ใช้ ไม่...ก็... เพื่อเสนอทางเลือกสองทาง",
+                            "fa": "از ไม่...ก็... برای ارائه دو گزینه استفاده کنید."
+                        }
+                    }
+                },
+                {
+                    "type": "paragraph",
+                    "heading": {
+                        "en": "Example Sentences with ไม่...ก็...",
+                        "th": "ประโยคตัวอย่างด้วย ไม่...ก็...",
+                        "fa": "جملات مثال با یا... یا..."
+                    },
+                    "sentences": [
+                        {
+                            "source": "คืนนี้ผมจะดูหนังไม่ก็ออกไปกินเบียร์กับเพื่อน",
+                            "wordIds": [ "คืนนี้", "ผม", "จะ", "ดูหนัง", "ไม่", "ก็", "ออกไป", "กิน", "เบียร์", "กับ", "เพื่อน" ],
+                            "translations": { "en": "Tonight I'll either watch a movie or go out drinking beer with friends.", "fa": "امشب یا فیلم می‌بینم یا با دوستان می‌روم بیرون آبجو می‌خورم." }
+                        },
+                        {
+                            "source": "เดือนหน้าฉันจะไปเที่ยวเกาะสมุยหรือไม่ก็เกาะช้าง",
+                            "wordIds": [ "เดือนหน้า", "ฉัน", "จะ", "ไป", "เที่ยว", "เกาะสมุย", "หรือ", "ไม่", "ก็", "เกาะช้าง" ],
+                            "translations": { "en": "Next month I'll travel to either Koh Samui or Koh Chang.", "fa": "ماه آینده یا به کوه سامویی سفر می‌کنم یا کوه چانگ." }
+                        },
+                        {
+                            "source": "ผมคิดว่าคุณน่าจะซื้อเครื่องประดับหรือไม่ก็ดอกไม้",
+                            "wordIds": [ "ผม", "คิดว่า", "คุณ", "น่าจะ", "ซื้อ", "เครื่องประดับ", "หรือ", "ไม่", "ก็", "ดอกไม้" ],
+                            "translations": { "en": "I think you should buy either jewelry or flowers.", "fa": "فکر می‌کنم باید یا زیورآلات بخری یا گل." }
+                        }
+                    ]
+                },
+                {
+                    "type": "paragraph",
+                    "heading": {
+                        "en": "Structure 3: ไม่อย่างนั้น (Otherwise)",
+                        "th": "โครงสร้าง 3: ไม่อย่างนั้น",
+                        "fa": "ساختار ۳: وگرنه"
+                    },
+                    "grammar": {
+                        "pattern": "Clause + ไม่อย่างนั้น + Consequence",
+                        "note": {
+                            "en": "ใช้ ไม่อย่างนั้น to indicate a consequence if something is not done, like 'otherwise'.",
+                            "th": "ใช้ ไม่อย่างนั้น เพื่อบอกผลที่จะเกิดขึ้นหากไม่ทำสิ่งนั้น",
+                            "fa": "از ไม่อย่างนั้น برای نشان دادن نتیجه اگر کاری انجام نشود استفاده کنید."
+                        }
+                    }
+                },
+                {
+                    "type": "paragraph",
+                    "heading": {
+                        "en": "Example Sentences with ไม่อย่างนั้น",
+                        "th": "ประโยคตัวอย่างด้วย ไม่อย่างนั้น",
+                        "fa": "جملات مثال با وگرنه"
+                    },
+                    "sentences": [
+                        {
+                            "source": "ทุกคนต้องวัดอุณหภูมิก่อน ไม่อย่างนั้นจะเข้าห้างหรือตลาดไม่ได้",
+                            "wordIds": [ "ทุกคน", "ต้อง", "วัดอุณหภูมิ", "ก่อน", "ไม่อย่างนั้น", "จะ", "เข้าห้าง", "หรือ", "ตลาด", "ไม่ได้" ],
+                            "translations": { "en": "Everyone must take their temperature first, otherwise they cannot enter the mall or market.", "fa": "همه باید اول دمای بدنشان را بگیرند، وگرنه نمی‌توانند وارد فروشگاه یا بازار شوند." }
+                        },
+                        {
+                            "source": "คุณควรแต่งตัวให้เหมาะสม ไม่อย่างนั้นคุณจะเข้าไปในวัดไม่ได้",
+                            "wordIds": [ "คุณ", "ควร", "แต่งตัว", "ให้", "เหมาะสม", "ไม่อย่างนั้น", "คุณ", "จะ", "เข้าไป", "ใน", "วัด", "ไม่ได้" ],
+                            "translations": { "en": "You should dress appropriately, otherwise you cannot enter the temple.", "fa": "باید لباس مناسب بپوشی، وگرنه نمی‌توانی وارد معبد شوی." }
+                        },
+                        {
+                            "source": "พรุ่งนี้มีประชุมตอนเช้า คุณต้องรีบนอน ไม่อย่างนั้นคุณอาจจะตื่นสายได้",
+                            "wordIds": [ "พรุ่งนี้", "มี", "ประชุม", "ตอนเช้า", "คุณ", "ต้อง", "รีบ", "นอน", "ไม่อย่างนั้น", "คุณ", "อาจจะ", "ตื่นสาย", "ได้" ],
+                            "translations": { "en": "There's a meeting tomorrow morning. You need to sleep early, otherwise you might wake up late.", "fa": "فردا صبح جلسه داریم. باید زود بخوابی، وگرنه ممکن است دیر بیدار شوی." }
+                        },
+                        {
+                            "source": "คุณต้องตั้งใจทำงาน ไม่อย่างนั้นคุณจะถูไล่ออก",
+                            "wordIds": [ "คุณ", "ต้อง", "ตั้งใจ", "ทำงาน", "ไม่อย่างนั้น", "คุณ", "จะ", "ถูก", "ไล่ออก" ],
+                            "translations": { "en": "You must work diligently, otherwise you will be fired.", "fa": "باید با جدیت کار کنی، وگرنه اخراج می‌شوی." }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "sectionId": "ls7-lesson-4",
+            "heading": {
+                "en": "Lesson 4: Coordinate Conjunction Part 3",
+                "th": "บทที่ 4: คำสันธานเชื่อมความเป็นเหตุเป็นผลกัน",
+                "fa": "درس ۴: حروف ربط همپایه بخش ۳ - علت و معلول"
+            },
+            "activity": {
+                "words": true,
+                "sentences": true
+            },
+            "content": [
+                {
+                    "type": "words",
+                    "heading": {
+                        "en": "Conjunctions Part 3",
+                        "th": "คำสันธาน ส่วนที่ 3",
+                        "fa": "حروف ربط بخش ۳"
+                    },
+                    "wordIds": [ "ก็เลย", "จึง", "ดังนั้น", "เพราะฉะนั้น", "เนื่องจาก" ]
+                },
+                {
+                    "type": "paragraph",
+                    "heading": {
+                        "en": "Structure 1: ก็เลย (So)",
+                        "th": "โครงสร้าง 1: ก็เลย",
+                        "fa": "ساختار ۱: بنابراین"
+                    },
+                    "grammar": {
+                        "pattern": "Cause + ก็เลย + Effect",
+                        "note": {
+                            "en": "ใช้ ก็เลย to show result or consequence, like 'so' in English.",
+                            "th": "ใช้ ก็เลย เพื่อแสดงผลลัพธ์",
+                            "fa": "از ก็เลย برای نشان دادن نتیجه استفاده کنید."
+                        }
+                    }
+                },
+                {
+                    "type": "paragraph",
+                    "heading": {
+                        "en": "Example Sentences with ก็เลย",
+                        "th": "ประโยคตัวอย่างด้วย ก็เลย",
+                        "fa": "جملات مثال با بنابراین"
+                    },
+                    "sentences": [
+                        {
+                            "source": "เขาทำงานหนักก็เลยได้เลื่อนตำแหน่ง",
+                            "wordIds": [ "เขา", "ทำงานหนัก", "ก็เลย", "ได้", "เลื่อนตำแหน่ง" ],
+                            "translations": { "en": "He worked hard, so he got promoted.", "fa": "او سخت کار کرد، بنابراین ترفیع گرفت." }
+                        },
+                        {
+                            "source": "เขากินกาแฟมากเกินไปก็เลยนอนไม่หลับ",
+                            "wordIds": [ "เขา", "กิน", "กาแฟ", "มากเกินไป", "ก็เลย", "นอนไม่หลับ" ],
+                            "translations": { "en": "He drank too much coffee, so he couldn't sleep.", "fa": "او زیاد قهوه خورد، بنابراین نتوانست بخوابد." }
+                        },
+                        {
+                            "source": "คุณนาตาลไม่ชอบทำความสะอาดบ้านเองก็เลยจ้างแม่บ้าน",
+                            "wordIds": [ "คุณ", "ناتال", "ไม่", "ชอบ", "ทำความสะอาด", "บ้าน", "เอง", "ก็เลย", "จ้าง", "แม่บ้าน" ],
+                            "translations": { "en": "Natal doesn't like cleaning the house herself, so she hired a housekeeper.", "fa": "ناتال دوست ندارد خودش خانه را تمیز کند، بنابراین یک خانه‌دار استخدام کرد." }
+                        },
+                        {
+                            "source": "เมื่อเช้านี้รถติดมาก หัวหน้าก็เลยมาถึงที่บริษัทสาย",
+                            "wordIds": [ "เมื่อเช้านี้", "รถติด", "มาก", "หัวหน้า", "ก็เลย", "มา", "ถึง", "ที่", "บริษัท", "สาย" ],
+                            "translations": { "en": "This morning there was a lot of traffic, so the boss arrived at the company late.", "fa": "امروز صبح ترافیک زیاد بود، بنابراین رئیس دیر به شرکت رسید." }
+                        }
+                    ]
+                },
+                {
+                    "type": "paragraph",
+                    "heading": {
+                        "en": "Structure 2: (ดังนั้น)...จึง (Therefore)",
+                        "th": "โครงสร้าง 2: (ดังนั้น)...จึง",
+                        "fa": "ساختار ۲: بنابراین"
+                    },
+                    "grammar": {
+                        "pattern": "Cause + (ดังนั้น) + Subject + จึง + Effect",
+                        "note": {
+                            "en": "ใช้ จึง or ดังนั้น...จึง to express 'therefore' or 'so'.",
+                            "th": "ใช้ จึง หรือ ดังนั้น...จึง เพื่อแสดง 'ดังนั้น'",
+                            "fa": "از จึง یا ดังนั้น...จึง برای بیان 'بنابراین' استفاده کنید."
+                        }
+                    }
+                },
+                {
+                    "type": "paragraph",
+                    "heading": {
+                        "en": "Example Sentences with จึง",
+                        "th": "ประโยคตัวอย่างด้วย จึง",
+                        "fa": "جملات مثال با بنابراین"
+                    },
+                    "sentences": [
+                        {
+                            "source": "คุณแอนตั้งใจเรียนมาก เขาจึงสอบผ่านทุกครั้ง",
+                            "wordIds": [ "คุณ", "แอน", "ตั้งใจเรียน", "มาก", "เขา", "จึง", "สอบผ่าน", "ทุกครั้ง" ],
+                            "translations": { "en": "Ann studies very diligently, so she passes every time.", "fa": "آن خیلی با دقت درس می‌خواند، بنابراین هر بار قبول می‌شود." }
+                        },
+                        {
+                            "source": "เขาเป็นคนมีน้ำใจ ดังนันทุกคนจึงรักเขา",
+                            "wordIds": [ "เขา", "เป็น", "คน", "มีน้ำใจ", "ดังนั้น", "ทุกคน", "จึง", "รัก", "เขา" ],
+                            "translations": { "en": "He is a considerate person, so everyone loves him.", "fa": "او آدم با محبتی است، بنابراین همه دوستش دارند." }
+                        },
+                        {
+                            "source": "คุณปู่ของผมออกกำลังกายและกินอาหารที่มีประโยชน์ เขาจึงมีสุขภาพแข็งแรง",
+                            "wordIds": [ "คุณปู่", "ของ", "ผม", "ออกกำลังกาย", "และ", "กิน", "อาหาร", "ที่มีประโยชน์", "เขา", "จึง", "มี", "สุขภาพ", "แข็งแรง" ],
+                            "translations": { "en": "My grandfather exercises and eats healthy food, so he is healthy.", "fa": "پدربزرگ من ورزش می‌کند و غذای سالم می‌خورد، بنابراین سالم است." }
+                        },
+                        {
+                            "source": "คุณอารีย์ซ้อมเปียโนหนักมาก เขาจึงชนะการแข่งขัน",
+                            "wordIds": [ "คุณ", "آری", "ซ้อม", "เปียโน", "หนัก", "มาก", "เขา", "จึง", "ชนะ", "การแข่งขัน" ],
+                            "translations": { "en": "Aree practiced piano very hard, so she won the competition.", "fa": "آری خیلی سخت پیانو تمرین کرد، بنابراین در مسابقه برنده شد." }
+                        }
+                    ]
+                },
+                {
+                    "type": "paragraph",
+                    "heading": {
+                        "en": "Structure 3: เพราะฉะนั้น (Therefore)",
+                        "th": "โครงสร้าง 3: เพราะฉะนั้น",
+                        "fa": "ساختار ۳: بنابراین"
+                    },
+                    "grammar": {
+                        "pattern": "Clause + เพราะฉะนั้น + Clause",
+                        "note": {
+                            "en": "ใช้ เพราะฉะนั้น to express 'therefore' or 'for that reason'.",
+                            "th": "ใช้ เพราะฉะนั้น เพื่อแสดง 'เพราะฉะนั้น'",
+                            "fa": "از เพราะฉะนั้น برای بیان 'بنابراین' استفاده کنید."
+                        }
+                    }
+                },
+                {
+                    "type": "paragraph",
+                    "heading": {
+                        "en": "Example Sentences with เพราะฉะนั้น",
+                        "th": "ประโยคตัวอย่างด้วย เพราะฉะนั้น",
+                        "fa": "جملات مثال با بنابراین"
+                    },
+                    "sentences": [
+                        {
+                            "source": "ฉันสัญญากับเขาแล้วว่าจะไปดูหนังกับเขา เพราะฉะนั้นฉันต้องไป",
+                            "wordIds": [ "ฉัน", "สัญญา", "กับ", "เขา", "แล้ว", "ว่า", "จะ", "ไป", "ดูหนัง", "กับ", "เขา", "เพราะฉะนั้น", "ฉัน", "ต้อง", "ไป" ],
+                            "translations": { "en": "I promised him that I would go watch a movie with him, therefore I have to go.", "fa": "به او قول دادم با او فیلم ببینم، بنابراین باید بروم." }
+                        },
+                        {
+                            "source": "การโกหกเป็นสิ่งที่ไม่ดี เพราะฉะนั้นเราไม่ควรโกหก",
+                            "wordIds": [ "การ", "โกหก", "เป็น", "สิ่ง", "ที่", "ไม่", "ดี", "เพราะฉะนั้น", "เรา", "ไม่", "ควร", "โกหก" ],
+                            "translations": { "en": "Lying is a bad thing, therefore we should not lie.", "fa": "دروغ گفتن چیز بدی است، بنابراین نباید دروغ بگوییم." }
+                        },
+                        {
+                            "source": "วันพรุ่งนี้มีประชุมสำคัญ เพราะฉะนั้นเราต้องเตรียมตัวให้ดี",
+                            "wordIds": [ "วันพรุ่งนี้", "มี", "ประชุม", "สำคัญ", "เพราะฉะนั้น", "เรา", "ต้อง", "เตรียมตัว", "ให้", "ดี" ],
+                            "translations": { "en": "There's an important meeting tomorrow, therefore we need to prepare well.", "fa": "فردا یک جلسه مهم داریم، بنابراین باید خوب آماده شویم." }
+                        },
+                        {
+                            "source": "ช่วงนี้ฝนตกหนักทุกวัน เพราะฉะนั้นอย่าลืมพกร่มก่อนออกจากบ้าน",
+                            "wordIds": [ "ช่วงนี้", "ฝนตกหนัก", "ทุก", "วัน", "เพราะฉะนั้น", "อย่า", "ลืม", "พกร่ม", "ก่อน", "ออก", "จาก", "บ้าน" ],
+                            "translations": { "en": "It's been raining heavily every day recently, therefore don't forget to carry an umbrella before leaving the house.", "fa": "این روزها هر روز باران شدید می‌بارد، بنابراین فراموش نکن قبل از بیرون رفتن چتر همراه داشته باشی." }
+                        }
+                    ]
+                },
+                {
+                    "type": "paragraph",
+                    "heading": {
+                        "en": "Structure 4: เนื่องจาก (Due to / Because of)",
+                        "th": "โครงสร้าง 4: เนื่องจาก",
+                        "fa": "ساختار ۴: به دلیل"
+                    },
+                    "grammar": {
+                        "pattern": "เนื่องจาก + Cause + Effect",
+                        "note": {
+                            "en": "ใช้ เนื่องจาก to indicate the reason for something, like 'due to' or 'because of'.",
+                            "th": "ใช้ เนื่องจาก เพื่อบอกสาเหตุ",
+                            "fa": "از เนื่องจาก برای نشان دادن دلیل چیزی استفاده کنید."
+                        }
+                    }
+                },
+                {
+                    "type": "paragraph",
+                    "heading": {
+                        "en": "Example Sentences with เนื่องจาก",
+                        "th": "ประโยคตัวอย่างด้วย เนื่องจาก",
+                        "fa": "جملات مثال با به دلیل"
+                    },
+                    "sentences": [
+                        {
+                            "source": "เนื่องจากช่วงนี้ฝนตกหนักการขี่มอเตอร์ไซค์ก็เลยไม่สะดวก",
+                            "wordIds": [ "เนื่องจาก", "ช่วงนี้", "ฝนตกหนัก", "การ", "ขี่มอเตอร์ไซค์", "ก็เลย", "ไม่", "สะดวก" ],
+                            "translations": { "en": "Due to the heavy rain recently, riding a motorcycle is inconvenient.", "fa": "به دلیل باران شدید این روزها، موتورسواری راحت نیست." }
+                        },
+                        {
+                            "source": "เนื่องจากสถานการณ์โควิดทำให้หลายคนตกงาน",
+                            "wordIds": [ "เนื่องจาก", "สถานการณ์", "โควید", "ทำให้", "หลาย", "คน", "ตกงาน" ],
+                            "translations": { "en": "Due to the Covid situation, many people lost their jobs.", "fa": "به دلیل وضعیت کووید، بسیاری از مردم بیکار شدند." }
+                        },
+                        {
+                            "source": "เนื่องจากจำนวนพนักงานของเราไม่พอ ทำให้การบริการล่าช้า",
+                            "wordIds": [ "เนื่องจาก", "จำนวน", "พนักงาน", "ของ", "เรา", "ไม่", "พอ", "ทำให้", "การ", "บริการ", "ล่าช้า" ],
+                            "translations": { "en": "Due to our insufficient number of staff, service is delayed.", "fa": "به دلیل تعداد ناکافی کارمندان ما، خدمات با تاخیر انجام می‌شود." }
+                        },
+                        {
+                            "source": "เนื่องจากสถานการณ์การระบาดของโควิด จึงขอให้ทุกท่านสวมหน้ากากอนามัยขณะอยู่บนรถไฟฟ้า",
+                            "wordIds": [ "เนื่องจาก", "สถานการณ์", "การระบาด", "ของ", "โควید", "จึง", "ขอ", "ให้", "ทุกท่าน", "สวม", "หน้ากากอนามัย", "ขณะ", "อยู่", "บน", "รถไฟฟ้า" ],
+                            "translations": { "en": "Due to the Covid outbreak situation, please wear face masks while on the train.", "fa": "به دلیل وضعیت شیوع کووید، لطفاً هنگام حضور در قطار ماسک صورت بپوشید." }
+                        }
+                    ]
+                },
+                {
+                    "type": "paragraph",
+                    "heading": {
+                        "en": "Exercise: Fill in the Blanks",
+                        "th": "แบบฝึกหัด: เติมคำในช่องว่าง",
+                        "fa": "تمرین: جاهای خالی را پر کنید"
+                    },
+                    "sentences": [
+                        {
+                            "source": "พรุ่งนี้คุณมีนัดคุณควรรีบนอน……จะตื่นสาย",
+                            "wordIds": [ "พรุ่งนี้", "คุณ", "มี", "นัด", "คุณ", "ควร", "รีบ", "นอน", ".........", "จะ", "ตื่นสาย" ],
+                            "translations": { "en": "You have an appointment tomorrow. You should sleep early... you will wake up late.", "fa": "فردا قرار داری. باید زود بخوابی... دیر بیدار می‌شوی." }
+                        },
+                        {
+                            "source": "…….ฝนยังตกเราคงต้องยกเลิกทริปไปว่ายน้ำที่ชายทะเล",
+                            "wordIds": [ ".........", "ฝน", "ยัง", "ตก", "เรา", "คง", "ต้อง", "ยกเลิก", "ทริป", "ไป", "ว่ายน้ำ", "ที่", "ชายทะเล" ],
+                            "translations": { "en": "... it's still raining, we'll have to cancel the trip to swim at the beach.", "fa": "... هنوز باران می‌بارد، باید سفر شنا به ساحل را لغو کنیم." }
+                        },
+                        {
+                            "source": "……. อาหารร้านนี้ราคาแพงมากแต่ผมยังอยากไปเพราะมันอร่อยจริงๆ",
+                            "wordIds": [ ".........", "อาหาร", "ร้านนี้", "ราคา", "แพง", "มาก", "แต่", "ผม", "ยัง", "อยาก", "ไป", "เพราะ", "มัน", "อร่อย", "จริงๆ" ],
+                            "translations": { "en": "... this restaurant is very expensive, but I still want to go because it's really delicious.", "fa": "... این رستوران خیلی گران است، اما هنوز می‌خواهم بروم چون واقعاً خوشمزه است." }
+                        },
+                        {
+                            "source": "เค้าฝึกพูดภาษาไทยทุกวัน…….พูดเก่งเหมือนคนไทย",
+                            "wordIds": [ "เค้า", "ฝึก", "พูด", "ภาษาไทย", "ทุก", "วัน", ".........", "พูด", "เก่ง", "เหมือน", "คนไทย" ],
+                            "translations": { "en": "He practices speaking Thai every day... he speaks as well as a Thai person.", "fa": "او هر روز صحبت کردن تایلندی را تمرین می‌کند... مثل یک تایلندی خوب صحبت می‌کند." }
+                        },
+                        {
+                            "source": "…….ผมจะทำงานเสร็จ…….สี่ทุ่มแล้ว",
+                            "wordIds": [ ".........", "ผม", "จะ", "ทำงาน", "เสร็จ", ".........", "สี่", "ทุ่ม", "แล้ว" ],
+                            "translations": { "en": "... I will finish work... it will be 10 PM.", "fa": "... کارم تمام می‌شود... ساعت ۱۰ شب است." }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "sectionId": "ls7-lesson-5",
+            "heading": {
+                "en": "Lesson 5: Cost of Living",
+                "th": "บทที่ 5: ค่าครองชีพ",
+                "fa": "درس ۵: هزینه زندگی"
+            },
+            "activity": {
+                "words": true,
+                "sentences": true
+            },
+            "content": [
+                {
+                    "type": "words",
+                    "heading": {
+                        "en": "Cost of Living Vocabulary",
+                        "th": "คำศัพท์ค่าครองชีพ",
+                        "fa": "واژگان هزینه زندگی"
+                    },
+                    "wordIds": [ "ค่า", "ค่าน้ำ", "ค่าไฟ", "ค่าเช่า", "ค่าเข้า", "ค่ารถ", "ค่าครองชีพ", "ค่าเทอม", "ชีวิต", "ของกินของใช้", "สตรีทฟู้ด", "ย้ายไป/มา", "เพื่อนบ้าน", "อื่นๆ", "ไม่......เลย", "ของใช้", "ตลาดสด", "ส่วนใหญ่", "คนต่างชาติ", "ไม่ค่อย" ]
+                },
+                {
+                    "type": "paragraph",
+                    "heading": {
+                        "en": "Structure 1: ส่วนใหญ่ (Most of)",
+                        "th": "โครงสร้าง 1: ส่วนใหญ่",
+                        "fa": "ساختار ۱: بیشتر"
+                    },
+                    "grammar": {
+                        "pattern": "Noun + ส่วนใหญ่",
+                        "note": {
+                            "en": "ใช้ ส่วนใหญ่ to mean 'most of' a group.",
+                            "th": "ใช้ ส่วนใหญ่ แปลว่า 'ส่วนใหญ่' ของกลุ่ม",
+                            "fa": "از ส่วนใหญ่ برای 'بیشتر' یک گروه استفاده کنید."
+                        }
+                    }
+                },
+                {
+                    "type": "paragraph",
+                    "heading": {
+                        "en": "Example Sentences with ส่วนใหญ่",
+                        "th": "ประโยคตัวอย่างด้วย ส่วนใหญ่",
+                        "fa": "جملات مثال با بیشتر"
+                    },
+                    "sentences": [
+                        {
+                            "source": "นักเรียนส่วนใหญ่ที่โรงเรียนเป็นนักเรียนที่มีวิชาเรียน",
+                            "wordIds": [ "นักเรียน", "ส่วนใหญ่", "ที่", "โรงเรียน", "เป็น", "นักเรียน", "ที่", "มี", "วิชาเรียน" ],
+                            "translations": { "en": "Most students at the school are diligent students.", "fa": "بیشتر دانش‌آموزان در مدرسه دانش‌آموزان درسخوانی هستند." }
+                        },
+                        {
+                            "source": "อาหารภาคเหนือส่วนใหญ่ไม่เผ็ด",
+                            "wordIds": [ "อาหาร", "ภาคเหนือ", "ส่วนใหญ่", "ไม่", "เผ็ด" ],
+                            "translations": { "en": "Most northern food is not spicy.", "fa": "بیشتر غذای شمال تند نیست." }
+                        },
+                        {
+                            "source": "เพื่อนบ้านส่วนใหญ่ของเจนเป็นชาวจีน",
+                            "wordIds": [ "เพื่อนบ้าน", "ส่วนใหญ่", "ของ", "เจน", "เป็น", "ชาวจีน" ],
+                            "translations": { "en": "Most of Jane's neighbors are Chinese.", "fa": "بیشتر همسایه‌های جین چینی هستند." }
+                        }
+                    ]
+                },
+                {
+                    "type": "paragraph",
+                    "heading": {
+                        "en": "Structure 2: ไม่ค่อย (Not quite / Not really)",
+                        "th": "โครงสร้าง 2: ไม่ค่อย",
+                        "fa": "ساختار ۲: نه خیلی"
+                    },
+                    "grammar": {
+                        "pattern": "ไม่ค่อย + Adjective/Adverb",
+                        "note": {
+                            "en": "ใช้ ไม่ค่อย to mean 'not very' or 'not really'.",
+                            "th": "ใช้ ไม่ค่อย แปลว่า 'ไม่ค่อย'",
+                            "fa": "از ไม่ค่อย برای 'نه خیلی' استفاده کنید."
+                        }
+                    }
+                },
+                {
+                    "type": "paragraph",
+                    "heading": {
+                        "en": "Example Sentences with ไม่ค่อย",
+                        "th": "ประโยคตัวอย่างด้วย ไม่ค่อย",
+                        "fa": "جملات مثال با نه خیلی"
+                    },
+                    "sentences": [
+                        {
+                            "source": "วันนี้อากาศไม่ค่อยร้อนเราไปเดินซื้อของที่ตลาดนัดกันไหม",
+                            "wordIds": [ "วันนี้", "อากาศ", "ไม่ค่อย", "ร้อน", "เรา", "ไป", "เดิน", "ซื้อ", "ของ", "ที่", "ตลาดนัด", "กัน", "ไหม" ],
+                            "translations": { "en": "It's not very hot today, shall we go walk and shop at the market?", "fa": "امروز هوا خیلی گرم نیست، بریم بازار خرید کنیم؟" }
+                        },
+                        {
+                            "source": "ของใช้ที่นี่ราคาไม่ค่อยแพงแต่ไม่แน่ใจว่าคุณภาพดีหรือเปล่า",
+                            "wordIds": [ "ของใช้", "ที่นี่", "ราคา", "ไม่ค่อย", "แพง", "แต่", "ไม่", "แน่ใจ", "ว่า", "คุณภาพ", "ดี", "หรือ", "เปล่า" ],
+                            "translations": { "en": "Household items here are not very expensive, but I'm not sure if the quality is good.", "fa": "وسایل خانه اینجا خیلی گران نیست، اما مطمئن نیستم کیفیت خوب است یا نه." }
+                        },
+                        {
+                            "source": "ฉันยังไม่ค่อยหิว",
+                            "wordIds": [ "ฉัน", "ยัง", "ไม่ค่อย", "หิว" ],
+                            "translations": { "en": "I'm not very hungry yet.", "fa": "هنوز خیلی گرسنه نیستم." }
+                        }
+                    ]
+                },
+                {
+                    "type": "paragraph",
+                    "heading": {
+                        "en": "Structure 3: ย้ายไป/มา (Move to)",
+                        "th": "โครงสร้าง 3: ย้ายไป/มา",
+                        "fa": "ساختار ۳: نقل مکان کردن به"
+                    },
+                    "grammar": {
+                        "pattern": "ย้ายไป/มา + Location",
+                        "note": {
+                            "en": "ใช้ ย้ายไป for moving to a place, ย้ายมา for moving from a place.",
+                            "th": "ใช้ ย้ายไป สำหรับย้ายไปที่ไหนสักแห่ง, ย้ายมา สำหรับย้ายมาจากที่ไหนสักแห่ง",
+                            "fa": "از ย้ายไป برای نقل مکان به جایی، از ย้ายมา برای نقل مکان از جایی استفاده کنید."
+                        }
+                    }
+                },
+                {
+                    "type": "paragraph",
+                    "heading": {
+                        "en": "Example Sentences with ย้ายไป/มา",
+                        "th": "ประโยคตัวอย่างด้วย ย้ายไป/มา",
+                        "fa": "جملات مثال با نقل مکان کردن"
+                    },
+                    "sentences": [
+                        {
+                            "source": "เค้าเพิ่งย้ายมาจากประเทศเกาหลีใต้",
+                            "wordIds": [ "เค้า", "เพิ่ง", "ย้ายมา", "จาก", "ประเทศ", "เกาหลีใต้" ],
+                            "translations": { "en": "He just moved from South Korea.", "fa": "او تازه از کره جنوبی نقل مکان کرده است." }
+                        },
+                        {
+                            "source": "เดือนหน้าสามีต้องย้ายไปที่ทำงานใหม่แถวชานเมือง",
+                            "wordIds": [ "เดือนหน้า", "สามี", "ต้อง", "ย้ายไป", "ที่ทำงาน", "ใหม่", "แถว", "ชานเมือง" ],
+                            "translations": { "en": "Next month my husband has to move to his new workplace in the suburbs.", "fa": "ماه آینده شوهرم باید به محل کار جدیدش در حومه شهر نقل مکان کند." }
+                        },
+                        {
+                            "source": "ครอบครัวของเราย้ายไปมาหลายประเทศ",
+                            "wordIds": [ "ครอบครัว", "ของ", "เรา", "ย้ายไปมา", "หลาย", "ประเทศ" ],
+                            "translations": { "en": "Our family has moved to many countries.", "fa": "خانواده ما به کشورهای زیادی نقل مکان کرده است." }
+                        }
+                    ]
+                },
+                {
+                    "type": "paragraph",
+                    "heading": {
+                        "en": "Structure 4: อื่นๆ (Other)",
+                        "th": "โครงสร้าง 4: อื่นๆ",
+                        "fa": "ساختار ۴: دیگر"
+                    },
+                    "grammar": {
+                        "pattern": "Classifier + อื่นๆ",
+                        "note": {
+                            "en": "ใช้ อื่นๆ to mean 'other' or 'others'.",
+                            "th": "ใช้ อื่นๆ แปลว่า 'อื่นๆ'",
+                            "fa": "از อื่นๆ برای 'دیگر' استفاده کنید."
+                        }
+                    }
+                },
+                {
+                    "type": "paragraph",
+                    "heading": {
+                        "en": "Example Sentences with อื่นๆ",
+                        "th": "ประโยคตัวอย่างด้วย อื่นๆ",
+                        "fa": "جملات مثال با دیگر"
+                    },
+                    "sentences": [
+                        {
+                            "source": "เพื่อนในห้องเรียนคนหนึ่งพูดไทยเก่งมาก แต่คนอื่นๆพูดได้แบบงูๆปลาๆ",
+                            "wordIds": [ "เพื่อน", "ใน", "ห้องเรียน", "คนหนึ่ง", "พูด", "ไทย", "เก่ง", "มาก", "แต่", "คนอื่นๆ", "พูด", "ได้", "แบบ", "งูๆปลาๆ" ],
+                            "translations": { "en": "One friend in the class speaks Thai very well, but the others speak just a little.", "fa": "یکی از دوستان در کلاس خیلی خوب تایلندی صحبت می‌کند، اما دیگران فقط کمی صحبت می‌کنند." }
+                        },
+                        {
+                            "source": "ในภาคเหนือฉันคิดว่าอยู่เชียงใหม่สะดวกสบายที่สุดเพราะจังหวัดอื่นๆมันเงียบเกินไป",
+                            "wordIds": [ "در", "ภาคเหนือ", "ฉัน", "คิดว่า", "อยู่", "เชียงใหม่", "สะดวกสบาย", "ที่สุด", "เพราะ", "จังหวัด", "อื่นๆ", "มัน", "เงียบ", "เกินไป" ],
+                            "translations": { "en": "In the north, I think living in Chiang Mai is the most convenient because other provinces are too quiet.", "fa": "در شمال، فکر می‌کنم زندگی در چیانگ مای راحت‌ترین است چون استان‌های دیگر خیلی ساکت هستند." }
+                        },
+                        {
+                            "source": "ฉันชอบกินส้มตำเจ้านี้เพราะเจ้าอื่นๆไม่ค่อยสะอาด",
+                            "wordIds": [ "ฉัน", "ชอบ", "กิน", "ส้มตำ", "เจ้านี้", "เพราะ", "เจ้า", "อื่นๆ", "ไม่ค่อย", "สะอาด" ],
+                            "translations": { "en": "I like eating papaya salad from this shop because other shops are not very clean.", "fa": "من دوست دارم سالاد پاپایا از این فروشگاه بخورم چون فروشگاه‌های دیگر خیلی تمیز نیستند." }
+                        }
+                    ]
+                },
+                {
+                    "type": "paragraph",
+                    "heading": {
+                        "en": "Structure 5: ไม่...เลย (Not at all)",
+                        "th": "โครงสร้าง 5: ไม่...เลย",
+                        "fa": "ساختار ۵: اصلاً نه"
+                    },
+                    "grammar": {
+                        "pattern": "ไม่ + Verb/Adjective/Adverb + เลย",
+                        "note": {
+                            "en": "ใช้ ไม่...เลย to emphasize negation, meaning 'not at all'.",
+                            "th": "ใช้ ไม่...เลย เพื่อเน้นการปฏิเสธ",
+                            "fa": "از ไม่...เลย برای تأکید بر نفی استفاده کنید."
+                        }
+                    }
+                },
+                {
+                    "type": "paragraph",
+                    "heading": {
+                        "en": "Example Sentences with ไม่...เลย",
+                        "th": "ประโยคตัวอย่างด้วย ไม่...เลย",
+                        "fa": "جملات مثال با اصلاً نه"
+                    },
+                    "sentences": [
+                        {
+                            "source": "ทำไมฝนไม่ตกเลย อากาศร้อนมากฉันอยากให้ฝนตก",
+                            "wordIds": [ "ทำไม", "ฝน", "ไม่", "ตก", "เลย", "อากาศ", "ร้อน", "มาก", "ฉัน", "อยาก", "ให้", "ฝน", "ตก" ],
+                            "translations": { "en": "Why isn't it raining at all? It's very hot, I want it to rain.", "fa": "چرا اصلاً باران نمی‌بارد؟ هوا خیلی گرم است، می‌خواهم باران ببارد." }
+                        },
+                        {
+                            "source": "ค่าเช่าบ้านที่เชียงใหม่ไม่แพงเลยถ้าเปรียบเทียบกับกรุงเทพ",
+                            "wordIds": [ "ค่าเช่า", "บ้าน", "ที่", "เชียงใหม่", "ไม่", "แพง", "เลย", "ถ้า", "เปรียบเทียบ", "กับ", "กรุงเทพ" ],
+                            "translations": { "en": "House rent in Chiang Mai is not expensive at all compared to Bangkok.", "fa": "اجاره خانه در چیانگ مای در مقایسه با بانکوک اصلاً گران نیست." }
+                        },
+                        {
+                            "source": "ตั้งแต่เล็กจนโตฉันไม่เคยย้ายบ้านเลย",
+                            "wordIds": [ "ตั้งแต่", "เล็ก", "จน", "โต", "ฉัน", "ไม่", "เคย", "ย้าย", "บ้าน", "เลย" ],
+                            "translations": { "en": "From childhood until now, I've never moved house at all.", "fa": "از بچگی تا حالا، اصلاً خانه عوض نکرده‌ام." }
+                        }
+                    ]
+                },
+                {
+                    "type": "paragraph",
+                    "heading": {
+                        "en": "Reading: Cost of Living in Thailand",
+                        "th": "บทอ่าน: ค่าครองชีพในประเทศไทย",
+                        "fa": "مطالعه: هزینه زندگی در تایلند"
+                    },
+                    "sentences": [
+                        {
+                            "source": "เดือนที่แล้วค่าน้ำค่าไฟเพิ่มขึ้นกว่าเดือนก่อนหลายเท่า เพราะเป็นช่วงเทศกาลวันหยุดยาว พวกเราอยู่บ้านเปิดแอร์ทั้งวันทั้งคืน",
+                            "wordIds": [ "เดือนที่แล้ว", "ค่าน้ำ", "ค่าไฟ", "เพิ่มขึ้น", "กว่า", "เดือนก่อน", "หลายเท่า", "เพราะ", "เป็น", "ช่วง", "เทศกาล", "วันหยุดยาว", "พวกเรา", "อยู่", "บ้าน", "เปิดแอร์", "ทั้งวันทั้งคืน" ],
+                            "translations": { "en": "Last month, the water and electricity bills increased many times compared to the previous month because it was the long holiday festival period. We stayed home with the AC on all day and night.", "fa": "ماه گذشته، قبض آب و برق چندین برابر نسبت به ماه قبل افزایش یافت چون دوره تعطیلات طولانی جشن بود. ما در خانه ماندیم و تمام روز و شب کولر روشن بود." }
+                        },
+                        {
+                            "source": "ประเทศไทยเป็นประเทศที่มีค่าครองชีพไม่แพง จึงทำให้เป็นประเทศที่นักท่องเที่ยวสนใจและเดินทางมาเที่ยวเป็นจำนวนมาก",
+                            "wordIds": [ "ประเทศไทย", "เป็น", "ประเทศ", "ที่", "มี", "ค่าครองชีพ", "ไม่แพง", "จึง", "ทำให้", "เป็น", "ประเทศ", "ที่", "นักท่องเที่ยว", "สนใจ", "และ", "เดินทาง", "มา", "เที่ยว", "เป็น", "จำนวนมาก" ],
+                            "translations": { "en": "Thailand is a country with a low cost of living, which makes it a country that tourists are interested in and travel to in large numbers.", "fa": "تایلند کشوری با هزینه زندگی پایین است، که آن را به کشوری تبدیل می‌کند که توریست‌ها به آن علاقه‌مند هستند و به تعداد زیاد به آن سفر می‌کنند." }
+                        },
+                        {
+                            "source": "ปกติถ้ามีเวลาว่างฉันจะไปเดินที่ตลาดเพื่อซื้อของกินของใช้ ถ้าเปรียบเทียบกับห้างอาหารผลไม้ที่ตลาดถูกกว่ามาก แต่แค่คุณต้องมีความอดทนมากๆตอนที่เดินตลาด เพราะมันทั้งร้อนและคนเยอะ",
+                            "wordIds": [ "ปกติ", "ถ้า", "มี", "เวลาว่าง", "ฉัน", "จะ", "ไป", "เดิน", "ที่", "ตลาด", "เพื่อ", "ซื้อ", "ของกินของใช้", "ถ้า", "เปรียบเทียบ", "กับ", "ห้าง", "อาหาร", "ผลไม้", "ที่", "ตลาด", "ถูกกว่า", "มาก", "แต่", "แค่", "คุณ", "ต้อง", "มี", "ความอดทน", "มากๆ", "ตอนที่", "เดิน", "ตลาด", "เพราะ", "มัน", "ทั้ง", "ร้อน", "และ", "คน", "เยอะ" ],
+                            "translations": { "en": "Normally, if I have free time, I go to the market to buy groceries. Compared to the mall, food and fruit at the market are much cheaper, but you need to be very patient when walking through the market because it's both hot and crowded.", "fa": "معمولاً، اگر وقت آزاد داشته باشم، برای خرید مواد غذایی به بازار می‌روم. در مقایسه با فروشگاه بزرگ، غذا و میوه در بازار خیلی ارزان‌تر است، اما باید هنگام قدم زدن در بازار خیلی صبور باشید چون هم گرم است و هم شلوغ." }
+                        },
+                        {
+                            "source": "ถ้าคุณใช้ชีวิตอยู่ในประเทศไทย สตรีทฟู้ดเป็นอะไรที่คุณต้องลอง อย่างเช่น ข้าวเหนียว ส้มตำ ไก่ย่าง ผลไม้ รถเข็น และกาแฟจากรถเข็น",
+                            "wordIds": [ "ถ้า", "คุณ", "ใช้ชีวิต", "อยู่", "ใน", "ประเทศไทย", "สตรีทฟู้ด", "เป็น", "อะไร", "ที่", "คุณ", "ต้องลอง", "อย่างเช่น", "ข้าวเหนียว", "ส้มตำ", "ไก่ย่าง", "ผลไม้", "รถเข็น", "และ", "กาแฟ", "จาก", "รถเข็น" ],
+                            "translations": { "en": "If you live in Thailand, street food is something you must try, such as sticky rice, papaya salad, grilled chicken, fruit, carts, and coffee from carts.", "fa": "اگر در تایلند زندگی می‌کنید، غذای خیابانی چیزی است که باید امتحان کنید، مانند برنج چسبناک، سالاد پاپایا، مرغ کبابی، میوه، گاری‌ها و قهوه از گاری‌ها." }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "sectionId": "ls7-lesson-6",
+            "heading": {
+                "en": "Lesson 6: Daily Life",
+                "th": "บทที่ 6: ชีวิตประจำวัน",
+                "fa": "درس ۶: زندگی روزمره"
+            },
+            "activity": {
+                "words": true,
+                "sentences": true
+            },
+            "content": [
+                {
+                    "type": "words",
+                    "heading": {
+                        "en": "Daily Life Vocabulary",
+                        "th": "คำศัพท์ชีวิตประจำวัน",
+                        "fa": "واژگان زندگی روزمره"
+                    },
+                    "wordIds": [ "เข้าใจผิด", "จำคนผิด", "พูดผิด", "โทรผิด", "จำเวลาผิด", "ฟังผิด", "งานด่วน", "วางแผน", "น่าเบื่อ", "ชีวิตแต่งงาน", "พอๆกับ", "ไทม์โซน", "มักจะ", "อุตส่าห์", "ชีวิตประจำวัน", "การดำเนินชีวิต", "ดูไม่ออก", "พูดไม่ออก", "ฟังไม่ออก", "คิดไม่ออก", "เพื่อที่จะ", "แปลกใหม่", "ออนไลน์", "เรื่อยๆ" ]
+                },
+                {
+                    "type": "paragraph",
+                    "heading": {
+                        "en": "Structure 1: พอๆ กับ (As same as)",
+                        "th": "โครงสร้าง 1: พอๆ กับ",
+                        "fa": "ساختار ۱: به اندازه"
+                    },
+                    "grammar": {
+                        "pattern": "พอๆ กับ + Noun",
+                        "note": {
+                            "en": "ใช้ พอๆ กับ to mean 'as same as' or 'equal to'.",
+                            "th": "ใช้ พอๆ กับ แปลว่า 'พอๆ กับ'",
+                            "fa": "از พอๆ กับ برای 'به اندازه' استفاده کنید."
+                        }
+                    }
+                },
+                {
+                    "type": "paragraph",
+                    "heading": {
+                        "en": "Example Sentences with พอๆ กับ",
+                        "th": "ประโยคตัวอย่างด้วย พอๆ กับ",
+                        "fa": "جملات مثال با به اندازه"
+                    },
+                    "sentences": [
+                        {
+                            "source": "เรียนออนไลน์สนุกพอๆ กับเรียนที่โรงเรียน",
+                            "wordIds": [ "เรียน", "ออนไลน์", "สนุก", "พอๆ กับ", "เรียน", "ที่", "โรงเรียน" ],
+                            "translations": { "en": "Online learning is as fun as learning at school.", "fa": "یادگیری آنلاین به اندازه یادگیری در مدرسه مفرح است." }
+                        },
+                        {
+                            "source": "จังหวัดภูเก็ตนักท่องเที่ยวเยอะพอๆ กับกรุงเทพ",
+                            "wordIds": [ "จังหวัด", "ภูเก็ต", "นักท่องเที่ยว", "เยอะ", "พอๆ กับ", "กรุงเทพ" ],
+                            "translations": { "en": "Phuket province has as many tourists as Bangkok.", "fa": "استان پوکت به اندازه بانکوک توریست دارد." }
+                        },
+                        {
+                            "source": "อาหารสองร้านนี้ราคาแพงพอๆ กัน",
+                            "wordIds": [ "อาหาร", "สอง", "ร้าน", "นี้", "ราคา", "แพง", "พอๆ กัน" ],
+                            "translations": { "en": "These two restaurants are equally expensive.", "fa": "این دو رستوران به همان اندازه گران هستند." }
+                        }
+                    ]
+                },
+                {
+                    "type": "paragraph",
+                    "heading": {
+                        "en": "Structure 2: อุตส่าห์ (To make an effort to)",
+                        "th": "โครงสร้าง 2: อุตส่าห์",
+                        "fa": "ساختار ۲: تلاش کردن برای"
+                    },
+                    "grammar": {
+                        "pattern": "อุตส่าห์ + Verb",
+                        "note": {
+                            "en": "ใช้ อุตส่าห์ to indicate making an effort to do something, often with disappointing results.",
+                            "th": "ใช้ อุตส่าห์ เพื่อแสดงความพยายามทำสิ่งหนึ่ง ซึ่งมักจะได้ผลที่น่าผิดหวัง",
+                            "fa": "از อุตส่าห์ برای نشان دادن تلاش برای انجام کاری استفاده کنید، اغلب با نتایج ناامیدکننده."
+                        }
+                    }
+                },
+                {
+                    "type": "paragraph",
+                    "heading": {
+                        "en": "Example Sentences with อุตส่าห์",
+                        "th": "ประโยคตัวอย่างด้วย อุตส่าห์",
+                        "fa": "جملات مثال با تلاش کردن"
+                    },
+                    "sentences": [
+                        {
+                            "source": "ฉันอุตส่าห์ทำอาหารแต่ไม่มีใครกินเลย",
+                            "wordIds": [ "ฉัน", "อุตส่าห์", "ทำอาหาร", "แต่", "ไม่มี", "ใคร", "กิน", "เลย" ],
+                            "translations": { "en": "I made the effort to cook, but no one ate it.", "fa": "من تلاش کردم غذا درست کنم، اما کسی نخورد." }
+                        },
+                        {
+                            "source": "เค้าอุตส่าห์มารับคุณที่บ้านคุณน่าจะไปกับเขานะ",
+                            "wordIds": [ "เค้า", "อุตส่าห์", "มา", "รับ", "คุณ", "ที่", "บ้าน", "คุณ", "น่าจะ", "ไป", "กับ", "เขา", "นะ" ],
+                            "translations": { "en": "He made the effort to come pick you up at home; you should go with him.", "fa": "او تلاش کرد بیاید شما را از خانه بردارد؛ باید با او بروی." }
+                        },
+                        {
+                            "source": "อ้าวเธอไม่มาแล้วเหรอ ฉันอุตส่าห์รอ",
+                            "wordIds": [ "อ้าว", "เธอ", "ไม่", "มา", "แล้ว", "เหรอ", "ฉัน", "อุตส่าห์", "รอ" ],
+                            "translations": { "en": "Oh, you're not coming? I made the effort to wait.", "fa": "اوه، نمی‌آیی؟ من تلاش کردم منتظر بمانم." }
+                        }
+                    ]
+                },
+                {
+                    "type": "paragraph",
+                    "heading": {
+                        "en": "Structure 3: เรื่อยๆ (Continuously)",
+                        "th": "โครงสร้าง 3: เรื่อยๆ",
+                        "fa": "ساختار ۳: به طور مداوم"
+                    },
+                    "grammar": {
+                        "pattern": "Verb + เรื่อยๆ",
+                        "note": {
+                            "en": "ใช้ เรื่อยๆ to indicate continuous action without stopping.",
+                            "th": "ใช้ เรื่อยๆ เพื่อบอกถึงการกระทำที่ต่อเนื่องไม่หยุด",
+                            "fa": "از เรื่อยๆ برای نشان دادن عمل مداوم بدون توقف استفاده کنید."
+                        }
+                    }
+                },
+                {
+                    "type": "paragraph",
+                    "heading": {
+                        "en": "Example Sentences with เรื่อยๆ",
+                        "th": "ประโยคตัวอย่างด้วย เรื่อยๆ",
+                        "fa": "جملات مثال با به طور مداوم"
+                    },
+                    "sentences": [
+                        {
+                            "source": "ผมจะเรียนภาษาไทยต่อเรื่อยๆ",
+                            "wordIds": [ "ผม", "จะ", "เรียน", "ภาษาไทย", "ต่อ", "เรื่อยๆ" ],
+                            "translations": { "en": "I will continue studying Thai continuously.", "fa": "من به طور مداوم به یادگیری تایلندی ادامه خواهم داد." }
+                        },
+                        {
+                            "source": "ขับไปเรื่อยๆจนถึงทางแยกแล้วก็เลี้ยวซ้าย",
+                            "wordIds": [ "ขับ", "ไป", "เรื่อยๆ", "จน", "ถึง", "ทางแยก", "แล้ว", "ก็", "เลี้ยว", "ซ้าย" ],
+                            "translations": { "en": "Drive continuously until you reach the intersection, then turn left.", "fa": "به طور مداوم رانندگی کن تا به چهارراه برسی، بعد به چپ بپیچ." }
+                        },
+                        {
+                            "source": "ผมนั่งทำงานไปเรื่อยๆจนถึงเวลากลับบ้าน",
+                            "wordIds": [ "ผม", "นั่ง", "ทำงาน", "ไป", "เรื่อยๆ", "จน", "ถึง", "เวลา", "กลับ", "บ้าน" ],
+                            "translations": { "en": "I sat working continuously until it was time to go home.", "fa": "نشستم و به طور مداوم کار کردم تا وقت برگشتن به خانه." }
+                        }
+                    ]
+                },
+                {
+                    "type": "paragraph",
+                    "heading": {
+                        "en": "Structure 4: เพื่อที่จะ (In order to)",
+                        "th": "โครงสร้าง 4: เพื่อที่จะ",
+                        "fa": "ساختار ۴: برای اینکه"
+                    },
+                    "grammar": {
+                        "pattern": "เพื่อที่จะ + Reason",
+                        "note": {
+                            "en": "ใช้ เพื่อที่จะ to express purpose or intention, like 'in order to'.",
+                            "th": "ใช้ เพื่อที่จะ เพื่อแสดงจุดประสงค์",
+                            "fa": "از เพื่อที่จะ برای بیان هدف یا قصد استفاده کنید."
+                        }
+                    }
+                },
+                {
+                    "type": "paragraph",
+                    "heading": {
+                        "en": "Example Sentences with เพื่อที่จะ",
+                        "th": "ประโยคตัวอย่างด้วย เพื่อที่จะ",
+                        "fa": "جملات مثال با برای اینکه"
+                    },
+                    "sentences": [
+                        {
+                            "source": "ฉันเรียนภาษาไทยเพื่อที่จะสามารถใช้ชีวิตอยู่ในเชียงใหม่และไปไหนมาไหนคนเดียวได้",
+                            "wordIds": [ "ฉัน", "เรียน", "ภาษาไทย", "เพื่อที่จะ", "สามารถ", "ใช้ชีวิต", "อยู่", "ใน", "เชียงใหม่", "และ", "ไป", "ไหน", "มา", "ไหน", "คนเดียว", "ได้" ],
+                            "translations": { "en": "I study Thai in order to be able to live in Chiang Mai and go places alone.", "fa": "تایلندی یاد می‌گیرم برای اینکه بتوانم در چیانگ مای زندگی کنم و تنها به جاهای مختلف بروم." }
+                        },
+                        {
+                            "source": "จะไปหาซื้อชุดใหม่เพื่อที่จะใส่ไปงานแต่งงานเพื่อนสนิทอาทิตย์หน้า",
+                            "wordIds": [ "จะ", "ไป", "หา", "ซื้อ", "ชุดใหม่", "เพื่อที่จะ", "ใส่", "ไป", "งานแต่งงาน", "เพื่อนสนิท", "อาทิตย์หน้า" ],
+                            "translations": { "en": "Going to buy a new dress in order to wear to my best friend's wedding next week.", "fa": "می‌روم لباس جدید بخرم برای اینکه هفته آینده به عروسی بهترین دوستم بپوشم." }
+                        },
+                        {
+                            "source": "ผมอยากทราบเบอร์โทรศัพท์ของคุณคิมเพื่อที่จะโทรไปชวนเขาไปทานข้าวครับ",
+                            "wordIds": [ "ผม", "อยาก", "ทราบ", "เบอร์โทรศัพท์", "ของ", "คุณ", "คิม", "เพื่อที่จะ", "โทร", "ไป", "ชวน", "เขา", "ไป", "ทานข้าว", "ครับ" ],
+                            "translations": { "en": "I want to know Kim's phone number in order to call and invite him to dinner.", "fa": "می‌خواهم شماره تلفن کیم را بدانم برای اینکه به او زنگ بزنم و برای شام دعوتش کنم." }
+                        }
+                    ]
+                },
+                {
+                    "type": "paragraph",
+                    "heading": {
+                        "en": "Structure 5: ไม่ออก (Have no clue)",
+                        "th": "โครงสร้าง 5: ไม่ออก",
+                        "fa": "ساختار ۵: نمی‌توانم"
+                    },
+                    "grammar": {
+                        "pattern": "Verb + ไม่ออก",
+                        "note": {
+                            "en": "ใช้ ไม่ออก after verbs to indicate inability to do something, especially with perception verbs like ดู (see), ฟัง (hear), พูด (speak), คิด (think).",
+                            "th": "ใช้ ไม่ออก หลังคำกริยาเพื่อบอกว่าไม่สามารถทำสิ่งนั้นได้ โดยเฉพาะกับกริยาการรับรู้ เช่น ดู, ฟัง, พูด, คิด",
+                            "fa": "از ไม่ออก بعد از افعال برای نشان دادن ناتوانی در انجام کاری استفاده کنید، به ویژه با افعال ادراکی مانند دیدن، شنیدن، صحبت کردن، فکر کردن."
+                        }
+                    }
+                },
+                {
+                    "type": "paragraph",
+                    "heading": {
+                        "en": "Practice with ไม่ออก",
+                        "th": "ฝึกใช้ ไม่ออก",
+                        "fa": "تمرین با ไม่ออก"
+                    },
+                    "sentences": [
+                        {
+                            "source": "ฉันดูไม่ออกว่าเค้าเป็นคนชาติอะไรเพราะเขาดูเหมือนคนไทยแต่เขาพูดภาษาอังกฤษ",
+                            "wordIds": [ "ฉัน", "ดูไม่ออก", "ว่า", "เค้า", "เป็น", "คน", "ชาติ", "อะไร", "เพราะ", "เขา", "ดู", "เหมือน", "คนไทย", "แต่", "เขา", "พูด", "ภาษาอังกฤษ" ],
+                            "translations": { "en": "I can't tell what nationality he is because he looks Thai but he speaks English.", "fa": "نمی‌توانم تشخیص دهم او چه ملیتی دارد چون شبیه تایلندی‌هاست اما انگلیسی صحبت می‌کند." }
+                        },
+                        {
+                            "source": "ผมคิดไม่ออกว่าวันหยุดนี้จะพาครอบครัวไปเที่ยวที่ไหนดี",
+                            "wordIds": [ "ผม", "คิดไม่ออก", "ว่า", "วันหยุด", "นี้", "จะ", "พา", "ครอบครัว", "ไป", "เที่ยว", "ที่", "ไหน", "ดี" ],
+                            "translations": { "en": "I can't figure out where to take my family on this holiday.", "fa": "نمی‌توانم تصمیم بگیرم خانواده را این تعطیلات کجا ببرم." }
+                        },
+                        {
+                            "source": "ครูพูดเร็วมากผมฟังไม่ออกว่าคุณพูดอะไร",
+                            "wordIds": [ "ครู", "พูด", "เร็ว", "มาก", "ผม", "ฟังไม่ออก", "ว่า", "คุณ", "พูด", "อะไร" ],
+                            "translations": { "en": "The teacher speaks very fast; I can't understand what you're saying.", "fa": "معلم خیلی سریع صحبت می‌کند؛ نمی‌توانم بفهمم چه می‌گویی." }
+                        },
+                        {
+                            "source": "ลูกชายกำลังดูการ์ตูนภาษาญี่ปุ่นผมดูไม่ออกเลย",
+                            "wordIds": [ "ลูกชาย", "กำลัง", "ดู", "การ์ตูน", "ภาษา", "ญี่ปุ่น", "ผม", "ดูไม่ออก", "เลย" ],
+                            "translations": { "en": "My son is watching a Japanese cartoon; I can't understand it at all.", "fa": "پسرم دارد کارتون ژاپنی می‌بیند؛ اصلاً نمی‌فهمم." }
+                        },
+                        {
+                            "source": "เขาดูปกติมากผมดูไม่ออกว่าเค้าเป็นโรคซึมเศร้า",
+                            "wordIds": [ "เขา", "ดู", "ปกติ", "มาก", "ผม", "ดูไม่ออก", "ว่า", "เค้า", "เป็น", "โรคซึมเศร้า" ],
+                            "translations": { "en": "He looks very normal; I can't tell that he has depression.", "fa": "او خیلی عادی به نظر می‌رسد؛ نمی‌توانم تشخیص دهم افسردگی دارد." }
+                        },
+                        {
+                            "source": "ตอนที่แฟนบอกว่าจะแต่งงานกับผมผมดีใจจนพูดไม่ออก",
+                            "wordIds": [ "ตอนที่", "แฟน", "บอก", "ว่า", "จะ", "แต่งงาน", "กับ", "ผม", "ผม", "ดีใจ", "จน", "พูดไม่ออก" ],
+                            "translations": { "en": "When my girlfriend said she would marry me, I was so happy I was speechless.", "fa": "وقتی دوستم گفت با من ازدواج می‌کند، آنقدر خوشحال بودم که بی‌زبان شدم." }
+                        },
+                        {
+                            "source": "ตอนนี้แฟนโกรธมากผมคิดไม่ออกเลยว่าผมทำอะไรผิด",
+                            "wordIds": [ "ตอนนี้", "แฟน", "โกรธ", "มาก", "ผม", "คิดไม่ออก", "เลย", "ว่า", "ผม", "ทำ", "อะไร", "ผิด" ],
+                            "translations": { "en": "My girlfriend is very angry now; I have no idea what I did wrong.", "fa": "دوستم الان خیلی عصبانی است؛ هیچ ایده‌ای ندارم چه اشتباهی کردم." }
+                        },
+                        {
+                            "source": "เสื้อตัวนี้ดูใหม่มากดูไม่ออกว่าเป็นของมือสอง",
+                            "wordIds": [ "เสื้อ", "ตัวนี้", "ดู", "ใหม่", "มาก", "ดูไม่ออก", "ว่า", "เป็น", "ของ", "มือสอง" ],
+                            "translations": { "en": "This shirt looks very new; you can't tell it's second-hand.", "fa": "این پیراهن خیلی نو به نظر می‌رسد؛ نمی‌توان فهمید دست دوم است." }
+                        },
+                        {
+                            "source": "ผมตกใจมากที่เขาพูดคำไม่สุภาพผมพูดไม่ออก",
+                            "wordIds": [ "ผม", "ตกใจ", "มาก", "ที่", "เขา", "พูด", "คำ", "ไม่สุภาพ", "ผม", "พูดไม่ออก" ],
+                            "translations": { "en": "I was so shocked that he said rude words, I was speechless.", "fa": "آنقدر شوکه شدم که کلمات بی‌ادبانه گفت، بی‌زبان شدم." }
+                        },
+                        {
+                            "source": "ผมคิดไม่ออกว่าผมวางแว่นตาไว้ที่ไหนและตอนนี้ผมยังหาไม่เจอเลย",
+                            "wordIds": [ "ผม", "คิดไม่ออก", "ว่า", "ผม", "วาง", "แว่นตา", "ไว้", "ที่", "ไหน", "และ", "ตอนนี้", "ผม", "ยัง", "หา", "ไม่", "เจอ", "เลย" ],
+                            "translations": { "en": "I have no idea where I put my glasses, and now I still can't find them.", "fa": "هیچ ایده‌ای ندارم عینکم را کجا گذاشتم، و الان هنوز نمی‌توانم پیداش کنم." }
+                        }
+                    ]
+                },
+                {
+                    "type": "paragraph",
+                    "heading": {
+                        "en": "Reading: James's Freelance Life",
+                        "th": "บทอ่าน: ชีวิตฟรีแลนซ์ของเจมส์",
+                        "fa": "مطالعه: زندگی آزادکار جیمز"
+                    },
+                    "sentences": [
+                        {
+                            "source": "ผมเป็นฟรีแลนซ์ หรือทำอาชีพอิสระ ฟังดูเหมือนว่าอาชีพนี้จะเป็นอาชีพที่น่าสนใจ แต่จริงๆแล้วผมคิดว่าชีวิตมันน่าเบื่อมากพอๆ กับชีวิตพนักงานออฟฟิศ",
+                            "wordIds": [ "ผม", "เป็น", "ฟรีแลนซ์", "หรือ", "ทำ", "อาชีพอิสระ", "ฟังดู", "เหมือน", "ว่า", "อาชีพ", "นี้", "จะ", "เป็น", "อาชีพ", "ที่", "น่าสนใจ", "แต่", "จริงๆแล้ว", "ผม", "คิดว่า", "ชีวิต", "มัน", "ن่าเบื่อ", "มาก", "พอๆ กับ", "ชีวิต", "พนักงานออฟฟิศ" ],
+                            "translations": { "en": "I'm a freelancer. It sounds like this profession would be interesting, but actually I think life is just as boring as office worker life.", "fa": "من آزادکار هستم. به نظر می‌رسد این حرفه جالب باشد، اما در واقع فکر می‌کنم زندگی به اندازه زندگی کارمندان اداری کسل‌کننده است." }
+                        },
+                        {
+                            "source": "ชีวิตประจำวันของผมนอกจากทำงานออนไลน์อยู่ที่บ้าน บางครั้งก็จะออกไปนั่งทำงานที่ร้านกาแฟบ้าง เพื่อที่จะไม่เบื่อเกินไป",
+                            "wordIds": [ "ชีวิตประจำวัน", "ของ", "ผม", "นอกจาก", "ทำงาน", "ออนไลน์", "อยู่", "ที่", "บ้าน", "บางครั้ง", "ก็", "จะ", "ออก", "ไป", "นั่ง", "ทำงาน", "ที่", "ร้านกาแฟ", "บ้าง", "เพื่อที่จะ", "ไม่", "เบื่อ", "เกินไป" ],
+                            "translations": { "en": "In my daily life, besides working online at home, sometimes I go sit and work at a coffee shop so as not to get too bored.", "fa": "در زندگی روزمره‌ام، علاوه بر کار آنلاین در خانه، گاهی می‌روم در کافی‌شاپ می‌نشینم و کار می‌کنم تا خیلی کسل نشوم." }
+                        },
+                        {
+                            "source": "ผมยังไม่คิดเรื่องชีวิตแต่งงานเพราะงานของผมเป็นงานที่ไม่แน่นอน บางทีมีงาน บางทีไม่มีงานและถ้ามีงานด่วนเข้ามาผมก็ต้องรีบรับไว้เพราะถ้าผมไม่รับงานนี้ผมก็ไม่แน่ใจว่าวันอื่นผมจะมีงานหรือเปล่า",
+                            "wordIds": [ "ผม", "ยัง", "ไม่", "คิด", "เรื่อง", "ชีวิตแต่งงาน", "เพราะ", "งาน", "ของ", "ผม", "เป็น", "งาน", "ที่", "ไม่แน่นอน", "บางที", "มี", "งาน", "บางที", "ไม่มี", "งาน", "و", "ถ้า", "มี", "งานด่วน", "เข้ามา", "ผม", "ก็", "ต้อง", "รีบ", "รับไว้", "เพราะ", "ถ้า", "ผม", "ไม่", "รับ", "งาน", "นี้", "ผม", "ก็", "ไม่", "แน่ใจ", "ว่า", "วันอื่น", "ผม", "จะ", "มี", "งาน", "หรือ", "เปล่า" ],
+                            "translations": { "en": "I'm not thinking about marriage yet because my work is uncertain. Sometimes there's work, sometimes there isn't, and if urgent work comes in, I have to take it quickly because if I don't take this job, I'm not sure if I'll have work on other days.", "fa": "هنوز به ازدواج فکر نمی‌کنم چون کارم نامشخص است. گاهی کار هست، گاهی نیست، و اگر کار فوری بیاید، باید سریع قبولش کنم چون اگر این کار را قبول نکنم، مطمئن نیستم روزهای دیگر کار داشته باشم یا نه." }
+                        },
+                        {
+                            "source": "บางครั้งลูกค้าของผมอยู่ต่างประเทศเราต้องประชุมออนไลน์ตอนดีสองดีสามเพราะไทม์โซนต่างกัน",
+                            "wordIds": [ "บางครั้ง", "ลูกค้า", "ของ", "ผม", "อยู่", "ต่างประเทศ", "เรา", "ต้อง", "ประชุม", "ออนไลน์", "ตอน", "ดีสองดีสาม", "เพราะ", "ไทม์โซน", "ต่างกัน" ],
+                            "translations": { "en": "Sometimes my clients are abroad, and we have to have online meetings at 2-3 AM because of different time zones.", "fa": "بعضی وقت‌ها مشتریانم در خارج از کشور هستند و باید جلسات آنلاین ساعت ۲-۳ صبح داشته باشیم به دلیل مناطق زمانی متفاوت." }
+                        },
+                        {
+                            "source": "เหตุผลนี้ทำให้ผมกับแฟนทะเลาะกันมาเรื่อยๆ เพราะการดำเนินชีวิตของเราไม่เหมือนกัน ผมไม่ค่อยมีเวลาให้แฟนเลย ทั้งทั้งที่เธออุตส่าห์พยายามวางแผนชวนผมทำนุ้นทำนี่ ทำอะไรแปลกใหม่",
+                            "wordIds": [ "เหตุผล", "นี้", "ทำให้", "ผม", "กับ", "แฟน", "ทะเลาะกัน", "มา", "เรื่อยๆ", "เพราะ", "การดำเนินชีวิต", "ของ", "เรา", "ไม่", "เหมือนกัน", "ผม", "ไม่ค่อย", "มี", "เวลา", "ให้", "แฟน", "เลย", "ทั้งทั้งที่", "เธอ", "อุตส่าห์", "พยายาม", "วางแผน", "ชวน", "ผม", "ทำ", "นุ้น", "ทำ", "นี่", "ทำ", "อะไร", "แปลกใหม่" ],
+                            "translations": { "en": "This reason has been causing me and my girlfriend to argue continuously because our lifestyles are not the same. I hardly have time for her, even though she makes the effort to plan and invite me to do this and that, to do something new.", "fa": "این دلیل باعث شده من و دوستم مدام دعوا کنیم چون سبک زندگی‌مان یکی نیست. من hardly وقت برای او ندارم، با وجود اینکه او تلاش می‌کند برنامه‌ریزی کند و من را برای انجام کارهای مختلف دعوت کند، کاری جدید انجام دهد." }
+                        },
+                        {
+                            "source": "ตอนนี้ผมยังคิดไม่ออกเลยว่าจะเอายังไงกับชีวิตดี",
+                            "wordIds": [ "ตอนนี้", "ผม", "ยัง", "คิดไม่ออก", "เลย", "ว่า", "จะ", "เอายังไง", "กับ", "ชีวิต", "ดี" ],
+                            "translations": { "en": "Right now, I still have no idea what to do with my life.", "fa": "الان، هنوز هیچ ایده‌ای ندارم با زندگیم چه کار کنم." }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "sectionId": "ls7-lesson-7",
+            "heading": {
+                "en": "Lesson 7: Opposite Words",
+                "th": "บทที่ 7: คำตรงข้าม",
+                "fa": "درس ۷: کلمات متضاد"
+            },
+            "activity": {
+                "words": true,
+                "sentences": true
+            },
+            "content": [
+                {
+                    "type": "words",
+                    "heading": {
+                        "en": "Opposite Words - Set 1",
+                        "th": "คำตรงข้าม ชุดที่ 1",
+                        "fa": "کلمات متضاد - مجموعه ۱"
+                    },
+                    "wordIds": [ "สวย", "น่าเกลียด", "ร้อน", "เย็น", "ต่ำ", "สูง", "มีชีวิต", "ตาย", "ใหญ่", "เล็ก", "อุ่น", "หนาว", "น่าเบื่อ", "น่าสนใจ", "ข้างล่าง", "ข้างบน", "เลว/แย่", "ดี", "เบา", "หนัก", "ว่างเปล่า", "เต็ม", "ก่อน", "หลัง", "เศร้า/เสียใจ", "มีความสุข", "ดีที่สุด", "แย่ที่สุด", "สะอาด", "สกปรก", "มืด", "สว่าง", "ที่นั่น", "ที่นี่", "ง่าย", "ยาก", "สุขภาพดี", "ป่วย", "ผอม", "อ้วน", "ตื่นสาย", "ตื่นเช้า", "ฉลาด", "โง่", "ช้า", "เร็ว", "ใกล้", "ไกล" ]
+                },
+                {
+                    "type": "words",
+                    "heading": {
+                        "en": "Opposite Words - Set 2",
+                        "th": "คำตรงข้าม ชุดที่ 2",
+                        "fa": "کلمات متضاد - مجموعه ۲"
+                    },
+                    "wordIds": [ "ลง", "ขึ้น", "อ่อน", "แข็ง", "ใหม่", "เก่า", "บ่อย", "นานๆครั้ง", "ทิศใต้", "ทิศเหนือ", "ใน", "นอก", "ยาว", "สั้น", "หนา", "บาง", "เสียงดัง", "เงียบ", "รวย", "จน", "แข็งแรง", "อ่อนแอ", "กว้าง", "แคบ", "รัก", "เกลียด", "ซ้าย", "ขวา", "ชนะ", "แพ้", "มีประโยชน์", "ไม่มีประโยชน์", "ผลัก", "ดึง", "โสด", "แต่งงานแล้ว", "ปลอดภัย", "อันตราย", "ผิด", "ถูก", "แก่/อายุมาก", "หนุ่ม/สาว", "สมัยเก่า", "สมัยใหม่", "ถูกใจ", "ใจร้าย", "ดี", "ว่าง", "ยุ่ง" ]
+                },
+                {
+                    "type": "paragraph",
+                    "heading": {
+                        "en": "Example Sentences with Opposites",
+                        "th": "ประโยคตัวอย่างคำตรงข้าม",
+                        "fa": "جملات مثال با متضادها"
+                    },
+                    "sentences": [
+                        {
+                            "source": "เค้าชอบตดในห้องเรียนมันน่าเกลียดมาก",
+                            "wordIds": [ "เค้า", "ชอบ", "ตด", "ใน", "ห้องเรียน", "มัน", "น่าเกลียด", "มาก" ],
+                            "translations": { "en": "He likes to fart in the classroom; it's very ugly.", "fa": "او دوست دارد در کلاس درس باد معده کند؛ خیلی زشت است." }
+                        },
+                        {
+                            "source": "ในนี้มืดมากมองไม่เห็นเลย",
+                            "wordIds": [ "ใน", "นี้", "مید", "มาก", "มอง", "ไม่", "เห็น", "เลย" ],
+                            "translations": { "en": "It's very dark in here, can't see anything.", "fa": "اینجا خیلی تاریک است، هیچی نمی‌بینم." }
+                        },
+                        {
+                            "source": "ผมเก็บหนังสือไว้ข้างบนตู้เย็น",
+                            "wordIds": [ "ผม", "เก็บ", "หนังสือ", "ไว้", "ข้างบน", "ตู้เย็น" ],
+                            "translations": { "en": "I put the book on top of the refrigerator.", "fa": "کتاب را بالای یخچال گذاشتم." }
+                        },
+                        {
+                            "source": "วันนี้เป็นวันที่แย่ที่สุด",
+                            "wordIds": [ "วันนี้", "เป็น", "วันที่", "แย่ที่สุด" ],
+                            "translations": { "en": "Today is the worst day.", "fa": "امروز بدترین روز است." }
+                        },
+                        {
+                            "source": "สายแล้วรีบๆหน่อย",
+                            "wordIds": [ "สาย", "แล้ว", "รีบๆ", "หน่อย" ],
+                            "translations": { "en": "It's late, hurry up.", "fa": "دیر شده، عجله کن." }
+                        },
+                        {
+                            "source": "ความรู้สึกของผมตอนนี้มันว่างเปล่า",
+                            "wordIds": [ "ความรู้สึก", "ของ", "ผม", "ตอนนี้", "มัน", "ว่างเปล่า" ],
+                            "translations": { "en": "My feelings right now are empty.", "fa": "احساسات من الان خالی است." }
+                        },
+                        {
+                            "source": "นี่ต่ำกว่าระดับน้ำทะเล 2000 เมตร",
+                            "wordIds": [ "นี่", "ต่ำ", "กว่า", "ระดับ", "น้ำทะเล", "2000", "متر" ],
+                            "translations": { "en": "This is 2000 meters below sea level.", "fa": "این ۲۰۰۰ متر پایین‌تر از سطح دریاست." }
+                        },
+                        {
+                            "source": "ขอเติมน้ำมันเบนซินเต็มถัง",
+                            "wordIds": [ "ขอ", "เติม", "น้ำมัน", "เบนزین", "เต็ม", "ถัง" ],
+                            "translations": { "en": "Please fill the tank with gasoline.", "fa": "لطفاً باک را پر کن." }
+                        },
+                        {
+                            "source": "หนังสือนี้ดูน่าสนใจแต่ดูจริงๆแล้วน่าเบื่อมาก",
+                            "wordIds": [ "หนังสือ", "นี้", "ดู", "น่าสนใจ", "แต่", "ดู", "จริงๆ", "แล้ว", "ن่าเบื่อ", "มาก" ],
+                            "translations": { "en": "This book looks interesting, but actually it's very boring.", "fa": "این کتاب به نظر جالب می‌رسد، اما در واقع خیلی کسل‌کننده است." }
+                        },
+                        {
+                            "source": "เค้าไม่ใช่แค่ฉลาดแต่ยังทำงานเก่งด้วย",
+                            "wordIds": [ "เค้า", "ไม่ใช่", "แค่", "ฉลาด", "แต่", "ยัง", "ทำงาน", "เก่ง", "ด้วย" ],
+                            "translations": { "en": "He's not just clever, but also good at working.", "fa": "او نه تنها باهوش است، بلکه در کار کردن هم خوب است." }
+                        },
+                        {
+                            "source": "คุณน้ำหนักเท่าไหร่",
+                            "wordIds": [ "คุณ", "น้ำหนัก", "เท่าไหร่" ],
+                            "translations": { "en": "How much do you weigh?", "fa": "وزنت چقدر است؟" }
+                        },
+                        {
+                            "source": "เค้าเป็นคนดูแลสุขภาพเสมอก็เลยสุขภาพดีไม่ป่วยง่าย",
+                            "wordIds": [ "เค้า", "เป็น", "คน", "ดูแล", "สุขภาพ", "เสมอ", "ก็เลย", "สุขภาพดี", "ไม่", "ป่วย", "ง่าย" ],
+                            "translations": { "en": "He always takes care of his health, so he is healthy and doesn't get sick easily.", "fa": "او همیشه مراقب سلامتی‌اش است، بنابراین سالم است و به راحتی بیمار نمی‌شود." }
+                        },
+                        {
+                            "source": "ลูกควรว่ายน้ำแถวๆนี้เพราะมันไม่ลึกมาก",
+                            "wordIds": [ "ลูก", "ควร", "ว่ายน้ำ", "แถวๆ", "นี้", "เพราะ", "มัน", "ไม่", "ลึก", "มาก" ],
+                            "translations": { "en": "You should swim around here because it's not very deep.", "fa": "باید این‌ورها شنا کنی چون خیلی عمیق نیست." }
+                        },
+                        {
+                            "source": "นกตัวนี้ยังมีชีวิตอยู่เราควรช่วยมัน",
+                            "wordIds": [ "นก", "ตัวนี้", "ยัง", "มีชีวิต", "อยู่", "เรา", "ควร", "ช่วย", "มัน" ],
+                            "translations": { "en": "This bird is still alive; we should help it.", "fa": "این پرنده هنوز زنده است؛ باید کمکش کنیم." }
+                        },
+                        {
+                            "source": "จริงๆแล้วเรียนภาษาไทยน่าสนใจกว่าที่คิด",
+                            "wordIds": [ "จริงๆแล้ว", "เรียน", "ภาษาไทย", "น่าสนใจ", "กว่า", "ที่", "คิด" ],
+                            "translations": { "en": "Actually, studying Thai is more interesting than I thought.", "fa": "در واقع، یادگیری تایلندی جالب‌تر از چیزی است که فکر می‌کردم." }
+                        },
+                        {
+                            "source": "ผักและผลไม้มีประโยชน์ต่อร่างกาย",
+                            "wordIds": [ "ผัก", "และ", "ผลไม้", "มีประโยชน์", "ต่อ", "ร่างกาย" ],
+                            "translations": { "en": "Vegetables and fruits are beneficial to the body.", "fa": "سبزیجات و میوه‌ها برای بدن مفید هستند." }
+                        },
+                        {
+                            "source": "ฉันอยากมีบ้านที่มีพื้นที่กว้าง",
+                            "wordIds": [ "ฉัน", "อยาก", "มี", "บ้าน", "ที่", "มี", "พื้นที่", "กว้าง" ],
+                            "translations": { "en": "I want to have a house with wide space.", "fa": "می‌خواهم خانه‌ای با فضای وسیع داشته باشم." }
+                        },
+                        {
+                            "source": "การสูบบุหรี่เป็นอันตรายต่อสุขภาพของตนเองและคนรอบข้าง",
+                            "wordIds": [ "การ", "สูบบุหรี่", "เป็น", "อันตราย", "ต่อ", "สุขภาพ", "ของ", "ตนเอง", "และ", "คน", "รอบข้าง" ],
+                            "translations": { "en": "Smoking is dangerous to your own health and those around you.", "fa": "سیگار کشیدن برای سلامتی خود و اطرافیان خطرناک است." }
+                        },
+                        {
+                            "source": "ฉันรู้สึกว่าที่นี่ไม่ปลอดภัย",
+                            "wordIds": [ "ฉัน", "รู้สึก", "ว่า", "ที่นี่", "ไม่", "ปลอดภัย" ],
+                            "translations": { "en": "I feel that here is not safe.", "fa": "احساس می‌کنم اینجا امن نیست." }
+                        },
+                        {
+                            "source": "คุณยายอายุมากแล้วควรดูแลตัวเอง",
+                            "wordIds": [ "คุณยาย", "อายุมาก", "แล้ว", "ควร", "ดูแล", "ตัวเอง" ],
+                            "translations": { "en": "Grandmother is old now, should take care of herself.", "fa": "مادربزرگ پیر شده است، باید مراقب خودش باشد." }
+                        },
+                        {
+                            "source": "ทิศใต้ของเมืองเป็นภูเขาสูง",
+                            "wordIds": [ "ทิศใต้", "ของ", "เมือง", "เป็น", "ภูเขา", "สูง" ],
+                            "translations": { "en": "The south of the city is high mountains.", "fa": "جنوب شهر کوه‌های بلند است." }
+                        },
+                        {
+                            "source": "อาหารจานด่วนมันไม่มีประโยชน์ถ้าเป็นไปได้อย่ากินเลย",
+                            "wordIds": [ "อาหาร", "จานด่วน", "มัน", "ไม่มีประโยชน์", "ถ้า", "เป็นไปได้", "อย่า", "กิน", "เลย" ],
+                            "translations": { "en": "Fast food is useless; if possible, don't eat it at all.", "fa": "فست فود بی‌فایده است؛ اگر ممکن است، اصلاً نخورید." }
+                        },
+                        {
+                            "source": "ทั้งที่น้องสาวของคุณใจดีกับคุณเสมอแต่คุณยังใจร้ายกับเขา",
+                            "wordIds": [ "ทั้งที่", "น้องสาว", "ของ", "คุณ", "ใจดี", "กับ", "คุณ", "เสมอ", "แต่", "คุณ", "ยัง", "ใจร้าย", "กับ", "เขา" ],
+                            "translations": { "en": "Even though your younger sister is always kind to you, you are still mean to her.", "fa": "با وجود اینکه خواهر کوچکت همیشه با تو مهربان است، تو هنوز با او بدجنس هستی." }
+                        },
+                        {
+                            "source": "นานๆครั้งเราจะนัดเจอกันสักครั้ง",
+                            "wordIds": [ "นานๆครั้ง", "เรา", "จะ", "นัด", "เจอ", "กัน", "สัก", "ครั้ง" ],
+                            "translations": { "en": "We make an appointment to meet once in a while.", "fa": "هر از گاهی قرار می‌گذاریم همدیگر را ببینیم." }
+                        },
+                        {
+                            "source": "ช่วงนี้ยุ่งมากแทบจะไม่มีเวลาออกกำลังกายเลย",
+                            "wordIds": [ "ช่วงนี้", "ยุ่ง", "มาก", "แทบจะ", "ไม่มี", "เวลา", "ออกกำลังกาย", "เลย" ],
+                            "translations": { "en": "I've been very busy lately, almost no time to exercise at all.", "fa": "این روزها خیلی busy هستم، تقریباً اصلاً وقت ورزش ندارم." }
+                        }
+                    ]
+                },
+                {
+                    "type": "paragraph",
+                    "heading": {
+                        "en": "Vocabulary Review Exercise",
+                        "th": "แบบฝึกหัดทบทวนคำศัพท์",
+                        "fa": "تمرین مرور واژگان"
+                    },
+                    "sentences": [
+                        {
+                            "source": "ผมไม่เห็นแฟนตอนเช้า ผม………ว่าเค้าไปที่ไหน",
+                            "wordIds": [ "ผม", "ไม่", "เห็น", "แฟน", "ตอนเช้า", "ผม", ".........", "ว่า", "เค้า", "ไป", "ที่", "ไหน" ],
+                            "translations": { "en": "I didn't see my girlfriend in the morning; I wonder where she went.", "fa": "صبح دوستم را ندیدم؛ تعجب می‌کنم کجا رفت." }
+                        },
+                        {
+                            "source": "ปกติผมทำงาน 8…….ตั้งแต่วันจันทร์ถึงวันศุกร์",
+                            "wordIds": [ "ปกติ", "ผม", "ทำงาน", "8", ".........", "ตั้งแต่", "วันจันทร์", "ถึง", "วันศุกร์" ],
+                            "translations": { "en": "I normally work 8 hours from Monday to Friday.", "fa": "من معمولاً ۸ ساعت از دوشنبه تا جمعه کار می‌کنم." }
+                        },
+                        {
+                            "source": "เมื่อวานนี้ผมนวดและ......ผ่อนคลาย",
+                            "wordIds": [ "เมื่อวานนี้", "ผม", "نวด", "และ", ".........", "ผ่อนคลาย" ],
+                            "translations": { "en": "Yesterday I got a massage and felt relaxed.", "fa": "دیروز ماساژ گرفتم و احساس آرامش کردم." }
+                        },
+                        {
+                            "source": "เจนนี้…….ที่ซานฟรานซิสโกเขาจึงพูดอังกฤษเหมือนเจ้าของภาษา",
+                            "wordIds": [ "เจน", "นี้", ".........", "ที่", "سان فرانسیسکو", "เขา", "จึง", "พูด", "อังกฤษ", "เหมือน", "เจ้าของภาษา" ],
+                            "translations": { "en": "Jane was born in San Francisco, so she speaks English like a native speaker.", "fa": "جین در سان فرانسیسکو به دنیا آمد، بنابراین مثل یک زبان مادری انگلیسی صحبت می‌کند." }
+                        },
+                        {
+                            "source": "อาทิตย์ที่แล้วเขาปวดท้องเพราะ......",
+                            "wordIds": [ "อาทิตย์ที่แล้ว", "เขา", "ปวดท้อง", "เพราะ", "........." ],
+                            "translations": { "en": "Last week he had a stomachache because of food poisoning.", "fa": "هفته گذشته دل درد داشت به دلیل مسمومیت غذایی." }
+                        },
+                        {
+                            "source": "ถ้ามีเวลาว่างลิซซ่าจะไปเดินเล่นที่......",
+                            "wordIds": [ "ถ้า", "มี", "เวลาว่าง", "لیزا", "จะ", "ไป", "เดินเล่น", "ที่", "........." ],
+                            "translations": { "en": "If Lisa has free time, she will go for a walk at the market.", "fa": "اگر لیزا وقت آزاد داشته باشد، برای قدم زدن به بازار می‌رود." }
+                        },
+                        {
+                            "source": "ปกติตอนเช้าในกรุงเทพ......มาก",
+                            "wordIds": [ "ปกติ", "ตอนเช้า", "در", "گرونگ تپ", ".........", "มาก" ],
+                            "translations": { "en": "In the morning in Bangkok, there is a lot of traffic.", "fa": "صبح در بانکوک، ترافیک زیادی است." }
+                        },
+                        {
+                            "source": "ถ้ามี......ผมจะหาเวลาไปพักผ่อนกับแฟน",
+                            "wordIds": [ "ถ้า", "มี", ".........", "ผม", "จะ", "หา", "เวลา", "ไป", "พักผ่อน", "กับ", "แฟน" ],
+                            "translations": { "en": "If I have a holiday, I will find time to relax with my girlfriend.", "fa": "اگر تعطیلات داشته باشم، وقت می‌کنم با دوستم بروم استراحت کنم." }
+                        },
+                        {
+                            "source": "ตอนนี้ผมอยู่ประเทศไทยเพราะว่าผม......",
+                            "wordIds": [ "ตอนนี้", "ผม", "อยู่", "ประเทศไทย", "เพราะว่า", "ผม", "........." ],
+                            "translations": { "en": "Now I live in Thailand because I'm retired.", "fa": "الان در تایلند زندگی می‌کنم چون بازنشسته شده‌ام." }
+                        },
+                        {
+                            "source": "วันนี้ฉันรู้สึกไม่ดี อยากอยู่เงียบๆ……",
+                            "wordIds": [ "วันนี้", "ฉัน", "รู้สึก", "ไม่ดี", "อยาก", "อยู่", "เงียบๆ", "........." ],
+                            "translations": { "en": "Today I don't feel good, I want to stay quiet alone.", "fa": "امروز حالم خوب نیست، می‌خواهم تنها ساکت باشم." }
+                        },
+                        {
+                            "source": "วันนี้ฉันตื่นสาย ก็เลยต้อง.....ไปประชุม",
+                            "wordIds": [ "วันนี้", "ฉัน", "ตื่นสาย", "ก็เลย", "ต้อง", ".........", "ไป", "ประชุม" ],
+                            "translations": { "en": "Today I woke up late, so I had to rush to the meeting.", "fa": "امروز دیر بیدار شدم، بنابراین مجبور شدم برای جلسه عجله کنم." }
+                        },
+                        {
+                            "source": "ประเทศไทยมี 3 ……. ฤดูร้อน ฤดูหนาวและฤดูฝน",
+                            "wordIds": [ "ประเทศไทย", "มี", "3", ".........", "ฤดูร้อน", "ฤดูหนาว", "และ", "ฤดูฝน" ],
+                            "translations": { "en": "Thailand has 3 seasons: summer, winter, and rainy season.", "fa": "تایلند ۳ فصل دارد: تابستان، زمستان و فصل بارانی." }
+                        },
+                        {
+                            "source": "เพราะว่า…….มัวดูซีรี่ย์ก็เลยนอนดึกจนลืมตื่น",
+                            "wordIds": [ "เพราะว่า", ".........", "مشغول", "ดู", "سریال", "ก็เลย", "นอน", "دیر", "จน", "ลืม", "ตื่น" ],
+                            "translations": { "en": "Because last night I was absorbed in watching a series, I slept late and forgot to wake up.", "fa": "چون دیشب غرق تماشای سریال بودم، دیر خوابیدم و فراموش کردم بیدار شوم." }
+                        },
+                        {
+                            "source": "ปกติหัวหน้าประชุมตั้งแต่ 8 โมงเช้า…..9 โมงเช้า",
+                            "wordIds": [ "ปกติ", "หัวหน้า", "ประชุม", "ตั้งแต่", "8", "โมงเช้า", ".........", "9", "โมงเช้า" ],
+                            "translations": { "en": "The boss normally meets from 8 AM to 9 AM.", "fa": "رئیس معمولاً از ساعت ۸ صبح تا ۹ صبح جلسه دارد." }
+                        },
+                        {
+                            "source": "ปกติที่บริษัทคุณทำงานวันละกี่……",
+                            "wordIds": [ "ปกติ", "ที่", "บริษัท", "คุณ", "ทำงาน", "วันละ", "กี่", "........." ],
+                            "translations": { "en": "Normally, how many hours do you work per day at your company?", "fa": "معمولاً، روزی چند ساعت در شرکتت کار می‌کنی؟" }
+                        },
+                        {
+                            "source": "เพราะว่าวันนี้วันเกิดฉันแม่ก็เลยซื้ออาหารหลาย……",
+                            "wordIds": [ "เพราะว่า", "วันนี้", "วันเกิด", "ฉัน", "แม่", "ก็เลย", "ซื้อ", "อาหาร", "หลาย", "........." ],
+                            "translations": { "en": "Because today is my birthday, my mother bought many kinds of food.", "fa": "چون امروز تولدم است، مادرم چندین نوع غذا خرید." }
+                        },
+                        {
+                            "source": "งานผมเยอะมากและผมยังทำงานไม่……",
+                            "wordIds": [ "งาน", "ผม", "เยอะ", "มาก", "และ", "ผม", "ยัง", "ทำงาน", "ไม่", "........." ],
+                            "translations": { "en": "I have a lot of work and I haven't finished yet.", "fa": "کارم خیلی زیاد است و هنوز تمام نکرده‌ام." }
+                        },
+                        {
+                            "source": "ถ้าอยากสุขภาพดีต้องกินอาหารที่……",
+                            "wordIds": [ "ถ้า", "อยาก", "สุขภาพดี", "ต้อง", "กิน", "อาหาร", "ที่", "........." ],
+                            "translations": { "en": "If you want to be healthy, you must eat food that is beneficial.", "fa": "اگر می‌خواهی سالم باشی، باید غذایی بخوری که مفید است." }
+                        },
+                        {
+                            "source": "ฉัน……ฝนตกเพราะอากาศจะเย็นสบายและไม่มีฝุ่น PM2.5",
+                            "wordIds": [ "ฉัน", ".........", "ฝน", "ตก", "เพราะ", "อากาศ", "จะ", "เย็นสบาย", "และ", "ไม่มี", "ฝุ่น", "PM2.5" ],
+                            "translations": { "en": "I want it to rain because the weather will be cool and there will be no PM2.5 dust.", "fa": "می‌خواهم باران ببارد چون هوا خنک می‌شود و گرد و غبار PM2.5 نیست." }
+                        },
+                        {
+                            "source": "วันสำคัญทุกคนอยากใช้เวลากับ……",
+                            "wordIds": [ "วันสำคัญ", "ทุกคน", "อยาก", "ใช้เวลา", "กับ", "........." ],
+                            "translations": { "en": "On important days, everyone wants to spend time with family/lovers.", "fa": "در روزهای مهم، همه می‌خواهند با خانواده/معشوق وقت بگذرانند." }
+                        },
+                        {
+                            "source": "พี่สาวโกรธผมมากเพราะผม…….แก้วน้ำ…..",
+                            "wordIds": [ "พี่สาว", "โกรธ", "ผม", "มาก", "เพราะ", "ผม", ".........", "แก้วน้ำ", "........." ],
+                            "translations": { "en": "My older sister is very angry at me because I broke a glass.", "fa": "خواهر بزرگم خیلی از من عصبانی است چون یک لیوان را شکستم." }
+                        },
+                        {
+                            "source": "ช่วงนี้อากาศเปลี่ยนแปลงเขาก็เลยเป็นหวัดและมาทำงานไม่……",
+                            "wordIds": [ "ช่วงนี้", "อากาศ", "เปลี่ยนแปลง", "เขา", "ก็เลย", "เป็นหวัด", "และ", "มา", "ทำงาน", "ไม่", "........." ],
+                            "translations": { "en": "The weather has been changing lately, so he caught a cold and can't come to work.", "fa": "این روزها هوا تغییر کرده، بنابراین سرما خورده و نمی‌تواند سر کار بیاید." }
+                        },
+                        {
+                            "source": "หน้าร้อนนี้คนเปิดแอร์ทั้งวันจึงทำให้……แพงมาก",
+                            "wordIds": [ "หน้าร้อน", "นี้", "คน", "เปิดแอร์", "ทั้งวัน", "จึง", "ทำให้", ".........", "แพง", "มาก" ],
+                            "translations": { "en": "This summer, people turn on the AC all day, so the electricity bill is very expensive.", "fa": "این تابستان، مردم تمام روز کولر روشن می‌کنند، بنابراین قبض برق خیلی گران است." }
+                        },
+                        {
+                            "source": "ตอนนี้ทุกคน…….โทรศัพท์มือถือ และเล่นทั้งวัน",
+                            "wordIds": [ "ตอนนี้", "ทุกคน", ".........", "โทรศัพท์มือถือ", "และ", "เล่น", "ทั้งวัน" ],
+                            "translations": { "en": "Now everyone is addicted to mobile phones and plays all day.", "fa": "الان همه به تلفن همراه معتاد هستند و تمام روز بازی می‌کنند." }
+                        },
+                        {
+                            "source": "ผมขอข้าวผัดหมูและไข่ดาว 2 ……. ",
+                            "wordIds": [ "ผม", "ขอ", "ข้าวผัดหมู", "และ", "ไข่ดาว", "2", "........." ],
+                            "translations": { "en": "I would like fried rice with pork and 2 fried eggs.", "fa": "برنج سرخ شده با گوشت خوک و ۲ تا تخم مرغ سرخ شده می‌خواهم." }
+                        },
+                        {
+                            "source": "ปี 2019 สถานการณ์โควิดทุกคนไม่สามารถไป……..ได้",
+                            "wordIds": [ "ปี", "2019", "สถานการณ์", "โควิด", "ทุกคน", "ไม่", "สามารถ", "ไป", ".........", "ได้" ],
+                            "translations": { "en": "In 2019, due to the Covid situation, everyone couldn't go abroad.", "fa": "در سال ۲۰۱۹، به دلیل وضعیت کووید، همه نمی‌توانستند به خارج از کشور بروند." }
+                        },
+                        {
+                            "source": "ฉันยังไม่เคย……สูบบุหรี่",
+                            "wordIds": [ "ฉัน", "ยัง", "ไม่", "เคย", ".........", "สูบบุหรี่" ],
+                            "translations": { "en": "I have never tried smoking.", "fa": "من تا حالا سیگار کشیدن را امتحان نکرده‌ام." }
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

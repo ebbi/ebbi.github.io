@@ -1,9 +1,9 @@
 {
-    "documentId": "ls1",
+    "documentId": "LS1",
     "metadata": {
         "version": "1.0.0",
         "created": "2026-02-27T10:00:00Z",
-        "updated": "2026-02-27T15:45:31.156Z",
+        "updated": "2026-03-01T10:10:15.348Z",
         "authors": [
             "Ebbi"
         ],
@@ -325,7 +325,7 @@
         },
         "ขอโทษค่ะ": {
             "translations": {
-                "en": "I'm sorry",
+                "en": "I am sorry",
                 "fa": "ببخشید"
             }
         },
@@ -502,9 +502,94 @@
                 "en": "America",
                 "fa": "آمریکا"
             }
+        },
+        "รัฐ": {
+            "translations": {
+                "en": "State (polity)",
+                "fa": "استان"
+            }
+        },
+        "จังหวัด": {
+            "translations": {
+                "en": "Province ",
+                "fa": "استان"
+            }
+        },
+        "เมือง": {
+            "translations": {
+                "en": "City",
+                "fa": "شهر"
+            }
+        },
+        "ประเทศไทย": {
+            "translations": {
+                "en": "Thailand",
+                "fa": "تایلند"
+            }
+        },
+        "ประเทศอังกฤษ": {
+            "translations": {
+                "en": "England",
+                "fa": "انگلستان"
+            }
+        },
+        "ประเทศอเมริกา": {
+            "translations": {
+                "en": "America",
+                "fa": "ایالات متحده"
+            }
+        },
+        "ประเทศออสเตรเลีย": {
+            "translations": {
+                "en": "Australien",
+                "fa": "استرالیا"
+            }
+        },
+        "ประเทศฝรังเศส": {
+            "translations": {
+                "en": "France",
+                "fa": "فرانسه"
+            }
+        },
+        "ประเทศเยอรมัน": {
+            "translations": {
+                "en": "Germany",
+                "fa": "آلمان"
+            }
+        },
+        "ประเทศจีน": {
+            "translations": {
+                "en": "China:",
+                "fa": "چین"
+            }
+        },
+        "ประเทศญีปุ่น": {
+            "translations": {
+                "en": "Japan",
+                "fa": "ژاپن"
+            }
+        },
+        "ประเทศเกาหลี(ใต้)": {
+            "translations": {
+                "en": "Korea (South)",
+                "fa": "کره جنوبی"
+            }
+        },
+        "มาเลเซีย": {
+            "translations": {
+                "en": "Malaysia",
+                "fa": "مالزی"
+            }
+        },
+        "สิงคโปร์": {
+            "translations": {
+                "en": "Singapore",
+                "fa": "آسیا/ سنگاپور"
+            }
         }
     },
     "activity": {
+        "alphabet": false,
         "words": true,
         "sentences": true
     },
@@ -512,9 +597,9 @@
         {
             "sectionId": "lesson-1-greetings",
             "heading": {
-                "en": "Listening and Speaking 1",
-                "fa": "گوش دادن و صحبت کردن ۱",
-                "th": "การฟังและการพูด 1"
+                "en": "Lesson 1",
+                "fa": "درس ۱",
+                "th": "บทเรียนที่ 1"
             },
             "content": [
                 {
@@ -944,7 +1029,7 @@
                                 "ค่ะ"
                             ],
                             "translations": {
-                                "en": "Diana, I'm sorry.",
+                                "en": "Diana, I am sorry.",
                                 "fa": "دایانا، متاسفم."
                             }
                         }
@@ -1081,7 +1166,7 @@
                                 "ครับ/ค่ะ"
                             ],
                             "translations": {
-                                "en": "I'm not feeling well.",
+                                "en": "I am not feeling well.",
                                 "fa": "حالم خوب نیست."
                             }
                         },
@@ -1156,14 +1241,14 @@
                         },
                         {
                             "type": "sentence",
-                            "source": "งันงันเฉยเฉย",
+                            "source": "งั้นงั้นเฉยเฉย",
                             "wordIds": [
-                                "งันงัน",
+                                "งั้นงั้น",
                                 "เฉยเฉย"
                             ],
                             "translations": {
-                                "en": "Idle Stupidity",
-                                "fa": "ساکت، بی‌تفاوت."
+                                "en": "so so",
+                                "fa": "نه خوب نه بد"
                             }
                         },
                         {
@@ -1216,17 +1301,17 @@
                 {
                     "type": "paragraph",
                     "heading": {
-                        "en": "Structure 4: Where are you from? Or where are you from?",
+                        "en": "Structure 4: Where do you from? Or where are you from?",
                         "fa": "ساختار ۴: اهل کجا هستید؟ یا اهل کجا هستید؟",
-                        "th": "โครงสร้างที่ 4 : คุณมาจากไหน? หรือ คุณมาจากที่ไหน?"
+                        "th": "โครงสร้างประโยคที่ 4: คุณมาจากไหน? หรือ คุณมาจากที่ไหน?"
                     },
                     "grammar": {
                         "pattern": "Subject + Verb + Preposition + Question Word + Particle",
                         "examples": [
                             {
-                                "sentenceSource": "คุณ มา จาก ทีWไหน ครับ/คะ",
+                                "sentenceSource": "คุณ มา จาก ทีไหน ครับ/คะ",
                                 "translations": {
-                                    "en": "Where are you from W?",
+                                    "en": "Where are you from?",
                                     "fa": "اهل کجایی؟"
                                 }
                             }
@@ -1265,7 +1350,7 @@
                                 "ค่ะ"
                             ],
                             "translations": {
-                                "en": "Hi, I'm from England.",
+                                "en": "Hi, I am from England.",
                                 "fa": "سلام. من اهل انگلستان هستم."
                             }
                         },
@@ -1294,8 +1379,77 @@
                                 "ครับ"
                             ],
                             "translations": {
-                                "en": "I'm from America.",
+                                "en": "I am from America.",
                                 "fa": "من اهل آمریکا هستم."
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "words",
+                    "heading": {
+                        "en": "Where are you from? ",
+                        "fa": "از کجا می‌آیی؟",
+                        "th": "คุณมาจากที่ไหน"
+                    },
+                    "activity": {
+                        "inherit": true
+                    },
+                    "wordIds": [
+                        "ประเทศ",
+                        "รัฐ",
+                        "จังหวัด",
+                        "เมือง",
+                        "ประเทศไทย",
+                        "ประเทศอังกฤษ",
+                        "ประเทศอเมริกา",
+                        "ประเทศออสเตรเลีย",
+                        "ประเทศฝรังเศส",
+                        "ประเทศเยอรมัน",
+                        "ประเทศจีน",
+                        "ประเทศญีปุ่น",
+                        "ประเทศเกาหลี(ใต้)"
+                    ]
+                },
+                {
+                    "type": "paragraph",
+                    "heading": {
+                        "en": "Examples",
+                        "fa": "عکس",
+                        "th": "ตัวอย่าง"
+                    },
+                    "activity": {
+                        "inherit": true
+                    },
+                    "sentences": [
+                        {
+                            "type": "sentence",
+                            "source": "ฉันมาจากประเทศมาเลเซียค่ะ",
+                            "wordIds": [
+                                "ฉัน",
+                                "มาจาก",
+                                "ประเทศ",
+                                "มาเลเซีย",
+                                "ค่ะ"
+                            ],
+                            "translations": {
+                                "en": "I am from Malaysia.",
+                                "fa": "من اهل مالزی هستم."
+                            }
+                        },
+                        {
+                            "type": "sentence",
+                            "source": "ผมมาจากประเทศสิงคโปร์ครับ",
+                            "wordIds": [
+                                "ผม",
+                                "มาจาก",
+                                "ประเทศ",
+                                "สิงคโปร์",
+                                "ครับ"
+                            ],
+                            "translations": {
+                                "en": "I am from Singapore.",
+                                "fa": "من اهل سنگاپور هستم."
                             }
                         }
                     ]
