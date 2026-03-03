@@ -3365,6 +3365,15 @@ const App = (function () {
                             </li>
                         </ul>
 
+                        <h4>${t('playback_settings', 'Playback Settings')}</h4>
+                        <ul class="help-list">
+                            <li>
+                                <span class="material-icons">format_list_bulleted</span>
+                                <strong>${t('word_breakdown_help', 'Word Breakdown')}:</strong>
+                                <span>${t('word_breakdown_help_desc', 'Toggle whether individual words are shown and spoken during audio playback. When enabled, the sequence is: 1) Source sentence, 2) Individual words with translations, 3) Full sentence translations. When disabled, only sentences are played.')}</span>
+                            </li>
+                        </ul>
+
                         <h4>${t('appearance', 'Appearance')}</h4>
                         <ul class="help-list">
                             <li>
