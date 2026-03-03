@@ -66,8 +66,73 @@ Uncaught ReferenceError: Services is not defined
 Testing:
 http://127.0.0.1:8080/#doc/RW1
 
-On testing and reflection, the "Tap a character, then tap its match" does not work well and 
-the associated code should be deleted.  
+But that is the Bug!
+
+Clicking on an element does start playing from that element BUT 
+it then misses playing some elements.  It should not! It should play all element from the selected element onwards.
+
+Is it a timing issue? 
+
+
+===============================
+
+The race condition only occurs after several click events and then aligns iteself.
+
+It is almost useable.
+
+Can the click event be disabled during play?
+(a message can be displayed during play, ... Stop play before Clicking an elemen)
+
+Then the user either click an element Or 
+the Play button but 
+no click during Play.
+
+That would be full proof and may simplify the code.
+
+(a message can be displayed during play, ... Stop play before Clicking an elemen)
+
+
+Notification appears after an element is clicked! 
+
+The notification should also appear after the Play button click event. 
+
+Also, it should remain for 5 seconds.
+
+
+Old messages are being displayed!
+The messages:
+"stopped_for_click": "Stopped playback for clicked item",
+    "playback_started": "Playback started - click any element to stop and play",
+    "playback_stopped": "Playback stopped"
+
+should be deleted.
+
+The only messages necessary is fter the Play button or an element to play, with the message:
+
+"Click Stop before clicking an item to play"
+
+
+The notification message is still not rendered after clicking the Play button.
+
+The notification message is still not rendered after clicking an element for the first time but 
+it is rendered after a second click onward.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

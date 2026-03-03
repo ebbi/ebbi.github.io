@@ -758,12 +758,14 @@ const App = (function () {
             }
         },
 
-        // Media playback
         MediaService: {
             cachedVoices: [],
             scrollTimeout: null,
             currentRowId: null,
             scrolledRows: new Set(),
+            _isSeeking: false,
+            _seekQueue: null,
+            _seekTimer: null,
 
             init() {
 
@@ -1128,13 +1130,165 @@ const App = (function () {
                 );
             },
 
-            seekToElement: function (element) {
+            // In Services.MediaService, update the isSequenceElement method with detailed logging:
 
-                // Find the index directly from all audio elements - simpler and more reliable
+            isSequenceElement(el) {
+                console.log('Checking element:', {
+                    classes: Array.from(el.classList),
+                    hasDataLink: el.hasAttribute('data-link'),
+                    hasDataUid: el.hasAttribute('data-uid'),
+                    inSentWordBlock: el.closest('.sent-word-block') !== null,
+                    text: el.getAttribute('data-text')
+                });
+
+                // If it has data-link, it's a linked element (word breakdown) - NOT sequence
+                if (el.hasAttribute('data-link')) {
+                    console.log('  → Filtered out: has data-link');
+                    return false;
+                }
+
+                // If it's inside sent-word-block, it's a breakdown - NOT sequence
+                if (el.closest('.sent-word-block')) {
+                    console.log('  → Filtered out: inside sent-word-block');
+                    return false;
+                }
+
+                // Check by class
+                const classList = el.classList;
+
+                // These classes are ALWAYS breakdown elements - NEVER sequence
+                if (classList.contains('sent-word-item') ||
+                    classList.contains('sent-word-trans') ||
+                    classList.contains('matched-word')) {
+                    console.log('  → Filtered out: is breakdown element');
+                    return false;
+                }
+
+                // These classes are ALWAYS main sequence elements
+                if (classList.contains('word-source') ||
+                    classList.contains('word-trans') ||
+                    classList.contains('alphabet-grid-item') ||
+                    classList.contains('character-grid-item') ||
+                    classList.contains('example-word')) {
+                    console.log('  → Included: is main sequence element by class');
+                    return true;
+                }
+
+                // Check for elements with data-uid (sentences and translations)
+                if (el.hasAttribute('data-uid')) {
+                    // But make sure they're not in a breakdown block
+                    if (el.closest('.sent-word-block') === null) {
+                        console.log('  → Included: has data-uid and not in breakdown');
+                        return true;
+                    }
+                }
+
+                // Check for elements in sentence-group with source or trans classes
+                if (el.closest('.sentence-group')) {
+                    if (classList.contains('source') || classList.contains('trans')) {
+                        // But make sure they're not in a breakdown block
+                        if (el.closest('.sent-word-block') === null) {
+                            console.log('  → Included: in sentence-group with source/trans');
+                            return true;
+                        }
+                    }
+                }
+
+                // Check for elements in alphabet-table-container
+                if (el.closest('.alphabet-table-container') !== null) {
+                    // But make sure they're not in a breakdown block
+                    if (el.closest('.sent-word-block') === null) {
+                        console.log('  → Included: in alphabet-table-container');
+                        return true;
+                    }
+                }
+
+                console.log('  → Filtered out: no matching criteria');
+                return false;
+            },
+
+            seekToElement: function (element) {
+                // Clear any pending seek timer
+                if (this._seekTimer) {
+                    clearTimeout(this._seekTimer);
+                    this._seekTimer = null;
+                }
+
+                // Prevent multiple seeks
+                if (this._isSeeking) {
+                    console.log('Already seeking, queueing this request');
+                    this._seekQueue = element;
+                    return;
+                }
+
+                this._isSeeking = true;
+                this._seekQueue = null;
+
+                // Get all audio elements
                 const allElements = Array.from(document.querySelectorAll('.audio-element'));
-                const targetIndex = allElements.indexOf(element);
+
+                /*
+                                const isSequenceElement = (el) => {
+                                    // If it has data-link, it's a linked element (word breakdown) - NOT sequence
+                                    if (el.hasAttribute('data-link')) return false;
+                
+                                    // If it's inside sent-word-block, it's a breakdown - NOT sequence
+                                    if (el.closest('.sent-word-block')) return false;
+                
+                                    // Check by class
+                                    const classList = el.classList;
+                                    if (classList.contains('sent-word-item') ||
+                                        classList.contains('sent-word-trans') ||
+                                        classList.contains('matched-word')) {
+                                        return false;
+                                    }
+                
+                                    // Sequence elements are those that:
+                                    // 1. Have data-uid (sentences and translations)
+                                    // 2. Are word-source or word-trans in word cards
+                                    // 3. Are in sentence-group with class source or trans
+                                    // 4. Are alphabet/character grid items
+                                    // 5. Are example words in tone rule tables
+                                    return (el.hasAttribute('data-uid') ||
+                                        classList.contains('word-source') ||
+                                        classList.contains('word-trans') ||
+                                        (el.closest('.sentence-group') &&
+                                            (classList.contains('source') || classList.contains('trans'))) ||
+                                        classList.contains('alphabet-grid-item') ||
+                                        classList.contains('character-grid-item') ||
+                                        classList.contains('example-word') ||
+                                        el.closest('.alphabet-table-container') !== null);
+                                };
+                */
+
+                // Filter to only include sequence elements
+                /*
+                const sequenceElements = allElements.filter(el => {
+                    const isSeq = isSequenceElement(el);
+                    if (!isSeq) {
+                        console.log('Filtered out element:', {
+                            classes: el.classList,
+                            hasDataLink: el.hasAttribute('data-link'),
+                            inSentWordBlock: el.closest('.sent-word-block') !== null,
+                            hasDataUid: el.hasAttribute('data-uid')
+                        });
+                    }
+                    return isSeq;
+                });
+*/
+
+                const sequenceElements = allElements.filter(el => this.isSequenceElement(el));
+
+                console.log('Seek - All elements:', allElements.length);
+                console.log('Seek - Sequence elements:', sequenceElements.length);
+                console.log('Seek - Clicked element classes:', element.classList);
+                console.log('Seek - Clicked element has data-uid:', element.hasAttribute('data-uid'));
+
+                const targetIndex = sequenceElements.indexOf(element);
 
                 if (targetIndex !== -1) {
+                    console.log('Found in sequence at index:', targetIndex);
+
                     // Check if the element is inside a closed details panel and open it
                     const details = element.closest('details');
                     if (details && !details.open) {
@@ -1145,25 +1299,35 @@ const App = (function () {
                         if (sectionIndex !== null) {
                             const documentId = State.data.currentDocument?.id;
                             if (documentId) {
-                                // Update the accordion state to reflect that this section is now open
-                                // and all others should be closed (accordion behavior)
                                 State.data.documentAccordion.openSections[documentId] = parseInt(sectionIndex);
                                 State.save('documentAccordion');
                             }
                         }
 
-                        // Small delay to allow the details panel to expand before proceeding
+                        // Small delay to allow the details panel to expand
                         setTimeout(() => {
                             this.performSeekWithScroll(element, targetIndex);
                         }, 150);
                     } else {
                         this.performSeekWithScroll(element, targetIndex);
                     }
+                } else {
+                    console.log('Element not in sequence, playing directly');
+                    // If the element isn't in the sequence elements, just play it directly
+                    const text = element.getAttribute('data-text') || element.textContent.trim();
+                    const lang = element.getAttribute('data-lang') || 'th';
+                    window.speechSynthesis.cancel();
+                    Services.MediaService.speak(text, lang);
+                    this._isSeeking = false;
                 }
             },
 
-            performSeekWithScroll(element, targetIndex) {
+            performSeekWithScroll: function (element, targetIndex) {
+                // Cancel any ongoing speech immediately
+                window.speechSynthesis.cancel();
 
+                // Reset playback state
+                State.data.media.isPlaying = false;
                 State.data.media.currentIndex = targetIndex;
 
                 // Clear tracking
@@ -1172,11 +1336,16 @@ const App = (function () {
                 }
                 State.data.currentRowId = null;
 
+                // Remove all highlights
+                document.querySelectorAll('.active-highlight').forEach(el => {
+                    el.classList.remove('active-highlight');
+                });
+
                 // Calculate total offset based on media bar visibility
-                const toolbarHeight = 56; // #app-toolbar height
+                const toolbarHeight = 56;
                 const mediaBar = document.getElementById('media-player-container');
-                const mediaBarHeight = mediaBar && mediaBar.innerHTML ? 50 : 0; // media-row height when visible
-                const totalOffset = toolbarHeight + mediaBarHeight + 20; // Add 20px extra padding for safety
+                const mediaBarHeight = mediaBar && mediaBar.innerHTML ? 50 : 0;
+                const totalOffset = toolbarHeight + mediaBarHeight + 20;
 
                 // Scroll to the element with offset
                 setTimeout(() => {
@@ -1190,17 +1359,33 @@ const App = (function () {
                     });
                 }, 100);
 
-                if (!State.data.media.isPlaying) {
+                // Clear any existing playback timeouts
+                if (window._playbackTimer) {
+                    clearTimeout(window._playbackTimer);
+                    window._playbackTimer = null;
+                }
+
+                // Small delay to ensure everything is reset
+                window._playbackTimer = setTimeout(() => {
+                    // Start playback
                     State.data.media.isPlaying = true;
                     App.playSequence();
-                    // Update the play button to pause icon
                     App.updatePlayPauseIcon(true);
-                } else {
-                    window.speechSynthesis.cancel();
-                    App.playSequence();
-                    // Icon should already be pause, but ensure it's correct
-                    App.updatePlayPauseIcon(true);
-                }
+                    window._playbackTimer = null;
+
+                    // Reset seeking flag after playback starts
+                    this._seekTimer = setTimeout(() => {
+                        this._isSeeking = false;
+                        this._seekTimer = null;
+
+                        // Check if there's a queued seek
+                        if (this._seekQueue) {
+                            const queuedElement = this._seekQueue;
+                            this._seekQueue = null;
+                            this.seekToElement(queuedElement);
+                        }
+                    }, 800);
+                }, 200); // Increased from 150 to 200ms
             },
 
             togglePlay() {
@@ -1900,10 +2085,10 @@ const App = (function () {
                 return `
                     <div class="character-grid">
                         ${item.characters.map(char => {
-                                const charId = char.id || char;
-                                const charSymbol = char.symbol || char;
-                                const charSound = char.sound || '';
-                                return `
+                    const charId = char.id || char;
+                    const charSymbol = char.symbol || char;
+                    const charSound = char.sound || '';
+                    return `
                                 <button class="character-grid-item audio-element" 
                                         onclick="App.media.play(this)"
                                         data-text="${charSymbol}" 
@@ -1912,7 +2097,7 @@ const App = (function () {
                                     ${charSound ? `<span class="character-sound">${charSound}</span>` : ''}
                                 </button>
                             `;
-                            }).join('')}
+                }).join('')}
                     </div>
                 `;
             },
@@ -4026,6 +4211,9 @@ const App = (function () {
             if (State.data.media.isPlaying) {
                 this.playSequence();
                 this.updatePlayPauseIcon(true);
+                // Show notification when starting playback
+                const message = Services.I18n.t('click_stop_before_play', 'Click Stop before clicking an item to play');
+                App.showNotification(message, 3000);
             } else {
                 Services.MediaService.pausePlayback();
                 this.updatePlayPauseIcon(false);
@@ -4039,6 +4227,9 @@ const App = (function () {
             window.speechSynthesis.cancel();
             this.showMediaBar();
             this.updatePlayPauseIcon(false);
+            // REMOVE THIS LINE:
+            // const message = Services.I18n.t('playback_stopped', 'Playback stopped');
+            // App.showNotification(message, 2000);
         },
 
         showSettingsOverlay() {
@@ -4078,7 +4269,8 @@ const App = (function () {
             this.showNotification(Services.I18n.t('settings_reset', 'Settings reset to defaults'));
         },
 
-        showNotification(message) {
+        // Update the showNotification method to accept a duration parameter (around line 4800)
+        showNotification(message, duration = 5000) {
             // Remove any existing notification
             const existing = document.getElementById('settings-notification');
             if (existing) existing.remove();
@@ -4088,27 +4280,27 @@ const App = (function () {
             notification.id = 'settings-notification';
             notification.textContent = message;
             notification.style.cssText = `
-                position: fixed;
-                bottom: 20px;
-                left: 50%;
-                transform: translateX(-50%);
-                background: var(--primary);
-                color: white;
-                padding: 10px 20px;
-                border-radius: 20px;
-                z-index: 3000;
-                box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-                animation: fadeInOut 2s ease;
-            `;
+        position: fixed;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: var(--primary);
+        color: white;
+        padding: 10px 20px;
+        border-radius: 20px;
+        z-index: 3000;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        animation: fadeInOut ${duration / 1000}s ease;
+    `;
 
             document.body.appendChild(notification);
 
-            // Remove after 2 seconds
+            // Remove after duration
             setTimeout(() => {
                 if (notification.parentNode) {
                     notification.remove();
                 }
-            }, 2000);
+            }, duration);
         },
 
         playAudio: function (text, lang = 'th') {
@@ -4137,8 +4329,20 @@ const App = (function () {
             // Enable scroll listeners when playback starts
             Services.MediaService.enableScrollListeners();
 
-            const elements = document.querySelectorAll('.audio-element');
-            // console.log('Total audio elements found:', elements.length);
+            // Get ALL audio elements
+            const allElements = document.querySelectorAll('.audio-element');
+
+            // Use the MediaService method for filtering
+            const sequenceElements = Array.from(allElements).filter(el => Services.MediaService.isSequenceElement(el));
+
+            console.log('PlaySequence - All elements:', allElements.length);
+            console.log('PlaySequence - Sequence elements:', sequenceElements.length);
+            console.log('PlaySequence - Starting from index:', State.data.media.currentIndex);
+
+            // If current index is beyond sequence elements, reset to 0
+            if (State.data.media.currentIndex >= sequenceElements.length) {
+                State.data.media.currentIndex = 0;
+            }
 
             const settings = State.data.media.languageSettings;
 
@@ -4190,16 +4394,18 @@ const App = (function () {
                     return;
                 }
 
-                // Re-query elements in case DOM has changed
-                const currentElements = document.querySelectorAll('.audio-element');
+                // Re-query sequence elements in case DOM has changed
+                const currentAllElements = document.querySelectorAll('.audio-element');
+                const currentSequenceElements = Array.from(currentAllElements).filter(el => Services.MediaService.isSequenceElement(el));
 
-                if (State.data.media.currentIndex >= currentElements.length) {
-                    // console.log('Reached end of elements, stopping');
+                if (State.data.media.currentIndex >= currentSequenceElements.length) {
+                    // console.log('Reached end of sequence elements, stopping');
                     this.stopSequence();
                     return;
                 }
 
-                const element = currentElements[State.data.media.currentIndex];
+                // Get the element from the sequence elements list, not from all elements
+                const element = currentSequenceElements[State.data.media.currentIndex];
                 if (!element) {
                     // console.log('Element not found at index', State.data.media.currentIndex);
                     State.data.media.currentIndex++;
@@ -4227,15 +4433,16 @@ const App = (function () {
 
                     // Small delay to allow the details panel to expand before continuing
                     setTimeout(() => {
-                        // Re-get the elements array as the DOM has changed
-                        const updatedElements = document.querySelectorAll('.audio-element');
-                        // Find the new index of the same element in the updated DOM
-                        const updatedIndex = Array.from(updatedElements).indexOf(element);
+                        // Re-get the sequence elements array as the DOM has changed
+                        const updatedAllElements = document.querySelectorAll('.audio-element');
+                        const updatedSequenceElements = Array.from(updatedAllElements).filter(el => Services.MediaService.isSequenceElement(el));
+                        // Find the new index of the same element in the updated sequence
+                        const updatedIndex = updatedSequenceElements.indexOf(element);
                         if (updatedIndex !== -1) {
                             State.data.media.currentIndex = updatedIndex;
                         }
                         playNext();
-                    }, 150); // Increased delay to ensure panel expansion completes
+                    }, 150);
                     return;
                 }
 
@@ -4245,7 +4452,7 @@ const App = (function () {
                     row = element.closest('.words-grid');
                     // console.log('Element is in words-grid, row:', row?.id || 'no id');
                 } else {
-                    row = element.closest('.sentence-group, .word-card, .flashcard-front, .quiz-question-card');
+                    row = element.closest('.sentence-group, .word-card, .flashcard-front, .quiz-question-card, .alphabet-table-container, .alphabet-grid');
                     // console.log('Element is in other container, row:', row?.className);
                 }
 
@@ -4314,16 +4521,17 @@ const App = (function () {
             const speakCurrent = () => {
                 if (!State.data.media.isPlaying) return;
 
-                // Re-query current elements in case DOM has changed
-                const currentElements = document.querySelectorAll('.audio-element');
+                // Re-query sequence elements in case DOM has changed
+                const currentAllElements = document.querySelectorAll('.audio-element');
+                const currentSequenceElements = Array.from(currentAllElements).filter(el => Services.MediaService.isSequenceElement(el));
 
-                if (State.data.media.currentIndex >= currentElements.length) {
+                if (State.data.media.currentIndex >= currentSequenceElements.length) {
                     // console.log('Element no longer exists, stopping playback');
                     this.stopSequence();
                     return;
                 }
 
-                const element = currentElements[State.data.media.currentIndex];
+                const element = currentSequenceElements[State.data.media.currentIndex];
                 if (!element) {
                     // console.log('Element not found, moving to next');
                     State.data.media.currentIndex++;
@@ -4362,44 +4570,60 @@ const App = (function () {
                 const speakRepeat = () => {
                     if (!State.data.media.isPlaying) return;
 
-                    Services.MediaService.speak(text, lang,
-                        () => {
-                            // Clear previous highlights
-                            document.querySelectorAll('.active-highlight').forEach(el => {
-                                el.classList.remove('active-highlight');
-                            });
+                    // Capture the current element and its repeat count
+                    const currentElement = element;
+                    const currentText = text;
+                    const currentLang = lang;
+                    const totalRepeats = repeats;
+                    let currentRepeat = 0;
 
-                            element.classList.add('active-highlight');
+                    const speakNextRepeat = () => {
+                        if (!State.data.media.isPlaying) return;
 
-                            const linkId = element.getAttribute('data-link');
-                            if (linkId) {
-                                const linkedElement = document.getElementById(linkId);
-                                if (linkedElement) linkedElement.classList.add('active-highlight');
+                        Services.MediaService.speak(currentText, currentLang,
+                            () => {
+                                // onStart - add highlight
+                                document.querySelectorAll('.active-highlight').forEach(el => {
+                                    el.classList.remove('active-highlight');
+                                });
+                                currentElement.classList.add('active-highlight');
+
+                                const linkId = currentElement.getAttribute('data-link');
+                                if (linkId) {
+                                    const linkedElement = document.getElementById(linkId);
+                                    if (linkedElement) linkedElement.classList.add('active-highlight');
+                                }
+                            },
+                            () => {
+                                // onEnd - remove highlight and handle next
+                                currentElement.classList.remove('active-highlight');
+                                const linkId = currentElement.getAttribute('data-link');
+                                if (linkId) {
+                                    const linkedElement = document.getElementById(linkId);
+                                    if (linkedElement) linkedElement.classList.remove('active-highlight');
+                                }
+
+                                currentRepeat++;
+
+                                if (currentRepeat < totalRepeats) {
+                                    // More repeats for this element
+                                    setTimeout(speakNextRepeat, 100);
+                                } else {
+                                    // Move to next element after delay
+                                    State.data.media.currentIndex++;
+
+                                    // Small delay before next element
+                                    setTimeout(() => {
+                                        if (State.data.media.isPlaying) {
+                                            playNext();
+                                        }
+                                    }, State.data.media.delay * 1000);
+                                }
                             }
-                        },
-                        () => {
-                            element.classList.remove('active-highlight');
+                        );
+                    };
 
-                            const linkId = element.getAttribute('data-link');
-                            if (linkId) {
-                                const linkedElement = document.getElementById(linkId);
-                                if (linkedElement) linkedElement.classList.remove('active-highlight');
-                            }
-
-                            repeatCount++;
-                            if (repeatCount < repeats) {
-                                // console.log('Repeating, count:', repeatCount);
-                                setTimeout(speakRepeat, 100);
-                            } else {
-                                // console.log('Moving to next element');
-                                State.data.media.currentIndex++;
-                                // console.log('New index:', State.data.media.currentIndex);
-                                // console.log('Elements length:', currentElements.length);
-
-                                setTimeout(playNext, State.data.media.delay * 1000);
-                            }
-                        }
-                    );
+                    speakNextRepeat();
                 };
 
                 speakRepeat();
@@ -4415,22 +4639,181 @@ const App = (function () {
             }
         },
 
+        // In the media.play function, add a check for isPlaying
         media: {
+            _isPlaying: false,
+            _clickTimer: null,
+
+            // In the media.play function, simplify the notification:
             play: function (element) {
+                if (State.data.media.isPlaying) {
+                    console.log('Playback in progress, stopping before playing clicked element');
+
+                    // Stop the current playback
+                    Services.MediaService.stopSequence();
+
+                    // Show simple notification
+                    const message = Services.I18n.t('click_stop_before_play', 'Click Stop before clicking an item to play');
+
+                    if (typeof App !== 'undefined' && App.showNotification) {
+                        App.showNotification(message, 3000);
+                    }
+
+                    // Small delay to ensure cleanup is complete
+                    setTimeout(() => {
+                        this._executePlay(element);
+                    }, 100);
+
+                    return;
+                }
+
+                // If not playing, execute immediately
+                this._executePlay(element);
+            },
+
+            _executePlay: function (element) {
+                // Add a disabled attribute to prevent multiple clicks on the same element
+                if (element.getAttribute('data-processing') === 'true') {
+                    console.log('Element already being processed, ignoring');
+                    return;
+                }
+
+                // Mark this element as being processed
+                element.setAttribute('data-processing', 'true');
+
+                // Clear any pending click timer
+                if (this._clickTimer) {
+                    clearTimeout(this._clickTimer);
+                    this._clickTimer = null;
+                }
+
+                // Prevent rapid successive clicks
+                if (this._isPlaying) {
+                    console.log('Already processing a play request, ignoring');
+                    setTimeout(() => {
+                        element.removeAttribute('data-processing');
+                    }, 500);
+                    return;
+                }
+
+                this._isPlaying = true;
+
+                // Increment activity counter
                 State.data.activityCounts.audioPlays = (State.data.activityCounts.audioPlays || 0) + 1;
                 State.save('activityCounts');
 
                 const inDocument = element.closest('.document-content') !== null;
 
                 if (inDocument) {
-                    // Use seekToElement for document content
-                    Services.MediaService.seekToElement(element);
-                    // The icon update will happen in seekToElement via App.updatePlayPauseIcon
+                    // Log element details for debugging
+                    console.log('Element clicked:', {
+                        classes: element.classList,
+                        attributes: {
+                            'data-uid': element.getAttribute('data-uid'),
+                            'data-link': element.getAttribute('data-link'),
+                            'data-text': element.getAttribute('data-text'),
+                            'data-lang': element.getAttribute('data-lang')
+                        },
+                        closest: {
+                            'sentence-group': element.closest('.sentence-group') !== null,
+                            'word-card': element.closest('.word-card') !== null,
+                            'sent-word-block': element.closest('.sent-word-block') !== null
+                        }
+                    });
+
+                    // Determine element type based on clear criteria
+                    const isBreakdownElement =
+                        element.hasAttribute('data-link') || // Has link to source
+                        element.closest('.sent-word-block') !== null || // Inside word breakdown
+                        element.classList.contains('sent-word-item') || // Is a word breakdown item
+                        element.classList.contains('sent-word-trans') || // Is a word breakdown translation
+                        element.classList.contains('matched-word'); // Is a matched word in source
+
+                    // Main sequence elements are those that should trigger seeking
+                    // These are: sentence sources, word card sources, their translations, AND alphabet grid items
+                    const isMainSequence =
+                        // Sentence source (has data-uid AND is in sentence-group)
+                        (element.hasAttribute('data-uid') && element.closest('.sentence-group') !== null) ||
+                        // Word card source
+                        element.classList.contains('word-source') ||
+                        // Word card translation
+                        element.classList.contains('word-trans') ||
+                        // Translation in sentence view (has data-uid-trans)
+                        (element.hasAttribute('data-uid') && element.getAttribute('data-uid').includes('trans')) ||
+                        // Any element in sentence-group with class 'source' or 'trans'
+                        (element.closest('.sentence-group') &&
+                            (element.classList.contains('source') || element.classList.contains('trans'))) ||
+                        // Alphabet grid items
+                        element.classList.contains('alphabet-grid-item') ||
+                        // Character grid items
+                        element.classList.contains('character-grid-item') ||
+                        // Alphabet table items
+                        element.closest('.alphabet-table-container') !== null ||
+                        // Tone rule table examples
+                        element.classList.contains('example-word');
+
+                    if (isBreakdownElement) {
+                        console.log('Playing breakdown element directly');
+                        // For word breakdown elements, just play this single word without seeking
+                        const text = element.getAttribute('data-text');
+                        const lang = element.getAttribute('data-lang');
+
+                        // If no data-text, try to get text content
+                        const textToSpeak = text || element.textContent.trim();
+
+                        // Cancel any ongoing speech
+                        window.speechSynthesis.cancel();
+                        Services.MediaService.speak(textToSpeak, lang || 'th');
+
+                        // Reset playing flag after a delay
+                        this._clickTimer = setTimeout(() => {
+                            this._isPlaying = false;
+                            element.removeAttribute('data-processing');
+                            this._clickTimer = null;
+                        }, 500);
+                    } else if (isMainSequence) {
+                        console.log('Playing main sequence element with seek');
+
+                        // Then seek to the clicked element (playback already stopped above)
+                        Services.MediaService.seekToElement(element);
+
+                        // Reset playing flag after a delay
+                        this._clickTimer = setTimeout(() => {
+                            this._isPlaying = false;
+                            element.removeAttribute('data-processing');
+                            this._clickTimer = null;
+                        }, 1000);
+                    } else {
+                        console.log('Element not classified, playing directly');
+                        // Fallback - play directly
+                        const text = element.getAttribute('data-text') || element.textContent.trim();
+                        const lang = element.getAttribute('data-lang') || 'th';
+
+                        // Cancel any ongoing speech
+                        window.speechSynthesis.cancel();
+                        Services.MediaService.speak(text, lang);
+
+                        this._clickTimer = setTimeout(() => {
+                            this._isPlaying = false;
+                            element.removeAttribute('data-processing');
+                            this._clickTimer = null;
+                        }, 500);
+                    }
                 } else {
                     // Single playback for flashcards, quizzes, etc.
                     const text = element.getAttribute('data-text');
                     const lang = element.getAttribute('data-lang');
+
+                    // Cancel any ongoing speech
+                    window.speechSynthesis.cancel();
                     Services.MediaService.speak(text, lang);
+
+                    // Reset playing flag after a delay
+                    this._clickTimer = setTimeout(() => {
+                        this._isPlaying = false;
+                        element.removeAttribute('data-processing');
+                        this._clickTimer = null;
+                    }, 500);
                 }
             }
         },
