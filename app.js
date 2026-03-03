@@ -462,8 +462,18 @@ const App = (function () {
                 this.heading = data.heading?.[currentLang] || data.heading?.en || 'Section';
                 this.document = document;
 
-                // Section-level activity settings (override document)
-                this.activity = data.activity || { words: false, sentences: false };
+                // Section-level activity settings - use provided values or defaults
+                this.activity = {
+                    alphabet: data.activity?.alphabet ?? false,
+                    words: data.activity?.words ?? false,
+                    sentences: data.activity?.sentences ?? false
+                };
+
+                console.log('Section initialized:', {
+                    id: this.id,
+                    activity: this.activity,
+                    sourceData: data.activity
+                });
 
                 // Process content items
                 this.content = (data.content || []).map(item => {
@@ -489,74 +499,28 @@ const App = (function () {
                     }
                     return item;
                 });
-
             }
 
-            // Check if word activities are enabled for this section
             hasWordActivities() {
-                // Section activity overrides document
-                if (this.activity.words !== undefined) {
-                    return this.activity.words;
-                }
-                // Fall back to document level
-                return this.document.activity.words || false;
+                return this.activity.words || false;
             }
 
-            // Check if sentence activities are enabled for this section
             hasSentenceActivities() {
-                // Section activity overrides document
-                if (this.activity.sentences !== undefined) {
-                    return this.activity.sentences;
-                }
-                // Fall back to document level
-                return this.document.activity.sentences || false;
+                return this.activity.sentences || false;
             }
 
-            // Add this method to the Section class (around line 450-500)
+            hasAlphabetActivities() {
+                return this.activity.alphabet || false;
+            }
+
             getCharacterItems() {
                 const characters = [];
                 this.content.forEach(block => {
                     if (block.type === 'alphabet-table') {
                         characters.push(...block.characters);
-                    } else if (block.type === 'character-grid') {
-                        // If it's a grid of character IDs, we'd need to resolve them
-                        // For now, we'll handle this in the flashcard renderer
                     }
                 });
                 return characters;
-            }
-
-            // Get word items for this section only
-            getWordItems() {
-                const words = [];
-                this.content.forEach(block => {
-                    if (block.type === 'words') {
-                        words.push(...block.words);
-                    } else if (block.type === 'paragraph') {
-                        block.sentences.forEach(sentence => {
-                            words.push(...sentence.words);
-                        });
-                    }
-                });
-                // Remove duplicates by word text
-                const uniqueWords = new Map();
-                words.forEach(word => {
-                    if (!uniqueWords.has(word.word)) {
-                        uniqueWords.set(word.word, word);
-                    }
-                });
-                return Array.from(uniqueWords.values());
-            }
-
-            // Get sentence items for this section only
-            getSentenceItems() {
-                const sentences = [];
-                this.content.forEach(block => {
-                    if (block.type === 'paragraph') {
-                        sentences.push(...block.sentences);
-                    }
-                });
-                return sentences;
             }
 
             // Get all available activity types for this section
@@ -1058,21 +1022,25 @@ const App = (function () {
                 window.speechSynthesis.speak(utterance);
             },
 
-            // Get elements grouped by visual row
             getElementsByRow() {
                 const elements = Array.from(document.querySelectorAll('.audio-element'));
                 const rows = new Map();
 
                 elements.forEach((element, index) => {
                     // For word cards, group by the parent words-grid
-                    let rowElement = element.closest('.words-grid');
+                    let rowElement = element.closest('.words-grid') ||
+                        element.closest('.alphabet-grid') ||  // Add this
+                        element.closest('.character-grid') || // Add this
+                        element.closest('.match-items');      // Add this
 
-                    // If not in a words-grid, use normal grouping
+                    // If not in a grid, use normal grouping
                     if (!rowElement) {
                         rowElement = element.closest('.sentence-group') ||
                             element.closest('.word-card') ||
                             element.closest('.flashcard-front') ||
-                            element.closest('.quiz-question-card');
+                            element.closest('.quiz-question-card') ||
+                            element.closest('.tone-rule-table-container') || // Add this
+                            element.closest('.sound-item');                   // Add this
                     }
 
                     const rowId = rowElement?.id || rowElement?.getAttribute('data-uid') || `row-${index}`;
@@ -1095,7 +1063,6 @@ const App = (function () {
 
                 return Array.from(rows.values());
             },
-            // Add these methods to Services.MediaService:
 
             enableScrollListeners() {
                 // Only enable if we're in a document view
@@ -1442,31 +1409,42 @@ const App = (function () {
                     html += `<div class="document-controls-wrapper">`;
 
                     documentActivities.forEach(activity => {
-                        const isWord = activity.includes('Word');
-                        const isGame = activity === 'buildSentence';
-
-                        if (isGame) {
+                        if (activity === 'flashcardCharacter') {
                             html += `
-                    <button class="btn-sentence-game" onclick="App.startSentenceGame('${doc.id}', null)">
-                        <span class="material-icons">dashboard</span>
-                        <span>${t('sentences', 'Sentences')}</span>
-                    </button>
-                `;
-                        } else if (activity.startsWith('flashcard')) {
-                            const type = isWord ? 'word' : 'sentence';
+            <button class="btn-flashcard" onclick="App.startFlashcards('${doc.id}', null, 'character')">
+                <span class="material-icons">style</span>
+                <span>${t('characters', 'Characters')}</span>
+            </button>
+        `;
+                        } else if (activity === 'flashcardWord') {
                             html += `
-                    <button class="btn-flashcard" onclick="App.startFlashcards('${doc.id}', null, '${type}')">
-                        <span class="material-icons">style</span>
-                        <span>${isWord ? t('words', 'Words') : t('sentences', 'Sentences')}</span>
-                    </button>
-                `;
+            <button class="btn-flashcard" onclick="App.startFlashcards('${doc.id}', null, 'word')">
+                <span class="material-icons">style</span>
+                <span>${t('words', 'Words')}</span>
+            </button>
+        `;
+                        } else if (activity === 'flashcardSentence') {
+                            html += `
+            <button class="btn-flashcard" onclick="App.startFlashcards('${doc.id}', null, 'sentence')">
+                <span class="material-icons">style</span>
+                <span>${t('sentences', 'Sentences')}</span>
+            </button>
+        `;
+                        } else if (activity === 'buildSentence') {
+                            html += `
+            <button class="btn-sentence-game" onclick="App.startSentenceGame('${doc.id}', null)">
+                <span class="material-icons">dashboard</span>
+                <span>${t('sentences', 'Sentences')}</span>
+            </button>
+        `;
                         } else if (activity.startsWith('multipleChoice')) {
+                            const isWord = activity.includes('Word');
                             html += `
-                    <button class="doc-quiz-btn" onclick="location.hash='quiz/${doc.id}/null/${activity}'">
-                        <span class="material-icons">quiz</span>
-                        <span>${isWord ? t('words', 'Words') : t('sentences', 'Sentences')}</span>
-                    </button>
-                `;
+            <button class="doc-quiz-btn" onclick="location.hash='quiz/${doc.id}/null/${activity}'">
+                <span class="material-icons">quiz</span>
+                <span>${isWord ? t('words', 'Words') : t('sentences', 'Sentences')}</span>
+            </button>
+        `;
                         }
                     });
 
@@ -1499,10 +1477,10 @@ const App = (function () {
             getDocumentActivities(doc) {
                 const activities = [];
 
-                // Check document-level activity flags (simplified model)
                 if (doc.activity?.words) {
                     activities.push('multipleChoiceWord', 'flashcardWord');
                 }
+
                 if (doc.activity?.sentences) {
                     activities.push('multipleChoiceSentence', 'flashcardSentence', 'buildSentence');
                 }
@@ -1511,28 +1489,21 @@ const App = (function () {
                     activities.push('flashcardCharacter');
                 }
 
-                // If no activity flags, fall back to activitySettings (legacy)
-                if (activities.length === 0 && doc.activitySettings) {
-                    const settings = doc.activitySettings;
-                    if (settings.inherit === true) {
-                        const wordTypes = settings.words?.types || [];
-                        const sentenceTypes = settings.sentences?.types || [];
-                        return [...new Set([...wordTypes, ...sentenceTypes])];
-                    }
-                    if (settings.words?.types) {
-                        activities.push(...settings.words.types);
-                    }
-                    if (settings.sentences?.types) {
-                        activities.push(...settings.sentences.types);
-                    }
-                }
-
                 return [...new Set(activities)];
             },
 
             renderSectionControls(docId, sectionIdx, section) {
                 const t = Services.I18n.t;
-                const activityTypes = section.getActivityTypes();
+
+                console.log('Rendering section controls for:', {
+                    sectionId: section.id,
+                    hasWordActivities: section.hasWordActivities(),
+                    hasSentenceActivities: section.hasSentenceActivities(),
+                    hasAlphabetActivities: section.hasAlphabetActivities(),
+                    activity: section.activity,
+                    documentActivity: section.document.activity
+                });
+
 
                 let html = '<div class="section-all-controls">';
 
@@ -1568,9 +1539,8 @@ const App = (function () {
         `;
                 }
 
-                // ===== ADD THIS =====
                 // Character-based activities (for alphabet)
-                if (section.activity?.alphabet || section.document.activity?.alphabet) {
+                if (section.hasAlphabetActivities()) {
                     html += `
             <button class="btn-flashcard-small" onclick="App.startFlashcards('${docId}', ${sectionIdx}, 'character')">
                 <span class="material-icons">style</span>
@@ -1578,7 +1548,6 @@ const App = (function () {
             </button>
         `;
                 }
-                // ===== END ADDITION =====
 
                 html += '</div>';
                 return html;
@@ -1942,21 +1911,23 @@ const App = (function () {
 
             renderCharacterGrid(item) {
                 return `
-            <div class="character-grid">
-                ${item.characters.map(char => {
-                    const charId = char.id || char;
-                    const charSymbol = char.symbol || char;
-                    const charSound = char.sound || '';
-                    return `
-                        <button class="character-grid-item" 
-                                onclick="App.alphabet.showCharacterDetail('${charId}')">
-                            <span class="character-symbol">${charSymbol}</span>
-                            ${charSound ? `<span class="character-sound">${charSound}</span>` : ''}
-                        </button>
-                    `;
-                }).join('')}
-            </div>
-        `;
+                    <div class="character-grid">
+                        ${item.characters.map(char => {
+                                const charId = char.id || char;
+                                const charSymbol = char.symbol || char;
+                                const charSound = char.sound || '';
+                                return `
+                                <button class="character-grid-item audio-element" 
+                                        onclick="App.media.play(this)"
+                                        data-text="${charSymbol}" 
+                                        data-lang="th">
+                                    <span class="character-symbol">${charSymbol}</span>
+                                    ${charSound ? `<span class="character-sound">${charSound}</span>` : ''}
+                                </button>
+                            `;
+                            }).join('')}
+                    </div>
+                `;
             },
 
             renderCharacterCard(item) {
@@ -1981,62 +1952,68 @@ const App = (function () {
                 const gameId = 'matching_' + Date.now() + '_' + Math.random().toString(36).substr(2, 5);
 
                 return `
-            <div class="alphabet-match-game mobile-friendly" id="${gameId}">
-                <div class="match-instruction">
-                    <span class="material-icons">touch_app</span>
-                    <span>Tap a character, then tap its match</span>
-                </div>
-                
-                <div class="match-grid mobile-grid">
-                    <div class="match-column">
-                        <h3>Characters</h3>
-                        <div class="match-items">
-                            ${item.characters.map(char => `
-                                <button class="match-item" 
-                                        onclick="App.alphabetMatching.select('${gameId}', '${char.id}', 'char')"
-                                        data-id="${char.id}">
-                                    <span class="match-thai">${char.display}</span>
-                                </button>
-                            `).join('')}
+                    <div class="alphabet-match-game mobile-friendly" id="${gameId}">
+                        <div class="match-instruction">
+                            <span class="material-icons">touch_app</span>
+                            <span>Tap a character, then tap its match</span>
+                        </div>
+                        
+                        <div class="match-grid mobile-grid">
+                            <div class="match-column">
+                                <h3>Characters</h3>
+                                <div class="match-items">
+                                    ${item.characters.map(char => `
+                                        <button class="match-item audio-element" 
+                                                onclick="App.media.play(this)"
+                                                data-id="${char.id}"
+                                                data-text="${char.display}" 
+                                                data-lang="th">
+                                            <span class="match-thai">${char.display}</span>
+                                        </button>
+                                    `).join('')}
+                                </div>
+                            </div>
+                            
+                            <div class="match-column">
+                                <h3>Meanings / Sounds</h3>
+                                <div class="match-items">
+                                    ${item.matches.map(match => `
+                                        <button class="match-item match-item-right audio-element"
+                                                onclick="App.media.play(this)"
+                                                data-id="${match.id}"
+                                                data-text="${match.display}" 
+                                                data-lang="${State.data.lang}">
+                                            <span class="match-content">${match.display}</span>
+                                        </button>
+                                    `).join('')}
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    
-                    <div class="match-column">
-                        <h3>Meanings / Sounds</h3>
-                        <div class="match-items">
-                            ${item.matches.map(match => `
-                                <button class="match-item match-item-right"
-                                        onclick="App.alphabetMatching.select('${gameId}', '${match.id}', 'match')"
-                                        data-id="${match.id}">
-                                    <span class="match-content">${match.display}</span>
-                                </button>
-                            `).join('')}
-                        </div>
-                    </div>
-                </div>
-            </div>
-        `;
+                `;
             },
 
             renderSoundMatching(item) {
                 return `
-            <div class="sound-matching-exercise">
-                <h3>${item.title?.[State.data.lang] || item.title?.en || 'Listen and choose'}</h3>
-                <div class="sound-items">
-                    ${item.items.map((soundItem, index) => `
-                        <div class="sound-item" data-index="${index}">
-                            <button class="btn-play-sound" 
-                                    onclick="App.Services.MediaService.speak('${soundItem.sound}', 'th')">
-                                <span class="material-icons">volume_up</span>
-                            </button>
-                            <div class="sound-options">
-                                ${this.renderSoundOptions(soundItem)}
-                            </div>
+                    <div class="sound-matching-exercise">
+                        <h3>${item.title?.[State.data.lang] || item.title?.en || 'Listen and choose'}</h3>
+                        <div class="sound-items">
+                            ${item.items.map((soundItem, index) => `
+                                <div class="sound-item" data-index="${index}">
+                                    <button class="btn-play-sound audio-element" 
+                                            onclick="App.media.play(this)"
+                                            data-text="${soundItem.sound}" 
+                                            data-lang="th">
+                                        <span class="material-icons">volume_up</span>
+                                    </button>
+                                    <div class="sound-options">
+                                        ${this.renderSoundOptions(soundItem)}
+                                    </div>
+                                </div>
+                            `).join('')}
                         </div>
-                    `).join('')}
-                </div>
-            </div>
-        `;
+                    </div>
+                `;
             },
 
             renderSoundOptions(soundItem) {
@@ -2050,48 +2027,55 @@ const App = (function () {
 
             renderToneRuleTable(item) {
                 return `
-            <div class="tone-rule-table-container">
-                <h3>${item.class} Class Tone Rules</h3>
-                <table class="tone-rule-table">
-                    <thead>
-                        <tr>
-                            <th>Condition</th>
-                            <th>Tone</th>
-                            <th>Example</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        ${item.rules.map(rule => `
-                            <tr>
-                                <td>${rule.condition}</td>
-                                <td><span class="tone-indicator tone-${rule.tone ? rule.tone.toLowerCase() : 'mid'}">${rule.tone || 'Mid'}</span></td>
-                                <td class="example-word" onclick="App.Services.MediaService.speak('${rule.example}', 'th')">
-                                    ${rule.example}
-                                </td>
-                            </tr>
-                        `).join('')}
-                    </tbody>
-                </table>
-            </div>
-        `;
+                    <div class="tone-rule-table-container">
+                        <h3>${item.class} Class Tone Rules</h3>
+                        <table class="tone-rule-table">
+                            <thead>
+                                <tr>
+                                    <th>Condition</th>
+                                    <th>Tone</th>
+                                    <th>Example</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                ${item.rules.map(rule => `
+                                    <tr>
+                                        <td>${rule.condition}</td>
+                                        <td><span class="tone-indicator tone-${rule.tone ? rule.tone.toLowerCase() : 'mid'}">${rule.tone || 'Mid'}</span></td>
+                                        <td class="example-word audio-element" 
+                                            onclick="App.media.play(this)"
+                                            data-text="${rule.example}" 
+                                            data-lang="th">
+                                            ${rule.example}
+                                        </td>
+                                    </tr>
+                                `).join('')}
+                            </tbody>
+                        </table>
+                    </div>
+                `;
             },
 
             renderAlphabetTable(item) {
                 return `
-            <div class="alphabet-table-container">
-                <h3>${item.title?.[State.data.lang] || item.title?.en || ''}</h3>
-                <div class="alphabet-grid">
-                    ${item.characters.map(char => `
-                        <div class="alphabet-grid-item" onclick="App.Services.MediaService.speak('${char.symbol}', 'th')">
-                            <span class="alphabet-symbol">${char.symbol}</span>
-                            <span class="alphabet-sound">${char.sound || ''}</span>
-                            <span class="alphabet-name">${char.name || ''}</span>
+                    <div class="alphabet-table-container">
+                        <h3>${item.title?.[State.data.lang] || item.title?.en || ''}</h3>
+                        <div class="alphabet-grid">
+                            ${item.characters.map(char => `
+                                <div class="alphabet-grid-item audio-element" 
+                                    onclick="App.media.play(this)"
+                                    data-text="${char.symbol}" 
+                                    data-lang="th">
+                                    <span class="alphabet-symbol">${char.symbol}</span>
+                                    <span class="alphabet-sound">${char.sound || ''}</span>
+                                    <span class="alphabet-name">${char.name || ''}</span>
+                                </div>
+                            `).join('')}
                         </div>
-                    `).join('')}
-                </div>
-            </div>
-        `;
+                    </div>
+                `;
             }
+
         },
 
         // ------------------------------------------------------------------------
@@ -3985,32 +3969,29 @@ const App = (function () {
             App.router.go(`doc/${documentId}`);
         },
 
-        // Add these inside the returned object, after existing methods
         alphabet: {
-            // In App.alphabet.showCharacterDetail (around line 2500-2600)
+
             showCharacterDetail(characterId) {
                 const anchor = document.getElementById('overlay-anchor');
                 if (!anchor) return;
 
                 anchor.innerHTML = `
-        <div class="overlay-full card character-detail-overlay">
-            <div class="settings-header">
-                <h2>Character Details</h2>
-                <button class="material-icons" onclick="this.closest('.overlay-full').remove()">close</button>
-            </div>
-            <div class="character-large">${characterId}</div>
-            <div class="character-actions">
-                <button class="btn-activity" onclick="App.Services.MediaService.speak('${characterId}', 'th')">
-                    <span class="material-icons">volume_up</span> Hear
-                </button>
-                <!-- REMOVE or COMMENT OUT this button 
-                <button class="btn-activity" onclick="App.alphabet.addToFlashcards('${characterId}')">
-                    <span class="material-icons">style</span> Study
-                </button>
-                -->
-            </div>
-        </div>
-    `;
+                    <div class="overlay-full card character-detail-overlay">
+                        <div class="settings-header">
+                            <h2>Character Details</h2>
+                            <button class="material-icons" onclick="this.closest('.overlay-full').remove()">close</button>
+                        </div>
+                        <div class="character-large">${characterId}</div>
+                        <div class="character-actions">
+                            <button class="btn-activity audio-element" 
+                                    onclick="App.media.play(this)"
+                                    data-text="${characterId}" 
+                                    data-lang="th">
+                                <span class="material-icons">volume_up</span> Hear
+                            </button>
+                        </div>
+                    </div>
+                `;
             },
 
             addToFlashcards(characterId) {
@@ -4563,7 +4544,6 @@ const App = (function () {
 
         media: {
             play: function (element) {
-
                 State.data.activityCounts.audioPlays = (State.data.activityCounts.audioPlays || 0) + 1;
                 State.save('activityCounts');
 
@@ -4578,9 +4558,6 @@ const App = (function () {
                     const text = element.getAttribute('data-text');
                     const lang = element.getAttribute('data-lang');
                     Services.MediaService.speak(text, lang);
-
-                    // For single playback, we don't change the play/pause state
-                    // because it's not part of the sequence
                 }
             }
         },

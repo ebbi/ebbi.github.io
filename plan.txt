@@ -63,7 +63,20 @@ Uncaught ReferenceError: Services is not defined
 
 ==================================
 
+Testing:
+http://127.0.0.1:8080/#doc/RW1
 
+The rendered page has the media control row with the play, stop and settings buttons.
+
+The Play/Pause toggle button (and the stop) button click events do not work.  
+The Play button should:
+ open the details panel (if closed) 
+ highlight and speak each alphabet in the same way as word and sentence models
+
+
+Click event on any alphabet speaks the clicked alphabet.  
+It should then continue to higlight and play the remainning alphabet, 
+(similar to words and sentences).
 
 
 
