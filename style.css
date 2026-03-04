@@ -27,6 +27,12 @@
 
     /* Interactive states */
     --hover-bg: rgba(0, 0, 0, 0.05);
+
+    /* Consonant class colors */
+    --middle-class: #059669;
+    --high-class: #dc2626;
+    --low-class: #2563eb;
+
 }
 
 .dark-theme {
@@ -45,6 +51,11 @@
     --english-color: #34d399;
     --farsi-color: #f87171;
     --hover-bg: rgba(255, 255, 255, 0.05);
+
+    --middle-class: #34d399;
+    --high-class: #f87171;
+    --low-class: #60a5fa;
+
 }
 
 /* Material Icons */
@@ -307,14 +318,19 @@ h6 {
    ============================================================================ */
 
 /* Scroll offset for fixed headers */
+/* Scroll offset for fixed headers - adjust these values */
 .document-content .source-wrapper,
 .document-content .word-card,
 .document-content .sentence-group,
 .document-content .words-grid,
 .section-details,
-.active-highlight {
-    scroll-margin-top: 126px;
-    /* Toolbar + Media bar + padding */
+.active-highlight,
+.alphabet-grid-item,
+.character-grid-item,
+.alphabet-table-container,
+.tone-rule-table-container {
+    scroll-margin-top: 146px;
+    /* Increased from 126px for alphabet content */
 }
 
 body:not(.has-media-bar) .document-content .source-wrapper,
@@ -322,14 +338,18 @@ body:not(.has-media-bar) .document-content .word-card,
 body:not(.has-media-bar) .document-content .sentence-group,
 body:not(.has-media-bar) .document-content .words-grid,
 body:not(.has-media-bar) .section-details,
-body:not(.has-media-bar) .active-highlight {
-    scroll-margin-top: 76px;
-    /* Toolbar + padding */
+body:not(.has-media-bar) .active-highlight,
+body:not(.has-media-bar) .alphabet-grid-item,
+body:not(.has-media-bar) .character-grid-item,
+body:not(.has-media-bar) .alphabet-table-container,
+body:not(.has-media-bar) .tone-rule-table-container {
+    scroll-margin-top: 86px;
+    /* Increased from 76px */
 }
 
 .document-content {
     padding-bottom: 20px;
-    scroll-padding-top: 126px;
+    scroll-padding-top: 146px;
 }
 
 .document-content [data-text] {
@@ -3053,7 +3073,7 @@ input:checked+.toggle-slider:before {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 16px 8px;
+    padding: 1px;
     background: var(--card);
     border: 1px solid var(--border);
     border-radius: 8px;
@@ -3084,6 +3104,124 @@ input:checked+.toggle-slider:before {
     font-size: 0.8rem;
     color: var(--text-secondary);
 }
+
+/* Add these to your :root variables section (around line 20-30) */
+:root {
+    /* ... existing variables ... */
+
+    /* Consonant class colors */
+    --middle-class: #059669;
+    /* green */
+    --high-class: #dc2626;
+    /* red */
+    --low-class: #2563eb;
+    /* blue */
+}
+
+.dark-theme {
+    /* ... existing dark theme variables ... */
+
+    /* Consonant class colors for dark mode */
+    --middle-class: #34d399;
+    /* light green */
+    --high-class: #f87171;
+    /* light red */
+    --low-class: #60a5fa;
+    /* light blue */
+}
+
+/* Add these new classes for consonant class styling */
+.alphabet-grid-item.middle-class {
+    border-color: var(--middle-class);
+    background: rgba(5, 150, 105, 0.05);
+}
+
+.alphabet-grid-item.middle-class .alphabet-symbol {
+    color: var(--middle-class);
+}
+
+.alphabet-grid-item.high-class {
+    border-color: var(--high-class);
+    background: rgba(220, 38, 38, 0.05);
+}
+
+.alphabet-grid-item.high-class .alphabet-symbol {
+    color: var(--high-class);
+}
+
+.alphabet-grid-item.low-class {
+    border-color: var(--low-class);
+    background: rgba(37, 99, 235, 0.05);
+}
+
+.alphabet-grid-item.low-class .alphabet-symbol {
+    color: var(--low-class);
+}
+
+/* For character grid items */
+.character-grid-item.middle-class {
+    border-color: var(--middle-class);
+}
+
+.character-grid-item.middle-class .character-symbol {
+    color: var(--middle-class);
+}
+
+.character-grid-item.high-class {
+    border-color: var(--high-class);
+}
+
+.character-grid-item.high-class .character-symbol {
+    color: var(--high-class);
+}
+
+.character-grid-item.low-class {
+    border-color: var(--low-class);
+}
+
+.character-grid-item.low-class .character-symbol {
+    color: var(--low-class);
+}
+
+/* Class indicators for flashcards and other displays */
+.class-indicator {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-left: 8px;
+}
+
+.class-indicator.middle {
+    background: var(--middle-class);
+    color: white;
+}
+
+.class-indicator.high {
+    background: var(--high-class);
+    color: white;
+}
+
+.class-indicator.low {
+    background: var(--low-class);
+    color: white;
+}
+
+/* Tone rule table class headers */
+.tone-rule-table th.middle-class {
+    background: var(--middle-class);
+}
+
+.tone-rule-table th.high-class {
+    background: var(--high-class);
+}
+
+.tone-rule-table th.low-class {
+    background: var(--low-class);
+}
+
 
 /* Audio Buttons */
 .btn-audio {
@@ -3278,7 +3416,8 @@ input:checked+.toggle-slider:before {
 
     .document-controls-wrapper>*,
     .section-all-controls>* {
-        flex: 0 1 calc(30% - 4px);
+        flex: 0 1 calc(30%);
+        /*                flex: 0 1 calc(30% - 4px); */
         font-size: 0.80rem;
     }
 

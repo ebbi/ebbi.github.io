@@ -2055,13 +2055,27 @@ const App = (function () {
                     const charId = char.id || char;
                     const charSymbol = char.symbol || char;
                     const charSound = char.sound || '';
+                    const charClass = char.class || '';
+
+                    // Determine class for color coding
+                    let classType = '';
+                    if (charClass === 'middle') {
+                        classType = 'middle-class';
+                    } else if (charClass === 'high') {
+                        classType = 'high-class';
+                    } else if (charClass === 'low-paired' || charClass === 'low-unpaired') {
+                        classType = 'low-class';
+                    }
+
                     return `
-                                <button class="character-grid-item audio-element" 
+                                <button class="character-grid-item audio-element ${classType}" 
                                         onclick="App.media.play(this)"
                                         data-text="${charSymbol}" 
-                                        data-lang="th">
+                                        data-lang="th"
+                                        data-class="${charClass}">
                                     <span class="character-symbol">${charSymbol}</span>
                                     ${charSound ? `<span class="character-sound">${charSound}</span>` : ''}
+                                    ${charClass ? `<span class="class-indicator ${charClass}">${charClass}</span>` : ''}
                                 </button>
                             `;
                 }).join('')}
@@ -2120,15 +2134,26 @@ const App = (function () {
             },
 
             renderToneRuleTable(item) {
+                // Determine class for header color
+                let classType = '';
+                let className = item.class || '';
+                if (className.toLowerCase().includes('middle')) {
+                    classType = 'middle-class';
+                } else if (className.toLowerCase().includes('high')) {
+                    classType = 'high-class';
+                } else if (className.toLowerCase().includes('low')) {
+                    classType = 'low-class';
+                }
+
                 return `
                     <div class="tone-rule-table-container">
-                        <h3>${item.class} Class Tone Rules</h3>
+                        <h3 class="${classType}">${item.class} Class Tone Rules</h3>
                         <table class="tone-rule-table">
                             <thead>
                                 <tr>
-                                    <th>Condition</th>
-                                    <th>Tone</th>
-                                    <th>Example</th>
+                                    <th class="${classType}">Condition</th>
+                                    <th class="${classType}">Tone</th>
+                                    <th class="${classType}">Example</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -2136,7 +2161,7 @@ const App = (function () {
                                     <tr>
                                         <td>${rule.condition}</td>
                                         <td><span class="tone-indicator tone-${rule.tone ? rule.tone.toLowerCase() : 'mid'}">${rule.tone || 'Mid'}</span></td>
-                                        <td class="example-word audio-element" 
+                                        <td class="example-word audio-element ${classType}" 
                                             onclick="App.media.play(this)"
                                             data-text="${rule.example}" 
                                             data-lang="th">
@@ -2155,16 +2180,30 @@ const App = (function () {
                     <div class="alphabet-table-container">
                         <h3>${item.title?.[State.data.lang] || item.title?.en || ''}</h3>
                         <div class="alphabet-grid">
-                            ${item.characters.map(char => `
-                                <div class="alphabet-grid-item audio-element" 
-                                    onclick="App.media.play(this)"
-                                    data-text="${char.symbol}" 
-                                    data-lang="th">
-                                    <span class="alphabet-symbol">${char.symbol}</span>
-                                    <span class="alphabet-sound">${char.sound || ''}</span>
-                                    <span class="alphabet-name">${char.name || ''}</span>
-                                </div>
-                            `).join('')}
+                            ${item.characters.map(char => {
+                    // Determine class for color coding
+                    let classType = '';
+                    if (char.class === 'middle') {
+                        classType = 'middle-class';
+                    } else if (char.class === 'high') {
+                        classType = 'high-class';
+                    } else if (char.class === 'low-paired' || char.class === 'low-unpaired') {
+                        classType = 'low-class';
+                    }
+
+                    return `
+                                    <div class="alphabet-grid-item audio-element alphabet-item ${classType}" 
+                                        onclick="App.media.play(this)"
+                                        data-text="${char.symbol}" 
+                                        data-lang="th"
+                                        data-class="${char.class}">
+                                        <span class="alphabet-symbol">${char.symbol}</span>
+                                        <span class="alphabet-sound">${char.sound || ''}</span>
+                                        <span class="alphabet-name">${char.name || ''}</span>
+                                        ${char.class ? `<span class="class-indicator ${char.class}">${char.class}</span>` : ''}
+                                    </div>
+                                `;
+                }).join('')}
                         </div>
                     </div>
                 `;
@@ -2679,28 +2718,39 @@ const App = (function () {
     `;
 
                 if (card.type === 'character') {
+                    // Determine class for color coding
+                    let classColor = '';
+                    if (card.back.class === 'middle') {
+                        classColor = 'middle-class';
+                    } else if (card.back.class === 'high') {
+                        classColor = 'high-class';
+                    } else if (card.back.class === 'low-paired' || card.back.class === 'low-unpaired') {
+                        classColor = 'low-class';
+                    }
+
                     // Character card back - show sound, name, meaning, class
                     html += `
-            <div class="flashcard-translation-item character-sound"
-                 onclick="App.Services.MediaService.speak('${card.back.sound}', 'th')"
-                 data-text="${card.back.sound}" data-lang="th">
-                <span class="translation-lang">Sound:</span>
-                <span class="translation-text">${card.back.sound}</span>
-                <span class="material-icons audio-icon">volume_up</span>
-            </div>
-            <div class="flashcard-translation-item character-name">
-                <span class="translation-lang">Name:</span>
-                <span class="translation-text">${card.back.name}</span>
-            </div>
-            <div class="flashcard-translation-item character-meaning">
-                <span class="translation-lang">Meaning:</span>
-                <span class="translation-text">${card.back.meaning}</span>
-            </div>
-            <div class="flashcard-translation-item character-class ${card.back.class}">
-                <span class="translation-lang">Class:</span>
-                <span class="translation-text">${card.back.class}</span>
-            </div>
-        `;
+        <div class="flashcard-translation-item character-sound ${classColor}"
+             onclick="App.Services.MediaService.speak('${card.back.sound}', 'th')"
+             data-text="${card.back.sound}" data-lang="th">
+            <span class="translation-lang">Sound:</span>
+            <span class="translation-text">${card.back.sound}</span>
+            <span class="material-icons audio-icon">volume_up</span>
+        </div>
+        <div class="flashcard-translation-item character-name ${classColor}">
+            <span class="translation-lang">Name:</span>
+            <span class="translation-text">${card.back.name}</span>
+        </div>
+        <div class="flashcard-translation-item character-meaning ${classColor}">
+            <span class="translation-lang">Meaning:</span>
+            <span class="translation-text">${card.back.meaning}</span>
+        </div>
+        <div class="flashcard-translation-item character-class ${classColor}">
+            <span class="translation-lang">Class:</span>
+            <span class="translation-text">${card.back.class}</span>
+            <span class="class-indicator ${card.back.class}">${card.back.class}</span>
+        </div>
+    `;
                 } else {
                     // Word or sentence card back - show translations
                     Object.entries(State.data.media.languageSettings).forEach(([code, config]) => {
@@ -3370,7 +3420,7 @@ const App = (function () {
                             <li>
                                 <span class="material-icons">format_list_bulleted</span>
                                 <strong>${t('word_breakdown_help', 'Word Breakdown')}:</strong>
-                                <span>${t('word_breakdown_help_desc', 'Toggle whether individual words are shown and spoken during audio playback. When enabled, the sequence is: 1) Source sentence, 2) Individual words with translations, 3) Full sentence translations. When disabled, only sentences are played.')}</span>
+                                <span>${t('word_breakdown_help_desc', 'Toggle whether individual words within a sentence and their corresponding selected translations are highlighted.  When enabled, the highlighting and speech sequence is: 1) Source sentence, 2) Individual words in the source sentence with translations, 3) Full sentence translations. When disabled, only sentences are played.')}</span>
                             </li>
                         </ul>
 
@@ -4397,7 +4447,7 @@ const App = (function () {
                 }, 200);
             };
 
-            const playNext = () => {
+            playNext = () => {
                 // console.log('playNext called, currentIndex:', State.data.media.currentIndex);
 
                 // Check if we should pause due to pending scroll completion
@@ -4469,17 +4519,62 @@ const App = (function () {
                 if (element.closest('.words-grid')) {
                     row = element.closest('.words-grid');
                     // console.log('Element is in words-grid, row:', row?.id || 'no id');
+                } else if (element.closest('.alphabet-grid')) {
+                    row = element.closest('.alphabet-grid');
+                    // console.log('Element is in alphabet-grid, row:', row?.id || 'no id');
+                } else if (element.closest('.character-grid')) {
+                    row = element.closest('.character-grid');
+                    // console.log('Element is in character-grid, row:', row?.id || 'no id');
+                } else if (element.closest('.tone-rule-table-container')) {
+                    row = element.closest('.tone-rule-table-container');
+                    // console.log('Element is in tone-rule-table, row:', row?.id || 'no id');
                 } else {
-                    row = element.closest('.sentence-group, .word-card, .flashcard-front, .quiz-question-card, .alphabet-table-container, .alphabet-grid');
+                    row = element.closest('.sentence-group, .word-card, .flashcard-front, .quiz-question-card, .alphabet-table-container');
                     // console.log('Element is in other container, row:', row?.className);
                 }
 
                 const rowId = row?.id || row?.getAttribute('data-uid') || `row-${State.data.media.currentIndex}`;
-                // console.log('Row ID:', rowId, 'Current row ID:', State.data.currentRowId);
 
-                // Scroll when we enter a new row
-                if (rowId && rowId !== State.data.currentRowId) {
-                    // console.log('New row detected, scrolling...');
+                // IMPORTANT: For alphabet content, we need to check if the element itself is in viewport
+                // because all items share the same row container
+                const elementRect = element.getBoundingClientRect();
+
+                // Calculate visible area of the element
+                const toolbarHeight = 56; // #app-toolbar height
+                const mediaBar = document.getElementById('media-player-container');
+                const mediaBarHeight = mediaBar && mediaBar.innerHTML ? 50 : 0; // media-row height when visible
+                const topThreshold = toolbarHeight + mediaBarHeight + 20; // Add padding
+                const bottomThreshold = 40; // Bottom padding
+
+                // Check if element is in viewport with better thresholds
+                const isElementInViewport = (
+                    elementRect.top >= topThreshold &&
+                    elementRect.bottom <= (window.innerHeight - bottomThreshold)
+                );
+
+                // Also check if element is partially visible but needs adjustment
+                const needsScrolling = (
+                    elementRect.top < topThreshold || // Element too high
+                    elementRect.bottom > (window.innerHeight - bottomThreshold) || // Element too low
+                    elementRect.top < 0 || // Element above viewport
+                    elementRect.bottom > window.innerHeight // Element below viewport
+                );
+
+                // Scroll when:
+                // 1. We enter a new row (different rowId) OR
+                // 2. The element is not properly visible in viewport (for same row items)
+                // 3. For alphabet grid items, always ensure they're visible
+                const isAlphabetItem = element.classList.contains('alphabet-item') ||
+                    element.closest('.alphabet-item') !== null;
+
+                if ((rowId && rowId !== State.data.currentRowId) || needsScrolling || (isAlphabetItem && !isElementInViewport)) {
+                    // console.log('Need to scroll -', {
+                    //     newRow: rowId !== State.data.currentRowId,
+                    //     needsScrolling,
+                    //     isAlphabetItem,
+                    //     isElementInViewport
+                    // });
+
                     State.data.isAutoScrolling = true;
                     pendingScrollCompletion = true;
 
@@ -4487,32 +4582,39 @@ const App = (function () {
                     window.scrollLockUntil = Date.now() + 1500;
 
                     // Calculate total offset based on media bar visibility
-                    const toolbarHeight = 56; // #app-toolbar height
-                    const mediaBar = document.getElementById('media-player-container');
-                    const mediaBarHeight = mediaBar && mediaBar.innerHTML ? 50 : 0; // media-row height when visible
-                    const totalOffset = toolbarHeight + mediaBarHeight + 20; // Add 20px extra padding for safety
+                    const totalOffset = topThreshold + 20; // Increased padding for better visibility
 
-                    if (row) {
-                        // Use a more precise scroll with offset
-                        const rect = row.getBoundingClientRect();
-                        const absoluteTop = window.scrollY + rect.top;
-                        const offsetPosition = absoluteTop - totalOffset;
+                    // Determine what to scroll to - prefer the row container, but fall back to element
+                    const scrollTarget = row || element;
 
-                        window.scrollTo({
-                            top: offsetPosition,
-                            behavior: 'smooth'
-                        });
-                    } else {
-                        // Use a more precise scroll with offset
-                        const rect = element.getBoundingClientRect();
-                        const absoluteTop = window.scrollY + rect.top;
-                        const offsetPosition = absoluteTop - totalOffset;
+                    // Use a more precise scroll with offset
+                    const rect = scrollTarget.getBoundingClientRect();
+                    const absoluteTop = window.scrollY + rect.top;
 
-                        window.scrollTo({
-                            top: offsetPosition,
-                            behavior: 'smooth'
-                        });
+                    // Calculate target position - we want the element to be at the topThreshold position
+                    let targetTop = absoluteTop - topThreshold;
+
+                    // If it's an alphabet item in a grid, we might want to scroll to the row container
+                    // to give context, but ensure the specific item is visible
+                    if (isAlphabetItem && row && row !== element) {
+                        // Scroll to the row but adjust so the element is visible
+                        const rowRect = row.getBoundingClientRect();
+                        const rowTop = window.scrollY + rowRect.top;
+
+                        // Calculate how far into the row our element is
+                        const elementOffsetInRow = elementRect.top - rowRect.top;
+
+                        // Target the row such that our element is at the topThreshold
+                        targetTop = rowTop + elementOffsetInRow - topThreshold;
                     }
+
+                    // Ensure we don't scroll above the document
+                    targetTop = Math.max(0, targetTop);
+
+                    window.scrollTo({
+                        top: targetTop,
+                        behavior: 'smooth'
+                    });
 
                     // Listen for scroll end
                     const scrollHandler = () => onScrollEnd();
@@ -4528,10 +4630,10 @@ const App = (function () {
                         setTimeout(() => {
                             pendingScrollCompletion = false;
                             speakCurrent();
-                        }, 100);
+                        }, 200); // Increased from 150ms to 200ms for better stability
                     }, 400);
                 } else {
-                    // console.log('Same row, speaking current element');
+                    // console.log('Element is properly visible, speaking current element');
                     speakCurrent();
                 }
             };

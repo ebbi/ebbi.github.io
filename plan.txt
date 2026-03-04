@@ -44,21 +44,33 @@ Please clarify any further ambiguity before the final conversion and output.
 
 After adding the alphabet model, a new bug has appeared.
 
-Previously, the Play button 
- 1. highlighted and spoke the source sentence then 
- 2. highlighted each word and its translations (selected in Settings) and spoke each translation and then 
- highlighted and then 
- 3. spoke each selected translation sentence. 
+Testing:
+http://127.0.0.1:8080/#doc/RW1
 
-Now step 2 does not occur.
-
-As well as fixing the bug, the new requirement is to add a selection input set by default to true 
-to indicate whether step 2 should happen.  If not selected, the words making up the source sentence 
-should not be displayed nor spoken.
+For the alphabet model, the play can continue for content hidden below the viewport.  
+The page does eventually autoscrol but it should occur sooner so that the text being highlighted and spoken is always visible in the view.
 
 
-The internationalised message for the "Word Breakdon" could do with an update 
-to include the new feature to toggle the show word breakdown.
+
+Please don't generate any code and advice on this idea.
+
+Each consonant is associagted with a symbol, chicken, egg, and so on.
+
+To aid memorisation, it would be good to insert the symbol with the consonant. 
+
+The question is whether to place the icon: 
+1. on the main listing 
+2. on the flash card 
+3. on the back of the flash card 
+4. on all of above
+
+The aim is to aid memorisation without being too obtrusive.
+
+Please advise forst before generating any code.
+
+
+
+
 
 
 
