@@ -2819,6 +2819,125 @@ input:checked+.toggle-slider:before {
     transform: translateX(-4px);
 }
 
+/* Character summary card */
+.flashcard-translation-item.character-summary {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    padding: 16px;
+    background: var(--card);
+    border: 2px solid;
+    border-radius: 16px;
+    margin-bottom: 8px;
+}
+
+.character-summary.middle-class {
+    border-color: var(--middle-class);
+}
+
+.character-summary.high-class {
+    border-color: var(--high-class);
+}
+
+.character-summary.low-class {
+    border-color: var(--low-class);
+}
+
+.character-summary-content {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 12px;
+}
+
+.character-symbol {
+    font-size: 3rem;
+    line-height: 1;
+    font-family: 'Noto Serif Thai', serif;
+}
+
+.character-symbol.middle-class {
+    color: var(--middle-class);
+}
+
+.character-symbol.high-class {
+    color: var(--high-class);
+}
+
+.character-symbol.low-class {
+    color: var(--low-class);
+}
+
+.character-mnemonic {
+    font-size: 1.2rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.character-meaning {
+    font-size: 1rem;
+    color: var(--text-secondary);
+}
+
+.character-class-badge {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    background: var(--card);
+}
+
+.character-class-badge.middle {
+    color: var(--middle-class);
+    border: 1px solid var(--middle-class);
+}
+
+.character-class-badge.high {
+    color: var(--high-class);
+    border: 1px solid var(--high-class);
+}
+
+.character-class-badge.low {
+    color: var(--low-class);
+    border: 1px solid var(--low-class);
+}
+
+.character-audio-row {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.audio-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 6px 12px;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 30px;
+    font-size: 0.9rem;
+    color: var(--text);
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.audio-chip:hover {
+    background: var(--primary);
+    color: white;
+    border-color: var(--primary);
+}
+
+.audio-chip .material-icons {
+    font-size: 16px;
+}
+
+
 [dir="rtl"] .audio-preview-icon {
     left: auto;
     right: 3px;
@@ -4015,4 +4134,328 @@ select:focus-visible {
     .streak-calendar {
         flex-wrap: wrap;
     }
+}
+
+/* Consonant Detail Bottom Sheet */
+.consonant-detail-sheet {
+    padding: 0 20px 20px;
+}
+
+.consonant-detail-header {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 24px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--border);
+}
+
+.consonant-detail-symbol {
+    font-size: 5rem;
+    line-height: 1;
+    font-family: 'Noto Serif Thai', serif;
+    min-width: 120px;
+    text-align: center;
+}
+
+.consonant-detail-symbol.middle-class {
+    color: var(--middle-class);
+}
+
+.consonant-detail-symbol.high-class {
+    color: var(--high-class);
+}
+
+.consonant-detail-symbol.low-class {
+    color: var(--low-class);
+}
+
+.consonant-detail-info {
+    flex: 1;
+}
+
+.consonant-name {
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-bottom: 4px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.consonant-name .thai-name {
+    font-family: 'Noto Serif Thai', serif;
+}
+
+.consonant-mnemonic {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+    margin-bottom: 8px;
+}
+
+.mnemonic-emoji {
+    font-size: 1.8rem;
+}
+
+.consonant-class-badge {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-top: 8px;
+}
+
+.consonant-class-badge.middle {
+    background: var(--middle-class);
+    color: white;
+}
+
+.consonant-class-badge.high {
+    background: var(--high-class);
+    color: white;
+}
+
+.consonant-class-badge.low {
+    background: var(--low-class);
+    color: white;
+}
+
+/* Example words in detail view */
+.consonant-examples {
+    margin-top: 24px;
+}
+
+.consonant-examples h4 {
+    margin: 0 0 12px 0;
+    font-size: 1rem;
+    color: var(--text-secondary);
+}
+
+.example-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.example-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 30px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.example-chip:hover {
+    border-color: var(--primary);
+    background: var(--hover-bg);
+}
+
+.example-chip .example-word {
+    font-family: 'Noto Serif Thai', serif;
+    font-weight: 500;
+}
+
+.example-chip .example-meaning {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+}
+
+/* Class indicator dot for grid items */
+.class-dot {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    margin-left: 4px;
+    vertical-align: middle;
+}
+
+.class-dot.middle {
+    background: var(--middle-class);
+}
+
+.class-dot.high {
+    background: var(--high-class);
+}
+
+.class-dot.low {
+    background: var(--low-class);
+}
+
+/* Audio button in detail view */
+.detail-audio-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    background: var(--primary);
+    color: white;
+    border: none;
+    border-radius: 30px;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-top: 16px;
+    transition: all 0.2s;
+}
+
+.detail-audio-btn:hover {
+    background: var(--primary-dark);
+    transform: translateY(-2px);
+}
+
+.detail-audio-btn:active {
+    transform: translateY(0);
+}
+
+/* Character large display on flashcard front */
+.character-large-display {
+    font-size: 5rem;
+    line-height: 1.2;
+    font-family: 'Noto Serif Thai', serif;
+}
+
+.character-large-display.middle-class {
+    color: var(--middle-class);
+}
+
+.character-large-display.high-class {
+    color: var(--high-class);
+}
+
+.character-large-display.low-class {
+    color: var(--low-class);
+}
+
+/* Character summary card */
+.flashcard-translation-item.character-summary {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    padding: 16px;
+    background: var(--card);
+    border: 2px solid;
+    border-radius: 16px;
+    margin-bottom: 8px;
+}
+
+.character-summary.middle-class {
+    border-color: var(--middle-class);
+}
+
+.character-summary.high-class {
+    border-color: var(--high-class);
+}
+
+.character-summary.low-class {
+    border-color: var(--low-class);
+}
+
+.character-summary-content {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 12px;
+}
+
+.character-symbol {
+    font-size: 3rem;
+    line-height: 1;
+    font-family: 'Noto Serif Thai', serif;
+}
+
+.character-symbol.middle-class {
+    color: var(--middle-class);
+}
+
+.character-symbol.high-class {
+    color: var(--high-class);
+}
+
+.character-symbol.low-class {
+    color: var(--low-class);
+}
+
+.character-mnemonic {
+    font-size: 1.2rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.mnemonic-emoji {
+    font-size: 1.5rem;
+    margin-right: 4px;
+}
+
+.character-meaning {
+    font-size: 1rem;
+    color: var(--text-secondary);
+}
+
+.character-class-badge {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    background: var(--card);
+}
+
+.character-class-badge.middle {
+    color: var(--middle-class);
+    border: 1px solid var(--middle-class);
+}
+
+.character-class-badge.high {
+    color: var(--high-class);
+    border: 1px solid var(--high-class);
+}
+
+.character-class-badge.low {
+    color: var(--low-class);
+    border: 1px solid var(--low-class);
+}
+
+.character-audio-row {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.audio-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 6px 12px;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 30px;
+    font-size: 0.9rem;
+    color: var(--text);
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.audio-chip:hover {
+    background: var(--primary);
+    color: white;
+    border-color: var(--primary);
+}
+
+.audio-chip .material-icons {
+    font-size: 16px;
 }

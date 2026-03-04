@@ -2001,6 +2001,7 @@ const App = (function () {
         },
 
         alphabet: {
+
             getCharacterData(characterId) {
                 // This would need to be loaded from your data files
                 // For now, return null - will be implemented when data is loaded
@@ -2181,32 +2182,191 @@ const App = (function () {
                         <h3>${item.title?.[State.data.lang] || item.title?.en || ''}</h3>
                         <div class="alphabet-grid">
                             ${item.characters.map(char => {
-                    // Determine class for color coding
-                    let classType = '';
-                    if (char.class === 'middle') {
-                        classType = 'middle-class';
-                    } else if (char.class === 'high') {
-                        classType = 'high-class';
-                    } else if (char.class === 'low-paired' || char.class === 'low-unpaired') {
-                        classType = 'low-class';
-                    }
+                                // Determine class for color coding
+                                let classType = '';
+                                if (char.class === 'middle') {
+                                    classType = 'middle-class';
+                                } else if (char.class === 'high') {
+                                    classType = 'high-class';
+                                } else if (char.class === 'low-paired' || char.class === 'low-unpaired') {
+                                    classType = 'low-class';
+                                }
 
-                    return `
+                                // Determine class dot
+                                let dotClass = '';
+                                if (char.class === 'middle') dotClass = 'middle';
+                                else if (char.class === 'high') dotClass = 'high';
+                                else if (char.class === 'low-paired' || char.class === 'low-unpaired') dotClass = 'low';
+
+                                return `
                                     <div class="alphabet-grid-item audio-element alphabet-item ${classType}" 
-                                        onclick="App.media.play(this)"
+                                        onclick="App.alphabet.showConsonantDetail('${char.symbol}', this)"
                                         data-text="${char.symbol}" 
                                         data-lang="th"
-                                        data-class="${char.class}">
+                                        data-class="${char.class}"
+                                        data-symbol="${char.symbol}"
+                                        data-sound="${char.sound || ''}"
+                                        data-name="${char.name || ''}"
+                                        data-meaning="${char.meaning || ''}">
                                         <span class="alphabet-symbol">${char.symbol}</span>
-                                        <span class="alphabet-sound">${char.sound || ''}</span>
-                                        <span class="alphabet-name">${char.name || ''}</span>
-                                        ${char.class ? `<span class="class-indicator ${char.class}">${char.class}</span>` : ''}
+                                        ${dotClass ? `<span class="class-dot ${dotClass}"></span>` : ''}
                                     </div>
                                 `;
-                }).join('')}
+                            }).join('')}
                         </div>
                     </div>
                 `;
+            },
+
+            showConsonantDetail: function (symbol, element) {
+                // Get the character data from the element's attributes
+                const sound = element.getAttribute('data-sound') || '';
+                const name = element.getAttribute('data-name') || '';
+                const meaning = element.getAttribute('data-meaning') || '';
+                const consonantClass = element.getAttribute('data-class') || '';
+
+                // Map classes to display names
+                let className = '';
+                let classType = '';
+                if (consonantClass === 'middle') {
+                    className = 'Middle Class';
+                    classType = 'middle';
+                } else if (consonantClass === 'high') {
+                    className = 'High Class';
+                    classType = 'high';
+                } else if (consonantClass === 'low-paired') {
+                    className = 'Low Class (Paired)';
+                    classType = 'low';
+                } else if (consonantClass === 'low-unpaired') {
+                    className = 'Low Class (Unpaired)';
+                    classType = 'low';
+                }
+
+                // Emoji mapping for common mnemonics
+                const emojiMap = {
+                    'ก': '🐔', // ไก่ - chicken
+                    'ข': '🥚', // ไข่ - egg
+                    'ฃ': '🍾', // ขวด - bottle
+                    'ค': '🐃', // ควาย - water buffalo
+                    'ฅ': '👤', // คน - human
+                    'ฆ': '🔔', // ระฆัง - bell
+                    'ง': '🐍', // งู - snake
+                    'จ': '🍽️', // จาน - plate
+                    'ฉ': '🥘', // ฉิ่ง - cymbal
+                    'ช': '🐘', // ช้าง - elephant
+                    'ซ': '⛓️', // โซ่ - chain
+                    'ฌ': '🌳', // เฌอ - tree
+                    'ญ': '👩', // หญิง - female
+                    'ฎ': '👑', // ชฎา - head dress
+                    'ฏ': '⚔️', // ปฏัก - lance
+                    'ฐ': '🗿', // ฐาน - pedestal
+                    'ฑ': '👸', // มนโท - lady
+                    'ฒ': '👴', // ผู้เฒ่า - elderly
+                    'ณ': '🧘', // เณร - novice monk
+                    'ด': '👶', // เด็ก - child
+                    'ต': '🐢', // เต่า - turtle
+                    'ถ': '👜', // ถุง - bag
+                    'ท': '💂', // ทหาร - soldier
+                    'ธ': '🏁', // ธง - flag
+                    'น': '🐭', // หนู - mouse
+                    'บ': '🍃', // ใบไม้ - leaf
+                    'ป': '🐟', // ปลา - fish
+                    'ผ': '🐝', // ผึ้ง - bee
+                    'ฝ': '📦', // ฝา - lid
+                    'พ': '🍽️', // พาน - offering tray
+                    'ฟ': '🦷', // ฟัน - tooth
+                    'ภ': '⛵', // สำเภา - junk ship
+                    'ม': '🐴', // ม้า - horse
+                    'ย': '👹', // ยักษ์ - giant
+                    'ร': '🚤', // เรือ - boat
+                    'ล': '🐒', // ลิง - monkey
+                    'ว': '💍', // แหวน - ring
+                    'ศ': '🏯', // ศาลา - pavilion
+                    'ษ': '🧘', // ฤษี - hermit
+                    'ส': '🐯', // เสือ - tiger
+                    'ห': '📦', // หีบ - chest
+                    'ฬ': '🪁', // จุฬา - kite
+                    'อ': '🫙', // อ่าง - basin
+                    'ฮ': '🦉'  // นกฮูก - owl
+                };
+
+                const emoji = emojiMap[symbol] || '🔤';
+
+                // Get examples (you might want to pass these from the data)
+                const examples = [
+                    { word: symbol + '...', meaning: 'Example word' }
+                ];
+
+                // Use the GrammarSheet anchor for consistency
+                let anchor = document.getElementById('grammar-sheet-anchor');
+                if (!anchor) {
+                    anchor = document.createElement('div');
+                    anchor.id = 'grammar-sheet-anchor';
+                    document.body.appendChild(anchor);
+                }
+
+                // Build the detail view HTML - FIXED: Changed App.closeConsonantDetail to App.alphabet.closeConsonantDetail
+                anchor.innerHTML = `
+        <div class="sheet-backdrop" onclick="App.alphabet.closeConsonantDetail()"></div>
+        <div class="bottom-sheet ${State.data.theme === 'dark' ? 'dark-theme' : ''}">
+            <div class="sheet-handle" onclick="App.alphabet.closeConsonantDetail()"></div>
+            <div class="sheet-header">
+                <h3>${Services.I18n.t('consonant_details', 'Consonant Details')}</h3>
+                <button class="sheet-close material-icons" onclick="App.alphabet.closeConsonantDetail()">close</button>
+            </div>
+            <div class="sheet-content consonant-detail-sheet">
+                <div class="consonant-detail-header">
+                    <div class="consonant-detail-symbol ${classType}">${symbol}</div>
+                    <div class="consonant-detail-info">
+                        <div class="consonant-name">
+                            <span class="thai-name">${sound}</span>
+                            <span class="class-indicator ${classType}">${consonantClass}</span>
+                        </div>
+                        <div class="consonant-mnemonic">
+                            <span class="mnemonic-emoji">${emoji}</span>
+                            <span>${name} (${meaning})</span>
+                        </div>
+                        <button class="detail-audio-btn" onclick="App.Services.MediaService.speak('${symbol}', 'th')">
+                            <span class="material-icons">volume_up</span>
+                            ${Services.I18n.t('hear_pronunciation', 'Hear pronunciation')}
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="consonant-examples">
+                    <h4>${Services.I18n.t('example_words', 'Example Words')}</h4>
+                    <div class="example-chips">
+                        <div class="example-chip" onclick="App.Services.MediaService.speak('${symbol}', 'th')">
+                            <span class="example-word">${symbol}</span>
+                            <span class="example-meaning">${meaning}</span>
+                            <span class="material-icons" style="font-size: 16px;">volume_up</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    `;
+
+                // Add animation classes
+                setTimeout(() => {
+                    const sheet = document.querySelector('.bottom-sheet');
+                    const backdrop = document.querySelector('.sheet-backdrop');
+                    if (sheet) sheet.classList.add('open');
+                    if (backdrop) backdrop.classList.add('visible');
+                }, 10);
+            },
+
+            closeConsonantDetail: function () {
+                const sheet = document.querySelector('.bottom-sheet');
+                const backdrop = document.querySelector('.sheet-backdrop');
+
+                if (sheet) sheet.classList.remove('open');
+                if (backdrop) backdrop.classList.remove('visible');
+
+                setTimeout(() => {
+                    const anchor = document.getElementById('grammar-sheet-anchor');
+                    if (anchor) anchor.innerHTML = '';
+                }, 300);
             }
 
         },
@@ -2666,7 +2826,6 @@ const App = (function () {
                 return [];
             },
 
-            // In UI.Flashcard.renderCard (around line 2000-2100)
             renderCard() {
                 const container = UI.getContainer();
                 const cards = State.data.flashcards;
@@ -2674,6 +2833,35 @@ const App = (function () {
 
                 const card = cards.currentDeck[cards.currentIndex];
                 const t = Services.I18n.t;
+
+                // Emoji mapping for character mnemonics
+                const emojiMap = {
+                    'ก': '🐔', 'ข': '🥚', 'ฃ': '🍾', 'ค': '🐃', 'ฅ': '👤',
+                    'ฆ': '🔔', 'ง': '🐍', 'จ': '🍽️', 'ฉ': '🥘', 'ช': '🐘',
+                    'ซ': '⛓️', 'ฌ': '🌳', 'ญ': '👩', 'ฎ': '👑', 'ฏ': '⚔️',
+                    'ฐ': '🗿', 'ฑ': '👸', 'ฒ': '👴', 'ณ': '🧘', 'ด': '👶',
+                    'ต': '🐢', 'ถ': '👜', 'ท': '💂', 'ธ': '🏁', 'น': '🐭',
+                    'บ': '🍃', 'ป': '🐟', 'ผ': '🐝', 'ฝ': '📦', 'พ': '🍽️',
+                    'ฟ': '🦷', 'ภ': '⛵', 'ม': '🐴', 'ย': '👹', 'ร': '🚤',
+                    'ล': '🐒', 'ว': '💍', 'ศ': '🏯', 'ษ': '🧘', 'ส': '🐯',
+                    'ห': '📦', 'ฬ': '🪁', 'อ': '🫙', 'ฮ': '🦉'
+                };
+
+                // Determine class for color coding (if character card)
+                let classColor = '';
+                let className = '';
+                if (card.type === 'character') {
+                    if (card.back.class === 'middle') {
+                        classColor = 'middle-class';
+                        className = 'Middle';
+                    } else if (card.back.class === 'high') {
+                        classColor = 'high-class';
+                        className = 'High';
+                    } else if (card.back.class === 'low-paired' || card.back.class === 'low-unpaired') {
+                        classColor = 'low-class';
+                        className = 'Low';
+                    }
+                }
 
                 let html = `
         <div class="flashcard-container">
@@ -2690,17 +2878,17 @@ const App = (function () {
             
             <div class="flashcard ${cards.showAnswer ? 'show-answer' : ''}">
                 <div class="flashcard-front" 
-                     onclick="App.Services.MediaService.speak('${UI.escapeHtml(card.front)}', 'th')"
-                     data-text="${UI.escapeHtml(card.front)}" 
-                     data-lang="th">
+                    onclick="App.Services.MediaService.speak('${UI.escapeHtml(card.front)}', 'th')"
+                    data-text="${UI.escapeHtml(card.front)}" 
+                    data-lang="th">
     `;
 
                 // Customize front display based on card type
                 if (card.type === 'character') {
-                    // Character card front - show large character
+                    // Character card front - show large character with class color
                     html += `
-            <div class="flashcard-content character-front" lang="th">
-                <div class="character-large-display">${UI.escapeHtml(card.front)}</div>
+            <div class="flashcard-content character-front ${classColor}" lang="th">
+                <div class="character-large-display ${classColor}">${UI.escapeHtml(card.front)}</div>
             </div>
         `;
                 } else {
@@ -2718,39 +2906,30 @@ const App = (function () {
     `;
 
                 if (card.type === 'character') {
-                    // Determine class for color coding
-                    let classColor = '';
-                    if (card.back.class === 'middle') {
-                        classColor = 'middle-class';
-                    } else if (card.back.class === 'high') {
-                        classColor = 'high-class';
-                    } else if (card.back.class === 'low-paired' || card.back.class === 'low-unpaired') {
-                        classColor = 'low-class';
-                    }
+                    const emoji = emojiMap[card.front] || '🔤';
 
-                    // Character card back - show sound, name, meaning, class
+                    // Character card back - concise single row with color-coded consonant
                     html += `
-        <div class="flashcard-translation-item character-sound ${classColor}"
-             onclick="App.Services.MediaService.speak('${card.back.sound}', 'th')"
-             data-text="${card.back.sound}" data-lang="th">
-            <span class="translation-lang">Sound:</span>
-            <span class="translation-text">${card.back.sound}</span>
-            <span class="material-icons audio-icon">volume_up</span>
-        </div>
-        <div class="flashcard-translation-item character-name ${classColor}">
-            <span class="translation-lang">Name:</span>
-            <span class="translation-text">${card.back.name}</span>
-        </div>
-        <div class="flashcard-translation-item character-meaning ${classColor}">
-            <span class="translation-lang">Meaning:</span>
-            <span class="translation-text">${card.back.meaning}</span>
-        </div>
-        <div class="flashcard-translation-item character-class ${classColor}">
-            <span class="translation-lang">Class:</span>
-            <span class="translation-text">${card.back.class}</span>
-            <span class="class-indicator ${card.back.class}">${card.back.class}</span>
-        </div>
-    `;
+            <div class="flashcard-translation-item character-summary ${classColor}">
+                <div class="character-summary-content">
+                    <span class="character-symbol ${classColor}">${UI.escapeHtml(card.front)}</span>
+                    <span class="character-mnemonic">
+                        <span class="mnemonic-emoji">${emoji}</span>
+                        <span>${card.back.name}</span>
+                    </span>
+                    <span class="character-meaning">(${card.back.meaning})</span>
+                    <span class="character-class-badge ${card.back.class}">${className}</span>
+                </div>
+                <div class="character-audio-row">
+                    <button class="audio-chip" onclick="App.Services.MediaService.speak('${card.back.sound}', 'th')" data-text="${card.back.sound}" data-lang="th">
+                        <span class="material-icons">volume_up</span> ${card.back.sound}
+                    </button>
+                    <button class="audio-chip" onclick="App.Services.MediaService.speak('${card.front}', 'th')" data-text="${card.front}" data-lang="th">
+                        <span class="material-icons">volume_up</span> Hear
+                    </button>
+                </div>
+            </div>
+        `;
                 } else {
                     // Word or sentence card back - show translations
                     Object.entries(State.data.media.languageSettings).forEach(([code, config]) => {
@@ -4147,6 +4326,15 @@ const App = (function () {
         },
 
         alphabet: {
+            showConsonantDetail(symbol, element) {
+                // Forward to the UI.alphabet.showConsonantDetail method
+                UI.alphabet.showConsonantDetail(symbol, element);
+            },
+
+            closeConsonantDetail() {
+                // Forward to the UI.alphabet.closeConsonantDetail method
+                UI.alphabet.closeConsonantDetail();
+            },
 
             showCharacterDetail(characterId) {
                 const anchor = document.getElementById('overlay-anchor');
