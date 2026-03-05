@@ -1,0 +1,1514 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>Thai Learning App - Admin Dashboard</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* ============================================================================
+           MOBILE-FIRST ADMIN STYLES
+           ============================================================================ */
+
+        * {
+            box-sizing: border-box;
+        }
+
+        .admin-container {
+            max-width: 100%;
+            margin: 0;
+            padding: 10px;
+        }
+
+        .admin-header {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid var(--border);
+        }
+
+        .admin-header h1 {
+            margin: 0;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 1.5rem;
+        }
+
+        .admin-header h1 .material-icons {
+            font-size: 28px;
+        }
+
+        .admin-header-actions {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .admin-header-actions button {
+            flex: 1;
+            min-width: 100px;
+        }
+
+        /* Mobile-first grid */
+        .admin-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .admin-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 15px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            width: 100%;
+        }
+
+        .admin-card h2 {
+            margin: 0 0 15px 0;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text);
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 10px;
+        }
+
+        .admin-card h2 .material-icons {
+            color: var(--primary);
+            font-size: 20px;
+        }
+
+        /* Stats grid - 2 columns on mobile */
+        .stat-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 12px 8px;
+            background: var(--bg);
+            border-radius: 8px;
+            border: 1px solid var(--border);
+        }
+
+        .stat-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            line-height: 1.2;
+        }
+
+        .stat-label {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            margin-top: 4px;
+            word-break: break-word;
+        }
+
+        /* Scrollable tables on mobile */
+        .table-wrapper {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            margin: 0 -15px;
+            padding: 0 15px;
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.85rem;
+            min-width: 600px;
+            /* Forces horizontal scroll on mobile */
+        }
+
+        .data-table th {
+            text-align: left;
+            padding: 10px 8px;
+            background: rgba(37, 99, 235, 0.1);
+            color: var(--text);
+            font-weight: 600;
+            font-size: 0.8rem;
+            white-space: nowrap;
+        }
+
+        .data-table td {
+            padding: 8px;
+            border-bottom: 1px solid var(--border);
+            white-space: nowrap;
+        }
+
+        /* Compact table for mobile */
+        .compact-table .data-table {
+            min-width: 100%;
+        }
+
+        .compact-table th,
+        .compact-table td {
+            padding: 8px 6px;
+            font-size: 0.8rem;
+            white-space: normal;
+            word-break: break-word;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 3px 6px;
+            border-radius: 12px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        .badge.success {
+            background: rgba(5, 150, 105, 0.1);
+            color: var(--success);
+        }
+
+        .badge.warning {
+            background: rgba(217, 119, 6, 0.1);
+            color: var(--warning);
+        }
+
+        .badge.error {
+            background: rgba(220, 38, 38, 0.1);
+            color: var(--error);
+        }
+
+        /* Action buttons - stacked on mobile */
+        .admin-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-top: 15px;
+        }
+
+        .admin-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            padding: 12px 10px;
+            border: none;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+            width: 100%;
+            min-height: 48px;
+            /* Better touch target */
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .admin-btn:active {
+            transform: scale(0.98);
+            opacity: 0.9;
+        }
+
+        .admin-btn.primary {
+            background: var(--primary);
+            color: white;
+        }
+
+        .admin-btn.warning {
+            background: var(--warning);
+            color: white;
+        }
+
+        .admin-btn.error {
+            background: var(--error);
+            color: white;
+        }
+
+        .admin-btn.secondary {
+            background: var(--text-secondary);
+            color: white;
+        }
+
+        /* Tab navigation - scrollable on mobile */
+        .tab-container {
+            margin-top: 15px;
+        }
+
+        .tab-buttons {
+            display: flex;
+            gap: 5px;
+            margin-bottom: 15px;
+            padding-bottom: 5px;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+            white-space: nowrap;
+        }
+
+        .tab-buttons::-webkit-scrollbar {
+            display: none;
+        }
+
+        .tab-btn {
+            padding: 10px 16px;
+            background: none;
+            border: none;
+            color: var(--text-secondary);
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 500;
+            border-radius: 20px;
+            transition: all 0.2s;
+            white-space: nowrap;
+            flex-shrink: 0;
+            min-height: 44px;
+        }
+
+        .tab-btn:hover {
+            color: var(--primary);
+            background: var(--hover-bg);
+        }
+
+        .tab-btn.active {
+            color: white;
+            background: var(--primary);
+        }
+
+        .tab-pane {
+            display: none;
+        }
+
+        .tab-pane.active {
+            display: block;
+        }
+
+        /* Toast notifications */
+        .toast {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            right: 20px;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 15px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            z-index: 3000;
+            animation: slideUp 0.3s ease;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(100%);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .toast .material-icons {
+            font-size: 24px;
+            flex-shrink: 0;
+        }
+
+        .toast.success .material-icons {
+            color: var(--success);
+        }
+
+        .toast.error .material-icons {
+            color: var(--error);
+        }
+
+        .toast.warning .material-icons {
+            color: var(--warning);
+        }
+
+        .toast span:last-child {
+            font-size: 0.95rem;
+            line-height: 1.4;
+            word-break: break-word;
+        }
+
+        /* JSON viewer */
+        .json-viewer {
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 12px;
+            max-height: 400px;
+            overflow: auto;
+            font-family: monospace;
+            font-size: 0.8rem;
+            white-space: pre-wrap;
+            word-break: break-word;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        /* Filter input */
+        .filter-input {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            background: var(--bg);
+            color: var(--text);
+            font-size: 1rem;
+            -webkit-appearance: none;
+        }
+
+        /* Progress bar */
+        .progress-bar {
+            height: 16px;
+            background: var(--border);
+            border-radius: 8px;
+            overflow: hidden;
+            margin: 10px 0;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: var(--primary);
+            transition: width 0.3s ease;
+        }
+
+        /* Legend */
+        .legend {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 0.75rem;
+            background: var(--card);
+            padding: 4px 8px;
+            border-radius: 16px;
+            border: 1px solid var(--border);
+        }
+
+        .color-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        .color-dot.interval-0 {
+            background: #f59e0b;
+        }
+
+        .color-dot.interval-1 {
+            background: #10b981;
+        }
+
+        .color-dot.interval-2 {
+            background: #3b82f6;
+        }
+
+        .color-dot.interval-3 {
+            background: #8b5cf6;
+        }
+
+        .color-dot.interval-4 {
+            background: #ec4899;
+        }
+
+        /* Distribution bars */
+        .distribution-container {
+            display: flex;
+            align-items: flex-end;
+            gap: 8px;
+            height: 150px;
+            margin-top: 15px;
+            padding: 0 5px;
+        }
+
+        .distribution-bar-wrapper {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-width: 40px;
+        }
+
+        .distribution-bar {
+            width: 100%;
+            max-width: 40px;
+            background: var(--primary);
+            border-radius: 4px 4px 0 0;
+            transition: height 0.3s ease;
+        }
+
+        .distribution-label {
+            margin-top: 5px;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+
+        .distribution-sub-label {
+            font-size: 0.7rem;
+            color: var(--text-secondary);
+        }
+
+        /* Streak calendar */
+        .streak-calendar {
+            display: flex;
+            gap: 4px;
+            justify-content: center;
+            margin-top: 15px;
+            flex-wrap: wrap;
+        }
+
+        .streak-day {
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            font-weight: 500;
+            background: var(--border);
+            color: var(--text);
+        }
+
+        .streak-day.active {
+            background: var(--primary);
+            color: white;
+        }
+
+        /* Test output */
+        #test-output {
+            max-height: 250px;
+            overflow: auto;
+            font-size: 0.8rem;
+            line-height: 1.4;
+            white-space: pre-wrap;
+            word-break: break-word;
+        }
+
+        /* Small tablet and up */
+        @media (min-width: 480px) {
+            .admin-container {
+                padding: 15px;
+            }
+
+            .admin-header {
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-between;
+            }
+
+            .admin-header-actions {
+                flex: 0 1 auto;
+            }
+
+            .stat-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .stat-value {
+                font-size: 1.8rem;
+            }
+        }
+
+        /* Tablet and up */
+        @media (min-width: 768px) {
+            .admin-container {
+                max-width: 1200px;
+                margin: 20px auto;
+                padding: 20px;
+            }
+
+            .admin-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+                gap: 20px;
+            }
+
+            .stat-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .data-table {
+                min-width: 100%;
+                font-size: 0.9rem;
+            }
+
+            .admin-actions {
+                flex-direction: row;
+                flex-wrap: wrap;
+            }
+
+            .admin-btn {
+                flex: 1;
+                min-width: 150px;
+            }
+
+            .toast {
+                left: auto;
+                right: 20px;
+                bottom: 20px;
+                margin: 0;
+            }
+
+            .legend-item {
+                font-size: 0.8rem;
+            }
+        }
+
+        /* Desktop */
+        @media (min-width: 1024px) {
+            .admin-grid {
+                grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            }
+
+            .stat-value {
+                font-size: 2rem;
+            }
+        }
+
+        /* Touch-friendly tap targets */
+        button,
+        .tab-btn,
+        .admin-btn,
+        .filter-input,
+        select,
+        input[type="text"] {
+            touch-action: manipulation;
+        }
+
+        /* Loading states */
+        .loading-skeleton {
+            background: linear-gradient(90deg, var(--border) 25%, var(--card) 50%, var(--border) 75%);
+            background-size: 200% 100%;
+            animation: loading 1.5s infinite;
+            border-radius: 4px;
+            height: 20px;
+            margin: 5px 0;
+        }
+
+        @keyframes loading {
+            0% {
+                background-position: 200% 0;
+            }
+
+            100% {
+                background-position: -200% 0;
+            }
+        }
+
+        /* Empty states */
+        .empty-state {
+            text-align: center;
+            padding: 30px 15px;
+            color: var(--text-secondary);
+        }
+
+        .empty-state .material-icons {
+            font-size: 48px;
+            margin-bottom: 10px;
+            opacity: 0.5;
+        }
+    </style>
+</head>
+
+<body class="light-theme font-serif">
+    <div class="admin-container">
+        <div class="admin-header">
+            <h1>
+                <span class="material-icons">admin_panel_settings</span>
+                Admin
+            </h1>
+            <div class="admin-header-actions">
+                <button class="admin-btn secondary" onclick="refreshAllData()">
+                    <span class="material-icons">refresh</span>
+                    <span class="btn-text">Refresh</span>
+                </button>
+                <button class="admin-btn primary" onclick="window.location.href='index.html'">
+                    <span class="material-icons">home</span>
+                    <span class="btn-text">App</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Stats Overview -->
+        <div class="admin-grid">
+            <div class="admin-card">
+                <h2>
+                    <span class="material-icons">insights</span>
+                    Overview
+                </h2>
+                <div class="stat-grid">
+                    <div class="stat-item">
+                        <div class="stat-value" id="total-cards">0</div>
+                        <div class="stat-label">Total Cards</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value" id="due-today">0</div>
+                        <div class="stat-label">Due Today</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value" id="studied-today">0</div>
+                        <div class="stat-label">Studied</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value" id="streak">0</div>
+                        <div class="stat-label">Streak</div>
+                    </div>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="review-progress" style="width: 0%;"></div>
+                </div>
+                <div style="display: flex; justify-content: space-between; font-size: 0.8rem;">
+                    <span>Review Progress</span>
+                    <span id="progress-text">0%</span>
+                </div>
+            </div>
+
+            <div class="admin-card">
+                <h2>
+                    <span class="material-icons">storage</span>
+                    Storage
+                </h2>
+                <div class="stat-grid">
+                    <div class="stat-item">
+                        <div class="stat-value" id="localstorage-size">0</div>
+                        <div class="stat-label">KB Used</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value" id="srs-items">0</div>
+                        <div class="stat-label">SRS Items</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value" id="activity-count">0</div>
+                        <div class="stat-label">Activities</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value" id="documents-count">0</div>
+                        <div class="stat-label">Documents</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tab Navigation -->
+        <div class="tab-container">
+            <div class="tab-buttons">
+                <button class="tab-btn active" onclick="showTab('srs')">SRS</button>
+                <button class="tab-btn" onclick="showTab('activity')">Activity</button>
+                <button class="tab-btn" onclick="showTab('achievements')">Achievements</button>
+                <button class="tab-btn" onclick="showTab('settings')">Settings</button>
+                <button class="tab-btn" onclick="showTab('storage')">Storage</button>
+                <button class="tab-btn" onclick="showTab('tests')">Tests</button>
+            </div>
+
+            <!-- SRS Data Tab -->
+            <div class="tab-pane active" id="tab-srs">
+                <div class="admin-grid">
+                    <div class="admin-card">
+                        <h2>
+                            <span class="material-icons">donut_large</span>
+                            Distribution
+                        </h2>
+                        <div class="legend">
+                            <div class="legend-item"><span class="color-dot interval-0"></span> New</div>
+                            <div class="legend-item"><span class="color-dot interval-1"></span> Learning</div>
+                            <div class="legend-item"><span class="color-dot interval-2"></span> Review</div>
+                            <div class="legend-item"><span class="color-dot interval-3"></span> Mature</div>
+                            <div class="legend-item"><span class="color-dot interval-4"></span> Mastered</div>
+                        </div>
+                        <div class="distribution-container" id="srs-distribution">
+                            <!-- Distribution bars will be inserted here -->
+                        </div>
+                    </div>
+
+                    <div class="admin-card compact-table">
+                        <h2>
+                            <span class="material-icons">schedule</span>
+                            Due by Type
+                        </h2>
+                        <div class="table-wrapper">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>Type</th>
+                                        <th>Due</th>
+                                        <th>Total</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="due-by-type">
+                                    <tr>
+                                        <td colspan="3" class="empty-state">Loading...</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="admin-card">
+                    <h2>
+                        <span class="material-icons">list</span>
+                        All Items
+                        <span style="margin-left: auto;">
+                            <input type="text" id="srs-filter" placeholder="Filter..." class="filter-input"
+                                style="width: 120px;" oninput="filterSRS()">
+                        </span>
+                    </h2>
+                    <div class="table-wrapper">
+                        <table class="data-table" id="srs-table">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Type</th>
+                                    <th>Int</th>
+                                    <th>Rep</th>
+                                    <th>Ease</th>
+                                    <th>Due</th>
+                                    <th>Last</th>
+                                    <th>Lap</th>
+                                </tr>
+                            </thead>
+                            <tbody id="srs-table-body">
+                                <tr>
+                                    <td colspan="8" class="empty-state">Loading...</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Activity Tab -->
+            <div class="tab-pane" id="tab-activity">
+                <div class="admin-grid">
+                    <div class="admin-card compact-table">
+                        <h2>
+                            <span class="material-icons">history</span>
+                            Session
+                        </h2>
+                        <table class="data-table">
+                            <tr>
+                                <th>Last Visit</th>
+                                <td id="last-visit">-</td>
+                            </tr>
+                            <tr>
+                                <th>Total Visits</th>
+                                <td id="total-visits">0</td>
+                            </tr>
+                            <tr>
+                                <th>Time Spent</th>
+                                <td id="time-spent">0 min</td>
+                            </tr>
+                            <tr>
+                                <th>Sessions</th>
+                                <td id="sessions-completed">0</td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <div class="admin-card compact-table">
+                        <h2>
+                            <span class="material-icons">bar_chart</span>
+                            Counts
+                        </h2>
+                        <table class="data-table">
+                            <tr>
+                                <th>Documents</th>
+                                <td id="docs-opened">0</td>
+                            </tr>
+                            <tr>
+                                <th>Flashcards</th>
+                                <td id="flashcards-reviewed">0</td>
+                            </tr>
+                            <tr>
+                                <th>Quizzes</th>
+                                <td id="quizzes-taken">0</td>
+                            </tr>
+                            <tr>
+                                <th>Games</th>
+                                <td id="games-played">0</td>
+                            </tr>
+                            <tr>
+                                <th>Grammar</th>
+                                <td id="grammar-sheets">0</td>
+                            </tr>
+                            <tr>
+                                <th>Audio</th>
+                                <td id="audio-plays">0</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="admin-card">
+                    <h2>
+                        <span class="material-icons">timeline</span>
+                        Recent
+                    </h2>
+                    <div class="table-wrapper">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Time</th>
+                                    <th>Activity</th>
+                                </tr>
+                            </thead>
+                            <tbody id="activity-history">
+                                <tr>
+                                    <td colspan="2" class="empty-state">No activity</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Achievements Tab -->
+            <div class="tab-pane" id="tab-achievements">
+                <div class="admin-grid">
+                    <div class="admin-card">
+                        <h2>
+                            <span class="material-icons">local_fire_department</span>
+                            Streak
+                        </h2>
+                        <div class="stat-grid">
+                            <div class="stat-item">
+                                <div class="stat-value" id="streak-current">0</div>
+                                <div class="stat-label">Current</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-value" id="streak-longest">0</div>
+                                <div class="stat-label">Longest</div>
+                            </div>
+                        </div>
+                        <div class="streak-calendar" id="streak-calendar"></div>
+                    </div>
+
+                    <div class="admin-card compact-table">
+                        <h2>
+                            <span class="material-icons">emoji_events</span>
+                            Achievements
+                        </h2>
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Achievement</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody id="achievements-list">
+                                <tr>
+                                    <td colspan="2" class="empty-state">Loading...</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Settings Tab -->
+            <div class="tab-pane" id="tab-settings">
+                <div class="admin-grid">
+                    <div class="admin-card compact-table">
+                        <h2>
+                            <span class="material-icons">settings</span>
+                            App
+                        </h2>
+                        <table class="data-table">
+                            <tr>
+                                <th>Language</th>
+                                <td id="setting-lang">en</td>
+                            </tr>
+                            <tr>
+                                <th>Theme</th>
+                                <td id="setting-theme">light</td>
+                            </tr>
+                            <tr>
+                                <th>Font</th>
+                                <td id="setting-font">serif</td>
+                            </tr>
+                            <tr>
+                                <th>Word Breakdown</th>
+                                <td id="setting-word-breakdown">On</td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <div class="admin-card compact-table">
+                        <h2>
+                            <span class="material-icons">volume_up</span>
+                            Media
+                        </h2>
+                        <table class="data-table">
+                            <tr>
+                                <th>Speed</th>
+                                <td id="media-speed">1.0x</td>
+                            </tr>
+                            <tr>
+                                <th>Delay</th>
+                                <td id="media-delay">1s</td>
+                            </tr>
+                            <tr>
+                                <th>Pitch</th>
+                                <td id="media-pitch">1.0</td>
+                            </tr>
+                            <tr>
+                                <th>Voice</th>
+                                <td id="media-voice">Default</td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <div class="admin-card compact-table">
+                        <h2>
+                            <span class="material-icons">language</span>
+                            Languages
+                        </h2>
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Lang</th>
+                                    <th>Show</th>
+                                    <th>Rep</th>
+                                </tr>
+                            </thead>
+                            <tbody id="lang-settings">
+                                <tr>
+                                    <td colspan="3" class="empty-state">Loading...</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Storage Tab -->
+            <div class="tab-pane" id="tab-storage">
+                <div class="admin-card">
+                    <h2>
+                        <span class="material-icons">storage</span>
+                        localStorage
+                    </h2>
+                    <input type="text" id="storage-filter" placeholder="Filter keys..." class="filter-input">
+                    <div class="json-viewer" id="storage-viewer">Loading...</div>
+                </div>
+            </div>
+
+            <!-- Tests Tab -->
+            <div class="tab-pane" id="tab-tests">
+                <div class="admin-grid">
+                    <div class="admin-card">
+                        <h2>
+                            <span class="material-icons">speed</span>
+                            Quick Tests
+                        </h2>
+                        <div class="admin-actions">
+                            <button class="admin-btn warning" onclick="testFastForward()">
+                                <span class="material-icons">fast_forward</span>
+                                +1 Day
+                            </button>
+                            <button class="admin-btn warning" onclick="testFastForward(7)">
+                                <span class="material-icons">fast_forward</span>
+                                +7 Days
+                            </button>
+                            <button class="admin-btn primary" onclick="testCheckDue()">
+                                <span class="material-icons">event_available</span>
+                                Check Due
+                            </button>
+                            <button class="admin-btn primary" onclick="testCheckStats()">
+                                <span class="material-icons">bar_chart</span>
+                                Stats
+                            </button>
+                            <button class="admin-btn primary" onclick="testSpeech()">
+                                <span class="material-icons">volume_up</span>
+                                Test Speech
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="admin-card">
+                        <h2>
+                            <span class="material-icons">warning</span>
+                            Reset
+                        </h2>
+                        <div class="admin-actions">
+                            <button class="admin-btn warning" onclick="resetSRS()">
+                                <span class="material-icons">restore</span>
+                                Reset SRS
+                            </button>
+                            <button class="admin-btn error" onclick="resetProgress()">
+                                <span class="material-icons">restore</span>
+                                Reset Progress
+                            </button>
+                            <button class="admin-btn error" onclick="resetSettings()">
+                                <span class="material-icons">settings_backup_restore</span>
+                                Reset Settings
+                            </button>
+                            <button class="admin-btn error" onclick="clearAllData()">
+                                <span class="material-icons">delete_forever</span>
+                                Clear ALL
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="admin-card">
+                    <h2>
+                        <span class="material-icons">bug_report</span>
+                        Results
+                    </h2>
+                    <div id="test-output" class="json-viewer">
+                        Tap a test button...
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+    <script>
+        // Admin Panel JavaScript - Mobile First
+        let appInitialized = false;
+
+        async function initAdmin() {
+            try {
+                await App.Services.I18n.loadTranslations();
+                await App.Services.DataService.loadManifest();
+                await App.Services.PronunciationService.init();
+
+                App.applyTheme();
+
+                appInitialized = true;
+                refreshAllData();
+                console.log('Admin initialized');
+            } catch (e) {
+                console.error('Error initializing admin:', e);
+                showToast('Error initializing admin', 'error');
+            }
+        }
+
+        function patchMediaService() {
+            if (App.Services && App.Services.MediaService) {
+                const originalInit = App.Services.MediaService.init;
+
+                App.Services.MediaService.init = function () {
+                    const mainContent = document.getElementById('main-content');
+                    if (!mainContent) {
+                        console.log('Admin mode: Skipping MediaService DOM observer');
+                        window.speechSynthesis.onvoiceschanged = () => {
+                            this.cachedVoices = window.speechSynthesis.getVoices();
+                            this.autoSelectThaiVoice();
+                        };
+                        setTimeout(() => {
+                            if (window.speechSynthesis.getVoices().length > 0) {
+                                this.cachedVoices = window.speechSynthesis.getVoices();
+                                this.autoSelectThaiVoice();
+                            }
+                        }, 100);
+                        return;
+                    }
+                    originalInit.call(this);
+                };
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            window.App = App;
+            patchMediaService();
+            initAdmin();
+        });
+
+        function showTab(tabName) {
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            document.querySelectorAll('.tab-pane').forEach(pane => pane.classList.remove('active'));
+
+            document.querySelector(`.tab-btn[onclick="showTab('${tabName}')"]`).classList.add('active');
+            document.getElementById(`tab-${tabName}`).classList.add('active');
+        }
+
+        function showToast(message, type = 'success') {
+            const toast = document.createElement('div');
+            toast.className = `toast ${type}`;
+            toast.innerHTML = `
+                <span class="material-icons">${type === 'success' ? 'check_circle' : type === 'error' ? 'error' : 'warning'}</span>
+                <span>${message}</span>
+            `;
+            document.body.appendChild(toast);
+
+            setTimeout(() => toast.remove(), 3000);
+        }
+
+        async function refreshAllData() {
+            if (!appInitialized) return;
+
+            try {
+                updateStats();
+                updateSRSData();
+                updateActivityData();
+                updateAchievementsData();
+                updateSettingsData();
+                updateStorageData();
+            } catch (e) {
+                console.error('Error refreshing data:', e);
+            }
+        }
+
+        function updateStats() {
+            if (!App.state?.data) return;
+
+            const srs = App.state.data.srs;
+            const today = new Date().toISOString().split('T')[0];
+
+            const totalCards = Object.keys(srs.items).length;
+            const dueToday = Object.values(srs.items).filter(item => item.dueDate <= today).length;
+            const studiedToday = Object.values(srs.items).filter(item => item.lastReviewed === today).length;
+            const streak = App.state.data.streak?.current || 0;
+
+            document.getElementById('total-cards').textContent = totalCards;
+            document.getElementById('due-today').textContent = dueToday;
+            document.getElementById('studied-today').textContent = studiedToday;
+            document.getElementById('streak').textContent = streak;
+
+            const progress = totalCards ? Math.round((studiedToday / totalCards) * 100) : 0;
+            document.getElementById('review-progress').style.width = progress + '%';
+            document.getElementById('progress-text').textContent = progress + '%';
+
+            let totalSize = 0;
+            for (let key in localStorage) {
+                if (localStorage.hasOwnProperty(key)) {
+                    totalSize += (localStorage[key].length * 2) / 1024;
+                }
+            }
+            document.getElementById('localstorage-size').textContent = Math.round(totalSize);
+            document.getElementById('srs-items').textContent = totalCards;
+
+            const activityCount = App.state.data.activityHistory?.length || 0;
+            document.getElementById('activity-count').textContent = activityCount;
+
+            const docsCount = App.state.data.manifest?.learningObjects?.reduce((acc, obj) => acc + obj.documents.length, 0) || 0;
+            document.getElementById('documents-count').textContent = docsCount;
+        }
+
+        function updateSRSData() {
+            if (!App.state?.data) return;
+
+            const srs = App.state.data.srs.items;
+
+            // Distribution
+            const intervals = { '0': 0, '1': 0, '2-5': 0, '6-15': 0, '16+': 0 };
+
+            Object.values(srs).forEach(item => {
+                if (item.interval === 0) intervals['0']++;
+                else if (item.interval === 1) intervals['1']++;
+                else if (item.interval <= 5) intervals['2-5']++;
+                else if (item.interval <= 15) intervals['6-15']++;
+                else intervals['16+']++;
+            });
+
+            const max = Math.max(...Object.values(intervals));
+            const distHtml = Object.entries(intervals).map(([label, count]) => {
+                const height = max ? (count / max) * 120 : 0;
+                return `
+                    <div class="distribution-bar-wrapper">
+                        <div class="distribution-bar" style="height: ${height}px;"></div>
+                        <div class="distribution-label">${count}</div>
+                        <div class="distribution-sub-label">${label}</div>
+                    </div>
+                `;
+            }).join('');
+            document.getElementById('srs-distribution').innerHTML = distHtml || '<div class="empty-state">No data</div>';
+
+            // Due by type
+            const today = new Date().toISOString().split('T')[0];
+            const byType = {};
+
+            Object.values(srs).forEach(item => {
+                if (!byType[item.type]) byType[item.type] = { due: 0, total: 0 };
+                byType[item.type].total++;
+                if (item.dueDate <= today) byType[item.type].due++;
+            });
+
+            const typeRows = Object.entries(byType).map(([type, counts]) => `
+                <tr>
+                    <td>${type}</td>
+                    <td><span class="badge ${counts.due > 0 ? 'warning' : 'success'}">${counts.due}</span></td>
+                    <td>${counts.total}</td>
+                </tr>
+            `).join('');
+            document.getElementById('due-by-type').innerHTML = typeRows || '<tr><td colspan="3" class="empty-state">No data</td></tr>';
+
+            filterSRS();
+        }
+
+        function filterSRS() {
+            if (!App.state?.data) return;
+
+            const filter = document.getElementById('srs-filter')?.value.toLowerCase() || '';
+            const srs = App.state.data.srs.items;
+
+            const rows = Object.values(srs)
+                .filter(item => !filter || item.id.toLowerCase().includes(filter))
+                .slice(0, 50) // Limit to 50 rows for performance
+                .map(item => {
+                    const dueClass = new Date(item.dueDate) <= new Date() ? 'warning' : 'success';
+                    return `
+                        <tr>
+                            <td style="max-width: 120px; overflow: hidden; text-overflow: ellipsis;" title="${item.id}">${item.id.substring(0, 20)}${item.id.length > 20 ? '...' : ''}</td>
+                            <td>${item.type}</td>
+                            <td>${item.interval}</td>
+                            <td>${item.repetition}</td>
+                            <td>${item.easeFactor.toFixed(2)}</td>
+                            <td><span class="badge ${dueClass}">${item.dueDate}</span></td>
+                            <td>${item.lastReviewed ? item.lastReviewed.substring(5) : '-'}</td>
+                            <td>${item.lapses}</td>
+                        </tr>
+                    `;
+                }).join('');
+
+            document.getElementById('srs-table-body').innerHTML = rows || '<tr><td colspan="8" class="empty-state">No items found</td></tr>';
+        }
+
+        function updateActivityData() {
+            if (!App.state?.data) return;
+
+            const session = App.state.data.sessionHistory || {};
+            document.getElementById('last-visit').textContent = session.lastVisit ? new Date(session.lastVisit).toLocaleDateString() : '-';
+            document.getElementById('total-visits').textContent = session.totalVisits || 0;
+            document.getElementById('time-spent').textContent = (session.timeSpent || 0) + 'm';
+            document.getElementById('sessions-completed').textContent = session.sessionsCompleted || 0;
+
+            const counts = App.state.data.activityCounts || {};
+            document.getElementById('docs-opened').textContent = counts.documentsOpened || 0;
+            document.getElementById('flashcards-reviewed').textContent = counts.flashcardsReviewed || 0;
+            document.getElementById('quizzes-taken').textContent = counts.quizzesTaken || 0;
+            document.getElementById('games-played').textContent = counts.gamesPlayed || 0;
+            document.getElementById('grammar-sheets').textContent = counts.grammarSheetsOpened || 0;
+            document.getElementById('audio-plays').textContent = counts.audioPlays || 0;
+
+            const history = App.state.data.activityHistory || [];
+            const historyRows = history.slice(-5).reverse().map(act => `
+                <tr>
+                    <td>${act.time}</td>
+                    <td><span class="material-icons" style="color: var(--primary); font-size: 16px; vertical-align: middle;">${act.icon}</span> ${act.text}</td>
+                </tr>
+            `).join('');
+            document.getElementById('activity-history').innerHTML = historyRows || '<tr><td colspan="2" class="empty-state">No activity</td></tr>';
+        }
+
+        function updateAchievementsData() {
+            if (!App.state?.data) return;
+
+            const streak = App.state.data.streak || {};
+            document.getElementById('streak-current').textContent = streak.current || 0;
+            document.getElementById('streak-longest').textContent = streak.longest || 0;
+
+            const today = new Date();
+            let calendarHtml = '';
+            for (let i = 6; i >= 0; i--) {
+                const date = new Date(today);
+                date.setDate(date.getDate() - i);
+                const dateStr = date.toISOString().split('T')[0];
+                const isActive = streak.lastStudyDate === dateStr;
+                calendarHtml += `<div class="streak-day ${isActive ? 'active' : ''}">${date.getDate()}</div>`;
+            }
+            document.getElementById('streak-calendar').innerHTML = calendarHtml;
+
+            const achievements = App.state.data.achievements || {};
+            const achievementRows = [
+                { id: 'firstDocument', label: 'First Document' },
+                { id: 'firstFlashcard', label: 'First Flashcard' },
+                { id: 'firstQuiz', label: 'First Quiz' },
+                { id: 'firstGame', label: 'First Game' },
+                { id: 'studiedThreeDays', label: '3-Day Streak' },
+                { id: 'reviewedFiftyCards', label: '50 Cards' }
+            ].map(ach => `
+                <tr>
+                    <td>${ach.label}</td>
+                    <td><span class="badge ${achievements[ach.id] ? 'success' : 'error'}">${achievements[ach.id] ? '✓' : '✗'}</span></td>
+                </tr>
+            `).join('');
+            document.getElementById('achievements-list').innerHTML = achievementRows;
+        }
+
+        function updateSettingsData() {
+            if (!App.state?.data) return;
+
+            const settings = App.state.data;
+            document.getElementById('setting-lang').textContent = settings.lang || 'en';
+            document.getElementById('setting-theme').textContent = settings.theme || 'light';
+            document.getElementById('setting-font').textContent = (settings.font || 'serif').replace('font-', '');
+            document.getElementById('setting-word-breakdown').textContent = settings.media?.showWordBreakdown ? 'On' : 'Off';
+
+            document.getElementById('media-speed').textContent = (settings.media?.speed || 1) + 'x';
+            document.getElementById('media-delay').textContent = (settings.media?.delay || 1) + 's';
+            document.getElementById('media-pitch').textContent = settings.media?.pitch || 1;
+            document.getElementById('media-voice').textContent = settings.media?.voice ? settings.media.voice.substring(0, 15) + '...' : 'Default';
+
+            const langRows = Object.entries(settings.media?.languageSettings || {}).map(([code, config]) => `
+                <tr>
+                    <td>${code.toUpperCase()}</td>
+                    <td><span class="badge ${config.show ? 'success' : 'error'}">${config.show ? '✓' : '✗'}</span></td>
+                    <td>${config.repeat || 1}</td>
+                </tr>
+            `).join('');
+            document.getElementById('lang-settings').innerHTML = langRows;
+        }
+
+        function updateStorageData() {
+            const storage = {};
+            for (let i = 0; i < localStorage.length; i++) {
+                const key = localStorage.key(i);
+                try {
+                    storage[key] = JSON.parse(localStorage.getItem(key));
+                } catch {
+                    storage[key] = localStorage.getItem(key);
+                }
+            }
+            document.getElementById('storage-viewer').textContent = JSON.stringify(storage, null, 2);
+        }
+
+        function filterStorage() {
+            const filter = document.getElementById('storage-filter')?.value.toLowerCase() || '';
+            const storage = {};
+            for (let i = 0; i < localStorage.length; i++) {
+                const key = localStorage.key(i);
+                if (!filter || key.toLowerCase().includes(filter)) {
+                    try {
+                        storage[key] = JSON.parse(localStorage.getItem(key));
+                    } catch {
+                        storage[key] = localStorage.getItem(key);
+                    }
+                }
+            }
+            document.getElementById('storage-viewer').textContent = JSON.stringify(storage, null, 2);
+        }
+
+        // Test functions
+        function testFastForward(days = 1) {
+            if (!App?.state) return;
+
+            const srs = App.state.data.srs.items;
+            Object.values(srs).forEach(item => {
+                if (item.dueDate) {
+                    const dueDate = new Date(item.dueDate);
+                    dueDate.setDate(dueDate.getDate() - days);
+                    item.dueDate = dueDate.toISOString().split('T')[0];
+                }
+            });
+            App.state.save('srs');
+
+            document.getElementById('test-output').textContent = `✅ Fast-forwarded ${days} day(s)`;
+            refreshAllData();
+            showToast(`Fast-forwarded ${days} day(s)`, 'success');
+        }
+
+        function testCheckDue() {
+            if (!App.state?.data) return;
+
+            const today = new Date().toISOString().split('T')[0];
+            const srs = App.state.data.srs.items;
+            const due = Object.values(srs).filter(item => item.dueDate <= today);
+
+            document.getElementById('test-output').textContent =
+                `Due today: ${due.length} cards\n\n` +
+                due.slice(0, 10).map(item =>
+                    `• ${item.id.split('-').pop()}: ${item.dueDate}`
+                ).join('\n') +
+                (due.length > 10 ? `\n... and ${due.length - 10} more` : '');
+        }
+
+        function testCheckStats() {
+            if (!App.state?.data) return;
+
+            const srs = App.state.data.srs.items;
+            const today = new Date().toISOString().split('T')[0];
+
+            const stats = {
+                total: Object.keys(srs).length,
+                due: Object.values(srs).filter(item => item.dueDate <= today).length,
+                byType: {},
+                intervals: {}
+            };
+
+            Object.values(srs).forEach(item => {
+                stats.byType[item.type] = (stats.byType[item.type] || 0) + 1;
+                stats.intervals[item.interval] = (stats.intervals[item.interval] || 0) + 1;
+            });
+
+            document.getElementById('test-output').textContent = JSON.stringify(stats, null, 2);
+        }
+
+        function testSpeech() {
+            if (App.testSpeech) {
+                App.testSpeech();
+                document.getElementById('test-output').textContent = '🔊 Testing Thai speech...';
+            }
+        }
+
+        // Reset functions
+        function resetSRS() {
+            if (!App.resetSRSData) return;
+            if (confirm('Reset all flashcard scheduling?')) {
+                App.resetSRSData();
+                setTimeout(refreshAllData, 500);
+                showToast('SRS data reset', 'success');
+            }
+        }
+
+        function resetProgress() {
+            if (!App.resetProgressData) return;
+            if (confirm('Reset all progress data? This cannot be undone.')) {
+                App.resetProgressData();
+                setTimeout(refreshAllData, 500);
+                showToast('Progress data reset', 'success');
+            }
+        }
+
+        function resetSettings() {
+            if (!App.resetSettingsToDefaults) return;
+            if (confirm('Reset settings to defaults?')) {
+                App.resetSettingsToDefaults();
+                setTimeout(refreshAllData, 500);
+                showToast('Settings reset', 'success');
+            }
+        }
+
+        function clearAllData() {
+            if (confirm('⚠️ Clear ALL localStorage data? This will reset everything!')) {
+                localStorage.clear();
+                showToast('All data cleared', 'warning');
+                setTimeout(() => location.reload(), 1000);
+            }
+        }
+
+        // Auto-refresh
+        setInterval(() => {
+            if (appInitialized) refreshAllData();
+        }, 30000);
+    </script>
+</body>
+
+</html>
