@@ -2201,7 +2201,10 @@ const App = (function () {
                     if (char.class === 'vowel') {
                         fullPronunciation = char.sound || char.symbol;
                     } else {
-                        fullPronunciation = `${char.sound || ''} ${char.name || ''}`.trim();
+                        // Make sure we have both sound and name
+                        const sound = char.sound || '';
+                        const name = char.name || '';
+                        fullPronunciation = sound && name ? `${sound} ${name}` : (sound || name || char.symbol);
                     }
 
                     // If no sound/name, fallback to symbol
