@@ -2192,15 +2192,9 @@ const App = (function () {
                                     classType = 'low-class';
                                 }
 
-                                // Determine class dot
-                                let dotClass = '';
-                                if (char.class === 'middle') dotClass = 'middle';
-                                else if (char.class === 'high') dotClass = 'high';
-                                else if (char.class === 'low-paired' || char.class === 'low-unpaired') dotClass = 'low';
-
                                 return `
                                     <div class="alphabet-grid-item audio-element alphabet-item ${classType}" 
-                                        onclick="App.alphabet.showConsonantDetail('${char.symbol}', this)"
+                                        onclick="App.media.play(this)"
                                         data-text="${char.symbol}" 
                                         data-lang="th"
                                         data-class="${char.class}"
@@ -2209,7 +2203,6 @@ const App = (function () {
                                         data-name="${char.name || ''}"
                                         data-meaning="${char.meaning || ''}">
                                         <span class="alphabet-symbol">${char.symbol}</span>
-                                        ${dotClass ? `<span class="class-dot ${dotClass}"></span>` : ''}
                                     </div>
                                 `;
                             }).join('')}
@@ -4326,15 +4319,6 @@ const App = (function () {
         },
 
         alphabet: {
-            showConsonantDetail(symbol, element) {
-                // Forward to the UI.alphabet.showConsonantDetail method
-                UI.alphabet.showConsonantDetail(symbol, element);
-            },
-
-            closeConsonantDetail() {
-                // Forward to the UI.alphabet.closeConsonantDetail method
-                UI.alphabet.closeConsonantDetail();
-            },
 
             showCharacterDetail(characterId) {
                 const anchor = document.getElementById('overlay-anchor');
@@ -4982,7 +4966,6 @@ const App = (function () {
             _executePlay: function (element) {
                 // Add a disabled attribute to prevent multiple clicks on the same element
                 if (element.getAttribute('data-processing') === 'true') {
-                    //   console.log('Element already being processed, ignoring');
                     return;
                 }
 
@@ -4997,7 +4980,6 @@ const App = (function () {
 
                 // Prevent rapid successive clicks
                 if (this._isPlaying) {
-                    //   console.log('Already processing a play request, ignoring');
                     setTimeout(() => {
                         element.removeAttribute('data-processing');
                     }, 500);
@@ -5013,26 +4995,6 @@ const App = (function () {
                 const inDocument = element.closest('.document-content') !== null;
 
                 if (inDocument) {
-                    // Log element details for debugging
-                    /*
-                    console.log('Element clicked:', {
-                        classes: element.classList,
-                        attributes: {
-                            'data-uid': element.getAttribute('data-uid'),
-                            'data-link': element.getAttribute('data-link'),
-                            'data-text': element.getAttribute('data-text'),
-                            'data-lang': element.getAttribute('data-lang')
-                        },
-                        closest: {
-                            'sentence-group': element.closest('.sentence-group') !== null,
-                            'word-card': element.closest('.word-card') !== null,
-                            'sent-word-block': element.closest('.sent-word-block') !== null
-                        }
-                    });
-*/
-                    // Determine element type based on clear criteria
-                    // In the media._executePlay method, around line 5000-5100, update the element classification:
-
                     // Determine element type based on clear criteria
                     const isBreakdownElement =
                         element.hasAttribute('data-link') || // Has link to source
@@ -5042,8 +5004,6 @@ const App = (function () {
                         element.classList.contains('matched-word'); // Is a matched word in source
 
                     // Main sequence elements are those that should trigger seeking
-                    // These are: sentence sources, word card sources, their translations, alphabet grid items,
-                    // AND word breakdown elements when the setting is enabled
                     const isMainSequence =
                         // Sentence source (has data-uid AND is in sentence-group)
                         (element.hasAttribute('data-uid') && element.closest('.sentence-group') !== null) ||
@@ -5063,10 +5023,11 @@ const App = (function () {
                         // Alphabet table items
                         element.closest('.alphabet-table-container') !== null ||
                         // Tone rule table examples
-                        element.classList.contains('example-word');
+                        element.classList.contains('example-word') ||
+                        // ALPHABET CONSONANTS - now treated as main sequence
+                        element.classList.contains('alphabet-item');
 
                     if (State.data.media.showWordBreakdown && isBreakdownElement) {
-                        //   console.log('Playing breakdown element as part of sequence with seek');
                         // When breakdown is enabled, treat breakdown elements as part of the sequence
                         Services.MediaService.seekToElement(element);
 
@@ -5076,7 +5037,6 @@ const App = (function () {
                             this._clickTimer = null;
                         }, 1000);
                     } else if (isBreakdownElement) {
-                        //   console.log('Playing breakdown element directly');
                         // For word breakdown elements, just play this single word without seeking
                         const text = element.getAttribute('data-text');
                         const lang = element.getAttribute('data-lang');
@@ -5095,8 +5055,6 @@ const App = (function () {
                             this._clickTimer = null;
                         }, 500);
                     } else if (isMainSequence) {
-                        //   console.log('Playing main sequence element with seek');
-
                         // Then seek to the clicked element (playback already stopped above)
                         Services.MediaService.seekToElement(element);
 
@@ -5107,7 +5065,6 @@ const App = (function () {
                             this._clickTimer = null;
                         }, 1000);
                     } else {
-                        //  console.log('Element not classified, playing directly');
                         // Fallback - play directly
                         const text = element.getAttribute('data-text') || element.textContent.trim();
                         const lang = element.getAttribute('data-lang') || 'th';
@@ -5139,6 +5096,8 @@ const App = (function () {
                     }, 500);
                 }
             }
+
+
         },
 
         toggleTheme() {

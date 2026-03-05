@@ -25,6 +25,363 @@
     },
     "sections": [
         {
+            "sectionId": "thai-consonants-frequency",
+            "heading": {
+                "en": "Thai Consonants by Usage Frequency",
+                "th": "พยัญชนะไทยเรียงตามความถี่ในการใช้งาน",
+                "fa": "همخوان‌های تایلندی بر اساس بسامد کاربری"
+            },
+            "activity": {
+                "alphabet": true,
+                "words": false,
+                "sentences": false
+            },
+            "content": [
+                {
+                    "type": "alphabet-table",
+                    "title": {
+                        "en": "Most Frequently Used Consonants (Top 20)",
+                        "th": "พยัญชนะที่ใช้บ่อยที่สุด (๒๐ อันดับแรก)",
+                        "fa": "پرکاربردترین همخوان‌ها (۲۰ حرف اول)"
+                    },
+                    "classification": "frequency",
+                    "characters": [
+                        {
+                            "symbol": "ก",
+                            "sound": "กอ",
+                            "name": "ไก่",
+                            "meaning": "Chicken",
+                            "class": "middle",
+                            "frequency": 1
+                        },
+                        {
+                            "symbol": "ร",
+                            "sound": "รอ",
+                            "name": "เรือ",
+                            "meaning": "Boat",
+                            "class": "low-unpaired",
+                            "frequency": 2
+                        },
+                        {
+                            "symbol": "น",
+                            "sound": "นอ",
+                            "name": "หนู",
+                            "meaning": "Mouse",
+                            "class": "low-unpaired",
+                            "frequency": 3
+                        },
+                        {
+                            "symbol": "ม",
+                            "sound": "มอ",
+                            "name": "ม้า",
+                            "meaning": "Horse",
+                            "class": "low-unpaired",
+                            "frequency": 4
+                        },
+                        {
+                            "symbol": "ล",
+                            "sound": "ลอ",
+                            "name": "ลิง",
+                            "meaning": "Monkey",
+                            "class": "low-unpaired",
+                            "frequency": 5
+                        },
+                        {
+                            "symbol": "ท",
+                            "sound": "ทอ",
+                            "name": "ทหาร",
+                            "meaning": "Soldier",
+                            "class": "low-paired",
+                            "frequency": 6
+                        },
+                        {
+                            "symbol": "พ",
+                            "sound": "พอ",
+                            "name": "พาน",
+                            "meaning": "Offering tray",
+                            "class": "low-paired",
+                            "frequency": 7
+                        },
+                        {
+                            "symbol": "ค",
+                            "sound": "คอ",
+                            "name": "ควาย",
+                            "meaning": "Water buffalo",
+                            "class": "low-paired",
+                            "frequency": 8
+                        },
+                        {
+                            "symbol": "บ",
+                            "sound": "บอ",
+                            "name": "ใบไม้",
+                            "meaning": "Leaf",
+                            "class": "middle",
+                            "frequency": 9
+                        },
+                        {
+                            "symbol": "ป",
+                            "sound": "ปอ",
+                            "name": "ปลา",
+                            "meaning": "Fish",
+                            "class": "middle",
+                            "frequency": 10
+                        },
+                        {
+                            "symbol": "ส",
+                            "sound": "สอ",
+                            "name": "เสือ",
+                            "meaning": "Tiger",
+                            "class": "high",
+                            "frequency": 11
+                        },
+                        {
+                            "symbol": "ห",
+                            "sound": "หอ",
+                            "name": "หีบ",
+                            "meaning": "Treasure Box",
+                            "class": "high",
+                            "frequency": 12
+                        },
+                        {
+                            "symbol": "จ",
+                            "sound": "จอ",
+                            "name": "จาน",
+                            "meaning": "Plate",
+                            "class": "middle",
+                            "frequency": 13
+                        },
+                        {
+                            "symbol": "ว",
+                            "sound": "วอ",
+                            "name": "แหวน",
+                            "meaning": "Ring",
+                            "class": "low-unpaired",
+                            "frequency": 14
+                        },
+                        {
+                            "symbol": "ย",
+                            "sound": "ยอ",
+                            "name": "ยักษ์",
+                            "meaning": "Giant",
+                            "class": "low-unpaired",
+                            "frequency": 15
+                        },
+                        {
+                            "symbol": "ด",
+                            "sound": "ดอ",
+                            "name": "เด็ก",
+                            "meaning": "Child",
+                            "class": "middle",
+                            "frequency": 16
+                        },
+                        {
+                            "symbol": "ต",
+                            "sound": "ตอ",
+                            "name": "เต่า",
+                            "meaning": "Turtle",
+                            "class": "middle",
+                            "frequency": 17
+                        },
+                        {
+                            "symbol": "อ",
+                            "sound": "ออ",
+                            "name": "อ่าง",
+                            "meaning": "Basin",
+                            "class": "middle",
+                            "frequency": 18
+                        },
+                        {
+                            "symbol": "ช",
+                            "sound": "ชอ",
+                            "name": "ช้าง",
+                            "meaning": "Elephant",
+                            "class": "low-paired",
+                            "frequency": 19
+                        },
+                        {
+                            "symbol": "ข",
+                            "sound": "ขอ",
+                            "name": "ไข่",
+                            "meaning": "Egg",
+                            "class": "high",
+                            "frequency": 20
+                        }
+                    ]
+                },
+                {
+                    "type": "alphabet-table",
+                    "title": {
+                        "en": "Medium Frequency Consonants (Next 20)",
+                        "th": "พยัญชนะที่ใช้ปานกลาง (๒๐ ตัวถัดไป)",
+                        "fa": "همخوان‌های با بسامد متوسط (۲۰ حرف بعدی)"
+                    },
+                    "classification": "frequency",
+                    "characters": [
+                        {
+                            "symbol": "ฟ",
+                            "sound": "ฟอ",
+                            "name": "ฟัน",
+                            "meaning": "Tooth",
+                            "class": "low-paired",
+                            "frequency": 21
+                        },
+                        {
+                            "symbol": "ง",
+                            "sound": "งอ",
+                            "name": "งู",
+                            "meaning": "Snake",
+                            "class": "low-unpaired",
+                            "frequency": 22
+                        },
+                        {
+                            "symbol": "ซ",
+                            "sound": "ซอ",
+                            "name": "โซ่",
+                            "meaning": "Chain",
+                            "class": "low-paired",
+                            "frequency": 23
+                        },
+                        {
+                            "symbol": "ผ",
+                            "sound": "ผอ",
+                            "name": "ผึ้ง",
+                            "meaning": "Bee",
+                            "class": "high",
+                            "frequency": 24
+                        },
+                        {
+                            "symbol": "ฝ",
+                            "sound": "ฝอ",
+                            "name": "ฝา",
+                            "meaning": "Lid / Cover",
+                            "class": "high",
+                            "frequency": 25
+                        },
+                        {
+                            "symbol": "ธ",
+                            "sound": "ทอ",
+                            "name": "ธง",
+                            "meaning": "Flag",
+                            "class": "low-paired",
+                            "frequency": 26
+                        },
+                        {
+                            "symbol": "ถ",
+                            "sound": "ถอ",
+                            "name": "ถุง",
+                            "meaning": "Bag",
+                            "class": "high",
+                            "frequency": 27
+                        },
+                        {
+                            "symbol": "ภ",
+                            "sound": "พอ",
+                            "name": "สำเภา",
+                            "meaning": "Junk (ship)",
+                            "class": "low-paired",
+                            "frequency": 28
+                        },
+                        {
+                            "symbol": "ศ",
+                            "sound": "สอ",
+                            "name": "ศาลา",
+                            "meaning": "Pavilion",
+                            "class": "high",
+                            "frequency": 29
+                        },
+                        {
+                            "symbol": "ษ",
+                            "sound": "สอ",
+                            "name": "ฤษี",
+                            "meaning": "Hermit",
+                            "class": "high",
+                            "frequency": 30
+                        },
+                        {
+                            "symbol": "ญ",
+                            "sound": "ยอ",
+                            "name": "หญิง",
+                            "meaning": "Female",
+                            "class": "low-unpaired",
+                            "frequency": 31
+                        },
+                        {
+                            "symbol": "ณ",
+                            "sound": "นอ",
+                            "name": "เณร",
+                            "meaning": "Novice monk",
+                            "class": "low-unpaired",
+                            "frequency": 32
+                        },
+                        {
+                            "symbol": "ฆ",
+                            "sound": "คอ",
+                            "name": "ระฆัง",
+                            "meaning": "Bell",
+                            "class": "low-paired",
+                            "frequency": 33
+                        },
+                        {
+                            "symbol": "ฒ",
+                            "sound": "ทอ",
+                            "name": "ผู้เฒ่า",
+                            "meaning": "Elderly",
+                            "class": "low-paired",
+                            "frequency": 34
+                        },
+                        {
+                            "symbol": "ฮ",
+                            "sound": "ฮอ",
+                            "name": "นกฮูก",
+                            "meaning": "Owl",
+                            "class": "low-paired",
+                            "frequency": 35
+                        },
+                        {
+                            "symbol": "ฎ",
+                            "sound": "ดอ",
+                            "name": "ชฎา",
+                            "meaning": "Head dress",
+                            "class": "middle",
+                            "frequency": 36
+                        },
+                        {
+                            "symbol": "ฏ",
+                            "sound": "ตอ",
+                            "name": "ปฏัก",
+                            "meaning": "Lance",
+                            "class": "middle",
+                            "frequency": 37
+                        },
+                        {
+                            "symbol": "ฐ",
+                            "sound": "ถอ",
+                            "name": "ฐาน",
+                            "meaning": "Pedestal",
+                            "class": "high",
+                            "frequency": 38
+                        },
+                        {
+                            "symbol": "ฑ",
+                            "sound": "ทอ",
+                            "name": "มนโท",
+                            "meaning": "Lady Montho",
+                            "class": "low-paired",
+                            "frequency": 39
+                        },
+                        {
+                            "symbol": "ณ",
+                            "sound": "นอ",
+                            "name": "เณร",
+                            "meaning": "Novice monk",
+                            "class": "low-unpaired",
+                            "frequency": 40
+                        }
+                    ]
+                }
+            ]
+        },
+        {
             "sectionId": "thai-consonants",
             "heading": {
                 "en": "1.2 Thai Consonants",

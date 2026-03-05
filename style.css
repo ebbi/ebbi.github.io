@@ -2979,7 +2979,7 @@ input:checked+.toggle-slider:before {
     font-size: 2.5rem;
     line-height: 1.2;
     color: var(--thai-color);
-    font-family: 'Noto Serif Thai', serif;
+    font-family: inherit;
 }
 
 .character-sound {
@@ -3209,7 +3209,8 @@ input:checked+.toggle-slider:before {
 .alphabet-symbol {
     font-size: 2rem;
     color: var(--thai-color);
-    font-family: 'Noto Serif Thai', serif;
+    font-family: inherit;
+    /* Change from fixed font to inherit */
 }
 
 .alphabet-sound {
@@ -4153,7 +4154,7 @@ select:focus-visible {
 .consonant-detail-symbol {
     font-size: 5rem;
     line-height: 1;
-    font-family: 'Noto Serif Thai', serif;
+    font-family: inherit;
     min-width: 120px;
     text-align: center;
 }
@@ -4271,28 +4272,6 @@ select:focus-visible {
     color: var(--text-secondary);
 }
 
-/* Class indicator dot for grid items */
-.class-dot {
-    display: inline-block;
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    margin-left: 4px;
-    vertical-align: middle;
-}
-
-.class-dot.middle {
-    background: var(--middle-class);
-}
-
-.class-dot.high {
-    background: var(--high-class);
-}
-
-.class-dot.low {
-    background: var(--low-class);
-}
-
 /* Audio button in detail view */
 .detail-audio-btn {
     display: inline-flex;
@@ -4322,7 +4301,7 @@ select:focus-visible {
 .character-large-display {
     font-size: 5rem;
     line-height: 1.2;
-    font-family: 'Noto Serif Thai', serif;
+    font-family: inherit;
 }
 
 .character-large-display.middle-class {
