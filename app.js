@@ -2876,6 +2876,14 @@ const App = (function () {
                     }
                 }
 
+                // For character cards, create the full pronunciation (sound + name)
+                let fullCharacterPronunciation = '';
+                if (card.type === 'character') {
+                    const sound = card.back.sound || '';
+                    const name = card.back.name || '';
+                    fullCharacterPronunciation = sound && name ? `${sound} ${name}` : (sound || name || card.front);
+                }
+
                 let html = `
         <div class="flashcard-container">
             <div class="flashcard-header">
@@ -2891,8 +2899,8 @@ const App = (function () {
             
             <div class="flashcard ${cards.showAnswer ? 'show-answer' : ''}">
                 <div class="flashcard-front" 
-                    onclick="App.Services.MediaService.speak('${UI.escapeHtml(card.front)}', 'th')"
-                    data-text="${UI.escapeHtml(card.front)}" 
+                    onclick="App.Services.MediaService.speak('${UI.escapeHtml(card.type === 'character' ? fullCharacterPronunciation : card.front)}', 'th')"
+                    data-text="${UI.escapeHtml(card.type === 'character' ? fullCharacterPronunciation : card.front)}" 
                     data-lang="th">
     `;
 
@@ -2937,8 +2945,8 @@ const App = (function () {
                     <button class="audio-chip" onclick="App.Services.MediaService.speak('${card.back.sound}', 'th')" data-text="${card.back.sound}" data-lang="th">
                         <span class="material-icons">volume_up</span> ${card.back.sound}
                     </button>
-                    <button class="audio-chip" onclick="App.Services.MediaService.speak('${card.front}', 'th')" data-text="${card.front}" data-lang="th">
-                        <span class="material-icons">volume_up</span> Hear
+                    <button class="audio-chip" onclick="App.Services.MediaService.speak('${fullCharacterPronunciation}', 'th')" data-text="${fullCharacterPronunciation}" data-lang="th">
+                        <span class="material-icons">volume_up</span> Hear full name
                     </button>
                 </div>
             </div>
@@ -2990,9 +2998,13 @@ const App = (function () {
                 container.innerHTML = html;
                 App.hideMediaBar();
 
-                // Auto-play the front of the card
+                // Auto-play the front of the card with full pronunciation for characters
                 setTimeout(() => {
-                    Services.MediaService.speak(card.front, 'th');
+                    if (card.type === 'character') {
+                        Services.MediaService.speak(fullCharacterPronunciation, 'th');
+                    } else {
+                        Services.MediaService.speak(card.front, 'th');
+                    }
                 }, 100);
             }
 

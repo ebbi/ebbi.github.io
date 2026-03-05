@@ -147,10 +147,27 @@ Same problem.  Here is the source code:
 <div class="alphabet-grid-item audio-element alphabet-item middle-class" onclick="App.media.play(this)" data-text="บอ ใบไม้" data-lang="th" data-class="middle" data-symbol="บ" data-sound="บอ" data-name="ใบไม้" data-meaning="Leaf">
                             <span class="alphabet-symbol">บ</span>
                         </div>
+<div class="character-large-display low-class">น</div>
 
+<div class="flashcard-content character-front low-class" lang="th">
+                <div class="character-large-display low-class">น</div>
+            </div>
 
+<div class="flashcard-front" onclick="App.Services.MediaService.speak('นอ หนู', 'th')" data-text="นอ หนู" data-lang="th">
+    
+            <div class="flashcard-content character-front low-class" lang="th">
+                <div class="character-large-display low-class">น</div>
+            </div>
+        
+                </div>
 
-
+<div class="flashcard-front" onclick="App.Services.MediaService.speak('บอ ใบไม้', 'th')" data-text="บอ ใบไม้" data-lang="th">
+    
+            <div class="flashcard-content character-front middle-class" lang="th">
+                <div class="character-large-display middle-class">บ</div>
+            </div>
+        
+                </div>
 
 
 
