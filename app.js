@@ -2178,37 +2178,54 @@ const App = (function () {
 
             renderAlphabetTable(item) {
                 return `
-                    <div class="alphabet-table-container">
-                        <h3>${item.title?.[State.data.lang] || item.title?.en || ''}</h3>
-                        <div class="alphabet-grid">
-                            ${item.characters.map(char => {
-                                // Determine class for color coding
-                                let classType = '';
-                                if (char.class === 'middle') {
-                                    classType = 'middle-class';
-                                } else if (char.class === 'high') {
-                                    classType = 'high-class';
-                                } else if (char.class === 'low-paired' || char.class === 'low-unpaired') {
-                                    classType = 'low-class';
-                                }
+        <div class="alphabet-table-container">
+            <h3>${item.title?.[State.data.lang] || item.title?.en || ''}</h3>
+            <div class="alphabet-grid">
+                ${item.characters.map(char => {
+                    // Determine class for color coding
+                    let classType = '';
+                    if (char.class === 'middle') {
+                        classType = 'middle-class';
+                    } else if (char.class === 'high') {
+                        classType = 'high-class';
+                    } else if (char.class === 'low-paired' || char.class === 'low-unpaired') {
+                        classType = 'low-class';
+                    } else if (char.class === 'vowel') {
+                        classType = 'vowel-class';
+                    }
 
-                                return `
-                                    <div class="alphabet-grid-item audio-element alphabet-item ${classType}" 
-                                        onclick="App.media.play(this)"
-                                        data-text="${char.symbol}" 
-                                        data-lang="th"
-                                        data-class="${char.class}"
-                                        data-symbol="${char.symbol}"
-                                        data-sound="${char.sound || ''}"
-                                        data-name="${char.name || ''}"
-                                        data-meaning="${char.meaning || ''}">
-                                        <span class="alphabet-symbol">${char.symbol}</span>
-                                    </div>
-                                `;
-                            }).join('')}
+                    // Get the full pronunciation (sound + name)
+                    // For consonants: e.g., "นอ หนู", "บอ ใบไม้"
+                    // For vowels: just the sound
+                    let fullPronunciation = '';
+                    if (char.class === 'vowel') {
+                        fullPronunciation = char.sound || char.symbol;
+                    } else {
+                        fullPronunciation = `${char.sound || ''} ${char.name || ''}`.trim();
+                    }
+
+                    // If no sound/name, fallback to symbol
+                    if (!fullPronunciation) {
+                        fullPronunciation = char.symbol;
+                    }
+
+                    return `
+                        <div class="alphabet-grid-item audio-element alphabet-item ${classType}" 
+                            onclick="App.media.play(this)"
+                            data-text="${UI.escapeHtml(fullPronunciation)}" 
+                            data-lang="th"
+                            data-class="${char.class}"
+                            data-symbol="${char.symbol}"
+                            data-sound="${char.sound || ''}"
+                            data-name="${char.name || ''}"
+                            data-meaning="${char.meaning || ''}">
+                            <span class="alphabet-symbol">${char.symbol}</span>
                         </div>
-                    </div>
-                `;
+                    `;
+                }).join('')}
+            </div>
+        </div>
+    `;
             },
 
             showConsonantDetail: function (symbol, element) {
