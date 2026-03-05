@@ -132,35 +132,12 @@ Note, Google translate for น is spoken as naa li gaa !
 
 
 Same problem.  Here is the source code:
-<div class="alphabet-grid-item audio-element alphabet-item low-class" onclick="App.media.play(this)" data-text="น" data-lang="th" data-class="low-unpaired" data-symbol="น" data-sound="นอ" data-name="หนู" data-meaning="Mouse">
-                                        <span class="alphabet-symbol">น</span>
-                                    </div>
-<div class="alphabet-grid-item audio-element alphabet-item low-class" onclick="App.media.play(this)" data-text="นอ หนู" data-lang="th" data-class="low-unpaired" data-symbol="น" data-sound="นอ" data-name="หนู" data-meaning="Mouse">
-                            <span class="alphabet-symbol">น</span>
-                        </div>
-
-
-<div class="alphabet-grid-item audio-element alphabet-item middle-class" onclick="App.media.play(this)" data-text="บ" data-lang="th" data-class="middle" data-symbol="บ" data-sound="บอ" data-name="ใบไม้" data-meaning="Leaf">
-                                        <span class="alphabet-symbol">บ</span>
-                                    </div>
 
 <div class="alphabet-grid-item audio-element alphabet-item middle-class" onclick="App.media.play(this)" data-text="บอ ใบไม้" data-lang="th" data-class="middle" data-symbol="บ" data-sound="บอ" data-name="ใบไม้" data-meaning="Leaf">
                             <span class="alphabet-symbol">บ</span>
                         </div>
-<div class="character-large-display low-class">น</div>
 
-<div class="flashcard-content character-front low-class" lang="th">
-                <div class="character-large-display low-class">น</div>
-            </div>
-
-<div class="flashcard-front" onclick="App.Services.MediaService.speak('นอ หนู', 'th')" data-text="นอ หนู" data-lang="th">
-    
-            <div class="flashcard-content character-front low-class" lang="th">
-                <div class="character-large-display low-class">น</div>
-            </div>
-        
-                </div>
-
+Same problem for flash card, here is the source code.
 <div class="flashcard-front" onclick="App.Services.MediaService.speak('บอ ใบไม้', 'th')" data-text="บอ ใบไม้" data-lang="th">
     
             <div class="flashcard-content character-front middle-class" lang="th">
@@ -168,11 +145,6 @@ Same problem.  Here is the source code:
             </div>
         
                 </div>
-
-
-
-
-
 
 
 
