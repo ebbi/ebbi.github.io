@@ -98,14 +98,29 @@ That means 9 consonants are not used! Is that correct?
 
 
 
+On the flash card:
+
+This button is spoken as naa ligaa 
+It should be naa noo
+
+<button class="audio-chip" onclick="App.Services.MediaService.speak('น', 'th')" data-text="น" data-lang="th">
+                        <span class="material-icons">volume_up</span> Hear
+                    </button>
+
+Similarly, here:
+
+<div class="alphabet-grid-item audio-element alphabet-item low-class" onclick="App.media.play(this)" data-text="น" data-lang="th" data-class="low-unpaired" data-symbol="น" data-sound="นอ" data-name="หนู" data-meaning="Mouse">
+                                        <span class="alphabet-symbol">น</span>
+                                    </div>
 
 
+In the pronunciation-map.json
 
+        "น": { "th": "นอ", "description": "nɔɔ nǔu" },
+        "บ": { "th": "บอ", "description": "bɔɔ bai-máay" },
 
-
-
-
-
+"น" is spoken as nɔɔ naligaa
+"บ" is spoken as bɔɔ
 
 
 
