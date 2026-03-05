@@ -196,7 +196,7 @@ const App = (function () {
                 localStorage.setItem('localStorageDelay', this.data.media.delay);
                 localStorage.setItem('localStoragePitch', this.data.media.pitch);
                 localStorage.setItem('localStorageVoice', this.data.media.voice);
-                localStorage.setItem('localStorageShowWordBreakdown', this.data.media.showWordBreakdown); // NEW
+                localStorage.setItem('localStorageShowWordBreakdown', this.data.media.showWordBreakdown);
                 localStorage.setItem('localStorageLangMap',
                     JSON.stringify(this.data.media.languageSettings));
             }
@@ -219,6 +219,11 @@ const App = (function () {
                 localStorage.setItem('totalVisits', this.data.sessionHistory.totalVisits);
                 localStorage.setItem('timeSpent', this.data.sessionHistory.timeSpent);
                 localStorage.setItem('sessionsCompleted', this.data.sessionHistory.sessionsCompleted);
+            }
+
+            // ===== ADD THIS =====
+            if (key === 'srs') {
+                localStorage.setItem('srs', JSON.stringify(this.data.srs));
             }
         },
 
@@ -2710,6 +2715,7 @@ const App = (function () {
         // Flashcard View
         // ------------------------------------------------------------------------
         Flashcard: {
+
             render(docId, sectionIdx, type) {
                 // console.log('UI.Flashcard.render called with:', { docId, sectionIdx, type });
                 const container = UI.getContainer();
@@ -2744,43 +2750,41 @@ const App = (function () {
                 this.renderCard();
             },
 
-            // In UI.Flashcard.getFlashcardItems (around line 1900-2000)
             getFlashcardItems(docId, sectionIdx, type) {
                 const doc = State.data.currentDocument;
                 if (!doc) return [];
+
+                let items = [];
 
                 if (sectionIdx !== null) {
                     // Section-level flashcards
                     const section = doc.sections[sectionIdx];
                     if (type === 'word') {
-                        return section.getWordItems().map(word => ({
+                        items = section.getWordItems().map(word => ({
                             type: 'word',
-                            id: `word-${word.word}`,
+                            id: `word-${docId}-${word.word}`,
                             front: word.word,
                             back: word.translations,
                             word: word
                         }));
                     } else if (type === 'sentence') {
-                        return section.getSentenceItems().map(sentence => ({
+                        items = section.getSentenceItems().map(sentence => ({
                             type: 'sentence',
-                            id: `sent-${sentence.source}`,
+                            id: `sent-${docId}-${sentence.source}`,
                             front: sentence.source,
                             back: sentence.translations,
                             words: sentence.words
                         }));
-                        // ===== ADD THIS =====
                     } else if (type === 'character') {
-                        // Collect all characters from alphabet content in this section
                         const characters = [];
                         section.content.forEach(block => {
                             if (block.type === 'alphabet-table') {
                                 characters.push(...block.characters);
                             }
                         });
-
-                        return characters.map(char => ({
+                        items = characters.map(char => ({
                             type: 'character',
-                            id: `char-${char.symbol}`,
+                            id: `char-${docId}-${char.symbol}`,
                             front: char.symbol,
                             back: {
                                 sound: char.sound,
@@ -2791,27 +2795,25 @@ const App = (function () {
                             character: char
                         }));
                     }
-                    // ===== END ADDITION =====
                 } else {
                     // Document-level flashcards
                     if (type === 'word') {
-                        return doc.getAllWordItems().map(word => ({
+                        items = doc.getAllWordItems().map(word => ({
                             type: 'word',
-                            id: `word-${word.word}`,
+                            id: `word-${docId}-${word.word}`,
                             front: word.word,
                             back: word.translations,
                             word: word
                         }));
                     } else if (type === 'sentence') {
-                        return doc.getAllSentenceItems().map(sentence => ({
+                        items = doc.getAllSentenceItems().map(sentence => ({
                             type: 'sentence',
-                            id: `sent-${sentence.source}`,
+                            id: `sent-${docId}-${sentence.source}`,
                             front: sentence.source,
                             back: sentence.translations,
                             words: sentence.words
                         }));
                     } else if (type === 'character') {
-                        // Collect all characters from all sections
                         const characters = [];
                         doc.sections.forEach(section => {
                             section.content.forEach(block => {
@@ -2820,10 +2822,9 @@ const App = (function () {
                                 }
                             });
                         });
-
-                        return characters.map(char => ({
+                        items = characters.map(char => ({
                             type: 'character',
-                            id: `char-${char.symbol}`,
+                            id: `char-${docId}-${char.symbol}`,
                             front: char.symbol,
                             back: {
                                 sound: char.sound,
@@ -2836,7 +2837,40 @@ const App = (function () {
                     }
                 }
 
-                return [];
+                // Initialize SRS items for new cards
+                items.forEach(item => {
+                    if (!State.data.srs.items[item.id]) {
+                        State.data.srs.items[item.id] = {
+                            id: item.id,
+                            type: item.type,
+                            front: item.front,
+                            back: item.back,
+                            interval: 0,
+                            repetition: 0,
+                            easeFactor: 2.5,
+                            dueDate: new Date().toISOString().split('T')[0],
+                            lastReviewed: null,
+                            lapses: 0
+                        };
+                    }
+                });
+                State.save('srs');
+
+                // Return only due cards, sorted by due date
+                const today = new Date().toISOString().split('T')[0];
+                const dueItems = items.filter(item => {
+                    const srsItem = State.data.srs.items[item.id];
+                    return srsItem && srsItem.dueDate <= today;
+                });
+
+                // Sort by due date (oldest first)
+                dueItems.sort((a, b) => {
+                    const dateA = State.data.srs.items[a.id]?.dueDate || '9999-12-31';
+                    const dateB = State.data.srs.items[b.id]?.dueDate || '9999-12-31';
+                    return dateA.localeCompare(dateB);
+                });
+
+                return dueItems;
             },
 
             renderCard() {
@@ -2982,15 +3016,15 @@ const App = (function () {
                     ${t('show_answer', 'Show Answer')}
                 </button>
             ` : `
-                <div class="answer-rating">
-                    <p>${t('how_well', 'How well did you know this?')}</p>
-                    <div class="rating-buttons">
-                        <button class="rating-btn" onclick="App.rateFlashcard(0)">${t('again', 'Again')}</button>
-                        <button class="rating-btn" onclick="App.rateFlashcard(3)">${t('hard', 'Hard')}</button>
-                        <button class="rating-btn" onclick="App.rateFlashcard(4)">${t('good', 'Good')}</button>
-                        <button class="rating-btn" onclick="App.rateFlashcard(5)">${t('easy', 'Easy')}</button>
-                    </div>
-                </div>
+<div class="answer-rating">
+    <p>${t('how_well', 'How well did you know this?')}</p>
+    <div class="rating-buttons">
+        <button class="rating-btn" onclick="App.rateFlashcard(0)">${t('again', 'Again')}</button>
+        <button class="rating-btn" onclick="App.rateFlashcard(3)">${t('hard', 'Hard')}</button>
+        <button class="rating-btn" onclick="App.rateFlashcard(4)">${t('good', 'Good')}</button>
+        <button class="rating-btn" onclick="App.rateFlashcard(5)">${t('easy', 'Easy')}</button>
+    </div>
+</div>
             `}
         </div>
     `;
@@ -3006,8 +3040,99 @@ const App = (function () {
                         Services.MediaService.speak(card.front, 'th');
                     }
                 }, 100);
-            }
+            },
 
+            rateFlashcard(quality) {
+                if (State.data.flashcards) {
+                    const cards = State.data.flashcards;
+                    const currentCard = cards.currentDeck[cards.currentIndex];
+                    const srsItem = State.data.srs.items[currentCard.id];
+
+                    if (srsItem) {
+                        // SM-2 Algorithm implementation
+                        const now = new Date();
+                        const today = now.toISOString().split('T')[0];
+
+                        if (quality < 3) {
+                            // Again or Hard - reset repetition count
+                            srsItem.repetition = 0;
+                            srsItem.interval = 1;
+                            srsItem.lapses += 1;
+                        } else {
+                            // Good or Easy
+                            if (srsItem.repetition === 0) {
+                                srsItem.interval = 1;
+                            } else if (srsItem.repetition === 1) {
+                                srsItem.interval = 6;
+                            } else {
+                                srsItem.interval = Math.round(srsItem.interval * srsItem.easeFactor);
+                            }
+                            srsItem.repetition += 1;
+                        }
+
+                        // Adjust ease factor based on quality
+                        if (quality >= 3) {
+                            srsItem.easeFactor = Math.max(1.3, srsItem.easeFactor + (0.1 - (5 - quality) * (0.08 + (5 - quality) * 0.02)));
+                        }
+
+                        // Calculate next due date
+                        const dueDate = new Date(now);
+                        dueDate.setDate(dueDate.getDate() + srsItem.interval);
+                        srsItem.dueDate = dueDate.toISOString().split('T')[0];
+                        srsItem.lastReviewed = today;
+
+                        State.save('srs');
+                    }
+
+                    State.data.activityCounts.flashcardsReviewed = (State.data.activityCounts.flashcardsReviewed || 0) + 1;
+                    State.save('activityCounts');
+
+                    // Update streak - FIX: Use App.updateStreak() instead of this.updateStreak()
+                    App.updateStreak();
+
+                    // Check if this was the last card in the current deck
+                    if (cards.currentIndex < cards.currentDeck.length - 1) {
+                        // Move to next card
+                        cards.currentIndex++;
+                        cards.showAnswer = false;
+                        UI.Flashcard.renderCard();
+                    } else {
+                        // Session complete - reload deck to get new due cards
+                        const newDeck = UI.Flashcard.getFlashcardItems(cards.documentId, cards.sectionIndex, cards.type);
+
+                        if (newDeck.length > 0) {
+                            // There are more due cards (from other sections/documents)
+                            State.data.flashcards = {
+                                currentDeck: newDeck,
+                                currentIndex: 0,
+                                showAnswer: false,
+                                documentId: cards.documentId,
+                                sectionIndex: cards.sectionIndex,
+                                type: cards.type
+                            };
+                            UI.Flashcard.renderCard();
+                        } else {
+                            // No more due cards - show completion message
+                            const container = UI.getContainer();
+                            container.innerHTML = `
+        <div class="flashcard-complete">
+            <span class="material-icons">celebration</span>
+            <h2>${Services.I18n.t('session_complete', 'Session Complete!')}</h2>
+            <p>${Services.I18n.t('no_more_cards', 'No more cards due for review. Come back later!')}</p>
+            <div class="flashcard-complete-buttons">
+                <button class="btn-activity" onclick="location.hash='doc/${cards.documentId}'">
+                    ${Services.I18n.t('back_to_document', 'Back to Document')}
+                </button>
+                <button class="btn-activity" onclick="location.hash='library'">
+                    ${Services.I18n.t('back_to_library', 'Library')}
+                </button>
+            </div>
+        </div>
+    `;
+                        }
+                    }
+                }
+            }
         },
 
         // ------------------------------------------------------------------------
@@ -3958,7 +4083,7 @@ const App = (function () {
         // ------------------------------------------------------------------------
         // Settings Overlay
         // ------------------------------------------------------------------------
-        // UI.Settings.render method (around line 3700-3800)
+   
         Settings: {
             render() {
                 const anchor = document.getElementById('overlay-anchor');
@@ -4065,6 +4190,57 @@ const App = (function () {
                         <span class="material-icons">restore</span>
                         ${t('reset_defaults', 'Reset to Defaults')}
                     </button>
+                </div>
+        `;
+
+                // Add Reset Progress Button (separate from media settings)
+                html += `
+                <div style="margin-top: 30px; padding-top: 20px; border-top: 2px solid var(--error);">
+                    <h3 style="color: var(--error); margin-bottom: 15px; font-size: 1.1rem;">
+                        <span class="material-icons" style="vertical-align: middle; margin-right: 8px;">warning</span>
+                        ${t('danger_zone', 'Danger Zone')}
+                    </h3>
+                    <div style="background: rgba(220, 38, 38, 0.1); padding: 16px; border-radius: 8px; margin-bottom: 10px;">
+                        <p style="margin: 0 0 12px 0; color: var(--text); font-size: 0.9rem;">
+                            ${t('reset_progress_desc', 'Reset all your learning progress including:')}
+                        </p>
+                        <ul style="margin: 0 0 16px 20px; color: var(--text-secondary); font-size: 0.85rem;">
+                            <li>📊 ${t('srs_data_desc', 'Flashcard SRS data (intervals, due dates)')}</li>
+                            <li>🏆 ${t('achievements_desc', 'Achievements and streak')}</li>
+                            <li>📈 ${t('activity_stats_desc', 'Activity statistics')}</li>
+                            <li>⏱️ ${t('session_history_desc', 'Session history')}</li>
+                        </ul>
+                        <p style="margin: 0 0 16px 0; color: var(--text-secondary); font-size: 0.85rem; font-style: italic;">
+                            ${t('reset_progress_note', 'This will NOT affect your media settings (speed, voice, language preferences).')}
+                        </p>
+                        <button class="btn-activity" onclick="App.resetProgressData()" 
+                                style="background: var(--error); width: 100%; padding: 12px;">
+                            <span class="material-icons">restore</span>
+                            ${t('reset_all_progress', 'Reset All Learning Progress')}
+                        </button>
+                    </div>
+                </div>
+        `;
+
+                // Add Advanced Options
+                html += `
+                <div style="margin-top: 20px; padding-top: 15px; border-top: 1px solid var(--border);">
+                    <details style="margin-bottom: 10px;">
+                        <summary style="cursor: pointer; color: var(--text-secondary); font-size: 0.9rem;">
+                            <span class="material-icons" style="font-size: 18px; vertical-align: middle;">expand_more</span>
+                            ${t('advanced_options', 'Advanced Options')}
+                        </summary>
+                        <div style="padding: 12px; background: var(--card); border-radius: 8px; margin-top: 10px;">
+                            <p style="margin: 0 0 10px 0; color: var(--text-secondary); font-size: 0.85rem;">
+                                ${t('reset_srs_only_desc', 'Reset only flashcard scheduling (keep achievements and stats)')}
+                            </p>
+                            <button class="btn-activity" onclick="App.resetSRSData()" 
+                                    style="background: var(--warning); width: 100%; padding: 10px;">
+                                <span class="material-icons">refresh</span>
+                                ${t('reset_srs_only', 'Reset Flashcard Schedule Only')}
+                            </button>
+                        </div>
+                    </details>
                 </div>
             </div>
         `;
@@ -4405,6 +4581,13 @@ const App = (function () {
             // The actual count will be updated in rateFlashcard
 
             Router.go(`flashcard/${docId}/${sectionIdx}/${type}`);
+        },
+
+        rateFlashcard(quality) {
+            // Forward to the Flashcard module's rateFlashcard method
+            if (UI.Flashcard.rateFlashcard) {
+                UI.Flashcard.rateFlashcard(quality);
+            }
         },
 
         startSentenceGame(docId, sectionIdx) {
@@ -5421,41 +5604,6 @@ const App = (function () {
             }
         },
 
-        rateFlashcard(quality) {
-            if (State.data.flashcards) {
-                const cards = State.data.flashcards;
-
-                State.data.activityCounts.flashcardsReviewed = (State.data.activityCounts.flashcardsReviewed || 0) + 1;
-                State.save('activityCounts');
-
-                // Update streak (studying counts as activity)
-                this.updateStreak();
-
-                if (cards.currentIndex < cards.currentDeck.length - 1) {
-                    cards.currentIndex++;
-                    cards.showAnswer = false;
-                    UI.Flashcard.renderCard();
-                } else {
-                    const container = UI.getContainer();
-                    container.innerHTML = `
-                        <div class="flashcard-complete">
-                            <span class="material-icons">celebration</span>
-                            <h2>${Services.I18n.t('session_complete', 'Session Complete!')}</h2>
-                            <p>${Services.I18n.t('cards_reviewed', 'You\'ve reviewed all cards.')}</p>
-                            <div class="flashcard-complete-buttons">
-                                <button class="btn-activity" onclick="location.hash='doc/${cards.documentId}'">
-                                    ${Services.I18n.t('back_to_document', 'Back to Document')}
-                                </button>
-                                <button class="btn-activity" onclick="location.hash='library'">
-                                    ${Services.I18n.t('back_to_library', 'Library')}
-                                </button>
-                            </div>
-                        </div>
-                    `;
-                }
-            }
-        },
-
         exitFlashcards() {
             if (State.data.flashcards?.documentId) {
                 Router.go(`doc/${State.data.flashcards.documentId}`);
@@ -5905,6 +6053,39 @@ const App = (function () {
                 }
 
                 this.showNotification(t('progress_data_reset', 'Progress data reset'));
+            }
+        },
+
+        resetSRSData() {
+            const t = Services.I18n.t;
+            if (confirm(t('confirm_reset_srs', 'Reset all flashcard scheduling? This will make all cards due now.'))) {
+                // Reset SRS items to new state
+                const today = new Date().toISOString().split('T')[0];
+                Object.values(State.data.srs.items).forEach(card => {
+                    card.interval = 0;
+                    card.repetition = 0;
+                    card.easeFactor = 2.5;
+                    card.dueDate = today;
+                    card.lastReviewed = null;
+                    card.lapses = 0;
+                });
+
+                // Reset SRS stats
+                State.data.srs.stats = {
+                    totalCards: Object.keys(State.data.srs.items).length,
+                    studiedToday: 0,
+                    dueToday: Object.keys(State.data.srs.items).length,
+                    lastStudied: null
+                };
+
+                State.save('srs');
+
+                // Refresh current view if on flashcards
+                if (window.location.hash.includes('flashcard')) {
+                    Router.handle();
+                }
+
+                this.showNotification(t('srs_reset', 'Flashcard schedule reset'));
             }
         },
 
