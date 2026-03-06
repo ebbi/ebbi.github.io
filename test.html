@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>Thai Learning App – Mobile Test Suite</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background: #f5f7fa;
+            color: #1e293b;
+            padding: 16px;
+            line-height: 1.5;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            font-size: 1.8rem;
+            margin-bottom: 8px;
+            color: #2563eb;
+        }
+
+        .subhead {
+            font-size: 1rem;
+            color: #64748b;
+            margin-bottom: 24px;
+            border-bottom: 1px solid #cbd5e1;
+            padding-bottom: 12px;
+        }
+
+        .test-section {
+            background: white;
+            border-radius: 16px;
+            padding: 16px;
+            margin-bottom: 24px;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+            border: 1px solid #e2e8f0;
+        }
+
+        .test-section h2 {
+            font-size: 1.3rem;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #0f172a;
+        }
+
+        .test-section h2 .count {
+            background: #2563eb;
+            color: white;
+            font-size: 0.8rem;
+            padding: 2px 10px;
+            border-radius: 20px;
+        }
+
+        .test-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 12px 0;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .test-item:last-child {
+            border-bottom: none;
+        }
+
+        .test-item input[type="checkbox"] {
+            width: 22px;
+            height: 22px;
+            margin-top: 2px;
+            accent-color: #2563eb;
+            flex-shrink: 0;
+        }
+
+        .test-item .description {
+            flex: 1;
+            font-size: 0.95rem;
+        }
+
+        .test-item .description strong {
+            color: #0f172a;
+        }
+
+        .test-item .description .note {
+            display: block;
+            font-size: 0.8rem;
+            color: #64748b;
+            margin-top: 4px;
+            background: #f1f5f9;
+            padding: 4px 8px;
+            border-radius: 8px;
+        }
+
+        .meta-info {
+            background: #e6f0ff;
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 24px;
+            border-left: 4px solid #2563eb;
+        }
+
+        .meta-info p {
+            margin-bottom: 8px;
+        }
+
+        .button-reset {
+            background: #f1f5f9;
+            border: 1px solid #cbd5e1;
+            padding: 8px 16px;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            color: #1e293b;
+            cursor: pointer;
+            margin-top: 16px;
+            width: 100%;
+        }
+
+        .footer {
+            text-align: center;
+            color: #94a3b8;
+            font-size: 0.85rem;
+            margin-top: 32px;
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.5rem;
+            }
+
+            .test-section {
+                padding: 12px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>🧪 Thai Learning App</h1>
+        <div class="subhead">Mobile-first regression test suite – after every bug fix, run through these checks</div>
+
+        <div class="meta-info">
+            <p><strong>📱 How to use</strong><br>
+                • Open the app in a mobile browser or simulator.<br>
+                • Go through each test case in order.<br>
+                • Tick the box only if the behaviour matches the description.<br>
+                • If any step fails, note the bug and fix before proceeding.</p>
+            <p><strong>🔄 Before starting:</strong> Clear localStorage (or use fresh browser/profile) to reset all
+                progress and settings.</p>
+            <button class="button-reset"
+                onclick="if(confirm('Clear localStorage and reload?')){ localStorage.clear(); location.reload(); }">🧹
+                Reset localStorage & reload</button>
+        </div>
+
+        <!-- 1. INITIAL LOAD & UI -->
+        <div class="test-section">
+            <h2>1. Initial load & appearance <span class="count">6</span></h2>
+            <div class="test-item">
+                <input type="checkbox" id="init1">
+                <label for="init1" class="description"><strong>Light theme default</strong> – body has class
+                    "light-theme font-serif", background white, text dark.</label>
+            </div>
+            <div class="test-item">
+                <input type="checkbox" id="init2">
+                <label for="init2" class="description"><strong>Toolbar visible</strong> – home, language, font, theme,
+                    help buttons. Language shows current UI lang (en by default).</label>
+            </div>
+            <div class="test-item">
+                <input type="checkbox" id="init3">
+                <label for="init3" class="description"><strong>Library loaded</strong> – main content shows library
+                    sections with titles (e.g., "Grammar", "Vocabulary"). Expand/collapse works.</label>
+            </div>
+            <div class="test-item">
+                <input type="checkbox" id="init4">
+                <label for="init4" class="description"><strong>Last opened document highlight</strong> – if any document
+                    was previously opened, it gets a blue left border in library.</label>
+            </div>
+            <div class="test-item">
+                <input type="checkbox" id="init5">
+                <label for="init5" class="description"><strong>No media bar</strong> – media player container is empty
+                    initially.</label>
+            </div>
+            <div class="test-item">
+                <input type="checkbox" id="init6">
+                <label for="init6" class="description"><strong>Hash routing</strong> – #library in URL, back/forward
+                    buttons work.</label>
+            </div>
+        </div>
+
+        <!-- 2. LIBRARY & DOCUMENT NAVIGATION -->
+        <div class="test-section">
+            <h2>2. Library & document navigation <span class="count">8</span></h2>
+            <div class="test-item">
+                <input type="checkbox" id="lib1">
+                <label for="lib1" class="description"><strong>Expand/collapse library sections</strong> – click on a
+                    summary, section opens/closes; only one section open at a time (accordion).</label>
+            </div>
+            <div class="test-item">
+                <input type="checkbox" id="lib2">
+                <label for="lib2" class="description"><strong>Open a document</strong> – tap any document button,
+                    navigates to #doc/:id, shows loading then document content.</label>
+            </div>
+            <div class="test-item">
+                <input type="checkbox" id="lib3">
+                <label for="lib3" class="description"><strong>Document sections accordion</strong> – first section open
+                    by default, tap others to open/close; state saved after reload.</label>
+            </div>
+            <div class="test-item">
+                <input type="checkbox" id="lib4">
+                <label for="lib4" class="description"><strong>Document‑level activity buttons</strong> – above sections,
+                    buttons for words, sentences, characters (if available).</label>
+            </div>
+            <div class="test-item">
+                <input type="checkbox" id="lib5">
+                <label for="lib5" class="description"><strong>Section‑level activity buttons</strong> – inside each
+                    section card, smaller buttons for words/sentences/quiz/game.</label>
+            </div>
+            <div class="test-item">
+                <input type="checkbox" id="lib6">
+                <label for="lib6" class="description"><strong>Grammar icon in headings</strong> – if paragraph has
+                    grammar, book icon appears inline; tap opens grammar sheet.</label>
+            </div>
+            <div class="test-item">
+                <input type="checkbox" id="lib7">
+                <label for="lib7" class="description"><strong>Word cards</strong> – show Thai word and enabled
+                    translations (EN/FA). Click any word plays audio.</label>
+            </div>
+            <div class="test-item">
+                <input type="checkbox" id="lib8">
+                <label for="lib8" class="description"><strong>Sentence display</strong> – Thai sentence with clickable
+                    word‑spans, then word breakdown (if enabled), then translations.</label>
+            </div>
+        </div>
+
+        <!-- 3. AUDIO & MEDIA BAR -->
+        <div class="test-section">
+            <h2>3. Audio & media bar <span class="count">12</span></h2>
+            <div class="test-item">
+                <input type="checkbox" id="audio1">
+                <label for="audio1" class="description"><strong>Single tap plays word/sentence</strong> – tap any Thai
+                    word or sentence, hear pronunciation (speech synthesis).</label>
+            </div>
+            <div class="test-item">
+                <input type="checkbox" id="audio2">
+                <label for="audio2" class="description"><strong>Media bar appears after first play</strong> – shows
+                    play/pause, stop, and current text.</label>
+            </div>
+            <div class="test-item">
+                <input type="checkbox" id="audio3">
+                <label for="audio3" class="description"><strong>Play button starts sequence</strong> – plays all audio
+                    elements in order (sentences, words, breakdowns based on settings).</label>
+            </div>
+            <div class="test-item">
+                <input type="checkbox" id="audio4">
+                <label for="audio4" class="description"><strong>Pause/stop work</strong> – pause pauses, stop cancels
+                    and resets index, bar remains but stop icon updates.</label>
+            </div>
+            <div class="test-item">
+                <input type="checkbox" id="audio5">
+                <label for="audio5" class="description"><strong>Auto‑scroll during playback</strong> – when a new row is
+                    about to speak, page scrolls to keep it visible (with offset for toolbar+media bar).</label>
+            </div>
+            <div class="test-item">
+                <input type="checkbox" id="audio6">
+                <label for="audio6" class="description"><strong>Highlight active element</strong> – current speaking
+                    element gets yellow background.</label>
+            </div>
+            <div class="test-item">
+                <input type="checkbox" id="audio7">
+                <label for="audio7" class="description"><strong>Breakdown elements (when enabled)</strong> – if word
+                    breakdown on, individual words and their translations are included in sequence.</label>
+            </div>
+            <div class="test-item">
+                <input type="checkbox" id="audio8">
+                <label for="audio8" class="description"><strong>Breakdown off</strong> – only sentences and main
+                    translations play; breakdown hidden.</label>
+            </div>
+            <div class="test-item">
+                <input type="checkbox" id="audio9">
+                <label for="audio9" class="description"><strong>Seek by tapping</strong> – while stopped, tap any
+                    sentence/word, playback starts from that element (and scrolls).</label>
+            </div>
+            <div class="test-item">
+                <input type="checkbox" id="audio10">
+                <label for="audio10" class="description"><strong>Interruption pauses</strong> – during playback, if user
+                    scrolls or touches, playback pauses (with small buffer).</label>
+            </div>
+            <div class="test-item">
+                <input type="checkbox" id="audio11">
+                <label for="audio11" class="description"><strong>Voice selection</strong> – Thai voice auto‑selected;
+                    can change in settings.</label>
+            </div>
+            <div class="test-item">
+                <input type="checkbox" id="audio12">
+                <label for="audio12" class="description"><strong>Media bar hides on non‑document views</strong> – go to
+                    library, media bar disappears.</label>
+            </div>
+        </div>
+
+        <!-- 4. FLASHCARDS & SRS -->
+        <div class="test-section">
+            <h2>4. Flashcards & spaced repetition <span class="count">10</span></h2>
+            <div class="test-item">
+                <input type="checkbox" id="fc1">
+                <label for="fc1" class="description"><strong>Start flashcards (word)</strong> – from document or
+                    section, tap words button. Shows first card (Thai front).</label>
+            </div>
+            <div class="test-item">
+                <input type="checkbox" id="fc2">
+                <label for="fc2" class="description"><strong>Show answer</strong> – tap "Show Answer", reveals back with
+                    translations (and character details if character card).</label>
+            </div>
+            <div class="test-item">
+                <input type="checkbox" id="fc3">
+                <label for="fc3" class="description"><strong>Rating buttons appear</strong> – after answer shown, 4
+                    buttons: Again, Hard, Good, Easy.</label>
+            </div>
+            <div class="test-item">
+                <input type="checkbox" id="fc4">
+                <label for="fc4" class="description"><strong>Rating updates SRS</strong> – tap a rating, card moves to
+                    next/appropriate due date (check by reopening later).</label>
+            </div>
+            <div class="test-item">
+                <input type="checkbox" id="fc5">
+                <label for="fc5" class="description"><strong>End of deck</strong> – when no more due cards, shows
+                    completion message with options.</label>
+            </div>
+            <div class="test-item">
+                <input type="checkbox" id="fc6">
+                <label for="fc6" class="description"><strong>Character flashcards</strong> – front shows large
+                    character, back shows sound, name, class, emoji.</label>
+            </div>
+            <div class="test-item">
+                <input type="checkbox" id="fc7">
+                <label for="fc7" class="description"><strong>Audio on cards</strong> – click front or any translation,
+                    plays pronunciation.</label>
+            </div>
+            <div class="test-item">
+                <input type="checkbox" id="fc8">
+                <label for="fc8" class="description"><strong>Exit flashcards</strong> – close button returns to
+                    document.</label>
+            </div>
+            <div class="test-item">
+                <input type="checkbox" id="fc9">
+                <label for="fc9" class="description"><strong>Bookmarks view</strong> – from toolbar? (if implemented)
+                    shows only bookmarked cards.</label>
+            </div>
+            <div class="test-item">
+                <input type="checkbox" id="fc10">
+                <label for="fc10" class="description"><strong>SRS data persists</strong> – after reload, due counts are
+                    kept.</label>
+            </div>
+        </div>
+
+        <!-- 5. QUIZ -->
+        <div class="test-section">
+            <h2>5. Multiple choice quiz <span class="count">8</span></h2>
+            <div class="test-item">
+                <input type="checkbox" id="quiz1">
+                <label for="quiz1" class="description"><strong>Start quiz (words/sentences)</strong> – tap quiz button,
+                    loads items, shows language selectors.</label>
+            </div>
+            <div class="test-item">
+                <input type="checkbox" id="quiz2">
+                <label for="quiz2" class="description"><strong>Change question/answer language</strong> – dropdowns
+                    update question text and answer options accordingly.</label>
+            </div>
+            <div class="test-item">
+                <input type="checkbox" id="quiz3">
+                <label for="quiz3" class="description"><strong>Select answer</strong> – click option, correct turns
+                    green, incorrect turns red and correct answer highlighted.</label>
+            </div>
+            <div class="test-item">
+                <input type="checkbox" id="quiz4">
+                <label for="quiz4" class="description"><strong>Progress bar and counter</strong> – fills as you advance,
+                    shows current/total.</label>
+            </div>
+            <div class="test-item">
+                <input type="checkbox" id="quiz5">
+                <label for="quiz5" class="description"><strong>Score and review</strong> – after last question, shows
+                    score and list of incorrect answers with audio.</label>
+            </div>
+            <div class="test-item">
+                <input type="checkbox" id="quiz6">
+                <label for="quiz6" class="description"><strong>Retry incorrect</strong> – button starts a new quiz with
+                    only missed items.</label>
+            </div>
+            <div class="test-item">
+                <input type="checkbox" id="quiz7">
+                <label for="quiz7" class="description"><strong>Audio on questions/answers</strong> – click question or
+                    any option, plays pronunciation.</label>
+            </div>
+            <div class="test-item">
+                <input type="checkbox" id="quiz8">
+                <label for="quiz8" class="description"><strong>Close quiz</strong> – X button returns to
+                    document.</label>
+            </div>
+        </div>
+
+        <!-- 6. SENTENCE BUILDING GAME -->
+        <div class="test-section">
+            <h2>6. Sentence building game <span class="count">7</span></h2>
+            <div class="test-item">
+                <input type="checkbox" id="game1">
+                <label for="game1" class="description"><strong>Start game</strong> – tap sentences (dashboard icon),
+                    loads first sentence with word tiles.</label>
+            </div>
+            <div class="test-item">
+                <input type="checkbox" id="game2">
+                <label for="game2" class="description"><strong>Build sentence</strong> – tap words from bank, they
+                    appear in construction zone.</label>
+            </div>
+            <div class="test-item">
+                <input type="checkbox" id="game3">
+                <label for="game3" class="description"><strong>Remove words</strong> – tap X on constructed word to
+                    remove it.</label>
+            </div>
+            <div class="test-item">
+                <input type="checkbox" id="game4">
+                <label for="game4" class="description"><strong>Check answer</strong> – click Check, gives
+                    correct/incorrect feedback with colour.</label>
+            </div>
+            <div class="test-item">
+                <input type="checkbox" id="game5">
+                <label for="game5" class="description"><strong>Show answer</strong> – if incorrect, "Show Answer" fills
+                    correct order.</label>
+            </div>
+            <div class="test-item">
+                <input type="checkbox" id="game6">
+                <label for="game6" class="description"><strong>Next sentence</strong> – after correct (or show answer),
+                    Next advances.</label>
+            </div>
+            <div class="test-item">
+                <input type="checkbox" id="game7">
+                <label for="game7" class="description"><strong>Game completion</strong> – after last sentence, shows
+                    completion screen with replay/back.</label>
+            </div>
+        </div>
+
+        <!-- 7. SETTINGS & PREFERENCES -->
+        <div class="test-section">
+            <h2>7. Settings & preferences <span class="count">10</span></h2>
+            <div class="test-item">
+                <input type="checkbox" id="set1">
+                <label for="set1" class="description"><strong>Open settings</strong> – tap settings icon (cog) in media
+                    bar or from toolbar? Overlay appears.</label>
+            </div>
+            <div class="test-item">
+                <input type="checkbox" id="set2">
+                <label for="set2" class="description"><strong>Speed / delay / pitch sliders</strong> – adjust, values
+                    update and persist.</label>
+            </div>
+            <div class="test-item">
+                <input type="checkbox" id="set3">
+                <label for="set3" class="description"><strong>Voice selection</strong> – dropdown lists available
+                    voices, changing affects speech.</label>
+            </div>
+            <div class="test-item">
+                <input type="checkbox" id="set4">
+                <label for="set4" class="description"><strong>Translation toggles</strong> – uncheck English,
+                    translations disappear from document; re‑check, they reappear.</label>
+            </div>
+            <div class="test-item">
+                <input type="checkbox" id="set5">
+                <label for="set5" class="description"><strong>Repeat counts</strong> – change repeat for Thai to 2,
+                    during playback each Thai item speaks twice.</label>
+            </div>
+            <div class="test-item">
+                <input type="checkbox" id="set6">
+                <label for="set6" class="description"><strong>Word breakdown toggle</strong> – turn off, word breakdown
+                    blocks disappear; turn on, they appear.</label>
+            </div>
+            <div class="test-item">
+                <input type="checkbox" id="set7">
+                <label for="set7" class="description"><strong>Reset to defaults</strong> – button resets all media
+                    settings to original values.</label>
+            </div>
+            <div class="test-item">
+                <input type="checkbox" id="set8">
+                <label for="set8" class="description"><strong>Reset progress data</strong> – danger zone button resets
+                    flashcards/achievements/stats (confirm).</label>
+            </div>
+            <div class="test-item">
+                <input type="checkbox" id="set9">
+                <label for="set9" class="description"><strong>UI language</strong> – toolbar language button, change to
+                    Thai/Farsi, interface texts update.</label>
+            </div>
+            <div class="test-item">
+                <input type="checkbox" id="set10">
+                <label for="set10" class="description"><strong>Font & theme</strong> – toolbar font and theme buttons
+                    change appearance immediately.</label>
+            </div>
+        </div>
+
+        <!-- 8. GRAMMAR SHEET -->
+        <div class="test-section">
+            <h2>8. Grammar sheet (bottom sheet) <span class="count">5</span></h2>
+            <div class="test-item">
+                <input type="checkbox" id="gram1">
+                <label for="gram1" class="description"><strong>Open grammar sheet</strong> – tap book icon next to a
+                    paragraph heading, sheet slides up.</label>
+            </div>
+            <div class="test-item">
+                <input type="checkbox" id="gram2">
+                <label for="gram2" class="description"><strong>Content displayed</strong> – shows pattern, note,
+                    examples (from grammar data only, not current sentence).</label>
+            </div>
+            <div class="test-item">
+                <input type="checkbox" id="gram3">
+                <label for="gram3" class="description"><strong>Audio in examples</strong> – tap any Thai example, plays
+                    pronunciation.</label>
+            </div>
+            <div class="test-item">
+                <input type="checkbox" id="gram4">
+                <label for="gram4" class="description"><strong>Close via handle / backdrop / X</strong> – all three
+                    methods close the sheet.</label>
+            </div>
+            <div class="test-item">
+                <input type="checkbox" id="gram5">
+                <label for="gram5" class="description"><strong>RTL support</strong> – if UI is Farsi, sheet layout
+                    mirrors.</label>
+            </div>
+        </div>
+
+        <!-- 9. ALPHABET / CHARACTER COMPONENTS -->
+        <div class="test-section">
+            <h2>9. Alphabet & character learning <span class="count">6</span></h2>
+            <div class="test-item">
+                <input type="checkbox" id="alpha1">
+                <label for="alpha1" class="description"><strong>Alphabet table grid</strong> – displays consonant grid
+                    with colour‑coded classes (middle/high/low).</label>
+            </div>
+            <div class="test-item">
+                <input type="checkbox" id="alpha2">
+                <label for="alpha2" class="description"><strong>Click consonant</strong> – plays full pronunciation
+                    (sound + name).</label>
+            </div>
+            <div class="test-item">
+                <input type="checkbox" id="alpha3">
+                <label for="alpha3" class="description"><strong>Character detail bottom sheet</strong> – long press or
+                    separate button? (if implemented) shows details with mnemonic.</label>
+                <span class="note">Not yet implemented in current UI, but if present test.</span>
+            </div>
+            <div class="test-item">
+                <input type="checkbox" id="alpha4">
+                <label for="alpha4" class="description"><strong>Tone rule table</strong> – shows rules with coloured
+                    rows, click examples play audio.</label>
+            </div>
+            <div class="test-item">
+                <input type="checkbox" id="alpha5">
+                <label for="alpha5" class="description"><strong>Sound matching exercise</strong> – (if present) tap
+                    sound button then choose correct character.</label>
+            </div>
+            <div class="test-item">
+                <input type="checkbox" id="alpha6">
+                <label for="alpha6" class="description"><strong>Character flashcards</strong> – already covered, but
+                    ensure class colours appear.</label>
+            </div>
+        </div>
+
+        <!-- 10. HELP & PROGRESS DASHBOARD -->
+        <div class="test-section">
+            <h2>10. Help & progress dashboard <span class="count">7</span></h2>
+            <div class="test-item">
+                <input type="checkbox" id="help1">
+                <label for="help1" class="description"><strong>Open help</strong> – toolbar ? icon loads help page with
+                    many expandable sections.</label>
+            </div>
+            <div class="test-item">
+                <input type="checkbox" id="help2">
+                <label for="help2" class="description"><strong>Expand/collapse help details</strong> – all sections
+                    open/close smoothly.</label>
+            </div>
+            <div class="test-item">
+                <input type="checkbox" id="help3">
+                <label for="help3" class="description"><strong>Progress panel</strong> – shows streak calendar, stats,
+                    due cards, recent activity, achievements.</label>
+            </div>
+            <div class="test-item">
+                <input type="checkbox" id="help4">
+                <label for="help4" class="description"><strong>Streak increments</strong> – after studying (open doc, do
+                    flashcard), streak updates in help.</label>
+            </div>
+            <div class="test-item">
+                <input type="checkbox" id="help5">
+                <label for="help5" class="description"><strong>Due today count</strong> – after rating cards, due number
+                    changes.</label>
+            </div>
+            <div class="test-item">
+                <input type="checkbox" id="help6">
+                <label for="help6" class="description"><strong>Achievements unlock</strong> – first document, first
+                    flashcard etc. appear as unlocked.</label>
+            </div>
+            <div class="test-item">
+                <input type="checkbox" id="help7">
+                <label for="help7" class="description"><strong>Contact / email link</strong> – at bottom, mailto link
+                    works.</label>
+            </div>
+        </div>
+
+        <!-- 11. RESPONSIVE & TOUCH -->
+        <div class="test-section">
+            <h2>11. Responsive & touch interactions <span class="count">5</span></h2>
+            <div class="test-item">
+                <input type="checkbox" id="resp1">
+                <label for="resp1" class="description"><strong>No horizontal overflow</strong> – on small screen (320px)
+                    all content fits, no sideways scroll.</label>
+            </div>
+            <div class="test-item">
+                <input type="checkbox" id="resp2">
+                <label for="resp2" class="description"><strong>Buttons tappable</strong> – all buttons have minimum
+                    44x44 tap area (or active area).</label>
+            </div>
+            <div class="test-item">
+                <input type="checkbox" id="resp3">
+                <label for="resp3" class="description"><strong>Active states</strong> – buttons show visual feedback on
+                    tap (scale or background).</label>
+            </div>
+            <div class="test-item">
+                <input type="checkbox" id="resp4">
+                <label for="resp4" class="description"><strong>RTL layout</strong> – switch UI to Farsi, everything
+                    flips correctly (toolbar, text alignment, margins).</label>
+            </div>
+            <div class="test-item">
+                <input type="checkbox" id="resp5">
+                <label for="resp5" class="description"><strong>Dark theme</strong> – toggle theme, colours update,
+                    contrast sufficient.</label>
+            </div>
+        </div>
+
+        <!-- 12. PERSISTENCE -->
+        <div class="test-section">
+            <h2>12. Data persistence after reload <span class="count">5</span></h2>
+            <div class="test-item">
+                <input type="checkbox" id="pers1">
+                <label for="pers1" class="description"><strong>Last opened document</strong> – after reopening library,
+                    that document button has "last-opened" class.</label>
+            </div>
+            <div class="test-item">
+                <input type="checkbox" id="pers2">
+                <label for="pers2" class="description"><strong>Accordion states</strong> – open a document section,
+                    reload, it remains open.</label>
+            </div>
+            <div class="test-item">
+                <input type="checkbox" id="pers3">
+                <label for="pers3" class="description"><strong>Media settings</strong> – change speed, reload, slider
+                    shows same value.</label>
+            </div>
+            <div class="test-item">
+                <input type="checkbox" id="pers4">
+                <label for="pers4" class="description"><strong>SRS due dates</strong> – after rating a card, reload,
+                    it's still scheduled correctly.</label>
+            </div>
+            <div class="test-item">
+                <input type="checkbox" id="pers5">
+                <label for="pers5" class="description"><strong>Achievements & streak</strong> – after unlocking, reload,
+                    they remain unlocked.</label>
+            </div>
+        </div>
+
+        <div class="footer">
+            ✅ Use this checklist after every bug fix. Keep it open in a separate tab.<br>
+            Version 1.0 – April 2025
+        </div>
+    </div>
+
+    <script>
+        // Optional: save check state in localStorage so you don't lose progress on reload
+        (function () {
+            const checkboxes = document.querySelectorAll('input[type=checkbox]');
+            // load saved
+            checkboxes.forEach(cb => {
+                const id = cb.id;
+                if (id && localStorage.getItem('test-' + id) === 'true') {
+                    cb.checked = true;
+                }
+                cb.addEventListener('change', function () {
+                    if (this.id) {
+                        localStorage.setItem('test-' + this.id, this.checked);
+                    }
+                });
+            });
+        })();
+    </script>
+</body>
+
+</html>
