@@ -3591,6 +3591,16 @@ input:checked+.toggle-slider:before {
         font-size: 14px;
     }
 
+    .review-badge {
+        background: var(--warning);
+        color: white;
+        font-size: 0.7rem;
+        padding: 2px 8px;
+        border-radius: 12px;
+        margin-left: 8px;
+        text-transform: uppercase;
+    }
+
     .flashcard-front,
     .flashcard-back {
         padding: 24px 16px;

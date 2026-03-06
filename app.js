@@ -533,7 +533,6 @@ const App = (function () {
                 return characters;
             }
 
-            // Get all available activity types for this section
             getActivityTypes() {
                 const types = [];
                 if (this.hasWordActivities()) {
@@ -551,6 +550,39 @@ const App = (function () {
                 }
                 return types;
             }
+
+            // Add these methods to the Models.Section class
+            getWordItems() {
+                const words = [];
+                this.content.forEach(block => {
+                    if (block.type === 'words') {
+                        words.push(...block.words);
+                    } else if (block.type === 'paragraph') {
+                        block.sentences.forEach(sentence => {
+                            words.push(...sentence.words);
+                        });
+                    }
+                });
+                // Remove duplicates by word text
+                const uniqueWords = new Map();
+                words.forEach(word => {
+                    if (!uniqueWords.has(word.word)) {
+                        uniqueWords.set(word.word, word);
+                    }
+                });
+                return Array.from(uniqueWords.values());
+            }
+
+            getSentenceItems() {
+                const sentences = [];
+                this.content.forEach(block => {
+                    if (block.type === 'paragraph') {
+                        sentences.push(...block.sentences);
+                    }
+                });
+                return sentences;
+            }
+
         },
 
         WordsContent: class {
@@ -2751,6 +2783,7 @@ const App = (function () {
             },
 
             getFlashcardItems(docId, sectionIdx, type) {
+                // console.log('UI.Flashcard.getFlashcardItems called with:', { docId, sectionIdx, type });
                 const doc = State.data.currentDocument;
                 if (!doc) return [];
 
@@ -2759,22 +2792,31 @@ const App = (function () {
                 if (sectionIdx !== null) {
                     // Section-level flashcards
                     const section = doc.sections[sectionIdx];
+
                     if (type === 'word') {
-                        items = section.getWordItems().map(word => ({
+                        // Use the section's getWordItems method
+                        const words = section.getWordItems();
+
+                        items = words.map(word => ({
                             type: 'word',
                             id: `word-${docId}-${word.word}`,
                             front: word.word,
                             back: word.translations,
                             word: word
                         }));
+
                     } else if (type === 'sentence') {
-                        items = section.getSentenceItems().map(sentence => ({
+                        // Use the section's getSentenceItems method
+                        const sentences = section.getSentenceItems();
+
+                        items = sentences.map(sentence => ({
                             type: 'sentence',
                             id: `sent-${docId}-${sentence.source}`,
                             front: sentence.source,
                             back: sentence.translations,
                             words: sentence.words
                         }));
+
                     } else if (type === 'character') {
                         const characters = [];
                         section.content.forEach(block => {
@@ -2796,7 +2838,7 @@ const App = (function () {
                         }));
                     }
                 } else {
-                    // Document-level flashcards
+                    // Document-level flashcards (this part is correct)
                     if (type === 'word') {
                         items = doc.getAllWordItems().map(word => ({
                             type: 'word',
@@ -2856,21 +2898,41 @@ const App = (function () {
                 });
                 State.save('srs');
 
-                // Return only due cards, sorted by due date
+                // FIX: Return ALL items, not just due ones, but sort them properly
                 const today = new Date().toISOString().split('T')[0];
-                const dueItems = items.filter(item => {
+
+                // Sort items: due today first, then future due dates
+                const sortedItems = items.sort((a, b) => {
+                    const srsA = State.data.srs.items[a.id];
+                    const srsB = State.data.srs.items[b.id];
+
+                    // Handle missing SRS data (shouldn't happen, but just in case)
+                    if (!srsA) return -1;
+                    if (!srsB) return 1;
+
+                    // Due today items come first
+                    if (srsA.dueDate === today && srsB.dueDate !== today) return -1;
+                    if (srsB.dueDate === today && srsA.dueDate !== today) return 1;
+
+                    // Then sort by due date (oldest first)
+                    return srsA.dueDate.localeCompare(srsB.dueDate);
+                });
+
+                // If there are no due items, still return some items for review
+                const dueItems = sortedItems.filter(item => {
                     const srsItem = State.data.srs.items[item.id];
                     return srsItem && srsItem.dueDate <= today;
                 });
 
-                // Sort by due date (oldest first)
-                dueItems.sort((a, b) => {
-                    const dateA = State.data.srs.items[a.id]?.dueDate || '9999-12-31';
-                    const dateB = State.data.srs.items[b.id]?.dueDate || '9999-12-31';
-                    return dateA.localeCompare(dateB);
-                });
+                // FIX: If no due items, return a few random items for review anyway
+                if (dueItems.length === 0 && sortedItems.length > 0) {
+                    console.log('No due cards, returning random sample for review');
+                    // Return up to 10 random cards for review
+                    const shuffled = [...sortedItems].sort(() => 0.5 - Math.random());
+                    return shuffled.slice(0, Math.min(10, shuffled.length));
+                }
 
-                return dueItems;
+                return dueItems.length > 0 ? dueItems : sortedItems.slice(0, 10);
             },
 
             renderCard() {
@@ -2921,9 +2983,11 @@ const App = (function () {
                 let html = `
         <div class="flashcard-container">
             <div class="flashcard-header">
-                <div class="flashcard-progress">
-                    ${t('card', 'Card')} ${cards.currentIndex + 1} / ${cards.currentDeck.length}
-                </div>
+<div class="flashcard-progress">
+    ${t('card', 'Card')} ${cards.currentIndex + 1} / ${cards.currentDeck.length}
+    ${!State.data.srs.items[card.id] || State.data.srs.items[card.id].dueDate > new Date().toISOString().split('T')[0] ?
+                        `<span class="review-badge">${t('extra_review', 'Extra Review')}</span>` : ''}
+</div>
                 <div class="flashcard-header-buttons">
                     <button class="flashcard-header-btn" onclick="App.exitFlashcards()">
                         <span class="material-icons">close</span>
@@ -4083,7 +4147,7 @@ const App = (function () {
         // ------------------------------------------------------------------------
         // Settings Overlay
         // ------------------------------------------------------------------------
-   
+
         Settings: {
             render() {
                 const anchor = document.getElementById('overlay-anchor');
@@ -5388,9 +5452,6 @@ const App = (function () {
                 const quiz = State.data.quiz;
                 const isCorrect = selected === correct;
 
-                // Increment when answer is submitted (count as one quiz interaction)
-                // You might want to track this differently
-
                 // Speak the selected answer
                 Services.MediaService.speak(selected, quiz.answerLang);
 
@@ -5420,8 +5481,9 @@ const App = (function () {
                         State.data.activityCounts.quizzesTaken = (State.data.activityCounts.quizzesTaken || 0) + 1;
                         State.save('activityCounts');
 
-                        this.addActivity('quiz', 'activity_completed_quiz');
-                        this.updateStreak();
+                        // FIX: Use App.addActivity instead of this.addActivity
+                        App.addActivity('quiz', 'activity_completed_quiz');
+                        App.updateStreak(); // Also fix this one while we're at it
 
                         UI.Quiz.renderResults();
                     }
