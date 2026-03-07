@@ -1,7 +1,7 @@
 {
     "learningObjects": [
         {
-            "learningObjectId": "tsl",
+            "learningObjectId": "TSL",
             "title": {
                 "en": "TSL",
                 "fa": "تی‌اس‌ال TSL",
@@ -19,6 +19,44 @@
             "totalSentences": 238,
             "estimatedTime": 265,
             "documents": [
+                {
+                    "id": "LS1",
+                    "title": {
+                        "en": "Listening and Speaking 1",
+                        "th": "การฟังและการพูด 1",
+                        "fa": "گوش دادن و صحبت کردن ۱"
+                    },
+                    "sourceLang": "th",
+                    "targetLangs": [ "en", "fa" ],
+                    "filePath": "data/TSL/LS1.json",
+                    "status": "published",
+                    "level": 1,
+                    "difficulty": "beginner",
+                    "wordCount": 135,
+                    "sentenceCount": 238,
+                    "estimatedTime": 265,
+                    "grammarPoint": "Greetings, basic verbs, adjectives, comparatives, superlatives, shopping phrases, location words",
+                    "tags": [ "greetings", "verbs", "adjectives", "comparatives", "shopping", "locations" ]
+                },
+                {
+                    "id": "LS2",
+                    "title": {
+                        "en": "Listening and Speaking 2",
+                        "th": "การฟังและการพูด 2",
+                        "fa": "گوش دادن و صحبت کردن ۲"
+                    },
+                    "sourceLang": "th",
+                    "targetLangs": [ "en", "fa" ],
+                    "filePath": "data/TSL/LS2.json",
+                    "status": "published",
+                    "level": 2,
+                    "difficulty": "beginner",
+                    "wordCount": 215,
+                    "sentenceCount": 168,
+                    "estimatedTime": 280,
+                    "grammarPoint": "Ordering food and drinks, classifiers, colors, prepositions, asking about quantities",
+                    "tags": [ "food", "drinks", "classifiers", "colors", "prepositions", "shopping" ]
+                },
                 {
                     "id": "RW1",
                     "title": {
