@@ -1,9 +1,10 @@
-"Update Existing Document" renders the "Edit Document Content" details panel that contains 
- nested blocks.  
 
-There is a problem with rendering nested blocks as the content becomes progressivly narrow with each 
-nested block.
+There are two intermitant runtime bug.
 
-Change the block rendition so that each block is rendered seperately in an HTML details element set to close by default. 
-The block details elements should not be nested!
+The multiple choice quiz hangs from time to time and non of the distractor ancwers 
+are clickable.
+
+Second, once selected, the speech for the longer distractors answers are cut off and partially spoken.
+
+
 

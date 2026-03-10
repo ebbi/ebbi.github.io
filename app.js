@@ -5449,45 +5449,69 @@ const App = (function () {
             },
 
             handleAnswer(button, selected, correct) {
-                const quiz = State.data.quiz;
-                const isCorrect = selected === correct;
+                try {
+                    const quiz = State.data.quiz;
+                    if (!quiz) return;
 
-                // Speak the selected answer
-                Services.MediaService.speak(selected, quiz.answerLang);
+                    const isCorrect = selected === correct;
 
-                button.classList.add(isCorrect ? 'correct' : 'incorrect');
-
-                document.querySelectorAll('.quiz-option-btn').forEach(btn => {
-                    btn.disabled = true;
-                });
-
-                if (!isCorrect) {
+                    // Disable all option buttons immediately
                     document.querySelectorAll('.quiz-option-btn').forEach(btn => {
-                        if (btn.dataset.answer === correct) {
-                            btn.classList.add('correct');
-                        }
+                        btn.disabled = true;
                     });
-                    quiz.incorrect.push(quiz.items[quiz.currentIndex]);
-                } else {
-                    quiz.score++;
-                }
 
-                setTimeout(() => {
-                    quiz.currentIndex++;
-                    if (quiz.currentIndex < quiz.items.length) {
-                        UI.Quiz.renderQuestion();
+                    // Visual feedback
+                    button.classList.add(isCorrect ? 'correct' : 'incorrect');
+                    if (!isCorrect) {
+                        document.querySelectorAll('.quiz-option-btn').forEach(btn => {
+                            if (btn.dataset.answer === correct) {
+                                btn.classList.add('correct');
+                            }
+                        });
+                        quiz.incorrect.push(quiz.items[quiz.currentIndex]);
                     } else {
-                        // Quiz completed
-                        State.data.activityCounts.quizzesTaken = (State.data.activityCounts.quizzesTaken || 0) + 1;
-                        State.save('activityCounts');
-
-                        // FIX: Use App.addActivity instead of this.addActivity
-                        App.addActivity('quiz', 'activity_completed_quiz');
-                        App.updateStreak(); // Also fix this one while we're at it
-
-                        UI.Quiz.renderResults();
+                        quiz.score++;
                     }
-                }, 1500);
+
+                    // Speak the selected answer
+                    let speechFinished = false;
+                    const advance = () => {
+                        if (speechFinished) {
+                            // Move to next question
+                            quiz.currentIndex++;
+                            if (quiz.currentIndex < quiz.items.length) {
+                                UI.Quiz.renderQuestion();
+                            } else {
+                                // Quiz completed
+                                State.data.activityCounts.quizzesTaken = (State.data.activityCounts.quizzesTaken || 0) + 1;
+                                State.save('activityCounts');
+                                App.addActivity('quiz', 'activity_completed_quiz');
+                                App.updateStreak();
+                                UI.Quiz.renderResults();
+                            }
+                        }
+                    };
+
+                    // Speak with onend callback
+                    Services.MediaService.speak(selected, quiz.answerLang,
+                        null, // onStart (optional)
+                        () => {
+                            speechFinished = true;
+                            advance();
+                        }
+                    );
+
+                    // Fallback timeout (10 seconds) in case speech never ends
+                    setTimeout(() => {
+                        if (!speechFinished) {
+                            speechFinished = true; // Mark as finished to avoid double advance
+                            advance();
+                        }
+                    }, 10000);
+
+                } catch (e) {
+                    console.error('Quiz handleAnswer error:', e);
+                }
             },
 
             retryIncorrect() {
