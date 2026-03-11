@@ -1,10 +1,87 @@
 
-There are two intermitant runtime bug.
+    Thai 1–3: Speaking Foundation — high-frequency phrases, tones/pronunciation, everyday dialogs.
 
-The multiple choice quiz hangs from time to time and non of the distractor ancwers 
-are clickable.
+    RW 1–3: Read & Write Starter — Thai alphabet, sound–spelling rules, essential handwriting/typing.
 
-Second, once selected, the speech for the longer distractors answers are cut off and partially spoken.
+    Thai 4–15: Alphabet-Based Fluency — grammar in context, particles, natural phrasing, real-world topics.
+
+    RW 4–5: Advanced Literacy — speed reading, news/articles, essays; formal & informal styles.
+
+https://twolegsbadblog.wordpress.com/2016/02/21/a-history-of-political-islam-and-the-west-part-3-iran-revolution-1/
+
+======================================================
+
+The next major feature for the App is a multilingual books and blogs. 
+
+Essentially a multilingual book reader that highlights and reads text in multiple languages based on user selection. 
+
+The use case seems sufficiently different to warrnet its own data model, interface and url /blogs/blogId 
+
+Data model:
+
+The following URL is a typical blog to be included in the App. 
+
+https://twolegsbadblog.wordpress.com/2016/02/21/a-history-of-political-islam-and-the-west-part-3-iran-revolution-1/
+
+The source language is English and the initial translations should be Farsi and Thai.
+
+Note, the blog has text, figure / image, and voideo content.
+
+Clarify, the best data model.
+
+Interface and functionality.
+
+Tool bar: 
+Select a language (currently, English, Farsi and Thai)
+Select an article (or display and index page of articles) in the selected language.
+Media player tool bar with Play/Pause toggle, Stop, and Speed.
+On Play, the blog text should be highlighted and spoken using TTS 
+ (the text highlighting should be simple and based on the language, for example, 
+  EN and FA have space delimited words and the highlighting / speech is based on words but 
+  for Thai, there is not a simple solution and the highlighting can be based on speace seperated 
+  blocks such as a paragraph). 
+
+Please do not generate any code and clarify the data model and options for the code design and implementation.
+
+
+For Potential challenges: 
+ The TTS natural speech is more important than word level highlighting. If words are highlighted and 
+ spoken separatly, does TTS loose the natural flow in the text? If so, a standard highlight based on 
+ a full stop charachter for highlight / speech boundary is prefered. 
+
+Recommendation: Option B is a good choice.
+
+Again, please do not generate any code and clarify the data model and options for the code design and implementation 
+ addressing the above comments.
+
+===================================================
+
+Adopting the outlined summary of design choices and using this blog:
+https://twolegsbadblog.wordpress.com/2016/02/21/a-history-of-political-islam-and-the-west-part-3-iran-revolution-1/
+
+Generate the EN, FA, TH blog datafiles for the online blog here:  
+https://twolegsbadblog.wordpress.com/2016/02/21/a-history-of-political-islam-and-the-west-part-3-iran-revolution-1/
+
+-----------------------------
+
+Testing:
+http://127.0.0.1:8080/#flashcard/RW1/6/character
+
+Same change request! Please see uploaded app.js with the last patch added.
+
+The flash card click event on a vowel renders the vowel and speaks the full name.  
+This nneds to be changed to speak just the vowel sound and not the vowel full name.
+
+Similarly, clicking on the flash card itself should speak the vowel sound and not it's full name.
+
+In other words, all vowel playback should be the vowel and not the full name.  
+The only exception is when the button "Hear full name" is clicked.
+
+
+
+
+
+
 
 
 

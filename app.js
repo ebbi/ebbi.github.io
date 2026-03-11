@@ -17,6 +17,7 @@ const App = (function () {
             manifest: null,
             currentDocument: null,
             isAutoScrolling: false,
+            viewMode: 'library',
 
             // NEW: Track last opened document and accordion states
             lastDocument: localStorage.getItem('lastDocument') || null,
@@ -55,7 +56,6 @@ const App = (function () {
                     }
                 })()
             },
-
 
             srs: {
                 items: {},
@@ -158,6 +158,14 @@ const App = (function () {
             sentenceGame: null,
             grammarSheet: { isOpen: false, content: null },
 
+
+            blogs: {
+                manifest: null,
+                currentBlog: null,
+                currentBlogLanguages: [], // languages available for current blog
+                displayLanguage: 'en',
+            }
+
         },
 
         defaults: {
@@ -174,7 +182,6 @@ const App = (function () {
                 }
             }
         },
-
 
         get(key) { return this.data[key]; },
         set(key, value) { this.data[key] = value; this.save(key); },
@@ -201,7 +208,6 @@ const App = (function () {
                     JSON.stringify(this.data.media.languageSettings));
             }
 
-            // ===== NEW SAVE CASES =====
             if (key === 'activityCounts') {
                 localStorage.setItem('activityCounts', JSON.stringify(this.data.activityCounts));
             }
@@ -221,10 +227,14 @@ const App = (function () {
                 localStorage.setItem('sessionsCompleted', this.data.sessionHistory.sessionsCompleted);
             }
 
-            // ===== ADD THIS =====
             if (key === 'srs') {
                 localStorage.setItem('srs', JSON.stringify(this.data.srs));
             }
+
+            if (key === 'blogs') {
+                localStorage.setItem('blogs', JSON.stringify(this.data.blogs));
+            }
+
         },
 
         loadAccordionStates() {
@@ -242,7 +252,6 @@ const App = (function () {
                 console.warn('Failed to load accordion states', e);
             }
         }
-
     };
 
     const EventBus = {
@@ -267,12 +276,12 @@ const App = (function () {
     const Router = {
         routes: {
             'library': () => {
-                // console.log('Navigating to library');
+                State.data.viewMode = 'library';
                 UI.Library.render();
                 App.hideMediaBar();
             },
             'doc/:id': (id) => {
-                // console.log('Navigating to document:', id);
+                State.data.viewMode = 'document';
                 UI.Document.render(id);
                 App.showMediaBar();
             },
@@ -322,6 +331,15 @@ const App = (function () {
             'settings': () => {
                 // console.log('Navigating to settings');
                 App.showSettingsOverlay();
+            },
+            'blogs': () => {
+                UI.Blog.renderIndex();
+                App.hideMediaBar();               // index does not need media controls
+            },
+            'blogs/:id': (id) => {
+                State.data.viewMode = 'blog';
+                UI.Blog.renderReader(id);
+                App.showMediaBar();
             }
         },
 
@@ -331,10 +349,11 @@ const App = (function () {
         },
 
         handle() {
-            const hash = window.location.hash.slice(1) || 'library';
-            // console.log('Routing to hash:', hash);
-
-            // FORCE CLEANUP: Disable scroll listeners and stop playback before any route change
+            let hash = window.location.hash.slice(1) || 'library';
+            // Normalize: remove trailing slash so that #blogs/ is treated as #blogs
+            if (hash.endsWith('/')) {
+                hash = hash.slice(0, -1);
+            }
             Services.MediaService.disableScrollListeners();
             if (State.data.media.isPlaying) {
                 Services.MediaService.stopSequence();
@@ -802,6 +821,25 @@ const App = (function () {
             }
         },
 
+        BlogService: {
+            async loadManifest() {
+                const response = await fetch('./blogs/manifest.json');
+                State.data.blogs.manifest = await response.json();
+                return State.data.blogs.manifest;
+            },
+
+            async loadBlog(blogId) {
+                const manifest = State.data.blogs.manifest || await this.loadManifest();
+                const blogInfo = manifest.blogs.find(b => b.id === blogId);
+                if (!blogInfo) throw new Error(`Blog ${blogId} not found`);
+                const response = await fetch(blogInfo.filePath);
+                State.data.blogs.currentBlog = await response.json();
+                // Store available languages for this blog (fallback to ['en'] if not specified)
+                State.data.blogs.currentBlogLanguages = blogInfo.languages || ['en'];
+                return State.data.blogs.currentBlog;
+            }
+        },
+
         MediaService: {
             cachedVoices: [],
             scrollTimeout: null,
@@ -1019,6 +1057,10 @@ const App = (function () {
 
             pausePlayback() {
                 State.data.media.isPlaying = false;
+                if (State.data.media.delayTimer) {
+                    clearTimeout(State.data.media.delayTimer);
+                    State.data.media.delayTimer = null;
+                }
                 window.speechSynthesis.cancel();
                 App.showMediaBar(); // Refresh media bar
             },
@@ -1128,10 +1170,12 @@ const App = (function () {
                 State.data.media.isPlaying = false;
                 State.data.media.currentIndex = 0;
 
-                // Clear tracking
-                if (State.data.scrolledRows) {
-                    State.data.scrolledRows.clear();
+                // Clear delay timer
+                if (State.data.media.delayTimer) {
+                    clearTimeout(State.data.media.delayTimer);
+                    State.data.media.delayTimer = null;
                 }
+
                 State.data.currentRowId = null;
 
                 // Cancel any ongoing speech
@@ -1175,6 +1219,11 @@ const App = (function () {
             },
 
             isSequenceElement(el) {
+
+                if (el.classList.contains('blog-sentence')) {
+                    return true;
+                }
+
                 // If we're showing word breakdowns, include them in the sequence
                 if (State.data.media.showWordBreakdown) {
                     // Check if this is a word breakdown element
@@ -1259,11 +1308,17 @@ const App = (function () {
                 //  console.log('  → Filtered out: no matching criteria');
                 return false;
             },
+
             seekToElement: function (element) {
                 // Clear any pending seek timer
                 if (this._seekTimer) {
                     clearTimeout(this._seekTimer);
                     this._seekTimer = null;
+                }
+                // Clear delay timer
+                if (State.data.media.delayTimer) {
+                    clearTimeout(State.data.media.delayTimer);
+                    State.data.media.delayTimer = null;
                 }
 
                 // Prevent multiple seeks
@@ -2980,6 +3035,18 @@ const App = (function () {
                     fullCharacterPronunciation = sound && name ? `${sound} ${name}` : (sound || name || card.front);
                 }
 
+                // Determine what text to speak when the card front is clicked
+                let frontSpeechText = card.front; // default for non‑character cards
+                if (card.type === 'character') {
+                    if (card.back.class === 'vowel') {
+                        // Vowels: speak only the sound
+                        frontSpeechText = card.back.sound || card.front;
+                    } else {
+                        // Consonants: speak the full name (sound + name)
+                        frontSpeechText = fullCharacterPronunciation;
+                    }
+                }
+
                 let html = `
         <div class="flashcard-container">
             <div class="flashcard-header">
@@ -2995,26 +3062,24 @@ const App = (function () {
                 </div>
             </div>
             
-            <div class="flashcard ${cards.showAnswer ? 'show-answer' : ''}">
-                <div class="flashcard-front" 
-                    onclick="App.Services.MediaService.speak('${UI.escapeHtml(card.type === 'character' ? fullCharacterPronunciation : card.front)}', 'th')"
-                    data-text="${UI.escapeHtml(card.type === 'character' ? fullCharacterPronunciation : card.front)}" 
-                    data-lang="th">
-    `;
+        <div class="flashcard ${cards.showAnswer ? 'show-answer' : ''}">
+            <div class="flashcard-front" 
+                onclick="App.Services.MediaService.speak('${UI.escapeHtml(frontSpeechText)}', 'th')"
+                data-text="${UI.escapeHtml(frontSpeechText)}" 
+                data-lang="th">
+`;
 
                 // Customize front display based on card type
                 if (card.type === 'character') {
-                    // Character card front - show large character with class color
                     html += `
-            <div class="flashcard-content character-front ${classColor}" lang="th">
-                <div class="character-large-display ${classColor}">${UI.escapeHtml(card.front)}</div>
-            </div>
-        `;
+        <div class="flashcard-content character-front ${classColor}" lang="th">
+            <div class="character-large-display ${classColor}">${UI.escapeHtml(card.front)}</div>
+        </div>
+    `;
                 } else {
-                    // Word or sentence card front
                     html += `
-            <div class="flashcard-content" lang="th">${UI.escapeHtml(card.front)}</div>
-        `;
+        <div class="flashcard-content" lang="th">${UI.escapeHtml(card.front)}</div>
+    `;
                 }
 
                 html += `
@@ -3099,7 +3164,7 @@ const App = (function () {
                 // Auto-play the front of the card with full pronunciation for characters
                 setTimeout(() => {
                     if (card.type === 'character') {
-                        Services.MediaService.speak(fullCharacterPronunciation, 'th');
+                        Services.MediaService.speak(frontSpeechText, 'th');
                     } else {
                         Services.MediaService.speak(card.front, 'th');
                     }
@@ -4451,7 +4516,151 @@ const App = (function () {
                     if (backdrop) backdrop.classList.add('visible');
                 }, 10);
             }
-        }
+        },
+
+        // ------------------------------------------------------------------------
+        // Blog Reader
+        // ------------------------------------------------------------------------
+        Blog: {
+            // Helper: split text into sentences based on punctuation
+            splitSentences(text, lang) {
+                if (!text) return [];
+                // For Thai without punctuation, return whole text as one sentence
+                if (lang === 'th' && !/[.!?]/.test(text)) {
+                    return [text];
+                }
+                // Split on . ! ? followed by space or end of string, keeping punctuation
+                // Using positive lookbehind (supported in modern browsers)
+                return text.split(/(?<=[.!?])\s+/).filter(s => s.trim().length > 0);
+            },
+
+            async renderIndex() {
+                const container = UI.getContainer();
+                if (!container) return;
+
+                container.innerHTML = '<div class="loading-spinner"></div>';
+
+                try {
+                    const manifest = State.data.blogs.manifest || await Services.BlogService.loadManifest();
+                    const currentLang = State.data.lang; // UI language for titles
+                    const t = Services.I18n.t;
+
+                    let html = '<div class="blog-index">';
+                    html += `<h2>${t('blogs', 'Blogs & Articles')}</h2>`;
+
+                    manifest.blogs.forEach(blog => {
+                        const title = blog.title[currentLang] || blog.title.en;
+                        const date = blog.date || '';
+                        const author = blog.author || '';
+                        html += `
+                    <button class="blog-entry" onclick="location.hash='blogs/${blog.id}'">
+                        <span class="material-icons">article</span>
+                        <div class="blog-entry-content">
+                            <div class="blog-title">${UI.escapeHtml(title)}</div>
+                            <div class="blog-meta">${UI.escapeHtml(date)} ${author ? '· ' + UI.escapeHtml(author) : ''}</div>
+                        </div>
+                        <span class="material-icons">chevron_right</span>
+                    </button>
+                `;
+                    });
+
+                    html += '</div>';
+                    container.innerHTML = html;
+                } catch (error) {
+                    container.innerHTML = `<div class="card error">Error loading blogs: ${UI.escapeHtml(error.message)}</div>`;
+                }
+            },
+
+            async renderReader(blogId) {
+                const container = UI.getContainer();
+                if (!container) return;
+
+                container.innerHTML = '<div class="loading-spinner"></div>';
+
+                try {
+                    // Load blog if not already loaded or if different
+                    if (!State.data.blogs.currentBlog || State.data.blogs.currentBlog.id !== blogId) {
+                        await Services.BlogService.loadBlog(blogId);
+                    }
+                    const blog = State.data.blogs.currentBlog;
+                    const availableLangs = State.data.blogs.currentBlogLanguages;
+                    let displayLang = State.data.blogs.displayLanguage;
+
+                    // Ensure current language is available
+                    if (!availableLangs.includes(displayLang)) {
+                        displayLang = availableLangs[0] || 'en';
+                        State.data.blogs.displayLanguage = displayLang;
+                        State.save('blogs');
+                    }
+
+                    const t = Services.I18n.t;
+
+                    // Set text direction based on language
+                    const dir = displayLang === 'fa' ? 'rtl' : 'ltr';
+
+                    let html = `<div class="blog-content" dir="${dir}">`;
+
+                    // Title and metadata
+                    const title = blog.title[displayLang] || blog.title.en;
+                    html += `<h1 class="blog-title">${UI.escapeHtml(title)}</h1>`;
+                    if (blog.metadata) {
+                        const metaParts = [];
+                        if (blog.metadata.date) metaParts.push(blog.metadata.date);
+                        if (blog.metadata.author) metaParts.push(blog.metadata.author);
+                        if (metaParts.length) {
+                            html += `<div class="blog-metadata">${UI.escapeHtml(metaParts.join(' · '))}</div>`;
+                        }
+                    }
+
+                    // Loop through content blocks
+                    blog.content.forEach(block => {
+                        if (block.type === 'text') {
+                            const text = block.text[displayLang];
+                            if (!text) return; // skip if no translation
+
+                            const sentences = this.splitSentences(text, displayLang);
+                            sentences.forEach(sentence => {
+                                html += `
+                                    <div class="blog-sentence audio-element"
+                                        onclick="App.media.play(this)"
+                                        data-text="${UI.escapeHtml(sentence)}"
+                                        data-lang="${displayLang}"
+                                        lang="${displayLang}">
+                                        ${UI.escapeHtml(sentence)}
+                                    </div>
+                                `;
+                            });
+                        } else if (block.type === 'image') {
+                            const caption = block.caption && block.caption[displayLang] ? block.caption[displayLang] : '';
+                            html += `
+                        <figure class="blog-image">
+                            <img src="${UI.escapeHtml(block.src)}" alt="${UI.escapeHtml(caption)}">
+                            ${caption ? `<figcaption>${UI.escapeHtml(caption)}</figcaption>` : ''}
+                        </figure>
+                    `;
+                        } else if (block.type === 'video') {
+                            const caption = block.caption && block.caption[displayLang] ? block.caption[displayLang] : '';
+                            // WARNING: embed HTML may contain unsafe content; ensure it's sanitized if user-supplied.
+                            html += `
+                        <figure class="blog-video">
+                            ${block.embed}
+                            ${caption ? `<figcaption>${UI.escapeHtml(caption)}</figcaption>` : ''}
+                        </figure>
+                    `;
+                        }
+                    });
+
+                    html += '</div>'; // close blog-content
+                    container.innerHTML = html;
+
+                    // Ensure media bar is visible (it might have been hidden by previous view)
+                    App.showMediaBar();
+
+                } catch (error) {
+                    container.innerHTML = `<div class="card error">Error loading blog: ${UI.escapeHtml(error.message)}</div>`;
+                }
+            }
+        },
 
     };
 
@@ -4684,6 +4893,20 @@ const App = (function () {
 
         renderMediaBar(container) {
             const media = State.data.media;
+            const viewMode = State.data.viewMode;
+
+            let rightControls = '';
+            if (viewMode === 'blog') {
+                rightControls = `
+            <button class="material-icons player-ctrl"
+                    onclick="App.Blog.toggleLanguageMenu()">language</button>
+        `;
+            } else {
+                rightControls = `
+            <button class="material-icons player-ctrl"
+                    onclick="App.showSettingsOverlay()">settings</button>
+        `;
+            }
 
             container.innerHTML = `
         <div class="media-row">
@@ -4699,8 +4922,7 @@ const App = (function () {
                 <div id="media-text-display" class="media-text-display"></div>
             </div>
             <div class="media-col">
-                <button class="material-icons player-ctrl"
-                        onclick="App.showSettingsOverlay()">settings</button>
+                ${rightControls}
             </div>
         </div>`;
 
@@ -4728,9 +4950,12 @@ const App = (function () {
             window.speechSynthesis.cancel();
             this.showMediaBar();
             this.updatePlayPauseIcon(false);
-            // REMOVE THIS LINE:
-            // const message = Services.I18n.t('playback_stopped', 'Playback stopped');
-            // App.showNotification(message, 2000);
+
+            // Clear media text display
+            const display = document.getElementById('media-text-display');
+            if (display) {
+                display.innerText = '';
+            }
         },
 
         showSettingsOverlay() {
@@ -4809,14 +5034,14 @@ const App = (function () {
         },
 
         playSequence() {
-            // console.log('=== playSequence started ===');
 
-            // CRITICAL: Check if we're still in a document view
+            // CRITICAL: Check if we're in a document or blog view
             const mainContent = document.getElementById('main-content');
             const isInDocument = mainContent?.querySelector('.document-content') !== null;
+            const isInBlog = mainContent?.querySelector('.blog-content') !== null;
 
-            if (!isInDocument) {
-                // console.log('Not in document view, stopping playback');
+            if (!isInDocument && !isInBlog) {
+                // console.log('Not in document or blog view, stopping playback');
                 this.stopSequence();
                 this.updatePlayPauseIcon(false);
                 return;
@@ -4851,13 +5076,7 @@ const App = (function () {
                 }
                 return isSeq;
             });
-            /*
-                        console.log('PlaySequence - All elements:', allElements.length);
-                        console.log('PlaySequence - Sequence elements:', sequenceElements.length);
-                        console.log('PlaySequence - Breakdown elements count:',
-                            sequenceElements.filter(el => el.closest('.sent-word-block')).length);
-                        console.log('PlaySequence - Starting from index:', State.data.media.currentIndex);
-            */
+
             // If current index is beyond sequence elements, reset to 0
             if (State.data.media.currentIndex >= sequenceElements.length) {
                 State.data.media.currentIndex = 0;
@@ -5132,7 +5351,12 @@ const App = (function () {
 
                 const display = document.getElementById('media-text-display');
                 if (display) {
-                    display.innerText = text;
+                    let displayText = text;
+                    // Truncate long text in blog view for a cleaner media bar
+                    if (State.data.viewMode === 'blog' && displayText.length > 40) {
+                        displayText = displayText.substring(0, 40) + '…';
+                    }
+                    display.innerText = displayText;
                     display.className = `media-text lang-${lang}`;
                 }
 
@@ -5180,14 +5404,13 @@ const App = (function () {
                                     // More repeats for this element
                                     setTimeout(speakNextRepeat, 100);
                                 } else {
-                                    // Move to next element after delay
-                                    State.data.media.currentIndex++;
-
-                                    // Small delay before next element
-                                    setTimeout(() => {
+                                    // Delay before moving to next element
+                                    State.data.media.delayTimer = setTimeout(() => {
                                         if (State.data.media.isPlaying) {
+                                            State.data.media.currentIndex++;
                                             playNext();
                                         }
+                                        State.data.media.delayTimer = null;
                                     }, State.data.media.delay * 1000);
                                 }
                             }
@@ -5214,6 +5437,7 @@ const App = (function () {
         media: {
             _isPlaying: false,
             _clickTimer: null,
+            delayTimer: null,
 
             // In the media.play function, simplify the notification:
             play: function (element) {
@@ -5272,6 +5496,7 @@ const App = (function () {
                 State.save('activityCounts');
 
                 const inDocument = element.closest('.document-content') !== null;
+                const inBlog = element.classList.contains('blog-sentence');
 
                 if (inDocument) {
                     // Determine element type based on clear criteria
@@ -5358,6 +5583,15 @@ const App = (function () {
                             this._clickTimer = null;
                         }, 500);
                     }
+                } else if (inBlog) {
+                    // For blog sentences, seek to the clicked element to start playback from there
+                    Services.MediaService.seekToElement(element);
+
+                    this._clickTimer = setTimeout(() => {
+                        this._isPlaying = false;
+                        element.removeAttribute('data-processing');
+                        this._clickTimer = null;
+                    }, 1000);
                 } else {
                     // Single playback for flashcards, quizzes, etc.
                     const text = element.getAttribute('data-text');
@@ -5375,7 +5609,6 @@ const App = (function () {
                     }, 500);
                 }
             }
-
 
         },
 
@@ -6190,6 +6423,67 @@ const App = (function () {
             if (anchor) anchor.innerHTML = '';
 
             Router.handle();
+        },
+
+        Blog: {
+            setLanguage: function (lang) {
+                // Optional: ensure lang is in available list
+                const available = State.data.blogs.currentBlogLanguages;
+                if (available && !available.includes(lang)) {
+                    console.warn(`Language ${lang} not available for this blog`);
+                    return;
+                }
+                State.data.blogs.displayLanguage = lang;
+                State.save('blogs');
+                if (State.data.blogs.currentBlog) {
+                    UI.Blog.renderReader(State.data.blogs.currentBlog.id);
+                }
+                Services.MediaService.stopSequence();
+
+                // Close the language menu overlay
+                const anchor = document.getElementById('overlay-anchor');
+                if (anchor) {
+                    anchor.innerHTML = '';
+                }
+            },
+
+            toggleLanguageMenu: function () {
+                const anchor = document.getElementById('overlay-anchor');
+                if (!anchor) return;
+
+                // If menu already open, close it
+                if (anchor.innerHTML) {
+                    anchor.innerHTML = '';
+                    return;
+                }
+
+                const currentLang = State.data.blogs.displayLanguage;
+                // Get available languages for current blog, fallback to fixed set if none
+                const availableLangs = State.data.blogs.currentBlogLanguages || ['en', 'fa', 'th'];
+                const t = Services.I18n.t;
+
+                // Display data for known languages (can be extended)
+                const langDisplay = {
+                    en: { name: 'English', flag: '🇬🇧' },
+                    fa: { name: 'فارسی', flag: '🇮🇷' },
+                    th: { name: 'ไทย', flag: '🇹🇭' },
+                    // add more as needed
+                };
+
+                let html = '<div class="overlay-menu card lang-menu">';
+                availableLangs.forEach(code => {
+                    const display = langDisplay[code] || { name: code.toUpperCase(), flag: '🌐' };
+                    html += `
+            <button onclick="App.Blog.setLanguage('${code}')" ${currentLang === code ? 'class="selected"' : ''}>
+                <span class="lang-flag">${display.flag}</span>
+                <span class="lang-name">${display.name}</span>
+            </button>
+        `;
+                });
+                html += '</div>';
+                anchor.innerHTML = html;
+            }
+
         }
 
     };
