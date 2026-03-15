@@ -609,6 +609,12 @@ const App = (function () {
                 this.type = 'words';
                 this.heading = data.heading?.[currentLang] || data.heading?.en;
                 this.activity = data.activity;
+                // Normalize grammar to an array
+                if (data.grammar) {
+                    this.grammar = Array.isArray(data.grammar) ? data.grammar : [data.grammar];
+                } else {
+                    this.grammar = [];
+                }
                 this.words = vocabulary.resolveWordIds(data.wordIds || []);
             }
         },
@@ -617,22 +623,20 @@ const App = (function () {
             constructor(data, vocabulary, currentLang) {
                 this.type = 'paragraph';
                 this.heading = data.heading?.[currentLang] || data.heading?.en;
-                this.grammar = data.grammar;
+                // Normalize grammar to an array
+                if (data.grammar) {
+                    this.grammar = Array.isArray(data.grammar) ? data.grammar : [data.grammar];
+                } else {
+                    this.grammar = [];
+                }
                 this.activity = data.activity;
 
-                this.sentences = (data.sentences || []).map(s => {
-                    // Debug: log the wordIds being resolved
-                    // console.log(`Resolving wordIds for sentence "${s.source}":`, s.wordIds);
-                    const words = vocabulary.resolveWordIds(s.wordIds || []);
-                    //  console.log(`Resolved words:`, words.map(w => w.word));
-
-                    return {
-                        source: s.source,
-                        translations: s.translations || {},
-                        grammar: s.grammar,
-                        words: words
-                    };
-                });
+                this.sentences = (data.sentences || []).map(s => ({
+                    source: s.source,
+                    translations: s.translations || {},
+                    grammar: s.grammar,          // keep sentence grammar as is (object)
+                    words: vocabulary.resolveWordIds(s.wordIds || [])
+                }));
             }
         },
 
@@ -1787,24 +1791,29 @@ const App = (function () {
                 return content.map((item, blockIdx) => {
                     let html = '';
 
-                    // Render heading with grammar icon inline (if heading exists)
                     if (item.heading) {
-                        const grammarId = `grammar-${sectionIdx}-${blockIdx}`;
-                        const grammarIcon = (item.type === 'paragraph' && item.grammar) ? `
+                        // Generate one icon per grammar entry
+                        let grammarIconsHtml = '';
+                        if (item.grammar && item.grammar.length > 0) {
+                            grammarIconsHtml = item.grammar.map((g, gIdx) => {
+                                const grammarId = `grammar-${sectionIdx}-${blockIdx}-${gIdx}`;
+                                return `
                 <button class="grammar-icon-btn-inline" 
                         onclick="App.showGrammarSheet('${grammarId}')"
                         aria-label="Show grammar explanation"
                         title="View grammar note">
                     <span class="material-icons">menu_book</span>
                 </button>
-            ` : '';
+            `;
+                            }).join('');
+                        }
 
                         html += `
-                <div class="heading-with-grammar">
-                    ${grammarIcon}
-                    <h3 class="block-heading">${UI.escapeHtml(item.heading)}</h3>
-                </div>
-            `;
+        <div class="heading-with-grammar">
+            ${grammarIconsHtml}
+            <h3 class="block-heading">${UI.escapeHtml(item.heading)}</h3>
+        </div>
+    `;
                     }
 
                     // Render the content (NO separate grammar header here)
@@ -5934,49 +5943,61 @@ const App = (function () {
         showGrammarSheet(grammarId) {
             State.data.activityCounts.grammarSheetsOpened = (State.data.activityCounts.grammarSheetsOpened || 0) + 1;
             State.save('activityCounts');
-
             this.addActivity('menu_book', 'activity_viewed_grammar');
 
-            // Parse the grammar ID: grammar-sectionIdx-blockIdx
+            // Parse the grammar ID: "grammar-sectionIdx-blockIdx-grammarIdx"
             const parts = grammarId.split('-');
-            if (parts[0] !== 'grammar') return;
-
-            const sectionIdx = parseInt(parts[1]);
-            const blockIdx = parseInt(parts[2]);
+            if (parts[0] !== 'grammar' || parts.length !== 4) {
+                console.warn('Invalid grammar ID format');
+                return;
+            }
 
             try {
+                const sectionIdx = parseInt(parts[1]);
+                const blockIdx = parseInt(parts[2]);
+                const grammarIdx = parseInt(parts[3]);
+
                 const section = State.data.currentDocument.sections[sectionIdx];
                 const block = section.content[blockIdx];
 
-                if (!block || !block.grammar) {
+                if (!block || !block.grammar || !block.grammar[grammarIdx]) {
                     console.warn('No grammar data found');
                     return;
                 }
 
-                const grammar = block.grammar;
+                const grammar = block.grammar[grammarIdx];
 
-                // IMPORTANT: We DO NOT use any sentences from the block
-                // Only use examples explicitly defined in the grammar object
+                // Build examples array (same logic as before)
                 const examples = [];
                 if (grammar.examples && Array.isArray(grammar.examples)) {
                     grammar.examples.forEach(ex => {
-                        if (ex.sentenceSource) {
+                        if (ex.source && !ex.translations && ex.translation) {
+                            examples.push({
+                                source: ex.source,
+                                translations: { en: ex.translation }
+                            });
+                        } else if (ex.source && ex.translations) {
+                            examples.push({
+                                source: ex.source,
+                                translations: ex.translations
+                            });
+                        } else if (ex.sentenceSource) {
                             examples.push({
                                 source: ex.sentenceSource,
-                                translations: ex.translations || {} // Pass the FULL translations object
+                                translations: ex.translations || {}
                             });
                         }
                     });
                 }
 
-                //   console.log('Grammar examples being passed:', examples);
+                console.log('Grammar examples being passed:', examples);
 
                 UI.GrammarSheet.render({
                     pattern: grammar.pattern,
                     note: grammar.note || grammar.explanation,
-                    examples: examples, // ONLY use examples from the grammar object
-                    source: null, // No current sentence - we don't want to show a sentence from the block
-                    translations: {} // No current translations
+                    examples: examples,
+                    source: null,
+                    translations: {}
                 });
 
             } catch (error) {

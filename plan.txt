@@ -65,17 +65,40 @@ https://twolegsbadblog.wordpress.com/2016/02/21/a-history-of-political-islam-and
 -----------------------------
 
 Testing:
-http://127.0.0.1:8080/#flashcard/RW1/6/character
+http://127.0.0.1:8080/#doc/RW1
 
-Same change request! Please see uploaded app.js with the last patch added.
+I have not updated the previous, showGrammarSheet(grammarId) function:
+To be clear and double check. 
+The data JSON data models grammar as the following example:
+                    "grammar": {
+                        "pattern": "Middle Class + Long Vowels / Special Vowels = Mid Tone",
+                        "note": {
+                            "en": "Middle Class + Long Vowels / Special Vowels = Mid Tone",
+                            "th": "ชนชั้นกลาง + สระเสียงยาว / สระเสียงพิเศษ = เสียงกลาง",
+                            "fa": "طبقه متوسط ​​+ مصوت‌های بلند / مصوت‌های ویژه = لحن میانی"
+                        },
+                        "examples": [
+                            {
+                                "source": "อีกา ปู อา ดู ปี โต ดี บัว ตา เจอ จํา ไป",
+                                "translation": "crow crab uncle view year grown up good lotus eye meet remember go"
+                            }
+                        ]
+                    }
+Any content type may have a grammar definition as above.
 
-The flash card click event on a vowel renders the vowel and speaks the full name.  
-This nneds to be changed to speak just the vowel sound and not the vowel full name.
+Majority of cases only have one Grammar definition but there are exceptions where there is multiple 
+grammar definition for a content type.
 
-Similarly, clicking on the flash card itself should speak the vowel sound and not it's full name.
+Please reevaluate and suggest an optimum solution without consideration for legacy data.
 
-In other words, all vowel playback should be the vowel and not the full name.  
-The only exception is when the button "Hear full name" is clicked.
+
+
+
+
+
+
+
+
 
 
 
