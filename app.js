@@ -1910,7 +1910,7 @@ const App = (function () {
                     // Add word breakdown blocks
                     if (State.data.media.showWordBreakdown &&
                         State.data.media.languageSettings.th?.show &&
-                        sentence.words.length) {
+                        sentence.words.length > 1) { 
                         html += '<div class="sent-word-block">';
                         sentence.words.forEach((word, wordIdx) => {
                             // Create a unique ID for the breakdown item
@@ -4241,7 +4241,7 @@ const App = (function () {
                     </td>
                     <td>
                         <input type="number" style="width:40px" id="repeat-${code}"
-                            value="${config.repeat}" min="1" max="3"
+                            value="${config.repeat}" min="0" max="5"
                             onchange="App.updateLanguageConfig('${code}', 'repeat', this.value, true)">
                     </td>
                 </tr>
@@ -4293,7 +4293,9 @@ const App = (function () {
                         <tr>
                             <th>${t('translation', 'Translation')}</th>
                             <th>${t('show', 'Show')}</th>
-                            <th><span class="material-icons">volume_up</span> ${t('repeat', 'Repeat')}</th>
+                            <th><span class="material-icons">volume_up</span> ${t('repeat', 'Repeat')}
+                            <span class="repeat-note" style="font-size:0.8rem; opacity:0.7; display:block;">(0 = off)</span>
+                            </th>
                         </tr>
                     </thead>
                     <tbody>${langRows}</tbody>
@@ -5351,7 +5353,21 @@ const App = (function () {
 
                 const text = element.getAttribute('data-text');
                 const lang = element.getAttribute('data-lang');
-                const repeats = parseInt(settings[lang]?.repeat) || 1;
+                const repeats = settings[lang]?.repeat ?? 1;
+
+                if (repeats === 0) {
+                    const display = document.getElementById('media-text-display');
+                    if (display) {
+                        display.innerText = text;
+                        display.className = `media-text lang-${lang}`;
+                    }
+                    // No speech, move to next element immediately (skip delay)
+                    if (State.data.media.isPlaying) {
+                        State.data.media.currentIndex++;
+                        playNext();
+                    }
+                    return;
+                }
 
                 // console.log('Speaking:', { text, lang, repeats, index: State.data.media.currentIndex });
 
