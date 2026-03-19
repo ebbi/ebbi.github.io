@@ -64,101 +64,11 @@ https://twolegsbadblog.wordpress.com/2016/02/21/a-history-of-political-islam-and
 
 -----------------------------
 
-Testing:
-http://127.0.0.1:8080/#doc/RW1
 
-The last change introduced a new bug.
+Update the App toolbar currently has a Home icon.  
+We need to add an icon for the blogs home after the App Home icon.
 
-In Settings, selecting a checkbox for show renders the selected language twice.
-
-Selecting TH and EN renders the following HTML (duplicate occurance):
-
-<div class="stack-column">
-            <div class="source-wrapper">
-                
-                <div class="stack-item source audio-element" lang="th" dir="ltr" data-text="สวัสดี" data-lang="th" data-uid="s-0-0-0" onclick="App.media.play(this)">
-                    <span id="source-s-0-0-0-w-0" class="word-span matched-word" data-link="s-0-0-0-card-0" lang="th" dir="ltr">สวัสดี</span>
-                </div>
-            </div>
-        <div class="sent-word-block">
-                                <div id="s-0-0-0-card-0" class="sent-word-item audio-element" data-text="สวัสดี" data-lang="th" data-link="source-s-0-0-0-w-0" onclick="App.media.play(this)">
-                                    <div class="sent-word-source">สวัสดี</div>
-                                    
-                                        <div class="sent-word-trans lang-en audio-element" lang="en" dir="ltr" data-text="hello" data-lang="en" data-link="source-s-0-0-0-w-0" onclick="App.media.play(this); event.stopPropagation();">
-                                            hello
-                                        </div>
-                                    
-                                </div>
-                                </div>
-                    <div class="stack-item trans lang-en audio-element" lang="en" dir="ltr" data-text="Hello" data-lang="en" data-uid="s-0-0-0-trans-en" onclick="App.media.play(this)">
-                        <span id="s-0-0-0-trans-en-w-0" class="word-span" data-start="0" data-end="5" lang="en" dir="ltr">Hello</span>
-                    </div>
-                </div>
-
-With the word breakdown = off (correct with single occurance)
-
-<div class="stack-column">
-            <div class="source-wrapper">
-                
-                <div class="stack-item source audio-element" lang="th" dir="ltr" data-text="สวัสดี" data-lang="th" data-uid="s-0-0-0" onclick="App.media.play(this)">
-                    <span id="source-s-0-0-0-w-0" class="word-span matched-word" data-link="s-0-0-0-card-0" lang="th" dir="ltr">สวัสดี</span>
-                </div>
-            </div>
-        
-                    <div class="stack-item trans lang-en audio-element" lang="en" dir="ltr" data-text="Hello" data-lang="en" data-uid="s-0-0-0-trans-en" onclick="App.media.play(this)">
-                        <span id="s-0-0-0-trans-en-w-0" class="word-span" data-start="0" data-end="5" lang="en" dir="ltr">Hello</span>
-                    </div>
-                </div>
-
-There are no console errors.
-
-The problem is with the Show Word Breakdown toggle set to ON
-The code renders:
-
-
-สวัสดี
-สวัสดี
-hello
-Hello
-
-
-The above is incorrect.  There should not be a second occurance.
-
-Here is the HTML:
-<div class="stack-column">
-            <div class="source-wrapper">
-                
-                <div class="stack-item source audio-element" lang="th" dir="ltr" data-text="สวัสดี" data-lang="th" data-uid="s-0-0-0" onclick="App.media.play(this)">
-                    <span id="source-s-0-0-0-w-0" class="word-span matched-word" data-link="s-0-0-0-card-0" lang="th" dir="ltr">สวัสดี</span>
-                </div>
-            </div>
-        <div class="sent-word-block">
-                                <div id="s-0-0-0-card-0" class="sent-word-item audio-element" data-text="สวัสดี" data-lang="th" data-link="source-s-0-0-0-w-0" onclick="App.media.play(this)">
-                                    <div class="sent-word-source">สวัสดี</div>
-                                    
-                                        <div class="sent-word-trans lang-en audio-element" lang="en" dir="ltr" data-text="hello" data-lang="en" data-link="source-s-0-0-0-w-0" onclick="App.media.play(this); event.stopPropagation();">
-                                            hello
-                                        </div>
-                                    
-                                </div>
-                                </div>
-                    <div class="stack-item trans lang-en audio-element" lang="en" dir="ltr" data-text="Hello" data-lang="en" data-uid="s-0-0-0-trans-en" onclick="App.media.play(this)">
-                        <span id="s-0-0-0-trans-en-w-0" class="word-span" data-start="0" data-end="5" lang="en" dir="ltr">Hello</span>
-                    </div>
-                </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
+The click event on the blog home icon should load the list of blogs, /#blogs
 
 
 

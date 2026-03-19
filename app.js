@@ -4734,28 +4734,30 @@ const App = (function () {
             if (!app) return;
 
             app.innerHTML = `
-                <header id="app-toolbar">
-                    <nav class="toolbar-left">
-                        <button class="material-icons toolbar-btn"
-                                onclick="location.hash='library'">home</button>
-                    </nav>
-                    <nav class="toolbar-right">
-                        <button class="material-icons toolbar-btn"
-                                onclick="App.toggleMenu('lang')">language</button>
-                        <button class="material-icons toolbar-btn"
-                                onclick="App.toggleMenu('font')">text_fields</button>
-                        <button class="material-icons toolbar-btn"
-                                onclick="App.toggleTheme()">
-                            ${State.data.theme === 'light' ? 'dark_mode' : 'light_mode'}
-                        </button>
-                        <button class="material-icons toolbar-btn"
-                                onclick="location.hash='help'">help_outline</button>
-                    </nav>
-                </header>
-                <div id="media-player-container"></div>
-                <main id="main-content"></main>
-                <div id="overlay-anchor"></div>
-            `;
+        <header id="app-toolbar">
+            <nav class="toolbar-left">
+                <button class="material-icons toolbar-btn"
+                        onclick="location.hash='library'">home</button>
+                <button class="material-icons toolbar-btn"
+                        onclick="location.hash='blogs'">article</button>
+            </nav>
+            <nav class="toolbar-right">
+                <button class="material-icons toolbar-btn"
+                        onclick="App.toggleMenu('lang')">language</button>
+                <button class="material-icons toolbar-btn"
+                        onclick="App.toggleMenu('font')">text_fields</button>
+                <button class="material-icons toolbar-btn"
+                        onclick="App.toggleTheme()">
+                    ${State.data.theme === 'light' ? 'dark_mode' : 'light_mode'}
+                </button>
+                <button class="material-icons toolbar-btn"
+                        onclick="location.hash='help'">help_outline</button>
+            </nav>
+        </header>
+        <div id="media-player-container"></div>
+        <main id="main-content"></main>
+        <div id="overlay-anchor"></div>
+    `;
         },
 
         applyTheme() {
