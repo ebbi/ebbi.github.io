@@ -303,6 +303,7 @@ h6 {
 }
 
 .media-text-display {
+    max-width: calc(100% - 100px);
     color: var(--text);
     font-size: 0.85rem;
     font-weight: 500;

@@ -1079,6 +1079,16 @@ const App = (function () {
                 }
             },
 
+            autoSelectVoiceForLang(lang) {
+                const voice = this.cachedVoices.find(v => v.lang.startsWith(lang));
+                if (voice) {
+                    State.data.media.voice = voice.name;
+                    State.save('media');
+                    return true;
+                }
+                return false;
+            },
+
             getLocaleFor(lang) {
                 const map = { th: 'th-TH', en: 'en-US', fa: 'fa-IR' };
                 return map[lang] || 'en-US';
@@ -1910,7 +1920,7 @@ const App = (function () {
                     // Add word breakdown blocks
                     if (State.data.media.showWordBreakdown &&
                         State.data.media.languageSettings.th?.show &&
-                        sentence.words.length > 1) { 
+                        sentence.words.length > 1) {
                         html += '<div class="sent-word-block">';
                         sentence.words.forEach((word, wordIdx) => {
                             // Create a unique ID for the breakdown item
@@ -4389,6 +4399,85 @@ const App = (function () {
             }
         },
 
+        BlogSettings: {
+            render() {
+                const anchor = document.getElementById('overlay-anchor');
+                if (!anchor) return;
+
+                const media = State.data.media;
+                const t = Services.I18n.t;
+
+                const supportedLangs = ['th', 'en', 'fa'];
+                const currentBlogLang = State.data.blogs.displayLanguage;
+                const langOptions = supportedLangs.map(code => {
+                    const langName = { th: 'ไทย', en: 'English', fa: 'فارسی' }[code];
+                    return `<option value="${code}" ${currentBlogLang === code ? 'selected' : ''}>${langName}</option>`;
+                }).join('');
+
+                const voices = Services.MediaService.cachedVoices;
+                const voiceOptions = voices.map(v => `<option value="${v.name}" ${media.voice === v.name ? 'selected' : ''}>${v.name}</option>`).join('');
+
+                const html = `
+            <div class="overlay-full card">
+                <div class="settings-header">
+                    <h2>${t('playback_settings', 'Playback Settings')}</h2>
+                    <button class="material-icons" onclick="document.getElementById('overlay-anchor').innerHTML=''">close</button>
+                </div>
+                <div class="settings-sliders">
+                    <div class="control-row-inline">
+                        <label>${t('speed', 'Speed')}</label>
+                        <input type="range" min="0.5" max="2" step="0.25"
+                            value="${media.speed}"
+                            oninput="this.nextElementSibling.innerText = this.value + 'x'; App.updateMediaParam('speed', this.value, true)">
+                        <span class="val-label">${media.speed}x</span>
+                    </div>
+                    <div class="control-row-inline">
+                        <label>${t('delay', 'Delay')}</label>
+                        <input type="range" min="1" max="5" step="1"
+                            value="${media.delay}"
+                            oninput="this.nextElementSibling.innerText = this.value + 's'; App.updateMediaParam('delay', this.value, true)">
+                        <span class="val-label">${media.delay}s</span>
+                    </div>
+                    <div class="control-row-inline">
+                        <label>${t('pitch', 'Pitch')}</label>
+                        <input type="range" min="0.5" max="1.5" step="0.1"
+                            value="${media.pitch}"
+                            oninput="this.nextElementSibling.innerText = this.value; App.updateMediaParam('pitch', this.value, true)">
+                        <span class="val-label">${media.pitch}</span>
+                    </div>
+                </div>
+                <label>${t('language', 'Language')}</label>
+<select id="blog-lang-select" onchange="App.updateBlogDisplayLanguage(this.value)" style="width:100%; margin-bottom:15px;">
+    ${langOptions}
+</select>
+                <label>${t('voice', 'Voice')}</label>
+                <select id="voice-select" onchange="App.updateMediaParam('voice', this.value)" style="width:100%; margin-bottom:15px;">
+                    ${voiceOptions}
+                </select>
+            </div>
+        `;
+                anchor.innerHTML = html;
+
+                // Populate voices for the initially selected language (if any)
+                const langSelect = document.getElementById('blog-lang-select');
+                if (langSelect) {
+                    this.populateVoicesForLang(langSelect.value);
+                }
+            },
+
+            populateVoicesForLang(lang) {
+                const voices = Services.MediaService.cachedVoices.filter(v => v.lang.startsWith(lang));
+                const voiceSelect = document.getElementById('voice-select');
+                if (voiceSelect) {
+                    const currentVoice = State.data.media.voice;
+                    voiceSelect.innerHTML = voices.map(v => `<option value="${v.name}" ${v.name === currentVoice ? 'selected' : ''}>${v.name}</option>`).join('');
+                    if (voices.length === 0) {
+                        voiceSelect.innerHTML = '<option value="">No voices available</option>';
+                    }
+                }
+            }
+        },
+
         // ------------------------------------------------------------------------
         // Grammar Sheet
         // ------------------------------------------------------------------------
@@ -4912,7 +5001,7 @@ const App = (function () {
             if (viewMode === 'blog') {
                 rightControls = `
             <button class="material-icons player-ctrl"
-                    onclick="App.Blog.toggleLanguageMenu()">language</button>
+                    onclick="App.showBlogSettingsOverlay()">settings</button>
         `;
             } else {
                 rightControls = `
@@ -4975,6 +5064,12 @@ const App = (function () {
             UI.Settings.render();
         },
 
+        showBlogSettingsOverlay() {
+            const anchor = document.getElementById('overlay-anchor');
+            if (!anchor) return;
+            UI.BlogSettings.render();
+        },
+
         resetSettingsToDefaults() {
             // Reset media settings to defaults
             State.data.media.speed = State.defaults.media.speed;
@@ -5008,7 +5103,6 @@ const App = (function () {
             this.showNotification(Services.I18n.t('settings_reset', 'Settings reset to defaults'));
         },
 
-        // Update the showNotification method to accept a duration parameter (around line 4800)
         showNotification(message, duration = 5000) {
             // Remove any existing notification
             const existing = document.getElementById('settings-notification');
@@ -5355,7 +5449,8 @@ const App = (function () {
 
                 const text = element.getAttribute('data-text');
                 const lang = element.getAttribute('data-lang');
-                const repeats = settings[lang]?.repeat ?? 1;
+                //                const repeats = settings[lang]?.repeat ?? 1;
+                const repeats = (State.data.viewMode === 'blog') ? 1 : (settings[lang]?.repeat ?? 1);
 
                 if (repeats === 0) {
                     const display = document.getElementById('media-text-display');
@@ -5460,7 +5555,6 @@ const App = (function () {
             }
         },
 
-        // In the media.play function, add a check for isPlaying
         media: {
             _isPlaying: false,
             _clickTimer: null,
@@ -5674,6 +5768,27 @@ const App = (function () {
 
             // Re-render the current view to show/hide translations
             Router.handle();
+        },
+
+        updateBlogDisplayLanguage(lang) {
+            const blogId = State.data.blogs.currentBlog?.id;
+            if (!blogId) return;
+
+            // Update the display language
+            State.data.blogs.displayLanguage = lang;
+            State.save('blogs');
+
+            // Re-render the blog reader
+            UI.Blog.renderReader(blogId);
+
+            // Optionally auto-select a voice for the new language
+            if (Services.MediaService.autoSelectVoiceForLang(lang)) {
+                // Refresh the voice dropdown in the blog settings overlay if it's open
+                const anchor = document.getElementById('overlay-anchor');
+                if (anchor && anchor.innerHTML.includes('blog-lang-select')) {
+                    UI.BlogSettings.populateVoicesForLang(lang);
+                }
+            }
         },
 
         updateShowWordBreakdown(show) {
@@ -6256,7 +6371,6 @@ const App = (function () {
             return t('milestone_completed', '🎉 You\'ve completed all milestones! Keep up the great work!');
         },
 
-        // Method to add activity to history
         addActivity(icon, textKey, textParams = {}) {
             const t = Services.I18n.t;
             let text = textKey;
@@ -6286,7 +6400,6 @@ const App = (function () {
             State.save('activityHistory');
         },
 
-        // Method to update streak
         updateStreak() {
             const today = new Date().toISOString().split('T')[0];
             const streak = State.data.streak;
@@ -6319,7 +6432,6 @@ const App = (function () {
             this.checkAchievements();
         },
 
-        // Method to check and unlock achievements
         checkAchievements() {
             const ach = State.data.achievements;
             const t = Services.I18n.t; // Add this line to get the translation function
