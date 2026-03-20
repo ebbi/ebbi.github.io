@@ -1,17 +1,58 @@
 {
-    "blogs": [
+    "blogObjects": [
         {
-            "id": "khalil-jibran",
+            "learningObjectId": "poetry",
             "title": {
-                "en": "Your children are not your children.",
-                "fa": "فرزندان شما فرزندان شما نیستند.",
-                "th": "ลูกของคุณไม่ใช่ลูกของคุณเอง"
+                "en": "Poetry",
+                "fa": "شعر",
+                "th": "กวีนิพนธ์"
             },
-            "date": "2016-02-21",
-            "author": "Khalil Jibran",
-            "filePath": "/blogs/poetry/khalil-jibran.json",
-            "languages": [ "en", "fa", "th" ]
+            "description": {
+                "en": "Collection of poems",
+                "fa": "مجموعه‌ای از اشعار",
+                "th": "รวมบทกวี"
+            },
+            "blogs": [
+                {
+                    "id": "khalil-jibran",
+                    "title": {
+                        "en": "Your children are not your children.",
+                        "fa": "فرزندان شما فرزندان شما نیستند.",
+                        "th": "ลูกของคุณไม่ใช่ลูกของคุณเอง"
+                    },
+                    "date": "2016-02-21",
+                    "author": "Khalil Jibran",
+                    "filePath": "/blogs/poetry/khalil-jibran.json",
+                    "languages": [ "en", "fa", "th" ]
+                }
+            ]
+        },
+        {
+            "learningObjectId": "poetry2",
+            "title": {
+                "en": "Poetry 2",
+                "fa": "شعر",
+                "th": "กวีนิพนธ์"
+            },
+            "description": {
+                "en": "Collection of poems 2",
+                "fa": "مجموعه‌ای از اشعار",
+                "th": "รวมบทกวี"
+            },
+            "blogs": [
+                {
+                    "id": "khalil-jibran",
+                    "title": {
+                        "en": "Your children are not your children.",
+                        "fa": "فرزندان شما فرزندان شما نیستند.",
+                        "th": "ลูกของคุณไม่ใช่ลูกของคุณเอง"
+                    },
+                    "date": "2016-02-21",
+                    "author": "Khalil Jibran",
+                    "filePath": "/blogs/poetry/khalil-jibran.json",
+                    "languages": [ "en", "fa", "th" ]
+                }
+            ]
         }
-
     ]
 }

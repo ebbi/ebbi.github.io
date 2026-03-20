@@ -27,6 +27,9 @@ const App = (function () {
             documentAccordion: {
                 openSections: {} // Will store open state per document
             },
+            blogsAccordion: {
+                openSection: 0 // or null for none open
+            },
 
             media: {
                 isPlaying: false,
@@ -198,6 +201,9 @@ const App = (function () {
             if (key === 'documentAccordion') {
                 localStorage.setItem('documentAccordion', JSON.stringify(this.data.documentAccordion));
             }
+            if (key === 'blogsAccordion') {
+                localStorage.setItem('blogsAccordion', JSON.stringify(this.data.blogsAccordion));
+            }            
             if (key === 'media') {
                 localStorage.setItem('localStorageSpeed', this.data.media.speed);
                 localStorage.setItem('localStorageDelay', this.data.media.delay);
@@ -834,11 +840,17 @@ const App = (function () {
 
             async loadBlog(blogId) {
                 const manifest = State.data.blogs.manifest || await this.loadManifest();
-                const blogInfo = manifest.blogs.find(b => b.id === blogId);
+                let blogInfo = null;
+                for (const obj of manifest.blogObjects) {
+                    const found = obj.blogs.find(b => b.id === blogId);
+                    if (found) {
+                        blogInfo = found;
+                        break;
+                    }
+                }
                 if (!blogInfo) throw new Error(`Blog ${blogId} not found`);
                 const response = await fetch(blogInfo.filePath);
                 State.data.blogs.currentBlog = await response.json();
-                // Store available languages for this blog (fallback to ['en'] if not specified)
                 State.data.blogs.currentBlogLanguages = blogInfo.languages || ['en'];
                 return State.data.blogs.currentBlog;
             }
@@ -4242,22 +4254,37 @@ const App = (function () {
 
                 const langRows = Object.entries(media.languageSettings)
                     .map(([code, config]) => `
-                <tr>
-                    <td>${code.toUpperCase()}</td>
-                    <td>
-                        <input type="checkbox" id="show-${code}"
-                            ${config.show ? 'checked' : ''}
-                            onchange="App.updateLanguageConfig('${code}', 'show', this.checked, true)">
-                    </td>
-                    <td>
-                        <input type="number" style="width:40px" id="repeat-${code}"
-                            value="${config.repeat}" min="0" max="5"
-                            onchange="App.updateLanguageConfig('${code}', 'repeat', this.value, true)">
-                    </td>
-                </tr>
+                 <tr>
+                     <td>${code.toUpperCase()}</td>
+                     <td>
+                         <input type="checkbox" id="show-${code}"
+                             ${config.show ? 'checked' : ''}
+                             onchange="App.updateLanguageConfig('${code}', 'show', this.checked, true)">
+                     </td>
+                     <td>
+                         <input type="number" style="width:40px" id="repeat-${code}"
+                             value="${config.repeat}" min="0" max="5"
+                             onchange="App.updateLanguageConfig('${code}', 'repeat', this.value, true)">
+                     </td>
+                 </tr>
             `).join('');
 
-                // Build the complete HTML string
+                const supportedLangs = ['th', 'en', 'fa'];
+                const currentVoiceLang = (() => {
+                    const voice = Services.MediaService.cachedVoices.find(v => v.name === State.data.media.voice);
+                    if (voice) {
+                        if (voice.lang.startsWith('th')) return 'th';
+                        if (voice.lang.startsWith('en')) return 'en';
+                        if (voice.lang.startsWith('fa')) return 'fa';
+                    }
+                    return 'th';
+                })();
+
+                const langOptions = supportedLangs.map(code => {
+                    const langName = { th: 'ไทย', en: 'English', fa: 'فارسی' }[code];
+                    return `<option value="${code}" ${currentVoiceLang === code ? 'selected' : ''}>${langName}</option>`;
+                }).join('');
+
                 let html = `
             <div class="overlay-full card">
                 <div class="settings-header">
@@ -4289,9 +4316,14 @@ const App = (function () {
                     </div>
                 </div>
                 
+                <label>${t('voice_language', 'Language for Voice')}</label>
+                <select id="voice-lang-select" style="width:100%; margin-bottom:15px;">
+                    ${langOptions}
+                </select>
+                
                 <label>${t('voice', 'Voice')}</label>
                 <select id="voice-select" onchange="App.updateMediaParam('voice', this.value)" style="width:100%; margin-bottom:15px;">
-                    ${Services.MediaService.cachedVoices.map(v => `
+                    ${Services.MediaService.cachedVoices.filter(v => v.lang.startsWith(currentVoiceLang)).map(v => `
                         <option value="${v.name}" ${media.voice === v.name ? 'selected' : ''}>
                             ${v.name}
                         </option>
@@ -4396,6 +4428,16 @@ const App = (function () {
         `;
 
                 anchor.innerHTML = html;
+
+                // Set up language selector for voice filtering
+                const langSelect = document.getElementById('voice-lang-select');
+                if (langSelect) {
+                    langSelect.addEventListener('change', (e) => {
+                        App.updateVoiceSelectForLang(e.target.value);
+                    });
+                }
+                // Initial population of voice select based on current language
+                App.updateVoiceSelectForLang(currentVoiceLang);
             }
         },
 
@@ -4642,26 +4684,40 @@ const App = (function () {
 
                 try {
                     const manifest = State.data.blogs.manifest || await Services.BlogService.loadManifest();
-                    const currentLang = State.data.lang; // UI language for titles
+                    const lang = State.data.lang;
                     const t = Services.I18n.t;
 
-                    let html = '<div class="blog-index">';
+                    let html = '<div class="blog-container">';
                     html += `<h2>${t('blogs', 'Blogs & Articles')}</h2>`;
 
-                    manifest.blogs.forEach(blog => {
-                        const title = blog.title[currentLang] || blog.title.en;
-                        const date = blog.date || '';
-                        const author = blog.author || '';
+                    manifest.blogObjects.forEach((obj, idx) => {
+                        const title = obj.title[lang] || obj.title.en;
+                        const isOpen = idx === State.data.blogsAccordion.openSection; // Use saved state
+
                         html += `
-                    <button class="blog-entry" onclick="location.hash='blogs/${blog.id}'">
-                        <span class="material-icons">article</span>
-                        <div class="blog-entry-content">
-                            <div class="blog-title">${UI.escapeHtml(title)}</div>
-                            <div class="blog-meta">${UI.escapeHtml(date)} ${author ? '· ' + UI.escapeHtml(author) : ''}</div>
-                        </div>
-                        <span class="material-icons">chevron_right</span>
+                <details class="blog-section" ${isOpen ? 'open' : ''}
+                         data-section-index="${idx}"
+                         ontoggle="App.handleBlogAccordion(${idx}, this.open)">
+                    <summary class="blog-summary">
+                        <span class="material-icons">expand_more</span>
+                        <span class="blog-title">${UI.escapeHtml(title)}</span>
+                        <span class="blog-count">(${obj.blogs.length})</span>
+                    </summary>
+                    <div class="blog-docs">
+            `;
+
+                        obj.blogs.forEach(blog => {
+                            const blogTitle = blog.title[lang] || blog.title.en;
+                            html += `
+                    <button class="blog-btn" onclick="location.hash='blogs/${blog.id}'">
+                        <span class="material-icons blog-btn-icon">article</span>
+                        <span class="blog-btn-text">${UI.escapeHtml(blogTitle)}</span>
+                        <span class="material-icons blog-btn-arrow">chevron_right</span>
                     </button>
                 `;
+                        });
+
+                        html += `</div></details>`;
                     });
 
                     html += '</div>';
@@ -4772,6 +4828,7 @@ const App = (function () {
         state: State,
         router: Router,
         Services: Services,
+        _updating: false,
 
         async init() {
 
@@ -4881,6 +4938,28 @@ const App = (function () {
 
             // Note: The actual opening/closing is handled by the browser's details/summary elements
             // We just need to save the state for next time
+        },
+
+        handleBlogAccordion(clickedIndex, isOpen) {
+            // Prevent recursive calls when we programmatically close other sections
+            if (this._updating) return;
+            this._updating = true;
+
+            if (isOpen) {
+                // Close all other sections
+                const allSections = document.querySelectorAll('.blog-section');
+                allSections.forEach((section, idx) => {
+                    if (idx !== clickedIndex && section.open) {
+                        section.open = false;
+                    }
+                });
+                State.data.blogsAccordion.openSection = clickedIndex;
+            } else {
+                State.data.blogsAccordion.openSection = null;
+            }
+            State.save('blogsAccordion');
+
+            this._updating = false;
         },
 
         handleDocumentClick(documentId) {
@@ -5768,6 +5847,27 @@ const App = (function () {
 
             // Re-render the current view to show/hide translations
             Router.handle();
+        },
+
+        updateVoiceSelectForLang(lang) {
+            const voiceSelect = document.getElementById('voice-select');
+            if (!voiceSelect) return;
+
+            const voices = Services.MediaService.cachedVoices.filter(v => v.lang.startsWith(lang));
+            const currentVoice = State.data.media.voice;
+
+            voiceSelect.innerHTML = voices.map(v => `<option value="${v.name}" ${v.name === currentVoice ? 'selected' : ''}>${v.name}</option>`).join('');
+            if (voices.length === 0) {
+                voiceSelect.innerHTML = '<option value="">No voices available</option>';
+            }
+
+            // Auto-select a voice if the current voice doesn't belong to this language
+            if (!currentVoice || !voices.some(v => v.name === currentVoice)) {
+                if (voices.length > 0) {
+                    voiceSelect.value = voices[0].name;
+                    this.updateMediaParam('voice', voices[0].name);
+                }
+            }
         },
 
         updateBlogDisplayLanguage(lang) {
