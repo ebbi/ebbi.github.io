@@ -203,7 +203,7 @@ const App = (function () {
             }
             if (key === 'blogsAccordion') {
                 localStorage.setItem('blogsAccordion', JSON.stringify(this.data.blogsAccordion));
-            }            
+            }
             if (key === 'media') {
                 localStorage.setItem('localStorageSpeed', this.data.media.speed);
                 localStorage.setItem('localStorageDelay', this.data.media.delay);

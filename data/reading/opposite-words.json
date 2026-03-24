@@ -1,0 +1,415 @@
+{
+    "documentId": "opposite-words",
+    "metadata": {
+        "title": {
+            "en": "Opposite Words",
+            "th": "คำตรงข้าม",
+            "fa": "متضادها"
+        },
+        "description": {
+            "en": "Learn 50 common Thai opposite word pairs with example sentences.",
+            "th": "เรียนรู้คำตรงข้ามภาษาไทย 50 คู่ พร้อมประโยคตัวอย่าง",
+            "fa": "۵۰ جفت متضاد رایج تایلندی را با جملات مثال یاد بگیرید."
+        }
+    },
+    "vocabulary": {
+        "ใหญ่": { "translations": { "en": "big", "fa": "بزرگ", "th": "ใหญ่" } },
+        "เล็ก": { "translations": { "en": "small", "fa": "کوچک", "th": "เล็ก" } },
+        "เร็ว": { "translations": { "en": "fast", "fa": "سریع", "th": "เร็ว" } },
+        "ช้า": { "translations": { "en": "slow", "fa": "آهسته", "th": "ช้า" } },
+        "ร้อน": { "translations": { "en": "hot", "fa": "گرم", "th": "ร้อน" } },
+        "เย็น": { "translations": { "en": "cold", "fa": "سرد", "th": "เย็น" } },
+        "สูง": { "translations": { "en": "tall", "fa": "بلند", "th": "สูง" } },
+        "เตี้ย": { "translations": { "en": "short (height)", "fa": "کوتاه (قد)", "th": "เตี้ย" } },
+        "แพง": { "translations": { "en": "expensive", "fa": "گران", "th": "แพง" } },
+        "ถูก": { "translations": { "en": "cheap", "fa": "ارزان", "th": "ถูก" } },
+        "ใหม่": { "translations": { "en": "new", "fa": "جدید", "th": "ใหม่" } },
+        "เก่า": { "translations": { "en": "old", "fa": "قدیمی", "th": "เก่า" } },
+        "อ้วน": { "translations": { "en": "fat", "fa": "چاق", "th": "อ้วน" } },
+        "ผอม": { "translations": { "en": "thin", "fa": "لاغر", "th": "ผอม" } },
+        "ดี": { "translations": { "en": "good", "fa": "خوب", "th": "ดี" } },
+        "เลว": { "translations": { "en": "bad", "fa": "بد", "th": "เลว" } },
+        "ยาก": { "translations": { "en": "difficult", "fa": "سخت", "th": "ยาก" } },
+        "ง่าย": { "translations": { "en": "easy", "fa": "آسان", "th": "ง่าย" } },
+        "หนัก": { "translations": { "en": "heavy", "fa": "سنگین", "th": "หนัก" } },
+        "เบา": { "translations": { "en": "light", "fa": "سبک", "th": "เบา" } },
+        "แข็ง": { "translations": { "en": "hard", "fa": "سخت", "th": "แข็ง" } },
+        "อ่อน": { "translations": { "en": "soft", "fa": "نرم", "th": "อ่อน" } },
+        "สว่าง": { "translations": { "en": "bright", "fa": "روشن", "th": "สว่าง" } },
+        "มืด": { "translations": { "en": "dark", "fa": "تاریک", "th": "มืด" } },
+        "กว้าง": { "translations": { "en": "wide", "fa": "پهن", "th": "กว้าง" } },
+        "แคบ": { "translations": { "en": "narrow", "fa": "باریک", "th": "แคบ" } },
+        "ยาว": { "translations": { "en": "long", "fa": "بلند", "th": "ยาว" } },
+        "สั้น": { "translations": { "en": "short", "fa": "کوتاه", "th": "สั้น" } },
+        "ลึก": { "translations": { "en": "deep", "fa": "عمیق", "th": "ลึก" } },
+        "ตื้น": { "translations": { "en": "shallow", "fa": "کم عمق", "th": "ตื้น" } },
+        "สกปรก": { "translations": { "en": "dirty", "fa": "کثیف", "th": "สกปรก" } },
+        "สะอาด": { "translations": { "en": "clean", "fa": "تمیز", "th": "สะอาด" } },
+        "หวาน": { "translations": { "en": "sweet", "fa": "شیرین", "th": "หวาน" } },
+        "ขม": { "translations": { "en": "bitter", "fa": "تلخ", "th": "ขม" } },
+        "เค็ม": { "translations": { "en": "salty", "fa": "شور", "th": "เค็ม" } },
+        "จืด": { "translations": { "en": "bland", "fa": "بی مزه", "th": "จืด" } },
+        "เปรี้ยว": { "translations": { "en": "sour", "fa": "ترش", "th": "เปรี้ยว" } },
+        "แก่": { "translations": { "en": "old (person)", "fa": "پیر", "th": "แก่" } },
+        "จริง": { "translations": { "en": "true", "fa": "واقعی", "th": "จริง" } },
+        "เท็จ": { "translations": { "en": "false", "fa": "نادرست", "th": "เท็จ" } },
+        "ถูกต้อง": { "translations": { "en": "correct", "fa": "درست", "th": "ถูกต้อง" } },
+        "ผิด": { "translations": { "en": "wrong", "fa": "اشتباه", "th": "ผิด" } },
+        "มี": { "translations": { "en": "to have", "fa": "داشتن", "th": "มี" } },
+        "ไม่มี": { "translations": { "en": "to not have", "fa": "نداشتن", "th": "ไม่มี" } },
+        "เข้า": { "translations": { "en": "to enter", "fa": "وارد شدن", "th": "เข้า" } },
+        "ออก": { "translations": { "en": "to exit", "fa": "خارج شدن", "th": "ออก" } },
+        "ขึ้น": { "translations": { "en": "to go up", "fa": "بالا رفتن", "th": "ขึ้น" } },
+        "ลง": { "translations": { "en": "to go down", "fa": "پایین رفتن", "th": "ลง" } },
+        "เปิด": { "translations": { "en": "to open", "fa": "باز کردن", "th": "เปิด" } },
+        "ปิด": { "translations": { "en": "to close", "fa": "بستن", "th": "ปิด" } },
+        "เริ่ม": { "translations": { "en": "to start", "fa": "شروع کردن", "th": "เริ่ม" } },
+        "จบ": { "translations": { "en": "to end", "fa": "پایان دادن", "th": "จบ" } },
+        "เกิด": { "translations": { "en": "to be born", "fa": "متولد شدن", "th": "เกิด" } },
+        "ตาย": { "translations": { "en": "to die", "fa": "مردن", "th": "ตาย" } },
+        "รวย": { "translations": { "en": "rich", "fa": "ثروتمند", "th": "รวย" } },
+        "จน": { "translations": { "en": "poor", "fa": "فقیر", "th": "จน" } },
+        "มีความสุข": { "translations": { "en": "happy", "fa": "خوشحال", "th": "มีความสุข" } },
+        "เศร้า": { "translations": { "en": "sad", "fa": "غمگین", "th": "เศร้า" } },
+        "กล้าหาญ": { "translations": { "en": "brave", "fa": "شجاع", "th": "กล้าหาญ" } },
+        "ขี้ขลาด": { "translations": { "en": "cowardly", "fa": "ترسو", "th": "ขี้ขลาด" } },
+        "ใจดี": { "translations": { "en": "kind", "fa": "مهربان", "th": "ใจดี" } },
+        "โหดร้าย": { "translations": { "en": "cruel", "fa": "ظالم", "th": "โหดร้าย" } },
+        "ขยัน": { "translations": { "en": "hardworking", "fa": "سخت کوش", "th": "ขยัน" } },
+        "ขี้เกียจ": { "translations": { "en": "lazy", "fa": "تنبل", "th": "ขี้เกียจ" } },
+        "ฉลาด": { "translations": { "en": "smart", "fa": "باهوش", "th": "ฉลาด" } },
+        "โง่": { "translations": { "en": "stupid", "fa": "احمق", "th": "โง่" } },
+        "สวย": { "translations": { "en": "beautiful", "fa": "زیبا", "th": "สวย" } },
+        "ขี้เหร่": { "translations": { "en": "ugly", "fa": "زشت", "th": "ขี้เหร่" } },
+        "ตรง": { "translations": { "en": "straight", "fa": "راست", "th": "ตรง" } },
+        "คด": { "translations": { "en": "curved", "fa": "خمیده", "th": "คด" } },
+        "ใกล้": { "translations": { "en": "near", "fa": "نزدیک", "th": "ใกล้" } },
+        "ไกล": { "translations": { "en": "far", "fa": "دور", "th": "ไกล" } },
+        "ข้างหน้า": { "translations": { "en": "front", "fa": "جلوی", "th": "ข้างหน้า" } },
+        "ข้างหลัง": { "translations": { "en": "back", "fa": "پشت", "th": "ข้างหลัง" } },
+        "ขวา": { "translations": { "en": "right", "fa": "راست", "th": "ขวา" } },
+        "ซ้าย": { "translations": { "en": "left", "fa": "چپ", "th": "ซ้าย" } },
+        "เหนือ": { "translations": { "en": "north", "fa": "شمال", "th": "เหนือ" } },
+        "ใต้": { "translations": { "en": "south", "fa": "جنوب", "th": "ใต้" } },
+        "ตะวันออก": { "translations": { "en": "east", "fa": "شرق", "th": "ตะวันออก" } },
+        "ตะวันตก": { "translations": { "en": "west", "fa": "غرب", "th": "ตะวันตก" } },
+        "แห้ง": { "translations": { "en": "dry", "fa": "خشک", "th": "แห้ง" } },
+        "เปียก": { "translations": { "en": "wet", "fa": "خیس", "th": "เปียก" } },
+        "เต็ม": { "translations": { "en": "full", "fa": "پر", "th": "เต็ม" } },
+        "ว่าง": { "translations": { "en": "empty", "fa": "خالی", "th": "ว่าง" } },
+        "ปลอดภัย": { "translations": { "en": "safe", "fa": "ایمن", "th": "ปลอดภัย" } },
+        "อันตราย": { "translations": { "en": "dangerous", "fa": "خطرناک", "th": "อันตราย" } },
+        "ธรรมดา": { "translations": { "en": "ordinary", "fa": "معمولی", "th": "ธรรมดา" } },
+        "พิเศษ": { "translations": { "en": "special", "fa": "خاص", "th": "พิเศษ" } },
+        "ถูกใจ": { "translations": { "en": "to like", "fa": "دوست داشتن", "th": "ถูกใจ" } },
+        "ไม่ถูกใจ": { "translations": { "en": "to dislike", "fa": "دوست نداشتن", "th": "ไม่ถูกใจ" } },
+        "เช้า": { "translations": { "en": "morning", "fa": "صبح", "th": "เช้า" } },
+        "เย็น": { "translations": { "en": "evening", "fa": "عصر", "th": "เย็น" } },
+        "กลางวัน": { "translations": { "en": "daytime", "fa": "روز", "th": "กลางวัน" } },
+        "กลางคืน": { "translations": { "en": "nighttime", "fa": "شب", "th": "กลางคืน" } },
+        "ผู้ชาย": { "translations": { "en": "man", "fa": "مرد", "th": "ผู้ชาย" } },
+        "ผู้หญิง": { "translations": { "en": "woman", "fa": "زن", "th": "ผู้หญิง" } },
+        "สามี": { "translations": { "en": "husband", "fa": "شوهر", "th": "สามี" } },
+        "ภรรยา": { "translations": { "en": "wife", "fa": "همسر", "th": "ภรรยา" } }
+    },
+    "activity": {
+        "words": true,
+        "sentences": true
+    },
+    "sections": [
+        {
+            "sectionId": "common-opposites",
+            "heading": {
+                "en": "50 Common Opposite Pairs",
+                "th": "50 คู่คำตรงข้ามที่ใช้บ่อย",
+                "fa": "۵۰ جفت متضاد رایج"
+            },
+            "activity": {
+                "words": true,
+                "sentences": true
+            },
+            "content": [
+                {
+                    "type": "words",
+                    "heading": {
+                        "en": "Opposite Word Pairs",
+                        "th": "คู่คำตรงข้าม",
+                        "fa": "جفت‌های متضاد"
+                    },
+                    "wordIds": [
+                        "ใหญ่", "เล็ก", "เร็ว", "ช้า", "ร้อน", "เย็น", "สูง", "เตี้ย", "แพง", "ถูก",
+                        "ใหม่", "เก่า", "อ้วน", "ผอม", "ดี", "เลว", "ยาก", "ง่าย", "หนัก", "เบา",
+                        "แข็ง", "อ่อน", "สว่าง", "มืด", "กว้าง", "แคบ", "ยาว", "สั้น", "ลึก", "ตื้น",
+                        "สกปรก", "สะอาด", "หวาน", "ขม", "เค็ม", "จืด", "เปรี้ยว", "แก่", "จริง", "เท็จ",
+                        "ถูกต้อง", "ผิด", "มี", "ไม่มี", "เข้า", "ออก", "ขึ้น", "ลง", "เปิด", "ปิด",
+                        "เริ่ม", "จบ", "เกิด", "ตาย", "รวย", "จน", "มีความสุข", "เศร้า", "กล้าหาญ", "ขี้ขลาด",
+                        "ใจดี", "โหดร้าย", "ขยัน", "ขี้เกียจ", "ฉลาด", "โง่", "สวย", "ขี้เหร่", "ตรง", "คด",
+                        "ใกล้", "ไกล", "ข้างหน้า", "ข้างหลัง", "ขวา", "ซ้าย", "เหนือ", "ใต้", "ตะวันออก", "ตะวันตก",
+                        "แห้ง", "เปียก", "เต็ม", "ว่าง", "ปลอดภัย", "อันตราย", "ธรรมดา", "พิเศษ", "ถูกใจ", "ไม่ถูกใจ",
+                        "เช้า", "เย็น", "กลางวัน", "กลางคืน", "ผู้ชาย", "ผู้หญิง", "สามี", "ภรรยา"
+                    ]
+                },
+                {
+                    "type": "paragraph",
+                    "heading": {
+                        "en": "Example Sentences",
+                        "th": "ประโยคตัวอย่าง",
+                        "fa": "جملات مثال"
+                    },
+                    "sentences": [
+                        {
+                            "source": "บ้าน หลัง นี้ ใหญ่ แต่ บ้าน หลัง นั้น เล็ก",
+                            "translations": { "en": "This house is big, but that house is small.", "fa": "این خانه بزرگ است، اما آن خانه کوچک است.", "th": "บ้าน หลัง นี้ ใหญ่ แต่ บ้าน หลัง นั้น เล็ก" },
+                            "wordIds": [ "ใหญ่", "เล็ก" ]
+                        },
+                        {
+                            "source": "รถ คัน นี้ เร็ว แต่ รถ คัน นั้น ช้า",
+                            "translations": { "en": "This car is fast, but that car is slow.", "fa": "این ماشین سریع است، اما آن ماشین آهسته است.", "th": "รถ คัน นี้ เร็ว แต่ รถ คัน นั้น ช้า" },
+                            "wordIds": [ "เร็ว", "ช้า" ]
+                        },
+                        {
+                            "source": "อากาศ วัน นี้ ร้อน เมื่อวาน เย็น",
+                            "translations": { "en": "Today is hot, yesterday was cool.", "fa": "امروز گرم است، دیروز خنک بود.", "th": "อากาศ วัน นี้ ร้อน เมื่อวาน เย็น" },
+                            "wordIds": [ "ร้อน", "เย็น" ]
+                        },
+                        {
+                            "source": "เขา สูง แต่ ฉัน เตี้ย",
+                            "translations": { "en": "He is tall, but I am short.", "fa": "او بلند است، اما من کوتاه هستم.", "th": "เขา สูง แต่ ฉัน เตี้ย" },
+                            "wordIds": [ "สูง", "เตี้ย" ]
+                        },
+                        {
+                            "source": "โทรศัพท์ เครื่อง นี้ แพง เครื่อง นั้น ถูก",
+                            "translations": { "en": "This phone is expensive, that one is cheap.", "fa": "این تلفن گران است، آن یکی ارزان است.", "th": "โทรศัพท์ เครื่อง นี้ แพง เครื่อง นั้น ถูก" },
+                            "wordIds": [ "แพง", "ถูก" ]
+                        },
+                        {
+                            "source": "ฉัน ซื้อ รถ ใหม่ แต่ เขา ซื้อ รถ เก่า",
+                            "translations": { "en": "I bought a new car, but he bought an old one.", "fa": "من ماشین نو خریدم، اما او ماشین قدیمی خرید.", "th": "ฉัน ซื้อ รถ ใหม่ แต่ เขา ซื้อ รถ เก่า" },
+                            "wordIds": [ "ใหม่", "เก่า" ]
+                        },
+                        {
+                            "source": "เขา อ้วน แต่ ฉัน ผอม",
+                            "translations": { "en": "He is fat, but I am thin.", "fa": "او چاق است، اما من لاغر هستم.", "th": "เขา อ้วน แต่ ฉัน ผอม" },
+                            "wordIds": [ "อ้วน", "ผอม" ]
+                        },
+                        {
+                            "source": "นิสัย เขา ดี แต่ นิสัย เขา เลว",
+                            "translations": { "en": "His character is good, but his character is bad.", "fa": "اخلاق او خوب است، اما اخلاق او بد است.", "th": "นิสัย เขา ดี แต่ นิสัย เขา เลว" },
+                            "wordIds": [ "ดี", "เลว" ]
+                        },
+                        {
+                            "source": "ข้อสอบ นี้ ยาก มาก แต่ ข้อสอบ เมื่อวาน ง่าย",
+                            "translations": { "en": "This exam is very difficult, but yesterday's exam was easy.", "fa": "این امتحان خیلی سخت است، اما امتحان دیروز آسان بود.", "th": "ข้อสอบ นี้ ยาก มาก แต่ ข้อสอบ เมื่อวาน ง่าย" },
+                            "wordIds": [ "ยาก", "ง่าย" ]
+                        },
+                        {
+                            "source": "กล่อง นี้ หนัก แต่ กล่อง นั้น เบา",
+                            "translations": { "en": "This box is heavy, but that box is light.", "fa": "این جعبه سنگین است، اما آن جعبه سبک است.", "th": "กล่อง นี้ หนัก แต่ กล่อง นั้น เบา" },
+                            "wordIds": [ "หนัก", "เบา" ]
+                        },
+                        {
+                            "source": "หิน ก้อน นี้ แข็ง แต่ ดิน นั้น อ่อน",
+                            "translations": { "en": "This rock is hard, but that soil is soft.", "fa": "این سنگ سخت است، اما آن خاک نرم است.", "th": "หิน ก้อน นี้ แข็ง แต่ ดิน นั้น อ่อน" },
+                            "wordIds": [ "แข็ง", "อ่อน" ]
+                        },
+                        {
+                            "source": "ห้อง นี้ สว่าง แต่ ห้อง นั้น มืด",
+                            "translations": { "en": "This room is bright, but that room is dark.", "fa": "این اتاق روشن است، اما آن اتاق تاریک است.", "th": "ห้อง นี้ สว่าง แต่ ห้อง นั้น มืด" },
+                            "wordIds": [ "สว่าง", "มืด" ]
+                        },
+                        {
+                            "source": "ถนน สาย นี้ กว้าง แต่ ถนน สาย นั้น แคบ",
+                            "translations": { "en": "This road is wide, but that road is narrow.", "fa": "این جاده پهن است، اما آن جاده باریک است.", "th": "ถนน สาย นี้ กว้าง แต่ ถนน สาย นั้น แคบ" },
+                            "wordIds": [ "กว้าง", "แคบ" ]
+                        },
+                        {
+                            "source": "ผม ของ ฉัน ยาว แต่ ผม ของ เขา สั้น",
+                            "translations": { "en": "My hair is long, but his hair is short.", "fa": "موهای من بلند است، اما موهای او کوتاه است.", "th": "ผม ของ ฉัน ยาว แต่ ผม ของ เขา สั้น" },
+                            "wordIds": [ "ยาว", "สั้น" ]
+                        },
+                        {
+                            "source": "น้ำ ใน บ่อ นี้ ลึก แต่ น้ำ ใน บ่อ นั้น ตื้น",
+                            "translations": { "en": "The water in this pond is deep, but the water in that pond is shallow.", "fa": "آب این برکه عمیق است، اما آب آن برکه کم عمق است.", "th": "น้ำ ใน บ่อ นี้ ลึก แต่ น้ำ ใน บ่อ นั้น ตื้น" },
+                            "wordIds": [ "ลึก", "ตื้น" ]
+                        },
+                        {
+                            "source": "เสื้อ ตัว นี้ สกปรก แต่ เสื้อ ตัว นั้น สะอาด",
+                            "translations": { "en": "This shirt is dirty, but that shirt is clean.", "fa": "این پیراهن کثیف است، اما آن پیراهن تمیز است.", "th": "เสื้อ ตัว นี้ สกปรก แต่ เสื้อ ตัว นั้น สะอาด" },
+                            "wordIds": [ "สกปรก", "สะอาด" ]
+                        },
+                        {
+                            "source": "น้ำตาล หวาน แต่ มะระ ขม",
+                            "translations": { "en": "Sugar is sweet, but bitter melon is bitter.", "fa": "شکر شیرین است، اما خربزه تلخ تلخ است.", "th": "น้ำตาล หวาน แต่ มะระ ขม" },
+                            "wordIds": [ "หวาน", "ขม" ]
+                        },
+                        {
+                            "source": "อาหาร นี้ เค็ม เกิน ไป อยาก ได้ รส จืด",
+                            "translations": { "en": "This food is too salty; I want a bland taste.", "fa": "این غذا خیلی شور است، طعم بی مزه می‌خواهم.", "th": "อาหาร นี้ เค็ม เกิน ไป อยาก ได้ รส จืด" },
+                            "wordIds": [ "เค็ม", "จืด" ]
+                        },
+                        {
+                            "source": "มะนาว เปรี้ยว แต่ น้ำตาล หวาน",
+                            "translations": { "en": "Lemon is sour, but sugar is sweet.", "fa": "لیمو ترش است، اما شکر شیرین است.", "th": "มะนาว เปรี้ยว แต่ น้ำตาล หวาน" },
+                            "wordIds": [ "เปรี้ยว", "หวาน" ]
+                        },
+                        {
+                            "source": "คุณปู่ แก่ แล้ว แต่ หลาน ยัง เด็ก",
+                            "translations": { "en": "Grandfather is old, but grandchild is still young.", "fa": "پدربزرگ پیر است، اما نوه هنوز جوان است.", "th": "คุณปู่ แก่ แล้ว แต่ หลาน ยัง เด็ก" },
+                            "wordIds": [ "แก่" ]
+                        },
+                        {
+                            "source": "เรื่อง นี้ จริง หรือ เท็จ",
+                            "translations": { "en": "Is this story true or false?", "fa": "این داستان واقعی است یا نادرست؟", "th": "เรื่อง นี้ จริง หรือ เท็จ" },
+                            "wordIds": [ "จริง", "เท็จ" ]
+                        },
+                        {
+                            "source": "คำตอบ ของ คุณ ถูกต้อง แต่ คำตอบ ของ เขา ผิด",
+                            "translations": { "en": "Your answer is correct, but his answer is wrong.", "fa": "پاسخ شما درست است، اما پاسخ او اشتباه است.", "th": "คำตอบ ของ คุณ ถูกต้อง แต่ คำตอบ ของ เขา ผิด" },
+                            "wordIds": [ "ถูกต้อง", "ผิด" ]
+                        },
+                        {
+                            "source": "ฉัน มี เงิน แต่ เขา ไม่มี เงิน",
+                            "translations": { "en": "I have money, but he has no money.", "fa": "من پول دارم، اما او پول ندارد.", "th": "ฉัน มี เงิน แต่ เขา ไม่มี เงิน" },
+                            "wordIds": [ "มี", "ไม่มี" ]
+                        },
+                        {
+                            "source": "เขา เข้า ไป ใน บ้าน แล้ว ออก มา",
+                            "translations": { "en": "He went into the house and then came out.", "fa": "او وارد خانه شد و سپس بیرون آمد.", "th": "เขา เข้า ไป ใน บ้าน แล้ว ออก มา" },
+                            "wordIds": [ "เข้า", "ออก" ]
+                        },
+                        {
+                            "source": "เขาขึ้น บน หลังคา แล้ว ลง มา",
+                            "translations": { "en": "He went up onto the roof and then came down.", "fa": "او به پشت بام رفت و سپس پایین آمد.", "th": "เขาขึ้น บน หลังคา แล้ว ลง มา" },
+                            "wordIds": [ "ขึ้น", "ลง" ]
+                        },
+                        {
+                            "source": "เปิด ประตู หน่อย ได้ ไหม ปิด ไว้",
+                            "translations": { "en": "Please open the door, it's closed.", "fa": "لطفا در را باز کن، بسته است.", "th": "เปิด ประตู หน่อย ได้ ไหม ปิด ไว้" },
+                            "wordIds": [ "เปิด", "ปิด" ]
+                        },
+                        {
+                            "source": "ภาพยนตร์ เริ่ม เวลา สาม โมง และ จบ เวลา ห้า โมง",
+                            "translations": { "en": "The movie starts at 3 o'clock and ends at 5 o'clock.", "fa": "فیلم ساعت سه شروع می‌شود و ساعت پنج تمام می‌شود.", "th": "ภาพยนตร์ เริ่ม เวลา สาม โมง และ จบ เวลา ห้า โมง" },
+                            "wordIds": [ "เริ่ม", "จบ" ]
+                        },
+                        {
+                            "source": "เขา เกิด ที่ ไทย แต่ ตาย ที่ ต่าง ประเทศ",
+                            "translations": { "en": "He was born in Thailand but died abroad.", "fa": "او در تایلند متولد شد اما در خارج از کشور فوت کرد.", "th": "เขา เกิด ที่ ไทย แต่ ตาย ที่ ต่าง ประเทศ" },
+                            "wordIds": [ "เกิด", "ตาย" ]
+                        },
+                        {
+                            "source": "คน นี้ รวย ส่วน คน นั้น จน",
+                            "translations": { "en": "This person is rich, but that person is poor.", "fa": "این شخص ثروتمند است، اما آن شخص فقیر است.", "th": "คน นี้ รวย ส่วน คน นั้น จน" },
+                            "wordIds": [ "รวย", "จน" ]
+                        },
+                        {
+                            "source": "วัน นี้ ฉัน มีความสุข แต่ เมื่อวาน ฉัน เศร้า",
+                            "translations": { "en": "Today I am happy, but yesterday I was sad.", "fa": "امروز خوشحالم، اما دیروز غمگین بودم.", "th": "วัน นี้ ฉัน มีความสุข แต่ เมื่อวาน ฉัน เศร้า" },
+                            "wordIds": [ "มีความสุข", "เศร้า" ]
+                        },
+                        {
+                            "source": "เขา กล้าหาญ มาก แต่ พี่ชาย เขา ขี้ขลาด",
+                            "translations": { "en": "He is very brave, but his older brother is cowardly.", "fa": "او بسیار شجاع است، اما برادر بزرگش ترسو است.", "th": "เขา กล้าหาญ มาก แต่ พี่ชาย เขา ขี้ขลาด" },
+                            "wordIds": [ "กล้าหาญ", "ขี้ขลาด" ]
+                        },
+                        {
+                            "source": "คุณยาย ใจดี มาก แต่ แม่เลี้ยง โหดร้าย",
+                            "translations": { "en": "Grandmother is very kind, but the stepmother is cruel.", "fa": "مادربزرگ بسیار مهربان است، اما نامادری ظالم است.", "th": "คุณยาย ใจดี มาก แต่ แม่เลี้ยง โหดร้าย" },
+                            "wordIds": [ "ใจดี", "โหดร้าย" ]
+                        },
+                        {
+                            "source": "เขา ขยัน ทำงาน แต่ น้องชาย ขี้เกียจ",
+                            "translations": { "en": "He works hard, but his younger brother is lazy.", "fa": "او سخت کار می‌کند، اما برادر کوچکترش تنبل است.", "th": "เขา ขยัน ทำงาน แต่ น้องชาย ขี้เกียจ" },
+                            "wordIds": [ "ขยัน", "ขี้เกียจ" ]
+                        },
+                        {
+                            "source": "เด็ก คน นี้ ฉลาด มาก แต่ เด็ก คน นั้น โง่",
+                            "translations": { "en": "This child is very smart, but that child is stupid.", "fa": "این کودک بسیار باهوش است، اما آن کودک احمق است.", "th": "เด็ก คน นี้ ฉลาด มาก แต่ เด็ก คน นั้น โง่" },
+                            "wordIds": [ "ฉลาด", "โง่" ]
+                        },
+                        {
+                            "source": "ผู้หญิง คน นี้ สวย แต่ ผู้หญิง คน นั้น ขี้เหร่",
+                            "translations": { "en": "This woman is beautiful, but that woman is ugly.", "fa": "این زن زیباست، اما آن زن زشت است.", "th": "ผู้หญิง คน นี้ สวย แต่ ผู้หญิง คน นั้น ขี้เหร่" },
+                            "wordIds": [ "สวย", "ขี้เหร่" ]
+                        },
+                        {
+                            "source": "เส้น นี้ ตรง แต่ เส้น นั้น คด",
+                            "translations": { "en": "This line is straight, but that line is curved.", "fa": "این خط راست است، اما آن خط خمیده است.", "th": "เส้น นี้ ตรง แต่ เส้น นั้น คด" },
+                            "wordIds": [ "ตรง", "คด" ]
+                        },
+                        {
+                            "source": "บ้าน ฉัน ใกล้ ตลาด แต่ บ้าน เขา ไกล",
+                            "translations": { "en": "My house is near the market, but his house is far.", "fa": "خانه من نزدیک بازار است، اما خانه او دور است.", "th": "บ้าน ฉัน ใกล้ ตลาด แต่ บ้าน เขา ไกล" },
+                            "wordIds": [ "ใกล้", "ไกล" ]
+                        },
+                        {
+                            "source": "เขายืน ข้างหน้า ฉัน แต่ ฉันยืน ข้างหลัง เขา",
+                            "translations": { "en": "He stands in front of me, but I stand behind him.", "fa": "او جلوی من می‌ایستد، اما من پشت او می‌ایستم.", "th": "เขายืน ข้างหน้า ฉัน แต่ ฉันยืน ข้างหลัง เขา" },
+                            "wordIds": [ "ข้างหน้า", "ข้างหลัง" ]
+                        },
+                        {
+                            "source": "เลี้ยว ขวา ไป แล้ว เลี้ยว ซ้าย",
+                            "translations": { "en": "Turn right, then turn left.", "fa": "به راست بپیچ، سپس به چپ.", "th": "เลี้ยว ขวา ไป แล้ว เลี้ยว ซ้าย" },
+                            "wordIds": [ "ขวา", "ซ้าย" ]
+                        },
+                        {
+                            "source": "ภาค เหนือ หนาว ส่วน ภาค ใต้ ร้อน",
+                            "translations": { "en": "The north is cold, while the south is hot.", "fa": "شمال سرد است، در حالی که جنوب گرم است.", "th": "ภาค เหนือ หนาว ส่วน ภาค ใต้ ร้อน" },
+                            "wordIds": [ "เหนือ", "ใต้" ]
+                        },
+                        {
+                            "source": "พระอาทิตย์ ขึ้น ทาง ตะวันออก และ ตก ทาง ตะวันตก",
+                            "translations": { "en": "The sun rises in the east and sets in the west.", "fa": "خورشید از شرق طلوع می‌کند و در غرب غروب می‌کند.", "th": "พระอาทิตย์ ขึ้น ทาง ตะวันออก และ ตก ทาง ตะวันตก" },
+                            "wordIds": [ "ตะวันออก", "ตะวันตก" ]
+                        },
+                        {
+                            "source": "ผ้า นี้ แห้ง แล้ว แต่ ผ้า นั้น ยัง เปียก",
+                            "translations": { "en": "This cloth is dry, but that cloth is still wet.", "fa": "این پارچه خشک است، اما آن پارچه هنوز خیس است.", "th": "ผ้า นี้ แห้ง แล้ว แต่ ผ้า นั้น ยัง เปียก" },
+                            "wordIds": [ "แห้ง", "เปียก" ]
+                        },
+                        {
+                            "source": "ห้อง นี้ เต็ม คน แต่ ห้อง นั้น ว่าง",
+                            "translations": { "en": "This room is full of people, but that room is empty.", "fa": "این اتاق پر از آدم است، اما آن اتاق خالی است.", "th": "ห้อง นี้ เต็ม คน แต่ ห้อง นั้น ว่าง" },
+                            "wordIds": [ "เต็ม", "ว่าง" ]
+                        },
+                        {
+                            "source": "ที่ นี่ ปลอดภัย แต่ ที่ นั่น อันตราย",
+                            "translations": { "en": "This place is safe, but that place is dangerous.", "fa": "اینجا ایمن است، اما آنجا خطرناک است.", "th": "ที่ นี่ ปลอดภัย แต่ ที่ นั่น อันตราย" },
+                            "wordIds": [ "ปลอดภัย", "อันตราย" ]
+                        },
+                        {
+                            "source": "วัน นี้ เป็น วัน ธรรมดา แต่ พรุ่งนี้ เป็น วัน พิเศษ",
+                            "translations": { "en": "Today is an ordinary day, but tomorrow is a special day.", "fa": "امروز یک روز معمولی است، اما فردا یک روز خاص است.", "th": "วัน นี้ เป็น วัน ธรรมดา แต่ พรุ่งนี้ เป็น วัน พิเศษ" },
+                            "wordIds": [ "ธรรมดา", "พิเศษ" ]
+                        },
+                        {
+                            "source": "อาหาร จาน นี้ ถูกใจ ฉัน แต่ จาน นั้น ไม่ถูกใจ",
+                            "translations": { "en": "I like this dish, but I don't like that one.", "fa": "این غذا را دوست دارم، اما آن یکی را دوست ندارم.", "th": "อาหาร จาน นี้ ถูกใจ ฉัน แต่ จาน นั้น ไม่ถูกใจ" },
+                            "wordIds": [ "ถูกใจ", "ไม่ถูกใจ" ]
+                        },
+                        {
+                            "source": "ตอน เช้า ฉัน ไป ทำงาน ตอน เย็น ฉัน กลับ บ้าน",
+                            "translations": { "en": "In the morning I go to work; in the evening I return home.", "fa": "صبح به سر کار می‌روم؛ عصر به خانه برمی‌گردم.", "th": "ตอน เช้า ฉัน ไป ทำงาน ตอน เย็น ฉัน กลับ บ้าน" },
+                            "wordIds": [ "เช้า", "เย็น" ]
+                        },
+                        {
+                            "source": "กลางวัน แดด จ้า กลางคืน มืด",
+                            "translations": { "en": "Daytime is sunny; nighttime is dark.", "fa": "روز آفتابی است؛ شب تاریک است.", "th": "กลางวัน แดด จ้า กลางคืน มืด" },
+                            "wordIds": [ "กลางวัน", "กลางคืน" ]
+                        },
+                        {
+                            "source": "ผู้ชาย กับ ผู้หญิง ควร เสมอภาค",
+                            "translations": { "en": "Men and women should be equal.", "fa": "مردان و زنان باید برابر باشند.", "th": "ผู้ชาย กับ ผู้หญิง ควร เสมอภาค" },
+                            "wordIds": [ "ผู้ชาย", "ผู้หญิง" ]
+                        },
+                        {
+                            "source": "สามี และ ภรรยา ต้อง รักกัน",
+                            "translations": { "en": "Husband and wife must love each other.", "fa": "شوهر و همسر باید همدیگر را دوست داشته باشند.", "th": "สามี และ ภรรยา ต้อง รักกัน" },
+                            "wordIds": [ "สามี", "ภรรยา" ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

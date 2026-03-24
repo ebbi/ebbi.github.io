@@ -1,7 +1,96 @@
 {
     "learningObjects": [
         {
-            "learningObjectId": "tsl",
+            "learningObjectId": "reading-thai",
+            "title": {
+                "en": "Reading Thai",
+                "fa": "خواندن تایلندی",
+                "th": "การอ่านภาษาไทย"
+            },
+            "description": {
+                "en": "Learn to read Thai through systematic practice with consonants, vowels, compound words, and opposites.",
+                "fa": "خواندن تایلندی را از طریق تمرین سیستماتیک با حروف صدادار، مصوت‌ها، کلمات مرکب و متضادها یاد بگیرید.",
+                "th": "เรียนรู้การอ่านภาษาไทยผ่านการฝึกฝนอย่างเป็นระบบด้วยพยัญชนะ สระ คำประสม และคำตรงข้าม"
+            },
+            "order": 4,
+            "icon": "menu_book",
+            "documents": [
+                {
+                    "id": "thai-alphabet",
+                    "title": {
+                        "en": "Thai Alphabet",
+                        "th": "พยัญชนะไทย",
+                        "fa": "الفبای تایلندی"
+                    },
+                    "sourceLang": "th",
+                    "targetLangs": [ "en", "fa" ],
+                    "filePath": "data/reading/thai-alphabet.json",
+                    "status": "published",
+                    "difficulty": "beginner",
+                    "wordCount": 50,
+                    "sentenceCount": 50,
+                    "estimatedTime": 45,
+                    "grammarPoint": "Thai consonants and their example words",
+                    "tags": [ "alphabet", "consonants", "reading" ]
+                },
+                {
+                    "id": "thai-vowels",
+                    "title": {
+                        "en": "Thai Vowels",
+                        "th": "สระไทย",
+                        "fa": "حروف صدادار تایلندی"
+                    },
+                    "sourceLang": "th",
+                    "targetLangs": [ "en", "fa" ],
+                    "filePath": "data/reading/thai-vowels.json",
+                    "status": "published",
+                    "difficulty": "beginner",
+                    "wordCount": 40,
+                    "sentenceCount": 40,
+                    "estimatedTime": 40,
+                    "grammarPoint": "Thai vowels and their usage",
+                    "tags": [ "vowels", "reading" ]
+                },
+                {
+                    "id": "compound-words",
+                    "title": {
+                        "en": "Compound Words",
+                        "th": "คำประสม",
+                        "fa": "کلمات مرکب"
+                    },
+                    "sourceLang": "th",
+                    "targetLangs": [ "en", "fa" ],
+                    "filePath": "data/reading/compound-words.json",
+                    "status": "published",
+                    "difficulty": "intermediate",
+                    "wordCount": 30,
+                    "sentenceCount": 30,
+                    "estimatedTime": 35,
+                    "grammarPoint": "Common Thai compound words",
+                    "tags": [ "compound", "vocabulary" ]
+                },
+                {
+                    "id": "opposite-words",
+                    "title": {
+                        "en": "Opposite Words",
+                        "th": "คำตรงข้าม",
+                        "fa": "متضادها"
+                    },
+                    "sourceLang": "th",
+                    "targetLangs": [ "en", "fa" ],
+                    "filePath": "data/reading/opposite-words.json",
+                    "status": "published",
+                    "difficulty": "beginner",
+                    "wordCount": 30,
+                    "sentenceCount": 30,
+                    "estimatedTime": 30,
+                    "grammarPoint": "Common opposite word pairs",
+                    "tags": [ "opposites", "adjectives", "vocabulary" ]
+                }
+            ]
+        },
+        {
+            "learningObjectId": "TSL",
             "title": {
                 "en": "TSL",
                 "fa": "تی‌اس‌ال TSL",
@@ -58,6 +147,44 @@
                     "tags": [ "food", "drinks", "classifiers", "colors", "prepositions", "shopping" ]
                 },
                 {
+                    "id": "RW1",
+                    "title": {
+                        "en": "Reading and Writing 1",
+                        "th": "การอ่านและการเขียน 1",
+                        "fa": "خواندن و نوشتن ۱"
+                    },
+                    "sourceLang": "th",
+                    "targetLangs": [ "en", "fa" ],
+                    "filePath": "data/TSL/RW1.json",
+                    "status": "published",
+                    "level": 1,
+                    "difficulty": "beginner",
+                    "wordCount": 44,
+                    "sentenceCount": 120,
+                    "estimatedTime": 180,
+                    "grammarPoint": "Thai alphabet, consonants, vowels, tone rules",
+                    "tags": [ "alphabet", "consonants", "vowels", "tones", "reading", "writing" ]
+                },
+                {
+                    "id": "RW2",
+                    "title": {
+                        "en": "Reading and Writing 2",
+                        "th": "การอ่านและการเขียน 2",
+                        "fa": "خواندن و نوشتن ۲"
+                    },
+                    "sourceLang": "th",
+                    "targetLangs": [ "en", "fa" ],
+                    "filePath": "data/TSL/RW2.json",
+                    "status": "published",
+                    "level": 2,
+                    "difficulty": "beginner",
+                    "wordCount": 280,
+                    "sentenceCount": 110,
+                    "estimatedTime": 350,
+                    "grammarPoint": "Final consonants, change form vowels, extra final consonants, true clusters, fake clusters, words with ใ",
+                    "tags": [ "final consonants", "vowels", "clusters", "spelling", "reading", "writing" ]
+                },
+                {
                     "id": "LS4",
                     "title": {
                         "en": "Listening and Speaking 4",
@@ -75,101 +202,6 @@
                     "estimatedTime": 320,
                     "grammarPoint": "Body parts, sickness expressions, travel planning, transportation, visa types, banking transactions",
                     "tags": [ "body", "health", "travel", "transportation", "visa", "banking" ]
-                },
-                {
-                    "id": "RW1",
-                    "title": {
-                        "en": "Reading and Writing Thai Level 1",
-                        "th": "การอ่านและการเขียนภาษาไทยระดับ ๑",
-                        "fa": "خواندن و نوشتن تایلندی سطح ۱"
-                    },
-                    "sourceLang": "th",
-                    "targetLangs": [ "en", "fa" ],
-                    "filePath": "data/TSL/RW1.json",
-                    "status": "published",
-                    "level": 1,
-                    "difficulty": "beginner",
-                    "wordCount": 44,
-                    "sentenceCount": 120,
-                    "estimatedTime": 180,
-                    "grammarPoint": "Thai alphabet, consonants, vowels, tone rules",
-                    "tags": [ "alphabet", "consonants", "vowels", "tones", "reading", "writing" ]
-                },
-                {
-                    "id": "RW2",
-                    "title": {
-                        "en": "Reading and Writing Thai Level 2",
-                        "th": "การอ่านและการเขียนภาษาไทยระดับ ๒",
-                        "fa": "خواندن و نوشتن تایلندی سطح ۲"
-                    },
-                    "sourceLang": "th",
-                    "targetLangs": [ "en", "fa" ],
-                    "filePath": "data/TSL/RW2.json",
-                    "status": "published",
-                    "level": 2,
-                    "difficulty": "beginner",
-                    "wordCount": 280,
-                    "sentenceCount": 110,
-                    "estimatedTime": 350,
-                    "grammarPoint": "Final consonants, change form vowels, extra final consonants, true clusters, fake clusters, words with ใ",
-                    "tags": [ "final consonants", "vowels", "clusters", "spelling", "reading", "writing" ]
-                },
-                {
-                    "id": "RW3",
-                    "title": {
-                        "en": "Reading and Writing 3",
-                        "th": "การอ่านและการเขียน 3",
-                        "fa": "خواندن و نوشتن ۳"
-                    },
-                    "sourceLang": "th",
-                    "targetLangs": [ "en", "fa" ],
-                    "filePath": "data/TSL/RW3.json",
-                    "status": "published",
-                    "level": 3,
-                    "difficulty": "intermediate",
-                    "wordCount": 320,
-                    "sentenceCount": 95,
-                    "estimatedTime": 380,
-                    "grammarPoint": "Leading consonant clusters, silent marks, double consonants, syllable endings, loanwords, irregular pronunciation, writing signs, modern fonts",
-                    "tags": [ "leading consonants", "silent marks", "loanwords", "irregular pronunciation", "writing signs", "modern fonts" ]
-                },
-                {
-                    "id": "LS7",
-                    "title": {
-                        "en": "Listening and Speaking 7",
-                        "th": "การฟังและการพูด 7",
-                        "fa": "گوش دادن و صحبت کردن ۷"
-                    },
-                    "sourceLang": "th",
-                    "targetLangs": [ "en", "fa" ],
-                    "filePath": "data/TSL/LS7.json",
-                    "status": "published",
-                    "level": 7,
-                    "difficulty": "advanced",
-                    "wordCount": 215,
-                    "sentenceCount": 145,
-                    "estimatedTime": 360,
-                    "grammarPoint": "Accidents and injuries, coordinate conjunctions (contrast, alternatives, cause-effect), cost of living, daily life expressions, opposite words",
-                    "tags": [ "accidents", "injuries", "conjunctions", "cost of living", "daily life", "opposites" ]
-                },
-                {
-                    "id": "LS9",
-                    "title": {
-                        "en": "Listening and Speaking 9",
-                        "th": "การฟังและการพูด 9",
-                        "fa": "گوش دادن و صحبت کردن ۹"
-                    },
-                    "sourceLang": "th",
-                    "targetLangs": [ "en", "fa" ],
-                    "filePath": "data/TSL/LS9.json",
-                    "status": "published",
-                    "level": 9,
-                    "difficulty": "advanced",
-                    "wordCount": 185,
-                    "sentenceCount": 175,
-                    "estimatedTime": 340,
-                    "grammarPoint": "Feelings and emotions, expressions about health trends, rhetorical questions, movie genres, complex conjunctions (นอกจาก, ไม่ว่า...หรือ...), 15 daily phrases",
-                    "tags": [ "feelings", "health", "movie genres", "conjunctions", "daily phrases", "rhetorical questions" ]
                 }
             ]
         },
