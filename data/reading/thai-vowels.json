@@ -10,111 +10,1283 @@
             "en": "Learn the Thai vowels with example words and sentences.",
             "th": "เรียนรู้สระไทยพร้อมคำและประโยคตัวอย่าง",
             "fa": "حروف صدادار تایلندی را با کلمات و جملات مثال یاد بگیرید."
-        }
+        },
+        "version": "2.0.0",
+        "difficulty": 2,
+        "authors": [ ],
+        "reviewers": [ ],
+        "prerequisites": [ ],
+        "tags": [ ],
+        "updated": "2026-03-26T09:04:35.487Z"
     },
     "vocabulary": {
-        "กะ": { "translations": { "en": "to estimate", "fa": "تخمین زدن", "th": "กะ" } },
-        "กา": { "translations": { "en": "crow, coffee", "fa": "کلاغ، قهوه", "th": "กา" } },
-        "กิ": { "translations": { "en": "kilo", "fa": "کیلو", "th": "กิ" } },
-        "กี": { "translations": { "en": "ki (prefix)", "fa": "پیشوند کی", "th": "กี" } },
-        "กู": { "translations": { "en": "I (impolite)", "fa": "من (بی‌ادبانه)", "th": "กู" } },
-        "เกะ": { "translations": { "en": "to be crowded", "fa": "شلوغ بودن", "th": "เกะ" } },
-        "เก": { "translations": { "en": "old, ancient", "fa": "قدیمی", "th": "เก" } },
-        "แกะ": { "translations": { "en": "sheep", "fa": "گوسفند", "th": "แกะ" } },
-        "ขา": { "translations": { "en": "leg", "fa": "پا", "th": "ขา" } },
-        "มา": { "translations": { "en": "to come", "fa": "آمدن", "th": "มา" } },
-        "ปา": { "translations": { "en": "to throw", "fa": "پرتاب کردن", "th": "ปา" } },
-        "ตา": { "translations": { "en": "eye", "fa": "چشم", "th": "ตา" } },
-        "ดี": { "translations": { "en": "good", "fa": "خوب", "th": "ดี" } },
-        "มี": { "translations": { "en": "to have", "fa": "داشتن", "th": "มี" } },
-        "สี": { "translations": { "en": "color", "fa": "رنگ", "th": "สี" } },
-        "ที่": { "translations": { "en": "place", "fa": "مکان", "th": "ที่" } },
-        "ดู": { "translations": { "en": "to watch", "fa": "تماشا کردن", "th": "ดู" } },
-        "อยู่": { "translations": { "en": "to be (location)", "fa": "بودن (مکان)", "th": "อยู่" } },
-        "ปู": { "translations": { "en": "crab", "fa": "خرچنگ", "th": "ปู" } },
-        "เตะ": { "translations": { "en": "to kick", "fa": "لگد زدن", "th": "เตะ" } },
-        "เข้": { "translations": { "en": "to enter", "fa": "وارد شدن", "th": "เข้" } },
-        "แคะ": { "translations": { "en": "to pick (with finger)", "fa": "با انگشت برداشتن", "th": "แคะ" } },
-        "แป": { "translations": { "en": "flour", "fa": "آرد", "th": "แป" } },
-        "โต": { "translations": { "en": "to grow, big", "fa": "بزرگ شدن", "th": "โต" } },
-        "โท": { "translations": { "en": "secondary, fine", "fa": "ثانویه", "th": "โท" } },
-        "เกาะ": { "translations": { "en": "island", "fa": "جزیره", "th": "เกาะ" } },
-        "เจอ": { "translations": { "en": "to meet", "fa": "ملاقات کردن", "th": "เจอ" } },
-        "เกิด": { "translations": { "en": "to be born", "fa": "متولد شدن", "th": "เกิด" } },
-        "เออ": { "translations": { "en": "yes (casual)", "fa": "آره", "th": "เออ" } },
-        "เสีย": { "translations": { "en": "to lose, broken", "fa": "شکستن، خراب", "th": "เสีย" } },
-        "เชื่อ": { "translations": { "en": "to believe", "fa": "باور کردن", "th": "เชื่อ" } },
-        "ตัว": { "translations": { "en": "body, classifier", "fa": "بدن، شمارشگر", "th": "ตัว" } },
-        "เรือ": { "translations": { "en": "boat", "fa": "قایق", "th": "เรือ" } },
-        "เร็ว": { "translations": { "en": "fast", "fa": "سریع", "th": "เร็ว" } },
-        "เรียน": { "translations": { "en": "to study", "fa": "مطالعه کردن", "th": "เรียน" } },
-        "เลี้ยง": { "translations": { "en": "to raise, to feed", "fa": "پرورش دادن", "th": "เลี้ยง" } },
-        "เสือ": { "translations": { "en": "tiger", "fa": "ببر", "th": "เสือ" } },
-        "เพื่อ": { "translations": { "en": "for", "fa": "برای", "th": "เพื่อ" } },
-        "เนื้อ": { "translations": { "en": "meat", "fa": "گوشت", "th": "เนื้อ" } },
-        "เลื่อย": { "translations": { "en": "saw", "fa": "اره", "th": "เลื่อย" } },
-        "หัว": { "translations": { "en": "head", "fa": "سر", "th": "หัว" } },
-        "กลัว": { "translations": { "en": "to fear", "fa": "ترسیدن", "th": "กลัว" } },
-        "ขี้": { "translations": { "en": "poop, lazy", "fa": "مدفوع، تنبلی", "th": "ขี้" } },
-        "ตุ๊กตา": { "translations": { "en": "doll", "fa": "عروسک", "th": "ตุ๊กตา" } },
-        "นก": { "translations": { "en": "bird", "fa": "پرنده", "th": "นก" } },
-        "หมา": { "translations": { "en": "dog", "fa": "سگ", "th": "หมา" } },
-        "รัก": { "translations": { "en": "to love", "fa": "دوست داشتن", "th": "รัก" } },
-        "คน": { "translations": { "en": "person", "fa": "فرد", "th": "คน" } },
-        "ลูก": { "translations": { "en": "child, fruit", "fa": "فرزند، میوه", "th": "ลูก" } },
-        "นม": { "translations": { "en": "milk", "fa": "شیر", "th": "นม" } },
-        "ไข่": { "translations": { "en": "egg", "fa": "تخم‌مرغ", "th": "ไข่" } },
-        "ปี": { "translations": { "en": "year", "fa": "سال", "th": "ปี" } },
-        "เงิน": { "translations": { "en": "money", "fa": "پول", "th": "เงิน" } },
-        "เด็ก": { "translations": { "en": "child", "fa": "کودک", "th": "เด็ก" } },
-        "ผู้": { "translations": { "en": "person, classifier", "fa": "شخص", "th": "ผู้" } },
-        "ใหญ่": { "translations": { "en": "big", "fa": "بزرگ", "th": "ใหญ่" } },
-        "เล็ก": { "translations": { "en": "small", "fa": "کوچک", "th": "เล็ก" } },
-        "ใหม่": { "translations": { "en": "new", "fa": "جدید", "th": "ใหม่" } },
-        "เก่า": { "translations": { "en": "old", "fa": "قدیمی", "th": "เก่า" } },
-        "ร้อน": { "translations": { "en": "hot", "fa": "گرم", "th": "ร้อน" } },
-        "เย็น": { "translations": { "en": "cold", "fa": "سرد", "th": "เย็น" } },
-        "ช้า": { "translations": { "en": "slow", "fa": "آهسته", "th": "ช้า" } },
-        "สวย": { "translations": { "en": "beautiful", "fa": "زیبا", "th": "สวย" } },
-        "ขาย": { "translations": { "en": "to sell", "fa": "فروختن", "th": "ขาย" } },
-        "ซื้อ": { "translations": { "en": "to buy", "fa": "خریدن", "th": "ซื้อ" } },
-        "กิน": { "translations": { "en": "to eat", "fa": "خوردن", "th": "กิน" } },
-        "นั่ง": { "translations": { "en": "to sit", "fa": "نشستن", "th": "นั่ง" } },
-        "ยืน": { "translations": { "en": "to stand", "fa": "ایستادن", "th": "ยืน" } },
-        "นอน": { "translations": { "en": "to sleep", "fa": "خوابیدن", "th": "نون" } },
-        "เดิน": { "translations": { "en": "to walk", "fa": "راه رفتن", "th": "เดิน" } },
-        "วิ่ง": { "translations": { "en": "to run", "fa": "دویدن", "th": "วิ่ง" } },
-        "พูด": { "translations": { "en": "to speak", "fa": "صحبت کردن", "th": "พูด" } },
-        "ฟัง": { "translations": { "en": "to listen", "fa": "گوش دادن", "th": "ฟัง" } },
-        "อ่าน": { "translations": { "en": "to read", "fa": "خواندن", "th": "อ่าน" } },
-        "เขียน": { "translations": { "en": "to write", "fa": "نوشتن", "th": "เขียน" } },
-        "ทำงาน": { "translations": { "en": "to work", "fa": "کار کردن", "th": "ทำงาน" } },
-        "พักผ่อน": { "translations": { "en": "to rest", "fa": "استراحت کردن", "th": "พักผ่อน" } },
-        "ไป": { "translations": { "en": "to go", "fa": "رفتن", "th": "ไป" } },
-        "กลับ": { "translations": { "en": "to return", "fa": "برگشتن", "th": "กลับ" } },
-        "เข้า": { "translations": { "en": "to enter", "fa": "وارد شدن", "th": "เข้า" } },
-        "ออก": { "translations": { "en": "to exit", "fa": "خارج شدن", "th": "ออก" } },
-        "ขึ้น": { "translations": { "en": "to go up", "fa": "بالا رفتن", "th": "ขึ้น" } },
-        "ลง": { "translations": { "en": "to go down", "fa": "پایین رفتن", "th": "ลง" } },
-        "ใช่": { "translations": { "en": "yes", "fa": "بله", "th": "ใช่" } },
-        "ไม่": { "translations": { "en": "no, not", "fa": "نه", "th": "ไม่" } },
-        "คือ": { "translations": { "en": "is, are", "fa": "است", "th": "คือ" } },
-        "เป็น": { "translations": { "en": "to be", "fa": "بودن", "th": "เป็น" } },
-        "ได้": { "translations": { "en": "can, to get", "fa": "توانستن، گرفتن", "th": "ได้" } },
-        "จะ": { "translations": { "en": "will", "fa": "خواهد", "th": "จะ" } },
-        "ก็": { "translations": { "en": "also, then", "fa": "هم، سپس", "th": "ก็" } },
-        "แต่": { "translations": { "en": "but", "fa": "اما", "th": "แต่" } },
-        "และ": { "translations": { "en": "and", "fa": "و", "th": "และ" } },
-        "หรือ": { "translations": { "en": "or", "fa": "یا", "th": "หรือ" } },
-        "ไหม": { "translations": { "en": "question particle", "fa": "پرسشی", "th": "ไหม" } },
-        "ฤดู": { "translations": { "en": "season", "fa": "فصل", "th": "ฤดู" } },
-        "ฤๅษี": { "translations": { "en": "hermit", "fa": "زاهد", "th": "ฤๅษี" } },
-        "ฦๅ": { "translations": { "en": "rare vowel", "fa": "مصوت نادر", "th": "ฦๅ" } },
-        "เขียะ": { "translations": { "en": "to scrape, scratchy sound", "fa": "خراشیدن", "th": "เขียะ" } },
-        "เผียะ": { "translations": { "en": "to stick out tongue", "fa": "زبان درآوردن", "th": "เผียะ" } },
-        "เกื้อะ": { "translations": { "en": "to support, a sound", "fa": "حمایت کردن", "th": "เกื้อะ" } },
-        "มัวะ": { "translations": { "en": "blurred, unclear", "fa": "تار", "th": "มัวะ" } },
-        "รัวะ": { "translations": { "en": "rapid, fast", "fa": "سریع", "th": "รัวะ" } }
+        "กะ": {
+            "translations": {
+                "en": "estimate",
+                "fa": "تخمین",
+                "th": "กะ"
+            }
+        },
+        "กา": {
+            "translations": {
+                "en": "crow",
+                "fa": "کلاغ",
+                "th": "กา"
+            }
+        },
+        "กิ": {
+            "translations": {
+                "en": "kilo",
+                "fa": "کیلو",
+                "th": "กิ"
+            }
+        },
+        "กู": {
+            "translations": {
+                "en": "I",
+                "fa": "من",
+                "th": "กู"
+            }
+        },
+        "แกะ": {
+            "translations": {
+                "en": "sheep",
+                "fa": "گوسفند",
+                "th": "แกะ"
+            }
+        },
+        "ขา": {
+            "translations": {
+                "en": "leg",
+                "fa": "پا",
+                "th": "ขา"
+            }
+        },
+        "มา": {
+            "translations": {
+                "en": "come",
+                "fa": "بیا",
+                "th": "มา"
+            }
+        },
+        "ปา": {
+            "translations": {
+                "en": "throw",
+                "fa": "پرتاب",
+                "th": "ปา"
+            }
+        },
+        "ตา": {
+            "translations": {
+                "en": "eye",
+                "fa": "چشم",
+                "th": "ตา"
+            }
+        },
+        "ดี": {
+            "translations": {
+                "en": "good",
+                "fa": "خوب",
+                "th": "ดี"
+            }
+        },
+        "มี": {
+            "translations": {
+                "en": "have",
+                "fa": "داشتن",
+                "th": "มี"
+            }
+        },
+        "สี": {
+            "translations": {
+                "en": "color",
+                "fa": "رنگ",
+                "th": "สี"
+            }
+        },
+        "ที่": {
+            "translations": {
+                "en": "place",
+                "fa": "مکان",
+                "th": "ที่"
+            }
+        },
+        "ดู": {
+            "translations": {
+                "en": "watch",
+                "fa": "تماشا",
+                "th": "ดู"
+            }
+        },
+        "อยู่": {
+            "translations": {
+                "en": "be",
+                "fa": "بودن",
+                "th": "อยู่"
+            }
+        },
+        "ปู": {
+            "translations": {
+                "en": "crab",
+                "fa": "خرچنگ",
+                "th": "ปู"
+            }
+        },
+        "เตะ": {
+            "translations": {
+                "en": "kick",
+                "fa": "لگد",
+                "th": "เตะ"
+            }
+        },
+        "เข้": {
+            "translations": {
+                "en": "enter",
+                "fa": "وارد",
+                "th": "เข้"
+            }
+        },
+        "แคะ": {
+            "translations": {
+                "en": "pick",
+                "fa": "برداشتن",
+                "th": "แคะ"
+            }
+        },
+        "แป": {
+            "translations": {
+                "en": "flour",
+                "fa": "آرد",
+                "th": "แป"
+            }
+        },
+        "โต": {
+            "translations": {
+                "en": "grown up",
+                "fa": "بزرگ شده",
+                "th": "โต"
+            }
+        },
+        "เกาะ": {
+            "translations": {
+                "en": "island",
+                "fa": "جزیره",
+                "th": "เกาะ"
+            }
+        },
+        "เจอ": {
+            "translations": {
+                "en": "meet",
+                "fa": "ملاقات",
+                "th": "เจอ"
+            }
+        },
+        "เกิด": {
+            "translations": {
+                "en": "born",
+                "fa": "متولد",
+                "th": "เกิด"
+            }
+        },
+        "เออ": {
+            "translations": {
+                "en": "yes",
+                "fa": "آره",
+                "th": "เออ"
+            }
+        },
+        "เสีย": {
+            "translations": {
+                "en": "broken",
+                "fa": "شکسته",
+                "th": "เสีย"
+            }
+        },
+        "เชื่อ": {
+            "translations": {
+                "en": "believe",
+                "fa": "باور",
+                "th": "เชื่อ"
+            }
+        },
+        "ตัว": {
+            "translations": {
+                "en": "body",
+                "fa": "بدن",
+                "th": "ตัว"
+            }
+        },
+        "เรือ": {
+            "translations": {
+                "en": "boat",
+                "fa": "قایق",
+                "th": "เรือ"
+            }
+        },
+        "เร็ว": {
+            "translations": {
+                "en": "fast",
+                "fa": "سریع",
+                "th": "เร็ว"
+            }
+        },
+        "เรียน": {
+            "translations": {
+                "en": "study",
+                "fa": "مطالعه",
+                "th": "เรียน"
+            }
+        },
+        "เลี้ยง": {
+            "translations": {
+                "en": "raise",
+                "fa": "پرورش",
+                "th": "เลี้ยง"
+            }
+        },
+        "เสือ": {
+            "translations": {
+                "en": "tiger",
+                "fa": "ببر",
+                "th": "เสือ"
+            }
+        },
+        "เพื่อ": {
+            "translations": {
+                "en": "for",
+                "fa": "برای",
+                "th": "เพื่อ"
+            }
+        },
+        "เนื้อ": {
+            "translations": {
+                "en": "meat",
+                "fa": "گوشت",
+                "th": "เนื้อ"
+            }
+        },
+        "เลื่อย": {
+            "translations": {
+                "en": "saw",
+                "fa": "اره",
+                "th": "เลื่อย"
+            }
+        },
+        "หัว": {
+            "translations": {
+                "en": "head",
+                "fa": "سر",
+                "th": "หัว"
+            }
+        },
+        "กลัว": {
+            "translations": {
+                "en": "fear",
+                "fa": "ترس",
+                "th": "กลัว"
+            }
+        },
+        "ขี้": {
+            "translations": {
+                "en": "poop",
+                "fa": "مدفوع",
+                "th": "ขี้"
+            }
+        },
+        "ตุ๊กตา": {
+            "translations": {
+                "en": "doll",
+                "fa": "عروسک",
+                "th": "ตุ๊กตา"
+            }
+        },
+        "นก": {
+            "translations": {
+                "en": "bird",
+                "fa": "پرنده",
+                "th": "นก"
+            }
+        },
+        "หมา": {
+            "translations": {
+                "en": "dog",
+                "fa": "سگ",
+                "th": "หมา"
+            }
+        },
+        "รัก": {
+            "translations": {
+                "en": "love",
+                "fa": "عشق",
+                "th": "รัก"
+            }
+        },
+        "คน": {
+            "translations": {
+                "en": "person",
+                "fa": "فرد",
+                "th": "คน"
+            }
+        },
+        "ลูก": {
+            "translations": {
+                "en": "child",
+                "fa": "فرزند",
+                "th": "ลูก"
+            }
+        },
+        "นม": {
+            "translations": {
+                "en": "milk",
+                "fa": "شیر",
+                "th": "นม"
+            }
+        },
+        "ไข่": {
+            "translations": {
+                "en": "egg",
+                "fa": "تخم‌مرغ",
+                "th": "ไข่"
+            }
+        },
+        "ปี": {
+            "translations": {
+                "en": "year",
+                "fa": "سال",
+                "th": "ปี"
+            }
+        },
+        "เงิน": {
+            "translations": {
+                "en": "money",
+                "fa": "پول",
+                "th": "เงิน"
+            }
+        },
+        "เด็ก": {
+            "translations": {
+                "en": "child",
+                "fa": "کودک",
+                "th": "เด็ก"
+            }
+        },
+        "ผู้": {
+            "translations": {
+                "en": "person",
+                "fa": "شخص",
+                "th": "ผู้"
+            }
+        },
+        "ใหญ่": {
+            "translations": {
+                "en": "big",
+                "fa": "بزرگ",
+                "th": "ใหญ่"
+            }
+        },
+        "เล็ก": {
+            "translations": {
+                "en": "small",
+                "fa": "کوچک",
+                "th": "เล็ก"
+            }
+        },
+        "ใหม่": {
+            "translations": {
+                "en": "new",
+                "fa": "جدید",
+                "th": "ใหม่"
+            }
+        },
+        "เก่า": {
+            "translations": {
+                "en": "old",
+                "fa": "قدیمی",
+                "th": "เก่า"
+            }
+        },
+        "ร้อน": {
+            "translations": {
+                "en": "hot",
+                "fa": "گرم",
+                "th": "ร้อน"
+            }
+        },
+        "เย็น": {
+            "translations": {
+                "en": "cold",
+                "fa": "سرد",
+                "th": "เย็น"
+            }
+        },
+        "ช้า": {
+            "translations": {
+                "en": "slow",
+                "fa": "آهسته",
+                "th": "ช้า"
+            }
+        },
+        "สวย": {
+            "translations": {
+                "en": "beautiful",
+                "fa": "زیبا",
+                "th": "สวย"
+            }
+        },
+        "ขาย": {
+            "translations": {
+                "en": "sell",
+                "fa": "فروش",
+                "th": "ขาย"
+            }
+        },
+        "ซื้อ": {
+            "translations": {
+                "en": "buy",
+                "fa": "خرید",
+                "th": "ซื้อ"
+            }
+        },
+        "กิน": {
+            "translations": {
+                "en": "eat",
+                "fa": "خوردن",
+                "th": "กิน"
+            }
+        },
+        "นั่ง": {
+            "translations": {
+                "en": "sit",
+                "fa": "نشستن",
+                "th": "นั่ง"
+            }
+        },
+        "ยืน": {
+            "translations": {
+                "en": "stand",
+                "fa": "ایستاده",
+                "th": "ยืน"
+            }
+        },
+        "นอน": {
+            "translations": {
+                "en": "sleep",
+                "fa": "خوابیدن",
+                "th": "نون"
+            }
+        },
+        "เดิน": {
+            "translations": {
+                "en": "walk",
+                "fa": "راه رفتن",
+                "th": "เดิน"
+            }
+        },
+        "วิ่ง": {
+            "translations": {
+                "en": "run",
+                "fa": "دویدن",
+                "th": "วิ่ง"
+            }
+        },
+        "พูด": {
+            "translations": {
+                "en": "speak",
+                "fa": "صحبت",
+                "th": "พูด"
+            }
+        },
+        "ฟัง": {
+            "translations": {
+                "en": "listen",
+                "fa": "گوش دادن",
+                "th": "ฟัง"
+            }
+        },
+        "อ่าน": {
+            "translations": {
+                "en": "read",
+                "fa": "خواندن",
+                "th": "อ่าน"
+            }
+        },
+        "เขียน": {
+            "translations": {
+                "en": "write",
+                "fa": "نوشتن",
+                "th": "เขียน"
+            }
+        },
+        "ทำงาน": {
+            "translations": {
+                "en": "work",
+                "fa": "کار",
+                "th": "ทำงาน"
+            }
+        },
+        "พักผ่อน": {
+            "translations": {
+                "en": "rest",
+                "fa": "استراحت",
+                "th": "พักผ่อน"
+            }
+        },
+        "ไป": {
+            "translations": {
+                "en": "go",
+                "fa": "برو",
+                "th": "ไป"
+            }
+        },
+        "กลับ": {
+            "translations": {
+                "en": "return",
+                "fa": "برگرد",
+                "th": "กลับ"
+            }
+        },
+        "เข้า": {
+            "translations": {
+                "en": "enter",
+                "fa": "وارد",
+                "th": "เข้า"
+            }
+        },
+        "ออก": {
+            "translations": {
+                "en": "exit",
+                "fa": "خارج",
+                "th": "ออก"
+            }
+        },
+        "ขึ้น": {
+            "translations": {
+                "en": "go up",
+                "fa": "بالا رفتن",
+                "th": "ขึ้น"
+            }
+        },
+        "ลง": {
+            "translations": {
+                "en": "go down",
+                "fa": "پایین رفتن",
+                "th": "ลง"
+            }
+        },
+        "ใช่": {
+            "translations": {
+                "en": "yes",
+                "fa": "بله",
+                "th": "ใช่"
+            }
+        },
+        "ไม่": {
+            "translations": {
+                "en": "no",
+                "fa": "نه",
+                "th": "ไม่"
+            }
+        },
+        "คือ": {
+            "translations": {
+                "en": "is",
+                "fa": "است",
+                "th": "คือ"
+            }
+        },
+        "เป็น": {
+            "translations": {
+                "en": "be",
+                "fa": "بودن",
+                "th": "เป็น"
+            }
+        },
+        "ได้": {
+            "translations": {
+                "en": "can",
+                "fa": "توانستن",
+                "th": "ได้"
+            }
+        },
+        "จะ": {
+            "translations": {
+                "en": "will",
+                "fa": "خواهد",
+                "th": "จะ"
+            }
+        },
+        "ก็": {
+            "translations": {
+                "en": "also",
+                "fa": "هم",
+                "th": "ก็"
+            }
+        },
+        "แต่": {
+            "translations": {
+                "en": "but",
+                "fa": "اما",
+                "th": "แต่"
+            }
+        },
+        "และ": {
+            "translations": {
+                "en": "and",
+                "fa": "و",
+                "th": "และ"
+            }
+        },
+        "หรือ": {
+            "translations": {
+                "en": "or",
+                "fa": "یا",
+                "th": "หรือ"
+            }
+        },
+        "ไหม": {
+            "translations": {
+                "en": "question particle",
+                "fa": "پرسشی",
+                "th": "ไหม"
+            }
+        },
+        "ฤดู": {
+            "translations": {
+                "en": "season",
+                "fa": "فصل",
+                "th": "ฤดู"
+            }
+        },
+        "ฤๅษี": {
+            "translations": {
+                "en": "hermit",
+                "fa": "زاهد",
+                "th": "ฤๅษี"
+            }
+        },
+        "ฦๅ": {
+            "translations": {
+                "en": "rare vowel",
+                "fa": "مصوت نادر",
+                "th": "ฦๅ"
+            }
+        },
+        "เขียะ": {
+            "translations": {
+                "en": "scrape",
+                "fa": "خراشیدن",
+                "th": "เขียะ"
+            }
+        },
+        "เผียะ": {
+            "translations": {
+                "en": "to stick out tongue",
+                "fa": "زبان درآوردن",
+                "th": "เผียะ"
+            }
+        },
+        "มัวะ": {
+            "translations": {
+                "en": "blurred",
+                "fa": "تار",
+                "th": "มัวะ"
+            }
+        },
+        "รัวะ": {
+            "translations": {
+                "en": "rapid",
+                "fa": "سریع",
+                "th": "รัวะ"
+            }
+        },
+        "เขา": {
+            "translations": {
+                "en": "he, she",
+                "fa": "او"
+            }
+        },
+        "เที่ยว": {
+            "translations": {
+                "en": "tourism",
+                "fa": "سفر"
+            }
+        },
+        "กำลัง": {
+            "translations": {
+                "en": "output",
+                "fa": "انرژی"
+            }
+        },
+        "บิน": {
+            "translations": {
+                "en": "flight",
+                "fa": "پرواز"
+            }
+        },
+        "ข้าว": {
+            "translations": {
+                "en": "rice",
+                "fa": "برنج"
+            }
+        },
+        "กิโล": {
+            "translations": {
+                "en": "kilo",
+                "fa": "کیلو"
+            }
+        },
+        "ละ": {
+            "translations": {
+                "en": "per",
+                "fa": "به ازای هر"
+            }
+        },
+        "เท่าไหร่": {
+            "translations": {
+                "en": "how much?",
+                "fa": "چقدر"
+            }
+        },
+        "รู้": {
+            "translations": {
+                "en": "know",
+                "fa": "بدانید"
+            }
+        },
+        "ห้อง": {
+            "translations": {
+                "en": "room",
+                "fa": "اتاق"
+            }
+        },
+        "นี้": {
+            "translations": {
+                "en": "this",
+                "fa": "این"
+            }
+        },
+        "มาก": {
+            "translations": {
+                "en": "many",
+                "fa": "بیشتر"
+            }
+        },
+        "วัด": {
+            "translations": {
+                "en": "temple",
+                "fa": "معبد"
+            }
+        },
+        "แก่": {
+            "translations": {
+                "en": "to",
+                "fa": "به"
+            }
+        },
+        "ขาว": {
+            "translations": {
+                "en": "white",
+                "fa": "سفید"
+            }
+        },
+        "นั้น": {
+            "translations": {
+                "en": "that",
+                "fa": "که"
+            }
+        },
+        "หญ้า": {
+            "translations": {
+                "en": "grass",
+                "fa": "چمن"
+            }
+        },
+        "เล่น": {
+            "translations": {
+                "en": "play",
+                "fa": "بازی کردن"
+            }
+        },
+        "เห่า": {
+            "translations": {
+                "en": "bark",
+                "fa": "عوعو"
+            }
+        },
+        "เก่ง": {
+            "translations": {
+                "en": "good",
+                "fa": "خوب"
+            }
+        },
+        "ไทย": {
+            "translations": {
+                "en": "Thailand",
+                "fa": "تایلندی"
+            }
+        },
+        "ภาษา": {
+            "translations": {
+                "en": "languages",
+                "fa": "زبان"
+            }
+        },
+        "ชอบ": {
+            "translations": {
+                "en": "like",
+                "fa": "مانند"
+            }
+        },
+        "ดื่ม": {
+            "translations": {
+                "en": "cheers",
+                "fa": "نوشیدنی"
+            }
+        },
+        "ไก่": {
+            "translations": {
+                "en": "chicken",
+                "fa": "مرغ"
+            }
+        },
+        "ราคา": {
+            "translations": {
+                "en": "price",
+                "fa": "قیمت"
+            }
+        },
+        "ถูก": {
+            "translations": {
+                "en": "correct",
+                "fa": "ارزان"
+            }
+        },
+        "ฉัน": {
+            "translations": {
+                "en": "me",
+                "fa": "من"
+            }
+        },
+        "เมือง": {
+            "translations": {
+                "en": "city",
+                "fa": "شهر"
+            }
+        },
+        "พอ": {
+            "translations": {
+                "en": "stop",
+                "fa": "ایستادن"
+            }
+        },
+        "ชาย": {
+            "translations": {
+                "en": "male",
+                "fa": "مرد"
+            }
+        },
+        "สูง": {
+            "translations": {
+                "en": "high",
+                "fa": "ارتفاع"
+            }
+        },
+        "บ้าน": {
+            "translations": {
+                "en": "house",
+                "fa": "خانه"
+            }
+        },
+        "หลัง": {
+            "translations": {
+                "en": "back",
+                "fa": "پشت"
+            }
+        },
+        "รถ": {
+            "translations": {
+                "en": "automobile",
+                "fa": "ماشین"
+            }
+        },
+        "คัน": {
+            "translations": {
+                "en": "vehicle",
+                "fa": "وسیله نقلیه"
+            }
+        },
+        "อากาศ": {
+            "translations": {
+                "en": "ventilation",
+                "fa": "آب و هوا"
+            }
+        },
+        "วัน": {
+            "translations": {
+                "en": "days",
+                "fa": "روز"
+            }
+        },
+        "เมื่อวาน": {
+            "translations": {
+                "en": "yesterday",
+                "fa": "دیروز"
+            }
+        },
+        "ดอกไม้": {
+            "translations": {
+                "en": "flower",
+                "fa": "گل"
+            }
+        },
+        "ร้าน": {
+            "translations": {
+                "en": "salons",
+                "fa": "فروشگاه"
+            }
+        },
+        "เสื้อ": {
+            "translations": {
+                "en": "top",
+                "fa": "پیراهن"
+            }
+        },
+        "ผ้า": {
+            "translations": {
+                "en": "textile",
+                "fa": "پارچه"
+            }
+        },
+        "หนังสือ": {
+            "translations": {
+                "en": "books",
+                "fa": "کتاب"
+            }
+        },
+        "เรา": {
+            "translations": {
+                "en": "we",
+                "fa": "ما"
+            }
+        },
+        "กัน": {
+            "translations": {
+                "en": "together",
+                "fa": "با هم"
+            }
+        },
+        "โต๊ะ": {
+            "translations": {
+                "en": "table",
+                "fa": "میز"
+            }
+        },
+        "หน้า": {
+            "translations": {
+                "en": "page",
+                "fa": "صفحه"
+            }
+        },
+        "หลับ": {
+            "translations": {
+                "en": "sleep",
+                "fa": "خواب"
+            }
+        },
+        "ตลาด": {
+            "translations": {
+                "en": "market",
+                "fa": "بازار"
+            }
+        },
+        "เพลง": {
+            "translations": {
+                "en": "song",
+                "fa": "آهنگ"
+            }
+        },
+        "โทรทัศน์": {
+            "translations": {
+                "en": "television",
+                "fa": "تلویزیون"
+            }
+        },
+        "จดหมาย": {
+            "translations": {
+                "en": "letter",
+                "fa": "نامه"
+            }
+        },
+        "จาก": {
+            "translations": {
+                "en": "from",
+                "fa": "از‌"
+            }
+        },
+        "ใน": {
+            "translations": {
+                "en": "in",
+                "fa": "در"
+            }
+        },
+        "ข้าง": {
+            "translations": {
+                "en": "side",
+                "fa": "سمت"
+            }
+        },
+        "นอก": {
+            "translations": {
+                "en": "out",
+                "fa": "بیرون"
+            }
+        },
+        "บน": {
+            "translations": {
+                "en": "on",
+                "fa": "روی"
+            }
+        },
+        "หลังคา": {
+            "translations": {
+                "en": "roof",
+                "fa": "سقف"
+            }
+        },
+        "ล่าง": {
+            "translations": {
+                "en": "lower",
+                "fa": "پایین‌تر"
+            }
+        },
+        "นี่": {
+            "translations": {
+                "en": "this",
+                "fa": "این"
+            }
+        },
+        "ครู": {
+            "translations": {
+                "en": "teacher",
+                "fa": "معلم"
+            }
+        },
+        "ด้วย": {
+            "translations": {
+                "en": "with",
+                "fa": "با"
+            }
+        },
+        "อยาก": {
+            "translations": {
+                "en": "want",
+                "fa": "می خواهم"
+            }
+        },
+        "เวลา": {
+            "translations": {
+                "en": "time",
+                "fa": "زمان"
+            }
+        },
+        "ด้วยกัน": {
+            "translations": {
+                "en": "together",
+                "fa": "با هم"
+            }
+        },
+        "คุณ": {
+            "translations": {
+                "en": "you",
+                "fa": "شما"
+            }
+        },
+        "ยัง": {
+            "translations": {
+                "en": "yet",
+                "fa": "هنوز"
+            }
+        },
+        "สบาย": {
+            "translations": {
+                "en": "comfortable",
+                "fa": "راحت"
+            }
+        },
+        "ของ": {
+            "translations": {
+                "en": "of",
+                "fa": "از"
+            }
+        },
+        "ยาว": {
+            "translations": {
+                "en": "long",
+                "fa": "بلند‌"
+            }
+        },
+        "ลูกบอล": {
+            "translations": {
+                "en": "ball",
+                "fa": "توپ"
+            }
+        },
+        "เงียบ": {
+            "translations": {
+                "en": "silent",
+                "fa": "ساکت"
+            }
+        },
+        "หนัง": {
+            "translations": {
+                "en": "movie",
+                "fa": "فیلم"
+            }
+        },
+        "เอียง": {
+            "translations": {
+                "en": "tilt",
+                "fa": "کج شده"
+            }
+        },
+        "แป้ง": {
+            "translations": {
+                "en": "pang",
+                "fa": "آرد"
+            }
+        },
+        "ละเอียด": {
+            "translations": {
+                "en": "detailed",
+                "fa": "مفصل"
+            }
+        },
+        "ต้นไม้": {
+            "translations": {
+                "en": "tree",
+                "fa": "درخت"
+            }
+        },
+        "โทษะ": {
+            "translations": {
+                "en": "bada",
+                "fa": "خشم"
+            }
+        },
+        "สมุย": {
+            "translations": {
+                "en": "samui",
+                "fa": "سامویی"
+            }
+        },
+        "ครับ": {
+            "translations": {
+                "en": "ok",
+                "fa": "بله"
+            }
+        },
+        "โทรศัพท์": {
+            "translations": {
+                "en": "phone",
+                "fa": "تلفن"
+            }
+        },
+        "แล่น": {
+            "translations": {
+                "en": "sail",
+                "fa": "دویدن"
+            }
+        },
+        "สัตว์": {
+            "translations": {
+                "en": "animal",
+                "fa": "حیوان"
+            }
+        },
+        "ใคร": {
+            "translations": {
+                "en": "who",
+                "fa": "چه کسی"
+            }
+        },
+        "อ่อน": {
+            "translations": {
+                "en": "weak",
+                "fa": "ضعیف"
+            }
+        },
+        "ไม้": {
+            "translations": {
+                "en": "wood",
+                "fa": "چوب"
+            }
+        },
+        "เจ็บ": {
+            "translations": {
+                "en": "pain",
+                "fa": "درد"
+            }
+        },
+        "งู": {
+            "translations": {
+                "en": "snake",
+                "fa": "مار"
+            }
+        },
+        "หนาว": {
+            "translations": {
+                "en": "cold",
+                "fa": "سرد"
+            }
+        },
+        "สมาธิ": {
+            "translations": {
+                "en": "meditation",
+                "fa": "مدیتیشن"
+            }
+        },
+        "สระ": {
+            "translations": {
+                "en": "pool",
+                "fa": "استخر"
+            }
+        },
+        "ค่อย": {
+            "translations": {
+                "en": "slowly",
+                "fa": "به تدریج"
+            }
+        },
+        "ใช้": {
+            "translations": {
+                "en": "use",
+                "fa": "استفاده"
+            }
+        },
+        "เสียง": {
+            "translations": {
+                "en": "acoustic",
+                "fa": "صدا"
+            }
+        },
+        "ดัง": {
+            "translations": {
+                "en": "noisy",
+                "fa": "بلند"
+            }
+        },
+        "ลิ้น": {
+            "translations": {
+                "en": "tongue",
+                "fa": "زبان"
+            }
+        },
+        "ภาพ": {
+            "translations": {
+                "en": "photos",
+                "fa": "عکس"
+            }
+        }
     },
     "activity": {
         "words": true,
@@ -128,7 +1300,10 @@
                 "th": "สระเสียงสั้น",
                 "fa": "مصوت‌های کوتاه"
             },
-            "activity": { "words": true, "sentences": true },
+            "activity": {
+                "words": true,
+                "sentences": true
+            },
             "content": [
                 {
                     "type": "words",
@@ -137,7 +1312,70 @@
                         "th": "คำที่มีสระเสียงสั้น",
                         "fa": "کلمات با مصوت‌های کوتاه"
                     },
-                    "wordIds": [ "กะ", "กา", "กิ", "กี", "กู", "เกะ", "เก", "แกะ", "ขี้", "ตุ๊กตา", "นก", "หมา", "รัก", "คน", "ลูก", "นม", "ไข่", "ปี", "เงิน", "เด็ก", "ผู้", "ใหญ่", "เล็ก", "ใหม่", "เก่า", "ร้อน", "เย็น", "เร็ว", "ช้า", "สวย", "ขาย", "ซื้อ", "กิน", "นั่ง", "ยืน", "นอน", "เดิน", "วิ่ง", "พูด", "ฟัง", "ดู", "อ่าน", "เขียน", "เรียน", "ทำงาน", "พักผ่อน", "ไป", "มา", "กลับ", "เข้า", "ออก", "ขึ้น", "ลง", "ใช่", "ไม่", "คือ", "อยู่", "เป็น", "ได้", "จะ", "ก็", "แต่", "และ", "หรือ", "ไหม" ]
+                    "wordIds": [
+                        "กะ",
+                        "กา",
+                        "กิ",
+                        "กู",
+                        "แกะ",
+                        "ขี้",
+                        "ตุ๊กตา",
+                        "นก",
+                        "หมา",
+                        "รัก",
+                        "คน",
+                        "ลูก",
+                        "นม",
+                        "ไข่",
+                        "ปี",
+                        "เงิน",
+                        "เด็ก",
+                        "ผู้",
+                        "ใหญ่",
+                        "เล็ก",
+                        "ใหม่",
+                        "เก่า",
+                        "ร้อน",
+                        "เย็น",
+                        "เร็ว",
+                        "ช้า",
+                        "สวย",
+                        "ขาย",
+                        "ซื้อ",
+                        "กิน",
+                        "นั่ง",
+                        "ยืน",
+                        "นอน",
+                        "เดิน",
+                        "วิ่ง",
+                        "พูด",
+                        "ฟัง",
+                        "ดู",
+                        "อ่าน",
+                        "เขียน",
+                        "เรียน",
+                        "ทำงาน",
+                        "พักผ่อน",
+                        "ไป",
+                        "มา",
+                        "กลับ",
+                        "เข้า",
+                        "ออก",
+                        "ขึ้น",
+                        "ลง",
+                        "ใช่",
+                        "ไม่",
+                        "คือ",
+                        "อยู่",
+                        "เป็น",
+                        "ได้",
+                        "จะ",
+                        "ก็",
+                        "แต่",
+                        "และ",
+                        "หรือ",
+                        "ไหม"
+                    ]
                 },
                 {
                     "type": "paragraph",
@@ -148,289 +1386,855 @@
                     },
                     "sentences": [
                         {
-                            "source": "เขากะ จะ ไป เที่ยว",
-                            "translations": { "en": "He plans to travel.", "fa": "او قصد دارد مسافرت کند.", "th": "เขากะ จะ ไป เที่ยว" },
-                            "wordIds": [ "กะ" ]
+                            "source": "เขากะจะไปเที่ยว",
+                            "translations": {
+                                "en": "He plans to travel.",
+                                "fa": "او قصد دارد مسافرت کند.",
+                                "th": "เขากะ จะ ไป เที่ยว"
+                            },
+                            "wordIds": [
+                                "เขา",
+                                "กะ",
+                                "จะ",
+                                "ไป",
+                                "เที่ยว"
+                            ],
+                            "originalSource": "เขา กะ จะ ไป เที่ยว"
                         },
                         {
-                            "source": "กา กำลัง บิน",
-                            "translations": { "en": "The crow is flying.", "fa": "کلاغ در حال پرواز است.", "th": "กา กำลัง บิน" },
-                            "wordIds": [ "กา" ]
+                            "source": "กากำลังบิน",
+                            "translations": {
+                                "en": "The crow is flying.",
+                                "fa": "کلاغ در حال پرواز است.",
+                                "th": "กา กำลัง บิน"
+                            },
+                            "wordIds": [
+                                "กา",
+                                "กำลัง",
+                                "บิน"
+                            ],
+                            "originalSource": "กา กำลัง บิน"
                         },
                         {
-                            "source": "ซื้อ ข้าว กิโล ละ เท่าไหร่",
-                            "translations": { "en": "How much per kilo for rice?", "fa": "برنج کیلویی چند؟", "th": "ซื้อ ข้าว กิโล ละ เท่าไหร่" },
-                            "wordIds": [ "กิ" ]
+                            "source": "ซื้อข้าวกิโลละเท่าไหร่",
+                            "translations": {
+                                "en": "How much per kilo for rice?",
+                                "fa": "برنج کیلویی چند؟",
+                                "th": "ซื้อ ข้าว กิโล ละ เท่าไหร่"
+                            },
+                            "wordIds": [
+                                "ซื้อ",
+                                "ข้าว",
+                                "กิโล",
+                                "ละ",
+                                "เท่าไหร่"
+                            ],
+                            "originalSource": "ซื้อ ข้าว กิโล ละ เท่าไหร่"
                         },
                         {
-                            "source": "กู ไม่ รู้",
-                            "translations": { "en": "I don't know (impolite).", "fa": "نمی‌دانم (بی‌ادبانه).", "th": "กู ไม่ รู้" },
-                            "wordIds": [ "กู" ]
+                            "source": "กูไม่รู้",
+                            "translations": {
+                                "en": "I don't know (impolite).",
+                                "fa": "نمی‌دانم (بی‌ادبانه).",
+                                "th": "กู ไม่ รู้"
+                            },
+                            "wordIds": [
+                                "กู",
+                                "ไม่",
+                                "รู้"
+                            ],
+                            "originalSource": "กู ไม่ รู้"
                         },
                         {
-                            "source": "ห้อง นี้ เกะ มาก",
-                            "translations": { "en": "This room is very crowded.", "fa": "این اتاق خیلی شلوغ است.", "th": "ห้อง นี้ เกะ มาก" },
-                            "wordIds": [ "เกะ" ]
+                            "source": "วัดเก่าแก่นี้สวย",
+                            "translations": {
+                                "en": "This old temple is beautiful.",
+                                "fa": "این معبد قدیمی زیباست.",
+                                "th": "วัด เก่า แก่ นี้ สวย"
+                            },
+                            "wordIds": [
+                                "วัด",
+                                "เก่า",
+                                "แก่",
+                                "นี้",
+                                "สวย"
+                            ],
+                            "originalSource": "วัด เก่า แก่ นี้ สวย"
                         },
                         {
-                            "source": "วัด เก่า แก่ นี้ สวย",
-                            "translations": { "en": "This old temple is beautiful.", "fa": "این معبد قدیمی زیباست.", "th": "วัด เก่า แก่ นี้ สวย" },
-                            "wordIds": [ "เก" ]
+                            "source": "แกะขาวตัวนั้นกินหญ้า",
+                            "translations": {
+                                "en": "That white sheep is eating grass.",
+                                "fa": "آن گوسفند سفید علف می‌خورد.",
+                                "th": "แกะ ขาว ตัว นั้น กิน หญ้า"
+                            },
+                            "wordIds": [
+                                "แกะ",
+                                "ขาว",
+                                "ตัว",
+                                "นั้น",
+                                "กิน",
+                                "หญ้า"
+                            ],
+                            "originalSource": "แกะ ขาว ตัว นั้น กิน หญ้า"
                         },
                         {
-                            "source": "แกะ ขาว ตัว นั้น กิน หญ้า",
-                            "translations": { "en": "That white sheep is eating grass.", "fa": "آن گوسفند سفید علف می‌خورد.", "th": "แกะ ขาว ตัว นั้น กิน หญ้า" },
-                            "wordIds": [ "แกะ" ]
+                            "source": "เด็กเล่นตุ๊กตา",
+                            "translations": {
+                                "en": "The child plays with a doll.",
+                                "fa": "کودک با عروسک بازی می‌کند.",
+                                "th": "เด็ก เล่น ตุ๊กตา"
+                            },
+                            "wordIds": [
+                                "เด็ก",
+                                "เล่น",
+                                "ตุ๊กตา"
+                            ],
+                            "originalSource": "เด็ก เล่น ตุ๊กตา"
                         },
                         {
-                            "source": "กี ตา มี สี สวย",
-                            "translations": { "en": "The kites have beautiful colors.", "fa": "بادبادک‌ها رنگ‌های زیبایی دارند.", "th": "กี ตา มี สี สวย" },
-                            "wordIds": [ "กี" ]
+                            "source": "นกตัวเล็กบินได้",
+                            "translations": {
+                                "en": "The small bird can fly.",
+                                "fa": "پرنده کوچک می‌تواند پرواز کند.",
+                                "th": "นก ตัว เล็ก บิน ได้"
+                            },
+                            "wordIds": [
+                                "นก",
+                                "ตัว",
+                                "เล็ก",
+                                "บิน",
+                                "ได้"
+                            ],
+                            "originalSource": "นก ตัว เล็ก บิน ได้"
                         },
                         {
-                            "source": "เด็ก เล่น ตุ๊กตา",
-                            "translations": { "en": "The child plays with a doll.", "fa": "کودک با عروسک بازی می‌کند.", "th": "เด็ก เล่น ตุ๊กตา" },
-                            "wordIds": [ "เด็ก", "ตุ๊กตา" ]
+                            "source": "หมาตัวใหญ่เห่าเก่ง",
+                            "translations": {
+                                "en": "The big dog barks loudly.",
+                                "fa": "سگ بزرگ بلند پارس می‌کند.",
+                                "th": "หมา ตัว ใหญ่ เห่า เก่ง"
+                            },
+                            "wordIds": [
+                                "หมา",
+                                "ตัว",
+                                "ใหญ่",
+                                "เห่า",
+                                "เก่ง"
+                            ],
+                            "originalSource": "หมา ตัว ใหญ่ เห่า เก่ง"
                         },
                         {
-                            "source": "นก ตัว เล็ก บิน ได้",
-                            "translations": { "en": "The small bird can fly.", "fa": "پرنده کوچک می‌تواند پرواز کند.", "th": "นก ตัว เล็ก บิน ได้" },
-                            "wordIds": [ "นก", "เล็ก", "บิน", "ได้" ]
+                            "source": "คนไทยรักภาษาไทย",
+                            "translations": {
+                                "en": "Thai people love the Thai language.",
+                                "fa": "تایلندی‌ها زبان تایلندی را دوست دارند.",
+                                "th": "คน ไทย รัก ภาษา ไทย"
+                            },
+                            "wordIds": [
+                                "คน",
+                                "ไทย",
+                                "รัก",
+                                "ภาษา",
+                                "ไทย"
+                            ],
+                            "originalSource": "คน ไทย รัก ภาษา ไทย"
                         },
                         {
-                            "source": "หมา ตัว ใหญ่ เห่า เก่ง",
-                            "translations": { "en": "The big dog barks loudly.", "fa": "سگ بزرگ بلند پارس می‌کند.", "th": "หมา ตัว ใหญ่ เห่า เก่ง" },
-                            "wordIds": [ "หมา", "ใหญ่" ]
+                            "source": "ลูกชอบดื่มนม",
+                            "translations": {
+                                "en": "The child likes to drink milk.",
+                                "fa": "کودک دوست دارد شیر بنوشد.",
+                                "th": "ลูก ชอบ ดื่ม นม"
+                            },
+                            "wordIds": [
+                                "ลูก",
+                                "ชอบ",
+                                "ดื่ม",
+                                "นม"
+                            ],
+                            "originalSource": "ลูก ชอบ ดื่ม นม"
                         },
                         {
-                            "source": "คน ไทย รัก ภาษา ไทย",
-                            "translations": { "en": "Thai people love the Thai language.", "fa": "تایلندی‌ها زبان تایلندی را دوست دارند.", "th": "คน ไทย รัก ภาษา ไทย" },
-                            "wordIds": [ "คน", "รัก" ]
+                            "source": "ไข่ไก่ราคาถูก",
+                            "translations": {
+                                "en": "Chicken eggs are cheap.",
+                                "fa": "تخم‌مرغ ارزان است.",
+                                "th": "ไข่ ไก่ ราคา ถูก"
+                            },
+                            "wordIds": [
+                                "ไข่",
+                                "ไก่",
+                                "ราคา",
+                                "ถูก"
+                            ],
+                            "originalSource": "ไข่ ไก่ ราคา ถูก"
                         },
                         {
-                            "source": "ลูก ชอบ ดื่ม นม",
-                            "translations": { "en": "The child likes to drink milk.", "fa": "کودک دوست دارد شیر بنوشد.", "th": "ลูก ชอบ ดื่ม นม" },
-                            "wordIds": [ "ลูก", "นม" ]
+                            "source": "ปีนี้ฉันจะไปเมืองไทย",
+                            "translations": {
+                                "en": "This year I will go to Thailand.",
+                                "fa": "امسال من به تایلند خواهم رفت.",
+                                "th": "ปี นี้ ฉัน จะ ไป เมือง ไทย"
+                            },
+                            "wordIds": [
+                                "ปี",
+                                "นี้",
+                                "ฉัน",
+                                "จะ",
+                                "ไป",
+                                "เมือง",
+                                "ไทย"
+                            ],
+                            "originalSource": "ปี นี้ ฉัน จะ ไป เมือง ไทย"
                         },
                         {
-                            "source": "ไข่ ไก่ ราคา ถูก",
-                            "translations": { "en": "Chicken eggs are cheap.", "fa": "تخم‌مرغ ارزان است.", "th": "ไข่ ไก่ ราคา ถูก" },
-                            "wordIds": [ "ไข่" ]
+                            "source": "ฉันมีเงินไม่พอ",
+                            "translations": {
+                                "en": "I don't have enough money.",
+                                "fa": "پول کافی ندارم.",
+                                "th": "ฉัน มี เงิน ไม่ พอ"
+                            },
+                            "wordIds": [
+                                "ฉัน",
+                                "มี",
+                                "เงิน",
+                                "ไม่",
+                                "พอ"
+                            ],
+                            "originalSource": "ฉัน มี เงิน ไม่ พอ"
                         },
                         {
-                            "source": "ปี นี้ ฉัน จะ ไป เมือง ไทย",
-                            "translations": { "en": "This year I will go to Thailand.", "fa": "امسال من به تایلند خواهم رفت.", "th": "ปี นี้ ฉัน จะ ไป เมือง ไทย" },
-                            "wordIds": [ "ปี" ]
+                            "source": "ผู้ชายคนนี้สูง",
+                            "translations": {
+                                "en": "This man is tall.",
+                                "fa": "این مرد قد بلندی دارد.",
+                                "th": "ผู้ ชาย คน นี้ สูง"
+                            },
+                            "wordIds": [
+                                "ผู้",
+                                "ชาย",
+                                "คน",
+                                "นี้",
+                                "สูง"
+                            ],
+                            "originalSource": "ผู้ ชาย คน นี้ สูง"
                         },
                         {
-                            "source": "ฉัน มี เงิน ไม่ พอ",
-                            "translations": { "en": "I don't have enough money.", "fa": "پول کافی ندارم.", "th": "ฉัน มี เงิน ไม่ พอ" },
-                            "wordIds": [ "เงิน" ]
+                            "source": "บ้านหลังนี้ใหญ่แต่บ้านหลังนั้นเล็ก",
+                            "translations": {
+                                "en": "This house is big, but that house is small.",
+                                "fa": "این خانه بزرگ است، اما آن خانه کوچک است.",
+                                "th": "บ้าน หลัง นี้ ใหญ่ แต่ บ้าน หลัง นั้น เล็ก"
+                            },
+                            "wordIds": [
+                                "บ้าน",
+                                "หลัง",
+                                "นี้",
+                                "ใหญ่",
+                                "แต่",
+                                "บ้าน",
+                                "หลัง",
+                                "นั้น",
+                                "เล็ก"
+                            ],
+                            "originalSource": "บ้าน หลัง นี้ ใหญ่ แต่ บ้าน หลัง นั้น เล็ก"
                         },
                         {
-                            "source": "ผู้ ชาย คน นี้ สูง",
-                            "translations": { "en": "This man is tall.", "fa": "این مرد قد بلندی دارد.", "th": "ผู้ ชาย คน นี้ สูง" },
-                            "wordIds": [ "ผู้" ]
+                            "source": "รถคันนี้ใหม่แต่รถคันนั้นเก่า",
+                            "translations": {
+                                "en": "This car is new, but that car is old.",
+                                "fa": "این ماشین نو است، اما آن ماشین قدیمی است.",
+                                "th": "รถ คัน นี้ ใหม่ แต่ รถ คัน นั้น เก่า"
+                            },
+                            "wordIds": [
+                                "รถ",
+                                "คัน",
+                                "นี้",
+                                "ใหม่",
+                                "แต่",
+                                "รถ",
+                                "คัน",
+                                "นั้น",
+                                "เก่า"
+                            ],
+                            "originalSource": "รถ คัน นี้ ใหม่ แต่ รถ คัน นั้น เก่า"
                         },
                         {
-                            "source": "บ้าน หลัง นี้ ใหญ่ แต่ บ้าน หลัง นั้น เล็ก",
-                            "translations": { "en": "This house is big, but that house is small.", "fa": "این خانه بزرگ است، اما آن خانه کوچک است.", "th": "บ้าน หลัง นี้ ใหญ่ แต่ บ้าน หลัง นั้น เล็ก" },
-                            "wordIds": [ "ใหญ่", "เล็ก" ]
+                            "source": "อากาศวันนี้ร้อนเมื่อวานเย็น",
+                            "translations": {
+                                "en": "Today is hot, yesterday was cool.",
+                                "fa": "امروز گرم است، دیروز خنک بود.",
+                                "th": "อากาศ วัน นี้ ร้อน เมื่อวาน เย็น"
+                            },
+                            "wordIds": [
+                                "อากาศ",
+                                "วัน",
+                                "นี้",
+                                "ร้อน",
+                                "เมื่อวาน",
+                                "เย็น"
+                            ],
+                            "originalSource": "อากาศ วัน นี้ ร้อน เมื่อวาน เย็น"
                         },
                         {
-                            "source": "รถ คัน นี้ ใหม่ แต่ รถ คัน นั้น เก่า",
-                            "translations": { "en": "This car is new, but that car is old.", "fa": "این ماشین نو است، اما آن ماشین قدیمی است.", "th": "รถ คัน นี้ ใหม่ แต่ รถ คัน นั้น เก่า" },
-                            "wordIds": [ "ใหม่", "เก่า" ]
+                            "source": "เขาวิ่งเร็วแต่ฉันเดินช้า",
+                            "translations": {
+                                "en": "He runs fast, but I walk slowly.",
+                                "fa": "او سریع می‌دود، اما من آهسته راه می‌روم.",
+                                "th": "เขา วิ่ง เร็ว แต่ ฉัน เดิน ช้า"
+                            },
+                            "wordIds": [
+                                "เขา",
+                                "วิ่ง",
+                                "เร็ว",
+                                "แต่",
+                                "ฉัน",
+                                "เดิน",
+                                "ช้า"
+                            ],
+                            "originalSource": "เขา วิ่ง เร็ว แต่ ฉัน เดิน ช้า"
                         },
                         {
-                            "source": "อากาศ วัน นี้ ร้อน เมื่อวาน เย็น",
-                            "translations": { "en": "Today is hot, yesterday was cool.", "fa": "امروز گرم است، دیروز خنک بود.", "th": "อากาศ วัน นี้ ร้อน เมื่อวาน เย็น" },
-                            "wordIds": [ "ร้อน", "เย็น" ]
+                            "source": "ดอกไม้สวยมาก",
+                            "translations": {
+                                "en": "The flower is very beautiful.",
+                                "fa": "گل بسیار زیباست.",
+                                "th": "ดอกไม้ สวย มาก"
+                            },
+                            "wordIds": [
+                                "ดอกไม้",
+                                "สวย",
+                                "มาก"
+                            ],
+                            "originalSource": "ดอกไม้ สวย มาก"
                         },
                         {
-                            "source": "เขา วิ่ง เร็ว แต่ ฉัน เดิน ช้า",
-                            "translations": { "en": "He runs fast, but I walk slowly.", "fa": "او سریع می‌دود، اما من آهسته راه می‌روم.", "th": "เขา วิ่ง เร็ว แต่ ฉัน เดิน ช้า" },
-                            "wordIds": [ "เร็ว", "ช้า" ]
+                            "source": "ร้านนี้ขายเสื้อผ้า",
+                            "translations": {
+                                "en": "This shop sells clothes.",
+                                "fa": "این مغازه لباس می‌فروشد.",
+                                "th": "ร้าน นี้ ขาย เสื้อ ผ้า"
+                            },
+                            "wordIds": [
+                                "ร้าน",
+                                "นี้",
+                                "ขาย",
+                                "เสื้อ",
+                                "ผ้า"
+                            ],
+                            "originalSource": "ร้าน นี้ ขาย เสื้อ ผ้า"
                         },
                         {
-                            "source": "ดอกไม้ สวย มาก",
-                            "translations": { "en": "The flower is very beautiful.", "fa": "گل بسیار زیباست.", "th": "ดอกไม้ สวย มาก" },
-                            "wordIds": [ "สวย" ]
+                            "source": "ฉันจะซื้อหนังสือ",
+                            "translations": {
+                                "en": "I will buy a book.",
+                                "fa": "من یک کتاب خواهم خرید.",
+                                "th": "ฉัน จะ ซื้อ หนังสือ"
+                            },
+                            "wordIds": [
+                                "ฉัน",
+                                "จะ",
+                                "ซื้อ",
+                                "หนังสือ"
+                            ],
+                            "originalSource": "ฉัน จะ ซื้อ หนังสือ"
                         },
                         {
-                            "source": "ร้าน นี้ ขาย เสื้อ ผ้า",
-                            "translations": { "en": "This shop sells clothes.", "fa": "این مغازه لباس می‌فروشد.", "th": "ร้าน นี้ ขาย เสื้อ ผ้า" },
-                            "wordIds": [ "ขาย" ]
+                            "source": "เรากินข้าวกัน",
+                            "translations": {
+                                "en": "We eat rice together.",
+                                "fa": "ما با هم برنج می‌خوریم.",
+                                "th": "เรากิน ข้าว กัน"
+                            },
+                            "wordIds": [
+                                "เรา",
+                                "กิน",
+                                "ข้าว",
+                                "กัน"
+                            ],
+                            "originalSource": "เรา กิน ข้าว กัน"
                         },
                         {
-                            "source": "ฉัน จะ ซื้อ หนังสือ",
-                            "translations": { "en": "I will buy a book.", "fa": "من یک کتاب خواهم خرید.", "th": "ฉัน จะ ซื้อ หนังสือ" },
-                            "wordIds": [ "ซื้อ" ]
+                            "source": "ฉันนั่งอยู่ที่โต๊ะ",
+                            "translations": {
+                                "en": "I am sitting at the table.",
+                                "fa": "من پشت میز نشسته‌ام.",
+                                "th": "ฉัน นั่ง อยู่ ที่ โต๊ะ"
+                            },
+                            "wordIds": [
+                                "ฉัน",
+                                "นั่ง",
+                                "อยู่",
+                                "ที่",
+                                "โต๊ะ"
+                            ],
+                            "originalSource": "ฉัน นั่ง อยู่ ที่ โต๊ะ"
                         },
                         {
-                            "source": "เรากิน ข้าว กัน",
-                            "translations": { "en": "We eat rice together.", "fa": "ما با هم برنج می‌خوریم.", "th": "เรากิน ข้าว กัน" },
-                            "wordIds": [ "กิน" ]
+                            "source": "เขายืนอยู่หน้าบ้าน",
+                            "translations": {
+                                "en": "He is standing in front of the house.",
+                                "fa": "او جلوی خانه ایستاده است.",
+                                "th": "เขา ยืน อยู่ หน้า บ้าน"
+                            },
+                            "wordIds": [
+                                "เขา",
+                                "ยืน",
+                                "อยู่",
+                                "หน้า",
+                                "บ้าน"
+                            ],
+                            "originalSource": "เขา ยืน อยู่ หน้า บ้าน"
                         },
                         {
-                            "source": "ฉัน นั่ง อยู่ ที่ โต๊ะ",
-                            "translations": { "en": "I am sitting at the table.", "fa": "من پشت میز نشسته‌ام.", "th": "ฉัน นั่ง อยู่ ที่ โต๊ะ" },
-                            "wordIds": [ "นั่ง" ]
+                            "source": "ฉันนอนไม่หลับ",
+                            "translations": {
+                                "en": "I can't sleep.",
+                                "fa": "نمی‌توانم بخوابم.",
+                                "th": "ฉัน นอน ไม่ หลับ"
+                            },
+                            "wordIds": [
+                                "ฉัน",
+                                "นอน",
+                                "ไม่",
+                                "หลับ"
+                            ],
+                            "originalSource": "ฉัน นอน ไม่ หลับ"
                         },
                         {
-                            "source": "เขา ยืน อยู่ หน้า บ้าน",
-                            "translations": { "en": "He is standing in front of the house.", "fa": "او جلوی خانه ایستاده است.", "th": "เขา ยืน อยู่ หน้า บ้าน" },
-                            "wordIds": [ "ยืน" ]
+                            "source": "เราเดินไปตลาด",
+                            "translations": {
+                                "en": "We walk to the market.",
+                                "fa": "ما به بازار می‌رویم.",
+                                "th": "เรา เดิน ไป ตลาด"
+                            },
+                            "wordIds": [
+                                "เรา",
+                                "เดิน",
+                                "ไป",
+                                "ตลาด"
+                            ],
+                            "originalSource": "เรา เดิน ไป ตลาด"
                         },
                         {
-                            "source": "ฉัน นอน ไม่ หลับ",
-                            "translations": { "en": "I can't sleep.", "fa": "نمی‌توانم بخوابم.", "th": "ฉัน นอน ไม่ หลับ" },
-                            "wordIds": [ "นอน" ]
+                            "source": "เขาวิ่งเร็วมาก",
+                            "translations": {
+                                "en": "He runs very fast.",
+                                "fa": "او خیلی سریع می‌دود.",
+                                "th": "เขา วิ่ง เร็ว มาก"
+                            },
+                            "wordIds": [
+                                "เขา",
+                                "วิ่ง",
+                                "เร็ว",
+                                "มาก"
+                            ],
+                            "originalSource": "เขา วิ่ง เร็ว มาก"
                         },
                         {
-                            "source": "เรา เดิน ไป ตลาด",
-                            "translations": { "en": "We walk to the market.", "fa": "ما به بازار می‌رویم.", "th": "เรา เดิน ไป ตลาด" },
-                            "wordIds": [ "เดิน" ]
+                            "source": "เขาพูดภาษาไทยได้",
+                            "translations": {
+                                "en": "He can speak Thai.",
+                                "fa": "او می‌تواند تایلندی صحبت کند.",
+                                "th": "เขา พูด ภาษา ไทย ได้"
+                            },
+                            "wordIds": [
+                                "เขา",
+                                "พูด",
+                                "ภาษา",
+                                "ไทย",
+                                "ได้"
+                            ],
+                            "originalSource": "เขา พูด ภาษา ไทย ได้"
                         },
                         {
-                            "source": "เขา วิ่ง เร็ว มาก",
-                            "translations": { "en": "He runs very fast.", "fa": "او خیلی سریع می‌دود.", "th": "เขา วิ่ง เร็ว มาก" },
-                            "wordIds": [ "วิ่ง" ]
+                            "source": "ฉันฟังเพลง",
+                            "translations": {
+                                "en": "I listen to music.",
+                                "fa": "من به موسیقی گوش می‌دهم.",
+                                "th": "ฉัน ฟัง เพลง"
+                            },
+                            "wordIds": [
+                                "ฉัน",
+                                "ฟัง",
+                                "เพลง"
+                            ],
+                            "originalSource": "ฉัน ฟัง เพลง"
                         },
                         {
-                            "source": "เขา พูด ภาษา ไทย ได้",
-                            "translations": { "en": "He can speak Thai.", "fa": "او می‌تواند تایلندی صحبت کند.", "th": "เขา พูด ภาษา ไทย ได้" },
-                            "wordIds": [ "พูด" ]
+                            "source": "เขาดูโทรทัศน์",
+                            "translations": {
+                                "en": "He watches television.",
+                                "fa": "او تلویزیون تماشا می‌کند.",
+                                "th": "เขา ดู โทรทัศน์"
+                            },
+                            "wordIds": [
+                                "เขา",
+                                "ดู",
+                                "โทรทัศน์"
+                            ],
+                            "originalSource": "เขา ดู โทรทัศน์"
                         },
                         {
-                            "source": "ฉัน ฟัง เพลง",
-                            "translations": { "en": "I listen to music.", "fa": "من به موسیقی گوش می‌دهم.", "th": "ฉัน ฟัง เพลง" },
-                            "wordIds": [ "ฟัง" ]
+                            "source": "ฉันอ่านหนังสือ",
+                            "translations": {
+                                "en": "I read a book.",
+                                "fa": "من کتاب می‌خوانم.",
+                                "th": "ฉัน อ่าน หนังสือ"
+                            },
+                            "wordIds": [
+                                "ฉัน",
+                                "อ่าน",
+                                "หนังสือ"
+                            ],
+                            "originalSource": "ฉัน อ่าน หนังสือ"
                         },
                         {
-                            "source": "เขา ดู โทรทัศน์",
-                            "translations": { "en": "He watches television.", "fa": "او تلویزیون تماشا می‌کند.", "th": "เขา ดู โทรทัศน์" },
-                            "wordIds": [ "ดู" ]
+                            "source": "เขาเขียนจดหมาย",
+                            "translations": {
+                                "en": "He writes a letter.",
+                                "fa": "او نامه می‌نویسد.",
+                                "th": "เขา เขียน จดหมาย"
+                            },
+                            "wordIds": [
+                                "เขา",
+                                "เขียน",
+                                "จดหมาย"
+                            ],
+                            "originalSource": "เขา เขียน จดหมาย"
                         },
                         {
-                            "source": "ฉัน อ่าน หนังสือ",
-                            "translations": { "en": "I read a book.", "fa": "من کتاب می‌خوانم.", "th": "ฉัน อ่าน หนังสือ" },
-                            "wordIds": [ "อ่าน" ]
+                            "source": "ฉันเรียนภาษาไทย",
+                            "translations": {
+                                "en": "I study Thai.",
+                                "fa": "من تایلندی می‌خوانم.",
+                                "th": "ฉัน เรียน ภาษา ไทย"
+                            },
+                            "wordIds": [
+                                "ฉัน",
+                                "เรียน",
+                                "ภาษา",
+                                "ไทย"
+                            ],
+                            "originalSource": "ฉัน เรียน ภาษา ไทย"
                         },
                         {
-                            "source": "เขา เขียน จดหมาย",
-                            "translations": { "en": "He writes a letter.", "fa": "او نامه می‌نویسد.", "th": "เขา เขียน จดหมาย" },
-                            "wordIds": [ "เขียน" ]
+                            "source": "ฉันทำงานอยู่",
+                            "translations": {
+                                "en": "I am working.",
+                                "fa": "من مشغول کار هستم.",
+                                "th": "ฉัน ทำงาน อยู่"
+                            },
+                            "wordIds": [
+                                "ฉัน",
+                                "ทำงาน",
+                                "อยู่"
+                            ],
+                            "originalSource": "ฉัน ทำงาน อยู่"
                         },
                         {
-                            "source": "ฉัน เรียน ภาษา ไทย",
-                            "translations": { "en": "I study Thai.", "fa": "من تایلندی می‌خوانم.", "th": "ฉัน เรียน ภาษา ไทย" },
-                            "wordIds": [ "เรียน" ]
+                            "source": "ฉันชอบพักผ่อน",
+                            "translations": {
+                                "en": "I like to rest.",
+                                "fa": "من دوست دارم استراحت کنم.",
+                                "th": "ฉัน ชอบ พักผ่อน"
+                            },
+                            "wordIds": [
+                                "ฉัน",
+                                "ชอบ",
+                                "พักผ่อน"
+                            ],
+                            "originalSource": "ฉัน ชอบ พักผ่อน"
                         },
                         {
-                            "source": "ฉัน ทำงาน อยู่",
-                            "translations": { "en": "I am working.", "fa": "من مشغول کار هستم.", "th": "ฉัน ทำงาน อยู่" },
-                            "wordIds": [ "ทำงาน" ]
+                            "source": "ฉันจะไปวัด",
+                            "translations": {
+                                "en": "I will go to the temple.",
+                                "fa": "من به معبد خواهم رفت.",
+                                "th": "ฉัน จะ ไป วัด"
+                            },
+                            "wordIds": [
+                                "ฉัน",
+                                "จะ",
+                                "ไป",
+                                "วัด"
+                            ],
+                            "originalSource": "ฉัน จะ ไป วัด"
                         },
                         {
-                            "source": "ฉัน ชอบ พักผ่อน",
-                            "translations": { "en": "I like to rest.", "fa": "من دوست دارم استراحت کنم.", "th": "ฉัน ชอบ พักผ่อน" },
-                            "wordIds": [ "พักผ่อน" ]
+                            "source": "เขามาจากไทย",
+                            "translations": {
+                                "en": "He comes from Thailand.",
+                                "fa": "او از تایلند می‌آید.",
+                                "th": "เขา มา จาก ไทย"
+                            },
+                            "wordIds": [
+                                "เขา",
+                                "มา",
+                                "จาก",
+                                "ไทย"
+                            ],
+                            "originalSource": "เขา มา จาก ไทย"
                         },
                         {
-                            "source": "ฉัน จะ ไป วัด",
-                            "translations": { "en": "I will go to the temple.", "fa": "من به معبد خواهم رفت.", "th": "ฉัน จะ ไป วัด" },
-                            "wordIds": [ "ไป" ]
+                            "source": "ฉันกลับบ้าน",
+                            "translations": {
+                                "en": "I return home.",
+                                "fa": "من به خانه برمی‌گردم.",
+                                "th": "ฉัน กลับ บ้าน"
+                            },
+                            "wordIds": [
+                                "ฉัน",
+                                "กลับ",
+                                "บ้าน"
+                            ],
+                            "originalSource": "ฉัน กลับ บ้าน"
                         },
                         {
-                            "source": "เขา มา จาก ไทย",
-                            "translations": { "en": "He comes from Thailand.", "fa": "او از تایلند می‌آید.", "th": "เขา มา จาก ไทย" },
-                            "wordIds": [ "มา" ]
+                            "source": "เขาเข้าไปในห้อง",
+                            "translations": {
+                                "en": "He goes into the room.",
+                                "fa": "او وارد اتاق می‌شود.",
+                                "th": "เขา เข้า ไป ใน ห้อง"
+                            },
+                            "wordIds": [
+                                "เขา",
+                                "เข้า",
+                                "ไป",
+                                "ใน",
+                                "ห้อง"
+                            ],
+                            "originalSource": "เขา เข้า ไป ใน ห้อง"
                         },
                         {
-                            "source": "ฉัน กลับ บ้าน",
-                            "translations": { "en": "I return home.", "fa": "من به خانه برمی‌گردم.", "th": "ฉัน กลับ บ้าน" },
-                            "wordIds": [ "กลับ" ]
+                            "source": "ฉันออกมาข้างนอก",
+                            "translations": {
+                                "en": "I come out outside.",
+                                "fa": "من به بیرون می‌آیم.",
+                                "th": "ฉัน ออก มา ข้าง นอก"
+                            },
+                            "wordIds": [
+                                "ฉัน",
+                                "ออก",
+                                "มา",
+                                "ข้าง",
+                                "นอก"
+                            ],
+                            "originalSource": "ฉัน ออก มา ข้าง นอก"
                         },
                         {
-                            "source": "เขา เข้า ไป ใน ห้อง",
-                            "translations": { "en": "He goes into the room.", "fa": "او وارد اتاق می‌شود.", "th": "เขา เข้า ไป ใน ห้อง" },
-                            "wordIds": [ "เข้า" ]
+                            "source": "เขาขึ้นบนหลังคา",
+                            "translations": {
+                                "en": "He goes up onto the roof.",
+                                "fa": "او به پشت بام می‌رود.",
+                                "th": "เขา ขึ้น บน หลังคา"
+                            },
+                            "wordIds": [
+                                "เขา",
+                                "ขึ้น",
+                                "บน",
+                                "หลังคา"
+                            ],
+                            "originalSource": "เขา ขึ้น บน หลังคา"
                         },
                         {
-                            "source": "ฉัน ออก มา ข้าง นอก",
-                            "translations": { "en": "I come out outside.", "fa": "من به بیرون می‌آیم.", "th": "ฉัน ออก มา ข้าง นอก" },
-                            "wordIds": [ "ออก" ]
+                            "source": "ฉันลงมาข้างล่าง",
+                            "translations": {
+                                "en": "I come down below.",
+                                "fa": "من به پایین می‌آیم.",
+                                "th": "ฉัน ลง มา ข้าง ล่าง"
+                            },
+                            "wordIds": [
+                                "ฉัน",
+                                "ลง",
+                                "มา",
+                                "ข้าง",
+                                "ล่าง"
+                            ],
+                            "originalSource": "ฉัน ลง มา ข้าง ล่าง"
                         },
                         {
-                            "source": "เขา ขึ้น บน หลังคา",
-                            "translations": { "en": "He goes up onto the roof.", "fa": "او به پشت بام می‌رود.", "th": "เขา ขึ้น บน หลังคา" },
-                            "wordIds": [ "ขึ้น" ]
+                            "source": "ใช่ฉันชอบ",
+                            "translations": {
+                                "en": "Yes, I like it.",
+                                "fa": "بله، دوست دارم.",
+                                "th": "ใช่ ฉัน ชอบ"
+                            },
+                            "wordIds": [
+                                "ใช่",
+                                "ฉัน",
+                                "ชอบ"
+                            ],
+                            "originalSource": "ใช่ ฉัน ชอบ"
                         },
                         {
-                            "source": "ฉัน ลง มา ข้าง ล่าง",
-                            "translations": { "en": "I come down below.", "fa": "من به پایین می‌آیم.", "th": "ฉัน ลง มา ข้าง ล่าง" },
-                            "wordIds": [ "ลง" ]
+                            "source": "ไม่ฉันไม่ชอบ",
+                            "translations": {
+                                "en": "No, I don't like it.",
+                                "fa": "نه، دوست ندارم.",
+                                "th": "ไม่ ฉัน ไม่ ชอบ"
+                            },
+                            "wordIds": [
+                                "ไม่",
+                                "ฉัน",
+                                "ไม่",
+                                "ชอบ"
+                            ],
+                            "originalSource": "ไม่ ฉัน ไม่ ชอบ"
                         },
                         {
-                            "source": "ใช่ ฉัน ชอบ",
-                            "translations": { "en": "Yes, I like it.", "fa": "بله، دوست دارم.", "th": "ใช่ ฉัน ชอบ" },
-                            "wordIds": [ "ใช่" ]
+                            "source": "นี่คือหนังสือ",
+                            "translations": {
+                                "en": "This is a book.",
+                                "fa": "این یک کتاب است.",
+                                "th": "นี่ คือ หนังสือ"
+                            },
+                            "wordIds": [
+                                "นี่",
+                                "คือ",
+                                "หนังสือ"
+                            ],
+                            "originalSource": "นี่ คือ หนังสือ"
                         },
                         {
-                            "source": "ไม่ ฉัน ไม่ ชอบ",
-                            "translations": { "en": "No, I don't like it.", "fa": "نه، دوست ندارم.", "th": "ไม่ ฉัน ไม่ ชอบ" },
-                            "wordIds": [ "ไม่" ]
+                            "source": "ฉันอยู่ที่บ้าน",
+                            "translations": {
+                                "en": "I am at home.",
+                                "fa": "من در خانه هستم.",
+                                "th": "ฉัน อยู่ ที่ บ้าน"
+                            },
+                            "wordIds": [
+                                "ฉัน",
+                                "อยู่",
+                                "ที่",
+                                "บ้าน"
+                            ],
+                            "originalSource": "ฉัน อยู่ ที่ บ้าน"
                         },
                         {
-                            "source": "นี่ คือ หนังสือ",
-                            "translations": { "en": "This is a book.", "fa": "این یک کتاب است.", "th": "นี่ คือ หนังสือ" },
-                            "wordIds": [ "คือ" ]
+                            "source": "เขาเป็นครู",
+                            "translations": {
+                                "en": "He is a teacher.",
+                                "fa": "او معلم است.",
+                                "th": "เขา เป็น ครู"
+                            },
+                            "wordIds": [
+                                "เขา",
+                                "เป็น",
+                                "ครู"
+                            ],
+                            "originalSource": "เขา เป็น ครู"
                         },
                         {
-                            "source": "ฉัน อยู่ ที่ บ้าน",
-                            "translations": { "en": "I am at home.", "fa": "من در خانه هستم.", "th": "ฉัน อยู่ ที่ บ้าน" },
-                            "wordIds": [ "อยู่" ]
+                            "source": "ฉันได้เงิน",
+                            "translations": {
+                                "en": "I got money.",
+                                "fa": "من پول گرفتم.",
+                                "th": "ฉัน ได้ เงิน"
+                            },
+                            "wordIds": [
+                                "ฉัน",
+                                "ได้",
+                                "เงิน"
+                            ],
+                            "originalSource": "ฉัน ได้ เงิน"
                         },
                         {
-                            "source": "เขา เป็น ครู",
-                            "translations": { "en": "He is a teacher.", "fa": "او معلم است.", "th": "เขา เป็น ครู" },
-                            "wordIds": [ "เป็น" ]
+                            "source": "ฉันจะไปเรียน",
+                            "translations": {
+                                "en": "I will go to study.",
+                                "fa": "من به کلاس خواهم رفت.",
+                                "th": "ฉัน จะ ไป เรียน"
+                            },
+                            "wordIds": [
+                                "ฉัน",
+                                "จะ",
+                                "ไป",
+                                "เรียน"
+                            ],
+                            "originalSource": "ฉัน จะ ไป เรียน"
                         },
                         {
-                            "source": "ฉัน ได้ เงิน",
-                            "translations": { "en": "I got money.", "fa": "من پول گرفتم.", "th": "ฉัน ได้ เงิน" },
-                            "wordIds": [ "ได้" ]
+                            "source": "เขาก็มาด้วย",
+                            "translations": {
+                                "en": "He also came along.",
+                                "fa": "او هم آمد.",
+                                "th": "เขา ก็ มา ด้วย"
+                            },
+                            "wordIds": [
+                                "เขา",
+                                "ก็",
+                                "มา",
+                                "ด้วย"
+                            ],
+                            "originalSource": "เขา ก็ มา ด้วย"
                         },
                         {
-                            "source": "ฉัน จะ ไป เรียน",
-                            "translations": { "en": "I will go to study.", "fa": "من به کلاس خواهم رفت.", "th": "ฉัน จะ ไป เรียน" },
-                            "wordIds": [ "จะ" ]
+                            "source": "ฉันอยากไปแต่ไม่มีเวลา",
+                            "translations": {
+                                "en": "I want to go, but I don't have time.",
+                                "fa": "می‌خواهم بروم، اما وقت ندارم.",
+                                "th": "ฉัน อยาก ไป แต่ ไม่ มี เวลา"
+                            },
+                            "wordIds": [
+                                "ฉัน",
+                                "อยาก",
+                                "ไป",
+                                "แต่",
+                                "ไม่",
+                                "มี",
+                                "เวลา"
+                            ],
+                            "originalSource": "ฉัน อยาก ไป แต่ ไม่ มี เวลา"
                         },
                         {
-                            "source": "เขา ก็ มา ด้วย",
-                            "translations": { "en": "He also came along.", "fa": "او هم آمد.", "th": "เขา ก็ มา ด้วย" },
-                            "wordIds": [ "ก็" ]
+                            "source": "เขาและฉันไปด้วยกัน",
+                            "translations": {
+                                "en": "He and I go together.",
+                                "fa": "او و من با هم می‌رویم.",
+                                "th": "เขา และ ฉัน ไป ด้วยกัน"
+                            },
+                            "wordIds": [
+                                "เขา",
+                                "และ",
+                                "ฉัน",
+                                "ไป",
+                                "ด้วยกัน"
+                            ],
+                            "originalSource": "เขา และ ฉัน ไป ด้วยกัน"
                         },
                         {
-                            "source": "ฉัน อยาก ไป แต่ ไม่ มี เวลา",
-                            "translations": { "en": "I want to go, but I don't have time.", "fa": "می‌خواهم بروم، اما وقت ندارم.", "th": "ฉัน อยาก ไป แต่ ไม่ มี เวลา" },
-                            "wordIds": [ "แต่" ]
+                            "source": "คุณจะกินข้าวหรือยัง",
+                            "translations": {
+                                "en": "Have you eaten yet?",
+                                "fa": "غذا خورده‌ای؟",
+                                "th": "คุณ จะ กิน ข้าว หรือ ยัง"
+                            },
+                            "wordIds": [
+                                "คุณ",
+                                "จะ",
+                                "กิน",
+                                "ข้าว",
+                                "หรือ",
+                                "ยัง"
+                            ],
+                            "originalSource": "คุณ จะ กิน ข้าว หรือ ยัง"
                         },
                         {
-                            "source": "เขา และ ฉัน ไป ด้วยกัน",
-                            "translations": { "en": "He and I go together.", "fa": "او و من با هم می‌رویم.", "th": "เขา และ ฉัน ไป ด้วยกัน" },
-                            "wordIds": [ "และ" ]
-                        },
-                        {
-                            "source": "คุณ จะ กิน ข้าว หรือ ยัง",
-                            "translations": { "en": "Have you eaten yet?", "fa": "غذا خورده‌ای؟", "th": "คุณ จะ กิน ข้าว หรือ ยัง" },
-                            "wordIds": [ "หรือ" ]
-                        },
-                        {
-                            "source": "คุณ สบาย ดี ไหม",
-                            "translations": { "en": "How are you?", "fa": "حالت چطور است؟", "th": "คุณ สบาย ดี ไหม" },
-                            "wordIds": [ "ไหม" ]
+                            "source": "คุณสบายดีไหม",
+                            "translations": {
+                                "en": "How are you?",
+                                "fa": "حالت چطور است؟",
+                                "th": "คุณ สบาย ดี ไหม"
+                            },
+                            "wordIds": [
+                                "คุณ",
+                                "สบาย",
+                                "ดี",
+                                "ไหม"
+                            ],
+                            "originalSource": "คุณ สบาย ดี ไหม"
                         }
                     ]
                 }
@@ -443,7 +2247,10 @@
                 "th": "สระเสียงยาว",
                 "fa": "مصوت‌های بلند"
             },
-            "activity": { "words": true, "sentences": true },
+            "activity": {
+                "words": true,
+                "sentences": true
+            },
             "content": [
                 {
                     "type": "words",
@@ -452,7 +2259,39 @@
                         "th": "คำที่มีสระเสียงยาว",
                         "fa": "کلمات با مصوت‌های بلند"
                     },
-                    "wordIds": [ "กา", "ขา", "มา", "ปา", "ตา", "ดี", "มี", "สี", "ที่", "ดู", "อยู่", "ปู", "เต", "แป", "โต", "โท", "เกาะ", "เจอ", "เกิด", "เออ", "เสีย", "เชื่อ", "ตัว", "เรือ", "เร็ว", "เรียน", "เลี้ยง", "เสือ", "เพื่อ", "เนื้อ", "เลื่อย", "หัว", "กลัว" ]
+                    "wordIds": [
+                        "กา",
+                        "ขา",
+                        "มา",
+                        "ปา",
+                        "ตา",
+                        "ดี",
+                        "มี",
+                        "สี",
+                        "ที่",
+                        "ดู",
+                        "อยู่",
+                        "ปู",
+                        "แป",
+                        "โต",
+                        "เกาะ",
+                        "เจอ",
+                        "เกิด",
+                        "เออ",
+                        "เสีย",
+                        "เชื่อ",
+                        "ตัว",
+                        "เรือ",
+                        "เร็ว",
+                        "เรียน",
+                        "เลี้ยง",
+                        "เสือ",
+                        "เพื่อ",
+                        "เนื้อ",
+                        "เลื่อย",
+                        "หัว",
+                        "กลัว"
+                    ]
                 },
                 {
                     "type": "paragraph",
@@ -463,169 +2302,450 @@
                     },
                     "sentences": [
                         {
-                            "source": "กา กำลัง บิน",
-                            "translations": { "en": "The crow is flying.", "fa": "کلاغ در حال پرواز است.", "th": "กา กำลัง บิน" },
-                            "wordIds": [ "กา" ]
+                            "source": "กากำลังบิน",
+                            "translations": {
+                                "en": "The crow is flying.",
+                                "fa": "کلاغ در حال پرواز است.",
+                                "th": "กา กำลัง บิน"
+                            },
+                            "wordIds": [
+                                "กา",
+                                "กำลัง",
+                                "บิน"
+                            ],
+                            "originalSource": "กา กำลัง บิน"
                         },
                         {
-                            "source": "ขา ของ เขา ยาว",
-                            "translations": { "en": "His legs are long.", "fa": "پاهایش بلند است.", "th": "ขา ของ เขา ยาว" },
-                            "wordIds": [ "ขา" ]
+                            "source": "ขาของเขายาว",
+                            "translations": {
+                                "en": "His legs are long.",
+                                "fa": "پاهایش بلند است.",
+                                "th": "ขา ของ เขา ยาว"
+                            },
+                            "wordIds": [
+                                "ขา",
+                                "ของ",
+                                "เขา",
+                                "ยาว"
+                            ],
+                            "originalSource": "ขา ของ เขา ยาว"
                         },
                         {
-                            "source": "ฉัน มา จาก ไทย",
-                            "translations": { "en": "I come from Thailand.", "fa": "من از تایلند می‌آیم.", "th": "ฉัน มา จาก ไทย" },
-                            "wordIds": [ "มา" ]
+                            "source": "ฉันมาจากไทย",
+                            "translations": {
+                                "en": "I come from Thailand.",
+                                "fa": "من از تایلند می‌آیم.",
+                                "th": "ฉัน มา จาก ไทย"
+                            },
+                            "wordIds": [
+                                "ฉัน",
+                                "มา",
+                                "จาก",
+                                "ไทย"
+                            ],
+                            "originalSource": "ฉัน มา จาก ไทย"
                         },
                         {
-                            "source": "เขา ปา ลูกบอล",
-                            "translations": { "en": "He throws the ball.", "fa": "او توپ را پرتاب می‌کند.", "th": "เขา ปา ลูกบอล" },
-                            "wordIds": [ "ปา" ]
+                            "source": "เขาปาลูกบอล",
+                            "translations": {
+                                "en": "He throws the ball.",
+                                "fa": "او توپ را پرتاب می‌کند.",
+                                "th": "เขา ปา ลูกบอล"
+                            },
+                            "wordIds": [
+                                "เขา",
+                                "ปา",
+                                "ลูกบอล"
+                            ],
+                            "originalSource": "เขา ปา ลูกบอล"
                         },
                         {
-                            "source": "ตา ของ เขา ใหญ่",
-                            "translations": { "en": "His eyes are big.", "fa": "چشمانش بزرگ است.", "th": "ตา ของ เขา ใหญ่" },
-                            "wordIds": [ "ตา" ]
+                            "source": "ตาของเขาใหญ่",
+                            "translations": {
+                                "en": "His eyes are big.",
+                                "fa": "چشمانش بزرگ است.",
+                                "th": "ตา ของ เขา ใหญ่"
+                            },
+                            "wordIds": [
+                                "ตา",
+                                "ของ",
+                                "เขา",
+                                "ใหญ่"
+                            ],
+                            "originalSource": "ตา ของ เขา ใหญ่"
                         },
                         {
-                            "source": "นี่ ดี มาก",
-                            "translations": { "en": "This is very good.", "fa": "این خیلی خوب است.", "th": "นี่ ดี มาก" },
-                            "wordIds": [ "ดี" ]
+                            "source": "นี่ดีมาก",
+                            "translations": {
+                                "en": "This is very good.",
+                                "fa": "این خیلی خوب است.",
+                                "th": "นี่ ดี มาก"
+                            },
+                            "wordIds": [
+                                "นี่",
+                                "ดี",
+                                "มาก"
+                            ],
+                            "originalSource": "นี่ ดี มาก"
                         },
                         {
-                            "source": "ฉัน มี เงิน",
-                            "translations": { "en": "I have money.", "fa": "من پول دارم.", "th": "ฉัน มี เงิน" },
-                            "wordIds": [ "มี" ]
+                            "source": "ฉันมีเงิน",
+                            "translations": {
+                                "en": "I have money.",
+                                "fa": "من پول دارم.",
+                                "th": "ฉัน มี เงิน"
+                            },
+                            "wordIds": [
+                                "ฉัน",
+                                "มี",
+                                "เงิน"
+                            ],
+                            "originalSource": "ฉัน มี เงิน"
                         },
                         {
-                            "source": "สี นี้ สวย",
-                            "translations": { "en": "This color is beautiful.", "fa": "این رنگ زیباست.", "th": "สี นี้ สวย" },
-                            "wordIds": [ "สี" ]
+                            "source": "สีนี้สวย",
+                            "translations": {
+                                "en": "This color is beautiful.",
+                                "fa": "این رنگ زیباست.",
+                                "th": "สี นี้ สวย"
+                            },
+                            "wordIds": [
+                                "สี",
+                                "นี้",
+                                "สวย"
+                            ],
+                            "originalSource": "สี นี้ สวย"
                         },
                         {
-                            "source": "ที่ นี้ เงียบ",
-                            "translations": { "en": "This place is quiet.", "fa": "اینجا آرام است.", "th": "ที่ นี้ เงียบ" },
-                            "wordIds": [ "ที่" ]
+                            "source": "ที่นี้เงียบ",
+                            "translations": {
+                                "en": "This place is quiet.",
+                                "fa": "اینجا آرام است.",
+                                "th": "ที่ นี้ เงียบ"
+                            },
+                            "wordIds": [
+                                "ที่",
+                                "นี้",
+                                "เงียบ"
+                            ],
+                            "originalSource": "ที่ นี้ เงียบ"
                         },
                         {
-                            "source": "ฉัน ดู หนัง",
-                            "translations": { "en": "I watch a movie.", "fa": "من فیلم تماشا می‌کنم.", "th": "ฉัน ดู หนัง" },
-                            "wordIds": [ "ดู" ]
+                            "source": "ฉันดูหนัง",
+                            "translations": {
+                                "en": "I watch a movie.",
+                                "fa": "من فیلم تماشا می‌کنم.",
+                                "th": "ฉัน ดู หนัง"
+                            },
+                            "wordIds": [
+                                "ฉัน",
+                                "ดู",
+                                "หนัง"
+                            ],
+                            "originalSource": "ฉัน ดู หนัง"
                         },
                         {
-                            "source": "ฉัน อยู่ ที่ บ้าน",
-                            "translations": { "en": "I am at home.", "fa": "من در خانه هستم.", "th": "ฉัน อยู่ ที่ บ้าน" },
-                            "wordIds": [ "อยู่" ]
+                            "source": "ฉันอยู่ที่บ้าน",
+                            "translations": {
+                                "en": "I am at home.",
+                                "fa": "من در خانه هستم.",
+                                "th": "ฉัน อยู่ ที่ บ้าน"
+                            },
+                            "wordIds": [
+                                "ฉัน",
+                                "อยู่",
+                                "ที่",
+                                "บ้าน"
+                            ],
+                            "originalSource": "ฉัน อยู่ ที่ บ้าน"
                         },
                         {
-                            "source": "ปู เดิน เอียง",
-                            "translations": { "en": "Crabs walk sideways.", "fa": "خرچنگ مورب راه می‌رود.", "th": "ปู เดิน เอียง" },
-                            "wordIds": [ "ปู" ]
+                            "source": "ปูเดินเอียง",
+                            "translations": {
+                                "en": "Crabs walk sideways.",
+                                "fa": "خرچنگ مورب راه می‌رود.",
+                                "th": "ปู เดิน เอียง"
+                            },
+                            "wordIds": [
+                                "ปู",
+                                "เดิน",
+                                "เอียง"
+                            ],
+                            "originalSource": "ปู เดิน เอียง"
                         },
                         {
-                            "source": "เต ของ ไทย",
-                            "translations": { "en": "Thai 'te' (as in letter).", "fa": "حرف 'ته' تایلندی.", "th": "เต ของ ไทย" },
-                            "wordIds": [ "เต" ]
+                            "source": "แป้งแปละเอียด",
+                            "translations": {
+                                "en": "Fine flour.",
+                                "fa": "آرد نرم.",
+                                "th": "แป้ง แป ละเอียด"
+                            },
+                            "wordIds": [
+                                "แป้ง",
+                                "แป",
+                                "ละเอียด"
+                            ],
+                            "originalSource": "แป้ง แป ละเอียด"
                         },
                         {
-                            "source": "แป้ง แป ละเอียด",
-                            "translations": { "en": "Fine flour.", "fa": "آرد نرم.", "th": "แป้ง แป ละเอียด" },
-                            "wordIds": [ "แป" ]
+                            "source": "ต้นไม้โตเร็ว",
+                            "translations": {
+                                "en": "The tree grows fast.",
+                                "fa": "درخت سریع رشد می‌کند.",
+                                "th": "ต้นไม้ โต เร็ว"
+                            },
+                            "wordIds": [
+                                "ต้นไม้",
+                                "โต",
+                                "เร็ว"
+                            ],
+                            "originalSource": "ต้นไม้ โต เร็ว"
                         },
                         {
-                            "source": "ต้นไม้ โต เร็ว",
-                            "translations": { "en": "The tree grows fast.", "fa": "درخت سریع رشد می‌کند.", "th": "ต้นไม้ โต เร็ว" },
-                            "wordIds": [ "โต" ]
+                            "source": "โทษะ",
+                            "translations": {
+                                "en": "Punishment.",
+                                "fa": "مجازات.",
+                                "th": "โท ษะ"
+                            },
+                            "wordIds": [
+                                "โทษะ"
+                            ],
+                            "originalSource": "โทษะ"
                         },
                         {
-                            "source": "โท ษะ",
-                            "translations": { "en": "Punishment.", "fa": "مجازات.", "th": "โท ษะ" },
-                            "wordIds": [ "โท" ]
+                            "source": "เกาะสมุยสวย",
+                            "translations": {
+                                "en": "Koh Samui is beautiful.",
+                                "fa": "جزیره سامویی زیباست.",
+                                "th": "เกาะ สมุย สวย"
+                            },
+                            "wordIds": [
+                                "เกาะ",
+                                "สมุย",
+                                "สวย"
+                            ],
+                            "originalSource": "เกาะ สมุย สวย"
                         },
                         {
-                            "source": "เกาะ สมุย สวย",
-                            "translations": { "en": "Koh Samui is beautiful.", "fa": "جزیره سامویی زیباست.", "th": "เกาะ สมุย สวย" },
-                            "wordIds": [ "เกาะ" ]
+                            "source": "เจอกัน",
+                            "translations": {
+                                "en": "See you.",
+                                "fa": "بعدا می‌بینمت.",
+                                "th": "เจอ กัน"
+                            },
+                            "wordIds": [
+                                "เจอ",
+                                "กัน"
+                            ],
+                            "originalSource": "เจอ กัน"
                         },
                         {
-                            "source": "เจอ กัน",
-                            "translations": { "en": "See you.", "fa": "بعدا می‌بینمت.", "th": "เจอ กัน" },
-                            "wordIds": [ "เจอ" ]
+                            "source": "เขาเกิดที่ไทย",
+                            "translations": {
+                                "en": "He was born in Thailand.",
+                                "fa": "او در تایلند متولد شد.",
+                                "th": "เขา เกิด ที่ ไทย"
+                            },
+                            "wordIds": [
+                                "เขา",
+                                "เกิด",
+                                "ที่",
+                                "ไทย"
+                            ],
+                            "originalSource": "เขา เกิด ที่ ไทย"
                         },
                         {
-                            "source": "เขา เกิด ที่ ไทย",
-                            "translations": { "en": "He was born in Thailand.", "fa": "او در تایلند متولد شد.", "th": "เขา เกิด ที่ ไทย" },
-                            "wordIds": [ "เกิด" ]
+                            "source": "เออครับ",
+                            "translations": {
+                                "en": "Yes (casual).",
+                                "fa": "آره.",
+                                "th": "เออ ครับ"
+                            },
+                            "wordIds": [
+                                "เออ",
+                                "ครับ"
+                            ],
+                            "originalSource": "เออ ครับ"
                         },
                         {
-                            "source": "เออ ครับ",
-                            "translations": { "en": "Yes (casual).", "fa": "آره.", "th": "เออ ครับ" },
-                            "wordIds": [ "เออ" ]
+                            "source": "โทรศัพท์เสีย",
+                            "translations": {
+                                "en": "The phone is broken.",
+                                "fa": "تلفن خراب است.",
+                                "th": "โทรศัพท์ เสีย"
+                            },
+                            "wordIds": [
+                                "โทรศัพท์",
+                                "เสีย"
+                            ],
+                            "originalSource": "โทรศัพท์ เสีย"
                         },
                         {
-                            "source": "โทรศัพท์ เสีย",
-                            "translations": { "en": "The phone is broken.", "fa": "تلفن خراب است.", "th": "โทรศัพท์ เสีย" },
-                            "wordIds": [ "เสีย" ]
+                            "source": "ฉันเชื่อคุณ",
+                            "translations": {
+                                "en": "I believe you.",
+                                "fa": "من تو را باور دارم.",
+                                "th": "ฉัน เชื่อ คุณ"
+                            },
+                            "wordIds": [
+                                "ฉัน",
+                                "เชื่อ",
+                                "คุณ"
+                            ],
+                            "originalSource": "ฉัน เชื่อ คุณ"
                         },
                         {
-                            "source": "ฉัน เชื่อ คุณ",
-                            "translations": { "en": "I believe you.", "fa": "من تو را باور دارم.", "th": "ฉัน เชื่อ คุณ" },
-                            "wordIds": [ "เชื่อ" ]
+                            "source": "ตัวนี้สวย",
+                            "translations": {
+                                "en": "This one is beautiful.",
+                                "fa": "این یکی زیباست.",
+                                "th": "ตัว นี้ สวย"
+                            },
+                            "wordIds": [
+                                "ตัว",
+                                "นี้",
+                                "สวย"
+                            ],
+                            "originalSource": "ตัว นี้ สวย"
                         },
                         {
-                            "source": "ตัว นี้ สวย",
-                            "translations": { "en": "This one is beautiful.", "fa": "این یکی زیباست.", "th": "ตัว นี้ สวย" },
-                            "wordIds": [ "ตัว" ]
+                            "source": "เรือแล่นไป",
+                            "translations": {
+                                "en": "The boat sails away.",
+                                "fa": "قایق حرکت می‌کند.",
+                                "th": "เรือ แล่น ไป"
+                            },
+                            "wordIds": [
+                                "เรือ",
+                                "แล่น",
+                                "ไป"
+                            ],
+                            "originalSource": "เรือ แล่น ไป"
                         },
                         {
-                            "source": "เรือ แล่น ไป",
-                            "translations": { "en": "The boat sails away.", "fa": "قایق حرکت می‌کند.", "th": "เรือ แล่น ไป" },
-                            "wordIds": [ "เรือ" ]
+                            "source": "รถเร็ว",
+                            "translations": {
+                                "en": "Fast car.",
+                                "fa": "ماشین سریع.",
+                                "th": "รถ เร็ว"
+                            },
+                            "wordIds": [
+                                "รถ",
+                                "เร็ว"
+                            ],
+                            "originalSource": "รถ เร็ว"
                         },
                         {
-                            "source": "รถ เร็ว",
-                            "translations": { "en": "Fast car.", "fa": "ماشین سریع.", "th": "รถ เร็ว" },
-                            "wordIds": [ "เร็ว" ]
+                            "source": "ฉันเรียนภาษาไทย",
+                            "translations": {
+                                "en": "I study Thai.",
+                                "fa": "من تایلندی می‌خوانم.",
+                                "th": "ฉัน เรียน ภาษา ไทย"
+                            },
+                            "wordIds": [
+                                "ฉัน",
+                                "เรียน",
+                                "ภาษา",
+                                "ไทย"
+                            ],
+                            "originalSource": "ฉัน เรียน ภาษา ไทย"
                         },
                         {
-                            "source": "ฉัน เรียน ภาษา ไทย",
-                            "translations": { "en": "I study Thai.", "fa": "من تایلندی می‌خوانم.", "th": "ฉัน เรียน ภาษา ไทย" },
-                            "wordIds": [ "เรียน" ]
+                            "source": "เขาเลี้ยงหมา",
+                            "translations": {
+                                "en": "He raises dogs.",
+                                "fa": "او سگ نگه می‌دارد.",
+                                "th": "เขา เลี้ยง หมา"
+                            },
+                            "wordIds": [
+                                "เขา",
+                                "เลี้ยง",
+                                "หมา"
+                            ],
+                            "originalSource": "เขา เลี้ยง หมา"
                         },
                         {
-                            "source": "เขา เลี้ยง หมา",
-                            "translations": { "en": "He raises dogs.", "fa": "او سگ نگه می‌دارد.", "th": "เขา เลี้ยง หมา" },
-                            "wordIds": [ "เลี้ยง" ]
+                            "source": "เสือเป็นสัตว์",
+                            "translations": {
+                                "en": "Tigers are animals.",
+                                "fa": "ببرها حیوان هستند.",
+                                "th": "เสือ เป็น สัตว์"
+                            },
+                            "wordIds": [
+                                "เสือ",
+                                "เป็น",
+                                "สัตว์"
+                            ],
+                            "originalSource": "เสือ เป็น สัตว์"
                         },
                         {
-                            "source": "เสือ เป็น สัตว์",
-                            "translations": { "en": "Tigers are animals.", "fa": "ببرها حیوان هستند.", "th": "เสือ เป็น สัตว์" },
-                            "wordIds": [ "เสือ" ]
+                            "source": "เพื่อใคร",
+                            "translations": {
+                                "en": "For whom?",
+                                "fa": "برای چه کسی؟",
+                                "th": "เพื่อ ใคร"
+                            },
+                            "wordIds": [
+                                "เพื่อ",
+                                "ใคร"
+                            ],
+                            "originalSource": "เพื่อ ใคร"
                         },
                         {
-                            "source": "เพื่อ ใคร",
-                            "translations": { "en": "For whom?", "fa": "برای چه کسی؟", "th": "เพื่อ ใคร" },
-                            "wordIds": [ "เพื่อ" ]
+                            "source": "เนื้ออ่อน",
+                            "translations": {
+                                "en": "Tender meat.",
+                                "fa": "گوشت نرم.",
+                                "th": "เนื้อ อ่อน"
+                            },
+                            "wordIds": [
+                                "เนื้อ",
+                                "อ่อน"
+                            ],
+                            "originalSource": "เนื้อ อ่อน"
                         },
                         {
-                            "source": "เนื้อ อ่อน",
-                            "translations": { "en": "Tender meat.", "fa": "گوشت نرم.", "th": "เนื้อ อ่อน" },
-                            "wordIds": [ "เนื้อ" ]
+                            "source": "เลื่อยไม้",
+                            "translations": {
+                                "en": "Wood saw.",
+                                "fa": "اره چوب.",
+                                "th": "เลื่อย ไม้"
+                            },
+                            "wordIds": [
+                                "เลื่อย",
+                                "ไม้"
+                            ],
+                            "originalSource": "เลื่อย ไม้"
                         },
                         {
-                            "source": "เลื่อย ไม้",
-                            "translations": { "en": "Wood saw.", "fa": "اره چوب.", "th": "เลื่อย ไม้" },
-                            "wordIds": [ "เลื่อย" ]
+                            "source": "หัวของเขาเจ็บ",
+                            "translations": {
+                                "en": "His head hurts.",
+                                "fa": "سرش درد می‌کند.",
+                                "th": "หัว ของ เขา เจ็บ"
+                            },
+                            "wordIds": [
+                                "หัว",
+                                "ของ",
+                                "เขา",
+                                "เจ็บ"
+                            ],
+                            "originalSource": "หัว ของ เขา เจ็บ"
                         },
                         {
-                            "source": "หัว ของ เขา เจ็บ",
-                            "translations": { "en": "His head hurts.", "fa": "سرش درد می‌کند.", "th": "หัว ของ เขา เจ็บ" },
-                            "wordIds": [ "หัว" ]
-                        },
-                        {
-                            "source": "ฉัน กลัว งู",
-                            "translations": { "en": "I am afraid of snakes.", "fa": "من از مار می‌ترسم.", "th": "ฉัน กลัว งู" },
-                            "wordIds": [ "กลัว" ]
+                            "source": "ฉันกลัวงู",
+                            "translations": {
+                                "en": "I am afraid of snakes.",
+                                "fa": "من از مار می‌ترسم.",
+                                "th": "ฉัน กลัว งู"
+                            },
+                            "wordIds": [
+                                "ฉัน",
+                                "กลัว",
+                                "งู"
+                            ],
+                            "originalSource": "ฉัน กลัว งู"
                         }
                     ]
                 }
@@ -638,7 +2758,10 @@
                 "th": "สระเกิน",
                 "fa": "مصوت‌های ویژه"
             },
-            "activity": { "words": true, "sentences": true },
+            "activity": {
+                "words": true,
+                "sentences": true
+            },
             "content": [
                 {
                     "type": "words",
@@ -647,7 +2770,11 @@
                         "th": "คำที่มีสระเกิน",
                         "fa": "کلمات با مصوت‌های ویژه"
                     },
-                    "wordIds": [ "ฤดู", "ฤๅษี", "ฦๅ" ]
+                    "wordIds": [
+                        "ฤดู",
+                        "ฤๅษี",
+                        "ฦๅ"
+                    ]
                 },
                 {
                     "type": "paragraph",
@@ -658,19 +2785,52 @@
                     },
                     "sentences": [
                         {
-                            "source": "ฤดู หนาว นี้ หนาว มาก",
-                            "translations": { "en": "This winter is very cold.", "fa": "این زمستان بسیار سرد است.", "th": "ฤดู หนาว นี้ หนาว มาก" },
-                            "wordIds": [ "ฤดู" ]
+                            "source": "ฤดูหนาวนี้หนาวมาก",
+                            "translations": {
+                                "en": "This winter is very cold.",
+                                "fa": "این زمستان بسیار سرد است.",
+                                "th": "ฤดู หนาว นี้ หนาว มาก"
+                            },
+                            "wordIds": [
+                                "ฤดู",
+                                "หนาว",
+                                "นี้",
+                                "หนาว",
+                                "มาก"
+                            ],
+                            "originalSource": "ฤดู หนาว นี้ หนาว มาก"
                         },
                         {
-                            "source": "ฤๅษี นั่ง สมาธิ",
-                            "translations": { "en": "The hermit sits in meditation.", "fa": "زاهد در مراقبه نشسته است.", "th": "ฤๅษี นั่ง สมาธิ" },
-                            "wordIds": [ "ฤๅษี" ]
+                            "source": "ฤๅษีนั่งสมาธิ",
+                            "translations": {
+                                "en": "The hermit sits in meditation.",
+                                "fa": "زاهد در مراقبه نشسته است.",
+                                "th": "ฤๅษี นั่ง สมาธิ"
+                            },
+                            "wordIds": [
+                                "ฤๅษี",
+                                "นั่ง",
+                                "สมาธิ"
+                            ],
+                            "originalSource": "ฤๅษี นั่ง สมาธิ"
                         },
                         {
-                            "source": "ฦๅ เป็น สระ ที่ ไม่ ค่อย ใช้",
-                            "translations": { "en": "ฦๅ is a rarely used vowel.", "fa": "ฦๅ مصوتی است که به ندرت استفاده می‌شود.", "th": "ฦๅ เป็น สระ ที่ ไม่ ค่อย ใช้" },
-                            "wordIds": [ "ฦๅ" ]
+                            "source": "ฦๅเป็นสระที่ไม่ค่อยใช้",
+                            "translations": {
+                                "en": "ฦๅ is a rarely used vowel.",
+                                "fa": "ฦๅ مصوتی است که به ندرت استفاده می‌شود.",
+                                "th": "ฦๅ เป็น สระ ที่ ไม่ ค่อย ใช้"
+                            },
+                            "wordIds": [
+                                "ฦๅ",
+                                "เป็น",
+                                "สระ",
+                                "ที่",
+                                "ไม่",
+                                "ค่อย",
+                                "ใช้"
+                            ],
+                            "originalSource": "ฦๅ เป็น สระ ที่ ไม่ ค่อย ใช้"
                         }
                     ]
                 }
@@ -683,7 +2843,10 @@
                 "th": "สระประสม",
                 "fa": "مصوت‌های مرکب"
             },
-            "activity": { "words": true, "sentences": true },
+            "activity": {
+                "words": true,
+                "sentences": true
+            },
             "content": [
                 {
                     "type": "words",
@@ -692,7 +2855,19 @@
                         "th": "คำที่มีสระประสม",
                         "fa": "کلمات با مصوت‌های مرکب"
                     },
-                    "wordIds": [ "เขียะ", "เผียะ", "เสีย", "เรียน", "ตัว", "เรือ", "เนื้อ", "เกื้อะ", "มัวะ", "รัวะ", "กลัว", "หัว" ]
+                    "wordIds": [
+                        "เขียะ",
+                        "เผียะ",
+                        "เสีย",
+                        "เรียน",
+                        "ตัว",
+                        "เรือ",
+                        "เนื้อ",
+                        "มัวะ",
+                        "รัวะ",
+                        "กลัว",
+                        "หัว"
+                    ]
                 },
                 {
                     "type": "paragraph",
@@ -703,64 +2878,157 @@
                     },
                     "sentences": [
                         {
-                            "source": "เสียง เขียะ ดัง",
-                            "translations": { "en": "The scraping sound is loud.", "fa": "صدای خراش بلند است.", "th": "เสียง เขียะ ดัง" },
-                            "wordIds": [ "เขียะ" ]
+                            "source": "เสียงเขียะดัง",
+                            "translations": {
+                                "en": "The scraping sound is loud.",
+                                "fa": "صدای خراش بلند است.",
+                                "th": "เสียง เขียะ ดัง"
+                            },
+                            "wordIds": [
+                                "เสียง",
+                                "เขียะ",
+                                "ดัง"
+                            ],
+                            "originalSource": "เสียง เขียะ ดัง"
                         },
                         {
-                            "source": "เขา เผียะ ลิ้น",
-                            "translations": { "en": "He stuck out his tongue.", "fa": "او زبانش را درآورد.", "th": "เขา เผียะ ลิ้น" },
-                            "wordIds": [ "เผียะ" ]
+                            "source": "เขาเผียะลิ้น",
+                            "translations": {
+                                "en": "He stuck out his tongue.",
+                                "fa": "او زبانش را درآورد.",
+                                "th": "เขา เผียะ ลิ้น"
+                            },
+                            "wordIds": [
+                                "เขา",
+                                "เผียะ",
+                                "ลิ้น"
+                            ],
+                            "originalSource": "เขา เผียะ ลิ้น"
                         },
                         {
-                            "source": "โทรศัพท์ เสีย",
-                            "translations": { "en": "The phone is broken.", "fa": "تلفن خراب است.", "th": "โทรศัพท์ เสีย" },
-                            "wordIds": [ "เสีย" ]
+                            "source": "โทรศัพท์เสีย",
+                            "translations": {
+                                "en": "The phone is broken.",
+                                "fa": "تلفن خراب است.",
+                                "th": "โทรศัพท์ เสีย"
+                            },
+                            "wordIds": [
+                                "โทรศัพท์",
+                                "เสีย"
+                            ],
+                            "originalSource": "โทรศัพท์ เสีย"
                         },
                         {
-                            "source": "ฉัน เรียน ภาษา ไทย",
-                            "translations": { "en": "I study Thai.", "fa": "من تایلندی می‌خوانم.", "th": "ฉัน เรียน ภาษา ไทย" },
-                            "wordIds": [ "เรียน" ]
+                            "source": "ฉันเรียนภาษาไทย",
+                            "translations": {
+                                "en": "I study Thai.",
+                                "fa": "من تایلندی می‌خوانم.",
+                                "th": "ฉัน เรียน ภาษา ไทย"
+                            },
+                            "wordIds": [
+                                "ฉัน",
+                                "เรียน",
+                                "ภาษา",
+                                "ไทย"
+                            ],
+                            "originalSource": "ฉัน เรียน ภาษา ไทย"
                         },
                         {
-                            "source": "ตัว นี้ สวย",
-                            "translations": { "en": "This one is beautiful.", "fa": "این یکی زیباست.", "th": "ตัว นี้ สวย" },
-                            "wordIds": [ "ตัว" ]
+                            "source": "ตัวนี้สวย",
+                            "translations": {
+                                "en": "This one is beautiful.",
+                                "fa": "این یکی زیباست.",
+                                "th": "ตัว นี้ สวย"
+                            },
+                            "wordIds": [
+                                "ตัว",
+                                "นี้",
+                                "สวย"
+                            ],
+                            "originalSource": "ตัว นี้ สวย"
                         },
                         {
-                            "source": "เรือ แล่น ไป",
-                            "translations": { "en": "The boat sails away.", "fa": "قایق حرکت می‌کند.", "th": "เรือ แล่น ไป" },
-                            "wordIds": [ "เรือ" ]
+                            "source": "เรือแล่นไป",
+                            "translations": {
+                                "en": "The boat sails away.",
+                                "fa": "قایق حرکت می‌کند.",
+                                "th": "เรือ แล่น ไป"
+                            },
+                            "wordIds": [
+                                "เรือ",
+                                "แล่น",
+                                "ไป"
+                            ],
+                            "originalSource": "เรือ แล่น ไป"
                         },
                         {
-                            "source": "เนื้อ อ่อน",
-                            "translations": { "en": "Tender meat.", "fa": "گوشت نرم.", "th": "เนื้อ อ่อน" },
-                            "wordIds": [ "เนื้อ" ]
+                            "source": "เนื้ออ่อน",
+                            "translations": {
+                                "en": "Tender meat.",
+                                "fa": "گوشت نرم.",
+                                "th": "เนื้อ อ่อน"
+                            },
+                            "wordIds": [
+                                "เนื้อ",
+                                "อ่อน"
+                            ],
+                            "originalSource": "เนื้อ อ่อน"
                         },
                         {
-                            "source": "เขา เกื้อะ ฉัน",
-                            "translations": { "en": "He supported me.", "fa": "او از من حمایت کرد.", "th": "เขา เกื้อะ ฉัน" },
-                            "wordIds": [ "เกื้อะ" ]
+                            "source": "ภาพมัวะ",
+                            "translations": {
+                                "en": "The picture is blurry.",
+                                "fa": "تصویر تار است.",
+                                "th": "ภาพ มัวะ"
+                            },
+                            "wordIds": [
+                                "ภาพ",
+                                "มัวะ"
+                            ],
+                            "originalSource": "ภาพ มัวะ"
                         },
                         {
-                            "source": "ภาพ มัวะ",
-                            "translations": { "en": "The picture is blurry.", "fa": "تصویر تار است.", "th": "ภาพ มัวะ" },
-                            "wordIds": [ "มัวะ" ]
+                            "source": "เขาวิ่งรัวะ",
+                            "translations": {
+                                "en": "He runs quickly.",
+                                "fa": "او سریع می‌دود.",
+                                "th": "เขาวิ่ง รัวะ"
+                            },
+                            "wordIds": [
+                                "เขา",
+                                "วิ่ง",
+                                "รัวะ"
+                            ],
+                            "originalSource": "เขา วิ่ง รัวะ"
                         },
                         {
-                            "source": "เขาวิ่ง รัวะ",
-                            "translations": { "en": "He runs quickly.", "fa": "او سریع می‌دود.", "th": "เขาวิ่ง รัวะ" },
-                            "wordIds": [ "รัวะ" ]
+                            "source": "ฉันกลัวงู",
+                            "translations": {
+                                "en": "I am afraid of snakes.",
+                                "fa": "من از مار می‌ترسم.",
+                                "th": "ฉัน กลัว งู"
+                            },
+                            "wordIds": [
+                                "ฉัน",
+                                "กลัว",
+                                "งู"
+                            ],
+                            "originalSource": "ฉัน กลัว งู"
                         },
                         {
-                            "source": "ฉัน กลัว งู",
-                            "translations": { "en": "I am afraid of snakes.", "fa": "من از مار می‌ترسم.", "th": "ฉัน กลัว งู" },
-                            "wordIds": [ "กลัว" ]
-                        },
-                        {
-                            "source": "หัว ของ เขา เจ็บ",
-                            "translations": { "en": "His head hurts.", "fa": "سرش درد می‌کند.", "th": "หัว ของ เขา เจ็บ" },
-                            "wordIds": [ "หัว" ]
+                            "source": "หัวของเขาเจ็บ",
+                            "translations": {
+                                "en": "His head hurts.",
+                                "fa": "سرش درد می‌کند.",
+                                "th": "หัว ของ เขา เจ็บ"
+                            },
+                            "wordIds": [
+                                "หัว",
+                                "ของ",
+                                "เขา",
+                                "เจ็บ"
+                            ],
+                            "originalSource": "หัว ของ เขา เจ็บ"
                         }
                     ]
                 }

@@ -1,95 +1,6 @@
 {
     "learningObjects": [
         {
-            "learningObjectId": "reading-thai",
-            "title": {
-                "en": "Reading Thai",
-                "fa": "خواندن تایلندی",
-                "th": "การอ่านภาษาไทย"
-            },
-            "description": {
-                "en": "Learn to read Thai through systematic practice with consonants, vowels, compound words, and opposites.",
-                "fa": "خواندن تایلندی را از طریق تمرین سیستماتیک با حروف صدادار، مصوت‌ها، کلمات مرکب و متضادها یاد بگیرید.",
-                "th": "เรียนรู้การอ่านภาษาไทยผ่านการฝึกฝนอย่างเป็นระบบด้วยพยัญชนะ สระ คำประสม และคำตรงข้าม"
-            },
-            "order": 4,
-            "icon": "menu_book",
-            "documents": [
-                {
-                    "id": "thai-alphabet",
-                    "title": {
-                        "en": "Thai Alphabet",
-                        "th": "พยัญชนะไทย",
-                        "fa": "الفبای تایلندی"
-                    },
-                    "sourceLang": "th",
-                    "targetLangs": [ "en", "fa" ],
-                    "filePath": "data/reading/thai-alphabet.json",
-                    "status": "published",
-                    "difficulty": "beginner",
-                    "wordCount": 50,
-                    "sentenceCount": 50,
-                    "estimatedTime": 45,
-                    "grammarPoint": "Thai consonants and their example words",
-                    "tags": [ "alphabet", "consonants", "reading" ]
-                },
-                {
-                    "id": "thai-vowels",
-                    "title": {
-                        "en": "Thai Vowels",
-                        "th": "สระไทย",
-                        "fa": "حروف صدادار تایلندی"
-                    },
-                    "sourceLang": "th",
-                    "targetLangs": [ "en", "fa" ],
-                    "filePath": "data/reading/thai-vowels.json",
-                    "status": "published",
-                    "difficulty": "beginner",
-                    "wordCount": 40,
-                    "sentenceCount": 40,
-                    "estimatedTime": 40,
-                    "grammarPoint": "Thai vowels and their usage",
-                    "tags": [ "vowels", "reading" ]
-                },
-                {
-                    "id": "compound-words",
-                    "title": {
-                        "en": "Compound Words",
-                        "th": "คำประสม",
-                        "fa": "کلمات مرکب"
-                    },
-                    "sourceLang": "th",
-                    "targetLangs": [ "en", "fa" ],
-                    "filePath": "data/reading/compound-words.json",
-                    "status": "published",
-                    "difficulty": "intermediate",
-                    "wordCount": 30,
-                    "sentenceCount": 30,
-                    "estimatedTime": 35,
-                    "grammarPoint": "Common Thai compound words",
-                    "tags": [ "compound", "vocabulary" ]
-                },
-                {
-                    "id": "opposite-words",
-                    "title": {
-                        "en": "Opposite Words",
-                        "th": "คำตรงข้าม",
-                        "fa": "متضادها"
-                    },
-                    "sourceLang": "th",
-                    "targetLangs": [ "en", "fa" ],
-                    "filePath": "data/reading/opposite-words.json",
-                    "status": "published",
-                    "difficulty": "beginner",
-                    "wordCount": 30,
-                    "sentenceCount": 30,
-                    "estimatedTime": 30,
-                    "grammarPoint": "Common opposite word pairs",
-                    "tags": [ "opposites", "adjectives", "vocabulary" ]
-                }
-            ]
-        },
-        {
             "learningObjectId": "TSL",
             "title": {
                 "en": "TSL",
@@ -839,6 +750,95 @@
                     "sentenceCount": 32,
                     "estimatedTime": 40,
                     "tags": [ "emergencies", "problems", "help", "police" ]
+                }
+            ]
+        },
+        {
+            "learningObjectId": "reading-thai",
+            "title": {
+                "en": "Reading Thai",
+                "fa": "خواندن تایلندی",
+                "th": "การอ่านภาษาไทย"
+            },
+            "description": {
+                "en": "Learn to read Thai through systematic practice with consonants, vowels, compound words, and opposites.",
+                "fa": "خواندن تایلندی را از طریق تمرین سیستماتیک با حروف صدادار، مصوت‌ها، کلمات مرکب و متضادها یاد بگیرید.",
+                "th": "เรียนรู้การอ่านภาษาไทยผ่านการฝึกฝนอย่างเป็นระบบด้วยพยัญชนะ สระ คำประสม และคำตรงข้าม"
+            },
+            "order": 4,
+            "icon": "menu_book",
+            "documents": [
+                {
+                    "id": "thai-alphabet",
+                    "title": {
+                        "en": "Thai Alphabet",
+                        "th": "พยัญชนะไทย",
+                        "fa": "الفبای تایلندی"
+                    },
+                    "sourceLang": "th",
+                    "targetLangs": [ "en", "fa" ],
+                    "filePath": "data/reading/thai-alphabet.json",
+                    "status": "published",
+                    "difficulty": "beginner",
+                    "wordCount": 50,
+                    "sentenceCount": 50,
+                    "estimatedTime": 45,
+                    "grammarPoint": "Thai consonants and their example words",
+                    "tags": [ "alphabet", "consonants", "reading" ]
+                },
+                {
+                    "id": "thai-vowels",
+                    "title": {
+                        "en": "Thai Vowels",
+                        "th": "สระไทย",
+                        "fa": "حروف صدادار تایلندی"
+                    },
+                    "sourceLang": "th",
+                    "targetLangs": [ "en", "fa" ],
+                    "filePath": "data/reading/thai-vowels.json",
+                    "status": "published",
+                    "difficulty": "beginner",
+                    "wordCount": 40,
+                    "sentenceCount": 40,
+                    "estimatedTime": 40,
+                    "grammarPoint": "Thai vowels and their usage",
+                    "tags": [ "vowels", "reading" ]
+                },
+                {
+                    "id": "compound-words",
+                    "title": {
+                        "en": "Compound Words",
+                        "th": "คำประสม",
+                        "fa": "کلمات مرکب"
+                    },
+                    "sourceLang": "th",
+                    "targetLangs": [ "en", "fa" ],
+                    "filePath": "data/reading/compound-words.json",
+                    "status": "published",
+                    "difficulty": "intermediate",
+                    "wordCount": 30,
+                    "sentenceCount": 30,
+                    "estimatedTime": 35,
+                    "grammarPoint": "Common Thai compound words",
+                    "tags": [ "compound", "vocabulary" ]
+                },
+                {
+                    "id": "opposite-words",
+                    "title": {
+                        "en": "Opposite Words",
+                        "th": "คำตรงข้าม",
+                        "fa": "متضادها"
+                    },
+                    "sourceLang": "th",
+                    "targetLangs": [ "en", "fa" ],
+                    "filePath": "data/reading/opposite-words.json",
+                    "status": "published",
+                    "difficulty": "beginner",
+                    "wordCount": 30,
+                    "sentenceCount": 30,
+                    "estimatedTime": 30,
+                    "grammarPoint": "Common opposite word pairs",
+                    "tags": [ "opposites", "adjectives", "vocabulary" ]
                 }
             ]
         }
