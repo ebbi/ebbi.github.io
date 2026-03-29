@@ -20,7 +20,7 @@
         "authors": [ ],
         "reviewers": [ ],
         "tags": [ ],
-        "updated": "2026-02-24T04:43:37.177Z"
+        "updated": "2026-03-29T07:20:07.993Z"
     },
     "vocabulary": {
         "กิน": {
@@ -43,7 +43,7 @@
         },
         "ไม่": {
             "translations": {
-                "en": "no/not",
+                "en": "no",
                 "fa": "نه"
             }
         },
@@ -127,8 +127,8 @@
         },
         "หน่อย": {
             "translations": {
-                "en": "a little/please",
-                "fa": "کمی/لطفاً"
+                "en": "little/",
+                "fa": "کمی"
             }
         },
         "ขอ": {
@@ -201,109 +201,109 @@
         },
         "คุณ": {
             "translations": {
-                "en": "You",
+                "en": "you",
                 "fa": "شما:"
             }
         },
         "อะไร": {
             "translations": {
-                "en": "WHAT",
+                "en": "what",
                 "fa": "چه:"
             }
         },
         "ครับ": {
             "translations": {
-                "en": "OK",
+                "en": "ok",
                 "fa": "بله"
             }
         },
         "ฉัน": {
             "translations": {
-                "en": "Me",
+                "en": "me",
                 "fa": "من"
             }
         },
         "ค่ะ": {
             "translations": {
-                "en": "Thank you.",
+                "en": "thank you",
                 "fa": "بله"
             }
         },
         "แล้ว": {
             "translations": {
-                "en": "So ",
+                "en": "already",
                 "fa": "قبلاً"
             }
         },
         "สวัสดี": {
             "translations": {
-                "en": "Hi.",
+                "en": "hello",
                 "fa": "سلام"
             }
         },
         "ข้าวผัด": {
             "translations": {
-                "en": "Fried rice",
+                "en": "fried rice",
                 "fa": "برنج سرخ شده"
             }
         },
         "ได้": {
             "translations": {
-                "en": "Yes",
+                "en": "yes",
                 "fa": "می‌تواند"
             }
         },
         "คะ": {
             "translations": {
-                "en": "Ka",
+                "en": "yes",
                 "fa": "بله"
             }
         },
         "ไก่": {
             "translations": {
-                "en": "Chicken",
+                "en": "chicken",
                 "fa": "مرغ"
             }
         },
         "น้ำเปล่า": {
             "translations": {
-                "en": "Water",
+                "en": "plain water",
                 "fa": "آب ساده"
             }
         },
         "หนึ่ง": {
             "translations": {
-                "en": "“One.”",
+                "en": "one",
                 "fa": "یک"
             }
         },
         "ขวด": {
             "translations": {
-                "en": "Bottle",
+                "en": "bottle",
                 "fa": "بطری"
             }
         },
         "แน่นอน": {
             "translations": {
-                "en": "Of course",
+                "en": "of course",
                 "fa": "قطعی"
             }
         },
         "ข้าวต้ม": {
             "translations": {
-                "en": "Rice soup",
+                "en": "rice soup",
                 "fa": "برنج آب‌پز"
             }
         },
         "ไข่": {
             "translations": {
-                "en": "Egg",
+                "en": "egg",
                 "fa": "تخم‌مرغ"
             }
         },
         "ก๋วยเตี๋ยว": {
             "translations": {
-                "en": "Noodle",
+                "en": "noodle",
                 "fa": "رشته فرنگی"
             }
         }
@@ -361,7 +361,8 @@
                             "translations": {
                                 "en": "What do you like to eat?",
                                 "fa": "چه چیزی دوست دارید بخورید؟"
-                            }
+                            },
+                            "originalSource": "คุณชอบกินอะไรครับ"
                         },
                         {
                             "source": "ฉันชอบกินผลไม้ค่ะ",
@@ -375,7 +376,8 @@
                             "translations": {
                                 "en": "I like to eat fruit",
                                 "fa": "میوه دوست دارم بخورم"
-                            }
+                            },
+                            "originalSource": "ฉันชอบกินผลไม้ค่ะ"
                         },
                         {
                             "source": "แล้วคุณชอบดื่มอะไรครับ",
@@ -390,7 +392,8 @@
                             "translations": {
                                 "en": "And what do you like to drink?",
                                 "fa": "و چه چیزی دوست دارید بنوشید؟"
-                            }
+                            },
+                            "originalSource": "แล้วคุณชอบดื่มอะไรครับ"
                         },
                         {
                             "source": "ชอบดื่มชาค่ะ",
@@ -403,7 +406,8 @@
                             "translations": {
                                 "en": "I like to drink tea",
                                 "fa": "چای دوست دارم"
-                            }
+                            },
+                            "originalSource": "ชอบดื่มชาค่ะ"
                         }
                     ]
                 }
@@ -433,7 +437,8 @@
                             "translations": {
                                 "en": "Hello, can I have a little fried rice please?",
                                 "fa": "سلام، برنج سرخ‌شده می‌خواهم لطفاً"
-                            }
+                            },
+                            "originalSource": "สวัสดีครับขอข้าวผัดหน่อยครับ"
                         },
                         {
                             "source": "ได้ค่ะกับอะไรคะ",
@@ -447,7 +452,8 @@
                             "translations": {
                                 "en": "Certainly, with what?",
                                 "fa": "حتماً، با چه چیزی؟"
-                            }
+                            },
+                            "originalSource": "ได้ค่ะกับอะไรคะ"
                         },
                         {
                             "source": "กับไก่ครับ",
@@ -459,7 +465,8 @@
                             "translations": {
                                 "en": "With chicken",
                                 "fa": "با مرغ"
-                            }
+                            },
+                            "originalSource": "กับไก่ครับ"
                         },
                         {
                             "source": "และขอน้ำเปล่าหนึ่งขวดครับ",
@@ -474,7 +481,8 @@
                             "translations": {
                                 "en": "And one bottle of water please",
                                 "fa": "و یک بطری آب لطفاً"
-                            }
+                            },
+                            "originalSource": "และขอน้ำเปล่าหนึ่งขวดครับ"
                         },
                         {
                             "source": "ได้ค่ะอร่อยแน่นอนค่ะ",
@@ -488,7 +496,8 @@
                             "translations": {
                                 "en": "Certainly, it will be delicious",
                                 "fa": "حتماً، خوشمزه خواهد بود"
-                            }
+                            },
+                            "originalSource": "ได้ค่ะอร่อยแน่นอนค่ะ"
                         }
                     ]
                 }
@@ -517,7 +526,8 @@
                             "translations": {
                                 "en": "What do you eat for breakfast?",
                                 "fa": "برای صبحانه چه می‌خورید؟"
-                            }
+                            },
+                            "originalSource": "มื้อเช้าคุณกินอะไรครับ"
                         },
                         {
                             "source": "มื้อเช้าฉันกินข้าวต้มกับไข่ค่ะ",
@@ -533,7 +543,8 @@
                             "translations": {
                                 "en": "For breakfast, I eat rice porridge with egg",
                                 "fa": "برای صبحانه، برنج‌پخته با تخم‌مرغ می‌خورم"
-                            }
+                            },
+                            "originalSource": "มื้อเช้าฉันกินข้าวต้มกับไข่ค่ะ"
                         },
                         {
                             "source": "มื้อกลางวันกินอะไรครับ",
@@ -546,7 +557,8 @@
                             "translations": {
                                 "en": "What about lunch?",
                                 "fa": "ناهار چطور؟"
-                            }
+                            },
+                            "originalSource": "มื้อกลางวันกินอะไรครับ"
                         },
                         {
                             "source": "มื้อกลางวันกินก๋วยเตี๋ยวค่ะ",
@@ -559,7 +571,8 @@
                             "translations": {
                                 "en": "For lunch, I eat noodles",
                                 "fa": "برای ناهار، نودل می‌خورم"
-                            }
+                            },
+                            "originalSource": "มื้อกลางวันกินก๋วยเตี๋ยวค่ะ"
                         },
                         {
                             "source": "อร่อยไหมครับ",
@@ -571,7 +584,8 @@
                             "translations": {
                                 "en": "Is it delicious?",
                                 "fa": "خوشمزه است؟"
-                            }
+                            },
+                            "originalSource": "อร่อยไหมครับ"
                         },
                         {
                             "source": "อร่อยมากค่ะ",
@@ -583,7 +597,8 @@
                             "translations": {
                                 "en": "Very delicious",
                                 "fa": "بسیار خوشمزه"
-                            }
+                            },
+                            "originalSource": "อร่อยมากค่ะ"
                         }
                     ]
                 }

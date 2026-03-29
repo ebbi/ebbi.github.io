@@ -20,7 +20,7 @@
         "authors": [ ],
         "reviewers": [ ],
         "tags": [ ],
-        "updated": "2026-02-24T06:30:13.537Z"
+        "updated": "2026-03-29T07:23:16.803Z"
     },
     "vocabulary": {
         "ไป": {
@@ -61,7 +61,7 @@
         },
         "บาท": {
             "translations": {
-                "en": "baht",
+                "en": "Baht",
                 "fa": "بات"
             }
         },
@@ -109,8 +109,8 @@
         },
         "รับ": {
             "translations": {
-                "en": "receive/accept",
-                "fa": "پذیرفتن"
+                "en": "receive",
+                "fa": "دریافت"
             }
         },
         "ถุง": {
@@ -121,8 +121,8 @@
         },
         "ของ": {
             "translations": {
-                "en": "thing/item",
-                "fa": "چیز"
+                "en": "of",
+                "fa": "از"
             }
         },
         "เสื้อ": {
@@ -163,7 +163,7 @@
         },
         "พอดี": {
             "translations": {
-                "en": "fit/just right",
+                "en": "fit",
                 "fa": "مناسب"
             }
         },
@@ -172,26 +172,6 @@
                 "en": "return",
                 "fa": "برگرداندن"
             }
-        },
-        "Review from Levels 1-3": {
-            "สวัสดี": { },
-            "ครับ": { },
-            "ค่ะ": { },
-            "คุณ": { },
-            "ผม": { },
-            "ดิฉัน": { },
-            "ชื่อ": { },
-            "อะไร": { },
-            "กิน": { },
-            "ดื่ม": { },
-            "ชอบ": { },
-            "ไม่": { },
-            "ไหม": { },
-            "ข้าว": { },
-            "น้ำ": { },
-            "อร่อย": { },
-            "มาก": { },
-            "หน่อย": { }
         },
         "ค่ะ": {
             "translations": {
@@ -321,7 +301,7 @@
         },
         "กิโล": {
             "translations": {
-                "en": "Kilo",
+                "en": "kilo",
                 "fa": "کیلو"
             }
         },
@@ -405,7 +385,7 @@
         },
         "หน่อย": {
             "translations": {
-                "en": "A little",
+                "en": "a little",
                 "fa": "بیت"
             }
         },
@@ -559,7 +539,8 @@
                             "translations": {
                                 "en": "Hello, how much are the oranges?",
                                 "fa": "سلام، پرتقال چنده؟"
-                            }
+                            },
+                            "originalSource": "สวัสดีครับส้มราคาเท่าไหร่ครับ"
                         },
                         {
                             "source": "ส้มโลละห้าสิบบาทค่ะ",
@@ -575,7 +556,8 @@
                             "translations": {
                                 "en": "Oranges are 50 baht per kilo",
                                 "fa": "پرتقال کیلویی ۵۰ بات"
-                            }
+                            },
+                            "originalSource": "ส้มโลละห้าสิบบาทค่ะ"
                         },
                         {
                             "source": "ถูกดีครับขอสองกิโลครับ",
@@ -591,7 +573,8 @@
                             "translations": {
                                 "en": "That's cheap. I'll take two kilos",
                                 "fa": "ارزان است. دو کیلو می‌خواهم"
-                            }
+                            },
+                            "originalSource": "ถูกดีครับขอสองกิโลครับ"
                         },
                         {
                             "source": "ได้ค่ะรวมเป็นหนึ่งร้อยบาทค่ะ",
@@ -608,7 +591,8 @@
                             "translations": {
                                 "en": "Certainly, total is 100 baht",
                                 "fa": "حتماً، جمعاً ۱۰۰ بات"
-                            }
+                            },
+                            "originalSource": "ได้ค่ะรวมเป็นหนึ่งร้อยบาทค่ะ"
                         },
                         {
                             "source": "ขอถุงใส่ด้วยครับ",
@@ -622,7 +606,8 @@
                             "translations": {
                                 "en": "Can I have a bag please?",
                                 "fa": "یک کیسه می‌خواهم لطفاً"
-                            }
+                            },
+                            "originalSource": "ขอถุงใส่ด้วยครับ"
                         }
                     ]
                 }
@@ -654,7 +639,8 @@
                             "translations": {
                                 "en": "Are you interested in any particular shirt?",
                                 "fa": "به پیراهن خاصی علاقه دارید؟"
-                            }
+                            },
+                            "originalSource": "สนใจเสื้อตัวไหนเป็นพิเศษไหมคะ"
                         },
                         {
                             "source": "ขอดูเสื้อสีฟ้าหน่อยครับ",
@@ -670,7 +656,8 @@
                             "translations": {
                                 "en": "Can I see the blue shirt please?",
                                 "fa": "پیراهن آبی را می‌توانم ببینم؟"
-                            }
+                            },
+                            "originalSource": "ขอดูเสื้อสีฟ้าหน่อยครับ"
                         },
                         {
                             "source": "ไซส์อะไรคะ",
@@ -682,7 +669,8 @@
                             "translations": {
                                 "en": "What size?",
                                 "fa": "چه سایزی؟"
-                            }
+                            },
+                            "originalSource": "ไซส์อะไรคะ"
                         },
                         {
                             "source": "ไซส์ครับ",
@@ -693,7 +681,8 @@
                             "translations": {
                                 "en": "Size",
                                 "fa": "سایز"
-                            }
+                            },
+                            "originalSource": "ไซส์ครับ"
                         },
                         {
                             "source": "ลองใส่ได้ไหมครับ",
@@ -707,7 +696,8 @@
                             "translations": {
                                 "en": "Can I try it on?",
                                 "fa": "می‌توانم امتحان کنم؟"
-                            }
+                            },
+                            "originalSource": "ลองใส่ได้ไหมครับ"
                         },
                         {
                             "source": "ได้ค่ะห้องลองอยู่ทางขวามือค่ะ",
@@ -725,7 +715,8 @@
                             "translations": {
                                 "en": "Yes, the fitting room is on the right",
                                 "fa": "بله، اتاق پرو در سمت راست است"
-                            }
+                            },
+                            "originalSource": "ได้ค่ะห้องลองอยู่ทางขวามือค่ะ"
                         },
                         {
                             "source": "พอดีครับราคาเท่าไหร่ครับ",
@@ -739,7 +730,8 @@
                             "translations": {
                                 "en": "It fits. How much is it?",
                                 "fa": "مناسب است. قیمتش چنده؟"
-                            }
+                            },
+                            "originalSource": "พอดีครับราคาเท่าไหร่ครับ"
                         },
                         {
                             "source": "ห้าร้อยเก้าสิบบาทค่ะแต่ลดราคาสิบเปอร์เซ็นต์",
@@ -758,7 +750,8 @@
                             "translations": {
                                 "en": "590 baht, but there's a 10% discount",
                                 "fa": "۵۹۰ بات، اما ۱۰٪ تخفیف دارد"
-                            }
+                            },
+                            "originalSource": "ห้าร้อยเก้าสิบบาทค่ะแต่ลดราคาสิบเปอร์เซ็นต์"
                         }
                     ]
                 }
@@ -786,7 +779,8 @@
                             "translations": {
                                 "en": "What's the total?",
                                 "fa": "جمعاً چقدر می‌شود؟"
-                            }
+                            },
+                            "originalSource": "รวมทั้งหมดเท่าไหร่ครับ"
                         },
                         {
                             "source": "รวมห้าร้อยสามสิบเอ็ดบาทค่ะ",
@@ -803,7 +797,8 @@
                             "translations": {
                                 "en": "Total is 531 baht",
                                 "fa": "جمعاً ۵۳۱ بات"
-                            }
+                            },
+                            "originalSource": "รวมห้าร้อยสามสิบเอ็ดบาทค่ะ"
                         },
                         {
                             "source": "รับบัตรเครดิตไหมครับ",
@@ -816,7 +811,8 @@
                             "translations": {
                                 "en": "Do you accept credit cards?",
                                 "fa": "کارت اعتباری قبول می‌کنید؟"
-                            }
+                            },
+                            "originalSource": "รับบัตรเครดิตไหมครับ"
                         },
                         {
                             "source": "รับค่ะครับ",
@@ -828,7 +824,8 @@
                             "translations": {
                                 "en": "Yes, we do",
                                 "fa": "بله قبول می‌کنیم"
-                            }
+                            },
+                            "originalSource": "รับค่ะครับ"
                         }
                     ]
                 }

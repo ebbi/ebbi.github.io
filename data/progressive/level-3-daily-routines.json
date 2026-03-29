@@ -21,7 +21,7 @@
         "authors": [ ],
         "reviewers": [ ],
         "tags": [ ],
-        "updated": "2026-02-24T05:44:48.035Z"
+        "updated": "2026-03-29T07:21:59.551Z"
     },
     "vocabulary": {
         "ตื่น": {
@@ -56,7 +56,7 @@
         },
         "ออก": {
             "translations": {
-                "en": "leave/exit",
+                "en": "exit",
                 "fa": "خروج"
             }
         },
@@ -68,7 +68,7 @@
         },
         "บ้าน": {
             "translations": {
-                "en": "home/house",
+                "en": "house",
                 "fa": "خانه"
             }
         },
@@ -135,24 +135,24 @@
         "ทำงาน": {
             "translations": {
                 "en": "work",
-                "fa": "کار کردن"
+                "fa": "کار"
             }
         },
         "เรียน": {
             "translations": {
                 "en": "study",
-                "fa": "درس خواندن"
+                "fa": "درس"
             }
         },
         "พัก": {
             "translations": {
-                "en": "rest/break",
-                "fa": "استراحت"
+                "en": "stay",
+                "fa": "اقامت"
             }
         },
         "กลางวัน": {
             "translations": {
-                "en": "afternoon/noon",
+                "en": "afternoon",
                 "fa": "ظهر"
             }
         },
@@ -250,7 +250,7 @@
         },
         "คุณ": {
             "translations": {
-                "en": "You",
+                "en": "you",
                 "fa": "شما"
             }
         },
@@ -298,7 +298,7 @@
         },
         "เลิก": {
             "translations": {
-                "en": "Give up",
+                "en": "give up",
                 "fa": "پایان"
             }
         },
@@ -328,7 +328,7 @@
         },
         "แล้ว": {
             "translations": {
-                "en": "So ",
+                "en": "already",
                 "fa": "قبلاً"
             }
         },
@@ -341,7 +341,7 @@
         "อะไร": {
             "translations": {
                 "en": "what",
-                "fa": "چه:"
+                "fa": "چه"
             }
         },
         "ต่อ": {
@@ -442,13 +442,13 @@
         },
         "ชอบ": {
             "translations": {
-                "en": "Like",
+                "en": "like",
                 "fa": "مانند"
             }
         },
         "ๆ": {
             "translations": {
-                "en": "if",
+                "en": "etc",
                 "fa": "غیره"
             }
         },
@@ -492,6 +492,12 @@
             "translations": {
                 "en": "friend",
                 "fa": "دوست"
+            }
+        },
+        "ดื่ม": {
+            "translations": {
+                "en": "cheers",
+                "fa": "نوشیدنی"
             }
         }
     },
@@ -548,7 +554,8 @@
                             "translations": {
                                 "en": "What time do you wake up?",
                                 "fa": "ساعت چند بیدار می‌شوید؟"
-                            }
+                            },
+                            "originalSource": "คุณตื่นกี่โมงครับ"
                         },
                         {
                             "source": "ผมตื่นหกโมงเช้าครับ",
@@ -563,7 +570,8 @@
                             "translations": {
                                 "en": "I wake up at 6 a.m.",
                                 "fa": "ساعت ۶ صبح بیدار می‌شوم"
-                            }
+                            },
+                            "originalSource": "ผมตื่นหกโมงเช้าครับ"
                         },
                         {
                             "source": "แล้วทำอะไรต่อครับ",
@@ -577,7 +585,8 @@
                             "translations": {
                                 "en": "Then what do you do next?",
                                 "fa": "بعد چه کار می‌کنید؟"
-                            }
+                            },
+                            "originalSource": "แล้วทำอะไรต่อครับ"
                         },
                         {
                             "source": "ผมอาบน้ำแปรงฟันแล้วก็แต่งตัวครับ",
@@ -593,7 +602,8 @@
                             "translations": {
                                 "en": "I shower, brush my teeth, then get dressed",
                                 "fa": "دوش می‌گیرم، مسواک می‌زنم، بعد لباس می‌پوشم"
-                            }
+                            },
+                            "originalSource": "ผมอาบน้ำแปรงฟันแล้วก็แต่งตัวครับ"
                         }
                     ]
                 }
@@ -651,7 +661,8 @@
                             "translations": {
                                 "en": "What time do you go to work?",
                                 "fa": "ساعت چند می‌روید سر کار؟"
-                            }
+                            },
+                            "originalSource": "คุณไปทำงานกี่โมงครับ"
                         },
                         {
                             "source": "ฉันไปทำงานแปดโมงครึ่งค่ะ",
@@ -667,7 +678,8 @@
                             "translations": {
                                 "en": "I go to work at 8:30",
                                 "fa": "ساعت ۸:۳۰ می‌روم سر کار"
-                            }
+                            },
+                            "originalSource": "ฉันไปทำงานแปดโมงครึ่งค่ะ"
                         },
                         {
                             "source": "ไปยังไงครับรถเมล์หรือรถไฟฟ้าครับ",
@@ -683,7 +695,8 @@
                             "translations": {
                                 "en": "How do you go? By bus or train?",
                                 "fa": "چطور می‌روید؟ با اتوبوس یا قطار؟"
-                            }
+                            },
+                            "originalSource": "ไปยังไงครับรถเมล์หรือรถไฟฟ้าครับ"
                         },
                         {
                             "source": "นั่งรถไฟฟ้าค่ะสายไหมคะ",
@@ -698,7 +711,8 @@
                             "translations": {
                                 "en": "I take the train. Are you late?",
                                 "fa": "قطار سوار می‌شوم. دیرتان نمی‌شود؟"
-                            }
+                            },
+                            "originalSource": "นั่งรถไฟฟ้าค่ะสายไหมคะ"
                         },
                         {
                             "source": "ไม่สายครับไปถึงตรงเวลาครับ",
@@ -714,7 +728,8 @@
                             "translations": {
                                 "en": "Not late, I arrive on time",
                                 "fa": "دیر نمی‌شوم، به موقع می‌رسم"
-                            }
+                            },
+                            "originalSource": "ไม่สายครับไปถึงตรงเวลาครับ"
                         }
                     ]
                 }
@@ -742,7 +757,8 @@
                             "translations": {
                                 "en": "What time do you finish work?",
                                 "fa": "ساعت چند کار تمام می‌شود؟"
-                            }
+                            },
+                            "originalSource": "เลิกงานกี่โมงครับ"
                         },
                         {
                             "source": "เลิกงานห้าโมงเย็นค่ะ",
@@ -757,7 +773,8 @@
                             "translations": {
                                 "en": "I finish at 5 p.m.",
                                 "fa": "ساعت ۵ عصر کار تمام می‌شود"
-                            }
+                            },
+                            "originalSource": "เลิกงานห้าโมงเย็นค่ะ"
                         },
                         {
                             "source": "กลับบ้านกี่โมงครับ",
@@ -770,7 +787,8 @@
                             "translations": {
                                 "en": "What time do you get home?",
                                 "fa": "ساعت چند به خانه می‌رسید؟"
-                            }
+                            },
+                            "originalSource": "กลับบ้านกี่โมงครับ"
                         },
                         {
                             "source": "กลับบ้านประมาณหกโมงครึ่งค่ะ",
@@ -786,7 +804,8 @@
                             "translations": {
                                 "en": "I get home around 6:30",
                                 "fa": "حدود ساعت ۶:۳۰ به خانه می‌رسم"
-                            }
+                            },
+                            "originalSource": "กลับบ้านประมาณหกโมงครึ่งค่ะ"
                         },
                         {
                             "source": "กลับบ้านแล้วทำอะไรครับ",
@@ -801,7 +820,8 @@
                             "translations": {
                                 "en": "What do you do after getting home?",
                                 "fa": "بعد از رسیدن به خانه چه می‌کنید؟"
-                            }
+                            },
+                            "originalSource": "กลับบ้านแล้วทำอะไรครับ"
                         },
                         {
                             "source": "กินข้าวเย็นดูทีวีแล้วก็นอนค่ะ",
@@ -819,7 +839,8 @@
                             "translations": {
                                 "en": "Eat dinner, watch TV, then sleep",
                                 "fa": "شام می‌خورم، تلویزیون می‌بینم، بعد می‌خوابم"
-                            }
+                            },
+                            "originalSource": "กินข้าวเย็นดูทีวีแล้วก็นอนค่ะ"
                         }
                     ]
                 }
@@ -850,7 +871,8 @@
                             "translations": {
                                 "en": "What do you like to do on weekends?",
                                 "fa": "آخر هفته دوست دارید چه کار کنید؟"
-                            }
+                            },
+                            "originalSource": "วันหยุดคุณชอบทำอะไรครับ"
                         },
                         {
                             "source": "ฉันชอบนอนสายๆค่ะ",
@@ -865,7 +887,8 @@
                             "translations": {
                                 "en": "I like to sleep in",
                                 "fa": "دوست دارم دیر بخوابم"
-                            }
+                            },
+                            "originalSource": "ฉันชอบนอนสายๆค่ะ"
                         },
                         {
                             "source": "แล้วไปเที่ยวที่ไหนไหมครับ",
@@ -881,7 +904,8 @@
                             "translations": {
                                 "en": "Do you go anywhere?",
                                 "fa": "جایی می‌روید؟"
-                            }
+                            },
+                            "originalSource": "แล้วไปเที่ยวที่ไหนไหมครับ"
                         },
                         {
                             "source": "บางทีไปกินข้าวนอกบ้านกับเพื่อนค่ะ",
@@ -899,7 +923,8 @@
                             "translations": {
                                 "en": "Sometimes I eat out with friends",
                                 "fa": "بعضی وقت‌ها با دوستان بیرون غذا می‌خورم"
-                            }
+                            },
+                            "originalSource": "บางทีไปกินข้าวนอกบ้านกับเพื่อนค่ะ"
                         }
                     ]
                 }
