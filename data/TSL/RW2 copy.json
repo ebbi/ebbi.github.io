@@ -139,6 +139,30 @@
                 "fa": "تخت چوبی"
             }
         },
+        "ก้าน": {
+            "translations": {
+                "en": "stem",
+                "fa": "ساقه"
+            }
+        },
+        "ก้าง": {
+            "translations": {
+                "en": "fishbone",
+                "fa": "استخوان ماهی"
+            }
+        },
+        "กาง": {
+            "translations": {
+                "en": "spread",
+                "fa": "باز کردن"
+            }
+        },
+        "ก่าง": {
+            "translations": {
+                "en": "straddle",
+                "fa": "دوپا باز"
+            }
+        },
         "บ่าย": {
             "translations": {
                 "en": "afternoon",
@@ -1315,7 +1339,7 @@
                 "fa": "خرید"
             }
         },
-        "ชุบ": {
+        "ชุป": {
             "translations": {
                 "en": "dip",
                 "fa": "فرو"
@@ -3151,51 +3175,8 @@
                 "en": "good luck",
                 "fa": "موفق باشید"
             }
-        },
-        "ถั่ว": {
-            "translations": {
-                "en": "nuts",
-                "fa": "آجیل"
-            }
-        },
-        "ฝิ่น": {
-            "translations": {
-                "en": "opium",
-                "fa": "تریاک"
-            }
-        },
-        "ลุงยาม": {
-            "translations": {
-                "en": "uncle security guard",
-                "fa": "عمو نگهبان امنیتی"
-            }
-        },
-        "ฝัก": {
-            "translations": {
-                "en": "classifier for vegetables",
-                "fa": "غلاف"
-            }
-        },
-        "ขูด": {
-            "translations": {
-                "en": "scrape",
-                "fa": "خراشیدن"
-            }
-        },
-        "ลุก": {
-            "translations": {
-                "en": "get up",
-                "fa": "برخیز."
-            }
-        },
-        "มุก": {
-            "translations": {
-                "en": "get up",
-                "fa": "برخیز."
-            }
         }
     },
-    
     "activity": {
         "words": true,
         "sentences": true
@@ -3214,11 +3195,27 @@
             },
             "content": [
                 {
+                    "type": "paragraph",
+                    "heading": {
+                        "en": "Introduction to Final Consonants",
+                        "th": "แนะนำตัวสะกด",
+                        "fa": "معرفی حروف پایانی"
+                    },
+                    "grammar": {
+                        "pattern": "Final Consonants",
+                        "note": {
+                            "en": "There are only 8 consonant ending sounds in Thai, divided into Live Final Consonants (น ม ง ว ย) and Dead Final Consonants (ก ป ด). Live endings produce sonorous sounds, while Dead endings produce percussive sounds.",
+                            "th": "ในภาษาไทยมีตัวสะกดเพียง 8 เสียง แบ่งเป็น ตัวสะกดมีชีวิต (น ม ง ว ย) และ ตัวสะกดตาย (ก ป ด)",
+                            "fa": "در تایلندی فقط ۸ صدای همخوان پایانی وجود دارد که به دو دسته تقسیم می‌شوند: پایانی زنده (น ม ง ว ย) و پایانی مرده (ก ป ด)."
+                        }
+                    }
+                },
+                {
                     "type": "words",
                     "heading": {
-                        "en": "Practice Reading  -  (Middle Class Consonant + Long/Short Vowel + Live Ending = Mid Tone)",
-                        "th": "ฝึกอ่าน - (พยัญชนะเสียงกลาง + สระเสียงยาว/สั้น + คำลงท้ายเสียง = เสียงกลาง)",
-                        "fa": "تمرین خواندن - (صامت طبقه متوسط ​​+ مصوت بلند/کوتاه + پسوند زنده = لحن میانی)"
+                        "en": "Live Final Consonants with Middle Class Consonants",
+                        "th": "ตัวสะกดมีชีวิตกับอักษรกลาง",
+                        "fa": "پایانی زنده با همخوان‌های طبقه وسط"
                     },
                     "wordIds": [
                         "จาน",
@@ -3244,13 +3241,33 @@
                     ]
                 },
                 {
+                    "type": "paragraph",
+                    "heading": {
+                        "en": "Tone Rules: Middle Class + Live Endings",
+                        "th": "กฎการผันเสียง: อักษรกลาง + ตัวสะกดมีชีวิต",
+                        "fa": "قوانین آهنگ: طبقه وسط + پایانی زنده"
+                    },
+                    "grammar": {
+                        "pattern": "Middle Class Consonant + Long/Short Vowel + Live Ending = Mid Tone",
+                        "note": {
+                            "en": "Middle class consonants with long or short vowels and live endings produce a mid tone.",
+                            "th": "อักษรกลาง + สระยาว/สระสั้น + ตัวสะกดมีชีวิต = เสียงสามัญ",
+                            "fa": "همخوان طبقه وسط با واکه بلند/کوتاه و پایان زنده = آهنگ میانه"
+                        }
+                    }
+                },
+                {
                     "type": "words",
                     "heading": {
-                        "en": "Practice Reading  -  (Middle Class Consonant + Live Endings + Tone Markers)",
-                        "th": "ฝึกอ่าน - (พยัญชนะกลาง + คำลงท้าย + เครื่องหมายวรรณยุกต์)",
-                        "fa": "تمرین خواندن - (صامت‌های طبقه متوسط ​​+ پسوندهای زنده + نشانگرهای لحن)"
+                        "en": "Live Endings with Tone Markers",
+                        "th": "ตัวสะกดมีชีวิตกับรูปวรรณยุกต์",
+                        "fa": "پایانی زنده با نشانه‌های آهنگ"
                     },
                     "wordIds": [
+                        "ก้าน",
+                        "ก้าง",
+                        "กาง",
+                        "ก่าง",
                         "บ่าย",
                         "บ่อย",
                         "อ่าว",
@@ -3268,40 +3285,76 @@
                     ]
                 },
                 {
+                    "type": "paragraph",
+                    "heading": {
+                        "en": "Tone Rules: High Class + Live Endings",
+                        "th": "อักษรสูง + ตัวสะกดมีชีวิต",
+                        "fa": "طبقه بالا + پایانی زنده"
+                    },
+                    "grammar": {
+                        "pattern": "High Class Consonant + Long/Short Vowel + Live Ending = Rising Tone",
+                        "note": {
+                            "en": "High class consonants with long or short vowels and live endings produce a rising tone.",
+                            "th": "อักษรสูง + สระยาว/สระสั้น + ตัวสะกดมีชีวิต = เสียงจัตวา",
+                            "fa": "همخوان طبقه بالا با واکه بلند/کوتاه و پایان زنده = آهنگ صعودی"
+                        }
+                    }
+                },
+                {
                     "type": "words",
                     "heading": {
-                        "en": "Practice Reading  -  (High Class Consonant + Long/Short Vowel + Live Ending = Rising Tone)",
-                        "th": "ฝึกอ่าน - (พยัญชนะเสียงสูง + สระเสียงยาว/สั้น + คำลงท้ายด้วยเสียงสูง = เสียงสูงขึ้น)",
-                        "fa": "تمرین خواندن - (صامت درجه یک + مصوت بلند/کوتاه + پسوند زنده = لحن صعودی)"
+                        "en": "High Class + Live Endings Examples",
+                        "th": "ตัวอย่าง อักษรสูง + ตัวสะกดมีชีวิต",
+                        "fa": "مثال‌های طبقه بالا + پایانی زنده"
                     },
                     "wordIds": [
-                        "สอน",
+                        "โหน",
+                        "ขาม",
+                        "สูง",
+                        "สาว",
+                        "ขาย",
                         "แขน",
+                        "ขอม",
+                        "โถง",
+                        "ขาว",
+                        "โหย",
                         "เขียน",
+                        "หอม",
+                        "ฝูง",
+                        "หวา",
+                        "หาย",
+                        "สิน",
+                        "ขิม",
+                        "หิว",
+                        "หุย",
+                        "หิน",
+                        "ถุง",
+                        "ผิว",
+                        "ถุย",
+                        "ขุน",
+                        "ขุ้ง",
+                        "สิ่ว",
+                        "ขุย",
+                        "สอน",
                         "หาง",
                         "ของ",
                         "สอง",
-                        "สูง",
                         "สาม",
                         "ถาม",
-                        "หอม",
                         "ผอม",
                         "สาย",
-                        "ขาย",
                         "หอย",
                         "เขียว",
-                        "ขาว",
                         "มะขาม",
-                        "หอย",
                         "หอมแดง"
                     ]
                 },
                 {
                     "type": "words",
                     "heading": {
-                        "en": "Practice Reading  -  (High Class Consonant + Live Endings + Tone Markers)",
-                        "th": "ฝึกอ่าน - (พยัญชนะชั้นสูง + คำลงท้าย + เครื่องหมายวรรณยุกต์)",
-                        "fa": "تمرین خواندن - (صامت‌های درجه یک + پایان‌های زنده + نشانگرهای لحن)"
+                        "en": "High Class + Live Endings with Tone Markers",
+                        "th": "อักษรสูง + ตัวสะกดมีชีวิต + รูปวรรณยุกต์",
+                        "fa": "طبقه بالا + پایانی زنده + نشانه‌های آهنگ"
                     },
                     "wordIds": [
                         "ผ่าน",
@@ -3315,21 +3368,62 @@
                         "ห้าง",
                         "ข้าง",
                         "แห้ว",
-                        "ห้าม",
-                        "ถั่ว",
-                        "ฝิ่น",
-                        "ฝุ่น"
+                        "ห้าม"
                     ]
+                },
+                {
+                    "type": "paragraph",
+                    "heading": {
+                        "en": "Tone Rules: Low Class + Live Endings",
+                        "th": "อักษรต่ำ + ตัวสะกดมีชีวิต",
+                        "fa": "طبقه پایین + پایانی زنده"
+                    },
+                    "grammar": {
+                        "pattern": "Low Class Consonant + Long/Short Vowel + Live Ending = Mid Tone",
+                        "note": {
+                            "en": "Low class consonants with long or short vowels and live endings produce a mid tone.",
+                            "th": "อักษรต่ำ + สระยาว/สระสั้น + ตัวสะกดมีชีวิต = เสียงสามัญ",
+                            "fa": "همخوان طبقه پایین با واکه بلند/کوتاه و پایان زنده = آهنگ میانه"
+                        }
+                    }
                 },
                 {
                     "type": "words",
                     "heading": {
-                        "en": "Practice Reading  -   (Low Class Consonant + Long/Short Vowel + Live Ending = Mid Tone)",
-                        "th": "ฝึกอ่าน - (พยัญชนะเสียงต่ำ + สระเสียงยาว/สั้น + คำลงท้ายเสียง = เสียงกลาง)",
-                        "fa": "تمرین خواندن - (صامت‌های بی‌صدای سطح پایین + مصوت‌های بلند/کوتاه + پسوند زنده = لحن میانی)"
+                        "en": "Low Class + Live Endings Examples",
+                        "th": "ตัวอย่าง อักษรต่ำ + ตัวสะกดมีชีวิต",
+                        "fa": "مثال‌های طبقه پایین + پایانی زنده"
                     },
                     "wordIds": [
                         "นาน",
+                        "โยม",
+                        "ยาว",
+                        "ยาย",
+                        "เรือน",
+                        "ยืม",
+                        "ลาง",
+                        "ชาว",
+                        "พาย",
+                        "โพน",
+                        "มี",
+                        "โรง",
+                        "เคียว",
+                        "ลาย",
+                        "ทุน",
+                        "ยิม",
+                        "ฟัง",
+                        "วิว",
+                        "ทุย",
+                        "ฟิน",
+                        "มุม",
+                        "ชูง",
+                        "ยิว",
+                        "มุย",
+                        "ชิน",
+                        "ชิม",
+                        "ฟูง",
+                        "ชีว",
+                        "คุย",
                         "งาน",
                         "นอน",
                         "เรียน",
@@ -3339,23 +3433,19 @@
                         "วาง",
                         "ยัง",
                         "ยาม",
-                        "ยืม",
-                        "ยาย",
                         "แมว",
-                        "ยาว",
                         "มอง",
                         "ลืม",
                         "ยุงลาย",
-                        "ลุงยาม",
                         "คุณยาย"
                     ]
                 },
                 {
                     "type": "words",
                     "heading": {
-                        "en": "Practice Reading  -   (Low Class + Live Endings + Tone Markers)",
-                        "th": "ฝึกอ่าน - (วรรณะต่ำ + การจบประโยคแบบมีชีวิตชีวา + ตัวบ่งชี้โทนเสียง)",
-                        "fa": "تمرین خواندن - (کلاس پایین + پایان‌های زنده + نشانگرهای لحن)"
+                        "en": "Low Class + Live Endings with Tone Markers",
+                        "th": "อักษรต่ำ + ตัวสะกดมีชีวิต + รูปวรรณยุกต์",
+                        "fa": "طبقه پایین + پایانی زنده + نشانه‌های آهنگ"
                     },
                     "wordIds": [
                         "แว่น",
@@ -3371,16 +3461,15 @@
                         "เที่ยง",
                         "นั่ง",
                         "แว่นตา",
-                        "ร้านค้า",
-                        "วิ่ง"
+                        "ร้านค้า"
                     ]
                 },
                 {
                     "type": "words",
                     "heading": {
-                        "en": "Practice Reading - (Middle Class Consonant + Long/Short Vowels + Dead Endings = Low Tone)",
-                        "th": "ฝึกอ่าน - (พยัญชนะเสียงกลาง + สระเสียงยาว/สั้น + คำลงท้ายที่ไม่ออกเสียง = เสียงต่ำ)",
-                        "fa": "تمرین خواندن - (صامت‌های طبقه متوسط ​​+ مصوت‌های بلند/کوتاه + پایانه‌های مرده = تُن پایین)"
+                        "en": "Dead Final Consonants",
+                        "th": "ตัวสะกดตาย",
+                        "fa": "پایانی مرده"
                     },
                     "wordIds": [
                         "ปาก",
@@ -3403,60 +3492,86 @@
                     ]
                 },
                 {
+                    "type": "paragraph",
+                    "heading": {
+                        "en": "Tone Rules: Middle Class + Dead Endings",
+                        "th": "อักษรกลาง + ตัวสะกดตาย",
+                        "fa": "طبقه وسط + پایانی مرده"
+                    },
+                    "grammar": {
+                        "pattern": "Middle Class Consonant + Long/Short Vowel + Dead Ending = Low Tone",
+                        "note": {
+                            "en": "Middle class consonants with long or short vowels and dead endings produce a low tone.",
+                            "th": "อักษรกลาง + สระยาว/สระสั้น + ตัวสะกดตาย = เสียงเอก",
+                            "fa": "همخوان طبقه وسط با واکه بلند/کوتاه و پایان مرده = آهنگ پایین"
+                        }
+                    }
+                },
+                {
                     "type": "words",
                     "heading": {
-                        "en": "Practice Reading  -  (High Class Consonants + Long/Short Vowels + Dead Endings = Low Tone)",
-                        "th": "ฝึกอ่าน - (พยัญชนะเสียงสูง + สระเสียงยาว/สั้น + คำลงท้ายที่ไม่ออกเสียง = เสียงต่ำ)",
-                        "fa": "تمرین خواندن - (صامت‌های سطح بالا + مصوت‌های بلند/کوتاه + پایانه‌های مرده = تُن پایین)"
+                        "en": "High Class + Dead Endings",
+                        "th": "อักษรสูง + ตัวสะกดตาย",
+                        "fa": "طبقه بالا + پایانی مرده"
                     },
                     "wordIds": [
+                        "สาก",
+                        "สูบ",
+                        "พูด",
+                        "ถูก",
+                        "แสบ",
+                        "เสียด",
+                        "สอบ",
+                        "โขด",
+                        "สุก",
+                        "สิบ",
+                        "ผิด",
+                        "หิก",
+                        "หุบ",
+                        "ขิด",
+                        "สิก",
+                        "ผุด",
                         "ฝาก",
                         "ฉาก",
-                        "ถูก",
                         "ศอก",
                         "ฝึก",
-                        "ฝัก",
-                        "สิบ",
-                        "สอบ",
                         "โสด",
                         "ถาด",
-                        "ผิด",
-                        "ขูด",
                         "หาด",
-                        "สูบ",
                         "ขอบ",
                         "เขียด",
-                        "สุก",
                         "ชายหาด"
                     ]
                 },
                 {
                     "type": "words",
                     "heading": {
-                        "en": "Practice Reading  -  (Low Class + Long Vowels + Dead Endings = Falling Tone)",
-                        "th": "ฝึกอ่าน - (เสียงต่ำ + สระเสียงยาว + คำลงท้ายตาย = เสียงตก)",
-                        "fa": "تمرین خواندن - (کلاس پایین + مصوت‌های بلند + پایان‌های مرده = لحن نزولی)"
+                        "en": "Low Class + Dead Endings",
+                        "th": "อักษรต่ำ + ตัวสะกดตาย",
+                        "fa": "طبقه پایین + پایانی مرده"
                     },
                     "wordIds": [
-                        "ยาก",
                         "มาก",
+                        "ยาก",
+                        "จุก",
+                        "มูก",
+                        "โยก",
+                        "ลาบ",
+                        "ชุก",
+                        "มิด",
+                        "ชุด",
+                        "รุก",
+                        "ลึก",
+                        "ยิบ",
                         "วาด",
                         "แรด",
                         "มีด",
-                        "ลูก",
                         "ทอด",
-                        "ชอบ",
-                        "ลึก",
-                        "ชุบ",
-                        "ชุด",
-                        "ลุก",
-                        "มุก",
+                        "ชอป",
+                        "ชุป",
                         "นึก",
-                        "ฝึก",
                         "คุก",
-                        "ฟักทอง",
-                        "แรด",
-                        "วาด"
+                        "ฟักทอง"
                     ]
                 }
             ]
