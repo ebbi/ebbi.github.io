@@ -2,10 +2,14 @@
 const TranslationAPI = {
     cache: JSON.parse(localStorage.getItem('translationCache_v2') || '{}'),
 
-    async translate(text, targetLang) {
+    async translate(text, targetLang, { sentenceCase = false } = {}) {
         if (!text || text.trim() === '') return '';
         const cacheKey = `${text}_${targetLang}`;
-        if (this.cache[cacheKey]) return this.cache[cacheKey];
+        if (this.cache[cacheKey]) {
+            let result = this.cache[cacheKey];
+            if (targetLang === 'en' && sentenceCase) result = toSentenceCase(result);
+            return result;
+        }
 
         try {
             const response = await fetch(
@@ -15,7 +19,7 @@ const TranslationAPI = {
             if (data.responseStatus === 200) {
                 let translation = data.responseData.translatedText;
                 if (targetLang === 'en') {
-                    translation = translation.toLowerCase();
+                    translation = sentenceCase ? toSentenceCase(translation) : translation.toLowerCase();
                 }
                 this.cache[cacheKey] = translation;
                 localStorage.setItem('translationCache_v2', JSON.stringify(this.cache));
@@ -30,7 +34,7 @@ const TranslationAPI = {
     async translateHeading(text) {
         if (!text) return { en: '', fa: '', th: text };
         try {
-            const enTranslation = await this.translate(text, 'en');
+            const enTranslation = await this.translate(text, 'en', { sentenceCase: true });
             const faTranslation = await this.translate(text, 'fa');
             return { en: enTranslation, fa: faTranslation, th: text };
         } catch (error) {
@@ -38,6 +42,14 @@ const TranslationAPI = {
         }
     }
 };
+
+// Helper to capitalize first letter of an English string
+function toSentenceCase(str) {
+    if (!str || typeof str !== 'string') return str;
+    const trimmed = str.trim();
+    if (trimmed.length === 0) return str;
+    return trimmed.charAt(0).toUpperCase() + trimmed.slice(1);
+}
 
 // Text Cleaner
 const Cleaner = {
@@ -67,7 +79,7 @@ const AppState = {
     currentDocument: null
 };
 
-// ==================== INIT ====================
+// Initialize
 function init() {
     setDataType('word');
     updateStats();
@@ -82,6 +94,7 @@ function init() {
 // ==================== WORKFLOW SWITCHING ====================
 function switchWorkflow(workflow) {
     AppState.currentWorkflow = workflow;
+
     document.getElementById('createView').classList.add('hidden');
     document.getElementById('updateView').classList.add('hidden');
     document.getElementById('metadataPanel').classList.add('hidden');
@@ -115,12 +128,21 @@ function initializeNewDocument() {
             tags: tags
         },
         vocabulary: {},
-        activity: { words: true, sentences: true },
-        sections: [{
-            sectionId: document.getElementById('docId').value + 'Section',
-            heading: { en: 'Main Section', fa: '', th: '' },
-            content: []
-        }]
+        activity: {
+            words: true,
+            sentences: true
+        },
+        sections: [
+            {
+                sectionId: document.getElementById('docId').value + 'Section',
+                heading: {
+                    en: 'Main Section',
+                    fa: '',
+                    th: ''
+                },
+                content: []
+            }
+        ]
     };
 
     window.currentDocument = newDoc;
@@ -132,7 +154,10 @@ function initializeNewDocument() {
 // ==================== UPDATE WORKFLOW ====================
 function loadDocumentForUpdate() {
     const file = document.getElementById('updateFileInput').files[0];
-    if (!file) { switchWorkflow('create'); return; }
+    if (!file) {
+        switchWorkflow('create');
+        return;
+    }
 
     const reader = new FileReader();
     reader.onload = function (e) {
@@ -146,22 +171,21 @@ function loadDocumentForUpdate() {
                 AppState.blocks = data.sections[0].content;
             }
 
-            // --- STRIP REDUNDANT PROPERTIES ---
+            // Strip any accidental `originalSource` and `type` from sentences
             if (data.sections) {
                 data.sections.forEach(section => {
                     if (section.content) {
                         section.content.forEach(block => {
                             if (block.type === 'paragraph' && block.sentences) {
                                 block.sentences.forEach(sentence => {
-                                    delete sentence.originalSource; // REMOVED
-                                    delete sentence.type;           // REMOVED
+                                    delete sentence.originalSource;
+                                    delete sentence.type;
                                 });
                             }
                         });
                     }
                 });
             }
-            // ---------------------------------
 
             document.getElementById('docId').value = data.documentId || '';
             document.getElementById('version').value = data.metadata?.version || '2.0.0';
@@ -172,7 +196,9 @@ function loadDocumentForUpdate() {
 
             document.getElementById('tagsContainer').innerHTML = '<input type="text" id="newTag" placeholder="Add tag and press Enter..." style="border: none; outline: none; flex: 1;">';
             document.getElementById('newTag').addEventListener('keypress', handleTagKeyPress);
-            if (data.metadata?.tags) data.metadata.tags.forEach(tag => addTag(tag));
+            if (data.metadata?.tags) {
+                data.metadata.tags.forEach(tag => addTag(tag));
+            }
 
             document.getElementById('metadataPanel').classList.remove('hidden');
             document.getElementById('updateView').classList.remove('hidden');
@@ -191,6 +217,7 @@ function loadDocumentForUpdate() {
     reader.readAsText(file);
 }
 
+// ==================== ADD CONTENT PANEL (UPDATE) ====================
 function setupAddContentPanel() {
     const container = document.getElementById('addContentInner');
     if (!container) return;
@@ -335,6 +362,7 @@ function updateUpdateStats() {
     }
 }
 
+// ==================== GENERATE UPDATE BLOCK ====================
 async function generateUpdateBlock() {
     const text = document.getElementById('updateThaiInput').value;
     if (!text.trim()) {
@@ -369,7 +397,7 @@ async function generateWordBlockForUpdate(text) {
 
     for (const word of uniqueWords) {
         if (!AppState.mainVocabulary[word]) {
-            const enTranslation = await TranslationAPI.translate(word, 'en');
+            const enTranslation = await TranslationAPI.translate(word, 'en'); // default lowercased
             const faTranslation = await TranslationAPI.translate(word, 'fa');
             AppState.mainVocabulary[word] = { translations: { en: enTranslation, fa: faTranslation } };
         }
@@ -378,7 +406,7 @@ async function generateWordBlockForUpdate(text) {
     const heading = document.getElementById('updateHeadingInput').value.trim();
     const newBlock = { type: 'words' };
     if (heading) {
-        const enTranslation = await TranslationAPI.translate(heading, 'en');
+        const enTranslation = await TranslationAPI.translate(heading, 'en', { sentenceCase: true });
         const faTranslation = await TranslationAPI.translate(heading, 'fa');
         newBlock.heading = {
             en: enTranslation,
@@ -407,11 +435,10 @@ async function generateParagraphBlockForUpdate(text) {
         const words = sentence.split(/\s+/).filter(w => w.trim().length > 0);
         words.forEach(w => allWords.add(w));
 
-        const enTranslation = await TranslationAPI.translate(sentence, 'en');
+        const enTranslation = await TranslationAPI.translate(sentence, 'en', { sentenceCase: true });
         const faTranslation = await TranslationAPI.translate(sentence, 'fa');
         const continuousSource = words.join('');
 
-        // REMOVED originalSource and type from sentence object
         sentencesData.push({
             source: continuousSource,
             wordIds: words,
@@ -421,7 +448,7 @@ async function generateParagraphBlockForUpdate(text) {
 
     for (const word of allWords) {
         if (!AppState.mainVocabulary[word]) {
-            const enTranslation = await TranslationAPI.translate(word, 'en');
+            const enTranslation = await TranslationAPI.translate(word, 'en'); // default lowercased
             const faTranslation = await TranslationAPI.translate(word, 'fa');
             AppState.mainVocabulary[word] = { translations: { en: enTranslation, fa: faTranslation } };
         }
@@ -431,7 +458,7 @@ async function generateParagraphBlockForUpdate(text) {
     const newBlock = { type: 'paragraph' };
 
     if (heading) {
-        const enTranslation = await TranslationAPI.translate(heading, 'en');
+        const enTranslation = await TranslationAPI.translate(heading, 'en', { sentenceCase: true });
         const faTranslation = await TranslationAPI.translate(heading, 'fa');
         newBlock.heading = {
             en: enTranslation,
@@ -450,7 +477,7 @@ async function generateParagraphBlockForUpdate(text) {
             newBlock.grammar.examples = [{
                 sentenceSource: grammarExample,
                 translations: {
-                    en: await TranslationAPI.translate(grammarExample, 'en'),
+                    en: await TranslationAPI.translate(grammarExample, 'en', { sentenceCase: true }),
                     fa: await TranslationAPI.translate(grammarExample, 'fa')
                 }
             }];
@@ -476,7 +503,7 @@ async function updateGrammarExample(sectionIdx, blockIdx, exampleIdx, value) {
     try {
         block.grammar.examples[exampleIdx].sentenceSource = value;
 
-        const enTranslation = await TranslationAPI.translate(value, 'en');
+        const enTranslation = await TranslationAPI.translate(value, 'en', { sentenceCase: true });
         const faTranslation = await TranslationAPI.translate(value, 'fa');
 
         if (!block.grammar.examples[exampleIdx].translations) {
@@ -522,7 +549,7 @@ function getUpdateBlockActivitySettings() {
     return activity;
 }
 
-// ==================== RENDER EDIT DOCUMENT (non‑nested block details) ====================
+// ==================== RENDER EDITABLE DOCUMENT ====================
 function renderEditableDocument() {
     const container = document.getElementById('documentEditContainer');
     if (!container || !AppState.currentDocument) return;
@@ -832,10 +859,25 @@ async function updateSentence(sectionIdx, blockIdx, sentIdx, field, value) {
 
     if (field === 'source') {
         const oldWords = new Set(sentence.wordIds || []);
-        sentence.source = value.replace(/\s+/g, '');
-        const newWords = value.split(/\s+/).filter(w => w.trim().length > 0);
-        sentence.wordIds = newWords;
 
+        // No originalSource stored
+        sentence.source = value.replace(/\s+/g, '');
+
+        const newWords = value.split(/\s+/).filter(w => w.trim().length > 0);
+
+        const strippedSource = value.replace(/\s+/g, '');
+        const joinedWords = newWords.join('');
+
+        if (strippedSource !== joinedWords) {
+            showTranslationWarning(`
+                ⚠️ Word mismatch in sentence: "${value}"<br>
+                Stripped: "${strippedSource}"<br>
+                Joined words: "${joinedWords}"<br>
+                Check your word spacing.
+            `);
+        }
+
+        sentence.wordIds = newWords;
 
         let newWordsAdded = 0;
         const addedWords = [];
@@ -871,7 +913,12 @@ async function updateSentence(sectionIdx, blockIdx, sentIdx, field, value) {
 
     } else if (field === 'en' || field === 'fa') {
         if (!sentence.translations) sentence.translations = {};
-        sentence.translations[field] = field === 'en' ? value.toLowerCase() : value;
+        if (field === 'en') {
+            // Optionally ensure sentence case when manually edited, but we leave as typed
+            sentence.translations[field] = value;
+        } else {
+            sentence.translations[field] = value;
+        }
     }
 
     updateCacheDisplay();
@@ -1175,7 +1222,7 @@ function showTranslationWarning(message) {
     }, 5000);
 }
 
-// ==================== BLOCK GENERATION ====================
+// ==================== BLOCK GENERATION (CREATE) ====================
 function toggleActivityMode() {
     const mode = document.querySelector('input[name="activityMode"]:checked').value;
     document.getElementById('activityOverridePanel').style.display = mode === 'override' ? 'block' : 'none';
@@ -1266,7 +1313,7 @@ async function generateWordBlock(text, selectedLangs) {
 
     const heading = document.getElementById('headingInput').value.trim();
     if (heading) {
-        const enTranslation = await TranslationAPI.translate(heading, 'en');
+        const enTranslation = await TranslationAPI.translate(heading, 'en', { sentenceCase: true });
         const faTranslation = await TranslationAPI.translate(heading, 'fa');
         newBlock.heading = {
             en: enTranslation,
@@ -1286,10 +1333,20 @@ async function generateWordBlock(text, selectedLangs) {
     window.currentDocument.sections[0].content = AppState.blocks;
 }
 
-// ==================== GENERATE NEW BLOCKS ====================
 async function generateParagraphBlock(text, selectedLangs) {
     const sentences = text.split('\n').filter(s => s.trim().length > 0);
     if (sentences.length === 0) return;
+
+    const mismatches = validateWordMismatches(sentences);
+
+    if (mismatches.length > 0) {
+        showWordMismatchWarning(mismatches);
+        if (!confirm('Word mismatches detected! This will cause rendering issues in the app. Do you want to continue anyway?')) {
+            return;
+        }
+    } else {
+        document.getElementById('translationWarning').style.display = 'none';
+    }
 
     const sentencesData = [];
     const allWords = new Set();
@@ -1298,11 +1355,11 @@ async function generateParagraphBlock(text, selectedLangs) {
         const words = sentence.split(/\s+/).filter(w => w.trim().length > 0);
         words.forEach(w => allWords.add(w));
 
-        const enTranslation = await TranslationAPI.translate(sentence, 'en');
+        const enTranslation = await TranslationAPI.translate(sentence, 'en', { sentenceCase: true });
         const faTranslation = await TranslationAPI.translate(sentence, 'fa');
+
         const continuousSource = words.join('');
 
-        // NO originalSource, NO type
         sentencesData.push({
             source: continuousSource,
             wordIds: words,
@@ -1336,7 +1393,7 @@ async function generateParagraphBlock(text, selectedLangs) {
 
     const heading = document.getElementById('headingInput').value.trim();
     if (heading) {
-        const enTranslation = await TranslationAPI.translate(heading, 'en');
+        const enTranslation = await TranslationAPI.translate(heading, 'en', { sentenceCase: true });
         const faTranslation = await TranslationAPI.translate(heading, 'fa');
         newBlock.heading = {
             en: enTranslation,
@@ -1355,7 +1412,7 @@ async function generateParagraphBlock(text, selectedLangs) {
             newBlock.grammar.examples = [{
                 sentenceSource: grammarExample,
                 translations: {
-                    en: await TranslationAPI.translate(grammarExample, 'en'),
+                    en: await TranslationAPI.translate(grammarExample, 'en', { sentenceCase: true }),
                     fa: await TranslationAPI.translate(grammarExample, 'fa')
                 }
             }];
@@ -1399,6 +1456,7 @@ async function processEditedSentence(uniqueId, sectionIdx, blockIdx, sentIdx) {
         const oldWords = new Set(sentence.wordIds || []);
 
         sentence.source = continuousSource;
+        // No originalSource
         sentence.wordIds = newWords;
 
         let newWordsCount = 0;
@@ -1714,9 +1772,7 @@ function validateDocumentSentences() {
                                 source: sentence.source,
                                 wordIds: sentence.wordIds,
                                 continuousFromWords,
-                                sourceWithoutSpaces,
-                                originalSource: sentence.source,
-                                originalWordIds: [...sentence.wordIds]
+                                sourceWithoutSpaces
                             });
                         }
                     }
@@ -1732,7 +1788,7 @@ function resetSentenceEdit(uniqueId, sectionIdx, blockIdx, sentIdx) {
     const sentence = AppState.currentDocument.sections[sectionIdx].content[blockIdx].sentences[sentIdx];
     const textarea = document.getElementById(`edit-source-${uniqueId}`);
     if (textarea && sentence) {
-        // Use wordIds to reconstruct the spaced version (no longer relying on originalSource)
+        // Reconstruct spaced version from wordIds
         const spacedFromWords = sentence.wordIds.join(' ');
         textarea.value = spacedFromWords;
     }
@@ -1778,7 +1834,7 @@ function showDocumentValidationWarnings() {
         const uniqueId = `mismatch-${m.sectionIdx}-${m.blockIdx}-${m.sentIdx}`;
         const sentence = AppState.currentDocument.sections[m.sectionIdx].content[m.blockIdx].sentences[m.sentIdx];
 
-        // Use wordIds to show spaced version
+        // Reconstruct spaced version from wordIds for editing
         const spacedFromWords = sentence.wordIds.join(' ');
 
         html += `
@@ -2214,7 +2270,6 @@ function downloadJSON(type) {
 
     if (type === 'full') {
         data = buildFullDocument();
-        // Ensure English translations are lowercase before saving
         if (data.vocabulary) {
             for (const wordId in data.vocabulary) {
                 const word = data.vocabulary[wordId];
@@ -2268,7 +2323,6 @@ function updateWarningContainer(container, mismatches) {
         const uniqueId = `mismatch-${m.sectionIdx}-${m.blockIdx}-${m.sentIdx}`;
         const sentence = AppState.currentDocument.sections[m.sectionIdx].content[m.blockIdx].sentences[m.sentIdx];
 
-        // Reconstruct spaced version from wordIds
         const spacedFromWords = sentence.wordIds.join(' ');
 
         html += `
@@ -2292,7 +2346,6 @@ function updateWarningContainer(container, mismatches) {
                     </div>
                 </div>
 
-                <!-- Edit Source with Spaces -->
                 <div style="margin-top: 15px; padding: 15px; background: rgba(37, 99, 235, 0.05); border-radius: 8px;">
                     <div style="font-weight: 600; margin-bottom: 10px;">✏️ Edit Sentence with Spaces:</div>
                     <div style="display: flex; gap: 10px; align-items: flex-start;">
@@ -2314,7 +2367,6 @@ function updateWarningContainer(container, mismatches) {
                     </div>
                 </div>
 
-                <!-- Preview of changes -->
                 <div id="preview-${uniqueId}" style="margin-top: 10px; display: none;">
                     <div style="font-weight: 600; margin-bottom: 5px;">Preview:</div>
                     <div style="font-family: monospace; background: var(--bg); padding: 10px; border-radius: 4px;"></div>

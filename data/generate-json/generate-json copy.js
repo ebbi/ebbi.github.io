@@ -14,7 +14,6 @@ const TranslationAPI = {
             const data = await response.json();
             if (data.responseStatus === 200) {
                 let translation = data.responseData.translatedText;
-                // Lowercase English translations (words and sentences)
                 if (targetLang === 'en') {
                     translation = translation.toLowerCase();
                 }
@@ -30,28 +29,12 @@ const TranslationAPI = {
 
     async translateHeading(text) {
         if (!text) return { en: '', fa: '', th: text };
-
-        console.log('Translating heading from Thai:', text);
-
         try {
             const enTranslation = await this.translate(text, 'en');
-            console.log('EN translation:', enTranslation);
-
             const faTranslation = await this.translate(text, 'fa');
-            console.log('FA translation:', faTranslation);
-
-            return {
-                en: enTranslation,
-                fa: faTranslation,
-                th: text
-            };
+            return { en: enTranslation, fa: faTranslation, th: text };
         } catch (error) {
-            console.error('Error in translateHeading:', error);
-            return {
-                en: '',
-                fa: '',
-                th: text
-            };
+            return { en: '', fa: '', th: text };
         }
     }
 };
@@ -84,7 +67,7 @@ const AppState = {
     currentDocument: null
 };
 
-// Initialize
+// ==================== INIT ====================
 function init() {
     setDataType('word');
     updateStats();
@@ -99,7 +82,6 @@ function init() {
 // ==================== WORKFLOW SWITCHING ====================
 function switchWorkflow(workflow) {
     AppState.currentWorkflow = workflow;
-
     document.getElementById('createView').classList.add('hidden');
     document.getElementById('updateView').classList.add('hidden');
     document.getElementById('metadataPanel').classList.add('hidden');
@@ -133,21 +115,12 @@ function initializeNewDocument() {
             tags: tags
         },
         vocabulary: {},
-        activity: {
-            words: true,
-            sentences: true
-        },
-        sections: [
-            {
-                sectionId: document.getElementById('docId').value + 'Section',
-                heading: {
-                    en: 'Main Section',
-                    fa: '',
-                    th: ''
-                },
-                content: []
-            }
-        ]
+        activity: { words: true, sentences: true },
+        sections: [{
+            sectionId: document.getElementById('docId').value + 'Section',
+            heading: { en: 'Main Section', fa: '', th: '' },
+            content: []
+        }]
     };
 
     window.currentDocument = newDoc;
@@ -159,10 +132,7 @@ function initializeNewDocument() {
 // ==================== UPDATE WORKFLOW ====================
 function loadDocumentForUpdate() {
     const file = document.getElementById('updateFileInput').files[0];
-    if (!file) {
-        switchWorkflow('create');
-        return;
-    }
+    if (!file) { switchWorkflow('create'); return; }
 
     const reader = new FileReader();
     reader.onload = function (e) {
@@ -176,22 +146,22 @@ function loadDocumentForUpdate() {
                 AppState.blocks = data.sections[0].content;
             }
 
-            // Preserve original source (with spaces) for each sentence
+            // --- STRIP REDUNDANT PROPERTIES ---
             if (data.sections) {
                 data.sections.forEach(section => {
                     if (section.content) {
                         section.content.forEach(block => {
                             if (block.type === 'paragraph' && block.sentences) {
                                 block.sentences.forEach(sentence => {
-                                    if (sentence.source && !sentence.originalSource) {
-                                        sentence.originalSource = sentence.source; // store spaced version
-                                    }
+                                    delete sentence.originalSource; // REMOVED
+                                    delete sentence.type;           // REMOVED
                                 });
                             }
                         });
                     }
                 });
             }
+            // ---------------------------------
 
             document.getElementById('docId').value = data.documentId || '';
             document.getElementById('version').value = data.metadata?.version || '2.0.0';
@@ -202,9 +172,7 @@ function loadDocumentForUpdate() {
 
             document.getElementById('tagsContainer').innerHTML = '<input type="text" id="newTag" placeholder="Add tag and press Enter..." style="border: none; outline: none; flex: 1;">';
             document.getElementById('newTag').addEventListener('keypress', handleTagKeyPress);
-            if (data.metadata?.tags) {
-                data.metadata.tags.forEach(tag => addTag(tag));
-            }
+            if (data.metadata?.tags) data.metadata.tags.forEach(tag => addTag(tag));
 
             document.getElementById('metadataPanel').classList.remove('hidden');
             document.getElementById('updateView').classList.remove('hidden');
@@ -443,10 +411,9 @@ async function generateParagraphBlockForUpdate(text) {
         const faTranslation = await TranslationAPI.translate(sentence, 'fa');
         const continuousSource = words.join('');
 
+        // REMOVED originalSource and type from sentence object
         sentencesData.push({
-            type: 'sentence',
             source: continuousSource,
-            originalSource: sentence, // store the original spaced version
             wordIds: words,
             translations: { en: enTranslation, fa: faTranslation }
         });
@@ -865,29 +832,10 @@ async function updateSentence(sectionIdx, blockIdx, sentIdx, field, value) {
 
     if (field === 'source') {
         const oldWords = new Set(sentence.wordIds || []);
-
-        // Store the original spaced source if not already stored
-        if (!sentence.originalSource && value.includes(' ')) {
-            sentence.originalSource = value;
-        }
-
         sentence.source = value.replace(/\s+/g, '');
-
         const newWords = value.split(/\s+/).filter(w => w.trim().length > 0);
-
-        const strippedSource = value.replace(/\s+/g, '');
-        const joinedWords = newWords.join('');
-
-        if (strippedSource !== joinedWords) {
-            showTranslationWarning(`
-                ⚠️ Word mismatch in sentence: "${value}"<br>
-                Stripped: "${strippedSource}"<br>
-                Joined words: "${joinedWords}"<br>
-                Check your word spacing.
-            `);
-        }
-
         sentence.wordIds = newWords;
+
 
         let newWordsAdded = 0;
         const addedWords = [];
@@ -923,11 +871,7 @@ async function updateSentence(sectionIdx, blockIdx, sentIdx, field, value) {
 
     } else if (field === 'en' || field === 'fa') {
         if (!sentence.translations) sentence.translations = {};
-        if (field === 'en') {
-            sentence.translations[field] = value.toLowerCase();
-        } else {
-            sentence.translations[field] = value;
-        }
+        sentence.translations[field] = field === 'en' ? value.toLowerCase() : value;
     }
 
     updateCacheDisplay();
@@ -1342,20 +1286,10 @@ async function generateWordBlock(text, selectedLangs) {
     window.currentDocument.sections[0].content = AppState.blocks;
 }
 
+// ==================== GENERATE NEW BLOCKS ====================
 async function generateParagraphBlock(text, selectedLangs) {
     const sentences = text.split('\n').filter(s => s.trim().length > 0);
     if (sentences.length === 0) return;
-
-    const mismatches = validateWordMismatches(sentences);
-
-    if (mismatches.length > 0) {
-        showWordMismatchWarning(mismatches);
-        if (!confirm('Word mismatches detected! This will cause rendering issues in the app. Do you want to continue anyway?')) {
-            return;
-        }
-    } else {
-        document.getElementById('translationWarning').style.display = 'none';
-    }
 
     const sentencesData = [];
     const allWords = new Set();
@@ -1366,18 +1300,13 @@ async function generateParagraphBlock(text, selectedLangs) {
 
         const enTranslation = await TranslationAPI.translate(sentence, 'en');
         const faTranslation = await TranslationAPI.translate(sentence, 'fa');
-
         const continuousSource = words.join('');
 
+        // NO originalSource, NO type
         sentencesData.push({
-            type: 'sentence',
             source: continuousSource,
-            originalSource: sentence, // store the original spaced version
             wordIds: words,
-            translations: {
-                en: enTranslation,
-                fa: faTranslation
-            }
+            translations: { en: enTranslation, fa: faTranslation }
         });
     }
 
@@ -1470,8 +1399,6 @@ async function processEditedSentence(uniqueId, sectionIdx, blockIdx, sentIdx) {
         const oldWords = new Set(sentence.wordIds || []);
 
         sentence.source = continuousSource;
-        // Update originalSource with the user‑edited spaced version
-        sentence.originalSource = spacedSource;
         sentence.wordIds = newWords;
 
         let newWordsCount = 0;
@@ -1805,11 +1732,9 @@ function resetSentenceEdit(uniqueId, sectionIdx, blockIdx, sentIdx) {
     const sentence = AppState.currentDocument.sections[sectionIdx].content[blockIdx].sentences[sentIdx];
     const textarea = document.getElementById(`edit-source-${uniqueId}`);
     if (textarea && sentence) {
-        // Use originalSource if available, otherwise fall back to wordIds spaced
-        const originalSpaced = sentence.originalSource || sentence.wordIds.join(' ');
-        textarea.value = originalSpaced;
-        // Also update the data attribute for consistency
-        textarea.setAttribute('data-original-spaced', originalSpaced);
+        // Use wordIds to reconstruct the spaced version (no longer relying on originalSource)
+        const spacedFromWords = sentence.wordIds.join(' ');
+        textarea.value = spacedFromWords;
     }
 }
 
@@ -1853,8 +1778,8 @@ function showDocumentValidationWarnings() {
         const uniqueId = `mismatch-${m.sectionIdx}-${m.blockIdx}-${m.sentIdx}`;
         const sentence = AppState.currentDocument.sections[m.sectionIdx].content[m.blockIdx].sentences[m.sentIdx];
 
-        // Use original spaced source if available, otherwise the continuous source
-        let originalSpaced = sentence.originalSource || m.source;
+        // Use wordIds to show spaced version
+        const spacedFromWords = sentence.wordIds.join(' ');
 
         html += `
             <div style="background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 15px; margin-bottom: 15px;" id="${uniqueId}">
@@ -1882,9 +1807,8 @@ function showDocumentValidationWarnings() {
                     <div style="font-weight: 600; margin-bottom: 10px;">✏️ Edit Sentence with Spaces:</div>
                     <div style="display: flex; gap: 10px; align-items: flex-start;">
                         <textarea id="edit-source-${uniqueId}" lang="th"
-                            data-original-spaced="${escapeHtml(originalSpaced)}"
                             style="flex: 1; padding: 10px; font-size: var(--thai-font-size); border: 2px solid var(--primary); border-radius: 6px; min-height: 80px;"
-                            placeholder="Enter sentence with spaces between words...">${escapeHtml(originalSpaced)}</textarea>
+                            placeholder="Enter sentence with spaces between words...">${escapeHtml(spacedFromWords)}</textarea>
                         <div style="display: flex; flex-direction: column; gap: 10px;">
                             <button class="btn btn-success" onclick="processEditedSentence('${uniqueId}', ${m.sectionIdx}, ${m.blockIdx}, ${m.sentIdx})">
                                 <span class="material-icons">sync</span> Process
@@ -2344,8 +2268,8 @@ function updateWarningContainer(container, mismatches) {
         const uniqueId = `mismatch-${m.sectionIdx}-${m.blockIdx}-${m.sentIdx}`;
         const sentence = AppState.currentDocument.sections[m.sectionIdx].content[m.blockIdx].sentences[m.sentIdx];
 
-        // Use original spaced source if available, otherwise the continuous source
-        let originalSpaced = sentence.originalSource || m.source;
+        // Reconstruct spaced version from wordIds
+        const spacedFromWords = sentence.wordIds.join(' ');
 
         html += `
             <div style="background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 15px; margin-bottom: 15px;" id="${uniqueId}">
@@ -2373,9 +2297,8 @@ function updateWarningContainer(container, mismatches) {
                     <div style="font-weight: 600; margin-bottom: 10px;">✏️ Edit Sentence with Spaces:</div>
                     <div style="display: flex; gap: 10px; align-items: flex-start;">
                         <textarea id="edit-source-${uniqueId}" lang="th"
-                            data-original-spaced="${escapeHtml(originalSpaced)}"
                             style="flex: 1; padding: 10px; font-size: var(--thai-font-size); border: 2px solid var(--primary); border-radius: 6px; min-height: 80px;"
-                            placeholder="Enter sentence with spaces between words...">${escapeHtml(originalSpaced)}</textarea>
+                            placeholder="Enter sentence with spaces between words...">${escapeHtml(spacedFromWords)}</textarea>
                         <div style="display: flex; flex-direction: column; gap: 10px;">
                             <button class="btn btn-success" onclick="processEditedSentence('${uniqueId}', ${m.sectionIdx}, ${m.blockIdx}, ${m.sentIdx})">
                                 <span class="material-icons">sync</span> Process
