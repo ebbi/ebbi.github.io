@@ -71,6 +71,68 @@ For "vocabulary" object output, Some English words are capitalised.
 The English word output should be all lower case.
 
 
+JSON from PDF 
+===================================================================================
+
+The requirement is to generate a JSON input data file from the content of the uploaded TH3.pdf file.
+The JSON data file will be processed by the uploaded app.js
+
+AN eample JSON data file, LS2.json is uploaded as an example.
+
+The JSON input data file should contain the vocabularly and the text from the PDF file for each lesson outlined below. 
+
+The following lists the lesson headings and respective start and end pages.
+
+What time is it now?
+Pages: 1 to 16
+
+What day is it today?
+Pages: 17 to 34
+
+Months / Year / Seasons
+Pages: 35 to 50
+
+My family 
+Pages: 51 to 63
+
+What is your job?
+Pages: 64 to 69
+
+What does she/he look like?
+Pages 69 to 74
+
+Each lesson above should be a heading for a seperate section in the JSON data file.
+
+The content in each JSON section should use the heading text for sub section vocabulary and text. 
+For example, the first section heading is "What time is it now?" and 
+the first content heading is "Period of time" followed by "Vocabulary 1", "Vocabulary 2" and so on.
+
+The headings "Structure" outlines a "pattern" followed by examples of the pattern. 
+All "Structure" in the PDF file should be converted to a JSON "grammar" element.
+
+Images can be ignored.
+
+Exercises can be ignored.
+
+All vocabulary in the JSON output should be in lower case.
+
+Please ask for clarification on any ambiguity for the above requirement before generating the JSON data.
+
+--------------------------
+
+The uploaded generate-json.js code generates or corrects json data for 
+app.js 
+
+The generate-json.js inserts a "originalSource" json property that the app.js does not use and is redundant.  
+The  "originalSource" property seems to be a duplicate of the  "source" property.
+
+If this is the case, then change the code to stop generating the redundant  "originalSource" property.
+Also, check for any other rendundant property that app.js does not use and update the 
+generate-json.js to delete the redundant json properties that are not used.
+
+A sample datafile LS2.json is uploaded for information.
+
+
 
 
 
