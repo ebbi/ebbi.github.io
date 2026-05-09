@@ -112,25 +112,19 @@ All "Structure" in the PDF file should be converted to a JSON "grammar" element.
 
 Images can be ignored.
 
-Exercises can be ignored.
-
-All vocabulary in the JSON output should be in lower case.
+All vocabulary in the JSON output should be in lower case except for names and normal capitalisation such as, I.
 
 Please ask for clarification on any ambiguity for the above requirement before generating the JSON data.
 
 --------------------------
 
-The uploaded generate-json.js code generates or corrects json data for 
-app.js 
+During play, the complete Thai source sentences and translations sentence 
+being spoken out is displayed in 
+the play control panel.  On a mobile device, the text 
+being spoken is still too large for the mobile display and overlaps the existing display and 
+should be truncated to fit the mobile display.
 
-The generate-json.js inserts a "originalSource" json property that the app.js does not use and is redundant.  
-The  "originalSource" property seems to be a duplicate of the  "source" property.
 
-If this is the case, then change the code to stop generating the redundant  "originalSource" property.
-Also, check for any other rendundant property that app.js does not use and update the 
-generate-json.js to delete the redundant json properties that are not used.
-
-A sample datafile LS2.json is uploaded for information.
 
 
 

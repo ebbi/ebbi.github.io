@@ -5136,7 +5136,6 @@ const App = (function () {
             const display = document.getElementById('media-text-display');
             if (display) {
                 display.innerText = '';
-                display.className = 'media-text-display';
             }
         },
 
@@ -5221,74 +5220,57 @@ const App = (function () {
         },
 
         playSequence() {
+
             // CRITICAL: Check if we're in a document or blog view
             const mainContent = document.getElementById('main-content');
             const isInDocument = mainContent?.querySelector('.document-content') !== null;
             const isInBlog = mainContent?.querySelector('.blog-content') !== null;
 
             if (!isInDocument && !isInBlog) {
+                // console.log('Not in document or blog view, stopping playback');
                 this.stopSequence();
                 this.updatePlayPauseIcon(false);
                 return;
             }
 
+            // Ensure play icon is set to pause
             this.updatePlayPauseIcon(true);
+
+            // console.log('Current index:', State.data.media.currentIndex);
 
             // Enable scroll listeners when playback starts
             Services.MediaService.enableScrollListeners();
 
-            /**
-             * Helper: returns all audio elements that are part of the current sequence,
-             * grouped and reordered so that within each sentence-group the order is:
-             *   1. word breakdown (sent-word-block)
-             *   2. full translation sentences (class "trans" or lang ≠ "th")
-             *   3. source Thai sentence
-             */
-            const getOrderedSequenceElements = () => {
-                const allElements = document.querySelectorAll('.audio-element');
-                const filtered = Array.from(allElements).filter(el =>
-                    Services.MediaService.isSequenceElement(el)
-                );
+            // Get ALL audio elements
+            const allElements = document.querySelectorAll('.audio-element');
 
-                const ordered = [];
-                let i = 0;
-                while (i < filtered.length) {
-                    const el = filtered[i];
-                    const sentenceGroup = el.closest('.sentence-group');
-                    if (sentenceGroup) {
-                        const group = [];
-                        while (i < filtered.length && filtered[i].closest('.sentence-group') === sentenceGroup) {
-                            group.push(filtered[i]);
-                            i++;
-                        }
-                        // Sort within the sentence group
-                        group.sort((a, b) => {
-                            const orderA = a.closest('.sent-word-block') ? 0 :
-                                (a.classList.contains('trans') || (a.getAttribute('data-lang') && a.getAttribute('data-lang') !== 'th')) ? 1 : 2;
-                            const orderB = b.closest('.sent-word-block') ? 0 :
-                                (b.classList.contains('trans') || (b.getAttribute('data-lang') && b.getAttribute('data-lang') !== 'th')) ? 1 : 2;
-                            return orderA - orderB;
-                        });
-                        ordered.push(...group);
-                    } else {
-                        ordered.push(el);
-                        i++;
+            // Use the MediaService method for filtering
+            const sequenceElements = Array.from(allElements).filter(el => {
+                const isSeq = Services.MediaService.isSequenceElement(el);
+                if (isSeq && State.data.media.showWordBreakdown) {
+                    // Log breakdown elements to verify they're being included
+                    if (el.closest('.sent-word-block') ||
+                        el.classList.contains('sent-word-item') ||
+                        el.classList.contains('sent-word-trans')) {
+                        /*
+                                                console.log('Including breakdown element in sequence:', {
+                                                    classes: el.classList,
+                                                    text: el.getAttribute('data-text')
+                                                });
+                                                */
                     }
                 }
-                return ordered;
-            };
+                return isSeq;
+            });
 
-            // Initial ordered sequence
-            let sequenceElements = getOrderedSequenceElements();
-
-            // If current index is beyond sequence, reset
+            // If current index is beyond sequence elements, reset to 0
             if (State.data.media.currentIndex >= sequenceElements.length) {
                 State.data.media.currentIndex = 0;
             }
 
             const settings = State.data.media.languageSettings;
 
-            // Initialize tracking
+            // Initialize tracking if needed
             if (!State.data.scrolledRows) {
                 State.data.scrolledRows = new Set();
             }
@@ -5299,60 +5281,87 @@ const App = (function () {
             let isPausedByScroll = false;
             let pendingScrollCompletion = false;
 
+            // Function to handle scroll end - simplified to avoid race condition
             const onScrollEnd = () => {
                 if (scrollEndTimer) {
                     clearTimeout(scrollEndTimer);
                 }
+
                 scrollEndTimer = setTimeout(() => {
+                    // console.log('Scroll has completely ended');
+                    // Set a longer lock after scroll ends to catch any final events
                     window.scrollLockUntil = Date.now() + 500;
+
+                    // Don't set isAutoScrolling false immediately - wait a bit
                     setTimeout(() => {
+                        // console.log('Setting isAutoScrolling = false');
                         State.data.isAutoScrolling = false;
                         pendingScrollCompletion = false;
                     }, 200);
+
                     scrollEndTimer = null;
                 }, 200);
             };
 
-            const playNext = () => {
+            playNext = () => {
+                // console.log('playNext called, currentIndex:', State.data.media.currentIndex);
+
+                // Check if we should pause due to pending scroll completion
                 if (pendingScrollCompletion && State.data.media.isPlaying) {
+                    // console.log('Pending scroll completion, waiting...');
                     setTimeout(playNext, 50);
                     return;
                 }
 
                 if (!State.data.media.isPlaying) {
+                    // console.log('Playback stopped by user');
                     return;
                 }
 
-                // Re‑get ordered sequence (in case DOM changed)
-                sequenceElements = getOrderedSequenceElements();
+                // Re-query sequence elements in case DOM has changed
+                const currentAllElements = document.querySelectorAll('.audio-element');
+                const currentSequenceElements = Array.from(currentAllElements).filter(el => Services.MediaService.isSequenceElement(el));
 
-                if (State.data.media.currentIndex >= sequenceElements.length) {
+                if (State.data.media.currentIndex >= currentSequenceElements.length) {
+                    // console.log('Reached end of sequence elements, stopping');
                     this.stopSequence();
                     return;
                 }
 
-                const element = sequenceElements[State.data.media.currentIndex];
+                // Get the element from the sequence elements list, not from all elements
+                const element = currentSequenceElements[State.data.media.currentIndex];
                 if (!element) {
+                    // console.log('Element not found at index', State.data.media.currentIndex);
                     State.data.media.currentIndex++;
                     setTimeout(playNext, 100);
                     return;
                 }
 
-                // Open closed details panel if necessary
+                // Check if the element is inside a closed details panel and open it
                 const details = element.closest('details');
                 if (details && !details.open) {
+                    // console.log('Opening closed details panel for element at index', State.data.media.currentIndex);
                     details.open = true;
+
+                    // Find the section index from the details element
                     const sectionIndex = details.getAttribute('data-section-index');
                     if (sectionIndex !== null) {
                         const documentId = State.data.currentDocument?.id;
                         if (documentId) {
+                            // Update the accordion state to reflect that this section is now open
+                            // and all others should be closed (accordion behavior)
                             State.data.documentAccordion.openSections[documentId] = parseInt(sectionIndex);
                             State.save('documentAccordion');
                         }
                     }
+
+                    // Small delay to allow the details panel to expand before continuing
                     setTimeout(() => {
-                        sequenceElements = getOrderedSequenceElements();
-                        const updatedIndex = sequenceElements.indexOf(element);
+                        // Re-get the sequence elements array as the DOM has changed
+                        const updatedAllElements = document.querySelectorAll('.audio-element');
+                        const updatedSequenceElements = Array.from(updatedAllElements).filter(el => Services.MediaService.isSequenceElement(el));
+                        // Find the new index of the same element in the updated sequence
+                        const updatedIndex = updatedSequenceElements.indexOf(element);
                         if (updatedIndex !== -1) {
                             State.data.media.currentIndex = updatedIndex;
                         }
@@ -5361,68 +5370,126 @@ const App = (function () {
                     return;
                 }
 
-                // Determine row container (for scrolling)
-                let row = element.closest('.words-grid') ||
-                    element.closest('.alphabet-grid') ||
-                    element.closest('.character-grid') ||
-                    element.closest('.tone-rule-table-container') ||
-                    element.closest('.sentence-group, .word-card, .flashcard-front, .quiz-question-card, .alphabet-table-container');
+                // Find the row container
+                let row = null;
+                if (element.closest('.words-grid')) {
+                    row = element.closest('.words-grid');
+                    // console.log('Element is in words-grid, row:', row?.id || 'no id');
+                } else if (element.closest('.alphabet-grid')) {
+                    row = element.closest('.alphabet-grid');
+                    // console.log('Element is in alphabet-grid, row:', row?.id || 'no id');
+                } else if (element.closest('.character-grid')) {
+                    row = element.closest('.character-grid');
+                    // console.log('Element is in character-grid, row:', row?.id || 'no id');
+                } else if (element.closest('.tone-rule-table-container')) {
+                    row = element.closest('.tone-rule-table-container');
+                    // console.log('Element is in tone-rule-table, row:', row?.id || 'no id');
+                } else {
+                    row = element.closest('.sentence-group, .word-card, .flashcard-front, .quiz-question-card, .alphabet-table-container');
+                    // console.log('Element is in other container, row:', row?.className);
+                }
 
                 const rowId = row?.id || row?.getAttribute('data-uid') || `row-${State.data.media.currentIndex}`;
 
+                // IMPORTANT: For alphabet content, we need to check if the element itself is in viewport
+                // because all items share the same row container
                 const elementRect = element.getBoundingClientRect();
-                const toolbarHeight = 56;
-                const mediaBar = document.getElementById('media-player-container');
-                const mediaBarHeight = mediaBar && mediaBar.innerHTML ? 50 : 0;
-                const topThreshold = toolbarHeight + mediaBarHeight + 20;
-                const bottomThreshold = 40;
 
+                // Calculate visible area of the element
+                const toolbarHeight = 56; // #app-toolbar height
+                const mediaBar = document.getElementById('media-player-container');
+                const mediaBarHeight = mediaBar && mediaBar.innerHTML ? 50 : 0; // media-row height when visible
+                const topThreshold = toolbarHeight + mediaBarHeight + 20; // Add padding
+                const bottomThreshold = 40; // Bottom padding
+
+                // Check if element is in viewport with better thresholds
                 const isElementInViewport = (
                     elementRect.top >= topThreshold &&
                     elementRect.bottom <= (window.innerHeight - bottomThreshold)
                 );
+
+                // Also check if element is partially visible but needs adjustment
                 const needsScrolling = (
-                    elementRect.top < topThreshold ||
-                    elementRect.bottom > (window.innerHeight - bottomThreshold) ||
-                    elementRect.top < 0 ||
-                    elementRect.bottom > window.innerHeight
+                    elementRect.top < topThreshold || // Element too high
+                    elementRect.bottom > (window.innerHeight - bottomThreshold) || // Element too low
+                    elementRect.top < 0 || // Element above viewport
+                    elementRect.bottom > window.innerHeight // Element below viewport
                 );
 
+                // Scroll when:
+                // 1. We enter a new row (different rowId) OR
+                // 2. The element is not properly visible in viewport (for same row items)
+                // 3. For alphabet grid items, always ensure they're visible
                 const isAlphabetItem = element.classList.contains('alphabet-item') ||
                     element.closest('.alphabet-item') !== null;
 
                 if ((rowId && rowId !== State.data.currentRowId) || needsScrolling || (isAlphabetItem && !isElementInViewport)) {
+                    // console.log('Need to scroll -', {
+                    //     newRow: rowId !== State.data.currentRowId,
+                    //     needsScrolling,
+                    //     isAlphabetItem,
+                    //     isElementInViewport
+                    // });
+
                     State.data.isAutoScrolling = true;
                     pendingScrollCompletion = true;
+
+                    // Set a long scroll lock immediately
                     window.scrollLockUntil = Date.now() + 1500;
 
+                    // Calculate total offset based on media bar visibility
+                    const totalOffset = topThreshold + 20; // Increased padding for better visibility
+
+                    // Determine what to scroll to - prefer the row container, but fall back to element
                     const scrollTarget = row || element;
+
+                    // Use a more precise scroll with offset
                     const rect = scrollTarget.getBoundingClientRect();
                     const absoluteTop = window.scrollY + rect.top;
+
+                    // Calculate target position - we want the element to be at the topThreshold position
                     let targetTop = absoluteTop - topThreshold;
 
+                    // If it's an alphabet item in a grid, we might want to scroll to the row container
+                    // to give context, but ensure the specific item is visible
                     if (isAlphabetItem && row && row !== element) {
+                        // Scroll to the row but adjust so the element is visible
                         const rowRect = row.getBoundingClientRect();
                         const rowTop = window.scrollY + rowRect.top;
+
+                        // Calculate how far into the row our element is
                         const elementOffsetInRow = elementRect.top - rowRect.top;
+
+                        // Target the row such that our element is at the topThreshold
                         targetTop = rowTop + elementOffsetInRow - topThreshold;
                     }
+
+                    // Ensure we don't scroll above the document
                     targetTop = Math.max(0, targetTop);
 
-                    window.scrollTo({ top: targetTop, behavior: 'smooth' });
+                    window.scrollTo({
+                        top: targetTop,
+                        behavior: 'smooth'
+                    });
 
+                    // Listen for scroll end
                     const scrollHandler = () => onScrollEnd();
                     window.addEventListener('scroll', scrollHandler, { passive: true });
 
                     setTimeout(() => {
+                        // console.log('Initial scroll timeout complete');
                         window.removeEventListener('scroll', scrollHandler);
+
                         State.data.currentRowId = rowId;
+
+                        // Small delay before speaking to let scroll events settle
                         setTimeout(() => {
                             pendingScrollCompletion = false;
                             speakCurrent();
-                        }, 200);
+                        }, 200); // Increased from 150ms to 200ms for better stability
                     }, 400);
                 } else {
+                    // console.log('Element is properly visible, speaking current element');
                     speakCurrent();
                 }
             };
@@ -5430,22 +5497,28 @@ const App = (function () {
             const speakCurrent = () => {
                 if (!State.data.media.isPlaying) return;
 
-                sequenceElements = getOrderedSequenceElements();
+                // Re-query sequence elements in case DOM has changed
+                const currentAllElements = document.querySelectorAll('.audio-element');
+                const currentSequenceElements = Array.from(currentAllElements).filter(el => Services.MediaService.isSequenceElement(el));
 
-                if (State.data.media.currentIndex >= sequenceElements.length) {
+                if (State.data.media.currentIndex >= currentSequenceElements.length) {
+                    // console.log('Element no longer exists, stopping playback');
                     this.stopSequence();
                     return;
                 }
 
-                const element = sequenceElements[State.data.media.currentIndex];
+                const element = currentSequenceElements[State.data.media.currentIndex];
                 if (!element) {
+                    // console.log('Element not found, moving to next');
                     State.data.media.currentIndex++;
                     setTimeout(playNext, 100);
                     return;
                 }
 
+                // Double-check that the element is in an open details panel
                 const details = element.closest('details');
                 if (details && !details.open) {
+                    // If somehow we got here with a closed panel, open it and retry
                     details.open = true;
                     setTimeout(() => {
                         speakCurrent();
@@ -5455,6 +5528,7 @@ const App = (function () {
 
                 const text = element.getAttribute('data-text');
                 const lang = element.getAttribute('data-lang');
+                //                const repeats = settings[lang]?.repeat ?? 1;
                 const repeats = (State.data.viewMode === 'blog') ? 1 : (settings[lang]?.repeat ?? 1);
 
                 if (repeats === 0) {
@@ -5463,6 +5537,7 @@ const App = (function () {
                         display.innerText = text;
                         display.className = `media-text lang-${lang}`;
                     }
+                    // No speech, move to next element immediately (skip delay)
                     if (State.data.media.isPlaying) {
                         State.data.media.currentIndex++;
                         playNext();
@@ -5470,14 +5545,17 @@ const App = (function () {
                     return;
                 }
 
+                // console.log('Speaking:', { text, lang, repeats, index: State.data.media.currentIndex });
+
+                // Observe this element to pause if it goes out of view
                 Services.MediaService.observeCurrentElement(element);
 
                 const display = document.getElementById('media-text-display');
                 if (display) {
                     let displayText = text;
-                    // Always truncate long text to avoid overflow on narrow screens
-                    if (displayText.length > 25) {        // adjust the number as needed (30–40)
-                        displayText = displayText.substring(0, 25) + ' …';
+                    // Truncate long text in blog view for a cleaner media bar
+                    if (State.data.viewMode === 'blog' && displayText.length > 40) {
+                        displayText = displayText.substring(0, 40) + '…';
                     }
                     display.innerText = displayText;
                     display.className = `media-text lang-${lang}`;
@@ -5488,6 +5566,7 @@ const App = (function () {
                 const speakRepeat = () => {
                     if (!State.data.media.isPlaying) return;
 
+                    // Capture the current element and its repeat count
                     const currentElement = element;
                     const currentText = text;
                     const currentLang = lang;
@@ -5499,10 +5578,12 @@ const App = (function () {
 
                         Services.MediaService.speak(currentText, currentLang,
                             () => {
+                                // onStart - add highlight
                                 document.querySelectorAll('.active-highlight').forEach(el => {
                                     el.classList.remove('active-highlight');
                                 });
                                 currentElement.classList.add('active-highlight');
+
                                 const linkId = currentElement.getAttribute('data-link');
                                 if (linkId) {
                                     const linkedElement = document.getElementById(linkId);
@@ -5510,6 +5591,7 @@ const App = (function () {
                                 }
                             },
                             () => {
+                                // onEnd - remove highlight and handle next
                                 currentElement.classList.remove('active-highlight');
                                 const linkId = currentElement.getAttribute('data-link');
                                 if (linkId) {
@@ -5518,9 +5600,12 @@ const App = (function () {
                                 }
 
                                 currentRepeat++;
+
                                 if (currentRepeat < totalRepeats) {
+                                    // More repeats for this element
                                     setTimeout(speakNextRepeat, 100);
                                 } else {
+                                    // Delay before moving to next element
                                     State.data.media.delayTimer = setTimeout(() => {
                                         if (State.data.media.isPlaying) {
                                             State.data.media.currentIndex++;

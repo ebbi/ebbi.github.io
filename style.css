@@ -283,6 +283,7 @@ h6 {
 .media-col.middle {
     flex: 1;
     min-width: 0;
+    overflow: hidden;
 }
 
 .player-ctrl {
