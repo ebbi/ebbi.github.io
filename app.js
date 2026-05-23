@@ -5497,8 +5497,34 @@ const App = (function () {
                     const speakNextRepeat = () => {
                         if (!State.data.media.isPlaying) return;
 
+                        // Enforce minimum duration for the utterance (fallback in case onend fires early)
+                        let utteranceEnded = false;
+                        let forcedDelayTimer = null;
+
+                        const advanceToNextRepeat = () => {
+                            if (forcedDelayTimer) clearTimeout(forcedDelayTimer);
+                            if (utteranceEnded) return; // already processed
+
+                            utteranceEnded = true;
+                            currentRepeat++;
+                            if (currentRepeat < totalRepeats) {
+                                // Use the configured delay (seconds → milliseconds)
+                                setTimeout(speakNextRepeat, State.data.media.delay * 1000);
+                            } else {
+                                State.data.media.delayTimer = setTimeout(() => {
+                                    if (State.data.media.isPlaying) {
+                                        State.data.media.currentIndex++;
+                                        playNext();
+                                    }
+                                    State.data.media.delayTimer = null;
+                                }, State.data.media.delay * 1000);
+                            }
+                        };
+
+                        // Start speaking
                         Services.MediaService.speak(currentText, currentLang,
                             () => {
+                                // Highlight element
                                 document.querySelectorAll('.active-highlight').forEach(el => {
                                     el.classList.remove('active-highlight');
                                 });
@@ -5508,27 +5534,24 @@ const App = (function () {
                                     const linkedElement = document.getElementById(linkId);
                                     if (linkedElement) linkedElement.classList.add('active-highlight');
                                 }
+
+                                // Force the pause if speech ends too quickly
+                                forcedDelayTimer = setTimeout(() => {
+                                    if (!utteranceEnded) {
+                                        console.warn('Speech ended prematurely – forcing delay');
+                                        advanceToNextRepeat();
+                                    }
+                                }, 100); // small grace period – if onend hasn't fired after 100ms, force it
                             },
                             () => {
+                                // Remove highlight after natural end
                                 currentElement.classList.remove('active-highlight');
                                 const linkId = currentElement.getAttribute('data-link');
                                 if (linkId) {
                                     const linkedElement = document.getElementById(linkId);
                                     if (linkedElement) linkedElement.classList.remove('active-highlight');
                                 }
-
-                                currentRepeat++;
-                                if (currentRepeat < totalRepeats) {
-                                    setTimeout(speakNextRepeat, 100);
-                                } else {
-                                    State.data.media.delayTimer = setTimeout(() => {
-                                        if (State.data.media.isPlaying) {
-                                            State.data.media.currentIndex++;
-                                            playNext();
-                                        }
-                                        State.data.media.delayTimer = null;
-                                    }, State.data.media.delay * 1000);
-                                }
+                                advanceToNextRepeat();
                             }
                         );
                     };

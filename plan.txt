@@ -118,11 +118,20 @@ Please ask for clarification on any ambiguity for the above requirement before g
 
 --------------------------
 
-During play, the complete Thai source sentences and translations sentence 
-being spoken out is displayed in 
-the play control panel.  On a mobile device, the text 
-being spoken is still too large for the mobile display and overlaps the existing display and 
-should be truncated to fit the mobile display.
+The App settings has a "Delay" attribute that allows an integer input to be used 
+as a delay parameter between speaking out each token.  
+Change the code so that the same delay is applied for the repeat parameter for each 
+translation.
+
+The change did not work!  The sugested replacement code is identical to the 
+uploaded code!
+The tokens are repeated but spoken almost immediately in the repeat cycle.  
+There should be a pause equal to the global delay before repeating the speach for 
+the token.
+
+for example, the delay set to 5 and repeat set to 2 should:
+1. speak the token followed by 5 second pause and speak the token again followed by 5 second pause
+2. speak the next token followed by 5 second pause etc.
 
 
 
