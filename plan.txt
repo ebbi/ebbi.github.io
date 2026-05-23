@@ -134,7 +134,11 @@ for example, the delay set to 5 and repeat set to 2 should:
 2. speak the next token followed by 5 second pause etc.
 
 
+------------------------------
 
+The delay fix has caused a new bug!
+The speech for longer text tokens are not completed and 
+the speech is truncated followed by the set delay and the next token speech.
 
 
 
