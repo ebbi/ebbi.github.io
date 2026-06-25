@@ -2350,7 +2350,7 @@ const App = (function () {
                         fullPronunciation = char.symbol;
                     }
 
-                    return `
+                    return '
                         <div class="alphabet-grid-item audio-element alphabet-item ${classType}" 
                             onclick="App.media.play(this)"
                             data-text="${UI.escapeHtml(fullPronunciation)}" 
@@ -2362,7 +2362,7 @@ const App = (function () {
                             data-meaning="${char.meaning || ''}">
                             <span class="alphabet-symbol">${char.symbol}</span>
                         </div>
-                    `;
+                    ';
                 }).join('')}
             </div>
         </div>
