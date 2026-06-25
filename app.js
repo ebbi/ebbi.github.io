@@ -2200,7 +2200,7 @@ const App = (function () {
 
                                 return `
                                     <div class="alphabet-grid-item audio-element alphabet-item ${classType}" 
-                                        onclick="App.alphabet.showConsonantDetail('${char.symbol}', this)"
+                                        onclick="App.alphabet.clickConsonant('${char.symbol}', this)"
                                         data-text="${char.symbol}" 
                                         data-lang="th"
                                         data-class="${char.class}"
@@ -2218,156 +2218,6 @@ const App = (function () {
                 `;
             },
 
-            showConsonantDetail: function (symbol, element) {
-                // Get the character data from the element's attributes
-                const sound = element.getAttribute('data-sound') || '';
-                const name = element.getAttribute('data-name') || '';
-                const meaning = element.getAttribute('data-meaning') || '';
-                const consonantClass = element.getAttribute('data-class') || '';
-
-                // Map classes to display names
-                let className = '';
-                let classType = '';
-                if (consonantClass === 'middle') {
-                    className = 'Middle Class';
-                    classType = 'middle';
-                } else if (consonantClass === 'high') {
-                    className = 'High Class';
-                    classType = 'high';
-                } else if (consonantClass === 'low-paired') {
-                    className = 'Low Class (Paired)';
-                    classType = 'low';
-                } else if (consonantClass === 'low-unpaired') {
-                    className = 'Low Class (Unpaired)';
-                    classType = 'low';
-                }
-
-                // Emoji mapping for common mnemonics
-                const emojiMap = {
-                    'ก': '🐔', // ไก่ - chicken
-                    'ข': '🥚', // ไข่ - egg
-                    'ฃ': '🍾', // ขวด - bottle
-                    'ค': '🐃', // ควาย - water buffalo
-                    'ฅ': '👤', // คน - human
-                    'ฆ': '🔔', // ระฆัง - bell
-                    'ง': '🐍', // งู - snake
-                    'จ': '🍽️', // จาน - plate
-                    'ฉ': '🥘', // ฉิ่ง - cymbal
-                    'ช': '🐘', // ช้าง - elephant
-                    'ซ': '⛓️', // โซ่ - chain
-                    'ฌ': '🌳', // เฌอ - tree
-                    'ญ': '👩', // หญิง - female
-                    'ฎ': '👑', // ชฎา - head dress
-                    'ฏ': '⚔️', // ปฏัก - lance
-                    'ฐ': '🗿', // ฐาน - pedestal
-                    'ฑ': '👸', // มนโท - lady
-                    'ฒ': '👴', // ผู้เฒ่า - elderly
-                    'ณ': '🧘', // เณร - novice monk
-                    'ด': '👶', // เด็ก - child
-                    'ต': '🐢', // เต่า - turtle
-                    'ถ': '👜', // ถุง - bag
-                    'ท': '💂', // ทหาร - soldier
-                    'ธ': '🏁', // ธง - flag
-                    'น': '🐭', // หนู - mouse
-                    'บ': '🍃', // ใบไม้ - leaf
-                    'ป': '🐟', // ปลา - fish
-                    'ผ': '🐝', // ผึ้ง - bee
-                    'ฝ': '📦', // ฝา - lid
-                    'พ': '🍽️', // พาน - offering tray
-                    'ฟ': '🦷', // ฟัน - tooth
-                    'ภ': '⛵', // สำเภา - junk ship
-                    'ม': '🐴', // ม้า - horse
-                    'ย': '👹', // ยักษ์ - giant
-                    'ร': '🚤', // เรือ - boat
-                    'ล': '🐒', // ลิง - monkey
-                    'ว': '💍', // แหวน - ring
-                    'ศ': '🏯', // ศาลา - pavilion
-                    'ษ': '🧘', // ฤษี - hermit
-                    'ส': '🐯', // เสือ - tiger
-                    'ห': '📦', // หีบ - chest
-                    'ฬ': '🪁', // จุฬา - kite
-                    'อ': '🫙', // อ่าง - basin
-                    'ฮ': '🦉'  // นกฮูก - owl
-                };
-
-                const emoji = emojiMap[symbol] || '🔤';
-
-                // Get examples (you might want to pass these from the data)
-                const examples = [
-                    { word: symbol + '...', meaning: 'Example word' }
-                ];
-
-                // Use the GrammarSheet anchor for consistency
-                let anchor = document.getElementById('grammar-sheet-anchor');
-                if (!anchor) {
-                    anchor = document.createElement('div');
-                    anchor.id = 'grammar-sheet-anchor';
-                    document.body.appendChild(anchor);
-                }
-
-                // Build the detail view HTML - FIXED: Changed App.closeConsonantDetail to App.alphabet.closeConsonantDetail
-                anchor.innerHTML = `
-        <div class="sheet-backdrop" onclick="App.alphabet.closeConsonantDetail()"></div>
-        <div class="bottom-sheet ${State.data.theme === 'dark' ? 'dark-theme' : ''}">
-            <div class="sheet-handle" onclick="App.alphabet.closeConsonantDetail()"></div>
-            <div class="sheet-header">
-                <h3>${Services.I18n.t('consonant_details', 'Consonant Details')}</h3>
-                <button class="sheet-close material-icons" onclick="App.alphabet.closeConsonantDetail()">close</button>
-            </div>
-            <div class="sheet-content consonant-detail-sheet">
-                <div class="consonant-detail-header">
-                    <div class="consonant-detail-symbol ${classType}">${symbol}</div>
-                    <div class="consonant-detail-info">
-                        <div class="consonant-name">
-                            <span class="thai-name">${sound}</span>
-                            <span class="class-indicator ${classType}">${consonantClass}</span>
-                        </div>
-                        <div class="consonant-mnemonic">
-                            <span class="mnemonic-emoji">${emoji}</span>
-                            <span>${name} (${meaning})</span>
-                        </div>
-                        <button class="detail-audio-btn" onclick="App.Services.MediaService.speak('${symbol}', 'th')">
-                            <span class="material-icons">volume_up</span>
-                            ${Services.I18n.t('hear_pronunciation', 'Hear pronunciation')}
-                        </button>
-                    </div>
-                </div>
-                
-                <div class="consonant-examples">
-                    <h4>${Services.I18n.t('example_words', 'Example Words')}</h4>
-                    <div class="example-chips">
-                        <div class="example-chip" onclick="App.Services.MediaService.speak('${symbol}', 'th')">
-                            <span class="example-word">${symbol}</span>
-                            <span class="example-meaning">${meaning}</span>
-                            <span class="material-icons" style="font-size: 16px;">volume_up</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    `;
-
-                // Add animation classes
-                setTimeout(() => {
-                    const sheet = document.querySelector('.bottom-sheet');
-                    const backdrop = document.querySelector('.sheet-backdrop');
-                    if (sheet) sheet.classList.add('open');
-                    if (backdrop) backdrop.classList.add('visible');
-                }, 10);
-            },
-
-            closeConsonantDetail: function () {
-                const sheet = document.querySelector('.bottom-sheet');
-                const backdrop = document.querySelector('.sheet-backdrop');
-
-                if (sheet) sheet.classList.remove('open');
-                if (backdrop) backdrop.classList.remove('visible');
-
-                setTimeout(() => {
-                    const anchor = document.getElementById('grammar-sheet-anchor');
-                    if (anchor) anchor.innerHTML = '';
-                }, 300);
-            }
 
         },
 
@@ -4326,14 +4176,17 @@ const App = (function () {
         },
 
         alphabet: {
-            showConsonantDetail(symbol, element) {
-                // Forward to the UI.alphabet.showConsonantDetail method
-                UI.alphabet.showConsonantDetail(symbol, element);
-            },
-
-            closeConsonantDetail() {
-                // Forward to the UI.alphabet.closeConsonantDetail method
-                UI.alphabet.closeConsonantDetail();
+            clickConsonant: function (symbol, element) {
+                // Highlight the clicked consonant
+                const previouslyHighlighted = document.querySelector('.alphabet-grid-item.active');
+                if (previouslyHighlighted) {
+                    previouslyHighlighted.classList.remove('active');
+                }
+                
+                element.classList.add('active');
+                
+                // Speak the consonant
+                App.Services.MediaService.speak(symbol, 'th');
             },
 
             showCharacterDetail(characterId) {
