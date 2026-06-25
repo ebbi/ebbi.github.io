@@ -1,113 +1,144 @@
-The PDF is a school text for learning Thai.
 
-Generte the app.js JSON data file from the PDF file.
+    Thai 1–3: Speaking Foundation — high-frequency phrases, tones/pronunciation, everyday dialogs.
 
-Guidelines for generating the JSON data:
+    RW 1–3: Read & Write Starter — Thai alphabet, sound–spelling rules, essential handwriting/typing.
 
-1. Ignore the preambles and general explanatory notes.
-2. There is a Content page identifying each lesson, generate separate sections for each entry in the content page.
-3. Vocabulary and standalone words become model "word" type.
-4. Sentences and paragraphs becomce model, "paragraph" type.
-5. Structure in the PDF becomes Grammer Notes in tha App.
-5. Activity for the JSON output for both document and section level data is:
-    "activity": {
-        "words": true,
-        "sentences": true
-    },
+    Thai 4–15: Alphabet-Based Fluency — grammar in context, particles, natural phrasing, real-world topics.
 
-The output JSON filename is LS1.json and it will be stored in the folder data/TSL 
+    RW 4–5: Advanced Literacy — speed reading, news/articles, essays; formal & informal styles.
 
-The manifest.json needs to be updated for the new LS1.json
+https://twolegsbadblog.wordpress.com/2016/02/21/a-history-of-political-islam-and-the-west-part-3-iran-revolution-1/
 
-The JSON input data file, grammar-1-svo.json is an example input file.
+======================================================
 
-Please clarify any ambiguity before the final conversion and output.
+The next major feature for the App is a multilingual books and blogs. 
 
-====================================
+Essentially a multilingual book reader that highlights and reads text in multiple languages based on user selection. 
 
-Filename and ID is: LS9
+The use case seems sufficiently different to warrnet its own data model, interface and url /blogs/blogId 
 
-Here is the document structure 
+Data model:
 
-Lesson 1: Feeling
-Lesson 2: Everyone Turns to Take Care of Their Health
-Lesson 3: You Said You Will Return My Money Today
-Lesson 4: Types of Movie
-Lesson 5: Besides Him, I Won't Love Anyone Else
-Lesson 6: 15 Thai Phrases for Daily Use
+The following URL is a typical blog to be included in the App. 
 
-All the other previous clarifications also apply to this text book.
+https://twolegsbadblog.wordpress.com/2016/02/21/a-history-of-political-islam-and-the-west-part-3-iran-revolution-1/
 
-Please clarify any further ambiguity before the final conversion and output.
+The source language is English and the initial translations should be Farsi and Thai.
 
-==================================
+Note, the blog has text, figure / image, and voideo content.
 
-After adding the alphabet model, a new bug has appeared.
+Clarify, the best data model.
+
+Interface and functionality.
+
+Tool bar: 
+Select a language (currently, English, Farsi and Thai)
+Select an article (or display and index page of articles) in the selected language.
+Media player tool bar with Play/Pause toggle, Stop, and Speed.
+On Play, the blog text should be highlighted and spoken using TTS 
+ (the text highlighting should be simple and based on the language, for example, 
+  EN and FA have space delimited words and the highlighting / speech is based on words but 
+  for Thai, there is not a simple solution and the highlighting can be based on speace seperated 
+  blocks such as a paragraph). 
+
+Please do not generate any code and clarify the data model and options for the code design and implementation.
+
+
+For Potential challenges: 
+ The TTS natural speech is more important than word level highlighting. If words are highlighted and 
+ spoken separatly, does TTS loose the natural flow in the text? If so, a standard highlight based on 
+ a full stop charachter for highlight / speech boundary is prefered. 
+
+Recommendation: Option B is a good choice.
+
+Again, please do not generate any code and clarify the data model and options for the code design and implementation 
+ addressing the above comments.
+
+===================================================
+
+Adopting the outlined summary of design choices and using this blog:
+https://twolegsbadblog.wordpress.com/2016/02/21/a-history-of-political-islam-and-the-west-part-3-iran-revolution-1/
+
+Generate the EN, FA, TH blog datafiles for the online blog here:  
+https://twolegsbadblog.wordpress.com/2016/02/21/a-history-of-political-islam-and-the-west-part-3-iran-revolution-1/
+
+-----------------------------
 
 Testing:
-http://127.0.0.1:8080/#doc/RW1
+http://127.0.0.1:8080/data/generate-json/generate-json.html
 
-For the alphabet model, the play can continue for content hidden below the viewport.  
-The page does eventually autoscrol but it should occur sooner so that the text being highlighted and spoken is always visible in the view.
-
-
-
-Please don't generate any code and advice on this idea.
-
-Each consonant is associagted with a symbol, chicken, egg, and so on.
-
-To aid memorisation, it would be good to insert the symbol with the consonant. 
-
-The question is whether to place the icon: 
-1. on the main listing 
-2. on the flash card 
-3. on the back of the flash card 
-4. on all of above
-
-The aim is to aid memorisation without being too obtrusive.
-
-Please advise forst before generating any code.
+For "vocabulary" object output, Some English words are capitalised.  
+The English word output should be all lower case.
 
 
-For the Characters flashcard, 
- the front of the  card displays the consonant but it is not colour coded according to the consonant class.
+JSON from PDF 
+===================================================================================
 
- Then when you click Show Answer:
+The requirement is to generate a JSON input data file from the content of the uploaded TH3.pdf file.
+The JSON data file will be processed by the uploaded app.js
 
- back of flash card, currently we have 5 rows:
+AN eample JSON data file, LS2.json is uploaded as an example.
 
-Mnemonic: 🐔 ไก่ (Chicken)
-Sound: กอ volume_up
-Name: ไก่
-Meaning: Chicken
-Class: middle middle
+The JSON input data file should contain the vocabularly and the text from the PDF file for each lesson outlined below. 
 
-There is repetition and headers are imlicit and not necessary, 
-please replace the 5 above 5 rows with one row that includes: 
-mnemonic name meaning class-name
+The following lists the lesson headings and respective start and end pages.
+
+What time is it now?
+Pages: 1 to 16
+
+What day is it today?
+Pages: 17 to 34
+
+Months / Year / Seasons
+Pages: 35 to 50
+
+My family 
+Pages: 51 to 63
+
+What is your job?
+Pages: 64 to 69
+
+What does she/he look like?
+Pages 69 to 74
+
+Each lesson above should be a heading for a seperate section in the JSON data file.
+
+The content in each JSON section should use the heading text for sub section vocabulary and text. 
+For example, the first section heading is "What time is it now?" and 
+the first content heading is "Period of time" followed by "Vocabulary 1", "Vocabulary 2" and so on.
+
+The headings "Structure" outlines a "pattern" followed by examples of the pattern. 
+All "Structure" in the PDF file should be converted to a JSON "grammar" element.
+
+Images can be ignored.
+
+All vocabulary in the JSON output should be in lower case except for names and normal capitalisation such as, I.
+
+Please ask for clarification on any ambiguity for the above requirement before generating the JSON data.
+
+--------------------------
+
+The App settings has a "Delay" attribute that allows an integer input to be used 
+as a delay parameter between speaking out each token.  
+Change the code so that the same delay is applied for the repeat parameter for each 
+translation.
+
+The change did not work!  The sugested replacement code is identical to the 
+uploaded code!
+The tokens are repeated but spoken almost immediately in the repeat cycle.  
+There should be a pause equal to the global delay before repeating the speach for 
+the token.
+
+for example, the delay set to 5 and repeat set to 2 should:
+1. speak the token followed by 5 second pause and speak the token again followed by 5 second pause
+2. speak the next token followed by 5 second pause etc.
 
 
+------------------------------
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+The delay fix has caused a new bug!
+The speech for longer text tokens are not completed and 
+the speech is truncated followed by the set delay and the next token speech.
 
 
 

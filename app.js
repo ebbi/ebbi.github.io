@@ -17,6 +17,7 @@ const App = (function () {
             manifest: null,
             currentDocument: null,
             isAutoScrolling: false,
+            viewMode: 'library',
 
             // NEW: Track last opened document and accordion states
             lastDocument: localStorage.getItem('lastDocument') || null,
@@ -25,6 +26,9 @@ const App = (function () {
             },
             documentAccordion: {
                 openSections: {} // Will store open state per document
+            },
+            blogsAccordion: {
+                openSection: 0 // or null for none open
             },
 
             media: {
@@ -55,7 +59,6 @@ const App = (function () {
                     }
                 })()
             },
-
 
             srs: {
                 items: {},
@@ -158,6 +161,14 @@ const App = (function () {
             sentenceGame: null,
             grammarSheet: { isOpen: false, content: null },
 
+
+            blogs: {
+                manifest: null,
+                currentBlog: null,
+                currentBlogLanguages: [], // languages available for current blog
+                displayLanguage: 'en',
+            }
+
         },
 
         defaults: {
@@ -175,7 +186,6 @@ const App = (function () {
             }
         },
 
-
         get(key) { return this.data[key]; },
         set(key, value) { this.data[key] = value; this.save(key); },
         update(key, fn) { this.data[key] = fn(this.data[key]); this.save(key); },
@@ -191,17 +201,19 @@ const App = (function () {
             if (key === 'documentAccordion') {
                 localStorage.setItem('documentAccordion', JSON.stringify(this.data.documentAccordion));
             }
+            if (key === 'blogsAccordion') {
+                localStorage.setItem('blogsAccordion', JSON.stringify(this.data.blogsAccordion));
+            }
             if (key === 'media') {
                 localStorage.setItem('localStorageSpeed', this.data.media.speed);
                 localStorage.setItem('localStorageDelay', this.data.media.delay);
                 localStorage.setItem('localStoragePitch', this.data.media.pitch);
                 localStorage.setItem('localStorageVoice', this.data.media.voice);
-                localStorage.setItem('localStorageShowWordBreakdown', this.data.media.showWordBreakdown); // NEW
+                localStorage.setItem('localStorageShowWordBreakdown', this.data.media.showWordBreakdown);
                 localStorage.setItem('localStorageLangMap',
                     JSON.stringify(this.data.media.languageSettings));
             }
 
-            // ===== NEW SAVE CASES =====
             if (key === 'activityCounts') {
                 localStorage.setItem('activityCounts', JSON.stringify(this.data.activityCounts));
             }
@@ -220,6 +232,15 @@ const App = (function () {
                 localStorage.setItem('timeSpent', this.data.sessionHistory.timeSpent);
                 localStorage.setItem('sessionsCompleted', this.data.sessionHistory.sessionsCompleted);
             }
+
+            if (key === 'srs') {
+                localStorage.setItem('srs', JSON.stringify(this.data.srs));
+            }
+
+            if (key === 'blogs') {
+                localStorage.setItem('blogs', JSON.stringify(this.data.blogs));
+            }
+
         },
 
         loadAccordionStates() {
@@ -237,7 +258,6 @@ const App = (function () {
                 console.warn('Failed to load accordion states', e);
             }
         }
-
     };
 
     const EventBus = {
@@ -262,12 +282,12 @@ const App = (function () {
     const Router = {
         routes: {
             'library': () => {
-                // console.log('Navigating to library');
+                State.data.viewMode = 'library';
                 UI.Library.render();
                 App.hideMediaBar();
             },
             'doc/:id': (id) => {
-                // console.log('Navigating to document:', id);
+                State.data.viewMode = 'document';
                 UI.Document.render(id);
                 App.showMediaBar();
             },
@@ -317,6 +337,15 @@ const App = (function () {
             'settings': () => {
                 // console.log('Navigating to settings');
                 App.showSettingsOverlay();
+            },
+            'blogs': () => {
+                UI.Blog.renderIndex();
+                App.hideMediaBar();               // index does not need media controls
+            },
+            'blogs/:id': (id) => {
+                State.data.viewMode = 'blog';
+                UI.Blog.renderReader(id);
+                App.showMediaBar();
             }
         },
 
@@ -326,10 +355,11 @@ const App = (function () {
         },
 
         handle() {
-            const hash = window.location.hash.slice(1) || 'library';
-            // console.log('Routing to hash:', hash);
-
-            // FORCE CLEANUP: Disable scroll listeners and stop playback before any route change
+            let hash = window.location.hash.slice(1) || 'library';
+            // Normalize: remove trailing slash so that #blogs/ is treated as #blogs
+            if (hash.endsWith('/')) {
+                hash = hash.slice(0, -1);
+            }
             Services.MediaService.disableScrollListeners();
             if (State.data.media.isPlaying) {
                 Services.MediaService.stopSequence();
@@ -528,7 +558,6 @@ const App = (function () {
                 return characters;
             }
 
-            // Get all available activity types for this section
             getActivityTypes() {
                 const types = [];
                 if (this.hasWordActivities()) {
@@ -546,6 +575,39 @@ const App = (function () {
                 }
                 return types;
             }
+
+            // Add these methods to the Models.Section class
+            getWordItems() {
+                const words = [];
+                this.content.forEach(block => {
+                    if (block.type === 'words') {
+                        words.push(...block.words);
+                    } else if (block.type === 'paragraph') {
+                        block.sentences.forEach(sentence => {
+                            words.push(...sentence.words);
+                        });
+                    }
+                });
+                // Remove duplicates by word text
+                const uniqueWords = new Map();
+                words.forEach(word => {
+                    if (!uniqueWords.has(word.word)) {
+                        uniqueWords.set(word.word, word);
+                    }
+                });
+                return Array.from(uniqueWords.values());
+            }
+
+            getSentenceItems() {
+                const sentences = [];
+                this.content.forEach(block => {
+                    if (block.type === 'paragraph') {
+                        sentences.push(...block.sentences);
+                    }
+                });
+                return sentences;
+            }
+
         },
 
         WordsContent: class {
@@ -553,6 +615,12 @@ const App = (function () {
                 this.type = 'words';
                 this.heading = data.heading?.[currentLang] || data.heading?.en;
                 this.activity = data.activity;
+                // Normalize grammar to an array
+                if (data.grammar) {
+                    this.grammar = Array.isArray(data.grammar) ? data.grammar : [data.grammar];
+                } else {
+                    this.grammar = [];
+                }
                 this.words = vocabulary.resolveWordIds(data.wordIds || []);
             }
         },
@@ -561,22 +629,20 @@ const App = (function () {
             constructor(data, vocabulary, currentLang) {
                 this.type = 'paragraph';
                 this.heading = data.heading?.[currentLang] || data.heading?.en;
-                this.grammar = data.grammar;
+                // Normalize grammar to an array
+                if (data.grammar) {
+                    this.grammar = Array.isArray(data.grammar) ? data.grammar : [data.grammar];
+                } else {
+                    this.grammar = [];
+                }
                 this.activity = data.activity;
 
-                this.sentences = (data.sentences || []).map(s => {
-                    // Debug: log the wordIds being resolved
-                    // console.log(`Resolving wordIds for sentence "${s.source}":`, s.wordIds);
-                    const words = vocabulary.resolveWordIds(s.wordIds || []);
-                    //  console.log(`Resolved words:`, words.map(w => w.word));
-
-                    return {
-                        source: s.source,
-                        translations: s.translations || {},
-                        grammar: s.grammar,
-                        words: words
-                    };
-                });
+                this.sentences = (data.sentences || []).map(s => ({
+                    source: s.source,
+                    translations: s.translations || {},
+                    grammar: s.grammar,          // keep sentence grammar as is (object)
+                    words: vocabulary.resolveWordIds(s.wordIds || [])
+                }));
             }
         },
 
@@ -762,6 +828,31 @@ const App = (function () {
                     if (doc) return doc.filePath;
                 }
                 throw new Error(`Document ${documentId} not found`);
+            }
+        },
+
+        BlogService: {
+            async loadManifest() {
+                const response = await fetch('./blogs/manifest.json');
+                State.data.blogs.manifest = await response.json();
+                return State.data.blogs.manifest;
+            },
+
+            async loadBlog(blogId) {
+                const manifest = State.data.blogs.manifest || await this.loadManifest();
+                let blogInfo = null;
+                for (const obj of manifest.blogObjects) {
+                    const found = obj.blogs.find(b => b.id === blogId);
+                    if (found) {
+                        blogInfo = found;
+                        break;
+                    }
+                }
+                if (!blogInfo) throw new Error(`Blog ${blogId} not found`);
+                const response = await fetch(blogInfo.filePath);
+                State.data.blogs.currentBlog = await response.json();
+                State.data.blogs.currentBlogLanguages = blogInfo.languages || ['en'];
+                return State.data.blogs.currentBlog;
             }
         },
 
@@ -982,6 +1073,10 @@ const App = (function () {
 
             pausePlayback() {
                 State.data.media.isPlaying = false;
+                if (State.data.media.delayTimer) {
+                    clearTimeout(State.data.media.delayTimer);
+                    State.data.media.delayTimer = null;
+                }
                 window.speechSynthesis.cancel();
                 App.showMediaBar(); // Refresh media bar
             },
@@ -994,6 +1089,16 @@ const App = (function () {
                         State.save('media');
                     }
                 }
+            },
+
+            autoSelectVoiceForLang(lang) {
+                const voice = this.cachedVoices.find(v => v.lang.startsWith(lang));
+                if (voice) {
+                    State.data.media.voice = voice.name;
+                    State.save('media');
+                    return true;
+                }
+                return false;
             },
 
             getLocaleFor(lang) {
@@ -1091,10 +1196,12 @@ const App = (function () {
                 State.data.media.isPlaying = false;
                 State.data.media.currentIndex = 0;
 
-                // Clear tracking
-                if (State.data.scrolledRows) {
-                    State.data.scrolledRows.clear();
+                // Clear delay timer
+                if (State.data.media.delayTimer) {
+                    clearTimeout(State.data.media.delayTimer);
+                    State.data.media.delayTimer = null;
                 }
+
                 State.data.currentRowId = null;
 
                 // Cancel any ongoing speech
@@ -1138,6 +1245,11 @@ const App = (function () {
             },
 
             isSequenceElement(el) {
+
+                if (el.classList.contains('blog-sentence')) {
+                    return true;
+                }
+
                 // If we're showing word breakdowns, include them in the sequence
                 if (State.data.media.showWordBreakdown) {
                     // Check if this is a word breakdown element
@@ -1222,11 +1334,17 @@ const App = (function () {
                 //  console.log('  → Filtered out: no matching criteria');
                 return false;
             },
+
             seekToElement: function (element) {
                 // Clear any pending seek timer
                 if (this._seekTimer) {
                     clearTimeout(this._seekTimer);
                     this._seekTimer = null;
+                }
+                // Clear delay timer
+                if (State.data.media.delayTimer) {
+                    clearTimeout(State.data.media.delayTimer);
+                    State.data.media.delayTimer = null;
                 }
 
                 // Prevent multiple seeks
@@ -1695,24 +1813,29 @@ const App = (function () {
                 return content.map((item, blockIdx) => {
                     let html = '';
 
-                    // Render heading with grammar icon inline (if heading exists)
                     if (item.heading) {
-                        const grammarId = `grammar-${sectionIdx}-${blockIdx}`;
-                        const grammarIcon = (item.type === 'paragraph' && item.grammar) ? `
+                        // Generate one icon per grammar entry
+                        let grammarIconsHtml = '';
+                        if (item.grammar && item.grammar.length > 0) {
+                            grammarIconsHtml = item.grammar.map((g, gIdx) => {
+                                const grammarId = `grammar-${sectionIdx}-${blockIdx}-${gIdx}`;
+                                return `
                 <button class="grammar-icon-btn-inline" 
                         onclick="App.showGrammarSheet('${grammarId}')"
                         aria-label="Show grammar explanation"
                         title="View grammar note">
                     <span class="material-icons">menu_book</span>
                 </button>
-            ` : '';
+            `;
+                            }).join('');
+                        }
 
                         html += `
-                <div class="heading-with-grammar">
-                    ${grammarIcon}
-                    <h3 class="block-heading">${UI.escapeHtml(item.heading)}</h3>
-                </div>
-            `;
+        <div class="heading-with-grammar">
+            ${grammarIconsHtml}
+            <h3 class="block-heading">${UI.escapeHtml(item.heading)}</h3>
+        </div>
+    `;
                     }
 
                     // Render the content (NO separate grammar header here)
@@ -1809,7 +1932,7 @@ const App = (function () {
                     // Add word breakdown blocks
                     if (State.data.media.showWordBreakdown &&
                         State.data.media.languageSettings.th?.show &&
-                        sentence.words.length) {
+                        sentence.words.length > 1) {
                         html += '<div class="sent-word-block">';
                         sentence.words.forEach((word, wordIdx) => {
                             // Create a unique ID for the breakdown item
@@ -2178,25 +2301,34 @@ const App = (function () {
 
             renderAlphabetTable(item) {
                 return `
-                    <div class="alphabet-table-container">
-                        <h3>${item.title?.[State.data.lang] || item.title?.en || ''}</h3>
-                        <div class="alphabet-grid">
-                            ${item.characters.map(char => {
-                                // Determine class for color coding
-                                let classType = '';
-                                if (char.class === 'middle') {
-                                    classType = 'middle-class';
-                                } else if (char.class === 'high') {
-                                    classType = 'high-class';
-                                } else if (char.class === 'low-paired' || char.class === 'low-unpaired') {
-                                    classType = 'low-class';
-                                }
+        <div class="alphabet-table-container">
+            <h3>${item.title?.[State.data.lang] || item.title?.en || ''}</h3>
+            <div class="alphabet-grid">
+                ${item.characters.map(char => {
+                    // Determine class for color coding
+                    let classType = '';
+                    if (char.class === 'middle') {
+                        classType = 'middle-class';
+                    } else if (char.class === 'high') {
+                        classType = 'high-class';
+                    } else if (char.class === 'low-paired' || char.class === 'low-unpaired') {
+                        classType = 'low-class';
+                    } else if (char.class === 'vowel') {
+                        classType = 'vowel-class';
+                    }
 
-                                // Determine class dot
-                                let dotClass = '';
-                                if (char.class === 'middle') dotClass = 'middle';
-                                else if (char.class === 'high') dotClass = 'high';
-                                else if (char.class === 'low-paired' || char.class === 'low-unpaired') dotClass = 'low';
+                    // Get the full pronunciation (sound + name)
+                    // For consonants: e.g., "นอ หนู", "บอ ใบไม้"
+                    // For vowels: just the sound
+                    let fullPronunciation = '';
+                    if (char.class === 'vowel') {
+                        fullPronunciation = char.sound || char.symbol;
+                    } else {
+                        // Make sure we have both sound and name
+                        const sound = char.sound || '';
+                        const name = char.name || '';
+                        fullPronunciation = sound && name ? `${sound} ${name}` : (sound || name || char.symbol);
+                    }
 
                                 return `
                                     <div class="alphabet-grid-item audio-element alphabet-item ${classType}" 
@@ -2213,9 +2345,28 @@ const App = (function () {
                                     </div>
                                 `;
                             }).join('')}
+                    // If no sound/name, fallback to symbol
+                    if (!fullPronunciation) {
+                        fullPronunciation = char.symbol;
+                    }
+
+                    return `
+                        <div class="alphabet-grid-item audio-element alphabet-item ${classType}" 
+                            onclick="App.media.play(this)"
+                            data-text="${UI.escapeHtml(fullPronunciation)}" 
+                            data-lang="th"
+                            data-class="${char.class}"
+                            data-symbol="${char.symbol}"
+                            data-sound="${char.sound || ''}"
+                            data-name="${char.name || ''}"
+                            data-meaning="${char.meaning || ''}">
+                            <span class="alphabet-symbol">${char.symbol}</span>
                         </div>
-                    </div>
-                `;
+                    `;
+                }).join('')}
+            </div>
+        </div>
+    `;
             },
 
 
@@ -2547,6 +2698,7 @@ const App = (function () {
         // Flashcard View
         // ------------------------------------------------------------------------
         Flashcard: {
+
             render(docId, sectionIdx, type) {
                 // console.log('UI.Flashcard.render called with:', { docId, sectionIdx, type });
                 const container = UI.getContainer();
@@ -2581,43 +2733,51 @@ const App = (function () {
                 this.renderCard();
             },
 
-            // In UI.Flashcard.getFlashcardItems (around line 1900-2000)
             getFlashcardItems(docId, sectionIdx, type) {
+                // console.log('UI.Flashcard.getFlashcardItems called with:', { docId, sectionIdx, type });
                 const doc = State.data.currentDocument;
                 if (!doc) return [];
+
+                let items = [];
 
                 if (sectionIdx !== null) {
                     // Section-level flashcards
                     const section = doc.sections[sectionIdx];
+
                     if (type === 'word') {
-                        return section.getWordItems().map(word => ({
+                        // Use the section's getWordItems method
+                        const words = section.getWordItems();
+
+                        items = words.map(word => ({
                             type: 'word',
-                            id: `word-${word.word}`,
+                            id: `word-${docId}-${word.word}`,
                             front: word.word,
                             back: word.translations,
                             word: word
                         }));
+
                     } else if (type === 'sentence') {
-                        return section.getSentenceItems().map(sentence => ({
+                        // Use the section's getSentenceItems method
+                        const sentences = section.getSentenceItems();
+
+                        items = sentences.map(sentence => ({
                             type: 'sentence',
-                            id: `sent-${sentence.source}`,
+                            id: `sent-${docId}-${sentence.source}`,
                             front: sentence.source,
                             back: sentence.translations,
                             words: sentence.words
                         }));
-                        // ===== ADD THIS =====
+
                     } else if (type === 'character') {
-                        // Collect all characters from alphabet content in this section
                         const characters = [];
                         section.content.forEach(block => {
                             if (block.type === 'alphabet-table') {
                                 characters.push(...block.characters);
                             }
                         });
-
-                        return characters.map(char => ({
+                        items = characters.map(char => ({
                             type: 'character',
-                            id: `char-${char.symbol}`,
+                            id: `char-${docId}-${char.symbol}`,
                             front: char.symbol,
                             back: {
                                 sound: char.sound,
@@ -2628,27 +2788,25 @@ const App = (function () {
                             character: char
                         }));
                     }
-                    // ===== END ADDITION =====
                 } else {
-                    // Document-level flashcards
+                    // Document-level flashcards (this part is correct)
                     if (type === 'word') {
-                        return doc.getAllWordItems().map(word => ({
+                        items = doc.getAllWordItems().map(word => ({
                             type: 'word',
-                            id: `word-${word.word}`,
+                            id: `word-${docId}-${word.word}`,
                             front: word.word,
                             back: word.translations,
                             word: word
                         }));
                     } else if (type === 'sentence') {
-                        return doc.getAllSentenceItems().map(sentence => ({
+                        items = doc.getAllSentenceItems().map(sentence => ({
                             type: 'sentence',
-                            id: `sent-${sentence.source}`,
+                            id: `sent-${docId}-${sentence.source}`,
                             front: sentence.source,
                             back: sentence.translations,
                             words: sentence.words
                         }));
                     } else if (type === 'character') {
-                        // Collect all characters from all sections
                         const characters = [];
                         doc.sections.forEach(section => {
                             section.content.forEach(block => {
@@ -2657,10 +2815,9 @@ const App = (function () {
                                 }
                             });
                         });
-
-                        return characters.map(char => ({
+                        items = characters.map(char => ({
                             type: 'character',
-                            id: `char-${char.symbol}`,
+                            id: `char-${docId}-${char.symbol}`,
                             front: char.symbol,
                             back: {
                                 sound: char.sound,
@@ -2673,7 +2830,60 @@ const App = (function () {
                     }
                 }
 
-                return [];
+                // Initialize SRS items for new cards
+                items.forEach(item => {
+                    if (!State.data.srs.items[item.id]) {
+                        State.data.srs.items[item.id] = {
+                            id: item.id,
+                            type: item.type,
+                            front: item.front,
+                            back: item.back,
+                            interval: 0,
+                            repetition: 0,
+                            easeFactor: 2.5,
+                            dueDate: new Date().toISOString().split('T')[0],
+                            lastReviewed: null,
+                            lapses: 0
+                        };
+                    }
+                });
+                State.save('srs');
+
+                // FIX: Return ALL items, not just due ones, but sort them properly
+                const today = new Date().toISOString().split('T')[0];
+
+                // Sort items: due today first, then future due dates
+                const sortedItems = items.sort((a, b) => {
+                    const srsA = State.data.srs.items[a.id];
+                    const srsB = State.data.srs.items[b.id];
+
+                    // Handle missing SRS data (shouldn't happen, but just in case)
+                    if (!srsA) return -1;
+                    if (!srsB) return 1;
+
+                    // Due today items come first
+                    if (srsA.dueDate === today && srsB.dueDate !== today) return -1;
+                    if (srsB.dueDate === today && srsA.dueDate !== today) return 1;
+
+                    // Then sort by due date (oldest first)
+                    return srsA.dueDate.localeCompare(srsB.dueDate);
+                });
+
+                // If there are no due items, still return some items for review
+                const dueItems = sortedItems.filter(item => {
+                    const srsItem = State.data.srs.items[item.id];
+                    return srsItem && srsItem.dueDate <= today;
+                });
+
+                // FIX: If no due items, return a few random items for review anyway
+                if (dueItems.length === 0 && sortedItems.length > 0) {
+                    console.log('No due cards, returning random sample for review');
+                    // Return up to 10 random cards for review
+                    const shuffled = [...sortedItems].sort(() => 0.5 - Math.random());
+                    return shuffled.slice(0, Math.min(10, shuffled.length));
+                }
+
+                return dueItems.length > 0 ? dueItems : sortedItems.slice(0, 10);
             },
 
             renderCard() {
@@ -2713,12 +2923,34 @@ const App = (function () {
                     }
                 }
 
+                // For character cards, create the full pronunciation (sound + name)
+                let fullCharacterPronunciation = '';
+                if (card.type === 'character') {
+                    const sound = card.back.sound || '';
+                    const name = card.back.name || '';
+                    fullCharacterPronunciation = sound && name ? `${sound} ${name}` : (sound || name || card.front);
+                }
+
+                // Determine what text to speak when the card front is clicked
+                let frontSpeechText = card.front; // default for non‑character cards
+                if (card.type === 'character') {
+                    if (card.back.class === 'vowel') {
+                        // Vowels: speak only the sound
+                        frontSpeechText = card.back.sound || card.front;
+                    } else {
+                        // Consonants: speak the full name (sound + name)
+                        frontSpeechText = fullCharacterPronunciation;
+                    }
+                }
+
                 let html = `
         <div class="flashcard-container">
             <div class="flashcard-header">
-                <div class="flashcard-progress">
-                    ${t('card', 'Card')} ${cards.currentIndex + 1} / ${cards.currentDeck.length}
-                </div>
+<div class="flashcard-progress">
+    ${t('card', 'Card')} ${cards.currentIndex + 1} / ${cards.currentDeck.length}
+    ${!State.data.srs.items[card.id] || State.data.srs.items[card.id].dueDate > new Date().toISOString().split('T')[0] ?
+                        `<span class="review-badge">${t('extra_review', 'Extra Review')}</span>` : ''}
+</div>
                 <div class="flashcard-header-buttons">
                     <button class="flashcard-header-btn" onclick="App.exitFlashcards()">
                         <span class="material-icons">close</span>
@@ -2726,26 +2958,24 @@ const App = (function () {
                 </div>
             </div>
             
-            <div class="flashcard ${cards.showAnswer ? 'show-answer' : ''}">
-                <div class="flashcard-front" 
-                    onclick="App.Services.MediaService.speak('${UI.escapeHtml(card.front)}', 'th')"
-                    data-text="${UI.escapeHtml(card.front)}" 
-                    data-lang="th">
-    `;
+        <div class="flashcard ${cards.showAnswer ? 'show-answer' : ''}">
+            <div class="flashcard-front" 
+                onclick="App.Services.MediaService.speak('${UI.escapeHtml(frontSpeechText)}', 'th')"
+                data-text="${UI.escapeHtml(frontSpeechText)}" 
+                data-lang="th">
+`;
 
                 // Customize front display based on card type
                 if (card.type === 'character') {
-                    // Character card front - show large character with class color
                     html += `
-            <div class="flashcard-content character-front ${classColor}" lang="th">
-                <div class="character-large-display ${classColor}">${UI.escapeHtml(card.front)}</div>
-            </div>
-        `;
+        <div class="flashcard-content character-front ${classColor}" lang="th">
+            <div class="character-large-display ${classColor}">${UI.escapeHtml(card.front)}</div>
+        </div>
+    `;
                 } else {
-                    // Word or sentence card front
                     html += `
-            <div class="flashcard-content" lang="th">${UI.escapeHtml(card.front)}</div>
-        `;
+        <div class="flashcard-content" lang="th">${UI.escapeHtml(card.front)}</div>
+    `;
                 }
 
                 html += `
@@ -2774,8 +3004,8 @@ const App = (function () {
                     <button class="audio-chip" onclick="App.Services.MediaService.speak('${card.back.sound}', 'th')" data-text="${card.back.sound}" data-lang="th">
                         <span class="material-icons">volume_up</span> ${card.back.sound}
                     </button>
-                    <button class="audio-chip" onclick="App.Services.MediaService.speak('${card.front}', 'th')" data-text="${card.front}" data-lang="th">
-                        <span class="material-icons">volume_up</span> Hear
+                    <button class="audio-chip" onclick="App.Services.MediaService.speak('${fullCharacterPronunciation}', 'th')" data-text="${fullCharacterPronunciation}" data-lang="th">
+                        <span class="material-icons">volume_up</span> Hear full name
                     </button>
                 </div>
             </div>
@@ -2811,15 +3041,15 @@ const App = (function () {
                     ${t('show_answer', 'Show Answer')}
                 </button>
             ` : `
-                <div class="answer-rating">
-                    <p>${t('how_well', 'How well did you know this?')}</p>
-                    <div class="rating-buttons">
-                        <button class="rating-btn" onclick="App.rateFlashcard(0)">${t('again', 'Again')}</button>
-                        <button class="rating-btn" onclick="App.rateFlashcard(3)">${t('hard', 'Hard')}</button>
-                        <button class="rating-btn" onclick="App.rateFlashcard(4)">${t('good', 'Good')}</button>
-                        <button class="rating-btn" onclick="App.rateFlashcard(5)">${t('easy', 'Easy')}</button>
-                    </div>
-                </div>
+<div class="answer-rating">
+    <p>${t('how_well', 'How well did you know this?')}</p>
+    <div class="rating-buttons">
+        <button class="rating-btn" onclick="App.rateFlashcard(0)">${t('again', 'Again')}</button>
+        <button class="rating-btn" onclick="App.rateFlashcard(3)">${t('hard', 'Hard')}</button>
+        <button class="rating-btn" onclick="App.rateFlashcard(4)">${t('good', 'Good')}</button>
+        <button class="rating-btn" onclick="App.rateFlashcard(5)">${t('easy', 'Easy')}</button>
+    </div>
+</div>
             `}
         </div>
     `;
@@ -2827,12 +3057,107 @@ const App = (function () {
                 container.innerHTML = html;
                 App.hideMediaBar();
 
-                // Auto-play the front of the card
+                // Auto-play the front of the card with full pronunciation for characters
                 setTimeout(() => {
-                    Services.MediaService.speak(card.front, 'th');
+                    if (card.type === 'character') {
+                        Services.MediaService.speak(frontSpeechText, 'th');
+                    } else {
+                        Services.MediaService.speak(card.front, 'th');
+                    }
                 }, 100);
-            }
+            },
 
+            rateFlashcard(quality) {
+                if (State.data.flashcards) {
+                    const cards = State.data.flashcards;
+                    const currentCard = cards.currentDeck[cards.currentIndex];
+                    const srsItem = State.data.srs.items[currentCard.id];
+
+                    if (srsItem) {
+                        // SM-2 Algorithm implementation
+                        const now = new Date();
+                        const today = now.toISOString().split('T')[0];
+
+                        if (quality < 3) {
+                            // Again or Hard - reset repetition count
+                            srsItem.repetition = 0;
+                            srsItem.interval = 1;
+                            srsItem.lapses += 1;
+                        } else {
+                            // Good or Easy
+                            if (srsItem.repetition === 0) {
+                                srsItem.interval = 1;
+                            } else if (srsItem.repetition === 1) {
+                                srsItem.interval = 6;
+                            } else {
+                                srsItem.interval = Math.round(srsItem.interval * srsItem.easeFactor);
+                            }
+                            srsItem.repetition += 1;
+                        }
+
+                        // Adjust ease factor based on quality
+                        if (quality >= 3) {
+                            srsItem.easeFactor = Math.max(1.3, srsItem.easeFactor + (0.1 - (5 - quality) * (0.08 + (5 - quality) * 0.02)));
+                        }
+
+                        // Calculate next due date
+                        const dueDate = new Date(now);
+                        dueDate.setDate(dueDate.getDate() + srsItem.interval);
+                        srsItem.dueDate = dueDate.toISOString().split('T')[0];
+                        srsItem.lastReviewed = today;
+
+                        State.save('srs');
+                    }
+
+                    State.data.activityCounts.flashcardsReviewed = (State.data.activityCounts.flashcardsReviewed || 0) + 1;
+                    State.save('activityCounts');
+
+                    // Update streak - FIX: Use App.updateStreak() instead of this.updateStreak()
+                    App.updateStreak();
+
+                    // Check if this was the last card in the current deck
+                    if (cards.currentIndex < cards.currentDeck.length - 1) {
+                        // Move to next card
+                        cards.currentIndex++;
+                        cards.showAnswer = false;
+                        UI.Flashcard.renderCard();
+                    } else {
+                        // Session complete - reload deck to get new due cards
+                        const newDeck = UI.Flashcard.getFlashcardItems(cards.documentId, cards.sectionIndex, cards.type);
+
+                        if (newDeck.length > 0) {
+                            // There are more due cards (from other sections/documents)
+                            State.data.flashcards = {
+                                currentDeck: newDeck,
+                                currentIndex: 0,
+                                showAnswer: false,
+                                documentId: cards.documentId,
+                                sectionIndex: cards.sectionIndex,
+                                type: cards.type
+                            };
+                            UI.Flashcard.renderCard();
+                        } else {
+                            // No more due cards - show completion message
+                            const container = UI.getContainer();
+                            container.innerHTML = `
+        <div class="flashcard-complete">
+            <span class="material-icons">celebration</span>
+            <h2>${Services.I18n.t('session_complete', 'Session Complete!')}</h2>
+            <p>${Services.I18n.t('no_more_cards', 'No more cards due for review. Come back later!')}</p>
+            <div class="flashcard-complete-buttons">
+                <button class="btn-activity" onclick="location.hash='doc/${cards.documentId}'">
+                    ${Services.I18n.t('back_to_document', 'Back to Document')}
+                </button>
+                <button class="btn-activity" onclick="location.hash='library'">
+                    ${Services.I18n.t('back_to_library', 'Library')}
+                </button>
+            </div>
+        </div>
+    `;
+                        }
+                    }
+                }
+            }
         },
 
         // ------------------------------------------------------------------------
@@ -3783,7 +4108,7 @@ const App = (function () {
         // ------------------------------------------------------------------------
         // Settings Overlay
         // ------------------------------------------------------------------------
-        // UI.Settings.render method (around line 3700-3800)
+
         Settings: {
             render() {
                 const anchor = document.getElementById('overlay-anchor');
@@ -3794,22 +4119,37 @@ const App = (function () {
 
                 const langRows = Object.entries(media.languageSettings)
                     .map(([code, config]) => `
-                <tr>
-                    <td>${code.toUpperCase()}</td>
-                    <td>
-                        <input type="checkbox" id="show-${code}"
-                            ${config.show ? 'checked' : ''}
-                            onchange="App.updateLanguageConfig('${code}', 'show', this.checked, true)">
-                    </td>
-                    <td>
-                        <input type="number" style="width:40px" id="repeat-${code}"
-                            value="${config.repeat}" min="1" max="3"
-                            onchange="App.updateLanguageConfig('${code}', 'repeat', this.value, true)">
-                    </td>
-                </tr>
+                 <tr>
+                     <td>${code.toUpperCase()}</td>
+                     <td>
+                         <input type="checkbox" id="show-${code}"
+                             ${config.show ? 'checked' : ''}
+                             onchange="App.updateLanguageConfig('${code}', 'show', this.checked, true)">
+                     </td>
+                     <td>
+                         <input type="number" style="width:40px" id="repeat-${code}"
+                             value="${config.repeat}" min="0" max="5"
+                             onchange="App.updateLanguageConfig('${code}', 'repeat', this.value, true)">
+                     </td>
+                 </tr>
             `).join('');
 
-                // Build the complete HTML string
+                const supportedLangs = ['th', 'en', 'fa'];
+                const currentVoiceLang = (() => {
+                    const voice = Services.MediaService.cachedVoices.find(v => v.name === State.data.media.voice);
+                    if (voice) {
+                        if (voice.lang.startsWith('th')) return 'th';
+                        if (voice.lang.startsWith('en')) return 'en';
+                        if (voice.lang.startsWith('fa')) return 'fa';
+                    }
+                    return 'th';
+                })();
+
+                const langOptions = supportedLangs.map(code => {
+                    const langName = { th: 'ไทย', en: 'English', fa: 'فارسی' }[code];
+                    return `<option value="${code}" ${currentVoiceLang === code ? 'selected' : ''}>${langName}</option>`;
+                }).join('');
+
                 let html = `
             <div class="overlay-full card">
                 <div class="settings-header">
@@ -3841,9 +4181,14 @@ const App = (function () {
                     </div>
                 </div>
                 
+                <label>${t('voice_language', 'Language for Voice')}</label>
+                <select id="voice-lang-select" style="width:100%; margin-bottom:15px;">
+                    ${langOptions}
+                </select>
+                
                 <label>${t('voice', 'Voice')}</label>
                 <select id="voice-select" onchange="App.updateMediaParam('voice', this.value)" style="width:100%; margin-bottom:15px;">
-                    ${Services.MediaService.cachedVoices.map(v => `
+                    ${Services.MediaService.cachedVoices.filter(v => v.lang.startsWith(currentVoiceLang)).map(v => `
                         <option value="${v.name}" ${media.voice === v.name ? 'selected' : ''}>
                             ${v.name}
                         </option>
@@ -3855,7 +4200,9 @@ const App = (function () {
                         <tr>
                             <th>${t('translation', 'Translation')}</th>
                             <th>${t('show', 'Show')}</th>
-                            <th><span class="material-icons">volume_up</span> ${t('repeat', 'Repeat')}</th>
+                            <th><span class="material-icons">volume_up</span> ${t('repeat', 'Repeat')}
+                            <span class="repeat-note" style="font-size:0.8rem; opacity:0.7; display:block;">(0 = off)</span>
+                            </th>
                         </tr>
                     </thead>
                     <tbody>${langRows}</tbody>
@@ -3891,10 +4238,150 @@ const App = (function () {
                         ${t('reset_defaults', 'Reset to Defaults')}
                     </button>
                 </div>
+        `;
+
+                // Add Reset Progress Button (separate from media settings)
+                html += `
+                <div style="margin-top: 30px; padding-top: 20px; border-top: 2px solid var(--error);">
+                    <h3 style="color: var(--error); margin-bottom: 15px; font-size: 1.1rem;">
+                        <span class="material-icons" style="vertical-align: middle; margin-right: 8px;">warning</span>
+                        ${t('danger_zone', 'Danger Zone')}
+                    </h3>
+                    <div style="background: rgba(220, 38, 38, 0.1); padding: 16px; border-radius: 8px; margin-bottom: 10px;">
+                        <p style="margin: 0 0 12px 0; color: var(--text); font-size: 0.9rem;">
+                            ${t('reset_progress_desc', 'Reset all your learning progress including:')}
+                        </p>
+                        <ul style="margin: 0 0 16px 20px; color: var(--text-secondary); font-size: 0.85rem;">
+                            <li>📊 ${t('srs_data_desc', 'Flashcard SRS data (intervals, due dates)')}</li>
+                            <li>🏆 ${t('achievements_desc', 'Achievements and streak')}</li>
+                            <li>📈 ${t('activity_stats_desc', 'Activity statistics')}</li>
+                            <li>⏱️ ${t('session_history_desc', 'Session history')}</li>
+                        </ul>
+                        <p style="margin: 0 0 16px 0; color: var(--text-secondary); font-size: 0.85rem; font-style: italic;">
+                            ${t('reset_progress_note', 'This will NOT affect your media settings (speed, voice, language preferences).')}
+                        </p>
+                        <button class="btn-activity" onclick="App.resetProgressData()" 
+                                style="background: var(--error); width: 100%; padding: 12px;">
+                            <span class="material-icons">restore</span>
+                            ${t('reset_all_progress', 'Reset All Learning Progress')}
+                        </button>
+                    </div>
+                </div>
+        `;
+
+                // Add Advanced Options
+                html += `
+                <div style="margin-top: 20px; padding-top: 15px; border-top: 1px solid var(--border);">
+                    <details style="margin-bottom: 10px;">
+                        <summary style="cursor: pointer; color: var(--text-secondary); font-size: 0.9rem;">
+                            <span class="material-icons" style="font-size: 18px; vertical-align: middle;">expand_more</span>
+                            ${t('advanced_options', 'Advanced Options')}
+                        </summary>
+                        <div style="padding: 12px; background: var(--card); border-radius: 8px; margin-top: 10px;">
+                            <p style="margin: 0 0 10px 0; color: var(--text-secondary); font-size: 0.85rem;">
+                                ${t('reset_srs_only_desc', 'Reset only flashcard scheduling (keep achievements and stats)')}
+                            </p>
+                            <button class="btn-activity" onclick="App.resetSRSData()" 
+                                    style="background: var(--warning); width: 100%; padding: 10px;">
+                                <span class="material-icons">refresh</span>
+                                ${t('reset_srs_only', 'Reset Flashcard Schedule Only')}
+                            </button>
+                        </div>
+                    </details>
+                </div>
             </div>
         `;
 
                 anchor.innerHTML = html;
+
+                // Set up language selector for voice filtering
+                const langSelect = document.getElementById('voice-lang-select');
+                if (langSelect) {
+                    langSelect.addEventListener('change', (e) => {
+                        App.updateVoiceSelectForLang(e.target.value);
+                    });
+                }
+                // Initial population of voice select based on current language
+                App.updateVoiceSelectForLang(currentVoiceLang);
+            }
+        },
+
+        BlogSettings: {
+            render() {
+                const anchor = document.getElementById('overlay-anchor');
+                if (!anchor) return;
+
+                const media = State.data.media;
+                const t = Services.I18n.t;
+
+                const supportedLangs = ['th', 'en', 'fa'];
+                const currentBlogLang = State.data.blogs.displayLanguage;
+                const langOptions = supportedLangs.map(code => {
+                    const langName = { th: 'ไทย', en: 'English', fa: 'فارسی' }[code];
+                    return `<option value="${code}" ${currentBlogLang === code ? 'selected' : ''}>${langName}</option>`;
+                }).join('');
+
+                const voices = Services.MediaService.cachedVoices;
+                const voiceOptions = voices.map(v => `<option value="${v.name}" ${media.voice === v.name ? 'selected' : ''}>${v.name}</option>`).join('');
+
+                const html = `
+            <div class="overlay-full card">
+                <div class="settings-header">
+                    <h2>${t('playback_settings', 'Playback Settings')}</h2>
+                    <button class="material-icons" onclick="document.getElementById('overlay-anchor').innerHTML=''">close</button>
+                </div>
+                <div class="settings-sliders">
+                    <div class="control-row-inline">
+                        <label>${t('speed', 'Speed')}</label>
+                        <input type="range" min="0.5" max="2" step="0.25"
+                            value="${media.speed}"
+                            oninput="this.nextElementSibling.innerText = this.value + 'x'; App.updateMediaParam('speed', this.value, true)">
+                        <span class="val-label">${media.speed}x</span>
+                    </div>
+                    <div class="control-row-inline">
+                        <label>${t('delay', 'Delay')}</label>
+                        <input type="range" min="1" max="5" step="1"
+                            value="${media.delay}"
+                            oninput="this.nextElementSibling.innerText = this.value + 's'; App.updateMediaParam('delay', this.value, true)">
+                        <span class="val-label">${media.delay}s</span>
+                    </div>
+                    <div class="control-row-inline">
+                        <label>${t('pitch', 'Pitch')}</label>
+                        <input type="range" min="0.5" max="1.5" step="0.1"
+                            value="${media.pitch}"
+                            oninput="this.nextElementSibling.innerText = this.value; App.updateMediaParam('pitch', this.value, true)">
+                        <span class="val-label">${media.pitch}</span>
+                    </div>
+                </div>
+                <label>${t('language', 'Language')}</label>
+<select id="blog-lang-select" onchange="App.updateBlogDisplayLanguage(this.value)" style="width:100%; margin-bottom:15px;">
+    ${langOptions}
+</select>
+                <label>${t('voice', 'Voice')}</label>
+                <select id="voice-select" onchange="App.updateMediaParam('voice', this.value)" style="width:100%; margin-bottom:15px;">
+                    ${voiceOptions}
+                </select>
+            </div>
+        `;
+                anchor.innerHTML = html;
+
+                // Populate voices for the initially selected language (if any)
+                const langSelect = document.getElementById('blog-lang-select');
+                if (langSelect) {
+                    this.populateVoicesForLang(langSelect.value);
+                }
+            },
+
+            populateVoicesForLang(lang) {
+                const voices = Services.MediaService.cachedVoices.filter(v => v.lang.startsWith(lang));
+                const voiceSelect = document.getElementById('voice-select');
+                if (voiceSelect) {
+                    const currentVoice = State.data.media.voice;
+                    voiceSelect.innerHTML = voices.map(v => `<option value="${v.name}" ${v.name === currentVoice ? 'selected' : ''}>${v.name}</option>`).join('');
+                    if (voices.length === 0) {
+                        voiceSelect.innerHTML = '<option value="">No voices available</option>';
+                    }
+                }
             }
         },
 
@@ -4036,7 +4523,165 @@ const App = (function () {
                     if (backdrop) backdrop.classList.add('visible');
                 }, 10);
             }
-        }
+        },
+
+        // ------------------------------------------------------------------------
+        // Blog Reader
+        // ------------------------------------------------------------------------
+        Blog: {
+            // Helper: split text into sentences based on punctuation
+            splitSentences(text, lang) {
+                if (!text) return [];
+                // For Thai without punctuation, return whole text as one sentence
+                if (lang === 'th' && !/[.!?]/.test(text)) {
+                    return [text];
+                }
+                // Split on . ! ? followed by space or end of string, keeping punctuation
+                // Using positive lookbehind (supported in modern browsers)
+                return text.split(/(?<=[.!?])\s+/).filter(s => s.trim().length > 0);
+            },
+
+            async renderIndex() {
+                const container = UI.getContainer();
+                if (!container) return;
+
+                container.innerHTML = '<div class="loading-spinner"></div>';
+
+                try {
+                    const manifest = State.data.blogs.manifest || await Services.BlogService.loadManifest();
+                    const lang = State.data.lang;
+                    const t = Services.I18n.t;
+
+                    let html = '<div class="blog-container">';
+                    html += `<h2>${t('blogs', 'Blogs & Articles')}</h2>`;
+
+                    manifest.blogObjects.forEach((obj, idx) => {
+                        const title = obj.title[lang] || obj.title.en;
+                        const isOpen = idx === State.data.blogsAccordion.openSection; // Use saved state
+
+                        html += `
+                <details class="blog-section" ${isOpen ? 'open' : ''}
+                         data-section-index="${idx}"
+                         ontoggle="App.handleBlogAccordion(${idx}, this.open)">
+                    <summary class="blog-summary">
+                        <span class="material-icons">expand_more</span>
+                        <span class="blog-title">${UI.escapeHtml(title)}</span>
+                        <span class="blog-count">(${obj.blogs.length})</span>
+                    </summary>
+                    <div class="blog-docs">
+            `;
+
+                        obj.blogs.forEach(blog => {
+                            const blogTitle = blog.title[lang] || blog.title.en;
+                            html += `
+                    <button class="blog-btn" onclick="location.hash='blogs/${blog.id}'">
+                        <span class="material-icons blog-btn-icon">article</span>
+                        <span class="blog-btn-text">${UI.escapeHtml(blogTitle)}</span>
+                        <span class="material-icons blog-btn-arrow">chevron_right</span>
+                    </button>
+                `;
+                        });
+
+                        html += `</div></details>`;
+                    });
+
+                    html += '</div>';
+                    container.innerHTML = html;
+                } catch (error) {
+                    container.innerHTML = `<div class="card error">Error loading blogs: ${UI.escapeHtml(error.message)}</div>`;
+                }
+            },
+
+            async renderReader(blogId) {
+                const container = UI.getContainer();
+                if (!container) return;
+
+                container.innerHTML = '<div class="loading-spinner"></div>';
+
+                try {
+                    // Load blog if not already loaded or if different
+                    if (!State.data.blogs.currentBlog || State.data.blogs.currentBlog.id !== blogId) {
+                        await Services.BlogService.loadBlog(blogId);
+                    }
+                    const blog = State.data.blogs.currentBlog;
+                    const availableLangs = State.data.blogs.currentBlogLanguages;
+                    let displayLang = State.data.blogs.displayLanguage;
+
+                    // Ensure current language is available
+                    if (!availableLangs.includes(displayLang)) {
+                        displayLang = availableLangs[0] || 'en';
+                        State.data.blogs.displayLanguage = displayLang;
+                        State.save('blogs');
+                    }
+
+                    const t = Services.I18n.t;
+
+                    // Set text direction based on language
+                    const dir = displayLang === 'fa' ? 'rtl' : 'ltr';
+
+                    let html = `<div class="blog-content" dir="${dir}">`;
+
+                    // Title and metadata
+                    const title = blog.title[displayLang] || blog.title.en;
+                    html += `<h1 class="blog-title">${UI.escapeHtml(title)}</h1>`;
+                    if (blog.metadata) {
+                        const metaParts = [];
+                        if (blog.metadata.date) metaParts.push(blog.metadata.date);
+                        if (blog.metadata.author) metaParts.push(blog.metadata.author);
+                        if (metaParts.length) {
+                            html += `<div class="blog-metadata">${UI.escapeHtml(metaParts.join(' · '))}</div>`;
+                        }
+                    }
+
+                    // Loop through content blocks
+                    blog.content.forEach(block => {
+                        if (block.type === 'text') {
+                            const text = block.text[displayLang];
+                            if (!text) return; // skip if no translation
+
+                            const sentences = this.splitSentences(text, displayLang);
+                            sentences.forEach(sentence => {
+                                html += `
+                                    <div class="blog-sentence audio-element"
+                                        onclick="App.media.play(this)"
+                                        data-text="${UI.escapeHtml(sentence)}"
+                                        data-lang="${displayLang}"
+                                        lang="${displayLang}">
+                                        ${UI.escapeHtml(sentence)}
+                                    </div>
+                                `;
+                            });
+                        } else if (block.type === 'image') {
+                            const caption = block.caption && block.caption[displayLang] ? block.caption[displayLang] : '';
+                            html += `
+                        <figure class="blog-image">
+                            <img src="${UI.escapeHtml(block.src)}" alt="${UI.escapeHtml(caption)}">
+                            ${caption ? `<figcaption>${UI.escapeHtml(caption)}</figcaption>` : ''}
+                        </figure>
+                    `;
+                        } else if (block.type === 'video') {
+                            const caption = block.caption && block.caption[displayLang] ? block.caption[displayLang] : '';
+                            // WARNING: embed HTML may contain unsafe content; ensure it's sanitized if user-supplied.
+                            html += `
+                        <figure class="blog-video">
+                            ${block.embed}
+                            ${caption ? `<figcaption>${UI.escapeHtml(caption)}</figcaption>` : ''}
+                        </figure>
+                    `;
+                        }
+                    });
+
+                    html += '</div>'; // close blog-content
+                    container.innerHTML = html;
+
+                    // Ensure media bar is visible (it might have been hidden by previous view)
+                    App.showMediaBar();
+
+                } catch (error) {
+                    container.innerHTML = `<div class="card error">Error loading blog: ${UI.escapeHtml(error.message)}</div>`;
+                }
+            }
+        },
 
     };
 
@@ -4048,6 +4693,7 @@ const App = (function () {
         state: State,
         router: Router,
         Services: Services,
+        _updating: false,
 
         async init() {
 
@@ -4099,28 +4745,30 @@ const App = (function () {
             if (!app) return;
 
             app.innerHTML = `
-                <header id="app-toolbar">
-                    <nav class="toolbar-left">
-                        <button class="material-icons toolbar-btn"
-                                onclick="location.hash='library'">home</button>
-                    </nav>
-                    <nav class="toolbar-right">
-                        <button class="material-icons toolbar-btn"
-                                onclick="App.toggleMenu('lang')">language</button>
-                        <button class="material-icons toolbar-btn"
-                                onclick="App.toggleMenu('font')">text_fields</button>
-                        <button class="material-icons toolbar-btn"
-                                onclick="App.toggleTheme()">
-                            ${State.data.theme === 'light' ? 'dark_mode' : 'light_mode'}
-                        </button>
-                        <button class="material-icons toolbar-btn"
-                                onclick="location.hash='help'">help_outline</button>
-                    </nav>
-                </header>
-                <div id="media-player-container"></div>
-                <main id="main-content"></main>
-                <div id="overlay-anchor"></div>
-            `;
+        <header id="app-toolbar">
+            <nav class="toolbar-left">
+                <button class="material-icons toolbar-btn"
+                        onclick="location.hash='library'">home</button>
+                <button class="material-icons toolbar-btn"
+                        onclick="location.hash='blogs'">article</button>
+            </nav>
+            <nav class="toolbar-right">
+                <button class="material-icons toolbar-btn"
+                        onclick="App.toggleMenu('lang')">language</button>
+                <button class="material-icons toolbar-btn"
+                        onclick="App.toggleMenu('font')">text_fields</button>
+                <button class="material-icons toolbar-btn"
+                        onclick="App.toggleTheme()">
+                    ${State.data.theme === 'light' ? 'dark_mode' : 'light_mode'}
+                </button>
+                <button class="material-icons toolbar-btn"
+                        onclick="location.hash='help'">help_outline</button>
+            </nav>
+        </header>
+        <div id="media-player-container"></div>
+        <main id="main-content"></main>
+        <div id="overlay-anchor"></div>
+    `;
         },
 
         applyTheme() {
@@ -4157,6 +4805,28 @@ const App = (function () {
             // We just need to save the state for next time
         },
 
+        handleBlogAccordion(clickedIndex, isOpen) {
+            // Prevent recursive calls when we programmatically close other sections
+            if (this._updating) return;
+            this._updating = true;
+
+            if (isOpen) {
+                // Close all other sections
+                const allSections = document.querySelectorAll('.blog-section');
+                allSections.forEach((section, idx) => {
+                    if (idx !== clickedIndex && section.open) {
+                        section.open = false;
+                    }
+                });
+                State.data.blogsAccordion.openSection = clickedIndex;
+            } else {
+                State.data.blogsAccordion.openSection = null;
+            }
+            State.save('blogsAccordion');
+
+            this._updating = false;
+        },
+
         handleDocumentClick(documentId) {
             // Store this as the last opened document and navigate
             State.data.lastDocument = documentId;
@@ -4176,18 +4846,6 @@ const App = (function () {
         },
 
         alphabet: {
-            clickConsonant: function (symbol, element) {
-                // Highlight the clicked consonant
-                const previouslyHighlighted = document.querySelector('.alphabet-grid-item.active');
-                if (previouslyHighlighted) {
-                    previouslyHighlighted.classList.remove('active');
-                }
-                
-                element.classList.add('active');
-                
-                // Speak the consonant
-                App.Services.MediaService.speak(symbol, 'th');
-            },
 
             showCharacterDetail(characterId) {
                 const anchor = document.getElementById('overlay-anchor');
@@ -4244,6 +4902,13 @@ const App = (function () {
             Router.go(`flashcard/${docId}/${sectionIdx}/${type}`);
         },
 
+        rateFlashcard(quality) {
+            // Forward to the Flashcard module's rateFlashcard method
+            if (UI.Flashcard.rateFlashcard) {
+                UI.Flashcard.rateFlashcard(quality);
+            }
+        },
+
         startSentenceGame(docId, sectionIdx) {
 
             State.data.activityCounts.gamesPlayed = (State.data.activityCounts.gamesPlayed || 0) + 1;
@@ -4274,6 +4939,20 @@ const App = (function () {
 
         renderMediaBar(container) {
             const media = State.data.media;
+            const viewMode = State.data.viewMode;
+
+            let rightControls = '';
+            if (viewMode === 'blog') {
+                rightControls = `
+            <button class="material-icons player-ctrl"
+                    onclick="App.showBlogSettingsOverlay()">settings</button>
+        `;
+            } else {
+                rightControls = `
+            <button class="material-icons player-ctrl"
+                    onclick="App.showSettingsOverlay()">settings</button>
+        `;
+            }
 
             container.innerHTML = `
         <div class="media-row">
@@ -4289,8 +4968,7 @@ const App = (function () {
                 <div id="media-text-display" class="media-text-display"></div>
             </div>
             <div class="media-col">
-                <button class="material-icons player-ctrl"
-                        onclick="App.showSettingsOverlay()">settings</button>
+                ${rightControls}
             </div>
         </div>`;
 
@@ -4318,13 +4996,23 @@ const App = (function () {
             window.speechSynthesis.cancel();
             this.showMediaBar();
             this.updatePlayPauseIcon(false);
-            // REMOVE THIS LINE:
-            // const message = Services.I18n.t('playback_stopped', 'Playback stopped');
-            // App.showNotification(message, 2000);
+
+            // Clear media text display
+            const display = document.getElementById('media-text-display');
+            if (display) {
+                display.innerText = '';
+                display.className = 'media-text-display';
+            }
         },
 
         showSettingsOverlay() {
             UI.Settings.render();
+        },
+
+        showBlogSettingsOverlay() {
+            const anchor = document.getElementById('overlay-anchor');
+            if (!anchor) return;
+            UI.BlogSettings.render();
         },
 
         resetSettingsToDefaults() {
@@ -4360,7 +5048,6 @@ const App = (function () {
             this.showNotification(Services.I18n.t('settings_reset', 'Settings reset to defaults'));
         },
 
-        // Update the showNotification method to accept a duration parameter (around line 4800)
         showNotification(message, duration = 5000) {
             // Remove any existing notification
             const existing = document.getElementById('settings-notification');
@@ -4399,63 +5086,74 @@ const App = (function () {
         },
 
         playSequence() {
-            // console.log('=== playSequence started ===');
-
-            // CRITICAL: Check if we're still in a document view
+            // CRITICAL: Check if we're in a document or blog view
             const mainContent = document.getElementById('main-content');
             const isInDocument = mainContent?.querySelector('.document-content') !== null;
+            const isInBlog = mainContent?.querySelector('.blog-content') !== null;
 
-            if (!isInDocument) {
-                // console.log('Not in document view, stopping playback');
+            if (!isInDocument && !isInBlog) {
                 this.stopSequence();
                 this.updatePlayPauseIcon(false);
                 return;
             }
 
-            // Ensure play icon is set to pause
             this.updatePlayPauseIcon(true);
-
-            // console.log('Current index:', State.data.media.currentIndex);
 
             // Enable scroll listeners when playback starts
             Services.MediaService.enableScrollListeners();
 
-            // Get ALL audio elements
-            const allElements = document.querySelectorAll('.audio-element');
+            /**
+             * Helper: returns all audio elements that are part of the current sequence,
+             * grouped and reordered so that within each sentence-group the order is:
+             *   1. word breakdown (sent-word-block)
+             *   2. full translation sentences (class "trans" or lang ≠ "th")
+             *   3. source Thai sentence
+             */
+            const getOrderedSequenceElements = () => {
+                const allElements = document.querySelectorAll('.audio-element');
+                const filtered = Array.from(allElements).filter(el =>
+                    Services.MediaService.isSequenceElement(el)
+                );
 
-            // Use the MediaService method for filtering
-            const sequenceElements = Array.from(allElements).filter(el => {
-                const isSeq = Services.MediaService.isSequenceElement(el);
-                if (isSeq && State.data.media.showWordBreakdown) {
-                    // Log breakdown elements to verify they're being included
-                    if (el.closest('.sent-word-block') ||
-                        el.classList.contains('sent-word-item') ||
-                        el.classList.contains('sent-word-trans')) {
-                        /*
-                                                console.log('Including breakdown element in sequence:', {
-                                                    classes: el.classList,
-                                                    text: el.getAttribute('data-text')
-                                                });
-                                                */
+                const ordered = [];
+                let i = 0;
+                while (i < filtered.length) {
+                    const el = filtered[i];
+                    const sentenceGroup = el.closest('.sentence-group');
+                    if (sentenceGroup) {
+                        const group = [];
+                        while (i < filtered.length && filtered[i].closest('.sentence-group') === sentenceGroup) {
+                            group.push(filtered[i]);
+                            i++;
+                        }
+                        // Sort within the sentence group
+                        group.sort((a, b) => {
+                            const orderA = a.closest('.sent-word-block') ? 0 :
+                                (a.classList.contains('trans') || (a.getAttribute('data-lang') && a.getAttribute('data-lang') !== 'th')) ? 1 : 2;
+                            const orderB = b.closest('.sent-word-block') ? 0 :
+                                (b.classList.contains('trans') || (b.getAttribute('data-lang') && b.getAttribute('data-lang') !== 'th')) ? 1 : 2;
+                            return orderA - orderB;
+                        });
+                        ordered.push(...group);
+                    } else {
+                        ordered.push(el);
+                        i++;
                     }
                 }
-                return isSeq;
-            });
-            /*
-                        console.log('PlaySequence - All elements:', allElements.length);
-                        console.log('PlaySequence - Sequence elements:', sequenceElements.length);
-                        console.log('PlaySequence - Breakdown elements count:',
-                            sequenceElements.filter(el => el.closest('.sent-word-block')).length);
-                        console.log('PlaySequence - Starting from index:', State.data.media.currentIndex);
-            */
-            // If current index is beyond sequence elements, reset to 0
+                return ordered;
+            };
+
+            // Initial ordered sequence
+            let sequenceElements = getOrderedSequenceElements();
+
+            // If current index is beyond sequence, reset
             if (State.data.media.currentIndex >= sequenceElements.length) {
                 State.data.media.currentIndex = 0;
             }
 
             const settings = State.data.media.languageSettings;
 
-            // Initialize tracking if needed
+            // Initialize tracking
             if (!State.data.scrolledRows) {
                 State.data.scrolledRows = new Set();
             }
@@ -4466,87 +5164,60 @@ const App = (function () {
             let isPausedByScroll = false;
             let pendingScrollCompletion = false;
 
-            // Function to handle scroll end - simplified to avoid race condition
             const onScrollEnd = () => {
                 if (scrollEndTimer) {
                     clearTimeout(scrollEndTimer);
                 }
-
                 scrollEndTimer = setTimeout(() => {
-                    // console.log('Scroll has completely ended');
-                    // Set a longer lock after scroll ends to catch any final events
                     window.scrollLockUntil = Date.now() + 500;
-
-                    // Don't set isAutoScrolling false immediately - wait a bit
                     setTimeout(() => {
-                        // console.log('Setting isAutoScrolling = false');
                         State.data.isAutoScrolling = false;
                         pendingScrollCompletion = false;
                     }, 200);
-
                     scrollEndTimer = null;
                 }, 200);
             };
 
-            playNext = () => {
-                // console.log('playNext called, currentIndex:', State.data.media.currentIndex);
-
-                // Check if we should pause due to pending scroll completion
+            const playNext = () => {
                 if (pendingScrollCompletion && State.data.media.isPlaying) {
-                    // console.log('Pending scroll completion, waiting...');
                     setTimeout(playNext, 50);
                     return;
                 }
 
                 if (!State.data.media.isPlaying) {
-                    // console.log('Playback stopped by user');
                     return;
                 }
 
-                // Re-query sequence elements in case DOM has changed
-                const currentAllElements = document.querySelectorAll('.audio-element');
-                const currentSequenceElements = Array.from(currentAllElements).filter(el => Services.MediaService.isSequenceElement(el));
+                // Re‑get ordered sequence (in case DOM changed)
+                sequenceElements = getOrderedSequenceElements();
 
-                if (State.data.media.currentIndex >= currentSequenceElements.length) {
-                    // console.log('Reached end of sequence elements, stopping');
+                if (State.data.media.currentIndex >= sequenceElements.length) {
                     this.stopSequence();
                     return;
                 }
 
-                // Get the element from the sequence elements list, not from all elements
-                const element = currentSequenceElements[State.data.media.currentIndex];
+                const element = sequenceElements[State.data.media.currentIndex];
                 if (!element) {
-                    // console.log('Element not found at index', State.data.media.currentIndex);
                     State.data.media.currentIndex++;
                     setTimeout(playNext, 100);
                     return;
                 }
 
-                // Check if the element is inside a closed details panel and open it
+                // Open closed details panel if necessary
                 const details = element.closest('details');
                 if (details && !details.open) {
-                    // console.log('Opening closed details panel for element at index', State.data.media.currentIndex);
                     details.open = true;
-
-                    // Find the section index from the details element
                     const sectionIndex = details.getAttribute('data-section-index');
                     if (sectionIndex !== null) {
                         const documentId = State.data.currentDocument?.id;
                         if (documentId) {
-                            // Update the accordion state to reflect that this section is now open
-                            // and all others should be closed (accordion behavior)
                             State.data.documentAccordion.openSections[documentId] = parseInt(sectionIndex);
                             State.save('documentAccordion');
                         }
                     }
-
-                    // Small delay to allow the details panel to expand before continuing
                     setTimeout(() => {
-                        // Re-get the sequence elements array as the DOM has changed
-                        const updatedAllElements = document.querySelectorAll('.audio-element');
-                        const updatedSequenceElements = Array.from(updatedAllElements).filter(el => Services.MediaService.isSequenceElement(el));
-                        // Find the new index of the same element in the updated sequence
-                        const updatedIndex = updatedSequenceElements.indexOf(element);
+                        sequenceElements = getOrderedSequenceElements();
+                        const updatedIndex = sequenceElements.indexOf(element);
                         if (updatedIndex !== -1) {
                             State.data.media.currentIndex = updatedIndex;
                         }
@@ -4555,126 +5226,68 @@ const App = (function () {
                     return;
                 }
 
-                // Find the row container
-                let row = null;
-                if (element.closest('.words-grid')) {
-                    row = element.closest('.words-grid');
-                    // console.log('Element is in words-grid, row:', row?.id || 'no id');
-                } else if (element.closest('.alphabet-grid')) {
-                    row = element.closest('.alphabet-grid');
-                    // console.log('Element is in alphabet-grid, row:', row?.id || 'no id');
-                } else if (element.closest('.character-grid')) {
-                    row = element.closest('.character-grid');
-                    // console.log('Element is in character-grid, row:', row?.id || 'no id');
-                } else if (element.closest('.tone-rule-table-container')) {
-                    row = element.closest('.tone-rule-table-container');
-                    // console.log('Element is in tone-rule-table, row:', row?.id || 'no id');
-                } else {
-                    row = element.closest('.sentence-group, .word-card, .flashcard-front, .quiz-question-card, .alphabet-table-container');
-                    // console.log('Element is in other container, row:', row?.className);
-                }
+                // Determine row container (for scrolling)
+                let row = element.closest('.words-grid') ||
+                    element.closest('.alphabet-grid') ||
+                    element.closest('.character-grid') ||
+                    element.closest('.tone-rule-table-container') ||
+                    element.closest('.sentence-group, .word-card, .flashcard-front, .quiz-question-card, .alphabet-table-container');
 
                 const rowId = row?.id || row?.getAttribute('data-uid') || `row-${State.data.media.currentIndex}`;
 
-                // IMPORTANT: For alphabet content, we need to check if the element itself is in viewport
-                // because all items share the same row container
                 const elementRect = element.getBoundingClientRect();
-
-                // Calculate visible area of the element
-                const toolbarHeight = 56; // #app-toolbar height
+                const toolbarHeight = 56;
                 const mediaBar = document.getElementById('media-player-container');
-                const mediaBarHeight = mediaBar && mediaBar.innerHTML ? 50 : 0; // media-row height when visible
-                const topThreshold = toolbarHeight + mediaBarHeight + 20; // Add padding
-                const bottomThreshold = 40; // Bottom padding
+                const mediaBarHeight = mediaBar && mediaBar.innerHTML ? 50 : 0;
+                const topThreshold = toolbarHeight + mediaBarHeight + 20;
+                const bottomThreshold = 40;
 
-                // Check if element is in viewport with better thresholds
                 const isElementInViewport = (
                     elementRect.top >= topThreshold &&
                     elementRect.bottom <= (window.innerHeight - bottomThreshold)
                 );
-
-                // Also check if element is partially visible but needs adjustment
                 const needsScrolling = (
-                    elementRect.top < topThreshold || // Element too high
-                    elementRect.bottom > (window.innerHeight - bottomThreshold) || // Element too low
-                    elementRect.top < 0 || // Element above viewport
-                    elementRect.bottom > window.innerHeight // Element below viewport
+                    elementRect.top < topThreshold ||
+                    elementRect.bottom > (window.innerHeight - bottomThreshold) ||
+                    elementRect.top < 0 ||
+                    elementRect.bottom > window.innerHeight
                 );
 
-                // Scroll when:
-                // 1. We enter a new row (different rowId) OR
-                // 2. The element is not properly visible in viewport (for same row items)
-                // 3. For alphabet grid items, always ensure they're visible
                 const isAlphabetItem = element.classList.contains('alphabet-item') ||
                     element.closest('.alphabet-item') !== null;
 
                 if ((rowId && rowId !== State.data.currentRowId) || needsScrolling || (isAlphabetItem && !isElementInViewport)) {
-                    // console.log('Need to scroll -', {
-                    //     newRow: rowId !== State.data.currentRowId,
-                    //     needsScrolling,
-                    //     isAlphabetItem,
-                    //     isElementInViewport
-                    // });
-
                     State.data.isAutoScrolling = true;
                     pendingScrollCompletion = true;
-
-                    // Set a long scroll lock immediately
                     window.scrollLockUntil = Date.now() + 1500;
 
-                    // Calculate total offset based on media bar visibility
-                    const totalOffset = topThreshold + 20; // Increased padding for better visibility
-
-                    // Determine what to scroll to - prefer the row container, but fall back to element
                     const scrollTarget = row || element;
-
-                    // Use a more precise scroll with offset
                     const rect = scrollTarget.getBoundingClientRect();
                     const absoluteTop = window.scrollY + rect.top;
-
-                    // Calculate target position - we want the element to be at the topThreshold position
                     let targetTop = absoluteTop - topThreshold;
 
-                    // If it's an alphabet item in a grid, we might want to scroll to the row container
-                    // to give context, but ensure the specific item is visible
                     if (isAlphabetItem && row && row !== element) {
-                        // Scroll to the row but adjust so the element is visible
                         const rowRect = row.getBoundingClientRect();
                         const rowTop = window.scrollY + rowRect.top;
-
-                        // Calculate how far into the row our element is
                         const elementOffsetInRow = elementRect.top - rowRect.top;
-
-                        // Target the row such that our element is at the topThreshold
                         targetTop = rowTop + elementOffsetInRow - topThreshold;
                     }
-
-                    // Ensure we don't scroll above the document
                     targetTop = Math.max(0, targetTop);
 
-                    window.scrollTo({
-                        top: targetTop,
-                        behavior: 'smooth'
-                    });
+                    window.scrollTo({ top: targetTop, behavior: 'smooth' });
 
-                    // Listen for scroll end
                     const scrollHandler = () => onScrollEnd();
                     window.addEventListener('scroll', scrollHandler, { passive: true });
 
                     setTimeout(() => {
-                        // console.log('Initial scroll timeout complete');
                         window.removeEventListener('scroll', scrollHandler);
-
                         State.data.currentRowId = rowId;
-
-                        // Small delay before speaking to let scroll events settle
                         setTimeout(() => {
                             pendingScrollCompletion = false;
                             speakCurrent();
-                        }, 200); // Increased from 150ms to 200ms for better stability
+                        }, 200);
                     }, 400);
                 } else {
-                    // console.log('Element is properly visible, speaking current element');
                     speakCurrent();
                 }
             };
@@ -4682,28 +5295,22 @@ const App = (function () {
             const speakCurrent = () => {
                 if (!State.data.media.isPlaying) return;
 
-                // Re-query sequence elements in case DOM has changed
-                const currentAllElements = document.querySelectorAll('.audio-element');
-                const currentSequenceElements = Array.from(currentAllElements).filter(el => Services.MediaService.isSequenceElement(el));
+                sequenceElements = getOrderedSequenceElements();
 
-                if (State.data.media.currentIndex >= currentSequenceElements.length) {
-                    // console.log('Element no longer exists, stopping playback');
+                if (State.data.media.currentIndex >= sequenceElements.length) {
                     this.stopSequence();
                     return;
                 }
 
-                const element = currentSequenceElements[State.data.media.currentIndex];
+                const element = sequenceElements[State.data.media.currentIndex];
                 if (!element) {
-                    // console.log('Element not found, moving to next');
                     State.data.media.currentIndex++;
                     setTimeout(playNext, 100);
                     return;
                 }
 
-                // Double-check that the element is in an open details panel
                 const details = element.closest('details');
                 if (details && !details.open) {
-                    // If somehow we got here with a closed panel, open it and retry
                     details.open = true;
                     setTimeout(() => {
                         speakCurrent();
@@ -4713,16 +5320,31 @@ const App = (function () {
 
                 const text = element.getAttribute('data-text');
                 const lang = element.getAttribute('data-lang');
-                const repeats = parseInt(settings[lang]?.repeat) || 1;
+                const repeats = (State.data.viewMode === 'blog') ? 1 : (settings[lang]?.repeat ?? 1);
 
-                // console.log('Speaking:', { text, lang, repeats, index: State.data.media.currentIndex });
+                if (repeats === 0) {
+                    const display = document.getElementById('media-text-display');
+                    if (display) {
+                        display.innerText = text;
+                        display.className = `media-text lang-${lang}`;
+                    }
+                    if (State.data.media.isPlaying) {
+                        State.data.media.currentIndex++;
+                        playNext();
+                    }
+                    return;
+                }
 
-                // Observe this element to pause if it goes out of view
                 Services.MediaService.observeCurrentElement(element);
 
                 const display = document.getElementById('media-text-display');
                 if (display) {
-                    display.innerText = text;
+                    let displayText = text;
+                    // Always truncate long text to avoid overflow on narrow screens
+                    if (displayText.length > 25) {        // adjust the number as needed (30–40)
+                        displayText = displayText.substring(0, 25) + ' …';
+                    }
+                    display.innerText = displayText;
                     display.className = `media-text lang-${lang}`;
                 }
 
@@ -4731,7 +5353,6 @@ const App = (function () {
                 const speakRepeat = () => {
                     if (!State.data.media.isPlaying) return;
 
-                    // Capture the current element and its repeat count
                     const currentElement = element;
                     const currentText = text;
                     const currentLang = lang;
@@ -4741,47 +5362,52 @@ const App = (function () {
                     const speakNextRepeat = () => {
                         if (!State.data.media.isPlaying) return;
 
-                        Services.MediaService.speak(currentText, currentLang,
-                            () => {
-                                // onStart - add highlight
-                                document.querySelectorAll('.active-highlight').forEach(el => {
-                                    el.classList.remove('active-highlight');
-                                });
-                                currentElement.classList.add('active-highlight');
+                        let currentRepeat = 0;
+                        const totalRepeats = repeats;
 
-                                const linkId = currentElement.getAttribute('data-link');
-                                if (linkId) {
-                                    const linkedElement = document.getElementById(linkId);
-                                    if (linkedElement) linkedElement.classList.add('active-highlight');
+                        const speakNextRepeatInner = () => {
+                            if (!State.data.media.isPlaying) return;
+
+                            Services.MediaService.speak(currentText, currentLang,
+                                () => {
+                                    // Highlight element
+                                    document.querySelectorAll('.active-highlight').forEach(el => {
+                                        el.classList.remove('active-highlight');
+                                    });
+                                    currentElement.classList.add('active-highlight');
+                                    const linkId = currentElement.getAttribute('data-link');
+                                    if (linkId) {
+                                        const linkedElement = document.getElementById(linkId);
+                                        if (linkedElement) linkedElement.classList.add('active-highlight');
+                                    }
+                                },
+                                () => {
+                                    // Remove highlight after natural end
+                                    currentElement.classList.remove('active-highlight');
+                                    const linkId = currentElement.getAttribute('data-link');
+                                    if (linkId) {
+                                        const linkedElement = document.getElementById(linkId);
+                                        if (linkedElement) linkedElement.classList.remove('active-highlight');
+                                    }
+
+                                    currentRepeat++;
+                                    if (currentRepeat < totalRepeats) {
+                                        // Use the configured delay (seconds → milliseconds)
+                                        setTimeout(speakNextRepeatInner, State.data.media.delay * 1000);
+                                    } else {
+                                        State.data.media.delayTimer = setTimeout(() => {
+                                            if (State.data.media.isPlaying) {
+                                                State.data.media.currentIndex++;
+                                                playNext();
+                                            }
+                                            State.data.media.delayTimer = null;
+                                        }, State.data.media.delay * 1000);
+                                    }
                                 }
-                            },
-                            () => {
-                                // onEnd - remove highlight and handle next
-                                currentElement.classList.remove('active-highlight');
-                                const linkId = currentElement.getAttribute('data-link');
-                                if (linkId) {
-                                    const linkedElement = document.getElementById(linkId);
-                                    if (linkedElement) linkedElement.classList.remove('active-highlight');
-                                }
+                            );
+                        };
 
-                                currentRepeat++;
-
-                                if (currentRepeat < totalRepeats) {
-                                    // More repeats for this element
-                                    setTimeout(speakNextRepeat, 100);
-                                } else {
-                                    // Move to next element after delay
-                                    State.data.media.currentIndex++;
-
-                                    // Small delay before next element
-                                    setTimeout(() => {
-                                        if (State.data.media.isPlaying) {
-                                            playNext();
-                                        }
-                                    }, State.data.media.delay * 1000);
-                                }
-                            }
-                        );
+                        speakNextRepeatInner();
                     };
 
                     speakNextRepeat();
@@ -4800,10 +5426,10 @@ const App = (function () {
             }
         },
 
-        // In the media.play function, add a check for isPlaying
         media: {
             _isPlaying: false,
             _clickTimer: null,
+            delayTimer: null,
 
             // In the media.play function, simplify the notification:
             play: function (element) {
@@ -4835,7 +5461,6 @@ const App = (function () {
             _executePlay: function (element) {
                 // Add a disabled attribute to prevent multiple clicks on the same element
                 if (element.getAttribute('data-processing') === 'true') {
-                    //   console.log('Element already being processed, ignoring');
                     return;
                 }
 
@@ -4850,7 +5475,6 @@ const App = (function () {
 
                 // Prevent rapid successive clicks
                 if (this._isPlaying) {
-                    //   console.log('Already processing a play request, ignoring');
                     setTimeout(() => {
                         element.removeAttribute('data-processing');
                     }, 500);
@@ -4864,28 +5488,9 @@ const App = (function () {
                 State.save('activityCounts');
 
                 const inDocument = element.closest('.document-content') !== null;
+                const inBlog = element.classList.contains('blog-sentence');
 
                 if (inDocument) {
-                    // Log element details for debugging
-                    /*
-                    console.log('Element clicked:', {
-                        classes: element.classList,
-                        attributes: {
-                            'data-uid': element.getAttribute('data-uid'),
-                            'data-link': element.getAttribute('data-link'),
-                            'data-text': element.getAttribute('data-text'),
-                            'data-lang': element.getAttribute('data-lang')
-                        },
-                        closest: {
-                            'sentence-group': element.closest('.sentence-group') !== null,
-                            'word-card': element.closest('.word-card') !== null,
-                            'sent-word-block': element.closest('.sent-word-block') !== null
-                        }
-                    });
-*/
-                    // Determine element type based on clear criteria
-                    // In the media._executePlay method, around line 5000-5100, update the element classification:
-
                     // Determine element type based on clear criteria
                     const isBreakdownElement =
                         element.hasAttribute('data-link') || // Has link to source
@@ -4895,8 +5500,6 @@ const App = (function () {
                         element.classList.contains('matched-word'); // Is a matched word in source
 
                     // Main sequence elements are those that should trigger seeking
-                    // These are: sentence sources, word card sources, their translations, alphabet grid items,
-                    // AND word breakdown elements when the setting is enabled
                     const isMainSequence =
                         // Sentence source (has data-uid AND is in sentence-group)
                         (element.hasAttribute('data-uid') && element.closest('.sentence-group') !== null) ||
@@ -4916,10 +5519,11 @@ const App = (function () {
                         // Alphabet table items
                         element.closest('.alphabet-table-container') !== null ||
                         // Tone rule table examples
-                        element.classList.contains('example-word');
+                        element.classList.contains('example-word') ||
+                        // ALPHABET CONSONANTS - now treated as main sequence
+                        element.classList.contains('alphabet-item');
 
                     if (State.data.media.showWordBreakdown && isBreakdownElement) {
-                        //   console.log('Playing breakdown element as part of sequence with seek');
                         // When breakdown is enabled, treat breakdown elements as part of the sequence
                         Services.MediaService.seekToElement(element);
 
@@ -4929,7 +5533,6 @@ const App = (function () {
                             this._clickTimer = null;
                         }, 1000);
                     } else if (isBreakdownElement) {
-                        //   console.log('Playing breakdown element directly');
                         // For word breakdown elements, just play this single word without seeking
                         const text = element.getAttribute('data-text');
                         const lang = element.getAttribute('data-lang');
@@ -4948,8 +5551,6 @@ const App = (function () {
                             this._clickTimer = null;
                         }, 500);
                     } else if (isMainSequence) {
-                        //   console.log('Playing main sequence element with seek');
-
                         // Then seek to the clicked element (playback already stopped above)
                         Services.MediaService.seekToElement(element);
 
@@ -4960,7 +5561,6 @@ const App = (function () {
                             this._clickTimer = null;
                         }, 1000);
                     } else {
-                        //  console.log('Element not classified, playing directly');
                         // Fallback - play directly
                         const text = element.getAttribute('data-text') || element.textContent.trim();
                         const lang = element.getAttribute('data-lang') || 'th';
@@ -4975,6 +5575,15 @@ const App = (function () {
                             this._clickTimer = null;
                         }, 500);
                     }
+                } else if (inBlog) {
+                    // For blog sentences, seek to the clicked element to start playback from there
+                    Services.MediaService.seekToElement(element);
+
+                    this._clickTimer = setTimeout(() => {
+                        this._isPlaying = false;
+                        element.removeAttribute('data-processing');
+                        this._clickTimer = null;
+                    }, 1000);
                 } else {
                     // Single playback for flashcards, quizzes, etc.
                     const text = element.getAttribute('data-text');
@@ -4992,6 +5601,7 @@ const App = (function () {
                     }, 500);
                 }
             }
+
         },
 
         toggleTheme() {
@@ -5031,6 +5641,48 @@ const App = (function () {
             Router.handle();
         },
 
+        updateVoiceSelectForLang(lang) {
+            const voiceSelect = document.getElementById('voice-select');
+            if (!voiceSelect) return;
+
+            const voices = Services.MediaService.cachedVoices.filter(v => v.lang.startsWith(lang));
+            const currentVoice = State.data.media.voice;
+
+            voiceSelect.innerHTML = voices.map(v => `<option value="${v.name}" ${v.name === currentVoice ? 'selected' : ''}>${v.name}</option>`).join('');
+            if (voices.length === 0) {
+                voiceSelect.innerHTML = '<option value="">No voices available</option>';
+            }
+
+            // Auto-select a voice if the current voice doesn't belong to this language
+            if (!currentVoice || !voices.some(v => v.name === currentVoice)) {
+                if (voices.length > 0) {
+                    voiceSelect.value = voices[0].name;
+                    this.updateMediaParam('voice', voices[0].name);
+                }
+            }
+        },
+
+        updateBlogDisplayLanguage(lang) {
+            const blogId = State.data.blogs.currentBlog?.id;
+            if (!blogId) return;
+
+            // Update the display language
+            State.data.blogs.displayLanguage = lang;
+            State.save('blogs');
+
+            // Re-render the blog reader
+            UI.Blog.renderReader(blogId);
+
+            // Optionally auto-select a voice for the new language
+            if (Services.MediaService.autoSelectVoiceForLang(lang)) {
+                // Refresh the voice dropdown in the blog settings overlay if it's open
+                const anchor = document.getElementById('overlay-anchor');
+                if (anchor && anchor.innerHTML.includes('blog-lang-select')) {
+                    UI.BlogSettings.populateVoicesForLang(lang);
+                }
+            }
+        },
+
         updateShowWordBreakdown(show) {
             State.data.media.showWordBreakdown = show;
             State.save('media');
@@ -5064,47 +5716,69 @@ const App = (function () {
             },
 
             handleAnswer(button, selected, correct) {
-                const quiz = State.data.quiz;
-                const isCorrect = selected === correct;
+                try {
+                    const quiz = State.data.quiz;
+                    if (!quiz) return;
 
-                // Increment when answer is submitted (count as one quiz interaction)
-                // You might want to track this differently
+                    const isCorrect = selected === correct;
 
-                // Speak the selected answer
-                Services.MediaService.speak(selected, quiz.answerLang);
-
-                button.classList.add(isCorrect ? 'correct' : 'incorrect');
-
-                document.querySelectorAll('.quiz-option-btn').forEach(btn => {
-                    btn.disabled = true;
-                });
-
-                if (!isCorrect) {
+                    // Disable all option buttons immediately
                     document.querySelectorAll('.quiz-option-btn').forEach(btn => {
-                        if (btn.dataset.answer === correct) {
-                            btn.classList.add('correct');
-                        }
+                        btn.disabled = true;
                     });
-                    quiz.incorrect.push(quiz.items[quiz.currentIndex]);
-                } else {
-                    quiz.score++;
-                }
 
-                setTimeout(() => {
-                    quiz.currentIndex++;
-                    if (quiz.currentIndex < quiz.items.length) {
-                        UI.Quiz.renderQuestion();
+                    // Visual feedback
+                    button.classList.add(isCorrect ? 'correct' : 'incorrect');
+                    if (!isCorrect) {
+                        document.querySelectorAll('.quiz-option-btn').forEach(btn => {
+                            if (btn.dataset.answer === correct) {
+                                btn.classList.add('correct');
+                            }
+                        });
+                        quiz.incorrect.push(quiz.items[quiz.currentIndex]);
                     } else {
-                        // Quiz completed
-                        State.data.activityCounts.quizzesTaken = (State.data.activityCounts.quizzesTaken || 0) + 1;
-                        State.save('activityCounts');
-
-                        this.addActivity('quiz', 'activity_completed_quiz');
-                        this.updateStreak();
-
-                        UI.Quiz.renderResults();
+                        quiz.score++;
                     }
-                }, 1500);
+
+                    // Speak the selected answer
+                    let speechFinished = false;
+                    const advance = () => {
+                        if (speechFinished) {
+                            // Move to next question
+                            quiz.currentIndex++;
+                            if (quiz.currentIndex < quiz.items.length) {
+                                UI.Quiz.renderQuestion();
+                            } else {
+                                // Quiz completed
+                                State.data.activityCounts.quizzesTaken = (State.data.activityCounts.quizzesTaken || 0) + 1;
+                                State.save('activityCounts');
+                                App.addActivity('quiz', 'activity_completed_quiz');
+                                App.updateStreak();
+                                UI.Quiz.renderResults();
+                            }
+                        }
+                    };
+
+                    // Speak with onend callback
+                    Services.MediaService.speak(selected, quiz.answerLang,
+                        null, // onStart (optional)
+                        () => {
+                            speechFinished = true;
+                            advance();
+                        }
+                    );
+
+                    // Fallback timeout (10 seconds) in case speech never ends
+                    setTimeout(() => {
+                        if (!speechFinished) {
+                            speechFinished = true; // Mark as finished to avoid double advance
+                            advance();
+                        }
+                    }, 10000);
+
+                } catch (e) {
+                    console.error('Quiz handleAnswer error:', e);
+                }
             },
 
             retryIncorrect() {
@@ -5283,41 +5957,6 @@ const App = (function () {
             }
         },
 
-        rateFlashcard(quality) {
-            if (State.data.flashcards) {
-                const cards = State.data.flashcards;
-
-                State.data.activityCounts.flashcardsReviewed = (State.data.activityCounts.flashcardsReviewed || 0) + 1;
-                State.save('activityCounts');
-
-                // Update streak (studying counts as activity)
-                this.updateStreak();
-
-                if (cards.currentIndex < cards.currentDeck.length - 1) {
-                    cards.currentIndex++;
-                    cards.showAnswer = false;
-                    UI.Flashcard.renderCard();
-                } else {
-                    const container = UI.getContainer();
-                    container.innerHTML = `
-                        <div class="flashcard-complete">
-                            <span class="material-icons">celebration</span>
-                            <h2>${Services.I18n.t('session_complete', 'Session Complete!')}</h2>
-                            <p>${Services.I18n.t('cards_reviewed', 'You\'ve reviewed all cards.')}</p>
-                            <div class="flashcard-complete-buttons">
-                                <button class="btn-activity" onclick="location.hash='doc/${cards.documentId}'">
-                                    ${Services.I18n.t('back_to_document', 'Back to Document')}
-                                </button>
-                                <button class="btn-activity" onclick="location.hash='library'">
-                                    ${Services.I18n.t('back_to_library', 'Library')}
-                                </button>
-                            </div>
-                        </div>
-                    `;
-                }
-            }
-        },
-
         exitFlashcards() {
             if (State.data.flashcards?.documentId) {
                 Router.go(`doc/${State.data.flashcards.documentId}`);
@@ -5329,49 +5968,61 @@ const App = (function () {
         showGrammarSheet(grammarId) {
             State.data.activityCounts.grammarSheetsOpened = (State.data.activityCounts.grammarSheetsOpened || 0) + 1;
             State.save('activityCounts');
-
             this.addActivity('menu_book', 'activity_viewed_grammar');
 
-            // Parse the grammar ID: grammar-sectionIdx-blockIdx
+            // Parse the grammar ID: "grammar-sectionIdx-blockIdx-grammarIdx"
             const parts = grammarId.split('-');
-            if (parts[0] !== 'grammar') return;
-
-            const sectionIdx = parseInt(parts[1]);
-            const blockIdx = parseInt(parts[2]);
+            if (parts[0] !== 'grammar' || parts.length !== 4) {
+                console.warn('Invalid grammar ID format');
+                return;
+            }
 
             try {
+                const sectionIdx = parseInt(parts[1]);
+                const blockIdx = parseInt(parts[2]);
+                const grammarIdx = parseInt(parts[3]);
+
                 const section = State.data.currentDocument.sections[sectionIdx];
                 const block = section.content[blockIdx];
 
-                if (!block || !block.grammar) {
+                if (!block || !block.grammar || !block.grammar[grammarIdx]) {
                     console.warn('No grammar data found');
                     return;
                 }
 
-                const grammar = block.grammar;
+                const grammar = block.grammar[grammarIdx];
 
-                // IMPORTANT: We DO NOT use any sentences from the block
-                // Only use examples explicitly defined in the grammar object
+                // Build examples array (same logic as before)
                 const examples = [];
                 if (grammar.examples && Array.isArray(grammar.examples)) {
                     grammar.examples.forEach(ex => {
-                        if (ex.sentenceSource) {
+                        if (ex.source && !ex.translations && ex.translation) {
+                            examples.push({
+                                source: ex.source,
+                                translations: { en: ex.translation }
+                            });
+                        } else if (ex.source && ex.translations) {
+                            examples.push({
+                                source: ex.source,
+                                translations: ex.translations
+                            });
+                        } else if (ex.sentenceSource) {
                             examples.push({
                                 source: ex.sentenceSource,
-                                translations: ex.translations || {} // Pass the FULL translations object
+                                translations: ex.translations || {}
                             });
                         }
                     });
                 }
 
-                //   console.log('Grammar examples being passed:', examples);
+                console.log('Grammar examples being passed:', examples);
 
                 UI.GrammarSheet.render({
                     pattern: grammar.pattern,
                     note: grammar.note || grammar.explanation,
-                    examples: examples, // ONLY use examples from the grammar object
-                    source: null, // No current sentence - we don't want to show a sentence from the block
-                    translations: {} // No current translations
+                    examples: examples,
+                    source: null,
+                    translations: {}
                 });
 
             } catch (error) {
@@ -5612,7 +6263,6 @@ const App = (function () {
             return t('milestone_completed', '🎉 You\'ve completed all milestones! Keep up the great work!');
         },
 
-        // Method to add activity to history
         addActivity(icon, textKey, textParams = {}) {
             const t = Services.I18n.t;
             let text = textKey;
@@ -5642,7 +6292,6 @@ const App = (function () {
             State.save('activityHistory');
         },
 
-        // Method to update streak
         updateStreak() {
             const today = new Date().toISOString().split('T')[0];
             const streak = State.data.streak;
@@ -5675,7 +6324,6 @@ const App = (function () {
             this.checkAchievements();
         },
 
-        // Method to check and unlock achievements
         checkAchievements() {
             const ach = State.data.achievements;
             const t = Services.I18n.t; // Add this line to get the translation function
@@ -5770,6 +6418,39 @@ const App = (function () {
             }
         },
 
+        resetSRSData() {
+            const t = Services.I18n.t;
+            if (confirm(t('confirm_reset_srs', 'Reset all flashcard scheduling? This will make all cards due now.'))) {
+                // Reset SRS items to new state
+                const today = new Date().toISOString().split('T')[0];
+                Object.values(State.data.srs.items).forEach(card => {
+                    card.interval = 0;
+                    card.repetition = 0;
+                    card.easeFactor = 2.5;
+                    card.dueDate = today;
+                    card.lastReviewed = null;
+                    card.lapses = 0;
+                });
+
+                // Reset SRS stats
+                State.data.srs.stats = {
+                    totalCards: Object.keys(State.data.srs.items).length,
+                    studiedToday: 0,
+                    dueToday: Object.keys(State.data.srs.items).length,
+                    lastStudied: null
+                };
+
+                State.save('srs');
+
+                // Refresh current view if on flashcards
+                if (window.location.hash.includes('flashcard')) {
+                    Router.handle();
+                }
+
+                this.showNotification(t('srs_reset', 'Flashcard schedule reset'));
+            }
+        },
+
         async updateSetting(type, value) {
             if (type === 'lang') {
                 State.data.lang = value;
@@ -5785,6 +6466,67 @@ const App = (function () {
             if (anchor) anchor.innerHTML = '';
 
             Router.handle();
+        },
+
+        Blog: {
+            setLanguage: function (lang) {
+                // Optional: ensure lang is in available list
+                const available = State.data.blogs.currentBlogLanguages;
+                if (available && !available.includes(lang)) {
+                    console.warn(`Language ${lang} not available for this blog`);
+                    return;
+                }
+                State.data.blogs.displayLanguage = lang;
+                State.save('blogs');
+                if (State.data.blogs.currentBlog) {
+                    UI.Blog.renderReader(State.data.blogs.currentBlog.id);
+                }
+                Services.MediaService.stopSequence();
+
+                // Close the language menu overlay
+                const anchor = document.getElementById('overlay-anchor');
+                if (anchor) {
+                    anchor.innerHTML = '';
+                }
+            },
+
+            toggleLanguageMenu: function () {
+                const anchor = document.getElementById('overlay-anchor');
+                if (!anchor) return;
+
+                // If menu already open, close it
+                if (anchor.innerHTML) {
+                    anchor.innerHTML = '';
+                    return;
+                }
+
+                const currentLang = State.data.blogs.displayLanguage;
+                // Get available languages for current blog, fallback to fixed set if none
+                const availableLangs = State.data.blogs.currentBlogLanguages || ['en', 'fa', 'th'];
+                const t = Services.I18n.t;
+
+                // Display data for known languages (can be extended)
+                const langDisplay = {
+                    en: { name: 'English', flag: '🇬🇧' },
+                    fa: { name: 'فارسی', flag: '🇮🇷' },
+                    th: { name: 'ไทย', flag: '🇹🇭' },
+                    // add more as needed
+                };
+
+                let html = '<div class="overlay-menu card lang-menu">';
+                availableLangs.forEach(code => {
+                    const display = langDisplay[code] || { name: code.toUpperCase(), flag: '🌐' };
+                    html += `
+            <button onclick="App.Blog.setLanguage('${code}')" ${currentLang === code ? 'class="selected"' : ''}>
+                <span class="lang-flag">${display.flag}</span>
+                <span class="lang-name">${display.name}</span>
+            </button>
+        `;
+                });
+                html += '</div>';
+                anchor.innerHTML = html;
+            }
+
         }
 
     };
