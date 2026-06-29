@@ -1,4 +1,5 @@
-/* ============================================================================
+/* 
+============================================================================
    Thai Learning App - Complete Optimized Stylesheet
    ============================================================================ */
 
@@ -64,6 +65,19 @@
     vertical-align: middle;
 }
 
+.skip-link {
+    position: absolute;
+    left: -9999px;
+    top: auto;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+}
+.skip-link:focus {
+    position: static;
+    width: auto;
+    height: auto;
+}
 /* ============================================================================
    2. BASE STYLES & TYPOGRAPHY
    ============================================================================ */
@@ -3734,14 +3748,12 @@ select:focus-visible {
 
 /* iOS-specific fixes */
 @supports (-webkit-touch-callout: none) {
-
     .word-tile,
     .constructed-word,
     .btn-activity,
     .game-close-btn,
     .remove-word-btn {
         -webkit-touch-callout: none;
-        -webkit-user-select: none;
     }
 }
 
