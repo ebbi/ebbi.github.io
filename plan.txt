@@ -44,12 +44,6 @@ On Play, the blog text should be highlighted and spoken using TTS
 Please do not generate any code and clarify the data model and options for the code design and implementation.
 
 
-For Potential challenges: 
- The TTS natural speech is more important than word level highlighting. If words are highlighted and 
- spoken separatly, does TTS loose the natural flow in the text? If so, a standard highlight based on 
- a full stop charachter for highlight / speech boundary is prefered. 
-
-Recommendation: Option B is a good choice.
 
 Again, please do not generate any code and clarify the data model and options for the code design and implementation 
  addressing the above comments.
@@ -118,27 +112,8 @@ Please ask for clarification on any ambiguity for the above requirement before g
 
 --------------------------
 
-The App settings has a "Delay" attribute that allows an integer input to be used 
-as a delay parameter between speaking out each token.  
-Change the code so that the same delay is applied for the repeat parameter for each 
-translation.
-
-The change did not work!  The sugested replacement code is identical to the 
-uploaded code!
-The tokens are repeated but spoken almost immediately in the repeat cycle.  
-There should be a pause equal to the global delay before repeating the speach for 
-the token.
-
-for example, the delay set to 5 and repeat set to 2 should:
-1. speak the token followed by 5 second pause and speak the token again followed by 5 second pause
-2. speak the next token followed by 5 second pause etc.
 
 
-------------------------------
-
-The delay fix has caused a new bug!
-The speech for longer text tokens are not completed and 
-the speech is truncated followed by the set delay and the next token speech.
 
 
 

@@ -1701,6 +1701,7 @@ div[data-link].active-highlight {
     border-radius: 12px;
     border-left: 4px solid var(--primary);
     color: var(--text);
+    font-family: inherit;
     font-size: 1rem;
     line-height: 1.5;
     margin-bottom: 20px;
@@ -1772,6 +1773,7 @@ div[data-link].active-highlight {
     background: var(--primary);
     color: white;
     border-radius: 30px;
+    font-family: inherit;
     font-size: 1.1rem;
     font-weight: 500;
     box-shadow: 0 2px 6px rgba(37, 99, 235, 0.3);
@@ -1840,6 +1842,7 @@ div[data-link].active-highlight {
     background: var(--card);
     border: 2px solid var(--primary);
     border-radius: 30px;
+    font-family: inherit; 
     font-size: 1.1rem;
     font-weight: 500;
     color: var(--primary);
@@ -1888,6 +1891,8 @@ div[data-link].active-highlight {
     min-width: 100px;
     min-height: 52px;
     padding: 12px 8px;
+    font-family: inherit;
+    font-family: inherit;
     font-size: 1rem;
     border-radius: 30px;
     display: inline-flex;
