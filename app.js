@@ -6590,37 +6590,7 @@ const App = (function () {
                 game.isCorrect = false;
                 UI.Game.renderGame();
             },
-
-            check() {
-                const game = State.data.sentenceGame;
-                if (!game) return;
-
-                const sentence = game.sentences[game.currentIndex];
-                const userWords = game.userWords || [];
-                const correctWords = sentence.words;
-
-                // Compare arrays
-                let isCorrect = userWords.length === correctWords.length;
-                if (isCorrect) {
-                    for (let i = 0; i < userWords.length; i++) {
-                        if (userWords[i] !== correctWords[i]) {
-                            isCorrect = false;
-                            break;
-                        }
-                    }
-                }
-
-                game.showResult = true;
-                game.isCorrect = isCorrect;
-
-                UI.Game.renderGame();
-
-                // If correct, speak the sentence
-                if (isCorrect) {
-                    Services.MediaService.speak(sentence.source, "th");
-                }
-            },
-
+/*
             showAnswer() {
                 const game = State.data.sentenceGame;
                 if (!game) return;
@@ -6633,7 +6603,7 @@ const App = (function () {
                 UI.Game.renderGame();
                 Services.MediaService.speak(sentence.source, "th");
             },
-
+*/
             next() {
                 const game = State.data.sentenceGame;
                 if (!game) return;
