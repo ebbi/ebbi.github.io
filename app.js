@@ -1015,29 +1015,28 @@ const App = (function () {
                     }
                 }, 100);
 
-                const pauseOnInteraction = (event) => {
-                    const mainContent = document.getElementById("main-content");
-                    const isInDocument =
-                        mainContent?.querySelector(".document-content") !==
-                        null;
+        const pauseOnInteraction = (event) => {
+    console.log(`[PAUSE ${performance.now().toFixed(0)}ms] Fired by: ${event?.type} | Target:`, event?.target?.tagName, event?.target?.className);
+            const target = event?.target;
+            
+            // Ignore clicks on overlays/toolbar (but NOT the media player)
+            if (target && target.closest && target.closest('#app-toolbar, .overlay-full, .bottom-sheet, .sheet-backdrop, .overlay-menu')) {
+                return;
+            }
 
-                    if (!isInDocument) {
-                        // console.log('Not in document view, ignoring pause');
-                        return;
-                    }
+            const mainContent = document.getElementById('main-content');
+            const isInDocument = mainContent?.querySelector('.document-content') !== null;
+            const isInBlog = mainContent?.querySelector('.blog-content') !== null;
 
-                    // EARLY RETURN: If playback is already stopped, do nothing
-                    if (!State.data.media.isPlaying) {
-                        return;
-                    }
-                    /*
-                                        // console.log('pauseOnInteraction triggered by:', event?.type || 'unknown', {
-                                            isPlaying: State.data.media.isPlaying,
-                                            isAutoScrolling: State.data.isAutoScrolling,
-                                            scrollLockUntil: window.scrollLockUntil,
-                                            currentTime: Date.now()
-                                        });
-                    */
+            if (!isInDocument && !isInBlog) {
+                return;
+            }
+
+            // EARLY RETURN: If playback is already stopped, do nothing
+            if (!State.data.media.isPlaying) { 
+                return;
+            }
+            
                     // Don't pause if we're in auto-scroll mode
                     if (State.data.isAutoScrolling) {
                         // console.log('Auto-scrolling in progress, ignoring pause');
@@ -1082,20 +1081,26 @@ const App = (function () {
                         }
                     }
 
-                    if (State.data.media.isPlaying) {
-                        // console.log('PAUSING playback due to interaction');
-                        State.data.media.isPlaying = false;
-                        window.speechSynthesis.cancel();
+                if (State.data.media.isPlaying) {
+                    State.data.media.isPlaying = false;
+                    
+                    // CRITICAL: Cancel speech immediately to prevent Firefox from blocking the UI thread
+                    console.log(`[CANCEL START ${performance.now().toFixed(0)}ms] Calling speechSynthesis.cancel()...`);
+window.speechSynthesis.cancel();
+console.log(`[CANCEL END ${performance.now().toFixed(0)}ms] speechSynthesis.cancel() completed.`);
 
-                        document
-                            .querySelectorAll(".active-highlight")
-                            .forEach((el) => {
-                                el.classList.remove("active-highlight");
-                            });
+                    document.querySelectorAll(".active-highlight").forEach((el) => {
+                        el.classList.remove("active-highlight");
+                    });
 
+                    // FIX: Only re-render the media bar if the click was NOT on the media controls.
+                    // This cancels the TTS (fixing the 10s delay) but prevents destroying the settings icon.
+                    const isMediaControl = target && target.closest && target.closest('#media-player-container');
+                    if (!isMediaControl) {
                         App.showMediaBar();
                     }
-                };
+                }
+            };
 
                 // Pause on scroll (any scroll, not just wheel)
                 window.addEventListener(
@@ -1336,22 +1341,19 @@ const App = (function () {
                 return Array.from(rows.values());
             },
 
-            enableScrollListeners() {
-                // Only enable if we're in a document view
-                const mainContent = document.getElementById("main-content");
-                const isInDocument =
-                    mainContent?.querySelector(".document-content") !== null;
+        enableScrollListeners() {
+            const mainContent = document.getElementById('main-content');
+            const isInDocument = mainContent?.querySelector('.document-content') !== null;
+            const isInBlog = mainContent?.querySelector('.blog-content') !== null;
 
-                if (!isInDocument) {
-                    // console.log('Not in document view, not enabling scroll listeners');
-                    return;
-                }
+            if (!isInDocument && !isInBlog) {
+                return;
+            }
 
-                if (this._scrollListenersEnabled) return;
+            if (this._scrollListenersEnabled) return;
 
-                this._scrollListenersEnabled = true;
-                // console.log('Scroll listeners enabled');
-            },
+            this._scrollListenersEnabled = true;
+        },
 
             disableScrollListeners() {
                 if (!this._scrollListenersEnabled) return;
@@ -1914,7 +1916,7 @@ const App = (function () {
                         } else if (activity.startsWith("multipleChoice")) {
                             const isWord = activity.includes("Word");
                             html += `
-            <button class="doc-quiz-btn" onclick="location.hash='quiz/${doc.id}/null/${activity}'">
+            <button class="doc-quiz-btn" data-action="navigate" data-route="quiz/${doc.id}/null/${activity}">
                 <span class="material-icons">quiz</span>
                 <span>${isWord ? t("words", "Words") : t("sentences", "Sentences")}</span>
             </button>
@@ -1993,7 +1995,7 @@ const App = (function () {
                 <span class="material-icons">style</span>
                 <span>${t("words", "Words")}</span>
             </button>
-            <button class="section-quiz-btn" onclick="location.hash='quiz/${docId}/${sectionIdx}/multipleChoiceWord'">
+            <button class="section-quiz-btn" data-action="navigate" data-route="quiz/${docId}/${sectionIdx}/multipleChoiceWord">
                 <span class="material-icons">quiz</span>
                 <span>${t("words", "Words")}</span>
             </button>
@@ -2011,7 +2013,7 @@ const App = (function () {
                 <span class="material-icons">dashboard</span>
                 <span>${t("sentences", "Sentences")}</span>
             </button>
-            <button class="section-quiz-btn" onclick="location.hash='quiz/${docId}/${sectionIdx}/multipleChoiceSentence'">
+            <button class="section-quiz-btn" data-action="navigate" data-route="quiz/${docId}/${sectionIdx}/multipleChoiceSentence">
                 <span class="material-icons">quiz</span>
                 <span>${t("sentences", "Sentences")}</span>
             </button>
@@ -2046,7 +2048,7 @@ const App = (function () {
                                         const grammarId = `grammar-${sectionIdx}-${blockIdx}-${gIdx}`;
                                         return `
                 <button class="grammar-icon-btn-inline" 
-                        onclick="App.showGrammarSheet('${grammarId}')"
+                        data-action="show-grammar" data-grammar-id="${grammarId}"
                         aria-label="Show grammar explanation"
                         title="View grammar note">
                     <span class="material-icons">menu_book</span>
@@ -2116,7 +2118,7 @@ const App = (function () {
                              lang="th" dir="ltr"
                              data-text="${UI.escapeHtml(word.word)}"
                              data-lang="th"
-                             onclick="App.media.play(this)">${UI.escapeHtml(word.word)}</div>
+                             data-action="play-media">${UI.escapeHtml(word.word)}</div>
                     `;
                 }
 
@@ -2133,7 +2135,7 @@ const App = (function () {
                                  lang="${code}" dir="${dir}"
                                  data-text="${UI.escapeHtml(word.translations[code])}"
                                  data-lang="${code}"
-                                 onclick="App.media.play(this)">${UI.escapeHtml(word.translations[code])}</div>
+                                 data-action="play-media">${UI.escapeHtml(word.translations[code])}</div>
                         `;
                     }
                 });
@@ -2170,7 +2172,7 @@ const App = (function () {
                      data-text="${UI.escapeHtml(sentence.source)}"
                      data-lang="th"
                      data-uid="${uid}"
-                     onclick="App.media.play(this)">
+                     data-action="play-media">
                     ${UI.Document.hydrateSource(sentence.source, sentence.words, uid)}
                 </div>
             </div>
@@ -2193,7 +2195,7 @@ const App = (function () {
                                     data-text="${UI.escapeHtml(word.word)}"
                                     data-lang="th"
                                     data-link="${sourceWordId}"
-                                    onclick="App.media.play(this)">
+                                    data-action="play-media">
                                     <div class="sent-word-source">${UI.escapeHtml(word.word)}</div>
                                     ${Object.entries(
                                         State.data.media.languageSettings,
@@ -2237,7 +2239,7 @@ const App = (function () {
                          data-text="${UI.escapeHtml(sentence.translations[code])}"
                          data-lang="${code}"
                          data-uid="${uid}-trans-${code}"
-                         onclick="App.media.play(this)">
+                         data-action="play-media">
                         ${UI.Document.renderTranslationSpan(sentence.translations[code], code, `${uid}-trans-${code}`)}
                     </div>
                 `;
@@ -2477,7 +2479,7 @@ const App = (function () {
 
                                 return `
                                 <button class="character-grid-item audio-element ${classType}" 
-                                        onclick="App.media.play(this)"
+                                        data-action="play-media"
                                         data-text="${charSymbol}" 
                                         data-lang="th"
                                         data-class="${charClass}">
@@ -2520,7 +2522,7 @@ const App = (function () {
                                     (soundItem, index) => `
                                 <div class="sound-item" data-index="${index}">
                                     <button class="btn-play-sound audio-element" 
-                                            onclick="App.media.play(this)"
+                                            data-action="play-media"
                                             data-text="${soundItem.sound}" 
                                             data-lang="th">
                                         <span class="material-icons">volume_up</span>
@@ -2577,7 +2579,7 @@ const App = (function () {
                                         <td>${rule.condition}</td>
                                         <td><span class="tone-indicator tone-${rule.tone ? rule.tone.toLowerCase() : "mid"}">${rule.tone || "Mid"}</span></td>
                                         <td class="example-word audio-element ${classType}" 
-                                            onclick="App.media.play(this)"
+                                            data-action="play-media"
                                             data-text="${rule.example}" 
                                             data-lang="th">
                                             ${rule.example}
@@ -2653,7 +2655,7 @@ const App = (function () {
 
                     return '
                         <div class="alphabet-grid-item audio-element alphabet-item ${classType}" 
-                            onclick="App.media.play(this)"
+                            data-action="play-media"
                             data-text="${UI.escapeHtml(fullPronunciation)}" 
                             data-lang="th"
                             data-class="${char.class}"
@@ -2860,7 +2862,7 @@ const App = (function () {
             <div class="quiz-header">
                 <div class="quiz-header-top">
                     <h2>${t(quiz.activityType, quiz.activityType)}</h2>
-                    <button class="quiz-close-btn" onclick="location.hash='doc/${quiz.documentId}'">
+                    <button class="quiz-close-btn" data-action="navigate" data-route="doc/${quiz.documentId}">
                         <span class="material-icons">close</span>
                     </button>
                 </div>
@@ -2918,7 +2920,7 @@ const App = (function () {
             </div>
 
             <div class="quiz-question-card" 
-                 onclick="App.media.play(this)"
+                 data-action="play-media"
                  data-text="${UI.escapeHtml(quiz.questionLang === "th" ? item.question : questionText)}"
                  data-lang="${quiz.questionLang}">
                 <div class="quiz-question-text" lang="${quiz.questionLang}" 
@@ -2997,7 +2999,7 @@ const App = (function () {
                             <div class="card review-item">
                                 <div class="review-item-content">
                                     <strong class="review-question" 
-                                            onclick="App.media.play(this)"
+                                            data-action="play-media"
                                             data-text="${UI.escapeHtml(item.question)}"
                                             data-lang="th">
                                         <span class="material-icons review-speech-icon">volume_up</span>
@@ -3007,7 +3009,7 @@ const App = (function () {
                                         translation
                                             ? `
                                         <small class="review-answer"
-                                               onclick="App.media.play(this)"
+                                               data-action="play-media"
                                                data-text="${UI.escapeHtml(translation)}"
                                                data-lang="${answerLang}">
                                             <span class="material-icons review-speech-icon-small">volume_up</span>
@@ -3032,7 +3034,7 @@ const App = (function () {
             }
             
             <div class="quiz-footer-btns">
-                <button class="btn-activity" onclick="location.hash='doc/${quiz.documentId}'">
+                <button class="btn-activity" data-action="navigate" data-route="doc/${quiz.documentId}">
                     <span class="material-icons">arrow_back</span>
                     ${t("finish", "Finish")}
                 </button>
@@ -3582,10 +3584,10 @@ const App = (function () {
             <h2>${Services.I18n.t("session_complete", "Session Complete!")}</h2>
             <p>${Services.I18n.t("no_more_cards", "No more cards due for review. Come back later!")}</p>
             <div class="flashcard-complete-buttons">
-                <button class="btn-activity" onclick="location.hash='doc/${cards.documentId}'">
+                <button class="btn-activity" data-action="navigate" data-route="doc/${cards.documentId}">
                     ${Services.I18n.t("back_to_document", "Back to Document")}
                 </button>
-                <button class="btn-activity" onclick="location.hash='library'">
+                <button class="btn-activity" data-action="navigate" data-route="library">
                     ${Services.I18n.t("back_to_library", "Library")}
                 </button>
             </div>
@@ -3699,7 +3701,7 @@ const App = (function () {
                 <div class="game-header">
                     <div class="game-header-top">
                         <h2>${t("build_sentence", "Build the Sentence")}</h2>
-                        <button class="game-close-btn" onclick="location.hash='doc/${game.documentId}'">
+                        <button class="game-close-btn" data-action="navigate" data-route="doc/${game.documentId}">
                             <span class="material-icons">close</span>
                         </button>
                     </div>
@@ -3743,7 +3745,7 @@ const App = (function () {
                                             !game.showResult
                                                 ? `
                                             <button class="remove-word-btn" 
-                                                    onclick="App.game.removeWord(${index})"
+                                                    data-action="remove-word" data-index="${index}"
                                                     aria-label="${t("remove_word", "Remove word")}">
                                                 <span class="material-icons">close</span>
                                             </button>
@@ -3769,7 +3771,7 @@ const App = (function () {
                                 .map(
                                     (word) => `
                                 <button class="word-tile"
-                                        onclick="App.game.addWord('${UI.escapeHtml(word)}')"
+                                        data-action="add-word" data-word="${UI.escapeHtml(word)}"
                                         ${game.showResult ? "disabled" : ""}>
                                     ${UI.escapeHtml(word)}
                                 </button>
@@ -3789,12 +3791,14 @@ const App = (function () {
                 
                 <!-- Game Controls -->
                 <div class="game-controls">
-                    <button class="btn-activity btn-reset" 
-                            onclick="App.game.reset()" 
-                            ${usedWords.length === 0 || game.showResult ? "disabled" : ""}>
-                        <span class="material-icons">refresh</span>
-                        <span class="btn-text">${t("reset", "Reset")}</span>
-                    </button>
+
+                 <button class="btn-activity btn-reset" 
+                        onclick="App.game.reset()" 
+                        ${usedWords.length === 0 || (game.showResult && game.isCorrect) ? 'disabled' : ''}>
+                     <span class="material-icons">refresh</span>
+                     <span class="btn-text">${t('reset', 'Reset')}</span>
+                 </button>
+
                     <button class="btn-activity btn-check" 
                             onclick="App.game.check()" 
                             ${usedWords.length === 0 || game.showResult ? "disabled" : ""}>
@@ -3824,7 +3828,7 @@ const App = (function () {
                                       )
                                     : t(
                                           "incorrect_sentence",
-                                          "Not quite right. Try again!",
+                                          "Not quite right. Reset to try again!",
                                       )
                             }
                         </span>
@@ -3867,7 +3871,7 @@ const App = (function () {
                 <p>${t("sentences_completed", "You've practiced all the sentences!")}</p>
                 
                 <div class="game-complete-buttons">
-                    <button class="btn-activity" onclick="location.hash='doc/${game.documentId}'">
+                    <button class="btn-activity" data-action="navigate" data-route="doc/${game.documentId}">
                         <span class="material-icons">arrow_back</span>
                         ${t("back_to_document", "Back to Document")}
                     </button>
@@ -4545,7 +4549,7 @@ const App = (function () {
 
                 <!-- Back to Library Button -->
                 <div class="help-footer">
-                    <button class="btn-activity" onclick="location.hash='library'">
+                    <button class="btn-activity" data-action="navigate" data-route="library">
                         <span class="material-icons">arrow_back</span>
                         ${t("back_to_library", "Back to Library")}
                     </button>
@@ -4574,7 +4578,7 @@ const App = (function () {
                             <span class="material-icons">bookmark_border</span>
                             <h2>${Services.I18n.t("no_bookmarks", "No bookmarked cards")}</h2>
                             <p>${Services.I18n.t("no_bookmarks_message", "Bookmark cards while studying to review them later.")}</p>
-                            <button class="btn-activity" onclick="location.hash='library'">Back to Library</button>
+                            <button class="btn-activity" data-action="navigate" data-route="library">Back to Library</button>
                         </div>
                     `;
                     App.hideMediaBar();
@@ -4809,83 +4813,74 @@ const App = (function () {
             },
         },
 
-        BlogSettings: {
-            render() {
-                const anchor = document.getElementById("overlay-anchor");
-                if (!anchor) return;
+    BlogSettings: {
+        render() {
+            const anchor = document.getElementById('overlay-anchor');
+            if (!anchor) return;
 
-                const media = State.data.media;
-                const t = Services.I18n.t;
+            const media = State.data.media;
+            const t = Services.I18n.t;
 
-                const supportedLangs = ["th", "en", "fa"];
-                const currentBlogLang = State.data.blogs.displayLanguage;
-                const langOptions = supportedLangs
-                    .map((code) => {
-                        const langName = {
-                            th: "ไทย",
-                            en: "English",
-                            fa: "فارسی",
-                        }[code];
-                        return `<option value="${code}" ${currentBlogLang === code ? "selected" : ""}>${langName}</option>`;
-                    })
-                    .join("");
+            // 1. Build Language Options
+            const supportedLangs = ['th', 'en', 'fa'];
+            const currentBlogLang = State.data.blogs.displayLanguage;
+            const langOptions = supportedLangs.map(code => {
+                const langName = { th: 'ไทย', en: 'English', fa: 'فارسی' }[code];
+                return `<option value="${code}" ${currentBlogLang === code ? 'selected' : ''}>${langName}</option>`;
+            }).join('');
 
-                const voices = Services.MediaService.cachedVoices;
-                const voiceOptions = voices
-                    .map(
-                        (v) =>
-                            `<option value="${v.name}" ${media.voice === v.name ? "selected" : ""}>${v.name}</option>`,
-                    )
-                    .join("");
+            // 2. Build HTML String
+            // FIX: We leave the <select id="voice-select"> EMPTY here. 
+            // We will populate it in the next step to avoid Firefox parsing 100+ options twice.
+            const html = `
+         <div class="overlay-full card">
+             <div class="settings-header">
+                 <h2>${t('playback_settings', 'Playback Settings')}</h2>
+                 <button class="material-icons" onclick="document.getElementById('overlay-anchor').innerHTML=''">close</button>
+             </div>
+             <div class="settings-sliders">
+                 <div class="control-row-inline">
+                     <label>${t('speed', 'Speed')}</label>
+                     <input type="range" min="0.5" max="2" step="0.25"
+                        value="${media.speed}"
+                        oninput="this.nextElementSibling.innerText = this.value + 'x'; App.updateMediaParam('speed', this.value, true)">
+                     <span class="val-label">${media.speed}x</span>
+                 </div>
+                 <div class="control-row-inline">
+                     <label>${t('delay', 'Delay')}</label>
+                     <input type="range" min="1" max="5" step="1"
+                        value="${media.delay}"
+                        oninput="this.nextElementSibling.innerText = this.value + 's'; App.updateMediaParam('delay', this.value, true)">
+                     <span class="val-label">${media.delay}s</span>
+                 </div>
+                 <div class="control-row-inline">
+                     <label>${t('pitch', 'Pitch')}</label>
+                     <input type="range" min="0.5" max="1.5" step="0.1"
+                        value="${media.pitch}"
+                        oninput="this.nextElementSibling.innerText = this.value; App.updateMediaParam('pitch', this.value, true)">
+                     <span class="val-label">${media.pitch}</span>
+                 </div>
+             </div>
+             <label>${t('language', 'Language')}</label>
+             <select id="blog-lang-select" onchange="App.updateBlogDisplayLanguage(this.value)" style="width:100%; margin-bottom:15px;">
+                 ${langOptions}
+             </select>
+             <label>${t('voice', 'Voice')}</label>
+             <select id="voice-select" onchange="App.updateMediaParam('voice', this.value)" style="width:100%; margin-bottom:15px;">
+                 <!-- Options populated dynamically below -->
+             </select>
+         </div>
+         `;
+         
+            anchor.innerHTML = html;
 
-                const html = `
-            <div class="overlay-full card">
-                <div class="settings-header">
-                    <h2>${t("playback_settings", "Playback Settings")}</h2>
-                    <button class="material-icons" onclick="document.getElementById('overlay-anchor').innerHTML=''">close</button>
-                </div>
-                <div class="settings-sliders">
-                    <div class="control-row-inline">
-                        <label>${t("speed", "Speed")}</label>
-                        <input type="range" min="0.5" max="2" step="0.25"
-                            value="${media.speed}"
-                            oninput="this.nextElementSibling.innerText = this.value + 'x'; App.updateMediaParam('speed', this.value, true)">
-                        <span class="val-label">${media.speed}x</span>
-                    </div>
-                    <div class="control-row-inline">
-                        <label>${t("delay", "Delay")}</label>
-                        <input type="range" min="1" max="5" step="1"
-                            value="${media.delay}"
-                            oninput="this.nextElementSibling.innerText = this.value + 's'; App.updateMediaParam('delay', this.value, true)">
-                        <span class="val-label">${media.delay}s</span>
-                    </div>
-                    <div class="control-row-inline">
-                        <label>${t("pitch", "Pitch")}</label>
-                        <input type="range" min="0.5" max="1.5" step="0.1"
-                            value="${media.pitch}"
-                            oninput="this.nextElementSibling.innerText = this.value; App.updateMediaParam('pitch', this.value, true)">
-                        <span class="val-label">${media.pitch}</span>
-                    </div>
-                </div>
-                <label>${t("language", "Language")}</label>
-<select id="blog-lang-select" onchange="App.updateBlogDisplayLanguage(this.value)" style="width:100%; margin-bottom:15px;">
-    ${langOptions}
-</select>
-                <label>${t("voice", "Voice")}</label>
-                <select id="voice-select" onchange="App.updateMediaParam('voice', this.value)" style="width:100%; margin-bottom:15px;">
-                    ${voiceOptions}
-                </select>
-            </div>
-        `;
-                anchor.innerHTML = html;
-
-                // Populate voices for the initially selected language (if any)
-                const langSelect = document.getElementById("blog-lang-select");
-                if (langSelect) {
-                    this.populateVoicesForLang(langSelect.value);
-                }
-            },
-
+            // 3. Populate Voices for the selected language (Single Update)
+            const langSelect = document.getElementById('blog-lang-select');
+            if (langSelect) {
+                this.populateVoicesForLang(langSelect.value);
+            }
+        },
+        
             populateVoicesForLang(lang) {
                 const voices = Services.MediaService.cachedVoices.filter((v) =>
                     v.lang.startsWith(lang),
@@ -4958,7 +4953,7 @@ const App = (function () {
             <div class="current-sentence">
                 <div class="pattern-title">${t("in_this_sentence", "In this sentence")}</div>
                 <div class="example-group">
-                    <div class="pattern-example" onclick="App.media.play(this)"
+                    <div class="pattern-example" data-action="play-media"
                          data-text="${UI.escapeHtml(content.source)}" data-lang="th">
                         <span class="material-icons audio-icon-small">volume_up</span>
                         <span class="example-thai" lang="th">${UI.escapeHtml(content.source)}</span>
@@ -4974,7 +4969,7 @@ const App = (function () {
                             const dir = lang === "fa" ? "rtl" : "ltr";
                             return `
                             <div class="pattern-example translation-example" 
-                                 onclick="App.media.play(this)"
+                                 data-action="play-media"
                                  data-text="${UI.escapeHtml(content.translations[lang])}" 
                                  data-lang="${lang}">
                                 <span class="material-icons audio-icon-small">volume_up</span>
@@ -5000,7 +4995,7 @@ const App = (function () {
                     .map(
                         (ex) => `
                     <div class="example-group">
-                        <div class="pattern-example" onclick="App.media.play(this)"
+                        <div class="pattern-example" data-action="play-media"
                              data-text="${UI.escapeHtml(ex.source)}" data-lang="th">
                             <span class="material-icons audio-icon-small">volume_up</span>
                             <span class="example-thai" lang="th">${UI.escapeHtml(ex.source)}</span>
@@ -5016,7 +5011,7 @@ const App = (function () {
                                 const dir = lang === "fa" ? "rtl" : "ltr";
                                 return `
                                 <div class="pattern-example translation-example" 
-                                     onclick="App.media.play(this)"
+                                     data-action="play-media"
                                      data-text="${UI.escapeHtml(ex.translations[lang])}" 
                                      data-lang="${lang}">
                                     <span class="material-icons audio-icon-small">volume_up</span>
@@ -5142,7 +5137,7 @@ const App = (function () {
                         obj.blogs.forEach((blog) => {
                             const blogTitle = blog.title[lang] || blog.title.en;
                             html += `
-                    <button class="blog-btn" onclick="location.hash='blogs/${blog.id}'">
+                    <button class="blog-btn" data-action="navigate" data-route="blogs/${blog.id}">
                         <span class="material-icons blog-btn-icon">article</span>
                         <span class="blog-btn-text">${UI.escapeHtml(blogTitle)}</span>
                         <span class="material-icons blog-btn-arrow">chevron_right</span>
@@ -5220,7 +5215,7 @@ const App = (function () {
                             sentences.forEach((sentence) => {
                                 html += `
                                     <div class="blog-sentence audio-element"
-                                        onclick="App.media.play(this)"
+                                        data-action="play-media"
                                         data-text="${UI.escapeHtml(sentence)}"
                                         data-lang="${displayLang}"
                                         lang="${displayLang}">
@@ -5303,13 +5298,62 @@ const App = (function () {
                 //  console.log('Last document available:', State.data.lastDocument);
             }
 
-            const pauseOnInteraction = () => {
-                if (State.data.media.isPlaying && !State.data.isAutoScrolling) {
-                    State.data.media.isPlaying = false;
-                    window.speechSynthesis.cancel();
-                    this.showMediaBar();
-                }
-            };
+document.body.addEventListener('click', (e) => {
+    console.log(`[CLICK ${performance.now().toFixed(0)}ms] Target:`, e.target.tagName, e.target.className, '| Action:', e.target.closest('[data-action]')?.dataset.action || 'none');
+    
+    const target = e.target.closest('[data-action]');
+    if (!target) return;
+
+    const action = target.dataset.action;
+    console.log(`[ACTION ${performance.now().toFixed(0)}ms] Routing: ${action}`);
+
+    // Route the action
+    if (action === 'play-media') {
+        App.media.play(target);
+    } 
+    else if (action === 'navigate') {
+        location.hash = target.dataset.route;
+    } 
+    else if (action === 'add-word') {
+        App.game.addWord(target.dataset.word);
+    }
+    else if (action === 'remove-word') {
+        App.game.removeWord(parseInt(target.dataset.index));
+    }
+    else if (action === 'show-grammar') {
+        App.showGrammarSheet(target.dataset.grammarId);
+    }
+    // NEW: Handle Media Bar Controls
+    else if (action === 'toggle-play') {
+        App.togglePlay();
+    }
+    else if (action === 'stop-sequence') {
+        App.stopSequence();
+    }
+    else if (action === 'show-settings') {
+        if (State.data.viewMode === 'blog') {
+            App.showBlogSettingsOverlay();
+        } else {
+            App.showSettingsOverlay();
+        }
+    }
+});
+
+        const pauseOnInteraction = (event) => {
+            // CRITICAL FIX FOR FIREFOX:
+            // Ignore clicks on the media player controls (like the Settings gear icon).
+            // In Firefox, calling speechSynthesis.cancel() during mousedown blocks the main thread for ~10 seconds,
+            // which delays the click event and the rendering of the settings overlay.
+            if (event && event.target && event.target.closest && event.target.closest('#media-player-container')) {
+                return;
+            }
+
+            if (State.data.media.isPlaying && !State.data.isAutoScrolling) {
+                State.data.media.isPlaying = false;
+                window.speechSynthesis.cancel();
+                this.showMediaBar();
+            }
+        };
 
             window.addEventListener("wheel", pauseOnInteraction, {
                 passive: true,
@@ -5327,6 +5371,7 @@ const App = (function () {
                     pauseOnInteraction();
                 }
             });
+
         },
 
         renderLayout() {
@@ -5337,9 +5382,9 @@ const App = (function () {
         <header id="app-toolbar">
             <nav class="toolbar-left">
                 <button class="material-icons toolbar-btn"
-                        onclick="location.hash='library'">home</button>
+                        data-action="navigate" data-route="library">home</button>
                 <button class="material-icons toolbar-btn"
-                        onclick="location.hash='blogs'">article</button>
+                        data-action="navigate" data-route="blogs">article</button>
             </nav>
             <nav class="toolbar-right">
                 <button class="material-icons toolbar-btn"
@@ -5351,7 +5396,7 @@ const App = (function () {
                     ${State.data.theme === "light" ? "dark_mode" : "light_mode"}
                 </button>
                 <button class="material-icons toolbar-btn"
-                        onclick="location.hash='help'">help_outline</button>
+                        data-action="navigate" data-route="help">help_outline</button>
             </nav>
         </header>
         <div id="media-player-container"></div>
@@ -5458,7 +5503,7 @@ const App = (function () {
                         <div class="character-large">${characterId}</div>
                         <div class="character-actions">
                             <button class="btn-activity audio-element" 
-                                    onclick="App.media.play(this)"
+                                    data-action="play-media"
                                     data-text="${characterId}" 
                                     data-lang="th">
                                 <span class="material-icons">volume_up</span> Hear
@@ -5537,43 +5582,47 @@ const App = (function () {
             document.body.classList.remove("has-media-bar");
         },
 
-        renderMediaBar(container) {
-            const media = State.data.media;
-            const viewMode = State.data.viewMode;
+    renderMediaBar(container) {
+        const media = State.data.media;
+        const viewMode = State.data.viewMode;
 
-            let rightControls = "";
-            if (viewMode === "blog") {
-                rightControls = `
-            <button class="material-icons player-ctrl"
-                    onclick="App.showBlogSettingsOverlay()">settings</button>
+        // The settings button now uses data-action for consistent event handling
+        const rightControls = `
+             <button class="material-icons player-ctrl"
+                   data-action="show-settings">settings</button>
         `;
-            } else {
-                rightControls = `
-            <button class="material-icons player-ctrl"
-                    onclick="App.showSettingsOverlay()">settings</button>
-        `;
-            }
 
-            container.innerHTML = `
-        <div class="media-row">
-            <div class="media-col">
-                <button class="material-icons player-ctrl"
-                        onclick="App.togglePlay()">
-                    ${media.isPlaying ? "pause" : "play_arrow"}
-                </button>
-                <button class="material-icons player-ctrl"
-                        onclick="App.stopSequence()">stop</button>
-            </div>
-            <div class="media-col middle" style="flex: 1; min-width: 0;">
-                <div id="media-text-display" class="media-text-display"></div>
-            </div>
-            <div class="media-col">
-                ${rightControls}
-            </div>
-        </div>`;
+        container.innerHTML = `
+     <div class="media-row">
+         <div class="media-col">
+             <button class="material-icons player-ctrl"
+                   data-action="toggle-play">
+                ${media.isPlaying ? 'pause' : 'play_arrow'}
+             </button>
+             <button class="material-icons player-ctrl"
+                   data-action="stop-sequence">stop</button>
+         </div>
+         <div class="media-col middle" style="flex: 1; min-width: 0;">
+             <div id="media-text-display" class="media-text-display"></div>
+         </div>
+         <div class="media-col">
+            ${rightControls}
+         </div>
+     </div>`;
 
-            document.body.classList.add("has-media-bar");
-        },
+        // CRITICAL FIX FOR FIREFOX:
+        // Prevent mousedown/touchstart from bubbling to the window.
+        // In Firefox, calling window.speechSynthesis.cancel() on an active TTS 
+        // blocks the main thread for ~10 seconds. By stopping propagation here, 
+        // we guarantee pauseOnInteraction never fires for media controls.
+        if (!container.dataset.pauseFix) {
+            container.dataset.pauseFix = 'true';
+            container.addEventListener('mousedown', (e) => e.stopPropagation(), true);
+            container.addEventListener('touchstart', (e) => e.stopPropagation(), true);
+        }
+
+        document.body.classList.add('has-media-bar');
+    },
 
         togglePlay: function () {
             State.data.media.isPlaying = !State.data.media.isPlaying;
@@ -5612,11 +5661,13 @@ const App = (function () {
             UI.Settings.render();
         },
 
-        showBlogSettingsOverlay() {
-            const anchor = document.getElementById("overlay-anchor");
-            if (!anchor) return;
-            UI.BlogSettings.render();
-        },
+showBlogSettingsOverlay() {
+    console.log(`[SETTINGS START ${performance.now().toFixed(0)}ms] showBlogSettingsOverlay called`);
+    const anchor = document.getElementById('overlay-anchor');
+    if (!anchor) return;
+    UI.BlogSettings.render();
+    console.log(`[SETTINGS END ${performance.now().toFixed(0)}ms] BlogSettings rendered`);
+},
 
         resetSettingsToDefaults() {
             // Reset media settings to defaults

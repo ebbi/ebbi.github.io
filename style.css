@@ -279,6 +279,7 @@ h6 {
     display: flex;
     align-items: center;
     gap: 2vw;
+    flex-shrink: 0;
 }
 
 .media-col.middle {
