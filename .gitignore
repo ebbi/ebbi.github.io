@@ -1,111 +1,45 @@
-# Dependencies
-node_modules/
-
-# Logs and temp files
-*.log
-*.tmp
-
-# Environment
-.env
-.env.local
-*.env.*
-
-config.yaml
-
-# Editors
-.vscode/
-.idea/
-
-# Python
-__pycache__/
+```
+# Compiled and build artifacts
 *.pyc
-*.pyo
-*.pyd
-*.py~
-*.py.class
-*.py.backup
-*.py.swp
-*.py.swo
-*.py.lock
-*.py.tmp
-*.py.bak
-*.py~*
-*.py#*
-*.py#
-*.py$
-*.py%
-*.py^
-*.py&
-*.py*
-*.py@
-*.py[
-*.py]
-*.py{
-*.py}
-*.py|
-*.py\
-*.py"
-*.py'
-*.py<
-*.py>
-*.py,
-*.py.
-*.py;
-*.py:
-*.py?
-*.py/
-*.py\
-*.py`
-*.py~
-*.py^
-*.py&
-*.py*
-*.py@
-*.py[
-*.py]
-*.py{
-*.py}
-*.py|
-*.py\
-*.py"
-*.py'
-*.py<
-*.py>
-*.py,
-*.py.
-*.py;
-*.py:
-*.py?
-*.py/
-*.py\
-*.py`
-
-# Build outputs
+__pycache__/
+*.o
+*.obj
 dist/
 build/
 target/
 *.class
-*.o
-*.obj
 *.exe
 *.dll
 *.so
 *.a
 *.out
 
-# Cache directories
-.cache/
-.mypy_cache/
-.pytest_cache/
-.coverage
-coverage/
-htmlcov/
+# Dependencies
+node_modules/
+venv/
+.venv/
+.env
+.env.local
+.env.*
+
+# Logs and temp files
+*.log
+*.tmp
+*.swp
+*.swo
+
+# Editors
+.vscode/
+.idea/
 
 # System files
 .DS_Store
 Thumbs.db
-*.swp
-*.swo
+
+# Coverage
+coverage/
+htmlcov/
+.coverage
 
 # Compressed files
 *.zip
@@ -130,3 +64,4 @@ Thumbs.db
 *.tar.bz2
 *.tar.xz
 *.tar.zst
+```

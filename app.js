@@ -2667,7 +2667,7 @@ const App = (function () {
                                         data-name="${char.name || ""}"
                                         data-meaning="${char.meaning || ""}">
                                         <span class="alphabet-symbol">${char.symbol}</span>
-                                        ${dotClass ? `<span class="class-dot ${dotClass}"></span>` : ""}
+                                        ${classType ? `<span class="class-dot ${classType}"></span>` : ""}
                                     </div>
                                 `;
                     })
