@@ -1015,28 +1015,41 @@ const App = (function () {
                     }
                 }, 100);
 
-        const pauseOnInteraction = (event) => {
-    console.log(`[PAUSE ${performance.now().toFixed(0)}ms] Fired by: ${event?.type} | Target:`, event?.target?.tagName, event?.target?.className);
-            const target = event?.target;
-            
-            // Ignore clicks on overlays/toolbar (but NOT the media player)
-            if (target && target.closest && target.closest('#app-toolbar, .overlay-full, .bottom-sheet, .sheet-backdrop, .overlay-menu')) {
-                return;
-            }
+                const pauseOnInteraction = (event) => {
+                    console.log(
+                        `[PAUSE ${performance.now().toFixed(0)}ms] Fired by: ${event?.type} | Target:`,
+                        event?.target?.tagName,
+                        event?.target?.className,
+                    );
+                    const target = event?.target;
 
-            const mainContent = document.getElementById('main-content');
-            const isInDocument = mainContent?.querySelector('.document-content') !== null;
-            const isInBlog = mainContent?.querySelector('.blog-content') !== null;
+                    // Ignore clicks on overlays/toolbar (but NOT the media player)
+                    if (
+                        target &&
+                        target.closest &&
+                        target.closest(
+                            "#app-toolbar, .overlay-full, .bottom-sheet, .sheet-backdrop, .overlay-menu",
+                        )
+                    ) {
+                        return;
+                    }
 
-            if (!isInDocument && !isInBlog) {
-                return;
-            }
+                    const mainContent = document.getElementById("main-content");
+                    const isInDocument =
+                        mainContent?.querySelector(".document-content") !==
+                        null;
+                    const isInBlog =
+                        mainContent?.querySelector(".blog-content") !== null;
 
-            // EARLY RETURN: If playback is already stopped, do nothing
-            if (!State.data.media.isPlaying) { 
-                return;
-            }
-            
+                    if (!isInDocument && !isInBlog) {
+                        return;
+                    }
+
+                    // EARLY RETURN: If playback is already stopped, do nothing
+                    if (!State.data.media.isPlaying) {
+                        return;
+                    }
+
                     // Don't pause if we're in auto-scroll mode
                     if (State.data.isAutoScrolling) {
                         // console.log('Auto-scrolling in progress, ignoring pause');
@@ -1081,26 +1094,35 @@ const App = (function () {
                         }
                     }
 
-                if (State.data.media.isPlaying) {
-                    State.data.media.isPlaying = false;
-                    
-                    // CRITICAL: Cancel speech immediately to prevent Firefox from blocking the UI thread
-                    console.log(`[CANCEL START ${performance.now().toFixed(0)}ms] Calling speechSynthesis.cancel()...`);
-window.speechSynthesis.cancel();
-console.log(`[CANCEL END ${performance.now().toFixed(0)}ms] speechSynthesis.cancel() completed.`);
+                    if (State.data.media.isPlaying) {
+                        State.data.media.isPlaying = false;
 
-                    document.querySelectorAll(".active-highlight").forEach((el) => {
-                        el.classList.remove("active-highlight");
-                    });
+                        // CRITICAL: Cancel speech immediately to prevent Firefox from blocking the UI thread
+                        console.log(
+                            `[CANCEL START ${performance.now().toFixed(0)}ms] Calling speechSynthesis.cancel()...`,
+                        );
+                        window.speechSynthesis.cancel();
+                        console.log(
+                            `[CANCEL END ${performance.now().toFixed(0)}ms] speechSynthesis.cancel() completed.`,
+                        );
 
-                    // FIX: Only re-render the media bar if the click was NOT on the media controls.
-                    // This cancels the TTS (fixing the 10s delay) but prevents destroying the settings icon.
-                    const isMediaControl = target && target.closest && target.closest('#media-player-container');
-                    if (!isMediaControl) {
-                        App.showMediaBar();
+                        document
+                            .querySelectorAll(".active-highlight")
+                            .forEach((el) => {
+                                el.classList.remove("active-highlight");
+                            });
+
+                        // FIX: Only re-render the media bar if the click was NOT on the media controls.
+                        // This cancels the TTS (fixing the 10s delay) but prevents destroying the settings icon.
+                        const isMediaControl =
+                            target &&
+                            target.closest &&
+                            target.closest("#media-player-container");
+                        if (!isMediaControl) {
+                            App.showMediaBar();
+                        }
                     }
-                }
-            };
+                };
 
                 // Pause on scroll (any scroll, not just wheel)
                 window.addEventListener(
@@ -1341,19 +1363,21 @@ console.log(`[CANCEL END ${performance.now().toFixed(0)}ms] speechSynthesis.canc
                 return Array.from(rows.values());
             },
 
-        enableScrollListeners() {
-            const mainContent = document.getElementById('main-content');
-            const isInDocument = mainContent?.querySelector('.document-content') !== null;
-            const isInBlog = mainContent?.querySelector('.blog-content') !== null;
+            enableScrollListeners() {
+                const mainContent = document.getElementById("main-content");
+                const isInDocument =
+                    mainContent?.querySelector(".document-content") !== null;
+                const isInBlog =
+                    mainContent?.querySelector(".blog-content") !== null;
 
-            if (!isInDocument && !isInBlog) {
-                return;
-            }
+                if (!isInDocument && !isInBlog) {
+                    return;
+                }
 
-            if (this._scrollListenersEnabled) return;
+                if (this._scrollListenersEnabled) return;
 
-            this._scrollListenersEnabled = true;
-        },
+                this._scrollListenersEnabled = true;
+            },
 
             disableScrollListeners() {
                 if (!this._scrollListenersEnabled) return;
@@ -3673,28 +3697,32 @@ console.log(`[CANCEL END ${performance.now().toFixed(0)}ms] speechSynthesis.canc
                     }));
             },
 
-        renderGame() {
-            const container = UI.getContainer();
-            const game = State.data.sentenceGame;
-            if (!game || !game.sentences || game.sentences.length === 0) return;
+            renderGame() {
+                const container = UI.getContainer();
+                const game = State.data.sentenceGame;
+                if (!game || !game.sentences || game.sentences.length === 0)
+                    return;
 
-            const sentence = game.sentences[game.currentIndex];
-            const t = Services.I18n.t;
+                const sentence = game.sentences[game.currentIndex];
+                const t = Services.I18n.t;
 
-            // Get available words (not yet used)
-            const usedWords = game.userWords || [];
-            const wordsPool = [...sentence.words];
-            
-            // Remove used words one by one to correctly handle duplicate words
-            usedWords.forEach(used => {
-                const idx = wordsPool.indexOf(used);
-                if (idx !== -1) wordsPool.splice(idx, 1);
-            });
-            
-            // Shuffle available words to display them in random order
-            const availableWords = wordsPool.sort(() => Math.random() - 0.5);
+                // Get available words (not yet used)
+                const usedWords = game.userWords || [];
+                const wordsPool = [...sentence.words];
 
-            const progress = (game.currentIndex / game.sentences.length) * 100;
+                // Remove used words one by one to correctly handle duplicate words
+                usedWords.forEach((used) => {
+                    const idx = wordsPool.indexOf(used);
+                    if (idx !== -1) wordsPool.splice(idx, 1);
+                });
+
+                // Shuffle available words to display them in random order
+                const availableWords = wordsPool.sort(
+                    () => Math.random() - 0.5,
+                );
+
+                const progress =
+                    (game.currentIndex / game.sentences.length) * 100;
 
                 container.innerHTML = `
             <div class="sentence-game-container">
@@ -3794,9 +3822,9 @@ console.log(`[CANCEL END ${performance.now().toFixed(0)}ms] speechSynthesis.canc
 
                  <button class="btn-activity btn-reset" 
                         onclick="App.game.reset()" 
-                        ${usedWords.length === 0 || (game.showResult && game.isCorrect) ? 'disabled' : ''}>
+                        ${usedWords.length === 0 || (game.showResult && game.isCorrect) ? "disabled" : ""}>
                      <span class="material-icons">refresh</span>
-                     <span class="btn-text">${t('reset', 'Reset')}</span>
+                     <span class="btn-text">${t("reset", "Reset")}</span>
                  </button>
 
                     <button class="btn-activity btn-check" 
@@ -4813,74 +4841,80 @@ console.log(`[CANCEL END ${performance.now().toFixed(0)}ms] speechSynthesis.canc
             },
         },
 
-    BlogSettings: {
-        render() {
-            const anchor = document.getElementById('overlay-anchor');
-            if (!anchor) return;
+        BlogSettings: {
+            render() {
+                const anchor = document.getElementById("overlay-anchor");
+                if (!anchor) return;
 
-            const media = State.data.media;
-            const t = Services.I18n.t;
+                const media = State.data.media;
+                const t = Services.I18n.t;
 
-            // 1. Build Language Options
-            const supportedLangs = ['th', 'en', 'fa'];
-            const currentBlogLang = State.data.blogs.displayLanguage;
-            const langOptions = supportedLangs.map(code => {
-                const langName = { th: 'ไทย', en: 'English', fa: 'فارسی' }[code];
-                return `<option value="${code}" ${currentBlogLang === code ? 'selected' : ''}>${langName}</option>`;
-            }).join('');
+                // 1. Build Language Options
+                const supportedLangs = ["th", "en", "fa"];
+                const currentBlogLang = State.data.blogs.displayLanguage;
+                const langOptions = supportedLangs
+                    .map((code) => {
+                        const langName = {
+                            th: "ไทย",
+                            en: "English",
+                            fa: "فارسی",
+                        }[code];
+                        return `<option value="${code}" ${currentBlogLang === code ? "selected" : ""}>${langName}</option>`;
+                    })
+                    .join("");
 
-            // 2. Build HTML String
-            // FIX: We leave the <select id="voice-select"> EMPTY here. 
-            // We will populate it in the next step to avoid Firefox parsing 100+ options twice.
-            const html = `
+                // 2. Build HTML String
+                // FIX: We leave the <select id="voice-select"> EMPTY here.
+                // We will populate it in the next step to avoid Firefox parsing 100+ options twice.
+                const html = `
          <div class="overlay-full card">
              <div class="settings-header">
-                 <h2>${t('playback_settings', 'Playback Settings')}</h2>
+                 <h2>${t("playback_settings", "Playback Settings")}</h2>
                  <button class="material-icons" onclick="document.getElementById('overlay-anchor').innerHTML=''">close</button>
              </div>
              <div class="settings-sliders">
                  <div class="control-row-inline">
-                     <label>${t('speed', 'Speed')}</label>
+                     <label>${t("speed", "Speed")}</label>
                      <input type="range" min="0.5" max="2" step="0.25"
                         value="${media.speed}"
                         oninput="this.nextElementSibling.innerText = this.value + 'x'; App.updateMediaParam('speed', this.value, true)">
                      <span class="val-label">${media.speed}x</span>
                  </div>
                  <div class="control-row-inline">
-                     <label>${t('delay', 'Delay')}</label>
+                     <label>${t("delay", "Delay")}</label>
                      <input type="range" min="1" max="5" step="1"
                         value="${media.delay}"
                         oninput="this.nextElementSibling.innerText = this.value + 's'; App.updateMediaParam('delay', this.value, true)">
                      <span class="val-label">${media.delay}s</span>
                  </div>
                  <div class="control-row-inline">
-                     <label>${t('pitch', 'Pitch')}</label>
+                     <label>${t("pitch", "Pitch")}</label>
                      <input type="range" min="0.5" max="1.5" step="0.1"
                         value="${media.pitch}"
                         oninput="this.nextElementSibling.innerText = this.value; App.updateMediaParam('pitch', this.value, true)">
                      <span class="val-label">${media.pitch}</span>
                  </div>
              </div>
-             <label>${t('language', 'Language')}</label>
+             <label>${t("language", "Language")}</label>
              <select id="blog-lang-select" onchange="App.updateBlogDisplayLanguage(this.value)" style="width:100%; margin-bottom:15px;">
                  ${langOptions}
              </select>
-             <label>${t('voice', 'Voice')}</label>
+             <label>${t("voice", "Voice")}</label>
              <select id="voice-select" onchange="App.updateMediaParam('voice', this.value)" style="width:100%; margin-bottom:15px;">
                  <!-- Options populated dynamically below -->
              </select>
          </div>
          `;
-         
-            anchor.innerHTML = html;
 
-            // 3. Populate Voices for the selected language (Single Update)
-            const langSelect = document.getElementById('blog-lang-select');
-            if (langSelect) {
-                this.populateVoicesForLang(langSelect.value);
-            }
-        },
-        
+                anchor.innerHTML = html;
+
+                // 3. Populate Voices for the selected language (Single Update)
+                const langSelect = document.getElementById("blog-lang-select");
+                if (langSelect) {
+                    this.populateVoicesForLang(langSelect.value);
+                }
+            },
+
             populateVoicesForLang(lang) {
                 const voices = Services.MediaService.cachedVoices.filter((v) =>
                     v.lang.startsWith(lang),
@@ -5298,62 +5332,69 @@ console.log(`[CANCEL END ${performance.now().toFixed(0)}ms] speechSynthesis.canc
                 //  console.log('Last document available:', State.data.lastDocument);
             }
 
-document.body.addEventListener('click', (e) => {
-    console.log(`[CLICK ${performance.now().toFixed(0)}ms] Target:`, e.target.tagName, e.target.className, '| Action:', e.target.closest('[data-action]')?.dataset.action || 'none');
-    
-    const target = e.target.closest('[data-action]');
-    if (!target) return;
+            document.body.addEventListener("click", (e) => {
+                console.log(
+                    `[CLICK ${performance.now().toFixed(0)}ms] Target:`,
+                    e.target.tagName,
+                    e.target.className,
+                    "| Action:",
+                    e.target.closest("[data-action]")?.dataset.action || "none",
+                );
 
-    const action = target.dataset.action;
-    console.log(`[ACTION ${performance.now().toFixed(0)}ms] Routing: ${action}`);
+                const target = e.target.closest("[data-action]");
+                if (!target) return;
 
-    // Route the action
-    if (action === 'play-media') {
-        App.media.play(target);
-    } 
-    else if (action === 'navigate') {
-        location.hash = target.dataset.route;
-    } 
-    else if (action === 'add-word') {
-        App.game.addWord(target.dataset.word);
-    }
-    else if (action === 'remove-word') {
-        App.game.removeWord(parseInt(target.dataset.index));
-    }
-    else if (action === 'show-grammar') {
-        App.showGrammarSheet(target.dataset.grammarId);
-    }
-    // NEW: Handle Media Bar Controls
-    else if (action === 'toggle-play') {
-        App.togglePlay();
-    }
-    else if (action === 'stop-sequence') {
-        App.stopSequence();
-    }
-    else if (action === 'show-settings') {
-        if (State.data.viewMode === 'blog') {
-            App.showBlogSettingsOverlay();
-        } else {
-            App.showSettingsOverlay();
-        }
-    }
-});
+                const action = target.dataset.action;
+                console.log(
+                    `[ACTION ${performance.now().toFixed(0)}ms] Routing: ${action}`,
+                );
 
-        const pauseOnInteraction = (event) => {
-            // CRITICAL FIX FOR FIREFOX:
-            // Ignore clicks on the media player controls (like the Settings gear icon).
-            // In Firefox, calling speechSynthesis.cancel() during mousedown blocks the main thread for ~10 seconds,
-            // which delays the click event and the rendering of the settings overlay.
-            if (event && event.target && event.target.closest && event.target.closest('#media-player-container')) {
-                return;
-            }
+                // Route the action
+                if (action === "play-media") {
+                    App.media.play(target);
+                } else if (action === "navigate") {
+                    location.hash = target.dataset.route;
+                } else if (action === "add-word") {
+                    App.game.addWord(target.dataset.word);
+                } else if (action === "remove-word") {
+                    App.game.removeWord(parseInt(target.dataset.index));
+                } else if (action === "show-grammar") {
+                    App.showGrammarSheet(target.dataset.grammarId);
+                }
+                // NEW: Handle Media Bar Controls
+                else if (action === "toggle-play") {
+                    App.togglePlay();
+                } else if (action === "stop-sequence") {
+                    App.stopSequence();
+                } else if (action === "show-settings") {
+                    if (State.data.viewMode === "blog") {
+                        App.showBlogSettingsOverlay();
+                    } else {
+                        App.showSettingsOverlay();
+                    }
+                }
+            });
 
-            if (State.data.media.isPlaying && !State.data.isAutoScrolling) {
-                State.data.media.isPlaying = false;
-                window.speechSynthesis.cancel();
-                this.showMediaBar();
-            }
-        };
+            const pauseOnInteraction = (event) => {
+                // CRITICAL FIX FOR FIREFOX:
+                // Ignore clicks on the media player controls (like the Settings gear icon).
+                // In Firefox, calling speechSynthesis.cancel() during mousedown blocks the main thread for ~10 seconds,
+                // which delays the click event and the rendering of the settings overlay.
+                if (
+                    event &&
+                    event.target &&
+                    event.target.closest &&
+                    event.target.closest("#media-player-container")
+                ) {
+                    return;
+                }
+
+                if (State.data.media.isPlaying && !State.data.isAutoScrolling) {
+                    State.data.media.isPlaying = false;
+                    window.speechSynthesis.cancel();
+                    this.showMediaBar();
+                }
+            };
 
             window.addEventListener("wheel", pauseOnInteraction, {
                 passive: true,
@@ -5371,7 +5412,6 @@ document.body.addEventListener('click', (e) => {
                     pauseOnInteraction();
                 }
             });
-
         },
 
         renderLayout() {
@@ -5582,22 +5622,22 @@ document.body.addEventListener('click', (e) => {
             document.body.classList.remove("has-media-bar");
         },
 
-    renderMediaBar(container) {
-        const media = State.data.media;
-        const viewMode = State.data.viewMode;
+        renderMediaBar(container) {
+            const media = State.data.media;
+            const viewMode = State.data.viewMode;
 
-        // The settings button now uses data-action for consistent event handling
-        const rightControls = `
+            // The settings button now uses data-action for consistent event handling
+            const rightControls = `
              <button class="material-icons player-ctrl"
                    data-action="show-settings">settings</button>
         `;
 
-        container.innerHTML = `
+            container.innerHTML = `
      <div class="media-row">
          <div class="media-col">
              <button class="material-icons player-ctrl"
                    data-action="toggle-play">
-                ${media.isPlaying ? 'pause' : 'play_arrow'}
+                ${media.isPlaying ? "pause" : "play_arrow"}
              </button>
              <button class="material-icons player-ctrl"
                    data-action="stop-sequence">stop</button>
@@ -5610,19 +5650,27 @@ document.body.addEventListener('click', (e) => {
          </div>
      </div>`;
 
-        // CRITICAL FIX FOR FIREFOX:
-        // Prevent mousedown/touchstart from bubbling to the window.
-        // In Firefox, calling window.speechSynthesis.cancel() on an active TTS 
-        // blocks the main thread for ~10 seconds. By stopping propagation here, 
-        // we guarantee pauseOnInteraction never fires for media controls.
-        if (!container.dataset.pauseFix) {
-            container.dataset.pauseFix = 'true';
-            container.addEventListener('mousedown', (e) => e.stopPropagation(), true);
-            container.addEventListener('touchstart', (e) => e.stopPropagation(), true);
-        }
+            // CRITICAL FIX FOR FIREFOX:
+            // Prevent mousedown/touchstart from bubbling to the window.
+            // In Firefox, calling window.speechSynthesis.cancel() on an active TTS
+            // blocks the main thread for ~10 seconds. By stopping propagation here,
+            // we guarantee pauseOnInteraction never fires for media controls.
+            if (!container.dataset.pauseFix) {
+                container.dataset.pauseFix = "true";
+                container.addEventListener(
+                    "mousedown",
+                    (e) => e.stopPropagation(),
+                    true,
+                );
+                container.addEventListener(
+                    "touchstart",
+                    (e) => e.stopPropagation(),
+                    true,
+                );
+            }
 
-        document.body.classList.add('has-media-bar');
-    },
+            document.body.classList.add("has-media-bar");
+        },
 
         togglePlay: function () {
             State.data.media.isPlaying = !State.data.media.isPlaying;
@@ -5661,13 +5709,17 @@ document.body.addEventListener('click', (e) => {
             UI.Settings.render();
         },
 
-showBlogSettingsOverlay() {
-    console.log(`[SETTINGS START ${performance.now().toFixed(0)}ms] showBlogSettingsOverlay called`);
-    const anchor = document.getElementById('overlay-anchor');
-    if (!anchor) return;
-    UI.BlogSettings.render();
-    console.log(`[SETTINGS END ${performance.now().toFixed(0)}ms] BlogSettings rendered`);
-},
+        showBlogSettingsOverlay() {
+            console.log(
+                `[SETTINGS START ${performance.now().toFixed(0)}ms] showBlogSettingsOverlay called`,
+            );
+            const anchor = document.getElementById("overlay-anchor");
+            if (!anchor) return;
+            UI.BlogSettings.render();
+            console.log(
+                `[SETTINGS END ${performance.now().toFixed(0)}ms] BlogSettings rendered`,
+            );
+        },
 
         resetSettingsToDefaults() {
             // Reset media settings to defaults
@@ -6641,7 +6693,7 @@ showBlogSettingsOverlay() {
                 game.isCorrect = false;
                 UI.Game.renderGame();
             },
-/*
+            /*
             showAnswer() {
                 const game = State.data.sentenceGame;
                 if (!game) return;

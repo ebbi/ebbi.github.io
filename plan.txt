@@ -112,3 +112,11 @@ Please ask for clarification on any ambiguity for the above requirement before g
 
 --------------------------
 
+A new bug after earlier refactoring. 
+http://127.0.0.1:5500/index.html#doc/RW1
+now returns:
+Error loading document: dotClass is not defined
+
+Browser cosole log:
+[CLICK 91223ms] Target: SPAN doc-btn-text | Action: none app.js:5336:25
+
