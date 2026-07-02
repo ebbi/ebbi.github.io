@@ -3293,6 +3293,27 @@ input:checked+.toggle-slider:before {
     color: var(--low-class);
 }
 
+/* Class indicator dots */
+.class-dot {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    margin-left: 4px;
+}
+
+.class-dot.middle-class {
+    background-color: var(--middle-class);
+}
+
+.class-dot.high-class {
+    background-color: var(--high-class);
+}
+
+.class-dot.low-class {
+    background-color: var(--low-class);
+}
+
 /* For character grid items */
 .character-grid-item.middle-class {
     border-color: var(--middle-class);
