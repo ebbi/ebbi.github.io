@@ -1157,6 +1157,7 @@ div[data-link].active-highlight {
     border-radius: 8px;
     min-height: 60px;
     padding: 1rem;
+    font-family: inherit; 
     font-size: 1rem;
     font-weight: 500;
     cursor: pointer;
@@ -1255,6 +1256,7 @@ div[data-link].active-highlight {
     display: flex;
     align-items: center;
     gap: 8px;
+    font-family: inherit;
     font-size: 1.1rem;
     color: var(--thai-color);
     cursor: pointer;
@@ -1271,6 +1273,7 @@ div[data-link].active-highlight {
     display: flex;
     align-items: center;
     gap: 8px;
+    font-family: inherit;
     font-size: 0.95rem;
     color: var(--text-secondary);
     cursor: pointer;

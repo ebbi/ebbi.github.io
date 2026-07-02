@@ -112,16 +112,16 @@ Please ask for clarification on any ambiguity for the above requirement before g
 
 --------------------------
 
-A new bug after earlier refactoring. 
-http://127.0.0.1:5500/index.html#doc/RW1
-now returns:
-Error loading document: dotClass is not defined
+The multipleChoice Words and Sentences do not inherit the 
+global font settings and Thai is displayed in a modern font.
 
-Browser cosole log:
-[CLICK 91223ms] Target: SPAN doc-btn-text | Action: none app.js:5336:25
+For multiplechoice quizz, the default language setting should be 
+English and the default for multiplechoice answer should be Thai.
 
-Previously, the RW1 document displayed the Thai alphabet. 
-Can you resolve the error?
+
+
+
+
 
 
 

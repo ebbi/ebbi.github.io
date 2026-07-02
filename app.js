@@ -487,7 +487,7 @@ const App = (function () {
         },
 
         go(path) {
-            // // console.log('Navigating to:', path);
+            // console.log('Navigating to:', path);
             location.hash = path;
         },
     };
@@ -833,7 +833,7 @@ const App = (function () {
             constructor(globalSettings, localSettings) {
                 this.global = globalSettings || { words: {}, sentences: {} };
                 this.local = localSettings || {};
-                // // console.log('ActivityResolver created with:', { global: this.global, local: this.local });
+                // console.log('ActivityResolver created with:', { global: this.global, local: this.local });
             }
 
             resolveForContent(contentItem, sectionLevel = false) {
@@ -1016,11 +1016,14 @@ const App = (function () {
                 }, 100);
 
                 const pauseOnInteraction = (event) => {
+                    /*
                     console.log(
                         `[PAUSE ${performance.now().toFixed(0)}ms] Fired by: ${event?.type} | Target:`,
                         event?.target?.tagName,
                         event?.target?.className,
                     );
+                    */
+
                     const target = event?.target;
 
                     // Ignore clicks on overlays/toolbar (but NOT the media player)
@@ -1098,14 +1101,19 @@ const App = (function () {
                         State.data.media.isPlaying = false;
 
                         // CRITICAL: Cancel speech immediately to prevent Firefox from blocking the UI thread
+                        /*
                         console.log(
                             `[CANCEL START ${performance.now().toFixed(0)}ms] Calling speechSynthesis.cancel()...`,
                         );
+                        */
+
                         window.speechSynthesis.cancel();
+
+                        /*
                         console.log(
                             `[CANCEL END ${performance.now().toFixed(0)}ms] speechSynthesis.cancel() completed.`,
                         );
-
+*/
                         document
                             .querySelectorAll(".active-highlight")
                             .forEach((el) => {
@@ -2620,46 +2628,44 @@ const App = (function () {
 
             renderAlphabetTable(item) {
                 return `
-        <div class="alphabet-table-container">
-            <h3>${item.title?.[State.data.lang] || item.title?.en || ""}</h3>
-            <div class="alphabet-grid">
-                ${item.characters
-                    .map((char) => {
-                        // Determine class for color coding
-                        let classType = "";
-                        if (char.class === "middle") {
-                            classType = "middle-class";
-                        } else if (char.class === "high") {
-                            classType = "high-class";
-                        } else if (
-                            char.class === "low-paired" ||
-                            char.class === "low-unpaired"
-                        ) {
-                            classType = "low-class";
-                        } else if (char.class === "vowel") {
-                            classType = "vowel-class";
-                        }
+                <div class="alphabet-table-container">
+                    <h3>${item.title?.[State.data.lang] || item.title?.en || ""}</h3>
+                    <div class="alphabet-grid">
+                        ${item.characters
+                            .map((char) => {
+                                // Determine class for color coding
+                                let classType = "";
+                                if (char.class === "middle") {
+                                    classType = "middle-class";
+                                } else if (char.class === "high") {
+                                    classType = "high-class";
+                                } else if (
+                                    char.class === "low-paired" ||
+                                    char.class === "low-unpaired"
+                                ) {
+                                    classType = "low-class";
+                                } else if (char.class === "vowel") {
+                                    classType = "vowel-class";
+                                }
 
-                        // Get the full pronunciation (sound + name)
-                        // For consonants: e.g., "นอ หนู", "บอ ใบไม้"
-                        // For vowels: just the sound
-                        let fullPronunciation = "";
-                        if (char.class === "vowel") {
-                            fullPronunciation = char.sound || char.symbol;
-                        } else {
-                            // Make sure we have both sound and name
-                            const sound = char.sound || "";
-                            const name = char.name || "";
-                            fullPronunciation =
-                                sound && name
-                                    ? `${sound} ${name}`
-                                    : sound || name || char.symbol;
-                        }
+                                // Get the full pronunciation (sound + name)
+                                let fullPronunciation = "";
+                                if (char.class === "vowel") {
+                                    fullPronunciation =
+                                        char.sound || char.symbol;
+                                } else {
+                                    const sound = char.sound || "";
+                                    const name = char.name || "";
+                                    fullPronunciation =
+                                        sound && name
+                                            ? `${sound} ${name}`
+                                            : sound || name || char.symbol;
+                                }
 
-                        return `
+                                return `
                                     <div class="alphabet-grid-item audio-element alphabet-item ${classType}" 
-                                        onclick="App.alphabet.clickConsonant('${char.symbol}', this)"
-                                        data-text="${char.symbol}" 
+                                        data-action="play-media"
+                                        data-text="${UI.escapeHtml(fullPronunciation)}" 
                                         data-lang="th"
                                         data-class="${char.class}"
                                         data-symbol="${char.symbol}"
@@ -2667,33 +2673,13 @@ const App = (function () {
                                         data-name="${char.name || ""}"
                                         data-meaning="${char.meaning || ""}">
                                         <span class="alphabet-symbol">${char.symbol}</span>
-                                        ${classType ? `<span class="class-dot ${classType}"></span>` : ""}
                                     </div>
                                 `;
-                    })
-                    .join("")}
-                    // If no sound/name, fallback to symbol
-                    if (!fullPronunciation) {
-                        fullPronunciation = char.symbol;
-                    }
-
-                    return '
-                        <div class="alphabet-grid-item audio-element alphabet-item ${classType}" 
-                            data-action="play-media"
-                            data-text="${UI.escapeHtml(fullPronunciation)}" 
-                            data-lang="th"
-                            data-class="${char.class}"
-                            data-symbol="${char.symbol}"
-                            data-sound="${char.sound || ""}"
-                            data-name="${char.name || ""}"
-                            data-meaning="${char.meaning || ""}">
-                            <span class="alphabet-symbol">${char.symbol}</span>
-                        </div>
-                    ';
-                }).join('')}
-            </div>
-        </div>
-    `;
+                            })
+                            .join("")}
+                    </div>
+                </div>
+            `;
             },
         },
 
@@ -2735,14 +2721,13 @@ const App = (function () {
                     (code) => State.data.media.languageSettings[code].show,
                 );
 
-                // Set default languages
-                const defaultQuestionLang = allLangs.includes("th")
+                // Set default languages (Question: English, Answer: Thai)
+                const defaultQuestionLang = allLangs.includes("en")
+                    ? "en"
+                    : allLangs[0] || "th";
+                const defaultAnswerLang = allLangs.includes("th")
                     ? "th"
                     : allLangs[0] || "en";
-                const defaultAnswerLang =
-                    allLangs.filter((l) => l !== "th")[0] ||
-                    allLangs[0] ||
-                    "en";
 
                 State.data.quiz = {
                     items: items.sort(() => Math.random() - 0.5),
@@ -2822,20 +2807,18 @@ const App = (function () {
                     (code) => State.data.media.languageSettings[code].show,
                 );
 
-                // Set default languages if not set
                 if (!quiz.questionLang) {
-                    // Default question to Thai if available, otherwise first available language
-                    quiz.questionLang = allLangs.includes("th")
-                        ? "th"
-                        : allLangs[0] || "en";
+                    // Default question to English if available, otherwise first available language
+                    quiz.questionLang = allLangs.includes("en")
+                        ? "en"
+                        : allLangs[0] || "th";
                 }
 
                 if (!quiz.answerLang) {
-                    // Default answer to first non-Thai language, or first available if only Thai
-                    quiz.answerLang =
-                        allLangs.filter((l) => l !== "th")[0] ||
-                        allLangs[0] ||
-                        "en";
+                    // Default answer to Thai if available, otherwise first available
+                    quiz.answerLang = allLangs.includes("th")
+                        ? "th"
+                        : allLangs[0] || "en";
                 }
 
                 // Get question text based on selected question language
@@ -3260,9 +3243,7 @@ const App = (function () {
 
                 // FIX: If no due items, return a few random items for review anyway
                 if (dueItems.length === 0 && sortedItems.length > 0) {
-                    console.log(
-                        "No due cards, returning random sample for review",
-                    );
+                    // console.log("No due cards, returning random sample for review",);
                     // Return up to 10 random cards for review
                     const shuffled = [...sortedItems].sort(
                         () => 0.5 - Math.random(),
@@ -5333,6 +5314,7 @@ const App = (function () {
             }
 
             document.body.addEventListener("click", (e) => {
+                /*
                 console.log(
                     `[CLICK ${performance.now().toFixed(0)}ms] Target:`,
                     e.target.tagName,
@@ -5340,14 +5322,14 @@ const App = (function () {
                     "| Action:",
                     e.target.closest("[data-action]")?.dataset.action || "none",
                 );
+                */
 
                 const target = e.target.closest("[data-action]");
                 if (!target) return;
 
                 const action = target.dataset.action;
-                console.log(
-                    `[ACTION ${performance.now().toFixed(0)}ms] Routing: ${action}`,
-                );
+                
+                // console.log(`[ACTION ${performance.now().toFixed(0)}ms] Routing: ${action}`,);
 
                 // Route the action
                 if (action === "play-media") {
@@ -5710,15 +5692,11 @@ const App = (function () {
         },
 
         showBlogSettingsOverlay() {
-            console.log(
-                `[SETTINGS START ${performance.now().toFixed(0)}ms] showBlogSettingsOverlay called`,
-            );
+            // console.log(`[SETTINGS START ${performance.now().toFixed(0)}ms] showBlogSettingsOverlay called`,);
             const anchor = document.getElementById("overlay-anchor");
             if (!anchor) return;
             UI.BlogSettings.render();
-            console.log(
-                `[SETTINGS END ${performance.now().toFixed(0)}ms] BlogSettings rendered`,
-            );
+            // console.log(`[SETTINGS END ${performance.now().toFixed(0)}ms] BlogSettings rendered`,);
         },
 
         resetSettingsToDefaults() {
@@ -6811,7 +6789,7 @@ const App = (function () {
                     });
                 }
 
-                console.log("Grammar examples being passed:", examples);
+                // console.log("Grammar examples being passed:", examples);
 
                 UI.GrammarSheet.render({
                     pattern: grammar.pattern,
