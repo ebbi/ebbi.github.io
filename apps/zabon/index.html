@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="en" dir="ltr" data-theme="auto" data-font="modern">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <title>Zabon</title>
+    <link rel="stylesheet" href="main.css" />
+  </head>
+  <body>
+    <noscript
+      >Zabon requires JavaScript. Please enable JavaScript to use the
+      app.</noscript
+    >
+
+    <div class="app-shell">
+      <!-- ── App Header / Toolbar ── -->
+      <header class="app-toolbar">
+        <button
+          type="button"
+          class="icon-button"
+          data-action="toggle-hamburger"
+          aria-label="Menu"
+          aria-expanded="false"
+        >
+          ☰
+        </button>
+        <h1 class="app-toolbar__title" data-ui-string="appTitle">Zabon</h1>
+        <div id="target-language-control"></div>
+      </header>
+
+      <!-- ── Main Content Views ── -->
+      <main class="app-main">
+        <div id="target-select-view" class="view" hidden></div>
+        <div id="onboarding-view" class="view" hidden></div>
+        <div id="home-view" class="view"></div>
+        <div id="lesson-view" class="view" hidden></div>
+        <div id="flashcard-view" class="view" hidden></div>
+        <div id="quiz-view" class="view" hidden></div>
+        <div id="build-view" class="view" hidden></div>
+        <div id="progress-view" class="view" hidden></div>
+        <div id="voicetest-view" class="view" hidden></div>
+        <div id="help-view" class="view" hidden></div>
+        <div id="letter-flashcard-view" class="view" hidden></div>
+        <section id="letter-quiz-view" class="view" hidden></section>
+        <section id="letter-spell-view" class="view" hidden></section>
+        <div id="audio-spell-view" class="view" hidden></div>
+      </main>
+
+      <!-- ── Action Bar (Lesson Mode) - Row 1: Exercises ── -->
+      <div class="action-bar" id="action-bar" hidden>
+        <button
+          type="button"
+          class="action-bar__button"
+          data-action="open-flashcards"
+          title="Flashcards"
+        >
+          🃏
+        </button>
+        <button
+          type="button"
+          class="action-bar__button"
+          data-action="open-sentence-flashcards"
+          title="Sentence Flashcards"
+        >
+          💬
+        </button>
+        <button
+          type="button"
+          class="action-bar__button"
+          data-action="open-quiz"
+          title="Quiz"
+        >
+          ❓
+        </button>
+        <button
+          type="button"
+          class="action-bar__button"
+          data-action="open-sentence-quiz"
+          title="Sentence Quiz"
+        >
+          📝
+        </button>
+        <button class="action-bar__button" data-action="open-build-sentence">
+          🧩
+        </button>
+        <button
+          class="action-bar__button"
+          data-action="open-letter-flashcards"
+          hidden
+        >
+          🃏
+        </button>
+        <button
+          class="action-bar__button"
+          data-action="open-audio-spell"
+          hidden
+        >
+          🎧
+        </button>
+        <button
+          class="action-bar__button"
+          data-action="open-letter-quiz"
+          hidden
+        >
+          ❓
+        </button>
+      </div>
+      <!-- ── Bottom Bar (Lesson Mode) - Row 2: Media, Score & Settings ── -->
+      <div class="bottom-bar" id="bottom-bar" hidden>
+        <button
+          type="button"
+          class="action-bar__button"
+          data-action="media-play"
+          aria-label="Play"
+        >
+          ▶
+        </button>
+        <button
+          type="button"
+          class="action-bar__button"
+          data-action="media-stop"
+          aria-label="Stop"
+          disabled
+        >
+          ◼
+        </button>
+        <button
+          id="toggle-record"
+          data-action="toggle-record-compare"
+          class="icon-button"
+          aria-label="Record and Compare"
+        >
+          🎙️
+        </button>
+
+        <!-- Score and Complete toggle are injected dynamically by app.js right before Settings -->
+
+        <button
+          type="button"
+          class="icon-button"
+          data-action="open-settings"
+          aria-label="Settings"
+        >
+          ⚙
+        </button>
+      </div>
+
+      <!-- ── Hamburger Panel & Backdrop ── -->
+      <div
+        class="backdrop"
+        id="hamburger-backdrop"
+        hidden
+        data-action="close-hamburger"
+      ></div>
+      <nav class="hamburger-panel" id="hamburger-panel" hidden>
+        <button type="button" class="panel-toggle" data-action="cycle-theme">
+          <span class="panel-toggle__icon" id="theme-icon">🌗</span>
+          <span class="panel-toggle__label" id="theme-label">Theme: Auto</span>
+        </button>
+        <button type="button" class="panel-toggle" data-action="cycle-font">
+          <span class="panel-toggle__icon" id="font-icon">🔤</span>
+          <span class="panel-toggle__label" id="font-label">Font: Modern</span>
+        </button>
+        <div class="panel-field">
+          <label class="panel-field__label" data-ui-string="appLanguage"
+            >App language</label
+          >
+          <div id="app-language-control"></div>
+        </div>
+        <div class="panel-nav">
+          <button
+            type="button"
+            class="panel-nav__button"
+            data-action="create-plan"
+          >
+            <span class="panel-nav__icon">📋</span>
+            <span data-ui-string="createStudyPlan">Create Study Plan</span>
+          </button>
+          <button
+            type="button"
+            class="panel-nav__button"
+            data-action="show-progress"
+          >
+            <span class="panel-nav__icon">🗑️</span>
+            <span data-ui-string="resetProgressPage">Reset Progress</span>
+          </button>
+          <button
+            type="button"
+            class="panel-nav__button"
+            data-action="open-voice-test"
+          >
+            <span class="panel-nav__icon">🔊</span>
+            <span data-ui-string="testVoices">Test voices</span>
+          </button>
+          <button
+            type="button"
+            class="panel-nav__button"
+            data-action="open-help"
+          >
+            <span class="panel-nav__icon">💡</span>
+            <span data-ui-string="gettingStarted">Getting Started</span>
+          </button>
+        </div>
+      </nav>
+
+      <!-- ── Settings Sheet (Bottom Sheet) ── -->
+      <div class="sheet" id="settings-sheet" hidden>
+        <div class="sheet__backdrop" data-action="close-settings"></div>
+        <div class="sheet__panel">
+          <div class="sheet__header">
+            <h3 class="sheet__title" data-ui-string="lessonSettings">
+              Lesson settings
+            </h3>
+            <button
+              type="button"
+              class="icon-button"
+              data-action="close-settings"
+              aria-label="Close"
+            >
+              ✕
+            </button>
+          </div>
+          <div class="sheet__body" id="settings-body"></div>
+        </div>
+      </div>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>

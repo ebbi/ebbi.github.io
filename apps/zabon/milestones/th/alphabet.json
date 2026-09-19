@@ -1,0 +1,620 @@
+{
+  "items": [
+    {
+      "id": "th_ko_kai",
+      "kind": "letter",
+      "role": "target",
+      "texts": { "th": "ก", "en": "Ko Kai" },
+      "phonetic": { "en": "/k/" },
+      "connections": {
+        "isolated": "ก",
+        "initial": "ก",
+        "medial": "ก",
+        "final": "ก"
+      },
+      "meta": { "category": "consonant", "tone_class": "mid" }
+    },
+    {
+      "id": "th_kho_khai",
+      "kind": "letter",
+      "role": "target",
+      "texts": { "th": "ข", "en": "Kho Khai" },
+      "phonetic": { "en": "/kʰ/" },
+      "connections": {
+        "isolated": "ข",
+        "initial": "ข",
+        "medial": "ข",
+        "final": "ข"
+      },
+      "meta": { "category": "consonant", "tone_class": "high" }
+    },
+    {
+      "id": "th_kho_khuat",
+      "kind": "letter",
+      "role": "target",
+      "texts": { "th": "ฃ", "en": "Kho Khuat" },
+      "phonetic": { "en": "/kʰ/" },
+      "connections": {
+        "isolated": "ฃ",
+        "initial": "ฃ",
+        "medial": "ฃ",
+        "final": "ฃ"
+      },
+      "meta": { "category": "consonant", "tone_class": "high" }
+    },
+    {
+      "id": "th_kho_khwae",
+      "kind": "letter",
+      "role": "target",
+      "texts": { "th": "ค", "en": "Kho Khwae" },
+      "phonetic": { "en": "/kʰ/" },
+      "connections": {
+        "isolated": "ค",
+        "initial": "ค",
+        "medial": "ค",
+        "final": "ค"
+      },
+      "meta": { "category": "consonant", "tone_class": "low" }
+    },
+    {
+      "id": "th_kho_khon",
+      "kind": "letter",
+      "role": "target",
+      "texts": { "th": "ฅ", "en": "Kho Khon" },
+      "phonetic": { "en": "/kʰ/" },
+      "connections": {
+        "isolated": "ฅ",
+        "initial": "ฅ",
+        "medial": "ฅ",
+        "final": "ฅ"
+      },
+      "meta": { "category": "consonant", "tone_class": "low" }
+    },
+    {
+      "id": "th_kho_rakhang",
+      "kind": "letter",
+      "role": "target",
+      "texts": { "th": "ฆ", "en": "Kho Rakhang" },
+      "phonetic": { "en": "/kʰ/" },
+      "connections": {
+        "isolated": "ฆ",
+        "initial": "ฆ",
+        "medial": "ฆ",
+        "final": "ฆ"
+      },
+      "meta": { "category": "consonant", "tone_class": "low" }
+    },
+    {
+      "id": "th_ngo_ngu",
+      "kind": "letter",
+      "role": "target",
+      "texts": { "th": "ง", "en": "Ngo Ngu" },
+      "phonetic": { "en": "/ŋ/" },
+      "connections": {
+        "isolated": "ง",
+        "initial": "ง",
+        "medial": "ง",
+        "final": "ง"
+      },
+      "meta": { "category": "consonant", "tone_class": "low" }
+    },
+    {
+      "id": "th_cho_chan",
+      "kind": "letter",
+      "role": "target",
+      "texts": { "th": "จ", "en": "Cho Chan" },
+      "phonetic": { "en": "/tɕ/" },
+      "connections": {
+        "isolated": "จ",
+        "initial": "จ",
+        "medial": "จ",
+        "final": "จ"
+      },
+      "meta": { "category": "consonant", "tone_class": "mid" }
+    },
+    {
+      "id": "th_cho_ching",
+      "kind": "letter",
+      "role": "target",
+      "texts": { "th": "ฉ", "en": "Cho Ching" },
+      "phonetic": { "en": "/tɕʰ/" },
+      "connections": {
+        "isolated": "ฉ",
+        "initial": "ฉ",
+        "medial": "ฉ",
+        "final": "ฉ"
+      },
+      "meta": { "category": "consonant", "tone_class": "high" }
+    },
+    {
+      "id": "th_cho_chang",
+      "kind": "letter",
+      "role": "target",
+      "texts": { "th": "ช", "en": "Cho Chang" },
+      "phonetic": { "en": "/tɕʰ/" },
+      "connections": {
+        "isolated": "ช",
+        "initial": "ช",
+        "medial": "ช",
+        "final": "ช"
+      },
+      "meta": { "category": "consonant", "tone_class": "low" }
+    },
+    {
+      "id": "th_so_so",
+      "kind": "letter",
+      "role": "target",
+      "texts": { "th": "ซ", "en": "So So" },
+      "phonetic": { "en": "/s/" },
+      "connections": {
+        "isolated": "ซ",
+        "initial": "ซ",
+        "medial": "ซ",
+        "final": "ซ"
+      },
+      "meta": { "category": "consonant", "tone_class": "low" }
+    },
+    {
+      "id": "th_cho_choe",
+      "kind": "letter",
+      "role": "target",
+      "texts": { "th": "ฌ", "en": "Cho Choe" },
+      "phonetic": { "en": "/tɕʰ/" },
+      "connections": {
+        "isolated": "ฌ",
+        "initial": "ฌ",
+        "medial": "ฌ",
+        "final": "ฌ"
+      },
+      "meta": { "category": "consonant", "tone_class": "low" }
+    },
+    {
+      "id": "th_yo_ying",
+      "kind": "letter",
+      "role": "target",
+      "texts": { "th": "ญ", "en": "Yo Ying" },
+      "phonetic": { "en": "/j/" },
+      "connections": {
+        "isolated": "ญ",
+        "initial": "ญ",
+        "medial": "ญ",
+        "final": "ญ"
+      },
+      "meta": { "category": "consonant", "tone_class": "low" }
+    },
+    {
+      "id": "th_do_chada",
+      "kind": "letter",
+      "role": "target",
+      "texts": { "th": "ฎ", "en": "Do Chada" },
+      "phonetic": { "en": "/d/" },
+      "connections": {
+        "isolated": "ฎ",
+        "initial": "ฎ",
+        "medial": "ฎ",
+        "final": "ฎ"
+      },
+      "meta": { "category": "consonant", "tone_class": "mid" }
+    },
+    {
+      "id": "th_to_patak",
+      "kind": "letter",
+      "role": "target",
+      "texts": { "th": "ฏ", "en": "To Patak" },
+      "phonetic": { "en": "/t/" },
+      "connections": {
+        "isolated": "ฏ",
+        "initial": "ฏ",
+        "medial": "ฏ",
+        "final": "ฏ"
+      },
+      "meta": { "category": "consonant", "tone_class": "mid" }
+    },
+    {
+      "id": "th_tho_than",
+      "kind": "letter",
+      "role": "target",
+      "texts": { "th": "ฐ", "en": "Tho Than" },
+      "phonetic": { "en": "/tʰ/" },
+      "connections": {
+        "isolated": "ฐ",
+        "initial": "ฐ",
+        "medial": "ฐ",
+        "final": "ฐ"
+      },
+      "meta": { "category": "consonant", "tone_class": "high" }
+    },
+    {
+      "id": "th_tho_montho",
+      "kind": "letter",
+      "role": "target",
+      "texts": { "th": "ฑ", "en": "Tho Montho" },
+      "phonetic": { "en": "/tʰ/" },
+      "connections": {
+        "isolated": "ฑ",
+        "initial": "ฑ",
+        "medial": "ฑ",
+        "final": "ฑ"
+      },
+      "meta": { "category": "consonant", "tone_class": "low" }
+    },
+    {
+      "id": "th_tho_phuthao",
+      "kind": "letter",
+      "role": "target",
+      "texts": { "th": "ฒ", "en": "Tho Phuthao" },
+      "phonetic": { "en": "/tʰ/" },
+      "connections": {
+        "isolated": "ฒ",
+        "initial": "ฒ",
+        "medial": "ฒ",
+        "final": "ฒ"
+      },
+      "meta": { "category": "consonant", "tone_class": "low" }
+    },
+    {
+      "id": "th_no_nen",
+      "kind": "letter",
+      "role": "target",
+      "texts": { "th": "ณ", "en": "No Nen" },
+      "phonetic": { "en": "/n/" },
+      "connections": {
+        "isolated": "ณ",
+        "initial": "ณ",
+        "medial": "ณ",
+        "final": "ณ"
+      },
+      "meta": { "category": "consonant", "tone_class": "low" }
+    },
+    {
+      "id": "th_do_dek",
+      "kind": "letter",
+      "role": "target",
+      "texts": { "th": "ด", "en": "Do Dek" },
+      "phonetic": { "en": "/d/" },
+      "connections": {
+        "isolated": "ด",
+        "initial": "ด",
+        "medial": "ด",
+        "final": "ด"
+      },
+      "meta": { "category": "consonant", "tone_class": "mid" }
+    },
+    {
+      "id": "th_to_tao",
+      "kind": "letter",
+      "role": "target",
+      "texts": { "th": "ต", "en": "To Tao" },
+      "phonetic": { "en": "/t/" },
+      "connections": {
+        "isolated": "ต",
+        "initial": "ต",
+        "medial": "ต",
+        "final": "ต"
+      },
+      "meta": { "category": "consonant", "tone_class": "mid" }
+    },
+    {
+      "id": "th_tho_thung",
+      "kind": "letter",
+      "role": "target",
+      "texts": { "th": "ถ", "en": "Tho Thung" },
+      "phonetic": { "en": "/tʰ/" },
+      "connections": {
+        "isolated": "ถ",
+        "initial": "ถ",
+        "medial": "ถ",
+        "final": "ถ"
+      },
+      "meta": { "category": "consonant", "tone_class": "high" }
+    },
+    {
+      "id": "th_tho_thahan",
+      "kind": "letter",
+      "role": "target",
+      "texts": { "th": "ท", "en": "Tho Thahan" },
+      "phonetic": { "en": "/tʰ/" },
+      "connections": {
+        "isolated": "ท",
+        "initial": "ท",
+        "medial": "ท",
+        "final": "ท"
+      },
+      "meta": { "category": "consonant", "tone_class": "low" }
+    },
+    {
+      "id": "th_tho_thong",
+      "kind": "letter",
+      "role": "target",
+      "texts": { "th": "ธ", "en": "Tho Thong" },
+      "phonetic": { "en": "/tʰ/" },
+      "connections": {
+        "isolated": "ธ",
+        "initial": "ธ",
+        "medial": "ธ",
+        "final": "ธ"
+      },
+      "meta": { "category": "consonant", "tone_class": "low" }
+    },
+    {
+      "id": "th_no_nu",
+      "kind": "letter",
+      "role": "target",
+      "texts": { "th": "น", "en": "No Nu" },
+      "phonetic": { "en": "/n/" },
+      "connections": {
+        "isolated": "น",
+        "initial": "น",
+        "medial": "น",
+        "final": "น"
+      },
+      "meta": { "category": "consonant", "tone_class": "low" }
+    },
+    {
+      "id": "th_bo_baimai",
+      "kind": "letter",
+      "role": "target",
+      "texts": { "th": "บ", "en": "Bo Baimai" },
+      "phonetic": { "en": "/b/" },
+      "connections": {
+        "isolated": "บ",
+        "initial": "บ",
+        "medial": "บ",
+        "final": "บ"
+      },
+      "meta": { "category": "consonant", "tone_class": "mid" }
+    },
+    {
+      "id": "th_po_pla",
+      "kind": "letter",
+      "role": "target",
+      "texts": { "th": "ป", "en": "Po Pla" },
+      "phonetic": { "en": "/p/" },
+      "connections": {
+        "isolated": "ป",
+        "initial": "ป",
+        "medial": "ป",
+        "final": "ป"
+      },
+      "meta": { "category": "consonant", "tone_class": "mid" }
+    },
+    {
+      "id": "th_pho_phueng",
+      "kind": "letter",
+      "role": "target",
+      "texts": { "th": "ผ", "en": "Pho Phueng" },
+      "phonetic": { "en": "/pʰ/" },
+      "connections": {
+        "isolated": "ผ",
+        "initial": "ผ",
+        "medial": "ผ",
+        "final": "ผ"
+      },
+      "meta": { "category": "consonant", "tone_class": "high" }
+    },
+    {
+      "id": "th_fo_fa",
+      "kind": "letter",
+      "role": "target",
+      "texts": { "th": "ฝ", "en": "Fo Fa" },
+      "phonetic": { "en": "/f/" },
+      "connections": {
+        "isolated": "ฝ",
+        "initial": "ฝ",
+        "medial": "ฝ",
+        "final": "ฝ"
+      },
+      "meta": { "category": "consonant", "tone_class": "high" }
+    },
+    {
+      "id": "th_pho_phan",
+      "kind": "letter",
+      "role": "target",
+      "texts": { "th": "พ", "en": "Pho Phan" },
+      "phonetic": { "en": "/pʰ/" },
+      "connections": {
+        "isolated": "พ",
+        "initial": "พ",
+        "medial": "พ",
+        "final": "พ"
+      },
+      "meta": { "category": "consonant", "tone_class": "low" }
+    },
+    {
+      "id": "th_fo_fan",
+      "kind": "letter",
+      "role": "target",
+      "texts": { "th": "ฟ", "en": "Fo Fan" },
+      "phonetic": { "en": "/f/" },
+      "connections": {
+        "isolated": "ฟ",
+        "initial": "ฟ",
+        "medial": "ฟ",
+        "final": "ฟ"
+      },
+      "meta": { "category": "consonant", "tone_class": "low" }
+    },
+    {
+      "id": "th_pho_samphao",
+      "kind": "letter",
+      "role": "target",
+      "texts": { "th": "ภ", "en": "Pho Samphao" },
+      "phonetic": { "en": "/pʰ/" },
+      "connections": {
+        "isolated": "ภ",
+        "initial": "ภ",
+        "medial": "ภ",
+        "final": "ภ"
+      },
+      "meta": { "category": "consonant", "tone_class": "low" }
+    },
+    {
+      "id": "th_mo_ma",
+      "kind": "letter",
+      "role": "target",
+      "texts": { "th": "ม", "en": "Mo Ma" },
+      "phonetic": { "en": "/m/" },
+      "connections": {
+        "isolated": "ม",
+        "initial": "ม",
+        "medial": "ม",
+        "final": "ม"
+      },
+      "meta": { "category": "consonant", "tone_class": "low" }
+    },
+    {
+      "id": "th_yo_yak",
+      "kind": "letter",
+      "role": "target",
+      "texts": { "th": "ย", "en": "Yo Yak" },
+      "phonetic": { "en": "/j/" },
+      "connections": {
+        "isolated": "ย",
+        "initial": "ย",
+        "medial": "ย",
+        "final": "ย"
+      },
+      "meta": { "category": "consonant", "tone_class": "low" }
+    },
+    {
+      "id": "th_ro_ruea",
+      "kind": "letter",
+      "role": "target",
+      "texts": { "th": "ร", "en": "Ro Ruea" },
+      "phonetic": { "en": "/r/" },
+      "connections": {
+        "isolated": "ร",
+        "initial": "ร",
+        "medial": "ร",
+        "final": "ร"
+      },
+      "meta": { "category": "consonant", "tone_class": "low" }
+    },
+    {
+      "id": "th_lo_ling",
+      "kind": "letter",
+      "role": "target",
+      "texts": { "th": "ล", "en": "Lo Ling" },
+      "phonetic": { "en": "/l/" },
+      "connections": {
+        "isolated": "ล",
+        "initial": "ล",
+        "medial": "ล",
+        "final": "ล"
+      },
+      "meta": { "category": "consonant", "tone_class": "low" }
+    },
+    {
+      "id": "th_wo_waen",
+      "kind": "letter",
+      "role": "target",
+      "texts": { "th": "ว", "en": "Wo Waen" },
+      "phonetic": { "en": "/w/" },
+      "connections": {
+        "isolated": "ว",
+        "initial": "ว",
+        "medial": "ว",
+        "final": "ว"
+      },
+      "meta": { "category": "consonant", "tone_class": "low" }
+    },
+    {
+      "id": "th_so_sala",
+      "kind": "letter",
+      "role": "target",
+      "texts": { "th": "ศ", "en": "So Sala" },
+      "phonetic": { "en": "/s/" },
+      "connections": {
+        "isolated": "ศ",
+        "initial": "ศ",
+        "medial": "ศ",
+        "final": "ศ"
+      },
+      "meta": { "category": "consonant", "tone_class": "high" }
+    },
+    {
+      "id": "th_so_rusi",
+      "kind": "letter",
+      "role": "target",
+      "texts": { "th": "ษ", "en": "So Rusi" },
+      "phonetic": { "en": "/s/" },
+      "connections": {
+        "isolated": "ษ",
+        "initial": "ษ",
+        "medial": "ษ",
+        "final": "ษ"
+      },
+      "meta": { "category": "consonant", "tone_class": "high" }
+    },
+    {
+      "id": "th_so_suea",
+      "kind": "letter",
+      "role": "target",
+      "texts": { "th": "ส", "en": "So Suea" },
+      "phonetic": { "en": "/s/" },
+      "connections": {
+        "isolated": "ส",
+        "initial": "ส",
+        "medial": "ส",
+        "final": "ส"
+      },
+      "meta": { "category": "consonant", "tone_class": "high" }
+    },
+    {
+      "id": "th_ho_hip",
+      "kind": "letter",
+      "role": "target",
+      "texts": { "th": "ห", "en": "Ho Hip" },
+      "phonetic": { "en": "/h/" },
+      "connections": {
+        "isolated": "ห",
+        "initial": "ห",
+        "medial": "ห",
+        "final": "ห"
+      },
+      "meta": { "category": "consonant", "tone_class": "high" }
+    },
+    {
+      "id": "th_lo_chula",
+      "kind": "letter",
+      "role": "target",
+      "texts": { "th": "ฬ", "en": "Lo Chula" },
+      "phonetic": { "en": "/l/" },
+      "connections": {
+        "isolated": "ฬ",
+        "initial": "ฬ",
+        "medial": "ฬ",
+        "final": "ฬ"
+      },
+      "meta": { "category": "consonant", "tone_class": "low" }
+    },
+    {
+      "id": "th_o_ang",
+      "kind": "letter",
+      "role": "target",
+      "texts": { "th": "อ", "en": "O Ang" },
+      "phonetic": { "en": "/ʔ/" },
+      "connections": {
+        "isolated": "อ",
+        "initial": "อ",
+        "medial": "อ",
+        "final": "อ"
+      },
+      "meta": { "category": "consonant", "tone_class": "mid" }
+    },
+    {
+      "id": "th_ho_nokhuk",
+      "kind": "letter",
+      "role": "target",
+      "texts": { "th": "ฮ", "en": "Ho Nokhuk" },
+      "phonetic": { "en": "/h/" },
+      "connections": {
+        "isolated": "ฮ",
+        "initial": "ฮ",
+        "medial": "ฮ",
+        "final": "ฮ"
+      },
+      "meta": { "category": "consonant", "tone_class": "low" }
+    }
+  ]
+}

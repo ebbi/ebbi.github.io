@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zabon Data Generator</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@300;400;500;600;700&family=Noto+Serif+Thai:wght@400;500;600;700&family=Kanit:wght@300;400;500;600;700&family=Vazirmatn:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="generate-json.css">
+</head>
+
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1>📝 JSON Data Generator</h1>
+            <p>Build vocabulary incrementally | Words are space-separated, sentences are newline-separated</p>
+        </div>
+
+        <!-- Workflow Buttons -->
+        <div class="workflow-buttons">
+            <button class="workflow-btn create" onclick="switchWorkflow('create')">
+                <span class="material-icons">add_circle</span>
+                <div>
+                    <strong>Create New Document</strong><br>
+                    <small>Start from scratch with new content</small>
+                </div>
+            </button>
+            <button class="workflow-btn update" onclick="switchWorkflow('update')">
+                <span class="material-icons">edit</span>
+                <div>
+                    <strong>Update Existing Document</strong><br>
+                    <small>Edit and enhance an existing document</small>
+                </div>
+            </button>
+        </div>
+
+        <!-- Document Metadata -->
+        <div id="metadataPanel" class="metadata-section hidden">
+            <details class="metadata-details">
+                <summary>
+                    <span class="material-icons">menu_book</span>
+                    Document Metadata
+                </summary>
+                <div class="metadata-content">
+                    <div>
+                        <label style="display: block; font-weight: 600; margin-bottom: 5px;">Document ID</label>
+                        <input type="text" id="docId" value="ls1"
+                            style="width: 100%; padding: 8px; border: 1px solid var(--border); border-radius: 6px;">
+                    </div>
+                    <div>
+                        <label style="display: block; font-weight: 600; margin-bottom: 5px;">Version</label>
+                        <input type="text" id="version" value="2.0.0"
+                            style="width: 100%; padding: 8px; border: 1px solid var(--border); border-radius: 6px;">
+                    </div>
+                    <div>
+                        <label style="display: block; font-weight: 600; margin-bottom: 5px;">Difficulty</label>
+                        <select id="difficulty"
+                            style="width: 100%; padding: 8px; border: 1px solid var(--border); border-radius: 6px;">
+                            <option value="1">1 - Beginner</option>
+                            <option value="2" selected>2 - Elementary</option>
+                            <option value="3">3 - Intermediate</option>
+                            <option value="4">4 - Upper Intermediate</option>
+                            <option value="5">5 - Advanced</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label style="display: block; font-weight: 600; margin-bottom: 5px;">Authors</label>
+                        <input type="text" id="authors" value="author1, author2"
+                            style="width: 100%; padding: 8px; border: 1px solid var(--border); border-radius: 6px;">
+                    </div>
+                    <div>
+                        <label style="display: block; font-weight: 600; margin-bottom: 5px;">Reviewers</label>
+                        <input type="text" id="reviewers" value="reviewer1"
+                            style="width: 100%; padding: 8px; border: 1px solid var(--border); border-radius: 6px;">
+                    </div>
+                    <div>
+                        <label style="display: block; font-weight: 600; margin-bottom: 5px;">Prerequisites</label>
+                        <input type="text" id="prerequisites" value="thai-basics-1"
+                            style="width: 100%; padding: 8px; border: 1px solid var(--border); border-radius: 6px;">
+                    </div>
+                    <div style="grid-column: span 2;">
+                        <label style="display: block; font-weight: 600; margin-bottom: 5px;">Tags</label>
+                        <div class="tags-input"
+                            style="display: flex; flex-wrap: wrap; gap: 8px; padding: 8px; border: 1px solid var(--border); border-radius: 6px; background: var(--bg);"
+                            id="tagsContainer">
+                            <input type="text" id="newTag" placeholder="Add tag and press Enter..."
+                                style="border: none; outline: none; flex: 1;">
+                        </div>
+                    </div>
+                </div>
+            </details>
+        </div>
+
+        <!-- Create Document View -->
+        <div id="createView" class="hidden">
+            <!-- Vocabulary Status -->
+            <div class="vocab-status">
+                <h3>📚 Vocabulary Status</h3>
+                <div class="status-grid">
+                    <div class="status-item">
+                        <div class="status-number" id="mainVocabCount">0</div>
+                        <div class="status-label">Main Vocabulary</div>
+                    </div>
+                </div>
+                <div id="duplicateWarning" class="duplicate-warning" style="display: none;">
+                    <span class="material-icons">warning</span>
+                    <span id="duplicateMessage"></span>
+                </div>
+                <div id="translationWarning" class="translation-warning" style="display: none;"></div>
+            </div>
+
+            <!-- Input Configuration -->
+            <div class="input-section">
+                <h3>⚙️ Input Configuration</h3>
+                <div class="radio-group">
+                    <div class="radio-card" id="radioWord" onclick="setDataType('word')">
+                        <span class="material-icons">grid_view</span>
+                        <h4>Word List</h4>
+                        <small>space between words</small>
+                    </div>
+                    <div class="radio-card" id="radioParagraph" onclick="setDataType('paragraph')">
+                        <span class="material-icons">chat</span>
+                        <h4>Paragraph</h4>
+                        <small>new lines between sentences, spaces between words</small>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Thai Input -->
+            <div class="input-section">
+                <h3>📝 Enter New Thai Text</h3>
+
+                <div class="heading-input">
+                    <label>Heading (Optional - Thai)</label>
+                    <input type="text" id="headingInput" placeholder="เช่น: ทักทายเบื้องต้น, รายการคำศัพท์ ฯลฯ"
+                        lang="th">
+                    <small>Will be automatically translated to English and Farsi in the output</small>
+                </div>
+
+                <div class="instruction-box"
+                    style="background: rgba(37, 99, 235, 0.05); border-left: 4px solid var(--primary); padding: 15px; border-radius: 4px; margin-bottom: 15px;">
+                    <span class="material-icons">info</span>
+                    <span id="instructionText">Separate words with space. Example: กิน ดื่ม ดู ฟัง ตื่น</span>
+                </div>
+
+                <!-- Grammar Panel -->
+                <div id="grammarPanel" class="grammar-panel" style="display: none;">
+                    <h4>📐 Grammar Settings (Optional)</h4>
+                    <small style="color: var(--text-secondary);">Leave blank to omit grammar from block</small>
+                    <div class="grammar-grid">
+                        <div class="grammar-field">
+                            <label>Pattern</label>
+                            <input type="text" id="grammarPattern" placeholder="e.g., Sentence + ครับ/ค่ะ">
+                        </div>
+                        <div class="grammar-field">
+                            <label>Example</label>
+                            <input type="text" id="grammarExample" placeholder="e.g., สวัสดีครับ" lang="th">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Activity Panel -->
+                <div id="activityBlockPanel" class="activity-block-panel">
+                    <h4>🎮 Block-level Activity Settings (Optional)</h4>
+                    <small style="color: var(--text-secondary);">Leave as "inherit" to use document settings</small>
+
+                    <div class="activity-mode-selector">
+                        <label>
+                            <input type="radio" name="activityMode" value="inherit" checked
+                                onchange="toggleActivityMode()">
+                            Inherit from document
+                        </label>
+                        <label>
+                            <input type="radio" name="activityMode" value="override" onchange="toggleActivityMode()">
+                            Override
+                        </label>
+                    </div>
+
+                    <div id="activityOverridePanel" style="display: none;">
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                            <div>
+                                <h5>Word Activities</h5>
+                                <div style="display: flex; flex-direction: column; gap: 8px;">
+                                    <label><input type="checkbox" id="blockWordMCQ"> Multiple Choice Word</label>
+                                    <label><input type="checkbox" id="blockWordFlash"> Flashcard Word</label>
+                                </div>
+                            </div>
+                            <div>
+                                <h5>Sentence Activities</h5>
+                                <div style="display: flex; flex-direction: column; gap: 8px;">
+                                    <label><input type="checkbox" id="blockSentMCQ"> Multiple Choice Sentence</label>
+                                    <label><input type="checkbox" id="blockSentFlash"> Flashcard Sentence</label>
+                                    <label><input type="checkbox" id="blockSentBuild"> Build Sentence</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="margin-top: 15px;">
+                            <h5>Add/Remove Modifiers</h5>
+                            <div style="display: flex; gap: 20px;">
+                                <div style="flex: 1;">
+                                    <label>Add types:</label>
+                                    <input type="text" id="blockActivityAdd" placeholder="e.g., buildSentence"
+                                        style="width: 100%; padding: 5px;">
+                                </div>
+                                <div style="flex: 1;">
+                                    <label>Remove types:</label>
+                                    <input type="text" id="blockActivityRemove" placeholder="e.g., flashcardWord"
+                                        style="width: 100%; padding: 5px;">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <textarea id="thaiInput" placeholder="กิน ดื่ม ดู ฟัง ตื่น" lang="th"></textarea>
+
+                <div class="input-stats">
+                    <span><span class="material-icons">abc</span> Words: <span id="wordCount">0</span></span>
+                    <span><span class="material-icons">sentence</span> Sentences: <span
+                            id="sentenceCount">0</span></span>
+                    <span><span class="material-icons">cleaning_services</span> <button class="btn btn-outline"
+                            style="padding: 5px 10px;" onclick="cleanText()">Clean Text</button></span>
+                    <span><span class="material-icons">sync</span> <button class="btn btn-outline"
+                            style="padding: 5px 10px;" onclick="checkDuplicates()">Check Duplicates</button></span>
+                </div>
+            </div>
+
+            <!-- Generate Section -->
+            <div class="generate-section">
+                <button class="generate-button" onclick="generateBlock()" id="generateBtn">
+                    <span class="material-icons">auto_awesome</span>
+                    Generate New Block from Input
+                </button>
+                <div id="generatedBlocks" class="generated-blocks"></div>
+            </div>
+        </div>
+
+        <!-- Update Document View -->
+        <div id="updateView" class="hidden">
+            <!-- Edit Document Content panel -->
+            <div class="document-edit-container" id="documentEditContainer">
+                <!-- Populated by JS -->
+            </div>
+            <!-- Add New Content panel -->
+            <div class="add-content-panel">
+                <details class="add-content-details">
+                    <summary>
+                        <span class="material-icons">add_box</span>
+                        Add New Content
+                    </summary>
+                    <div class="add-content-inner" id="addContentInner">
+                        <!-- Populated by JS -->
+                    </div>
+                </details>
+            </div>
+        </div>
+
+        <!-- Preview -->
+        <div class="preview-section">
+            <div class="preview-header">
+                <h3>👁️ Preview</h3>
+                <div class="preview-tabs">
+                    <div class="preview-tab active" onclick="switchPreview('full')">Full Document</div>
+                    <div class="preview-tab" onclick="switchPreview('blocks')">Blocks Only</div>
+                    <div class="preview-tab" onclick="switchPreview('vocab')">Vocabulary</div>
+                </div>
+            </div>
+            <div id="jsonViewer" class="json-viewer"></div>
+            <div class="action-buttons">
+                <button class="btn btn-success" onclick="downloadJSON('full')">
+                    <span class="material-icons">download</span> Download Full
+                </button>
+                <button class="btn btn-outline" onclick="downloadJSON('blocks')">
+                    <span class="material-icons">download</span> Download Block
+                </button>
+                <button class="btn btn-outline" onclick="copyPreview()">
+                    <span class="material-icons">content_copy</span> Copy Preview
+                </button>
+                <button class="btn btn-outline" onclick="clearPreview()">
+                    <span class="material-icons">clear</span> Clear Preview
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div id="loadingOverlay" class="loading-overlay" style="display: none;">
+        <div class="loading-spinner">
+            <span class="material-icons">sync</span>
+            <span id="loadingMessage">Generating translations...</span>
+        </div>
+    </div>
+
+    <!-- Hidden file input for update workflow -->
+    <input type="file" id="updateFileInput" accept=".json" style="display: none;">
+
+    <script src="generate-json.js"></script>
+</body>
+
+</html>

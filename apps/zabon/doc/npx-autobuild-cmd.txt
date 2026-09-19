@@ -1,0 +1,20 @@
+Manually run at the end of edit sessions to create dist/app.js:
+
+npm run build
+
+will generate dist/ app.js app.min.js mai.mn.css
+
+"build" is defined in package.json
+{
+  "scripts": {
+    "build": "npm run build:js && npm run build:js:min && npm run build:css",
+    "build:js": "esbuild app.js --bundle --outfile=dist/app.js --format=iife --platform=browser --target=es2022 --sourcemap",
+    "build:js:min": "esbuild app.js --bundle --outfile=dist/app.min.js --format=iife --platform=browser --target=es2022 --minify --sourcemap",
+    "build:css": "esbuild main.css --bundle --minify --outfile=dist/main.min.css --sourcemap"
+  }
+}
+
+OR manually run each command:
+npx esbuild app.js --bundle --outfile=dist/app.js --format=iife --platform=browser --target=es2022 --sourcemap
+npx esbuild app.js --bundle --outfile=dist/app.min.js --format=iife --platform=browser --target=es2022 --minify --sourcemap
+npx esbuild main.css --bundle --minify --outfile=dist/main.min.css --sourcemap

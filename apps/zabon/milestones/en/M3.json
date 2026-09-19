@@ -1,0 +1,138 @@
+{
+  "milestone_id": "M3",
+  "target_language": "en",
+  "items": [
+    {
+      "header": true,
+      "id": "M3_h_grammar",
+      "texts": {
+        "en": "English Grammar Focus",
+        "th": "โฟกัสไวยากรณ์ภาษาอังกฤษ",
+        "fa": "تمرکز گرامر انگلیسی",
+        "zh": "英语语法重点",
+        "ja": "英語の文法フォーカス",
+        "ar": "تركيز قواعد اللغة الإنجليزية",
+        "es": "Enfoque de gramática inglesa"
+      }
+    },
+    {
+      "id": "M3_g1",
+      "role": "grammar",
+      "kind": "grammar",
+      "texts": {
+        "en": "Polite Requests: Use 'would like' instead of 'want' for polite requests. Example: 'I would like water' is more polite than 'I want water.'",
+        "th": "การขออย่างสุภาพ: ใช้ 'would like' แทน 'want' เพื่อความสุภาพ ตัวอย่าง: 'I would like water' สุภาพกว่า 'I want water'",
+        "fa": "درخواست‌های مؤدبانه: به جای 'want' از 'would like' برای درخواست‌های مؤدبانه استفاده کنید. مثال: 'I would like water' مؤدبانه‌تر از 'I want water' است.",
+        "zh": "礼貌请求：用“would like”代替“want”来表示礼貌的请求。例如：“I would like water”比“I want water”更礼貌。",
+        "ja": "丁寧な依頼：丁寧な依頼には「want」ではなく「would like」を使います。例：「I would like water」は「I want water」より丁寧です。",
+        "ar": "الطلبات المهذبة: استخدم 'would like' بدلاً من 'want' للطلبات المهذبة. مثال: 'I would like water' أكثر تهذيباً من 'I want water'.",
+        "es": "Peticiones educadas: Usa 'would like' en lugar de 'want' para peticiones educadas. Ejemplo: 'I would like water' es más educado que 'I want water'."
+      }
+    },
+    {
+      "id": "M3_g2",
+      "role": "grammar",
+      "kind": "grammar",
+      "texts": {
+        "en": "Prepositions of Place: Use 'on' for floors and surfaces (on the second floor, on the left). Use 'in' for enclosed spaces (in the room).",
+        "th": "บุพบทบอกสถานที่: ใช้ 'on' สำหรับชั้นและพื้นผิว (on the second floor, on the left) ใช้ 'in' สำหรับพื้นที่ปิด (in the room)",
+        "fa": "حروف اضافه مکان: برای طبقات و سطوح از 'on' (on the second floor, on the left) و برای فضاهای بسته از 'in' استفاده کنید.",
+        "zh": "地点介词：楼层和表面用“on”（on the second floor, on the left），封闭空间用“in”。",
+        "ja": "場所の前置詞：階や表面には「on」（on the second floor, on the left）を、密閉された空間には「in」を使います。",
+        "ar": "حروف الجر للمكان: استخدم 'on' للطوابق والأسطح (on the second floor, on the left) و 'in' للمساحات المغلقة.",
+        "es": "Preposiciones de lugar: Usa 'on' para pisos y superficies (on the second floor, on the left) y 'in' para espacios cerrados."
+      }
+    },
+    {
+      "id": "M3_g3",
+      "role": "grammar",
+      "kind": "grammar",
+      "texts": {
+        "en": "Imperatives: Use the base form of the verb to give directions or instructions. Example: 'Turn left.' (No subject 'you' is needed).",
+        "th": "ประโยคคำสั่ง: ใช้กริยาช่องที่หนึ่งเพื่อบอกทิศทางหรือคำสั่ง ตัวอย่าง: 'Turn left.' (ไม่ต้องมีประธาน 'you')",
+        "fa": "صیغه امری: از شکل ساده فعل برای دادن جهت یا دستور استفاده کنید. مثال: 'Turn left.' (نیازی به فاعل 'you' نیست).",
+        "zh": "祈使句：用动词原形来指示方向或下达命令。例如：“Turn left.”（不需要主语“you”）。",
+        "ja": "命令文：方向の指示や命令には動詞の原形を使います。例：「Turn left.」（主語「you」は不要です）。",
+        "ar": "صيغ الأمر: استخدم الشكل الأساسي للفعل لإعطاء الاتجاهات أو التعليمات. مثال: 'Turn left.' (لا حاجة للفاعل 'you').",
+        "es": "Imperativos: Usa la forma base del verbo para dar direcciones o instrucciones. Ejemplo: 'Turn left.' (No se necesita el sujeto 'you')."
+      }
+    }
+  ],
+  "grammar_questions": [
+    {
+      "id": "M3_gq1",
+      "question": {
+        "en": "Choose the most polite way to ask for water.",
+        "th": "เลือกวิธีขอน้ำที่สุภาพที่สุด",
+        "fa": "مؤدبانه‌ترین راه برای درخواست آب را انتخاب کنید.",
+        "zh": "选择最礼貌的要水方式。",
+        "ja": "水を頼む最も丁寧な方法を選んでください。",
+        "ar": "اختر أكثر طريقة مهذبة لطلب الماء.",
+        "es": "Elige la forma más educada de pedir agua."
+      },
+      "options": [
+        {
+          "text": {
+            "en": "I want water."
+          }
+        },
+        {
+          "text": {
+            "en": "I would like water, please."
+          }
+        }
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "id": "M3_gq2",
+      "question": {
+        "en": "Which preposition is correct? \"The bathroom is ___ the second floor.\"",
+        "th": "บุพบทใดถูกต้อง \"The bathroom is ___ the second floor.\"",
+        "fa": "کدام حرف اضافه صحیح است؟ \"The bathroom is ___ the second floor.\"",
+        "zh": "哪个介词是正确的？“The bathroom is ___ the second floor.”",
+        "ja": "どの前置詞が正しいですか？ \"The bathroom is ___ the second floor.\"",
+        "ar": "ما حرف الجر الصحيح؟ \"The bathroom is ___ the second floor.\"",
+        "es": "¿Qué preposición es correcta? \"The bathroom is ___ the second floor.\""
+      },
+      "options": [
+        {
+          "text": {
+            "en": "in"
+          }
+        },
+        {
+          "text": {
+            "en": "on"
+          }
+        }
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "id": "M3_gq3",
+      "question": {
+        "en": "How do you give a direction to turn left using an imperative?",
+        "th": "คุณบอกทิศทางให้เลี้ยวซ้ายโดยใช้ประโยคคำสั่งอย่างไร",
+        "fa": "چگونه با استفاده از صیغه امری مسیر چپ را نشان می‌دهید؟",
+        "zh": "如何使用祈使句指示向左转？",
+        "ja": "祈使句を使って左折を指示するにはどうしますか？",
+        "ar": "كيف تعطي اتجاهًا للانعطاف يسارًا باستخدام صيغة الأمر؟",
+        "es": "¿Cómo das la indicación de girar a la izquierda usando un imperativo?"
+      },
+      "options": [
+        {
+          "text": {
+            "en": "You turn left."
+          }
+        },
+        {
+          "text": {
+            "en": "Turn left."
+          }
+        }
+      ],
+      "correctOptionIndex": 1
+    }
+  ]
+}

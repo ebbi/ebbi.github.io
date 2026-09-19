@@ -1,0 +1,20 @@
+# Auto detect text files and perform LF normalization
+* text=auto
+
+# These files are text and should be normalized (Convert to LF on checkout)
+*.html text
+*.css text
+*.js text
+*.json text
+*.md text
+*.txt text
+
+# These files are binary and should not be modified
+*.png binary
+*.jpg binary
+*.gif binary
+*.ico binary
+*.eot binary
+*.ttf binary
+*.woff binary
+*.woff2 binary

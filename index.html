@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en" data-theme="auto" data-lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Zabon — home of apps" />
+    <title>Zabon</title>
+    <link rel="stylesheet" href="assets/css/style.css" />
+  </head>
+  <body>
+    <!-- ===== App Toolbar ===== -->
+    <header class="toolbar" role="banner">
+      <button
+        class="toolbar__menu-btn"
+        id="menuToggle"
+        aria-label="Open menu"
+        aria-expanded="false"
+        aria-controls="sidePanel"
+      >
+        <span class="hamburger" aria-hidden="true">
+          <span></span><span></span><span></span>
+        </span>
+      </button>
+
+      <h1 class="toolbar__title" data-i18n="appName">Zabon</h1>
+
+      <span class="toolbar__spacer" aria-hidden="true"></span>
+    </header>
+
+    <!-- ===== Collapsible Side Panel ===== -->
+    <aside
+      class="panel"
+      id="sidePanel"
+      aria-hidden="true"
+      aria-label="Settings"
+    >
+      <div class="panel__backdrop" id="panelBackdrop"></div>
+
+      <div class="panel__content" role="dialog" aria-modal="true">
+        <div class="panel__header">
+          <h2 data-i18n="settings">Settings</h2>
+          <button class="panel__close" id="panelClose" aria-label="Close menu">
+            ×
+          </button>
+        </div>
+
+        <!-- Language section -->
+        <section class="panel__section">
+          <h3 class="panel__section-title" data-i18n="language">Language</h3>
+
+          <button
+            class="panel__row"
+            id="langToggle"
+            aria-expanded="false"
+            aria-controls="langList"
+          >
+            <span class="panel__row-icon" aria-hidden="true">🌐</span>
+            <span class="panel__row-label" data-i18n="language">Language</span>
+            <span class="panel__row-value" id="currentLangLabel">English</span>
+            <span class="chevron" aria-hidden="true">›</span>
+          </button>
+
+          <ul class="lang-list" id="langList" hidden>
+            <li>
+              <button class="lang-option" data-lang="ar">
+                <span class="flag">🇸🇦</span>
+                <span>العربية</span>
+              </button>
+            </li>
+            <li>
+              <button class="lang-option" data-lang="en">
+                <span class="flag">🇬🇧</span>
+                <span>English</span>
+              </button>
+            </li>
+            <li>
+              <button class="lang-option" data-lang="fa">
+                <span class="flag">🇮🇷</span>
+                <span>فارسی</span>
+              </button>
+            </li>
+            <li>
+              <button class="lang-option" data-lang="my">
+                <span class="flag">🇲🇲</span>
+                <span>မြန်မာ</span>
+              </button>
+            </li>
+            <li>
+              <button class="lang-option" data-lang="th">
+                <span class="flag">🇹🇭</span>
+                <span>ไทย</span>
+              </button>
+            </li>
+          </ul>
+        </section>
+
+        <!-- Appearance section -->
+        <section class="panel__section">
+          <h3 class="panel__section-title" data-i18n="appearance">
+            Appearance
+          </h3>
+
+          <div class="theme-group" role="radiogroup" aria-label="Theme">
+            <button
+              class="theme-option"
+              data-theme="day"
+              role="radio"
+              aria-checked="false"
+            >
+              <span aria-hidden="true">☀️</span>
+              <span data-i18n="day">Day</span>
+            </button>
+            <button
+              class="theme-option"
+              data-theme="night"
+              role="radio"
+              aria-checked="false"
+            >
+              <span aria-hidden="true">🌙</span>
+              <span data-i18n="night">Night</span>
+            </button>
+            <button
+              class="theme-option"
+              data-theme="auto"
+              role="radio"
+              aria-checked="true"
+            >
+              <span aria-hidden="true">🌗</span>
+              <span data-i18n="auto">Auto</span>
+            </button>
+          </div>
+        </section>
+      </div>
+    </aside>
+
+    <!-- ===== Main content: App links ===== -->
+    <main class="content" role="main">
+      <ul class="app-grid">
+        <li>
+          <a class="app-card" href="apps/zabon/">
+            <span class="app-card__icon" aria-hidden="true">📱</span>
+            <span class="app-card__name" data-i18n="appZabon">Zabon</span>
+            <span class="app-card__desc" data-i18n="appZabonDesc"
+              >Language agnostic App to learn Arabic, English, Spanish, Persian,
+              Japanese, Thai, Chinese</span
+            >
+          </a>
+        </li>
+        <li>
+          <a class="app-card" href="apps/zabon-thai/">
+            <span class="app-card__icon" aria-hidden="true">🇹🇭</span>
+            <span class="app-card__name" data-i18n="appThai">Zabon Thai</span>
+            <span class="app-card__desc" data-i18n="appThaiDesc"
+              >Learn Thai (with English and Persian)</span
+            >
+          </a>
+        </li>
+        <li>
+          <a class="app-card" href="apps/blog/">
+            <span class="app-card__icon" aria-hidden="true">📝</span>
+            <span class="app-card__name" data-i18n="appBlog">Blog</span>
+            <span class="app-card__desc" data-i18n="appBlogDesc"
+              >Coming soon</span
+            >
+          </a>
+        </li>
+      </ul>
+    </main>
+
+    <script src="assets/js/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,177 @@
+{
+  "milestone_id": "M1",
+  "target_language": "ar",
+  "items": [
+    {
+      "header": true,
+      "id": "M1_h_grammar",
+      "texts": {
+        "en": "Arabic Grammar Focus",
+        "th": "ไวยากรณ์ภาษาอาหรับ",
+        "fa": "تمرکز گرامر عربی",
+        "zh": "阿拉伯语语法重点",
+        "ja": "アラビア語文法フォーカス",
+        "ar": "تركيز القواعد العربية",
+        "es": "Enfoque Gramatical del Árabe"
+      }
+    },
+    {
+      "id": "M1_g1",
+      "role": "grammar",
+      "kind": "grammar",
+      "texts": {
+        "en": "Greetings and Responses: The standard formal greeting is 'السلام عليكم' (Peace be upon you), and the required response is 'وعليكم السلام' (And upon you be peace). 'مرحباً' (Hello) is also widely used.",
+        "th": "การทักทายและการตอบกลับ: การทักทายทางการมาตรฐานคือ 'السلام عليكم' (สันติสุขจงมีแด่ท่าน) และการตอบกลับที่จำเป็นคือ 'وعليكم السلام' (และสันติสุขจงมีแด่ท่านเช่นกัน) 'مرحباً' (สวัสดี) ก็ถูกใช้กันอย่างแพร่หลาย",
+        "fa": "احوال‌پرسی و پاسخ‌ها: احوال‌پرسی رسمی استاندارد 'السلام عليكم' (صلح بر شما باد) است و پاسخ لازم 'وعليكم السلام' (و بر شما صلح باد) است. 'مرحباً' (سلام) نیز به طور گسترده استفاده می‌شود.",
+        "zh": "问候与回应：标准的正式问候是“السلام عليكم”（愿和平降临于你），必须的回应是“وعليكم السلام”（也愿和平降临于你）。“مرحباً”（你好）也被广泛使用。",
+        "ja": "挨拶と返答：標準的な正式な挨拶は「السلام عليكم」（あなたに平和あれ）で、必須の返答は「وعليكم السلام」（あなたにも平和あれ）です。「مرحباً」（こんにちは）も広く使われています。",
+        "ar": "التحية والرد: التحية الرسمية القياسية هي 'السلام عليكم'، والرد المطلوب هو 'وعليكم السلام'. كما يُستخدم 'مرحباً' على نطاق واسع.",
+        "es": "Saludos y respuestas: El saludo formal estándar es 'السلام عليكم' (La paz sea contigo), y la respuesta requerida es 'وعليكم السلام' (Y contigo la paz). 'مرحباً' (Hola) también se usa ampliamente."
+      }
+    },
+    {
+      "id": "M1_g2",
+      "role": "grammar",
+      "kind": "grammar",
+      "texts": {
+        "en": "Personal Pronouns: Arabic distinguishes gender in the second person. 'أنتَ' (anta) is 'you' (male), and 'أنتِ' (anti) is 'you' (female). 'أنا' (ana) means 'I' for both genders.",
+        "th": "คำสรรพนามบุคคล: ภาษาอาหรับแยกเพศในบุรุษที่สอง 'أنتَ' (อันตะ) คือ 'คุณ' (ผู้ชาย) และ 'أنتِ' (อันติ) คือ 'คุณ' (ผู้หญิง) 'أنا' (อานา) หมายถึง 'ฉัน' สำหรับทั้งสองเพศ",
+        "fa": "ضمائر شخصی: عربی جنسیت را در شخص دوم متمایز می‌کند. 'أنتَ' (انتا) به معنای 'شما' (مرد) و 'أنتِ' (انتی) به معنای 'شما' (زن) است. 'أنا' (انا) به معنای 'من' برای هر دو جنسیت است.",
+        "zh": "人称代词：阿拉伯语在第二人称中区分性别。“أنتَ”（anta）是“你”（男性），“أنتِ”（anti）是“你”（女性）。“أنا”（ana）意为“我”，男女通用。",
+        "ja": "人称代名詞：アラビア語は二人称で性別を区別します。「أنتَ」（アンタ）は「あなた」（男性）、「أنتِ」（アンティ）は「あなた」（女性）です。「أنا」（アナ）は男女ともに「私」を意味します。",
+        "ar": "الضمائر الشخصية: تميز العربية الجنس في المخاطب. 'أنتَ' للمذكر، و'أنتِ' للمؤنث. 'أنا' تعني المتكلم لكلا الجنسين.",
+        "es": "Pronombres personales: El árabe distingue el género en la segunda persona. 'أنتَ' (anta) es 'tú' (masculino) y 'أنتِ' (anti) es 'tú' (femenino). 'أنا' (ana) significa 'yo' para ambos géneros."
+      }
+    },
+    {
+      "id": "M1_g3",
+      "role": "grammar",
+      "kind": "grammar",
+      "texts": {
+        "en": "Nominal Sentences (No 'to be'): In present tense Arabic, the verb 'to be' (is/am/are) is omitted. For example, 'أنا بخير' literally means 'I fine', translating to 'I am fine'.",
+        "th": "ประโยคชื่อ (ไม่มี 'เป็น/คือ'): ในภาษาอาหรับปัจจุบัน กริยา 'เป็น/คือ' จะถูกละไว้ ตัวอย่างเช่น 'أنا بخير' แปลตามตัวว่า 'ฉัน สบายดี' ซึ่งหมายถึง 'ฉันสบายดี'",
+        "fa": "جملات اسمی (بدون فعل 'بودن'): در عربی زمان حال، فعل 'بودن' حذف می‌شود. برای مثال، 'أنا بخير' به معنای تحت‌اللفظی 'من خوب' است که به 'من خوب هستم' ترجمه می‌شود.",
+        "zh": "名词句（无“是”）：在现代阿拉伯语中，动词“是”（am/is/are）被省略。例如，“أنا بخير”字面意思是“我 好”，翻译为“我很好”。",
+        "ja": "名詞文（「である」なし）：現在のアラビア語では、動詞「である」（am/is/are）が省略されます。例えば、「أنا بخير」は文字通り「私 元気」を意味し、「私は元気です」と訳されます。",
+        "ar": "الجمل الاسمية (حذف فعل الكينونة): في العربية الحالية، يُحذف فعل 'يكون' (am/is/are). على سبيل المثال، 'أنا بخير' تعني حرفياً 'أنا بخير' دون فعل ربط.",
+        "es": "Oraciones nominales (Sin 'ser/estar'): En el árabe del presente, el verbo 'ser/estar' se omite. Por ejemplo, 'أنا بخير' significa literalmente 'Yo bien', traduciéndose como 'Estoy bien'."
+      }
+    },
+    {
+      "id": "M1_g4",
+      "role": "grammar",
+      "kind": "grammar",
+      "texts": {
+        "en": "Possessive Suffixes: To say 'my name', attach the first-person suffix 'ي' (i) to the noun 'اسم' (ism, name), forming 'اسمي' (ismi). No separate word for 'my' is needed.",
+        "th": "คำต่อท้ายแสดงความเป็นเจ้าของ: ในการพูดว่า 'ชื่อของฉัน' ให้เติมคำต่อท้ายบุรุษที่หนึ่ง 'ي' (อิ) เข้ากับคำนาม 'اسم' (อิสม์, ชื่อ) กลายเป็น 'اسمي' (อิสมี) ไม่จำเป็นต้องใช้คำแยกต่างหากสำหรับ 'ของฉัน'",
+        "fa": "پسوندهای ملکی: برای گفتن 'نام من'، پسوند اول شخص 'ي' (ی) را به اسم 'اسم' (نام) اضافه کنید و 'اسمي' (اسمی) را تشکیل دهید. نیازی به کلمه جداگانه برای 'من' نیست.",
+        "zh": "所有格后缀：要说“我的名字”，将第一人称后缀“ي”（i）附加到名词“اسم”（ism，名字）上，形成“اسمي”（ismi）。不需要单独的“我的”一词。",
+        "ja": "所有接尾辞：「私の名前」と言うには、一人称接尾辞「ي」（イ）を名詞「اسم」（イスム、名前）に付けて「اسمي」（イスミ）にします。「私の」のための別単語は不要です。",
+        "ar": "ضمائر الملكية المتصلة: لقول 'اسمي'، نضمير المتكلم 'ي' إلى الاسم 'اسم'، لتصبح 'اسمي'. لا حاجة لكلمة منفصلة تعني 'ملكي'.",
+        "es": "Sufijos posesivos: Para decir 'mi nombre', adjunta el sufijo de primera persona 'ي' (i) al sustantivo 'اسم' (ism, nombre), formando 'اسمي' (ismi). No se necesita una palabra separada para 'mi'."
+      }
+    }
+  ],
+  "grammar_questions": [
+    {
+      "id": "M1_gq1",
+      "question": {
+        "en": "What is the correct response to the greeting 'السلام عليكم'?",
+        "th": "คำตอบที่ถูกต้องสำหรับการทักทาย 'السلام عليكم' คืออะไร?",
+        "fa": "پاسخ صحیح به احوال‌پرسی 'السلام عليكم' چیست؟",
+        "zh": "对问候“السلام عليكم”的正确回应是什么？",
+        "ja": "挨拶「السلام عليكم」に対する正しい返答は何ですか？",
+        "ar": "ما هو الرد الصحيح على تحية 'السلام عليكم'؟",
+        "es": "¿Cuál es la respuesta correcta al saludo 'السلام عليكم'?"
+      },
+      "options": [
+        { "text": { "en": "شكراً (Thank you)", "ar": "شكراً" } },
+        {
+          "text": {
+            "en": "وعليكم السلام (And upon you be peace)",
+            "ar": "وعليكم السلام"
+          }
+        },
+        { "text": { "en": "مع السلامة (Goodbye)", "ar": "مع السلامة" } },
+        { "text": { "en": "صباح الخير (Good morning)", "ar": "صباح الخير" } }
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "id": "M1_gq2",
+      "question": {
+        "en": "How do you say 'My name is Ahmed' using the correct possessive structure?",
+        "th": "คุณจะพูดว่า 'ชื่อของฉันคืออาเหม็ด' โดยใช้โครงสร้างความเป็นเจ้าของที่ถูกต้องอย่างไร?",
+        "fa": "چگونه با استفاده از ساختار ملکی صحیح می‌گویید 'نام من احمد است'؟",
+        "zh": "如何使用正确的所有格结构说“我叫艾哈迈德”？",
+        "ja": "正しい所有構造を使って「私の名前はアハメドです」とどう言いますか？",
+        "ar": "كيف تقول 'اسمي أحمد' باستخدام بنية الملكية الصحيحة؟",
+        "es": "¿Cómo dices 'Me llamo Ahmed' usando la estructura posesiva correcta?"
+      },
+      "options": [
+        { "text": { "en": "أنا اسم أحمد", "ar": "أنا اسم أحمد" } },
+        { "text": { "en": "اسمي أحمد", "ar": "اسمي أحمد" } },
+        { "text": { "en": "أسمي هو أحمد", "ar": "أسمي هو أحمد" } },
+        { "text": { "en": "الاسم أحمد", "ar": "الاسم أحمد" } }
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "id": "M1_gq3",
+      "question": {
+        "en": "Which pronoun is used to address a female as 'you'?",
+        "th": "ใช้คำสรรพนามใดในการเรียกผู้หญิงว่า 'คุณ'?",
+        "fa": "برای خطاب قرار دادن یک زن به عنوان 'شما' از کدام ضمیر استفاده می‌شود؟",
+        "zh": "哪个代词用于称呼女性为“你”？",
+        "ja": "女性を「あなた」と呼ぶために使用される代名詞はどれですか？",
+        "ar": "أي ضمير يُستخدم لمخاطبة الأنثى بـ 'أنتِ'؟",
+        "es": "¿Qué pronombre se usa para dirigirse a una mujer como 'tú'?"
+      },
+      "options": [
+        { "text": { "en": "أنتَ (anta)", "ar": "أنتَ" } },
+        { "text": { "en": "أنتِ (anti)", "ar": "أنتِ" } },
+        { "text": { "en": "هو (huwa)", "ar": "هو" } },
+        { "text": { "en": "هي (hiya)", "ar": "هي" } }
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "id": "M1_gq4",
+      "question": {
+        "en": "How is 'I am fine' expressed in Arabic, reflecting the absence of the verb 'to be'?",
+        "th": "'ฉันสบายดี' แสดงอย่างไรในภาษาอาหรับ ซึ่งสะท้อนถึงการไม่มีกริยา 'เป็น/คือ'?",
+        "fa": "'من خوب هستم' چگونه در عربی بیان می‌شود که عدم وجود فعل 'بودن' را نشان می‌دهد؟",
+        "zh": "阿拉伯语中如何表达“我很好”，以反映动词“是”的省略？",
+        "ja": "動詞「である」の省略を反映して、アラビア語で「私は元気です」はどのように表現されますか？",
+        "ar": "كيف يُعبر عن 'أنا بخير' في العربية، مما يعكس غياب فعل 'يكون'؟",
+        "es": "¿Cómo se expresa 'Estoy bien' en árabe, reflejando la ausencia del verbo 'ser/estar'?"
+      },
+      "options": [
+        { "text": { "en": "أنا أكون بخير", "ar": "أنا أكون بخير" } },
+        { "text": { "en": "أنا بخير", "ar": "أنا بخير" } },
+        { "text": { "en": "أنا يكون بخير", "ar": "أنا يكون بخير" } },
+        { "text": { "en": "أنا كان بخير", "ar": "أنا كان بخير" } }
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "id": "M1_gq5",
+      "question": {
+        "en": "What does the phrase 'كيف حالك؟' mean?",
+        "th": "สำนวน 'كيف حالك؟' หมายความว่าอย่างไร?",
+        "fa": "عبارت 'كيف حالك؟' به چه معناست؟",
+        "zh": "短语“كيف حالك？”是什么意思？",
+        "ja": "フレーズ「كيف حالك？」の意味は何ですか？",
+        "ar": "ماذا تعني عبارة 'كيف حالك؟'؟",
+        "es": "¿Qué significa la frase 'كيف حالك؟'?"
+      },
+      "options": [
+        { "text": { "en": "What is your name?", "ar": "ما اسمك؟" } },
+        { "text": { "en": "How are you?", "ar": "كيف حالك؟" } },
+        { "text": { "en": "Where are you from?", "ar": "من أين أنت؟" } },
+        { "text": { "en": "Goodbye", "ar": "مع السلامة" } }
+      ],
+      "correctOptionIndex": 1
+    }
+  ]
+}

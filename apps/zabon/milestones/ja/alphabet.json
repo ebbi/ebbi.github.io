@@ -1,0 +1,648 @@
+{
+  "items": [
+    {
+      "id": "ja_a",
+      "kind": "letter",
+      "role": "target",
+      "texts": { "ja": "あ", "en": "a" },
+      "phonetic": { "en": "/a/" },
+      "connections": {
+        "isolated": "あ",
+        "initial": "あ",
+        "medial": "あ",
+        "final": "あ"
+      },
+      "meta": { "category": "hiragana" }
+    },
+    {
+      "id": "ja_i",
+      "kind": "letter",
+      "role": "target",
+      "texts": { "ja": "い", "en": "i" },
+      "phonetic": { "en": "/i/" },
+      "connections": {
+        "isolated": "い",
+        "initial": "い",
+        "medial": "い",
+        "final": "い"
+      },
+      "meta": { "category": "hiragana" }
+    },
+    {
+      "id": "ja_u",
+      "kind": "letter",
+      "role": "target",
+      "texts": { "ja": "う", "en": "u" },
+      "phonetic": { "en": "/u/" },
+      "connections": {
+        "isolated": "う",
+        "initial": "う",
+        "medial": "う",
+        "final": "う"
+      },
+      "meta": { "category": "hiragana" }
+    },
+    {
+      "id": "ja_e",
+      "kind": "letter",
+      "role": "target",
+      "texts": { "ja": "え", "en": "e" },
+      "phonetic": { "en": "/e/" },
+      "connections": {
+        "isolated": "え",
+        "initial": "え",
+        "medial": "え",
+        "final": "え"
+      },
+      "meta": { "category": "hiragana" }
+    },
+    {
+      "id": "ja_o",
+      "kind": "letter",
+      "role": "target",
+      "texts": { "ja": "お", "en": "o" },
+      "phonetic": { "en": "/o/" },
+      "connections": {
+        "isolated": "お",
+        "initial": "お",
+        "medial": "お",
+        "final": "お"
+      },
+      "meta": { "category": "hiragana" }
+    },
+    {
+      "id": "ja_ka",
+      "kind": "letter",
+      "role": "target",
+      "texts": { "ja": "か", "en": "ka" },
+      "phonetic": { "en": "/ka/" },
+      "connections": {
+        "isolated": "か",
+        "initial": "か",
+        "medial": "か",
+        "final": "か"
+      },
+      "meta": { "category": "hiragana" }
+    },
+    {
+      "id": "ja_ki",
+      "kind": "letter",
+      "role": "target",
+      "texts": { "ja": "き", "en": "ki" },
+      "phonetic": { "en": "/ki/" },
+      "connections": {
+        "isolated": "き",
+        "initial": "き",
+        "medial": "き",
+        "final": "き"
+      },
+      "meta": { "category": "hiragana" }
+    },
+    {
+      "id": "ja_ku",
+      "kind": "letter",
+      "role": "target",
+      "texts": { "ja": "く", "en": "ku" },
+      "phonetic": { "en": "/ku/" },
+      "connections": {
+        "isolated": "く",
+        "initial": "く",
+        "medial": "く",
+        "final": "く"
+      },
+      "meta": { "category": "hiragana" }
+    },
+    {
+      "id": "ja_ke",
+      "kind": "letter",
+      "role": "target",
+      "texts": { "ja": "け", "en": "ke" },
+      "phonetic": { "en": "/ke/" },
+      "connections": {
+        "isolated": "け",
+        "initial": "け",
+        "medial": "け",
+        "final": "け"
+      },
+      "meta": { "category": "hiragana" }
+    },
+    {
+      "id": "ja_ko",
+      "kind": "letter",
+      "role": "target",
+      "texts": { "ja": "こ", "en": "ko" },
+      "phonetic": { "en": "/ko/" },
+      "connections": {
+        "isolated": "こ",
+        "initial": "こ",
+        "medial": "こ",
+        "final": "こ"
+      },
+      "meta": { "category": "hiragana" }
+    },
+    {
+      "id": "ja_sa",
+      "kind": "letter",
+      "role": "target",
+      "texts": { "ja": "さ", "en": "sa" },
+      "phonetic": { "en": "/sa/" },
+      "connections": {
+        "isolated": "さ",
+        "initial": "さ",
+        "medial": "さ",
+        "final": "さ"
+      },
+      "meta": { "category": "hiragana" }
+    },
+    {
+      "id": "ja_shi",
+      "kind": "letter",
+      "role": "target",
+      "texts": { "ja": "し", "en": "shi" },
+      "phonetic": { "en": "/shi/" },
+      "connections": {
+        "isolated": "し",
+        "initial": "し",
+        "medial": "し",
+        "final": "し"
+      },
+      "meta": { "category": "hiragana" }
+    },
+    {
+      "id": "ja_su",
+      "kind": "letter",
+      "role": "target",
+      "texts": { "ja": "す", "en": "su" },
+      "phonetic": { "en": "/su/" },
+      "connections": {
+        "isolated": "す",
+        "initial": "す",
+        "medial": "す",
+        "final": "す"
+      },
+      "meta": { "category": "hiragana" }
+    },
+    {
+      "id": "ja_se",
+      "kind": "letter",
+      "role": "target",
+      "texts": { "ja": "せ", "en": "se" },
+      "phonetic": { "en": "/se/" },
+      "connections": {
+        "isolated": "せ",
+        "initial": "せ",
+        "medial": "せ",
+        "final": "せ"
+      },
+      "meta": { "category": "hiragana" }
+    },
+    {
+      "id": "ja_so",
+      "kind": "letter",
+      "role": "target",
+      "texts": { "ja": "そ", "en": "so" },
+      "phonetic": { "en": "/so/" },
+      "connections": {
+        "isolated": "そ",
+        "initial": "そ",
+        "medial": "そ",
+        "final": "そ"
+      },
+      "meta": { "category": "hiragana" }
+    },
+    {
+      "id": "ja_ta",
+      "kind": "letter",
+      "role": "target",
+      "texts": { "ja": "た", "en": "ta" },
+      "phonetic": { "en": "/ta/" },
+      "connections": {
+        "isolated": "た",
+        "initial": "た",
+        "medial": "た",
+        "final": "た"
+      },
+      "meta": { "category": "hiragana" }
+    },
+    {
+      "id": "ja_chi",
+      "kind": "letter",
+      "role": "target",
+      "texts": { "ja": "ち", "en": "chi" },
+      "phonetic": { "en": "/chi/" },
+      "connections": {
+        "isolated": "ち",
+        "initial": "ち",
+        "medial": "ち",
+        "final": "ち"
+      },
+      "meta": { "category": "hiragana" }
+    },
+    {
+      "id": "ja_tsu",
+      "kind": "letter",
+      "role": "target",
+      "texts": { "ja": "つ", "en": "tsu" },
+      "phonetic": { "en": "/tsu/" },
+      "connections": {
+        "isolated": "つ",
+        "initial": "つ",
+        "medial": "つ",
+        "final": "つ"
+      },
+      "meta": { "category": "hiragana" }
+    },
+    {
+      "id": "ja_te",
+      "kind": "letter",
+      "role": "target",
+      "texts": { "ja": "て", "en": "te" },
+      "phonetic": { "en": "/te/" },
+      "connections": {
+        "isolated": "て",
+        "initial": "て",
+        "medial": "て",
+        "final": "て"
+      },
+      "meta": { "category": "hiragana" }
+    },
+    {
+      "id": "ja_to",
+      "kind": "letter",
+      "role": "target",
+      "texts": { "ja": "と", "en": "to" },
+      "phonetic": { "en": "/to/" },
+      "connections": {
+        "isolated": "と",
+        "initial": "と",
+        "medial": "と",
+        "final": "と"
+      },
+      "meta": { "category": "hiragana" }
+    },
+    {
+      "id": "ja_na",
+      "kind": "letter",
+      "role": "target",
+      "texts": { "ja": "な", "en": "na" },
+      "phonetic": { "en": "/na/" },
+      "connections": {
+        "isolated": "な",
+        "initial": "な",
+        "medial": "な",
+        "final": "な"
+      },
+      "meta": { "category": "hiragana" }
+    },
+    {
+      "id": "ja_ni",
+      "kind": "letter",
+      "role": "target",
+      "texts": { "ja": "に", "en": "ni" },
+      "phonetic": { "en": "/ni/" },
+      "connections": {
+        "isolated": "に",
+        "initial": "に",
+        "medial": "に",
+        "final": "に"
+      },
+      "meta": { "category": "hiragana" }
+    },
+    {
+      "id": "ja_nu",
+      "kind": "letter",
+      "role": "target",
+      "texts": { "ja": "ぬ", "en": "nu" },
+      "phonetic": { "en": "/nu/" },
+      "connections": {
+        "isolated": "ぬ",
+        "initial": "ぬ",
+        "medial": "ぬ",
+        "final": "ぬ"
+      },
+      "meta": { "category": "hiragana" }
+    },
+    {
+      "id": "ja_ne",
+      "kind": "letter",
+      "role": "target",
+      "texts": { "ja": "ね", "en": "ne" },
+      "phonetic": { "en": "/ne/" },
+      "connections": {
+        "isolated": "ね",
+        "initial": "ね",
+        "medial": "ね",
+        "final": "ね"
+      },
+      "meta": { "category": "hiragana" }
+    },
+    {
+      "id": "ja_no",
+      "kind": "letter",
+      "role": "target",
+      "texts": { "ja": "の", "en": "no" },
+      "phonetic": { "en": "/no/" },
+      "connections": {
+        "isolated": "の",
+        "initial": "の",
+        "medial": "の",
+        "final": "の"
+      },
+      "meta": { "category": "hiragana" }
+    },
+    {
+      "id": "ja_ha",
+      "kind": "letter",
+      "role": "target",
+      "texts": { "ja": "は", "en": "ha" },
+      "phonetic": { "en": "/ha/" },
+      "connections": {
+        "isolated": "は",
+        "initial": "は",
+        "medial": "は",
+        "final": "は"
+      },
+      "meta": { "category": "hiragana" }
+    },
+    {
+      "id": "ja_hi",
+      "kind": "letter",
+      "role": "target",
+      "texts": { "ja": "ひ", "en": "hi" },
+      "phonetic": { "en": "/hi/" },
+      "connections": {
+        "isolated": "ひ",
+        "initial": "ひ",
+        "medial": "ひ",
+        "final": "ひ"
+      },
+      "meta": { "category": "hiragana" }
+    },
+    {
+      "id": "ja_fu",
+      "kind": "letter",
+      "role": "target",
+      "texts": { "ja": "ふ", "en": "fu" },
+      "phonetic": { "en": "/fu/" },
+      "connections": {
+        "isolated": "ふ",
+        "initial": "ふ",
+        "medial": "ふ",
+        "final": "ふ"
+      },
+      "meta": { "category": "hiragana" }
+    },
+    {
+      "id": "ja_he",
+      "kind": "letter",
+      "role": "target",
+      "texts": { "ja": "へ", "en": "he" },
+      "phonetic": { "en": "/he/" },
+      "connections": {
+        "isolated": "へ",
+        "initial": "へ",
+        "medial": "へ",
+        "final": "へ"
+      },
+      "meta": { "category": "hiragana" }
+    },
+    {
+      "id": "ja_ho",
+      "kind": "letter",
+      "role": "target",
+      "texts": { "ja": "ほ", "en": "ho" },
+      "phonetic": { "en": "/ho/" },
+      "connections": {
+        "isolated": "ほ",
+        "initial": "ほ",
+        "medial": "ほ",
+        "final": "ほ"
+      },
+      "meta": { "category": "hiragana" }
+    },
+    {
+      "id": "ja_ma",
+      "kind": "letter",
+      "role": "target",
+      "texts": { "ja": "ま", "en": "ma" },
+      "phonetic": { "en": "/ma/" },
+      "connections": {
+        "isolated": "ま",
+        "initial": "ま",
+        "medial": "ま",
+        "final": "ま"
+      },
+      "meta": { "category": "hiragana" }
+    },
+    {
+      "id": "ja_mi",
+      "kind": "letter",
+      "role": "target",
+      "texts": { "ja": "み", "en": "mi" },
+      "phonetic": { "en": "/mi/" },
+      "connections": {
+        "isolated": "み",
+        "initial": "み",
+        "medial": "み",
+        "final": "み"
+      },
+      "meta": { "category": "hiragana" }
+    },
+    {
+      "id": "ja_mu",
+      "kind": "letter",
+      "role": "target",
+      "texts": { "ja": "む", "en": "mu" },
+      "phonetic": { "en": "/mu/" },
+      "connections": {
+        "isolated": "む",
+        "initial": "む",
+        "medial": "む",
+        "final": "む"
+      },
+      "meta": { "category": "hiragana" }
+    },
+    {
+      "id": "ja_me",
+      "kind": "letter",
+      "role": "target",
+      "texts": { "ja": "め", "en": "me" },
+      "phonetic": { "en": "/me/" },
+      "connections": {
+        "isolated": "め",
+        "initial": "め",
+        "medial": "め",
+        "final": "め"
+      },
+      "meta": { "category": "hiragana" }
+    },
+    {
+      "id": "ja_mo",
+      "kind": "letter",
+      "role": "target",
+      "texts": { "ja": "も", "en": "mo" },
+      "phonetic": { "en": "/mo/" },
+      "connections": {
+        "isolated": "も",
+        "initial": "も",
+        "medial": "も",
+        "final": "も"
+      },
+      "meta": { "category": "hiragana" }
+    },
+    {
+      "id": "ja_ya",
+      "kind": "letter",
+      "role": "target",
+      "texts": { "ja": "や", "en": "ya" },
+      "phonetic": { "en": "/ya/" },
+      "connections": {
+        "isolated": "や",
+        "initial": "や",
+        "medial": "や",
+        "final": "や"
+      },
+      "meta": { "category": "hiragana" }
+    },
+    {
+      "id": "ja_yu",
+      "kind": "letter",
+      "role": "target",
+      "texts": { "ja": "ゆ", "en": "yu" },
+      "phonetic": { "en": "/yu/" },
+      "connections": {
+        "isolated": "ゆ",
+        "initial": "ゆ",
+        "medial": "ゆ",
+        "final": "ゆ"
+      },
+      "meta": { "category": "hiragana" }
+    },
+    {
+      "id": "ja_yo",
+      "kind": "letter",
+      "role": "target",
+      "texts": { "ja": "よ", "en": "yo" },
+      "phonetic": { "en": "/yo/" },
+      "connections": {
+        "isolated": "よ",
+        "initial": "よ",
+        "medial": "よ",
+        "final": "よ"
+      },
+      "meta": { "category": "hiragana" }
+    },
+    {
+      "id": "ja_ra",
+      "kind": "letter",
+      "role": "target",
+      "texts": { "ja": "ら", "en": "ra" },
+      "phonetic": { "en": "/ra/" },
+      "connections": {
+        "isolated": "ら",
+        "initial": "ら",
+        "medial": "ら",
+        "final": "ら"
+      },
+      "meta": { "category": "hiragana" }
+    },
+    {
+      "id": "ja_ri",
+      "kind": "letter",
+      "role": "target",
+      "texts": { "ja": "り", "en": "ri" },
+      "phonetic": { "en": "/ri/" },
+      "connections": {
+        "isolated": "り",
+        "initial": "り",
+        "medial": "り",
+        "final": "り"
+      },
+      "meta": { "category": "hiragana" }
+    },
+    {
+      "id": "ja_ru",
+      "kind": "letter",
+      "role": "target",
+      "texts": { "ja": "る", "en": "ru" },
+      "phonetic": { "en": "/ru/" },
+      "connections": {
+        "isolated": "る",
+        "initial": "る",
+        "medial": "る",
+        "final": "る"
+      },
+      "meta": { "category": "hiragana" }
+    },
+    {
+      "id": "ja_re",
+      "kind": "letter",
+      "role": "target",
+      "texts": { "ja": "れ", "en": "re" },
+      "phonetic": { "en": "/re/" },
+      "connections": {
+        "isolated": "れ",
+        "initial": "れ",
+        "medial": "れ",
+        "final": "れ"
+      },
+      "meta": { "category": "hiragana" }
+    },
+    {
+      "id": "ja_ro",
+      "kind": "letter",
+      "role": "target",
+      "texts": { "ja": "ろ", "en": "ro" },
+      "phonetic": { "en": "/ro/" },
+      "connections": {
+        "isolated": "ろ",
+        "initial": "ろ",
+        "medial": "ろ",
+        "final": "ろ"
+      },
+      "meta": { "category": "hiragana" }
+    },
+    {
+      "id": "ja_wa",
+      "kind": "letter",
+      "role": "target",
+      "texts": { "ja": "わ", "en": "wa" },
+      "phonetic": { "en": "/wa/" },
+      "connections": {
+        "isolated": "わ",
+        "initial": "わ",
+        "medial": "わ",
+        "final": "わ"
+      },
+      "meta": { "category": "hiragana" }
+    },
+    {
+      "id": "ja_wo",
+      "kind": "letter",
+      "role": "target",
+      "texts": { "ja": "を", "en": "wo" },
+      "phonetic": { "en": "/wo/" },
+      "connections": {
+        "isolated": "を",
+        "initial": "を",
+        "medial": "を",
+        "final": "を"
+      },
+      "meta": { "category": "hiragana" }
+    },
+    {
+      "id": "ja_n",
+      "kind": "letter",
+      "role": "target",
+      "texts": { "ja": "ん", "en": "n" },
+      "phonetic": { "en": "/n/" },
+      "connections": {
+        "isolated": "ん",
+        "initial": "ん",
+        "medial": "ん",
+        "final": "ん"
+      },
+      "meta": { "category": "hiragana" }
+    }
+  ]
+}

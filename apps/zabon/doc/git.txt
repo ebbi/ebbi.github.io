@@ -1,0 +1,50 @@
+On Debian git setup for 
+git push all main
+git push ebbi main
+git push beraar main
+
+===================
+
+git switch -c feature/new-feature
+
+# Make code changes, then:
+git add .
+git commit -m "Implement new feature"
+# Repeat as needed with more commits
+
+# Merge feature into main
+git switch main
+git merge feature/new-feature
+
+# Discard changes
+git switch main
+git branch -D feature/new-feature
+
+===================
+
+
+ssh-keygen -t ed25519 -C "ebbi@github.com" -f ~/.ssh/id_ed25519_ebbi
+ssh-keygen -t ed25519 -C "beraar@github.com" -f ~/.ssh/id_ed25519_beraar
+
+cat ~/.ssh/id_ed25519_ebbi.pub
+cat ~/.ssh/id_ed25519_beraar.pub
+
+nano ~/.ssh/config
+
+Host github.com-ebbi
+    HostName github.com
+    User git
+    IdentityFile ~/.ssh/id_ed25519_ebbi
+
+Host github.com-beraar
+    HostName github.com
+    User git
+    IdentityFile ~/.ssh/id_ed25519_beraar
+
+chmod 600 ~/.ssh/config
+chmod 600 ~/.ssh/id_ed25519_*
+
+cd /path/to/usb/code/zabon
+git remote -v
+git push all main
+

@@ -1,0 +1,2238 @@
+/* ============================================================
+Zabon v2 — Stage 15 stylesheet (mobile-first app shell)
+Language-agnostic visual system.
+Rules enforced in this file:
+No language-specific selectors.
+No [lang="..."], :lang(...), or [data-lang="..."] styling.
+All language content shares the same component styles.
+Direction is functional only, via dir attributes and logical CSS.
+Dark mode and font mode affect global variables only.
+============================================================ */
+/* ------------------------------------------------------------
+Theme variables
+------------------------------------------------------------ */
+:root {
+  --bg: #f6f2e9;
+  --surface: #fffdf8;
+  --surface-2: #f0ead9;
+  --text: #26221c;
+  --muted: #6f6759;
+  --line: #ddd2c2;
+  --accent: #2f6f4f;
+  --accent-contrast: #ffffff;
+  --danger: #a64b42;
+  --shadow: 0 10px 30px rgba(0, 0, 0, 0.16);
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --space-1: 0.35rem;
+  --space-2: 0.55rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  /* Stage 15: comfortable, book-like reading spacing. */
+  --reading-gap: 0.45rem;
+  --toolbar-height: 3.5rem;
+  --bottombar-height: 3.75rem;
+  /* Stage 15: modern multilingual stacks (loaded via Google Fonts).
+  The order matters: English first (Inter), then Farsi (Vazirmatn),
+  then Thai (Prompt / Noto Serif Thai), then generic fallbacks. */
+  --font-primary:
+    "Inter", "Vazirmatn", "Prompt", system-ui, -apple-system, sans-serif;
+  --font-modern: var(--font-primary);
+  --font-traditional: "Inter", "Vazirmatn", "Noto Serif Thai", Georgia, serif;
+  --content-font: var(--font-modern);
+
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+  --actionbar-height: 3rem;
+
+  color-scheme: light dark;
+}
+
+/* ------------------------------------------------------------
+Font mode: changes only the global content font stack.
+------------------------------------------------------------ */
+:root[data-font="modern"] {
+  --content-font: var(--font-modern);
+}
+:root[data-font="traditional"] {
+  --content-font: var(--font-traditional);
+}
+
+/* ------------------------------------------------------------
+Dark mode: changes semantic color variables only.
+Stage 15: modern neutral near-black scheme with a cool accent.
+------------------------------------------------------------ */
+:root[data-theme="dark"] {
+  --bg: #0a0a0a;
+  --surface: #141416;
+  --surface-2: #1c1c1f;
+  --text: #e8e8ea;
+  --muted: #9b9ba2;
+  --line: #2a2a2e;
+  --accent: #6fd0e0;
+  --accent-contrast: #0a0a0a;
+  --danger: #e0847c;
+  --shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+  color-scheme: dark;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0a0a0a;
+    --surface: #141416;
+    --surface-2: #1c1c1f;
+    --text: #e8e8ea;
+    --muted: #9b9ba2;
+    --line: #2a2a2e;
+    --accent: #6fd0e0;
+    --accent-contrast: #0a0a0a;
+    --danger: #e0847c;
+    --shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+    color-scheme: dark;
+  }
+}
+
+/* ------------------------------------------------------------
+Base
+------------------------------------------------------------ */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+html,
+body {
+  margin: 0;
+  min-block-size: 100%;
+}
+body {
+  font-family: var(--content-font);
+  background: var(--bg);
+  color: var(--text);
+  font-weight: 400;
+  /* Stage 15: slightly increased line height accommodates Thai tone
+  marks and Farsi diacritics. */
+  line-height: 1.6;
+}
+button,
+select,
+input {
+  font: inherit;
+  color: inherit;
+}
+[hidden] {
+  display: none !important;
+}
+:where(button, select, input):focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* ------------------------------------------------------------
+App shell — mobile-first fixed toolbar / scrollable main /
+fixed bottom bars.
+------------------------------------------------------------ */
+.app-shell {
+  display: flex;
+  flex-direction: column;
+  block-size: 100dvh;
+  overflow: hidden;
+}
+.app-toolbar {
+  position: fixed;
+  inset-block-start: 0;
+  inset-inline: 0;
+  z-index: 30;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  block-size: var(--toolbar-height);
+  padding-inline: var(--space-3);
+  background: var(--surface);
+  border-block-end: 1px solid var(--line);
+}
+.app-toolbar__title {
+  margin: 0;
+  font-size: 1.25rem;
+}
+.toolbar__title[role="button"] {
+  transition:
+    opacity 0.2s ease,
+    text-decoration 0.2s ease;
+}
+.toolbar__title[role="button"]:hover,
+.toolbar__title[role="button"]:focus {
+  opacity: 0.75;
+  text-decoration: underline;
+  outline: none; /* Rely on your global focus styles if preferred */
+}
+.app-main {
+  flex: 1;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  padding-block-start: var(--toolbar-height);
+  padding-block-end: var(--safe-bottom);
+}
+/* ── Toolbars Base ── */
+.action-bar,
+.bottom-bar {
+  position: fixed;
+  inset-inline: 0;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  background: var(--surface);
+  border-block-start: 1px solid var(--line);
+  box-sizing: border-box;
+  width: 100%;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-3);
+}
+
+/* Row 1: Exercises */
+.action-bar {
+  inset-block-end: var(--bottombar-height);
+  justify-content: safe center;
+  overflow-x: auto; /* Allows horizontal scroll on very small screens instead of wrapping */
+}
+
+/* Row 2: Media, Score & Settings */
+.bottom-bar {
+  inset-block-end: 0;
+  min-block-size: var(--bottombar-height);
+  justify-content: flex-start;
+  overflow-x: auto; /* Allows horizontal scroll on very small screens instead of wrapping */
+  padding-bottom: calc(var(--space-2) + var(--safe-bottom));
+}
+
+/* ── Toolbar Buttons ── */
+.action-bar__button,
+.bottom-bar__button,
+.action-bar button,
+.bottom-bar button {
+  flex: 0 1 auto;
+  min-block-size: 2.4rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--text);
+  font-size: 0.95rem;
+  cursor: pointer;
+  padding: 0.45rem 0.75rem;
+  white-space: nowrap;
+}
+
+.action-bar__button:hover:not(:disabled),
+.bottom-bar__button:hover:not(:disabled),
+.action-bar button:hover:not(:disabled),
+.bottom-bar button:hover:not(:disabled) {
+  border-color: var(--accent);
+}
+
+.action-bar__button:disabled,
+.bottom-bar__button:disabled,
+.action-bar button:disabled,
+.bottom-bar button:disabled {
+  cursor: default;
+  opacity: 0.45;
+}
+
+/* ── Row 1: Score Badge (Styled as an Exercise Icon) ── */
+.auto-complete-progress {
+  /* Inherits pill shape, padding, and border from .action-bar__button */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  color: var(--accent);
+  background: var(--surface-2, rgba(0, 0, 0, 0.05));
+  cursor: default;
+  pointer-events: none; /* Prevents it from acting like a clickable button */
+  white-space: nowrap;
+  min-width: 3.5rem;
+}
+.auto-complete-progress {
+  /* Inherits pill shape from .action-bar__button */
+  transition:
+    background 0.3s ease,
+    border-color 0.3s ease,
+    color 0.3s ease;
+  cursor: default;
+  pointer-events: none;
+}
+/* ── Score Pill: Goal Met State (80%+) ── */
+.auto-complete-progress.score-met {
+  background: color-mix(in srgb, var(--success, #22c55e) 15%, var(--surface));
+  border-color: var(--success, #22c55e);
+  color: var(--success, #22c55e);
+  font-weight: 600;
+  /* Optional: Add a subtle pulse animation to draw the eye */
+  animation: scoreMetPulse 2s infinite;
+}
+
+@keyframes scoreMetPulse {
+  0% {
+    box-shadow: 0 0 0 0
+      color-mix(in srgb, var(--success, #22c55e) 40%, transparent);
+  }
+  70% {
+    box-shadow: 0 0 0 6px
+      color-mix(in srgb, var(--success, #22c55e) 0%, transparent);
+  }
+  100% {
+    box-shadow: 0 0 0 0
+      color-mix(in srgb, var(--success, #22c55e) 0%, transparent);
+  }
+}
+
+/* ── Row 2: Complete Toggle & Settings Alignment ── */
+.complete-toggle {
+  margin-inline-start: auto; /* Absorbs space between [Stop] and [Complete], pushing them to the right */
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  font-size: 0.9rem;
+  color: var(--text);
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.complete-toggle input[type="checkbox"] {
+  width: 1.1rem;
+  height: 1.1rem;
+  accent-color: var(--accent);
+}
+/* ------------------------------------------------------------
+Views
+Stage 15: inline-size can never exceed the viewport.
+------------------------------------------------------------ */
+.view {
+  inline-size: min(920px, 100%);
+  max-inline-size: 100%;
+  margin-inline: auto;
+  padding-inline: 1rem;
+  /*  padding-block: 1.25rem 5rem; */
+  padding-block: 1.25rem calc(var(--safe-bottom) + 2rem);
+}
+#home-view,
+#lesson-view {
+  /* room for action bar + bottom bar 
+  padding-block-end: 9.5rem; */
+  padding-block-end: calc(
+    var(--bottombar-height) + var(--actionbar-height) + var(--safe-bottom) +
+      2rem
+  );
+}
+
+/* ------------------------------------------------------------
+Icon buttons (toolbar, bottom bar, close)
+------------------------------------------------------------ */
+.icon-button {
+  inline-size: 2.4rem;
+  block-size: 2.4rem;
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  background: var(--surface);
+  color: var(--text);
+  font-size: 1.05rem;
+  cursor: pointer;
+}
+.icon-button:hover:not(:disabled) {
+  border-color: var(--accent);
+}
+.icon-button:disabled {
+  cursor: default;
+  opacity: 0.45;
+}
+.icon-button--large {
+  inline-size: 2.9rem;
+  block-size: 2.9rem;
+  font-size: 1.15rem;
+}
+
+/* ------------------------------------------------------------
+Buttons
+------------------------------------------------------------ */
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-block-size: 2.4rem;
+  padding: 0.45rem 0.9rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--text);
+  font-size: 1rem;
+  cursor: pointer;
+}
+.button:disabled {
+  cursor: default;
+  opacity: 0.45;
+}
+.button--wide {
+  inline-size: auto;
+  min-block-size: 2.4rem;
+}
+.button:hover:not(:disabled) {
+  border-color: var(--accent);
+}
+.button--icon {
+  inline-size: 2.4rem;
+  block-size: 2.4rem;
+  padding: 0;
+  border-radius: 50%;
+  flex: 0 0 auto;
+}
+.button,
+.icon-button,
+.action-bar__button,
+.bottom-bar__button {
+  min-block-size: 2.5rem; /* 40px minimum touch target for mobile */
+  /* ... keep your existing padding, borders, etc. ... */
+}
+
+/* ------------------------------------------------------------
+Backdrop + hamburger panel
+------------------------------------------------------------ */
+.backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  background: rgba(0, 0, 0, 0.32);
+}
+.hamburger-panel {
+  position: fixed;
+  inset-block-start: var(--toolbar-height);
+  inset-inline-end: var(--space-3);
+  z-index: 50;
+  display: grid;
+  gap: var(--space-3);
+  inline-size: min(320px, calc(100vw - 1.5rem));
+  padding: var(--space-4);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-xl);
+  background: var(--surface);
+  box-shadow: var(--shadow);
+}
+.panel-row {
+  display: grid;
+  gap: var(--space-2);
+}
+.panel-toggle {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  inline-size: 100%;
+  min-block-size: 2.6rem;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  background: var(--surface);
+  color: var(--text);
+  cursor: pointer;
+  text-align: start;
+}
+.panel-toggle:hover {
+  border-color: var(--accent);
+}
+.panel-toggle__icon {
+  inline-size: 2rem;
+  text-align: center;
+  font-size: 1.1rem;
+}
+.panel-toggle__label {
+  unicode-bidi: isolate;
+}
+.panel-field {
+  display: grid;
+  gap: var(--space-2);
+}
+.panel-field__label {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+.panel-nav {
+  display: grid;
+  gap: var(--space-2);
+  border-block-start: 1px solid var(--line);
+  padding-block-start: var(--space-3);
+}
+.panel-nav__button {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  inline-size: 100%;
+  min-block-size: 2.6rem;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  background: var(--surface);
+  color: var(--text);
+  cursor: pointer;
+  text-align: start;
+}
+.panel-nav__button:hover {
+  border-color: var(--accent);
+}
+
+/* ------------------------------------------------------------
+Settings sheet (bottom sheet)
+Stage 15: sections never extend beyond the viewport width.
+------------------------------------------------------------ */
+.sheet {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+}
+.sheet__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.32);
+}
+.sheet__panel {
+  position: absolute;
+  inset-inline: 0;
+  inset-block-end: 0;
+  display: flex;
+  flex-direction: column;
+  max-block-size: 82dvh;
+  max-inline-size: 100%;
+  border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+  background: var(--surface);
+  box-shadow: var(--shadow);
+}
+.sheet__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-4);
+  border-block-end: 1px solid var(--line);
+}
+.sheet__title {
+  margin: 0;
+  font-size: 1.1rem;
+}
+.sheet__body {
+  overflow-y: auto;
+  padding: var(--space-4);
+  display: grid;
+  gap: var(--space-4);
+}
+.sheet-section {
+  display: grid;
+  gap: var(--space-2);
+  padding: var(--space-3);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  background: var(--surface);
+  /* Stage 15: keep long content inside the viewport. */
+  min-inline-size: 0;
+  max-inline-size: 100%;
+  overflow-wrap: anywhere;
+}
+.sheet-section__title {
+  margin: 0;
+  font-size: 0.95rem;
+  color: var(--muted);
+}
+.sheet-field {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+/* ------------------------------------------------------------
+Controls
+------------------------------------------------------------ */
+.select,
+.text-input {
+  min-block-size: 2.2rem;
+  max-inline-size: 100%;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--text);
+  font-size: 0.95rem;
+  padding: 0.45rem 0.7rem;
+}
+.language-list,
+.voice-list,
+.radio-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+.language-control {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  min-block-size: 2.2rem;
+  padding: 0.45rem 0.7rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--surface);
+  cursor: pointer;
+}
+.language-control input {
+  accent-color: var(--accent);
+}
+.language-control__flag {
+  font-size: 1.05rem;
+}
+.language-control__label {
+  unicode-bidi: isolate;
+}
+.radio-control {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  min-block-size: 2.2rem;
+  padding: 0.45rem 0.7rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--surface);
+  cursor: pointer;
+}
+.radio-control input {
+  accent-color: var(--accent);
+}
+.voice-row {
+  display: grid;
+  gap: var(--space-1);
+  inline-size: 100%;
+  max-inline-size: 100%;
+  min-inline-size: 0;
+}
+.voice-row__label {
+  color: var(--muted);
+  font-size: 0.85rem;
+  unicode-bidi: isolate;
+  /* Stage 15: long voice/language labels must wrap, not overflow. */
+  overflow-wrap: anywhere;
+}
+/* Stage 15: voice selects never exceed the sheet width; long voice
+names are truncated instead of pushing the layout off-screen. */
+.voice-row .select {
+  inline-size: 100%;
+  min-inline-size: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.voice-instructions summary {
+  cursor: pointer;
+  unicode-bidi: isolate;
+}
+.voice-instructions__steps {
+  display: grid;
+  gap: var(--space-2);
+  margin: var(--space-2) 0 0;
+  padding-inline-start: 1.4rem;
+}
+.voice-instructions__steps li {
+  unicode-bidi: isolate;
+}
+
+/* ------------------------------------------------------------
+Home view — categories
+------------------------------------------------------------ */
+.home-title {
+  margin: 0 0 1rem;
+  font-size: 1.2rem;
+}
+.category-list {
+  display: grid;
+  gap: 0.9rem;
+}
+.category {
+  border: 1px solid var(--line);
+  border-radius: var(--radius-xl);
+  background: var(--surface);
+  overflow: hidden;
+}
+.category__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  inline-size: 100%;
+  padding: 1rem 1.1rem;
+  border: 0;
+  background: var(--surface);
+  color: var(--text);
+  font-size: 1rem;
+  text-align: start;
+  cursor: pointer;
+}
+.category__header:hover {
+  color: var(--accent);
+}
+.category__title {
+  unicode-bidi: isolate;
+}
+.category__chevron {
+  color: var(--muted);
+}
+.category__lessons {
+  display: grid;
+  gap: var(--space-2);
+  padding: 0 var(--space-3) var(--space-3);
+}
+.category__icon,
+.proficiency-tier__icon {
+  flex: 0 0 auto;
+}
+.category__title-group,
+.proficiency-tier__title-group {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+.category__progress {
+  color: var(--muted);
+  font-size: 0.85rem;
+  font-weight: 400;
+}
+.panel-nav__icon {
+  inline-size: 2rem;
+  text-align: center;
+  font-size: 1.1rem;
+}
+.lesson-card {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: flex-start;
+  inline-size: 100%;
+  padding: 1rem 1.1rem;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: var(--surface-2);
+  color: var(--text);
+  font-size: 1rem;
+  text-align: start;
+  cursor: pointer;
+}
+.lesson-card:hover:not(:disabled) {
+  border-color: var(--accent);
+}
+.lesson-card__title {
+  flex: 1;
+  min-inline-size: 0;
+  unicode-bidi: isolate;
+  overflow-wrap: anywhere;
+}
+
+/* ------------------------------------------------------------
+Document header (lesson / exercise / progress)
+------------------------------------------------------------ */
+.document-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-block-end: 1rem;
+}
+.document-title {
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+/* ------------------------------------------------------------
+Lesson view — stacked language columns.
+------------------------------------------------------------ */
+.lesson-section {
+  margin-block-end: 1.25rem;
+}
+.lesson-section__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  inline-size: 100%;
+  padding: 0.35rem 0;
+  border: 0;
+  background: transparent;
+  color: var(--muted);
+  font-size: 1rem;
+  text-align: start;
+  cursor: pointer;
+}
+.lesson-section__header:hover {
+  color: var(--accent);
+}
+.lesson-section__title {
+  unicode-bidi: isolate;
+}
+.lesson-section__chevron {
+  color: var(--muted);
+}
+.lesson-section__body {
+  margin-block-start: 0.5rem;
+}
+.item-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  inline-size: 100%;
+  max-inline-size: 100%;
+  min-inline-size: 0;
+}
+.item-column {
+  display: flex;
+  flex-direction: column;
+  flex: 0 0 auto;
+  max-inline-size: 100%;
+  background: transparent;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+}
+.language-cell {
+  display: grid;
+  gap: 0.25rem;
+  padding: 0.4rem 0.45rem;
+  border: none;
+  border-radius: var(--radius-md);
+  background: transparent;
+  color: var(--text);
+  font-size: 1rem;
+  line-height: 1.7;
+  text-align: start;
+  cursor: pointer;
+}
+.language-cell:hover:not(.language-cell--missing) {
+  background-color: rgba(127, 127, 127, 0.1);
+  background-color: color-mix(in srgb, var(--accent) 12%, transparent);
+}
+.language-cell__text {
+  min-inline-size: 0;
+  unicode-bidi: isolate;
+  text-align: start;
+  overflow-wrap: anywhere;
+}
+.language-cell--missing {
+  opacity: 0.58;
+  cursor: default;
+}
+.sentence-text {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.3rem;
+}
+.sentence-token {
+  display: inline;
+  padding: 0.1rem 0.2rem;
+  border-radius: var(--radius-sm);
+  unicode-bidi: isolate;
+}
+.sentence-text--compact {
+  gap: 0;
+}
+.sentence-text--compact .sentence-token {
+  padding-inline: 0;
+}
+.language-cell.is-speaking {
+  background-color: rgba(127, 127, 127, 0.16);
+  background-color: color-mix(in srgb, var(--accent) 18%, transparent);
+}
+.sentence-token.is-highlighted {
+  background-color: Highlight;
+  color: HighlightText;
+}
+.language-line.is-speaking {
+  border-color: var(--accent);
+  background-color: rgba(127, 127, 127, 0.16);
+  background-color: color-mix(in srgb, var(--accent) 18%, transparent);
+}
+.language-cell__word-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.record-mic-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.2rem 0.4rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--surface-2);
+  color: var(--muted);
+  font-size: 0.85rem;
+  line-height: 1;
+  cursor: pointer;
+  flex: 0 0 auto;
+  flex-shrink: 0;
+  transition:
+    border-color 0.2s,
+    color 0.2s;
+}
+.record-mic-btn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+/* ------------------------------------------------------------
+Record Overlay Visual States (Stage 9)
+------------------------------------------------------------ */
+.record-overlay__btn[data-action="record-stop"] {
+  background-color: var(--surface);
+  color: var(--danger);
+  border-color: var(--danger);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.record-overlay__btn[data-action="record-stop"]::before {
+  content: "";
+  display: inline-block;
+  width: 0.6rem;
+  height: 0.6rem;
+  background-color: var(--danger);
+  border-radius: 50%;
+  margin-inline-end: 0.5rem;
+  animation: pulse-dot 1s infinite;
+}
+@keyframes pulse-dot {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.4;
+    transform: scale(0.8);
+  }
+}
+.record-overlay__error {
+  color: var(--danger);
+  font-size: 0.9rem;
+  text-align: center;
+  margin: var(--space-3) 0 0 0;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+/* ------------------------------------------------------------
+Shared components
+------------------------------------------------------------ */
+.empty-state {
+  padding: 1rem;
+  border: 1px dashed var(--line);
+  border-radius: 14px;
+  background: var(--surface);
+  color: var(--muted);
+  text-align: start;
+}
+.flashcard-stage,
+.quiz-stage,
+.build-stage {
+  display: grid;
+  gap: 1rem;
+}
+.flashcard {
+  display: grid;
+  gap: 1rem;
+  padding: 1.1rem;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: var(--surface);
+}
+.flashcard__back {
+  display: grid;
+  gap: 0.55rem;
+  padding: 0.75rem;
+  border: 1px dashed var(--line);
+  border-radius: 14px;
+}
+.flashcard__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+.rating-panel {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+.flashcard-status,
+.quiz-status {
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+.language-line {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--surface);
+  color: var(--text);
+  font-size: 1rem;
+  line-height: 1.65;
+  text-align: start;
+}
+.language-line[data-action="speak-text"] {
+  cursor: pointer;
+}
+.language-line[data-action="speak-text"]:hover {
+  border-color: var(--accent);
+}
+.language-line__text {
+  flex: 1;
+  min-inline-size: 0;
+  unicode-bidi: isolate;
+  text-align: start;
+  overflow-wrap: anywhere;
+}
+.quiz-question {
+  display: grid;
+  gap: 1rem;
+  padding: 1.1rem;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: var(--surface);
+}
+.quiz-options-title {
+  margin: 0;
+  font-size: 1rem;
+  color: var(--muted);
+}
+.quiz-options {
+  display: grid;
+  gap: 0.55rem;
+}
+.quiz-option {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  inline-size: 100%;
+  padding: 0.85rem 1rem;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--surface);
+  color: var(--text);
+  font-size: 1rem;
+  text-align: start;
+  cursor: pointer;
+}
+.quiz-option:hover:not(:disabled) {
+  border-color: var(--accent);
+}
+.quiz-option:disabled {
+  cursor: default;
+  opacity: 0.72;
+}
+.quiz-option__text {
+  unicode-bidi: isolate;
+}
+.quiz-option.is-correct {
+  border-color: var(--accent);
+  box-shadow: inset 0 0 0 1px var(--accent);
+}
+.quiz-option.is-incorrect {
+  border-color: var(--danger);
+  box-shadow: inset 0 0 0 1px var(--danger);
+}
+.quiz-option.is-speaking {
+  background-color: rgba(127, 127, 127, 0.16);
+  background-color: color-mix(in srgb, var(--accent) 18%, transparent);
+}
+.quiz-feedback {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--surface);
+}
+.quiz-feedback.is-correct {
+  border-color: var(--accent);
+}
+.quiz-feedback.is-incorrect {
+  border-color: var(--danger);
+}
+.build-sentence {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  min-block-size: 3.2rem;
+  padding: 0.85rem 1rem;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--surface);
+}
+.build-placeholder {
+  color: var(--muted);
+  unicode-bidi: isolate;
+}
+.build-pool {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+.build-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.45rem 0.8rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--text);
+  font-size: 1rem;
+  cursor: pointer;
+}
+.build-chip:hover {
+  border-color: var(--accent);
+}
+.build-chip__text {
+  unicode-bidi: isolate;
+}
+.build-chip__remove {
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+.build-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+.exercise-settings {
+  margin-block-end: 1rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-xl);
+  background: var(--surface);
+  overflow: hidden;
+}
+.exercise-settings__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  inline-size: 100%;
+  padding: 0.85rem 1rem;
+  border: 0;
+  background: var(--surface);
+  color: var(--text);
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-align: start;
+  cursor: pointer;
+}
+.exercise-settings__header:hover {
+  color: var(--accent);
+}
+.exercise-settings__title {
+  unicode-bidi: isolate;
+}
+.exercise-settings__chevron {
+  color: var(--muted);
+}
+.exercise-settings__body {
+  padding: 0 1rem 1rem;
+}
+.exercise-config {
+  display: grid;
+  gap: 0.75rem;
+  margin-block-end: 1rem;
+  padding: 1rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-xl);
+  background: var(--surface);
+}
+.config-row {
+  display: grid;
+  gap: 0.3rem;
+}
+.config-label {
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+.reveal-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+/* ------------------------------------------------------------
+Progress
+------------------------------------------------------------ */
+.progress-stage {
+  display: grid;
+  gap: 1rem;
+}
+.progress-section {
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: var(--surface);
+  overflow: hidden;
+  margin-bottom: 1rem;
+}
+.progress-section__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  inline-size: 100%;
+  padding: 1rem;
+  border: 0;
+  background: var(--surface);
+  color: var(--text);
+  font-size: 1rem;
+  font-weight: 600;
+  text-align: start;
+  cursor: pointer;
+}
+.progress-section__header:hover {
+  color: var(--accent);
+}
+.progress-section__title {
+  unicode-bidi: isolate;
+}
+.progress-section__chevron {
+  color: var(--muted);
+}
+.progress-section__heading {
+  margin: 0;
+  padding: 1rem 1rem 0;
+  font-size: 1rem;
+}
+.progress-section__body {
+  display: grid;
+  gap: 0.75rem;
+  padding: 0 1rem 1rem;
+}
+.progress-list {
+  display: grid;
+  gap: 0.55rem;
+}
+.progress-record {
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--surface);
+  color: var(--text);
+  unicode-bidi: isolate;
+  overflow-wrap: anywhere;
+}
+.progress-reset-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-block-start: var(--space-3);
+}
+
+/* ------------------------------------------------------------
+Larger screens (responsive enhancement only)
+------------------------------------------------------------ */
+@media (min-width: 700px) {
+  .app-toolbar {
+    padding-inline: var(--space-4);
+  }
+}
+
+/* =========================================
+   TABLET ADJUSTMENTS (min-width: 768px)
+   ========================================= */
+@media (min-width: 768px) {
+  /* 4 columns on tablets for even more compactness */
+  .letter-quiz-options {
+    grid-template-columns: repeat(4, 1fr);
+    max-width: 480px;
+  }
+
+  .letter-quiz-option {
+    font-size: 1.3rem;
+    padding: 1rem;
+  }
+
+  .letter-spell-chip {
+    font-size: 1.25rem;
+    padding: 0.6rem 1rem;
+  }
+}
+
+/* ------------------------------------------------------------
+Proficiency tiers (Stage A1)
+------------------------------------------------------------ */
+.proficiency-tier {
+  border: 1px solid var(--line);
+  border-radius: var(--radius-xl);
+  background: var(--surface);
+  overflow: hidden;
+}
+.proficiency-tier__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  inline-size: 100%;
+  padding: 1rem 1.1rem;
+  border: 0;
+  background: var(--surface);
+  color: var(--text);
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-align: start;
+  cursor: pointer;
+}
+.proficiency-tier__header:hover {
+  color: var(--accent);
+}
+.proficiency-tier__title {
+  unicode-bidi: isolate;
+}
+.proficiency-tier__progress {
+  color: var(--muted);
+  font-size: 0.85rem;
+  font-weight: 400;
+}
+.proficiency-tier__body {
+  display: grid;
+  gap: var(--space-2);
+  padding: 0 var(--space-3) var(--space-3);
+}
+.grammar-subsection {
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  background: var(--surface);
+  overflow: hidden;
+}
+
+/* ------------------------------------------------------------
+Onboarding (Stage B1)
+------------------------------------------------------------ */
+.onboarding-stage {
+  display: grid;
+  gap: var(--space-4);
+}
+.onboarding-title {
+  margin: 0;
+  font-size: 1.2rem;
+}
+.onboarding-intro {
+  margin: 0;
+  color: var(--muted);
+}
+.onboarding-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+.onboarding-hint {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+.onboarding-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+.onboarding-option {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  min-block-size: 2.2rem;
+  padding: 0.45rem 0.7rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--surface);
+  cursor: pointer;
+}
+.onboarding-option input {
+  accent-color: var(--accent);
+}
+.onboarding-option__label {
+  unicode-bidi: isolate;
+}
+
+/* ------------------------------------------------------------
+Next Up card (Stage B3)
+------------------------------------------------------------ */
+.next-up-card {
+  display: grid;
+  gap: var(--space-2);
+  padding: var(--space-4);
+  margin-block-end: var(--space-3);
+  border: 2px solid var(--accent);
+  border-radius: var(--radius-xl);
+  background: color-mix(in srgb, var(--accent) 6%, var(--surface));
+}
+.next-up-card__label {
+  color: var(--accent);
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.next-up-card__title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  unicode-bidi: isolate;
+}
+.next-up-card__tier {
+  display: inline-block;
+  align-self: start;
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+  background: var(--surface-2);
+  color: var(--muted);
+  font-size: 0.78rem;
+}
+.next-up-card__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-block-start: var(--space-1);
+}
+.browse-by-level {
+  margin: var(--space-3) 0 var(--space-2);
+  font-size: 1rem;
+  color: var(--muted);
+  font-weight: 600;
+}
+.study-plan-list {
+  margin-block-end: var(--space-3);
+}
+.study-plan-item {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-3);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  background: var(--surface);
+  margin-block-end: var(--space-1);
+}
+.study-plan-item__status {
+  flex: 0 0 auto;
+  font-size: 0.9rem;
+}
+.study-plan-item__title {
+  flex: 1;
+  min-inline-size: 0;
+  unicode-bidi: isolate;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.study-plan-item__open {
+  flex: 0 0 auto;
+  padding: 0.3rem 0.7rem;
+  min-block-size: 2rem;
+  font-size: 0.85rem;
+}
+.study-plan-item--next {
+  box-shadow: inset 3px 0 0 0 var(--accent);
+}
+.lesson-card.is-complete,
+.study-plan-item.is-complete,
+.plan-lesson-item.is-complete {
+  opacity: 0.65;
+}
+
+/* ------------------------------------------------------------
+Study Plan progress section (Stage B4)
+------------------------------------------------------------ */
+.plan-progress-bar {
+  block-size: 0.6rem;
+  border-radius: 999px;
+  background: var(--surface-2);
+  overflow: hidden;
+  margin-block-end: var(--space-2);
+}
+.plan-progress-fill {
+  block-size: 100%;
+  border-radius: 999px;
+  background: var(--accent);
+}
+.plan-progress-label {
+  color: var(--muted);
+  font-size: 0.85rem;
+  margin-block-end: var(--space-3);
+}
+.plan-lesson-list {
+  display: grid;
+  gap: var(--space-1);
+}
+.plan-lesson-item {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: var(--space-2);
+  padding: var(--space-1) var(--space-2);
+}
+.plan-lesson-title {
+  flex: 1;
+  min-inline-size: 0;
+  unicode-bidi: isolate;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.plan-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-block-start: var(--space-3);
+}
+
+/* Complete? toggle in lesson action bar */
+.complete-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  min-block-size: 2.4rem;
+  padding: 0.45rem 0.75rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--text);
+  cursor: pointer;
+  white-space: nowrap;
+  flex: 0 0 auto;
+  margin-inline-start: auto;
+}
+.complete-toggle:hover {
+  border-color: var(--accent);
+}
+.complete-toggle input {
+  accent-color: var(--accent);
+}
+.complete-toggle__label {
+  unicode-bidi: isolate;
+  font-size: 0.85rem;
+}
+
+/* =========================================
+   BOTTOM BAR: COMBINED PROGRESS & COMPLETE
+   ========================================= */
+
+/* Base Toggle Container */
+.complete-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.8rem; /* Compact for mobile */
+  font-weight: 600;
+  white-space: nowrap; /* Prevents wrapping on small screens */
+  padding: 0.3rem 0.6rem;
+  border-radius: 999px;
+  cursor: pointer;
+  user-select: none;
+  transition: all 0.2s ease;
+  border: 1px solid transparent;
+}
+
+/* State 1: In Progress (e.g., 25→80%) */
+.complete-toggle.is-progress {
+  background: var(--accent-light, #e0e7ff);
+  color: var(--accent-dark, #3730a3);
+  border-color: var(--accent, #6366f1);
+}
+
+/* State 2: Goal Met / Completed (e.g., Complete?) */
+.complete-toggle.is-complete {
+  background: var(--success-light, #dcfce7);
+  color: var(--success-dark, #166534);
+  border-color: var(--success, #22c55e);
+}
+
+/* Checkbox Styling */
+.complete-toggle input[type="checkbox"] {
+  width: 1rem;
+  height: 1rem;
+  margin: 0;
+  cursor: pointer;
+  accent-color: var(--accent, #6366f1);
+}
+
+.complete-toggle.is-complete input[type="checkbox"] {
+  accent-color: var(--success, #22c55e);
+}
+
+/* Status icon in lesson cards */
+.lesson-card__status {
+  flex: 0 0 auto;
+  font-size: 0.9rem;
+  margin-inline-end: var(--space-2);
+}
+
+/* ------------------------------------------------------------
+Phonetic display mode (Stage E2)
+------------------------------------------------------------ */
+.phonetic-cell {
+  display: grid;
+  justify-items: center;
+  gap: 0.35rem;
+  padding-block: 0.6rem;
+}
+.phonetic-cell__char {
+  font-size: 1.45rem;
+  line-height: 1.3;
+}
+.phonetic-cell__note {
+  font-size: 0.85rem;
+  color: var(--muted);
+  unicode-bidi: isolate;
+  text-align: center;
+  overflow-wrap: anywhere;
+}
+.item-column--header {
+  flex-basis: 100%;
+  border: none;
+  margin-block-start: var(--space-2);
+}
+
+/* ------------------------------------------------------------
+Getting Started guide (Stage F2)
+------------------------------------------------------------ */
+.help-list {
+  display: grid;
+  gap: var(--space-2);
+  margin: 0;
+  padding-inline-start: 1.4rem;
+}
+.help-list li {
+  unicode-bidi: isolate;
+  overflow-wrap: anywhere;
+}
+
+/* ------------------------------------------------------------
+Target Language Selection (v3)
+------------------------------------------------------------ */
+.target-select-stage {
+  display: grid;
+  gap: var(--space-4);
+  max-inline-size: 480px;
+  margin-inline: auto;
+  padding-block-start: 2rem;
+}
+.target-select-title {
+  margin: 0;
+  font-size: 1.4rem;
+  text-align: center;
+}
+.target-select-intro {
+  margin: 0;
+  color: var(--muted);
+  text-align: center;
+}
+.target-select-list {
+  display: grid;
+  gap: var(--space-2);
+}
+.target-select-option {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  inline-size: 100%;
+  min-block-size: 3rem;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  background: var(--surface);
+  color: var(--text);
+  font-size: 1.05rem;
+  cursor: pointer;
+  text-align: start;
+}
+.target-select-option:hover {
+  border-color: var(--accent);
+  background: var(--surface-2);
+}
+.target-select-flag {
+  font-size: 1.5rem;
+}
+.target-select-name {
+  unicode-bidi: isolate;
+}
+
+/* ------------------------------------------------------------
+Script display mode (v3 Baseline)
+------------------------------------------------------------ */
+.script-cell {
+  display: grid;
+  justify-items: center;
+  gap: 0.35rem;
+  padding-block: 0.6rem;
+}
+.script-cell__char {
+  font-size: 1.45rem;
+  line-height: 1.3;
+}
+.script-cell__connections {
+  font-size: 0.85rem;
+  color: var(--muted);
+  unicode-bidi: isolate;
+  text-align: center;
+  overflow-wrap: anywhere;
+}
+.script-cell__forms {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.25rem;
+  width: 100%;
+  margin-block-start: 0.75rem;
+  text-align: center;
+  font-size: 1.25rem;
+  border-top: 1px dashed var(--line);
+  padding-block-start: 0.5rem;
+}
+.script-cell__form-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.2rem;
+}
+.script-cell__form-label {
+  font-size: 0.6rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.script-cell__note {
+  font-size: 0.85rem;
+  color: var(--muted);
+  unicode-bidi: isolate;
+  text-align: center;
+  overflow-wrap: anywhere;
+  margin-block-start: 0.35rem;
+  border-block-start: 1px dashed var(--line);
+  padding-block-start: 0.35rem;
+  width: 100%;
+}
+
+/* ------------------------------------------------------------
+v3.1 Stage 2: Enhanced Next Up Card & Grammar Overlay
+------------------------------------------------------------ */
+.next-up-card {
+  padding: var(--space-3);
+}
+.next-up-card__title {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  unicode-bidi: isolate;
+}
+.next-up-card__meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+.next-up-card__level {
+  font-weight: 500;
+}
+.next-up-card__nav {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin-block-start: var(--space-1);
+  padding-block-start: var(--space-2);
+  border-block-start: 1px dashed var(--line);
+}
+.next-up-card__progress {
+  color: var(--muted);
+  font-size: 0.85rem;
+  font-variant-numeric: tabular-nums;
+}
+.next-up-card__open {
+  margin-inline-start: auto;
+  background: var(--accent);
+  color: var(--accent-contrast);
+  border-color: var(--accent);
+  font-weight: 600;
+}
+.grammar-overlay__description {
+  font-size: 1rem;
+  line-height: 1.6;
+  margin: 0 0 var(--space-4) 0;
+}
+.grammar-overlay__examples {
+  margin: 0;
+  padding-inline-start: 1.2rem;
+  display: grid;
+  gap: var(--space-2);
+}
+.grammar-overlay__example {
+  font-style: italic;
+  color: var(--muted);
+  unicode-bidi: isolate;
+}
+
+/* ------------------------------------------------------------
+Record Overlay (Stage 5)
+------------------------------------------------------------ */
+.record-overlay__body {
+  min-block-size: 15rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+.record-overlay__instruction {
+  margin: 0 0 var(--space-3) 0;
+  color: var(--muted);
+  font-size: 0.95rem;
+  text-align: center;
+}
+.record-overlay__text {
+  margin-block-end: var(--space-4);
+  width: 100%;
+  justify-content: center;
+}
+.record-overlay__btn {
+  margin-block-start: var(--space-3);
+}
+
+/* Record & Compare Toolbar Toggle */
+#toggle-record {
+  opacity: 0.4;
+  transition:
+    opacity 0.2s ease,
+    color 0.2s ease;
+}
+
+#toggle-record.is-active {
+  opacity: 1;
+  color: var(
+    --accent,
+    #007bff
+  ); /* Falls back to blue if --accent isn't defined */
+}
+
+/* ------------------------------------------------------------
+Stage 4: Milestone Visual States & Auto-Complete Progress
+------------------------------------------------------------ */
+.milestone-card.is-locked {
+  background: var(--surface-2);
+  color: var(--muted);
+  border-color: var(--line);
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+.milestone-card.is-locked .lesson-card__status {
+  filter: grayscale(0.5);
+}
+.milestone-card.is-locked:hover {
+  border-color: var(--line);
+  background: var(--surface-2);
+}
+
+.milestone-card.is-in-progress {
+  background: color-mix(in srgb, var(--accent) 8%, var(--surface));
+  border-color: var(--accent);
+  border-width: 2px;
+}
+.milestone-card.is-in-progress .lesson-card__title {
+  font-weight: 700;
+}
+
+.milestone-card.is-complete {
+  opacity: 0.75;
+  background: color-mix(in srgb, var(--accent) 12%, var(--surface));
+}
+
+.culture-toggle-btn {
+  font-size: 1.2rem;
+  margin-inline-start: 0.5rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+.culture-toggle-btn.is-active {
+  transform: scale(1.15);
+  filter: drop-shadow(0 0 4px var(--accent));
+}
+.cultural-context-panel {
+  background: color-mix(in srgb, var(--accent) 10%, var(--surface));
+  border-inline-start: 4px solid var(--accent);
+  padding: 1rem;
+  margin: 0.5rem 0 1.5rem 0;
+  border-radius: 0 8px 8px 0;
+  animation: slideDown 0.2s ease-out;
+}
+.cultural-context-panel__text {
+  margin: 0;
+  line-height: 1.6;
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+}
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.cultural-context-box {
+  background: var(--surface-2, #f0f4f8);
+  border-left: 4px solid var(--accent, #4a90e2);
+  padding: 1rem;
+  margin: 1rem 0;
+  border-radius: 4px;
+  font-size: 0.95rem;
+}
+.dialogue-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin: 1.5rem 0;
+}
+.dialogue-context {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--muted, #666);
+  margin-bottom: 0.5rem;
+}
+.chat-bubble {
+  max-width: 85%;
+  padding: 0.75rem 1rem;
+  border-radius: 12px;
+  margin-bottom: 0.5rem;
+  line-height: 1.5;
+}
+.chat-bubble--a {
+  align-self: flex-start;
+  background: var(--surface-2, #e9ecef);
+  border-bottom-left-radius: 4px;
+}
+.chat-bubble--b {
+  align-self: flex-end;
+  background: var(--accent, #4a90e2);
+  color: white;
+  border-bottom-right-radius: 4px;
+}
+.chat-bubble__text {
+  display: block;
+}
+/* ------------------------------------------------------------
+Letter Flashcards
+------------------------------------------------------------ */
+.letter-flashcard {
+  display: grid;
+  gap: 1rem;
+  padding: 1.1rem;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: var(--surface);
+  text-align: center;
+}
+.letter-flashcard__front {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 10rem;
+  padding: 2rem;
+}
+.letter-flashcard__char {
+  font-size: 6rem;
+  line-height: 1.2;
+  font-weight: 600;
+  color: var(--text);
+  unicode-bidi: isolate;
+}
+.letter-flashcard__back {
+  display: grid;
+  gap: 1rem;
+  padding: 1.5rem;
+  border: 1px dashed var(--line);
+  border-radius: 14px;
+  background: var(--surface-2);
+  text-align: center;
+}
+.letter-flashcard__name {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--accent);
+  unicode-bidi: isolate;
+}
+.letter-flashcard__note {
+  font-size: 1rem;
+  color: var(--muted);
+  unicode-bidi: isolate;
+}
+.letter-flashcard__back .script-cell__forms {
+  margin: 0 auto;
+  max-width: 20rem;
+}
+
+/* ------------------------------------------------------------
+Letter Quiz
+------------------------------------------------------------ */
+.letter-quiz-prompt {
+  text-align: center;
+  margin-block-end: 1.5rem;
+  font-size: 1.1rem;
+  color: var(--muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+.letter-quiz-options {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  margin-block-end: 1.5rem;
+}
+.letter-quiz-option {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 1;
+  font-size: 3rem;
+  font-weight: 600;
+  border: 2px solid var(--line);
+  border-radius: var(--radius-lg);
+  background: var(--surface);
+  color: var(--text);
+  cursor: pointer;
+  transition:
+    border-color 0.2s,
+    background 0.2s;
+}
+.letter-quiz-option:hover:not(:disabled) {
+  border-color: var(--accent);
+}
+.letter-quiz-option:disabled {
+  cursor: default;
+  opacity: 0.8;
+}
+.letter-quiz-option.is-correct {
+  border-color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 15%, var(--surface));
+  color: var(--accent);
+}
+.letter-quiz-option.is-incorrect {
+  border-color: var(--danger);
+  background: color-mix(in srgb, var(--danger) 15%, var(--surface));
+  color: var(--danger);
+}
+
+/* ------------------------------------------------------------
+Letter Spell (Audio Spelling)
+------------------------------------------------------------ */
+.letter-spell-prompt {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-block: 1.5rem;
+}
+.letter-spell-play-btn {
+  font-size: 2.5rem;
+  padding: 1rem 1.5rem;
+  border-radius: 50%;
+  background: var(--surface-2);
+  border: 2px solid var(--accent);
+  color: var(--accent);
+  transition:
+    transform 0.1s ease,
+    background 0.2s ease;
+}
+.letter-spell-play-btn:active {
+  transform: scale(0.95);
+}
+.letter-spell-target {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  min-block-size: 4rem;
+  padding: 1rem;
+  border: 2px dashed var(--line);
+  border-radius: var(--radius-lg);
+  background: var(--surface);
+  margin-block-end: 1.5rem;
+  justify-content: center;
+}
+.letter-spell-placeholder {
+  color: var(--muted);
+  font-size: 0.95rem;
+  unicode-bidi: isolate;
+}
+.letter-spell-pool {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: center;
+  margin-block-end: 1.5rem;
+}
+.letter-spell-chip {
+  font-size: 1.25rem;
+  min-width: 2.5rem;
+  justify-content: center;
+}
+
+/* =========================================
+   MOBILE-FIRST & COMPACT LAYOUT FIXES
+   For Letter Quiz & Audio Spelling Views
+   ========================================= */
+
+/* 1. View Containers & Bottom Bar Overlap Fix */
+/* Reduces height by 1vh and ensures flex layout for proper scrolling */
+#letter-quiz-view,
+#letter-spell-view {
+  display: flex;
+  flex-direction: column;
+  height: 99vh; /* Reduced by 1vh to prevent bottom border cutoff */
+  max-height: 99dvh; /* Dynamic viewport height for modern mobile browsers */
+  overflow: hidden;
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+/* Ensure the inner stages scroll properly so the "Next" button is never hidden */
+#letter-spell-stage,
+#letter-quiz-view .quiz-stage {
+  flex: 1;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: 2rem; /* Guarantees space above the fixed bottom bar */
+}
+
+/* 2. Letter Quiz: Compact Card Grid */
+/* Changes from 2 columns to 3 columns on mobile to prevent oversized cards */
+.letter-quiz-options {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3x3 or 3x2 grid */
+  gap: 0.5rem; /* Tighter gap */
+  padding: 0.5rem 0;
+  max-width: 360px; /* Prevents cards from stretching too wide on tablets */
+  margin: 0 auto;
+}
+
+.letter-quiz-option {
+  font-size: 1.2rem; /* Smaller, more compact text */
+  padding: 0.75rem 0.5rem;
+  min-height: auto;
+  aspect-ratio: 1 / 1; /* Keeps them perfectly square but smaller */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1.1;
+}
+
+/* 3. Audio Spelling: Compact Chips & Areas */
+.letter-spell-target,
+.letter-spell-pool {
+  gap: 0.4rem; /* Tighter spacing between chips */
+  padding: 0.5rem;
+  min-height: auto;
+}
+
+.letter-spell-chip,
+.letter-spell-target .build-chip {
+  font-size: 1.1rem; /* Smaller chip text */
+  padding: 0.5rem 0.75rem;
+  min-width: auto;
+  border-radius: 8px;
+}
+
+.letter-spell-prompt {
+  margin-bottom: 0.5rem;
+}
+
+/* Ensure the "Next" button in Audio Spelling stays pinned to the bottom of the view */
+#letter-spell-stage .build-actions {
+  position: sticky;
+  bottom: 0;
+  background: var(--bg, #ffffff); /* Fallback if CSS var isn't defined */
+  padding: 0.75rem 0;
+  margin-top: auto;
+  flex-shrink: 0;
+  border-top: 1px solid var(--border, #e5e7eb);
+}
+
+/* 4. General Compactness for these Views */
+/* Reduces header and status text sizes */
+#letter-quiz-view .document-header,
+#letter-spell-view .document-header {
+  padding: 0.5rem 1rem;
+  flex-shrink: 0;
+}
+
+#letter-quiz-view .document-title,
+#letter-spell-view .document-title {
+  font-size: 1.15rem;
+}
+
+.quiz-status,
+.flashcard-status {
+  font-size: 0.85rem;
+  padding: 0.25rem 0;
+  margin-bottom: 0.5rem;
+}
+
+.quiz-option,
+.build-chip,
+.letter-quiz-option {
+  min-block-size: 2.75rem; /* 44px minimum for quiz options */
+}
+
+/* =========================================
+   TABLET ADJUSTMENTS (min-width: 768px)
+   ========================================= */
+@media (min-width: 768px) {
+  /* 4 columns on tablets for even more compactness */
+  .letter-quiz-options {
+    grid-template-columns: repeat(4, 1fr);
+    max-width: 480px;
+  }
+
+  .letter-quiz-option {
+    font-size: 1.3rem;
+    padding: 1rem;
+  }
+
+  .letter-spell-chip {
+    font-size: 1.25rem;
+    padding: 0.6rem 1rem;
+  }
+}
+
+/* Ensure the bottom bar distributes space well on mobile */
+#bottom-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  overflow-x: auto; /* Allows horizontal scroll if screen is extremely narrow */
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+#bottom-bar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Settings button alignment */
+#bottom-bar [data-action="open-settings"] {
+  margin-inline-start: auto; /* Pushes settings to the far right */
+  flex-shrink: 0;
+}

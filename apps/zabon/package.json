@@ -1,0 +1,16 @@
+{
+  "devDependencies": {
+    "esbuild": "^0.28.1"
+  },
+  "scripts": {
+    "build": "npm run build:js && npm run build:js:min && npm run build:css",
+    "build:js": "esbuild app.js --bundle --outfile=dist/app.js --format=iife --platform=browser --target=es2022 --sourcemap",
+    "build:js:min": "esbuild app.js --bundle --outfile=dist/app.min.js --format=iife --platform=browser --target=es2022 --minify --sourcemap",
+    "build:css": "esbuild main.css --bundle --minify --outfile=dist/main.min.css --sourcemap"
+  },
+  "dependencies": {
+    "segmentit": "^2.0.3",
+    "tiny-segmenter": "^0.2.0",
+    "wordcut": "^0.9.1"
+  }
+}

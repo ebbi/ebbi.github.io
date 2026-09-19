@@ -1,0 +1,296 @@
+{
+  "name": "Zabon",
+  "version": "2.0.0",
+  "architecture": "spiral-mastery",
+  "priority_tags": ["everyday", "travel", "business", "academic", "cultural"],
+  "zabon": {
+    "languages": [
+      {
+        "code": "th",
+        "label": "Thai",
+        "names": {
+          "en": "Thai",
+          "th": "ไทย",
+          "fa": "تایلندی",
+          "ar": "التايلاندية",
+          "es": "Tailandés",
+          "zh": "泰语",
+          "ja": "タイ語"
+        },
+        "bcp47": "th-TH",
+        "dir": "ltr",
+        "segmentation": "segmenter"
+      },
+      {
+        "code": "fa",
+        "label": "Persian",
+        "names": {
+          "en": "Persian",
+          "th": "เปอร์เซีย",
+          "fa": "فارسی",
+          "ar": "الفارسية",
+          "es": "Persa",
+          "zh": "波斯语",
+          "ja": "ペルシャ語"
+        },
+        "bcp47": "fa-IR",
+        "dir": "rtl",
+        "segmentation": "whitespace"
+      },
+      {
+        "code": "en",
+        "label": "English",
+        "names": {
+          "en": "English",
+          "th": "อังกฤษ",
+          "fa": "انگلیسی",
+          "ar": "الإنجليزية",
+          "es": "Inglés",
+          "zh": "英语",
+          "ja": "英語"
+        },
+        "bcp47": "en-US",
+        "dir": "ltr",
+        "segmentation": "whitespace"
+      },
+      {
+        "code": "zh",
+        "label": "Chinese",
+        "names": {
+          "en": "Chinese",
+          "th": "จีน",
+          "fa": "چینی",
+          "ar": "الصينية",
+          "es": "Chino",
+          "zh": "中文",
+          "ja": "中国語"
+        },
+        "bcp47": "zh-CN",
+        "dir": "ltr",
+        "segmentation": "segmenter"
+      },
+      {
+        "code": "ja",
+        "label": "Japanese",
+        "names": {
+          "en": "Japanese",
+          "th": "ญี่ปุ่น",
+          "fa": "ژاپنی",
+          "ar": "اليابانية",
+          "es": "Japonés",
+          "zh": "日语",
+          "ja": "日本語"
+        },
+        "bcp47": "ja-JP",
+        "dir": "ltr",
+        "segmentation": "segmenter"
+      },
+      {
+        "code": "ar",
+        "label": "Arabic",
+        "names": {
+          "en": "Arabic",
+          "th": "อาหรับ",
+          "fa": "عربی",
+          "ar": "العربية",
+          "es": "Árabe",
+          "zh": "阿拉伯语",
+          "ja": "アラビア語"
+        },
+        "bcp47": "ar-SA",
+        "dir": "rtl",
+        "segmentation": "whitespace"
+      },
+      {
+        "code": "es",
+        "label": "Spanish",
+        "names": {
+          "en": "Spanish",
+          "th": "สเปน",
+          "fa": "اسپانیایی",
+          "ar": "الإسبانية",
+          "es": "Español",
+          "zh": "西班牙语",
+          "ja": "スペイン語"
+        },
+        "bcp47": "es-ES",
+        "dir": "ltr",
+        "segmentation": "whitespace"
+      }
+    ]
+  },
+  "tiers": [
+    {
+      "id": "beginner",
+      "label": "Beginner",
+      "milestones": ["M1", "M2", "M3", "M4", "M5"]
+    },
+    {
+      "id": "intermediate",
+      "label": "Intermediate",
+      "milestones": ["M6", "M7", "M8", "M9", "M10"]
+    },
+    {
+      "id": "advanced",
+      "label": "Advanced",
+      "milestones": ["M11", "M12", "M13", "M14", "M15"]
+    },
+    {
+      "id": "letters",
+      "label": "Alphabet",
+      "milestones": [
+        "alphabet",
+        "consonants_low",
+        "consonants_mid",
+        "consonants_high",
+        "vowels"
+      ]
+    }
+  ],
+  "milestones": [
+    {
+      "id": "M1",
+      "title": "Foundations & Greetings",
+      "tier": "beginner",
+      "priority_tags": ["everyday", "travel"],
+      "file": "milestones/M1.json"
+    },
+    {
+      "id": "M2",
+      "title": "Numbers & Time",
+      "tier": "beginner",
+      "priority_tags": ["everyday", "travel"],
+      "file": "milestones/M2.json"
+    },
+    {
+      "id": "M3",
+      "title": "Survival Needs",
+      "tier": "beginner",
+      "priority_tags": ["everyday", "travel"],
+      "file": "milestones/M3.json"
+    },
+    {
+      "id": "M4",
+      "title": "Directions & Transport",
+      "tier": "beginner",
+      "priority_tags": ["travel", "everyday"],
+      "file": "milestones/M4.json"
+    },
+    {
+      "id": "M5",
+      "title": "Shopping & Money",
+      "tier": "beginner",
+      "priority_tags": ["travel", "everyday"],
+      "file": "milestones/M5.json"
+    },
+    {
+      "id": "M6",
+      "title": "Daily Routines & Hobbies",
+      "tier": "intermediate",
+      "priority_tags": ["everyday", "cultural"],
+      "file": "milestones/M6.json"
+    },
+    {
+      "id": "M7",
+      "title": "Health & Emergencies",
+      "tier": "intermediate",
+      "priority_tags": ["everyday", "travel"],
+      "file": "milestones/M7.json"
+    },
+    {
+      "id": "M8",
+      "title": "Work & Business Basics",
+      "tier": "intermediate",
+      "priority_tags": ["business", "academic"],
+      "file": "milestones/M8.json"
+    },
+    {
+      "id": "M9",
+      "title": "Travel & Accommodation",
+      "tier": "intermediate",
+      "priority_tags": ["travel", "cultural"],
+      "file": "milestones/M9.json"
+    },
+    {
+      "id": "M10",
+      "title": "Socializing & Opinions",
+      "tier": "intermediate",
+      "priority_tags": ["everyday", "cultural"],
+      "file": "milestones/M10.json"
+    },
+    {
+      "id": "M11",
+      "title": "Abstract Concepts & Philosophy",
+      "tier": "advanced",
+      "priority_tags": ["academic", "cultural"],
+      "file": "milestones/M11.json"
+    },
+    {
+      "id": "M12",
+      "title": "Media, News & Technology",
+      "tier": "advanced",
+      "priority_tags": ["academic", "business"],
+      "file": "milestones/M12.json"
+    },
+    {
+      "id": "M13",
+      "title": "Culture, History & Traditions",
+      "tier": "advanced",
+      "priority_tags": ["cultural", "academic"],
+      "file": "milestones/M13.json"
+    },
+    {
+      "id": "M14",
+      "title": "Professional Negotiations",
+      "tier": "advanced",
+      "priority_tags": ["business", "academic"],
+      "file": "milestones/M14.json"
+    },
+    {
+      "id": "M15",
+      "title": "Nuance, Humor & Idioms",
+      "tier": "advanced",
+      "priority_tags": ["cultural", "everyday"],
+      "file": "milestones/M15.json"
+    },
+    {
+      "id": "alphabet",
+      "title": "Alphabet",
+      "tier": "letters",
+      "kind": "letter",
+      "file": "milestones/alphabet.json"
+    },
+    {
+      "id": "consonants_mid",
+      "title": "Middle Class Consonants",
+      "tier": "letters",
+      "kind": "letter",
+      "file": "milestones/th/consonants-mid.json",
+      "targets": ["th"]
+    },
+    {
+      "id": "consonants_high",
+      "title": "High Class Consonants",
+      "tier": "letters",
+      "kind": "letter",
+      "file": "milestones/th/consonants-high.json",
+      "targets": ["th"]
+    },
+    {
+      "id": "consonants_low",
+      "title": "Low Class Consonants",
+      "tier": "letters",
+      "kind": "letter",
+      "file": "milestones/th/consonants-low.json",
+      "targets": ["th"]
+    },
+    {
+      "id": "vowels",
+      "title": "Thai Vowels",
+      "tier": "letters",
+      "kind": "letter",
+      "file": "milestones/th/vowels.json",
+      "targets": ["th"]
+    }
+  ]
+}

@@ -1,0 +1,452 @@
+{
+  "items": [
+    {
+      "id": "fa_alef",
+      "kind": "letter",
+      "role": "target",
+      "texts": { "fa": "ا", "en": "Alef" },
+      "phonetic": { "en": "/ʔ/" },
+      "connections": {
+        "isolated": "ا",
+        "initial": "ا",
+        "medial": "ـا",
+        "final": "ـا"
+      },
+      "meta": { "category": "vowel" }
+    },
+    {
+      "id": "fa_be",
+      "kind": "letter",
+      "role": "target",
+      "texts": { "fa": "ب", "en": "Be" },
+      "phonetic": { "en": "/b/" },
+      "connections": {
+        "isolated": "ب",
+        "initial": "بـ",
+        "medial": "ـبـ",
+        "final": "ـب"
+      },
+      "meta": { "category": "consonant" }
+    },
+    {
+      "id": "fa_pe",
+      "kind": "letter",
+      "role": "target",
+      "texts": { "fa": "پ", "en": "Pe" },
+      "phonetic": { "en": "/p/" },
+      "connections": {
+        "isolated": "پ",
+        "initial": "پـ",
+        "medial": "ـپـ",
+        "final": "ـپ"
+      },
+      "meta": { "category": "consonant" }
+    },
+    {
+      "id": "fa_te",
+      "kind": "letter",
+      "role": "target",
+      "texts": { "fa": "ت", "en": "Te" },
+      "phonetic": { "en": "/t/" },
+      "connections": {
+        "isolated": "ت",
+        "initial": "تـ",
+        "medial": "ـتـ",
+        "final": "ـت"
+      },
+      "meta": { "category": "consonant" }
+    },
+    {
+      "id": "fa_se",
+      "kind": "letter",
+      "role": "target",
+      "texts": { "fa": "ث", "en": "Se" },
+      "phonetic": { "en": "/s/" },
+      "connections": {
+        "isolated": "ث",
+        "initial": "ثـ",
+        "medial": "ـثـ",
+        "final": "ـث"
+      },
+      "meta": { "category": "consonant" }
+    },
+    {
+      "id": "fa_jim",
+      "kind": "letter",
+      "role": "target",
+      "texts": { "fa": "ج", "en": "Jim" },
+      "phonetic": { "en": "/dʒ/" },
+      "connections": {
+        "isolated": "ج",
+        "initial": "جـ",
+        "medial": "ـجـ",
+        "final": "ـج"
+      },
+      "meta": { "category": "consonant" }
+    },
+    {
+      "id": "fa_che",
+      "kind": "letter",
+      "role": "target",
+      "texts": { "fa": "چ", "en": "Che" },
+      "phonetic": { "en": "/tʃ/" },
+      "connections": {
+        "isolated": "چ",
+        "initial": "چـ",
+        "medial": "ـچـ",
+        "final": "ـچ"
+      },
+      "meta": { "category": "consonant" }
+    },
+    {
+      "id": "fa_he",
+      "kind": "letter",
+      "role": "target",
+      "texts": { "fa": "ح", "en": "He" },
+      "phonetic": { "en": "/h/" },
+      "connections": {
+        "isolated": "ح",
+        "initial": "حـ",
+        "medial": "ـحـ",
+        "final": "ـح"
+      },
+      "meta": { "category": "consonant" }
+    },
+    {
+      "id": "fa_khe",
+      "kind": "letter",
+      "role": "target",
+      "texts": { "fa": "خ", "en": "Khe" },
+      "phonetic": { "en": "/x/" },
+      "connections": {
+        "isolated": "خ",
+        "initial": "خـ",
+        "medial": "ـخـ",
+        "final": "ـخ"
+      },
+      "meta": { "category": "consonant" }
+    },
+    {
+      "id": "fa_dal",
+      "kind": "letter",
+      "role": "target",
+      "texts": { "fa": "د", "en": "Dal" },
+      "phonetic": { "en": "/d/" },
+      "connections": {
+        "isolated": "د",
+        "initial": "د",
+        "medial": "ـد",
+        "final": "ـد"
+      },
+      "meta": { "category": "consonant" }
+    },
+    {
+      "id": "fa_zal",
+      "kind": "letter",
+      "role": "target",
+      "texts": { "fa": "ذ", "en": "Zal" },
+      "phonetic": { "en": "/z/" },
+      "connections": {
+        "isolated": "ذ",
+        "initial": "ذ",
+        "medial": "ـذ",
+        "final": "ـذ"
+      },
+      "meta": { "category": "consonant" }
+    },
+    {
+      "id": "fa_re",
+      "kind": "letter",
+      "role": "target",
+      "texts": { "fa": "ر", "en": "Re" },
+      "phonetic": { "en": "/ɾ/" },
+      "connections": {
+        "isolated": "ر",
+        "initial": "ر",
+        "medial": "ـر",
+        "final": "ـر"
+      },
+      "meta": { "category": "consonant" }
+    },
+    {
+      "id": "fa_ze",
+      "kind": "letter",
+      "role": "target",
+      "texts": { "fa": "ز", "en": "Ze" },
+      "phonetic": { "en": "/z/" },
+      "connections": {
+        "isolated": "ز",
+        "initial": "ز",
+        "medial": "ـز",
+        "final": "ـز"
+      },
+      "meta": { "category": "consonant" }
+    },
+    {
+      "id": "fa_zhe",
+      "kind": "letter",
+      "role": "target",
+      "texts": { "fa": "ژ", "en": "Zhe" },
+      "phonetic": { "en": "/ʒ/" },
+      "connections": {
+        "isolated": "ژ",
+        "initial": "ژ",
+        "medial": "ـژ",
+        "final": "ـژ"
+      },
+      "meta": { "category": "consonant" }
+    },
+    {
+      "id": "fa_sin",
+      "kind": "letter",
+      "role": "target",
+      "texts": { "fa": "س", "en": "Sin" },
+      "phonetic": { "en": "/s/" },
+      "connections": {
+        "isolated": "س",
+        "initial": "سـ",
+        "medial": "ـسـ",
+        "final": "ـس"
+      },
+      "meta": { "category": "consonant" }
+    },
+    {
+      "id": "fa_shin",
+      "kind": "letter",
+      "role": "target",
+      "texts": { "fa": "ش", "en": "Shin" },
+      "phonetic": { "en": "/ʃ/" },
+      "connections": {
+        "isolated": "ش",
+        "initial": "شـ",
+        "medial": "ـشـ",
+        "final": "ـش"
+      },
+      "meta": { "category": "consonant" }
+    },
+    {
+      "id": "fa_sad",
+      "kind": "letter",
+      "role": "target",
+      "texts": { "fa": "ص", "en": "Sad" },
+      "phonetic": { "en": "/s/" },
+      "connections": {
+        "isolated": "ص",
+        "initial": "صـ",
+        "medial": "ـصـ",
+        "final": "ـص"
+      },
+      "meta": { "category": "consonant" }
+    },
+    {
+      "id": "fa_zad",
+      "kind": "letter",
+      "role": "target",
+      "texts": { "fa": "ض", "en": "Zad" },
+      "phonetic": { "en": "/z/" },
+      "connections": {
+        "isolated": "ض",
+        "initial": "ضـ",
+        "medial": "ـضـ",
+        "final": "ـض"
+      },
+      "meta": { "category": "consonant" }
+    },
+    {
+      "id": "fa_ta",
+      "kind": "letter",
+      "role": "target",
+      "texts": { "fa": "ط", "en": "Ta" },
+      "phonetic": { "en": "/t/" },
+      "connections": {
+        "isolated": "ط",
+        "initial": "طـ",
+        "medial": "ـطـ",
+        "final": "ـط"
+      },
+      "meta": { "category": "consonant" }
+    },
+    {
+      "id": "fa_za",
+      "kind": "letter",
+      "role": "target",
+      "texts": { "fa": "ظ", "en": "Za" },
+      "phonetic": { "en": "/z/" },
+      "connections": {
+        "isolated": "ظ",
+        "initial": "ظـ",
+        "medial": "ـظـ",
+        "final": "ـظ"
+      },
+      "meta": { "category": "consonant" }
+    },
+    {
+      "id": "fa_ayn",
+      "kind": "letter",
+      "role": "target",
+      "texts": { "fa": "ع", "en": "Ayn" },
+      "phonetic": { "en": "/ʔ/" },
+      "connections": {
+        "isolated": "ع",
+        "initial": "عـ",
+        "medial": "ـعـ",
+        "final": "ـع"
+      },
+      "meta": { "category": "consonant" }
+    },
+    {
+      "id": "fa_ghayn",
+      "kind": "letter",
+      "role": "target",
+      "texts": { "fa": "غ", "en": "Ghayn" },
+      "phonetic": { "en": "/ɣ/" },
+      "connections": {
+        "isolated": "غ",
+        "initial": "غـ",
+        "medial": "ـغـ",
+        "final": "ـغ"
+      },
+      "meta": { "category": "consonant" }
+    },
+    {
+      "id": "fa_fe",
+      "kind": "letter",
+      "role": "target",
+      "texts": { "fa": "ف", "en": "Fe" },
+      "phonetic": { "en": "/f/" },
+      "connections": {
+        "isolated": "ف",
+        "initial": "فـ",
+        "medial": "ـفـ",
+        "final": "ـف"
+      },
+      "meta": { "category": "consonant" }
+    },
+    {
+      "id": "fa_qaf",
+      "kind": "letter",
+      "role": "target",
+      "texts": { "fa": "ق", "en": "Qaf" },
+      "phonetic": { "en": "/ɣ/" },
+      "connections": {
+        "isolated": "ق",
+        "initial": "قـ",
+        "medial": "ـقـ",
+        "final": "ـق"
+      },
+      "meta": { "category": "consonant" }
+    },
+    {
+      "id": "fa_kaf",
+      "kind": "letter",
+      "role": "target",
+      "texts": { "fa": "ک", "en": "Kaf" },
+      "phonetic": { "en": "/k/" },
+      "connections": {
+        "isolated": "ک",
+        "initial": "کـ",
+        "medial": "ـکـ",
+        "final": "ـک"
+      },
+      "meta": { "category": "consonant" }
+    },
+    {
+      "id": "fa_gaf",
+      "kind": "letter",
+      "role": "target",
+      "texts": { "fa": "گ", "en": "Gaf" },
+      "phonetic": { "en": "/ɡ/" },
+      "connections": {
+        "isolated": "گ",
+        "initial": "گـ",
+        "medial": "ـگـ",
+        "final": "ـگ"
+      },
+      "meta": { "category": "consonant" }
+    },
+    {
+      "id": "fa_lam",
+      "kind": "letter",
+      "role": "target",
+      "texts": { "fa": "ل", "en": "Lam" },
+      "phonetic": { "en": "/l/" },
+      "connections": {
+        "isolated": "ل",
+        "initial": "لـ",
+        "medial": "ـلـ",
+        "final": "ـل"
+      },
+      "meta": { "category": "consonant" }
+    },
+    {
+      "id": "fa_mim",
+      "kind": "letter",
+      "role": "target",
+      "texts": { "fa": "م", "en": "Mim" },
+      "phonetic": { "en": "/m/" },
+      "connections": {
+        "isolated": "م",
+        "initial": "مـ",
+        "medial": "ـمـ",
+        "final": "ـم"
+      },
+      "meta": { "category": "consonant" }
+    },
+    {
+      "id": "fa_nun",
+      "kind": "letter",
+      "role": "target",
+      "texts": { "fa": "ن", "en": "Nun" },
+      "phonetic": { "en": "/n/" },
+      "connections": {
+        "isolated": "ن",
+        "initial": "نـ",
+        "medial": "ـنـ",
+        "final": "ـن"
+      },
+      "meta": { "category": "consonant" }
+    },
+    {
+      "id": "fa_vav",
+      "kind": "letter",
+      "role": "target",
+      "texts": { "fa": "و", "en": "Vav" },
+      "phonetic": { "en": "/v/" },
+      "connections": {
+        "isolated": "و",
+        "initial": "و",
+        "medial": "ـو",
+        "final": "ـو"
+      },
+      "meta": { "category": "vowel" }
+    },
+    {
+      "id": "fa_he",
+      "kind": "letter",
+      "role": "target",
+      "texts": { "fa": "ه", "en": "He" },
+      "phonetic": { "en": "/h/" },
+      "connections": {
+        "isolated": "ه",
+        "initial": "هـ",
+        "medial": "ـهـ",
+        "final": "ـه"
+      },
+      "meta": { "category": "vowel" }
+    },
+    {
+      "id": "fa_ye",
+      "kind": "letter",
+      "role": "target",
+      "texts": { "fa": "ی", "en": "Ye" },
+      "phonetic": { "en": "/j/" },
+      "connections": {
+        "isolated": "ی",
+        "initial": "یـ",
+        "medial": "ـیـ",
+        "final": "ـی"
+      },
+      "meta": { "category": "vowel" }
+    }
+  ]
+}

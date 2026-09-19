@@ -1,0 +1,169 @@
+{
+  "milestone_id": "M12",
+  "target_language": "ar",
+  "items": [
+    {
+      "header": true,
+      "id": "M12_h_grammar",
+      "texts": {
+        "en": "Arabic Grammar Focus: Media & Technology",
+        "th": "ไวยากรณ์ภาษาอาหรับ: สื่อและเทคโนโลยี",
+        "fa": "گرامر زبان عربی: رسانه و فناوری",
+        "zh": "阿拉伯语语法重点：媒体与技术",
+        "ja": "アラビア語文法フォーカス：メディアとテクノロジー",
+        "ar": "محور القواعد العربية: الإعلام والتكنولوجيا",
+        "es": "Enfoque de Gramática Árabe: Medios y Tecnología"
+      }
+    },
+    {
+      "id": "M12_g1",
+      "role": "grammar",
+      "kind": "grammar",
+      "texts": {
+        "en": "The Passive Voice (المبني للمجهول) is extensively used in news reporting to emphasize the action or the recipient rather than the doer. It is formed by altering the internal vowels of the verb (e.g., كَتَبَ -> كُتِبَ, يَكْتُبُ -> يُكْتَبُ). Example: 'تم نشر المقال' (The article was published).",
+        "th": "รูปกรรมวาจก (المبني للمجهول) ถูกใช้อย่างกว้างขวางในรายงานข่าวเพื่อเน้นการกระทำหรือผู้รับการกระทำมากกว่าผู้กระทำ สร้างขึ้นโดยการเปลี่ยนสระภายในของกริยา (เช่น كَتَبَ -> كُتِبَ) ตัวอย่าง: 'تم نشر المقال' (บทความถูกเผยแพร่)",
+        "fa": "فعل مجهول (المبني للمجهول) به طور گسترده در گزارش‌های خبری استفاده می‌شود تا به جای فاعل، بر فعل یا مفعول تأکید کند. این فعل با تغییر حرکات داخلی فعل ساخته می‌شود (مثلاً كَتَبَ -> كُتِبَ). مثال: 'تم نشر المقال' (مقاله منتشر شد).",
+        "zh": "被动语态（المبني للمجهول）在新闻报道中广泛使用，以强调动作或接受者，而非执行者。它通过改变动词的内部元音构成（例如 كَتَبَ -> كُتِبَ）。例如：“تم نشر المقال”（文章被发表了）。",
+        "ja": "受動態（المبني للمجهول）は、行為者ではなく動作や受け手に焦点を当てるために、ニュース報道で広く使用されています。動詞の内部母音を変更して作られます（例：كَتَبَ -> كُتِبَ）。例：「تم نشر المقال」（記事は公開されました）。",
+        "ar": "يُستخدم المبني للمجهول على نطاق واسع في التقارير الإخبارية للتأكيد على الفعل أو المفعول به بدلاً من الفاعل. يتكون عن طريق تغيير حركات الفعل الداخلية (مثل: كَتَبَ -> كُتِبَ، يَكْتُبُ -> يُكْتَبُ). مثال: 'تم نشر المقال'.",
+        "es": "La voz pasiva (المبني للمجهول) se utiliza extensamente en los reportajes para enfatizar la acción o el receptor en lugar del agente. Se forma alterando las vocales internas del verbo (ej. كَتَبَ -> كُتِبَ). Ejemplo: 'تم نشر المقال' (El artículo fue publicado)."
+      }
+    },
+    {
+      "id": "M12_g2",
+      "role": "grammar",
+      "kind": "grammar",
+      "texts": {
+        "en": "Verbal Nouns (المصدر) are crucial for expressing abstract concepts in technology and media, such as 'التشفير' (encryption), 'الرقابة' (censorship), and 'الاستقطاب' (polarization). They often function as the subject or object of a sentence and take the definite article 'ال' to represent the general concept.",
+        "th": "คำนามกริยา (المصدر) มีความสำคัญอย่างยิ่งในการแสดงแนวคิดนามธรรมในเทคโนโลยีและสื่อ เช่น 'التشفير' (การเข้ารหัส), 'الرقابة' (การเซ็นเซอร์) และ 'الاستقطاب' (ความแตกขั้ว) มักทำหน้าที่เป็นประธานหรือกรรมของประโยคและรับคำนำหน้านามชี้เฉพาะ 'ال' เพื่อแสดงแนวคิดทั่วไป",
+        "fa": "مصدرها برای بیان مفاهیم انتزاعی در فناوری و رسانه، مانند 'التشفير' (رمزگذاری)، 'الرقابة' (سانسور) و 'الاستقطاب' (قطبی شدن) بسیار مهم هستند. آن‌ها اغلب به عنوان نهاد یا مفعول جمله عمل می‌کنند و حرف تعریف 'ال' را برای نشان دادن مفهوم کلی می‌گیرند.",
+        "zh": "动名词（المصدر）对于表达技术和媒体中的抽象概念至关重要，例如“التشفير”（加密）、“الرقابة”（审查）和“الاستقطاب”（两极分化）。它们通常充当句子的主语或宾语，并加上定冠词“ال”来表示一般概念。",
+        "ja": "動名詞（المصدر）は、テクノロジーやメディアにおける抽象的な概念（「التشفير」[暗号化]、「الرقابة」[検閲]、「الاستقطاب」[分極化]など）を表現するために重要です。これらはしばしば文の主語や目的語として機能し、一般的な概念を表すために定冠詞「ال」を取ります。",
+        "ar": "تعد المصادر ضرورية للتعبير عن المفاهيم المجردة في التكنولوجيا والإعلام، مثل 'التشفير' و'الرقابة' و'الاستقطاب'. غالبًا ما تعمل كفاعل أو مفعول به في الجملة، وتأخذ أل التعريف لتمثيل المفهوم العام.",
+        "es": "Los sustantivos verbales (المصدر) son cruciales para expresar conceptos abstractos en tecnología y medios, como 'التشفير' (cifrado), 'الرقابة' (censura) y 'الاستقطاب' (polarización). A menudo funcionan como sujeto u objeto de una oración y toman el artículo definido 'ال' para representar el concepto general."
+      }
+    },
+    {
+      "id": "M12_g3",
+      "role": "grammar",
+      "kind": "grammar",
+      "texts": {
+        "en": "To express purpose or intended outcomes in formal contexts, Arabic uses 'كي' (ki) or 'لـ' (li) followed by a verb in the subjunctive mood (منصوب), or 'لـ' followed by a verbal noun (المصدر). Example: 'تم تطوير الخوارزمية لتحسين الدقة' (The algorithm was developed to improve accuracy).",
+        "th": "เพื่อแสดงวัตถุประสงค์หรือผลลัพธ์ที่ตั้งใจไว้ในบริบททางการ ภาษาอาหรับใช้ 'كي' (ki) หรือ 'لـ' (li) ตามด้วยกริยาในกาลแสดงเจตนา (منصوب) หรือ 'لـ' ตามด้วยคำนามกริยา (المصدر) ตัวอย่าง: 'تم تطوير الخوارزمية لتحسين الدقة' (อัลกอริทึมถูกพัฒนาขึ้นเพื่อปรับปรุงความแม่นยำ)",
+        "fa": "برای بیان هدف یا نتایج مورد نظر در زمینه‌های رسمی، عربی از 'كي' یا 'لـ' به همراه فعلی در حالت التزامی (منصوب) یا 'لـ' به همراه مصدر استفاده می‌کند. مثال: 'تم تطوير الخوارزمية لتحسين الدقة' (الگوریتم برای بهبود دقت توسعه یافت).",
+        "zh": "为了在正式语境中表达目的或预期结果，阿拉伯语使用“كي”（ki）或“لـ”（li）后接虚拟语气动词（منصوب），或“لـ”后接动名词（المصدر）。例如：“تم تطوير الخوارزمية لتحسين الدقة”（开发该算法是为了提高准确性）。",
+        "ja": "公式な文脈で目的や意図した結果を表現するために、アラビア語は「كي」または「لـ」の後に接続法（منصوب）の動詞を続けるか、「لـ」の後に動名詞（المصدر）を続けます。例：「تم تطوير الخوارزمية لتحسين الدقة」（アルゴリズムは精度を向上させるために開発されました）。",
+        "ar": "للتعبير عن الغاية أو النتائج المقصودة في السياقات الرسمية، تستخدم العربية 'كي' أو 'لـ' متبوعة بفعل منصوب، أو 'لـ' متبوعة بمصدر. مثال: 'تم تطوير الخوارزمية لتحسين الدقة'.",
+        "es": "Para expresar propósito o resultados previstos en contextos formales, el árabe usa 'كي' o 'لـ' seguido de un verbo en modo subjuntivo (منصوب), o 'لـ' seguido de un sustantivo verbal (المصدر). Ejemplo: 'تم تطوير الخوارزمية لتحسين الدقة' (El algoritmo fue desarrollado para mejorar la precisión)."
+      }
+    },
+    {
+      "id": "M12_g4",
+      "role": "grammar",
+      "kind": "grammar",
+      "texts": {
+        "en": "Advanced conditional sentences often use 'لو' (law) for hypothetical or counterfactual situations, typically pairing a past tense verb in the condition with a past tense or 'لـ' + present tense in the result. Example: 'لو تم تطبيق الشفافية، لانخفضت الشائعات' (If transparency had been applied, rumors would have decreased).",
+        "th": "ประโยคเงื่อนไขขั้นสูงมักใช้ 'لو' (law) สำหรับสถานการณ์สมมติหรือตรงข้ามกับความจริง โดยมักจะจับคู่กริยาอดีตในเงื่อนไขกับกริยาอดีตหรือ 'لـ' + กริยาปัจจุบันในผลลัพธ์ ตัวอย่าง: 'لو تم تطبيق الشفافية، لانخفضت الشائعات' (หากมีการใช้ความโปร่งใส ข่าวลือก็คงลดลง)",
+        "fa": "جملات شرطی پیشرفته اغلب از 'لو' برای موقعیت‌های فرضی یا خلاف واقع استفاده می‌کنند، که معمولاً فعل گذشته در شرط با فعل گذشته یا 'لـ' + فعل حال در نتیجه جفت می‌شود. مثال: 'لو تم تطبيق الشفافية، لانخفضت الشائعات' (اگر شفافیت اعمال می‌شد، شایعات کاهش می‌یافت).",
+        "zh": "高级条件句通常使用“لو”（law）来表示假设或与事实相反的情况，通常在条件句中搭配过去时动词，在结果句中搭配过去时动词或“لـ”+现在时动词。例如：“لو تم تطبيق الشفافية، لانخفضت الشائعات”（如果实施了透明度，谣言就会减少）。",
+        "ja": "高度な条件文は、仮定的または事実と反対の状況に対して「لو」を使用することが多く、通常、条件に過去時制の動詞を、結果に過去時制または「لـ」+現在時制の動詞をペアにします。例：「لو تم تطبيق الشفافية، لانخفضت الشائعات」（透明性が適用されていれば、噂は減っただろう）。",
+        "ar": "غالبًا ما تستخدم الجمل الشرطية المتقدمة 'لو' للمواقف الافتراضية أو المخالفة للواقع، حيث يُقترن فعل ماضٍ في الشرط عادةً بفعل ماضٍ أو 'لـ' + فعل مضارع في الجواب. مثال: 'لو تم تطبيق الشفافية، لانخفضت الشائعات'.",
+        "es": "Las oraciones condicionales avanzadas a menudo usan 'لو' para situaciones hipotéticas o contrafactuales, típicamente emparejando un verbo en pasado en la condición con un pasado o 'لـ' + presente en el resultado. Ejemplo: 'لو تم تطبيق الشفافية، لانخفضت الشائعات' (Si se hubiera aplicado la transparencia, los rumores habrían disminuido)."
+      }
+    }
+  ],
+  "grammar_questions": [
+    {
+      "id": "M12_gq1",
+      "question": {
+        "en": "Choose the correct passive voice form to complete the news headline: 'The new privacy policy _______ by the tech giant yesterday.'",
+        "th": "เลือกรูปแบบกรรมวาจกที่ถูกต้องเพื่อเติมพาดหัวข่าว: 'นโยบายความเป็นส่วนตัวใหม่ _______ โดยยักษ์ใหญ่ด้านเทคโนโลยีเมื่อวานนี้'",
+        "fa": "شکل صحیح فعل مجهول را برای تکمیل تیتر خبری انتخاب کنید: 'سیاست حفظ حریم خصوصی جدید _______ توسط غول فناوری دیروز.'",
+        "zh": "选择正确的被动语态形式来完成新闻标题：“新的隐私政策昨天_______科技巨头。”",
+        "ja": "ニュースの見出しを完成させるために、正しい受動態の形を選んでください：「新しいプライバシーポリシーは昨日テックジャイアントによって_______。」",
+        "ar": "اختر صيغة المبني للمجهول الصحيحة لإكمال العنوان الإخباري: 'سياسة الخصوصية الجديدة _______ من قبل عملاق التكنولوجيا أمس.'",
+        "es": "Elija la forma correcta de la voz pasiva para completar el titular: 'La nueva política de privacidad _______ por el gigante tecnológico ayer.'"
+      },
+      "options": [
+        { "text": { "en": "was announced (أُعلنَت)", "ar": "أُعلنَت" } },
+        { "text": { "en": "announced (أَعْلَنَت)", "ar": "أَعْلَنَت" } },
+        { "text": { "en": "is announcing (تُعلِن)", "ar": "تُعلِن" } },
+        { "text": { "en": "announcing (مُعلِنة)", "ar": "مُعلِنة" } }
+      ],
+      "correctOptionIndex": 0
+    },
+    {
+      "id": "M12_gq2",
+      "question": {
+        "en": "Which verbal noun (المصدر) correctly completes the sentence: 'The _______ of user data is a major concern for digital rights advocates.'",
+        "th": "คำนามกริยา (المصدر) ข้อใดเติมเต็มประโยคได้ถูกต้อง: 'การ _______ ข้อมูลผู้ใช้เป็นความกังวลหลักสำหรับผู้สนับสนุนสิทธิดิจิทัล'",
+        "fa": "کدام مصدر جمله را به درستی تکمیل می‌کند: '_______ داده‌های کاربران یک نگرانی بزرگ برای مدافعان حقوق دیجیتال است.'",
+        "zh": "哪个动名词（المصدر）正确完成了句子：“用户数据的_______是数字权利倡导者主要关注的问题。”",
+        "ja": "どの動名詞（المصدر）が文を正しく完成させますか：「ユーザーデータの_______は、デジタル権利擁護者にとって大きな懸念事項です。」",
+        "ar": "أي مصدر يكمل الجملة بشكل صحيح: 'إن _______ بيانات المستخدمين يمثل مصدر قلق كبير للمدافعين عن الحقوق الرقمية.'",
+        "es": "¿Qué sustantivo verbal (المصدر) completa correctamente la oración: 'La _______ de los datos de los usuarios es una gran preocupación para los defensores de los derechos digitales.'"
+      },
+      "options": [
+        { "text": { "en": "surveillance (مراقبة)", "ar": "مراقبة" } },
+        { "text": { "en": "watching (مُشاهدة)", "ar": "مُشاهدة" } },
+        { "text": { "en": "looking (نَظَر)", "ar": "نَظَر" } },
+        { "text": { "en": "seen (مَرئي)", "ar": "مَرئي" } }
+      ],
+      "correctOptionIndex": 0
+    },
+    {
+      "id": "M12_gq3",
+      "question": {
+        "en": "Select the correct structure to express purpose: 'The platform was redesigned _______ user engagement.'",
+        "th": "เลือกโครงสร้างที่ถูกต้องเพื่อแสดงวัตถุประสงค์: 'แพลตฟอร์มถูกออกแบบใหม่เพื่อ _______ การมีส่วนร่วมของผู้ใช้'",
+        "fa": "ساختار صحیح را برای بیان هدف انتخاب کنید: 'پلتفرم دوباره طراحی شد _______ تعامل کاربر.'",
+        "zh": "选择正确的结构来表达目的：“该平台经过重新设计_______用户参与度。”",
+        "ja": "目的を表現する正しい構造を選択してください：「プラットフォームはユーザーエンゲージメントを_______ために再設計されました。」",
+        "ar": "اختر التركيب الصحيح للتعبير عن الغاية: 'أعيد تصميم المنصة _______ تفاعل المستخدمين.'",
+        "es": "Seleccione la estructura correcta para expresar el propósito: 'La plataforma fue rediseñada _______ la participación del usuario.'"
+      },
+      "options": [
+        { "text": { "en": "to boost (لتعزيز)", "ar": "لتعزيز" } },
+        {
+          "text": { "en": "because it boosts (لأنها تعزز)", "ar": "لأنها تعزز" }
+        },
+        { "text": { "en": "and it boosts (وتعزز)", "ar": "وتعزز" } },
+        {
+          "text": { "en": "so that boosting (بحيث تعزيز)", "ar": "بحيث تعزيز" }
+        }
+      ],
+      "correctOptionIndex": 0
+    },
+    {
+      "id": "M12_gq4",
+      "question": {
+        "en": "Choose the correct conditional structure for a hypothetical situation: 'If the algorithm _______ transparent, it _______ trust.'",
+        "th": "เลือกโครงสร้างเงื่อนไขที่ถูกต้องสำหรับสถานการณ์สมมติ: 'หากอัลกอริทึม _______ โปร่งใส มัน _______ ความเชื่อมั่น'",
+        "fa": "ساختار شرطی صحیح را برای یک موقعیت فرضی انتخاب کنید: 'اگر الگوریتم _______ شفاف بود، _______ اعتماد.'",
+        "zh": "为假设情况选择正确的条件结构：“如果算法_______透明，它_______信任。”",
+        "ja": "仮定的な状況に対する正しい条件構造を選んでください：「もしアルゴリズムが_______透明であれば、それは_______信頼を得るだろう。」",
+        "ar": "اختر التركيب الشرطي الصحيح للموقف الافتراضي: 'لو _______ الخوارزمية شفافة، _______ الثقة.'",
+        "es": "Elija la estructura condicional correcta para una situación hipotética: 'Si el algoritmo _______ transparente, _______ confianza.'"
+      },
+      "options": [
+        {
+          "text": {
+            "en": "were / would build (كانت / لزادَت)",
+            "ar": "كانت / لزادَت"
+          }
+        },
+        { "text": { "en": "is / builds (تكون / تبني)", "ar": "تكون / تبني" } },
+        {
+          "text": {
+            "en": "will be / will build (ستكون / ستبني)",
+            "ar": "ستكون / ستبني"
+          }
+        },
+        {
+          "text": { "en": "being / building (كون / بناء)", "ar": "كون / بناء" }
+        }
+      ],
+      "correctOptionIndex": 0
+    }
+  ]
+}

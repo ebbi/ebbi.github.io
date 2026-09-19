@@ -1,0 +1,152 @@
+/* === 1. VARIABLES & RESET === */
+:root {
+    --primary: #2563eb;
+    --primary-light: #dbeafe;
+    --primary-dark: #1d4ed8;
+    --bg: #f8fafc;
+    --surface: #ffffff;
+    --text: #0f172a;
+    --text-secondary: #64748b;
+    --border: #e2e8f0;
+    --success: #10b981;
+    --radius: 16px;
+    --header-h: 60px;
+    --nav-h: 70px;
+    --safe-bottom: env(safe-area-inset-bottom, 0px);
+    --font-th: 'Prompt', sans-serif;
+    --font-en: 'Inter', sans-serif;
+    --font-fa: 'Vazirmatn', sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    font-family: var(--font-en);
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    overscroll-behavior-y: none; /* Prevent pull-to-refresh */
+    padding-top: var(--header-h);
+    padding-bottom: calc(var(--nav-h) + var(--safe-bottom));
+}
+
+/* === 2. APP SHELL === */
+.app-header {
+    position: fixed; top: 0; left: 0; right: 0;
+    height: var(--header-h);
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 20px;
+    z-index: 100;
+}
+.app-header__title { font-size: 1.5rem; font-weight: 700; color: var(--primary); }
+.app-header__btn { background: none; border: none; color: var(--text); cursor: pointer; padding: 8px; border-radius: 50%; }
+.app-header__btn:active { background: var(--primary-light); }
+
+.bottom-nav {
+    position: fixed; bottom: 0; left: 0; right: 0;
+    height: calc(var(--nav-h) + var(--safe-bottom));
+    padding-bottom: var(--safe-bottom);
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+    display: flex; justify-content: space-around; align-items: center;
+    z-index: 100;
+}
+.bottom-nav__item {
+    flex: 1; display: flex; flex-direction: column; align-items: center; gap: 4px;
+    background: none; border: none; color: var(--text-secondary);
+    font-size: 0.75rem; font-weight: 500; cursor: pointer;
+    padding: 10px 0; transition: color 0.2s;
+}
+.bottom-nav__item--active { color: var(--primary); }
+.bottom-nav__item:active { background: var(--primary-light); }
+
+.app-main { padding: 16px; min-height: calc(100vh - var(--header-h) - var(--nav-h)); }
+
+/* === 3. COMPONENTS (BEM) === */
+
+/* Word Card */
+.word-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 16px;
+    margin-bottom: 12px;
+    display: flex; flex-wrap: wrap; align-items: center; gap: 12px;
+    position: relative;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+    transition: transform 0.1s;
+}
+.word-card:active { transform: scale(0.98); }
+.word-card__source {
+    font-family: var(--font-th);
+    font-size: 1.5rem; font-weight: 600; color: var(--primary);
+    flex: 1; min-width: 100px; cursor: pointer;
+}
+.word-card__translations { display: flex; flex-direction: column; gap: 4px; flex: 2; }
+.word-card__trans { font-size: 0.95rem; color: var(--text-secondary); cursor: pointer; }
+.word-card__trans--fa { direction: rtl; font-family: var(--font-fa); }
+.word-card__graph-btn {
+    position: absolute; top: 12px; right: 12px;
+    background: var(--primary-light); border: none; border-radius: 50%;
+    width: 36px; height: 36px; display: flex; align-items: center; justify-content: center;
+    color: var(--primary); cursor: pointer;
+}
+
+/* Sentence Block */
+.sentence-block {
+    background: var(--surface);
+    border-left: 4px solid var(--primary);
+    border-radius: 8px;
+    padding: 16px;
+    margin-bottom: 16px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+}
+.sentence-block__source {
+    font-family: var(--font-th);
+    font-size: 1.25rem; font-weight: 500; color: var(--text);
+    margin-bottom: 8px; cursor: pointer;
+}
+.sentence-block__trans { font-size: 0.9rem; color: var(--text-secondary); margin-top: 4px; }
+.sentence-block__trans--fa { direction: rtl; font-family: var(--font-fa); }
+
+/* Constellation Graph */
+.constellation-view { display: flex; flex-direction: column; height: calc(100vh - var(--header-h) - var(--nav-h) - 32px); }
+.constellation__header { text-align: center; margin-bottom: 16px; }
+.constellation__header h2 { font-family: var(--font-th); font-size: 2rem; color: var(--primary); }
+.constellation__header p { color: var(--text-secondary); font-size: 0.9rem; }
+
+.constellation__canvas-wrap {
+    flex: 1; background: var(--surface); border-radius: var(--radius);
+    border: 1px solid var(--border); overflow: hidden; position: relative;
+    touch-action: pan-y; 
+}
+.constellation__canvas-wrap svg { width: 100%; height: 100%; }
+
+.constellation__edge { stroke: var(--border); stroke-width: 2; stroke-dasharray: 4 4; }
+.constellation__edge--synonyms { stroke: var(--success); stroke-dasharray: none; }
+.constellation__edge--collocations { stroke: var(--primary); }
+
+.constellation__node { cursor: pointer; transition: transform 0.2s; }
+.constellation__node:active { transform: scale(0.95); }
+.constellation__node-bg { fill: var(--surface); stroke: var(--primary); stroke-width: 3; }
+.constellation__node--center .constellation__node-bg { fill: var(--primary); stroke: var(--primary); }
+.constellation__node-text { font-family: var(--font-th); font-size: 16px; font-weight: 600; fill: var(--text); pointer-events: none; }
+.constellation__node--center .constellation__node-text { fill: #fff; }
+.constellation__node-subtext { font-size: 10px; fill: var(--text-secondary); pointer-events: none; }
+.constellation__node--center .constellation__node-subtext { fill: var(--primary-light); }
+
+/* Library List */
+.library-list { display: flex; flex-direction: column; gap: 12px; }
+.library-card {
+    background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
+    padding: 20px; display: flex; align-items: center; gap: 16px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.02); transition: transform 0.1s;
+}
+.library-card:active { transform: scale(0.98); }
+.library-card__icon { color: var(--primary); }
+.library-card__info { flex: 1; }
+.library-card__title { font-size: 1.1rem; font-weight: 600; }
+.library-card__meta { font-size: 0.85rem; color: var(--text-secondary); }

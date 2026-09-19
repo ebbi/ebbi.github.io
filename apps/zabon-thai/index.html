@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en" dir="auto">
+    <head>
+        <script>
+            document.documentElement.lang =
+                localStorage.getItem("lang") || "en";
+            if (localStorage.getItem("lang") === "fa") {
+                document.documentElement.dir = "rtl";
+            }
+        </script>
+
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Zabon - Language Learning App</title>
+
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <meta
+            name="description"
+            content="A multilingual App for learning languages with support for Thai, English and Persian. The app features text-to-speech, quizzes, and spaced repetition learning."
+        />
+        <meta
+            name="keywords"
+            content="relevant, keywords, separated, by, commas"
+        />
+        <meta name="author" content="Ebrahim Shaghouei" />
+        <link rel="icon" href="favicon.ico" type="image/x-icon" />
+        <meta property="og:title" content="Zabon" />
+        <meta
+            property="og:description"
+            content="A multilingual App for learning languages with support for Thai, English and Persian. The app features text-to-speech, quizzes, and spaced repetition learning."
+        />
+
+        <meta property="og:image" content="https://ebbi.github.io/earth.jpg" />
+        <meta property="og:type" content="website" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:image" content="https://ebbi.github.io/earth.jpg" />
+        <link rel="canonical" href="https://ebbi.github.io" />
+        <meta name="robots" content="index, follow" />
+
+        <link rel="stylesheet" href="style.css" />
+        <!-- Preconnect to Google Fonts for faster loading -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+        <!-- Optimized Font Load: Inter (English), Vazirmatn (Farsi), Prompt (Modern Thai) -->
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&family=Prompt:wght@300;400;700&family=Vazirmatn:wght@300;400;700&display=swap"
+            rel="stylesheet"
+        />
+        <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+        />
+    </head>
+
+    <body>
+        <main id="app" role="main"></main>
+        <script src="app.js" defer></script>
+    </body>
+</html>

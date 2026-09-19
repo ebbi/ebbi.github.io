@@ -1,0 +1,172 @@
+{
+  "milestone_id": "M1",
+  "target_language": "zh",
+  "items": [
+    {
+      "header": true,
+      "id": "M1_h_grammar",
+      "texts": {
+        "en": "Chinese Grammar Focus",
+        "th": "ไวยากรณ์ภาษาจีน",
+        "fa": "تمرکز گرامر چینی",
+        "zh": "中文语法重点",
+        "ja": "中国語文法フォーカス",
+        "ar": "تركيز القواعد الصينية",
+        "es": "Enfoque Gramatical del Chino"
+      }
+    },
+    {
+      "id": "M1_g1",
+      "role": "grammar",
+      "kind": "grammar",
+      "texts": {
+        "en": "Formal vs. Informal 'You' (你 vs. 您): Chinese uses '你' (nǐ) for informal 'you' (friends, peers) and '您' (nín) for formal 'you' (elders, strangers, showing respect).",
+        "th": "'คุณ' แบบทางการและไม่ทางการ (你 vs. 您): ภาษาจีนใช้ '你' สำหรับ 'คุณ' แบบไม่เป็นทางการ และ '您' สำหรับ 'คุณ' แบบทางการ (ผู้สูงอายุ คนแปลกหน้า หรือเพื่อแสดงความเคารพ)",
+        "fa": "'شما' رسمی و غیررسمی (你 vs. 您): چینی از '你' برای 'شما' غیررسمی و از '您' برای 'شما' رسمی (افراد مسن، غریبه‌ها یا احترام) استفاده می‌کند.",
+        "zh": "正式与非正式的“你”（你 vs. 您）：中文里对朋友、同辈使用非正式的“你”（nǐ），对长辈、陌生人或表示尊敬时使用正式的“您”（nín）。",
+        "ja": "丁寧な「あなた」とカジュアルな「あなた」（你 vs. 您）：中国語では、友人や同僚にカジュアルな「你」（nǐ）を使い、年長者、見知らぬ人、または敬意を表すために丁寧な「您」（nín）を使います。",
+        "ar": "'أنت' الرسمية وغير الرسمية (你 vs. 您): تستخدم الصينية '你' لـ 'أنت' غير الرسمية، و'您' لـ 'أنت' الرسمية (كبار السن، الغرباء، أو لإظهار الاحترام).",
+        "es": "'Tú' formal e informal (你 vs. 您): El chino usa '你' (nǐ) para 'tú' informal, y '您' (nín) para 'usted' formal (ancianos, desconocidos o por respeto)."
+      }
+    },
+    {
+      "id": "M1_g2",
+      "role": "grammar",
+      "kind": "grammar",
+      "texts": {
+        "en": "The Copula '是' (shì): The verb '是' is used to link nouns or pronouns (e.g., '我是约翰' - I am John). However, it is NOT used before adjectives. To say 'I am fine', you say '我很好' (wǒ hěn hǎo), literally 'I very good'.",
+        "th": "กริยาเชื่อม '是' (shì): กริยา '是' ใช้เชื่อมคำนามหรือคำสรรพนาม (เช่น '我是约翰' - ฉันคือจอห์น) แต่ไม่ใช้หน้าคำคุณศัพท์ การพูดว่า 'ฉันสบายดี' ให้พูดว่า '我很好' (wǒ hěn hǎo) แปลตรงตัวว่า 'ฉัน สบายดี'",
+        "fa": "فعل ربطی '是' (shì): فعل '是' برای اتصال اسم‌ها یا ضمایر استفاده می‌شود (مثال: '我是约翰' - من جان هستم). اما قبل از صفات استفاده نمی‌شود. برای گفتن 'من خوبم'، می‌گویید '我很好' (wǒ hěn hǎo)، به معنای تحت‌اللفظی 'من خیلی خوب'.",
+        "zh": "系动词“是”（shì）：动词“是”用于连接名词或代词（例如：“我是约翰”）。但是，它**不**用于形容词前。要说“我很好”，直接说“我很好”（wǒ hěn hǎo），字面意思是“我 很 好”。",
+        "ja": "コピュラ「是」（shì）：動詞「是」は名詞や代名詞を繋ぐために使われます（例：「我是约翰」- 私はジョンです）。しかし、形容詞の前には使いません。「私は元気です」と言うには、「我很好」（wǒ hěn hǎo）と言い、文字通り「私 とても 良い」となります。",
+        "ar": "فعل الكينونة '是' (shì): يُستخدم الفعل '是' لربط الأسماء أو الضمائر (مثال: '我是约翰' - أنا جون). ومع ذلك، لا يُستخدم قبل الصفات. لقول 'أنا بخير'، تقول '我很好' (wǒ hěn hǎo)، حرفياً 'أنا جيد جداً'.",
+        "es": "La cópula '是' (shì): El verbo '是' se usa para unir sustantivos o pronombres (ej. '我是约翰' - Soy John). Sin embargo, NO se usa antes de adjetivos. Para decir 'Estoy bien', dices '我很好' (wǒ hěn hǎo), literalmente 'Yo muy bien'."
+      }
+    },
+    {
+      "id": "M1_g3",
+      "role": "grammar",
+      "kind": "grammar",
+      "texts": {
+        "en": "Question Particles '吗' (ma) and '呢' (ne): Add '吗' to the end of a statement to make it a yes/no question (e.g., '你好吗？' - Are you well?). Use '呢' to ask 'And what about...?' (e.g., '你呢？' - And you?).",
+        "th": "คำช่วยคำถาม '吗' (ma) และ '呢' (ne): เติม '吗' ที่ท้ายประโยคบอกเล่าเพื่อสร้างคำถามใช่/ไม่ใช่ (เช่น '你好吗？' - คุณสบายดีไหม) ใช้ '呢' เพื่อถามว่า 'แล้ว...ล่ะ' (เช่น '你呢？' - แล้วคุณล่ะ)",
+        "fa": "ذرات پرسشی '吗' (ma) و '呢' (ne): '吗' را به انتهای جمله خبری اضافه کنید تا آن را به سؤال بله/خیر تبدیل کنید (مثال: '你好吗؟' - حال شما خوب است؟). از '呢' برای پرسیدن 'و در مورد... چطور؟' استفاده کنید (مثال: '你呢؟' - و شما چطورید؟).",
+        "zh": "疑问助词“吗”（ma）和“呢”（ne）：在陈述句末尾加上“吗”即可构成是非问句（例如：“你好吗？”）。用“呢”来问“……怎么样？”（例如：“你呢？”）。",
+        "ja": "疑問助詞「吗」（ma）と「呢」（ne）：平叙文の最後に「吗」を追加してYes/Noの疑問文にします（例：「你好吗？」- お元気ですか？）。「呢」を使って「…はどうですか？」と尋ねます（例：「你呢？」- あなたは？）。",
+        "ar": "جسيمات الاستفهام '吗' (ma) و '呢' (ne): أضف '吗' إلى نهاية الجملة الخبرية لتحويلها إلى سؤال نعم/لا (مثال: '你好吗؟' - هل أنت بخير؟). استخدم '呢' للسؤال 'وماذا عن...؟' (مثال: '你呢؟' - وأنت؟).",
+        "es": "Partículas de pregunta '吗' (ma) y '呢' (ne): Añade '吗' al final de una afirmación para hacer una pregunta de sí/no (ej. '你好吗？' - ¿Estás bien?). Usa '呢' para preguntar '¿Y qué hay de...?' (ej. '你呢？' - ¿Y tú?)."
+      }
+    },
+    {
+      "id": "M1_g4",
+      "role": "grammar",
+      "kind": "grammar",
+      "texts": {
+        "en": "Time-Based Greetings: While '你好' (nǐ hǎo) is used anytime, Chinese also has specific greetings for times of day: '早上好' (zǎoshang hǎo - Good morning), '下午好' (xiàwǔ hǎo - Good afternoon), and '晚上好' (wǎnshang hǎo - Good evening). '再见' (zàijiàn) means goodbye.",
+        "th": "การทักทายตามเวลา: แม้ว่าจะใช้ '你好' ได้ตลอดเวลา แต่ภาษาจีนมีการทักทายตามช่วงเวลา: '早上好' (zǎoshang hǎo - สวัสดีตอนเช้า), '下午好' (xiàwǔ hǎo - สวัสดีตอนบ่าย) และ '晚上好' (wǎnshang hǎo - สวัสดีตอนเย็น) '再见' (zàijiàn) แปลว่า ลาก่อน",
+        "fa": "احوال‌پرسی بر اساس زمان: اگرچه '你好' در هر زمانی استفاده می‌شود، چینی احوال‌پرسی‌های خاصی برای ساعات روز دارد: '早上好' (صبح بخیر)، '下午好' (عصر بخیر) و '晚上好' (شب بخیر). '再见' به معنای خداحافظی است.",
+        "zh": "基于时间的问候：虽然“你好”随时可用，但中文也有特定时间的问候语：“早上好”（zǎoshang hǎo）、“下午好”（xiàwǔ hǎo）和“晚上好”（wǎnshang hǎo）。“再见”（zàijiàn）表示再见。",
+        "ja": "時間帯による挨拶：「你好」はいつでも使えますが、中国語には時間帯別の挨拶もあります。「早上好」（zǎoshang hǎo - おはよう）、「下午好」（xiàwǔ hǎo - こんにちは）、「晚上好」（wǎnshang hǎo - こんばんは）。「再见」（zàijiàn）はさようならです。",
+        "ar": "التحية حسب الوقت: بينما تُستخدم '你好' في أي وقت، تحتوي الصينية على تحيات محددة لأوقات اليوم: '早上好' (صباح الخير)، '下午好' (نهاراً)، و'晚上好' (مساء الخير). '再见' تعني وداعا.",
+        "es": "Saludos según la hora: Aunque '你好' se usa en cualquier momento, el chino tiene saludos específicos para las horas del día: '早上好' (Buenos días), '下午好' (Buenas tardes) y '晚上好' (Buenas noches). '再见' significa adiós."
+      }
+    }
+  ],
+  "grammar_questions": [
+    {
+      "id": "M1_gq1",
+      "question": {
+        "en": "Which word is the formal/respectful way to say 'you' in Chinese?",
+        "th": "คำใดเป็นวิธีทางการ/สุภาพในการพูดว่า 'คุณ' ในภาษาจีน?",
+        "fa": "کدام کلمه راه رسمی/مؤدبانه برای گفتن 'شما' در چینی است؟",
+        "zh": "在中文里，哪个词是表示“你”的正式/尊敬的方式？",
+        "ja": "中国語で「あなた」と言うための丁寧/尊敬の言葉はどれですか？",
+        "ar": "أي كلمة هي الطريقة الرسمية/المحترمة لقول 'أنت' في الصينية؟",
+        "es": "¿Qué palabra es la forma formal/cortés de decir 'tú' en chino?"
+      },
+      "options": [
+        { "text": { "en": "你 (nǐ)", "zh": "你" } },
+        { "text": { "en": "您 (nín)", "zh": "您" } },
+        { "text": { "en": "他 (tā)", "zh": "他" } },
+        { "text": { "en": "我 (wǒ)", "zh": "我" } }
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "id": "M1_gq2",
+      "question": {
+        "en": "How do you correctly say 'I am fine' in Chinese, avoiding the incorrect use of the copula '是'?",
+        "th": "คุณจะพูดว่า 'ฉันสบายดี' ในภาษาจีนได้อย่างถูกต้องอย่างไร โดยหลีกเลี่ยงการใช้กริยาเชื่อม '是' ที่ไม่ถูกต้อง?",
+        "fa": "چگونه به درستی می‌گویید 'من خوبم' در چینی، از استفاده نادرست از فعل ربطی '是' اجتناب کنید؟",
+        "zh": "在中文里，如何正确地说“我很好”，避免错误地使用系动词“是”？",
+        "ja": "中国語でコピュラ「是」の誤用を避けながら、「私は元気です」と正しくどう言いますか？",
+        "ar": "كيف تقول بشكل صحيح 'أنا بخير' في الصينية، متجنبًا الاستخدام الخاطئ لفعل الكينونة '是'؟",
+        "es": "¿Cómo dices correctamente 'Estoy bien' en chino, evitando el uso incorrecto de la cópula '是'?"
+      },
+      "options": [
+        { "text": { "en": "我是好", "zh": "我是好" } },
+        { "text": { "en": "我很好", "zh": "我很好" } },
+        { "text": { "en": "我是很好", "zh": "我是很好" } },
+        { "text": { "en": "好是我", "zh": "好是我" } }
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "id": "M1_gq3",
+      "question": {
+        "en": "Which particle is added to the end of a statement to form a yes/no question?",
+        "th": "คำช่วยใดถูกเติมที่ท้ายประโยคบอกเล่าเพื่อสร้างคำถามใช่/ไม่ใช่?",
+        "fa": "کدام ذره به انتهای جمله خبری اضافه می‌شود تا یک سؤال بله/خیر تشکیل شود؟",
+        "zh": "哪个助词加在陈述句末尾构成是非问句？",
+        "ja": "平叙文の末尾に追加してYes/No疑問文を形成する助詞はどれですか？",
+        "ar": "أي جسيم يُضاف إلى نهاية الجملة الخبرية لتكوين سؤال نعم/لا؟",
+        "es": "¿Qué partícula se añade al final de una afirmación para formar una pregunta de sí/no?"
+      },
+      "options": [
+        { "text": { "en": "呢", "zh": "呢" } },
+        { "text": { "en": "吗", "zh": "吗" } },
+        { "text": { "en": "的", "zh": "的" } },
+        { "text": { "en": "了", "zh": "了" } }
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "id": "M1_gq4",
+      "question": {
+        "en": "What is the appropriate greeting to use in the evening?",
+        "th": "การทักทายที่เหมาะสมสำหรับใช้ในตอนเย็นคืออะไร?",
+        "fa": "احوال‌پرسی مناسب برای استفاده در عصر چیست؟",
+        "zh": "晚上使用的合适问候语是什么？",
+        "ja": "夕方に使用する適切な挨拶は何ですか？",
+        "ar": "ما هي التحية المناسبة للاستخدام في المساء؟",
+        "es": "¿Cuál es el saludo apropiado para usar por la noche?"
+      },
+      "options": [
+        { "text": { "en": "早上好", "zh": "早上好" } },
+        { "text": { "en": "下午好", "zh": "下午好" } },
+        { "text": { "en": "晚上好", "zh": "晚上好" } },
+        { "text": { "en": "再见", "zh": "再见" } }
+      ],
+      "correctOptionIndex": 2
+    },
+    {
+      "id": "M1_gq5",
+      "question": {
+        "en": "What does the phrase '你呢？' mean in a conversation?",
+        "th": "สำนวน '你呢？' ในการสนทนาหมายความว่าอย่างไร?",
+        "fa": "عبارت '你呢؟' در یک مکالمه به چه معناست؟",
+        "zh": "在对话中，“你呢？”这个短语是什么意思？",
+        "ja": "会話の中で「你呢？」というフレーズはどういう意味ですか？",
+        "ar": "ماذا تعني عبارة '你呢؟' في محادثة؟",
+        "es": "¿Qué significa la frase '你呢？' en una conversación?"
+      },
+      "options": [
+        { "text": { "en": "How are you?", "zh": "你好吗？" } },
+        { "text": { "en": "What is your name?", "zh": "你叫什么名字？" } },
+        { "text": { "en": "And you?", "zh": "你呢？" } },
+        { "text": { "en": "Goodbye", "zh": "再见" } }
+      ],
+      "correctOptionIndex": 2
+    }
+  ]
+}

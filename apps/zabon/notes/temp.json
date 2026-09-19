@@ -1,0 +1,100 @@
+{
+  "zabon": {
+    "version": 4,
+    "languages": [
+      {
+        "code": "en",
+        "label": "English",
+        "bcp47": "en-US",
+        "dir": "ltr",
+        "segmentation": "whitespace"
+      },
+      {
+        "code": "th",
+        "label": "Thai",
+        "bcp47": "th-TH",
+        "dir": "ltr",
+        "segmentation": "segmenter"
+      },
+      {
+        "code": "fa",
+        "label": "Persian",
+        "bcp47": "fa-IR",
+        "dir": "rtl",
+        "segmentation": "whitespace"
+      },
+      {
+        "code": "ar",
+        "label": "Arabic",
+        "bcp47": "ar-EG",
+        "dir": "rtl",
+        "segmentation": "whitespace"
+      },
+      {
+        "code": "es",
+        "label": "Spanish",
+        "bcp47": "es-ES",
+        "dir": "ltr",
+        "segmentation": "whitespace"
+      },
+      {
+        "code": "zh",
+        "label": "Chinese",
+        "bcp47": "zh-CN",
+        "dir": "ltr",
+        "segmentation": "segmenter"
+      },
+      {
+        "code": "ja",
+        "label": "Japanese",
+        "bcp47": "ja-JP",
+        "dir": "ltr",
+        "segmentation": "segmenter"
+      }
+    ]
+  },
+  "milestones": [
+    {
+      "id": "M1",
+      "tier": "introductory",
+      "theme": "Greetings & Identity",
+      "title": {
+        "en": "Greetings & Identity",
+        "th": "การทักทายและตัวตน",
+        "fa": "احوالپرسی و هویت",
+        "ar": "التحيات والهوية",
+        "es": "Saludos e Identidad",
+        "zh": "问候与身份",
+        "ja": "挨拶とアイデンティティ"
+      },
+      "grammar_focus": "Basic SVO & Pronouns",
+      "priority_tags": ["travel", "everyday", "social"],
+      "unlock_requirements": {
+        "srs_box_level": 2,
+        "grammar_quiz_pass_pct": 80
+      },
+      "content_file": "milestones/M1.json"
+    },
+    {
+      "id": "M2",
+      "tier": "introductory",
+      "theme": "Survival Needs",
+      "title": {
+        "en": "Survival Needs",
+        "th": "...",
+        "fa": "...",
+        "ar": "...",
+        "es": "...",
+        "zh": "...",
+        "ja": "..."
+      },
+      "grammar_focus": "Basic Negation & Wants/Needs",
+      "priority_tags": ["travel", "everyday"],
+      "unlock_requirements": {
+        "srs_box_level": 2,
+        "grammar_quiz_pass_pct": 80
+      },
+      "content_file": "milestones/M2.json"
+    }
+  ]
+}

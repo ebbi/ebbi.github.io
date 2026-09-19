@@ -1,0 +1,175 @@
+{
+  "milestone_id": "M4",
+  "target_language": "ar",
+  "items": [
+    {
+      "header": true,
+      "id": "M4_h_grammar",
+      "texts": {
+        "en": "Arabic Grammar Focus",
+        "th": "จุดเน้นไวยากรณ์ภาษาอาหรับ",
+        "fa": "تمرکز گرامر عربی",
+        "zh": "阿拉伯语语法重点",
+        "ja": "アラビア語文法フォーカス",
+        "ar": "تركيز القواعد العربية",
+        "es": "Enfoque de Gramática Árabe"
+      }
+    },
+    {
+      "id": "M4_g1",
+      "role": "grammar",
+      "kind": "grammar",
+      "texts": {
+        "en": "Imperative Verbs (الأفعال الأمر): Used for giving directions. Examples: اذهب (go), انعطف (turn), امشِ (walk).",
+        "th": "กริยาบังคับ (الأفعال الأمر): ใช้สำหรับการบอกทาง ตัวอย่าง: اذهب (ไป), انعطف (เลี้ยว), امشِ (เดิน)",
+        "fa": "افعال امری (الأفعال الأمر): برای دادن جهت استفاده می‌شود. مثال‌ها: اذهب (برو)، انعطف (بپیچ)، امشِ (قدم بزن).",
+        "zh": "祈使句动词 (الأفعال الأمر)：用于指路。例如：اذهب (走)、انعطف (转弯)、امشِ (步行)。",
+        "ja": "命令形動詞 (الأفعال الأمر)：道案内をする際に使われます。例：اذهب (行く)、انعطف (曲がる)、امشِ (歩く)。",
+        "ar": "أفعال الأمر: تُستخدم لإعطاء الاتجاهات. أمثلة: اذهب، انعطف، امشِ.",
+        "es": "Verbos Imperativos (الأفعال الأمر): Se usan para dar direcciones. Ejemplos: اذهب (ir), انعطف (girar), امشِ (caminar)."
+      }
+    },
+    {
+      "id": "M4_g2",
+      "role": "grammar",
+      "kind": "grammar",
+      "texts": {
+        "en": "Prepositions of Place: 'على اليمين' (on the right), 'على اليسار' (on the left), 'بجانب' (next to), 'أمام' (in front of).",
+        "th": "บุพบทบอกสถานที่: 'على اليمين' (ทางขวา), 'على اليسار' (ทางซ้าย), 'بجانب' (ถัดจาก), 'أمام' (ด้านหน้า)",
+        "fa": "حروف مکان: 'على اليمين' (در سمت راست)، 'على اليسار' (در سمت چپ)، 'بجانب' (در کنار)، 'أمام' (در جلو).",
+        "zh": "方位介词：'على اليمين' (在右边)、'على اليسار' (在左边)、'بجانب' (在旁边)、'أمام' (在前面)。",
+        "ja": "場所の前置詞：'على اليمين' (右に)、'على اليسار' (左に)、'بجانب' (隣に)、'أمام' (前に)。",
+        "ar": "حروف المكان: 'على اليمين'، 'على اليسار'، 'بجانب'، 'أمام'.",
+        "es": "Preposiciones de Lugar: 'على اليمين' (a la derecha), 'على اليسار' (a la izquierda), 'بجانب' (al lado de), 'أمام' (delante de)."
+      }
+    },
+    {
+      "id": "M4_g3",
+      "role": "grammar",
+      "kind": "grammar",
+      "texts": {
+        "en": "Asking for Directions: Use 'أين' (where) + place, or 'كيف أصل إلى' (how do I get to) + place.",
+        "th": "การถามทาง: ใช้ 'أين' (ที่ไหน) + สถานที่ หรือ 'كيف أصل إلى' (ฉันจะไป...ได้อย่างไร) + สถานที่",
+        "fa": "پرسیدن برای جهت: از 'أين' (کجا) + مکان، یا 'كيف أصل إلى' (چگونه به ... می‌رسم) + مکان استفاده کنید.",
+        "zh": "问路：使用 'أين' (哪里) + 地点，或者 'كيف أصل إلى' (我怎么去) + 地点。",
+        "ja": "道を尋ねる：'أين' (どこ) + 場所、または 'كيف أصل إلى' (どうやって～に行きますか) + 場所を使います。",
+        "ar": "السؤال عن الاتجاهات: استخدم 'أين' + المكان، أو 'كيف أصل إلى' + المكان.",
+        "es": "Pedir Direcciones: Use 'أين' (dónde) + lugar, o 'كيف أصل إلى' (cómo llego a) + lugar."
+      }
+    }
+  ],
+  "grammar_questions": [
+    {
+      "id": "M4_gq1",
+      "question": {
+        "en": "Choose the correct imperative verb to say 'turn left'.",
+        "th": "เลือกกริยาบังคับที่ถูกต้องสำหรับ 'เลี้ยวซ้าย'",
+        "fa": "فعل امری صحیح را برای 'بپیچید به چپ' انتخاب کنید.",
+        "zh": "选择正确的祈使句动词来表达“左转”。",
+        "ja": "「左折する」と言うための正しい命令形動詞を選んでください。",
+        "ar": "اختر فعل الأمر الصحيح لقول 'انعطف يساراً'.",
+        "es": "Elija el verbo imperativo correcto para decir 'girar a la izquierda'."
+      },
+      "options": [
+        { "text": { "en": "Turn left!", "ar": "انعطف يساراً" } },
+        { "text": { "en": "You are turning left", "ar": "أنت تنعطف يساراً" } },
+        { "text": { "en": "He turns left", "ar": "ينعطف يساراً" } },
+        { "text": { "en": "Turning left", "ar": "انعطاف يساراً" } }
+      ],
+      "correctOptionIndex": 0
+    },
+    {
+      "id": "M4_gq2",
+      "question": {
+        "en": "How do you say 'on the right' in Arabic?",
+        "th": "พูดว่า 'ทางขวา' เป็นภาษาอาหรับอย่างไร?",
+        "fa": "چگونه می‌گویید 'در سمت راست' به زبان عربی؟",
+        "zh": "阿拉伯语中“在右边”怎么说？",
+        "ja": "アラビア語で「右に」は何と言いますか？",
+        "ar": "كيف تقول 'on the right' باللغة العربية؟",
+        "es": "¿Cómo se dice 'a la derecha' en árabe?"
+      },
+      "options": [
+        { "text": { "en": "on the right", "ar": "على اليمين" } },
+        { "text": { "en": "in the right", "ar": "في اليمين" } },
+        { "text": { "en": "to the right", "ar": "إلى اليمين" } },
+        { "text": { "en": "from the right", "ar": "من اليمين" } }
+      ],
+      "correctOptionIndex": 0
+    },
+    {
+      "id": "M4_gq3",
+      "question": {
+        "en": "Which phrase means 'Where is the train station?'",
+        "th": "วลีใดหมายความว่า 'สถานีรถไฟอยู่ที่ไหน?'",
+        "fa": "کدام عبارت به معنای 'ایستگاه قطار کجاست؟' است؟",
+        "zh": "哪个短语的意思是“火车站在哪里？”",
+        "ja": "「駅はどこですか？」という意味のフレーズはどれですか？",
+        "ar": "أي عبارة تعني 'أين محطة القطار؟'",
+        "es": "¿Qué frase significa '¿Dónde está la estación de tren?'"
+      },
+      "options": [
+        {
+          "text": {
+            "en": "Where is the train station?",
+            "ar": "أين محطة القطار؟"
+          }
+        },
+        {
+          "text": {
+            "en": "How is the train station?",
+            "ar": "كيف محطة القطار؟"
+          }
+        },
+        {
+          "text": {
+            "en": "When is the train station?",
+            "ar": "متى محطة القطار؟"
+          }
+        },
+        {
+          "text": { "en": "Who is the train station?", "ar": "من محطة القطار؟" }
+        }
+      ],
+      "correctOptionIndex": 0
+    },
+    {
+      "id": "M4_gq4",
+      "question": {
+        "en": "Fill in the blank: 'كيف أصل ___ المطار؟' (How do I get to the airport?)",
+        "th": "เติมคำในช่องว่าง: 'كيف أصل ___ المطار؟' (ฉันจะไปสนามบินได้อย่างไร?)",
+        "fa": "جای خالی را پر کنید: 'كيف أصل ___ المطار؟' (چگونه به فرودگاه می‌رسم؟)",
+        "zh": "填空：“كيف أصل ___ المطار？”（我怎么去机场？）",
+        "ja": "空欄を埋めてください：'كيف أصل ___ المطار？'（どうやって空港に行きますか？）",
+        "ar": "املأ الفراغ: 'كيف أصل ___ المطار؟'",
+        "es": "Rellene el espacio en blanco: 'كيف أصل ___ المطار؟' (¿Cómo llego al aeropuerto?)"
+      },
+      "options": [
+        { "text": { "en": "to", "ar": "إلى" } },
+        { "text": { "en": "in", "ar": "في" } },
+        { "text": { "en": "on", "ar": "على" } },
+        { "text": { "en": "from", "ar": "من" } }
+      ],
+      "correctOptionIndex": 0
+    },
+    {
+      "id": "M4_gq5",
+      "question": {
+        "en": "What is the correct imperative form of 'to walk' (go straight)?",
+        "th": "รูปกริยาบังคับที่ถูกต้องของ 'เดิน' (เดินตรงไป) คืออะไร?",
+        "fa": "شکل صحیح فعل امری 'پیاده رفتن' (مستقیم بروید) چیست؟",
+        "zh": "“步行”（直走）的正确祈使句形式是什么？",
+        "ja": "「歩く」（真っ直ぐ行く）の正しい命令形は何ですか？",
+        "ar": "ما هو صيغة فعل الأمر الصحيحة لـ 'يمشي' (امشِ مستقيماً)؟",
+        "es": "¿Cuál es la forma imperativa correcta de 'caminar' (ir recto)?"
+      },
+      "options": [
+        { "text": { "en": "Walk! (imperative)", "ar": "امشِ" } },
+        { "text": { "en": "He walks", "ar": "يمشي" } },
+        { "text": { "en": "You are walking", "ar": "تمشي" } },
+        { "text": { "en": "Walking", "ar": "ماشٍ" } }
+      ],
+      "correctOptionIndex": 0
+    }
+  ]
+}
