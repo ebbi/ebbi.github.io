@@ -5423,8 +5423,9 @@ const App = (function () {
             State.data.sessionHistory.lastVisit = new Date().toISOString();
             State.save("sessionHistory");
 
-            this.renderLayout();
             await Services.I18n.loadTranslations();
+
+            this.renderLayout();
             await Services.DataService.loadManifest();
             await Services.PronunciationService.init();
             this.applyTheme();
@@ -5526,10 +5527,14 @@ const App = (function () {
         renderLayout() {
             const app = document.getElementById("app");
             if (!app) return;
-
             app.innerHTML = `
         <header id="app-toolbar">
             <nav class="toolbar-left">
+
+    <header class="toolbar__title">
+      <a class="toolbar__title-link" href="../../" id="toolbar-title-link">${Services.I18n.t("zabon", "Zabon")}</a>
+    </header>
+            
                 <button class="material-icons toolbar-btn"
                         data-action="navigate" data-route="library">home</button>
                 <button class="material-icons toolbar-btn"
@@ -7559,7 +7564,32 @@ const App = (function () {
             const anchor = document.getElementById("overlay-anchor");
             if (anchor) anchor.innerHTML = "";
 
+            this.rerenderForLanguage();
+
             Router.handle();
+        },
+        rerenderForLanguage() {
+            // 1. Rebuild the toolbar and layout so all static labels update
+            this.renderLayout();
+
+            // 2. Re-apply theme, lang, and direction on <html>/<body>
+            this.applyTheme();
+
+            // 3. Re-render the current view (library, document, help, etc.)
+            Router.handle();
+
+            // 4. Refresh the media bar if it is visible
+            const mediaBar = document.getElementById("media-player-container");
+            if (mediaBar && mediaBar.innerHTML) {
+                this.renderMediaBar(mediaBar);
+            }
+        },
+
+        refreshToolbarTitle() {
+            const link = document.getElementById("toolbar-title-link");
+            if (link) {
+                link.textContent = Services.I18n.t("zabon", "Zabon");
+            }
         },
 
         Blog: {
