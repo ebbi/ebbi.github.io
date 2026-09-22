@@ -28,4 +28,7 @@ Please provide the code for the above and a .gitignore file.
 
 # Please add Myanmar to the list of languages and update all the text.
 
-The default App language should be the browser or system language.
+The main home index page, zabon/index.html should support the apps languages which are, Arabic, Burmese, English, Spanish, Persian, Japanese, and Thai. Update accordingly.
+
+Sorry, corrected full list of App supported languages:
+Arabic, Burmese, Chinese, English, Japanese, Persian, Spanish and Thai.

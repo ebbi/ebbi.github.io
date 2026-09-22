@@ -86,6 +86,54 @@
       appBlog: "ဘလော့ဂ်",
       appBlogDesc: "မကြာမီ လာမည်",
     },
+    es: {
+      appName: "Zabon",
+      settings: "Ajustes",
+      language: "Idioma",
+      appearance: "Apariencia",
+      day: "Día",
+      night: "Noche",
+      auto: "Automático",
+      appZabon: "Zabon",
+      appZabonDesc:
+        "Aplicación independiente del idioma para aprender árabe, inglés, español, persa, japonés, tailandés y chino",
+      appThai: "Zabon Tailandés",
+      appThaiDesc: "Aprender tailandés (con inglés y persa)",
+      appBlog: "Blog",
+      appBlogDesc: "Próximamente",
+    },
+    ja: {
+      appName: "ザボン",
+      settings: "設定",
+      language: "言語",
+      appearance: "外観",
+      day: "昼",
+      night: "夜",
+      auto: "自動",
+      appZabon: "ザボン",
+      appZabonDesc:
+        "言語に依存しないアプリ — アラビア語、英語、スペイン語、ペルシア語、日本語、タイ語、中国語を学ぶ",
+      appThai: "ザボン タイ語",
+      appThaiDesc: "タイ語を学ぶ（英語とペルシア語付き）",
+      appBlog: "ブログ",
+      appBlogDesc: "近日公開",
+    },
+    zh: {
+      appName: "Zabon",
+      settings: "设置",
+      language: "语言",
+      appearance: "外观",
+      day: "日间",
+      night: "夜间",
+      auto: "自动",
+      appZabon: "Zabon",
+      appZabonDesc:
+        "语言无关的应用，用于学习阿拉伯语、英语、西班牙语、波斯语、日语、泰语和中文",
+      appThai: "Zabon 泰语",
+      appThaiDesc: "学习泰语（附英语和波斯语）",
+      appBlog: "博客",
+      appBlogDesc: "即将推出",
+    },
   };
 
   const RTL_LANGS = ["fa", "ar"];
@@ -95,8 +143,11 @@
     th: "ไทย",
     ar: "العربية",
     my: "မြန်မာ",
+    es: "Español",
+    ja: "日本語",
+    zh: "中文",
   };
-  const SUPPORTED_LANGS = ["en", "fa", "th", "ar", "my"];
+  const SUPPORTED_LANGS = ["en", "fa", "th", "ar", "my", "es", "ja", "zh"];
 
   function detectBrowserLanguage() {
     const candidates = [];
