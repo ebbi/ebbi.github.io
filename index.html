@@ -1,6 +1,17 @@
 <!doctype html>
-<html lang="en" data-theme="auto" data-lang="en">
+<html data-theme="auto">
   <head>
+    <script>
+      (function () {
+        var L = ["en", "fa", "th", "ar", "my", "es", "ja", "zh"];
+        var s = localStorage.getItem("zabon.lang");
+        var b = (navigator.language || "en").toLowerCase().split("-")[0];
+        var l = s && L.indexOf(s) > -1 ? s : L.indexOf(b) > -1 ? b : "en";
+        document.documentElement.lang = l;
+        document.documentElement.dir = l === "fa" || l === "ar" ? "rtl" : "ltr";
+      })();
+    </script>
+
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="Zabon — home of apps" />

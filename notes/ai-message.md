@@ -32,3 +32,7 @@ The main home index page, zabon/index.html should support the apps languages whi
 
 Sorry, corrected full list of App supported languages:
 Arabic, Burmese, Chinese, English, Japanese, Persian, Spanish and Thai.
+
+The App is language agnostic. The default display languages is the system web browser language (or a language selected by the user or retrieved from the browser local storage). In this circumstance, is the following HTML correct?
+
+<html lang="en" data-theme="auto" data-lang="en">
