@@ -26,4 +26,6 @@ I am using VS Code and terminal on a Ubuntu Mate OS.
 The index.html and CSS should be a mobile first design. An App toolbar should have the localized name "Zabon", a "hamburger" icon with a collapsible panel that has a language icon for selecting, English, Persian, Thai or Arabic (localized language name + flag) and a Day/Night/Auto settings.
 Please provide the code for the above and a .gitignore file.
 
-Please add Myanmar to the list of languages and update all the text.
+# Please add Myanmar to the list of languages and update all the text.
+
+The default App language should be the browser or system language.

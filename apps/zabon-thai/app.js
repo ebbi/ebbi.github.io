@@ -4,12 +4,49 @@ const App = (function () {
     // ============================================================================
 
     // ----------------------------------------------------------------------------
+    // Language detection
+    // ----------------------------------------------------------------------------
+
+    const SUPPORTED_LANGS = ["en", "fa", "th", "ar", "my"];
+
+    function detectBrowserLanguage() {
+        const candidates = [];
+
+        // Modern browsers: array of preferences in order
+        if (Array.isArray(navigator.languages)) {
+            candidates.push(...navigator.languages);
+        }
+
+        // Fallbacks for older browsers
+        if (navigator.language) candidates.push(navigator.language);
+        if (navigator.userLanguage) candidates.push(navigator.userLanguage);
+
+        for (const tag of candidates) {
+            if (!tag) continue;
+            const base = String(tag).toLowerCase().split("-")[0];
+            if (SUPPORTED_LANGS.includes(base)) return base;
+        }
+
+        return "en";
+    }
+
+    function initialLanguage() {
+        // 1. User's explicit choice from a previous visit
+        const saved = localStorage.getItem("localStorageLang");
+        if (saved && SUPPORTED_LANGS.includes(saved)) return saved;
+
+        // 2. Browser / system language
+        return detectBrowserLanguage();
+    }
+
+    // ----------------------------------------------------------------------------
     // 1. CORE MODULES - State, Event Bus, Router
     // ----------------------------------------------------------------------------
 
     const State = {
         data: {
-            lang: localStorage.getItem("localStorageLang") || "en",
+            //            lang: localStorage.getItem("localStorageLang") || "en",
+            lang: initialLanguage(),
             theme: localStorage.getItem("localStorageTheme") || "light",
             font: localStorage.getItem("localStorageFont") || "font-serif",
             translations: {},

@@ -96,6 +96,28 @@
     ar: "العربية",
     my: "မြန်မာ",
   };
+  const SUPPORTED_LANGS = ["en", "fa", "th", "ar", "my"];
+
+  function detectBrowserLanguage() {
+    const candidates = [];
+    if (Array.isArray(navigator.languages))
+      candidates.push(...navigator.languages);
+    if (navigator.language) candidates.push(navigator.language);
+    if (navigator.userLanguage) candidates.push(navigator.userLanguage);
+
+    for (const tag of candidates) {
+      if (!tag) continue;
+      const base = String(tag).toLowerCase().split("-")[0];
+      if (SUPPORTED_LANGS.includes(base)) return base;
+    }
+    return "en";
+  }
+
+  function initialLanguage() {
+    const saved = localStorage.getItem("zabon.lang");
+    if (saved && SUPPORTED_LANGS.includes(saved)) return saved;
+    return detectBrowserLanguage();
+  }
   /* ---------- Element references ---------- */
   const html = document.documentElement;
   const menuToggle = document.getElementById("menuToggle");
@@ -228,6 +250,6 @@
   });
 
   /* ---------- Initialise from saved preferences ---------- */
-  applyLanguage(store.get("zabon.lang", "en"));
+  applyLanguage(initialLanguage());
   applyTheme(store.get("zabon.theme", "auto"));
 })();
