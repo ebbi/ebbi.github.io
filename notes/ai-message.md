@@ -1,4 +1,4 @@
-The local folder structure is as follows:
+Zabon is a mobile-first language agnostic vanilla HTML, CSS, JS App. The Zabon index.html home pages has a list of Zabon Apps which are independent complete Apps and currently include Zabon and Zabon-thai. Here is the folder structure:
 
 zabon/
 ├── index.html ← Home page (links to all apps)
@@ -13,26 +13,17 @@ zabon/
 ├── .gitignore
 └── README.md
 
-I have followed Option 1 — Bring the Apps into the monorepo (recommended for a unified home page)
+The current task is to clarify the requirement and design of a mobile-first multilingual Blog App. Please do not generate any code and instead help clarify requirements and the detail design of the Blog App.
 
-The .git folder has been deleted in both Apps.
+The output should be design questions and clarification followed by subsequent messages and replies to finalize a list of chat messages with clear requirement and tests to approve at each stage before progressing to the next stage of the App design implementation.
 
-The task now is to setup local git and remote live (ebbigithub.io) and staging (beraar.github.io)
+The requirement so far:
 
-I am using VS Code and terminal on a Ubuntu Mate OS.
+- The Blog App should be a mobile-first design implemented as a vanilla CSS, HTML, JS.
+- There should be a toolbar consistent with the Zabon toolbar, with a collapsible panel for language selection and Dark/Light/Auto toggle modes.
+- The toolbar should have a localized search input box for the blogs.
+- The blogs should be self contained with their own assets including images and links to resources and articles.
+- The blogs should have URL friendly addresses that can be shared on social media Apps.
+- The initial target translation languages for the blogs are, Arabic, English, Persian and Thai.
 
 ===============
-
-The index.html and CSS should be a mobile first design. An App toolbar should have the localized name "Zabon", a "hamburger" icon with a collapsible panel that has a language icon for selecting, English, Persian, Thai or Arabic (localized language name + flag) and a Day/Night/Auto settings.
-Please provide the code for the above and a .gitignore file.
-
-# Please add Myanmar to the list of languages and update all the text.
-
-The main home index page, zabon/index.html should support the apps languages which are, Arabic, Burmese, English, Spanish, Persian, Japanese, and Thai. Update accordingly.
-
-Sorry, corrected full list of App supported languages:
-Arabic, Burmese, Chinese, English, Japanese, Persian, Spanish and Thai.
-
-The App is language agnostic. The default display languages is the system web browser language (or a language selected by the user or retrieved from the browser local storage). In this circumstance, is the following HTML correct?
-
-<html lang="en" data-theme="auto" data-lang="en">
