@@ -7,7 +7,7 @@
 const fs = require("fs");
 const path = require("path");
 
-const APP_ROOT = path.join(__dirname, "..", "..");
+const APP_ROOT = path.join(__dirname, "..");
 const REQUIRED_FILES = [
   "index.html",
   "assets/css/style.css",
