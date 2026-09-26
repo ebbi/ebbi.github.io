@@ -137,11 +137,8 @@ Uncaught ReferenceError: BlogRenderer is not defined
 debugger eval code:1:4
 <anonymous> debugger eval code:1
 
-ls apps/ls apps/blog/tools/generate-index.js
-apps/blog/tools/generate-index.js
-berar@berar:/run/media/berar/backup-disk/zabon$ node apps/blog/tools/generate-index.js
-📖 Reading posts.json...
-❌ Error: posts.json not found at /run/media/berar/backup-disk/zabon/apps/assets/data/posts.json
+http://127.0.0.1:5500/apps/blog/
+404
 
-The current pathname is:
-apps/blog/assets/data/posts.json
+Invalid URL format. Use #//post/
+Go to Pilot Post
