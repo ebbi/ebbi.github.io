@@ -7,15 +7,26 @@
     <link rel="stylesheet" href="assets/css/style.css" />
   </head>
   <body>
+    <header>
+      <nav>
+        <a href="#/en">Home (EN)</a> | <a href="#/fa">Home (FA)</a> |
+        <a href="#/ar">Home (AR)</a> |
+        <a href="#/th">Home (TH)</a>
+      </nav>
+    </header>
+
+    <!-- CRITICAL: This is the container the JS looks for -->
     <main id="app">
-      <h1>Zabon Blog (Milestone 03 Test)</h1>
-      <p>
-        If you see this, the HTML shell is working. Open the console to test the
-        renderer.
-      </p>
+      <p>Loading blog...</p>
     </main>
 
-    <!-- Load the renderer so it attaches to the window object -->
+    <footer>
+      <p>&copy; 2024 Zabon Blog. Built with Vanilla JS.</p>
+    </footer>
+
+    <!-- Scripts must load AFTER the HTML elements -->
     <script src="assets/js/renderer.js"></script>
+    <script src="assets/js/router.js"></script>
+    <script src="assets/js/app.js"></script>
   </body>
 </html>

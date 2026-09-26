@@ -136,3 +136,9 @@ Uncaught ReferenceError: BlogRenderer is not defined
 
 debugger eval code:1:4
 <anonymous> debugger eval code:1
+
+http://127.0.0.1:5500/apps/blog/
+404
+
+Invalid URL format. Use #//post/
+Go to Pilot Post

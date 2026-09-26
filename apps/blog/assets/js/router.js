@@ -1,90 +1,38 @@
 /**
- * Zabon Blog — Hash-Based Router
- * GitHub Pages compatible (no server-side routing)
+ * Zabon Blog — Hash-based Router (Bulletproof Version)
+ * Handles URL parsing, language detection, and route events.
  */
+window.BlogRouter = {
+  currentRoute: null,
+  onRouteChange: null,
 
-const ROUTER = (() => {
-  let currentRoute = null;
-  let handlers = new Map();
+  init: function (callback) {
+    this.onRouteChange = callback;
+    window.addEventListener("hashchange", () => this.handleRoute());
+    this.handleRoute(); // Handle initial load immediately
+  },
 
-  /**
-   * Parse hash into structured route object
-   * Format: #/<lang>/<slug> or #/<lang>/
-   */
-  function parseHash(hashStr) {
-    const cleanHash = hashStr.replace(/^#/, "");
-    const segments = cleanHash.split("/").filter(Boolean);
+  handleRoute: function () {
+    // Remove the '#' and split by '/'. Default to '/en' if empty.
+    const hash = window.location.hash.slice(1) || "/en";
+    const segments = hash.split("/").filter((s) => s.length > 0);
 
-    if (segments.length === 0) {
-      return { lang: "en", slug: null, path: "/" };
-    }
-
+    // segments[0] = lang, segments[1] = type, segments[2] = slug
     const lang = segments[0] || "en";
-    const slug = segments[1] || null;
-    const path = `/${lang}${slug ? "/" + slug : ""}`;
+    const type = segments[1] || "list"; // 'post' or 'list'
+    const slug = segments[2] || null;
 
-    return { lang, slug, path };
-  }
+    // Update HTML attributes for RTL/LTR and language
+    const htmlEl = document.documentElement;
+    htmlEl.setAttribute("lang", lang);
+    const rtlLangs = ["fa", "ar", "ur", "he"];
+    htmlEl.setAttribute("dir", rtlLangs.includes(lang) ? "rtl" : "ltr");
 
-  /**
-   * Register a route handler
-   */
-  function on(routePattern, handler) {
-    handlers.set(routePattern, handler);
-  }
+    this.currentRoute = { lang, type, slug, raw: window.location.hash };
 
-  /**
-   * Navigate to a new route
-   */
-  function navigate(routeObj) {
-    const newPath = `#${routeObj.path}`;
-    if (window.location.hash !== newPath) {
-      window.location.hash = newPath;
-    } else {
-      handleRouteChange(routeObj);
+    console.log("🛣️ Route changed:", this.currentRoute);
+    if (this.onRouteChange) {
+      this.onRouteChange(this.currentRoute);
     }
-  }
-
-  /**
-   * Handle route change event
-   */
-  function handleRouteChange(newRoute) {
-    console.log("[Router] Route changed:", newRoute);
-    currentRoute = newRoute;
-
-    // Update HTML lang/dir attributes
-    document.documentElement.lang = newRoute.lang;
-    document.documentElement.dir = ["fa", "ar"].includes(newRoute.lang)
-      ? "rtl"
-      : "ltr";
-
-    // Trigger registered handlers
-    handlers.forEach((handler, pattern) => {
-      if (pattern === "*" || pattern === newRoute.path) {
-        handler(newRoute);
-      }
-    });
-  }
-
-  /**
-   * Initialize router
-   */
-  function init() {
-    window.addEventListener("hashchange", () => {
-      const route = parseHash(window.location.hash);
-      handleRouteChange(route);
-    });
-
-    // Initial route
-    const initialHash = window.location.hash || "#/en/";
-    const initialRoute = parseHash(initialHash);
-    handleRouteChange(initialRoute);
-
-    return { parseHash, on, navigate, getCurrentRoute: () => currentRoute };
-  }
-
-  return { init };
-})();
-
-// Expose globally for debugging
-window.ZabonRouter = ROUTER;
+  },
+};
