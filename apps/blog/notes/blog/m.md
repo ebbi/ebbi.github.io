@@ -151,15 +151,15 @@ The above files were created at the top level and not in the zabon/apps/blogs
 
 I have manually moved the files into blogs folder but this needs to be resolved for the tests to pass and future file generation.
 
-This is incorrect:
-git add zabon/apps/blog/tools/milestones/
-It should be:
-git add apps/blog/tools/milestones/
+The test:
+$ node apps/blog/tools/fetcher.js --refresh
+🚀 Zabon Blog — Content Fetcher
+==================================================
+🔄 --refresh flag detected: forcing fresh fetch
 
-Similarly,
-Open a new chat in Continue and type:
+📡 Fetching from https://twolegsbadblog.wordpress.com/wp-json/wp/v2/posts...
+❌ Network request failed: HTTP 404: Not Found
 
-    @zabon/apps/blog/tools/CONTEXT.md @zabon/apps/blog/tools/LOCKED_DECISIONS.txt @zabon/apps/blog/HANDOFF.md @zabon/apps/blog/tools/milestones/01.md
-    I am starting Milestone 01. Please read the attached files and provide the SCOPE CONFIRMATION.
+❌ Fetcher failed: no data available
 
-seem incorrect pathname again. @apps/blog/tools/CONTEXT.md ?
+Because, const WP_API_URL = "https://twolegsbadblog.wordpress.com/wp-json/wp/v2/posts";
