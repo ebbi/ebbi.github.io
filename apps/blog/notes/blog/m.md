@@ -122,44 +122,17 @@ zabon/
 ├── .gitignore ← Root gitignore (will ignore node_modules, etc.)
 └── README.md
 
-mkdir -p apps/blog/tools/milestones \
- apps/blog/tools/tests \
- apps/blog/tools/reports/archive \
- apps/blog/content/en \
- apps/blog/content/fa \
- apps/blog/content/ar \
- apps/blog/content/th \
- apps/blog/assets/css \
- apps/blog/assets/js \
- apps/blog/assets/img \
- apps/blog/assets/data
-touch apps/blog/tools/.gitkeep \
- apps/blog/assets/img/.gitkeep \
- apps/blog/assets/data/.gitkeep
+http://127.0.0.1:5500/apps/blog/
+returns a blank page.
 
-After Approving the seemingly correct Scope confirmation for :
-SCOPE CONFIRMATION Milestone: 00 Bootstrap & Foundation Files I will create:
+BlogRenderer.render([
+{ type: 'paragraph', content: 'Hello World' },
+{ type: 'heading', content: 'Test Heading', level: 2 },
+{ type: 'image', src: 'https://via.placeholder.com/400x200', caption: 'Test Image Caption' },
+{ type: 'quote', content: 'This is a test quote' }
+])
+Uncaught ReferenceError: BlogRenderer is not defined
+<anonymous> debugger eval code:1
 
-zabon/apps/blog/index.html
-zabon/apps/blog/assets/css/style.css
-zabon/apps/blog/assets/js/router.js
-zabon/apps/blog/assets/js/app.js
-zabon/apps/blog/tools/test-integrity.js
-zabon/apps/blog/tools/hash-state.js Files I will modify: None Files I will NOT touch: Any files outside zabon/apps/blog/, Root .gitignore
-
-The above files were created at the top level and not in the zabon/apps/blogs
-
-I have manually moved the files into blogs folder but this needs to be resolved for the tests to pass and future file generation.
-
-The test:
-$ node apps/blog/tools/fetcher.js --refresh
-🚀 Zabon Blog — Content Fetcher
-==================================================
-🔄 --refresh flag detected: forcing fresh fetch
-
-📡 Fetching from https://twolegsbadblog.wordpress.com/wp-json/wp/v2/posts...
-❌ Network request failed: HTTP 404: Not Found
-
-❌ Fetcher failed: no data available
-
-Because, const WP_API_URL = "https://twolegsbadblog.wordpress.com/wp-json/wp/v2/posts";
+debugger eval code:1:4
+<anonymous> debugger eval code:1
