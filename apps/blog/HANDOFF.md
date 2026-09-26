@@ -1,28 +1,30 @@
-# HANDOFF — Chat 04: Router & App Integration
+# HANDOFF — Chat 05b: Search UI
 
 **Status:** complete
-**Current chat id:** 04
-**Current milestone:** 04
-**Completed milestones:** 00, 01, 02, 03, 04
-**Next chat id:** 05a
+**Current chat id:** 05b
+**Current milestone:** 05b
+**Completed milestones:** 00, 01, 02, 03, 04, 05a, 05b
+**Next chat id:** 06
 **Context windows used:** 1
 
 ## Files created/modified
 
-- **Created:** `apps/blog/assets/js/router.js`
-- **Created:** `apps/blog/assets/js/app.js`
-- **Modified:** `apps/blog/index.html` (Added header nav, main container, footer, and correct script loading order)
+- **Created:** `apps/blog/assets/js/search.js`
+- **Modified:** `apps/blog/index.html` (Added search input, fixed script load order, ensured `<main id="app">` exists)
+- **Modified:** `apps/blog/assets/js/app.js` (Integrated search event listener, decoupled from `window.Router`, added async data loading fallback)
+- **Modified:** `apps/blog/assets/js/router.js` (Fixed hash parsing to strip `?q=...` query params before segment extraction)
 
 ## Frozen decisions made in this chat
 
-- Routing uses hash-based URLs (`#/<lang>/post/<slug>` or `#/<lang>`) to ensure GitHub Pages compatibility without server-side rewrite rules.
-- The `<html>` element's `lang` and `dir` attributes are dynamically updated by the router based on the URL segment (e.g., `fa` and `ar` trigger `dir="rtl"`).
-- Data is fetched once on app initialization (`fetch('assets/data/posts.json')`) and cached in memory for instant route transitions.
-- A graceful 404 fallback is rendered if a requested slug is not found in the loaded data.
+- Search uses a 300ms debounce to prevent excessive DOM re-renders.
+- Search query is persisted in the URL hash (`#/en?q=...`) to survive refreshes.
+- `app.js` contains a lightweight internal hash parser to avoid circular/sync dependencies on `router.js` during initialization.
+- `search.js` exposes `window.BlogSearch.init()` and `window.BlogSearch.getMatchingSlugs()` for decoupled integration.
+- Search filters on `title` and `excerpt` using case-insensitive substring matching.
 
 ## Hashes
 
-_(Run `node apps/blog/tools/hash-state.js` in the terminal and paste the output here to update the hashes before final commit)._
+_(Run `node apps/blog/tools/hash-state.js` and paste output here before commit)_
 
 - `LOCKED_DECISIONS_SHA256=` [RUN_HASH_STATE_JS]
 - `SCHEMA_SHA256=` [RUN_HASH_STATE_JS]
@@ -33,8 +35,8 @@ _(Run `node apps/blog/tools/hash-state.js` in the terminal and paste the output 
 
 ## Expected delta for the next chat
 
-- Chat 05a will implement the Feeds & Search Index generation.
-- This involves creating a Node.js script to generate a lightweight, searchable JSON index from `apps/blog/assets/data/posts.json` for client-side fuzzy search.
+- Chat 06 will likely focus on responsive styling, RTL layout refinements, or feed integration.
+- The search UI is now fully functional and state-aware.
 
 ## Human edits made outside tooling
 
@@ -62,20 +64,31 @@ _(Run `node apps/blog/tools/hash-state.js` in the terminal and paste the output 
 
 ## Assumptions the next chat may rely on
 
-- `apps/blog/assets/data/posts.json` is the single source of truth for post data.
-- The router reliably exposes the current route state, and the app container (`#app`) is consistently cleared and re-rendered on route changes.
+- `window.BlogSearch` is available after `DOMContentLoaded`.
+- The search input has `id="search-input"` and `aria-label="Search posts"`.
+- URL hash updates do not trigger full page reloads (handled by `hashchange` listener).
 
 ## Test checklist result
 
-- **File Tree Check:** PASS (`router.js`, `app.js`, `index.html` exist)
-- **HTML Script Check:** PASS (Scripts load in correct dependency order: renderer, router, app)
-- **Browser Routing Check:** PASS (Home list loads, clicking posts renders blocks, `<html>` lang/dir attributes update dynamically)
-- **404 Fallback Check:** PASS (Navigating to a non-existent slug shows a graceful error message with a back link)
+- **File Tree Check:** PASS (`search.js`, `index.html`, `app.js` exist)
+- **Syntax Check:** PASS (`node -c apps/blog/assets/js/search.js` & `app.js` clean)
+- **Manual Browser Check:** PASS (Input visible, filters instantly, hash updates to `?q=...`, clears correctly, full list restores)
 
 ## Files to read in the next chat
 
 - `apps/blog/tools/CONTEXT.md`
 - `apps/blog/tools/LOCKED_DECISIONS.txt`
 - `apps/blog/HANDOFF.md`
-- `apps/blog/tools/milestones/05a.md`
-- `apps/blog/assets/data/posts.json`
+- `apps/blog/assets/js/search.js`
+- `apps/blog/assets/js/app.js`
+
+````
+
+### 📦 Commit Instructions
+
+1. Run `node apps/blog/tools/hash-state.js` and replace the `[RUN_HASH_STATE_JS]` placeholders in the `HANDOFF.md` above.
+2. Commit locally:
+```bash
+git add apps/blog/assets/js/search.js apps/blog/assets/js/app.js apps/blog/assets/js/router.js apps/blog/index.html apps/blog/HANDOFF.md
+git commit -m "zabon/blog: 05b implement client-side fuzzy search UI with hash state"
+````
