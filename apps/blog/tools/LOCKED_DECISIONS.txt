@@ -12,5 +12,5 @@ Node 20 LTS target.
 UI languages: en, fa, th, ar, my, es, ja, zh.
 Content languages: en, fa, ar, th.
 Hosting: GitHub Pages under apps/blog/.
-Layout: The blog is a self-contained app. App root is <repo-root>/zabon/apps/blog. All tooling, content, and assets live inside this folder. Git operations run from <repo-root>; commit messages are prefixed "zabon/blog:". CRITICAL: All file paths generated for the IDE must include the full path from the repo root (e.g., zabon/apps/blog/index.html), never just the app-relative path.LOCKED_DECISIONS_VERSION=3
+Layout: The blog is a self-contained app. App root is <workspace-root>/apps/blog. All tooling, content, and assets live inside this folder. Git operations run from <workspace-root>; commit messages are prefixed "zabon/blog:". CRITICAL: All file paths generated for the IDE must be relative to the workspace root (e.g., apps/blog/index.html). Never prefix paths with "zabon/".
 Workflow: Native IDE (Continue). The model reads local files via `@` mentions and writes files via IDE diffs. The human runs shell commands in the integrated VS Code terminal. No bundling, no chatbridge.js, no virtual file markers.

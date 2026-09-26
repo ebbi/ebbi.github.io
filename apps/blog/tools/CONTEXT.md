@@ -79,8 +79,8 @@ Files to read in the next chat (exact paths)
 
 ## IDE File Path Rules (CRITICAL FOR CONTINUE)
 
-- The VS Code Workspace Root is the repository root (the parent folder that contains `zabon/`).
-- When outputting file paths in SCOPE CONFIRMATION, code blocks, or file headers (e.g., `### path/to/file`), you MUST use paths relative to the VS Code Workspace Root.
-- CORRECT: `zabon/apps/blog/index.html`
-- INCORRECT: `index.html`, `apps/blog/index.html`, or `./index.html`.
-- The Continue extension uses these exact paths to write files to disk. If you omit the `zabon/` prefix, files will be created in the wrong location.
+- The VS Code Workspace Root is the `zabon/` directory.
+- When outputting file paths in SCOPE CONFIRMATION, code blocks, or file headers (e.g., `### path/to/file`), you MUST use paths relative to the VS Code Workspace Root (`zabon/`).
+- CORRECT: `apps/blog/index.html`
+- INCORRECT: `zabon/apps/blog/index.html`, `index.html`, or `./index.html`.
+- The Continue extension uses these exact paths to write files to disk. If you include the `zabon/` prefix, files will be created in the wrong location.

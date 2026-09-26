@@ -137,20 +137,29 @@ touch apps/blog/tools/.gitkeep \
  apps/blog/assets/img/.gitkeep \
  apps/blog/assets/data/.gitkeep
 
-I am having difficulty reconciling the blog-plan.md with the new instructions, for example, CONTEXT.md content is not clear as the old blog-plan.md has reference to: node tools/chatbridge.js
+After Approving the seemingly correct Scope confirmation for :
+SCOPE CONFIRMATION Milestone: 00 Bootstrap & Foundation Files I will create:
 
-For the new files for example in Step 3 and Step 4, provide the file content to cut & paste into these files.
+zabon/apps/blog/index.html
+zabon/apps/blog/assets/css/style.css
+zabon/apps/blog/assets/js/router.js
+zabon/apps/blog/assets/js/app.js
+zabon/apps/blog/tools/test-integrity.js
+zabon/apps/blog/tools/hash-state.js Files I will modify: None Files I will NOT touch: Any files outside zabon/apps/blog/, Root .gitignore
 
-Please output the set of Milestone instructions for the new setup.
+The above files were created at the top level and not in the zabon/apps/blogs
 
-The repo top level folder zabon has the .continue/agents folder with identical continue.yaml and new-config.yaml
+I have manually moved the files into blogs folder but this needs to be resolved for the tests to pass and future file generation.
 
-The config files already have:
-contextLength: 131072
-maxTokens: 8192
+This is incorrect:
+git add zabon/apps/blog/tools/milestones/
+It should be:
+git add apps/blog/tools/milestones/
 
-Step 1 and Step 2 failed and Step 3 will also fail as there are several files to upload and not a solution long term.
+Similarly,
+Open a new chat in Continue and type:
 
-Notice the .continue folder has an agents folder with the config.yaml and I also duplicated the file and saved it as continue.yaml but the same problem occurs with the file size error.
+    @zabon/apps/blog/tools/CONTEXT.md @zabon/apps/blog/tools/LOCKED_DECISIONS.txt @zabon/apps/blog/HANDOFF.md @zabon/apps/blog/tools/milestones/01.md
+    I am starting Milestone 01. Please read the attached files and provide the SCOPE CONFIRMATION.
 
-Does the config file name need to change? Or any other suggestion?
+seem incorrect pathname again. @apps/blog/tools/CONTEXT.md ?
