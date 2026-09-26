@@ -1,0 +1,16 @@
+Content: JSON with structured body blocks; same Latin slug across languages.
+Build: offline Node.js tooling; cache-first; --refresh flag.
+Translation: DeepL primary (fa, ar); Google Cloud Translation for th; mandatory per-language human review gate.
+Media: images committed under apps/blog/assets/img/<slug>/; audio/video hotlinked.
+Repo size < 500 MB; images <= 200 KB at 960w.
+Block types: paragraph, heading, image, gallery, quote, pullquote, list, table, divider, embed, resourceList, callout, footnotes, attachment.
+URLs: always include language prefix; root-relative to blog app.
+Pilot URL: https://twolegsbadblog.wordpress.com/2024/04/03/jews-in-palestine-before-israel/
+Pilot slug: jews-in-palestine-before-israel
+Pilot languages in order: en, fa, ar, th.
+Node 20 LTS target.
+UI languages: en, fa, th, ar, my, es, ja, zh.
+Content languages: en, fa, ar, th.
+Hosting: GitHub Pages under apps/blog/.
+Layout: The blog is a self-contained app. App root is <repo-root>/zabon/apps/blog. All tooling, content, and assets live inside this folder. Git operations run from <repo-root>; commit messages are prefixed "zabon/blog:". CRITICAL: All file paths generated for the IDE must include the full path from the repo root (e.g., zabon/apps/blog/index.html), never just the app-relative path.LOCKED_DECISIONS_VERSION=3
+Workflow: Native IDE (Continue). The model reads local files via `@` mentions and writes files via IDE diffs. The human runs shell commands in the integrated VS Code terminal. No bundling, no chatbridge.js, no virtual file markers.
