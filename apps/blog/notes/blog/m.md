@@ -142,3 +142,48 @@ http://127.0.0.1:5500/apps/blog/
 
 Invalid URL format. Use #//post/
 Go to Pilot Post
+============================
+
+@apps/blog/tools/CONTEXT.md @apps/blog/tools/LOCKED_DECISIONS.txt @apps/blog/HANDOFF.md @apps/blog/tools/milestones/05a.md
+
+I am starting Milestone 05a.
+
+CRITICAL INSTRUCTION: Before you provide the SCOPE CONFIRMATION, you must first output a "CONTEXT VERIFICATION" block. In this block, you must:
+
+1. Quote the exact rule regarding "Build" and "Node 20 LTS" from LOCKED_DECISIONS.txt.
+2. State the exact "Next chat id" and "Expected delta" from HANDOFF.md.
+3. Confirm the exact directory paths you are allowed to touch based on CONTEXT.md.
+
+Once you have output the CONTEXT VERIFICATION, provide the SCOPE CONFIRMATION.
+
+# Note: We are discarding the frontend Search UI (05b) for now. Milestone 05a is STRICTLY offline Node.js tooling only. Do not generate any frontend JS.
+
+The zabon folder is the top level repo. The top level zabon has several self-contained apps. Currently we are working on the zabon/apps/blog. Here is the folder structure:
+zabon/
+├── index.html ← Home page (links to all apps)
+├── assets/ ← Shared CSS, images, fonts (for the main site)
+├── apps/
+│ ├── zabon/ ← Existing Web App #1
+│ ├── zabon-thai/ ← Existing Web App #2
+│ └── blog/ ← The self-contained Blog App (NEW)
+│ ├── tools/ ← CONTEXT.md, LOCKED_DECISIONS.txt, milestones, tests
+│ ├── content/ ← en/, fa/, ar/, th/ markdown files
+│ ├── assets/ ← css/, js/, img/, data/ (specific to the blog)
+│ └── index.html ← Blog entry point
+├── .gitignore ← Root gitignore (will ignore node_modules, etc.)
+└── README.md
+
+Advisory: SCHEMA_SHA256 — what should it point at?
+Option 2: delete the SCHEMA_SHA256 line from the script and from future handoffs until a schema file exists, and note in LOCKED_DECISIONS.txt that the schema is currently embedded in LOCKED_DECISIONS.txt itself. Clean, honest, one-line change.
+
+1. Schema choice: Option 1 or Option 2 (or a different option, with reasoning).
+   Option 2.
+
+2. Content-recovery fact: record it in LOCKED_DECISIONS.txt, in notes/, or both — and where exactly.
+   record it in LOCKED_DECISIONS.txt
+
+3. File-tree implementation: git ls-files (my rec) or native fs.readdirSync + hand-rolled ignore matching.
+   I am inclined to git ls-files (my rec) but not sure! Accept your recommendation.
+
+4. The milestone id/title for the micro-milestone. I suggest 05a-fix — "Repair hash-state.js". Confirm or override.
+   Confirm.
