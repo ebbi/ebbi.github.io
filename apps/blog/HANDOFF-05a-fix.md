@@ -26,14 +26,16 @@
 
 ## Hashes
 
-**IMPORTANT:** These values were captured BEFORE the `LOCKED_DECISIONS.txt` Recovery-line edit was applied. Re-run `node apps/blog/tools/hash-state.js` from `zabon/` after applying the `LOCKED_DECISIONS.txt` edit, and replace the values below before committing.
+**Verified at close-out:** the `LOCKED_DECISIONS.txt` Recovery-line edit was applied before the hashes below were captured, so `LOCKED_DECISIONS_SHA256` already reflects the post-edit file. No further re-run is required for handoff fidelity.
 
-- `LOCKED_DECISIONS_SHA256=` [RE-RUN HASH-STATE AFTER LOCKED_DECISIONS EDIT]
+- `LOCKED_DECISIONS_SHA256=57441c6bb8fc1e19044bc9b0ce44d1f67ec4ee1c71305289c97237067e9a0b86`
 - `SCHEMA_SHA256=` OMITTED (Option 2 — no schema.json yet)
-- `CONTENT_EN_JEWS_IN_PALESTINE_BEFORE_ISRAEL_SHA256=1d6b6a91693c712a5116b452a4ac9a5172a558ba2cb8c48cb87e805ff9d54d27` (verified stable pre-edit; re-verify post-edit)
-- `FILE_TREE_SHA256=` [RE-RUN HASH-STATE AFTER LOCKED_DECISIONS EDIT — tree changes when new files are added]
-- `GIT_HEAD=82daf7c11a2df8c89d7f1b0f8ea1dd4baa2d1416`
-- `GIT_DIRTY=true` (expected: new and modified files uncommitted at handoff time)
+- `CONTENT_EN_JEWS_IN_PALESTINE_BEFORE_ISRAEL_SHA256=1d6b6a91693c712a5116b452a4ac9a5172a558ba2cb8c48cb87e805ff9d54d27`
+- `FILE_TREE_SHA256=ecaf7411a8c3c81eca8b669c45bc53440a3661dfdb72f6e64afdc30b2b0c94e3`
+- `GIT_HEAD=d86ec3f03ac7fb516d9b383e142ad64edcdc3e77`
+- `GIT_DIRTY=false`
+
+_Note: values captured at the tip of the 05a/05a-fix close-out. See `HANDOFF-05a.md` for the same snapshot._
 
 ## Expected delta for the next chat
 

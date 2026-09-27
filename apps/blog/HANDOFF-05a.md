@@ -29,8 +29,8 @@
 - `LOCKED_DECISIONS_SHA256=57441c6bb8fc1e19044bc9b0ce44d1f67ec4ee1c71305289c97237067e9a0b86`
 - `SCHEMA_SHA256=` OMITTED (Option 2 — no `tools/schema.json` exists; see milestone 05a-fix and `LOCKED_DECISIONS.txt` Recovery line)
 - `CONTENT_EN_JEWS_IN_PALESTINE_BEFORE_ISRAEL_SHA256=1d6b6a91693c712a5116b452a4ac9a5172a558ba2cb8c48cb87e805ff9d54d27`
-- `FILE_TREE_SHA256=95b26f76673af06ef72aa1cc10c3de0ffddaae7ff958a344cc6dba052c1cc628`
-- `GIT_HEAD=48402086b619ce5636ec090b09a74b826e15c03f`
+- `FILE_TREE_SHA256=ecaf7411a8c3c81eca8b669c45bc53440a3661dfdb72f6e64afdc30b2b0c94e3`
+- `GIT_HEAD=d86ec3f03ac7fb516d9b383e142ad64edcdc3e77`
 - `GIT_DIRTY=false`
 
 _Note: `FILE_TREE_SHA256` reflects the git-tracked file set at the time `hash-state.js` was run. Untracked files are not included by design (see milestone 05a-fix)._
@@ -47,6 +47,7 @@ _Note: `FILE_TREE_SHA256` reflects the git-tracked file set at the time `hash-st
 ## Open warnings
 
 - 1: `HANDOFF-05b.md` is present in the tree but describes pre-revert work (`Chat 05b: Search UI`) that does not exist on this branch. It is a stale artifact from the `develop` history. Not acted on in 05a; flagged for the next chat.
+- 2 (resolved): `apps/blog/notes/blog/m.md` is a human scratchpad; as of commit `d86ec3f` it is gitignored, so it no longer affects `GIT_DIRTY`.
 
 ## Deviations from locked decisions
 
