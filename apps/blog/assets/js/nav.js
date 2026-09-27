@@ -1,49 +1,47 @@
 /**
  * apps/blog/assets/js/nav.js
- * Milestone 06 — Navigation & Header.
+ * Milestone 06b — Toolbar & Language Drop-down.
  *
  * Owns exactly one thing: the header language switcher.
  *
- * Contracts (see tools/milestones/06.md, decisions N1-N5):
- * - N1: Navigation-only. No translation, no language filtering, no
- *   content-file changes.
- * - N2: Every language URL is derived from the router's route object.
- *   This file NEVER parses `location.hash`.
- * - N3: Routes arrive via BlogNav.onRouteChange(route), forwarded from
- *   app.js's existing router callback. No second `hashchange` listener.
- * - N4: RTL/`dir` and `<html lang>` are owned by router.js. This file
- *   does not set them.
- * - N5: The switcher list is the four CONTENT languages (en, fa, ar, th).
- *   The eight UI languages in LOCKED_DECISIONS.txt are intentionally
- *   NOT shown here.
- *
- * Deferred (see HANDOFF-06.md): localized language names, flag icons,
- * and a drop-down/toolbar treatment are out of scope for 06 and belong
- * to milestone 06b.
+ * Contracts (see tools/milestones/06b.md):
+ * - B-2: the control is a native <select> with an associated <label>.
+ * - B-3: changing it writes location.hash from the option's precomputed
+ *   href. This is the ONLY location.hash assignment in this file; the
+ *   href is produced by buildLangHref, which never reads the hash (N2).
+ * - B-4(i): the flag is decorative and rendered beside the closed
+ *   control; it is a mirror of the selection, not a second selector.
+ * - B-5: option text is the localized language name (content; pending
+ *   per-language human review).
+ * - B-6: the flag does not assert language-country identity; accessible
+ *   name and hreflang use the language code/name, never the flag.
+ * - N4: RTL/dir and <html lang> are owned by router.js; not touched here.
+ * - Preserved from 06: no second hashchange listener; no hash parsing.
  */
 window.BlogNav = (function () {
-  // Single source within 06 for the content-language set (N5).
+  // Single source within this file for the content-language set.
+  // Localized names (B-5) are content and ship pending review.
   const LANGS = [
-    { code: "en", label: "EN" },
-    { code: "fa", label: "FA" },
-    { code: "ar", label: "AR" },
-    { code: "th", label: "TH" },
+    { code: "en", name: "English" },
+    { code: "fa", name: "فارسی" },
+    { code: "ar", name: "العربية" },
+    { code: "th", name: "ไทย" },
   ];
 
   const NAV_ID = "lang-nav";
-  const LIST_SELECTOR = ".lang-list";
-  const LINK_SELECTOR = ".lang-link";
-  const CURRENT = "page"; // aria-current value used on the active link
+  const SELECT_ID = "lang-select";
+  const FLAG_SELECTOR = ".lang-flag";
 
   let router = null;
-  let listEl = null;
+  let selectEl = null;
+  let flagEl = null;
 
   /**
    * Build the target href for a language, given the current route.
-   * This is the ONLY place the app builds a language-switch URL (N2).
+   * The ONLY place the app builds a language-switch URL (N2/B-3).
    *
    * @param {string} code  target language code, e.g. "fa"
-   * @param {object|null} route  router route { lang, type, slug, raw }
+   * @param {object|null} route  { lang, type, slug, raw }
    * @returns {string}  a hash href, e.g. "#/fa" or "#/fa/post/<slug>"
    */
   function buildLangHref(code, route) {
@@ -54,86 +52,103 @@ window.BlogNav = (function () {
   }
 
   /**
-   * Create the <li><a>…</a></li> nodes once, on init.
-   * Later updates only rewrite href / aria-current.
+   * Populate the <select> once, on init.
+   * Later updates only rewrite value / href.
    */
-  function renderLinks() {
-    if (!listEl) return;
-    listEl.innerHTML = "";
+  function renderOptions() {
+    if (!selectEl) return;
+    selectEl.innerHTML = "";
 
     LANGS.forEach(function (lang) {
-      const li = document.createElement("li");
-      li.className = "lang-item";
-
-      const a = document.createElement("a");
-      a.className = "lang-link";
-      a.setAttribute("data-lang", lang.code);
-      a.setAttribute("hreflang", lang.code);
-      a.setAttribute("href", buildLangHref(lang.code, null));
-      a.textContent = lang.label;
-
-      li.appendChild(a);
-      listEl.appendChild(li);
+      const opt = document.createElement("option");
+      opt.value = lang.code;
+      opt.textContent = lang.name;
+      // hreflang documents the language of the destination (B-6).
+      opt.setAttribute("hreflang", lang.code);
+      // data-href is recomputed on every route change (see sync).
+      opt.setAttribute("data-href", buildLangHref(lang.code, null));
+      selectEl.appendChild(opt);
     });
   }
 
   /**
-   * Update each link's href for the current route, and mark the active
-   * language with aria-current. No hash parsing (N2).
+   * Update each option's href for the current route, set the selected
+   * value, and mirror the decorative flag. No hash parsing (N2/B-3).
    *
    * @param {{lang: string, type: string, slug: string|null}|null} route
    */
-  function syncLinks(route) {
-    if (!listEl) return;
+  function sync(route) {
+    if (!selectEl) return;
+
     const currentLang = (route && route.lang) || "en";
 
-    listEl.querySelectorAll(LINK_SELECTOR).forEach(function (a) {
-      const code = a.getAttribute("data-lang");
-      a.setAttribute("href", buildLangHref(code, route));
-      if (code === currentLang) {
-        a.setAttribute("aria-current", CURRENT);
-      } else {
-        a.removeAttribute("aria-current");
-      }
+    Array.prototype.forEach.call(selectEl.options, function (opt) {
+      opt.setAttribute("data-href", buildLangHref(opt.value, route));
     });
+
+    // Selection state on a native <select> is `value`, not aria-current.
+    const codes = LANGS.map(function (l) {
+      return l.code;
+    });
+    if (codes.indexOf(currentLang) !== -1) {
+      selectEl.value = currentLang;
+    }
+    selectEl.setAttribute("data-lang", currentLang);
+
+    if (flagEl) {
+      flagEl.setAttribute("data-lang", currentLang);
+    }
+  }
+
+  /**
+   * Single change handler: navigate to the selected option's href.
+   * This is the ONLY location.hash assignment in this file (B-3).
+   */
+  function onChange() {
+    if (!selectEl) return;
+    const opt = selectEl.options[selectEl.selectedIndex];
+    if (!opt) return;
+    const href = opt.getAttribute("data-href");
+    if (href) {
+      // Assignment only; never read. URL building stays in buildLangHref.
+      window.location.hash = href;
+    }
   }
 
   /**
    * Called once by app.js after BlogRouter.init succeeds.
-   * Stores the router reference and builds the link nodes.
-   * Does NOT parse location.hash (N2, N3).
+   * Stores the router ref, builds options, installs the change listener.
+   * Does NOT parse location.hash (N2/B-3).
    *
    * @param {object} routerRef  window.BlogRouter
    */
   function init(routerRef) {
     router = routerRef || null;
-    listEl =
-      document.getElementById(NAV_ID)?.querySelector(LIST_SELECTOR) || null;
 
-    if (!listEl) {
-      console.warn(
-        "BlogNav.init: #" +
-          NAV_ID +
-          " " +
-          LIST_SELECTOR +
-          " not found; switcher disabled.",
-      );
+    const nav = document.getElementById(NAV_ID);
+    selectEl = nav ? nav.querySelector("#" + SELECT_ID) : null;
+    flagEl = nav ? nav.querySelector(FLAG_SELECTOR) : null;
+
+    if (!selectEl) {
+      console.warn;
+      "BlogNav.init: #" + SELECT_ID + " not found; switcher disabled."();
       return;
     }
 
-    renderLinks();
-    syncLinks(router && router.currentRoute ? router.currentRoute : null);
+    renderOptions();
+    selectEl.addEventListener("change", onChange);
+    sync(router && router.currentRoute ? router.currentRoute : null);
   }
 
   /**
    * Called by app.js on every router event.
-   * Marks aria-current and rewrites hrefs so post-to-post keeps the slug.
+   * Rewrites option hrefs and mirrors the selection + flag.
    *
    * @param {{lang: string, type: string, slug: string|null}} route
    */
   function onRouteChange(route) {
     if (!route) return;
-    syncLinks(route);
+    sync(route);
   }
 
   return {

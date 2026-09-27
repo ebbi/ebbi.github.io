@@ -7,10 +7,18 @@
     <link rel="stylesheet" href="assets/css/style.css" />
   </head>
   <body>
-    <header>
+    <header class="site-header">
       <a class="brand" href="#/en">Zabon Blog</a>
+
       <nav id="lang-nav" aria-label="Language">
-        <ul class="lang-list"></ul>
+        <label class="visually-hidden" for="lang-select">Language</label>
+        <span class="lang-flag" aria-hidden="true"></span>
+        <select id="lang-select" class="lang-select" data-lang="en">
+          <option value="en">English</option>
+          <option value="fa">فارسی</option>
+          <option value="ar">العربية</option>
+          <option value="th">ไทย</option>
+        </select>
       </nav>
     </header>
 
@@ -21,7 +29,8 @@
     </footer>
 
     <!-- Scripts load after the HTML elements; order matters:
-         renderer (used by app), router (drives route events), app (controller, last). -->
+         renderer (used by app), router (drives route events), nav (switcher,
+         reads router.currentRoute), app (controller, last; calls nav.init). -->
     <script src="assets/js/renderer.js"></script>
     <script src="assets/js/router.js"></script>
     <script src="assets/js/nav.js"></script>
