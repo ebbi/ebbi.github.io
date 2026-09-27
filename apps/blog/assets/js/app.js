@@ -115,6 +115,12 @@
     } else {
       renderList(route); // 'list' (and any unknown → list)
     }
+
+    // Milestone 06: keep the language switcher in sync with the route.
+    // Guarded — the app must not break if nav.js fails to load.
+    if (window.BlogNav && typeof window.BlogNav.onRouteChange === "function") {
+      window.BlogNav.onRouteChange(route);
+    }
   }
 
   document.addEventListener("DOMContentLoaded", async () => {
@@ -142,6 +148,14 @@
     // Router is the single source of route state.
     if (window.BlogRouter && typeof window.BlogRouter.init === "function") {
       window.BlogRouter.init(handleRouteChange);
+
+      // Milestone 06: initialize the header language switcher once.
+      // Guarded — the app must not break if nav.js fails to load.
+      if (window.BlogNav && typeof window.BlogNav.init === "function") {
+        window.BlogNav.init(window.BlogRouter);
+      } else {
+        console.warn("⚠️ BlogNav not found; language switcher disabled.");
+      }
     } else {
       console.error("❌ BlogRouter not found; falling back to initial render.");
       handleRouteChange({ lang: "en", type: "list", slug: null });

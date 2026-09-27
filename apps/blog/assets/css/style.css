@@ -52,6 +52,80 @@ body {
   color: var(--color-text);
 }
 
+/* ============================================
+   Milestone 06 — Header + Language Switcher
+   Append-only: no rule above this comment is modified.
+   MOBILE-FIRST: base rules target the smallest screens;
+   min-width media queries enhance upward.
+   Logical properties only (see 06.md N4).
+   ============================================ */
+
+header {
+  display: flex;
+  flex-direction: column; /* mobile: brand over switcher */
+  align-items: flex-start;
+  gap: calc(var(--spacing-unit) * 0.5);
+  padding-block: calc(var(--spacing-unit) * 0.75);
+  padding-inline: var(--spacing-unit);
+  border-block-end: 1px solid #e5e5e5;
+  background-color: var(--color-bg);
+}
+
+header .brand {
+  font-weight: 600;
+  font-size: 1.125rem;
+  color: var(--color-text);
+  text-decoration: none;
+  line-height: var(--line-height-heading);
+}
+
+header .brand:hover,
+header .brand:focus-visible {
+  color: var(--color-accent);
+}
+
+.lang-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: calc(var(--spacing-unit) * 0.5);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.lang-link {
+  display: inline-block;
+  padding-block: 0.25rem;
+  padding-inline: 0.5rem;
+  border-radius: 4px;
+  font-size: 0.8125rem;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--color-text);
+  text-decoration: none;
+}
+
+.lang-link:hover,
+.lang-link:focus-visible {
+  background-color: #f3f4f6;
+  color: var(--color-accent);
+}
+
+.lang-link[aria-current="page"] {
+  background-color: var(--color-accent);
+  color: #ffffff;
+  font-weight: 600;
+}
+
+/* Wider screens: brand and switcher share one row. */
+@media (min-width: 481px) {
+  header {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
 #app {
   min-height: 100vh;
   padding: var(--spacing-unit);
