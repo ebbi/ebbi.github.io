@@ -1,3 +1,10 @@
+> ⚠️ SUPERSEDED — PRE-REVERT ARTIFACT.
+> This handoff describes a 05b Search UI that was reverted on `develop` and
+> is **not** part of the current `blog/deepseek` branch. The Search UI has
+> been removed in milestone `05b-removal`. Do not use this file as a
+> description of current behavior or of the current data contract.
+> Current data contract: `posts.json` (bodies) + `feed.json` (excerpts).
+
 # HANDOFF — Chat 05b: Search UI
 
 **Status:** complete
@@ -81,14 +88,3 @@ _(Run `node apps/blog/tools/hash-state.js` and paste output here before commit)_
 - `apps/blog/HANDOFF.md`
 - `apps/blog/assets/js/search.js`
 - `apps/blog/assets/js/app.js`
-
-````
-
-### 📦 Commit Instructions
-
-1. Run `node apps/blog/tools/hash-state.js` and replace the `[RUN_HASH_STATE_JS]` placeholders in the `HANDOFF.md` above.
-2. Commit locally:
-```bash
-git add apps/blog/assets/js/search.js apps/blog/assets/js/app.js apps/blog/assets/js/router.js apps/blog/index.html apps/blog/HANDOFF.md
-git commit -m "zabon/blog: 05b implement client-side fuzzy search UI with hash state"
-````

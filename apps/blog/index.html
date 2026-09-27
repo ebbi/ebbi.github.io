@@ -10,36 +10,20 @@
     <header>
       <nav id="main-nav">
         <a href="#/en">Home (EN)</a> | <a href="#/fa">Home (FA)</a> |
-        <a href="#/ar">Home (AR)</a> |
-        <a href="#/th">Home (TH)</a>
+        <a href="#/ar">Home (AR)</a> | <a href="#/th">Home (TH)</a>
       </nav>
-      <!-- ... existing code ... -->
-      <header>
-        <nav id="main-nav">
-          <!-- ... existing nav links ... -->
-        </nav>
-        <div class="search-wrapper">
-          <input
-            type="text"
-            id="search-input"
-            placeholder="Search posts..."
-            aria-label="Search posts"
-          />
-        </div>
-      </header>
+    </header>
 
-    <!-- CRITICAL: This is the container the JS looks for -->
-    <main id="app">
-    </main>
-
+    <!-- Container the JS renders into -->
+    <main id="app"></main>
     <footer>
       <p>&copy; 2024 Zabon Blog. Built with Vanilla JS.</p>
     </footer>
 
-    <!-- Scripts must load AFTER the HTML elements -->
-  <script src="assets/js/renderer.js"></script>
-  <script src="assets/js/router.js"></script>
-  <script src="assets/js/search.js"></script>
-  <script src="assets/js/app.js"></script>
+    <!-- Scripts load after the HTML elements; order matters:
+         renderer (used by app), router (drives route events), app (controller, last). -->
+    <script src="assets/js/renderer.js"></script>
+    <script src="assets/js/router.js"></script>
+    <script src="assets/js/app.js"></script>
   </body>
 </html>
