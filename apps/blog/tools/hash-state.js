@@ -10,7 +10,8 @@
  * - APP_ROOT resolves to apps/blog (__dirname is apps/blog/tools).
  * - SCHEMA_SHA256 is omitted (Option 2): no canonical schema.json exists yet.
  * - FILE_TREE_SHA256 = sha256 of `git ls-files apps/blog`, sorted, newline-joined.
- * - CONTENT_EN_..._SHA256 = sha256 of the posts.json entry matching the pilot slug.
+ * - CONTENT_EN_..._SHA256 = sha256 of content/en/<pilot-slug>.json
+ *   (repointed in C1a; previously the posts.json entry).
  * - GIT_HEAD / GIT_DIRTY come from `git` run with cwd at repo root.
  */
 
@@ -61,22 +62,31 @@ function hashFileTree() {
 }
 
 /**
- * sha256 of the posts.json array entry whose slug matches PILOT_SLUG,
- * re-serialized deterministically so unrelated post edits don't shift the hash.
+ * sha256 of the canonical pilot content file:
+ *   content/en/<PILOT_SLUG>.json
+ * Re-serialized deterministically (JSON.stringify with 2-space indent) so
+ * that unrelated whitespace or key-order churn does not shift the hash.
+ *
+ * Milestone C1a: content/<lang>/<slug>.json is the canonical post source
+ * (LOCKED_DECISIONS Recovery). This previously hashed the posts.json entry
+ * for the pilot slug; posts.json is no longer canonical, so the fence now
+ * tracks the content file. See HANDOFF-C1a.md, deviation D-H1.
  */
 function hashPilotContent() {
-  const postsPath = path.join(APP_ROOT, "assets", "data", "posts.json");
-  if (!fs.existsSync(postsPath)) return "MISSING";
-  let posts;
+  const contentPath = path.join(
+    APP_ROOT,
+    "content",
+    "en",
+    `${PILOT_SLUG}.json`,
+  );
+  if (!fs.existsSync(contentPath)) return "MISSING";
+  let post;
   try {
-    posts = JSON.parse(fs.readFileSync(postsPath, "utf8"));
+    post = JSON.parse(fs.readFileSync(contentPath, "utf8"));
   } catch (err) {
     return "MISSING";
   }
-  if (!Array.isArray(posts)) return "MISSING";
-  const entry = posts.find((p) => p && p.slug === PILOT_SLUG);
-  if (!entry) return "MISSING";
-  return sha256(JSON.stringify(entry, null, 2));
+  return sha256(JSON.stringify(post, null, 2));
 }
 
 function printHashState() {

@@ -18,6 +18,9 @@ files are authored one at a time, at the close of the previous one
 - W1 Adopt workflow fix (b); pointer; document workflow. depends on: none
 - 08 Post List Page. depends on: 07
 - 09 Single Post Page. depends on: 08
+- C1a Content migration, pilot: machinery (app.js reads feed.json index;
+  renderPost fetches content/<lang>/<slug>.json; generate-index.js reads
+  content/) + 1 EN pilot post. depends on: 09
 
 ## Now
 
@@ -32,9 +35,12 @@ files are authored one at a time, at the close of the previous one
 
 - B1 Renderer remaining block types (pullquote, resourceList, callout,
   footnotes, attachment). depends on: 09
-- C1 Content migration: posts.json to content/<lang>/<slug>.json;
-  rewire app fetch path (closes LOCKED_DECISIONS Recovery line).
-  depends on: 09
+- C1b Content migration, remaining 19 EN posts: posts.json ->
+  content/en/<slug>.json. Machinery already proven; no app/tool change.
+  depends on: C1a
+- 10b List item as collapsible panel: title toggles the excerpt + a
+  "read full post" link (mobile-first; keyboard-accessible). Revisits
+  08's list presentation. depends on: C1b
 - 11 Translations & i18n UI. depends on: C1
 - 12a RTL & Typography - Persian/Arabic. depends on: 11
 - 12b RTL & Typography - Thai/Myanmar. depends on: 12a
@@ -58,7 +64,8 @@ files are authored one at a time, at the close of the previous one
 ## Cross-cutting facts every milestone must respect
 
 - Route vocabulary owned by router.js: { lang, type: 'list'|'post', slug, raw }.
-- posts.json + feed.json are the interim data contract until C1.
+- content/<lang>/<slug>.json is the canonical post source from C1a on;
+  feed.json is the derived list index; posts.json is inert (C1a-D3).
 - RTL set currently hardcoded in router.js; belongs in LOCKED_DECISIONS.txt.
 - LOCKED_DECISIONS lists 8 UI languages; 4 content languages. Switcher
   ships the content set only.

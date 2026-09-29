@@ -1,12 +1,14 @@
 /**
  * apps/blog/assets/js/app.js
  * Main application controller.
- * - Loads posts.json (bodies) and feed.json (excerpts), merged by slug.
+ * - Loads assets/data/feed.json as the list index (C1).
+ * - Post bodies are fetched on demand from content/<lang>/<slug>.json.
  * - Delegates all route parsing to router.js (single source per fact).
  * - Renders list and post views.
  */
 (function () {
-  let posts = []; // merged: body + excerpt
+  let posts = []; // C1: list index entries {slug,title,date,lang,excerpt}
+
   /**
    * Fetch JSON with a clear error surface.
    */
@@ -17,18 +19,70 @@
     }
     return res.json();
   }
+
   /**
-   * Merge posts.json bodies with feed.json excerpts, keyed by slug.
-   * Missing excerpts degrade to empty string (list still renders).
+   * C1: fetch a post body from content/<lang>/<slug>.json.
+   * Slugs are language-agnostic (D3): if the requested language has no file,
+   * fall back to EN. Returns null when neither exists (caller renders 404).
    */
-  function mergePostsAndFeed(postsArr, feedArr) {
-    const excerptBySlug = new Map(
-      (feedArr || []).map((f) => [f.slug, f.excerpt || ""]),
-    );
-    return (postsArr || []).map((p) => ({
-      ...p,
-      excerpt: excerptBySlug.get(p.slug) || "",
-    }));
+  async function loadPostBody(lang, slug) {
+    const candidates = [];
+    if (lang && lang !== "en") candidates.push(`content/${lang}/${slug}.json`);
+    candidates.push(`content/en/${slug}.json`);
+    for (const url of candidates) {
+      try {
+        return await loadJson(url);
+      } catch (err) {
+        // 404 on a candidate is expected during fallback; only the last
+        // failure should surface. Keep trying.
+      }
+    }
+    return null;
+  }
+
+  /**
+   * Render a single post view.
+   * C1: fetches the body from content/<lang>/<slug>.json on demand, with
+   * an EN fallback for language-agnostic slugs (D3). Header + 404 markup
+   * and classes are UNCHANGED from 09.
+   * @param {{lang: string, slug: string}} route
+   */
+  async function renderPost(route) {
+    const container = document.getElementById("app");
+    if (!container) return;
+
+    const body = await loadPostBody(route.lang, route.slug);
+    if (!body) {
+      container.innerHTML =
+        '<div class="not-found"><h1>404</h1><p>Post not found.</p><a href="#/en">Back to home</a></div>';
+      return;
+    }
+
+    // Header block built here; body delegated to the renderer.
+    // Milestone 09: namespaced classes mirror 08's list vocabulary (L-3);
+    // .post-header__meta supersedes the bare .post-meta class.
+    container.innerHTML = `
+      <article class="post-detail">
+        <header class="post-header">
+          <h1 class="post-header__title">${body.title}</h1>
+          <p class="post-header__meta">${body.date} • ${body.lang.toUpperCase()}</p>
+        </header>
+        <div class="post-content"></div>
+      </article>
+    `;
+
+    const contentEl = container.querySelector(".post-content");
+    if (
+      window.BlogRenderer &&
+      typeof window.BlogRenderer.render === "function"
+    ) {
+      window.BlogRenderer.render(body.blocks, contentEl); // R1
+    } else {
+      // Minimal fallback if the renderer failed to load.
+      contentEl.textContent = (body.blocks || [])
+        .map((b) => b.content || "")
+        .join("\n\n");
+    }
   }
 
   /**
@@ -63,60 +117,16 @@
     container.innerHTML = `<div class="post-list">${listHtml}</div>`;
   }
 
-  // ... existing code ...
-
-  /**
-   * Render a single post view.
-   * Clears the container first, then delegates DOM construction to BlogRenderer.
-   * @param {{slug: string}} route
-   */
-  function renderPost(route) {
-    const container = document.getElementById("app");
-    if (!container) return;
-
-    const post = posts.find((p) => p.slug === route.slug);
-    if (!post) {
-      container.innerHTML =
-        '<div class="not-found"><h1>404</h1><p>Post not found.</p><a href="#/en">Back to home</a></div>';
-      return;
-    }
-
-    // Header block built here; body delegated to the renderer.
-    // Milestone 09: namespaced classes mirror 08's list vocabulary (L-3);
-    // .post-header__meta supersedes the bare .post-meta class.
-    container.innerHTML = `
-      <article class="post-detail">
-        <header class="post-header">
-          <h1 class="post-header__title">${post.title}</h1>
-          <p class="post-header__meta">${post.date} • ${post.lang.toUpperCase()}</p>
-        </header>
-        <div class="post-content"></div>
-      </article>
-    `;
-
-    const contentEl = container.querySelector(".post-content");
-    if (
-      window.BlogRenderer &&
-      typeof window.BlogRenderer.render === "function"
-    ) {
-      window.BlogRenderer.render(post.blocks, contentEl); // R1
-    } else {
-      // Minimal fallback if the renderer failed to load.
-      contentEl.textContent = (post.blocks || [])
-        .map((b) => b.content || "")
-        .join("\n\n");
-    }
-  }
-
   /**
    * Handle a route change emitted by router.js.
    * Router vocabulary: type is 'list' or 'post'.
    * @param {{lang: string, type: string, slug: string|null}} route
    */
+
   function handleRouteChange(route) {
     if (!route) return;
     if (route.type === "post") {
-      renderPost(route);
+      renderPost(route); // fire-and-forget; renderPost handles its own await
     } else {
       renderList(route); // 'list' (and any unknown → list)
     }
@@ -136,15 +146,12 @@
     }
 
     try {
-      console.log("⏳ Loading blog data...");
-      const [postsArr, feedArr] = await Promise.all([
-        loadJson("assets/data/posts.json"),
-        loadJson("assets/data/feed.json"),
-      ]);
-      posts = mergePostsAndFeed(postsArr, feedArr);
-      console.log(`✅ Loaded ${posts.length} posts (with excerpts).`);
+      console.log("⏳ Loading list index...");
+      const feedArr = await loadJson("assets/data/feed.json");
+      posts = Array.isArray(feedArr) ? feedArr : [];
+      console.log(`✅ Loaded ${posts.length} index entries.`);
     } catch (err) {
-      console.error("Failed to load blog data:", err);
+      console.error("Failed to load list index:", err);
       appContainer.innerHTML =
         '<div class="error"><h1>Error</h1><p>Failed to load blog data.</p></div>';
       return;

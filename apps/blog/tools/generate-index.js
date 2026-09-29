@@ -1,7 +1,12 @@
 /**
- * Zabon Blog — Feed/Index Generator
- * Reads apps/blog/assets/data/posts.json and writes apps/blog/assets/data/feed.json
- * with the 10 most recent posts (date descending), each carrying a plain-text excerpt.
+ * Zabon Blog — List Index Generator
+ * Reads apps/blog/content/<lang>/<slug>.json (canonical content) and writes
+ * apps/blog/assets/data/feed.json as the COMPLETE list index: every post,
+ * date descending, each carrying a plain-text excerpt for the list view.
+ *
+ * Milestone C1: content/ is the canonical source (LOCKED_DECISIONS Recovery).
+ * posts.json is no longer read. The output is no longer a "10 most recent"
+ * feed — the app's list view reads this file directly (topology (a)).
  *
  * Node 20 LTS native implementation (no external npm dependencies).
  */
@@ -9,10 +14,9 @@
 const fs = require("fs");
 const path = require("path");
 
-const INPUT_FILE = path.join(__dirname, "..", "assets", "data", "posts.json");
+const CONTENT_DIR = path.join(__dirname, "..", "content");
 const OUTPUT_FILE = path.join(__dirname, "..", "assets", "data", "feed.json");
 
-const FEED_SIZE = 10;
 const EXCERPT_LENGTH = 150;
 
 // Minimal HTML entity decoder for the common named + numeric entities
@@ -70,7 +74,6 @@ function buildExcerpt(blocks) {
     const text = normalizeWhitespace(decodeEntities(raw));
     if (text.length === 0) continue;
 
-    // Join with a single space between blocks.
     const separator = parts.length > 0 ? " " : "";
     parts.push(separator + text);
     length += separator.length + text.length;
@@ -83,30 +86,77 @@ function buildExcerpt(blocks) {
   return joined.slice(0, EXCERPT_LENGTH).trimEnd() + "…";
 }
 
+/**
+ * Recursively find every content/<lang>/<slug>.json file.
+ * Returns [{ lang, slug, file }].
+ */
+function walkContentDir(dir, lang) {
+  const out = [];
+  if (!fs.existsSync(dir)) return out;
+  for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+    const full = path.join(dir, entry.name);
+    if (entry.isDirectory()) continue; // one level of <lang>/ only
+    if (!entry.name.endsWith(".json")) continue;
+    out.push({
+      lang,
+      slug: entry.name.replace(/\.json$/, ""),
+      file: full,
+    });
+  }
+  return out;
+}
+
+function collectContentFiles() {
+  if (!fs.existsSync(CONTENT_DIR)) {
+    console.error(`❌ Error: Content dir not found: ${CONTENT_DIR}`);
+    process.exit(1);
+  }
+  const files = [];
+  for (const entry of fs.readdirSync(CONTENT_DIR, { withFileTypes: true })) {
+    if (!entry.isDirectory()) continue;
+    files.push(
+      ...walkContentDir(path.join(CONTENT_DIR, entry.name), entry.name),
+    );
+  }
+  return files;
+}
+
 function main() {
-  if (!fs.existsSync(INPUT_FILE)) {
+  const files = collectContentFiles();
+
+  if (files.length === 0) {
     console.error(
-      `❌ Error: Input file not found: ${INPUT_FILE}\n` +
-        `   Run the parser first: node apps/blog/tools/parser.js`,
+      `❌ Error: No content files found under ${CONTENT_DIR}\n` +
+        `   Expected content/<lang>/<slug>.json`,
     );
     process.exit(1);
   }
 
-  let posts;
-  try {
-    posts = JSON.parse(fs.readFileSync(INPUT_FILE, "utf8"));
-  } catch (err) {
-    console.error(`❌ Error: Failed to parse ${INPUT_FILE}: ${err.message}`);
-    process.exit(1);
-  }
-
-  if (!Array.isArray(posts)) {
-    console.error("❌ Error: posts.json must contain an array.");
-    process.exit(1);
+  const index = [];
+  for (const { lang, slug, file } of files) {
+    let post;
+    try {
+      post = JSON.parse(fs.readFileSync(file, "utf8"));
+    } catch (err) {
+      console.error(`❌ Error: Failed to parse ${file}: ${err.message}`);
+      process.exit(1);
+    }
+    if (post.slug && post.slug !== slug) {
+      console.warn(
+        `⚠️  Warning: ${file} declares slug "${post.slug}" but filename is "${slug}". Using filename.`,
+      );
+    }
+    index.push({
+      slug,
+      title: decodeEntities(String(post.title || "")),
+      date: post.date,
+      lang,
+      excerpt: buildExcerpt(post.blocks),
+    });
   }
 
   // Sort by date descending (ISO-8601 with offset parses reliably via Date).
-  const sorted = [...posts].sort((a, b) => {
+  index.sort((a, b) => {
     const ta = Date.parse(a.date);
     const tb = Date.parse(b.date);
     if (Number.isNaN(ta) && Number.isNaN(tb)) return 0;
@@ -115,17 +165,9 @@ function main() {
     return tb - ta;
   });
 
-  const feed = sorted.slice(0, FEED_SIZE).map((post) => ({
-    slug: post.slug,
-    title: decodeEntities(String(post.title || "")),
-    date: post.date,
-    lang: post.lang,
-    excerpt: buildExcerpt(post.blocks),
-  }));
+  fs.writeFileSync(OUTPUT_FILE, JSON.stringify(index, null, 2), "utf8");
 
-  fs.writeFileSync(OUTPUT_FILE, JSON.stringify(feed, null, 2), "utf8");
-
-  console.log(`✅ Successfully generated feed with ${feed.length} posts.`);
+  console.log(`✅ Successfully generated index with ${index.length} entries.`);
   console.log(`💾 Saved to: ${OUTPUT_FILE}`);
 }
 
