@@ -33,6 +33,7 @@
 
   /**
    * Render the home/list view.
+   * Milestone 08: namespaced item classes; list is the single filter site.
    * @param {{lang: string}} route
    */
   function renderList(route) {
@@ -51,9 +52,9 @@
       .map(
         (post) => `
       <article class="post-list-item">
-        <h2><a href="#/${post.lang}/post/${post.slug}">${post.title}</a></h2>
-        <p class="post-meta">${post.date} • ${post.lang.toUpperCase()}</p>
-        <p class="post-excerpt">${post.excerpt || ""}</p>
+        <a class="post-list-item__title" href="#/${post.lang}/post/${post.slug}">${post.title}</a>
+        <p class="post-list-item__meta">${post.date} • ${post.lang.toUpperCase()}</p>
+        <p class="post-list-item__excerpt">${post.excerpt || ""}</p>
       </article>
     `,
       )

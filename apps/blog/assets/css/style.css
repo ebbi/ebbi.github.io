@@ -405,3 +405,83 @@ html[dir="rtl"] .app-panel[aria-hidden="false"] .app-panel__content {
     padding: 24px;
   }
 }
+
+/* ... existing code ... */
+
+/* =========================================================
+   Milestone 08 — Post list
+   Mobile-first; logical properties only; reuses tokens.
+   Namespaced item classes (L-3): __title / __meta / __excerpt.
+   Empty state (.no-posts) is carried from the non-EN languages (L-4).
+   ========================================================= */
+
+.post-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-inline-size: 720px;
+  margin-inline: auto;
+}
+
+.post-list-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 16px;
+  border-radius: var(--radius);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+  transition:
+    transform var(--transition),
+    background var(--transition);
+}
+.post-list-item:hover {
+  transform: translateY(-2px);
+  background: var(--surface-2);
+}
+
+.post-list-item__title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  line-height: 1.35;
+  color: var(--text);
+}
+.post-list-item__title:hover {
+  color: var(--accent);
+}
+
+.post-list-item__meta {
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.post-list-item__excerpt {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+/* Empty state for a language with no posts (carried; L-4). */
+.no-posts {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 8px;
+  padding: 48px 16px;
+  color: var(--text-muted);
+}
+.no-posts h2 {
+  margin: 0;
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--text);
+}
+.no-posts p {
+  margin: 0;
+  font-size: 0.95rem;
+}

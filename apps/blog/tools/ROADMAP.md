@@ -16,6 +16,7 @@ files are authored one at a time, at the close of the previous one
 - 05b Search UI. attempted, reverted, removed.
 - 05b-removal Remove Search UI; repair render/list wiring. depends on: 05b
 - W1 Adopt workflow fix (b); pointer; document workflow. depends on: none
+- 08 Post List Page. depends on: 07
 
 ## Now
 
@@ -28,7 +29,6 @@ files are authored one at a time, at the close of the previous one
 
 ## Next (order per depends-on; each authored at the previous chat's close)
 
-- 08 Post List Page. depends on: 07
 - 09 Single Post Page. depends on: 08
 - B1 Renderer remaining block types (pullquote, resourceList, callout,
   footnotes, attachment). depends on: 09
