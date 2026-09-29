@@ -63,6 +63,8 @@
     container.innerHTML = `<div class="post-list">${listHtml}</div>`;
   }
 
+  // ... existing code ...
+
   /**
    * Render a single post view.
    * Clears the container first, then delegates DOM construction to BlogRenderer.
@@ -80,11 +82,13 @@
     }
 
     // Header block built here; body delegated to the renderer.
+    // Milestone 09: namespaced classes mirror 08's list vocabulary (L-3);
+    // .post-header__meta supersedes the bare .post-meta class.
     container.innerHTML = `
       <article class="post-detail">
         <header class="post-header">
-          <h1>${post.title}</h1>
-          <p class="post-meta">${post.date} • ${post.lang.toUpperCase()}</p>
+          <h1 class="post-header__title">${post.title}</h1>
+          <p class="post-header__meta">${post.date} • ${post.lang.toUpperCase()}</p>
         </header>
         <div class="post-content"></div>
       </article>

@@ -1,2 +1,54 @@
 
-apps/blog/HANDOFF-08.md
+berar@berar:/run/media/berar/backup-disk/zabon$ ls apps/blog/assets/js/app.js apps/blog/assets/css/style.css apps/blog/tools/ROADMAP.md apps/blog/HANDOFF-CURRENT.txt
+apps/blog/HANDOFF-CURRENT.txt   apps/blog/assets/js/app.js
+apps/blog/assets/css/style.css  apps/blog/tools/ROADMAP.md
+berar@berar:/run/media/berar/backup-disk/zabon$ node --check apps/blog/assets/js/app.js
+berar@berar:/run/media/berar/backup-disk/zabon$ grep -n 'post-header__title\|post-header__meta' apps/blog/assets/js/app.js apps/blog/assets/css/style.css
+apps/blog/assets/js/app.js:86:    // .post-header__meta supersedes the bare .post-meta class.
+apps/blog/assets/js/app.js:90:          <h1 class="post-header__title">${post.title}</h1>
+apps/blog/assets/js/app.js:91:          <p class="post-header__meta">${post.date} • ${post.lang.toUpperCase()}</p>
+apps/blog/assets/css/style.css:513:.post-header__title {
+apps/blog/assets/css/style.css:521:.post-header__meta {
+berar@berar:/run/media/berar/backup-disk/zabon$ grep -n 'post-header' apps/blog/assets/js/app.js apps/blog/assets/css/style.css; grep -n 'post-meta' apps/blog/assets/js/app.js
+apps/blog/assets/js/app.js:86:    // .post-header__meta supersedes the bare .post-meta class.
+apps/blog/assets/js/app.js:89:        <header class="post-header">
+apps/blog/assets/js/app.js:90:          <h1 class="post-header__title">${post.title}</h1>
+apps/blog/assets/js/app.js:91:          <p class="post-header__meta">${post.date} • ${post.lang.toUpperCase()}</p>
+apps/blog/assets/css/style.css:504:.post-header {
+apps/blog/assets/css/style.css:513:.post-header__title {
+apps/blog/assets/css/style.css:521:.post-header__meta {
+86:    // .post-header__meta supersedes the bare .post-meta class.
+berar@berar:/run/media/berar/backup-disk/zabon$ grep -n 'posts.filter' apps/blog/assets/js/app.js
+43:    const visible = posts.filter((p) => !route.lang || p.lang === route.lang);
+berar@berar:/run/media/berar/backup-disk/zabon$ grep -n '\.post-list-item' apps/blog/assets/css/style.css
+426:.post-list-item {
+439:.post-list-item:hover {
+444:.post-list-item__title {
+450:.post-list-item__title:hover {
+454:.post-list-item__meta {
+460:.post-list-item__excerpt {
+berar@berar:/run/media/berar/backup-disk/zabon$ node apps/blog/tools/test-integrity.js
+
+=== Zabon Blog — Integrity Check ===
+
+[✓] index.html
+[✓] assets/css/style.css
+[✓] assets/js/router.js
+[✓] assets/js/app.js
+[✓] tools/test-integrity.js
+[✓] tools/hash-state.js
+[✓] tools/LOCKED_DECISIONS.txt
+[✓] tools/CONTEXT.md
+
+
+INTEGRITY OK
+
+berar@berar:/run/media/berar/backup-disk/zabon$ git status --porcelain
+ M apps/blog/HANDOFF-CURRENT.txt
+ M apps/blog/assets/css/style.css
+ M apps/blog/assets/js/app.js
+ M apps/blog/tools/ROADMAP.md
+?? apps/blog/tools/milestones/09.md
+berar@berar:/run/media/berar/backup-disk/zabon$ 
+
+

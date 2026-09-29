@@ -17,6 +17,7 @@ files are authored one at a time, at the close of the previous one
 - 05b-removal Remove Search UI; repair render/list wiring. depends on: 05b
 - W1 Adopt workflow fix (b); pointer; document workflow. depends on: none
 - 08 Post List Page. depends on: 07
+- 09 Single Post Page. depends on: 08
 
 ## Now
 
@@ -29,13 +30,11 @@ files are authored one at a time, at the close of the previous one
 
 ## Next (order per depends-on; each authored at the previous chat's close)
 
-- 09 Single Post Page. depends on: 08
 - B1 Renderer remaining block types (pullquote, resourceList, callout,
   footnotes, attachment). depends on: 09
-- 10 About / Static Pages. depends on: 08
 - C1 Content migration: posts.json to content/<lang>/<slug>.json;
   rewire app fetch path (closes LOCKED_DECISIONS Recovery line).
-  depends on: 09, 10
+  depends on: 09
 - 11 Translations & i18n UI. depends on: C1
 - 12a RTL & Typography - Persian/Arabic. depends on: 11
 - 12b RTL & Typography - Thai/Myanmar. depends on: 12a
@@ -50,6 +49,11 @@ files are authored one at a time, at the close of the previous one
 
 - Search UI / search index. Closed by 05b-removal. Re-open only as a
   deliberate future milestone.
+- About / Static Pages (was 10). Decided-not-to-do at 09 close: low
+  priority, no downstream dependency. Re-open only if a static page
+  (About-Us / contact) is deliberately wanted; note that a real About
+  route requires a router.js route-type change, since router.js owns
+  the route vocabulary (see Cross-cutting facts).
 
 ## Cross-cutting facts every milestone must respect
 
