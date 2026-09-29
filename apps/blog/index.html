@@ -7,33 +7,92 @@
     <link rel="stylesheet" href="assets/css/style.css" />
   </head>
   <body>
-    <header class="site-header">
+    <!-- Fixed top toolbar: title links home; hamburger opens the drawer (S-8). -->
+    <header class="app-bar app-bar--top">
       <a class="brand" href="#/en">Zabon Blog</a>
-
-      <nav id="lang-nav" aria-label="Language">
-        <label class="visually-hidden" for="lang-select">Language</label>
-        <span class="lang-flag" aria-hidden="true"></span>
-        <select id="lang-select" class="lang-select" data-lang="en">
-          <option value="en">English</option>
-          <option value="fa">فارسی</option>
-          <option value="ar">العربية</option>
-          <option value="th">ไทย</option>
-        </select>
-      </nav>
+      <button
+        id="menu-btn"
+        class="app-bar__menu-btn"
+        type="button"
+        aria-label="Open menu"
+        aria-expanded="false"
+        aria-controls="app-panel"
+      >
+        <span class="hamburger" aria-hidden="true">
+          <span></span>
+          <span></span>
+          <span></span>
+        </span>
+      </button>
     </header>
 
-    <!-- Container the JS renders into -->
+    <!-- Side-panel drawer (overlay at ALL widths; S-1). Contains the moved
+         language switcher. aria-hidden toggled by shell.js (S-8). -->
+    <aside id="app-panel" class="app-panel" aria-hidden="true">
+      <div class="app-panel__backdrop" data-close></div>
+      <div
+        class="app-panel__content"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Menu"
+      >
+        <div class="app-panel__header">
+          <h2>Menu</h2>
+          <button
+            id="panel-close"
+            class="app-panel__close"
+            type="button"
+            aria-label="Close menu"
+            data-close
+          >
+            &times;
+          </button>
+        </div>
+
+        <nav id="lang-nav" class="app-panel__section" aria-label="Language">
+          <label class="visually-hidden" for="lang-select">Language</label>
+          <span class="lang-flag" aria-hidden="true"></span>
+          <select id="lang-select" class="lang-select" data-lang="en">
+            <option value="en">English</option>
+            <option value="fa">فارسی</option>
+            <option value="ar">العربية</option>
+            <option value="th">ไทย</option>
+          </select>
+        </nav>
+      </div>
+    </aside>
+
+    <!-- Container the JS renders into. Inset by the fixed bars (S-1). -->
     <main id="app"></main>
-    <footer>
-      <p>&copy; 2024 Zabon Blog. Built with Vanilla JS.</p>
+
+    <!-- Fixed bottom toolbar: transport buttons are inert by design (S-4). -->
+    <footer class="app-bar app-bar--bottom">
+      <div class="transport" role="group" aria-label="Playback">
+        <button class="transport__btn" type="button" disabled aria-label="Play">
+          <span aria-hidden="true">▶</span>
+        </button>
+        <button
+          class="transport__btn"
+          type="button"
+          disabled
+          aria-label="Pause"
+        >
+          <span aria-hidden="true">⏸</span>
+        </button>
+        <button class="transport__btn" type="button" disabled aria-label="Stop">
+          <span aria-hidden="true">⏹</span>
+        </button>
+      </div>
     </footer>
 
     <!-- Scripts load after the HTML elements; order matters:
          renderer (used by app), router (drives route events), nav (switcher,
-         reads router.currentRoute), app (controller, last; calls nav.init). -->
+         reads router.currentRoute), shell (drawer; no router dependency),
+         app (controller, last; calls nav.init). -->
     <script src="assets/js/renderer.js"></script>
     <script src="assets/js/router.js"></script>
     <script src="assets/js/nav.js"></script>
+    <script src="assets/js/shell.js"></script>
     <script src="assets/js/app.js"></script>
   </body>
 </html>

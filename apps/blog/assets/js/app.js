@@ -156,6 +156,14 @@
       } else {
         console.warn("⚠️ BlogNav not found; language switcher disabled.");
       }
+
+      // Milestone 07: initialize the app shell (drawer) once. No router
+      // dependency; guarded — the app must not break if shell.js fails.
+      if (window.BlogShell && typeof window.BlogShell.init === "function") {
+        window.BlogShell.init();
+      } else {
+        console.warn("⚠️ BlogShell not found; drawer disabled.");
+      }
     } else {
       console.error("❌ BlogRouter not found; falling back to initial render.");
       handleRouteChange({ lang: "en", type: "list", slug: null });

@@ -122,16 +122,24 @@ window.BlogNav = (function () {
    *
    * @param {object} routerRef  window.BlogRouter
    */
+
   function init(routerRef) {
     router = routerRef || null;
 
-    const nav = document.getElementById(NAV_ID);
+    // S-5 (07): the switcher now lives inside #app-panel (moved from the
+    // header). Resolve within the panel when present, else fall back to the
+    // document so the lookup is robust to the element's new home.
+    const panel = document.getElementById("app-panel");
+    const scope = panel || document;
+    const nav =
+      scope.querySelector("#" + NAV_ID) || document.getElementById(NAV_ID);
     selectEl = nav ? nav.querySelector("#" + SELECT_ID) : null;
     flagEl = nav ? nav.querySelector(FLAG_SELECTOR) : null;
 
     if (!selectEl) {
-      console.warn;
-      "BlogNav.init: #" + SELECT_ID + " not found; switcher disabled."();
+      console.warn(
+        "BlogNav.init: #" + SELECT_ID + " not found; switcher disabled.",
+      );
       return;
     }
 
@@ -139,6 +147,8 @@ window.BlogNav = (function () {
     selectEl.addEventListener("change", onChange);
     sync(router && router.currentRoute ? router.currentRoute : null);
   }
+
+  // ... rest of code ...
 
   /**
    * Called by app.js on every router event.
