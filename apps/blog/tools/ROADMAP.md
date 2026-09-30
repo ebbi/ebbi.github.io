@@ -21,6 +21,10 @@ files are authored one at a time, at the close of the previous one
 - C1a Content migration, pilot: machinery (app.js reads feed.json index;
   renderPost fetches content/<lang>/<slug>.json; generate-index.js reads
   content/) + 1 EN pilot post. depends on: 09
+- C1-tool Build tools/import-post.js (fetch/cache/write envelope + frozen extraction seam). depends on: C1a
+- C1-tool-p2 Wire extractHtmlBlocks() (faithful HTML->blocks). depends on: C1-tool
+- C1-model Settle content model + freeze quote/table/title shapes. Decision-only. depends on: C1-tool-p2
+- C1-tool-cleanup Execute C1-model decisions; regenerate the pilot (80 blocks); repair .gitignore (W1/W7). depends on: C1-model
 
 ## Now
 
@@ -36,9 +40,11 @@ files are authored one at a time, at the close of the previous one
 - B1 Renderer remaining block types (pullquote, resourceList, callout,
   footnotes, attachment). depends on: 09
   …**plus** the stray `?? apps/blog/tools/import-post.md` — which must be resolved (keep-untracked or `rm`) before you stage, so it does not pollute the milestone set.
-- C1b Content migration, remaining 19 EN posts: posts.json ->
-  content/en/<slug>.json. Machinery already proven; no app/tool change.
-  depends on: C1a
+- C1b-01 First of the C1b-01..19 series: migrate ONE EN post from
+  posts.json -> content/en/<slug>.json. Milestone file authored at
+  C1b-01's close, not before. depends on: C1-tool-cleanup
+- C1b-02..19 (series) remaining EN posts. C1b-DONE proves 20/20, then
+  posts.json deletion is unblocked.
 - 10b List item as collapsible panel: title toggles the excerpt + a
   "read full post" link (mobile-first; keyboard-accessible). Revisits
   08's list presentation. depends on: C1b
