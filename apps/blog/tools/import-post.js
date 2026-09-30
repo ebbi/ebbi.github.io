@@ -188,11 +188,10 @@ function extractFromPostsJson(slug) {
   return { title: post.title, date: post.date, blocks: post.blocks };
 }
 
-// Part 2: HTML strategy. Faithful extraction. Returns the SAME shape
-// extractFromPostsJson returns — { title, date, blocks } — because
-// extractBlocks() pipes the result straight into buildContentFile().
-// (See the frozen seam note above extractBlocks.) A future chat changes
-// ONLY this body. Nothing else changes.
+// Part 2: HTML strategy. Faithful extraction (D-Tool-12). Returns the
+// SAME shape extractFromPostsJson returns — { title, date, blocks } —
+// because extractBlocks() pipes the result straight into
+// buildContentFile(). Seam D-Tool-9: only this body changes.
 function extractHtmlBlocks(raw /* ctx */) {
   if (typeof raw !== "string" || raw.length === 0) {
     throw new Error("extractHtmlBlocks: empty or non-string HTML");
@@ -250,15 +249,18 @@ function extractHtmlBlocks(raw /* ctx */) {
   return { title, date, blocks };
 }
 
+// Title: decode ONLY &nbsp; to a single space (D-Tool-16). renderer.js
+// uses textContent and performs no decoding, so whatever we emit is what
+// the user sees. The C1a pilot has a plain space here because parser.js
+// stripHtml ran .replace(/&nbsp;/g," "); we match that. No general
+// entity decoder.
 function firstTitle(html) {
   const m =
     /<h1\b[^>]*class="[^"]*\bentry-title\b[^"]*"[^>]*>([\s\S]*?)<\/h1>/i.exec(
       html,
     );
   if (!m) return "";
-  // Pilot stores title with &nbsp; NOT decoded (e.g. "…before&nbsp;Israel"
-  // would appear as-is). Keep raw, trim only.
-  return m[1].trim();
+  return m[1].replace(/&nbsp;/g, " ").trim();
 }
 
 function firstDate(html) {
@@ -288,7 +290,6 @@ function sliceEntryContent(html) {
   const start = open + startTag.length;
   // Find the matching close by counting <div>/</div> from here.
   let depth = 1;
-  let i = start;
   const tagRe = /<(\/?)div\b[^>]*>/gi;
   tagRe.lastIndex = start;
   let m;
@@ -316,25 +317,40 @@ function blockFromFragment(frag, kind) {
     return { type: "image", src, caption: cap };
   }
   if (kind === "table") {
-    const table = extractTable(frag);
-    if (table == null) return null;
-    return { type: "table", rows: table };
+    // D-Tool-15: renderer.js does table.innerHTML = block.content, so
+    // content is the inner HTML of <table> (the <tr>/<td> markup WITHOUT
+    // the outer <table> tag). No `rows` field.
+    const tblM = /<table\b[^>]*>([\s\S]*?)<\/table>/i.exec(frag);
+    if (tblM == null) return null;
+    return { type: "table", content: tblM[1].trim() };
   }
   if (kind === "quote") {
+    // D-Tool-15: renderer.js does blockquote.textContent = block.content,
+    // so content must be a PLAIN-TEXT string — tags stripped, entities
+    // preserved. Multiple nested <p> are joined by "\n".
     const inner = innerOf(frag, "blockquote");
     if (inner == null) return null;
-    // Preserve nested paragraph content, but strip the wrapping <p>…
     const ps = [];
     const pRe =
       /<p\b[^>]*class="[^"]*\bwp-block-paragraph\b[^"]*"[^>]*>([\s\S]*?)<\/p>/gi;
     let m;
-    while ((m = pRe.exec(inner)) !== null) ps.push(m[1].trim());
-    const content = ps.length
-      ? ps.join("\n")
-      : inner.replace(/<[^>]+>/g, "").trim();
-    return { type: "quote", content };
+    while ((m = pRe.exec(inner)) !== null) ps.push(m[1]);
+    const joined = ps.length ? ps.join("\n") : inner;
+    return { type: "quote", content: stripTags(joined).trim() };
   }
   return null;
+}
+
+// Strip HTML tags, collapse whitespace runs to single spaces, trim.
+// Entities are PRESERVED (we do not decode &#8217; etc.) — matches the
+// C1a pilot and parser.js stripHtml semantics for body text. This is the
+// one thing parser.js did NOT do (parser.js replaced &nbsp; too, but that
+// only matters for titles, handled in firstTitle).
+function stripTags(s) {
+  return s
+    .replace(/<[^>]+>/g, " ")
+    .replace(/[ \t]+/g, " ")
+    .trim();
 }
 
 // Return the raw inner HTML of the first <tag>…</tag> in `frag`.
@@ -355,40 +371,16 @@ function attrOfFirst(frag, tag, name) {
 }
 
 // Caption: raw inner HTML of <figcaption>, trimmed; "" if absent.
-// NOT html-decoded — the source already carries entities and the pilot
-// preserves them (e.g. &#8216; &#8217;). Match the pilot byte-for-byte
-// on images.
+// NOT html-decoded — the source carries entities and the pilot preserves
+// them (e.g. &#8216; &#8217;). D-Tool-14 unchanged.
 function captionOf(frag) {
   const m = /<figcaption\b[^>]*>([\s\S]*?)<\/figcaption>/i.exec(frag);
   if (!m) return "";
-  // Strip a single leading/trailing <em>…</em> wrapper if that is all the
-  // caption is, to match pilot captions that store the bare text.
   let cap = m[1].trim();
   const em = /^<em\b[^>]*>([\s\S]*?)<\/em>$/i.exec(cap);
   if (em) cap = em[1].trim();
   return cap;
 }
-
-// Extract a <table> into an array of rows, each an array of cell strings
-// (raw inner HTML, trimmed). Simple, dependency-free.
-function extractTable(frag) {
-  const tblM = /<table\b[^>]*>([\s\S]*?)<\/table>/i.exec(frag);
-  if (!tblM) return null;
-  const rows = [];
-  const rowRe = /<tr\b[^>]*>([\s\S]*?)<\/tr>/gi;
-  let m;
-  while ((m = rowRe.exec(tblM[1])) !== null) {
-    const cells = [];
-    const cellRe = /<(td|th)\b[^>]*>([\s\S]*?)<\/\1>/gi;
-    let c;
-    while ((c = cellRe.exec(m[1])) !== null) {
-      cells.push(c[2].trim());
-    }
-    rows.push(cells);
-  }
-  return rows;
-}
-
 function extractBlocks(strategy, { raw, slug }) {
   if (strategy === "posts-json") return extractFromPostsJson(slug);
   if (strategy === "html") return extractHtmlBlocks(raw, { slug });

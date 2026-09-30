@@ -1,6 +1,13 @@
-# ... existing content ...
+# Zabon blog app — ignore rules
+# Repaired by C1-tool-cleanup (W7). Previous content contained literal
+# apply-placeholders ("# ... existing content ...") which are not
+# comments-as-intended and polluted the file.
 
-# Blog build cache
-tools/cache/*.json
+# Build/tool cache (Phase 1 importer + earlier fetcher cache)
+tools/.cache/
+tools/cache/
+*.json.tmp
+
+# Scratch
 notes/
-# ... rest of file ...
+*.log
