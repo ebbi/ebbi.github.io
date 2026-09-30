@@ -1,3 +1,5 @@
+SUPERSEDED by C1-tool + C1b-01..19 + C1b-DONE. Do not execute this file.
+
 # Milestone C1b: Content migration, remaining EN posts
 
 ## Scope fence (read first)

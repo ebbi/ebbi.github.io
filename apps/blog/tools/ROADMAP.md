@@ -35,6 +35,7 @@ files are authored one at a time, at the close of the previous one
 
 - B1 Renderer remaining block types (pullquote, resourceList, callout,
   footnotes, attachment). depends on: 09
+  …**plus** the stray `?? apps/blog/tools/import-post.md` — which must be resolved (keep-untracked or `rm`) before you stage, so it does not pollute the milestone set.
 - C1b Content migration, remaining 19 EN posts: posts.json ->
   content/en/<slug>.json. Machinery already proven; no app/tool change.
   depends on: C1a
