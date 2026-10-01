@@ -37,6 +37,9 @@ files are authored one at a time, at the close of the previous one
 
 ## Next (order per depends-on; each authored at the previous chat's close)
 
+- C1-tool-seam-complete Make extractHtmlBlocks faithful to entry-content
+  (skip-and-continue loop; footnotes; recover dropped paragraphs). Supersedes
+  C1-tool-seam-footnotes. depends on: C1-tool-cleanup
 - B1 Renderer remaining block types (pullquote, resourceList, callout,
   footnotes, attachment). depends on: 09
   …**plus** the stray `?? apps/blog/tools/import-post.md` — which must be resolved (keep-untracked or `rm`) before you stage, so it does not pollute the milestone set.

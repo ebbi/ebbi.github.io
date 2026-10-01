@@ -94,6 +94,14 @@ window.BlogRenderer = {
         blockquote.innerHTML = block.content || "";
         return blockquote;
 
+      case "footnotes":
+        // NEW-3: content is the inner HTML of the source
+        // <ol class="wp-block-footnotes"> (outer <ol> omitted by the seam).
+        const footnotes = document.createElement("ol");
+        footnotes.className = "footnotes";
+        footnotes.innerHTML = block.content || "";
+        return footnotes;
+
       case "list":
         const list = document.createElement(block.ordered ? "ol" : "ul");
         // The parser preserves <li> tags inside the list content.

@@ -224,23 +224,38 @@ function extractHtmlBlocks(raw /* ctx */) {
       kind: "quote",
     },
     {
+      re: /<ol\b[^>]*class="[^"]*\bwp-block-footnotes\b[^"]*"[^>]*>[\s\S]*?<\/ol>/i,
+      kind: "footnotes",
+    },
+    {
       re: /<p\b[^>]*class="[^"]*\bwp-block-paragraph\b[^"]*"[^>]*>[\s\S]*?<\/p>/i,
       kind: "paragraph",
     },
   ];
 
-  let rest = body;
-  while (rest.length > 0) {
+  let pos = 0;
+  while (pos < body.length) {
     let best = null;
     for (const t of TOP) {
-      const m = t.re.exec(rest);
-      if (m && (best === null || m.index < best.m.index)) best = { t, m };
+      const re = new RegExp(t.re.source, "i");
+      const m = re.exec(body.slice(pos));
+      if (m && (best === null || m.index < best.index)) {
+        best = { t, index: m.index, match: m[0] };
+      }
     }
     if (best === null) break;
-    const frag = best.m[0];
-    rest = rest.slice(best.m.index + frag.length);
-    const block = blockFromFragment(frag, best.t.kind);
+    if (best.index > 0) {
+      const rel = pos + best.index;
+      const nextLt = body.indexOf("<", pos);
+      if (nextLt !== -1 && nextLt < rel) {
+        const nextGt = body.indexOf(">", nextLt);
+        pos = nextGt !== -1 ? nextGt + 1 : rel;
+        continue;
+      }
+    }
+    const block = blockFromFragment(best.match, best.t.kind);
     if (block !== null) blocks.push(block);
+    pos += best.index + best.match.length;
   }
 
   if (blocks.length === 0) {
@@ -309,6 +324,12 @@ function blockFromFragment(frag, kind) {
     const inner = innerOf(frag, "p");
     if (inner == null) return null;
     return { type: "paragraph", content: inner.trim() };
+  }
+
+  if (kind === "footnotes") {
+    const fInner = innerOf(frag, "ol");
+    if (fInner == null) return null;
+    return { type: "footnotes", content: fInner.trim() };
   }
   if (kind === "imageWrap" || kind === "imageFig") {
     const src = attrOfFirst(frag, "img", "src");
