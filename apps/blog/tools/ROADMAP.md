@@ -42,21 +42,28 @@ files are authored one at a time, at the close of the previous one
 
 ## Next (order per depends-on; each authored at the previous chat's close)
 
-- C1b-02 Migrate the NEXT EN post from the live HTML extraction (--from html),
-  NOT posts.json, into content/en/<slug>.json. Slug selected at C1b-02's
-  milestone-authoring step (candidates: a-contemporary-history-of-the-muslim-
-  world-part-22-kosovo-2, or update). depends on: C1b-01
+- C1b-seam-bare-p Extend the D-Tool-9 seam (a second narrow extension; first
+  was D-Tool-18) so extractHtmlBlocks/blockFromFragment can represent BARE
+  <p> elements directly inside entry-content, with no wp-block-paragraph
+  wrapper. Proves update migrates to its live census (2 blocks, see L-008).
+  Recorded as a new locked decision (D-Tool-19). depends on: C1b-01.
+  Milestone file authored at C1b-02's close. NOTE: without this milestone,
+  update.json cannot be written and C1b-02 stays blocked (L-008).
+- C1b-02 (BLOCKED) Migrate the EN post `update` from the live HTML extraction
+  (--from html) into content/en/update.json. BLOCKED on C1b-seam-bare-p:
+  the sealed extractor cannot represent bare-<p> posts (L-008). Re-open
+  after C1b-seam-bare-p lands and re-run the migration. depends on:
+  C1b-seam-bare-p.
 - C1-tool-seam-complete Make extractHtmlBlocks faithful to entry-content
   (skip-and-continue loop; footnotes; recover dropped paragraphs). Supersedes
   C1-tool-seam-footnotes. depends on: C1-tool-cleanup
 - B1 Renderer remaining block types (pullquote, resourceList, callout,
   footnotes, attachment). depends on: 09
-  …**plus** the stray `?? apps/blog/tools/import-post.md` — which must be resolved (keep-untracked or `rm`) before you stage, so it does not pollute the milestone set.
-- C1b-01 First of the C1b-01..19 series: migrate ONE EN post from
-  posts.json -> content/en/<slug>.json. Milestone file authored at
-  C1b-01's close, not before. depends on: C1-tool-cleanup
-- C1b-02..19 (series) remaining EN posts. C1b-DONE proves 20/20, then
-  posts.json deletion is unblocked.
+- C1b-03..19 (series) remaining EN posts. Corpus KNOWN to include (a) posts
+  with core/embed (L-004..L-006, deferred) and (b) posts whose body is bare
+  <p> with no wp-block-* markers (L-008). Each class needs its own seam
+  extension milestone before the affected slugs can migrate. C1b-DONE proves
+  20/20, then posts.json deletion is unblocked.
 - 10b List item as collapsible panel: title toggles the excerpt + a
   "read full post" link (mobile-first; keyboard-accessible). Revisits
   08's list presentation. depends on: C1b
@@ -89,3 +96,6 @@ files are authored one at a time, at the close of the previous one
 - LOCKED_DECISIONS lists 8 UI languages; 4 content languages. Switcher
   ships the content set only.
 - Post slugs are language-agnostic.
+- The D-Tool-9 extraction seam is frozen. Two narrow extensions exist so far
+  (D-Tool-18 quote-cite; D-Tool-19 proposed for bare-<p>). Any additional
+  extension is its own milestone with its own LOCKED_DECISIONS entry.
