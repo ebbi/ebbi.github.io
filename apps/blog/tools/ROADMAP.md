@@ -25,6 +25,11 @@ files are authored one at a time, at the close of the previous one
 - C1-tool-p2 Wire extractHtmlBlocks() (faithful HTML->blocks). depends on: C1-tool
 - C1-model Settle content model + freeze quote/table/title shapes. Decision-only. depends on: C1-tool-p2
 - C1-tool-cleanup Execute C1-model decisions; regenerate the pilot (80 blocks); repair .gitignore (W1/W7). depends on: C1-model
+- C1-tool-seam-complete ...
+- C1b-01 Migrate controlling-the-narrative from the live HTML extraction
+  (--from html) into content/en/controlling-the-narrative.json; prove 34-block
+  census; fix cite-carrying quote loss (D-Tool-18). depends on:
+  C1-tool-seam-complete
 
 ## Now
 
@@ -37,6 +42,10 @@ files are authored one at a time, at the close of the previous one
 
 ## Next (order per depends-on; each authored at the previous chat's close)
 
+- C1b-02 Migrate the NEXT EN post from the live HTML extraction (--from html),
+  NOT posts.json, into content/en/<slug>.json. Slug selected at C1b-02's
+  milestone-authoring step (candidates: a-contemporary-history-of-the-muslim-
+  world-part-22-kosovo-2, or update). depends on: C1b-01
 - C1-tool-seam-complete Make extractHtmlBlocks faithful to entry-content
   (skip-and-continue loop; footnotes; recover dropped paragraphs). Supersedes
   C1-tool-seam-footnotes. depends on: C1-tool-cleanup

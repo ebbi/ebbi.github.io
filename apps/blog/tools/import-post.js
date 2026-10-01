@@ -349,14 +349,24 @@ function blockFromFragment(frag, kind) {
     // D-Tool-15: renderer.js does blockquote.textContent = block.content,
     // so content must be a PLAIN-TEXT string — tags stripped, entities
     // preserved. Multiple nested <p> are joined by "\n".
+    //
+    // B1b/A-fix: WP.com often carries the visible quote in a trailing
+    // <cite> while the <p> is empty (e.g. Netanyahoo quote in
+    // controlling-the-narrative). Collect paragraph bodies AND the
+    // <cite> text, in source order, and join them; skip empty parts.
+    // If still nothing, fall back to the full inner HTML.
     const inner = innerOf(frag, "blockquote");
     if (inner == null) return null;
-    const ps = [];
-    const pRe =
-      /<p\b[^>]*class="[^"]*\bwp-block-paragraph\b[^"]*"[^>]*>([\s\S]*?)<\/p>/gi;
+
+    const parts = [];
+    const partRe =
+      /<p\b[^>]*class="[^"]*\bwp-block-paragraph\b[^"]*"[^>]*>([\s\S]*?)<\/p>|<cite\b[^>]*>([\s\S]*?)<\/cite>/gi;
     let m;
-    while ((m = pRe.exec(inner)) !== null) ps.push(m[1]);
-    const joined = ps.length ? ps.join("\n") : inner;
+    while ((m = partRe.exec(inner)) !== null) {
+      const body = m[1] !== undefined ? m[1] : m[2];
+      if (body != null && body.trim().length > 0) parts.push(body);
+    }
+    const joined = parts.length ? parts.join("\n") : inner;
     return { type: "quote", content: stripTags(joined).trim() };
   }
   return null;
