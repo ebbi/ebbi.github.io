@@ -4,6 +4,17 @@
  * Exposes `window.BlogRenderer.render(blocks, targetElement)`
  */
 
+// Module-scope helper (add near the top of the IIFE/object, before renderBlock).
+// Decode HTML character references (&#8217;, &amp;, &nbsp;, etc.) to plain text
+// WITHOUT interpreting tags. Safe for any field that is meant to be plain text
+// but was extracted from HTML source (captions, alts if ever needed).
+function decodeEntities(str) {
+  if (!str) return "";
+  const el = document.createElement("textarea");
+  el.innerHTML = str;
+  return el.value; // value returns the parsed text with entities decoded
+}
+
 window.BlogRenderer = {
   /**
    * Renders an array of block objects into the DOM.
@@ -39,39 +50,48 @@ window.BlogRenderer = {
    * @param {Object} block - The block object
    * @returns {HTMLElement|null}
    */
+
   renderBlock: function (block) {
     if (!block || !block.type) return null;
 
     switch (block.type) {
       case "paragraph":
         const p = document.createElement("p");
-        p.textContent = block.content || "";
+        // Trusted: content authored and committed via import-post.js pipeline.
+        p.innerHTML = block.content || "";
         return p;
 
       case "heading":
         const level = Math.min(Math.max(block.level || 2, 1), 6); // Ensure h1-h6
         const h = document.createElement(`h${level}`);
-        h.textContent = block.content || "";
+        // Trusted: content authored and committed via import-post.js pipeline.
+        h.innerHTML = block.content || "";
         return h;
 
       case "image":
         const figure = document.createElement("figure");
         const img = document.createElement("img");
         img.src = block.src || "";
-        img.alt = block.caption || "Blog image";
+        // Decode entities for the alt text too, for consistency.
+        img.alt = decodeEntities(block.caption) || "Blog image";
         img.style.maxWidth = "100%"; // Basic responsive safeguard
         figure.appendChild(img);
 
         if (block.caption) {
           const figcaption = document.createElement("figcaption");
-          figcaption.textContent = block.caption;
+          // Captions are plain text but extracted from HTML source, so they may
+          // carry character references (&#8217; etc.). Decode them; do NOT use
+          // innerHTML, so a stray '<' can never become a tag.
+          figcaption.textContent = decodeEntities(block.caption);
           figure.appendChild(figcaption);
         }
         return figure;
 
       case "quote":
         const blockquote = document.createElement("blockquote");
-        blockquote.textContent = block.content || "";
+        // extractHtmlBlocks emits quote.content already stripped of tags but
+        // with entities preserved (D-Tool-15) — the shape innerHTML wants.
+        blockquote.innerHTML = block.content || "";
         return blockquote;
 
       case "list":
