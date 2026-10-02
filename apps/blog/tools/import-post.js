@@ -231,6 +231,17 @@ function extractHtmlBlocks(raw /* ctx */) {
       re: /<p\b[^>]*class="[^"]*\bwp-block-paragraph\b[^"]*"[^>]*>[\s\S]*?<\/p>/i,
       kind: "paragraph",
     },
+    {
+      // D-Tool-19: bare <p> directly inside entry-content. Matches a <p ...>
+      // whose class attribute is absent OR (if present) does NOT contain
+      // "wp-block-". The negative lookahead excludes wp-block-paragraph
+      // (owned by the entry above) and any other wp-block-* class. Wrapper
+      // blocks are consumed whole, left-to-right, by the loop below, so a
+      // <p> nested inside a <blockquote>/<figure>/<div.wp-block-*> is never
+      // reached by this rule.
+      re: /<p\b(?![^>]*\bclass="[^"]*\bwp-block-)[^>]*>[\s\S]*?<\/p>/i,
+      kind: "paragraphBare",
+    },
   ];
 
   let pos = 0;
@@ -320,7 +331,7 @@ function sliceEntryContent(html) {
 }
 
 function blockFromFragment(frag, kind) {
-  if (kind === "paragraph") {
+  if (kind === "paragraph" || kind === "paragraphBare") {
     const inner = innerOf(frag, "p");
     if (inner == null) return null;
     return { type: "paragraph", content: inner.trim() };

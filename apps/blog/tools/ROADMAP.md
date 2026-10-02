@@ -30,6 +30,13 @@ files are authored one at a time, at the close of the previous one
   (--from html) into content/en/controlling-the-narrative.json; prove 34-block
   census; fix cite-carrying quote loss (D-Tool-18). depends on:
   C1-tool-seam-complete
+- C1b-seam-bare-p Extend the D-Tool-9 seam (D-Tool-19) so bare-<p> bodies are
+  representable; migrate `update` (2 blocks, L-008 resolved); regenerate
+  feed.json (3 entries). depends on: C1b-01
+- C1b-02 Migrate the EN post `update` from the live HTML extraction
+  (--from html) into content/en/update.json. Closed in C1b-seam-bare-p:
+  update.json written and verified there (census {paragraph:2}); no separate
+  re-open chat. depends on: C1b-seam-bare-p.
 
 ## Now
 
@@ -42,26 +49,18 @@ files are authored one at a time, at the close of the previous one
 
 ## Next (order per depends-on; each authored at the previous chat's close)
 
-- C1b-seam-bare-p Extend the D-Tool-9 seam (a second narrow extension; first
-  was D-Tool-18) so extractHtmlBlocks/blockFromFragment can represent BARE
-  <p> elements directly inside entry-content, with no wp-block-paragraph
-  wrapper. Proves update migrates to its live census (2 blocks, see L-008).
-  Recorded as a new locked decision (D-Tool-19). depends on: C1b-01.
-  Milestone file authored at C1b-02's close. NOTE: without this milestone,
-  update.json cannot be written and C1b-02 stays blocked (L-008).
-- C1b-02 (BLOCKED) Migrate the EN post `update` from the live HTML extraction
-  (--from html) into content/en/update.json. BLOCKED on C1b-seam-bare-p:
-  the sealed extractor cannot represent bare-<p> posts (L-008). Re-open
-  after C1b-seam-bare-p lands and re-run the migration. depends on:
-  C1b-seam-bare-p.
+- C1b-03 first slug of the remaining EN series. Corpus KNOWN to include
+  posts with core/embed (L-004..L-006, deferred) and posts whose body is bare
+  <p> (L-008, now handled). Each class needs its own seam-extension milestone
+  before the affected slug can migrate. C1b-DONE proves 20/20. depends on:
+  C1b-02.
 - C1-tool-seam-complete Make extractHtmlBlocks faithful to entry-content
   (skip-and-continue loop; footnotes; recover dropped paragraphs). Supersedes
   C1-tool-seam-footnotes. depends on: C1-tool-cleanup
 - B1 Renderer remaining block types (pullquote, resourceList, callout,
   footnotes, attachment). depends on: 09
-- C1b-03..19 (series) remaining EN posts. Corpus KNOWN to include (a) posts
-  with core/embed (L-004..L-006, deferred) and (b) posts whose body is bare
-  <p> with no wp-block-* markers (L-008). Each class needs its own seam
+- C1b-04..19 (series) remaining EN posts. Corpus KNOWN to include posts with
+  core/embed (L-004..L-006, deferred); each class needs its own seam
   extension milestone before the affected slugs can migrate. C1b-DONE proves
   20/20, then posts.json deletion is unblocked.
 - 10b List item as collapsible panel: title toggles the excerpt + a
