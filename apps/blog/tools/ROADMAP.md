@@ -38,6 +38,12 @@ files are authored one at a time, at the close of the previous one
   update.json written and verified there (census {paragraph:2}); no separate
   re-open chat. depends on: C1b-seam-bare-p.
 
+- C1b-03 Extend the D-Tool-9 seam (D-Tool-20): legacy bare `<p><img>`
+  inline images are promoted to `image` blocks instead of being captured
+  by the D-Tool-19 bare-<p> rule as paragraph text. part-22 recon
+  {image:4,paragraph:55} (59 blocks), img_para_leftover=0; resolved L-009.
+  No slug migrated this milestone (part-22 deferred to C1b-04). depends on:
+  C1b-02.
 ## Now
 
 - 07 App Shell & Toolbars: fixed top/bottom toolbars, drawer,
@@ -49,17 +55,13 @@ files are authored one at a time, at the close of the previous one
 
 ## Next (order per depends-on; each authored at the previous chat's close)
 
-- C1b-03 first slug of the remaining EN series. Corpus KNOWN to include
-  posts with core/embed (L-004..L-006, deferred) and posts whose body is bare
-  <p> (L-008, now handled). Each class needs its own seam-extension milestone
-  before the affected slug can migrate. C1b-DONE proves 20/20. depends on:
-  C1b-02.
-- C1-tool-seam-complete Make extractHtmlBlocks faithful to entry-content
-  (skip-and-continue loop; footnotes; recover dropped paragraphs). Supersedes
-  C1-tool-seam-footnotes. depends on: C1-tool-cleanup
+- C1b-04 Migrate `a-contemporary-history-of-the-muslim-world-part-22-kosovo-2`
+  from the live HTML (`--from html`) into content/en/. Census
+  {image:4,paragraph:55} (59 blocks), proven in C1b-03 recon. depends on:
+  C1b-03.
 - B1 Renderer remaining block types (pullquote, resourceList, callout,
   footnotes, attachment). depends on: 09
-- C1b-04..19 (series) remaining EN posts. Corpus KNOWN to include posts with
+- C1b-05..19 (series) remaining EN posts. Corpus KNOWN to include posts with
   core/embed (L-004..L-006, deferred); each class needs its own seam
   extension milestone before the affected slugs can migrate. C1b-DONE proves
   20/20, then posts.json deletion is unblocked.
@@ -95,6 +97,6 @@ files are authored one at a time, at the close of the previous one
 - LOCKED_DECISIONS lists 8 UI languages; 4 content languages. Switcher
   ships the content set only.
 - Post slugs are language-agnostic.
-- The D-Tool-9 extraction seam is frozen. Two narrow extensions exist so far
-  (D-Tool-18 quote-cite; D-Tool-19 proposed for bare-<p>). Any additional
+- The D-Tool-9 extraction seam is frozen. Three narrow extensions exist so far
+  (D-Tool-18 quote-cite; D-Tool-19 bare-<p>; D-Tool-20 bare-<p><img>). Any additional
   extension is its own milestone with its own LOCKED_DECISIONS entry.

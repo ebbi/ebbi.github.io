@@ -16,6 +16,7 @@ in a final fidelity check before C1b-DONE. Silent loss is prohibited.
 | L-006 | a-contemporary-history-...-part-8-afghanistan-1        | embed      | extraction seam cannot extract core/embed                                                                                                                                                                                                                                      | 2 blocks                   | deferred | milestone when series reaches idx 18 |
 | L-007 | controlling-the-narrative (live, pre-fix)              | quote      | blockFromFragment("quote") ignored <cite> text: the 4th quote carries its body in <cite>, <p> is empty; content was emitted as "".                                                                                                                                             | 1 block                    | resolved | C1b-01 (A-fix)                       |
 | L-008 | update (live)                                          | paragraph  | extractHtmlBlocks TOP list keys on wp-block-* classes; the update body has ZERO wp-block-* markers and two BARE <p> elements, so the loop matches nothing and throws no recognised blocks in entry-content. Bare-<p> posts are unrepresentable by the D-Tool-9 seam as frozen. | 2 of 2 blocks (whole post) | resolved | C1b-seam-bare-p (D-Tool-19)          |
+| L-009 | a-contemporary-history-...-part-22-kosovo-2 (live) | image | Legacy WP.com inline images are emitted as bare <p><img class="wp-image-..."></p> (no wp-block-image wrapper). The D-Tool-9 seam froze with only imageWrap (div.wp-block-image) and imageFig (figure.wp-block-image); it had no rule for a bare <p>-wrapped <img>. After D-Tool-19, the bare-<p> rule captured these as paragraph blocks, so 4 images would render as raw <img .../> markup text instead of pictures. | 4 of 59 blocks | resolved | C1b-03 (D-Tool-20) |
 
 Notes:
 
@@ -41,4 +42,14 @@ Notes:
   post-fix recon blocks=2, census {paragraph:2}; live text confirmed
   non-empty. Non-regression: pilot 80 blocks (unchanged), C1b-01 34 blocks
   {image:5,paragraph:24,quote:4,footnotes:1}, quote[3] len=240.
+- L-009: mitigated and RESOLVED in C1b-03 by extending the D-Tool-9
+  seam (D-Tool-20): extractHtmlBlocks tops out a bare <p><img> as an
+  image block before paragraphBare sees it. The class is legacy WP.com
+  inline-image markup (no wp-block-image wrapper); D-Tool-19's bare-<p>
+  rule had captured it as paragraph, which would have rendered raw <img>
+  markup as text. Evidence: live recon part-22 59 blocks ->
+  {image:4,paragraph:55}, img_para_leftover=0. Non-regression: pilot 80
+  {image:15,paragraph:62,quote:2,table:1}; controlling-the-narrative 34
+  {image:5,paragraph:24,quote:4,footnotes:1}; update 2 {paragraph:2}.
+  (C1b-03 D-Tool-20 note)
 - posts.json is retained on disk only until C1b-DONE proves 20/20.

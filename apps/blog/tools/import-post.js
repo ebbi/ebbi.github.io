@@ -232,6 +232,15 @@ function extractHtmlBlocks(raw /* ctx */) {
       kind: "paragraph",
     },
     {
+      // D-Tool-20: legacy WP.com image markup - an <img> wrapped in a bare
+      // <p> (class absent OR lacking "wp-block-"), with no wp-block-image
+      // wrapper. Must sit BEFORE paragraphBare so the image is promoted to
+      // an `image` block instead of being swallowed as paragraph text.
+      // Matches a <p> whose entire content is a single <img .../>.
+      re: /<p\b(?![^>]*\bclass="[^"]*\bwp-block-)[^>]*>\s*<img\b[^>]*\/?>\s*<\/p>/i,
+      kind: "imageBareP",
+    },
+    {
       // D-Tool-19: bare <p> directly inside entry-content. Matches a <p ...>
       // whose class attribute is absent OR (if present) does NOT contain
       // "wp-block-". The negative lookahead excludes wp-block-paragraph
@@ -239,6 +248,13 @@ function extractHtmlBlocks(raw /* ctx */) {
       // blocks are consumed whole, left-to-right, by the loop below, so a
       // <p> nested inside a <blockquote>/<figure>/<div.wp-block-*> is never
       // reached by this rule.
+      //
+      // D-Tool-20 also narrows this rule's INTENT: a <p> whose sole child
+      // is an <img> is NOT a paragraph. The imageBareP entry above claims
+      // that case first (it is placed earlier in TOP), so paragraphBare is
+      // only reached for genuine prose. The regex below is intentionally
+      // left byte-identical so D-Tool-19 prose behaviour is provably
+      // unchanged.
       re: /<p\b(?![^>]*\bclass="[^"]*\bwp-block-)[^>]*>[\s\S]*?<\/p>/i,
       kind: "paragraphBare",
     },
@@ -335,6 +351,15 @@ function blockFromFragment(frag, kind) {
     const inner = innerOf(frag, "p");
     if (inner == null) return null;
     return { type: "paragraph", content: inner.trim() };
+  }
+
+  // D-Tool-20: legacy <p><img .../></p>. Emit the SAME image shape the
+  // renderer already consumes (D-Tool-14): { type:"image", src, caption }.
+  // No caption is possible here (there is no <figcaption>), so "".
+  if (kind === "imageBareP") {
+    const src = attrOfFirst(frag, "img", "src");
+    if (!src) return null;
+    return { type: "image", src, caption: "" };
   }
 
   if (kind === "footnotes") {
