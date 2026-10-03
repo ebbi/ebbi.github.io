@@ -59,8 +59,24 @@ files are authored one at a time, at the close of the previous one
   feed.json 6 -> 7 entries; L-010 not recurring here. depends on: C1b-06.
 - C1b-08 Migrate `a-contemporary-history-of-the-muslim-world-part-18-algeria-3`
   from the live HTML (`--from html`) into content/en/. Recon/census {image:7,paragraph:48}
-  (55 blocks), no new seam class (three verbatim `&nbsp;` spacers and inline `<em>`/`<strong>`
+  (55 blocks; NOTE: image count was DEFECTIVE, corrected to {image:14,paragraph:48,embed:1}
+  in C1b-09a / L-011), no new seam class (three verbatim `&nbsp;` spacers and inline `<em>`/`<strong>`
   preserved per D-Tool-15/D-Tool-16); feed.json 7 -> 8 entries; L-010 not recurring here. depends on: C1b-07.
+- C1b-09a Extend the D-Tool-9 seam (D-Tool-21 legacy Jetpack embed; D-Tool-22
+  legacy `figure.wp-caption` caption image) and remediate the discovered
+  pre-existing silent loss. Recon on part-17 revealed TWO classes the frozen
+  seam dropped: the Jetpack embed wrapper AND the caption-shortcode image
+  (`figure.wp-caption`), the latter silently lost across EVERY shipped C1b
+  slug (unrecorded until now; NEW-1/NEW-2). Re-migrated part-18/19/20/21/22
+  from the live HTML so image/embed counts equal the live `entry-content`
+  bodies: part-18 {image:14,paragraph:48,embed:1} (was {image:7,...});
+  part-19 {image:17,paragraph:51} (was {image:3,...}); part-20
+  {image:12,paragraph:57,embed:1} (was {image:3,...}); part-21
+  {image:19,paragraph:82,embed:3} (was {image:5,...}); part-22
+  {image:13,paragraph:55} (was {image:4,...}). Resolved L-011; L-004..L-006
+  seam now READY. feed.json still 8 entries (no new slug). Non-regression:
+  pilot 80; controlling-the-narrative 34; update 2 (byte-identical).
+  depends on: C1b-08.
 
 ## Now
 
@@ -79,10 +95,10 @@ files are authored one at a time, at the close of the previous one
   core/embed (L-004..L-006, deferred); each class needs its own seam
   extension milestone before the affected slugs can migrate. C1b-DONE proves
   20/20, then posts.json deletion is unblocked.
-  - C1b-09: migrate `a-contemporary-history-of-the-muslim-world-part-17-algeria-2`
-    (posts.json date 2018-10-02) — carries L-004 (core/embed), so this is a
-    seam-extension milestone (D-Tool-21) authoring the embed representation
-    BEFORE the slug can migrate.
+  - C1b-09b: migrate `a-contemporary-history-of-the-muslim-world-part-17-algeria-2`
+    (posts.json date 2018-10-02). The seam extension is DONE (C1b-09a): D-Tool-21
+    (embed) and D-Tool-22 (wp-caption image). Live recon: {image:13,paragraph:?,embed:4}
+    (4 embeds, not the 1 posts.json advertises). Resolve L-004 here.
 - 10b List item as collapsible panel: title toggles the excerpt + a
   "read full post" link (mobile-first; keyboard-accessible). Revisits
   08's list presentation. depends on: C1b

@@ -216,6 +216,20 @@ function extractHtmlBlocks(raw /* ctx */) {
       kind: "imageFig",
     },
     {
+      // D-Tool-22: legacy WP.com caption-shortcode image markup -
+      // <figure data-shortcode="caption" class="wp-caption aligncenter">
+      //   <img ...><figcaption class="wp-caption-text">...</figcaption>
+      // </figure>
+      // The frozen seam had NO rule for this class, so the loop skipped it
+      // tag-by-tag and its <img> was silently lost (unrecorded until
+      // C1b-09a). Promoted to the EXISTING image shape { type, src, caption }
+      // so the renderer (which already consumes it) needs no change. Placed
+      // adjacent to imageFig; keys on the "wp-caption" token so both
+      // aligncenter/alignnone variants match.
+      re: /<figure\b[^>]*class="[^"]*\bwp-caption\b[^"]*"[^>]*>[\s\S]*?<\/figure>/i,
+      kind: "wpCaptionFig",
+    },
+    {
       re: /<figure\b[^>]*class="[^"]*\bwp-block-table\b[^"]*"[^>]*>[\s\S]*?<\/figure>/i,
       kind: "table",
     },
@@ -226,6 +240,20 @@ function extractHtmlBlocks(raw /* ctx */) {
     {
       re: /<ol\b[^>]*class="[^"]*\bwp-block-footnotes\b[^"]*"[^>]*>[\s\S]*?<\/ol>/i,
       kind: "footnotes",
+    },
+    {
+      // D-Tool-21: legacy WP.com embed wrapper (core/embed output).
+      //   <div class="jetpack-video-wrapper">
+      //     <span class="embed-youtube" style="...">
+      //       <iframe class="youtube-player" ...></iframe>
+      //     </span>
+      //   </div>
+      // The frozen seam had no rule for this class, so the loop's skip-and-
+      // advance logic dropped the whole embed tag-by-tag (L-004..L-006).
+      // blockFromFragment("embed") emits the raw <iframe> markup verbatim;
+      // renderer.js already consumes block.type === "embed".
+      re: /<div\b[^>]*class="[^"]*\bjetpack-video-wrapper\b[^"]*"[^>]*>[\s\S]*?<\/div>/i,
+      kind: "embed",
     },
     {
       re: /<p\b[^>]*class="[^"]*\bwp-block-paragraph\b[^"]*"[^>]*>[\s\S]*?<\/p>/i,
@@ -372,6 +400,27 @@ function blockFromFragment(frag, kind) {
     if (!src) return null;
     const cap = captionOf(frag);
     return { type: "image", src, caption: cap };
+  }
+
+  // D-Tool-22: legacy WP.com caption-shortcode image. Same shape as
+  // imageFig: src verbatim, caption = inner HTML of the first <figcaption>
+  // (via captionOf: trimmed, outer <em> unwrapped, entities preserved).
+  if (kind === "wpCaptionFig") {
+    const src = attrOfFirst(frag, "img", "src");
+    if (!src) return null;
+    const cap = captionOf(frag);
+    return { type: "image", src, caption: cap };
+  }
+
+  // D-Tool-21: legacy WP.com embed wrapper. Emit the raw <iframe ...>
+  // ...</iframe> markup verbatim (entities preserved). The jetpack
+  // div.wp-block-*/span.embed-youtube chrome is presentational and is NOT
+  // emitted. renderer.js does embedDiv.innerHTML = block.content, so the
+  // iframe renders inside div.embed-container unchanged.
+  if (kind === "embed") {
+    const ifr = /<iframe\b[^>]*>[\s\S]*?<\/iframe>/i.exec(frag);
+    if (!ifr) return null;
+    return { type: "embed", content: ifr[0] };
   }
   if (kind === "table") {
     // D-Tool-15: renderer.js does table.innerHTML = block.content, so
