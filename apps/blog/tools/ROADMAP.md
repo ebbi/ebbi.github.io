@@ -77,6 +77,16 @@ files are authored one at a time, at the close of the previous one
   seam now READY. feed.json still 8 entries (no new slug). Non-regression:
   pilot 80; controlling-the-narrative 34; update 2 (byte-identical).
   depends on: C1b-08.
+- C1b-09b Migrate `a-contemporary-history-of-the-muslim-world-part-17-algeria-2`
+  from the live HTML (`--from html`) into content/en/. Recon/census
+  {image:13,paragraph:59,embed:4} (76 blocks); all 4 embeds carry the raw
+  `<iframe>` verbatim with `&#038;` preserved (D-Tool-21); 6 wp-caption
+  captions present (D-Tool-22); all `*_para_leftover` = 0; no new seam class.
+  feed.json 8 -> 9 entries (date-desc; part-17 at idx 7, after part-18).
+  Resolved L-004; L-005/L-006 remain deferred (seam READY). Non-regression:
+  pilot 80; controlling-the-narrative 34 {image:5,paragraph:24,quote:4,
+  footnotes:1}, quote[3] len=240; update 2 {paragraph:2}; part-18..22
+  byte-identical to their pre-C1b-09b committed files. depends on: C1b-09a.
 
 ## Now
 
@@ -91,14 +101,15 @@ files are authored one at a time, at the close of the previous one
 
 - B1 Renderer remaining block types (pullquote, resourceList, callout,
   footnotes, attachment). depends on: 09
-- C1b-08..19 (series) remaining EN posts. Corpus KNOWN to include posts with
-  core/embed (L-004..L-006, deferred); each class needs its own seam
-  extension milestone before the affected slugs can migrate. C1b-DONE proves
-  20/20, then posts.json deletion is unblocked.
-  - C1b-09b: migrate `a-contemporary-history-of-the-muslim-world-part-17-algeria-2`
-    (posts.json date 2018-10-02). The seam extension is DONE (C1b-09a): D-Tool-21
-    (embed) and D-Tool-22 (wp-caption image). Live recon: {image:13,paragraph:?,embed:4}
-    (4 embeds, not the 1 posts.json advertises). Resolve L-004 here.
+- C1b-08..19 (series) remaining EN posts. The seam (through D-Tool-22) is
+  COMPLETE; the only post known to carry core/embed is part-15 (L-005), whose
+  representation is already frozen, so it is a plain migration. C1b-DONE
+  proves 20/20, then posts.json deletion is unblocked.
+  - C1b-10: migrate `a-contemporary-history-of-the-muslim-world-part-16-algeria-1`
+    (posts.json date 2018-07-22). Plain migration; no new seam class. Pre-verified
+    recon {image:15,paragraph:71,embed:2} (88 blocks), \*\_para_leftover = 0. No loss
+    expected. feed.json 9 -> 10 entries. Then part-15 (L-005; representation already
+    frozen) is also a plain migration.
 - 10b List item as collapsible panel: title toggles the excerpt + a
   "read full post" link (mobile-first; keyboard-accessible). Revisits
   08's list presentation. depends on: C1b
@@ -131,6 +142,7 @@ files are authored one at a time, at the close of the previous one
 - LOCKED_DECISIONS lists 8 UI languages; 4 content languages. Switcher
   ships the content set only.
 - Post slugs are language-agnostic.
-- The D-Tool-9 extraction seam is frozen. Three narrow extensions exist so far
-  (D-Tool-18 quote-cite; D-Tool-19 bare-<p>; D-Tool-20 bare-<p><img>). Any additional
+- The D-Tool-9 extraction seam is frozen. Five narrow extensions exist so far
+  (D-Tool-18 quote-cite; D-Tool-19 bare-<p>; D-Tool-20 bare-<p><img>; D-Tool-21
+  legacy Jetpack embed; D-Tool-22 legacy figure.wp-caption image). Any additional
   extension is its own milestone with its own LOCKED_DECISIONS entry.
