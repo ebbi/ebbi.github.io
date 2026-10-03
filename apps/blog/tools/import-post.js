@@ -230,6 +230,25 @@ function extractHtmlBlocks(raw /* ctx */) {
       kind: "wpCaptionFig",
     },
     {
+      // D-Tool-26: legacy WP.com image markup - an <img> wrapped in a
+      // CLASS-LESS bare <div> with no class attribute at all (e.g.
+      // <div><img data-attachment-id="..." class="aligncenter ..." src="..." /></div>).
+      // The frozen seam matched NO entry for this class: imageWrap requires
+      // class="...wp-block-image..."; the figure.* rules are <figure> rules;
+      // the <p> rules are <p> rules. The loop's skip-and-advance logic then
+      // dropped the whole <div><img></div> tag-by-tag, silently losing the
+      // image (the L-009/L-011 defect shape). Promoted to the EXISTING image
+      // shape { type, src, caption } so the renderer needs no change.
+      // Keys on a <div> that has NO class attribute (the negative lookahead
+      // asserts no "class=" appears in the div open tag) and whose sole child
+      // is a single <img .../>. Placed AFTER wpCaptionFig and BEFORE table
+      // (i.e. after the image entries and before every <p>-keyed entry) so
+      // it claims the bare <div><img></div> case first while leaving every
+      // <p> rule byte-identical.
+      re: /<div\b(?![^>]*\bclass=)[^>]*>\s*<img\b[^>]*\/?>\s*<\/div>/i,
+      kind: "divBareImg",
+    },
+    {
       re: /<figure\b[^>]*class="[^"]*\bwp-block-table\b[^"]*"[^>]*>[\s\S]*?<\/figure>/i,
       kind: "table",
     },
@@ -440,6 +459,18 @@ function blockFromFragment(frag, kind) {
   // renderer already consumes (D-Tool-14): { type:"image", src, caption }.
   // No caption is possible here (there is no <figcaption>), so "".
   if (kind === "imageBareP") {
+    const src = attrOfFirst(frag, "img", "src");
+    if (!src) return null;
+    return { type: "image", src, caption: "" };
+  }
+
+  // D-Tool-26: legacy WP.com image wrapped in a CLASS-LESS bare <div>
+  // (<div><img .../></div>). Handled IDENTICALLY to imageBareP: emit the
+  // SAME EXISTING image shape the renderer already consumes
+  // ({ type:"image", src, caption }). No caption is possible (there is no
+  // <figcaption>), so "". Kept as a separate kind only so the TOP regex
+  // stays independently byte-stable.
+  if (kind === "divBareImg") {
     const src = attrOfFirst(frag, "img", "src");
     if (!src) return null;
     return { type: "image", src, caption: "" };

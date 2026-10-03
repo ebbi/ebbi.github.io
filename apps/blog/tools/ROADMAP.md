@@ -345,6 +345,17 @@ html`) into content/en/. Census MEASURED at recon (not pre-committed);
   of part-9 {image:14,paragraph:28,embed:1} (43), img_para_leftover=0.
   Non-regression: pilot 80 / ctn 34 (quote[3] len=240) / update 2 /
   part-10..22 ALL IDENTICAL. depends on: C1b-11h.
+  STATUS: DONE (2026). D-Tool-26 frozen in LOCKED_DECISIONS.txt; the
+  divBareImg TOP entry placed AFTER wpCaptionFig (D-Tool-22) and BEFORE the
+  table entry (diff = +31 pure additions); all five `<p>`-keyed regexes
+  (imageBareP/imageBarePEm/imageBarePTrailing/embedInBareP/paragraphBare)
+  BYTE-IDENTICAL; blockFromFragment's new branch emits
+  { type:"image", src, caption:"" } (null if no src). Seam-READY re-recon of
+  part-9 {image:14,paragraph:28,embed:1} (43 blocks), all `*_para_leftover`=0;
+  the recovered 14th image is `270px-miqbal4.jpg` (src verbatim, entities
+  preserved); 1 embed raw `<iframe>` verbatim with `&#038;` preserved
+  (D-Tool-21). L-012 authored (resolved by C1b-11h-b). Non-regression: pilot
+  80 / ctn 34 (quote[3] len=240) / update 2 / part-10..22 ALL IDENTICAL.
 
 - C1b-11h-b Migrate
   `a-contemporary-history-of-the-muslim-world-part-9-pakistan-1979`
@@ -378,10 +389,9 @@ html`) into content/en/. Census MEASURED at recon (not pre-committed);
   shape `-11-`, NO `part-` token). C1b-11g migrated part-10 (DONE). C1b-11h
   STOPPED on a NEW class (a bare class-less `<div>`-wrapped `<img>`, a SILENT
   image loss that D-Tool-25 did not model) and re-scoped into C1b-11h-a
-  (seam, D-Tool-26, next) + C1b-11h-b (migration — part-9, next).
-  The next milestone is C1b-11h-a (seam extension), then C1b-11h-b
-  (migrate part-9). C1b-DONE proves 20/20, then posts.json deletion is
-  unblocked.
+  (seam, D-Tool-26, DONE) + C1b-11h-b (migration — part-9, NEXT).
+  The next milestone is C1b-11h-b (migrate part-9, resolving L-012).
+  C1b-DONE proves 20/20, then posts.json deletion is unblocked.
 - B1 Renderer remaining block types (pullquote, resourceList, callout,
   footnotes, attachment). depends on: 09
 - 10b List item as collapsible panel: title toggles the excerpt + a
