@@ -241,6 +241,20 @@ arabia-and-the-arab-cold-war` (posts.json date 2018-04-16). Confirm the
   (D-Tool-22); all `*_para_leftover`=0. feed.json 13 -> 14 entries
   (date-desc; part-12 after part-13). No LOSS_LEDGER row (no loss). Seam READY
   (D-Tool-24/25 frozen in C1b-11e-a). depends on: C1b-11e-a.
+  STATUS: DONE (2026). Migrated part-12 from the live HTML into
+  content/en/a-contemporary-history-of-the-muslim-world-part-12-saudi-arabia-
+  and-the-arab-cold-war.json (canonical slug; HTTP 200, no redirect; no
+  `protected-` prefix). Census {image:12,paragraph:43,embed:2} (57 blocks).
+  The 2 embeds (idx 13 standalone D-Tool-21; idx 40 embedInBareP D-Tool-25)
+  carry the raw `<iframe ...></iframe>` verbatim with `&#038;` preserved.
+  12 images = 7 bare `<p><img>` (D-Tool-20) + 4 `figure.wp-caption` (D-Tool-22;
+  4 non-empty captions) + 1 imageBarePTrailing (D-Tool-24; the opener, idx 0).
+  All `*_para_leftover`=0. feed.json 13 -> 14 entries (date-desc; part-12 at
+  idx 12, after part-13). No loss discovered (LOSS_LEDGER untouched; L-005
+  stays resolved, L-006 stays deferred/seam READY). Non-regression: pilot 80;
+  controlling-the-narrative 34 {image:5,paragraph:24,quote:4,footnotes:1},
+  quote[3] len=240; update 2 {paragraph:2}; part-13..22 byte-identical to
+  their pre-C1b-11e-b committed files. depends on: C1b-11e-a.
 
 ## Now
 
@@ -253,14 +267,16 @@ arabia-and-the-arab-cold-war` (posts.json date 2018-04-16). Confirm the
 
 ## Next (order per depends-on; each authored at the previous chat's close)
 
-- C1b-08..19 (series) remaining EN posts. The seam (through D-Tool-23) covers
+- C1b-08..19 (series) remaining EN posts. The seam (through D-Tool-25) covers
   the classes seen so far. C1b-11 STOPPED on a new class (emph-wrapped
   bare-<p><img>) and re-scoped into C1b-11a (seam, D-Tool-23, DONE) + C1b-11b
   (migration, DONE). C1b-11c migrated part-14 (DONE); C1b-11d migrated part-13
   (DONE; `protected-` post verified fetchable); C1b-11e STOPPED on TWO new
   classes and re-scoped into C1b-11e-a (seam, D-Tool-24 + D-Tool-25, DONE) +
-  C1b-11e-b (migration) — the next milestone is C1b-11e-b (migrate part-12).
-  C1b-DONE proves 20/20, then posts.json deletion is unblocked.
+  C1b-11e-b (migration, DONE — part-12). The next milestone is C1b-11f (next
+  EN post in the series; per ROADMAP ordering, part-11 — slug shape `-11-`,
+  NO `part-` token). C1b-DONE proves 20/20, then posts.json deletion is
+  unblocked.
 - B1 Renderer remaining block types (pullquote, resourceList, callout,
   footnotes, attachment). depends on: 09
 - 10b List item as collapsible panel: title toggles the excerpt + a
