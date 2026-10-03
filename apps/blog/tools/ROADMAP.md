@@ -289,6 +289,34 @@ arabia-and-the-arab-cold-war` (posts.json date 2018-04-16). Confirm the
   new seam class. feed.json 15 -> 16 entries (date-desc; part-10 at idx 14,
   after part-11, before `...-contents`). No LOSS_LEDGER row (no loss).
   depends on: C1b-11f.
+  STATUS: DONE (2026). Migrated part-10 from the live HTML (`--from html`)
+  into content/en/a-contemporary-history-of-the-muslim-world-part-10-afghanistan-pakistan-2.json
+  (canonical slug; HTTP 200, no redirect; no `protected-` prefix). Census
+  {image:18,paragraph:40,embed:1} (59 blocks). The 1 embed (standalone
+  D-Tool-21) carries the raw `<iframe ...></iframe>` verbatim with `&#038;`
+  preserved. 18 images = 13 bare `<p><img>` (D-Tool-20) + 5
+  `figure.wp-caption` (D-Tool-22; 5 non-empty captions). No emph-wrapped
+  image (D-Tool-23), no imageBarePTrailing (D-Tool-24), no embedInBareP
+  (D-Tool-25) in this post. All `*_para_leftover`=0. feed.json 15 -> 16
+  entries; date-desc puts part-10 at idx 15 (LAST; its date 2017-01-06 is
+  OLDER than part-11's 2017-02-08, so it sorts AFTER part-11; the milestone
+  prose's "idx 14, before `...-contents`" was a date-arithmetic slip — there
+  is no `...-contents` feed entry). No loss discovered (LOSS_LEDGER
+  untouched; L-006 stays deferred/seam READY). Non-regression: pilot 80;
+  controlling-the-narrative 34 {image:5,paragraph:24,quote:4,footnotes:1},
+  quote[3] len=240; update 2 {paragraph:2}; part-11..22 byte-identical to
+  their pre-C1b-11g committed files. depends on: C1b-11f.
+
+- C1b-11h Migrate
+  `a-contemporary-history-of-the-muslim-world-part-9-pakistan-1979`
+  (posts.json date 2016-12-25T23:31:45+00:00) from the live HTML (`--from
+html`) into content/en/. Census MEASURED at recon (not pre-committed);
+  confirm slug/title/date against the live post (series slugs have shown
+  discrepancies). Every class seen so far is covered by the seam through
+  D-Tool-25. feed.json 16 -> 17 entries (date-desc; part-9's date 2016-12-25
+  is OLDER than part-10's 2017-01-06, so part-9 sorts AFTER part-10).
+  No LOSS_LEDGER row (no loss expected); L-006 stays deferred. depends on:
+  C1b-11g.
 
 ## Now
 
@@ -308,9 +336,10 @@ arabia-and-the-arab-cold-war` (posts.json date 2018-04-16). Confirm the
   (DONE; `protected-` post verified fetchable); C1b-11e STOPPED on TWO new
   classes and re-scoped into C1b-11e-a (seam, D-Tool-24 + D-Tool-25, DONE) +
   C1b-11e-b (migration, DONE — part-12). C1b-11f migrated part-11 (DONE; slug
-  shape `-11-`, NO `part-` token). The next milestone is C1b-11g (next EN post
-  in the series; per ROADMAP ordering, part-10). C1b-DONE proves 20/20, then
-  posts.json deletion is unblocked.
+  shape `-11-`, NO `part-` token). C1b-11g migrated part-10 (DONE).
+  The next milestone is C1b-11h (next EN post in the series; per ROADMAP
+  ordering, part-9). C1b-DONE proves 20/20, then posts.json deletion is
+  unblocked.
 - B1 Renderer remaining block types (pullquote, resourceList, callout,
   footnotes, attachment). depends on: 09
 - 10b List item as collapsible panel: title toggles the excerpt + a
