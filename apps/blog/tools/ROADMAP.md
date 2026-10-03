@@ -87,6 +87,23 @@ files are authored one at a time, at the close of the previous one
   pilot 80; controlling-the-narrative 34 {image:5,paragraph:24,quote:4,
   footnotes:1}, quote[3] len=240; update 2 {paragraph:2}; part-18..22
   byte-identical to their pre-C1b-09b committed files. depends on: C1b-09a.
+- C1b-10 Migrate `a-contemporary-history-of-the-muslim-world-part-16-algeria-1`
+  from the live HTML (`--from html`) into content/en/. Recon/census
+  {image:15,paragraph:71,embed:2} (88 blocks); both embeds carry the raw
+  `<iframe>` verbatim with `&#038;` preserved (D-Tool-21); 15 image blocks =
+  8 bare `<p><img>` (D-Tool-20) + 7 `figure.wp-caption` (D-Tool-22; 7 captions);
+  all `*_para_leftover` = 0; no new seam class. feed.json 9 -> 10 entries
+  (date-desc; part-16 at idx 8, after part-17). No LOSS_LEDGER row (no loss).
+  Non-regression: pilot 80; controlling-the-narrative 34 {image:5,paragraph:24,
+  quote:4,footnotes:1}, quote[3] len=240; update 2 {paragraph:2}; part-17..22
+  byte-identical to their pre-C1b-10 committed files. depends on: C1b-09b.
+- C1b-11: migrate `a-contemporary-history-of-the-muslim-world-part-15-the-afghan-arabs`
+  (posts.json date 2018-06-11). The LAST post carrying the legacy Jetpack embed
+  (L-005), whose representation is ALREADY frozen (D-Tool-21, seam READY) —
+  plain migration; no new seam class expected. Resolves L-005. feed.json
+  10 -> 11 entries. Confirm slug/title/date from posts.json AND the live post
+  at close (part-13's slug has a `protected-` prefix — verify fetchability
+  when its milestone arrives).
 
 ## Now
 
@@ -105,11 +122,6 @@ files are authored one at a time, at the close of the previous one
   COMPLETE; the only post known to carry core/embed is part-15 (L-005), whose
   representation is already frozen, so it is a plain migration. C1b-DONE
   proves 20/20, then posts.json deletion is unblocked.
-  - C1b-10: migrate `a-contemporary-history-of-the-muslim-world-part-16-algeria-1`
-    (posts.json date 2018-07-22). Plain migration; no new seam class. Pre-verified
-    recon {image:15,paragraph:71,embed:2} (88 blocks), \*\_para_leftover = 0. No loss
-    expected. feed.json 9 -> 10 entries. Then part-15 (L-005; representation already
-    frozen) is also a plain migration.
 - 10b List item as collapsible panel: title toggles the excerpt + a
   "read full post" link (mobile-first; keyboard-accessible). Revisits
   08's list presentation. depends on: C1b
