@@ -50,6 +50,9 @@ files are authored one at a time, at the close of the previous one
 - C1b-05 Migrate `a-contemporary-history-of-the-muslim-world-part-21-bosnia-2`
   from the live HTML (`--from html`) into content/en/. Recon/census {image:5,paragraph:82}
   (87 blocks), no new seam class; feed.json 4 -> 5 entries; L-010 not recurring here. depends on: C1b-04.
+- C1b-06 Migrate `a-contemporary-history-of-the-muslim-world-part-20-kosovo-1`
+  from the live HTML (`--from html`) into content/en/. Recon/census {image:3,paragraph:57}
+  (60 blocks), no new seam class; feed.json 5 -> 6 entries; L-010 not recurring here. depends on: C1b-05.
 
 ## Now
 
@@ -64,9 +67,9 @@ files are authored one at a time, at the close of the previous one
 
 - B1 Renderer remaining block types (pullquote, resourceList, callout,
   footnotes, attachment). depends on: 09
-- C1b-06 Migrate `a-contemporary-history-of-the-muslim-world-part-20-kosovo-1`
-  from the live HTML (`--from html`) into content/en/. depends on: C1b-05.
-- C1b-07..19 (series) remaining EN posts. Corpus KNOWN to include posts with
+- C1b-07 Migrate `a-contemporary-history-of-the-muslim-world-part-19-bosnia-1`
+  from the live HTML (`--from html`) into content/en/. depends on: C1b-06.
+- C1b-08..19 (series) remaining EN posts. Corpus KNOWN to include posts with
   core/embed (L-004..L-006, deferred); each class needs its own seam
   extension milestone before the affected slugs can migrate. C1b-DONE proves
   20/20, then posts.json deletion is unblocked.
