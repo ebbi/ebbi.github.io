@@ -44,6 +44,10 @@ files are authored one at a time, at the close of the previous one
   {image:4,paragraph:55} (59 blocks), img_para_leftover=0; resolved L-009.
   No slug migrated this milestone (part-22 deferred to C1b-04). depends on:
   C1b-02.
+- C1b-04 Migrate `a-contemporary-history-of-the-muslim-world-part-22-kosovo-2`
+  from the live HTML (`--from html`) into content/en/. Census {image:4,paragraph:55}
+  (59 blocks); feed.json 3 -> 4 entries; L-010 deferred. depends on: C1b-03.
+
 ## Now
 
 - 07 App Shell & Toolbars: fixed top/bottom toolbars, drawer,
@@ -55,13 +59,11 @@ files are authored one at a time, at the close of the previous one
 
 ## Next (order per depends-on; each authored at the previous chat's close)
 
-- C1b-04 Migrate `a-contemporary-history-of-the-muslim-world-part-22-kosovo-2`
-  from the live HTML (`--from html`) into content/en/. Census
-  {image:4,paragraph:55} (59 blocks), proven in C1b-03 recon. depends on:
-  C1b-03.
+- C1b-05 Migrate `a-contemporary-history-of-the-muslim-world-part-21-bosnia-2`
+  from the live HTML (`--from html`) into content/en/. depends on: C1b-04.
 - B1 Renderer remaining block types (pullquote, resourceList, callout,
   footnotes, attachment). depends on: 09
-- C1b-05..19 (series) remaining EN posts. Corpus KNOWN to include posts with
+- C1b-06..19 (series) remaining EN posts. Corpus KNOWN to include posts with
   core/embed (L-004..L-006, deferred); each class needs its own seam
   extension milestone before the affected slugs can migrate. C1b-DONE proves
   20/20, then posts.json deletion is unblocked.
