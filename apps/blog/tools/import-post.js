@@ -269,6 +269,19 @@ function extractHtmlBlocks(raw /* ctx */) {
       kind: "imageBareP",
     },
     {
+      // D-Tool-23: legacy WP.com emph-wrapped image markup -
+      // <p ...><em><img ...></em></p> (source of the markdown
+      // _![alt](src)_ rendering). An <img> that is the sole child of
+      // a bare <p> but WRAPPED in <em>. imageBareP (D-Tool-20) does NOT
+      // match it (the <em> sits between <p> and <img>), so paragraphBare
+      // (D-Tool-19) would capture it as a paragraph and leave raw <img>
+      // markup as text (the L-009 defect shape). Placed AFTER imageBareP
+      // and BEFORE paragraphBare so it claims the case first. Reuses the
+      // EXISTING image shape via blockFromFragment kind "imageBarePEm".
+      re: /<p\b(?![^>]*\bclass="[^"]*\bwp-block-)[^>]*>\s*<em>\s*<img\b[^>]*\/?>\s*<\/em>\s*<\/p>/i,
+      kind: "imageBarePEm",
+    },
+    {
       // D-Tool-19: bare <p> directly inside entry-content. Matches a <p ...>
       // whose class attribute is absent OR (if present) does NOT contain
       // "wp-block-". The negative lookahead excludes wp-block-paragraph
@@ -385,6 +398,16 @@ function blockFromFragment(frag, kind) {
   // renderer already consumes (D-Tool-14): { type:"image", src, caption }.
   // No caption is possible here (there is no <figcaption>), so "".
   if (kind === "imageBareP") {
+    const src = attrOfFirst(frag, "img", "src");
+    if (!src) return null;
+    return { type: "image", src, caption: "" };
+  }
+
+  // D-Tool-23: legacy WP.com emph-wrapped image (<p><em><img></em></p>).
+  // Handled IDENTICALLY to imageBareP: same EXISTING image shape, no
+  // caption possible (there is no <figcaption>). Kept as a separate kind
+  // only so the two TOP regexes stay independently byte-stable.
+  if (kind === "imageBarePEm") {
     const src = attrOfFirst(frag, "img", "src");
     if (!src) return null;
     return { type: "image", src, caption: "" };

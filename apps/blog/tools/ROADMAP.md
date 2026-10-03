@@ -124,6 +124,12 @@ files are authored one at a time, at the close of the previous one
   {image:5,paragraph:24,quote:4,footnotes:1} quote[3] len=240; update 2;
   part-16..22 unchanged. Re-recon part-15 -> {image:13,paragraph:67,embed:1}
   (81), img_para_leftover=0. depends on: C1b-11.
+  STATUS: DONE (2026). D-Tool-23 frozen in LOCKED_DECISIONS.txt;
+  imageBarePEm TOP entry placed after imageBareP, before paragraphBare (diff
+  = +23 pure additions); imageBareP/paragraphBare byte-identical; all
+  non-regression targets unchanged; part-15 seam-readiness recon
+  {image:13,paragraph:67,embed:1} (81), img_para_leftover=0, 7 wp-caption
+  captions, 1 embed verbatim with &#038; preserved. L-005 NOT resolved here.
 
 - C1b-11b Migrate
   `a-contemporary-history-of-the-muslim-world-part-15-the-afghan-arabs-foreign-fighters-in-afghanistan`
@@ -131,7 +137,8 @@ files are authored one at a time, at the close of the previous one
   into content/en/. Expected census {image:13,paragraph:67,embed:1} (81 blocks);
   1 embed raw `<iframe>` verbatim with `&#038;` preserved (D-Tool-21); all
   `*_para_leftover`=0. Resolves L-005 (recon census: 1 embed). feed.json
-  10 -> 11 entries (date-desc). depends on: C1b-11a.
+  10 -> 11 entries (date-desc). Seam READY (D-Tool-23 frozen in C1b-11a).
+  depends on: C1b-11a.
 
 ## Now
 
@@ -146,12 +153,11 @@ files are authored one at a time, at the close of the previous one
 
 - B1 Renderer remaining block types (pullquote, resourceList, callout,
   footnotes, attachment). depends on: 09
-- C1b-08..19 (series) remaining EN posts. The seam (through D-Tool-22, plus
-  D-Tool-23 pending in C1b-11a) is COMPLETE for the classes seen so far; the
-  only post known to carry core/embed is part-15 (L-005), whose representation
-  is already frozen. C1b-11 STOPPED on a new class (emph-wrapped bare-<p><img>)
-  and re-scoped into C1b-11a (seam, D-Tool-23) + C1b-11b (migration).
-  C1b-DONE proves 20/20, then posts.json deletion is unblocked.
+- C1b-08..19 (series) remaining EN posts. The seam (through D-Tool-23) is
+  COMPLETE for the classes seen so far. C1b-11 STOPPED on a new class
+  (emph-wrapped bare-<p><img>) and re-scoped into C1b-11a (seam, D-Tool-23,
+  DONE) + C1b-11b (migration, next). C1b-DONE proves 20/20, then posts.json
+  deletion is unblocked.
 - 10b List item as collapsible panel: title toggles the excerpt + a
   "read full post" link (mobile-first; keyboard-accessible). Revisits
   08's list presentation. depends on: C1b
@@ -184,7 +190,8 @@ files are authored one at a time, at the close of the previous one
 - LOCKED_DECISIONS lists 8 UI languages; 4 content languages. Switcher
   ships the content set only.
 - Post slugs are language-agnostic.
-- The D-Tool-9 extraction seam is frozen. Five narrow extensions exist so far
+- The D-Tool-9 extraction seam is frozen. Six narrow extensions exist so far
   (D-Tool-18 quote-cite; D-Tool-19 bare-<p>; D-Tool-20 bare-<p><img>; D-Tool-21
-  legacy Jetpack embed; D-Tool-22 legacy figure.wp-caption image). Any additional
-  extension is its own milestone with its own LOCKED_DECISIONS entry.
+  legacy Jetpack embed; D-Tool-22 legacy figure.wp-caption image; D-Tool-23
+  emph-wrapped bare-<p><img>). Any additional extension is its own milestone
+  with its own LOCKED_DECISIONS entry.
