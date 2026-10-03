@@ -282,6 +282,41 @@ function extractHtmlBlocks(raw /* ctx */) {
       kind: "imageBarePEm",
     },
     {
+      // D-Tool-24: legacy WP.com bare <p> that BEGINS with a single <img>
+      // and CONTINUES with prose inside the SAME <p> (the image is not the
+      // sole child, so D-Tool-20 imageBareP does not match; D-Tool-19
+      // paragraphBare would otherwise swallow the whole <p>, leaving raw
+      // <img ...> markup as paragraph text - the L-009 defect shape).
+      // Matches the WHOLE <p>...</p>: blockFromFragment emits TWO blocks -
+      // the leading <img> as an image block AND the trailing prose as a
+      // paragraph. The leading run is a TEMPERED dot so the match cannot
+      // cross an intervening </p>. Placed AFTER imageBareP so a sole-child
+      // <p><img></p> stays with D-Tool-20, and BEFORE paragraphBare so it
+      // claims the mixed case first.
+      re: /<p\b(?![^>]*\bclass="[^"]*\bwp-block-)[^>]*>\s*<img\b[^>]*\/?>(?:(?!<\/p>)[\s\S])*?<\/p>/i,
+      kind: "imageBarePTrailing",
+    },
+    {
+      // D-Tool-25: legacy WP.com bare <p> containing prose followed by an
+      // inline legacy Jetpack embed NESTED INSIDE the <p>:
+      //   <p ...>...prose...
+      //     <div class="jetpack-video-wrapper"><span class="embed-youtube"
+      //       ...><iframe ...></iframe></span></div></p>
+      // D-Tool-21's embed regex matches the <div ...> (a LATER position),
+      // but D-Tool-19 paragraphBare matches the enclosing <p> at an EARLIER
+      // position and wins, swallowing the prose AND the iframe into
+      // paragraph text (iframe_para_leftover = 1). This entry matches the
+      // whole <p>; blockFromFragment emits the leading prose as a paragraph
+      // AND the raw <iframe> as an embed block (D-Tool-21 semantics).
+      // Placed AFTER D-Tool-24 and BEFORE paragraphBare so it claims the
+      // case first. CRITICAL: the leading run is a TEMPERED dot
+      // ((?:(?!<\/p>)[\s\S])*?) so the match can NEVER cross an intervening
+      // </p> - otherwise it would span from the first bare <p> in the body
+      // all the way to the jetpack <div>, swallowing every block between.
+      re: /<p\b(?![^>]*\bclass="[^"]*\bwp-block-)[^>]*>(?:(?!<\/p>)[\s\S])*?<div\b[^>]*class="[^"]*\bjetpack-video-wrapper\b[^"]*"[^>]*>[\s\S]*?<\/div>\s*<\/p>/i,
+      kind: "embedInBareP",
+    },
+    {
       // D-Tool-19: bare <p> directly inside entry-content. Matches a <p ...>
       // whose class attribute is absent OR (if present) does NOT contain
       // "wp-block-". The negative lookahead excludes wp-block-paragraph
@@ -322,7 +357,14 @@ function extractHtmlBlocks(raw /* ctx */) {
       }
     }
     const block = blockFromFragment(best.match, best.t.kind);
-    if (block !== null) blocks.push(block);
+    // D-Tool-24 (imageBarePTrailing) and D-Tool-25 (embedInBareP) yield
+    // MORE THAN ONE block (image+paragraph / paragraph+embed). Every other
+    // kind returns a single block. Normalise both shapes here.
+    if (Array.isArray(block)) {
+      for (const b of block) if (b !== null) blocks.push(b);
+    } else if (block !== null) {
+      blocks.push(block);
+    }
     pos += best.index + best.match.length;
   }
 
@@ -411,6 +453,58 @@ function blockFromFragment(frag, kind) {
     const src = attrOfFirst(frag, "img", "src");
     if (!src) return null;
     return { type: "image", src, caption: "" };
+  }
+
+  // D-Tool-24: legacy bare <p> that begins with a single <img> and then
+  // continues with prose inside the same <p>. The TOP regex matches the
+  // WHOLE <p>; emit TWO blocks: the leading <img> as an image block (the
+  // SAME EXISTING image shape as imageBareP; no caption possible, there
+  // is no <figcaption>) AND the trailing prose as a paragraph (raw inner
+  // HTML, tags/entities preserved, trimmed - the SAME semantics as
+  // paragraphBare). If there is no prose after the image, emit only the
+  // image (never an empty paragraph).
+  if (kind === "imageBarePTrailing") {
+    const src = attrOfFirst(frag, "img", "src");
+    const out = [];
+    if (src) out.push({ type: "image", src, caption: "" });
+    // Trailing prose: the raw inner HTML of the <p> with the leading
+    // <img ...> removed, trimmed. Emitted EXACTLY as paragraphBare would
+    // (tags/entities preserved, no stripTags), so inline <a>/<em> in the
+    // prose stay faithful (D-Tool-15).
+    const pInner = innerOf(frag, "p");
+    const prose =
+      pInner == null ? "" : pInner.replace(/^\s*<img\b[^>]*\/?>/, "").trim();
+    if (prose.length > 0) out.push({ type: "paragraph", content: prose });
+    return out.length ? out : null;
+  }
+
+  // D-Tool-25: legacy bare <p> containing prose followed by an inline
+  // legacy Jetpack embed nested inside the <p>. Emit TWO blocks: the
+  // leading prose as a paragraph (raw inner HTML up to the embed,
+  // tags/entities preserved, trimmed per D-Tool-15 - the SAME semantics as
+  // paragraphBare) AND the raw <iframe ...></iframe> verbatim as an embed
+  // block (D-Tool-21 semantics; &#038; preserved). The jetpack div/span
+  // chrome is presentational and is NOT emitted. If the leading prose is
+  // empty, emit only the embed (never an empty paragraph).
+  if (kind === "embedInBareP") {
+    const out = [];
+    const ifr = /<iframe\b[^>]*>[\s\S]*?<\/iframe>/i.exec(frag);
+    const pInner = innerOf(frag, "p");
+    // Leading prose = the <p> inner HTML up to (but NOT including) the
+    // inline jetpack-video-wrapper div, trimmed. Emitted EXACTLY as
+    // paragraphBare would (tags/entities preserved, no stripTags), so
+    // inline <a>/<em> in the prose stay faithful (D-Tool-15). If the prose
+    // is empty, emit only the embed (never an empty paragraph).
+    let lead = "";
+    if (pInner != null) {
+      const cut = pInner.search(
+        /<div\b[^>]*class="[^"]*\bjetpack-video-wrapper\b[^"]*"[^>]*>/i,
+      );
+      lead = (cut === -1 ? pInner : pInner.slice(0, cut)).trim();
+    }
+    if (lead.length > 0) out.push({ type: "paragraph", content: lead });
+    if (ifr) out.push({ type: "embed", content: ifr[0] });
+    return out.length ? out : null;
   }
 
   if (kind === "footnotes") {
