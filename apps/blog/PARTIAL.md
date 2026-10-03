@@ -1,3 +1,101 @@
+# PARTIAL — Chat C1b-11k-a: Extend the D-Tool-9 seam (tableBare)
+
+Status: STOP (scope-fence trip — SECOND new class; NO seam change frozen)
+Reason: Milestone C1b-11k-a's Scope Fence mandates "If ANOTHER new structural
+class appears, STOP and re-scope again (its own milestone)." The D-Tool-27
+`tableBare` change was implemented and verified non-regressing, but applying
+it left the contents post NOT seam-READY because a SECOND new structural class
+remained (`imageBarePStrong`), keeping `img_para_leftover = 1`. Per the Scope
+Fence, C1b-11k-a REVERTED its import-post.js change (tree clean) and re-scoped
+into C1b-11k-a-a (seam: D-Tool-27 tableBare + D-Tool-28 imageBarePStrong) +
+C1b-11k-a-b (the migration). Nothing was committed to LOCKED_DECISIONS.txt or
+LOSS_LEDGER.md this chat.
+
+## What was done
+
+- Pre-flight passed at open:
+  - `git status --porcelain` clean (last commit 816377f, C1b-11k)
+  - `node apps/blog/tools/test-integrity.js` -> INTEGRITY OK
+  - `node apps/blog/tools/hash-state.js` -> LOCKED_DECISIONS_SHA256=
+    6d8ccb5069925fcbbe764ac65b9a17c6492a0d5172a8a80e305ebc8b0ce40ab1
+    (matches C1b-11k's handoff); GIT_HEAD=816377f6 (C1b-11k).
+- Implemented the D-Tool-27 `tableBare` change (one TOP entry after divBareImg,
+  adjacent to the figure.wp-block-table entry; one blockFromFragment branch
+  identical to the `table` kind). Diff = +33 pure additions; the
+  figure.wp-block-table rule and all <p>-keyed regexes BYTE-IDENTICAL.
+  `node --check` passed.
+
+## Finding 1 — D-Tool-27 tableBare is correct and NON-REGRESSING
+
+- ctn 34 {image:5,paragraph:24,quote:4,footnotes:1}, quote[3] len=240: pass.
+- pilot 80 {image:15,paragraph:62,quote:2,table:1}: pass — CRITICAL, the
+  pilot's bare `<table>` (raw table=1, tableClassless=1) is inside
+  `<figure class="wp-block-table">`, so tableBare did NOT fire; census
+  byte-identical.
+- update 2 {paragraph:2}: pass.
+- All 19 committed content/en/\*.json re-extract BYTE-IDENTICAL (19/19).
+- contents post WITH tableBare applied: {paragraph:3,table:1} (4 blocks) — the
+  bare grid table is now the single `table` block (content len 29665, the
+  full colgroup/tbody/tr/td grid with links+images verbatim).
+
+## Finding 2 — THE STOP: a SECOND new class (imageBarePStrong)
+
+After tableBare, the contents post still has `img_para_leftover = 1`:
+paragraph block [2] carries leaked `<img ...>` markup (len 1023). Source
+(immediately AFTER the `</table>`):
+
+  <p style="text-align: justify"><strong><img data-attachment-id="10954"
+  data-permalink=".../part-11.../afghans/" ... data-large-file=".../afghans1.png?w=622"
+  loading="lazy" class=" size-full wp-image-10954 aligncenter"
+  src="https://twolegsbadblog.wordpress.com/wp-content/uploads/2017/01/afghans1.png"
+  alt="afghans" width="622" height="530" ... /></strong></p>
+
+A bare `<p>` (class absent) whose ENTIRE content is a single `<strong>`-wrapped
+`<img>` (no prose after the `</strong>`). The SAME defect shape as D-Tool-23
+imageBarePEm, but with `<strong>` instead of `<em>`:
+
+- D-Tool-20 imageBareP requires the `<img>` to be the SOLE child of the `<p>`;
+  the `<strong>` sits between `<p>` and `<img>`, so it does NOT match.
+- D-Tool-23 imageBarePEm keys on `<em>`; this markup uses `<strong>`, so it
+  does NOT match.
+- D-Tool-19 paragraphBare therefore captures the fragment, leaving raw
+  `<img ...>` markup as paragraph text (the L-009 defect shape) ->
+  img_para_leftover = 1.
+
+NEW structural class `imageBarePStrong`. Confined to the contents post (the
+pattern occurs in ONLY 2 cache files — the canonical post and its
+slug-redirect copy; 0 occurrences in all other cached sources), so NO shipped
+slug is affected (no retrospective re-migration).
+
+This is the STOP condition. Resolution requires a SECOND narrow seam extension
+frozen in a milestone that ALSO freezes tableBare (they belong to the SAME
+post): D-Tool-27 `tableBare` + D-Tool-28 `imageBarePStrong`. Authored as
+apps/blog/tools/milestones/C1b-11k-a-a.md (seam), then the post is migrated in
+apps/blog/tools/milestones/C1b-11k-a-b.md (resolves L-013).
+
+Re-con of the contents post after BOTH entries (expected): {table:1,
+paragraph:N} with all `*_para_leftover` = 0; the 24 raw `<img>` accounted for
+as 23 inside the single `table` block + 1 imageBarePStrong.
+
+## NOT done (deferred to C1b-11k-a-a then C1b-11k-a-b)
+
+- No content/en/\*.json written.
+- feed.json NOT regenerated (still 19 entries).
+- LOCKED_DECISIONS.txt NOT touched (D-Tool-27 + D-Tool-28 are frozen in
+  C1b-11k-a-a).
+- LOSS_LEDGER.md NOT touched (the L-013 row is authored at the fix).
+- import-post.js REVERTED to the C1b-11k committed state (no seam change is
+  frozen until the full set of new classes is covered).
+
+## Repo state at stop
+
+Clean (import-post.js reverted; no 0-byte stray file). This chat's
+deliverables are the handoff, this PARTIAL section, the re-scope milestones
+C1b-11k-a-a.md and C1b-11k-a-b.md, HANDOFF-CURRENT.txt and ROADMAP.md — and a
+local commit (no push).
+
+---
+
 # PARTIAL — Chat C1b-11k: Migrate the series post `...-muslim-world-contents`
 
 Status: STOP (scope-fence trip; NO content file written)

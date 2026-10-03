@@ -484,18 +484,57 @@ html`) into content/en/. Census MEASURED at recon (NOT pre-committed).
   by the single table block. Non-regression: pilot 80
   {image:15,paragraph:62,quote:2,table:1} / ctn 34 (quote[3] len=240) /
   update 2 / part-7..22 ALL IDENTICAL. depends on: C1b-11k.
+  STATUS: STOPPED (2026). Pre-flight passed (clean; INTEGRITY OK;
+  LOCKED_DECISIONS_SHA256=6d8ccb50…). The D-Tool-27 tableBare change was
+  implemented and verified to be non-regressing (pilot 80 / ctn 34
+  quote[3] len=240 / update 2 / all 19 committed content files re-extract
+  BYTE-IDENTICAL), and it correctly promoted the post's bare `<table>` grid to
+  a single `table` block. BUT the post was NOT seam-READY: a SECOND new
+  structural class remained — a bare `<p>` whose ENTIRE content is a single
+  `<strong>`-wrapped `<img>` (`<p style="text-align:justify"><strong><img
+.../></strong></p>`, the recovered `afghans1.png`, data-attachment-id
+  10954, sitting AFTER the `</table>`). D-Tool-23 imageBarePEm keys on `<em>`,
+  NOT `<strong>`, so paragraphBare captured the fragment and left raw `<img>`
+  markup as text → `img_para_leftover = 1` (NOT 0). Re-con of the contents
+  post with tableBare applied: {paragraph:3,table:1} (4 blocks),
+  img_para_leftover=1, raw `<img>`=24. NEW structural class
+  `imageBarePStrong`. Confined to this post (2 cache copies; no shipped slug
+  affected). Per the Scope Fence, C1b-11k-a REVERTED its import-post.js
+  change (tree clean) and re-scoped into C1b-11k-a-a (seam: D-Tool-27
+  tableBare + D-Tool-28 imageBarePStrong) + C1b-11k-a-b (the migration;
+  resolves L-013). See apps/blog/PARTIAL.md and HANDOFF-C1b-11k-a.md.
 
-- C1b-11k-b Migrate
+- C1b-11k-a-a Extend the D-Tool-9 seam (D-Tool-27 tableBare; D-Tool-28
+  imageBarePStrong): the TENTH and ELEVENTH narrow extensions. tableBare:
+  a CLASS-LESS bare top-level `<table>` (no class attribute) promoted to the
+  EXISTING `table` shape; regex
+  `/<table\b(?![^>]*\bclass=)[^>]*>[\s\S]*?<\/table>/i`, placed adjacent to
+  the figure.wp-block-table entry. imageBarePStrong: a bare `<p>` whose ENTIRE
+  content is a single `<strong>`-wrapped `<img>` promoted to the EXISTING
+  `image` shape; regex
+  `/<p\b(?![^>]*\bclass="[^"]*\bwp-block-)[^>]*>\s*<strong>\s*<img\b[^>]*\/?>\s*<\/strong>\s*<\/p>/i`,
+  placed AFTER imageBarePEm (D-Tool-23) and BEFORE paragraphBare (D-Tool-19);
+  handled identically to imageBareP. NO slug migrated; feed.json unchanged
+  (19); import-post.js changed (seam); the L-013 row authored in
+  LOSS_LEDGER.md. Seam-READY recon of the contents post: {table:1,
+  paragraph:N} with all `*_para_leftover` = 0 and the 24 raw `<img>`
+  accounted for (23 subsumed by the single table block + 1 imageBarePStrong).
+  Non-regression: pilot 80 {image:15,paragraph:62,quote:2,table:1} / ctn 34
+  (quote[3] len=240) / update 2 / part-7..22 ALL IDENTICAL. depends on:
+  C1b-11k-a.
+
+- C1b-11k-a-b Migrate
   `a-contemporary-history-of-the-muslim-world-contents`
   (date 2017-01-20T13:22:50+00:00) from the live HTML (`--from html`) into
   content/en/. Census MEASURED at recon; the single `table` block carries the
-  inner HTML of the source `<table>` verbatim; all `*_para_leftover` = 0; the
-  24 raw `<img>` subsumed by the table block (none leaked, none dropped).
-  feed.json 19 -> 20 entries (date-desc; the post's date 2017-01-20 sits
-  between part-10's 2017-01-06 and part-11's 2017-02-08, so it sorts AFTER
-  part-11 (idx 14) and BEFORE part-10 (idx 15)). Resolves L-013. Seam READY
-  (D-Tool-27 frozen in C1b-11k-a). After it, C1b-DONE proves 20/20.
-  depends on: C1b-11k-a.
+  inner HTML of the source `<table>` verbatim; the recovered `afghans1.png`
+  is a separate D-Tool-28 `image` block; all `*_para_leftover` = 0; the 24
+  raw `<img>` accounted for (none leaked, none dropped). feed.json 19 -> 20
+  entries (date-desc; the post's date 2017-01-20 sits between part-10's
+  2017-01-06 and part-11's 2017-02-08, so it sorts AFTER part-11 (idx 14) and
+  BEFORE part-10 (idx 15)). Resolves L-013. Seam READY (D-Tool-27 + D-Tool-28
+  frozen in C1b-11k-a-a). After it, C1b-DONE proves 20/20.
+  depends on: C1b-11k-a-a.
 
 ## Now
 
@@ -531,8 +570,13 @@ html`) into content/en/. Census MEASURED at recon (NOT pre-committed).
   but STOPPED on a NEW class (a class-less bare top-level `<table>` layout
   grid; a massive SILENT image loss that D-Tool-26 did not model), re-scoped
   into C1b-11k-a (seam, D-Tool-27 tableBare) + C1b-11k-b (the migration;
-  resolves L-013). After C1b-11k-b, C1b-DONE proves 20/20, then posts.json
-  deletion is unblocked.
+  resolves L-013). C1b-11k-a then STOPPED AGAIN: applying tableBare still left
+  the post NOT seam-READY because a SECOND new class appeared — a bare `<p>`
+  whose entire content is a single `<strong>`-wrapped `<img>`
+  (`imageBarePStrong`, img_para_leftover = 1). C1b-11k-a reverted its seam
+  change and re-scoped into C1b-11k-a-a (seam, D-Tool-27 tableBare + D-Tool-28
+  imageBarePStrong) + C1b-11k-a-b (the migration; resolves L-013). After
+  C1b-11k-a-b, C1b-DONE proves 20/20, then posts.json deletion is unblocked.
 - B1 Renderer remaining block types (pullquote, resourceList, callout,
   footnotes, attachment). depends on: 09
 - 10b List item as collapsible panel: title toggles the excerpt + a
@@ -567,10 +611,10 @@ html`) into content/en/. Census MEASURED at recon (NOT pre-committed).
 - LOCKED_DECISIONS lists 8 UI languages; 4 content languages. Switcher
   ships the content set only.
 - Post slugs are language-agnostic.
-- The D-Tool-9 extraction seam is frozen. Ten narrow extensions exist so far
-  (D-Tool-18 quote-cite; D-Tool-19 bare-<p>; D-Tool-20 bare-<p><img>; D-Tool-21
-  legacy Jetpack embed; D-Tool-22 legacy figure.wp-caption image; D-Tool-23
-  emph-wrapped bare-<p><img>; D-Tool-24 imageBarePTrailing; D-Tool-25
-  embedInBareP; D-Tool-26 divBareImg; D-Tool-27 tableBare — the last proposed
-  for C1b-11k-a). Any additional extension is its own milestone with its own
-  LOCKED_DECISIONS entry.
+- The D-Tool-9 extraction seam is frozen. Eleven narrow extensions exist so
+  far (D-Tool-18 quote-cite; D-Tool-19 bare-<p>; D-Tool-20 bare-<p><img>;
+  D-Tool-21 legacy Jetpack embed; D-Tool-22 legacy figure.wp-caption image;
+  D-Tool-23 emph-wrapped bare-<p><img>; D-Tool-24 imageBarePTrailing;
+  D-Tool-25 embedInBareP; D-Tool-26 divBareImg; D-Tool-27 tableBare; D-Tool-28
+  imageBarePStrong — the last two PROPOSED for C1b-11k-a-a). Any additional
+  extension is its own milestone with its own LOCKED_DECISIONS entry.
