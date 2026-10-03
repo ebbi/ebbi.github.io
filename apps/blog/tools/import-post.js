@@ -249,6 +249,25 @@ function extractHtmlBlocks(raw /* ctx */) {
       kind: "divBareImg",
     },
     {
+      // D-Tool-27: legacy WP.com layout table — a CLASS-LESS bare <table>
+      // (no class attribute at all) placed directly at top level inside
+      // entry-content. Used by the series "contents" post to lay out the
+      // series grid (12 rows of link-text | thumbnail cells). The only
+      // table rule in the frozen seam keys on <figure class="wp-block-table">;
+      // a bare top-level <table> matched NO entry, so the loop's
+      // skip-and-advance logic stepped past <table>/<td>/<tr> tag-by-tag,
+      // leaking the <td>-nested <p><img> markup into paragraph text (the
+      // L-009 defect shape) AND dropping entirely every <img> not wrapped
+      // in a <p> (silent loss — invisible to *_para_leftover). Promoted to
+      // the EXISTING `table` shape { type:"table", content:<inner HTML> }
+      // so the renderer (which does table.innerHTML = block.content) needs
+      // no change and the whole grid renders faithfully (links, images and
+      // all). Keys on a <table> whose open tag has NO class attribute (the
+      // negative lookahead asserts no "class=" appears in the open tag).
+      re: /<table\b(?![^>]*\bclass=)[^>]*>[\s\S]*?<\/table>/i,
+      kind: "tableBare",
+    },
+    {
       re: /<figure\b[^>]*class="[^"]*\bwp-block-table\b[^"]*"[^>]*>[\s\S]*?<\/figure>/i,
       kind: "table",
     },
@@ -299,6 +318,21 @@ function extractHtmlBlocks(raw /* ctx */) {
       // EXISTING image shape via blockFromFragment kind "imageBarePEm".
       re: /<p\b(?![^>]*\bclass="[^"]*\bwp-block-)[^>]*>\s*<em>\s*<img\b[^>]*\/?>\s*<\/em>\s*<\/p>/i,
       kind: "imageBarePEm",
+    },
+    {
+      // D-Tool-28: legacy WP.com <strong>-wrapped image markup —
+      // <p ...><strong><img ...></strong></p> (the sole child of a bare
+      // <p> is a <strong>-wrapped <img>). The SAME defect shape as D-Tool-23
+      // imageBarePEm, but with <strong> instead of <em>. imageBareP
+      // (D-Tool-20) does NOT match it (the <strong> sits between <p> and
+      // <img>), imageBarePEm (D-Tool-23) keys on <em>, and paragraphBare
+      // (D-Tool-19) would then capture the fragment as a paragraph and
+      // leave raw <img> markup as text (the L-009 defect shape). Placed
+      // AFTER imageBarePEm and BEFORE paragraphBare so it claims the case
+      // first. Reuses the EXISTING image shape via blockFromFragment kind
+      // "imageBarePStrong".
+      re: /<p\b(?![^>]*\bclass="[^"]*\bwp-block-)[^>]*>\s*<strong>\s*<img\b[^>]*\/?>\s*<\/strong>\s*<\/p>/i,
+      kind: "imageBarePStrong",
     },
     {
       // D-Tool-24: legacy WP.com bare <p> that BEGINS with a single <img>
@@ -486,6 +520,17 @@ function blockFromFragment(frag, kind) {
     return { type: "image", src, caption: "" };
   }
 
+  // D-Tool-28: legacy WP.com <strong>-wrapped image
+  // (<p><strong><img></strong></p>). Handled IDENTICALLY to imageBareP:
+  // same EXISTING image shape, no caption possible (there is no
+  // <figcaption>). Kept as a separate kind only so the TOP regex stays
+  // independently byte-stable.
+  if (kind === "imageBarePStrong") {
+    const src = attrOfFirst(frag, "img", "src");
+    if (!src) return null;
+    return { type: "image", src, caption: "" };
+  }
+
   // D-Tool-24: legacy bare <p> that begins with a single <img> and then
   // continues with prose inside the same <p>. The TOP regex matches the
   // WHOLE <p>; emit TWO blocks: the leading <img> as an image block (the
@@ -574,6 +619,17 @@ function blockFromFragment(frag, kind) {
     // D-Tool-15: renderer.js does table.innerHTML = block.content, so
     // content is the inner HTML of <table> (the <tr>/<td> markup WITHOUT
     // the outer <table> tag). No `rows` field.
+    const tblM = /<table\b[^>]*>([\s\S]*?)<\/table>/i.exec(frag);
+    if (tblM == null) return null;
+    return { type: "table", content: tblM[1].trim() };
+  }
+
+  // D-Tool-27: legacy WP.com CLASS-LESS bare layout <table>. Handled
+  // IDENTICALLY to the existing `table` kind (inner HTML of <table>, drop
+  // the outer tag, trim) so the renderer needs no change. Kept as a
+  // separate kind only so the two TOP regexes stay independently
+  // byte-stable.
+  if (kind === "tableBare") {
     const tblM = /<table\b[^>]*>([\s\S]*?)<\/table>/i.exec(frag);
     if (tblM == null) return null;
     return { type: "table", content: tblM[1].trim() };

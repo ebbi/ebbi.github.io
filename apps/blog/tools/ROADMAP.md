@@ -522,6 +522,26 @@ html`) into content/en/. Census MEASURED at recon (NOT pre-committed).
   Non-regression: pilot 80 {image:15,paragraph:62,quote:2,table:1} / ctn 34
   (quote[3] len=240) / update 2 / part-7..22 ALL IDENTICAL. depends on:
   C1b-11k-a.
+  STATUS: DONE (2026). D-Tool-27 (tableBare) + D-Tool-28 (imageBarePStrong)
+  frozen in LOCKED_DECISIONS.txt; the tableBare TOP entry placed AFTER
+  divBareImg and ADJACENT to the figure.wp-block-table entry, the
+  imageBarePStrong TOP entry placed AFTER imageBarePEm (D-Tool-23) and BEFORE
+  paragraphBare (D-Tool-19) (diff = +56 pure additions); blockFromFragment's
+  two new branches emit { type:"table", content } (identical to the existing
+  `table` kind) and { type:"image", src, caption:"" } (identical to
+  imageBareP); the figure.wp-block-table rule and every <p>-keyed regex
+  BYTE-IDENTICAL. Seam-READY re-recon of the contents post
+  {table:1,image:1,paragraph:2} (4 blocks), all `*_para_leftover`=0; the
+  single table block carries the inner HTML of the <table> (len 29665,
+  links+images verbatim) subsuming 23 raw <img>, the imageBarePStrong block
+  is the recovered afghans1.png (data-attachment-id 10954); the 2 paragraph
+  blocks are the post's EMPTY `<p> </p>` spacers. CRITICAL: the pilot's bare
+  <table> is inside <figure class="wp-block-table"> so tableBare does NOT
+  fire for it (pilot census unchanged). L-013 authored (resolved by
+  C1b-11k-a-b). Non-regression: pilot 80 {image:15,paragraph:62,quote:2,table:1};
+  ctn 34 {image:5,paragraph:24,quote:4,footnotes:1}, quote[3] len=240;
+  update 2 {paragraph:2}; part-7..22 — ALL 19 committed content/en/*.json
+  re-extract BYTE-IDENTICAL.
 
 - C1b-11k-a-b Migrate
   `a-contemporary-history-of-the-muslim-world-contents`
@@ -616,5 +636,5 @@ html`) into content/en/. Census MEASURED at recon (NOT pre-committed).
   D-Tool-21 legacy Jetpack embed; D-Tool-22 legacy figure.wp-caption image;
   D-Tool-23 emph-wrapped bare-<p><img>; D-Tool-24 imageBarePTrailing;
   D-Tool-25 embedInBareP; D-Tool-26 divBareImg; D-Tool-27 tableBare; D-Tool-28
-  imageBarePStrong — the last two PROPOSED for C1b-11k-a-a). Any additional
+  imageBarePStrong — the last two frozen in C1b-11k-a-a, DONE). Any additional
   extension is its own milestone with its own LOCKED_DECISIONS entry.

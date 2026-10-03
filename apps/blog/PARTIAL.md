@@ -1,3 +1,13 @@
+# PARTIAL — RESOLVED
+
+Status: NO ACTIVE PARTIAL WORK. The C1b-11k-a STOP record immediately below
+was RESOLVED by C1b-11k-a-a (seam: D-Tool-27 tableBare + D-Tool-28
+imageBarePStrong frozen; contents post seam-READY {table:1,image:1,paragraph:2}
+with all `*_para_leftover` = 0). C1b-11k-a-b (the migration) is next; no
+partial state is carried forward.
+
+---
+
 # PARTIAL — Chat C1b-11k-a: Extend the D-Tool-9 seam (tableBare)
 
 Status: STOP (scope-fence trip — SECOND new class; NO seam change frozen)

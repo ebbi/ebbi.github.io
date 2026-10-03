@@ -20,6 +20,7 @@ in a final fidelity check before C1b-DONE. Silent loss is prohibited.
 | L-010 | a-contemporary-history-...-part-22-kosovo-2 (feed excerpt) | excerpt    | generate-index.js buildExcerpt() decodes entities but does NOT strip HTML tags; part-22's first paragraph leads with an inline <a href>, so the feed excerpt renders raw anchor markup as text. Content file itself is faithful; defect is in the DERIVED list index only.                                                                                                                                            | 1 feed excerpt (part-22)                                                                                                                                                                                                                                                                     | deferred                                                                                       | generate-index/list-view milestone (not C1b-04)                     |
 | L-011 | a-contemporary-history-...-part-17..22 (live)              | image      | Legacy WP.com caption-shortcode images are emitted as <figure data-shortcode="caption" class="wp-caption aligncenter                                                                                                                                                                                                                                                                                                  | alignnone"><img ...><figcaption class="wp-caption-text">...</figcaption></figure> (no wp-block-image wrapper). The D-Tool-9 seam had NO rule for figure.wp-caption, so the loop skipped the block and its <img> was silently lost (unrecorded until C1b-09a). Affects every C1b series post. | 7 (part-18) +14 (part-19) +9 (part-20) +14 (part-21) +9 (part-22) +6 (part-17, TBD at C1b-09b) | resolved                                                            | C1b-09a (D-Tool-22); slugs re-migrated |
 | L-012 | a-contemporary-history-...-part-9-pakistan-1979 (live)     | image      | Legacy WP.com inline image emitted as a CLASS-LESS bare <div><img .../></div> (no class attribute at all). The D-Tool-9 seam (frozen through D-Tool-25) had NO rule for it, so the loop's skip-and-advance logic dropped the <div> and the <img> tag-by-tag and the image was SILENTLY lost (the same defect shape as L-009/L-011).                                                                                   | 1 of 43 blocks (`270px-miqbal4.jpg`, data-attachment-id 9237)                                                                                                                                                                                                                                | resolved                                                                                       | C1b-11h-b (part-9 re-migrated; D-Tool-26 frozen in C1b-11h-a)       |
+| L-013 | a-contemporary-history-of-the-muslim-world-contents (live) | image + table | The post body is a legacy WP.com CLASS-LESS bare `<table width="916">` layout grid (colgroup/tbody/12 tr/48 td; 23 of the 24 `<img>` live inside `<td>` cells). The D-Tool-9 seam (frozen through D-Tool-26) had NO rule for a bare top-level `<table>` (its only table rule keys on `<figure class="wp-block-table">`), so the loop's skip-and-advance logic stepped past `<table>`/`<td>` tag-by-tag, LEAKING the `<td>`-nested `<p><img>` markup into paragraph text (13 occurrences; the L-009 defect shape) AND DROPPING entirely every `<img>` NOT wrapped in a `<p>` (the second-cell thumbnails). The DROPPED images are SILENT to `*_para_leftover`; only the raw-`<img>` (24) vs rendered-image (0) reconciliation exposes them. | 24 images (0 rendered) + 13 leaked-into-paragraph fragments | resolved | C1b-11k-a-b (contents post re-migrated; D-Tool-27 tableBare + D-Tool-28 imageBarePStrong frozen in C1b-11k-a-a) |
 
 Notes:
 
@@ -190,3 +191,47 @@ autohide=2&#038;wmode=transparent" ...></iframe>`. The 13 images = 7
   {paragraph:2}; part-9..22 all byte-identical to their committed files.
   No new seam class; import-post.js untouched (seam frozen through D-Tool-26).
   (C1b-11i note)
+- L-013: discovered in C1b-11k recon (migrate the series post
+  `a-contemporary-history-of-the-muslim-world-contents`). The post body is a
+  legacy WP.com CLASS-LESS bare `<table width="916" cellspacing="0"
+  cellpadding="0">` layout grid (colgroup/tbody/12 tr/48 td; alternating
+  link-text | thumbnail cells) holding 23 of the post's 24 raw `<img>`. The
+  D-Tool-9 seam (frozen through D-Tool-26) had NO rule for a bare top-level
+  `<table>`: its only table rule keys on `<figure class="wp-block-table">`.
+  The loop's skip-and-advance logic therefore stepped past
+  `<table>`/`<colgroup>`/`<tbody>`/`<tr>`/`<td>` tag-by-tag, LEAKING the
+  `<td>`-nested `<p align="center"><strong><img></strong></p>` markup into
+  paragraph text (13 occurrences of the L-009 defect shape) AND DROPPING
+  entirely every `<img>` NOT wrapped in a `<p>` (the second-cell thumbnails).
+  Recon with the seam through D-Tool-26: {paragraph:16} (16 blocks),
+  img_para_leftover = 13, rendered image blocks = 0 vs 24 raw `<img>` (a
+  MASSIVE silent loss — the DROPPED images are invisible to `*_para_leftover`;
+  only the raw-`<img>` vs rendered-image reconciliation exposes them). A SECOND
+  new class surfaced when tableBare was applied alone in C1b-11k-a: a bare
+  `<p>` whose ENTIRE content is a single `<strong>`-wrapped `<img>`
+  (`<p style="text-align:justify"><strong><img .../></strong></p>`, the
+  recovered `afghans1.png`, data-attachment-id 10954, sitting AFTER the
+  `</table>`); D-Tool-23 imageBarePEm keys on `<em>`, NOT `<strong>`, so
+  paragraphBare captured it (img_para_leftover = 1). RESOLVED by freezing BOTH
+  D-Tool-27 (tableBare: a class-less bare top-level `<table>` -> the EXISTING
+  `table` shape { type:"table", content:<inner HTML> }) and D-Tool-28
+  (imageBarePStrong: a bare `<p>` whose entire content is a single
+  `<strong>`-wrapped `<img>` -> the EXISTING image shape { type, src,
+  caption:"" }) in C1b-11k-a-a, then re-migrating the post in C1b-11k-a-b.
+  Confined to the contents post (class-less bare `<table>` and the
+  `<strong>`-wrapped image occur in ONLY its 2 cache copies; 0 occurrences in
+  all 20 other cached sources — no shipped slug affected, no retrospective
+  re-migration). Seam-readiness (C1b-11k-a-a): re-recon of the contents post
+  -> {table:1,paragraph:2,image:1} (4 blocks), all `*_para_leftover` = 0; the
+  24 raw `<img>` accounted for (23 subsumed by the single `table` block
+  [inner HTML len 29665, links+images verbatim] + 1 imageBarePStrong
+  `afghans1.png`, data-attachment-id 10954, src verbatim); the 2 paragraph
+  blocks are the post's `<p> </p>`-style spacers (EMPTY, content "", which is
+  pre-existing paragraphBare behaviour, NOT a new class). The pilot's bare
+  `<table>` is WRAPPED in `<figure class="wp-block-table aligncenter">`, so
+  tableBare does NOT fire for the pilot (its {table:1} census is UNCHANGED).
+  Non-regression: pilot 80 {image:15,paragraph:62,quote:2,table:1};
+  controlling-the-narrative 34 {image:5,paragraph:24,quote:4,footnotes:1},
+  quote[3] len=240; update 2 {paragraph:2}; part-7..22 — ALL 19 committed
+  content/en/*.json re-extract BYTE-IDENTICAL. (D-Tool-27 + D-Tool-28;
+  C1b-11k-a-a note)
