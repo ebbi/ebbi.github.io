@@ -104,6 +104,34 @@ files are authored one at a time, at the close of the previous one
   10 -> 11 entries. Confirm slug/title/date from posts.json AND the live post
   at close (part-13's slug has a `protected-` prefix — verify fetchability
   when its milestone arrives).
+  STATUS: STOPPED (2026). Recon revealed a NEW structural class — a bare <p>
+  whose sole content is an <em>-wrapped <img> (source of the markdown
+  `_![alt](src)_` image). The frozen seam does NOT represent it (D-Tool-20
+  imageBareP requires the <img> to be the sole child; the <em> defeats it, so
+  D-Tool-19 paragraphBare captures raw <img> markup => img_para_leftover=1).
+  Re-scoped per the Scope Fence into C1b-11a (seam extension) + C1b-11b
+  (the migration). ALSO: the canonical slug is NOT ...part-15-the-afghan-arabs
+  (that URL 301-redirects); it is the LONG
+  a-contemporary-history-of-the-muslim-world-part-15-the-afghan-arabs-foreign-fighters-in-afghanistan.
+  See apps/blog/PARTIAL.md and HANDOFF-C1b-11.md. depends on: C1b-10.
+
+- C1b-11a Extend the D-Tool-9 seam (D-Tool-23): a bare `<p>` whose entire
+  content is a single `<em>`-wrapped `<img>` (legacy `_![alt](src)_` rendering)
+  is promoted to the existing `image` shape. New TOP entry `imageBarePEm`,
+  placed after `imageBareP` (D-Tool-20) and before `paragraphBare` (D-Tool-19).
+  The sixth narrow extension of the seam freeze. NO slug migrated; feed.json
+  unchanged; LOSS_LEDGER untouched. Non-regression: pilot 80; ctn 34
+  {image:5,paragraph:24,quote:4,footnotes:1} quote[3] len=240; update 2;
+  part-16..22 unchanged. Re-recon part-15 -> {image:13,paragraph:67,embed:1}
+  (81), img_para_leftover=0. depends on: C1b-11.
+
+- C1b-11b Migrate
+  `a-contemporary-history-of-the-muslim-world-part-15-the-afghan-arabs-foreign-fighters-in-afghanistan`
+  (the LONG canonical slug; date 2018-06-11) from the live HTML (`--from html`)
+  into content/en/. Expected census {image:13,paragraph:67,embed:1} (81 blocks);
+  1 embed raw `<iframe>` verbatim with `&#038;` preserved (D-Tool-21); all
+  `*_para_leftover`=0. Resolves L-005 (recon census: 1 embed). feed.json
+  10 -> 11 entries (date-desc). depends on: C1b-11a.
 
 ## Now
 
@@ -118,10 +146,12 @@ files are authored one at a time, at the close of the previous one
 
 - B1 Renderer remaining block types (pullquote, resourceList, callout,
   footnotes, attachment). depends on: 09
-- C1b-08..19 (series) remaining EN posts. The seam (through D-Tool-22) is
-  COMPLETE; the only post known to carry core/embed is part-15 (L-005), whose
-  representation is already frozen, so it is a plain migration. C1b-DONE
-  proves 20/20, then posts.json deletion is unblocked.
+- C1b-08..19 (series) remaining EN posts. The seam (through D-Tool-22, plus
+  D-Tool-23 pending in C1b-11a) is COMPLETE for the classes seen so far; the
+  only post known to carry core/embed is part-15 (L-005), whose representation
+  is already frozen. C1b-11 STOPPED on a new class (emph-wrapped bare-<p><img>)
+  and re-scoped into C1b-11a (seam, D-Tool-23) + C1b-11b (migration).
+  C1b-DONE proves 20/20, then posts.json deletion is unblocked.
 - 10b List item as collapsible panel: title toggles the excerpt + a
   "read full post" link (mobile-first; keyboard-accessible). Revisits
   08's list presentation. depends on: C1b
