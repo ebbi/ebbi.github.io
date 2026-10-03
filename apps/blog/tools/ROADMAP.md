@@ -410,6 +410,38 @@ html`) into content/en/. Census MEASURED at recon (NOT pre-committed —
   quote[3] len=240; update 2 {paragraph:2}; part-9..22 byte-identical to their
   pre-C1b-11i committed files. depends on: C1b-11h-b.
 
+- C1b-11j Migrate
+  `a-contemporary-history-of-the-muslim-world-part-7-the-lebanese-civil-war-3`
+  (posts.json date 2016-06-20T21:24:41+00:00) from the live HTML (`--from
+html`) into content/en/. Census MEASURED at recon (NOT pre-committed).
+  Confirm slug/title/date against the live post AND posts.json. feed.json
+  18 -> 19 entries (date-desc; part-7's date 2016-06-20 is OLDER than
+  part-8's 2016-08-02, so part-7 sorts AFTER part-8, LAST). No new seam class
+  expected (seam frozen through D-Tool-26). depends on: C1b-11i.
+  STATUS: DONE (2026). Migrated part-7 from the live HTML (`--from html`)
+  into content/en/a-contemporary-history-of-the-muslim-world-part-7-the-lebanese-civil-war-3.json
+  (canonical slug; HTTP 200, no redirect, no `protected-` prefix, entry-content
+  present; slug/title/date match posts.json — NO discrepancy). Census
+  {image:11,paragraph:32,embed:3} (46 blocks). CRITICAL reconciliation: raw
+  `<img>` count (11) == rendered image count (11) — no silent drop; raw
+  `<iframe>` count (3) == rendered embed count (3). The 11 images = 9
+  `div.wp-block-image` (D-Tool-9 imageWrap) + 2 `figure.wp-block-image`
+  (imageFig); 9 carry captions (the 2 without — `amal.jpg` idx 0 and
+  `vlcsnap-…02h44m15s198.png` idx 24 — are wp-block-image with no
+  figcaption). No bare `<p><img>` (D-Tool-20), no `figure.wp-caption`
+  (D-Tool-22), no emph-wrapped image (D-Tool-23), no imageBarePTrailing
+  (D-Tool-24), no embedInBareP (D-Tool-25), no divBareImg (D-Tool-26). The 3
+  embeds carry the raw `<iframe ...></iframe>` verbatim with `&#038;`
+  preserved (D-Tool-21); posts.json advertised 0 (front-truncated; live has 3).
+  All `*_para_leftover`=0. feed.json 18 -> 19 entries (date-desc; part-7 at
+  idx 18, LAST — its date 2016-06-20 is OLDER than part-8's 2016-08-02).
+  No loss discovered (LOSS_LEDGER untouched; L-006 stays resolved, L-012
+  stays resolved, L-010 stays deferred). Non-regression: pilot 80
+  {image:15,paragraph:62,quote:2,table:1}; controlling-the-narrative 34
+  {image:5,paragraph:24,quote:4,footnotes:1}, quote[3] len=240; update 2
+  {paragraph:2}; part-8..22 byte-identical to their pre-C1b-11j committed
+  files. No new seam class; import-post.js untouched. depends on: C1b-11i.
+
 ## Now
 
 - 07 App Shell & Toolbars: fixed top/bottom toolbars, drawer,
@@ -434,11 +466,15 @@ html`) into content/en/. Census MEASURED at recon (NOT pre-committed —
   (seam, D-Tool-26, DONE) + C1b-11h-b (migration — part-9, DONE; resolved
   L-012). C1b-11i migrated part-8 (DONE; resolved L-006; slug
   `a-contemporary-history-of-the-muslim-world-part-8-afghanistan-1`, census
-  {paragraph:40,image:14,embed:3} (57); no new seam class). The next milestone
-  is C1b-11j (migrate the next EN post in the series — part-7
+  {paragraph:40,image:14,embed:3} (57); no new seam class). C1b-11j migrated
+  part-7 (DONE; slug
   `a-contemporary-history-of-the-muslim-world-part-7-the-lebanese-civil-war-3`,
-  then the series `...-muslim-world-contents`). C1b-DONE proves 20/20, then
-  posts.json deletion is unblocked.
+  census {image:11,paragraph:32,embed:3} (46); raw <img> 11 == rendered 11;
+  raw <iframe> 3 == rendered 3; no new seam class; feed.json 18 -> 19 entries).
+  The next milestone is C1b-11k (migrate the LAST unmigrated EN post in the
+  series — the series post `a-contemporary-history-of-the-muslim-world-contents`,
+  a SEPARATE slug, posts.json date 2017-01-20T13:22:50+00:00). After that,
+  C1b-DONE proves 20/20, then posts.json deletion is unblocked.
 - B1 Renderer remaining block types (pullquote, resourceList, callout,
   footnotes, attachment). depends on: 09
 - 10b List item as collapsible panel: title toggles the excerpt + a
