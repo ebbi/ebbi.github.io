@@ -168,9 +168,36 @@ files are authored one at a time, at the close of the previous one
   `*_para_leftover`=0. feed.json 11 -> 12 entries (date-desc; part-14 at
   idx 10, after part-15). No loss discovered (LOSS_LEDGER untouched; L-005
   stays resolved, L-006 stays deferred/seam READY). Non-regression: pilot 80;
-  controlling-the-narrative 34 {image:5,paragraph:24,quote:4,footnotes:1},
+  controlling-the-
+  narrative 34 {image:5,paragraph:24,quote:4,footnotes:1},
   quote[3] len=240; update 2 {paragraph:2}; part-15..22 byte-identical to
   their pre-C1b-11c committed files. depends on: C1b-11b.
+
+- C1b-11d Migrate
+  `protected-a-contemporary-history-of-the-muslim-world-part-13-yemen-1` (date
+  2018-04-29) from the live HTML (`--from html`) into content/en/. Recon
+  census {image:13,paragraph:37,embed:2} (52 blocks); 2 embeds carry the raw
+  `<iframe>` verbatim with `&#038;` preserved (D-Tool-21); 13 images = 12
+  bare `<p><img>` (D-Tool-20) + 1 `figure.wp-caption` (D-Tool-22; 1 non-empty
+  caption); all `*_para_leftover`=0; no new seam class. NOTE: the slug
+  carries a `protected-` prefix (protected WP.com post) — VERIFIED FETCHABLE
+  (anonymous HTTP 200, no redirect, entry-content present; no password form).
+  feed.json 12 -> 13 entries (date-desc; part-13 at idx 11, after part-14).
+  No LOSS_LEDGER row (no loss). depends on: C1b-11c.
+  STATUS: DONE (2026). Migrated part-13 from the live HTML into
+  content/en/protected-a-contemporary-history-of-the-muslim-world-part-13-
+  yemen-1.json (canonical slug; HTTP 200, no redirect). Census
+  {image:13,paragraph:37,embed:2} (52 blocks). The 2 embeds carry the raw
+  `<iframe ...></iframe>` verbatim with `&#038;` preserved (D-Tool-21).
+  13 images = 12 bare `<p><img>` (D-Tool-20) + 1 `figure.wp-caption`
+  (D-Tool-22). No emph-wrapped image (D-Tool-23 not exercised). All
+  `*_para_leftover`=0. feed.json 12 -> 13 entries (date-desc; part-13 at
+  idx 11, after part-14). No loss discovered (LOSS_LEDGER untouched; L-005
+  stays resolved, L-006 stays deferred/seam READY). Non-regression: pilot 80;
+  controlling-the-
+  narrative 34 {image:5,paragraph:24,quote:4,footnotes:1},
+  quote[3] len=240; update 2 {paragraph:2}; part-14..22 byte-identical to
+  their pre-C1b-11d committed files. depends on: C1b-11c.
 
 ## Now
 
@@ -183,15 +210,15 @@ files are authored one at a time, at the close of the previous one
 
 ## Next (order per depends-on; each authored at the previous chat's close)
 
-- B1 Renderer remaining block types (pullquote, resourceList, callout,
-  footnotes, attachment). depends on: 09
 - C1b-08..19 (series) remaining EN posts. The seam (through D-Tool-23) is
   COMPLETE for the classes seen so far. C1b-11 STOPPED on a new class
   (emph-wrapped bare-<p><img>) and re-scoped into C1b-11a (seam, D-Tool-23,
-  DONE) + C1b-11b (migration, DONE). C1b-11c migrated part-14 (DONE); the
-  next EN post is part-13 (slug carries a `protected-` prefix — verify
-  fetchability at C1b-11d open). C1b-DONE proves 20/20, then posts.json
-  deletion is unblocked.
+  DONE) + C1b-11b (migration, DONE). C1b-11c migrated part-14 (DONE);
+  C1b-11d migrated part-13 (DONE; `protected-` post verified fetchable);
+  the next EN post is part-12 (Saudi Arabia and the Arab cold war).
+  C1b-DONE proves 20/20, then posts.json deletion is unblocked.
+- B1 Renderer remaining block types (pullquote, resourceList, callout,
+  footnotes, attachment). depends on: 09
 - 10b List item as collapsible panel: title toggles the excerpt + a
   "read full post" link (mobile-first; keyboard-accessible). Revisits
   08's list presentation. depends on: C1b
