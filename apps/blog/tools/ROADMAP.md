@@ -139,6 +139,18 @@ files are authored one at a time, at the close of the previous one
   `*_para_leftover`=0. Resolves L-005 (recon census: 1 embed). feed.json
   10 -> 11 entries (date-desc). Seam READY (D-Tool-23 frozen in C1b-11a).
   depends on: C1b-11a.
+  STATUS: DONE (2026). Migrated part-15 from the live HTML into
+  content/en/a-contemporary-history-of-the-muslim-world-part-15-the-afghan-arabs-foreign-fighters-in-afghanistan.json
+  (LONG canonical slug). Census {image:13,paragraph:67,embed:1} (81 blocks);
+  the 1 embed (idx 76) carries the raw `<iframe ...></iframe>` verbatim with
+  `&#038;` preserved (D-Tool-21). 13 images = 7 `figure.wp-caption` (D-Tool-22;
+  7 non-empty captions) + 5 bare `<p><img>` (D-Tool-20) + 1 emph-wrapped
+  `<p><em><img></em></p>` (D-Tool-23, data-attachment-id 11456). All
+  `*_para_leftover`=0. feed.json 10 -> 11 entries (date-desc; part-15 at idx 9,
+  after part-16). Resolved L-005. Non-regression: pilot 80; controlling-the-
+  narrative 34 {image:5,paragraph:24,quote:4,footnotes:1}, quote[3] len=240;
+  update 2 {paragraph:2}; part-16..22 byte-identical to their pre-C1b-11b
+  committed files. depends on: C1b-11a.
 
 ## Now
 
@@ -156,7 +168,7 @@ files are authored one at a time, at the close of the previous one
 - C1b-08..19 (series) remaining EN posts. The seam (through D-Tool-23) is
   COMPLETE for the classes seen so far. C1b-11 STOPPED on a new class
   (emph-wrapped bare-<p><img>) and re-scoped into C1b-11a (seam, D-Tool-23,
-  DONE) + C1b-11b (migration, next). C1b-DONE proves 20/20, then posts.json
+  DONE) + C1b-11b (migration, DONE). C1b-DONE proves 20/20, then posts.json
   deletion is unblocked.
 - 10b List item as collapsible panel: title toggles the excerpt + a
   "read full post" link (mobile-first; keyboard-accessible). Revisits
