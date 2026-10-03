@@ -1,3 +1,106 @@
+# PARTIAL — Chat C1b-11h: Migrate part-9 (Pakistan to 1979)
+
+Status: STOP (scope-fence trip; NO content file written)
+Reason: ONE NEW structural class appeared during recon, causing a SILENT
+image loss. Milestone C1b-11h's Scope Fence mandates "If a NEW structural
+class appears, STOP and re-scope again (its own milestone)." Nothing was
+written to content/, feed.json, LOCKED_DECISIONS.txt, or LOSS_LEDGER.md this
+chat.
+
+## What was done (all read-only)
+
+- Pre-flight passed at open:
+  - `git status --porcelain` clean
+  - `node apps/blog/tools/test-integrity.js` -> INTEGRITY OK
+  - `node apps/blog/tools/hash-state.js` -> LOCKED_DECISIONS_SHA256=
+    7958f41ecde2ac65ab66d85af56a251b50d651122cb8685fd7a491d3b1b52cdc
+    (matches C1b-11g's handoff); GIT_HEAD=7b3960e3 (C1b-11g).
+- Confirmed slug/title/date from posts.json AND the live post.
+- Recon (read-only) into a scratch path outside the repo (/tmp/c1b11h/).
+
+## Finding 1 — slug confirmed (posts.json RIGHT)
+
+The live canonical URL (HTTP 200, no redirect, entry-content present, no
+password form; title identical to posts.json) is
+https://twolegsbadblog.wordpress.com/2016/12/25/a-contemporary-history-of-the-muslim-world-part-9-pakistan-1979/
+
+- slug: a-contemporary-history-of-the-muslim-world-part-9-pakistan-1979
+- title: A contemporary history of the Muslim world, part 9: Pakistan to 1979
+- date: 2016-12-25T23:31:45+00:00
+  No redirect; no `protected-` prefix. posts.json matches the live slug.
+
+## Finding 2 — recon census (with the frozen seam, D-Tool-9..25)
+
+42 blocks: {image:13, paragraph:28, embed:1}.
+
+- embed: 1, raw <iframe class="youtube-player" ... src="...qYHUJBRRnc4?version=3&#038;rel=1&#038;..." ...></iframe> verbatim, &#038; preserved (D-Tool-21).
+- images rendered: 13 = 8 bare <p><img> (D-Tool-20) + 5 figure.wp-caption (D-Tool-22; all 5 carry a figcaption).
+- Raw markup inside entry-content: total <img> = 14; bare <p><img></p> (sole
+  child) = 8; figure.wp-caption = 5; emph-wrapped <p><em><img></em></p> = 0;
+  div.wp-block-image = 0; figure.wp-block-image = 0; total <iframe> = 1;
+  jetpack-video-wrapper div = 1; total <p> = 37; wp-block-paragraph = 0;
+  wp-block-quote = 0; wp-block-footnotes = 0; wp-block-table = 0.
+  Reconciliation: 8 (D-Tool-20) + 5 (D-Tool-22) = 13 images render; the 14th is
+  SILENTLY SWALLOWED (see Finding 3). All `*_para_leftover` = 0 (the defect is
+  a DROP, not a raw-markup leak — so the `*_para_leftover` metric does NOT
+  catch it; the count 13 vs 14 raw <img> is the tell).
+
+## Finding 3 — THE STOP: new structural class (divBareImg)
+
+Exactly ONE occurrence in entry-content (raw offset ~12524), the image
+`270px-miqbal4.jpg` (data-attachment-id="9237"):
+
+  <div><img data-attachment-id="9237" data-permalink=".../270px-miqbal4/" data-orig-file=".../270px-miqbal4.jpg" ... loading="lazy" class="aligncenter size-full wp-image-9237" src="https://twolegsbadblog.wordpress.com/wp-content/uploads/2016/10/270px-miqbal4.jpg?w=660" alt="270px-Miqbal4.jpg" ... /></div>
+
+A CLASS-LESS bare <div> whose SOLE child is an <img> (no class attribute at
+all; there is exactly one such div-wrapped sole-img in the whole body, and
+zero div-with-class wrapping a sole img). The frozen seam (D-Tool-9 ..
+D-Tool-25) does NOT represent it:
+
+- imageWrap (D-Tool-9) requires class="...wp-block-image..."; this <div> has
+  NO class, so imageWrap does not match.
+- imageFig (D-Tool-9) / wpCaptionFig (D-Tool-22) are <figure> rules.
+- imageBareP / imageBarePEm / imageBarePTrailing (D-Tool-20/23/24) are <p>
+  rules; this wrapper is a <div>, not a <p>.
+- paragraphBare (D-Tool-19) is a <p> rule; it does not match a <div>.
+- The loop's skip-and-advance logic therefore steps past `<div>` and the
+  `<img>` tag-by-tag, DROPPING the image entirely (same defect shape as
+  L-009 / L-011: a legacy image markup class the seam did not model).
+
+Verified: the string "270px-miqbal4" appears NOWHERE in the extracted blocks
+(13 image blocks; the 14th raw <img> is absent). img_para_leftover = 0 here
+because the markup is DROPPED before any paragraph capture, so this loss is
+SILENT to the `*_para_leftover` checks — it is caught only by the raw <img>
+count reconciliation (14 raw vs 13 rendered).
+
+This is the STOP condition. Resolution requires a NEW narrow seam extension
+(a NINTH D-Tool entry, `divBareImg`) frozen in its OWN milestone, authored as
+apps/blog/tools/milestones/C1b-11h-a.md. After it, seam-READY recon of part-9
+yields {image:14, paragraph:28, embed:1} (43 blocks), all `*_para_leftover`=0.
+
+Scope note: this class appears in ONLY the part-9 cache (cache sha
+42f01bff859cc2df93408523a972da7905f145aebdb5505a5b717346b7d660f6); scanning
+all 20 other cached sources shows 0 occurrences, so NO previously shipped
+slug is affected (no retrospective re-migration). A NEW L-012 ledger row is
+authored in C1b-11h-a (where the class is frozen) / resolved in C1b-11h-b.
+
+## NOT done (deferred to C1b-11h-a then C1b-11h-b)
+
+- No content/en/\*.json written.
+- feed.json NOT regenerated (still 16 entries).
+- LOCKED_DECISIONS.txt NOT touched (the new D-Tool entry is frozen in C1b-11h-a).
+- LOSS_LEDGER.md NOT touched (the L-012 row is authored at the fix/migration).
+- import-post.js NOT touched (the seam extension is its OWN milestone).
+
+## Repo state at stop
+
+Clean (no 0-byte stray file at repo root or app root before write). This
+chat's deliverables are the handoff, this PARTIAL section, the re-scope
+milestones C1b-11h-a.md and C1b-11h-b.md, HANDOFF-CURRENT.txt and ROADMAP.md
+— and a local commit (no push).
+
+---
+
 # PARTIAL — Chat C1b-11: Migrate part-15 (the Afghan Arabs)
 
 Status: STOP (scope-fence trip; NO content file written)

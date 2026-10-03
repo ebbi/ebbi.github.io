@@ -317,6 +317,45 @@ html`) into content/en/. Census MEASURED at recon (not pre-committed);
   is OLDER than part-10's 2017-01-06, so part-9 sorts AFTER part-10).
   No LOSS_LEDGER row (no loss expected); L-006 stays deferred. depends on:
   C1b-11g.
+  STATUS: STOPPED (2026). Slug/title/date CONFIRMED against the live post
+  (HTTP 200, no redirect, no `protected-` prefix, entry-content present;
+  slug = a-contemporary-history-of-the-muslim-world-part-9-pakistan-1979,
+  matching posts.json). Recon census with the seam through D-Tool-25:
+  {image:13,paragraph:28,embed:1} (42 blocks) — but a SILENT loss: the raw
+  body has 14 <img> and only 13 render. The 14th (`270px-miqbal4.jpg`,
+  data-attachment-id 9237) is wrapped in a CLASS-LESS bare
+  `<div><img .../></div>`, which matched NO frozen TOP entry, so the loop's
+  skip-and-advance logic DROPPED it tag-by-tag (the L-009/L-011 defect
+  shape). This loss is SILENT to `*_para_leftover` (the markup is dropped,
+  not leaked into a paragraph), so only the raw-<img>-count reconciliation
+  exposes it. NEW structural class `divBareImg`. Confined to part-9 (0
+  occurrences in all 20 other cached sources — no shipped slug affected).
+  Re-scoped per the Scope Fence into C1b-11h-a (seam: D-Tool-26 divBareImg)
+  - C1b-11h-b (the migration; expected {image:14,paragraph:28,embed:1} (43),
+    resolves L-012). See apps/blog/PARTIAL.md and HANDOFF-C1b-11h.md.
+    depends on: C1b-11g.
+
+- C1b-11h-a Extend the D-Tool-9 seam (D-Tool-26 divBareImg): the NINTH narrow
+  extension. A CLASS-LESS bare `<div>` whose sole child is an `<img>` is
+  promoted to the existing `image` shape (regex
+  `/<div\b(?![^>]*\bclass=)[^>]*>\s*<img\b[^>]*\/?>\s*<\/div>/i`, placed after
+  wpCaptionFig and before table; blockFromFragment handled identically to
+  imageBareP). NO slug migrated; feed.json unchanged (16); import-post.js
+  changed (seam); the L-012 row authored in LOSS_LEDGER.md. Seam-READY recon
+  of part-9 {image:14,paragraph:28,embed:1} (43), img_para_leftover=0.
+  Non-regression: pilot 80 / ctn 34 (quote[3] len=240) / update 2 /
+  part-10..22 ALL IDENTICAL. depends on: C1b-11h.
+
+- C1b-11h-b Migrate
+  `a-contemporary-history-of-the-muslim-world-part-9-pakistan-1979`
+  (date 2016-12-25T23:31:45+00:00) from the live HTML (`--from html`) into
+  content/en/. Expected census {image:14,paragraph:28,embed:1} (43 blocks);
+  1 embed raw `<iframe>` verbatim with `&#038;` preserved (D-Tool-21); 5 image
+  captions (D-Tool-22); 1 divBareImg (D-Tool-26; `270px-miqbal4.jpg`); all
+  `*_para_leftover`=0. feed.json 16 -> 17 entries (date-desc; part-9's date
+  2016-12-25 is OLDER than part-10's 2017-01-06, so part-9 sorts AFTER
+  part-10 — likely LAST). Resolves L-012. Seam READY (D-Tool-26 frozen in
+  C1b-11h-a). depends on: C1b-11h-a.
 
 ## Now
 
@@ -336,9 +375,12 @@ html`) into content/en/. Census MEASURED at recon (not pre-committed);
   (DONE; `protected-` post verified fetchable); C1b-11e STOPPED on TWO new
   classes and re-scoped into C1b-11e-a (seam, D-Tool-24 + D-Tool-25, DONE) +
   C1b-11e-b (migration, DONE — part-12). C1b-11f migrated part-11 (DONE; slug
-  shape `-11-`, NO `part-` token). C1b-11g migrated part-10 (DONE).
-  The next milestone is C1b-11h (next EN post in the series; per ROADMAP
-  ordering, part-9). C1b-DONE proves 20/20, then posts.json deletion is
+  shape `-11-`, NO `part-` token). C1b-11g migrated part-10 (DONE). C1b-11h
+  STOPPED on a NEW class (a bare class-less `<div>`-wrapped `<img>`, a SILENT
+  image loss that D-Tool-25 did not model) and re-scoped into C1b-11h-a
+  (seam, D-Tool-26, next) + C1b-11h-b (migration — part-9, next).
+  The next milestone is C1b-11h-a (seam extension), then C1b-11h-b
+  (migrate part-9). C1b-DONE proves 20/20, then posts.json deletion is
   unblocked.
 - B1 Renderer remaining block types (pullquote, resourceList, callout,
   footnotes, attachment). depends on: 09
@@ -374,8 +416,10 @@ html`) into content/en/. Census MEASURED at recon (not pre-committed);
 - LOCKED_DECISIONS lists 8 UI languages; 4 content languages. Switcher
   ships the content set only.
 - Post slugs are language-agnostic.
-- The D-Tool-9 extraction seam is frozen. Six narrow extensions exist so far
+- The D-Tool-9 extraction seam is frozen. Nine narrow extensions exist so far
   (D-Tool-18 quote-cite; D-Tool-19 bare-<p>; D-Tool-20 bare-<p><img>; D-Tool-21
   legacy Jetpack embed; D-Tool-22 legacy figure.wp-caption image; D-Tool-23
-  emph-wrapped bare-<p><img>). Any additional extension is its own milestone
-  with its own LOCKED_DECISIONS entry.
+  emph-wrapped bare-<p><img>; D-Tool-24 imageBarePTrailing; D-Tool-25
+  embedInBareP; D-Tool-26 divBareImg — the last frozen in C1b-11h-a). Any
+  additional extension is its own milestone with its own LOCKED_DECISIONS
+  entry.
