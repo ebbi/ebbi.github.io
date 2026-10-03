@@ -57,6 +57,10 @@ files are authored one at a time, at the close of the previous one
   from the live HTML (`--from html`) into content/en/. Recon/census {image:3,paragraph:51}
   (54 blocks), no new seam class (one verbatim `&nbsp;` spacer preserved per D-Tool-16);
   feed.json 6 -> 7 entries; L-010 not recurring here. depends on: C1b-06.
+- C1b-08 Migrate `a-contemporary-history-of-the-muslim-world-part-18-algeria-3`
+  from the live HTML (`--from html`) into content/en/. Recon/census {image:7,paragraph:48}
+  (55 blocks), no new seam class (three verbatim `&nbsp;` spacers and inline `<em>`/`<strong>`
+  preserved per D-Tool-15/D-Tool-16); feed.json 7 -> 8 entries; L-010 not recurring here. depends on: C1b-07.
 
 ## Now
 
@@ -75,6 +79,10 @@ files are authored one at a time, at the close of the previous one
   core/embed (L-004..L-006, deferred); each class needs its own seam
   extension milestone before the affected slugs can migrate. C1b-DONE proves
   20/20, then posts.json deletion is unblocked.
+  - C1b-09: migrate `a-contemporary-history-of-the-muslim-world-part-17-algeria-2`
+    (posts.json date 2018-10-02) — carries L-004 (core/embed), so this is a
+    seam-extension milestone (D-Tool-21) authoring the embed representation
+    BEFORE the slug can migrate.
 - 10b List item as collapsible panel: title toggles the excerpt + a
   "read full post" link (mobile-first; keyboard-accessible). Revisits
   08's list presentation. depends on: C1b
