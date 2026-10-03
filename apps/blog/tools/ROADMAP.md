@@ -442,6 +442,61 @@ html`) into content/en/. Census MEASURED at recon (NOT pre-committed).
   {paragraph:2}; part-8..22 byte-identical to their pre-C1b-11j committed
   files. No new seam class; import-post.js untouched. depends on: C1b-11i.
 
+- C1b-11k Migrate the LAST unmigrated EN post in the
+  `a-contemporary-history-...` series: the series post
+  `a-contemporary-history-of-the-muslim-world-contents` (a SEPARATE slug,
+  posts.json date 2017-01-20T13:22:50+00:00). Confirm slug/title/date against
+  the live post AND posts.json. Census MEASURED at recon. feed.json 19 -> 20
+  entries (date-desc). No new seam class expected (seam frozen through
+  D-Tool-26). depends on: C1b-11j.
+  STATUS: STOPPED (2026). Slug/title/date CONFIRMED against the live post
+  (HTTP 200, no redirect, no `protected-` prefix, entry-content present;
+  slug = a-contemporary-history-of-the-muslim-world-contents, matching
+  posts.json — NO discrepancy). Recon census with the seam through D-Tool-26:
+  {paragraph:16} (16 blocks) — NOT seam-READY: img_para_leftover = 13 and a
+  MASSIVE silent image loss (0 image blocks rendered vs 24 raw `<img>` in
+  entry-content). The post body is a legacy WP.com CLASS-LESS bare
+  `<table width="916">` layout grid (colgroup/tbody/12 tr/48 td; 23 of the
+  24 `<img>` live inside `<td>` cells). The frozen seam has only a
+  `<figure class="wp-block-table">` rule, which does NOT match a bare
+  top-level `<table>`; the loop's skip-and-advance logic stepped past
+  `<table>`/`<td>` tag-by-tag, leaking the `<td>`-nested `<p><img>` markup
+  into paragraph text (L-009 defect shape; 13 occurrences) AND dropping every
+  `<img>` not wrapped in a `<p>` (silent loss — invisible to
+  `*_para_leftover`; only the raw-`<img>` (24) vs rendered-image (0)
+  reconciliation exposes it). NEW structural class `tableBare`. Confined to
+  this post (1 cache, plus the same post's 2nd cache; the pilot's bare
+  `<table>` is inside `<figure class="wp-block-table">` so it is NOT affected
+  — no shipped slug at risk). Re-scoped per the Scope Fence into C1b-11k-a
+  (seam: D-Tool-27 tableBare) + C1b-11k-b (the migration; resolves L-013).
+  See apps/blog/PARTIAL.md and HANDOFF-C1b-11k.md. depends on: C1b-11j.
+
+- C1b-11k-a Extend the D-Tool-9 seam (D-Tool-27 tableBare): the TENTH narrow
+  extension. A CLASS-LESS bare top-level `<table>` (no class attribute) is
+  promoted to the EXISTING `table` shape ({ type:"table", content:<inner HTML
+  of <table>> }; renderer does table.innerHTML = block.content). Regex
+  `/<table\b(?![^>]*\bclass=)[^>]*>[\s\S]*?<\/table>/i`, placed adjacent to
+  the existing figure.wp-block-table entry; blockFromFragment handled
+  identically to the existing `table` kind. NO slug migrated; feed.json
+  unchanged (19); import-post.js changed (seam); the L-013 row authored in
+  LOSS_LEDGER.md. Seam-READY recon of the contents post: {table:1,
+  paragraph:N} with all `*_para_leftover` = 0 and the 24 raw `<img>` subsumed
+  by the single table block. Non-regression: pilot 80
+  {image:15,paragraph:62,quote:2,table:1} / ctn 34 (quote[3] len=240) /
+  update 2 / part-7..22 ALL IDENTICAL. depends on: C1b-11k.
+
+- C1b-11k-b Migrate
+  `a-contemporary-history-of-the-muslim-world-contents`
+  (date 2017-01-20T13:22:50+00:00) from the live HTML (`--from html`) into
+  content/en/. Census MEASURED at recon; the single `table` block carries the
+  inner HTML of the source `<table>` verbatim; all `*_para_leftover` = 0; the
+  24 raw `<img>` subsumed by the table block (none leaked, none dropped).
+  feed.json 19 -> 20 entries (date-desc; the post's date 2017-01-20 sits
+  between part-10's 2017-01-06 and part-11's 2017-02-08, so it sorts AFTER
+  part-11 (idx 14) and BEFORE part-10 (idx 15)). Resolves L-013. Seam READY
+  (D-Tool-27 frozen in C1b-11k-a). After it, C1b-DONE proves 20/20.
+  depends on: C1b-11k-a.
+
 ## Now
 
 - 07 App Shell & Toolbars: fixed top/bottom toolbars, drawer,
@@ -471,10 +526,13 @@ html`) into content/en/. Census MEASURED at recon (NOT pre-committed).
   `a-contemporary-history-of-the-muslim-world-part-7-the-lebanese-civil-war-3`,
   census {image:11,paragraph:32,embed:3} (46); raw <img> 11 == rendered 11;
   raw <iframe> 3 == rendered 3; no new seam class; feed.json 18 -> 19 entries).
-  The next milestone is C1b-11k (migrate the LAST unmigrated EN post in the
-  series — the series post `a-contemporary-history-of-the-muslim-world-contents`,
-  a SEPARATE slug, posts.json date 2017-01-20T13:22:50+00:00). After that,
-  C1b-DONE proves 20/20, then posts.json deletion is unblocked.
+  C1b-11k attempted to migrate the LAST unmigrated EN post — the series post
+  `a-contemporary-history-of-the-muslim-world-contents` (a SEPARATE slug) —
+  but STOPPED on a NEW class (a class-less bare top-level `<table>` layout
+  grid; a massive SILENT image loss that D-Tool-26 did not model), re-scoped
+  into C1b-11k-a (seam, D-Tool-27 tableBare) + C1b-11k-b (the migration;
+  resolves L-013). After C1b-11k-b, C1b-DONE proves 20/20, then posts.json
+  deletion is unblocked.
 - B1 Renderer remaining block types (pullquote, resourceList, callout,
   footnotes, attachment). depends on: 09
 - 10b List item as collapsible panel: title toggles the excerpt + a
@@ -509,10 +567,10 @@ html`) into content/en/. Census MEASURED at recon (NOT pre-committed).
 - LOCKED_DECISIONS lists 8 UI languages; 4 content languages. Switcher
   ships the content set only.
 - Post slugs are language-agnostic.
-- The D-Tool-9 extraction seam is frozen. Nine narrow extensions exist so far
+- The D-Tool-9 extraction seam is frozen. Ten narrow extensions exist so far
   (D-Tool-18 quote-cite; D-Tool-19 bare-<p>; D-Tool-20 bare-<p><img>; D-Tool-21
   legacy Jetpack embed; D-Tool-22 legacy figure.wp-caption image; D-Tool-23
   emph-wrapped bare-<p><img>; D-Tool-24 imageBarePTrailing; D-Tool-25
-  embedInBareP; D-Tool-26 divBareImg — the last frozen in C1b-11h-a). Any
-  additional extension is its own milestone with its own LOCKED_DECISIONS
-  entry.
+  embedInBareP; D-Tool-26 divBareImg; D-Tool-27 tableBare — the last proposed
+  for C1b-11k-a). Any additional extension is its own milestone with its own
+  LOCKED_DECISIONS entry.
