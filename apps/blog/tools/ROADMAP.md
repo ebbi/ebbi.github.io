@@ -367,6 +367,23 @@ html`) into content/en/. Census MEASURED at recon (not pre-committed);
   2016-12-25 is OLDER than part-10's 2017-01-06, so part-9 sorts AFTER
   part-10 — likely LAST). Resolves L-012. Seam READY (D-Tool-26 frozen in
   C1b-11h-a). depends on: C1b-11h-a.
+  STATUS: DONE (2026). Migrated part-9 from the live HTML (`--from html`)
+  into content/en/a-contemporary-history-of-the-muslim-world-part-9-pakistan-1979.json
+  (canonical slug; HTTP 200, no redirect, no `protected-` prefix). Census
+  {image:14,paragraph:28,embed:1} (43 blocks). CRITICAL reconciliation: raw
+  `<img>` count (14) == rendered image count (14) — no silent drop (the
+  L-012 defect is closed). The 14 images = 8 bare `<p><img>` (D-Tool-20) +
+  5 `figure.wp-caption` (D-Tool-22; 5 non-empty captions) + 1 divBareImg
+  (D-Tool-26; the recovered `270px-miqbal4.jpg`, data-attachment-id 9237,
+  src verbatim). The 1 embed carries the raw `<iframe ...></iframe>` verbatim
+  with `&#038;` preserved (D-Tool-21). All `*_para_leftover`=0. feed.json
+  16 -> 17 entries (date-desc; part-9 at idx 16, LAST — its date 2016-12-25
+  is OLDER than part-10's 2017-01-06, so it sorts AFTER part-10). Resolved
+  L-012. No new seam class; import-post.js untouched. Non-regression:
+  pilot 80; controlling-the-narrative 34 {image:5,paragraph:24,quote:4,
+  footnotes:1}, quote[3] len=240; update 2 {paragraph:2}; part-10..22
+  byte-identical to their pre-C1b-11h-b committed files. depends on:
+  C1b-11h-a.
 
 ## Now
 
@@ -389,9 +406,11 @@ html`) into content/en/. Census MEASURED at recon (not pre-committed);
   shape `-11-`, NO `part-` token). C1b-11g migrated part-10 (DONE). C1b-11h
   STOPPED on a NEW class (a bare class-less `<div>`-wrapped `<img>`, a SILENT
   image loss that D-Tool-25 did not model) and re-scoped into C1b-11h-a
-  (seam, D-Tool-26, DONE) + C1b-11h-b (migration — part-9, NEXT).
-  The next milestone is C1b-11h-b (migrate part-9, resolving L-012).
-  C1b-DONE proves 20/20, then posts.json deletion is unblocked.
+  (seam, D-Tool-26, DONE) + C1b-11h-b (migration — part-9, DONE; resolved
+  L-012). The next milestone is C1b-11i (migrate the next EN post in the
+  series — part-8 (L-006, resolves the deferred embed), then part-7, and the
+  series `...-muslim-world-contents`). C1b-DONE proves 20/20, then posts.json
+  deletion is unblocked.
 - B1 Renderer remaining block types (pullquote, resourceList, callout,
   footnotes, attachment). depends on: 09
 - 10b List item as collapsible panel: title toggles the excerpt + a

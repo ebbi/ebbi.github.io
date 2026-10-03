@@ -19,7 +19,7 @@ in a final fidelity check before C1b-DONE. Silent loss is prohibited.
 | L-009 | a-contemporary-history-...-part-22-kosovo-2 (live)         | image      | Legacy WP.com inline images are emitted as bare <p><img class="wp-image-..."></p> (no wp-block-image wrapper). The D-Tool-9 seam froze with only imageWrap (div.wp-block-image) and imageFig (figure.wp-block-image); it had no rule for a bare <p>-wrapped <img>. After D-Tool-19, the bare-<p> rule captured these as paragraph blocks, so 4 images would render as raw <img .../> markup text instead of pictures. | 4 of 59 blocks                                                                                                                                                                                                                                                                               | resolved                                                                                       | C1b-03 (D-Tool-20)                                                  |
 | L-010 | a-contemporary-history-...-part-22-kosovo-2 (feed excerpt) | excerpt    | generate-index.js buildExcerpt() decodes entities but does NOT strip HTML tags; part-22's first paragraph leads with an inline <a href>, so the feed excerpt renders raw anchor markup as text. Content file itself is faithful; defect is in the DERIVED list index only.                                                                                                                                            | 1 feed excerpt (part-22)                                                                                                                                                                                                                                                                     | deferred                                                                                       | generate-index/list-view milestone (not C1b-04)                     |
 | L-011 | a-contemporary-history-...-part-17..22 (live)              | image      | Legacy WP.com caption-shortcode images are emitted as <figure data-shortcode="caption" class="wp-caption aligncenter                                                                                                                                                                                                                                                                                                  | alignnone"><img ...><figcaption class="wp-caption-text">...</figcaption></figure> (no wp-block-image wrapper). The D-Tool-9 seam had NO rule for figure.wp-caption, so the loop skipped the block and its <img> was silently lost (unrecorded until C1b-09a). Affects every C1b series post. | 7 (part-18) +14 (part-19) +9 (part-20) +14 (part-21) +9 (part-22) +6 (part-17, TBD at C1b-09b) | resolved                                                            | C1b-09a (D-Tool-22); slugs re-migrated |
-| L-012 | a-contemporary-history-...-part-9-pakistan-1979 (live)     | image      | Legacy WP.com inline image emitted as a CLASS-LESS bare <div><img .../></div> (no class attribute at all). The D-Tool-9 seam (frozen through D-Tool-25) had NO rule for it, so the loop's skip-and-advance logic dropped the <div> and the <img> tag-by-tag and the image was SILENTLY lost (the same defect shape as L-009/L-011).                                                                                   | 1 of 43 blocks (`270px-miqbal4.jpg`, data-attachment-id 9237)                                                                                                                                                                                                                                | resolved / found by C1b-11h (raw-<img> reconcile); seam frozen here                            | C1b-11h-b (part-9 re-migrated; D-Tool-26 frozen in C1b-11h-a)       |
+| L-012 | a-contemporary-history-...-part-9-pakistan-1979 (live)     | image      | Legacy WP.com inline image emitted as a CLASS-LESS bare <div><img .../></div> (no class attribute at all). The D-Tool-9 seam (frozen through D-Tool-25) had NO rule for it, so the loop's skip-and-advance logic dropped the <div> and the <img> tag-by-tag and the image was SILENTLY lost (the same defect shape as L-009/L-011).                                                                                   | 1 of 43 blocks (`270px-miqbal4.jpg`, data-attachment-id 9237)                                                                                                                                                                                                                                | resolved                                                                                       | C1b-11h-b (part-9 re-migrated; D-Tool-26 frozen in C1b-11h-a)       |
 
 Notes:
 
@@ -124,8 +124,27 @@ autohide=2&#038;wmode=transparent" ...></iframe>`. The 13 images = 7
   embed:3}; part-22 {image:13,paragraph:55} —
   all byte-identical to their
   pre-C1b-11b committed files. L-006 (part-8) remains deferred (seam READY).
-- L-012: discovered in C1b-11h recon (migrate part-9); resolved when part-9
-  is re-migrated in C1b-11h-b. part-9's live body has 14 raw <img> but the
+- L-012: RESOLVED in C1b-11h-b. part-9 was migrated from the live HTML
+  (`--from html`) into
+  content/en/a-contemporary-history-of-the-muslim-world-part-9-pakistan-1979.json
+  (canonical slug; HTTP 200, no redirect, no `protected-` prefix). Written
+  census {image:14,paragraph:28,embed:1} (43 blocks). CRITICAL reconciliation:
+  the raw `<img>` count (14) EQUALS the rendered image-block count (14) — no
+  silent drop. The 14 images = 8 bare `<p><img>` (D-Tool-20) + 5
+  `figure.wp-caption` (D-Tool-22; 5 non-empty captions) + 1 divBareImg
+  (D-Tool-26; the recovered `270px-miqbal4.jpg`, data-attachment-id 9237, src
+  `https://twolegsbadblog.wordpress.com/wp-content/uploads/2016/10/270px-miqbal4.jpg?w=660`
+  verbatim). All `*_para_leftover` = 0 (img/iframe/figure/wp-caption/jetpack).
+  The 1 embed carries the raw `<iframe ...></iframe>` verbatim with `&#038;`
+  preserved (D-Tool-21). feed.json 16 -> 17 entries (date-desc; part-9 at
+  idx 16, LAST — its date 2016-12-25 is OLDER than part-10's 2017-01-06).
+  Non-regression: pilot 80 {image:15,paragraph:62,quote:2,table:1};
+  controlling-the-narrative 34 {image:5,paragraph:24,quote:4,footnotes:1},
+  quote[3] len=240; update 2 {paragraph:2}; part-10..22 — all byte-identical
+  to their committed files. L-006 (part-8 afghanistan-1) remains deferred
+  (seam READY); NOT resolved here. (C1b-11h-b note)
+- L-012 (history): discovered in C1b-11h recon (migrate part-9); the class
+  was confined to part-9. part-9's live body has 14 raw <img> but the
   seam (frozen through D-Tool-25) rendered only 13. The 14th
   (`270px-miqbal4.jpg`, data-attachment-id 9237) is wrapped in a CLASS-LESS
   bare `<div><img .../></div>` (no class attribute at all), which matched NO
