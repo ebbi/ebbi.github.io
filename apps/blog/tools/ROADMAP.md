@@ -199,6 +199,46 @@ files are authored one at a time, at the close of the previous one
   quote[3] len=240; update 2 {paragraph:2}; part-14..22 byte-identical to
   their pre-C1b-11d committed files. depends on: C1b-11c.
 
+- C1b-11e: migrate `a-contemporary-history-of-the-muslim-world-part-12-saudi-
+arabia-and-the-arab-cold-war` (posts.json date 2018-04-16). Confirm the
+  canonical slug (live HTTP 200, no redirect; no `protected-` prefix —
+  verified). Recon measured the census (no count pre-committed). feed.json
+  13 -> 14 entries. No seam change expected.
+  STATUS: STOPPED (2026). Recon revealed TWO new structural classes the frozen
+  seam (D-Tool-9..23) does NOT represent, each making a \*\_para_leftover
+  non-zero:
+  (A) a bare <p> that BEGINS with a single <img> and CONTINUES with prose
+  inside the SAME <p> (D-Tool-20 imageBareP requires the <img> to be
+  the sole child; D-Tool-19 paragraphBare then leaves raw <img> markup
+  as text) -> img_para_leftover = 1;
+  (B) a bare <p> containing prose followed by an inline legacy Jetpack
+  embed nested INSIDE the <p> (D-Tool-21 matches the <div> but
+  paragraphBare matches the enclosing <p> at an earlier position and
+  wins) -> iframe_para_leftover = 1.
+  Recon census with the current seam: {paragraph:43,image:11,embed:1} (55),
+  NOT seam-READY. Re-scoped per the Scope Fence into C1b-11e-a (seam:
+  D-Tool-24 imageBarePTrailing + D-Tool-25 embedInBareP) + C1b-11e-b (the
+  migration; expected {image:12,paragraph:43,embed:2} (57)). See
+  apps/blog/PARTIAL.md and HANDOFF-C1b-11e.md. depends on: C1b-11d.
+
+- C1b-11e-a Extend the D-Tool-9 seam (D-Tool-24 imageBarePTrailing; D-Tool-25
+  embedInBareP): the seventh and eighth narrow extensions. Bare <p> beginning
+  with <img> then prose -> image block (trailing prose claimed by
+  paragraphBare); bare <p> containing prose then an inline legacy Jetpack
+  embed -> paragraph + embed (blockFromFragment returns two blocks). NO slug
+  migrated; feed.json unchanged; LOSS_LEDGER untouched. Seam-READY recon of
+  part-12 {image:12,paragraph:43,embed:2} (57), img_para_leftover=0 AND
+  iframe_para_leftover=0. depends on: C1b-11e.
+
+- C1b-11e-b Migrate
+  `a-contemporary-history-of-the-muslim-world-part-12-saudi-arabia-and-the-arab-cold-war`
+  (date 2018-04-16) from the live HTML (`--from html`) into content/en/.
+  Expected census {image:12,paragraph:43,embed:2} (57 blocks); 2 embeds raw
+  `<iframe>` verbatim with `&#038;` preserved (D-Tool-21); 4 image captions
+  (D-Tool-22); all `*_para_leftover`=0. feed.json 13 -> 14 entries
+  (date-desc; part-12 after part-13). No LOSS_LEDGER row (no loss). Seam READY
+  (D-Tool-24/25 frozen in C1b-11e-a). depends on: C1b-11e-a.
+
 ## Now
 
 - 07 App Shell & Toolbars: fixed top/bottom toolbars, drawer,
@@ -210,13 +250,14 @@ files are authored one at a time, at the close of the previous one
 
 ## Next (order per depends-on; each authored at the previous chat's close)
 
-- C1b-08..19 (series) remaining EN posts. The seam (through D-Tool-23) is
-  COMPLETE for the classes seen so far. C1b-11 STOPPED on a new class
-  (emph-wrapped bare-<p><img>) and re-scoped into C1b-11a (seam, D-Tool-23,
-  DONE) + C1b-11b (migration, DONE). C1b-11c migrated part-14 (DONE);
-  C1b-11d migrated part-13 (DONE; `protected-` post verified fetchable);
-  the next EN post is part-12 (Saudi Arabia and the Arab cold war).
-  C1b-DONE proves 20/20, then posts.json deletion is unblocked.
+- C1b-08..19 (series) remaining EN posts. The seam (through D-Tool-23) covers
+  the classes seen so far. C1b-11 STOPPED on a new class (emph-wrapped
+  bare-<p><img>) and re-scoped into C1b-11a (seam, D-Tool-23, DONE) + C1b-11b
+  (migration, DONE). C1b-11c migrated part-14 (DONE); C1b-11d migrated part-13
+  (DONE; `protected-` post verified fetchable); C1b-11e STOPPED on TWO new
+  classes and re-scoped into C1b-11e-a (seam, D-Tool-24 + D-Tool-25) +
+  C1b-11e-b (migration) — the next milestone is C1b-11e-a, then part-12 via
+  C1b-11e-b. C1b-DONE proves 20/20, then posts.json deletion is unblocked.
 - B1 Renderer remaining block types (pullquote, resourceList, callout,
   footnotes, attachment). depends on: 09
 - 10b List item as collapsible panel: title toggles the excerpt + a
