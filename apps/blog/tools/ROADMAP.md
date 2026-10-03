@@ -152,6 +152,26 @@ files are authored one at a time, at the close of the previous one
   update 2 {paragraph:2}; part-16..22 byte-identical to their pre-C1b-11b
   committed files. depends on: C1b-11a.
 
+- C1b-11c Migrate
+  `a-contemporary-history-of-the-muslim-world-part-14-yemen-2` (date
+  2018-05-11) from the live HTML (`--from html`) into content/en/. Recon
+  census {image:9,paragraph:23} (32 blocks); NO embeds and NO emph-wrapped
+  images (every class already represented: 1 `figure.wp-caption` D-Tool-22 +
+  8 bare `<p><img>` D-Tool-20); all `*_para_leftover`=0; no new seam class.
+  feed.json 11 -> 12 entries (date-desc; part-14 at idx 10, after part-15).
+  No LOSS_LEDGER row (no loss). depends on: C1b-11b.
+  STATUS: DONE (2026). Migrated part-14 from the live HTML into
+  content/en/a-contemporary-history-of-the-muslim-world-part-14-yemen-2.json
+  (canonical slug; HTTP 200, no redirect). Census {image:9,paragraph:23}
+  (32 blocks). 9 images = 1 `figure.wp-caption` (D-Tool-22; 1 non-empty
+  caption) + 8 bare `<p><img>` (D-Tool-20). No embeds in source. All
+  `*_para_leftover`=0. feed.json 11 -> 12 entries (date-desc; part-14 at
+  idx 10, after part-15). No loss discovered (LOSS_LEDGER untouched; L-005
+  stays resolved, L-006 stays deferred/seam READY). Non-regression: pilot 80;
+  controlling-the-narrative 34 {image:5,paragraph:24,quote:4,footnotes:1},
+  quote[3] len=240; update 2 {paragraph:2}; part-15..22 byte-identical to
+  their pre-C1b-11c committed files. depends on: C1b-11b.
+
 ## Now
 
 - 07 App Shell & Toolbars: fixed top/bottom toolbars, drawer,
@@ -168,7 +188,9 @@ files are authored one at a time, at the close of the previous one
 - C1b-08..19 (series) remaining EN posts. The seam (through D-Tool-23) is
   COMPLETE for the classes seen so far. C1b-11 STOPPED on a new class
   (emph-wrapped bare-<p><img>) and re-scoped into C1b-11a (seam, D-Tool-23,
-  DONE) + C1b-11b (migration, DONE). C1b-DONE proves 20/20, then posts.json
+  DONE) + C1b-11b (migration, DONE). C1b-11c migrated part-14 (DONE); the
+  next EN post is part-13 (slug carries a `protected-` prefix — verify
+  fetchability at C1b-11d open). C1b-DONE proves 20/20, then posts.json
   deletion is unblocked.
 - 10b List item as collapsible panel: title toggles the excerpt + a
   "read full post" link (mobile-first; keyboard-accessible). Revisits
