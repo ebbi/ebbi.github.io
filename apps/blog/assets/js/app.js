@@ -223,6 +223,16 @@
       } else {
         console.warn("⚠️ BlogShell not found; drawer disabled.");
       }
+
+      // Milestone 07b: resolve + apply the persisted/auto theme once.
+      // No router dependency; guarded — the app must not break if theme.js
+      // fails to load. The pre-paint application lives in the index.html
+      // inline head script (T-3); this wires the control + OS listener.
+      if (window.BlogTheme && typeof window.BlogTheme.init === "function") {
+        window.BlogTheme.init();
+      } else {
+        console.warn("⚠️ BlogTheme not found; theme toggle disabled.");
+      }
     } else {
       console.error("❌ BlogRouter not found; falling back to initial render.");
       handleRouteChange({ lang: "en", type: "list", slug: null });

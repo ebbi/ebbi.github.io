@@ -4,6 +4,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Zabon Blog</title>
+    <!-- Milestone 07b: theme.js is loaded here (and NOT deferred) so its
+         parse-time application of the persisted theme runs BEFORE first
+         paint, avoiding a flash of the wrong theme (T-3). No inline script;
+         the pre-paint apply lives in the external module (single source). -->
+    <script src="assets/js/theme.js"></script>
     <link rel="stylesheet" href="assets/css/style.css" />
   </head>
   <body>
@@ -26,8 +31,9 @@
       </button>
     </header>
 
-    <!-- Side-panel drawer (overlay at ALL widths; S-1). Contains the moved
-         language switcher. aria-hidden toggled by shell.js (S-8). -->
+    <!-- Side-panel drawer (overlay at ALL widths; S-1). The Settings panel
+         (07) hosts the moved language switcher and, since 07b, the theme
+         control. aria-hidden toggled by shell.js (S-8). -->
     <aside id="app-panel" class="app-panel" aria-hidden="true">
       <div class="app-panel__backdrop" data-close></div>
       <div
@@ -59,6 +65,19 @@
             <option value="th">ไทย</option>
           </select>
         </nav>
+
+        <!-- Milestone 07b: Theme control (Light / Dark / Auto) — the Settings
+             panel. A native <select> with an associated visually-hidden label;
+             wired by theme.js (window.BlogTheme.init). -->
+        <nav id="theme-nav" class="app-panel__section" aria-label="Theme">
+          <label class="visually-hidden" for="theme-select">Theme</label>
+          <span class="theme-icon" aria-hidden="true">◐</span>
+          <select id="theme-select" class="theme-select">
+            <option value="light">Light</option>
+            <option value="dark">Dark</option>
+            <option value="auto">Auto</option>
+          </select>
+        </nav>
       </div>
     </aside>
 
@@ -88,7 +107,9 @@
     <!-- Scripts load after the HTML elements; order matters:
          renderer (used by app), router (drives route events), nav (switcher,
          reads router.currentRoute), shell (drawer; no router dependency),
-         app (controller, last; calls nav.init). -->
+         app (controller, last; calls nav.init + shell.init + theme.init).
+         theme.js itself is already loaded in <head> (pre-paint apply); the
+         app.js guard wires its control + OS listener. -->
     <script src="assets/js/renderer.js"></script>
     <script src="assets/js/router.js"></script>
     <script src="assets/js/nav.js"></script>

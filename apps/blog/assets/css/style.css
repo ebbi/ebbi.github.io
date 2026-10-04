@@ -724,3 +724,39 @@ html[dir="rtl"] .post-list-item__toggle[aria-expanded="true"]::after {
 .post-list-item__read:hover {
   text-decoration: none;
 }
+
+/* =========================================================
+   Milestone 07b — Theme toggle (light / dark / auto)
+   Additive; NEW classes only (no existing block edited).
+   The token blocks already exist above: :root (day/default) and
+   html[data-theme="night"] (night). Themes re-point TOKENS ONLY (T-4);
+   this block styles only the new theme control.
+   ========================================================= */
+
+/* The theme control group mirrors #lang-nav's section layout. */
+#theme-nav {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* Decorative theme glyph; a mirror of the selection, not a control. */
+.theme-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  inline-size: 24px;
+  block-size: 24px;
+  font-size: 1rem;
+  color: var(--text-muted);
+}
+
+.theme-select {
+  font: inherit;
+  font-size: 0.9rem;
+  color: inherit;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 4px 6px;
+}

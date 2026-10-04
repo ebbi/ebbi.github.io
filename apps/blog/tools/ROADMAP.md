@@ -985,6 +985,41 @@ civil-war-2`, date 2016-06-04) from the live HTML (`--from html`) into
   the 10b fence). No content file written; no seam change; import-post.js
   untouched. Next (11) authored at this close.
 
+- 07b Theme toggle (light / dark / auto). Adds a Theme control to the
+  Settings panel (the 07 drawer, #app-panel) and applies data-theme=
+  day|night; Auto follows prefers-color-scheme and re-resolves on OS
+  change; choice persists under ONE localStorage key and is applied before
+  first paint (inline head script) so there is no flash of the wrong
+  theme. New module assets/js/theme.js (window.BlogTheme = {init,get,set});
+  guarded init in app.js. Tokens re-point only — :root (day) + the
+  pre-existing html[data-theme="night"] block. Touches index.html, app.js,
+  style.css (one additive block) ONLY — NOT the seam or feed.json.
+  depends on: 07.
+  STATUS: DONE (2026). index.html gained the inline pre-paint head script
+  (sets data-theme only, T-3), a #theme-nav section inside the 07 drawer
+  (visually-hidden label + #theme-select: Light/Dark/Auto) as a peer of
+  #lang-nav, and the theme.js script tag after shell.js. New
+  apps/blog/assets/js/theme.js exposes window.BlogTheme = {init,get,set};
+  init wires the select 'change' listener + a prefers-color-scheme
+  'change' listener (addEventListener with addListener fallback), is
+  idempotent, and never references the router or location.hash. app.js
+  gained a GUARDED window.BlogTheme.init() after the BlogShell guard,
+  mirroring BlogNav/BlogShell (T-5). style.css gained ONE additive
+  Milestone 07b block (theme-select / theme-icon / #theme-nav; NEW classes
+  only, diff 36/0 — no existing block edited). Both token blocks intact:
+  :root (day/default) + html[data-theme="night"]. node --check PASS;
+  test-integrity INTEGRITY OK; node -e structural smoke test PASS (auto +
+  OS-light -> day; OS scheme change re-resolves; set(light/dark/auto)
+  persists under one key + applies; get() reports applied; invalid pref
+  ignored; idempotent init; localStorage failure degrades gracefully);
+  grep 'data-theme' shows consumers = style.css + theme.js + index.html
+  ONLY (no shell.js/router.js/renderer.js leakage). T-1 (control in the 07
+  drawer / Settings panel, no new panel); T-2 (day|night; auto via
+  prefers-color-scheme + re-resolve); T-3 (ONE localStorage key, applied
+  before first paint); T-4 (tokens only); T-5 (guarded init). No content
+  file written; no seam change; feed.json untouched. Next (TTS) already
+  authored in e4fb028 and VERIFIED present.
+
 ## Now
 
 - 07 App Shell & Toolbars: fixed top/bottom toolbars, drawer,
@@ -993,11 +1028,7 @@ civil-war-2`, date 2016-06-04) from the live HTML (`--from html`) into
 
 ## Next (order per depends-on; each authored at the previous chat's close)
 
-- 07b Theme toggle (light/dark/auto). Adds the theme control to the Settings
-  panel (the 07 drawer, #app-panel) and applies data-theme=day|night; Auto
-  follows prefers-color-scheme; choice persists; no first-paint flash. depends
-  on: 07. [INSERTED BEFORE 11: enables content check before translations; see
-  HANDOFF-10b.md / planning note. File: tools/milestones/07b.md]
+<!-- Next chat: TTS -->
 - TTS Text-to-speech on the bottom toolbar (Play/Pause/Stop) via the Web
   Speech API, reading the current post's text; buttons enabled on the post
   view, inert on the list view. depends on: 07b. [INSERTED BEFORE 11: enables
