@@ -789,6 +789,36 @@ civil-war-1`, date 2016-05-19) from the live HTML (`--from html`) into
   content/en/. Uniform `...muslim-world-part-5-...` slug (like parts 7+).
   Census MEASURED at recon. feed.json 24 -> 25 entries (date-desc). No new
   seam class expected. depends on: C1b-15.
+  STATUS: DONE (2026). Migrated part-5 from the live HTML (`--from html`) into
+  content/en/a-contemporary-history-of-the-muslim-world-part-5-the-lebanese-civil-war-1.json
+  (canonical UNIFORM slug; HTTP 200, no redirect, no `protected-` prefix,
+  entry-content present; slug/title/date confirmed from the LIVE post — title
+  "A contemporary history of the Muslim world, part 5: The Lebanese civil war
+  #1"; date 2016-05-19T09:53:36+00:00). Recon MEASURED the census (NOT
+  pre-committed): written census {image:17,paragraph:29,embed:1} (47 blocks).
+  CRITICAL reconciliation: raw `<img>` count (17) EQUALS the rendered
+  image-block count (17), 1:1 src match IN ORDER — no silent drop; raw
+  `<iframe>` (1) == rendered embed (1); raw `<figure.wp-caption>` (7) == 7
+  captioned images. All `*_para_leftover`=0 (img/iframe/figure/wp-caption/
+  jetpack). The 17 images = 7 `figure.wp-caption` (D-Tool-22; 7 non-empty
+  captions) + 8 bare `<p><img>` (D-Tool-20) + 2 class-less bare
+  `<div><img></div>` (D-Tool-26 divBareImg; `beirut.jpg` idx 11 and `sarkis.jpg`
+  idx 14). The 1 embed carries the raw `<iframe ...></iframe>` verbatim with
+  `&#038;` preserved (D-Tool-21; youtube ID 7SWD-hcPNaw). NO emph-wrapped image
+  (D-Tool-23), no imageBarePStrong (D-Tool-28), no imageBarePTrailing
+  (D-Tool-24), no imageBarePProse (D-Tool-29), no embedInBareP (D-Tool-25), no
+  tableBare (D-Tool-27), no quote/footnotes. NO new seam class; import-post.js
+  untouched (seam frozen through D-Tool-29). feed.json 24 -> 25 entries
+  (date-desc; part-5 at idx 20, POSITIONALLY just BELOW part-7 idx 19 and just
+  ABOVE part-4 idx 21 — verified). No loss discovered (LOSS_LEDGER untouched;
+  L-014 stays OPEN — it tracks all six parts, closed at C1b-17). Non-regression:
+  pilot 80 {image:15,paragraph:62,quote:2,table:1}; controlling-the-narrative 34
+  {image:5,paragraph:24,quote:4,footnotes:1}, quote[3] len=240; update 2
+  {paragraph:2}; the contents post {table:1,image:1,paragraph:2}; part-1
+  {image:11,paragraph:50}; part-2 {image:21,paragraph:53,embed:2}; part-3
+  {image:11,paragraph:44,embed:2}; part-4 {image:12,paragraph:43}; part-7..22 —
+  ALL 24 pre-existing committed content/en/\*.json re-extract BYTE-IDENTICAL.
+  depends on: C1b-15.
 
 - C1b-17 Migrate SERIES PART 6
   (`2016/06/04/a-contemporary-history-of-the-muslim-world-part-6-the-lebanese-
@@ -874,9 +904,11 @@ civil-war-2`, date 2016-06-04) from the live HTML (`--from html`) into
   raw <iframe> 2 == rendered 2, all `*_para_leftover`=0, feed.json 21 -> 22
   entries. C1b-14 (part-3) DONE — {image:11,paragraph:44,embed:2} (57),
   feed.json 22 -> 23. C1b-15 (part-4) DONE — {image:12,paragraph:43} (55),
-  feed.json 23 -> 24. Then C1b-16..17 (series parts 5–6) — the remaining
-  missed earliest EN posts (L-014); one per chat, ascending. Each authored at
-  the previous chat's close.
+  feed.json 23 -> 24. C1b-16 (part-5) DONE — {image:17,paragraph:29,embed:1}
+  (47), raw <img> 17 == rendered 17 (1:1 src, in order), raw <iframe> 1 ==
+  rendered 1, all `*_para_leftover`=0, feed.json 24 -> 25. Then C1b-17
+  (series part 6) — the LAST remaining missed earliest EN post (L-014); one
+  per chat, ascending. Each authored at the previous chat's close.
 - C1b-18 series-order (derived index + list view); depends on C1b-17.
 - C1b-DONE (REVISED) — final check: proves 25/25 (23 series + 2 non-series);
   then posts.json deletion is unblocked.
