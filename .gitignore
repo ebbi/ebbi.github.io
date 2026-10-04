@@ -1,9 +1,18 @@
 # --- Zabon Blog App Specific ---
-zabon/apps/blog/node_modules/
-zabon/apps/blog/.env
-zabon/apps/blog/tools/reports/*.json
-zabon/apps/blog/PARTIAL.md
-zabon/apps/blog/notes/
+# NOTE: repo root IS zabon/, so patterns are relative to it: use
+# apps/blog/…, NOT zabon/apps/blog/… (the latter matched nothing).
+apps/blog/node_modules/
+apps/blog/.env
+apps/blog/tools/reports/*.json
+apps/blog/PARTIAL.md
+apps/blog/notes/
+
+# ---------- Continue extension config (may contain secrets) ----------
+# config.yaml is kept on disk but NOT committed: it can hold the
+# OpenRouter API key. Do not inline a key into a tracked file again
+# (the bcd0812 leak). See notes/continue-config-cleanup.md.
+.continue/config.yaml
+.continue/.env
 
 # ---------- OS files ----------
 .DS_Store
