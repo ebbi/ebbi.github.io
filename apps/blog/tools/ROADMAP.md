@@ -827,6 +827,35 @@ civil-war-2`, date 2016-06-04) from the live HTML (`--from html`) into
   recon. feed.json 25 -> 26 entries (date-desc). No new seam class expected.
   After it, ALL 23 series EN posts are migrated (L-014 closed).
   depends on: C1b-16.
+  STATUS: DONE (2026). Migrated part-6 from the live HTML (`--from html`) into
+  content/en/a-contemporary-history-of-the-muslim-world-part-6-the-lebanese-civil-war-2.json
+  (canonical UNIFORM slug; HTTP 200, no redirect, no `protected-` prefix,
+  entry-content present; slug/title/date confirmed from the LIVE post — title
+  "A contemporary history of the Muslim world, part 6: The Lebanese civil war
+  #2"; date 2016-06-04T21:13:36+00:00). Recon MEASURED the census (NOT
+  pre-committed): written census {image:17,paragraph:35,embed:1} (53 blocks).
+  CRITICAL reconciliation: raw `<img>` count (17) EQUALS the rendered
+  image-block count (17), 1:1 src match IN ORDER — no silent drop; raw
+  `<iframe>` (1) == rendered embed (1); raw `figure.wp-caption` (12) == 12
+  captioned images. All `*_para_leftover`=0 (img/iframe/figure/wp-caption/
+  jetpack). The 17 images = 12 `figure.wp-caption` (D-Tool-22; 12 non-empty
+  captions) + 3 class-less bare `<div><img></div>` (D-Tool-26 divBareImg) +
+  2 bare `<p><img>` (D-Tool-20). The 1 embed carries the raw `<iframe
+  ...></iframe>` verbatim with `&#038;` preserved (D-Tool-21; youtube ID
+  Ih0aCHnjDko). NO emph-wrapped image (D-Tool-23), no imageBarePStrong
+  (D-Tool-28), no imageBarePTrailing (D-Tool-24), no imageBarePProse
+  (D-Tool-29), no embedInBareP (D-Tool-25), no tableBare (D-Tool-27), no
+  quote/footnotes. NO new seam class; import-post.js untouched (seam frozen
+  through D-Tool-29). feed.json 25 -> 26 entries (date-desc; part-6 at idx 20,
+  POSITIONALLY just BELOW part-7 idx 19 and just ABOVE part-5 idx 21 —
+  verified). L-014 CLOSED: all six earliest series posts (parts 1–6) now
+  migrated. No loss discovered (LOSS_LEDGER only L-014 flipped to resolved;
+  L-001 stays open/by-design, L-010 stays deferred). Non-regression: pilot 80
+  {image:15,paragraph:62,quote:2,table:1}; controlling-the-narrative 34
+  {image:5,paragraph:24,quote:4,footnotes:1}, quote[3] len=240; update 2
+  {paragraph:2}; the contents post {table:1,image:1,paragraph:2}; part-1..5,
+  part-7..22 — ALL 25 pre-existing committed content/en/\*.json re-extract
+  BYTE-IDENTICAL. depends on: C1b-16.
 
 - C1b-18 Add SERIES-ORDER to the derived index + list view. Give each feed
   entry an integer `seriesOrder` (1..23) for the series posts, sourced from
@@ -906,10 +935,18 @@ civil-war-2`, date 2016-06-04) from the live HTML (`--from html`) into
   feed.json 22 -> 23. C1b-15 (part-4) DONE — {image:12,paragraph:43} (55),
   feed.json 23 -> 24. C1b-16 (part-5) DONE — {image:17,paragraph:29,embed:1}
   (47), raw <img> 17 == rendered 17 (1:1 src, in order), raw <iframe> 1 ==
-  rendered 1, all `*_para_leftover`=0, feed.json 24 -> 25. Then C1b-17
-  (series part 6) — the LAST remaining missed earliest EN post (L-014); one
-  per chat, ascending. Each authored at the previous chat's close.
-- C1b-18 series-order (derived index + list view); depends on C1b-17.
+  rendered 1, all `*_para_leftover`=0, feed.json 24 -> 25. C1b-17 (series
+  part 6) DONE — the LAST remaining missed earliest EN post; {image:17,
+  paragraph:35,embed:1} (53), raw <img> 17 == rendered 17 (1:1 src, IN
+  ORDER), raw <iframe> 1 == rendered 1, raw figure.wp-caption 12 == 12
+  captions, all `*_para_leftover`=0, NO new seam class, feed.json 25 -> 26;
+  L-014 CLOSED. After C1b-17, ALL 23 series EN posts (parts 1–22 + "Jews in
+  Palestine before Israel") + 2 non-series = 25 EN files are migrated. Next:
+  C1b-18, then the revised C1b-DONE.
+- C1b-18 series-order (derived index + list view); depends on C1b-17 (DONE).
+  Give each feed entry an integer `seriesOrder` (1..23) from the `contents`
+  post's grid; app.js renderList groups/sorts the series into reading order;
+  non-series posts keep date-desc.
 - C1b-DONE (REVISED) — final check: proves 25/25 (23 series + 2 non-series);
   then posts.json deletion is unblocked.
 - B1 Renderer remaining block types (pullquote, resourceList, callout,
