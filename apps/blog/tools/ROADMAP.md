@@ -989,13 +989,21 @@ civil-war-2`, date 2016-06-04) from the live HTML (`--from html`) into
 
 - 07 App Shell & Toolbars: fixed top/bottom toolbars, drawer,
   language switcher reparented; transport buttons inert. depends on: 06
-- 07b Theme toggle (light/dark/auto). depends on: 07
 - 07c Font selection (modern/traditional). depends on: 07b
-- TTS Text-to-speech (reserved; consumes the inert transport buttons).
-  depends on: 07c
 
 ## Next (order per depends-on; each authored at the previous chat's close)
 
+- 07b Theme toggle (light/dark/auto). Adds the theme control to the Settings
+  panel (the 07 drawer, #app-panel) and applies data-theme=day|night; Auto
+  follows prefers-color-scheme; choice persists; no first-paint flash. depends
+  on: 07. [INSERTED BEFORE 11: enables content check before translations; see
+  HANDOFF-10b.md / planning note. File: tools/milestones/07b.md]
+- TTS Text-to-speech on the bottom toolbar (Play/Pause/Stop) via the Web
+  Speech API, reading the current post's text; buttons enabled on the post
+  view, inert on the list view. depends on: 07b. [INSERTED BEFORE 11: enables
+  content check before translations; the 07c font-selection dependency is
+  DROPPED for this content-check path — TTS needs only the 07 toolbar. File:
+  tools/milestones/TTS.md]
 - 11 Translations & i18n UI. depends on: C1
 - 12a RTL & Typography - Persian/Arabic. depends on: 11
 - 12b RTL & Typography - Thai/Myanmar. depends on: 12a
