@@ -350,6 +350,34 @@ function extractHtmlBlocks(raw /* ctx */) {
       kind: "imageBarePTrailing",
     },
     {
+      // D-Tool-29: legacy WP.com bare <p> that ENDS with a single <img>
+      // after prose inside the SAME <p> (prose-then-trailing-image). This
+      // is the MIRROR IMAGE of D-Tool-24 (imageBarePTrailing): there the
+      // <img> LEADS and prose follows; here prose leads and the <img>
+      // trails. None of the frozen rules match it - imageBareP (D-Tool-20)
+      // needs the <img> to be the SOLE child; imageBarePEm/imageBarePStrong
+      // (D-Tool-23/28) need an <em>/<strong> sole wrapper; imageBarePTrailing
+      // (D-Tool-24) requires the <img> to LEAD; embedInBareP (D-Tool-25)
+      // expects a nested jetpack embed. paragraphBare (D-Tool-19) therefore
+      // swallowed the whole <p>, leaving the inline <img ...> markup as
+      // paragraph text (the L-009 defect shape => img_para_leftover = 1)
+      // AND silently dropping the image (raw <img> count > rendered image
+      // blocks; SILENT to *_para_leftover). Matches the WHOLE <p>...</p>:
+      // blockFromFragment emits the leading prose as a paragraph AND the
+      // trailing <img> as an image block. The leading run is a TEMPERED dot
+      // ((?:(?!<\/p>)[\s\S])*?) so the match can NEVER cross an intervening
+      // </p> - otherwise it would span from the first bare <p> in the body
+      // all the way to the trailing <img>, swallowing every block between.
+      // Placed AFTER imageBarePTrailing (D-Tool-24) and BEFORE embedInBareP
+      // (D-Tool-25) so a leading-<img> <p> stays with D-Tool-24 (ties
+      // resolve to the earlier entry) and this claims the prose-then-image
+      // case first. The imageBareP/imageBarePEm/imageBarePStrong/
+      // imageBarePTrailing/embedInBareP/paragraphBare regexes are left
+      // BYTE-IDENTICAL.
+      re: /<p\b(?![^>]*\bclass="[^"]*\bwp-block-)[^>]*>(?:(?!<\/p>)[\s\S])*?<img\b[^>]*\/?>\s*<\/p>/i,
+      kind: "imageBarePProse",
+    },
+    {
       // D-Tool-25: legacy WP.com bare <p> containing prose followed by an
       // inline legacy Jetpack embed NESTED INSIDE the <p>:
       //   <p ...>...prose...
@@ -551,6 +579,35 @@ function blockFromFragment(frag, kind) {
     const prose =
       pInner == null ? "" : pInner.replace(/^\s*<img\b[^>]*\/?>/, "").trim();
     if (prose.length > 0) out.push({ type: "paragraph", content: prose });
+    return out.length ? out : null;
+  }
+
+  // D-Tool-29: legacy bare <p> that ends with a single <img> after prose
+  // inside the same <p> (prose-then-trailing-image; the MIRROR of D-Tool-24
+  // imageBarePTrailing). The TOP regex matches the WHOLE <p>; emit TWO
+  // blocks IN SOURCE ORDER: the leading prose as a paragraph (raw inner
+  // HTML up to but NOT including the trailing <img>, trimmed - the SAME
+  // semantics as paragraphBare, tags/entities preserved, no stripTags, so
+  // inline <a>/<em> in the prose stay faithful per D-Tool-15) AND the
+  // trailing <img> as an image block (the SAME EXISTING image shape as
+  // imageBareP; no caption possible, there is no <figcaption>, so ""). If
+  // the leading prose is empty, emit only the image (never an empty
+  // paragraph).
+  if (kind === "imageBarePProse") {
+    const out = [];
+    const pInner = innerOf(frag, "p");
+    // Leading prose = the <p> inner HTML up to (but NOT including) the
+    // trailing <img ...>, trimmed. Emitted EXACTLY as paragraphBare would
+    // (tags/entities preserved, no stripTags). If the prose is empty,
+    // emit only the image (never an empty paragraph).
+    let lead = "";
+    if (pInner != null) {
+      const cut = pInner.search(/<img\b/i);
+      lead = (cut === -1 ? pInner : pInner.slice(0, cut)).trim();
+    }
+    if (lead.length > 0) out.push({ type: "paragraph", content: lead });
+    const src = attrOfFirst(frag, "img", "src");
+    if (src) out.push({ type: "image", src, caption: "" });
     return out.length ? out : null;
   }
 

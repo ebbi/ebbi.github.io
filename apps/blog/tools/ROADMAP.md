@@ -627,6 +627,66 @@ islam-and-the-west-part-2`, date 2015-12-13) from the live HTML
   (`--from html`) into content/en/. Legacy non-uniform slug; KEEP the live
   canonical slug. Census MEASURED at recon. feed.json 21 -> 22 entries
   (date-desc). No new seam class expected. depends on: C1b-12.
+  STATUS: STOPPED (2026). Slug/title/date CONFIRMED against the live post
+  (HTTP 200, no redirect, no `protected-` prefix, entry-content present; slug
+  = what-we-have-forgotten-and-they-havent-a-history-of-political-islam-and-
+  the-west-part-2; title "A contemporary history of the Muslim world, part 2";
+  date 2015-12-13T17:56:44+00:00). Recon census with the seam through
+  D-Tool-28: {image:20,paragraph:53,embed:2} (75 blocks) — but BOTH a leak
+  AND a silent loss: raw `<img>` 21 vs rendered 20 (one image SILENTLY
+  dropped) AND img_para_leftover = 1. The SAME unmodeled class produces both
+  symptoms: a bare `<p>` whose content is PROSE followed by a single trailing
+  `<img>` at the END of the same `<p>` (prose-then-trailing-image; the MIRROR
+  of D-Tool-24 imageBarePTrailing). D-Tool-19 paragraphBare captured the whole
+  `<p>`, leaking the inline `<img>` markup into paragraph text (img_para_leftover
+  = 1) AND dropping the image entirely (silent to `*_para_leftover`; only the
+  raw-`<img>` reconciliation exposes it). NEW structural class
+ `imageBarePProse`. Confined to part-2 (1 cache; no shipped slug affected —
+  the 21 committed content/en/\*.json all re-extract byte-identical). Re-scoped
+  per the Scope Fence into C1b-13a (seam: D-Tool-29 imageBarePProse) +
+  C1b-13b (the migration). See apps/blog/HANDOFF-C1b-13a.md.
+  depends on: C1b-12.
+
+- C1b-13a Extend the D-Tool-9 seam (D-Tool-29 imageBarePProse): the TWELFTH
+  narrow extension. A bare `<p>` (class absent or lacking "wp-block-") whose
+  content is PROSE followed by a single trailing `<img>` at the END of the
+  same `<p>` is handled by returning UP TO TWO blocks IN SOURCE ORDER: the
+  leading prose as a paragraph (raw inner HTML up to but not including the
+  trailing <img>, trimmed — the SAME semantics as paragraphBare) AND the
+  trailing <img> as the EXISTING image shape. Regex
+  `/<p\b(?![^>]*\bclass="[^"]*\bwp-block-)[^>]*>(?:(?!<\/p>)[\s\S])*?<img\b[^>]*\/?>\s*<\/p>/i`,
+  placed AFTER imageBarePTrailing (D-Tool-24) and BEFORE embedInBareP
+  (D-Tool-25); leading run is a TEMPERED dot so the match never crosses `</p>`.
+  NO slug migrated; feed.json unchanged (21); import-post.js changed (seam).
+  Seam-READY recon of part-2 {image:21,paragraph:53,embed:2} (76), all
+  `*_para_leftover`=0; recovered image assad21.jpg (data-attachment-id 1739).
+  Non-regression: pilot 80 {image:15,paragraph:62,quote:2,table:1} / ctn 34
+  {image:5,paragraph:24,quote:4,footnotes:1} quote[3] len=240 / update 2 /
+  contents {table:1,image:1,paragraph:2} / part-1 {image:11,paragraph:50} /
+  part-7..22 ALL IDENTICAL (21/21 byte-identical). depends on: C1b-13.
+  STATUS: DONE (2026). D-Tool-29 frozen in LOCKED_DECISIONS.txt (the TWELFTH
+  deliberate, narrow extension of the D-Tool-9 seam freeze); the
+  imageBarePProse TOP entry placed AFTER imageBarePTrailing / BEFORE
+  embedInBareP and the blockFromFragment branch placed AFTER imageBarePTrailing
+  / BEFORE embedInBareP (diff = +57 pure additions, 0 deletions);
+  imageBareP/imageBarePEm/imageBarePStrong/imageBarePTrailing/embedInBareP/
+  paragraphBare regexes BYTE-IDENTICAL. Seam-READY re-recon of part-2
+  {image:21,paragraph:53,embed:2} (76 blocks), all `*_para_leftover`=0; the
+  recovered 21st image is assad21.jpg (data-attachment-id 1739, src verbatim,
+  entities preserved); the 2 embeds carry the raw <iframe> verbatim with
+  &#038; preserved (D-Tool-21). Non-regression: pilot 80 / ctn 34
+  (quote[3] len=240) / update 2 / contents / part-1 / part-7..22 — ALL 21
+  committed content/en/\*.json re-extract BYTE-IDENTICAL.
+
+- C1b-13b Migrate SERIES PART 2
+  (`2015/12/13/what-we-have-forgotten-and-they-havent-a-history-of-political-
+islam-and-the-west-part-2`, date 2015-12-13) from the live HTML (`--from
+html`) into content/en/. Expected census {image:21,paragraph:53,embed:2} (76
+  blocks); all `*_para_leftover`=0; raw `<img>` 21 == rendered 21, raw
+  `<iframe>` 2 == rendered 2. feed.json 21 -> 22 entries (date-desc; part-2's
+  2015-12-13 is OLDER than every existing entry except part-1, so it sorts
+  SECOND-TO-LAST, just above part-1). Seam READY (D-Tool-29 frozen in
+  C1b-13a). depends on: C1b-13a.
 
 - C1b-14 Migrate SERIES PART 3
   (`2016/02/21/a-history-of-political-islam-and-the-west-part-3-iran-
@@ -717,12 +777,16 @@ civil-war-2`, date 2016-06-04) from the live HTML (`--from html`) into
   before Israel") + 2 non-series (`update`, `controlling-the-narrative`) = 25
   EN files. NEW migration track: C1b-12 (part-1, DONE — {image:11,paragraph:50}
   (61), raw <img> 11 == rendered 11, all `*_para_leftover`=0, NO new class),
-  C1b-13 (part-2), C1b-14 (part-3), C1b-15
+  C1b-13 STOPPED on a NEW class (prose-then-trailing-image bare-<p>, a leak
+  AND a silent loss that D-Tool-28 did not model) and re-scoped into C1b-13a
+  (seam, D-Tool-29 imageBarePProse, DONE) + C1b-13b (the migration — part-2),
+  C1b-14 (part-3), C1b-15
   (part-4), C1b-16 (part-5), C1b-17 (part-6) — one post per chat (context-drift risk is real: the earliest posts carry the richest
-  legacy markup; C1b-11e/11h/11k each STOPPED on a new class). Then C1b-18
+  legacy markup; C1b-11e/11h/11k/13 each STOPPED on a new class). Then C1b-18
   adds a series-order field/sort to the derived index + list view, and the
   REVISED C1b-DONE proves 25/25 before posts.json deletion is unblocked.
-- C1b-13..17 (series parts 2–6) — the five remaining missed earliest EN posts (L-014);
+- C1b-13b (migrate part-2; seam D-Tool-29 READY in C1b-13a), then
+  C1b-14..17 (series parts 3–6) — the remaining missed earliest EN posts (L-014);
   one per chat, ascending. Each authored at the previous chat's close.
 - C1b-18 series-order (derived index + list view); depends on C1b-17.
 - C1b-DONE (REVISED) — final check: proves 25/25 (23 series + 2 non-series);
@@ -761,10 +825,11 @@ civil-war-2`, date 2016-06-04) from the live HTML (`--from html`) into
 - LOCKED_DECISIONS lists 8 UI languages; 4 content languages. Switcher
   ships the content set only.
 - Post slugs are language-agnostic.
-- The D-Tool-9 extraction seam is frozen. Eleven narrow extensions exist so
+- The D-Tool-9 extraction seam is frozen. Twelve narrow extensions exist so
   far (D-Tool-18 quote-cite; D-Tool-19 bare-<p>; D-Tool-20 bare-<p><img>;
   D-Tool-21 legacy Jetpack embed; D-Tool-22 legacy figure.wp-caption image;
   D-Tool-23 emph-wrapped bare-<p><img>; D-Tool-24 imageBarePTrailing;
   D-Tool-25 embedInBareP; D-Tool-26 divBareImg; D-Tool-27 tableBare; D-Tool-28
-  imageBarePStrong — the last two frozen in C1b-11k-a-a, DONE). Any additional
-  extension is its own milestone with its own LOCKED_DECISIONS entry.
+  imageBarePStrong — frozen in C1b-11k-a-a; D-Tool-29 imageBarePProse —
+  frozen in C1b-13a, DONE). Any additional extension is its own milestone with
+  its own LOCKED_DECISIONS entry.
