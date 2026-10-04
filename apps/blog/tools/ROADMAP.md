@@ -757,6 +757,31 @@ revolution-2`, date 2016-03-26) from the live HTML (`--from html`) into
   content/en/. Legacy non-uniform slug; KEEP the live canonical slug. Census
   MEASURED at recon. feed.json 23 -> 24 entries (date-desc). No new seam class
   expected. depends on: C1b-14.
+  STATUS: DONE (2026). Migrated part-4 from the live HTML (`--from html`) into
+  content/en/a-history-of-political-islam-and-the-west-part-4-iran-revolution-2.json
+  (LEGACY NON-UNIFORM canonical slug; HTTP 200, 0 redirects, no `protected-`
+  prefix, entry-content present; slug/title/date confirmed from the LIVE post —
+  posts.json is front-truncated and part-4 is ABSENT from it, as L-014 warned).
+  Title "A contemporary history of the Muslim world, part 4. Iran: Revolution
+  #2"; date 2016-03-26T11:04:20+00:00. Recon MEASURED the census (NOT
+  pre-committed): written census {image:12,paragraph:43} (55 blocks).
+  CRITICAL reconciliation: raw `<img>` count (12) EQUALS the rendered
+  image-block count (12), 1:1 src match — no silent drop; raw `<iframe>` (0)
+  == rendered embed (0); raw `<figure.wp-caption>` (3) == 3 captioned images.
+  All `*_para_leftover`=0 (img/iframe/figure/wp-caption/jetpack). The 12 images
+  = 3 `figure.wp-caption` (D-Tool-22; 3 non-empty captions) + 9 bare `<p><img>`
+  variants (D-Tool-20). NO embeds in this post. NO new seam class; import-post.js
+  untouched (seam frozen through D-Tool-29). feed.json 23 -> 24 entries
+  (date-desc; part-4 at idx 20, POSITIONALLY just ABOVE part-3 idx 21, part-2
+  idx 22, part-1 idx 23, just BELOW part-7 idx 19 — verified). No loss
+  discovered (LOSS_LEDGER untouched; L-014 stays OPEN — it tracks all six
+  parts, closed at C1b-17). Non-regression: pilot 80
+  {image:15,paragraph:62,quote:2,table:1}; controlling-the-narrative 34
+  {image:5,paragraph:24,quote:4,footnotes:1}, quote[3] len=240; update 2
+  {paragraph:2}; the contents post {table:1,image:1,paragraph:2}; part-1
+  {image:11,paragraph:50}; part-2 {image:21,paragraph:53,embed:2}; part-3
+  {image:11,paragraph:44,embed:2}; part-7..22 — ALL 23 pre-existing committed
+  content/en/\*.json re-extract BYTE-IDENTICAL. depends on: C1b-14.
 
 - C1b-16 Migrate SERIES PART 5
   (`2016/05/19/a-contemporary-history-of-the-muslim-world-part-5-the-lebanese-
@@ -837,17 +862,21 @@ civil-war-2`, date 2016-06-04) from the live HTML (`--from html`) into
   C1b-13 STOPPED on a NEW class (prose-then-trailing-image bare-<p>, a leak
   AND a silent loss that D-Tool-28 did not model) and re-scoped into C1b-13a
   (seam, D-Tool-29 imageBarePProse, DONE) + C1b-13b (the migration — part-2),
-  C1b-14 (part-3), C1b-15
-  (part-4), C1b-16 (part-5), C1b-17 (part-6) — one post per chat (context-drift risk is real: the earliest posts carry the richest
+  C1b-14 (part-3, DONE), C1b-15
+  (part-4, DONE — {image:12,paragraph:43} (55), raw <img> 12 == rendered 12,
+  raw <iframe> 0 == rendered 0, all `*_para_leftover`=0, NO new class),
+  C1b-16 (part-5), C1b-17 (part-6) — one post per chat (context-drift risk is real: the earliest posts carry the richest
   legacy markup; C1b-11e/11h/11k/13 each STOPPED on a new class). Then C1b-18
   adds a series-order field/sort to the derived index + list view, and the
   REVISED C1b-DONE proves 25/25 before posts.json deletion is unblocked.
 - C1b-13b (migrate part-2; seam D-Tool-29 READY in C1b-13a) DONE — part-2
   migrated, {image:21,paragraph:53,embed:2} (76), raw <img> 21 == rendered 21,
   raw <iframe> 2 == rendered 2, all `*_para_leftover`=0, feed.json 21 -> 22
-  entries; then C1b-14..17 (series parts 3–6) — the remaining missed earliest
-  EN posts (L-014); one per chat, ascending. Each authored at the previous
-  chat's close.
+  entries. C1b-14 (part-3) DONE — {image:11,paragraph:44,embed:2} (57),
+  feed.json 22 -> 23. C1b-15 (part-4) DONE — {image:12,paragraph:43} (55),
+  feed.json 23 -> 24. Then C1b-16..17 (series parts 5–6) — the remaining
+  missed earliest EN posts (L-014); one per chat, ascending. Each authored at
+  the previous chat's close.
 - C1b-18 series-order (derived index + list view); depends on C1b-17.
 - C1b-DONE (REVISED) — final check: proves 25/25 (23 series + 2 non-series);
   then posts.json deletion is unblocked.
