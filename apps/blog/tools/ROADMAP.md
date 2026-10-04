@@ -884,30 +884,28 @@ civil-war-2`, date 2016-06-04) from the live HTML (`--from html`) into
   BYTE-IDENTICAL from cache. No LOSS_LEDGER row (no loss). depends on: C1b-17.
 
 - C1b-DONE (REVISED) Final check proving 25/25 EN posts migrated.
-  VERIFICATION-ONLY. Re-extract EVERY committed content/en/*.json from the
+  VERIFICATION-ONLY. Re-extract EVERY committed content/en/_.json from the
   live HTML (cache-first, `--from html`) and confirm BYTE-IDENTICAL (25/25
   posts; 26/26 files incl the `contents` index); confirm each census + all
-  `*_para_leftover` = 0 + raw <img>/<iframe> == rendered counts. Regenerate
-  feed.json; confirm 26 entries POSITIONALLY; confirm every series entry
-  carries the correct integer seriesOrder (1..23) and the list view reads
-  the series in reading order. Confirm LOSS_LEDGER final state (L-001
-  open/by-design, L-010 deferred, L-014 resolved). Then posts.json deletion
-  is UNBLOCKED (human-gated; NOT silent). depends on: C1b-18.
-  STATUS: DONE (2026). ALL 26 committed content/en/*.json (25 EN posts = 23
-  series + 2 non-series, + the series `contents` index post) re-extract
-  BYTE-IDENTICAL from the live HTML (cache-first; all 26 canonical URLs hit
-  the import-post cache); every census == expected, every `*_para_leftover`
-  = 0, and raw <img>/<iframe> == rendered block count for every file (the
-  contents post: 24 raw <img> = 23 inside the single `table` block + 1 image
-  block). feed.json regenerated IDEMPOTENTLY (sha256 unchanged
-  85f19c755fb091cb4d46f5fee99fb178c8ff462ab643adb90f47ca9072e66fc1): 26
-  entries, strictly date-desc, 23 series with seriesOrder 1..23 + 3
-  non-series null; ascending-date rank == grid order 23/23; app.js
-  renderList reads the series in reading order 1 -> 23. LOSS_LEDGER final
-  state confirmed: only L-001 (open/by-design) + L-010 (deferred) are
-  non-resolved; L-014 resolved. NO seam change; import-post.js untouched
-  (seam frozen through D-Tool-29). The human-gated
-  `git rm apps/blog/assets/data/posts.json` is now UNBLOCKED (NOT executed
+  `_\_para_leftover`= 0 + raw <img>/<iframe> == rendered counts. Regenerate
+feed.json; confirm 26 entries POSITIONALLY; confirm every series entry
+carries the correct integer seriesOrder (1..23) and the list view reads
+the series in reading order. Confirm LOSS_LEDGER final state (L-001
+open/by-design, L-010 deferred, L-014 resolved). Then posts.json deletion
+is UNBLOCKED (human-gated; NOT silent). depends on: C1b-18.
+STATUS: DONE (2026). ALL 26 committed content/en/*.json (25 EN posts = 23
+series + 2 non-series, + the series`contents`index post) re-extract
+BYTE-IDENTICAL from the live HTML (cache-first; all 26 canonical URLs hit
+the import-post cache); every census == expected, every`\*\_para_leftover`= 0, and raw <img>/<iframe> == rendered block count for every file (the
+contents post: 24 raw <img> = 23 inside the single`table`block + 1 image
+block). feed.json regenerated IDEMPOTENTLY (sha256 unchanged
+85f19c755fb091cb4d46f5fee99fb178c8ff462ab643adb90f47ca9072e66fc1): 26
+entries, strictly date-desc, 23 series with seriesOrder 1..23 + 3
+non-series null; ascending-date rank == grid order 23/23; app.js
+renderList reads the series in reading order 1 -> 23. LOSS_LEDGER final
+state confirmed: only L-001 (open/by-design) + L-010 (deferred) are
+non-resolved; L-014 resolved. NO seam change; import-post.js untouched
+(seam frozen through D-Tool-29). The human-gated`git rm apps/blog/assets/data/posts.json` is now UNBLOCKED (NOT executed
   here). C1b is COMPLETE; Next advances to B1.
 
 - B1 Renderer remaining block types (pullquote, resourceList, callout,
@@ -957,8 +955,8 @@ civil-war-2`, date 2016-06-04) from the live HTML (`--from html`) into
   STATUS: DONE (2026). app.js renderList now emits, per item, a
   <button class="post-list-item__toggle" type="button" aria-expanded="false"
   aria-controls="excerpt-<slug>"> wrapping <span
-  class="post-list-item__title-text">, followed by the .post-list-item__meta
-  line and a <div class="post-list-item__panel" id="excerpt-<slug>" hidden>
+  class="post-list-item__title-text">, followed by the .post-list-item**meta
+  line and a <div class="post-list-item**panel" id="excerpt-<slug>" hidden>
   holding the excerpt paragraph + <a class="post-list-item__read"
   href="#/<lang>/post/<slug>">Read full post</a>. The C1b-18 series ordering
   (series.sort by seriesOrder, then concat(rest)) is BYTE-IDENTICAL to 08;
@@ -966,8 +964,8 @@ civil-war-2`, date 2016-06-04) from the live HTML (`--from html`) into
   `.post-list` container (guarded by container.dataset.listToggleBound so it
   binds once across route changes) flips aria-expanded and toggles the
   panel's `hidden` attribute. style.css gained ONE additive Milestone 10b
-  block (post-list-item__toggle + ::after caret, post-list-item__title-text,
-  post-list-item__panel + [hidden], post-list-item__read / :hover) reusing
+  block (post-list-item**toggle + ::after caret, post-list-item**title-text,
+  post-list-item**panel + [hidden], post-list-item**read / :hover) reusing
   existing tokens, logical properties only, RTL-safe (caret mirrors in RTL);
   NO existing block edited (diff = +72 additions, 0 deletions). node --check
   PASS; test-integrity INTEGRITY OK; node -e structural smoke test PASS (real
@@ -1020,22 +1018,62 @@ civil-war-2`, date 2016-06-04) from the live HTML (`--from html`) into
   file written; no seam change; feed.json untouched. Next (TTS) already
   authored in e4fb028 and VERIFIED present.
 
+- TTS Text-to-speech on the bottom toolbar (Play / Pause / Stop) via the Web
+  Speech API, reading the current post's text; buttons enabled on the post
+  view, inert on the list view. depends on: 07b.
+  STATUS: DONE (2026). New module apps/blog/assets/js/tts.js exposes
+  window.BlogTTS = { init, speak, pause, resume, stop, setEnabled } and owns
+  the speechSynthesis lifecycle (no route awareness). index.html: the three
+  transport buttons are enabled (no longer `disabled` by default), given
+  stable ids (tts-play-btn/tts-pause-btn/tts-stop-btn), aria-labels kept, and
+  tts.js loads AFTER shell.js and BEFORE app.js. app.js: guarded
+  window.BlogTTS.init({ getText: gatherReadableText }) after the BlogTheme
+  guard; gatherReadableText() reads the RENDERED post DOM (title + the text of
+  every <p>/<blockquote> in .post-content, document order; skips prose nested
+  in pre/code/.embed-container/figure/table) per X-2; renderPost enables Play,
+  renderList disables all, and handleRouteChange calls window.BlogTTS.stop()
+  FIRST (no overlap, X-4). PAUSE RELIABILITY: because many engines (desktop
+  Chrome) ignore speechSynthesis.pause() for one long utterance, tts.js speaks
+  the post SENTENCE-BY-SENTENCE (one utterance per sentence, queued in onend)
+  and pause() cancels + retains (index, charOffset) so Resume continues the
+  SAME sentence; a GENERATION token ignores the cancel-induced onend echo so a
+  resume does NOT skip to the next sentence. WORD-PRECISE RESUME (best-effort):
+  onboundary charIndex is tracked and the sentence is sliced from that offset
+  on resume (Chrome desktop); where onboundary is absent it falls back to the
+  sentence head. STOP re-enables Play (setIdle) so Play works again after a
+  stop. DEFERRED to TTS2 (NOT in TTS): sentence HIGHLIGHTING and
+  CLICK-TO-READ-FROM-HERE. style.css: ONE additive Milestone TTS block
+  (.transport\_\_btn.is-active / .is-speaking + a reduced-motion guard; NEW
+  classes only, diff 37/0 — no existing block edited). X-1 Web Speech API
+  engine; X-2 rendered-DOM text source; X-3 disabled-state contract; X-4
+  stop-on-route-change; X-5 guarded init; X-6 07's S-4 superseded for the post
+  view (list stays inert). node --check / test-integrity / node structural
+  smoke suites (chunked playback, disabled-state contract, word-precise resume
+  incl. the cancel-echo regression, graceful no-speechSynthesis path; 46/46)
+  ALL PASS. No content file written; no seam change; feed.json untouched.
+  Next (11) already authored (20c4d3f).
+
 ## Now
 
 - 07 App Shell & Toolbars: fixed top/bottom toolbars, drawer,
   language switcher reparented; transport buttons inert. depends on: 06
+  NOTE: 07's S-4 ("transport buttons inert") is SUPERSEDED for the POST view
+  by TTS (X-6); the list view keeps them inert. Enabled buttons on a post are
+  NOT a regression.
 - 07c Font selection (modern/traditional). depends on: 07b
 
 ## Next (order per depends-on; each authored at the previous chat's close)
 
-<!-- Next chat: TTS -->
-- TTS Text-to-speech on the bottom toolbar (Play/Pause/Stop) via the Web
-  Speech API, reading the current post's text; buttons enabled on the post
-  view, inert on the list view. depends on: 07b. [INSERTED BEFORE 11: enables
-  content check before translations; the 07c font-selection dependency is
-  DROPPED for this content-check path — TTS needs only the 07 toolbar. File:
-  tools/milestones/TTS.md]
+<!-- Next chat: 11 -->
+
 - 11 Translations & i18n UI. depends on: C1
+- TTS2 Book-reader TTS: sentence highlighting (book-reader style) +
+  click-to-read-from-here over the current post's rendered text. Extends TTS;
+  same X-1 engine (Web Speech API) and the X-2 rendered-DOM text rule. Pause
+  reliability + word-precise resume were DELIVERED IN TTS (sentence chunking +
+  onboundary offset); TTS2 consumes that per-sentence signal to drive the
+  highlight and adds click-to-seek. depends on: TTS. File:
+  tools/milestones/TTS2.md.
 - 12a RTL & Typography - Persian/Arabic. depends on: 11
 - 12b RTL & Typography - Thai/Myanmar. depends on: 12a
 - 13a Accessibility & Keyboard Nav. depends on: 12b

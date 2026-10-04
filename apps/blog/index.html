@@ -84,13 +84,22 @@
     <!-- Container the JS renders into. Inset by the fixed bars (S-1). -->
     <main id="app"></main>
 
-    <!-- Fixed bottom toolbar: transport buttons are inert by design (S-4). -->
+    <!-- Fixed bottom toolbar: transport buttons drive TTS on the post view
+         (Milestone TTS). They start inert and app.js enables Play when a
+         post is rendered; the list view keeps all three inert (X-3/X-6). -->
     <footer class="app-bar app-bar--bottom">
       <div class="transport" role="group" aria-label="Playback">
-        <button class="transport__btn" type="button" disabled aria-label="Play">
+        <button
+          id="tts-play-btn"
+          class="transport__btn"
+          type="button"
+          disabled
+          aria-label="Play"
+        >
           <span aria-hidden="true">▶</span>
         </button>
         <button
+          id="tts-pause-btn"
           class="transport__btn"
           type="button"
           disabled
@@ -98,7 +107,13 @@
         >
           <span aria-hidden="true">⏸</span>
         </button>
-        <button class="transport__btn" type="button" disabled aria-label="Stop">
+        <button
+          id="tts-stop-btn"
+          class="transport__btn"
+          type="button"
+          disabled
+          aria-label="Stop"
+        >
           <span aria-hidden="true">⏹</span>
         </button>
       </div>
@@ -107,13 +122,15 @@
     <!-- Scripts load after the HTML elements; order matters:
          renderer (used by app), router (drives route events), nav (switcher,
          reads router.currentRoute), shell (drawer; no router dependency),
-         app (controller, last; calls nav.init + shell.init + theme.init).
+         tts (transport buttons; no router dependency), app (controller, last;
+         calls nav.init + shell.init + theme.init + tts.init).
          theme.js itself is already loaded in <head> (pre-paint apply); the
          app.js guard wires its control + OS listener. -->
     <script src="assets/js/renderer.js"></script>
     <script src="assets/js/router.js"></script>
     <script src="assets/js/nav.js"></script>
     <script src="assets/js/shell.js"></script>
+    <script src="assets/js/tts.js"></script>
     <script src="assets/js/app.js"></script>
   </body>
 </html>

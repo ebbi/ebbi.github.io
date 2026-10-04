@@ -41,6 +41,42 @@
   }
 
   /**
+   * Milestone TTS: the readable text of the CURRENT post, gathered from the
+   * RENDERED post DOM (X-2), NOT from a raw block walk.
+   *
+   * Inclusion rule (recorded in HANDOFF-TTS.md): title (.post-header__title)
+   * first, then, in document order, the text of every <p> and <blockquote>
+   * inside .post-content. Whitespace is collapsed; empty strings are skipped.
+   * Exclusion rule: block types whose rendered form reads poorly are skipped
+   * wholesale — <code>/<pre> (inline code), <table> cells, <figure>/<img>
+   * (images + captions), and .embed-container (embedded media). Only the
+   * paragraph/quote prose is spoken.
+   * @returns {string}
+   */
+  function gatherReadableText() {
+    const container = document.getElementById("app");
+    if (!container) return "";
+    const parts = [];
+
+    const title = container.querySelector(".post-header__title");
+    if (title && title.textContent) parts.push(title.textContent.trim());
+
+    const content = container.querySelector(".post-content");
+    if (content) {
+      // Walk the rendered nodes in document order; take prose only.
+      const prose = content.querySelectorAll("p, blockquote");
+      prose.forEach((el) => {
+        // Skip prose nested in a skipped region (code/embed/figure/table).
+        if (el.closest("pre, code, .embed-container, figure, table")) return;
+        const text = (el.textContent || "").replace(/\s+/g, " ").trim();
+        if (text) parts.push(text);
+      });
+    }
+
+    return parts.join("\n\n");
+  }
+
+  /**
    * Render a single post view.
    * C1: fetches the body from content/<lang>/<slug>.json on demand, with
    * an EN fallback for language-agnostic slugs (D3). Header + 404 markup
@@ -82,6 +118,13 @@
       contentEl.textContent = (body.blocks || [])
         .map((b) => b.content || "")
         .join("\n\n");
+    }
+
+    // Milestone TTS: a post is rendered — enable the transport (Play enabled,
+    // Pause/Stop disabled) per X-3. Guarded; the app is unaffected if TTS is
+    // absent or the Web Speech API is unavailable.
+    if (window.BlogTTS && typeof window.BlogTTS.setEnabled === "function") {
+      window.BlogTTS.setEnabled({ play: true, pause: false, stop: false });
     }
   }
 
@@ -162,6 +205,12 @@
       });
       container.dataset.listToggleBound = "true";
     }
+
+    // Milestone TTS: the list view has nothing to read — keep all three
+    // transport buttons inert (X-3/X-6). Guarded.
+    if (window.BlogTTS && typeof window.BlogTTS.setEnabled === "function") {
+      window.BlogTTS.setEnabled({ all: true });
+    }
   }
 
   /**
@@ -172,6 +221,14 @@
 
   function handleRouteChange(route) {
     if (!route) return;
+
+    // Milestone TTS: stop any in-flight speech BEFORE changing the view, so a
+    // post->post or post->list transition never leaves two utterances running
+    // (X-4). Guarded; no-op when TTS is absent.
+    if (window.BlogTTS && typeof window.BlogTTS.stop === "function") {
+      window.BlogTTS.stop();
+    }
+
     if (route.type === "post") {
       renderPost(route); // fire-and-forget; renderPost handles its own await
     } else {
@@ -226,12 +283,22 @@
 
       // Milestone 07b: resolve + apply the persisted/auto theme once.
       // No router dependency; guarded — the app must not break if theme.js
-      // fails to load. The pre-paint application lives in the index.html
-      // inline head script (T-3); this wires the control + OS listener.
+      // fails to load. The pre-paint application lives in theme.js loaded
+      // in <head> (T-3); this wires the control + OS listener.
       if (window.BlogTheme && typeof window.BlogTheme.init === "function") {
         window.BlogTheme.init();
       } else {
         console.warn("⚠️ BlogTheme not found; theme toggle disabled.");
+      }
+
+      // Milestone TTS: wire the transport buttons once and hand tts.js a
+      // live getter for the current post's readable text. Guarded — the app
+      // must not break if tts.js fails to load or speechSynthesis is
+      // unavailable (X-5).
+      if (window.BlogTTS && typeof window.BlogTTS.init === "function") {
+        window.BlogTTS.init({ getText: gatherReadableText });
+      } else {
+        console.warn("⚠️ BlogTTS not found; text-to-speech disabled.");
       }
     } else {
       console.error("❌ BlogRouter not found; falling back to initial render.");

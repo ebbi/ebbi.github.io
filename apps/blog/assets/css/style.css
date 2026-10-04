@@ -760,3 +760,40 @@ html[dir="rtl"] .post-list-item__toggle[aria-expanded="true"]::after {
   border-radius: 8px;
   padding: 4px 6px;
 }
+
+/* =========================================================
+   Milestone TTS — Transport active state
+   Additive; NEW classes only (no existing block edited).
+   Reuses tokens; logical properties only; RTL-safe. The buttons'
+   disabled state (index.html + tts.js) is the single source of
+   transport availability (X-3); these rules only decorate the
+   currently-active control while speaking.
+   ========================================================= */
+
+/* The control reflecting the current speaking action (Play while playing,
+   Pause while paused). Accent-tinted, not a semantic state change. */
+.transport__btn.is-active {
+  background: var(--surface);
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+/* Subtle pulse while actively speaking (Play button when speaking, or the
+   Pause button when paused — the active control). Respect reduced motion. */
+.transport__btn.is-speaking {
+  animation: transport-speak-pulse 1.6s ease-in-out infinite;
+}
+@keyframes transport-speak-pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.6;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .transport__btn.is-speaking {
+    animation: none;
+  }
+}
