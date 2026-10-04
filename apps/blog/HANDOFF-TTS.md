@@ -48,7 +48,7 @@ Interfaces delivered
 
 Expected delta for the next chat
 
-- 11.md already EXISTS (tracked, committed 20c4d3f) with a filled Interfaces section — VERIFIED, not authored here. The new book-reader milestone (TTS2) is authored at THIS close and slotted AFTER 11 in the ROADMAP.
+- 11.md already EXISTS (tracked, committed 20c4d3f) with a filled Interfaces section — VERIFIED, not authored here. At THIS close the human inserted three tasks BEFORE 11, in order: TTS2 (Player functionalities (remainder): highlighting + click-to-read), 07d (CSS typography update), 07c (font selection in Settings + default book-reader base font), followed by a HUMAN GATE (detailed blog text review / EN finalization) before 11. TTS2.md was authored/retitled here; 07d.md and 07c.md were authored here. The ROADMAP "Next chat" marker advances to TTS2 (a bookkeeping commit accompanies this close).
 
 Human edits made outside tooling (structured)
 
@@ -110,8 +110,10 @@ Files to read in the next chat (exact paths)
 
 - apps/blog/HANDOFF-CURRENT.txt
 - apps/blog/HANDOFF-TTS.md (this file)
-- apps/blog/tools/milestones/11.md (the next milestone; EXISTS, verified)
-- apps/blog/tools/milestones/TTS2.md (the book-reader milestone authored at this close)
+- apps/blog/tools/milestones/11.md (a future milestone; EXISTS, verified)
+- apps/blog/tools/milestones/TTS2.md (Player remainder: highlighting + click-to-read; the NEXT chat)
+- apps/blog/tools/milestones/07d.md (CSS typography update; after TTS2)
+- apps/blog/tools/milestones/07c.md (font selection in Settings; after 07d)
 - apps/blog/tools/CONTEXT.md
 - apps/blog/tools/WORKFLOW.md
 - apps/blog/tools/LOCKED_DECISIONS.txt

@@ -1,11 +1,11 @@
-# Milestone TTS2: Book-reader TTS — sentence highlighting + click-to-read-from-here
+# Milestone TTS2: Player functionalities (remainder) — sentence highlighting + click-to-read-from-here
 
 ## Scope fence (read first)
 
-This milestone upgrades the TTS transport shipped in TTS (and already
-strengthened there: reliable Pause + word-precise Resume) into a BOOK-READER
-experience over the CURRENT post's rendered text. After the TTS close-out,
-TTS2 is narrowed to TWO features:
+This milestone completes the Player begun in TTS. After the TTS close-out
+(Play / Pause / Stop, reliable sentence-chunked pause, best-effort word-precise
+resume), the REMAINDER of the Player is TWO features over the CURRENT post's
+rendered text:
 
 (a) HIGHLIGHT the sentence currently being spoken (book-reader style),
 advancing in document order as reading proceeds, cleared on stop/end;

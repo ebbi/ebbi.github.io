@@ -1060,20 +1060,33 @@ non-resolved; L-014 resolved. NO seam change; import-post.js untouched
   NOTE: 07's S-4 ("transport buttons inert") is SUPERSEDED for the POST view
   by TTS (X-6); the list view keeps them inert. Enabled buttons on a post are
   NOT a regression.
-- 07c Font selection (modern/traditional). depends on: 07b
 
 ## Next (order per depends-on; each authored at the previous chat's close)
 
-<!-- Next chat: 11 -->
+<!-- Next chat: TTS2 -->
 
-- 11 Translations & i18n UI. depends on: C1
-- TTS2 Book-reader TTS: sentence highlighting (book-reader style) +
-  click-to-read-from-here over the current post's rendered text. Extends TTS;
-  same X-1 engine (Web Speech API) and the X-2 rendered-DOM text rule. Pause
-  reliability + word-precise resume were DELIVERED IN TTS (sentence chunking +
-  onboundary offset); TTS2 consumes that per-sentence signal to drive the
-  highlight and adds click-to-seek. depends on: TTS. File:
-  tools/milestones/TTS2.md.
+- TTS2 Player functionalities (remainder): sentence highlighting
+  (book-reader style) + click-to-read-from-here over the current post's
+  rendered text, completing the Player. Extends TTS (which delivered Play /
+  Pause / Stop + sentence-chunked reliable pause + word-precise resume);
+  TTS2 consumes the per-sentence signal to drive the highlight and adds
+  click-to-seek. same X-1 engine (Web Speech API) and X-2 rendered-DOM text
+  rule. depends on: TTS. File: tools/milestones/TTS2.md.
+- 07d CSS typography update: a book-reader typography pass (reading measure,
+  line-height, vertical rhythm, heading scale, blockquote/code/table styling,
+  hyphenation) reusing existing tokens; MAY add new tokens ONLY additively.
+  depends on: 07b. File: tools/milestones/07d.md.
+- 07c Font selection (Settings): choose a traditional or modern font, plus a
+  sensible DEFAULT base font for a book-reader app, persisted like the theme
+  pref (07b). depends on: 07b, 07d. File: tools/milestones/07c.md.
+
+<!-- HUMAN GATE: the human reviews the blogs in detail for text changes and
+     finalizes the EN text BEFORE any translation. Milestone 11 MUST NOT
+     start until this review is signed off. This is a necessary step to
+     finalize the text prior to translations. -->
+
+- 11 Translations & i18n UI. depends on: C1, and the HUMAN GATE above
+  (detailed blog text review / EN text finalization) being signed off.
 - 12a RTL & Typography - Persian/Arabic. depends on: 11
 - 12b RTL & Typography - Thai/Myanmar. depends on: 12a
 - 13a Accessibility & Keyboard Nav. depends on: 12b
