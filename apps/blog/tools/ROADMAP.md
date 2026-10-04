@@ -724,6 +724,33 @@ revolution-1`, date 2016-02-21) from the live HTML (`--from html`) into
   content/en/. Legacy non-uniform slug (`a-history-of-political-islam-...`);
   KEEP the live canonical slug. Census MEASURED at recon. feed.json
   22 -> 23 entries (date-desc). No new seam class expected. depends on: C1b-13.
+  STATUS: DONE (2026). Migrated part-3 from the live HTML (`--from html`) into
+  content/en/a-history-of-political-islam-and-the-west-part-3-iran-revolution-1.json
+  (LEGACY NON-UNIFORM canonical slug; HTTP 200, no redirect, no `protected-`
+  prefix, entry-content present; slug/title/date confirmed from the LIVE post —
+  posts.json is front-truncated and part-3 is ABSENT from it, as L-014 warned).
+  Title "A contemporary history of the Muslim world, part 3. Iran: Revolution
+  #1"; date 2016-02-21T20:27:21+00:00. Recon MEASURED the census (NOT
+  pre-committed): written census {image:11,paragraph:44,embed:2} (57 blocks).
+  CRITICAL reconciliation: raw `<img>` count (11) EQUALS the rendered
+  image-block count (11) — no silent drop; raw `<iframe>` (2) == rendered embed
+  (2); raw `<figure.wp-caption>` (1) == 1 captioned image. All
+  `*_para_leftover`=0 (img/iframe/figure/wp-caption/jetpack). The 11 images = 1
+  `figure.wp-caption` (D-Tool-22; caption "The army fires on protesters, Black
+  Friday, 8 September 1978", idx 38) + 10 bare `<p><img>` variants (D-Tool-20).
+  Both embeds carry the raw `<iframe ...></iframe>` verbatim with `&#038;`
+  preserved (D-Tool-21; youtube IDs fvtt4Jy69LQ idx 35, ldvwY5fFzQ0 idx 52).
+  NO new seam class; import-post.js untouched (seam frozen through D-Tool-29).
+  feed.json 22 -> 23 entries (date-desc; part-3 at idx 20, POSITIONALLY just
+  ABOVE part-2 idx 21 and part-1 idx 22, just BELOW part-7 idx 19 — verified).
+  No loss discovered (LOSS_LEDGER untouched; L-014 stays OPEN — it tracks all
+  six parts, closed at C1b-17). Non-regression: pilot 80
+  {image:15,paragraph:62,quote:2,table:1}; controlling-the-narrative 34
+  {image:5,paragraph:24,quote:4,footnotes:1}, quote[3] len=240; update 2
+  {paragraph:2}; the contents post {table:1,image:1,paragraph:2}; part-1
+  {image:11,paragraph:50}; part-2 {image:21,paragraph:53,embed:2}; part-7..22 —
+  ALL 22 pre-existing committed content/en/\*.json re-extract BYTE-IDENTICAL.
+  depends on: C1b-13.
 - C1b-15 Migrate SERIES PART 4
   (`2016/03/26/a-history-of-political-islam-and-the-west-part-4-iran-
 revolution-2`, date 2016-03-26) from the live HTML (`--from html`) into
