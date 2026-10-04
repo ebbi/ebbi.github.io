@@ -883,6 +883,33 @@ civil-war-2`, date 2016-06-04) from the live HTML (`--from html`) into
   non-regression: all 26 committed content/en/\*.json re-extract
   BYTE-IDENTICAL from cache. No LOSS_LEDGER row (no loss). depends on: C1b-17.
 
+- C1b-DONE (REVISED) Final check proving 25/25 EN posts migrated.
+  VERIFICATION-ONLY. Re-extract EVERY committed content/en/*.json from the
+  live HTML (cache-first, `--from html`) and confirm BYTE-IDENTICAL (25/25
+  posts; 26/26 files incl the `contents` index); confirm each census + all
+  `*_para_leftover` = 0 + raw <img>/<iframe> == rendered counts. Regenerate
+  feed.json; confirm 26 entries POSITIONALLY; confirm every series entry
+  carries the correct integer seriesOrder (1..23) and the list view reads
+  the series in reading order. Confirm LOSS_LEDGER final state (L-001
+  open/by-design, L-010 deferred, L-014 resolved). Then posts.json deletion
+  is UNBLOCKED (human-gated; NOT silent). depends on: C1b-18.
+  STATUS: DONE (2026). ALL 26 committed content/en/*.json (25 EN posts = 23
+  series + 2 non-series, + the series `contents` index post) re-extract
+  BYTE-IDENTICAL from the live HTML (cache-first; all 26 canonical URLs hit
+  the import-post cache); every census == expected, every `*_para_leftover`
+  = 0, and raw <img>/<iframe> == rendered block count for every file (the
+  contents post: 24 raw <img> = 23 inside the single `table` block + 1 image
+  block). feed.json regenerated IDEMPOTENTLY (sha256 unchanged
+  85f19c755fb091cb4d46f5fee99fb178c8ff462ab643adb90f47ca9072e66fc1): 26
+  entries, strictly date-desc, 23 series with seriesOrder 1..23 + 3
+  non-series null; ascending-date rank == grid order 23/23; app.js
+  renderList reads the series in reading order 1 -> 23. LOSS_LEDGER final
+  state confirmed: only L-001 (open/by-design) + L-010 (deferred) are
+  non-resolved; L-014 resolved. NO seam change; import-post.js untouched
+  (seam frozen through D-Tool-29). The human-gated
+  `git rm apps/blog/assets/data/posts.json` is now UNBLOCKED (NOT executed
+  here). C1b is COMPLETE; Next advances to B1.
+
 ## Now
 
 - 07 App Shell & Toolbars: fixed top/bottom toolbars, drawer,
@@ -894,75 +921,6 @@ civil-war-2`, date 2016-06-04) from the live HTML (`--from html`) into
 
 ## Next (order per depends-on; each authored at the previous chat's close)
 
-- C1b-08..19 (series) remaining EN posts. The seam (through D-Tool-25) covers
-  the classes seen so far. C1b-11 STOPPED on a new class (emph-wrapped
-  bare-<p><img>) and re-scoped into C1b-11a (seam, D-Tool-23, DONE) + C1b-11b
-  (migration, DONE). C1b-11c migrated part-14 (DONE); C1b-11d migrated part-13
-  (DONE; `protected-` post verified fetchable); C1b-11e STOPPED on TWO new
-  classes and re-scoped into C1b-11e-a (seam, D-Tool-24 + D-Tool-25, DONE) +
-  C1b-11e-b (migration, DONE — part-12). C1b-11f migrated part-11 (DONE; slug
-  shape `-11-`, NO `part-` token). C1b-11g migrated part-10 (DONE). C1b-11h
-  STOPPED on a NEW class (a bare class-less `<div>`-wrapped `<img>`, a SILENT
-  image loss that D-Tool-25 did not model) and re-scoped into C1b-11h-a
-  (seam, D-Tool-26, DONE) + C1b-11h-b (migration — part-9, DONE; resolved
-  L-012). C1b-11i migrated part-8 (DONE; resolved L-006; slug
-  `a-contemporary-history-of-the-muslim-world-part-8-afghanistan-1`, census
-  {paragraph:40,image:14,embed:3} (57); no new seam class). C1b-11j migrated
-  part-7 (DONE; slug
-  `a-contemporary-history-of-the-muslim-world-part-7-the-lebanese-civil-war-3`,
-  census {image:11,paragraph:32,embed:3} (46); raw <img> 11 == rendered 11;
-  raw <iframe> 3 == rendered 3; no new seam class; feed.json 18 -> 19 entries).
-  C1b-11k attempted to migrate the LAST unmigrated EN post — the series post
-  `a-contemporary-history-of-the-muslim-world-contents` (a SEPARATE slug) —
-  but STOPPED on a NEW class (a class-less bare top-level `<table>` layout
-  grid; a massive SILENT image loss that D-Tool-26 did not model), re-scoped
-  into C1b-11k-a (seam, D-Tool-27 tableBare) + C1b-11k-b (the migration;
-  resolves L-013). C1b-11k-a then STOPPED AGAIN: applying tableBare still left
-  the post NOT seam-READY because a SECOND new class appeared — a bare `<p>`
-  whose entire content is a single `<strong>`-wrapped `<img>`
-  (`imageBarePStrong`, img_para_leftover = 1). C1b-11k-a reverted its seam
-  change and re-scoped into C1b-11k-a-a (seam, D-Tool-27 tableBare + D-Tool-28
-  imageBarePStrong, DONE) + C1b-11k-a-b (the migration, DONE — resolved
-  L-013; feed.json 19 -> 20 entries). ALL series EN posts are now migrated;
-  the next milestone is C1b-DONE, which proves 20/20, then posts.json deletion
-  is unblocked.
-  CORRECTION (L-014): the "20/20" total was WRONG — the chain began at part-7
-  and walked forward, so series parts 1–6 (the six EARLIEST posts) were never
-  migrated. The series total is 23 posts (parts 1–22 + "Jews in Palestine
-  before Israel") + 2 non-series (`update`, `controlling-the-narrative`) = 25
-  EN files. NEW migration track: C1b-12 (part-1, DONE — {image:11,paragraph:50}
-  (61), raw <img> 11 == rendered 11, all `*_para_leftover`=0, NO new class),
-  C1b-13 STOPPED on a NEW class (prose-then-trailing-image bare-<p>, a leak
-  AND a silent loss that D-Tool-28 did not model) and re-scoped into C1b-13a
-  (seam, D-Tool-29 imageBarePProse, DONE) + C1b-13b (the migration — part-2),
-  C1b-14 (part-3, DONE), C1b-15
-  (part-4, DONE — {image:12,paragraph:43} (55), raw <img> 12 == rendered 12,
-  raw <iframe> 0 == rendered 0, all `*_para_leftover`=0, NO new class),
-  C1b-16 (part-5), C1b-17 (part-6) — one post per chat (context-drift risk is real: the earliest posts carry the richest
-  legacy markup; C1b-11e/11h/11k/13 each STOPPED on a new class). Then C1b-18
-  adds a series-order field/sort to the derived index + list view, and the
-  REVISED C1b-DONE proves 25/25 before posts.json deletion is unblocked.
-- C1b-13b (migrate part-2; seam D-Tool-29 READY in C1b-13a) DONE — part-2
-  migrated, {image:21,paragraph:53,embed:2} (76), raw <img> 21 == rendered 21,
-  raw <iframe> 2 == rendered 2, all `*_para_leftover`=0, feed.json 21 -> 22
-  entries. C1b-14 (part-3) DONE — {image:11,paragraph:44,embed:2} (57),
-  feed.json 22 -> 23. C1b-15 (part-4) DONE — {image:12,paragraph:43} (55),
-  feed.json 23 -> 24. C1b-16 (part-5) DONE — {image:17,paragraph:29,embed:1}
-  (47), raw <img> 17 == rendered 17 (1:1 src, in order), raw <iframe> 1 ==
-  rendered 1, all `*_para_leftover`=0, feed.json 24 -> 25. C1b-17 (series
-  part 6) DONE — the LAST remaining missed earliest EN post; {image:17,
-  paragraph:35,embed:1} (53), raw <img> 17 == rendered 17 (1:1 src, IN
-  ORDER), raw <iframe> 1 == rendered 1, raw figure.wp-caption 12 == 12
-  captions, all `*_para_leftover`=0, NO new seam class, feed.json 25 -> 26;
-  L-014 CLOSED. After C1b-17, ALL 23 series EN posts (parts 1–22 + "Jews in
-  Palestine before Israel") + 2 non-series = 25 EN files are migrated. Next:
-  C1b-18, then the revised C1b-DONE.
-- C1b-18 series-order (derived index + list view); depends on C1b-17 (DONE).
-  Give each feed entry an integer `seriesOrder` (1..23) from the `contents`
-  post's grid; app.js renderList groups/sorts the series into reading order;
-  non-series posts keep date-desc.
-- C1b-DONE (REVISED) — final check: proves 25/25 (23 series + 2 non-series);
-  then posts.json deletion is unblocked.
 - B1 Renderer remaining block types (pullquote, resourceList, callout,
   footnotes, attachment). depends on: 09
 - 10b List item as collapsible panel: title toggles the excerpt + a

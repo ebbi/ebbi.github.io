@@ -55,7 +55,8 @@ Notes:
   markup as text. Evidence: live recon part-22 59 blocks ->
   {image:4,paragraph:55}, img_para_leftover=0. Non-regression: pilot 80
   {image:15,paragraph:62,quote:2,table:1}; controlling-the-narrative 34
-  {image:5,paragraph:24,quote:4,footnotes:1}; update 2 {paragraph:2}.
+  {image:5,paragraph:24,quote:4,footnotes:1}, quote[3] len=240; update 2
+  {paragraph:2}.
   (C1b-03 D-Tool-20 note)
 - L-010: DEFERRED (recorded C1b-04, not fixed there). generate-index.js
   buildExcerpt() decodes entities and normalizes whitespace but does NOT
@@ -68,7 +69,7 @@ Notes:
   list-view milestone (generate-index.js is fence-excluded from C1b-04).
   Not a seam issue: no D-Tool entry. C1b-04 evidence: feed.json part-22
   excerpt head 'Picking up where we left off in <a href="https://twolegsbadb…'.
-- posts.json is retained on disk only until C1b-DONE proves 20/20.
+- posts.json is retained on disk only until C1b-DONE proves 25/25.
 
 - L-011: discovered in C1b-09a recon; the legacy `figure.wp-caption`
   caption image matched NO TOP entry in the frozen seam, so its <img> was
@@ -186,10 +187,10 @@ autohide=2&#038;wmode=transparent" ...></iframe>`. The 13 images = 7
   Hafizullah Amin and Babrak Karmal.", "Left to right: Rabbani, Massoud and
   Hekmatyar."). All `*_para_leftover` = 0 (img/iframe/figure/wp-caption/
   jetpack). feed.json 17 -> 18 entries (date-desc; part-8 at idx 17, LAST —
-  its date 2016-08-02 is OLDER than part-9's 2016-12-25). Non-regression:
-  pilot 80 {image:15,paragraph:62,quote:2,table:1}; controlling-the-narrative
-  34 {image:5,paragraph:24,quote:4,footnotes:1}, quote[3] len=240; update 2
-  {paragraph:2}; part-9..22 all byte-identical to their committed files.
+  its date 2016-08-02 is OLDER than part-9's 2016-12-25). Non-regression: pilot 80 {image:15,paragraph:62,quote:2,table:1};
+  controlling-the-narrative 34 {image:5,paragraph:24,quote:4,footnotes:1},
+  quote[3] len=240; update 2 {paragraph:2}; part-9..22 all byte-identical to
+  their committed files.
   No new seam class; import-post.js untouched (seam frozen through D-Tool-26).
   (C1b-11i note)
 - L-013: discovered in C1b-11k recon (migrate the series post
@@ -263,8 +264,7 @@ cellpadding="0">` layout grid (colgroup/tbody/12 tr/48 td; alternating
   controlling-the-narrative 34 {image:5,paragraph:24,quote:4,footnotes:1},
   quote[3] len=240; update 2 {paragraph:2}; part-7..22 — all byte-identical to
   their committed files. No new seam class; import-post.js untouched (seam
-  frozen through D-Tool-28). After this, ALL series EN posts are migrated;
-  C1b-DONE proves 20/20, then posts.json deletion is unblocked.
+  frozen through D-Tool-28). After this, ALL series EN posts are migrated; C1b-DONE proves 25/25, then posts.json deletion is unblocked.
   (C1b-11k-a-b note)
 - L-014: discovered by HUMAN review of the list view after C1b-11k-a-b. The
   C1b-11k-a-b note's claim "ALL series EN posts are migrated" was WRONG: the
@@ -311,3 +311,23 @@ war-2/`. SLUG NOTE: parts 1–4 carry legacy non-uniform slugs (NOT the
   quote[3] len=240; update 2 {paragraph:2}; the contents post
   {table:1,image:1,paragraph:2}; and every prior committed content/en/\*.json
   re-extract BYTE-IDENTICAL. (L-014; C1b-12..C1b-17 resolutions)
+- L-001: FINAL CLOSURE (C1b-DONE). L-001 is a CONTENT-SOURCE loss: the
+  UNTRUSTED, front-truncated posts.json entry for `controlling-the-narrative`
+  held 9 of 34 blocks. It is resolved BY DESIGN because the C1b migration
+  source (and the fidelity oracle) is the LIVE HTML, not posts.json; the
+  committed `controlling-the-narrative.json` is byte-faithful from the live
+  HTML ({image:5,paragraph:24,quote:4,footnotes:1} (34 blocks), quote[3]
+  len=240). The final C1b-DONE fidelity check re-extracted EVERY committed
+  content/en/*.json from the live HTML (cache-first) and confirmed 26/26
+  BYTE-IDENTICAL, every census == expected, all `*_para_leftover` = 0, and
+  raw `<img>`/`<iframe>` == rendered block counts. With 25/25 EN content
+  files proven, posts.json is fully INERT (feed.json/app.js read content/ and
+  feed.json, never posts.json) and its human-gated deletion is now UNBLOCKED
+  (NOT executed here). L-001 stays "open" in the table only to record it is a
+  by-design, source-only artifact; it requires no extraction fix. (C1b-DONE note)
+- L-010: DEFERRAL REAFFIRMED (C1b-DONE). Still deferred to a generate-index /
+  list-view milestone; it is a DERIVED feed-excerpt HTML leak (part-22),
+  NOT a C1b seam/content issue. The part-22 CONTENT file remains byte-faithful
+  ({image:13,paragraph:55} (68 blocks)). (C1b-DONE note)
+- L-006: RESOLVED in C1b-11i (cross-reference; see the L-006 C1b-11i note
+  above). (C1b-DONE reconciliation)
