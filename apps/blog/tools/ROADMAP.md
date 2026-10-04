@@ -595,7 +595,32 @@ havent-a-history-of-political-islam-and-the-west`, date 2015-11-27) from the
   re-scope per the Scope Fence). feed.json 20 -> 21 entries (date-desc). No
   new seam class expected a priori (seam frozen through D-Tool-28).
   depends on: C1b-11k-a-b.
-
+  STATUS: DONE (2026). Migrated part-1 from the live HTML (`--from html`) into
+  content/en/what-we-have-forgotten-and-they-havent-a-history-of-political-
+  islam-and-the-west.json (LEGACY NON-UNIFORM canonical slug; HTTP 200, no
+  redirect, no `protected-` prefix, entry-content present; slug/title/date
+  confirmed from the LIVE post — posts.json is front-truncated and part-1 is
+  ABSENT from it, as L-014 warned). Title "A contemporary history of the
+  Muslim world, part 1"; date 2015-11-27T12:51:51+00:00. Recon MEASURED the
+  census (NOT pre-committed): written census {image:11,paragraph:50} (61
+  blocks). CRITICAL reconciliation: raw `<img>` count (11) EQUALS the rendered
+  image-block count (11) — no silent drop; raw `<iframe>` (0) == rendered embed
+  (0); raw `<figure>` 1 == the single wp-caption image. All `*_para_leftover`=0
+  (img/iframe/figure/wp-caption/jetpack). The 11 images = 10 bare `<p><img>`
+  (D-Tool-20) + 1 `figure.wp-caption` (D-Tool-22; caption "Oil gusher spouting
+  near Kirkuk, c.1932", the Baba Gurgur image). No emph-wrapped image (D-Tool-23),
+  no imageBarePStrong (D-Tool-28), no imageBarePTrailing (D-Tool-24), no
+  embedInBareP (D-Tool-25), no divBareImg (D-Tool-26), no tableBare (D-Tool-27),
+  no quote/footnotes. NO new seam class; import-post.js untouched (seam frozen
+  through D-Tool-28). feed.json 20 -> 21 entries (date-desc; part-1 at idx 20,
+  LAST — its date 2015-11-27 is OLDER than part-7's 2016-06-20, verified
+  POSITIONALLY). No loss discovered (LOSS_LEDGER untouched; L-014 stays OPEN —
+  it tracks all six parts, closed at C1b-17). Non-regression: pilot 80
+  {image:15,paragraph:62,quote:2,table:1}; controlling-the-narrative 34
+  {image:5,paragraph:24,quote:4,footnotes:1}, quote[3] len=240; update 2
+  {paragraph:2}; the contents post {table:1,image:1,paragraph:2}; part-7..22 —
+  ALL 20 pre-existing committed content/en/\*.json re-extract BYTE-IDENTICAL.
+  depends on: C1b-11k-a-b.
 - C1b-13 Migrate SERIES PART 2
   (`2015/12/13/what-we-have-forgotten-and-they-havent-a-history-of-political-
 islam-and-the-west-part-2`, date 2015-12-13) from the live HTML
@@ -609,7 +634,6 @@ revolution-1`, date 2016-02-21) from the live HTML (`--from html`) into
   content/en/. Legacy non-uniform slug (`a-history-of-political-islam-...`);
   KEEP the live canonical slug. Census MEASURED at recon. feed.json
   22 -> 23 entries (date-desc). No new seam class expected. depends on: C1b-13.
-
 - C1b-15 Migrate SERIES PART 4
   (`2016/03/26/a-history-of-political-islam-and-the-west-part-4-iran-
 revolution-2`, date 2016-03-26) from the live HTML (`--from html`) into
@@ -691,13 +715,14 @@ civil-war-2`, date 2016-06-04) from the live HTML (`--from html`) into
   and walked forward, so series parts 1–6 (the six EARLIEST posts) were never
   migrated. The series total is 23 posts (parts 1–22 + "Jews in Palestine
   before Israel") + 2 non-series (`update`, `controlling-the-narrative`) = 25
-  EN files. NEW migration track: C1b-12 (part-1), C1b-13 (part-2), C1b-14
-  (part-3), C1b-15 (part-4), C1b-16 (part-5), C1b-17 (part-6) — one post per
-  chat (context-drift risk is real: the earliest posts carry the richest
+  EN files. NEW migration track: C1b-12 (part-1, DONE — {image:11,paragraph:50}
+  (61), raw <img> 11 == rendered 11, all `*_para_leftover`=0, NO new class),
+  C1b-13 (part-2), C1b-14 (part-3), C1b-15
+  (part-4), C1b-16 (part-5), C1b-17 (part-6) — one post per chat (context-drift risk is real: the earliest posts carry the richest
   legacy markup; C1b-11e/11h/11k each STOPPED on a new class). Then C1b-18
   adds a series-order field/sort to the derived index + list view, and the
   REVISED C1b-DONE proves 25/25 before posts.json deletion is unblocked.
-- C1b-12..17 (series parts 1–6) — the six missed earliest EN posts (L-014);
+- C1b-13..17 (series parts 2–6) — the five remaining missed earliest EN posts (L-014);
   one per chat, ascending. Each authored at the previous chat's close.
 - C1b-18 series-order (derived index + list view); depends on C1b-17.
 - C1b-DONE (REVISED) — final check: proves 25/25 (23 series + 2 non-series);
