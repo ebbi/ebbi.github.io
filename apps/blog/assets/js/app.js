@@ -92,6 +92,10 @@
    * reader sees the series in READING ORDER (1 -> 23); non-series posts
    * (`update`, `controlling-the-narrative`, any future post) keep the default
    * date-desc order from feed.json.
+   * Milestone 10b: each item is a collapsible panel — the title is a real
+   * <button> (aria-expanded + aria-controls) toggling that item's excerpt
+   * panel (the `hidden` attribute), and a separate "read full post" link is
+   * the ONLY navigation affordance (the title toggles, it does not navigate).
    * @param {{lang: string}} route
    */
   function renderList(route) {
@@ -115,18 +119,49 @@
     series.sort((a, b) => a.seriesOrder - b.seriesOrder);
     const ordered = series.concat(rest);
     const listHtml = ordered
-      .map(
-        (post) => `
+      .map((post) => {
+        // Milestone 10b: a stable, element-id-safe panel id derived from the
+        // slug (slugs are language-agnostic). aria-controls references it.
+        const panelId = `excerpt-${String(post.slug).replace(/[^a-z0-9_-]/gi, "-")}`;
+        return `
       <article class="post-list-item">
-        <a class="post-list-item__title" href="#/${post.lang}/post/${post.slug}">${post.title}</a>
+        <button class="post-list-item__toggle" type="button"
+                aria-expanded="false" aria-controls="${panelId}">
+          <span class="post-list-item__title-text">${post.title}</span>
+        </button>
         <p class="post-list-item__meta">${post.date} • ${post.lang.toUpperCase()}</p>
-        <p class="post-list-item__excerpt">${post.excerpt || ""}</p>
+        <div class="post-list-item__panel" id="${panelId}" hidden>
+          <p class="post-list-item__excerpt">${post.excerpt || ""}</p>
+          <a class="post-list-item__read" href="#/${post.lang}/post/${post.slug}">Read full post</a>
+        </div>
       </article>
-    `,
-      )
+    `;
+      })
       .join("");
 
     container.innerHTML = `<div class="post-list">${listHtml}</div>`;
+
+    // Milestone 10b: ONE delegated click listener on the list container.
+    // renderList replaces innerHTML on every route change, so bind once
+    // (guarded) rather than per render. The real <button> gives keyboard
+    // activation (Enter/Space) for free; this only toggles state.
+    if (!container.dataset.listToggleBound) {
+      container.addEventListener("click", (event) => {
+        const toggle = event.target.closest(".post-list-item__toggle");
+        if (!toggle || !container.contains(toggle)) return;
+        const panelId = toggle.getAttribute("aria-controls");
+        const panel = panelId ? document.getElementById(panelId) : null;
+        if (!panel) return;
+        const expanded = toggle.getAttribute("aria-expanded") === "true";
+        toggle.setAttribute("aria-expanded", expanded ? "false" : "true");
+        if (expanded) {
+          panel.setAttribute("hidden", "");
+        } else {
+          panel.removeAttribute("hidden");
+        }
+      });
+      container.dataset.listToggleBound = "true";
+    }
   }
 
   /**

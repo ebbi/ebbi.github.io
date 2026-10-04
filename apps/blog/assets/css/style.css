@@ -652,3 +652,75 @@ html[dir="rtl"] .app-panel[aria-hidden="false"] .app-panel__content {
   font-size: 0.85rem;
   color: var(--text-muted);
 }
+
+/* =========================================================
+   Milestone 10b — List item as collapsible panel
+   Additive; NEW classes only (no existing block edited).
+   Reuses tokens; logical properties only; RTL-safe.
+   The title toggle is a real <button>; the panel uses the
+   `hidden` attribute (not display:none), so it carries the
+   correct accessible name/state (D-10b-1).
+   ========================================================= */
+
+/* The toggle fills the item width; it is the primary control. */
+.post-list-item__toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  inline-size: 100%;
+  margin: 0;
+  padding: 0;
+  text-align: start;
+  color: var(--text);
+}
+.post-list-item__toggle:hover .post-list-item__title-text {
+  color: var(--accent);
+}
+/* Disclosure caret; rotates when the panel is expanded. Logical padding
+   keeps it on the correct side in RTL. */
+.post-list-item__toggle::after {
+  content: "\25B8";
+  flex: none;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  transition: transform var(--transition);
+}
+.post-list-item__toggle[aria-expanded="true"]::after {
+  transform: rotate(90deg);
+}
+html[dir="rtl"] .post-list-item__toggle::after {
+  transform: scaleX(-1);
+}
+html[dir="rtl"] .post-list-item__toggle[aria-expanded="true"]::after {
+  transform: scaleX(-1) rotate(90deg);
+}
+
+.post-list-item__title-text {
+  font-size: 1.1rem;
+  font-weight: 600;
+  line-height: 1.35;
+}
+
+/* The collapsible panel. When `hidden` is present it is not rendered. */
+.post-list-item__panel {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-block-start: 4px;
+}
+.post-list-item__panel[hidden] {
+  display: none;
+}
+
+/* "read full post" is the ONLY navigation affordance in the panel. */
+.post-list-item__read {
+  align-self: flex-start;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--accent);
+  text-decoration: underline;
+}
+.post-list-item__read:hover {
+  text-decoration: none;
+}

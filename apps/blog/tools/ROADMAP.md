@@ -942,6 +942,49 @@ civil-war-2`, date 2016-06-04) from the live HTML (`--from html`) into
   by the frozen seam; they are renderer-ready for a future seam extension.
   No content file written; no seam change. Next (10b) authored at this close.
 
+- 10b List item as collapsible panel. Each list item is a collapsible panel:
+  the title is a REAL <button> (aria-expanded + aria-controls) toggling that
+  item's excerpt panel (the `hidden` attribute); a separate "read full post"
+  link is the ONLY navigation affordance (the title toggles, it does not
+  navigate). ONE delegated click listener on the .post-list container
+  (bound-once via a dataset guard since renderList replaces innerHTML on
+  every route change); the real <button> gives Enter/Space activation for
+  free. Revisits 08's list presentation; preserves C1b-18 series ordering
+  VERBATIM. Touches app.js (renderList item markup + the listener) + style.css
+  (ONE additive, new-class-only "Milestone 10b" block) ONLY — NOT the
+  extraction seam or import-post.js; feed.json NOT regenerated. depends on:
+  C1b.
+  STATUS: DONE (2026). app.js renderList now emits, per item, a
+  <button class="post-list-item__toggle" type="button" aria-expanded="false"
+  aria-controls="excerpt-<slug>"> wrapping <span
+  class="post-list-item__title-text">, followed by the .post-list-item__meta
+  line and a <div class="post-list-item__panel" id="excerpt-<slug>" hidden>
+  holding the excerpt paragraph + <a class="post-list-item__read"
+  href="#/<lang>/post/<slug>">Read full post</a>. The C1b-18 series ordering
+  (series.sort by seriesOrder, then concat(rest)) is BYTE-IDENTICAL to 08;
+  only the item markup string changed. ONE delegated click listener on the
+  `.post-list` container (guarded by container.dataset.listToggleBound so it
+  binds once across route changes) flips aria-expanded and toggles the
+  panel's `hidden` attribute. style.css gained ONE additive Milestone 10b
+  block (post-list-item__toggle + ::after caret, post-list-item__title-text,
+  post-list-item__panel + [hidden], post-list-item__read / :hover) reusing
+  existing tokens, logical properties only, RTL-safe (caret mirrors in RTL);
+  NO existing block edited (diff = +72 additions, 0 deletions). node --check
+  PASS; test-integrity INTEGRITY OK; node -e structural smoke test PASS (real
+  button + aria wiring, aria-controls id match, hidden toggle, read-link
+  route, delegated listener, bound-once guard, series ordering preserved);
+  feed.json untouched; CSS purely additive. D-10b-1 (real <button>,
+  aria-expanded + aria-controls, `hidden` attribute not display:none via
+  class); D-10b-2 (read-full-post link is the ONLY navigation affordance);
+  D-10b-3 (C1b-18 series ordering preserved verbatim); D-10b-4 (L-010 REMAINS
+  DEFERRED — its fix site generate-index.js is fence-excluded from 10b and
+  part-22's feed excerpt is a LIVE <a> anchor that would navigate out of the
+  panel and violate D-10b-2). Known issue recorded: the old
+  `.post-list-item__title` CSS rule is now unused by renderList but is LEFT
+  INTACT (removing it would be a non-additive style.css edit, forbidden by
+  the 10b fence). No content file written; no seam change; import-post.js
+  untouched. Next (11) authored at this close.
+
 ## Now
 
 - 07 App Shell & Toolbars: fixed top/bottom toolbars, drawer,
@@ -953,9 +996,6 @@ civil-war-2`, date 2016-06-04) from the live HTML (`--from html`) into
 
 ## Next (order per depends-on; each authored at the previous chat's close)
 
-- 10b List item as collapsible panel: title toggles the excerpt + a
-  "read full post" link (mobile-first; keyboard-accessible). Revisits
-  08's list presentation. depends on: C1b
 - 11 Translations & i18n UI. depends on: C1
 - 12a RTL & Typography - Persian/Arabic. depends on: 11
 - 12b RTL & Typography - Thai/Myanmar. depends on: 12a
