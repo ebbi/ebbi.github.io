@@ -555,6 +555,27 @@ html`) into content/en/. Census MEASURED at recon (NOT pre-committed).
   BEFORE part-10 (idx 15)). Resolves L-013. Seam READY (D-Tool-27 + D-Tool-28
   frozen in C1b-11k-a-a). After it, C1b-DONE proves 20/20.
   depends on: C1b-11k-a-a.
+  STATUS: DONE (2026). Migrated the series contents post from the live HTML
+  (`--from html`) into
+  content/en/a-contemporary-history-of-the-muslim-world-contents.json
+  (canonical slug; HTTP 200, no redirect, no `protected-` prefix, entry-content
+  present; slug/title/date match posts.json — NO discrepancy). Recon MEASURED
+  the census: written census {table:1,image:1,paragraph:2} (4 blocks).
+  CRITICAL reconciliation: raw `<img>` count (24) EQUALS the rendered image
+  total (23 subsumed by the single `table` block + 1 `image` block) — no
+  silent drop; raw `<iframe>` (0) == rendered embed (0). All
+  `*_para_leftover`=0. The single `table` block carries the inner HTML of the
+  source `<table>` VERBATIM (colgroup/tbody/12 `<tr>`/48 `<td>`, links+images
+  preserved; outer tag dropped per D-Tool-15; len 29665); the 1 `image` block
+  is the recovered D-Tool-28 imageBarePStrong `afghans1.png` (data-attachment-id
+  10954, src verbatim); the 2 `paragraph` blocks are the post's EMPTY `<p> </p>`
+  spacers. feed.json 19 -> 20 entries (date-desc; the post at idx 15,
+  POSITIONALLY after part-11 idx 14 and before part-10 idx 16 — verified).
+  Resolved L-013. No new seam class; import-post.js untouched. Non-regression:
+  pilot 80 {image:15,paragraph:62,quote:2,table:1}; controlling-the-narrative
+  34 {image:5,paragraph:24,quote:4,footnotes:1}, quote[3] len=240; update 2
+  {paragraph:2}; part-7..22 byte-identical to their committed files. ALL series
+  EN posts now migrated; C1b-DONE proves 20/20. depends on: C1b-11k-a-a.
 
 ## Now
 
@@ -595,8 +616,10 @@ html`) into content/en/. Census MEASURED at recon (NOT pre-committed).
   whose entire content is a single `<strong>`-wrapped `<img>`
   (`imageBarePStrong`, img_para_leftover = 1). C1b-11k-a reverted its seam
   change and re-scoped into C1b-11k-a-a (seam, D-Tool-27 tableBare + D-Tool-28
-  imageBarePStrong) + C1b-11k-a-b (the migration; resolves L-013). After
-  C1b-11k-a-b, C1b-DONE proves 20/20, then posts.json deletion is unblocked.
+  imageBarePStrong, DONE) + C1b-11k-a-b (the migration, DONE — resolved
+  L-013; feed.json 19 -> 20 entries). ALL series EN posts are now migrated;
+  the next milestone is C1b-DONE, which proves 20/20, then posts.json deletion
+  is unblocked.
 - B1 Renderer remaining block types (pullquote, resourceList, callout,
   footnotes, attachment). depends on: 09
 - 10b List item as collapsible panel: title toggles the excerpt + a
