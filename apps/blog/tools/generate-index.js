@@ -19,6 +19,13 @@ const OUTPUT_FILE = path.join(__dirname, "..", "assets", "data", "feed.json");
 
 const EXCERPT_LENGTH = 150;
 
+// The series `contents` post is the AUTHORITATIVE source of the author's own
+// 1..23 series numbering (its single `table` block carries the source grid
+// verbatim). We parse the "N: <title>" cell anchors to map each series slug
+// to its integer seriesOrder (C1b-18). Non-series posts carry seriesOrder=null.
+const SERIES_ORDER_SOURCE_SLUG =
+  "a-contemporary-history-of-the-muslim-world-contents";
+
 // Minimal HTML entity decoder for the common named + numeric entities
 // that survive parser.js's stripHtml (which only handles tags and &nbsp;).
 const NAMED_ENTITIES = {
@@ -87,6 +94,55 @@ function buildExcerpt(blocks) {
 }
 
 /**
+ * Derive the series order (1..23) from the AUTHORITATIVE `contents` post.
+ * Its single `table` block carries the source grid verbatim; each numbered
+ * cell begins with "N: <title>" (or "N. <title>") as the anchor text, and the
+ * anchor href ends in the series post's slug (language-agnostic). We map that
+ * slug -> N. Returns {} if the source post is absent (non-series build).
+ */
+function buildSeriesOrderMap(contentRoot) {
+  const sourceFile = path.join(
+    contentRoot,
+    "en",
+    `${SERIES_ORDER_SOURCE_SLUG}.json`,
+  );
+  if (!fs.existsSync(sourceFile)) return {};
+
+  let source;
+  try {
+    source = JSON.parse(fs.readFileSync(sourceFile, "utf8"));
+  } catch (err) {
+    console.warn(
+      `⚠️  Warning: could not parse series-order source ${sourceFile}: ${err.message}`,
+    );
+    return {};
+  }
+
+  const blocks = Array.isArray(source.blocks) ? source.blocks : [];
+  const table = blocks.find((b) => b && b.type === "table");
+  if (!table || typeof table.content !== "string") return {};
+
+  const map = {};
+  const anchorRe = /<a\b[^>]*href="([^"]*)"[^>]*>([\s\S]*?)<\/a>/gi;
+  let m;
+  while ((m = anchorRe.exec(table.content)) !== null) {
+    const href = m[1];
+    // Strip inner tags/entities from the anchor text; the numbered cell
+    // reads "N: <title>" / "N. <title>". The duplicate (thumbnail) anchor is
+    // empty and skipped by the numbering test below.
+    const text = m[2].replace(/<[^>]*>/g, "").trim();
+    const numMatch = text.match(/^(\d+)\s*[:.]/);
+    if (!numMatch) continue;
+    if (!/twolegsbadblog\.wordpress\.com\//.test(href)) continue;
+    const segments = href.replace(/\/+$/, "").split("/");
+    const slug = segments[segments.length - 1];
+    if (!slug) continue;
+    map[slug] = parseInt(numMatch[1], 10);
+  }
+  return map;
+}
+
+/**
  * Recursively find every content/<lang>/<slug>.json file.
  * Returns [{ lang, slug, file }].
  */
@@ -132,6 +188,10 @@ function main() {
     process.exit(1);
   }
 
+  // C1b-18: the author's own 1..23 series numbering, sourced from the
+  // `contents` post grid. Non-series posts get seriesOrder=null.
+  const seriesOrderMap = buildSeriesOrderMap(CONTENT_DIR);
+
   const index = [];
   for (const { lang, slug, file } of files) {
     let post;
@@ -151,6 +211,10 @@ function main() {
       title: decodeEntities(String(post.title || "")),
       date: post.date,
       lang,
+      seriesOrder:
+        lang === "en" && Object.hasOwn(seriesOrderMap, slug)
+          ? seriesOrderMap[slug]
+          : null,
       excerpt: buildExcerpt(post.blocks),
     });
   }

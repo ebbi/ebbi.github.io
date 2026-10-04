@@ -355,6 +355,7 @@ html`) into content/en/. Census MEASURED at recon (not pre-committed);
   the recovered 14th image is `270px-miqbal4.jpg` (src verbatim, entities
   preserved); 1 embed raw `<iframe>` verbatim with `&#038;` preserved
   (D-Tool-21). L-012 authored (resolved by C1b-11h-b). Non-regression: pilot
+
   80 / ctn 34 (quote[3] len=240) / update 2 / part-10..22 ALL IDENTICAL.
 
 - C1b-11h-b Migrate
@@ -868,6 +869,19 @@ civil-war-2`, date 2016-06-04) from the live HTML (`--from html`) into
   (list view) ONLY — NOT the extraction seam or import-post.js. Revisits 08's
   list presentation; overlaps 10b. Depends on: C1b-17 (all series present).
   See HANDOFF-C1b-17.md for the grid-order source.
+  STATUS: DONE (2026). generate-index.js derives an integer `seriesOrder`
+  (1..23) per EN series entry from the AUTHORITATIVE `contents` post grid
+  (buildSeriesOrderMap parses the single `table` block's "N: <title>" cell
+  anchors -> slug); non-series entries (`update`, `controlling-the-narrative`,
+  the `contents` index post itself) carry `seriesOrder: null`. app.js
+  renderList partitions the visible entries into series (integer seriesOrder)
+  and non-series, emits the series FIRST in reading order (1 -> 23) and the
+  non-series after it in the feed's date-desc order (stable; same markup and
+  classes). feed.json regenerated: 26 entries, 23 series with seriesOrder
+  1..23, 3 non-series null. Ascending-date rank == grid order 23/23 (the
+  fallback/validation). NO seam change; import-post.js untouched. Zero
+  non-regression: all 26 committed content/en/\*.json re-extract
+  BYTE-IDENTICAL from cache. No LOSS_LEDGER row (no loss). depends on: C1b-17.
 
 ## Now
 

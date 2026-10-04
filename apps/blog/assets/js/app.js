@@ -88,6 +88,10 @@
   /**
    * Render the home/list view.
    * Milestone 08: namespaced item classes; list is the single filter site.
+   * C1b-18: the series is grouped/sorted by integer `seriesOrder` so the
+   * reader sees the series in READING ORDER (1 -> 23); non-series posts
+   * (`update`, `controlling-the-narrative`, any future post) keep the default
+   * date-desc order from feed.json.
    * @param {{lang: string}} route
    */
   function renderList(route) {
@@ -102,7 +106,15 @@
       return;
     }
 
-    const listHtml = visible
+    // C1b-18: partition into series (integer seriesOrder) and non-series.
+    // The series is emitted FIRST in reading order (1 -> 23); non-series
+    // follow in the feed's date-desc order. Ordering is stable, so entries
+    // without an order keep their relative feed position.
+    const series = visible.filter((p) => Number.isInteger(p.seriesOrder));
+    const rest = visible.filter((p) => !Number.isInteger(p.seriesOrder));
+    series.sort((a, b) => a.seriesOrder - b.seriesOrder);
+    const ordered = series.concat(rest);
+    const listHtml = ordered
       .map(
         (post) => `
       <article class="post-list-item">
