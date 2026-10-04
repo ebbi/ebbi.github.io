@@ -910,6 +910,38 @@ civil-war-2`, date 2016-06-04) from the live HTML (`--from html`) into
   `git rm apps/blog/assets/data/posts.json` is now UNBLOCKED (NOT executed
   here). C1b is COMPLETE; Next advances to B1.
 
+- B1 Renderer remaining block types (pullquote, resourceList, callout,
+  footnotes, attachment); RENDERER-ONLY. Adds four cases to renderBlock()
+  (pullquote -> blockquote.pullquote with optional cite; resourceList ->
+  ul.resource-list innerHTML; callout -> aside.callout > callout content
+  div; attachment -> figure.attachment with a link + optional figcaption)
+  and an additive, new-class-only Milestone B1 block to style.css.
+  Trusted-markup fields (pullquote.content, resourceList.content,
+  callout.content) -> innerHTML; plain-text fields (pullquote.citation,
+  attachment.caption, attachment.label) -> textContent via decodeEntities()
+  (B1-D6, restates B1a-D1). footnotes already existed
+  (C1-tool-seam-footnotes); B1 VERIFIED it and did NOT re-add it. NO seam
+  change; import-post.js untouched (seam frozen through D-Tool-29). The four
+  new types are renderer-ready but unreachable until a FUTURE seam extension
+  emits them (defensive; each case returns null for an unusable block).
+  depends on: 09.
+  STATUS: DONE (2026). Four cases added to renderBlock() before the default
+  case (pullquote/resourceList/callout/attachment); all pre-existing live
+  types byte-identical in the switch; the four new cases are pure additions.
+  style.css gained ONE additive Milestone B1 block (pullquote, pullquote
+  content, pullquote citation, callout, callout info modifier, callout
+  content, resource-list, attachment, attachment link, attachment caption)
+  reusing existing tokens, logical properties only, RTL-safe; NO existing
+  block edited. node --check PASS; test-integrity INTEGRITY OK; node -e
+  smoke test PASS for all four types (pullquote -> BLOCKQUOTE.pullquote with
+  a citation; resourceList -> UL.resource-list innerHTML; callout ->
+  ASIDE.callout.callout--info > callout content div; attachment ->
+  FIGURE.attachment > A with href + FIGCAPTION); empty/unusable blocks return
+  null (pullquote/resourceList/callout without content; attachment without
+  src). Reachability: the four types are NOT emitted by any content file nor
+  by the frozen seam; they are renderer-ready for a future seam extension.
+  No content file written; no seam change. Next (10b) authored at this close.
+
 ## Now
 
 - 07 App Shell & Toolbars: fixed top/bottom toolbars, drawer,
@@ -921,8 +953,6 @@ civil-war-2`, date 2016-06-04) from the live HTML (`--from html`) into
 
 ## Next (order per depends-on; each authored at the previous chat's close)
 
-- B1 Renderer remaining block types (pullquote, resourceList, callout,
-  footnotes, attachment). depends on: 09
 - 10b List item as collapsible panel: title toggles the excerpt + a
   "read full post" link (mobile-first; keyboard-accessible). Revisits
   08's list presentation. depends on: C1b

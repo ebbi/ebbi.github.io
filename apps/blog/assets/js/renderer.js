@@ -123,6 +123,71 @@ window.BlogRenderer = {
         embedDiv.innerHTML = block.content || "";
         return embedDiv;
 
+      case "pullquote": {
+        // B1-D1: content is plain text (tags stripped, entities preserved)
+        // — the same contract as quote (D-Tool-15); citation is optional
+        // plain text. B1-D6: trusted-markup fields -> innerHTML; plain-text
+        // fields -> textContent via decodeEntities().
+        if (!block.content) return null;
+        const pullquote = document.createElement("blockquote");
+        pullquote.className = "pullquote";
+        const pullquoteBody = document.createElement("div");
+        pullquoteBody.className = "pullquote__content";
+        pullquoteBody.innerHTML = block.content;
+        pullquote.appendChild(pullquoteBody);
+        if (block.citation) {
+          const pullquoteCite = document.createElement("cite");
+          pullquoteCite.className = "pullquote__citation";
+          pullquoteCite.textContent = decodeEntities(block.citation);
+          pullquote.appendChild(pullquoteCite);
+        }
+        return pullquote;
+      }
+
+      case "resourceList": {
+        // B1-D2: content is the inner HTML of a source list (outer tag
+        // omitted), mirroring footnotes/list; rendered as a classed <ul>.
+        if (!block.content) return null;
+        const resourceList = document.createElement("ul");
+        resourceList.className = "resource-list";
+        resourceList.innerHTML = block.content;
+        return resourceList;
+      }
+
+      case "callout": {
+        // B1-D3: content is trusted inner HTML (B1-D6 -> innerHTML).
+        if (!block.content) return null;
+        const callout = document.createElement("aside");
+        callout.className = "callout callout--info";
+        const calloutBody = document.createElement("div");
+        calloutBody.className = "callout__content";
+        calloutBody.innerHTML = block.content;
+        callout.appendChild(calloutBody);
+        return callout;
+      }
+
+      case "attachment": {
+        // B1-D4: src is a required URL; caption/label are optional plain
+        // text (B1-D6 -> textContent via decodeEntities()).
+        if (!block.src) return null;
+        const attachment = document.createElement("figure");
+        attachment.className = "attachment";
+        const attachmentLink = document.createElement("a");
+        attachmentLink.className = "attachment__link";
+        attachmentLink.href = block.src;
+        attachmentLink.textContent = block.label
+          ? decodeEntities(block.label)
+          : block.src;
+        attachment.appendChild(attachmentLink);
+        if (block.caption) {
+          const attachmentCaption = document.createElement("figcaption");
+          attachmentCaption.className = "attachment__caption";
+          attachmentCaption.textContent = decodeEntities(block.caption);
+          attachment.appendChild(attachmentCaption);
+        }
+        return attachment;
+      }
+
       default:
         console.warn(
           "BlogRenderer: Unknown block type encountered:",

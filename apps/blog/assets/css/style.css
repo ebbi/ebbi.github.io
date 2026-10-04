@@ -550,3 +550,105 @@ html[dir="rtl"] .app-panel[aria-hidden="false"] .app-panel__content {
   color: var(--accent);
   text-decoration: underline;
 }
+
+/* =========================================================
+   Milestone B1 — Renderer remaining block types
+   Additive; NEW classes only (no existing block edited).
+   Reuses tokens; logical properties only; RTL-safe.
+   ========================================================= */
+
+/* ---------- pullquote ---------- */
+.pullquote {
+  margin: 16px 0;
+  padding-inline-start: 16px;
+  border-inline-start: 4px solid var(--accent);
+  border-radius: var(--radius);
+  background: var(--surface);
+  color: var(--text);
+}
+.pullquote__content {
+  margin: 0;
+  padding: 12px 16px;
+  font-size: 1.15rem;
+  font-style: italic;
+  line-height: 1.5;
+}
+.pullquote__citation {
+  display: block;
+  padding: 0 16px 12px;
+  font-size: 0.9rem;
+  font-style: normal;
+  color: var(--text-muted);
+}
+.pullquote__citation::before {
+  content: "— ";
+}
+
+/* ---------- callout ---------- */
+.callout {
+  display: block;
+  margin: 16px 0;
+  padding: 14px 16px;
+  border-radius: var(--radius);
+  border-inline-start: 4px solid var(--accent);
+  background: var(--surface-2);
+  color: var(--text);
+}
+.callout--info {
+  border-inline-start-color: var(--accent);
+}
+.callout__content {
+  margin: 0;
+}
+.callout__content > :first-child {
+  margin-block-start: 0;
+}
+.callout__content > :last-child {
+  margin-block-end: 0;
+}
+
+/* ---------- resourceList ---------- */
+.resource-list {
+  margin: 16px 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.resource-list li {
+  margin: 0;
+  padding: 12px 16px;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  background: var(--surface);
+  transition: background var(--transition);
+}
+.resource-list li:hover {
+  background: var(--surface-2);
+}
+.resource-list a {
+  color: var(--accent);
+}
+
+/* ---------- attachment ---------- */
+.attachment {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 16px 0;
+  padding: 12px 16px;
+  border-radius: var(--radius);
+  border: 1px dashed var(--border);
+  background: var(--surface);
+}
+.attachment__link {
+  font-weight: 600;
+  color: var(--accent);
+  text-decoration: underline;
+  word-break: break-word;
+}
+.attachment__caption {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
