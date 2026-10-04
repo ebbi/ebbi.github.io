@@ -21,6 +21,7 @@ in a final fidelity check before C1b-DONE. Silent loss is prohibited.
 | L-011 | a-contemporary-history-...-part-17..22 (live)              | image         | Legacy WP.com caption-shortcode images are emitted as <figure data-shortcode="caption" class="wp-caption aligncenter                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       | alignnone"><img ...><figcaption class="wp-caption-text">...</figcaption></figure> (no wp-block-image wrapper). The D-Tool-9 seam had NO rule for figure.wp-caption, so the loop skipped the block and its <img> was silently lost (unrecorded until C1b-09a). Affects every C1b series post. | 7 (part-18) +14 (part-19) +9 (part-20) +14 (part-21) +9 (part-22) +6 (part-17, TBD at C1b-09b) | resolved                                                                                                        | C1b-09a (D-Tool-22); slugs re-migrated |
 | L-012 | a-contemporary-history-...-part-9-pakistan-1979 (live)     | image         | Legacy WP.com inline image emitted as a CLASS-LESS bare <div><img .../></div> (no class attribute at all). The D-Tool-9 seam (frozen through D-Tool-25) had NO rule for it, so the loop's skip-and-advance logic dropped the <div> and the <img> tag-by-tag and the image was SILENTLY lost (the same defect shape as L-009/L-011).                                                                                                                                                                                                                                                                                                                                                                                                        | 1 of 43 blocks (`270px-miqbal4.jpg`, data-attachment-id 9237)                                                                                                                                                                                                                                | resolved                                                                                       | C1b-11h-b (part-9 re-migrated; D-Tool-26 frozen in C1b-11h-a)                                                   |
 | L-013 | a-contemporary-history-of-the-muslim-world-contents (live) | image + table | The post body is a legacy WP.com CLASS-LESS bare `<table width="916">` layout grid (colgroup/tbody/12 tr/48 td; 23 of the 24 `<img>` live inside `<td>` cells). The D-Tool-9 seam (frozen through D-Tool-26) had NO rule for a bare top-level `<table>` (its only table rule keys on `<figure class="wp-block-table">`), so the loop's skip-and-advance logic stepped past `<table>`/`<td>` tag-by-tag, LEAKING the `<td>`-nested `<p><img>` markup into paragraph text (13 occurrences; the L-009 defect shape) AND DROPPING entirely every `<img>` NOT wrapped in a `<p>` (the second-cell thumbnails). The DROPPED images are SILENT to `*_para_leftover`; only the raw-`<img>` (24) vs rendered-image (0) reconciliation exposes them. | 24 images (0 rendered) + 13 leaked-into-paragraph fragments                                                                                                                                                                                                                                  | resolved                                                                                       | C1b-11k-a-b (contents post re-migrated; D-Tool-27 tableBare + D-Tool-28 imageBarePStrong frozen in C1b-11k-a-a) |
+| L-014 | a-contemporary-history-...-part-1 .. part-6 (live)         | (whole posts) | SCOPING LOSS (not an extraction loss): the C1b migration chain began at part-7 (C1b-08, 2016-06-20) and walked FORWARD; the six EARLIEST series posts — parts 1–6 (2015-11-27 .. 2016-06-04) — were never assigned a milestone and were never migrated. The series `contents` grid (the authoritative author numbering 1..23) lists them; the live blog index confirms them. Discovery: human review of the list view after C1b-11k-a-b (the list showed #7.. onward; "missing blogs and the order is not correct").                                                                                                                                                                                                                       | 6 whole posts: part-1, part-2, part-3, part-4, part-5, part-6 (series posts 1..6 of 23)                                                                                                                                                                                                      | open                                                                                           | C1b-12..C1b-17 (one post per chat; parts 1–6 migrated ascending); then revised C1b-DONE proves 25/25            |
 
 Notes:
 
@@ -265,3 +266,29 @@ cellpadding="0">` layout grid (colgroup/tbody/12 tr/48 td; alternating
   frozen through D-Tool-28). After this, ALL series EN posts are migrated;
   C1b-DONE proves 20/20, then posts.json deletion is unblocked.
   (C1b-11k-a-b note)
+- L-014: discovered by HUMAN review of the list view after C1b-11k-a-b. The
+  C1b-11k-a-b note's claim "ALL series EN posts are migrated" was WRONG: the
+  chain began at part-7 (C1b-08) and walked forward, so the six EARLIEST
+  series posts (parts 1–6, dated 2015-11-27 .. 2016-06-04) were never
+  assigned a milestone and were never migrated. The AUTHORITATIVE series
+  numbering is the `contents` post's own grid (1..23); the live blog index
+  (https://twolegsbadblog.wordpress.com/) confirms the same set. The correct
+  series total is 23 posts (parts 1–22 + "Jews in Palestine before Israel"),
+  plus 2 non-series EN posts (`update`, `controlling-the-narrative`) = 25 EN
+  content files (NOT 20). This is a SCOPING/planning loss, NOT an extraction
+  loss: no seam class is involved and NO shipped content file is affected
+  (the 20 present files remain faithful). The missing posts (grid order):
+  part-1 `2015/11/27/what-we-have-forgotten-and-they-havent-a-history-of-
+political-islam-and-the-west/`; part-2 `2015/12/13/…-part-2/`;
+  part-3 `2016/02/21/a-history-of-political-islam-and-the-west-part-3-iran-
+revolution-1/`; part-4 `2016/03/26/…part-4-iran-revolution-2/`;
+  part-5 `2016/05/19/a-contemporary-history-of-the-muslim-world-part-5-the-
+lebanese-civil-war-1/`; part-6 `2016/06/04/…part-6-the-lebanese-civil-
+war-2/`. SLUG NOTE: parts 1–4 carry legacy non-uniform slugs (NOT the
+  `a-contemporary-history-of-the-muslim-world-part-N-…` pattern); we keep
+  the LIVE canonical slugs (faithful; no 404s; consistent with part-13's
+  `protected-` prefix and part-15's LONG slug). Resolution: migrate parts
+  1–6 ascending (C1b-12..C1b-17, one post per chat), add a series-order
+  field/sort to the derived index + list view (C1b-18), then a REVISED
+  C1b-DONE proves 25/25.
+  (L-014; C1b-11k-a-b-discovery note)

@@ -574,8 +574,75 @@ html`) into content/en/. Census MEASURED at recon (NOT pre-committed).
   Resolved L-013. No new seam class; import-post.js untouched. Non-regression:
   pilot 80 {image:15,paragraph:62,quote:2,table:1}; controlling-the-narrative
   34 {image:5,paragraph:24,quote:4,footnotes:1}, quote[3] len=240; update 2
-  {paragraph:2}; part-7..22 byte-identical to their committed files. ALL series
-  EN posts now migrated; C1b-DONE proves 20/20. depends on: C1b-11k-a-a.
+  {paragraph:2}; part-7..22 byte-identical to their committed files. NOTE
+  (CORRECTED by L-014): the claim "ALL series EN posts now migrated; C1b-DONE
+  proves 20/20" was WRONG. The C1b chain began at part-7 (C1b-08) and walked
+  FORWARD; the six EARLIEST series posts (parts 1–6, 2015-11-27 .. 2016-06-04)
+  were never assigned a milestone. The series total is 23 posts (parts 1–22 +
+  "Jews in Palestine before Israel"); +2 non-series (`update`,
+  `controlling-the-narrative`) = 25 EN files. See L-014; migrations C1b-12..17;
+  the REVISED C1b-DONE proves 25/25. depends on: C1b-11k-a-a.
+
+- C1b-12 Migrate SERIES PART 1 (`2015/11/27/what-we-have-forgotten-and-they-
+havent-a-history-of-political-islam-and-the-west`, date 2015-11-27) from the
+  live HTML (`--from html`) into content/en/. FIRST of the six EARLIEST series
+  posts (parts 1–6) missed by the original chain (L-014); the new migration
+  track begins here, ascending. SLUG NOTE: parts 1–4 carry legacy NON-UNIFORM
+  slugs (NOT the `...muslim-world-part-N-...` pattern); KEEP the live canonical
+  slug (faithful; no 404s). Confirm slug/title/date from the live post AND (if
+  present) posts.json. Census MEASURED at recon (the earliest posts are the
+  richest in legacy markup — recon may reveal a NEW seam class; if so, STOP and
+  re-scope per the Scope Fence). feed.json 20 -> 21 entries (date-desc). No
+  new seam class expected a priori (seam frozen through D-Tool-28).
+  depends on: C1b-11k-a-b.
+
+- C1b-13 Migrate SERIES PART 2
+  (`2015/12/13/what-we-have-forgotten-and-they-havent-a-history-of-political-
+islam-and-the-west-part-2`, date 2015-12-13) from the live HTML
+  (`--from html`) into content/en/. Legacy non-uniform slug; KEEP the live
+  canonical slug. Census MEASURED at recon. feed.json 21 -> 22 entries
+  (date-desc). No new seam class expected. depends on: C1b-12.
+
+- C1b-14 Migrate SERIES PART 3
+  (`2016/02/21/a-history-of-political-islam-and-the-west-part-3-iran-
+revolution-1`, date 2016-02-21) from the live HTML (`--from html`) into
+  content/en/. Legacy non-uniform slug (`a-history-of-political-islam-...`);
+  KEEP the live canonical slug. Census MEASURED at recon. feed.json
+  22 -> 23 entries (date-desc). No new seam class expected. depends on: C1b-13.
+
+- C1b-15 Migrate SERIES PART 4
+  (`2016/03/26/a-history-of-political-islam-and-the-west-part-4-iran-
+revolution-2`, date 2016-03-26) from the live HTML (`--from html`) into
+  content/en/. Legacy non-uniform slug; KEEP the live canonical slug. Census
+  MEASURED at recon. feed.json 23 -> 24 entries (date-desc). No new seam class
+  expected. depends on: C1b-14.
+
+- C1b-16 Migrate SERIES PART 5
+  (`2016/05/19/a-contemporary-history-of-the-muslim-world-part-5-the-lebanese-
+civil-war-1`, date 2016-05-19) from the live HTML (`--from html`) into
+  content/en/. Uniform `...muslim-world-part-5-...` slug (like parts 7+).
+  Census MEASURED at recon. feed.json 24 -> 25 entries (date-desc). No new
+  seam class expected. depends on: C1b-15.
+
+- C1b-17 Migrate SERIES PART 6
+  (`2016/06/04/a-contemporary-history-of-the-muslim-world-part-6-the-lebanese-
+civil-war-2`, date 2016-06-04) from the live HTML (`--from html`) into
+  content/en/. Uniform `...muslim-world-part-6-...` slug. Census MEASURED at
+  recon. feed.json 25 -> 26 entries (date-desc). No new seam class expected.
+  After it, ALL 23 series EN posts are migrated (L-014 closed).
+  depends on: C1b-16.
+
+- C1b-18 Add SERIES-ORDER to the derived index + list view. Give each feed
+  entry an integer `seriesOrder` (1..23) for the series posts, sourced from
+  the `contents` post's authoritative grid order (the author's own 1..23
+  numbering), with ascending-date as the fallback/validation. The list view
+  (app.js renderList) sorts/groups the series by `seriesOrder` so the reader
+  sees the series in reading order (1 -> 23), while non-series posts
+  (`update`, `controlling-the-narrative`, any future post) keep the default
+  date-desc ordering. Touches generate-index.js (derived index) + app.js
+  (list view) ONLY — NOT the extraction seam or import-post.js. Revisits 08's
+  list presentation; overlaps 10b. Depends on: C1b-17 (all series present).
+  See HANDOFF-C1b-17.md for the grid-order source.
 
 ## Now
 
@@ -620,6 +687,21 @@ html`) into content/en/. Census MEASURED at recon (NOT pre-committed).
   L-013; feed.json 19 -> 20 entries). ALL series EN posts are now migrated;
   the next milestone is C1b-DONE, which proves 20/20, then posts.json deletion
   is unblocked.
+  CORRECTION (L-014): the "20/20" total was WRONG — the chain began at part-7
+  and walked forward, so series parts 1–6 (the six EARLIEST posts) were never
+  migrated. The series total is 23 posts (parts 1–22 + "Jews in Palestine
+  before Israel") + 2 non-series (`update`, `controlling-the-narrative`) = 25
+  EN files. NEW migration track: C1b-12 (part-1), C1b-13 (part-2), C1b-14
+  (part-3), C1b-15 (part-4), C1b-16 (part-5), C1b-17 (part-6) — one post per
+  chat (context-drift risk is real: the earliest posts carry the richest
+  legacy markup; C1b-11e/11h/11k each STOPPED on a new class). Then C1b-18
+  adds a series-order field/sort to the derived index + list view, and the
+  REVISED C1b-DONE proves 25/25 before posts.json deletion is unblocked.
+- C1b-12..17 (series parts 1–6) — the six missed earliest EN posts (L-014);
+  one per chat, ascending. Each authored at the previous chat's close.
+- C1b-18 series-order (derived index + list view); depends on C1b-17.
+- C1b-DONE (REVISED) — final check: proves 25/25 (23 series + 2 non-series);
+  then posts.json deletion is unblocked.
 - B1 Renderer remaining block types (pullquote, resourceList, callout,
   footnotes, attachment). depends on: 09
 - 10b List item as collapsible panel: title toggles the excerpt + a

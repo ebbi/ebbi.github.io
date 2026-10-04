@@ -1,40 +1,50 @@
-# Milestone C1b-DONE — Prove 20/20 EN posts migrated (final C1b check)
+# Milestone C1b-DONE — Prove 25/25 EN posts migrated (final C1b check)
 
 Status: next
-depends on: C1b-11k-a-b
+depends on: C1b-18
 
 ## Scope fence (read first)
 
 This milestone is the FINAL C1b fidelity check. It migrates NOTHING new: it
-PROVES that all 20 EN content files are present, faithful, and byte-consistent
+PROVES that all 25 EN content files are present, faithful, and byte-consistent
 with the seam as frozen through D-Tool-28 (C1b-11k-a-a), then UNBLOCKS the
 deletion of the UNTRUSTED posts.json. It is a VERIFICATION-ONLY milestone:
 NO seam change, NO content migration, NO new class. If a NEW structural class
-appears while re-verifying (it should NOT — the last unmigrated EN post was
-the series contents post migrated in C1b-11k-a-b), STOP and re-scope (its own
-milestone) rather than silently "fixing" it here.
+appears while re-verifying (it should NOT — the last unmigrated series EN post
+was part-6, migrated in C1b-17), STOP and re-scope (its own milestone) rather
+than silently "fixing" it here.
+
+HISTORY (L-014): an earlier revision of this milestone said "20/20" and
+"ALL series EN posts now migrated". That was WRONG: the C1b chain began at
+part-7 (C1b-08) and walked forward, so the six EARLIEST series posts (parts
+1–6) were never migrated. The series total is 23 posts (parts 1–22 + "Jews in
+Palestine before Israel"); plus 2 non-series EN posts (`update`,
+`controlling-the-narrative`) = 25 EN content files. Parts 1–6 were migrated in
+C1b-12..C1b-17 (one post per chat). C1b-18 added the series-order field/sort
+to the derived index + list view. This milestone proves 25/25.
 
 ## Objective
 
 By the close of C1b-DONE:
 
-- All 20 EN content files exist under content/en/ (19 series + `update`),
-  each with slug/lang/title/date/blocks, extracted `--from html`.
+- All 25 EN content files exist under content/en/: the 23 series posts
+  (parts 1–22 + "Jews in Palestine before Israel") + 2 non-series
+  (`update`, `controlling-the-narrative`), each with slug/lang/title/date/
+  blocks, extracted `--from html`.
 - The final fidelity census matches the per-post expected censuses (the
   table below), every `*_para_leftover` = 0, and every raw `<img>`/`<iframe>`
   is accounted for (rendered block count EQUALS the live entry-content raw
   count) — no silent loss (NEW-1/NEW-2).
-- feed.json has 20 entries (date-desc), verified POSITIONALLY against the
-  live dates; the series contents post sits at idx 15 (between part-11 idx 14
-  and part-10 idx 16).
-- The LOSS_LEDGER is in its final state: L-001, L-010 = the only OPEN/DEFERRED
-  rows; L-002..L-009, L-011, L-012, L-013 = resolved. (L-001 is a
-  content-SOURCE loss, resolved-by-design because C1b migrates from the live
-  HTML, not posts.json; L-010 is the deferred feed-excerpt leak, a
-  generate-index/list-view milestone, NOT a C1b seam issue.)
+- feed.json has 25 entries, verified POSITIONALLY against the live dates;
+  every series entry carries the correct integer `seriesOrder` (1..23) and
+  the list view reads the series in reading order (1 -> 23).
+- The LOSS_LEDGER is in its final state: L-001 (content-source; resolved by
+  design because C1b migrates from the live HTML, not posts.json) and L-010
+  (deferred feed-excerpt leak, a generate-index/list-view concern) are the
+  only non-resolved rows; L-002..L-009, L-011, L-012, L-013, L-014 = resolved.
 - test-integrity.js INTEGRITY OK at close; hash-state.js captured.
 - The human is given a single, explicit, gated instruction to delete
-  assets/data/posts.json (now that 20/20 is proven), plus the exact commit
+  assets/data/posts.json (now that 25/25 is proven), plus the exact commit
   command for this milestone's own files. The deletion is UNBLOCKED here;
   whether to perform it in this chat or a follow-up is a human decision —
   record it in the handoff.
@@ -42,7 +52,7 @@ By the close of C1b-DONE:
 ## Opening reads (mandatory, before any write)
 
 1. apps/blog/HANDOFF-CURRENT.txt
-2. apps/blog/HANDOFF-C1b-11k-a-b.md
+2. apps/blog/HANDOFF-C1b-18.md
 3. apps/blog/PARTIAL.md
 4. apps/blog/tools/milestones/C1b-DONE.md (this file)
 5. apps/blog/tools/CONTEXT.md
@@ -56,50 +66,67 @@ By the close of C1b-DONE:
 - `git status --porcelain` (expect clean)
 - `node apps/blog/tools/test-integrity.js` (expect INTEGRITY OK)
 - `node apps/blog/tools/hash-state.js` (record SHAs; confirm LOCKED_DECISIONS
-  matches C1b-11k-a-b's handoff)
+  matches C1b-18's handoff)
 
 ## Interfaces
 
-### Verified (no new content file): content/en/*.json (20 files)
+### Verified (no new content file): content/en/\*.json (25 files)
 
     Re-extract EVERY committed content/en/*.json from the live HTML
     (`--from html`, cache-first) and confirm BYTE-IDENTICAL to the committed
-    file. This is the 20/20 proof.
+    file. This is the 25/25 proof.
 
 ### Verified: apps/blog/assets/data/feed.json
 
-    Regenerated by generate-index.js from content/ ; exactly 20 entries
-    (date-desc), verified POSITIONALLY.
+    Regenerated by generate-index.js from content/ ; exactly 25 entries
+    (date-desc), verified POSITIONALLY; every series entry carries the
+    correct integer seriesOrder (1..23); the list view reads the series in
+    reading order.
 
 ### Modified (ONLY if verification needs it — expected NO change):
 
     apps/blog/tools/LOSS_LEDGER.md — only to record the final fidelity-check
     result (e.g. L-001 closure note) if the milestone prose requires it.
 
-## Per-post expected censuses (the 20/20 proof table)
+## Per-post expected censuses (the 25/25 proof table)
 
-| slug                                                                                              | census                                             |
-| ------------------------------------------------------------------------------------------------- | -------------------------------------------------- |
-| jews-in-palestine-before-israel (pilot)                                                           | {image:15,paragraph:62,quote:2,table:1} (80)       |
-| controlling-the-narrative                                                                         | {image:5,paragraph:24,quote:4,footnotes:1} (34); quote[3] len=240 |
-| update                                                                                            | {paragraph:2} (2)                                  |
-| a-contemporary-history-of-the-muslim-world-11-afghanistan-3                                       | {image:9,paragraph:36,embed:7} (52)                |
-| a-contemporary-history-of-the-muslim-world-contents                                               | {table:1,image:1,paragraph:2} (4)                  |
-| a-contemporary-history-of-the-muslim-world-part-10-afghanistan-pakistan-2                         | {image:18,paragraph:40,embed:1} (59)               |
-| a-contemporary-history-of-the-muslim-world-part-12-saudi-arabia-and-the-arab-cold-war             | {image:12,paragraph:43,embed:2} (57)               |
-| a-contemporary-history-of-the-muslim-world-part-14-yemen-2                                        | {image:9,paragraph:23} (32)                        |
-| a-contemporary-history-of-the-muslim-world-part-15-the-afghan-arabs-foreign-fighters-in-afghanistan | {image:13,paragraph:67,embed:1} (81)             |
-| a-contemporary-history-of-the-muslim-world-part-16-algeria-1                                      | {image:15,paragraph:71,embed:2} (88)               |
-| a-contemporary-history-of-the-muslim-world-part-17-algeria-2                                      | {image:13,paragraph:59,embed:4} (76)               |
-| a-contemporary-history-of-the-muslim-world-part-18-algeria-3                                      | {image:14,paragraph:48,embed:1} (63)               |
-| a-contemporary-history-of-the-muslim-world-part-19-bosnia-1                                       | {image:17,paragraph:51} (68)                       |
-| a-contemporary-history-of-the-muslim-world-part-20-kosovo-1                                       | {image:12,paragraph:57,embed:1} (70)               |
-| a-contemporary-history-of-the-muslim-world-part-21-bosnia-2                                       | {image:19,paragraph:82,embed:3} (104)              |
-| a-contemporary-history-of-the-muslim-world-part-22-kosovo-2                                       | {image:13,paragraph:55} (68)                       |
-| a-contemporary-history-of-the-muslim-world-part-7-the-lebanese-civil-war-3                        | {image:11,paragraph:32,embed:3} (46)               |
-| a-contemporary-history-of-the-muslim-world-part-8-afghanistan-1                                   | {paragraph:40,image:14,embed:3} (57)               |
-| a-contemporary-history-of-the-muslim-world-part-9-pakistan-1979                                   | {image:14,paragraph:28,embed:1} (43)               |
-| protected-a-contemporary-history-of-the-muslim-world-part-13-yemen-1                              | {image:13,paragraph:37,embed:2} (52)               |
+Series posts 1–6 (migrated C1b-12..C1b-17; censuses finalized at each recon —
+fill/confirm from each handoff; values below are the grid-ordering anchors, NOT
+pre-committed counts):
+
+| order | slug                                                                                    | census (from recon)      |
+| ----- | --------------------------------------------------------------------------------------- | ------------------------ |
+| 1     | what-we-have-forgotten-and-they-havent-a-history-of-political-islam-and-the-west        | <from HANDOFF-C1b-12.md> |
+| 2     | what-we-have-forgotten-and-they-havent-a-history-of-political-islam-and-the-west-part-2 | <from HANDOFF-C1b-13.md> |
+| 3     | a-history-of-political-islam-and-the-west-part-3-iran-revolution-1                      | <from HANDOFF-C1b-14.md> |
+| 4     | a-history-of-political-islam-and-the-west-part-4-iran-revolution-2                      | <from HANDOFF-C1b-15.md> |
+| 5     | a-contemporary-history-of-the-muslim-world-part-5-the-lebanese-civil-war-1              | <from HANDOFF-C1b-16.md> |
+| 6     | a-contemporary-history-of-the-muslim-world-part-6-the-lebanese-civil-war-2              | <from HANDOFF-C1b-17.md> |
+
+Series posts 7–22 + 23 and the non-series posts (already migrated):
+
+| slug                                                                                                | census                                                            |
+| --------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------- |
+| jews-in-palestine-before-israel (pilot; series #23)                                                 | {image:15,paragraph:62,quote:2,table:1} (80)                      |
+| controlling-the-narrative                                                                           | {image:5,paragraph:24,quote:4,footnotes:1} (34); quote[3] len=240 |
+| update                                                                                              | {paragraph:2} (2)                                                 |
+| a-contemporary-history-of-the-muslim-world-11-afghanistan-3                                         | {image:9,paragraph:36,embed:7} (52)                               |
+| a-contemporary-history-of-the-muslim-world-contents (series index; unnumbered)                      | {table:1,image:1,paragraph:2} (4)                                 |
+| a-contemporary-history-of-the-muslim-world-part-10-afghanistan-pakistan-2                           | {image:18,paragraph:40,embed:1} (59)                              |
+| a-contemporary-history-of-the-muslim-world-part-12-saudi-arabia-and-the-arab-cold-war               | {image:12,paragraph:43,embed:2} (57)                              |
+| a-contemporary-history-of-the-muslim-world-part-14-yemen-2                                          | {image:9,paragraph:23} (32)                                       |
+| a-contemporary-history-of-the-muslim-world-part-15-the-afghan-arabs-foreign-fighters-in-afghanistan | {image:13,paragraph:67,embed:1} (81)                              |
+| a-contemporary-history-of-the-muslim-world-part-16-algeria-1                                        | {image:15,paragraph:71,embed:2} (88)                              |
+| a-contemporary-history-of-the-muslim-world-part-17-algeria-2                                        | {image:13,paragraph:59,embed:4} (76)                              |
+| a-contemporary-history-of-the-muslim-world-part-18-algeria-3                                        | {image:14,paragraph:48,embed:1} (63)                              |
+| a-contemporary-history-of-the-muslim-world-part-19-bosnia-1                                         | {image:17,paragraph:51} (68)                                      |
+| a-contemporary-history-of-the-muslim-world-part-20-kosovo-1                                         | {image:12,paragraph:57,embed:1} (70)                              |
+| a-contemporary-history-of-the-muslim-world-part-21-bosnia-2                                         | {image:19,paragraph:82,embed:3} (104)                             |
+| a-contemporary-history-of-the-muslim-world-part-22-kosovo-2                                         | {image:13,paragraph:55} (68)                                      |
+| a-contemporary-history-of-the-muslim-world-part-7-the-lebanese-civil-war-3                          | {image:11,paragraph:32,embed:3} (46)                              |
+| a-contemporary-history-of-the-muslim-world-part-8-afghanistan-1                                     | {paragraph:40,image:14,embed:3} (57)                              |
+| a-contemporary-history-of-the-muslim-world-part-9-pakistan-1979                                     | {image:14,paragraph:28,embed:1} (43)                              |
+| protected-a-contemporary-history-of-the-muslim-world-part-13-yemen-1                                | {image:13,paragraph:37,embed:2} (52)                              |
 
 ## Files to Create
 
@@ -115,7 +142,7 @@ By the close of C1b-DONE:
 
 - apps/blog/tools/import-post.js (seam frozen through D-Tool-28; NO change)
 - apps/blog/tools/LOCKED_DECISIONS.txt (no new decision)
-- every content/en/*.json (byte-identical; verification is read-only)
+- every content/en/\*.json (byte-identical; verification is read-only)
 - apps/blog/assets/data/posts.json (UNTRUSTED; read-only — DELETION is a
   separate, human-gated action, see Task step 8)
 - every other app file (router.js, app.js, parser.js, fetcher.js,
@@ -130,17 +157,20 @@ C1b-11k-a-a. This milestone performs no seam change.
 ## Task
 
 1. Confirm pre-flight (clean tree; INTEGRITY OK; LOCKED_DECISIONS_SHA256
-   matches C1b-11k-a-b).
-2. Confirm all 20 content/en/*.json exist.
-3. Re-extract EVERY committed content/en/*.json from the live HTML
-   (cache-first) and confirm BYTE-IDENTICAL to the committed file (the 20/20
+   matches C1b-18).
+2. Confirm all 25 content/en/\*.json exist (23 series + 2 non-series).
+3. Re-extract EVERY committed content/en/_.json from the live HTML
+   (cache-first) and confirm BYTE-IDENTICAL to the committed file (the 25/25
    proof). For each: confirm the census equals the per-post expected census
-   table above, all `*_para_leftover` = 0, and the raw `<img>`/`<iframe>`
+   table above, all `_\_para_leftover`= 0, and the raw`<img>`/`<iframe>`
    count EQUALS the rendered block count (no silent drop).
 4. Regenerate feed.json (`node apps/blog/tools/generate-index.js`); confirm
-   exactly 20 entries (date-desc), verified POSITIONALLY.
+   exactly 25 entries (date-desc), verified POSITIONALLY; confirm every
+   series entry carries the correct integer seriesOrder (1..23) and the list
+   view reads the series in reading order.
 5. Confirm the LOSS_LEDGER final state: L-001 open (content-source; resolved
-   by design), L-010 deferred (feed excerpt), all others resolved.
+   by design) and L-010 deferred (feed excerpt) are the only non-resolved
+   rows; L-014 flipped to resolved (parts 1–6 migrated).
 6. `node apps/blog/tools/test-integrity.js` -> INTEGRITY OK
 7. `node apps/blog/tools/hash-state.js`
 8. (Human-gated) Provide the explicit command to delete the now-inert
@@ -154,12 +184,13 @@ C1b-11k-a-a. This milestone performs no seam change.
 
 - [ ] git status --porcelain clean at open
 - [ ] test-integrity.js INTEGRITY OK at open
-- [ ] LOCKED_DECISIONS_SHA256 matches C1b-11k-a-b at open
-- [ ] all 20 content/en/*.json present
-- [ ] every committed content file re-extracts BYTE-IDENTICAL from the live HTML (20/20)
-- [ ] every census equals its expected value; all *_para_leftover = 0; raw <img>/<iframe> == rendered block count
-- [ ] feed.json has exactly 20 entries (date-desc) verified POSITIONALLY
-- [ ] LOSS_LEDGER final state confirmed (L-001 open/by-design, L-010 deferred, rest resolved)
+- [ ] LOCKED_DECISIONS_SHA256 matches C1b-18 at open
+- [ ] all 25 content/en/\*.json present (23 series + 2 non-series)
+- [ ] every committed content file re-extracts BYTE-IDENTICAL from the live HTML (25/25)
+- [ ] every census equals its expected value; all \*\_para_leftover = 0; raw <img>/<iframe> == rendered block count
+- [ ] feed.json has exactly 25 entries (date-desc) verified POSITIONALLY
+- [ ] series seriesOrder correct (1..23); list view reads the series in reading order
+- [ ] LOSS_LEDGER final state confirmed (L-001 open/by-design, L-010 deferred, L-014 resolved, rest resolved)
 - [ ] test-integrity.js INTEGRITY OK at close
 - [ ] hash-state.js captured
 - [ ] posts.json deletion UNBLOCKED and the exact command surfaced to the human
@@ -167,7 +198,11 @@ C1b-11k-a-a. This milestone performs no seam change.
 ## Known issues the next chat must NOT mistake for bugs
 
 - posts.json is UNTRUSTED (front-truncated); it is now INERT (C1a-D3). The
-  deletion is gated on 20/20 (this milestone), not before.
+  deletion is gated on 25/25 (this milestone), not before.
+- The series has 23 posts (parts 1–22 + "Jews in Palestine before Israel").
+  The series index post (`...-muslim-world-contents`) is NOT one of the 23.
+- Parts 1–4 carry legacy NON-UNIFORM slugs (NOT the
+  `...muslim-world-part-N-...` pattern); the live canonical slug is used.
 - The series contents post is a SEPARATE slug (NOT part-7/part-8); its census
   is `{table:1,image:1,paragraph:2}` (4 blocks) with 2 EMPTY paragraph blocks.
 - Verbatim `&nbsp;` spacers (D-Tool-16) and inline `<em>`/`<strong>` in
@@ -176,7 +211,8 @@ C1b-11k-a-a. This milestone performs no seam change.
   migrated from; if a cache is missing, the fetch must be HTTP 200 with no
   redirect and no `protected-` prefix (part-13's slug carries `protected-`).
 - Date-desc ordinal: the generator sorts strictly by Date.parse(date)
-  descending; verify the feed index POSITIONALLY.
+  descending; verify the feed index POSITIONALLY. The list view's series
+  reading order is driven by `seriesOrder` (C1b-18), NOT by feed position.
 - L-010 (feed excerpt HTML leak) remains deferred; NOT a C1b seam issue.
 - If a NEW structural class appears, STOP and re-scope (its own milestone).
 
@@ -188,7 +224,7 @@ C1b-11k-a-a. This milestone performs no seam change.
 
 ## Next
 
-After C1b-DONE, C1b is complete: 20/20 EN posts migrated and proven, posts.json
+After C1b-DONE, C1b is complete: 25/25 EN posts migrated and proven, posts.json
 deletion unblocked. The ROADMAP's Next section then advances to the next
 theme (e.g. B1 Renderer remaining block types; 11 Translations & i18n UI).
 Author only that next milestone's file; do not author <next+1>.
