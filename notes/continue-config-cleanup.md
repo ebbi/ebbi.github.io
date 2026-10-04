@@ -135,16 +135,17 @@ spend limits), which is not needed here.
       dir gone; tree clean. (Commit c7cd51c untracked config + PARTIAL.md;
       the later deletion of the working-tree files is uncommitted local
       housekeeping, no git effect since they were already ignored.)
-- [ ] ROTATE the OPENROUTER key (sk-or-v1-…) at openrouter.ai. It IS in
-      git history (commit bcd0812) -> treat as compromised. Rotation
-      (= create new + delete old) is enough; no history rewrite needed
-      unless the repo becomes shared/public.
-- [ ] ROTATE the DEEPSEEK key (sk-868af…) at platform.deepseek.com. NOT
+- [x] ROTATE the OPENROUTER key (sk-or-v1-…) at openrouter.ai. It IS in
+      git history (commit bcd0812) -> treated as compromised. Rotation
+      (= create new + delete old) was enough; no history rewrite needed
+      unless the repo becomes shared/public. DONE (user, 2026).
+- [x] ROTATE the DEEPSEEK key (sk-868af…) at platform.deepseek.com. NOT
       in git, but exposed in chat + Continue session/transcript files.
-- [ ] Put the ROTATED OpenRouter key as a LITERAL into the LIVE/home
+      DONE (user, 2026).
+- [x] Put the ROTATED OpenRouter key as a LITERAL into the LIVE/home
       config `~/.continue/config.yaml` (not the workspace one, which no
       longer exists). The home config is outside git, so literal is safe
-      and avoids the undocumented secret-resolution path.
+      and avoids the undocumented secret-resolution path. DONE (user).
 - [ ] Select the desired model in the Continue panel dropdown (that is
       what chooses the active model; see the section above).
 - [ ] Optional: apps/blog/notes/config.yaml is a THIRD stray 942-byte copy
