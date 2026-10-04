@@ -27,3 +27,9 @@ The requirement so far:
 - The initial target translation languages for the blogs are, Arabic, English, Persian and Thai.
 
 ===============
+
+See notes/continue-config-cleanup.md (added 2026): records the Continue
+extension config dedup, the OpenRouter API key leaked in git history
+(commit bcd0812) that MUST be rotated, the secret-ref fix, and the
+finding that Continue 2.0.0 exposes no approval/permissions config in
+config.yaml (the Agent-panel accept/reject gate is a runtime control).
