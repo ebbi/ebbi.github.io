@@ -19,15 +19,13 @@
  * - Preserved from 06: no second hashchange listener; no hash parsing.
  */
 window.BlogNav = (function () {
-  // Single source within this file for the content-language set.
-  // Localized names (B-5) are content and ship pending review.
-  const LANGS = [
-    { code: "en", name: "English" },
-    { code: "fa", name: "فارسی" },
-    { code: "ar", name: "العربية" },
-    { code: "th", name: "ไทย" },
-  ];
-
+  // Milestone 10c (D-10c-6): the switcher offers ONLY languages that have
+  // content (recon: content/en = 26 files; content/{fa,ar,th} = 0). The
+  // LOCKED_DECISIONS UI-language list is a superset and is NOT shipped
+  // wholesale. Translations are DEFERRED (human gate not signed off), so the
+  // offered set is EN only for now. Adding a language here is the ONLY change
+  // needed once its content/<lang>/ dir has files.
+  const LANGS = [{ code: "en", name: "English" }];
   const NAV_ID = "lang-nav";
   const SELECT_ID = "lang-select";
   const FLAG_SELECTOR = ".lang-flag";

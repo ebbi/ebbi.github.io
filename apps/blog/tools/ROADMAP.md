@@ -1147,6 +1147,47 @@ non-resolved; L-014 resolved. NO seam change; import-post.js untouched
 
 ## Now
 
+- 10c List & panel presentation revamp (gate corrections). SUPERSEDES 10b's
+  per-item collapsible: the LIST is now ONE collapsible panel titled
+  "Two Legs Bad" (DEFAULT OPEN) that REUSES 10b's existing card classes
+  (.post-list-item card + .post-list-item**toggle with its rotating caret +
+  .post-list-item**panel body) so the panel needs ZERO new CSS; each blog
+  entry is a compact, ruled-style table-of-contents row (option B) whose
+  heading IS the navigation link. Removes the per-item panel, the date, the
+  summary text and the "Read full post" link from the list view (D-10c-4,
+  d1: the post view keeps its date; 11 owns post-view date formatting). Three
+  non-blog slugs are excluded entirely from the blog set via a hardcoded
+  deny-list in renderList (controlling-the-narrative, update,
+  a-contemporary-history-of-the-muslim-world-contents; display-only, files
+  stay on disk). Authorized ONE-line override of the EXISTING .post-detail
+  class (margin-inline: 1vh 1vw) plus ONE additive, new-class-only
+  .blog-index block. Touches app.js + style.css + nav.js ONLY — NOT the seam,
+  content, feed.json, router.js or renderer.js. Switcher offers the
+  content-driven language set (recon: EN only; translations DEFERRED, gate
+  unsigned). depends on: C1b-18, 10b.
+  STATUS: DONE (2026). app.js: NON_BLOG_SLUGS deny-list applied after the lang
+  filter, before the C1b-18 partition; renderList emits ONE
+  <article class="post-list-item"> card whose <button
+  class="post-list-item__toggle" aria-expanded="true"
+  aria-controls="blog-panel-body"> (title "Two Legs Bad") controls the
+  <div class="post-list-item__panel" id="blog-panel-body"> holding a
+  <ul class="blog-index"> of ruled rows (<li class="blog-index__item"> >
+  <a class="blog-index__link" href="#/<lang>/post/<slug>">). C1b-18 ordering
+  PRESERVED VERBATIM. ONE delegated click listener (guarded by
+  container.dataset.blogPanelBound). renderPost markup UNCHANGED (post view
+  keeps its date, d1). style.css: EXACTLY two edits — the one-line
+  .post-detail margin override (authorized existing-class change, intentional
+  not a typo) + ONE additive, new-class-only .blog-index block (diff 41/1;
+  first char "/", braces 166/166, comments 85/85). nav.js: LANGS reduced to
+  the content-driven set (EN only) per D-10c-6. node --check PASS (app.js,
+  nav.js); test-integrity INTEGRITY OK; HUMAN to confirm in-browser (panel
+  card + caret; compact ruled index; heading-is-link; 3 slugs absent;
+  .post-detail computed style). No content file written; no seam change;
+  feed.json untouched; router.js/renderer.js untouched. HUMAN GATE: the
+  translation gate stays UNSIGNED — translations for fa/ar/th are DEFERRED
+  (the switcher offers EN only until a language has content). Next (11) is
+  HUMAN-GATED (already authored).
+
 - 07 App Shell & Toolbars: fixed top/bottom toolbars, drawer,
   language switcher reparented; transport buttons inert. depends on: 06
   NOTE: 07's S-4 ("transport buttons inert") is SUPERSEDED for the POST view

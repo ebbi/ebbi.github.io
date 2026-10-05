@@ -528,7 +528,7 @@ html[dir="rtl"] .app-panel[aria-hidden="false"] .app-panel__content {
 .post-detail {
   display: block;
   max-inline-size: 720px;
-  margin-inline: auto;
+  margin-inline: 1vh 1vw;
 }
 
 .post-header {
@@ -1164,4 +1164,44 @@ html[data-font="modern"] {
   border: 1px solid var(--border);
   border-radius: 8px;
   padding: 4px 6px;
+}
+
+/* =========================================================
+   Milestone 10c — compact blog index (option B)
+   Additive; NEW classes only (.blog-index*) — no existing class
+   changes meaning and no token is removed. Reuses tokens; logical
+   properties only; RTL-safe. This is the ruled, table-of-contents
+   style list that sits inside the "Two Legs Bad" panel (the panel
+   itself reuses the existing 10b card classes; no CSS here).
+   ========================================================= */
+
+/* The index is a tight vertical list with ruled rows. */
+.blog-index {
+  display: block;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* One entry per row; a thin separator between entries (option B). */
+.blog-index__item {
+  margin: 0;
+  border-block-end: 1px solid var(--border);
+}
+.blog-index__item:last-child {
+  border-block-end: 0;
+}
+
+/* The heading text IS the link; compact row padding, accent on hover. */
+.blog-index__link {
+  display: block;
+  padding-block: var(--space-2);
+  padding-inline: var(--space-1);
+  color: var(--text);
+  font-weight: 600;
+  line-height: 1.35;
+  transition: color var(--transition);
+}
+.blog-index__link:hover {
+  color: var(--accent);
 }

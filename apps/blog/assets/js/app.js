@@ -9,6 +9,17 @@
 (function () {
   let posts = []; // C1: list index entries {slug,title,date,lang,excerpt}
 
+  // Milestone 10c (D-10c-3): non-blog entries excluded from the blog set
+  // entirely. These slugs were never blog posts and must not appear in
+  // renderList. The exclusion is DISPLAY-only (files stay on disk; a direct
+  // URL may still resolve through renderPost). Kept as a hardcoded deny-list
+  // here (single source in app.js) because feed.json is generated and fenced.
+  const NON_BLOG_SLUGS = [
+    "controlling-the-narrative",
+    "update",
+    "a-contemporary-history-of-the-muslim-world-contents",
+  ];
+
   // TTS2: the sentence<->DOM mapping for the CURRENT post, rebuilt on demand.
   // `readableSentences[i]` is the spoken sentence i; `readableNodes[i]` is the
   // source node (title / <p> / <blockquote>); `readableRanges[i]` is the DOM
@@ -519,17 +530,26 @@
    * reader sees the series in READING ORDER (1 -> 23); non-series posts
    * (`update`, `controlling-the-narrative`, any future post) keep the default
    * date-desc order from feed.json.
-   * Milestone 10b: each item is a collapsible panel — the title is a real
-   * <button> (aria-expanded + aria-controls) toggling that item's excerpt
-   * panel (the `hidden` attribute), and a separate "read full post" link is
-   * the ONLY navigation affordance (the title toggles, it does not navigate).
+   * Milestone 10c (SUPERSEDES 10b): the list is ONE collapsible panel titled
+   * "Two Legs Bad", DEFAULT OPEN, that REUSES 10b's existing card classes
+   * (.post-list-item card + .post-list-item__toggle with its rotating caret,
+   * .post-list-item__panel body) — so the panel needs ZERO new CSS. The posts
+   * below it are a compact blog INDEX (a table-of-contents-like ruled list,
+   * option B) in reading order: each entry is a heading that is ITSELF the
+   * navigation link (no per-item panel, no date, no summary, no "Read full
+   * post" link — D-10c-1/D-10c-4). Non-blog slugs are excluded (D-10c-3).
+   * C1b-18 ordering is preserved verbatim (D-10c-7).
    * @param {{lang: string}} route
    */
   function renderList(route) {
     const container = document.getElementById("app");
     if (!container) return;
 
-    const visible = posts.filter((p) => !route.lang || p.lang === route.lang);
+    const visible = posts.filter(
+      (p) =>
+        (!route.lang || p.lang === route.lang) &&
+        NON_BLOG_SLUGS.indexOf(p.slug) === -1,
+    );
 
     if (visible.length === 0) {
       container.innerHTML =
@@ -545,49 +565,58 @@
     const rest = visible.filter((p) => !Number.isInteger(p.seriesOrder));
     series.sort((a, b) => a.seriesOrder - b.seriesOrder);
     const ordered = series.concat(rest);
-    const listHtml = ordered
+
+    // 10c (D-10c-1, option B): compact index — ruled rows, heading is the
+    // link. New classes only (.blog-index*) so no existing class changes
+    // meaning; the ONE additive CSS block styles these.
+    const indexHtml = ordered
       .map((post) => {
-        // Milestone 10b: a stable, element-id-safe panel id derived from the
-        // slug (slugs are language-agnostic). aria-controls references it.
-        const panelId = `excerpt-${String(post.slug).replace(/[^a-z0-9_-]/gi, "-")}`;
         return `
-      <article class="post-list-item">
-        <button class="post-list-item__toggle" type="button"
-                aria-expanded="false" aria-controls="${panelId}">
-          <span class="post-list-item__title-text">${post.title}</span>
-        </button>
-        <p class="post-list-item__meta">${post.date} • ${post.lang.toUpperCase()}</p>
-        <div class="post-list-item__panel" id="${panelId}" hidden>
-          <p class="post-list-item__excerpt">${post.excerpt || ""}</p>
-          <a class="post-list-item__read" href="#/${post.lang}/post/${post.slug}">Read full post</a>
-        </div>
-      </article>
+        <li class="blog-index__item">
+          <a class="blog-index__link" href="#/${post.lang}/post/${post.slug}">${post.title}</a>
+        </li>
     `;
       })
       .join("");
 
-    container.innerHTML = `<div class="post-list">${listHtml}</div>`;
+    // 10c (D-10c-2): ONE outer collapsible panel, DEFAULT OPEN (aria-expanded
+    // true; no `hidden` on the body). REUSES 10b's existing classes for the
+    // card + rotating caret (.post-list-item + .post-list-item__toggle +
+    // .post-list-item__panel); zero new CSS for the panel. The <ul> is the
+    // compact blog index (B).
+    container.innerHTML = `
+      <article class="post-list-item">
+        <button class="post-list-item__toggle" type="button"
+                aria-expanded="true" aria-controls="blog-panel-body">
+          <span class="post-list-item__title-text">Two Legs Bad</span>
+        </button>
+        <div class="post-list-item__panel" id="blog-panel-body">
+          <ul class="blog-index">${indexHtml}
+          </ul>
+        </div>
+      </article>
+    `;
 
-    // Milestone 10b: ONE delegated click listener on the list container.
+    // 10c (D-10c-2): ONE delegated click listener on the list container.
     // renderList replaces innerHTML on every route change, so bind once
     // (guarded) rather than per render. The real <button> gives keyboard
     // activation (Enter/Space) for free; this only toggles state.
-    if (!container.dataset.listToggleBound) {
+    if (!container.dataset.blogPanelBound) {
       container.addEventListener("click", (event) => {
         const toggle = event.target.closest(".post-list-item__toggle");
         if (!toggle || !container.contains(toggle)) return;
-        const panelId = toggle.getAttribute("aria-controls");
-        const panel = panelId ? document.getElementById(panelId) : null;
-        if (!panel) return;
+        const bodyId = toggle.getAttribute("aria-controls");
+        const body = bodyId ? document.getElementById(bodyId) : null;
+        if (!body) return;
         const expanded = toggle.getAttribute("aria-expanded") === "true";
         toggle.setAttribute("aria-expanded", expanded ? "false" : "true");
         if (expanded) {
-          panel.setAttribute("hidden", "");
+          body.setAttribute("hidden", "");
         } else {
-          panel.removeAttribute("hidden");
+          body.removeAttribute("hidden");
         }
       });
-      container.dataset.listToggleBound = "true";
+      container.dataset.blogPanelBound = "true";
     }
 
     // Milestone TTS: the list view has nothing to read — keep all three
