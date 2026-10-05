@@ -1063,15 +1063,8 @@ non-resolved; L-014 resolved. NO seam change; import-post.js untouched
 
 ## Next (order per depends-on; each authored at the previous chat's close)
 
-<!-- Next chat: TTS2 -->
+<!-- Next chat: 07d -->
 
-- TTS2 Player functionalities (remainder): sentence highlighting
-  (book-reader style) + click-to-read-from-here over the current post's
-  rendered text, completing the Player. Extends TTS (which delivered Play /
-  Pause / Stop + sentence-chunked reliable pause + word-precise resume);
-  TTS2 consumes the per-sentence signal to drive the highlight and adds
-  click-to-seek. same X-1 engine (Web Speech API) and X-2 rendered-DOM text
-  rule. depends on: TTS. File: tools/milestones/TTS2.md.
 - 07d CSS typography update: a book-reader typography pass (reading measure,
   line-height, vertical rhythm, heading scale, blockquote/code/table styling,
   hyphenation) reusing existing tokens; MAY add new tokens ONLY additively.

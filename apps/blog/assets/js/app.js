@@ -9,6 +9,18 @@
 (function () {
   let posts = []; // C1: list index entries {slug,title,date,lang,excerpt}
 
+  // TTS2: the sentence<->DOM mapping for the CURRENT post, rebuilt on demand.
+  // `readableSentences[i]` is the spoken sentence i; `readableNodes[i]` is the
+  // source node (title / <p> / <blockquote>); `readableRanges[i]` is the DOM
+  // Range spanning exactly that sentence's text within the node (for a
+  // sentence-granular highlight). All are 1:1 and share TTS's splitSentences()
+  // rule (D-TTS2-2). tts.js never sees these.
+  let readableSentences = [];
+  let readableNodes = [];
+  let readableRanges = [];
+  let activeHighlightRange = null;
+  let activeHighlightNode = null;
+
   /**
    * Fetch JSON with a clear error surface.
    */
@@ -41,39 +53,376 @@
   }
 
   /**
-   * Milestone TTS: the readable text of the CURRENT post, gathered from the
-   * RENDERED post DOM (X-2), NOT from a raw block walk.
-   *
-   * Inclusion rule (recorded in HANDOFF-TTS.md): title (.post-header__title)
-   * first, then, in document order, the text of every <p> and <blockquote>
-   * inside .post-content. Whitespace is collapsed; empty strings are skipped.
-   * Exclusion rule: block types whose rendered form reads poorly are skipped
-   * wholesale — <code>/<pre> (inline code), <table> cells, <figure>/<img>
-   * (images + captions), and .embed-container (embedded media). Only the
-   * paragraph/quote prose is spoken.
-   * @returns {string}
+   * TTS2 fallback sentence splitter. Used ONLY when tts.js (window.BlogTTS)
+   * is absent, so the app still degrades gracefully. When tts.js is present we
+   * ALWAYS use BlogTTS.splitSentences so the spoken list and our node list
+   * share one rule (D-TTS2-2). This mirrors that rule exactly.
+   * @param {string} text
+   * @returns {string[]}
    */
-  function gatherReadableText() {
+  function fallbackSplitSentences(text) {
+    const body =
+      typeof text === "string" ? text.replace(/\s+/g, " ").trim() : "";
+    if (!body) return [];
+    const parts = body
+      .split(/(?<=[.!?\u2026][)"'\u201d\u2019\]]?)\s+|\n+/)
+      .map((s) => s.trim())
+      .filter(Boolean);
+    return parts.length ? parts : [body];
+  }
+  /**
+   * The sentence-splitting rule in force: tts.js's when available (single
+   * source, D-TTS2-2), else the local mirror.
+   * @param {string} text
+   * @returns {string[]}
+   */
+  function splitSentences(text) {
+    if (window.BlogTTS && typeof window.BlogTTS.splitSentences === "function") {
+      return window.BlogTTS.splitSentences(text);
+    }
+    return fallbackSplitSentences(text);
+  }
+  /**
+   * TTS2: the readable SOURCE NODES of the CURRENT post, in reading order,
+   * gathered from the RENDERED post DOM (X-2, UNCHANGED rule).
+   *
+   * Inclusion rule: title (.post-header__title) first, then, in document
+   * order, every <p> and <blockquote> inside .post-content.
+   * Exclusion rule: prose nested in pre/code, .embed-container, figure, or
+   * table is SKIPPED (same vertices gatherReadableText has always honoured).
+   * @returns {HTMLElement[]}
+   */
+  function gatherReadableNodes() {
     const container = document.getElementById("app");
-    if (!container) return "";
-    const parts = [];
+    if (!container) return [];
+    const nodes = [];
 
     const title = container.querySelector(".post-header__title");
-    if (title && title.textContent) parts.push(title.textContent.trim());
+    if (title && (title.textContent || "").trim()) nodes.push(title);
 
     const content = container.querySelector(".post-content");
     if (content) {
-      // Walk the rendered nodes in document order; take prose only.
       const prose = content.querySelectorAll("p, blockquote");
       prose.forEach((el) => {
-        // Skip prose nested in a skipped region (code/embed/figure/table).
         if (el.closest("pre, code, .embed-container, figure, table")) return;
-        const text = (el.textContent || "").replace(/\s+/g, " ").trim();
-        if (text) parts.push(text);
+        if ((el.textContent || "").replace(/\s+/g, " ").trim()) nodes.push(el);
       });
     }
+    return nodes;
+  }
 
-    return parts.join("\n\n");
+  /**
+   * TTS2: collapse a node's RAW textContent the SAME way the splitter does
+   * (whitespace runs -> one space, trimmed at both ends), returning the
+   * collapsed string plus a map from collapsed index -> raw index, so a
+   * sentence's position can be mapped back onto the DOM.
+   * @param {string} raw
+   * @returns {{text:string, rawIndexAt:number[]}}
+   */
+  function collapseWithMap(raw) {
+    const chars = [];
+    const rawIndexAt = [];
+    for (let i = 0; i < raw.length; i += 1) {
+      const c = raw[i];
+      if (/\s/.test(c)) {
+        if (chars.length === 0) continue; // drop leading whitespace
+        if (chars[chars.length - 1] === " ") continue; // collapse runs
+        chars.push(" ");
+        rawIndexAt.push(i);
+      } else {
+        chars.push(c);
+        rawIndexAt.push(i);
+      }
+    }
+    // drop trailing whitespace
+    while (chars.length && chars[chars.length - 1] === " ") {
+      chars.pop();
+      rawIndexAt.pop();
+    }
+    return { text: chars.join(""), rawIndexAt: rawIndexAt };
+  }
+
+  /**
+   * TTS2: turn a raw-text offset within `node` into a (textNode, offset) pair
+   * by walking the node's descendant text nodes. Used to build a Range.
+   * @param {HTMLElement} node
+   * @param {number} rawOffset
+   * @returns {{node:Text, offset:number}}
+   */
+  function locateRawOffset(node, rawOffset) {
+    const walker = document.createTreeWalker(node, NodeFilter.SHOW_TEXT, null);
+    let seen = 0;
+    let last = null;
+    let n;
+    while ((n = walker.nextNode())) {
+      const len = n.data.length;
+      if (rawOffset <= seen + len) {
+        return { node: n, offset: rawOffset - seen };
+      }
+      seen += len;
+      last = n;
+    }
+    // Fallback: end of the last text node.
+    if (last) return { node: last, offset: last.data.length };
+    return { node: node, offset: node.childNodes.length };
+  }
+  /**
+   * TTS2: build a DOM Range spanning the sentence that starts at `startRaw`
+   * with length `lenCollapsed` inside `node`. Because a sentence's text may
+   * span inline elements (<a>, <em>), the range is computed from character
+   * offsets, not from a single text node.
+   * @param {HTMLElement} node
+   * @param {number} startRaw raw-text offset where the sentence begins
+   * @param {number} lenCollapsed sentence length in collapsed characters
+   * @returns {Range|null}
+   */
+  function rangeForSentence(node, startRaw, lenCollapsed) {
+    try {
+      const start = locateRawOffset(node, startRaw);
+      const end = locateRawOffset(node, startRaw + lenCollapsed);
+      const range = document.createRange();
+      range.setStart(start.node, start.offset);
+      range.setEnd(end.node, end.offset);
+      return range;
+    } catch (err) {
+      return null;
+    }
+  }
+
+  /**
+   * TTS2: build the ordered sentence list, the parallel node list, and the
+   * parallel Range list for the CURRENT post. Each source node's text is split
+   * with the SHARED rule; sentence starts are located by sequential search in
+   * the collapsed text and mapped to a Range, so sentence N is 1:1 with a
+   * precise DOM range (D-TTS2-2). Also marks readable nodes with the
+   * presentation-only `tts-readable` class for the click affordance.
+   * @returns {string[]} the spoken sentence array (also cached in
+   *   readableSentences with the parallel readableNodes / readableRanges).
+   */
+  function buildReadableSentences() {
+    const nodes = gatherReadableNodes();
+    const sentences = [];
+    const map = [];
+    const ranges = [];
+    nodes.forEach((node) => {
+      const raw = node.textContent || "";
+      const collapsed = collapseWithMap(raw);
+      if (!collapsed.text) return;
+      const parts = splitSentences(collapsed.text);
+      let cursor = 0; // search position in the collapsed string
+      parts.forEach((sentence) => {
+        const at = collapsed.text.indexOf(sentence, cursor);
+        const startCollapsed = at < 0 ? cursor : at;
+        cursor = startCollapsed + sentence.length;
+        const startRaw =
+          startCollapsed < collapsed.rawIndexAt.length
+            ? collapsed.rawIndexAt[startCollapsed]
+            : raw.length;
+        sentences.push(sentence);
+        map.push(node);
+        ranges.push(rangeForSentence(node, startRaw, sentence.length));
+      });
+      node.classList.add("tts-readable");
+    });
+    readableSentences = sentences;
+    readableNodes = map;
+    readableRanges = ranges;
+    return sentences;
+  }
+
+  /**
+   * Milestone TTS: the readable text of the CURRENT post as a single string
+   * (the X-2 rule, UNCHANGED): title first, then the prose of every readable
+   * <p>/<blockquote>. Exposed for callers that want the plain text; Play uses
+   * buildReadableSentences() so the spoken list and the node map stay 1:1.
+   * @returns {string}
+   */
+  function gatherReadableText() {
+    return buildReadableSentences().join("\n\n");
+  }
+
+  /**
+   * TTS2: the app-owned resolver from a sentence index to its source DOM node.
+   * Handed to tts.js via adviseResolver() so highlightTarget() can answer
+   * without tts.js ever touching the post DOM (D-TTS2-6).
+   * @param {number} index
+   * @returns {HTMLElement|null}
+   */
+  function nodeForSentence(index) {
+    if (index < 0 || index >= readableNodes.length) return null;
+    return readableNodes[index] || null;
+  }
+
+  /**
+   * TTS2: the sentence index of the FIRST spoken sentence produced by `node`,
+   * or -1 when the node is not a readable source (D-TTS2-4).
+   * @param {HTMLElement} node
+   * @returns {number}
+   */
+  function firstSentenceIndexOf(node) {
+    return readableNodes.indexOf(node);
+  }
+
+  /** The CSS Custom Highlight registry (progressive enhancement). */
+  function highlightRegistry() {
+    return typeof CSS !== "undefined" && CSS.highlights ? CSS.highlights : null;
+  }
+
+  /**
+   * TTS2: the sentence index under a VIEWPORT POINT, or -1. Uses the caret
+   * position for the point and returns the sentence Range that CONTAINS that
+   * caret. This is what makes click-to-read start from the exact sentence
+   * clicked: hit-testing the clicked ELEMENT would match every sentence in the
+   * paragraph (the element intersects all of them) and wrongly return the
+   * first. Coordinate hit-testing is robust for multi-sentence paragraphs and
+   * for sentences that span inline markup.
+   * @param {number} x viewport X (event.clientX)
+   * @param {number} y viewport Y (event.clientY)
+   * @returns {number} sentence index, or -1 when no sentence is under (x, y)
+   */
+  function sentenceIndexAtPoint(x, y) {
+    // 1) Caret at the clicked point -> prefer the sentence containing it.
+    let caretNode = null;
+    let caretOffset = -1;
+    try {
+      let caret = null;
+      if (document.caretRangeFromPoint) {
+        caret = document.caretRangeFromPoint(x, y); // WebKit/Blink
+      } else if (document.caretPositionFromPoint) {
+        const pos = document.caretPositionFromPoint(x, y); // Firefox
+        if (pos) {
+          caretNode = pos.offsetNode;
+          caretOffset = pos.offset;
+        }
+      }
+      if (caret) {
+        caretNode = caret.startContainer;
+        caretOffset = caret.startOffset;
+      }
+    } catch (err) {
+      /* non-fatal; fall through to the point-in-range test */
+    }
+    if (caretNode) {
+      for (let i = 0; i < readableRanges.length; i += 1) {
+        const r = readableRanges[i];
+        if (!r) continue;
+        try {
+          // Range.comparePoint returns -1 (before), 0 (within, inclusive of
+          // edges), or 1 (after). Only 0 means the caret is inside the range.
+          if (r.comparePoint(caretNode, caretOffset) === 0) {
+            return i;
+          }
+        } catch (err) {
+          /* detached range; skip */
+        }
+      }
+      // The caret is not inside any tracked range (e.g. the gap between
+      // sentences): fall back to the first sentence whose node holds the caret.
+      const owner = caretNode.nodeType === 3 ? caretNode.parentNode : caretNode;
+      if (owner) {
+        const node =
+          owner.closest &&
+          owner.closest(
+            ".post-header__title, .post-content p, .post-content blockquote",
+          );
+        const idx = node ? firstSentenceIndexOf(node) : -1;
+        if (idx >= 0) return idx;
+      }
+    }
+    // 2) Fallback (no caret API): the element under the point -> its readable
+    // source node -> that node's FIRST sentence. Sentence-precise seeking
+    // needs a caret; without one we still seek to the clicked paragraph.
+    try {
+      const el = document.elementFromPoint
+        ? document.elementFromPoint(x, y)
+        : null;
+      const node =
+        el &&
+        el.closest &&
+        el.closest(
+          ".post-header__title, .post-content p, .post-content blockquote",
+        );
+      if (node) return firstSentenceIndexOf(node);
+    } catch (err) {
+      /* non-fatal */
+    }
+    return -1;
+  }
+
+  /**
+   * TTS2: the highlight controller (sentence granular). Highlights EXACTLY the
+   * active sentence using the CSS Custom Highlight API when available, so only
+   * the sentence — not the whole paragraph — is marked (D-TTS2-5). Falls back
+   * to a whole-node class when the registry is unavailable. `index === -1`
+   * (no active sentence) clears the highlight. Also scrolls the active
+   * sentence towards the TOP of the viewport (best-effort; skipped when the
+   * user prefers reduced motion).
+   * @param {number} index
+   */
+  function updateHighlight(index) {
+    const registry = highlightRegistry();
+    const range = index >= 0 ? readableRanges[index] : null;
+    const node = nodeForSentence(index);
+
+    // Clear the previous presentation.
+    if (activeHighlightNode) {
+      activeHighlightNode.classList.remove("tts-sentence--active");
+    }
+    if (registry) {
+      if (range) {
+        registry.set("tts-sentence", new Highlight(range));
+      } else {
+        registry.delete("tts-sentence");
+      }
+    }
+    activeHighlightRange = range || null;
+
+    if (node && range) {
+      // Whole-node class ONLY as the fallback affordance when no registry.
+      if (!registry) node.classList.add("tts-sentence--active");
+      activeHighlightNode = registry ? null : node;
+      // Bring the sentence towards the TOP of the viewport. Skipped under
+      // prefers-reduced-motion.
+      try {
+        const reduce =
+          window.matchMedia &&
+          window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        if (!reduce) {
+          const rect = range.getBoundingClientRect();
+          if (
+            rect &&
+            (rect.top < 80 || rect.bottom > window.innerHeight - 80)
+          ) {
+            const y = rect.top + window.scrollY - 96; // leave room for the bar
+            window.scrollTo({ top: y, behavior: "smooth" });
+          }
+        }
+      } catch (err) {
+        /* non-fatal */
+      }
+    } else {
+      activeHighlightNode = null;
+    }
+  }
+
+  /**
+   * TTS2: clear any highlight (stop / route change / end). Safe to call when
+   * nothing is highlighted.
+   */
+  function clearHighlight() {
+    const registry = highlightRegistry();
+    if (registry) {
+      try {
+        registry.delete("tts-sentence");
+      } catch (err) {
+        /* non-fatal */
+      }
+    }
+    if (activeHighlightNode) {
+      activeHighlightNode.classList.remove("tts-sentence--active");
+    }
+    activeHighlightNode = null;
+    activeHighlightRange = null;
   }
 
   /**
@@ -119,6 +468,41 @@
         .map((b) => b.content || "")
         .join("\n\n");
     }
+
+    // Milestone TTS2: bind the delegated click-to-read handler ONCE on the
+    // persistent #app container (renderPost replaces the post DOM on every
+    // route change, so binding per render would leak). A click on any readable
+    // text starts reading from the CLICKED SENTENCE (caret hit-test), falling
+    // back to the clicked node's first sentence; clicks on <a> links
+    // (navigation) and on skipped regions are ignored (D-TTS2-4).
+    if (!container.dataset.ttsSeekBound) {
+      container.addEventListener("click", function (event) {
+        // Links keep their own behaviour — never hijack navigation.
+        if (event.target.closest && event.target.closest("a")) return;
+        const node =
+          event.target.closest &&
+          event.target.closest(
+            ".post-header__title, .post-content p, .post-content blockquote",
+          );
+        if (!node) return;
+        // Rebuild the mapping from the LIVE DOM so indices are never stale.
+        buildReadableSentences();
+        // Prefer the EXACT sentence clicked (coordinate hit-test on the caret
+        // position); fall back to the node's first sentence.
+        let start = sentenceIndexAtPoint(event.clientX, event.clientY);
+        if (start < 0) start = firstSentenceIndexOf(node);
+        if (start < 0) return; // not a readable source (skipped region etc.)
+        if (window.BlogTTS && typeof window.BlogTTS.speak === "function") {
+          window.BlogTTS.speak(readableSentences, { start: start });
+        }
+      });
+      container.dataset.ttsSeekBound = "true";
+    }
+
+    // Milestone TTS2: rebuild the sentence<->node mapping for this post and
+    // prime the highlight controller. This also tags readable nodes with the
+    // `tts-readable` affordance class (presentation only, D-TTS2-5).
+    buildReadableSentences();
 
     // Milestone TTS: a post is rendered — enable the transport (Play enabled,
     // Pause/Stop disabled) per X-3. Guarded; the app is unaffected if TTS is
@@ -228,6 +612,13 @@
     if (window.BlogTTS && typeof window.BlogTTS.stop === "function") {
       window.BlogTTS.stop();
     }
+    // Milestone TTS2: clear the highlight on every route change (belt-and-
+    // braces alongside stop()'s no-active-sentence signal) and drop the stale
+    // mapping so a post->list transition leaves no highlight behind (D-TTS2-5).
+    clearHighlight();
+    readableSentences = [];
+    readableNodes = [];
+    readableRanges = [];
 
     if (route.type === "post") {
       renderPost(route); // fire-and-forget; renderPost handles its own await
@@ -295,8 +686,24 @@
       // live getter for the current post's readable text. Guarded — the app
       // must not break if tts.js fails to load or speechSynthesis is
       // unavailable (X-5).
+      // Milestone TTS2: getText returns the SENTENCE ARRAY (built with tts.js's
+      // own splitter) so the spoken list and our sentence->node map stay 1:1
+      // (D-TTS2-2); register the per-sentence progress listener to drive the
+      // highlight, and hand tts.js the app-owned node resolver (D-TTS2-1/6).
       if (window.BlogTTS && typeof window.BlogTTS.init === "function") {
-        window.BlogTTS.init({ getText: gatherReadableText });
+        window.BlogTTS.init({
+          getText: function () {
+            return buildReadableSentences();
+          },
+        });
+        if (typeof window.BlogTTS.onSentence === "function") {
+          window.BlogTTS.onSentence(function (idx) {
+            updateHighlight(idx);
+          });
+        }
+        if (typeof window.BlogTTS.adviseResolver === "function") {
+          window.BlogTTS.adviseResolver(nodeForSentence);
+        }
       } else {
         console.warn("⚠️ BlogTTS not found; text-to-speech disabled.");
       }

@@ -56,6 +56,19 @@ window.BlogTTS = (function () {
   let status = "idle"; // "idle" | "speaking" | "paused"
   let gen = 0; // generation token; bumped on pause/stop/speak (see header)
 
+  // TTS2: per-sentence PROGRESS signal. `currentIndex` is the sentence being
+  // SPOKEN (or -1 when there is no active sentence: idle/paused/stopped/end).
+  // Listeners are app-owned callbacks fired as each sentence BEGINS so the app
+  // can map the index to a DOM node and highlight it. tts.js NEVER touches the
+  // post DOM (the app owns the mapping); see D-TTS2-1.
+  let currentIndex = -1;
+  const sentenceListeners = [];
+
+  // TTS2: the app-owned resolver mapping a sentence index to a DOM node (or
+  // null). tts.js only CALLS it from highlightTarget(); the mapping lives in
+  // app.js (D-TTS2-6). Defaults to "no target".
+  let resolveTarget = null;
+
   // Word-precision bookkeeping (best-effort; see onboundary below).
   // `charOffset` is the character offset WITHIN the CURRENT sentence that the
   // last `onboundary` reported — i.e. where the reader had got to when pause()
@@ -108,6 +121,23 @@ window.BlogTTS = (function () {
     if (stopEl) stopEl.disabled = s.all === true ? true : !s.stop;
   }
 
+  /**
+   * TTS2: fire the registered progress listeners with the current active
+   * sentence. `index === -1` is the NO-ACTIVE-SENTENCE signal (idle / paused /
+   * stopped / end); the app uses it to CLEAR the highlight (D-TTS2-3).
+   * @param {number} idx sentence index, or -1 for "no active sentence"
+   */
+  function emitSentence(idx) {
+    currentIndex = idx;
+    for (let i = 0; i < sentenceListeners.length; i += 1) {
+      try {
+        sentenceListeners[i](idx, sentences.length);
+      } catch (err) {
+        /* a listener must never break playback */
+      }
+    }
+  }
+
   /** Idle (post view, not speaking): Play enabled, Pause/Stop disabled. */
   function setIdle() {
     status = "idle";
@@ -151,7 +181,6 @@ window.BlogTTS = (function () {
     }
     return u;
   }
-
   /**
    * Speak the sentence at the current `index`, then queue the next on onend.
    * All handlers are guarded by the generation token so cancellation echoes do
@@ -165,6 +194,7 @@ window.BlogTTS = (function () {
       charOffset = 0;
       baseOffset = 0;
       setIdle();
+      emitSentence(-1); // end of post -> clear the highlight (D-TTS2-3)
       return;
     }
 
@@ -180,6 +210,9 @@ window.BlogTTS = (function () {
     // onward; the resume point resets to the slice base until onboundary moves.
     charOffset = 0;
     setSpeaking();
+    // TTS2: announce the sentence that is BEGINNING so the app can highlight
+    // it (D-TTS2-1). Fired before speak() so the highlight leads the audio.
+    emitSentence(index);
 
     // Best-effort word tracking: Chrome desktop fires onboundary with a
     // charIndex into the CURRENT utterance; others do not.
@@ -265,6 +298,9 @@ window.BlogTTS = (function () {
     // `index` + `charOffset` are deliberately NOT reset: they are the resume
     // point (same sentence; word-precise where onboundary fired).
     setPaused();
+    // TTS2: no sentence is being spoken while paused -> clear the highlight
+    // (D-TTS2-3). `resume()` re-emits the same index, restoring it.
+    emitSentence(-1);
   }
 
   /**
@@ -300,6 +336,52 @@ window.BlogTTS = (function () {
     charOffset = 0;
     baseOffset = 0;
     setIdle();
+    emitSentence(-1); // stopped -> clear the highlight (D-TTS2-3)
+  }
+
+  /**
+   * TTS2: register a per-sentence progress listener. Called as each sentence
+   * BEGINS with `(index, total)`, and with `index === -1` on the
+   * no-active-sentence signal (idle / paused / stopped / end) so the app can
+   * clear the highlight. The listener is invoked immediately with the current
+   * state so a late registrant starts in sync. Idempotent per callback.
+   * @param {(index:number, total:number)=>void} cb
+   */
+  function onSentence(cb) {
+    if (typeof cb === "function" && sentenceListeners.indexOf(cb) === -1) {
+      sentenceListeners.push(cb);
+      // Sync the new listener with the CURRENT state (D-TTS2-1).
+      try {
+        cb(currentIndex, sentences.length);
+      } catch (err) {
+        /* a listener must never break playback */
+      }
+    }
+  }
+
+  /**
+   * TTS2: register the app-owned resolver that maps a sentence index to the
+   * DOM node that produced it (or null). tts.js only CALLS this from
+   * highlightTarget(); the mapping is built and owned by app.js (D-TTS2-6).
+   * @param {(index:number)=>Element|null} fn
+   */
+  function adviseResolver(fn) {
+    resolveTarget = typeof fn === "function" ? fn : null;
+  }
+
+  /**
+   * TTS2: the DOM element currently associated with the active sentence, or
+   * null. Delegates to the app-owned resolver; tts.js never inspects the post
+   * DOM itself (D-TTS2-6). Returns null when there is no active sentence.
+   * @returns {Element|null}
+   */
+  function highlightTarget() {
+    if (currentIndex < 0 || typeof resolveTarget !== "function") return null;
+    try {
+      return resolveTarget(currentIndex) || null;
+    } catch (err) {
+      return null;
+    }
   }
 
   /**
@@ -357,5 +439,12 @@ window.BlogTTS = (function () {
     stop: stop,
     // Public so app.js can drive the per-view transport state (X-3).
     setEnabled: setEnabled,
+    // TTS2: progress signal + highlight surface (app owns the DOM mapping).
+    onSentence: onSentence,
+    highlightTarget: highlightTarget,
+    adviseResolver: adviseResolver,
+    // TTS2: the SAME sentence-splitting rule app.js must use so the spoken
+    // sentence list and the app's sentence->node list stay 1:1 (D-TTS2-2).
+    splitSentences: splitSentences,
   };
 })();

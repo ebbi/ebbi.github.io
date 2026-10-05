@@ -797,3 +797,43 @@ html[dir="rtl"] .post-list-item__toggle[aria-expanded="true"]::after {
     animation: none;
   }
 }
+
+/* =========================================================
+   Milestone TTS2 — Reader sentence highlight + click-to-read
+   Additive; NEW selectors only (no existing block edited).
+   Reuses tokens; logical properties only; RTL-safe. The active
+   SENTENCE gets a book-reader highlight via the CSS Custom
+   Highlight API (sentence granular, does not disturb layout or
+   markup); readable nodes get a subtle pointer affordance.
+   Presentation only (D-TTS2-5).
+   ========================================================= */
+
+/* Sentence-granular highlight (CSS Custom Highlight API): ONLY the sentence
+   being spoken is marked, not the whole paragraph. An accent wash plus a
+   subtle underline; works over inline markup (<a>, <em>) without reflow. */
+::highlight(tts-sentence) {
+  background-color: color-mix(in srgb, var(--accent) 26%, transparent);
+  text-decoration: underline;
+  text-decoration-color: var(--accent);
+  text-decoration-thickness: 2px;
+}
+
+/* Fallback when the Highlight API is unavailable: the whole readable source
+   element (title/<p>/<blockquote>) is marked instead of a single sentence. */
+.tts-sentence--active {
+  background: color-mix(in srgb, var(--accent) 14%, transparent);
+  box-shadow: inset 4px 0 0 0 var(--accent);
+  border-radius: 4px;
+}
+html[dir="rtl"] .tts-sentence--active {
+  box-shadow: inset -4px 0 0 0 var(--accent);
+}
+
+/* Hover affordance: readable text can start playback from the point clicked.
+   The cursor signals clickability; links inside keep their own cursor. */
+.tts-readable {
+  cursor: pointer;
+}
+.tts-readable:hover {
+  background: var(--surface);
+}
