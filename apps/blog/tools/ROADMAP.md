@@ -1053,6 +1053,60 @@ non-resolved; L-014 resolved. NO seam change; import-post.js untouched
   ALL PASS. No content file written; no seam change; feed.json untouched.
   Next (11) already authored (20c4d3f).
 
+- TTS2 Player functionalities (remainder): sentence highlighting + click-to-read-from-here
+  over the TTS transport. depends on: TTS.
+  STATUS: DONE (2026). tts.js gained an ADDITIVE surface over
+  window.BlogTTS (onSentence(cb), adviseResolver(fn), highlightTarget(),
+  and BlogTTS.splitSentences exposed) while every TTS contract stayed
+  unchanged (chunked playback, generation token, word-precise resume, X-3,
+  X-5); stop()/pause()/end emit the no-active-sentence signal (index -1).
+  app.js builds the spoken sentence array + a parallel DOM Range per
+  sentence 1:1 BY CONSTRUCTION (per-node split via the SAME splitSentences),
+  updates the highlight on onSentence, and a delegated click-to-read seeks
+  the CLICKED sentence via caret hit-test (sentenceIndexAtPoint), scrolling
+  it toward the top and clearing on route change. style.css gained ONE
+  additive, NEW-selector-only block (::highlight(tts-sentence) sentence
+  granular via the CSS Custom Highlight API + .tts-sentence--active
+  whole-node fallback + .tts-readable hover; tokens reused, logical props,
+  RTL-safe; diff +40/0 — no existing block edited). D-TTS2-1..6 frozen
+  (highlight driven by a per-sentence progress signal; 1:1 mapping by
+  construction; index -1 = no active sentence; click seeks the CLICK POINT
+  by coordinate; presentation-only, reduced-motion suppresses only the
+  auto-scroll). node --check PASS; test-integrity INTEGRITY OK; structural
+  smoke PASS; HUMAN to confirm in-browser. No content file written; no seam
+  change; feed.json untouched. Next (07d) authored at this close.
+
+- 07d CSS typography update (book-reader typography pass). A TYPOGRAPHIC
+  pass over the reading experience: reading measure, line-height, vertical
+  rhythm, heading scale, and blockquote/code/pre/table/figure/list/link/hr
+  styling, with prose-only hyphenation (code exempt). Reuses existing tokens;
+  adds new tokens ONLY additively; touches style.css ONLY. Sets the
+  typographic SYSTEM (measure/rhythm/scale/spacing/hyphenation); font FAMILY
+  choice is 07c (depends on 07d). depends on: 07b. File:
+  tools/milestones/07d.md.
+  STATUS: DONE (2026). style.css gained ADDITIVE typographic tokens in
+  :root (--font-body/--font-heading/--font-mono family tokens defaulting to
+  the pre-07d stack; --measure; --font-size-base; --line-height-base;
+  --rhythm; --space-1..--space-6) and ONE additive "Milestone 07d —
+  typography" block styling the reading column (.post-content >
+  .blog-post-content: max-inline-size = --measure, centred, base size +
+  line-height from tokens) plus headings (em scale off --font-size-base,
+  text-wrap: balance), paragraph rhythm (text-wrap: pretty + hyphens: auto),
+  links, lists, blockquote, hr, inline code/pre (hyphens: none + pre
+  overflow-x: auto; NEVER hyphenate code), table (rhythm + legible cells +
+  overflow-x), figure/figcaption, embeds, and the footnotes list; logical
+  properties only; RTL-safe; a small-screen @media override re-points the
+  size/measure/rhythm tokens. The pre-existing hardcoded html/body
+  font-family was RE-POINTED to var(--font-body) (its default value is
+  byte-identical, so visuals are unchanged until 07c re-points the family).
+  ADDITIVE only: NO existing class renamed, NO existing token removed, NO
+  renderer.js class semantics changed. Brace-balance/parse OK; test-integrity
+  INTEGRITY OK; HUMAN to confirm the in-browser checklist (measure/rhythm/
+  headings/blockquote/code/table/figure/lists/links; code non-hyphenation;
+  list+toolbars+drawer intact; day+night legible; RTL unaffected). No content
+  file written; no seam change; feed.json untouched. Next (07c) authored at
+  this close.
+
 ## Now
 
 - 07 App Shell & Toolbars: fixed top/bottom toolbars, drawer,
@@ -1063,15 +1117,12 @@ non-resolved; L-014 resolved. NO seam change; import-post.js untouched
 
 ## Next (order per depends-on; each authored at the previous chat's close)
 
-<!-- Next chat: 07d -->
+<!-- Next chat: 07c -->
 
-- 07d CSS typography update: a book-reader typography pass (reading measure,
-  line-height, vertical rhythm, heading scale, blockquote/code/table styling,
-  hyphenation) reusing existing tokens; MAY add new tokens ONLY additively.
-  depends on: 07b. File: tools/milestones/07d.md.
 - 07c Font selection (Settings): choose a traditional or modern font, plus a
   sensible DEFAULT base font for a book-reader app, persisted like the theme
-  pref (07b). depends on: 07b, 07d. File: tools/milestones/07c.md.
+  pref (07b). depends on: 07b, 07d (07d defines the --font-\* family tokens it
+  re-points). File: tools/milestones/07c.md.
 
 <!-- HUMAN GATE: the human reviews the blogs in detail for text changes and
      finalizes the EN text BEFORE any translation. Milestone 11 MUST NOT
