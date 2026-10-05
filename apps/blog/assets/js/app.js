@@ -682,6 +682,16 @@
         console.warn("⚠️ BlogTheme not found; theme toggle disabled.");
       }
 
+      // Milestone 07c: resolve + apply the persisted/default font family once.
+      // No router dependency; guarded — the app must not break if font.js
+      // fails to load. The pre-paint application lives in font.js loaded in
+      // <head> (F-3); this wires the control.
+      if (window.BlogFont && typeof window.BlogFont.init === "function") {
+        window.BlogFont.init();
+      } else {
+        console.warn("⚠️ BlogFont not found; font selection disabled.");
+      }
+
       // Milestone TTS: wire the transport buttons once and hand tts.js a
       // live getter for the current post's readable text. Guarded — the app
       // must not break if tts.js fails to load or speechSynthesis is

@@ -21,10 +21,22 @@
      Family token defaults preserve the pre-07d body stack byte-for-byte
      (single source: --font-body now feeds html/body font-family). 07c
      will RE-POINT these family tokens; 07d only defines/sets them. */
-  --font-body:
+  /* ---- Milestone 07c — font FAMILY tokens ----
+     The reading serif (--font-traditional) and the clean sans (--font-modern)
+     are SYSTEM stacks (no network fetch; F-4) and degrade gracefully (F-2).
+     The DEFAULT base is the reading serif: --font-body (below) DEFAULTS to
+     --font-traditional, so an unset data-font attribute still yields the
+     book-reader base. The family is re-pointed ONLY via html[data-font=...]
+     below (F-5): no component class changes meaning. */
+  --font-traditional:
+    Georgia, Cambria, "Times New Roman", Times, "Noto Serif", "Noto Serif JP",
+    "Noto Serif SC", "Noto Serif Myanmar", "Sarabun", "Amiri", serif;
+  --font-modern:
     system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans Myanmar",
     "Myanmar Text", "Hiragino Sans", "Yu Gothic", "Noto Sans JP",
     "Noto Sans SC", "PingFang SC", "Microsoft YaHei", "Meiryo", sans-serif;
+  /* DEFAULT book-reader base: the reading serif (F-2). */
+  --font-body: var(--font-traditional);
   --font-heading: var(--font-body);
   --font-mono:
     ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono",
@@ -1097,4 +1109,59 @@ html[dir="rtl"] .tts-sentence--active {
     --measure: 100%;
     --rhythm: 1.25rem;
   }
+}
+
+/* =========================================================
+   Milestone 07c — Font selection (traditional / modern + default)
+   Additive; NEW selectors only (no existing block edited; no
+   existing class renamed; no existing token removed). Re-points
+   the family tokens that 07d DEFINED (--font-body / --font-heading)
+   via html[data-font=...]. The DEFAULT lives in :root (--font-body
+   defaults to --font-traditional), so an ABSENT data-font attribute
+   yields the book-reader base. F-5: tokens only; no component class
+   changes meaning. Logical properties only; RTL-safe. The control
+   block mirrors #lang-nav / #theme-nav.
+
+   SYSTEM ONLY: no webfont is fetched (F-4). Choosing the family is
+   this milestone; the typographic SYSTEM (measure/rhythm/scale) is 07d.
+   ========================================================= */
+
+/* ---------- Family token re-points (F-5) ---------- */
+/* The chosen family feeds --font-body; headings follow it (--font-heading
+   is var(--font-body)). No attribute (or the empty/default key) => the
+   :root default (--font-traditional) applies unchanged. */
+html[data-font="traditional"] {
+  --font-body: var(--font-traditional);
+}
+html[data-font="modern"] {
+  --font-body: var(--font-modern);
+}
+
+/* ---------- Font control (peer of #lang-nav / #theme-nav) ---------- */
+#font-nav {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* Decorative font glyph; a mirror of the selection, not a control. */
+.font-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  inline-size: 24px;
+  block-size: 24px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.font-select {
+  font: inherit;
+  font-size: 0.9rem;
+  color: inherit;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 4px 6px;
 }

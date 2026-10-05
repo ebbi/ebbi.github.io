@@ -1107,6 +1107,44 @@ non-resolved; L-014 resolved. NO seam change; import-post.js untouched
   file written; no seam change; feed.json untouched. Next (07c) authored at
   this close.
 
+- 07c Font selection in Settings (traditional / modern + default book-reader
+  base). Adds a FONT-FAMILY control to the 07 drawer (#app-panel), peer of
+  #lang-nav / #theme-nav, letting the reader choose Traditional / Modern with
+  a sensible DEFAULT book-reader base. Re-points the family tokens that 07d
+  DEFINED (--font-body / --font-heading) via html[data-font=...]; persists the
+  choice under ONE localStorage key and applies it BEFORE first paint
+  (mirrors theme.js). SYSTEM stacks only (no webfont fetch; F-4). depends on:
+  07b, 07d. File: tools/milestones/07c.md.
+  STATUS: DONE (2026). New assets/js/font.js exposes window.BlogFont =
+  {init,get,set} mirroring theme.js in shape; it owns the resolved reading
+  FAMILY only (no route/hash awareness; idempotent init) and is loaded in
+  <head> (NOT deferred) so its parse-time apply of the persisted/default
+  family runs before first paint (F-3) — the single source of the font early
+  apply, coordinated with theme.js's pre-paint theme apply (two external head
+  modules, each owning its own early apply; NO inline script). Pref persists
+  under ONE key "zabon-blog-font"; keys are traditional|modern; DEFAULT (unset
+  or unknown) REMOVES data-font so the CSS :root default applies; set()
+  applies the REQUESTED value directly (so a storage failure still applies for
+  the session instead of silently reverting to the default). index.html: a
+  #font-nav .app-panel__section peer of #theme-nav/#lang-nav (visually-hidden
+  label + #font-select Default/Traditional/Modern; empty value = default) +
+  the font.js head script. app.js: GUARDED window.BlogFont.init() after the
+  BlogTheme guard (F-6). style.css: ADDITIVE family tokens in :root
+  (--font-traditional reading serif, --font-modern clean sans; --font-body
+  DEFAULTS to var(--font-traditional) = the book-reader base) + the
+  html[data-font="traditional"|"modern"] token re-points (F-5; tokens only,
+  no component class meaning change) + ONE additive, new-class-only control
+  block (#font-nav/.font-icon/.font-select; logical props; RTL-safe). Additive
+  only: NO existing class renamed; the old inline body sans stack is preserved
+  as --font-modern (nothing lost). node --check PASS (font.js + app.js);
+  test-integrity INTEGRITY OK; 14/14 structural smoke PASS (default applies;
+  persisted pref re-applies pre-paint; set() persists + applies; "" -> default;
+  invalid pref ignored; init idempotent + wires control; storage failure
+  degrades gracefully); grep: no font logic in shell/router/renderer (font.js
+  is the single owner). HUMAN to confirm the browser items. No content file
+  written; no seam change; feed.json untouched. Next (11) is HUMAN-GATED
+  (already authored).
+
 ## Now
 
 - 07 App Shell & Toolbars: fixed top/bottom toolbars, drawer,
@@ -1117,12 +1155,7 @@ non-resolved; L-014 resolved. NO seam change; import-post.js untouched
 
 ## Next (order per depends-on; each authored at the previous chat's close)
 
-<!-- Next chat: 07c -->
-
-- 07c Font selection (Settings): choose a traditional or modern font, plus a
-  sensible DEFAULT base font for a book-reader app, persisted like the theme
-  pref (07b). depends on: 07b, 07d (07d defines the --font-\* family tokens it
-  re-points). File: tools/milestones/07c.md.
+<!-- Next chat: 11 -->
 
 <!-- HUMAN GATE: the human reviews the blogs in detail for text changes and
      finalizes the EN text BEFORE any translation. Milestone 11 MUST NOT
@@ -1131,6 +1164,7 @@ non-resolved; L-014 resolved. NO seam change; import-post.js untouched
 
 - 11 Translations & i18n UI. depends on: C1, and the HUMAN GATE above
   (detailed blog text review / EN text finalization) being signed off.
+  ALREADY authored: tools/milestones/11.md (human-gated).
 - 12a RTL & Typography - Persian/Arabic. depends on: 11
 - 12b RTL & Typography - Thai/Myanmar. depends on: 12a
 - 13a Accessibility & Keyboard Nav. depends on: 12b

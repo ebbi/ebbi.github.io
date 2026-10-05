@@ -9,6 +9,13 @@
          paint, avoiding a flash of the wrong theme (T-3). No inline script;
          the pre-paint apply lives in the external module (single source). -->
     <script src="assets/js/theme.js"></script>
+    <!-- Milestone 07c: font.js is loaded here (and NOT deferred) for the SAME
+         reason — its parse-time application of the persisted/default font
+         family runs BEFORE first paint, avoiding a flash of the wrong font
+         (F-3). No inline script; font.js is the single source of the font
+         early apply, coordinated with theme.js (two external head modules,
+         each owning its own early apply). -->
+    <script src="assets/js/font.js"></script>
     <link rel="stylesheet" href="assets/css/style.css" />
   </head>
   <body>
@@ -78,6 +85,21 @@
             <option value="auto">Auto</option>
           </select>
         </nav>
+
+        <!-- Milestone 07c: Font control (Default / Traditional / Modern) — the
+             Settings panel, peer of #theme-nav and #lang-nav. A native <select>
+             with an associated visually-hidden label; wired by font.js
+             (window.BlogFont.init). The empty value is the DEFAULT book-reader
+             base (no data-font attribute -> CSS :root default). -->
+        <nav id="font-nav" class="app-panel__section" aria-label="Font">
+          <label class="visually-hidden" for="font-select">Font</label>
+          <span class="font-icon" aria-hidden="true">A</span>
+          <select id="font-select" class="font-select">
+            <option value="">Default</option>
+            <option value="traditional">Traditional</option>
+            <option value="modern">Modern</option>
+          </select>
+        </nav>
       </div>
     </aside>
 
@@ -123,9 +145,9 @@
          renderer (used by app), router (drives route events), nav (switcher,
          reads router.currentRoute), shell (drawer; no router dependency),
          tts (transport buttons; no router dependency), app (controller, last;
-         calls nav.init + shell.init + theme.init + tts.init).
-         theme.js itself is already loaded in <head> (pre-paint apply); the
-         app.js guard wires its control + OS listener. -->
+         calls nav.init + shell.init + theme.init + font.init + tts.init).
+         theme.js and font.js are ALREADY loaded in <head> (pre-paint apply);
+         the app.js guards wire their controls. They are not re-loaded here. -->
     <script src="assets/js/renderer.js"></script>
     <script src="assets/js/router.js"></script>
     <script src="assets/js/nav.js"></script>
