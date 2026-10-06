@@ -631,6 +631,45 @@
   }
 
   /**
+   * Milestone 12 (D-12-4): keep the toolbar SPEECH controls in sync with a
+   * route change. Sets the current route language on BlogSpeech (so its voice
+   * list is filtered + ranked for that language) and rebuilds the language
+   * icon's menu hrefs using the SAME href rule as the drawer switcher.
+   *
+   * SINGLE SOURCE: the drawer <select id="lang-select"> options already carry
+   * `data-href` values computed by nav.js's buildLangHref (the ONLY place a
+   * language-switch URL is built). We MIRROR those values onto the toolbar
+   * language menu rather than forking URL building. Guarded — a no-op when
+   * BlogSpeech / BlogNav are absent.
+   * @param {{lang: string, type: string, slug: string|null}} route
+   */
+  function syncSpeechForRoute(route) {
+    if (!window.BlogSpeech || typeof window.BlogSpeech !== "object") return;
+
+    const lang = (route && route.lang) || "en";
+    if (typeof window.BlogSpeech.setLang === "function") {
+      try {
+        window.BlogSpeech.setLang(lang);
+      } catch (err) {
+        /* non-fatal */
+      }
+    }
+
+    // Reuse the drawer switcher's computed hrefs (nav.js buildLangHref rule).
+    const drawer = document.getElementById("lang-select");
+    const menuItems = document.querySelectorAll("#tts-lang-menu [data-lang]");
+    if (!drawer || !menuItems.length) return;
+    const hrefByLang = {};
+    Array.prototype.forEach.call(drawer.options, function (opt) {
+      hrefByLang[opt.value] = opt.getAttribute("data-href");
+    });
+    Array.prototype.forEach.call(menuItems, function (item) {
+      const code = item.getAttribute("data-lang");
+      if (hrefByLang[code]) item.setAttribute("data-href", hrefByLang[code]);
+    });
+  }
+
+  /**
    * Handle a route change emitted by router.js.
    * Router vocabulary: type is 'list' or 'post'.
    * @param {{lang: string, type: string, slug: string|null}} route
@@ -664,6 +703,12 @@
     if (window.BlogNav && typeof window.BlogNav.onRouteChange === "function") {
       window.BlogNav.onRouteChange(route);
     }
+
+    // Milestone 12 (D-12-4): the toolbar language icon mirrors the route and
+    // has its menu hrefs rebuilt with the SAME href rule as the drawer
+    // switcher. Called AFTER BlogNav.onRouteChange so the drawer's option
+    // data-href values are already fresh (the single source this reuses).
+    syncSpeechForRoute(route);
   }
 
   document.addEventListener("DOMContentLoaded", async () => {
@@ -749,6 +794,26 @@
         }
       } else {
         console.warn("⚠️ BlogTTS not found; text-to-speech disabled.");
+      }
+
+      // Milestone 12: wire the speech-settings controls (speed / pitch /
+      // voice popover + language & font icons) once, then seed the current
+      // route language so the voice list is filtered for it. Guarded — the
+      // app must not break if speech-settings.js is absent or the Web Speech
+      // API is unavailable (D-12-7).
+      if (window.BlogSpeech && typeof window.BlogSpeech.init === "function") {
+        window.BlogSpeech.init();
+        // Seed the current route (the router already emitted its initial
+        // route, but BlogSpeech.init runs after that event; sync explicitly).
+        syncSpeechForRoute(
+          window.BlogRouter.currentRoute || {
+            lang: "en",
+            type: "list",
+            slug: null,
+          },
+        );
+      } else {
+        console.warn("⚠️ BlogSpeech not found; playback settings disabled.");
       }
     } else {
       console.error("❌ BlogRouter not found; falling back to initial render.");

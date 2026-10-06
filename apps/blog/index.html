@@ -138,14 +138,188 @@
         >
           <span aria-hidden="true">⏹</span>
         </button>
+
+        <!-- Milestone 12 (D-12-8): the settings toggle (gear) opens the
+             SPEED + PITCH + VOICE popover. aria-expanded/aria-controls +
+             the `hidden` attribute (10b convention); speech-settings.js
+             wires it. -->
+        <button
+          id="tts-settings-btn"
+          class="transport__btn transport__btn--icon"
+          type="button"
+          aria-label="Playback settings"
+          aria-haspopup="true"
+          aria-expanded="false"
+          aria-controls="tts-settings"
+        >
+          <span aria-hidden="true">⚙</span>
+        </button>
+
+        <!-- Milestone 12 (D-12-4): the LANGUAGE icon. Same language set as
+             the drawer switcher; items carry data-href built by app.js using
+             BlogNav.buildLangHref semantics (single source). -->
+        <button
+          id="tts-lang-btn"
+          class="transport__btn transport__btn--icon"
+          type="button"
+          aria-label="Language"
+          aria-haspopup="listbox"
+          aria-expanded="false"
+          aria-controls="tts-lang-menu"
+          data-lang="en"
+        >
+          <span aria-hidden="true">🌐</span>
+        </button>
+        <ul
+          id="tts-lang-menu"
+          class="tts-popover tts-lang-menu"
+          role="listbox"
+          aria-label="Language"
+          hidden
+        >
+          <li>
+            <button
+              class="tts-lang-menu__item"
+              type="button"
+              role="option"
+              data-lang="en"
+              hreflang="en"
+            >
+              English
+            </button>
+          </li>
+          <li>
+            <button
+              class="tts-lang-menu__item"
+              type="button"
+              role="option"
+              data-lang="fa"
+              hreflang="fa"
+            >
+              فارسی
+            </button>
+          </li>
+          <li>
+            <button
+              class="tts-lang-menu__item"
+              type="button"
+              role="option"
+              data-lang="th"
+              hreflang="th"
+            >
+              ไทย
+            </button>
+          </li>
+          <li>
+            <button
+              class="tts-lang-menu__item"
+              type="button"
+              role="option"
+              data-lang="ar"
+              hreflang="ar"
+            >
+              العربية
+            </button>
+          </li>
+        </ul>
+
+        <!-- Milestone 12 (D-12-5): the FONT icon cycles Default/Traditional/
+             Modern via BlogFont.set (font.js remains the single owner). -->
+        <button
+          id="tts-font-btn"
+          class="transport__btn transport__btn--icon"
+          type="button"
+          aria-label="Cycle reading font"
+        >
+          <span aria-hidden="true">A</span>
+        </button>
+      </div>
+
+      <!-- Milestone 12 (D-12-1/2/3): the SPEED + PITCH + VOICE popover,
+           toggled by #tts-settings-btn. Uses the `hidden` attribute (10b
+           convention); speech-settings.js populates + wires it. -->
+      <div id="tts-settings" class="tts-popover tts-settings" hidden>
+        <label class="tts-settings__row" for="tts-rate-select">
+          <span class="tts-settings__label">Speed</span>
+          <select id="tts-rate-select" class="tts-settings__select">
+            <option value="0.6">Slower</option>
+            <option value="0.8">Slow</option>
+            <option value="1" selected>Normal</option>
+            <option value="1.25">Fast</option>
+            <option value="1.6">Faster</option>
+          </select>
+        </label>
+        <label class="tts-settings__row" for="tts-rate-range">
+          <span class="tts-settings__label">Fine</span>
+          <input
+            id="tts-rate-range"
+            class="tts-settings__range"
+            type="range"
+            min="0.5"
+            max="2"
+            step="0.05"
+            value="1"
+            aria-label="Playback speed"
+          />
+        </label>
+
+        <fieldset class="tts-settings__fieldset">
+          <legend class="tts-settings__label">Pitch</legend>
+          <div class="tts-settings__pitch-modes">
+            <label class="tts-settings__pitch-option">
+              <input
+                id="tts-pitch-mode"
+                type="radio"
+                name="tts-pitch-mode"
+                value="auto"
+                checked
+              />
+              <span>Natural pitch</span>
+            </label>
+            <label class="tts-settings__pitch-option">
+              <input
+                id="tts-pitch-mode-manual"
+                type="radio"
+                name="tts-pitch-mode"
+                value="manual"
+              />
+              <span>Manual</span>
+            </label>
+          </div>
+          <input
+            id="tts-pitch-range"
+            class="tts-settings__range"
+            type="range"
+            min="0.5"
+            max="1.5"
+            step="0.05"
+            value="1"
+            disabled
+            aria-label="Speech pitch (manual)"
+          />
+        </fieldset>
+
+        <label class="tts-settings__row" for="tts-voice-select">
+          <span class="tts-settings__label">Voice</span>
+          <select id="tts-voice-select" class="tts-settings__select">
+            <option value="">Default voice</option>
+          </select>
+        </label>
+        <button id="tts-test-btn" class="tts-settings__test" type="button">
+          Test voice
+        </button>
       </div>
     </footer>
 
     <!-- Scripts load after the HTML elements; order matters:
          renderer (used by app), router (drives route events), nav (switcher,
          reads router.currentRoute), shell (drawer; no router dependency),
-         tts (transport buttons; no router dependency), app (controller, last;
-         calls nav.init + shell.init + theme.init + font.init + tts.init).
+         tts (transport buttons; no router dependency),
+         speech-settings (Milestone 12: speed/pitch/voice prefs + controls;
+         reads/writes localStorage, no router dependency; must load AFTER tts
+         so tts.js can read its settings), app (controller, last; calls
+         nav.init + shell.init + theme.init + font.init + tts.init +
+         speech.init).
          theme.js and font.js are ALREADY loaded in <head> (pre-paint apply);
          the app.js guards wire their controls. They are not re-loaded here. -->
     <script src="assets/js/renderer.js"></script>
@@ -153,6 +327,7 @@
     <script src="assets/js/nav.js"></script>
     <script src="assets/js/shell.js"></script>
     <script src="assets/js/tts.js"></script>
+    <script src="assets/js/speech-settings.js"></script>
     <script src="assets/js/app.js"></script>
   </body>
 </html>

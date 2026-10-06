@@ -159,6 +159,13 @@ window.BlogTTS = (function () {
   /**
    * Build a SpeechSynthesisUtterance for `text`, with a voice matching the
    * document language when one exists (X-1).
+   * Milestone 12 (ADDITIVE, D-12-6): after setting `lang`/`voice`, ALSO apply
+   * the current BlogSpeech settings — rate, pitch, and the reader's chosen
+   * (or top-ranked) voice. Every read of BlogSpeech is GUARDED so that when
+   * window.BlogSpeech is ABSENT the behavior here is byte-identical to before
+   * (rate/pitch default to 1; the voice falls back to the existing lang-prefix
+   * match). The chunked engine is UNCHANGED: settings are read fresh per
+   * utterance, so a change takes effect at the NEXT sentence boundary.
    * @param {string} text
    * @returns {SpeechSynthesisUtterance}
    */
@@ -166,16 +173,61 @@ window.BlogTTS = (function () {
     const u = new window.SpeechSynthesisUtterance(text);
     const wantLang = document.documentElement.getAttribute("lang") || undefined;
     if (wantLang) u.lang = wantLang;
+
+    // Milestone 12: speed + pitch (guarded; default 1 when BlogSpeech absent).
+    if (window.BlogSpeech && typeof window.BlogSpeech === "object") {
+      try {
+        if (typeof window.BlogSpeech.getRate === "function") {
+          const r = window.BlogSpeech.getRate();
+          if (typeof r === "number" && isFinite(r)) u.rate = r;
+        }
+        if (typeof window.BlogSpeech.effectivePitch === "function") {
+          const p = window.BlogSpeech.effectivePitch(u.rate);
+          if (typeof p === "number" && isFinite(p)) u.pitch = p;
+        }
+      } catch (err) {
+        /* non-fatal: fall back to the engine defaults for rate/pitch */
+      }
+    }
+
     try {
       const voices =
         typeof window.speechSynthesis.getVoices === "function"
           ? window.speechSynthesis.getVoices()
           : [];
-      const match =
-        voices.find(
-          (v) => v.lang && wantLang && v.lang.indexOf(wantLang) === 0,
-        ) || null;
-      if (match) u.voice = match;
+
+      // Milestone 12: prefer the reader's remembered voice for this language,
+      // then BlogSpeech's top-ranked voice, then the existing lang-prefix
+      // match (the current fallback). Every step guarded.
+      let chosen = null;
+      if (window.BlogSpeech && typeof window.BlogSpeech === "object") {
+        try {
+          const langKey = wantLang || "en";
+          let uri = null;
+          if (typeof window.BlogSpeech.getVoice === "function") {
+            uri = window.BlogSpeech.getVoice(langKey);
+          }
+          if (uri) {
+            chosen =
+              voices.find(function (v) {
+                return v && v.voiceURI === uri;
+              }) || null;
+          }
+          if (!chosen && typeof window.BlogSpeech.topVoiceFor === "function") {
+            chosen = window.BlogSpeech.topVoiceFor(langKey) || null;
+          }
+        } catch (err) {
+          /* non-fatal: fall through to the lang-prefix match */
+        }
+      }
+
+      if (!chosen) {
+        chosen =
+          voices.find(
+            (v) => v.lang && wantLang && v.lang.indexOf(wantLang) === 0,
+          ) || null;
+      }
+      if (chosen) u.voice = chosen;
     } catch (err) {
       /* non-fatal: fall back to the default voice */
     }

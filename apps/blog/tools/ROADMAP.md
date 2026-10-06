@@ -1173,7 +1173,6 @@ non-resolved; L-014 resolved. NO seam change; import-post.js untouched
     seam change; style.css untouched.
 
 - 11b Local image storage + batch translation rollout. SPLIT (D-11b-8) into
-  11b-a (local image storage) + 11b-b (translation batch).
   STATUS: 11b-a DONE (2026, committed a1a5b82); 11b-b PARTIAL (fa 23/26
   committed b3d4d25; th/ar 0) — STOPPED on DeepL QUOTA EXHAUSTION (free key
   at 1,000,000/1,000,000; /v2/usage is the AUTHORITATIVE number, NOT the
@@ -1198,6 +1197,66 @@ non-resolved; L-014 resolved. NO seam change; import-post.js untouched
     single-slug, DEFAULT_SLUG="update"; NO all-slugs mode) for fa, then th,
     then ar (one language per chat) via tools/translate.js; regenerate
     feed.json per batch. depends on: 11a.
+
+- 12 TTS Player Controls (speed, pitch, voice) + on-toolbar Language & Font
+  icons. A real PLAYER over the frozen TTS/TTS2 transport: playback SPEED
+  (5 named steps: Slower 0.6 / Slow 0.8 / Normal 1.0 / Fast 1.25 / Faster 1.6,
+  PLUS a 0.5-2.0 slider that snaps to a named step), a PITCH control with a
+  "Natural pitch" AUTO heuristic (default ON; a documented small compensation
+  for |rate-1|) + a manual override slider (0.5-1.5), and a VOICE picker that
+  lists voices for the CURRENT route language, ranked by a DOCUMENTED heuristic
+  (localService preferred; the default flag; regional specificity; a curated
+  NAME allow-list), with the best AUTO-selected and the choice remembered PER
+  LANGUAGE. Adds a LANGUAGE icon (same language set as the drawer switcher;
+  navigates via the SAME href rule) and a FONT icon (cycles Default/
+  Traditional/Modern via BlogFont.set) to the bottom transport toolbar. New
+  module assets/js/speech-settings.js (window.BlogSpeech) owns the PREFERENCES
+  - storage (ONE localStorage key each; theme.js/font.js pattern) + the
+    natural-pitch curve + the voice ranking; tts.js READS them at utterance build
+    (GUARDED: byte-identical when BlogSpeech is absent; chunked engine unchanged,
+    so a change applies at the NEXT sentence). app.js passes the current route
+    language in (setLang) and rebuilds the language-icon hrefs from the drawer
+    switcher's buildLangHref product (single source). index.html: the bottom
+    toolbar gains #tts-settings-btn (a gear opening #tts-settings: speed select +
+    slider, pitch mode + slider, voice select, "Test voice"), #tts-lang-btn
+    (aria-haspopup=listbox -> #tts-lang-menu) and #tts-font-btn; loads
+    speech-settings.js after tts.js. style.css: ONE additive, new-class-only
+    Milestone 12 block. Touches index.html + speech-settings.js (new) + tts.js +
+    app.js + style.css ONLY — NOT the seam, content, feed.json, renderer.js or
+    router.js; DELEGATES to nav.js/font.js public APIs. depends on: TTS2.
+    STATUS: DONE (2026). New assets/js/speech-settings.js exposes window.BlogSpeech
+    = {init,getRate,setRate,getPitch,setPitch,getPitchMode,setPitchMode,
+    effectivePitch,voicesFor,topVoiceFor,getVoice,setVoice,onVoicesChanged,
+    setLang} (idempotent init; NO route awareness — app.js passes the current
+    route lang). Storage: ONE key each ("zabon-blog-tts-rate"/"-pitch"/
+    "-pitch-mode"/"-voice" JSON map lang->voiceURI); a storage failure degrades
+    to session-only (font.js pattern). tts.js makeUtterance() ADDITIVELY applies
+    u.rate = BlogSpeech.getRate(), u.pitch = BlogSpeech.effectivePitch(u.rate),
+    and resolves u.voice from the remembered choice -> topVoiceFor -> the
+    existing lang-prefix match; EVERY read GUARDED (byte-identical when
+    BlogSpeech absent). app.js: guarded window.BlogSpeech.init() after the
+    BlogTTS guard; syncSpeechForRoute(route) on init + every route change calls
+    BlogSpeech.setLang(lang) and MIRRORS the drawer #lang-select options'
+    data-href (nav.js buildLangHref product) onto the toolbar language menu
+    (single source; NO forked URL building); the FONT icon cycles via
+    BlogFont.set (font.js stays the owner). index.html: bottom toolbar gains the
+    settings toggle + the speed/pitch/voice popover + the language + font icons;
+    speech-settings.js loaded after tts.js, before app.js. style.css: ONE
+    additive, new-class-only Milestone 12 block (popover, icon buttons, range
+    inputs, selects, language-menu items; logical properties; RTL-safe; diff
+    +270/0 — NO existing block edited). a11y per D-12-8 (real <button>s +
+    aria-label; aria-expanded/aria-controls + the `hidden` attribute; native
+    select/inputs). DECISIONS D-12-1..8 applied. node --check PASS
+    (speech-settings.js/tts.js/app.js); test-integrity INTEGRITY OK; node
+    structural smoke tools/m12-smoke.js 24/24 PASS (voice ranking prefers the
+    best `fa-*`; rate/pitch applied; per-language voice memory; auto-pitch curve;
+    async voiceschanged repopulation; graceful no-API path). HUMAN to confirm the
+    in-browser items (speed/pitch/voice change the reading pace; voice picker
+    lists ONLY the route-language voices; "Test voice"; language icon navigates
+    like the drawer switcher; font icon cycles + persists; keyboard; no console
+    errors; speechSynthesis stubbed absent -> controls inert). No content file
+    written; no seam change; feed.json untouched; renderer.js/router.js/
+    nav.js/font.js/theme.js UNTOUCHED. Next (11b-b) remains HUMAN-GATED.
 
 ## Now
 
