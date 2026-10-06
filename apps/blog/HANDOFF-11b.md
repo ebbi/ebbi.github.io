@@ -1,10 +1,20 @@
-HANDOFF — Chat 11b: Local image storage (11b-a DONE) + batch translation rollout (11b-b PENDING)
-Status: partial (11b-a complete + executed; 11b-b needs the DeepL key)
+HANDOFF — Chat 11b: Local image storage (11b-a DONE) + batch translation rollout (11b-b PARTIAL: fa 23/26, quota-exhausted)
+Status: partial (11b-a COMMITTED; 11b-b fa batch committed 23/26; th/ar pending quota reset)
 Current chat id: 11b
 Current milestone: 11b (split per P8 -> 11b-a images, 11b-b translation batch)
 Completed milestones: 00,01,02,03,04,05a,05a-fix,05b-removal,W1,W1-fix,06,06b,07,08,09,C1a,C1-tool,C1-tool-p2,C1-model,C1-tool-cleanup,B1a,C1b-01..C1b-DONE,C1b-18,C1b-12..C1b-17,B1,10b,07b,TTS,TTS2,07d,07c,10c,11a,11b-a
-Next chat id: 11b-b (translation batch: fa, then th, then ar — one language per chat)
+Next chat id: 11b-b (translation batch: finish fa's 3 slugs, then th, then ar — one language per chat)
 Context windows used: 3
+
+## COMMIT RECORD (2026)
+
+- 11b-a = a1a5b82 "11b-a: local image storage + translate.js usage preflight"
+  FILE_TREE_SHA256 (after staging 11b-a) = 72cfab379d1c8343fc5d7d73eec4edf39ee7e1511f1f53ed20994c439faa7d90
+- 11b-b (partial) = b3d4d25 "11b-b (partial): fa 23/26 translations + feed.json"
+  FILE_TREE_SHA256 (after staging 11b-b) = 3239735977778b3840630a547e3b017b773ca342a249d78d3bbd4a7067b7504b
+- predecessor 11a = 255db62 "11a: translation pipeline (m1) + pilot fa/th/ar + switcher open"
+  Working tree CLEAN after b3d4d25. feed.json regenerated (51 entries:
+  26 en + 23 fa + 1 th + 1 ar) IN the 11b-b commit.
 
 ## 11b-b PROGRESS + QUOTA CHECKPOINT (updated in chat 11b-b, first pass)
 
@@ -21,11 +31,14 @@ STATE ON DISK:
   (the last successful attempt was the ~24th; the 24th slug — part-13 — hit
   HTTP 456 and ABORTED before writing; no partial file. The 2 early parts were
   never attempted.)
-- content/th/: 0 files. content/ar/: 0 files.
+- content/th/: 1 file (the 11a pilot only). content/ar/: 1 file (the 11a pilot
+  only). The th/ar batches have NOT started (blocked on the same quota).
 - The non-blog slugs (`update`, `controlling-the-narrative`, the `contents`
   index post) WERE translated for fa (harmless; they are deny-listed at render).
   If a leaner set is wanted later, delete those 3 from content/fa/ and exclude
   them from the th/ar loops.
+- feed.json regenerated (generate-index.js): 51 entries (26 en + 23 fa + 1 th
+  - 1 ar); 23 series keep seriesOrder, 25 non-EN carry seriesOrder null.
 
 QUOTA — THE AUTHORITATIVE NUMBER (this is the confusing part):
 curl -s -H "Authorization: DeepL-Auth-Key $DEEPL_API_KEY" \
@@ -163,12 +176,12 @@ Hashes (inputs only — see tools/WORKFLOW.md, convention (b))
 
 LOCKED_DECISIONS_SHA256=af9e5595d9e1cf48e388229c544145bb7dfd02180cb1be44bbd12663ca45b1f3
 CONTENT_EN_JEWS_IN_PALESTINE_BEFORE_ISRAEL_SHA256=bba559c16b18022717bb7e65d66c07bd908d66542ec8b9b6a6bdfe73125f7392
-FILE_TREE_SHA256=5b9534ac19b375cfc7362bf754f64b9e9dd65e8bbd1cc45b1e110ce9f38e0bcd (BEFORE staging 11b's set — RE-CAPTURE after staging; see WORKFLOW step 6)
+FILE_TREE_SHA256=3239735977778b3840630a547e3b017b773ca342a249d78d3bbd4a7067b7504b (AFTER staging the full 11b-a + 11b-b-partial set; captured in each commit body — see COMMIT RECORD above)
 SCHEMA_SHA256=OMITTED
 
 Volatile facts (GIT_HEAD, GIT_DIRTY, FILE_TREE_SHA256) live in the commit-message
-body, NOT here. FILE_TREE_SHA256 must be captured AFTER staging the full 11b-a
-file set INCLUDING this handoff.
+body, NOT here. FILE_TREE_SHA256 was captured AFTER staging each commit's set
+(11b-a = 72cfab37…; 11b-b partial = 32397359…).
 
 Test checklist result (pass/fail per item)
 
@@ -182,15 +195,17 @@ Test checklist result (pass/fail per item)
 7. inline rewrites = 67 (23 src + 22 data-orig-file + 22 data-large-file): PASS
 8. CORRECTED rewrite scope: 0 remote IMAGE urls + 17 external: PASS
 9. P6 pilot re-sync (9 srcs x fa/th/ar; 0 downloads): PASS
-10. Workstream B translate.js for 25 remaining slugs x3 langs: PARTIAL — fa
-    23/26 done (quota exhausted; aborted free). th/ar 0. See the 11b-b PROGRESS
-    section. translate.js preflight quota check added + verified (mocked).
-11. generate-index.js after each batch: NOT RUN (pending batch 11b-b; regen
-    once fa is complete).
+10. Workstream B translate.js PER SLUG (single-slug tool) for 26 slugs x lang:
+    PARTIAL — fa 23/26 COMMITTED (b3d4d25; quota exhausted, aborted free).
+    th/ar still 1 pilot each. See the 11b-b PROGRESS section. translate.js
+    preflight quota check added + verified (mocked).
+11. generate-index.js after each batch: RUN -> 51 entries (26 en + 23 fa + 1 th
+    - 1 ar) committed in b3d4d25. Re-run once fa is complete (3 slugs).
 12. node tools/test-integrity.js -> INTEGRITY OK: PASS
 13. Browser structural (local images load; 17 external load): PENDING HUMAN
-14. node tools/hash-state.js -> capture FILE_TREE_SHA256 at commit: run at commit
-15. git status --porcelain -> exactly 11b's file set: run at commit
+14. node tools/hash-state.js -> FILE_TREE_SHA256 captured AFTER staging each
+    commit: 11b-a 72cfab37…; 11b-b 32397359… (both in commit bodies).
+15. git status --porcelain: working tree CLEAN after b3d4d25 (verified).
 
 Reconciliation deviations (recorded, not hidden)
 
@@ -206,14 +221,15 @@ Reconciliation deviations (recorded, not hidden)
   Approved ("recommendations approved").
 - SPLIT confirmed (P8): this chat delivers 11b-a; 11b-b is a separate batch.
 
-Files that MUST be committed for 11b-a
+Files committed (EXECUTED — see COMMIT RECORD above)
 
-- apps/blog/tools/localize-images.js
-- apps/blog/tools/milestones/11b.md
-- apps/blog/HANDOFF-11b.md
-- apps/blog/assets/img/posts/\*\* (330 files — the local store; content, NOT cache)
-- apps/blog/content/en/\*.json (25 modified)
-- apps/blog/content/{fa,th,ar}/a-contemporary-history-of-the-muslim-world-11-afghanistan-3.json (3 modified)
+- 11b-a (a1a5b82): tools/localize-images.js; tools/milestones/11b.md;
+  HANDOFF-11b.md; assets/img/posts/\*_ (330 files); content/en/_.json (25);
+  content/{fa,th,ar}/a-contemporary-history-of-the-muslim-world-11-afghanistan-3.json
+  (3 pilot, src-only); tools/translate.js (preflight); tools/ROADMAP.md;
+  HANDOFF-CURRENT.txt.
+- 11b-b partial (b3d4d25): content/fa/\*.json (22 NEW + the pilot = 23);
+  assets/data/feed.json (regenerated; 51 entries).
 
 NOT committed (gitignored): apps/blog/tools/.cache/localize-images/ (download
 cache; covered by the tools/.cache/ ignore rule — verified).
@@ -270,7 +286,7 @@ Assumptions the next chat may rely on
 - The store is CONTENT (committed), not cache; the cache dir is gitignored.
 - The seam (import-post.js) is frozen through D-Tool-29; 11b-a changed NO seam
   and NO renderer/router/nav/CSS.
-- HANDOFF-CURRENT.txt -> HANDOFF-11b.md (TODO: point it there).
+- HANDOFF-CURRENT.txt -> HANDOFF-11b.md (DONE; committed in a1a5b82).
 
 Open warnings (count + links only)
 

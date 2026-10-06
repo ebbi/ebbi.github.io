@@ -1174,9 +1174,10 @@ non-resolved; L-014 resolved. NO seam change; import-post.js untouched
 
 - 11b Local image storage + batch translation rollout. SPLIT (D-11b-8) into
   11b-a (local image storage) + 11b-b (translation batch).
-  STATUS: 11b-a DONE (2026); 11b-b PARTIAL (fa 23/26; th/ar 0) — STOPPED on
-  DeepL QUOTA EXHAUSTION (free key at 1,000,000/1,000,000; /v2/usage is the
-  AUTHORITATIVE number, NOT the account web page — see HANDOFF-11b).
+  STATUS: 11b-a DONE (2026, committed a1a5b82); 11b-b PARTIAL (fa 23/26
+  committed b3d4d25; th/ar 0) — STOPPED on DeepL QUOTA EXHAUSTION (free key
+  at 1,000,000/1,000,000; /v2/usage is the AUTHORITATIVE number, NOT the
+  account web page — see HANDOFF-11b).
   11b-a: built tools/localize-images.js (download + dedup + image-path
   rewrite; Node 20, no deps; --lang/--slug/--dry-run/--force/--report/--yes;
   P9 HUMAN GATE enforced). Store = assets/img/posts/<slug>/<YYYY>/<MM>/<basename>
