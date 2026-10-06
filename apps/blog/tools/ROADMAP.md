@@ -1145,6 +1145,33 @@ non-resolved; L-014 resolved. NO seam change; import-post.js untouched
   written; no seam change; feed.json untouched. Next (11) is HUMAN-GATED
   (already authored).
 
+- 11a Translation pipeline (m1) + pilot ingestion (fa/th/ar) + switcher open.
+  Builds tools/translate.js (offline, env-var key, never shipped), translates
+  ONE re-targeted pilot slug into fa/th/ar (g1 tag/URL preservation), regenerates
+  feed.json (26 EN + 3 non-EN = 29), WIDENS the switcher (nav.js LANGS) to the
+  content languages EN + فارسی + ไทย + العربية (endonyms), and removes the raw
+  ISO date from the post header (app.js). AMENDED SCOPE (D-11a-8/9): the
+  original "NO UI change" fence was lifted by the human so the pilot is
+  end-to-end testable before the batch phase. depends on: 10c (EN text gate).
+  STATUS: DONE (2026). tools/translate.js created (DeepL tag_handling=html;
+  --lang/--slug/--dry-run; KEY_ENV=DEEPL_API_KEY). Pilot RE-TARGETED from
+  `update` (non-blog, deny-listed) to
+  `a-contemporary-history-of-the-muslim-world-11-afghanistan-3` (D-11a-10)
+  after the human provided the three committed translations (part-3/part-4 of
+  this chat). content/{fa,th,ar}/<slug>.json present; g1 STRUCTURE/TAG/URL
+  invariance VERIFIED programmatically (slug/lang/date/blocks/types/tag-tokens
+  - hrefs preserved; character references are decoded to target punctuation —
+    `«»` in fa/ar — accepted per D-11a-3, NOT a violation). nav.js LANGS =
+    EN + fa/th/ar endonyms; app.js renderPost header = bare `${lang.toUpperCase()}`
+    (date dropped); router.js UNTOUCHED (already accepts any lang + sets RTL for
+    fa/ar). feed.json regenerated: 29 entries (23 EN visible + 3 non-blog EN
+    excluded at render + 3 non-EN, seriesOrder=null; list shows EN 23 / fa 1 /
+    th 1 / ar 1). node --check PASS (nav.js, app.js); test-integrity INTEGRITY OK.
+    DEFERRED to 11b (D-11a-11): LOCAL IMAGE STORAGE — 326 image blocks still
+    remote (309 twolegsbadblog.wordpress.com to be localized; 17 external-left);
+    alt-text ("Blog image" placeholder) also deferred. No content/en change; no
+    seam change; style.css untouched.
+
 ## Now
 
 - 10c List & panel presentation revamp (gate corrections). SUPERSEDES 10b's
@@ -1196,17 +1223,37 @@ non-resolved; L-014 resolved. NO seam change; import-post.js untouched
 
 ## Next (order per depends-on; each authored at the previous chat's close)
 
-<!-- Next chat: 11 -->
+<!-- Next chat: 11a -->
 
-<!-- HUMAN GATE: the human reviews the blogs in detail for text changes and
-     finalizes the EN text BEFORE any translation. Milestone 11 MUST NOT
-     start until this review is signed off. This is a necessary step to
-     finalize the text prior to translations. -->
+<!-- HUMAN GATE (SIGNED OFF at 10c close): the human reviewed the blogs in
+     detail for text changes and FINALIZED the EN text. Translation work is
+     now UNBLOCKED. Decision R2 recorded: static site, no public feeds. -->
 
-- 11 Translations & i18n UI. depends on: C1, and the HUMAN GATE above
-  (detailed blog text review / EN text finalization) being signed off.
-  ALREADY authored: tools/milestones/11.md (human-gated).
-- 12a RTL & Typography - Persian/Arabic. depends on: 11
+- 11b Local image storage + batch translation rollout. TWO workstreams:
+  (A) LOCAL IMAGE MIGRATION (D-11a-11): download the 309 images hosted on
+  twolegsbadblog.wordpress.com into a local store (assets/img/posts/<slug>/),
+  dedup, and rewrite each image block's `src` from the remote URL to the local
+  path across content/en/\*.json (and inherit into translations, since `src` is
+  non-translatable). The 17 EXTERNAL images (wikimedia.org, i.guim.co.uk,
+  flickr, pinimg, i0.wp, muwahhidmedia, c2.staticflickr) STAY REMOTE (human
+  decision). Licensing/attribution review required before rehosting; propose a
+  download+rewrite tool (network, separate from the frozen extraction seam).
+  Also decide the alt-text strategy (today renderer.js emits alt="Blog image").
+  (B) Translate the REMAINING EN slugs per language (one language per chat):
+  all 26 EN posts -> fa, then th, then ar, using tools/translate.js under the
+  human gate. depends on: 11a.
+  NOTE: the original "11 Translations & i18n UI" switcher flip is now DONE in
+  11a (nav.js already offers EN + fa/th/ar); the batch phase keeps extending
+  the same content-driven set.
+- 11b-pre (name at 11a close) — reserved if the human splits image migration
+  from the translation rollout; otherwise 11b covers both.
+- 11 Translations & i18n UI (SUPERSEDED/reduced). The switcher flip that this
+  milestone described is ALREADY DONE in 11a (nav.js offers EN + fa/th/ar); the
+  batch phase (11b) keeps extending the content-driven set. What remains for
+  this slot: per-language label review (B-5), the RTL/typography passes (12a/b),
+  and any i18n chrome. depends on: 11a. Reconcile tools/milestones/11.md at its
+  close (its text predates 10c + the 11a split).
+- 12a RTL & Typography - Persian/Arabic. depends on: 11a, 11b.
 - 12b RTL & Typography - Thai/Myanmar. depends on: 12a
 - 13a Accessibility & Keyboard Nav. depends on: 12b
 - 13b Performance & Caching (Service Worker). depends on: 13a
@@ -1219,6 +1266,13 @@ non-resolved; L-014 resolved. NO seam change; import-post.js untouched
 
 - Search UI / search index. Closed by 05b-removal. Re-open only as a
   deliberate future milestone.
+- RSS/Atom/public data feeds. Decided-not-to-do (R2, human decision at 10c
+  close): the blog is served as a static site with an internal JSON list index
+  (feed.json) + on-demand post JSON; NO RSS/Atom or other public machine-
+  readable feed is required or will be built. Re-open only if a public feed is
+  deliberately wanted. (This is a CONFIRMATION, not a change: no such feed was
+  ever shipped; 05a's search-index was already not adopted.)
+
 - About / Static Pages (was 10). Decided-not-to-do at 09 close: low
   priority, no downstream dependency. Re-open only if a static page
   (About-Us / contact) is deliberately wanted; note that a real About

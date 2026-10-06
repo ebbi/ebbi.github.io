@@ -19,13 +19,20 @@
  * - Preserved from 06: no second hashchange listener; no hash parsing.
  */
 window.BlogNav = (function () {
-  // Milestone 10c (D-10c-6): the switcher offers ONLY languages that have
-  // content (recon: content/en = 26 files; content/{fa,ar,th} = 0). The
-  // LOCKED_DECISIONS UI-language list is a superset and is NOT shipped
-  // wholesale. Translations are DEFERRED (human gate not signed off), so the
-  // offered set is EN only for now. Adding a language here is the ONLY change
-  // needed once its content/<lang>/ dir has files.
-  const LANGS = [{ code: "en", name: "English" }];
+  // Milestone 11a (D-11a-8): the switcher now offers every language that has
+  // content. content/en = 26 files; content/{fa,th,ar} carry the 11a pilot
+  // (a-contemporary-history-of-the-muslim-world-11-afghanistan-3). The
+  // LOCKED_DECISIONS UI-language list remains a superset and is NOT shipped
+  // wholesale. Option text is the ENDONYM (each language in its own script),
+  // the conventional presentation for a language switcher. Per-language human
+  // review of these names is still owed (B-5); they are labels only and have
+  // no structural effect.
+  const LANGS = [
+    { code: "en", name: "English" },
+    { code: "fa", name: "\u0641\u0627\u0631\u0633\u06CC" }, // فارسی
+    { code: "th", name: "\u0E44\u0E17\u0E22" }, // ไทย
+    { code: "ar", name: "\u0627\u0644\u0639\u0631\u0628\u064A\u0629" }, // العربية
+  ];
   const NAV_ID = "lang-nav";
   const SELECT_ID = "lang-select";
   const FLAG_SELECTOR = ".lang-flag";

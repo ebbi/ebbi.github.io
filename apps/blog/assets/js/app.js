@@ -457,11 +457,15 @@
     // Header block built here; body delegated to the renderer.
     // Milestone 09: namespaced classes mirror 08's list vocabulary (L-3);
     // .post-header__meta supersedes the bare .post-meta class.
+    // Milestone 11a (D-11a-9): the raw ISO date was removed from the header
+    // (it was already removed from the list in 10c; the header kept it and
+    // displayed the machine timestamp verbatim). The header now shows ONLY
+    // the language code badge.
     container.innerHTML = `
       <article class="post-detail">
         <header class="post-header">
           <h1 class="post-header__title">${body.title}</h1>
-          <p class="post-header__meta">${body.date} • ${body.lang.toUpperCase()}</p>
+          <p class="post-header__meta">${body.lang.toUpperCase()}</p>
         </header>
         <div class="post-content"></div>
       </article>
