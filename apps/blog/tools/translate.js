@@ -42,6 +42,11 @@ const SUPPORTED_LANGS = ["fa", "th", "ar"];
 const KEY_ENV = "DEEPL_API_KEY";
 const DEEPL_ENDPOINT = "https://api-free.deepl.com/v2/translate";
 const DEEPL_ENDPOINT_PRO = "https://api.deepl.com/v2/translate";
+// Usage endpoint mirrors the translate host (free vs pro). /v2/usage is the
+// AUTHORITATIVE quota for the KEY IN USE — it is NOT the account page on the
+// web (those can be different accounts; see HANDOFF-11b note re HTTP 456).
+const DEEPL_USAGE = "https://api-free.deepl.com/v2/usage";
+const DEEPL_USAGE_PRO = "https://api.deepl.com/v2/usage";
 // DeepL wants upper-case target codes and (optionally) region variants.
 const DEEPL_TARGET = { fa: "FA", th: "TH", ar: "AR" };
 // Explicit source lang for HTML fragments; keeps behaviour deterministic.
@@ -164,6 +169,49 @@ function getApiKey() {
   const key = process.env[KEY_ENV];
   if (!key || !key.trim()) return null;
   return key.trim();
+}
+
+/**
+ * Fetch the AUTHORITATIVE quota for the key in use from /v2/usage.
+ * Returns { character_count, character_limit, remaining } or throws.
+ *
+ * This is the source of truth for "how many characters do I have left".
+ * It is NOT the DeepL account web page — a key can belong to a different
+ * account (or carry a per-key cap) than the page shows, which is exactly the
+ * confusing case where the web page shows "120,446 / 1M" but the API returns
+ * HTTP 456 "Quota exceeded" because the KEY's own account is exhausted
+ * (e.g. 1,000,000 / 1,000,000).
+ */
+async function deeplUsage(apiKey) {
+  const endpoint = apiKey.endsWith(":fx") ? DEEPL_USAGE : DEEPL_USAGE_PRO;
+  const res = await fetch(endpoint, {
+    method: "GET",
+    headers: { Authorization: `DeepL-Auth-Key ${apiKey}` },
+  });
+  if (!res.ok) {
+    let detail = "";
+    try {
+      detail = await res.text();
+    } catch (_) {
+      /* ignore */
+    }
+    throw new Error(
+      `DeepL usage request failed: HTTP ${res.status} ${res.statusText}${
+        detail ? ` — ${detail.slice(0, 200)}` : ""
+      }`,
+    );
+  }
+  const json = await res.json();
+  const character_count = Number(json.character_count);
+  const character_limit = Number(json.character_limit);
+  if (!Number.isFinite(character_count) || !Number.isFinite(character_limit)) {
+    throw new Error("DeepL usage response missing character_count/limit.");
+  }
+  return {
+    character_count,
+    character_limit,
+    remaining: character_limit - character_count,
+  };
 }
 
 /**
@@ -336,7 +384,13 @@ async function translateEnvelope(envelope, lang, apiKey, dryRun) {
 // ===========================================================================
 
 function parseArgs(argv) {
-  const args = { lang: null, slug: DEFAULT_SLUG, dryRun: false };
+  const args = {
+    lang: null,
+    slug: DEFAULT_SLUG,
+    dryRun: false,
+    usage: false,
+    skipUsageCheck: false,
+  };
   for (let i = 0; i < argv.length; i += 1) {
     const a = argv[i];
     if (a === "--lang") args.lang = argv[++i];
@@ -344,23 +398,29 @@ function parseArgs(argv) {
     else if (a === "--slug") args.slug = argv[++i];
     else if (a.startsWith("--slug=")) args.slug = a.slice(7);
     else if (a === "--dry-run") args.dryRun = true;
+    else if (a === "--usage") args.usage = true;
+    else if (a === "--no-usage-check") args.skipUsageCheck = true;
     else if (a === "-h" || a === "--help") args.help = true;
     else if (a.startsWith("-")) throw new Error(`Unknown flag: ${a}`);
   }
   return args;
 }
 
-function usage() {
+function usageText() {
   console.log(
     [
       "Usage: node tools/translate.js --lang <fa|th|ar> [--slug <slug>] [--dry-run]",
+      "       node tools/translate.js --usage",
       "",
       `  --lang    target language (one of: ${SUPPORTED_LANGS.join(", ")})`,
       `  --slug    EN source slug (default: ${DEFAULT_SLUG})`,
       "  --dry-run print the translation plan and write nothing",
+      "  --usage   print the authoritative DeepL quota for the key and exit",
+      "  --no-usage-check  skip the preflight quota check (real runs only)",
       "",
       `Requires the API key in the environment variable ${KEY_ENV}.`,
       "The key is never committed or shipped (offline, pre-generated only).",
+      "QUOTA: /v2/usage is authoritative, NOT the DeepL account web page.",
     ].join("\n"),
   );
 }
@@ -371,12 +431,40 @@ async function main() {
     args = parseArgs(process.argv.slice(2));
   } catch (err) {
     console.error(`\n✗ ${err.message}\n`);
-    usage();
+    usageText();
     process.exit(2);
   }
 
   if (args.help) {
-    usage();
+    usageText();
+    process.exit(0);
+  }
+
+  // --usage: print the AUTHORITATIVE quota for the key in use and exit.
+  // No --lang required. This is the number to trust (NOT the account page).
+  if (args.usage) {
+    const apiKey = getApiKey();
+    if (!apiKey) {
+      console.error(`\n✗ Missing API key. Export ${KEY_ENV} and re-run.\n`);
+      process.exit(3);
+    }
+    try {
+      const u = await deeplUsage(apiKey);
+      console.log(
+        `\n=== DeepL usage (key in use; ${apiKey.endsWith(":fx") ? "free" : "pro"} host) ===\n`,
+      );
+      console.log(`  used      : ${u.character_count}`);
+      console.log(`  limit     : ${u.character_limit}`);
+      console.log(`  remaining : ${u.remaining}`);
+      console.log(
+        u.remaining <= 0
+          ? "\n  ⚠ QUOTA EXHAUSTED — HTTP 456 expected until the monthly reset.\n"
+          : "",
+      );
+    } catch (err) {
+      console.error(`\n✗ ${err.message}\n`);
+      process.exit(1);
+    }
     process.exit(0);
   }
 
@@ -387,7 +475,7 @@ async function main() {
         ", ",
       )} (got ${JSON.stringify(args.lang)})\n`,
     );
-    usage();
+    usageText();
     process.exit(2);
   }
 
@@ -444,6 +532,47 @@ async function main() {
   if (args.dryRun) {
     console.log("\n  DRY-RUN: no network call made, no file written.\n");
     process.exit(0);
+  }
+
+  // Preflight quota check (real runs only). /v2/usage is AUTHORITATIVE for
+  // the key in use — NOT the DeepL account web page (they can differ, which
+  // is the confusing "page shows 120K/1M but API returns 456" case). We
+  // estimate the source-character cost of this slug and warn/abort early
+  // instead of failing mid-batch with HTTP 456.
+  if (!args.skipUsageCheck) {
+    try {
+      const u = await deeplUsage(apiKey);
+      const cost = plan.reduce((n, p) => n + p.chars, 0);
+      console.log(
+        `\n  quota : ${u.character_count} / ${u.character_limit} used ` +
+          `(${u.remaining} remaining; this slug ≈ ${cost} source chars)`,
+      );
+      if (u.remaining <= 0) {
+        console.error(
+          `\n✗ ABORTED before writing: DeepL quota exhausted ` +
+            `(${u.character_count}/${u.character_limit}).\n` +
+            `  /v2/usage is authoritative for THIS key. If your account page\n` +
+            `  shows unused quota, the key belongs to a DIFFERENT account (or\n` +
+            `  carries a per-key cap). Wait for the monthly reset, upgrade, or\n` +
+            `  use another key. Re-run with --no-usage-check to override.\n`,
+        );
+        process.exit(6);
+      }
+      if (cost > u.remaining) {
+        console.error(
+          `\n✗ ABORTED before writing: this slug needs ≈ ${cost} source chars ` +
+            `but only ${u.remaining} remain.\n` +
+            `  Wait for the monthly reset, upgrade, or translate a shorter\n` +
+            `  slug. Re-run with --no-usage-check to override.\n`,
+        );
+        process.exit(6);
+      }
+    } catch (err) {
+      // A usage-probe failure must NOT block translation (best-effort check).
+      console.error(
+        `  quota : (usage check unavailable: ${err.message}) — continuing`,
+      );
+    }
   }
 
   // Real run: translate (network), asserting tag-invariance per field.

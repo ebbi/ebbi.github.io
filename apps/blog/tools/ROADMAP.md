@@ -1172,6 +1172,32 @@ non-resolved; L-014 resolved. NO seam change; import-post.js untouched
     alt-text ("Blog image" placeholder) also deferred. No content/en change; no
     seam change; style.css untouched.
 
+- 11b Local image storage + batch translation rollout. SPLIT (D-11b-8) into
+  11b-a (local image storage) + 11b-b (translation batch).
+  STATUS: 11b-a DONE (2026); 11b-b PARTIAL (fa 23/26; th/ar 0) — STOPPED on
+  DeepL QUOTA EXHAUSTION (free key at 1,000,000/1,000,000; /v2/usage is the
+  AUTHORITATIVE number, NOT the account web page — see HANDOFF-11b).
+  11b-a: built tools/localize-images.js (download + dedup + image-path
+  rewrite; Node 20, no deps; --lang/--slug/--dry-run/--force/--report/--yes;
+  P9 HUMAN GATE enforced). Store = assets/img/posts/<slug>/<YYYY>/<MM>/<basename>
+  (the WP uploads subpath PRESERVED so a within-slug basename collision cannot
+  overwrite a distinct image — the part-6 defect; P1 amended). Dedup by FULL
+  source path (P3). `?w=` stripped (P2). Idempotent (P4). REAL migration run
+  (P9 signed): 330 files downloaded (74M), 25 EN files rewritten, 309 block src
+  - 67 inline (23 <img src> + 22 data-orig-file + 22 data-large-file, P10=b);
+    0 broken local refs; 17 external kept. FINAL CENSUS: 376 local refs, 0
+    in-scope remote remaining, 17 external, 86 non-image article links kept
+    (href/data-permalink), 37 youtube embed iframes kept. 3 pilot translations
+    re-synced to local src (P6; src-only, text byte-identical). renderer.js /
+    router.js / nav.js / style.css / import-post.js UNTOUCHED. test-integrity
+    INTEGRITY OK. Also (this chat): tools/translate.js gained an ADDITIVE
+    /v2/usage preflight quota check (abort exit 6 on exhausted/shortfall;
+    new --usage and --no-usage-check flags; g1/transport unchanged).
+    11b-b: translate the remaining EN slugs PER SLUG (translate.js is
+    single-slug, DEFAULT_SLUG="update"; NO all-slugs mode) for fa, then th,
+    then ar (one language per chat) via tools/translate.js; regenerate
+    feed.json per batch. depends on: 11a.
+
 ## Now
 
 - 10c List & panel presentation revamp (gate corrections). SUPERSEDES 10b's
@@ -1223,33 +1249,29 @@ non-resolved; L-014 resolved. NO seam change; import-post.js untouched
 
 ## Next (order per depends-on; each authored at the previous chat's close)
 
-<!-- Next chat: 11a -->
+<!-- Next chat: 11b-b (translation batch: fa, then th, then ar) -->
 
 <!-- HUMAN GATE (SIGNED OFF at 10c close): the human reviewed the blogs in
      detail for text changes and FINALIZED the EN text. Translation work is
      now UNBLOCKED. Decision R2 recorded: static site, no public feeds. -->
 
-- 11b Local image storage + batch translation rollout. TWO workstreams:
-  (A) LOCAL IMAGE MIGRATION (D-11a-11): download the 309 images hosted on
-  twolegsbadblog.wordpress.com into a local store (assets/img/posts/<slug>/),
-  dedup, and rewrite each image block's `src` from the remote URL to the local
-  path across content/en/\*.json (and inherit into translations, since `src` is
-  non-translatable). The 17 EXTERNAL images (wikimedia.org, i.guim.co.uk,
-  flickr, pinimg, i0.wp, muwahhidmedia, c2.staticflickr) STAY REMOTE (human
-  decision). Licensing/attribution review required before rehosting; propose a
-  download+rewrite tool (network, separate from the frozen extraction seam).
-  Also decide the alt-text strategy (today renderer.js emits alt="Blog image").
-  (B) Translate the REMAINING EN slugs per language (one language per chat):
-  all 26 EN posts -> fa, then th, then ar, using tools/translate.js under the
-  human gate. depends on: 11a.
-  NOTE: the original "11 Translations & i18n UI" switcher flip is now DONE in
-  11a (nav.js already offers EN + fa/th/ar); the batch phase keeps extending
-  the same content-driven set.
-- 11b-pre (name at 11a close) — reserved if the human splits image migration
-  from the translation rollout; otherwise 11b covers both.
+- 11b-b Translation batch rollout (the B half of 11b). Translate the REMAINING
+  EN slugs per language (one language per chat): fa, then th, then ar, using
+  tools/translate.js under the human gate (DEEPL_API_KEY, env-only).
+  CHECKPOINT: fa is 23/26 DONE; the run STOPPED on DeepL QUOTA EXHAUSTION
+  (free key at 1,000,000/1,000,000 — /v2/usage authoritative, NOT the web
+  page). 3 fa slugs remain (protected-...part-13-yemen-1,
+  what-we-have-forgotten-...-and-the-west, ...-and-the-west-part-2); th/ar 0.
+  translate.js is SINGLE-SLUG (no all-slugs mode; the earlier "--lang fa"
+  alone was WRONG) — run PER SLUG, and use the new `--usage` flag / preflight
+  to check quota first. translate.js copies image `src` VERBATIM from EN, so
+  new translations inherit the LOCAL src automatically (EN localized in 11b-a).
+  After each language batch: `node tools/generate-index.js` then
+  `node tools/test-integrity.js`. The 17 external images stay remote
+  (D-11b-7). depends on: 11b-a.
 - 11 Translations & i18n UI (SUPERSEDED/reduced). The switcher flip that this
   milestone described is ALREADY DONE in 11a (nav.js offers EN + fa/th/ar); the
-  batch phase (11b) keeps extending the content-driven set. What remains for
+  batch phase (11b-b) keeps extending the content-driven set. What remains for
   this slot: per-language label review (B-5), the RTL/typography passes (12a/b),
   and any i18n chrome. depends on: 11a. Reconcile tools/milestones/11.md at its
   close (its text predates 10c + the 11a split).
