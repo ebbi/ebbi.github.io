@@ -1,0 +1,1 @@
+The zabon/apps/zabon-thai/app.js has an intermittent runtime bug in the sentence multiple choice quiz; on occasions after selecting an answer the quiz does not advance to the next question and all buttons become inactive.

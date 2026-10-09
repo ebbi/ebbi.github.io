@@ -1379,7 +1379,7 @@ const App = (function () {
                 return map[lang] || "en-US";
             },
 
-            speak(text, lang, onStart, onEnd, onBoundary) {
+            speak(text, lang, onStart, onEnd, onBoundary, onError) {
                 const utterance = new SpeechSynthesisUtterance(text);
                 utterance.lang = this.getLocaleFor(lang);
                 utterance.rate = State.data.media.speed;
@@ -1393,6 +1393,7 @@ const App = (function () {
                 if (onStart) utterance.onstart = onStart;
                 if (onEnd) utterance.onend = onEnd;
                 if (onBoundary) utterance.onboundary = onBoundary;
+                if (onError) utterance.onerror = onError;
                 window.speechSynthesis.cancel();
                 window.speechSynthesis.speak(utterance);
             },
@@ -2804,6 +2805,12 @@ const App = (function () {
                     ? "th"
                     : allLangs[0] || "en";
 
+                // Clear any pending auto-play timer from a previous quiz instance.
+                const prevQuiz = State.data.quiz;
+                if (prevQuiz && prevQuiz._autoPlayTimer) {
+                    clearTimeout(prevQuiz._autoPlayTimer);
+                }
+
                 State.data.quiz = {
                     items: items.sort(() => Math.random() - 0.5),
                     currentIndex: 0,
@@ -2814,6 +2821,8 @@ const App = (function () {
                     sectionIndex: sectionIdx,
                     questionLang: defaultQuestionLang,
                     answerLang: defaultAnswerLang,
+                    answerLock: false,
+                    _autoPlayTimer: null,
                 };
 
                 this.renderQuestion();
@@ -3031,8 +3040,19 @@ const App = (function () {
         </div>
     `;
 
-                // Auto-play the question
-                setTimeout(() => {
+                // Auto-play the question.
+                // Store the timer on the quiz state and clear any previous one so an
+                // orphaned auto-play from a previously-rendered question cannot fire
+                // after the user has already answered and interrupt the answer speech.
+                if (quiz._autoPlayTimer) {
+                    clearTimeout(quiz._autoPlayTimer);
+                    quiz._autoPlayTimer = null;
+                }
+                quiz._autoPlayTimer = setTimeout(() => {
+                    quiz._autoPlayTimer = null;
+                    // Never auto-play over an in-flight answer (the answer handler owns
+                    // the speech queue while a question is being resolved).
+                    if (quiz.answerLock) return;
                     Services.MediaService.speak(
                         questionText,
                         quiz.questionLang,
@@ -6782,6 +6802,25 @@ const App = (function () {
                     const quiz = State.data.quiz;
                     if (!quiz) return;
 
+                    // Guard against a second invocation on the same question (e.g. a
+                    // double tap firing two click events before the buttons are
+                    // disabled). Without this, two independent advance closures would
+                    // each increment currentIndex and skip/overrun questions.
+                    if (quiz.answerLock) return;
+                    quiz.answerLock = true;
+
+                    // Cancel a pending auto-play for this question before we take over
+                    // the speech queue with the answer audio.
+                    if (quiz._autoPlayTimer) {
+                        clearTimeout(quiz._autoPlayTimer);
+                        quiz._autoPlayTimer = null;
+                    }
+
+                    // Snapshot the question index this answer belongs to. If the quiz
+                    // state is re-rendered/reset before the speech callback resolves,
+                    // the stale callback must not advance a different question.
+                    const questionIndex = quiz.currentIndex;
+
                     const isCorrect = selected === correct;
 
                     // Disable all option buttons immediately
@@ -6806,49 +6845,61 @@ const App = (function () {
                         quiz.score++;
                     }
 
-                    // Speak the selected answer
-                    let speechFinished = false;
+                    // Advance exactly once, regardless of whether the speech engine
+                    // reported completion via onend, onerror, or never at all.
+                    let hasAdvanced = false;
                     const advance = () => {
-                        if (speechFinished) {
-                            // Move to next question
-                            quiz.currentIndex++;
-                            if (quiz.currentIndex < quiz.items.length) {
-                                UI.Quiz.renderQuestion();
-                            } else {
-                                // Quiz completed
-                                State.data.activityCounts.quizzesTaken =
-                                    (State.data.activityCounts.quizzesTaken ||
-                                        0) + 1;
-                                State.save("activityCounts");
-                                App.addActivity(
-                                    "quiz",
-                                    "activity_completed_quiz",
-                                );
-                                App.updateStreak();
-                                UI.Quiz.renderResults();
-                            }
+                        if (hasAdvanced) return;
+                        hasAdvanced = true;
+
+                        // Clear the fallback timer so it cannot fire later.
+                        if (fallbackTimer) {
+                            clearTimeout(fallbackTimer);
+                            fallbackTimer = null;
+                        }
+
+                        // Abort if the quiz was reset/replaced while speech was playing.
+                        if (State.data.quiz !== quiz) return;
+                        if (questionIndex !== quiz.currentIndex) return;
+
+                        quiz.answerLock = false;
+                        quiz.currentIndex++;
+                        if (quiz.currentIndex < quiz.items.length) {
+                            UI.Quiz.renderQuestion();
+                        } else {
+                            // Quiz completed
+                            State.data.activityCounts.quizzesTaken =
+                                (State.data.activityCounts.quizzesTaken || 0) +
+                                1;
+                            State.save("activityCounts");
+                            App.addActivity("quiz", "activity_completed_quiz");
+                            App.updateStreak();
+                            UI.Quiz.renderResults();
                         }
                     };
 
-                    // Speak with onend callback
+                    // Safety net: guarantee the quiz always moves on even if the
+                    // speech engine never emits onend/onerror (a known browser
+                    // quirk, especially when utterances are interrupted/cancelled).
+                    let fallbackTimer = setTimeout(() => {
+                        fallbackTimer = null;
+                        advance();
+                    }, 4000);
+
+                    // Speak with onend callback. onerror is treated as completion:
+                    // some browsers fire onerror (not onend) for interrupted or
+                    // unsupported utterances, which previously left the quiz stuck.
                     Services.MediaService.speak(
                         selected,
                         quiz.answerLang,
                         null, // onStart (optional)
-                        () => {
-                            speechFinished = true;
-                            advance();
-                        },
+                        () => advance(), // onEnd
+                        undefined, // onBoundary
+                        () => advance(), // onError
                     );
-
-                    // Fallback timeout (10 seconds) in case speech never ends
-                    setTimeout(() => {
-                        if (!speechFinished) {
-                            speechFinished = true; // Mark as finished to avoid double advance
-                            advance();
-                        }
-                    }, 10000);
                 } catch (e) {
+                    // Never leave the quiz in a locked, unadvanceable state.
+                    if (State.data.quiz) State.data.quiz.answerLock = false;
                     console.error("Quiz handleAnswer error:", e);
                 }
             },
@@ -6856,10 +6907,15 @@ const App = (function () {
             retryIncorrect() {
                 const quiz = State.data.quiz;
                 if (quiz) {
+                    if (quiz._autoPlayTimer) {
+                        clearTimeout(quiz._autoPlayTimer);
+                        quiz._autoPlayTimer = null;
+                    }
                     quiz.items = [...quiz.incorrect];
                     quiz.currentIndex = 0;
                     quiz.score = 0;
                     quiz.incorrect = [];
+                    quiz.answerLock = false;
                     UI.Quiz.renderQuestion();
                 }
             },
