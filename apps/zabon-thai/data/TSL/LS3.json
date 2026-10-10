@@ -12,10 +12,10 @@
         "newWords": 0,
         "sentenceCount": 0,
         "estimatedTime": 300,
-        "authors": [ ],
-        "reviewers": [ ],
-        "prerequisites": [ ],
-        "tags": [ ],
+        "authors": [],
+        "reviewers": [],
+        "prerequisites": [],
+        "tags": [],
         "updated": "2026-05-03T15:17:22.226Z"
     },
     "vocabulary": {
@@ -411,8 +411,8 @@
         },
         "ผม": {
             "translations": {
-                "en": "hair",
-                "fa": "مو"
+                "en": "I (male)",
+                "fa": "من"
             }
         },
         "7 โมง": {
@@ -453,7 +453,7 @@
         },
         "ฉัน": {
             "translations": {
-                "en": "i (female)",
+                "en": "I (female)",
                 "fa": "من (زن)"
             }
         },
@@ -627,7 +627,7 @@
         },
         "ประเทศไทย": {
             "translations": {
-                "en": "thailand",
+                "en": "Thailand",
                 "fa": "تایلند"
             }
         },
@@ -735,13 +735,13 @@
         },
         "วันจันทร์": {
             "translations": {
-                "en": "monday",
+                "en": "Monday",
                 "fa": "دوشنبه"
             }
         },
         "วันอังคาร": {
             "translations": {
-                "en": "tuesday",
+                "en": "Tuesday",
                 "fa": "سه‌شنبه"
             }
         },
@@ -753,13 +753,13 @@
         },
         "วันพฤหัสบดี": {
             "translations": {
-                "en": "thursday",
+                "en": "Thursday",
                 "fa": "پنجشنبه"
             }
         },
         "วันศุกร์": {
             "translations": {
-                "en": "friday",
+                "en": "Friday",
                 "fa": "جمعه"
             }
         },
@@ -933,7 +933,7 @@
         },
         "วันศุกร์ที่แล้ว": {
             "translations": {
-                "en": "last friday",
+                "en": "last Friday",
                 "fa": "جمعه گذشته"
             }
         },
@@ -1083,73 +1083,73 @@
         },
         "มกราคม": {
             "translations": {
-                "en": "january",
+                "en": "January",
                 "fa": "ژانویه"
             }
         },
         "กุมภาพันธ์": {
             "translations": {
-                "en": "february",
+                "en": "February",
                 "fa": "فوریه"
             }
         },
         "มีนาคม": {
             "translations": {
-                "en": "march",
+                "en": "March",
                 "fa": "مارس"
             }
         },
         "เมษายน": {
             "translations": {
-                "en": "april",
+                "en": "April",
                 "fa": "آوریل"
             }
         },
         "พฤษภาคม": {
             "translations": {
-                "en": "may",
+                "en": "May",
                 "fa": "مه"
             }
         },
         "มิถุนายน": {
             "translations": {
-                "en": "june",
+                "en": "June",
                 "fa": "ژوئن"
             }
         },
         "กรกฎาคม": {
             "translations": {
-                "en": "july",
+                "en": "July",
                 "fa": "ژوئیه"
             }
         },
         "สิงหาคม": {
             "translations": {
-                "en": "august",
+                "en": "August",
                 "fa": "اوت"
             }
         },
         "กันยายน": {
             "translations": {
-                "en": "september",
+                "en": "September",
                 "fa": "سپتامبر"
             }
         },
         "ตุลาคม": {
             "translations": {
-                "en": "october",
+                "en": "October",
                 "fa": "اکتبر"
             }
         },
         "พฤศจิกายน": {
             "translations": {
-                "en": "november",
+                "en": "November",
                 "fa": "نوامبر"
             }
         },
         "ธันวาคม": {
             "translations": {
-                "en": "december",
+                "en": "December",
                 "fa": "دسامبر"
             }
         },
@@ -1533,7 +1533,7 @@
         },
         "เป็นคนไทย": {
             "translations": {
-                "en": "is thai",
+                "en": "is Thai",
                 "fa": "تایلندی است"
             }
         },
@@ -1831,6 +1831,12 @@
                 "fa": "باحال"
             }
         },
+        "โมงเย็น": {
+            "translations": {
+                "en": "late afternoon",
+                "fa": "بعد از ظهر"
+            }
+        },
         "กี่": {
             "translations": {
                 "en": "how many",
@@ -1911,7 +1917,7 @@
         },
         "ภาษาไทย": {
             "translations": {
-                "en": "thai",
+                "en": "Thai",
                 "fa": "زبان تایلندی"
             }
         },
@@ -2073,7 +2079,7 @@
         },
         "ตั้งแต่วันจันทร์": {
             "translations": {
-                "en": "from monday",
+                "en": "from Monday",
                 "fa": "از دوشنبه شروع میشه."
             }
         },
@@ -2097,7 +2103,7 @@
         },
         "ศุกร์": {
             "translations": {
-                "en": "friday",
+                "en": "Friday",
                 "fa": "جمعه"
             }
         },
@@ -2121,7 +2127,7 @@
         },
         "พฤหัส": {
             "translations": {
-                "en": "thursday",
+                "en": "Thursday",
                 "fa": "پنجشنبه"
             }
         },
@@ -2133,7 +2139,7 @@
         },
         "ไทย": {
             "translations": {
-                "en": "thailand",
+                "en": "Thailand",
                 "fa": "تایلندی"
             }
         },
@@ -2354,13 +2360,7 @@
                         "th": "คำศัพท์ 1",
                         "fa": "واژگان ۱"
                     },
-                    "wordIds": [
-                        "เวลา",
-                        "นาฬิกา",
-                        "โมง",
-                        "ทุ่ม",
-                        "ดี"
-                    ]
+                    "wordIds": ["เวลา", "นาฬิกา", "โมง", "ทุ่ม", "ดี"]
                 },
                 {
                     "type": "words",
@@ -2408,7 +2408,7 @@
                             {
                                 "source": "10 โมงค่ะ",
                                 "translations": {
-                                    "en": "it's 10 o'clock / it's 10 a.m.",
+                                    "en": "It's 10 o'clock / it's 10 a.m.",
                                     "fa": "ساعت ۱۰ است / ۱۰ صبح است."
                                 }
                             },
@@ -2453,19 +2453,15 @@
                                 "ครับ"
                             ],
                             "translations": {
-                                "en": "excuse me, what time is it now?",
+                                "en": "Excuse me, what time is it now?",
                                 "fa": "ببخشید، ساعت چنده الان؟"
                             }
                         },
                         {
                             "source": "10โมงค่ะ",
-                            "wordIds": [
-                                "10",
-                                "โมง",
-                                "ค่ะ"
-                            ],
+                            "wordIds": ["10", "โมง", "ค่ะ"],
                             "translations": {
-                                "en": "it's 10 o'clock / it's 10 a.m.",
+                                "en": "It's 10 o'clock / it's 10 a.m.",
                                 "fa": "ساعت ۱۰ است / ۱۰ صبح است"
                             }
                         },
@@ -2481,19 +2477,15 @@
                                 "กี่โมง"
                             ],
                             "translations": {
-                                "en": "what time will you go to meet your friend today?",
+                                "en": "What time will you go to meet your friend today?",
                                 "fa": "امروز ساعت چند می‌روی دوستت را ملاقات کنی؟"
                             }
                         },
                         {
                             "source": "ประมาณ9โมงเช้า",
-                            "wordIds": [
-                                "ประมาณ",
-                                "9",
-                                "โมงเช้า"
-                            ],
+                            "wordIds": ["ประมาณ", "9", "โมงเช้า"],
                             "translations": {
-                                "en": "about 9 o'clock in the morning",
+                                "en": "About 9 o'clock in the morning",
                                 "fa": "حدود ساعت ۹ صبح"
                             }
                         },
@@ -2507,20 +2499,15 @@
                                 "กี่โมง"
                             ],
                             "translations": {
-                                "en": "what time does father normally finish work?",
+                                "en": "What time does father normally finish work?",
                                 "fa": "پدر معمولاً ساعت چند کارش تمام می‌شود؟"
                             }
                         },
                         {
                             "source": "ประมาณ4โมงเย็น",
-                            "wordIds": [
-                                "ประมาณ",
-                                "4",
-                                "โมง",
-                                "เย็น"
-                            ],
+                            "wordIds": ["ประมาณ", "4", "โมงเย็น"],
                             "translations": {
-                                "en": "about 4 o'clock in the afternoon",
+                                "en": "About 4 o'clock in the afternoon",
                                 "fa": "حدود ساعت ۴ بعد از ظهر"
                             }
                         }
@@ -2551,7 +2538,7 @@
                             {
                                 "source": "ปกติผมตื่น(ตอน) 7 โมงครับ",
                                 "translations": {
-                                    "en": "normally, i wake up at 7 a.m.",
+                                    "en": "normally, I wake up at 7 a.m.",
                                     "fa": "معمولاً ساعت ۷ صبح بیدار می‌شوم."
                                 }
                             },
@@ -2565,7 +2552,7 @@
                             {
                                 "source": "ปกติผมทำการบ้าน(ตอน) 2 ทุ่มครับ",
                                 "translations": {
-                                    "en": "normally, i do my homework at 8 p.m.",
+                                    "en": "normally, I do my homework at 8 p.m.",
                                     "fa": "معمولاً ساعت ۸ شب تکالیفم را انجام می‌دهم."
                                 }
                             }
@@ -2574,16 +2561,9 @@
                     "sentences": [
                         {
                             "source": "ปกติคุณตื่นกี่โมงคะ",
-                            "wordIds": [
-                                "ปกติ",
-                                "คุณ",
-                                "ตื่น",
-                                "กี่",
-                                "โมง",
-                                "คะ"
-                            ],
+                            "wordIds": ["ปกติ", "คุณ", "ตื่น", "กี่โมง", "คะ"],
                             "translations": {
-                                "en": "what time do you usually wake up?",
+                                "en": "What time do you usually wake up?",
                                 "fa": "معمولاً ساعت چند بیدار می‌شوید؟"
                             }
                         },
@@ -2599,7 +2579,7 @@
                                 "ครับ"
                             ],
                             "translations": {
-                                "en": "normally, i wake up at 7 a.m.",
+                                "en": "Normally, I wake up at 7 a.m.",
                                 "fa": "معمولاً ساعت ۷ صبح بیدار می‌شوم."
                             }
                         },
@@ -2610,12 +2590,12 @@
                                 "คุณ",
                                 "ทำการ",
                                 "บ้าน",
-                                "กี่",
+                                "กี่โมง",
                                 "โมง",
                                 "คะ"
                             ],
                             "translations": {
-                                "en": "what time do you usually do your homework?",
+                                "en": "What time do you usually do your homework?",
                                 "fa": "معمولاً ساعت چند تکالیفتان را انجام می‌دهید؟"
                             }
                         },
@@ -2632,7 +2612,7 @@
                                 "ครับ"
                             ],
                             "translations": {
-                                "en": "normally, i do my homework at 8 p.m.",
+                                "en": "Normally, I do my homework at 8 p.m.",
                                 "fa": "معمولاً ساعت ۸ شب تکالیفم را انجام می‌دهم."
                             }
                         }
@@ -2648,16 +2628,9 @@
                     "sentences": [
                         {
                             "source": "ปกติคุณตื่นกี่โมงคะ",
-                            "wordIds": [
-                                "ปกติ",
-                                "คุณ",
-                                "ตื่น",
-                                "กี่",
-                                "โมง",
-                                "คะ"
-                            ],
+                            "wordIds": ["ปกติ", "คุณ", "ตื่น", "กี่โมง", "คะ"],
                             "translations": {
-                                "en": "what time do you usually wake up?",
+                                "en": "What time do you usually wake up?",
                                 "fa": "معمولاً ساعت چند بیدار می‌شوید؟"
                             }
                         },
@@ -2676,7 +2649,7 @@
                                 "ล่ะ"
                             ],
                             "translations": {
-                                "en": "normally, i wake up at 8 a.m. what about you?",
+                                "en": "Normally, I wake up at 8 a.m. what about you?",
                                 "fa": "معمولاً ساعت ۸ صبح بیدار می‌شوم. شما چطور؟"
                             }
                         },
@@ -2693,7 +2666,7 @@
                                 "โมง"
                             ],
                             "translations": {
-                                "en": "normally, i wake up late. around 11 a.m.",
+                                "en": "Normally, I wake up late. around 11 a.m.",
                                 "fa": "معمولاً دیر بیدار می‌شوم. حدود ۱۱ صبح."
                             }
                         },
@@ -2710,7 +2683,7 @@
                                 "ครับ"
                             ],
                             "translations": {
-                                "en": "do you normally drink coffee in the morning?",
+                                "en": "Do you normally drink coffee in the morning?",
                                 "fa": "معمولاً صبح‌ها قهوه می‌نوشید؟"
                             }
                         },
@@ -2723,14 +2696,12 @@
                                 "ฉัน",
                                 "ดื่ม",
                                 "กาแฟ",
-                                "ไม่",
-                                "ได้",
-                                "คุณ",
-                                "ล่ะ",
+                                "ไม่ได้",
+                                "คุณล่ะ",
                                 "คะ"
                             ],
                             "translations": {
-                                "en": "no, i cannot drink coffee. what about you?",
+                                "en": "No, I cannot drink coffee. What about you?",
                                 "fa": "نه، نمی‌توانم قهوه بخورم. شما چطور؟"
                             }
                         },
@@ -2748,7 +2719,7 @@
                                 "ครับ"
                             ],
                             "translations": {
-                                "en": "yes, i drink coffee in the morning and afternoon.",
+                                "en": "Yes, I drink coffee in the morning and afternoon.",
                                 "fa": "بله، من صبح و بعد از ظهر قهوه می‌نوشم."
                             }
                         },
@@ -2758,12 +2729,11 @@
                                 "ปกติ",
                                 "คุณ",
                                 "ออกกำลังกาย",
-                                "กี่",
-                                "โมง",
+                                "กี่โมง",
                                 "คะ"
                             ],
                             "translations": {
-                                "en": "what time do you usually exercise?",
+                                "en": "What time do you usually exercise?",
                                 "fa": "معمولاً ساعت چند ورزش می‌کنید؟"
                             }
                         },
@@ -2782,7 +2752,7 @@
                                 "สวน"
                             ],
                             "translations": {
-                                "en": "about 5 p.m. i like to go jogging in the park.",
+                                "en": "About 5 p.m. I like to go jogging in the park.",
                                 "fa": "حدود ۵ بعد از ظهر. دوست دارم برای دویدن به پارک بروم."
                             }
                         }
@@ -2813,7 +2783,7 @@
                             {
                                 "source": "ปกติผมทำงาน 8 ชั่วโมงครับ",
                                 "translations": {
-                                    "en": "i usually work for 8 hours.",
+                                    "en": "I usually work for 8 hours.",
                                     "fa": "معمولاً ۸ ساعت کار می‌کنم."
                                 }
                             }
@@ -2831,7 +2801,7 @@
                                 "คะ"
                             ],
                             "translations": {
-                                "en": "how many hours do you usually work?",
+                                "en": "How many hours do you usually work?",
                                 "fa": "معمولاً چند ساعت کار می‌کنید؟"
                             }
                         },
@@ -2846,7 +2816,7 @@
                                 "ครับ"
                             ],
                             "translations": {
-                                "en": "i usually work for 8 hours.",
+                                "en": "I usually work for 8 hours.",
                                 "fa": "معمولاً ۸ ساعت کار می‌کنم."
                             }
                         }
@@ -2870,7 +2840,7 @@
                                 "คะ"
                             ],
                             "translations": {
-                                "en": "normally, do you exercise?",
+                                "en": "Normally, do you exercise?",
                                 "fa": "معمولاً ورزش می‌کنید؟"
                             }
                         },
@@ -2884,7 +2854,7 @@
                                 "ตอนเช้า"
                             ],
                             "translations": {
-                                "en": "yes, i exercise in the mornings.",
+                                "en": "Yes, I exercise in the mornings.",
                                 "fa": "بله، صبح‌ها ورزش می‌کنم."
                             }
                         },
@@ -2899,7 +2869,7 @@
                                 "คะ"
                             ],
                             "translations": {
-                                "en": "wow! it's so good. how many hours?",
+                                "en": "Wow! It's so good. How many hours?",
                                 "fa": "واو! خیلی خوبه. چند ساعت؟"
                             }
                         },
@@ -2915,7 +2885,7 @@
                                 "ครับ"
                             ],
                             "translations": {
-                                "en": "for about an hour. what about you?",
+                                "en": "For about an hour. What about you?",
                                 "fa": "حدود یک ساعت. شما چطور؟"
                             }
                         },
@@ -2933,7 +2903,7 @@
                                 "ครึ่ง"
                             ],
                             "translations": {
-                                "en": "i do yoga in the evening. for about an hour and a half.",
+                                "en": "I do yoga in the evening. For about an hour and a half.",
                                 "fa": "عصرها یوگا می‌کنم. حدود یک ساعت و نیم."
                             }
                         },
@@ -2948,7 +2918,7 @@
                                 "ครับ"
                             ],
                             "translations": {
-                                "en": "what do you eat before exercise?",
+                                "en": "What do you eat before exercise?",
                                 "fa": "قبل از ورزش چی می‌خورید؟"
                             }
                         },
@@ -2965,7 +2935,7 @@
                                 "ค่ะ"
                             ],
                             "translations": {
-                                "en": "i have a little bit of bread and black coffee.",
+                                "en": "I have a little bit of bread and black coffee.",
                                 "fa": "کمی نان و قهوه سیاه می‌خورم."
                             }
                         }
@@ -2989,28 +2959,28 @@
                             {
                                 "source": "ก่อนเรียนภาษาไทย คุณทำอะไรคะ",
                                 "translations": {
-                                    "en": "what do you usually do before studying thai?",
+                                    "en": "what do you usually do before studying Thai?",
                                     "fa": "معمولاً قبل از درس تایلندی چه می‌کنید؟"
                                 }
                             },
                             {
                                 "source": "ปกติผมทานกาแฟและขนมปังปิ้งก่อนเรียนภาษาไทย",
                                 "translations": {
-                                    "en": "normally, i drink coffee and eat toasted bread before i study thai.",
+                                    "en": "Normally, I drink coffee and eat toasted bread before I study Thai.",
                                     "fa": "معمولاً قبل از درس تایلندی قهوه می‌نوشم و نان تست می‌خورم."
                                 }
                             },
                             {
                                 "source": "ก่อนมาประเทศไทย คุณทำอะไรคะ",
                                 "translations": {
-                                    "en": "what did you do before coming to thailand?",
+                                    "en": "what did you do before coming to Thailand?",
                                     "fa": "قبل از آمدن به تایلند چه کار می‌کردید؟"
                                 }
                             },
                             {
                                 "source": "ก่อนมาประเทศไทย ผมทำงานในธนาคารที่ประเทศญี่ปุ่น",
                                 "translations": {
-                                    "en": "before coming to thailand, i worked at a bank in japan.",
+                                    "en": "Before coming to Thailand, I worked at a bank in japan.",
                                     "fa": "قبل از آمدن به تایلند، در یک بانک در ژاپن کار می‌کردم."
                                 }
                             }
@@ -3029,7 +2999,7 @@
                                 "คะ"
                             ],
                             "translations": {
-                                "en": "what do you usually do before studying thai?",
+                                "en": "What do you usually do before studying Thai?",
                                 "fa": "معمولاً قبل از درس تایلندی چه می‌کنید؟"
                             }
                         },
@@ -3048,7 +3018,7 @@
                                 "ภาษาไทย"
                             ],
                             "translations": {
-                                "en": "normally, i drink coffee and eat toasted bread before i study thai.",
+                                "en": "Normally, I drink coffee and eat toasted bread before I study Thai.",
                                 "fa": "معمولاً قبل از درس تایلندی قهوه می‌نوشم و نان تست می‌خورم."
                             }
                         },
@@ -3064,7 +3034,7 @@
                                 "คะ"
                             ],
                             "translations": {
-                                "en": "what did you do before coming to thailand?",
+                                "en": "What did you do before coming to Thailand?",
                                 "fa": "قبل از آمدن به تایلند چه کار می‌کردید؟"
                             }
                         },
@@ -3083,7 +3053,7 @@
                                 "ญี่ปุ่น"
                             ],
                             "translations": {
-                                "en": "before coming to thailand, i worked at a bank in japan.",
+                                "en": "Before coming to Thailand, I worked at a bank in japan.",
                                 "fa": "قبل از آمدن به تایلند، در یک بانک در ژاپن کار می‌کردم."
                             }
                         }
@@ -3176,42 +3146,42 @@
                             {
                                 "source": "วันนี้(เป็น)วันอะไรคะ",
                                 "translations": {
-                                    "en": "what day is it today?",
+                                    "en": "What day is it today?",
                                     "fa": "امروز چه روزی است؟"
                                 }
                             },
                             {
                                 "source": "วันนี้(เป็น)วันจันทร์ครับ",
                                 "translations": {
-                                    "en": "today is monday.",
+                                    "en": "Today is Monday.",
                                     "fa": "امروز دوشنبه است."
                                 }
                             },
                             {
                                 "source": "เมื่อวาน(เป็น)วันอะไรคะ",
                                 "translations": {
-                                    "en": "what day was it yesterday?",
+                                    "en": "What day was it yesterday?",
                                     "fa": "دیروز چه روزی بود؟"
                                 }
                             },
                             {
                                 "source": "เมื่อวาน(เป็น)วันอาทิตย์ครับ",
                                 "translations": {
-                                    "en": "yesterday was sunday.",
+                                    "en": "Yesterday was sunday.",
                                     "fa": "دیروز یکشنبه بود."
                                 }
                             },
                             {
                                 "source": "พรุ่งนี้(เป็น)วันอะไรคะ",
                                 "translations": {
-                                    "en": "what day is it tomorrow?",
+                                    "en": "What day is it tomorrow?",
                                     "fa": "فردا چه روزی است؟"
                                 }
                             },
                             {
                                 "source": "พรุ่งนี้(เป็น)วันอังคารครับ",
                                 "translations": {
-                                    "en": "tomorrow is tuesday.",
+                                    "en": "Tomorrow is Tuesday.",
                                     "fa": "فردا سه‌شنبه است."
                                 }
                             }
@@ -3220,28 +3190,17 @@
                     "sentences": [
                         {
                             "source": "วันนี้เป็นวันอะไรคะ",
-                            "wordIds": [
-                                "วันนี้",
-                                "เป็น",
-                                "วัน",
-                                "อะไร",
-                                "คะ"
-                            ],
+                            "wordIds": ["วันนี้", "เป็น", "วัน", "อะไร", "คะ"],
                             "translations": {
-                                "en": "what day is it today?",
+                                "en": "What day is it today?",
                                 "fa": "امروز چه روزی است؟"
                             }
                         },
                         {
                             "source": "วันนี้เป็นวันจันทร์ครับ",
-                            "wordIds": [
-                                "วันนี้",
-                                "เป็น",
-                                "วันจันทร์",
-                                "ครับ"
-                            ],
+                            "wordIds": ["วันนี้", "เป็น", "วันจันทร์", "ครับ"],
                             "translations": {
-                                "en": "today is monday.",
+                                "en": "Today is Monday.",
                                 "fa": "امروز دوشنبه است."
                             }
                         },
@@ -3255,7 +3214,7 @@
                                 "คะ"
                             ],
                             "translations": {
-                                "en": "what day was it yesterday?",
+                                "en": "What day was it yesterday?",
                                 "fa": "دیروز چه روزی بود؟"
                             }
                         },
@@ -3269,7 +3228,7 @@
                                 "ครับ"
                             ],
                             "translations": {
-                                "en": "yesterday was sunday.",
+                                "en": "Yesterday was sunday.",
                                 "fa": "دیروز یکشنبه بود."
                             }
                         },
@@ -3283,7 +3242,7 @@
                                 "คะ"
                             ],
                             "translations": {
-                                "en": "what day is it tomorrow?",
+                                "en": "What day is it tomorrow?",
                                 "fa": "فردا چه روزی است؟"
                             }
                         },
@@ -3296,7 +3255,7 @@
                                 "ครับ"
                             ],
                             "translations": {
-                                "en": "tomorrow is tuesday.",
+                                "en": "Tomorrow is Tuesday.",
                                 "fa": "فردا سه‌شنبه است."
                             }
                         }
@@ -3320,7 +3279,7 @@
                             {
                                 "source": "วันนี้(เป็น)วันที่เท่าไหร่คะ",
                                 "translations": {
-                                    "en": "what is the date today?",
+                                    "en": "What is the date today?",
                                     "fa": "امروز چندم است؟"
                                 }
                             },
@@ -3334,7 +3293,7 @@
                             {
                                 "source": "เมื่อวาน(เป็น)วันที่เท่าไหร่",
                                 "translations": {
-                                    "en": "what was the date yesterday?",
+                                    "en": "What was the date yesterday?",
                                     "fa": "دیروز چندم بود؟"
                                 }
                             },
@@ -3348,14 +3307,14 @@
                             {
                                 "source": "วันเกิดของคุณวันที่เท่าไหร่",
                                 "translations": {
-                                    "en": "what is the date of your birthday?",
+                                    "en": "What is the date of your birthday?",
                                     "fa": "تاریخ تولد شما چندم است؟"
                                 }
                             },
                             {
                                 "source": "วันที่ 2 ครับ",
                                 "translations": {
-                                    "en": "it is the 2nd.",
+                                    "en": "It is the 2nd.",
                                     "fa": "دوم است."
                                 }
                             }
@@ -3372,19 +3331,15 @@
                                 "คะ"
                             ],
                             "translations": {
-                                "en": "what is the date today?",
+                                "en": "What is the date today?",
                                 "fa": "امروز چندم است؟"
                             }
                         },
                         {
                             "source": "วันที่20ครับ",
-                            "wordIds": [
-                                "วันที่",
-                                "20",
-                                "ครับ"
-                            ],
+                            "wordIds": ["วันที่", "20", "ครับ"],
                             "translations": {
-                                "en": "today is the 20th.",
+                                "en": "Today is the 20th.",
                                 "fa": "امروز ۲۰ است."
                             }
                         },
@@ -3397,19 +3352,15 @@
                                 "เท่าไหร่"
                             ],
                             "translations": {
-                                "en": "what was the date yesterday?",
+                                "en": "What was the date yesterday?",
                                 "fa": "دیروز چندم بود؟"
                             }
                         },
                         {
                             "source": "วันที่19ครับ",
-                            "wordIds": [
-                                "วันที่",
-                                "19",
-                                "ครับ"
-                            ],
+                            "wordIds": ["วันที่", "19", "ครับ"],
                             "translations": {
-                                "en": "yesterday was the 19th.",
+                                "en": "Yesterday was the 19th.",
                                 "fa": "دیروز ۱۹ بود."
                             }
                         },
@@ -3424,19 +3375,15 @@
                                 "เท่าไหร่"
                             ],
                             "translations": {
-                                "en": "what is the date of your birthday?",
+                                "en": "What is the date of your birthday?",
                                 "fa": "تاریخ تولد شما چندم است؟"
                             }
                         },
                         {
                             "source": "วันที่2ครับ",
-                            "wordIds": [
-                                "วันที่",
-                                "2",
-                                "ครับ"
-                            ],
+                            "wordIds": ["วันที่", "2", "ครับ"],
                             "translations": {
-                                "en": "it is the 2nd.",
+                                "en": "It is the 2nd.",
                                 "fa": "دوم است."
                             }
                         }
@@ -3460,28 +3407,28 @@
                             {
                                 "source": "ปกติวันเสาร์อาทิตย์คุณทำอะไรบ้าง",
                                 "translations": {
-                                    "en": "what do you usually do on the weekend?",
+                                    "en": "What do you usually do on the weekend?",
                                     "fa": "آخر هفته‌ها معمولاً چه می‌کنید؟"
                                 }
                             },
                             {
                                 "source": "ปกติผมอยู่บ้าน ดูทีวี และทำงานบ้านครับ",
                                 "translations": {
-                                    "en": "normally, i stay at home, watch tv, and do the housework.",
+                                    "en": "Normally, I stay at home, watch tv, and do the housework.",
                                     "fa": "معمولاً در خانه می‌مانم، تلویزیون تماشا می‌کنم و کارهای خانه را انجام می‌دهم."
                                 }
                             },
                             {
                                 "source": "วันศุกร์ที่แล้วคุณทำอะไรบ้างคะ",
                                 "translations": {
-                                    "en": "what did you do last friday?",
+                                    "en": "What did you do last Friday?",
                                     "fa": "جمعه گذشته چه کار کردید؟"
                                 }
                             },
                             {
                                 "source": "วันศุกร์ที่แล้ว ผมไปโรงเรียนและออกกำลังกายที่สวนครับ",
                                 "translations": {
-                                    "en": "last friday i went to school and exercised at the park.",
+                                    "en": "last Friday, I went to school and exercised at the park.",
                                     "fa": "جمعه گذشته به مدرسه رفتم و در پارک ورزش کردم."
                                 }
                             }
@@ -3499,7 +3446,7 @@
                                 "อะไรบ้าง"
                             ],
                             "translations": {
-                                "en": "what do you usually do on the weekend?",
+                                "en": "What do you usually do on the weekend?",
                                 "fa": "آخر هفته‌ها معمولاً چه می‌کنید؟"
                             }
                         },
@@ -3517,7 +3464,7 @@
                                 "ครับ"
                             ],
                             "translations": {
-                                "en": "normally, i stay at home, watch tv, and do the housework.",
+                                "en": "Normally, I stay at home, watch tv, and do the housework.",
                                 "fa": "معمولاً در خانه می‌مانم، تلویزیون تماشا می‌کنم و کارهای خانه را انجام می‌دهم."
                             }
                         },
@@ -3532,7 +3479,7 @@
                                 "คะ"
                             ],
                             "translations": {
-                                "en": "what did you do last friday?",
+                                "en": "What did you do last Friday?",
                                 "fa": "جمعه گذشته چه کار کردید؟"
                             }
                         },
@@ -3551,7 +3498,7 @@
                                 "ครับ"
                             ],
                             "translations": {
-                                "en": "last friday i went to school and exercised at the park.",
+                                "en": "Last Friday, I went to school and exercised at the park.",
                                 "fa": "جمعه گذشته به مدرسه رفتم و در پارک ورزش کردم."
                             }
                         }
@@ -3576,7 +3523,7 @@
                                 "ครับ"
                             ],
                             "translations": {
-                                "en": "hi jenny. how are you doing?",
+                                "en": "Hi jenny. How are you doing?",
                                 "fa": "سلام جنی. حالت چطوره؟"
                             }
                         },
@@ -3591,19 +3538,15 @@
                                 "คะ"
                             ],
                             "translations": {
-                                "en": "i'm good. and you?",
+                                "en": "I'm good. And you?",
                                 "fa": "خوبم. تو چطور؟"
                             }
                         },
                         {
                             "source": "ก็โอเคครับ",
-                            "wordIds": [
-                                "ก็",
-                                "โอเค",
-                                "ครับ"
-                            ],
+                            "wordIds": ["ก็", "โอเค", "ครับ"],
                             "translations": {
-                                "en": "i am okay.",
+                                "en": "I am okay.",
                                 "fa": "خوبم."
                             }
                         },
@@ -3617,7 +3560,7 @@
                                 "ครับ"
                             ],
                             "translations": {
-                                "en": "what did you do last weekend?",
+                                "en": "What did you do last weekend?",
                                 "fa": "آخر هفته گذشته چه کار کردی؟"
                             }
                         },
@@ -3637,7 +3580,7 @@
                                 "คะ"
                             ],
                             "translations": {
-                                "en": "i played tennis with friends at the stadium. how about you?",
+                                "en": "I played tennis with friends at the stadium. How about you?",
                                 "fa": "با دوستانم در استادیوم تنیس بازی کردم. تو چطور؟"
                             }
                         },
@@ -3655,7 +3598,7 @@
                                 "ทั้งวัน"
                             ],
                             "translations": {
-                                "en": "last weekend i was very busy. i have to work all day.",
+                                "en": "Last weekend I was very busy. I have to work all day.",
                                 "fa": "آخر هفته گذشته خیلی سرم شلوغ بود. باید تمام روز کار می‌کردم."
                             }
                         },
@@ -3672,7 +3615,7 @@
                                 "รึเปล่า"
                             ],
                             "translations": {
-                                "en": "really? do you work every day this week?",
+                                "en": "Really? Do you work every day this week?",
                                 "fa": "واقعاً؟ این هفته هر روز کار می‌کنی؟"
                             }
                         },
@@ -3690,7 +3633,7 @@
                                 "ครับ"
                             ],
                             "translations": {
-                                "en": "yes, but next week is my long holiday.",
+                                "en": "Yes, but next week is my long holiday.",
                                 "fa": "بله، اما هفته بعد تعطیلات طولانی‌ام است."
                             }
                         },
@@ -3706,7 +3649,7 @@
                                 "คะ"
                             ],
                             "translations": {
-                                "en": "great! how many days?",
+                                "en": "Great! How many days?",
                                 "fa": "عالیه! چند روز؟"
                             }
                         },
@@ -3727,20 +3670,13 @@
                                 "ครับ"
                             ],
                             "translations": {
-                                "en": "12 days. i think that i will visit my family in phuket.",
+                                "en": "12 days. I think that I will visit my family in phuket.",
                                 "fa": "۱۲ روز. فکر می‌کنم برای دیدن خانواده‌ام به پوکت بروم."
                             }
                         },
                         {
                             "source": "คุณจะไปวันอะไรคะ",
-                            "wordIds": [
-                                "คุณ",
-                                "จะ",
-                                "ไป",
-                                "วัน",
-                                "อะไร",
-                                "คะ"
-                            ],
+                            "wordIds": ["คุณ", "จะ", "ไป", "วัน", "อะไร", "คะ"],
                             "translations": {
                                 "en": "What day will you go?",
                                 "fa": "چه روزی می‌روی؟"
@@ -3758,7 +3694,7 @@
                                 "ครับ"
                             ],
                             "translations": {
-                                "en": "I think that i will go next friday.",
+                                "en": "I think that I will go next Friday.",
                                 "fa": "فکر می‌کنم جمعه بعد بروم."
                             }
                         }
@@ -3782,28 +3718,28 @@
                             {
                                 "source": "คุณเรียนภาษาไทยอาทิตย์ละกี่วันคะ",
                                 "translations": {
-                                    "en": "How many days in a week do you study thai?",
+                                    "en": "How many days in a week do you study Thai?",
                                     "fa": "هفته‌ای چند روز تایلندی می‌خوانید؟"
                                 }
                             },
                             {
                                 "source": "ผมเรียนภาษาไทยอาทิตย์ละ 3 วันครับ",
                                 "translations": {
-                                    "en": "I study thai 3 days per week.",
+                                    "en": "I study Thai 3 days per week.",
                                     "fa": "هفته‌ای ۳ روز تایلندی می‌خوانم."
                                 }
                             },
                             {
                                 "source": "วันอะไรบ้างคะ",
                                 "translations": {
-                                    "en": "What days do you study thai?",
+                                    "en": "What days do you study Thai?",
                                     "fa": "چه روزهایی تایلندی می‌خوانید؟"
                                 }
                             },
                             {
                                 "source": "วันจันทร์ วันพุธ และวันศุกร์ครับ",
                                 "translations": {
-                                    "en": "Monday, wednesday, and friday.",
+                                    "en": "Monday, wednesday, and Friday.",
                                     "fa": "دوشنبه، چهارشنبه و جمعه."
                                 }
                             }
@@ -3822,7 +3758,7 @@
                                 "คะ"
                             ],
                             "translations": {
-                                "en": "How many days in a week do you study thai?",
+                                "en": "How many days in a week do you study Thai?",
                                 "fa": "هفته‌ای چند روز تایلندی می‌خوانید؟"
                             }
                         },
@@ -3839,19 +3775,15 @@
                                 "ครับ"
                             ],
                             "translations": {
-                                "en": "I study thai 3 days per week.",
+                                "en": "I study Thai 3 days per week.",
                                 "fa": "هفته‌ای ۳ روز تایلندی می‌خوانم."
                             }
                         },
                         {
                             "source": "วันอะไรบ้างคะ",
-                            "wordIds": [
-                                "วัน",
-                                "อะไรบ้าง",
-                                "คะ"
-                            ],
+                            "wordIds": ["วัน", "อะไรบ้าง", "คะ"],
                             "translations": {
-                                "en": "What days do you study thai?",
+                                "en": "What days do you study Thai?",
                                 "fa": "چه روزهایی تایلندی می‌خوانید؟"
                             }
                         },
@@ -3865,7 +3797,7 @@
                                 "ครับ"
                             ],
                             "translations": {
-                                "en": "Monday, wednesday, and friday.",
+                                "en": "Monday, Wednesday, and Friday.",
                                 "fa": "دوشنبه، چهارشنبه و جمعه."
                             }
                         }
@@ -3896,7 +3828,7 @@
                             {
                                 "source": "ผมท างานอาทิตย์ละ 5 วันครับ ตั้งแต่วันจันทร์ถึงวันศุกร์",
                                 "translations": {
-                                    "en": "I work 5 days per week from monday to friday.",
+                                    "en": "I work 5 days per week from Monday to Friday.",
                                     "fa": "هفته‌ای ۵ روز از دوشنبه تا جمعه کار می‌کنم."
                                 }
                             }
@@ -3933,7 +3865,7 @@
                                 "วันศุกร์"
                             ],
                             "translations": {
-                                "en": "I work 5 days per week from monday to friday.",
+                                "en": "I work 5 days per week from Monday to Friday.",
                                 "fa": "هفته‌ای ۵ روز از دوشنبه تا جمعه کار می‌کنم."
                             }
                         }
@@ -3981,11 +3913,7 @@
                         },
                         {
                             "source": "วันอะไรบ้างครับ",
-                            "wordIds": [
-                                "วัน",
-                                "อะไรบ้าง",
-                                "ครับ"
-                            ],
+                            "wordIds": ["วัน", "อะไรบ้าง", "ครับ"],
                             "translations": {
                                 "en": "What days do you work?",
                                 "fa": "چه روزهایی کار می‌کنید؟"
@@ -4001,7 +3929,7 @@
                                 "ค่ะ"
                             ],
                             "translations": {
-                                "en": "From monday to friday.",
+                                "en": "From Monday to Friday.",
                                 "fa": "از دوشنبه تا جمعه."
                             }
                         },
@@ -4036,7 +3964,7 @@
                                 "คะ"
                             ],
                             "translations": {
-                                "en": "From 8.30 to 4.30. how about you? how many days per week do you work?",
+                                "en": "From 8.30 to 4.30. how about you? How many days per week do you work?",
                                 "fa": "از ۸:۳۰ تا ۴:۳۰. شما چطور؟ هفته‌ای چند روز کار می‌کنید؟"
                             }
                         },
@@ -4056,7 +3984,7 @@
                                 "ครับ"
                             ],
                             "translations": {
-                                "en": "I work 6 days per week. from monday to saturday.",
+                                "en": "I work 6 days per week. from Monday to saturday.",
                                 "fa": "هفته‌ای ۶ روز کار می‌کنم. از دوشنبه تا شنبه."
                             }
                         },
@@ -4091,7 +4019,7 @@
                                 "ครับ"
                             ],
                             "translations": {
-                                "en": "Monday to friday i work from 9.00 a.m. to 3.00 p.m.",
+                                "en": "Monday to Friday I work from 9.00 a.m. to 3.00 p.m.",
                                 "fa": "دوشنبه تا جمعه از ۹ صبح تا ۳ بعد از ظهر کار می‌کنم."
                             }
                         },
@@ -4112,7 +4040,7 @@
                                 "ครับ"
                             ],
                             "translations": {
-                                "en": "But on saturday i work a half day from 9.00 a.m. to 12.00 p.m.",
+                                "en": "But on saturday I work a half day from 9.00 a.m. to 12.00 p.m.",
                                 "fa": "اما شنبه‌ها نصف روز از ۹ صبح تا ۱۲ ظهر کار می‌کنم."
                             }
                         }
@@ -4197,7 +4125,7 @@
                             {
                                 "source": "เดือนที่แล้ว(เป็น)เดือนมีนาคม",
                                 "translations": {
-                                    "en": "Last month was march.",
+                                    "en": "Last month was March.",
                                     "fa": "ماه گذشته مارس بود."
                                 }
                             },
@@ -4211,7 +4139,7 @@
                             {
                                 "source": "เดือนหน้าเป็นเดือนพฤษภาคมครับ",
                                 "translations": {
-                                    "en": "Next month is may.",
+                                    "en": "Next month is May.",
                                     "fa": "ماه بعد مه است."
                                 }
                             }
@@ -4243,7 +4171,7 @@
                                 "ครับ"
                             ],
                             "translations": {
-                                "en": "This month is april.",
+                                "en": "This month is April.",
                                 "fa": "این ماه آوریل است."
                             }
                         },
@@ -4272,7 +4200,7 @@
                                 "มีนาคม"
                             ],
                             "translations": {
-                                "en": "Last month was march.",
+                                "en": "Last month was March.",
                                 "fa": "ماه گذشته مارس بود."
                             }
                         },
@@ -4300,7 +4228,7 @@
                                 "ครับ"
                             ],
                             "translations": {
-                                "en": "Next month is may.",
+                                "en": "Next month is May.",
                                 "fa": "ماه بعد مه است."
                             }
                         }
@@ -4331,7 +4259,7 @@
                             {
                                 "source": "ผมเกิดวันที่ 3 เดือนมกราคม ปี 1989 ครับ แล้วคุณล่ะครับ",
                                 "translations": {
-                                    "en": "I was born on january 3rd 1989. and you?",
+                                    "en": "I was born on January 3rd 1989. And you?",
                                     "fa": "من ۳ ژانویه ۱۹۸۹ به دنیا آمدم. شما چطور؟"
                                 }
                             },
@@ -4347,12 +4275,7 @@
                     "sentences": [
                         {
                             "source": "คุณเกิดเมื่อไหร่คะ",
-                            "wordIds": [
-                                "คุณ",
-                                "เกิด",
-                                "เมื่อไหร่",
-                                "คะ"
-                            ],
+                            "wordIds": ["คุณ", "เกิด", "เมื่อไหร่", "คะ"],
                             "translations": {
                                 "en": "When were you born?",
                                 "fa": "کی متولد شدید؟"
@@ -4377,7 +4300,7 @@
                                 "ครับ"
                             ],
                             "translations": {
-                                "en": "I was born on january 3rd 1989. and you?",
+                                "en": "I was born on January 3rd 1989. And you?",
                                 "fa": "من ۳ ژانویه ۱۹۸۹ به دنیا آمدم. شما چطور؟"
                             }
                         },
@@ -4412,13 +4335,7 @@
                     "sentences": [
                         {
                             "source": "คุณเกิดวันอะไรคะ",
-                            "wordIds": [
-                                "คุณ",
-                                "เกิด",
-                                "วัน",
-                                "อะไร",
-                                "คะ"
-                            ],
+                            "wordIds": ["คุณ", "เกิด", "วัน", "อะไร", "คะ"],
                             "translations": {
                                 "en": "What day were you born?",
                                 "fa": "چه روزی به دنیا آمدید؟"
@@ -4437,7 +4354,7 @@
                                 "ครับ"
                             ],
                             "translations": {
-                                "en": "I was born on a thursday. and you?",
+                                "en": "I was born on a Thursday. And you?",
                                 "fa": "من پنجشنبه به دنیا آمدم. شما چطور؟"
                             }
                         },
@@ -4457,7 +4374,7 @@
                                 "คะ"
                             ],
                             "translations": {
-                                "en": "I was born on a saturday. what is your date of birth?",
+                                "en": "I was born on a saturday. What is your date of birth?",
                                 "fa": "من شنبه به دنیا آمدم. تاریخ تولد شما چندم است؟"
                             }
                         },
@@ -4473,7 +4390,7 @@
                                 "ครับ"
                             ],
                             "translations": {
-                                "en": "It's the 19th. how about you?",
+                                "en": "It's the 19th. How about you?",
                                 "fa": "۱۹ است. شما چطور؟"
                             }
                         },
@@ -4490,7 +4407,7 @@
                                 "คะ"
                             ],
                             "translations": {
-                                "en": "The 31st. what month were you born?",
+                                "en": "The 31st. What month were you born?",
                                 "fa": "۳۱‌ام. چه ماهی به دنیا آمدید؟"
                             }
                         },
@@ -4505,7 +4422,7 @@
                                 "ครับ"
                             ],
                             "translations": {
-                                "en": "July. and you?",
+                                "en": "July. And you?",
                                 "fa": "ژوئیه. شما چطور؟"
                             }
                         },
@@ -4522,17 +4439,13 @@
                                 "คะ"
                             ],
                             "translations": {
-                                "en": "November. what year were you born?",
+                                "en": "November. What year were you born?",
                                 "fa": "نوامبر. چه سالی به دنیا آمدید؟"
                             }
                         },
                         {
                             "source": "ปี1976ครับ",
-                            "wordIds": [
-                                "ปี",
-                                "1976",
-                                "ครับ"
-                            ],
+                            "wordIds": ["ปี", "1976", "ครับ"],
                             "translations": {
                                 "en": "1976.",
                                 "fa": "۱۹۷۶."
@@ -4591,7 +4504,7 @@
                             {
                                 "source": "ประเทศไทยมีกี่ฤดู",
                                 "translations": {
-                                    "en": "How many seasons are there in thailand?",
+                                    "en": "How many seasons are there in Thailand?",
                                     "fa": "تایلند چند فصل دارد؟"
                                 }
                             },
@@ -4635,26 +4548,15 @@
                     "sentences": [
                         {
                             "source": "ประเทศไทยมีกี่ฤดู",
-                            "wordIds": [
-                                "ประเทศ",
-                                "ไทย",
-                                "มี",
-                                "กี่",
-                                "ฤดู"
-                            ],
+                            "wordIds": ["ประเทศ", "ไทย", "มี", "กี่", "ฤดู"],
                             "translations": {
-                                "en": "How many seasons are there in thailand?",
+                                "en": "How many seasons are there in Thailand?",
                                 "fa": "تایلند چند فصل دارد؟"
                             }
                         },
                         {
                             "source": "มี3ฤดูครับ",
-                            "wordIds": [
-                                "มี",
-                                "3",
-                                "ฤดู",
-                                "ครับ"
-                            ],
+                            "wordIds": ["มี", "3", "ฤดู", "ครับ"],
                             "translations": {
                                 "en": "There are 3 seasons.",
                                 "fa": "۳ فصل دارد."
@@ -4662,12 +4564,7 @@
                         },
                         {
                             "source": "มีฤดูอะไรบ้างคะ",
-                            "wordIds": [
-                                "มี",
-                                "ฤดู",
-                                "อะไรบ้าง",
-                                "คะ"
-                            ],
+                            "wordIds": ["มี", "ฤดู", "อะไรบ้าง", "คะ"],
                             "translations": {
                                 "en": "What are the seasons?",
                                 "fa": "چه فصل‌هایی دارد؟"
@@ -4785,7 +4682,7 @@
                             {
                                 "source": "ฉันคิดว่าจะไปร้านกาแฟใกล้บ้านค่ะ",
                                 "translations": {
-                                    "en": "I think i will go to the coffee shop nearby my house.",
+                                    "en": "I think I will go to the coffee shop nearby my house.",
                                     "fa": "فکر می‌کنم به کافی‌شاپ نزدیک خانه‌ام بروم."
                                 }
                             }
@@ -4826,12 +4723,7 @@
                         },
                         {
                             "source": "แล้วที่นั่นล่ะครับ",
-                            "wordIds": [
-                                "แล้ว",
-                                "ที่นั่น",
-                                "ล่ะ",
-                                "ครับ"
-                            ],
+                            "wordIds": ["แล้ว", "ที่นั่น", "ล่ะ", "ครับ"],
                             "translations": {
                                 "en": "How about there?",
                                 "fa": "آنجا چطور؟"
@@ -4879,7 +4771,7 @@
                                 "ค่ะ"
                             ],
                             "translations": {
-                                "en": "I think i will go to the coffee shop nearby my house.",
+                                "en": "I think I will go to the coffee shop nearby my house.",
                                 "fa": "فکر می‌کنم به کافی‌شاپ نزدیک خانه‌ام بروم."
                             }
                         }
@@ -4904,18 +4796,13 @@
                                 "คะ"
                             ],
                             "translations": {
-                                "en": "How many seasons are there in france?",
+                                "en": "How many seasons are there in France?",
                                 "fa": "فرانسه چند فصل دارد؟"
                             }
                         },
                         {
                             "source": "มี4ฤดูครับ",
-                            "wordIds": [
-                                "มี",
-                                "4",
-                                "ฤดู",
-                                "ครับ"
-                            ],
+                            "wordIds": ["มี", "4", "ฤดู", "ครับ"],
                             "translations": {
                                 "en": "There are 4 seasons.",
                                 "fa": "۴ فصل دارد."
@@ -4923,12 +4810,7 @@
                         },
                         {
                             "source": "มีฤดูอะไรบ้างคะ",
-                            "wordIds": [
-                                "มี",
-                                "ฤดู",
-                                "อะไรบ้าง",
-                                "คะ"
-                            ],
+                            "wordIds": ["มี", "ฤดู", "อะไรบ้าง", "คะ"],
                             "translations": {
                                 "en": "What are they?",
                                 "fa": "چه فصل‌هایی؟"
@@ -4972,12 +4854,7 @@
                         },
                         {
                             "source": "อากาศเย็นสบายครับ",
-                            "wordIds": [
-                                "อากาศ",
-                                "เย็น",
-                                "สบาย",
-                                "ครับ"
-                            ],
+                            "wordIds": ["อากาศ", "เย็น", "สบาย", "ครับ"],
                             "translations": {
                                 "en": "It's nice and chilly.",
                                 "fa": "خنک و مطبوع است."
@@ -4985,13 +4862,7 @@
                         },
                         {
                             "source": "แล้วฤดูหนาวล่ะคะ",
-                            "wordIds": [
-                                "แล้ว",
-                                "ฤดู",
-                                "หนาว",
-                                "ล่ะ",
-                                "คะ"
-                            ],
+                            "wordIds": ["แล้ว", "ฤดู", "หนาว", "ล่ะ", "คะ"],
                             "translations": {
                                 "en": "How about in winter?",
                                 "fa": "در زمستان چطور؟"
@@ -5011,7 +4882,7 @@
                                 "ตก"
                             ],
                             "translations": {
-                                "en": "It's very cold. sometimes it snows.",
+                                "en": "It's very cold. Sometimes it snows.",
                                 "fa": "خیلی سرد است. گاهی برف می‌بارد."
                             }
                         }
@@ -5166,13 +5037,7 @@
                     "sentences": [
                         {
                             "source": "คุณมีพี่น้องกี่คน",
-                            "wordIds": [
-                                "คุณ",
-                                "มี",
-                                "พี่น้อง",
-                                "กี่",
-                                "คน"
-                            ],
+                            "wordIds": ["คุณ", "มี", "พี่น้อง", "กี่", "คน"],
                             "translations": {
                                 "en": "How many siblings do you have?",
                                 "fa": "چند خواهر و برادر دارید؟"
@@ -5249,12 +5114,7 @@
                         },
                         {
                             "source": "พวกเขาอยู่ที่ไหนครับ",
-                            "wordIds": [
-                                "พวกเขา",
-                                "อยู่",
-                                "ที่ไหน",
-                                "ครับ"
-                            ],
+                            "wordIds": ["พวกเขา", "อยู่", "ที่ไหน", "ครับ"],
                             "translations": {
                                 "en": "Where do they live?",
                                 "fa": "آنها کجا زندگی می‌کنند؟"
@@ -5281,15 +5141,9 @@
                         },
                         {
                             "source": "ผมไม่มีพี่น้องครับ",
-                            "wordIds": [
-                                "ผม",
-                                "ไม่",
-                                "มี",
-                                "พี่น้อง",
-                                "ครับ"
-                            ],
+                            "wordIds": ["ผม", "ไม่", "มี", "พี่น้อง", "ครับ"],
                             "translations": {
-                                "en": "No, i don’t have any siblings.",
+                                "en": "No, I don’t have any siblings.",
                                 "fa": "نه، هیچ خواهر و برادری ندارم."
                             }
                         },
@@ -5306,7 +5160,7 @@
                                 "คะ"
                             ],
                             "translations": {
-                                "en": "Really? do you feel lonely?",
+                                "en": "Really? Do you feel lonely?",
                                 "fa": "واقعاً؟ احساس تنهایی نمی‌کنید؟"
                             }
                         },
@@ -5322,7 +5176,7 @@
                                 "เยอะ"
                             ],
                             "translations": {
-                                "en": "No, i have many friends.",
+                                "en": "No, I have many friends.",
                                 "fa": "نه، دوستان زیادی دارم."
                             }
                         }
@@ -5353,14 +5207,14 @@
                             {
                                 "source": "เขาอายุ 28 ปีครับ แล้วลูกชายคุณล่ะ",
                                 "translations": {
-                                    "en": "She is 28 years old, and what about your son?",
+                                    "en": "She is 28 years old, what about your son?",
                                     "fa": "او ۲۸ سال دارد، پسرتان چطور؟"
                                 }
                             },
                             {
                                 "source": "เขาอายุ 32 ปีครับ เขาแต่งงานแล้ว",
                                 "translations": {
-                                    "en": "He is 32 years old and married. now he has a 5-year-old son.",
+                                    "en": "He is 32 years old and married. Now, he has a 5-year-old son.",
                                     "fa": "او ۳۲ سال دارد و ازدواج کرده. حالا یک پسر ۵ ساله دارد."
                                 }
                             }
@@ -5395,7 +5249,7 @@
                                 "ล่ะ"
                             ],
                             "translations": {
-                                "en": "She is 28 years old, and what about your son?",
+                                "en": "She is 28 years old, what about your son?",
                                 "fa": "او ۲۸ سال دارد، پسرتان چطور؟"
                             }
                         },
@@ -5419,7 +5273,7 @@
                                 "ขวบ"
                             ],
                             "translations": {
-                                "en": "He is 32 years old and married. now he has a 5-year-old son.",
+                                "en": "He is 32 years old and married. Now he has a 5-year-old son.",
                                 "fa": "او ۳۲ سال دارد و ازدواج کرده. حالا یک پسر ۵ ساله دارد."
                             }
                         }
@@ -5450,14 +5304,14 @@
                             {
                                 "source": "แต่งงานแล้วค่ะ แล้วคุณล่ะ",
                                 "translations": {
-                                    "en": "Yes, i am. what about you?",
+                                    "en": "Yes, I am. what about you?",
                                     "fa": "بله، ازدواج کردم. شما چطور؟"
                                 }
                             },
                             {
                                 "source": "ยังครับ / ผมยังไม่แต่งงานครับ",
                                 "translations": {
-                                    "en": "Not yet. / i'm not married yet.",
+                                    "en": "Not yet. / I'm not married yet.",
                                     "fa": "هنوز نه. / من هنوز ازدواج نکردم."
                                 }
                             },
@@ -5494,12 +5348,7 @@
                     "sentences": [
                         {
                             "source": "คุณแต่งงานหรือยังครับ",
-                            "wordIds": [
-                                "คุณ",
-                                "แต่งงาน",
-                                "หรือยัง",
-                                "ครับ"
-                            ],
+                            "wordIds": ["คุณ", "แต่งงาน", "หรือยัง", "ครับ"],
                             "translations": {
                                 "en": "Are you married?",
                                 "fa": "ازدواج کردید؟"
@@ -5516,7 +5365,7 @@
                                 "ล่ะ"
                             ],
                             "translations": {
-                                "en": "Yes, i am. what about you?",
+                                "en": "Yes, I am. What about you?",
                                 "fa": "بله، ازدواج کردم. شما چطور؟"
                             }
                         },
@@ -5532,16 +5381,13 @@
                                 "ครับ"
                             ],
                             "translations": {
-                                "en": "Not yet. / i'm not married yet.",
+                                "en": "Not yet. / I'm not married yet.",
                                 "fa": "هنوز نه. / من هنوز ازدواج نکردم."
                             }
                         },
                         {
                             "source": "กินข้าวรึยัง",
-                            "wordIds": [
-                                "กินข้าว",
-                                "รึยัง"
-                            ],
+                            "wordIds": ["กินข้าว", "รึยัง"],
                             "translations": {
                                 "en": "Have you eaten yet?",
                                 "fa": "هنوز غذا خوردی؟"
@@ -5549,11 +5395,7 @@
                         },
                         {
                             "source": "มีแฟนรึยัง",
-                            "wordIds": [
-                                "มี",
-                                "แฟน",
-                                "รึยัง"
-                            ],
+                            "wordIds": ["มี", "แฟน", "รึยัง"],
                             "translations": {
                                 "en": "Do you have a boy/girlfriend yet?",
                                 "fa": "دوست پسر/دختر داری؟"
@@ -5561,11 +5403,7 @@
                         },
                         {
                             "source": "มีลูกรึยัง",
-                            "wordIds": [
-                                "มี",
-                                "ลูก",
-                                "รึยัง"
-                            ],
+                            "wordIds": ["มี", "ลูก", "รึยัง"],
                             "translations": {
                                 "en": "Do you have children yet?",
                                 "fa": "بچه داری؟"
@@ -5573,13 +5411,7 @@
                         },
                         {
                             "source": "ลูกคุณเรียนจบรึยัง",
-                            "wordIds": [
-                                "ลูก",
-                                "คุณ",
-                                "เรียน",
-                                "จบ",
-                                "รึยัง"
-                            ],
+                            "wordIds": ["ลูก", "คุณ", "เรียน", "จบ", "รึยัง"],
                             "translations": {
                                 "en": "Has your child finished school yet?",
                                 "fa": "بچه‌ات مدرسه را تمام کرده؟"
@@ -5679,12 +5511,7 @@
                     "sentences": [
                         {
                             "source": "คุณทำงานอะไรคะ",
-                            "wordIds": [
-                                "คุณ",
-                                "ทำงาน",
-                                "อะไร",
-                                "คะ"
-                            ],
+                            "wordIds": ["คุณ", "ทำงาน", "อะไร", "คะ"],
                             "translations": {
                                 "en": "What is your job?",
                                 "fa": "شغل شما چیست؟"
@@ -5692,12 +5519,7 @@
                         },
                         {
                             "source": "ผมเป็นครูครับ",
-                            "wordIds": [
-                                "ผม",
-                                "เป็น",
-                                "ครู",
-                                "ครับ"
-                            ],
+                            "wordIds": ["ผม", "เป็น", "ครู", "ครับ"],
                             "translations": {
                                 "en": "I am a teacher.",
                                 "fa": "من معلم هستم."
@@ -5705,13 +5527,7 @@
                         },
                         {
                             "source": "พ่อของคุณทำงานอะไรคะ",
-                            "wordIds": [
-                                "พ่อ",
-                                "ของคุณ",
-                                "ทำงาน",
-                                "อะไร",
-                                "คะ"
-                            ],
+                            "wordIds": ["พ่อ", "ของคุณ", "ทำงาน", "อะไร", "คะ"],
                             "translations": {
                                 "en": "What is your father's job?",
                                 "fa": "شغل پدرتان چیست؟"
@@ -5743,12 +5559,7 @@
                     "sentences": [
                         {
                             "source": "คุณทำงานอะไรครับ",
-                            "wordIds": [
-                                "คุณ",
-                                "ทำงาน",
-                                "อะไร",
-                                "ครับ"
-                            ],
+                            "wordIds": ["คุณ", "ทำงาน", "อะไร", "ครับ"],
                             "translations": {
                                 "en": "What do you do?",
                                 "fa": "شغل شما چیست؟"
@@ -5756,12 +5567,7 @@
                         },
                         {
                             "source": "ฉันเป็นพยาบาลค่ะ",
-                            "wordIds": [
-                                "ฉัน",
-                                "เป็น",
-                                "พยาบาล",
-                                "ค่ะ"
-                            ],
+                            "wordIds": ["ฉัน", "เป็น", "พยาบาล", "ค่ะ"],
                             "translations": {
                                 "en": "I am a nurse.",
                                 "fa": "من پرستار هستم."
@@ -5783,12 +5589,7 @@
                         },
                         {
                             "source": "พ่อของฉันเป็นช่างตัดผม",
-                            "wordIds": [
-                                "พ่อ",
-                                "ของฉัน",
-                                "เป็น",
-                                "ช่างตัดผม"
-                            ],
+                            "wordIds": ["พ่อ", "ของฉัน", "เป็น", "ช่างตัดผม"],
                             "translations": {
                                 "en": "My father is a hairdresser.",
                                 "fa": "پدرم آرایشگر است."
@@ -5811,13 +5612,7 @@
                         },
                         {
                             "source": "คุณมีพี่น้องไหมครับ",
-                            "wordIds": [
-                                "คุณ",
-                                "มี",
-                                "พี่น้อง",
-                                "ไหม",
-                                "ครับ"
-                            ],
+                            "wordIds": ["คุณ", "มี", "พี่น้อง", "ไหม", "ครับ"],
                             "translations": {
                                 "en": "Do you have siblings?",
                                 "fa": "خواهر و برادر داری؟"
@@ -5840,7 +5635,7 @@
                                 "ค่ะ"
                             ],
                             "translations": {
-                                "en": "Yes, i have 1 younger sister. she is a writer.",
+                                "en": "Yes, I have 1 younger sister. she is a writer.",
                                 "fa": "بله، یک خواهر کوچکتر دارم. او نویسنده است."
                             }
                         }
@@ -5927,7 +5722,7 @@
                             {
                                 "source": "เขามีผมสีอะไรครับ",
                                 "translations": {
-                                    "en": "what colour hair does she have?",
+                                    "en": "What colour hair does she have?",
                                     "fa": "چه رنگ مویی دارد؟"
                                 }
                             },
@@ -5958,14 +5753,7 @@
                         },
                         {
                             "source": "เขามีตาสีฟ้าค่ะ",
-                            "wordIds": [
-                                "เขา",
-                                "มี",
-                                "ตา",
-                                "สี",
-                                "ฟ้า",
-                                "ค่ะ"
-                            ],
+                            "wordIds": ["เขา", "มี", "ตา", "สี", "ฟ้า", "ค่ะ"],
                             "translations": {
                                 "en": "She has blue eyes.",
                                 "fa": "او چشمان آبی دارد."
@@ -6020,14 +5808,7 @@
                         },
                         {
                             "source": "เขามีผมสีแดงค่ะ",
-                            "wordIds": [
-                                "เขา",
-                                "มี",
-                                "ผม",
-                                "สี",
-                                "แดง",
-                                "ค่ะ"
-                            ],
+                            "wordIds": ["เขา", "มี", "ผม", "สี", "แดง", "ค่ะ"],
                             "translations": {
                                 "en": "She has red hair.",
                                 "fa": "او موهای قرمز دارد."
@@ -6049,9 +5830,9 @@
                             "th": "",
                             "fa": "سوال عمومی در مورد ظاهر. می‌توان با صفات توصیفی پاسخ داد."
                         },
-                        "examples": [ ]
+                        "examples": []
                     },
-                    "sentences": [ ]
+                    "sentences": []
                 },
                 {
                     "type": "paragraph",
@@ -6087,12 +5868,7 @@
                     "sentences": [
                         {
                             "source": "คุณสูงเท่าไหร่คะ",
-                            "wordIds": [
-                                "คุณ",
-                                "สูง",
-                                "เท่าไหร่",
-                                "คะ"
-                            ],
+                            "wordIds": ["คุณ", "สูง", "เท่าไหร่", "คะ"],
                             "translations": {
                                 "en": "How tall are you?",
                                 "fa": "قدتان چقدر است؟"
@@ -6148,12 +5924,7 @@
                     "sentences": [
                         {
                             "source": "คุณหนักเท่าไหร่คะ",
-                            "wordIds": [
-                                "คุณ",
-                                "หนัก",
-                                "เท่าไหร่",
-                                "คะ"
-                            ],
+                            "wordIds": ["คุณ", "หนัก", "เท่าไหร่", "คะ"],
                             "translations": {
                                 "en": "What is your weight?",
                                 "fa": "وزنتان چقدر است؟"
@@ -6161,13 +5932,7 @@
                         },
                         {
                             "source": "ฉันหนัก55กิโลกรัมค่ะ",
-                            "wordIds": [
-                                "ฉัน",
-                                "หนัก",
-                                "55",
-                                "กิโลกรัม",
-                                "ค่ะ"
-                            ],
+                            "wordIds": ["ฉัน", "หนัก", "55", "กิโลกรัม", "ค่ะ"],
                             "translations": {
                                 "en": "I weigh 55 kilograms.",
                                 "fa": "من ۵۵ کیلوگرم وزن دارم."
