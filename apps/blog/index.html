@@ -16,12 +16,23 @@
          early apply, coordinated with theme.js (two external head modules,
          each owning its own early apply). -->
     <script src="assets/js/font.js"></script>
+    <!-- Milestone 11c: lang.js is loaded here (NOT deferred), alongside
+         theme.js/font.js, the sibling pre-controller head modules. It owns
+         the persisted language choice (ONE localStorage key) and has NO
+         parse-time side effect; router.js (loaded in the body) is the ONLY
+         module that consults/writes it. It MUST precede router.js in load
+         order so window.BlogLang exists when the router first resolves. -->
+    <script src="assets/js/lang.js"></script>
     <link rel="stylesheet" href="assets/css/style.css" />
   </head>
   <body>
     <!-- Fixed top toolbar: title links home; hamburger opens the drawer (S-8). -->
     <header class="app-bar app-bar--top">
-      <a class="brand" href="#/en">Zabon Blog</a>
+      <!-- Milestone 11c (D-11c-4): the brand links home with a
+           LANGUAGE-NEUTRAL target ("#/") so it returns to the index in the
+           CURRENT language instead of forcing EN. router.js resolves the
+           silent "#/" to the persisted/current language. -->
+      <a class="brand" href="#/">Zabon Blog</a>
       <button
         id="menu-btn"
         class="app-bar__menu-btn"

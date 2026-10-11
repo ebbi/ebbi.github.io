@@ -211,10 +211,18 @@ function main() {
       title: decodeEntities(String(post.title || "")),
       date: post.date,
       lang,
-      seriesOrder:
-        lang === "en" && Object.hasOwn(seriesOrderMap, slug)
-          ? seriesOrderMap[slug]
-          : null,
+      // Milestone 11-language-persist (defect fix, extends C1b-18): the
+      // series order is a property of the POST, not the language — the slug
+      // is language-agnostic, so the SAME 1..23 map applies to every language
+      // that carries the series. Previously this was gated to lang === "en",
+      // so fa/th/ar entries all got seriesOrder=null and the list view (which
+      // sorts series by integer seriesOrder) rendered them in feed order
+      // (date-desc) — i.e. REVERSED reading order. Non-series slugs (the
+      // contents index post, update, controlling-the-narrative) are absent
+      // from the map and still get null.
+      seriesOrder: Object.hasOwn(seriesOrderMap, slug)
+        ? seriesOrderMap[slug]
+        : null,
       excerpt: buildExcerpt(post.blocks),
     });
   }

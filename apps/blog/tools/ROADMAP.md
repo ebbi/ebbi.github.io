@@ -1,4 +1,4 @@
-# Zabon Blog - Roadmap
+ore the tra# Zabon Blog - Roadmap
 
 Not a milestone file. Themes, status, and dependencies only. Milestone
 files are authored one at a time, at the close of the previous one
@@ -1258,6 +1258,50 @@ non-resolved; L-014 resolved. NO seam change; import-post.js untouched
     written; no seam change; feed.json untouched; renderer.js/router.js/
     nav.js/font.js/theme.js UNTOUCHED. Next (11b-b) remains HUMAN-GATED.
 
+- 11-language-persist Persist language selection (localStorage + cross-view).
+  (Formerly drafted as "11c"; renamed to a semantic name.) Makes the reader's
+  LANGUAGE CHOICE persist ACROSS SESSIONS and WHILE NAVIGATING between a post
+  and the index. New module assets/js/lang.js (window.BlogLang = {get,set,
+  resolve}; ONE localStorage key "zabon-blog-lang"; theme.js/font.js pattern).
+  router.js becomes the SINGLE reader/writer of that key: when the URL carries
+  NO language it resolves lang via BlogLang.resolve("en") (no longer hardcoding
+  "en"), and whenever a route carries a language it persists it. The URL stays
+  the on-load AUTHORITY (a shared #/<lang>/... link wins for that visit). The
+  header brand link becomes language-neutral ("#/") so it no longer forces EN.
+  Touches lang.js (new) + router.js + index.html ONLY — NOT the seam, content,
+  feed.json, renderer.js, nav.js, app.js, style.css, or any other module.
+  depends on: 11a, 10c.
+  STATUS: DONE (2026, browser-verified). assets/js/lang.js created; router.js
+  handleRoute() resolves from BlogLang when the URL is silent (D-11c-3) and
+  persists on any language-carrying route (guarded, D-11c-2); route vocabulary
+  / <html lang>/dir / currentRoute / onRouteChange UNCHANGED. index.html loads
+  lang.js in <head> (NOT deferred) AFTER font.js; the header brand link is now
+  "#/" (D-11c-4). node --check PASS (lang.js, router.js); test-integrity
+  INTEGRITY OK; 14/14 structural smoke PASS (bare URL + stored fa -> fa;
+  explicit #/en beats stored fa -> en + persists; #/ar persists; post route
+  persists; "#/" resolves stored fa; unknown stored value -> en; no stored
+  value -> en; storage failure -> en non-fatal; BlogLang absent -> en default).
+  IMPLEMENTATION BUG found + fixed: the first cut left lang.js OUT of the
+  index.html <head> (script tag missing), so BlogLang was undefined and the
+  router fell back to "en" (browser tests 1 + 2 FAILED, test 3 passed). Fix:
+  add the <script src="assets/js/lang.js"> to <head>. Re-tested in-browser —
+  ALL PASS: cross-session (switch to فارسی -> reload bare URL -> FA); cross-view
+  (post -> brand -> FA index); URL authority (#/ar wins over stored fa, store
+  follows); no regression (EN, switcher, fa/ar RTL, theme/font/TTS, private
+  mode). D-11c-1..6 frozen. DEFECT FIX (D-11c-7, found in-browser): switching
+  to fa rendered the index REVERSED because generate-index.js assigned the
+  integer seriesOrder EN-ONLY, so every non-EN entry fell into renderList's
+  date-desc `rest` bucket. Fix: seriesOrder is now derived from the
+  language-agnostic slug and assigned to EVERY language that carries the
+  series; app.js UNCHANGED (its existing sort orders all languages 1..23);
+  feed.json regenerated (EN byte-identical: 0 EN changes, 22 non-EN null ->
+  integer, 0 other; 51 entries; INTEGRITY OK). No content file written; no
+  seam change; renderer.js/nav.js/app.js/shell.js/theme.js/font.js/tts.js/
+  speech-settings.js/style.css UNTOUCHED. Housekeeping (human-approved): ALL
+  completed HANDOFF-\*.md deleted; new translation-pending.md +
+  translation-pending-new-chat.md added; HANDOFF-CURRENT.txt -> this milestone.
+  Next (11b-b) remains HUMAN-GATED + QUOTA-BLOCKED (translation-pending.md).
+
 ## Now
 
 - 10c List & panel presentation revamp (gate corrections). SUPERSEDES 10b's
@@ -1335,6 +1379,18 @@ non-resolved; L-014 resolved. NO seam change; import-post.js untouched
   this slot: per-language label review (B-5), the RTL/typography passes (12a/b),
   and any i18n chrome. depends on: 11a. Reconcile tools/milestones/11.md at its
   close (its text predates 10c + the 11a split).
+- 11-ui-i18n Translate the UI CHROME (drawer, toolbars, settings popover, view
+  labels) into the current route language. MISSING-FEATURE (never implemented):
+  no i18n module / no data-i18n exists; switching language does not change the
+  Settings-popover text, drawer labels, toolbar labels, or view strings
+  (post BODIES are 11b-b, separate). Adds assets/js/i18n.js (window.BlogI18n;
+  dictionary en/fa/th/ar; t(key,lang); apply(root) over data-i18n + data-i18n-aria;
+  fallback en->key) + data-i18n markup in index.html + guarded wiring in app.js
+  (apply after each route render) and dynamic-string reads in speech-settings.js
+  / tts.js. Touches index.html + i18n.js (new) + app.js + speech-settings.js
+  (+ tts.js if it sets aria labels) ONLY — NOT the seam, content, feed.json,
+  renderer.js, router.js (vocabulary), or the ordering. depends on:
+  11-language-persist. File: tools/milestones/11-ui-i18n.md.
 - 12a RTL & Typography - Persian/Arabic. depends on: 11a, 11b.
 - 12b RTL & Typography - Thai/Myanmar. depends on: 12a
 - 13a Accessibility & Keyboard Nav. depends on: 12b
