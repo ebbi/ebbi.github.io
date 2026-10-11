@@ -109,6 +109,37 @@ window.BlogSpeech = (function () {
   const voicesChangedListeners = [];
 
   // ---------------------------------------------------------------
+  // i18n (Milestone 11-ui-i18n, D-11i-6)
+  // ---------------------------------------------------------------
+
+  /**
+   * Localize a chrome string via window.BlogI18n when present. GUARDED so
+   * that when BlogI18n is absent this returns the supplied English fallback —
+   * byte-identical to the pre-11-ui-i18n behavior (D-11i-5). Only the DYNAMIC
+   * (JS-built) strings are read here; fixed markup is localized by
+   * BlogI18n.apply() via data-i18n attributes.
+   * @param {string} key
+   * @param {string} fallback the English text to use when BlogI18n is absent
+   * @returns {string}
+   */
+  function tr(key, fallback) {
+    if (
+      window.BlogI18n &&
+      typeof window.BlogI18n.t === "function" &&
+      typeof key === "string" &&
+      key
+    ) {
+      try {
+        const s = window.BlogI18n.t(key);
+        if (typeof s === "string" && s) return s;
+      } catch (err) {
+        /* fall through to the English fallback */
+      }
+    }
+    return fallback;
+  }
+
+  // ---------------------------------------------------------------
   // Small utilities
   // ---------------------------------------------------------------
 
@@ -442,7 +473,9 @@ window.BlogSpeech = (function () {
     if (!list.length) {
       const opt = document.createElement("option");
       opt.value = "";
-      opt.textContent = supported() ? "Default voice" : "Voice unavailable";
+      opt.textContent = supported()
+        ? tr("settings.defaultVoice", "Default voice")
+        : tr("settings.voiceUnavailable", "Voice unavailable");
       voiceSelect.appendChild(opt);
       voiceSelect.value = "";
       voiceSelect.disabled = true;
@@ -509,7 +542,8 @@ window.BlogSpeech = (function () {
         if (custom) custom.remove();
         const opt = document.createElement("option");
         opt.value = "__custom";
-        opt.textContent = "Custom (" + String(rate) + ")";
+        opt.textContent =
+          tr("speed.custom", "Custom") + " (" + String(rate) + ")";
         rateSelect.appendChild(opt);
         rateSelect.value = "__custom";
       } else {
@@ -544,7 +578,7 @@ window.BlogSpeech = (function () {
       langBtn.setAttribute("data-lang", currentLang);
       langBtn.setAttribute(
         "aria-label",
-        "Language: " + currentLang.toUpperCase(),
+        tr("lang.aria", "Language") + ": " + currentLang.toUpperCase(),
       );
       if (langMenu) {
         Array.prototype.forEach.call(
@@ -800,6 +834,19 @@ window.BlogSpeech = (function () {
           /* non-fatal: an empty voice list is handled gracefully */
         }
       }
+    }
+
+    // Milestone 11-ui-i18n (D-11i-4): re-render the DYNAMIC (JS-built)
+    // strings when the chrome language changes. BlogI18n.apply() handles the
+    // FIXED markup; this refreshes the strings speech-settings.js builds
+    // itself (voice option labels, the Custom-rate label, the lang aria).
+    // GUARDED — a no-op when BlogI18n is absent (D-11i-5).
+    if (window.BlogI18n && typeof window.BlogI18n.onChange === "function") {
+      window.BlogI18n.onChange(function () {
+        mirrorRate();
+        mirrorLangButton();
+        populateVoices();
+      });
     }
 
     // Initial mirrors.
