@@ -33,6 +33,33 @@
   let activeHighlightNode = null;
 
   /**
+   * Milestone 11-ui-i18n (D-11i-6): localize a chrome string via window.BlogI18n
+   * when present. GUARDED so that when BlogI18n is absent the English fallback
+   * is returned — byte-identical to pre-11-ui-i18n behavior (D-11i-5). Used
+   * ONLY for the JS-built VIEW strings (404 / no-posts / error); fixed markup
+   * is localized by BlogI18n.apply() via data-i18n attributes.
+   * @param {string} key
+   * @param {string} fallback
+   * @returns {string}
+   */
+  function t(key, fallback) {
+    if (
+      window.BlogI18n &&
+      typeof window.BlogI18n.t === "function" &&
+      typeof key === "string" &&
+      key
+    ) {
+      try {
+        const s = window.BlogI18n.t(key);
+        if (typeof s === "string" && s) return s;
+      } catch (err) {
+        /* fall through to the English fallback */
+      }
+    }
+    return fallback;
+  }
+
+  /**
    * Fetch JSON with a clear error surface.
    */
   async function loadJson(url) {
@@ -449,8 +476,18 @@
 
     const body = await loadPostBody(route.lang, route.slug);
     if (!body) {
+      // Milestone 11-ui-i18n (D-11i-6): JS-built view strings localized via
+      // BlogI18n.t() (guarded; English fallback when absent). The back link
+      // points at the CURRENT language (D-11c-4 semantics), not a hardcoded EN.
+      const homeLang = route.lang || "en";
       container.innerHTML =
-        '<div class="not-found"><h1>404</h1><p>Post not found.</p><a href="#/en">Back to home</a></div>';
+        '<div class="not-found"><h1>404</h1><p>' +
+        t("view.postNotFound", "Post not found.") +
+        '</p><a href="#/' +
+        homeLang +
+        '">' +
+        t("view.backToHome", "Back to home") +
+        "</a></div>";
       return;
     }
 
@@ -556,8 +593,13 @@
     );
 
     if (visible.length === 0) {
+      // Milestone 11-ui-i18n (D-11i-6): localized (guarded; English fallback).
       container.innerHTML =
-        '<div class="no-posts"><h2>No posts found</h2><p>Try another language.</p></div>';
+        '<div class="no-posts"><h2>' +
+        t("view.noPosts", "No posts found") +
+        "</h2><p>" +
+        t("view.tryAnotherLanguage", "Try another language.") +
+        "</p></div>";
       return;
     }
 
@@ -592,7 +634,7 @@
       <article class="post-list-item">
         <button class="post-list-item__toggle" type="button"
                 aria-expanded="true" aria-controls="blog-panel-body">
-          <span class="post-list-item__title-text">Two Legs Bad</span>
+          <span class="post-list-item__title-text">${t("brand.blogTitle", "Two Legs Bad")}</span>
         </button>
         <div class="post-list-item__panel" id="blog-panel-body">
           <ul class="blog-index">${indexHtml}
@@ -692,6 +734,23 @@
     readableNodes = [];
     readableRanges = [];
 
+    // Milestone 11-ui-i18n (D-11i-4, ORDERING FIX): set the chrome LANGUAGE
+    // BEFORE rendering the view. The JS-BUILT view strings (the list panel
+    // title via brand.blogTitle, the 404 / no-posts strings) read
+    // BlogI18n.t() at BUILD time inside renderList/renderPost, so the current
+    // language MUST already be the route language when they run — otherwise
+    // the freshly rendered view lags one language behind (the app-start fa
+    // title-in-EN / EN title-in-fa bug). setLang() also fires the
+    // BlogI18n.onChange listeners (speech-settings.js re-localizes its JS-built
+    // strings). GUARDED — a no-op when BlogI18n is absent (D-11i-5).
+    if (window.BlogI18n && typeof window.BlogI18n.setLang === "function") {
+      try {
+        window.BlogI18n.setLang(route.lang || "en");
+      } catch (err) {
+        /* non-fatal: the app must not break if i18n fails (D-11i-5) */
+      }
+    }
+
     if (route.type === "post") {
       renderPost(route); // fire-and-forget; renderPost handles its own await
     } else {
@@ -709,6 +768,21 @@
     // switcher. Called AFTER BlogNav.onRouteChange so the drawer's option
     // data-href values are already fresh (the single source this reuses).
     syncSpeechForRoute(route);
+
+    // Milestone 11-ui-i18n (D-11i-4): localize the FIXED chrome markup (drawer
+    // / toolbar / settings popover) via data-i18n / data-i18n-aria. The chrome
+    // lives OUTSIDE #app, so it is present for every route; called AFTER
+    // syncSpeechForRoute so the voice list is repopulated with the new
+    // language's endonyms intact. (setLang already ran ABOVE, before the view
+    // render, so the JS-built view strings are in the right language too.)
+    // GUARDED — a no-op when BlogI18n is absent (D-11i-5).
+    if (window.BlogI18n && typeof window.BlogI18n.apply === "function") {
+      try {
+        window.BlogI18n.apply(document);
+      } catch (err) {
+        /* non-fatal: the app must not break if i18n fails (D-11i-5) */
+      }
+    }
   }
 
   document.addEventListener("DOMContentLoaded", async () => {
@@ -726,7 +800,9 @@
     } catch (err) {
       console.error("Failed to load list index:", err);
       appContainer.innerHTML =
-        '<div class="error"><h1>Error</h1><p>Failed to load blog data.</p></div>';
+        '<div class="error"><h1>Error</h1><p>' +
+        t("view.loadError", "Failed to load blog data.") +
+        "</p></div>";
       return;
     }
 
@@ -805,6 +881,11 @@
         window.BlogSpeech.init();
         // Seed the current route (the router already emitted its initial
         // route, but BlogSpeech.init runs after that event; sync explicitly).
+        // Milestone 11-ui-i18n (D-11i-4): NOT done here — handleRouteChange now
+        // sets the chrome language BEFORE rendering the view, so BOTH the
+        // initial route and every subsequent one are already localized. The
+        // only extra pass needed is the fixed-chrome apply(), which also lives
+        // in handleRouteChange. No i18n seed is required in this block.
         syncSpeechForRoute(
           window.BlogRouter.currentRoute || {
             lang: "en",

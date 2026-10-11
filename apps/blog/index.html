@@ -23,6 +23,13 @@
          module that consults/writes it. It MUST precede router.js in load
          order so window.BlogLang exists when the router first resolves. -->
     <script src="assets/js/lang.js"></script>
+    <!-- Milestone 11-ui-i18n (D-11i-2): i18n.js is loaded here (NOT deferred),
+         AFTER lang.js, the sibling pre-controller head module. It owns the
+         chrome-string DICTIONARY (en/fa/th/ar) + the data-i18n apply() pass.
+         It has NO parse-time side effect: app.js calls setLang(route.lang) +
+         apply(document) on every route change. Loaded pre-controller so
+         window.BlogI18n exists before app.js runs. -->
+    <script src="assets/js/i18n.js"></script>
     <link rel="stylesheet" href="assets/css/style.css" />
   </head>
   <body>
@@ -32,12 +39,14 @@
            LANGUAGE-NEUTRAL target ("#/") so it returns to the index in the
            CURRENT language instead of forcing EN. router.js resolves the
            silent "#/" to the persisted/current language. -->
-      <a class="brand" href="#/">Zabon Blog</a>
+      <a class="brand" href="#/" data-i18n="brand.title">Zabon Blog</a>
       <button
         id="menu-btn"
         class="app-bar__menu-btn"
         type="button"
         aria-label="Open menu"
+        data-i18n-aria="aria-label"
+        data-i18n-key="menu.open"
         aria-expanded="false"
         aria-controls="app-panel"
       >
@@ -59,22 +68,37 @@
         role="dialog"
         aria-modal="true"
         aria-label="Menu"
+        data-i18n-aria="aria-label"
+        data-i18n-key="drawer.menu"
       >
         <div class="app-panel__header">
-          <h2>Menu</h2>
+          <h2 data-i18n="drawer.menu">Menu</h2>
           <button
             id="panel-close"
             class="app-panel__close"
             type="button"
             aria-label="Close menu"
+            data-i18n-aria="aria-label"
+            data-i18n-key="menu.close"
             data-close
           >
             &times;
           </button>
         </div>
 
-        <nav id="lang-nav" class="app-panel__section" aria-label="Language">
-          <label class="visually-hidden" for="lang-select">Language</label>
+        <nav
+          id="lang-nav"
+          class="app-panel__section"
+          aria-label="Language"
+          data-i18n-aria="aria-label"
+          data-i18n-key="drawer.language"
+        >
+          <label
+            class="visually-hidden"
+            for="lang-select"
+            data-i18n="drawer.language"
+            >Language</label
+          >
           <span class="lang-flag" aria-hidden="true"></span>
           <select id="lang-select" class="lang-select" data-lang="en">
             <option value="en">English</option>
@@ -87,13 +111,24 @@
         <!-- Milestone 07b: Theme control (Light / Dark / Auto) — the Settings
              panel. A native <select> with an associated visually-hidden label;
              wired by theme.js (window.BlogTheme.init). -->
-        <nav id="theme-nav" class="app-panel__section" aria-label="Theme">
-          <label class="visually-hidden" for="theme-select">Theme</label>
+        <nav
+          id="theme-nav"
+          class="app-panel__section"
+          aria-label="Theme"
+          data-i18n-aria="aria-label"
+          data-i18n-key="drawer.theme"
+        >
+          <label
+            class="visually-hidden"
+            for="theme-select"
+            data-i18n="drawer.theme"
+            >Theme</label
+          >
           <span class="theme-icon" aria-hidden="true">◐</span>
           <select id="theme-select" class="theme-select">
-            <option value="light">Light</option>
-            <option value="dark">Dark</option>
-            <option value="auto">Auto</option>
+            <option value="light" data-i18n="theme.light">Light</option>
+            <option value="dark" data-i18n="theme.dark">Dark</option>
+            <option value="auto" data-i18n="theme.auto">Auto</option>
           </select>
         </nav>
 
@@ -102,13 +137,26 @@
              with an associated visually-hidden label; wired by font.js
              (window.BlogFont.init). The empty value is the DEFAULT book-reader
              base (no data-font attribute -> CSS :root default). -->
-        <nav id="font-nav" class="app-panel__section" aria-label="Font">
-          <label class="visually-hidden" for="font-select">Font</label>
+        <nav
+          id="font-nav"
+          class="app-panel__section"
+          aria-label="Font"
+          data-i18n-aria="aria-label"
+          data-i18n-key="drawer.font"
+        >
+          <label
+            class="visually-hidden"
+            for="font-select"
+            data-i18n="drawer.font"
+            >Font</label
+          >
           <span class="font-icon" aria-hidden="true">A</span>
           <select id="font-select" class="font-select">
-            <option value="">Default</option>
-            <option value="traditional">Traditional</option>
-            <option value="modern">Modern</option>
+            <option value="" data-i18n="font.default">Default</option>
+            <option value="traditional" data-i18n="font.traditional">
+              Traditional
+            </option>
+            <option value="modern" data-i18n="font.modern">Modern</option>
           </select>
         </nav>
       </div>
@@ -121,13 +169,21 @@
          (Milestone TTS). They start inert and app.js enables Play when a
          post is rendered; the list view keeps all three inert (X-3/X-6). -->
     <footer class="app-bar app-bar--bottom">
-      <div class="transport" role="group" aria-label="Playback">
+      <div
+        class="transport"
+        role="group"
+        aria-label="Playback"
+        data-i18n-aria="aria-label"
+        data-i18n-key="toolbar.playback"
+      >
         <button
           id="tts-play-btn"
           class="transport__btn"
           type="button"
           disabled
           aria-label="Play"
+          data-i18n-aria="aria-label"
+          data-i18n-key="toolbar.play"
         >
           <span aria-hidden="true">▶</span>
         </button>
@@ -137,6 +193,8 @@
           type="button"
           disabled
           aria-label="Pause"
+          data-i18n-aria="aria-label"
+          data-i18n-key="toolbar.pause"
         >
           <span aria-hidden="true">⏸</span>
         </button>
@@ -146,6 +204,8 @@
           type="button"
           disabled
           aria-label="Stop"
+          data-i18n-aria="aria-label"
+          data-i18n-key="toolbar.stop"
         >
           <span aria-hidden="true">⏹</span>
         </button>
@@ -159,6 +219,8 @@
           class="transport__btn transport__btn--icon"
           type="button"
           aria-label="Playback settings"
+          data-i18n-aria="aria-label"
+          data-i18n-key="toolbar.settings"
           aria-haspopup="true"
           aria-expanded="false"
           aria-controls="tts-settings"
@@ -174,6 +236,8 @@
           class="transport__btn transport__btn--icon"
           type="button"
           aria-label="Language"
+          data-i18n-aria="aria-label"
+          data-i18n-key="lang.aria"
           aria-haspopup="listbox"
           aria-expanded="false"
           aria-controls="tts-lang-menu"
@@ -186,6 +250,8 @@
           class="tts-popover tts-lang-menu"
           role="listbox"
           aria-label="Language"
+          data-i18n-aria="aria-label"
+          data-i18n-key="lang.aria"
           hidden
         >
           <li>
@@ -241,6 +307,8 @@
           class="transport__btn transport__btn--icon"
           type="button"
           aria-label="Cycle reading font"
+          data-i18n-aria="aria-label"
+          data-i18n-key="toolbar.cyclingFont"
         >
           <span aria-hidden="true">A</span>
         </button>
@@ -251,17 +319,21 @@
            convention); speech-settings.js populates + wires it. -->
       <div id="tts-settings" class="tts-popover tts-settings" hidden>
         <label class="tts-settings__row" for="tts-rate-select">
-          <span class="tts-settings__label">Speed</span>
+          <span class="tts-settings__label" data-i18n="settings.speed"
+            >Speed</span
+          >
           <select id="tts-rate-select" class="tts-settings__select">
-            <option value="0.6">Slower</option>
-            <option value="0.8">Slow</option>
-            <option value="1" selected>Normal</option>
-            <option value="1.25">Fast</option>
-            <option value="1.6">Faster</option>
+            <option value="0.6" data-i18n="speed.slower">Slower</option>
+            <option value="0.8" data-i18n="speed.slow">Slow</option>
+            <option value="1" selected data-i18n="speed.normal">Normal</option>
+            <option value="1.25" data-i18n="speed.fast">Fast</option>
+            <option value="1.6" data-i18n="speed.faster">Faster</option>
           </select>
         </label>
         <label class="tts-settings__row" for="tts-rate-range">
-          <span class="tts-settings__label">Fine</span>
+          <span class="tts-settings__label" data-i18n="settings.fine"
+            >Fine</span
+          >
           <input
             id="tts-rate-range"
             class="tts-settings__range"
@@ -271,11 +343,15 @@
             step="0.05"
             value="1"
             aria-label="Playback speed"
+            data-i18n-aria="aria-label"
+            data-i18n-key="settings.playbackSpeedAria"
           />
         </label>
 
         <fieldset class="tts-settings__fieldset">
-          <legend class="tts-settings__label">Pitch</legend>
+          <legend class="tts-settings__label" data-i18n="settings.pitch">
+            Pitch
+          </legend>
           <div class="tts-settings__pitch-modes">
             <label class="tts-settings__pitch-option">
               <input
@@ -285,7 +361,7 @@
                 value="auto"
                 checked
               />
-              <span>Natural pitch</span>
+              <span data-i18n="settings.naturalPitch">Natural pitch</span>
             </label>
             <label class="tts-settings__pitch-option">
               <input
@@ -294,7 +370,7 @@
                 name="tts-pitch-mode"
                 value="manual"
               />
-              <span>Manual</span>
+              <span data-i18n="settings.manual">Manual</span>
             </label>
           </div>
           <input
@@ -307,16 +383,27 @@
             value="1"
             disabled
             aria-label="Speech pitch (manual)"
+            data-i18n-aria="aria-label"
+            data-i18n-key="settings.speechPitchAria"
           />
         </fieldset>
 
         <label class="tts-settings__row" for="tts-voice-select">
-          <span class="tts-settings__label">Voice</span>
+          <span class="tts-settings__label" data-i18n="settings.voice"
+            >Voice</span
+          >
           <select id="tts-voice-select" class="tts-settings__select">
-            <option value="">Default voice</option>
+            <option value="" data-i18n="settings.defaultVoice">
+              Default voice
+            </option>
           </select>
         </label>
-        <button id="tts-test-btn" class="tts-settings__test" type="button">
+        <button
+          id="tts-test-btn"
+          class="tts-settings__test"
+          type="button"
+          data-i18n="settings.testVoice"
+        >
           Test voice
         </button>
       </div>

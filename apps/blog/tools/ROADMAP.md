@@ -1302,6 +1302,38 @@ non-resolved; L-014 resolved. NO seam change; import-post.js untouched
   translation-pending-new-chat.md added; HANDOFF-CURRENT.txt -> this milestone.
   Next (11b-b) remains HUMAN-GATED + QUOTA-BLOCKED (translation-pending.md).
 
+- 11-ui-i18n Translate the UI CHROME (drawer, toolbars, settings popover, view
+  labels) into the current route language. New module assets/js/i18n.js
+  (window.BlogI18n = {t, lang, setLang, apply, onChange}; DICTIONARY en/fa/th/ar;
+  t() resolves lang -> en -> key; apply(root) walks [data-i18n] + [data-i18n-aria])
+  loaded in <head> after lang.js. index.html data-i18n/-aria/-key markup on
+  every chrome element; app.js wires setLang BEFORE the view render +
+  apply(document) AFTER (D-11i-8); guarded t() localizes the JS-built view
+  strings (404 / no-posts / error / list-panel blog title); speech-settings.js
+  guarded tr() localizes its dynamic strings + a BlogI18n.onChange
+  re-localization. Toolbar brand "Zabon Blog" (brand.title) AND list-panel
+  title "Two Legs Bad" (brand.blogTitle) ARE translated (D-11i-7,
+  human-requested). Endonyms stay. Touches index.html + i18n.js (new) + app.js
+  - speech-settings.js; tts.js/router.js/nav.js/shell.js/theme.js/font.js/
+    lang.js/style.css/content/feed.json/renderer.js/seam UNTOUCHED. depends on:
+    11-language-persist.
+    STATUS: DONE (2026, browser-verified). i18n.js created (44-key dictionary,
+    en source of truth; t() lang -> en -> key; apply() textContent +
+    [data-i18n-aria] named attr); index.html chrome tagged with
+    data-i18n/data-i18n-aria/data-i18n-key (drawer, toolbar, settings popover,
+    hamburger aria, brand); app.js setLang-before-render + apply(document) +
+    guarded t() for the JS-built view strings; speech-settings.js guarded tr()
+    - BlogI18n.onChange re-localization. BUG FOUND + FIXED during the chat
+      (D-11i-8): setLang ran AFTER the view render, so the freshly rendered view
+      lagged one language behind (the reported "fa page but EN title" bug);
+      reordered so setLang precedes the render. D-11i-1..8 frozen. node --check
+      PASS; test-integrity INTEGRITY OK; tools/i18n-smoke.js 28/28 PASS;
+      tools/m12-smoke.js 24/24 PASS (speech-settings byte-identical when
+      BlogI18n absent); HUMAN browser-verified (en/fa/th/ar switch localizes the
+      popover + drawer + toolbar + brand + list title; back to EN works; Voice
+      list still follows the language; no console errors). No content file
+      written; no seam change; feed.json untouched.
+
 ## Now
 
 - 10c List & panel presentation revamp (gate corrections). SUPERSEDES 10b's
@@ -1379,18 +1411,6 @@ non-resolved; L-014 resolved. NO seam change; import-post.js untouched
   this slot: per-language label review (B-5), the RTL/typography passes (12a/b),
   and any i18n chrome. depends on: 11a. Reconcile tools/milestones/11.md at its
   close (its text predates 10c + the 11a split).
-- 11-ui-i18n Translate the UI CHROME (drawer, toolbars, settings popover, view
-  labels) into the current route language. MISSING-FEATURE (never implemented):
-  no i18n module / no data-i18n exists; switching language does not change the
-  Settings-popover text, drawer labels, toolbar labels, or view strings
-  (post BODIES are 11b-b, separate). Adds assets/js/i18n.js (window.BlogI18n;
-  dictionary en/fa/th/ar; t(key,lang); apply(root) over data-i18n + data-i18n-aria;
-  fallback en->key) + data-i18n markup in index.html + guarded wiring in app.js
-  (apply after each route render) and dynamic-string reads in speech-settings.js
-  / tts.js. Touches index.html + i18n.js (new) + app.js + speech-settings.js
-  (+ tts.js if it sets aria labels) ONLY — NOT the seam, content, feed.json,
-  renderer.js, router.js (vocabulary), or the ordering. depends on:
-  11-language-persist. File: tools/milestones/11-ui-i18n.md.
 - 12a RTL & Typography - Persian/Arabic. depends on: 11a, 11b.
 - 12b RTL & Typography - Thai/Myanmar. depends on: 12a
 - 13a Accessibility & Keyboard Nav. depends on: 12b
@@ -1424,7 +1444,9 @@ non-resolved; L-014 resolved. NO seam change; import-post.js untouched
   feed.json is the derived list index; posts.json is inert (C1a-D3).
 - RTL set currently hardcoded in router.js; belongs in LOCKED_DECISIONS.txt.
 - LOCKED_DECISIONS lists 8 UI languages; 4 content languages. Switcher
-  ships the content set only.
+  ships the content set only. Since 11-ui-i18n the UI CHROME is translated
+  into that same content set (en/fa/th/ar) via window.BlogI18n; a language
+  without chrome strings falls back to EN (D-11i-1/5).
 - Post slugs are language-agnostic.
 - The D-Tool-9 extraction seam is frozen. Twelve narrow extensions exist so
   far (D-Tool-18 quote-cite; D-Tool-19 bare-<p>; D-Tool-20 bare-<p><img>;
