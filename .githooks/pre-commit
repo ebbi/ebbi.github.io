@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# Pre-commit: block non-UTF-8 filenames/content so the GitHub Pages Jekyll
+# build can never fail with "invalid byte sequence in UTF-8".
+# Installed by tools/install-git-hooks.sh
+set -euo pipefail
+root="$(git rev-parse --show-toplevel)"
+exec "$root/tools/check-utf8-paths.sh" staged

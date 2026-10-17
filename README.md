@@ -43,3 +43,24 @@ the root under `assets/`.
   GitHub Pages.
 
 ---
+
+## Repository notes
+
+**Jekyll is bypassed.** The repo includes an empty `.nojekyll` file at the
+root, so GitHub Pages serves the files as-is instead of running Jekyll. This
+is faster and avoids Jekyll choking on stray filenames or interpreting `{{ }}`
+in JS as Liquid. Do not delete `.nojekyll`.
+
+**UTF-8 filenames are required.** Even with `.nojekyll`, keep filenames and
+text files valid UTF-8. A file _named_ with invalid bytes once aborted the
+build with `invalid byte sequence in UTF-8`. To enable the pre-commit guard in
+your clone:
+
+```bash
+tools/install-git-hooks.sh   # sets core.hooksPath=.githooks (once per clone)
+```
+
+It blocks committing any non-UTF-8 filename or text-content file. Run it
+manually over the whole repo with `tools/check-utf8-paths.sh --all`.
+
+---

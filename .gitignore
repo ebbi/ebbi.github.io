@@ -56,6 +56,15 @@ pnpm-debug.log*
 tmp/
 temp/
 
+# ---------- Misc junk (e.g. stray 0-byte files from root-level globs) ----------
+# A non-UTF-8 filename breaks the GitHub Pages Jekyll build with
+# "invalid byte sequence in UTF-8". The pre-commit guard
+# (tools/check-utf8-paths.sh) blocks committing them; this catches the
+# obvious 0-byte stray before it is ever staged.
+# (Patterns are for clarity, not a substitute for the guard.)
+*.crdownload
+*.part
+
 # ---------- Local archives / backups ----------
 *.zip
 *.tar.gz
