@@ -19,7 +19,7 @@
         "Language agnostic App to learn Arabic, English, Spanish, Persian, Japanese, Thai, Chinese",
       appThai: "Zabon Thai",
       appThaiDesc: "Learn Thai (with English and Persian)",
-      appBlog: "Blog",
+      appBlog: "Zabon Blog",
       appBlogDesc: "Coming soon",
     },
     fa: {
@@ -35,7 +35,7 @@
         "اپلیکیشن مستقل از زبان برای یادگیری عربی، انگلیسی، اسپانیایی، فارسی، ژاپنی، تایلندی و چینی",
       appThai: "زبان تایلندی",
       appThaiDesc: "یادگیری زبان تایلندی (با انگلیسی و فارسی)",
-      appBlog: "وبلاگ",
+      appBlog: "وبلاگ زبان",
       appBlogDesc: "به زودی",
     },
     th: {
@@ -51,7 +51,7 @@
         "แอปที่ไม่ขึ้นกับภาษา สำหรับเรียนภาษาอาหรับ อังกฤษ สเปน เปอร์เซีย ญี่ปุ่น ไทย และจีน",
       appThai: "ซาบอนไทย",
       appThaiDesc: "เรียนภาษาไทย (พร้อมอังกฤษและเปอร์เซีย)",
-      appBlog: "บล็อก",
+      appBlog: "ซาบอนบล็อก",
       appBlogDesc: "เร็ว ๆ นี้",
     },
     ar: {
@@ -67,7 +67,7 @@
         "تطبيق مستقل عن اللغة لتعلم العربية والإنجليزية والإسبانية والفارسية واليابانية والتايلاندية والصينية",
       appThai: "زابون التايلاندي",
       appThaiDesc: "تعلم التايلاندية (مع الإنجليزية والفارسية)",
-      appBlog: "المدونة",
+      appBlog: "مدونة زابون",
       appBlogDesc: "قريباً",
     },
     my: {
@@ -83,7 +83,7 @@
         "ဘာသာစကားမရွေး အသုံးပြုနိုင်သော အာရဗီ၊ အင်္ဂလိပ်၊ စပိန်၊ ပါရှန်၊ ဂျပန်၊ ထိုင်း နှင့် တရုတ် သင်ယူရန် အက်ပ်",
       appThai: "ဇာဘွန် ထိုင်း",
       appThaiDesc: "ထိုင်းဘာသာ သင်ယူရန် (အင်္ဂလိပ် နှင့် ပါရှန် အပါအဝင်)",
-      appBlog: "ဘလော့ဂ်",
+      appBlog: "ဇာဘွန် ဘလော့ဂ်",
       appBlogDesc: "မကြာမီ လာမည်",
     },
     es: {
@@ -99,7 +99,7 @@
         "Aplicación independiente del idioma para aprender árabe, inglés, español, persa, japonés, tailandés y chino",
       appThai: "Zabon Tailandés",
       appThaiDesc: "Aprender tailandés (con inglés y persa)",
-      appBlog: "Blog",
+      appBlog: "Blog Zabon",
       appBlogDesc: "Próximamente",
     },
     ja: {
@@ -115,7 +115,7 @@
         "言語に依存しないアプリ — アラビア語、英語、スペイン語、ペルシア語、日本語、タイ語、中国語を学ぶ",
       appThai: "ザボン タイ語",
       appThaiDesc: "タイ語を学ぶ（英語とペルシア語付き）",
-      appBlog: "ブログ",
+      appBlog: "ザボン ブログ",
       appBlogDesc: "近日公開",
     },
     zh: {
@@ -131,7 +131,7 @@
         "语言无关的应用，用于学习阿拉伯语、英语、西班牙语、波斯语、日语、泰语和中文",
       appThai: "Zabon 泰语",
       appThaiDesc: "学习泰语（附英语和波斯语）",
-      appBlog: "博客",
+      appBlog: "Zabon 博客",
       appBlogDesc: "即将推出",
     },
   };

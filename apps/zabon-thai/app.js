@@ -5589,7 +5589,8 @@ const App = (function () {
             <nav class="toolbar-left">
 
     <header class="toolbar__title">
-      <a class="toolbar__title-link" href="../../" id="toolbar-title-link">${Services.I18n.t("zabon", "Zabon")}</a>
+      <a class="toolbar__title-link toolbar__home-link" href="../../" id="toolbar-title-link"
+         aria-label="Zabon home" title="Zabon home">🏠</a>
     </header>
             
                 <button class="material-icons toolbar-btn"
@@ -7678,12 +7679,7 @@ const App = (function () {
             }
         },
 
-        refreshToolbarTitle() {
-            const link = document.getElementById("toolbar-title-link");
-            if (link) {
-                link.textContent = Services.I18n.t("zabon", "Zabon");
-            }
-        },
+
 
         Blog: {
             setLanguage: function (lang) {

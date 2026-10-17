@@ -183,6 +183,23 @@ h6 {
 .toolbar-left header {
     padding: 1rem 0.5rem;
 }
+/* Toolbar link back to the Zabon home page (icon) */
+.toolbar__home-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    font-size: 1.15rem;
+    line-height: 1;
+    text-decoration: none;
+    color: inherit;
+    transition: background 0.2s;
+}
+.toolbar__home-link:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
 .toolbar-btn {
     background: none;
     border: none;

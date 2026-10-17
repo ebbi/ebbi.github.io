@@ -138,6 +138,7 @@ body {
 .app-bar--top {
   inset-block-start: 0;
   justify-content: space-between;
+  gap: 8px;
   padding-block: env(safe-area-inset-top, 0px);
   padding-inline: calc(12px + env(safe-area-inset-left, 0px))
     calc(12px + env(safe-area-inset-right, 0px));
@@ -374,6 +375,31 @@ html[dir="rtl"] .app-panel[aria-hidden="false"] .app-panel__content {
   font-weight: 600;
 }
 
+/* Zabon suite: toolbar home icon linking to the main site index. */
+.brand--home {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  inline-size: 2.4rem;
+  block-size: 2.4rem;
+  border-radius: 50%;
+  font-size: 1.25rem;
+  line-height: 1;
+  text-decoration: none;
+  color: inherit;
+  transition: opacity 0.2s ease;
+}
+
+.brand--home:hover,
+.brand--home:focus-visible {
+  opacity: 0.75;
+}
+
+/* Space the home icon apart from the brand title. */
+.app-bar--top .brand--home + .brand {
+  margin-inline-end: auto;
+}
+
 /* Language control group: decorative flag + native select. */
 #lang-nav {
   display: flex;
@@ -437,7 +463,6 @@ html[dir="rtl"] .app-panel[aria-hidden="false"] .app-panel__content {
 }
 
 /* ... existing code ... */
-
 /* =========================================================
    Milestone 08 — Post list
    Mobile-first; logical properties only; reuses tokens.

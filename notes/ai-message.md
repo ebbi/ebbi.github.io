@@ -16,4 +16,4 @@ The current task is to:
 
 - Rename the blog App to be zabon-blog
 - The index page toolbar for the App zabon and zabon-thai have a link Zabon that points to the main index page. The link word Zabon should be replaced with a suitable icon for the main index page.
-- The zabon-blog App should have the same main home link in its toolbar.
+- # The zabon-blog App should have the same main home link in its toolbar.

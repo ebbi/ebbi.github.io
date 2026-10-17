@@ -1,11 +1,11 @@
 # --- Zabon Blog App Specific ---
 # NOTE: repo root IS zabon/, so patterns are relative to it: use
-# apps/blog/…, NOT zabon/apps/blog/… (the latter matched nothing).
-apps/blog/node_modules/
-apps/blog/.env
-apps/blog/tools/reports/*.json
-apps/blog/PARTIAL.md
-apps/blog/notes/
+# apps/zabon-blog/…, NOT zabon/apps/zabon-blog/… (the latter matched nothing).
+apps/zabon-blog/node_modules/
+apps/zabon-blog/.env
+apps/zabon-blog/tools/reports/*.json
+apps/zabon-blog/PARTIAL.md
+apps/zabon-blog/notes/
 
 # ---------- Continue extension config (may contain secrets) ----------
 # config.yaml is kept on disk but NOT committed: it can hold the

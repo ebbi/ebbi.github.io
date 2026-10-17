@@ -156,6 +156,25 @@ fixed bottom bars.
   margin: 0;
   font-size: 1.25rem;
 }
+/* Toolbar link back to the Zabon home page (icon) */
+.toolbar__home-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  inline-size: 2.4rem;
+  block-size: 2.4rem;
+  border-radius: 50%;
+  font-size: 1.25rem;
+  line-height: 1;
+  text-decoration: none;
+  color: inherit;
+  transition: opacity 0.2s ease;
+}
+.toolbar__home-link:hover,
+.toolbar__home-link:focus {
+  opacity: 0.75;
+  outline: none;
+}
 .toolbar__title[role="button"] {
   transition:
     opacity 0.2s ease,
